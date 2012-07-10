@@ -12,6 +12,27 @@ Contents:
    :maxdepth: 2
 
 
+Examples:
+
+.. code-block:: php
+
+    <?php
+    /**
+     * This is a comment
+     */
+    protected $username;
+    
+    /**
+     * Another comment
+     */
+    protected $country;
+    
+    /**
+     * LOL
+     */
+    protected $lol;
+
+
 
 Indices and tables
 ==================
