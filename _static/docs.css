@@ -59,7 +59,8 @@ div.documentwrapper h2 {
     margin: 0;
 }
 
-div.documentwrapper p {	
+div.documentwrapper p,
+div.documentwrapper li {	
     color: #333333;
     font-size: 16px;
     line-height: 24px;
@@ -67,6 +68,10 @@ div.documentwrapper p {
     text-align: left;
     text-rendering: optimizelegibility;
     margin: 1px;
+}
+
+div.documentwrapper li {	
+	padding: 0px;
 }
 
 a.headerlink {
@@ -91,6 +96,7 @@ div.related li.right {
 	padding-right: 0px;
 	list-style: none outside none;
 	color: white;	
+	margin-right: 5px;
 }
 
 div.related li.right a {
