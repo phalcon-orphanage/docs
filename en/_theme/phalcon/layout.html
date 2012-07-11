@@ -8,17 +8,16 @@
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
-    <div class="related">
-      <h3>{{ _('Navigation') }}</h3>
+    <div class="related">      
       <ul>
         {%- for rellink in rellinks %}
-        <li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+        <li class="right" {% if loop.first %}{% endif %}>
           <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags }}"
              {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://www.phalconphp.com">Phalcon PHP Homepage</a> &raquo;</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -31,8 +30,7 @@
 
 {%- macro sidebar() %}
       {%- if not embedded %}{% if not theme_nosidebar|tobool %}
-      <div class="sphinxsidebar primary-box">
-        <div class="sphinxsidebarwrapper">
+      <td class="primary-box" width="25%" valign="top">
           {%- block sidebarlogo %}
           {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
@@ -91,8 +89,7 @@
           {%- if customsidebar %}
           {% include customsidebar %}
           {%- endif %}
-        </div>
-      </div>
+        </td>
       {%- endif %}{% endif %}
 {%- endmacro %}
 
@@ -116,7 +113,8 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
     <link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css">
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
+    <!--<link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">-->
+    <link rel="stylesheet" href="/docs/_static/docs.css" type="text/css">
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -198,15 +196,17 @@
         </div>
       </div>
 
-        <div id="content" class="cls">
-          {%- block header %}{% endblock %}
+      {%- block header %}{% endblock %}
 
-          {%- block relbar1 %}{{ relbar() }}{% endblock %}
+      {%- block relbar1 %}{{ relbar() }}{% endblock %}
 
-          {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+      {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
 
-              <div class="document">
-          {%- block document %}
+      <table width="90%" align="center">
+        <tr>
+          {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+          <td class="second-box" valign="top">  
+            {%- block document %}
                 <div class="documentwrapper">
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
                   <div class="bodywrapper">
@@ -218,12 +218,11 @@
                   </div>
                 {%- endif %}{% endif %}
                 </div>
-          {%- endblock %}
-
-          {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
-                <div class="clearer"></div>
-              </div>
-
+            {%- endblock %}          
+          </td>  
+        </tr>   
+      </table>
+              
           {%- block footer %}
               <div id="footer">
               {%- if hasdoc('copyright') %}
@@ -239,8 +238,7 @@
               {%- endif %}
               </div>
           {%- endblock %}
-      </div>
-
+          
       <div id="bot-rcnr">
         <div class="tl"><!-- corner --></div>
       </div>
