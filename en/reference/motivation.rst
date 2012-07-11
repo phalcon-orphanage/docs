@@ -11,6 +11,7 @@ Why?
 * Use of frameworks has become mandatory in professional development with PHP
 * They offer a philosophy and organized structures to easily maintain projects writing less code and making work more fun
 
+
 How PHP works?
 --------------
 
@@ -18,4 +19,14 @@ How PHP works?
 * PHP is interpreted (not compiled). Interpretation has advantages and disadvantages. Losing of performance is one of its disadvantages
 * Every time a script is requested should be interpreted by PHP.
 * If a bytecode cache (like APC) isn’t used, syntax checking is performed every time for every file in the request
+
+
+How traditional php frameworks work?
+------------------------------------
+
+* Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance
+* Modern frameworks use lazy loading technique (autoload) for load and execute only code needed
+* Continuous loading/interpreting could be expensive and impact your application performance
+* When you use a framework most of the code remains the same across development. Why load and interpret it every time?
+
 
