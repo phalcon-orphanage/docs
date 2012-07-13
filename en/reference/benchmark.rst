@@ -68,17 +68,17 @@ The testing hardware environment is as follows:
 
 *PHP version and info:*
 
-.. image:: img/bench-1.png
+.. figure:: ../_static/img/bench-1.png
 	:align: center
 
 *Apache environment:*
 
-.. image:: img/bench-2.png
+.. figure:: ../_static/img/bench-2.png
 	:align: center
 
 *APC settings:*
 
-.. image:: img/bench-3.png
+.. figure:: ../_static/img/bench-3.png
 	:align: center
 
 Results

@@ -26,8 +26,8 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 Related Guides
 ^^^^^^^^^^^^^^
 
-* Detailed Installation on XAMPP for Windows
-* Detailed Installation on WAMP for Windows
+* :doc:`Detailed Installation on XAMPP for Windows </reference/xampp>` 
+* :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
 
 Unix/Linux
 ----------

@@ -7,6 +7,32 @@ body {
     text-align: center;
 }
 
+h2 {
+	font-family: "Open Sans",sans-serif;
+	font-style: normal;
+	letter-spacing: normal;
+	color: #333333;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: bold;
+	margin: 10px 0 5px;
+	margin: 0;
+}
+
+p, li {	
+	color: #333333;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 10px;
+	text-align: left;
+	text-rendering: optimizelegibility;
+	margin: 1px;
+}
+
+li {	
+	padding: 0px;
+}
+
 td.primary-box {	
 	padding: 10px;
 	padding-right: 20px;
@@ -14,23 +40,21 @@ td.primary-box {
 	text-align: left;
 }
 
-/*td.primary-box ul {
-	padding-top: 20px;
+td.primary-box ul {
+	margin-left: 0px;
+	padding-left: 5px;
 }
 
 td.primary-box li {
-	font-size: 14x;
-	padding: 7px 0 5px 10px;
-	list-style: none outside none;
-	border-bottom: 1px solid #ababab;
-	text-align: left;
+	margin-left: 0px;
+	padding-left: 5px;
 }
 
-td.primary-box li a {
+td.primary-box a {
 	color: #0088CC;
 	text-decoration: none;
 	font-size: 13px;
-}*/
+}
 
 td.second-box {
 	padding: 30px 15px 10px 10px;
@@ -51,33 +75,6 @@ div.section {
 	margin-top: 10px;
 }
 
-div.documentwrapper h2 {
-	font-family: "Open Sans",sans-serif;
-	font-style: normal;
-	letter-spacing: normal;
-	color: #333333;
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    margin: 0;
-}
-
-div.documentwrapper p,
-div.documentwrapper li {	
-    color: #333333;
-    font-size: 16px;
-    line-height: 24px;
-    padding: 10px;
-    text-align: left;
-    text-rendering: optimizelegibility;
-    margin: 1px;
-}
-
-div.documentwrapper li {	
-	padding: 0px;
-}
-
 a.headerlink {
 	color: #dadada;
 	font-size: 18px;
@@ -93,6 +90,10 @@ div.related li {
 	float: left;
 	padding-right: 20px;
 	list-style: none outside none;	
+}
+
+div.related a {
+	font-size: 13px;
 }
 
 div.related li.right {
@@ -141,7 +142,8 @@ span.versionmodified {
 	font-style: italic;
 }
 
-div.highlight-php {
+div.highlight-php,
+div.highlight-sql {
 	background: none repeat scroll 0 0 #212121;    
 	margin: 7px 5px 5px;
 	max-width: 95%;
@@ -152,6 +154,7 @@ div.highlight-php {
 }
 
 div.highlight-php pre,
+div.highlight-sql pre,
 blockquote {
 	background: none repeat scroll 0 0 #212121;
 	font-family: Consolas,"Lucida Console",monospace;
@@ -161,9 +164,73 @@ blockquote {
 	margin-left: 0px;
 }
 
+blockquote {
+	padding: 3px;
+}
+
 blockquote p {
 	font-size: 14px;
 	line-height: 18px;
 	color: #DCDCCC;		
 }
 
+p.topless {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.figure {
+	padding: 10px;
+}
+
+.highlight .cp {
+    color: #DCDCCC;
+}
+
+.highlight .nb {
+    color: #EFDCBC;
+}
+
+.highlight .k {
+    color: #F0DFAF;
+    font-weight: bold;
+}
+
+.highlight .c1 {
+	color: #7F9F7F;
+    font-style: italic;
+}
+
+.highlight .nx {
+    color: #FAFAFA;
+}
+
+.highlight .na {
+	color: #EFDCBC;
+}
+
+.highlight .s2 {
+	color: #CC9393;
+}
+
+.highlight .nv {
+	color: #EFDCBC;
+}
+
+.highlight .o {
+    color: #DCDCCC;
+}
+
+.highlight .nc {
+    color: #fafafa;
+    font-weight: bold;
+}
+
+.highlight .nf {
+	color: #fafafa;
+    font-weight: bold;
+}
+
+.highlight .mi {
+	color: #8CD0D3;
+}
