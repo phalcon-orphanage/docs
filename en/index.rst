@@ -23,7 +23,7 @@ Table of Contents
    reference/motivation
    reference/benchmark
    reference/mvc
-   reference/install
+   reference/install   
 
 Indices and tables
 ------------------

@@ -148,6 +148,7 @@ div.highlight-php {
 	overflow-x: scroll;
 	padding: 5px;
 	text-align: left;
+	margin-left: 0px;
 }
 
 div.highlight-php pre,
@@ -157,5 +158,12 @@ blockquote {
 	font-size: 14px;
 	line-height: 18px;
 	color: #DCDCCC;	
+	margin-left: 0px;
+}
+
+blockquote p {
+	font-size: 14px;
+	line-height: 18px;
+	color: #DCDCCC;		
 }
 

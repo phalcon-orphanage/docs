@@ -59,7 +59,6 @@ APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewr
 
 The testing hardware environment is as follows: 
 
-
 * Operating System: Mac OS X Snow Leopard 10.6.8
 * Web Server: Apache httpd 2.2.21
 * PHP: 5.3.8
@@ -71,7 +70,6 @@ The testing hardware environment is as follows:
 
 .. image:: img/bench-1.png
 	:align: center
-
 
 *Apache environment:*
 
