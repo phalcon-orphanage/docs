@@ -20,7 +20,6 @@ How PHP works?
 * Every time a script is requested should be interpreted by PHP.
 * If a bytecode cache (like APC) isn’t used, syntax checking is performed every time for every file in the request
 
-
 How traditional php frameworks work?
 ------------------------------------
 
@@ -29,4 +28,22 @@ How traditional php frameworks work?
 * Continuous loading/interpreting could be expensive and impact your application performance
 * When you use a framework most of the code remains the same across development. Why load and interpret it every time?
 
+How a PHP C-extension works?
+----------------------------
+
+* C extensions are loaded together with PHP once time on the web server daemon start process
+* Classes and functions provided by the extension are ready to use for any application
+* The code isn’t interpreted because is compiled to a specific platform and processor
+
+How a Phalcon works?
+--------------------
+
+* Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just one piece of Phalcon all by itself.
+* Low-level optimizations provide the lowest overhead for MVC-based applications
+* Interact with databases with maximum performance by using a C-language ORM for PHP
+* Phalcon is directly engaged with PHP, so it can directly access internal structures optimizing execution as well
+
+Conclusion
+----------
+Phalcon is an effort to build the real fastest framework for PHP. You now have an even easier and robust way to develop applications without be worried about performance. Enjoy! 
 

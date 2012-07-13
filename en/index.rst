@@ -21,7 +21,9 @@ Table of Contents
    :maxdepth: 2
 
    reference/motivation
+   reference/benchmark
    reference/mvc
+   reference/install
 
 Indices and tables
 ------------------

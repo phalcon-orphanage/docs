@@ -47,6 +47,10 @@ div.documentwrapper h1 {
 	margin: 0;
 }
 
+div.section {
+	margin-top: 10px;
+}
+
 div.documentwrapper h2 {
 	font-family: "Open Sans",sans-serif;
 	font-style: normal;
@@ -105,3 +109,53 @@ div.related li.right a {
 	border-radius: 5px;
 	color: #fff;	
 }
+
+.align-center {
+	text-align: center;
+}
+
+p.versionadded {
+	background: none repeat scroll 0 0 #A8CEBB;
+	font-size: 15px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+p.versionchanged,
+blockquote.highlights {
+	color: #333333;
+    font-family: "Open Sans",sans-serif;    
+    background: none repeat scroll 0 0 #D5E9F6;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: #000;
+}
+
+blockquote.highlights {
+	padding: 10px;
+}
+
+span.versionmodified {
+	font-style: italic;
+}
+
+div.highlight-php {
+	background: none repeat scroll 0 0 #212121;    
+	margin: 7px 5px 5px;
+	max-width: 95%;
+	overflow-x: scroll;
+	padding: 5px;
+	text-align: left;
+}
+
+div.highlight-php pre,
+blockquote {
+	background: none repeat scroll 0 0 #212121;
+	font-family: Consolas,"Lucida Console",monospace;
+	font-size: 14px;
+	line-height: 18px;
+	color: #DCDCCC;	
+}
+

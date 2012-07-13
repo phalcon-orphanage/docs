@@ -41,7 +41,6 @@ What measures does were taken?
 
 These were the measurements we take to measure the overall performance of the frameworks:
 
-
 * Requests per second
 * Time across all concurrent requests
 * Number of included PHP files on a single request (measured using function get_included_files_.
@@ -79,18 +78,17 @@ The testing hardware environment is as follows:
 .. image:: img/bench-2.png
 	:align: center
 
-
-
 *APC settings:*
 
 .. image:: img/bench-3.png
 	:align: center
 
-    
-
+Results
+-------	
 
 Yii (YII_DEBUG=false) Version yii-1.1.10.r3566
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Yii_ is a high-performance PHP framework best for developing Web 2.0 applications. Version used for benchmark was yii-1.1.10.r3566. We disable YII_DEBUG for get faster perfomance. 
 
 .. _Yii: http://www.yiiframework.com/
@@ -155,10 +153,9 @@ Yii_ is a high-performance PHP framework best for developing Web 2.0 application
 	  99%     48
 	 100%     76 (longest request)
 
-
-
 Symfony Version 2.0.11
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
+
 Symfony_ is another high-performance PHP framework. 
 
 .. _Symfony: http://symfony.com/
@@ -221,11 +218,8 @@ Symfony_ is another high-performance PHP framework.
 	  99%    197
 	 100%    346 (longest request)
 
-
-
-
 CodeIgniter 2.1.0
------------------
+^^^^^^^^^^^^^^^^^
 CodeIgniter_ is a powerful PHP framework with a very small footprint, built for PHP coders who need a simple and elegant toolkit to create full-featured web applications.  
 
 .. _CodeIgniter: http://codeigniter.com/
@@ -275,9 +269,7 @@ CodeIgniter_ is a powerful PHP framework with a very small footprint, built for 
 	Connect:        0    1   0.7      0       5
 	Processing:     2    5  11.0      4     148
 	Waiting:        0    5  10.8      4     148
-	Total:          2    6  10.9      4     148
-	WARNING: The median and mean for the initial connection time are not within a normal deviation
-	        These results are probably not that reliable.
+	Total:          2    6  10.9      4     148	
 
 	Percentage of the requests served within a certain time (ms)
 	  50%      4
@@ -290,11 +282,8 @@ CodeIgniter_ is a powerful PHP framework with a very small footprint, built for 
 	  99%     38
 	 100%    148 (longest request)
 
-
-
-
 Kohana 3.2.0
-------------
+^^^^^^^^^^^^
 Kohana_ is an elegant HMVC PHP5 framework that provides a rich set of components for building web applications.
 
 .. _Kohana: http://kohanaframework.org/index
@@ -344,9 +333,7 @@ Kohana_ is an elegant HMVC PHP5 framework that provides a rich set of components
 	Connect:        0    1   0.9      0       5
 	Processing:     2    7  22.4      5     317
 	Waiting:        0    7  22.3      4     317
-	Total:          2    8  22.3      5     318
-	WARNING: The median and mean for the initial connection time are not within a normal deviation
-	        These results are probably not that reliable.
+	Total:          2    8  22.3      5     318	
 
 	Percentage of the requests served within a certain time (ms)
 	  50%      5
@@ -361,7 +348,7 @@ Kohana_ is an elegant HMVC PHP5 framework that provides a rich set of components
 
 
 Fuel 1.2
---------
+^^^^^^^^
 FuelPHP_ is a simple, flexible, community driven PHP 5.3 web framework based on the best ideas of other frameworks with a fresh start. 
 
 .. _FuelPHP: http://fuelphp.com/
@@ -424,11 +411,8 @@ FuelPHP_ is a simple, flexible, community driven PHP 5.3 web framework based on 
 	  99%     59
 	 100%     81 (longest request)
 
-
-
-
 Cake 2.1.3
-----------
+^^^^^^^^^^
 CakePHP_ makes building web applications simpler, faster and require less code. **Unlike others, we are measuring only 10 requests of 1000, if you know how to improve this results please write us.**
 
 .. _CakePHP: http://cakephp.org/
@@ -480,10 +464,8 @@ CakePHP_ makes building web applications simpler, faster and require less code. 
 	  99%  15040
 	 100%  15040 (longest request)
 
-
-
 Phalcon Version 0.3.5
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -543,18 +525,14 @@ Phalcon Version 0.3.5
 	  99%      9
 	 100%     43 (longest request)
 
-
-
-Result Graphs
--------------
+Graphs
+^^^^^^
 
 The first graph shows how many requests per second each framework was able to accept. Second shows the average time across all concurrent requests. 
 
 ???? NO SE COLOCAR IMAGENES DE BARRAS
 
-
-
-Conclusión
+Conclusion
 -----------
 
 The Phalcon compiled nature offers extraordinary performance that outperforms all other frameworks in this comparison. Phalcon is a real high performance framework that allows you to scale more easily than ever. 
