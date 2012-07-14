@@ -127,6 +127,10 @@ blockquote.highlights {
 	color: #333333;
     font-family: "Open Sans",sans-serif;    
     background: none repeat scroll 0 0 #D5E9F6;
+    line-height: 24px;
+    padding: 10px;
+    text-align: left;
+    text-rendering: optimizelegibility;
     font-size: 15px;
     margin-left: 20px;
     margin-right: 20px;
@@ -142,26 +146,32 @@ span.versionmodified {
 	font-style: italic;
 }
 
-div.highlight-php,
-div.highlight-sql {
+div.highlight {
 	background: none repeat scroll 0 0 #212121;    
 	margin: 7px 5px 5px;
 	max-width: 95%;
-	overflow-x: scroll;
-	padding: 5px;
+	overflow-x: scroll;	
 	text-align: left;
 	margin-left: 0px;
+	/*padding: 5px;*/
 }
 
-div.highlight-php pre,
-div.highlight-sql pre,
+div.highlight,
 blockquote {
 	background: none repeat scroll 0 0 #212121;
 	font-family: Consolas,"Lucida Console",monospace;
 	font-size: 14px;
 	line-height: 18px;
 	color: #DCDCCC;	
-	margin-left: 0px;
+	margin: 0px;
+	padding: 2px;
+}
+
+div.highlight span,
+blockquote span {
+	font-family: Consolas,"Lucida Console",monospace;
+	font-size: 14px;
+	line-height: 18px;
 }
 
 blockquote {
@@ -209,6 +219,7 @@ div.figure {
 	color: #EFDCBC;
 }
 
+.highlight .s,
 .highlight .s2 {
 	color: #CC9393;
 }
@@ -234,3 +245,43 @@ div.figure {
 .highlight .mi {
 	color: #8CD0D3;
 }
+
+.highlight .nt {
+	color: #919191;
+}
+
+.highlight .sd {
+    color: #7F9F7F;
+    font-style: italic;
+}
+
+.highlight .se {
+    color: #ababab;
+    font-weight: bold;
+}
+
+table.docutils {
+	border-collapse: collapse;
+	border-top: 1px solid #ABABAB;
+    border-left: 1px solid #ABABAB;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table.docutils td,
+table.docutils th {
+	border-bottom: 1px solid #ABABAB;
+    border-right: 1px solid #ABABAB;
+    font-size: 12px;
+    padding: 5px;
+}
+
+table.docutils th {
+	background: none repeat scroll 0 0 #DADADA;
+}
+
+table.docutils tr {
+	padding: 0px;
+	margin: 0px;
+}
+

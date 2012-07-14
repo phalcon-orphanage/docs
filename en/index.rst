@@ -22,8 +22,12 @@ Table of Contents
 
    reference/motivation
    reference/benchmark
-   reference/mvc
-   reference/install   
+   reference/install
+   reference/tutorial
+   reference/mvc   
+   reference/controllers
+   reference/models
+   reference/views
 
 Indices and tables
 ------------------
@@ -31,4 +35,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

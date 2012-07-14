@@ -167,7 +167,7 @@ Now we will change the index.phtml view to add a link to a new controller named 
 
 The generated HTML code brings an "A" html tag linking to a new controller:
 
-.. code-block:: php
+.. code-block:: html
 
     <h1>Hello!</h1> <a href="/test/signup" >Sign Up Here!</a>
 
