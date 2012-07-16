@@ -2,11 +2,16 @@
 
 Internationalization
 ====================
-As well you should know Phalcon is a framework written as a C extension for PHP. Currently,PHP has a magnificent extension to create internationalized applications. You can find it in the `PECL <http://pecl.php.net/package/intl>`_ repository and its well documented at the official`PHP manual <http://www.php.net/manual/en/intro.intl.php>`_ .So basically for us is not worth it, to re-implement another internationalization extension for PHP.In this part of the documentation, we'll show you how to implement the functionality of this extension into Phalcon applications. This guide is not intended to be a complete documentation of the intl extension.Please visit its  `documentation <http://www.php.net/manual/en/book.intl.php>`_ for a complete reference.
+As well you should know Phalcon is a framework written as a C extension for PHP. Currently, PHP has a magnificent extension to create internationalized applications. You can find it in the `PECL <http://pecl.php.net/package/intl>`_ repository and its well documented at the official `PHP manual <http://www.php.net/manual/en/intro.intl.php>`_. 
+
+So basically for us is not worth it, to re-implement another internationalization extension for PHP. In this part of the documentation, we'll show you how to implement the functionality of this extension into Phalcon applications. 
+
+.. highlights::
+   This guide is not intended to be a complete documentation of the intl extension.Please visit its  `documentation <http://www.php.net/manual/en/book.intl.php>`_ for a complete reference.
 
 Find out best available Locale
 ------------------------------
-There are several ways to find out the best available locale using intl. One of them is to check theHTTP "Accept-Language" header: 
+There are several ways to find out the best available locale using intl. One of them is to check the HTTP "Accept-Language" header: 
 
 .. code-block:: php
 
@@ -16,17 +21,15 @@ There are several ways to find out the best available locale using intl. One of 
     //Locale could be something like "en_GB" or "en"
     echo $locale;
 
-Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.Examples of identifiers include:
+Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API. Examples of identifiers include:
 
 * en-US (English, United States)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
-
-
 Formatting messages based on Locale
 -----------------------------------
-Part of creating a localized application is to produce concatenated, language-neutral messages.The  `MessageFormatter <http://www.php.net/manual/en/class.messageformatter.php>`_ enables to produce those outputs.Printing numbers formatted based on some locale:
+Part of creating a localized application is to produce concatenated, language-neutral messages. The  `MessageFormatter <http://www.php.net/manual/en/class.messageformatter.php>`_ enables to produce those outputs.Printing numbers formatted based on some locale:
 
 .. code-block:: php
 
@@ -68,7 +71,7 @@ Message formatting using time and date patterns:
 
 Locale-Sensitive comparison
 ---------------------------
-The `Collator <http://www.php.net/manual/en/class.collator.php>`_ classprovides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the examples below to figure out how this class works: 
+The `Collator <http://www.php.net/manual/en/class.collator.php>`_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the examples below to figure out how this class works: 
 
 .. code-block:: php
 

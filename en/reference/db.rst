@@ -2,7 +2,9 @@
 
 Database Abstraction Layer
 ==========================
-is the componentbehind  that powers up all the models stuff in the framework. It consists of an independent high-levelabstraction layer for database systems completely written in C. This component allows doing a lower level database manipulation than using models.While the models do not need to use SQL, here you can use the specific SQL engine with you are working. This guide is not intended to be a complete documentation of available methods and their arguments.Please visit the  for a complete reference.
+Phalcon_Db is the component behind  that powers up all the models stuff in the framework. It consists of an independent high-levelabstraction layer for database systems completely written in C. This component allows doing a lower level database manipulation than using models. While the models do not need to use SQL, here you can use the specific SQL engine with you are working. 
+
+This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the  for a complete reference.
 
 Database Adapters
 -----------------
@@ -16,8 +18,6 @@ This component makes use of adapters to encapsulate specific database system det
 | PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | Phalcon_Db_Adapter_Postgresql | 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
 
-
-
 Database Dialects
 -----------------
 For some database engines, PHP provides several ways to connect to it. From PDO to native drivers,Phalcon encapsulate the specific details of each database engine in dialects. Those provide common functions and SQL generator to adapters. 
@@ -30,11 +30,9 @@ For some database engines, PHP provides several ways to connect to it. From PDO 
 | PostgreSQL | SQL specific dialect for PostgreSQL database system | Phalcon_Db_Dialect_Postgresql | pgsql           | 
 +------------+-----------------------------------------------------+-------------------------------+-----------------+
 
-
-
 Connecting to Databases
 -----------------------
-All the connections created by the component are factored in a single method: Phalcon_Db::factory.Its first parameter is a supported adapter, the second is a standard PHP object with the connection settings, the third parameter tells if a `persistent connection <http://php.net/manual/en/features.persistent-connections.php>`_ should be created or not.The below example shows how to create a connection passing both required and optional parameters: 
+All the connections created by the component are factored in a single method: Phalcon_Db::factory. Its first parameter is a supported adapter, the second is a standard PHP object with the connection settings, the third parameter tells if a `persistent connection <http://php.net/manual/en/features.persistent-connections.php>`_ should be created or not.The below example shows how to create a connection passing both required and optional parameters: 
 
 .. code-block:: php
 
@@ -56,8 +54,6 @@ All the connections created by the component are factored in a single method: Ph
     //Create a connection
     $connection = Phalcon_Db::factory("Mysql", $config, true);
 
-
-
 .. code-block:: php
 
     <?php
@@ -76,11 +72,9 @@ All the connections created by the component are factored in a single method: Ph
     //Create a connection
     $connection = Phalcon_Db::factory("Postgresql", $config, true);
 
-
-
 Connection Pooling
 ------------------
-To control the creation of database connections through applications, a`connection pool <http://en.wikipedia.org/wiki/Connection_pool>`_ has been implementedin the framework. It caches each connection created to avoid making multiple connections to the same adapter/host/username. 
+To control the creation of database connections through applications, a `connection pool <http://en.wikipedia.org/wiki/Connection_pool>`_ has been implemented in the framework. It caches each connection created to avoid making multiple connections to the same adapter/host/username. 
 
 .. code-block:: php
 
@@ -106,11 +100,9 @@ To control the creation of database connections through applications, a`connecti
     //Passing true as parameter will renew the pooled connection
     $connection2 = Phalcon_Db_Pool::getConnection(true);
 
-
-
 Finding Rows
 ------------
-Phalcon_Db provides several methods to query out rows from tables. Specific SQL of the targetdatabase engine is required in this case: 
+Phalcon_Db provides several methods to query out rows from tables. Specific SQL of the target database engine is required in this case: 
 
 .. code-block:: php
 
@@ -148,7 +140,6 @@ By default it creates arrays with both associative and numeric indices. You can 
 +----------------------+-----------------------------------------------------------+
 
 
-
 .. code-block:: php
 
     <?php
@@ -183,10 +174,9 @@ The Phalcon_Db::query returns a special object depending of the database adapter
     echo $result->numRows();
 
 
-
 Binding Parameters
 ------------------
-Binding parameters is also supported in Phalcon_Db.The binding process impact the performance minimally but reduce the possibility to be attacked using SQL injection techniques. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
+Binding parameters is also supported in Phalcon_Db. The binding process impact the performance minimally but reduce the possibility to be attacked using SQL injection techniques. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
 
 .. code-block:: php
 
@@ -202,7 +192,7 @@ Binding parameters is also supported in Phalcon_Db.The binding process impact th
     $sql = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
     $success = $connection->query($sql);
 
-When use numeric placeholders define it as integers, by example: 1 or 2.In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be sucessfully replaced. With the MySQL adapter strings are automatically escaped using `mysqli_real_escape_string <http://php.net/manual/en/mysqli.real-escape-string.php>`_ .That function takes into account the connection charset, so its recommended define it in the connection parameters or in the MySQL server configuration. 
+When use numeric placeholders define it as integers, by example: 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be sucessfully replaced. With the MySQL adapter strings are automatically escaped using `mysqli_real_escape_string <http://php.net/manual/en/mysqli.real-escape-string.php>`_ . That function takes into account the connection charset, so its recommended define it in the connection parameters or in the MySQL server configuration. 
 
 Inserting/Updating/Deleting Rows
 --------------------------------
@@ -241,7 +231,6 @@ When inserting, updating or deleting rows it's possible to send raw SQL statemen
     
     //Generating dynamically the necessary SQL
     $success = $connection->delete("robots", "id = 101");
-
 
 
 Profiling SQL Statements
@@ -297,7 +286,6 @@ You can also create your own profile class based on Phalcon_Db_Profiler toget re
     }
 
 
-
 Log SQL Statements
 ------------------
 When we use high-level abstraction components to access databases, we could find difficultiesto understand which statements are finally sent to the database system. Phalcon_Db also provides logging capabilities to track all the SQL statements sent to the database. The is a ready-to-use componentthat perfectly fits with the logging behavior implemented in Phalcon_Db. Also you can write your own logging system. 
@@ -321,7 +309,6 @@ As above, the file *app/logs/db.log* might contain the following:
 .. code-block:: php
 
     [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products (name, price) VALUES ('Hot pepper', 3.50)
-
 
 
 Implementing your own Logger
@@ -376,16 +363,14 @@ A table description is very similar to the MySQL describe command, it contains t
 +-------+----------------------------------------------------+
 
 
-
 Creating/Altering/Dropping Tables
 ---------------------------------
 SQL specifications and implementations include data manipulation instructionssuch as ALTER or DROP. Although, these implementations tend to change from one database system to another. Phalcon_Db provides an easy way to alter tables in a unified manner. 
 
 Creating Tables
-	The following example shows how to create a table using this component:
+^^^^^^^^^^^^^^^
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+The following example shows how to create a table using this component:
 
 .. code-block:: php
 
@@ -461,14 +446,9 @@ Associative hash passed to Phalcon_Db::createTable can have the possible section
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 
-
 Altering Tables
-	The reason for altering a table can be: add, change or delete fields. Not all database systems
-	allow to modify existing columns or add columns between another two. So, Phalcon_Db is limited by these
-	constraints.
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+^^^^^^^^^^^^^^^
+The reason for altering a table can be: add, change or delete fields. Not all database systems allow to modify existing columns or add columns between another two. So, Phalcon_Db is limited by these constraints.
 
 .. code-block:: php
 
@@ -495,12 +475,10 @@ Altering Tables
     $connection->deleteColumn("robots", null, "name");
 
 
-
 Dropping Tables
-	Examples on dropping tables:
+^^^^^^^^^^^^^^^
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Examples on dropping tables:
 
 .. code-block:: php
 

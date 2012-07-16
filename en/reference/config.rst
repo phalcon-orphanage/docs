@@ -1,5 +1,3 @@
-
-
 Reading Configuration
 =====================
 The component allows to read configuration files indifferent formats into PHP objects facilitating the reading thereof. 
@@ -16,11 +14,9 @@ This component makes use of adapters to encapsulate the reading details of each 
 | Array     | Uses PHP multidimensional arrays to store the configuration. In terms of performance is the best. | 
 +-----------+---------------------------------------------------------------------------------------------------+
 
-
-
 Native Arrays
 -------------
-The next example shows how to convert native arrays into Phalcon_Config objects. Because no files are readthe performance is better. 
+The next example shows how to convert native arrays into Phalcon_Config objects. Because no files are read the performance is better. 
 
 .. code-block:: php
 
@@ -57,13 +53,11 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
     $config = new Phalcon_Config($settings);
 
-
-
 Reading INI Files
 -----------------
-Ini files are a common way to store settings. Phalcon_Config uses the optimizedPHP function parse_ini_file to read these files. Files sections are parsed into sub-settings that can be accessed then. 
+Ini files are a common way to store settings. Phalcon_Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings that can be accessed then. 
 
-.. code-block:: php
+.. code-block:: ini
 
     [database]
     adapter = Mysql
@@ -77,8 +71,6 @@ Ini files are a common way to store settings. Phalcon_Config uses the optimizedP
     modelsDir = "../app/models/"
     viewsDir = "../app/views/"
 
-
-
 .. code-block:: php
 
     <?php
@@ -88,11 +80,8 @@ Ini files are a common way to store settings. Phalcon_Config uses the optimizedP
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
 
-
-
 Related Guides
 --------------
-
 
 * Settings supported by the Framework
 

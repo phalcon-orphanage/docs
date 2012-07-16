@@ -15,8 +15,7 @@ h2 {
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 500;
-	margin: 10px 0 5px;
-	margin: 0;
+	margin: 25px 0 0;
 }
 
 p, li {	
@@ -296,10 +295,12 @@ table.docutils {
     margin-left: auto; 
     margin-right: auto;
     width: 90%;
+    margin-bottom: 15px;
 }
 
 table.docutils td,
 table.docutils th {
+	color: #434343;
 	border-bottom: 1px solid #ABABAB;
     border-right: 1px solid #ABABAB;
     font-size: 1.2em;

@@ -1,8 +1,6 @@
-
-
 Multi-lingual Support
 =====================
-The component expects to help you creating multi-language applications.This type of applications require display content in multiple languages depending on the user's language. 
+The component expects to help you creating multi-language applications. This type of applications require display content in multiple languages depending on the user's language. 
 
 Adapters
 --------
@@ -14,15 +12,11 @@ This component makes use of adapters to read translation messages from different
 | Array   | Uses PHP arrays to store the messages. In terms of performance is the best. | 
 +---------+-----------------------------------------------------------------------------+
 
-
-
 Component Usage
 ---------------
-Translation files are stored in files, the structure of these files could change depending of the adapter used.Phalcon gives you the freedom to organize your translation messages. A very simpler structure could be the following: 
+Translation files are stored in files, the structure of these files could change depending of the adapter used. Phalcon gives you the freedom to organize your translation messages. A very simpler structure could be the following: 
 
-.. code-block:: php
-
-    <?php
+.. code-block:: bash
 
     app/messages/en.php
     app/messages/es.php
@@ -34,6 +28,7 @@ Each file contains a hash with the translations, each message has a unique index
 .. code-block:: php
 
     <?php
+
     //app/messages/es.php
     $messages = array(
     	"hi" => "Hello",
@@ -42,11 +37,10 @@ Each file contains a hash with the translations, each message has a unique index
     	"song" => "This song is %song%"
     );
 
-
-
 .. code-block:: php
 
     <?php
+
     //app/messages/fr.php
     $messages = array(
     	"hi" => "Bonjour",
@@ -93,18 +87,18 @@ Now, it's time to load the correct translation file according to the user enviro
     
     }
 
-We've implemented a method _getTranslation, it will be available for other actions that require translation too.The $t variable is passed to the views, with it, we can get translations for the messages file loaded previously: 
+We've implemented a method _getTranslation, it will be available for other actions that require translation too. The $t variable is passed to the views, with it, we can get translations for the messages file loaded previously: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- welcome -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
 
-The "_" function is the resposible to query the message according to the index given.Some translation messages could have placeholders, for example: Hello %name%. Those can be replaced using an extra parameter when getting the translation: 
+The "_" function is the resposible to query the message according to the index given. Some translation messages could have placeholders, for example: Hello %name%. Those can be replaced using an extra parameter when getting the translation: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- welcome -->
     <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
 
-Note that "hi" and "hi-name" are related to different messages, but just only one of themrequire a placeholder. Some websites implement urls like http://www.mozilla.org/**es-ES** /firefox/, where theactual language/locale is passed as part of the uri. You can do this with Phalcon, implementing a  .
+Note that "hi" and "hi-name" are related to different messages, but just only one of themrequire a placeholder. Some websites implement urls like http://www.mozilla.org/**es-ES**/firefox/, where the actual language/locale is passed as part of the uri. You can do this with Phalcon, implementing a regex router. 

@@ -355,14 +355,15 @@ You can replace or add more template engines from the controller as follows:
     
     }
 
-It is possible to completely replace template engines or using more than one at the same time.Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. The order in which templates are registered means more relevance than others. If Phalcon_Viewfinds two views with the same name but different extension only the first one will render. 
+It is possible to completely replace template engines or using more than one at the same time.Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. The order in which templates are registered means more relevance than others. If Phalcon_View finds two views with the same name but different extension only the first one will render. 
 
 Using Mustache
 ^^^^^^^^^^^^^^
-`Mustache <http://mustache.github.com/>`_ is a logic-less template engine available for many platforms and languages.A PHP implementation is available  `here <https://github.com/bobthecow/mustache.php>`_ .You need to manually load the Mustache library before use its engine adapter. This could be doneby making a require instruction or registering an autoload function first. 
+`Mustache <http://mustache.github.com/>`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available  `here <https://github.com/bobthecow/mustache.php>`_. You need to manually load the Mustache library before use its engine adapter. This could be doneby making a require instruction or registering an autoload function first. 
 
-.. code-block:: php
-:startinline: True
+.. code-block:: php 
+  
+    <?php
 
     require "path/to/Mustache.php";
 

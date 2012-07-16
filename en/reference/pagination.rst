@@ -1,5 +1,3 @@
-
-
 Data Pagination
 ===============
 The process of pagination takes place when we need to present big groups of arbitrary data gradually.is a fast way to split sets of data into browsable pages.
@@ -15,8 +13,6 @@ This component makes use of adapters to encapsulate the different sources of dat
 +---------+----------------------------------------------+
 | Model   | Use a Phalcon_Model_Resultset as source data | 
 +---------+----------------------------------------------+
-
-
 
 Using Paginators
 ----------------
@@ -44,7 +40,7 @@ The method Phalcon_Paginator::factory allows us to create an instance of a pagin
 
 Variable $numberPage controls the page to be displayed.The $paginator->getPaginate() returns a $page object that have the pagination data. It can be used for generating the pagination: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <table>
       <tr>
@@ -63,7 +59,7 @@ Variable $numberPage controls the page to be displayed.The $paginator->getPagina
 
 Also, the page $object contain the navigation data:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <a href="/robots/search">First</a>
     <a href="/robots/search?page=<?= $page->before ?>">Previous</a>
@@ -71,8 +67,6 @@ Also, the page $object contain the navigation data:
     <a href="/robots/search?page=<?= $page->last ?>">Last</a>
     
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages ?>
-
-
 
 Page Attributes
 ---------------

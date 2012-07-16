@@ -2,7 +2,11 @@
 
 Universal Class Loader
 ======================
-helps to load your project classesautomatically based on some predefined conventions. This component is written in C giving you the lowest overhead reading and executing external PHP files. The behavior of this component is basically based on thePHP's capability of  `autoload classes <http://www.php.net/manual/en/language.oop5.autoload.php>`_ .This concept tells us that when a class that not exist is used in any part of the code, a special handler will try to load it. In this case, Phalcon_Loader is that kind of handler. Additionally, when you load classes as needed, the number of unnecessary files reads is decreased improving the overallperformance. This technique is also called  `lazy initialization <http://en.wikipedia.org/wiki/Lazy_initialization>`_ Principally, Phalcon_Loader gives you 3 alternatives to autoload classes. You can combine any of themor use a single one. 
+helps to load your project classesautomatically based on some predefined conventions. This component is written in C giving you the lowest overhead reading and executing external PHP files. 
+
+The behavior of this component is basically based on the PHP's capability of  `autoload classes <http://www.php.net/manual/en/language.oop5.autoload.php>`_ .This concept tells us that when a class that not exist is used in any part of the code, a special handler will try to load it. In this case, Phalcon_Loader is that kind of handler. Additionally, when you load classes as needed, the number of unnecessary files reads is decreased improving the overall performance. This technique is also called  `lazy initialization <http://en.wikipedia.org/wiki/Lazy_initialization>`_. 
+
+Principally, Phalcon_Loader gives you 3 alternatives to autoload classes. You can combine any of themor use a single one. 
 
 Registering Namespaces
 ----------------------
@@ -27,8 +31,6 @@ If you're organizing your code using namespaces, or any external vendor does so,
     
     //Requiring class wil automatically include file vendor/example/adapter/Some.php
     $some = new Example\Adapter\Some();
-
-
 
 Registering Directories
 -----------------------
@@ -55,8 +57,6 @@ The second option is to register directories on which your classes could be foun
     //Requiring a class will automatically load it from the first directory where it has been located
     //ie. library/OtherComponent/Other/Some.php
     $some = new Some();
-
-
 
 Registering Classes
 -------------------
