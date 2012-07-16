@@ -20,32 +20,36 @@ h2 {
 
 p, li {	
 	color: #434343;
-    font-size: 1.2em;
-    line-height: 1.6em;
-    margin-bottom: 1em;
+    font-size: 16px;    
+    line-height: 24px;
+    margin-left: 0;
+    min-height: 0;    
+}
+
+li {	
+	line-height: 20px;
     margin-left: 0;    
     min-height: 0;    
 }
 
 td.primary-box li {	
 	padding: 0px;
-	line-height: 1.0em;
-	margin-bottom: 3px;
-	font-size: 1.1em;
+	line-height: 16px;
+	margin-bottom: 0px;
+	font-size: 14px;
 }
 
 td.second-box li {	
-	margin-bottom: 0.4em;
+	margin-bottom: 0em;
 }
 
 td.second-box li.toctree-l1 {
-	font-size: 1.0em;	
+	font-size: 14px;
 	margin: 0px;
 }
 
-td.second-box li.toctree-l1 a {	
-	font-size: 1.0em;
-	line-height: 1.2em;	
+td.second-box li.toctree-l1 a {		
+	font-size: 14px;	
 	margin-bottom: 0em;
 }
 
@@ -67,9 +71,10 @@ td.primary-box li {
 }
 
 td.primary-box a {
-	color: #0088CC;
-	text-decoration: none;
+	color: #0088CC;	
 	font-size: 13px;
+	line-height: 20px;
+	text-decoration: none;
 }
 
 td.second-box {
@@ -142,18 +147,17 @@ p.versionadded {
 
 p.versionchanged,
 blockquote.highlights {
-	color: #333333;
-    font-family: "Open Sans",sans-serif;    
-    background: none repeat scroll 0 0 #D5E9F6;
-    line-height: 24px;
-    padding: 10px;
-    text-align: left;
-    text-rendering: optimizelegibility;
-    font-size: 15px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
-    color: #000;    
+	color: #414141;
+	font-family: "Open Sans",sans-serif;    
+	background: none repeat scroll 0 0 #D5E9F6;
+	line-height: 24px;
+	padding: 10px;
+	text-align: left;
+	text-rendering: optimizelegibility;
+	font-size: 15px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;	
 }
 
 blockquote.highlights {

@@ -52,5 +52,7 @@ Table of Contents
    reference/migrations   
    reference/debug      
    reference/tools 
-   reference/settings  
+   reference/settings     
+   api/index
+   reference/license
 
