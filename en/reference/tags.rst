@@ -1,0 +1,323 @@
+
+
+View Helpers
+============
+HTML markup can quickly become tedious to write and maintain because of control naming and their numerousattributes. Phalcon deals away with these complexities by providing view helpers for generating HTML markup. This guide is not intended to be a complete documentation of available helpers and their arguments.Please visit the  documentation for a complete reference.
+
+Using Name Aliasing
+-------------------
+You could use name aliasing to get short names for classes. In this case, a Tag name can be used to alias theclass Phalcon_Tag. 
+
+.. code-block:: php
+
+    <?php use Phalcon_Tag as Tag; ?>
+
+
+
+Creating Forms
+--------------
+Forms in web applications are an essential interface for user input. The following exampleshows how to implement a simple search form using view helpers: 
+
+.. code-block:: php
+
+    <?php use Phalcon_Tag as Tag; ?>
+    
+    <?= Tag::form(array("products/search", "method" => "get")) ?>
+      <label for="q">Search:</label>
+      <?= Tag::textField("q") ?>
+      <?= Tag::submitButton("Search") ?>
+    </form>
+
+This will generate the following HTML:
+
+.. code-block:: php
+
+    <form action="/phalconphp/products/search/" method="get">
+     <label for="q">Search:</label>
+     <input type="text" id="q" value="" name="q" />
+     <input type="submit" value="Search" />
+    </endform>
+
+
+
+Helpers to Generate Form Elements
+---------------------------------
+Phalcon provides a series of helpers to generate form elements such astextfields, buttons and more. The first parameter to these is always the name of the input. When the form is submitted, the name will be passed along with the form data. In the controller you can recover those values with the same name using methods getPost or getQuery in  
+
+.. code-block:: php
+
+    <?= Phalcon_Tag::textField(array("parent_id", "value"=> "5")) ?>
+    <?= Phalcon_Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
+    <?= Phalcon_Tag::passwordField("password") ?>
+    <?= Phalcon_Tag::hiddenField(array("parent_id", "value"=> "5") ?>
+
+
+
+Making Select Boxes
+-------------------
+Generating select boxes (combo list) are easy, especially if you have the related data in PHP variables.The helpers destined to this task are Phalcon\Tag::select and Phalcon\Tag::selectStatic. The first one was specifically designed to work with  . Anothercould be used with PHP arrays. 
+
+.. code-block:: php
+
+    <?php
+
+    //Using data from a resultset
+    echo Phalcon_Tag::select(array(
+        "productsId",
+        Products::find("type = 'vegetables'"),
+        "using" => array("id", "name")
+    ));
+    
+    //Using data from an array
+    echo Phalcon_Tag::selectStatic(array(
+        "status",
+        array(
+           "A" => "Active",
+           "I" => "Inactive"
+        )
+    ))
+
+The following HTML will generated respectively:
+
+.. code-block:: php
+
+    <select id="productsId" name="productsId">
+      <option value="101">Tomato</option>
+      <option value="102">Lettuce</option>
+      <option value="103">Beans</option>
+    </select>
+    
+    <select id="status" name="status">
+      <option value="A">Active</option>
+      <option value="I">Inactive</option>
+    </select>
+
+
+
+Assigning HTML attributes
+-------------------------
+All the helpers receive an array as its first parameter. This can contain HTML specificattributes for the helper. Those attributes will be generated as HTML at the output. 
+
+.. code-block:: php
+
+    <?= Phalcon_Tag::textField(array(
+      "price",
+      "size" => 20,
+      "maxlength" => 30,
+      "placeholder" => "Enter a price"
+    )) ?>
+
+
+
+Setting Helper Values
+---------------------
+
+
+From Controllers
+^^^^^^^^^^^^^^^^
+Usually, We need to set specific values for form elements in the view. Youcan directly set those values from the controller using Phalcon\Tag::setDefaultValue(). It preloads a value for any future helpers present in the view. If any helper is present in the view that matches any preload value, it will be used to it, unless, a value is directly assigned on the helper. 
+
+.. code-block:: php
+
+    <?php
+
+    class ProductsController extends Phalcon_Controller
+    {
+    
+      function indexAction()
+      {
+        Phalcon_Tag::setDefaultValue("color", "Blue");
+      }
+    
+    }
+
+Then at the view, a selectStatic helper matches the same index used to pre-set the value. In this case "color":
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon_Tag::selectStatic(array(
+        "color",
+        array(
+           "Yellow" => "Yellow",
+           "Blue" => "Blue",
+           "Red" => "Red"
+        )
+    ))
+
+This will generate the following SELECT tag with the value "Blue" selected:
+
+.. code-block:: php
+
+    <select id="color" name="color">
+      <option value="Yellow">Yellow</option>
+      <option value="Blue" selected="selected">Blue</option>
+      <option value="Red">Red</option>
+    </select>
+
+
+
+From Request
+^^^^^^^^^^^^
+A special feature of helpers generated by Phalcon\Tag is that it helps to keep the valuesof form helpers between requests. Thus, you can easily show validation messages without losing entered data. 
+
+Specifing values directly
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Every form helper supports the parameter "value". With it you can specify a value for the helperdirectly. When this parameter is present, some preset value using setDefaultValue or via request will be ignored. 
+
+Changing dynamically the Document Title
+---------------------------------------
+Phalcon\Tag supplies helpers to change dynamically the document title from the controller.The following example will show you how doing that: 
+
+.. code-block:: php
+
+    <?php
+    
+    class PostsController extends Phalcon_Controller {
+    
+      function initialize()
+      {
+        Phalcon_Tag::setTitle(" Your Website");
+      }
+    
+      function indexAction()
+      {
+        Phalcon_Tag::prependTitle("Index of Posts - ");
+      }
+    
+    }
+
+
+
+.. code-block:: php
+
+    <html>
+      <head>
+        <title><?= Phalcon\Tag::getTitle() ?></title>
+      </head>
+      <body>
+    
+      </body>
+    </html>
+
+The following HTML will generated:
+
+.. code-block:: php
+
+    <html>
+      <head>
+        <title>Index of Posts - Your Website</title>
+      </head>
+      <body>
+    
+      </body>
+    </html>
+
+
+
+Static Content Helpers
+----------------------
+Phalcon_Tag also provide helpers to generate tags such as script, link or img. They help you toeasily generate a public location to your static resources at the document root or outside: Insert images:
+
+.. code-block:: php
+
+    <?php
+
+    //Generate <img src="/your-app/img/hello.gif">
+    echo Phalcon_Tag::image("img/hello.gif");
+    
+    //Generate <img alt="alternative text" src="/your-app/img/hello.gif">
+    echo Phalcon_Tag::image(array(
+    	"img/hello.gif",
+    	"alt" => "alternative text"
+    ));
+
+Include Stylesheet:
+
+.. code-block:: php
+
+    <?php
+
+    //Generate <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    echo Phalcon_Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+    
+    //Generate <link rel="stylesheet" href="/your-app/css/styles.css" type="text/css">
+    echo Phalcon_Tag::stylesheetLink("css/styles.css");
+
+Include Javascript:
+
+.. code-block:: php
+
+    <?php
+
+    //Generate <script src="http://localhost/javascript/jquery.min.js" type="text/javascript"></script>
+    echo Phalcon_Tag::javascriptInclude("http://localhost/javascript/jquery.min.js", false);
+    
+    //Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script>
+    echo Phalcon_Tag::javascriptInclude("javascript/jquery.min.js");
+
+
+
+Creating your own helpers
+-------------------------
+Maybe you want to create a new helper to fulfill any specific need. You could create a new classthat extends from Phalcon\Tag and implement the new helper: 
+
+.. code-block:: php
+
+    <?php
+    
+    class MyTags extends Phalcon_Tag
+    {
+    
+      /**
+       * Generates a widget to show a HTML5 audio tag
+       *
+       * @param array
+       * @return string
+       */
+      static function audioField($parameters)
+      {
+    
+         //Converting parameters to array if it is not
+         if (!is_array($parameters)) {
+            $parameters = array($parameters);
+         }
+    
+         //Determining attributes "id" and "name"
+         if (!isset($parameters[0])) {
+            $parameters[0] = $parameters["id"];
+         }
+    
+         $id = $parameters[0];
+         if (!isset($parameters["name"])) {
+            $parameters["name"] = $id;
+         } else {
+            if(!$parameters["name"]){
+                $parameters["name"] = $id;
+            }
+         }
+    
+         //Determining widget value,
+         //Phalcon_Tag::setDefault() allows to set the widget value
+         if (isset($parameters["value"])) {
+            $value = $parameters["value"];
+            unset($parameters["value"]);
+         } else {
+            $value = self::getValue($id);
+         }
+    
+         //Generate the tag code
+         $code = '<audio id="'.$id.'" value="'.$value.'" ';
+         foreach ($parameters as $key => $attributeValue) {
+            if (!is_integer($key)) {
+                $code.= $key.'="'.$attributeValue.'" ';
+            }
+         }
+         $code.=" />";
+    
+         return $code;
+       }
+    
+    }
+

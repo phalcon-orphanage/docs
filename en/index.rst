@@ -28,6 +28,12 @@ Table of Contents
    reference/controllers
    reference/models
    reference/views
+   reference/tags
+   reference/routing
+   reference/dispatching
+   reference/request
+   reference/filter
+   reference/config
 
 Indices and tables
 ------------------
