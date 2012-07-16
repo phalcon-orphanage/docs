@@ -1,8 +1,8 @@
-
-
 Working with Models
 ===================
-A model represents the information (data) of the application and the rules to manipulate that data.Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your applicationâs business logic will be concentrated in the models. is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. Phalcon_Model avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. Models are intended to work on a database high layer of abstraction.If you need to work with databases at a lower level check out the  component documentation.
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your applicationâs business logic will be concentrated in the models. is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
+
+Phalcon_Model avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. Models are intended to work on a database high layer of abstraction.If you need to work with databases at a lower level check out the  component documentation.
 
 Creating Models
 ---------------
@@ -38,9 +38,7 @@ Understanding Record To Objects
 -------------------------------
 Every instance of a model represents a row in the table. You can easily access record data by reading objects properties.For example, for a table "robots" with the next records: 
 
-.. code-block:: php
-
-    <?php
+.. code-block:: sql
 
     mysql> select * from robots;
     +----+------------+------------+------+
@@ -321,7 +319,7 @@ The above example gives you full control over the cache definition and customiza
 
 This will define the default cache options for all the caches in the application.Moreover, if you are using ini configuration files you need to add the following section to setup the cache settings: 
 
-.. code-block:: php
+.. code-block:: ini
 
     [models]
     cache.adapter = "Memcached"
@@ -434,9 +432,7 @@ In Phalcon, relationships must be defined in the "initialize" method of a model.
 
 The following schema shows 3 tables whose relations will serve us as an example to explain the relationships:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: sql
 
     CREATE TABLE `robots` (
       `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -753,7 +749,7 @@ Models allow you to implement events that will be thrown when performing an inse
 
 Implement a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methodswith the names of the events listed in the table above. We recommend that validation methods are declared protected to prevent that business logicimplementation are exposed publicly. The following example implements an event that validates the year to update orinsert cannot be smaller than 0: 
+When an insert, update or delete is executed, the model verifies if there are any methodswith the names of the events listed in the table above. We recommend that validation methods are declared protected to prevent that business logic implementation are exposed publicly. The following example implements an event that validates the year to update orinsert cannot be smaller than 0: 
 
 .. code-block:: php
 
@@ -891,7 +887,6 @@ The next events are available to define custom business rules that should to bee
 +-----------+--------------+---------------------+------------------------------------------+
 
 
-
 Transactions
 ------------
 When a process performs multiple operations on a database, sometimes is requiredthat each run in a complete and satisfactory way. Data integrity is lost when operations are interrupted and not completed successfully. Transactions in software just try to avoid these situations. Transactions in Phalcon basically let to separate the objects belonging to a transactionso that all operations carried out by them can maintain a consistent state and could be rolled back if required. 
@@ -1014,14 +1009,12 @@ If you want to have full control over the meta-data caching process.You could re
 
 If your application is using a ini configuration file togetherwith  , add the following sectionto it: 
 
-.. code-block:: php
+.. code-block:: ini
 
     [models]
     metadata.adapter = "Apc"
     metadata.suffix = "my-suffix"
     metadata.lifetime = 86400
-
-
 
 Logging Low-Level SQL Statements
 --------------------------------
@@ -1048,11 +1041,9 @@ When we use high-level abstraction components to access databases (like this ORM
 
 As above, the file *app/logs/debug.log* might contain the following:
 
-.. code-block:: php
+.. code-block:: irc
 
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
-
-
 
 Profiling SQL Statements
 ------------------------

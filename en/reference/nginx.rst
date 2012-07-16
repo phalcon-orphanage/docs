@@ -8,11 +8,8 @@ Configuring Nginx for Phalcon
 -----------------------------
 The following are possible configurations you can use to setup nginx with Phalcon.This first settings allow you to configure nginx as an dedicated instance for Phalcon: 
 
-.. code-block:: php
+.. code-block:: nginx
 
-    <?php
-
-    
     server {
          listen    80;
          server_name  localhost;
@@ -58,10 +55,7 @@ The following are possible configurations you can use to setup nginx with Phalco
 
 And this second configuration allow you to have different configurations by host:
 
-.. code-block:: php
-
-    <?php
-
+.. code-block:: nginx
     
     server {
        listen 80;
@@ -102,10 +96,6 @@ And this second configuration allow you to have different configurations by host
        }
     }
     
-    
-
-
-
 Preparing Phalcon to Nginx
 --------------------------
 If you're using the default router.Nginx puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 

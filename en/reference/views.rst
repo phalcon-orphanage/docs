@@ -1,8 +1,10 @@
-
-
 Using Views
 ===========
-Views represent the user interface of your application. Views are often HTML files with embeddedPHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. The is responsible for the managing of the standard way to generate thefinal presentation to the browser. A hierarchy of files is supported by the component allowing reducing the codingby creating common points for the application, controllers or by implementing templates. 
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. 
+
+The View component is responsible for the managing of the standard way to generate the final presentation to the browser. 
+
+A hierarchy of files is supported by the component allowing reducing the coding by creating common points for the application, controllers or by implementing templates. 
 
 Integrating Views with Controllers
 ----------------------------------
@@ -56,7 +58,7 @@ The setVar lets to create variables on the fly for each view executed in the cur
 
 You are not required to implement all of the files mentioned above. simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- app/views/posts/show.phtml -->
     
@@ -64,9 +66,7 @@ You are not required to implement all of the files mentioned above. simply will 
     
     <p>I have received the parameter <?= $postId ?></p>
 
-
-
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- app/views/layouts/posts.phtml -->
     
@@ -74,9 +74,7 @@ You are not required to implement all of the files mentioned above. simply will 
     
     <?= $this->getContent() ?>
 
-
-
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- app/views/index.phtml -->
     <html>
@@ -99,7 +97,7 @@ Note the lines where the method *$this->getContent()* was called out.It tells to
 
 The generated HTML by the request will be:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <!-- app/views/index.phtml -->
     <html>
@@ -123,13 +121,11 @@ The generated HTML by the request will be:
      </body>
     </html>
 
-
-
 Using Partials
 --------------
 Partial templates are another way of breaking the rendering processinto simpler chunks. With a partial, you can move the code for rendering a particular piece of a response to its own file. One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of aview so that you can grasp what's going on more easily. For example, you might have a view that looked like this: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <?php $this->partial("shared/ad_banner") ?>
     
@@ -168,7 +164,7 @@ You may need to pass values from the action to the view to be presented or visua
 
 Magically a variable with the name of the first parameter become available. You can use it as you want.
 
-.. code-block:: php
+.. code-block:: html+php
 
     <div class="post">
     <?php
@@ -179,8 +175,6 @@ Magically a variable with the name of the first parameter become available. You 
     
     ?>
     </div>
-
-
 
 Control Rendering Levels
 ------------------------
@@ -234,12 +228,11 @@ The available render levels are:
 +-----------------------+--------------------------------------------------------------------------+
 
 
-
 Using models at presentation
 ----------------------------
 Application models are always available at the presentation. Autoloader automatically will instantiate them at runtime:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <div class="categories">
     <?php
@@ -271,7 +264,6 @@ As mentioned above, when Phalcon_View is managed by the view rendered is the one
        }
     
     }
-
 
 
 Caching View Fragments
@@ -322,14 +314,12 @@ Sometimes when you develop dynamic websites and they arenât updated very of
 
 The example above a cache was implemented in the initialize method, this only appliesto the current controller. If you want to create a cache for all drivers it's better to set options in the configuration file of the application: 
 
-.. code-block:: php
+.. code-block:: ini
 
     [views]
     cache.adapter = "File"
     cache.cacheDir = "cacheDir"
     cache.lifetime = 86400
-
-
 
 Template Engines
 ----------------
@@ -372,8 +362,7 @@ Using Mustache
 `Mustache <http://mustache.github.com/>`_ is a logic-less template engine available for many platforms and languages.A PHP implementation is available  `here <https://github.com/bobthecow/mustache.php>`_ .You need to manually load the Mustache library before use its engine adapter. This could be doneby making a require instruction or registering an autoload function first. 
 
 .. code-block:: php
-
-    <?php
+:startinline: True
 
     require "path/to/Mustache.php";
 

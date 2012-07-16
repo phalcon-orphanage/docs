@@ -53,7 +53,7 @@ Pretty URLs
 ^^^^^^^^^^^
 We'll use pretty urls for this tutorial. Friendly URLs are better for search engine SEO. Phalcon supports rewrite engines provided by most popular web servers. Also you can write the application without a rewrite engine. In this example we'll use the rewrite engine for Apache. Let's create a couple of rewrite rules in the /.htaccess file: 
 
-.. code-block:: php
+.. code-block:: apacheconf
 
     #/.htaccess
     <IfModule mod_rewrite.c>
@@ -64,7 +64,7 @@ We'll use pretty urls for this tutorial. Friendly URLs are better for search eng
 
 All requests to the project directory will rewrite to the public/ directory making this as document root. It will also that internal project directories will be hidden from the public. Our second rules will check if the requested file exists doesn't be rewritten by the engine: 
 
-.. code-block:: php
+.. code-block:: apacheconf
 
     #/public/.htaccess
     <IfModule mod_rewrite.c>
@@ -361,7 +361,6 @@ Then instantiates Users class will give us the possibility to assign values to p
 
 .. figure:: ../_static/img/tutorial-4.png
 	:align: center
-
 
 Conclusion
 ----------

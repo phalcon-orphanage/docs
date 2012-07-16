@@ -1,6 +1,5 @@
 {%- block doctype -%}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 {%- endblock %}
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
@@ -110,7 +109,7 @@
       {%- endif %}{% endif %}
 {%- endmacro %}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     {% if sourcename == "error.txt" %}
     <base href="http://phalconphp.com/">
@@ -132,8 +131,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
     <link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css">
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
-    <link rel="stylesheet" href="/docs/en/_static/docs.css" type="text/css">
+    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">    
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -206,7 +204,7 @@
             <div class="menubar">
               <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
               <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
-              <div class="nav-main-features"><a href="http://phalconphp.com/documentation" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
               <div class="nav-main-features"><a href="https://groups.google.com/forum/#!forum/phalcon">SUPPORT</a></div>
               <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
               <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>

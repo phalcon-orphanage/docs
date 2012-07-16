@@ -14,8 +14,6 @@ This component makes use of backend adapters to encapsulate the details of each 
 | File    | Logs to a plain text file | Phalcon_Logger_Adapter_File | 
 +---------+---------------------------+-----------------------------+
 
-
-
 Creating a Log
 --------------
 The below example shows how to create a log and add messages to it:
@@ -37,8 +35,6 @@ Now, It simply produces the following log:
     [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
-
-
 
 Transactions
 ------------
