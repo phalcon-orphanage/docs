@@ -8,9 +8,29 @@ Database Adapters
 -----------------
 This component makes use of adapters to encapsulate specific database system details. The followingdatabase engines are supported: 
 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| Name       | Description                                                                                                                                                                                                                          | API                           | 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | Phalcon_Db_Adapter_Mysql      | 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | Phalcon_Db_Adapter_Postgresql | 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+
+
+
+
 Database Dialects
 -----------------
 For some database engines, PHP provides several ways to connect to it. From PDO to native drivers,Phalcon encapsulate the specific details of each database engine in dialects. Those provide common functions and SQL generator to adapters. 
+
++------------+-----------------------------------------------------+-------------------------------+-----------------+
+| Name       | Description                                         | API                           | Internal Driver | 
++------------+-----------------------------------------------------+-------------------------------+-----------------+
+| MySQL      | SQL specific dialect for MySQL database system      | Phalcon_Db_Dialect_Mysql      | mysqli          | 
++------------+-----------------------------------------------------+-------------------------------+-----------------+
+| PostgreSQL | SQL specific dialect for PostgreSQL database system | Phalcon_Db_Dialect_Postgresql | pgsql           | 
++------------+-----------------------------------------------------+-------------------------------+-----------------+
+
+
 
 Connecting to Databases
 -----------------------
@@ -116,6 +136,18 @@ Phalcon_Db provides several methods to query out rows from tables. Specific SQL 
     $robot = $connection->fetchOne($sql);
 
 By default it creates arrays with both associative and numeric indices. You can change thisbehavior by using Phalcon_Db_Result::setFetchMode(). This method receives a constant telling which kind of index is required. 
+
++----------------------+-----------------------------------------------------------+
+| Constant             | Description                                               | 
++----------------------+-----------------------------------------------------------+
+| Phalcon_Db::DB_NUM   | Return an array with numeric indices                      | 
++----------------------+-----------------------------------------------------------+
+| Phalcon_Db::DB_ASSOC | Return an array with associative indices                  | 
++----------------------+-----------------------------------------------------------+
+| Phalcon_Db::DB_BOTH  | Return an array with both associative and numeric indices | 
++----------------------+-----------------------------------------------------------+
+
+
 
 .. code-block:: php
 
@@ -331,6 +363,20 @@ Phalcon_Db also allows getting detailed information about tables and databases.
 
 A table description is very similar to the MySQL describe command, it contains the following info:
 
++-------+----------------------------------------------------+
+| Index | Description                                        | 
++-------+----------------------------------------------------+
+| Field | Field's name                                       | 
++-------+----------------------------------------------------+
+| Type  | Column Type                                        | 
++-------+----------------------------------------------------+
+| Key   | Is the column part of the primary key or an index? | 
++-------+----------------------------------------------------+
+| Null  | Do column allow null values?                       | 
++-------+----------------------------------------------------+
+
+
+
 Creating/Altering/Dropping Tables
 ---------------------------------
 SQL specifications and implementations include data manipulation instructionssuch as ALTER or DROP. Although, these implementations tend to change from one database system to another. Phalcon_Db provides an easy way to alter tables in a unified manner. 
@@ -368,7 +414,29 @@ Creating Tables
        )
     ));
 
-Phalcon_Db::createTable accepts an associative array describing the table.Columns are defined with the class  .It also provides general defining capabilities to alter and modify columns, not only create tables. The following options are available when describing columns: Phalcon_Db supports the following database column types:
+Phalcon_Db::createTable accepts an associative array describing the table.Columns are defined with the class  .It also provides general defining capabilities to alter and modify columns, not only create tables. The following options are available when describing columns: 
+
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| Option          | Description                                                                                                                                | Optional | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "type"          | Column type. Must be a Phalcon_Db_Column constant, below you will find a list of them.                                                     | No       | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "notNull"       | Column can store null values?                                                                                                              | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "first"         | Column must be placed at first position in the column order                                                                                | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "after"         | Column must be placed after indicated column                                                                                               | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+Phalcon_Db supports the following database column types:
 
 * Phalcon_Db_Column::TYPE_INTEGER
 * Phalcon_Db_Column::TYPE_DATE
@@ -379,6 +447,20 @@ Phalcon_Db::createTable accepts an associative array describing the table.Column
 * Phalcon_Db_Column::TYPE_TEXT
 
 Associative hash passed to Phalcon_Db::createTable can have the possible sections:
+
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| Index        | Description                                                                                                                                    | Optional | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "columns"    | An array with a set of table columns defined with Phalcon_Db_Column                                                                            | No       | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "indexes"    | An array with a set of table indexes defined with Phalcon_Db_Index.                                                                            | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "references" | An array with a set of table references (foreign keys) defined with Phalcon_Db_Reference.                                                      | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "options"    | An array with a set of table creation options. This options often is only related to the database system in which the migration was generated. | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+
 
 Altering Tables
 	The reason for altering a table can be: add, change or delete fields. Not all database systems

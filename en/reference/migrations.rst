@@ -97,9 +97,45 @@ Each file contains a unique class that extends from Phalcon_Model_Migration.Thes
 
 The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.0.0. Morph tablereceive an associative array with 4 possible sections: 
 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| Index        | Description                                                                                                                                    | Optional | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "columns"    | An array with a set of table columns                                                                                                           | No       | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "indexes"    | An array with a set of table indexes.                                                                                                          | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "references" | An array with a set of table references (foreign keys).                                                                                        | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "options"    | An array with a set of table creation options. This options often is only related to the database system in which the migration was generated. | Yes      | 
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+
+
 Defining Columns
 ^^^^^^^^^^^^^^^^
-Class is used to define table columns.It encapsulates the correct definition of a wide of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns: Database migrations supports the following database column types:
+Class is used to define table columns.It encapsulates the correct definition of a wide of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns: 
+
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| Option          | Description                                                                                                                                | Optional | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "type"          | Column type. Must be a Phalcon_Db_Column constant, below you will find a list of them.                                                     | No       | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "notNull"       | Column can store null values?                                                                                                              | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "first"         | Column must be placed at first position in the column order                                                                                | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "after"         | Column must be placed after indicated column                                                                                               | Yes      | 
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+
+Database migrations supports the following database column types:
 
 * Phalcon_Db_Column::TYPE_INTEGER
 * Phalcon_Db_Column::TYPE_DATE
@@ -118,6 +154,20 @@ Class allows defining table indexes.An index only requires that you define a nam
 Defining References
 ^^^^^^^^^^^^^^^^^^^
 Class allows us to define table references (also calledforeign keys). The following options can be used to define a reference: 
+
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+| Index               | Description                                                                                         | Optional | 
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | No       | 
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+| "columns"           | An array with the name of the columns at the table that have the reference                          | No       | 
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+| "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       | 
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+| "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      | 
++---------------------+-----------------------------------------------------------------------------------------------------+----------+
+
+
 
 Writing Migrations
 ------------------

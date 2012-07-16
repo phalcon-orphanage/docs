@@ -218,7 +218,27 @@ Scaffolding is a quick way to generate some of the major pieces of an applicatio
 .. figure:: ../_static/img/tools-9.png
    :align: center
 
-The scaffold generator will build several files in your application, along with some folders.Hereâs a quick overview of what it creates: When browsing the recently generated controller, you first will find a search form and a link to create a new Product:
+The scaffold generator will build several files in your application, along with some folders.Hereâs a quick overview of what it creates: 
+
++----------------------------------------+--------------------------------+
+| File                                   | Purpose                        | 
++----------------------------------------+--------------------------------+
+| app/controllers/ProductsController.php | The Products controller        | 
++----------------------------------------+--------------------------------+
+| app/models/Products.php                | The Products model             | 
++----------------------------------------+--------------------------------+
+| app/views/layout/products.phtml        | Controller layout for Products | 
++----------------------------------------+--------------------------------+
+| app/views/products/new.phtml           | View for the action "new"      | 
++----------------------------------------+--------------------------------+
+| app/views/products/edit.phtml          | View for the action "edit"     | 
++----------------------------------------+--------------------------------+
+| app/views/products/search.phtml        | View for the action "search"   | 
++----------------------------------------+--------------------------------+
+| app/views/products/edit.phtml          | View for the action "edit"     | 
++----------------------------------------+--------------------------------+
+
+When browsing the recently generated controller, you first will find a search form and a link to create a new Product:
 
 .. figure:: ../_static/img/tools-10.png
    :align: center

@@ -35,16 +35,16 @@ The main point of all the work occurs in the method dispatchLoop:
 
 Internally and based on the config set, Phalcon_Controller_Front performs the following steps to complete a request:
 
-* Checks if a request instance has been previously set, otherwise, instantiate a Phalcon_Request object
-* Checks if a response instance has been previously set, otherwise, instantiate a Phalcon_Response object
-* Checks if a dispatcher instance has been set, otherwise, instantiate a Phalcon_Dispatcher object. This object receives the controllersDir option set by config.
-* Checks if a router instance has been set, otherwise, instantiate a Phalcon_Router_Rewrite object. By default the router will handle the URI placed at $_GET['_url']
-* Starts the view component. This enable output buffering by calling internally the function ob_start
-* The processed controller/action/parameters by the router is passed to the dispatcher.
-* The dispatcher locate the selected controller in the controllers directory, instantiating it, executing the action passing the routing parameters to it
-* The view takes the last controller/action executed and renders the related views
-* The view is stoped returning all the content buffered
-* This content is passed to the response object
+- Checks if a request instance has been previously set, otherwise, instantiate a Phalcon_Request object
+- Checks if a response instance has been previously set, otherwise, instantiate a Phalcon_Response object
+- Checks if a dispatcher instance has been set, otherwise, instantiate a Phalcon_Dispatcher object. This object receives the controllersDir option set by config.
+- Checks if a router instance has been set, otherwise, instantiate a Phalcon_Router_Rewrite object. By default the router will handle the URI placed at $_GET['_url']
+- Starts the view component. This enable output buffering by calling internally the function ob_start
+- The processed controller/action/parameters by the router is passed to the dispatcher.
+- The dispatcher locate the selected controller in the controllers directory, instantiating it, executing the action passing the routing parameters to it
+- The view takes the last controller/action executed and renders the related views
+- The view is stoped returning all the content buffered
+- This content is passed to the response object
 
 Let's say if Phalcon_Controller_Front had never existed or just want more control over the process.The following PHP code is necessary to do the same stuff: 
 

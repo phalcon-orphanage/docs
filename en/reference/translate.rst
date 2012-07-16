@@ -8,6 +8,14 @@ Adapters
 --------
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
++---------+-----------------------------------------------------------------------------+
+| Adapter | Description                                                                 | 
++---------+-----------------------------------------------------------------------------+
+| Array   | Uses PHP arrays to store the messages. In terms of performance is the best. | 
++---------+-----------------------------------------------------------------------------+
+
+
+
 Component Usage
 ---------------
 Translation files are stored in files, the structure of these files could change depending of the adapter used.Phalcon gives you the freedom to organize your translation messages. A very simpler structure could be the following: 

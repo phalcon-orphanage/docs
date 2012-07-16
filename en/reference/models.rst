@@ -141,6 +141,30 @@ Both "find" and "findFirst" can accept an associative array specifying the find 
 
 The available query options are:
 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                  | Example                                                      | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                         | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| bind        | Bind is used together with options by replacing placeholders, espacing values increasing the security                                                                                        | "bind" => array("status" => "A", "type" => "some-time")      | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| order       | Is used to sort the result-set. Use one or more fields separated by commas.                                                                                                                  | "order" => "name DESC, status"                               | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| limit       | Limit the results of the query to results between a certain number range                                                                                                                     | "limit" => 10                                                | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| columns     | Specific columns we need to query. Use this ONLY on read-only resultsets.                                                                                                                    | "columns" => "id, name"                                      | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                  | "group" => "name, status"                                    | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| for_update  | With this option, Phalcon_Model reads the latest available data, setting exclusive locks on each row it reads                                                                                | "for_update" => true                                         | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| shared_lock | With this option, Phalcon_Model reads the latest available data, setting shared locks on each row it reads                                                                                   | "shared_lock" => true                                        | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+| cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key") | 
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
+
+
+
 Model Resultsets
 ^^^^^^^^^^^^^^^^
 While "findFirst" returns directly and instance of the called class in case of match some records, "find"method returns a  . This is a special objectthat encapsulates all the resultset functionality like traversing, seek to a specific record, counting, etc. These objects are more powerful than standard arrays. One of its greatest features is that it only have once record in memory at the same time. This greatly helps reduce the amount of memory used by the application when working with large amounts of data. 
@@ -396,7 +420,19 @@ The bidirectional relations build relationships in which each has a complementar
 
 Defining relationships
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the "initialize" method of a model. There are 3 methods todefine relationships, all of them requires 3 parameters, local fields, referenced model, referenced fields, these methods are: The following schema shows 3 tables whose relations will serve us as an example to explain the relationships:
+In Phalcon, relationships must be defined in the "initialize" method of a model. There are 3 methods todefine relationships, all of them requires 3 parameters, local fields, referenced model, referenced fields, these methods are: 
+
++-----------+----------------------------+
+| Method    | Description                | 
++-----------+----------------------------+
+| hasMany   | Defines a 1-n relationship | 
++-----------+----------------------------+
+| hasOne    | Defines a 1-1 relationship | 
++-----------+----------------------------+
+| belongsTo | Defines a n-1 relationship | 
++-----------+----------------------------+
+
+The following schema shows 3 tables whose relations will serve us as an example to explain the relationships:
 
 .. code-block:: php
 
@@ -667,9 +703,53 @@ Phalcon_Model has a message subsystem that allows a flexible way to output or st
 
 The following types of validation messages can be generated by Phalcon_Model:
 
++---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| Type                | Description                                                                                                                        | 
++---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| PresenceOf          | Generated when a field with a not-null attribute on the database is trying to insert/update a null value                           | 
++---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| ConstraintViolation | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model | 
++---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| InvalidValue        | Generated when a validator failed due to an invalid value                                                                          | 
++---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
 Validation Events
 ^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert or update. They help todefine business rules for a certain model. The following are the events supported by Phalcon_Model and their order of execution:
+
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls or foreign keys                                           | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an insertion operation is being made | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made  | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                      | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an insertion operation is being made  | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an updating operation is being made   | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls or foreign keys                                            | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                         | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made           | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made          | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made            | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made           | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          | 
++--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
+
+
 
 Implement a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -722,7 +802,25 @@ Phalcon_Model provides several events to validate data and implement business ru
     
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type"in a domain list. If the value is not included in the method then will fail returning false. The following built-in validators are available:In addition to the built-in validatiors, you can define your own validations using model events:
+The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type"in a domain list. If the value is not included in the method then will fail returning false. The following built-in validators are available:
+
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| Name         | Explanation                                                                                                                             | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| Email        | Validates that field contains a valid email format                                                                                      | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| ExclusionIn  | Validates that a value is not within a list of possible values                                                                          | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| InclusionIn  | Validates that a value is within a list of possible values                                                                              | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| Numericality | Validates that a field has a numeric format                                                                                             | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| Regex        | Validates that the value of a field matches a regular expression                                                                        | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+| Uniqueness   | Validates that a field or a combination of a set of fields  are not present more than once in the existing records of the related table | Example | 
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+In addition to the built-in validatiors, you can define your own validations using model events:
 
 .. code-block:: php
 
@@ -783,6 +881,16 @@ Also you can delete many records traversing a resultset by using a foreach:
     }
 
 The next events are available to define custom business rules that should to beexecuted when a delete operation is being made. 
+
++-----------+--------------+---------------------+------------------------------------------+
+| Operation | Name         | Can stop operation? | Explanation                              | 
++-----------+--------------+---------------------+------------------------------------------+
+| Deleting  | beforeDelete | YES                 | Runs before the delete operation is made | 
++-----------+--------------+---------------------+------------------------------------------+
+| Deleting  | afterDelete  | NO                  | Runs after the delete operation was made | 
++-----------+--------------+---------------------+------------------------------------------+
+
+
 
 Transactions
 ------------
@@ -877,7 +985,19 @@ To speed up development Phalcon_Model helps you to query fields and constraints 
 
 Caching Meta-Data
 ^^^^^^^^^^^^^^^^^
-Once the application is in a production stage, it is not necessary to query the metadata ofthe table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters: If you want to have full control over the meta-data caching process.You could replace the active meta-data manager as follows: 
+Once the application is in a production stage, it is not necessary to query the metadata ofthe table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters: 
+
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Adapter | Description                                                                                                                                                                                                                                                                                                                                                      | API                            | 
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Memory  | This adapter is used by default in Phalcon. The meta-data is cached only during the request. When it finishes, the meta-data are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the metadata in each request updating new fields added or modifications to existing ones. | Phalcon_Model_MetaData_Memory  | 
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a few number of models. The meta-data are refreshed everytime a new session starts. This also requires to start the session with session_start before use any of models.                                                     | Phalcon_Model_MetaData_Session | 
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Apc     | The Apc adapter uses the  Alternative PHP Cache (APC) to store the table meta-data. You can specify the lifetime of the data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                      | Phalcon_Model_MetaData_Apc     | 
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+
+If you want to have full control over the meta-data caching process.You could replace the active meta-data manager as follows: 
 
 .. code-block:: php
 

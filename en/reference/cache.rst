@@ -154,17 +154,61 @@ Frontend Adapters
 -----------------
 This component makes use of frontend adapters to encapsulate the different input sources to cache.
 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter | Description                                                                                                                                         | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Output  | Read input data from standard PHP output                                                                                                            | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). This adapter always serializes the data before store it into the backend. | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| None    | It's used to cache any kind of PHP data without serializing them.                                                                                   | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
 Backend Adapters
 ----------------
 Also, this component makes use of backend adapters to encapsulate storage details related to the cache.
+
++-----------+------------------------------------------------+-----------+---------------------+
+| Adapter   | Description                                    | Info      | Required Extensions | 
++-----------+------------------------------------------------+-----------+---------------------+
+| File      | Stores data to local plain files               |           |                     | 
++-----------+------------------------------------------------+-----------+---------------------+
+| Memcached | Stores data to a memcached server              | Memcached | memcache            | 
++-----------+------------------------------------------------+-----------+---------------------+
+| APC       | Stores data to the Alternative PHP Cache (APC) | APC       | APC                 | 
++-----------+------------------------------------------------+-----------+---------------------+
+
+
 
 File Backend
 ^^^^^^^^^^^^
 This backend will store cached content into files in the local server. The available options for thisbackend are: 
 
++----------+-----------------------------------------------------------+
+| Option   | Description                                               | 
++----------+-----------------------------------------------------------+
+| cacheDir | A writable directory on which cached files will be placed | 
++----------+-----------------------------------------------------------+
+
+
+
 Memcached Backend
 ^^^^^^^^^^^^^^^^^
 This backend will store cached content on a memcached server. The available options for thisbackend are: 
+
++------------+---------------------------------------------+
+| Option     | Description                                 | 
++------------+---------------------------------------------+
+| host       | memcached host                              | 
++------------+---------------------------------------------+
+| port       | memcached port                              | 
++------------+---------------------------------------------+
+| persistent | create a persitent connection to memcached? | 
++------------+---------------------------------------------+
+
+
 
 APC Backend
 ^^^^^^^^^^^

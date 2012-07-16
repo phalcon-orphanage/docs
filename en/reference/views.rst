@@ -6,7 +6,21 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Integrating Views with Controllers
 ----------------------------------
-Phalcon automatically pulls down the execution flow to the view component when the controller has ended its work.View component will look in the views directory for another directory named as the last controller executed. For instance, a request is made to the next URL *http://127.0.0.1/blog/posts/show/301* , by default Phalconwill split the URL as is follows: The dispatcher will look for a "PostsController" and its action "showAction". A simple controller file for this example:
+Phalcon automatically pulls down the execution flow to the view component when the controller has ended its work.View component will look in the views directory for another directory named as the last controller executed. For instance, a request is made to the next URL *http://127.0.0.1/blog/posts/show/301* , by default Phalconwill split the URL as is follows: 
+
++-------------------+-----------+
+| Server Address    | 127.0.0.1 | 
++-------------------+-----------+
+| Phalcon Directory | blog      | 
++-------------------+-----------+
+| Controller        | posts     | 
++-------------------+-----------+
+| Action            | show      | 
++-------------------+-----------+
+| Parameter         | 301       | 
++-------------------+-----------+
+
+The dispatcher will look for a "PostsController" and its action "showAction". A simple controller file for this example:
 
 .. code-block:: php
 
@@ -28,7 +42,19 @@ Phalcon automatically pulls down the execution flow to the view component when t
     
     }
 
-The setVar lets to create variables on the fly for each view executed in the current request. The above exampleshows how to pass the $postId parameter to the views with the same name. By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension.If the views directory is  *app/views* then view component will find automatically for these 3 view files.You are not required to implement all of the files mentioned above. simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
+The setVar lets to create variables on the fly for each view executed in the current request. The above exampleshows how to pass the $postId parameter to the views with the same name. By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension.If the views directory is  *app/views* then view component will find automatically for these 3 view files.
+
++-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Name              | File                          | Description                                                                                                                                                                                                           | 
++-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                    | 
++-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will reused for all the actions in this controller. | 
++-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                  | 
++-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+You are not required to implement all of the files mentioned above. simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
 
 .. code-block:: php
 
@@ -39,6 +65,7 @@ The setVar lets to create variables on the fly for each view executed in the cur
     <p>I have received the parameter <?= $postId ?></p>
 
 
+
 .. code-block:: php
 
     <!-- app/views/layouts/posts.phtml -->
@@ -46,6 +73,8 @@ The setVar lets to create variables on the fly for each view executed in the cur
     <h2>This is the "posts" controller layout!</h2>
     
     <?= $this->getContent() ?>
+
+
 
 .. code-block:: php
 
@@ -187,6 +216,24 @@ As seen above, there is a view hierarchy. It may also be needed to control the l
     }
 
 The available render levels are:
+
++-----------------------+--------------------------------------------------------------------------+
+| Class Constant        | Description                                                              | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. | 
++-----------------------+--------------------------------------------------------------------------+
+| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 
++-----------------------+--------------------------------------------------------------------------+
+
+
 
 Using models at presentation
 ----------------------------
@@ -571,6 +618,7 @@ When registering the engine, a instance of your template adapter must be passed 
     }
 
 
+
 View Environment
 ----------------
 Every view executed is included inside a instance so you can have access to its environmentallowing getting useful information you can apply in your own developments. The following example shows how to write a Jquery `ajax request <http://api.jquery.com/jQuery.ajax/>`_ using an url with the framework conventions. The method url is called from a $this instance that makesreference to a Phalcon_View object: 
@@ -584,6 +632,7 @@ Every view executed is included inside a instance so you can have access to its 
     }).done(function() {
       alert("Done!");
     });
+
 
 
 Stand-Alone Component

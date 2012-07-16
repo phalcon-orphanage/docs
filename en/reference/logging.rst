@@ -8,6 +8,14 @@ Adapters
 --------
 This component makes use of backend adapters to encapsulate the details of each of them:
 
++---------+---------------------------+-----------------------------+
+| Adapter | Description               | API                         | 
++---------+---------------------------+-----------------------------+
+| File    | Logs to a plain text file | Phalcon_Logger_Adapter_File | 
++---------+---------------------------+-----------------------------+
+
+
+
 Creating a Log
 --------------
 The below example shows how to create a log and add messages to it:
@@ -59,7 +67,19 @@ Because writing to the filesystem could be expensive in terms of performance,you
 
 Message Formatting
 ------------------
-By default the logger uses the following format: [%date%][%type%] %message%.Phalcon_Logger allows you to define your own message format by using the method setFormat(). Formats can contain variables that are replaced by their respective values according to the following table:This example shows how to define another format:
+By default the logger uses the following format: [%date%][%type%] %message%.Phalcon_Logger allows you to define your own message format by using the method setFormat(). Formats can contain variables that are replaced by their respective values according to the following table:
+
++-----------+------------------------------------------+
+| Variable  | Description                              | 
++-----------+------------------------------------------+
+| %message% | The message itself expected to be logged | 
++-----------+------------------------------------------+
+| %date%    | Date the message was added               | 
++-----------+------------------------------------------+
+| %type%    | Uppercase string with message type       | 
++-----------+------------------------------------------+
+
+This example shows how to define another format:
 
 .. code-block:: php
 
