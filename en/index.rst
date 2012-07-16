@@ -34,6 +34,18 @@ Table of Contents
    reference/request
    reference/filter
    reference/config
+   reference/pagination
+   reference/cache
+   reference/acl
+   reference/intl
+   reference/translate
+   reference/db
+   reference/logging
+   reference/loader
+   reference/migrations   
+   reference/debug      
+   reference/tools 
+   reference/settings  
 
 Indices and tables
 ------------------

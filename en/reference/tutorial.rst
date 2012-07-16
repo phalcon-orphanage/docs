@@ -194,7 +194,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
 The empty index action gives the clean pass to a view with the form definition: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <h2>Sign using this form</h2>
 
