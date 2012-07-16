@@ -8,6 +8,16 @@ File Adapters
 -------------
 This component makes use of adapters to encapsulate the reading details of each format:
 
++-----------+---------------------------------------------------------------------------------------------------+
+| File Type | Description                                                                                       | 
++===========+===================================================================================================+
+| Ini       | Uses INI files to store settings. Internally it uses the PHP function parse_ini_file.             | 
++-----------+---------------------------------------------------------------------------------------------------+
+| Array     | Uses PHP multidimensional arrays to store the configuration. In terms of performance is the best. | 
++-----------+---------------------------------------------------------------------------------------------------+
+
+
+
 Native Arrays
 -------------
 The next example shows how to convert native arrays into Phalcon_Config objects. Because no files are readthe performance is better. 
@@ -84,5 +94,5 @@ Related Guides
 --------------
 
 
-* 
+* Settings supported by the Framework
 

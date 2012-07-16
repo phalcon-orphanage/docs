@@ -8,6 +8,16 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate the different sources of data for the paginator
 
++---------+----------------------------------------------+
+| Adapter | Description                                  | 
++=========+==============================================+
+| Array   | Use a PHP array as source data               | 
++---------+----------------------------------------------+
+| Model   | Use a Phalcon_Model_Resultset as source data | 
++---------+----------------------------------------------+
+
+
+
 Using Paginators
 ----------------
 The method Phalcon_Paginator::factory allows us to create an instance of a paginator adapter.That method receives two parameters. The first is the name of the adapter and second is a group of options to pass to it. In the below example, the paginator will use as its source data the result of a query from a model: 
@@ -67,3 +77,16 @@ Also, the page $object contain the navigation data:
 Page Attributes
 ---------------
 The page object has the following attributes:
+
++---------+--------------------------------------------------------+
+| Adapter | Description                                            | 
++=========+========================================================+
+| items   | The set of records to be displayed at the current page | 
++---------+--------------------------------------------------------+
+| before  | The previous page to the current one                   | 
++---------+--------------------------------------------------------+
+| next    | The next page to the current one                       | 
++---------+--------------------------------------------------------+
+| next    | The last page in the set of records                    | 
++---------+--------------------------------------------------------+
+

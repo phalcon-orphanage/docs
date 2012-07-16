@@ -79,7 +79,7 @@ The method add() receives a pattern that optionally could have predefined placeh
 
 +--------------+--------------------+------------------------------------------------------------------+
 | Placeholder  | Regular Expression | Usage                                                            | 
-+--------------+--------------------+------------------------------------------------------------------+
++==============+====================+==================================================================+
 | /:controller | /([a-zA-Z0-9\_]+)  | Match a valid controller name with alpha-numeric characters only | 
 +--------------+--------------------+------------------------------------------------------------------+
 | /:action     | /([a-zA-Z0-9\_]+)  | Match a valid action name with alpha-numeric characters only     | 

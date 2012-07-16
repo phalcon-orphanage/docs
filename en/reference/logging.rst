@@ -10,7 +10,7 @@ This component makes use of backend adapters to encapsulate the details of each 
 
 +---------+---------------------------+-----------------------------+
 | Adapter | Description               | API                         | 
-+---------+---------------------------+-----------------------------+
++=========+===========================+=============================+
 | File    | Logs to a plain text file | Phalcon_Logger_Adapter_File | 
 +---------+---------------------------+-----------------------------+
 
@@ -71,7 +71,7 @@ By default the logger uses the following format: [%date%][%type%] %message%.Phal
 
 +-----------+------------------------------------------+
 | Variable  | Description                              | 
-+-----------+------------------------------------------+
++===========+==========================================+
 | %message% | The message itself expected to be logged | 
 +-----------+------------------------------------------+
 | %date%    | Date the message was added               | 

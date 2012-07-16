@@ -222,7 +222,7 @@ The scaffold generator will build several files in your application, along with 
 
 +----------------------------------------+--------------------------------+
 | File                                   | Purpose                        | 
-+----------------------------------------+--------------------------------+
++========================================+================================+
 | app/controllers/ProductsController.php | The Products controller        | 
 +----------------------------------------+--------------------------------+
 | app/models/Products.php                | The Products model             | 

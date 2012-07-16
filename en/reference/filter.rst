@@ -7,6 +7,7 @@ Sanitizing user input is a critical part of secure software development,Neglecti
 .. figure:: ../_static/img/sql.png
    :align: center
 
+
 Full image (from xkcd)
 
 The component provides a set of commonly needed data filters and sanitizes helpers.It provides object-oriented wrappers for the mature PHP filter extension. 
