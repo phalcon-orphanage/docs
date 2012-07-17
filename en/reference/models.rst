@@ -1,8 +1,8 @@
 Working with Models
 ===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your applicationâs business logic will be concentrated in the models. is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. 
 
-Phalcon_Model_ avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. 
+Phalcon_Model_ is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.Phalcon_Model avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. 
 
 .. _Phalcon_Model: ../api/Phalcon_Model.html
 
@@ -12,10 +12,9 @@ Phalcon_Model_ avoids the need of having to use SQL statements because it transl
 
 .. _Phalcon_Db: ../api/Phalcon_Db.html
 
-
 Creating Models
 ---------------
-A model is a class that extends from Phalcon_Model_Base_. It must be placed in the models directory.A model file must contain a single class; its class name should be in camel case notation: 
+A model is a class that extends from Phalcon_Model_Base_. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation: 
 
 .. _Phalcon_Model_Base: ../api/Phalcon_Model_Base.html
 
@@ -28,7 +27,9 @@ A model is a class that extends from Phalcon_Model_Base_. It must be placed in t
     
     }
 
-The above example showed us how to implement model "Robots".There isnât much to this file â but note that the class Robots inherits from Phalcon_Model_Base -. Phalcon_Model supplies a great deal of functionality to your models for free, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models to one another. By default model "Robots" will refer to table "robots". If you want to manually specify another namefor the mapping table, you can use the setSource method: 
+The above example showed us how to implement model "Robots".There isn't much to this file - but note that the class Robots inherits from Phalcon_Model_Base -. Phalcon_Model supplies a great deal of functionality to your models for free, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models to one another. 
+
+By default model "Robots" will refer to table "robots". If you want to manually specify another name for the mapping table, you can use the setSource method: 
 
 .. code-block:: php
 
@@ -43,7 +44,7 @@ The above example showed us how to implement model "Robots".There isnât muc
     
     }
 
-The model Robots now maps to "the_birds" table. The "initialize" method helps us to set up the model with custom behavior.This method is only called once during the request. 
+The model Robots now maps to "the_birds" table. The "initialize" method helps us to set up the model with custom behavior. This method is only called once during the request. 
 
 Understanding Record To Objects
 -------------------------------
@@ -87,7 +88,7 @@ As you can see, there is not need of use SQL statements or similar. Phalcon_Mode
 
 Finding Records
 ---------------
-Phalcon_Model provide you several methods for doing the querying of records. The next examples will show youhow to query one or more records from a model: 
+Phalcon_Model provide you several methods for doing the querying of records. The next examples will show you how to query one or more records from a model: 
 
 .. code-block:: php
 
@@ -131,7 +132,7 @@ You could also use the findFirst method to get only the first record matching th
     $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both "find" and "findFirst" can accept an associative array specifying the find options.The following example shows how it works: 
+Both "find" and "findFirst" can accept an associative array specifying the find options. The following example shows how it works: 
 
 .. code-block:: php
 
@@ -171,8 +172,6 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key") | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-
-
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
@@ -224,7 +223,7 @@ While "findFirst" returns directly and instance of the called class in case of m
     //Get the last record
     $robot = robots->getLast();
 
-Note that resultsets can be serialized to store it to a cache or some backend you want. But also note thatthis forces to Phalcon_Model to unroll each row in the resultset into a big array consuming more memory, at least for one moment. 
+Note that resultsets can be serialized to store it to a cache or some backend you want. But also note that this forces to Phalcon_Model to unroll each row in the resultset into a big array consuming more memory, at least for one moment. 
 
 .. code-block:: php
 
@@ -248,7 +247,7 @@ Note that resultsets can be serialized to store it to a cache or some backend yo
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
-Binding parameters is also supported in Phalcon_Model. The binding process impact the performance minimallybut reduce the possibility to be attacked using SQL injection techniques. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
+Binding parameters is also supported in Phalcon_Model. The binding process impact the performance minimally but reduce the possibility to be attacked using SQL injection techniques. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
 
 .. code-block:: php
 
@@ -277,7 +276,7 @@ Binding parameters is available for all the query methods (like find and findFir
 
 Caching Resultsets
 ^^^^^^^^^^^^^^^^^^
-Access to database systems is often one of the most common bottlenecks that reducesthe performance of web applications. This is because of the complex connection procedures, among other things, that PHP must do in each request to obtain data from a database system. A well known technique to avoid the continuos access to databases is cache the resultsets obtained from the database in an intermediate and less crowded medium. 
+Access to database systems is often one of the most common bottlenecks that reduces the performance of web applications. This is because of the complex connection procedures, among other things, that PHP must do in each request to obtain data from a database system. A well known technique to avoid the continuos access to databases is cache the resultsets obtained from the database in an intermediate and less crowded medium. 
 
 Phalcon_Model_ is integrated with the Phalcon_Cache_ component to provide a fancy syntax caching resultsets. The first step to cache a resulset is define a default cache backend in the model manager: 
 
@@ -304,7 +303,7 @@ Phalcon_Model_ is integrated with the Phalcon_Cache_ component to provide a fanc
     //Set the cache to the models manager
     Phalcon_Model_Manager::getDefault()->setCache($cache);
 
-The above example gives you full control over the cache definition and customization.But it could be very verbose for most cases. If you are using models with Phalcon_Controller_Front_ you could setup the cache configuration as part of the bootstrap configuration:
+The above example gives you full control over the cache definition and customization. But it could be very verbose for most cases. If you are using models with Phalcon_Controller_Front_ you could setup the cache configuration as part of the bootstrap configuration:
 
 .. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
 
@@ -340,7 +339,7 @@ The above example gives you full control over the cache definition and customiza
     //Set the configuration
     $front->setConfig($config);
 
-This will define the default cache options for all the caches in the application.Moreover, if you are using ini configuration files you need to add the following section to setup the cache settings: 
+This will define the default cache options for all the caches in the application. Moreover, if you are using ini configuration files you need to add the following section to setup the cache settings: 
 
 .. code-block:: ini
 
@@ -379,7 +378,7 @@ Once the cache setup is properly defined you could cache resultsets as follows:
     //Using a custom cache
     $products = Products::find(array("cache" => $myCache));
 
-By default, Phalcon_Model will create a unique key to store the resultsetusing a md5 hash of the SQL select statement generated internally. This is very practical because it generate a new key in case of some of the condition's parameters have been changed. If you want to control your own cache keys you could use the "key" parameter as seen above. For automatic generation of MD5 keys, could be useful to retrieve the generated key,you may use it to remove the cached data from the cache bucket: 
+By default, Phalcon_Model will create a unique key to store the resultsetusing a md5 hash of the SQL select statement generated internally. This is very practical because it generate a new key in case of some of the condition's parameters have been changed. If you want to control your own cache keys you could use the "key" parameter as seen above. For automatic generation of MD5 keys, could be useful to retrieve the generated key, you may use it to remove the cached data from the cache bucket: 
 
 .. code-block:: php
 
@@ -396,7 +395,7 @@ By default, Phalcon_Model will create a unique key to store the resultsetusing a
       //...
     }
 
-Automatic keys generated by Phalcon_Model are always prefixed with "phc".This helps you to easily query the cache's items related to Phalcon_Model: 
+Automatic keys generated by Phalcon_Model are always prefixed with "phc". This helps you to easily query the cache's items related to Phalcon_Model: 
 
 .. code-block:: php
 
@@ -410,7 +409,7 @@ Automatic keys generated by Phalcon_Model are always prefixed with "phc".This he
          echo $key, "\n";
     }
 
-Note that not all resultsets must be cached. Results that change very frequentlyshould not be cached because of the records presented do not represent the reality. By the same way, those with a lot of records should not be cached as this may be counterproductive in terms of performance. Caching could be also applied to resultsets generated using relationships:
+Note that not all resultsets must be cached. Results that change very frequently should not be cached because of the records presented do not represent the reality. By the same way, those with a lot of records should not be cached as this may be counterproductive in terms of performance. Caching could be also applied to resultsets generated using relationships:
 
 .. code-block:: php
 
@@ -425,15 +424,15 @@ Note that not all resultsets must be cached. Results that change very frequently
     //Get comments related to a post, setting lifetime
     $comments = $post->getComments(array("cache" => true, "lifetime" => 3600));
 
-On the other hand, when you have knowledge that a resultset has been changedyou might require force a cache refresh. This could be done by deleting it using the generated key. 
+On the other hand, when you have knowledge that a resultset has been changed you might require force a cache refresh. This could be done by deleting it using the generated key. 
 
 Relationships between Models
 ----------------------------
-There are four types of multiple relationships: one-on-one, one-to-many, many-to-one and many-to-many.The relationship may be unidirectional or bidirectional, and each can be simple or by a combination of models. Normally the model manager manages foreign key constraints for these relationships, the definition of these helps the reliable data integrity and the easy finding of related records to a model. Through the implementation of relations is possible to access records relating to each record in a uniform way. 
+There are four types of multiple relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple or by a combination of models. Normally the model manager manages foreign key constraints for these relationships, the definition of these helps the reliable data integrity and the easy finding of related records to a model. Through the implementation of relations is possible to access records relating to each record in a uniform way. 
 
 Unidirectional relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Unidirectional relations are those that are generated in relation to one another but not vice versa.Using the methods belongsTo, hasOne or hasMany states that one or more fields refer to equivalents in another model. 
+Unidirectional relations are those that are generated in relation to one another but not vice versa. Using the methods belongsTo, hasOne or hasMany states that one or more fields refer to equivalents in another model. 
 
 Bidirectional relations
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -441,7 +440,7 @@ The bidirectional relations build relationships in which each has a complementar
 
 Defining relationships
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the "initialize" method of a model. There are 3 methods todefine relationships, all of them requires 3 parameters, local fields, referenced model, referenced fields, these methods are: 
+In Phalcon, relationships must be defined in the "initialize" method of a model. There are 3 methods to define relationships, all of them requires 3 parameters, local fields, referenced model, referenced fields, these methods are: 
 
 +-----------+----------------------------+
 | Method    | Description                | 
@@ -481,7 +480,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
       PRIMARY KEY (`id`)
     );
 
-The model "Robots" has many "RobotsParts". Similar case for model "Parts" that has many "RobotsParts".On the other hand "RobotsParts" belongs to "Robots" and "Parts" models as a one-to-many relation. The models with their relations could be implemented as follows:
+The model "Robots" has many "RobotsParts". Similar case for model "Parts" that has many "RobotsParts". On the other hand "RobotsParts" belongs to "Robots" and "Parts" models as a one-to-many relation. The models with their relations could be implemented as follows:
 
 .. code-block:: php
 
@@ -528,7 +527,7 @@ The model "Robots" has many "RobotsParts". Similar case for model "Parts" that h
     
     }
 
-The first parameter indicates the field of the local model that is making the association;the second indicates the name of the referenced model and the third field name in the referenced field. You could also use arrays to define multiple fields in the relationship. 
+The first parameter indicates the field of the local model that is making the association; the second indicates the name of the referenced model and the third field name in the referenced field. You could also use arrays to define multiple fields in the relationship. 
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -543,7 +542,7 @@ When explicitly define the relationships between models,is easy to find records 
     	echo $robotPart->getParts()->name, "\n";
     }
 
-Phalcon uses the magic method __call to take advantage of relationships in an easier way.If the called method has a "get" prefix Phalcon_Model will return a findFirst/find result. The following example compares the use of magic method and its respective code doing it manually: 
+Phalcon uses the magic method __call to take advantage of relationships in an easier way. If the called method has a "get" prefix Phalcon_Model will return a findFirst/find result. The following example compares the use of magic method and its respective code doing it manually: 
 
 .. code-block:: php
     
@@ -594,10 +593,9 @@ Prefix "get" is used to find/findFirst related records. You can also use "count"
     echo "The robot have ", $robot->countRobotsParts(), " parts\n";
 
 
-
 Virtual Foreign Keys
 ^^^^^^^^^^^^^^^^^^^^
-By default, relationships does not act like database foreign keys, that is,if you try to insert/update a value not having a valid value on its referenced model, Phalcon will not throw a validation message or anything. You can modify this behavior by adding a fourth parameter when defining a relationship. Let's change the RobotsPart model to use its relationships as foreign keys:
+By default, relationships does not act like database foreign keys, that is, if you try to insert/update a value not having a valid value on its referenced model, Phalcon will not throw a validation message or anything. You can modify this behavior by adding a fourth parameter when defining a relationship. Let's change the RobotsPart model to use its relationships as foreign keys:
 
 .. code-block:: php
 
@@ -620,7 +618,7 @@ By default, relationships does not act like database foreign keys, that is,if yo
     
     }
 
-If you alter a belongsTo relationship to act as foreign key, it will validatethat values inserted/updated on those fields have a valid value on the referenced model. On the other hand, if a hasMany/hasOne is altered it will validate that records cannot be deleted if that record is used on any referenced model. 
+If you alter a belongsTo relationship to act as foreign key, it will validate that values inserted/updated on those fields have a valid value on the referenced model. On the other hand, if a hasMany/hasOne is altered it will validate that records cannot be deleted if that record is used on any referenced model. 
 
 .. code-block:: php
 
@@ -720,7 +718,7 @@ Maximum/Minimum examples:
 
 Creating Updating/Records
 -------------------------
-The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model.The save method is called out internally by create and update methods of Phalcon_Model. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. 
+The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called out internally by create and update methods of Phalcon_Model. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. 
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model.
 
@@ -745,7 +743,7 @@ Also the method executes associated validators, virtual foreign keys and events 
 
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table.Phalcon_Model can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it. 
+Some models may have identity columns. These columns usually are the primary key of the mapped table. Phalcon_Model can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it. 
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -778,10 +776,9 @@ The following types of validation messages can be generated by Phalcon_Model:
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 
-
 Validation Events
 ^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert or update. They help todefine business rules for a certain model. The following are the events supported by Phalcon_Model and their order of execution:
+Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a certain model. The following are the events supported by Phalcon_Model and their order of execution:
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         | 
@@ -814,14 +811,13 @@ Models allow you to implement events that will be thrown when performing an inse
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
 
-
 Implement a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methodswith the names of the events listed in the table above. 
+When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above. 
 
 We recommend that validation methods are declared protected to prevent that business logic implementation are exposed publicly. 
 
-The following example implements an event that validates the year to update orinsert cannot be smaller than 0: 
+The following example implements an event that validates the year to update or insert cannot be smaller than 0: 
 
 .. code-block:: php
 
@@ -844,7 +840,7 @@ Some events allow returning false as an indication to stop the current operation
 
 Validating Data Integrity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Phalcon_Model provides several events to validate data and implement business rules.The special "validation" event allows us to call built-in validators over the record. Phalcon implement a couple of built-in validators that can be used at this stage of validation. 
+Phalcon_Model provides several events to validate data and implement business rules. The special "validation" event allows us to call built-in validators over the record. Phalcon implement a couple of built-in validators that can be used at this stage of validation. 
 
 The following example shows how to use it: 
 
@@ -912,7 +908,6 @@ In addition to the built-in validatiors, you can define your own validations usi
     }
 
 
-
 Deleting Records
 ----------------
 The method Phalcon_Model_Base::delete allows to delete a record in memory. You can use it as follows:
@@ -950,7 +945,7 @@ Also you can delete many records traversing a resultset by using a foreach:
        }
     }
 
-The next events are available to define custom business rules that should to beexecuted when a delete operation is being made. 
+The next events are available to define custom business rules that should to be executed when a delete operation is being made. 
 
 +-----------+--------------+---------------------+------------------------------------------+
 | Operation | Name         | Can stop operation? | Explanation                              | 
@@ -963,9 +958,9 @@ The next events are available to define custom business rules that should to bee
 
 Transactions
 ------------
-When a process performs multiple operations on a database, sometimes is requiredthat each run in a complete and satisfactory way. Data integrity is lost when operations are interrupted and not completed successfully. Transactions in software just try to avoid these situations. 
+When a process performs multiple operations on a database, sometimes is required that each run in a complete and satisfactory way. Data integrity is lost when operations are interrupted and not completed successfully. Transactions in software just try to avoid these situations. 
 
-Transactions in Phalcon basically let to separate the objects belonging to a transactionso that all operations carried out by them can maintain a consistent state and could be rolled back if required. 
+Transactions in Phalcon basically let to separate the objects belonging to a transaction so that all operations carried out by them can maintain a consistent state and could be rolled back if required. 
 
 .. code-block:: php
 
@@ -1029,13 +1024,13 @@ Transactions can be used to delete many records in a consistent way:
       echo "Failed, reason: ", $e->getMessage();
     }
 
-Transactions are reused no matter from which part of the application is obtained the transaction object.Only when performing a commit or rollback the transaction will generate a new one. 
+Transactions are reused no matter from which part of the application is obtained the transaction object. Only when performing a commit or rollback the transaction will generate a new one. 
 
 Models Meta-Data
 ----------------
-To speed up development Phalcon_Model helps you to query fields and constraints from tables relatedto models. In this task,  , plays an important role.A global instance of that class is created to manage and cache table meta-data. 
+To speed up development Phalcon_Model helps you to query fields and constraints from tables relatedto models. In this task,  Phalcon_Model_MetaData, plays an important role. A global instance of that class is created to manage and cache table meta-data. 
 
-Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instanceby this way: 
+Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance by this way: 
 
 .. code-block:: php
 
@@ -1058,7 +1053,7 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
 Caching Meta-Data
 ^^^^^^^^^^^^^^^^^
-Once the application is in a production stage, it is not necessary to query the metadata ofthe table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters: 
+Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters: 
 
 +---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
 | Adapter | Description                                                                                                                                                                                                                                                                                                                                                      | API                            | 
@@ -1070,7 +1065,7 @@ Once the application is in a production stage, it is not necessary to query the 
 | Apc     | The Apc adapter uses the  Alternative PHP Cache (APC) to store the table meta-data. You can specify the lifetime of the data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                      | Phalcon_Model_MetaData_Apc     | 
 +---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
 
-If you want to have full control over the meta-data caching process.You could replace the active meta-data manager as follows: 
+If you want to have full control over the meta-data caching process. You could replace the active meta-data manager as follows: 
 
 .. code-block:: php
 
@@ -1096,7 +1091,7 @@ If your application is using a ini configuration file togetherwith  , add the fo
 
 Logging Low-Level SQL Statements
 --------------------------------
-When we use high-level abstraction components to access databases (like this ORM),we could find difficulties to understand which statements are finally sent to the database system. Phalcon_Model is supported internally on another component called Phalcon_Db that provides logging capabilities to track all the SQL statements sent to the database. 
+When we use high-level abstraction components to access databases (like this ORM), we could find difficulties to understand which statements are finally sent to the database system. Phalcon_Model is supported internally on another component called Phalcon_Db that provides logging capabilities to track all the SQL statements sent to the database. 
 
 .. code-block:: php
 
@@ -1125,7 +1120,7 @@ As above, the file *app/logs/debug.log* might contain the following:
 
 Profiling SQL Statements
 ------------------------
-Thanks to the underlying component Phalcon_Model called Phalcon_Db_,it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
+Thanks to the underlying component Phalcon_Model called Phalcon_Db_, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
 
 .. _Phalcon_Db: ../api/Phalcon_Db.html
 
@@ -1151,4 +1146,4 @@ Thanks to the underlying component Phalcon_Model called Phalcon_Db_,it's possibl
        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-Each generated profile contains the duration in miliseconds that takeseach instruction to be completed, and the SQL generated as well. 
+Each generated profile contains the duration in miliseconds that take seach instruction to be completed, and the SQL generated as well. 

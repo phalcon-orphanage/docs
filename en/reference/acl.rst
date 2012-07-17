@@ -8,9 +8,7 @@ This component is designed to initially work in memory.This will give us the eas
 
 .. code-block:: php
 
-    <?php
-
-    $acl = new Phalcon_Acl("Memory");
+    <?php $acl = new Phalcon_Acl("Memory");
 
 By default Phalcon_Acl allows access to action on resources that has not been defined previously.To increase the security level of our access list we'll define a "deny" level as a default access level. 
 
@@ -84,8 +82,6 @@ Once the list has been completely defined. We can begin to query and see if a ro
     $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
 
-
-
 Roles Inheritance
 -----------------
 In some cases, role's permissions could be inherited from other existing roles. You can do this by simplyrefer the inherited role as the second parameter when defining a role into the list. 
@@ -99,7 +95,7 @@ In some cases, role's permissions could be inherited from other existing roles. 
     $roleGuests = new Phalcon_Acl_Role("Guests");
     
     //Add "Guests" role to acl
-    acl->addRole($roleGuests);
+    $acl->addRole($roleGuests);
     
     //Add "Administrators" role inheriting from "Guests" its accesses
     $acl->addRole($roleAdmins, $roleGuests);
