@@ -13,9 +13,12 @@ Installation
 ^^^^^^^^^^^^
 These are detailed instructions on how to install the developer tools on different platforms:
 
-* :doc:`Installation on Windows <wintools>`
-* :doc:`Installation on OS X <mactools>`
-* :doc:`Installation on Linux <linuxtools>`
+.. toctree::
+   :maxdepth: 1
+
+   wintools
+   mactools
+   linuxtools
 
 Getting Available Commands
 --------------------------
