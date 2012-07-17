@@ -1,3 +1,6 @@
 build
 en/_build
 _templates
+*.komodoproject
+*.sublime-*
+.idea/
