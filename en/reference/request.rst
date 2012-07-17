@@ -1,8 +1,8 @@
-
-
 Request Environment
 ===================
-Normally, the HTTP client (usually a browser) sends as part of the request headers, files, variables, etc.Take advantage of that information is useful to return a better response to the user. encapsulates the most important information of therequest providing you object-oriented wrappers to access them. As there is only a request enviroment for each request, Phalcon_Requests implements the `singleton pattern <http://en.wikipedia.org/wiki/Singleton_pattern>`_ with a lazy initialization. This means that you only have one instance of that class per request.
+Normally, the HTTP client (usually a browser) sends as part of the request headers, files, variables, etc.Take advantage of that information is useful to return a better response to the user. Phalcon_Request encapsulates the most important information of the request providing you object-oriented wrappers to access them. 
+
+As there is only a request enviroment for each request, Phalcon_Requests implements the `singleton pattern <http://en.wikipedia.org/wiki/Singleton_pattern>`_ with a lazy initialization. This means that you only have one instance of that class per request.
 
 .. code-block:: php
 
@@ -23,7 +23,9 @@ Phalcon_Request could be used in any part of the application, you only need to g
 
 Recovering Values
 -----------------
-PHP automatically fills the superglobals $_GET and $_POST. These variables containsthe values present in forms or the parameters sent in the URL. Although they do a very good work, these values can contain extra characters and if aren't treated properly can lead to receive common attacks like  `SQL injection <http://en.wikipedia.org/wiki/SQL_injection>`_ or `Cross Site Scripting (XSS) <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ .For that reason, with Phalcon_Request you can access $_GET and $_POST and sanitize/filter thereceived values together with  . The followingexamples have the same behavior: 
+PHP automatically fills the superglobals $_GET and $_POST. These variables containsthe values present in forms or the parameters sent in the URL. Although they do a very good work, these values can contain extra characters and if aren't treated properly can lead to receive common attacks like  `SQL injection <http://en.wikipedia.org/wiki/SQL_injection>`_ or `Cross Site Scripting (XSS) <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ .
+
+For that reason, with Phalcon_Request you can access $_GET and $_POST and sanitize/filter thereceived values together with  . The followingexamples have the same behavior: 
 
 .. code-block:: php
 
@@ -74,8 +76,6 @@ A common place where surely you will need access the request environment is in t
     
     }
 
-
-
 Uploading Files
 ---------------
 Another common task is deal with file uploads. Phalcon_Request provides youa object-oriented way to access the uploaded files: 
@@ -100,7 +100,7 @@ Another common task is deal with file uploads. Phalcon_Request provides youa obj
     
     }
 
-Each object returned by Phalcon_Request::getUploadedFiles() is an instance of theclass. Using the $_FILES superglobalwill give you the same behavior. This class only encapsulates the information related to each file uploaded with the request. 
+Each object returned by Phalcon_Request::getUploadedFiles() is an instance of the class. Using the $_FILES superglobal will give you the same behavior. This class only encapsulates the information related to each file uploaded with the request. 
 
 Working with Headers
 --------------------

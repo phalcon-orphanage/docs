@@ -1,5 +1,3 @@
-
-
 Filtering and Sanitizing
 ========================
 Sanitizing user input is a critical part of secure software development,Neglecting to sanitize user input that may subsequently be passed to system-level functions could allow attackers to do massive internal damage to the information store and operating system, deface or delete Web files, and otherwise gain unrestricted access to the server. 
@@ -7,10 +5,9 @@ Sanitizing user input is a critical part of secure software development,Neglecti
 .. figure:: ../_static/img/sql.png
    :align: center
 
-
 Full image (from xkcd)
 
-The component provides a set of commonly needed data filters and sanitizes helpers.It provides object-oriented wrappers for the mature PHP filter extension. 
+The component provides a set of commonly needed data filters and sanitizes helpers. It provides object-oriented wrappers for the mature PHP filter extension. 
 
 Sanitizing data
 ---------------
@@ -65,8 +62,6 @@ You can access a Phalcon_Filter object from the controllers also when accessing 
     
     }
 
-
-
 Filtering Action Parameters
 ---------------------------
 The next example shows you how to sanitize the action parameters within a controller action:
@@ -89,8 +84,6 @@ The next example shows you how to sanitize the action parameters within a contro
       }
     
     }
-
-
 
 Filtering data
 --------------

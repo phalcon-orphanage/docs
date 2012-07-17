@@ -2,7 +2,8 @@ View Helpers
 ============
 HTML markup can quickly become tedious to write and maintain because of control naming and their numerousattributes. Phalcon deals away with these complexities by providing view helpers for generating HTML markup. 
 
-This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the  documentation for a complete reference.
+.. highlights::
+    This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the  documentation for a complete reference.
 
 Using Name Aliasing
 -------------------
@@ -137,7 +138,7 @@ Then at the view, a selectStatic helper matches the same index used to pre-set t
 
 This will generate the following SELECT tag with the value "Blue" selected:
 
-.. code-block:: php
+.. code-block:: html
 
     <select id="color" name="color">
       <option value="Yellow">Yellow</option>
