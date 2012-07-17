@@ -50,7 +50,7 @@ Phalcon provides a series of helpers to generate form elements such astextfields
 
 Making Select Boxes
 -------------------
-Generating select boxes (combo list) are easy, especially if you have the related data in PHP variables.The helpers destined to this task are Phalcon_Tag::select and Phalcon_Tag::selectStatic. The first one was specifically designed to work with  . Anothercould be used with PHP arrays. 
+Generating select boxes (combo list) are easy, especially if you have the related data in PHP variables.The helpers destined to this task are Phalcon_Tag::select and Phalcon_Tag::selectStatic. The first one was specifically designed to work with Phalcon_Model_Base. Another could be used with PHP arrays. 
 
 .. code-block:: php
 
@@ -89,7 +89,7 @@ The following HTML will generated respectively:
 
 Assigning HTML attributes
 -------------------------
-All the helpers receive an array as its first parameter. This can contain HTML specificattributes for the helper. Those attributes will be generated as HTML at the output. 
+All the helpers receive an array as its first parameter. This can contain HTML specific attributes for the helper. Those attributes will be generated as HTML at the output. 
 
 .. code-block:: html+php
 

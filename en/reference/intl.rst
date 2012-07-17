@@ -1,5 +1,3 @@
-
-
 Internationalization
 ====================
 As well you should know Phalcon is a framework written as a C extension for PHP. Currently, PHP has a magnificent extension to create internationalized applications. You can find it in the `PECL <http://pecl.php.net/package/intl>`_ repository and its well documented at the official `PHP manual <http://www.php.net/manual/en/intro.intl.php>`_. 
@@ -62,12 +60,10 @@ Message formatting using time and date patterns:
     $formatter = new MessageFormatter("en_US", $pattern);
     echo $formatter->format($values);
     
-    //Prints "Ã 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planÃ¨te 7."
+    //Prints "Ã 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planete 7."
     $pattern = "Ã {1,time} le {1,date}, il y avait une perturbation sur la planÃ¨te {0,number}.";
     $formatter = new MessageFormatter("fr_FR", $pattern);
     echo $formatter->format($values);
-
-
 
 Locale-Sensitive comparison
 ---------------------------
