@@ -23,7 +23,7 @@ Translation files are stored in files, the structure of these files could change
     app/messages/fr.php
     app/messages/zh.php
 
-Each file contains a hash with the translations, each message has a unique index that should be the samein other message files: 
+Each file contains a hash with the translations, each message has a unique index that should be the same in other message files: 
 
 .. code-block:: php
 
@@ -49,7 +49,7 @@ Each file contains a hash with the translations, each message has a unique index
     	"song" => "La chanson est %song%"
     );
 
-Now, it's time to load the correct translation file according to the user environment.A simpler way is getting this data from the $_SERVER['HTTP_ACCEPT_LANGUAGE'] header, or, If you prefer, access directly to that value by calling $this->request->getBestLanguage() inside an action/controller: 
+Now, it's time to load the correct translation file according to the user environment. A simpler way is getting this data from the $_SERVER['HTTP_ACCEPT_LANGUAGE'] header, or, If you prefer, access directly to that value by calling $this->request->getBestLanguage() inside an action/controller: 
 
 .. code-block:: php
 
@@ -101,4 +101,4 @@ The "_" function is the resposible to query the message according to the index g
     <!-- welcome -->
     <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
 
-Note that "hi" and "hi-name" are related to different messages, but just only one of themrequire a placeholder. Some websites implement urls like http://www.mozilla.org/**es-ES**/firefox/, where the actual language/locale is passed as part of the uri. You can do this with Phalcon, implementing a regex router. 
+Note that "hi" and "hi-name" are related to different messages, but just only one of them require a placeholder. Some websites implement urls like http://www.mozilla.org/**es-ES**/firefox/, where the actual language/locale is passed as part of the uri. You can do this with Phalcon, implementing a `regex router <routing>`_. 

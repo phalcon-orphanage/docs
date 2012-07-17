@@ -1,13 +1,7 @@
-.. Phalcon Documentation documentation master file, created by
-   sphinx-quickstart on Tue Jul 10 12:27:41 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-
 Welcome
 ========
 
-Hi, welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without beign worried about losing performance. 
+Hi, welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without be worrying about performance. 
 
 What is Phalcon?
 ----------------

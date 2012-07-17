@@ -1,6 +1,6 @@
 Request Environment
 ===================
-Normally, the HTTP client (usually a browser) sends as part of the request headers, files, variables, etc.Take advantage of that information is useful to return a better response to the user. Phalcon_Request encapsulates the most important information of the request providing you object-oriented wrappers to access them. 
+Normally, the HTTP client (usually a browser) sends as part of the request headers, files, variables, etc. Take advantage of that information is useful to return a better response to the user. Phalcon_Request encapsulates the most important information of the request providing you object-oriented wrappers to access them. 
 
 As there is only a request enviroment for each request, Phalcon_Requests implements the `singleton pattern <http://en.wikipedia.org/wiki/Singleton_pattern>`_ with a lazy initialization. This means that you only have one instance of that class per request.
 
@@ -19,11 +19,11 @@ As there is only a request enviroment for each request, Phalcon_Requests impleme
       }
     }
 
-Phalcon_Request could be used in any part of the application, you only need to getthe internal instance of the class by calling Phalcon_Request::getInstance(). 
+Phalcon_Request could be used in any part of the application, you only need to get the internal instance of the class by calling Phalcon_Request::getInstance(). 
 
 Recovering Values
 -----------------
-PHP automatically fills the superglobals $_GET and $_POST. These variables containsthe values present in forms or the parameters sent in the URL. Although they do a very good work, these values can contain extra characters and if aren't treated properly can lead to receive common attacks like  `SQL injection <http://en.wikipedia.org/wiki/SQL_injection>`_ or `Cross Site Scripting (XSS) <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ .
+PHP automatically fills the superglobals $_GET and $_POST. These variables contains the values present in forms or the parameters sent in the URL. Although they do a very good work, these values can contain extra characters and if aren't treated properly can lead to receive common attacks like  `SQL injection <http://en.wikipedia.org/wiki/SQL_injection>`_ or `Cross Site Scripting (XSS) <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ .
 
 For that reason, with Phalcon_Request you can access $_GET and $_POST and sanitize/filter thereceived values together with  . The followingexamples have the same behavior: 
 
@@ -46,7 +46,7 @@ For that reason, with Phalcon_Request you can access $_GET and $_POST and saniti
 
 Accesing Request from Controllers
 ---------------------------------
-A common place where surely you will need access the request environment is in the action controllers.There are several reasons to need the Phalcon_Request instance in this stage of the execution. You could access it simply by accesing the $this->request public property of the controller: 
+A common place where surely you will need access the request environment is in the action controllers. There are several reasons to need the Phalcon_Request instance in this stage of the execution. You could access it simply by accesing the $this->request public property of the controller: 
 
 .. code-block:: php
 
@@ -78,7 +78,7 @@ A common place where surely you will need access the request environment is in t
 
 Uploading Files
 ---------------
-Another common task is deal with file uploads. Phalcon_Request provides youa object-oriented way to access the uploaded files: 
+Another common task is deal with file uploads. Phalcon_Request provides you a object-oriented way to access the uploaded files: 
 
 .. code-block:: php
 

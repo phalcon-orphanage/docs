@@ -1,10 +1,10 @@
 Orchestrating MVC
 =================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by. This component encapsulatesall the dirty details of instantiate every component to then integrate it with each others making the MVC pattern work as desired. 
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by Phalcon_Controller_Front. This component encapsulates all the dirty details of instantiate every component to then integrate it with each others making the MVC pattern work as desired. 
 
 Understanding the default behavior
 ----------------------------------
-If you've been following the tutorials or have generated the code using Tools,you may recognize the boostrap application like this: 
+If you've been following the tutorials or have generated the code using Tools, you may recognize the boostrap application like this: 
 
 .. code-block:: php
 
@@ -101,7 +101,7 @@ Actually, you could use the above code as your default bootstrap giving you more
 
 Dispatch Loop
 -------------
-The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part.This work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then execute the required actions. If some action request forward the flow to another controller/action the process start again. To ilustrate better, in plain PHP, approximately this process is performed within :
+The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part. This work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then execute the required actions. If some action request forward the flow to another controller/action the process start again. To ilustrate better, in plain PHP, approximately this process is performed within Phalcon_Dispatcher:
 
 .. code-block:: php
 
