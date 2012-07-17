@@ -143,6 +143,7 @@ p.versionadded {
 	font-size: 15px;
 	margin-left: 20px;
 	margin-right: 20px;
+	padding: 5px;
 }
 
 p.versionchanged,

@@ -1,8 +1,12 @@
-
-
 Phalcon Developer Tools
 =======================
-This tools provides you useful scripts to generate code helping to develop faster and easyapplications that use Phalcon framework. **Important:** You need at least Phalcon Framework version 0.4.0 to use developer tools.Also is recommended to have installed PHP 5.3.6 as minimum. iframeIf you prefer a web interface over a console, check .
+This tools provides you useful scripts to generate code helping to develop faster and easy applications that use Phalcon framework. 
+
+**Important:** You need at least Phalcon Framework version 0.4.0 to use developer tools. Also is recommended to have installed PHP 5.3.6 as minimum. 
+
+
+
+If you prefer a web interface over a console, check .
 
 Download
 --------

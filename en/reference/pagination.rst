@@ -1,6 +1,6 @@
 Data Pagination
 ===============
-The process of pagination takes place when we need to present big groups of arbitrary data gradually.is a fast way to split sets of data into browsable pages.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. is a fast way to split sets of data into browsable pages.
 
 Data Adapters
 -------------
@@ -16,7 +16,7 @@ This component makes use of adapters to encapsulate the different sources of dat
 
 Using Paginators
 ----------------
-The method Phalcon_Paginator::factory allows us to create an instance of a paginator adapter.That method receives two parameters. The first is the name of the adapter and second is a group of options to pass to it. In the below example, the paginator will use as its source data the result of a query from a model: 
+The method Phalcon_Paginator::factory allows us to create an instance of a paginator adapter. That method receives two parameters. The first is the name of the adapter and second is a group of options to pass to it. In the below example, the paginator will use as its source data the result of a query from a model: 
 
 .. code-block:: php
 

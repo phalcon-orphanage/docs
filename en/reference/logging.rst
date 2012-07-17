@@ -2,7 +2,7 @@
 
 Logging
 =======
-is a component whose purpose is to provide logging servicesto applications using different backends via adapters, generating options, formats and filters also implementing transactions. You could use loggers to debug processes, trace or access information and more. 
+Phalcon_Logger is a component whose purpose is to provide logging services to applications using different backends via adapters, generating options, formats and filters also implementing transactions. You could use loggers to debug processes, trace or access information and more. 
 
 Adapters
 --------
@@ -38,7 +38,7 @@ Now, It simply produces the following log:
 
 Transactions
 ------------
-Because writing to the filesystem could be expensive in terms of performance,you can take advantage of logging transactions to temporariry store messages in memory and later write them to disk in a single atomic operation. 
+Because writing to the filesystem could be expensive in terms of performance, you can take advantage of logging transactions to temporariry store messages in memory and later write them to disk in a single atomic operation. 
 
 .. code-block:: php
 
@@ -60,10 +60,9 @@ Because writing to the filesystem could be expensive in terms of performance,you
     $logger->close();
 
 
-
 Message Formatting
 ------------------
-By default the logger uses the following format: [%date%][%type%] %message%.Phalcon_Logger allows you to define your own message format by using the method setFormat(). Formats can contain variables that are replaced by their respective values according to the following table:
+By default the logger uses the following format: [%date%][%type%] %message%. Phalcon_Logger allows you to define your own message format by using the method setFormat(). Formats can contain variables that are replaced by their respective values according to the following table:
 
 +-----------+------------------------------------------+
 | Variable  | Description                              | 
