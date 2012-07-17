@@ -2,11 +2,22 @@ Working with Models
 ===================
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your applicationâs business logic will be concentrated in the models. is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
 
-Phalcon_Model avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. Models are intended to work on a database high layer of abstraction.If you need to work with databases at a lower level check out the  component documentation.
+Phalcon_Model_ avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. 
+
+.. _Phalcon_Model: ../api/Phalcon_Model.html
+
+.. highlights::
+
+    Models are intended to work on a database high layer of abstraction.If you need to work with databases at a lower level check out the Phalcon_Db_ component documentation.
+
+.. _Phalcon_Db: ../api/Phalcon_Db.html
+
 
 Creating Models
 ---------------
-A model is a class that extends from Phalcon_Model_Base. It must be placed in the models directory.A model file must contain a single class; its class name should be in camel case notation: 
+A model is a class that extends from Phalcon_Model_Base_. It must be placed in the models directory.A model file must contain a single class; its class name should be in camel case notation: 
+
+.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base.html
 
 .. code-block:: php
 
@@ -165,7 +176,9 @@ The available query options are:
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
-While "findFirst" returns directly and instance of the called class in case of match some records, "find"method returns a  . This is a special objectthat encapsulates all the resultset functionality like traversing, seek to a specific record, counting, etc. These objects are more powerful than standard arrays. One of its greatest features is that it only have once record in memory at the same time. This greatly helps reduce the amount of memory used by the application when working with large amounts of data. 
+While "findFirst" returns directly and instance of the called class in case of match some records, "find"method returns a Phalcon_Model_Resultset_. This is a special objectthat encapsulates all the resultset functionality like traversing, seek to a specific record, counting, etc. These objects are more powerful than standard arrays. One of its greatest features is that it only have once record in memory at the same time. This greatly helps reduce the amount of memory used by the application when working with large amounts of data. 
+
+.. _Phalcon_Model_Resultset: ../api/Phalcon_Model_Resultset.html
 
 .. code-block:: php
 
@@ -256,11 +269,19 @@ Binding parameters is also supported in Phalcon_Model. The binding process impac
     $parameters = array("name" => "Robotina", 1 => "maid");
     $robots = Robots::find(array($conditions, "bind" => $parameters));
 
-When use numeric placeholders define it as integers, by example: 1 or 2.In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be sucessfully replaced. With the MySQL adapter strings are automatically escaped using `mysqli_real_escape_string <http://php.net/manual/en/mysqli.real-escape-string.php>`_ .That function takes into account the connection charset, so its recommended define it in the connection parameters or in the MySQL server configuration. Binding parameters is available for all the query methods (like find and findFirst) alsothe calculations methods (count, sum, average, etc). 
+When use numeric placeholders define it as integers, by example: 1 or 2.In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be sucessfully replaced. 
+
+With the MySQL adapter strings are automatically escaped using `mysqli_real_escape_string <http://php.net/manual/en/mysqli.real-escape-string.php>`_ .That function takes into account the connection charset, so its recommended define it in the connection parameters or in the MySQL server configuration. 
+
+Binding parameters is available for all the query methods (like find and findFirst) alsothe calculations methods (count, sum, average, etc). 
 
 Caching Resultsets
 ^^^^^^^^^^^^^^^^^^
-Access to database systems is often one of the most common bottlenecks that reducesthe performance of web applications. This is because of the complex connection procedures, among other things, that PHP must do in each request to obtain data from a database system. A well known technique to avoid the continuos access to databases is cache the resultsets obtained from the database in an intermediate and less crowded medium. Phalcon_Model is integrated with the componentto provide a fancy syntax caching resultsets. The first step to cache a resulset is define a default cache backend in the model manager: 
+Access to database systems is often one of the most common bottlenecks that reducesthe performance of web applications. This is because of the complex connection procedures, among other things, that PHP must do in each request to obtain data from a database system. A well known technique to avoid the continuos access to databases is cache the resultsets obtained from the database in an intermediate and less crowded medium. 
+
+Phalcon_Model_ is integrated with the Phalcon_Cache_ component to provide a fancy syntax caching resultsets. The first step to cache a resulset is define a default cache backend in the model manager: 
+
+.. _Phalcon_Cache: ../api/Phalcon_Cache_.html
 
 .. code-block:: php
 
@@ -283,7 +304,9 @@ Access to database systems is often one of the most common bottlenecks that redu
     //Set the cache to the models manager
     Phalcon_Model_Manager::getDefault()->setCache($cache);
 
-The above example gives you full control over the cache definition and customization.But it could be very verbose for most cases. If you are using models with  you could setup the cache configuration as part of the bootstrap configuration:
+The above example gives you full control over the cache definition and customization.But it could be very verbose for most cases. If you are using models with Phalcon_Controller_Front_ you could setup the cache configuration as part of the bootstrap configuration:
+
+.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
 
 .. code-block:: php
 
@@ -520,7 +543,48 @@ When explicitly define the relationships between models,is easy to find records 
     	echo $robotPart->getParts()->name, "\n";
     }
 
-Phalcon uses the magic method __call to take advantage of relationships in an easier way.If the called method has a "get" prefix Phalcon_Model will return a findFirst/find result. The following example compares the use of magic method and its respective code doing it manually: Prefix "get" is used to find/findFirst related records. You can also use "count" to return an integer valueresult of count the related records: 
+Phalcon uses the magic method __call to take advantage of relationships in an easier way.If the called method has a "get" prefix Phalcon_Model will return a findFirst/find result. The following example compares the use of magic method and its respective code doing it manually: 
+
+.. code-block:: php
+    
+    <?php
+
+    $robot = Robots::findFirst(2);
+
+    //Robots model has a 1-n (hasMany)
+    //relationship to RobotsParts then
+    $robotsParts = $robot->getRobotsParts();
+
+    //Only parts that match conditions
+    $robotsParts = $robot->getRobotsParts("created_at='2012-03-15'");
+
+    $robotPart = RobotsParts::findFirst(1);
+
+    //RobotsParts model has a n-1 (belongsTo)
+    //relationship to RobotsParts then
+    $robot = $robotPart->getRobots();
+
+.. code-block:: php
+    
+    <?php
+
+    $robot = Robots::findFirst(2);
+
+    //Robots model has a 1-n (hasMany)
+    //relationship to RobotsParts then
+    $robotsParts = RobotsParts::find("robots_id='".$robot->id."'");
+
+    //Only parts that match conditions
+    $robotsParts = RobotsParts::find("robots_id='".$robot->id."' AND created_at='2012-03-15'");
+
+    $robotPart = RobotsParts::findFirst(1);
+
+    //RobotsParts model has a n-1 (belongsTo)
+    //relationship to RobotsParts then
+    $robot = Robots::findFirst("id='".$robotPart->robots_id."'");
+
+
+Prefix "get" is used to find/findFirst related records. You can also use "count" to return an integer value result of count the related records: 
 
 .. code-block:: php
 
@@ -656,7 +720,9 @@ Maximum/Minimum examples:
 
 Creating Updating/Records
 -------------------------
-The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model.The save method is called out internally by create and update methods of Phalcon_Model. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. Also the method executes associated validators, virtual foreign keys and events that are defined in the model.
+The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model.The save method is called out internally by create and update methods of Phalcon_Model. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. 
+
+Also the method executes associated validators, virtual foreign keys and events that are defined in the model.
 
 .. code-block:: php
 
@@ -683,7 +749,9 @@ Some models may have identity columns. These columns usually are the primary key
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
-Phalcon_Model has a message subsystem that allows a flexible way to output or store the validation messages generatedin the insertion/updating processes. Each message consists of an instance of the class Phalcon_Model_Message. The set of messages generated can be gotten with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Phalcon_Model has a message subsystem that allows a flexible way to output or store the validation messages generatedin the insertion/updating processes. 
+
+Each message consists of an instance of the class Phalcon_Model_Message. The set of messages generated can be gotten with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
 
 .. code-block:: php
 
@@ -749,7 +817,11 @@ Models allow you to implement events that will be thrown when performing an inse
 
 Implement a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methodswith the names of the events listed in the table above. We recommend that validation methods are declared protected to prevent that business logic implementation are exposed publicly. The following example implements an event that validates the year to update orinsert cannot be smaller than 0: 
+When an insert, update or delete is executed, the model verifies if there are any methodswith the names of the events listed in the table above. 
+
+We recommend that validation methods are declared protected to prevent that business logic implementation are exposed publicly. 
+
+The following example implements an event that validates the year to update orinsert cannot be smaller than 0: 
 
 .. code-block:: php
 
@@ -772,7 +844,9 @@ Some events allow returning false as an indication to stop the current operation
 
 Validating Data Integrity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Phalcon_Model provides several events to validate data and implement business rules.The special "validation" event allows us to call built-in validators over the record. Phalcon implement a couple of built-in validators that can be used at this stage of validation. The following example shows how to use it: 
+Phalcon_Model provides several events to validate data and implement business rules.The special "validation" event allows us to call built-in validators over the record. Phalcon implement a couple of built-in validators that can be used at this stage of validation. 
+
+The following example shows how to use it: 
 
 .. code-block:: php
 
@@ -889,7 +963,9 @@ The next events are available to define custom business rules that should to bee
 
 Transactions
 ------------
-When a process performs multiple operations on a database, sometimes is requiredthat each run in a complete and satisfactory way. Data integrity is lost when operations are interrupted and not completed successfully. Transactions in software just try to avoid these situations. Transactions in Phalcon basically let to separate the objects belonging to a transactionso that all operations carried out by them can maintain a consistent state and could be rolled back if required. 
+When a process performs multiple operations on a database, sometimes is requiredthat each run in a complete and satisfactory way. Data integrity is lost when operations are interrupted and not completed successfully. Transactions in software just try to avoid these situations. 
+
+Transactions in Phalcon basically let to separate the objects belonging to a transactionso that all operations carried out by them can maintain a consistent state and could be rolled back if required. 
 
 .. code-block:: php
 
@@ -957,7 +1033,9 @@ Transactions are reused no matter from which part of the application is obtained
 
 Models Meta-Data
 ----------------
-To speed up development Phalcon_Model helps you to query fields and constraints from tables relatedto models. In this task,  , plays an important role.A global instance of that class is created to manage and cache table meta-data. Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instanceby this way: 
+To speed up development Phalcon_Model helps you to query fields and constraints from tables relatedto models. In this task,  , plays an important role.A global instance of that class is created to manage and cache table meta-data. 
+
+Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instanceby this way: 
 
 .. code-block:: php
 
@@ -1047,7 +1125,9 @@ As above, the file *app/logs/debug.log* might contain the following:
 
 Profiling SQL Statements
 ------------------------
-Thanks to the underlying component Phalcon_Model called ,it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
+Thanks to the underlying component Phalcon_Model called Phalcon_Db_,it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
+
+.. _Phalcon_Db: ../api/Phalcon_Db.html
 
 .. code-block:: php
 

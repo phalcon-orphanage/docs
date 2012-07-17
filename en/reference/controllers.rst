@@ -86,7 +86,9 @@ If users don't have permissions to access a certain action then will be forwarde
 
     }    
 
-You may do many "forwards" as you require. If there are not pendent action the dispatch loop will reach the end, and automatically will pull down the view part of MVC managed by Phalcon_View.
+You may do many "forwards" as you require. If there are not pendent action the dispatch loop will reach the end, and automatically will pull down the view part of MVC managed by `Phalcon_View`_.
+
+.. _Phalcon_View: ../api/Phalcon_View.html
 
 Initializing Controllers
 ------------------------
@@ -143,7 +145,10 @@ Events enable controllers to run shared pre- and post- processing code for its a
 
 Request and Response
 --------------------
-In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of Phalcon_Request and the "response" attribute contains a Phalcon_Response representing what is going to be sent back to the client. 
+In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of `Phalcon_Request`_ and the "response" attribute contains a `Phalcon_Response`_ representing what is going to be sent back to the client. 
+
+.. _Phalcon_Response: ../api/Phalcon_Response.html
+.. _Phalcon_Request: ../api/Phalcon_Request.html
 
 .. code-block:: php
 
@@ -195,11 +200,11 @@ Moreover, the response object is not usually used directly, but is built up befo
 
     }
 
-Learn more about the request environment in its documentation article.
+Learn more about the request environment in its `documentation article <request.html>`_.
 
 Session Data
 ------------
-Sessions help us to maintain persistent data between requests. You could access a Phalcon_Session_Namespace	from any controller to encapsulate data that should be persistent.
+Sessions help us to maintain persistent data between requests. You could access a `Phalcon_Session_Namespace <../api/Phalcon_Session_Namespace.html>`_	from any controller to encapsulate data that should be persistent.
 
 .. code-block:: php
 
@@ -224,20 +229,22 @@ Controller Environment
 ----------------------
 Phalcon_Controller provide you some useful public attributes to interact with other active parts of the framework. Checking out the API of those components will give you the knowledge to access important information you could need while executing an action: 
 
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Component             | Description 	                                                                                                            | Attribute         |
-+=======================+===========================================================================================================================+===================+
-| Phalcon_Request       | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc    | $this->request    |
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Response      | Encapsulate the response information, such as response headers, response body, etc. 	                                    | $this->response   |
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_View 	        | Encapsulate the view that will be displayed to the used                                                                   | $this->view       |
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Dispatcher    | Encapsulate details of the dispatching process                                                                            | $this->dispatcher |
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Model_Manager | Encapsulate the models initialization, meta-data, etc                                                                     | $this->model      |
-+-----------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Component              | Description 	                                                                                                             | Attribute         |
++========================+===========================================================================================================================+===================+
+| Phalcon_Request_       | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc    | $this->request    |
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Phalcon_Response_      | Encapsulate the response information, such as response headers, response body, etc. 	                                     | $this->response   |
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Phalcon_View_          | Encapsulate the view that will be displayed to the used                                                                   | $this->view       |
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Phalcon_Dispatcher_    | Encapsulate details of the dispatching process                                                                            | $this->dispatcher |
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Phalcon_Model_Manager_ | Encapsulate the models initialization, meta-data, etc                                                                     | $this->model      |
++------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
 
+.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher.html
+.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager.html
 
 Creating a Base Controller
 --------------------------

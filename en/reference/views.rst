@@ -2,7 +2,7 @@ Using Views
 ===========
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. 
 
-The View component is responsible for the managing of the standard way to generate the final presentation to the browser. 
+The `View component <../api/Phalcon_View.html>`_ is responsible for the managing of the standard way to generate the final presentation to the browser. 
 
 A hierarchy of files is supported by the component allowing reducing the coding by creating common points for the application, controllers or by implementing templates. 
 
@@ -44,7 +44,9 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
     
     }
 
-The setVar lets to create variables on the fly for each view executed in the current request. The above exampleshows how to pass the $postId parameter to the views with the same name. By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension.If the views directory is  *app/views* then view component will find automatically for these 3 view files.
+The setVar lets to create variables on the fly for each view executed in the current request. The above exampleshows how to pass the $postId parameter to the views with the same name. 
+
+By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension.If the views directory is  *app/views* then view component will find automatically for these 3 view files.
 
 +-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Name              | File                          | Description                                                                                                                                                                                                           | 
@@ -56,7 +58,9 @@ The setVar lets to create variables on the fly for each view executed in the cur
 | Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                  | 
 +-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-You are not required to implement all of the files mentioned above. simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
+You are not required to implement all of the files mentioned above. `Phalcon_Db`_ simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
+
+.. _Phalcon_Db: ../api/Phalcon_Db.html
 
 .. code-block:: html+php
 
@@ -123,7 +127,9 @@ The generated HTML by the request will be:
 
 Using Partials
 --------------
-Partial templates are another way of breaking the rendering processinto simpler chunks. With a partial, you can move the code for rendering a particular piece of a response to its own file. One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of aview so that you can grasp what's going on more easily. For example, you might have a view that looked like this: 
+Partial templates are another way of breaking the rendering processinto simpler chunks. With a partial, you can move the code for rendering a particular piece of a response to its own file. 
+
+One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of aview so that you can grasp what's going on more easily. For example, you might have a view that looked like this: 
 
 .. code-block:: html+php
 
@@ -178,7 +184,9 @@ Magically a variable with the name of the first parameter become available. You 
 
 Control Rendering Levels
 ------------------------
-As seen above, there is a view hierarchy. It may also be needed to control the level of rendering producedfinally by the view component. The method Phalcon_View::setRenderLevel provides this functionality. This method can be invoked from the controller or from a superior view layer to prevent that others are presented.
+As seen above, there is a view hierarchy. It may also be needed to control the level of rendering producedfinally by the view component. The method Phalcon_View::setRenderLevel provides this functionality. 
+
+This method can be invoked from the controller or from a superior view layer to prevent that others are presented.
 
 .. code-block:: php
 
@@ -248,7 +256,9 @@ Although you may perform insert or update operations at views, we only recommend
 
 Picking Views
 -------------
-As mentioned above, when Phalcon_View is managed by the view rendered is the one related with the last controller and action executed. You couldoverride this by using the Phalcon_View::pick method: 
+As mentioned above, when Phalcon_View is managed by Phalcon_Controller_Front_ the view rendered is the one related with the last controller and action executed. You couldoverride this by using the Phalcon_View::pick method: 
+
+.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
 
 .. code-block:: php
 
@@ -268,7 +278,11 @@ As mentioned above, when Phalcon_View is managed by the view rendered is the one
 
 Caching View Fragments
 ^^^^^^^^^^^^^^^^^^^^^^
-Sometimes when you develop dynamic websites and they arenât updated very often,the output of some pages are exactly the same between requests. Phalcon_View allows caching a part of the rendered output or the entire one. Basically, Phalcon_View is integrated with the component to provide an easier way to cache output fragments. You could manually set the cachehandler or set a global handler: 
+Sometimes when you develop dynamic websites and they arenât updated very often,the output of some pages are exactly the same between requests. Phalcon_View allows caching a part of the rendered output or the entire one. 
+
+Basically, Phalcon_View is integrated with the Phalcon_Cache_ component to provide an easier way to cache output fragments. You could manually set the cachehandler or set a global handler: 
+
+.. _Phalcon_Cache: ../api/Phalcon_Cache.html
 
 .. code-block:: php
 
@@ -323,7 +337,13 @@ The example above a cache was implemented in the initialize method, this only ap
 
 Template Engines
 ----------------
-From version 0.4.0, Phalcon_View allows you to use other template engines instead of plain PHP.This helps non-developers create and design views with less effort. Actually, only `Mustache <https://github.com/bobthecow/mustache.php>`_ and`Twig <http://twig.sensiolabs.org/>`_ are supported.Other template engines different than PHP require complex text parsing using external PHP librariesin order to generate the final view, this could increase the resources that your application is currently using. If an external template engine is used, Phalcon_View provide you exactly thesame view hierarchy and it's still possible to access the API inside these templates. 
+From version 0.4.0, Phalcon_View allows you to use other template engines instead of plain PHP.This helps non-developers create and design views with less effort. Actually, only `Mustache`_ and `Twig <http://twig.sensiolabs.org/>`_ are supported.
+
+.. _Mustache: https://github.com/bobthecow/mustache.php
+
+Other template engines different than PHP require complex text parsing using external PHP librariesin order to generate the final view, this could increase the resources that your application is currently using. 
+
+If an external template engine is used, Phalcon_View provide you exactly thesame view hierarchy and it's still possible to access the API inside these templates. 
 
 Changing the Template Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -355,11 +375,15 @@ You can replace or add more template engines from the controller as follows:
     
     }
 
-It is possible to completely replace template engines or using more than one at the same time.Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. The order in which templates are registered means more relevance than others. If Phalcon_View finds two views with the same name but different extension only the first one will render. 
+It is possible to completely replace template engines or using more than one at the same time.Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. 
+
+The order in which templates are registered means more relevance than others. If Phalcon_View finds two views with the same name but different extension only the first one will render. 
 
 Using Mustache
 ^^^^^^^^^^^^^^
-`Mustache <http://mustache.github.com/>`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available  `here <https://github.com/bobthecow/mustache.php>`_. You need to manually load the Mustache library before use its engine adapter. This could be doneby making a require instruction or registering an autoload function first. 
+`Mustache`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available  `here <https://github.com/bobthecow/mustache.php>`_. 
+
+You need to manually load the Mustache library before use its engine adapter. This could be doneby making a require instruction or registering an autoload function first. 
 
 .. code-block:: php 
   
@@ -449,7 +473,9 @@ Finally, if you need more power, it's possible define your own Mustache instance
 
 Using Twig
 ^^^^^^^^^^
-`Twig <http://twig.sensiolabs.org/>`_ is a modern template engine for PHP.You need to manually load the Twig library before use its engine adapter. This could be doneby registering its autoloader: 
+`Twig <http://twig.sensiolabs.org/>`_ is a modern template engine for PHP.
+
+You need to manually load the Twig library before use its engine adapter. This could be doneby registering its autoloader: 
 
 .. code-block:: php
 
@@ -547,7 +573,11 @@ If you want to modify any of those variables before render the views,you can pre
 
 Creating your own Template Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines out there, you might want to integrate one of them or create your own.In this section we will explain how to do this. A template adapter is only instantiated once across the execution of the request. Normally, it onlyneed to implement two methods: __construct and render. The first one receives the Phalcon_View instance which creates the engine adapter and the options passed when the engine was registered. By the other hand, render receives an absolute path to the view file and the view-paramsset using $this->view->setVar(). You could read or require it whether it's necessary. 
+There are many template engines out there, you might want to integrate one of them or create your own.In this section we will explain how to do this. 
+
+A template adapter is only instantiated once across the execution of the request. Normally, it onlyneed to implement two methods: __construct and render. The first one receives the Phalcon_View instance which creates the engine adapter and the options passed when the engine was registered. 
+
+By the other hand, render receives an absolute path to the view file and the view-paramsset using $this->view->setVar(). You could read or require it whether it's necessary. 
 
 .. code-block:: php
 
@@ -611,7 +641,9 @@ When registering the engine, a instance of your template adapter must be passed 
 
 View Environment
 ----------------
-Every view executed is included inside a instance so you can have access to its environmentallowing getting useful information you can apply in your own developments. The following example shows how to write a Jquery `ajax request <http://api.jquery.com/jQuery.ajax/>`_ using an url with the framework conventions. The method url is called from a $this instance that makesreference to a Phalcon_View object: 
+Every view executed is included inside a instance so you can have access to its environmentallowing getting useful information you can apply in your own developments. 
+
+The following example shows how to write a Jquery `ajax request <http://api.jquery.com/jQuery.ajax/>`_ using an url with the framework conventions. The method url is called from a $this instance that makesreference to a Phalcon_View object: 
 
 .. code-block:: php
 
