@@ -222,7 +222,7 @@ The empty index action gives the clean pass to a view with the form definition:
 
     </form>
 
-*NOTE*: If you have short_tags = Off in your php.ini file, you can modify the view as such: 
+*NOTE*: If you have short_open_tag = Off in your php.ini file, you can modify the view as such: 
 
 .. code-block:: html+php
 
