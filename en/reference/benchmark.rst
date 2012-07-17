@@ -1,45 +1,43 @@
 Framework Benchmark
 ===================
 
-Before, performance is not the most important thing when developing web applications, but, for example, Google decided_ to take site speed into account in the search rankings. This is yet another way in which improving web performance will have a positive impact.
-Benchmarking below shows how efficient Phalcon is when compared with other traditional PHP frameworks. This benchmark is updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
+In teh past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality.. This is yet another way in which improving web performance will have a positive impact on a website.
+
+The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
 
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 
-Benchmarking below shows how efficient Phalcon is when compared with other traditional PHP frameworks. This benchmark is updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
-
-We allow you to clone the suite we're using for testing. You can download it to check which code was used to test the performance. If you have any additional optimizations or comments please `write us`_. `Check out source at Github`_
+We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations or comments please `write us`_. `Check out source at Github`_
 
 .. _write us: http://phalcon.uservoice.com/
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 
 .. versionadded:: 1.0	
-	Update Mar-20-2012: Benchmarks has been remade changing the apc.stat setting to Off. More Info
+	Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
 
 .. versionchanged:: 1.1	
-	Update May-13-2012: Benchmarks has been remade using PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
+	Update May-13-2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
 
 .. versionchanged:: 1.2
-	Update May-20-2012: Fuel framework was added to benchmark.
+	Update May-20-2012: Fuel framework was added to benchmarks.
 
 .. versionchanged:: 1.3
-	Update Jun-4-2012: Cake framework was added to benchmark. Actually, it isn't compared in the graphics because it takes 30 seconds to run only 10 of 1000. 
+	Update Jun-4-2012: Cake framework was added to benchmarks. It is not however present in the graphics, since it takes  30 seconds to run only 10 of 1000. 
 
 
-How the benchmark was made?
+How the benchmarks were performed?
 ---------------------------
 
-We made a "Hello World" benchmark looking to identify the minimal load overhead of each framework. Many people don't like this kind of benchmark because real-world applications need more complex features. However, these tests you will understand how much is the minimum time spent by each framework to perform a simple task. A task like this, is the minimal task that runs on every request made to an application.
+We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many people don't like this kind of benchmark because real-world applications require more complex features or structures. However, these tests identify the minimum time spent by each framework to perform a simple task. Such a task represents the mimimum requirement for every framework to process a single request.
 
-In particular, this benchmark is only measuring the time it takes for a framework to start, run any action and freeing up resources to end the request. Any PHP application based on an MVC architecture will take as minimum those times. Also, note that this benchmark does not implement any complex feature, so in case of make a more large benchmark the time will be "hello world" (this) + complex features (db, templating, application logic, business rules, etc), so surely, these times will not decrease.
+More specifically, the benchmark only measures the time it takes for a framework to start, run an action and free up resources at the end of the request. Any PHP application based on an MVC architecture will require this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex request will be higher.
 
-A controller and a view have been created for each framework. The controller "say" and action "hello". Action only gives a pass to the view for saying "Hello!". Using the "ab" benchmark tool we sent 1000 requests using 5 concurrent connections to each framework. 
+A controller and a view have been created for each framework. The controller "say" and action "hello". The action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 1000 requests using 5 concurrent connections to each framework. 
 
-
-What measures does were taken?
+What measurements were recorded?
 ------------------------------
 
-These were the measurements we take to measure the overall performance of the frameworks:
+These were the measurements we record to identify the overall performance of each framework:
 
 * Requests per second
 * Time across all concurrent requests
@@ -53,7 +51,7 @@ These were the measurements we take to measure the overall performance of the fr
 What was the test environment?
 ------------------------------
 
-APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled to avoid possible extra overheads. 
+APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled to avoid potentially additional overheads. 
 
 .. _APC: http://php.net/manual/en/book.apc.php
 
@@ -87,7 +85,7 @@ Results
 Yii (YII_DEBUG=false) Version yii-1.1.10.r3566
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Yii_ is a high-performance PHP framework best for developing Web 2.0 applications. Version used for benchmark was yii-1.1.10.r3566. We disable YII_DEBUG for get faster perfomance. 
+Yii_ is a high-performance PHP framework best for developing Web 2.0 applications. The version used for the benchmarks was yii-1.1.10.r3566. We disabled YII_DEBUG to achieve maximum perfomance. 
 
 .. _Yii: http://www.yiiframework.com/
 
@@ -526,11 +524,11 @@ Phalcon Version 0.3.5
 Graphs
 ^^^^^^
 
-The first graph shows how many requests per second each framework was able to accept. Second shows the average time across all concurrent requests. 
+The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests. 
 
 ???? NO SE COLOCAR IMAGENES DE BARRAS
 
 Conclusion
 -----------
 
-The Phalcon compiled nature offers extraordinary performance that outperforms all other frameworks in this comparison. Phalcon is a real high performance framework that allows you to scale more easily than ever. 
+The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks. 
