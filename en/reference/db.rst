@@ -1,8 +1,6 @@
-
-
 Database Abstraction Layer
 ==========================
-Phalcon_Db is the component behind  that powers up all the models stuff in the framework. It consists of an independent high-levelabstraction layer for database systems completely written in C. This component allows doing a lower level database manipulation than using models. While the models do not need to use SQL, here you can use the specific SQL engine with you are working. 
+Phalcon_Db is the component behind Phalcon_Model that powers up all the models stuff in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C. This component allows doing a lower level database manipulation than using models. While the models do not need to use SQL, here you can use the specific SQL engine with you are working. 
 
 This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the  for a complete reference.
 
@@ -138,7 +136,6 @@ By default it creates arrays with both associative and numeric indices. You can 
 +----------------------+-----------------------------------------------------------+
 | Phalcon_Db::DB_BOTH  | Return an array with both associative and numeric indices | 
 +----------------------+-----------------------------------------------------------+
-
 
 .. code-block:: php
 
