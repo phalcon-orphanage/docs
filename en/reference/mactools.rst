@@ -2,18 +2,20 @@ Phalcon Developer Tools on Mac OS X
 ===================================
 These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
 
-Requisites
+Prerequisites
 ----------
-PHP extension is required to execute Phalcon Tools. Be sure you have installed it previously.
+The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the. Also you can clone itfrom  `Github <https://github.com/phalcon/phalcon-devtools>`_ . Open your terminal and execute the commands as follows to get a rapid installation:
+You can download a cross platform package containing the developer tools from the `Download <http://phalconphp.com/download>`_ section. Also you can clone it from  `Github <https://github.com/phalcon/phalcon-devtools>`_ . 
+
+Open the terminal application:
 
 .. figure:: ../_static/img/mac-1.png
    :align: center
 
-Copy & Paste the below commands in your terminal:
+Copy & Paste the commands below in your terminal:
 
 .. code-block:: bash
 
@@ -43,14 +45,14 @@ The .profile should look like this:
 .. figure:: ../_static/img/mac-4.png
    :align: center
 
-Save modifications, close and open again your Terminal. The last step is to create a symbolic link to the phalcon.sh script. You can do that typing the next command in your terminal:
+Save your changes and close the editor. In the terminal window, type the following commands to create a symbolic link to the phalcon.sh script:
 
 .. code-block:: bash
 
     ln -s ~/phalcon-tools/phalcon.sh ~/phalcon-tools/phalcon
     chmod +x ~/phalcon-tools/phalcon
 
-Type the command "phalcon" and you will look something like this:
+Type the command "phalcon" and you will see something like this:
 
 .. figure:: ../_static/img/mac-5.png
    :align: center
