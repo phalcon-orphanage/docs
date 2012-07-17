@@ -7,7 +7,7 @@ WampServer_ is a Windows web development environment. It allows you to create we
 
 Download the right Phalcon
 --------------------------
-WAMP has both 32 and 64 bits versions. From the download section, you could choose the Phalcon for Windows accordingly to your desired architecture. 
+WAMP has both 32 and 64 bits versions. From the `download section <http://www.phalconphp.com/download>`_, you could choose the Phalcon for Windows accordingly to your desired architecture. 
 
 After download the Phalcon library you will have a zip file like this: 
 
