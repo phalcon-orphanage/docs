@@ -2,18 +2,20 @@ Phalcon Developer Tools on Linux
 ================================
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
 
-Requisites
+Prerequisites
 ----------
-PHP extension is required to execute Phalcon Tools. Be sure you have installed it previously.
+The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the`download page </download>`_ . Also you can clone itfrom  `Github <https://github.com/phalcon/phalcon-devtools>`_ . Open your terminal and execute the commands as follows to get a rapid installation:
+You can download a cross platform package containing the developer tools from the `Download <http://phalconphp.com/download>`_ section. Also you can clone it from  `Github <https://github.com/phalcon/phalcon-devtools>`_ . 
+
+Open a terminal and type the commands below:
 
 .. figure:: ../_static/img/linux-1.png
    :align: center
 
-Then enter cloned directory and execute ". ./phalcon.sh", don't forget the dot at beginning of the command:
+Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
 
 .. figure:: ../_static/img/linux-2.png
    :align: center

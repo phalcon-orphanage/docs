@@ -43,7 +43,7 @@ How does a PHP C-extension work?
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn’t interpreted because is already compiled to a specific platform and processor
 
-How a Phalcon works?
+How does Phalcon work?
 --------------------
 
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
