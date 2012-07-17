@@ -83,5 +83,5 @@ Ini files are a common way to store settings. Phalcon_Config uses the optimized 
 Related Guides
 --------------
 
-* Settings supported by the Framework
+* :doc:`Settings supported by the Framework <settings>`
 

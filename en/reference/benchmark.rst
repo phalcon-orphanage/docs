@@ -1,7 +1,7 @@
 Framework Benchmark
 ===================
 
-In teh past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality.. This is yet another way in which improving web performance will have a positive impact on a website.
+In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality. This is yet another way in which improving web performance will have a positive impact on a website.
 
 The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
 
@@ -26,7 +26,7 @@ We encourage programmers to clone the test suite that we are using for our bench
 
 
 How the benchmarks were performed?
----------------------------
+----------------------------------
 
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many people don't like this kind of benchmark because real-world applications require more complex features or structures. However, these tests identify the minimum time spent by each framework to perform a simple task. Such a task represents the mimimum requirement for every framework to process a single request.
 
@@ -35,7 +35,7 @@ More specifically, the benchmark only measures the time it takes for a framework
 A controller and a view have been created for each framework. The controller "say" and action "hello". The action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 1000 requests using 5 concurrent connections to each framework. 
 
 What measurements were recorded?
-------------------------------
+--------------------------------
 
 These were the measurements we record to identify the overall performance of each framework:
 
@@ -640,6 +640,6 @@ The first graph shows how many requests per second each framework was able to ac
 	</div>
 
 Conclusion
------------
+----------
 
 The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks. 
