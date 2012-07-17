@@ -1,5 +1,3 @@
-
-
 Improving Performance with Cache
 ================================
 Phalcon provides the , it help us to cache output fragmentsavoiding the continuous reprocessing of code that every time returns the same output. Phalcon_Cache is very similar to the Zend Framework counterpart but is written in C to reach high performance.This component uses an internal structure of frontends and backends. Frontends acts as input sources and backends provides storage features. 
@@ -12,11 +10,9 @@ Although this component is very fast, implementing it in unnecessary cases could
 * You are using a lot of helpers and the output generated is almost always the same
 * You are accessing database data constantly and these data rarely change
 
-
-
 Caching Output Fragments
 ------------------------
-The following example shows how to implement a cache using this component. It takes the output generatedby PHP and stores it into a file. The content of the file is refreshed each 172800 seconds (2 days). The implementation of the cache avoids the continuous execution of the helper Phalcon\Tag::linkTo. 
+The following example shows how to implement a cache using this component. It takes the output generatedby PHP and stores it into a file. The content of the file is refreshed each 172800 seconds (2 days). The implementation of the cache avoids the continuous execution of the helper Phalcon_Tag::linkTo. 
 
 .. code-block:: php
 
@@ -60,8 +56,6 @@ The following example shows how to implement a cache using this component. It ta
       echo $content;
     }
 
-
-
 Caching Arbitrary Data
 ----------------------
 Remember the situations mentioned above? Caching data is very useful to reduce access todatabase systems or avoid avoid heavy processing frequently. 
@@ -100,8 +94,6 @@ Remember the situations mentioned above? Caching data is very useful to reduce a
        echo $robot->name, "\n";
     }
 
-
-
 Querying the cache
 ------------------
 Insofar as we add items to the cache, they are uniquely identified with the keys used to store them.If the cached data has expired or the key is not existent in the cache the method get will return null. 
@@ -130,7 +122,6 @@ If you want to know which keys are stored in the cache you could call the queryK
     $keys = $cache->queryKeys("my-prefix");
 
 
-
 Deleting from the Cache
 -----------------------
 Additionally, sometimes may be necessary to remove items from the cache, this in order to forcethem to be refreshed from its origins. To delete an item you need to know the key with which it was created: 
@@ -149,7 +140,6 @@ Additionally, sometimes may be necessary to remove items from the cache, this in
     }
 
 
-
 Frontend Adapters
 -----------------
 This component makes use of frontend adapters to encapsulate the different input sources to cache.
@@ -163,7 +153,6 @@ This component makes use of frontend adapters to encapsulate the different input
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
 | None    | It's used to cache any kind of PHP data without serializing them.                                                                                   | 
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-
 
 
 Backend Adapters
@@ -181,10 +170,9 @@ Also, this component makes use of backend adapters to encapsulate storage detail
 +-----------+------------------------------------------------+-----------+---------------------+
 
 
-
 File Backend
 ^^^^^^^^^^^^
-This backend will store cached content into files in the local server. The available options for thisbackend are: 
+This backend will store cached content into files in the local server. The available options for this backend are: 
 
 +----------+-----------------------------------------------------------+
 | Option   | Description                                               | 
@@ -193,10 +181,9 @@ This backend will store cached content into files in the local server. The avail
 +----------+-----------------------------------------------------------+
 
 
-
 Memcached Backend
 ^^^^^^^^^^^^^^^^^
-This backend will store cached content on a memcached server. The available options for thisbackend are: 
+This backend will store cached content on a memcached server. The available options for this backend are: 
 
 +------------+---------------------------------------------+
 | Option     | Description                                 | 
@@ -209,7 +196,6 @@ This backend will store cached content on a memcached server. The available opti
 +------------+---------------------------------------------+
 
 
-
 APC Backend
 ^^^^^^^^^^^
-This backend will store cached content on Alternative PHP Cache (APC). This cache doesn't have anyconfiguration. 
+This backend will store cached content on Alternative PHP Cache (APC). This cache doesn't have any configuration. 

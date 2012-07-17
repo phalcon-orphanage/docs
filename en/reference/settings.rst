@@ -76,8 +76,6 @@ This list includes the directives you can set to configure your Phalcon setup:
 | views   | cache.lifetime | Default time to live of the cache in seconds                       | cache.lifetime = 3600    | 
 +---------+----------------+--------------------------------------------------------------------+--------------------------+
 
-
-
 Related Guides
 --------------
 

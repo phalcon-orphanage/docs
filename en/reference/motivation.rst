@@ -6,7 +6,7 @@ There are many PHP frameworks nowadays, but none of them is like Phalcon (Really
 Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application down and subsequently impacts the end user experience.
 
 The Question
-----
+------------
 
 Why can't we have a framework with all of its advantages but with none or very few disadvantages?
 
@@ -19,7 +19,6 @@ Why?
 
 * The use of frameworks has become mandatory in professional development with PHP
 * Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
-
 
 Inner workings of PHP?
 --------------

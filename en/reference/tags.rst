@@ -1,8 +1,9 @@
-
-
 View Helpers
 ============
-HTML markup can quickly become tedious to write and maintain because of control naming and their numerousattributes. Phalcon deals away with these complexities by providing view helpers for generating HTML markup. This guide is not intended to be a complete documentation of available helpers and their arguments.Please visit the  documentation for a complete reference.
+HTML markup can quickly become tedious to write and maintain because of control naming and their numerousattributes. Phalcon deals away with these complexities by providing view helpers for generating HTML markup. 
+
+.. highlights::
+    This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the  documentation for a complete reference.
 
 Using Name Aliasing
 -------------------
@@ -12,13 +13,11 @@ You could use name aliasing to get short names for classes. In this case, a Tag 
 
     <?php use Phalcon_Tag as Tag; ?>
 
-
-
 Creating Forms
 --------------
 Forms in web applications are an essential interface for user input. The following exampleshows how to implement a simple search form using view helpers: 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <?php use Phalcon_Tag as Tag; ?>
     
@@ -30,7 +29,7 @@ Forms in web applications are an essential interface for user input. The followi
 
 This will generate the following HTML:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <form action="/phalconphp/products/search/" method="get">
      <label for="q">Search:</label>
@@ -38,24 +37,20 @@ This will generate the following HTML:
      <input type="submit" value="Search" />
     </endform>
 
-
-
 Helpers to Generate Form Elements
 ---------------------------------
 Phalcon provides a series of helpers to generate form elements such astextfields, buttons and more. The first parameter to these is always the name of the input. When the form is submitted, the name will be passed along with the form data. In the controller you can recover those values with the same name using methods getPost or getQuery in  
 
-.. code-block:: php
+.. code-block::  html+php
 
     <?= Phalcon_Tag::textField(array("parent_id", "value"=> "5")) ?>
     <?= Phalcon_Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
     <?= Phalcon_Tag::passwordField("password") ?>
     <?= Phalcon_Tag::hiddenField(array("parent_id", "value"=> "5") ?>
 
-
-
 Making Select Boxes
 -------------------
-Generating select boxes (combo list) are easy, especially if you have the related data in PHP variables.The helpers destined to this task are Phalcon\Tag::select and Phalcon\Tag::selectStatic. The first one was specifically designed to work with  . Anothercould be used with PHP arrays. 
+Generating select boxes (combo list) are easy, especially if you have the related data in PHP variables.The helpers destined to this task are Phalcon_Tag::select and Phalcon_Tag::selectStatic. The first one was specifically designed to work with Phalcon_Model_Base. Another could be used with PHP arrays. 
 
 .. code-block:: php
 
@@ -79,7 +74,7 @@ Generating select boxes (combo list) are easy, especially if you have the relate
 
 The following HTML will generated respectively:
 
-.. code-block:: php
+.. code-block:: html
 
     <select id="productsId" name="productsId">
       <option value="101">Tomato</option>
@@ -92,13 +87,11 @@ The following HTML will generated respectively:
       <option value="I">Inactive</option>
     </select>
 
-
-
 Assigning HTML attributes
 -------------------------
-All the helpers receive an array as its first parameter. This can contain HTML specificattributes for the helper. Those attributes will be generated as HTML at the output. 
+All the helpers receive an array as its first parameter. This can contain HTML specific attributes for the helper. Those attributes will be generated as HTML at the output. 
 
-.. code-block:: php
+.. code-block:: html+php
 
     <?= Phalcon_Tag::textField(array(
       "price",
@@ -107,15 +100,12 @@ All the helpers receive an array as its first parameter. This can contain HTML s
       "placeholder" => "Enter a price"
     )) ?>
 
-
-
 Setting Helper Values
 ---------------------
 
-
 From Controllers
 ^^^^^^^^^^^^^^^^
-Usually, We need to set specific values for form elements in the view. Youcan directly set those values from the controller using Phalcon\Tag::setDefaultValue(). It preloads a value for any future helpers present in the view. If any helper is present in the view that matches any preload value, it will be used to it, unless, a value is directly assigned on the helper. 
+Usually, We need to set specific values for form elements in the view. You can directly set those values from the controller using Phalcon_Tag::setDefaultValue(). It preloads a value for any future helpers present in the view. If any helper is present in the view that matches any preload value, it will be used to it, unless, a value is directly assigned on the helper. 
 
 .. code-block:: php
 
@@ -148,7 +138,7 @@ Then at the view, a selectStatic helper matches the same index used to pre-set t
 
 This will generate the following SELECT tag with the value "Blue" selected:
 
-.. code-block:: php
+.. code-block:: html
 
     <select id="color" name="color">
       <option value="Yellow">Yellow</option>
@@ -156,19 +146,17 @@ This will generate the following SELECT tag with the value "Blue" selected:
       <option value="Red">Red</option>
     </select>
 
-
-
 From Request
 ^^^^^^^^^^^^
-A special feature of helpers generated by Phalcon\Tag is that it helps to keep the valuesof form helpers between requests. Thus, you can easily show validation messages without losing entered data. 
+A special feature of helpers generated by Phalcon_Tag is that it helps to keep the values of form helpers between requests. Thus, you can easily show validation messages without losing entered data. 
 
 Specifing values directly
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Every form helper supports the parameter "value". With it you can specify a value for the helperdirectly. When this parameter is present, some preset value using setDefaultValue or via request will be ignored. 
+Every form helper supports the parameter "value". With it you can specify a value for the helper directly. When this parameter is present, some preset value using setDefaultValue or via request will be ignored. 
 
 Changing dynamically the Document Title
 ---------------------------------------
-Phalcon\Tag supplies helpers to change dynamically the document title from the controller.The following example will show you how doing that: 
+Phalcon_Tag supplies helpers to change dynamically the document title from the controller. The following example will show you how doing that: 
 
 .. code-block:: php
 
@@ -188,13 +176,11 @@ Phalcon\Tag supplies helpers to change dynamically the document title from the c
     
     }
 
-
-
-.. code-block:: php
+.. code-block:: html+php
 
     <html>
       <head>
-        <title><?= Phalcon\Tag::getTitle() ?></title>
+        <title><?= Phalcon_Tag::getTitle() ?></title>
       </head>
       <body>
     
@@ -203,7 +189,7 @@ Phalcon\Tag supplies helpers to change dynamically the document title from the c
 
 The following HTML will generated:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <html>
       <head>
@@ -214,11 +200,9 @@ The following HTML will generated:
       </body>
     </html>
 
-
-
 Static Content Helpers
 ----------------------
-Phalcon_Tag also provide helpers to generate tags such as script, link or img. They help you toeasily generate a public location to your static resources at the document root or outside: Insert images:
+Phalcon_Tag also provide helpers to generate tags such as script, link or img. They help you to easily generate a public location to your static resources at the document root or outside: Insert images:
 
 .. code-block:: php
 
@@ -257,11 +241,9 @@ Include Javascript:
     //Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script>
     echo Phalcon_Tag::javascriptInclude("javascript/jquery.min.js");
 
-
-
 Creating your own helpers
 -------------------------
-Maybe you want to create a new helper to fulfill any specific need. You could create a new classthat extends from Phalcon\Tag and implement the new helper: 
+Maybe you want to create a new helper to fulfill any specific need. You could create a new class that extends from Phalcon_Tag and implement the new helper: 
 
 .. code-block:: php
 

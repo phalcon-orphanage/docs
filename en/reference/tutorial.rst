@@ -1,7 +1,7 @@
 Tutorial: Let’s learn by example
 ================================
 
-Throughout this tutorial, we’ll walk you through the creation of a simple registration form from scratch. Also we'll explain the basic aspects of the framework behavior. If you like more code generators stuff can also read about developer tools. 
+Throughout this tutorial, we’ll walk you through the creation of a simple registration form from scratch. Also we'll explain the basic aspects of the framework behavior. If you like more code generators stuff can also read about `developer tools <tools.html>`_. 
 
 Checking your installation
 --------------------------
@@ -29,7 +29,7 @@ Phalcon extension should appear as part of the output:
 
 Creating a project
 ------------------
-The best way to use this guide is to follow each step as it happens, no code or step needed to make this example application has been left out, and so you can literally follow along step by step. You can get the complete code here.     
+The best way to use this guide is to follow each step as it happens, no code or step needed to make this example application has been left out, and so you can literally follow along step by step. You can get the complete code `here <tutorial.html>`_.     
 
 File structure
 ^^^^^^^^^^^^^^
@@ -78,7 +78,7 @@ Bootstrap
 ^^^^^^^^^
 The first file you need to create is the bootstrap file. This file is very important; it will give you all the project control. In that file you can implement the application behavior and integrate the components of your choice.
 
-Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The Phalcon_Controller_Front will easily allow us to orquest the MVC flow. This class automatically will instantiate Phalcon classes required to make the MVC work. The public/index.php file should look like:
+Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The `Phalcon_Controller_Front <../api/Phalcon_Controller_Front.html>`_ will easily allow us to orquest the MVC flow. This class automatically will instantiate Phalcon classes required to make the MVC work. The public/index.php file should look like:
 
 .. code-block:: php
 
@@ -100,7 +100,7 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
      echo "PhalconException: ", $e->getMessage();
     }
 
-The Phalcon_Controller_Front purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. The file is very simple, keep in mind we do not need include any file or register an autoloader. 
+The `Phalcon_Controller_Front <../api/Phalcon_Controller_Front.html>`_ purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. The file is very simple, keep in mind we do not need include any file or register an autoloader. 
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
@@ -151,7 +151,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The Phalcon_View component is automatically created when the action execution has ended. Learn more about views usage here.
+The browser output should remain the same. The `Phalcon_View <../api/Phalcon_View.html>`_ static component is automatically created when the action execution has ended. Learn more about views usage `here <views.html>`_ .
 
 Designing a sign up form
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -171,7 +171,7 @@ The generated HTML code brings an "A" html tag linking to a new controller:
 
     <h1>Hello!</h1> <a href="/test/signup" >Sign Up Here!</a>
 
-As you saw, the class Phalcon_Tag has made its entrance. Its purpose it's to help us to build HTML tags with framework conventions in mind. A deeper article about HTML generation can be found here    
+As you saw, the class `Phalcon_Tag <../api/Phalcon_Tag.html>`_ has made its entrance. Its purpose it's to help us to build HTML tags with framework conventions in mind. A deeper article about HTML generation can be found `here <tags.html>`_    
 
 .. figure:: ../_static/img/tutorial-2.png
 	:align: center
@@ -277,7 +277,7 @@ A model should be located in the app/models directory. The model mapping to "use
 
 Setting a Database Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is not complexity about using models. But we forgot one small detail. We need to tell Phalcon which connection database parameters users class needs to successfully map table with it. The Phalcon_Controller_Front config in the bootstrap file should be modified to add the new configuration settings: 
+There is not complexity about using models. But we forgot one small detail. We need to tell Phalcon which connection database parameters users class needs to successfully map table with it. The `Phalcon_Controller_Front <../api/Phalcon_Controller_Front.html>`_ config in the bootstrap file should be modified to add the new configuration settings: 
 
 .. code-block:: php
 
@@ -311,7 +311,7 @@ There is not complexity about using models. But we forgot one small detail. We n
      echo "PhalconException: ", $e->getMessage();
     }
 
-We previously replaced defined settings on a new Phalcon_Config object with database configuration. Also you may define settings on a file by separate using ini or other formats.
+We previously replaced defined settings on a new `Phalcon_Config <../api/Phalcon_Config.html>`_ object with database configuration. Also you may define settings on a file by separate using ini or other formats.
 
 With database parameters our models are ready to work and interact.
 
@@ -355,7 +355,7 @@ Receiving data from the form and storing them in the table will be our next step
 
     }
 
-When you receive a variable from input you can optionally apply a filter to validate/sanizite the values. This will make your application more secure because it's avoiding common attacks like SQL injections. In the example we apply "string" to the "name" variable to ensure that user typed no malicious chars. The component Phalcon_Filter	makes the work in an implicit way.
+When you receive a variable from input you can optionally apply a filter to `validate/sanizite <filter.html>`_ the values. This will make your application more secure because it's avoiding common attacks like SQL injections. In the example we apply "string" to the "name" variable to ensure that user typed no malicious chars. The component `Phalcon_Filter <../api/Phalcon_Filter.html>`_ makes the work in an implicit way.
 
 Then instantiates Users class will give us the possibility to assign values to public members with the same name as the fields in the table. The save method finishes the storing process. The returning true value tells us if saving was successful or not. If we don't type any of the required files our screen will look like this:     
 
@@ -373,6 +373,6 @@ The following applications are also available to provide more complete examples 
 * `INVO application`_: A simple application to generate invoices. Allows to create products, companies, product types. etc.
 * `PHP Alternative website`_: This sample application explains how to create a multi-lingual application, also shows how to implement advanced routes.
 
-.. _`INVO application`: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _`PHP Alternative website`: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
+.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
+.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 

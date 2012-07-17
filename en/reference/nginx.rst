@@ -1,6 +1,8 @@
 Nginx Installation Notes
 ========================
-`Nginx <http://wiki.nginx.org/Main>`_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load. Normally, the `PHP-FPM <http://php-fpm.org/>`_ (FastCGI Process Manager) is used to integrate PHP with Nginx. Nowadays, PHP-FPM is bundled with any Unix PHP distribution. Phalcon+Nginx+PHP-FPM provides an interesting strategy to increase the performance of your websites. 
+`Nginx <http://wiki.nginx.org/Main>`_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load. 
+
+Normally, the `PHP-FPM <http://php-fpm.org/>`_ (FastCGI Process Manager) is used to integrate PHP with Nginx. Nowadays, PHP-FPM is bundled with any Unix PHP distribution. Phalcon+Nginx+PHP-FPM provides an interesting strategy to increase the performance of your websites. 
 
 Configuring Nginx for Phalcon
 -----------------------------
@@ -96,7 +98,7 @@ And this second configuration allow you to have different configurations by host
     
 Preparing Phalcon to Nginx
 --------------------------
-If you're using the default router. Nginx puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
+If you're using the default `Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite.html>`_ router. Nginx puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
 
 .. code-block:: php
 

@@ -1,5 +1,3 @@
-
-
 Orchestrating MVC
 =================
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by. This component encapsulatesall the dirty details of instantiate every component to then integrate it with each others making the MVC pattern work as desired. 

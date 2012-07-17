@@ -1,7 +1,7 @@
 Framework Benchmark
 ===================
 
-In teh past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality.. This is yet another way in which improving web performance will have a positive impact on a website.
+In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality. This is yet another way in which improving web performance will have a positive impact on a website.
 
 The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
 
@@ -26,7 +26,7 @@ We encourage programmers to clone the test suite that we are using for our bench
 
 
 How the benchmarks were performed?
----------------------------
+----------------------------------
 
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many people don't like this kind of benchmark because real-world applications require more complex features or structures. However, these tests identify the minimum time spent by each framework to perform a simple task. Such a task represents the mimimum requirement for every framework to process a single request.
 
@@ -35,7 +35,7 @@ More specifically, the benchmark only measures the time it takes for a framework
 A controller and a view have been created for each framework. The controller "say" and action "hello". The action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 1000 requests using 5 concurrent connections to each framework. 
 
 What measurements were recorded?
-------------------------------
+--------------------------------
 
 These were the measurements we record to identify the overall performance of each framework:
 
@@ -526,9 +526,120 @@ Graphs
 
 The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests. 
 
-???? NO SE COLOCAR IMAGENES DE BARRAS
+
+.. raw:: html
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load("visualization", "1", {packages:["corechart"]});
+		google.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Framework');
+			data.addColumn('number', 'Requests per second');
+			data.addRows([
+				['Symfony', 122.15],
+				['Zend', 234.53],
+				['Fuel', 564.49],
+				['Kohana', 623.77],
+				['Yii', 762.55],
+				['CodeIgniter', 844.63],
+				['Phalcon', 2599.46]
+			]);
+
+			var options = {
+				title: 'Framework / Requests per second (#/sec) [more is better]',
+				colors: ['#3366CC'],
+				animation: {
+					duration: 0.5
+				},
+				fontSize: 12,
+				chartArea: {
+					width: '600px'
+				}
+			};
+
+			var chart = new google.visualization.ColumnChart(document.getElementById('rps_div'));
+			chart.draw(data, options);
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Framework');
+			data.addColumn('number', 'Time per Request');
+			data.addRows([
+				['Symfony', 8.186],
+				['Zend', 4.264],
+				['Fuel', 1.771],
+				['Kohana', 1.603],
+				['Yii', 1.311],
+				['CodeIgniter', 1.184],
+				['Phalcon', 0.385]
+			]);
+
+			var options = {
+				title: 'Framework / Time per Request (mean, across all concurrent requests) [less is better]',
+				colors: ['#3366CC'],
+				fontSize: 11
+			};
+
+			var chart = new google.visualization.ColumnChart(document.getElementById('tpr_div'));
+			chart.draw(data, options);
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Framework');
+			data.addColumn('number', 'Memory Usage (MB)');
+			data.addRows([
+				['Yii', 3.50],
+				['Symfony', 3.0],
+				['Zend', 1.75],
+				['Kohana', 1.25],
+				['CodeIgniter', 1.1],
+				['Fuel', 1.0],
+				['Phalcon', 0.75]
+			]);
+
+			var options = {
+				title: 'Framework / Memory Usage (mean, megabytes per request) [less is better]',
+				colors: ['#3366CC'],
+				fontSize: 11
+			};
+
+			var chart = new google.visualization.ColumnChart(document.getElementById('mpr_div'));
+			chart.draw(data, options);
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Framework');
+			data.addColumn('number', 'Number of included PHP files');
+			data.addRows([
+				['Symfony', 117],
+				['Zend', 66],
+				['Kohana', 46],
+				['Fuel', 30],
+				['Yii', 36],
+				['CodeIgniter', 23],
+				['Phalcon', 4]
+			]);
+
+			var options = {
+				title: 'Framework / Number of included PHP files (mean, number on a single request) [less is better]',
+				colors: ['#3366CC'],
+				fontSize: 11
+			};
+
+			var chart = new google.visualization.ColumnChart(document.getElementById('nfi_div'));
+			chart.draw(data, options);
+
+		}
+	</script>
+	<div align="center">
+		<div id="rps_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_31166" id="Drawing_Frame_31166" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+		<div id="tpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_89467" id="Drawing_Frame_89467" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+		<div id="nfi_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_49746" id="Drawing_Frame_49746" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+		<div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+	</div>
 
 Conclusion
------------
+----------
 
 The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks. 
