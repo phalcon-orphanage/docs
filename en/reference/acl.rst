@@ -1,8 +1,6 @@
-
-
 Access Control Lists ACL
 ========================
-This component allows to manage ACL lists.An  `access control list (ACL) <http://en.wikipedia.org/wiki/Access_control_list>`_ is a listof permissions attached to an object. An ACL specifies that users or system processes are granted access to objects, as well as what operations are allowed on given objects. Phalcon provides the  to manage access control lists.Before proceeding, we recommend you to read some ACL documentation, as it is important to be familiarwith some of the ACL concepts. 
+This component allows to manage ACL lists. An `access control list (ACL) <http://en.wikipedia.org/wiki/Access_control_list>`_ is a list of permissions attached to an object. An ACL specifies that users or system processes are granted access to objects, as well as what operations are allowed on given objects. Phalcon provides the Phalcon_Acl to manage access control lists. Before proceeding, we recommend you to read some ACL documentation, as it is important to be familiarwith some of the ACL concepts. 
 
 Creating an ACL
 ---------------
@@ -22,8 +20,6 @@ By default Phalcon_Acl allows access to action on resources that has not been de
 
     //Default action is deny access
     $acl->setDefaultAction(Phalcon_Acl::DENY);
-
-
 
 Adding Roles to the ACL
 -----------------------
@@ -59,8 +55,6 @@ Resources are objects where access is controlled. Normally in MVC application re
     //Add "customers" resource with a couple of operations
     $acl->addResource($customersResource, "search");
     $acl->addResource($customersResource, array("create", "update"));
-
-
 
 Defining Access Controls
 ------------------------
@@ -110,8 +104,6 @@ In some cases, role's permissions could be inherited from other existing roles. 
     //Add "Administrators" role inheriting from "Guests" its accesses
     $acl->addRole($roleAdmins, $roleGuests);
 
-
-
 Serializing ACL lists
 ---------------------
 To improve performance Phalcon_Acl instances can be serialized and stored in plain files to avoidcontinuous definition. You can do that as follows: 
@@ -142,8 +134,6 @@ To improve performance Phalcon_Acl instances can be serialized and stored in pla
     } else {
      echo "Access denied :(";
     }
-
-
 
 Integrating ACL with Controllers
 --------------------------------

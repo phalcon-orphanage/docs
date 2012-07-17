@@ -1,12 +1,12 @@
 Installation
 ============
 
-PHP extensions require a different installation method of traditional php-based libraries or frameworks. You can either download a binary package for the system of your choice or build it from sources.  
+PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either download a binary package for the system of your choice or build it from the sources.  
 
-For the last months we have made research on PHP behavior looking for small and big optimizations, studying deeply the Zend Engine to achieve the omission of unnecessary validations generating low-level solutions to get the best possible performance. 
+During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations, compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance from Phalcon. 
 
 .. highlights::
-   Phalcon compiles from PHP 5.3.1, but due to old PHP bugs causing memory leaks, we highly recommend you to use at least PHP 5.3.8 or superior. 
+   Phalcon compiles with PHP 5.3.1, but due to old PHP bugs causing memory leaks, we highly recommend you to use at least PHP 5.3.8 or greater. 
 
 Windows
 -------
@@ -15,7 +15,7 @@ To use phalcon on Windows you can download a DLL library. Edit your php.ini file
 
     extension=php_phalcon.dll
 
-Finally restart your webserver.
+Restart your webserver.
 
 The following screencast is a step-by-step guide to install Phalcon on Windows: 
 
@@ -35,26 +35,29 @@ Related Guides
 Unix/Linux
 ----------
 
-On platform Unix/Linux you can easily compile and install the extension from source code: 
+On a Unix/Linux system you can easily compile and install the extension from the source code: 
 
 Requirements
 ^^^^^^^^^^^^
-We need some packages previously installed.
+Prerequisite packages are:
 
 * PHP 5.x development resources
 * GCC compiler (Linux) or Xcode (Mac)
+* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
 .. code-block:: bash 
 
     #Ubuntu
     sudo apt-get install php5-dev php5-mysql gcc
+    sudo apt-get install git-core
 
     #Suse
     yast2 -i php5-pear php5-dev php5-mysql gcc
+    yast2 -i git-core
 
 Compilation
 ^^^^^^^^^^^
-On platform Unix/Linux you can easily compile and install the extension from source code: 
+Creating the extension: 
 
 .. code-block:: bash
 
@@ -72,7 +75,7 @@ Add extension to your php.ini
 
     extension=phalcon.so
 
-Finally restart the webserver 
+Restart the webserver 
 
 
 FreeBSD

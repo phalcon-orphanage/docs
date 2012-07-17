@@ -1,15 +1,15 @@
 Installation on XAMPP
 =====================
 
-XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. XAMPP is really very easy to install and to use - just download, extract and start. These are the detailed instructions to install Phalcon on XAMPP for Windows. If possible, We recommend you to use the latest XAMPP release. 
+XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended. 
 
 .. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
 
-Download the right Phalcon
+Download the right version of Phalcon
 --------------------------
-XAMPP is always releasing 32 bits versions of Apache and PHP. From the download section, you should to download the x86 version of Phalcon for Windows. 
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section. 
 
-After download the Phalcon library you will have a zip file like this: 
+After downloading the Phalcon library you will have a zip file like the one shown below: 
 
 .. figure:: ../_static/img/xampp-1.png
 	:align: center
@@ -19,27 +19,27 @@ Extract the library from the archive to get the Phalcon DLL:
 .. figure:: ../_static/img/xampp-2.png
 	:align: center
 
-Copy the file php_phalcon.dll to the PHP extensions. We have installed XAMPP at c:\\xampp directory. In our case is located at c:\\xampp\\php\\ext
+Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the c:\\xampp folder, the extension needs to be in c:\\xampp\\php\\ext
 
 .. figure:: ../_static/img/xampp-3.png
 	:align: center
 
-Edit the php.ini file, it is located at ﻿C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. Append at the end of the file: extension=php_phalcon.dll and save it. 
+Edit the php.ini file, it is located at ﻿C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it. 
 
 .. figure:: ../_static/img/xampp-4.png
 	:align: center	
 
-Now it's time to restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. 
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. 
 
 .. figure:: ../_static/img/xampp-5.png
 	:align: center	
 
-Open your browser to navigate to http://localhost. The XAMPP welcome page will appear. Look and click on the link phpinfo().
+Open your browser to navigate to http://localhost. The XAMPP welcome page will appear. Click on the link phpinfo().
 
 .. figure:: ../_static/img/xampp-6.png
 	:align: center 	
 
-phpinfo() will output a large amount of information about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly. 
+phpinfo() will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly. 
 
 .. figure:: ../_static/img/xampp-7.png
 	:align: center
