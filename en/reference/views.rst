@@ -8,7 +8,7 @@ A hierarchy of files is supported by the component allowing reducing the coding 
 
 Integrating Views with Controllers
 ----------------------------------
-Phalcon automatically pulls down the execution flow to the view component when the controller has ended its work.View component will look in the views directory for another directory named as the last controller executed. For instance, a request is made to the next URL *http://127.0.0.1/blog/posts/show/301* , by default Phalconwill split the URL as is follows: 
+Phalcon automatically pulls down the execution flow to the view component when the controller has ended its work.View component will look in the views directory for another directory named as the last controller executed. For instance, a request is made to the next URL *http://127.0.0.1/blog/posts/show/301* , by default Phalcon will split the URL as is follows: 
 
 +-------------------+-----------+
 | Server Address    | 127.0.0.1 | 
@@ -44,9 +44,9 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
     
     }
 
-The setVar lets to create variables on the fly for each view executed in the current request. The above exampleshows how to pass the $postId parameter to the views with the same name. 
+The setVar lets to create variables on the fly for each view executed in the current request. The above example shows how to pass the $postId parameter to the views with the same name. 
 
-By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension.If the views directory is  *app/views* then view component will find automatically for these 3 view files.
+By default the View component uses PHP itself as template engine. In this case views should have the .phtml extension. If the views directory is  *app/views* then view component will find automatically for these 3 view files.
 
 +-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Name              | File                          | Description                                                                                                                                                                                                           | 
@@ -58,7 +58,7 @@ By default the View component uses PHP itself as template engine. In this case v
 | Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                  | 
 +-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-You are not required to implement all of the files mentioned above. `Phalcon_Db`_ simply will pass to next view level in the hierarchy of files.If 3 view files will implement, they could be looked as follows: 
+You are not required to implement all of the files mentioned above. `Phalcon_Db`_ simply will pass to next view level in the hierarchy of files. If 3 view files will implement, they could be looked as follows: 
 
 .. _Phalcon_Db: ../api/Phalcon_Db.html
 
@@ -127,7 +127,7 @@ The generated HTML by the request will be:
 
 Using Partials
 --------------
-Partial templates are another way of breaking the rendering processinto simpler chunks. With a partial, you can move the code for rendering a particular piece of a response to its own file. 
+Partial templates are another way of breaking the rendering process into simpler chunks. With a partial, you can move the code for rendering a particular piece of a response to its own file. 
 
 One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of aview so that you can grasp what's going on more easily. For example, you might have a view that looked like this: 
 
@@ -252,11 +252,11 @@ Application models are always available at the presentation. Autoloader automati
     ?>
     </div>
 
-Although you may perform insert or update operations at views, we only recommendreading records at them because is not possible to forward the execution flow to another controller in case of errors. 
+Although you may perform insert or update operations at views, we only recommend reading records at them because is not possible to forward the execution flow to another controller in case of errors. 
 
 Picking Views
 -------------
-As mentioned above, when Phalcon_View is managed by Phalcon_Controller_Front_ the view rendered is the one related with the last controller and action executed. You couldoverride this by using the Phalcon_View::pick method: 
+As mentioned above, when Phalcon_View is managed by Phalcon_Controller_Front_ the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon_View::pick method: 
 
 .. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
 
@@ -278,7 +278,7 @@ As mentioned above, when Phalcon_View is managed by Phalcon_Controller_Front_ th
 
 Caching View Fragments
 ^^^^^^^^^^^^^^^^^^^^^^
-Sometimes when you develop dynamic websites and they arenât updated very often,the output of some pages are exactly the same between requests. Phalcon_View allows caching a part of the rendered output or the entire one. 
+Sometimes when you develop dynamic websites and they aren't updated very often, the output of some pages are exactly the same between requests. Phalcon_View allows caching a part of the rendered output or the entire one. 
 
 Basically, Phalcon_View is integrated with the Phalcon_Cache_ component to provide an easier way to cache output fragments. You could manually set the cachehandler or set a global handler: 
 
@@ -326,7 +326,7 @@ Basically, Phalcon_View is integrated with the Phalcon_Cache_ component to provi
     
     }
 
-The example above a cache was implemented in the initialize method, this only appliesto the current controller. If you want to create a cache for all drivers it's better to set options in the configuration file of the application: 
+The example above a cache was implemented in the initialize method, this only applies to the current controller. If you want to create a cache for all drivers it's better to set options in the configuration file of the application: 
 
 .. code-block:: ini
 
@@ -337,11 +337,11 @@ The example above a cache was implemented in the initialize method, this only ap
 
 Template Engines
 ----------------
-From version 0.4.0, Phalcon_View allows you to use other template engines instead of plain PHP.This helps non-developers create and design views with less effort. Actually, only `Mustache`_ and `Twig <http://twig.sensiolabs.org/>`_ are supported.
+From version 0.4.0, Phalcon_View allows you to use other template engines instead of plain PHP. This helps non-developers create and design views with less effort. Actually, only `Mustache`_ and `Twig <http://twig.sensiolabs.org/>`_ are supported.
 
 .. _Mustache: https://github.com/bobthecow/mustache.php
 
-Other template engines different than PHP require complex text parsing using external PHP librariesin order to generate the final view, this could increase the resources that your application is currently using. 
+Other template engines different than PHP require complex text parsing using external PHP libraries in order to generate the final view, this could increase the resources that your application is currently using. 
 
 If an external template engine is used, Phalcon_View provide you exactly thesame view hierarchy and it's still possible to access the API inside these templates. 
 
@@ -375,7 +375,7 @@ You can replace or add more template engines from the controller as follows:
     
     }
 
-It is possible to completely replace template engines or using more than one at the same time.Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. 
+It is possible to completely replace template engines or using more than one at the same time. Phalcon_View::registerEngines receives an array with template engines. The key of each engine is an extension that helps to differentiate one from another. Templates related to that engines must have those extensions. 
 
 The order in which templates are registered means more relevance than others. If Phalcon_View finds two views with the same name but different extension only the first one will render. 
 
@@ -387,11 +387,9 @@ You need to manually load the Mustache library before use its engine adapter. Th
 
 .. code-block:: php 
   
-    <?php
+    <?php require "path/to/Mustache.php";
 
-    require "path/to/Mustache.php";
-
-Then, in the controller it's necessary to replace or add the Mustache adapter to theview component. If all of your actions will use this engine register it in the initialize method of the controller. 
+Then, in the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this engine register it in the initialize method of the controller. 
 
 .. code-block:: php
 
@@ -430,7 +428,7 @@ A related view (views-dir/posts/show.mhtml) could be defined using the Mustache 
       <p>{{body}}</p>
     {{/showPost}}
 
-Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contentsof a view at a higher level. In Moustache, this can be done as follows: 
+Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contents of a view at a higher level. In Moustache, this can be done as follows: 
 
 .. code-block:: php
 
@@ -475,7 +473,7 @@ Using Twig
 ^^^^^^^^^^
 `Twig <http://twig.sensiolabs.org/>`_ is a modern template engine for PHP.
 
-You need to manually load the Twig library before use its engine adapter. This could be doneby registering its autoloader: 
+You need to manually load the Twig library before use its engine adapter. This could be done by registering its autoloader: 
 
 .. code-block:: php
 
@@ -540,7 +538,7 @@ Phalcon implicitly creates a twig object as follows:
     $loader = new Twig_Loader_Filesystem($viewsDirectory);
     $twig = new Twig_Environment($loader);
 
-If you want to modify any of those variables before render the views,you can pre-build and pass them as options: 
+If you want to modify any of those variables before render the views, you can pre-build and pass them as options: 
 
 .. code-block:: php
 
@@ -573,7 +571,7 @@ If you want to modify any of those variables before render the views,you can pre
 
 Creating your own Template Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines out there, you might want to integrate one of them or create your own.In this section we will explain how to do this. 
+There are many template engines out there, you might want to integrate one of them or create your own. In this section we will explain how to do this. 
 
 A template adapter is only instantiated once across the execution of the request. Normally, it onlyneed to implement two methods: __construct and render. The first one receives the Phalcon_View instance which creates the engine adapter and the options passed when the engine was registered. 
 
@@ -638,10 +636,9 @@ When registering the engine, a instance of your template adapter must be passed 
     }
 
 
-
 View Environment
 ----------------
-Every view executed is included inside a instance so you can have access to its environmentallowing getting useful information you can apply in your own developments. 
+Every view executed is included inside a instance so you can have access to its environment allowing getting useful information you can apply in your own developments. 
 
 The following example shows how to write a Jquery `ajax request <http://api.jquery.com/jQuery.ajax/>`_ using an url with the framework conventions. The method url is called from a $this instance that makesreference to a Phalcon_View object: 
 
@@ -659,7 +656,7 @@ The following example shows how to write a Jquery `ajax request <http://api.jque
 
 Stand-Alone Component
 ---------------------
-All components of the framework can be used individually by being loose coupled to each other.Phalcon_View is not the exception, the following shows how to use it stand alone: 
+All components of the framework can be used individually by being loose coupled to each other. Phalcon_View is not the exception, the following shows how to use it stand alone: 
 
 .. code-block:: php
 

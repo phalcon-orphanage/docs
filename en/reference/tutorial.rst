@@ -66,7 +66,7 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project fikder will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
+All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
 
 The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewitten by the web server module: 
 
@@ -82,7 +82,7 @@ The second set of rules will check if the requested file exists, and if it does 
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you controll of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
 Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The `Phalcon_Controller_Front <../api/Phalcon_Controller_Front.html>`_ will easily allow us to request the MVC flow. This class automatically will instantiate Phalcon classes required to initialize the MVC. The public/index.php file should look like:
 
