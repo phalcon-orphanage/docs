@@ -1,6 +1,6 @@
 Improving Performance with Cache
 ================================
-Phalcon provides the `Phalcon_Cache <../api/Phalcon_Cache.html>`_ class allowing faster access to frequently used or already processed data. `Phalcon_Cache <../api/Phalcon_Cache.html>`_  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon provides the Phalcon_Cache_ class allowing faster access to frequently used or already processed data. Phalcon_Cache_  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 When to implement cache?
 ------------------------
@@ -267,3 +267,5 @@ This backend will store cached content on a memcached server. The available opti
 APC Backend Options
 ^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on Alternative PHP Cache (APC). This cache backend does not require any additional configuration options. 
+
+.. _Phalcon_Cache: ../api/Phalcon_Cache.html
