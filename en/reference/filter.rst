@@ -1,17 +1,17 @@
 Filtering and Sanitizing
 ========================
-Sanitizing user input is a critical part of secure software development,Neglecting to sanitize user input that may subsequently be passed to system-level functions could allow attackers to do massive internal damage to the information store and operating system, deface or delete Web files, and otherwise gain unrestricted access to the server. 
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted. 
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
 Full image (from xkcd)
 
-The component provides a set of commonly needed data filters and sanitizes helpers. It provides object-oriented wrappers for the mature PHP filter extension. 
+The Phalcon_Filter_ component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension. 
 
 Sanitizing data
 ---------------
-Sanitize is the process to remove the characters that are not required from a certain value.This lets us know that the values will not have unexpected values damaging the integrity of applications. 
+Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact. 
 
 .. code-block:: php
 
@@ -35,7 +35,7 @@ Sanitize is the process to remove the characters that are not required from a ce
 
 Sanitizing from Controllers
 ---------------------------
-You can access a Phalcon_Filter object from the controllers also when accessing POST or GET input data.First parameter is the name of the variable to be obtained; the second is the filter to be applied. 
+You can access a Phalcon_Filter_ object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it. 
 
 .. code-block:: php
 
@@ -44,21 +44,21 @@ You can access a Phalcon_Filter object from the controllers also when accessing 
     class ProductsController extends Phalcon_Controller
     {
     
-      function indexAction()
-      {
-    
-      }
-    
-      function saveAction()
-      {
-    
-        //Sanitizing price from input
-        $price = $this->request->getPost("price", "double");
-    
-        //Sanitizing email from input
-        $email = $this->request->getPost("customerEmail", "email");
-    
-      }
+        function indexAction()
+        {
+
+        }
+
+        function saveAction()
+        {
+
+            // Sanitizing price from input
+            $price = $this->request->getPost("price", "double");
+
+            // Sanitizing email from input
+            $email = $this->request->getPost("customerEmail", "email");
+
+        }
     
     }
 
@@ -73,21 +73,21 @@ The next example shows you how to sanitize the action parameters within a contro
     class ProductsController extends Phalcon_Controller
     {
     
-      function indexAction()
-      {
-    
-      }
-    
-      function showAction($productId)
-      {
-        $productId = $this->filter->sanitize($productId, "int");
-      }
+        function indexAction()
+        {
+
+        }
+
+        function showAction($productId)
+        {
+            $productId = $this->filter->sanitize($productId, "int");
+        }
     
     }
 
 Filtering data
 --------------
-Additional to sanitizing, this component provides filtering. Filtering processalso removes or modifies input data to adjust it to the format we expect. 
+In addition to sanitizing, Phalcon_Filter_ also provides filtering by removing or modifying input data to the format we expect. 
 
 .. code-block:: php
 
@@ -105,4 +105,7 @@ Additional to sanitizing, this component provides filtering. Filtering processal
 
 Complex Sanitizing and Filtering
 --------------------------------
-PHP itself provides an excellent filter extension you can use. Check out its documentation:`Data Filtering at PHP Documentation <http://www.php.net/manual/en/book.filter.php>`_ 
+PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_ 
+
+.. _Phalcon_Filter: ../api/Phalcon_Filter.html
+.. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
