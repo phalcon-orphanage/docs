@@ -2,21 +2,16 @@ Working with Models
 ===================
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. 
 
-Phalcon_Model_ is the base for the modelsin a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.Phalcon_Model avoids the need of having to use SQL statements because it translates dynamically to the respective database engine. 
-
-.. _Phalcon_Model: ../api/Phalcon_Model.html
+Phalcon_Model_ is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.Phalcon_Model_ avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations. 
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction.If you need to work with databases at a lower level check out the Phalcon_Db_ component documentation.
-
-.. _Phalcon_Db: ../api/Phalcon_Db.html
+    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the Phalcon_Db_ component documentation.
 
 Creating Models
 ---------------
 A model is a class that extends from Phalcon_Model_Base_. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation: 
 
-.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base.html
 
 .. code-block:: php
 
@@ -27,9 +22,9 @@ A model is a class that extends from Phalcon_Model_Base_. It must be placed in t
     
     }
 
-The above example showed us how to implement model "Robots".There isn't much to this file - but note that the class Robots inherits from Phalcon_Model_Base -. Phalcon_Model supplies a great deal of functionality to your models for free, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models to one another. 
+The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from Phalcon_Model_Base_. Phalcon_Model_ provides a great deal of functionality to models that inherit it, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models with each other. 
 
-By default model "Robots" will refer to table "robots". If you want to manually specify another name for the mapping table, you can use the setSource method: 
+By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table, you can use the setSource() method: 
 
 .. code-block:: php
 
@@ -38,17 +33,18 @@ By default model "Robots" will refer to table "robots". If you want to manually 
     class Robots extends Phalcon_Model_Base
     {
     
-      function initialize(){
-         $this->setSource("the_robots");
-      }
+        function initialize()
+        {
+            $this->setSource("the_robots");
+        }
     
     }
 
-The model Robots now maps to "the_birds" table. The "initialize" method helps us to set up the model with custom behavior. This method is only called once during the request. 
+The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table. The initialize() method is only called once during the request. 
 
-Understanding Record To Objects
+Understanding Records To Objects
 -------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading objects properties.For example, for a table "robots" with the next records: 
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table "robots" with the records: 
 
 .. code-block:: sql
 
@@ -68,86 +64,90 @@ You could find a certain record by its primary key and then print its name:
 
     <?php
 
-    //Find record with id=3
+    // Find record with id = 3
     $robot = Robots::findFirst(3);
     
-    //Prints "Terminator"
+    // Prints "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to it and then save changes:
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 .. code-block:: php
 
     <?php
 
-    $robot = Robots::findFirst(3);
+    $robot       = Robots::findFirst(3);
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is not need of use SQL statements or similar. Phalcon_Model provides high database abstraction for web applications.
+As you can see, there is no need to use raw SQL statements. Phalcon_Model_ provides high database abstraction for web applications.
 
 Finding Records
 ---------------
-Phalcon_Model provide you several methods for doing the querying of records. The next examples will show you how to query one or more records from a model: 
+Phalcon_Model_ also offers several methods for querying records. The following examples will show you how to query one or more records from a model: 
 
 .. code-block:: php
 
     <?php
     
-    //How many robots are there?
+    // How many robots are there?
     $robots = Robots::find();
     echo "There are ", count($robots), "\n";
     
-    //How many mechanical robots are there?
-    $robots = Robots::find("type='mechanical'");
+    // How many mechanical robots are there?
+    $robots = Robots::find("type = 'mechanical'");
     echo "There are ", count($robots), "\n";
     
-    //Get and print virtual robots ordered by name
-    $robots = Robots::find(array("type='virtual'", "order" => "name"));
+    // Get and print virtual robots ordered by name
+    $robots = Robots::find(array("type = 'virtual'", "order" => "name"));
     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
+        echo $robot->name, "\n";
     }
     
-    //Get first 100 virtual robots ordered by name
-    $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
+    // Get first 100 virtual robots ordered by name
+    $robots = Robots::find(array("type = 'virtual'", "order" => "name", "limit" => 100));
     foreach ($robots as $robot) {
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst method to get only the first record matching the given conditions:
+You could also use the findFirst method to get only the first record matching the given criteria:
 
 .. code-block:: php
 
     <?php
     
-    //What's the first robot in robots table?
+    // What's the first robot in robots table?
     $robot = Robots::findFirst();
     echo "The robot name is ", $robot->name, "\n";
     
-    //What's the first mechanical robot in robots table?
-    $robot = Robots::findFirst("type='mechanical'");
+    // What's the first mechanical robot in robots table?
+    $robot = Robots::findFirst("type = 'mechanical'");
     echo "The first mechanical robot name is ", $robot->name, "\n";
     
-    //Get first virtual robot ordered by name
-    $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
+    // Get first virtual robot ordered by name
+    $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both "find" and "findFirst" can accept an associative array specifying the find options. The following example shows how it works: 
+Both "find" and "findFirst" can accept an associative array specifying the find criteria.: 
 
 .. code-block:: php
 
     <?php
     
-    $robot = Robots::findFirst(array(
-       "type='virtual'",
-       "order" => "name DESC",
-       "limit" => 30
-    ));
+    $robot = Robots::findFirst(
+        array(
+            "type = 'virtual'",
+            "order" => "name DESC",
+            "limit" => 30
+        )
+    );
     
-    $robots = Robots::find(array(
-       "conditions" => "type=?1",
-       "bind" => array(1 => "virtual")
-    ));
+    $robots = Robots::find(
+        array(
+            "conditions" => "type = ?1",
+            "bind"       => array(1 => "virtual")
+        )
+    );
 
 The available query options are:
 
@@ -156,19 +156,19 @@ The available query options are:
 +=============+==============================================================================================================================================================================================+==============================================================+
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                         | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| bind        | Bind is used together with options by replacing placeholders, espacing values increasing the security                                                                                        | "bind" => array("status" => "A", "type" => "some-time")      | 
+| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                   | "bind" => array("status" => "A", "type" => "some-time")      | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| order       | Is used to sort the result-set. Use one or more fields separated by commas.                                                                                                                  | "order" => "name DESC, status"                               | 
+| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                   | "order" => "name DESC, status"                               | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| limit       | Limit the results of the query to results between a certain number range                                                                                                                     | "limit" => 10                                                | 
+| limit       | Limit the results of the query to results to certain range                                                                                                                                   | "limit" => 10                                                | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | columns     | Specific columns we need to query. Use this ONLY on read-only resultsets.                                                                                                                    | "columns" => "id, name"                                      | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                  | "group" => "name, status"                                    | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| for_update  | With this option, Phalcon_Model reads the latest available data, setting exclusive locks on each row it reads                                                                                | "for_update" => true                                         | 
+| for_update  | With this option, Phalcon_Model_ reads the latest available data, setting exclusive locks on each row it reads                                                                               | "for_update" => true                                         | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| shared_lock | With this option, Phalcon_Model reads the latest available data, setting shared locks on each row it reads                                                                                   | "shared_lock" => true                                        | 
+| shared_lock | With this option, Phalcon_Model_ reads the latest available data, setting shared locks on each row it reads                                                                                  | "shared_lock" => true                                        | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key") | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
@@ -1147,3 +1147,7 @@ Thanks to the underlying component Phalcon_Model called Phalcon_Db_, it's possib
     }
 
 Each generated profile contains the duration in miliseconds that take seach instruction to be completed, and the SQL generated as well. 
+
+.. _Phalcon_Model: ../api/Phalcon_Model.html
+.. _Phalcon_Db: ../api/Phalcon_Db.html
+.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base.html
