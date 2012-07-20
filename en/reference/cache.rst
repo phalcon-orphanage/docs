@@ -1,17 +1,20 @@
 Improving Performance with Cache
 ================================
-Phalcon provides the , it help us to cache output fragmentsavoiding the continuous reprocessing of code that every time returns the same output. Phalcon_Cache is very similar to the Zend Framework counterpart but is written in C to reach high performance.This component uses an internal structure of frontends and backends. Frontends acts as input sources and backends provides storage features. 
+Phalcon provides the `Phalcon_Cache <../api/Phalcon_Cache.html>`_ class allowing faster access to frequently used or already processed data. `Phalcon_Cache <../api/Phalcon_Cache.html>`_  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of front-end and back-end components. Front-end components act as input sources or interfaces, while back-end components offer storage options to the class.
 
 When to implement cache?
 ------------------------
-Although this component is very fast, implementing it in unnecessary cases could lead to loss ofperformance rather than get it. We recommend you check this cases before use cache: 
+Although this component is very fast, implementing it in cases that is not needed could lead to loss of performance than gain. We recommend you check this cases before use cache: 
 
-* You are making complex calculations that everytime returns the same result (changing infrequently)
+* You are making complex calculations that every time return the same result (changing infrequently)
 * You are using a lot of helpers and the output generated is almost always the same
 * You are accessing database data constantly and these data rarely change
 
+*NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the back-ends provide.
+
 Caching Output Fragments
 ------------------------
+An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured from the ob_* functions or 
 The following example shows how to implement a cache using this component. It takes the output generatedby PHP and stores it into a file. The content of the file is refreshed each 172800 seconds (2 days). The implementation of the cache avoids the continuous execution of the helper Phalcon_Tag::linkTo. 
 
 .. code-block:: php
