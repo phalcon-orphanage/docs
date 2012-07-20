@@ -1,6 +1,6 @@
 Multi-lingual Support
 =====================
-The component aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application. 
+The component Phalcon_Translate_ aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application. 
 
 Adapters
 --------
@@ -31,10 +31,10 @@ Each file contains an array of the translations in a key/value manner. For each 
 
     //app/messages/es.php
     $messages = array(
-      "hi" => "Hello",
-      "bye" => "Good Bye",
-      "hi-name" => "Hello %name%",
-      "song" => "This song is %song%"
+        "hi"      => "Hello",
+        "bye"     => "Good Bye",
+        "hi-name" => "Hello %name%",
+        "song"    => "This song is %song%"
     );
 
 .. code-block:: php
@@ -43,10 +43,10 @@ Each file contains an array of the translations in a key/value manner. For each 
 
     //app/messages/fr.php
     $messages = array(
-      "hi" => "Bonjour",
-      "bye" => "Au revoir",
-      "hi-name" => "Bonjour %name%",
-      "song" => "La chanson est %song%"
+        "hi"      => "Bonjour",
+        "bye"     => "Au revoir",
+        "hi-name" => "Bonjour %name%",
+        "song"    => "La chanson est %song%"
     );
 
 Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language. 
@@ -105,4 +105,7 @@ The "_" function is returning the translated string based on the index passed. S
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a REGEX router. 
+Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a `REGEX router`_. 
+
+.. _Phalcon_Translate: ../api/Phalcon_Translate.html
+.. _REGEX router: routing.html
