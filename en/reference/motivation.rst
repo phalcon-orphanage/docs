@@ -12,7 +12,7 @@ Why can't we have a framework with all of its advantages but with none or very f
 
 This is why Phalcon was born!
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations, compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance from Phalcon. 
+During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unnecessary validations, compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance from Phalcon. 
 
 Why?
 ----
@@ -26,14 +26,14 @@ Inner workings of PHP?
 * PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
 * PHP is interpreted and not compiled. The major disadvantage is performance loss
 * Every time a script is requested it must be first interpreted.
-* If a bytecode cache (like APC) isn’t used, syntax checking is performed every time for every file in the request
+* If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
 
 How traditional PHP frameworks work?
 ------------------------------------
 
 * Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
 * Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
-* Continuous loading/interpreting is expensive and impacts performance
+* Continuous loading or interpreting is expensive and impacts performance
 * The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
 
 How does a PHP C-extension work?
@@ -41,7 +41,7 @@ How does a PHP C-extension work?
 
 * C extensions are loaded together with PHP one time on the web server's daemon start process
 * Classes and functions provided by the extension are ready to use for any application
-* The code isn’t interpreted because is already compiled to a specific platform and processor
+* The code isn't interpreted because is already compiled to a specific platform and processor
 
 How does Phalcon work?
 --------------------

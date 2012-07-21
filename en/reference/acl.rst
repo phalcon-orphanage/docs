@@ -1,18 +1,18 @@
 Access Control Lists ACL
 ========================
-`Phalcon_Acl <../api/Phalcon_Acl.html>`_ provides an easy and lightweight management of ACLs as well as the permissions attached to them. `Access control list (ACL) <http://en.wikipedia.org/wiki/Access_control_list>`_ allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+Phalcon_Acl_ provides an easy and lightweight management of ACLs as well as the permissions attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
 Creating an ACL
 ---------------
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon_Acl <../api/Phalcon_Acl.html>`_ constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below: 
+This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The Phalcon_Acl_ constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below: 
 
 .. code-block:: php
 
     <?php $acl = new Phalcon_Acl("Memory");
 
-By default `Phalcon_Acl <../api/Phalcon_Acl.html>`_ allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level. 
+By default Phalcon_Acl_ allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level. 
 
 .. code-block:: php
 
@@ -23,7 +23,7 @@ By default `Phalcon_Acl <../api/Phalcon_Acl.html>`_ allows access to action on r
 
 Adding Roles to the ACL
 -----------------------
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon_Acl_Role <../api/Phalcon_Acl_Role.html>`_ class is available to create roles in a more structured way. Let's add some roles to our recently created list: 
+A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The Phalcon_Acl_Role_ class is available to create roles in a more structured way. Let's add some roles to our recently created list: 
 
 .. code-block:: php
 
@@ -43,7 +43,7 @@ As you can see, roles are defined directly without using a instance.
 
 Adding Resources
 ----------------
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon_Acl_Resource <../api/Phalcon_Acl_Resource.html>`_ class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control. 
+Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the Phalcon_Acl_Resource_ class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control. 
 
 .. code-block:: php
 
@@ -86,7 +86,7 @@ Once the list has been completely defined. We can query it to check if a role ha
 
 Roles Inheritance
 -----------------
-You can build complex role structures using the inheritance that `Phalcon_Acl_Role <../api/Phalcon_Acl_Role.html>`_ provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list. 
+You can build complex role structures using the inheritance that Phalcon_Acl_Role_ provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list. 
 
 .. code-block:: php
 
@@ -104,7 +104,7 @@ You can build complex role structures using the inheritance that `Phalcon_Acl_Ro
 
 Serializing ACL lists
 ---------------------
-To improve performance `Phalcon_Acl <../api/Phalcon_Acl.html>`_ instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows: 
+To improve performance Phalcon_Acl_ instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows: 
 
 .. code-block:: php
 
@@ -135,7 +135,7 @@ To improve performance `Phalcon_Acl <../api/Phalcon_Acl.html>`_ instances can be
 
 Integrating ACL with Controllers
 --------------------------------
-The following example shows how to do a simple integration between ACL and `Phalcon_Controller <controllers.html>`_:
+The following example shows how to do a simple integration between ACL and Phalcon_Controller_:
 
 .. code-block:: php
 
@@ -207,4 +207,11 @@ The following example shows how to do a simple integration between ACL and `Phal
     
     }
 
-You can also use `Phalcon_Cache <../api/Phalcon_Cache.html>`_ to store the ACL to different backends such as Files, Memcached, Apc, etc. 
+You can also use Phalcon_Cache_ to store the ACL to different backends such as Files, Memcached, Apc, etc. 
+
+.. _Phalcon_Acl: ../api/Phalcon_Acl.html
+.. _Phalcon_Cache: ../api/Phalcon_Cache.html
+.. _Phalcon_Controller: ../api/Phalcon_Controller.html
+.. _Phalcon_Acl_Role: ../api/Phalcon_Acl_Role.html
+.. _Phalcon_Acl_Resource: ../api/Phalcon_Acl_Resource.html
+.. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list
