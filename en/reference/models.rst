@@ -76,7 +76,7 @@ Once the record is in memory, you can make modifications to its data and then sa
 
     <?php
 
-    $robot       = Robots::findFirst(3);
+    $robot = Robots::findFirst(3);
     $robot->name = "RoboCop";
     $robot->save();
 
@@ -175,7 +175,7 @@ The available query options are:
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), tje find() method returns a Phalcon_Model_Resultset_. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc. These objects are more powerful than standard arrays. One of the greatest features of the Phalcon_Model_Resultset_ is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data. 
+While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a Phalcon_Model_Resultset_. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc. These objects are more powerful than standard arrays. One of the greatest features of the Phalcon_Model_Resultset_ is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data. 
 
 
 .. code-block:: php
@@ -267,7 +267,9 @@ Bound parameters are also supported in Phalcon_Model_. Although there is a minim
     $parameters = array("name" => "Robotina", 1 => "maid");
     $robots     = Robots::find(array($conditions, "bind" => $parameters));
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be successfully replaced. With the MySQL adapter strings are automatically escaped using mysqli_real_escape_string_. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the MySQL server configuration, as a wrong charset will produce undesired effects when storing or retrieving data. 
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be successfully replaced. 
+
+With the MySQL adapter strings are automatically escaped using mysqli_real_escape_string_. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the MySQL server configuration, as a wrong charset will produce undesired effects when storing or retrieving data. 
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc. 
 
@@ -305,7 +307,6 @@ Phalcon_Model_ integrates with Phalcon_Cache_ and provides methods for caching r
     Phalcon_Model_Manager::getDefault()->setCache($cache);
 
 The above example gives you full control over the cache definition and customization. But it could be very verbose for most cases. If you are using models with Phalcon_Controller_Front_ you could setup the cache configuration as part of the bootstrap configuration:
-
 
 .. code-block:: php
 
