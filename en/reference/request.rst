@@ -1,52 +1,57 @@
 Request Environment
 ===================
-Normally, the HTTP client (usually a browser) sends as part of the request headers, files, variables, etc. Take advantage of that information is useful to return a better response to the user. Phalcon_Request encapsulates the most important information of the request providing you object-oriented wrappers to access them. 
+Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables etc. A web based application needs to parse that information so as to provide the correct response back to the requester. Phalcon_Request_ encapsulates the information of the request, allowing you to access it in an object oriented way.
 
-As there is only a request enviroment for each request, Phalcon_Requests implements the `singleton pattern <http://en.wikipedia.org/wiki/Singleton_pattern>`_ with a lazy initialization. This means that you only have one instance of that class per request.
+As there is only one request environment for each request, Phalcon_Request_ implements the `singleton pattern`_ with a lazy initialization. This means that you only have one instance of that class per request.
 
 .. code-block:: php
 
     <?php
     
-    //Getting the singleton instance
+    // Getting the singleton instance
     $request = Phalcon_Request::getInstance();
     
-    //Check whether the request was made with method POST
+    // Check whether the request was made with method POST
     if ($request->isPost() == true) {
-      //Check whether the request was made with Ajax
-      if ($request->isAjax() == true) {
-         echo "Request was made using POST and AJAX";
-      }
+        // Check whether the request was made with Ajax
+        if ($request->isAjax() == true) {
+            echo "Request was made using POST and AJAX";
+        }
     }
 
-Phalcon_Request could be used in any part of the application, you only need to get the internal instance of the class by calling Phalcon_Request::getInstance(). 
+Phalcon_Request_ can be used in any part of the application by invoking the getInstance() method like this:
 
-Recovering Values
+.. code-block:: php
+    
+    <?php
+
+    $request = Phalcon_Request::getInstance();
+
+Getting Values
 -----------------
-PHP automatically fills the superglobals $_GET and $_POST. These variables contains the values present in forms or the parameters sent in the URL. Although they do a very good work, these values can contain extra characters and if aren't treated properly can lead to receive common attacks like  `SQL injection <http://en.wikipedia.org/wiki/SQL_injection>`_ or `Cross Site Scripting (XSS) <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ .
+PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or `Cross Site Scripting (XSS)`_ attacks.
 
-For that reason, with Phalcon_Request you can access $_GET and $_POST and sanitize/filter thereceived values together with  . The followingexamples have the same behavior: 
+Phalcon_Request_ allows you to access the values stored in the $_GET and $_POST arrays and sanitize or filter them with Phalcon_Filter_. The following examples offer the same behavior: 
 
 .. code-block:: php
 
     <?php
 
-    //Manually applying the filter
+    // Manually applying the filter
     $filter = new Phalcon_Filter();
-    $email = $fiter->sanitize($_POST["user_email"], "email");
+    $email  = $filter->sanitize($_POST["user_email"], "email");
     
-    //Manually applying the filter to the value
+    // Manually applying the filter to the value
     $filter = new Phalcon_Filter();
-    $email = $fiter->sanitize($request->getPost("user_email"), "email");
+    $email  = $filter->sanitize($request->getPost("user_email"), "email");
     
-    //Automatically applying the filter
+    // Automatically applying the filter
     $email = $request->getPost("user_email", "email");
 
 
-
-Accesing Request from Controllers
----------------------------------
-A common place where surely you will need access the request environment is in the action controllers. There are several reasons to need the Phalcon_Request instance in this stage of the execution. You could access it simply by accesing the $this->request public property of the controller: 
+Accessing the Request from Controllers
+--------------------------------------
+The most common place to access the request environment is in an action of a controller. To access the Phalcon_Request_ object from a controller you will need to use the $this->request public property of the controller:
 
 .. code-block:: php
 
@@ -55,30 +60,30 @@ A common place where surely you will need access the request environment is in t
     class PostsController extends Phalcon_Controller
     {
     
-      function indexAction()
-      {
-    
-      }
-    
-      function saveAction()
-      {
-    
-        //Check if request has made with POST
-        if ($this->request->isPost() == true) {
-    
-          //Access POST data
-          $customerName = $this->request->getPost("name");
-          $customerBorn = $this->request->getPost("born");
-    
+        function indexAction()
+        {
+
         }
-    
-      }
+
+        function saveAction()
+        {
+
+            // Check if request has made with POST
+            if ($this->request->isPost() == true) {
+
+                // Access POST data
+                $customerName = $this->request->getPost("name");
+                $customerBorn = $this->request->getPost("born");
+
+            }
+
+        }
     
     }
 
 Uploading Files
 ---------------
-Another common task is deal with file uploads. Phalcon_Request provides you a object-oriented way to access the uploaded files: 
+Another common task is file uploading. Phalcon_Request_ offers an object oriented way to achieve this task:
 
 .. code-block:: php
 
@@ -87,60 +92,67 @@ Another common task is deal with file uploads. Phalcon_Request provides you a ob
     class PostsController extends Phalcon_Controller
     {
     
-      function uploadAction()
-      {
-        //Check if the user has uploaded files
-        if ($this->request->hasFiles() == true) {
-           //Print the real file names and sizes
-           foreach ($this->request->getUploadedFiles() as $file){
-              echo $file->getName(), " ", $file->getSize(), "\n";
-           }
+        function uploadAction()
+        {
+            // Check if the user has uploaded files
+            if ($this->request->hasFiles() == true) {
+                // Print the real file names and sizes
+                foreach ($this->request->getUploadedFiles() as $file) {
+                    echo $file->getName(), " ", $file->getSize(), "\n";
+                }
+            }
         }
-      }
     
     }
 
-Each object returned by Phalcon_Request::getUploadedFiles() is an instance of the class. Using the $_FILES superglobal will give you the same behavior. This class only encapsulates the information related to each file uploaded with the request. 
+Each object returned by Phalcon_Request::getUploadedFiles() is an instance of the Phalcon_Request_File_ class. Using the $_FILES superglobal array offers the same behavior. Phalcon_Request_File_ encapsulates only the information related to each file uploaded with the request. 
 
 Working with Headers
 --------------------
-As mentioned above, request headers contains useful information that might help usto send a better response the the users. The following examples shows how to take advantage of that information: 
+As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information: 
 
 .. code-block:: php
 
     <?php
     
-    //get the Http-X-Requested-With header
+    // get the Http-X-Requested-With header
     $requestedWith = $response->getHeader("X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "The request was made with Ajax";
     }
     
-    //Same as above
+    // Same as above
     if ($request->isAjax()) {
         echo "The request was made with Ajax";
     }
     
-    //Check the request layer
+    // Check the request layer
     if ($request->isSecureRequest() == true) {
         echo "The request was made using a secure layer";
     }
     
-    //Get the servers's ip address. ie. 192.168.0.100
+    // Get the servers's ip address. ie. 192.168.0.100
     $ipAddress = $request->getServerAddress();
     
-    //Get the client's ip address ie. 201.245.53.51
+    // Get the client's ip address ie. 201.245.53.51
     $ipAddress = $request->getClientAddress();
     
-    //Get the User Agent (HTTP_USER_AGENT)
+    // Get the User Agent (HTTP_USER_AGENT)
     $userAgent = $request->getUserAgent();
     
-    //Get the best acceptable content by the browser. ie text/xml
+    // Get the best acceptable content by the browser. ie text/xml
     $contentType = $request->getAcceptableContent();
     
-    //Get the best charset accepted by the browser. ie. utf-8
+    // Get the best charset accepted by the browser. ie. utf-8
     $charset = $request->getBestCharset();
     
-    //Get the best language accepted configured in the browser. ie. en-us
+    // Get the best language accepted configured in the browser. ie. en-us
     $language = $request->getBestLanguage();
 
+
+.. _Phalcon_Request: ../api/Phalcon_Request.html
+.. _Phalcon_Filter: ../api/Phalcon_Filter.html
+.. _Phalcon_Request_File: ../api/Phalcon_Request_File.html
+.. _singleton pattern: http://en.wikipedia.org/wiki/Singleton_pattern
+.. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
+.. _Cross Site Scripting (XSS): http://en.wikipedia.org/wiki/Cross-site_scripting 

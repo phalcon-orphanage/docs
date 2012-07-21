@@ -5,12 +5,9 @@ In the past, performance was not considered one of the top priorities when devel
 
 The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself. 
 
-.. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 
 We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations or comments please `write us`_. `Check out source at Github`_
 
-.. _write us: http://phalcon.uservoice.com/
-.. _Check out source at Github: https://github.com/phalcon/framework-bench
 
 .. versionadded:: 1.0	
 	Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
@@ -44,8 +41,6 @@ These were the measurements we record to identify the overall performance of eac
 * Number of included PHP files on a single request (measured using function get_included_files_.
 * Memory Usage per request (measured using function memory_get_usage_.
 
-.. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
-.. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
 
 
 What was the test environment?
@@ -53,7 +48,6 @@ What was the test environment?
 
 APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled to avoid potentially additional overheads. 
 
-.. _APC: http://php.net/manual/en/book.apc.php
 
 The testing hardware environment is as follows: 
 
@@ -87,7 +81,6 @@ Yii (YII_DEBUG=false) Version yii-1.1.10.r3566
 
 Yii_ is a high-performance PHP framework best for developing Web 2.0 applications. The version used for the benchmarks was yii-1.1.10.r3566. We disabled YII_DEBUG to achieve maximum perfomance. 
 
-.. _Yii: http://www.yiiframework.com/
 
 .. code-block:: php 
 
@@ -154,7 +147,6 @@ Symfony Version 2.0.11
 
 Symfony_ is another high-performance PHP framework. 
 
-.. _Symfony: http://symfony.com/
 
 .. code-block:: php 
 
@@ -218,7 +210,6 @@ CodeIgniter 2.1.0
 ^^^^^^^^^^^^^^^^^
 CodeIgniter_ is a powerful PHP framework with a very small footprint, built for PHP coders who need a simple and elegant toolkit to create full-featured web applications.  
 
-.. _CodeIgniter: http://codeigniter.com/
 
 .. code-block:: php
 
@@ -282,7 +273,6 @@ Kohana 3.2.0
 ^^^^^^^^^^^^
 Kohana_ is an elegant HMVC PHP5 framework that provides a rich set of components for building web applications.
 
-.. _Kohana: http://kohanaframework.org/index
 
 .. code-block:: php 
 
@@ -347,7 +337,6 @@ Fuel 1.2
 ^^^^^^^^
 FuelPHP_ is a simple, flexible, community driven PHP 5.3 web framework based on the best ideas of other frameworks with a fresh start. 
 
-.. _FuelPHP: http://fuelphp.com/
 
 .. code-block:: php 
 
@@ -411,7 +400,6 @@ Cake 2.1.3
 ^^^^^^^^^^
 CakePHP_ makes building web applications simpler, faster and require less code. **Unlike others, we are measuring only 10 requests of 1000, if you know how to improve this results please write us.**
 
-.. _CakePHP: http://cakephp.org/
 
 .. code-block:: php 
 
@@ -643,3 +631,16 @@ Conclusion
 ----------
 
 The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks. 
+
+.. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
+.. _write us: http://phalcon.uservoice.com/
+.. _Check out source at Github: https://github.com/phalcon/framework-bench
+.. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
+.. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
+.. _APC: http://php.net/manual/en/book.apc.php
+.. _Yii: http://www.yiiframework.com/
+.. _Symfony: http://symfony.com/
+.. _CodeIgniter: http://codeigniter.com/
+.. _Kohana: http://kohanaframework.org/index
+.. _FuelPHP: http://fuelphp.com/
+.. _CakePHP: http://cakephp.org/

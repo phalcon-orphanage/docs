@@ -1,6 +1,6 @@
 Reading Configuration
 =====================
-Phalcon_Config is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
+Phalcon_Config_ is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
 
 File Adapters
 -------------
@@ -57,11 +57,6 @@ Reading INI Files
 -----------------
 Ini files are a common way to store settings. Phalcon_Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access. 
 
-
-
-
-
-
 .. code-block:: ini
 
     [database]
@@ -90,3 +85,4 @@ Related Guides
 
 * :doc:`Settings supported by the Framework <settings>`
 
+.. _Phalcon_Config: ../api/Phalcon_Config.html
