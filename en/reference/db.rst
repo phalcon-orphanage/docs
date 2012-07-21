@@ -522,18 +522,18 @@ Examples on dropping tables:
     $connection->dropTable("robots", "machines");
 
 
-.. _Phalcon_Db: ../api/Phalcon_Db.html
-.. _Phalcon_Model: ../api/Phalcon_Model_Base.html
-.. _API: ../api/index.html
-.. _Phalcon_Db_Adapter_Mysql: ../api/Phalcon_Db_Adapter_Mysql.html
-.. _Phalcon_Db_Adapter_Postgresql: ../api/Phalcon_Db_Adapter_Postgresql.html
+.. _Phalcon_Db: ../api/Phalcon_Db
+.. _Phalcon_Model: ../api/Phalcon_Model_Base
+.. _API: ../api/index
+.. _Phalcon_Db_Adapter_Mysql: ../api/Phalcon_Db_Adapter_Mysql
+.. _Phalcon_Db_Adapter_Postgresql: ../api/Phalcon_Db_Adapter_Postgresql
 .. _persistent connection: http://php.net/manual/en/features.persistent-connections.php
 .. _connection pool: http://en.wikipedia.org/wiki/Connection_pool
-.. _Phalcon_Db_Result_Mysql: ../api/Phalcon_Db_Result_Mysql.html
-.. _Phalcon_Db_Result_Postgresql: ../api/Phalcon_Db_Result_Postgresql.html
+.. _Phalcon_Db_Result_Mysql: ../api/Phalcon_Db_Result_Mysql
+.. _Phalcon_Db_Result_Postgresql: ../api/Phalcon_Db_Result_Postgresql
 .. _mysqli_real_escape_string: http://php.net/manual/en/mysqli.real-escape-string.php
-.. _Phalcon_Db_Profiler: ../api/Phalcon_Db_Profiler.html
-.. _Phalcon_Logger: ../api/Phalcon_Logger.html
-.. _Phalcon_Db_Column: ../api/Phalcon_Db_Column.html
-.. _Phalcon_Db_Index: ../api/Phalcon_Db_Index.html
-.. _Phalcon_Db_Reference: ../api/Phalcon_Db_Reference.html
+.. _Phalcon_Db_Profiler: ../api/Phalcon_Db_Profiler
+.. _Phalcon_Logger: ../api/Phalcon_Logger
+.. _Phalcon_Db_Column: ../api/Phalcon_Db_Column
+.. _Phalcon_Db_Index: ../api/Phalcon_Db_Index
+.. _Phalcon_Db_Reference: ../api/Phalcon_Db_Reference

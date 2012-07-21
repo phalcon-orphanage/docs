@@ -227,15 +227,15 @@ Backend Adapters
 ----------------
 The backend adapters available to store cache data are:
 
-+-----------+------------------------------------------------+-----------+---------------------+
-| Adapter   | Description                                    | Info      | Required Extensions | 
-+===========+================================================+===========+=====================+
-| File      | Stores data to local plain files               |           |                     | 
-+-----------+------------------------------------------------+-----------+---------------------+
-| Memcached | Stores data to a memcached server              | Memcached | memcache            | 
-+-----------+------------------------------------------------+-----------+---------------------+
-| APC       | Stores data to the Alternative PHP Cache (APC) | APC       | APC                 | 
-+-----------+------------------------------------------------+-----------+---------------------+
++-----------+------------------------------------------------+------------+---------------------+
+| Adapter   | Description                                    | Info       | Required Extensions | 
++===========+================================================+============+=====================+
+| File      | Stores data to local plain files               |            |                     | 
++-----------+------------------------------------------------+------------+---------------------+
+| Memcached | Stores data to a memcached server              | Memcached_ | memcache_           | 
++-----------+------------------------------------------------+------------+---------------------+
+| APC       | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    | 
++-----------+------------------------------------------------+------------+---------------------+
 
 
 File Backend Options
@@ -266,6 +266,10 @@ This backend will store cached content on a memcached server. The available opti
 
 APC Backend Options
 ^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on Alternative PHP Cache (APC). This cache backend does not require any additional configuration options. 
+This backend will store cached content on Alternative PHP Cache (APC_). This cache backend does not require any additional configuration options. 
 
-.. _Phalcon_Cache: ../api/Phalcon_Cache.html
+.. _Phalcon_Cache: ../api/Phalcon_Cache
+.. _Memcached: http://php.net/manual/en/book.apc.php
+.. _memcache: http://pecl.php.net/package/memcache
+.. _APC: http://php.net/manual/en/book.apc.php
+.. _APC extension: http://pecl.php.net/package/APC

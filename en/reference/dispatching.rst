@@ -153,9 +153,9 @@ The Dispatch Loop is another important process that has much to do with the MVC 
 
 The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
 
-.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
-.. _tutorials: tutorial.html
-.. _Phalcon_Request: ../api/Phalcon_Request.html
-.. _Phalcon_Response: ../api/Phalcon_Response.html
-.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher.html
-.. _Phalcon_Router_Rewrite:  ../api/Phalcon_Router_Rewrite.html
+.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front
+.. _tutorials: tutorial
+.. _Phalcon_Request: ../api/Phalcon_Request
+.. _Phalcon_Response: ../api/Phalcon_Response
+.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher
+.. _Phalcon_Router_Rewrite:  ../api/Phalcon_Router_Rewrite
