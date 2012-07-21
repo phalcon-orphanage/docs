@@ -1,22 +1,20 @@
-
-
 Logging
 =======
-Phalcon_Logger is a component whose purpose is to provide logging services to applications using different backends via adapters, generating options, formats and filters also implementing transactions. You could use loggers to debug processes, trace or access information and more. 
+Phalcon_Logger_ is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the Phalcon_Logger_ for every logging need your application has, from debugging processes to tracing application flow. 
 
 Adapters
 --------
-This component makes use of backend adapters to encapsulate the details of each of them:
+This component makes use of backend adapters to store data. The use of adapters allows for a common interface for logging while switching backends if necessary. The backends supported are:
 
-+---------+---------------------------+-----------------------------+
-| Adapter | Description               | API                         | 
-+=========+===========================+=============================+
-| File    | Logs to a plain text file | Phalcon_Logger_Adapter_File | 
-+---------+---------------------------+-----------------------------+
++---------+---------------------------+------------------------------+
+| Adapter | Description               | API                          | 
++=========+===========================+==============================+
+| File    | Logs to a plain text file | Phalcon_Logger_Adapter_File_ | 
++---------+---------------------------+------------------------------+
 
 Creating a Log
 --------------
-The below example shows how to create a log and add messages to it:
+The example below shows how to create a log and add messages to it:
 
 .. code-block:: php
 
@@ -28,7 +26,7 @@ The below example shows how to create a log and add messages to it:
     $logger->error("This is another error");
     $logger->close();
 
-Now, It simply produces the following log:
+The log generated is below:
 
 .. code-block:: php
 
@@ -38,23 +36,23 @@ Now, It simply produces the following log:
 
 Transactions
 ------------
-Because writing to the filesystem could be expensive in terms of performance, you can take advantage of logging transactions to temporariry store messages in memory and later write them to disk in a single atomic operation. 
+Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation. 
 
 .. code-block:: php
 
     <?php
 
-    //Create the logger
+    // Create the logger
     $logger = new Phalcon_Logger("File", "app/logs/test.log");
     
-    //Start a transaction
+    // Start a transaction
     $logger->begin();
     
-    //Add messages
+    // Add messages
     $logger->alert("This is an alert");
     $logger->error("This is another error");
     
-    //Commit messages to file
+    // Commit messages to file
     $logger->commit();
     
     $logger->close();
@@ -62,7 +60,11 @@ Because writing to the filesystem could be expensive in terms of performance, yo
 
 Message Formatting
 ------------------
-By default the logger uses the following format: [%date%][%type%] %message%. Phalcon_Logger allows you to define your own message format by using the method setFormat(). Formats can contain variables that are replaced by their respective values according to the following table:
+The default logging format is:
+
+[%date%][%type%] %message%
+
+Phalcon_Logger_ offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 +-----------+------------------------------------------+
 | Variable  | Description                              | 
@@ -74,7 +76,7 @@ By default the logger uses the following format: [%date%][%type%] %message%. Pha
 | %type%    | Uppercase string with message type       | 
 +-----------+------------------------------------------+
 
-This example shows how to define another format:
+The example below shows how to change the log format:
 
 .. code-block:: php
 
@@ -83,3 +85,5 @@ This example shows how to define another format:
     //Changing the logger format
     $logger->setFormat("%date% - %message%");
 
+.. _Phalcon_Logger: ../api/Phalcon_Logger.html
+.. _Phalcon_Logger_Adapter_File: ../api/Phalcon_Logger_Adapter_File.html

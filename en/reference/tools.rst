@@ -2,12 +2,12 @@ Phalcon Developer Tools
 =======================
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon. 
 
-**Important:** Phalcon Framework version 0.4.0 or greater is needed to use developer tools. It is highly recommended to use PHP 5.3.6 or greater. If you prefer to use the web version instead of the console, this `blog post <http://blog.phalconphp.com/post/23251010409/dont-like-command-line-and-consoles-no-problem>`_ offers more information.
+**Important:** Phalcon Framework version 0.4.0 or greater is needed to use developer tools. It is highly recommended to use PHP 5.3.6 or greater. If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
 
 
 Download
 --------
-You can download or clone a cross platform package containing the developer tools from `Github <https://github.com/phalcon/phalcon-devtools>`_ .
+You can download or clone a cross platform package containing the developer tools from Github_.
 
 Installation
 ^^^^^^^^^^^^
@@ -29,7 +29,7 @@ You can get a list of available commands in Phalcon tools by typing: phalcon com
 
 Generating a Project Skeleton
 -----------------------------
-You can use Phalcon tools to generate pre-defined project skeletons for your applicationswith Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
+You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
 .. figure:: ../_static/img/tools-1.png
    :align: center
@@ -79,21 +79,21 @@ Change the database section in your config.ini file:
 .. code-block:: ini
 
     [database]
-    adapter = Mysql
-    host = "127.0.0.1"
+    adapter  = Mysql
+    host     = "127.0.0.1"
     username = "root"
     password = "secret"
-    name = "store_db"
+    name     = "store_db"
     
     [phalcon]
     controllersDir = "../app/controllers/"
-    modelsDir = "../app/models/"
-    viewsDir = "../app/views/"
-    baseUri = "/store/"
+    modelsDir      = "../app/models/"
+    viewsDir       = "../app/views/"
+    baseUri        = "/store/"
 
 Generating Models
 -----------------
-There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field represenations or setters/getters can be used. The simplest way to generate a model is:
+There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used. The simplest way to generate a model is:
 
 .. figure:: ../_static/img/tools-7.png
    :align: center
@@ -258,7 +258,7 @@ After performing a search, a pager component is available to show paged results.
 
 Scaffold with Twitter/Bootstrap
 -------------------------------
-Following the release of the amazing framework `Bootstrap <http://twitter.github.com/bootstrap/>`_ from Twitter, many tools have been built based on it. Phalcon Developer Tools provides a modified version of the standard scaffold script to generate customized code ready to use with bootstrap. 
+Following the release of the amazing framework Bootstrap_ from Twitter, many tools have been built based on it. Phalcon Developer Tools provides a modified version of the standard scaffold script to generate customized code ready to use with bootstrap. 
 
 .. code-block:: bash
 
@@ -268,7 +268,7 @@ We have created a sample application that is mostly created with this script. Th
 
 Web Interface to Tools
 ----------------------
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interfase. Check outthe following screencast to figure out how it works: 
+Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works: 
 
 .. raw:: html
 
@@ -276,7 +276,7 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 Integrating Tools with PhpStorm IDE
 -----------------------------------
-The screencast below shows how to integrate developer tools with the `PhpStorm IDE <http://www.jetbrains.com/phpstorm/>`_. The configuration steps could be easily adapted to other IDEs for PHP.
+The screencast below shows how to integrate developer tools with the `PhpStorm IDE`_. The configuration steps could be easily adapted to other IDEs for PHP.
 
 .. raw:: html
 
@@ -286,3 +286,7 @@ Conclusion
 ----------
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
 
+.. _blog post: http://blog.phalconphp.com/post/23251010409/dont-like-command-line-and-consoles-no-problem
+.. _Github: https://github.com/phalcon/phalcon-devtools
+.. _Bootstrap: http://twitter.github.com/bootstrap/
+.. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/

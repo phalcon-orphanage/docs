@@ -8,7 +8,7 @@ The Phalcon PHP extension is required to run Phalcon Tools. If you haven't insta
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the `Download <http://phalconphp.com/download>`_ section. Also you can clone it from  `Github <https://github.com/phalcon/phalcon-devtools>`_ . 
+You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_. 
 
 On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\phalcon-tools*. You will need this path in the steps below. Edit the file "phalcon.bat" by right clicking on the file and selecting "Edit":
 
@@ -70,3 +70,5 @@ Related Guides
 * :doc:`Installation on OS X <mactools>`
 * :doc:`Installation on Linux <linuxtools>`
 
+.. _Download: http://phalconphp.com/download
+.. _Github: https://github.com/phalcon/phalcon-devtools
