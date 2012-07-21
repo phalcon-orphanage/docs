@@ -280,13 +280,13 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     }
 
-.. _Phalcon_Controller: ../api/Phalcon_Controller.html
-.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher.html
-.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager.html
-.. _Phalcon_Model_View: ../api/Phalcon_View.html
-.. _Phalcon_Request: ../api/Phalcon_Request.html
-.. _Phalcon_Response: ../api/Phalcon_Response.html
-.. _Phalcon_Session_Namespace: ../api/Phalcon_Session_Namespace.html
-.. _Phalcon_View: ../api/Phalcon_View.html
+.. _Phalcon_Controller: ../api/Phalcon_Controller
+.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher
+.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager
+.. _Phalcon_Model_View: ../api/Phalcon_View
+.. _Phalcon_Request: ../api/Phalcon_Request
+.. _Phalcon_Response: ../api/Phalcon_Response
+.. _Phalcon_Session_Namespace: ../api/Phalcon_Session_Namespace
+.. _Phalcon_View: ../api/Phalcon_View
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
 

@@ -90,4 +90,4 @@ The $page object has the following attributes:
 | last    | The last page in the set of records                    | 
 +---------+--------------------------------------------------------+
 
-.. _Phalcon_Paginator: ../api/Phalcon_Paginator.html
+.. _Phalcon_Paginator: ../api/Phalcon_Paginator

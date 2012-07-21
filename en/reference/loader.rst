@@ -89,7 +89,7 @@ The last option is to register the class name and its path. This autoloader can 
     // i.e. library/OtherComponent/Other/Some.php
     $some = new Some();
 
-.. _Phalcon_Loader: ../api/Phalcon_Loader.html
+.. _Phalcon_Loader: ../api/Phalcon_Loader
 .. _autoloading classes: http://www.php.net/manual/en/language.oop5.autoload.php
 .. _lazy initialization: http://en.wikipedia.org/wiki/Lazy_initialization>
 

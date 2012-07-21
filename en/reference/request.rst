@@ -150,9 +150,9 @@ As mentioned above, request headers contain useful information that allow us to 
     $language = $request->getBestLanguage();
 
 
-.. _Phalcon_Request: ../api/Phalcon_Request.html
-.. _Phalcon_Filter: ../api/Phalcon_Filter.html
-.. _Phalcon_Request_File: ../api/Phalcon_Request_File.html
+.. _Phalcon_Request: ../api/Phalcon_Request
+.. _Phalcon_Filter: ../api/Phalcon_Filter
+.. _Phalcon_Request_File: ../api/Phalcon_Request_File
 .. _singleton pattern: http://en.wikipedia.org/wiki/Singleton_pattern
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
 .. _Cross Site Scripting (XSS): http://en.wikipedia.org/wiki/Cross-site_scripting 

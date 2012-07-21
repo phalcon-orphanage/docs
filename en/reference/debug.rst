@@ -158,7 +158,7 @@ In this instance, Xdebug will also show us the variables in the local scope, and
 Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the `XDebug documentation`_ for more information.
 
 .. _Exception class: http://www.php.net/manual/en/language.exceptions.php
-.. _Phalcon_Exception: ../api/Phalcon_Exception.html
+.. _Phalcon_Exception: ../api/Phalcon_Exception
 .. _Exception::getTrace: http://www.php.net/manual/en/exception.gettrace.php
 .. _XDebug: http://xdebug.org
 .. _XDebug documentation: http://xdebug.org/docs
