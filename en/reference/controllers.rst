@@ -1,7 +1,7 @@
 
 Using Controllers
 =================
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all public methods on a controller are an action, and accessible from a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
 For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each part like this:
 
@@ -17,7 +17,7 @@ For instance, when you access a URL like this: http://localhost/blog/posts/show/
 | **Parameter**          | the-post-title | 
 +------------------------+----------------+
 
-In this case, the PostsController will handle this request. The controller file will be looked up in the controllers directory. Controllers should have the suffix "Controller" while actions the suffix "Action". It would be like: 
+In this case, the PostsController will handle this request. The controller file will be located in the controllers directory. Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows: 
 
 .. code-block:: php
 
@@ -26,23 +26,23 @@ In this case, the PostsController will handle this request. The controller file 
     class PostsController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
+        function indexAction()
+        {
 
-      }
+        }
 
-      function showAction($year, $postTitle)
-      {
+        function showAction($year, $postTitle)
+        {
 
-      }
+        }
 
     }
 
-As you can see, additional URI parameters become method parameters. So you can access it easily as local variables. 
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. 
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are not pendent actions for execution. In the previous example only once action was executed. Now we'll see how forward the execution flow to another controller/action. 
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how _forward can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action. 
 
 .. code-block:: php
 
@@ -51,21 +51,22 @@ The dispatch loop will be executed within the Dispatcher until there are not pen
     class PostsController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
+        function indexAction()
+        {
 
-      }
+        }
 
-      function showAction($year, $postTitle)
-      {
-         Phalcon_Flash::error("You don't have permission to access this area");
-         //Forward flow to another action
-         $this->_forward("users/signin");
-      }
+        function showAction($year, $postTitle)
+        {
+            Phalcon_Flash::error("You don't have permission to access this area");
+
+            // Forward flow to another action
+            $this->_forward("users/signin");
+        }
 
     }
 
-If users don't have permissions to access a certain action then will be forwarded to another controller. 
+If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action. 
 
 .. code-block:: php
 
@@ -74,25 +75,23 @@ If users don't have permissions to access a certain action then will be forwarde
     class UsersController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
+        function indexAction()
+        {
 
-      }
+        }
 
-      function signinAction()
-      {
+        function signinAction()
+        {
 
-      }
+        }
 
     }    
 
-You may do many "forwards" as you require. If there are not pendent action the dispatch loop will reach the end, and automatically will pull down the view part of MVC managed by `Phalcon_View`_.
-
-.. _Phalcon_View: ../api/Phalcon_View.html
+There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by Phalcon_View_.
 
 Initializing Controllers
 ------------------------
-When you implement the "initialize" method on any controller, it will be executed the first time an action requests to a certain controller. The use of the "__construct" method is not recommended. 
+Phalcon_Controller_ offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended. 
 
 .. code-block:: php
 
@@ -101,24 +100,25 @@ When you implement the "initialize" method on any controller, it will be execute
     class PostsController extends Phalcon_Controller
     {
 
-      function initialize()
-      {
-        $this->config = array(
-           "mySetting" => "value"
-        );
-      }
-
-      function saveAction(){
-        if ($this->config["mySetting"] == "value") {
-          //...
+        function initialize()
+        {
+            $this->config = array(
+                "mySetting" => "value"
+            );
         }
-      }
+
+        function saveAction()
+        {
+            if ($this->config["mySetting"] == "value") {
+                //...
+            }
+        }
 
     }
 
 Dispatch Events
 ---------------
-Events enable controllers to run shared pre- and post- processing code for its actions. Every time a controller action is executed, two events are provided to check security conditions or modify the application control flow. Those events are "beforeDispatch" and "afterDispatch". The first one is executed before the controller action is dispatched, developers can change the control flow by using a forward in that event. The second one is the "afterDispatch" event, this one is executed after the controller action. 
+Events enable controllers to run shared pre- and post- processing code for their actions. Every time a controller action is executed, two events are executed to check security conditions, modify application control flow or data. These events are "beforeDispatch" and "afterDispatch". The first one is executed before the controller action is dispatched. Developers can change the control flow by using a forward in that event. The second one is the "afterDispatch" event, which is executed after the controller action. 
 
 .. code-block:: php
 
@@ -127,28 +127,25 @@ Events enable controllers to run shared pre- and post- processing code for its a
     class PostsController extends Phalcon_Controller
     {
 
-      function beforeDispatch()
-      {
-        if (Phalcon_Session::get("hasAuth") == false) {
-          //Check whether user is authenticated and forwards him to login if not
-          $this->_forward("session/login");
-          return false;
+        function beforeDispatch()
+        {
+            if (Phalcon_Session::get("hasAuth") == false) {
+                // Check whether user is authenticated and forwards him to login if not
+                $this->_forward("session/login");
+                return false;
+            }
         }
-      }
 
-      function indexAction()
-      {
+        function indexAction()
+        {
 
-      }
+        }
 
     }
 
 Request and Response
 --------------------
-In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of `Phalcon_Request`_ and the "response" attribute contains a `Phalcon_Response`_ representing what is going to be sent back to the client. 
-
-.. _Phalcon_Response: ../api/Phalcon_Response.html
-.. _Phalcon_Request: ../api/Phalcon_Request.html
+In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of Phalcon_Request_ and the "response" attribute contains a Phalcon_Response_ representing what is going to be sent back to the client. 
 
 .. code-block:: php
 
@@ -157,28 +154,25 @@ In every controller there are two public properties pointing to the request and 
     class PostsController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
-
-      }
-
-      function saveAction()
-      {
-
-        //Check if request has made with POST
-        if ($this->request->isPost() == true) {
-
-          //Access POST data
-          $customerName = $this->request->getPost("name");
-          $customerBorn = $this->request->getPost("born");
+        function indexAction()
+        {
 
         }
 
-      }
+        function saveAction()
+        {
+
+            // Check if request has made with POST
+            if ($this->request->isPost() == true) {
+                // Access POST data
+                $customerName = $this->request->getPost("name");
+                $customerBorn = $this->request->getPost("born");
+            }
+        }
 
     }
 
-Moreover, the response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an afterDispatch event - it can be useful to access the response directly: 
+The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an afterDispatch event - it can be useful to access the response directly: 
 
 .. code-block:: php
 
@@ -187,16 +181,16 @@ Moreover, the response object is not usually used directly, but is built up befo
     class PostsController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
+        function indexAction()
+        {
 
-      }
+        }
 
-      function notFoundAction()
-      {
-        //Send a HTTP 404 response header
-        $this->response->setStatusCode(404, "Not Found");
-      }
+        function notFoundAction()
+        {
+            // Send a HTTP 404 response header
+            $this->response->setStatusCode(404, "Not Found");
+        }
 
     }
 
@@ -204,7 +198,7 @@ Learn more about the request environment in its `documentation article <request.
 
 Session Data
 ------------
-Sessions help us to maintain persistent data between requests. You could access a `Phalcon_Session_Namespace <../api/Phalcon_Session_Namespace.html>`_	from any controller to encapsulate data that should be persistent.
+Sessions help us maintain persistent data between requests. You could access a Phalcon_Session_Namespace_ from any controller to encapsulate data that need to be persistent.
 
 .. code-block:: php
 
@@ -213,21 +207,21 @@ Sessions help us to maintain persistent data between requests. You could access 
     class UserController extends Phalcon_Controller
     {
 
-      function indexAction()
-      {
-        $this->session->name = "Michael";
-      }
+        function indexAction()
+        {
+            $this->session->name = "Michael";
+        }
 
-      function welcomeAction()
-      {
-        echo "Welcome, ", $this->session->name;
-      }
+        function welcomeAction()
+        {
+            echo "Welcome, ", $this->session->name;
+        }
 
     }
 
 Controller Environment
 ----------------------
-Phalcon_Controller provide you some useful public attributes to interact with other active parts of the framework. Checking out the API of those components will give you the knowledge to access important information you could need while executing an action: 
+Phalcon_Controller_ provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions: 
 
 +------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
 | Component              | Description 	                                                                                                             | Attribute         |
@@ -243,13 +237,12 @@ Phalcon_Controller provide you some useful public attributes to interact with ot
 | Phalcon_Model_Manager_ | Encapsulate the models initialization, meta-data, etc                                                                     | $this->model      |
 +------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
 
-.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher.html
-.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager.html
 
 Creating a Base Controller
 --------------------------
-Some application features like access control, translation, cache, and template engines are often common to multiple controllers. In those cases create a "base controller" could be useful. A base controller is simply a class that should be inherited by the controllers instead of directly inheriting Phalcon_Controller.
-This class could be located at any place, but for organizational conventions we recommend to put it into the controllers directory, by example: apps/controllers/ControllerBase.php. The bootstrap file must include this class: 
+Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the Phalcon_Controller_ and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
+
+This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder, e.g. apps/controllers/ControllerBase.php. The bootstrap file must include this class: 
 
 .. code-block:: php
 
@@ -257,7 +250,7 @@ This class could be located at any place, but for organizational conventions we 
 
     require "../app/controllers/ControllerBase.php";
 
-The implementation of common actions and method is now easy when defining them here: 
+The implementation of common components (actions, methods, properties etc.) resides in this file: 
 
 .. code-block:: php
 
@@ -276,7 +269,7 @@ The implementation of common actions and method is now easy when defining them h
 
     }
 
-The controllers now inherit from ControllerBase: 
+Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above): 
 
 .. code-block:: php
 
@@ -287,6 +280,13 @@ The controllers now inherit from ControllerBase:
 
     }
 
-This class could be located at any place, but for organizational conventions we recommend to put it into the controllers directory, by example: apps/controllers/ControllerBase.php 
+.. _Phalcon_Controller: ../api/Phalcon_Controller.html
+.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher.html
+.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager.html
+.. _Phalcon_Model_View: ../api/Phalcon_View.html
+.. _Phalcon_Request: ../api/Phalcon_Request.html
+.. _Phalcon_Response: ../api/Phalcon_Response.html
+.. _Phalcon_Session_Namespace: ../api/Phalcon_Session_Namespace.html
+.. _Phalcon_View: ../api/Phalcon_View.html
+.. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
 
-    
