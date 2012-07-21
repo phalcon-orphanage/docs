@@ -129,4 +129,4 @@ If you're using the default `Phalcon_Router_Rewrite_ router, you will notice tha
 
 .. _Nginx: http://wiki.nginx.org/Main
 .. _PHP-FPM: http://php-fpm.org/
-.. _Phalcon_Router_Rewrite: ../api/Phalcon_Router_Rewrite.html
+.. _Phalcon_Router_Rewrite: ../api/Phalcon_Router_Rewrite

@@ -85,4 +85,4 @@ Related Guides
 
 * :doc:`Settings supported by the Framework <settings>`
 
-.. _Phalcon_Config: ../api/Phalcon_Config.html
+.. _Phalcon_Config: ../api/Phalcon_Config

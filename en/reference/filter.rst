@@ -107,5 +107,5 @@ Complex Sanitizing and Filtering
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_ 
 
-.. _Phalcon_Filter: ../api/Phalcon_Filter.html
+.. _Phalcon_Filter: ../api/Phalcon_Filter
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php

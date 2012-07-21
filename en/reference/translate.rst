@@ -107,5 +107,5 @@ The "_" function is returning the translated string based on the index passed. S
 
 Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a `REGEX router`_. 
 
-.. _Phalcon_Translate: ../api/Phalcon_Translate.html
-.. _REGEX router: routing.html
+.. _Phalcon_Translate: ../api/Phalcon_Translate
+.. _REGEX router: routing

@@ -209,9 +209,9 @@ The following example shows how to do a simple integration between ACL and Phalc
 
 You can also use Phalcon_Cache_ to store the ACL to different backends such as Files, Memcached, Apc, etc. 
 
-.. _Phalcon_Acl: ../api/Phalcon_Acl.html
-.. _Phalcon_Cache: ../api/Phalcon_Cache.html
-.. _Phalcon_Controller: ../api/Phalcon_Controller.html
-.. _Phalcon_Acl_Role: ../api/Phalcon_Acl_Role.html
-.. _Phalcon_Acl_Resource: ../api/Phalcon_Acl_Resource.html
+.. _Phalcon_Acl: ../api/Phalcon_Acl
+.. _Phalcon_Cache: ../api/Phalcon_Cache
+.. _Phalcon_Controller: ../api/Phalcon_Controller
+.. _Phalcon_Acl_Role: ../api/Phalcon_Acl_Role
+.. _Phalcon_Acl_Resource: ../api/Phalcon_Acl_Resource
 .. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list

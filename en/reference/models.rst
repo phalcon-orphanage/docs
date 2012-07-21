@@ -1219,15 +1219,15 @@ Thanks to Phalcon_Db_, the underlying component of Phalcon_Model_, it's possible
 
 Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement. 
 
-.. _Phalcon_Model: ../api/Phalcon_Model.html
-.. _Phalcon_Db: ../api/Phalcon_Db.html
-.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base.html
-.. _Phalcon_Model_Resultset: ../api/Phalcon_Model_Resultset.html
-.. _Phalcon_Cache: ../api/Phalcon_Cache_.html
-.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front.html
-.. _Phalcon_Model_Message: ../api/Phalcon_Model_Message.html
-.. _Phalcon_Model_MetaData: ../api/Phalcon_Model_MetaData.html
-.. _Phalcon_Model_MetaData_Memory: ../api/_Phalcon_Model_MetaData_Memory.html
-.. _Phalcon_Model_MetaData_Session: ../api/_Phalcon_Model_MetaData_Session.html
-.. _Phalcon_Model_MetaData_Apc: ../api/_Phalcon_Model_MetaData_Apc.html
+.. _Phalcon_Model: ../api/Phalcon_Model
+.. _Phalcon_Db: ../api/Phalcon_Db
+.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base
+.. _Phalcon_Model_Resultset: ../api/Phalcon_Model_Resultset
+.. _Phalcon_Cache: ../api/Phalcon_Cache
+.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front
+.. _Phalcon_Model_Message: ../api/Phalcon_Model_Message
+.. _Phalcon_Model_MetaData: ../api/Phalcon_Model_MetaData
+.. _Phalcon_Model_MetaData_Memory: ../api/_Phalcon_Model_MetaData_Memory
+.. _Phalcon_Model_MetaData_Session: ../api/_Phalcon_Model_MetaData_Session
+.. _Phalcon_Model_MetaData_Apc: ../api/_Phalcon_Model_MetaData_Apc
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php

@@ -85,5 +85,5 @@ The example below shows how to change the log format:
     //Changing the logger format
     $logger->setFormat("%date% - %message%");
 
-.. _Phalcon_Logger: ../api/Phalcon_Logger.html
-.. _Phalcon_Logger_Adapter_File: ../api/Phalcon_Logger_Adapter_File.html
+.. _Phalcon_Logger: ../api/Phalcon_Logger
+.. _Phalcon_Logger_Adapter_File: ../api/Phalcon_Logger_Adapter_File
