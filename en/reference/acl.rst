@@ -1,108 +1,110 @@
 Access Control Lists ACL
 ========================
-This component allows to manage ACL lists. An `access control list (ACL) <http://en.wikipedia.org/wiki/Access_control_list>`_ is a list of permissions attached to an object. An ACL specifies that users or system processes are granted access to objects, as well as what operations are allowed on given objects. Phalcon provides the Phalcon_Acl to manage access control lists. Before proceeding, we recommend you to read some ACL documentation, as it is important to be familiarwith some of the ACL concepts. 
+`Phalcon_Acl <../api/Phalcon_Acl.html>`_ provides an easy and lightweight management of ACLs as well as the permissions attached to them. `Access control list (ACL) <http://en.wikipedia.org/wiki/Access_control_list>`_ allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+
+In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
 Creating an ACL
 ---------------
-This component is designed to initially work in memory.This will give us the ease of handling rapidly every aspect of the list. The Phalcon_Acl constructor takes as its first parameter an adapter used to recover the information related to the control list. In this example we'll use the memory adapter: 
+This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon_Acl <../api/Phalcon_Acl.html>`_ constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below: 
 
 .. code-block:: php
 
     <?php $acl = new Phalcon_Acl("Memory");
 
-By default Phalcon_Acl allows access to action on resources that has not been defined previously.To increase the security level of our access list we'll define a "deny" level as a default access level. 
+By default `Phalcon_Acl <../api/Phalcon_Acl.html>`_ allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level. 
 
 .. code-block:: php
 
     <?php
 
-    //Default action is deny access
+    // Default action is deny access
     $acl->setDefaultAction(Phalcon_Acl::DENY);
 
 Adding Roles to the ACL
 -----------------------
-A role is somebody or something that can access to certain resources in the access list. In our examplewe will define roles as groups of people in an organization. The is available to create roles in a more structured way.Let's add some roles to our recently created list: 
+A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon_Acl_Role <../api/Phalcon_Acl_Role.html>`_ class is available to create roles in a more structured way. Let's add some roles to our recently created list: 
 
 .. code-block:: php
 
     <?php
 
-    //Create some roles
+    // Create some roles
     $roleAdmins = new Phalcon_Acl_Role("Administrators", "Super-User role");
     $roleGuests = new Phalcon_Acl_Role("Guests");
     
-    //Add "Guests" role to acl
+    // Add "Guests" role to acl
     acl->addRole($roleGuests);
     
-    //Add "Designers" role to acl without a Phalcon_Acl_Role
+    // Add "Designers" role to acl without a Phalcon_Acl_Role
     $acl->addRole("Designers");
 
-As you can see, roles also can be defined directly without using a instance.
+As you can see, roles are defined directly without using a instance.
 
 Adding Resources
 ----------------
-Resources are objects where access is controlled. Normally in MVC application resources refer tocontrollers. Although this is not mandatory,  can be used defining resources.It's important to add related actions or operations to a resource so ACL can understand what it should to control. 
+Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon_Acl_Resource <../api/Phalcon_Acl_Resource.html>`_ class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control. 
 
 .. code-block:: php
 
     <?php
 
-    //Define the "Customers" resource
+    // Define the "Customers" resource
     $customersResource = new Phalcon_Acl_Resource("Customers");
     
-    //Add "customers" resource with a couple of operations
+    // Add "customers" resource with a couple of operations
     $acl->addResource($customersResource, "search");
     $acl->addResource($customersResource, array("create", "update"));
 
 Defining Access Controls
 ------------------------
-Now we've roles and resources. It's time to say to ACL which roles can access which resources.This part is very important because it allows to define the control list itself. 
+Now we've roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level "allow" or "deny". 
 
 .. code-block:: php
 
     <?php
 
-    //Set access level for roles into resources
+    // Set access level for roles into resources
     $acl->allow("Guests", "Customers", "search");
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-The allow method say to the list: Yes, this role has granted with access to this resource/operation.The deny method does the opposite. 
+The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite. 
 
 Querying an ACL
 ---------------
-Once the list has been completely defined. We can begin to query and see if a role has a given permission or not.
+Once the list has been completely defined. We can query it to check if a role has a given permission or not.
 
 .. code-block:: php
 
     <?php
 
-    //Check whether role has access to the operations
-    $acl->isAllowed("Guests", "Customers", "edit"); //Returns 0
+    // Check whether role has access to the operations
+    $acl->isAllowed("Guests", "Customers", "edit");   //Returns 0
     $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
 
 Roles Inheritance
 -----------------
-In some cases, role's permissions could be inherited from other existing roles. You can do this by simplyrefer the inherited role as the second parameter when defining a role into the list. 
+You can build complex role structures using the inheritance that `Phalcon_Acl_Role <../api/Phalcon_Acl_Role.html>`_ provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list. 
 
 .. code-block:: php
 
     <?php
 
-    //Create some roles
+    // Create some roles
     $roleAdmins = new Phalcon_Acl_Role("Administrators", "Super-User role");
     $roleGuests = new Phalcon_Acl_Role("Guests");
     
-    //Add "Guests" role to acl
+    // Add "Guests" role to acl
     $acl->addRole($roleGuests);
     
-    //Add "Administrators" role inheriting from "Guests" its accesses
+    // Add "Administrators" role inheriting from "Guests" its accesses
     $acl->addRole($roleAdmins, $roleGuests);
 
 Serializing ACL lists
 ---------------------
-To improve performance Phalcon_Acl instances can be serialized and stored in plain files to avoidcontinuous definition. You can do that as follows: 
+To improve performance `Phalcon_Acl <../api/Phalcon_Acl.html>`_ instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows: 
 
 .. code-block:: php
 
@@ -111,29 +113,29 @@ To improve performance Phalcon_Acl instances can be serialized and stored in pla
     //Check whether acl data already exist
     if (!file_exists("app/security/acl.data")) {
     
-     $acl = new Phalcon_Acl("Memory");
-    
-     //... Define roles, resources, access, etc
-    
-     //Store serialized list into plain file
-     file_put_contents("app/security/acl.data", serialize($acl));
+        $acl = new Phalcon_Acl("Memory");
+
+        //... Define roles, resources, access, etc
+
+        // Store serialized list into plain file
+        file_put_contents("app/security/acl.data", serialize($acl));
     
     } else {
     
-     //Restore acl object from serialized file
-     $acl = unserialize(file_get_contents("app/security/acl.data"));
+         //Restore acl object from serialized file
+         $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
     
-    //Use acl list as needed
+    // Use acl list as needed
     if ($acl->isAllowed("Guests", "Customers", "edit")) {
-     echo "Access granted!";
+        echo "Access granted!";
     } else {
-     echo "Access denied :(";
+        echo "Access denied :(";
     }
 
 Integrating ACL with Controllers
 --------------------------------
-The following example shows how to do a simple integration between ACL and:
+The following example shows how to do a simple integration between ACL and `Phalcon_Controller <controllers.html>`_:
 
 .. code-block:: php
 
@@ -150,18 +152,18 @@ The following example shows how to do a simple integration between ACL and:
       private function _getAcl()
       {
     
-         //Only create an ACL once by request
-         if(!$this->_acl){
+         // Create an ACL only once by request
+         if (!$this->_acl) {
     
             $acl = new Phalcon_Acl("Memory");
     
             $acl->addResource("posts", array("index", "create"));
     
-            //Set access to Public role
+            // Set access to Public role
             $acl->addRole("Public");
             $acl->allow("Public", "posts", "index");
     
-            //Set access to Users role
+            // Set access to Users role
             $acl->addRole("Users");
             $acl->allow("Users", "posts", "index");
             $acl->deny("Users", "posts", "create");
@@ -178,11 +180,11 @@ The following example shows how to do a simple integration between ACL and:
       private function _getUser()
       {
         if (Phalcon_Session::has("authInfo")) {
-          return Phalcon_Session::get("authInfo");
+            return Phalcon_Session::get("authInfo");
         } else {
-          return array(
-             "Profile" => "Public"
-          );
+            return array(
+                "Profile" => "Public"
+            );
         }
       }
     
@@ -192,17 +194,17 @@ The following example shows how to do a simple integration between ACL and:
       function beforeDispatch($controllerName, $actionName)
       {
     
-        $acl = $this->_getAcl();
+        $acl  = $this->_getAcl();
         $user = $this->_getUser();
     
         if (!$acl->isAllowed($user["Profile"], $controllerName, $actionName)) {
-         //Forward flow to another controller if the user does not have permission
-         $this->_forward("index/index");
-         return false;
+            // Forward flow to another controller if the user does not have permission
+            $this->_forward("index/index");
+            return false;
         }
     
       }
     
     }
 
-Also you can use the to store ACL liststo different backends such as Files, Memcached, Apc, etc. 
+You can also use `Phalcon_Cache <../api/Phalcon_Cache.html>`_ to store the ACL to different backends such as Files, Memcached, Apc, etc. 
