@@ -43,7 +43,7 @@ By default model "Robots" will refer to the table "robots". If you want to manua
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table. The initialize() method is only called once during the request. 
 
 Understanding Records To Objects
--------------------------------
+--------------------------------
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table "robots" with the records: 
 
 .. code-block:: sql
@@ -166,9 +166,9 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                  | "group" => "name, status"                                    | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting exclusive locks on each row it reads                                        | "for_update" => true                                         | 
+| for_update  | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting exclusive locks on each row it reads                                             | "for_update" => true                                         | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting shared locks on each row it reads                                           | "shared_lock" => true                                        | 
+| shared_lock | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting shared locks on each row it reads                                                | "shared_lock" => true                                        | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key") | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
@@ -942,7 +942,7 @@ The above example performs a validation using the built-in validator "InclusionI
 | ExclusionIn  | Validates that a value is not within a list of possible values                                                                         | Example | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
 | InclusionIn  | Validates that a value is within a list of possible values                                                                             | Example | 
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+---------+
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
 | Numericality | Validates that a field has a numeric format                                                                                            | Example | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
 | Regex        | Validates that the value of a field matches a regular expression                                                                       | Example | 
@@ -1163,7 +1163,7 @@ If your application is using a INI configuration file together with :doc:`Phalco
 
 Logging Low-Level SQL Statements
 --------------------------------
-Using high-level abstraction components such as :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` is supported internally by :doc:`Phalcon_Db <../api/Phalcon_Db>`. Phalcon_Logger_ interacts with :doc:`Phalcon_Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+Using high-level abstraction components such as :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` is supported internally by :doc:`Phalcon_Db <../api/Phalcon_Db>`. :doc:`Phalcon_Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon_Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 
 .. code-block:: php
@@ -1220,3 +1220,4 @@ Thanks to :doc:`Phalcon_Db <../api/Phalcon_Db>`, the underlying component of :do
 Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement. 
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
+.. _mysqli_real_escape_string: http://www.php.net/manual/en/mysqli.real-escape-string.php
