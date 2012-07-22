@@ -4,6 +4,7 @@ Phalcon_Db_ is the component behind Phalcon_Model_ that powers the model layer i
 
 This component allows for a lower level database manipulation than using traditional models. 
 
+.. highlights::
     This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the API_ for a complete reference.
 
 Database Adapters
@@ -247,7 +248,7 @@ Database profiling is really easy With Phalcon_Db_Profiler_:
     // Set the connection profiler
     $connection->setProfiler($profiler);
     
-    $sql = "SELECT buyer_name, quantity, product_name 
+    $sql = "SELECT buyer_name, quantity, product_name "
          . "FROM buyers "
          . "LEFT JOIN products ON buyers.pid = products.id";
     
