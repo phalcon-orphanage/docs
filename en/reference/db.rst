@@ -4,6 +4,7 @@ Database Abstraction Layer
 
 This component allows for a lower level database manipulation than using traditional models. 
 
+.. highlights::
     This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the API_ for a complete reference.
 
 Database Adapters
@@ -247,7 +248,7 @@ Database profiling is really easy With :doc:`Phalcon_Db_Profiler <../api/Phalcon
     // Set the connection profiler
     $connection->setProfiler($profiler);
     
-    $sql = "SELECT buyer_name, quantity, product_name 
+    $sql = "SELECT buyer_name, quantity, product_name "
          . "FROM buyers "
          . "LEFT JOIN products ON buyers.pid = products.id";
     
@@ -521,8 +522,8 @@ Examples on dropping tables:
     //Drop table robot from database "machines"
     $connection->dropTable("robots", "machines");
 
-
 .. _API: ../api/index
 .. _mysqli_real_escape_string: http://php.net/manual/en/mysqli.real-escape-string.php
 .. _persistent connection: http://php.net/manual/en/features.persistent-connections.php
 .. _connection pool: http://en.wikipedia.org/wiki/Connection_pool
+
