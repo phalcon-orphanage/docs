@@ -1,4 +1,4 @@
-API Indice
+API Index
 -----------------
 
 .. toctree::
