@@ -6,11 +6,11 @@ Adapters
 --------
 This component makes use of backend adapters to store data. The use of adapters allows for a common interface for logging while switching backends if necessary. The backends supported are:
 
-+---------+---------------------------+------------------------------+
-| Adapter | Description               | API                          | 
-+=========+===========================+==============================+
++---------+---------------------------+-------------------------------------------------------------------------+
+| Adapter | Description               | API                                                                     | 
++=========+===========================+=========================================================================+
 | File    | Logs to a plain text file | :doc:`Phalcon_Logger_Adapter_File <../api/Phalcon_Logger_Adapter_File>` | 
-+---------+---------------------------+------------------------------+
++---------+---------------------------+-------------------------------------------------------------------------+
 
 Creating a Log
 --------------
