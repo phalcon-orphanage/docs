@@ -7,7 +7,7 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 
 Full image (from xkcd)
 
-The Phalcon_Filter_ component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension. 
+The :doc:`Phalcon_Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension. 
 
 Sanitizing data
 ---------------
@@ -35,7 +35,7 @@ Sanitizing is the process which removes specific characters from a value, that a
 
 Sanitizing from Controllers
 ---------------------------
-You can access a Phalcon_Filter_ object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it. 
+You can access a :doc:`Phalcon_Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it. 
 
 .. code-block:: php
 
@@ -87,7 +87,7 @@ The next example shows you how to sanitize the action parameters within a contro
 
 Filtering data
 --------------
-In addition to sanitizing, Phalcon_Filter_ also provides filtering by removing or modifying input data to the format we expect. 
+In addition to sanitizing, :doc:`Phalcon_Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to the format we expect. 
 
 .. code-block:: php
 
@@ -107,5 +107,4 @@ Complex Sanitizing and Filtering
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_ 
 
-.. _Phalcon_Filter: ../api/Phalcon_Filter
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php

@@ -1,6 +1,6 @@
 Database Abstraction Layer
 ==========================
-Phalcon_Db_ is the component behind Phalcon_Model_ that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C. 
+:doc:`Phalcon_Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C. 
 
 This component allows for a lower level database manipulation than using traditional models. 
 
@@ -11,25 +11,25 @@ Database Adapters
 -----------------
 This component makes use of adapters to encapsulate specific database system details. The following database engines are supported: 
 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                            | 
-+============+======================================================================================================================================================================================================================================+================================+
-| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | Phalcon_Db_Adapter_Mysql_      | 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
-| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | Phalcon_Db_Adapter_Postgresql_ | 
-+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+| Name       | Description                                                                                                                                                                                                                          | API                                                                         | 
++============+======================================================================================================================================================================================================================================+=============================================================================+
+| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon_Db_Adapter_Mysql <../api/Phalcon_Db_Adapter_Mysql>`           | 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon_Db_Adapter_Postgresql <../api/Phalcon_Db_Adapter_Postgresql>` | 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
 Database Dialects
 -----------------
 For some database engines, PHP provides several ways to connect to it. From PDO to native drivers, Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters. 
 
-+------------+-----------------------------------------------------+--------------------------------+-----------------+
-| Name       | Description                                         | API                            | Internal Driver | 
-+============+=====================================================+================================+=================+
-| MySQL      | SQL specific dialect for MySQL database system      | Phalcon_Db_Dialect_Mysql_      | mysqli          | 
-+------------+-----------------------------------------------------+--------------------------------+-----------------+
-| PostgreSQL | SQL specific dialect for PostgreSQL database system | Phalcon_Db_Dialect_Postgresql_ | pgsql           | 
-+------------+-----------------------------------------------------+--------------------------------+-----------------+
++------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
+| Name       | Description                                         | API                                                                         | Internal Driver | 
++============+=====================================================+=============================================================================+=================+
+| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon_Db_Dialect_Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | mysqli          | 
++------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
+| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon_Db_Dialect_Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | pgsql           | 
++------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
 
 Connecting to Databases
 -----------------------
@@ -103,7 +103,7 @@ To control the creation of database connections through applications, a `connect
 
 Finding Rows
 ------------
-Phalcon_Db_ provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case: 
+:doc:`Phalcon_Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case: 
 
 .. code-block:: php
 
@@ -152,7 +152,7 @@ By default these calls create arrays with both associative and numeric indexes. 
        echo $robot[0];
     }
 
-The Phalcon_Db::query() returns a special object depending on the database adapter you're using. In MySQL that object is an instance of Phalcon_Db_Result_Mysql_, while for PostgreSQL is an instance of Phalcon_Db_Result_Postgresql_. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+The Phalcon_Db::query() returns a special object depending on the database adapter you're using. In MySQL that object is an instance of :doc:`Phalcon_Db_Result_Mysql <../api/Phalcon_Db_Result_Mysql>`, while for PostgreSQL is an instance of :doc:`Phalcon_Db_Result_Postgresql <../api/Phalcon_Db_Result_Postgresql>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 .. code-block:: php
 
@@ -176,7 +176,7 @@ The Phalcon_Db::query() returns a special object depending on the database adapt
 
 Binding Parameters
 ------------------
-Bound parameters is also supported in Phalcon_Db_. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
+Bound parameters is also supported in :doc:`Phalcon_Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
 
 .. code-block:: php
 
@@ -235,9 +235,9 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
 Profiling SQL Statements
 ------------------------
-Phalcon_Db_ includes a profiling component called Phalcon_Db_Profiler_, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+:doc:`Phalcon_Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
-Database profiling is really easy With Phalcon_Db_Profiler_:
+Database profiling is really easy With :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>`:
 
 .. code-block:: php
 
@@ -263,7 +263,7 @@ Database profiling is really easy With Phalcon_Db_Profiler_:
     echo "Final Time: ", $profile->getFinalTime(), "\n";
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
-You can also create your own profile class based on Phalcon_Db_Profiler_ to record real time statistics of the statements sent to the database system: 
+You can also create your own profile class based on :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>` to record real time statistics of the statements sent to the database system: 
 
 .. code-block:: php
 
@@ -293,7 +293,7 @@ You can also create your own profile class based on Phalcon_Db_Profiler_ to reco
 
 Logging SQL Statements
 ----------------------
-Using high-level abstraction components such as Phalcon_Db_ to access a database, it is difficult to understand which statements are sent to the database system. Phalcon_Logger_ interacts with Phalcon_Db_, providing logging capabilities on the database abstraction layer.
+Using high-level abstraction components such as :doc:`Phalcon_Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon_Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon_Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
 
 .. code-block:: php
 
@@ -322,7 +322,7 @@ You can implement your own logger class for database queries, by creating a clas
 
 Describing Tables and Databases
 -------------------------------
-Phalcon_Db_ also provides methods to retrieve detailed information about tables and databases.
+:doc:`Phalcon_Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and databases.
 
 .. code-block:: php
 
@@ -370,7 +370,7 @@ A table description is very similar to the MySQL describe command, it contains t
 
 Creating/Altering/Dropping Tables
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. Phalcon_Db_ offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system. 
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon_Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system. 
 
 Creating Tables
 ^^^^^^^^^^^^^^^
@@ -417,7 +417,7 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon_Db::createTable() accepts an associative array describing the table. Columns are defined with the class Phalcon_Db_Column_. The table below shows the options available to define a column: 
+Phalcon_Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column: 
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional | 
@@ -454,11 +454,11 @@ The associative array passed in Phalcon_Db::createTable() can have the possible 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional | 
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with Phalcon_Db_Column_                                                                   | No       | 
+| "columns"    | An array with a set of table columns defined with :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>`                                  | No       | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with Phalcon_Db_Index_                                                                    | Yes      | 
+| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon_Db_Index <../api/Phalcon_Db_Index>`                                    | Yes      | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with Phalcon_Db_Reference_                                              | Yes      | 
+| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon_Db_Reference <../api/Phalcon_Db_Reference>`          | Yes      | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -466,7 +466,7 @@ The associative array passed in Phalcon_Db::createTable() can have the possible 
 
 Altering Tables
 ^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. Phalcon_Db_ is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon_Db <../api/Phalcon_Db>` is limited by these constraints.
 
 .. code-block:: php
 
@@ -522,19 +522,8 @@ Examples on dropping tables:
     //Drop table robot from database "machines"
     $connection->dropTable("robots", "machines");
 
-
-.. _Phalcon_Db: ../api/Phalcon_Db
-.. _Phalcon_Model: ../api/Phalcon_Model_Base
 .. _API: ../api/index
-.. _Phalcon_Db_Adapter_Mysql: ../api/Phalcon_Db_Adapter_Mysql
-.. _Phalcon_Db_Adapter_Postgresql: ../api/Phalcon_Db_Adapter_Postgresql
+.. _mysqli_real_escape_string: http://php.net/manual/en/mysqli.real-escape-string.php
 .. _persistent connection: http://php.net/manual/en/features.persistent-connections.php
 .. _connection pool: http://en.wikipedia.org/wiki/Connection_pool
-.. _Phalcon_Db_Result_Mysql: ../api/Phalcon_Db_Result_Mysql
-.. _Phalcon_Db_Result_Postgresql: ../api/Phalcon_Db_Result_Postgresql
-.. _mysqli_real_escape_string: http://php.net/manual/en/mysqli.real-escape-string.php
-.. _Phalcon_Db_Profiler: ../api/Phalcon_Db_Profiler
-.. _Phalcon_Logger: ../api/Phalcon_Logger
-.. _Phalcon_Db_Column: ../api/Phalcon_Db_Column
-.. _Phalcon_Db_Index: ../api/Phalcon_Db_Index
-.. _Phalcon_Db_Reference: ../api/Phalcon_Db_Reference
+

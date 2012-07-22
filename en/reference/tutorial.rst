@@ -84,7 +84,7 @@ Bootstrap
 ^^^^^^^^^
 The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
-Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The Phalcon_Controller_Front_ will easily allow us to request the MVC flow. This class automatically will instantiate Phalcon classes required to initialize the MVC. The public/index.php file should look like:
+Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` will easily allow us to request the MVC flow. This class automatically will instantiate Phalcon classes required to initialize the MVC. The public/index.php file should look like:
 
 .. code-block:: php
 
@@ -94,7 +94,7 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
 
          $front = Phalcon_Controller_Front::getInstance();
 
-         //Setting directories
+         // Setting directories
          $front->setControllersDir("../app/controllers/");
          $front->setModelsDir("../app/models/");
          $front->setViewsDir("../app/views/");
@@ -106,7 +106,7 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
          echo "PhalconException: ", $e->getMessage();
     }
 
-The Phalcon_Controller_Front_ purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. As you can see, the file is very simple and we do not need to include any additional files or register autoloaders. 
+The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. As you can see, the file is very simple and we do not need to include any additional files or register autoloaders. 
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
@@ -157,7 +157,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The Phalcon_View_ static component is automatically created when the action execution has ended. Learn more about views usage `here <views.html>`_ .
+The browser output should remain the same. The :doc:`Phalcon_View <../api/Phalcon_View>` static component is automatically created when the action execution has ended. Learn more about views usage `here <views.html>`_ .
 
 Designing a sign up form
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,7 +177,7 @@ The generated HTML code displays an "A" html tag linking to a new controller:
 
     <h1>Hello!</h1> <a href="/test/signup" >Sign Up Here!</a>
 
-To generate the tag we use the class Phalcon_Tag_. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be found `here <tags.html>`_    
+To generate the tag we use the class :doc:`Phalcon_Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be found `here <tags.html>`_    
 
 .. figure:: ../_static/img/tutorial-2.png
 	:align: center
@@ -252,7 +252,7 @@ Viewing the form in your browser will show something like this:
 .. figure:: ../_static/img/tutorial-3.png
 	:align: center
 
-Phalcon_Tag also provides useful methods to build form elements.
+:doc:`Phalcon_Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
 The Phalcon_Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application. 
 
@@ -311,7 +311,7 @@ A model should be located in the app/models directory. The model mapping to "use
 
 Setting a Database Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. The Phalcon_Controller_Front_ config in the bootstrap file should be modified to add the database configuration settings: 
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` config in the bootstrap file should be modified to add the database configuration settings: 
 
 .. code-block:: php
 
@@ -349,7 +349,7 @@ In order to be able to use a database connection and subsequently access data th
 
 You will notice that we have replaced the calls to setControllersDir, setModelsDir and setViewsDir on the controller with a configuration array which handles all this for us. This way the code is much cleaner and easier to maintain.
 
-The Phalcon_Config_ object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
+The :doc:`Phalcon_Config <../api/Phalcon_Config>` object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
@@ -393,7 +393,7 @@ Receiving data from the form and storing them in the table is the next step.
 
     }
 
-We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to `validate/sanizite <filter.html>`_ their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component `Phalcon_Filter <../api/Phalcon_Filter.html>`_ makes this task trivial, since it is incorporated in the getPost call.
+We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`Phalcon_Filter <../api/Phalcon_Filter>` makes this task trivial, since it is incorporated in the getPost call.
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
 
@@ -413,12 +413,8 @@ The following Phalcon powered applications are also available, providing more co
 * `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
 * `PHP Alternative website`_: Multilingual and advanced routing application.
 
-
 .. _developer tools: tools
 .. _here: tutorial
-.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front
-.. _Phalcon_Tag: ../api/Phalcon_Tag
-.. _Phalcon_View: ../api/Phalcon_View
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 

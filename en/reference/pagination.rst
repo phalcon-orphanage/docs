@@ -1,6 +1,6 @@
 Data Pagination
 ===============
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon_Paginator_ offers a fast and convenient way to split these sets of data browsable pages.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. :doc:`Phalcon_Paginator <../api/Phalcon_Paginator>` offers a fast and convenient way to split these sets of data browsable pages.
 
 Data Adapters
 -------------
@@ -90,4 +90,3 @@ The $page object has the following attributes:
 | last    | The last page in the set of records                    | 
 +---------+--------------------------------------------------------+
 
-.. _Phalcon_Paginator: ../api/Phalcon_Paginator

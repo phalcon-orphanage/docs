@@ -17,7 +17,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 Schema Dumping
 --------------
-The `Phalcon Developer Tools`_ provides scripts to manage migrations (generation, running and rollback).
+The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
 
 The available options for generating migrations are: 
 
@@ -33,14 +33,14 @@ Each migration has a version identifier associated to it. The version number all
 
 When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated. 
 
-By default `Phalcon Developer Tools`_ use the *app/migrations* directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version: 
+By default :doc:`Phalcon Developer Tools <tools>` use the *app/migrations* directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version: 
 
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
 Migration Class Anatomy
 -----------------------
-Each file contains a unique class that extends the Phalcon_Model_Migration_. These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back. 
+Each file contains a unique class that extends the :doc:`Phalcon_Model_Migration <../api/Phalcon_Model_Migration>`. These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back. 
 
 Up() also contains the *magic* method morphTable(). The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given. 
 
@@ -150,12 +150,12 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 
 Defining Columns
 ^^^^^^^^^^^^^^^^
-Phalcon_Db_Column_ is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns: 
+:doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns: 
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional | 
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a Phalcon_Db_Column_ constant (see below)                                                                             | No       | 
+| "type"          | Column type. Must be a :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` constant (see below)                                            | No       | 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      | 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -184,11 +184,11 @@ Database migrations support the following database column types:
 
 Defining Indexes
 ^^^^^^^^^^^^^^^^
-Phalcon_Db_Index_ defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
+:doc:`Phalcon_Db_Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
 
 Defining References
 ^^^^^^^^^^^^^^^^^^^
-Phalcon_Db_Reference_ defines table references (also called foreign keys). The following options can be used to define a reference: 
+:doc:`Phalcon_Db_Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference: 
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 | Index               | Description                                                                                         | Optional | 
@@ -236,8 +236,3 @@ Once the generated migrations are uploaded on the target server, you can easily 
 
 Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version. 
 
-.. _Phalcon Developer Tools: tools
-.. _Phalcon_Model_Migration: ../api/Phalcon_Model_Migration
-.. _Phalcon_Db_Column: ../api/Phalcon_Db_Column
-.. _Phalcon_Db_Index: ../api/Phalcon_Db_Index
-.. _Phalcon_Db_Reference: ../api/Phalcon_Db_Reference

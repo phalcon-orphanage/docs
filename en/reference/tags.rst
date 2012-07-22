@@ -1,13 +1,13 @@
 View Helpers
 ============
-Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering Phalcon_Tag_, which in turn offers view helpers to generate HTML markup.
+Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering :doc:`Phalcon_Tag <../api/Phalcon_Tag>`, which in turn offers view helpers to generate HTML markup.
 
 .. highlights::
-    This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the Phalcon_Tag_ page in the API for a complete reference.
+    This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the :doc:`Phalcon_Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
 Using Name Aliasing
 -------------------
-You could use name aliasing to get short names for classes. In this case, a Tag name can be used to alias the Phalcon_Tag_ class. 
+You could use name aliasing to get short names for classes. In this case, a Tag name can be used to alias the :doc:`Phalcon_Tag <../api/Phalcon_Tag>` class. 
 
 .. code-block:: php
 
@@ -162,7 +162,7 @@ This will generate the following select tag with the value "Blue" selected:
 
 From the Request
 ^^^^^^^^^^^^^^^^
-A special feature that the Phalcon_Tag_ helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data. 
+A special feature that the :doc:`Phalcon_Tag <../api/Phalcon_Tag>` helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data. 
 
 Specifying values directly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -170,7 +170,7 @@ Every form helper supports the parameter "value". With it you can specify a valu
 
 Changing dynamically the Document Title
 ---------------------------------------
-Phalcon_Tag_ offers helpers to change dynamically the document title from the controller. The following example demonstrates just that: 
+:doc:`Phalcon_Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller. The following example demonstrates just that: 
 
 .. code-block:: php
 
@@ -216,7 +216,7 @@ The following HTML will generated:
 
 Static Content Helpers
 ----------------------
-Phalcon_Tag_ also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
+:doc:`Phalcon_Tag <../api/Phalcon_Tag>` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
 
 Images
 ^^^^^^
@@ -264,7 +264,7 @@ Javascript
 
 Creating your own helpers
 -------------------------
-You can easily create your own helpers by extending the Phalcon_Tag_ and implementing your own helper. Below is a simple example of a custom helper:
+You can easily create your own helpers by extending the :doc:`Phalcon_Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:
 
 .. code-block:: php
 
@@ -323,5 +323,3 @@ You can easily create your own helpers by extending the Phalcon_Tag_ and impleme
         }
     
     }
-
-.. _Phalcon_Tag: ../api/Phalcon_Tag

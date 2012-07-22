@@ -8,7 +8,7 @@ The Phalcon PHP extension is required to run Phalcon Tools. If you haven't insta
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the `Download <http://phalconphp.com/download>`_ section. Also you can clone it from  `Github <https://github.com/phalcon/phalcon-devtools>`_ . 
+You can download a cross platform package containing the developer tools from the `Download`_ section. You can also clone it from `Github`_. 
 
 Open the terminal application:
 
@@ -66,3 +66,5 @@ Related Guides
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
 
+.. _Download: http://phalconphp.com/download>
+.. _Github: https://github.com/phalcon/phalcon-devtools
