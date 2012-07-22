@@ -9,7 +9,7 @@ This component makes use of backend adapters to store data. The use of adapters 
 +---------+---------------------------+------------------------------+
 | Adapter | Description               | API                          | 
 +=========+===========================+==============================+
-| File    | Logs to a plain text file | :dod:`Phalcon_Logger_Adapter_File <../api/Phalcon_Logger_Adapter_File>` | 
+| File    | Logs to a plain text file | :doc:`Phalcon_Logger_Adapter_File <../api/Phalcon_Logger_Adapter_File>` | 
 +---------+---------------------------+------------------------------+
 
 Creating a Log
