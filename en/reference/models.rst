@@ -2,15 +2,15 @@ Working with Models
 ===================
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. 
 
-Phalcon_Model_ is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.Phalcon_Model_ avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations. 
+:doc:`Phalcon_Model <../api/Phalcon_Model_Base>` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations. 
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the Phalcon_Db_ component documentation.
+    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the :doc:`Phalcon_Db <../api/Phalcon_Db>` component documentation.
 
 Creating Models
 ---------------
-A model is a class that extends from Phalcon_Model_Base_. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation: 
+A model is a class that extends from :doc:`Phalcon_Model_Base <../api/Phalcon_Model_Base>`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation: 
 
 
 .. code-block:: php
@@ -22,7 +22,7 @@ A model is a class that extends from Phalcon_Model_Base_. It must be placed in t
     
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from Phalcon_Model_Base_. Phalcon_Model_ provides a great deal of functionality to models that inherit it, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models with each other. 
+The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon_Model_Base <../api/Phalcon_Model_Base>`. :doc:`Phalcon_Model_Base <../api/Phalcon_Model_Base>` provides a great deal of functionality to models that inherit it, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models with each other. 
 
 By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table, you can use the setSource() method: 
 
@@ -80,11 +80,11 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. Phalcon_Model_ provides high database abstraction for web applications.
+As you can see, there is no need to use raw SQL statements. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` provides high database abstraction for web applications.
 
 Finding Records
 ---------------
-Phalcon_Model_ also offers several methods for querying records. The following examples will show you how to query one or more records from a model: 
+:doc:`Phalcon_Model <../api/Phalcon_Model_Base>` also offers several methods for querying records. The following examples will show you how to query one or more records from a model: 
 
 .. code-block:: php
 
@@ -166,16 +166,16 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                  | "group" => "name, status"                                    | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| for_update  | With this option, Phalcon_Model_ reads the latest available data, setting exclusive locks on each row it reads                                                                               | "for_update" => true                                         | 
+| for_update  | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting exclusive locks on each row it reads                                        | "for_update" => true                                         | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
-| shared_lock | With this option, Phalcon_Model_ reads the latest available data, setting shared locks on each row it reads                                                                                  | "shared_lock" => true                                        | 
+| shared_lock | With this option, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` reads the latest available data, setting shared locks on each row it reads                                           | "shared_lock" => true                                        | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key") | 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------+
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a Phalcon_Model_Resultset_. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc. These objects are more powerful than standard arrays. One of the greatest features of the Phalcon_Model_Resultset_ is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data. 
+While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a :doc:`Phalcon_Model_Resultset <../api/Phalcon_Model_Resultset>`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc. These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon_Model_Resultset <../api/Phalcon_Model_Resultset>` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data. 
 
 
 .. code-block:: php
@@ -222,7 +222,7 @@ While findFirst() returns directly an instance of the called class (when there i
     // Get the last record
     $robot = robots->getLast();
 
-Note that resultsets can be serialized and stored in a a cache backend. Phalcon_Cache_ can help with that task. However, serializing data causes Phalcon_Model_ to retrieve all the data from the database in an array, thus consuming more memory while this process takes place. 
+Note that resultsets can be serialized and stored in a a cache backend. :doc:`Phalcon_Cache <../api/Phalcon_Cache>` can help with that task. However, serializing data causes :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` to retrieve all the data from the database in an array, thus consuming more memory while this process takes place. 
 
 .. code-block:: php
 
@@ -246,7 +246,7 @@ Note that resultsets can be serialized and stored in a a cache backend. Phalcon_
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in Phalcon_Model_. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
+Bound parameters are also supported in :doc:`Phalcon_Model <../api/Phalcon_Model_Base>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
 
 .. code-block:: php
 
@@ -277,7 +277,7 @@ Caching Resultsets
 ^^^^^^^^^^^^^^^^^^
 Access to database systems is often one of the most common bottlenecks in terms of performance. This is due to the complex connection process that PHP must do in each request to obtain data from the database. A well established technique to avoid the continuous access to the database is to cache resultsets that don't change frequently in a system with faster access (usually memory). 
 
-Phalcon_Model_ integrates with Phalcon_Cache_ and provides methods for caching resultsets. To take advantage of this feature, you need to define a default cache backend in the model manager: 
+:doc:`Phalcon_Model <../api/Phalcon_Model_Base>` integrates with :doc:`Phalcon_Cache <../api/Phalcon_Cache>` and provides methods for caching resultsets. To take advantage of this feature, you need to define a default cache backend in the model manager: 
 
 
 .. code-block:: php
@@ -306,7 +306,7 @@ Phalcon_Model_ integrates with Phalcon_Cache_ and provides methods for caching r
     //Set the cache to the models manager
     Phalcon_Model_Manager::getDefault()->setCache($cache);
 
-The above example gives you full control over the cache definition and customization. But it could be very verbose for most cases. If you are using models with Phalcon_Controller_Front_ you could setup the cache configuration as part of the bootstrap configuration:
+The above example gives you full control over the cache definition and customization. But it could be very verbose for most cases. If you are using models with :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` you could setup the cache configuration as part of the bootstrap configuration:
 
 .. code-block:: php
 
@@ -383,7 +383,7 @@ Once the cache setup is properly defined you could cache resultsets as follows:
     // Using a custom cache
     $products = Products::find(array("cache" => $myCache));
 
-By default, Phalcon_Model_ will create a unique key to store the resultset, using a md5 hash of the SQL select statement generated internally. This is very practical because it generates a new unique key for every change in the parameters passed in the object. If you wish to control the cache keys, you could always use the key() parameter as seen in the example above. The getLastKey() method retrieves the key of the last cached entry so that you can target and retrieve the resultset later on from the cache.: 
+By default, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` will create a unique key to store the resultset, using a md5 hash of the SQL select statement generated internally. This is very practical because it generates a new unique key for every change in the parameters passed in the object. If you wish to control the cache keys, you could always use the key() parameter as seen in the example above. The getLastKey() method retrieves the key of the last cached entry so that you can target and retrieve the resultset later on from the cache.: 
 
 .. code-block:: php
 
@@ -400,7 +400,7 @@ By default, Phalcon_Model_ will create a unique key to store the resultset, usin
         //...
     }
 
-Cache keys automatically generated by Phalcon_Model_ are always prefixed with "phc". This helps to easily identify the cached entries related to Phalcon_Model_: 
+Cache keys automatically generated by :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` are always prefixed with "phc". This helps to easily identify the cached entries related to :doc:`Phalcon_Model <../api/Phalcon_Model_Base>`: 
 
 .. code-block:: php
 
@@ -550,7 +550,7 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->getParts()->name, "\n";
     }
 
-Phalcon uses the magic method __call to retrieve data from a relationship. If the called method has a "get" prefix Phalcon_Model_ will return a findFirst()/find() result. The following example compares retrieving related results with using the magic method and without: 
+Phalcon uses the magic method __call to retrieve data from a relationship. If the called method has a "get" prefix :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` will return a findFirst()/find() result. The following example compares retrieving related results with using the magic method and without: 
 
 .. code-block:: php
     
@@ -669,7 +669,7 @@ If you alter a belongsTo() relationship to act as foreign key, it will validate 
 
 Generating Calculations
 -----------------------
-Calculations are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.Phalcon_Model_ allows to use these functions directly from the exposed methods.
+Calculations are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` allows to use these functions directly from the exposed methods.
 
 Count examples:
 
@@ -778,7 +778,7 @@ Max/Min examples:
 
 Creating Updating/Records
 -------------------------
-The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of Phalcon_Model_. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. 
+The method Phalcon_Model_Base::save() allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon_Model <../api/Phalcon_Model_Base>`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created. 
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model.
 
@@ -801,13 +801,13 @@ Also the method executes associated validators, virtual foreign keys and events 
 
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. Phalcon_Model_ can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it. 
+Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it. 
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
-Phalcon_Model_ has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes. 
+:doc:`Phalcon_Model <../api/Phalcon_Model_Base>` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes. 
 
-Each message consists of an instance of the class Phalcon_Model_Message_. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class :doc:`Phalcon_Model_Message <../api/Phalcon_Model_Message>`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
 
 .. code-block:: php
 
@@ -821,7 +821,7 @@ Each message consists of an instance of the class Phalcon_Model_Message_. The se
         }
     }
 
-The following types of validation messages can be generated by Phalcon_Model_:
+The following types of validation messages can be generated by :doc:`Phalcon_Model <../api/Phalcon_Model_Base>`:
 
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                | Description                                                                                                                        | 
@@ -894,11 +894,11 @@ The following example implements an event that validates the year cannot be smal
     
     }
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, Phalcon_Model_ will assume a true value.
+Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` will assume a true value.
 
 Validating Data Integrity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Phalcon_Model_ provides several events to validate data and implement business rules. The special "validation" event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation. 
+:doc:`Phalcon_Model <../api/Phalcon_Model_Base>` provides several events to validate data and implement business rules. The special "validation" event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation. 
 
 The following example shows how to use it: 
 
@@ -1098,7 +1098,7 @@ Transactions are reused no matter where the transaction object is retrieved. A n
 
 Models Meta-Data
 ----------------
-To speed up development Phalcon_Model_ helps you to query fields and constraints from tables related to models. To achieve this, Phalcon_Model_MetaData_ is available to manage and cache table meta-data. 
+To speed up development :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` helps you to query fields and constraints from tables related to models. To achieve this, :doc:`Phalcon_Model_MetaData <../api/Phalcon_Model_MetaData>` is available to manage and cache table meta-data. 
 
 Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance as follows: 
 
@@ -1125,15 +1125,15 @@ Caching Meta-Data
 ^^^^^^^^^^^^^^^^^
 Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters: 
 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+
-| Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                             | 
-+=========+===============================================================================================================================================================================================================================================================================================================================================+=================================+
-| Memory  | This adapter is the default. The meta-data is cached only during the request. When the request is completed, the meta-data are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the meta-data in each request containing the new and/or modified fields. | Phalcon_Model_MetaData_Memory_  | 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+
-| Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed everytime a new session starts. This also requires the use of session_start() to start the session before using any models.                         | Phalcon_Model_MetaData_Session_ | 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+
-| Apc     | The Apc adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                            | Phalcon_Model_MetaData_Apc_     | 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------+
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                           | 
++=========+===============================================================================================================================================================================================================================================================================================================================================+===============================================================================+
+| Memory  | This adapter is the default. The meta-data is cached only during the request. When the request is completed, the meta-data are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the meta-data in each request containing the new and/or modified fields. | :doc:`Phalcon_Model_MetaData_Memory <../api/Phalcon_Model_MetaData_Memory>`   | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed everytime a new session starts. This also requires the use of session_start() to start the session before using any models.                         | :doc:`Phalcon_Model_MetaData_Session <../api/Phalcon_Model_MetaData_Session>` | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Apc     | The Apc adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                            | :doc:`Phalcon_Model_MetaData_Apc <../api/Phalcon_Model_MetaData_Apc>`         | 
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 If you want to have full control over the meta-data caching process, you could replace the active meta-data manager as follows: 
 
@@ -1152,7 +1152,7 @@ If you want to have full control over the meta-data caching process, you could r
     // Replace the active meta-data manager
     Phalcon_Model_Manager::getDefault()->setMetaData($metaData);
 
-If your application is using a INI configuration file together with Phalcon_Controller_Front_, add the following section to it: 
+If your application is using a INI configuration file together with :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>`, add the following section to it: 
 
 .. code-block:: ini
 
@@ -1163,7 +1163,7 @@ If your application is using a INI configuration file together with Phalcon_Cont
 
 Logging Low-Level SQL Statements
 --------------------------------
-Using high-level abstraction components such as Phalcon_Model_ to access a database, it is difficult to understand which statements are sent to the database system. Phalcon_Model_ is supported internally by Phalcon_Db_. Phalcon_Logger_ interacts with Phalcon_Db_, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+Using high-level abstraction components such as :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` is supported internally by :doc:`Phalcon_Db <../api/Phalcon_Db>`. Phalcon_Logger_ interacts with :doc:`Phalcon_Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 
 .. code-block:: php
@@ -1193,7 +1193,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 Profiling SQL Statements
 ------------------------
-Thanks to Phalcon_Db_, the underlying component of Phalcon_Model_, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
+Thanks to :doc:`Phalcon_Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon_Model <../api/Phalcon_Model_Base>`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks. 
 
 .. code-block:: php
 
@@ -1219,15 +1219,4 @@ Thanks to Phalcon_Db_, the underlying component of Phalcon_Model_, it's possible
 
 Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement. 
 
-.. _Phalcon_Model: ../api/Phalcon_Model
-.. _Phalcon_Db: ../api/Phalcon_Db
-.. _Phalcon_Model_Base: ../api/Phalcon_Model_Base
-.. _Phalcon_Model_Resultset: ../api/Phalcon_Model_Resultset
-.. _Phalcon_Cache: ../api/Phalcon_Cache
-.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front
-.. _Phalcon_Model_Message: ../api/Phalcon_Model_Message
-.. _Phalcon_Model_MetaData: ../api/Phalcon_Model_MetaData
-.. _Phalcon_Model_MetaData_Memory: ../api/_Phalcon_Model_MetaData_Memory
-.. _Phalcon_Model_MetaData_Session: ../api/_Phalcon_Model_MetaData_Session
-.. _Phalcon_Model_MetaData_Apc: ../api/_Phalcon_Model_MetaData_Apc
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php

@@ -4,7 +4,7 @@ A router parses a URI to determine which controller, and action of that controll
 
 Default Behavior
 ----------------
-Phalcon uses by default the Phalcon_Router_Rewrite_ router. When a Phalcon_Controller_Front_ is used as bootstrap, a router of this kind is automatically instantiated inside it. Phalcon_Router_Rewrite_ is a very simple router that always expects a URI that matchex the following pattern: /:controller/:action/:params 
+Phalcon uses by default the :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` router. When a :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` is used as bootstrap, a router of this kind is automatically instantiated inside it. :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` is a very simple router that always expects a URI that matchex the following pattern: /:controller/:action/:params 
 
 For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows: 
 
@@ -25,7 +25,7 @@ The routing URI is always taken from the $_GET['_url'] variable that is created 
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^(.*)$ index.php?_url=$1 [QSA,L]
 
-It is also possible to replace the behavior by setting this value directly to Phalcon_Router_Rewrite_:
+It is also possible to replace the behavior by setting this value directly to :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>`:
 
 .. code-block:: php
 
@@ -43,11 +43,11 @@ It is also possible to replace the behavior by setting this value directly to Ph
     // Getting the processed controller
     echo $router->getControllerName();
 
-Phalcon_Rewrite_Router_ is a simple and fast component and its use is highly recommended, since it offers the lowest overhead while parsing the routes of your application. 
+:doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` is a simple and fast component and its use is highly recommended, since it offers the lowest overhead while parsing the routes of your application. 
 
 Advanced Routing
 ----------------
-Phalcon provides advanced routing capabilities by replacing the default router with Phalcon_Router_Regex_. When Phalcon_Router_Regex_ is used together with Apache, it's necessary to prepend a slash / to the beginning of the rewrite subexpression ($1) to handle the URIs correctly: 
+Phalcon provides advanced routing capabilities by replacing the default router with :doc:`Phalcon_Router_Regex <../api/Phalcon_Router_Regex>`. When :doc:`Phalcon_Router_Regex <../api/Phalcon_Router_Regex>` is used together with Apache, it's necessary to prepend a slash / to the beginning of the rewrite subexpression ($1) to handle the URIs correctly: 
 
 .. code-block:: apacheconf
 
@@ -90,11 +90,11 @@ These placeholders help writing regular expressions that are more readable for d
 | /:params     | (/.*)*             | Match a list of optional words separated by slashes              | 
 +--------------+--------------------+------------------------------------------------------------------+
 
-Since you can add many routes as you need using add(), the order in which you add the routes indicates their relevance. Internally, all defined routes are traversed until Phalcon_Router_Regex_ finds the one that matches the given URI and processes it, while ignoring the rest. 
+Since you can add many routes as you need using add(), the order in which you add the routes indicates their relevance. Internally, all defined routes are traversed until :doc:`Phalcon_Router_Regex <../api/Phalcon_Router_Regex>` finds the one that matches the given URI and processes it, while ignoring the rest. 
 
-By default, if a route does not match any defined route, the fallback route is: ^/:controller/:action/:params, effectively switching the behavior to the one of Phalcon_Router_Rewrite_. 
+By default, if a route does not match any defined route, the fallback route is: ^/:controller/:action/:params, effectively switching the behavior to the one of :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>`. 
 
-In addition to the standard route parts (controller/action/params), Phalcon_Router_Regex_ also allows the definition of parameters based on the route pattern. The example below demonstrates how to define names to route parameters: 
+In addition to the standard route parts (controller/action/params), :doc:`Phalcon_Router_Regex <../api/Phalcon_Router_Regex>` also allows the definition of parameters based on the route pattern. The example below demonstrates how to define names to route parameters: 
 
 .. code-block:: php
 
@@ -234,7 +234,7 @@ The following are examples of custom routes:
 
 Replacing Controller-Front Router
 ---------------------------------
-If you are using the Phalcon_Controller_Front_ to create the MVC control flow, you could replace the default router to define custom routes or alter its standard behavior: 
+If you are using the :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` to create the MVC control flow, you could replace the default router to define custom routes or alter its standard behavior: 
 
 .. code-block:: php
 
@@ -277,9 +277,6 @@ If you are using the Phalcon_Controller_Front_ to create the MVC control flow, y
 
 You could also define your routes in a separate file and include it in the bootstrap for better organization. 
 
-.. _Phalcon_Router_Rewrite: ../api/Phalcon_Router_Rewrite
-.. _Phalcon_Router_Regex: ../api/Phalcon_Router_Regex
-.. _Phalcon_Controller_Front: ../api/Phalcon_Controller_Front
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
 
 

@@ -87,11 +87,11 @@ If users don't have permissions to access a certain action then will be forwarde
 
     }    
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by Phalcon_View_.
+There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by :doc:`Phalcon_View <../api/Phalcon_View>`.
 
 Initializing Controllers
 ------------------------
-Phalcon_Controller_ offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended. 
+:doc:`Phalcon_Controller <../api/Phalcon_Controller>` offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended. 
 
 .. code-block:: php
 
@@ -145,7 +145,7 @@ Events enable controllers to run shared pre- and post- processing code for their
 
 Request and Response
 --------------------
-In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of Phalcon_Request_ and the "response" attribute contains a Phalcon_Response_ representing what is going to be sent back to the client. 
+In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of :doc:`Phalcon_Request <../api/Phalcon_Request>` and the "response" attribute contains a :doc:`Phalcon_Response <../api/Phalcon_Response>` representing what is going to be sent back to the client. 
 
 .. code-block:: php
 
@@ -198,7 +198,7 @@ Learn more about the request environment in its `documentation article <request.
 
 Session Data
 ------------
-Sessions help us maintain persistent data between requests. You could access a Phalcon_Session_Namespace_ from any controller to encapsulate data that need to be persistent.
+Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon_Session_Namespace <../api/Phalcon_Session_Namespace>` from any controller to encapsulate data that need to be persistent.
 
 .. code-block:: php
 
@@ -221,26 +221,26 @@ Sessions help us maintain persistent data between requests. You could access a P
 
 Controller Environment
 ----------------------
-Phalcon_Controller_ provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions: 
+:doc:`Phalcon_Controller <../api/Phalcon_Controller>` provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions: 
 
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Component              | Description 	                                                                                                             | Attribute         |
-+========================+===========================================================================================================================+===================+
-| Phalcon_Request_       | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc    | $this->request    |
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Response_      | Encapsulate the response information, such as response headers, response body, etc. 	                                     | $this->response   |
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_View_          | Encapsulate the view that will be displayed to the used                                                                   | $this->view       |
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Dispatcher_    | Encapsulate details of the dispatching process                                                                            | $this->dispatcher |
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Phalcon_Model_Manager_ | Encapsulate the models initialization, meta-data, etc                                                                     | $this->model      |
-+------------------------+---------------------------------------------------------------------------------------------------------------------------+-------------------+
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
+| Component                                                   | Description 	                                                                                                        | Attribute         |
++=============================================================+=========================================================================================================================+===================+
+| :doc:`Phalcon_Request <../api/Phalcon_Request>`             | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc. | $this->request    |
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
+| :doc:`Phalcon_Response <../api/Phalcon_Response>`           | Encapsulate the response information, such as response headers, response body, etc. 	                                | $this->response   |
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
+| :doc:`Phalcon_View <../api/Phalcon_View>`                   | Encapsulate the view that will be displayed to the used                                                                 | $this->view       |
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+------  -----------+
+| :doc:`Phalcon_Dispatcher <../api/Phalcon_Dispatcher>`       | Encapsulate details of the dispatching process                                                                          | $this->dispatcher |
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
+| :doc:`Phalcon_Model_Manager <../api/Phalcon_Model_Manager>` | Encapsulate the models initialization, meta-data, etc                                                                   | $this->model      |
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 
 
 Creating a Base Controller
 --------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the Phalcon_Controller_ and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
+Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the :doc:`Phalcon_Controller <../api/Phalcon_Controller>` and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
 
 This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder, e.g. apps/controllers/ControllerBase.php. The bootstrap file must include this class: 
 
@@ -280,13 +280,5 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     }
 
-.. _Phalcon_Controller: ../api/Phalcon_Controller
-.. _Phalcon_Dispatcher: ../api/Phalcon_Dispatcher
-.. _Phalcon_Model_Manager: ../api/Phalcon_Model_Manager
-.. _Phalcon_Model_View: ../api/Phalcon_View
-.. _Phalcon_Request: ../api/Phalcon_Request
-.. _Phalcon_Response: ../api/Phalcon_Response
-.. _Phalcon_Session_Namespace: ../api/Phalcon_Session_Namespace
-.. _Phalcon_View: ../api/Phalcon_View
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
 
