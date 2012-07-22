@@ -1,7 +1,7 @@
 Tutorial: Let’s learn by example
 ================================
 
-Throughout this tutorial, we’ll walk you through the creation an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
+Throughout this tutorial, we’ll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
 
 Checking your installation
 --------------------------
@@ -397,7 +397,7 @@ We can never trust data sent from a user. Variables passed into our application,
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
 
-Additinal validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:     
+Additional validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:     
 
 .. figure:: ../_static/img/tutorial-4.png
 	:align: center
