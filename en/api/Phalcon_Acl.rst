@@ -7,24 +7,23 @@ This component allows to manage ACL lists. An access control list (ACL) is a lis
 
     <?php
 
-    
-    $acl = new Phalcon\Acl('Memory');
+    $acl = new Phalcon_Acl('Memory');
     
     //Default action is deny access
-    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    $acl->setDefaultAction(Phalcon_Acl::DENY);
     
     //Create some roles
-    $roleAdmins = new Phalcon\Acl\Role('Administrators', 'Super-User role');
-    $roleGuests = new Phalcon\Acl\Role('Guests');
+    $roleAdmins = new Phalcon_Acl_Role('Administrators', 'Super-User role');
+    $roleGuests = new Phalcon_Acl_Role('Guests');
     
     //Add "Guests" role to acl
-    acl->addRole($roleGuests);
+    $acl->addRole($roleGuests);
     
     //Add "Designers" role to acl
     $acl->addRole('Designers'));
     
     //Define the "Customers" resource
-    $customersResource = new Phalcon\Acl\Resource('Customers', 'Customers management');
+    $customersResource = new Phalcon_Acl_Resource('Customers', 'Customers management');
     
     //Add "customers" resource with a couple of operations
     $acl->addResource($customersResource, 'search');
@@ -52,9 +51,9 @@ Methods
 
 **__construct** (string $adapterName, array $options)
 
-Phalcon_Acl Constructor
+\tPhalcon_Acl Constructor
 
 **mixed** **__call** (string $method, array $arguments)
 
-Pass any call to the internal adapter object
+\tPass any call to the internal adapter object
 
