@@ -252,7 +252,7 @@ Viewing the form in your browser will show something like this:
 .. figure:: ../_static/img/tutorial-3.png
 	:align: center
 
-Phalcon_Tag also provides useful methods to build form elements.
+:doc:`Phalcon_Tag <../api/Phalcon_Tag>`_ also provides useful methods to build form elements.
 
 The Phalcon_Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application. 
 
