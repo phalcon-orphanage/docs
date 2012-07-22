@@ -252,7 +252,7 @@ Viewing the form in your browser will show something like this:
 .. figure:: ../_static/img/tutorial-3.png
 	:align: center
 
-:doc:`Phalcon_Tag <../api/Phalcon_Tag>`_ also provides useful methods to build form elements.
+:doc:`Phalcon_Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
 The Phalcon_Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application. 
 
@@ -349,7 +349,7 @@ In order to be able to use a database connection and subsequently access data th
 
 You will notice that we have replaced the calls to setControllersDir, setModelsDir and setViewsDir on the controller with a configuration array which handles all this for us. This way the code is much cleaner and easier to maintain.
 
-The :doc:`Phalcon_Config <../api/Phalcon_Config>`_ object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
+The :doc:`Phalcon_Config <../api/Phalcon_Config>` object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
@@ -393,7 +393,7 @@ Receiving data from the form and storing them in the table is the next step.
 
     }
 
-We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to `validate/sanizite <filter.html>`_ their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component `Phalcon_Filter <../api/Phalcon_Filter.html>`_ makes this task trivial, since it is incorporated in the getPost call.
+We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`Phalcon_Filter <../api/Phalcon_Filter>` makes this task trivial, since it is incorporated in the getPost call.
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
 
@@ -412,7 +412,6 @@ The following Phalcon powered applications are also available, providing more co
 
 * `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
 * `PHP Alternative website`_: Multilingual and advanced routing application.
-
 
 .. _developer tools: tools
 .. _here: tutorial
