@@ -2,7 +2,8 @@ Phalcon Developer Tools
 =======================
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon. 
 
-**Important:** Phalcon Framework version 0.4.0 or greater is needed to use developer tools. It is highly recommended to use PHP 5.3.6 or greater. If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
+.. highlights::
+    **Important:** Phalcon Framework version 0.4.0 or greater is needed to use developer tools. It is highly recommended to use PHP 5.3.6 or greater. If you prefer to use the web version instead of the console, this `blog post`_ offers more information.
 
 
 Download

@@ -1,7 +1,7 @@
 Tutorial: Let’s learn by example
 ================================
 
-Throughout this tutorial, we’ll walk you through the creation an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
+Throughout this tutorial, we’ll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
 
 Checking your installation
 --------------------------
@@ -134,7 +134,7 @@ The controller classes must have the suffix "Controller" and controller actions 
 Congratulations, you're flying with Phalcon!
 
 Sending output to a view
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 Sending output on the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view which is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
 
 .. code-block:: php
@@ -397,7 +397,7 @@ We can never trust data sent from a user. Variables passed into our application,
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
 
-Additinal validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:     
+Additional validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:     
 
 .. figure:: ../_static/img/tutorial-4.png
 	:align: center

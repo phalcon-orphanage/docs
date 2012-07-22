@@ -224,14 +224,14 @@ Controller Environment
 :doc:`Phalcon_Controller <../api/Phalcon_Controller>` provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions: 
 
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| Component                                                   | Description 	                                                                                                        | Attribute         |
+| Component                                                   | Description                                                                                                             | Attribute         |
 +=============================================================+=========================================================================================================================+===================+
 | :doc:`Phalcon_Request <../api/Phalcon_Request>`             | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc. | $this->request    |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| :doc:`Phalcon_Response <../api/Phalcon_Response>`           | Encapsulate the response information, such as response headers, response body, etc. 	                                | $this->response   |
+| :doc:`Phalcon_Response <../api/Phalcon_Response>`           | Encapsulate the response information, such as response headers, response body, etc.                                     | $this->response   |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 | :doc:`Phalcon_View <../api/Phalcon_View>`                   | Encapsulate the view that will be displayed to the used                                                                 | $this->view       |
-+-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+------  -----------+
++-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 | :doc:`Phalcon_Dispatcher <../api/Phalcon_Dispatcher>`       | Encapsulate details of the dispatching process                                                                          | $this->dispatcher |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 | :doc:`Phalcon_Model_Manager <../api/Phalcon_Model_Manager>` | Encapsulate the models initialization, meta-data, etc                                                                   | $this->model      |

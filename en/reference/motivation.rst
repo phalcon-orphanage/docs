@@ -21,7 +21,7 @@ Why?
 * Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
 
 Inner workings of PHP?
---------------
+----------------------
 
 * PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
 * PHP is interpreted and not compiled. The major disadvantage is performance loss
@@ -37,14 +37,14 @@ How traditional PHP frameworks work?
 * The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
 
 How does a PHP C-extension work?
-----------------------------
+--------------------------------
 
 * C extensions are loaded together with PHP one time on the web server's daemon start process
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
 
 How does Phalcon work?
---------------------
+----------------------
 
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
 * Low-level optimizations provides the lowest overhead for MVC-based applications
