@@ -1,6 +1,6 @@
 Multi-lingual Support
 =====================
-The component Phalcon_Translate_ aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application. 
+The component :doc:`Phalcon_Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application. 
 
 Adapters
 --------
@@ -105,7 +105,5 @@ The "_" function is returning the translated string based on the index passed. S
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a `REGEX router`_. 
+Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a :doc:`REGEX router <routing>`. 
 
-.. _Phalcon_Translate: ../api/Phalcon_Translate
-.. _REGEX router: routing

@@ -1,6 +1,6 @@
 Reading Configuration
 =====================
-Phalcon_Config_ is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
+:doc:`Phalcon_Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
 
 File Adapters
 -------------
@@ -84,5 +84,3 @@ Related Guides
 --------------
 
 * :doc:`Settings supported by the Framework <settings>`
-
-.. _Phalcon_Config: ../api/Phalcon_Config

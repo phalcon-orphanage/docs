@@ -1,8 +1,8 @@
 Nginx Installation Notes
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load. 
+Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load. 
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx + PHP-FPM provides a powerful set of tools that offer maximum performance for your PHP applications. 
+The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications. 
 
 Configuring Nginx for Phalcon
 -----------------------------
@@ -102,7 +102,7 @@ And this second configuration allow you to have different configurations by host
     
 Preparing Phalcon to Nginx
 --------------------------
-If you're using the default `Phalcon_Router_Rewrite_ router, you will notice that Nginx_ puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
+If you're using the default :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` router, you will notice that Nginx_ puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
 
 .. code-block:: php
 
@@ -129,4 +129,3 @@ If you're using the default `Phalcon_Router_Rewrite_ router, you will notice tha
 
 .. _Nginx: http://wiki.nginx.org/Main
 .. _PHP-FPM: http://php-fpm.org/
-.. _Phalcon_Router_Rewrite: ../api/Phalcon_Router_Rewrite

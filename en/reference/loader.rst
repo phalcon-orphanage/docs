@@ -1,10 +1,10 @@
 Universal Class Loader
 ======================
-:doc:`Phalcon_Loader` is a component that allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files. 
+:doc:`Phalcon_Loader <../api/Phalcon_Loader>` is a component that allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files. 
 
-The behavior of this component is based on the PHP's capability of `autoloading classes`_. If a class that does not exist is used in any part of the code, a special handler will try to load it. :doc:`Phalcon_Loader` serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called `lazy initialization`_. 
+The behavior of this component is based on the PHP's capability of `autoloading classes`_. If a class that does not exist is used in any part of the code, a special handler will try to load it. :doc:`Phalcon_Loader <../api/Phalcon_Loader>` serves as the special handler for this operation. By loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called `lazy initialization`_. 
 
-:doc:`Phalcon_Loader` offers three options to autoload classes. You can use them one at a time or combine them. 
+:doc:`Phalcon_Loader <../api/Phalcon_Loader>` offers three options to autoload classes. You can use them one at a time or combine them. 
 
 Registering Namespaces
 ----------------------
@@ -90,6 +90,5 @@ The last option is to register the class name and its path. This autoloader can 
 	$some = new Some();
 
 
-.. _Phalcon_Loader: ../api/Phalcon_Loader
 .. _autoloading classes: http://www.php.net/manual/en/language.oop5.autoload.php
 .. _lazy initialization: http://en.wikipedia.org/wiki/Lazy_initialization
