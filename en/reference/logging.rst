@@ -1,6 +1,6 @@
 Logging
 =======
-Phalcon_Logger_ is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the Phalcon_Logger_ for every logging need your application has, from debugging processes to tracing application flow. 
+:doc:`Phalcon_Logger` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon_Logger` for every logging need your application has, from debugging processes to tracing application flow. 
 
 Adapters
 --------
@@ -64,7 +64,7 @@ The default logging format is:
 
 [%date%][%type%] %message%
 
-Phalcon_Logger_ offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
+:doc:`Phalcon_Logger` offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 +-----------+------------------------------------------+
 | Variable  | Description                              | 
