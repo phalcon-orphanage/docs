@@ -236,7 +236,7 @@ The available render levels are:
 
 Using models in the view layer
 ------------------------------
-Application models are always available at the view layer. The :doc:`../api/Phalcon_Loader` will instantiate them at runtime automatically:
+Application models are always available at the view layer. The :doc:`Phalcon Loader <../api/Phalcon_Loader>` will instantiate them at runtime automatically:
 
 .. code-block:: html+php
 
@@ -254,7 +254,7 @@ Although you may perform model manipulation operations such as insert() or updat
 
 Picking Views
 -------------
-As mentioned above, when :doc:`Phalcon_View <../api/Phalcon_View>` is managed by :doc:`../api/Phalcon_Controller_Front` the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon_View::pick() method: 
+As mentioned above, when :doc:`Phalcon_View <../api/Phalcon_View>` is managed by :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon_View::pick() method: 
 
 .. code-block:: php
 
@@ -276,7 +276,7 @@ Caching View Fragments
 ^^^^^^^^^^^^^^^^^^^^^^
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. :doc:`Phalcon_View <../api/Phalcon_View>` offers caching a part or the whole rendered output to increase performance. 
 
-:doc:`Phalcon_View <../api/Phalcon_View>` integrates with :doc:`../api/Phalcon_Cache` to provide an easier way to cache output fragments. You could manually set the cache handler or set a global handler: 
+:doc:`Phalcon_View <../api/Phalcon_View>` integrates with :doc:`Phalcon_Cache <../api/Phalcon_Cache>` to provide an easier way to cache output fragments. You could manually set the cache handler or set a global handler: 
 
 .. code-block:: php
 
@@ -660,7 +660,7 @@ When registering the engine, a instance of your template adapter must be passed 
 
 View Environment
 ----------------
-Every view executed is included inside a :doc:`../api/Phalcon_View_Engine` instance, providing access to the view environment and its properties that can be used in your developments. 
+Every view executed is included inside a :doc:`Phalcon_View_Engine <../api/Phalcon_View_Engine>` instance, providing access to the view environment and its properties that can be used in your developments. 
 
 The following example shows how to write a jQquery `ajax request`_ using a url with the framework conventions. The method url() is called from a $this instance that references the :doc:`Phalcon_View <../api/Phalcon_View>` object: 
 
