@@ -222,7 +222,8 @@
       <table width="90%" align="center">
         <tr>
           {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
-          <td class="document second-box" valign="top">  
+          <td class="second-box" valign="top">  
+            <div class="document">
             {%- block document %}
                 <div class="documentwrapper">
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
@@ -236,6 +237,7 @@
                 {%- endif %}{% endif %}
                 </div>
             {%- endblock %}          
+            </div>
           </td>  
         </tr>   
       </table>
