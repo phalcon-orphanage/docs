@@ -51,8 +51,8 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
 
 Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.  
 
-Pretty URLs
-^^^^^^^^^^^
+Beautiful URLs
+^^^^^^^^^^^^^^
 We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
 
 In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file: 
