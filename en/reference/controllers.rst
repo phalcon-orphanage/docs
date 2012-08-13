@@ -23,7 +23,7 @@ In this case, the PostsController will handle this request. The controller file 
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -48,7 +48,7 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -58,7 +58,7 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
 
         function showAction($year, $postTitle)
         {
-            Phalcon_Flash::error("You don't have permission to access this area");
+            \Phalcon\Flash::error("You don't have permission to access this area");
 
             // Forward flow to another action
             $this->_forward("users/signin");
@@ -72,7 +72,7 @@ If users don't have permissions to access a certain action then will be forwarde
 
     <?php
 
-    class UsersController extends Phalcon_Controller
+    class UsersController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -87,17 +87,17 @@ If users don't have permissions to access a certain action then will be forwarde
 
     }    
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by :doc:`Phalcon_View <../api/Phalcon_View>`.
+There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by :doc:`Phalcon\View <../api/Phalcon_View>`.
 
 Initializing Controllers
 ------------------------
-:doc:`Phalcon_Controller <../api/Phalcon_Controller>` offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended. 
+:doc:`Phalcon\Controller <../api/Phalcon_Controller>` offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended.
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Controller
     {
 
         function initialize()
@@ -124,7 +124,7 @@ Events enable controllers to run shared pre- and post- processing code for their
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Controller
     {
 
         function beforeDispatch()
@@ -145,13 +145,13 @@ Events enable controllers to run shared pre- and post- processing code for their
 
 Request and Response
 --------------------
-In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of :doc:`Phalcon_Request <../api/Phalcon_Request>` and the "response" attribute contains a :doc:`Phalcon_Response <../api/Phalcon_Response>` representing what is going to be sent back to the client. 
+In every controller there are two public properties pointing to the request and the response objects associated with the request cycle that is currently in execution. The "request" attribute contains an instance of :doc:`Phalcon\Request <../api/Phalcon_Request>` and the "response" attribute contains a :doc:`Phalcon\Response <../api/Phalcon_Response>` representing what is going to be sent back to the client.
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends Phalcon\Controller
     {
 
         function indexAction()
@@ -178,7 +178,7 @@ The response object is not usually used directly, but is built up before the exe
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends Phalcon\Controller
     {
 
         function indexAction()
@@ -198,13 +198,13 @@ Learn more about the request environment in its `documentation article <request.
 
 Session Data
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon_Session_Namespace <../api/Phalcon_Session_Namespace>` from any controller to encapsulate data that need to be persistent.
+Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\Session\Namespace <../api/Phalcon_Session_Namespace>` from any controller to encapsulate data that need to be persistent.
 
 .. code-block:: php
 
     <?php
 
-    class UserController extends Phalcon_Controller
+    class UserController extends Phalcon\Controller
     {
 
         function indexAction()
@@ -221,26 +221,26 @@ Sessions help us maintain persistent data between requests. You could access a :
 
 Controller Environment
 ----------------------
-:doc:`Phalcon_Controller <../api/Phalcon_Controller>` provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions: 
+:doc:`Phalcon\Controller <../api/Phalcon_Controller>` provides some useful public attributes to interact with other active parts of the framework. Check out the API to understand and use all the available properties related to each component, so that you can use them in your actions:
 
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 | Component                                                   | Description                                                                                                             | Attribute         |
 +=============================================================+=========================================================================================================================+===================+
-| :doc:`Phalcon_Request <../api/Phalcon_Request>`             | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc. | $this->request    |
+| :doc:`Phalcon\Request <../api/Phalcon_Request>`             | Encapsulate the request information, such as HTTP method, POST and GET variables, POST files, languages, charsets, etc. | $this->request    |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| :doc:`Phalcon_Response <../api/Phalcon_Response>`           | Encapsulate the response information, such as response headers, response body, etc.                                     | $this->response   |
+| :doc:`Phalcon\Response <../api/Phalcon_Response>`           | Encapsulate the response information, such as response headers, response body, etc.                                     | $this->response   |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| :doc:`Phalcon_View <../api/Phalcon_View>`                   | Encapsulate the view that will be displayed to the used                                                                 | $this->view       |
+| :doc:`Phalcon\View <../api/Phalcon_View>`                   | Encapsulate the view that will be displayed to the used                                                                 | $this->view       |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| :doc:`Phalcon_Dispatcher <../api/Phalcon_Dispatcher>`       | Encapsulate details of the dispatching process                                                                          | $this->dispatcher |
+| :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>`       | Encapsulate details of the dispatching process                                                                          | $this->dispatcher |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
-| :doc:`Phalcon_Model_Manager <../api/Phalcon_Model_Manager>` | Encapsulate the models initialization, meta-data, etc                                                                   | $this->model      |
+| :doc:`Phalcon\Model\Manager <../api/Phalcon_Model_Manager>` | Encapsulate the models initialization, meta-data, etc                                                                   | $this->model      |
 +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-------------------+
 
 
 Creating a Base Controller
 --------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the :doc:`Phalcon_Controller <../api/Phalcon_Controller>` and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
+Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the :doc:`Phalcon\Controller <../api/Phalcon_Controller>` and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
 
 This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder, e.g. apps/controllers/ControllerBase.php. The bootstrap file must include this class: 
 
@@ -256,7 +256,7 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     <?php
 
-    class ControllerBase extends Phalcon_Controller
+    class ControllerBase extends Phalcon\Controller
     {
 
       /**

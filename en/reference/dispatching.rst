@@ -1,6 +1,6 @@
 Orchestrating MVC
 =================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>`. This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired. 
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>`. This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 Understanding the default behavior
 ----------------------------------
@@ -12,14 +12,14 @@ If you've been following the tutorials_ or have generated the code using Tools, 
     
     try {
     
-        $front = Phalcon_Controller_Front::getInstance();
+        $front = \Phalcon\Controller\Front::getInstance();
     
-        $config = new Phalcon_Config_Adapter_Ini("../app/config/config.ini");
+        $config = new \Phalcon\Config\Adapter\Ini("../app/config/config.ini");
         $front->setConfig($config);
     
         echo $front->dispatchLoop()->getContent();
     
-    } catch (Phalcon_Exception $e) {
+    } catch (\Phalcon\Exception $e) {
         echo "PhalconException: ", $e->getMessage();
     }
 
@@ -31,12 +31,12 @@ The core of all the work of the controller occurs when dispatchLoop() is invoked
 
     echo $front->dispatchLoop()->getContent();
 
-Internally and based on the config set, :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` performs the following steps for a request:
+Internally and based on the config set, :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` performs the following steps for a request:
 
-- Checks if a request instance has been previously set, otherwise, instantiates a :doc:`Phalcon_Request <../api/Phalcon_Request>` object
-- Checks if a response instance has been previously set, otherwise, instantiates a :doc:`Phalcon_Response <../api/Phalcon_Response>` object
-- Checks if a dispatcher instance has been set, otherwise, instantiates a :doc:`Phalcon_Dispatcher <../api/Phalcon_Dispatcher>` object. This object receives the controllersDir option set by config.
-- Checks if a router instance has been set, otherwise, instantiates a :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` object. By default the router will handle the URI placed at $_GET['_url']
+- Checks if a request instance has been previously set, otherwise, instantiates a :doc:`Phalcon\Request <../api/Phalcon_Request>` object
+- Checks if a response instance has been previously set, otherwise, instantiates a :doc:`Phalcon\Response <../api/Phalcon_Response>` object
+- Checks if a dispatcher instance has been set, otherwise, instantiates a :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>` object. This object receives the controllersDir option set by config.
+- Checks if a router instance has been set, otherwise, instantiates a :doc:`Phalcon\Router\Rewrite <../api/Phalcon_Router_Rewrite>` object. By default the router will handle the URI placed at $_GET['_url']
 - Starts the view component. This enables output buffering by calling internally the function ob_start
 - The processed controller/action/parameters by the router is passed to the dispatcher.
 - The dispatcher locates the selected controller in the controllers directory, instantiates it and executes the action, passing the routing parameters to it
@@ -44,32 +44,32 @@ Internally and based on the config set, :doc:`Phalcon_Controller_Front <../api/P
 - The view returns all the buffered content
 - This content is passed to the response object
 
-You can of course not use :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` if you wish. The above example becomes:
+You can of course not use :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` if you wish. The above example becomes:
 
 .. code-block:: php
 
     <?php
     
     // Read the config
-    $config = new Phalcon_Config_Adapter_Ini("app/config/config.ini");
+    $config = new \Phalcon\Config\Adapter\Ini("app/config/config.ini");
     
     // Instantiate a router
-    $router = new Phalcon_Router_Regex();
+    $router = new \Phalcon\Router\Regex();
     
     // Handle URI data
     $router->handle();
     
     // Instantiate both request and response objects
-    $request  = Phalcon_Request::getInstance();
-    $response = Phalcon_Response::getInstance();
+    $request  = \Phalcon\Request::getInstance();
+    $response = \Phalcon\Response::getInstance();
     
     // Instantiate View component setting views directory
-    $view = new Phalcon_View();
+    $view = new \Phalcon\View();
     $view->setBasePath($basePath);
     $view->setViewsDir($config->phalcon->viewsDir);
     
     // Instantiate Model Manager component setting models directory
-    $modelManager = new Phalcon_Model_Manager();
+    $modelManager = new \Phalcon\Model\Manager();
     $modelManager->setBasePath($basePath);
     $modelManager->setModelsDir($config->phalcon->modelsDir);
     
@@ -77,7 +77,7 @@ You can of course not use :doc:`Phalcon_Controller_Front <../api/Phalcon_Control
     $view->start();
     
     // Instantiate a Dispatcher passing the proccesed parameters to it
-    $dispatcher = new Phalcon_Dispatcher();
+    $dispatcher = new \Phalcon\Dispatcher();
     $dispatcher->setControllersDir($config->phalcon->controllersDir);
     $dispatcher->setBasePath($basePath);
     $dispatcher->setControllerName($router->getControllerName());
@@ -105,7 +105,7 @@ As you can see the same operation can be done with fewer lines of code or with a
 
 Dispatch Loop
 -------------
-The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within :doc:`Phalcon_Dispatcher <../api/Phalcon_Dispatcher>`:
+The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>`:
 
 .. code-block:: php
 
@@ -116,7 +116,7 @@ The Dispatch Loop is another important process that has much to do with the MVC 
     
         $finished = true;
 
-        $controllerClass = Phalcon_Text::camelize($controllerName) . "Controller";
+        $controllerClass = \Phalcon\Text::camelize($controllerName) . "Controller";
 
         // Check if class is already loaded
         if (!class_exists($controllerClass)) {
@@ -126,13 +126,13 @@ The Dispatch Loop is another important process that has much to do with the MVC 
             if (file_exists($controllerPath)) {
                 require $controllerPath;
             } else {
-                throw new Phalcon_Dispatcher_Exception(
+                throw new \Phalcon\Dispatcher\Exception(
                     "File for controller class " . $controllerClass . " doesn't exist"
                 );
             }
 
             if (!class_exists($controllerClass)) {
-                throw new Phalcon_Dispatcher_Exception(
+                throw new \Phalcon\Dispatcher\Exception(
                     "Class " . $controllerClass . " was not found in the controller file"
                 );
             }

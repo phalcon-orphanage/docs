@@ -1,6 +1,6 @@
 Logging
 =======
-:doc:`Phalcon_Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon_Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow. 
+:doc:`Phalcon\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
 Adapters
 --------
@@ -9,7 +9,7 @@ This component makes use of backend adapters to store data. The use of adapters 
 +---------+---------------------------+-------------------------------------------------------------------------+
 | Adapter | Description               | API                                                                     | 
 +=========+===========================+=========================================================================+
-| File    | Logs to a plain text file | :doc:`Phalcon_Logger_Adapter_File <../api/Phalcon_Logger_Adapter_File>` | 
+| File    | Logs to a plain text file | :doc:`Phalcon\Logger\Adapter\File <../api/Phalcon_Logger_Adapter_File>` |
 +---------+---------------------------+-------------------------------------------------------------------------+
 
 Creating a Log
@@ -20,9 +20,9 @@ The example below shows how to create a log and add messages to it:
 
     <?php
 
-    $logger = new Phalcon_Logger("File", "app/logs/test.log");
+    $logger = new \Phalcon\Logger("File", "app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon_Logger::ERROR);
+    $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
 
@@ -43,7 +43,7 @@ Logging data to an adapter i.e. File (file system) is always an expensive operat
     <?php
 
     // Create the logger
-    $logger = new Phalcon_Logger("File", "app/logs/test.log");
+    $logger = new \Phalcon\Logger("File", "app/logs/test.log");
     
     // Start a transaction
     $logger->begin();
@@ -64,7 +64,7 @@ The default logging format is:
 
 [%date%][%type%] %message%
 
-:doc:`Phalcon_Logger <../api/Phalcon_Logger>` offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
+:doc:`Phalcon\Logger <../api/Phalcon_Logger>` offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 +-----------+------------------------------------------+
 | Variable  | Description                              | 
@@ -85,4 +85,3 @@ The example below shows how to change the log format:
     //Changing the logger format
     $logger->setFormat("%date% - %message%");
 
-.. _Phalcon_Logger_Adapter_File: ../api/Phalcon_Logger_Adapter_File

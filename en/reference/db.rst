@@ -1,6 +1,6 @@
 Database Abstraction Layer
 ==========================
-:doc:`Phalcon_Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon_Model <../api/Phalcon_Model_Base>` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C. 
+:doc:`Phalcon\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\Model <../api/Phalcon_Model_Base>` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
 This component allows for a lower level database manipulation than using traditional models. 
 
@@ -14,9 +14,9 @@ This component makes use of adapters to encapsulate specific database system det
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                         | 
 +============+======================================================================================================================================================================================================================================+=============================================================================+
-| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon_Db_Adapter_Mysql <../api/Phalcon_Db_Adapter_Mysql>`           | 
+| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon\Db\Adapter\Mysql <../api/Phalcon_Db_Adapter_Mysql>`           |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon_Db_Adapter_Postgresql <../api/Phalcon_Db_Adapter_Postgresql>` | 
+| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon\Db\Adapter\Postgresql <../api/Phalcon_Db_Adapter_Postgresql>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
 Database Dialects
@@ -26,9 +26,9 @@ For some database engines, PHP provides several ways to connect to it. From PDO 
 +------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
 | Name       | Description                                         | API                                                                         | Internal Driver | 
 +============+=====================================================+=============================================================================+=================+
-| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon_Db_Dialect_Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | mysqli          | 
+| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\Db\Dialect\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           | mysqli          |
 +------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
-| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon_Db_Dialect_Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | pgsql           | 
+| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\Db\Dialect\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` | pgsql           |
 +------------+-----------------------------------------------------+-----------------------------------------------------------------------------+-----------------+
 
 Connecting to Databases
@@ -53,7 +53,7 @@ All the connections created by the component are factored in a single method: Ph
     $config->compression = true;
     
     // Create a connection
-    $connection = Phalcon_Db::factory("Mysql", $config, true);
+    $connection = \Phalcon\Db::factory("Mysql", $config, true);
 
 .. code-block:: php
 
@@ -71,11 +71,11 @@ All the connections created by the component are factored in a single method: Ph
     $config->charset    = "UNICODE";
     
     // Create a connection
-    $connection = Phalcon_Db::factory("Postgresql", $config, true);
+    $connection = \Phalcon\Db::factory("Postgresql", $config, true);
 
 Connection Pooling
 ------------------
-To control the creation of database connections through applications, a `connection pool`_ has been implemented in the framework. It caches each connection created to avoid making multiple connections to the same adapter/host/username. 
+To control the creation of database connections through applications, a `connection pool`_ has been implemented in the framework. It caches each connection created to avoid making multiple connections to the same adapter/host/username. For more information you can check the documentation for :doc:`Phalcon\Db\Pool <../api/Phalcon_Db_Pool>.
 
 .. code-block:: php
 
@@ -90,20 +90,20 @@ To control the creation of database connections through applications, a `connect
     );
     
     // Set default connection settings
-    Phalcon_Db_Pool::setDefaultDescriptor($config);
+    Phalcon\Db\Pool::setDefaultDescriptor($config);
     
     // Create a connection
-    $connection = Phalcon_Db_Pool::getConnection();
+    $connection = \Phalcon\Db\Pool::getConnection();
     
     // This is the same as the previous connection
-    $connection = Phalcon_Db_Pool::getConnection();
+    $connection = \Phalcon\Db\Pool::getConnection();
     
     // Passing true as parameter will renew the pooled connection
-    $connection2 = Phalcon_Db_Pool::getConnection(true);
+    $connection2 = \Phalcon\Db\Pool::getConnection(true);
 
 Finding Rows
 ------------
-:doc:`Phalcon_Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case: 
+:doc:`Phalcon\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 .. code-block:: php
 
@@ -128,16 +128,16 @@ Finding Rows
     // Get only the first row
     $robot = $connection->fetchOne($sql);
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon_Db_Result::setFetchMode(). This method receives a constant, defining which kind of index is required. 
+By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon\Db\Result::setFetchMode(). This method receives a constant, defining which kind of index is required.
 
 +----------------------+-----------------------------------------------------------+
 | Constant             | Description                                               | 
 +======================+===========================================================+
-| Phalcon_Db::DB_NUM   | Return an array with numeric indexes                      | 
+| Phalcon\Db::DB_NUM   | Return an array with numeric indexes                      |
 +----------------------+-----------------------------------------------------------+
-| Phalcon_Db::DB_ASSOC | Return an array with associative indexes                  | 
+| Phalcon\Db::DB_ASSOC | Return an array with associative indexes                  |
 +----------------------+-----------------------------------------------------------+
-| Phalcon_Db::DB_BOTH  | Return an array with both associative and numeric indexes | 
+| Phalcon\Db::DB_BOTH  | Return an array with both associative and numeric indexes |
 +----------------------+-----------------------------------------------------------+
 
 .. code-block:: php
@@ -147,12 +147,12 @@ By default these calls create arrays with both associative and numeric indexes. 
     $sql = "SELECT id, name FROM robots ORDER BY name";
     $result = $connection->query($sql);
     
-    $result->setFetchMode(Phalcon_Db::DB_NUM);
+    $result->setFetchMode(Phalcon\Db::DB_NUM);
     while ($robot = $result->fetchArray()) {
        echo $robot[0];
     }
 
-The Phalcon_Db::query() returns a special object depending on the database adapter you're using. In MySQL that object is an instance of :doc:`Phalcon_Db_Result_Mysql <../api/Phalcon_Db_Result_Mysql>`, while for PostgreSQL is an instance of :doc:`Phalcon_Db_Result_Postgresql <../api/Phalcon_Db_Result_Postgresql>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+The Phalcon\Db::query() returns a special object depending on the database adapter you're using. In MySQL that object is an instance of :doc:`Phalcon\Db\Result\Mysql <../api/Phalcon_Db_Result_Mysql>`, while for PostgreSQL is an instance of :doc:`Phalcon\Db\Result\Postgresql <../api/Phalcon_Db_Result_Postgresql>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 .. code-block:: php
 
@@ -176,20 +176,20 @@ The Phalcon_Db::query() returns a special object depending on the database adapt
 
 Binding Parameters
 ------------------
-Bound parameters is also supported in :doc:`Phalcon_Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows: 
+Bound parameters is also supported in :doc:`Phalcon\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 
     <?php
     
     // Binding with numeric placeholders
-    $sql = "SELECT * FROM robots WHERE name = ?1 ORDER BY name";
-    $sql = $connection->bindParams($sql, array(1 => "Wall-E"));
+    $sql    = "SELECT * FROM robots WHERE name = ?1 ORDER BY name";
+    $sql    = $connection->bindParams($sql, array(1 => "Wall-E"));
     $result = $connection->query($sql);
     
     // Binding with named placeholders
-    $sql = "INSERT INTO `robots`(name`, year) VALUES (:name:, :year:)";
-    $sql = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
+    $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name:, :year:)";
+    $sql     = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
     $success = $connection->query($sql);
 
 When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be successfully replaced. With the MySQL adapter strings are automatically escaped using mysqli_real_escape_string_. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the MySQL server configuration, as a wrong charset will produce undesired effects when storing or retrieving data. 
@@ -203,7 +203,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     <?php
     
     // Inserting data with a raw SQL statement
-    $sql = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
+    $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
     $success = $connection->query($sql);
     
     // Generating dynamically the necessary SQL
@@ -214,7 +214,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     );
     
     // Updating data with a raw SQL statement
-    $sql = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
+    $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->query($sql);
     
     // Generating dynamically the necessary SQL
@@ -226,7 +226,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     );
     
     // Deleting data with a raw SQL statement
-    $sql = "DELETE `robots` WHERE `id` = 101";
+    $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->query($sql);
     
     // Generating dynamically the necessary SQL
@@ -235,15 +235,15 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
 Profiling SQL Statements
 ------------------------
-:doc:`Phalcon_Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+:doc:`Phalcon\Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon\Db\Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
-Database profiling is really easy With :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>`:
+Database profiling is really easy With :doc:`Phalcon\Db\Profiler <../api/Phalcon_Db_Profiler>`:
 
 .. code-block:: php
 
     <?php
     
-    $profiler = new Phalcon_Db_Profiler();
+    $profiler = new \Phalcon\Db\Profiler();
     
     // Set the connection profiler
     $connection->setProfiler($profiler);
@@ -263,19 +263,22 @@ Database profiling is really easy With :doc:`Phalcon_Db_Profiler <../api/Phalcon
     echo "Final Time: ", $profile->getFinalTime(), "\n";
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
-You can also create your own profile class based on :doc:`Phalcon_Db_Profiler <../api/Phalcon_Db_Profiler>` to record real time statistics of the statements sent to the database system: 
+You can also create your own profile class based on :doc:`Phalcon\Db\Profiler <../api/Phalcon_Db_Profiler>` to record real time statistics of the statements sent to the database system:
 
 .. code-block:: php
 
     <?php
-    
-    class DbProfiler extends Phalcon_Db_Profiler 
+
+    use \Phalcon\Db\Profiler as Profiler;
+    use \Phalcon\Db\Profiler\Item as Item;
+
+    class DbProfiler extends Profiler
     {
     
         /**
         * Executed before the SQL statement is sent to the db server
         */
-        public function beforeStartProfile(Phalcon_Db_Profiler_Item $profile) 
+        public function beforeStartProfile(Item $profile)
         {
             echo $profile->getSQLStatement();
         }
@@ -283,7 +286,7 @@ You can also create your own profile class based on :doc:`Phalcon_Db_Profiler <.
         /**
         * Executed after the SQL statement is sent to the db server
         */
-        public function afterEndProfile(Phalcon_Db_Profiler_Item $profile)
+        public function afterEndProfile(Item $profile)
         {
             echo $profile->getTotalElapsedSeconds();
         }
@@ -293,13 +296,13 @@ You can also create your own profile class based on :doc:`Phalcon_Db_Profiler <.
 
 Logging SQL Statements
 ----------------------
-Using high-level abstraction components such as :doc:`Phalcon_Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon_Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon_Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
+Using high-level abstraction components such as :doc:`Phalcon\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
 
 .. code-block:: php
 
     <?php
     
-    $logger = new Phalcon_Logger("File", "app/logs/db.log");
+    $logger = new \Phalcon\Logger("File", "app/logs/db.log");
     
     $connection->setLogger($logger);
     
@@ -318,11 +321,11 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 Implementing your own Logger
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can implement your own logger class for database queries, by creating a class that implements a single method called "log". The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon_Db::setLogger(), and from then on any SQL statement executed will call that method to log the results.
+You can implement your own logger class for database queries, by creating a class that implements a single method called "log". The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\Db::setLogger(), and from then on any SQL statement executed will call that method to log the results.
 
 Describing Tables and Databases
 -------------------------------
-:doc:`Phalcon_Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and databases.
+:doc:`Phalcon\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and databases.
 
 .. code-block:: php
 
@@ -370,7 +373,7 @@ A table description is very similar to the MySQL describe command, it contains t
 
 Creating/Altering/Dropping Tables
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon_Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system. 
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 Creating Tables
 ^^^^^^^^^^^^^^^
@@ -381,7 +384,7 @@ The following example shows how to create a table:
 
     <?php
     
-    use Phalcon_Db_Column as Column;
+    use \Phalcon\Db\Column as Column;
     
     $connection->createTable(
         "robots", 
@@ -417,12 +420,12 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon_Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column: 
+Phalcon\Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon\Db\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional | 
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a Phalcon_Db_Column constant (see below for a list)                                                                   | No       | 
+| "type"          | Column type. Must be a Phalcon\Db\Column constant (see below for a list)                                                                   | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      | 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -439,26 +442,26 @@ Phalcon_Db::createTable() accepts an associative array describing the table. Col
 | "after"         | Column must be placed after indicated column                                                                                               | Yes      | 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Phalcon_Db supports the following database column types:
+Phalcon\Db supports the following database column types:
 
-* Phalcon_Db_Column::TYPE_INTEGER
-* Phalcon_Db_Column::TYPE_DATE
-* Phalcon_Db_Column::TYPE_VARCHAR
-* Phalcon_Db_Column::TYPE_DECIMAL
-* Phalcon_Db_Column::TYPE_DATETIME
-* Phalcon_Db_Column::TYPE_CHAR
-* Phalcon_Db_Column::TYPE_TEXT
+* Phalcon\Db\Column::TYPE_INTEGER
+* Phalcon\Db\Column::TYPE_DATE
+* Phalcon\Db\Column::TYPE_VARCHAR
+* Phalcon\Db\Column::TYPE_DECIMAL
+* Phalcon\Db\Column::TYPE_DATETIME
+* Phalcon\Db\Column::TYPE_CHAR
+* Phalcon\Db\Column::TYPE_TEXT
 
-The associative array passed in Phalcon_Db::createTable() can have the possible keys:
+The associative array passed in Phalcon\Db::createTable() can have the possible keys:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional | 
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>`                                  | No       | 
+| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\Db\Column <../api/Phalcon_Db_Column>`                                  | No       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon_Db_Index <../api/Phalcon_Db_Index>`                                    | Yes      | 
+| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\Db\Index <../api/Phalcon_Db_Index>`                                    | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon_Db_Reference <../api/Phalcon_Db_Reference>`          | Yes      | 
+| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\Db\Reference <../api/Phalcon_Db_Reference>`          | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      | 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -466,13 +469,13 @@ The associative array passed in Phalcon_Db::createTable() can have the possible 
 
 Altering Tables
 ^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon_Db <../api/Phalcon_Db>` is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\Db <../api/Phalcon_Db>` is limited by these constraints.
 
 .. code-block:: php
 
     <?php
     
-    use Phalcon_Db_Column as Column;
+    use \Phalcon\Db\Column as Column;
     
     // Adding a new column
     $connection->addColumn(

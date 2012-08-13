@@ -1,6 +1,6 @@
 Improving Performance with Cache
 ================================
-Phalcon provides the :doc:`Phalcon_Cache <../api/Phalcon_Cache>` class allowing faster access to frequently used or already processed data. :doc:`Phalcon_Cache <../api/Phalcon_Cache>`  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon provides the :doc:`Phalcon\Cache <../api/Phalcon_Cache>` class allowing faster access to frequently used or already processed data. :doc:`Phalcon\Cache <../api/Phalcon_Cache>`  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 When to implement cache?
 ------------------------
@@ -32,7 +32,7 @@ An output fragment is a piece of HTML or text that is cached as is and returned 
     );
     
     // Create the component that will cache from the "Output" to a "File" backend
-    $cache = Phalcon_Cache::factory(
+    $cache = \Phalcon\Cache::factory(
         "Output", 
         "File",
         $frontendOptions, 
@@ -92,7 +92,7 @@ One of the caching adapters is 'File'. The only key area for this adapter is the
     );
     
     // Create the component that will cache "Data" to a "File" backend
-    $cache = Phalcon_Cache::factory(
+    $cache = \Phalcon\Cache::factory(
         "Data", 
         "File",
         $frontendOptions, 
@@ -137,7 +137,7 @@ The above example changes slightly (especially in terms of configuration) when w
     );
     
     // Create the component that will cache "Data" to a "Memcached" backend
-    $cache = Phalcon_Cache::factory(
+    $cache = \Phalcon\Cache::factory(
         "Data", 
         "Memcached",
         $frontendOptions, 
@@ -182,8 +182,8 @@ If you want to know which keys are stored in the cache you could call the queryK
     // Query all keys used in the cache
     $keys = $cache->queryKeys();
     foreach ($keys as $key) {
-    	$data = $cache->get($key);
-    	echo "Key=", $key, " Data=", $data;
+        $data = $cache->get($key);
+        echo "Key=", $key, " Data=", $data;
     }
     
     //Query keys in the cache that begins with "my-prefix"

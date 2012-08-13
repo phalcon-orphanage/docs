@@ -1,6 +1,6 @@
 Reading Configuration
 =====================
-:doc:`Phalcon_Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
+:doc:`Phalcon\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application. 
 
 File Adapters
 -------------
@@ -23,22 +23,22 @@ The next example shows how to convert native arrays into Phalcon_Config objects.
     <?php
     
     $settings = array(
-    	"database" => array(
-     		"adapter"  => "Mysql",
-     		"host"     => "localhost",
-    		"username" => "scott",
-    		"password" => "cheetah",
-    		"name"     => "test_db",
-    	),
-     	"phalcon" => array(
-     		"controllersDir" => "../app/controllers/",
-     		"modelsDir"      => "../app/models/",
-    		"viewsDir"       => "../app/views/",
-    	),
-    	"mysetting" => "the-value"
+        "database" => array(
+             "adapter"  => "Mysql",
+             "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "name"     => "test_db",
+        ),
+         "phalcon" => array(
+             "controllersDir" => "../app/controllers/",
+             "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ),
+        "mysetting" => "the-value"
     );
     
-    $config = new Phalcon_Config($settings);
+    $config = new \Phalcon\Config($settings);
     
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -51,7 +51,7 @@ If you want to better organize your project you can save the array in another fi
     <?php
     
     require "config/config.php";
-    $config = new Phalcon_Config($settings);
+    $config = new \Phalcon\Config($settings);
 
 Reading INI Files
 -----------------
@@ -75,7 +75,7 @@ Ini files are a common way to store settings. Phalcon_Config uses the optimized 
 
     <?php
     
-    $config = new Phalcon_Config_Adapter_Ini("path/config.ini");
+    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
     
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";

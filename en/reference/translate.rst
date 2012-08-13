@@ -1,6 +1,6 @@
 Multi-lingual Support
 =====================
-The component :doc:`Phalcon_Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application. 
+The component :doc:`Phalcon\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 Adapters
 --------
@@ -57,7 +57,7 @@ A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACC
 
     <?php
     
-    class UserController extends Phalcon_Controller
+    class UserController extends \Phalcon\Controller
     {
     
       protected function _getTranslation()
@@ -75,7 +75,7 @@ A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACC
         }
     
         //Return a translation object
-        return new Phalcon_Translate("Array", array(
+        return new \Phalcon\Translate("Array", array(
            "content" => $messages
         ));
     

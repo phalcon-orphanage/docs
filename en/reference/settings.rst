@@ -5,11 +5,11 @@ This list includes the directives you can set to configure your Phalcon setup:
 +---------+----------------+------------------------------------------------------------------------------+----------------------------------------+
 | Section | File           | Description                                                                  | Example                                | 
 +=========+================+==============================================================================+========================================+
-| phalcon | controllersDir | Directory where Phalcon_Dispatcher will get the controllers classes          | controllersDir = "../app/controllers/" | 
+| phalcon | controllersDir | Directory where Phalcon\Dispatcher will get the controllers classes          | controllersDir = "../app/controllers/" |
 +---------+----------------+------------------------------------------------------------------------------+----------------------------------------+
-| phalcon | modelsDir      | Directory where Phalcon_Model_Manager will get the models classes            | modelsDir = "../app/models/"           | 
+| phalcon | modelsDir      | Directory where Phalcon\Model\Manager will get the models classes            | modelsDir = "../app/models/"           |
 +---------+----------------+------------------------------------------------------------------------------+----------------------------------------+
-| phalcon | viewsDir       | Directory on where Phalcon_View will get the views files                     | viewsDir = "../app/views/"             | 
+| phalcon | viewsDir       | Directory on where Phalcon\View will get the views files                     | viewsDir = "../app/views/"             |
 +---------+----------------+------------------------------------------------------------------------------+----------------------------------------+
 | phalcon | baseUri        | The absolute uri to the directory where the application was installed        | baseUri = "/store/"                    | 
 +---------+----------------+------------------------------------------------------------------------------+----------------------------------------+
@@ -34,7 +34,7 @@ This list includes the directives you can set to configure your Phalcon setup:
 +---------+----------------+----------------------------------------------------------------+--------------------------+
 | Section | File           | Description                                                    | Example                  | 
 +=========+================+================================================================+==========================+
-| models  | cache.adapter  | Name of the adapter used to cache resulsets with Phalcon_Cache | cache.adapter = "demo"   | 
+| models  | cache.adapter  | Name of the adapter used to cache resulsets with Phalcon\Cache | cache.adapter = "demo"   |
 +---------+----------------+----------------------------------------------------------------+--------------------------+
 | models  | cache.host     | If Memcached is used as adapter, the memcached port            | cache.host = "localhost" | 
 +---------+----------------+----------------------------------------------------------------+--------------------------+
@@ -48,7 +48,7 @@ This list includes the directives you can set to configure your Phalcon setup:
 +---------+------------------+-----------------------------------------------------------------------------+-------------------------------+
 | Section | File             | Description                                                                 | Example                       | 
 +=========+==================+=============================================================================+===============================+
-| models  | metadata.adapter | Name of the adapter used to cache table meta-data in Phalcon_Model_MetaData | metadata.adapter = "Apc"      | 
+| models  | metadata.adapter | Name of the adapter used to cache table meta-data in Phalcon\Model\MetaData | metadata.adapter = "Apc"      |
 +---------+------------------+-----------------------------------------------------------------------------+-------------------------------+
 | models  | metadata.adapter | Suffix to group caches related to meta-data. This is optional               | metadata.suffix = "my-suffix" | 
 +---------+------------------+-----------------------------------------------------------------------------+-------------------------------+

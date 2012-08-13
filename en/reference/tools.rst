@@ -105,7 +105,7 @@ All table fields are declared public for direct access.
 
     <?php
     
-    class Products extends Phalcon_Model_Base {
+    class Products extends \Phalcon\Model\Base {
     
         /**
          * @var integer
@@ -145,7 +145,7 @@ By adding the *--gen-setters-getters* you can generate the fields with protected
 
     <?php
     
-    class Products extends Phalcon_Model_Base {
+    class Products extends \Phalcon\Model\Base {
     
         /**
          * @var integer

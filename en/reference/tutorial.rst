@@ -84,7 +84,7 @@ Bootstrap
 ^^^^^^^^^
 The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
-Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` will easily allow us to request the MVC flow. This class automatically will instantiate Phalcon classes required to initialize the MVC. The public/index.php file should look like:
+Now we'll use the tools provided by the framework to implement MVC architecture with Phalcon. The :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` will easily allow us to request the MVC flow. This class automatically will instantiate Phalcon classes required to initialize the MVC. The public/index.php file should look like:
 
 .. code-block:: php
 
@@ -92,7 +92,7 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
 
     try {
 
-         $front = Phalcon_Controller_Front::getInstance();
+         $front = \Phalcon\Controller\Front::getInstance();
 
          // Setting directories
          $front->setControllersDir("../app/controllers/");
@@ -102,11 +102,11 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
          //Printing view output
          echo $front->dispatchLoop()->getContent();
 
-    } catch(Phalcon_Exception $e) {
+    } catch(\Phalcon\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
-The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. As you can see, the file is very simple and we do not need to include any additional files or register autoloaders. 
+The :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete. As you can see, the file is very simple and we do not need to include any additional files or register autoloaders.
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
@@ -116,20 +116,20 @@ By default Phalcon will look for a controller named "Index". It is the starting 
 
     <?php
 
-    class IndexController extends Phalcon_Controller
+    class IndexController extends \Phalcon\Controller
     {
 
-    	function indexAction()
-    	{
-    		echo "<h1>Hello!</h1>";
-    	}
+        function indexAction()
+        {
+            echo "<h1>Hello!</h1>";
+        }
 
     }
 
 The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this: 
 
 .. figure:: ../_static/img/tutorial-1.png
-	:align: center
+    :align: center
 
 Congratulations, you're flying with Phalcon!
 
@@ -147,7 +147,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     <?php
 
-    class IndexController extends Phalcon_Controller
+    class IndexController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -157,7 +157,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The :doc:`Phalcon_View <../api/Phalcon_View>` static component is automatically created when the action execution has ended. Learn more about views usage `here <views.html>`_ .
+The browser output should remain the same. The :doc:`\Phalcon\View <../api/Phalcon_View>` static component is automatically created when the action execution has ended. Learn more about views usage `here <views.html>`_ .
 
 Designing a sign up form
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,7 +169,7 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo "<h1>Hello!</h1>";
 
-    echo Phalcon_Tag::linkTo("signup", "Sign Up Here!");
+    echo \Phalcon\Tag::linkTo("signup", "Sign Up Here!");
 
 The generated HTML code displays an "A" html tag linking to a new controller:
 
@@ -177,7 +177,7 @@ The generated HTML code displays an "A" html tag linking to a new controller:
 
     <h1>Hello!</h1> <a href="/test/signup" >Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`Phalcon_Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be found `here <tags.html>`_    
+To generate the tag we use the class :doc:`\Phalcon\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be found `here <tags.html>`_
 
 .. figure:: ../_static/img/tutorial-2.png
 	:align: center
@@ -188,7 +188,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     <?php
 
-    class SignupController extends Phalcon_Controller
+    class SignupController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -204,20 +204,20 @@ The empty index action gives the clean pass to a view with the form definition:
 
     <h2>Sign using this form</h2>
 
-    <?= Phalcon_Tag::form("signup/register") ?>
+    <?php echo \Phalcon\Tag::form("signup/register"); ?>
 
      <p>
         <label for="name">Name</label>
-        <?= Phalcon_Tag::textField("name") ?>
+        <?php echo \Phalcon\Tag::textField("name") ?>
      </p>
 
      <p>
         <label for="name">E-Mail</label>
-        <?= Phalcon_Tag::textField("email") ?>
+        <?php echo \Phalcon\Tag::textField("email") ?>
      </p>
 
      <p>
-        <?= Phalcon_Tag::submitButton("Register") ?>
+        <?php echo \Phalcon\Tag::submitButton("Register") ?>
      </p>
 
     </form>
@@ -228,20 +228,20 @@ The empty index action gives the clean pass to a view with the form definition:
 
     <h2>Sign using this form</h2>
 
-    <?php echo Phalcon_Tag::form("signup/register"); ?>
+    <?php echo \Phalcon\Tag::form("signup/register"); ?>
 
      <p>
         <label for="name">Name</label>
-        <?php echo Phalcon_Tag::textField("name"); ?>
+        <?php echo \Phalcon\Tag::textField("name"); ?>
      </p>
 
      <p>
         <label for="name">E-Mail</label>
-        <?php echo Phalcon_Tag::textField("email"); ?>
+        <?php echo \Phalcon\Tag::textField("email"); ?>
      </p>
 
      <p>
-        <?php echo Phalcon_Tag::submitButton("Register"); ?>
+        <?php echo \Phalcon\Tag::submitButton("Register"); ?>
      </p>
 
     </form>
@@ -252,9 +252,9 @@ Viewing the form in your browser will show something like this:
 .. figure:: ../_static/img/tutorial-3.png
 	:align: center
 
-:doc:`Phalcon_Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
+:doc:`Phalcon\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon_Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application. 
+The Phalcon\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". This exception is thrown by our public/index.php file:
 
@@ -266,7 +266,7 @@ Implementing that method will remove the exception:
 
     <?php
 
-    class SignupController extends Phalcon_Controller
+    class SignupController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -304,14 +304,14 @@ A model should be located in the app/models directory. The model mapping to "use
 
     <?php
 
-    class Users extends Phalcon_Model_Base
+    class Users extends \Phalcon\Model\Base
     {
 
     }
 
 Setting a Database Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. The :doc:`Phalcon_Controller_Front <../api/Phalcon_Controller_Front>` config in the bootstrap file should be modified to add the database configuration settings: 
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. The :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` config in the bootstrap file should be modified to add the database configuration settings:
 
 .. code-block:: php
 
@@ -319,10 +319,10 @@ In order to be able to use a database connection and subsequently access data th
 
     try {
 
-        $front = Phalcon_Controller_Front::getInstance();
+        $front = \Phalcon\Controller\Front::getInstance();
 
         //Setting up framework config
-        $config = new Phalcon_Config(
+        $config = new \Phalcon\Config(
             array(
                 "database" => array(
                     "adapter"  => "Mysql",
@@ -343,13 +343,13 @@ In order to be able to use a database connection and subsequently access data th
         //Printing view output
         echo $front->dispatchLoop()->getContent();
 
-    } catch(Phalcon_Exception $e) {
+    } catch(\Phalcon\Exception $e) {
         echo "PhalconException: ", $e->getMessage();
     }
 
 You will notice that we have replaced the calls to setControllersDir, setModelsDir and setViewsDir on the controller with a configuration array which handles all this for us. This way the code is much cleaner and easier to maintain.
 
-The :doc:`Phalcon_Config <../api/Phalcon_Config>` object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
+The :doc:`Phalcon\Config <../api/Phalcon_Config>` object used, can hold a number of information essential to the application and can be stored as an array on a different file or as an INI file.
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
@@ -361,7 +361,7 @@ Receiving data from the form and storing them in the table is the next step.
 
     <?php
 
-    class SignupController extends Phalcon_Controller
+    class SignupController extends \Phalcon\Controller
     {
 
         function indexAction()
@@ -393,7 +393,7 @@ Receiving data from the form and storing them in the table is the next step.
 
     }
 
-We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`Phalcon_Filter <../api/Phalcon_Filter>` makes this task trivial, since it is incorporated in the getPost call.
+We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`\Phalcon\Filter <../api/Phalcon_Filter>` makes this task trivial, since it is incorporated in the getPost call.
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
 
