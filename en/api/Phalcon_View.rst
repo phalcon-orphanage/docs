@@ -1,23 +1,24 @@
 Class **Phalcon_View**
 ======================
 
-Phalcon_iew   Phalcon_View is a class for working with the "view" portion of the model-view-controller pattern.  That is, it exists to help keep the view script separate from the model and controller scripts.  It provides a system of helpers, output filters, and variable escaping.   
+Phalcon_View is a class offering access to the "view" portion of the model-view-controller pattern.  That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
 
 .. code-block:: php
 
     <?php
 
     
-    //Setting views directory
-     $view = new Phalcon\View();
+    // Setting views directory
+     $view = new Phalcon_View();
      $view->setViewsDir('app/views/');
     
      $view->start();
-    //Shows recent posts view (app/views/posts/recent.phtml)
+
+     // Shows recent posts view (app/views/posts/recent.phtml)
      $view->render('posts', 'recent');
      $view->finish();
     
-    //Printing views output
+    // Printing views output
      echo $view->getContent();
 
 Constants
@@ -62,10 +63,6 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
      $view->setBasePath(__DIR__.'/');
      
 
-
-
-
-
 **setRenderLevel** (string $level)
 
 Sets the render level for the view  
@@ -74,14 +71,9 @@ Sets the render level for the view
 
     <?php
 
-    
-    //Render the view related to the controller only
+    // Render the view related to the controller only
      $this->view->setRenderLevel(Phalcon_View::LEVEL_VIEW);
      
-
-
-
-
 
 **setMainView** (unknown $viewPath)
 
@@ -91,14 +83,9 @@ Sets default view name. Must be a file without extension in the views directory
 
     <?php
 
-    
-    //Renders as main view views-dir/inicio.phtml
-     $this->view->setMainView('inicio');
+    // Renders as main view views-dir/start.phtml
+     $this->view->setMainView('start');
      
-
-
-
-
 
 **setTemplateBefore** (string|array $templateBefore)
 

@@ -1,7 +1,7 @@
 Class **Phalcon_Acl_Role**
 ==========================
 
-This class defines role entity and its description
+This class defines a role entity and its description
 
 Methods
 ---------
@@ -16,5 +16,5 @@ Returns the role name
 
 **string** **getDescription** ()
 
-Returns role description
+Returns the role description
 

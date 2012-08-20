@@ -12,27 +12,27 @@ Phalcon_Cache_Frontend_Output constructor
 
 **integer** **getLifetime** ()
 
-Returns cache lifetime
+Returns the cache lifetime
 
 **isBuffering** ()
 
-Check whether if frontend is buffering output
+Checks whether the frontend is buffering output
 
 **start** ()
 
-Starts output frontend
+Starts the output frontend
 
 **string** **getContent** ()
 
-Returns output cached content
+Returns the output cached content
 
 **stop** ()
 
-Stops output frontend
+Stops the output frontend
 
 **beforeStore** (mixed $data)
 
-Prepare data to be stored
+Prepares data to be stored
 
 **afterRetrieve** (mixed $data)
 

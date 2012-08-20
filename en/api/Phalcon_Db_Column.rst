@@ -7,21 +7,22 @@ Allows to define columns to be used on create or alter table operations
 
     <?php
 
+     use Phalcon_Db_Column as Column;
     
-     use Phalcon\Db\Column as Column;
+    // Column definition
+     $column = new Column(
+        "id", array(
+            "type"          => Column::TYPE_INTEGER,
+            "size"          => 10,
+            "unsigned"      => true,
+            "notNull"       => true,
+            "autoIncrement" => true,
+            "first"         => true,
+        )
+     );
     
-    //column definition
-     $column = new Column("id", array(
-       "type" => Column::TYPE_INTEGER,
-       "size" => 10,
-       "unsigned" => true,
-       "notNull" => true,
-       "autoIncrement" => true,
-       "first" => true
-     ));
-    
-    //add column to existing table
-     $connection->addColumn("robots", null, $column);
+    // Add column to existing table
+    $connection->addColumn("robots", null, $column);
 
 Constants
 ---------

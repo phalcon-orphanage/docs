@@ -1,7 +1,7 @@
 Class **Phalcon_Db_Profiler_Item**
 ==================================
 
-This class identifies each profile in a Phalcon_Db\Profiler
+This class identifies each profile in a Phalcon_Db_Profiler
 
 Methods
 ---------

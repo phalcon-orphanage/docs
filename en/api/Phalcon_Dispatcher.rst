@@ -1,18 +1,17 @@
 Class **Phalcon_Dispatcher**
 ============================
 
-Dispatching is the process of taking the request object, extracting the module name,  controller name, action name, and optional parameters contained in it, and then  instantiating a controller and calling an action of that controller.   
+Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling the relevant action of that controller.   
 
 .. code-block:: php
 
     <?php
-
     
     
-    $dispatcher = new Phalcon\Dispatcher();
+    $dispatcher = new Phalcon_Dispatcher();
     
-    $request = Phalcon\Request::getInstance();
-    $response = Phalcon\Response::getInstance();
+    $request  = Phalcon_Request::getInstance();
+    $response = Phalcon_Response::getInstance();
     
     $dispatcher->setBasePath('./');
     $dispatcher->setControllersDir('tests/controllers/');
@@ -20,6 +19,7 @@ Dispatching is the process of taking the request object, extracting the module n
     $dispatcher->setControllerName('posts');
     $dispatcher->setActionName('index');
     $dispatcher->setParams(array());
+
     $controller = $dispatcher->dispatch($request, $response);
 
 Methods
@@ -35,11 +35,11 @@ Gets active controllers directory
 
 **setBasePath** (string $basePath)
 
-Sets base path for controllers dir. Depending of your platform, always add a trailing slash or backslash
+Sets base path for controllers folder. Depending of your platform, always add a trailing slash or backslash
 
 **string** **getBasePath** ()
 
-Gets base path for controllers dir
+Gets base path for controllers folder
 
 **setDefaultController** (string $controllerName)
 
@@ -103,9 +103,9 @@ Returns all instantiated controllers whitin the dispatcher
 
 **Phalcon_Controller** **getLastController** ()
 
-Returns the lastest dispatched controller
+Returns the last dispatched controller
 
 **mixed** **getReturnedValue** ()
 
-Returns value returned by the lastest dispatched action
+Returns value returned by the last dispatched action
 
