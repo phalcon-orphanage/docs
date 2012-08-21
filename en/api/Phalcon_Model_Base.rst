@@ -1,28 +1,32 @@
 Class **Phalcon_Model_Base**
 ============================
 
-<p>Phalcon_Model connects business objects and database tables to create  a persistable domain model where logic and data are presented in one wrapping.  It‘s an implementation of the object-relational mapping (ORM).</p>   <p>A model represents the information (data) of the application and the rules to manipulate that data.  Models are primarily used for managing the rules of interaction with a corresponding database table.  In most cases, each table in your database will correspond to one model in your application.  The bulk of your application’s business logic will be concentrated in the models.</p>   <p>Phalcon_Model is the first ORM written in C-language for PHP, giving to developers high performance  when interacting with databases while is also easy to use.</p>   
+Phalcon_Model connects business objects and database tables to create a persistent domain model where logic and data are presented wrapped as one. 
+
+Its an implementation of the object-relational mapping (ORM). A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in the database will correspond to one model in the application. The bulk of the application's business logic will be in the models. 
+
+Phalcon_Model is the first ORM written in C-language for PHP, giving developers an easy to use while high performance framework to interact with databases.
 
 .. code-block:: php
 
     <?php
+    
+    $manager = new Phalcon_Model_Manager();
+    $manager->setModelsDir('app/models/');
 
-    
-     $manager = new Phalcon\Model\Manager();
-     $manager->setModelsDir('app/models/');
-    
-     $robot = new Robots();
-     $robot->type = 'mechanical'
-     $robot->name = 'Astro Boy';
-     $robot->year = 1952;
-     if ($robot->save() == false) {
-      echo "Umh, We can store robots: ";
-      foreach ($robot->getMessages() as $message) {
-        echo $message;
-      }
-     } else {
-      echo "Great, a new robot was saved successfully!";
-     }
+    $robot       = new Robots();
+    $robot->type = 'mechanical'
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+
+    if ($robot->save() == false) {
+        echo "Umh, We can store robots: ";
+        foreach ($robot->getMessages() as $message) {
+            echo $message;
+        }
+    } else {
+        echo "Great, a new robot was saved successfully!";
+    }
 
 Constants
 ---------
@@ -36,15 +40,15 @@ integer **OP_DELETE**
 Methods
 ---------
 
-**__construct** (Phalcon\Model\Manager $manager)
+**__construct** (Phalcon_Model_Manager $manager)
 
-Phalcon_Model\Base constructor
+Phalcon_Model_Base constructor
 
-**setManager** (Phalcon\Model\Manager $manager)
+**setManager** (Phalcon_Model_Manager $manager)
 
 Overwrites default model manager
 
-**Phalcon\Model\Manager** **getManager** ()
+**Phalcon_Model_Manager** **getManager** ()
 
 Returns internal models manager
 
@@ -88,7 +92,7 @@ Dumps mapped table meta-data
 
 Creates SQL statement which returns many rows
 
-**_getOrCreateResultset** (Phalcon\Model\Manager $manager, Phalcon\Model\Base $model, Phalcon\Db $connection, array $params, boolean $unique)
+**_getOrCreateResultset** (Phalcon_Model_Manager $manager, Phalcon_Model_Base $model, Phalcon_Db $connection, array $params, boolean $unique)
 
 Gets a resulset from the cache or creates one
 
@@ -102,34 +106,32 @@ Sets a transaction related to the Model instance
 
     
     try {
-      $transaction = Phalcon\Transaction\Manager::get();
-      $robot = new Robots();
-      $robot->setTransaction($transaction);
-      $robot->name = 'WALL·E';
-      $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
-        $transaction->rollback("Can't save robot");
-      }
-      $robotPart = new RobotParts();
-      $robotPart->setTransaction($transaction);
-      $robotPart->type = 'head';
-      if($robotPart->save()==false){
-        $transaction->rollback("Can't save robot part");
-      }
-      $transaction->commit();
-    }
-    catch(Phalcon\Transaction\Failed $e){
-      echo 'Failed, reason: ', $e->getMessage();
+        $transaction = Phalcon_Transaction_Manager::get();
+
+        $robot = new Robots();
+        $robot->setTransaction($transaction);
+        $robot->name       = 'WALL-E';
+        $robot->created_at = date('Y-m-d');
+
+        if ($robot->save() == false) {
+            $transaction->rollback("Can't save robot");
+        }
+        $robotPart = new RobotParts();
+        $robotPart->setTransaction($transaction);
+        $robotPart->type = 'head';
+
+        if ($robotPart->save() == false) {
+            $transaction->rollback("Can't save robot part");
+        }
+        $transaction->commit();
+
+    } catch(Phalcon_Transaction_Failed $e) {
+        echo 'Failed, reason: ', $e->getMessage();
     }
     
-
-
-
-
-
 **boolean** **isView** ()
 
-Checks wheter model is mapped to a database view
+Checks whether model is mapped to a database view
 
 **setSource** (string $source)
 
@@ -151,11 +153,11 @@ Returns schema name where table mapped is located
 
 Overwrites internal Phalcon_Db connection
 
-**Phalcon\Db** **getConnection** ()
+**Phalcon_Db** **getConnection** ()
 
 Gets internal Phalcon_Db connection
 
-**Phalcon\Model\Base $result** **dumpResult** (Phalcon\Model\Base $base, array $result)
+**Phalcon_Model_Base $result** **dumpResult** (Phalcon_Model_Base $base, array $result)
 
 Assigns values to a model from an array returning a new model 
 
@@ -163,19 +165,16 @@ Assigns values to a model from an array returning a new model
 
     <?php
 
+    $robot = Phalcon_Model_Base::dumpResult(
+        new Robots(), 
+        array(
+            'type' => 'mechanical',
+            'name' => 'Astro Boy',
+            'year' => 1952,
+        )
+    );
     
-    $robot = Phalcon_Model_Base::dumpResult(new Robots(), array(
-      'type' => 'mechanical',
-      'name' => 'Astro Boy',
-      'year' => 1952
-    ));
-    
-
-
-
-
-
-**Phalcon\Model\Resultset** **find** (array $parameters)
+**Phalcon_Model_Resultset** **find** (array $parameters)
 
 Allows to query a set of records that match the specified conditions  
 
@@ -183,62 +182,55 @@ Allows to query a set of records that match the specified conditions
 
     <?php
 
+    // How many robots are there?
+    $robots = Robots::find();
+    echo "There are ", count($robots);
     
-    //How many robots are there?
-     $robots = Robots::find();
-     echo "There are ", count($robots);
-    //How many mechanical robots are there?
-     $robots = Robots::find("type='mechanical'");
-     echo "There are ", count($robots);
-    //Get and print virtual robots ordered by name
-     $robots = Robots::find(array("type='virtual'", "order" => "name"));
-     foreach($robots as $robot){
-    	   echo $robot->name, "\n";
-     }
-    //Get first 100 virtual robots ordered by name
-     $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
-     foreach($robots as $robot){
-    	   echo $robot->name, "\n";
-     }
+    // How many mechanical robots are there?
+    $robots = Robots::find("type='mechanical'");
+    echo "There are ", count($robots);
+    
+    // Get and print virtual robots ordered by name
+    $robots = Robots::find(array("type='virtual'", "order" => "name"));
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
+
+    // Get first 100 virtual robots ordered by name
+    $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
      
-
-
-
-
-
-**Phalcon\Model\Base** **findFirst** (array $parameters)
+**Phalcon_Model_Base** **findFirst** (array $parameters)
 
 Allows to query the first record that match the specified conditions  
 
 .. code-block:: php
 
     <?php
-
     
-    //What's the first robot in robots table?
-     $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name;
-    //What's the first mechanical robot in robots table?
-     $robot = Robots::findFirst("type='mechanical'");
-     echo "The first mechanical robot name is ", $robot->name;
-    //Get first virtual robot ordered by name
-     $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
-     echo "The first virtual robot name is ", $robot->name;
+    // What's the first robot in robots table?
+    $robot = Robots::findFirst();
+    echo "The robot name is ", $robot->name;
+    
+    // What's the first mechanical robot in robots table?
+    $robot = Robots::findFirst("type='mechanical'");
+    echo "The first mechanical robot name is ", $robot->name;
+    
+    // Get first virtual robot ordered by name
+    $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
+    echo "The first virtual robot name is ", $robot->name;
      
-
-
-
-
-
-**boolean** **_exists** (Phalcon\Db $connection)
+**boolean** **_exists** (Phalcon_Db $connection)
 
 Checks if the current record already exists or not
 
-**Phalcon\Model\Resultset** **_prepareGroupResult** (string $function, string $alias, array $parameters)
+**Phalcon_Model_Resultset** **_prepareGroupResult** (string $function, string $alias, array $parameters)
 
 Generate a SQL SELECT statement for an aggregate
 
-**array|Phalcon\Model\Resultset** **_getGroupResult** (Phalcon_Db $connection, array $params, string $sqlSelect, string $alias)
+**array|Phalcon_Model_Resultset** **_getGroupResult** (Phalcon_Db $connection, array $params, string $sqlSelect, string $alias)
 
 Generate a resulset from an aggreate SQL select
 
@@ -249,20 +241,15 @@ Allows to count how many records match the specified conditions
 .. code-block:: php
 
     <?php
-
     
-    //How many robots are there?
-     $number = Robots::count();
-     echo "There are ", $number;
-    //How many mechanical robots are there?
-     $number = Robots::count("type='mechanical'");
-     echo "There are ", $number, " mechanical robots";
-     
+    // How many robots are there?
+    $number = Robots::count();
+    echo "There are ", $number;
 
-
-
-
-
+    // How many mechanical robots are there?
+    $number = Robots::count("type='mechanical'");
+    echo "There are ", $number, " mechanical robots";
+    
 **double** **sum** (array $parameters)
 
 Allows to a calculate a summatory on a column that match the specified conditions  
@@ -270,20 +257,15 @@ Allows to a calculate a summatory on a column that match the specified condition
 .. code-block:: php
 
     <?php
-
     
-    //How much are all robots?
-     $sum = Robots::sum(array('column' => 'price'));
-     echo "The total price of robots is ", $sum;
-    //How much are mechanical robots?
-     $sum = Robots::sum(array("type='mechanical'", 'column' => 'price'));
-     echo "The total price of mechanical robots is  ", $sum;
+    // How much are all robots?
+    $sum = Robots::sum(array('column' => 'price'));
+    echo "The total price of robots is ", $sum;
+    
+    // How much are mechanical robots?
+    $sum = Robots::sum(array("type='mechanical'", 'column' => 'price'));
+    echo "The total price of mechanical robots is  ", $sum;
      
-
-
-
-
-
 **mixed** **maximum** (array $parameters)
 
 Allows to get the maximum value of a column that match the specified conditions  
@@ -291,20 +273,15 @@ Allows to get the maximum value of a column that match the specified conditions
 .. code-block:: php
 
     <?php
-
     
-    //What is the maximum robot id?
-     $id = Robots::maximum(array('column' => 'id'));
-     echo "The maximum robot id is: ", $id;
-    //What is the maximum id of mechanical robots?
-     $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
-     echo "The maximum robot id of mechanical robots is ", $id;
+    // What is the maximum robot id?
+    $id = Robots::maximum(array('column' => 'id'));
+    echo "The maximum robot id is: ", $id;
+    
+    // What is the maximum id of mechanical robots?
+    $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
+    echo "The maximum robot id of mechanical robots is ", $id;
      
-
-
-
-
-
 **mixed** **minimum** (array $parameters)
 
 Allows to get the minimum value of a column that match the specified conditions  
@@ -312,41 +289,31 @@ Allows to get the minimum value of a column that match the specified conditions
 .. code-block:: php
 
     <?php
-
     
-    //What is the minimum robot id?
-     $id = Robots::minimum(array('column' => 'id'));
-     echo "The minimum robot id is: ", $id;
-    //What is the minimum id of mechanical robots?
-     $sum = Robots::minimum(array("type='mechanical'", 'column' => 'id'));
-     echo "The minimum robot id of mechanical robots is ", $id;
+    // What is the minimum robot id?
+    $id = Robots::minimum(array('column' => 'id'));
+    echo "The minimum robot id is: ", $id;
+    
+    // What is the minimum id of mechanical robots?
+    $sum = Robots::minimum(array("type='mechanical'", 'column' => 'id'));
+    echo "The minimum robot id of mechanical robots is ", $id;
      
-
-
-
-
-
 **double** **average** (array $parameters)
 
-Allows to calculate the average value on a column matching the specified conditions  
+Allows to calculate the average value on a column matching the specified conditions
 
 .. code-block:: php
 
     <?php
-
     
-    //What's the average price of robots?
-     $average = Robots::average(array('column' => 'price'));
-     echo "The average price is ", $average;
-    //What's the average price of mechanical robots?
-     $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
-     echo "The average price of mechanical robots is ", $average;
+    // What's the average price of robots?
+    $average = Robots::average(array('column' => 'price'));
+    echo "The average price is ", $average;
+    
+    // What's the average price of mechanical robots?
+    $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
+    echo "The average price of mechanical robots is ", $average;
      
-
-
-
-
-
 **boolean** **_callEvent** (string $eventName)
 
 Fires an internal event
@@ -362,22 +329,20 @@ Appends a customized message on the validation process
 .. code-block:: php
 
     <?php
-
     
-     class Robots extens Phalcon_Model_Base {
-       function beforeSave(){
-         if(this->name=='Peter'){
-            $message = new Phalcon_Model_Message("Sorry, but a robot cannot be named Peter");
-            $this->appendMessage($message);
-         }
-       }
+     class Robots extends Phalcon_Model_Base 
+     {
+
+        function beforeSave() 
+        {
+            if (this->name=='Peter') {
+                $message = new Phalcon_Model_Message("Sorry, but a robot cannot be named Peter");
+                $this->appendMessage($message);
+            }
+        }
+
      }
      
-
-
-
-
-
 **validate** (string $validatorClass, array $options)
 
 Executes validators on every validation call 
@@ -385,25 +350,27 @@ Executes validators on every validation call
 .. code-block:: php
 
     <?php
-
     
-    class Subscriptors extends Phalcon_Model_Base {
-    	function validation(){
-     		$this->validate('ExclusionIn', array(
-    			'field' => 'status',
-    			'domain' => array('A', 'I')
-    		));
-    		if($this->validationHasFailed()==true){
+    class Subscriptors extends Phalcon_Model_Base 
+    {
+
+    	function validation()
+        {
+     		$this->validate(
+                'ExclusionIn', 
+                array(
+                    'field' => 'status',
+                    'domain' => array('A', 'I'),
+                )
+            );
+
+    		if ($this->validationHasFailed() == true) {
     			return false;
     		}
     	}
+
     }
     
-
-
-
-
-
 **boolean** **validationHasFailed** ()
 
 Check whether validation process has generated any messages 
@@ -411,25 +378,27 @@ Check whether validation process has generated any messages
 .. code-block:: php
 
     <?php
-
     
-    class Subscriptors extends Phalcon_Model_Base {
-    	function validation(){
-     		$this->validate('ExclusionIn', array(
-    			'field' => 'status',
-    			'domain' => array('A', 'I')
-    		));
-    		if($this->validationHasFailed()==true){
+    class Subscriptors extends Phalcon_Model_Base 
+    {
+
+    	function validation()
+        {
+     		$this->validate(
+                'ExclusionIn', 
+                array(
+        			'field' => 'status',
+        			'domain' => array('A', 'I'),
+                )
+            );
+
+    		if ($this->validationHasFailed() == true) {
     			return false;
     		}
     	}
+
     }
     
-
-
-
-
-
 **Phalcon_Model_Message[]** **getMessages** ()
 
 Returns all the validation messages  
@@ -437,29 +406,24 @@ Returns all the validation messages
 .. code-block:: php
 
     <?php
-
     
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->type = 'mechanical';
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
+
     if ($robot->save() == false) {
-      echo "Umh, We can't store robots right now ";
-      foreach ($robot->getMessages() as $message) {
-        echo $message;
-      }
+        echo "Umh, We can't store robots right now ";
+        foreach ($robot->getMessages() as $message) {
+            echo $message;
+        }
     } else {
-      echo "Great, a new robot was saved successfully!";
+        echo "Great, a new robot was saved successfully!";
     }
-     
-
-
-
-
-
+    
 **boolean** **_checkForeignKeys** ()
 
-Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records
+Reads "belongs to" relations and checks the virtual foreign keys when inserting or updating records
 
 **boolean** **_checkForeignKeysReverse** ()
 
@@ -475,7 +439,7 @@ Executes internal events after save a record
 
 **boolean** **_doLowInsert** (Phalcon_Db $connection, string $table, array $dataType, array $dataTypeNumeric, string $identityField)
 
-Sends a pre-build INSET SQL statement to the relational database system
+Sends a pre-build INSERT SQL statement to the relational database system
 
 **boolean** **_doLowUpdate** (Phalcon_Db $connection, string $table, array $dataType, array $dataTypeNumeric)
 
@@ -489,23 +453,18 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
     <?php
 
-    
-    //Creating a new robot
+    // Creating a new robot
     $robot = new Robots();
     $robot->type = 'mechanical'
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->save();
-    //Updating a robot name
+    
+    // Updating a robot name
     $robot = Robots::findFirst("id=100");
     $robot->name = "Biomass";
     $robot->save();
-     
-
-
-
-
-
+    
 **boolean** **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise.  
@@ -513,18 +472,13 @@ Deletes a model instance. Returning true on success or false otherwise.
 .. code-block:: php
 
     <?php
-
     
     $robot = Robots::findFirst("id=100");
     $robot->delete();
-    foreach(Robots::find("type = 'mechanical'") as $robot){
+
+    foreach (Robots::find("type = 'mechanical'") as $robot) {
        $robot->delete();
     }
-     
-
-
-
-
 
 **mixed** **readAttribute** (string $attribute)
 
@@ -532,11 +486,9 @@ Reads an attribute value by its name
 
 .. code-block:: php
 
-    <?php  echo $robot->readAttribute('name'); ?>
+    <?php  
 
-
-
-
+    echo $robot->readAttribute('name');
 
 **writeAttribute** (string $attribute, mixed $value)
 
@@ -544,11 +496,9 @@ Writes an attribute value by its name
 
 .. code-block:: php
 
-    <?php $robot->writeAttribute('name', 'Rosey'); ?>
+    <?php 
 
-
-
-
+    $robot->writeAttribute('name', 'Rosey');
 
 **hasOne** (mixed $fields, string $referenceModel, mixed $referencedFields, array $options)
 
@@ -557,19 +507,15 @@ Setup a 1-1 relation between two models
 .. code-block:: php
 
     <?php
-
     
-    class Robots extends Phalcon_Model_Base {
-       function initialize(){
-           $this->hasOne('id', 'RobotsDescription', 'robots_id');
-       }
+    class Robots extends Phalcon_Model_Base 
+    {
+        function initialize()
+        {
+            $this->hasOne('id', 'RobotsDescription', 'robots_id');
+        }
     }
     
-
-
-
-
-
 **belongsTo** (mixed $fields, string $referenceModel, mixed $referencedFields, array $options)
 
 Setup a relation reverse 1-1  between two models 
@@ -577,19 +523,15 @@ Setup a relation reverse 1-1  between two models
 .. code-block:: php
 
     <?php
-
     
-    class RobotsParts extends Phalcon_Model_Base {
-       function initialize(){
+    class RobotsParts extends Phalcon_Model_Base 
+    {
+        function initialize()
+        {
            $this->belongsTo('robots_id', 'Robots', 'id');
-       }
+        }
     }
     
-
-
-
-
-
 **hasMany** (mixed $fields, string $referenceModel, mixed $referencedFields, array $options)
 
 Setup a relation 1-n between two models 
@@ -597,19 +539,15 @@ Setup a relation 1-n between two models
 .. code-block:: php
 
     <?php
-
     
-    class Robots extends Phalcon_Model_Base {
-       function initialize(){
+    class Robots extends Phalcon_Model_Base 
+    {
+        function initialize()
+        {
            $this->hasMany('id', 'RobotsParts', 'robots_id');
-       }
+        }
     }
     
-
-
-
-
-
 **mixed** **__call** (string $method, array $arguments)
 
 Handles methods when a method does not exist

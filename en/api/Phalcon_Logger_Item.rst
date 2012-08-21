@@ -8,7 +8,7 @@ Methods
 
 **__construct** (string $message, integer $type, integer $time)
 
-Phalcon_Logger_Item contructor
+Phalcon_Logger_Item constructor
 
 **string** **getMessage** ()
 
@@ -20,5 +20,5 @@ Returns the log type
 
 **integer** **getTime** ()
 
-Returns log timestamp
+Returns the log timestamp
 
