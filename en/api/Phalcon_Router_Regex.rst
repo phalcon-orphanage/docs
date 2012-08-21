@@ -1,42 +1,30 @@
 Class **Phalcon_Router_Regex**
 ==============================
 
-<p>Phalcon_Router\Regex is the standard framework router. Routing is the  process of taking a URI endpoint (that part of the URI which comes after the base URL) and  decomposing it into parameters to determine which module, controller, and  action of that controller should receive the request</p>  
+Phalcon_Router_Regex is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
 .. code-block:: php
 
     <?php
-
     
-    $router = new Phalcon\Router\Regex();
+    $router = new Phalcon_Router_Regex();
     $router->handle();
     echo $router->getControllerName();
     
-
-
-
    Settings baseUri first:  
 
 .. code-block:: php
 
     <?php
-
     
-    $router = new Phalcon\Router\Regex();
+    $router = new Phalcon_Router_Regex();
     $router->handle();
     echo $router->getControllerName();
     
-
-
-
- </example>
-
 Methods
 ---------
 
 **__construct** ()
-
-
 
 **string** **_getRewriteUri** ()
 
@@ -60,17 +48,17 @@ Handles routing information received from the rewrite engine
 
 **string** **getControllerName** ()
 
-Returns proccesed controller name
+Returns processed controller name
 
 **string** **getActionName** ()
 
-Returns proccesed action name
+Returns processed action name
 
 **array** **getParams** ()
 
-Returns proccesed extra params
+Returns processed extra params
 
 **string** **getCurrentRoute** ()
 
-Returns the route that matchs the handled URI
+Returns the route that matches the handled URI
 
