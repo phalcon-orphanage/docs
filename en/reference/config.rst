@@ -60,16 +60,16 @@ Ini files are a common way to store settings. Phalcon_Config uses the optimized 
 .. code-block:: ini
 
     [database]
-    adapter = Mysql
-    host = localhost
+    adapter  = Mysql
+    host     = localhost
     username = scott
     password = cheetah
-    name = test_db
+    name     = test_db
     
     [phalcon]
     controllersDir = "../app/controllers/"
-    modelsDir = "../app/models/"
-    viewsDir = "../app/views/"
+    modelsDir      = "../app/models/"
+    viewsDir       = "../app/views/"
 
 .. code-block:: php
 

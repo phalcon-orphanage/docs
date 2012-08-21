@@ -1,23 +1,22 @@
 Class **Phalcon_Model_Manager**
 ===============================
 
-Manages the creation of models into applications and their relationships.  Phacon\Model\Manager helps to control the creation of models across a request execution.   
+Manages the creation of models into applications and their relationships. Phacon_Model_Manager helps to control the creation of models across a request execution.   
 
 .. code-block:: php
 
     <?php
-
     
-     $manager = new Phalcon\Model\Manager();
-     $manager->setModelsDir('../apps/models/');
-     $robot = new Robots($manager);
+    $manager = new Phalcon_Model_Manager();
+    $manager->setModelsDir('../apps/models/');
+    $robot = new Robots($manager);
 
 Methods
 ---------
 
-**__construct** (Phalcon\Config|stdClass $options)
+**__construct** (Phalcon_Config|stdClass $options)
 
-Constructor for Phalcon_Model\Manager
+Constructor for Phalcon_Model_Manager
 
 **setBasePath** (string $basePath)
 
@@ -27,17 +26,17 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 Overwrites default meta-data manager
 
-**Phalcon\Model\Metadata** **getMetaData** ()
+**Phalcon_Model_Metadata** **getMetaData** ()
 
 Returns active meta-data manager. If not exist then one will be created
 
-**setCache** (Phalcon\Cache\Backend|object $cache)
+**setCache** (Phalcon_Cache_Backend|object $cache)
 
 Set the cache object or cache parameters to make the view caching
 
-**Phalcon\Cache\Backend** **getCache** ()
+**Phalcon_Cache_Backend** **getCache** ()
 
-Returns default cache backend. This cache will be used to store resultsets and generated SQL
+Returns the default cache backend. This cache will be used to store resultsets and generated SQL
 
 **setModelsDir** (string $modelsDir)
 
@@ -54,16 +53,10 @@ Checks whether the given name is an existing model
 .. code-block:: php
 
     <?php
-
     
-    //Is there a "Robots" model?
-     $isModel = $manager->isModel('Robots');
-     
-
-
-
-
-
+    // Is there a "Robots" model?
+    $isModel = $manager->isModel('Robots');
+    
 **boolean** **load** (string $modelName)
 
 Loads a model looking for its file and initializing them
@@ -75,17 +68,11 @@ Gets/Instantiates model from directory
 .. code-block:: php
 
     <?php
-
     
-    //Get the "Robots" model
-     $Robots = $manager->getModel('Robots');
+    // Get the "Robots" model
+    $Robots = $manager->getModel('Robots');
      
-
-
-
-
-
-**initialize** (Phalcon\Model\Base $model)
+**initialize** (Phalcon_Model_Base $model)
 
 Initializes a model in the model manager
 
@@ -93,11 +80,11 @@ Initializes a model in the model manager
 
 Gets the possible source model name from its class name
 
-**setConnection** (Phalcon\Db $connection)
+**setConnection** (Phalcon_Db $connection)
 
 Sets the main connection that automatically is binded to all created models
 
-**Phalcon\Db** **getConnection** ()
+**Phalcon_Db** **getConnection** ()
 
 Gets default connection to the database. All models by default will use connection returned by this method
 
@@ -133,31 +120,31 @@ Checks whether a model has a hasMany relation with another model
 
 Checks whether a model has a hasOne relation with another model
 
-**_getRelationRecords** (array $relation, string $method, Phalcon\Model\Base $record)
+**_getRelationRecords** (array $relation, string $method, Phalcon_Model_Base $record)
 
 Helper method to query records based on a relation definition
 
-**Phalcon\Model\Resultset** **getBelongsToRecords** (string $method, string $modelName, string $modelRelation, Phalcon\Model\Base $record)
+**Phalcon_Model_Resultset** **getBelongsToRecords** (string $method, string $modelName, string $modelRelation, Phalcon_Model_Base $record)
 
 Gets belongsTo related records from a model
 
-**Phalcon\Model\Resultset** **getHasManyRecords** (string $method, string $modelName, string $modelRelation, Phalcon\Model\Base $record)
+**Phalcon_Model_Resultset** **getHasManyRecords** (string $method, string $modelName, string $modelRelation, Phalcon_Model_Base $record)
 
 Gets hasMany related records from a model
 
-**Phalcon\Model\Resultset** **getHasOneRecords** (string $method, string $modelName, string $modelRelation, Phalcon\Model\Base $record)
+**Phalcon_Model_Resultset** **getHasOneRecords** (string $method, string $modelName, string $modelRelation, Phalcon_Model_Base $record)
 
 Gets belongsTo related records from a model
 
-**array** **getBelongsTo** (Phalcon\Model\Base $model)
+**array** **getBelongsTo** (Phalcon_Model_Base $model)
 
 Gets belongsTo relations defined on a model
 
-**array** **getHasMany** (Phalcon\Model\Base $model)
+**array** **getHasMany** (Phalcon_Model_Base $model)
 
 Gets hasMany relations defined on a model
 
-**array** **getHasOne** (Phalcon\Model\Base $model)
+**array** **getHasOne** (Phalcon_Model_Base $model)
 
 Gets hasOne relations defined on a model
 
@@ -173,9 +160,9 @@ Returns the complete on which manager is looking for models
 
 Autoload function for model lazy loading
 
-**Phalcon\Model\Manager** **getDefault** ()
+**Phalcon_Model_Manager** **getDefault** ()
 
-Get the default Phalcon_Model\Manager (usually this first instantiated)
+Get the default Phalcon_Model_Manager (usually this first instantiated)
 
 **reset** ()
 

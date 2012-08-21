@@ -1,22 +1,20 @@
 Class **Phalcon_Session**
 =========================
 
-Session client-server persistent state data management. This component  allows you to separate your session data between application or modules.  With this, it's possible to use the same index to refer a variable  but they can be in different applications.   
+Session client-server persistent state data management. This component allows you to separate your session data between application or modules. With this, it's possible to use the same index to refer a variable but they can be in different applications.   
 
 .. code-block:: php
 
     <?php
 
-    
-     use \Phalcon\Session as Session;
-    
-     Session::start(array(
-        'uniqueId' => 'my-private-app'
-     ));
-    
-     Session::set('var', 'some-value');
-    
-     echo Session::get('var');
+
+    use Phalcon_Session as Session;
+
+    Session::start(array('uniqueId' => 'my-private-app'));
+
+    Session::set('var', 'some-value');
+
+    echo Session::get('var');
 
 Methods
 ---------

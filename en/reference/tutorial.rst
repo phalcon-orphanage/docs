@@ -1,11 +1,11 @@
-Tutorial: Let’s learn by example
+Tutorial: Let's learn by example
 ================================
 
-Throughout this tutorial, we’ll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
+Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
 
 Checking your installation
 --------------------------
-We’ll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below: 
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below: 
 
 .. code-block:: php
 
@@ -33,7 +33,7 @@ The best way to use this guide is to follow each step in turn. You can get the c
 
 File structure
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is losely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
 For the purposes of this tutorial and as a starting point, we suggest the following structure: 
 
@@ -99,7 +99,7 @@ Now we'll use the tools provided by the framework to implement MVC architecture 
          $front->setModelsDir("../app/models/");
          $front->setViewsDir("../app/views/");
 
-         //Printing view output
+         // Printing view output
          echo $front->dispatchLoop()->getContent();
 
     } catch(Phalcon_Exception $e) {

@@ -1,7 +1,7 @@
 Class **Phalcon_Text**
 ======================
 
-Provides utilities when working with strings
+Provides utilities when working with strings that contain underscores and camel case notations.
 
 Methods
 ---------
@@ -12,7 +12,7 @@ Provides a similar functionality as ucwords_ but uses the underscore as a separa
 
 .. code-block:: php
 
-    <?php Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+    <?php Phalcon_Text::camelize('coco_bongo'); //CocoBongo
 
 
 **string** **uncamelize** (string $str)
@@ -21,8 +21,8 @@ Opposite of **camelize**
 
 .. code-block:: php
 
-    <?php Phalcon\Text::camelize('CocoBongo'); //coco_bongo
-    <?php Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+    <?php Phalcon_Text::camelize('CocoBongo'); //coco_bongo
+    <?php Phalcon_Text::camelize('CocoBongo'); //coco_bongo
 
 
 

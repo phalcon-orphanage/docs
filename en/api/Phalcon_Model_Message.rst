@@ -1,35 +1,34 @@
 Class **Phalcon_Model_Message**
 ===============================
 
-Encapsulates validation info generated before save/delete records fails   
+Encapsulates validation info generated when save/delete records fails   
 
 .. code-block:: php
 
     <?php
-
     
-     class Robots extends Phalcon\Model\Base 
+    class Robots extends Phalcon_Model_Base 
     {
-    
-       public function beforeSave()
-       {
-         if (this->name == 'Peter') {
-            $text = "A robot cannot be named Peter";
-            $field = "name";
-            $type = "InvalidValue";
-            $message = new Phalcon\Model\Message($text, $field, $type);
-            $this->appendMessage($message);
-         }
-       }
-    
-     }
+
+        public function beforeSave()
+        {
+            if (this->name == 'Peter') {
+                $text    = "A robot cannot be named Peter";
+                $field   = "name";
+                $type    = "InvalidValue";
+                $message = new Phalcon_Model_Message($text, $field, $type);
+                $this->appendMessage($message);
+            }
+        }
+
+    }
 
 Methods
 ---------
 
 **__construct** (string $message, string $field, string $type)
 
-Phalcon_Model\Message message
+Phalcon_Model_Message message
 
 **setType** (string $type)
 
@@ -59,7 +58,7 @@ Returns field name related to message
 
 Magic __toString method returns verbose message
 
-**Phalcon\Model\Message** **__set_state** (array $message)
+**Phalcon_Model_Message** **__set_state** (array $message)
 
-Magic __set_state helps to recover messsages from serialization
+Magic __set_state helps to recover messages from serialization
 

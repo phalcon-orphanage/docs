@@ -1,7 +1,7 @@
 Class **Phalcon_View**
 ======================
 
-Phalcon_View is a class offering access to the "view" portion of the model-view-controller pattern.  That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
+Phalcon_View is a class offering access to the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
 
 .. code-block:: php
 
@@ -58,9 +58,8 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 .. code-block:: php
 
     <?php
-
     
-     $view->setBasePath(__DIR__.'/');
+    $view->setBasePath(__DIR__.'/');
      
 
 **setRenderLevel** (string $level)
@@ -72,7 +71,7 @@ Sets the render level for the view
     <?php
 
     // Render the view related to the controller only
-     $this->view->setRenderLevel(Phalcon_View::LEVEL_VIEW);
+    $this->view->setRenderLevel(Phalcon_View::LEVEL_VIEW);
      
 
 **setMainView** (unknown $viewPath)
@@ -84,7 +83,7 @@ Sets default view name. Must be a file without extension in the views directory
     <?php
 
     // Renders as main view views-dir/start.phtml
-     $this->view->setMainView('start');
+    $this->view->setMainView('start');
      
 
 **setTemplateBefore** (string|array $templateBefore)
@@ -146,18 +145,14 @@ Register templating engines
 .. code-block:: php
 
     <?php
-
     
-    $this->view->registerEngines(array(
-      ".phtml" => "Php",
-      ".mhtml" => "Mustache"
-    ));
+    $this->view->registerEngines(
+        array(
+            ".phtml" => "Php",
+            ".mhtml" => "Mustache"
+        )
+    );
     
-
-
-
-
-
 **render** (string $controllerName, string $actionName, array $params)
 
 Executes render process from request data 
@@ -165,18 +160,13 @@ Executes render process from request data
 .. code-block:: php
 
     <?php
-
     
-     $view->start();
+    $view->start();
+    
     //Shows recent posts view (app/views/posts/recent.phtml)
-     $view->render('posts', 'recent');
-     $view->finish();
+    $view->render('posts', 'recent');
+    $view->finish();
     
-
-
-
-
-
 **pick** (string $renderView)
 
 Choose a view different to render than last-controller/last-action  
@@ -184,23 +174,18 @@ Choose a view different to render than last-controller/last-action
 .. code-block:: php
 
     <?php
-
     
-     class ProductsController extends Phalcon_Controller
-     {
+    class ProductsController extends Phalcon_Controller
+    {
         function saveAction()
         {
-    //Do some save stuff...
-    //Then show the list view
-             $this->view->pick("products/list");
+            // Do some save related stuff...
+
+            // Then show the list view
+            $this->view->pick("products/list");
         }
-     }
+    }
      
-
-
-
-
-
 **partial** (string $partialPath)
 
 Renders a partial view  
@@ -208,16 +193,10 @@ Renders a partial view
 .. code-block:: php
 
     <?php
-
     
-    //Show a partial inside another view
-     $this->partial('shared/footer');
+    // Show a partial inside another view
+    $this->partial('shared/footer');
      
-
-
-
-
-
 **finish** ()
 
 Finishes the render process by stopping the output buffering
@@ -244,11 +223,9 @@ Externally sets the view content
 
 .. code-block:: php
 
-    <?php $this->view->setContent("<h1>hello</h1>");
+    <?php 
 
-
-
-
+    $this->view->setContent("<h1>hello</h1>");
 
 **string** **getContent** ()
 

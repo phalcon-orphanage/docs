@@ -1,24 +1,25 @@
 Class **Phalcon_Request**
 =========================
 
-<p>Encapsulates request information for easy and secure access from application controllers.</p>   <p>The request object is a simple value object that is passed between the dispatcher and controller classes.  It packages the HTTP request environment.</p>   
+Encapsulates request information for easy and secure access from application controllers.
+
+The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
 
 .. code-block:: php
 
     <?php
-
     
-    $request = Phalcon\Request::getInstance();
+    $request = Phalcon_Request::getInstance();
     if ($request->isPost() == true) {
-     if ($request->isAjax() == true) {
-       echo 'Request was made using POST and AJAX';
-     }
+        if ($request->isAjax() == true) {
+            echo 'Request was made using POST and AJAX';
+        }
     }
 
 Methods
 ---------
 
-**Phalcon\Request** **getInstance** ()
+**Phalcon_Request** **getInstance** ()
 
 Gets the singleton instance of Phalcon_Request
 
@@ -29,15 +30,9 @@ Overwrites Phalcon_Filter object used to sanitize input data
 .. code-block:: php
 
     <?php
-
     
      $request->setFilter($myFilter);
     
-
-
-
-
-
 **Phalcon_Filter** **getFilter** ()
 
 Returns the active filter object used to sanitize input data 
@@ -45,16 +40,10 @@ Returns the active filter object used to sanitize input data
 .. code-block:: php
 
     <?php
-
     
     // returns "100019.01"
      echo $request->getFilter()->sanitize("!100a019.01a", "float");
     
-
-
-
-
-
 **mixed** **getPost** (string $name, string|array $filters)
 
 Gets variable from $_POST superglobal applying filters if needed 
@@ -63,17 +52,13 @@ Gets variable from $_POST superglobal applying filters if needed
 
     <?php
 
+
+    // Returns value from $_POST["user_email"] without sanitizing
+    $userEmail = $request->getPost("user_email");
     
-    //Returns value from $_POST["user_email"] without sanitizing
-     $userEmail = $request->getPost("user_email");
-    //Returns value from $_POST["user_email"] with sanitizing
-     $userEmail = $request->getPost("user_email", "email");
+    // Returns value from $_POST["user_email"] with sanitizing
+    $userEmail = $request->getPost("user_email", "email");
     
-
-
-
-
-
 **mixed** **getQuery** (string $name, string|array $filters)
 
 Gets variable from $_GET superglobal applying filters if needed 
@@ -82,17 +67,13 @@ Gets variable from $_GET superglobal applying filters if needed
 
     <?php
 
+
+    // Returns value from $_GET["id"] without sanitizing
+    $id = $request->getQuery("id");
     
-    //Returns value from $_GET["id"] without sanitizing
-     $id = $request->getQuery("id");
-    //Returns value from $_GET["id"] with sanitizing
-     $id = $request->getQuery("id", "int");
+    // Returns value from $_GET["id"] with sanitizing
+    $id = $request->getQuery("id", "int");
     
-
-
-
-
-
 **mixed** **getServer** (string $name)
 
 Gets variable from $_SERVER superglobal
@@ -191,7 +172,7 @@ Gets attached files as Phalcon_Request_File instances
 
 **string** **getHTTPReferer** ()
 
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. i.e.: http://www.google.com
 
 **array** **_getQualityHeader** (string $serverIndex, string $name)
 
@@ -203,15 +184,15 @@ Process a request header and return the one with best quality
 
 **array** **getAcceptableContent** ()
 
-Gets array with mime/types and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
+Gets array with mime types and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
 
 **array** **getBestAccept** ()
 
-Gets best mime/type accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
+Gets best mime type accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
 
 **array** **getClientCharsets** ()
 
-Gets charsets array and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT_CHARSET']
+Gets charsets array accepted by the browser/client from $_SERVER['HTTP_ACCEPT_CHARSET']
 
 **string** **getBestCharset** ()
 
