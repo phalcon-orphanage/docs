@@ -71,7 +71,6 @@ API Index
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Exception
    Phalcon_Paginator
-   Phalcon_Registry
    Phalcon_Request_Exception
    Phalcon_Request_File
    Phalcon_Request
