@@ -1,14 +1,14 @@
 Class **Phalcon_Paginator_Adapter_Array**
 =========================================
 
-Component of pagination by array data
+Component of pagination using array data
 
 Methods
 ---------
 
 **__construct** (array $config)
 
-Phalcon_Paginator\Adapter\Array constructor
+Phalcon_Paginator_Adapter_Array constructor
 
 **setCurrentPage** (int $page)
 

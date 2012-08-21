@@ -8,7 +8,7 @@ Methods
 
 **__construct** (Phalcon_View $view, array $options)
 
-Phalcon_View\Engine\Mustache constructor
+Phalcon_View_Engine_Mustache constructor
 
 **render** (string $path, array $params)
 

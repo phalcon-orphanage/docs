@@ -38,7 +38,7 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
 
         function showAction($postId)
         {
-            //Pass the $postId parameter to the view
+            // Pass the $postId parameter to the view
             $this->view->setVar("postId", $postId);
         }
     

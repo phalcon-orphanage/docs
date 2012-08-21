@@ -1,7 +1,7 @@
 Class **Phalcon_Response_Headers**
 ==================================
 
-This class is a bag to manage the response headers
+This class is a collection to manage the response headers
 
 Methods
 ---------
@@ -12,7 +12,7 @@ Sets a header to be sent at the end of the request
 
 **string** **get** (string $name)
 
-Sets a header value from the internal bag
+Sets a header value from the internal collection
 
 **setRaw** (string $header)
 

@@ -1,17 +1,16 @@
 Class **Phalcon_Model_MetaData_Memory**
 =======================================
 
-Stores model meta-data in memory. Data will be erased when the request finishes   
+Stores model meta-data in memory. Data will be erased when the request is completed.
 
 .. code-block:: php
 
     <?php
+    
+    $modelManager = new Phalcon\Model\Manager();
 
-    
-     $modelManager = new Phalcon\Model\Manager();
-    
-     $metaData = new Phalcon\Model\Metadata('Memory');
-     $modelManager->setMetaData($metaData);
+    $metaData = new Phalcon\Model\Metadata('Memory');
+    $modelManager->setMetaData($metaData);
 
 Methods
 ---------

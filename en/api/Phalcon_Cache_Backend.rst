@@ -1,7 +1,7 @@
 Class **Phalcon_Cache_Backend**
 ===============================
 
-This class implements common functionality for backend adapters. All the backend cache adapter must  extend this class
+This class implements common functionality for backend adapters. All the backend cache adapters must extend this class.
 
 Methods
 ---------

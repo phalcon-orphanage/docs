@@ -1,7 +1,7 @@
 Class **Phalcon_Transaction_Failed**
 ====================================
 
-Phalcon_Transaction_Failed will thrown to exit a try/catch block for transactions
+Phalcon_Transaction_Failed will be thrown to exit a try/catch block for transactions
 
 Methods
 ---------

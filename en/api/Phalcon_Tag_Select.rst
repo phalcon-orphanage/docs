@@ -12,8 +12,6 @@ Generates a SELECT tag
 
 **_optionsFromResultset** (unknown $resultset, unknown $using, unknown $value, unknown $closeOption)
 
-
-
 **_optionsFromArray** (unknown $data, unknown $value, unknown $closeOption)
 
 

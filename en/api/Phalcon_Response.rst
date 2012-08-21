@@ -6,9 +6,8 @@ Encapsulates the HTTP response message.
 .. code-block:: php
 
     <?php
-
     
-    $response = Phalcon\Response::getInstance();
+    $response = Phalcon_Response::getInstance();
     $response->setStatusCode(200, "OK");
     $response->setContent("<html><body>Hello</body></html>");
     $response->send();
@@ -16,51 +15,39 @@ Encapsulates the HTTP response message.
 Methods
 ---------
 
-**Phalcon\Response** **getInstance** ()
+**Phalcon_Response** **getInstance** ()
 
 Returns singleton Phalcon_Response instance
 
-**Phalcon\Response** **setStatusCode** (int $code, strign $message)
+**Phalcon_Response** **setStatusCode** (int $code, strign $message)
 
 Sets the HTTP response code
 
-**Phalcon\Response\Headers** **getHeaders** ()
+**Phalcon_Response_Headers** **getHeaders** ()
 
 Returns headers set by the user
 
-**Phalcon\Response** **setHeader** (string $name, string $value)
+**Phalcon_Response** **setHeader** (string $name, string $value)
 
 Overwrites a header in the response 
 
 .. code-block:: php
 
     <?php
-
     
     $response->setHeader("Content-Type", "text/plain");
     
-
-
-
-
-
-**Phalcon\Response** **setRawHeader** (string $header)
+**Phalcon_Response** **setRawHeader** (string $header)
 
 Send a raw header to the response 
 
 .. code-block:: php
 
     <?php
-
     
     $response->setRawHeader("HTTP/1.1 404 Not Found");
     
-
-
-
-
-
-**Phalcon\Response** **setExpires** (DateTime $datetime)
+**Phalcon_Response** **setExpires** (DateTime $datetime)
 
 Sets output expire time header
 
@@ -75,15 +62,9 @@ Sets the response content-type mime, optionally the charset
 .. code-block:: php
 
     <?php
-
     
     $response->setContentType('text/plain', 'UTF-8');
     
-
-
-
-
-
 **Phalcon_Response** **redirect** (string $location, boolean $externalRedirect, int $statusCode)
 
 Redirect by HTTP to another action or URL 
@@ -91,17 +72,11 @@ Redirect by HTTP to another action or URL
 .. code-block:: php
 
     <?php
-
     
     $response->redirect("posts/index");
     $response->redirect("http://en.wikipedia.org", true);
     $response->redirect("http://www.example.com/new-location", true, 301);
     
-
-
-
-
-
 **setContent** (string $content)
 
 Sets HTTP response body 
@@ -109,15 +84,9 @@ Sets HTTP response body
 .. code-block:: php
 
     <?php
-
     
     $response->setContent("<h1>Hello!</h1>");
     
-
-
-
-
-
 **Phalcon_Response** **appendContent** (string $content)
 
 Appends a string to the HTTP response body

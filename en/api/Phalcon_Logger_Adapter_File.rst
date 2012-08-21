@@ -6,7 +6,6 @@ Adapter to store logs in plain text files
 .. code-block:: php
 
     <?php
-
     
     $logger = new Phalcon_Logger("File", "app/logs/test.log");
     $logger->log("This is a message");

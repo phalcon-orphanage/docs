@@ -7,16 +7,14 @@ Phalcon_Db_Adapter_Mysql is the Phalcon_Db adapter for the MySQL database.
 
     <?php
 
-    
-    
-    #Setting all posible parameters
-    $config = new stdClass();
-    $config->host = 'localhost';
-    $config->username = 'machine';
-    $config->password = 'sigma';
-    $config->name = 'swarm';
-    $config->charset = 'utf8';
-    $config->collation = 'utf8_unicode_ci';
+    // Setting all posible parameters
+    $config              = new stdClass();
+    $config->host        = 'localhost';
+    $config->username    = 'machine';
+    $config->password    = 'sigma';
+    $config->name        = 'swarm';
+    $config->charset     = 'utf8';
+    $config->collation   = 'utf8_unicode_ci';
     $config->compression = true;
     
     $connection = Phalcon_Db::factory('Mysql', $config);
@@ -43,22 +41,19 @@ This method is automatically called in Phalcon_Db_Mysql constructor.  Call it wh
 
 **Phalcon_Db_Result_Mysql|boolean** **query** (string $sqlStatement)
 
-Sends SQL statements to the MySQL database server returning success state.  When the SQL sent have returned any row, the result is a PHP resource.  
+Sends SQL statements to the MySQL database server returning success state. When the SQL sent returns any row, the result is a PHP resource.  
 
 .. code-block:: php
 
     <?php
 
+    // Inserting data
+    $success = $connection->query("INSERT INTO robots VALUES (1, 'Astro Boy')");
+    $success = $connection->query("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
     
-    //Inserting data
-     $success = $connection->query("INSERT INTO robots VALUES (1, 'Astro Boy')");
-     $success = $connection->query("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
-    //Querying data
-     $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
-
-
-
-  $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));</code>
+    // Querying data
+    $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
+    $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
 **int** **affectedRows** ()
 
@@ -67,16 +62,10 @@ Returns number of affected rows by the last INSERT/UPDATE/DELETE repoted by MySQ
 .. code-block:: php
 
     <?php
-
     
     $connection->query("DELETE FROM robots");
     echo $connection->affectedRows(), ' were deleted';
      
-
-
-
-
-
 **boolean** **close** ()
 
 Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon_Db_Pool
@@ -115,11 +104,9 @@ Appends a LIMIT clause to $sqlQuery argument
 
 .. code-block:: php
 
-    <?php $connection->limit("SELECT * FROM robots", 5);
+    <?php
 
-
-
-
+    $connection->limit("SELECT * FROM robots", 5);
 
 **string** **tableExists** (string $tableName, string $schemaName)
 
@@ -127,11 +114,9 @@ Generates SQL checking for the existence of a schema.table
 
 .. code-block:: php
 
-    <?php $connection->tableExists("blog", "posts")
+    <?php 
 
-
-
-
+    $connection->tableExists("blog", "posts")
 
 **string** **viewExists** (string $viewName, string $schemaName)
 
@@ -139,19 +124,17 @@ Generates SQL checking for the existence of a schema.view
 
 .. code-block:: php
 
-    <?php $connection->viewExists("active_users", "posts")
+    <?php 
 
-
-
-
+    $connection->viewExists("active_users", "posts")
 
 **string** **forUpdate** (string $sqlQuery)
 
-Devuelve un FOR UPDATE valido para un SELECT del RBDM
+Generates SQL with a valid FOR UPDATE statement on a SELECT of the RDBMS
 
 **string** **sharedLock** (string $sqlQuery)
 
-Devuelve un SHARED LOCK valido para un SELECT del RBDM
+Generates SQL with a valid SHARED LOCK statement on a SELECT of the RDBMS
 
 **boolean** **createTable** (string $tableName, string $schemaName, array $definition)
 
@@ -207,11 +190,9 @@ Generates SQL describing a table
 
 .. code-block:: php
 
-    <?php print_r($connection->describeTable("posts") ?>
+    <?php 
 
-
-
-
+    print_r($connection->describeTable("posts")
 
 **array** **listTables** (string $schemaName)
 
@@ -219,11 +200,9 @@ List all tables on a database
 
 .. code-block:: php
 
-    <?php  print_r($connection->listTables("blog") ?>
+    <?php  
 
-
-
-
+    print_r($connection->listTables("blog"));
 
 **string** **getDateUsingFormat** (string $date, string $format)
 
@@ -231,11 +210,9 @@ Returns a database date formatted
 
 .. code-block:: php
 
-    <?php $format = $connection->getDateUsingFormat("2011-02-01", "YYYY-MM-DD");
+    <?php 
 
-
-
-
+    $format = $connection->getDateUsingFormat("2011-02-01", "YYYY-MM-DD");
 
 **Phalcon_Db_Index[]** **describeIndexes** (string $table, string $schema)
 

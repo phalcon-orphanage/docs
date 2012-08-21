@@ -7,13 +7,15 @@ Allows to define reference constraints on tables
 
     <?php
 
-    
-    $reference = new Phalcon\Db\Reference("field_fk", array(
-      'referencedSchema' => "invoicing",
-      'referencedTable' => "products",
-      'columns' => array("product_type", "product_code"),
-      'referencedColumns' => array("type", "code")
-    ));
+    $reference = new Phalcon_Db_Reference(
+        "field_fk", 
+        array(
+            'referencedSchema'  => "invoicing",
+            'referencedTable'   => "products",
+            'columns'           => array("product_type", "product_code"),
+            'referencedColumns' => array("type", "code"),
+        )
+    );
 
 Methods
 ---------

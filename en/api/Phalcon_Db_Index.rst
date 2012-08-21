@@ -1,18 +1,20 @@
 Class **Phalcon_Db_Index**
 ==========================
 
-Allows to define indexes to be used on tables. Indexes are a common way  to enhance database performance. An index allows the database server to find  and retrieve specific rows much faster than it could do without an index.   
+Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without it.   
 
 .. code-block:: php
 
     <?php
+
+    $index = new Phalcon_Db_Index('PRIMARY', array('id');
 
 Methods
 ---------
 
 **__construct** (string $indexName, array $columns)
 
-Phalcon_Db\Index constructor
+Phalcon_Db_Index constructor
 
 **string** **getName** ()
 
@@ -22,7 +24,7 @@ Gets the index name
 
 Gets the columns that comprends the index
 
-**Phalcon\Db\Index** **__set_state** (array $data)
+**Phalcon_Db_Index** **__set_state** (array $data)
 
-Restore a Phalcon_Db\Index object from export
+Restore a Phalcon_Db_Index object from export
 

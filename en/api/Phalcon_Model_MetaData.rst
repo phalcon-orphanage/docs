@@ -1,16 +1,17 @@
 Class **Phalcon_Model_MetaData**
 ================================
 
-<p>Because Phalcon_Model requires meta-data like field names, data types, primary keys, etc.  this component collect them and store for further querying by Phalcon_Model\Base.  Phalcon_Model\MetaData can also use adapters to store temporarily or permanently the meta-data.</p>   <p>A standard Phalcon_Model\MetaData can be used to query model attributes:</p>   
+>Because Phalcon_Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon_Model_Base. Phalcon_Model_MetaData can also use adapters to store temporarily or permanently the meta-data.
+
+A standard Phalcon_Model_MetaData can be used to query model attributes:
 
 .. code-block:: php
 
     <?php
-
     
-     $metaData = new Phalcon\Model\MetaData('Memory');
-     $attributes = $metaData->getAttributes(new Robots());
-     print_r($attributes);
+    $metaData   = new Phalcon_Model_MetaData('Memory');
+    $attributes = $metaData->getAttributes(new Robots());
+    print_r($attributes);
 
 Constants
 ---------
@@ -38,7 +39,7 @@ Methods
 
 **__construct** (string $adapter, array $options)
 
-Phalcon_Model\MetaData constructor
+Phalcon_Model_MetaData constructor
 
 **array** **getAttributes** (Phalcon_Model_Base $model)
 
@@ -50,7 +51,7 @@ Returns an array of fields which are part of the primary key
 
 **array** **getNonPrimaryKeyAttributes** (Phalcon_Model_Base $model)
 
-Returns an arrau of fields which are not part of the primary key
+Returns an array of fields which are not part of the primary key
 
 **array** **getNotNullAttributes** (Phalcon_Model_Base $model)
 

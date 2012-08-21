@@ -1,7 +1,7 @@
 Class **Phalcon_Transaction_Manager**
 =====================================
 
-A transaction acts on a single database connection. If you have multiple class-specific  databases, the transaction will not protect interaction among them  
+A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them  
 
 .. code-block:: php
 
@@ -9,29 +9,31 @@ A transaction acts on a single database connection. If you have multiple class-s
 
     
     try {
-    
-      $transaction = Phalcon\Transaction\Manager::get();
-    
-      $robot = new Robots();
-      $robot->setTransaction($transaction);
-      $robot->name = 'WALL·E';
-      $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
-        $transaction->rollback("Can't save robot");
-      }
-    
-      $robotPart = new RobotParts();
-      $robotPart->setTransaction($transaction);
-      $robotPart->type = 'head';
-      if($robotPart->save()==false){
-        $transaction->rollback("Can't save robot part");
-      }
-    
-      $transaction->commit();
-    
+
+        $transaction = Phalcon_Transaction_Manager::get();
+
+        $robot = new Robots();
+        $robot->setTransaction($transaction);
+        $robot->name = 'WALL·E';
+        $robot->created_at = date('Y-m-d');
+        
+        if ($robot->save() == false) {
+            $transaction->rollback("Can't save robot");
+        }
+
+        $robotPart = new RobotParts();
+        $robotPart->setTransaction($transaction);
+        $robotPart->type = 'head';
+        
+        if ($robotPart->save() == false) {
+            $transaction->rollback("Can't save robot part");
+        }
+
+        $transaction->commit();
+
     }
-    catch(Phalcon\Transaction\Failed $e){
-      echo 'Failed, reason: ', $e->getMessage();
+    catch(Phalcon_Transaction_Failed $e){
+        echo 'Failed, reason: ', $e->getMessage();
     }
 
 Methods
@@ -51,7 +53,7 @@ Rollbacks active transactions within the manager
 
 **commit** ()
 
-Commmits active transactions within the manager
+Commits active transactions within the manager
 
 **rollback** (boolean $collect)
 
@@ -59,11 +61,11 @@ Rollbacks active transactions within the manager  Collect will remove transactio
 
 **notifyRollback** (Phalcon_Transaction $transaction)
 
-Notifies the manager about a rollbacked transaction
+Notifies the manager about a rolled back transaction
 
 **notifyCommit** (Phalcon_Transaction $transaction)
 
-Notifies the manager about a commited transaction
+Notifies the manager about a committed transaction
 
 **collectTransactions** ()
 

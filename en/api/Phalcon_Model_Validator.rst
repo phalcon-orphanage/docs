@@ -6,9 +6,9 @@ This is the base class for all the Phalcon_Model buit-in validators
 Methods
 ---------
 
-**__construct** (Phalcon\Model\Base $record, string $fieldName, string $value, array $options)
+**__construct** (Phalcon_Model_Base $record, string $fieldName, string $value, array $options)
 
-Phalcon_Model\Validator constructor
+Phalcon_Model_Validator constructor
 
 **appendMessage** (string $message, string $field, string $type)
 
@@ -40,11 +40,11 @@ Returns the value of the validated field
 
 **string** **getFieldName** ()
 
-Devuelve el nombre del campo validado
+Returns the name of the validated field
 
-**Phalcon\Model\Base** **getRecord** ()
+**Phalcon_Model_Base** **getRecord** ()
 
-Returns Phalcon_Model\Base related record
+Returns Phalcon_Model_Base related record
 
 **checkOptions** ()
 

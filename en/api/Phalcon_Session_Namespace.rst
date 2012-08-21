@@ -1,7 +1,7 @@
 Class **Phalcon_Session_Namespace**
 ===================================
 
-This component helps to separate session data into namespaces. Working by this way  you can easily create groups of session variables into the application
+This component helps to separate session data into namespaces. Working by this way you can easily create groups of session variables into the application
 
 Methods
 ---------

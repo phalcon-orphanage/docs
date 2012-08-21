@@ -8,7 +8,7 @@ Methods
 
 **__construct** (unknown $options)
 
-Phalcon_Translate\Adapter\Array constructor
+Phalcon_Translate_Adapter_Array constructor
 
 **string** **query** (string $index, array $placeholders)
 

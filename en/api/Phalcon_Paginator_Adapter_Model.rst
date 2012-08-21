@@ -8,7 +8,7 @@ Methods
 
 **__construct** (array $config)
 
-Phalcon_Paginator\Adapter\Model constructor
+Phalcon_Paginator_Adapter_Model constructor
 
 **setCurrentPage** (int $page)
 

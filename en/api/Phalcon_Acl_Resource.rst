@@ -1,7 +1,7 @@
 Class **Phalcon_Acl_Resource**
 ==============================
 
-This class defines resource entity and its description
+This class defines a resource entity and its description
 
 Methods
 ---------
@@ -16,5 +16,5 @@ Returns the resource name
 
 **string** **getDescription** ()
 
-Returns resource description
+Returns the resource description
 

@@ -1,37 +1,38 @@
 Class **Phalcon_Transaction**
 =============================
 
-Transactions are protective blocks where SQL statements are only permanent if they can  all succeed as one atomic action. Phalcon_Transaction is intended to be used with Phalcon_Model_Base.  Phalcon Transactions should be created using Phalcon_Transaction\Manager.  
+Transactions are protective blocks where SQL statements are only permanent if they can  all succeed as one atomic action. Phalcon_Transaction is intended to be used with Phalcon_Model_Base.  Phalcon Transactions should be created using Phalcon_Transaction_Manager.  
 
 .. code-block:: php
 
     <?php
-
     
     try {
     
-      $transaction = Phalcon\Transaction\Manager::get();
-    
-      $robot = new Robots();
-      $robot->setTransaction($transaction);
-      $robot->name = 'WALL·E';
-      $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
-        $transaction->rollback("Can't save robot");
-      }
-    
-      $robotPart = new RobotParts();
-      $robotPart->setTransaction($transaction);
-      $robotPart->type = 'head';
-      if($robotPart->save()==false){
-        $transaction->rollback("Can't save robot part");
-      }
-    
-      $transaction->commit();
+        $transaction = Phalcon_Transaction_Manager::get();
+
+        $robot = new Robots();
+        $robot->setTransaction($transaction);
+        $robot->name = 'WALL·E';
+        $robot->created_at = date('Y-m-d');
+        
+        if ($robot->save() == false) {
+            $transaction->rollback("Can't save robot");
+        }
+
+        $robotPart = new RobotParts();
+        $robotPart->setTransaction($transaction);
+        $robotPart->type = 'head';
+        
+        if ($robotPart->save() == false) {
+            $transaction->rollback("Can't save robot part");
+        }
+
+        $transaction->commit();
     
     }
-    catch(Phalcon\Transaction\Failed $e){
-      echo 'Failed, reason: ', $e->getMessage();
+    catch(Phalcon_Transaction_Failed $e){
+        echo 'Failed, reason: ', $e->getMessage();
     }
 
 Methods
@@ -41,7 +42,7 @@ Methods
 
 Phalcon_Transaction constructor
 
-**setTransactionManager** (Phalcon\Transaction\Manager $manager)
+**setTransactionManager** (Phalcon_Transaction_Manager $manager)
 
 Sets transaction manager related to the transaction
 
@@ -53,7 +54,7 @@ Starts the transaction
 
 Commits the transaction
 
-**boolean** **rollback** (string $rollbackMessage, Phalcon\Model\Base $rollbackRecord)
+**boolean** **rollback** (string $rollbackMessage, Phalcon_Model_Base $rollbackRecord)
 
 Rollbacks the transaction
 
@@ -77,7 +78,7 @@ Checks whether transaction is managed by a transaction manager
 
 Changes dependency internal pointer
 
-**attachDependency** (int $pointer, Phalcon\Model\Base $object)
+**attachDependency** (int $pointer, Phalcon_Model_Base $object)
 
 Attaches Phalcon_Model_Base object to the active transaction
 
@@ -93,7 +94,7 @@ Returns validations messages from last save try
 
 Checks whether internal connection is under an active transaction
 
-**setRollbackedRecord** (Phalcon\Model\Base $record)
+**setRollbackedRecord** (Phalcon_Model_Base $record)
 
 Sets object which generates rollback action
 

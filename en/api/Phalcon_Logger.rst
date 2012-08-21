@@ -1,16 +1,15 @@
 Class **Phalcon_Logger**
 ========================
 
-Phalcon_Logger is a component whose purpose is to create logs using  different backends via adapters, generating options, formats and filters  also implementing transactions.  
+Phalcon_Logger is a component whose purpose is to create logs using different backends via adapters, generating options, formats and filters and also implementing transactions.  
 
 .. code-block:: php
 
     <?php
-
     
-    $logger = new Phalcon\Logger("File", "app/logs/test.log");
+    $logger = new Phalcon_Logger("File", "app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon\Logger::ERROR);
+    $logger->log("This is an error", Phalcon_Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
 
@@ -44,7 +43,7 @@ Methods
 
 Phalcon_Logger constructor
 
-**log** (string $message, ing $type)
+**log** (string $message, int $type)
 
 Sends/Writes a message to the log
 

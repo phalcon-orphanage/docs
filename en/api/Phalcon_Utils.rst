@@ -8,7 +8,7 @@ Methods
 
 **string** **getUrl** (string $uri)
 
-Gets public URL to phalcon instance
+Gets public URL to a phalcon site
 
 **string** **getLocalPath** (string $extraPath)
 

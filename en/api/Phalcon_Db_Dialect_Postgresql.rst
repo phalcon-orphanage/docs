@@ -72,19 +72,15 @@ Generates SQL checking for the existence of a schema.table
 
 .. code-block:: php
 
-    <?php echo Phalcon\Db\Dialect\Postgresql::tableExists("posts")
+    <?php 
 
-
-
-  
+    echo Phalcon_Db_Dialect_Postgresql::tableExists("posts");
 
 .. code-block:: php
 
-    <?php echo Phalcon\Db\Dialect\Postgresql::tableExists("posts")
+    <?php 
 
-
-
-
+    echo Phalcon_Db_Dialect_Postgresql::tableExists("posts");
 
 **string** **describeTable** (string $table, string $schema)
 
@@ -92,11 +88,9 @@ Generates a SQL describing a table
 
 .. code-block:: php
 
-    <?php print_r(Phalcon\Db\Dialect\Postgresql::describeTable("posts") ?>
+    <?php 
 
-
-
-
+    print_r(Phalcon_Db_Dialect_Postgresql::describeTable("posts");
 
 **array** **listTables** (string $schemaName)
 
@@ -104,11 +98,9 @@ List all tables on database
 
 .. code-block:: php
 
-    <?php print_r(Phalcon\Db\Dialect\Postgresql::listTables("blog") ?>
+    <?php 
 
-
-
-
+    print_r(Phalcon_Db_Dialect_Postgresql::listTables("blog");
 
 **string** **describeIndexes** (string $table, string $schema)
 
