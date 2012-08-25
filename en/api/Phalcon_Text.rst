@@ -21,8 +21,8 @@ Opposite of **camelize**
 
 .. code-block:: php
 
-    <?php Phalcon_Text::camelize('CocoBongo'); //coco_bongo
-    <?php Phalcon_Text::camelize('CocoBongo'); //coco_bongo
+    <?php Phalcon_Text::uncamelize('CocoBongo'); //coco_bongo
+    <?php Phalcon_Text::uncamelize('CocoBongo'); //coco_bongo
 
 
 
