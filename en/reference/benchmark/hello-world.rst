@@ -376,6 +376,55 @@ Zend Framework 1.11.11
 	  99%     37
 	 100%     61 (longest request)
 
+Laravel 3.2.5
+^^^^^^^^^^^^^
+
+.. code-block:: php
+
+	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+	Licensed to The Apache Software Foundation, http://www.apache.org/
+
+	Benchmarking localhost (be patient)
+
+
+	Server Software:        Apache/2.2.22
+	Server Hostname:        localhost
+	Server Port:            80
+
+	Document Path:          /bench/laravel/public/say/hello
+	Document Length:        15 bytes
+
+	Concurrency Level:      5
+	Time taken for tests:   2.353 seconds
+	Complete requests:      1000
+	Failed requests:        0
+	Write errors:           0
+	Total transferred:      831190 bytes
+	HTML transferred:       15000 bytes
+	Requests per second:    424.97 [#/sec] (mean)
+	Time per request:       11.765 [ms] (mean)
+	Time per request:       2.353 [ms] (mean, across all concurrent requests)
+	Transfer rate:          344.96 [Kbytes/sec] received
+
+	Connection Times (ms)
+	              min  mean[+/-sd] median   max
+	Connect:        0   12   5.6     10      56
+	Processing:     0    0   0.6      0      10
+	Waiting:        0    0   0.5      0      10
+	Total:          5   12   5.6     10      56
+
+	Percentage of the requests served within a certain time (ms)
+	  50%     10
+	  66%     12
+	  75%     13
+	  80%     15
+	  90%     18
+	  95%     22
+	  98%     29
+	  99%     36
+	 100%     56 (longest request)
+
 Phalcon Version 0.5.0
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -447,6 +496,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('number', 'Requests per second');
 			data.addRows([
 				['Zend', 324.02],
+				['Laravel', 424.97],
 				['Symfony', 541.01],
 				['Fuel', 568.41],
 				['Kohana', 727.07],
@@ -475,6 +525,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('number', 'Time per Request');
 			data.addRows([
 				['Zend', 3.086],
+				['Laravel', 2.353],
 				['Symfony', 1.848],
 				['Fuel', 1.759],
 				['Kohana', 1.375],
@@ -499,6 +550,7 @@ The first graph shows how many requests per second each framework was able to ac
 				['Zend', 1.75],
                 ['Symfony', 1.5],
                 ['Yii', 1.5],
+                ['Laravel', 1.25],
 				['Kohana', 1.25],
 				['CodeIgniter', 1.1],
 				['Fuel', 1.0],
@@ -519,6 +571,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('number', 'Number of included PHP files');
 			data.addRows([
                 ['Zend', 66],
+                ['Laravel', 46],
                 ['Kohana', 46],
                 ['Fuel', 30],
 				['Yii', 27],
@@ -554,20 +607,3 @@ The compiled nature of Phalcon offers extraordinary performance that outperforms
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
 
 
-ChangeLog
----------
-
-.. versionadded:: 1.0
-	Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
-
-.. versionchanged:: 1.1
-	Update May-13-2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
-
-.. versionchanged:: 1.2
-	Update May-20-2012: Fuel framework was added to benchmarks.
-
-.. versionchanged:: 1.3
-	Update Jun-4-2012: Cake framework was added to benchmarks. It is not however present in the graphics, since it takes  30 seconds to run only 10 of 1000.
-
-.. versionchanged:: 1.4
-	Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, OS updated to Mac OS X Lion

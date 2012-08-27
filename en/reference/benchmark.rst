@@ -36,17 +36,39 @@ Pariticipant Frameworks
 
 * Yii_ (YII_DEBUG=false) (yii-1.1.12.b600af)
 * Symfony_ (2.0.11)
-* CodeIgniter_ (2.1.0)
+* `Zend Framework`_ 1.11.11
 * Kohana_ (3.2.0)
 * FuelPHP_ (1.2.1)
 * CakePHP_ (2.1.3)
-* `Zend Framework`_ 1.11.11
+* Laravel_ 3.2.5
+* CodeIgniter_ (2.1.0)
+
 
 List of Benchmarks
 -----------------------
 
 .. toctree::
    :maxdepth: 1
+
+   benchmark/hello-world
+
+ChangeLog
+---------
+
+.. versionadded:: 1.0
+    Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
+
+.. versionchanged:: 1.1
+    Update May-13-2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
+
+.. versionchanged:: 1.2
+    Update May-20-2012: Fuel framework was added to benchmarks.
+
+.. versionchanged:: 1.3
+    Update Jun-4-2012: Cake framework was added to benchmarks. It is not however present in the graphics, since it takes  30 seconds to run only 10 of 1000.
+
+.. versionchanged:: 1.4
+    Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, OS updated to Mac OS X Lion. Hardware upgraded.
 
    benchmark/hello-world
 
@@ -60,4 +82,5 @@ List of Benchmarks
 .. _Kohana: http://kohanaframework.org/index
 .. _FuelPHP: http://fuelphp.com/
 .. _CakePHP: http://cakephp.org/
+.. _Laravel: http://www.laravel.com/
 .. _Zend Framework: http://framework.zend.com
