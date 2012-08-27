@@ -520,10 +520,10 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addRows([
                 ['Zend', 66],
                 ['Kohana', 46],
-				['Symfony', 18],
-				['Fuel', 30],
+                ['Fuel', 30],
 				['Yii', 27],
 				['CodeIgniter', 23],
+				['Symfony', 18],
 				['Phalcon', 4]
 			]);
 
