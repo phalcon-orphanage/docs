@@ -31,19 +31,6 @@ The testing hardware environment is as follows:
     :align: center
 
 
-Pariticipant Frameworks
------------------------
-
-* Yii_ (YII_DEBUG=false) (yii-1.1.12.b600af)
-* Symfony_ (2.0.11)
-* `Zend Framework`_ 1.11.11
-* Kohana_ (3.2.0)
-* FuelPHP_ (1.2.1)
-* CakePHP_ (2.1.3)
-* Laravel_ 3.2.5
-* CodeIgniter_ (2.1.0)
-
-
 List of Benchmarks
 -----------------------
 
@@ -51,6 +38,7 @@ List of Benchmarks
    :maxdepth: 1
 
    benchmark/hello-world
+   benchmark/micro
 
 ChangeLog
 ---------
@@ -76,11 +64,4 @@ ChangeLog
 .. _write us: http://phalcon.uservoice.com/
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
-.. _Yii: http://www.yiiframework.com/
-.. _Symfony: http://symfony.com/
-.. _CodeIgniter: http://codeigniter.com/
-.. _Kohana: http://kohanaframework.org/index
-.. _FuelPHP: http://fuelphp.com/
-.. _CakePHP: http://cakephp.org/
-.. _Laravel: http://www.laravel.com/
-.. _Zend Framework: http://framework.zend.com
+

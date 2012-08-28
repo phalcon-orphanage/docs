@@ -19,6 +19,18 @@ These were the measurements we record to identify the overall performance of eac
 * Number of included PHP files on a single request (measured using function get_included_files_.
 * Memory Usage per request (measured using function memory_get_usage_.
 
+Pariticipant Frameworks
+-----------------------
+
+* Yii_ (YII_DEBUG=false) (yii-1.1.12.b600af)
+* Symfony_ (2.0.11)
+* `Zend Framework`_ 1.11.11
+* Kohana_ (3.2.0)
+* FuelPHP_ (1.2.1)
+* CakePHP_ (2.1.3)
+* Laravel_ 3.2.5
+* CodeIgniter_ (2.1.0)
+
 Results
 -------
 
@@ -605,5 +617,12 @@ The compiled nature of Phalcon offers extraordinary performance that outperforms
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
-
+.. _Yii: http://www.yiiframework.com/
+.. _Symfony: http://symfony.com/
+.. _CodeIgniter: http://codeigniter.com/
+.. _Kohana: http://kohanaframework.org/index
+.. _FuelPHP: http://fuelphp.com/
+.. _CakePHP: http://cakephp.org/
+.. _Laravel: http://www.laravel.com/
+.. _Zend Framework: http://framework.zend.com
 
