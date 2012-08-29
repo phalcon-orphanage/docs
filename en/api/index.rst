@@ -73,7 +73,7 @@ API Index
    Phalcon_Paginator
    Phalcon_Request_Exception
    Phalcon_Request_File
-   Phalcon_Request
+   Phalcon_Http_Request
    Phalcon_Response_Exception
    Phalcon_Response_Headers
    Phalcon_Response

@@ -28,13 +28,16 @@ Table of Contents
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/di
    reference/mvc
    reference/controllers
    reference/models
    reference/views
    reference/tags
    reference/routing
+   reference/events
    reference/dispatching
+   reference/micro
    reference/request
    reference/filter
    reference/config
@@ -49,7 +52,6 @@ Table of Contents
    reference/migrations
    reference/debug
    reference/tools
-   reference/settings
    api/index
    reference/license
 
