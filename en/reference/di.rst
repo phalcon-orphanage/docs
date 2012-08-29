@@ -12,10 +12,12 @@ Additionally, this pattern increases testability in the code, thus making it les
 
     <?php
 
-    //Without DI
-
     class SomeComponent {
 
+        /**
+         * The instantiation of the connection is hardcoded inside
+         * the component so is dificult to replace it externally
+         */
         public function someDbTask(){
             $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
@@ -29,6 +31,29 @@ Additionally, this pattern increases testability in the code, thus making it les
 
     $some = new SomeComponent();
     $some->someDbTask();
+
+.. code-block:: php
+
+    <?php
+
+    class SomeComponent {
+
+        /**
+         * The whole object is received as parameter
+         */
+        public function someDbTask($connection){
+
+        }
+
+    }
+
+    $some = new SomeComponent();
+    $some->someDbTask(new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        "host" => "localhost",
+        "username" => "root",
+        "password" => "secret",
+        "dbname" => "invo"
+    )));
 
 .. code-block:: php
 
