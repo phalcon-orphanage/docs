@@ -1,9 +1,7 @@
 Tutorial 2: Explaining INVO
 ===========================
 
-In this tutorial, we'll use a more complete application to explain more advanced development with Phalcon. INVO is one of the
-applications we have created as samples. INVO is a small website that allows their users to generate invoices,
-and do other tasks as manage their customers and products. You can clone its code from Github_.
+In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon. INVO is one of the applications we have created as samples. INVO is a small website that allows their users to generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
 
 Also, INVO was made with Twitter Bootstrap as client-side framework. Although the application does not generate invoices still it serves as an example to understand how the framework works.
 
