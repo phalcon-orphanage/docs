@@ -7,7 +7,7 @@ Adapters
 This component makes use of backend adapters to store data. The use of adapters allows for a common interface for logging while switching backends if necessary. The backends supported are:
 
 +---------+---------------------------+-------------------------------------------------------------------------+
-| Adapter | Description               | API                                                                     | 
+| Adapter | Description               | API                                                                     |
 +=========+===========================+=========================================================================+
 | File    | Logs to a plain text file | :doc:`Phalcon\Logger\Adapter\File <../api/Phalcon_Logger_Adapter_File>` |
 +---------+---------------------------+-------------------------------------------------------------------------+
@@ -20,7 +20,7 @@ The example below shows how to create a log and add messages to it:
 
     <?php
 
-    $logger = new \Phalcon\Logger("File", "app/logs/test.log");
+    $logger = new \Phalcon\Logger\Adapter\File(app/logs/test.log");
     $logger->log("This is a message");
     $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
@@ -36,25 +36,25 @@ The log generated is below:
 
 Transactions
 ------------
-Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation. 
+Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
 .. code-block:: php
 
     <?php
 
     // Create the logger
-    $logger = new \Phalcon\Logger("File", "app/logs/test.log");
-    
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+
     // Start a transaction
     $logger->begin();
-    
+
     // Add messages
     $logger->alert("This is an alert");
     $logger->error("This is another error");
-    
+
     // Commit messages to file
     $logger->commit();
-    
+
     $logger->close();
 
 
@@ -67,13 +67,13 @@ The default logging format is:
 :doc:`Phalcon\Logger <../api/Phalcon_Logger>` offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 +-----------+------------------------------------------+
-| Variable  | Description                              | 
+| Variable  | Description                              |
 +===========+==========================================+
-| %message% | The message itself expected to be logged | 
+| %message% | The message itself expected to be logged |
 +-----------+------------------------------------------+
-| %date%    | Date the message was added               | 
+| %date%    | Date the message was added               |
 +-----------+------------------------------------------+
-| %type%    | Uppercase string with message type       | 
+| %type%    | Uppercase string with message type       |
 +-----------+------------------------------------------+
 
 The example below shows how to change the log format:

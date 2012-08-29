@@ -1,17 +1,17 @@
-Tutorial: Let's learn by example
-================================
+Tutorial 1: Let's learn by example
+==================================
 
-Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_. 
+Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our `developer tools`_.
 
 Checking your installation
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below: 
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output: 
+The Phalcon extension should appear as part of the output:
 
 .. code-block:: php
 
@@ -29,13 +29,13 @@ The Phalcon extension should appear as part of the output:
 
 Creating a project
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code here_.     
+The best way to use this guide is to follow each step in turn. You can get the complete code here_.
 
 File structure
 ^^^^^^^^^^^^^^
 Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure: 
+For the purposes of this tutorial and as a starting point, we suggest the following structure:
 
 .. code-block:: php
 
@@ -49,13 +49,13 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.  
+Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
 
 Beautiful URLs
 ^^^^^^^^^^^^^^
 We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file: 
+In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file:
 
 .. code-block:: apacheconf
 
@@ -68,7 +68,7 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
 
 All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
 
-The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewitten by the web server module: 
+The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewitten by the web server module:
 
 .. code-block:: apacheconf
 
@@ -78,7 +78,7 @@ The second set of rules will check if the requested file exists, and if it does 
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^(.*)$ index.php?_url=$1 [QSA,L]
-    </IfModule>    
+    </IfModule>
 
 Bootstrap
 ^^^^^^^^^
@@ -110,7 +110,7 @@ The :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` purpose is
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like: 
+By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
 
 .. code-block:: php
 
@@ -126,7 +126,7 @@ By default Phalcon will look for a controller named "Index". It is the starting 
 
     }
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this: 
+The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
 
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
@@ -141,7 +141,7 @@ Sending output on the screen from the controller is at times necessary but not d
 
     <?php echo "<h1>Hello!</h1>";
 
-Our controller (app/controllers/IndexController.php) now has an empty action definition: 
+Our controller (app/controllers/IndexController.php) now has an empty action definition:
 
 .. code-block:: php
 
@@ -182,7 +182,7 @@ To generate the tag we use the class :doc:`\Phalcon\Tag <../api/Phalcon_Tag>`. T
 .. figure:: ../_static/img/tutorial-2.png
 	:align: center
 
-Here is the controller Signup (app/controllers/SignupController.php): 
+Here is the controller Signup (app/controllers/SignupController.php):
 
 .. code-block:: php
 
@@ -198,7 +198,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition: 
+The empty index action gives the clean pass to a view with the form definition:
 
 .. code-block:: html+php
 
@@ -222,7 +222,7 @@ The empty index action gives the clean pass to a view with the form definition:
 
     </form>
 
-*NOTE*: If you have short_open_tag = Off in your php.ini file, you can modify the view as such: 
+*NOTE*: If you have short_open_tag = Off in your php.ini file, you can modify the view as such:
 
 .. code-block:: html+php
 
@@ -260,7 +260,7 @@ By clicking the "Send" button, you will notice an exception thrown from the fram
 
     PhalconException: Action "register" was not found on controller "signup"
 
-Implementing that method will remove the exception:      
+Implementing that method will remove the exception:
 
 .. code-block:: php
 
@@ -285,7 +285,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 Creating a Model
 ^^^^^^^^^^^^^^^^
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it. 
+Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
 Before creating our first model, we need a database table to map it to. A simple table to store registered users can be defined like this:
 
@@ -298,7 +298,7 @@ Before creating our first model, we need a database table to map it to. A simple
       PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory. The model mapping to "users" table: 
+A model should be located in the app/models directory. The model mapping to "users" table:
 
 .. code-block:: php
 
@@ -355,7 +355,7 @@ With the correct database parameters, our models are ready to work and interact 
 
 Storing data using models
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Receiving data from the form and storing them in the table is the next step. 
+Receiving data from the form and storing them in the table is the next step.
 
 .. code-block:: php
 
@@ -395,9 +395,9 @@ Receiving data from the form and storing them in the table is the next step.
 
 We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections. In our tutorial we apply "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`\Phalcon\Filter <../api/Phalcon_Filter>` makes this task trivial, since it is incorporated in the getPost call.
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not. 
+We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not.
 
-Additional validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:     
+Additional validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:
 
 .. figure:: ../_static/img/tutorial-4.png
 	:align: center
