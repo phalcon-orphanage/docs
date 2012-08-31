@@ -1,48 +1,44 @@
-Class **Phalcon_Request_File**
-==============================
+Class **Phalcon\\Http\\Request\\File**
+======================================
 
-Provides OO wrappers to the $_FILES superglobal  
+Phalcon\\Http\\Request\\File   Provides OO wrappers to the $_FILES superglobal  
 
 .. code-block:: php
 
     <?php
-    
-    class PostsController extends Phalcon_Controller
-    {
 
-        public function uploadAction()
-        {
-            // Check if the user has uploaded files
-            if ($this->request->hasFiles() == true) {
-                // Print the real file names and sizes
-                foreach ($this->request->getUploadedFiles() as $file) {
-                    echo $file->getName(), " ", $file->getSize(), "\n";
-                }
-            }
-        }
+    
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+    
+     public function uploadAction()
+     {
+       //Check if the user has uploaded files
+       if ($this->request->hasFiles() == true) {
+          //Print the real file names and their sizes
+          foreach ($this->request->getUploadedFiles() as $file){
+             echo $file->getName(), " ", $file->getSize(), "\n";
+          }
+       }
+     }
     
     }
+    
+
+
+
+
 
 Methods
 ---------
 
-**__construct** (array $file)
+**__construct** (*array* **$file**)
 
-Phalcon_Request_File constructor
+*int* **getSize** ()
 
-**int** **getSize** ()
+*string* **getName** ()
 
-Returns the file size of the uploaded file
+*string* **getTempName** ()
 
-**string** **getName** ()
-
-Returns the real name of the uploaded file
-
-**string** **getTempName** ()
-
-Returns the temporal name of the uploaded file
-
-**moveTo** (string $destination)
-
-Move the temporary file to a destination
+**moveTo** (*string* **$destination**)
 

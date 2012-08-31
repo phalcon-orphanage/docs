@@ -1,17 +1,21 @@
-Class **Phalcon_Model_MetaData**
-================================
+Class **Phalcon\\Mvc\\Model\\MetaData**
+=======================================
 
->Because Phalcon_Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon_Model_Base. Phalcon_Model_MetaData can also use adapters to store temporarily or permanently the meta-data.
-
-A standard Phalcon_Model_MetaData can be used to query model attributes:
+Phalcon\\Mvc\\Model\\MetaData   <p>Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc.  this component collect them and store for further querying by Phalcon\\Model\\Base.  Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.</p>   <p>A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:</p>   
 
 .. code-block:: php
 
     <?php
+
     
-    $metaData   = new Phalcon_Model_MetaData('Memory');
-    $attributes = $metaData->getAttributes(new Robots());
-    print_r($attributes);
+     $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
+     $attributes = $metaData->getAttributes(new Robots());
+     print_r($attributes);
+     
+
+
+
+
 
 Constants
 ---------
@@ -37,47 +41,27 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-**__construct** (string $adapter, array $options)
+**_initializeMetaData** ()
 
-Phalcon_Model_MetaData constructor
+*array* **getAttributes** (*Phalcon\Mvc\Model* **$model**)
 
-**array** **getAttributes** (Phalcon_Model_Base $model)
+*array* **getPrimaryKeyAttributes** (*Phalcon\Mvc\Model* **$model**)
 
-Returns table attributes names (fields)
+*array* **getNonPrimaryKeyAttributes** (*Phalcon\Mvc\Model* **$model**)
 
-**array** **getPrimaryKeyAttributes** (Phalcon_Model_Base $model)
+*array* **getNotNullAttributes** (*Phalcon\Mvc\Model* **$model**)
 
-Returns an array of fields which are part of the primary key
+*array* **getDataTypes** (*Phalcon\Mvc\Model* **$model**)
 
-**array** **getNonPrimaryKeyAttributes** (Phalcon_Model_Base $model)
+*array* **getDataTypesNumeric** (*Phalcon\Mvc\Model* **$model**)
 
-Returns an array of fields which are not part of the primary key
-
-**array** **getNotNullAttributes** (Phalcon_Model_Base $model)
-
-Returns an array of not null attributes
-
-**array** **getDataTypes** (Phalcon_Model_Base $model)
-
-Returns attributes and their data types
-
-**array** **getDataTypesNumeric** (Phalcon_Model_Base $model)
-
-Returns attributes which types are numerical
-
-**array** **getIdentityField** (Phalcon_Model_Base $model)
-
-Returns the name of identity field (if one is present)
+*array* **getIdentityField** (*Phalcon\Mvc\Model* **$model**)
 
 **storeMetaData** ()
 
-Stores meta-data using to the internal adapter
-
-**boolean** **isEmpty** ()
-
-Checks if the internal meta-data container is empty
+*boolean* **isEmpty** ()
 
 **reset** ()
 
-Resets internal meta-data in order to regenerate it
+**write** ()
 

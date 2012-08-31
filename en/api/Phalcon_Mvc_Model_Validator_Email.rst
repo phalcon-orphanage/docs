@@ -1,33 +1,51 @@
-Class **Phalcon_Model_Validator_Email**
-=======================================
+Class **Phalcon\\Mvc\\Model\\Validator\\Email**
+===============================================
 
-Allows to validate if email fields has correct values  
+*extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
+
+Phalcon\\Mvc\\Model\\Validator\\Email   Allows to validate if email fields has correct values  
 
 .. code-block:: php
 
     <?php
+
     
-    class Subscriptors extends Phalcon\Model\Base 
+    use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
     {
-
-        public function validation()
-        {
-            $this->validate(
-                'Email', 
-                array('field' => 'electronic_mail')
-            );
-
-            if ($this->validationHasFailed() == true) {
-                return false;
-            }
-        }
-
+    
+      public function validation()
+      {
+          $this->validate(new EmailValidator(array(
+              'field' => 'electronic_mail'
+          )));
+          if ($this->validationHasFailed() == true) {
+              return false;
+          }
+      }
+    
     }
+    
+
+
+
+
 
 Methods
 ---------
 
-**boolean** **validate** ()
+*boolean* **validate** (*unknown* **$record**)
 
-Executes the validator
+**__construct** (*unknown* **$options**)
+
+**appendMessage** ()
+
+**getMessages** ()
+
+**getOptions** ()
+
+**getOption** ()
+
+**isSetOption** ()
 

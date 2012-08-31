@@ -1,34 +1,24 @@
-Class **Phalcon_Translate**
-===========================
+Class **Phalcon\\Translate**
+============================
 
 *implements* ArrayAccess
 
-Translate component allows the creation of multi-language applications using different adapters for translation lists.
+Phalcon\\Translate   Translate component allows the creation of multi-language applications using  different adapters for translation lists.
 
 Methods
 ---------
 
-**__construct** (string $adapter, array $options)
+*string* **_** (*string* **$translateKey**, *array* **$placeholders**)
 
-Phalcon_Translate constructor
+**offsetSet** (*string* **$offset**, *string* **$value**)
 
-**string** **_** (string $translateKey, array $placeholders)
+*boolean* **offsetExists** (*string* **$translateKey**)
 
-Returns the translation string of the given key
+**offsetUnset** (*string* **$offset**)
 
-**offsetSet** (string $offset, string $value)
+*string* **offsetGet** (*string* **$traslateKey**)
 
-Sets a translation value
+**query** ()
 
-**boolean** **offsetExists** (string $translateKey)
-
-Check whether a translation key exists
-
-**offsetUnset** (string $offset)
-
-Remove an index based on a given key
-
-**string** **offsetGet** (string $traslateKey)
-
-Returns the translation related to the given key
+**exists** ()
 

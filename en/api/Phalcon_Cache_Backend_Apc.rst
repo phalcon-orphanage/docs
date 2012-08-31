@@ -1,41 +1,55 @@
-Class **Phalcon_Cache_Backend_Apc**
-===================================
+Class **Phalcon\\Cache\\Backend\\Apc**
+======================================
 
-Allows to cache output fragments, PHP data and raw data using an APC backend  
+*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+
+Allows to cache output fragments, PHP data and raw data using a memcache backend  
 
 .. code-block:: php
 
     <?php
+
     
-    // Cache data for 2 days
+    
+     //Cache data for 2 days
     $frontendOptions = array(
-        'lifetime' => 172800
+    'lifetime' => 172800
     );
     
     $cache = Phalcon_Cache::factory('Data', 'Apc', $frontendOptions, array());
     
-    // Cache arbitrary data
+     //Cache arbitrary data
     $cache->store('my-data', array(1, 2, 3, 4, 5));
     
-    // Get data
+     //Get data
     $data = $cache->get('my-data');
+    
+    
+
+
+
+
 
 Methods
 ---------
 
-**mixed** **get** (int|string $keyName, long $lifetime)
+*mixed* **get** (*int|string* **$keyName**, *long* **$lifetime**)
 
-Returns a cached content
+**save** (*int|string* **$keyName**, *string* **$content**, *long* **$lifetime**, *boolean* **$stopBuffer**)
 
-**save** (int|string $keyName, string $content, long $lifetime, boolean $stopBuffer)
+*boolean* **delete** (*string|int* **$keyName**)
 
-Stores cached content into the APC backend
+*array* **queryKeys** (*string* **$prefix**)
 
-**boolean** **delete** (string|int $keyName)
+**__construct** (*unknown* **$frontendObject**, *unknown* **$backendOptions**)
 
-Deletes a value from the cache using its key
+**start** (*unknown* **$keyName**)
 
-**array** **queryKeys** (string $prefix)
+**getFrontend** ()
 
-Query the existing cached keys
+**isFresh** ()
+
+**isStarted** ()
+
+**getLastKey** ()
 

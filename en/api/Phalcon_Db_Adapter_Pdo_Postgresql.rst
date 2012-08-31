@@ -1,226 +1,140 @@
-Class **Phalcon_Db_Adapter_Postgresql**
-=======================================
+Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
+===============================================
 
-Phalcon_Db_Adapter_Postgresql is the Phalcon_Db adapter for the PostgreSQL database.  
+*extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
+
+Phalcon\\Db\\Adapter\\Pdo\\Postgresql   Specific functions for the Postgresql database system  
 
 .. code-block:: php
 
     <?php
 
-    // Setting all posible parameters
-    $config          = new stdClass();
-    $config->host     = 'localhost';
-    $config->username = 'postgres';
-    $config->password = 'sigma';
-    $config->name     = 'swarm';
-    $config->charset  = 'UNICODE';
     
-    $connection = Phalcon_Db::factory('Postgresql', $config);
+    
+     $config = array(
+      "host" => "192.168.0.11",
+      "dbname" => "blog",
+      "username" => "postgres",
+      "password" => ""
+     );
+    
+     $connection = new Phalcon\Db\Adapter\Pdo\Postgresql($config);
+    
+     
+
+
+
+
 
 Constants
 ---------
 
-integer **DB_ASSOC**
+integer **FETCH_ASSOC**
 
-integer **DB_BOTH**
+integer **FETCH_BOTH**
 
-integer **DB_NUM**
+integer **FETCH_NUM**
 
 Methods
 ---------
 
-**__construct** (stdClass $descriptor)
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` **describeColumns** (*string* **$table**, *string* **$schema**)
 
-Constructor for Phalcon_Db_Adapter_Postgresql. This method does not should to be called directly. Use Phalcon_Db::factory instead
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` **describeIndexes** (*string* **$table**, *string* **$schema**)
 
-**boolean** **connect** (stdClass $descriptor)
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` **describeReferences** (*string* **$table**, *string* **$schema**)
 
-This method is automatically called in Phalcon_Db_Postgresql constructor.  Call it when you need to restore a database connection
+*array* **tableOptions** (*string* **$tableName**, *string* **$schemaName**)
 
-**Phalcon_Db_Result_Postgresql|boolean** **query** (string $sqlStatement)
+**__construct** (*unknown* **$descriptor**)
 
-Sends SQL statements to the PostgreSQL database server returning success state. When the SQL sent returns any row, the result is a PHP resource.  
+**connect** (*unknown* **$descriptor**)
 
-.. code-block:: php
+**query** (*unknown* **$sqlStatement**)
 
-    <?php
-    
-    // Inserting data
-    $success = $connection->query("INSERT INTO robots VALUES (1, 'Astro Boy')");
-    $success = $connection->query("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
-    
-    // Querying data
-    $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
-    $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
+**execute** (*unknown* **$sqlStatement**, *unknown* **$placeholders**)
 
-**int** **affectedRows** ()
+**affectedRows** ()
 
-Returns number of affected rows by the last INSERT/UPDATE/DELETE repoted by PostgreSQL  
+**close** ()
 
-.. code-block:: php
+**escapeString** (*unknown* **$str**)
 
-    <?php
-    
-    $connection->query("DELETE FROM robots");
-    echo $connection->affectedRows(), ' were deleted';
-     
-**boolean** **close** ()
+**bindParams** (*unknown* **$sqlSelect**, *unknown* **$params**)
 
-Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon_Db_Pool
+**lastInsertId** (*unknown* **$table**, *unknown* **$primaryKey**, *unknown* **$sequenceName**)
 
-**string** **getConnectionId** (boolean $asString)
+**begin** ()
 
-Gets the active connection unique identifier. A pgsql resource
+**rollback** ()
 
-**string** **escapeString** (string $str)
+**commit** ()
 
-Escapes a value to avoid SQL injections
+**isUnderTransaction** ()
 
-**bindParams** (string $sqlSelect, array $params)
+**getInternalHandler** ()
 
-Bind params to SQL select
+**setEventsManager** (*unknown* **$eventsManager**)
 
-**string** **error** (string $errorString)
+**getEventsManager** ()
 
-Returns last error message from PostgreSQL
+**fetchOne** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
 
-**int** **noError** (resurce $resultQuery)
+**fetchAll** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
 
-Returns last error code from PostgreSQL
+**insert** (*unknown* **$table**, *unknown* **$values**, *unknown* **$fields**)
 
-**int** **lastInsertId** (string $table, string $primaryKey, string $sequenceName)
+**update** (*unknown* **$table**, *unknown* **$fields**, *unknown* **$values**, *unknown* **$whereCondition**)
 
-Returns insert id for the auto_increment column inserted in the last SQL statement
+**delete** (*unknown* **$table**, *unknown* **$whereCondition**, *unknown* **$placeholders**)
 
-**string** **getColumnList** (array $columnList)
+**getColumnList** (*unknown* **$columnList**)
 
-Gets a list of columns
+**limit** (*unknown* **$sqlQuery**, *unknown* **$number**)
 
-**string** **limit** (string $sqlQuery, int $number)
+**tableExists** (*unknown* **$tableName**, *unknown* **$schemaName**)
 
-Appends a LIMIT clause to $sqlQuery argument  
+**viewExists** (*unknown* **$viewName**, *unknown* **$schemaName**)
 
-.. code-block:: php
+**forUpdate** (*unknown* **$sqlQuery**)
 
-    <?php 
+**sharedLock** (*unknown* **$sqlQuery**)
 
-    $connection->limit("SELECT * FROM robots", 5);
+**createTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$definition**)
 
-**string** **tableExists** (string $tableName, string $schemaName)
+**dropTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$ifExists**)
 
-Generates SQL checking for the existence of a schema.table  
+**addColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
 
-.. code-block:: php
+**modifyColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
 
-    <?php 
+**dropColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$columnName**)
 
-    $connection->tableExists("blog", "posts")
+**addIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
 
-**string** **viewExists** (string $viewName, string $schemaName)
+**dropIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$indexName**)
 
-Generates SQL checking for the existence of a schema.view  
+**addPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
 
-.. code-block:: php
+**dropPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**)
 
-    <?php 
+**addForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$reference**)
 
-    connection->viewExists("active_users", "posts")
+**dropForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$referenceName**)
 
-**string** **forUpdate** (string $sqlQuery)
+**getColumnDefinition** (*unknown* **$column**)
 
-Generates SQL with a valid FOR UPDATE statement on a SELECT of the RDBMS
+**listTables** (*unknown* **$schemaName**)
 
-**string** **sharedLock** (string $sqlQuery)
+**getDescriptor** ()
 
-Generates SQL with a valid SHARED LOCK statement on a SELECT of the RDBMS
+**getConnectionId** ()
 
-**boolean** **createTable** (string $tableName, string $schemaName, array $definition)
+**getSQLStatement** ()
 
-Creates a table using PostgreSQL SQL
+**getType** ()
 
-**boolean** **dropTable** (string $tableName, string $schemaName, boolean $ifExists)
+**getDialectType** ()
 
-Drops a table from a schema/database
-
-**boolean** **addColumn** (string $tableName, string $schemaName, Phalcon_Db_Column $column)
-
-Adds a column to a table
-
-**boolean** **modifyColumn** (string $tableName, string $schemaName, Phalcon_Db_Column $column)
-
-Modifies a table column based on a definition
-
-**boolean** **dropColumn** (string $tableName, string $schemaName, string $columnName)
-
-Drops a column from a table
-
-**boolean** **addIndex** (string $tableName, string $schemaName, DbIndex $index)
-
-Adds an index to a table
-
-**boolean** **dropIndex** (string $tableName, string $schemaName, string $indexName)
-
-Drop an index from a table
-
-**boolean** **addPrimaryKey** (string $tableName, string $schemaName, Phalcon_Db_Index $index)
-
-Adds a primary key to a table
-
-**boolean** **dropPrimaryKey** (string $tableName, string $schemaName)
-
-Drops primary key from a table
-
-**boolean true** **addForeignKey** (string $tableName, string $schemaName, Phalcon_Db_Reference $reference)
-
-Adds a foreign key to a table
-
-**boolean true** **dropForeignKey** (string $tableName, string $schemaName, string $referenceName)
-
-Drops a foreign key from a table
-
-**string** **getColumnDefinition** (Phalcon_Db_Column $column)
-
-Returns the SQL column definition from a column
-
-**string** **describeTable** (string $table, string $schema)
-
-Generates SQL describing a table  
-
-.. code-block:: php
-
-    <?php 
-
-    print_r($connection->describeTable("posts"));
-
-**array** **listTables** (string $schemaName)
-
-List all tables on a database  
-
-.. code-block:: php
-
-    <?php  
-
-    print_r($connection->listTables("blog"));
-
-**string** **getDateUsingFormat** (string $date, string $format)
-
-Returns a database date formatted  
-
-.. code-block:: php
-
-    <?php 
-
-    $format = $connection->getDateUsingFormat("2011-02-01", "YYYY-MM-DD");
-
-**Phalcon_Db_Index[]** **describeIndexes** (string $table, string $schema)
-
-Lists table indexes
-
-**Phalcon_Db_Reference[]** **describeReferences** (string $table, string $schema)
-
-Lists table references
-
-**array** **tableOptions** (string $tableName, string $schemaName)
-
-Gets creation options from a table
+**getDialect** ()
 

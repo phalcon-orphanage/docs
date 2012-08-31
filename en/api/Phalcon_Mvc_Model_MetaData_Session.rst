@@ -1,32 +1,73 @@
-Class **Phalcon_Model_MetaData_Session**
-========================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
+================================================
 
-Stores model meta-data in session. Data will erase when the session finishes. Meta-data is persistent while the session is active. You can query the meta-data by printing $_SESSION['$PMM$'].
+*extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
+
+Phalcon\\Mvc\\Model\\MetaData\\Session   Stores model meta-data in session. Data will erase when the session finishes.  Meta-data are permanent while the session is active.   You can query the meta-data by printing $_SESSION['$PMM$']  
 
 .. code-block:: php
 
     <?php
-    
-    $modelManager = new Phalcon_Model_Manager();
 
-    $metaData = new Phalcon_Model_Metadata(
-        'Session', 
-        array('suffix' => 'my-app-id')
-    );
-    $modelManager->setMetaData($metaData);
+    
+     $metaData = new Phalcon\Mvc\Model\Metadata\Session(array(
+        'suffix' => 'my-app-id'
+     ));
+    
+
+
+
+
+
+Constants
+---------
+
+integer **MODELS_ATTRIBUTES**
+
+integer **MODELS_PRIMARY_KEY**
+
+integer **MODELS_NON_PRIMARY_KEY**
+
+integer **MODELS_NOT_NULL**
+
+integer **MODELS_DATA_TYPE**
+
+integer **MODELS_DATA_TYPE_NUMERIC**
+
+integer **MODELS_DATE_AT**
+
+integer **MODELS_DATE_IN**
+
+integer **MODELS_IDENTITY_FIELD**
 
 Methods
 ---------
 
-**__construct** (Phalcon_Config|stdClass $options)
+**__construct** (*array* **$options**)
 
-Phalcon_Model_MetaData_Session constructor
+*array* **read** ()
 
-**array** **read** ()
+**write** (*array* **$data**)
 
-Reads meta-data from $_SESSION
+**_initializeMetaData** ()
 
-**write** (array $data)
+**getAttributes** (*unknown* **$model**)
 
-Writes the meta-data to $_SESSION
+**getPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNonPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNotNullAttributes** (*unknown* **$model**)
+
+**getDataTypes** (*unknown* **$model**)
+
+**getDataTypesNumeric** (*unknown* **$model**)
+
+**getIdentityField** (*unknown* **$model**)
+
+**storeMetaData** ()
+
+**isEmpty** ()
+
+**reset** ()
 

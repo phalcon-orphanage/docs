@@ -1,32 +1,22 @@
-Class **Phalcon_Cache_Backend**
-===============================
+Class **Phalcon\\Cache\\Backend**
+=================================
 
-This class implements common functionality for backend adapters. All the backend cache adapters must extend this class.
+Phalcon\\Cache\\Backend   This class implements common functionality for backend adapters. All the backend cache adapter must  extend this class
 
 Methods
 ---------
 
-**__construct** (mixed $frontendObject, array $backendOptions)
+**__construct** (*mixed* **$frontendObject**, *array* **$backendOptions**)
 
-Phalcon_Cache_Backend constructor
+*mixed* **start** (*int|string* **$keyName**)
 
-**mixed** **start** (int|string $keyName)
+*mixed* **getFrontend** ()
 
-Starts a cache. The $keyname allow to identify the created fragment
+*boolean* **isFresh** ()
 
-**mixed** **getFrontend** ()
+*boolean* **isStarted** ()
 
-Returns front-end instance adapter related to the back-end
+*string* **getLastKey** ()
 
-**boolean** **isFresh** ()
-
-Checks whether the last cache is fresh or cached
-
-**boolean** **isStarted** ()
-
-Checks whether the cache has started buffering or not
-
-**string** **getLastKey** ()
-
-Gets the last key stored by the cache
+**get** ()
 

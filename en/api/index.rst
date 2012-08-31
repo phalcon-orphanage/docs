@@ -1,101 +1,86 @@
-API Index
+API Indice
 -----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   Phalcon_Acl
    Phalcon_Acl_Adapter_Memory
-   Phalcon_Acl_Exception
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
-   Phalcon_Acl
+   Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
    Phalcon_Cache_Backend_Memcache
-   Phalcon_Cache_Backend
-   Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Data
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
-   Phalcon_Cache
-   Phalcon_Config_Adapter_Ini
-   Phalcon_Config_Exception
    Phalcon_Config
-   Phalcon_Controller_Front
-   Phalcon_Controller
-   Phalcon_Db_Adapter_Mysql
-   Phalcon_Db_Adapter_Postgresql
+   Phalcon_Config_Adapter_Ini
+   Phalcon_Db
+   Phalcon_Db_Adapter_Pdo
+   Phalcon_Db_Adapter_Pdo_Mysql
+   Phalcon_Db_Adapter_Pdo_Postgresql
    Phalcon_Db_Column
+   Phalcon_Db_Dialect
    Phalcon_Db_Dialect_Mysql
    Phalcon_Db_Dialect_Postgresql
-   Phalcon_Db_Exception
    Phalcon_Db_Index
-   Phalcon_Db_Pool
-   Phalcon_Db_Profiler_Item
    Phalcon_Db_Profiler
+   Phalcon_Db_Profiler_Item
    Phalcon_Db_RawValue
    Phalcon_Db_Reference
-   Phalcon_Db_Result_Mysql
-   Phalcon_Db_Result_Postgresql
-   Phalcon_Db
-   Phalcon_Dispatcher_Exception
-   Phalcon_Dispatcher
-   Phalcon_Exception
+   Phalcon_Db_Result_Pdo
    Phalcon_Filter
    Phalcon_Flash
-   Phalcon_Loader_Exception
-   Phalcon_Loader
-   Phalcon_Logger_Adapter_File
-   Phalcon_Logger_Exception
-   Phalcon_Logger_Item
-   Phalcon_Logger
-   Phalcon_Model_Base
-   Phalcon_Model_Exception
-   Phalcon_Model_Manager
-   Phalcon_Model_Message
-   Phalcon_Model_MetaData_Apc
-   Phalcon_Model_MetaData_Memory
-   Phalcon_Model_MetaData_Session
-   Phalcon_Model_MetaData
-   Phalcon_Model_Query
-   Phalcon_Model_Resultset
-   Phalcon_Model_Row
-   Phalcon_Model_Validator_Email
-   Phalcon_Model_Validator_Exclusionin
-   Phalcon_Model_Validator_Inclusionin
-   Phalcon_Model_Validator_Numericality
-   Phalcon_Model_Validator_Regex
-   Phalcon_Model_Validator_Uniqueness
-   Phalcon_Model_Validator
-   Phalcon_Paginator_Adapter_Array
-   Phalcon_Paginator_Adapter_Model
-   Phalcon_Paginator_Exception
-   Phalcon_Paginator
-   Phalcon_Request_Exception
-   Phalcon_Request_File
+   Phalcon_Flash_Session
    Phalcon_Http_Request
-   Phalcon_Response_Exception
-   Phalcon_Response_Headers
-   Phalcon_Response
-   Phalcon_Router_Regex
-   Phalcon_Router_Rewrite
-   Phalcon_Session_Namespace
+   Phalcon_Http_Request_File
+   Phalcon_Http_Response
+   Phalcon_Http_Response_Headers
+   Phalcon_Loader
+   Phalcon_Logger
+   Phalcon_Logger_Adapter_File
+   Phalcon_Logger_Item
+   Phalcon_Mvc_Application
+   Phalcon_Mvc_Controller
+   Phalcon_Mvc_Dispatcher
+   Phalcon_Mvc_Micro
+   Phalcon_Mvc_Model
+   Phalcon_Mvc_Model_Manager
+   Phalcon_Mvc_Model_Message
+   Phalcon_Mvc_Model_MetaData
+   Phalcon_Mvc_Model_MetaData_Apc
+   Phalcon_Mvc_Model_MetaData_Memory
+   Phalcon_Mvc_Model_MetaData_Session
+   Phalcon_Mvc_Model_Query
+   Phalcon_Mvc_Model_Resultset
+   Phalcon_Mvc_Model_Resultset_Complex
+   Phalcon_Mvc_Model_Resultset_Simple
+   Phalcon_Mvc_Model_Row
+   Phalcon_Mvc_Model_Transaction
+   Phalcon_Mvc_Model_Transaction_Failed
+   Phalcon_Mvc_Model_Transaction_Manager
+   Phalcon_Mvc_Model_Validator
+   Phalcon_Mvc_Model_Validator_Email
+   Phalcon_Mvc_Model_Validator_Exclusionin
+   Phalcon_Mvc_Model_Validator_Inclusionin
+   Phalcon_Mvc_Model_Validator_Numericality
+   Phalcon_Mvc_Model_Validator_Regex
+   Phalcon_Mvc_Model_Validator_Uniqueness
+   Phalcon_Mvc_Router
+   Phalcon_Mvc_Router_Route
+   Phalcon_Mvc_Url
+   Phalcon_Mvc_User
+   Phalcon_Mvc_View
+   Phalcon_Mvc_View_Engine
+   Phalcon_Mvc_View_Engine_Php
+   Phalcon_Paginator_Adapter_Model
+   Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Session
-   Phalcon_Tag_Exception
-   Phalcon_Tag_Select
+   Phalcon_Session_Bag
    Phalcon_Tag
+   Phalcon_Tag_Select
    Phalcon_Text
-   Phalcon_Transaction_Exception
-   Phalcon_Transaction_Failed
-   Phalcon_Transaction_Manager
-   Phalcon_Transaction
-   Phalcon_Translate_Adapter_Array
-   Phalcon_Translate_Exception
    Phalcon_Translate
-   Phalcon_Utils
-   Phalcon_View_Engine_Mustache
-   Phalcon_View_Engine_Php
-   Phalcon_View_Engine_Twig
-   Phalcon_View_Engine
-   Phalcon_View_Exception
-   Phalcon_View
+   Phalcon_Translate_Adapter_NativeArray

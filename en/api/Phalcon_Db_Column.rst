@@ -1,28 +1,32 @@
-Class **Phalcon_Db_Column**
-===========================
+Class **Phalcon\\Db\\Column**
+=============================
 
-Allows to define columns to be used on create or alter table operations  
+Phalcon\\Db\\Column   Allows to define columns to be used on create or alter table operations  
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon_Db_Column as Column;
     
-    // Column definition
-     $column = new Column(
-        "id", array(
-            "type"          => Column::TYPE_INTEGER,
-            "size"          => 10,
-            "unsigned"      => true,
-            "notNull"       => true,
-            "autoIncrement" => true,
-            "first"         => true,
-        )
-     );
+     use Phalcon\Db\Column as Column;
     
-    // Add column to existing table
-    $connection->addColumn("robots", null, $column);
+     //column definition
+     $column = new Column("id", array(
+       "type" => Column::TYPE_INTEGER,
+       "size" => 10,
+       "unsigned" => true,
+       "notNull" => true,
+       "autoIncrement" => true,
+       "first" => true
+     ));
+    
+     //add column to existing table
+     $connection->addColumn("robots", null, $column);
+    
+
+
+
+
 
 Constants
 ---------
@@ -41,50 +45,36 @@ integer **TYPE_CHAR**
 
 integer **TYPE_TEXT**
 
+integer **TYPE_FLOAT**
+
 Methods
 ---------
 
-**__construct** (string $columnName, array $definition)
+**__construct** (*string* **$columnName**, *array* **$definition**)
 
-Phalcon_Db_Column constructor
+*string* **getSchemaName** ()
 
-**string** **getSchemaName** ()
+*string* **getName** ()
 
-Returns schema's table related to column
+*int* **getType** ()
 
-**string** **getName** ()
+*int* **getSize** ()
 
-Returns column name
+*int* **getScale** ()
 
-**int** **getType** ()
+*boolean* **isUnsigned** ()
 
-Returns column type
+*boolean* **isNotNull** ()
 
-**int** **getSize** ()
+*boolean* **isPrimary** ()
 
-Returns column size
+*boolean* **isAutoIncrement** ()
 
-**int** **getScale** ()
+*boolean* **isNumeric** ()
 
-Returns column scale
+*boolean* **isFirst** ()
 
-**boolean** **isUnsigned** ()
+*string* **getAfterPosition** ()
 
-Returns true if number column is unsigned
-
-**boolean** **isNotNull** ()
-
-Not null
-
-**boolean** **isAutoIncrement** ()
-
-Auto-Increment
-
-**boolean** **isFirst** ()
-
-Check whether column have first position in table
-
-**string** **getAfterPosition** ()
-
-Check whether field absolute to position in table
+**__set_state** (*unknown* **$data**)
 

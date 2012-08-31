@@ -1,66 +1,71 @@
-Class **Phalcon_Model_Query**
-=============================
+Class **Phalcon\\Mvc\\Model\\Query**
+====================================
 
-Phalcon_Model_Query is designed to simplify building of search on models. It provides a set of helpers to generate searches in a dynamic way to support different databases.   
+Phalcon\\Mvc\\Model\\Query   Phalcon\\Mvc\\Model\\Query is designed to simplify building of search on models.  It provides a set of helpers to generate searchs in a dynamic way to support differents databases.   
 
 .. code-block:: php
 
     <?php
+
     
-    $query = new Phalcon_Model_Query();
-    $query->setManager($manager);
-    $query->from('Robots');
-    $query->where('id = ?0');
-    $query->where('name LIKE ?1');
-    $query->setParameters(array(0 => '10', 1 => '%Astro%'));
     
-    foreach ($query->getResultset() as $robot) {
-        echo $robot->name, "\n";
-    }
+    
+     
+
+
+
+
 
 Methods
 ---------
 
-**setManager** (Phalcon_Model_Manager $manager)
+**__construct** (*unknown* **$phql**)
 
-Set the Phalcon_Model_Manager instance to use in a query  
+**setDI** (*Phalcon\DI* **$dependencyInjector**)
 
-.. code-block:: php
+:doc:`Phalcon\\DI <Phalcon_DI>` **getDI** ()
 
-    <?php
-    
-    $controllerFront = Phalcon_Controller_Front::getInstance();
-    $modelManager    = $controllerFront->getModelComponent();
-    $query           = new Phalcon_Model_Query();
-    $query->setManager($manager);
-     
-**from** (string $model)
+**_getQualified** ()
 
-Add models to use in query
+**_getCallArgument** ()
 
-**where** (string $condition)
+**_getFunctionCall** ()
 
-Add conditions to use in query
+**_getExpression** ()
 
-**setParameters** (string $parameter)
+**_getSelectColumn** ()
 
-Set parameter in query to different database adapters.
+**_getTable** ()
 
-**setInputData** (array $data)
+**_getJoin** ()
 
-Set the data to use to make the conditions in query
+**_getJoinType** ()
 
-**setLimit** (int $limit)
+**_getJoins** ()
 
-Set the limit of rows to show
+**_getLimitClause** ()
 
-**getResultset** ()
+**_getOrderClause** ()
 
-**string $query** **getConditions** ()
+**_getGroupClause** ()
 
-Get the conditions of query
+**_prepareSelect** ()
 
-**Phalcon_Model_Query** **fromInput** (string $modelName, array $data)
+**_prepareInsert** ()
 
-Get instance of model query
+**_prepareUpdate** ()
+
+**_prepareDelete** ()
+
+**parse** (*unknown* **$manager**)
+
+**_executeSelect** ()
+
+**_executeInsert** ()
+
+**_executeUpdate** ()
+
+**_executeDelete** ()
+
+**execute** (*unknown* **$placeholders**)
 

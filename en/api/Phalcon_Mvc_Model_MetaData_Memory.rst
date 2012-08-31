@@ -1,25 +1,59 @@
-Class **Phalcon_Model_MetaData_Memory**
-=======================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
+===============================================
 
-Stores model meta-data in memory. Data will be erased when the request is completed.
+*extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-.. code-block:: php
+Phalcon\\Model\\MetaData\\Memory   Stores model meta-data in memory. Data will be erased when the request finishes
 
-    <?php
-    
-    $modelManager = new Phalcon\Model\Manager();
+Constants
+---------
 
-    $metaData = new Phalcon\Model\Metadata('Memory');
-    $modelManager->setMetaData($metaData);
+integer **MODELS_ATTRIBUTES**
+
+integer **MODELS_PRIMARY_KEY**
+
+integer **MODELS_NON_PRIMARY_KEY**
+
+integer **MODELS_NOT_NULL**
+
+integer **MODELS_DATA_TYPE**
+
+integer **MODELS_DATA_TYPE_NUMERIC**
+
+integer **MODELS_DATE_AT**
+
+integer **MODELS_DATE_IN**
+
+integer **MODELS_IDENTITY_FIELD**
 
 Methods
 ---------
 
-**array** **read** ()
+**__construct** (*array* **$options**)
 
-Reads the meta-data from temporal memory
+*array* **read** ()
 
-**write** (array $data)
+**write** ()
 
-Writes the meta-data to temporal memory
+**_initializeMetaData** ()
+
+**getAttributes** (*unknown* **$model**)
+
+**getPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNonPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNotNullAttributes** (*unknown* **$model**)
+
+**getDataTypes** (*unknown* **$model**)
+
+**getDataTypesNumeric** (*unknown* **$model**)
+
+**getIdentityField** (*unknown* **$model**)
+
+**storeMetaData** ()
+
+**isEmpty** ()
+
+**reset** ()
 

@@ -1,40 +1,52 @@
-Class **Phalcon_Model_Validator_Regex**
-=======================================
+Class **Phalcon\\Mvc\\Model\\Validator\\Regex**
+===============================================
 
-Allows to validate if the value of a field matches a regular expression  
+*extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
+
+Phalcon\\Mvc\\Model\\Validator\\Regex   Allows to validate if the value of a field matches a regular expression  
 
 .. code-block:: php
 
     <?php
+
     
-    class Subscriptors extends Phalcon_Model_Base 
+    use Phalcon\Mvc\Model\Validator\Regex as RegexValidator;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
     {
     
-        public function validation()
-        {
-            $this->validate(
-                'Regex', 
-                array(
-                    'field'   => 'created_at',
-                    'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
-                )
-            );
-
-            if ($this->validationHasFailed() == true) {
-                return false;
-            }
-        }
+      public function validation()
+      {
+          $this->validate(new RegexValidator(array(
+              'field' => 'created_at',
+              'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/'
+          )));
+          if ($this->validationHasFailed() == true) {
+              return false;
+          }
+      }
     
     }
+    
+
+
+
+
 
 Methods
 ---------
 
-**checkOptions** ()
+*boolean* **validate** (*unknown* **$record**)
 
-Check that the options are correct
+**__construct** (*unknown* **$options**)
 
-**boolean** **validate** ()
+**appendMessage** ()
 
-Executes the validator
+**getMessages** ()
+
+**getOptions** ()
+
+**getOption** ()
+
+**isSetOption** ()
 

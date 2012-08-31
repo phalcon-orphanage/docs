@@ -1,70 +1,87 @@
-Class **Phalcon_Logger_Adapter_File**
-=====================================
+Class **Phalcon\\Logger\\Adapter\\File**
+========================================
 
-Adapter to store logs in plain text files  
+*extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
+
+Phalcon\\Logger\\Adapter\\File   Adapter to store logs in plain text files  
 
 .. code-block:: php
 
     <?php
+
     
-    $logger = new Phalcon_Logger("File", "app/logs/test.log");
+    $logger = new Phalcon\Logger\Adapter\File("app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon_Logger::ERROR);
+    $logger->log("This is an error", Phalcon\Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
+    
+
+
+
+
+
+Constants
+---------
+
+integer **SPECIAL**
+
+integer **CUSTOM**
+
+integer **DEBUG**
+
+integer **INFO**
+
+integer **NOTICE**
+
+integer **WARNING**
+
+integer **ERROR**
+
+integer **ALERT**
+
+integer **CRITICAL**
+
+integer **EMERGENCE**
 
 Methods
 ---------
 
-**__construct** (string $name, array $options)
+**__construct** (*string* **$name**, *array* **$options**)
 
-Phalcon_Logger_Adapter_File constructor
+**setFormat** (*string* **$format**)
 
-**setFormat** (string $format)
+*format* **getFormat** ()
 
-Set the log format
+*string* **getTypeString** (*integer* **$type**)
 
-**getFormat** (string $format)
+*string* **_applyFormat** ()
 
-Returns the log format
+**setDateFormat** (*string* **$date**)
 
-**string** **getTypeString** (integer $type)
+*string* **getDateFormat** ()
 
-Returns the string meaning of a logger constant
-
-**string** **_applyFormat** (string $message, int $type, int $time)
-
-Applies the internal format to the message
-
-**setDateFormat** (string $date)
-
-Sets the internal date format
-
-**string** **getDateFormat** ()
-
-Returns the internal date format
-
-**log** (string $message, int $type)
-
-Sends/Writes messages to the file log
+**log** (*string* **$message**, *int* **$type**)
 
 **begin** ()
 
-Starts a transaction
-
 **commit** ()
-
-Commits the internal transaction
 
 **rollback** ()
 
-Rollbacks the internal transaction
-
-**boolean** **close** ()
-
-Closes the logger
+*boolean* **close** ()
 
 **__wakeup** ()
 
-Opens the internal file handler after unserialization
+**debug** (*unknown* **$message**)
+
+**error** (*unknown* **$message**)
+
+**info** (*unknown* **$message**)
+
+**notice** (*unknown* **$message**)
+
+**warning** (*unknown* **$message**)
+
+**alert** (*unknown* **$message**)
 

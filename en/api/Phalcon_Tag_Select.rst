@@ -1,18 +1,14 @@
-Class **Phalcon_Tag_Select**
-============================
+Class **Phalcon\\Tag\\Select**
+==============================
 
-Generates a SELECT html tag using an static array of values or a Phalcon_Model resultset
+Phalcon\\Tag\\Select   Generates a SELECT html tag using an static array of values or a Phalcon\\Model resultset
 
 Methods
 ---------
 
-**selectField** (array $parameters, array $data)
+**selectField** (*array* **$parameters**, *array* **$data**)
 
-Generates a SELECT tag
+**_optionsFromResultset** ()
 
-**_optionsFromResultset** (unknown $resultset, unknown $using, unknown $value, unknown $closeOption)
-
-**_optionsFromArray** (unknown $data, unknown $value, unknown $closeOption)
-
-
+**_optionsFromArray** ()
 

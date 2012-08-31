@@ -1,17 +1,23 @@
-Class **Phalcon_Logger**
-========================
+Class **Phalcon\\Logger**
+=========================
 
-Phalcon_Logger is a component whose purpose is to create logs using different backends via adapters, generating options, formats and filters and also implementing transactions.  
+Phalcon\\Logger   Phalcon\\Logger is a component whose purpose is to create logs using  different backends via adapters, generating options, formats and filters  also implementing transactions.  
 
 .. code-block:: php
 
     <?php
+
     
-    $logger = new Phalcon_Logger("File", "app/logs/test.log");
+    $logger = new Phalcon\Logger\Adapter\File("app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon_Logger::ERROR);
+    $logger->log("This is an error", Phalcon\Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
+     
+
+
+
+
 
 Constants
 ---------
@@ -39,39 +45,17 @@ integer **EMERGENCE**
 Methods
 ---------
 
-**__construct** (string $adapter, string $name, array $options)
+**debug** (*string* **$message**)
 
-Phalcon_Logger constructor
+**error** (*string* **$message**)
 
-**log** (string $message, int $type)
+**info** (*string* **$message**)
 
-Sends/Writes a message to the log
+**notice** (*string* **$message**)
 
-**debug** (string $message)
+**warning** (*string* **$message**)
 
-Sends/Writes a debug message to the log
+**alert** (*string* **$message**)
 
-**error** (string $message)
-
-Sends/Writes an error message to the log
-
-**info** (string $message)
-
-Sends/Writes an info message to the log
-
-**notice** (string $message)
-
-Sends/Writes a notice message to the log
-
-**warning** (string $message)
-
-Sends/Writes a warning message to the log
-
-**alert** (string $message)
-
-Sends/Writes an alert message to the log
-
-**mixed** **__call** (string $method, array $arguments)
-
-Pass any call to the internal adapter object
+**log** (*unknown* **$message**, *unknown* **$type**)
 

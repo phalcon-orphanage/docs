@@ -1,35 +1,74 @@
-Class **Phalcon_Model_MetaData_Apc**
-====================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
+============================================
 
-Stores model meta-data in the APC cache. Data will erased if the web server is restarted. By default meta-data is stored 48 hours (172800 seconds) You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-local-app').
+*extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
+
+Phalcon\\Mvc\\Model\\MetaData\\Apc   Stores model meta-data in the APC cache. Data will erased if the web server is restarted   By default meta-data is stored 48 hours (172800 seconds)   You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-local-app')  
 
 .. code-block:: php
 
     <?php
-    
-    $modelManager = new Phalcon_Model_Manager();
 
-    $metaData = new Phalcon_Model_Metadata(
-        'Apc', 
-        array(
-            'suffix'   => 'my-app-id',
-            'lifetime' => 86400,
-        )
-    );
-    $modelManager->setMetaData($metaData);
+    
+     $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
+        'suffix' => 'my-app-id',
+        'lifetime' => 86400
+     ));
+    
+
+
+
+
+
+Constants
+---------
+
+integer **MODELS_ATTRIBUTES**
+
+integer **MODELS_PRIMARY_KEY**
+
+integer **MODELS_NON_PRIMARY_KEY**
+
+integer **MODELS_NOT_NULL**
+
+integer **MODELS_DATA_TYPE**
+
+integer **MODELS_DATA_TYPE_NUMERIC**
+
+integer **MODELS_DATE_AT**
+
+integer **MODELS_DATE_IN**
+
+integer **MODELS_IDENTITY_FIELD**
 
 Methods
 ---------
 
-**__construct** (Phalcon_Config|stdClass $options)
+**__construct** (*array* **$options**)
 
-Phalcon_Model_MetaData_Apc constructor
+*array* **read** ()
 
-**array** **read** ()
+**write** (*array* **$data**)
 
-Reads meta-data from APC
+**_initializeMetaData** ()
 
-**write** (array $data)
+**getAttributes** (*unknown* **$model**)
 
-Writes the meta-data to APC
+**getPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNonPrimaryKeyAttributes** (*unknown* **$model**)
+
+**getNotNullAttributes** (*unknown* **$model**)
+
+**getDataTypes** (*unknown* **$model**)
+
+**getDataTypesNumeric** (*unknown* **$model**)
+
+**getIdentityField** (*unknown* **$model**)
+
+**storeMetaData** ()
+
+**isEmpty** ()
+
+**reset** ()
 

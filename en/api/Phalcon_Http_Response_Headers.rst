@@ -1,24 +1,22 @@
-Class **Phalcon_Response_Headers**
-==================================
+Class **Phalcon\\Http\\Response\\Headers**
+==========================================
 
-This class is a collection to manage the response headers
+Phalcon\\Http\\Response\\Headers   This class is a bag to manage the response headers
 
 Methods
 ---------
 
-**set** (string $name, string $value)
+**__construct** ()
 
-Sets a header to be sent at the end of the request
+**set** (*string* **$name**, *string* **$value**)
 
-**string** **get** (string $name)
+*string* **get** (*string* **$name**)
 
-Sets a header value from the internal collection
-
-**setRaw** (string $header)
-
-Sets a raw header to be sent at the end of the request
+**setRaw** (*string* **$header**)
 
 **send** ()
 
-Sends the headers to the client
+**reset** ()
+
+**__set_state** (*unknown* **$data**)
 

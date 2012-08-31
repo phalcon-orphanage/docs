@@ -1,20 +1,14 @@
-Class **Phalcon_Paginator_Adapter_Model**
-=========================================
+Class **Phalcon\\Paginator\\Adapter\\Model**
+============================================
 
-This adapter allows to paginate data using Phalcon_Model resultsets.
+Phalcon\\Paginator\\Adapter\\Model   This adapter allows to paginate data using Phalcon\\Model resultsets.
 
 Methods
 ---------
 
-**__construct** (array $config)
+**__construct** (*array* **$config**)
 
-Phalcon_Paginator_Adapter_Model constructor
+**setCurrentPage** (*int* **$page**)
 
-**setCurrentPage** (int $page)
-
-Set the current page number
-
-**stdClass** **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
+*stdClass* **getPaginate** ()
 

@@ -1,47 +1,20 @@
-Class **Phalcon_Model_Row**
-===========================
+Class **Phalcon\\Mvc\\Model\\Row**
+==================================
 
-This component allows to Phalcon_Model_Base returns grouped resultsets.
+*implements* ArrayAccess
+
+Phalcon\\Mvc\\Model\\Row   This component allows Phalcon\\Mvc\\Model to return rows without an associated entity.  This objects implements the ArrayAccess interfase to allow access the object as object->x or array[x].
 
 Methods
 ---------
 
-**setConnection** (Phalcon_Db $connection)
+**setForceExists** ()
 
-Overwrites default connection
+*boolean* **offsetExists** (*int* **$index**)
 
-**Phalcon_Db** **getConnection** ()
+:doc:`string|Phalcon\\Mvc\\Model <string|Phalcon_Mvc_Model>` **offsetGet** (*int* **$index**)
 
-Returns default connection
+**offsetSet** (*int* **$index**, *Phalcon\Mvc\Model* **$value**)
 
-**Phalcon_Model $result** **dumpResult** (array $result)
-
-Assigns values to a row from an array returning a new row 
-
-.. code-block:: php
-
-    <?php
-    
-    $row    = new Phalcon_Model_Row();
-    $newRow = $row->dumpResult(
-        array(
-            'type' => 'mechanical',
-            'name' => 'Astro Boy',
-            'year' => 1952
-        )
-    );
-
-**mixed** **readAttribute** (string $property)
-
-Reads an attribute value by its name  
-
-.. code-block:: php
-
-    <?php 
-
-    echo $robot->readAttribute('name');
-
-**array** **sleep** ()
-
-Magic method sleep
+**offsetUnset** (*int* **$offset**)
 
