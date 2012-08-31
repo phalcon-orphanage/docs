@@ -9,8 +9,6 @@ Allows to cache output fragments, PHP data and raw data using a memcache backend
 
     <?php
 
-    
-    
      //Cache data for 2 days
     $frontendOptions = array(
     'lifetime' => 172800
@@ -23,33 +21,45 @@ Allows to cache output fragments, PHP data and raw data using a memcache backend
     
      //Get data
     $data = $cache->get('my-data');
-    
-    
-
-
 
 
 
 Methods
 ---------
 
-*mixed* **get** (*int|string* **$keyName**, *long* **$lifetime**)
+*mixed* public **get** (*int|string* $keyName, *long* $lifetime)
 
-**save** (*int|string* **$keyName**, *string* **$content**, *long* **$lifetime**, *boolean* **$stopBuffer**)
+Returns a cached content
 
-*boolean* **delete** (*string|int* **$keyName**)
 
-*array* **queryKeys** (*string* **$prefix**)
 
-**__construct** (*unknown* **$frontendObject**, *unknown* **$backendOptions**)
+public **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-**start** (*unknown* **$keyName**)
+Stores cached content into the file backend
 
-**getFrontend** ()
 
-**isFresh** ()
 
-**isStarted** ()
+*boolean* public **delete** (*string|int* $keyName)
 
-**getLastKey** ()
+Deletes a value from the cache by its key
+
+
+
+*array* public **queryKeys** (*string* $prefix)
+
+Query the existing cached keys
+
+
+
+public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
+
+public **start** (*unknown* $keyName)
+
+public **getFrontend** ()
+
+public **isFresh** ()
+
+public **isStarted** ()
+
+public **getLastKey** ()
 

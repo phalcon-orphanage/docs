@@ -1,24 +1,29 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-Phalcon\\Mvc\\Url   Generates internal URIs and Paths
+Generates internal URIs and Paths
+
 
 Methods
 ---------
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **setDI** (*unknown* $dependencyInjector)
 
-**getDI** ()
+public **getDI** ()
 
-**setBaseUri** (*unknown* **$baseUri**)
+public **setBaseUri** (*unknown* $baseUri)
 
-**getBaseUri** ()
+public **getBaseUri** ()
 
-**setBasePath** (*unknown* **$basePath**)
+public **setBasePath** (*unknown* $basePath)
 
-**getBasePath** ()
+public **getBasePath** ()
 
-*string* **get** (*string* **$uri**)
+*string* public **get** (*string* $uri)
 
-**path** (*unknown* **$uri**)
+Gets a public URL prepending the application URI
+
+
+
+public **path** (*unknown* $uri)
 

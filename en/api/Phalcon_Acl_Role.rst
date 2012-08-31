@@ -1,14 +1,27 @@
 Class **Phalcon\\Acl\\Role**
 ============================
 
-Phalcon\\Acl\\Role   This class defines role entity and its description
+This class defines role entity and its description
+
 
 Methods
 ---------
 
-**__construct** (*string* **$name**, *string* **$description**)
+public **__construct** (*string* $name, *string* $description)
 
-*string* **getName** ()
+Phalcon\\Acl\\Role description
 
-*string* **getDescription** ()
+
+
+*string* public **getName** ()
+
+Returns the role name
+
+
+
+*string* public **getDescription** ()
+
+Returns role description
+
+
 

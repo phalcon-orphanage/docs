@@ -4,17 +4,29 @@ Class **Phalcon\\Mvc\\Application**
 Methods
 ---------
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **setDI** (*unknown* $dependencyInjector)
 
-**getDI** ()
+public **getDI** ()
 
-**setEventsManager** (*Phalcon\Events\Manager* **$eventsManager**)
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` **getEventsManager** ()
+Sets the events manager
 
-**registerModules** (*unknown* **$modules**)
 
-**getModules** ()
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` **handle** ()
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+
+Returns the internal event manager
+
+
+
+public **registerModules** (*unknown* $modules)
+
+public **getModules** ()
+
+:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **handle** ()
+
+Handles a MVC request
+
+
 

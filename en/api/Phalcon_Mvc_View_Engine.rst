@@ -3,24 +3,37 @@ Class **Phalcon\\Mvc\\View\\Engine**
 
 *extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
 
-Phalcon\\Mvc\\View\\Engine   All the template engine adapters must inherit this class. This provides  basic interfacing between the engine and the Phalcon\\Mvc\\View component.
+All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\\Mvc\\View component.
+
 
 Methods
 ---------
 
-**__construct** (*Phalcon\Mvc\View* **$view**, *unknown* **$dependencyInjector**)
+public **__construct** (*Phalcon\Mvc\View* $view, *unknown* $dependencyInjector)
 
-*array* **getContent** ()
+Phalcon\\Mvc\\View\\Engine constructor
 
-**partial** (*string* **$partialPath**)
 
-**setDI** (*unknown* **$dependencyInjector**)
 
-**getDI** ()
+*array* public **getContent** ()
 
-**setEventsManager** (*unknown* **$eventsManager**)
+Returns cached ouput on another view stage
 
-**getEventsManager** ()
 
-**__get** (*unknown* **$propertyName**)
+
+public **partial** (*string* $partialPath)
+
+Renders a partial inside another view
+
+
+
+public **setDI** (*unknown* $dependencyInjector)
+
+public **getDI** ()
+
+public **setEventsManager** (*unknown* $eventsManager)
+
+public **getEventsManager** ()
+
+public **__get** (*unknown* $propertyName)
 

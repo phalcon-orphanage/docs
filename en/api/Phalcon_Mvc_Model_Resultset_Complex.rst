@@ -8,39 +8,59 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 Methods
 ---------
 
-**__construct** (*array* **$columnsTypes**, *Phalcon\Db\Result* **$result**, *Phalcon\Cache\Backend* **$cache**)
+public **__construct** (*array* $columnsTypes, *Phalcon\Db\Result* $result, *Phalcon\Cache\Backend* $cache)
 
-*boolean* **valid** ()
+Phalcon\\Mvc\\Model\\Resultset constructor
 
-*string* **serialize** ()
 
-**unserialize** (*string* **$data**)
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **current** ()
+*boolean* public **valid** ()
 
-**next** ()
+Check whether internal resource has rows to fetch
 
-**key** ()
 
-**rewind** ()
 
-**seek** (*unknown* **$position**)
+*string* public **serialize** ()
 
-**count** ()
+Serializing a resultset will dump all related rows into a big array
 
-**offsetExists** (*unknown* **$index**)
 
-**offsetGet** (*unknown* **$index**)
 
-**offsetSet** (*unknown* **$index**, *unknown* **$value**)
+public **unserialize** (*string* $data)
 
-**offsetUnset** (*unknown* **$offset**)
+Unserializing a resultset will allow to only works on the rows present in the saved state
 
-**getFirst** ()
 
-**getLast** ()
 
-**isFresh** ()
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **current** ()
 
-**getCache** ()
+Returns current row in the resultset
+
+
+
+public **next** ()
+
+public **key** ()
+
+public **rewind** ()
+
+public **seek** (*unknown* $position)
+
+public **count** ()
+
+public **offsetExists** (*unknown* $index)
+
+public **offsetGet** (*unknown* $index)
+
+public **offsetSet** (*unknown* $index, *unknown* $value)
+
+public **offsetUnset** (*unknown* $offset)
+
+public **getFirst** ()
+
+public **getLast** ()
+
+public **isFresh** ()
+
+public **getCache** ()
 

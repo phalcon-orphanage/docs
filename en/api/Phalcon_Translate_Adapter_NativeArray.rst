@@ -5,24 +5,37 @@ Class **Phalcon\\Translate\\Adapter\\NativeArray**
 
 *implements* ArrayAccess
 
-Phalcon\\Translate\\Adapter\\NativeArray   Allows to define translation lists using PHP arrays
+Allows to define translation lists using PHP arrays
+
 
 Methods
 ---------
 
-**__construct** (*unknown* **$options**)
+public **__construct** (*unknown* $options)
 
-*string* **query** (*string* **$index**, *array* **$placeholders**)
+Phalcon\\Translate\\Adapter\\NativeArray constructor
 
-*bool* **exists** (*string* **$index**)
 
-**_** (*unknown* **$translateKey**, *unknown* **$placeholders**)
 
-**offsetSet** (*unknown* **$offset**, *unknown* **$value**)
+*string* public **query** (*string* $index, *array* $placeholders)
 
-**offsetExists** (*unknown* **$translateKey**)
+Returns the translation related to the given key
 
-**offsetUnset** (*unknown* **$offset**)
 
-**offsetGet** (*unknown* **$traslateKey**)
+
+*bool* public **exists** (*string* $index)
+
+Check whether is defined a translation key in the internal array
+
+
+
+public **_** (*unknown* $translateKey, *unknown* $placeholders)
+
+public **offsetSet** (*unknown* $offset, *unknown* $value)
+
+public **offsetExists** (*unknown* $translateKey)
+
+public **offsetUnset** (*unknown* $offset)
+
+public **offsetGet** (*unknown* $traslateKey)
 

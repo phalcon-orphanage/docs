@@ -1,71 +1,72 @@
 Class **Phalcon\\Mvc\\Model\\Query**
 ====================================
 
-Phalcon\\Mvc\\Model\\Query   Phalcon\\Mvc\\Model\\Query is designed to simplify building of search on models.  It provides a set of helpers to generate searchs in a dynamic way to support differents databases.   
+Phalcon\\Mvc\\Model\\Query is designed to simplify building of search on models. It provides a set of helpers to generate searchs in a dynamic way to support differents databases.  
 
 .. code-block:: php
 
     <?php
-
-    
-    
-    
-     
-
-
 
 
 
 Methods
 ---------
 
-**__construct** (*unknown* **$phql**)
+public **__construct** (*unknown* $phql)
 
-**setDI** (*Phalcon\DI* **$dependencyInjector**)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-:doc:`Phalcon\\DI <Phalcon_DI>` **getDI** ()
+Sets the dependency injection container
 
-**_getQualified** ()
 
-**_getCallArgument** ()
 
-**_getFunctionCall** ()
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
 
-**_getExpression** ()
+Returns the dependency injection container
 
-**_getSelectColumn** ()
 
-**_getTable** ()
 
-**_getJoin** ()
+protected **_getQualified** ()
 
-**_getJoinType** ()
+protected **_getCallArgument** ()
 
-**_getJoins** ()
+protected **_getFunctionCall** ()
 
-**_getLimitClause** ()
+protected **_getExpression** ()
 
-**_getOrderClause** ()
+protected **_getSelectColumn** ()
 
-**_getGroupClause** ()
+protected **_getTable** ()
 
-**_prepareSelect** ()
+protected **_getJoin** ()
 
-**_prepareInsert** ()
+protected **_getJoinType** ()
 
-**_prepareUpdate** ()
+protected **_getJoins** ()
 
-**_prepareDelete** ()
+protected **_getLimitClause** ()
 
-**parse** (*unknown* **$manager**)
+protected **_getOrderClause** ()
 
-**_executeSelect** ()
+protected **_getGroupClause** ()
 
-**_executeInsert** ()
+protected **_prepareSelect** ()
 
-**_executeUpdate** ()
+protected **_prepareInsert** ()
 
-**_executeDelete** ()
+protected **_prepareUpdate** ()
 
-**execute** (*unknown* **$placeholders**)
+protected **_prepareDelete** ()
+
+public **parse** (*unknown* $manager)
+
+protected **_executeSelect** ()
+
+protected **_executeInsert** ()
+
+protected **_executeUpdate** ()
+
+protected **_executeDelete** ()
+
+public **execute** (*unknown* $placeholders)
 

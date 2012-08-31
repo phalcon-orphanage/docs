@@ -6,35 +6,43 @@ Class **Phalcon\\Flash\\Session**
 Methods
 ---------
 
-**setDI** (*Phalcon\DI* **$dependencyInjector**)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-:doc:`Phalcon\\DI <Phalcon_DI>` **getDI** ()
+Sets the dependency injector
 
-**_getSessionMessages** ()
 
-**_setSessionMessages** ()
 
-**message** (*unknown* **$type**, *unknown* **$message**)
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
 
-**getMessages** (*unknown* **$type**)
+Returns the internal dependency injector
 
-**output** ()
 
-**__construct** (*unknown* **$cssClasses**)
 
-**setImplicitFlush** (*unknown* **$implicitFlush**)
+protected **_getSessionMessages** ()
 
-**setAutomaticHtml** (*unknown* **$automaticHtml**)
+protected **_setSessionMessages** ()
 
-**setCssClasses** (*unknown* **$cssClasses**)
+public **message** (*unknown* $type, *unknown* $message)
 
-**error** (*unknown* **$message**)
+public **getMessages** (*unknown* $type)
 
-**notice** (*unknown* **$message**)
+public **output** ()
 
-**success** (*unknown* **$message**)
+public **__construct** (*unknown* $cssClasses)
 
-**warning** (*unknown* **$message**)
+public **setImplicitFlush** (*unknown* $implicitFlush)
 
-**outputMessage** (*unknown* **$type**, *unknown* **$message**)
+public **setAutomaticHtml** (*unknown* $automaticHtml)
+
+public **setCssClasses** (*unknown* $cssClasses)
+
+public **error** (*unknown* $message)
+
+public **notice** (*unknown* $message)
+
+public **success** (*unknown* $message)
+
+public **warning** (*unknown* $message)
+
+public **outputMessage** (*unknown* $type, *unknown* $message)
 

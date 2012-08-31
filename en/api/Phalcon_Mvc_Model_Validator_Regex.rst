@@ -3,13 +3,12 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Regex**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Phalcon\\Mvc\\Model\\Validator\\Regex   Allows to validate if the value of a field matches a regular expression  
+Allows to validate if the value of a field matches a regular expression  
 
 .. code-block:: php
 
     <?php
 
-    
     use Phalcon\Mvc\Model\Validator\Regex as RegexValidator;
     
     class Subscriptors extends Phalcon\Mvc\Model
@@ -27,26 +26,27 @@ Phalcon\\Mvc\\Model\\Validator\\Regex   Allows to validate if the value of a fie
       }
     
     }
-    
-
-
 
 
 
 Methods
 ---------
 
-*boolean* **validate** (*unknown* **$record**)
+*boolean* public **validate** (*unknown* $record)
 
-**__construct** (*unknown* **$options**)
+Executes the validator
 
-**appendMessage** ()
 
-**getMessages** ()
 
-**getOptions** ()
+public **__construct** (*unknown* $options)
 
-**getOption** ()
+protected **appendMessage** ()
 
-**isSetOption** ()
+public **getMessages** ()
+
+protected **getOptions** ()
+
+protected **getOption** ()
+
+protected **isSetOption** ()
 

@@ -1,56 +1,78 @@
 Class **Phalcon\\Db\\Profiler**
 ===============================
 
-Phalcon\\Db\\Profiler   Instances of Phalcon\\Db can generate execution profiles  on SQL statements sent to the relational database. Profiled  information includes execution time in miliseconds.  This helps you to identify bottlenecks in your applications.  
+Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications.  
 
 .. code-block:: php
 
     <?php
 
+    $profiler = new Phalcon\Db\Profiler();
     
+    //Set the connection profiler
+    $connection->setProfiler($profiler);
     
-     $profiler = new Phalcon\Db\Profiler();
+    $sql = "SELECT buyer_name, quantity, product_name
+    FROM buyers LEFT JOIN products ON
+    buyers.pid=products.id";
     
-     //Set the connection profiler
-     $connection->setProfiler($profiler);
+    //Execute a SQL statement
+    $connection->query($sql);
     
-     $sql = "SELECT buyer_name, quantity, product_name
-     FROM buyers LEFT JOIN products ON
-     buyers.pid=products.id";
+    //Get the last profile in the profiler
+    $profile = $profiler->getLastProfile();
     
-     //Execute a SQL statement
-     $connection->query($sql);
-    
-     //Get the last profile in the profiler
-     $profile = $profiler->getLastProfile();
-    
-     echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
-     echo "Start Time: ", $profile->getInitialTime(), "\n";
-     echo "Final Time: ", $profile->getFinalTime(), "\n";
-     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
-    
-    
-
-
+    echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
+    echo "Start Time: ", $profile->getInitialTime(), "\n";
+    echo "Final Time: ", $profile->getFinalTime(), "\n";
+    echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 
 
 Methods
 ---------
 
-**__construct** ()
+public **__construct** ()
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` **startProfile** (*string* **$sqlStatement**)
+:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **startProfile** (*string* $sqlStatement)
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` **stopProfile** ()
+Starts the profile of a SQL sentence
 
-*integer* **getNumberTotalStatements** ()
 
-*double* **getTotalElapsedSeconds** ()
 
-:doc:`Phalcon\\Db\\Profiler\\Item[] <Phalcon_Db_Profiler_Item[]>` **getProfiles** ()
+:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **stopProfile** ()
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` **reset** ()
+Stops the active profile
 
-:doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` **getLastProfile** ()
+
+
+*integer* public **getNumberTotalStatements** ()
+
+Returns the total number of SQL statements processed
+
+
+
+*double* public **getTotalElapsedSeconds** ()
+
+Returns the total time in seconds spent by the profiles
+
+
+
+:doc:`Phalcon\\Db\\Profiler\\Item[] <Phalcon_Db_Profiler_Item[]>` public **getProfiles** ()
+
+Returns all the processed profiles
+
+
+
+:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **reset** ()
+
+Resets the profiler, cleaning up all the profiles
+
+
+
+:doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` public **getLastProfile** ()
+
+Returns the last profile executed in the profiler
+
+
 

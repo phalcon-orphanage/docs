@@ -3,13 +3,12 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Numericality**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Phalcon\\Mvc\\Model\\Validator\\Numericality   Allows to validate if a field has a valid numeric format  
+Allows to validate if a field has a valid numeric format  
 
 .. code-block:: php
 
     <?php
 
-    
     use Phalcon\Mvc\Model\Validator\Numericality as NumericalityValidator;
     
     class Products extends Phalcon\Mvc\Model
@@ -26,26 +25,27 @@ Phalcon\\Mvc\\Model\\Validator\\Numericality   Allows to validate if a field has
       }
     
     }
-    
-
-
 
 
 
 Methods
 ---------
 
-*boolean* **validate** (*unknown* **$record**)
+*boolean* public **validate** (*unknown* $record)
 
-**__construct** (*unknown* **$options**)
+Executes the validator
 
-**appendMessage** ()
 
-**getMessages** ()
 
-**getOptions** ()
+public **__construct** (*unknown* $options)
 
-**getOption** ()
+protected **appendMessage** ()
 
-**isSetOption** ()
+public **getMessages** ()
+
+protected **getOptions** ()
+
+protected **getOption** ()
+
+protected **isSetOption** ()
 

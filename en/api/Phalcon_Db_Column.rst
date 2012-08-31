@@ -1,13 +1,12 @@
 Class **Phalcon\\Db\\Column**
 =============================
 
-Phalcon\\Db\\Column   Allows to define columns to be used on create or alter table operations  
+Allows to define columns to be used on create or alter table operations  
 
 .. code-block:: php
 
     <?php
 
-    
      use Phalcon\Db\Column as Column;
     
      //column definition
@@ -22,9 +21,6 @@ Phalcon\\Db\\Column   Allows to define columns to be used on create or alter tab
     
      //add column to existing table
      $connection->addColumn("robots", null, $column);
-    
-
-
 
 
 
@@ -50,31 +46,83 @@ integer **TYPE_FLOAT**
 Methods
 ---------
 
-**__construct** (*string* **$columnName**, *array* **$definition**)
+public **__construct** (*string* $columnName, *array* $definition)
 
-*string* **getSchemaName** ()
+Phalcon\\Db\\Column constructor
 
-*string* **getName** ()
 
-*int* **getType** ()
 
-*int* **getSize** ()
+*string* public **getSchemaName** ()
 
-*int* **getScale** ()
+Returns schema's table related to column
 
-*boolean* **isUnsigned** ()
 
-*boolean* **isNotNull** ()
 
-*boolean* **isPrimary** ()
+*string* public **getName** ()
 
-*boolean* **isAutoIncrement** ()
+Returns column name
 
-*boolean* **isNumeric** ()
 
-*boolean* **isFirst** ()
 
-*string* **getAfterPosition** ()
+*int* public **getType** ()
 
-**__set_state** (*unknown* **$data**)
+Returns column type
+
+
+
+*int* public **getSize** ()
+
+Returns column size
+
+
+
+*int* public **getScale** ()
+
+Returns column scale
+
+
+
+*boolean* public **isUnsigned** ()
+
+Returns true if number column is unsigned
+
+
+
+*boolean* public **isNotNull** ()
+
+Not null
+
+
+
+*boolean* public **isPrimary** ()
+
+Column is part of the primary key?
+
+
+
+*boolean* public **isAutoIncrement** ()
+
+Auto-Increment
+
+
+
+*boolean* public **isNumeric** ()
+
+Check whether column have an numeric type
+
+
+
+*boolean* public **isFirst** ()
+
+Check whether column have first position in table
+
+
+
+*string* public **getAfterPosition** ()
+
+Check whether field absolute to position in table
+
+
+
+public static **__set_state** (*unknown* $data)
 

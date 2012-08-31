@@ -3,56 +3,137 @@ Class **Phalcon\\Db\\Dialect\\Mysql**
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Phalcon\\Db\\Dialect\\Mysql   Generates database specific SQL for the MySQL RBDM
+Generates database specific SQL for the MySQL RBDM
+
 
 Methods
 ---------
 
-*string* **getColumnList** (*array* **$columnList**)
+*string* public **getColumnList** (*array* $columnList)
 
-**getColumnDefinition** (*Phalcon\Db\Column* **$column**)
+Gets a list of columns
 
-*string* **addColumn** (*string* **$tableName**, *string* **$schemaName**, *Phalcon\Db\Column* **$column**)
 
-*string* **modifyColumn** (*string* **$tableName**, *string* **$schemaName**, *Phalcon\Db\Column* **$column**)
 
-*string* **dropColumn** (*string* **$tableName**, *string* **$schemaName**, *string* **$columnName**)
+public **getColumnDefinition** (*Phalcon\Db\Column* $column)
 
-*string* **addIndex** (*string* **$tableName**, *string* **$schemaName**, *Phalcon\Db\Index* **$index**)
+Gets the column name in MySQL
 
-*string* **dropIndex** (*string* **$tableName**, *string* **$schemaName**, *string* **$indexName**)
 
-*string* **addPrimaryKey** (*string* **$tableName**, *string* **$schemaName**, *Phalcon\Db\Index* **$index**)
 
-*string* **dropPrimaryKey** (*string* **$tableName**, *string* **$schemaName**)
+*string* public **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
 
-*string* **addForeignKey** (*string* **$tableName**, *string* **$schemaName**, *Phalcon\Db\Reference* **$reference**)
+Generates SQL to add a column to a table
 
-*string* **dropForeignKey** (*string* **$tableName**, *string* **$schemaName**, *string* **$referenceName**)
 
-*array* **_getTableOptions** ()
 
-*string* **createTable** (*string* **$tableName**, *string* **$schemaName**, *array* **$definition**)
+*string* public **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
 
-*boolean* **dropTable** (*string* **$tableName**, *string* **$schemaName**, *boolean* **$ifExists**)
+Generates SQL to modify a column in a table
 
-*string* **tableExists** (*string* **$tableName**, *string* **$schemaName**)
 
-*string* **describeColumns** (*string* **$table**, *string* **$schema**)
 
-*array* **listTables** (*string* **$schemaName**)
+*string* public **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
 
-*string* **describeIndexes** (*string* **$table**, *string* **$schema**)
+Generates SQL to delete a column from a table
 
-*string* **describeReferences** (*string* **$table**, *string* **$schema**)
 
-*string* **tableOptions** (*string* **$table**, *string* **$schema**)
 
-**limit** (*unknown* **$sqlQuery**, *unknown* **$number**)
+*string* public **addIndex** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Index* $index)
 
-**forUpdate** (*unknown* **$sqlQuery**)
+Generates SQL to add an index to a table
 
-**sharedLock** (*unknown* **$sqlQuery**)
 
-**select** (*unknown* **$definition**)
+
+*string* public **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+
+Generates SQL to delete an index from a table
+
+
+
+*string* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Index* $index)
+
+Generates SQL to add the primary key to a table
+
+
+
+*string* public **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+
+Generates SQL to delete primary key from a table
+
+
+
+*string* public **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Reference* $reference)
+
+Generates SQL to add an index to a table
+
+
+
+*string* public **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+
+Generates SQL to delete a foreign key from a table
+
+
+
+*array* protected **_getTableOptions** ()
+
+Generates SQL to add the table creation options
+
+
+
+*string* public **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+
+Generates SQL to create a table in MySQL
+
+
+
+*boolean* public **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+
+Generates SQL to drop a table
+
+
+
+*string* public **tableExists** (*string* $tableName, *string* $schemaName)
+
+Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
+
+
+
+*string* public **describeColumns** (*string* $table, *string* $schema)
+
+Generates SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
+
+
+
+*array* public **listTables** (*string* $schemaName)
+
+List all tables on database <code>print_r($dialect->listTables("blog") ?>
+
+
+
+*string* public **describeIndexes** (*string* $table, *string* $schema)
+
+Generates SQL to query indexes on a table
+
+
+
+*string* public **describeReferences** (*string* $table, *string* $schema)
+
+Generates SQL to query foreign keys on a table
+
+
+
+*string* public **tableOptions** (*string* $table, *string* $schema)
+
+Generates the SQL to describe the table creation options
+
+
+
+public **limit** (*unknown* $sqlQuery, *unknown* $number)
+
+public **forUpdate** (*unknown* $sqlQuery)
+
+public **sharedLock** (*unknown* $sqlQuery)
+
+public **select** (*unknown* $definition)
 

@@ -3,7 +3,8 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-Phalcon\\Model\\MetaData\\Memory   Stores model meta-data in memory. Data will be erased when the request finishes
+Phalcon\\Model\\MetaData\\Memory  Stores model meta-data in memory. Data will be erased when the request finishes
+
 
 Constants
 ---------
@@ -29,31 +30,43 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-**__construct** (*array* **$options**)
+public **__construct** (*array* $options)
 
-*array* **read** ()
+Phalcon\\Mvc\\Model\\MetaData constructor
 
-**write** ()
 
-**_initializeMetaData** ()
 
-**getAttributes** (*unknown* **$model**)
+*array* public **read** ()
 
-**getPrimaryKeyAttributes** (*unknown* **$model**)
+Reads the meta-data from temporal memory
 
-**getNonPrimaryKeyAttributes** (*unknown* **$model**)
 
-**getNotNullAttributes** (*unknown* **$model**)
 
-**getDataTypes** (*unknown* **$model**)
+public **write** ()
 
-**getDataTypesNumeric** (*unknown* **$model**)
+Writes the meta-data to temporal memory
 
-**getIdentityField** (*unknown* **$model**)
 
-**storeMetaData** ()
 
-**isEmpty** ()
+protected **_initializeMetaData** ()
 
-**reset** ()
+public **getAttributes** (*unknown* $model)
+
+public **getPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNonPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNotNullAttributes** (*unknown* $model)
+
+public **getDataTypes** (*unknown* $model)
+
+public **getDataTypesNumeric** (*unknown* $model)
+
+public **getIdentityField** (*unknown* $model)
+
+public **storeMetaData** ()
+
+public **isEmpty** ()
+
+public **reset** ()
 

@@ -1,14 +1,12 @@
 Class **Phalcon\\Mvc\\Model\\Resultset**
 ========================================
 
-Phalcon\\Mvc\\Model\\Resultset   This component allows to Phalcon\\Mvc\\Model returns large resulsets with the minimum memory consumption  Resulsets can be traversed using a standard foreach or a while statement. If a resultset is serialized  it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before  serializing.   
+This component allows to Phalcon\\Mvc\\Model returns large resulsets with the minimum memory consumption Resulsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.  
 
 .. code-block:: php
 
     <?php
 
-    
-    
      //Using a standard foreach
      $robots = $Robots::find(array("type='virtual'", "order" => "name"));
      foreach($robots as $robot){
@@ -23,38 +21,87 @@ Phalcon\\Mvc\\Model\\Resultset   This component allows to Phalcon\\Mvc\\Model re
       echo $robot->name, "\n";
       $robots->next();
      }
-     
-
-
 
 
 
 Methods
 ---------
 
-**next** ()
+public **next** ()
 
-**key** ()
+Moves cursor to next row in the resultset
 
-**rewind** ()
 
-**seek** (*int* **$position**)
 
-*int* **count** ()
+public **key** ()
 
-*boolean* **offsetExists** (*int* **$index**)
+Gets pointer number of active row in the resultset
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **offsetGet** (*int* **$index**)
 
-**offsetSet** (*int* **$index**, *Phalcon\Mvc\Model* **$value**)
 
-**offsetUnset** (*int* **$offset**)
+public **rewind** ()
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **getFirst** ()
+Rewinds resultset to its beginning
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **getLast** ()
 
-*boolean* **isFresh** ()
 
-:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` **getCache** ()
+public **seek** (*int* $position)
+
+Changes internal pointer to a specific position in the resultset
+
+
+
+*int* public **count** ()
+
+Counts how many rows are in the resultset
+
+
+
+*boolean* public **offsetExists** (*int* $index)
+
+Checks whether offset exists in the resultset
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **offsetGet** (*int* $index)
+
+Gets row in a specific position of the resultset
+
+
+
+public **offsetSet** (*int* $index, *Phalcon\Mvc\Model* $value)
+
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+public **offsetUnset** (*int* $offset)
+
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getFirst** ()
+
+Get first row in the resultset
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getLast** ()
+
+Get last row in the resultset
+
+
+
+*boolean* public **isFresh** ()
+
+Tell if the resultset if fresh or an old cached
+
+
+
+:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` public **getCache** ()
+
+Returns the associated cache for the resultset
+
+
 

@@ -4,45 +4,53 @@ Class **Phalcon\\Mvc\\Micro**
 Methods
 ---------
 
-**__construct** ()
+public **__construct** ()
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **setDI** (*unknown* $dependencyInjector)
 
-**getDI** ()
+public **getDI** ()
 
-**setEventsManager** (*Phalcon\Events\Manager* **$eventsManager**)
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` **getEventsManager** ()
+Sets the events manager
 
-**map** (*unknown* **$routePattern**, *unknown* **$handler**)
 
-**get** (*unknown* **$routePattern**, *unknown* **$handler**)
 
-**post** (*unknown* **$routePattern**, *unknown* **$handler**)
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
 
-**put** (*unknown* **$routePattern**, *unknown* **$handler**)
+Returns the internal event manager
 
-**head** (*unknown* **$routePattern**, *unknown* **$handler**)
 
-**delete** (*unknown* **$routePattern**, *unknown* **$handler**)
 
-**options** (*unknown* **$routePattern**, *unknown* **$handler**)
+public **map** (*unknown* $routePattern, *unknown* $handler)
 
-**notFound** (*unknown* **$handler**)
+public **get** (*unknown* $routePattern, *unknown* $handler)
 
-**getRouter** ()
+public **post** (*unknown* $routePattern, *unknown* $handler)
 
-**getService** (*unknown* **$serviceName**)
+public **put** (*unknown* $routePattern, *unknown* $handler)
 
-**getSharedService** (*unknown* **$serviceName**)
+public **head** (*unknown* $routePattern, *unknown* $handler)
 
-**handle** ()
+public **delete** (*unknown* $routePattern, *unknown* $handler)
 
-**setActiveHandler** (*unknown* **$activeHandler**)
+public **options** (*unknown* $routePattern, *unknown* $handler)
 
-**getActiveHandler** ()
+public **notFound** (*unknown* $handler)
 
-**getReturnedValue** ()
+public **getRouter** ()
 
-**__get** (*unknown* **$property**)
+public **getService** (*unknown* $serviceName)
+
+public **getSharedService** (*unknown* $serviceName)
+
+public **handle** ()
+
+public **setActiveHandler** (*unknown* $activeHandler)
+
+public **getActiveHandler** ()
+
+public **getReturnedValue** ()
+
+public **__get** (*unknown* $property)
 

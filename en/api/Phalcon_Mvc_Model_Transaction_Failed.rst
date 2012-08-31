@@ -1,34 +1,47 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 ==================================================
 
-*extends* :doc:`Exception <Exception>`
+*extends* Exception
 
-Phalcon\\Mvc\\Model\\Transaction\\Failed   Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch block for transactions
+Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch block for transactions
+
 
 Methods
 ---------
 
-**__construct** (*string* **$message**, *Phalcon\Mvc\Model* **$record**)
+public **__construct** (*string* $message, *Phalcon\Mvc\Model* $record)
 
-*string* **getRecordMessages** ()
+Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` **getRecord** ()
 
-**__clone** ()
 
-**getMessage** ()
+*string* public **getRecordMessages** ()
 
-**getCode** ()
+Returns validation record messages which stop the transaction
 
-**getFile** ()
 
-**getLine** ()
 
-**getTrace** ()
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getRecord** ()
 
-**getPrevious** ()
+Returns validation record messages which stop the transaction
 
-**getTraceAsString** ()
 
-**__toString** ()
+
+final private **__clone** ()
+
+final public **getMessage** ()
+
+final public **getCode** ()
+
+final public **getFile** ()
+
+final public **getLine** ()
+
+final public **getTrace** ()
+
+final public **getPrevious** ()
+
+final public **getTraceAsString** ()
+
+public **__toString** ()
 

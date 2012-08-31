@@ -3,14 +3,12 @@ Class **Phalcon\\Db\\Adapter\\Pdo**
 
 *extends* :doc:`Phalcon\\Db <Phalcon_Db>`
 
-Phalcon\\Db\\Adapter\\Pdo   Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database  
+Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database 
 
 .. code-block:: php
 
     <?php
 
-    
-    
      $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
       'host' => '192.168.0.11',
       'username' => 'sigma',
@@ -18,10 +16,6 @@ Phalcon\\Db\\Adapter\\Pdo   Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that in
       'dbname' => 'blog',
       'port' => '3306',
      ));
-    
-     
-
-
 
 
 
@@ -37,95 +31,171 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-**__construct** (*array* **$descriptor**)
+public **__construct** (*array* $descriptor)
 
-*boolean* **connect** (*array* **$descriptor**)
+Constructor for Phalcon\\Db\\Adapter\\Pdo
 
-:doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` **query** (*string* **$sqlStatement**)
 
-**execute** (*unknown* **$sqlStatement**, *unknown* **$placeholders**)
 
-*int* **affectedRows** ()
+*boolean* public **connect** (*array* $descriptor)
 
-*boolean* **close** ()
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
 
-*string* **escapeString** (*string* **$str**)
 
-**bindParams** (*string* **$sqlSelect**, *array* **$params**)
 
-*int* **lastInsertId** (*string* **$table**, *string* **$primaryKey**, *string* **$sequenceName**)
+:doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` public **query** (*string* $sqlStatement)
 
-*boolean* **begin** ()
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows //Querying data $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'"); $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
-*boolean* **rollback** ()
 
-*boolean* **commit** ()
 
-*boolean* **isUnderTransaction** ()
+public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
 
-*PDO* **getInternalHandler** ()
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
-**setEventsManager** (*unknown* **$eventsManager**)
+.. code-block:: php
 
-**getEventsManager** ()
+    <?php
 
-**fetchOne** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
+     //Inserting data
+     $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
+     $success = $connection->execute("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
+    
+     @param  string $sqlStatement
+     @param  array $placeholders
 
-**fetchAll** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
 
-**insert** (*unknown* **$table**, *unknown* **$values**, *unknown* **$fields**)
 
-**update** (*unknown* **$table**, *unknown* **$fields**, *unknown* **$values**, *unknown* **$whereCondition**)
 
-**delete** (*unknown* **$table**, *unknown* **$whereCondition**, *unknown* **$placeholders**)
+*int* public **affectedRows** ()
 
-**getColumnList** (*unknown* **$columnList**)
+Returns the number of affected rows by the last INSERT/UPDATE/DELETE repoted by the database system 
 
-**limit** (*unknown* **$sqlQuery**, *unknown* **$number**)
+.. code-block:: php
 
-**tableExists** (*unknown* **$tableName**, *unknown* **$schemaName**)
+    <?php
 
-**viewExists** (*unknown* **$viewName**, *unknown* **$schemaName**)
+    $connection->query("DELETE FROM robots");
+    echo $connection->affectedRows(), ' were deleted';
 
-**forUpdate** (*unknown* **$sqlQuery**)
 
-**sharedLock** (*unknown* **$sqlQuery**)
 
-**createTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$definition**)
 
-**dropTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$ifExists**)
+*boolean* public **close** ()
 
-**addColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
+Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
 
-**modifyColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
 
-**dropColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$columnName**)
 
-**addIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
+*string* public **escapeString** (*string* $str)
 
-**dropIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$indexName**)
+Escapes a value to avoid SQL injections
 
-**addPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
 
-**dropPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**)
 
-**addForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$reference**)
+public **bindParams** (*string* $sqlSelect, *array* $params)
 
-**dropForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$referenceName**)
+Bind params to SQL select
 
-**getColumnDefinition** (*unknown* **$column**)
 
-**listTables** (*unknown* **$schemaName**)
 
-**getDescriptor** ()
+*int* public **lastInsertId** (*string* $table, *string* $primaryKey, *string* $sequenceName)
 
-**getConnectionId** ()
+Returns insert id for the auto_increment column inserted in the last SQL statement
 
-**getSQLStatement** ()
 
-**getType** ()
 
-**getDialectType** ()
+*boolean* public **begin** ()
 
-**getDialect** ()
+Starts a transaction in the connection
+
+
+
+*boolean* public **rollback** ()
+
+Rollbacks the active transaction in the connection
+
+
+
+*boolean* public **commit** ()
+
+Commits the active transaction in the connection
+
+
+
+*boolean* public **isUnderTransaction** ()
+
+Checks whether connection is under database transaction
+
+
+
+*PDO* public **getInternalHandler** ()
+
+Return internal PDO handler
+
+
+
+public **setEventsManager** (*unknown* $eventsManager)
+
+public **getEventsManager** ()
+
+public **fetchOne** (*unknown* $sqlQuery, *unknown* $fetchMode)
+
+public **fetchAll** (*unknown* $sqlQuery, *unknown* $fetchMode)
+
+public **insert** (*unknown* $table, *unknown* $values, *unknown* $fields)
+
+public **update** (*unknown* $table, *unknown* $fields, *unknown* $values, *unknown* $whereCondition)
+
+public **delete** (*unknown* $table, *unknown* $whereCondition, *unknown* $placeholders)
+
+public **getColumnList** (*unknown* $columnList)
+
+public **limit** (*unknown* $sqlQuery, *unknown* $number)
+
+public **tableExists** (*unknown* $tableName, *unknown* $schemaName)
+
+public **viewExists** (*unknown* $viewName, *unknown* $schemaName)
+
+public **forUpdate** (*unknown* $sqlQuery)
+
+public **sharedLock** (*unknown* $sqlQuery)
+
+public **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
+
+public **dropTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $ifExists)
+
+public **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+
+public **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+
+public **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
+
+public **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+
+public **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
+
+public **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+
+public **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
+
+public **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+
+public **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
+
+public **getColumnDefinition** (*unknown* $column)
+
+public **listTables** (*unknown* $schemaName)
+
+public **getDescriptor** ()
+
+public **getConnectionId** ()
+
+public **getSQLStatement** ()
+
+public **getType** ()
+
+public **getDialectType** ()
+
+public **getDialect** ()
 

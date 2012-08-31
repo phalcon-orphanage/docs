@@ -3,20 +3,16 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-Phalcon\\Mvc\\Model\\MetaData\\Apc   Stores model meta-data in the APC cache. Data will erased if the web server is restarted   By default meta-data is stored 48 hours (172800 seconds)   You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-local-app')  
+Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-local-app')  
 
 .. code-block:: php
 
     <?php
 
-    
      $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
         'suffix' => 'my-app-id',
         'lifetime' => 86400
      ));
-    
-
-
 
 
 
@@ -44,31 +40,43 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-**__construct** (*array* **$options**)
+public **__construct** (*array* $options)
 
-*array* **read** ()
+Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
 
-**write** (*array* **$data**)
 
-**_initializeMetaData** ()
 
-**getAttributes** (*unknown* **$model**)
+*array* public **read** ()
 
-**getPrimaryKeyAttributes** (*unknown* **$model**)
+Reads meta-data from APC
 
-**getNonPrimaryKeyAttributes** (*unknown* **$model**)
 
-**getNotNullAttributes** (*unknown* **$model**)
 
-**getDataTypes** (*unknown* **$model**)
+public **write** (*array* $data)
 
-**getDataTypesNumeric** (*unknown* **$model**)
+Writes the meta-data to APC
 
-**getIdentityField** (*unknown* **$model**)
 
-**storeMetaData** ()
 
-**isEmpty** ()
+protected **_initializeMetaData** ()
 
-**reset** ()
+public **getAttributes** (*unknown* $model)
+
+public **getPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNonPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNotNullAttributes** (*unknown* $model)
+
+public **getDataTypes** (*unknown* $model)
+
+public **getDataTypesNumeric** (*unknown* $model)
+
+public **getIdentityField** (*unknown* $model)
+
+public **storeMetaData** ()
+
+public **isEmpty** ()
+
+public **reset** ()
 

@@ -3,13 +3,12 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Uniqueness**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Phalcon\\Mvc\\Model\\Validator\\Uniqueness   Validates that a field or a combination of a set of fields are not  present more than once in the existing records of the related table  
+Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table  
 
 .. code-block:: php
 
     <?php
 
-    
     use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
     
     class Subscriptors extends Phalcon\Mvc\Model
@@ -26,26 +25,27 @@ Phalcon\\Mvc\\Model\\Validator\\Uniqueness   Validates that a field or a combina
       }
     
     }
-    
-
-
 
 
 
 Methods
 ---------
 
-*boolean* **validate** (*unknown* **$record**)
+*boolean* public **validate** (*unknown* $record)
 
-**__construct** (*unknown* **$options**)
+Executes the validator
 
-**appendMessage** ()
 
-**getMessages** ()
 
-**getOptions** ()
+public **__construct** (*unknown* $options)
 
-**getOption** ()
+protected **appendMessage** ()
 
-**isSetOption** ()
+public **getMessages** ()
+
+protected **getOptions** ()
+
+protected **getOption** ()
+
+protected **isSetOption** ()
 

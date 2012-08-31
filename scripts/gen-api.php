@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This scripts generates the restructuredText for the class API.
+ *
+ * Change the CPHALCON_DIR constant to point to the dev/ directory in the Phalcon source code
+ *
+ * php scripts/gen-api.php
+ */
+
 define('CPHALCON_DIR', '/home/gutierrezandresfelipe/phalcon/target/dev/');
 
 class API_Generator {
@@ -20,7 +28,6 @@ class API_Generator {
 			} else {
 				if(preg_match('/\.c$/', $item->getPathname())){
 					if(strpos($item->getPathname(), 'kernel')===false){
-						//echo $item->getPathname(), PHP_EOL;
 						$this->_getDocs($item->getPathname());
 					}
 				}
@@ -47,9 +54,9 @@ class API_Generator {
 						$className = $matches[1];
 					} else {
 						if($firstDoc===true){
-							//echo $comment;
 							$classDoc = $comment;
 							$firstDoc = false;
+							$comment = '';
 						}
 					}
 					$nextLineMethod = false;
@@ -96,51 +103,64 @@ class API_Generator {
 			}
 		}
 
+		$rc = str_replace("\\\\", "\\", $realClassName);
+
+		$numberBlock = -1;
 		$insideCode = false;
+		$codeBlocks = array();
 		foreach($lines as $line){
 			if(strpos($line, '<code')!==false){
+				$numberBlock++;
 				$insideCode = true;
 			}
 			if(strpos($line, '</code')!==false){
 				$insideCode = false;
 			}
 			if($insideCode==false){
-				if(preg_match('/@([a-z0-9]+)/', $line, $matches)){
-					$content = trim(str_replace($matches[0], '', $line));
-					if($matches[1]=='param'){
-						$parts = preg_split('/[ \t]+/', $content);
-						if(count($parts)!=2){
-							throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
+				$line = str_replace('</code>', '', $line);
+				if(trim($line)!=$rc){
+					if(preg_match('/@([a-z0-9]+)/', $line, $matches)){
+						$content = trim(str_replace($matches[0], '', $line));
+						if($matches[1]=='param'){
+							$parts = preg_split('/[ \t]+/', $content);
+							if(count($parts)!=2){
+								throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
+							}
+							$ret['parameters'][$parts[1]] = trim($parts[0]);
+						} else {
+							$ret[$matches[1]] = $content;
 						}
-						$ret['parameters'][$parts[1]] = trim($parts[0]);
 					} else {
-						$ret[$matches[1]] = $content;
+						$description.=ltrim($line)."\n";
 					}
-				} else {
-					$description.=$line."\n";
 				}
 			} else {
-				$description.=$line."\n";
+				if(!isset($codeBlocks[$numberBlock])){
+					$line = str_replace('<code>', '', $line);
+					$codeBlocks[$numberBlock] = $line."\n";
+					$description.='%%'.$numberBlock.'%%';
+				} else {
+					$codeBlocks[$numberBlock].=$line."\n";
+				}
 			}
 		}
 
-		$n = 1;
-		$codes = array();
-		$description = trim($description);
-		while(preg_match('#<code>(.*)</code>#msU', $description, $matches)){
+		foreach($codeBlocks as $n => $cc){
 			$c = '';
-			$f = true;
-			$p = explode("\n", $matches[1]);
+			$firstLine = true;
+			$p = explode("\n", $cc);
 			foreach($p as $pp){
-				if($f){
-					if(!preg_match('#^<?php#', ltrim($pp))){
-						if(count($p)==1){
-							$c.='    <?php ';
-						} else {
-							$c.='    <?php'.PHP_EOL.PHP_EOL;
+				if($firstLine){
+					if(substr(ltrim($pp), 0, 1)!='['){
+						if(!preg_match('#^<?php#', ltrim($pp))){
+							if(count($p)==1){
+								$c.='    <?php ';
+							} else {
+								$c.='    <?php'.PHP_EOL.PHP_EOL;
+							}
 						}
 					}
-					$f = false;
+					$firstLine = false;
 				}
 				$pp = preg_replace('#^\t#', '', $pp);
 				if(count($p)!=1){
@@ -150,18 +170,40 @@ class API_Generator {
 				}
 			}
 			$c.=PHP_EOL;
-			$codes[$n] = $c;
-			$description = str_replace($matches[0], '%%'.$n.'%%', $description);
+			$codeBlocks[$n] = rtrim($c);
 		}
+
+		$description = str_replace('<p>', '', $description);
+		$description = str_replace('</p>', PHP_EOL.PHP_EOL, $description);
 
 		$c = $description;
 		$c = str_replace("\\", "\\\\", $c);
 		$c = trim(str_replace("\t", "", $c));
 		$c = trim(str_replace("\n", " ", $c));
-		foreach($codes as $n => $cc){
-			$c = str_replace('%%'.$n.'%%', PHP_EOL.PHP_EOL.'.. code-block:: php'.PHP_EOL.PHP_EOL.$cc.PHP_EOL.PHP_EOL, $c);
+		foreach($codeBlocks as $n => $cc){
+			if(preg_match('#\[[a-z]+\]#', $cc)){
+				$type = 'ini';
+			} else {
+				$type = 'php';
+			}
+			$c = str_replace('%%'.$n.'%%', PHP_EOL.PHP_EOL.'.. code-block:: '.$type.PHP_EOL.PHP_EOL.$cc.PHP_EOL.PHP_EOL, $c);
 		}
-		$ret['description'] = $c;
+
+		$final = '';
+		$blankLine = false;
+		foreach(explode("\n", $c) as $line){
+			if(trim($line)==''){
+				if($blankLine==false){
+					$final.=$line."\n";
+					$blankLine = true;
+				}
+			} else {
+				$final.=$line."\n";
+				$blankLine = false;
+			}
+		}
+
+		$ret['description'] = $final;
 		return $ret;
 	}
 
@@ -219,9 +261,13 @@ foreach($docs as $className => $docMethods){
 	if(isset($refactor[$className]['extends'])){
 		if($refactor[$className]['extends']){
 			$extendsName = $refactor[$className]['extends']->name;
-			$extendsPath =  str_replace("\\", "_", $extendsName);
-			$extendsName =  str_replace("\\", "\\\\", $extendsName);
-			$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+			if(strpos($extendsName, 'Phalcon')!==false){
+				$extendsPath =  str_replace("\\", "_", $extendsName);
+				$extendsName =  str_replace("\\", "\\\\", $extendsName);
+				$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+			} else {
+				$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
+			}
 		}
 	}
 	if(isset($refactor[$className]['implements'])){
@@ -255,52 +301,41 @@ foreach($docs as $className => $docMethods){
 				} else {
 					$ret = array();
 				}
+				//$code.='.. method:: ';
 				if(isset($ret['return'])){
 					if(strpos($ret['return'], 'Phalcon')!==false){
 						$extendsPath =  str_replace("\\", "_", $ret['return']);
 						$extendsName =  str_replace("\\", "\\\\", $ret['return']);
 						$code.=':doc:`'.$extendsName.' <'.$extendsPath.'>` ';
 					} else {
-						$code.='*'.$ret['return'].'* ';
+						$code.= '*'.$ret['return'].'* ';
 					}
 				}
-				$code.= '**'.$method->name.'** (';
+				$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' **'.$method->name.'** (';
 
 				$cp = array();
 				foreach($method->getParameters() as $parameter){
 					$name = '$'.$parameter->name;
 					if(isset($ret['parameters'][$name])){
-						$cp[] = '*'.$ret['parameters'][$name].'* **'.$name.'**';
+						$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
 					} else {
-						$cp[] = '*unknown* **'.$name.'**';
+						$cp[] = '*unknown* '.$name;
 					}
 				}
-				$code.=join(', ', $cp).')';
-				$code.=PHP_EOL.PHP_EOL;
+				$code.=join(', ', $cp).')'.PHP_EOL.PHP_EOL;
+
+				if(isset($ret['description'])){
+					//$code.="\t ..\n";
+					foreach(explode("\n", $ret['description']) as $dline){
+						$code.="".$dline."\n";
+					}
+					$code.=PHP_EOL.PHP_EOL;
+				}
+
 			}
-			/*foreach($refactor[$className]['methods'] as $name => $method){
-				if($method['return']!='unknown'){
-					$code.='**'.$method['return'].'** ';
-				}
-				$code.= '**'.$name.'** (';
-				$cp = array();
-				foreach($method['parameters'] as $name => $parameter){
-					$cp[] = $parameter['type'].' '.$name;
-				}
-				$code.=join(', ', $cp).')';
-				$code.=PHP_EOL.PHP_EOL.$method['description'].PHP_EOL.PHP_EOL;
-			}*/
+
 		}
 	}
-
-	/*if(count($docMethods)){
-		$code.='Methods'.PHP_EOL;
-		$code.='---------'.PHP_EOL.PHP_EOL;
-		foreach($docMethods as $method => $doc){
-			//$x = ;
-			//print_r($x);
-		}
-	}*/
 
 	file_put_contents('en/api/'.$className.'.rst', $code);
 }

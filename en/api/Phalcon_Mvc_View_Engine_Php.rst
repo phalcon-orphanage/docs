@@ -3,26 +3,31 @@ Class **Phalcon\\Mvc\\View\\Engine\\Php**
 
 *extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-Phalcon\\Mvc\\View\\Engine\\Php   Adapter to use PHP itself as templating engine
+Adapter to use PHP itself as templating engine
+
 
 Methods
 ---------
 
-**render** (*string* **$path**, *array* **$params**, *bool* **$mustClean**)
+public **render** (*string* $path, *array* $params, *bool* $mustClean)
 
-**__construct** (*unknown* **$view**, *unknown* **$dependencyInjector**)
+Renders a view using the template engine
 
-**getContent** ()
 
-**partial** (*unknown* **$partialPath**)
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **__construct** (*unknown* $view, *unknown* $dependencyInjector)
 
-**getDI** ()
+public **getContent** ()
 
-**setEventsManager** (*unknown* **$eventsManager**)
+public **partial** (*unknown* $partialPath)
 
-**getEventsManager** ()
+public **setDI** (*unknown* $dependencyInjector)
 
-**__get** (*unknown* **$propertyName**)
+public **getDI** ()
+
+public **setEventsManager** (*unknown* $eventsManager)
+
+public **getEventsManager** ()
+
+public **__get** (*unknown* $propertyName)
 

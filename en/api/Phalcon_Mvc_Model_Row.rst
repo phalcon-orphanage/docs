@@ -3,18 +3,35 @@ Class **Phalcon\\Mvc\\Model\\Row**
 
 *implements* ArrayAccess
 
-Phalcon\\Mvc\\Model\\Row   This component allows Phalcon\\Mvc\\Model to return rows without an associated entity.  This objects implements the ArrayAccess interfase to allow access the object as object->x or array[x].
+This component allows Phalcon\\Mvc\\Model to return rows without an associated entity. This objects implements the ArrayAccess interfase to allow access the object as object->x or array[x].
+
 
 Methods
 ---------
 
-**setForceExists** ()
+public **setForceExists** ()
 
-*boolean* **offsetExists** (*int* **$index**)
+*boolean* public **offsetExists** (*int* $index)
 
-:doc:`string|Phalcon\\Mvc\\Model <string|Phalcon_Mvc_Model>` **offsetGet** (*int* **$index**)
+Checks whether offset exists in the row
 
-**offsetSet** (*int* **$index**, *Phalcon\Mvc\Model* **$value**)
 
-**offsetUnset** (*int* **$offset**)
+
+:doc:`string|Phalcon\\Mvc\\Model <string|Phalcon_Mvc_Model>` public **offsetGet** (*int* $index)
+
+Gets row in a specific position of the row
+
+
+
+public **offsetSet** (*int* $index, *Phalcon\Mvc\Model* $value)
+
+Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+public **offsetUnset** (*int* $offset)
+
+Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
 

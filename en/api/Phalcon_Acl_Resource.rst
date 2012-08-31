@@ -1,14 +1,27 @@
 Class **Phalcon\\Acl\\Resource**
 ================================
 
-Phalcon\\Acl\\Resource   This class defines resource entity and its description
+This class defines resource entity and its description
+
 
 Methods
 ---------
 
-**__construct** (*string* **$name**, *string* **$description**)
+public **__construct** (*string* $name, *string* $description)
 
-*string* **getName** ()
+Phalcon\\Acl\\Resource description
 
-*string* **getDescription** ()
+
+
+*string* public **getName** ()
+
+Returns the resource name
+
+
+
+*string* public **getDescription** ()
+
+Returns resource description
+
+
 

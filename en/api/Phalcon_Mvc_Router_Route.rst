@@ -4,29 +4,33 @@ Class **Phalcon\\Mvc\\Router\\Route**
 Methods
 ---------
 
-**__construct** (*unknown* **$pattern**, *unknown* **$paths**, *unknown* **$httpMethods**)
+public **__construct** (*unknown* $pattern, *unknown* $paths, *unknown* $httpMethods)
 
-*string* **compilePattern** (*string* **$pattern**)
+*string* public **compilePattern** (*string* $pattern)
 
-**via** (*unknown* **$httpMethods**)
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
-**reConfigure** (*unknown* **$pattern**, *unknown* **$paths**)
 
-**getName** ()
 
-**setName** (*unknown* **$name**)
+public **via** (*unknown* $httpMethods)
 
-**setHttpMethods** (*unknown* **$httpMethods**)
+public **reConfigure** (*unknown* $pattern, *unknown* $paths)
 
-**getRouteId** ()
+public **getName** ()
 
-**getPattern** ()
+public **setName** (*unknown* $name)
 
-**getCompiledPattern** ()
+public **setHttpMethods** (*unknown* $httpMethods)
 
-**getPaths** ()
+public **getRouteId** ()
 
-**getHttpMethods** ()
+public **getPattern** ()
 
-**reset** ()
+public **getCompiledPattern** ()
+
+public **getPaths** ()
+
+public **getHttpMethods** ()
+
+public static **reset** ()
 

@@ -3,27 +3,21 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
-Phalcon\\Db\\Adapter\\Pdo\\Mysql   Specific functions for the Mysql database system  
+Specific functions for the Mysql database system 
 
 .. code-block:: php
 
     <?php
 
+    $config = array(
+    	"host" => "192.168.0.11",
+    	"dbname" => "blog",
+    	"port" => 3306,
+    	"username" => "sigma",
+    	"password" => "secret"
+    );
     
-    
-     $config = array(
-      "host" => "192.168.0.11",
-      "dbname" => "blog",
-      "port" => 3306,
-      "username" => "sigma",
-      "password" => "secret"
-     );
-    
-     $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
-    
-     
-
-
+    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
 
 
 
@@ -39,103 +33,119 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` **describeColumns** (*string* **$table**, *string* **$schema**)
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
 
-:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` **describeIndexes** (*string* **$table**, *string* **$schema**)
+Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts") ?>
 
-:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` **describeReferences** (*string* **$table**, *string* **$schema**)
 
-*array* **tableOptions** (*string* **$tableName**, *string* **$schemaName**)
 
-**__construct** (*unknown* **$descriptor**)
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
 
-**connect** (*unknown* **$descriptor**)
+Lists table indexes
 
-**query** (*unknown* **$sqlStatement**)
 
-**execute** (*unknown* **$sqlStatement**, *unknown* **$placeholders**)
 
-**affectedRows** ()
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
 
-**close** ()
+Lists table references
 
-**escapeString** (*unknown* **$str**)
 
-**bindParams** (*unknown* **$sqlSelect**, *unknown* **$params**)
 
-**lastInsertId** (*unknown* **$table**, *unknown* **$primaryKey**, *unknown* **$sequenceName**)
+*array* public **tableOptions** (*string* $tableName, *string* $schemaName)
 
-**begin** ()
+Gets creation options from a table
 
-**rollback** ()
 
-**commit** ()
 
-**isUnderTransaction** ()
+public **__construct** (*unknown* $descriptor)
 
-**getInternalHandler** ()
+public **connect** (*unknown* $descriptor)
 
-**setEventsManager** (*unknown* **$eventsManager**)
+public **query** (*unknown* $sqlStatement)
 
-**getEventsManager** ()
+public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
 
-**fetchOne** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
+public **affectedRows** ()
 
-**fetchAll** (*unknown* **$sqlQuery**, *unknown* **$fetchMode**)
+public **close** ()
 
-**insert** (*unknown* **$table**, *unknown* **$values**, *unknown* **$fields**)
+public **escapeString** (*unknown* $str)
 
-**update** (*unknown* **$table**, *unknown* **$fields**, *unknown* **$values**, *unknown* **$whereCondition**)
+public **bindParams** (*unknown* $sqlSelect, *unknown* $params)
 
-**delete** (*unknown* **$table**, *unknown* **$whereCondition**, *unknown* **$placeholders**)
+public **lastInsertId** (*unknown* $table, *unknown* $primaryKey, *unknown* $sequenceName)
 
-**getColumnList** (*unknown* **$columnList**)
+public **begin** ()
 
-**limit** (*unknown* **$sqlQuery**, *unknown* **$number**)
+public **rollback** ()
 
-**tableExists** (*unknown* **$tableName**, *unknown* **$schemaName**)
+public **commit** ()
 
-**viewExists** (*unknown* **$viewName**, *unknown* **$schemaName**)
+public **isUnderTransaction** ()
 
-**forUpdate** (*unknown* **$sqlQuery**)
+public **getInternalHandler** ()
 
-**sharedLock** (*unknown* **$sqlQuery**)
+public **setEventsManager** (*unknown* $eventsManager)
 
-**createTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$definition**)
+public **getEventsManager** ()
 
-**dropTable** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$ifExists**)
+public **fetchOne** (*unknown* $sqlQuery, *unknown* $fetchMode)
 
-**addColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
+public **fetchAll** (*unknown* $sqlQuery, *unknown* $fetchMode)
 
-**modifyColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$column**)
+public **insert** (*unknown* $table, *unknown* $values, *unknown* $fields)
 
-**dropColumn** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$columnName**)
+public **update** (*unknown* $table, *unknown* $fields, *unknown* $values, *unknown* $whereCondition)
 
-**addIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
+public **delete** (*unknown* $table, *unknown* $whereCondition, *unknown* $placeholders)
 
-**dropIndex** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$indexName**)
+public **getColumnList** (*unknown* $columnList)
 
-**addPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$index**)
+public **limit** (*unknown* $sqlQuery, *unknown* $number)
 
-**dropPrimaryKey** (*unknown* **$tableName**, *unknown* **$schemaName**)
+public **tableExists** (*unknown* $tableName, *unknown* $schemaName)
 
-**addForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$reference**)
+public **viewExists** (*unknown* $viewName, *unknown* $schemaName)
 
-**dropForeignKey** (*unknown* **$tableName**, *unknown* **$schemaName**, *unknown* **$referenceName**)
+public **forUpdate** (*unknown* $sqlQuery)
 
-**getColumnDefinition** (*unknown* **$column**)
+public **sharedLock** (*unknown* $sqlQuery)
 
-**listTables** (*unknown* **$schemaName**)
+public **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
 
-**getDescriptor** ()
+public **dropTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $ifExists)
 
-**getConnectionId** ()
+public **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
-**getSQLStatement** ()
+public **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
-**getType** ()
+public **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
 
-**getDialectType** ()
+public **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
-**getDialect** ()
+public **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
+
+public **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
+
+public **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
+
+public **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
+
+public **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
+
+public **getColumnDefinition** (*unknown* $column)
+
+public **listTables** (*unknown* $schemaName)
+
+public **getDescriptor** ()
+
+public **getConnectionId** ()
+
+public **getSQLStatement** ()
+
+public **getType** ()
+
+public **getDialectType** ()
+
+public **getDialect** ()
 

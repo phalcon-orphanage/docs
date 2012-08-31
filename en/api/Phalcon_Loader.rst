@@ -1,13 +1,12 @@
 Class **Phalcon\\Loader**
 =========================
 
-Phalcon\\Loader   This component helps to load your project classes automatically based on some conventions  
+This component helps to load your project classes automatically based on some conventions  
 
 .. code-block:: php
 
     <?php
 
-    
      //Creates the autoloader
      $loader = new Phalcon\Loader();
     
@@ -23,38 +22,71 @@ Phalcon\\Loader   This component helps to load your project classes automaticall
     
      //Requiring class will automatically include file vendor/example/adapter/Some.php
      $adapter = Example\Adapter\Some();
-    
-
-
 
 
 
 Methods
 ---------
 
-**__construct** ()
+public **__construct** ()
 
-**setEventsManager** (*unknown* **$eventsManager**)
+public **setEventsManager** (*unknown* $eventsManager)
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` **getEventsManager** ()
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
 
-**setExtensions** (*array* **$extensions**)
+Returns the internal event manager
 
-**registerNamespaces** (*array* **$namespaces**)
 
-**registerPrefixes** (*unknown* **$prefixes**)
 
-**registerDirs** (*array* **$directories**)
+public **setExtensions** (*array* $extensions)
 
-**registerClasses** (*unknown* **$classes**)
+Sets an array of extensions that the Loader must check together with the path
 
-**register** ()
 
-**unregister** ()
 
-*boolean* **autoLoad** (*string* **$className**)
+public **registerNamespaces** (*array* $namespaces)
 
-**getFoundPath** ()
+Register namespaces and their related directories
 
-**getCheckedPath** ()
+
+
+public **registerPrefixes** (*unknown* $prefixes)
+
+Register directories on which "not found" classes could be found
+
+
+
+public **registerDirs** (*array* $directories)
+
+Register directories on which "not found" classes could be found
+
+
+
+public **registerClasses** (*unknown* $classes)
+
+Register classes and their locations
+
+
+
+public **register** ()
+
+Register the autoload method
+
+
+
+public **unregister** ()
+
+Unregister the autoload method
+
+
+
+*boolean* public **autoLoad** (*string* $className)
+
+Makes the work of autoload registered classes
+
+
+
+public **getFoundPath** ()
+
+public **getCheckedPath** ()
 

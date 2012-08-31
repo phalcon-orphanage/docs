@@ -1,13 +1,12 @@
 Class **Phalcon\\Mvc\\Model\\Transaction**
 ==========================================
 
-Phalcon\\Mvc\\Model\\Transaction   Transactions are protective blocks where SQL statements are only permanent if they can  all succeed as one atomic action. Phalcon\\Transaction is intended to be used with Phalcon_Model_Base.  Phalcon Transactions should be created using Phalcon\\Transaction\\Manager.  
+Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\\Transaction\\Manager.  
 
 .. code-block:: php
 
     <?php
 
-    
     try {
     
       $transaction = Phalcon\Mvc\Model\Transaction\Manager::get();
@@ -33,37 +32,81 @@ Phalcon\\Mvc\\Model\\Transaction   Transactions are protective blocks where SQL 
     catch(Phalcon\Mvc\Model\Transaction\Failed $e){
       echo 'Failed, reason: ', $e->getMessage();
     }
-    
-    
-
-
 
 
 
 Methods
 ---------
 
-**__construct** (*Phalcon\DI* **$dependencyInjector**, *boolean* **$autoBegin**)
+public **__construct** (*Phalcon\DI* $dependencyInjector, *boolean* $autoBegin)
 
-**setTransactionManager** (*Phalcon\Mvc\Model\Transaction\Manager* **$manager**)
+Phalcon\\Mvc\\Model\\Transaction constructor
 
-*boolean* **begin** ()
 
-*boolean* **commit** ()
 
-*boolean* **rollback** (*string* **$rollbackMessage**, *Phalcon\Mvc\Model* **$rollbackRecord**)
+public **setTransactionManager** (*Phalcon\Mvc\Model\Transaction\Manager* $manager)
 
-*string* **getConnection** ()
+Sets transaction manager related to the transaction
 
-**setIsNewTransaction** (*boolean* **$isNew**)
 
-**setRollbackOnAbort** (*boolean* **$rollbackOnAbort**)
 
-*boolean* **isManaged** ()
+*boolean* public **begin** ()
 
-*array* **getMessages** ()
+Starts the transaction
 
-*boolean* **isValid** ()
 
-**setRollbackedRecord** (*Phalcon\Mvc\Model* **$record**)
+
+*boolean* public **commit** ()
+
+Commits the transaction
+
+
+
+*boolean* public **rollback** (*string* $rollbackMessage, *Phalcon\Mvc\Model* $rollbackRecord)
+
+Rollbacks the transaction
+
+
+
+*string* public **getConnection** ()
+
+Returns connection related to transaction
+
+
+
+public **setIsNewTransaction** (*boolean* $isNew)
+
+Sets if is a reused transaction or new once
+
+
+
+public **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
+
+Sets flag to rollback on abort the HTTP connection
+
+
+
+*boolean* public **isManaged** ()
+
+Checks whether transaction is managed by a transaction manager
+
+
+
+*array* public **getMessages** ()
+
+Returns validations messages from last save try
+
+
+
+*boolean* public **isValid** ()
+
+Checks whether internal connection is under an active transaction
+
+
+
+public **setRollbackedRecord** (*Phalcon\Mvc\Model* $record)
+
+Sets object which generates rollback action
+
+
 

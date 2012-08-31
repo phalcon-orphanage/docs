@@ -17,6 +17,7 @@ API Indice
    Phalcon_Cache_Frontend_Output
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
+   Phalcon_DI
    Phalcon_Db
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
@@ -31,6 +32,7 @@ API Indice
    Phalcon_Db_RawValue
    Phalcon_Db_Reference
    Phalcon_Db_Result_Pdo
+   Phalcon_Events_Manager
    Phalcon_Filter
    Phalcon_Flash
    Phalcon_Flash_Session

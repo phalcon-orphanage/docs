@@ -1,20 +1,29 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-Phalcon\\Session\\Bag   This component helps to separate session data into namespaces. Working by this way  you can easily create groups of session variables into the application
+This component helps to separate session data into namespaces. Working by this way you can easily create groups of session variables into the application
+
 
 Methods
 ---------
 
-**__construct** ()
+public **__construct** ()
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **setDI** (*unknown* $dependencyInjector)
 
-**getDI** ()
+public **getDI** ()
 
-**initialize** ()
+public **initialize** ()
 
-**__set** (*string* **$property**, *string* **$value**)
+public **__set** (*string* $property, *string* $value)
 
-*string* **__get** (*string* **$property**)
+Setter of values
+
+
+
+*string* public **__get** (*string* $property)
+
+Getter of values
+
+
 

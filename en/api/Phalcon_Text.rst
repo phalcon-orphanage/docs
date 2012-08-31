@@ -1,12 +1,35 @@
 Class **Phalcon\\Text**
 =======================
 
-Phalcon\\Text   Provides utilities when working with strings
+Provides utilities when working with strings
+
 
 Methods
 ---------
 
-*string* **camelize** (*string* **$str**)
+*string* public static **camelize** (*string* $str)
 
-*string* **uncamelize** (*string* **$str**)
+Converts strings to camelize style 
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+
+
+
+
+*string* public static **uncamelize** (*string* $str)
+
+Uncamelize strings which are camelized 
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+
+
+
 

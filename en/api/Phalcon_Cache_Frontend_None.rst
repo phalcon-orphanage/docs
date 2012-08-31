@@ -1,24 +1,57 @@
 Class **Phalcon\\Cache\\Frontend\\None**
 ========================================
 
-Phalcon\\Cache\\Frontend\\None   Discards any kind of frontend data input. This frontend does not have expiration time or any other options
+Discards any kind of frontend data input. This frontend does not have expiration time or any other options
+
 
 Methods
 ---------
 
-**__construct** (*unknown* **$frontendOptions**)
+public **__construct** (*unknown* $frontendOptions)
 
-**getLifetime** ()
+Phalcon\\Cache\\Frontend\\None constructor
 
-**isBuffering** ()
 
-**start** ()
 
-*string* **getContent** ()
+public **getLifetime** ()
 
-**stop** ()
+Returns cache lifetime, always one second expiring content
 
-**beforeStore** (*mixed* **$data**)
 
-**afterRetrieve** (*mixed* **$data**)
+
+public **isBuffering** ()
+
+Check whether if frontend is buffering output, always false
+
+
+
+public **start** ()
+
+Starts output frontend
+
+
+
+*string* public **getContent** ()
+
+Returns output cached content
+
+
+
+public **stop** ()
+
+Stops output frontend
+
+
+
+public **beforeStore** (*mixed* $data)
+
+Prepare data to be stored
+
+
+
+public **afterRetrieve** (*mixed* $data)
+
+Prepares data to be retrieved to user
+
+
 

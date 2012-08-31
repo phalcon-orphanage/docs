@@ -3,13 +3,12 @@ Class **Phalcon\\Cache\\Backend\\File**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Phalcon\\Cache\\Backend\\File   Allows to cache output fragments using a file backend  
+Allows to cache output fragments using a file backend  
 
 .. code-block:: php
 
     <?php
 
-    
     //Cache the file for 2 days
     $frontendOptions = array(
     	'lifetime' => 172800
@@ -29,32 +28,49 @@ Phalcon\\Cache\\Backend\\File   Allows to cache output fragments using a file ba
     } else {
     	echo $content;
     }
-    
-
-
 
 
 
 Methods
 ---------
 
-**__construct** (*mixed* **$frontendObject**, *array* **$backendOptions**)
+public **__construct** (*mixed* $frontendObject, *array* $backendOptions)
 
-*mixed* **get** (*int|string* **$keyName**, *long* **$lifetime**)
+Phalcon\\Backend\\Adapter\\File constructor
 
-**save** (*int|string* **$keyName**, *string* **$content**, *long* **$lifetime**, *boolean* **$stopBuffer**)
 
-*boolean* **delete** (*int|string* **$keyName**)
 
-*array* **queryKeys** (*string* **$prefix**)
+*mixed* public **get** (*int|string* $keyName, *long* $lifetime)
 
-**start** (*unknown* **$keyName**)
+Returns a cached content
 
-**getFrontend** ()
 
-**isFresh** ()
 
-**isStarted** ()
+public **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-**getLastKey** ()
+Stores cached content into the file backend
+
+
+
+*boolean* public **delete** (*int|string* $keyName)
+
+Deletes a value from the cache by its key
+
+
+
+*array* public **queryKeys** (*string* $prefix)
+
+Query the existing cached keys
+
+
+
+public **start** (*unknown* $keyName)
+
+public **getFrontend** ()
+
+public **isFresh** ()
+
+public **isStarted** ()
+
+public **getLastKey** ()
 

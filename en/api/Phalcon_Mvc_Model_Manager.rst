@@ -1,13 +1,12 @@
 Class **Phalcon\\Mvc\\Model\\Manager**
 ======================================
 
-Phalcon\\Mvc\\Model\\Manager   This components controls the initialization of models, keeping record of relations  between the different models of the application.   A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.   
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
 
 .. code-block:: php
 
     <?php
 
-    
      $dependencyInjector = new Phalcon\DI();
     
      $dependencyInjector->set('modelsManager', function(){
@@ -15,64 +14,129 @@ Phalcon\\Mvc\\Model\\Manager   This components controls the initialization of mo
      });
     
      $robot = new Robots($dependencyInjector);
-     
-
-
 
 
 
 Methods
 ---------
 
-**__construct** ()
+public **__construct** ()
 
-**setDI** (*unknown* **$dependencyInjector**)
+public **setDI** (*unknown* $dependencyInjector)
 
-**getDI** ()
+public **getDI** ()
 
-**setEventsManager** (*Phalcon\Events\Manager* **$eventsManager**)
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` **getEventsManager** ()
+Sets the event manager
 
-**initialize** (*Phalcon\Mvc\Model* **$model**)
 
-**isInitialized** (*unknown* **$modelName**)
 
-**getLastInitialized** ()
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
 
-**load** (*unknown* **$modelName**)
+Returns the internal event manager
 
-**addHasOne** (*Phalcon\Mvc\Model* **$model**, *mixed* **$fields**, *string* **$referenceModel**, *mixed* **$referencedFields**, *array* **$options**)
 
-**addBelongsTo** (*Phalcon\Mvc\Model* **$model**, *mixed* **$fields**, *string* **$referenceModel**, *mixed* **$referencedFields**, *array* **$options**)
 
-**addHasMany** (*Phalcon\Mvc\Model* **$model**, *mixed* **$fields**, *string* **$referenceModel**, *mixed* **$referencedFields**, *array* **$options**)
+public **initialize** (*Phalcon\Mvc\Model* $model)
 
-*boolean* **existsBelongsTo** (*string* **$modelName**, *string* **$modelRelation**)
+Initializes a model in the model manager
 
-*boolean* **existsHasMany** (*string* **$modelName**, *string* **$modelRelation**)
 
-*boolean* **existsHasOne** (*string* **$modelName**, *string* **$modelRelation**)
 
-**_getRelationRecords** ()
+public **isInitialized** (*unknown* $modelName)
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` **getBelongsToRecords** (*string* **$method**, *string* **$modelName**, *string* **$modelRelation**, *Phalcon\Mvc\Model* **$record**)
+public **getLastInitialized** ()
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` **getHasManyRecords** (*string* **$method**, *string* **$modelName**, *string* **$modelRelation**, *Phalcon\Mvc\Model* **$record**)
+public **load** (*unknown* $modelName)
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` **getHasOneRecords** (*string* **$method**, *string* **$modelName**, *string* **$modelRelation**, *Phalcon\Mvc\Model* **$record**)
+public **addHasOne** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
-*array* **getBelongsTo** (*Phalcon\Mvc\Model* **$model**)
+Setup a 1-1 relation between two models
 
-*array* **getHasMany** (*Phalcon\Mvc\Model* **$model**)
 
-*array* **getHasOne** (*Phalcon\Mvc\Model* **$model**)
 
-*array* **getHasOneAndHasMany** (*Phalcon\Mvc\Model* **$model**)
+public **addBelongsTo** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
-**getRelations** (*unknown* **$a**, *unknown* **$b**)
+Setup a relation reverse 1-1  between two models
 
-**createQuery** (*unknown* **$phql**)
 
-**executeQuery** (*unknown* **$phql**, *unknown* **$placeholders**)
+
+public **addHasMany** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+
+Setup a relation 1-n between two models
+
+
+
+*boolean* public **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
+
+Checks whether a model has a belongsTo relation with another model
+
+
+
+*boolean* public **existsHasMany** (*string* $modelName, *string* $modelRelation)
+
+Checks whether a model has a hasMany relation with another model
+
+
+
+*boolean* public **existsHasOne** (*string* $modelName, *string* $modelRelation)
+
+Checks whether a model has a hasOne relation with another model
+
+
+
+protected **_getRelationRecords** ()
+
+Helper method to query records based on a relation definition
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
+
+Gets belongsTo related records from a model
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
+
+Gets hasMany related records from a model
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
+
+Gets belongsTo related records from a model
+
+
+
+*array* public **getBelongsTo** (*Phalcon\Mvc\Model* $model)
+
+Gets belongsTo relations defined on a model
+
+
+
+*array* public **getHasMany** (*Phalcon\Mvc\Model* $model)
+
+Gets hasMany relations defined on a model
+
+
+
+*array* public **getHasOne** (*Phalcon\Mvc\Model* $model)
+
+Gets hasOne relations defined on a model
+
+
+
+*array* public **getHasOneAndHasMany** (*Phalcon\Mvc\Model* $model)
+
+Gets hasOne relations defined on a model
+
+
+
+public **getRelations** (*unknown* $a, *unknown* $b)
+
+public **createQuery** (*unknown* $phql)
+
+public **executeQuery** (*unknown* $phql, *unknown* $placeholders)
 

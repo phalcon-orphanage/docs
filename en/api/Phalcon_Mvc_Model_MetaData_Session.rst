@@ -3,19 +3,15 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-Phalcon\\Mvc\\Model\\MetaData\\Session   Stores model meta-data in session. Data will erase when the session finishes.  Meta-data are permanent while the session is active.   You can query the meta-data by printing $_SESSION['$PMM$']  
+Stores model meta-data in session. Data will erase when the session finishes. Meta-data are permanent while the session is active.  You can query the meta-data by printing $_SESSION['$PMM$']  
 
 .. code-block:: php
 
     <?php
 
-    
      $metaData = new Phalcon\Mvc\Model\Metadata\Session(array(
         'suffix' => 'my-app-id'
      ));
-    
-
-
 
 
 
@@ -43,31 +39,43 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-**__construct** (*array* **$options**)
+public **__construct** (*array* $options)
 
-*array* **read** ()
+Phalcon\\Mvc\\Model\\MetaData\\Session constructor
 
-**write** (*array* **$data**)
 
-**_initializeMetaData** ()
 
-**getAttributes** (*unknown* **$model**)
+*array* public **read** ()
 
-**getPrimaryKeyAttributes** (*unknown* **$model**)
+Reads meta-data from $_SESSION
 
-**getNonPrimaryKeyAttributes** (*unknown* **$model**)
 
-**getNotNullAttributes** (*unknown* **$model**)
 
-**getDataTypes** (*unknown* **$model**)
+public **write** (*array* $data)
 
-**getDataTypesNumeric** (*unknown* **$model**)
+Writes the meta-data to $_SESSION
 
-**getIdentityField** (*unknown* **$model**)
 
-**storeMetaData** ()
 
-**isEmpty** ()
+protected **_initializeMetaData** ()
 
-**reset** ()
+public **getAttributes** (*unknown* $model)
+
+public **getPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNonPrimaryKeyAttributes** (*unknown* $model)
+
+public **getNotNullAttributes** (*unknown* $model)
+
+public **getDataTypes** (*unknown* $model)
+
+public **getDataTypesNumeric** (*unknown* $model)
+
+public **getIdentityField** (*unknown* $model)
+
+public **storeMetaData** ()
+
+public **isEmpty** ()
+
+public **reset** ()
 

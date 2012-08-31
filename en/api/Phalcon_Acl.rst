@@ -1,14 +1,12 @@
 Class **Phalcon\\Acl**
 ======================
 
-Phalcon\\Acl   This component allows to manage ACL lists. An access control list (ACL) is a list  of permissions attached to an object. An ACL specifies which users or system processes  are granted access to objects, as well as what operations are allowed on given objects.  
+This component allows to manage ACL lists. An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.  
 
 .. code-block:: php
 
     <?php
 
-    
-    
     $acl = new Phalcon\Acl\Adapter\Memory();
     
     //Default action is deny access
@@ -40,10 +38,6 @@ Phalcon\\Acl   This component allows to manage ACL lists. An access control list
     $acl->isAllowed('Guests', 'Customers', 'edit') //Returns 0
     $acl->isAllowed('Guests', 'Customers', 'search'); //Returns 1
     $acl->isAllowed('Guests', 'Customers', 'create'); //Returns 1
-    
-    
-
-
 
 
 
@@ -57,7 +51,15 @@ integer **DENY**
 Methods
 ---------
 
-**setEventsManager** (*unknown* **$eventsManager**)
+public **setEventsManager** (*unknown* $eventsManager)
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` **getEventsManager** ()
+Sets the events manager
+
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+
+Returns the internal event manager
+
+
 

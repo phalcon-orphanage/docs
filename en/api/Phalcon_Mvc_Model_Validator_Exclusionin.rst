@@ -3,13 +3,12 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Exclusionin**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-ExclusionInValidator   Check if a value is not included into a list of values  
+ExclusionInValidator  Check if a value is not included into a list of values  
 
 .. code-block:: php
 
     <?php
 
-    
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionInValidator;
     
     class Subscriptors extends Phalcon\Mvc\Model
@@ -27,26 +26,27 @@ ExclusionInValidator   Check if a value is not included into a list of values
       }
     
     }
-    
-
-
 
 
 
 Methods
 ---------
 
-*boolean* **validate** (*unknown* **$record**)
+*boolean* public **validate** (*unknown* $record)
 
-**__construct** (*unknown* **$options**)
+Executes validator
 
-**appendMessage** ()
 
-**getMessages** ()
 
-**getOptions** ()
+public **__construct** (*unknown* $options)
 
-**getOption** ()
+protected **appendMessage** ()
 
-**isSetOption** ()
+public **getMessages** ()
+
+protected **getOptions** ()
+
+protected **getOption** ()
+
+protected **isSetOption** ()
 
