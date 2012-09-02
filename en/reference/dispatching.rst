@@ -4,21 +4,21 @@ All the hard work behind orchestrating the operation of MVC in Phalcon is normal
 
 Understanding the default behavior
 ----------------------------------
-If you've been following the tutorials_ or have generated the code using Tools, you may recognize the boostrap application like this: 
+If you've been following the tutorials_ or have generated the code using Tools, you may recognize the boostrap application like this:
 
 .. code-block:: php
 
     <?php
-    
+
     try {
-    
+
         $front = \Phalcon\Controller\Front::getInstance();
-    
+
         $config = new \Phalcon\Config\Adapter\Ini("../app/config/config.ini");
         $front->setConfig($config);
-    
+
         echo $front->dispatchLoop()->getContent();
-    
+
     } catch (\Phalcon\Exception $e) {
         echo "PhalconException: ", $e->getMessage();
     }
@@ -33,8 +33,8 @@ The core of all the work of the controller occurs when dispatchLoop() is invoked
 
 Internally and based on the config set, :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` performs the following steps for a request:
 
-- Checks if a request instance has been previously set, otherwise, instantiates a :doc:`Phalcon\Request <../api/Phalcon_Request>` object
-- Checks if a response instance has been previously set, otherwise, instantiates a :doc:`Phalcon\Response <../api/Phalcon_Response>` object
+- Checks if a request instance has been previously set, otherwise, instantiates a :doc:`Phalcon\\Http\\Request <../api/Phalcon_Request>` object
+- Checks if a response instance has been previously set, otherwise, instantiates a :doc:`Phalcon\\Response <../api/Phalcon_Response>` object
 - Checks if a dispatcher instance has been set, otherwise, instantiates a :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>` object. This object receives the controllersDir option set by config.
 - Checks if a router instance has been set, otherwise, instantiates a :doc:`Phalcon\Router\Rewrite <../api/Phalcon_Router_Rewrite>` object. By default the router will handle the URI placed at $_GET['_url']
 - Starts the view component. This enables output buffering by calling internally the function ob_start
@@ -49,33 +49,33 @@ You can of course not use :doc:`Phalcon\Controller\Front <../api/Phalcon_Control
 .. code-block:: php
 
     <?php
-    
+
     // Read the config
     $config = new \Phalcon\Config\Adapter\Ini("app/config/config.ini");
-    
+
     // Instantiate a router
     $router = new \Phalcon\Router\Regex();
-    
+
     // Handle URI data
     $router->handle();
-    
+
     // Instantiate both request and response objects
     $request  = \Phalcon\Request::getInstance();
     $response = \Phalcon\Response::getInstance();
-    
+
     // Instantiate View component setting views directory
     $view = new \Phalcon\View();
     $view->setBasePath($basePath);
     $view->setViewsDir($config->phalcon->viewsDir);
-    
+
     // Instantiate Model Manager component setting models directory
     $modelManager = new \Phalcon\Model\Manager();
     $modelManager->setBasePath($basePath);
     $modelManager->setModelsDir($config->phalcon->modelsDir);
-    
+
     // Starts the view, also enabling output buffering
     $view->start();
-    
+
     // Instantiate a Dispatcher passing the proccesed parameters to it
     $dispatcher = new \Phalcon\Dispatcher();
     $dispatcher->setControllersDir($config->phalcon->controllersDir);
@@ -83,21 +83,21 @@ You can of course not use :doc:`Phalcon\Controller\Front <../api/Phalcon_Control
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
-    
+
     // Run the dispatch loop
     $dispatcher->dispatch($request, $response, $view, $modelManager);
-    
+
     // Takes the last controller/action and render its related views
     $view->render(
-        $dispatcher->getControllerName(), 
-        $dispatcher->getActionName(), 
+        $dispatcher->getControllerName(),
+        $dispatcher->getActionName(),
         $dispatcher->getParams()
     );
     $view->finish();
-    
+
     // Pass the buffered content to the response
     $response->setContent($view->getContent());
-    
+
     // Print out the response
     echo $response->getContent();
 
@@ -110,10 +110,10 @@ The Dispatch Loop is another important process that has much to do with the MVC 
 .. code-block:: php
 
     <?php
-    
+
     //Dispatch loop
     while (!$finished) {
-    
+
         $finished = true;
 
         $controllerClass = \Phalcon\Text::camelize($controllerName) . "Controller";
@@ -139,7 +139,7 @@ The Dispatch Loop is another important process that has much to do with the MVC 
 
         }
 
-        // Instantiate the controller passing the 
+        // Instantiate the controller passing the
         // request/response/view/model-manager objects
         $controller = new $controllerClass(null, $request, $response, $view, $model);
 
@@ -148,7 +148,7 @@ The Dispatch Loop is another important process that has much to do with the MVC 
 
         // Finished should be reloaded to check if the flow was forwarded to another controller
         // $finished = false;
-    
+
     }
 
 The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.

@@ -1,22 +1,22 @@
 Routing
 =======
-A router parses a URI to determine which controller, and action of that controller should receive the request. 
+A router parses a URI to determine which controller, and action of that controller should receive the request.
 
 Default Behavior
 ----------------
 Phalcon uses by default the :doc:`Phalcon\Router\Rewrite <../api/Phalcon_Router_Rewrite>` router. When a :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` is used as bootstrap, a router of this kind is automatically instantiated inside it. :doc:`Phalcon\Router\Rewrite <../api/Phalcon_Router_Rewrite>` is a very simple router that always expects a URI that matchex the following pattern: /:controller/:action/:params
 
-For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows: 
+For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows:
 
 +------------+---------------+
-| Controller | documentation | 
+| Controller | documentation |
 +------------+---------------+
-| Action     | show          | 
+| Action     | show          |
 +------------+---------------+
-| Parameter  | about.html    | 
+| Parameter  | about.html    |
 +------------+---------------+
 
-The routing URI is always taken from the $_GET['_url'] variable that is created by the rewrite engine module. A couple of rewrite rules that work very well with Phalcon are: 
+The routing URI is always taken from the $_GET['_url'] variable that is created by the rewrite engine module. A couple of rewrite rules that work very well with Phalcon are:
 
 .. code-block:: apacheconf
 
@@ -30,16 +30,16 @@ It is also possible to replace the behavior by setting this value directly to :d
 .. code-block:: php
 
     <?php
-    
+
     // Creating a router
     $router = new \Phalcon\Router\Rewrite();
-    
+
     // Taking URI from $_GET["_url"]
     $router->handle();
-    
+
     // or Setting the URI value directly
     $router->handle("/doc/a/v");
-    
+
     // Getting the processed controller
     echo $router->getControllerName();
 
@@ -61,12 +61,12 @@ This router allows you to add many routes as you need. A route is defined as fol
 .. code-block:: php
 
     <?php
-    
+
     // Create the router
     $router = new \Phalcon\Router\Regex();
-    
+
     $router->add(
-        "/admin/:controller/a/:action/:params", 
+        "/admin/:controller/a/:action/:params",
         array(
             "controller" => 1,
             "action"     => 2,
@@ -74,20 +74,20 @@ This router allows you to add many routes as you need. A route is defined as fol
         )
     );
 
-The method add() receives a pattern that optionally could have predefined placeholders and regular expression modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression delimiters. All routes patterns are case-insensitive. 
+The method add() receives a pattern that optionally could have predefined placeholders and regular expression modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression delimiters. All routes patterns are case-insensitive.
 
-The second parameter defines how the matches parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the first subpattern matched (:controller) is the controller part of the route, the second the action and so on. 
+The second parameter defines how the matches parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
 
-These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported: 
+These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
 +--------------+--------------------+------------------------------------------------------------------+
-| Placeholder  | Regular Expression | Usage                                                            | 
+| Placeholder  | Regular Expression | Usage                                                            |
 +==============+====================+==================================================================+
-| /:controller | /([a-zA-Z0-9\_]+)  | Match a valid controller name with alpha-numeric characters only | 
+| /:controller | /([a-zA-Z0-9\_]+)  | Match a valid controller name with alpha-numeric characters only |
 +--------------+--------------------+------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)  | Match a valid action name with alpha-numeric characters only     | 
+| /:action     | /([a-zA-Z0-9\_]+)  | Match a valid action name with alpha-numeric characters only     |
 +--------------+--------------------+------------------------------------------------------------------+
-| /:params     | (/.*)*             | Match a list of optional words separated by slashes              | 
+| /:params     | (/.*)*             | Match a list of optional words separated by slashes              |
 +--------------+--------------------+------------------------------------------------------------------+
 
 Since you can add many routes as you need using add(), the order in which you add the routes indicates their relevance. Internally, all defined routes are traversed until :doc:`Phalcon\Router\Regex <../api/Phalcon_Router_Regex>` finds the one that matches the given URI and processes it, while ignoring the rest.
@@ -101,7 +101,7 @@ In addition to the standard route parts (controller/action/params), :doc:`Phalco
     <?php
 
     $router->add(
-        "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params", 
+        "/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params",
         array(
         	"controller" => "posts",
         	"action"     => "show",
@@ -112,34 +112,34 @@ In addition to the standard route parts (controller/action/params), :doc:`Phalco
         )
     );
 
-In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched by the request. Inside the controller, those named parameters can be accessed as follows: 
+In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched by the request. Inside the controller, those named parameters can be accessed as follows:
 
 .. code-block:: php
 
     <?php
-    
+
     class PostsController extends \Phalcon\Controller
     {
-    
-        function indexAction()
+
+        public function indexAction()
         {
 
         }
 
-        function showAction()
+        public showAction()
         {
 
             // Return "year" parameter
-            $year = $this->_getParam("year");
+            $year = $this->dispatcher->getParam("year");
 
             // Return "month" parameter
-            $month = $this->_getParam("month");
+            $month = $this->dispatcher->getParam("month");
 
             // Return "day" parameter
-            $day = $this->_getParam("day");
+            $day = $this->dispatcher->getParam("day");
 
         }
-    
+
     }
 
 Short Syntax
@@ -152,10 +152,10 @@ If you don't like using an array to define the route paths, an alternative synta
 
     // Short form
     $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
-    
+
     // Array form:
     $router->add(
-        "/posts/([0-9]+)/([a-z\-]+)", 
+        "/posts/([0-9]+)/([a-z\-]+)",
         array(
            "controller" => "posts",
            "action"     => "show",
@@ -174,37 +174,37 @@ The following are examples of custom routes:
 
     // matches "/system/admin/a/edit/7001"
     $router->add(
-        "/system/:controller/a/:action/:params", 
+        "/system/:controller/a/:action/:params",
         array(
             "controller" => 1,
             "action"     => 2,
             "params"     => 3,
         )
     );
-    
+
     // matches "/es/news"
     $router->add(
-        "/([a-z]{2})/:controller", 
+        "/([a-z]{2})/:controller",
         array(
             "controller" => 2,
             "action"     => "index",
             "language"   => 1,
         )
     );
-    
+
     // matches "/admin/posts/edit/100"
     $router->add(
-        "/admin/:controller/:action/:int", 
+        "/admin/:controller/:action/:int",
         array(
             "controller" => 1,
             "action"     => 2,
             "id"         => 3,
         )
     );
-    
+
     // matches "/posts/2010/02/some-cool-content"
     $router->add(
-        "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)", 
+        "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
             "controller" => "posts",
             "action"     => "show",
@@ -213,10 +213,10 @@ The following are examples of custom routes:
             "title"      => 4,
         )
     );
-    
+
     // matches "/manual/en/translate.adapter.html"
     $router->add(
-        "/manual/([a-z]{2})/([a-z\.]+)\.html", 
+        "/manual/([a-z]{2})/([a-z\.]+)\.html",
         array(
             "controller" => "manual",
             "action"     => "show",
@@ -224,10 +224,10 @@ The following are examples of custom routes:
             "file"       => 2,
         )
     );
-    
+
     // matches /feed/fr/le-robots-hot-news.atom
     $router->add(
-        "/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}", 
+        "/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}",
         "Feed::get"
     );
 
@@ -239,43 +239,43 @@ If you are using the :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_F
 .. code-block:: php
 
     <?php
-    
+
     try {
-    
+
         $front = \Phalcon\Controller\Front::getInstance();
-    
+
         $router = new \Phalcon\Router\Regex();
-    
+
         $router->add(
-            "/login", 
+            "/login",
             array(
                 "controller" => "users",
                 "action"     => "login"
             )
         );
-    
+
         $router->add(
-            "/profile", 
+            "/profile",
             array(
                 "controller" => "users",
                 "action"     => "profile"
             )
         );
-    
+
         $router->handle();
-    
+
         $front->setRouter($router);
-    
+
         $config = new \Phalcon\Config\Adapter\Ini("/../app/config/config.ini");
         $front->setConfig($config);
-    
+
         echo $front->dispatchLoop()->getContent();
-    
+
     } catch(\Phalcon\Exception $e) {
         echo "PhalconException: ", $e->getMessage();
     }
 
-You could also define your routes in a separate file and include it in the bootstrap for better organization. 
+You could also define your routes in a separate file and include it in the bootstrap for better organization.
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
 

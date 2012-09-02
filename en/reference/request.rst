@@ -1,8 +1,8 @@
 Request Environment
 ===================
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables etc. A web based application needs to parse that information so as to provide the correct response back to the requester. :doc:`Phalcon_HTTP_Request <../api/Phalcon_Http_Request>` encapsulates the information of the request, allowing you to access it in an object oriented way.
+Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables etc. A web based application needs to parse that information so as to provide the correct response back to the requester. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` encapsulates the information of the request, allowing you to access it in an object oriented way.
 
-As there is only one request environment for each request, :doc:`Phalcon_Http_Request <../api/Phalcon_Http_Request>` implements the `singleton pattern`_ with a lazy initialization. This means that you only have one instance of that class per request.
+As there is only one request environment for each request, :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` implements the `singleton pattern`_ with a lazy initialization. This means that you only have one instance of that class per request.
 
 .. code-block:: php
 
@@ -23,18 +23,18 @@ Getting Values
 -----------------
 PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or `Cross Site Scripting (XSS)`_ attacks.
 
-:doc:`Phalcon_Request <../api/Phalcon_Request>` allows you to access the values stored in the $_GET and $_POST arrays and sanitize or filter them with :doc:`Phalcon_Filter <../api/Phalcon_Filter>`. The following examples offer the same behavior:
+:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_GET and $_POST arrays and sanitize or filter them with :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The following examples offer the same behavior:
 
 .. code-block:: php
 
     <?php
 
     // Manually applying the filter
-    $filter = new Phalcon_Filter();
+    $filter = new Phalcon\Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new Phalcon_Filter();
+    $filter = new Phalcon\Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
@@ -43,21 +43,21 @@ PHP automatically fills the superglobal arrays $_GET and $_POST depending on the
 
 Accessing the Request from Controllers
 --------------------------------------
-The most common place to access the request environment is in an action of a controller. To access the :doc:`Phalcon_Request <../api/Phalcon_Request>` object from a controller you will need to use the $this->request public property of the controller:
+The most common place to access the request environment is in an action of a controller. To access the :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use the $this->request public property of the controller:
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
 
-        function indexAction()
+        public function indexAction()
         {
 
         }
 
-        function saveAction()
+        public function saveAction()
         {
 
             // Check if request has made with POST
@@ -75,16 +75,16 @@ The most common place to access the request environment is in an action of a con
 
 Uploading Files
 ---------------
-Another common task is file uploading. :doc:`Phalcon_Request <../api/Phalcon_Request>` offers an object oriented way to achieve this task:
+Another common task is file uploading. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` offers an object oriented way to achieve this task:
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends Phalcon_Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
 
-        function uploadAction()
+        public function uploadAction()
         {
             // Check if the user has uploaded files
             if ($this->request->hasFiles() == true) {
@@ -97,7 +97,7 @@ Another common task is file uploading. :doc:`Phalcon_Request <../api/Phalcon_Req
 
     }
 
-Each object returned by Phalcon_Request::getUploadedFiles() is an instance of the :doc:`Phalcon_Request_File <../api/Phalcon_Request_File>` class. Using the $_FILES superglobal array offers the same behavior. :doc:`Phalcon_Request_File <../api/Phalcon_Request_File>` encapsulates only the information related to each file uploaded with the request.
+Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instance of the :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` class. Using the $_FILES superglobal array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates only the information related to each file uploaded with the request.
 
 Working with Headers
 --------------------

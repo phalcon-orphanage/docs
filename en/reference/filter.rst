@@ -7,7 +7,7 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 
 Full image (from xkcd)
 
-The :doc:`Phalcon\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
 Sanitizing data
 ---------------
@@ -32,10 +32,9 @@ Sanitizing is the process which removes specific characters from a value, that a
     $filter->sanitize("!100a019.01a", "float");
 
 
-
 Sanitizing from Controllers
 ---------------------------
-You can access a :doc:`Phalcon\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
 .. code-block:: php
 
