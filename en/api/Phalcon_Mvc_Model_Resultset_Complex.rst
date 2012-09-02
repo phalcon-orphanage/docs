@@ -5,12 +5,15 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
+Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
+
+
 Methods
 ---------
 
 public **__construct** (*array* $columnsTypes, *Phalcon\Db\Result* $result, *Phalcon\Cache\Backend* $cache)
 
-Phalcon\\Mvc\\Model\\Resultset constructor
+Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
 
 
 

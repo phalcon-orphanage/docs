@@ -7,9 +7,9 @@ Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, pri
 
     <?php
 
-     $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
-     $attributes = $metaData->getAttributes(new Robots());
-     print_r($attributes);
+    $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
+    $attributes = $metaData->getAttributes(new Robots());
+    print_r($attributes);
 
 
 

@@ -33,7 +33,7 @@ Moves cursor to next row in the resultset
 
 
 
-public **key** ()
+*int* public **key** ()
 
 Gets pointer number of active row in the resultset
 

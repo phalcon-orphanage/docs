@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Exclusionin**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-ExclusionInValidator  Check if a value is not included into a list of values  
+Phalcon\\Mvc\\Model\\Validator\\ExclusionIn  Check if a value is not included into a list of values  
 
 .. code-block:: php
 
@@ -14,16 +14,16 @@ ExclusionInValidator  Check if a value is not included into a list of values
     class Subscriptors extends Phalcon\Mvc\Model
     {
     
-      public function validation()
-      {
-          $this->validate(new ExclusionInValidator(array(
-              'field' => 'status',
-              'domain' => array('A', 'I')
-          )));
-          if ($this->validationHasFailed() == true) {
-              return false;
-          }
-      }
+    	public function validation()
+    	{
+    		$this->validate(new ExclusionInValidator(array(
+    			'field' => 'status',
+    			'domain' => array('A', 'I')
+    		)));
+    		if ($this->validationHasFailed() == true) {
+    			return false;
+    		}
+    	}
     
     }
 
@@ -34,7 +34,7 @@ Methods
 
 *boolean* public **validate** (*unknown* $record)
 
-Executes validator
+Executes the validator
 
 
 

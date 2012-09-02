@@ -27,19 +27,19 @@ Allows to cache output fragments, PHP data and raw data using a memcache backend
 Methods
 ---------
 
-*mixed* public **get** (*int|string* $keyName, *long* $lifetime)
+*mixed* public **get** (*string* $keyName, *long* $lifetime)
 
 Returns a cached content
 
 
 
-public **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+public **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
 Stores cached content into the file backend
 
 
 
-*boolean* public **delete** (*string|int* $keyName)
+*boolean* public **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 

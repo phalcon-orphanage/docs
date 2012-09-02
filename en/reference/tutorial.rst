@@ -117,7 +117,7 @@ The public/index.php file should look like:
 
 Autoloaders
 ^^^^^^^^^^^
-The first part that we find in the boostrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\Loader.
+The first part that we find in the boostrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
 
 With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
 
@@ -146,7 +146,7 @@ A service container is a bag where we globally store the services that our appli
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-Phalcon\\DI\\FactoryDefault is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they can not be charged with an autoloader.
 
@@ -163,7 +163,7 @@ Services can be registered in several ways, but for our tutorial we'll use lambd
         return $view;
     });
 
-In the last part of this file, we find Phalcon\\Mvc\\Application. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
 .. code-block:: php
 
@@ -224,7 +224,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The :doc:`\Phalcon\Mvc\View <../api/Phalcon_View>` static component is automatically created when the action execution has ended. Learn more about `views usage here <views.html>`_ .
+The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
 
 Designing a sign up form
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -244,7 +244,7 @@ The generated HTML code displays an "A" html tag linking to a new controller:
 
     <h1>Hello!</h1> <a href="/test/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be `found here <tags.html>`_
+To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
 
 .. figure:: ../_static/img/tutorial-2.png
 	:align: center
@@ -441,7 +441,7 @@ Receiving data from the form and storing them in the table is the next step.
 
 We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections.
 
-In our tutorial we apply the filter "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`\Phalcon\Filter <../api/Phalcon_Filter>` makes this task trivial, since it is injected from the dependency container into the getPost call.
+In our tutorial we apply the filter "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` makes this task trivial, since it is injected from the dependency container into the getPost call.
 
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not.
 

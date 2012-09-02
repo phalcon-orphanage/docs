@@ -89,7 +89,7 @@ protected **_allowOrDeny** ()
 
 public **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
-Allow access to a role on a resource You can use '*' as wildcard Ej: 
+Allow access to a role on a resource You can use '*' as wildcard Example: 
 
 .. code-block:: php
 
@@ -112,7 +112,7 @@ Allow access to a role on a resource You can use '*' as wildcard Ej:
 
 *boolean* public **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
-Deny access to a role on a resource You can use '*' as wildcard Ej: 
+Deny access to a role on a resource You can use '*' as wildcard Example: 
 
 .. code-block:: php
 
@@ -150,11 +150,23 @@ Check whether a role is allowed to access an action from a resource
 
 
 
-public **getActiveRole** ()
+*string* public **getActiveRole** ()
 
-public **getActiveResource** ()
+Returns the role which the list is checking if it's allowed to certain resource/access
 
-public **getActiveAccess** ()
+
+
+*string* public **getActiveResource** ()
+
+Returns the resource which the list is checking if some role can access it
+
+
+
+*string* public **getActiveAccess** ()
+
+Returns the access which the list is checking if some role can access it
+
+
 
 protected **_rebuildAccessList** ()
 

@@ -9,7 +9,9 @@ Dispatching is the process of taking the request object, extracting the module n
 
     $di = new Phalcon\DI();
     
-    $dispatcher = new Phalcon\Mvc\Dispatcher($di);
+    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    
+      $dispatcher->setDI($di);
     
     $dispatcher->setControllerName('posts');
     $dispatcher->setActionName('index');

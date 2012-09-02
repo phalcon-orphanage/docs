@@ -5,12 +5,15 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
+Simple resultsets only contains a complete object. This class builds every complete object as it's required
+
+
 Methods
 ---------
 
 public **__construct** (*Phalcon\Mvc\Model* $model, *Phalcon\Mvc\Model\Result* $result, *Phalcon\Cache\Backend* $cache)
 
-Phalcon\\Mvc\\Model\\Resultset constructor
+Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
 
 

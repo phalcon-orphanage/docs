@@ -18,6 +18,7 @@ API Indice
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_DI
+   Phalcon_DI_FactoryDefault
    Phalcon_Db
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
@@ -35,6 +36,7 @@ API Indice
    Phalcon_Events_Manager
    Phalcon_Filter
    Phalcon_Flash
+   Phalcon_Flash_Direct
    Phalcon_Flash_Session
    Phalcon_Http_Request
    Phalcon_Http_Request_File
@@ -49,6 +51,7 @@ API Indice
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Micro
    Phalcon_Mvc_Model
+   Phalcon_Mvc_Model_Criteria
    Phalcon_Mvc_Model_Manager
    Phalcon_Mvc_Model_Message
    Phalcon_Mvc_Model_MetaData
@@ -56,6 +59,8 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query
+   Phalcon_Mvc_Model_Query_Lang
+   Phalcon_Mvc_Model_Query_Status
    Phalcon_Mvc_Model_Resultset
    Phalcon_Mvc_Model_Resultset_Complex
    Phalcon_Mvc_Model_Resultset_Simple

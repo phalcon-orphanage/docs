@@ -1,16 +1,16 @@
 Logging
 =======
-:doc:`Phalcon\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
 Adapters
 --------
 This component makes use of backend adapters to store data. The use of adapters allows for a common interface for logging while switching backends if necessary. The backends supported are:
 
-+---------+---------------------------+-------------------------------------------------------------------------+
-| Adapter | Description               | API                                                                     |
-+=========+===========================+=========================================================================+
-| File    | Logs to a plain text file | :doc:`Phalcon\Logger\Adapter\File <../api/Phalcon_Logger_Adapter_File>` |
-+---------+---------------------------+-------------------------------------------------------------------------+
++---------+---------------------------+----------------------------------------------------------------------------+
+| Adapter | Description               | API                                                                        |
++=========+===========================+============================================================================+
+| File    | Logs to a plain text file | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>` |
++---------+---------------------------+----------------------------------------------------------------------------+
 
 Creating a Log
 --------------

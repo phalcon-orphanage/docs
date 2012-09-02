@@ -7,7 +7,7 @@ Allows to define columns to be used on create or alter table operations
 
     <?php
 
-     use Phalcon\Db\Column as Column;
+    use Phalcon\Db\Column as Column;
     
      //column definition
      $column = new Column("id", array(

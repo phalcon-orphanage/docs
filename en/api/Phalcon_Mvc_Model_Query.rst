@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Query**
 ====================================
 
-Phalcon\\Mvc\\Model\\Query is designed to simplify building of search on models. It provides a set of helpers to generate searchs in a dynamic way to support differents databases.  
+This class takes a PHQL intermediate representation and executes it.  
 
 .. code-block:: php
 
@@ -12,7 +12,11 @@ Phalcon\\Mvc\\Model\\Query is designed to simplify building of search on models.
 Methods
 ---------
 
-public **__construct** (*unknown* $phql)
+public **__construct** (*string* $phql)
+
+Phalcon\\Mvc\\Model\\Query constructor
+
+
 
 public **setDI** (*Phalcon\DI* $dependencyInjector)
 
@@ -26,47 +30,135 @@ Returns the dependency injection container
 
 
 
-protected **_getQualified** ()
+*string* protected **_getQualified** ()
 
-protected **_getCallArgument** ()
+Replaces the model's name to its source name in a qualifed-name expression
 
-protected **_getFunctionCall** ()
 
-protected **_getExpression** ()
 
-protected **_getSelectColumn** ()
+*string* protected **_getCallArgument** ()
 
-protected **_getTable** ()
+Resolves a expression in a single call argument
 
-protected **_getJoin** ()
 
-protected **_getJoinType** ()
 
-protected **_getJoins** ()
+*string* protected **_getFunctionCall** ()
 
-protected **_getLimitClause** ()
+Resolves a expression in a single call argument
 
-protected **_getOrderClause** ()
 
-protected **_getGroupClause** ()
+
+*string* protected **_getExpression** ()
+
+Resolves an expression from its intermediate code into a string
+
+
+
+*array* protected **_getSelectColumn** ()
+
+Resolves a column from its intermediate representation into an array used to determine if the resulset produced will be simple or complex
+
+
+
+*string* protected **_getTable** ()
+
+Resolves a table in a SELECT statement checking if the model exists
+
+
+
+*array* protected **_getJoin** ()
+
+Resolves a JOIN clause checking if the associated models exist
+
+
+
+*string* protected **_getJoinType** ()
+
+Resolves a JOIN type
+
+
+
+*array* protected **_getJoins** ()
+
+Resolves all the JOINS in a SELECT statement
+
+
+
+*string* protected **_getLimitClause** ()
+
+Returns a processed limit clause for a SELECT statement
+
+
+
+*string* protected **_getOrderClause** ()
+
+Returns a processed order clause for a SELECT statement
+
+
+
+*string* protected **_getGroupClause** ()
+
+Returns a processed group clause for a SELECT statement
+
+
 
 protected **_prepareSelect** ()
 
-protected **_prepareInsert** ()
+Analyzes a SELECT intermediate code and produces an array to be executed later
 
-protected **_prepareUpdate** ()
 
-protected **_prepareDelete** ()
 
-public **parse** (*unknown* $manager)
+*array* protected **_prepareInsert** ()
 
-protected **_executeSelect** ()
+Analyzes an INSERT intermediate code and produces an array to be executed later
 
-protected **_executeInsert** ()
 
-protected **_executeUpdate** ()
 
-protected **_executeDelete** ()
+*array* protected **_prepareUpdate** ()
 
-public **execute** (*unknown* $placeholders)
+Analyzes an UPDATE intermediate code and produces an array to be executed later
+
+
+
+*array* protected **_prepareDelete** ()
+
+Analyzes a DELETE intermediate code and produces an array to be executed later
+
+
+
+*array* public **parse** (*Phalcon\Mvc\Model* $manager)
+
+Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
+
+
+
+:doc:`Phalcon\\Mvc\\Query\\Resultset <Phalcon_Mvc_Query_Resultset>` protected **_executeSelect** ()
+
+Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Query\\Resultset
+
+
+
+:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeInsert** ()
+
+Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+
+
+
+:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeUpdate** ()
+
+Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+
+
+
+:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeDelete** ()
+
+Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+
+
+
+*mixed* public **execute** (*array* $placeholders)
+
+Executes a parsed PHQL statement
+
+
 

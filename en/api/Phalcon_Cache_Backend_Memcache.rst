@@ -9,24 +9,24 @@ Allows to cache output fragments, PHP data or raw data to a memcache backend  Th
 
     <?php
 
-     //Cache data for 2 days
+    //Cache data for 2 days
     $frontendOptions = array(
-    'lifetime' => 172800
+    	'lifetime' => 172800
     );
     
-     //Set memcached server connection settings
+    //Set memcached server connection settings
     $backendOptions = array(
-    'host' => 'localhost',
-      'port' => 11211,
-      'persistent' => false
+    	'host' => 'localhost',
+    	'port' => 11211,
+    	'persistent' => false
     );
     
     $cache = Phalcon_Cache::factory('Data', 'Memcache', $frontendOptions, $backendOptions);
     
-     //Cache arbitrary data
+    //Cache arbitrary data
     $cache->store('my-data', array(1, 2, 3, 4, 5));
     
-     //Get data
+    //Get data
     $data = $cache->get('my-data');
 
 
