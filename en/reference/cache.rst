@@ -42,7 +42,7 @@ An output fragment is a piece of HTML or text that is cached as is and returned 
         echo date("r");
 
         //Generate a link to the sign-up action
-        echo Phalcon_Tag::linkTo(
+        echo Phalcon\Tag::linkTo(
             array(
                 "user/signup",
                 "Sign Up",

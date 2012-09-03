@@ -44,11 +44,12 @@ Table of Contents
    reference/pagination
    reference/cache
    reference/acl
-   reference/intl
    reference/translate
+   reference/intl
    reference/db
    reference/logging
    reference/loader
+   reference/phql
    reference/migrations
    reference/debug
    reference/tools
