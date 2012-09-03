@@ -30,7 +30,7 @@ By default model "Robots" will refer to the table "robots". If you want to manua
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends \Phalcon\Mvc\Model
     {
 
         public function getSource()
@@ -41,6 +41,26 @@ By default model "Robots" will refer to the table "robots". If you want to manua
     }
 
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table. The initialize() method is only called once during the request.
+
+Models in Namespaces
+--------------------
+Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Toys;
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function getSource()
+        {
+            return "robots";
+        }
+
+    }
 
 Understanding Records To Objects
 --------------------------------
@@ -1292,6 +1312,70 @@ As other ORM's dependencies, the metadata manager is requested from the services
         return $metaData;
     });
 
+Setting a different schema
+--------------------------
+Models may are mapped to tables that are in different schemas/databases than the default. You can use the getSchema method to define that:
+
+Then, in the Initialize method, we define the connection service for the model:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function getSchema()
+        {
+            return "toys";
+        }
+
+    }
+
+Setting multiple databases
+--------------------------
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service in the application's services container. You can overwrite this service setting it in the initialize method:
+
+.. code-block:: php
+
+    <?php
+
+    //This service returns a MySQL database
+    $di->set('dbMysql', function() {
+         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname" => "invo"
+        ));
+    });
+
+    //This service returns a PostgreSQL database
+    $di->set('dbPostgres', function() {
+         return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
+            "host" => "localhost",
+            "username" => "postgres",
+            "password" => "",
+            "dbname" => "invo"
+        ));
+    });
+
+Then, in the Initialize method, we define the connection service for the model:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->setConnectionService('dbPostgres');
+        }
+
+    }
+
 Logging Low-Level SQL Statements
 --------------------------------
 Using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is difficult to understand which statements are finally sent to the database system. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is supported internally by :doc:`Phalcon\\Db <../api/Phalcon_Db>`. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
@@ -1434,8 +1518,7 @@ You may be required to access the application services within a model, the follo
 
     }
 
-The "notSave" event is triggered every time that a create or update action fails. So we're flashing the validation messages obtaining the "flash"
-service from the DI container. By doing this, we don't have to print messages after each save.
+The "notSave" event is triggered every time that a create or update action fails. So we're flashing the validation messages obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php

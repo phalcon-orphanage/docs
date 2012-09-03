@@ -94,7 +94,7 @@ The public/index.php file should look like:
 
         //Register an autoloader
         $loader = new \Phalcon\Loader();
-        $loader->registerDirs(array('../app/controllers/', '../app/models/'));
+        $loader->registerDirs(array('../app/controllers/', '../app/models/'))->register();
 
         //Create a DI
         $di = new Phalcon\DI\FactoryDefault();
@@ -131,7 +131,7 @@ With it, we can load classes using various strategies but for this example we ha
             '../app/controllers/',
             '../app/models/'
         )
-    );
+    )->register();
 
 Dependency Management
 ^^^^^^^^^^^^^^^^^^^^^
