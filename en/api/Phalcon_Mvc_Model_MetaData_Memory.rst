@@ -1,10 +1,7 @@
-Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
-===============================================
+Class **Phalcon\Mvc\Model\MetaData\Memory**
+===========================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
-
-Stores model meta-data in memory. Data will be erased when the request finishes
-
 
 Constants
 ---------
@@ -30,23 +27,11 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-public **__construct** (*array* $options)
+public **__construct** (*unknown* $options)
 
-Phalcon\\Mvc\\Model\\MetaData constructor
-
-
-
-*array* public **read** ()
-
-Reads the meta-data from temporal memory
-
-
+public **read** ()
 
 public **write** ()
-
-Writes the meta-data to temporal memory
-
-
 
 protected **_initializeMetaData** ()
 

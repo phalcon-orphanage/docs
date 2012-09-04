@@ -1,19 +1,12 @@
-Class **Phalcon\\DI\\FactoryDefault**
-=====================================
+Class **Phalcon\DI\FactoryDefault**
+===================================
 
 *extends* :doc:`Phalcon\\DI <Phalcon_DI>`
-
-This is a variant of the standard Phalcon\\DI. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually.
-
 
 Methods
 ---------
 
 public **__construct** ()
-
-Phalcon\\DI\\FactoryDefault constructor
-
-
 
 public **set** (*unknown* $alias, *unknown* $config)
 

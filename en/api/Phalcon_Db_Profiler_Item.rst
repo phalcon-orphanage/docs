@@ -1,51 +1,20 @@
-Class **Phalcon\\Db\\Profiler\\Item**
-=====================================
-
-This class identifies each profile in a Phalcon\\Db\\Profiler
-
+Class **Phalcon\Db\Profiler\Item**
+==================================
 
 Methods
 ---------
 
-public **setSQLStatement** (*string* $sqlStatement)
+public **setSQLStatement** (*unknown* $sqlStatement)
 
-Sets the SQL statement related to the profile
+public **getSQLStatement** ()
 
+public **setInitialTime** (*unknown* $initialTime)
 
+public **setFinalTime** (*unknown* $finalTime)
 
-*string* public **getSQLStatement** ()
+public **getInitialTime** ()
 
-Returns the SQL statement related to the profile
+public **getFinalTime** ()
 
-
-
-public **setInitialTime** (*int* $initialTime)
-
-Sets the timestamp on when the profile started
-
-
-
-public **setFinalTime** (*int* $finalTime)
-
-Sets the timestamp on when the profile ended
-
-
-
-*double* public **getInitialTime** ()
-
-Returns the initial time in milseconds on when the profile started
-
-
-
-*double* public **getFinalTime** ()
-
-Returns the initial time in milseconds on when the profile ended
-
-
-
-*double* public **getTotalElapsedSeconds** ()
-
-Returns the total time in seconds spent by the profile
-
-
+public **getTotalElapsedSeconds** ()
 

@@ -1,60 +1,16 @@
-Class **Phalcon\\Http\\Request\\File**
-======================================
-
-Provides OO wrappers to the $_FILES superglobal  
-
-.. code-block:: php
-
-    <?php
-
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
-    
-    public function uploadAction()
-    {
-    	//Check if the user has uploaded files
-    	if ($this->request->hasFiles() == true) {
-    		//Print the real file names and their sizes
-    		foreach ($this->request->getUploadedFiles() as $file){
-    			echo $file->getName(), " ", $file->getSize(), "\n";
-    		}
-    	}
-    }
-    
-    }
-
-
+Class **Phalcon\Http\Request\File**
+===================================
 
 Methods
 ---------
 
-public **__construct** (*array* $file)
+public **__construct** (*unknown* $file)
 
-Phalcon\\Http\\Request\\File constructor
+public **getSize** ()
 
+public **getName** ()
 
+public **getTempName** ()
 
-*int* public **getSize** ()
-
-Returns the file size of the uploaded file
-
-
-
-*string* public **getName** ()
-
-Returns the real name of the uploaded file
-
-
-
-*string* public **getTempName** ()
-
-Returns the temporal name of the uploaded file
-
-
-
-public **moveTo** (*string* $destination)
-
-Move the temporary file to a destination
-
-
+public **moveTo** (*unknown* $destination)
 

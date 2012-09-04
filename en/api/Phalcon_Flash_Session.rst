@@ -1,22 +1,14 @@
-Class **Phalcon\\Flash\\Session**
-=================================
+Class **Phalcon\Flash\Session**
+===============================
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Methods
 ---------
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (*unknown* $dependencyInjector)
 
-Sets the dependency injector
-
-
-
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
-
-Returns the internal dependency injector
-
-
+public **getDI** ()
 
 protected **_getSessionMessages** ()
 

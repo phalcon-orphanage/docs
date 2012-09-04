@@ -1,23 +1,7 @@
-Class **Phalcon\\Db\\Adapter\\Pdo**
-===================================
+Class **Phalcon\Db\Adapter\Pdo**
+================================
 
 *extends* :doc:`Phalcon\\Db <Phalcon_Db>`
-
-Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database 
-
-.. code-block:: php
-
-    <?php
-
-     $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
-      'host' => '192.168.0.11',
-      'username' => 'sigma',
-      'password' => 'secret',
-      'dbname' => 'blog',
-      'port' => '3306',
-     ));
-
-
 
 Constants
 ---------
@@ -31,109 +15,33 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-public **__construct** (*array* $descriptor)
+public **__construct** (*unknown* $descriptor)
 
-Constructor for Phalcon\\Db\\Adapter\\Pdo
+public **connect** (*unknown* $descriptor)
 
-
-
-*boolean* public **connect** (*array* $descriptor)
-
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
-
-
-
-:doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` public **query** (*string* $sqlStatement)
-
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows //Querying data $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'"); $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
-
-
+public **query** (*unknown* $sqlStatement)
 
 public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
+public **affectedRows** ()
 
-.. code-block:: php
+public **close** ()
 
-    <?php
+public **escapeString** (*unknown* $str)
 
-     //Inserting data
-     $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
-     $success = $connection->execute("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
-    
-     @param  string $sqlStatement
-     @param  array $placeholders
+public **bindParams** (*unknown* $sqlSelect, *unknown* $params)
 
+public **lastInsertId** (*unknown* $table, *unknown* $primaryKey, *unknown* $sequenceName)
 
+public **begin** ()
 
+public **rollback** ()
 
-*int* public **affectedRows** ()
+public **commit** ()
 
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE repoted by the database system 
+public **isUnderTransaction** ()
 
-.. code-block:: php
-
-    <?php
-
-    $connection->query("DELETE FROM robots");
-    echo $connection->affectedRows(), ' were deleted';
-
-
-
-
-*boolean* public **close** ()
-
-Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
-
-
-
-*string* public **escapeString** (*string* $str)
-
-Escapes a value to avoid SQL injections
-
-
-
-public **bindParams** (*string* $sqlSelect, *array* $params)
-
-Bind params to SQL select
-
-
-
-*int* public **lastInsertId** (*string* $table, *string* $primaryKey, *string* $sequenceName)
-
-Returns insert id for the auto_increment column inserted in the last SQL statement
-
-
-
-*boolean* public **begin** ()
-
-Starts a transaction in the connection
-
-
-
-*boolean* public **rollback** ()
-
-Rollbacks the active transaction in the connection
-
-
-
-*boolean* public **commit** ()
-
-Commits the active transaction in the connection
-
-
-
-*boolean* public **isUnderTransaction** ()
-
-Checks whether connection is under database transaction
-
-
-
-*PDO* public **getInternalHandler** ()
-
-Return internal PDO handler
-
-
+public **getInternalHandler** ()
 
 public **setEventsManager** (*unknown* $eventsManager)
 

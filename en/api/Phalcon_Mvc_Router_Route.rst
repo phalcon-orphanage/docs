@@ -1,16 +1,12 @@
-Class **Phalcon\\Mvc\\Router\\Route**
-=====================================
+Class **Phalcon\Mvc\Router\Route**
+==================================
 
 Methods
 ---------
 
 public **__construct** (*unknown* $pattern, *unknown* $paths, *unknown* $httpMethods)
 
-*string* public **compilePattern** (*string* $pattern)
-
-Replaces placeholders from pattern returning a valid PCRE regular expression
-
-
+public **compilePattern** (*unknown* $pattern)
 
 public **via** (*unknown* $httpMethods)
 

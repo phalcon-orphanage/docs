@@ -73,24 +73,17 @@ One of the caching adapters is 'File'. The only key area for this adapter is the
 
     <?php
 
-    // Cache the files for 2 days
-    $frontendOptions = array(
+    // Cache the files for 2 days using a Data frontend
+    $frontCache = new Phalcon\Cache\Frontend\Data(array(
         "lifetime" => 172800
-    );
-
-    // Set the cache file directory - important to keep the "/" at the end of
-    // of the value for the folder
-    $backendOptions = array(
-        "cacheDir" => "../app/cache/"
-    );
+    ));
 
     // Create the component that will cache "Data" to a "File" backend
-    $cache = \Phalcon\Cache::factory(
-        "Data",
-        "File",
-        $frontendOptions,
-        $backendOptions
-    );
+    // Set the cache file directory - important to keep the "/" at the end of
+    // of the value for the folder
+    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+        "cacheDir" => "../app/cache/"
+    ));
 
     // Try to get cached records
     $cache_key = 'robots_order_id.cache';
@@ -119,23 +112,16 @@ The above example changes slightly (especially in terms of configuration) when w
     <?php
 
     //Cache data for one hour
-    $frontendOptions = array(
+    $frontCache = new Phalcon\Cache\Frontend\Data(array(
         "lifetime" => 3600
-    );
-
-    // Memcached connection settings
-    $backendOptions = array(
-        "host" => "localhost",
-        "port" => "11211"
-    );
+    ));
 
     // Create the component that will cache "Data" to a "Memcached" backend
-    $cache = \Phalcon\Cache::factory(
-        "Data",
-        "Memcached",
-        $frontendOptions,
-        $backendOptions
-    );
+    // Memcached connection settings
+    $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
+        "host" => "localhost",
+        "port" => "11211"
+    ));
 
     // Try to get cached records
     $cache_key = 'robots_order_id.cache';

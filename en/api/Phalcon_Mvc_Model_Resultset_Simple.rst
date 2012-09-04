@@ -1,45 +1,22 @@
-Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
-================================================
+Class **Phalcon\Mvc\Model\Resultset\Simple**
+============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
-Simple resultsets only contains a complete object. This class builds every complete object as it's required
-
-
 Methods
 ---------
 
-public **__construct** (*Phalcon\Mvc\Model* $model, *Phalcon\Mvc\Model\Result* $result, *Phalcon\Cache\Backend* $cache)
+public **__construct** (*unknown* $model, *unknown* $result, *unknown* $cache)
 
-Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
+public **valid** ()
 
+public **serialize** ()
 
+public **unserialize** (*unknown* $data)
 
-*boolean* public **valid** ()
-
-Check whether internal resource has rows to fetch
-
-
-
-*string* public **serialize** ()
-
-Serializing a resultset will dump all related rows into a big array
-
-
-
-public **unserialize** (*string* $data)
-
-Unserializing a resultset will allow to only works on the rows present in the saved state
-
-
-
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **current** ()
-
-Returns current row in the resultset
-
-
+public **current** ()
 
 public **next** ()
 

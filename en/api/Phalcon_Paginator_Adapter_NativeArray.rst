@@ -1,27 +1,12 @@
-Class **Phalcon\\Paginator\\Adapter\\NativeArray**
-==================================================
-
-Component of pagination by array data
-
+Class **Phalcon\Paginator\Adapter\NativeArray**
+===============================================
 
 Methods
 ---------
 
-public **__construct** (*array* $config)
+public **__construct** (*unknown* $config)
 
-Phalcon\\Paginator\\Adapter\\NativeArray constructor
+public **setCurrentPage** (*unknown* $page)
 
-
-
-public **setCurrentPage** (*int* $page)
-
-Set the current page number
-
-
-
-*stdClass* public **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
-
-
+public **getPaginate** ()
 

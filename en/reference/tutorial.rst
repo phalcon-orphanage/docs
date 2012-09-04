@@ -94,7 +94,10 @@ The public/index.php file should look like:
 
         //Register an autoloader
         $loader = new \Phalcon\Loader();
-        $loader->registerDirs(array('../app/controllers/', '../app/models/'))->register();
+        $loader->registerDirs(array(
+            '../app/controllers/',
+            '../app/models/'
+        ))->register();
 
         //Create a DI
         $di = new Phalcon\DI\FactoryDefault();
@@ -366,7 +369,10 @@ for sereral components:
 
         //Register an autoloader
         $loader = new \Phalcon\Loader();
-        $loader->registerDirs(array('../app/controllers/', '../app/models/'));
+        $loader->registerDirs(array(
+            '../app/controllers/',
+            '../app/models/'
+        ))->register();
 
         //Create a DI
         $di = new Phalcon\DI\FactoryDefault();
@@ -430,7 +436,7 @@ Receiving data from the form and storing them in the table is the next step.
             if ($user->save() == true) {
                 echo "Thanks for register!";
             } else {
-                echo "Sorry, the next problems was generated: ";
+                echo "Sorry, the next problems were generated: ";
                 foreach ($user->getMessages() as $message) {
                     echo $message->getMessage(), "<br/>";
                 }

@@ -1,133 +1,50 @@
-Class **Phalcon\\Db\\Dialect\\Postgresql**
-==========================================
+Class **Phalcon\Db\Dialect\Postgresql**
+=======================================
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
-
-Generates database specific SQL for the PostgreSQL RBDM
-
 
 Methods
 ---------
 
-*string* public static **getColumnList** (*array* $columnList)
+public static **getColumnList** (*unknown* $columnList)
 
-Gets a list of columns
+public static **getColumnDefinition** (*unknown* $column)
 
+public static **addColumn** ()
 
+public static **modifyColumn** ()
 
-public static **getColumnDefinition** (*Phalcon\Db\Column* $column)
+public static **dropColumn** ()
 
-Gets the column name in PostgreSQL
+public static **addIndex** ()
 
+public static **dropIndex** ()
 
+public static **addPrimaryKey** ()
 
-*string* public static **addColumn** ()
+public static **dropPrimaryKey** ()
 
-Generates SQL to add a column to a table
+public static **addForeignKey** ()
 
+public static **dropForeignKey** ()
 
+protected static **_getTableOptions** ()
 
-*string* public static **modifyColumn** ()
+public static **createTable** ()
 
-Generates SQL to modify a column in a table
+public **dropTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $ifExists)
 
+public static **tableExists** (*unknown* $tableName, *unknown* $schemaName)
 
+public static **describeColumns** (*unknown* $table, *unknown* $schema)
 
-*string* public static **dropColumn** ()
+public static **listTables** (*unknown* $schemaName)
 
-Generates SQL to delete a column from a table
+public static **describeIndexes** (*unknown* $table, *unknown* $schema)
 
+public static **describeReferences** (*unknown* $table, *unknown* $schema)
 
-
-*string* public static **addIndex** ()
-
-Generates SQL to add an index to a table
-
-
-
-*string* public static **dropIndex** ()
-
-Generates SQL to delete an index from a table
-
-
-
-*string* public static **addPrimaryKey** ()
-
-Generates SQL to add the primary key to a table
-
-
-
-*string* public static **dropPrimaryKey** ()
-
-Generates SQL to delete primary key from a table
-
-
-
-*string* public static **addForeignKey** ()
-
-Generates SQL to add an index to a table
-
-
-
-*string* public static **dropForeignKey** ()
-
-Generates SQL to delete a foreign key from a table
-
-
-
-*array* protected static **_getTableOptions** ()
-
-Generates SQL to add the table creation options
-
-
-
-*string* public static **createTable** ()
-
-Generates SQL to create a table in PostgreSQL
-
-
-
-*boolean* public **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
-
-Generates SQL to drop a table
-
-
-
-*string* public static **tableExists** (*string* $tableName, *string* $schemaName)
-
-Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
-
-
-
-*string* public static **describeColumns** (*string* $table, *string* $schema)
-
-Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
-
-
-
-*array* public static **listTables** (*string* $schemaName)
-
-List all tables on database <code>print_r($dialect->listTables("blog") ?>
-
-
-
-*string* public static **describeIndexes** (*string* $table, *string* $schema)
-
-Generates SQL to query indexes on a table
-
-
-
-*string* public static **describeReferences** (*string* $table, *string* $schema)
-
-Generates SQL to query foreign keys on a table
-
-
-
-*string* public static **tableOptions** (*string* $table, *string* $schema)
-
-Generates the SQL to describe the table creation options
-
-
+public static **tableOptions** (*unknown* $table, *unknown* $schema)
 
 public **limit** (*unknown* $sqlQuery, *unknown* $number)
 

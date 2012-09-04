@@ -1,57 +1,22 @@
-Class **Phalcon\\Cache\\Frontend\\Data**
-========================================
-
-Allows to cache native PHP data in a serialized form
-
+Class **Phalcon\Cache\Frontend\Data**
+=====================================
 
 Methods
 ---------
 
-public **__construct** (*array* $frontendOptions)
+public **__construct** (*unknown* $frontendOptions)
 
-Phalcon\\Cache\\Frontend\\Data constructor
-
-
-
-*integer* public **getLifetime** ()
-
-Returns cache lifetime
-
-
+public **getLifetime** ()
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
-
-
-
 public **start** ()
 
-Starts output frontend. Actually, does nothing
-
-
-
-*string* public **getContent** ()
-
-Returns output cached content
-
-
+public **getContent** ()
 
 public **stop** ()
 
-Stops output frontend
+public **beforeStore** (*unknown* $data)
 
-
-
-public **beforeStore** (*mixed* $data)
-
-Serializes data before storing it
-
-
-
-public **afterRetrieve** (*mixed* $data)
-
-Unserializes data after retrieving it
-
-
+public **afterRetrieve** (*unknown* $data)
 

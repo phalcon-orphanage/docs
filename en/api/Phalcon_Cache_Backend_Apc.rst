@@ -1,55 +1,18 @@
-Class **Phalcon\\Cache\\Backend\\Apc**
-======================================
+Class **Phalcon\Cache\Backend\Apc**
+===================================
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
-
-Allows to cache output fragments, PHP data and raw data using a memcache backend  
-
-.. code-block:: php
-
-    <?php
-
-     //Cache data for 2 days
-    $frontendOptions = array(
-    'lifetime' => 172800
-    );
-    
-    $cache = Phalcon_Cache::factory('Data', 'Apc', $frontendOptions, array());
-    
-     //Cache arbitrary data
-    $cache->store('my-data', array(1, 2, 3, 4, 5));
-    
-     //Get data
-    $data = $cache->get('my-data');
-
-
 
 Methods
 ---------
 
-*mixed* public **get** (*string* $keyName, *long* $lifetime)
+public **get** (*unknown* $keyName, *unknown* $lifetime)
 
-Returns a cached content
+public **save** (*unknown* $keyName, *unknown* $content, *unknown* $lifetime, *unknown* $stopBuffer)
 
+public **delete** (*unknown* $keyName)
 
-
-public **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
-
-Stores cached content into the file backend
-
-
-
-*boolean* public **delete** (*string* $keyName)
-
-Deletes a value from the cache by its key
-
-
-
-*array* public **queryKeys** (*string* $prefix)
-
-Query the existing cached keys
-
-
+public **queryKeys** (*unknown* $prefix)
 
 public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
 

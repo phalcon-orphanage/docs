@@ -1,25 +1,7 @@
-Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
-==========================================
+Class **Phalcon\Db\Adapter\Pdo\Mysql**
+======================================
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
-
-Specific functions for the Mysql database system 
-
-.. code-block:: php
-
-    <?php
-
-    $config = array(
-    	"host" => "192.168.0.11",
-    	"dbname" => "blog",
-    	"port" => 3306,
-    	"username" => "sigma",
-    	"password" => "secret"
-    );
-    
-    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
-
-
 
 Constants
 ---------
@@ -33,29 +15,13 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
+public **describeColumns** (*unknown* $table, *unknown* $schema)
 
-Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts") ?>
+public **describeIndexes** (*unknown* $table, *unknown* $schema)
 
+public **describeReferences** (*unknown* $table, *unknown* $schema)
 
-
-:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
-
-Lists table indexes
-
-
-
-:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
-
-Lists table references
-
-
-
-*array* public **tableOptions** (*string* $tableName, *string* $schemaName)
-
-Gets creation options from a table
-
-
+public **tableOptions** (*unknown* $tableName, *unknown* $schemaName)
 
 public **__construct** (*unknown* $descriptor)
 

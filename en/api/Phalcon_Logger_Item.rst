@@ -1,33 +1,14 @@
-Class **Phalcon\\Logger\\Item**
-===============================
-
-Represents each item in a logger transaction
-
+Class **Phalcon\Logger\Item**
+=============================
 
 Methods
 ---------
 
-public **__construct** (*string* $message, *integer* $type, *integer* $time)
+public **__construct** (*unknown* $message, *unknown* $type, *unknown* $time)
 
-Phalcon\\Logger\\Item contructor
+public **getMessage** ()
 
+public **getType** ()
 
-
-*string* public **getMessage** ()
-
-Returns the message
-
-
-
-*integer* public **getType** ()
-
-Returns the log type
-
-
-
-*integer* public **getTime** ()
-
-Returns log timestamp
-
-
+public **getTime** ()
 

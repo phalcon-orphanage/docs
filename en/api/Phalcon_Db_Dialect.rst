@@ -1,33 +1,14 @@
-Class **Phalcon\\Db\\Dialect**
-==============================
-
-
-
+Class **Phalcon\Db\Dialect**
+============================
 
 Methods
 ---------
 
-*string* public **limit** (*string* $sqlQuery, *int* $number)
+public **limit** (*unknown* $sqlQuery, *unknown* $number)
 
-Generates the SQL for LIMIT clause
+public **forUpdate** (*unknown* $sqlQuery)
 
+public **sharedLock** (*unknown* $sqlQuery)
 
-
-*string* public **forUpdate** (*string* $sqlQuery)
-
-Returns a SQL modified with a FOR UPDATE clause
-
-
-
-*string* public **sharedLock** (*string* $sqlQuery)
-
-Returns a SQL modified with a LOCK IN SHARE MODE clause
-
-
-
-*string* public **select** (*array* $definition)
-
-Builds a SELECT statement
-
-
+public **select** (*unknown* $definition)
 

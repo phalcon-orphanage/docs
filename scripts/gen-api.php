@@ -8,7 +8,7 @@
  * php scripts/gen-api.php
  */
 
-define('CPHALCON_DIR', '/home/gutierrezandresfelipe/phalcon/target/dev/');
+define('CPHALCON_DIR', '/Applications/MAMP/htdocs/phalcon/target/dev/');
 
 class API_Generator {
 
@@ -220,22 +220,22 @@ $api = new API_Generator(CPHALCON_DIR);
 $classDocs = $api->getClassDocs();
 $docs = $api->getDocs();
 
-ksort($docs);
 
-$refactor = array();
-foreach($docs as $className => $docMethods){
+foreach(get_declared_classes() as $className){
 
-	$realClassName = str_replace("_", "\\", $className);
+	if (!preg_match('#^Phalcon#', $className)) {
+		continue;
+	}
 
-	$reflector = new ReflectionClass($realClassName);
+	$reflector = new ReflectionClass($className);
 
 	$documentationData = array();
 
 	$typeClass = 'public';
-	if($reflector->isAbstract()==true){
+	if ($reflector->isAbstract() == true) {
 		$typeClass = 'abstract';
 	}
-	if($reflector->isFinal()==true){
+	if ($reflector->isFinal() == true) {
 		$typeClass = 'final';
 	}
 
@@ -248,32 +248,25 @@ foreach($docs as $className => $docMethods){
 		'methods'		=> $reflector->getMethods()
 	);
 
-	$refactor[$className] = $documentationData;
-}
+	$index.='   '.str_replace("\\", "_", $className).PHP_EOL;
 
-foreach($docs as $className => $docMethods){
+	$code = 'Class **'.$className.'**'.PHP_EOL;
+	$code.= str_repeat("=", strlen($className)+10).PHP_EOL.PHP_EOL;
 
-	$index.='   '.$className.PHP_EOL;
-
-	$realClassName = str_replace("_", "\\\\", $className);
-	$code = 'Class **'.$realClassName.'**'.PHP_EOL;
-	$code.= str_repeat("=", strlen($realClassName)+10).PHP_EOL.PHP_EOL;
-	if(isset($refactor[$className]['extends'])){
-		if($refactor[$className]['extends']){
-			$extendsName = $refactor[$className]['extends']->name;
-			if(strpos($extendsName, 'Phalcon')!==false){
-				$extendsPath =  str_replace("\\", "_", $extendsName);
-				$extendsName =  str_replace("\\", "\\\\", $extendsName);
-				$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
-			} else {
-				$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
-			}
+	if($documentationData['extends']){
+		$extendsName = $documentationData['extends']->name;
+		if(strpos($extendsName, 'Phalcon')!==false){
+			$extendsPath =  str_replace("\\", "_", $extendsName);
+			$extendsName =  str_replace("\\", "\\\\", $extendsName);
+			$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+		} else {
+			$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
 		}
 	}
-	if(isset($refactor[$className]['implements'])){
-		if(count($refactor[$className]['implements'])){
-			$code.='*implements* '.join(', ', $refactor[$className]['implements']).PHP_EOL.PHP_EOL;
-		}
+
+	//Generate the interfaces part
+	if(count($documentationData['implements'])){
+		$code.='*implements* '.join(', ', $documentationData['implements']).PHP_EOL.PHP_EOL;
 	}
 
 	if(isset($classDocs[$className])){
@@ -281,63 +274,59 @@ foreach($docs as $className => $docMethods){
 		$code.= $ret['description'].PHP_EOL.PHP_EOL;
 	}
 
-	if(isset($refactor[$className]['constants'])){
-		if(count($refactor[$className]['constants'])){
-			$code.='Constants'.PHP_EOL;
-			$code.='---------'.PHP_EOL.PHP_EOL;
-			foreach($refactor[$className]['constants'] as $name => $constant){
-				$code.=gettype($constant).' **'.$name.'**'.PHP_EOL.PHP_EOL;
-			}
+	if(count($documentationData['constants'])){
+		$code.='Constants'.PHP_EOL;
+		$code.='---------'.PHP_EOL.PHP_EOL;
+		foreach($documentationData['constants'] as $name => $constant){
+			$code.= gettype($constant).' **'.$name.'**'.PHP_EOL.PHP_EOL;
 		}
 	}
 
-	if(isset($refactor[$className]['methods'])){
-		if(count($refactor[$className]['methods'])){
-			$code.='Methods'.PHP_EOL;
-			$code.='---------'.PHP_EOL.PHP_EOL;
-			foreach($refactor[$className]['methods'] as $method){
-				if(isset($docMethods[$method->name])){
-					$ret = $api->getPhpDoc($docMethods[$method->name], $className, $method->name, null);
+	if(count($documentationData['methods'])){
+
+		$code.='Methods'.PHP_EOL;
+		$code.='---------'.PHP_EOL.PHP_EOL;
+		foreach($documentationData['methods'] as $method){
+			if(isset($docMethods[$method->name])){
+				$ret = $api->getPhpDoc($docMethods[$method->name], $className, $method->name, null);
+			} else {
+				$ret = array();
+			}
+			//$code.='.. method:: ';
+			if(isset($ret['return'])){
+				if(strpos($ret['return'], 'Phalcon')!==false){
+					$extendsPath =  str_replace("\\", "_", $ret['return']);
+					$extendsName =  str_replace("\\", "\\\\", $ret['return']);
+					$code.=':doc:`'.$extendsName.' <'.$extendsPath.'>` ';
 				} else {
-					$ret = array();
+					$code.= '*'.$ret['return'].'* ';
 				}
-				//$code.='.. method:: ';
-				if(isset($ret['return'])){
-					if(strpos($ret['return'], 'Phalcon')!==false){
-						$extendsPath =  str_replace("\\", "_", $ret['return']);
-						$extendsName =  str_replace("\\", "\\\\", $ret['return']);
-						$code.=':doc:`'.$extendsName.' <'.$extendsPath.'>` ';
-					} else {
-						$code.= '*'.$ret['return'].'* ';
-					}
-				}
-				$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' **'.$method->name.'** (';
+			}
+			$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' **'.$method->name.'** (';
 
-				$cp = array();
-				foreach($method->getParameters() as $parameter){
-					$name = '$'.$parameter->name;
-					if(isset($ret['parameters'][$name])){
-						$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
-					} else {
-						$cp[] = '*unknown* '.$name;
-					}
+			$cp = array();
+			foreach($method->getParameters() as $parameter){
+				$name = '$'.$parameter->name;
+				if(isset($ret['parameters'][$name])){
+					$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
+				} else {
+					$cp[] = '*unknown* '.$name;
 				}
-				$code.=join(', ', $cp).')'.PHP_EOL.PHP_EOL;
+			}
+			$code.=join(', ', $cp).')'.PHP_EOL.PHP_EOL;
 
-				if(isset($ret['description'])){
-					//$code.="\t ..\n";
-					foreach(explode("\n", $ret['description']) as $dline){
-						$code.="".$dline."\n";
-					}
-					$code.=PHP_EOL.PHP_EOL;
+			if(isset($ret['description'])){
+				foreach(explode("\n", $ret['description']) as $dline){
+					$code.="".$dline."\n";
 				}
-
+				$code.=PHP_EOL.PHP_EOL;
 			}
 
 		}
+
 	}
 
-	file_put_contents('en/api/'.$className.'.rst', $code);
+	file_put_contents('en/api/'.str_replace("\\", "_", $className).'.rst', $code);
 }
 
 file_put_contents('en/api/index.rst', $index);

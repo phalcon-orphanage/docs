@@ -1,45 +1,22 @@
-Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
-=================================================
+Class **Phalcon\Mvc\Model\Resultset\Complex**
+=============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
-Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
-
-
 Methods
 ---------
 
-public **__construct** (*array* $columnsTypes, *Phalcon\Db\Result* $result, *Phalcon\Cache\Backend* $cache)
+public **__construct** (*unknown* $columnsTypes, *unknown* $result, *unknown* $cache)
 
-Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
+public **valid** ()
 
+public **serialize** ()
 
+public **unserialize** (*unknown* $data)
 
-*boolean* public **valid** ()
-
-Check whether internal resource has rows to fetch
-
-
-
-*string* public **serialize** ()
-
-Serializing a resultset will dump all related rows into a big array
-
-
-
-public **unserialize** (*string* $data)
-
-Unserializing a resultset will allow to only works on the rows present in the saved state
-
-
-
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **current** ()
-
-Returns current row in the resultset
-
-
+public **current** ()
 
 public **next** ()
 

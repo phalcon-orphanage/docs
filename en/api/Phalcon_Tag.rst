@@ -1,223 +1,62 @@
-Class **Phalcon\\Tag**
-======================
-
-Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
-
+Class **Phalcon\Tag**
+=====================
 
 Methods
 ---------
 
 public static **setDI** (*unknown* $dependencyInjector)
 
-Sets the dependency injector container.
+public static **getDI** ()
 
+public static **getUrlService** ()
 
+public static **getDispatcherService** ()
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public static **getDI** ()
+public static **setDefault** (*unknown* $id, *unknown* $value)
 
-Internally gets the request dispatcher
+public static **displayTo** (*unknown* $id, *unknown* $value)
 
-
-
-:doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>` public static **getUrlService** ()
-
-Return a URL service from the DI
-
-
-
-:doc:`Phalcon\\Mvc\\Dispatcher <Phalcon_Mvc_Dispatcher>` public static **getDispatcherService** ()
-
-Returns a Dispatcher service from the DI
-
-
-
-public static **setDefault** (*string* $id, *string* $value)
-
-Assigns default values to generated tags by helpers 
-
-.. code-block:: php
-
-    <?php
-
-     //Assigning "peter" to "name" component
-     Phalcon\Tag::setDefault("name", "peter");
-    
-     //Later in the view
-     echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
-
-
-
-
-public static **displayTo** (*string* $id, *string* $value)
-
-Alias of Phalcon\\Tag::setDefault
-
-
-
-*mixed* public static **getValue** (*string* $name)
-
-Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
-
-
+public static **getValue** (*unknown* $name)
 
 public static **resetInput** ()
 
-Resets the request and internal values to avoid those fields will have any default value
+public static **linkTo** (*unknown* $parameters, *unknown* $text)
 
+protected static **_inputField** ()
 
+public static **textField** (*unknown* $parameters)
 
-*string* public static **linkTo** (*array* $parameters, *unknown* $text)
+public static **passwordField** (*unknown* $parameters)
 
-Builds a HTML A tag using framework conventions <code>echo Phalcon\\Tag::linkTo('signup/register', 'Register Here!')
+public static **hiddenField** (*unknown* $parameters)
 
+public static **fileField** (*unknown* $parameters)
 
+public static **checkField** (*unknown* $parameters)
 
-*string* protected static **_inputField** ()
+public static **submitButton** (*unknown* $parameters)
 
-Builds generic INPUT tags
+public static **selectStatic** (*unknown* $parameters, *unknown* $data)
 
+public static **select** (*unknown* $parameters, *unknown* $data)
 
+public static **textArea** (*unknown* $parameters)
 
-*string* public static **textField** (*array* $parameters)
+public static **form** (*unknown* $parameters)
 
-Builds a HTML input[type="text"] tag <code>echo Phalcon\\Tag::textField(array("name", "size" => 30))
+public static **endForm** ()
 
+public static **setTitle** (*unknown* $title)
 
+public static **appendTitle** (*unknown* $title)
 
-*string* public static **passwordField** (*array* $parameters)
+public static **prependTitle** (*unknown* $title)
 
-Builds a HTML input[type="password"] tag <code>echo Phalcon\\Tag::passwordField(array("name", "size" => 30))
+public static **getTitle** ()
 
+public static **stylesheetLink** (*unknown* $parameters, *unknown* $local)
 
+public static **javascriptInclude** (*unknown* $parameters, *unknown* $local)
 
-*string* public static **hiddenField** (*array* $parameters)
-
-Builds a HTML input[type="hidden"] tag <code>echo Phalcon\\Tag::hiddenField(array("name", "value" => "mike"))
-
-
-
-*string* public static **fileField** (*array* $parameters)
-
-Builds a HTML input[type="file"] tag <code>echo Phalcon\\Tag::fileField("file")
-
-
-
-*string* public static **checkField** (*array* $parameters)
-
-Builds a HTML input[type="check"] tag <code>echo Phalcon\\Tag::checkField(array("name", "size" => 30))
-
-
-
-*string* public static **submitButton** (*unknown* $parameters)
-
-Builds a HTML input[type="submit"] tag <code>echo Phalcon\\Tag::submitButton("Save")
-
-
-
-*string* public static **selectStatic** (*array* $parameters, *unknown* $data)
-
-Builds a HTML SELECT tag using a PHP array for options <code>echo Phalcon\\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"))
-
-
-
-*string* public static **select** (*unknown* $parameters, *unknown* $data)
-
-Builds a HTML SELECT tag using a Phalcon_Model resultset as options 
-
-.. code-block:: php
-
-    <?php
-
-     echo Phalcon\Tag::selectStatic(array(
-    "robotId",
-    Robots::find("type = 'mechanical'"),
-    "using" => array("id", "name")
-
-))
-
-
-
-*string* public static **textArea** (*array* $parameters)
-
-Builds a HTML TEXTAREA tag <code>echo Phalcon\\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
-
-
-
-*string* public static **form** (*array* $parameters)
-
-Builds a HTML FORM tag 
-
-.. code-block:: php
-
-    <?php
-
-     echo Phalcon\Tag::form("posts/save");
-     echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
-
-
-
-
-*string* public static **endForm** ()
-
-Builds a HTML close FORM tag
-
-
-
-public static **setTitle** (*string* $title)
-
-Set the title of view content
-
-
-
-public static **appendTitle** (*string* $title)
-
-Add to title of view content
-
-
-
-public static **prependTitle** (*string* $title)
-
-Add before the title of view content
-
-
-
-*string* public static **getTitle** ()
-
-Get the title of view content
-
-
-
-*string* public static **stylesheetLink** (*array* $parameters, *boolean* $local)
-
-Builds a LINK[rel="stylesheet"] tag 
-
-.. code-block:: php
-
-    <?php
-
-     echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
-     echo Phalcon\Tag::stylesheetLink("css/style.css");
-
-
-
-
-*string* public static **javascriptInclude** (*array* $parameters, *boolean* $local)
-
-Builds a SCRIPT[type="javascript"] tag 
-
-.. code-block:: php
-
-    <?php
-
-     echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-     echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
-
-
-
-
-*string* public static **image** (*array* $parameters)
-
-Builds HTML IMG tags
-
-
+public static **image** (*unknown* $parameters)
 

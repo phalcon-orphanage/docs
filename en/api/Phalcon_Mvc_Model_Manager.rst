@@ -1,21 +1,5 @@
-Class **Phalcon\\Mvc\\Model\\Manager**
-======================================
-
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
-
-.. code-block:: php
-
-    <?php
-
-     $dependencyInjector = new Phalcon\DI();
-    
-     $dependencyInjector->set('modelsManager', function(){
-          return new Phalcon\Mvc\Model\Manager();
-     });
-    
-     $robot = new Robots($dependencyInjector);
-
-
+Class **Phalcon\Mvc\Model\Manager**
+===================================
 
 Methods
 ---------
@@ -26,23 +10,11 @@ public **setDI** (*unknown* $dependencyInjector)
 
 public **getDI** ()
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+public **setEventsManager** (*unknown* $eventsManager)
 
-Sets the event manager
+public **getEventsManager** ()
 
-
-
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
-
-Returns the internal event manager
-
-
-
-public **initialize** (*Phalcon\Mvc\Model* $model)
-
-Initializes a model in the model manager
-
-
+public **initialize** (*unknown* $model)
 
 public **isInitialized** (*unknown* $modelName)
 
@@ -50,89 +22,33 @@ public **getLastInitialized** ()
 
 public **load** (*unknown* $modelName)
 
-public **addHasOne** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public **addHasOne** (*unknown* $model, *unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, *unknown* $options)
 
-Setup a 1-1 relation between two models
+public **addBelongsTo** (*unknown* $model, *unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, *unknown* $options)
 
+public **addHasMany** (*unknown* $model, *unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, *unknown* $options)
 
+public **existsBelongsTo** (*unknown* $modelName, *unknown* $modelRelation)
 
-public **addBelongsTo** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public **existsHasMany** (*unknown* $modelName, *unknown* $modelRelation)
 
-Setup a relation reverse 1-1  between two models
-
-
-
-public **addHasMany** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
-
-Setup a relation 1-n between two models
-
-
-
-*boolean* public **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
-
-Checks whether a model has a belongsTo relation with another model
-
-
-
-*boolean* public **existsHasMany** (*string* $modelName, *string* $modelRelation)
-
-Checks whether a model has a hasMany relation with another model
-
-
-
-*boolean* public **existsHasOne** (*string* $modelName, *string* $modelRelation)
-
-Checks whether a model has a hasOne relation with another model
-
-
+public **existsHasOne** (*unknown* $modelName, *unknown* $modelRelation)
 
 protected **_getRelationRecords** ()
 
-Helper method to query records based on a relation definition
+public **getBelongsToRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record)
 
+public **getHasManyRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record)
 
+public **getHasOneRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record)
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
+public **getBelongsTo** (*unknown* $model)
 
-Gets belongsTo related records from a model
+public **getHasMany** (*unknown* $model)
 
+public **getHasOne** (*unknown* $model)
 
-
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
-
-Gets hasMany related records from a model
-
-
-
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\Mvc\Model* $record)
-
-Gets belongsTo related records from a model
-
-
-
-*array* public **getBelongsTo** (*Phalcon\Mvc\Model* $model)
-
-Gets belongsTo relations defined on a model
-
-
-
-*array* public **getHasMany** (*Phalcon\Mvc\Model* $model)
-
-Gets hasMany relations defined on a model
-
-
-
-*array* public **getHasOne** (*Phalcon\Mvc\Model* $model)
-
-Gets hasOne relations defined on a model
-
-
-
-*array* public **getHasOneAndHasMany** (*Phalcon\Mvc\Model* $model)
-
-Gets hasOne relations defined on a model
-
-
+public **getHasOneAndHasMany** (*unknown* $model)
 
 public **getRelations** (*unknown* $a, *unknown* $b)
 

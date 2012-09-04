@@ -1,19 +1,12 @@
-Class **Phalcon\\Flash\\Direct**
-================================
+Class **Phalcon\Flash\Direct**
+==============================
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
-
-This is a variant of the Phalcon\\Flash that inmediately flush to the output any message passed to it
-
 
 Methods
 ---------
 
-*string* public **message** (*string* $type, *string* $message)
-
-Outputs a message
-
-
+public **message** (*unknown* $type, *unknown* $message)
 
 public **__construct** (*unknown* $cssClasses)
 

@@ -1,17 +1,5 @@
-Class **Phalcon\\Mvc\\Model\\MetaData**
-=======================================
-
-Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Model\\Base. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
-
-.. code-block:: php
-
-    <?php
-
-    $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
-    $attributes = $metaData->getAttributes(new Robots());
-    print_r($attributes);
-
-
+Class **Phalcon\Mvc\Model\MetaData**
+====================================
 
 Constants
 ---------
@@ -39,69 +27,25 @@ Methods
 
 protected **_initializeMetaData** ()
 
-Initialize the metadata for certain table
+public **getAttributes** (*unknown* $model)
 
+public **getPrimaryKeyAttributes** (*unknown* $model)
 
+public **getNonPrimaryKeyAttributes** (*unknown* $model)
 
-*array* public **getAttributes** (*Phalcon\Mvc\Model* $model)
+public **getNotNullAttributes** (*unknown* $model)
 
-Returns table attributes names (fields)
+public **getDataTypes** (*unknown* $model)
 
+public **getDataTypesNumeric** (*unknown* $model)
 
-
-*array* public **getPrimaryKeyAttributes** (*Phalcon\Mvc\Model* $model)
-
-Returns an array of fields which are part of the primary key
-
-
-
-*array* public **getNonPrimaryKeyAttributes** (*Phalcon\Mvc\Model* $model)
-
-Returns an arrau of fields which are not part of the primary key
-
-
-
-*array* public **getNotNullAttributes** (*Phalcon\Mvc\Model* $model)
-
-Returns an array of not null attributes
-
-
-
-*array* public **getDataTypes** (*Phalcon\Mvc\Model* $model)
-
-Returns attributes and their data types
-
-
-
-*array* public **getDataTypesNumeric** (*Phalcon\Mvc\Model* $model)
-
-Returns attributes which types are numerical
-
-
-
-*array* public **getIdentityField** (*Phalcon\Mvc\Model* $model)
-
-Returns the name of identity field (if one is present)
-
-
+public **getIdentityField** (*unknown* $model)
 
 public **storeMetaData** ()
 
-Stores meta-data using to the internal adapter
-
-
-
-*boolean* public **isEmpty** ()
-
-Checks if the internal meta-data container is empty
-
-
+public **isEmpty** ()
 
 public **reset** ()
-
-Resets internal meta-data in order to regenerate it
-
-
 
 abstract public **write** ()
 

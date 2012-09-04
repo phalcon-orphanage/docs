@@ -1,20 +1,7 @@
-Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
-============================================
+Class **Phalcon\Mvc\Model\MetaData\Apc**
+========================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
-
-Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-local-app')  
-
-.. code-block:: php
-
-    <?php
-
-     $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
-        'suffix' => 'my-app-id',
-        'lifetime' => 86400
-     ));
-
-
 
 Constants
 ---------
@@ -40,23 +27,11 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-public **__construct** (*array* $options)
+public **__construct** (*unknown* $options)
 
-Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
+public **read** ()
 
-
-
-*array* public **read** ()
-
-Reads meta-data from APC
-
-
-
-public **write** (*array* $data)
-
-Writes the meta-data to APC
-
-
+public **write** (*unknown* $data)
 
 protected **_initializeMetaData** ()
 
