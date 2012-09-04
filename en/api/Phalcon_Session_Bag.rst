@@ -1,5 +1,5 @@
-Class **Phalcon\Session\Bag**
-=============================
+Class **Phalcon\\Session\\Bag**
+===============================
 
 Methods
 ---------
@@ -12,7 +12,15 @@ public **getDI** ()
 
 public **initialize** ()
 
-public **__set** (*unknown* $property, *unknown* $value)
+public **__set** (*string* $property, *string* $value)
 
-public **__get** (*unknown* $property)
+Setter of values
+
+
+
+*string* public **__get** (*string* $property)
+
+Getter of values
+
+
 

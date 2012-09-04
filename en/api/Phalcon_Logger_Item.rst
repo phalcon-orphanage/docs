@@ -1,14 +1,30 @@
-Class **Phalcon\Logger\Item**
-=============================
+Class **Phalcon\\Logger\\Item**
+===============================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $message, *unknown* $type, *unknown* $time)
+public **__construct** (*string* $message, *integer* $type, *integer* $time)
 
-public **getMessage** ()
+Phalcon\\Logger\\Item contructor
 
-public **getType** ()
 
-public **getTime** ()
+
+*string* public **getMessage** ()
+
+Returns the message
+
+
+
+*integer* public **getType** ()
+
+Returns the log type
+
+
+
+*integer* public **getTime** ()
+
+Returns log timestamp
+
+
 

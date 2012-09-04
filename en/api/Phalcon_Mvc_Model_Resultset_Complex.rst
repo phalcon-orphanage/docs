@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Model\Resultset\Complex**
-=============================================
+Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
+=================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
@@ -8,15 +8,35 @@ Class **Phalcon\Mvc\Model\Resultset\Complex**
 Methods
 ---------
 
-public **__construct** (*unknown* $columnsTypes, *unknown* $result, *unknown* $cache)
+public **__construct** (*array* $columnsTypes, *Phalcon\Db\Result* $result, *Phalcon\Cache\Backend* $cache)
 
-public **valid** ()
+Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
 
-public **serialize** ()
 
-public **unserialize** (*unknown* $data)
 
-public **current** ()
+*boolean* public **valid** ()
+
+Check whether internal resource has rows to fetch
+
+
+
+*string* public **serialize** ()
+
+Serializing a resultset will dump all related rows into a big array
+
+
+
+public **unserialize** (*string* $data)
+
+Unserializing a resultset will allow to only works on the rows present in the saved state
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **current** ()
+
+Returns current row in the resultset
+
+
 
 public **next** ()
 

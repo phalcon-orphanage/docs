@@ -1,12 +1,24 @@
-Class **Phalcon\Acl\Resource**
-==============================
+Class **Phalcon\\Acl\\Resource**
+================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $name, *unknown* $description)
+public **__construct** (*string* $name, *string* $description)
 
-public **getName** ()
+Phalcon\\Acl\\Resource description
 
-public **getDescription** ()
+
+
+*string* public **getName** ()
+
+Returns the resource name
+
+
+
+*string* public **getDescription** ()
+
+Returns resource description
+
+
 

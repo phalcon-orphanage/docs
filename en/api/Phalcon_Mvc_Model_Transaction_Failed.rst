@@ -1,16 +1,28 @@
-Class **Phalcon\Mvc\Model\Transaction\Failed**
-==============================================
+Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
+==================================================
 
 *extends* Exception
 
 Methods
 ---------
 
-public **__construct** (*unknown* $message, *unknown* $record)
+public **__construct** (*string* $message, *Phalcon\Mvc\Model* $record)
 
-public **getRecordMessages** ()
+Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
-public **getRecord** ()
+
+
+*string* public **getRecordMessages** ()
+
+Returns validation record messages which stop the transaction
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getRecord** ()
+
+Returns validation record messages which stop the transaction
+
+
 
 final private **__clone** ()
 

@@ -1,5 +1,5 @@
-Class **Phalcon\Session\Adapter\Files**
-=======================================
+Class **Phalcon\\Session\\Adapter\\Files**
+==========================================
 
 *extends* :doc:`Phalcon\\Session <Phalcon_Session>`
 

@@ -1,5 +1,5 @@
-Class **Phalcon\Db\Column**
-===========================
+Class **Phalcon\\Db\\Column**
+=============================
 
 Constants
 ---------
@@ -23,31 +23,83 @@ integer **TYPE_FLOAT**
 Methods
 ---------
 
-public **__construct** (*unknown* $columnName, *unknown* $definition)
+public **__construct** (*string* $columnName, *array* $definition)
 
-public **getSchemaName** ()
+Phalcon\\Db\\Column constructor
 
-public **getName** ()
 
-public **getType** ()
 
-public **getSize** ()
+*string* public **getSchemaName** ()
 
-public **getScale** ()
+Returns schema's table related to column
 
-public **isUnsigned** ()
 
-public **isNotNull** ()
 
-public **isPrimary** ()
+*string* public **getName** ()
 
-public **isAutoIncrement** ()
+Returns column name
 
-public **isNumeric** ()
 
-public **isFirst** ()
 
-public **getAfterPosition** ()
+*int* public **getType** ()
+
+Returns column type
+
+
+
+*int* public **getSize** ()
+
+Returns column size
+
+
+
+*int* public **getScale** ()
+
+Returns column scale
+
+
+
+*boolean* public **isUnsigned** ()
+
+Returns true if number column is unsigned
+
+
+
+*boolean* public **isNotNull** ()
+
+Not null
+
+
+
+*boolean* public **isPrimary** ()
+
+Column is part of the primary key?
+
+
+
+*boolean* public **isAutoIncrement** ()
+
+Auto-Increment
+
+
+
+*boolean* public **isNumeric** ()
+
+Check whether column have an numeric type
+
+
+
+*boolean* public **isFirst** ()
+
+Check whether column have first position in table
+
+
+
+*string* public **getAfterPosition** ()
+
+Check whether field absolute to position in table
+
+
 
 public static **__set_state** (*unknown* $data)
 

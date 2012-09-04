@@ -1,5 +1,5 @@
-Class **Phalcon\Translate\Adapter\NativeArray**
-===============================================
+Class **Phalcon\\Translate\\Adapter\\NativeArray**
+==================================================
 
 *extends* :doc:`Phalcon\\Translate <Phalcon_Translate>`
 
@@ -10,9 +10,21 @@ Methods
 
 public **__construct** (*unknown* $options)
 
-public **query** (*unknown* $index, *unknown* $placeholders)
+Phalcon\\Translate\\Adapter\\NativeArray constructor
 
-public **exists** (*unknown* $index)
+
+
+*string* public **query** (*string* $index, *array* $placeholders)
+
+Returns the translation related to the given key
+
+
+
+*bool* public **exists** (*string* $index)
+
+Check whether is defined a translation key in the internal array
+
+
 
 public **_** (*unknown* $translateKey, *unknown* $placeholders)
 

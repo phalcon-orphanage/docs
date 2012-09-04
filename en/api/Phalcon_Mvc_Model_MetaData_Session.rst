@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Model\MetaData\Session**
-============================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
+================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
@@ -27,11 +27,23 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options)
 
-public **read** ()
+Phalcon\\Mvc\\Model\\MetaData\\Session constructor
 
-public **write** (*unknown* $data)
+
+
+*array* public **read** ()
+
+Reads meta-data from $_SESSION
+
+
+
+public **write** (*array* $data)
+
+Writes the meta-data to $_SESSION
+
+
 
 protected **_initializeMetaData** ()
 

@@ -1,12 +1,16 @@
-Class **Phalcon\Flash\Direct**
-==============================
+Class **Phalcon\\Flash\\Direct**
+================================
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 Methods
 ---------
 
-public **message** (*unknown* $type, *unknown* $message)
+*string* public **message** (*string* $type, *string* $message)
+
+Outputs a message
+
+
 
 public **__construct** (*unknown* $cssClasses)
 

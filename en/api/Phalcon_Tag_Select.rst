@@ -1,10 +1,14 @@
-Class **Phalcon\Tag\Select**
-============================
+Class **Phalcon\\Tag\\Select**
+==============================
 
 Methods
 ---------
 
-public static **selectField** (*unknown* $parameters, *unknown* $data)
+public static **selectField** (*array* $parameters, *array* $data)
+
+Generates a SELECT tag
+
+
 
 protected static **_optionsFromResultset** ()
 

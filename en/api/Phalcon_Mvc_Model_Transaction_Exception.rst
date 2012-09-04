@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Model\Transaction\Exception**
-=================================================
+Class **Phalcon\\Mvc\\Model\\Transaction\\Exception**
+=====================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 

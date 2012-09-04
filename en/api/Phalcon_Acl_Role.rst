@@ -1,12 +1,24 @@
-Class **Phalcon\Acl\Role**
-==========================
+Class **Phalcon\\Acl\\Role**
+============================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $name, *unknown* $description)
+public **__construct** (*string* $name, *string* $description)
 
-public **getName** ()
+Phalcon\\Acl\\Role description
 
-public **getDescription** ()
+
+
+*string* public **getName** ()
+
+Returns the role name
+
+
+
+*string* public **getDescription** ()
+
+Returns role description
+
+
 

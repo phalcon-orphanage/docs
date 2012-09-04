@@ -1,22 +1,54 @@
-Class **Phalcon\Cache\Frontend\Data**
-=====================================
+Class **Phalcon\\Cache\\Frontend\\Data**
+========================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $frontendOptions)
+public **__construct** (*array* $frontendOptions)
 
-public **getLifetime** ()
+Phalcon\\Cache\\Frontend\\Data constructor
+
+
+
+*integer* public **getLifetime** ()
+
+Returns cache lifetime
+
+
 
 public **isBuffering** ()
 
+Check whether if frontend is buffering output
+
+
+
 public **start** ()
 
-public **getContent** ()
+Starts output frontend. Actually, does nothing
+
+
+
+*string* public **getContent** ()
+
+Returns output cached content
+
+
 
 public **stop** ()
 
-public **beforeStore** (*unknown* $data)
+Stops output frontend
 
-public **afterRetrieve** (*unknown* $data)
+
+
+public **beforeStore** (*mixed* $data)
+
+Serializes data before storing it
+
+
+
+public **afterRetrieve** (*mixed* $data)
+
+Unserializes data after retrieving it
+
+
 

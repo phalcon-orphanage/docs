@@ -1,12 +1,24 @@
-Class **Phalcon\Paginator\Adapter\Model**
-=========================================
+Class **Phalcon\\Paginator\\Adapter\\Model**
+============================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $config)
+public **__construct** (*array* $config)
 
-public **setCurrentPage** (*unknown* $page)
+Phalcon\\Paginator\\Adapter\\Model constructor
 
-public **getPaginate** ()
+
+
+public **setCurrentPage** (*int* $page)
+
+Set the current page number
+
+
+
+*stdClass* public **getPaginate** ()
+
+Returns a slice of the resultset to show in the pagination
+
+
 

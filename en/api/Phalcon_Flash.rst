@@ -1,5 +1,5 @@
-Class **Phalcon\Flash**
-=======================
+Class **Phalcon\\Flash**
+========================
 
 Methods
 ---------
@@ -12,13 +12,29 @@ public **setAutomaticHtml** (*unknown* $automaticHtml)
 
 public **setCssClasses** (*unknown* $cssClasses)
 
-public **error** (*unknown* $message)
+*string* public **error** (*string* $message)
 
-public **notice** (*unknown* $message)
+Shows a HTML error message <code>$flash->error('This is an error');
 
-public **success** (*unknown* $message)
 
-public **warning** (*unknown* $message)
+
+*string* public **notice** (*string* $message)
+
+Shows a HTML notice/information message <code>$flash->notice('This is an information');
+
+
+
+*string* public **success** (*string* $message)
+
+Shows a HTML success message <code>$flash->success('The process was finished successfully');
+
+
+
+*string* public **warning** (*string* $message)
+
+Shows a HTML warning message <code>$flash->warning('Hey, this is important');
+
+
 
 public **outputMessage** (*unknown* $type, *unknown* $message)
 

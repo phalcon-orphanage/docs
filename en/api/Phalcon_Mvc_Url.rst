@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Url**
-=========================
+Class **Phalcon\\Mvc\\Url**
+===========================
 
 Methods
 ---------
@@ -16,7 +16,11 @@ public **setBasePath** (*unknown* $basePath)
 
 public **getBasePath** ()
 
-public **get** (*unknown* $uri)
+*string* public **get** (*string* $uri)
+
+Gets a public URL prepending the application URI
+
+
 
 public **path** (*unknown* $uri)
 

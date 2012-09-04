@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\User\Plugin**
-=================================
+Class **Phalcon\\Mvc\\User\\Plugin**
+====================================
 
 *extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
 

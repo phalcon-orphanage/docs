@@ -1,12 +1,16 @@
-Class **Phalcon\Mvc\View\Engine\Php**
-=====================================
+Class **Phalcon\\Mvc\\View\\Engine\\Php**
+=========================================
 
 *extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
 Methods
 ---------
 
-public **render** (*unknown* $path, *unknown* $params, *unknown* $mustClean)
+public **render** (*string* $path, *array* $params, *bool* $mustClean)
+
+Renders a view using the template engine
+
+
 
 public **__construct** (*unknown* $view, *unknown* $dependencyInjector)
 

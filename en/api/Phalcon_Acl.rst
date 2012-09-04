@@ -1,5 +1,5 @@
-Class **Phalcon\Acl**
-=====================
+Class **Phalcon\\Acl**
+======================
 
 Constants
 ---------
@@ -13,5 +13,13 @@ Methods
 
 public **setEventsManager** (*unknown* $eventsManager)
 
-public **getEventsManager** ()
+Sets the events manager
+
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+
+Returns the internal event manager
+
+
 

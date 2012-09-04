@@ -1,5 +1,5 @@
-Class **Phalcon\DI**
-====================
+Class **Phalcon\\DI**
+=====================
 
 Methods
 ---------
@@ -18,15 +18,35 @@ public **get** (*unknown* $alias, *unknown* $parameters)
 
 public **getShared** (*unknown* $alias, *unknown* $parameters)
 
-public **has** (*unknown* $alias)
+*boolean* public **has** (*unknown* $alias)
 
-public **wasFreshInstance** ()
+Check whether the DI contains a service by a name
 
-public **__call** (*unknown* $method, *unknown* $arguments)
+
+
+*boolean* public **wasFreshInstance** ()
+
+Check whether the last service obtained via getShared produced a fresh instance or an existing one
+
+
+
+*mixed* public **__call** (*string* $method, *array* $arguments)
+
+Magic method to get or set services using setters/getters
+
+
 
 public static **setDefault** (*unknown* $dependencyInjector)
 
-public static **getDefault** ()
+:doc:`Phalcon\\DI <Phalcon_DI>` public static **getDefault** ()
+
+Return the last DI created
+
+
 
 public static **reset** ()
+
+Resets the internal default DI
+
+
 

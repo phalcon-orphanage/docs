@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Model\MetaData\Memory**
-===========================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
+===============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
@@ -27,11 +27,23 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options)
 
-public **read** ()
+Phalcon\\Mvc\\Model\\MetaData constructor
+
+
+
+*array* public **read** ()
+
+Reads the meta-data from temporal memory
+
+
 
 public **write** ()
+
+Writes the meta-data to temporal memory
+
+
 
 protected **_initializeMetaData** ()
 

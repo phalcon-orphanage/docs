@@ -1,22 +1,50 @@
-Class **Phalcon\Db\Profiler**
-=============================
+Class **Phalcon\\Db\\Profiler**
+===============================
 
 Methods
 ---------
 
 public **__construct** ()
 
-public **startProfile** (*unknown* $sqlStatement)
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **startProfile** (*string* $sqlStatement)
 
-public **stopProfile** ()
+Starts the profile of a SQL sentence
 
-public **getNumberTotalStatements** ()
 
-public **getTotalElapsedSeconds** ()
 
-public **getProfiles** ()
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **stopProfile** ()
 
-public **reset** ()
+Stops the active profile
 
-public **getLastProfile** ()
+
+
+*integer* public **getNumberTotalStatements** ()
+
+Returns the total number of SQL statements processed
+
+
+
+*double* public **getTotalElapsedSeconds** ()
+
+Returns the total time in seconds spent by the profiles
+
+
+
+:doc:`Phalcon\\Db\\Profiler\\Item[] <Phalcon_Db_Profiler_Item[]>` public **getProfiles** ()
+
+Returns all the processed profiles
+
+
+
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **reset** ()
+
+Resets the profiler, cleaning up all the profiles
+
+
+
+:doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` public **getLastProfile** ()
+
+Returns the last profile executed in the profiler
+
+
 

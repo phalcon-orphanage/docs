@@ -1,12 +1,24 @@
-Class **Phalcon\Db\RawValue**
-=============================
+Class **Phalcon\\Db\\RawValue**
+===============================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $value)
+public **__construct** (*string* $value)
 
-public **getValue** ()
+Phalcon\\Db\\RawValue constructor
+
+
+
+*string* public **getValue** ()
+
+Returns internal raw value without quoting or formating
+
+
 
 public **__toString** ()
+
+Magic method __toString returns raw value without quoting or formating
+
+
 

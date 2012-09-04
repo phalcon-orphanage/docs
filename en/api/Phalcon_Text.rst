@@ -1,10 +1,32 @@
-Class **Phalcon\Text**
-======================
+Class **Phalcon\\Text**
+=======================
 
 Methods
 ---------
 
-public static **camelize** (*unknown* $str)
+*string* public static **camelize** (*string* $str)
 
-public static **uncamelize** (*unknown* $str)
+Converts strings to camelize style 
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+
+
+
+
+*string* public static **uncamelize** (*string* $str)
+
+Uncamelize strings which are camelized 
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+
+
+
 

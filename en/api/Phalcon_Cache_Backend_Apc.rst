@@ -1,18 +1,34 @@
-Class **Phalcon\Cache\Backend\Apc**
-===================================
+Class **Phalcon\\Cache\\Backend\\Apc**
+======================================
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Methods
 ---------
 
-public **get** (*unknown* $keyName, *unknown* $lifetime)
+*mixed* public **get** (*string* $keyName, *long* $lifetime)
 
-public **save** (*unknown* $keyName, *unknown* $content, *unknown* $lifetime, *unknown* $stopBuffer)
+Returns a cached content
 
-public **delete** (*unknown* $keyName)
 
-public **queryKeys** (*unknown* $prefix)
+
+public **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+
+Stores cached content into the file backend
+
+
+
+*boolean* public **delete** (*string* $keyName)
+
+Deletes a value from the cache by its key
+
+
+
+*array* public **queryKeys** (*string* $prefix)
+
+Query the existing cached keys
+
+
 
 public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
 

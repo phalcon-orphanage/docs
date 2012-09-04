@@ -1,5 +1,5 @@
-Class **Phalcon\Logger**
-========================
+Class **Phalcon\\Logger**
+=========================
 
 Constants
 ---------
@@ -27,17 +27,41 @@ integer **EMERGENCE**
 Methods
 ---------
 
-public **debug** (*unknown* $message)
+public **debug** (*string* $message)
 
-public **error** (*unknown* $message)
+Sends/Writes a debug message to the log
 
-public **info** (*unknown* $message)
 
-public **notice** (*unknown* $message)
 
-public **warning** (*unknown* $message)
+public **error** (*string* $message)
 
-public **alert** (*unknown* $message)
+Sends/Writes an error message to the log
+
+
+
+public **info** (*string* $message)
+
+Sends/Writes an info message to the log
+
+
+
+public **notice** (*string* $message)
+
+Sends/Writes a notice message to the log
+
+
+
+public **warning** (*string* $message)
+
+Sends/Writes a warning message to the log
+
+
+
+public **alert** (*string* $message)
+
+Sends/Writes an alert message to the log
+
+
 
 public **log** (*unknown* $message, *unknown* $type)
 

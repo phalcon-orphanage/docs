@@ -1,5 +1,5 @@
-Class **Phalcon\Events\Event**
-==============================
+Class **Phalcon\\Events\\Event**
+================================
 
 Methods
 ---------

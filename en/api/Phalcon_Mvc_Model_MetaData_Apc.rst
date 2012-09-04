@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Model\MetaData\Apc**
-========================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
+============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
@@ -27,11 +27,23 @@ integer **MODELS_IDENTITY_FIELD**
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options)
 
-public **read** ()
+Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
 
-public **write** (*unknown* $data)
+
+
+*array* public **read** ()
+
+Reads meta-data from APC
+
+
+
+public **write** (*array* $data)
+
+Writes the meta-data to APC
+
+
 
 protected **_initializeMetaData** ()
 

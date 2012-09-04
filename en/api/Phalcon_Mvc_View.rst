@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\View**
-==========================
+Class **Phalcon\\Mvc\\View**
+============================
 
 *extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
 
@@ -21,67 +21,256 @@ integer **LEVEL_NO_RENDER**
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options)
 
-public **setViewsDir** (*unknown* $viewsDir)
+Phalcon\\Mvc\\View constructor
 
-public **getViewsDir** ()
 
-public **setBasePath** (*unknown* $basePath)
 
-public **setRenderLevel** (*unknown* $level)
+public **setViewsDir** (*string* $viewsDir)
+
+Sets views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+*string* public **getViewsDir** ()
+
+Gets views directory
+
+
+
+public **setBasePath** (*string* $basePath)
+
+Sets base path. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+     $view->setBasePath(__DIR__.'/');
+
+
+
+
+public **setRenderLevel** (*string* $level)
+
+Sets the render level for the view 
+
+.. code-block:: php
+
+    <?php
+
+     //Render the view related to the controller only
+     $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
+
+
+
 
 public **setMainView** (*unknown* $viewPath)
 
-public **setTemplateBefore** (*unknown* $templateBefore)
+Sets default view name. Must be a file without extension in the views directory 
+
+.. code-block:: php
+
+    <?php
+
+     //Renders as main view views-dir/inicio.phtml
+     $this->view->setMainView('inicio');
+
+
+
+
+public **setTemplateBefore** (*string|array* $templateBefore)
+
+Appends template before controller layout
+
+
 
 public **cleanTemplateBefore** ()
 
-public **setTemplateAfter** (*unknown* $templateAfter)
+Resets any template before layouts
+
+
+
+public **setTemplateAfter** (*string|array* $templateAfter)
+
+Appends template after controller layout
+
+
 
 public **cleanTemplateAfter** ()
 
-public **setParamToView** (*unknown* $key, *unknown* $value)
+Resets any template before layouts
 
-public **setVar** (*unknown* $key, *unknown* $value)
 
-public **getParamsToView** ()
 
-public **getControllerName** ()
+public **setParamToView** (*string* $key, *mixed* $value)
 
-public **getActionName** ()
+Adds parameters to views (alias of setVar)
+
+
+
+public **setVar** (*string* $key, *mixed* $value)
+
+Adds parameters to views
+
+
+
+*array* public **getParamsToView** ()
+
+Returns parameters to views
+
+
+
+*string* public **getControllerName** ()
+
+Gets the name of the controller rendered
+
+
+
+*string* public **getActionName** ()
+
+Gets the name of the action rendered
+
+
 
 public **getParams** ()
 
+Gets extra parameters of the action rendered
+
+
+
 public **start** ()
 
-protected **_loadTemplateEngines** ()
+Starts rendering process enabling the output buffering
+
+
+
+*array* protected **_loadTemplateEngines** ()
+
+Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
+
+
 
 protected **_engineRender** ()
 
-public **registerEngines** (*unknown* $engines)
+Checks whether view exists on registered extensions and render it
 
-public **render** (*unknown* $controllerName, *unknown* $actionName, *unknown* $params)
 
-public **pick** (*unknown* $renderView)
 
-public **partial** (*unknown* $partialPath)
+public **registerEngines** (*array* $engines)
+
+Register templating engines 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->registerEngines(array(
+      ".phtml" => "Phalcon\Mvc\View\Engine\Php",
+      ".mhtml" => "MyMustacheEngine"
+    ));
+
+
+
+
+public **render** (*string* $controllerName, *string* $actionName, *array* $params)
+
+Executes render process from dispatching data 
+
+.. code-block:: php
+
+    <?php
+
+     $view->start();
+     //Shows recent posts view (app/views/posts/recent.phtml)
+     $view->render('posts', 'recent');
+     $view->finish();
+
+
+
+
+public **pick** (*string* $renderView)
+
+Choose a view different to render than last-controller/last-action 
+
+.. code-block:: php
+
+    <?php
+
+     class ProductsController extends Phalcon\Mvc\Controller
+     {
+    
+        public function saveAction()
+        {
+    
+             //Do some save stuff...
+    
+             //Then show the list view
+             $this->view->pick("products/list");
+        }
+     }
+
+
+
+
+public **partial** (*string* $partialPath)
+
+Renders a partial view 
+
+.. code-block:: php
+
+    <?php
+
+     //Show a partial inside another view
+     $this->partial('shared/footer');
+
+
+
 
 public **finish** ()
 
-protected **_createCache** ()
+Finishes the render process by stopping the output buffering
 
-public **getCache** ()
 
-public **cache** (*unknown* $options)
 
-public **setContent** (*unknown* $content)
+:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` protected **_createCache** ()
 
-public **getContent** ()
+Create a Phalcon\\Cache based on the internal cache options
+
+
+
+:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` public **getCache** ()
+
+Returns the cache instance used to cache
+
+
+
+public **cache** (*boolean|array* $options)
+
+Cache the actual view render to certain level
+
+
+
+public **setContent** (*string* $content)
+
+Externally sets the view content <code>$this->view->setContent("<h1>hello</h1>");
+
+
+
+*string* public **getContent** ()
+
+Returns cached ouput from another view stage
+
+
 
 public **getActiveRenderPath** ()
 
 public **disable** ()
+
+Disable view. No show any view or template
+
+
 
 public **setDI** (*unknown* $dependencyInjector)
 

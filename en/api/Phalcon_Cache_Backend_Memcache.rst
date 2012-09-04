@@ -1,24 +1,52 @@
-Class **Phalcon\Cache\Backend\Memcache**
-========================================
+Class **Phalcon\\Cache\\Backend\\Memcache**
+===========================================
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 Methods
 ---------
 
-public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
+public **__construct** (*mixed* $frontendObject, *array* $backendOptions)
+
+Phalcon\\Backend\\Adapter\\Memcache constructor
+
+
 
 protected **_connect** ()
 
-public **get** (*unknown* $keyName, *unknown* $lifetime)
+Create internal connection to memcached
 
-public **save** (*unknown* $keyName, *unknown* $content, *unknown* $lifetime, *unknown* $stopBuffer)
 
-public **delete** (*unknown* $keyName)
 
-public **queryKeys** (*unknown* $prefix)
+*mixed* public **get** (*int|string* $keyName, *long* $lifetime)
+
+Returns a cached content
+
+
+
+public **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+
+Stores cached content into the file backend
+
+
+
+*boolean* public **delete** (*int|string* $keyName)
+
+Deletes a value from the cache by its key
+
+
+
+*array* public **queryKeys** (*string* $prefix)
+
+Query the existing cached keys
+
+
 
 public **__destruct** ()
+
+Destructs the backend closing the memcached connection
+
+
 
 public **start** (*unknown* $keyName)
 

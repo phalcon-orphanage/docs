@@ -1,22 +1,54 @@
-Class **Phalcon\Db\Reference**
-==============================
+Class **Phalcon\\Db\\Reference**
+================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $referenceName, *unknown* $definition)
+public **__construct** (*string* $referenceName, *array* $definition)
 
-public **getName** ()
+Phalcon\\Db\\Reference constructor
 
-public **getSchemaName** ()
 
-public **getReferencedSchema** ()
 
-public **getColumns** ()
+*string* public **getName** ()
 
-public **getReferencedTable** ()
+Gets the index name
 
-public **getReferencedColumns** ()
 
-public static **__set_state** (*unknown* $data)
+
+*string* public **getSchemaName** ()
+
+Gets the schema where referenced table is
+
+
+
+*string* public **getReferencedSchema** ()
+
+Gets the schema where referenced table is
+
+
+
+*array* public **getColumns** ()
+
+Gets local columns which reference is based
+
+
+
+*string* public **getReferencedTable** ()
+
+Gets the referenced table
+
+
+
+*array* public **getReferencedColumns** ()
+
+Gets referenced columns
+
+
+
+:doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` public static **__set_state** (*array* $data)
+
+Restore a Phalcon\\Db\\Reference object from export
+
+
 

@@ -1,12 +1,16 @@
-Class **Phalcon\Mvc\Model\Validator\Uniqueness**
-================================================
+Class **Phalcon\\Mvc\\Model\\Validator\\Uniqueness**
+====================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
 Methods
 ---------
 
-public **validate** (*unknown* $record)
+*boolean* public **validate** (*unknown* $record)
+
+Executes the validator
+
+
 
 public **__construct** (*unknown* $options)
 

@@ -1,30 +1,78 @@
-Class **Phalcon\Mvc\Model\Transaction**
-=======================================
+Class **Phalcon\\Mvc\\Model\\Transaction**
+==========================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $dependencyInjector, *unknown* $autoBegin)
+public **__construct** (*Phalcon\DI* $dependencyInjector, *boolean* $autoBegin)
 
-public **setTransactionManager** (*unknown* $manager)
+Phalcon\\Mvc\\Model\\Transaction constructor
 
-public **begin** ()
 
-public **commit** ()
 
-public **rollback** (*unknown* $rollbackMessage, *unknown* $rollbackRecord)
+public **setTransactionManager** (*Phalcon\Mvc\Model\Transaction\Manager* $manager)
 
-public **getConnection** ()
+Sets transaction manager related to the transaction
 
-public **setIsNewTransaction** (*unknown* $isNew)
 
-public **setRollbackOnAbort** (*unknown* $rollbackOnAbort)
 
-public **isManaged** ()
+*boolean* public **begin** ()
 
-public **getMessages** ()
+Starts the transaction
 
-public **isValid** ()
 
-public **setRollbackedRecord** (*unknown* $record)
+
+*boolean* public **commit** ()
+
+Commits the transaction
+
+
+
+*boolean* public **rollback** (*string* $rollbackMessage, *Phalcon\Mvc\Model* $rollbackRecord)
+
+Rollbacks the transaction
+
+
+
+*string* public **getConnection** ()
+
+Returns connection related to transaction
+
+
+
+public **setIsNewTransaction** (*boolean* $isNew)
+
+Sets if is a reused transaction or new once
+
+
+
+public **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
+
+Sets flag to rollback on abort the HTTP connection
+
+
+
+*boolean* public **isManaged** ()
+
+Checks whether transaction is managed by a transaction manager
+
+
+
+*array* public **getMessages** ()
+
+Returns validations messages from last save try
+
+
+
+*boolean* public **isValid** ()
+
+Checks whether internal connection is under an active transaction
+
+
+
+public **setRollbackedRecord** (*Phalcon\Mvc\Model* $record)
+
+Sets object which generates rollback action
+
+
 

@@ -1,5 +1,5 @@
-Class **Phalcon\Db\Adapter\Pdo\Postgresql**
-===========================================
+Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
+===============================================
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
@@ -15,15 +15,35 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-public **connect** (*unknown* $descriptor)
+*boolean* public **connect** (*array* $descriptor)
 
-public **describeColumns** (*unknown* $table, *unknown* $schema)
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection. Support set search_path after connectted if schema is specified in config.
 
-public **describeIndexes** (*unknown* $table, *unknown* $schema)
 
-public **describeReferences** (*unknown* $table, *unknown* $schema)
 
-public **tableOptions** (*unknown* $tableName, *unknown* $schemaName)
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
+
+Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts") ?>
+
+
+
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
+
+Lists table indexes
+
+
+
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
+
+Lists table references
+
+
+
+*array* public **tableOptions** (*string* $tableName, *string* $schemaName)
+
+Gets creation options from a table
+
+
 
 public **__construct** (*unknown* $descriptor)
 

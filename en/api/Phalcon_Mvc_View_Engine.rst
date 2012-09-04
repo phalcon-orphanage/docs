@@ -1,16 +1,28 @@
-Class **Phalcon\Mvc\View\Engine**
-=================================
+Class **Phalcon\\Mvc\\View\\Engine**
+====================================
 
 *extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
 
 Methods
 ---------
 
-public **__construct** (*unknown* $view, *unknown* $dependencyInjector)
+public **__construct** (*Phalcon\Mvc\View* $view, *unknown* $dependencyInjector)
 
-public **getContent** ()
+Phalcon\\Mvc\\View\\Engine constructor
 
-public **partial** (*unknown* $partialPath)
+
+
+*array* public **getContent** ()
+
+Returns cached ouput on another view stage
+
+
+
+public **partial** (*string* $partialPath)
+
+Renders a partial inside another view
+
+
 
 public **setDI** (*unknown* $dependencyInjector)
 

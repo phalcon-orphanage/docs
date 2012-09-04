@@ -1,8 +1,12 @@
-Class **Phalcon\Mvc\Model\Query\Lang**
-======================================
+Class **Phalcon\\Mvc\\Model\\Query\\Lang**
+==========================================
 
 Methods
 ---------
 
-public static **parsePHQL** (*unknown* $phql)
+*string* public static **parsePHQL** (*unknown* $phql)
+
+Parses a PHQL statement returning an intermediate representation (IR)
+
+
 

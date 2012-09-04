@@ -1,5 +1,5 @@
-Class **Phalcon\Tag\Exception**
-===============================
+Class **Phalcon\\Tag\\Exception**
+=================================
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 

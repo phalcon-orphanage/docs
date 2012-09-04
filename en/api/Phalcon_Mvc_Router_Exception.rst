@@ -1,5 +1,5 @@
-Class **Phalcon\Mvc\Router\Exception**
-======================================
+Class **Phalcon\\Mvc\\Router\\Exception**
+=========================================
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 

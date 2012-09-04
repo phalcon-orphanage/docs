@@ -1,20 +1,44 @@
-Class **Phalcon\Cache\Backend**
-===============================
+Class **Phalcon\\Cache\\Backend**
+=================================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
+public **__construct** (*mixed* $frontendObject, *array* $backendOptions)
 
-public **start** (*unknown* $keyName)
+Phalcon\\Cache\\Backend constructor
 
-public **getFrontend** ()
 
-public **isFresh** ()
 
-public **isStarted** ()
+*mixed* public **start** (*int|string* $keyName)
 
-public **getLastKey** ()
+Starts a cache. The $keyname allow to identify the created fragment
+
+
+
+*mixed* public **getFrontend** ()
+
+Returns front-end instance adapter related to the back-end
+
+
+
+*boolean* public **isFresh** ()
+
+Checks whether the last cache is fresh or cached
+
+
+
+*boolean* public **isStarted** ()
+
+Checks whether the cache has started buffering or not
+
+
+
+*string* public **getLastKey** ()
+
+Gets the last key stored by the cache
+
+
 
 abstract public **get** ()
 

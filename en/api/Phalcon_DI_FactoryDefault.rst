@@ -1,5 +1,5 @@
-Class **Phalcon\DI\FactoryDefault**
-===================================
+Class **Phalcon\\DI\\FactoryDefault**
+=====================================
 
 *extends* :doc:`Phalcon\\DI <Phalcon_DI>`
 
@@ -7,6 +7,10 @@ Methods
 ---------
 
 public **__construct** ()
+
+Phalcon\\DI\\FactoryDefault constructor
+
+
 
 public **set** (*unknown* $alias, *unknown* $config)
 

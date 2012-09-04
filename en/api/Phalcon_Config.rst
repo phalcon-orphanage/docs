@@ -1,8 +1,12 @@
-Class **Phalcon\Config**
-========================
+Class **Phalcon\\Config**
+=========================
 
 Methods
 ---------
 
-public **__construct** (*unknown* $arrayConfig)
+:doc:`Phalcon\\Config <Phalcon_Config>` public **__construct** (*array* $arrayConfig)
+
+Phalcon\\Config constructor
+
+
 

@@ -1,5 +1,5 @@
-Class **Phalcon\Exception**
-===========================
+Class **Phalcon\\Exception**
+============================
 
 *extends* Exception
 

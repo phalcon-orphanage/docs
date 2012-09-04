@@ -1,16 +1,32 @@
-Class **Phalcon\Mvc\User**
-==========================
+Class **Phalcon\\Mvc\\User**
+============================
 
 Methods
 ---------
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
+
+Sets the dependency injector
+
+
 
 public **getDI** ()
 
-public **setEventsManager** (*unknown* $eventsManager)
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
-public **getEventsManager** ()
+Sets the event manager
 
-public **__get** (*unknown* $propertyName)
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+
+Returns the internal event manager
+
+
+
+public **__get** (*string* $propertyName)
+
+Magic method __get
+
+
 

@@ -1,5 +1,5 @@
-Class **Phalcon\Logger\Adapter\File**
-=====================================
+Class **Phalcon\\Logger\\Adapter\\File**
+========================================
 
 *extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
 
@@ -29,31 +29,83 @@ integer **EMERGENCE**
 Methods
 ---------
 
-public **__construct** (*unknown* $name, *unknown* $options)
+public **__construct** (*string* $name, *array* $options)
 
-public **setFormat** (*unknown* $format)
+Phalcon\\Logger\\Adapter\\File constructor
 
-public **getFormat** ()
 
-public **getTypeString** (*unknown* $type)
 
-protected **_applyFormat** ()
+public **setFormat** (*string* $format)
 
-public **setDateFormat** (*unknown* $date)
+Set the log format
 
-public **getDateFormat** ()
 
-public **log** (*unknown* $message, *unknown* $type)
+
+*format* public **getFormat** ()
+
+Returns the log format
+
+
+
+*string* public **getTypeString** (*integer* $type)
+
+Returns the string meaning of a logger constant
+
+
+
+*string* protected **_applyFormat** ()
+
+Applies the internal format to the message
+
+
+
+public **setDateFormat** (*string* $date)
+
+Sets the internal date format
+
+
+
+*string* public **getDateFormat** ()
+
+Returns the internal date format
+
+
+
+public **log** (*string* $message, *int* $type)
+
+Sends/Writes messages to the file log
+
+
 
 public **begin** ()
 
+Starts a transaction
+
+
+
 public **commit** ()
+
+Commits the internal transaction
+
+
 
 public **rollback** ()
 
-public **close** ()
+Rollbacks the internal transaction
+
+
+
+*boolean* public **close** ()
+
+Closes the logger
+
+
 
 public **__wakeup** ()
+
+Opens the internal file handler after unserialization
+
+
 
 public **debug** (*unknown* $message)
 

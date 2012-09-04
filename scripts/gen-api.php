@@ -220,11 +220,17 @@ $api = new API_Generator(CPHALCON_DIR);
 $classDocs = $api->getClassDocs();
 $docs = $api->getDocs();
 
-
 foreach(get_declared_classes() as $className){
 
 	if (!preg_match('#^Phalcon#', $className)) {
 		continue;
+	}
+
+	$simpleClassName = str_replace("\\", "_", $className);
+	if (isset($docs[$simpleClassName])) {
+		$docMethods = $docs[$simpleClassName];
+	} else {
+		$docMethods = array();
 	}
 
 	$reflector = new ReflectionClass($className);
@@ -248,10 +254,12 @@ foreach(get_declared_classes() as $className){
 		'methods'		=> $reflector->getMethods()
 	);
 
-	$index.='   '.str_replace("\\", "_", $className).PHP_EOL;
+	$index.='   '.$simpleClassName.PHP_EOL;
 
-	$code = 'Class **'.$className.'**'.PHP_EOL;
-	$code.= str_repeat("=", strlen($className)+10).PHP_EOL.PHP_EOL;
+	$nsClassName = str_replace("\\", "\\\\", $className);
+
+	$code = 'Class **'.$nsClassName.'**'.PHP_EOL;
+	$code.= str_repeat("=", strlen($nsClassName)+10).PHP_EOL.PHP_EOL;
 
 	if($documentationData['extends']){
 		$extendsName = $documentationData['extends']->name;
@@ -326,7 +334,7 @@ foreach(get_declared_classes() as $className){
 
 	}
 
-	file_put_contents('en/api/'.str_replace("\\", "_", $className).'.rst', $code);
+	file_put_contents('en/api/'.$simpleClassName.'.rst', $code);
 }
 
 file_put_contents('en/api/index.rst', $index);

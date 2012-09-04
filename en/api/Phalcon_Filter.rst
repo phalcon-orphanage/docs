@@ -1,5 +1,5 @@
-Class **Phalcon\Filter**
-========================
+Class **Phalcon\\Filter**
+=========================
 
 Methods
 ---------
@@ -8,9 +8,17 @@ public **__construct** ()
 
 public **add** (*unknown* $name, *unknown* $handler)
 
-public **sanitize** (*unknown* $value, *unknown* $filters)
+*mixed* public **sanitize** (*mixed* $value, *mixed* $filters)
 
-protected **_sanitize** ()
+Sanizites a value with a specified single or set of filters
+
+
+
+*mixed* protected **_sanitize** ()
+
+Internal sanizite wrapper to filter_var
+
+
 
 public **getFilters** ()
 

@@ -1,52 +1,140 @@
-Class **Phalcon\Mvc\Dispatcher**
-================================
+Class **Phalcon\\Mvc\\Dispatcher**
+==================================
 
 Methods
 ---------
 
 public **__construct** ()
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-public **getDI** ()
+Sets the dependency injector
 
-public **setEventsManager** (*unknown* $eventsManager)
 
-public **getEventsManager** ()
 
-public **setDefaultNamespace** (*unknown* $namespace)
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
 
-public **setDefaultController** (*unknown* $controllerName)
+Returns the internal dependency injector
 
-public **setDefaultAction** (*unknown* $actionName)
 
-public **setControllerName** (*unknown* $controllerName)
 
-public **getControllerName** ()
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
-public **setActionName** (*unknown* $actionName)
+Sets the events manager
 
-public **getActionName** ()
 
-public **setParams** (*unknown* $params)
 
-public **getParams** ()
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
 
-public **setParam** (*unknown* $param, *unknown* $value)
+Returns the internal event manager
 
-public **getParam** (*unknown* $param)
 
-public **dispatch** ()
+
+public **setDefaultNamespace** (*string* $namespace)
+
+Sets the default namespace
+
+
+
+public **setDefaultController** (*string* $controllerName)
+
+Sets the default controller name
+
+
+
+public **setDefaultAction** (*string* $actionName)
+
+Sets the default action name
+
+
+
+public **setControllerName** (*string* $controllerName)
+
+Sets the controller name to be dispatched
+
+
+
+*string* public **getControllerName** ()
+
+Gets last dispatched controller name
+
+
+
+public **setActionName** (*string* $actionName)
+
+Sets the action name to be dispatched
+
+
+
+*string* public **getActionName** ()
+
+Gets last dispatched action name
+
+
+
+public **setParams** (*array* $params)
+
+Sets action params to be dispatched
+
+
+
+*array* public **getParams** ()
+
+Gets action params
+
+
+
+public **setParam** (*mixed* $param, *mixed* $value)
+
+Set a param by its name or numeric index
+
+
+
+*mixed* public **getParam** (*mixed* $param)
+
+Gets a param by its name or numeric index
+
+
+
+:doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>` public **dispatch** ()
+
+Dispatches a controller action taking into account the routing parameters
+
+
 
 protected **_throwDispatchException** ()
 
-public **forward** (*unknown* $forward)
+Throws an internal exception
 
-public **isFinished** ()
 
-public **getLastController** ()
 
-public **getReturnedValue** ()
+public **forward** (*array* $forward)
 
-public **getActiveController** ()
+
+
+
+
+*boolean* public **isFinished** ()
+
+Checks if the dispatch loop is finished or have more pendent controller to disptach
+
+
+
+:doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>` public **getLastController** ()
+
+Returns the lastest dispatched controller
+
+
+
+*mixed* public **getReturnedValue** ()
+
+Returns value returned by the lastest dispatched action
+
+
+
+:doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>` public **getActiveController** ()
+
+Returns the active controller in the dispatcher
+
+
 

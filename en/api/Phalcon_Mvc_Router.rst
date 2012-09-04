@@ -1,16 +1,28 @@
-Class **Phalcon\Mvc\Router**
-============================
+Class **Phalcon\\Mvc\\Router**
+==============================
 
 Methods
 ---------
 
 public **__construct** (*unknown* $defaultRoutes)
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-public **getDI** ()
+Sets the dependency injector
 
-protected **_getRewriteUri** ()
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+
+Returns the internal dependency injector
+
+
+
+*string* protected **_getRewriteUri** ()
+
+Get rewrite info
+
+
 
 public **setDefaultModule** (*unknown* $moduleName)
 
@@ -20,39 +32,107 @@ public **setDefaultAction** (*unknown* $actionName)
 
 public **setDefaults** (*unknown* $defaults)
 
-public **handle** (*unknown* $uri)
+public **handle** (*string* $uri)
 
-public **add** (*unknown* $pattern, *unknown* $paths, *unknown* $httpMethods)
+Handles routing information received from the rewrite engine
 
-public **addGet** (*unknown* $pattern, *unknown* $paths)
 
-public **addPost** (*unknown* $pattern, *unknown* $paths)
 
-public **addPut** (*unknown* $pattern, *unknown* $paths)
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **add** (*string* $pattern, *string/array* $paths, *string* $httpMethods)
 
-public **addDelete** (*unknown* $pattern, *unknown* $paths)
+Add a route to the router on any HTTP method
 
-public **addOptions** (*unknown* $pattern, *unknown* $paths)
 
-public **addHead** (*unknown* $pattern, *unknown* $paths)
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addGet** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is GET
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addPost** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is POST
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addPut** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is PUT
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addDelete** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is DELETE
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addOptions** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is OPTIONS
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **addHead** (*string* $pattern, *string/array* $paths)
+
+Add a route to the router that only match if the HTTP method is HEAD
+
+
 
 public **clear** ()
 
-public **getModuleName** ()
+Removes all the pre-defined routes
 
-public **getControllerName** ()
 
-public **getActionName** ()
 
-public **getParams** ()
+*string* public **getModuleName** ()
 
-public **getMatchedRoute** ()
+Returns proccesed module name
 
-public **getMatches** ()
 
-public **wasMatched** ()
 
-public **getRoutes** ()
+*string* public **getControllerName** ()
+
+Returns proccesed controller name
+
+
+
+*string* public **getActionName** ()
+
+Returns proccesed action name
+
+
+
+*array* public **getParams** ()
+
+Returns proccesed extra params
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` public **getMatchedRoute** ()
+
+Returns the route that matchs the handled URI
+
+
+
+*array* public **getMatches** ()
+
+Return the sub expressions in the regular expression matched
+
+
+
+*bool* public **wasMatched** ()
+
+Check if the router macthes any of the defined routes
+
+
+
+:doc:`Phalcon\\Mvc\\Router\\Route[] <Phalcon_Mvc_Router_Route[]>` public **getRoutes** ()
+
+
+
+
 
 public **getRouteById** (*unknown* $id)
 

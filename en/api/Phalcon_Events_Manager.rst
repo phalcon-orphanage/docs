@@ -1,12 +1,20 @@
-Class **Phalcon\Events\Manager**
-================================
+Class **Phalcon\\Events\\Manager**
+==================================
 
 Methods
 ---------
 
 public **__construct** ()
 
-public **attach** (*unknown* $eventType, *unknown* $handler)
+public **attach** (*string* $eventType, *object* $handler)
 
-public **fire** (*unknown* $eventType, *unknown* $source)
+Attach a listener to the events manager
+
+
+
+*mixed* public **fire** (*string* $eventType, *object* $source)
+
+Fires a event in the events manager causing that the acive listeners will be notified about it
+
+
 
