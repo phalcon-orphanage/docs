@@ -1,6 +1,9 @@
 Class **Phalcon\\Cache\\Frontend\\None**
 ========================================
 
+Discards any kind of frontend data input. This frontend does not have expiration time or any other options
+
+
 Methods
 ---------
 

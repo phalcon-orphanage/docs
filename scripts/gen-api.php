@@ -277,8 +277,8 @@ foreach(get_declared_classes() as $className){
 		$code.='*implements* '.join(', ', $documentationData['implements']).PHP_EOL.PHP_EOL;
 	}
 
-	if(isset($classDocs[$className])){
-		$ret = $api->getPhpDoc($classDocs[$className], $className, null, $realClassName);
+	if(isset($classDocs[$simpleClassName])){
+		$ret = $api->getPhpDoc($classDocs[$simpleClassName], $className, null, $realClassName);
 		$code.= $ret['description'].PHP_EOL.PHP_EOL;
 	}
 

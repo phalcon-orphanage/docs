@@ -3,6 +3,9 @@ Class **Phalcon\\Flash\\Direct**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
+This is a variant of the Phalcon\\Flash that inmediately flush to the output any message passed to it
+
+
 Methods
 ---------
 

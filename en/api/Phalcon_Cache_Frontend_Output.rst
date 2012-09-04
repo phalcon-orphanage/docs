@@ -1,6 +1,9 @@
 Class **Phalcon\\Cache\\Frontend\\Output**
 ==========================================
 
+Allows to cache output fragments captured with ob_* functions
+
+
 Methods
 ---------
 

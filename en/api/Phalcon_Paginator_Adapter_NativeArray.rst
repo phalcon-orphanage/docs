@@ -1,6 +1,9 @@
 Class **Phalcon\\Paginator\\Adapter\\NativeArray**
 ==================================================
 
+Component of pagination by array data
+
+
 Methods
 ---------
 

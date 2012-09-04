@@ -3,6 +3,22 @@ Class **Phalcon\\Db\\Adapter\\Pdo**
 
 *extends* :doc:`Phalcon\\Db <Phalcon_Db>`
 
+Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database 
+
+.. code-block:: php
+
+    <?php
+
+     $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
+      'host' => '192.168.0.11',
+      'username' => 'sigma',
+      'password' => 'secret',
+      'dbname' => 'blog',
+      'port' => '3306',
+     ));
+
+
+
 Constants
 ---------
 

@@ -3,6 +3,24 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
+Specific functions for the Mysql database system 
+
+.. code-block:: php
+
+    <?php
+
+    $config = array(
+    	"host" => "192.168.0.11",
+    	"dbname" => "blog",
+    	"port" => 3306,
+    	"username" => "sigma",
+    	"password" => "secret"
+    );
+    
+    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
+
+
+
 Constants
 ---------
 

@@ -1,6 +1,9 @@
 Class **Phalcon\\Db\\Dialect**
 ==============================
 
+
+
+
 Methods
 ---------
 

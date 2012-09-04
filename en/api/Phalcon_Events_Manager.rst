@@ -1,6 +1,9 @@
 Class **Phalcon\\Events\\Manager**
 ==================================
 
+
+
+
 Methods
 ---------
 

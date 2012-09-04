@@ -1,6 +1,9 @@
 Class **Phalcon\\Paginator\\Adapter\\Model**
 ============================================
 
+This adapter allows to paginate data using Phalcon\\Model resultsets.
+
+
 Methods
 ---------
 

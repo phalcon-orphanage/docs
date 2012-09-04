@@ -1,6 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Query\\Status**
 ============================================
 
+This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails
+
+
 Methods
 ---------
 

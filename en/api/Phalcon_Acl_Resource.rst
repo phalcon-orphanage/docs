@@ -1,6 +1,9 @@
 Class **Phalcon\\Acl\\Resource**
 ================================
 
+This class defines resource entity and its description
+
+
 Methods
 ---------
 

@@ -3,6 +3,26 @@ Class **Phalcon\\Mvc\\View**
 
 *extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
 
+Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping. 
+
+.. code-block:: php
+
+    <?php
+
+     //Setting views directory
+     $view = new Phalcon\Mvc\View();
+     $view->setViewsDir('app/views/');
+    
+     $view->start();
+     //Shows recent posts view (app/views/posts/recent.phtml)
+     $view->render('posts', 'recent');
+     $view->finish();
+    
+     //Printing views output
+     echo $view->getContent();
+
+
+
 Constants
 ---------
 

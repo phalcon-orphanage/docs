@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
+Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
+
+
 Methods
 ---------
 

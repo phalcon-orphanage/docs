@@ -1,6 +1,30 @@
 Class **Phalcon\\Loader**
 =========================
 
+This component helps to load your project classes automatically based on some conventions 
+
+.. code-block:: php
+
+    <?php
+
+     //Creates the autoloader
+     $loader = new Phalcon\Loader();
+    
+     //Register some namespaces
+     $loader->registerNamespaces(array(
+       'Example\\Base' => 'vendor/example/base/',
+       'Example\\Adapter' => 'vendor/example/adapter/',
+       'Example' => 'vendor/example/'
+     ));
+    
+     //register autoloader
+     $loader->register();
+    
+     //Requiring class will automatically include file vendor/example/adapter/Some.php
+     $adapter = Example\Adapter\Some();
+
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Class **Phalcon\\Http\\Response\\Headers**
 ==========================================
 
+This class is a bag to manage the response headers
+
+
 Methods
 ---------
 

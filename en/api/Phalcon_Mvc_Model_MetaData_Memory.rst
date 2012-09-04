@@ -3,6 +3,9 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
+Stores model meta-data in memory. Data will be erased when the request finishes
+
+
 Constants
 ---------
 

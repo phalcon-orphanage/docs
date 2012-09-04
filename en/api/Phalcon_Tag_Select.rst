@@ -1,6 +1,9 @@
 Class **Phalcon\\Tag\\Select**
 ==============================
 
+Generates a SELECT html tag using an static array of values or a Phalcon\\Model resultset
+
+
 Methods
 ---------
 

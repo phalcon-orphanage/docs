@@ -3,6 +3,27 @@ Class **Phalcon\\Mvc\\Model**
 
 *implements* Serializable
 
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).   A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.   Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.   
+
+.. code-block:: php
+
+    <?php
+
+     $robot = new Robots();
+     $robot->type = 'mechanical'
+     $robot->name = 'Astro Boy';
+     $robot->year = 1952;
+     if ($robot->save() == false) {
+      echo "Umh, We can store robots: ";
+      foreach ($robot->getMessages() as $message) {
+        echo $message;
+      }
+     } else {
+      echo "Great, a new robot was saved successfully!";
+     }
+
+
+
 Constants
 ---------
 

@@ -1,6 +1,9 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
+Generates internal URIs and Paths
+
+
 Methods
 ---------
 

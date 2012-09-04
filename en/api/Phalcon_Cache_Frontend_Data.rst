@@ -1,6 +1,9 @@
 Class **Phalcon\\Cache\\Frontend\\Data**
 ========================================
 
+Allows to cache native PHP data in a serialized form
+
+
 Methods
 ---------
 

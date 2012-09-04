@@ -3,6 +3,9 @@ Class **Phalcon\\Acl\\Adapter\\Memory**
 
 *extends* :doc:`Phalcon\\Acl <Phalcon_Acl>`
 
+Manages ACL lists in memory
+
+
 Constants
 ---------
 

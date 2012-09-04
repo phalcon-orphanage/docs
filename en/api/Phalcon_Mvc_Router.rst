@@ -1,6 +1,29 @@
 Class **Phalcon\\Mvc\\Router**
 ==============================
 
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request   
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+    $router->handle();
+    echo $router->getControllerName();
+
+Settings baseUri first: 
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+    $router->handle();
+    echo $router->getControllerName();
+
+</example>
+
+
 Methods
 ---------
 

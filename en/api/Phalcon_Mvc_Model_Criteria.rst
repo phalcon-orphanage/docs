@@ -1,6 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Criteria**
 =======================================
 
+This class allows to build the array parameter required by Phalcon\\Mvc\\Model::find and Phalcon\\Mvc\\Model::findFirst, using an object-oriented interfase
+
+
 Methods
 ---------
 

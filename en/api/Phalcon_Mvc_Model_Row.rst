@@ -3,6 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Row**
 
 *implements* ArrayAccess
 
+This component allows Phalcon\\Mvc\\Model to return rows without an associated entity. This objects implements the ArrayAccess interfase to allow access the object as object->x or array[x].
+
+
 Methods
 ---------
 

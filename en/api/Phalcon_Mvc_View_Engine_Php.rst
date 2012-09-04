@@ -3,6 +3,9 @@ Class **Phalcon\\Mvc\\View\\Engine\\Php**
 
 *extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
+Adapter to use PHP itself as templating engine
+
+
 Methods
 ---------
 
