@@ -10,13 +10,6 @@ Phalcon is an open source, full stack framework for PHP 5 written as a C-extensi
 
 Phalcon is not only about performance, our goal is to make it robust and easy to use!
 
-Other formats
--------------
-
-* `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
-* `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
-* `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
-
 Table of Contents
 -----------------
 
@@ -32,12 +25,14 @@ Table of Contents
    reference/mvc
    reference/controllers
    reference/models
+   reference/phql
    reference/views
    reference/tags
    reference/routing
    reference/events
    reference/dispatching
    reference/micro
+   reference/namespaces
    reference/request
    reference/filter
    reference/config
@@ -49,10 +44,15 @@ Table of Contents
    reference/db
    reference/logging
    reference/loader
-   reference/phql
    reference/migrations
    reference/debug
    reference/tools
    api/index
    reference/license
 
+Other formats
+-------------
+
+* `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
+* `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
+* `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_

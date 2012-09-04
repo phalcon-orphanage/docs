@@ -17,7 +17,9 @@ For instance, when you access a URL like this: http://localhost/blog/posts/show/
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
 
-In this case, the PostsController will handle this request. The controller file will be located in the controllers directory. Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
+In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+
+Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
 
 .. code-block:: php
 
@@ -156,7 +158,7 @@ Then, we can access to that service by this way:
 
     }
 
-If using Phalcon as full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
+If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
 
 Request and Response
 --------------------
@@ -304,4 +306,3 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
     }
 
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
-

@@ -6,17 +6,17 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+---------+----------------------------------------------+
-| Adapter | Description                                  |
-+=========+==============================================+
-| Array   | Use a PHP array as source data               |
-+---------+----------------------------------------------+
-| Model   | Use a Phalcon_Model_Resultset as source data |
-+---------+----------------------------------------------+
++--------------+-------------------------------------------------------+
+| Adapter      | Description                                           |
++==============+=======================================================+
+| NativeArray  | Use a PHP array as source data                        |
++--------------+-------------------------------------------------------+
+| Model        | Use a Phalcon\\Model\\Resultset object as source data |
++--------------+-------------------------------------------------------+
 
 Using Paginators
 ----------------
-The method Phalcon_Paginator::factory() allows us to create an instance of a paginator adapter. That factory method receives two parameters. The first is the name of the adapter and the second is a an associative array of options that control the behavior of the paginator. In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
+In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
 
 .. code-block:: php
 
@@ -32,13 +32,10 @@ The method Phalcon_Paginator::factory() allows us to create an instance of a pag
     $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = Phalcon_Paginator::factory(
-        "Model",
-        array(
-            "data" => $robots,
-            "limit"=> 10,
-            "page" => $numberPage
-        )
+    $paginator = Phalcon\Paginator\Adapter\Model(array(
+        "data" => $robots,
+        "limit"=> 10,
+        "page" => $numberPage
     );
 
     // Get the paginated results

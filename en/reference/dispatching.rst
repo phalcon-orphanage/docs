@@ -1,6 +1,6 @@
 Orchestrating MVC
 =================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>`. This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 Understanding the default behavior
 ----------------------------------
@@ -12,100 +12,80 @@ If you've been following the tutorials_ or have generated the code using Tools, 
 
     try {
 
-        $front = \Phalcon\Controller\Front::getInstance();
+        // Register autoloaders
+        //...
 
-        $config = new \Phalcon\Config\Adapter\Ini("../app/config/config.ini");
-        $front->setConfig($config);
+        // Register services
+        //...
 
-        echo $front->dispatchLoop()->getContent();
+        // Handle the request
+        $application = new \Phalcon\Mvc\Application();
+        $application->setDI($di);
+        echo $application->handle()->getContent();
 
     } catch (\Phalcon\Exception $e) {
         echo "PhalconException: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when dispatchLoop() is invoked:
+The core of all the work of the controller occurs when handle() is invoked:
 
 .. code-block:: php
 
     <?php
 
-    echo $front->dispatchLoop()->getContent();
+    echo $application->handle()->getContent();
 
-Internally and based on the config set, :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` performs the following steps for a request:
-
-- Checks if a request instance has been previously set, otherwise, instantiates a :doc:`Phalcon\\Http\\Request <../api/Phalcon_Request>` object
-- Checks if a response instance has been previously set, otherwise, instantiates a :doc:`Phalcon\\Response <../api/Phalcon_Response>` object
-- Checks if a dispatcher instance has been set, otherwise, instantiates a :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>` object. This object receives the controllersDir option set by config.
-- Checks if a router instance has been set, otherwise, instantiates a :doc:`Phalcon\Router\Rewrite <../api/Phalcon_Router_Rewrite>` object. By default the router will handle the URI placed at $_GET['_url']
-- Starts the view component. This enables output buffering by calling internally the function ob_start
-- The processed controller/action/parameters by the router is passed to the dispatcher.
-- The dispatcher locates the selected controller in the controllers directory, instantiates it and executes the action, passing the routing parameters to it
-- The view takes the last controller/action executed and renders the related views
-- The view returns all the buffered content
-- This content is passed to the response object
-
-You can of course not use :doc:`Phalcon\Controller\Front <../api/Phalcon_Controller_Front>` if you wish. The above example becomes:
+You can of course not use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` if you wish. The above example explains the work made by this component:
 
 .. code-block:: php
 
     <?php
 
-    // Read the config
-    $config = new \Phalcon\Config\Adapter\Ini("app/config/config.ini");
-
-    // Instantiate a router
-    $router = new \Phalcon\Router\Regex();
-
-    // Handle URI data
+    //Request the services from the DI container
+    $router = $di->getShared('router');
     $router->handle();
 
-    // Instantiate both request and response objects
-    $request  = \Phalcon\Request::getInstance();
-    $response = \Phalcon\Response::getInstance();
+    $view = $di->getShared('view');
 
-    // Instantiate View component setting views directory
-    $view = new \Phalcon\View();
-    $view->setBasePath($basePath);
-    $view->setViewsDir($config->phalcon->viewsDir);
+    $dispatcher = $di->getShared('dispatcher');
 
-    // Instantiate Model Manager component setting models directory
-    $modelManager = new \Phalcon\Model\Manager();
-    $modelManager->setBasePath($basePath);
-    $modelManager->setModelsDir($config->phalcon->modelsDir);
-
-    // Starts the view, also enabling output buffering
-    $view->start();
-
-    // Instantiate a Dispatcher passing the proccesed parameters to it
-    $dispatcher = new \Phalcon\Dispatcher();
-    $dispatcher->setControllersDir($config->phalcon->controllersDir);
-    $dispatcher->setBasePath($basePath);
+    //Pass the proccessed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
-    // Run the dispatch loop
-    $dispatcher->dispatch($request, $response, $view, $modelManager);
+    //Start the view
+    $view->start();
 
-    // Takes the last controller/action and render its related views
+    //Dispatch the request
+    $dispatcher->dispatch();
+
+    //Render the related views
     $view->render(
         $dispatcher->getControllerName(),
         $dispatcher->getActionName(),
         $dispatcher->getParams()
     );
+
+    //Finish the view
     $view->finish();
 
-    // Pass the buffered content to the response
+    $response = $di->getShared('response');
+
+    //Pass the output of the view to the response
     $response->setContent($view->getContent());
 
-    // Print out the response
+    //Send the request headers
+    $response->sendHeaders();
+
+    // Print the response
     echo $response->getContent();
 
 As you can see the same operation can be done with fewer lines of code or with a more verbose way of coding. The above example might be preferred in cases where you need to have full control over the whole bootstrap process.
 
 Dispatch Loop
 -------------
-The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within :doc:`Phalcon\Dispatcher <../api/Phalcon_Dispatcher>`:
+The Dispatch Loop is another important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
 .. code-block:: php
 
@@ -126,13 +106,13 @@ The Dispatch Loop is another important process that has much to do with the MVC 
             if (file_exists($controllerPath)) {
                 require $controllerPath;
             } else {
-                throw new \Phalcon\Dispatcher\Exception(
+                throw new \Phalcon\Mvc\Dispatcher\Exception(
                     "File for controller class " . $controllerClass . " doesn't exist"
                 );
             }
 
             if (!class_exists($controllerClass)) {
-                throw new \Phalcon\Dispatcher\Exception(
+                throw new \Phalcon\Mvc\Dispatcher\Exception(
                     "Class " . $controllerClass . " was not found in the controller file"
                 );
             }

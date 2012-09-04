@@ -149,15 +149,15 @@ Transfer values from the controller to views
 
     <?php
 
-    class PostsController extends \Phalcon\Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
 
-        function indexAction()
+        public function indexAction()
         {
 
         }
 
-        function showAction()
+        public function showAction()
         {
             //Pass all the posts to the views
             $this->view->setVar("posts", Posts:find());
@@ -284,44 +284,19 @@ Sometimes when you develop dynamic websites and some areas of them are not updat
     class PostsController extends \Phalcon\Mvc\Controller
     {
 
-        public function initialize()
-        {
-
-            // Cache data for one day by default
-            $frontendOptions = array(
-                "lifetime" => 86400
-            );
-
-            // File cache settings
-            $backendOptions = array(
-                "cacheDir" => "../app/cache/"
-            );
-
-            // Create a memcached cache
-            $cache = \Phalcon\Cache::factory(
-                "Output",
-                "Memcached",
-                $frontendOptions,
-                $backendOptions
-            );
-
-            // Set the cache to the view component
-            $this->view->setCache($cache);
-        }
-
-        function showAction()
+        public function showAction()
         {
             //Cache the view using the default settings
             $this->view->cache(true);
         }
 
-        function showArticleAction()
+        public function showArticleAction()
         {
             // Cache this view for 1 hour
             $this->view->cache(array("lifetime" => 3600));
         }
 
-        function resumeAction()
+        public function resumeAction()
         {
             //Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
@@ -334,22 +309,83 @@ Sometimes when you develop dynamic websites and some areas of them are not updat
 
     }
 
-In the above example, a cache backend was instantiated in the initialize() method of the current controller. You can set the cache initialization options in your configuration file so that they can be easily accessed when needed:
+When the View component needs to cache something it will request a cache service to the services container. The service name convention for this service is "viewsCache":
 
-.. code-block:: ini
+.. code-block:: php
 
-    [views]
-    cache.adapter  = "File"
-    cache.cacheDir = "cacheDir"
-    cache.lifetime = 86400
+    <?php
+
+    //Set the views cache service
+    $di->set('viewsCache', function(){
+
+        //Cache data for one day by default
+        $frontCache = new Phalcon\Cache\Frontend\Output(array(
+            "lifetime" => 86400
+        ));
+
+        //Memcached connection settings
+        $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+            "host" => "localhost",
+            "port" => "11211"
+        ));
+
+        return $cache;
+    });
 
 Template Engines
 ----------------
-From version 0.4.0 onwards, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP. This helps developers to create and design views with less effort. The Mustache_ and Twig_ template engines are supported.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP. This helps developers to create and design views using an external template engine.
 
 Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output for the user. This usually increases the number of resources that your application is using.
 
 If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's still possible to access the API inside these templates.
+
+Creating your own Template Engine Adapter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+There are many template engines, which you might want to integrate or create one of your own. The first step to use an external template engine it's create an adapter for it.
+
+A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself. Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` instance which creates the engine adapter and the DI container used by the application.
+
+The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it when it's necessary.
+
+.. code-block:: php
+
+    <?php
+
+    class MyTemplateAdapter extends \Phalcon\\Mvc\View\Engine
+    {
+
+        /**
+         * Adapter constructor
+         *
+         * @param \Phalcon\Mvc\View $view
+         * @param \Phalcon\DI $di
+         */
+        public function __construct($view, $options)
+        {
+            //Initiliaze here the adapter
+            parent::__construct($view, $di);
+        }
+
+        /**
+         * Renders a view using the template engine
+         *
+         * @param string $path
+         * @param array $params
+         */
+        public function render($path, $params)
+        {
+
+            // Access view
+            $view = $this->_view;
+
+            // Access options
+            $options = $this->_options;
+
+            //Render the view
+        }
+
+    }
 
 Changing the Template Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -364,19 +400,21 @@ You can replace or add more a template engine from the controller as follows:
 
         public function indexAction()
         {
-            // Changing PHP engine to Mustache
+            // Set the engine
             $this->view->registerEngines(
-                array".mhtml" => "Mustache")
+                array(
+                    ".my-html" => "MyTemplateAdapter"
+                )
             );
         }
 
         public function showAction()
         {
-            // Using both PHP and Mustache engines
+            // Using more than one template engine
             $this->view->registerEngines(
                 array(
-                    ".phtml" => "Php",
-                    ".mhtml" => "Mustache",
+                    ".my-html" => 'MyTemplateAdapter'
+                    ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
         }
@@ -387,6 +425,30 @@ You can replace the template engine completely or use more than one template eng
 
 The order that the template engines are defined with \Phalcon\\Mvc\\View::reginsterEngines() defines the relevance of execution. If :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
 
+If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
+
+.. code-block:: php
+
+    <?php
+
+    //Setting up the view component
+    $di->set('view', function() {
+
+        $view = new \Phalcon\Mvc\View();
+
+        $view->setViewsDir('../app/views/');
+
+        $view->registerEngines(
+            array(
+                ".my-html" => 'MyTemplateAdapter'
+            )
+        );
+
+        return $view;
+    });
+
+To better explain how to create an adapter for template engines, let's make the integration with two well-known: Mustache and Twig.
+
 Using Mustache
 ^^^^^^^^^^^^^^
 `Mustache`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available in `this Github repository`_.
@@ -395,9 +457,44 @@ You need to manually load the Mustache library before use its engine adapter. Th
 
 .. code-block:: php
 
-    <?php require "path/to/Mustache.php";
+    <?php
 
-In the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this template engine, you can register it in the initialize() method of the controller.
+    require "path/to/Mustache/Autoloader.php";
+    Mustache_Autoloader::register();
+
+A template engine for Mustache would look like:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Adapter to use Mustache library as templating engine
+     */
+    class My_Mustache_Adapter extends \Phalcon\Mvc\View\Engine
+    {
+
+        protected $_mustache;
+
+        protected $_params;
+
+        public function __construct(Phalcon\Mvc\View $view, Phalcon\DI $di)
+        {
+            $this->_mustache = new Mustache_Engine();
+            parent::__construct($view, $di);
+        }
+
+        public function render($path, $params)
+        {
+            if (!isset($params['content'])) {
+                $params['content'] = $this->_view->getContent();
+            }
+            $this->_view->setContent($this->_mustache->render(file_get_contents($path), $params));
+        }
+
+    }
+
+Now, in the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this template engine, you can register it in the initialize() method of the controller.
 
 .. code-block:: php
 
@@ -411,7 +508,7 @@ In the controller it's necessary to replace or add the Mustache adapter to the v
 
             // Changing PHP engine by Mustache
             $this->view->registerEngines(
-                array(".mhtml" => "Mustache")
+                array(".mhtml" => "My_Mustache_Adapter")
             );
 
         }
@@ -429,9 +526,7 @@ In the controller it's necessary to replace or add the Mustache adapter to the v
 
 A related view (views-dir/posts/show.mhtml) could be defined using the Mustache syntax:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     {{#showPost}}
         <h1>{{title}}</h1>
@@ -440,47 +535,15 @@ A related view (views-dir/posts/show.mhtml) could be defined using the Mustache 
 
 Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contents of a view at a higher level. In Moustache, this can be done as follows:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <div class="some-menu">
         <! -- the menu -->
     </div>
 
     <div class="some-main-content">
-        {{getContent}}
+        {{content}}
     </div>
-
-Finally, it is possible to define your own Mustache instance instead of the one created by the adapter. This offers maximum customization towards your project's needs:
-
-.. code-block:: php
-
-    <?php
-
-    class PostsController extends \Phalcon\Controller
-    {
-
-        function showAction()
-        {
-
-            // Instancing a mustache object or a sub-class of Mustache
-            $presenter = new CustomMustache();
-
-            // ... make some mustache stuff
-
-            // Registering the object as an option
-            $this->view->registerEngines(
-                array(
-                    ".mhtml" => array(
-                        "Mustache",
-                        array(
-                            "mustache" => $presenter
-                        )
-                    )
-                )
-            );
-        }
-
-    }
 
 Using Twig
 ^^^^^^^^^^
@@ -492,8 +555,44 @@ You need to manually load the Twig library before use its engine adapter. This c
 
     <?php
 
-    require "path/to/twig.php";
+    require "path/to/Twig/Autoloader.php";
     Twig_Autoloader::register();
+
+A template engine for Mustache would look like:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * Adapter to use Twig library as templating engine
+     */
+    class My_Twig_Adapter extends \Phalcon\Mvc\View\Engine
+    {
+
+        protected $_twig;
+
+        public function __construct(Phalcon\Mvc\View $view, Phalcon\DI $di)
+        {
+            $loader = new Twig_Loader_Filesystem($view->getViewsDir());
+            $this->_twig = new Twig_Environment($loader);
+            parent::__construct($view, $di);
+        }
+
+        public function render($path, $params)
+        {
+            $view = $this->_view;
+            if (!isset($params['content'])) {
+                $params['content'] = $view->getContent();
+            }
+            if (!isset($params['view'])) {
+                $params['view'] = $view;
+            }
+            $relativePath = str_replace($view->getViewsDir(), '', $path);
+            $this->_view->setContent($this->_twig->render($relativePath, $params));
+        }
+
+    }
 
 As seen above, it's necessary to replace the default engine by twig or use it together with other.
 
@@ -501,10 +600,10 @@ As seen above, it's necessary to replace the default engine by twig or use it to
 
     <?php
 
-    class PostsController extends \Phalcon\Controller
+    class PostsController extends \Phalcon\Mvc\Controller
     {
 
-        function initialize()
+        public function initialize()
         {
 
             // Changing PHP engine by Twig
@@ -514,7 +613,7 @@ As seen above, it's necessary to replace the default engine by twig or use it to
 
         }
 
-        function showAction()
+        public function showAction()
         {
 
             $this->view->setVar("showPost", true);
@@ -527,9 +626,7 @@ As seen above, it's necessary to replace the default engine by twig or use it to
 
 In this case, the related view will be views-dir/posts/show.twig, this is a file that contains Twig code:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     {{% if showPost %}}
         <h1>{{ title }}</h1>
@@ -538,141 +635,30 @@ In this case, the related view will be views-dir/posts/show.twig, this is a file
 
 To include the contents of a view at a higher level, the "content" variable is available:
 
-.. code-block:: php
+.. code-block:: html+php
 
     <div class="some-messages">
         {{ content }}
     </div>
 
-Phalcon implicitly creates a twig object as follows:
+Injecting services in View
+--------------------------
+Every view executed is included inside a :doc:`Phalcon\\Mvc\\User <../api/Phalcon_Mvc_User>` instance, providing easy access to the application's service container.
 
-.. code-block:: php
+The following example shows how to write a jQquery `ajax request`_ using a url with the framework conventions. The service "url" is injected in the view by just only acccesing it :
 
-    <?php
+.. code-block:: html+php
 
-    $loader = new Twig_Loader_Filesystem($viewsDirectory);
-    $twig   = new Twig_Environment($loader);
-
-If you want to modify any of those variables before rendering the views, you can pre-build and pass them as options:
-
-.. code-block:: php
-
-    <?php
-
-    class PostsController extends \Phalcon\Controller
-    {
-
-        function showAction()
-        {
-
-            // Creating manually the Twig object
-            $loader = new Twig_Loader_Filesystem($this->view->getViewsDir());
-            $twig   = new Twig_Environment(
-                $loader,
-                array("cache" => "/path/to/compilation_cache")
-            );
-
-            // Registering the object as an option
-            $this->view->registerEngines(
-                array(
-                    ".twig" => array(
-                        "Twig",
-                        array(
-                            "twig" => $twig
-                        )
-                    )
-                )
-            );
-
-        }
-
-    }
-
-
-
-Creating your own Template Engine
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. This section provides the steps to achieve this.
-
-A template adapter is only instantiated once across the execution of the request. Usually it only needs two methods implemented: __contstruct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` instance which creates the engine adapter and the options passed when the engine was registered.
-
-The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it when it's necessary.
-
-.. code-block:: php
-
-    <?php
-
-    class MyTemplateAdapter extends \Phalcon\\Mvc\\View\Engine
-    {
-
-        /**
-         * Adapter constructor
-         *
-         * @param \Phalcon\\Mvc\\View $view
-         * @param array $options
-         */
-        function __construct($view, $options)
-        {
-            parent::__construct($view, $options);
-        }
-
-        /**
-         * Renders a view using the template engine
-         *
-         * @param string $path
-         * @param array $params
-         */
-        function render($path, $params)
-        {
-
-            // Access view
-            $view = $this->_view;
-
-            // Access options
-            $options = $this->_options;
-
-        }
-
-    }
-
-When registering the engine, a instance of your template adapter must be passed along with the desired extension:
-
-.. code-block:: php
-
-    <?php
-
-    class SomeController extends \Phalcon\Controller
-    {
-
-        function someAction()
-        {
-
-            // Registering the object as an engine
-            $this->view->registerEngines(
-                array(".my-html" => new MyTemplateAdapter())
-            );
-
-        }
-
-    }
-
-
-View Environment
-----------------
-Every view executed is included inside a :doc:`Phalcon\\Mvc\\View\Engine <../api/Phalcon_Mvc_View_Engine>` instance, providing access to the view environment and its properties that can be used in your developments.
-
-The following example shows how to write a jQquery `ajax request`_ using a url with the framework conventions. The method url() is called from a $this instance that references the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` object:
-
-.. code-block:: php
-
-    <?php
+    <script type="text/javascript">
 
     $.ajax({
-        url: "<?php $this->url("cities/get") ?>"
+        url: "<?php echo $this->url->get("cities/get") ?>"
     })
     .done(function() {
         alert("Done!");
     });
+
+    </script>
 
 
 Stand-Alone Component

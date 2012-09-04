@@ -638,8 +638,7 @@ Access to database systems is often one of the most common bottlenecks in terms 
 
 When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will request it to the Dependency Injector Container with the convention name "modelsCache".
 
-As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models. First you need to register it as a service
-in the services container:
+As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models. First you need to register it as a service in the services container:
 
 .. code-block:: php
 

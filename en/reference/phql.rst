@@ -145,8 +145,8 @@ Most of the SQL standard is supported by PHQL even nonstandard directives as LIM
        . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
     $query = $manager->createQuery($phql);
 
-Selecting Rows
-^^^^^^^^^^^^^^
+Results Types
+^^^^^^^^^^^^^
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object then the object returned will be a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
 
 .. code-block:: php
@@ -353,7 +353,7 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
     $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
 
 Creating Rows
-^^^^^^^^^^^^^
+-------------
 With PHQL is possible insert data using the familiar INSERT statement:
 
 .. code-block:: php
@@ -380,5 +380,86 @@ With PHQL is possible insert data using the familiar INSERT statement:
             'style'    => 'Grand Tourer',
         )
     );
+
+Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually. Let's add a business rule to the model cars. A car cannot cost less than $ 10,000:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Message;
+
+    class Cars extends Phalcon\Mvc\Model
+    {
+
+        public function beforeCreate()
+        {
+            if ($this->price < 10000) {
+                $this->appendMessage(new Message("A car cannot cost less than $ 10,000"));
+                return false;
+            }
+        }
+
+    }
+
+If we made the following INSERT in the the models Cars, the operation will not be successful because the price does not meet the business rule that we implemented:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $result = $manager->executeQuery($phql);
+    if ($result->success() == false) {
+        foreach ($result->getMessages() as $message){
+            echo $message->getMessage();
+        }
+    }
+
+Updating Rows
+-------------
+Update rows is very similar than Insert rows. As you may know, the instruction to update records is UPDATE. When a record is updated
+the events related to the update operation will be executed for each row.
+
+.. code-block:: php
+
+    <?php
+
+    //Updating a single column
+    $phql = "UPDATE Cars SET price = 15000.00 WHERE id = 101";
+    $manager->executeQuery($phql);
+
+    //Updating multiples columns
+    $phql = "UPDATE Cars SET price = 15000.00, type = 'Sedan' WHERE id = 101";
+    $manager->executeQuery($phql);
+
+    //Updating multiples rows
+    $phql = "UPDATE Cars SET price = 7000.00, type = 'Sedan' WHERE brands_id > 5";
+    $manager->executeQuery($phql);
+
+    //Using placeholders
+    $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
+    $manager->executeQuery($phql, array(
+        0 => 7000.00,
+        1 => 'Sedan',
+        2 => 5
+    ));
+
+Deleting Rows
+-------------
+When a record is deleted the events related to the delete operation will be executed for each row.
+
+.. code-block:: php
+
+    <?php
+
+    //Deleting a single row
+    $phql = "DELETE FROM Cars WHERE id = 101";
+    $manager->executeQuery($phql);
+
+    //Deleting multiple rows
+    $phql = "DELETE FROM Cars WHERE id > 100";
+    $manager->executeQuery($phql);
+
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

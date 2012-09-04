@@ -98,12 +98,40 @@ In addition to sanitizing, :doc:`Phalcon\Filter <../api/Phalcon_Filter>` also pr
     $filter->filter("<h1>Hello</h1>", "striptags");
 
     // returns "Hello"
-    $filter->filter("  Hello   ", "extraspaces");
+    $filter->filter("  Hello   ", "trim");
 
 
+Types of Built-in Filters
+-------------------------
+
++-----------+---------------------------------------------------------------------------+
+| Name      | Description                                                               |
++===========+===========================================================================+
+| string    | Strip tags                                                                |
++-----------+---------------------------------------------------------------------------+
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
++-----------+---------------------------------------------------------------------------+
+| int       | Remove all characters except digits, plus and minus sign.                 |
++-----------+---------------------------------------------------------------------------+
+| float     | Remove all characters except digits, dot, plus and minus sign.            |
++-----------+---------------------------------------------------------------------------+
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
++-----------+---------------------------------------------------------------------------+
+| striptags | Applies the strip_tags_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| trim      | Applies the trim_ function                                                |
++-----------+---------------------------------------------------------------------------+
+| lower     | Applies the strtolower_ function                                          |
++-----------+---------------------------------------------------------------------------+
+| upper     | Applies the strtoupper_ function                                          |
++-----------+---------------------------------------------------------------------------+
 
 Complex Sanitizing and Filtering
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
 
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
+.. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
+.. _trim: http://www.php.net/manual/en/function.trim.php
+.. _strtolower: http://www.php.net/manual/en/function.strtolower.php
+.. _strtoupper: http://www.php.net/manual/en/function.strtoupper.php

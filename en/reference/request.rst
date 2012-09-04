@@ -2,8 +2,6 @@ Request Environment
 ===================
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables etc. A web based application needs to parse that information so as to provide the correct response back to the requester. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` encapsulates the information of the request, allowing you to access it in an object oriented way.
 
-As there is only one request environment for each request, :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` implements the `singleton pattern`_ with a lazy initialization. This means that you only have one instance of that class per request.
-
 .. code-block:: php
 
     <?php
@@ -142,6 +140,5 @@ As mentioned above, request headers contain useful information that allow us to 
     $language = $request->getBestLanguage();
 
 
-.. _singleton pattern: http://en.wikipedia.org/wiki/Singleton_pattern
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection
 .. _Cross Site Scripting (XSS): http://en.wikipedia.org/wiki/Cross-site_scripting

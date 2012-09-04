@@ -43,10 +43,10 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 
 .. code-block::  html+php
 
-    <?php \Phalcon\Tag::textField(array("parent_id", "value"=> "5")) ?>
-    <?php \Phalcon\Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
-    <?php \Phalcon\Tag::passwordField("password") ?>
-    <?php \Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5") ?>
+    <?php echo Phalcon\Tag::textField(array("parent_id", "value"=> "5")) ?>
+    <?php echo Phalcon\Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
+    <?php echo Phalcon\Tag::passwordField("password") ?>
+    <?php echo Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5") ?>
 
 Making Select Boxes
 -------------------
@@ -57,7 +57,7 @@ Generating select boxes (select box) is easy, especially if the related data is 
     <?php
 
     // Using data from a resultset
-    echo \Phalcon\Tag::select(
+    echo Phalcon\Tag::select(
         array(
             "productId",
             Products::find("type = 'vegetables'"),
@@ -66,7 +66,7 @@ Generating select boxes (select box) is easy, especially if the related data is 
     );
 
     // Using data from an array
-    echo \Phalcon\Tag::selectStatic(
+    echo Phalcon\Tag::selectStatic(
         array(
             "status",
             array(
@@ -123,10 +123,10 @@ It is a good programming principle for MVC frameworks to set specific values for
 
     <?php
 
-    class ProductsController extends \Phalcon\Controller
+    class ProductsController extends \Phalcon\Mvc\Controller
     {
 
-        function indexAction()
+        public function indexAction()
         {
             \Phalcon\Tag::setDefaultValue("color", "Blue");
         }
@@ -176,14 +176,14 @@ Changing dynamically the Document Title
 
     <?php
 
-    class PostsController extends \Phalcon\Controller {
+    class PostsController extends \Phalcon\Mvc\Controller {
 
-        function initialize()
+        public function initialize()
         {
             \Phalcon\Tag::setTitle(" Your Website");
         }
 
-        function indexAction()
+        public function indexAction()
         {
             \Phalcon\Tag::prependTitle("Index of Posts - ");
         }
