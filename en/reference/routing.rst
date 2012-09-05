@@ -75,6 +75,8 @@ These placeholders help writing regular expressions that are more readable for d
 +--------------+--------------------+--------------------------------------------------------------------+
 | Placeholder  | Regular Expression | Usage                                                              |
 +==============+====================+====================================================================+
+| /:module     | /([a-zA-Z0-9\_]+)  | Matches a valid module name with alpha-numeric characters only     |
++--------------+--------------------+--------------------------------------------------------------------+
 | /:controller | /([a-zA-Z0-9\_]+)  | Matches a valid controller name with alpha-numeric characters only |
 +--------------+--------------------+--------------------------------------------------------------------+
 | /:action     | /([a-zA-Z0-9\_]+)  | Matches a valid action name with alpha-numeric characters only     |
@@ -82,7 +84,7 @@ These placeholders help writing regular expressions that are more readable for d
 | /:params     | (/.*)*             | Matches a list of optional words separated by slashes              |
 +--------------+--------------------+--------------------------------------------------------------------+
 
-Since you can add many routes as you need using add(), the order in which you add the routes indicates their relevance. Internally, all defined routes are traversed until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the one that matches the given URI and processes it, while ignoring the rest.
+Since you can add many routes as you need using add(), the order in which you add the routes indicates their relevance, last routes added have more relevance than first added. Internally, all defined routes are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the one that matches the given URI and processes it, while ignoring the rest.
 
 Parameters with Names
 ^^^^^^^^^^^^^^^^^^^^^
@@ -190,6 +192,54 @@ If you don't like using an array to define the route paths, an alternative synta
            "title"      => 2,
         )
     );
+
+
+Routing to Modules
+^^^^^^^^^^^^^^^^^^
+You can define routes whose paths include modules. This is specially suitable to multi-module applications. It's possible define a default route that includes a module wildcard:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router(false);
+
+    $router->add('/:module/:controller/:action/:params', array(
+        'module' => 1,
+        'controller' => 2,
+        'action' => 3,
+        'params' => 4
+    ));
+
+In this case, the route always must have the module name as part of the URL. For example, the following URL: /admin/users/edit/sonny, will be processed as:
+
++------------+---------------+
+| Module     | admin         |
++------------+---------------+
+| Controller | users         |
++------------+---------------+
+| Action     | edit          |
++------------+---------------+
+| Parameter  | sonny         |
++------------+---------------+
+
+Or you can bind specific routes to specific modules:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add("/login", array(
+        'module' => 'backend',
+        'controller' => 'login',
+        'action' => 'index',
+    ));
+
+    $router->add("/products/:action", array(
+        'module' => 'frontend',
+        'controller' => 'products',
+        'action' => 1,
+    ));
 
 HTTP Constraints
 ^^^^^^^^^^^^^^^^
@@ -370,6 +420,23 @@ If you don't want use this routes as default in your application, you must creat
     // Create the router without default routes
     $router = new \Phalcon\Mvc\Router(false);
 
+Setting default paths
+---------------------
+It's possible to define default values for common paths like module, controller or action. When a route is missing any of those paths the component could automatically fill it:
+
+.. code-block:: php
+
+    <?php
+
+    //Individually
+    $router->setDefaultController("index");
+    $router->setDefaultAction("index");
+
+    //Using an array
+    $router->setDefaults(array(
+        "controller" => "index",
+        "action" => "index"
+    ));
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
 

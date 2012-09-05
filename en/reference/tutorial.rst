@@ -39,7 +39,7 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
 
 .. code-block:: php
 
-    test/
+    tutorial/
       app/
         controllers/
         models/

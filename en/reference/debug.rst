@@ -104,15 +104,15 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
     <?php
 
-    class SignupController extends \Phalcon\Controller
+    class SignupController extends \Phalcon\Mvc\Controller
     {
 
-        function indexAction()
+        public function indexAction()
         {
 
         }
 
-        function registerAction()
+        public function registerAction()
         {
 
             // Request variables from html form
@@ -134,24 +134,15 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
 In this instance, Xdebug will also show us the variables in the local scope, and a backtrace as well:
 
-.. code-block:: html
+.. code-block:: php
 
-    Xdebug: stop here! in /var/www/test/app/controllers/SignupController.php on line 15
+    Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php on line 19
 
     Call Stack:
-        0.0005     640344   1. {main}() /var/www/test/public/index.php:0
-        0.0014     645952   2. Phalcon\Controller\Front->dispatchLoop()
-     /var/www/test/public/index.php:26
-        0.0044     709504   3. SignupController->registerAction('')
-     /var/www/test/public/index.php:0
-        0.0046     710224   4. xdebug_print_function_stack('stop here!')
-     /var/www/test/app/controllers/SignupController.php:15
-
-
-    Variables in local scope (#3):
-      $email = 'thecure@hotmail.com'
-      $name = 'robert smith'
-      $user = *uninitialized*
+        0.0383     654600   1. {main}() /Applications/MAMP/htdocs/tutorial/public/index.php:0
+        0.0392     663864   2. Phalcon\Mvc\Application->handle() /Applications/MAMP/htdocs/tutorial/public/index.php:37
+        0.0418     738848   3. SignupController->registerAction() /Applications/MAMP/htdocs/tutorial/public/index.php:0
+        0.0419     740144   4. xdebug_print_function_stack() /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
 
 Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the `XDebug documentation`_ for more information.
 
