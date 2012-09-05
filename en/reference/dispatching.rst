@@ -32,21 +32,21 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 Dispatch Loop Events
 ^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
 
-+----------------------+--------------------------------------------------------------+
-| Event Name           | Triggered                                                    |
-+======================+==============================================================+
-| beforeDispatchLoop   | Triggered before enter in the dispatch loop                  |
-+----------------------+--------------------------------------------------------------+
-| beforeExecuteRoute   | Triggered before execute the controller/action method        |
-+----------------------+--------------------------------------------------------------+
-| afterExecuteRoute    | Triggered after execute the controller/action method         |
-+----------------------+--------------------------------------------------------------+
-| beforeNotFoundAction | Triggered when the action was not found in the controller    |
-+----------------------+--------------------------------------------------------------+
-| afterDispatchLoop    | Triggered after exit the dispatch loop                       |
-+----------------------+--------------------------------------------------------------+
++----------------------+--------------------------------------------------------------+---------------------+
+| Event Name           | Triggered                                                    | Can stop operation? |
++======================+==============================================================+=====================+
+| beforeDispatchLoop   | Triggered before enter in the dispatch loop                  | Yes                 |
++----------------------+--------------------------------------------------------------+---------------------+
+| beforeExecuteRoute   | Triggered before execute the controller/action method        | Yes                 |
++----------------------+--------------------------------------------------------------+---------------------+
+| afterExecuteRoute    | Triggered after execute the controller/action method         | No                  |
++----------------------+--------------------------------------------------------------+---------------------+
+| beforeNotFoundAction | Triggered when the action was not found in the controller    | Yes                 |
++----------------------+--------------------------------------------------------------+---------------------+
+| afterDispatchLoop    | Triggered after exit the dispatch loop                       | No                  |
++----------------------+--------------------------------------------------------------+---------------------+
 
 The :doc`INVO <tutorial-invo>` explanation shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
 

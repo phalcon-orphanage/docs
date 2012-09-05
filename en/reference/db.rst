@@ -216,19 +216,19 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
 Database Events
 ---------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. The following events are supported:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-+------------------+-----------------------------------------------------------+
-| Event Name       | Triggered                                                 |
-+==================+===========================================================+
-| afterConnect     | After a successfully connection to a database system      |
-+------------------+-----------------------------------------------------------+
-| beforeQuery      | Before send a SQL statement to the database system        |
-+------------------+-----------------------------------------------------------+
-| afterQuery       | After send a SQL statement to database system             |
-+------------------+-----------------------------------------------------------+
-| beforeDisconnect | Before close a temporal database connection               |
-+------------------+-----------------------------------------------------------+
++------------------+-----------------------------------------------------------+---------------------+
+| Event Name       | Triggered                                                 | Can stop operation? |
++==================+===========================================================+=====================+
+| afterConnect     | After a successfully connection to a database system      | No                  |
++------------------+-----------------------------------------------------------+---------------------+
+| beforeQuery      | Before send a SQL statement to the database system        | Yes                 |
++------------------+-----------------------------------------------------------+---------------------+
+| afterQuery       | After send a SQL statement to database system             | No                  |
++------------------+-----------------------------------------------------------+---------------------+
+| beforeDisconnect | Before close a temporal database connection               | No                  |
++------------------+-----------------------------------------------------------+---------------------+
 
 Bind a EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
 
