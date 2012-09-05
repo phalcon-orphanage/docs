@@ -86,7 +86,7 @@ The next example shows you how to sanitize the action parameters within a contro
 
 Filtering data
 --------------
-In addition to sanitizing, :doc:`Phalcon\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to the format we expect.
+In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to the format we expect.
 
 .. code-block:: php
 
@@ -103,6 +103,7 @@ In addition to sanitizing, :doc:`Phalcon\Filter <../api/Phalcon_Filter>` also pr
 
 Types of Built-in Filters
 -------------------------
+The following are the built-in filters provided by this component:
 
 +-----------+---------------------------------------------------------------------------+
 | Name      | Description                                                               |
@@ -125,6 +126,46 @@ Types of Built-in Filters
 +-----------+---------------------------------------------------------------------------+
 | upper     | Applies the strtoupper_ function                                          |
 +-----------+---------------------------------------------------------------------------+
+
+Creating your own Filters
+-------------------------
+You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+
+.. code-block:: php
+
+    <?php
+
+    $filter = new \Phalcon\Filter();
+
+    //Using an anonymous function
+    $filter->add('md5', function($value) {
+        return preg_replace('/[^0-9a-f]/', '', $value);
+    });
+
+    //Sanitize with the "md5" filter
+    $filtered = $filter->sanitize($possibleMd5, "md5");
+
+Or, if you prefer, you can implement the filter in a class:
+
+.. code-block:: php
+
+    <?php
+
+    class IPv4Filter {
+
+        public function filter($value){
+            return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        }
+
+    }
+
+    $filter = new \Phalcon\Filter();
+
+    //Using an object
+    $filter->add('ipv4', new IPv4Filter());
+
+    //Sanitize with the "ipv4" filter
+    $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
 Complex Sanitizing and Filtering
 --------------------------------

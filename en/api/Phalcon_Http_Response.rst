@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Response**
 =================================
 
-Encapsulates the HTTP response message.  
+Encapsulates the HTTP response message. 
 
 .. code-block:: php
 

@@ -39,7 +39,3 @@ Returns the translation related to the given key
 
 
 
-abstract public **query** ()
-
-abstract public **exists** ()
-

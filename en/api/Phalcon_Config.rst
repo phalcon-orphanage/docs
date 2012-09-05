@@ -1,7 +1,7 @@
 Class **Phalcon\\Config**
 =========================
 
-Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.  
+Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code. 
 
 .. code-block:: php
 

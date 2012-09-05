@@ -1,7 +1,7 @@
 Class **Phalcon\\Loader**
 =========================
 
-This component helps to load your project classes automatically based on some conventions  
+This component helps to load your project classes automatically based on some conventions 
 
 .. code-block:: php
 

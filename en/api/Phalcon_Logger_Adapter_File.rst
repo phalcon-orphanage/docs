@@ -3,7 +3,7 @@ Class **Phalcon\\Logger\\Adapter\\File**
 
 *extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
 
-Adapter to store logs in plain text files  
+Adapter to store logs in plain text files 
 
 .. code-block:: php
 

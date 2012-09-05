@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Uniqueness**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table  
+Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table 
 
 .. code-block:: php
 

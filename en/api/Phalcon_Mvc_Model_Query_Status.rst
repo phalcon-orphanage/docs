@@ -9,7 +9,7 @@ Methods
 
 public **__construct** (*boolean* $success, *Phalcon\Mvc\Model* $model)
 
-Phalcon\\Mvc\\Model\\Query\\Status
+
 
 
 

@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Inclusionin**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Phalcon\\Mvc\\Model\\Validator\\InclusionIn  Check if a value is included into a list of values  
+Phalcon\\Mvc\\Model\\Validator\\InclusionIn Check if a value is included into a list of values 
 
 .. code-block:: php
 

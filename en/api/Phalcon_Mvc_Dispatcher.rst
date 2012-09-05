@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.  
+Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller. 
 
 .. code-block:: php
 

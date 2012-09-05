@@ -3,7 +3,7 @@ Class **Phalcon\\Cache\\Backend\\File**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments using a file backend  
+Allows to cache output fragments using a file backend 
 
 .. code-block:: php
 

@@ -32,6 +32,12 @@ integer **FETCH_NUM**
 Methods
 ---------
 
+*boolean* public **connect** (*array* $descriptor)
+
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection. Support set search_path after connectted if schema is specified in config.
+
+
+
 :doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
 
 Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts") ?>
@@ -57,8 +63,6 @@ Gets creation options from a table
 
 
 public **__construct** (*unknown* $descriptor)
-
-public **connect** (*unknown* $descriptor)
 
 public **query** (*unknown* $sqlStatement)
 

@@ -141,9 +141,87 @@ In a similar manner we can register an lambda function to perform the task inste
     <?php
 
     //Listen all the database events
-    $eventManager->attach('db', function($event, $connection){
+    $eventManager->attach('db', function($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
         }
     });
+
+Creating components that trigger Events
+---------------------------------------
+You can create components in your application that trigger events to a EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called "MyComponent". This component is EventsManager aware, when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
+
+.. code-block:: php
+
+    <?php
+
+    class MyComponent
+    {
+
+        protected $_eventsManager;
+
+        public function setEventsManager($eventsManager)
+        {
+            $this->_eventsManager = $eventsManager;
+        }
+
+        public function someTask()
+        {
+            $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
+
+            // do some task
+
+            $this->_eventsManager->fire("my-component:afterSomeTask", $this);
+        }
+
+    }
+
+Note that events produced by this component are prefixed with "my-component". This is a unique word that help us to identify events that are generated from certain component. You can even generate events outside of the component with the same name. Now let's create a listener to this component:
+
+.. code-block:: php
+
+    <?php
+
+    class SomeListener
+    {
+
+        public function beforeSomeTask($event, $myComponent)
+        {
+            echo "Here, beforeSomeTask\n";
+        }
+
+        public function afterSomeTask($event, $myComponent)
+        {
+            echo "Here, afterSomeTask\n";
+        }
+
+    }
+
+A listener is simply a class that implements any of all the events triggered by the component. Now let's all working together:
+
+.. code-block:: php
+
+    <?php
+
+    //Create an Events Manager
+    $eventsManager = new Phalcon\Events\Manager();
+
+    //Create the MyComponent instance
+    $myComponent = new MyComponent();
+
+    //Bind the eventsManager to the instance
+    $myComponent->setEventsManager($myComponent);
+
+    //Attach the listener to the EventsManager
+    $eventsManager->attach('my-component', new SomeListener());
+
+    //Execute methods in the component
+    $myComponent->someTask();
+
+As "someTask" is executed, the two methods in the listener will be executed, producing the following output:
+
+.. code-block:: php
+
+    Here, beforeSomeTask
+    Here, afterSomeTask
 

@@ -1,16 +1,16 @@
 Multi-lingual Support
 =====================
-The component :doc:`Phalcon\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 Adapters
 --------
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-+---------+-----------------------------------------------------------------------------------------+
-| Adapter | Description                                                                             |
-+=========+=========================================================================================+
-| Array   | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-+---------+-----------------------------------------------------------------------------------------+
++-------------+-----------------------------------------------------------------------------------------+
+| Adapter     | Description                                                                             |
++=============+=========================================================================================+
+| NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
++-------------+-----------------------------------------------------------------------------------------+
 
 Component Usage
 ---------------
@@ -75,13 +75,13 @@ A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACC
         }
 
         //Return a translation object
-        return new \Phalcon\Translate("Array", array(
+        return new \Phalcon\Translate\Adapter\NativeArray(array(
            "content" => $messages
         ));
 
       }
 
-      function indexAction()
+      public function indexAction()
       {
         $this->view->setVar("name", "Mike");
         $this->view->setVar("t", $this->_getTranslation());
@@ -105,5 +105,5 @@ The "_" function is returning the translated string based on the index passed. S
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by a :doc:`REGEX router <routing>`.
+Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by using a :doc:`Router <routing>`.
 

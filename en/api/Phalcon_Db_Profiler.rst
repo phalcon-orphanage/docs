@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Profiler**
 ===============================
 
-Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications.  
+Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications. 
 
 .. code-block:: php
 
@@ -34,13 +34,13 @@ Methods
 
 public **__construct** ()
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **startProfile** (*string* $sqlStatement)
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **startProfile** (*string* $sqlStatement)
 
 Starts the profile of a SQL sentence
 
 
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **stopProfile** ()
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **stopProfile** ()
 
 Stops the active profile
 
@@ -64,7 +64,7 @@ Returns all the processed profiles
 
 
 
-:doc:`\\Phalcon\\Db\\Profiler <_Phalcon_Db_Profiler>` public **reset** ()
+:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **reset** ()
 
 Resets the profiler, cleaning up all the profiles
 

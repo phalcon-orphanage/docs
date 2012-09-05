@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model**
 
 *implements* Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).   A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.   Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.   
 
 .. code-block:: php
 
@@ -407,13 +407,13 @@ Executes validators on every validation call
     
     public function validation()
       {
-     $this->validate(new ExclusionIn(array(
-    'field' => 'status',
-    'domain' => array('A', 'I')
-    )));
-    if ($this->validationHasFailed() == true) {
-    return false;
-    }
+     		$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
     }
     
     }
@@ -436,13 +436,13 @@ Check whether validation process has generated any messages
     
     public function validation()
       {
-     $this->validate(new ExclusionIn(array(
-    'field' => 'status',
-    'domain' => array('A', 'I')
-    )));
-    if ($this->validationHasFailed() == true) {
-    return false;
-    }
+     		$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
     }
     
     }

@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Request\\File**
 ======================================
 
-Provides OO wrappers to the $_FILES superglobal  
+Provides OO wrappers to the $_FILES superglobal 
 
 .. code-block:: php
 

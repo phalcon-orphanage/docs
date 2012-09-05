@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Column**
 =============================
 
-Allows to define columns to be used on create or alter table operations  
+Allows to define columns to be used on create or alter table operations 
 
 .. code-block:: php
 

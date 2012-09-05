@@ -3,7 +3,7 @@ Class **Phalcon\\Cache\\Backend\\Apc**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments, PHP data and raw data using a memcache backend  
+Allows to cache output fragments, PHP data and raw data using a memcache backend 
 
 .. code-block:: php
 

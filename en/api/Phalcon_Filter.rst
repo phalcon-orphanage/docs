@@ -1,7 +1,7 @@
 Class **Phalcon\\Filter**
 =========================
 
-The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension  
+The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension 
 
 .. code-block:: php
 

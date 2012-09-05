@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Request**
 ================================
 
-Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
+Encapsulates request information for easy and secure access from application controllers.   The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.   
 
 .. code-block:: php
 
@@ -31,10 +31,10 @@ Gets variable from $_POST superglobal applying filters if needed
 
     <?php
 
-     /Returns value from $_POST["user_email"] without sanitizing
+    //Returns value from $_POST["user_email"] without sanitizing
     $userEmail = $request->getPost("user_email");
     
-     /Returns value from $_POST["user_email"] with sanitizing
+    //Returns value from $_POST["user_email"] with sanitizing
     $userEmail = $request->getPost("user_email", "email");
 
 
@@ -48,10 +48,10 @@ Gets variable from $_GET superglobal applying filters if needed
 
     <?php
 
-     /Returns value from $_GET["id"] without sanitizing
+    //Returns value from $_GET["id"] without sanitizing
     $id = $request->getQuery("id");
     
-     /Returns value from $_GET["id"] with sanitizing
+    //Returns value from $_GET["id"] with sanitizing
     $id = $request->getQuery("id", "int");
 
 

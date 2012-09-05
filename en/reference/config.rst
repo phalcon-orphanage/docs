@@ -1,6 +1,6 @@
 Reading Configuration
 =====================
-:doc:`Phalcon\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application.
 
 File Adapters
 -------------
@@ -16,7 +16,7 @@ The adapters available are:
 
 Native Arrays
 -------------
-The next example shows how to convert native arrays into Phalcon_Config objects. This option offers the best performance since no files are read during this request.
+The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are read during this request.
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ If you want to better organize your project you can save the array in another fi
 
 Reading INI Files
 -----------------
-Ini files are a common way to store settings. Phalcon\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
 
 .. code-block:: ini
 

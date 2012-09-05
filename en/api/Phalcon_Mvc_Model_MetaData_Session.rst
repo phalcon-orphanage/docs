@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-Stores model meta-data in session. Data will erase when the session finishes. Meta-data are permanent while the session is active.  You can query the meta-data by printing $_SESSION['$PMM$']  
+Stores model meta-data in session. Data will erase when the session finishes. Meta-data are permanent while the session is active. You can query the meta-data by printing $_SESSION['$PMM$'] 
 
 .. code-block:: php
 

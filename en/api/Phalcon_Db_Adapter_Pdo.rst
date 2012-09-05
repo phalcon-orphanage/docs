@@ -45,11 +45,19 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` public **query** (*string* $sqlStatement)
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows //Querying data $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'"); $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows 
+
+.. code-block:: php
+
+    <?php
+
+    //Querying data
+
+$resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'"); $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
 
 
-public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
+public **execute** (*string* $sqlStatement, *array* $placeholders)
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
@@ -57,12 +65,9 @@ Sends SQL statements to the database server returning the success state. Use thi
 
     <?php
 
-     //Inserting data
-     $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
-     $success = $connection->execute("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
-    
-     @param  string $sqlStatement
-     @param  array $placeholders
+    //Inserting data
+    $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
+    $success = $connection->execute("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
 
 
 

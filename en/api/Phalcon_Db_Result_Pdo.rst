@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Result\\Pdo**
 ==================================
 
-Encapsulates the resultset internals  
+Encapsulates the resultset internals 
 
 .. code-block:: php
 
@@ -35,7 +35,7 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
     while($robot = $result->fetchArray()){
-      print_r($robot);
+    	print_r($robot);
     }
 
 
@@ -78,13 +78,13 @@ Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetchArray
 
     <?php
 
-     /Return array with integer indexes
+    //Return array with integer indexes
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
     
-     /Return associative array without integer indexes
+    //Return associative array without integer indexes
     $result->setFetchMode(Phalcon\Db::FETCH_ASSOC);
     
-     /Return associative array together with integer indexes
+    //Return associative array together with integer indexes
     $result->setFetchMode(Phalcon\Db::FETCH_BOTH);
 
 

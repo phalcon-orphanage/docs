@@ -3,7 +3,7 @@ Class **Phalcon\\Config\\Adapter\\Ini**
 
 *extends* :doc:`Phalcon\\Config <Phalcon_Config>`
 
-Reads ini files and convert it to Phalcon\\Config objects.  Given the next configuration file:  
+Reads ini files and convert it to Phalcon\\Config objects. Given the next configuration file: 
 
 .. code-block:: ini
 
@@ -21,7 +21,7 @@ Reads ini files and convert it to Phalcon\\Config objects.  Given the next confi
     modelsDir = "../app/models/"
     viewsDir = "../app/views/"
 
-  You can read it as follows:  
+You can read it as follows: 
 
 .. code-block:: php
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Query**
 ====================================
 
-This class takes a PHQL intermediate representation and executes it.  
+This class takes a PHQL intermediate representation and executes it. 
 
 .. code-block:: php
 
