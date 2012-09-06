@@ -211,7 +211,7 @@ The response object is not usually used directly, but is built up before the exe
 
     }
 
-Learn more about the request environment in its `documentation article <request.html>`_.
+Learn more about the HTTP environment in their dedicated articles `request <request.html>`_ and `response <response.html>`_.
 
 Session Data
 ------------
@@ -236,32 +236,19 @@ Sessions help us maintain persistent data between requests. You could access a :
 
     }
 
-Dispatch Events
----------------
-Events enable controllers to run shared pre- and post- processing code for their actions. Every time a controller action is executed, two events are executed to check security conditions, modify application control flow or data. These events are "beforeDispatch" and "afterDispatch". The first one is executed before the controller action is dispatched. Developers can change the control flow by using a forward in that event. The second one is the "afterDispatch" event, which is executed after the controller action.
+Using controllers as Services
+-----------------------------
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly, a controller can be easily replaced by any other class registered with its name:
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends \Phalcon\Controller
-    {
-
-        function beforeDispatch()
-        {
-            if (Phalcon_Session::get("hasAuth") == false) {
-                // Check whether user is authenticated and forwards him to login if not
-                $this->_forward("session/login");
-                return false;
-            }
-        }
-
-        function indexAction()
-        {
-
-        }
-
-    }
+    //Register a controller as a service
+    $di->set('IndexController', function() {
+        $component = new Component();
+        return $component;
+    });
 
 Creating a Base Controller
 --------------------------

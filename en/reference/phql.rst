@@ -1,8 +1,7 @@
 Phalcon Query Language (PHQL)
 =============================
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high level, object oriented SQL dialect that allows to write queries using a
-standarized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+Phalcon Query Language, PhalconQL or simply PHQL is a high level, object oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
 To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 

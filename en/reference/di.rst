@@ -443,13 +443,25 @@ Or by calling through the magic method:
 
 .. code-block:: php
 
-    <?php $request = $di->getRequest();
+    <?php
+
+    $request = $di->getRequest();
 
 Phalcon\\DI also allows for services to be reusable. To get a service previously instantiated the getShared() method can be used. Specifically for the Phalcon\\Http\\Request example shown above:
 
 .. code-block:: php
 
-    <?php $request = $di->getShared("request");
+    <?php
+
+    $request = $di->getShared("request");
+
+Arguments can be passed to the constructor by adding an array parameter to the method "get":
+
+.. code-block:: php
+
+    <?php
+
+    $component = $di->get("MyComponent", array("some-parameter", "other"))
 
 Factory Default DI
 ------------------
@@ -491,6 +503,31 @@ Although you can register services with the names you want. Phalcon has a serier
 | modelsMetadata | Models Meta-Data Service                    | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>` |
 +----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
 
+Instantiating classes via the Services Container
+------------------------------------------------
+When you request a service to the services container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
+
+.. code-block:: php
+
+    <?php
+
+    //Register a controller as a service
+    $di->set('IndexController', function() {
+        $component = new Component();
+        return $component;
+    });
+
+    //Register a controller as a service
+    $di->set('MyOtherComponent', function() {
+        //Actually returns another component
+        $component = new AnotherComponent();
+        return $component;
+    });
+
+    //Create a instance via the services container
+    $myComponent = $di->get('MyOtherComponent');
+
+You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will fallback to a valid autoloader to finally load the class.
 
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
