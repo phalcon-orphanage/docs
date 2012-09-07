@@ -119,3 +119,4 @@ API Indice
    Phalcon_Tag_Exception
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
+   Phalcon_Version
