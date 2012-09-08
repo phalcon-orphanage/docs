@@ -1,5 +1,5 @@
 Class **Phalcon\\Cache**
-=======================
+========================
 
 Phalcon_Cache can be used to cache output fragments, PHP data and raw data in order to improve performance  
 

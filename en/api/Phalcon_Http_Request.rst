@@ -201,7 +201,7 @@ Checks whether request include attached files
 
 
 
-:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File[]>` public **getUploadedFiles** ()
+:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File.rst>` public **getUploadedFiles** ()
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 

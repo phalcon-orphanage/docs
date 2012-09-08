@@ -24,7 +24,7 @@ Sets the dependency injection container
 
 
 
-:doc:`Phalcon\\DI <../api/Phalcon_DI>` public **getDI** ()
+:doc:`Phalcon\\DI <../api/Phalcon_DI.rst>` public **getDI** ()
 
 Returns the dependency injection container
 
@@ -132,25 +132,25 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Resultset <../api/Phalcon_Mvc_Query_Resultset>` protected **_executeSelect** ()
+:doc:`Phalcon\\Mvc\\Query\\Resultset <../api/Phalcon_Mvc_Query_Resultset.rst>` protected **_executeSelect** ()
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Query\\Resultset
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeInsert** ()
+:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status.rst>` protected **_executeInsert** ()
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Query\\Status
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeUpdate** ()
+:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status.rst>` protected **_executeUpdate** ()
 
 Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeDelete** ()
+:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status.rst>` protected **_executeDelete** ()
 
 Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
 

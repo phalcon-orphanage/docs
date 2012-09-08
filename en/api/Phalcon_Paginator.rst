@@ -1,5 +1,5 @@
 Class **Phalcon\\Paginator**
-===========================
+============================
 
 Phalcon_Paginator is designed to simplify building of pagination on views   
 
