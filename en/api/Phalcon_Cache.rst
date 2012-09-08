@@ -1,4 +1,4 @@
-Class **Phalcon_Cache**
+Class **Phalcon\\Cache**
 =======================
 
 Phalcon_Cache can be used to cache output fragments, PHP data and raw data in order to improve performance  
@@ -17,7 +17,7 @@ Phalcon_Cache can be used to cache output fragments, PHP data and raw data in or
       'cacheDir' => '../app/cache/'
     );
     
-    $cache = Phalcon_Cache::factory(
+    $cache = Phalcon\Cache::factory(
         'Output', 'File', $frontendOptions, $backendOptions
     );
     

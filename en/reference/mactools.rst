@@ -3,7 +3,7 @@ Phalcon Developer Tools on Mac OS X
 These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
 
 Prerequisites
-----------
+-------------
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
 Download

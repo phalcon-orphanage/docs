@@ -1,4 +1,4 @@
-Class **Phalcon_Paginator**
+Class **Phalcon\\Paginator**
 ===========================
 
 Phalcon_Paginator is designed to simplify building of pagination on views   
@@ -7,14 +7,14 @@ Phalcon_Paginator is designed to simplify building of pagination on views
 
     <?php
      
-    // Use an alias for Phalcon_Tag
-    use Tag as Phalcon_Tag;
+    // Use an alias for Phalcon\Tag
+    use Phalcon\Tag as Tag;
 
     // Gets the active page number
     $numberPage = (int) $_GET['page'];
 
     // Create a Model paginator
-    $paginator = Phalcon_Paginator::factory(
+    $paginator = Phalcon\Paginator::factory(
         'Model', 
         array(
             'data'  => $robots,

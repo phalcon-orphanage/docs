@@ -102,7 +102,7 @@ And this second configuration allow you to have different configurations by host
     
 Preparing Phalcon to Nginx
 --------------------------
-If you're using the default :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` router, you will notice that Nginx_ puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
+If you're using the default :doc:`Phalcon_Mvc_Router <../api/Phalcon_Mvc_Router>` router, you will notice that Nginx_ puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router.
 
 .. code-block:: php
 

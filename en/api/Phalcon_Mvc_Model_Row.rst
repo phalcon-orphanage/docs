@@ -17,7 +17,7 @@ Checks whether offset exists in the row
 
 
 
-:doc:`string|Phalcon\\Mvc\\Model <string|Phalcon_Mvc_Model>` public **offsetGet** (*int* $index)
+:doc:`string|Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` public **offsetGet** (*int* $index)
 
 Gets row in a specific position of the row
 

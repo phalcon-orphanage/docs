@@ -7,6 +7,7 @@ API Index
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
    Phalcon_Acl
+   Phalcon_Cache
    Phalcon_Cache_Backend
    Phalcon_Cache_Frontend_Data
    Phalcon_Cache_Frontend_None
@@ -114,6 +115,7 @@ API Index
    Phalcon_Mvc_View_Engine_Php
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View
+   Phalcon_Paginator
    Phalcon_Paginator_Exception
    Phalcon_Session_Adapter_Files
    Phalcon_Tag_Exception

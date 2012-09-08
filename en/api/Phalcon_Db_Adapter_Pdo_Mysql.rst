@@ -10,11 +10,11 @@ Specific functions for the Mysql database system
     <?php
 
     $config = array(
-    	"host" => "192.168.0.11",
-    	"dbname" => "blog",
-    	"port" => 3306,
-    	"username" => "sigma",
-    	"password" => "secret"
+        "host" => "192.168.0.11",
+        "dbname" => "blog",
+        "port" => 3306,
+        "username" => "sigma",
+        "password" => "secret"
     );
     
     $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
@@ -33,22 +33,26 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
+:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` public **describeColumns** (*string* $table, *string* $schema)
 
-Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts") ?>
+Returns an array of Phalcon\\Db\\Column objects describing a table.
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->describeColumns("posts") ?>
 
 
-
-:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
+::doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` public **describeIndexes** (*string* $table, *string* $schema)
 
 Lists table indexes
 
 
 
-:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
+:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` public **describeReferences** (*string* $table, *string* $schema)
 
 Lists table references
-
 
 
 *array* public **tableOptions** (*string* $tableName, *string* $schemaName)
