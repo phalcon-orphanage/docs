@@ -132,27 +132,27 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Resultset <../api/Phalcon_Mvc_Query_Resultset>` protected **_executeSelect** ()
+:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` protected **_executeSelect** ()
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Query\\Resultset
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeInsert** ()
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <../api/Phalcon_Mvc_Model_Query_Status>` protected **_executeInsert** ()
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Query\\Status
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeUpdate** ()
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <../api/Phalcon_Mvc_Model_Query_Status>` protected **_executeUpdate** ()
 
-Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <../api/Phalcon_Mvc_Query_Status>` protected **_executeDelete** ()
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <../api/Phalcon_Mvc_Model_Query_Status>` protected **_executeDelete** ()
 
-Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 

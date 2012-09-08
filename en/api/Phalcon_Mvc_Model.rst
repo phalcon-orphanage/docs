@@ -161,7 +161,7 @@ Gets internal database connection
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Base $result <../api/Phalcon_Mvc_Model_Base>` public static **dumpResult** (*Phalcon\Mvc\Model\Base* $base, *array* $result)
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` public static **dumpResult** (*Phalcon\Mvc\Model\Base* $base, *array* $result)
 
 Assigns values to a model from an array returning a new model 
 
@@ -247,7 +247,7 @@ Generate a SQL SELECT statement for an aggregate
 
 
 
-:doc:`array|Phalcon\\Mvc\\Model\\Resultset <array|Phalcon_Mvc_Model_Resultset>` protected static **_getGroupResult** ()
+:doc:`array|Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` protected static **_getGroupResult** ()
 
 Generate a resultset from an SQL select with aggregations
 
