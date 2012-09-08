@@ -48,7 +48,7 @@ Sets the dependency injection container
 
 
 
-:doc:`Phalcon\\DI <../api/Phalcon_DI.rst>` public **getDI** ()
+:doc:`Phalcon\\DI <../api/Phalcon_DI>` public **getDI** ()
 
 Returns the dependency injection container
 
@@ -60,7 +60,7 @@ Sets the event manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager.rst>` public **getEventsManager** ()
+:doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>` public **getEventsManager** ()
 
 Returns the internal event manager
 
@@ -78,7 +78,7 @@ Gets a resulset from the cache or creates one
 
 
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model.rst>` public **setTransaction** (*Phalcon\Mvc\Model\Transaction* $transaction)
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` public **setTransaction** (*Phalcon\Mvc\Model\Transaction* $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -117,7 +117,7 @@ Sets a transaction related to the Model instance
 
 
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model.rst>` protected **setSource** ()
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` protected **setSource** ()
 
 Sets table name which model should be mapped
 
@@ -129,7 +129,7 @@ Returns table name mapped in the model
 
 
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model.rst>` protected **setSchema** ()
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` protected **setSchema** ()
 
 Sets schema name where table mapped is located
 
@@ -155,13 +155,13 @@ Returns DependencyInjection connection service
 public **setForceExists** (*unknown* $forceExists)
 
 
-:doc:`Phalcon\\Db <../api/Phalcon_Db.rst>` public **getConnection** ()
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` public **getConnection** ()
 
 Gets internal database connection
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Base $result <../api/Phalcon_Mvc_Model_Base.rst>` public static **dumpResult** (*Phalcon\Mvc\Model\Base* $base, *array* $result)
+:doc:`Phalcon\\Mvc\\Model\\Base $result <../api/Phalcon_Mvc_Model_Base>` public static **dumpResult** (*Phalcon\Mvc\Model\Base* $base, *array* $result)
 
 Assigns values to a model from an array returning a new model 
 
@@ -181,7 +181,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset.rst>` public static **find** (*array* $parameters)
+:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` public static **find** (*array* $parameters)
 
 Allows to query a set of records that match the specified conditions 
 
@@ -212,7 +212,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model.rst>` public static **findFirst** (*array* $parameters)
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` public static **findFirst** (*array* $parameters)
 
 Allows to query the first record that match the specified conditions 
 
@@ -241,13 +241,13 @@ Checks if the current record already exists or not
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset.rst>` protected static **_prepareGroupResult** ()
+:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` protected static **_prepareGroupResult** ()
 
 Generate a SQL SELECT statement for an aggregate
 
 
 
-:doc:`array|Phalcon\\Mvc\\Model\\Resultset <array|Phalcon_Mvc_Model_Resultset.rst>` protected static **_getGroupResult** ()
+:doc:`array|Phalcon\\Mvc\\Model\\Resultset <array|Phalcon_Mvc_Model_Resultset>` protected static **_getGroupResult** ()
 
 Generate a resultset from an SQL select with aggregations
 
@@ -457,7 +457,7 @@ Check whether validation process has generated any messages
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message.rst>` public **getMessages** ()
+:doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>` public **getMessages** ()
 
 Returns all the validation messages 
 
