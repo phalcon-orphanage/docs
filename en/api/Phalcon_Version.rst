@@ -56,7 +56,7 @@ version id can be calculated as such
     echo Phalcon\Version::get(); // 0050114
 
     // Framework version 0.5.4 RC 3
-    // 0.05.04 3 = RC, 3 = no special subversion
+    // 0.05.04 3 = RC, 3 = special subversion
     echo Phalcon\Version::get(); // 0050434
 
 
