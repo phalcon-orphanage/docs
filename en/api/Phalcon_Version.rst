@@ -45,19 +45,19 @@ version id can be calculated as such
 
     // Framework version 0.5.0 BETA 2
     // 0.05.00 2 = Beta, 2 = special subversion
-    echo Phalcon\Version::get(); // 0050022
+    echo Phalcon\Version::getId(); // 0050022
 
     // Framework version 0.4.5
     // 0.04.05 4 = Stable, 0 = no special subversion
-    echo Phalcon\Version::get(); // 0040540
+    echo Phalcon\Version::getId(); // 0040540
 
     // Framework version 0.5.1 ALPHA 4
     // 0.05.01 1 = Alpha, 4 = special subversion
-    echo Phalcon\Version::get(); // 0050114
+    echo Phalcon\Version::getId(); // 0050114
 
     // Framework version 0.5.4 RC 3
     // 0.05.04 3 = RC, 3 = special subversion
-    echo Phalcon\Version::get(); // 0050434
+    echo Phalcon\Version::getId(); // 0050434
 
 
 
