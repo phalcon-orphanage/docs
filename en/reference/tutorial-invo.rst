@@ -307,7 +307,7 @@ A EventsManager allows us to attach listeners to a particular type of event. The
         return $dispatcher;
     });
 
-The Security plugin is a class located at (app/plugins/Security.php). This class implements the method "beforeDispatch". This is the same
+The Security plugin is a class located at (app/plugins/Security.php). This class implements the method "beforeExecuteRoute". This is the same
 name as one of the events produced in the Dispatcher:
 
 .. code-block:: php
@@ -319,7 +319,7 @@ name as one of the events produced in the Dispatcher:
 
         // ...
 
-        public function beforeDispatch(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
         {
             // ...
         }
@@ -340,7 +340,7 @@ Now, we're verifying the role in the current session, check to see if he has acc
 
         // ...
 
-        public function beforeDispatch(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
         {
 
             //Check whether the "auth" variable exists in session to define the active role

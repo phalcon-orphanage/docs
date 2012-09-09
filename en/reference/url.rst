@@ -66,3 +66,54 @@ A URL can be generated in the following way:
     //This produces: /blog/2012/01/some-blog-post
     $url->get(array('for' => 'show-post', 'year' => 2012, 'month' => '01', 'title' => 'some-blog-post'));
 
+Producing URLs without Mod-Rewrite
+----------------------------------
+You can use this component also to create urls without mod-rewrite:
+
+.. code-block:: php
+
+    <?php
+
+    $url = new Phalcon\Mvc\Url();
+
+    //Pass the URI in $_GET["_url"]
+    $url->setBaseUri('/invo/index.php?_url=/');
+
+    //This produce: /invo/index.php?_url=/products/save
+    echo $url->get("products/save");
+
+You can also use $_SERVER["REQUEST_URI"]:
+
+.. code-block:: php
+
+    <?php
+
+    $url = new Phalcon\Mvc\Url();
+
+    //Pass the URI using $_SERVER["REQUEST_URI"]
+    $url->setBaseUri('/invo/index.php?_url=/');
+
+    //Pass the URI in $_GET["_url"]
+    $url->setBaseUri('/invo/index.php/');
+
+In this case, it's neccesary to manually handle the required URI in the Router:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+
+    // ... define routes
+
+    $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
+    $router->handle($uri);
+
+The produced routes would look like:
+
+.. code-block:: php
+
+    <?php
+
+    //This produce: /invo/index.php/products/save
+    echo $url->get("products/save");

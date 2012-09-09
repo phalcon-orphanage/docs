@@ -128,7 +128,8 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    class Module {
+    class Module
+    {
 
         /**
          * Register a specific autoloader for the module
@@ -180,7 +181,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
     $di = new \Phalcon\DI\FactoryDefault();
 
     //Specify routes for modules
-    $di->set('router', function() {
+    $di->set('router', function () {
 
         $router = new \Phalcon\Mvc\Router();
 
@@ -243,7 +244,7 @@ When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modu
 
 Understanding the default behavior
 ----------------------------------
-If you've been following the :doc:`tutorial <tutorial>`tutorials_ or have generated the code using :doc:`Phalcon Devtools <tools>`, you may recognize the following bootstrap file:
+If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`, you may recognize the following bootstrap file:
 
 .. code-block:: php
 
