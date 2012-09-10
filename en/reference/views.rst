@@ -270,9 +270,8 @@ As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is 
 
     }
 
-
 Caching View Fragments
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole rendered output to increase performance.
 
 :doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <../api/Phalcon_Cache>` to provide an easier way to cache output fragments. You could manually set the cache handler or set a global handler:
@@ -331,6 +330,29 @@ When the View component needs to cache something it will request a cache service
 
         return $cache;
     });
+
+Disabling the view
+------------------
+If your controller don't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
+
+.. code-block:: php
+
+    <?php
+
+    class UsersController extends \Phalcon\Mvc\Controller
+    {
+
+        public function closeSessionAction()
+        {
+
+            //Disable the view
+            $this->view->disable();
+
+            //The same
+            $this->view->setRenderLevel(Phalcon\Mvc\View::NO_RENDER);
+        }
+
+    }
 
 Template Engines
 ----------------

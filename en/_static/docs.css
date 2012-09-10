@@ -261,7 +261,8 @@ div.figure {
     font-weight: bold;
 }
 
-.highlight .mi {
+.highlight .mi,
+.highlight .mf {
 	color: #8CD0D3;
 }
 
