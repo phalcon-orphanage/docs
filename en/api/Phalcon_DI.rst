@@ -1,7 +1,7 @@
 Class **Phalcon\\DI**
 =====================
 
-Phalcon_DI
+
 
 
 Methods

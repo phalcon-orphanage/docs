@@ -24,9 +24,9 @@ protected **_setSessionMessages** ()
 
 public **message** (*unknown* $type, *unknown* $message)
 
-public **getMessages** (*unknown* $type)
+public **getMessages** (*unknown* $type, *unknown* $remove)
 
-public **output** ()
+public **output** (*unknown* $remove)
 
 public **__construct** (*unknown* $cssClasses)
 

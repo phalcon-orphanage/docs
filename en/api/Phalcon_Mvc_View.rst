@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\View**
 ============================
 
-*extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
+*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping. 
 

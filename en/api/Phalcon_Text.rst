@@ -28,7 +28,7 @@ Uncamelize strings which are camelized
 
     <?php
 
-    Phalcon\Text::uncamelize('CocoBongo'); //coco_bongo
+    Phalcon\Text::camelize('CocoBongo'); //coco_bongo
 
 
 

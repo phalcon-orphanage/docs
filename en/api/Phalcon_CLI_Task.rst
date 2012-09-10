@@ -1,10 +1,12 @@
-Class **Phalcon\\Mvc\\User\\Plugin**
-====================================
+Class **Phalcon\\CLI\\Task**
+============================
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 Methods
 ---------
+
+final public **__construct** ()
 
 public **setDI** (*unknown* $dependencyInjector)
 

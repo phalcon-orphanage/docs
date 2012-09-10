@@ -1,64 +1,27 @@
 Class **Phalcon\\Version**
-==================================================
+==========================
 
-Provides the current version of the framework. This is useful in a number of
-ways such as upgrade scripts, enabling features based on the version of the
-framework etc.
+This version allows to get version of the framework
 
 
 Methods
 ---------
 
-*string* public **get** ()
+protected static **_getVersion** ()
 
-Returns the version literal of the framework.
+Area where the version number is set. The format is as follows: ABBCCDE A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stable E - Special release version i.e. RC1, Beta2 etc.
 
-.. code-block:: php
 
-    <?php
 
-    echo Phalcon\Version::get(); // 0.5.0 BETA 2
+*string* public static **get** ()
 
-*string* public **getId** ()
+Returns the active version (string)
 
-Returns the version id of the framework. Although this is a number, it is
-returned back as a string, in order to preserve the zeros where necessary. The
-version id can be calculated as such
 
-+--------------------+-------------------------------------------------------------------+
-| Version            | Description                                                       |
-+--------------------+-------------------------------------------------------------------+
-| Major version      | One digit, can be 0                                               |
-+--------------------+-------------------------------------------------------------------+
-| Medium version     | Two digits. If the version is less than 10, it is prefixed with 0 |
-+--------------------+-------------------------------------------------------------------+
-| Minimum version    | Two digits. If the version is less than 10, it is prefixed with 0 |
-+--------------------+-------------------------------------------------------------------+
-| Special            | One digit. 1 = 'ALPHA', 2 = 'BETA', 3 = 'RC', 4 = '' (Stable)     |
-+--------------------+-------------------------------------------------------------------+
-| Special subversion | One digit, can be 0                                               |
-+--------------------+-------------------------------------------------------------------+
 
-.. code-block:: php
+*int* public static **getId** ()
 
-    <?php
-
-    // Framework version 0.5.0 BETA 2
-    // 0.05.00 2 = Beta, 2 = special subversion
-    echo Phalcon\Version::getId(); // 0050022
-
-    // Framework version 0.4.5
-    // 0.04.05 4 = Stable, 0 = no special subversion
-    echo Phalcon\Version::getId(); // 0040540
-
-    // Framework version 0.5.1 ALPHA 4
-    // 0.05.01 1 = Alpha, 4 = special subversion
-    echo Phalcon\Version::getId(); // 0050114
-
-    // Framework version 0.5.4 RC 3
-    // 0.05.04 3 = RC, 3 = special subversion
-    echo Phalcon\Version::getId(); // 0050434
-
+Returns the numeric active version
 
 
 

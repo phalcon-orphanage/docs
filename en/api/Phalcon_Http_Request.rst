@@ -9,9 +9,9 @@ Encapsulates request information for easy and secure access from application con
 
     $request = new Phalcon\Http\Request();
     if ($request->isPost() == true) {
-        if ($request->isAjax() == true) {
-            echo 'Request was made using POST and AJAX';
-        }
+    	if ($request->isAjax() == true) {
+    		echo 'Request was made using POST and AJAX';
+    	}
     }
 
 
@@ -19,9 +19,17 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-public **getDI** ()
+Sets the dependency injector
+
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+
+Returns the internal dependency injector
+
+
 
 *mixed* public **getPost** (*string* $name, *string|array* $filters)
 
@@ -31,10 +39,10 @@ Gets variable from $_POST superglobal applying filters if needed
 
     <?php
 
-    // Returns value from $_POST["user_email"] without sanitizing
+    //Returns value from $_POST["user_email"] without sanitizing
     $userEmail = $request->getPost("user_email");
     
-    // Returns value from $_POST["user_email"] with sanitizing
+    //Returns value from $_POST["user_email"] with sanitizing
     $userEmail = $request->getPost("user_email", "email");
 
 
@@ -48,10 +56,10 @@ Gets variable from $_GET superglobal applying filters if needed
 
     <?php
 
-    // Returns value from $_GET["id"] without sanitizing
+    //Returns value from $_GET["id"] without sanitizing
     $id = $request->getQuery("id");
     
-    // Returns value from $_GET["id"] with sanitizing
+    //Returns value from $_GET["id"] with sanitizing
     $id = $request->getQuery("id", "int");
 
 
@@ -201,7 +209,7 @@ Checks whether request include attached files
 
 
 
-:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` public **getUploadedFiles** ()
+:doc:`Phalcon\\Http\\Request\\File[] <Phalcon_Http_Request_File[]>` public **getUploadedFiles** ()
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 

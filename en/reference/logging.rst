@@ -85,3 +85,20 @@ The example below shows how to change the log format:
     //Changing the logger format
     $logger->setFormat("%date% - %message%");
 
+File Logger
+-----------
+This logger uses plain files to log any kind of data. File handlers are internally open with function `fopen`_. By default all logger files are open using
+'ab' mode which open the files for writing only; placing the file pointer at the end of the file. If the file does not exist, attempt to create it. You can
+change this mode passing additional options to the constructor:
+
+.. code-block:: php
+
+    <?php
+
+    // Create the file logger in 'w' mode
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log", array(
+        'mode' => 'w'
+    ));
+
+.. _fopen: http://php.net/manual/en/function.fopen.php
+

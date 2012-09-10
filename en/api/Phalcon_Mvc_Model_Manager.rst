@@ -22,9 +22,17 @@ Methods
 
 public **__construct** ()
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-public **getDI** ()
+Sets the DependencyInjector container
+
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+
+Returns the DependencyInjector container
+
+
 
 public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
 
@@ -44,11 +52,23 @@ Initializes a model in the model manager
 
 
 
-public **isInitialized** (*unknown* $modelName)
+*bool* public **isInitialized** (*string* $modelName)
 
-public **getLastInitialized** ()
+Check of a model is already initialized
 
-public **load** (*unknown* $modelName)
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getLastInitialized** ()
+
+Get last initialized model
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **load** (*unknown* $modelName)
+
+Loads a model throwing an exception if it doesn't exist
+
+
 
 public **addHasOne** (*Phalcon\Mvc\Model* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
@@ -134,9 +154,21 @@ Gets hasOne relations defined on a model
 
 
 
-public **getRelations** (*unknown* $a, *unknown* $b)
+*array* public **getRelations** (*unknown* $a, *unknown* $b)
 
-public **createQuery** (*unknown* $phql)
+Query the relations between two models
 
-public **executeQuery** (*unknown* $phql, *unknown* $placeholders)
+
+
+:doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>` public **createQuery** (*string* $phql)
+
+Creates a Phalcon\\Mvc\\Model\\Query without execute it
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>` public **executeQuery** (*string* $phql, *array* $placeholders)
+
+Creates a Phalcon\\Mvc\\Model\\Query and execute it
+
+
 

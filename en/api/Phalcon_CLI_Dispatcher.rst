@@ -1,9 +1,9 @@
-Class **Phalcon\\Mvc\\Dispatcher**
+Class **Phalcon\\CLI\\Dispatcher**
 ==================================
 
 *extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller. 
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it. 
 
 .. code-block:: php
 
@@ -11,42 +11,42 @@ Dispatching is the process of taking the request object, extracting the module n
 
     $di = new Phalcon\DI();
     
-    $dispatcher = new Phalcon\Mvc\Dispatcher();
+    $dispatcher = new Phalcon\CLI\Dispatcher();
     
       $dispatcher->setDI($di);
     
-    $dispatcher->setControllerName('posts');
+    $dispatcher->setTaskName('posts');
     $dispatcher->setActionName('index');
     $dispatcher->setParams(array());
     
-    $controller = $dispatcher->dispatch();
+    $handle = $dispatcher->dispatch();
 
 
 
 Methods
 ---------
 
-public **setControllerSuffix** (*string* $controllerSuffix)
+public **setTaskSuffix** (*string* $taskSuffix)
 
-Sets the default controller suffix
-
-
-
-public **setDefaultController** (*string* $controllerName)
-
-Sets the default controller name
+Sets the default task suffix
 
 
 
-public **setControllerName** (*string* $controllerName)
+public **setDefaultTask** (*string* $taskName)
 
-Sets the controller name to be dispatched
+Sets the default task name
 
 
 
-*string* public **getControllerName** ()
+public **setTaskName** (*string* $taskName)
 
-Gets last dispatched controller name
+Sets the task name to be dispatched
+
+
+
+*string* public **getTaskName** ()
+
+Gets last dispatched task name
 
 
 
@@ -56,15 +56,15 @@ Throws an internal exception
 
 
 
-:doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>` public **getLastController** ()
+:doc:`Phalcon\\CLI\\Task <Phalcon_CLI_Task>` public **getLastTask** ()
 
 Returns the lastest dispatched controller
 
 
 
-:doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>` public **getActiveController** ()
+:doc:`Phalcon\\CLI\\Task <Phalcon_CLI_Task>` public **getActiveTask** ()
 
-Returns the active controller in the dispatcher
+Returns the active task in the dispatcher
 
 
 

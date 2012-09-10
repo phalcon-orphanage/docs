@@ -1,9 +1,9 @@
-Class **Phalcon\\Db\\Dialect\\Postgresql**
-==========================================
+Class **Phalcon\\Db\\Dialect\\Sqlite**
+======================================
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-Generates database specific SQL for the PostgreSQL RBDM
+Generates database specific SQL for the Sqlite RBDM
 
 
 Methods
@@ -15,61 +15,61 @@ Gets a list of columns
 
 
 
-public static **getColumnDefinition** (*Phalcon\Db\Column* $column)
+public **getColumnDefinition** (*Phalcon\Db\Column* $column)
 
-Gets the column name in PostgreSQL
+Gets the column name in Sqlite
 
 
 
-*string* public static **addColumn** ()
+*string* public **addColumn** ()
 
 Generates SQL to add a column to a table
 
 
 
-*string* public static **modifyColumn** ()
+*string* public **modifyColumn** ()
 
 Generates SQL to modify a column in a table
 
 
 
-*string* public static **dropColumn** ()
+*string* public **dropColumn** ()
 
 Generates SQL to delete a column from a table
 
 
 
-*string* public static **addIndex** ()
+*string* public **addIndex** ()
 
 Generates SQL to add an index to a table
 
 
 
-*string* public static **dropIndex** ()
+*string* public **dropIndex** ()
 
 Generates SQL to delete an index from a table
 
 
 
-*string* public static **addPrimaryKey** ()
+*string* public **addPrimaryKey** ()
 
 Generates SQL to add the primary key to a table
 
 
 
-*string* public static **dropPrimaryKey** ()
+*string* public **dropPrimaryKey** ()
 
 Generates SQL to delete primary key from a table
 
 
 
-*string* public static **addForeignKey** ()
+*string* public **addForeignKey** ()
 
 Generates SQL to add an index to a table
 
 
 
-*string* public static **dropForeignKey** ()
+*string* public **dropForeignKey** ()
 
 Generates SQL to delete a foreign key from a table
 
@@ -93,7 +93,7 @@ Generates SQL to drop a table
 
 
 
-*string* public static **tableExists** (*string* $tableName, *string* $schemaName)
+*string* public **tableExists** (*string* $tableName, *string* $schemaName)
 
 Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
 
@@ -114,6 +114,12 @@ List all tables on database <code>print_r($dialect->listTables("blog") ?>
 *string* public **describeIndexes** (*string* $table, *string* $schema)
 
 Generates SQL to query indexes on a table
+
+
+
+*string* public **describeIndex** (*string* $indexName)
+
+Generates SQL to query indexes detail on a table
 
 
 

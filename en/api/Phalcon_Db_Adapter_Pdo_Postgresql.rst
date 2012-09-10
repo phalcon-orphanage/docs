@@ -38,32 +38,9 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` public **describeColumns** (*string* $table, *string* $schema)
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
 
-Returns an array of Phalcon\\Db\\Column objects describing a table.
-
-.. code-block:: php
-
-    <?php
-
-    print_r($connection->describeColumns("posts") ?>
-
-
-:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` public **describeIndexes** (*string* $table, *string* $schema)
-
-Lists table indexes
-
-
-
-:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` public **describeReferences** (*string* $table, *string* $schema)
-
-Lists table references
-
-
-
-*array* public **tableOptions** (*string* $tableName, *string* $schemaName)
-
-Gets creation options from a table
+Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
 
 
 
@@ -92,6 +69,12 @@ public **commit** ()
 public **isUnderTransaction** ()
 
 public **getInternalHandler** ()
+
+public **describeIndexes** (*unknown* $table, *unknown* $schema)
+
+public **describeReferences** (*unknown* $table, *unknown* $schema)
+
+public **tableOptions** (*unknown* $tableName, *unknown* $schemaName)
 
 public **setEventsManager** (*unknown* $eventsManager)
 

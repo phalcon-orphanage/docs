@@ -1,7 +1,7 @@
 Class **Phalcon\\Filter**
 =========================
 
-The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension 
+The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters 
 
 .. code-block:: php
 
@@ -34,5 +34,9 @@ Internal sanizite wrapper to filter_var
 
 
 
-public **getFilters** ()
+*object[]* public **getFilters** ()
+
+Return the user-defined filters in the instance
+
+
 

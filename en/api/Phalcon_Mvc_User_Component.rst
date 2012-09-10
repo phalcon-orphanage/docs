@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\User\\Component**
 =======================================
 
-*extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
+*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 Methods
 ---------

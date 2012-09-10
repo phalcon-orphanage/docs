@@ -30,7 +30,11 @@ Methods
 
 public **__construct** ()
 
-public **setEventsManager** (*unknown* $eventsManager)
+public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+
+Sets the events manager
+
+
 
 :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
 
@@ -86,7 +90,15 @@ Makes the work of autoload registered classes
 
 
 
-public **getFoundPath** ()
+*string* public **getFoundPath** ()
 
-public **getCheckedPath** ()
+Get the path when a class was found
+
+
+
+*string* public **getCheckedPath** ()
+
+Get the path the loader is checking
+
+
 

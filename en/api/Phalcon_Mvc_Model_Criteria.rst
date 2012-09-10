@@ -9,6 +9,30 @@ Methods
 
 public **__construct** ()
 
+public **setDI** (*Phalcon\DI* $dependencyInjector)
+
+Sets the DependencyInjector container
+
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+
+Returns the DependencyInjector container
+
+
+
+public **setModelName** (*string* $modelName)
+
+Set a model on which the query will be executed
+
+
+
+*string* public **getModelName** ()
+
+Returns an internal model name on which the criteria will be applied
+
+
+
 :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>` public **bind** (*string* $bindParams)
 
 Adds the bind parameter to the criteria
@@ -84,6 +108,12 @@ Returns all the parameters defined in the criteria
 public static **fromInput** (*Phalcon\DI* $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **execute** ()
+
+Executes a find using the parameters built with the criteria
 
 
 

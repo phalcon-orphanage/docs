@@ -18,6 +18,8 @@ This component makes use of adapters to encapsulate specific database system det
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 Database Dialects
 -----------------
@@ -29,6 +31,8 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
++------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
+| SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
 Connecting to Databases
@@ -70,6 +74,18 @@ To create a connection it's neccesary instantiate the adapter class. It only req
 
     // Create a connection
     $connection = \Phalcon\Db\Adapter\Pdo\Postgresql($config);
+
+.. code-block:: php
+
+    <?php
+
+    // Required
+    $config = array(
+        "dbname" => "/path/to/database.db"
+    );
+
+    // Create a connection
+    $connection = \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 Finding Rows
 ------------

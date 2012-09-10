@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\View\\Engine**
 ====================================
 
-*extends* :doc:`Phalcon\\Mvc\\User <Phalcon_Mvc_User>`
+*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\\Mvc\\View component.
 

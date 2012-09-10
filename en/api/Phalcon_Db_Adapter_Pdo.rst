@@ -57,7 +57,7 @@ $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
 
 
 
-public **execute** (*string* $sqlStatement, *array* $placeholders)
+*boolean* public **execute** (*string* $sqlStatement, *array* $placeholders)
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
@@ -137,6 +137,24 @@ Checks whether connection is under database transaction
 *PDO* public **getInternalHandler** ()
 
 Return internal PDO handler
+
+
+
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
+
+Lists table indexes
+
+
+
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
+
+Lists table references
+
+
+
+*array* public **tableOptions** (*string* $tableName, *string* $schemaName)
+
+Gets creation options from a table
 
 
 

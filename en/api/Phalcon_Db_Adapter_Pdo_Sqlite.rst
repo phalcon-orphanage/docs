@@ -1,23 +1,19 @@
-Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
-==========================================
+Class **Phalcon\\Db\\Adapter\\Pdo\\Sqlite**
+===========================================
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
-Specific functions for the Mysql database system 
+Specific functions for the Sqlite database system 
 
 .. code-block:: php
 
     <?php
 
-    $config = array(
-    	"host" => "192.168.0.11",
-    	"dbname" => "blog",
-    	"port" => 3306,
-    	"username" => "sigma",
-    	"password" => "secret"
-    );
+     $config = array(
+      "dbname" => "/tmp/test.sqlite"
+     );
     
-    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
+     $connection = new Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 
 
@@ -33,15 +29,31 @@ integer **FETCH_NUM**
 Methods
 ---------
 
-:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
+*boolean* public **connect** (*array* $descriptor)
+
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection.
+
+
+
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** ()
 
 Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
 
 
 
-public **__construct** (*unknown* $descriptor)
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** ()
 
-public **connect** (*unknown* $descriptor)
+Lists table indexes
+
+
+
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** ()
+
+Lists table references
+
+
+
+public **__construct** (*unknown* $descriptor)
 
 public **query** (*unknown* $sqlStatement)
 
@@ -66,10 +78,6 @@ public **commit** ()
 public **isUnderTransaction** ()
 
 public **getInternalHandler** ()
-
-public **describeIndexes** (*unknown* $table, *unknown* $schema)
-
-public **describeReferences** (*unknown* $table, *unknown* $schema)
 
 public **tableOptions** (*unknown* $tableName, *unknown* $schemaName)
 

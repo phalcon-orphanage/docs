@@ -17,13 +17,28 @@ Encapsulates the HTTP response message.
 Methods
 ---------
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (*Phalcon\DI* $dependencyInjector)
 
-public **getDI** ()
+Sets the dependency injector
+
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+
+Returns the internal dependency injector
+
+
 
 :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setStatusCode** (*int* $code, *string* $message)
 
-Sets the HTTP response code
+Sets the HTTP response code 
+
+.. code-block:: php
+
+    <?php
+
+    $response->setStatusCode(404, "Not Found");
+
 
 
 

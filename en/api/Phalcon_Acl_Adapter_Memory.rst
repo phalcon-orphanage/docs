@@ -32,7 +32,7 @@ Returns the default ACL access level
 
 *boolean* public **addRole** (*string* $roleObject, *array* $accessInherits)
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: <code>$acl->addRole(new Phalcon\\Acl\\Role('administrator'), 'consultor'); <code>$acl->addRole('administrator', 'consultor');
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: <code>$acl->addRole(new Phalcon\\Acl\\Role('administrator'), 'consultant'); <code>$acl->addRole('administrator', 'consultant');
 
 
 
