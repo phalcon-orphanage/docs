@@ -63,6 +63,10 @@ There are four built-in message types supported:
 
 You can add messages with your own types:
 
+.. code-block:: php
+
+    <?php
+
 	$this->flash->message("debug", "this is debug message, you don't say");
 
 Printing Messages
@@ -80,6 +84,8 @@ As can be seen, also some CSS classes are added automatically to the DIVs. These
 The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
 
 .. code-block:: php
+
+    <?php
 
 	//Register the flash service with custom CSS classes
 	$di->set('flash', function(){

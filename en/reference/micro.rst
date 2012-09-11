@@ -1,6 +1,19 @@
 Micro Applications
 ==================
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a
+PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/say/welcome/{name}', function ($name) {
+        echo "<h1>Welcome $name!</h1>";
+    });
+
+    $app->handle();
 
 Creating a Micro Application
 ----------------------------
@@ -14,7 +27,8 @@ Creating a Micro Application
 
 Defining routes
 ---------------
-After instantiating the object, you will need to add some routes. Routing is internally managed by :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`. Routes must always start with /. A HTTP method constraint to a route can be added, so as to instruct the route to match only the requests matched to the HTTP methods. The following example shows how to define a route for the method GET:
+After instantiating the object, you will need to add some routes. Routing is internally managed by :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`.
+Routes must always start with /. A HTTP method constraint to a route can be added, so as to instruct the route to match only the requests matched to the HTTP methods. The following example shows how to define a route for the method GET:
 
 .. code-block:: php
 
@@ -74,16 +88,98 @@ Normally, the starting route in an application will be the / route, and it will 
         echo "<h1>Welcome!</h1>";
     });
 
+Rewrite Rules
+^^^^^^^^^^^^^
+The following rules can be used together with Apache to rewrite the URis:
+
+.. code-block:: apacheconf
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+    </IfModule>
+
+Working with Responses
+----------------------
+You are free to produce any kind of responses in a handler: directly make an output, use a template engine, include a view, return a json, etc.:
+
 .. code-block:: php
 
     <?php
 
-    $app->post('/store/something', function () use ($app) {
-
-        $name = $app->request->getPost('name');
-
+    $app->get('/say/hello', function () {
         echo "<h1>Hello! $name</h1>";
+    });
 
+    $app->get('/show/results', function () {
+        require 'views/results.php';
+    });
+
+    $app->get('/show/results', function () {
+        require 'views/results.php';
+    });
+
+    $app->get('/get/some-json', function () {
+        echo json_encode(array("some", "important", "data"));
+    });
+
+In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the response:
+
+.. code-block:: php
+
+    <?php
+
+    $app->get('/show/data', function () use ($app) {
+
+        $app->response->setContentType('text/plain')->sendHeaders();
+
+        readfile("data.txt");
+
+    });
+
+Making redirections
+-------------------
+Redirections could be performed to forward the execution flow to another route:
+
+.. code-block:: php
+
+    <?php
+
+    $app->post('/old/welcome', function () use ($app) {
+        $app->response->redirect("new/welcome");
+    });
+
+    $app->post('/new/welcome', function () use ($app) {
+        echo 'This is the new Welcome';
+    });
+
+Interacting with the Dependency Injector
+----------------------------------------
+In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly, you can create outside the application container to
+manipulate its services:
+
+.. code-block:: php
+
+    <?php
+
+    $di = new \Phalcon\DI\FactoryDefault();
+
+    $di->set('config', function() {
+        return new \Phalcon\Config\Adapter\Ini("config.ini");
+    });
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->setDI($di);
+
+    $app->get('/', function () use ($app) {
+        //Read a setting from the config
+        echo $app->config->app_name;
+    });
+
+    $app->post('/contact', function () use ($app) {
+        $app->flash->success('Yes!, the contact was made!');
     });
 
 Not-Found Handler
@@ -98,3 +194,74 @@ When a user tries to access a route that is not defined, the micro application w
         $app->response->setStatusCode(404, "Not Found")->sendHeaders();
         echo 'This is crazy, but this page was not found!';
     });
+
+Models in Micro Applications
+----------------------------
+:doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
+
+.. code-block:: php
+
+    <?php
+
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(array(
+        __DIR__.'/models/'
+    ))->register();
+
+    $app = new \Phalcon\Mvc\Micro();
+
+    $app->get('/products/find', function(){
+
+        foreach (Products::find() as $product) {
+            echo $product->name, '<br>';
+        }
+
+    });
+
+    $app->handle();
+
+Micro Application Events
+------------------------
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present). Events are triggered using the type "micro". The following events are supported:
+
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
++=====================+============================================================================================================================+======================+
+| beforeHandleRoute   | The main method is just called, at this point the application don't know if there is some matched route                    | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| afterExecuteRoute   | Triggered after running the handler                                                                                        | No                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| beforeNotFound      | Triggered when any of the defined routes match the requested URI                                                           | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+
+In the following example, we explain how to control the application security using events:
+
+.. code-block:: php
+
+    <?php
+
+    //Create a events manager
+    $eventManager = \Phalcon\Events\Manager();
+
+    //Listen all the application events
+    $eventManager->attach('micro', function($event, $app) {
+
+        if ($event->getType() == 'beforeExecuteRoute') {
+            if ($app->session->get('auth') == false) {
+                $app->flashSession->error("The user isn't authenticated");
+                $app->response->redirect("/");
+            }
+        }
+
+    });
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Bind the events manager to the app
+    $app->setEventsManager($eventsManager);
+

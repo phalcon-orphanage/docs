@@ -21,6 +21,7 @@ Table of Contents
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-rest
    reference/di
    reference/mvc
    reference/controllers
