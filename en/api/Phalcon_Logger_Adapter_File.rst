@@ -121,37 +121,37 @@ Opens the internal file handler after unserialization
 
 
 
-public  **debug** (*string* $message) inherited from Phalcon\Logger
+public  **debug** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*string* $message) inherited from Phalcon\Logger
+public  **error** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*string* $message) inherited from Phalcon\Logger
+public  **info** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*string* $message) inherited from Phalcon\Logger
+public  **notice** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*string* $message) inherited from Phalcon\Logger
+public  **warning** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*string* $message) inherited from Phalcon\Logger
+public  **alert** (*string* $message) inherited from Phalcon\\Logger
 
 Sends/Writes an alert message to the log
 

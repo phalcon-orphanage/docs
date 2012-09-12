@@ -3,7 +3,7 @@ Class **Phalcon\\Logger\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Phalcon_Logger_Exception Exceptions thrown in Phalcon_Logger will use this class
+Exceptions thrown in Phalcon\\Logger will use this class
 
 
 Methods

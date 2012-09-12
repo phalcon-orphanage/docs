@@ -154,7 +154,7 @@ Gets the name of the action rendered
 
 
 
-public  **getParams** ()
+public *array*  **getParams** ()
 
 Gets extra parameters of the action rendered
 
@@ -234,7 +234,7 @@ Choose a view different to render than last-controller/last-action
 
 
 
-public  **partial** (*string* $partialPath)
+public *string*  **partial** (*string* $partialPath)
 
 Renders a partial view 
 
@@ -274,7 +274,14 @@ Cache the actual view render to certain level
 
 public  **setContent** (*string* $content)
 
-Externally sets the view content <code>$this->view->setContent("<h1>hello</h1>");
+Externally sets the view content 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setContent("<h1>hello</h1>");
+
 
 
 
@@ -284,9 +291,10 @@ Returns cached ouput from another view stage
 
 
 
-public  **getActiveRenderPath** ()
+public *string*  **getActiveRenderPath** ()
 
-...
+Returns the path of the view that is currently rendered
+
 
 
 public  **disable** ()
@@ -295,31 +303,31 @@ Disable view. No show any view or template
 
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\DI\Injectable
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** () inherited from Phalcon\DI\Injectable
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon\DI\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\DI\Injectable
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\DI\Injectable
+public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

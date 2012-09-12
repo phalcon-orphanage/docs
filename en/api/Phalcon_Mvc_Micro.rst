@@ -141,7 +141,7 @@ Returns the value returned by the executed handler
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\DI\Injectable
+public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

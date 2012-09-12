@@ -300,6 +300,8 @@ $docs['Exception'] = array(
 */',
 );
 
+sort($classes);
+
 foreach($classes as $className){
 
 	$simpleClassName = str_replace("\\", "_", $className);
@@ -412,7 +414,7 @@ foreach($classes as $className){
 			$code.=join(', ', $cp).')';
 
 			if($simpleClassName!=$docClassName){
-				$code.=' inherited from '.$method->getDeclaringClass()->name;
+				$code.=' inherited from '.str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
 			}
 
 			$code.=PHP_EOL.PHP_EOL;

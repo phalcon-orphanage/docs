@@ -241,13 +241,13 @@ Rebuild the list of access from the inherit lists
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\Acl
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Acl
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\Acl
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\Acl
 
 Returns the internal event manager
 

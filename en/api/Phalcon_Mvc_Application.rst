@@ -104,7 +104,7 @@ Handles a MVC request
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\DI\Injectable
+public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

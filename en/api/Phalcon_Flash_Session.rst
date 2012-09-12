@@ -51,52 +51,85 @@ Prints the messages in the session flasher
 
 
 
-public  **__construct** (*unknown* $cssClasses) inherited from Phalcon\Flash
+public  **__construct** (*unknown* $cssClasses) inherited from Phalcon\\Flash
 
-...
-
-
-public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\Flash
-
-...
-
-
-public  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\Flash
-
-...
-
-
-public  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\Flash
-
-...
-
-
-public *string*  **error** (*string* $message) inherited from Phalcon\Flash
-
-Shows a HTML error message <code>$flash->error('This is an error');
+Phalcon\\Flash constructor
 
 
 
-public *string*  **notice** (*string* $message) inherited from Phalcon\Flash
+public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
 
-Shows a HTML notice/information message <code>$flash->notice('This is an information');
-
-
-
-public *string*  **success** (*string* $message) inherited from Phalcon\Flash
-
-Shows a HTML success message <code>$flash->success('The process was finished successfully');
+Set the if the output must be implictly flushed to the output or returned as string
 
 
 
-public *string*  **warning** (*string* $message) inherited from Phalcon\Flash
+public  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
 
-Shows a HTML warning message <code>$flash->warning('Hey, this is important');
+Set the if the output must be implictly formatted with HTML
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon\Flash
+public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
 
-...
+Set an array with CSS classes to format the messages
+
+
+
+public *string*  **error** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML error message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->error('This is an error');
+
+
+
+
+public *string*  **notice** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML notice/information message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->notice('This is an information');
+
+
+
+
+public *string*  **success** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML success message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->success('The process was finished successfully');
+
+
+
+
+public *string*  **warning** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML warning message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->warning('Hey, this is important');
+
+
+
+
+public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
+
+Outputs a message formatting it with HTML
+
 
 

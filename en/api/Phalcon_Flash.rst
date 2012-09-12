@@ -17,50 +17,83 @@ Methods
 
 public  **__construct** (*unknown* $cssClasses)
 
-...
+Phalcon\\Flash constructor
+
 
 
 public  **setImplicitFlush** (*unknown* $implicitFlush)
 
-...
+Set the if the output must be implictly flushed to the output or returned as string
 
 
-public  **setAutomaticHtml** (*unknown* $automaticHtml)
 
-...
+public  **setAutomaticHtml** (*boolean* $automaticHtml)
+
+Set the if the output must be implictly formatted with HTML
 
 
-public  **setCssClasses** (*unknown* $cssClasses)
 
-...
+public  **setCssClasses** (*array* $cssClasses)
+
+Set an array with CSS classes to format the messages
+
 
 
 public *string*  **error** (*string* $message)
 
-Shows a HTML error message <code>$flash->error('This is an error');
+Shows a HTML error message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->error('This is an error');
+
 
 
 
 public *string*  **notice** (*string* $message)
 
-Shows a HTML notice/information message <code>$flash->notice('This is an information');
+Shows a HTML notice/information message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->notice('This is an information');
+
 
 
 
 public *string*  **success** (*string* $message)
 
-Shows a HTML success message <code>$flash->success('The process was finished successfully');
+Shows a HTML success message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->success('The process was finished successfully');
+
 
 
 
 public *string*  **warning** (*string* $message)
 
-Shows a HTML warning message <code>$flash->warning('Hey, this is important');
+Shows a HTML warning message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->warning('Hey, this is important');
 
 
 
-public  **outputMessage** (*unknown* $type, *unknown* $message)
 
-...
+public  **outputMessage** (*string* $type, *string* $message)
+
+Outputs a message formatting it with HTML
+
 
 

@@ -135,25 +135,25 @@ Generates the SQL to describe the table creation options
 
 
 
-public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\Db\Dialect
+public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
 
 Generates the SQL for LIMIT clause
 
 
 
-public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\Db\Dialect
+public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\Db\Dialect
+public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public *string*  **select** (*array* $definition) inherited from Phalcon\Db\Dialect
+public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement
 
