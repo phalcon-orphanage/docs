@@ -156,7 +156,7 @@ The first "handler" that we will implement is which by method GET returns all av
     //Retrieves all robots
     $app->get('/api/robots', function() use ($app) {
 
-        $phql = "SELECT * FROM Robots";
+        $phql = "SELECT * FROM Robots ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
@@ -184,7 +184,7 @@ The searching by name handler would look like:
     //Searches for robots with $name in their name
     $app->get('/api/robots/search/{name}', function($name) use ($app) {
 
-        $phql = "SELECT * FROM Robots WHERE name LIKE :name:";
+        $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
             'name' => '%'.$name.'%'
         ));
@@ -200,6 +200,39 @@ The searching by name handler would look like:
         echo json_encode($data);
 
     });
+
+Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
+
+.. code-block:: php
+
+    <?php
+
+    //Retrieves robots based on primary key
+    $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+
+        $phql = "SELECT * FROM Robots WHERE id = :id:";
+        $robot = $app->modelsManager->executeQuery($phql, array(
+            'id' => $id
+        ))->getFirst();
+
+        if ($robot==false) {
+            $response = array('status' => 'NOT-FOUND');
+        } else {
+            $response = array(
+                'status' => 'FOUND',
+                'data' => array(
+                    'id' => $robot->id,
+                    'name' => $robot->name
+                )
+            );
+        }
+
+        echo json_encode($response);
+    });
+
+Inserting Data
+--------------
+
 
 
 
