@@ -1,7 +1,18 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-This components aids in the generation off: URIs, URLs and Paths
+This components aids in the generation off: URIs, URLs and Paths 
+
+.. code-block:: php
+
+    <?php
+
+     //Generate a url appending a uri to the base Uri
+     echo $url->get('products/edit/1');
+    
+     //Generate a url for a predefined route
+     echo $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2012'));
+
 
 
 Methods
@@ -15,13 +26,20 @@ Sets the DependencyInjector container
 
 :doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
 
-Sets the DependencyInjector container
+Returns the DependencyInjector container
 
 
 
 public **setBaseUri** (*string* $baseUri)
 
-Sets a prefix to all the urls generated
+Sets a prefix to all the urls generated 
+
+.. code-block:: php
+
+    <?php
+
+    $url->setBasePath('/invo/');
+
 
 
 
@@ -33,7 +51,14 @@ Returns the prefix for all the generated urls. By default /
 
 *string $basePath* public **setBasePath** (*unknown* $basePath)
 
-Sets a base paths for all the generated paths
+Sets a base paths for all the generated paths 
+
+.. code-block:: php
+
+    <?php
+
+    $url->setBasePath('/var/www/');
+
 
 
 

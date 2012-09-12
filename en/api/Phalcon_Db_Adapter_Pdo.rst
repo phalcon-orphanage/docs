@@ -43,7 +43,7 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-:doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` public **query** (*string* $sqlStatement)
+:doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` public **query** (*string* $sqlStatement, *array* $placeholders)
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows 
 

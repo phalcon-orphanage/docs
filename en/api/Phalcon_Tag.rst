@@ -68,7 +68,14 @@ Resets the request and internal values to avoid those fields will have any defau
 
 *string* public static **linkTo** (*array* $parameters, *unknown* $text)
 
-Builds a HTML A tag using framework conventions <code>echo Phalcon\\Tag::linkTo('signup/register', 'Register Here!')
+Builds a HTML A tag using framework conventions 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
+
 
 
 

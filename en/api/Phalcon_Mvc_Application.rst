@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Application**
 ===================================
 
+*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+
 This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired. 
 
 .. code-block:: php
@@ -101,4 +103,6 @@ Return the modules registered in the application
 Handles a MVC request
 
 
+
+public **__get** (*unknown* $propertyName)
 

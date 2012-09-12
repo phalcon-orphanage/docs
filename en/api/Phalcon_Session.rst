@@ -22,7 +22,11 @@ Session client-server persistent state data management. This component allows yo
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options)
+
+Phalcon\\Session construtor
+
+
 
 public **start** ()
 
@@ -36,7 +40,11 @@ Sets session options
 
 
 
-public **getOptions** ()
+*array* public **getOptions** ()
+
+Get internal options
+
+
 
 public **get** (*string* $index)
 
@@ -68,7 +76,15 @@ Returns active session id
 
 
 
-public **isStarted** ()
+*boolean* public **isStarted** ()
 
-public **destroy** ()
+Check whether the session has been started
+
+
+
+*boolean* public **destroy** ()
+
+Destroys the active session
+
+
 

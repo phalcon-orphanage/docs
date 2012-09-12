@@ -405,6 +405,7 @@ Search a robot by its name:
 .. code-block:: bash
 
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+
     HTTP/1.1 200 OK
     Date: Wed, 12 Sep 2012 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
@@ -418,6 +419,7 @@ Obtain a robot by its id:
 .. code-block:: bash
 
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
+
     HTTP/1.1 200 OK
     Date: Wed, 12 Sep 2012 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
@@ -431,6 +433,7 @@ Insert a new robot:
 .. code-block:: bash
 
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+
     HTTP/1.1 200 OK
     Date: Wed, 12 Sep 2012 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
@@ -439,11 +442,12 @@ Insert a new robot:
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
-Try to insert a new robot with the same name:
+Try to insert a new robot with the name of an existing robot:
 
 .. code-block:: bash
 
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+
     HTTP/1.1 200 OK
     Date: Wed, 12 Sep 2012 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
@@ -451,6 +455,34 @@ Try to insert a new robot with the same name:
     Content-Type: text/html; charset=UTF-8
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
+
+Or update a robot with an unknown type:
+
+.. code-block:: bash
+
+    curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' http://localhost/my-rest-api/api/robots/4
+
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 104
+    Content-Type: text/html; charset=UTF-8
+
+    {"status":"ERROR","messages":["Value of field 'type' must be part of list: droid, mechanical, virtual"]}
+
+Finally, delete a robot:
+
+.. code-block:: bash
+
+    curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 15
+    Content-Type: text/html; charset=UTF-8
+
+    {"status":"OK"}
 
 Conclusion
 ----------

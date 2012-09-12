@@ -35,19 +35,19 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** ()
+:doc:`Phalcon\\Db\\Column[] <Phalcon_Db_Column[]>` public **describeColumns** (*string* $table, *string* $schema)
 
 Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
 
 
 
-:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** ()
+:doc:`Phalcon\\Db\\Index[] <Phalcon_Db_Index[]>` public **describeIndexes** (*string* $table, *string* $schema)
 
 Lists table indexes
 
 
 
-:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** ()
+:doc:`Phalcon\\Db\\Reference[] <Phalcon_Db_Reference[]>` public **describeReferences** (*string* $table, *string* $schema)
 
 Lists table references
 
@@ -55,7 +55,7 @@ Lists table references
 
 public **__construct** (*unknown* $descriptor)
 
-public **query** (*unknown* $sqlStatement)
+public **query** (*unknown* $sqlStatement, *unknown* $placeholders)
 
 public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
 

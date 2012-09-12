@@ -154,7 +154,7 @@ Gets hasOne relations defined on a model
 
 
 
-*array* public **getRelations** (*unknown* $a, *unknown* $b)
+*array* public **getRelations** (*string* $first, *string* $second)
 
 Query the relations between two models
 

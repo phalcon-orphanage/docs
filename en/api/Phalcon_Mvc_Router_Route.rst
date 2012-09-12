@@ -1,10 +1,17 @@
 Class **Phalcon\\Mvc\\Router\\Route**
 =====================================
 
+This class represents every route defined in the router.
+
+
 Methods
 ---------
 
-public **__construct** (*unknown* $pattern, *unknown* $paths, *unknown* $httpMethods)
+public **__construct** (*string* $pattern, *array* $paths, *array|string* $httpMethods)
+
+Phalcon\\Mvc\\Router\\Route constructor
+
+
 
 *string* public **compilePattern** (*string* $pattern)
 
@@ -12,7 +19,11 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public **via** (*unknown* $httpMethods)
+public **via** (*string|array* $httpMethods)
+
+Set one or more HTTP methods that constraint the matching of the route
+
+
 
 public **reConfigure** (*string* $pattern, *array* $paths)
 

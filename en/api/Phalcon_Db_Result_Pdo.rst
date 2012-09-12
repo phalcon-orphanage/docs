@@ -18,9 +18,15 @@ Encapsulates the resultset internals
 Methods
 ---------
 
-public **__construct** (*PDOStatement* $result)
+public **__construct** (*Phalcon\Db\Adapter\Pdo* $connection, *PDOStatement* $result, *string* $sqlStatement, *array* $placeholders)
 
 Phalcon\\Db\\Result\\Pdo constructor
+
+
+
+*boolean* public **execute** ()
+
+Allows to executes the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
 
 
@@ -37,6 +43,20 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
     while($robot = $result->fetchArray()){
     	print_r($robot);
     }
+
+
+
+
+*array* public **fetchAll** ()
+
+Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+
+.. code-block:: php
+
+    <?php
+
+    $result = $connection->query("SELECT * FROM robots ORDER BY name");
+    $robots = $result->fetchAll();
 
 
 

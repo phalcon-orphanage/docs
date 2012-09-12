@@ -93,15 +93,27 @@ Get last row in the resultset
 
 
 
+public **setIsFresh** (*boolean* $isFresh)
+
+Set if the resultset is fresh or an old one cached
+
+
+
 *boolean* public **isFresh** ()
 
-Tell if the resultset if fresh or an old cached
+Tell if the resultset if fresh or an old one cached
 
 
 
 :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` public **getCache** ()
 
 Returns the associated cache for the resultset
+
+
+
+*object* public **current** ()
+
+Returns current row in the resultset
 
 
 

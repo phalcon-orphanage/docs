@@ -24,7 +24,6 @@ API Indice
    Phalcon_Mvc_Model_Manager
    Phalcon_Mvc_Model_Resultset
    Phalcon_Mvc_Model_Transaction
-   Phalcon_Mvc_Application
    Phalcon_Db
    Phalcon_Logger
    Phalcon_Cache_Frontend_Output
@@ -68,6 +67,7 @@ API Indice
    Phalcon_Mvc_Model_Exception
    Phalcon_Db_Adapter_Pdo
    Phalcon_DI_FactoryDefault
+   Phalcon_Session_Exception
    Phalcon_Session_Adapter_Files
    Phalcon_Mvc_Router_Exception
    Phalcon_Mvc_Micro
@@ -95,6 +95,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_User_Plugin
    Phalcon_Mvc_User_Component
+   Phalcon_Mvc_Application
    Phalcon_Config_Exception
    Phalcon_Config_Adapter_Ini
    Phalcon_Cache_Exception

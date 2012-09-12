@@ -15,7 +15,7 @@ Converts strings to camelize style
 
     <?php
 
-    Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+    echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
 
 
 
@@ -28,7 +28,7 @@ Uncamelize strings which are camelized
 
     <?php
 
-    Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+    echo Phalcon\Text::camelize('CocoBongo'); //coco_bongo
 
 
 

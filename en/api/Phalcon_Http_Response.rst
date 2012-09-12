@@ -100,6 +100,7 @@ Sets the response content-type mime, optionally the charset
 
     <?php
 
+    $response->setContentType('application/pdf');
     $response->setContentType('text/plain', 'UTF-8');
 
 

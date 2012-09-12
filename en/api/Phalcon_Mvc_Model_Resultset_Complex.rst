@@ -35,12 +35,6 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **current** ()
-
-Returns current row in the resultset
-
-
-
 public **next** ()
 
 public **key** ()
@@ -63,7 +57,11 @@ public **getFirst** ()
 
 public **getLast** ()
 
+public **setIsFresh** (*unknown* $isFresh)
+
 public **isFresh** ()
 
 public **getCache** ()
+
+public **current** ()
 

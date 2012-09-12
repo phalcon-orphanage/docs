@@ -46,7 +46,7 @@ Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r
 
 public **__construct** (*unknown* $descriptor)
 
-public **query** (*unknown* $sqlStatement)
+public **query** (*unknown* $sqlStatement, *unknown* $placeholders)
 
 public **execute** (*unknown* $sqlStatement, *unknown* $placeholders)
 
