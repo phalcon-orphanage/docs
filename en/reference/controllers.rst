@@ -236,7 +236,7 @@ Sessions help us maintain persistent data between requests. You could access a :
 
     }
 
-Using controllers as Services
+Using Services as Controllers
 -----------------------------
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, a controller can be easily replaced by any other class registered with its name:
 
@@ -268,7 +268,7 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     <?php
 
-    class ControllerBase extends Phalcon\Mvc\Controller
+    class ControllerBase extends \Phalcon\Mvc\Controller
     {
 
       /**

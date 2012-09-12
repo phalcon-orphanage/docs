@@ -242,9 +242,10 @@ Or you can bind specific routes to specific modules:
         'action' => 1,
     ));
 
-HTTP Constraints
-^^^^^^^^^^^^^^^^
-When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method, this is especially useful when creating RESTful applications:
+HTTP Method Restrictions
+^^^^^^^^^^^^^^^^^^^^^^^^
+When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
+this is especially useful when creating RESTful applications:
 
 .. code-block:: php
 

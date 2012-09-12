@@ -46,10 +46,11 @@ Table of Contents
    reference/cache
    reference/acl
    reference/translate
-   reference/intl
-   reference/db
-   reference/logging
    reference/loader
+   reference/logging
+   reference/cli
+   reference/db
+   reference/intl
    reference/migrations
    reference/debug
    reference/tools

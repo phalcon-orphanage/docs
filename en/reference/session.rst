@@ -33,18 +33,18 @@ and store items and retrieve them in the following way:
 
         public function indexAction()
         {
-        	//Set a session variable
+            //Set a session variable
             $this->session->set("user-name", "Michael");
         }
 
         public function welcomeAction()
         {
 
-        	//Check if the variable is defined
-        	if ($this->session->has("user-name")) {
+            //Check if the variable is defined
+            if ($this->session->has("user-name")) {
 
-        		//Retrieve its value
-            	$name = $this->session->set("user-name");
+                //Retrieve its value
+                $name = $this->session->set("user-name");
             }
         }
 
@@ -63,14 +63,14 @@ It's also possible remove specific variables or destroy the whole session:
 
         public function removeAction()
         {
-        	//Remove a session variable
+            //Remove a session variable
             $this->session->remove("user-name");
         }
 
         public function logoutAction()
         {
-        	//Destroy the whole session
-        	$this->session->destroy();
+            //Destroy the whole session
+            $this->session->destroy();
         }
 
     }
@@ -88,15 +88,30 @@ prefix for every session variable created in a certain application:
     //Isolating the session data
     $di->set('session', function(){
 
-    	//All variables created will prefixed with "my-app-1"
+        //All variables created will prefixed with "my-app-1"
         $session = new Phalcon\Session\Adapter\Files(array(
-        	'uniqueId' => 'my-app-1'
+            'uniqueId' => 'my-app-1'
         ));
 
         $session->start();
 
         return $session;
     });
+
+Session Bags
+------------
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
+Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
+it's automatically stored in session:
+
+.. code-block:: php
+
+    <?php
+
+    $user = new Phalcon\Session\Bag();
+    $user->name = "Kimbra Johnson";
+    $user->age = 22;
+
 
 Persistent Data in Components
 -----------------------------
@@ -113,14 +128,14 @@ Thanks to this you can persist data between requests in every class in an indepe
 
         public function indexAction()
         {
-        	//Create a persistent variable "name"
+            //Create a persistent variable "name"
             $this->persistent->name = "Laura";
         }
 
         public function welcomeAction()
         {
-        	if (isset($this->persistent->name)) {
-            	echo "Welcome, ", $this->persistent->name;
+            if (isset($this->persistent->name)) {
+                echo "Welcome, ", $this->persistent->name;
             }
         }
 
@@ -137,7 +152,7 @@ In a component:
 
         public function auth()
         {
-        	//Create a persistent variable "name"
+            //Create a persistent variable "name"
             $this->persistent->name = "Laura";
         }
 

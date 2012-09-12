@@ -885,6 +885,30 @@ To make a model to react to an event, we must to implement a method with the sam
 
     }
 
+Events can be useful to assign values before perform a operation, for example:
+
+.. code-block:: php
+
+    <?php
+
+    class Products extends \Phalcon\Mvc\Model
+    {
+
+        public function beforeCreate()
+        {
+            //Set the creation date
+            $this->created_at = date('Y-m-d H:i:s');
+        }
+
+        public function beforeUpdate()
+        {
+            //Set the modification date
+            $this->modified_in = date('Y-m-d H:i:s');
+        }
+
+    }
+
+
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`, this means we can create listeners that run when an event is triggered.
 
 .. code-block:: php
