@@ -63,6 +63,7 @@ Creating the extension:
 
     git clone git://github.com/phalcon/cphalcon.git
     cd cphalcon/release
+    export CC="gcc"
     export CFLAGS="-O2 -fno-delete-null-pointer-checks"
     phpize
     ./configure --enable-phalcon

@@ -124,7 +124,7 @@ For instance, in the following excerpt is registered the session service, the an
 
     <?php
 
-    //Start the session the first time some component request the session service
+    //Start the session the first time when some component request the session service
     $di->set('session', function(){
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();

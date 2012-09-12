@@ -49,6 +49,8 @@ Headers are internally managed by a :doc:`Phalcon\\HTTP\\Response\\Headers <../a
     //Get a header by its name
     $contentType = $response->getHeaders()->get("Content-Type");
 
+
+
 Making Redirections
 -------------------
 With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also make HTTP redirections:
