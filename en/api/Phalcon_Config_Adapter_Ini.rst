@@ -36,7 +36,7 @@ You can read it as follows:
 Methods
 ---------
 
-:doc:`Phalcon\\Config\\Adapter\\Ini <Phalcon_Config_Adapter_Ini>` public **__construct** (*string* $filePath)
+public :doc:`Phalcon\\Config\\Adapter\\Ini <Phalcon_Config_Adapter_Ini>`  **__construct** (*string* $filePath)
 
 Phalcon\\Config\\Adapter\\Ini constructor
 

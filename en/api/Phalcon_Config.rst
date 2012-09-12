@@ -27,7 +27,7 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 Methods
 ---------
 
-:doc:`Phalcon\\Config <Phalcon_Config>` public **__construct** (*array* $arrayConfig)
+public :doc:`Phalcon\\Config <Phalcon_Config>`  **__construct** (*array* $arrayConfig)
 
 Phalcon\\Config constructor
 

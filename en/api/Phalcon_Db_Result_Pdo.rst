@@ -18,19 +18,19 @@ Encapsulates the resultset internals
 Methods
 ---------
 
-public **__construct** (:doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>` $connection, *PDOStatement* $result, *string* $sqlStatement, *array* $placeholders)
+public  **__construct** (:doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>` $connection, *PDOStatement* $result, *string* $sqlStatement, *array* $placeholders)
 
 Phalcon\\Db\\Result\\Pdo constructor
 
 
 
-*boolean* public **execute** ()
+public *boolean*  **execute** ()
 
 Allows to executes the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
 
 
-*boolean* public **fetchArray** ()
+public *boolean*  **fetchArray** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -47,7 +47,7 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
 
 
-*array* public **fetchAll** ()
+public *array*  **fetchAll** ()
 
 Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -61,7 +61,7 @@ Returns an array of arrays containing all the records in the result This method 
 
 
 
-*int* public **numRows** ()
+public *int*  **numRows** ()
 
 Gets number of rows returned by a resulset 
 
@@ -75,7 +75,7 @@ Gets number of rows returned by a resulset
 
 
 
-public **dataSeek** (*int* $number)
+public  **dataSeek** (*int* $number)
 
 Moves internal resulset cursor to another position letting us to fetch a certain row 
 
@@ -90,7 +90,7 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
 
 
-public **setFetchMode** (*int* $fetchMode)
+public  **setFetchMode** (*int* $fetchMode)
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetchArray 
 
@@ -110,7 +110,7 @@ Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetchArray
 
 
 
-*PDOStatement* public **getInternalResult** ()
+public *PDOStatement*  **getInternalResult** ()
 
 Gets the internal PDO result object
 

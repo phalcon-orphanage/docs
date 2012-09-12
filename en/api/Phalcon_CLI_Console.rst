@@ -7,31 +7,31 @@ This component allows to create CLI applications using Phalcon
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public **registerModules** (*array* $modules)
+public  **registerModules** (*array* $modules)
 
 Register an array of modules present in the console 
 
@@ -53,19 +53,19 @@ Register an array of modules present in the console
 
 
 
-public **addModules** (*array* $modules)
+public  **addModules** (*array* $modules)
 
 Merge modules with the existing ones
 
 
 
-*array* public **getModules** ()
+public *array*  **getModules** ()
 
 Return the modules registered in the console
 
 
 
-*mixed* public **handle** (*array* $arguments)
+public *mixed*  **handle** (*array* $arguments)
 
 Handle the whole command-line tasks
 

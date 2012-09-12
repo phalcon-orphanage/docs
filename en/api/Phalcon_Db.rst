@@ -41,25 +41,25 @@ Constants
 Methods
 ---------
 
-protected **__construct** ()
+protected  **__construct** ()
 
 Phalcon\\Db constructor
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the event manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-*array* public **fetchOne** (*string* $sqlQuery, *int* $fetchMode)
+public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode)
 
 Returns the first row in a SQL query result 
 
@@ -78,7 +78,7 @@ Returns the first row in a SQL query result
 
 
 
-*array* public **fetchAll** (*string* $sqlQuery, *int* $fetchMode)
+public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode)
 
 Dumps the complete result of a query into an array 
 
@@ -101,7 +101,7 @@ Dumps the complete result of a query into an array
 
 
 
-*boolean* public **insert** (*string* $table, *array* $values, *array* $fields)
+public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields)
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -122,7 +122,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-*boolean* public **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition)
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition)
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -144,7 +144,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-*boolean* public **delete** (*string* $table, *string* $whereCondition, *array* $placeholders)
+public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders)
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -164,151 +164,151 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-*string* public **getColumnList** (*array* $columnList)
+public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
 
 
-*string* public **limit** (*string* $sqlQuery, *int* $number)
+public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
 Appends a LIMIT clause to $sqlQuery argument <code>$connection->limit("SELECT * FROM robots", 5);
 
 
 
-*string* public **tableExists** (*string* $tableName, *string* $schemaName)
+public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
 
 Generates SQL checking for the existence of a schema.table <code>$connection->tableExists("blog", "posts")
 
 
 
-*string* public **viewExists** (*string* $viewName, *string* $schemaName)
+public *string*  **viewExists** (*string* $viewName, *string* $schemaName)
 
 Generates SQL checking for the existence of a schema.view <code>$connection->viewExists("active_users", "posts")
 
 
 
-*string* public **forUpdate** (*string* $sqlQuery)
+public *string*  **forUpdate** (*string* $sqlQuery)
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-*string* public **sharedLock** (*string* $sqlQuery)
+public *string*  **sharedLock** (*string* $sqlQuery)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-*boolean* public **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+public *boolean*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
 
 Creates a table using MySQL SQL
 
 
 
-*boolean* public **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
 
 Drops a table from a schema/database
 
 
 
-*boolean* public **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Adds a column to a table
 
 
 
-*boolean* public **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Modifies a table column based on a definition
 
 
 
-*boolean* public **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
+public *boolean*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
 
 Drops a column from a table
 
 
 
-*boolean* public **addIndex** (*string* $tableName, *string* $schemaName, *DbIndex* $index)
+public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, *DbIndex* $index)
 
 Adds an index to a table
 
 
 
-*boolean* public **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+public *boolean*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
 
 Drop an index from a table
 
 
 
-*boolean* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
+public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
 
 Adds a primary key to a table
 
 
 
-*boolean* public **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
 
 Drops primary key from a table
 
 
 
-*boolean true* public **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
+public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
 
 Adds a foreign key to a table
 
 
 
-*boolean true* public **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+public *boolean true*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
 
 Drops a foreign key from a table
 
 
 
-*string* public **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Returns the SQL column definition from a column
 
 
 
-*array* public **listTables** (*string* $schemaName)
+public *array*  **listTables** (*string* $schemaName)
 
 List all tables on a database <code> print_r($connection->listTables("blog") ?>
 
 
 
-*string* public **getDescriptor** ()
+public *string*  **getDescriptor** ()
 
 Return descriptor used to connect to the active database
 
 
 
-*string* public **getConnectionId** ()
+public *string*  **getConnectionId** ()
 
 Gets the active connection unique identifier
 
 
 
-public **getSQLStatement** ()
+public  **getSQLStatement** ()
 
 Active SQL statement in the object
 
 
 
-*string* public **getType** ()
+public *string*  **getType** ()
 
 Returns type of database system the adapter is used for
 
 
 
-*string* public **getDialectType** ()
+public *string*  **getDialectType** ()
 
 Returns the name of the dialect used
 
 
 
-:doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>` public **getDialect** ()
+public :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`  **getDialect** ()
 
 Returns internal dialect instance
 

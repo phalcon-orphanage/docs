@@ -19,19 +19,19 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-*mixed* public **getPost** (*string* $name, *string|array* $filters)
+public *mixed*  **getPost** (*string* $name, *string|array* $filters)
 
 Gets variable from $_POST superglobal applying filters if needed 
 
@@ -48,7 +48,7 @@ Gets variable from $_POST superglobal applying filters if needed
 
 
 
-*mixed* public **getQuery** (*string* $name, *string|array* $filters)
+public *mixed*  **getQuery** (*string* $name, *string|array* $filters)
 
 Gets variable from $_GET superglobal applying filters if needed 
 
@@ -65,205 +65,205 @@ Gets variable from $_GET superglobal applying filters if needed
 
 
 
-*mixed* public **getServer** (*string* $name)
+public *mixed*  **getServer** (*string* $name)
 
 Gets variable from $_SERVER superglobal
 
 
 
-*boolean* public **hasPost** (*string* $name)
+public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
 
 
 
-*boolean* public **hasQuery** (*string* $name)
+public *boolean*  **hasQuery** (*string* $name)
 
 Checks whether $_SERVER superglobal has certain index
 
 
 
-*mixed* public **hasServer** (*string* $name)
+public *mixed*  **hasServer** (*string* $name)
 
 Checks whether $_SERVER superglobal has certain index
 
 
 
-*string* public **getHeader** (*string* $header)
+public *string*  **getHeader** (*string* $header)
 
 Gets HTTP header from request data
 
 
 
-*string* public **getScheme** ()
+public *string*  **getScheme** ()
 
 Gets HTTP schema (http/https)
 
 
 
-*boolean* public **isAjax** ()
+public *boolean*  **isAjax** ()
 
 Checks whether request has been made using ajax
 
 
 
-*boolean* public **isSoapRequested** ()
+public *boolean*  **isSoapRequested** ()
 
 Checks whether request has been made using SOAP
 
 
 
-*boolean* public **isSecureRequest** ()
+public *boolean*  **isSecureRequest** ()
 
 Checks whether request has been made using any secure layer
 
 
 
-*string* public **getRawBody** ()
+public *string*  **getRawBody** ()
 
 Gets HTTP raws request body
 
 
 
-*string* public **getServerAddress** ()
+public *string*  **getServerAddress** ()
 
 Gets active server address IP
 
 
 
-*string* public **getServerName** ()
+public *string*  **getServerName** ()
 
 Gets active server name
 
 
 
-*string* public **getHttpHost** ()
+public *string*  **getHttpHost** ()
 
 Gets information about schema, host and port used by the request
 
 
 
-*string* public **getClientAddress** ()
+public *string*  **getClientAddress** ()
 
 Gets most possibly client IPv4 Address. This methods search in $_SERVER['HTTP_X_FORWARDED_FOR'] and $_SERVER['REMOTE_ADDR']
 
 
 
-*string* public **getMethod** ()
+public *string*  **getMethod** ()
 
 Gets HTTP method which request has been made
 
 
 
-*string* public **getUserAgent** ()
+public *string*  **getUserAgent** ()
 
 Gets HTTP user agent used to made the request
 
 
 
-public **isMethod** (*string|array* $methods)
+public  **isMethod** (*string|array* $methods)
 
 Check if HTTP method match any of the passed methods
 
 
 
-*boolean* public **isPost** ()
+public *boolean*  **isPost** ()
 
 Checks whether HTTP method is POST. if $_SERVER['REQUEST_METHOD']=='POST'
 
 
 
-*boolean* public **isGet** ()
+public *boolean*  **isGet** ()
 
 Checks whether HTTP method is GET. if $_SERVER['REQUEST_METHOD']=='GET'
 
 
 
-*boolean* public **isPut** ()
+public *boolean*  **isPut** ()
 
 Checks whether HTTP method is PUT. if $_SERVER['REQUEST_METHOD']=='PUT'
 
 
 
-*boolean* public **isHead** ()
+public *boolean*  **isHead** ()
 
 Checks whether HTTP method is HEAD. if $_SERVER['REQUEST_METHOD']=='HEAD'
 
 
 
-*boolean* public **isDelete** ()
+public *boolean*  **isDelete** ()
 
 Checks whether HTTP method is DELETE. if $_SERVER['REQUEST_METHOD']=='DELETE'
 
 
 
-*boolean* public **isOptions** ()
+public *boolean*  **isOptions** ()
 
 Checks whether HTTP method is OPTIONS. if $_SERVER['REQUEST_METHOD']=='OPTIONS'
 
 
 
-*boolean* public **hasFiles** ()
+public *boolean*  **hasFiles** ()
 
 Checks whether request include attached files
 
 
 
-:doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` []public **getUploadedFiles** ()
+public :doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` [] **getUploadedFiles** ()
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 
 
 
-*string* public **getHTTPReferer** ()
+public *string*  **getHTTPReferer** ()
 
 Gets web page that refers active request. ie: http://www.google.com
 
 
 
-*array* protected **_getQualityHeader** ()
+protected *array*  **_getQualityHeader** ()
 
 Process a request header and return an array of values with their qualities
 
 
 
-*string* protected **_getBestQuality** ()
+protected *string*  **_getBestQuality** ()
 
 Process a request header and return the one with best quality
 
 
 
-*array* public **getAcceptableContent** ()
+public *array*  **getAcceptableContent** ()
 
 Gets array with mime/types and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
 
 
 
-*array* public **getBestAccept** ()
+public *array*  **getBestAccept** ()
 
 Gets best mime/type accepted by the browser/client from $_SERVER['HTTP_ACCEPT']
 
 
 
-*array* public **getClientCharsets** ()
+public *array*  **getClientCharsets** ()
 
 Gets charsets array and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT_CHARSET']
 
 
 
-*string* public **getBestCharset** ()
+public *string*  **getBestCharset** ()
 
 Gets best charset accepted by the browser/client from $_SERVER['HTTP_ACCEPT_CHARSET']
 
 
 
-*array* public **getLanguages** ()
+public *array*  **getLanguages** ()
 
 Gets languages array and their quality accepted by the browser/client from $_SERVER['HTTP_ACCEPT_LANGUAGE']
 
 
 
-*string* public **getBestLanguage** ()
+public *string*  **getBestLanguage** ()
 
 Gets best language accepted by the browser/client from $_SERVER['HTTP_ACCEPT_LANGUAGE']
 

@@ -20,156 +20,156 @@ This components controls the initialization of models, keeping record of relatio
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the event manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public **initialize** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public  **initialize** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Initializes a model in the model manager
 
 
 
-*bool* public **isInitialized** (*string* $modelName)
+public *bool*  **isInitialized** (*string* $modelName)
 
 Check of a model is already initialized
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getLastInitialized** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getLastInitialized** ()
 
 Get last initialized model
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **load** (*unknown* $modelName)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **load** (*unknown* $modelName)
 
 Loads a model throwing an exception if it doesn't exist
 
 
 
-public **addHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public  **addHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
 Setup a 1-1 relation between two models
 
 
 
-public **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
 Setup a relation reverse 1-1  between two models
 
 
 
-public **addHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public  **addHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
 
 Setup a relation 1-n between two models
 
 
 
-*boolean* public **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
+public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
 
 Checks whether a model has a belongsTo relation with another model
 
 
 
-*boolean* public **existsHasMany** (*string* $modelName, *string* $modelRelation)
+public *boolean*  **existsHasMany** (*string* $modelName, *string* $modelRelation)
 
 Checks whether a model has a hasMany relation with another model
 
 
 
-*boolean* public **existsHasOne** (*string* $modelName, *string* $modelRelation)
+public *boolean*  **existsHasOne** (*string* $modelName, *string* $modelRelation)
 
 Checks whether a model has a hasOne relation with another model
 
 
 
-protected **_getRelationRecords** ()
+protected  **_getRelationRecords** ()
 
 Helper method to query records based on a relation definition
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Gets belongsTo related records from a model
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Gets hasMany related records from a model
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Gets belongsTo related records from a model
 
 
 
-*array* public **getBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Gets belongsTo relations defined on a model
 
 
 
-*array* public **getHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Gets hasMany relations defined on a model
 
 
 
-*array* public **getHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Gets hasOne relations defined on a model
 
 
 
-*array* public **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Gets hasOne relations defined on a model
 
 
 
-*array* public **getRelations** (*string* $first, *string* $second)
+public *array*  **getRelations** (*string* $first, *string* $second)
 
 Query the relations between two models
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>` public **createQuery** (*string* $phql)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **createQuery** (*string* $phql)
 
 Creates a Phalcon\\Mvc\\Model\\Query without execute it
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>` public **executeQuery** (*string* $phql, *array* $placeholders)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **executeQuery** (*string* $phql, *array* $placeholders)
 
 Creates a Phalcon\\Mvc\\Model\\Query and execute it
 

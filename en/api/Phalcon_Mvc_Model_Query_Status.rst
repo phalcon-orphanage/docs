@@ -7,25 +7,25 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
 Methods
 ---------
 
-public **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getModel** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getModel** ()
 
 Returns the model which executed the action
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` []public **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` [] **getMessages** ()
 
 Returns the messages produced by a operation failed
 
 
 
-*boolean* public **success** ()
+public *boolean*  **success** ()
 
 Allows to check if the executed operation was successfull
 

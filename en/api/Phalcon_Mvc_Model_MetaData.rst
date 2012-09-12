@@ -37,73 +37,73 @@ Constants
 Methods
 ---------
 
-protected **_initializeMetaData** ()
+protected  **_initializeMetaData** ()
 
 Initialize the metadata for certain table
 
 
 
-*array* public **getAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns table attributes names (fields)
 
 
 
-*array* public **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an array of fields which are part of the primary key
 
 
 
-*array* public **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an arrau of fields which are not part of the primary key
 
 
 
-*array* public **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an array of not null attributes
 
 
 
-*array* public **getDataTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes and their data types
 
 
 
-*array* public **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes which types are numerical
 
 
 
-*array* public **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *array*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns the name of identity field (if one is present)
 
 
 
-public **storeMetaData** ()
+public  **storeMetaData** ()
 
 Stores meta-data using to the internal adapter
 
 
 
-*boolean* public **isEmpty** ()
+public *boolean*  **isEmpty** ()
 
 Checks if the internal meta-data container is empty
 
 
 
-public **reset** ()
+public  **reset** ()
 
 Resets internal meta-data in order to regenerate it
 
 
 
-abstract public **write** ()
+abstract public  **write** ()
 
 ...
 

@@ -7,24 +7,24 @@ The new Phalcon Events Manager, offers an easy way to intercept and manipulate, 
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **attach** (*string* $eventType, *object* $handler)
+public  **attach** (*string* $eventType, *object* $handler)
 
 Attach a listener to the events manager
 
 
 
-*mixed* public **fire** (*string* $eventType, *object* $source)
+public *mixed*  **fire** (*string* $eventType, *object* $source)
 
 Fires a event in the events manager causing that the acive listeners will be notified about it
 
 
 
-*array* public **getListeners** (*string* $type)
+public *array*  **getListeners** (*string* $type)
 
 Returns all the attached listeners of a certain type
 

@@ -69,24 +69,24 @@ Constants
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **setDefaultAction** (*int* $defaultAccess)
+public  **setDefaultAction** (*int* $defaultAccess)
 
 Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
 
 
-public **getDefaultAction** ()
+public  **getDefaultAction** ()
 
 Returns the default ACL access level
 
 
 
-*boolean* public **addRole** (*string* $roleObject, *array* $accessInherits)
+public *boolean*  **addRole** (*string* $roleObject, *array* $accessInherits)
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
 
@@ -100,25 +100,25 @@ Adds a role to the ACL list. Second parameter lets to inherit access data from o
 
 
 
-public **addInherit** (*string* $roleName, *string* $roleToInherit)
+public  **addInherit** (*string* $roleName, *string* $roleToInherit)
 
 Do a role inherit from another existing role
 
 
 
-*boolean* public **isRole** (*string* $roleName)
+public *boolean*  **isRole** (*string* $roleName)
 
 Check whether role exist in the roles list
 
 
 
-*boolean* public **isResource** (*string* $resourceName)
+public *boolean*  **isResource** (*string* $resourceName)
 
 Check whether resource exist in the resources list
 
 
 
-*boolean* public **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, *unknown* $accessList)
+public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, *unknown* $accessList)
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
 
@@ -137,24 +137,24 @@ Adds a resource to the ACL list Access names can be a particular action, by exam
 
 
 
-public **addResourceAccess** (*string* $resourceName, *mixed* $accessList)
+public  **addResourceAccess** (*string* $resourceName, *mixed* $accessList)
 
 Adds access to resources
 
 
 
-public **dropResourceAccess** (*string* $resourceName, *mixed* $accessList)
+public  **dropResourceAccess** (*string* $resourceName, *mixed* $accessList)
 
 Removes an access from a resource
 
 
 
-protected **_allowOrDeny** ()
+protected  **_allowOrDeny** ()
 
 ...
 
 
-public **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
+public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
 Allow access to a role on a resource You can use '*' as wildcard Example: 
 
@@ -177,7 +177,7 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-*boolean* public **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
+public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
 Deny access to a role on a resource You can use '*' as wildcard Example: 
 
@@ -200,7 +200,7 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-*boolean* public **isAllowed** (*string* $role, *string* $resource, *unknown* $access)
+public *boolean*  **isAllowed** (*string* $role, *string* $resource, *unknown* $access)
 
 Check whether a role is allowed to access an action from a resource 
 
@@ -217,37 +217,37 @@ Check whether a role is allowed to access an action from a resource
 
 
 
-*string* public **getActiveRole** ()
+public *string*  **getActiveRole** ()
 
 Returns the role which the list is checking if it's allowed to certain resource/access
 
 
 
-*string* public **getActiveResource** ()
+public *string*  **getActiveResource** ()
 
 Returns the resource which the list is checking if some role can access it
 
 
 
-*string* public **getActiveAccess** ()
+public *string*  **getActiveAccess** ()
 
 Returns the access which the list is checking if some role can access it
 
 
 
-protected **_rebuildAccessList** ()
+protected  **_rebuildAccessList** ()
 
 Rebuild the list of access from the inherit lists
 
 
 
-public **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon_Acl
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\Acl
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** () inherited from Phalcon_Acl
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\Acl
 
 Returns the internal event manager
 

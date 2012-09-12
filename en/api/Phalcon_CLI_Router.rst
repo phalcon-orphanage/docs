@@ -16,66 +16,66 @@ Phalcon\\CLI\\Router is the standard framework router. Routing is the process of
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public **setDefaultModule** (*string* $moduleName)
+public  **setDefaultModule** (*string* $moduleName)
 
 Sets the name of the default module
 
 
 
-public **setDefaultTask** (*unknown* $taskName)
+public  **setDefaultTask** (*unknown* $taskName)
 
 Sets the default controller name
 
 
 
-public **setDefaultAction** (*string* $actionName)
+public  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
 
 
 
-public **handle** ()
+public  **handle** ()
 
 Handles routing information received from command-line arguments
 
 
 
-*string* public **getModuleName** ()
+public *string*  **getModuleName** ()
 
 Returns proccesed module name
 
 
 
-*string* public **getTaskName** ()
+public *string*  **getTaskName** ()
 
 Returns proccesed task name
 
 
 
-*string* public **getActionName** ()
+public *string*  **getActionName** ()
 
 Returns proccesed action name
 
 
 
-*array* public **getParams** ()
+public *array*  **getParams** ()
 
 Returns proccesed extra params
 

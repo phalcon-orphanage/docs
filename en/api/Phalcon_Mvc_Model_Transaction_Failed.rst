@@ -9,66 +9,75 @@ Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch bloc
 Methods
 ---------
 
-public **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
 
 
-*string* public **getRecordMessages** ()
+public *string*  **getRecordMessages** ()
 
 Returns validation record messages which stop the transaction
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getRecord** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getRecord** ()
 
 Returns validation record messages which stop the transaction
 
 
 
-final private **__clone** () inherited from Exception
+final private *Exception*  **__clone** () inherited from Exception
 
-...
-
-
-final public **getMessage** () inherited from Exception
-
-...
+Clone the exception
 
 
-final public **getCode** () inherited from Exception
 
-...
+final public *string*  **getMessage** () inherited from Exception
 
-
-final public **getFile** () inherited from Exception
-
-...
+Gets the Exception message
 
 
-final public **getLine** () inherited from Exception
 
-...
+final public *int*  **getCode** () inherited from Exception
 
-
-final public **getTrace** () inherited from Exception
-
-...
+Gets the Exception code
 
 
-final public **getPrevious** () inherited from Exception
 
-...
+final public *string*  **getFile** () inherited from Exception
 
-
-final public **getTraceAsString** () inherited from Exception
-
-...
+Gets the file in which the exception occurred
 
 
-public **__toString** () inherited from Exception
 
-...
+final public *int*  **getLine** () inherited from Exception
+
+Gets the line in which the exception occurred
+
+
+
+final public *array*  **getTrace** () inherited from Exception
+
+Gets the stack trace
+
+
+
+final public *Exception*  **getPrevious** () inherited from Exception
+
+Returns previous Exception
+
+
+
+final public *Exception*  **getTraceAsString** () inherited from Exception
+
+Gets the stack trace as a string
+
+
+
+public *string*  **__toString** () inherited from Exception
+
+String representation of the exception
+
 
 

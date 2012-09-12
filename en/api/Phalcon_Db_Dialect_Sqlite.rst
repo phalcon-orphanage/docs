@@ -9,151 +9,151 @@ Generates database specific SQL for the Sqlite RBDM
 Methods
 ---------
 
-*string* public **getColumnList** (*array* $columnList)
+public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
 
 
-public **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Gets the column name in Sqlite
 
 
 
-*string* public **addColumn** ()
+public *string*  **addColumn** ()
 
 Generates SQL to add a column to a table
 
 
 
-*string* public **modifyColumn** ()
+public *string*  **modifyColumn** ()
 
 Generates SQL to modify a column in a table
 
 
 
-*string* public **dropColumn** ()
+public *string*  **dropColumn** ()
 
 Generates SQL to delete a column from a table
 
 
 
-*string* public **addIndex** ()
+public *string*  **addIndex** ()
 
 Generates SQL to add an index to a table
 
 
 
-*string* public **dropIndex** ()
+public *string*  **dropIndex** ()
 
 Generates SQL to delete an index from a table
 
 
 
-*string* public **addPrimaryKey** ()
+public *string*  **addPrimaryKey** ()
 
 Generates SQL to add the primary key to a table
 
 
 
-*string* public **dropPrimaryKey** ()
+public *string*  **dropPrimaryKey** ()
 
 Generates SQL to delete primary key from a table
 
 
 
-*string* public **addForeignKey** ()
+public *string*  **addForeignKey** ()
 
 Generates SQL to add an index to a table
 
 
 
-*string* public **dropForeignKey** ()
+public *string*  **dropForeignKey** ()
 
 Generates SQL to delete a foreign key from a table
 
 
 
-*array* protected **_getTableOptions** ()
+protected *array*  **_getTableOptions** ()
 
 Generates SQL to add the table creation options
 
 
 
-*string* public **createTable** ()
+public *string*  **createTable** ()
 
 Generates SQL to create a table in PostgreSQL
 
 
 
-*boolean* public **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
 
 Generates SQL to drop a table
 
 
 
-*string* public **tableExists** (*string* $tableName, *string* $schemaName)
+public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
 
 Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
 
 
 
-*string* public **describeColumns** (*string* $table, *string* $schema)
+public *string*  **describeColumns** (*string* $table, *string* $schema)
 
 Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
 
 
 
-*array* public **listTables** (*string* $schemaName)
+public *array*  **listTables** (*string* $schemaName)
 
 List all tables on database <code>print_r($dialect->listTables("blog") ?>
 
 
 
-*string* public **describeIndexes** (*string* $table, *string* $schema)
+public *string*  **describeIndexes** (*string* $table, *string* $schema)
 
 Generates SQL to query indexes on a table
 
 
 
-*string* public **describeIndex** (*string* $indexName)
+public *string*  **describeIndex** (*string* $indexName)
 
 Generates SQL to query indexes detail on a table
 
 
 
-*string* public **describeReferences** (*string* $table, *string* $schema)
+public *string*  **describeReferences** (*string* $table, *string* $schema)
 
 Generates SQL to query foreign keys on a table
 
 
 
-*string* public **tableOptions** (*string* $table, *string* $schema)
+public *string*  **tableOptions** (*string* $table, *string* $schema)
 
 Generates the SQL to describe the table creation options
 
 
 
-*string* public **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon_Db_Dialect
+public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\Db\Dialect
 
 Generates the SQL for LIMIT clause
 
 
 
-*string* public **forUpdate** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\Db\Dialect
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-*string* public **sharedLock** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\Db\Dialect
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-*string* public **select** (*array* $definition) inherited from Phalcon_Db_Dialect
+public *string*  **select** (*array* $definition) inherited from Phalcon\Db\Dialect
 
 Builds a SELECT statement
 

@@ -32,61 +32,61 @@ Allows to cache output fragments, PHP data and raw data using a memcache backend
 Methods
 ---------
 
-*mixed* public **get** (*string* $keyName, *long* $lifetime)
+public *mixed*  **get** (*string* $keyName, *long* $lifetime)
 
 Returns a cached content
 
 
 
-public **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+public  **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
 Stores cached content into the file backend
 
 
 
-*boolean* public **delete** (*string* $keyName)
+public *boolean*  **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-*array* public **queryKeys** (*string* $prefix)
+public *array*  **queryKeys** (*string* $prefix)
 
 Query the existing cached keys
 
 
 
-public **__construct** (*mixed* $frontendObject, *array* $backendOptions) inherited from Phalcon_Cache_Backend
+public  **__construct** (*mixed* $frontendObject, *array* $backendOptions) inherited from Phalcon\Cache\Backend
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-*mixed* public **start** (*int|string* $keyName) inherited from Phalcon_Cache_Backend
+public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\Cache\Backend
 
 Starts a cache. The $keyname allow to identify the created fragment
 
 
 
-*mixed* public **getFrontend** () inherited from Phalcon_Cache_Backend
+public *mixed*  **getFrontend** () inherited from Phalcon\Cache\Backend
 
 Returns front-end instance adapter related to the back-end
 
 
 
-*boolean* public **isFresh** () inherited from Phalcon_Cache_Backend
+public *boolean*  **isFresh** () inherited from Phalcon\Cache\Backend
 
 Checks whether the last cache is fresh or cached
 
 
 
-*boolean* public **isStarted** () inherited from Phalcon_Cache_Backend
+public *boolean*  **isStarted** () inherited from Phalcon\Cache\Backend
 
 Checks whether the cache has started buffering or not
 
 
 
-*string* public **getLastKey** () inherited from Phalcon_Cache_Backend
+public *string*  **getLastKey** () inherited from Phalcon\Cache\Backend
 
 Gets the last key stored by the cache
 

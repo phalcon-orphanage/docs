@@ -46,31 +46,31 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public **registerModules** (*array* $modules)
+public  **registerModules** (*array* $modules)
 
 Register an array of modules present in the application 
 
@@ -92,19 +92,19 @@ Register an array of modules present in the application
 
 
 
-*array* public **getModules** ()
+public *array*  **getModules** ()
 
 Return the modules registered in the application
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **handle** ()
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **handle** ()
 
 Handles a MVC request
 
 
 
-public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+public  **__get** (*string* $propertyName) inherited from Phalcon\DI\Injectable
 
 Magic method __get
 

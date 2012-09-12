@@ -28,31 +28,31 @@ Provides OO wrappers to the $_FILES superglobal
 Methods
 ---------
 
-public **__construct** (*array* $file)
+public  **__construct** (*array* $file)
 
 Phalcon\\Http\\Request\\File constructor
 
 
 
-*int* public **getSize** ()
+public *int*  **getSize** ()
 
 Returns the file size of the uploaded file
 
 
 
-*string* public **getName** ()
+public *string*  **getName** ()
 
 Returns the real name of the uploaded file
 
 
 
-*string* public **getTempName** ()
+public *string*  **getTempName** ()
 
 Returns the temporal name of the uploaded file
 
 
 
-public **moveTo** (*string* $destination)
+public  **moveTo** (*string* $destination)
 
 Move the temporary file to a destination
 

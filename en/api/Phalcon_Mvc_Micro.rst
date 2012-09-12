@@ -22,126 +22,126 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public **map** (*string* $routePattern, *callable* $handler)
+public  **map** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler without any HTTP method constraint
 
 
 
-public **get** (*string* $routePattern, *callable* $handler)
+public  **get** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public **post** (*string* $routePattern, *callable* $handler)
+public  **post** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public **put** (*string* $routePattern, *callable* $handler)
+public  **put** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public **head** (*string* $routePattern, *callable* $handler)
+public  **head** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public **delete** (*string* $routePattern, *callable* $handler)
+public  **delete** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public **options** (*string* $routePattern, *callable* $handler)
+public  **options** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public **notFound** (*callable* $handler)
+public  **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
 
 
-:doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>` public **getRouter** ()
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **getRouter** ()
 
 Returns the internal router used by the application
 
 
 
-*object* public **getService** (*unknown* $serviceName)
+public *object*  **getService** (*unknown* $serviceName)
 
 Obtains a service from the DI
 
 
 
-public **getSharedService** (*unknown* $serviceName)
+public  **getSharedService** (*unknown* $serviceName)
 
 Obtains a shared service from the DI
 
 
 
-*mixed* public **handle** ()
+public *mixed*  **handle** ()
 
 Handle the whole request
 
 
 
-public **setActiveHandler** (*callable* $activeHandler)
+public  **setActiveHandler** (*callable* $activeHandler)
 
 Sets externally the handler that must be called by the matched route
 
 
 
-*callable* public **getActiveHandler** ()
+public *callable*  **getActiveHandler** ()
 
 Return the handler that will be called for the matched route
 
 
 
-public **getReturnedValue** ()
+public  **getReturnedValue** ()
 
 Returns the value returned by the executed handler
 
 
 
-public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+public  **__get** (*string* $propertyName) inherited from Phalcon\DI\Injectable
 
 Magic method __get
 

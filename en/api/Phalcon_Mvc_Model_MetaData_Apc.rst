@@ -40,85 +40,85 @@ Constants
 Methods
 ---------
 
-public **__construct** (*array* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
 
 
 
-*array* public **read** ()
+public *array*  **read** ()
 
 Reads meta-data from APC
 
 
 
-public **write** (*array* $data)
+public  **write** (*array* $data)
 
 Writes the meta-data to APC
 
 
 
-protected **_initializeMetaData** () inherited from Phalcon_Mvc_Model_MetaData
+protected  **_initializeMetaData** () inherited from Phalcon\Mvc\Model\MetaData
 
 Initialize the metadata for certain table
 
 
 
-*array* public **getAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns table attributes names (fields)
 
 
 
-*array* public **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns an array of fields which are part of the primary key
 
 
 
-*array* public **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns an arrau of fields which are not part of the primary key
 
 
 
-*array* public **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns an array of not null attributes
 
 
 
-*array* public **getDataTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns attributes and their data types
 
 
 
-*array* public **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns attributes which types are numerical
 
 
 
-*array* public **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon_Mvc_Model_MetaData
+public *array*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\Mvc\Model\MetaData
 
 Returns the name of identity field (if one is present)
 
 
 
-public **storeMetaData** () inherited from Phalcon_Mvc_Model_MetaData
+public  **storeMetaData** () inherited from Phalcon\Mvc\Model\MetaData
 
 Stores meta-data using to the internal adapter
 
 
 
-*boolean* public **isEmpty** () inherited from Phalcon_Mvc_Model_MetaData
+public *boolean*  **isEmpty** () inherited from Phalcon\Mvc\Model\MetaData
 
 Checks if the internal meta-data container is empty
 
 
 
-public **reset** () inherited from Phalcon_Mvc_Model_MetaData
+public  **reset** () inherited from Phalcon\Mvc\Model\MetaData
 
 Resets internal meta-data in order to regenerate it
 

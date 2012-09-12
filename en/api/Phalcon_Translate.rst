@@ -9,31 +9,31 @@ Translate component allows the creation of multi-language applications using dif
 Methods
 ---------
 
-*string* public **_** (*string* $translateKey, *array* $placeholders)
+public *string*  **_** (*string* $translateKey, *array* $placeholders)
 
 Returns the translation string of the given key
 
 
 
-public **offsetSet** (*string* $offset, *string* $value)
+public  **offsetSet** (*string* $offset, *string* $value)
 
 Sets a translation value
 
 
 
-*boolean* public **offsetExists** (*string* $translateKey)
+public *boolean*  **offsetExists** (*string* $translateKey)
 
 Check whether a translation key exists
 
 
 
-public **offsetUnset** (*string* $offset)
+public  **offsetUnset** (*string* $offset)
 
 Elimina un indice del diccionario
 
 
 
-*string* public **offsetGet** (*string* $traslateKey)
+public *string*  **offsetGet** (*string* $traslateKey)
 
 Returns the translation related to the given key
 

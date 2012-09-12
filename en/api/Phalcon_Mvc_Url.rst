@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-This components aids in the generation off: URIs, URLs and Paths 
+This components aids in the generation of: URIs, URLs and Paths 
 
 .. code-block:: php
 
@@ -18,19 +18,19 @@ This components aids in the generation off: URIs, URLs and Paths
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public **setBaseUri** (*string* $baseUri)
+public  **setBaseUri** (*string* $baseUri)
 
 Sets a prefix to all the urls generated 
 
@@ -43,13 +43,13 @@ Sets a prefix to all the urls generated
 
 
 
-*string* public **getBaseUri** ()
+public *string*  **getBaseUri** ()
 
 Returns the prefix for all the generated urls. By default /
 
 
 
-*string $basePath* public **setBasePath** (*unknown* $basePath)
+public  **setBasePath** (*string* $basePath)
 
 Sets a base paths for all the generated paths 
 
@@ -62,19 +62,19 @@ Sets a base paths for all the generated paths
 
 
 
-*string* public **getBasePath** ()
+public *string*  **getBasePath** ()
 
 Returns a base path
 
 
 
-*string* public **get** (*string|array* $uri)
+public *string*  **get** (*string|array* $uri)
 
 Generates a URL
 
 
 
-*string* public **path** (*unknown* $path)
+public *string*  **path** (*string* $path)
 
 Generates a local path
 

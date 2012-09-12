@@ -7,31 +7,31 @@ Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of
 Methods
 ---------
 
-public static **setDI** (*unknown* $dependencyInjector)
+public static  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector container.
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public static **getDI** ()
+public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Internally gets the request dispatcher
 
 
 
-:doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>` public static **getUrlService** ()
+public static :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **getUrlService** ()
 
 Return a URL service from the DI
 
 
 
-:doc:`Phalcon\\Mvc\\Dispatcher <Phalcon_Mvc_Dispatcher>` public static **getDispatcherService** ()
+public static :doc:`Phalcon\\Mvc\\Dispatcher <Phalcon_Mvc_Dispatcher>`  **getDispatcherService** ()
 
 Returns a Dispatcher service from the DI
 
 
 
-public static **setDefault** (*string* $id, *string* $value)
+public static  **setDefault** (*string* $id, *string* $value)
 
 Assigns default values to generated tags by helpers 
 
@@ -48,25 +48,25 @@ Assigns default values to generated tags by helpers
 
 
 
-public static **displayTo** (*string* $id, *string* $value)
+public static  **displayTo** (*string* $id, *string* $value)
 
 Alias of Phalcon\\Tag::setDefault
 
 
 
-*mixed* public static **getValue** (*string* $name)
+public static *mixed*  **getValue** (*string* $name)
 
 Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
 
 
 
-public static **resetInput** ()
+public static  **resetInput** ()
 
 Resets the request and internal values to avoid those fields will have any default value
 
 
 
-*string* public static **linkTo** (*array* $parameters, *unknown* $text)
+public static *string*  **linkTo** (*array* $parameters, *unknown* $text)
 
 Builds a HTML A tag using framework conventions 
 
@@ -79,13 +79,13 @@ Builds a HTML A tag using framework conventions
 
 
 
-*string* protected static **_inputField** ()
+protected static *string*  **_inputField** ()
 
 Builds generic INPUT tags
 
 
 
-*string* public static **textField** (*array* $parameters)
+public static *string*  **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
 
@@ -98,7 +98,7 @@ Builds a HTML input[type="text"] tag
 
 
 
-*string* public static **passwordField** (*array* $parameters)
+public static *string*  **passwordField** (*array* $parameters)
 
 Builds a HTML input[type="password"] tag 
 
@@ -111,7 +111,7 @@ Builds a HTML input[type="password"] tag
 
 
 
-*string* public static **hiddenField** (*array* $parameters)
+public static *string*  **hiddenField** (*array* $parameters)
 
 Builds a HTML input[type="hidden"] tag 
 
@@ -124,7 +124,7 @@ Builds a HTML input[type="hidden"] tag
 
 
 
-*string* public static **fileField** (*array* $parameters)
+public static *string*  **fileField** (*array* $parameters)
 
 Builds a HTML input[type="file"] tag 
 
@@ -137,7 +137,7 @@ Builds a HTML input[type="file"] tag
 
 
 
-*string* public static **checkField** (*array* $parameters)
+public static *string*  **checkField** (*array* $parameters)
 
 Builds a HTML input[type="check"] tag 
 
@@ -150,7 +150,7 @@ Builds a HTML input[type="check"] tag
 
 
 
-*string* public static **submitButton** (*unknown* $parameters)
+public static *string*  **submitButton** (*unknown* $parameters)
 
 Builds a HTML input[type="submit"] tag 
 
@@ -163,7 +163,7 @@ Builds a HTML input[type="submit"] tag
 
 
 
-*string* public static **selectStatic** (*array* $parameters, *unknown* $data)
+public static *string*  **selectStatic** (*array* $parameters, *unknown* $data)
 
 Builds a HTML SELECT tag using a PHP array for options 
 
@@ -176,7 +176,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
 
 
-*string* public static **select** (*unknown* $parameters, *unknown* $data)
+public static *string*  **select** (*unknown* $parameters, *unknown* $data)
 
 Builds a HTML SELECT tag using a Phalcon_Model resultset as options 
 
@@ -193,7 +193,7 @@ Builds a HTML SELECT tag using a Phalcon_Model resultset as options
 
 
 
-*string* public static **textArea** (*array* $parameters)
+public static *string*  **textArea** (*array* $parameters)
 
 Builds a HTML TEXTAREA tag 
 
@@ -206,7 +206,7 @@ Builds a HTML TEXTAREA tag
 
 
 
-*string* public static **form** (*array* $parameters)
+public static *string*  **form** (*array* $parameters)
 
 Builds a HTML FORM tag 
 
@@ -220,37 +220,37 @@ Builds a HTML FORM tag
 
 
 
-*string* public static **endForm** ()
+public static *string*  **endForm** ()
 
 Builds a HTML close FORM tag
 
 
 
-public static **setTitle** (*string* $title)
+public static  **setTitle** (*string* $title)
 
 Set the title of view content
 
 
 
-public static **appendTitle** (*string* $title)
+public static  **appendTitle** (*string* $title)
 
 Add to title of view content
 
 
 
-public static **prependTitle** (*string* $title)
+public static  **prependTitle** (*string* $title)
 
 Add before the title of view content
 
 
 
-*string* public static **getTitle** ()
+public static *string*  **getTitle** ()
 
 Get the title of view content
 
 
 
-*string* public static **stylesheetLink** (*array* $parameters, *boolean* $local)
+public static *string*  **stylesheetLink** (*array* $parameters, *boolean* $local)
 
 Builds a LINK[rel="stylesheet"] tag 
 
@@ -264,7 +264,7 @@ Builds a LINK[rel="stylesheet"] tag
 
 
 
-*string* public static **javascriptInclude** (*array* $parameters, *boolean* $local)
+public static *string*  **javascriptInclude** (*array* $parameters, *boolean* $local)
 
 Builds a SCRIPT[type="javascript"] tag 
 
@@ -278,7 +278,7 @@ Builds a SCRIPT[type="javascript"] tag
 
 
 
-*string* public static **image** (*array* $parameters)
+public static *string*  **image** (*array* $parameters)
 
 Builds HTML IMG tags
 

@@ -27,91 +27,91 @@ This component allows to Phalcon\\Mvc\\Model returns large resulsets with the mi
 Methods
 ---------
 
-public **next** ()
+public  **next** ()
 
 Moves cursor to next row in the resultset
 
 
 
-*int* public **key** ()
+public *int*  **key** ()
 
 Gets pointer number of active row in the resultset
 
 
 
-public **rewind** ()
+public  **rewind** ()
 
 Rewinds resultset to its beginning
 
 
 
-public **seek** (*int* $position)
+public  **seek** (*int* $position)
 
 Changes internal pointer to a specific position in the resultset
 
 
 
-*int* public **count** ()
+public *int*  **count** ()
 
 Counts how many rows are in the resultset
 
 
 
-*boolean* public **offsetExists** (*int* $index)
+public *boolean*  **offsetExists** (*int* $index)
 
 Checks whether offset exists in the resultset
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **offsetGet** (*int* $index)
 
 Gets row in a specific position of the resultset
 
 
 
-public **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value)
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value)
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public **offsetUnset** (*int* $offset)
+public  **offsetUnset** (*int* $offset)
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getFirst** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getFirst** ()
 
 Get first row in the resultset
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getLast** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getLast** ()
 
 Get last row in the resultset
 
 
 
-public **setIsFresh** (*boolean* $isFresh)
+public  **setIsFresh** (*boolean* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
 
 
-*boolean* public **isFresh** ()
+public *boolean*  **isFresh** ()
 
 Tell if the resultset if fresh or an old one cached
 
 
 
-:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` public **getCache** ()
+public :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **getCache** ()
 
 Returns the associated cache for the resultset
 
 
 
-*object* public **current** ()
+public *object*  **current** ()
 
 Returns current row in the resultset
 

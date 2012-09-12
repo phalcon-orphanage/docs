@@ -17,19 +17,19 @@ This class allows to insert/update raw data without quoting or formating. The ne
 Methods
 ---------
 
-public **__construct** (*string* $value)
+public  **__construct** (*string* $value)
 
 Phalcon\\Db\\RawValue constructor
 
 
 
-*string* public **getValue** ()
+public *string*  **getValue** ()
 
 Returns internal raw value without quoting or formating
 
 
 
-public **__toString** ()
+public  **__toString** ()
 
 Magic method __toString returns raw value without quoting or formating
 

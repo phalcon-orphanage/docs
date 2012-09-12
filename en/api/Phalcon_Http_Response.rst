@@ -17,19 +17,19 @@ Encapsulates the HTTP response message.
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setStatusCode** (*int* $code, *string* $message)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setStatusCode** (*int* $code, *string* $message)
 
 Sets the HTTP response code 
 
@@ -42,13 +42,13 @@ Sets the HTTP response code
 
 
 
-:doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>` public **getHeaders** ()
+public :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **getHeaders** ()
 
 Returns headers set by the user
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setHeader** (*string* $name, *string* $value)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setHeader** (*string* $name, *string* $value)
 
 Overwrites a header in the response 
 
@@ -61,7 +61,7 @@ Overwrites a header in the response
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setRawHeader** (*string* $header)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setRawHeader** (*string* $header)
 
 Send a raw header to the response 
 
@@ -74,25 +74,25 @@ Send a raw header to the response
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **resetHeaders** ()
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **resetHeaders** ()
 
 Resets all the stablished headers
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setExpires** (*DateTime* $datetime)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setExpires** (*DateTime* $datetime)
 
 Sets output expire time header
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setNotModified** ()
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setNotModified** ()
 
 Sends a Not-Modified response
 
 
 
-public **setContentType** (*unknown* $contentType, *unknown* $charset)
+public  **setContentType** (*unknown* $contentType, *unknown* $charset)
 
 Sets the response content-type mime, optionally the charset 
 
@@ -106,7 +106,7 @@ Sets the response content-type mime, optionally the charset
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **redirect** (*string* $location, *boolean* $externalRedirect, *int* $statusCode)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **redirect** (*string* $location, *boolean* $externalRedirect, *int* $statusCode)
 
 Redirect by HTTP to another action or URL 
 
@@ -121,7 +121,7 @@ Redirect by HTTP to another action or URL
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **setContent** (*string* $content)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **setContent** (*string* $content)
 
 Sets HTTP response body 
 
@@ -134,25 +134,25 @@ Sets HTTP response body
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **appendContent** (*string* $content)
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
 
 
 
-*string* public **getContent** ()
+public *string*  **getContent** ()
 
 Gets HTTP response body
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **sendHeaders** ()
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **sendHeaders** ()
 
 Sends headers to the client
 
 
 
-:doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>` public **send** ()
+public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **send** ()
 
 Prints out HTTP response to the client
 

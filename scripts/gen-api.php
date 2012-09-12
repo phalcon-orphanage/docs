@@ -75,9 +75,18 @@ class API_Generator {
 		if(isset($classDoc)){
 			if(isset($className)){
 				$this->_classDocs[$className] = $classDoc;
+			} else {
+				$fileName = str_replace(CPHALCON_DIR, '', $file);
+				$fileName = str_replace('.c', '', $fileName);
+
+				$parts = array();
+				foreach(explode(DIRECTORY_SEPARATOR, $fileName) as $part){
+					$parts[] = ucfirst($part);
+				}
+				if(class_exists('Phalcon\\'.join('\\', $parts))){
+					$this->_classDocs['Phalcon_'.join('_', $parts)] = $classDoc;
+				}
 			}
-		} else {
-			//echo $file;
 		}
 	}
 
@@ -230,7 +239,66 @@ foreach(get_declared_classes() as $className){
 	$classes[] = $className;
 }
 
-sort($classes);
+//Exception class docs
+$docs['Exception'] = array(
+	'__construct' => '/**
+ * Exception constructor
+ *
+ * @param string $message
+ * @param int $code
+ * @param Exception $previous
+*/',
+	'getMessage' => '/**
+ * Gets the Exception message
+ *
+ * @return string
+*/',
+	'getCode' => '/**
+ * Gets the Exception code
+ *
+ * @return int
+*/',
+	'getLine' => '/**
+ * Gets the line in which the exception occurred
+ *
+ * @return int
+*/',
+	'getFile' => '/**
+ * Gets the file in which the exception occurred
+ *
+ * @return string
+*/',
+	'getTrace' => '/**
+ * Gets the stack trace
+ *
+ * @return array
+*/',
+	'getTrace' => '/**
+ * Gets the stack trace
+ *
+ * @return array
+*/',
+	'getTraceAsString' =>'/**
+ * Gets the stack trace as a string
+ *
+ * @return Exception
+*/',
+	'__clone' => '/**
+ * Clone the exception
+ *
+ * @return Exception
+*/',
+	'getPrevious' => '/**
+ * Returns previous Exception
+ *
+ * @return Exception
+*/',
+	'__toString' => '/**
+ * String representation of the exception
+ *
+ * @return string
+*/',
+);
 
 foreach($classes as $className){
 
@@ -311,7 +379,9 @@ foreach($classes as $className){
 			} else {
 				$ret = array();
 			}
-			//$code.='.. method:: ';
+
+			$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' ';
+
 			if(isset($ret['return'])){
 				if(preg_match('/^(Phalcon[a-zA-Z\\\\]+)/', $ret['return'], $matches)){
 					$extendsPath =  str_replace("\\", "_", $matches[1]);
@@ -321,7 +391,8 @@ foreach($classes as $className){
 					$code.= '*'.$ret['return'].'* ';
 				}
 			}
-			$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' **'.$method->name.'** (';
+
+			$code.=' **'.$method->name.'** (';
 
 			$cp = array();
 			foreach($method->getParameters() as $parameter){
@@ -341,7 +412,7 @@ foreach($classes as $className){
 			$code.=join(', ', $cp).')';
 
 			if($simpleClassName!=$docClassName){
-				$code.=' inherited from '.$docClassName;
+				$code.=' inherited from '.$method->getDeclaringClass()->name;
 			}
 
 			$code.=PHP_EOL.PHP_EOL;

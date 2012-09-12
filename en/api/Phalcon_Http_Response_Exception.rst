@@ -3,56 +3,69 @@ Class **Phalcon\\Http\\Response\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+Exceptions thrown in Phalcon\\Http\\Response will use this class
+
+
 Methods
 ---------
 
-final private **__clone** () inherited from Exception
+final private *Exception*  **__clone** () inherited from Exception
 
-...
-
-
-public **__construct** (*unknown* $message, *unknown* $code, *unknown* $previous) inherited from Exception
-
-...
+Clone the exception
 
 
-final public **getMessage** () inherited from Exception
 
-...
+public  **__construct** (*string* $message, *int* $code, *Exception* $previous) inherited from Exception
 
-
-final public **getCode** () inherited from Exception
-
-...
+Exception constructor
 
 
-final public **getFile** () inherited from Exception
 
-...
+final public *string*  **getMessage** () inherited from Exception
 
-
-final public **getLine** () inherited from Exception
-
-...
+Gets the Exception message
 
 
-final public **getTrace** () inherited from Exception
 
-...
+final public *int*  **getCode** () inherited from Exception
 
-
-final public **getPrevious** () inherited from Exception
-
-...
+Gets the Exception code
 
 
-final public **getTraceAsString** () inherited from Exception
 
-...
+final public *string*  **getFile** () inherited from Exception
+
+Gets the file in which the exception occurred
 
 
-public **__toString** () inherited from Exception
 
-...
+final public *int*  **getLine** () inherited from Exception
+
+Gets the line in which the exception occurred
+
+
+
+final public *array*  **getTrace** () inherited from Exception
+
+Gets the stack trace
+
+
+
+final public *Exception*  **getPrevious** () inherited from Exception
+
+Returns previous Exception
+
+
+
+final public *Exception*  **getTraceAsString** () inherited from Exception
+
+Gets the stack trace as a string
+
+
+
+public *string*  **__toString** () inherited from Exception
+
+String representation of the exception
+
 
 

@@ -18,29 +18,29 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **add** (*unknown* $name, *unknown* $handler)
+public  **add** (*unknown* $name, *unknown* $handler)
 
 ...
 
 
-*mixed* public **sanitize** (*mixed* $value, *mixed* $filters)
+public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)
 
 Sanizites a value with a specified single or set of filters
 
 
 
-*mixed* protected **_sanitize** ()
+protected *mixed*  **_sanitize** ()
 
 Internal sanizite wrapper to filter_var
 
 
 
-*object[]* public **getFilters** ()
+public *object[]*  **getFilters** ()
 
 Return the user-defined filters in the instance
 

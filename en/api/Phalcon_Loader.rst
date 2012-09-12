@@ -28,78 +28,78 @@ This component helps to load your project classes automatically based on some co
 Methods
 ---------
 
-public **__construct** ()
+public  **__construct** ()
 
 ...
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public **setExtensions** (*array* $extensions)
+public  **setExtensions** (*array* $extensions)
 
 Sets an array of extensions that the Loader must check together with the path
 
 
 
-public **registerNamespaces** (*array* $namespaces)
+public  **registerNamespaces** (*array* $namespaces)
 
 Register namespaces and their related directories
 
 
 
-public **registerPrefixes** (*unknown* $prefixes)
+public  **registerPrefixes** (*unknown* $prefixes)
 
 Register directories on which "not found" classes could be found
 
 
 
-public **registerDirs** (*array* $directories)
+public  **registerDirs** (*array* $directories)
 
 Register directories on which "not found" classes could be found
 
 
 
-public **registerClasses** (*unknown* $classes)
+public  **registerClasses** (*unknown* $classes)
 
 Register classes and their locations
 
 
 
-public **register** ()
+public  **register** ()
 
 Register the autoload method
 
 
 
-public **unregister** ()
+public  **unregister** ()
 
 Unregister the autoload method
 
 
 
-*boolean* public **autoLoad** (*string* $className)
+public *boolean*  **autoLoad** (*string* $className)
 
 Makes the work of autoload registered classes
 
 
 
-*string* public **getFoundPath** ()
+public *string*  **getFoundPath** ()
 
 Get the path when a class was found
 
 
 
-*string* public **getCheckedPath** ()
+public *string*  **getCheckedPath** ()
 
 Get the path the loader is checking
 

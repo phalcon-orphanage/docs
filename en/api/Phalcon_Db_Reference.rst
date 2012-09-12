@@ -19,49 +19,49 @@ Allows to define reference constraints on tables
 Methods
 ---------
 
-public **__construct** (*string* $referenceName, *array* $definition)
+public  **__construct** (*string* $referenceName, *array* $definition)
 
 Phalcon\\Db\\Reference constructor
 
 
 
-*string* public **getName** ()
+public *string*  **getName** ()
 
 Gets the index name
 
 
 
-*string* public **getSchemaName** ()
+public *string*  **getSchemaName** ()
 
 Gets the schema where referenced table is
 
 
 
-*string* public **getReferencedSchema** ()
+public *string*  **getReferencedSchema** ()
 
 Gets the schema where referenced table is
 
 
 
-*array* public **getColumns** ()
+public *array*  **getColumns** ()
 
 Gets local columns which reference is based
 
 
 
-*string* public **getReferencedTable** ()
+public *string*  **getReferencedTable** ()
 
 Gets the referenced table
 
 
 
-*array* public **getReferencedColumns** ()
+public *array*  **getReferencedColumns** ()
 
 Gets referenced columns
 
 
 
-:doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` public static **__set_state** (*array* $data)
+public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Reference object from export
 

@@ -46,85 +46,85 @@ Constants
 Methods
 ---------
 
-public **__construct** (*string* $columnName, *array* $definition)
+public  **__construct** (*string* $columnName, *array* $definition)
 
 Phalcon\\Db\\Column constructor
 
 
 
-*string* public **getSchemaName** ()
+public *string*  **getSchemaName** ()
 
 Returns schema's table related to column
 
 
 
-*string* public **getName** ()
+public *string*  **getName** ()
 
 Returns column name
 
 
 
-*int* public **getType** ()
+public *int*  **getType** ()
 
 Returns column type
 
 
 
-*int* public **getSize** ()
+public *int*  **getSize** ()
 
 Returns column size
 
 
 
-*int* public **getScale** ()
+public *int*  **getScale** ()
 
 Returns column scale
 
 
 
-*boolean* public **isUnsigned** ()
+public *boolean*  **isUnsigned** ()
 
 Returns true if number column is unsigned
 
 
 
-*boolean* public **isNotNull** ()
+public *boolean*  **isNotNull** ()
 
 Not null
 
 
 
-*boolean* public **isPrimary** ()
+public *boolean*  **isPrimary** ()
 
 Column is part of the primary key?
 
 
 
-*boolean* public **isAutoIncrement** ()
+public *boolean*  **isAutoIncrement** ()
 
 Auto-Increment
 
 
 
-*boolean* public **isNumeric** ()
+public *boolean*  **isNumeric** ()
 
 Check whether column have an numeric type
 
 
 
-*boolean* public **isFirst** ()
+public *boolean*  **isFirst** ()
 
 Check whether column have first position in table
 
 
 
-*string* public **getAfterPosition** ()
+public *string*  **getAfterPosition** ()
 
 Check whether field absolute to position in table
 
 
 
-public static **__set_state** (*unknown* $data)
+public static  **__set_state** (*unknown* $data)
 
 ...
 

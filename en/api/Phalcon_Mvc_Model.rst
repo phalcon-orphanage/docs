@@ -36,49 +36,49 @@ Constants
 Methods
 ---------
 
-final public **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $managerService, *string* $dbService)
+final public  **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $managerService, *string* $dbService)
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the event manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-*array* protected static **_createSQLSelect** ()
+protected static *array*  **_createSQLSelect** ()
 
 Creates a SQL statement which returns many rows
 
 
 
-protected static **_getOrCreateResultset** ()
+protected static  **_getOrCreateResultset** ()
 
 Gets a resulset from the cache or creates one
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -117,55 +117,55 @@ Sets a transaction related to the Model instance
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` protected **setSource** ()
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** ()
 
 Sets table name which model should be mapped
 
 
 
-*string* public **getSource** ()
+public *string*  **getSource** ()
 
 Returns table name mapped in the model
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` protected **setSchema** ()
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** ()
 
 Sets schema name where table mapped is located
 
 
 
-*string* public **getSchema** ()
+public *string*  **getSchema** ()
 
 Returns schema name where table mapped is located
 
 
 
-public **setConnectionService** (*string* $connectionService)
+public  **setConnectionService** (*string* $connectionService)
 
 Sets DependencyInjection connection service
 
 
 
-*$connectionService* public **getConnectionService** ()
+public *$connectionService*  **getConnectionService** ()
 
 Returns DependencyInjection connection service
 
 
 
-public **setForceExists** (*unknown* $forceExists)
+public  **setForceExists** (*unknown* $forceExists)
 
 
 
 
 
-:doc:`Phalcon\\Db <Phalcon_Db>` public **getConnection** ()
+public :doc:`Phalcon\\Db <Phalcon_Db>`  **getConnection** ()
 
 Gets internal database connection
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $resultpublic static **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $result)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $result)
 
 Assigns values to a model from an array returning a new model 
 
@@ -182,7 +182,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` public static **find** (*array* $parameters)
+public static :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **find** (*array* $parameters)
 
 Allows to query a set of records that match the specified conditions 
 
@@ -213,7 +213,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public static **findFirst** (*array* $parameters)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** (*array* $parameters)
 
 Allows to query the first record that match the specified conditions 
 
@@ -236,31 +236,31 @@ Allows to query the first record that match the specified conditions
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>` public static **query** (*unknown* $dependencyInjector)
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** (*unknown* $dependencyInjector)
 
 Create a criteria for a especific model
 
 
 
-*boolean* protected **_exists** ()
+protected *boolean*  **_exists** ()
 
 Checks if the current record already exists or not
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` protected static **_prepareGroupResult** ()
+protected static :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **_prepareGroupResult** ()
 
 Generate a SQL SELECT statement for an aggregate
 
 
 
-*array|Phalcon\Mvc\Model\Resultset* protected static **_getGroupResult** ()
+protected static *array|Phalcon\Mvc\Model\Resultset*  **_getGroupResult** ()
 
 Generate a resulset from an SQL select with aggregations
 
 
 
-*int* public static **count** (*array* $parameters)
+public static *int*  **count** (*array* $parameters)
 
 Allows to count how many records match the specified conditions 
 
@@ -279,7 +279,7 @@ Allows to count how many records match the specified conditions
 
 
 
-*double* public static **sum** (*array* $parameters)
+public static *double*  **sum** (*array* $parameters)
 
 Allows to a calculate a summatory on a column that match the specified conditions 
 
@@ -298,7 +298,7 @@ Allows to a calculate a summatory on a column that match the specified condition
 
 
 
-*mixed* public static **maximum** (*array* $parameters)
+public static *mixed*  **maximum** (*array* $parameters)
 
 Allows to get the maximum value of a column that match the specified conditions 
 
@@ -317,7 +317,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 
 
-*mixed* public static **minimum** (*array* $parameters)
+public static *mixed*  **minimum** (*array* $parameters)
 
 Allows to get the minimum value of a column that match the specified conditions 
 
@@ -336,7 +336,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 
 
-*double* public static **average** (*array* $parameters)
+public static *double*  **average** (*array* $parameters)
 
 Allows to calculate the average value on a column matching the specified conditions 
 
@@ -355,25 +355,25 @@ Allows to calculate the average value on a column matching the specified conditi
 
 
 
-*boolean* protected **_callEvent** ()
+protected *boolean*  **_callEvent** ()
 
 Fires an internal event
 
 
 
-*boolean* protected **_callEventCancel** ()
+protected *boolean*  **_callEventCancel** ()
 
 Fires an internal event that cancels the operation
 
 
 
-*boolean* protected **_cancelOperation** ()
+protected *boolean*  **_cancelOperation** ()
 
 Cancel the current operation
 
 
 
-public **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` $message)
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` $message)
 
 Appends a customized message on the validation process 
 
@@ -398,7 +398,7 @@ Appends a customized message on the validation process
 
 
 
-protected **validate** ()
+protected  **validate** ()
 
 Executes validators on every validation call 
 
@@ -427,7 +427,7 @@ Executes validators on every validation call
 
 
 
-*boolean* public **validationHasFailed** ()
+public *boolean*  **validationHasFailed** ()
 
 Check whether validation process has generated any messages 
 
@@ -456,7 +456,7 @@ Check whether validation process has generated any messages
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` []public **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` [] **getMessages** ()
 
 Returns all the validation messages 
 
@@ -480,43 +480,43 @@ Returns all the validation messages
 
 
 
-*boolean* protected **_checkForeignKeys** ()
+protected *boolean*  **_checkForeignKeys** ()
 
 Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records
 
 
 
-*boolean* protected **_checkForeignKeysReverse** ()
+protected *boolean*  **_checkForeignKeysReverse** ()
 
 Reads both "hasMany" and "hasOne" relations and check the virtual foreign keys when deleting records
 
 
 
-*boolean* protected **_preSave** ()
+protected *boolean*  **_preSave** ()
 
 Executes internal hooks before save a record
 
 
 
-*boolean* protected **_postSave** ()
+protected *boolean*  **_postSave** ()
 
 Executes internal events after save a record
 
 
 
-*boolean* protected **_doLowInsert** ()
+protected *boolean*  **_doLowInsert** ()
 
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-*boolean* protected **_doLowUpdate** ()
+protected *boolean*  **_doLowUpdate** ()
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-*boolean* public **save** ()
+public *boolean*  **save** ()
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -539,17 +539,17 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public **create** ()
+public  **create** ()
 
 ...
 
 
-public **update** ()
+public  **update** ()
 
 ...
 
 
-*boolean* public **delete** ()
+public *boolean*  **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise. 
 
@@ -567,19 +567,19 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 
 
-*mixed* public **readAttribute** (*string* $attribute)
+public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name <code> echo $robot->readAttribute('name');
 
 
 
-public **writeAttribute** (*string* $attribute, *mixed* $value)
+public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rosey');
 
 
 
-protected **hasOne** ()
+protected  **hasOne** ()
 
 Setup a 1-1 relation between two models 
 
@@ -599,7 +599,7 @@ Setup a 1-1 relation between two models
 
 
 
-protected **belongsTo** ()
+protected  **belongsTo** ()
 
 Setup a relation reverse 1-1  between two models 
 
@@ -619,7 +619,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-protected **hasMany** ()
+protected  **hasMany** ()
 
 Setup a relation 1-n between two models 
 
@@ -640,23 +640,23 @@ Setup a relation 1-n between two models
 
 
 
-protected **__getRelatedRecords** ()
+protected  **__getRelatedRecords** ()
 
 ...
 
 
-*mixed* public **__call** (*string* $method, *array* $arguments)
+public *mixed*  **__call** (*string* $method, *array* $arguments)
 
 Handles methods when a method does not exist
 
 
 
-public **serialize** ()
+public  **serialize** ()
 
 ...
 
 
-public **unserialize** (*unknown* $data)
+public  **unserialize** (*unknown* $data)
 
 ...
 

@@ -41,43 +41,43 @@ Constants
 Methods
 ---------
 
-public **debug** (*string* $message)
+public  **debug** (*string* $message)
 
 Sends/Writes a debug message to the log
 
 
 
-public **error** (*string* $message)
+public  **error** (*string* $message)
 
 Sends/Writes an error message to the log
 
 
 
-public **info** (*string* $message)
+public  **info** (*string* $message)
 
 Sends/Writes an info message to the log
 
 
 
-public **notice** (*string* $message)
+public  **notice** (*string* $message)
 
 Sends/Writes a notice message to the log
 
 
 
-public **warning** (*string* $message)
+public  **warning** (*string* $message)
 
 Sends/Writes a warning message to the log
 
 
 
-public **alert** (*string* $message)
+public  **alert** (*string* $message)
 
 Sends/Writes an alert message to the log
 
 
 
-public **log** (*unknown* $message, *unknown* $type)
+public  **log** (*unknown* $message, *unknown* $type)
 
 ...
 

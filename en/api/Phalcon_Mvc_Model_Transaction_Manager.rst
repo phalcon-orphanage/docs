@@ -42,71 +42,71 @@ A transaction acts on a single database connection. If you have multiple class-s
 Methods
 ---------
 
-public **__construct** (*unknown* $dependencyInjector)
+public  **__construct** (*unknown* $dependencyInjector)
 
 ...
 
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-*boolean* public **has** ()
+public *boolean*  **has** ()
 
 Checks whether manager has an active transaction
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` public **get** (*boolean* $autoBegin)
+public :doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>`  **get** (*boolean* $autoBegin)
 
 Returns a new Phalcon\\Mvc\\Model\\Transaction or an already created once
 
 
 
-public **rollbackPendent** ()
+public  **rollbackPendent** ()
 
 Rollbacks active transactions within the manager
 
 
 
-public **commit** ()
+public  **commit** ()
 
 Commmits active transactions within the manager
 
 
 
-public **rollback** (*boolean* $collect)
+public  **rollback** (*boolean* $collect)
 
 Rollbacks active transactions within the manager Collect will remove transaction from the manager
 
 
 
-public **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
+public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-public **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
+public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Notifies the manager about a commited transaction
 
 
 
-private **_collectTransaction** ()
+private  **_collectTransaction** ()
 
 ...
 
 
-public **collectTransactions** ()
+public  **collectTransactions** ()
 
 Remove all the transactions from the manager
 

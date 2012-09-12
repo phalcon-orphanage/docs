@@ -14,7 +14,7 @@ PHQL is implemented as a parser (written in C) that translates syntax in that of
 Methods
 ---------
 
-*string* public static **parsePHQL** (*string* $phql)
+public static *string*  **parsePHQL** (*string* $phql)
 
 Parses a PHQL statement returning an intermediate representation (IR)
 

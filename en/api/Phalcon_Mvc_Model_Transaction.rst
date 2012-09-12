@@ -38,73 +38,73 @@ Transactions are protective blocks where SQL statements are only permanent if th
 Methods
 ---------
 
-public **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *boolean* $autoBegin)
+public  **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *boolean* $autoBegin)
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
 
 
-public **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>` $manager)
+public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>` $manager)
 
 Sets transaction manager related to the transaction
 
 
 
-*boolean* public **begin** ()
+public *boolean*  **begin** ()
 
 Starts the transaction
 
 
 
-*boolean* public **commit** ()
+public *boolean*  **commit** ()
 
 Commits the transaction
 
 
 
-*boolean* public **rollback** (*string* $rollbackMessage, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $rollbackRecord)
+public *boolean*  **rollback** (*string* $rollbackMessage, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $rollbackRecord)
 
 Rollbacks the transaction
 
 
 
-*string* public **getConnection** ()
+public *string*  **getConnection** ()
 
 Returns connection related to transaction
 
 
 
-public **setIsNewTransaction** (*boolean* $isNew)
+public  **setIsNewTransaction** (*boolean* $isNew)
 
 Sets if is a reused transaction or new once
 
 
 
-public **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
+public  **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
 
 Sets flag to rollback on abort the HTTP connection
 
 
 
-*boolean* public **isManaged** ()
+public *boolean*  **isManaged** ()
 
 Checks whether transaction is managed by a transaction manager
 
 
 
-*array* public **getMessages** ()
+public *array*  **getMessages** ()
 
 Returns validations messages from last save try
 
 
 
-*boolean* public **isValid** ()
+public *boolean*  **isValid** ()
 
 Checks whether internal connection is under an active transaction
 
 
 
-public **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Sets object which generates rollback action
 

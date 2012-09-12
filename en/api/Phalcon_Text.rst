@@ -7,7 +7,7 @@ Provides utilities when working with strings
 Methods
 ---------
 
-*string* public static **camelize** (*string* $str)
+public static *string*  **camelize** (*string* $str)
 
 Converts strings to camelize style 
 
@@ -20,7 +20,7 @@ Converts strings to camelize style
 
 
 
-*string* public static **uncamelize** (*string* $str)
+public static *string*  **uncamelize** (*string* $str)
 
 Uncamelize strings which are camelized 
 

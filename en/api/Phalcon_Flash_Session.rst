@@ -3,91 +3,99 @@ Class **Phalcon\\Flash\\Session**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
+Temporarily stores the messages in session, then messages can be printed in the next request
+
+
 Methods
 ---------
 
-public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** ()
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-protected **_getSessionMessages** ()
+protected *array*  **_getSessionMessages** ()
+
+Returns the messages stored in session
+
+
+
+protected  **_setSessionMessages** ()
+
+Stores the messages in session
+
+
+
+public  **message** (*string* $type, *string* $message)
+
+Adds a message to the session flasher
+
+
+
+public *array*  **getMessages** (*string* $type, *boolean* $remove)
+
+Returns the messages in the session flasher
+
+
+
+public  **output** (*boolean* $remove)
+
+Prints the messages in the session flasher
+
+
+
+public  **__construct** (*unknown* $cssClasses) inherited from Phalcon\Flash
 
 ...
 
 
-protected **_setSessionMessages** ()
+public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\Flash
 
 ...
 
 
-public **message** (*unknown* $type, *unknown* $message)
+public  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\Flash
 
 ...
 
 
-public **getMessages** (*unknown* $type, *unknown* $remove)
+public  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\Flash
 
 ...
 
 
-public **output** (*unknown* $remove)
-
-...
-
-
-public **__construct** (*unknown* $cssClasses) inherited from Phalcon_Flash
-
-...
-
-
-public **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon_Flash
-
-...
-
-
-public **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon_Flash
-
-...
-
-
-public **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon_Flash
-
-...
-
-
-*string* public **error** (*string* $message) inherited from Phalcon_Flash
+public *string*  **error** (*string* $message) inherited from Phalcon\Flash
 
 Shows a HTML error message <code>$flash->error('This is an error');
 
 
 
-*string* public **notice** (*string* $message) inherited from Phalcon_Flash
+public *string*  **notice** (*string* $message) inherited from Phalcon\Flash
 
 Shows a HTML notice/information message <code>$flash->notice('This is an information');
 
 
 
-*string* public **success** (*string* $message) inherited from Phalcon_Flash
+public *string*  **success** (*string* $message) inherited from Phalcon\Flash
 
 Shows a HTML success message <code>$flash->success('The process was finished successfully');
 
 
 
-*string* public **warning** (*string* $message) inherited from Phalcon_Flash
+public *string*  **warning** (*string* $message) inherited from Phalcon\Flash
 
 Shows a HTML warning message <code>$flash->warning('Hey, this is important');
 
 
 
-public **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon_Flash
+public  **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon\Flash
 
 ...
 

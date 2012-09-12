@@ -51,13 +51,13 @@ Constants
 Methods
 ---------
 
-public **setEventsManager** (*unknown* $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the events manager
 
 
 
-:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** ()
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
 

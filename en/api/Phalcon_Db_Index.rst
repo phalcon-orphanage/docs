@@ -12,25 +12,25 @@ Allows to define indexes to be used on tables. Indexes are a common way to enhan
 Methods
 ---------
 
-public **__construct** (*string* $indexName, *array* $columns)
+public  **__construct** (*string* $indexName, *array* $columns)
 
 Phalcon\\Db\\Index constructor
 
 
 
-*string* public **getName** ()
+public *string*  **getName** ()
 
 Gets the index name
 
 
 
-*array* public **getColumns** ()
+public *array*  **getColumns** ()
 
 Gets the columns that comprends the index
 
 
 
-:doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` public static **__set_state** (*array* $data)
+public static :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>`  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Index object from export
 

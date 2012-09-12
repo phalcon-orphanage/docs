@@ -22,67 +22,67 @@ Session client-server persistent state data management. This component allows yo
 Methods
 ---------
 
-public **__construct** (*array* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Session construtor
 
 
 
-public **start** ()
+public  **start** ()
 
 Starts session, optionally using an adapter
 
 
 
-public **setOptions** (*array* $options)
+public  **setOptions** (*array* $options)
 
 Sets session options
 
 
 
-*array* public **getOptions** ()
+public *array*  **getOptions** ()
 
 Get internal options
 
 
 
-public **get** (*string* $index)
+public  **get** (*string* $index)
 
 Gets a session variable from an application context
 
 
 
-public **set** (*string* $index, *string* $value)
+public  **set** (*string* $index, *string* $value)
 
 Sets a session variable in an application context
 
 
 
-public **has** (*string* $index)
+public  **has** (*string* $index)
 
 Check whether a session variable is set in an application context
 
 
 
-public **remove** (*string* $index)
+public  **remove** (*string* $index)
 
 Removes a session variable from an application context
 
 
 
-*string* public **getId** ()
+public *string*  **getId** ()
 
 Returns active session id
 
 
 
-*boolean* public **isStarted** ()
+public *boolean*  **isStarted** ()
 
 Check whether the session has been started
 
 
 
-*boolean* public **destroy** ()
+public *boolean*  **destroy** ()
 
 Destroys the active session
 
