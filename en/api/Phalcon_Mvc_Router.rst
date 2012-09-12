@@ -22,7 +22,7 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -160,7 +160,7 @@ Check if the router macthes any of the defined routes
 
 
 
-:doc:`Phalcon\\Mvc\\Router\\Route[] <Phalcon_Mvc_Router_Route[]>` public **getRoutes** ()
+:doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` []public **getRoutes** ()
 
 Return all the routes defined in the router
 

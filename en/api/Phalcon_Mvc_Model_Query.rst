@@ -30,7 +30,7 @@ Phalcon\\Mvc\\Model\\Query constructor
 
 
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -138,33 +138,33 @@ Analyzes a DELETE intermediate code and produces an array to be executed later
 
 
 
-*array* public **parse** (*Phalcon\Mvc\Model* $manager)
+*array* public **parse** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $manager)
 
 Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Resultset <Phalcon_Mvc_Query_Resultset>` protected **_executeSelect** ()
+:doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` protected **_executeSelect** ()
 
-Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Query\\Resultset
-
-
-
-:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeInsert** ()
-
-Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\\Resultset
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeUpdate** ()
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>` protected **_executeInsert** ()
 
-Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-:doc:`Phalcon\\Mvc\\Query\\Status <Phalcon_Mvc_Query_Status>` protected **_executeDelete** ()
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>` protected **_executeUpdate** ()
 
-Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Query\\Status
+Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
+
+
+
+:doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>` protected **_executeDelete** ()
+
+Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 

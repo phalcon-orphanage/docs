@@ -44,9 +44,9 @@ This component allows to manage ACL lists. An access control list (ACL) is a lis
 Constants
 ---------
 
-integer **ALLOW**
+*integer* **ALLOW**
 
-integer **DENY**
+*integer* **DENY**
 
 Methods
 ---------

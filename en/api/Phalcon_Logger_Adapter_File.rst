@@ -20,25 +20,25 @@ Adapter to store logs in plain text files
 Constants
 ---------
 
-integer **SPECIAL**
+*integer* **SPECIAL**
 
-integer **CUSTOM**
+*integer* **CUSTOM**
 
-integer **DEBUG**
+*integer* **DEBUG**
 
-integer **INFO**
+*integer* **INFO**
 
-integer **NOTICE**
+*integer* **NOTICE**
 
-integer **WARNING**
+*integer* **WARNING**
 
-integer **ERROR**
+*integer* **ERROR**
 
-integer **ALERT**
+*integer* **ALERT**
 
-integer **CRITICAL**
+*integer* **CRITICAL**
 
-integer **EMERGENCE**
+*integer* **EMERGENCE**
 
 Methods
 ---------
@@ -121,15 +121,39 @@ Opens the internal file handler after unserialization
 
 
 
-public **debug** (*unknown* $message)
+public **debug** (*string* $message) inherited from Phalcon_Logger
 
-public **error** (*unknown* $message)
+Sends/Writes a debug message to the log
 
-public **info** (*unknown* $message)
 
-public **notice** (*unknown* $message)
 
-public **warning** (*unknown* $message)
+public **error** (*string* $message) inherited from Phalcon_Logger
 
-public **alert** (*unknown* $message)
+Sends/Writes an error message to the log
+
+
+
+public **info** (*string* $message) inherited from Phalcon_Logger
+
+Sends/Writes an info message to the log
+
+
+
+public **notice** (*string* $message) inherited from Phalcon_Logger
+
+Sends/Writes a notice message to the log
+
+
+
+public **warning** (*string* $message) inherited from Phalcon_Logger
+
+Sends/Writes a warning message to the log
+
+
+
+public **alert** (*string* $message) inherited from Phalcon_Logger
+
+Sends/Writes an alert message to the log
+
+
 

@@ -17,11 +17,23 @@ Methods
 
 public **__construct** (*unknown* $cssClasses)
 
+...
+
+
 public **setImplicitFlush** (*unknown* $implicitFlush)
+
+...
+
 
 public **setAutomaticHtml** (*unknown* $automaticHtml)
 
+...
+
+
 public **setCssClasses** (*unknown* $cssClasses)
+
+...
+
 
 *string* public **error** (*string* $message)
 
@@ -48,4 +60,7 @@ Shows a HTML warning message <code>$flash->warning('Hey, this is important');
 
 
 public **outputMessage** (*unknown* $type, *unknown* $message)
+
+...
+
 

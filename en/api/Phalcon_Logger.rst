@@ -18,25 +18,25 @@ Phalcon\\Logger is a component whose purpose is to create logs using different b
 Constants
 ---------
 
-integer **SPECIAL**
+*integer* **SPECIAL**
 
-integer **CUSTOM**
+*integer* **CUSTOM**
 
-integer **DEBUG**
+*integer* **DEBUG**
 
-integer **INFO**
+*integer* **INFO**
 
-integer **NOTICE**
+*integer* **NOTICE**
 
-integer **WARNING**
+*integer* **WARNING**
 
-integer **ERROR**
+*integer* **ERROR**
 
-integer **ALERT**
+*integer* **ALERT**
 
-integer **CRITICAL**
+*integer* **CRITICAL**
 
-integer **EMERGENCE**
+*integer* **EMERGENCE**
 
 Methods
 ---------
@@ -78,4 +78,7 @@ Sends/Writes an alert message to the log
 
 
 public **log** (*unknown* $message, *unknown* $type)
+
+...
+
 

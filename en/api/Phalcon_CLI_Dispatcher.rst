@@ -68,39 +68,110 @@ Returns the active task in the dispatcher
 
 
 
-public **__construct** ()
+public **__construct** () inherited from Phalcon_Dispatcher
 
-public **setDI** (*unknown* $dependencyInjector)
+...
 
-public **getDI** ()
 
-public **setEventsManager** (*unknown* $eventsManager)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon_Dispatcher
 
-public **getEventsManager** ()
+Sets the dependency injector
 
-public **setActionSuffix** (*unknown* $actionSuffix)
 
-public **setDefaultNamespace** (*unknown* $namespace)
 
-public **setDefaultAction** (*unknown* $actionName)
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** () inherited from Phalcon_Dispatcher
 
-public **setActionName** (*unknown* $actionName)
+Returns the internal dependency injector
 
-public **getActionName** ()
 
-public **setParams** (*unknown* $params)
 
-public **getParams** ()
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon_Dispatcher
 
-public **setParam** (*unknown* $param, *unknown* $value)
+Sets the events manager
 
-public **getParam** (*unknown* $param)
 
-public **isFinished** ()
 
-public **getReturnedValue** ()
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** () inherited from Phalcon_Dispatcher
 
-public **dispatch** ()
+Returns the internal event manager
 
-public **forward** (*unknown* $forward)
+
+
+public **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon_Dispatcher
+
+Sets the default action suffix
+
+
+
+public **setDefaultNamespace** (*string* $namespace) inherited from Phalcon_Dispatcher
+
+Sets the default namespace
+
+
+
+public **setDefaultAction** (*string* $actionName) inherited from Phalcon_Dispatcher
+
+Sets the default action name
+
+
+
+public **setActionName** (*string* $actionName) inherited from Phalcon_Dispatcher
+
+Sets the action name to be dispatched
+
+
+
+*string* public **getActionName** () inherited from Phalcon_Dispatcher
+
+Gets last dispatched action name
+
+
+
+public **setParams** (*array* $params) inherited from Phalcon_Dispatcher
+
+Sets action params to be dispatched
+
+
+
+*array* public **getParams** () inherited from Phalcon_Dispatcher
+
+Gets action params
+
+
+
+public **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon_Dispatcher
+
+Set a param by its name or numeric index
+
+
+
+*mixed* public **getParam** (*mixed* $param) inherited from Phalcon_Dispatcher
+
+Gets a param by its name or numeric index
+
+
+
+*boolean* public **isFinished** () inherited from Phalcon_Dispatcher
+
+Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach
+
+
+
+*mixed* public **getReturnedValue** () inherited from Phalcon_Dispatcher
+
+Returns value returned by the lastest dispatched action
+
+
+
+*object* public **dispatch** () inherited from Phalcon_Dispatcher
+
+Dispatches a handle action taking into account the routing parameters
+
+
+
+public **forward** (*array* $forward) inherited from Phalcon_Dispatcher
+
+
+
+
 

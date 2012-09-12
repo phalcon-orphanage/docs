@@ -76,13 +76,33 @@ Destructs the backend closing the memcached connection
 
 
 
-public **start** (*unknown* $keyName)
+*mixed* public **start** (*int|string* $keyName) inherited from Phalcon_Cache_Backend
 
-public **getFrontend** ()
+Starts a cache. The $keyname allow to identify the created fragment
 
-public **isFresh** ()
 
-public **isStarted** ()
 
-public **getLastKey** ()
+*mixed* public **getFrontend** () inherited from Phalcon_Cache_Backend
+
+Returns front-end instance adapter related to the back-end
+
+
+
+*boolean* public **isFresh** () inherited from Phalcon_Cache_Backend
+
+Checks whether the last cache is fresh or cached
+
+
+
+*boolean* public **isStarted** () inherited from Phalcon_Cache_Backend
+
+Checks whether the cache has started buffering or not
+
+
+
+*string* public **getLastKey** () inherited from Phalcon_Cache_Backend
+
+Gets the last key stored by the cache
+
+
 

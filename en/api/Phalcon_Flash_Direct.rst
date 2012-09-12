@@ -15,21 +15,52 @@ Outputs a message
 
 
 
-public **__construct** (*unknown* $cssClasses)
+public **__construct** (*unknown* $cssClasses) inherited from Phalcon_Flash
 
-public **setImplicitFlush** (*unknown* $implicitFlush)
+...
 
-public **setAutomaticHtml** (*unknown* $automaticHtml)
 
-public **setCssClasses** (*unknown* $cssClasses)
+public **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon_Flash
 
-public **error** (*unknown* $message)
+...
 
-public **notice** (*unknown* $message)
 
-public **success** (*unknown* $message)
+public **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon_Flash
 
-public **warning** (*unknown* $message)
+...
 
-public **outputMessage** (*unknown* $type, *unknown* $message)
+
+public **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon_Flash
+
+...
+
+
+*string* public **error** (*string* $message) inherited from Phalcon_Flash
+
+Shows a HTML error message <code>$flash->error('This is an error');
+
+
+
+*string* public **notice** (*string* $message) inherited from Phalcon_Flash
+
+Shows a HTML notice/information message <code>$flash->notice('This is an information');
+
+
+
+*string* public **success** (*string* $message) inherited from Phalcon_Flash
+
+Shows a HTML success message <code>$flash->success('The process was finished successfully');
+
+
+
+*string* public **warning** (*string* $message) inherited from Phalcon_Flash
+
+Shows a HTML warning message <code>$flash->warning('Hey, this is important');
+
+
+
+public **outputMessage** (*unknown* $type, *unknown* $message) inherited from Phalcon_Flash
+
+...
+
 

@@ -9,17 +9,22 @@ Allows to cache output fragments, PHP data and raw data using a memcache backend
 
     <?php
 
-     //Cache data for 2 days
+    //Cache data for 2 days
     $frontendOptions = array(
-    'lifetime' => 172800
+    	'lifetime' => 172800
     );
     
-    $cache = Phalcon_Cache::factory('Data', 'Apc', $frontendOptions, array());
+    //Cache data for 2 days
+    $frontCache = new Phalcon\Cache\Frontend\Data(array(
+    	'lifetime' => 172800
+    ));
     
-     //Cache arbitrary data
+      $cache = new Phalcon\Cache\Backend\Apc($frontCache);
+    
+    //Cache arbitrary data
     $cache->store('my-data', array(1, 2, 3, 4, 5));
     
-     //Get data
+    //Get data
     $data = $cache->get('my-data');
 
 
@@ -51,15 +56,39 @@ Query the existing cached keys
 
 
 
-public **__construct** (*unknown* $frontendObject, *unknown* $backendOptions)
+public **__construct** (*mixed* $frontendObject, *array* $backendOptions) inherited from Phalcon_Cache_Backend
 
-public **start** (*unknown* $keyName)
+Phalcon\\Cache\\Backend constructor
 
-public **getFrontend** ()
 
-public **isFresh** ()
 
-public **isStarted** ()
+*mixed* public **start** (*int|string* $keyName) inherited from Phalcon_Cache_Backend
 
-public **getLastKey** ()
+Starts a cache. The $keyname allow to identify the created fragment
+
+
+
+*mixed* public **getFrontend** () inherited from Phalcon_Cache_Backend
+
+Returns front-end instance adapter related to the back-end
+
+
+
+*boolean* public **isFresh** () inherited from Phalcon_Cache_Backend
+
+Checks whether the last cache is fresh or cached
+
+
+
+*boolean* public **isStarted** () inherited from Phalcon_Cache_Backend
+
+Checks whether the cache has started buffering or not
+
+
+
+*string* public **getLastKey** () inherited from Phalcon_Cache_Backend
+
+Gets the last key stored by the cache
+
+
 

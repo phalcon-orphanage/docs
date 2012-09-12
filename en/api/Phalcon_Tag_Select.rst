@@ -15,5 +15,11 @@ Generates a SELECT tag
 
 protected static **_optionsFromResultset** ()
 
+...
+
+
 protected static **_optionsFromArray** ()
+
+...
+
 

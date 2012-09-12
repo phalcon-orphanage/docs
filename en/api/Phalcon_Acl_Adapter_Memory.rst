@@ -3,20 +3,76 @@ Class **Phalcon\\Acl\\Adapter\\Memory**
 
 *extends* :doc:`Phalcon\\Acl <Phalcon_Acl>`
 
-Manages ACL lists in memory
+Manages ACL lists in memory 
+
+.. code-block:: php
+
+    <?php
+
+    $acl = new Phalcon\Acl\Adapter\Memory();
+    
+    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    
+    //Register roles
+    $roles = array(
+    	'users' => new Phalcon\Acl\Role('Users'),
+    	'guests' => new Phalcon\Acl\Role('Guests')
+    );
+    foreach($roles as $role){
+    	$acl->addRole($role);
+    }
+    
+    //Private area resources
+      $privateResources = array(
+    	'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+    	'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+    	'invoices' => array('index', 'profile')
+    );
+    foreach($privateResources as $resource => $actions){
+    	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+    }
+    
+    //Private area resources
+    $publicResources = array(
+    	'index' => array('index'),
+    	'about' => array('index'),
+    	'session' => array('index', 'register', 'start', 'end'),
+    	'contact' => array('index', 'send')
+    );
+      foreach($publicResources as $resource => $actions){
+    	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+    }
+    
+      //Grant access to public areas to both users and guests
+    foreach($roles as $role){
+    	foreach($publicResources as $resource => $actions){
+    		$acl->allow($role->getName(), $resource, '*');
+    	}
+    }
+    
+    //Grant acess to private area to role Users
+      foreach($privateResources as $resource => $actions){
+     		foreach($actions as $action){
+    		$acl->allow('Users', $resource, $action);
+    	}
+    }
+
 
 
 Constants
 ---------
 
-integer **ALLOW**
+*integer* **ALLOW**
 
-integer **DENY**
+*integer* **DENY**
 
 Methods
 ---------
 
 public **__construct** ()
+
+...
+
 
 public **setDefaultAction** (*int* $defaultAccess)
 
@@ -32,7 +88,15 @@ Returns the default ACL access level
 
 *boolean* public **addRole** (*string* $roleObject, *array* $accessInherits)
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: <code>$acl->addRole(new Phalcon\\Acl\\Role('administrator'), 'consultant'); <code>$acl->addRole('administrator', 'consultant');
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
+
+.. code-block:: php
+
+    <?php
+
+     $acl->addRole(new Phalcon\Acl\Role('administrator'), 'consultant');
+     $acl->addRole('administrator', 'consultant');
+
 
 
 
@@ -54,7 +118,7 @@ Check whether resource exist in the resources list
 
 
 
-*boolean* public **addResource** (*Phalcon\Acl\Resource* $resource, *unknown* $accessList)
+*boolean* public **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, *unknown* $accessList)
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
 
@@ -86,6 +150,9 @@ Removes an access from a resource
 
 
 protected **_allowOrDeny** ()
+
+...
+
 
 public **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
@@ -174,7 +241,15 @@ Rebuild the list of access from the inherit lists
 
 
 
-public **setEventsManager** (*unknown* $eventsManager)
+public **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon_Acl
 
-public **getEventsManager** ()
+Sets the events manager
+
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** () inherited from Phalcon_Acl
+
+Returns the internal event manager
+
+
 

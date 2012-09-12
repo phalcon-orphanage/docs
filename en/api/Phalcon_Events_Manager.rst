@@ -9,6 +9,9 @@ Methods
 
 public **__construct** ()
 
+...
+
+
 public **attach** (*string* $eventType, *object* $handler)
 
 Attach a listener to the events manager

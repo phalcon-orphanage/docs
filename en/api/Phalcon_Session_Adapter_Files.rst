@@ -6,25 +6,69 @@ Class **Phalcon\\Session\\Adapter\\Files**
 Methods
 ---------
 
-public **__construct** (*unknown* $options)
+public **__construct** (*array* $options) inherited from Phalcon_Session
 
-public **start** ()
+Phalcon\\Session construtor
 
-public **setOptions** (*unknown* $options)
 
-public **getOptions** ()
 
-public **get** (*unknown* $index)
+public **start** () inherited from Phalcon_Session
 
-public **set** (*unknown* $index, *unknown* $value)
+Starts session, optionally using an adapter
 
-public **has** (*unknown* $index)
 
-public **remove** (*unknown* $index)
 
-public **getId** ()
+public **setOptions** (*array* $options) inherited from Phalcon_Session
 
-public **isStarted** ()
+Sets session options
 
-public **destroy** ()
+
+
+*array* public **getOptions** () inherited from Phalcon_Session
+
+Get internal options
+
+
+
+public **get** (*string* $index) inherited from Phalcon_Session
+
+Gets a session variable from an application context
+
+
+
+public **set** (*string* $index, *string* $value) inherited from Phalcon_Session
+
+Sets a session variable in an application context
+
+
+
+public **has** (*string* $index) inherited from Phalcon_Session
+
+Check whether a session variable is set in an application context
+
+
+
+public **remove** (*string* $index) inherited from Phalcon_Session
+
+Removes a session variable from an application context
+
+
+
+*string* public **getId** () inherited from Phalcon_Session
+
+Returns active session id
+
+
+
+*boolean* public **isStarted** () inherited from Phalcon_Session
+
+Check whether the session has been started
+
+
+
+*boolean* public **destroy** () inherited from Phalcon_Session
+
+Destroys the active session
+
+
 

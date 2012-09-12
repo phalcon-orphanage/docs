@@ -29,13 +29,33 @@ Check whether is defined a translation key in the internal array
 
 
 
-public **_** (*unknown* $translateKey, *unknown* $placeholders)
+*string* public **_** (*string* $translateKey, *array* $placeholders) inherited from Phalcon_Translate
 
-public **offsetSet** (*unknown* $offset, *unknown* $value)
+Returns the translation string of the given key
 
-public **offsetExists** (*unknown* $translateKey)
 
-public **offsetUnset** (*unknown* $offset)
 
-public **offsetGet** (*unknown* $traslateKey)
+public **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon_Translate
+
+Sets a translation value
+
+
+
+*boolean* public **offsetExists** (*string* $translateKey) inherited from Phalcon_Translate
+
+Check whether a translation key exists
+
+
+
+public **offsetUnset** (*string* $offset) inherited from Phalcon_Translate
+
+Elimina un indice del diccionario
+
+
+
+*string* public **offsetGet** (*string* $traslateKey) inherited from Phalcon_Translate
+
+Returns the translation related to the given key
+
+
 

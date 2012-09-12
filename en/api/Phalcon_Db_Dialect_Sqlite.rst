@@ -15,7 +15,7 @@ Gets a list of columns
 
 
 
-public **getColumnDefinition** (*Phalcon\Db\Column* $column)
+public **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Gets the column name in Sqlite
 
@@ -135,11 +135,27 @@ Generates the SQL to describe the table creation options
 
 
 
-public **limit** (*unknown* $sqlQuery, *unknown* $number)
+*string* public **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon_Db_Dialect
 
-public **forUpdate** (*unknown* $sqlQuery)
+Generates the SQL for LIMIT clause
 
-public **sharedLock** (*unknown* $sqlQuery)
 
-public **select** (*unknown* $definition)
+
+*string* public **forUpdate** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+
+Returns a SQL modified with a FOR UPDATE clause
+
+
+
+*string* public **sharedLock** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+
+
+
+*string* public **select** (*array* $definition) inherited from Phalcon_Db_Dialect
+
+Builds a SELECT statement
+
+
 

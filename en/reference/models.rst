@@ -255,11 +255,11 @@ While findFirst() returns directly an instance of the called class (when there i
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a certain position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times. 
+Phalcon resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a certain position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
 Because store large query results in memory can consume many resources, resultsets are obtained from the database in chunks of 32 rows chunks reducing the need to re-execute the request in several cases.
 
-Note that resultsets can be serialized and stored in a a cache backend. :doc:`Phalcon\\Cache <../api/Phalcon_Cache>` can help with that task. However, serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However, serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 .. code-block:: php
 

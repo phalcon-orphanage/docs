@@ -24,7 +24,10 @@ Methods
 
 public **__construct** ()
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+...
+
+
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -36,7 +39,7 @@ Returns the DependencyInjector container
 
 
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
@@ -138,5 +141,9 @@ Returns the value returned by the executed handler
 
 
 
-public **__get** (*unknown* $propertyName)
+public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+
+Magic method __get
+
+
 

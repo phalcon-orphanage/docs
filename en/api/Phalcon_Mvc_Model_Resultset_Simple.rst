@@ -11,7 +11,7 @@ Simple resultsets only contains a complete object. This class builds every compl
 Methods
 ---------
 
-public **__construct** (*Phalcon\Mvc\Model* $model, *Phalcon\Mvc\Model\Result* $result, *Phalcon\Cache\Backend* $cache)
+public **__construct** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache)
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
@@ -35,33 +35,93 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 
 
-public **next** ()
+public **next** () inherited from Phalcon_Mvc_Model_Resultset
 
-public **key** ()
+Moves cursor to next row in the resultset
 
-public **rewind** ()
 
-public **seek** (*unknown* $position)
 
-public **count** ()
+*int* public **key** () inherited from Phalcon_Mvc_Model_Resultset
 
-public **offsetExists** (*unknown* $index)
+Gets pointer number of active row in the resultset
 
-public **offsetGet** (*unknown* $index)
 
-public **offsetSet** (*unknown* $index, *unknown* $value)
 
-public **offsetUnset** (*unknown* $offset)
+public **rewind** () inherited from Phalcon_Mvc_Model_Resultset
 
-public **getFirst** ()
+Rewinds resultset to its beginning
 
-public **getLast** ()
 
-public **setIsFresh** (*unknown* $isFresh)
 
-public **isFresh** ()
+public **seek** (*int* $position) inherited from Phalcon_Mvc_Model_Resultset
 
-public **getCache** ()
+Changes internal pointer to a specific position in the resultset
 
-public **current** ()
+
+
+*int* public **count** () inherited from Phalcon_Mvc_Model_Resultset
+
+Counts how many rows are in the resultset
+
+
+
+*boolean* public **offsetExists** (*int* $index) inherited from Phalcon_Mvc_Model_Resultset
+
+Checks whether offset exists in the resultset
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **offsetGet** (*int* $index) inherited from Phalcon_Mvc_Model_Resultset
+
+Gets row in a specific position of the resultset
+
+
+
+public **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value) inherited from Phalcon_Mvc_Model_Resultset
+
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+public **offsetUnset** (*int* $offset) inherited from Phalcon_Mvc_Model_Resultset
+
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getFirst** () inherited from Phalcon_Mvc_Model_Resultset
+
+Get first row in the resultset
+
+
+
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **getLast** () inherited from Phalcon_Mvc_Model_Resultset
+
+Get last row in the resultset
+
+
+
+public **setIsFresh** (*boolean* $isFresh) inherited from Phalcon_Mvc_Model_Resultset
+
+Set if the resultset is fresh or an old one cached
+
+
+
+*boolean* public **isFresh** () inherited from Phalcon_Mvc_Model_Resultset
+
+Tell if the resultset if fresh or an old one cached
+
+
+
+:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` public **getCache** () inherited from Phalcon_Mvc_Model_Resultset
+
+Returns the associated cache for the resultset
+
+
+
+*object* public **current** () inherited from Phalcon_Mvc_Model_Resultset
+
+Returns current row in the resultset
+
+
 

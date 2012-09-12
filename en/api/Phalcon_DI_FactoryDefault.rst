@@ -15,27 +15,68 @@ Phalcon\\DI\\FactoryDefault constructor
 
 
 
-public **set** (*unknown* $alias, *unknown* $config)
+public **set** (*unknown* $alias, *unknown* $config) inherited from Phalcon_DI
 
-public **remove** (*unknown* $alias)
+...
 
-public **attempt** (*unknown* $alias, *unknown* $config)
 
-public **_factory** (*unknown* $service, *unknown* $parameters)
+public **remove** (*unknown* $alias) inherited from Phalcon_DI
 
-public **get** (*unknown* $alias, *unknown* $parameters)
+...
 
-public **getShared** (*unknown* $alias, *unknown* $parameters)
 
-public **has** (*unknown* $alias)
+public **attempt** (*unknown* $alias, *unknown* $config) inherited from Phalcon_DI
 
-public **wasFreshInstance** ()
+...
 
-public **__call** (*unknown* $method, *unknown* $arguments)
 
-public static **setDefault** (*unknown* $dependencyInjector)
+public **_factory** (*unknown* $service, *unknown* $parameters) inherited from Phalcon_DI
 
-public static **getDefault** ()
+...
 
-public static **reset** ()
+
+public **get** (*unknown* $alias, *unknown* $parameters) inherited from Phalcon_DI
+
+...
+
+
+public **getShared** (*unknown* $alias, *unknown* $parameters) inherited from Phalcon_DI
+
+...
+
+
+*boolean* public **has** (*unknown* $alias) inherited from Phalcon_DI
+
+Check whether the DI contains a service by a name
+
+
+
+*boolean* public **wasFreshInstance** () inherited from Phalcon_DI
+
+Check whether the last service obtained via getShared produced a fresh instance or an existing one
+
+
+
+*mixed* public **__call** (*string* $method, *array* $arguments) inherited from Phalcon_DI
+
+Magic method to get or set services using setters/getters
+
+
+
+public static **setDefault** (*unknown* $dependencyInjector) inherited from Phalcon_DI
+
+...
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public static **getDefault** () inherited from Phalcon_DI
+
+Return the last DI created
+
+
+
+public static **reset** () inherited from Phalcon_DI
+
+Resets the internal default DI
+
+
 

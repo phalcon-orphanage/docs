@@ -18,7 +18,7 @@ This components aids in the generation off: URIs, URLs and Paths
 Methods
 ---------
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 

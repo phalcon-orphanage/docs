@@ -27,21 +27,21 @@ Allows to define columns to be used on create or alter table operations
 Constants
 ---------
 
-integer **TYPE_INTEGER**
+*integer* **TYPE_INTEGER**
 
-integer **TYPE_DATE**
+*integer* **TYPE_DATE**
 
-integer **TYPE_VARCHAR**
+*integer* **TYPE_VARCHAR**
 
-integer **TYPE_DECIMAL**
+*integer* **TYPE_DECIMAL**
 
-integer **TYPE_DATETIME**
+*integer* **TYPE_DATETIME**
 
-integer **TYPE_CHAR**
+*integer* **TYPE_CHAR**
 
-integer **TYPE_TEXT**
+*integer* **TYPE_TEXT**
 
-integer **TYPE_FLOAT**
+*integer* **TYPE_FLOAT**
 
 Methods
 ---------
@@ -125,4 +125,7 @@ Check whether field absolute to position in table
 
 
 public static **__set_state** (*unknown* $data)
+
+...
+
 

@@ -9,7 +9,10 @@ Methods
 
 public **__construct** ()
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+...
+
+
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -105,7 +108,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static **fromInput** (*Phalcon\DI* $dependencyInjector, *string* $modelName, *array* $data)
+public static **fromInput** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 

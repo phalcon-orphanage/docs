@@ -15,19 +15,51 @@ Renders a view using the template engine
 
 
 
-public **__construct** (*unknown* $view, *unknown* $dependencyInjector)
+public **__construct** (:doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>` $view, *unknown* $dependencyInjector) inherited from Phalcon_Mvc_View_Engine
 
-public **getContent** ()
+Phalcon\\Mvc\\View\\Engine constructor
 
-public **partial** (*unknown* $partialPath)
 
-public **setDI** (*unknown* $dependencyInjector)
 
-public **getDI** ()
+*array* public **getContent** () inherited from Phalcon_Mvc_View_Engine
 
-public **setEventsManager** (*unknown* $eventsManager)
+Returns cached ouput on another view stage
 
-public **getEventsManager** ()
 
-public **__get** (*unknown* $propertyName)
+
+public **partial** (*string* $partialPath) inherited from Phalcon_Mvc_View_Engine
+
+Renders a partial inside another view
+
+
+
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon_DI_Injectable
+
+Sets the dependency injector
+
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** () inherited from Phalcon_DI_Injectable
+
+Returns the internal dependency injector
+
+
+
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon_DI_Injectable
+
+Sets the event manager
+
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** () inherited from Phalcon_DI_Injectable
+
+Returns the internal event manager
+
+
+
+public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+
+Magic method __get
+
+
 

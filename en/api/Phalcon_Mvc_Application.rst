@@ -46,7 +46,7 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 ---------
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -58,7 +58,7 @@ Returns the DependencyInjector container
 
 
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 
@@ -104,5 +104,9 @@ Handles a MVC request
 
 
 
-public **__get** (*unknown* $propertyName)
+public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+
+Magic method __get
+
+
 

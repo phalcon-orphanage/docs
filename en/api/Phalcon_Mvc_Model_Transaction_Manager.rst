@@ -44,7 +44,10 @@ Methods
 
 public **__construct** (*unknown* $dependencyInjector)
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+...
+
+
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -86,19 +89,22 @@ Rollbacks active transactions within the manager Collect will remove transaction
 
 
 
-public **notifyRollback** (*Phalcon\Mvc\Model\Transaction* $transaction)
+public **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-public **notifyCommit** (*Phalcon\Mvc\Model\Transaction* $transaction)
+public **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Notifies the manager about a commited transaction
 
 
 
 private **_collectTransaction** ()
+
+...
+
 
 public **collectTransactions** ()
 

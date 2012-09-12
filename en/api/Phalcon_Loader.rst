@@ -30,7 +30,10 @@ Methods
 
 public **__construct** ()
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+...
+
+
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the events manager
 

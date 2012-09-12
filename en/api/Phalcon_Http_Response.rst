@@ -17,7 +17,7 @@ Encapsulates the HTTP response message.
 Methods
 ---------
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 

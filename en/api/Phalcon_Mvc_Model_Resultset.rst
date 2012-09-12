@@ -69,7 +69,7 @@ Gets row in a specific position of the resultset
 
 
 
-public **offsetSet** (*int* $index, *Phalcon\Mvc\Model* $value)
+public **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value)
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

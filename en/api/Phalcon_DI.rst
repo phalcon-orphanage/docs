@@ -9,17 +9,38 @@ Methods
 
 public **__construct** ()
 
+...
+
+
 public **set** (*unknown* $alias, *unknown* $config)
+
+...
+
 
 public **remove** (*unknown* $alias)
 
+...
+
+
 public **attempt** (*unknown* $alias, *unknown* $config)
+
+...
+
 
 public **_factory** (*unknown* $service, *unknown* $parameters)
 
+...
+
+
 public **get** (*unknown* $alias, *unknown* $parameters)
 
+...
+
+
 public **getShared** (*unknown* $alias, *unknown* $parameters)
+
+...
+
 
 *boolean* public **has** (*unknown* $alias)
 
@@ -40,6 +61,9 @@ Magic method to get or set services using setters/getters
 
 
 public static **setDefault** (*unknown* $dependencyInjector)
+
+...
+
 
 :doc:`Phalcon\\DI <Phalcon_DI>` public static **getDefault** ()
 

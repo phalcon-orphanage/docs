@@ -32,11 +32,11 @@ Phalcon\\Db and its related classes provide a simple SQL database interface for 
 Constants
 ---------
 
-integer **FETCH_ASSOC**
+*integer* **FETCH_ASSOC**
 
-integer **FETCH_BOTH**
+*integer* **FETCH_BOTH**
 
-integer **FETCH_NUM**
+*integer* **FETCH_NUM**
 
 Methods
 ---------
@@ -47,7 +47,7 @@ Phalcon\\Db constructor
 
 
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the event manager
 
@@ -67,13 +67,13 @@ Returns the first row in a SQL query result
 
     <?php
 
-     //Getting first robot
-     $robot = $connection->fecthOne("SELECT * FROM robots");
-     print_r($robot);
+    //Getting first robot
+    $robot = $connection->fecthOne("SELECT * FROM robots");
+    print_r($robot);
     
-     //Getting first robot with associative indexes only
-     $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
-     print_r($robot);
+    //Getting first robot with associative indexes only
+    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    print_r($robot);
 
 
 
@@ -86,17 +86,17 @@ Dumps the complete result of a query into an array
 
     <?php
 
-     //Getting all robots
-     $robots = $connection->fetchAll("SELECT * FROM robots");
-     foreach($robots as $robot){
-        print_r($robot);
-     }
+    //Getting all robots
+    $robots = $connection->fetchAll("SELECT * FROM robots");
+    foreach($robots as $robot){
+    	print_r($robot);
+    }
     
-     //Getting all robots with associative indexes only
-     $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
-     foreach($robots as $robot){
-        print_r($robot);
-     }
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach($robots as $robot){
+    	print_r($robot);
+    }
 
 
 
@@ -212,13 +212,13 @@ Drops a table from a schema/database
 
 
 
-*boolean* public **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
+*boolean* public **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Adds a column to a table
 
 
 
-*boolean* public **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
+*boolean* public **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Modifies a table column based on a definition
 
@@ -242,7 +242,7 @@ Drop an index from a table
 
 
 
-*boolean* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Index* $index)
+*boolean* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
 
 Adds a primary key to a table
 
@@ -254,7 +254,7 @@ Drops primary key from a table
 
 
 
-*boolean true* public **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Reference* $reference)
+*boolean true* public **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
 
 Adds a foreign key to a table
 
@@ -266,7 +266,7 @@ Drops a foreign key from a table
 
 
 
-*string* public **getColumnDefinition** (*Phalcon\Db\Column* $column)
+*string* public **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Returns the SQL column definition from a column
 

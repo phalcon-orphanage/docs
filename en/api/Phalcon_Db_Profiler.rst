@@ -34,6 +34,9 @@ Methods
 
 public **__construct** ()
 
+...
+
+
 :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` public **startProfile** (*string* $sqlStatement)
 
 Starts the profile of a SQL sentence
@@ -58,7 +61,7 @@ Returns the total time in seconds spent by the profiles
 
 
 
-:doc:`Phalcon\\Db\\Profiler\\Item[] <Phalcon_Db_Profiler_Item[]>` public **getProfiles** ()
+:doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` []public **getProfiles** ()
 
 Returns all the processed profiles
 

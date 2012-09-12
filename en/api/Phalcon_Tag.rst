@@ -87,43 +87,92 @@ Builds generic INPUT tags
 
 *string* public static **textField** (*array* $parameters)
 
-Builds a HTML input[type="text"] tag <code>echo Phalcon\\Tag::textField(array("name", "size" => 30))
+Builds a HTML input[type="text"] tag 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::textField(array("name", "size" => 30))
+
 
 
 
 *string* public static **passwordField** (*array* $parameters)
 
-Builds a HTML input[type="password"] tag <code>echo Phalcon\\Tag::passwordField(array("name", "size" => 30))
+Builds a HTML input[type="password"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::passwordField(array("name", "size" => 30))
+
 
 
 
 *string* public static **hiddenField** (*array* $parameters)
 
-Builds a HTML input[type="hidden"] tag <code>echo Phalcon\\Tag::hiddenField(array("name", "value" => "mike"))
+Builds a HTML input[type="hidden"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"))
+
 
 
 
 *string* public static **fileField** (*array* $parameters)
 
-Builds a HTML input[type="file"] tag <code>echo Phalcon\\Tag::fileField("file")
+Builds a HTML input[type="file"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::fileField("file")
+
 
 
 
 *string* public static **checkField** (*array* $parameters)
 
-Builds a HTML input[type="check"] tag <code>echo Phalcon\\Tag::checkField(array("name", "size" => 30))
+Builds a HTML input[type="check"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::checkField(array("name", "size" => 30))
+
 
 
 
 *string* public static **submitButton** (*unknown* $parameters)
 
-Builds a HTML input[type="submit"] tag <code>echo Phalcon\\Tag::submitButton("Save")
+Builds a HTML input[type="submit"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::submitButton("Save")
+
 
 
 
 *string* public static **selectStatic** (*array* $parameters, *unknown* $data)
 
-Builds a HTML SELECT tag using a PHP array for options <code>echo Phalcon\\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"))
+Builds a HTML SELECT tag using a PHP array for options 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"))
+
 
 
 
@@ -135,18 +184,25 @@ Builds a HTML SELECT tag using a Phalcon_Model resultset as options
 
     <?php
 
-     echo Phalcon\Tag::selectStatic(array(
-    "robotId",
-    Robots::find("type = 'mechanical'"),
-    "using" => array("id", "name")
+    echo Phalcon\Tag::selectStatic(array(
+    	"robotId",
+    	Robots::find("type = 'mechanical'"),
+    	"using" => array("id", "name")
+     	));
 
-))
 
 
 
 *string* public static **textArea** (*array* $parameters)
 
-Builds a HTML TEXTAREA tag <code>echo Phalcon\\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
+Builds a HTML TEXTAREA tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
+
 
 
 

@@ -239,7 +239,8 @@ div.figure {
 
 .highlight .s,
 .highlight .s1,
-.highlight .s2 {
+.highlight .s2,
+.highlight .sb {
 	color: #CC9393;
 }
 
@@ -323,3 +324,37 @@ table.docutils tr {
 	margin: 0px;
 }
 
+div#methods h2,
+div#constants h2 {
+	color: #999999;
+}
+
+div#methods a,
+div#constants a, {
+    text-decoration: none;
+}
+
+div#methods em,
+div#constants em {
+    color: #0088CC;
+}
+
+p.method-desc {
+	margin-left: 25px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+div#methods span.modifier {
+	color: #267B0C;
+}
+
+div#methods span.inherited {
+	color: #999999;
+	font-style: italic;
+}
+
+em {
+	font-style: normal;
+}

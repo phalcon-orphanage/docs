@@ -16,23 +16,23 @@ Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, pri
 Constants
 ---------
 
-integer **MODELS_ATTRIBUTES**
+*integer* **MODELS_ATTRIBUTES**
 
-integer **MODELS_PRIMARY_KEY**
+*integer* **MODELS_PRIMARY_KEY**
 
-integer **MODELS_NON_PRIMARY_KEY**
+*integer* **MODELS_NON_PRIMARY_KEY**
 
-integer **MODELS_NOT_NULL**
+*integer* **MODELS_NOT_NULL**
 
-integer **MODELS_DATA_TYPE**
+*integer* **MODELS_DATA_TYPE**
 
-integer **MODELS_DATA_TYPE_NUMERIC**
+*integer* **MODELS_DATA_TYPE_NUMERIC**
 
-integer **MODELS_DATE_AT**
+*integer* **MODELS_DATE_AT**
 
-integer **MODELS_DATE_IN**
+*integer* **MODELS_DATE_IN**
 
-integer **MODELS_IDENTITY_FIELD**
+*integer* **MODELS_IDENTITY_FIELD**
 
 Methods
 ---------
@@ -43,43 +43,43 @@ Initialize the metadata for certain table
 
 
 
-*array* public **getAttributes** (*Phalcon\Mvc\Model* $model)
+*array* public **getAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns table attributes names (fields)
 
 
 
-*array* public **getPrimaryKeyAttributes** (*Phalcon\Mvc\Model* $model)
+*array* public **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an array of fields which are part of the primary key
 
 
 
-*array* public **getNonPrimaryKeyAttributes** (*Phalcon\Mvc\Model* $model)
+*array* public **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an arrau of fields which are not part of the primary key
 
 
 
-*array* public **getNotNullAttributes** (*Phalcon\Mvc\Model* $model)
+*array* public **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns an array of not null attributes
 
 
 
-*array* public **getDataTypes** (*Phalcon\Mvc\Model* $model)
+*array* public **getDataTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes and their data types
 
 
 
-*array* public **getDataTypesNumeric** (*Phalcon\Mvc\Model* $model)
+*array* public **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes which types are numerical
 
 
 
-*array* public **getIdentityField** (*Phalcon\Mvc\Model* $model)
+*array* public **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns the name of identity field (if one is present)
 
@@ -104,4 +104,7 @@ Resets internal meta-data in order to regenerate it
 
 
 abstract public **write** ()
+
+...
+
 

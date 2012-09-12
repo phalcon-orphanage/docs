@@ -9,7 +9,7 @@ Reads ini files and convert it to Phalcon\\Config objects. Given the next config
 
     <?php
 
-      [database]
+    [database]
     adapter = Mysql
     host = localhost
     username = scott

@@ -19,7 +19,7 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -209,7 +209,7 @@ Checks whether request include attached files
 
 
 
-:doc:`Phalcon\\Http\\Request\\File[] <Phalcon_Http_Request_File[]>` public **getUploadedFiles** ()
+:doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` []public **getUploadedFiles** ()
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 

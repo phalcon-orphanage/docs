@@ -27,22 +27,22 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
 Constants
 ---------
 
-integer **OP_CREATE**
+*integer* **OP_CREATE**
 
-integer **OP_UPDATE**
+*integer* **OP_UPDATE**
 
-integer **OP_DELETE**
+*integer* **OP_DELETE**
 
 Methods
 ---------
 
-final public **__construct** (*Phalcon\DI* $dependencyInjector, *string* $managerService, *string* $dbService)
+final public **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $managerService, *string* $dbService)
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public **setDI** (*Phalcon\DI* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -54,7 +54,7 @@ Returns the dependency injection container
 
 
 
-public **setEventsManager** (*Phalcon\Events\Manager* $eventsManager)
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
 Sets the event manager
 
@@ -78,7 +78,7 @@ Gets a resulset from the cache or creates one
 
 
 
-:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **setTransaction** (*Phalcon\Mvc\Model\Transaction* $transaction)
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` public **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -165,7 +165,7 @@ Gets internal database connection
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Base $result <Phalcon_Mvc_Model_Base $result>` public static **dumpResult** (*Phalcon\Mvc\Model\Base* $base, *array* $result)
+:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $resultpublic static **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $result)
 
 Assigns values to a model from an array returning a new model 
 
@@ -254,7 +254,7 @@ Generate a SQL SELECT statement for an aggregate
 
 
 
-:doc:`array|Phalcon\\Mvc\\Model\\Resultset <array|Phalcon_Mvc_Model_Resultset>` protected static **_getGroupResult** ()
+*array|Phalcon\Mvc\Model\Resultset* protected static **_getGroupResult** ()
 
 Generate a resulset from an SQL select with aggregations
 
@@ -373,7 +373,7 @@ Cancel the current operation
 
 
 
-public **appendMessage** (*Phalcon\Mvc\Model\Message* $message)
+public **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` $message)
 
 Appends a customized message on the validation process 
 
@@ -456,7 +456,7 @@ Check whether validation process has generated any messages
 
 
 
-:doc:`Phalcon\\Mvc\\Model\\Message[] <Phalcon_Mvc_Model_Message[]>` public **getMessages** ()
+:doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` []public **getMessages** ()
 
 Returns all the validation messages 
 
@@ -541,7 +541,13 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 public **create** ()
 
+...
+
+
 public **update** ()
+
+...
+
 
 *boolean* public **delete** ()
 
@@ -636,6 +642,9 @@ Setup a relation 1-n between two models
 
 protected **__getRelatedRecords** ()
 
+...
+
+
 *mixed* public **__call** (*string* $method, *array* $arguments)
 
 Handles methods when a method does not exist
@@ -644,5 +653,11 @@ Handles methods when a method does not exist
 
 public **serialize** ()
 
+...
+
+
 public **unserialize** (*unknown* $data)
+
+...
+
 

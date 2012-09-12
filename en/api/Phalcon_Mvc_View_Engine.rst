@@ -9,7 +9,7 @@ All the template engine adapters must inherit this class. This provides basic in
 Methods
 ---------
 
-public **__construct** (*Phalcon\Mvc\View* $view, *unknown* $dependencyInjector)
+public **__construct** (:doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>` $view, *unknown* $dependencyInjector)
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -27,13 +27,33 @@ Renders a partial inside another view
 
 
 
-public **setDI** (*unknown* $dependencyInjector)
+public **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon_DI_Injectable
 
-public **getDI** ()
+Sets the dependency injector
 
-public **setEventsManager** (*unknown* $eventsManager)
 
-public **getEventsManager** ()
 
-public **__get** (*unknown* $propertyName)
+:doc:`Phalcon\\DI <Phalcon_DI>` public **getDI** () inherited from Phalcon_DI_Injectable
+
+Returns the internal dependency injector
+
+
+
+public **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon_DI_Injectable
+
+Sets the event manager
+
+
+
+:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` public **getEventsManager** () inherited from Phalcon_DI_Injectable
+
+Returns the internal event manager
+
+
+
+public **__get** (*string* $propertyName) inherited from Phalcon_DI_Injectable
+
+Magic method __get
+
+
 

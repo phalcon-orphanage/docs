@@ -9,6 +9,9 @@ Methods
 
 public **__construct** ()
 
+...
+
+
 public **set** (*string* $name, *string* $value)
 
 Sets a header to be sent at the end of the request

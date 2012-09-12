@@ -1,6 +1,6 @@
 Improving Performance with Cache
 ================================
-Phalcon provides the :doc:`Phalcon\\Cache <../api/Phalcon_Cache>` class allowing faster access to frequently used or already processed data. :doc:`Phalcon\\Cache <../api/Phalcon_Cache>`  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon provides the :doc:`Phalcon\\Cache <cache>` class allowing faster access to frequently used or already processed data. :doc:`Phalcon\\Cache <cache>`  is very similar to its Zend Framework counterpart but is written in C, achieving higher performance. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 When to implement cache?
 ------------------------

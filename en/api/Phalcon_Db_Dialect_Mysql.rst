@@ -15,19 +15,19 @@ Gets a list of columns
 
 
 
-public **getColumnDefinition** (*Phalcon\Db\Column* $column)
+public **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Gets the column name in MySQL
 
 
 
-*string* public **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
+*string* public **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Generates SQL to add a column to a table
 
 
 
-*string* public **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Column* $column)
+*string* public **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Generates SQL to modify a column in a table
 
@@ -39,7 +39,7 @@ Generates SQL to delete a column from a table
 
 
 
-*string* public **addIndex** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Index* $index)
+*string* public **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
 
 Generates SQL to add an index to a table
 
@@ -51,7 +51,7 @@ Generates SQL to delete an index from a table
 
 
 
-*string* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Index* $index)
+*string* public **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
 
 Generates SQL to add the primary key to a table
 
@@ -63,7 +63,7 @@ Generates SQL to delete primary key from a table
 
 
 
-*string* public **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\Db\Reference* $reference)
+*string* public **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
 
 Generates SQL to add an index to a table
 
@@ -129,11 +129,27 @@ Generates the SQL to describe the table creation options
 
 
 
-public **limit** (*unknown* $sqlQuery, *unknown* $number)
+*string* public **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon_Db_Dialect
 
-public **forUpdate** (*unknown* $sqlQuery)
+Generates the SQL for LIMIT clause
 
-public **sharedLock** (*unknown* $sqlQuery)
 
-public **select** (*unknown* $definition)
+
+*string* public **forUpdate** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+
+Returns a SQL modified with a FOR UPDATE clause
+
+
+
+*string* public **sharedLock** (*string* $sqlQuery) inherited from Phalcon_Db_Dialect
+
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+
+
+
+*string* public **select** (*array* $definition) inherited from Phalcon_Db_Dialect
+
+Builds a SELECT statement
+
+
 

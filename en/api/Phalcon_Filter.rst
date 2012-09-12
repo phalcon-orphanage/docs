@@ -20,7 +20,13 @@ Methods
 
 public **__construct** ()
 
+...
+
+
 public **add** (*unknown* $name, *unknown* $handler)
+
+...
+
 
 *mixed* public **sanitize** (*mixed* $value, *mixed* $filters)
 

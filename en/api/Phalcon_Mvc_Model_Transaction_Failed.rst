@@ -9,7 +9,7 @@ Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch bloc
 Methods
 ---------
 
-public **__construct** (*string* $message, *Phalcon\Mvc\Model* $record)
+public **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
@@ -27,21 +27,48 @@ Returns validation record messages which stop the transaction
 
 
 
-final private **__clone** ()
+final private **__clone** () inherited from Exception
 
-final public **getMessage** ()
+...
 
-final public **getCode** ()
 
-final public **getFile** ()
+final public **getMessage** () inherited from Exception
 
-final public **getLine** ()
+...
 
-final public **getTrace** ()
 
-final public **getPrevious** ()
+final public **getCode** () inherited from Exception
 
-final public **getTraceAsString** ()
+...
 
-public **__toString** ()
+
+final public **getFile** () inherited from Exception
+
+...
+
+
+final public **getLine** () inherited from Exception
+
+...
+
+
+final public **getTrace** () inherited from Exception
+
+...
+
+
+final public **getPrevious** () inherited from Exception
+
+...
+
+
+final public **getTraceAsString** () inherited from Exception
+
+...
+
+
+public **__toString** () inherited from Exception
+
+...
+
 
