@@ -1,6 +1,6 @@
 Tutorial 3: Creating a Simple REST API
 ======================================
-In this tutorial, we explain how to create a simple application that provides a RESTful_ API using the different HTTP methods:
+In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the different HTTP methods:
 
 * GET to retrieve and search data
 * POST to add data
@@ -30,7 +30,8 @@ The API consists of the following methods:
 
 Creating the Application
 ------------------------
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we use a :doc:`micro application <micro>` to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a :doc:`micro application <micro>`
+to meet our goal.
 
 The following file structure is more than enough:
 
@@ -111,14 +112,48 @@ When a defined route matches the requested URI then the application will execute
 
 Creating a Model
 ----------------
-Our API provides information about robots, these data are stored in a database. The following model allows us to access that table in an object oriented way:
+Our API provides information about robots, these data are stored in a database. The following model allows us to access that table in an object oriented way.
+We have implemented
 
 .. code-block:: php
 
     <?php
 
+    use \Phalcon\Mvc\Model\Message;
+    use \Phalcon\Mvc\Model\Validator\InclusionIn;
+    use \Phalcon\Mvc\Model\Validator\Uniqueness;
+
     class Robots extends \Phalcon\Mvc\Model
     {
+
+        public function validation()
+        {
+            //Type must be: droid, mechanical or virtual
+            $this->validate(new InclusionIn(
+                array(
+                    "field"  => "type",
+                    "domain" => array("droid", "mechanical", "virtual")
+                )
+            ));
+
+            //Robot name must be unique
+            $this->validate(new Uniqueness(
+                array(
+                    "field"   => "name",
+                    "message" => "The robot name must be unique"
+                )
+            ));
+
+            //Year cannot be less than zero
+            if ($this->year < 0) {
+                $this->appendMessage(new Message("The year cannot be less than zero"));
+            }
+
+            //Check if any messages have been produced
+            if ($this->validationHasFailed() == true) {
+                return false;
+            }
+        }
 
     }
 
@@ -173,7 +208,7 @@ The first "handler" that we will implement is which by method GET returns all av
 
 :doc:`PHQL <phql>`, allow us to write queries using a high level, object oriented SQL dialect that internally
 translates to the right SQL statements depending on the database system we are using. The clause "use" in the anonymous function allows
- us to pass variables from global to local scope easily.
+us to pass variables from global to local scope easily.
 
 The searching by name handler would look like:
 
@@ -232,8 +267,195 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
 
 Inserting Data
 --------------
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
+
+.. code-block:: php
+
+    <?php
+
+    //Adds a new robot
+    $app->post('/api/robots', function() use ($app) {
+
+        $robot = json_decode($app->request->getRawBody());
+
+        $phql = "INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)";
+
+        $status = $app->modelsManager->executeQuery($phql, array(
+            'name' => $robot->name,
+            'type' => $robot->type,
+            'year' => $robot->year
+        ));
+
+        //Check if the insertion was successfull
+        if($status->success()==true){
+
+            $robot->id = $status->getModel()->id;
+
+            $response = array('status' => 'OK', 'data' => $robot);
+
+        } else {
+
+            //Send errors to the client
+            $errors = array();
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response = array('status' => 'ERROR', 'messages' => $errors);
+
+        }
+
+        echo json_encode($response);
+
+    });
+
+Updating Data
+-------------
+The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+
+.. code-block:: php
+
+    <?php
+
+    //Updates robots based on primary key
+    $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
+
+        $robot = json_decode($app->request->getRawBody());
+
+        $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
+        $status = $app->modelsManager->executeQuery($phql, array(
+            'id' => $id,
+            'name' => $robot->name,
+            'type' => $robot->type,
+            'year' => $robot->year
+        ));
+        if($status->success()==true){
+
+            $response = array('status' => 'OK');
+
+        } else {
+
+            $errors = array();
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response = array('status' => 'ERROR', 'messages' => $errors);
+
+        }
+
+        echo json_encode($response);
+
+    });
+
+Deleting Data
+-------------
+The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+
+.. code-block:: php
+
+    <?php
+
+    //Deletes robots based on primary key
+    $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
+
+        $phql = "DELETE FROM Robots WHERE id = :id:";
+        $status = $app->modelsManager->executeQuery($phql, array(
+            'id' => $id
+        ));
+        if($status->success()==true){
+
+            $response = array('status' => 'OK');
+
+        } else {
+
+            $errors = array();
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response = array('status' => 'ERROR', 'messages' => $errors);
+
+        }
+
+        echo json_encode($response);
+
+    });
+
+Testing our Application
+-----------------------
+Using curl_ we'll test every route in our application verifying its proper operation:
+
+Obtain all the robots:
+
+.. code-block:: bash
+
+    curl -i -X GET http://localhost/my-rest-api/api/robots
+
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 117
+    Content-Type: text/html; charset=UTF-8
+
+    [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
+
+Search a robot by its name:
+
+.. code-block:: bash
+
+    curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 31
+    Content-Type: text/html; charset=UTF-8
+
+    [{"id":"2","name":"Astro Boy"}]
+
+Obtain a robot by its id:
+
+.. code-block:: bash
+
+    curl -i -X GET http://localhost/my-rest-api/api/robots/3
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 56
+    Content-Type: text/html; charset=UTF-8
+
+    {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
+
+Insert a new robot:
+
+.. code-block:: bash
+
+    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 75
+    Content-Type: text/html; charset=UTF-8
+
+    {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
+
+Try to insert a new robot with the same name:
+
+.. code-block:: bash
+
+    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+    HTTP/1.1 200 OK
+    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Server: Apache/2.2.22 (Unix) DAV/2
+    Content-Length: 63
+    Content-Type: text/html; charset=UTF-8
+
+    {"status":"ERROR","messages":["The robot name must be unique"]}
+
+Conclusion
+----------
+As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we'll explain in detail how to use micro applications and the PHQL language.
 
 
-
-
+.. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer

@@ -63,6 +63,31 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
         echo "<h1>Hello! $name</h1>";
     });
 
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods) which the route is constrained for:
+
+.. code-block:: php
+
+    <?php
+
+    //Matches if the HTTP method is GET
+    $app->get('/api/products', "get_products");
+
+    //Matches if the HTTP method is POST
+    $app->post('/api/products/add', "add_product");
+
+    //Matches if the HTTP method is PUT
+    $app->put('/api/products/update/{id}', "update_product");
+
+    //Matches if the HTTP method is DELETE
+    $app->put('/api/products/remove/{id}', "delete_product");
+
+    //Matches if the HTTP method is OPTIONS
+    $app->options('/api/products/info/{id}', "info_product");
+
+    //Matches if the HTTP method is GET or POST
+    $app->map('/repos/store/refs')->via(array('GET', 'POST'));
+
+
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^
 Defining parameters in routes as very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
@@ -71,6 +96,7 @@ Defining parameters in routes as very easy as demonstrated above. The parameter 
 
     <?php
 
+    //This route have two parameters and each of them have a format
     $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
         echo "<h1>Title: $title</h1>";
         echo "<h2>Year: $year</h2>";
@@ -84,6 +110,7 @@ Normally, the starting route in an application will be the / route, and it will 
 
     <?php
 
+    //This is the start route
     $app->get('/', function () {
         echo "<h1>Welcome!</h1>";
     });
@@ -108,18 +135,17 @@ You are free to produce any kind of responses in a handler: directly make an out
 
     <?php
 
+    //Direct output
     $app->get('/say/hello', function () {
         echo "<h1>Hello! $name</h1>";
     });
 
+    //Requiring another file
     $app->get('/show/results', function () {
         require 'views/results.php';
     });
 
-    $app->get('/show/results', function () {
-        require 'views/results.php';
-    });
-
+    //Returning a JSON
     $app->get('/get/some-json', function () {
         echo json_encode(array("some", "important", "data"));
     });
@@ -132,8 +158,10 @@ In addition to that, you have access to the service :doc:`"response" <response>`
 
     $app->get('/show/data', function () use ($app) {
 
+        //Set the Content-Type header
         $app->response->setContentType('text/plain')->sendHeaders();
 
+        //Print a file
         readfile("data.txt");
 
     });
@@ -146,6 +174,7 @@ Redirections could be performed to forward the execution flow to another route:
 
     <?php
 
+    //This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
         $app->response->redirect("new/welcome");
     });
@@ -154,9 +183,36 @@ Redirections could be performed to forward the execution flow to another route:
         echo 'This is the new Welcome';
     });
 
+Generating URLs for Routes
+--------------------------
+:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route, by this way the "url" service can produce the corresponding URL:
+
+.. code-block:: php
+
+    <?php
+
+    //Set a route with the name "show-post"
+    $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
+
+        //.. show the post here
+
+    })->setName('show-post');
+
+    //produce a url somewhere
+    $app->get('/', function() use ($app){
+
+        echo $app->url->get(array(
+            'for' => 'show-post',
+            'title' => 'php-is-a-great-framework',
+            'year' => 2012
+        ));
+
+    });
+
+
 Interacting with the Dependency Injector
 ----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly, you can create outside the application container to
+In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly, additionally you can create outside of the application a container to
 manipulate its services:
 
 .. code-block:: php
@@ -181,6 +237,7 @@ manipulate its services:
     $app->post('/contact', function () use ($app) {
         $app->flash->success('Yes!, the contact was made!');
     });
+
 
 Not-Found Handler
 -----------------
