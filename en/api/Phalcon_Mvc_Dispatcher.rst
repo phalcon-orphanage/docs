@@ -171,7 +171,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
 
-
+Forwards the execution flow to another controller/action
 
 
 

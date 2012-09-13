@@ -15,7 +15,7 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 Methods
 ---------
 
-public  **__construct** (*unknown* $cssClasses)
+public  **__construct** (*array* $cssClasses)
 
 Phalcon\\Flash constructor
 

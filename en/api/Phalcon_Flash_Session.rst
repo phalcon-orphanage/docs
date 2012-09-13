@@ -51,7 +51,7 @@ Prints the messages in the session flasher
 
 
 
-public  **__construct** (*unknown* $cssClasses) inherited from Phalcon\\Flash
+public  **__construct** (*array* $cssClasses) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
 

@@ -20,7 +20,7 @@ Sets a header to be sent at the end of the request
 
 public *string*  **get** (*string* $name)
 
-Sets a header value from the internal bag
+Gets a header value from the internal bag
 
 
 
@@ -30,7 +30,7 @@ Sets a raw header to be sent at the end of the request
 
 
 
-public  **send** ()
+public *boolean*  **send** ()
 
 Sends the headers to the client
 
@@ -42,7 +42,7 @@ Reset set headers
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **__set_state** (*unknown* $data)
 
 Restore a Phalcon\\Http\\Response\\Headers object
 

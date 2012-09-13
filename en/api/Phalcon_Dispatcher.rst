@@ -110,7 +110,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward)
 
-
+Forwards the execution flow to another controller/action
 
 
 

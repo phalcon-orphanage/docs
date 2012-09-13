@@ -334,6 +334,10 @@ div#constants a, {
     text-decoration: none;
 }
 
+div#methods a:hover {
+    text-decoration: underline;
+}
+
 div#methods em,
 div#constants em {
     color: #0088CC;
