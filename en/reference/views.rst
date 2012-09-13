@@ -308,14 +308,14 @@ Sometimes when you develop dynamic websites and some areas of them are not updat
 
     }
 
-When the View component needs to cache something it will request a cache service to the services container. The service name convention for this service is "viewsCache":
+When the View component needs to cache something it will request a cache service to the services container. The service name convention for this service is "viewCache":
 
 .. code-block:: php
 
     <?php
 
     //Set the views cache service
-    $di->set('viewsCache', function(){
+    $di->set('viewCache', function(){
 
         //Cache data for one day by default
         $frontCache = new Phalcon\Cache\Frontend\Output(array(
@@ -323,7 +323,7 @@ When the View component needs to cache something it will request a cache service
         ));
 
         //Memcached connection settings
-        $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+        $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
