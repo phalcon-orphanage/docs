@@ -94,6 +94,73 @@ It's therefore easy to find which file and line of the application's code genera
 
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even show the parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
+Reflection and Instrospection
+-----------------------------
+Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It's possible to use the Reflection API or simply print any object to show how is its internal state:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+    print_r($router);
+
+It's easy to know the internal state of any object. The above example prints the following:
+
+.. code-block:: html
+
+    Phalcon\Mvc\Router Object
+    (
+        [_dependencyInjector:protected] =>
+        [_module:protected] =>
+        [_controller:protected] =>
+        [_action:protected] =>
+        [_params:protected] => Array
+            (
+            )
+        [_routes:protected] => Array
+            (
+                [0] => Phalcon\Mvc\Router\Route Object
+                    (
+                        [_pattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                        [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                        [_paths:protected] => Array
+                            (
+                                [controller] => 1
+                            )
+
+                        [_methods:protected] =>
+                        [_id:protected] => 0
+                        [_name:protected] =>
+                    )
+
+                [1] => Phalcon\Mvc\Router\Route Object
+                    (
+                        [_pattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                        [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                        [_paths:protected] => Array
+                            (
+                                [controller] => 1
+                                [action] => 2
+                                [params] => 3
+                            )
+                        [_methods:protected] =>
+                        [_id:protected] => 1
+                        [_name:protected] =>
+                    )
+            )
+        [_matchedRoute:protected] =>
+        [_matches:protected] =>
+        [_wasMatched:protected] =>
+        [_defaultModule:protected] =>
+        [_defaultController:protected] =>
+        [_defaultAction:protected] =>
+        [_defaultParams:protected] => Array
+            (
+            )
+    )
+
+
 Using XDebug
 ------------
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
