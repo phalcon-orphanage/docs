@@ -1,116 +1,155 @@
-Class **Phalcon_Db_Dialect_Postgresql**
-=======================================
+Class **Phalcon\\Db\\Dialect\\Postgresql**
+==========================================
+
+*extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
 Generates database specific SQL for the PostgreSQL RBDM
+
 
 Methods
 ---------
 
-**string** **limit** (string $sqlQuery, int $number)
-
-Generates the SQL for a PostgreSQL LIMIT clause
-
-**string** **getColumnList** (array $columnList)
+public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
 
-**getColumnDefinition** (Phalcon\Db\Column $column)
+
+
+public static  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
 
 Gets the column name in PostgreSQL
 
-**string** **addColumn** (string $tableName, string $schemaName, Phalcon_Db_Column $column)
+
+
+public static *string*  **addColumn** ()
 
 Generates SQL to add a column to a table
 
-**string** **modifyColumn** (string $tableName, string $schemaName, Phalcon\Db\Column $column)
+
+
+public static *string*  **modifyColumn** ()
 
 Generates SQL to modify a column in a table
 
-**string** **dropColumn** (string $tableName, string $schemaName, string $columnName)
+
+
+public static *string*  **dropColumn** ()
 
 Generates SQL to delete a column from a table
 
-**string** **addIndex** (string $tableName, string $schemaName, Phalcon\Db\Index $index)
+
+
+public static *string*  **addIndex** ()
 
 Generates SQL to add an index to a table
 
-**string** **dropIndex** (string $tableName, string $schemaName, string $indexName)
+
+
+public static *string*  **dropIndex** ()
 
 Generates SQL to delete an index from a table
 
-**string** **addPrimaryKey** (unknown $tableName, unknown $schemaName, Phalcon_Db_Index $index)
+
+
+public static *string*  **addPrimaryKey** ()
 
 Generates SQL to add the primary key to a table
 
-**string** **dropPrimaryKey** (string $tableName, string $schemaName)
+
+
+public static *string*  **dropPrimaryKey** ()
 
 Generates SQL to delete primary key from a table
 
-**string** **addForeignKey** (string $tableName, string $schemaName, Phalcon\Db\Reference $reference)
+
+
+public static *string*  **addForeignKey** ()
 
 Generates SQL to add an index to a table
 
-**string** **dropForeignKey** (string $tableName, string $schemaName, string $referenceName)
+
+
+public static *string*  **dropForeignKey** ()
 
 Generates SQL to delete a foreign key from a table
 
-**array** **_getTableOptions** (array $definition)
+
+
+protected *array*  **_getTableOptions** ()
 
 Generates SQL to add the table creation options
 
-**string** **createTable** (string $tableName, string $schemaName, array $definition)
+
+
+public *string*  **createTable** ()
 
 Generates SQL to create a table in PostgreSQL
 
-**boolean** **dropTable** (string $tableName, string $schemaName, boolean $ifExists)
+
+
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
 
 Generates SQL to drop a table
 
-**string** **tableExists** (string $tableName, string $schemaName)
 
-Generates SQL checking for the existence of a schema.table  
 
-.. code-block:: php
+public static *string*  **tableExists** (*string* $tableName, *string* $schemaName)
 
-    <?php 
+Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
 
-    echo Phalcon_Db_Dialect_Postgresql::tableExists("posts");
 
-.. code-block:: php
 
-    <?php 
+public *string*  **describeColumns** (*string* $table, *string* $schema)
 
-    echo Phalcon_Db_Dialect_Postgresql::tableExists("posts");
+Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
 
-**string** **describeTable** (string $table, string $schema)
 
-Generates a SQL describing a table  
 
-.. code-block:: php
+public *array*  **listTables** (*string* $schemaName)
 
-    <?php 
+List all tables on database <code>print_r($dialect->listTables("blog") ?>
 
-    print_r(Phalcon_Db_Dialect_Postgresql::describeTable("posts");
 
-**array** **listTables** (string $schemaName)
 
-List all tables on database  
-
-.. code-block:: php
-
-    <?php 
-
-    print_r(Phalcon_Db_Dialect_Postgresql::listTables("blog");
-
-**string** **describeIndexes** (string $table, string $schema)
+public *string*  **describeIndexes** (*string* $table, *string* $schema)
 
 Generates SQL to query indexes on a table
 
-**string** **describeReferences** (string $table, string $schema)
+
+
+public *string*  **describeReferences** (*string* $table, *string* $schema)
 
 Generates SQL to query foreign keys on a table
 
-**string** **tableOptions** (string $table, string $schema)
+
+
+public *string*  **tableOptions** (*string* $table, *string* $schema)
 
 Generates the SQL to describe the table creation options
+
+
+
+public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
+
+Generates the SQL for LIMIT clause
+
+
+
+public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
+
+Returns a SQL modified with a FOR UPDATE clause
+
+
+
+public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
+
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+
+
+
+public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
+
+Builds a SELECT statement
+
+
 

@@ -1,54 +1,69 @@
-Class **Phalcon_Db_Reference**
-==============================
+Class **Phalcon\\Db\\Reference**
+================================
 
-Allows to define reference constraints on tables  
+Allows to define reference constraints on tables 
 
 .. code-block:: php
 
     <?php
 
-    $reference = new Phalcon_Db_Reference(
-        "field_fk", 
-        array(
-            'referencedSchema'  => "invoicing",
-            'referencedTable'   => "products",
-            'columns'           => array("product_type", "product_code"),
-            'referencedColumns' => array("type", "code"),
-        )
-    );
+    $reference = new Phalcon\Db\Reference("field_fk", array(
+    	'referencedSchema' => "invoicing",
+    	'referencedTable' => "products",
+    	'columns' => array("product_type", "product_code"),
+    	'referencedColumns' => array("type", "code")
+    ));
+
+
 
 Methods
 ---------
 
-**__construct** (string $referenceName, array $definition)
+public  **__construct** (*string* $referenceName, *array* $definition)
 
-Phalcon_Db_Reference constructor
+Phalcon\\Db\\Reference constructor
 
-**string** **getName** ()
+
+
+public *string*  **getName** ()
 
 Gets the index name
 
-**string** **getSchemaName** ()
+
+
+public *string*  **getSchemaName** ()
 
 Gets the schema where referenced table is
 
-**string** **getReferencedSchema** ()
+
+
+public *string*  **getReferencedSchema** ()
 
 Gets the schema where referenced table is
 
-**array** **getColumns** ()
+
+
+public *array*  **getColumns** ()
 
 Gets local columns which reference is based
 
-**string** **getReferencedTable** ()
+
+
+public *string*  **getReferencedTable** ()
 
 Gets the referenced table
 
-**array** **getReferencedColumns** ()
+
+
+public *array*  **getReferencedColumns** ()
 
 Gets referenced columns
 
-**Phalcon_Db_Reference** **__set_state** (array $data)
 
-Restore a Phalcon_Db_Reference object from export
+
+public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** (*array* $data)
+
+Restore a Phalcon\\Db\\Reference object from export
+
+
 

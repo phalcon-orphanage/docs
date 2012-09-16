@@ -1,50 +1,107 @@
-Class **Phalcon_Loader**
-========================
+Class **Phalcon\\Loader**
+=========================
 
-This component helps to load your project classes automatically based on several conventions  
+This component helps to load your project classes automatically based on some conventions 
 
 .. code-block:: php
 
     <?php
+
+     //Creates the autoloader
+     $loader = new Phalcon\Loader();
     
-    // Creates the autoloader
-    $loader = new Phalcon\Loader();
+     //Register some namespaces
+     $loader->registerNamespaces(array(
+       'Example\\Base' => 'vendor/example/base/',
+       'Example\\Adapter' => 'vendor/example/adapter/',
+       'Example' => 'vendor/example/'
+     ));
+    
+     //register autoloader
+     $loader->register();
+    
+     //Requiring class will automatically include file vendor/example/adapter/Some.php
+     $adapter = Example\Adapter\Some();
 
-    // Register some namespaces
-    $loader->registerNamespaces(
-        array(
-            'Example\\Base'    => 'vendor/example/base/',
-            'Example\\Adapter' => 'vendor/example/adapter/',
-            'Example'          => 'vendor/example/',
-        )
-    );
 
-    // register the autoloader
-    $loader->register();
-
-    // Requiring class will automatically include file vendor/example/adapter/Some.php
-    $adapter = Example\Adapter\Some();
 
 Methods
 ---------
 
-**registerNamespaces** (array $namespaces)
+public  **__construct** ()
+
+...
+
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+
+Sets the events manager
+
+
+
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
+
+Returns the internal event manager
+
+
+
+public  **setExtensions** (*array* $extensions)
+
+Sets an array of extensions that the Loader must check together with the path
+
+
+
+public  **registerNamespaces** (*array* $namespaces)
 
 Register namespaces and their related directories
 
-**registerDirs** (array $directories)
+
+
+public  **registerPrefixes** (*unknown* $prefixes)
 
 Register directories on which "not found" classes could be found
 
-**registerClasses** (unknown $classes)
+
+
+public  **registerDirs** (*array* $directories)
+
+Register directories on which "not found" classes could be found
+
+
+
+public  **registerClasses** (*unknown* $classes)
 
 Register classes and their locations
 
-**register** ()
+
+
+public  **register** ()
 
 Register the autoload method
 
-**boolean** **autoLoad** (string $className)
+
+
+public  **unregister** ()
+
+Unregister the autoload method
+
+
+
+public *boolean*  **autoLoad** (*string* $className)
 
 Makes the work of autoload registered classes
+
+
+
+public *string*  **getFoundPath** ()
+
+Get the path when a class was found
+
+
+
+public *string*  **getCheckedPath** ()
+
+Get the path the loader is checking
+
+
 

@@ -1,12 +1,12 @@
 Nginx Installation Notes
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load. 
+Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications. 
+The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer maximum performance for your PHP applications.
 
 Configuring Nginx for Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon. 
+The following are potential configurations you can use to setup nginx with Phalcon.
 
 Dedicated Instance
 ^^^^^^^^^^^^^^^^^^
@@ -36,7 +36,7 @@ Dedicated Instance
             break;
             }
         }
-    
+
         location ~ \.php {
             # try_files    $uri =404;
 
@@ -54,13 +54,13 @@ Dedicated Instance
             root $root_path;
         }
     }
-    
+
 Configuration by Host
 ^^^^^^^^^^^^^^^^^^^^^
 And this second configuration allow you to have different configurations by host:
 
 .. code-block:: nginx
-    
+
     server {
         listen      80;
         server_name localhost;
@@ -98,33 +98,6 @@ And this second configuration allow you to have different configurations by host
         location ~ /\.ht {
             deny all;
         }
-    }
-    
-Preparing Phalcon to Nginx
---------------------------
-If you're using the default :doc:`Phalcon_Router_Rewrite <../api/Phalcon_Router_Rewrite>` router, you will notice that Nginx_ puts a slash (/) at the beggining of the $_GET['_url']. Is necessary to remove the URL for a proper operation of the router. 
-
-.. code-block:: php
-
-    <?php
-    
-    error_reporting(E_ALL);
-    
-    try {
-
-        if(isset($_GET["_url"])){
-            $_GET["_url"] = preg_replace("#^/#", "", $_GET["_url"]);
-        }
-
-        $front = Phalcon_Controller_Front::getInstance();
-
-        $config = new Phalcon_Config_Adapter_Ini("../app/config/config.ini");
-        $front->setConfig($config);
-
-        echo $front->dispatchLoop()->getContent();
-
-    } catch(Phalcon_Exception $e){
-        echo "PhalconException: ", $e->getMessage();
     }
 
 .. _Nginx: http://wiki.nginx.org/Main

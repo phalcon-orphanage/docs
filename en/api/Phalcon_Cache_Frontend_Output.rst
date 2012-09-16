@@ -1,40 +1,57 @@
-Class **Phalcon_Cache_Frontend_Output**
-=======================================
+Class **Phalcon\\Cache\\Frontend\\Output**
+==========================================
 
 Allows to cache output fragments captured with ob_* functions
+
 
 Methods
 ---------
 
-**__construct** (array $frontendOptions)
+public  **__construct** (*array* $frontendOptions)
 
-Phalcon_Cache_Frontend_Output constructor
+Phalcon\\Cache\\Frontend\\Output constructor
 
-**integer** **getLifetime** ()
 
-Returns the cache lifetime
 
-**isBuffering** ()
+public *integer*  **getLifetime** ()
 
-Checks whether the frontend is buffering output
+Returns cache lifetime
 
-**start** ()
 
-Starts the output frontend
 
-**string** **getContent** ()
+public  **isBuffering** ()
 
-Returns the output cached content
+Check whether if frontend is buffering output
 
-**stop** ()
 
-Stops the output frontend
 
-**beforeStore** (mixed $data)
+public  **start** ()
 
-Prepares data to be stored
+Starts output frontend
 
-**afterRetrieve** (mixed $data)
+
+
+public *string*  **getContent** ()
+
+Returns output cached content
+
+
+
+public  **stop** ()
+
+Stops output frontend
+
+
+
+public  **beforeStore** (*mixed* $data)
+
+Prepare data to be stored
+
+
+
+public  **afterRetrieve** (*mixed* $data)
 
 Prepares data to be retrieved to user
+
+
 

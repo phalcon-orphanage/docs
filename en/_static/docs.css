@@ -18,22 +18,22 @@ h2 {
 	margin: 25px 0 0;
 }
 
-p, li {	
+p, li {
 	color: #434343;
-    font-size: 16px;    
+    font-size: 16px;
     line-height: 24px;
     margin-left: 0;
-    min-height: 0;    
+    min-height: 0;
 }
 
-td.primary-box li {	
+td.primary-box li {
 	padding: 0px;
 	line-height: 16px;
 	margin-bottom: 0px;
 	font-size: 14px;
 }
 
-td.second-box li {	
+td.second-box li {
 	margin-bottom: 0em;
 }
 
@@ -42,12 +42,12 @@ td.second-box li.toctree-l1 {
 	margin: 0px;
 }
 
-td.second-box li.toctree-l1 a {		
-	font-size: 14px;	
+td.second-box li.toctree-l1 a {
+	font-size: 14px;
 	margin-bottom: 0em;
 }
 
-td.primary-box {	
+td.primary-box {
 	padding: 10px;
 	padding-right: 20px;
 	padding-top: 15px;
@@ -65,7 +65,7 @@ td.primary-box li {
 }
 
 td.primary-box a {
-	color: #0088CC;	
+	color: #0088CC;
 	font-size: 13px;
 	line-height: 20px;
 	text-decoration: none;
@@ -106,7 +106,7 @@ div.related {
 div.related li {
 	float: left;
 	padding-right: 20px;
-	list-style: none outside none;	
+	list-style: none outside none;
 }
 
 div.related a {
@@ -117,7 +117,7 @@ div.related li.right {
 	float: right;
 	padding-right: 0px;
 	list-style: none outside none;
-	color: white;	
+	color: white;
 	margin-right: 5px;
 }
 
@@ -125,7 +125,7 @@ div.related li.right a {
 	background: #339A6B;
 	padding: 10px;
 	border-radius: 5px;
-	color: #fff;	
+	color: #fff;
 }
 
 .align-center {
@@ -143,7 +143,7 @@ p.versionadded {
 p.versionchanged,
 blockquote.highlights {
 	color: #414141;
-	font-family: "Open Sans",sans-serif;    
+	font-family: "Open Sans",sans-serif;
 	background: none repeat scroll 0 0 #D5E9F6;
 	line-height: 24px;
 	padding: 10px;
@@ -152,7 +152,7 @@ blockquote.highlights {
 	font-size: 15px;
 	margin-left: 20px;
 	margin-right: 20px;
-	margin-top: 10px;	
+	margin-top: 10px;
 }
 
 blockquote.highlights {
@@ -164,10 +164,10 @@ span.versionmodified {
 }
 
 div.highlight {
-	background: none repeat scroll 0 0 #212121;    
+	background: none repeat scroll 0 0 #212121;
 	margin: 7px 5px 5px;
 	max-width: 95%;
-	overflow-x: scroll;	
+	overflow-x: scroll;
 	text-align: left;
 	margin-left: 0px;
 	/*padding: 5px;*/
@@ -179,7 +179,7 @@ blockquote {
 	font-family: Consolas,"Lucida Console",monospace;
 	font-size: 14px;
 	line-height: 18px;
-	color: #DCDCCC;	
+	color: #DCDCCC;
 	margin: 0 0 0 15px;
 	padding: 2px;
 }
@@ -198,7 +198,7 @@ blockquote {
 blockquote p {
 	font-size: 14px;
 	line-height: 18px;
-	color: #DCDCCC;		
+	color: #DCDCCC;
 }
 
 p.topless {
@@ -239,7 +239,8 @@ div.figure {
 
 .highlight .s,
 .highlight .s1,
-.highlight .s2 {
+.highlight .s2,
+.highlight .sb {
 	color: #CC9393;
 }
 
@@ -261,7 +262,8 @@ div.figure {
     font-weight: bold;
 }
 
-.highlight .mi {
+.highlight .mi,
+.highlight .mf {
 	color: #8CD0D3;
 }
 
@@ -288,11 +290,16 @@ div.figure {
     color: #DADADA;
 }
 
+.highlight .si {
+    color: #EFDCBC;
+    font-style: italic;
+}
+
 table.docutils {
 	border-collapse: collapse;
 	border-top: 1px solid #ABABAB;
     border-left: 1px solid #ABABAB;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     width: 90%;
     margin-bottom: 15px;
@@ -317,3 +324,41 @@ table.docutils tr {
 	margin: 0px;
 }
 
+div#methods h2,
+div#constants h2 {
+	color: #999999;
+}
+
+div#methods a,
+div#constants a, {
+    text-decoration: none;
+}
+
+div#methods a:hover {
+    text-decoration: underline;
+}
+
+div#methods em,
+div#constants em {
+    color: #0088CC;
+}
+
+p.method-desc {
+	margin-left: 25px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+div#methods span.modifier {
+	color: #267B0C;
+}
+
+div#methods span.inherited {
+	color: #999999;
+	font-style: italic;
+}
+
+em {
+	font-style: normal;
+}

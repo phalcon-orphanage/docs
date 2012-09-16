@@ -1,111 +1,116 @@
-Class **Phalcon_Dispatcher**
-============================
+Class **Phalcon\\Dispatcher**
+=============================
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling the relevant action of that controller.   
+This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher
 
-.. code-block:: php
-
-    <?php
-    
-    
-    $dispatcher = new Phalcon_Dispatcher();
-    
-    $request  = Phalcon_Request::getInstance();
-    $response = Phalcon_Response::getInstance();
-    
-    $dispatcher->setBasePath('./');
-    $dispatcher->setControllersDir('tests/controllers/');
-    
-    $dispatcher->setControllerName('posts');
-    $dispatcher->setActionName('index');
-    $dispatcher->setParams(array());
-
-    $controller = $dispatcher->dispatch($request, $response);
 
 Methods
 ---------
 
-**setControllersDir** (string $controllersDir)
+public  **__construct** ()
 
-Sets default controllers directory. Depending of your platform, always add a trailing slash or backslash
+...
 
-**string** **getControllersDir** ()
 
-Gets active controllers directory
+public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
-**setBasePath** (string $basePath)
+Sets the dependency injector
 
-Sets base path for controllers folder. Depending of your platform, always add a trailing slash or backslash
 
-**string** **getBasePath** ()
 
-Gets base path for controllers folder
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
 
-**setDefaultController** (string $controllerName)
+Returns the internal dependency injector
 
-Sets the default controller name
 
-**setDefaultAction** (string $actionName)
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+
+Sets the events manager
+
+
+
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
+
+Returns the internal event manager
+
+
+
+public  **setActionSuffix** (*string* $actionSuffix)
+
+Sets the default action suffix
+
+
+
+public  **setDefaultNamespace** (*string* $namespace)
+
+Sets the default namespace
+
+
+
+public  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
 
-**setControllerName** (string $controllerName)
 
-Sets the controller name to be dispatched
 
-**string** **getControllerName** ()
-
-Gets last dispatched controller name
-
-**setActionName** (string $actionName)
+public  **setActionName** (*string* $actionName)
 
 Sets the action name to be dispatched
 
-**string** **getActionName** ()
+
+
+public *string*  **getActionName** ()
 
 Gets last dispatched action name
 
-**setParams** (array $params)
+
+
+public  **setParams** (*array* $params)
 
 Sets action params to be dispatched
 
-**array** **getParams** ()
+
+
+public *array*  **getParams** ()
 
 Gets action params
 
-**setParam** (mixed $param, mixed $value)
+
+
+public  **setParam** (*mixed* $param, *mixed* $value)
 
 Set a param by its name or numeric index
 
-**mixed** **getParam** (mixed $param)
+
+
+public *mixed*  **getParam** (*mixed* $param)
 
 Gets a param by its name or numeric index
 
-**Phalcon_Controller** **dispatch** (Phalcon_Request $request, Phalcon_Response $response, Phalcon_View $view, Phalcon_Model_Manager $model)
 
-Dispatches a controller action taking into account the routing parameters
 
-**_throwDispatchException** (Phalcon_Response $response, string $message)
+public *boolean*  **isFinished** ()
 
-Throws an internal exception
+Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach
 
-**forward** (string $uri)
 
-Routes to a controller/action using a string or array uri
 
-**boolean** **isFinished** ()
+public *mixed*  **getReturnedValue** ()
 
-Checks if the dispatch loop is finished or have more pendent controller to disptach
+Returns value returned by the lastest dispatched action
 
-**array** **getControllers** ()
 
-Returns all instantiated controllers whitin the dispatcher
 
-**Phalcon_Controller** **getLastController** ()
+public *object*  **dispatch** ()
 
-Returns the last dispatched controller
+Dispatches a handle action taking into account the routing parameters
 
-**mixed** **getReturnedValue** ()
 
-Returns value returned by the last dispatched action
+
+public  **forward** (*array* $forward)
+
+Forwards the execution flow to another controller/action
+
+
 

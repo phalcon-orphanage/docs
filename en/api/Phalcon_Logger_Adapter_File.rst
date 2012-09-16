@@ -1,70 +1,159 @@
-Class **Phalcon_Logger_Adapter_File**
-=====================================
+Class **Phalcon\\Logger\\Adapter\\File**
+========================================
 
-Adapter to store logs in plain text files  
+*extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
+
+Adapter to store logs in plain text files 
 
 .. code-block:: php
 
     <?php
-    
-    $logger = new Phalcon_Logger("File", "app/logs/test.log");
+
+    $logger = new Phalcon\Logger\Adapter\File("app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon_Logger::ERROR);
+    $logger->log("This is an error", Phalcon\Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
+
+
+
+Constants
+---------
+
+*integer* **SPECIAL**
+
+*integer* **CUSTOM**
+
+*integer* **DEBUG**
+
+*integer* **INFO**
+
+*integer* **NOTICE**
+
+*integer* **WARNING**
+
+*integer* **ERROR**
+
+*integer* **ALERT**
+
+*integer* **CRITICAL**
+
+*integer* **EMERGENCE**
 
 Methods
 ---------
 
-**__construct** (string $name, array $options)
+public  **__construct** (*string* $name, *array* $options)
 
-Phalcon_Logger_Adapter_File constructor
+Phalcon\\Logger\\Adapter\\File constructor
 
-**setFormat** (string $format)
+
+
+public  **setFormat** (*string* $format)
 
 Set the log format
 
-**getFormat** (string $format)
+
+
+public *format*  **getFormat** ()
 
 Returns the log format
 
-**string** **getTypeString** (integer $type)
+
+
+public *string*  **getTypeString** (*integer* $type)
 
 Returns the string meaning of a logger constant
 
-**string** **_applyFormat** (string $message, int $type, int $time)
+
+
+protected *string*  **_applyFormat** ()
 
 Applies the internal format to the message
 
-**setDateFormat** (string $date)
+
+
+public  **setDateFormat** (*string* $date)
 
 Sets the internal date format
 
-**string** **getDateFormat** ()
+
+
+public *string*  **getDateFormat** ()
 
 Returns the internal date format
 
-**log** (string $message, int $type)
+
+
+public  **log** (*string* $message, *int* $type)
 
 Sends/Writes messages to the file log
 
-**begin** ()
+
+
+public  **begin** ()
 
 Starts a transaction
 
-**commit** ()
+
+
+public  **commit** ()
 
 Commits the internal transaction
 
-**rollback** ()
+
+
+public  **rollback** ()
 
 Rollbacks the internal transaction
 
-**boolean** **close** ()
+
+
+public *boolean*  **close** ()
 
 Closes the logger
 
-**__wakeup** ()
+
+
+public  **__wakeup** ()
 
 Opens the internal file handler after unserialization
+
+
+
+public  **debug** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes a debug message to the log
+
+
+
+public  **error** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes an error message to the log
+
+
+
+public  **info** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes an info message to the log
+
+
+
+public  **notice** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes a notice message to the log
+
+
+
+public  **warning** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes a warning message to the log
+
+
+
+public  **alert** (*string* $message) inherited from Phalcon\\Logger
+
+Sends/Writes an alert message to the log
+
+
 

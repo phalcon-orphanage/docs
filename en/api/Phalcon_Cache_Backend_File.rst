@@ -1,15 +1,17 @@
-Class **Phalcon_Cache_Backend_File**
-====================================
+Class **Phalcon\\Cache\\Backend\\File**
+=======================================
 
-Allows to cache output fragments using a file backend  
+*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+
+Allows to cache output fragments using a file backend 
 
 .. code-block:: php
 
     <?php
 
-    // Cache the file for 2 days
+    //Cache the file for 2 days
     $frontendOptions = array(
-        'lifetime' => 172800
+    	'lifetime' => 172800
     );
     
     //Set the cache directory
@@ -20,33 +22,75 @@ Allows to cache output fragments using a file backend
     $cache = Phalcon_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
     
     $content = $cache->start('my-cache');
-    if ($content === null){
-        echo '<h1>', time(), '</h1>';
-        $cache->save();
+    if($content===null){
+      	echo '<h1>', time(), '</h1>';
+      	$cache->save();
     } else {
-        echo $content;
+    	echo $content;
     }
+
+
 
 Methods
 ---------
 
-**__construct** (mixed $frontendObject, array $backendOptions)
+public  **__construct** (*mixed* $frontendObject, *array* $backendOptions)
 
-Phalcon_Backend_Adapter_File constructor
+Phalcon\\Backend\\Adapter\\File constructor
 
-**mixed** **get** (int|string $keyName, long $lifetime)
+
+
+public *mixed*  **get** (*int|string* $keyName, *long* $lifetime)
 
 Returns a cached content
 
-**save** (int|string $keyName, string $content, long $lifetime, boolean $stopBuffer)
+
+
+public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
 Stores cached content into the file backend
 
-**boolean** **delete** (int|string $keyName)
 
-Deletes a value from the cache using its key
 
-**array** **queryKeys** (string $prefix)
+public *boolean*  **delete** (*int|string* $keyName)
+
+Deletes a value from the cache by its key
+
+
+
+public *array*  **queryKeys** (*string* $prefix)
 
 Query the existing cached keys
+
+
+
+public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
+
+Starts a cache. The $keyname allow to identify the created fragment
+
+
+
+public *mixed*  **getFrontend** () inherited from Phalcon\\Cache\\Backend
+
+Returns front-end instance adapter related to the back-end
+
+
+
+public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
+
+Checks whether the last cache is fresh or cached
+
+
+
+public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
+
+Checks whether the cache has started buffering or not
+
+
+
+public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
+
+Gets the last key stored by the cache
+
+
 

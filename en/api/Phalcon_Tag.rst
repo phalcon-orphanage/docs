@@ -1,218 +1,299 @@
-Class **Phalcon_Tag**
-=====================
+Class **Phalcon\\Tag**
+======================
 
-Phalcon_Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way.  This component is an abstract class that you can extend to add more helpers.
+Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
+
 
 Methods
 ---------
 
-**setDispatcher** (Phalcon_Dispatcher $dispatcher)
+public static **setDI** (*unknown* $dependencyInjector)
 
-Sets the request dispatcher. A valid dispatcher is required to generate absolute paths
+Sets the dependency injector container.
 
-**Phalcon_Dispatcher** **_getDispatcher** ()
+
+
+:doc:`Phalcon\\DI <Phalcon_DI>` public static **getDI** ()
 
 Internally gets the request dispatcher
 
-**setDefault** (string $id, string $value)
 
-Assigns default values to generated tags by helpers  
+
+:doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>` public static **getUrlService** ()
+
+Return a URL service from the DI
+
+
+
+:doc:`Phalcon\\Mvc\\Dispatcher <Phalcon_Mvc_Dispatcher>` public static **getDispatcherService** ()
+
+Returns a Dispatcher service from the DI
+
+
+
+public static **setDefault** (*string* $id, *string* $value)
+
+Assigns default values to generated tags by helpers
 
 .. code-block:: php
 
     <?php
-    	 
+
     // Assigning "peter" to "name" component
-    Phalcon_Tag::setDefault("name", "peter");
-    
+    Phalcon\Tag::setDefault("name", "peter");
+
     // Later in the view
-    echo Phalcon_Tag::textField("name"); //Will have the value "peter" by default
-     
-**displayTo** (string $id, string $value)
+    echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
-Alias of Phalcon_Tag::setDefault
 
-**mixed** **getValue** (string $name)
 
-Every helper calls this function to check whether a component has a predefined value using Phalcon_Tag::setDefault or value from $_POST
+public static **displayTo** (*string* $id, *string* $value)
 
-**resetInput** ()
+Alias of Phalcon\\Tag::setDefault
+
+
+
+*mixed* public static **getValue** (*string* $name)
+
+Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
+
+
+
+public static **resetInput** ()
 
 Resets the request and internal values to avoid those fields will have any default value
 
-**string** **linkTo** (array $parameters, unknown $text)
 
-Builds a HTML A tag using framework conventions  
+
+*string* public static **linkTo** (*array* $parameters, *unknown* $text)
+
+Builds a HTML A tag using framework conventions
 
 .. code-block:: php
 
-    <?php 
+    <?php
 
-    echo Phalcon_Tag::linkTo('signup/register', 'Register Here!');
+    echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
 
-**string** **_inputField** (string $type, array $parameters)
+
+
+
+*string* protected static **_inputField** ()
 
 Builds generic INPUT tags
 
-**string** **textField** (array $parameters)
 
-Builds a HTML input[type="text"] tag  
 
-.. code-block:: php
+*string* public static **textField** (*array* $parameters)
 
-    <?php 
-
-    echo Phalcon_Tag::textField(array("name", "size" => 30));
-
-**string** **passwordField** (array $parameters)
-
-Builds a HTML input[type="password"] tag  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::passwordField(array("name", "size" => 30));
-
-**string** **hiddenField** (array $parameters)
-
-Builds a HTML input[type="hidden"] tag  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::hiddenField(array("name", "value" => "mike"));
-
-**string** **fileField** (array $parameters)
-
-Builds a HTML input[type="file"] tag  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::fileField("file");
-
-**string** **checkField** (array $parameters)
-
-Builds a HTML input[type="check"] tag  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::checkField(array("name", "size" => 30));
-
-**string** **submitButton** (unknown $parameters)
-
-Builds a HTML input[type="submit"] tag  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::submitButton("Save");
-
-**string** **selectStatic** (array $parameters, unknown $data)
-
-Builds a HTML SELECT tag using a PHP array for options  
-
-.. code-block:: php
-
-    <?php 
-
-    echo Phalcon_Tag::selectStatic(
-        "status", 
-        array("A" => "Active", "I" => "Inactive")
-    );
-
-**string** **select** (unknown $parameters, unknown $data)
-
-Builds a HTML SELECT tag using a Phalcon_Model resultset as options  
+Builds a HTML input[type="text"] tag
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon_Tag::selectStatic(
-        array(
-    	   "robotId",
-    	   Robots::find("type = 'mechanical'"),
-    	   "using" => array("id", "name"),
-        )
-    );
+    echo Phalcon\Tag::textField(array("name", "size" => 30));
 
-**string** **textArea** (array $parameters)
 
-Builds a HTML TEXTAREA tag  
 
-.. code-block:: php
 
-    <?php 
+*string* public static **passwordField** (*array* $parameters)
 
-    echo Phalcon_Tag::textArea(
-        array(
-            "comments", 
-            "cols" => 10, 
-            "rows" => 4,
-        )
-    );
-
-**string** **form** (array $parameters)
-
-Builds a HTML FORM tag  
+Builds a HTML input[type="password"] tag
 
 .. code-block:: php
 
     <?php
-    
-    echo Phalcon_Tag::form("posts/save");
-    echo Phalcon_Tag::form(array("posts/save", "method" => "post"));
-     
-**string** **endForm** ()
+
+     echo Phalcon\Tag::passwordField(array("name", "size" => 30));
+
+
+
+
+*string* public static **hiddenField** (*array* $parameters)
+
+Builds a HTML input[type="hidden"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"));
+
+
+
+
+*string* public static **fileField** (*array* $parameters)
+
+Builds a HTML input[type="file"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::fileField("file");
+
+
+
+
+*string* public static **checkField** (*array* $parameters)
+
+Builds a HTML input[type="checkbox"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::checkField(array("name", "size" => 30));
+
+
+
+*string* public static **radioField** (*array* $parameters)
+
+Builds a HTML input[type="radio"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::radioField(array("name", "class" => 'label-important'));
+
+
+
+
+*string* public static **submitButton** (*unknown* $parameters)
+
+Builds a HTML input[type="submit"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::submitButton("Save");
+
+
+
+
+*string* public static **selectStatic** (*array* $parameters, *unknown* $data)
+
+Builds a HTML SELECT tag using a PHP array for options
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::selectStatic("status", array("A" => "Active", "I" => "Inactive"));
+
+
+
+
+*string* public static **select** (*unknown* $parameters, *unknown* $data)
+
+Builds a HTML SELECT tag using a Phalcon_Model resultset as options
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::selectStatic(
+        array(
+            "robotId",
+            Robots::find("type = 'mechanical'"),
+            "using" => array("id", "name")
+        )
+    );
+
+
+
+
+*string* public static **textArea** (*array* $parameters)
+
+Builds a HTML TEXTAREA tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::textArea(array("comments", "cols" => 10, "rows" => 4));
+
+
+
+
+*string* public static **form** (*array* $parameters)
+
+Builds a HTML FORM tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::form("posts/save");
+     echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
+
+
+
+
+*string* public static **endForm** ()
 
 Builds a HTML close FORM tag
 
-**setTitle** (string $title)
+
+
+public static **setTitle** (*string* $title)
 
 Set the title of view content
 
-**appendTitle** (string $title)
+
+
+public static **appendTitle** (*string* $title)
 
 Add to title of view content
 
-**prependTitle** (string $title)
+
+
+public static **prependTitle** (*string* $title)
 
 Add before the title of view content
 
-**string** **getTitle** ()
+
+
+*string* public static **getTitle** ()
 
 Get the title of view content
 
-**string** **stylesheetLink** (array $parameters, boolean $local)
 
-Builds a LINK[rel="stylesheet"] tag  
 
-.. code-block:: php
+*string* public static **stylesheetLink** (*array* $parameters, *boolean* $local)
 
-    <?php
-    
-    echo Phalcon_Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
-    echo Phalcon_Tag::stylesheetLink("css/style.css");
-     
-**string** **javascriptInclude** (array $parameters, boolean $local)
-
-Builds a SCRIPT[type="javascript"] tag  
+Builds a LINK[rel="stylesheet"] tag
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon_Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-    echo Phalcon_Tag::javascriptInclude("javascript/jquery.js");
-     
-**string** **image** (array $parameters)
+     echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+     echo Phalcon\Tag::stylesheetLink("css/style.css");
+
+
+
+
+*string* public static **javascriptInclude** (*array* $parameters, *boolean* $local)
+
+Builds a SCRIPT[type="javascript"] tag
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
+     echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+
+
+
+
+*string* public static **image** (*array* $parameters)
 
 Builds HTML IMG tags
+
+
 

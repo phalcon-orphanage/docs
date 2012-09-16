@@ -1,90 +1,131 @@
-Class **Phalcon_Db_Column**
-===========================
+Class **Phalcon\\Db\\Column**
+=============================
 
-Allows to define columns to be used on create or alter table operations  
+Allows to define columns to be used on create or alter table operations 
 
 .. code-block:: php
 
     <?php
 
-     use Phalcon_Db_Column as Column;
+    use Phalcon\Db\Column as Column;
     
-    // Column definition
-     $column = new Column(
-        "id", array(
-            "type"          => Column::TYPE_INTEGER,
-            "size"          => 10,
-            "unsigned"      => true,
-            "notNull"       => true,
-            "autoIncrement" => true,
-            "first"         => true,
-        )
-     );
+     //column definition
+     $column = new Column("id", array(
+       "type" => Column::TYPE_INTEGER,
+       "size" => 10,
+       "unsigned" => true,
+       "notNull" => true,
+       "autoIncrement" => true,
+       "first" => true
+     ));
     
-    // Add column to existing table
-    $connection->addColumn("robots", null, $column);
+     //add column to existing table
+     $connection->addColumn("robots", null, $column);
+
+
 
 Constants
 ---------
 
-integer **TYPE_INTEGER**
+*integer* **TYPE_INTEGER**
 
-integer **TYPE_DATE**
+*integer* **TYPE_DATE**
 
-integer **TYPE_VARCHAR**
+*integer* **TYPE_VARCHAR**
 
-integer **TYPE_DECIMAL**
+*integer* **TYPE_DECIMAL**
 
-integer **TYPE_DATETIME**
+*integer* **TYPE_DATETIME**
 
-integer **TYPE_CHAR**
+*integer* **TYPE_CHAR**
 
-integer **TYPE_TEXT**
+*integer* **TYPE_TEXT**
+
+*integer* **TYPE_FLOAT**
 
 Methods
 ---------
 
-**__construct** (string $columnName, array $definition)
+public  **__construct** (*string* $columnName, *array* $definition)
 
-Phalcon_Db_Column constructor
+Phalcon\\Db\\Column constructor
 
-**string** **getSchemaName** ()
+
+
+public *string*  **getSchemaName** ()
 
 Returns schema's table related to column
 
-**string** **getName** ()
+
+
+public *string*  **getName** ()
 
 Returns column name
 
-**int** **getType** ()
+
+
+public *int*  **getType** ()
 
 Returns column type
 
-**int** **getSize** ()
+
+
+public *int*  **getSize** ()
 
 Returns column size
 
-**int** **getScale** ()
+
+
+public *int*  **getScale** ()
 
 Returns column scale
 
-**boolean** **isUnsigned** ()
+
+
+public *boolean*  **isUnsigned** ()
 
 Returns true if number column is unsigned
 
-**boolean** **isNotNull** ()
+
+
+public *boolean*  **isNotNull** ()
 
 Not null
 
-**boolean** **isAutoIncrement** ()
+
+
+public *boolean*  **isPrimary** ()
+
+Column is part of the primary key?
+
+
+
+public *boolean*  **isAutoIncrement** ()
 
 Auto-Increment
 
-**boolean** **isFirst** ()
+
+
+public *boolean*  **isNumeric** ()
+
+Check whether column have an numeric type
+
+
+
+public *boolean*  **isFirst** ()
 
 Check whether column have first position in table
 
-**string** **getAfterPosition** ()
+
+
+public *string*  **getAfterPosition** ()
 
 Check whether field absolute to position in table
+
+
+
+public static  **__set_state** (*unknown* $data)
+
+...
+
 

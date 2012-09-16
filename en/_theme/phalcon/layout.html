@@ -7,7 +7,7 @@
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
-    <div class="related">      
+    <div class="related">
       <ul>
         {%- for rellink in rellinks %}
         <li class="right" {% if loop.first %}{% endif %}>
@@ -28,14 +28,14 @@
 {%- endmacro %}
 
 {%- macro downrelbar() %}
-    <div class="related">      
+    <div class="related">
       <ul>
         {%- for rellink in rellinks %}
         <li class="right" {% if loop.first %}{% endif %}>
           <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags }}"
              {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
-        {%- endfor %}        
+        {%- endfor %}
         {%- for parent in parents %}
           <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
         {%- endfor %}
@@ -131,8 +131,8 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
     <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
-    <link rel="stylesheet" href="{{ pathto('_static/s.css', 1) }}" type="text/css">    
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">    
+    <link rel="stylesheet" href="{{ pathto('_static/s.css', 1) }}" type="text/css">
+    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -144,23 +144,8 @@
       };
     </script>
 
-    <!--<script type="text/javascript" src="{{ pathto('_static/jquery.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/underscore.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/doctools.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>-->
-
-    <script type="text/javascript">
-    <!--
-        $(document).ready(function() {
-            $("#versions").change(function() {
-                var docsUrl = $(this).val();
-                window.location.href = docsUrl;
-            });
-        });
-    -->
-    </script>
+    <script type="text/javascript" src="{{ pathto('_static/jquery.js', 1) }}"></script>
+    <script type="text/javascript" src="{{ pathto('_static/docs.js', 1) }}"></script>
 
     {%- if use_opensearch %}
     <link rel="search" type="application/opensearchdescription+xml"
@@ -198,7 +183,7 @@
   <body>
     <div id="wrapper">
 
-      <div id="header">        
+      <div id="header">
         <h1><a href="http://phalconphp.com/index" ><img border="0" src="{{ pathto('_static/img/logo-small.png', 1) }}"></a></h1>
         <div align="center">
           <div id="nav-main" role="navigation">
@@ -223,7 +208,7 @@
       <table width="90%" align="center">
         <tr>
           {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
-          <td class="second-box" valign="top">  
+          <td class="second-box" valign="top">
             <div class="document">
             {%- block document %}
                 <div class="documentwrapper">
@@ -237,14 +222,14 @@
                   </div>
                 {%- endif %}{% endif %}
                 </div>
-            {%- endblock %}          
+            {%- endblock %}
             </div>
-          </td>  
-        </tr>   
+          </td>
+        </tr>
       </table>
 
       {%- block relbar2 %}{{ downrelbar() }}{% endblock %}
-              
+
       {%- block footer %}
         <div id="footer">
           {%- if hasdoc('copyright') %}

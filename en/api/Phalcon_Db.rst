@@ -1,202 +1,316 @@
-Class **Phalcon_Db**
-====================
+Class **Phalcon\\Db**
+=====================
 
-Phalcon_Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon_Db is the base class developers can use to connect a PHP application to an RDBMS. There is a different adapter class for each flavor of RDBMS. This component is intended to allow low level database operations. If there is a need for high level abstraction for database operations, developers can use Phalcon_Model. Phalcon_Db is an abstract class. It can be used with a database adapter such as Phalcon_Db_Adapter_Mysql  
+Phalcon\\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS. This component is intended to lower level database operations. If you want to interact with databases using higher level of abstraction use Phalcon\\Mvc\\Model. Phalcon\\Db is an abstract class. You only can use it with a database adapter like Phalcon\\Db\\Adapter\\Pdo 
 
 .. code-block:: php
 
     <?php
 
-    $config           = new stdClass();
-    $config->host     = 'localhost';
-    $config->username = 'machine';
-    $config->password = 'sigma';
-    $config->name     = 'swarm';
-    
     try {
     
-      $connection = Phalcon\Db::factory('Mysql', $config);
+      $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
+         'host' => '192.168.0.11',
+         'username' => 'sigma',
+         'password' => 'secret',
+         'dbname' => 'blog',
+         'port' => '3306',
+      ));
     
       $result = $connection->query("SELECT * FROM robots LIMIT 5");
-      $result->setFetchMode(Phalcon\Db::DB_NUM);
-      while($robot = $result->fetchArray()) {
+      $result->setFetchMode(Phalcon\Db::FETCH_NUM);
+      while($robot = $result->fetchArray()){
         print_r($robot);
       }
     
-    } catch(Phalcon_Db_Exception $e) {
-    	echo $e->getMessage(), PHP_EOL;
+    } catch(Phalcon\Db\Exception $e){
+    echo $e->getMessage(), PHP_EOL;
     }
+
+
 
 Constants
 ---------
 
-integer **DB_ASSOC**
+*integer* **FETCH_ASSOC**
 
-integer **DB_BOTH**
+*integer* **FETCH_BOTH**
 
-integer **DB_NUM**
+*integer* **FETCH_NUM**
 
 Methods
 ---------
 
-**__construct** (stdClass $descriptor)
+protected  **__construct** ()
 
-Phalcon_Db constructor, this method should not be called directly. Use Phalcon_Db::factory instead
+Phalcon\\Db constructor
 
-**setLogger** (Phalcon\Logger $logger)
 
-Sets a logger class to log all SQL operations sent to the RDBMS
 
-**Phalcon\Logger** **getLogger** ()
+public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
 
-Returns the active logger
+Sets the event manager
 
-**log** (string $sqlStatement, int $type)
 
-Sends arbitrary text to an instantiated logger
 
-**setProfiler** (Phalcon\Db\Profiler $profiler)
+public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
-Sets a database profiler to the connection
+Returns the internal event manager
 
-**array** **fetchOne** (string $sqlQuery, int $fetchMode)
 
-Returns the first row in a SQL query result  
+
+public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode)
+
+Returns the first row in a SQL query result 
 
 .. code-block:: php
 
     <?php
 
-    // Getting first robot
+    //Getting first robot
     $robot = $connection->fecthOne("SELECT * FROM robots");
     print_r($robot);
     
     //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon_Db_Result::DB_ASSOC);
+    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
-     
-**array** **fetchAll** (string $sqlQuery, int $fetchMode)
 
-Dumps the complete result of a query into an array  
+
+
+
+public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode)
+
+Dumps the complete result of a query into an array 
 
 .. code-block:: php
 
     <?php
 
-    // Getting all robots
+    //Getting all robots
     $robots = $connection->fetchAll("SELECT * FROM robots");
-    foreach ($robots as $robot) {
-        print_r($robot);
+    foreach($robots as $robot){
+    	print_r($robot);
     }
-    // Getting all robots with associative indexes only
-    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon_Db_Result::DB_ASSOC);
-    foreach ($robots as $robot) {
-        print_r($robot);
+    
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach($robots as $robot){
+    	print_r($robot);
     }
 
-**boolean** **insert** (string $table, array $values, array $fields, boolean $automaticQuotes)
 
-Inserts data into a table using custom RBDM SQL syntax  
+
+
+public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields)
+
+Inserts data into a table using custom RBDM SQL syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Next SQL sentence is sent to the database system
+     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+
+
+
+
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition)
+
+Updates data on a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-    // Inserting a new robot
-    $success = $connection->insert(
-        "robots",
-        array("Astro Boy", 1952),
-        array("name", "year")
-    );
+     //Updating existing robot
+     $success = $connection->update(
+         "robots",
+         array("name")
+         array("New Astro Boy"),
+         "id = 101"
+     );
     
-    // SQL statement sent to the database system
-    // INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+     //Next SQL sentence is sent to the database system
+     UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
-**boolean** **update** (string $table, array $fields, array $values, string $whereCondition, boolean $automaticQuotes)
 
-Updates data on a table using custom RBDM SQL syntax  
+
+
+public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders)
+
+Deletes data from a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
+
+     //Deleting existing robot
+     $success = $connection->delete(
+         "robots",
+         "id = 101"
+     );
     
-    // Updating existing robot
-    $success = $connection->update(
-        "robots",
-        array("name")
-        array("New Astro Boy"),
-        "id = 101"
-    );
-    
-    // SQL statement sent to the database system
-    // UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+     //Next SQL sentence is generated
+     DELETE FROM `robots` WHERE `id` = 101
 
-**boolean** **delete** (string $table, string $whereCondition)
 
-Deletes data from a table using custom RBDM SQL syntax  
 
-.. code-block:: php
 
-    <?php
-    
-    // Deleting existing robot
-    $success = $connection->delete(
-        "robots",
-        "id = 101"
-    );
-    
-    // SQL statement sent to the database system
-    // DELETE FROM `robots` WHERE id = 101
-     
-**boolean** **begin** ()
+public *string*  **getColumnList** (*array* $columnList)
 
-Starts a transaction in the connection
+Gets a list of columns
 
-**boolean** **rollback** ()
 
-Rollbacks the active transaction in the connection
 
-**boolean** **commit** ()
+public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
-Commits the active transaction in the connection
+Appends a LIMIT clause to $sqlQuery argument <code>$connection->limit("SELECT * FROM robots", 5);
 
-**setUnderTransaction** (boolean $underTransaction)
 
-Manually sets a "under transaction" state for the connection
 
-**boolean** **isUnderTransaction** ()
+public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
 
-Checks whether connection is under database transaction
+Generates SQL checking for the existence of a schema.table <code>$connection->tableExists("blog", "posts")
 
-**boolean** **getHaveAutoCommit** ()
 
-Checks whether connection have auto commit
 
-**string** **getDatabaseName** ()
+public *string*  **viewExists** (*string* $viewName, *string* $schemaName)
 
-Returns database name in the internal connection
+Generates SQL checking for the existence of a schema.view <code>$connection->viewExists("active_users", "posts")
 
-**string** **getDefaultSchema** ()
 
-Returns active schema name in the internal connection
 
-**string** **getUsername** ()
+public *string*  **forUpdate** (*string* $sqlQuery)
 
-Returns the username which has connected to the database
+Returns a SQL modified with a FOR UPDATE clause
 
-**string** **getHostName** ()
 
-Returns the username which has connected to the database
 
-**_beforeQuery** (string $sqlStatement)
+public *string*  **sharedLock** (*string* $sqlQuery)
 
-This method is executed before every SQL statement sent to the database system
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
-**_afterQuery** (string $sqlStatement)
 
-This method is executed after every SQL statement sent to the database system
 
-**Phalcon_Db_Adapter** **factory** (string $adapterName, stdClass $options)
+public *boolean*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
 
-Instantiates Phalcon_Db adapter using given parameters
+Creates a table using MySQL SQL
+
+
+
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+
+Drops a table from a schema/database
+
+
+
+public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+
+Adds a column to a table
+
+
+
+public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+
+Modifies a table column based on a definition
+
+
+
+public *boolean*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
+
+Drops a column from a table
+
+
+
+public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, *DbIndex* $index)
+
+Adds an index to a table
+
+
+
+public *boolean*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+
+Drop an index from a table
+
+
+
+public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
+
+Adds a primary key to a table
+
+
+
+public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+
+Drops primary key from a table
+
+
+
+public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
+
+Adds a foreign key to a table
+
+
+
+public *boolean true*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+
+Drops a foreign key from a table
+
+
+
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+
+Returns the SQL column definition from a column
+
+
+
+public *array*  **listTables** (*string* $schemaName)
+
+List all tables on a database <code> print_r($connection->listTables("blog") ?>
+
+
+
+public *string*  **getDescriptor** ()
+
+Return descriptor used to connect to the active database
+
+
+
+public *string*  **getConnectionId** ()
+
+Gets the active connection unique identifier
+
+
+
+public  **getSQLStatement** ()
+
+Active SQL statement in the object
+
+
+
+public *string*  **getType** ()
+
+Returns type of database system the adapter is used for
+
+
+
+public *string*  **getDialectType** ()
+
+Returns the name of the dialect used
+
+
+
+public :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`  **getDialect** ()
+
+Returns internal dialect instance
+
+
 

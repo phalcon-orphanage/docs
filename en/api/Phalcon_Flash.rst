@@ -1,56 +1,99 @@
-Class **Phalcon_Flash**
-=======================
+Class **Phalcon\\Flash**
+========================
 
-Shows HTML notifications related to different circumstances. Classes can be styled using CSS.
+Shows HTML notifications related to different circumstances. Classes can be stylized using CSS 
 
 .. code-block:: php
 
     <?php
-    
-    Phalcon_Flash::success("The record was successfully deleted");
-    Phalcon_Flash::error("Cannot open the file");
-    Phalcon_Flash::error("Cannot open the file", "alert alert-error");
+
+     $flash->success("The record was successfully deleted");
+     $flash->error("Cannot open the file");
+
+
 
 Methods
 ---------
 
-**string** **error** (string $message, string $classes)
+public  **__construct** (*array* $cssClasses)
 
-Shows a HTML error message  
+Phalcon\\Flash constructor
 
-.. code-block:: php
 
-    <?php 
 
-    Phalcon_Flash::error('This is an error'); 
+public  **setImplicitFlush** (*unknown* $implicitFlush)
 
-**string** **notice** (string $message, string $classes)
+Set the if the output must be implictly flushed to the output or returned as string
 
-Shows a HTML notice/information message  
 
-.. code-block:: php
 
-    <?php 
+public  **setAutomaticHtml** (*boolean* $automaticHtml)
 
-    Phalcon_Flash::notice('This is an information'); 
+Set the if the output must be implictly formatted with HTML
 
-**string** **success** (string $message, string $classes)
 
-Shows a HTML success message  
 
-.. code-block:: php
+public  **setCssClasses** (*array* $cssClasses)
 
-    <?php 
+Set an array with CSS classes to format the messages
 
-    Phalcon_Flash::success('The process was finished successfully'); 
 
-**string** **warning** (string $message, string $classes)
 
-Shows a HTML warning message  
+public *string*  **error** (*string* $message)
+
+Shows a HTML error message 
 
 .. code-block:: php
 
-    <?php 
+    <?php
 
-    Phalcon_Flash::warning('Hey, this is important', 'alert alert-warning'); 
+     $flash->error('This is an error');
+
+
+
+
+public *string*  **notice** (*string* $message)
+
+Shows a HTML notice/information message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->notice('This is an information');
+
+
+
+
+public *string*  **success** (*string* $message)
+
+Shows a HTML success message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->success('The process was finished successfully');
+
+
+
+
+public *string*  **warning** (*string* $message)
+
+Shows a HTML warning message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->warning('Hey, this is important');
+
+
+
+
+public  **outputMessage** (*string* $type, *string* $message)
+
+Outputs a message formatting it with HTML
+
+
 
