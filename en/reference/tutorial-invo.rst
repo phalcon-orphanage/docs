@@ -265,7 +265,7 @@ The backend is a private area where only registered users have access. Therefore
 
 Every time someone try to access any controller and action, the application verifies that the current role has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called Dispatcher. He is informed of the route found by the component Router and then is responsible for loading the appropriate controller and execute the corresponding action method.
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called Dispatcher. It is informed about the route found by the component Router. Based on this is responsible for loading the appropriate controller and execute the corresponding action method.
 
 Normally, the Dispatcher is created automatically by the framework. In our case, we want to make a special action that is check before executing the required action if the user has access to it or not. To achieve this we replace the component by creating a function defined by us in the bootstrap:
 

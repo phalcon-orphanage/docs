@@ -48,7 +48,7 @@ Dispatch Loop Events
 | afterDispatchLoop    | Triggered after exit the dispatch loop                                                                                                                                                                      | No                  |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 
-The :doc`INVO <tutorial-invo>` explanation shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
+The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
 
 Forwarding to another actions
 -----------------------------
@@ -82,3 +82,29 @@ The "forward" doesn't reloads the current page, all the redirection occurs in a 
 
 Getting Parameters
 ------------------
+When a route provides named parameters you can receive them in a controller, a view or any other component that extends :doc:`Phalcon\DI\Injectable <../api/Phalcon_DI_Injectable>`.
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\DI\Injectable
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function saveAction()
+        {
+
+            // Get the post's title passed in the URL as parameter
+            $title = $this->dispatcher->getParam("title");
+
+            // Get the post's year passed in the URL as parameter
+            // also filtering it
+            $year = $this->dispatcher->getParam("year", "int");
+        }
+
+    }
