@@ -22,9 +22,9 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	//Set up the flash service
+    //Set up the flash service
     $di->set('flash', function() {
         return new \Phalcon\Flash\Direct();
     });
@@ -67,7 +67,7 @@ You can add messages with your own types:
 
     <?php
 
-	$this->flash->message("debug", "this is debug message, you don't say");
+    $this->flash->message("debug", "this is debug message, you don't say");
 
 Printing Messages
 -----------------
@@ -75,10 +75,10 @@ Messages sent to the flasher are automatically formatted with html:
 
 .. code-block:: html
 
-	<div class="errorMessage">too bad! the form had errors</div>
-	<div class="successMessage">yes!, everything went very smoothly</div>
-	<div class="noticeMessage">this a very important information</div>
-	<div class="warningMessage">best check yo self, you're not looking too good.</div>
+    <div class="errorMessage">too bad! the form had errors</div>
+    <div class="successMessage">yes!, everything went very smoothly</div>
+    <div class="noticeMessage">this a very important information</div>
+    <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
 As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation of the messages in the browser.
 The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
@@ -87,23 +87,23 @@ The CSS classes can be overridden, for example, if you're using Twitter bootrstr
 
     <?php
 
-	//Register the flash service with custom CSS classes
-	$di->set('flash', function(){
-		$flash = new \Phalcon\Flash\Direct(array(
-			'error' => 'alert alert-error',
-			'success' => 'alert alert-success',
-			'notice' => 'alert alert-info',
-		));
-		return $flash;
-	});
+    //Register the flash service with custom CSS classes
+    $di->set('flash', function(){
+        $flash = new \Phalcon\Flash\Direct(array(
+            'error' => 'alert alert-error',
+            'success' => 'alert alert-success',
+            'notice' => 'alert alert-info',
+        ));
+        return $flash;
+    });
 
 Then the messages would be printed as follows:
 
 .. code-block:: html
 
-	<div class="alert alert-error">too bad! the form had errors</div>
-	<div class="alert alert-success">yes!, everything went very smoothly</div>
-	<div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-success">yes!, everything went very smoothly</div>
+    <div class="alert alert-info">this a very important information</div>
 
 Implicit Flush vs. Session
 --------------------------
@@ -126,9 +126,9 @@ but if you do a HTTP redirect then they need to be stored in session:
         public function saveAction()
         {
 
-        	//store the post
+            //store the post
 
-        	//Using direct flash
+            //Using direct flash
             $this->flash->success("Your information were stored correctly!");
 
             //Forward to the index action
@@ -154,9 +154,9 @@ Or using a HTTP redirection:
         public function saveAction()
         {
 
-        	//store the post
+            //store the post
 
-        	//Using session flash
+            //Using session flash
             $this->flashSession->success("Your information were stored correctly!");
 
             //Make a full HTTP redirection
@@ -169,9 +169,9 @@ In this case you need to print manually the messages in the corresponding view:
 
 .. code-block:: html+php
 
-	<!-- app/views/contact/index.phtml -->
+    <!-- app/views/contact/index.phtml -->
 
-	<p><?php $this->flashSession->output() ?></p>
+    <p><?php $this->flashSession->output() ?></p>
 
 
 
