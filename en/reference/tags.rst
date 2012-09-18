@@ -50,7 +50,8 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 
 Making Select Boxes
 -------------------
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are \Phalcon\Tag::select() and \Phalcon\Tag::selectStatic(). Phalcon_Tag::selectStatic() has been was specifically designed to work with \Phalcon\Model\Base, while \Phalcon\Tag::selectStatic() can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\\Tag::select() and Phalcon\\Tag::selectStatic().
+Phalcon\\Tag::selectStatic() has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while Phalcon\\Tag::selectStatic() can with PHP arrays.
 
 .. code-block:: php
 
@@ -117,7 +118,10 @@ Setting Helper Values
 
 From Controllers
 ^^^^^^^^^^^^^^^^
-It is a good programming principle for MVC frameworks to set specific values for form elements in the view. You can set those values directly from the controller using \Phalcon\Tag::setDefaultValue(). This helper preloads a value for any helpers present in the view. If any helper in the view has a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.
+It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
+You can set those values directly from the controller using Phalcon\\Tag::setDefaultValue().
+This helper preloads a value for any helpers present in the view. If any helper in the view has
+a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.
 
 .. code-block:: php
 
@@ -162,15 +166,18 @@ This will generate the following select tag with the value "Blue" selected:
 
 From the Request
 ^^^^^^^^^^^^^^^^
-A special feature that the :doc:`\Phalcon\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data.
+A special feature that the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values
+of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
 Specifying values directly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Every form helper supports the parameter "value". With it you can specify a value for the helper directly. When this parameter is present, any preset value using setDefaultValue() or via request will be ignored.
+Every form helper supports the parameter "value". With it you can specify a value for the helper directly.
+When this parameter is present, any preset value using setDefaultValue() or via request will be ignored.
 
 Changing dynamically the Document Title
 ---------------------------------------
-:doc:`\Phalcon\Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller. The following example demonstrates just that:
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller.
+The following example demonstrates just that:
 
 .. code-block:: php
 
@@ -264,7 +271,7 @@ Javascript
 
 Creating your own helpers
 -------------------------
-You can easily create your own helpers by extending the :doc:`\Phalcon\Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:
+You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:
 
 .. code-block:: php
 
