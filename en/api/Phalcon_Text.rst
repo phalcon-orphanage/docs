@@ -1,29 +1,35 @@
 Class **Phalcon\\Text**
 =======================
 
-Provides utilities when working with strings that contain underscores and camel case notations.
+Provides utilities when working with strings
+
 
 Methods
 ---------
 
 public static *string*  **camelize** (*string* $str)
 
-Provides a similar functionality as ucwords_ but uses the underscore as a separator instead of a space to separate words.
-
-.. code-block:: php
-
-    <?php Phalcon_Text::camelize('coco_bongo'); //CocoBongo
-
-
-public static **string** **uncamelize** (string $str)
-
-Opposite of **camelize**
+Converts strings to camelize style 
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon\Text::uncamelize('CocoBongo'); //coco_bongo
+    echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
 
-.. _ucwords: http://php.net/manual/en/function.ucwords.php
+
+
+
+public static *string*  **uncamelize** (*string* $str)
+
+Uncamelize strings which are camelized 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+
+
+
 
