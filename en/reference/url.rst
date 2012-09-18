@@ -1,7 +1,7 @@
 Generating URLs and Paths
 =========================
 
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` is the component responsible of generate urls in a Phalcon application. It's capable of produce independent urls based on routes.
+:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's capable of produce independent urls based on routes.
 
 Setting a base URI
 ------------------
@@ -64,7 +64,12 @@ A URL can be generated in the following way:
     <?php
 
     //This produces: /blog/2012/01/some-blog-post
-    $url->get(array('for' => 'show-post', 'year' => 2012, 'month' => '01', 'title' => 'some-blog-post'));
+    $url->get(array(
+        'for' => 'show-post',
+        'year' => 2012,
+        'month' => '01',
+        'title' => 'some-blog-post'
+    ));
 
 Producing URLs without Mod-Rewrite
 ----------------------------------

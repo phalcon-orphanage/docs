@@ -468,7 +468,6 @@ The following Phalcon powered applications are also available, providing more co
 * `PHP Alternative website`_: Multilingual and advanced routing application.
 
 .. _developer tools: tools
-.. _here: tutorial
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 
