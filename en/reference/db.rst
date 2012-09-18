@@ -178,7 +178,25 @@ Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Al
     $sql     = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
     $success = $connection->query($sql);
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings and not numbers, so the placeholder could not be successfully replaced. With the MySQL adapter strings are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the MySQL server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
+are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
+data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
+
+This function takes into account the connection charset, so its recommended to define the correct charset
+in the connection parameters or in your database server configuration, as a wrong
+charset will produce undesired effects when storing or retrieving data.
+
+Also, you can pass your parameterers directly to the execute/query methods. In this case
+bound parameters are directly passed to PDO:
+
+.. code-block:: php
+
+    <?php
+
+    // Binding with PDO placeholders
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array(1 => "Wall-E"));
+
 
 Inserting/Updating/Deleting Rows
 --------------------------------
