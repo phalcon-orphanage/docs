@@ -29,7 +29,7 @@ The Phalcon extension should appear as part of the output:
 
 Creating a project
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code here.
+The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
 
 File structure
 ^^^^^^^^^^^^^^
