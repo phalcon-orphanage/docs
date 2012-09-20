@@ -142,7 +142,7 @@ All table fields are declared public for direct access.
 
     }
 
-By adding the *--gen-setters-getters* you can generate the fields with protected variables and public setter/getter methods. Those methods can help in business logic implementation within the setter/getter methods.
+By adding the *--get-set* you can generate the fields with protected variables and public setter/getter methods. Those methods can help in business logic implementation within the setter/getter methods.
 
 .. code-block:: php
 
@@ -186,7 +186,8 @@ By adding the *--gen-setters-getters* you can generate the fields with protected
          * Method to set the value of field id
          * @param integer $id
          */
-        public function setId($id){
+        public function setId($id)
+        {
             $this->id = $id;
         }
 
@@ -194,7 +195,8 @@ By adding the *--gen-setters-getters* you can generate the fields with protected
          * Method to set the value of field types_id
          * @param integer $types_id
          */
-        public function setTypesId($types_id){
+        public function setTypesId($types_id)
+        {
             $this->types_id = $types_id;
         }
 
@@ -204,7 +206,8 @@ By adding the *--gen-setters-getters* you can generate the fields with protected
          * Returns the value of field status
          * @return string
          */
-        public function getStatus(){
+        public function getStatus()
+        {
             return $this->status;
         }
 

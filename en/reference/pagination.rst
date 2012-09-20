@@ -1,6 +1,7 @@
 Data Pagination
 ===============
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a fast and convenient way to split these sets of data browsable pages.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
+fast and convenient way to split these sets of data browsable pages.
 
 Data Adapters
 -------------
