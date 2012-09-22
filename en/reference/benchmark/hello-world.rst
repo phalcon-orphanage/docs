@@ -457,38 +457,38 @@ Nette 2.0.4
 	Server Port:            80
 
 	Document Path:          /bench/helloworld/nette/www/index.php
-	Document Length:        24641 bytes
+	Document Length:        205 bytes
 
 	Concurrency Level:      5
-	Time taken for tests:   4.718 seconds
+	Time taken for tests:   3.569 seconds
 	Complete requests:      1000
-	Failed requests:        88
-	   (Connect: 0, Receive: 0, Length: 88, Exceptions: 0)
+	Failed requests:        0
 	Write errors:           0
-	Total transferred:      24886088 bytes
-	HTML transferred:       24641088 bytes
-	Requests per second:    211.98 [#/sec] (mean)
-	Time per request:       23.588 [ms] (mean)
-	Time per request:       4.718 [ms] (mean, across all concurrent requests)
-	Transfer rate:          5151.62 [Kbytes/sec] received
+	Total transferred:      448000 bytes
+	HTML transferred:       205000 bytes
+	Requests per second:    280.18 [#/sec] (mean)
+	Time per request:       17.846 [ms] (mean)
+	Time per request:       3.569 [ms] (mean, across all concurrent requests)
+	Transfer rate:          122.58 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0   23   7.6     22      64
-	Processing:     0    0   1.3      0      23
-	Waiting:        0    0   1.1      0      20
-	Total:         12   23   7.6     23      64
+	Connect:        0   18   6.6     16      63
+	Processing:     0    0   1.0      0      20
+	Waiting:        0    0   1.0      0      20
+	Total:          9   18   6.6     16      63
 
 	Percentage of the requests served within a certain time (ms)
-	  50%     23
-	  66%     26
-	  75%     27
-	  80%     29
-	  90%     33
-	  95%     38
-	  98%     42
-	  99%     48
-	 100%     64 (longest request)
+	  50%     16
+	  66%     19
+	  75%     20
+	  80%     22
+	  90%     27
+	  95%     31
+	  98%     37
+	  99%     39
+	 100%     63 (longest request)
+
 
 Phalcon Version 0.5.0
 ^^^^^^^^^^^^^^^^^^^^^
@@ -560,7 +560,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Requests per second');
 			data.addRows([
-				['Nette', 211.98],
+				['Nette', 280.18],
 				['Zend', 324.02],
 				['Laravel', 424.97],
 				['Symfony', 541.01],
@@ -590,7 +590,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Time per Request');
 			data.addRows([
-				['Nette', 4.718],
+				['Nette', 3.569],
 				['Zend', 3.086],
 				['Laravel', 2.353],
 				['Symfony', 1.848],
@@ -614,7 +614,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Memory Usage (MB)');
 			data.addRows([
-				['Nette', 12.5],
+				['Nette', 3.5],
 				['Zend', 1.75],
                 ['Symfony', 1.5],
                 ['Yii', 1.5],
