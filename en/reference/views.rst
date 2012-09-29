@@ -383,7 +383,7 @@ The method render() accepts an absolute path to the view file and the view param
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\DI $di
          */
-        public function __construct($view, $options)
+        public function __construct($view, $di)
         {
             //Initiliaze here the adapter
             parent::__construct($view, $di);
