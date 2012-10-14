@@ -62,7 +62,7 @@ Creating the extension:
 .. code-block:: bash
 
     git clone git://github.com/phalcon/cphalcon.git
-    cd cphalcon/release
+    cd cphalcon/build
     export CC="gcc"
     export CFLAGS="-O2 -fno-delete-null-pointer-checks"
     phpize

@@ -74,7 +74,7 @@ You are not required to implement all of the files mentioned above. :doc:`Phalco
 
     <h2>This is the "posts" controller layout!</h2>
 
-    <?php $this->getContent() ?>
+    <?php echo $this->getContent() ?>
 
 .. code-block:: html+php
 
@@ -87,7 +87,7 @@ You are not required to implement all of the files mentioned above. :doc:`Phalco
 
             <h1>This is main layout!</h1>
 
-            <?php $this->getContent() ?>
+            <?php echo $this->getContent() ?>
 
         </body>
     </html>
@@ -383,7 +383,7 @@ The method render() accepts an absolute path to the view file and the view param
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\DI $di
          */
-        public function __construct($view, $options)
+        public function __construct($view, $di)
         {
             //Initiliaze here the adapter
             parent::__construct($view, $di);

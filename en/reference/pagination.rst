@@ -1,6 +1,7 @@
 Data Pagination
 ===============
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a fast and convenient way to split these sets of data browsable pages.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
+fast and convenient way to split these sets of data browsable pages.
 
 Data Adapters
 -------------
@@ -32,7 +33,7 @@ In the example below, the paginator will use as its source data the result of a 
     $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = Phalcon\Paginator\Adapter\Model(array(
+    $paginator = new Phalcon\Paginator\Adapter\Model(array(
         "data" => $robots,
         "limit"=> 10,
         "page" => $numberPage

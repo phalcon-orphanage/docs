@@ -3,7 +3,7 @@ Tutorial 2: Explaining INVO
 
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon. INVO is one of the applications we have created as samples. INVO is a small website that allows their users to generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
 
-Also, INVO was made with Twitter Bootstrap as client-side framework. Although the application does not generate invoices still it serves as an example to understand how the framework works.
+Also, INVO was made with `Twitter Bootstrap <http://twitter.github.com/>`_ as client-side framework. Although the application does not generate invoices still it serves as an example to understand how the framework works.
 
 Project Structure
 ------------------
@@ -53,7 +53,7 @@ of the bootstrap file (public/index.php):
     //Read the configuration
     $config = new Phalcon\Config\Adapter\Ini(__DIR__.'/../app/config/config.ini');
 
-Phalcon\Config allows us to manipulate the file in an object oriented way. The configuration file contains the following
+:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object oriented way. The configuration file contains the following
 settings:
 
 .. code-block:: ini
@@ -64,7 +64,7 @@ settings:
     password = secret
     name     = invo
 
-    [app]
+    [application]
     controllersDir = /../app/controllers/
     modelsDir      = /../app/models/
     viewsDir       = /../app/views/
@@ -91,10 +91,10 @@ A second part that appears in the boostrap file (public/index.php) is the autolo
 
     $loader->registerDirs(
         array(
-            __DIR__.$config->app->controllersDir,
-            __DIR__.$config->app->pluginsDir,
-            __DIR__.$config->app->libraryDir,
-            __DIR__.$config->app->modelsDir,
+            __DIR__.$config->application->controllersDir,
+            __DIR__.$config->application->pluginsDir,
+            __DIR__.$config->application->libraryDir,
+            __DIR__.$config->application->modelsDir,
         )
     )->register();
 
@@ -147,7 +147,7 @@ It registers the majority of services with components provided by the framework 
 
 Log into the Application
 ------------------------
-Log in will allow us to work on backend controllers. The separation between the controllers of the backend and frontend is only logical. All controllers are located in the same directory. To enter the system, we must have a valid username and password. The users are the  stored in the table "users" of the database "invo".
+Log in will allow us to work on backend controllers. The separation between the controllers of the backend and frontend is only logical. All controllers are located in the same directory. To enter the system, we must have a valid username and password. The users are stored in the table "users" of the database "invo".
 
 Before we can log in, we need to configure the connection to the database in the application. A service called "db" will be applied to the service container for this information. As with the autoloader, this time we are also taking parameters from the configuration file to configure a service:
 
