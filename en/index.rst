@@ -29,6 +29,7 @@ Table of Contents
    reference/phql
    reference/views
    reference/tags
+   reference/volt
    reference/applications
    reference/routing
    reference/dispatching
