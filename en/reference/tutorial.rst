@@ -29,7 +29,7 @@ The Phalcon extension should appear as part of the output:
 
 Creating a project
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code here.
+The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
 
 File structure
 ^^^^^^^^^^^^^^
@@ -436,7 +436,7 @@ Receiving data from the form and storing them in the table is the next step.
             if ($user->save() == true) {
                 echo "Thanks for register!";
             } else {
-                echo "Sorry, the next problems were generated: ";
+                echo "Sorry, the following problems were generated: ";
                 foreach ($user->getMessages() as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
@@ -468,7 +468,6 @@ The following Phalcon powered applications are also available, providing more co
 * `PHP Alternative website`_: Multilingual and advanced routing application.
 
 .. _developer tools: tools
-.. _here: tutorial
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 

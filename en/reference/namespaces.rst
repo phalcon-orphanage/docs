@@ -1,10 +1,12 @@
 Working with Namespaces
 =======================
-Namespaces_ can be used to avoid class name collisions, this means that if you have two controllers in an application with the same name, it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
+Namespaces_ can be used to avoid class name collisions, this means that if you have two controllers in an application with the same name,
+it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 Setting up the framework
 ------------------------
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
+to perform one or all of the following tasks:
 
 Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
 
@@ -33,14 +35,15 @@ Specify in the routes a full class name in the controller path:
         )
     );
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the Dispatcher. by doing this you don't need to specify a full class name in the router path.
+If you are only working with the same namespace for every controller in your application, then you can define a default namespace
+in the Dispatcher. by doing this you don't need to specify a full class name in the router path.
 
 .. code-block:: php
 
     <?php
 
     //Registering a dispatcher
-    $di->set('dispatcher', function(){
+    $di->set('dispatcher', function() {
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
         $dispatcher->setDefaultNamespace('Store\Admin\Controllers\\');
         return $dispatcher;

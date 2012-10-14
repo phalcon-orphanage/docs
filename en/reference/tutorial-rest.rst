@@ -113,7 +113,8 @@ When a defined route matches the requested URI then the application will execute
 Creating a Model
 ----------------
 Our API provides information about robots, these data are stored in a database. The following model allows us to access that table in an object oriented way.
-We have implemented
+We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data
+meet the requirements of our application:
 
 .. code-block:: php
 
@@ -208,7 +209,7 @@ The first "handler" that we will implement is which by method GET returns all av
 
 :doc:`PHQL <phql>`, allow us to write queries using a high level, object oriented SQL dialect that internally
 translates to the right SQL statements depending on the database system we are using. The clause "use" in the anonymous function allows
-us to pass variables from global to local scope easily.
+us to pass some variables from global to local scope easily.
 
 The searching by name handler would look like:
 
@@ -295,6 +296,9 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
         } else {
 
+            //Change the HTTP status
+            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+
             //Send errors to the client
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -329,11 +333,16 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'type' => $robot->type,
             'year' => $robot->year
         ));
+
+        //Check if the insertion was successfull
         if($status->success()==true){
 
             $response = array('status' => 'OK');
 
         } else {
+
+            //Change the HTTP status
+            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -368,6 +377,9 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             $response = array('status' => 'OK');
 
         } else {
+
+            //Change the HTTP status
+            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -448,7 +460,7 @@ Try to insert a new robot with the name of an existing robot:
 
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 200 OK
+    HTTP/1.1 500 Internal Error
     Date: Wed, 12 Sep 2012 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
@@ -462,7 +474,7 @@ Or update a robot with an unknown type:
 
     curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' http://localhost/my-rest-api/api/robots/4
 
-    HTTP/1.1 200 OK
+    HTTP/1.1 500 Internal Error
     Date: Wed, 12 Sep 2012 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104

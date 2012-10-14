@@ -63,7 +63,7 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array("controllers" => "users", "action" => "signin"));
+            $this->dispatcher->forward(array("controller" => "users", "action" => "signin"));
         }
 
     }

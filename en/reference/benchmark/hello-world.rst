@@ -24,12 +24,13 @@ Pariticipant Frameworks
 
 * Yii_ (YII_DEBUG=false) (yii-1.1.12.b600af)
 * Symfony_ (2.0.11)
-* `Zend Framework`_ 1.11.11
+* `Zend Framework`_ (1.11.11)
 * Kohana_ (3.2.0)
 * FuelPHP_ (1.2.1)
 * CakePHP_ (2.1.3)
 * Laravel_ 3.2.5
 * CodeIgniter_ (2.1.0)
+* Nette_ (2.0.4)
 
 Results
 -------
@@ -437,6 +438,58 @@ Laravel 3.2.5
 	  99%     36
 	 100%     56 (longest request)
 
+Nette 2.0.4
+^^^^^^^^^^^
+
+.. code-block:: php
+
+	# ab -n 1000 -c 5 http://localhost/bench/nette/www/index.php
+
+	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+	Licensed to The Apache Software Foundation, http://www.apache.org/
+
+	Benchmarking localhost (be patient)
+
+
+	Server Software:        Apache/2.2.22
+	Server Hostname:        localhost
+	Server Port:            80
+
+	Document Path:          /bench/helloworld/nette/www/index.php
+	Document Length:        205 bytes
+
+	Concurrency Level:      5
+	Time taken for tests:   3.569 seconds
+	Complete requests:      1000
+	Failed requests:        0
+	Write errors:           0
+	Total transferred:      448000 bytes
+	HTML transferred:       205000 bytes
+	Requests per second:    280.18 [#/sec] (mean)
+	Time per request:       17.846 [ms] (mean)
+	Time per request:       3.569 [ms] (mean, across all concurrent requests)
+	Transfer rate:          122.58 [Kbytes/sec] received
+
+	Connection Times (ms)
+	              min  mean[+/-sd] median   max
+	Connect:        0   18   6.6     16      63
+	Processing:     0    0   1.0      0      20
+	Waiting:        0    0   1.0      0      20
+	Total:          9   18   6.6     16      63
+
+	Percentage of the requests served within a certain time (ms)
+	  50%     16
+	  66%     19
+	  75%     20
+	  80%     22
+	  90%     27
+	  95%     31
+	  98%     37
+	  99%     39
+	 100%     63 (longest request)
+
+
 Phalcon Version 0.5.0
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -507,6 +560,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Requests per second');
 			data.addRows([
+				['Nette', 280.18],
 				['Zend', 324.02],
 				['Laravel', 424.97],
 				['Symfony', 541.01],
@@ -536,6 +590,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Time per Request');
 			data.addRows([
+				['Nette', 3.569],
 				['Zend', 3.086],
 				['Laravel', 2.353],
 				['Symfony', 1.848],
@@ -559,6 +614,7 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Memory Usage (MB)');
 			data.addRows([
+				['Nette', 3.5],
 				['Zend', 1.75],
                 ['Symfony', 1.5],
                 ['Yii', 1.5],
@@ -589,6 +645,7 @@ The first graph shows how many requests per second each framework was able to ac
 				['Yii', 27],
 				['CodeIgniter', 23],
 				['Symfony', 18],
+				['Nette', 7],
 				['Phalcon', 4]
 			]);
 
@@ -625,4 +682,5 @@ The compiled nature of Phalcon offers extraordinary performance that outperforms
 .. _CakePHP: http://cakephp.org/
 .. _Laravel: http://www.laravel.com/
 .. _Zend Framework: http://framework.zend.com
+.. _Nette: http://nette.org/
 
