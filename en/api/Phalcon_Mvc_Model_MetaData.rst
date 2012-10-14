@@ -34,6 +34,8 @@ Constants
 
 *integer* **MODELS_IDENTITY_FIELD**
 
+*integer* **MODELS_DATA_TYPE_BIND**
+
 Methods
 ---------
 
@@ -73,13 +75,19 @@ Returns attributes and their data types
 
 
 
+public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+
+Returns attributes and their bind data types
+
+
+
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes which types are numerical
 
 
 
-public *array*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns the name of identity field (if one is present)
 
@@ -87,8 +95,7 @@ Returns the name of identity field (if one is present)
 
 public  **storeMetaData** ()
 
-Stores meta-data using to the internal adapter
-
+...
 
 
 public *boolean*  **isEmpty** ()

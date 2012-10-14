@@ -58,11 +58,11 @@ With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also 
     <?php
 
     //Making a redirection using the local base uri
-	$response->redirect("posts/index");
+    $response->redirect("posts/index");
 
-	//Making a redirection to an external URL
-	$response->redirect("http://en.wikipedia.org", true);
+    //Making a redirection to an external URL
+    $response->redirect("http://en.wikipedia.org", true);
 
-	//Making a redirection specifyng the HTTP status code
-	$response->redirect("http://www.example.com/new-location", true, 301);
+    //Making a redirection specifyng the HTTP status code
+    $response->redirect("http://www.example.com/new-location", true, 301);
 

@@ -123,6 +123,117 @@ The generated HTML by the request will be:
         </body>
     </html>
 
+Using Templates
+---------------
+Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+        public function initialize()
+        {
+            $this->view->setTemplateAfter('common');
+        }
+
+        public function lastAction()
+        {
+            $this->flash->notice("These are the latest posts");
+        }
+    }
+
+.. code-block:: html+php
+
+    <!-- app/views/index.phtml -->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Blog's title</title>
+        </head>
+        <body>
+            <?php echo $this->getContent() ?>
+        </body>
+    </html>
+
+.. code-block:: html+php
+
+    <!-- app/views/layouts/common.phtml -->
+
+    <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/contact">Contact us</a></li>
+    </ul>
+
+    <div class="content"><?php echo $this->getContent() ?></div>
+
+.. code-block:: html+php
+
+    <!-- app/views/layouts/posts.phtml -->
+
+    <h1>Blog Title</h1>
+
+    <?php echo $this->getContent() ?>
+
+.. code-block:: html+php
+
+    <!-- app/views/layouts/posts/last.phtml -->
+
+    <article>
+        <h2>This is a title</h2>
+        <p>This is the post content</p>
+    </article>
+
+    <article>
+        <h2>This is another title</h2>
+        <p>This is another post content</p>
+    </article>
+
+The final output will be the following:
+
+.. code-block:: html+php
+
+    <!-- app/views/index.phtml -->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Blog's title</title>
+        </head>
+        <body>
+
+            <!-- app/views/layouts/common.phtml -->
+
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/contact">Contact us</a></li>
+            </ul>
+
+            <div class="content">
+
+                <!-- app/views/layouts/posts.phtml -->
+
+                <h1>Blog Title</h1>
+
+                <!-- app/views/layouts/posts/last.phtml -->
+
+                <article>
+                    <h2>This is a title</h2>
+                    <p>This is the post content</p>
+                </article>
+
+                <article>
+                    <h2>This is another title</h2>
+                    <p>This is another post content</p>
+                </article>
+
+            </div>
+
+        </body>
+    </html>
+
 Using Partials
 --------------
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
@@ -202,7 +313,7 @@ This method can be invoked from the controller or from a superior view layer to 
         {
 
             // This is an Ajax response so don't generate any kind of view
-            $this->view->setRenderLevel(\Phalcon\\Mvc\\View::LEVEL_NO_RENDER);
+            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
 
             //...
         }
@@ -210,7 +321,7 @@ This method can be invoked from the controller or from a superior view layer to 
         public function showAction($postId)
         {
             // Shows only the view related to the action
-            $this->view->setRenderLevel(\Phalcon\\Mvc\\View::LEVEL_ACTION_VIEW);
+            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
         }
 
     }
@@ -349,7 +460,7 @@ If your controller don't produce any output in the view (or not even have one) y
             $this->view->disable();
 
             //The same
-            $this->view->setRenderLevel(Phalcon\Mvc\View::NO_RENDER);
+            $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_NO_RENDER);
         }
 
     }
@@ -374,7 +485,7 @@ The method render() accepts an absolute path to the view file and the view param
 
     <?php
 
-    class MyTemplateAdapter extends \Phalcon\\Mvc\View\Engine
+    class MyTemplateAdapter extends \Phalcon\Mvc\View\Engine
     {
 
         /**
@@ -560,7 +671,7 @@ Additionally, as seen above, you must call the method $this->getContent() inside
 .. code-block:: html+php
 
     <div class="some-menu">
-        <! -- the menu -->
+        <!-- the menu -->
     </div>
 
     <div class="some-main-content">
@@ -691,7 +802,7 @@ All the components in Phalcon can be used as *glue* components individually beca
 
     <?php
 
-    $view = new \Phalcon\\Mvc\\View();
+    $view = new \Phalcon\Mvc\View();
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
@@ -704,6 +815,48 @@ All the components in Phalcon can be used as *glue* components individually beca
 
     echo $view->getContent();
 
+View Events
+-----------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
+
++----------------------+------------------------------------------------------------+---------------------+
+| Event Name           | Triggered                                                  | Can stop operation? |
++======================+============================================================+=====================+
+| beforeRender         | Triggered before start the render process                  | Yes                 |
++----------------------+------------------------------------------------------------+---------------------+
+| beforeRenderView     | Triggered before render an existing view                   | Yes                 |
++----------------------+------------------------------------------------------------+---------------------+
+| afterRenderView      | Triggered after render an existing view                    | No                  |
++----------------------+------------------------------------------------------------+---------------------+
+| afterRender          | Triggered after complete the render process                | No                  |
++----------------------+------------------------------------------------------------+---------------------+
+
+The following example demonstrates how to attach listeners to this component:
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('view', function(){
+
+        //Create an event manager
+        $eventsManager = new Phalcon\Events\Manager();
+
+        $application->setEventsManager($eventsManager);
+
+        //Attach a listener for type "view"
+        $eventsManager->attach("view", function($event, $view) {
+            echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
+        });
+
+        $view = new \Phalcon\Mvc\View();
+        $view->setViewsDir("../app/views/");
+
+        //Bind the eventsManager to the view component
+        $view->setEventsManager($eventManagers);
+
+        return $view;
+    });
 
 .. _Mustache: https://github.com/bobthecow/mustache.php
 .. _Twig: http://twig.sensiolabs.org

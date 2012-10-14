@@ -105,6 +105,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Inclusionin
    Phalcon_Mvc_Model_Validator_Numericality
    Phalcon_Mvc_Model_Validator_Regex
+   Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
    Phalcon_Mvc_Router_Exception
@@ -112,10 +113,13 @@ API Indice
    Phalcon_Mvc_Url
    Phalcon_Mvc_Url_Exception
    Phalcon_Mvc_User_Component
+   Phalcon_Mvc_User_Module
    Phalcon_Mvc_User_Plugin
    Phalcon_Mvc_View
    Phalcon_Mvc_View_Engine
    Phalcon_Mvc_View_Engine_Php
+   Phalcon_Mvc_View_Engine_Volt
+   Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray

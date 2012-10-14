@@ -27,12 +27,14 @@ Constants
 
 *integer* **MODELS_IDENTITY_FIELD**
 
+*integer* **MODELS_DATA_TYPE_BIND**
+
 Methods
 ---------
 
 public  **__construct** (*array* $options)
 
-Phalcon\\Mvc\\Model\\MetaData constructor
+Phalcon\\Mvc\\Model\\MetaData\\Memory constructor
 
 
 
@@ -84,13 +86,19 @@ Returns attributes and their data types
 
 
 
+public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns attributes and their bind data types
+
+
+
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Returns attributes which types are numerical
 
 
 
-public *array*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Returns the name of identity field (if one is present)
 
@@ -98,8 +106,7 @@ Returns the name of identity field (if one is present)
 
 public  **storeMetaData** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Stores meta-data using to the internal adapter
-
+...
 
 
 public *boolean*  **isEmpty** () inherited from Phalcon\\Mvc\\Model\\MetaData

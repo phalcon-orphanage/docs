@@ -18,7 +18,7 @@ Attach a listener to the events manager
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source)
+public *mixed*  **fire** (*string* $eventType, *object* $source, *mixed* $data)
 
 Fires a event in the events manager causing that the acive listeners will be notified about it
 

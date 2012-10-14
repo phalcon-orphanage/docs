@@ -59,7 +59,13 @@ Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 
 
-public :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>`  **query** (*string* $sqlStatement, *array* $placeholders) inherited from Phalcon\\Db\\Adapter\\Pdo
+protected *PDOStatement*  **_executePrepared** () inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Executes a prepared statement binding
+
+
+
+public :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>`  **query** (*string* $sqlStatement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows 
 
@@ -73,7 +79,7 @@ $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, *array* $placeholders) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **execute** (*string* $sqlStatement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
@@ -114,13 +120,19 @@ Escapes a value to avoid SQL injections
 
 
 
-public  **bindParams** (*string* $sqlSelect, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
+public  **bindParams** (*unknown* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Bind params to SQL select
+Bind params to a SQL statement
 
 
 
-public *int*  **lastInsertId** (*string* $table, *string* $primaryKey, *string* $sequenceName) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Converts bound params like :name: or ?1 into ? bind params
+
+
+
+public *int*  **lastInsertId** (*string* $sequenceName) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Returns insert id for the auto_increment column inserted in the last SQL statement
 
@@ -159,6 +171,18 @@ Return internal PDO handler
 public *array*  **tableOptions** (*string* $tableName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Gets creation options from a table
+
+
+
+public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** () inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Return the default identity value to insert in an identity column
+
+
+
+public *boolean*  **supportSequences** () inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Check whether the database system requires a sequence to produce auto-numeric values
 
 
 
@@ -216,7 +240,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields) inherited from Phalcon\\Db
+public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields, *array* $dataTypes) inherited from Phalcon\\Db
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -237,7 +261,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition) inherited from Phalcon\\Db
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition, *array* $dataTypes) inherited from Phalcon\\Db
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -259,7 +283,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders) inherited from Phalcon\\Db
+public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db
 
 Deletes data from a table using custom RBDM SQL syntax 
 

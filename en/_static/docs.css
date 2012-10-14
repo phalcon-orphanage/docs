@@ -295,6 +295,10 @@ div.figure {
     font-style: italic;
 }
 
+.highlight .kd {
+	color: #dadada;
+}
+
 table.docutils {
 	border-collapse: collapse;
 	border-top: 1px solid #ABABAB;

@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Response**
 =================================
 
-Encapsulates the HTTP response message. 
+Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body. 
 
 .. code-block:: php
 
@@ -92,7 +92,7 @@ Sends a Not-Modified response
 
 
 
-public  **setContentType** (*unknown* $contentType, *unknown* $charset)
+public  **setContentType** (*string* $contentType, *string* $charset)
 
 Sets the response content-type mime, optionally the charset 
 

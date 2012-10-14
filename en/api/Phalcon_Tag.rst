@@ -150,6 +150,19 @@ Builds a HTML input[type="check"] tag
 
 
 
+public static *string*  **radioField** (*array* $parameters)
+
+Builds a HTML input[type="radio"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::radioField(array("name", "size" => 30))
+
+
+
+
 public static *string*  **submitButton** (*unknown* $parameters)
 
 Builds a HTML input[type="submit"] tag 
@@ -274,6 +287,15 @@ Builds a SCRIPT[type="javascript"] tag
 
      echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
      echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
+     {{ javascript_include("javascript/jquery.js") }}
 
 
 
