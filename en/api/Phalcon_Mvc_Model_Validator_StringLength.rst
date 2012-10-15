@@ -3,33 +3,31 @@ Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-* Phalcon\\Mvc\\Model\\Validator\\StringLength * * Simply validates specified string length constraints * 
+Simply validates specified string length constraints 
 
 .. code-block:: php
 
     <?php
 
-    *
-    *use Phalcon\Mvc\Model\Validator\StringLength as StringLengthValidator;
-    *
-    *class Subscriptors extends Phalcon\Mvc\Model
-    *{
-    *
-    *	public function validation()
-    *	{
-    *		$this->validate(new StringLengthValidator(array(
-    *			'field' => 'name_last',
-    *			'max' => 50, //we don't like really long names
-    *			'min' => 2, //we want more than just their initials
-    *		)));
-    *		if ($this->validationHasFailed() == true) {
-    *			return false;
-    *		}
-    *	}
-    *
-    *}
+    use Phalcon\Mvc\Model\Validator\StringLength as StringLengthValidator;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
+    {
+    
+    public function validation()
+    {
+    	$this->validate(new StringLengthValidator(array(
+    		'field' => 'name_last',
+    		'max' => 50, //we don't like really long names
+    		'min' => 2, //we want more than just their initials
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
+    }
+    
+    }
 
-* *
 
 
 Methods

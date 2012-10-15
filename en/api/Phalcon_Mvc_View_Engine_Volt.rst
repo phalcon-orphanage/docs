@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 
 *extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-Easy and fast template engine for PHP written in C
+Designer friendly and fast template engine for PHP written in C
 
 
 Methods
