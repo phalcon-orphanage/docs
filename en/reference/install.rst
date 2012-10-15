@@ -63,12 +63,7 @@ Creating the extension:
 
     git clone git://github.com/phalcon/cphalcon.git
     cd cphalcon/build
-    export CC="gcc"
-    export CFLAGS="-O2 -fno-delete-null-pointer-checks"
-    phpize
-    ./configure --enable-phalcon
-    make
-    sudo make install
+    ./install
 
 Add extension to your php.ini
 
@@ -77,7 +72,6 @@ Add extension to your php.ini
     extension=phalcon.so
 
 Restart the webserver
-
 
 FreeBSD
 ^^^^^^^

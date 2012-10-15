@@ -1,16 +1,23 @@
 Working with Models
 ===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
+the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
+your application. The bulk of your application's business logic will be concentrated in the models.
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
+CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
+to the respective database engine operations.
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
+    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
+    :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
 
 Creating Models
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model_Base <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
+A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
+file must contain a single class; its class name should be in camel case notation:
 
 
 .. code-block:: php
@@ -22,9 +29,13 @@ A model is a class that extends from :doc:`Phalcon\\Mvc\\Model_Base <../api/Phal
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. :doc:`Phalcon\\Mvc\\Model_Base <../api/Phalcon_Mvc_Model>` provides a great deal of functionality to models that inherit it, including basic database CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models with each other.
+The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides a great deal of functionality to models that inherit it, including basic database
+CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
+with each other.
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table, you can use the setSource() method:
+By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
+you can use the setSource() method:
 
 .. code-block:: php
 
@@ -40,7 +51,8 @@ By default model "Robots" will refer to the table "robots". If you want to manua
 
     }
 
-The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table. The initialize() method is only called once during the request.
+The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
+The initialize() method is only called once during the request.
 
 Models in Namespaces
 --------------------
@@ -64,7 +76,8 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
 Understanding Records To Objects
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table "robots" with the records:
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
+for a table "robots" with the records:
 
 .. code-block:: sql
 
@@ -100,11 +113,13 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database abstraction for web applications.
+As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
+abstraction for web applications.
 
 Finding Records
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
+how to query one or more records from a model:
 
 .. code-block:: php
 
@@ -449,6 +464,8 @@ Phalcon uses the magic method __call to retrieve data from a relationship. If th
     // relationship to RobotsParts then
     $robot = $robotPart->getRobots();
 
+Getting related records manually:
+
 .. code-block:: php
 
     <?php
@@ -722,7 +739,7 @@ Cache keys automatically generated by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_
     // Set the cache to the models manager
     $cache = $di->getModelsCache();
 
-    // Get keys created by Phalcon_Mvc_Model
+    // Get keys created by Phalcon\Mvc\Model
     foreach ($cache->queryKeys("phc") as $key) {
          echo $key, "\n";
     }
@@ -1031,21 +1048,23 @@ The following example shows how to use it:
 
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| Name         | Explanation                                                                                                                            | Example                                                         |
-+==============+========================================================================================================================================+=================================================================+
-| Email        | Validates that field contains a valid email format                                                                                     | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`       |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                         | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>` |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                             | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>` |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                            | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`|
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`       |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`  |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Name         | Explanation                                                                                                                            | Example                                                           |
++==============+========================================================================================================================================+===================================================================+
+| Email        | Validates that field contains a valid email format                                                                                     | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  | Validates that a value is not within a list of possible values                                                                         | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  | Validates that a value is within a list of possible values                                                                             | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numericality | Validates that a field has a numeric format                                                                                            | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Regex        | Validates that the value of a field matches a regular expression                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validatiors, you can create your own validators:
 
@@ -1320,6 +1339,8 @@ Once the application is in a production stage, it is not necessary to query the 
 | Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed everytime a new session starts. This also requires the use of session_start() to start the session before using any models.                         | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Apc     | The Apc adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                            | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| File    | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_File>`      |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
 As other ORM's dependencies, the metadata manager is requested from the services container:

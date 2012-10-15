@@ -148,6 +148,8 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | uppercase            | Change the case of a string to uppercase                                     |
 +----------------------+------------------------------------------------------------------------------+
+| length               | Counts the string length or how many items are in an array or object         |
++----------------------+------------------------------------------------------------------------------+
 
 Comments
 --------
@@ -158,6 +160,184 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
     {# note: this is a comment
         {% set price = 100; %}
     #}
+
+List of Control Structures
+--------------------------
+Volt provides a set of basic but powerful control structures for use in templates:
+
+For
+^^^
+Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
+
+.. code-block:: html+jinja
+
+    <h1>Robots</h1>
+    <ul>
+    {% for robot in robots %}
+      <li>{{ robot.name|e }}</li>
+    {% endfor %}
+    </ul>
+
+for-loops can also be nested:
+
+.. code-block:: html+jinja
+
+    <h1>Robots</h1>
+    {% for robot in robots %}
+      {% for part in robot.parts %}
+      Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
+      {% endfor %}
+    {% endfor %}
+
+If
+^^
+As PHP, a if statement checks if an expression is evaluated as true or false:
+
+.. code-block:: html+jinja
+
+    <h1>Cyborg Robots</h1>
+    <ul>
+    {% for robot in robots %}
+      {% if robot.type = "cyborg" %}
+      <li>{{ robot.name|e }}</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+
+Assignments
+-----------
+Variables may be changed in a template using the instruction "set":
+
+.. code-block:: html+jinja
+
+    {% set fruits = ['Apple', 'Banana', 'Orange'] %}
+    {% set name = robot.name %}
+
+Expressions
+-----------
+Volt provides a basic set of expression support, including literals and common operators:
+
++----------------------+------------------------------------------------------------------------------+
+| Filter               | Description                                                                  |
++======================+==============================================================================+
+| “this is a string”   | Text between double quotes or single quotes are handled as strings           |
++----------------------+------------------------------------------------------------------------------+
+| 100.25               | Numbers with a decimal part are handled as doubles/floats                    |
++----------------------+------------------------------------------------------------------------------+
+| 100                  | Numbers without a decimal part are handled as integers                       |
++----------------------+------------------------------------------------------------------------------+
+| false                | Constant "false" is the boolean false value                                  |
++----------------------+------------------------------------------------------------------------------+
+| true                 | Constant "true" is the boolean true value                                    |
++----------------------+------------------------------------------------------------------------------+
+| null                 | Constant "null" is the Null value                                            |
++----------------------+------------------------------------------------------------------------------+
+
+Arrays
+^^^^^^
+Whether you're using PHP 5.3 or 5.4, you can create arrays by enclosing a list of values ​​in square brackets:
+
+.. code-block:: html+jinja
+
+    {# Simple array #}
+    {{ ['Apple', 'Banana', 'Orange'] }}
+
+    {# Other simple array #}
+    {{ ['Apple', 1, 2.5, false, null] }}
+
+    {# Multi-Dimensional array #}
+    {{ [[1, 2], [3, 4], [5, 6]] }}
+
+    {# Hash-style array #}
+    {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
+
+Math
+^^^^
+You may make calculations in templates using the following operators:
+
++----------------------+------------------------------------------------------------------------------+
+| Operator             | Description                                                                  |
++======================+==============================================================================+
+| \+                   | Perform an adding operation. {{ 2+3 }} returns 5                             |
++----------------------+------------------------------------------------------------------------------+
+| \-                   | Perform a substraction operation {{ 2-3 }} returns -1                        |
++----------------------+------------------------------------------------------------------------------+
+| \*                   | Perform a multiplication operation {{ 2*3 }} returns 6                       |
++----------------------+------------------------------------------------------------------------------+
+| \/                   | Perform a division operation {{ 10/2 }} returns 5                            |
++----------------------+------------------------------------------------------------------------------+
+| \%                   | Calculate the remainder of an integer division {{ 10%3 }} returns 1          |
++----------------------+------------------------------------------------------------------------------+
+
+Comparisions
+^^^^^^^^^^^^
+The following comparision operators are available:
+
++----------------------+------------------------------------------------------------------------------+
+| Operator             | Description                                                                  |
++======================+==============================================================================+
+| ==                   | Check whether both operands are equal                                        |
++----------------------+------------------------------------------------------------------------------+
+| !=                   | Check whether both operands aren't equal                                     |
++----------------------+------------------------------------------------------------------------------+
+| \<\>                 | Check whether both operands aren't equal                                     |
++----------------------+------------------------------------------------------------------------------+
+| \>                   | Check whether left operand is greater than right operand                     |
++----------------------+------------------------------------------------------------------------------+
+| \<                   | Check whether left operand is less than right operand                        |
++----------------------+------------------------------------------------------------------------------+
+| <=                   | Check whether left operand is less or equal than right operand               |
++----------------------+------------------------------------------------------------------------------+
+| >=                   | Check whether left operand is greater or equal than right operand            |
++----------------------+------------------------------------------------------------------------------+
+| ===                  | Check whether both operands are identical                                    |
++----------------------+------------------------------------------------------------------------------+
+| !==                  | Check whether both operands aren't identical                                 |
++----------------------+------------------------------------------------------------------------------+
+
+Logic
+^^^^^
+Logic operators are useful in the "if" expression evaluation to combine multiple tests:
+
++----------------------+------------------------------------------------------------------------------+
+| Operator             | Description                                                                  |
++======================+==============================================================================+
+| or                   | Return true if the left or right operand is evaluated as true                |
++----------------------+------------------------------------------------------------------------------+
+| and                  | Return true if both left and right operands are evaluated as true            |
++----------------------+------------------------------------------------------------------------------+
+| not                  | Negates an expression                                                        |
++----------------------+------------------------------------------------------------------------------+
+| ( expr )             | Parenthesis groups expressions                                               |
++----------------------+------------------------------------------------------------------------------+
+
+Other Operators
+^^^^^^^^^^^^^^^
+Additional operators seen the following operators are available:
+
++----------------------+----------------------------------------------------------------------------------------------+
+| Operator             | Description                                                                                  |
++======================+==============================================================================================+
+| \~                   | Concatenates both operands {{ "hello " \~ "world" }}                                         |
++----------------------+----------------------------------------------------------------------------------------------+
+| \|                   | Applies a filter in the right operand to the left {{ "hello"|uppercase }}                    |
++----------------------+----------------------------------------------------------------------------------------------+
+| \.\.                 | Creates a range {{ 'a'..'z' }} {{ 1..10 }                                                    |
++----------------------+----------------------------------------------------------------------------------------------+
+| isset                | Check if a variable isset, an index exists in an array or an attribute is part of an object  |
++----------------------+----------------------------------------------------------------------------------------------+
+
+The following example shows how to use operators:
+
+.. code-block:: html+jinja
+
+    {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
+
+    {% for index in 0..robots|length %}
+        {% if isset robots[index] %}
+            {{ "Name: " ~ robots[index] }}
+        {% endif %}
+    {% endfor %}
 
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/

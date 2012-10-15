@@ -263,7 +263,8 @@ div.figure {
 }
 
 .highlight .mi,
-.highlight .mf {
+.highlight .mf,
+.highlight .m {
 	color: #8CD0D3;
 }
 
