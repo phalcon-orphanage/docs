@@ -94,4 +94,31 @@ For models it's necessary to indicate the name of the related table using getSou
 
     }
 
+Additionally because namespaces some magical methods may not work as expected, to manually define its correct behavior they can be defined as follows:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Toys;
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function getSource()
+        {
+            return "robots";
+        }
+
+        public function initialize()
+        {
+            $this->hasMany("id", 'Store\Toys\RobotsParts', 'robots_id');
+        }
+
+        public function getRobotsParts(){
+            return $this->getRelated('Store\Toys\RobotsParts');
+        }
+
+    }
+
 .. _Namespaces: http://php.net/manual/en/language.namespaces.php

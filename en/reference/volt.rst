@@ -339,6 +339,45 @@ The following example shows how to use operators:
         {% endif %}
     {% endfor %}
 
+Using Tag Helpers
+-----------------
+Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use the helpers provided by that component in a Volt template:
+
+.. code-block:: html+jinja
+
+    {{ javascript_include("js/jquery.js") }}
+
+    {{ form('products/save', 'method': 'post') }}
+
+        <label>Name</label>
+        {{ text_field("name", "size": 32) }}
+
+        <label>Type</label>
+        {{ select("type", productTypes, 'using': ['id', 'name']) }}
+
+        {{ submit_button('Send') }}
+
+    </form>
+
+The following PHP is generated:
+
+.. code-block:: html+php
+
+    <?php echo Phalcon\Tag::javascriptInclude("js/jquery.js") ?>
+
+    <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
+
+        <label>Name</label>
+        <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
+
+        <label>Type</label>
+        <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
+
+        <?php echo Phalcon\Tag::submitButton('Send'); ?>
+
+    </form>
+
+
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
 .. _trim: http://php.net/manual/en/function.trim.php
