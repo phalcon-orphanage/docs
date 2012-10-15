@@ -322,3 +322,4 @@ In the following example, we explain how to control the application security usi
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
 
+:doc:`Creating a Simple REST API` is a tutorial that explains how to create a micro application to implement a RESTful web service.
