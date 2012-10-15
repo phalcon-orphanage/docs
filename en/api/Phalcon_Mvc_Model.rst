@@ -611,6 +611,12 @@ Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rose
 
 
 
+protected  **skipAttributes** ()
+
+Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
+
+
+
 protected  **hasOne** ()
 
 Setup a 1-1 relation between two models 

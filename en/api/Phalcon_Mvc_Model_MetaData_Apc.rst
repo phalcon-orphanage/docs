@@ -27,17 +27,21 @@ Constants
 
 *integer* **MODELS_NOT_NULL**
 
-*integer* **MODELS_DATA_TYPE**
+*integer* **MODELS_DATA_TYPES**
 
-*integer* **MODELS_DATA_TYPE_NUMERIC**
+*integer* **MODELS_DATA_TYPES_NUMERIC**
 
 *integer* **MODELS_DATE_AT**
 
 *integer* **MODELS_DATE_IN**
 
-*integer* **MODELS_IDENTITY_FIELD**
+*integer* **MODELS_IDENTITY_COLUMN**
 
-*integer* **MODELS_DATA_TYPE_BIND**
+*integer* **MODELS_DATA_TYPES_BIND**
+
+*integer* **MODELS_AUTOMATIC_DEFAULT_INSERT**
+
+*integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
 
 Methods
 ---------
@@ -48,13 +52,13 @@ Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
 
 
 
-public *array*  **read** ()
+public *array*  **read** (*string* $key)
 
 Reads meta-data from APC
 
 
 
-public  **write** (*array* $data)
+public  **write** (*string* $key, *array* $data)
 
 Writes the meta-data to APC
 
@@ -63,6 +67,18 @@ Writes the meta-data to APC
 protected  **_initializeMetaData** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Initialize the metadata for certain table
+
+
+
+public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Reads meta-data for certain model using a MODEL_* constant
+
+
+
+public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Writes meta-data for certain model using a MODEL_* constant
 
 
 
@@ -96,12 +112,6 @@ Returns attributes and their data types
 
 
 
-public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
-
-Returns attributes and their bind data types
-
-
-
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Returns attributes which types are numerical
@@ -114,9 +124,26 @@ Returns the name of identity field (if one is present)
 
 
 
-public  **storeMetaData** () inherited from Phalcon\\Mvc\\Model\\MetaData
+public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns attributes and their bind data types
+
+
+
+public  **getAutomaticCreateAttributes** (*unknown* $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 ...
+
+
+public  **getAutomaticUpdateAttributes** (*unknown* $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+...
+
+
+public  **setAutomaticAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Set the attributes that must be ignored from the insert/update sql generation
+
 
 
 public *boolean*  **isEmpty** () inherited from Phalcon\\Mvc\\Model\\MetaData

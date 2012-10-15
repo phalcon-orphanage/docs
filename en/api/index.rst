@@ -50,6 +50,8 @@ API Indice
    Phalcon_Db_Reference
    Phalcon_Db_Result_Pdo
    Phalcon_Dispatcher
+   Phalcon_Escaper
+   Phalcon_Escaper_Exception
    Phalcon_Events_Event
    Phalcon_Events_Exception
    Phalcon_Events_Manager
@@ -74,6 +76,9 @@ API Indice
    Phalcon_Logger_Item
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
+   Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Exception
+   Phalcon_Mvc_Collection_Manager
    Phalcon_Mvc_Controller
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Dispatcher_Exception
@@ -86,6 +91,7 @@ API Indice
    Phalcon_Mvc_Model_Message
    Phalcon_Mvc_Model_MetaData
    Phalcon_Mvc_Model_MetaData_Apc
+   Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query

@@ -306,3 +306,9 @@ Builds HTML IMG tags
 
 
 
+public static *text*  **friendlyTitle** (*string* $text, *string* $separator, *boolean* $lowercase)
+
+Converts texts into URL-friendly titles
+
+
+

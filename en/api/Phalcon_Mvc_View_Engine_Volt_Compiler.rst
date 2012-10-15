@@ -7,6 +7,16 @@ This class reads and compiles volt templates into PHP plain code
 Methods
 ---------
 
+public  **setDI** (*unknown* $di)
+
+...
+
+
+public  **getDI** ()
+
+...
+
+
 protected  **_functionCall** ()
 
 Resolves function intermediate code into PHP function calls
@@ -19,7 +29,7 @@ Resolves filter intermediate code into PHP function calls
 
 
 
-public  **_expression** (*array* $expr)
+public  **_expression** (*array* $expr, *bool* $extendsMode, *bool* $prependDollar)
 
 Resolves an expression node in an AST volt tree
 
@@ -28,6 +38,17 @@ Resolves an expression node in an AST volt tree
 protected *string*  **_statementList** ()
 
 Traverses a statement list compiling each of its nodes
+
+
+
+protected  **_compileSource** ()
+
+...
+
+
+public *string*  **compileString** (*string* $viewCode, *boolean* $extendsMode)
+
+Compiles a template in a string
 
 
 

@@ -15,6 +15,12 @@ Renders a view using the template engine
 
 
 
+public *int*  **length** (*mixed* $item)
+
+Length filter
+
+
+
 public  **__construct** (:doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>` $view, :doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor

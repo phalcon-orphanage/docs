@@ -24,17 +24,21 @@ Constants
 
 *integer* **MODELS_NOT_NULL**
 
-*integer* **MODELS_DATA_TYPE**
+*integer* **MODELS_DATA_TYPES**
 
-*integer* **MODELS_DATA_TYPE_NUMERIC**
+*integer* **MODELS_DATA_TYPES_NUMERIC**
 
 *integer* **MODELS_DATE_AT**
 
 *integer* **MODELS_DATE_IN**
 
-*integer* **MODELS_IDENTITY_FIELD**
+*integer* **MODELS_IDENTITY_COLUMN**
 
-*integer* **MODELS_DATA_TYPE_BIND**
+*integer* **MODELS_DATA_TYPES_BIND**
+
+*integer* **MODELS_AUTOMATIC_DEFAULT_INSERT**
+
+*integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
 
 Methods
 ---------
@@ -42,6 +46,18 @@ Methods
 protected  **_initializeMetaData** ()
 
 Initialize the metadata for certain table
+
+
+
+public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index)
+
+Reads meta-data for certain model using a MODEL_* constant
+
+
+
+public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data)
+
+Writes meta-data for certain model using a MODEL_* constant
 
 
 
@@ -75,12 +91,6 @@ Returns attributes and their data types
 
 
 
-public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
-
-Returns attributes and their bind data types
-
-
-
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
 Returns attributes which types are numerical
@@ -93,9 +103,26 @@ Returns the name of identity field (if one is present)
 
 
 
-public  **storeMetaData** ()
+public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+
+Returns attributes and their bind data types
+
+
+
+public  **getAutomaticCreateAttributes** (*unknown* $model)
 
 ...
+
+
+public  **getAutomaticUpdateAttributes** (*unknown* $model)
+
+...
+
+
+public  **setAutomaticAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes)
+
+Set the attributes that must be ignored from the insert/update sql generation
+
 
 
 public *boolean*  **isEmpty** ()
@@ -108,6 +135,11 @@ public  **reset** ()
 
 Resets internal meta-data in order to regenerate it
 
+
+
+abstract public  **read** ()
+
+...
 
 
 abstract public  **write** ()
