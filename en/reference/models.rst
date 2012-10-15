@@ -30,7 +30,7 @@ file must contain a single class; its class name should be in camel case notatio
     }
 
 The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides a great deal of functionality to models that inherit it, including basic database
+This component provides a great deal of functionality to models that inherit it, including basic database
 CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
 with each other.
 
@@ -788,7 +788,9 @@ Also the method executes associated validators, virtual foreign keys and events 
 
 Create/Update with Certainty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be certain that a record will be created or updated created we can change save by "create" or "update":
+When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This could happen if we use
+Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be certain that a record will be created or updated
+created we can change save by "create" or "update":
 
 .. code-block:: php
 
@@ -809,10 +811,11 @@ When an application has a lot of competition, maybe we expect to create a record
         echo "Great, a new robot was created successfully!";
     }
 
-
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the  value generated in the database system for it:
+Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it.
+Always after creating a record, the identity field will be registered with the  value generated in the database system for it:
 
 .. code-block:: php
 
@@ -820,6 +823,27 @@ Some models may have identity columns. These columns usually are the primary key
 
     $robot->save();
     echo "The generated id is: ", $robot->id;
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
+serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+
+PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
+for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function getSequenceName()
+        {
+            return "robots_sequence_name";
+        }
+
+    }
+
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -925,7 +949,6 @@ Events can be useful to assign values before perform a operation, for example:
 
     }
 
-
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`, this means we can create listeners that run when an event is triggered.
 
 .. code-block:: php
@@ -980,7 +1003,6 @@ In the above example the EventsManager only acted as a bridge between an object 
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
     });
-
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1138,9 +1160,63 @@ The idea of ​​creating validators is make them reusable between several mode
 
     }
 
+Avoiding SQL injections
+^^^^^^^^^^^^^^^^^^^^^^^
+Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
+each value before store it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
+capability provided by PDO.
+
+.. code-block:: bash
+
+    mysql> desc products;
+    +------------------+------------------+------+-----+---------+----------------+
+    | Field            | Type             | Null | Key | Default | Extra          |
+    +------------------+------------------+------+-----+---------+----------------+
+    | id               | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    | product_types_id | int(10) unsigned | NO   | MUL | NULL    |                |
+    | name             | varchar(70)      | NO   |     | NULL    |                |
+    | price            | decimal(16,2)    | NO   |     | NULL    |                |
+    | active           | char(1)          | YES  |     | NULL    |                |
+    +------------------+------------------+------+-----+---------+----------------+
+    5 rows in set (0.00 sec)
+
+If we use just PDO to store a record in a secure way, we need to write the following code:
+
+.. code-block:: php
+
+    <?php
+
+    $productTypesId = 1;
+    $name = 'Artichoke';
+    $price = 10.5;
+    $active = 'Y';
+
+    $sql = 'INSERT INTO products VALUES (null, :productTypesId, :name, :price, :active)';
+    $sth = $dbh->prepare($sql);
+
+    $sth->bindParam(':productTypesId', $productTypesId, PDO::PARAM_INT);
+    $sth->bindParam(':name', $name, PDO::PARAM_STR, 70);
+    $sth->bindParam(':price', doubleval($price));
+    $sth->bindParam(':active', $active, PDO::PARAM_STR, 1);
+
+    $sth->execute();
+
+The good news is that Phalcon do this automatically for you:
+
+.. code-block:: php
+
+    <?php
+
+    $product = new Products();
+    $product->product_types_id = 1;
+    $product->name = 'Artichoke';
+    $product->price = 10.5;
+    $product->active = 'Y';
+    $product->create();
+
 Deleting Records
 ----------------
-The method \Phalcon\Mvc\Model::delete() allows to delete a record. You can use it as follows:
+The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
 
 .. code-block:: php
 
@@ -1326,7 +1402,6 @@ Sometimes it is necessary to get those attributes when working with models. You 
     $dataTypes = $metaData->getDataTypes($robot);
     print_r($dataTypes);
 
-
 Caching Meta-Data
 ^^^^^^^^^^^^^^^^^
 Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each time you use the table. This could be done caching the meta-data using any of the following adapters:
@@ -1359,6 +1434,81 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
         return $metaData;
     });
+
+Manual Meta-Data
+----------------
+Phalcon can obtain the metadata for each model automatically without the developer must set them manually.
+Remember that when defining the metadata manually, new columns added/modified/removed to/from the mapped
+table must be added/modified/removed also for everything to work correctly.
+
+The following example shows how to define the meta-data manually:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\MetaData;
+    use Phalcon\Db\Column;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+
+        public function metaData()
+        {
+            return array(
+
+                //Every column in the mapped table
+                MetaData::MODELS_ATTRIBUTES => array(
+                    'id', 'name', 'type', 'year'
+                ),
+
+                //Every column part of the primary key
+                MetaData::MODELS_PRIMARY_KEY => array(
+                    'id'
+                ),
+
+                //Every column that isn't part of the primary key
+                MetaData::MODELS_NON_PRIMARY_KEY => array(
+                    'name', 'type', 'year'
+                ),
+
+                //Every column that doesn't allows null values
+                MetaData::MODELS_NOT_NULL => array(
+                    'id', 'name', 'type', 'year'
+                ),
+
+                //Every column and their data types
+                MetaData::MODELS_DATA_TYPES => array(
+                    'id' => Column::TYPE_INTEGER,
+                    'name' => Column::TYPE_VARCHAR,
+                    'type' => Column::TYPE_VARCHAR,
+                    'year' => Column::TYPE_INTEGER
+                ),
+
+                //The columns that have numeric data types
+                MetaData::MODELS_DATA_TYPES_NUMERIC => array(
+                    'id' => true,
+                    'year' => true,
+                ),
+
+                //The identity column
+                MetaData::MODELS_IDENTITY_COLUMN => 'id',
+
+                //How every column must be binded/casted
+                MetaData::MODELS_DATA_TYPES_BIND => array(
+                    'id' => Column::BIND_PARAM_INT,
+                    'name' => Column::BIND_PARAM_STR,
+                    'type' => Column::BIND_PARAM_STR,
+                    'year' => Column::BIND_PARAM_INT,
+                ),
+
+                //Fields that must be ignored from INSERT/UPDATE SQL statements
+                MetaData::MODELS_AUTOMATIC_DEFAULT => array('year')
+
+            );
+        }
+
+    }
 
 Setting a different schema
 --------------------------
@@ -1479,7 +1629,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 Profiling SQL Statements
 ------------------------
-Thanks to :doc:`Phalcon_Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
+Thanks to :doc:`Phalcon\\Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
 .. code-block:: php
 

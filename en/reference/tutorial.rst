@@ -1,7 +1,9 @@
 Tutorial 1: Let's learn by example
 ==================================
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our :doc:`developer tools <tools>`_.
+Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
+We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
+you can check our :doc:`developer tools <tools>`.
 
 Checking your installation
 --------------------------
@@ -23,8 +25,7 @@ The Phalcon extension should appear as part of the output:
         [3] => SPL
         [4] => standard
         [5] => phalcon
-        [6] => mysql
-        [7] => mysqli
+        [6] => pdo_mysql
     )
 
 Creating a project

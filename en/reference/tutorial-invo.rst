@@ -102,7 +102,7 @@ Note that what has been done is to register the directories that were in the con
 
 Handling the Request
 --------------------
-Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application, this class initializes and executes all the necesary to make the application run:
+Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application, this class initializes and executes all the necessary to make the application run:
 
 .. code-block:: php
 
