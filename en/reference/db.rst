@@ -5,7 +5,7 @@ Database Abstraction Layer
 This component allows for a lower level database manipulation than using traditional models.
 
 .. highlights::
-    This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the API_ for a complete reference.
+    This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>` for a complete reference.
 
 Database Adapters
 -----------------
@@ -595,5 +595,4 @@ Examples on dropping tables:
     //Drop table robot from database "machines"
     $connection->dropTable("robots", "machines");
 
-.. _API: ../api/index
 .. _PDO: http://www.php.net/manual/en/book.pdo.php
