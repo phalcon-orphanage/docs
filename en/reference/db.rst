@@ -114,7 +114,7 @@ Finding Rows
     // Get only the first row
     $robot = $connection->fetchOne($sql);
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon\Db\Result::setFetchMode(). This method receives a constant, defining which kind of index is required.
+By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon\\Db\\Result::setFetchMode(). This method receives a constant, defining which kind of index is required.
 
 +--------------------------+-----------------------------------------------------------+
 | Constant                 | Description                                               |
@@ -138,7 +138,7 @@ By default these calls create arrays with both associative and numeric indexes. 
        echo $robot[0];
     }
 
-The Phalcon\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 .. code-block:: php
 
@@ -443,7 +443,7 @@ A table description is very similar to the MySQL describe command, it contains t
 
 Creating/Altering/Dropping Tables
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 Creating Tables
 ^^^^^^^^^^^^^^^
@@ -490,12 +490,12 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon\Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon\Db\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
+Phalcon\\Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a Phalcon\Db\Column constant (see below for a list)                                                                   | No       |
+| "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -512,26 +512,26 @@ Phalcon\Db::createTable() accepts an associative array describing the table. Col
 | "after"         | Column must be placed after indicated column                                                                                               | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Phalcon\Db supports the following database column types:
+Phalcon\\Db supports the following database column types:
 
-* Phalcon\Db\Column::TYPE_INTEGER
-* Phalcon\Db\Column::TYPE_DATE
-* Phalcon\Db\Column::TYPE_VARCHAR
-* Phalcon\Db\Column::TYPE_DECIMAL
-* Phalcon\Db\Column::TYPE_DATETIME
-* Phalcon\Db\Column::TYPE_CHAR
-* Phalcon\Db\Column::TYPE_TEXT
+* Phalcon\\Db\Column::TYPE_INTEGER
+* Phalcon\\Db\Column::TYPE_DATE
+* Phalcon\\Db\\Column::TYPE_VARCHAR
+* Phalcon\\Db\\Column::TYPE_DECIMAL
+* Phalcon\\Db\\Column::TYPE_DATETIME
+* Phalcon\\Db\\Column::TYPE_CHAR
+* Phalcon\\Db\\Column::TYPE_TEXT
 
-The associative array passed in Phalcon\Db::createTable() can have the possible keys:
+The associative array passed in Phalcon\\Db::createTable() can have the possible keys:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Index        | Description                                                                                                                            | Optional |
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\Db\Column <../api/Phalcon_Db_Column>`                                  | No       |
+| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | No       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\Db\Index <../api/Phalcon_Db_Index>`                                    | Yes      |
+| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\Db\Reference <../api/Phalcon_Db_Reference>`          | Yes      |
+| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -539,7 +539,7 @@ The associative array passed in Phalcon\Db::createTable() can have the possible 
 
 Altering Tables
 ^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\Db <../api/Phalcon_Db>` is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>` is limited by these constraints.
 
 .. code-block:: php
 
@@ -597,5 +597,3 @@ Examples on dropping tables:
 
 .. _API: ../api/index
 .. _PDO: http://www.php.net/manual/en/book.pdo.php
-
-
