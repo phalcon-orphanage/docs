@@ -1332,10 +1332,12 @@ As other ORM's dependencies, the metadata manager is requested from the services
     $di->set('modelsMetadata', function() {
 
         // Create a meta-data manager with APC
-        $metaData = new Phalcon\Model\MetaData\Apc(array(
-            "lifetime" => 86400,
-            "suffix" => "my-suffix"
-        ));
+        $metaData = new Phalcon\Mvc\Model\MetaData\Apc(
+            array(
+                "lifetime" => 86400,
+                "suffix"   => "my-suffix"
+            )
+        );
 
         return $metaData;
     });
