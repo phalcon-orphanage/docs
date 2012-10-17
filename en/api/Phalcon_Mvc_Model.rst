@@ -27,6 +27,8 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
 Constants
 ---------
 
+*integer* **OP_NONE**
+
 *integer* **OP_CREATE**
 
 *integer* **OP_UPDATE**
@@ -524,14 +526,14 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
     <?php
 
-     //Creating a new robot
+    //Creating a new robot
     $robot = new Robots();
     $robot->type = 'mechanical'
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->save();
     
-     //Updating a robot name
+    //Updating a robot name
     $robot = Robots::findFirst("id=100");
     $robot->name = "Biomass";
     $robot->save();
@@ -539,14 +541,38 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public  **create** ()
+public *boolean*  **create** ()
 
-...
+Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
+
+.. code-block:: php
+
+    <?php
+
+    //Creating a new robot
+    $robot = new Robots();
+    $robot->type = 'mechanical'
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+    $robot->create();
 
 
-public  **update** ()
 
-...
+
+public *boolean*  **update** ()
+
+Updates a model instance. If the instance doesn't exists in the persistance it will throw an exception Returning true on success or false otherwise. 
+
+.. code-block:: php
+
+    <?php
+
+    //Updating a robot name
+    $robot = Robots::findFirst("id=100");
+    $robot->name = "Biomass";
+    $robot->save();
+
+
 
 
 public *boolean*  **delete** ()
@@ -567,6 +593,12 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 
 
+public *int*  **getOperationMade** ()
+
+Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
+
+
+
 public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name <code> echo $robot->readAttribute('name');
@@ -576,6 +608,12 @@ Reads an attribute value by its name <code> echo $robot->readAttribute('name');
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rosey');
+
+
+
+protected  **skipAttributes** ()
+
+Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
 
 
 
@@ -590,7 +628,8 @@ Setup a 1-1 relation between two models
     class Robots extends \Phalcon\Mvc\Model
     {
     
-       public function initialize(){
+       public function initialize()
+       {
            $this->hasOne('id', 'RobotsDescription', 'robots_id');
        }
     
@@ -610,7 +649,8 @@ Setup a relation reverse 1-1  between two models
     class RobotsParts extends \Phalcon\Mvc\Model
     {
     
-       public function initialize(){
+       public function initialize()
+       {
            $this->belongsTo('robots_id', 'Robots', 'id');
        }
     
@@ -640,9 +680,16 @@ Setup a relation 1-n between two models
 
 
 
-protected  **__getRelatedRecords** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>`  **getRelated** ()
 
-...
+Returns related records based on defined relations
+
+
+
+protected *mixed*  **__getRelatedRecords** ()
+
+Returns related records defined relations depending on the method name
+
 
 
 public *mixed*  **__call** (*string* $method, *array* $arguments)

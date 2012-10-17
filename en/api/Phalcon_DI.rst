@@ -12,34 +12,40 @@ public  **__construct** ()
 ...
 
 
-public  **set** (*unknown* $alias, *unknown* $config)
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **set** (*string* $alias, *mixed* $config)
 
-...
-
-
-public  **remove** (*unknown* $alias)
-
-...
+Registers a service in the services container
 
 
-public  **attempt** (*unknown* $alias, *unknown* $config)
 
-...
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **remove** (*string* $alias)
 
-
-public  **_factory** (*unknown* $service, *unknown* $parameters)
-
-...
+Removes a service in the services container
 
 
-public  **get** (*unknown* $alias, *unknown* $parameters)
 
-...
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **attempt** (*string* $alias, *mixed* $config)
+
+Attempts to register a service in the services container Only is successful if a services hasn't been registered previosly with the same name
 
 
-public  **getShared** (*unknown* $alias, *unknown* $parameters)
 
-...
+public *mixed*  **_factory** (*string* $service, *mixed* $parameters)
+
+Factories instances based on its config
+
+
+
+public *mixed*  **get** (*string* $alias, *array* $parameters)
+
+Resolves the service based on its configuration
+
+
+
+public *mixed*  **getShared** (*string* $alias, *array* $parameters)
+
+Returns a shared service based on its configuration
+
 
 
 public *boolean*  **has** (*unknown* $alias)
@@ -60,9 +66,10 @@ Magic method to get or set services using setters/getters
 
 
 
-public static  **setDefault** (*unknown* $dependencyInjector)
+public static  **setDefault** (*string* $dependencyInjector)
 
-...
+Set a default dependency injection container to be obtained into static methods
+
 
 
 public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDefault** ()

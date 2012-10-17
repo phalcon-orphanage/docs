@@ -101,7 +101,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields)
+public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields, *array* $dataTypes)
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -122,7 +122,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition)
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition, *array* $dataTypes)
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -144,7 +144,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders)
+public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders, *array* $dataTypes)
 
 Deletes data from a table using custom RBDM SQL syntax 
 

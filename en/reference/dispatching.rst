@@ -50,9 +50,34 @@ Dispatch Loop Events
 
 The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
 
+The following example demonstrates how to attach listeners to this component:
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('dispatcher', function(){
+
+        //Create an event manager
+        $eventsManager = new Phalcon\Events\Manager();
+
+        //Attach a listener for type "dispatch"
+        $eventsManager->attach("dispatch", function($event, $dispatcher) {
+            //...
+        });
+
+        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+
+        //Bind the eventsManager to the view component
+        $dispatcher->setEventsManager($eventManagers);
+
+        return $dispatcher;
+    });
+
 Forwarding to another actions
 -----------------------------
-The dispatch loop allow us to forward the execution flow to another controller/action. This is very useful to check if the user can access to certain options, redirect users to other screens or simply reuse code.
+The dispatch loop allow us to forward the execution flow to another controller/action. This is very useful to check if the user can
+access to certain options, redirect users to other screens or simply reuse code.
 
 .. code-block:: php
 
@@ -82,13 +107,14 @@ The "forward" doesn't reloads the current page, all the redirection occurs in a 
 
 Getting Parameters
 ------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends :doc:`Phalcon\DI\Injectable <../api/Phalcon_DI_Injectable>`.
+When a route provides named parameters you can receive them in a controller, a view or any other component that extends
+:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends \Phalcon\DI\Injectable
+    class PostsController extends \Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -108,3 +134,24 @@ When a route provides named parameters you can receive them in a controller, a v
         }
 
     }
+
+Handling Not-Found Exceptions
+-----------------------------
+Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when a controller/action wasn't found.
+
+.. code-block:: php
+
+    <?php
+
+    //Attach a listener for type "dispatch"
+    $eventsManager->attach("dispatch", function($event, $dispatcher) {
+        if ($event->getType() == 'beforeNotFoundAction') {
+            $dispatcher->forward(array(
+                'controller' => 'common',
+                'action' => 'show404'
+            ));
+            return false;
+        }
+    });
+
+

@@ -1,16 +1,16 @@
-Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
-================================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Files**
+==============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-Stores model meta-data in session. Data will erase when the session finishes. Meta-data are permanent while the session is active. You can query the meta-data by printing $_SESSION['$PMM$'] 
+Stores model meta-data in PHP files. 
 
 .. code-block:: php
 
     <?php
 
-     $metaData = new Phalcon\Mvc\Model\Metadata\Session(array(
-        'suffix' => 'my-app-id'
+     $metaData = new Phalcon\Mvc\Model\Metadata\Files(array(
+        'metaDataDir' => 'app/cache/metadata/'
      ));
 
 
@@ -47,7 +47,7 @@ Methods
 
 public  **__construct** (*array* $options)
 
-Phalcon\\Mvc\\Model\\MetaData\\Session constructor
+Phalcon\\Mvc\\Model\\MetaData\\Files constructor
 
 
 

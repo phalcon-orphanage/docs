@@ -43,6 +43,16 @@ Constants
 
 *integer* **TYPE_FLOAT**
 
+*integer* **BIND_PARAM_NULL**
+
+*integer* **BIND_PARAM_INT**
+
+*integer* **BIND_PARAM_STR**
+
+*integer* **BIND_PARAM_DECIMAL**
+
+*integer* **BIND_SKIP**
+
 Methods
 ---------
 
@@ -121,6 +131,12 @@ Check whether column have first position in table
 public *string*  **getAfterPosition** ()
 
 Check whether field absolute to position in table
+
+
+
+public  **getBindType** ()
+
+Returns the type of bind handling
 
 
 

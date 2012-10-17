@@ -16,7 +16,7 @@ This component helps to separate session data into "namespaces". Working by this
 Methods
 ---------
 
-public  **__construct** ()
+public  **__construct** (*unknown* $name)
 
 ...
 
@@ -39,6 +39,12 @@ Initializes the session bag. This method must not be called directly, the class 
 
 
 
+public  **destroy** ()
+
+Destroyes the session bag
+
+
+
 public  **__set** (*string* $property, *string* $value)
 
 Setter of values
@@ -48,6 +54,12 @@ Setter of values
 public *string*  **__get** (*string* $property)
 
 Getter of values
+
+
+
+public *boolean*  **__isset** (*string* $property)
+
+Isset property
 
 
 

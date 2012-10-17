@@ -263,7 +263,8 @@ div.figure {
 }
 
 .highlight .mi,
-.highlight .mf {
+.highlight .mf,
+.highlight .m {
 	color: #8CD0D3;
 }
 
@@ -293,6 +294,10 @@ div.figure {
 .highlight .si {
     color: #EFDCBC;
     font-style: italic;
+}
+
+.highlight .kd {
+	color: #dadada;
 }
 
 table.docutils {

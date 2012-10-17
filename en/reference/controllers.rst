@@ -211,7 +211,7 @@ The response object is not usually used directly, but is built up before the exe
 
     }
 
-Learn more about the HTTP environment in their dedicated articles `request <request.html>`_ and `response <response.html>`_.
+Learn more about the HTTP environment in their dedicated articles `request <request>`_ and `response <response>`_.
 
 Session Data
 ------------

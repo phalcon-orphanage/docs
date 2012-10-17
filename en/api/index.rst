@@ -50,6 +50,8 @@ API Indice
    Phalcon_Db_Reference
    Phalcon_Db_Result_Pdo
    Phalcon_Dispatcher
+   Phalcon_Escaper
+   Phalcon_Escaper_Exception
    Phalcon_Events_Event
    Phalcon_Events_Exception
    Phalcon_Events_Manager
@@ -74,6 +76,9 @@ API Indice
    Phalcon_Logger_Item
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
+   Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Exception
+   Phalcon_Mvc_Collection_Manager
    Phalcon_Mvc_Controller
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Dispatcher_Exception
@@ -86,6 +91,7 @@ API Indice
    Phalcon_Mvc_Model_Message
    Phalcon_Mvc_Model_MetaData
    Phalcon_Mvc_Model_MetaData_Apc
+   Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query
@@ -105,6 +111,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Inclusionin
    Phalcon_Mvc_Model_Validator_Numericality
    Phalcon_Mvc_Model_Validator_Regex
+   Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
    Phalcon_Mvc_Router_Exception
@@ -112,10 +119,13 @@ API Indice
    Phalcon_Mvc_Url
    Phalcon_Mvc_Url_Exception
    Phalcon_Mvc_User_Component
+   Phalcon_Mvc_User_Module
    Phalcon_Mvc_User_Plugin
    Phalcon_Mvc_View
    Phalcon_Mvc_View_Engine
    Phalcon_Mvc_View_Engine_Php
+   Phalcon_Mvc_View_Engine_Volt
+   Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray

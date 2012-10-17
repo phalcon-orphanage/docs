@@ -45,37 +45,37 @@ Returns the internal event manager
 
 
 
-public  **setExtensions** (*array* $extensions)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*array* $extensions)
 
 Sets an array of extensions that the Loader must check together with the path
 
 
 
-public  **registerNamespaces** (*array* $namespaces)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*array* $namespaces)
 
 Register namespaces and their related directories
 
 
 
-public  **registerPrefixes** (*unknown* $prefixes)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*unknown* $prefixes)
 
 Register directories on which "not found" classes could be found
 
 
 
-public  **registerDirs** (*array* $directories)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories)
 
 Register directories on which "not found" classes could be found
 
 
 
-public  **registerClasses** (*unknown* $classes)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*unknown* $classes)
 
 Register classes and their locations
 
 
 
-public  **register** ()
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **register** ()
 
 Register the autoload method
 
