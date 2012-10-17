@@ -71,6 +71,11 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     modelsDir      = "../app/models/"
     viewsDir       = "../app/views/"
 
+    [models]
+    metadata.adapter  = "Memory"
+
+You can read the file as follows
+
 .. code-block:: php
 
     <?php
@@ -79,4 +84,5 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
+    echo $config->models->metadata->adapter, "\n";
 
