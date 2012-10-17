@@ -1114,29 +1114,30 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\InclusionIn;
-    use Phalcon\Mvc\Model\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
 
     class Robots extends \Phalcon\Mvc\Model
     {
 
         public function validation()
         {
+
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
                     "domain" => array("Mechanical", "Virtual")
                 )
             ));
+
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
                     "message" => "The robot name must be unique"
                 )
             ));
-            if ($this->validationHasFailed() == true) {
-                return false;
-            }
+
+            return $this->validationHasFailed() != true;
         }
 
     }
@@ -1507,10 +1508,12 @@ As other ORM's dependencies, the metadata manager is requested from the services
     $di->set('modelsMetadata', function() {
 
         // Create a meta-data manager with APC
-        $metaData = new Phalcon\Model\MetaData\Apc(array(
-            "lifetime" => 86400,
-            "suffix" => "my-suffix"
-        ));
+        $metaData = new Phalcon\Mvc\Model\MetaData\Apc(
+            array(
+                "lifetime" => 86400,
+                "suffix"   => "my-suffix"
+            )
+        );
 
         return $metaData;
     });
