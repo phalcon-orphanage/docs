@@ -161,7 +161,7 @@ The following HTML will generated:
 
 .. code-block:: html
 
-    <select id="productsd" name="productId">
+    <select id="productId" name="productId">
         <option value="101">Tomato</option>
         <option value="102">Lettuce</option>
         <option value="103">Beans</option>
