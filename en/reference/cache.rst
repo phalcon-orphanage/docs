@@ -206,6 +206,22 @@ The only requirement is to know the key that the data has been stored with.
     }
 
 
+Checking cache existance
+------------------------
+It is possible to check if cache is already exists with given key.
+
+.. code-block:: php
+
+    <?php
+
+    if ($cache->exists("someKey")) {
+        echo $cache->get("someKey");
+    }
+    else {
+        echo "Cache does not exists!";
+    }
+
+
 Frontend Adapters
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
