@@ -13,6 +13,63 @@ You could use name aliasing to get short names for classes. In this case, a Tag 
 
     <?php use \Phalcon\Tag as Tag; ?>
 
+Document Type of Content
+------------------------
+Phalcon provides \Phalcon\Tag::setDoctype() helper to set document type of the content. Document type setting may effect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers which return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
+
+Available document type constants in \Phalcon\Tag namespace are:
+
++----------------------+------------------------+
+| Constant             | Document type          |
++======================+========================+
+| HTML32               | HTML 3.2               |
++----------------------+------------------------+
+| HTML401_STRICT       | HTML 4.01 Strict       |
++----------------------+------------------------+
+| HTML401_TRANSITIONAL | HTML 4.01 Transitional |
++----------------------+------------------------+
+| HTML401_FRAMESET     | HTML 4.01 Frameset     |
++----------------------+------------------------+
+| HTML5                | HTML 5                 |
++----------------------+------------------------+
+| XHTML10_STRICT       | XHTML 1.0 Strict       |
++----------------------+------------------------+
+| XHTML10_TRANSITIONAL | XHTML 1.0 Transitional |
++----------------------+------------------------+
+| XHTML10_FRAMESET     | XHTML 1.0 Frameset     |
++----------------------+------------------------+
+| XHTML11              | XHTML 1.1              |
++----------------------+------------------------+
+| XHTML20              | XHTML 2.0              |
++----------------------+------------------------+
+| XHTML5               | XHTML 5                |
++----------------------+------------------------+
+
+Setting document type.
+
+.. code-block:: php
+
+    <?php \Phalcon\Tag::setDoctype(\Phalcon\Tag::HTML401_STRICT); ?>
+
+Getting document type.
+
+.. code-block:: html+php
+
+    <?= \Phalcon\Tag::getDoctype() ?>
+    <html>
+    <!-- your HTML code -->
+    </html>
+
+The following HTML will be produced.
+
+.. code-block:: html
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+    <html>
+    <!-- your HTML code -->
+    </html>
+
 Generating Links
 ----------------
 A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
