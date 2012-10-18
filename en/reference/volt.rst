@@ -324,7 +324,9 @@ Additional operators seen the following operators are available:
 +----------------------+----------------------------------------------------------------------------------------------+
 | \.\.                 | Creates a range {{ 'a'..'z' }} {{ 1..10 }                                                    |
 +----------------------+----------------------------------------------------------------------------------------------+
-| isset                | Check if a variable isset, an index exists in an array or an attribute is part of an object  |
+| is                   | Same as == (equals)                                                                          |
++----------------------+----------------------------------------------------------------------------------------------+
+| is not               | Same as != (not equals)                                                                      |
 +----------------------+----------------------------------------------------------------------------------------------+
 
 The following example shows how to use operators:
@@ -377,6 +379,57 @@ The following PHP is generated:
 
     </form>
 
+To call a Phalcon\Tag helper, you only need to call an uncamelized version of the method:
+
++------------------------------------+-----------------------+
+| Method                             | Volt function         |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::linkTo               | link_to               |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::textField            | text_field            |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::passwordField        | password_field        |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::hiddenField          | hidden_field          |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::fileField            | file_field            |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::checkField           | check_field           |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::radioField           | radio_field           |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::submitButton         | submit_button         |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::selectStatic         | select_static         |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::select               | select                |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::textArea             | text_area             |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::form                 | form                  |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::endForm              | end_form              |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::getTitle             | get_title             |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::stylesheetLink       | stylesheet_link       |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::javascriptInclude    | javascript_include    |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::image                | image                 |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::friendlyTitle        | friendly_title        |
++------------------------------------+-----------------------+
+
+View Integration
+----------------
+Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
+
+.. code-block:: html+jinja
+
+    {{ content() }}
+
+    {{ partial("partials/footer.volt") }}
 
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/

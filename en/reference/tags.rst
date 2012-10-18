@@ -15,9 +15,9 @@ You could use name aliasing to get short names for classes. In this case, a Tag 
 
 Document Type of Content
 ------------------------
-Phalcon provides \Phalcon\Tag::setDoctype() helper to set document type of the content. Document type setting may effect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers which return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
+Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may effect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers which return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
-Available document type constants in \Phalcon\Tag namespace are:
+Available document type constants in Phalcon\\Tag namespace are:
 
 +----------------------+------------------------+
 | Constant             | Document type          |
@@ -124,9 +124,9 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 .. code-block::  html+php
 
     <?php echo Phalcon\Tag::textField(array("parent_id", "value"=> "5")) ?>
-    <?php echo Phalcon\Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
+    <?php echo Phalcon\Tag::textArea(array("comment", "This is the content of the text-area", "cols" => "6", "rows" => 20)) ?>
     <?php echo Phalcon\Tag::passwordField("password") ?>
-    <?php echo Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5") ?>
+    <?php echo Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5")) ?>
 
 Making Select Boxes
 -------------------
@@ -212,7 +212,7 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 
         public function indexAction()
         {
-            \Phalcon\Tag::setDefaultValue("color", "Blue");
+            Phalcon\Tag::setDefaultValue("color", "Blue");
         }
 
     }
@@ -263,16 +263,17 @@ The following example demonstrates just that:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller {
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
 
         public function initialize()
         {
-            \Phalcon\Tag::setTitle(" Your Website");
+            Phalcon\Tag::setTitle(" Your Website");
         }
 
         public function indexAction()
         {
-            \Phalcon\Tag::prependTitle("Index of Posts - ");
+            Phalcon\Tag::prependTitle("Index of Posts - ");
         }
 
     }
