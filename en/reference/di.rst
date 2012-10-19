@@ -534,6 +534,20 @@ fallback to a valid autoloader to finally load the class.
 
 Accessing the DI in a static way
 --------------------------------
+If needed you can access the latest DI created in an static function in the following way:
 
+.. code-block:: php
+
+    <?php
+
+    class SomeComponent
+    {
+
+        public static function someMethod()
+        {
+            $session = Phalcon\DI::getDefault()->getShared('session');
+        }
+
+    }
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
