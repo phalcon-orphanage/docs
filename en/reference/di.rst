@@ -475,33 +475,35 @@ Service Name Conventions
 ------------------------
 Although you can register services with the names you want. Phalcon has a seriers of service naming conventions that allow it to get the right services when you need it requires them.
 
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| Service Name   | Description                                 | Default                                                                                 |
-+================+=============================================+=========================================================================================+
-| dispatcher     | Controllers Dispatching Service             | :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`                         |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| router         | Routing Service                             | :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`                                 |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| url            | URL Generator Service                       | :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`                                       |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| request        | HTTP Request Environment Service            | :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>`                             |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| response       | HTTP Response Environment Service           | :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`                           |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| filter         | Input Filtering Service                     | :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`                                          |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| flash          | Flash Messaging Service                     | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                             |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| session        | Session Service                             | :doc:`Phalcon\\Session\\Adapter\\Files <../api/Phalcon_Session_Adapter_Files>`          |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| eventsManager  | Events Management Service                   | :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`                         |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| db             | Low-Level Database Connection Service       | :doc:`Phalcon\\Db <../api/Phalcon_Db>`                                                  |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| modelsManager  | Models Management Service                   | :doc:`Phalcon\\Mvc\\Model\\Manager <../api/Phalcon_Mvc_Model_Manager>`                  |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
-| modelsMetadata | Models Meta-Data Service                    | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>` |
-+----------------+---------------------------------------------+-----------------------------------------------------------------------------------------+
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| Service Name        | Description                                 | Default                                                                                            |
++=====================+=============================================+====================================================================================================+
+| dispatcher          | Controllers Dispatching Service             | :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`                                    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| router              | Routing Service                             | :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`                                            |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| url                 | URL Generator Service                       | :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`                                                  |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| request             | HTTP Request Environment Service            | :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>`                                        |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| response            | HTTP Response Environment Service           | :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`                                      |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| filter              | Input Filtering Service                     | :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`                                                     |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| flash               | Flash Messaging Service                     | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                                        |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| session             | Session Service                             | :doc:`Phalcon\\Session\\Adapter\\Files <../api/Phalcon_Session_Adapter_Files>`                     |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| eventsManager       | Events Management Service                   | :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`                                    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| db                  | Low-Level Database Connection Service       | :doc:`Phalcon\\Db <../api/Phalcon_Db>`                                                             |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| modelsManager       | Models Management Service                   | :doc:`Phalcon\\Mvc\\Model\\Manager <../api/Phalcon_Mvc_Model_Manager>`                             |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| modelsMetadata      | Models Meta-Data Service                    | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`            |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
+| transactionManager  | Models Transaction Manager Service          | :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <../api/Phalcon_Mvc_Model_Transaction_Manager>`    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
 
 Instantiating classes via the Services Container
 ------------------------------------------------
@@ -527,7 +529,11 @@ When you request a service to the services container, if it can't find out a ser
     //Create a instance via the services container
     $myComponent = $di->get('MyOtherComponent');
 
-You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will fallback to a valid autoloader to finally load the class.
+You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will
+fallback to a valid autoloader to finally load the class.
+
+Accessing the DI in a static way
+--------------------------------
 
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control

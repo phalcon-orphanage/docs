@@ -56,7 +56,7 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
 
     // With a method in an object
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($this, "myController"));
+    $app->get('/say/hello/{name}', array($myController, "someAction"));
 
     //Anonymous function
     $app->get('/say/hello/{name}', function ($name) {

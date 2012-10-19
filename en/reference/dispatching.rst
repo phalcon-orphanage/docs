@@ -45,6 +45,8 @@ Dispatch Loop Events
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                   | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                        | Yes                 |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | afterDispatchLoop    | Triggered after exit the dispatch loop                                                                                                                                                                      | No                  |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 
@@ -74,8 +76,8 @@ The following example demonstrates how to attach listeners to this component:
         return $dispatcher;
     });
 
-Forwarding to another actions
------------------------------
+Forwarding to other actions
+---------------------------
 The dispatch loop allow us to forward the execution flow to another controller/action. This is very useful to check if the user can
 access to certain options, redirect users to other screens or simply reuse code.
 
@@ -160,7 +162,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exists
+            //Alternative way, controller or action doesn't exist
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()){
                     case Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -176,6 +178,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
+        //Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
