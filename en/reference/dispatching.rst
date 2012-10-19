@@ -69,7 +69,7 @@ The following example demonstrates how to attach listeners to this component:
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
         //Bind the eventsManager to the view component
-        $dispatcher->setEventsManager($eventManagers);
+        $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     });
@@ -141,6 +141,8 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
 .. code-block:: php
 
+    <?php
+
     $di->set('dispatcher', function(){
 
         //Create/Get an EventManager
@@ -178,5 +180,4 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
         return $dispatcher;
     });
-
 
