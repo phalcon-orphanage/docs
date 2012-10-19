@@ -130,19 +130,21 @@ Returns attributes and their bind data types
 
 
 
-public  **getAutomaticCreateAttributes** (*unknown* $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-...
+Returns attributes that must be ignored from the INSERT SQL generation
 
 
-public  **getAutomaticUpdateAttributes** (*unknown* $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-...
+public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns attributes that must be ignored from the UPDATE SQL generation
+
 
 
 public  **setAutomaticAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Set the attributes that must be ignored from the insert/update sql generation
+Set the attributes that must be ignored from both INSERT/UPDATE SQL generation
 
 
 

@@ -4,6 +4,31 @@ Class **Phalcon\\Tag**
 Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
 
+Constants
+---------
+
+*integer* **HTML32**
+
+*integer* **HTML401_STRICT**
+
+*integer* **HTML401_TRANSITIONAL**
+
+*integer* **HTML401_FRAMESET**
+
+*integer* **HTML5**
+
+*integer* **XHTML10_STRICT**
+
+*integer* **XHTML10_TRANSITIONAL**
+
+*integer* **XHTML10_FRAMESET**
+
+*integer* **XHTML11**
+
+*integer* **XHTML20**
+
+*integer* **XHTML5**
+
 Methods
 ---------
 
@@ -309,6 +334,18 @@ Builds HTML IMG tags
 public static *text*  **friendlyTitle** (*string* $text, *string* $separator, *boolean* $lowercase)
 
 Converts texts into URL-friendly titles
+
+
+
+public static  **setDocType** (*string* $doctype)
+
+Set the document type of content
+
+
+
+public static *string*  **getDocType** ()
+
+Get the document type declaration of content
 
 
 

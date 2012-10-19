@@ -70,6 +70,12 @@ Query the existing cached keys
 
 
 
+public *boolean*  **exists** (*string* $keyName)
+
+Checks if cache exists.
+
+
+
 public  **__destruct** ()
 
 Destructs the backend closing the memcached connection

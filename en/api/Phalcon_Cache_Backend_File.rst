@@ -64,6 +64,12 @@ Query the existing cached keys
 
 
 
+public *boolean*  **exists** (*string* $keyName)
+
+Checks if cache exists.
+
+
+
 public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allow to identify the created fragment

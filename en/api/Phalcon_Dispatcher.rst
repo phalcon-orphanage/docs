@@ -4,6 +4,19 @@ Class **Phalcon\\Dispatcher**
 This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher
 
 
+Constants
+---------
+
+*integer* **EXCEPTION_NO_DI**
+
+*integer* **EXCEPTION_CYCLIC_ROUTING**
+
+*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+
+*integer* **EXCEPTION_INVALID_PARAMS**
+
+*integer* **EXCEPTION_ACTION_NOT_FOUND**
+
 Methods
 ---------
 

@@ -23,6 +23,19 @@ Dispatching is the process of taking the command-line arguments, extracting the 
 
 
 
+Constants
+---------
+
+*integer* **EXCEPTION_NO_DI**
+
+*integer* **EXCEPTION_CYCLIC_ROUTING**
+
+*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+
+*integer* **EXCEPTION_INVALID_PARAMS**
+
+*integer* **EXCEPTION_ACTION_NOT_FOUND**
+
 Methods
 ---------
 

@@ -109,19 +109,21 @@ Returns attributes and their bind data types
 
 
 
-public  **getAutomaticCreateAttributes** (*unknown* $model)
+public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
 
-...
+Returns attributes that must be ignored from the INSERT SQL generation
 
 
-public  **getAutomaticUpdateAttributes** (*unknown* $model)
 
-...
+public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+
+Returns attributes that must be ignored from the UPDATE SQL generation
+
 
 
 public  **setAutomaticAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes)
 
-Set the attributes that must be ignored from the insert/update sql generation
+Set the attributes that must be ignored from both INSERT/UPDATE SQL generation
 
 
 

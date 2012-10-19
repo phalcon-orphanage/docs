@@ -204,6 +204,21 @@ As PHP, a if statement checks if an expression is evaluated as true or false:
     {% endfor %}
     </ul>
 
+The else clause is also supported:
+
+.. code-block:: html+jinja
+
+    <h1>Robots</h1>
+    <ul>
+    {% for robot in robots %}
+      {% if robot.type = "cyborg" %}
+      <li>{{ robot.name|e }}</li>
+      {% else %}
+      <li>{{ robot.name|e }} (not a cyborg)</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+
 Assignments
 -----------
 Variables may be changed in a template using the instruction "set":
@@ -383,7 +398,7 @@ To call a Phalcon\Tag helper, you only need to call an uncamelized version of th
 
 +------------------------------------+-----------------------+
 | Method                             | Volt function         |
-+------------------------------------+-----------------------+
++====================================+=======================+
 | Phalcon\\Tag::linkTo               | link_to               |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::textField            | text_field            |

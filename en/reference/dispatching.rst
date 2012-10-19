@@ -141,17 +141,42 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
 .. code-block:: php
 
-    <?php
+    $di->set('dispatcher', function(){
 
-    //Attach a listener for type "dispatch"
-    $eventsManager->attach("dispatch", function($event, $dispatcher) {
-        if ($event->getType() == 'beforeNotFoundAction') {
-            $dispatcher->forward(array(
-                'controller' => 'common',
-                'action' => 'show404'
-            ));
-            return false;
-        }
+        //Create/Get an EventManager
+        $eventsManager = new Phalcon\Events\Manager();
+
+        //Attach a listener
+        $eventsManager->attach("dispatch", function($event, $dispatcher, $exception) {
+
+            //The controller exists but the action not
+            if ($event->getType() == 'beforeNotFoundAction') {
+                $dispatcher->forward(array(
+                    'controller' => 'index',
+                    'action' => 'show404'
+                ));
+                return false;
+            }
+
+            //Alternative way, controller or action doesn't exists
+            if ($event->getType() == 'beforeException') {
+                switch ($exception->getCode()){
+                    case Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                    case Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                        $dispatcher->forward(array(
+                            'controller' => 'index',
+                            'action' => 'show404'
+                        ));
+                        return false;
+                }
+            }
+        });
+
+        $dispatcher = new Phalcon\Mvc\Dispatcher();
+
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
     });
 
 

@@ -601,13 +601,27 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 
 public *mixed*  **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name <code> echo $robot->readAttribute('name');
+Reads an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+     echo $robot->readAttribute('name');
+
 
 
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rosey');
+Writes an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+     $robot->writeAttribute('name', 'Rosey');
+
 
 
 
@@ -698,13 +712,15 @@ Handles methods when a method does not exist
 
 
 
-public  **serialize** ()
+public *string*  **serialize** ()
 
-...
+Serializes the object ignoring connections or static properties
 
 
-public  **unserialize** (*unknown* $data)
 
-...
+public  **unserialize** (*string* $data)
+
+Unserializes the object from a serialized string
+
 
 

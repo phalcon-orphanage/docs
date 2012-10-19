@@ -103,7 +103,7 @@ Gets HTTP schema (http/https)
 
 public *boolean*  **isAjax** ()
 
-Checks whether request has been made using ajax
+Checks whether request has been made using ajax. Checks if $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest'
 
 
 
@@ -143,9 +143,9 @@ Gets information about schema, host and port used by the request
 
 
 
-public *string*  **getClientAddress** ()
+public *string*  **getClientAddress** (*boolean* $trustForwardedHeader)
 
-Gets most possibly client IPv4 Address. This methods search in $_SERVER['HTTP_X_FORWARDED_FOR'] and $_SERVER['REMOTE_ADDR']
+Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
 
 

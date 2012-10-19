@@ -56,6 +56,12 @@ Query the existing cached keys
 
 
 
+public *boolean*  **exists** (*string* $keyName)
+
+Checks if cache exists.
+
+
+
 public  **__construct** (*mixed* $frontendObject, *array* $backendOptions) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
