@@ -1,8 +1,11 @@
 Using Dependency Injection
 ==========================
-The following example is a bit lengthy, but explains why using a service container and dependency injection. To begin with, let's pretend we are developing a component called SomeComponent. This performs a task that is not important right now. Our component have some dependency that is a connection to a database.
+The following example is a bit lengthy, but explains why using a service container and dependency injection. To begin with, let's pretend we
+are developing a component called SomeComponent. This performs a task that is not important right now. Our component has some dependency
+that is a connection to a database.
 
-In this first example, the connection is created inside the component. This approach is impractical, practically we can not change the connection parameters or the type of database system because the component only works as created.
+In this first example, the connection is created inside the component. This approach is impractical; practically we can not change the
+connection parameters or the type of database system because the component only works as created.
 
 .. code-block:: php
 
@@ -76,7 +79,9 @@ To solve this we create a setter that injects the dependency externally before u
 
     $some->someDbTask();
 
-Now consider that we use this component in different parts of the application, then we will need to create the connection several times before pass it to the component. This could be solved by using some kind of global registry where we obtain the connection instance and not have to create it again and again.
+Now consider that we use this component in different parts of the application and then we will need to create the connection several times before
+pass it to the component. Using some kind of global registry where we obtain the connection instance and not have to create it again and
+again could solve this:
 
 .. code-block:: php
 
@@ -338,27 +343,32 @@ A practical and elegant way to solve these problems is to use a container for de
 
     $some->someTask();
 
-The component now simply access the service it require when it needs it, if it does not requires a service, that is not even initialized saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created, their behavior or any other aspect of them and that would not affect the component.
+The component now simply access the service it require when it needs it, if it does not requires a service, that is not even initialized saving resources.
+The component is now highly decoupled. For example, we can replace the manner in which connections are created, their behavior or any other aspect of them
+and that would not affect the component.
 
 Our approach
 ------------
 
 Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component
+to inject dependencies and manage global instances of the different classes used in the application.
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
+Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies using setters or
+constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
 Registering services in the Container
 -------------------------------------
-Services can be registered by the framework itself or the developer. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
+The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
+can request component B from the container, rather than creating a new instance component B.
 
 This way of working gives us many advantages:
 
 * We can replace a component by one created by ourselves or a third party one easily.
-* We have full control of the object initialization, allowing us to set this objects as you need before delivery them to components.
+* We have full control of the object initialization, allowing us to set this objects, as you need before delivery them to components.
 * We can get global instances of components in a structured and unified way
 
 Services can be registered in several ways:
@@ -386,13 +396,17 @@ Services can be registered in several ways:
 	    "className" => 'Phalcon\Http\Request'
 	));
 
-In the above example, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container. The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+In the above example, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
+The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
 
-Each of the methods (demonstrated in the above example) used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used.
+Each of the methods (demonstrated in the above example) used to set/register a service has advantages and disadvantages. It is up to the
+developer and the particular requirements that will designate which one is used.
 
-Setting a service by a string is simple but lacks flexibility. Setting services using an array offers a lot more flexibility but makes the code more complicated. The lambda function is a good balance between the two but could lead to more maintenance than one would expect.
+Setting a service by a string is simple but lacks flexibility. Setting services using an array offers a lot more flexibility but makes the
+code more complicated. The lambda function is a good balance between the two but could lead to more maintenance than one would expect.
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string etc.) will be lazy loaded i.e. instantiated only when requested.
+Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
+in the container, any object stored in it (via array, string etc.) will be lazy loaded i.e. instantiated only when requested.
 
 .. code-block:: php
 
@@ -447,7 +461,8 @@ Or by calling through the magic method:
 
     $request = $di->getRequest();
 
-Phalcon\\DI also allows for services to be reusable. To get a service previously instantiated the getShared() method can be used. Specifically for the Phalcon\\Http\\Request example shown above:
+Phalcon\\DI also allows for services to be reusable. To get a service previously instantiated the getShared() method can be used.
+Specifically for the Phalcon\\Http\\Request example shown above:
 
 .. code-block:: php
 
@@ -465,7 +480,9 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 Factory Default DI
 ------------------
-Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically registers the appropriate services bundled with the framework to act as full-stack.
+Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
+framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
+registers the appropriate services bundled with the framework to act as full-stack.
 
 .. code-block:: php
 
@@ -473,7 +490,8 @@ Although the decoupled character of Phalcon offers us great freedom and flexibil
 
 Service Name Conventions
 ------------------------
-Although you can register services with the names you want. Phalcon has a seriers of service naming conventions that allow it to get the right services when you need it requires them.
+Although you can register services with the names you want. Phalcon has a seriers of service naming conventions that allow it to get the
+right services when you need it requires them.
 
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
 | Service Name        | Description                                 | Default                                                                                            |
@@ -507,7 +525,8 @@ Although you can register services with the names you want. Phalcon has a serier
 
 Instantiating classes via the Services Container
 ------------------------------------------------
-When you request a service to the services container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
+When you request a service to the services container, if it can't find out a service with the same name it'll try to load a class with
+the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
 .. code-block:: php
 

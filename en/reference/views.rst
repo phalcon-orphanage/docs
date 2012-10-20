@@ -54,15 +54,15 @@ how to pass the $postId parameter to the respective view template.
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` uses PHP itself as the template engine, therefore views should have the .phtml extension.
 If the views directory is  *app/views* then view component will find automatically for these 3 view files.
 
-+-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Name              | File                          | Description                                                                                                                                                                                                           |
-+===================+===============================+=======================================================================================================================================================================================================================+
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                    |
-+-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will reused for all the actions in this controller. |
-+-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                  |
-+-------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Name              | File                          | Description                                                                                                                                                                                                              |
++===================+===============================+==========================================================================================================================================================================================================================+
+| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                       |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 You are not required to implement all of the files mentioned above. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` will simply move to the
 next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
@@ -461,7 +461,7 @@ service is "viewCache":
 
 Disabling the view
 ------------------
-If your controller don't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
+If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
 .. code-block:: php
 
@@ -500,7 +500,7 @@ it's create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
 Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-instance which creates the engine adapter and the DI container used by the application.
+instance that creates the engine adapter and the DI container used by the application.
 
 The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it
 when it's necessary.
@@ -579,7 +579,8 @@ You can replace or add more a template engine from the controller as follows:
     }
 
 You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
-accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
+accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
+Template files related to the particular engine must have those extensions.
 
 The order that the template engines are defined with \Phalcon\\Mvc\\View::reginsterEngines() defines the relevance of execution. If
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
@@ -606,13 +607,14 @@ If you want to register a template engine or a set of them for each request in t
         return $view;
     });
 
-To better explain how to create an adapter for template engines, let's make the integration with two well-known: Mustache and Twig.
+To better explain how to create an adapter for template engines, let's make the integration with two well known: Mustache and Twig.
 
 Using Mustache
 ^^^^^^^^^^^^^^
 `Mustache`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available in `this Github repository`_.
 
-You need to manually load the Mustache library before use its engine adapter. This can be achieved by either registering an autoload function or including the relevant file first.
+You need to manually load the Mustache library before use its engine adapter. Either registering an autoload function or including
+the relevant file first can achieve this.
 
 .. code-block:: php
 
@@ -653,7 +655,8 @@ A template engine for Mustache would look like:
 
     }
 
-Now, in the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this template engine, you can register it in the initialize() method of the controller.
+Now, in the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this
+template engine, you can register it in the initialize() method of the controller.
 
 .. code-block:: php
 
@@ -692,7 +695,8 @@ A related view (views-dir/posts/show.mhtml) could be defined using the Mustache 
         <p>{{body}}</p>
     {{/showPost}}
 
-Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contents of a view at a higher level. In Moustache, this can be done as follows:
+Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contents of a view at a higher
+level. In Moustache, this can be done as follows:
 
 .. code-block:: html+php
 
@@ -708,7 +712,7 @@ Using Twig
 ^^^^^^^^^^
 Twig_ is a modern template engine for PHP.
 
-You need to manually load the Twig library before use its engine adapter. This could be done by registering its autoloader:
+You need to manually load the Twig library before use its engine adapter. Registering its autoloader could do this:
 
 .. code-block:: php
 
@@ -806,7 +810,7 @@ Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/P
 to the application's service container.
 
 The following example shows how to write a jQquery `ajax request`_ using a url with the framework conventions. The service "url" is
-injected in the view by just only acccesing it :
+injected in the view by just only accessing it:
 
 .. code-block:: html+php
 
@@ -825,7 +829,7 @@ injected in the view by just only acccesing it :
 Stand-Alone Component
 ---------------------
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other. Using
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand alone mode can be demonstrated below:
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
 

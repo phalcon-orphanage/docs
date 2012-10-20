@@ -7,7 +7,7 @@ points allow the developer to obtain status information, manipulate data or chan
 Usage Example
 -------------
 In the following example, we use the EventsManager to listen for events produced in a MySQL connection managed by :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-First of all, we need a listener object to do this. We create a class which methods are the events we want to listen:
+First of all, we need a listener object to do this. We created a class whose methods are the events we want to listen:
 
 .. code-block:: php
 
@@ -155,7 +155,7 @@ Creating components that trigger Events
 ---------------------------------------
 You can create components in your application that trigger events to a EventsManager. As a consequence, there may exist listeners
 that react to these events when generated. In the following example we're creating a component called "MyComponent".
-This component is EventsManager aware, when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
+This component is EventsManager aware; when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
 
 .. code-block:: php
 
@@ -182,7 +182,7 @@ This component is EventsManager aware, when its method "someTask" is executed it
 
     }
 
-Note that events produced by this component are prefixed with "my-component". This is a unique word that help us to
+Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us to
 identify events that are generated from certain component. You can even generate events outside of the component with
 the same name. Now let's create a listener to this component:
 

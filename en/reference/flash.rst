@@ -1,6 +1,7 @@
 Flashing Messages
 =================
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of messages can be generated using
+Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of
+messages can be generated using
 
 Adapters
 --------
@@ -80,8 +81,8 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="noticeMessage">this a very important information</div>
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation of the messages in the browser.
-The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
+As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
+of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
 
 .. code-block:: php
 
@@ -107,9 +108,9 @@ Then the messages would be printed as follows:
 
 Implicit Flush vs. Session
 --------------------------
-Depending on the adapter used to sent the messages, they could be sent directly to the view, or be temporarily stored in session to be shown later. When should you use each?
-That usually depends on the type of redirection you to do after sending the messages. For example if you make a "forward" is not necessary to store the messages in session,
-but if you do a HTTP redirect then they need to be stored in session:
+Depending on the adapter used to sent the messages, they could be sent directly to the view, or be temporarily stored in session to be shown later.
+When should you use each? That usually depends on the type of redirection you to do after sending the messages. For example if you make a "forward"
+is not necessary to store the messages in session, but if you do a HTTP redirect then they need to be stored in session:
 
 .. code-block:: php
 

@@ -498,8 +498,8 @@ Finally, delete a robot:
 
 Conclusion
 ----------
-As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we'll explain in detail how to use micro applications and the PHQL language.
-
+As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we'll explain in detail how to
+use micro applications and the :doc:`PHQL <phql>` language.
 
 .. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer

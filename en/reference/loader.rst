@@ -120,7 +120,7 @@ The last option is to register the class name and its path. This autoloader can 
 
 Additional file extensions
 --------------------------
-Some autoloading strategies such as  "prefixes", "namespaces" or "directories" automatically appends the "php" extension at the end of the checked file. If you
+Some autoloading strategies such as  "prefixes", "namespaces" or "directories" automatically append the "php" extension at the end of the checked file. If you
 are using additional extensions you could set it with the method "setExtensions". Files are checked in the order as it were defined:
 
 .. code-block:: php

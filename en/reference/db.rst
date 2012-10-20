@@ -410,20 +410,20 @@ Describing Tables and Databases
     // Get name, data types and special features of robots fields
     $fields = $connection->describeTable("robots");
     foreach ($fields as $field) {
-       echo "Column Type: ", $field["Type"];
+        echo "Column Type: ", $field["Type"];
     }
 
     // Get indexes on the robots table
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
-      print_r($index->getColumns());
+        print_r($index->getColumns());
     }
 
     // Get foreign keys on the robots table
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
-      // Print referenced columns
-      print_r($reference->getReferencedColumns());
+        // Print referenced columns
+        print_r($reference->getReferencedColumns());
     }
 
 A table description is very similar to the MySQL describe command, it contains the following information:

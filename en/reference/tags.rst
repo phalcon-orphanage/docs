@@ -15,7 +15,8 @@ You could use name aliasing to get short names for classes. In this case, a Tag 
 
 Document Type of Content
 ------------------------
-Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may effect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers which return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
+Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
+For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
 Available document type constants in Phalcon\\Tag namespace are:
 

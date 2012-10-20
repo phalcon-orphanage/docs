@@ -1,6 +1,6 @@
 Working with Namespaces
 =======================
-Namespaces_ can be used to avoid class name collisions, this means that if you have two controllers in an application with the same name,
+Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
 it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 Setting up the framework
@@ -115,8 +115,9 @@ Additionally because namespaces some magical methods may not work as expected, t
             $this->hasMany("id", 'Store\Toys\RobotsParts', 'robots_id');
         }
 
-        public function getRobotsParts(){
-            return $this->getRelated('Store\Toys\RobotsParts');
+        public function getRobotsParts($arguments=null)
+        {
+            return $this->getRelated('Store\Toys\RobotsParts', $arguments);
         }
 
     }

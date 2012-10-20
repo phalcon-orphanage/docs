@@ -1,10 +1,14 @@
 Dispatching Controllers
 =======================
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible of instantiate controllers and execute the required actions on them in an MVC application. Understand its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible of instantiate controllers and execute the required actions
+on them in an MVC application. Understand its operation and capabilities helps us get more out of the services provided by the framework.
 
 The Dispatch Loop
 -----------------
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
+This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
+dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another
+controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
+within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
 .. code-block:: php
 
@@ -78,7 +82,7 @@ The following example demonstrates how to attach listeners to this component:
 
 Forwarding to other actions
 ---------------------------
-The dispatch loop allow us to forward the execution flow to another controller/action. This is very useful to check if the user can
+The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
 access to certain options, redirect users to other screens or simply reuse code.
 
 .. code-block:: php
@@ -104,8 +108,9 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     }
 
-Keep in mind that make a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reloads the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests to complete the process.
+Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
+The "forward" doesn't reloads the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
+to complete the process.
 
 Getting Parameters
 ------------------
@@ -164,7 +169,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
             //Alternative way, controller or action doesn't exist
             if ($event->getType() == 'beforeException') {
-                switch ($exception->getCode()){
+                switch ($exception->getCode()) {
                     case Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
                     case Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                         $dispatcher->forward(array(

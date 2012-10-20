@@ -5,7 +5,7 @@ Volt is an ultra-fast and designer friendly templating language written in C for
 helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
 just as you can use it as a stand-alone component in your applications.
 
-Volt is inspired on Twig_, originally created by Armin Ronacher. which in turn is inspired in Jinja_.
+Volt is inspired on Twig_, originally created by Armin Ronacher, which in turn is inspired in Jinja_.
 Therefore many developers will be in familiar ground using the same syntax they have been using
 with Twig. Volt’s syntax and features have been enhanced with more elements and of course
 with the performance that developers have been accustomed to while working with Phalcon.
@@ -47,8 +47,8 @@ Use the standard ".phtml" extension:
 
 Basic Usage
 -----------
-A view consists on Volt code, PHP and HTML. A set of special delimiters are available to enter in
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }}.
+A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
+Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
 prints the result of a expression to the template.
 
 Below is a minimal template that illustrates a few basics:
@@ -149,6 +149,12 @@ The following is the list of available built-in filters in Volt:
 | uppercase            | Change the case of a string to uppercase                                     |
 +----------------------+------------------------------------------------------------------------------+
 | length               | Counts the string length or how many items are in an array or object         |
++----------------------+------------------------------------------------------------------------------+
+| nl2br                | Changes newlines \\n by line breaks (<br />). Uses the PHP function nl2br_   |
++----------------------+------------------------------------------------------------------------------+
+| sort                 | Sorts an array using the PHP function asort_                                 |
++----------------------+------------------------------------------------------------------------------+
+| json_encode          | Converts a value into its JSON_ representation                               |
 +----------------------+------------------------------------------------------------------------------+
 
 Comments
@@ -452,4 +458,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
 .. _striptags: http://php.net/manual/en/function.striptags.php
 .. _slashes: http://php.net/manual/en/function.slashes.php
 .. _stripslashes: http://php.net/manual/en/function.stripslashes.php
-.. _ucwords: http://php.net/manual/en/function.capitalize.php
+.. _ucwords: http://php.net/manual/en/function.ucwords.php
+.. _nl2br: http://php.net/manual/en/function.nl2br.php
+.. _asort: http://php.net/manual/en/function.asort.php
+.. _JSON: http://php.net/manual/en/function.json-encode.php

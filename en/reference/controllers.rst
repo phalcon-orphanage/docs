@@ -89,11 +89,14 @@ If users don't have permissions to access a certain action then will be forwarde
 
     }
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
+your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
+the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
 Initializing Controllers
 ------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
+action is executed on a controller. The use of the "__construct" method is not recommended.
 
 .. code-block:: php
 
@@ -122,7 +125,8 @@ Initializing Controllers
 
 Injecting Services
 ------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it have easy access to the service container in application. For example, if we have registered a service like this:
+If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it have easy access to the service
+container in application. For example, if we have registered a service like this:
 
 .. code-block:: php
 
@@ -162,7 +166,9 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 Request and Response
 --------------------
-Assuming that the registered services are provided by the framework. We explain how to interact with the HTTP environment. The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response" contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
+The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
+contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
 
 .. code-block:: php
 
@@ -189,7 +195,8 @@ Assuming that the registered services are provided by the framework. We explain 
 
     }
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an afterDispatch event - it can be useful to access the response directly:
+The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
+an afterDispatch event - it can be useful to access the response directly:
 
 .. code-block:: php
 
@@ -215,7 +222,8 @@ Learn more about the HTTP environment in their dedicated articles `request <requ
 
 Session Data
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` from any controller to encapsulate data that need to be persistent.
+Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+from any controller to encapsulate data that need to be persistent.
 
 .. code-block:: php
 
@@ -238,7 +246,8 @@ Sessions help us maintain persistent data between requests. You could access a :
 
 Using Services as Controllers
 -----------------------------
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, a controller can be easily replaced by any other class registered with its name:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
+any other class registered with its name can easily replace a controller:
 
 .. code-block:: php
 
@@ -252,9 +261,15 @@ Services may act as controllers, controllers classes are always requested from t
 
 Creating a Base Controller
 --------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
+Some application features like access control lists, translation, cache, and template engines are often common to many
+controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
+controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
+the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
+access to the common functionality.
 
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder, e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be loaded using any autoloader:
+This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
+e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
+    loaded using any autoloader:
 
 .. code-block:: php
 

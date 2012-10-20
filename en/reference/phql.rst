@@ -1,11 +1,14 @@
 Phalcon Query Language (PHQL)
 =============================
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high level, object oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+Phalcon Query Language, PhalconQL or simply PHQL is a high level, object oriented SQL dialect that allows to write queries using a
+standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
+To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
+provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-The parser first checks the syntax of the passed PHQL statement, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
+The parser first checks the syntax of the passed PHQL statement, then builds an intermediate representation of the statement and
+finally it converts it to the respective SQL dialect of the target RDBMS.
 
 Currently, PHQL only supports data manipulation statements such as SELECT, INSERT, UPDATE and DELETE.
 
@@ -146,7 +149,8 @@ Most of the SQL standard is supported by PHQL even nonstandard directives as LIM
 
 Results Types
 ^^^^^^^^^^^^^
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object then the object returned will be a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
+Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object then the object returned will be
+a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
 
 .. code-block:: php
 
@@ -169,7 +173,8 @@ This is exactly the same as:
         echo "Name: ", $car->name, "\n";
     }
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are other types of queries that do not return complete objects, for example:
+Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are
+other types of queries that do not return complete objects, for example:
 
 .. code-block:: php
 
@@ -181,9 +186,12 @@ Complete objects can be modified and re-saved in the database because they repre
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table therefore those can not be considered an entire object. In this case also returns a type resulset :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is an standard object that only contains the two columns that were requested.
+We are only requesting some fields in the table therefore those cannot be considered an entire object. In this case also returns a type
+resulset :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is an standard
+object that only contains the two columns that were requested.
 
-These values ​​that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+These values ​​that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions,
+literals, expressions, etc..:
 
 .. code-block:: php
 
@@ -275,7 +283,7 @@ Also, the joins can be created using multiple tables in the FROM clause:
 
 Aggregations
 ^^^^^^^^^^^^
-The following examples shows how to use aggregations in PHQL:
+The following examples show how to use aggregations in PHQL:
 
 .. code-block:: php
 
@@ -417,7 +425,7 @@ If we made the following INSERT in the the models Cars, the operation will not b
 
 Updating Rows
 -------------
-Update rows is very similar than Insert rows. As you may know, the instruction to update records is UPDATE. When a record is updated
+Updating rows is very similar than Inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated
 the events related to the update operation will be executed for each row.
 
 .. code-block:: php

@@ -69,7 +69,7 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
 
 All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
 
-The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewitten by the web server module:
+The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewritten by the web server module:
 
 .. code-block:: apacheconf
 
@@ -139,9 +139,12 @@ With it, we can load classes using various strategies but for this example we ha
 
 Dependency Management
 ^^^^^^^^^^^^^^^^^^^^^
-A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is
+actually very simple and practical.
 
-A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, will ask the container using a name service agreed. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, will
+ask the container using a name service agreed. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the
+different components achieving their work together in a transparent manner.
 
 .. code-block:: php
 
@@ -150,9 +153,11 @@ A service container is a bag where we globally store the services that our appli
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components
+that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they can not be charged with an autoloader.
+In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes,
+they cannot be charged with an autoloader.
 
 Services can be registered in several ways, but for our tutorial we'll use lambda functions:
 
@@ -167,7 +172,8 @@ Services can be registered in several ways, but for our tutorial we'll use lambd
         return $view;
     });
 
-In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment,
+route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
 .. code-block:: php
 
@@ -177,11 +183,13 @@ In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/P
     $application->setDI($di);
     echo $application->handle()->getContent();
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less
+than 30 lines of code.
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
+By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index
+controller (app/controllers/IndexController.php) looks like:
 
 .. code-block:: php
 
@@ -197,7 +205,8 @@ By default Phalcon will look for a controller named "Index". It is the starting 
 
     }
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser,
+you should see something like this:
 
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
@@ -206,7 +215,9 @@ Congratulations, you're flying with Phalcon!
 
 Sending output to a view
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Sending output on the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view which is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
+Sending output on the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be
+passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a
+directory named as the last executed controller. In our case (app/views/index/index.phtml):
 
 .. code-block:: php
 
@@ -304,7 +315,8 @@ Viewing the form in your browser will show something like this:
 
 The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". This exception is thrown by our public/index.php file:
+By clicking the "Send" button, you will notice an exception thrown from the framework,
+indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
 
     PhalconException: Action "register" was not found on controller "signup"
 
@@ -329,7 +341,8 @@ Implementing that method will remove the exception:
 
     }
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object oriented code.
+If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored
+in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object oriented code.
 
 Creating a Model
 ^^^^^^^^^^^^^^^^
@@ -359,8 +372,8 @@ A model should be located in the app/models directory. The model mapping to "use
 
 Setting a Database Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be use
-for sereral components:
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process.
+A database connection is just another service that our application has that can be use for several components:
 
 .. code-block:: php
 
