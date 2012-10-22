@@ -1,28 +1,28 @@
-Class **Phalcon\\Cache\\Backend\\Memcache**
-===========================================
+Class **Phalcon\\Cache\\Backend\\Mongo**
+========================================
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter 
+Allows to cache output fragments, PHP data or raw data to a MongoDb backend 
 
 .. code-block:: php
 
     <?php
 
      // Cache data for 2 days
-     $frontCache = new Phalcon\Cache\Frontend\Data(array(
+     $frontCache = new Phalcon\Cache\Frontend\Base64(array(
         "lifetime" => 172800
      ));
     
-     //Create the Cache setting memcached connection options
-     $cache = new Phalcon\Cache\Backend\File($frontCache, array(
-    	'host' => 'localhost',
-    	'port' => 11211,
-      	'persistent' => false
+     //Create a MongoDB cache
+     $cache = new Phalcon\Cache\Backend\Mongo($frontCache, array(
+    	'server' => "mongodb://localhost",
+          'db' => 'caches',
+    	'collection' => 'images'
      ));
     
      //Cache arbitrary data
-     $cache->store('my-data', array(1, 2, 3, 4, 5));
+     $cache->store('my-data', file_get_contents('some-image.jpg'));
     
      //Get data
      $data = $cache->get('my-data');
@@ -34,13 +34,13 @@ Methods
 
 public  **__construct** (*mixed* $frontendObject, *array* $backendOptions)
 
-Phalcon\\Backend\\Adapter\\Memcache constructor
+Phalcon\\Backend\\Adapter\\Mongo constructor
 
 
 
-protected  **_connect** ()
+protected *MongoCollection*  **_getCollection** ()
 
-Create internal connection to memcached
+Returns a MongoDb collection based on the backend parameters
 
 
 
@@ -52,7 +52,7 @@ Returns a cached content
 
 public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-Stores cached content into the Memcached backend
+Stores cached content into the Mongo backend
 
 
 
@@ -68,15 +68,9 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName)
+public *boolean*  **exists** ()
 
 Checks if cache exists.
-
-
-
-public  **__destruct** ()
-
-Destructs the backend closing the memcached connection
 
 
 

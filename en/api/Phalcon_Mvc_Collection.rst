@@ -1,12 +1,39 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
+This component implements a high level abstraction for NoSQL databases which works with documents
+
+
+Constants
+---------
+
+*integer* **OP_NONE**
+
+*integer* **OP_CREATE**
+
+*integer* **OP_UPDATE**
+
+*integer* **OP_DELETE**
+
 Methods
 ---------
 
-public  **__construct** (*unknown* $dependencyInjector)
+public  **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
 
-...
+
+
+
+
+public  **setId** (*mixed* $id)
+
+Sets a value for the _id propery, creates a MongoId object if needed
+
+
+
+public *MongoId*  **getId** ()
+
+Returns the value of the _id property
+
 
 
 public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
@@ -35,7 +62,7 @@ Returns the internal event manager
 
 public *array*  **getReservedAttributes** ()
 
-
+Returns an array with reserved properties that cannot be part of the insert/update
 
 
 
@@ -51,14 +78,16 @@ Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** ()
+public  **setConnectionService** (*string* $connectionService)
 
-...
+Sets a service in the services container that returns the Mongo database
 
 
-public  **getConnection** ()
 
-...
+public *MongoDb*  **getConnection** ()
+
+Retrieves a database connection
+
 
 
 public *mixed*  **readAttribute** (*string* $attribute)
@@ -73,19 +102,51 @@ Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rose
 
 
 
-protected static  **dumpResult** ()
+protected static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **dumpResult** ()
 
-...
+Returns a cloned collection
 
 
-protected static  **_getResultset** ()
 
-...
+protected static *array*  **_getResultset** ()
+
+Returns a collection resultset
+
 
 
 protected *boolean*  **_preSave** ()
 
-Executes internal hooks before save a record
+Executes internal hooks before save a document
+
+
+
+protected *boolean*  **_postSave** ()
+
+Executes internal events after save a document
+
+
+
+protected *boolean*  **_callEvent** ()
+
+Fires an internal event
+
+
+
+protected *boolean*  **_callEventCancel** ()
+
+Fires an internal event that cancels the operation
+
+
+
+protected *boolean*  **_cancelOperation** ()
+
+Cancel the current operation
+
+
+
+protected  **_exists** ()
+
+Checks if the document exists in the collection
 
 
 
@@ -100,6 +161,11 @@ public static  **findFirst** (*unknown* $parameters)
 
 
 public static  **find** (*unknown* $parameters)
+
+...
+
+
+public static  **count** (*unknown* $parameters)
 
 ...
 

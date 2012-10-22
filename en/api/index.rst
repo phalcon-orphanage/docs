@@ -20,7 +20,9 @@ API Indice
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
    Phalcon_Cache_Backend_Memcache
+   Phalcon_Cache_Backend_Mongo
    Phalcon_Cache_Exception
+   Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output

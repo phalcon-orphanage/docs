@@ -41,9 +41,10 @@ Traverses a statement list compiling each of its nodes
 
 
 
-protected  **_compileSource** ()
+protected *string*  **_compileSource** ()
 
-...
+Compiles a Volt source code returning a PHP plain version
+
 
 
 public *string*  **compileString** (*string* $viewCode, *boolean* $extendsMode)
@@ -58,8 +59,9 @@ Compiles a template into a file
 
 
 
-public  **parse** (*unknown* $viewCode)
+public *array*  **parse** (*string* $viewCode)
 
-...
+Parses a Volt template returning its intermediate representation
+
 
 

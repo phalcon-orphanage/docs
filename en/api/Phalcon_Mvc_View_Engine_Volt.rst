@@ -9,6 +9,18 @@ Designer friendly and fast template engine for PHP written in C
 Methods
 ---------
 
+public  **setOptions** (*array* $options)
+
+Set Volt's options
+
+
+
+public *array*  **getOptions** ()
+
+Return Volt's options
+
+
+
 public  **render** (*string* $path, *array* $params, *bool* $mustClean)
 
 Renders a view using the template engine
