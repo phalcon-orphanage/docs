@@ -444,7 +444,8 @@ Insert a new robot:
 
 .. code-block:: bash
 
-    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
+        http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
     Date: Wed, 12 Sep 2012 07:15:09 GMT
@@ -458,7 +459,8 @@ Try to insert a new robot with the name of an existing robot:
 
 .. code-block:: bash
 
-    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' http://localhost/my-rest-api/api/robots
+    curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
+        http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 500 Internal Error
     Date: Wed, 12 Sep 2012 07:18:28 GMT
@@ -472,7 +474,8 @@ Or update a robot with an unknown type:
 
 .. code-block:: bash
 
-    curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' http://localhost/my-rest-api/api/robots/4
+    curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
+        http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 500 Internal Error
     Date: Wed, 12 Sep 2012 08:48:01 GMT
@@ -480,7 +483,8 @@ Or update a robot with an unknown type:
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
 
-    {"status":"ERROR","messages":["Value of field 'type' must be part of list: droid, mechanical, virtual"]}
+    {"status":"ERROR","messages":["Value of field 'type' must be part of
+        list: droid, mechanical, virtual"]}
 
 Finally, delete a robot:
 

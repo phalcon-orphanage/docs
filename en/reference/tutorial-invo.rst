@@ -343,12 +343,15 @@ name as one of the events produced in the Dispatcher:
 
     <?php
 
+    use \Phalcon\Events\Event;
+    use \Phalcon\Mvc\Dispatcher;
+
     class Security extends Phalcon\Mvc\User\Plugin
     {
 
         // ...
 
-        public function beforeExecuteRoute(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
@@ -366,12 +369,15 @@ redirect hom to the home screen as explained:
 
     <?php
 
+    use \Phalcon\Events\Event;
+    use \Phalcon\Mvc\Dispatcher;
+
     class Security extends Phalcon\Mvc\User\Plugin
     {
 
         // ...
 
-        public function beforeExecuteRoute(Phalcon\Events\Event $event, Phalcon\Mvc\Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
             //Check whether the "auth" variable exists in session to define the active role
@@ -674,7 +680,12 @@ filled with those results:
 
     <div>
         <label for="product_types_id">Product Type</label>
-        <?php echo Tag::select(array("product_types_id", $productTypes, "using" => array("id", "name"), "useDummy" => true)) ?>
+        <?php echo Tag::select(array(
+            "product_types_id",
+            $productTypes,
+            "using" => array("id", "name"),
+            "useDummy" => true
+        )) ?>
     </div>
 
 Note that the $productTypes contains the data necessary to fill the SELECT tag with Phalcon\\Tag::select. Once the form is submitted, it will

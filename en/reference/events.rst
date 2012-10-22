@@ -257,3 +257,13 @@ In a listener the third parameter also receives this data:
         print_r($event->getData());
     });
 
+If a listener it's only interested in listening a specific type of event you can attach a listener directly:
+
+.. code-block:: php
+
+    <?php
+
+    //The handler will only be executed if the event triggered is "beforeSomeTask"
+    $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
+        //...
+    });
