@@ -10,7 +10,22 @@ Therefore many developers will be in familiar ground using the same syntax they 
 with Twig. Volt’s syntax and features have been enhanced with more elements and of course
 with the performance that developers have been accustomed to while working with Phalcon.
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually.
+Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+
+.. code-block:: html+jinja
+
+    {# app/views/products/show.volt #}
+
+    {% block last_products %}
+
+    {% for product in products %}
+        * Name: {{ product.name|e }}
+        {% if product.status == "Active" %}
+           Price: {{ product.price + product.taxes/100 }}
+        {% endif  %}
+    {% endfor  %}
+
+    {% endblock %}
 
 Activating Volt
 ---------------
@@ -451,6 +466,66 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     {{ content() }}
 
     {{ partial("partials/footer.volt") }}
+
+Template Inheritance
+--------------------
+With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
+define *blocks* than can be overriden by a child template. Let's pretend that we have the following base template:
+
+.. code-block:: html+jinja
+
+    {# templates/base.volt #}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            {% block head %}
+                <link rel="stylesheet" href="style.css" />
+            {% endblock %}
+            <title>{% block title %}{% endblock %} - My Webpage</title>
+        </head>
+        <body>
+            <div id="content">{% block content %}{% endblock %}</div>
+            <div id="footer">
+                {% block footer %}&copy; Copyright 2012, All rights reserved.{% endblock %}
+            </div>
+        </body>
+    </html>
+
+From other template we could extend the base template replacing the blocks:
+
+.. code-block:: jinja
+
+    {% extends "templates/base.volt" %}
+
+    {% block title %}Index{% endblock %}
+
+    {% block head %}<style type="text/css">.important { color: #336699; }</style>{% endblock %}
+
+    {% block content %}
+        <h1>Index</h1>
+        <p class="important">Welcome on my awesome homepage.</p>
+    {% endblock %}
+
+Not all blocks must be replaced at a child template, only those which are needed. The final output produced will be the following:
+
+.. code-block:: html
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <style type="text/css">.important { color: #336699; }</style>
+            <title>Index - My Webpage</title>
+        </head>
+        <body>
+            <div id="content">
+                <h1>Index</h1>
+                <p class="important">Welcome on my awesome homepage.</p>
+            </div>
+            <div id="footer">
+                &copy; Copyright 2012, All rights reserved.
+            </div>
+        </body>
+    </html>
 
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/

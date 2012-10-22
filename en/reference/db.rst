@@ -386,12 +386,15 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 .. code-block:: php
 
-    [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products (name, price) VALUES ('Hot pepper', 3.50)
+    [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
+    (name, price) VALUES ('Hot pepper', 3.50)
 
 
 Implementing your own Logger
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can implement your own logger class for database queries, by creating a class that implements a single method called "log". The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(), and from then on any SQL statement executed will call that method to log the results.
+You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
+The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
+and from then on any SQL statement executed will call that method to log the results.
 
 Describing Tables and Databases
 -------------------------------
@@ -443,7 +446,10 @@ A table description is very similar to the MySQL describe command, it contains t
 
 Creating/Altering/Dropping Tables
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. :doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
+commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
+differentiate the SQL syntax based on the target storage system.
 
 Creating Tables
 ^^^^^^^^^^^^^^^
@@ -490,7 +496,8 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon\\Db::createTable() accepts an associative array describing the table. Columns are defined with the class :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
+Phalcon\\Db::createTable() accepts an associative array describing the table. Columns are defined with the class
+:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -539,7 +546,9 @@ The associative array passed in Phalcon\\Db::createTable() can have the possible
 
 Altering Tables
 ^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>` is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
+Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
+is limited by these constraints.
 
 .. code-block:: php
 

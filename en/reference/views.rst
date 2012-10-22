@@ -484,14 +484,18 @@ If your controller doesn't produce any output in the view (or not even have one)
 
 Template Engines
 ----------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP. This helps developers to
-create and design views using an external template engine.
+Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
+called :doc:`Volt <volt>`.
+
+Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
 
 Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
-for the user. This usually increases the number of resources that your application is using.
+for the user. This usually increases the number of resources that your application are using.
 
 If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
-still possible to access the API inside these templates.
+still possible to access the API inside these templates with a little more effort.
+
+The component uses adapters, these help Phalcon to speak with those external template engines in a unified, let's see how to do that integration.
 
 Creating your own Template Engine Adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -623,7 +627,7 @@ the relevant file first can achieve this.
     require "path/to/Mustache/Autoloader.php";
     Mustache_Autoloader::register();
 
-A template engine for Mustache would look like:
+A template engine adapter for Mustache would look like:
 
 .. code-block:: php
 
@@ -721,7 +725,7 @@ You need to manually load the Twig library before use its engine adapter. Regist
     require "path/to/Twig/Autoloader.php";
     Twig_Autoloader::register();
 
-A template engine for Mustache would look like:
+A template engine adapter for Twig would look like:
 
 .. code-block:: php
 
@@ -804,6 +808,55 @@ To include the contents of a view at a higher level, the "content" variable is a
         {{ content }}
     </div>
 
+Using Smarty
+^^^^^^^^^^^^
+Smarty_ is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.
+
+You need to manually include the Smarty library before use its engine adapter. Including its adapter:
+
+.. code-block:: php
+
+    <?php
+
+    require_once 'Smarty3/Smarty.class.php';
+
+A template engine adapter for Smarty would look like:
+
+.. code-block:: php
+
+    <?php
+
+    class SmartyEngine extends \Phalcon\Mvc\View\Engine
+    {
+
+        protected $_smarty;
+        protected $_params;
+
+        public function __construct(Phalcon\Mvc\View $view, Phalcon\DI $di)
+        {
+            $this->_smarty = new Smarty();
+            $this->_smarty->template_dir = '.';
+            $this->_smarty->compile_dir = SMARTY_DIR . 'templates_c';
+            $this->_smarty->config_dir = SMARTY_DIR . 'configs';
+            $this->_smarty->cache_dir = SMARTY_DIR . 'cache';
+            $this->_smarty->caching = false;
+            $this->_smarty->debugging = true;
+            parent::__construct($view, $di);
+        }
+
+        public function render($path, $params)
+        {
+            if (!isset($params['content'])) {
+                $params['content'] = $this->_view->getContent();
+            }
+            foreach($params as $key => $value){
+                $this->_smarty->assign($key, $value);
+            }
+            $this->_view->setContent($this->_smarty->fetch($path));
+        }
+
+    }
+
 Injecting services in View
 --------------------------
 Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
@@ -842,8 +895,13 @@ All the components in Phalcon can be used as *glue* components individually beca
     $view->setVar("someProducts", $products);
     $view->setVar("someFeatureEnabled", true);
 
+    //Start the output buffering
     $view->start();
+
+    //Render all the view hierarchy related to the view products/list.phtml
     $view->render("products", "list");
+
+    //Finish the output buffering
     $view->finish();
 
     echo $view->getContent();
@@ -894,3 +952,4 @@ The following example demonstrates how to attach listeners to this component:
 .. _Twig: http://twig.sensiolabs.org
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
+.. _Smarty: http://www.smarty.net/

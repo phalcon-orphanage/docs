@@ -19,6 +19,13 @@ We recommend you check this cases before use cache:
     *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
     be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
 
+Caching Behavior
+----------------
+The caching process is divided into 2 parts:
+
+* **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
+* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+
 Caching Output Fragments
 ------------------------
 An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured
@@ -226,31 +233,31 @@ Frontend Adapters
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-+---------+--------------------------------------------------------------------------------------------------------------------------------+
-| Adapter | Description                                                                                                                    |
-+=========+================================================================================================================================+
-| Output  | Read input data from standard PHP output                                                                                       |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+
-| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). The data is serialized before stored in the backend. |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+
-| None    | It's used to cache any kind of PHP data without serializing them.                                                              |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+
-
++---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Adapter | Description                                                                                                                    | Example                                                                        |
++=========+================================================================================================================================+================================================================================+
+| Output  | Read input data from standard PHP output                                                                                       | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` |
++---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). The data is serialized before stored in the backend. | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`     |
++---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_None>`     |
++---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 Backend Adapters
 ----------------
 The backend adapters available to store cache data are:
 
-+-----------+------------------------------------------------+------------+---------------------+
-| Adapter   | Description                                    | Info       | Required Extensions |
-+===========+================================================+============+=====================+
-| File      | Stores data to local plain files               |            |                     |
-+-----------+------------------------------------------------+------------+---------------------+
-| Memcached | Stores data to a memcached server              | Memcached_ | memcache_           |
-+-----------+------------------------------------------------+------------+---------------------+
-| APC       | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    |
-+-----------+------------------------------------------------+------------+---------------------+
-
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| Adapter   | Description                                    | Info       | Required Extensions | Example                                                                           |
++===========+================================================+============+=====================+===================================================================================+
+| File      | Stores data to local plain files               |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| Memcached | Stores data to a memcached server              | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| APC       | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| Mongo     | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 
 File Backend Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -261,7 +268,6 @@ This backend will store cached content into files in the local server. The avail
 +==========+===========================================================+
 | cacheDir | A writable directory on which cached files will be placed |
 +----------+-----------------------------------------------------------+
-
 
 Memcached Backend Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,12 +283,27 @@ This backend will store cached content on a memcached server. The available opti
 | persistent | create a persitent connection to memcached? |
 +------------+---------------------------------------------+
 
-
 APC Backend Options
 ^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on Alternative PHP Cache (APC_). This cache backend does not require any additional configuration options.
+
+Mongo Backend Options
+^^^^^^^^^^^^^^^^^^^^^^^^^
+This backend will store cached content on a MongoDB server. The available options for this backend are:
+
++------------+---------------------------------------------+
+| Option     | Description                                 |
++============+=============================================+
+| server     | A MongoDB connection string                 |
++------------+---------------------------------------------+
+| db         | Mongo database name                         |
++------------+---------------------------------------------+
+| collection | Mongo collection in the database            |
++------------+---------------------------------------------+
 
 .. _Memcached: http://php.net/manual/en/book.apc.php
 .. _memcache: http://pecl.php.net/package/memcache
 .. _APC: http://php.net/manual/en/book.apc.php
 .. _APC extension: http://pecl.php.net/package/APC
+.. _MongoDb: http://mongodb.org/
+.. _Mongo: http://pecl.php.net/package/mongo

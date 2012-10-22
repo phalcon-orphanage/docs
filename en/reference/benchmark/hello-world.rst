@@ -38,7 +38,6 @@ Results
 Yii (YII_DEBUG=false) Version yii-1.1.12.b600af
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 .. code-block:: php
 
 	# ab -n 1000 -c 5 http://localhost/bench/yii/index.php?r=say/hello
@@ -138,7 +137,6 @@ Symfony Version 2.0.11
 
 CodeIgniter 2.1.0
 ^^^^^^^^^^^^^^^^^
-
 
 .. code-block:: php
 

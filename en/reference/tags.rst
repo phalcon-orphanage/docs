@@ -124,10 +124,24 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 
 .. code-block::  html+php
 
-    <?php echo Phalcon\Tag::textField(array("parent_id", "value"=> "5")) ?>
-    <?php echo Phalcon\Tag::textArea(array("comment", "This is the content of the text-area", "cols" => "6", "rows" => 20)) ?>
+    <?php echo Phalcon\Tag::textField(array(
+        "parent_id",
+        "value"=> "5"
+    )) ?>
+
+    <?php echo Phalcon\Tag::textArea(array(
+        "comment",
+        "This is the content of the text-area",
+        "cols" => "6",
+        "rows" => 20
+    )) ?>
+
     <?php echo Phalcon\Tag::passwordField("password") ?>
-    <?php echo Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5")) ?>
+
+    <?php echo Phalcon\Tag::hiddenField(array(
+        "parent_id",
+        "value"=> "5"
+    )) ?>
 
 Making Select Boxes
 -------------------
@@ -192,7 +206,8 @@ The following HTML will generated:
 
 .. code-block:: html
 
-    <input type="text" name="price" id="price" size="20" maxlength="30" placeholder="Enter a price" />
+    <input type="text" name="price" id="price" size="20" maxlength="30"
+        placeholder="Enter a price" />
 
 Setting Helper Values
 ---------------------
@@ -412,3 +427,6 @@ You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../a
         }
 
     }
+
+In next chapter, we'll talk about :doc:`Volt <volt>` a faster template engine for PHP, where you can use a
+more friendly syntax for using helpers provided by Phalcon\Tag.

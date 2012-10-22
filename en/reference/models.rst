@@ -500,7 +500,10 @@ retrieving related results with using the magic method and without:
     $robotsParts = $robot->getRobotsParts("created_at='2012-03-15'");
 
     // Or using bound parameters
-    $robotsParts = $robot->getRobotsParts(array("created_at=:date:", "bind" => array("date" => "2012-03-15")));
+    $robotsParts = $robot->getRobotsParts(array(
+        "created_at=:date:",
+        "bind" => array("date" => "2012-03-15"
+    )));
 
     $robotPart = RobotsParts::findFirst(1);
 
@@ -1519,7 +1522,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
     });
 
 Manual Meta-Data
-----------------
+^^^^^^^^^^^^^^^^
 Phalcon can obtain the metadata for each model automatically without the developer must set them manually.
 Remember that when defining the metadata manually, new columns added/modified/removed to/from the mapped
 table must be added/modified/removed also for everything to work correctly.
@@ -1714,7 +1717,8 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 .. code-block:: irc
 
-    [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
+    [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
+    (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
 Profiling SQL Statements
 ------------------------

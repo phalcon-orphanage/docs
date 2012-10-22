@@ -133,9 +133,14 @@ Classes in namespaces are also allowed:
 
     <?php
 
-    $query = $manager->createQuery("SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name");
-    $query = $manager->createQuery("SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name");
-    $query = $manager->createQuery("SELECT c.name FROM Formula\Cars c ORDER BY c.name");
+    $phql = "SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query = $manager->createQuery($phql);
+
+    $phql = "SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query = $manager->createQuery($phql);
+
+    $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
+    $query = $manager->createQuery($phql);
 
 Most of the SQL standard is supported by PHQL even nonstandard directives as LIMIT:
 
@@ -212,7 +217,8 @@ As we can query complete objects or scalars, also we can query both at once:
     $phql  = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
     $result = $manager->executeQuery($phql);
 
-The result in this case is an object :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`. This allows access to both complete objects and scalars at once:
+The result in this case is an object :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`.
+This allows access to both complete objects and scalars at once:
 
 .. code-block:: php
 
@@ -228,7 +234,8 @@ Scalars are mapped as properties of each "row", while complete objects are mappe
 
 Joins
 ^^^^^
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models. PHQL adds these conditions automatically:
+It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
+relationships in the models. PHQL adds these conditions automatically:
 
 .. code-block:: php
 
@@ -259,7 +266,7 @@ By default, a INNER JOIN is assumed. You can specify the type of JOIN in the que
     $phql   = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-Also is posibly, manually set the conditions of the JOIN:
+Also is possibly, manually set the conditions of the JOIN:
 
 .. code-block:: php
 
@@ -368,7 +375,8 @@ With PHQL is possible insert data using the familiar INSERT statement:
     <?php
 
     //Inserting without columns
-    $phql = "INSERT INTO Cars VALUES (NULL, 'Lamborghini Espada', 7, 10000.00, 1969, 'Grand Tourer')";
+    $phql = "INSERT INTO Cars VALUES (NULL, 'Lamborghini Espada',
+        7, 10000.00, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
     //Specifyng columns to insert
@@ -388,7 +396,9 @@ With PHQL is possible insert data using the familiar INSERT statement:
         )
     );
 
-Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually. Let's add a business rule to the model cars. A car cannot cost less than $ 10,000:
+Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined
+in the model are executed as if we created individual objects manually. Let's add a business rule
+o the model cars. A car cannot cost less than $ 10,000:
 
 .. code-block:: php
 
@@ -409,7 +419,8 @@ Phalcon not just only transform the PHQL statements into SQL. All events and bus
 
     }
 
-If we made the following INSERT in the the models Cars, the operation will not be successful because the price does not meet the business rule that we implemented:
+If we made the following INSERT in the the models Cars, the operation will not be successful
+because the price does not meet the business rule that we implemented:
 
 .. code-block:: php
 
@@ -425,8 +436,9 @@ If we made the following INSERT in the the models Cars, the operation will not b
 
 Updating Rows
 -------------
-Updating rows is very similar than Inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated
-the events related to the update operation will be executed for each row.
+Updating rows is very similar than Inserting rows. As you may know, the instruction to
+update records is UPDATE. When a record is updated the events related to the update operation
+will be executed for each row.
 
 .. code-block:: php
 
