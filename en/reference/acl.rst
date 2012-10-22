@@ -133,6 +133,44 @@ To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be
         echo "Access denied :(";
     }
 
+Acl Events
+----------
+:doc:`Phalcon\\Acl <../api/Phalcon_Acl>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
+are triggered using the type "acl". Some events when returning boolean false could stop the active operation. The following events are supported:
+
++----------------------+------------------------------------------------------------+---------------------+
+| Event Name           | Triggered                                                  | Can stop operation? |
++======================+============================================================+=====================+
+| beforeCheckAccess    | Triggered before check if a role/resource has access       | Yes                 |
++----------------------+------------------------------------------------------------+---------------------+
+| afterCheckAccess     | Triggered after check if a role/resource has access        | No                  |
++----------------------+------------------------------------------------------------+---------------------+
+
+The following example demonstrates how to attach listeners to this component:
+
+.. code-block:: php
+
+    <?php
+
+    //Create an event manager
+    $eventsManager = new Phalcon\Events\Manager();
+
+    //Attach a listener for type "acl"
+    $eventsManager->attach("acl", function($event, $acl) {
+        if ($event->getType() == 'beforeCheckAccess') {
+             echo   $acl->getActiveRole(),
+                    $acl->getActiveResource(),
+                    $acl->getActiveAccess();
+        }
+    });
+
+    $acl = new \Phalcon\Acl\Adapter\Memory();
+
+    //Setup the $acl
+    //...
+
+    //Bind the eventsManager to the acl component
+    $acl->setEventsManager($eventManagers);
 
 
 .. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list

@@ -948,8 +948,38 @@ The following example demonstrates how to attach listeners to this component:
         return $view;
     });
 
+The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
+
+.. code-block:: php
+
+    <?php
+
+    class TidyPlugin
+    {
+
+        public function afterRender($event, $view){
+
+            $tidyConfig = array(
+                'clean' => true,
+                'output-xhtml' => true,
+                'show-body-only' => true,
+                'wrap' => 0,
+            );
+
+            $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');
+            $tidy->cleanRepair();
+
+            $view->setContent((string) $tidy);
+        }
+
+    }
+
+    //Attach the plugin as a listener
+    $eventsManager->attach("view:afterRender", new TidyPlugin());
+
 .. _Mustache: https://github.com/bobthecow/mustache.php
 .. _Twig: http://twig.sensiolabs.org
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
 .. _Smarty: http://www.smarty.net/
+.. _Tidy: http://www.php.net/manual/en/book.tidy.php
