@@ -339,7 +339,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     {
 
         /**
-         * Executed before the SQL statement is sent to the db server
+         * Executed before the SQL statement will sent to the db server
          */
         public function beforeStartProfile(Item $profile)
         {
@@ -347,7 +347,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
         }
 
         /**
-         * Executed after the SQL statement is sent to the db server
+         * Executed after the SQL statement was sent to the db server
          */
         public function afterEndProfile(Item $profile)
         {
@@ -356,12 +356,14 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
+    //Create a EventsManager
+    $eventsManager = new Phalcon\Events\Manager();
+
+    //Create a listener
     $dbProfiler = new DbProfiler();
 
-    //Listen all the database events
-    $eventsManager->attach('db', function($event, $connection) use ($profiler) {
-        //...
-    });
+    //Attach the listener listening for all database events
+    $eventsManager->attach('db', $dbProfiler);
 
 
 Logging SQL Statements
@@ -372,10 +374,21 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     <?php
 
+    $eventsManager = new Phalcon\Events\Manager();
+
     $logger = new \Phalcon\Logger\Adapter\File("app/logs/db.log");
 
-    $connection->setLogger($logger);
+    //Listen all the database events
+    $eventsManager->attach('db', function($event, $connection) use ($logger) {
+        if ($event->getType() == 'beforeQuery') {
+            $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+        }
+    });
 
+    //Assign the eventsManager to the db adapter instance
+    $connection->setEventsManager($eventsManager);
+
+    //Execute some SQL statement
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
