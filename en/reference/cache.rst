@@ -240,6 +240,8 @@ The available frontend adapters that are used as interfaces or input sources to 
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). The data is serialized before stored in the backend. | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`     |
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Base64  | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                    | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>` |
++---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_None>`     |
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 

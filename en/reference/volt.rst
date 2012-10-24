@@ -541,7 +541,7 @@ Volt can be configured to alter its default behavior, the following example expl
         $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
 
         $volt->setOptions(array(
-            "compiledPath" => "../app/cache/",
+            "compiledPath" => "../app/compiled-templates/",
             "compiledExtension" => ".compiled"
         ));
 
