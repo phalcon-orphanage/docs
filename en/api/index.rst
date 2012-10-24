@@ -112,6 +112,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Exclusionin
    Phalcon_Mvc_Model_Validator_Inclusionin
    Phalcon_Mvc_Model_Validator_Numericality
+   Phalcon_Mvc_Model_Validator_PresenceOf
    Phalcon_Mvc_Model_Validator_Regex
    Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness

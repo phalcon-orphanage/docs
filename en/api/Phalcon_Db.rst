@@ -290,7 +290,25 @@ Gets the active connection unique identifier
 
 
 
-public  **getSQLStatement** ()
+public *string*  **getSQLStatement** ()
+
+Active SQL statement in the object
+
+
+
+public *string*  **getRealSQLStatement** ()
+
+Active SQL statement in the object without replace bound paramters
+
+
+
+public *array*  **getSQLVariables** ()
+
+Active SQL statement in the object
+
+
+
+public *array*  **getSQLBindTypes** ()
 
 Active SQL statement in the object
 

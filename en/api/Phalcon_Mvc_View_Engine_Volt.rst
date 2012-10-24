@@ -21,7 +21,7 @@ Return Volt's options
 
 
 
-public  **render** (*string* $path, *array* $params, *bool* $mustClean)
+public  **render** (*string* $templatePath, *array* $params, *bool* $mustClean)
 
 Renders a view using the template engine
 

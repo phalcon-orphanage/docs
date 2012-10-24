@@ -126,6 +126,64 @@ Executes internal events after save a document
 
 
 
+protected  **validate** ()
+
+Executes validators on every validation call 
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
+    
+    class Subscriptors extends Phalcon\Mvc\Collection
+    {
+    
+    public function validation()
+      {
+     		$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
+    }
+    
+    }
+
+
+
+
+public *boolean*  **validationHasFailed** ()
+
+Check whether validation process has generated any messages 
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
+    {
+    
+    public function validation()
+      {
+     		$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
+    }
+    
+    }
+
+
+
+
 protected *boolean*  **_callEvent** ()
 
 Fires an internal event
@@ -152,7 +210,8 @@ Checks if the document exists in the collection
 
 public  **save** ()
 
-...
+
+
 
 
 public static  **findFirst** (*unknown* $parameters)

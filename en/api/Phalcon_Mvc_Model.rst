@@ -155,9 +155,9 @@ Returns DependencyInjection connection service
 
 
 
-public  **setForceExists** (*unknown* $forceExists)
+public  **setForceExists** (*boolean* $forceExists)
 
-
+Forces that model doesn't need to be checked if exists before store it
 
 
 

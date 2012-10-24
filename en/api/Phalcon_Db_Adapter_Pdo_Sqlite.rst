@@ -429,7 +429,25 @@ Gets the active connection unique identifier
 
 
 
-public  **getSQLStatement** () inherited from Phalcon\\Db
+public *string*  **getSQLStatement** () inherited from Phalcon\\Db
+
+Active SQL statement in the object
+
+
+
+public *string*  **getRealSQLStatement** () inherited from Phalcon\\Db
+
+Active SQL statement in the object without replace bound paramters
+
+
+
+public *array*  **getSQLVariables** () inherited from Phalcon\\Db
+
+Active SQL statement in the object
+
+
+
+public *array*  **getSQLBindTypes** () inherited from Phalcon\\Db
 
 Active SQL statement in the object
 

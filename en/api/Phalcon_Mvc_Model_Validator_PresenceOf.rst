@@ -1,23 +1,24 @@
-Class **Phalcon\\Mvc\\Model\\Validator\\Numericality**
-======================================================
+Class **Phalcon\\Mvc\\Model\\Validator\\PresenceOf**
+====================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Allows to validate if a field has a valid numeric format 
+Allows to validate if a filed have a value different of null and empty string ("") 
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\Numericality as NumericalityValidator;
+    use Phalcon\Mvc\Model\Validator\PresenceOf;
     
-    class Products extends Phalcon\Mvc\Model
+    class Subscriptors extends Phalcon\Mvc\Model
     {
     
       public function validation()
       {
-          $this->validate(new NumericalityValidator(array(
-              'field' => 'price'
+          $this->validate(new PresenceOf(array(
+              'field' => 'name',
+              'message' => 'The name is required'
           )));
           if ($this->validationHasFailed() == true) {
               return false;

@@ -68,7 +68,7 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** ()
+public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists.
 

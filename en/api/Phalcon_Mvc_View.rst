@@ -188,7 +188,8 @@ Register templating engines
 
     $this->view->registerEngines(array(
       ".phtml" => "Phalcon\Mvc\View\Engine\Php",
-      ".mhtml" => "MyMustacheEngine"
+      ".volt" => "Phalcon\Mvc\View\Engine\Volt",
+      ".mhtml" => "MyCustomEngine"
     ));
 
 
@@ -299,7 +300,7 @@ Returns the path of the view that is currently rendered
 
 public  **disable** ()
 
-Disable view. No show any view or template
+Disable view. Don't show any view or template
 
 
 

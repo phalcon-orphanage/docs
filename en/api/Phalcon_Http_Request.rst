@@ -31,9 +31,26 @@ Returns the internal dependency injector
 
 
 
+public *mixed*  **get** (*string* $name, *string|array* $filters)
+
+Gets a variable from the $_REQUEST superglobal applying filters if needed 
+
+.. code-block:: php
+
+    <?php
+
+    //Returns value from $_REQUEST["user_email"] without sanitizing
+    $userEmail = $request->get("user_email");
+    
+    //Returns value from $_REQUEST["user_email"] with sanitizing
+    $userEmail = $request->get("user_email", "email");
+
+
+
+
 public *mixed*  **getPost** (*string* $name, *string|array* $filters)
 
-Gets variable from $_POST superglobal applying filters if needed 
+Gets a variable from the $_POST superglobal applying filters if needed 
 
 .. code-block:: php
 
@@ -68,6 +85,12 @@ Gets variable from $_GET superglobal applying filters if needed
 public *mixed*  **getServer** (*string* $name)
 
 Gets variable from $_SERVER superglobal
+
+
+
+public *boolean*  **has** (*string* $name)
+
+Checks whether $_SERVER superglobal has certain index
 
 
 

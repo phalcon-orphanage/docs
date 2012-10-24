@@ -1,20 +1,21 @@
 Class **Phalcon\\Events\\Manager**
 ==================================
 
-The new Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
+Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
 
 Methods
 ---------
 
-public  **__construct** ()
-
-...
-
-
 public  **attach** (*string* $eventType, *object* $handler)
 
 Attach a listener to the events manager
+
+
+
+public  **dettachAll** (*unknown* $type)
+
+Removes all events from the EventsManager
 
 
 
