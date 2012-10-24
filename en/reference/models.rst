@@ -19,7 +19,6 @@ Creating Models
 A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
 file must contain a single class; its class name should be in camel case notation:
 
-
 .. code-block:: php
 
     <?php
@@ -35,7 +34,7 @@ CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sop
 with each other.
 
 By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the setSource() method:
+you can use the getSource() method:
 
 .. code-block:: php
 
@@ -79,7 +78,7 @@ Understanding Records To Objects
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
 for a table "robots" with the records:
 
-.. code-block:: sql
+.. code-block:: bash
 
     mysql> select * from robots;
     +----+------------+------------+------+

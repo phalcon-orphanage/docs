@@ -60,6 +60,40 @@ Use the standard ".phtml" extension:
         ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
     ));
 
+Creating the Volt engine passing options:
+
+.. code-block:: php
+
+    <?php
+
+    //Register Volt as a service
+    $di->set('voltService', function() {
+
+        $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+        $volt->setOptions(array(
+            "compiledPath" => "unit-tests/cache/",
+            "compiledSeparator" => "_",
+            "compiledExtension" => ".compiled"
+        ));
+
+        return $volt;
+    });
+
+    //Register Volt as template engine
+    $di->set('view', function() {
+
+        $view = new \Phalcon\Mvc\View();
+
+        $view->setViewsDir('../app/views/');
+
+        $view->registerEngines(array(
+            ".volt" => 'voltService'
+        ));
+
+        return $view;
+    });
+
 Basic Usage
 -----------
 A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
