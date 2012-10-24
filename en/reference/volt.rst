@@ -60,40 +60,6 @@ Use the standard ".phtml" extension:
         ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
     ));
 
-Creating the Volt engine passing options:
-
-.. code-block:: php
-
-    <?php
-
-    //Register Volt as a service
-    $di->set('voltService', function() {
-
-        $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
-
-        $volt->setOptions(array(
-            "compiledPath" => "unit-tests/cache/",
-            "compiledSeparator" => "_",
-            "compiledExtension" => ".compiled"
-        ));
-
-        return $volt;
-    });
-
-    //Register Volt as template engine
-    $di->set('view', function() {
-
-        $view = new \Phalcon\Mvc\View();
-
-        $view->setViewsDir('../app/views/');
-
-        $view->registerEngines(array(
-            ".volt" => 'voltService'
-        ));
-
-        return $view;
-    });
-
 Basic Usage
 -----------
 A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
@@ -560,6 +526,56 @@ Not all blocks must be replaced at a child template, only those which are needed
             </div>
         </body>
     </html>
+
+Setting up the Volt Engine
+--------------------------
+Volt can be configured to alter its default behavior, the following example explain how to do that:
+
+.. code-block:: php
+
+    <?php
+
+    //Register Volt as a service
+    $di->set('voltService', function() {
+
+        $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+        $volt->setOptions(array(
+            "compiledPath" => "../app/cache/",
+            "compiledExtension" => ".compiled"
+        ));
+
+        return $volt;
+    });
+
+    //Register Volt as template engine
+    $di->set('view', function() {
+
+        $view = new \Phalcon\Mvc\View();
+
+        $view->setViewsDir('../app/views/');
+
+        $view->registerEngines(array(
+            ".volt" => 'voltService'
+        ));
+
+        return $view;
+    });
+
+The following options are available in Volt:
+
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| Option            | Description                                                                                                                    | Default |
++===================+================================================================================================================================+=========+
+| compiledPath      | A writable path where the compiled PHP templates will be placed                                                                | ./      |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| compiledExtension | An additional extension appended to the compiled PHP file                                                                      | .php    |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| compiledSeparator | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory   | %%      |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| stat              | Whether Phalcon must check if exists differences between the template file and its compiled path                               | true    |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+
 
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
