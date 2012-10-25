@@ -1299,7 +1299,7 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that omit some fields in the creation and/or update in order to delegate the database
+To tell to Phalcon\\Mvc\\Model that omits some fields in the creation and/or update in order to delegate the database
 system assigns the value by a trigger or a default:
 
 .. code-block:: php
