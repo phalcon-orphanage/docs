@@ -28,6 +28,11 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
+.. highlights::
+
+    If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
+    memory and reduce the memory allocation.
+
 By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
 you can use the getSource() method:
 

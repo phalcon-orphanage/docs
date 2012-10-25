@@ -33,6 +33,11 @@ This component provides a great deal of functionality to models that inherit it,
 CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
 with each other.
 
+.. highlights::
+
+    If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
+    memory and reduce the memory allocation.
+
 By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
 you can use the getSource() method:
 
@@ -911,7 +916,6 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
     }
 
-
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
@@ -1147,23 +1151,25 @@ The following example shows how to use it:
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                            | Example                                                           |
-+==============+========================================================================================================================================+===================================================================+
-| Email        | Validates that field contains a valid email format                                                                                     | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                         | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                             | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                            | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Name         | Explanation                                                                                                                                                      | Example                                                           |                                                                                    |
++==============+==================================================================================================================================================================+===================================================================+
+| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validatiors, you can create your own validators:
 
@@ -1289,6 +1295,44 @@ The good news is that Phalcon do this automatically for you:
     $product->name = 'Artichoke';
     $product->price = 10.5;
     $product->active = 'Y';
+    $product->create();
+
+Skipping Columns
+----------------
+To tell to Phalcon\\Mvc\\Model that omit some fields in the creation and/or update in order to delegate the database
+system assigns the value by a trigger or a default:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            //Skips fields/columns on both INSERT/UPDATE operations
+            $this->skipAttributes(array('year', 'price'));
+
+            //Skips only when inserting
+            $this->skipAttributesOnCreate(array('created_at'));
+
+            //Skips only when updating
+            $this->skipAttributesOnUpdate(array('modified_in'));
+        }
+
+    }
+
+This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
+Forcing a default value can be done in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->name = 'Artichoke';
+    $robot->;
     $product->create();
 
 Deleting Records
