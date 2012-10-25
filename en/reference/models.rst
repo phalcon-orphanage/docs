@@ -1331,9 +1331,10 @@ Forcing a default value can be done in the following way:
     <?php
 
     $robot = new Robots();
-    $robot->name = 'Artichoke';
-    $robot->;
-    $product->create();
+    $robot->name = 'Bender';
+    $robot->year = 1999;
+    $robot->created_at = new Phalcon\Db\RawValue('default');
+    $robot->create();
 
 Deleting Records
 ----------------
