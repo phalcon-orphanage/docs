@@ -121,9 +121,15 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public  **setAutomaticAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes)
+public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes)
 
-Set the attributes that must be ignored from both INSERT/UPDATE SQL generation
+Set the attributes that must be ignored from the INSERT SQL generation
+
+
+
+public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *array* $attributes)
+
+Set the attributes that must be ignored from the UPDATE SQL generation
 
 
 

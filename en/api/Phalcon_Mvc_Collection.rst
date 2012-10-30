@@ -214,23 +214,101 @@ public  **save** ()
 
 
 
-public static  **findFirst** (*unknown* $parameters)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string* $id)
 
-...
+Find a document by its id
 
 
-public static  **find** (*unknown* $parameters)
 
-...
+public static *array*  **findFirst** (*array* $parameters)
+
+Allows to query the first record that match the specified conditions 
+
+.. code-block:: php
+
+    <?php
+
+     //What's the first robot in robots table?
+     $robot = Robots::findFirst();
+     echo "The robot name is ", $robot->name;
+    
+     //What's the first mechanical robot in robots table?
+     $robot = Robots::findFirst(array(
+         array("type" => "mechanical")
+     ));
+     echo "The first mechanical robot name is ", $robot->name;
+    
+     //Get first virtual robot ordered by name
+     $robot = Robots::findFirst(array(
+         array("type" => "mechanical"),
+         "order" => array("name" => 1)
+     ));
+     echo "The first virtual robot name is ", $robot->name;
+
+
+
+
+public static *array*  **find** (*array* $parameters)
+
+Allows to query a set of records that match the specified conditions 
+
+.. code-block:: php
+
+    <?php
+
+     //How many robots are there?
+     $robots = Robots::find();
+     echo "There are ", count($robots);
+    
+     //How many mechanical robots are there?
+     $robots = Robots::find(array(
+         array("type" => "mechanical")
+     ));
+     echo "There are ", count($robots);
+    
+     //Get and print virtual robots ordered by name
+     $robots = Robots::findFirst(array(
+         array("type" => "virtual"),
+         "order" => array("name" => 1)
+     ));
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
+     }
+    
+     //Get first 100 virtual robots ordered by name
+     $robots = Robots::find(array(
+         array("type" => "virtual"),
+         "order" => array("name" => 1),
+         "limit" => 100
+     ));
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
+     }
+
+
 
 
 public static  **count** (*unknown* $parameters)
 
-...
 
 
-public  **delete** ()
 
-...
+
+public *boolean*  **delete** ()
+
+Deletes a model instance. Returning true on success or false otherwise. 
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Robots::findFirst();
+    $robot->delete();
+    
+    foreach(Robots::find() as $robot){
+       $robot->delete();
+    }
+
+
 
 

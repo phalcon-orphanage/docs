@@ -101,7 +101,7 @@ Get the path when a class was found
 
 public *string*  **getCheckedPath** ()
 
-Get the path the loader is checking
+Get the path the loader is checking for a path
 
 
 

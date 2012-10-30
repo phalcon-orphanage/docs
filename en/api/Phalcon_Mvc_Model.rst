@@ -627,7 +627,64 @@ Writes an attribute value by its name
 
 protected  **skipAttributes** ()
 
-Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
+Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+           $this->skipAttributes(array('price'));
+       }
+    
+    }
+
+
+
+
+protected  **skipAttributesOnCreate** ()
+
+Sets a list of attributes that must be skipped from the generated INSERT statement 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+           $this->skipAttributesOnUpdate(array('created_at'));
+       }
+    
+    }
+
+
+
+
+protected  **skipAttributesOnUpdate** ()
+
+Sets a list of attributes that must be skipped from the generated UPDATE statement 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+           $this->skipAttributesOnUpdate(array('modified_in'));
+       }
+    
+    }
+
 
 
 
