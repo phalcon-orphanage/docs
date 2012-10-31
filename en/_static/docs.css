@@ -1,10 +1,18 @@
+html {
+	background: none;
+}
 
 body {
     color: #333333;
-    font-family: "Open Sans",sans-serif;
-    font-size: 13px;
-    line-height: 1.231;
-    text-align: center;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0 11px;
+}
+
+#nav-main {
+	background-color: #2C2C2C;
+	background-image: -moz-linear-gradient(center top , #333333, #222222);
 }
 
 h2 {
@@ -18,13 +26,9 @@ h2 {
 	margin: 25px 0 0;
 }
 
-p, li {
+/*p, li {
 	color: #434343;
-    font-size: 16px;
-    line-height: 24px;
-    margin-left: 0;
-    min-height: 0;
-}
+}*/
 
 td.primary-box li {
 	padding: 0px;
@@ -122,7 +126,7 @@ div.related li.right {
 }
 
 div.related li.right a {
-	background: #339A6B;
+	background: none repeat scroll 0 0 #0088CC;
 	padding: 10px;
 	border-radius: 5px;
 	color: #fff;
@@ -163,14 +167,13 @@ span.versionmodified {
 	font-style: italic;
 }
 
-div.highlight {
+/*div.highlight {
 	background: none repeat scroll 0 0 #212121;
 	margin: 7px 5px 5px;
 	max-width: 95%;
 	overflow-x: scroll;
 	text-align: left;
 	margin-left: 0px;
-	/*padding: 5px;*/
 }
 
 div.highlight,
@@ -199,7 +202,7 @@ blockquote p {
 	font-size: 14px;
 	line-height: 18px;
 	color: #DCDCCC;
-}
+}*/
 
 p.topless {
 	margin: 0px;
@@ -263,7 +266,8 @@ div.figure {
 }
 
 .highlight .mi,
-.highlight .mf {
+.highlight .mf,
+.highlight .m {
 	color: #8CD0D3;
 }
 
@@ -295,27 +299,31 @@ div.figure {
     font-style: italic;
 }
 
+.highlight .kd {
+	color: #dadada;
+}
+
 table.docutils {
 	border-collapse: collapse;
-	border-top: 1px solid #ABABAB;
-    border-left: 1px solid #ABABAB;
+	border-top: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 95%;
     margin-bottom: 15px;
+    border-radius: 4px;
 }
 
 table.docutils td,
 table.docutils th {
 	color: #434343;
-	border-bottom: 1px solid #ABABAB;
-    border-right: 1px solid #ABABAB;
-    font-size: 1.2em;
+	border-bottom: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
     padding: 5px;
 }
 
 table.docutils th {
-	background: none repeat scroll 0 0 #DADADA;
+	background: none repeat scroll 0 0 #F9F9F9;
 	text-align: center;
 }
 
@@ -361,4 +369,99 @@ div#methods span.inherited {
 
 em {
 	font-style: normal;
+}
+
+p.versionchanged, blockquote.highlights {
+    background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD;
+}
+
+div#footer {
+	padding: 50px 10px;
+	background: none repeat scroll 0 0 #0088CC;
+}
+
+div.highlight, blockquote {
+	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+	background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px 4px 4px 4px;
+    display: block;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 0 0 11px;
+    padding: 5px;
+    padding-left: 10px;
+    word-wrap: break-word;
+}
+
+div.highlight {
+	word-break: break-all;
+}
+
+.highlight .sd {
+    color: #93A1A1;
+    font-weight: normal;
+}
+
+.highlight .k {
+    color: #1E347B;
+    font-weight: normal;
+}
+
+.highlight .nf,
+.highlight .nc {
+    color: #48484C;
+    font-weight: normal;
+}
+
+.highlight .nv {
+    color: #48484C;
+}
+
+.highlight .nx,
+.highlight .na,
+.highlight .nb  {
+    color: teal;
+}
+
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb {
+    color: #DD1144;
+}
+
+.highlight .c1, .highlight .cm {
+    color: #93A1A1;
+    font-style: italic;
+}
+
+.highlight .o {
+    color: #1E347B;
+}
+
+.highlight .cp {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.highlight .nt {
+	color: #1E347B;
+	font-weight: normal;
+}
+
+.highlight .si {
+    color: coral;
+    font-weight: normal;
+}
+
+.highlight .mi, .highlight .mf, .highlight .m {
+    color: teal;
+}
+
+.highlight .ni {
+    color: teal;
+    font-weight: bold;
+}
+
+pre {
+	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }

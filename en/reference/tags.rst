@@ -13,6 +13,64 @@ You could use name aliasing to get short names for classes. In this case, a Tag 
 
     <?php use \Phalcon\Tag as Tag; ?>
 
+Document Type of Content
+------------------------
+Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
+For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
+
+Available document type constants in Phalcon\\Tag namespace are:
+
++----------------------+------------------------+
+| Constant             | Document type          |
++======================+========================+
+| HTML32               | HTML 3.2               |
++----------------------+------------------------+
+| HTML401_STRICT       | HTML 4.01 Strict       |
++----------------------+------------------------+
+| HTML401_TRANSITIONAL | HTML 4.01 Transitional |
++----------------------+------------------------+
+| HTML401_FRAMESET     | HTML 4.01 Frameset     |
++----------------------+------------------------+
+| HTML5                | HTML 5                 |
++----------------------+------------------------+
+| XHTML10_STRICT       | XHTML 1.0 Strict       |
++----------------------+------------------------+
+| XHTML10_TRANSITIONAL | XHTML 1.0 Transitional |
++----------------------+------------------------+
+| XHTML10_FRAMESET     | XHTML 1.0 Frameset     |
++----------------------+------------------------+
+| XHTML11              | XHTML 1.1              |
++----------------------+------------------------+
+| XHTML20              | XHTML 2.0              |
++----------------------+------------------------+
+| XHTML5               | XHTML 5                |
++----------------------+------------------------+
+
+Setting document type.
+
+.. code-block:: php
+
+    <?php \Phalcon\Tag::setDoctype(\Phalcon\Tag::HTML401_STRICT); ?>
+
+Getting document type.
+
+.. code-block:: html+php
+
+    <?= \Phalcon\Tag::getDoctype() ?>
+    <html>
+    <!-- your HTML code -->
+    </html>
+
+The following HTML will be produced.
+
+.. code-block:: html
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+    <html>
+    <!-- your HTML code -->
+    </html>
+
 Generating Links
 ----------------
 A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
@@ -66,10 +124,24 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 
 .. code-block::  html+php
 
-    <?php echo Phalcon\Tag::textField(array("parent_id", "value"=> "5")) ?>
-    <?php echo Phalcon\Tag::textArea(array("comment" "Nice article", "cols" => "6", "rows" => 20)) ?>
+    <?php echo Phalcon\Tag::textField(array(
+        "parent_id",
+        "value"=> "5"
+    )) ?>
+
+    <?php echo Phalcon\Tag::textArea(array(
+        "comment",
+        "This is the content of the text-area",
+        "cols" => "6",
+        "rows" => 20
+    )) ?>
+
     <?php echo Phalcon\Tag::passwordField("password") ?>
-    <?php echo Phalcon\Tag::hiddenField(array("parent_id", "value"=> "5") ?>
+
+    <?php echo Phalcon\Tag::hiddenField(array(
+        "parent_id",
+        "value"=> "5"
+    )) ?>
 
 Making Select Boxes
 -------------------
@@ -104,7 +176,7 @@ The following HTML will generated:
 
 .. code-block:: html
 
-    <select id="productsd" name="productId">
+    <select id="productId" name="productId">
         <option value="101">Tomato</option>
         <option value="102">Lettuce</option>
         <option value="103">Beans</option>
@@ -134,7 +206,8 @@ The following HTML will generated:
 
 .. code-block:: html
 
-    <input type="text" name="price" id="price" size="20" maxlength="30" placeholder="Enter a price" />
+    <input type="text" name="price" id="price" size="20" maxlength="30"
+        placeholder="Enter a price" />
 
 Setting Helper Values
 ---------------------
@@ -155,7 +228,7 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 
         public function indexAction()
         {
-            \Phalcon\Tag::setDefaultValue("color", "Blue");
+            Phalcon\Tag::setDefaultValue("color", "Blue");
         }
 
     }
@@ -206,16 +279,17 @@ The following example demonstrates just that:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller {
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
 
         public function initialize()
         {
-            \Phalcon\Tag::setTitle(" Your Website");
+            Phalcon\Tag::setTitle(" Your Website");
         }
 
         public function indexAction()
         {
-            \Phalcon\Tag::prependTitle("Index of Posts - ");
+            Phalcon\Tag::prependTitle("Index of Posts - ");
         }
 
     }
@@ -353,3 +427,6 @@ You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../a
         }
 
     }
+
+In next chapter, we'll talk about :doc:`Volt <volt>` a faster template engine for PHP, where you can use a
+more friendly syntax for using helpers provided by Phalcon\Tag.

@@ -31,9 +31,26 @@ Returns the internal dependency injector
 
 
 
+public *mixed*  **get** (*string* $name, *string|array* $filters)
+
+Gets a variable from the $_REQUEST superglobal applying filters if needed 
+
+.. code-block:: php
+
+    <?php
+
+    //Returns value from $_REQUEST["user_email"] without sanitizing
+    $userEmail = $request->get("user_email");
+    
+    //Returns value from $_REQUEST["user_email"] with sanitizing
+    $userEmail = $request->get("user_email", "email");
+
+
+
+
 public *mixed*  **getPost** (*string* $name, *string|array* $filters)
 
-Gets variable from $_POST superglobal applying filters if needed 
+Gets a variable from the $_POST superglobal applying filters if needed 
 
 .. code-block:: php
 
@@ -71,6 +88,12 @@ Gets variable from $_SERVER superglobal
 
 
 
+public *boolean*  **has** (*string* $name)
+
+Checks whether $_SERVER superglobal has certain index
+
+
+
 public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
@@ -103,7 +126,7 @@ Gets HTTP schema (http/https)
 
 public *boolean*  **isAjax** ()
 
-Checks whether request has been made using ajax
+Checks whether request has been made using ajax. Checks if $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest'
 
 
 
@@ -143,9 +166,9 @@ Gets information about schema, host and port used by the request
 
 
 
-public *string*  **getClientAddress** ()
+public *string*  **getClientAddress** (*boolean* $trustForwardedHeader)
 
-Gets most possibly client IPv4 Address. This methods search in $_SERVER['HTTP_X_FORWARDED_FOR'] and $_SERVER['REMOTE_ADDR']
+Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
 
 

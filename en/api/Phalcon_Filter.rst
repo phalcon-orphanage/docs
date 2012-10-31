@@ -23,9 +23,10 @@ public  **__construct** ()
 ...
 
 
-public  **add** (*unknown* $name, *unknown* $handler)
+public  **add** (*string* $name, *callable* $handler)
 
-...
+Adds a user-defined filter
+
 
 
 public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)

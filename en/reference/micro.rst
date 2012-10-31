@@ -27,8 +27,9 @@ Creating a Micro Application
 
 Defining routes
 ---------------
-After instantiating the object, you will need to add some routes. Routing is internally managed by :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`.
-Routes must always start with /. A HTTP method constraint to a route can be added, so as to instruct the route to match only the requests matched to the HTTP methods. The following example shows how to define a route for the method GET:
+After instantiating the object, you will need to add some routes. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` manages routing internally.
+Routes must always start with /. A HTTP method constraint to a route can be added, so as to instruct the route to match only the requests
+matched to the HTTP methods. The following example shows how to define a route for the method GET:
 
 .. code-block:: php
 
@@ -38,7 +39,9 @@ Routes must always start with /. A HTTP method constraint to a route can be adde
         echo "<h1>Hello! $name</h1>";
     });
 
-The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed directly to the route handler. Handlers are executed when a route is matched. A handler could be any callable item in the PHP userland. The following example shows how to defined different types of handlers:
+The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
+directly to the route handler. Handlers are executed when a route is matched. A handler could be any callable item in the PHP userland.
+The following example shows how to defined different types of handlers:
 
 .. code-block:: php
 
@@ -56,7 +59,7 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
 
     // With a method in an object
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($this, "myController"));
+    $app->get('/say/hello/{name}', array($myController, "someAction"));
 
     //Anonymous function
     $app->get('/say/hello/{name}', function ($name) {
@@ -90,7 +93,8 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
 
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^
-Defining parameters in routes as very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
+Defining parameters in routes as very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter
+formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
 
 .. code-block:: php
 
@@ -104,7 +108,8 @@ Defining parameters in routes as very easy as demonstrated above. The parameter 
 
 Starting Route
 ^^^^^^^^^^^^^^
-Normally, the starting route in an application will be the / route, and it will more frequent than not be accessed by the method GET. This scenario is coded as follows:
+Normally, the starting route in an application will be the / route, and it will more frequent than not be accessed by the method GET.
+This scenario is coded as follows:
 
 .. code-block:: php
 
@@ -185,7 +190,8 @@ Redirections could be performed to forward the execution flow to another route:
 
 Generating URLs for Routes
 --------------------------
-:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route, by this way the "url" service can produce the corresponding URL:
+:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
+by this way the "url" service can produce the corresponding URL:
 
 .. code-block:: php
 
@@ -212,7 +218,8 @@ Generating URLs for Routes
 
 Interacting with the Dependency Injector
 ----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly, additionally you can create outside of the application a container to
+In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
+can create outside of the application a container to
 manipulate its services:
 
 .. code-block:: php
@@ -241,7 +248,8 @@ manipulate its services:
 
 Not-Found Handler
 -----------------
-When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler. An example of that behavior is below:
+When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
+An example of that behavior is below:
 
 .. code-block:: php
 
@@ -280,7 +288,8 @@ Models in Micro Applications
 
 Micro Application Events
 ------------------------
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present). Events are triggered using the type "micro". The following events are supported:
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
+Events are triggered using the type "micro". The following events are supported:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -322,3 +331,4 @@ In the following example, we explain how to control the application security usi
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
 
+:doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.

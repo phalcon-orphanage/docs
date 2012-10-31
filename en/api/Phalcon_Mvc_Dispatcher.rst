@@ -23,6 +23,19 @@ Dispatching is the process of taking the request object, extracting the module n
 
 
 
+Constants
+---------
+
+*integer* **EXCEPTION_NO_DI**
+
+*integer* **EXCEPTION_CYCLIC_ROUTING**
+
+*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+
+*integer* **EXCEPTION_INVALID_PARAMS**
+
+*integer* **EXCEPTION_ACTION_NOT_FOUND**
+
 Methods
 ---------
 
@@ -145,7 +158,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, *string|array* $filters) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 

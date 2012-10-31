@@ -9,25 +9,23 @@ Allows to cache output fragments, PHP data or raw data to a memcache backend Thi
 
     <?php
 
-    //Cache data for 2 days
-    $frontendOptions = array(
-    	'lifetime' => 172800
-    );
+     // Cache data for 2 days
+     $frontCache = new Phalcon\Cache\Frontend\Data(array(
+        "lifetime" => 172800
+     ));
     
-    //Set memcached server connection settings
-    $backendOptions = array(
+     //Create the Cache setting memcached connection options
+     $cache = new Phalcon\Cache\Backend\File($frontCache, array(
     	'host' => 'localhost',
     	'port' => 11211,
-    	'persistent' => false
-    );
+      	'persistent' => false
+     ));
     
-    $cache = Phalcon_Cache::factory('Data', 'Memcache', $frontendOptions, $backendOptions);
+     //Cache arbitrary data
+     $cache->store('my-data', array(1, 2, 3, 4, 5));
     
-    //Cache arbitrary data
-    $cache->store('my-data', array(1, 2, 3, 4, 5));
-    
-    //Get data
-    $data = $cache->get('my-data');
+     //Get data
+     $data = $cache->get('my-data');
 
 
 
@@ -54,7 +52,7 @@ Returns a cached content
 
 public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-Stores cached content into the file backend
+Stores cached content into the Memcached backend
 
 
 
@@ -67,6 +65,12 @@ Deletes a value from the cache by its key
 public *array*  **queryKeys** (*string* $prefix)
 
 Query the existing cached keys
+
+
+
+public *boolean*  **exists** (*string* $keyName)
+
+Checks if cache exists.
 
 
 

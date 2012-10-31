@@ -32,7 +32,7 @@ Allows to validate if the value of a field matches a regular expression
 Methods
 ---------
 
-public *boolean*  **validate** (*unknown* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Executes the validator
 

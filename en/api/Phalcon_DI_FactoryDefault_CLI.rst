@@ -15,34 +15,40 @@ Phalcon\\DI\\FactoryDefault\\CLI constructor
 
 
 
-public  **set** (*unknown* $alias, *unknown* $config) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **set** (*string* $alias, *mixed* $config) inherited from Phalcon\\DI
 
-...
-
-
-public  **remove** (*unknown* $alias) inherited from Phalcon\\DI
-
-...
+Registers a service in the services container
 
 
-public  **attempt** (*unknown* $alias, *unknown* $config) inherited from Phalcon\\DI
 
-...
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **remove** (*string* $alias) inherited from Phalcon\\DI
 
-
-public  **_factory** (*unknown* $service, *unknown* $parameters) inherited from Phalcon\\DI
-
-...
+Removes a service in the services container
 
 
-public  **get** (*unknown* $alias, *unknown* $parameters) inherited from Phalcon\\DI
 
-...
+public :doc:`Phalcon\\DI <Phalcon_DI>`  **attempt** (*string* $alias, *mixed* $config) inherited from Phalcon\\DI
+
+Attempts to register a service in the services container Only is successful if a services hasn't been registered previosly with the same name
 
 
-public  **getShared** (*unknown* $alias, *unknown* $parameters) inherited from Phalcon\\DI
 
-...
+public *mixed*  **_factory** (*string* $service, *mixed* $parameters) inherited from Phalcon\\DI
+
+Factories instances based on its config
+
+
+
+public *mixed*  **get** (*string* $alias, *array* $parameters) inherited from Phalcon\\DI
+
+Resolves the service based on its configuration
+
+
+
+public *mixed*  **getShared** (*string* $alias, *array* $parameters) inherited from Phalcon\\DI
+
+Returns a shared service based on its configuration
+
 
 
 public *boolean*  **has** (*unknown* $alias) inherited from Phalcon\\DI
@@ -63,9 +69,10 @@ Magic method to get or set services using setters/getters
 
 
 
-public static  **setDefault** (*unknown* $dependencyInjector) inherited from Phalcon\\DI
+public static  **setDefault** (*string* $dependencyInjector) inherited from Phalcon\\DI
 
-...
+Set a default dependency injection container to be obtained into static methods
+
 
 
 public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDefault** () inherited from Phalcon\\DI

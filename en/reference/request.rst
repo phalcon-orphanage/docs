@@ -84,7 +84,7 @@ the $this->request public property of the controller:
 Uploading Files
 ---------------
 Another common task is file uploading. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` offers
-an object oriented way to achieve this task:
+an object-oriented way to achieve this task:
 
 .. code-block:: php
 

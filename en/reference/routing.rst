@@ -1,7 +1,7 @@
 Routing
 =======
-The router component allows to define routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine these information. The router has two modes: MVC
+The router component allows defining routes that are mapped to controllers or handlers that should receive
+the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
 Defining Routes
@@ -80,7 +80,7 @@ modifiers. All the routing patterns must start with a slash character (/). The r
 is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
 delimiters. All routes patterns are case-insensitive.
 
-The second parameter defines how the matches parts should bind to the controller/action/parameters. Matching
+The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
 parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the
 first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
 

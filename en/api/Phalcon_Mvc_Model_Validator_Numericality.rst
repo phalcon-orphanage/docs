@@ -31,7 +31,7 @@ Allows to validate if a field has a valid numeric format
 Methods
 ---------
 
-public *boolean*  **validate** (*unknown* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
 
 Executes the validator
 

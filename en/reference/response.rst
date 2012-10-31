@@ -1,8 +1,8 @@
 Returning Responses
 ===================
 
-Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` is the Phalcon component designed to achieve this task.
-HTTP responses are usually composed by headers and body. The basic usage is the following:
+Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` is the Phalcon
+component designed to achieve this task. HTTP responses are usually composed by headers and body. The basic usage is the following:
 
 .. code-block:: php
 
@@ -22,7 +22,8 @@ HTTP responses are usually composed by headers and body. The basic usage is the 
 
 Working with Headers
 --------------------
-Headers are an important part of the whole HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
+Headers are an important part of the whole HTTP response. It contains useful information about the response state like the HTTP status,
+type of response and much more.
 
 You can set headers in the following way:
 
@@ -37,7 +38,8 @@ You can set headers in the following way:
     //Setting a raw header
     $response->setRawHeader("HTTP/1.1 200 OK");
 
-Headers are internally managed by a :doc:`Phalcon\\HTTP\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag. This class allows to manage headers before sent it to client:
+A :doc:`Phalcon\\HTTP\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
+allows to manage headers before sent it to client:
 
 .. code-block:: php
 
@@ -58,11 +60,11 @@ With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also 
     <?php
 
     //Making a redirection using the local base uri
-	$response->redirect("posts/index");
+    $response->redirect("posts/index");
 
-	//Making a redirection to an external URL
-	$response->redirect("http://en.wikipedia.org", true);
+    //Making a redirection to an external URL
+    $response->redirect("http://en.wikipedia.org", true);
 
-	//Making a redirection specifyng the HTTP status code
-	$response->redirect("http://www.example.com/new-location", true, 301);
+    //Making a redirection specifyng the HTTP status code
+    $response->redirect("http://www.example.com/new-location", true, 301);
 
