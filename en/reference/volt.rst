@@ -536,7 +536,7 @@ Volt can be configured to alter its default behavior, the following example expl
     <?php
 
     //Register Volt as a service
-    $di->set('voltService', function() {
+    $di->set('voltService', function($view, $di) {
 
         $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
 
