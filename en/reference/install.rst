@@ -63,7 +63,7 @@ Creating the extension:
 
     git clone git://github.com/phalcon/cphalcon.git
     cd cphalcon/build
-    ./install
+    sudo ./install
 
 Add extension to your php.ini
 
