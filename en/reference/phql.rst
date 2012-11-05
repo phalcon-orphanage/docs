@@ -77,7 +77,7 @@ And every Car has a Brand, so a Brand has many Cars:
          */
         public function initialize()
         {
-            $this->hasMany('id', 'Brands', 'brand_id');
+            $this->hasMany('id', 'Cars', 'brand_id');
         }
     }
 
@@ -89,13 +89,13 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
 
     <?php
 
-    //Instantiate the Query
+    // Instantiate the Query
     $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars");
 
-    //Pass the DI container
+    // Pass the DI container
     $query->setDI($di);
 
-    //Execute the query returning a result if any
+    // Execute the query returning a result if any
     $robots = $query->execute();
 
 From a controller or a view, it's easy create/execute them using a injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
@@ -161,9 +161,10 @@ a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Results
 
     <?php
 
-    $phql  = "SELECT c.* FROM Cars AS c ORDER BY c.name";
+    $phql = "SELECT c.* FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car){
+    foreach ($cars as $car)
+    {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -174,7 +175,8 @@ This is exactly the same as:
     <?php
 
     $cars = Cars::find(array("order" => "name"));
-    foreach ($cars as $car){
+    foreach ($cars as $car)
+    {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -185,9 +187,10 @@ other types of queries that do not return complete objects, for example:
 
     <?php
 
-    $phql  = "SELECT c.id, c.name FROM Cars AS c ORDER BY c.name";
+    $phql = "SELECT c.id, c.name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car){
+    foreach ($cars as $car)
+    {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -202,9 +205,10 @@ literals, expressions, etc..:
 
     <?php
 
-    $phql  = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
+    $phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car){
+    foreach ($cars as $car)
+    {
         echo $car->id_name, "\n";
     }
 
@@ -214,7 +218,7 @@ As we can query complete objects or scalars, also we can query both at once:
 
     <?php
 
-    $phql  = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
+    $phql   = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
     $result = $manager->executeQuery($phql);
 
 The result in this case is an object :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`.
@@ -224,7 +228,8 @@ This allows access to both complete objects and scalars at once:
 
     <?php
 
-    foreach ($result as $row) {
+    foreach ($result as $row)
+    {
         echo "Name: ", $row->cars->name, "\n";
         echo "Price: ", $row->cars->price, "\n";
         echo "Taxes: ", $row->taxes, "\n";
@@ -241,9 +246,10 @@ relationships in the models. PHQL adds these conditions automatically:
 
     <?php
 
-    $phql   = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
+    $phql  = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row){
+    foreach ($rows as $row)
+    {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
     }
@@ -254,16 +260,16 @@ By default, a INNER JOIN is assumed. You can specify the type of JOIN in the que
 
     <?php
 
-    $phql   = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql   = "SELECT CCars.*, Brands.* FROM Cars LEFT JOIN Brands";
+    $phql = "SELECT CCars.*, Brands.* FROM Cars LEFT JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql   = "SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql   = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
 Also is possibly, manually set the conditions of the JOIN:
@@ -272,7 +278,7 @@ Also is possibly, manually set the conditions of the JOIN:
 
     <?php
 
-    $phql   = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
 
 Also, the joins can be created using multiple tables in the FROM clause:
@@ -281,9 +287,10 @@ Also, the joins can be created using multiple tables in the FROM clause:
 
     <?php
 
-    $phql   = "SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row) {
+    foreach ($rows as $row)
+    {
         echo "Car: ", $row->cars->name, "\n";
         echo "Brand: ", $row->brands->name, "\n";
     }
@@ -296,28 +303,31 @@ The following examples show how to use aggregations in PHQL:
 
     <?php
 
-    //How much are the prices of all the cars?
-    $phql   = "SELECT SUM(price) AS summatory FROM Cars";
-    $row = $manager->executeQuery($phql)->getFirst();
+    // How much are the prices of all the cars?
+    $phql = "SELECT SUM(price) AS summatory FROM Cars";
+    $row  = $manager->executeQuery($phql)->getFirst();
     echo $row['summatory'];
 
-    //How many cars are by each brand?
-    $phql   = "SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id";
+    // How many cars are by each brand?
+    $phql = "SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row){
+    foreach ($rows as $row)
+    {
         echo $row->brand_id, ' ', $row["1"], "\n";
     }
 
-    //How many cars are by each brand?
-    $phql   = "SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1";
+    // How many cars are by each brand?
+    $phql = "SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row){
+    foreach ($rows as $row)
+    {
         echo $row->name, ' ', $row["1"], "\n";
     }
 
-    $phql   = "SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars";
+    $phql = "SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row){
+    foreach ($rows as $row)
+    {
         echo $row["maximum"], ' ', $row["minimum"], "\n";
     }
 
@@ -329,7 +339,7 @@ Conditions allow us to filter the set of records we want to query. The WHERE cla
 
     <?php
 
-    //Simple conditions
+    // Simple conditions
     $phql = "SELECT * FROM Cars WHERE Cars.name = 'Lamborghini Espada'";
     $cars = $manager->executeQuery($phql);
 
@@ -374,19 +384,19 @@ With PHQL is possible insert data using the familiar INSERT statement:
 
     <?php
 
-    //Inserting without columns
-    $phql = "INSERT INTO Cars VALUES (NULL, 'Lamborghini Espada',
-        7, 10000.00, 1969, 'Grand Tourer')";
+    // Inserting without columns
+    $phql = "INSERT INTO Cars VALUES (NULL, 'Lamborghini Espada', "
+          . "7, 10000.00, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    //Specifyng columns to insert
+    // Specifyng columns to insert
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
-     . "VALUES ('Lamborghini Espada', 7, 1969, 'Grand Tourer')";
+          . "VALUES ('Lamborghini Espada', 7, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    //Inserting using placeholders
+    // Inserting using placeholders
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
-      . "VALUES (:name:, :brand_id:, :year:, :style)";
+          . "VALUES (:name:, :brand_id:, :year:, :style)";
     $manager->executeQuery($sql,
         array(
             'name'     => 'Lamborghini Espada',
@@ -411,7 +421,8 @@ o the model cars. A car cannot cost less than $ 10,000:
 
         public function beforeCreate()
         {
-            if ($this->price < 10000) {
+            if ($this->price < 10000)
+            {
                 $this->appendMessage(new Message("A car cannot cost less than $ 10,000"));
                 return false;
             }
@@ -426,10 +437,12 @@ because the price does not meet the business rule that we implemented:
 
     <?php
 
-    $phql = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
     $result = $manager->executeQuery($phql);
-    if ($result->success() == false) {
-        foreach ($result->getMessages() as $message){
+    if ($result->success() == false)
+    {
+        foreach ($result->getMessages() as $message)
+        {
             echo $message->getMessage();
         }
     }
@@ -444,25 +457,28 @@ will be executed for each row.
 
     <?php
 
-    //Updating a single column
+    // Updating a single column
     $phql = "UPDATE Cars SET price = 15000.00 WHERE id = 101";
     $manager->executeQuery($phql);
 
-    //Updating multiples columns
+    // Updating multiples columns
     $phql = "UPDATE Cars SET price = 15000.00, type = 'Sedan' WHERE id = 101";
     $manager->executeQuery($phql);
 
-    //Updating multiples rows
+    // Updating multiples rows
     $phql = "UPDATE Cars SET price = 7000.00, type = 'Sedan' WHERE brands_id > 5";
     $manager->executeQuery($phql);
 
-    //Using placeholders
+    // Using placeholders
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
-    $manager->executeQuery($phql, array(
-        0 => 7000.00,
-        1 => 'Sedan',
-        2 => 5
-    ));
+    $manager->executeQuery(
+        $phql,
+        array(
+            0 => 7000.00,
+            1 => 'Sedan',
+            2 => 5
+        )
+    );
 
 Deleting Rows
 -------------
@@ -472,11 +488,11 @@ When a record is deleted the events related to the delete operation will be exec
 
     <?php
 
-    //Deleting a single row
+    // Deleting a single row
     $phql = "DELETE FROM Cars WHERE id = 101";
     $manager->executeQuery($phql);
 
-    //Deleting multiple rows
+    // Deleting multiple rows
     $phql = "DELETE FROM Cars WHERE id > 100";
     $manager->executeQuery($phql);
 
