@@ -41,7 +41,8 @@ and store items and retrieve them in the following way:
         {
 
             //Check if the variable is defined
-            if ($this->session->has("user-name")) {
+            if ($this->session->has("user-name"))
+            {
 
                 //Retrieve its value
                 $name = $this->session->get("user-name");
