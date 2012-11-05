@@ -44,7 +44,7 @@ and store items and retrieve them in the following way:
             if ($this->session->has("user-name")) {
 
                 //Retrieve its value
-                $name = $this->session->set("user-name");
+                $name = $this->session->get("user-name");
             }
         }
 
@@ -89,9 +89,11 @@ prefix for every session variable created in a certain application:
     $di->set('session', function(){
 
         //All variables created will prefixed with "my-app-1"
-        $session = new Phalcon\Session\Adapter\Files(array(
-            'uniqueId' => 'my-app-1'
-        ));
+        $session = new Phalcon\Session\Adapter\Files(
+            array(
+                'uniqueId' => 'my-app-1'
+            )
+        );
 
         $session->start();
 
@@ -108,9 +110,9 @@ it's automatically stored in session:
 
     <?php
 
-    $user = new Phalcon\Session\Bag();
+    $user       = new Phalcon\Session\Bag();
     $user->name = "Kimbra Johnson";
-    $user->age = 22;
+    $user->age  = 22;
 
 
 Persistent Data in Components
@@ -128,13 +130,14 @@ Thanks to this you can persist data between requests in every class in an indepe
 
         public function indexAction()
         {
-            //Create a persistent variable "name"
+            // Create a persistent variable "name"
             $this->persistent->name = "Laura";
         }
 
         public function welcomeAction()
         {
-            if (isset($this->persistent->name)) {
+            if (isset($this->persistent->name))
+            {
                 echo "Welcome, ", $this->persistent->name;
             }
         }
@@ -152,7 +155,7 @@ In a component:
 
         public function auth()
         {
-            //Create a persistent variable "name"
+            // Create a persistent variable "name"
             $this->persistent->name = "Laura";
         }
 
