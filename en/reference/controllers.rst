@@ -218,7 +218,7 @@ an afterDispatch event - it can be useful to access the response directly:
 
     }
 
-Learn more about the HTTP environment in their dedicated articles `request <request>`_ and `response <response>`_.
+Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
 
 Session Data
 ------------
