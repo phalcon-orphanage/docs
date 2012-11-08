@@ -729,12 +729,12 @@ it as a service in the services container:
     $di->set('modelsCache', function(){
 
         //Cache data for one day by default
-        $frontCache = new Phalcon\Cache\Frontend\Output(array(
+        $frontCache = new Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+        $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
