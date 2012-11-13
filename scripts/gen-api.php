@@ -8,7 +8,7 @@
  * php scripts/gen-api.php
  */
 
-define('CPHALCON_DIR', '/Applications/MAMP/htdocs/phalcon/target/dev/');
+define('CPHALCON_DIR', '/Users/kenjikobe/cphalcon/ext/');
 
 class API_Generator {
 
@@ -53,10 +53,15 @@ class API_Generator {
 						$this->_docs[$matches[1]][$matches[2]] = $comment;
 						$className = $matches[1];
 					} else {
-						if($firstDoc===true){
-							$classDoc = $comment;
-							$firstDoc = false;
-							$comment = '';
+						if(preg_match('/^PHALCON_DOC_METHOD\(([a-zA-Z\_]+), (.*)\)/', $line, $matches)){
+							$this->_docs[$matches[1]][$matches[2]] = $comment;
+							$className = $matches[1];
+						} else {
+							if($firstDoc===true){
+								$classDoc = $comment;
+								$firstDoc = false;
+								$comment = '';
+							}
 						}
 					}
 					$nextLineMethod = false;
@@ -74,7 +79,9 @@ class API_Generator {
 		}
 		if(isset($classDoc)){
 			if(isset($className)){
-				$this->_classDocs[$className] = $classDoc;
+				if(!isset($this->_classDocs[$className])){
+					$this->_classDocs[$className] = $classDoc;
+				}
 			} else {
 				$fileName = str_replace(CPHALCON_DIR, '', $file);
 				$fileName = str_replace('.c', '', $fileName);
@@ -83,8 +90,11 @@ class API_Generator {
 				foreach(explode(DIRECTORY_SEPARATOR, $fileName) as $part){
 					$parts[] = ucfirst($part);
 				}
-				if(class_exists('Phalcon\\'.join('\\', $parts))){
-					$this->_classDocs['Phalcon_'.join('_', $parts)] = $classDoc;
+				$className = 'Phalcon\\'.join('\\', $parts);
+				if(!isset($this->_classDocs[$className])){
+					if(class_exists($className)){
+						$this->_classDocs[$className] = $classDoc;
+					}
 				}
 			}
 		}
@@ -134,10 +144,11 @@ class API_Generator {
 						$content = trim(str_replace($matches[0], '', $line));
 						if($matches[1]=='param'){
 							$parts = preg_split('/[ \t]+/', $content);
-							if(count($parts)!=2){
-								throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
+							if(count($parts)==2){
+								$ret['parameters'][$parts[1]] = trim($parts[0]);
+							} else {
+								//throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
 							}
-							$ret['parameters'][$parts[1]] = trim($parts[0]);
 						} else {
 							$ret[$matches[1]] = $content;
 						}
@@ -239,6 +250,13 @@ foreach(get_declared_classes() as $className){
 	$classes[] = $className;
 }
 
+foreach(get_declared_interfaces() as $className){
+	if (!preg_match('#^Phalcon#', $className)) {
+		continue;
+	}
+	$classes[] = $className;
+}
+
 //Exception class docs
 $docs['Exception'] = array(
 	'__construct' => '/**
@@ -302,7 +320,11 @@ $docs['Exception'] = array(
 
 sort($classes);
 
+$indexClasses = array();
+$indexInterfaces = array();
 foreach($classes as $className){
+
+	$realClassName = $className;
 
 	$simpleClassName = str_replace("\\", "_", $className);
 
@@ -317,6 +339,9 @@ foreach($classes as $className){
 	if ($reflector->isFinal() == true) {
 		$typeClass = 'final';
 	}
+	if ($reflector->isInterface() == true) {
+		$typeClass = '';
+	}
 
 	$documentationData = array(
 		'type'			=> $typeClass,
@@ -327,12 +352,21 @@ foreach($classes as $className){
 		'methods'		=> $reflector->getMethods()
 	);
 
-	$index.='   '.$simpleClassName.PHP_EOL;
+	if ($reflector->isInterface() == true) {
+		$indexInterfaces[] = '   '.$simpleClassName.PHP_EOL;
+	} else {
+		$indexClasses[] = '   '.$simpleClassName.PHP_EOL;
+	}
 
 	$nsClassName = str_replace("\\", "\\\\", $className);
 
-	$code = 'Class **'.$nsClassName.'**'.PHP_EOL;
-	$code.= str_repeat("=", strlen($nsClassName)+10).PHP_EOL.PHP_EOL;
+	if ($reflector->isInterface() == true) {
+		$code = 'Interface **'.$nsClassName.'**'.PHP_EOL;
+		$code.= str_repeat("=", strlen($nsClassName)+14).PHP_EOL.PHP_EOL;
+	} else {
+		$code = 'Class **'.$nsClassName.'**'.PHP_EOL;
+		$code.= str_repeat("=", strlen($nsClassName)+10).PHP_EOL.PHP_EOL;
+	}
 
 	if($documentationData['extends']){
 		$extendsName = $documentationData['extends']->name;
@@ -435,5 +469,5 @@ foreach($classes as $className){
 	file_put_contents('en/api/'.$simpleClassName.'.rst', $code);
 }
 
-file_put_contents('en/api/index.rst', $index);
+file_put_contents('en/api/index.rst', $index.join('', $indexClasses).join('', $indexInterfaces));
 

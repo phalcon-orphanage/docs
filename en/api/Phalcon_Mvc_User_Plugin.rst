@@ -5,9 +5,6 @@ Class **Phalcon\\Mvc\\User\\Plugin**
 
 *implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface
 
-This class can be used to provide user components easy access to services in the application
-
-
 Methods
 ---------
 

@@ -5,9 +5,6 @@ Class **Phalcon\\Session\\Adapter\\Files**
 
 *implements* Phalcon\Session\AdapterInterface
 
-This adapter store sessions in plain files
-
-
 Methods
 ---------
 
