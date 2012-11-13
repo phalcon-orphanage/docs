@@ -3,7 +3,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\Db\AdapterInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
 Specific functions for the Postgresql database system 
 

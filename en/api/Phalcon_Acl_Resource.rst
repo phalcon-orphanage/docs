@@ -1,7 +1,7 @@
 Class **Phalcon\\Acl\\Resource**
 ================================
 
-*implements* Phalcon\Acl\ResourceInterface
+*implements* :doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>`
 
 This class defines resource entity and its description
 

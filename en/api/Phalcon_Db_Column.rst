@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Column**
 =============================
 
-*implements* Phalcon\Db\ColumnInterface
+*implements* :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>`
 
 Allows to define columns to be used on create or alter table operations  
 

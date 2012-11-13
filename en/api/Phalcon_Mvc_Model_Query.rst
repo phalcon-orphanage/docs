@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Query**
 ====================================
 
-*implements* Phalcon\Mvc\Model\QueryInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 This class takes a PHQL intermediate representation and executes it.  
 

@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\User\\Module**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Methods
 ---------

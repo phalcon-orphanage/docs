@@ -3,7 +3,7 @@ Class **Phalcon\\CLI\\Task**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "runAction" method  
 

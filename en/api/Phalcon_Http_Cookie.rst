@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Cookie**
 ===============================
 
-*implements* Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Provide OO wrappers to
 

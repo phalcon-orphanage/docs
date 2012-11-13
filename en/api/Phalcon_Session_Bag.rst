@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-*implements* Phalcon\DI\InjectionAwareInterface, Phalcon\Session\BagInterface
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
 

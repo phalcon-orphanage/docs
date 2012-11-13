@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Frontend\\Output**
 ==========================================
 
-*implements* Phalcon\Cache\FrontendInterface
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
 Allows to cache output fragments captured with ob_* functions  
 

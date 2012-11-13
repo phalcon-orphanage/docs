@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-*implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, Phalcon\Mvc\Model\ResultsetInterface
+*implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 Simple resultsets only contains a complete object. This class builds every complete object as it's required
 

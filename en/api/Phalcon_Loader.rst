@@ -1,7 +1,7 @@
 Class **Phalcon\\Loader**
 =========================
 
-*implements* Phalcon\Events\EventsAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This component helps to load your project classes automatically based on some conventions  
 

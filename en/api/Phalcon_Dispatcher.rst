@@ -1,7 +1,7 @@
 Class **Phalcon\\Dispatcher**
 =============================
 
-*implements* Phalcon\DispatcherInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface
+*implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher
 

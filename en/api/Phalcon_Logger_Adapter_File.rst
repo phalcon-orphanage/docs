@@ -3,7 +3,7 @@ Class **Phalcon\\Logger\\Adapter\\File**
 
 *extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
-*implements* Phalcon\Logger\AdapterInterface
+*implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 
 Adapter to store logs in plain text files  
 

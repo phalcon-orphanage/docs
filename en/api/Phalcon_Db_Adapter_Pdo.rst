@@ -3,7 +3,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo**
 
 *extends* :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
-*implements* Phalcon\Events\EventsAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database  
 

@@ -3,7 +3,7 @@ Class **Phalcon\\Flash\\Session**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
-*implements* Phalcon\FlashInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 

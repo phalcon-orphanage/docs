@@ -3,7 +3,7 @@ Class **Phalcon\\Cache\\Backend\\File**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-*implements* Phalcon\Cache\BackendInterface
+*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
 Allows to cache output fragments using a file backend  
 

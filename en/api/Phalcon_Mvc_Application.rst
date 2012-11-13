@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Application**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.  
 

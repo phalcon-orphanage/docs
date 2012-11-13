@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Frontend\\Data**
 ========================================
 
-*implements* Phalcon\Cache\FrontendInterface
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
 Allows to cache native PHP data in a serialized form  
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Request\\File**
 ======================================
 
-*implements* Phalcon\Http\Request\FileInterface
+*implements* :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>`
 
 Provides OO wrappers to the $_FILES superglobal  
 

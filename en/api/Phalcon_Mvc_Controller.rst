@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Controller**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Every application controller should extend this class that encapsulates all the controller functionality  The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.  
 

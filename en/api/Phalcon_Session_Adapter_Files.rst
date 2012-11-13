@@ -3,7 +3,7 @@ Class **Phalcon\\Session\\Adapter\\Files**
 
 *extends* :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-*implements* Phalcon\Session\AdapterInterface
+*implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`
 
 Methods
 ---------

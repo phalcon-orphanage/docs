@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Reference**
 ================================
 
-*implements* Phalcon\Db\ReferenceInterface
+*implements* :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>`
 
 Allows to define reference constraints on tables  
 

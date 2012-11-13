@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Router**
 ==============================
 
-*implements* Phalcon\Mvc\RouterInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
 

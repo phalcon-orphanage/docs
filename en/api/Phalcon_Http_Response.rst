@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Response**
 =================================
 
-*implements* Phalcon\Http\ResponseInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.  
 

@@ -381,7 +381,17 @@ foreach($classes as $className){
 
 	//Generate the interfaces part
 	if(count($documentationData['implements'])){
-		$code.='*implements* '.join(', ', $documentationData['implements']).PHP_EOL.PHP_EOL;
+		$implements = array();
+		foreach($documentationData['implements'] as $interfaceName){
+			if(strpos($interfaceName, 'Phalcon')!==false){
+				$interfacePath =  str_replace("\\", "_", $interfaceName);
+				$interfaceName =  str_replace("\\", "\\\\", $interfaceName);
+				$implements[] = ':doc:`'.$interfaceName.' <'.$interfacePath.'>`';
+			} else {
+				$implements[] = $interfaceName;
+			}
+		}
+		$code.='*implements* '.join(', ', $implements).PHP_EOL.PHP_EOL;
 	}
 
 	if(isset($classDocs[$simpleClassName])){

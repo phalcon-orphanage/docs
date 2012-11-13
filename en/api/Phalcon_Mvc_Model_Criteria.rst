@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Criteria**
 =======================================
 
-*implements* Phalcon\Mvc\Model\CriteriaInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 This class allows to build the array parameter required by Phalcon\\Mvc\\Model::find and Phalcon\\Mvc\\Model::findFirst, using an object-oriented interfase
 

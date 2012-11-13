@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
-*implements* Phalcon\DI\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 

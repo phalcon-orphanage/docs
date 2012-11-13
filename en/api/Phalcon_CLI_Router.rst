@@ -1,7 +1,7 @@
 Class **Phalcon\\CLI\\Router**
 ==============================
 
-*implements* Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Phalcon\\CLI\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
 

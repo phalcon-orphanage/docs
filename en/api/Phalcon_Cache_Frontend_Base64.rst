@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Frontend\\Base64**
 ==========================================
 
-*implements* Phalcon\Cache\FrontendInterface
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
 Methods
 ---------

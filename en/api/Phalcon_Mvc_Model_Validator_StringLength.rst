@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-*implements* Phalcon\Mvc\Model\ValidatorInterface
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
 Simply validates specified string length constraints  
 

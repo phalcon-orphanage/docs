@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Manager**
 ===================================================
 
-*implements* Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.  This class manages the objects that compose a transaction. A trasaction produces a unique connection that is passed to every object part of the transaction.  
 

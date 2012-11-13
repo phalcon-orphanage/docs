@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-*implements* Phalcon\Mvc\UrlInterface, Phalcon\DI\InjectionAwareInterface
+*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 This components aids in the generation of: URIs, URLs and Paths  
 

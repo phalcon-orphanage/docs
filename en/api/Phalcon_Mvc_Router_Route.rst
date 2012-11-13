@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Router\\Route**
 =====================================
 
-*implements* Phalcon\Mvc\Router\RouteInterface
+*implements* :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`
 
 This class represents every route defined in the router.
 

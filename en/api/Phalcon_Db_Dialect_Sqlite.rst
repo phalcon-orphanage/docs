@@ -3,7 +3,7 @@ Class **Phalcon\\Db\\Dialect\\Sqlite**
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
-*implements* Phalcon\Db\DialectInterface
+*implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
 Generates database specific SQL for the Sqlite RBDM
 

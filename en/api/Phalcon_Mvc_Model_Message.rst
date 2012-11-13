@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Message**
 ======================================
 
-*implements* Phalcon\Mvc\Model\MessageInterface
+*implements* :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>`
 
 Encapsulates validation info generated before save/delete records fails  
 

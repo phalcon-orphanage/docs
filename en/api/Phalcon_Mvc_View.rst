@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\View**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-*implements* Phalcon\Events\EventsAwareInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Mvc\ViewInterface
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`
 
 Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.  
 
