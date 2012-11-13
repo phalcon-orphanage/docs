@@ -1,7 +1,9 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application 
+*implements* Phalcon\DI\InjectionAwareInterface, Phalcon\Session\BagInterface
+
+This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
 
 .. code-block:: php
 
@@ -18,16 +20,17 @@ Methods
 
 public  **__construct** (*unknown* $name)
 
-...
+Phalcon\\Session\\Bag constructor
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the DependencyInjector container
 

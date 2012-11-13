@@ -1,7 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Message**
 ======================================
 
-Encapsulates validation info generated before save/delete records fails 
+*implements* Phalcon\Mvc\Model\MessageInterface
+
+Encapsulates validation info generated before save/delete records fails  
 
 .. code-block:: php
 

@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Simply validates specified string length constraints 
+*implements* Phalcon\Mvc\Model\ValidatorInterface
+
+Simply validates specified string length constraints  
 
 .. code-block:: php
 
@@ -33,7 +35,7 @@ Simply validates specified string length constraints
 Methods
 ---------
 
-public *boolean*  **validate** (*unknown* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Email**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Allows to validate if email fields has correct values 
+*implements* Phalcon\Mvc\Model\ValidatorInterface
+
+Allows to validate if email fields has correct values  
 
 .. code-block:: php
 
@@ -31,7 +33,7 @@ Allows to validate if email fields has correct values
 Methods
 ---------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

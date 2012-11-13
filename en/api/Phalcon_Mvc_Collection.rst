@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
+*implements* Phalcon\DI\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface
+
 This component implements a high level abstraction for NoSQL databases which works with documents
 
 
@@ -18,7 +20,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 
 
@@ -36,25 +38,25 @@ Returns the value of the _id property
 
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
 Returns the internal event manager
 

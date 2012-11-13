@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Model\\Criteria**
 =======================================
 
+*implements* Phalcon\Mvc\Model\CriteriaInterface, Phalcon\DI\InjectionAwareInterface
+
 This class allows to build the array parameter required by Phalcon\\Mvc\\Model::find and Phalcon\\Mvc\\Model::findFirst, using an object-oriented interfase
 
 
@@ -9,22 +11,23 @@ Methods
 
 public  **__construct** ()
 
-...
+Phalcon\\Mvc\\Model\\Criteria constructor
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public  **setModelName** (*string* $modelName)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **setModelName** (*string* $modelName)
 
 Set a model on which the query will be executed
 
@@ -108,13 +111,13 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $modelName, *array* $data)
+public static  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **execute** ()
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
 
 Executes a find using the parameters built with the criteria
 

@@ -1,7 +1,9 @@
 Class **Phalcon\\Http\\Request\\File**
 ======================================
 
-Provides OO wrappers to the $_FILES superglobal 
+*implements* Phalcon\Http\Request\FileInterface
+
+Provides OO wrappers to the $_FILES superglobal  
 
 .. code-block:: php
 
@@ -52,7 +54,7 @@ Returns the temporal name of the uploaded file
 
 
 
-public  **moveTo** (*string* $destination)
+public *boolean*  **moveTo** (*string* $destination)
 
 Move the temporary file to a destination
 

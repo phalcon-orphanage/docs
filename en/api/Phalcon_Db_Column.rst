@@ -1,7 +1,9 @@
 Class **Phalcon\\Db\\Column**
 =============================
 
-Allows to define columns to be used on create or alter table operations 
+*implements* Phalcon\Db\ColumnInterface
+
+Allows to define columns to be used on create or alter table operations  
 
 .. code-block:: php
 
@@ -134,14 +136,15 @@ Check whether field absolute to position in table
 
 
 
-public  **getBindType** ()
+public *int*  **getBindType** ()
 
 Returns the type of bind handling
 
 
 
-public static  **__set_state** (*unknown* $data)
+public static *\Phalcon\Db\Column*  **__set_state** (*array* $data)
 
-...
+Restores the internal state of a Phalcon\\Db\\Column object
+
 
 

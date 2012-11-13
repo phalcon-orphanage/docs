@@ -7,7 +7,7 @@ This class implements common functionality for backend adapters. All the backend
 Methods
 ---------
 
-public  **__construct** (*mixed* $frontendObject, *array* $backendOptions)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontendObject, *array* $backendOptions)
 
 Phalcon\\Cache\\Backend constructor
 
@@ -15,7 +15,13 @@ Phalcon\\Cache\\Backend constructor
 
 public *mixed*  **start** (*int|string* $keyName)
 
-Starts a cache. The $keyname allow to identify the created fragment
+Starts a cache. The $keyname allows to identify the created fragment
+
+
+
+public  **stop** (*boolean* $stopBuffer)
+
+Stops the frontend without store any cached content
 
 
 
@@ -33,7 +39,7 @@ Checks whether the last cache is fresh or cached
 
 public *boolean*  **isStarted** ()
 
-Checks whether the cache has started buffering or not
+Checks whether the cache has starting buffering or not
 
 
 

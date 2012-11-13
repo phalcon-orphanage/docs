@@ -3,7 +3,9 @@ Class **Phalcon\\Cache\\Backend\\Memcache**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter 
+*implements* Phalcon\Cache\BackendInterface
+
+Allows to cache output fragments, PHP data or raw data to a memcache backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
 
 .. code-block:: php
 
@@ -52,7 +54,7 @@ Returns a cached content
 
 public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-Stores cached content into the Memcached backend
+Stores cached content into the Memcached backend and stops the frontend
 
 
 
@@ -82,7 +84,13 @@ Destructs the backend closing the memcached connection
 
 public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
 
-Starts a cache. The $keyname allow to identify the created fragment
+Starts a cache. The $keyname allows to identify the created fragment
+
+
+
+public  **stop** (*boolean* $stopBuffer) inherited from Phalcon\\Cache\\Backend
+
+Stops the frontend without store any cached content
 
 
 
@@ -100,7 +108,7 @@ Checks whether the last cache is fresh or cached
 
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
-Checks whether the cache has started buffering or not
+Checks whether the cache has starting buffering or not
 
 
 

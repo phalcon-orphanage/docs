@@ -3,6 +3,8 @@ Class **Phalcon\\Db\\Dialect\\Sqlite**
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
+*implements* Phalcon\Db\DialectInterface
+
 Generates database specific SQL for the Sqlite RBDM
 
 
@@ -15,61 +17,61 @@ Gets a list of columns
 
 
 
-public  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in Sqlite
 
 
 
-public *string*  **addColumn** ()
+public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Generates SQL to add a column to a table
 
 
 
-public *string*  **modifyColumn** ()
+public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Generates SQL to modify a column in a table
 
 
 
-public *string*  **dropColumn** ()
+public *string*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
 
 Generates SQL to delete a column from a table
 
 
 
-public *string*  **addIndex** ()
+public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add an index to a table
 
 
 
-public *string*  **dropIndex** ()
+public *string*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
 
 Generates SQL to delete an index from a table
 
 
 
-public *string*  **addPrimaryKey** ()
+public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add the primary key to a table
 
 
 
-public *string*  **dropPrimaryKey** ()
+public *string*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
 
 Generates SQL to delete primary key from a table
 
 
 
-public *string*  **addForeignKey** ()
+public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
 
 Generates SQL to add an index to a table
 
 
 
-public *string*  **dropForeignKey** ()
+public *string*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
 
 Generates SQL to delete a foreign key from a table
 
@@ -81,7 +83,7 @@ Generates SQL to add the table creation options
 
 
 
-public *string*  **createTable** ()
+public *string*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
 
 Generates SQL to create a table in PostgreSQL
 

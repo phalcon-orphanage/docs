@@ -7,7 +7,7 @@ This class offers contextual information of a fired event in the EventsManager
 Methods
 ---------
 
-public  **__construct** (*string* $type, *object* $source, *mixed* $data)
+public  **__construct** (*string* $type, *object* $source, *mixed* $data, *unknown* $cancelable)
 
 Phalcon\\Events\\Event constructor
 
@@ -40,6 +40,30 @@ Set the event's data
 public *mixed*  **getData** ()
 
 Returns the event's data
+
+
+
+public  **setCancelable** (*boolean* $cancelable)
+
+Sets if the event is cancelable
+
+
+
+public *boolean*  **getCancelable** ()
+
+Check whether the event is cancelable
+
+
+
+public  **stop** ()
+
+Stops the event preventing propagation
+
+
+
+public  **isStopped** ()
+
+Check whether the event is currently stopped
 
 
 

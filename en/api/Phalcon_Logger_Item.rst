@@ -1,7 +1,7 @@
 Class **Phalcon\\Logger\\Item**
 ===============================
 
-Represents each item in a logger transaction
+Represents each item in a logging transaction
 
 
 Methods
@@ -9,7 +9,7 @@ Methods
 
 public  **__construct** (*string* $message, *integer* $type, *integer* $time)
 
-Phalcon\\Logger\\Item contructor
+Phalcon\\Logger\\Item constructor
 
 
 

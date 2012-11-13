@@ -1,7 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Query**
 ====================================
 
-This class takes a PHQL intermediate representation and executes it. 
+*implements* Phalcon\Mvc\Model\QueryInterface, Phalcon\DI\InjectionAwareInterface
+
+This class takes a PHQL intermediate representation and executes it.  
 
 .. code-block:: php
 
@@ -30,13 +32,13 @@ Phalcon\\Mvc\\Model\\Query constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the dependency injection container
 
@@ -138,31 +140,31 @@ Analyzes a DELETE intermediate code and produces an array to be executed later
 
 
 
-public *array*  **parse** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $manager)
+public *array*  **parse** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager)
 
 Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **_executeSelect** ()
+protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_executeSelect** ()
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\\Resultset
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>`  **_executeInsert** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** ()
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>`  **_executeUpdate** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** ()
 
 Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Query\\Status <Phalcon_Mvc_Model_Query_Status>`  **_executeDelete** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** ()
 
 Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 

@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Router\\Route**
 =====================================
 
+*implements* Phalcon\Mvc\Router\RouteInterface
+
 This class represents every route defined in the router.
 
 

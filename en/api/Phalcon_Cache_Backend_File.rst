@@ -3,7 +3,9 @@ Class **Phalcon\\Cache\\Backend\\File**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments using a file backend 
+*implements* Phalcon\Cache\BackendInterface
+
+Allows to cache output fragments using a file backend  
 
 .. code-block:: php
 
@@ -48,7 +50,7 @@ Returns a cached content
 
 public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-Stores cached content into the file backend
+Stores cached content into the file backend and stops the frontend
 
 
 
@@ -72,7 +74,13 @@ Checks if cache exists.
 
 public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
 
-Starts a cache. The $keyname allow to identify the created fragment
+Starts a cache. The $keyname allows to identify the created fragment
+
+
+
+public  **stop** (*boolean* $stopBuffer) inherited from Phalcon\\Cache\\Backend
+
+Stops the frontend without store any cached content
 
 
 
@@ -90,7 +98,7 @@ Checks whether the last cache is fresh or cached
 
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
-Checks whether the cache has started buffering or not
+Checks whether the cache has starting buffering or not
 
 
 

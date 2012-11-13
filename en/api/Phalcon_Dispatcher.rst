@@ -1,6 +1,8 @@
 Class **Phalcon\\Dispatcher**
 =============================
 
+*implements* Phalcon\DispatcherInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface
+
 This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher
 
 
@@ -13,6 +15,8 @@ Constants
 
 *integer* **EXCEPTION_HANDLER_NOT_FOUND**
 
+*integer* **EXCEPTION_INVALID_HANDLER**
+
 *integer* **EXCEPTION_INVALID_PARAMS**
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
@@ -22,28 +26,29 @@ Methods
 
 public  **__construct** ()
 
-...
+Phalcon\\Dispatcher constructor
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
 Returns the internal event manager
 
@@ -58,6 +63,12 @@ Sets the default action suffix
 public  **setDefaultNamespace** (*string* $namespace)
 
 Sets the default namespace
+
+
+
+public *string*  **getDefaultNamespace** ()
+
+Returns the default namespace
 
 
 
@@ -105,7 +116,7 @@ Gets a param by its name or numeric index
 
 public *boolean*  **isFinished** ()
 
-Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
 
 
 

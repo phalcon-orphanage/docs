@@ -34,7 +34,9 @@ API Indice
    Phalcon_DI_FactoryDefault
    Phalcon_DI_FactoryDefault_CLI
    Phalcon_DI_Injectable
+   Phalcon_DI_Service
    Phalcon_Db
+   Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
    Phalcon_Db_Adapter_Pdo_Postgresql
@@ -64,15 +66,18 @@ API Indice
    Phalcon_Flash_Direct
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
+   Phalcon_Http_Cookie
    Phalcon_Http_Request
    Phalcon_Http_Request_Exception
    Phalcon_Http_Request_File
    Phalcon_Http_Response
+   Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
    Phalcon_Loader
    Phalcon_Loader_Exception
    Phalcon_Logger
+   Phalcon_Logger_Adapter
    Phalcon_Logger_Adapter_File
    Phalcon_Logger_Exception
    Phalcon_Logger_Item
@@ -134,6 +139,7 @@ API Indice
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Exception
    Phalcon_Session
+   Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Bag
    Phalcon_Session_Exception
@@ -142,6 +148,7 @@ API Indice
    Phalcon_Tag_Select
    Phalcon_Text
    Phalcon_Translate
+   Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
    Phalcon_Version

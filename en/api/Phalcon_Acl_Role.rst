@@ -1,6 +1,8 @@
 Class **Phalcon\\Acl\\Role**
 ============================
 
+*implements* Phalcon\Acl\RoleInterface
+
 This class defines role entity and its description
 
 
@@ -22,6 +24,12 @@ Returns the role name
 public *string*  **getDescription** ()
 
 Returns role description
+
+
+
+public *string*  **__toString** ()
+
+Magic method __toString
 
 
 
