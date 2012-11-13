@@ -879,8 +879,8 @@ Now in the case of product updating, first we must present to the user the data 
 
     }
 
-The Tag::displayTo helper sets a default value in the form on the attribute with the same name. Thanks to this, the user can change any value and then
-sent it back to the database through to the "save" action:
+The displayTo helper sets a default value in the form on the attribute with the same name. Thanks to this,
+the user can change any value and then sent it back to the database through to the "save" action:
 
 .. code-block:: php
 

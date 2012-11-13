@@ -218,7 +218,7 @@ an afterDispatch event - it can be useful to access the response directly:
 
     }
 
-Learn more about the HTTP environment in their dedicated articles `request <request>`_ and `response <response>`_.
+Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
 
 Session Data
 ------------
@@ -269,7 +269,7 @@ access to the common functionality.
 
 This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
 e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
-    loaded using any autoloader:
+loaded using any autoloader:
 
 .. code-block:: php
 

@@ -733,7 +733,7 @@ it as a service in the services container:
             "lifetime" => 86400
         ));
 
-        //Memcached settings
+        //Memcached connection settings
         $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -1152,7 +1152,7 @@ The above example performs a validation using the built-in validator "InclusionI
 the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |                                                                                    |
+| Name         | Explanation                                                                                                                                                      | Example                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
 | PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+

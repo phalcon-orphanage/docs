@@ -222,24 +222,29 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     });
 
-    // Register the installed modules
-    $this->registerModules(
-        array(
-            'frontend' => array(
-                'className' => 'Multiple\Frontend\Module',
-                'path'      => '../apps/frontend/Module.php',
-            ),
-            'backend'  => array(
-                'className' => 'Multiple\Backend\Module',
-                'path'      => '../apps/backend/Module.php',
-            )
-        )
-    );
-
     try {
+
+        //Create an application
         $application = new \Phalcon\Mvc\Application();
         $application->setDI($di);
+
+        // Register the installed modules
+        $application->registerModules(
+            array(
+                'frontend' => array(
+                    'className' => 'Multiple\Frontend\Module',
+                    'path'      => '../apps/frontend/Module.php',
+                ),
+                'backend'  => array(
+                    'className' => 'Multiple\Backend\Module',
+                    'path'      => '../apps/backend/Module.php',
+                )
+            )
+        );
+
+        //Handle the request
         echo $application->handle()->getContent();
+
     } catch(Phalcon\Exception $e){
         echo $e->getMessage();
     }
@@ -247,7 +252,8 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
 necessary that every matched route returns a valid module. Each registered module has an associated class
 that offers functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices().
+methods: registerAutoloaders() and registerServices(), they will be called by
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
 
 Understanding the default behavior
 ----------------------------------
