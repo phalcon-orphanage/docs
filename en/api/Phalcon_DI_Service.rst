@@ -49,7 +49,7 @@ Resolves the service
 
 
 
-public static *Phalcon_DI_Service*  **__set_state** (*array* $attributes)
+public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** (*array* $attributes)
 
 Restore the interal state of a service
 

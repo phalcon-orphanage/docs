@@ -70,7 +70,7 @@ Resolves an expression from its intermediate code into a string
 
 protected *array*  **_getSelectColumn** ()
 
-Resolves a column from its intermediate representation into an array used to determine if the resulset produced will be simple or complex
+Resolves a column from its intermediate representation into an array used to determine if the resulset produced is simple or complex
 
 
 
@@ -116,7 +116,7 @@ Returns a processed group clause for a SELECT statement
 
 
 
-protected  **_prepareSelect** ()
+protected *array*  **_prepareSelect** ()
 
 Analyzes a SELECT intermediate code and produces an array to be executed later
 
@@ -140,10 +140,15 @@ Analyzes a DELETE intermediate code and produces an array to be executed later
 
 
 
-public *array*  **parse** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager)
+public *array*  **parse** ()
 
 Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
+
+
+public  **setCache** ()
+
+...
 
 
 protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_executeSelect** ()
@@ -170,7 +175,7 @@ Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\
 
 
 
-public *mixed*  **execute** (*array* $placeholders)
+public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
 
 Executes a parsed PHQL statement
 

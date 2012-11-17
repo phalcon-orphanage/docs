@@ -7,7 +7,13 @@ Phalcon\\Mvc\\Model\\MetaDataInterface initializer
 Methods
 ---------
 
-abstract public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+abstract public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Reads meta-data for certain model
+
+
+
+abstract public *mixed*  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
 
 Reads meta-data for certain model using a MODEL_* constant
 
@@ -16,6 +22,18 @@ Reads meta-data for certain model using a MODEL_* constant
 abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data)
 
 Writes meta-data for certain model using a MODEL_* constant
+
+
+
+abstract public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Reads the ordered/reversed column map for certain model
+
+
+
+abstract public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+
+Reads column-map information for certain model using a MODEL_* constant
 
 
 
@@ -88,6 +106,24 @@ Set the attributes that must be ignored from the INSERT SQL generation
 abstract public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
 Set the attributes that must be ignored from the UPDATE SQL generation
+
+
+
+abstract public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the column map if any
+
+
+
+abstract public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the reverse column map if any
+
+
+
+abstract public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+
+Check if a model has certain attribute
 
 
 

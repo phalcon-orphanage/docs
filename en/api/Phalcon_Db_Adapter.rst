@@ -27,7 +27,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode)
+public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders)
 
 Returns the first row in a SQL query result 
 
@@ -46,7 +46,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode)
+public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders)
 
 Dumps the complete result of a query into an array 
 
@@ -140,19 +140,40 @@ Gets a list of columns
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
-Appends a LIMIT clause to $sqlQuery argument <code>$connection->limit("SELECT * FROM robots", 5);
+Appends a LIMIT clause to $sqlQuery argument 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->limit("SELECT * FROM robots", 5);
+
 
 
 
 public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
 
-Generates SQL checking for the existence of a schema.table <code>$connection->tableExists("blog", "posts")
+Generates SQL checking for the existence of a schema.table 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->tableExists("blog", "posts")
+
 
 
 
 public *string*  **viewExists** (*string* $viewName, *string* $schemaName)
 
-Generates SQL checking for the existence of a schema.view <code>$connection->viewExists("active_users", "posts")
+Generates SQL checking for the existence of a schema.view 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->viewExists("active_users", "posts")
+
 
 
 

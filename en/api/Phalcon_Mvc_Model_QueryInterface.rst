@@ -13,13 +13,13 @@ Phalcon\\Mvc\\Model\\Query constructor
 
 
 
-abstract public *array*  **parse** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager)
+abstract public *array*  **parse** ()
 
 Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 
-abstract public *mixed*  **execute** (*array* $placeholders)
+abstract public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
 
 Executes a parsed PHQL statement
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model**
 =============================
 
-*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, Serializable
 
 Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
 
@@ -68,18 +68,6 @@ Returns the internal event manager
 
 
 
-protected static *array*  **_createSQLSelect** ()
-
-Creates a SQL statement which returns many rows
-
-
-
-protected static  **_getOrCreateResultset** ()
-
-Gets a resulset from the cache or creates one
-
-
-
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Sets a transaction related to the Model instance 
@@ -143,7 +131,7 @@ Returns schema name where table mapped is located
 
 
 
-public  **setConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
 
 Sets the DependencyInjection connection service
 
@@ -163,13 +151,13 @@ Forces that model doesn't need to be checked if exists before store it
 
 public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
 
-Gets internal database connection
+Gets the internal database connection
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $result)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, *boolean* $forceExists)
 
-Assigns values to a model from an array returning a new model 
+Assigns values to a model from an array returning a new model. 
 
 .. code-block:: php
 
@@ -184,7 +172,24 @@ Assigns values to a model from an array returning a new model
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **find** (*array* $parameters)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *boolean* $forceExists)
+
+Assigns values to a model from an array returning a new model. 
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Phalcon\Mvc\Model::dumpResult(new Robots(), array(
+      'type' => 'mechanical',
+      'name' => 'Astro Boy',
+      'year' => 1952
+    ));
+
+
+
+
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** (*array* $parameters)
 
 Allows to query a set of records that match the specified conditions 
 
@@ -250,15 +255,9 @@ Checks if the current record already exists or not
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_prepareGroupResult** ()
+protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** ()
 
-Generate a SQL SELECT statement for an aggregate
-
-
-
-protected static *array|Phalcon\Mvc\Model\ResultsetInterface*  **_getGroupResult** ()
-
-Generate a resulset from an SQL select with aggregations
+Generate a PHQL SELECT statement for an aggregate
 
 
 
@@ -283,7 +282,7 @@ Allows to count how many records match the specified conditions
 
 public static *double*  **sum** (*array* $parameters)
 
-Allows to a calculate a summatory on a column that match the specified conditions 
+Allows to calculate a summatory on a column that match the specified conditions 
 
 .. code-block:: php
 
@@ -787,5 +786,10 @@ public  **unserialize** (*string* $data)
 
 Unserializes the object from a serialized string
 
+
+
+public  **dump** ()
+
+...
 
 

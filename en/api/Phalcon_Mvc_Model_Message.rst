@@ -38,7 +38,7 @@ Phalcon\\Mvc\\Model\\Message constructor
 
 
 
-public  **setType** (*string* $type)
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setType** (*string* $type)
 
 Sets message type
 
@@ -50,7 +50,7 @@ Returns message type
 
 
 
-public  **setMessage** (*string* $message)
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setMessage** (*string* $message)
 
 Sets verbose message
 
@@ -62,7 +62,7 @@ Returns verbose message
 
 
 
-public  **setField** (*string* $field)
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setField** (*string* $field)
 
 Sets field name related to message
 

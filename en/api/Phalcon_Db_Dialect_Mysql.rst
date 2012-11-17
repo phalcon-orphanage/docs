@@ -11,12 +11,6 @@ Generates database specific SQL for the MySQL RBDM
 Methods
 ---------
 
-public *string*  **getColumnList** (*array* $columnList)
-
-Gets a list of columns
-
-
-
 public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in MySQL
@@ -146,6 +140,24 @@ Returns a SQL modified with a FOR UPDATE clause
 public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
+
+
+
+public *string*  **getColumnList** (*array* $columnList) inherited from Phalcon\\Db\\Dialect
+
+Gets a list of columns
+
+
+
+protected *string*  **_getSqlExpression** () inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a expression into a database system valid expression
+
+
+
+protected *string*  **_getSqlTable** () inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a schema/table into a database system valid expression
 
 
 

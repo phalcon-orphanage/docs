@@ -45,6 +45,10 @@ Constants
 
 *integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
 
+*integer* **MODELS_COLUMN_MAP**
+
+*integer* **MODELS_REVERSE_COLUMN_MAP**
+
 Methods
 ---------
 
@@ -66,9 +70,15 @@ Writes the meta-data to APC
 
 
 
-protected  **_initializeMetaData** () inherited from Phalcon\\Mvc\\Model\\MetaData
+protected  **_initialize** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Initialize the metadata for certain table
+
+
+
+public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Reads meta-data for certain model
 
 
 
@@ -81,6 +91,18 @@ Reads meta-data for certain model using a MODEL_* constant
 public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Writes meta-data for certain model using a MODEL_* constant
+
+
+
+public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Reads the ordered/reversed column map for certain model
+
+
+
+public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Reads column-map information for certain model using a MODEL_* constant
 
 
 
@@ -153,6 +175,24 @@ Set the attributes that must be ignored from the INSERT SQL generation
 public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Set the attributes that must be ignored from the UPDATE SQL generation
+
+
+
+public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns the column map if any
+
+
+
+public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns the reverse column map if any
+
+
+
+public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Check if a model has certain attribute
 
 
 

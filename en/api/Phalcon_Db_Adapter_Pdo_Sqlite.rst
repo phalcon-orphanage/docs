@@ -30,7 +30,14 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, *string* $schema)
 
-Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
+Returns an array of Phalcon\\Db\\Column objects describing a table 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->describeColumns("posts")); ?>
+
 
 
 
@@ -58,9 +65,9 @@ Executes a prepared statement binding
 
 
 
-public :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>`  **query** (*string* $sqlStatement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows 
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
 .. code-block:: php
 
@@ -72,7 +79,7 @@ $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **execute** (*string* $sqlStatement, *unknown* $bindParams, *unknown* $bindTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
@@ -107,6 +114,12 @@ Closes active connection returning success. Phalcon automatically closes and des
 
 
 
+public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Escapes a column/table/schema name
+
+
+
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Escapes a value to avoid SQL injections
@@ -121,7 +134,7 @@ Bind params to a SQL statement
 
 public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Converts bound params like :name: or ?1 into ? bind params
+Converts bound params such as :name: or ?1 into PDO bind params ?
 
 
 
@@ -191,7 +204,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -210,7 +223,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 
@@ -304,19 +317,40 @@ Gets a list of columns
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Adapter
 
-Appends a LIMIT clause to $sqlQuery argument <code>$connection->limit("SELECT * FROM robots", 5);
+Appends a LIMIT clause to $sqlQuery argument 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->limit("SELECT * FROM robots", 5);
+
 
 
 
 public *string*  **tableExists** (*string* $tableName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter
 
-Generates SQL checking for the existence of a schema.table <code>$connection->tableExists("blog", "posts")
+Generates SQL checking for the existence of a schema.table 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->tableExists("blog", "posts")
+
 
 
 
 public *string*  **viewExists** (*string* $viewName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter
 
-Generates SQL checking for the existence of a schema.view <code>$connection->viewExists("active_users", "posts")
+Generates SQL checking for the existence of a schema.view 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->viewExists("active_users", "posts")
+
 
 
 

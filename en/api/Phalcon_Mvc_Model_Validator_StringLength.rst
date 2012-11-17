@@ -20,8 +20,10 @@ Simply validates specified string length constraints
     {
     	$this->validate(new StringLengthValidator(array(
     		'field' => 'name_last',
-    		'max' => 50, //we don't like really long names
-    		'min' => 2, //we want more than just their initials
+    		'max' => 50,
+    		'min' => 2,
+              'maximumMessage' => 'We don't like really long names',
+              'minimumMessage' => 'We want more than just their initials'
     	)));
     	if ($this->validationHasFailed() == true) {
     		return false;

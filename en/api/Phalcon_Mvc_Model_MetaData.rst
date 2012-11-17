@@ -40,12 +40,22 @@ Constants
 
 *integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
 
+*integer* **MODELS_COLUMN_MAP**
+
+*integer* **MODELS_REVERSE_COLUMN_MAP**
+
 Methods
 ---------
 
-protected  **_initializeMetaData** ()
+protected  **_initialize** ()
 
 Initialize the metadata for certain table
+
+
+
+public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Reads meta-data for certain model
 
 
 
@@ -58,6 +68,18 @@ Reads meta-data for certain model using a MODEL_* constant
 public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data)
 
 Writes meta-data for certain model using a MODEL_* constant
+
+
+
+public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Reads the ordered/reversed column map for certain model
+
+
+
+public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+
+Reads column-map information for certain model using a MODEL_* constant
 
 
 
@@ -130,6 +152,24 @@ Set the attributes that must be ignored from the INSERT SQL generation
 public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
 
 Set the attributes that must be ignored from the UPDATE SQL generation
+
+
+
+public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the column map if any
+
+
+
+public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the reverse column map if any
+
+
+
+public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+
+Check if a model has certain attribute
 
 
 

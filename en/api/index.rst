@@ -102,6 +102,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query
+   Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
    Phalcon_Mvc_Model_Query_Status
    Phalcon_Mvc_Model_Resultset
@@ -175,6 +176,7 @@ API Indice
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_CriteriaInterface
@@ -183,10 +185,12 @@ API Indice
    Phalcon_Mvc_Model_MetaDataInterface
    Phalcon_Mvc_Model_QueryInterface
    Phalcon_Mvc_Model_Query_StatusInterface
+   Phalcon_Mvc_Model_ResultInterface
    Phalcon_Mvc_Model_ResultsetInterface
    Phalcon_Mvc_Model_TransactionInterface
    Phalcon_Mvc_Model_Transaction_ManagerInterface
    Phalcon_Mvc_Model_ValidatorInterface
+   Phalcon_Mvc_ModuleDefinitionInterface
    Phalcon_Mvc_RouterInterface
    Phalcon_Mvc_Router_RouteInterface
    Phalcon_Mvc_UrlInterface

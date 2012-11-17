@@ -13,13 +13,13 @@ Constructor for Phalcon\\Db\\Adapter
 
 
 
-abstract public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode)
+abstract public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *int* $placeholders)
 
 Returns the first row in a SQL query result
 
 
 
-abstract public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode)
+abstract public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *int* $placeholders)
 
 Dumps the complete result of a query into an array
 
@@ -238,6 +238,12 @@ Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by
 abstract public *boolean*  **close** ()
 
 Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
+
+
+
+abstract public *string*  **escapeIdentifier** (*string* $identifier)
+
+Escapes a column/table/schema name
 
 
 

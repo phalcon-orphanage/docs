@@ -102,7 +102,7 @@ Obtains a shared service from the DI
 
 
 
-public *mixed*  **handle** ()
+public *mixed*  **handle** (*string* $uri)
 
 Handle the whole request
 

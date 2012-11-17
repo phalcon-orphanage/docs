@@ -43,12 +43,6 @@ Returns DependencyInjection connection service
 
 
 
-abstract public  **setForceExists** (*boolean* $forceExists)
-
-Forces that model doesn't need to be checked if exists before store it
-
-
-
 abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
 
 Gets internal database connection
