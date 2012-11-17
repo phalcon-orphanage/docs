@@ -55,7 +55,7 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     $config["persistent"] = false;
 
     // Create a connection
-    $connection = \Phalcon\Db\Adapter\Pdo\Mysql($config);
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 
 .. code-block:: php
 
@@ -73,7 +73,7 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     $config["schema"] = "public";
 
     // Create a connection
-    $connection = \Phalcon\Db\Adapter\Pdo\Postgresql($config);
+    $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 
 .. code-block:: php
 
@@ -85,7 +85,7 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     );
 
     // Create a connection
-    $connection = \Phalcon\Db\Adapter\Pdo\Sqlite($config);
+    $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 Finding Rows
 ------------
