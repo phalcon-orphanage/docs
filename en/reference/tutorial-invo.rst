@@ -731,8 +731,8 @@ This method verifies which values are different from "" (empty string) and null 
 If the data type of a field is text or similar (char, varchar, text, etc.) it will use a "like" operator to filter the results.
 If the data type is not text or similar, it'll use the operator "=".
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table. Also, values ​​are automatically escaped
-using "bound parameters".
+Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table. Also, values 
+are automatically escaped using "bound parameters".
 
 Now, we store the produced params in the controller's session bag:
 

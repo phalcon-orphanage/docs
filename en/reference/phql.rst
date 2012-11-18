@@ -198,8 +198,7 @@ We are only requesting some fields in the table therefore those cannot be consid
 resulset :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is an standard
 object that only contains the two columns that were requested.
 
-These values ​​that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions,
-literals, expressions, etc..:
+These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
 .. code-block:: php
 

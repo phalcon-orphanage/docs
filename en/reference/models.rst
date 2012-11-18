@@ -1218,7 +1218,7 @@ Adding the validator to a model:
 
     }
 
-The idea of ​​creating validators is make them reusable between several models. A validator can also be as simple as:
+The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
 .. code-block:: php
 
