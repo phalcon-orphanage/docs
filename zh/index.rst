@@ -1,17 +1,17 @@
 Welcome!
 ========
 
-Welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without worrying about performance.
+欢迎使用phalcon php 框架，我们的使命是给你一个开发网站及应用的高级工具，而你却不必担心性能问题.
 
-What is Phalcon?
-----------------
+什么是 Phalcon?
+------------
 
-Phalcon is an open source, full stack framework for PHP 5 written as a C-extension, optimized for high performance. You don't need learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
+Phalcon 是一个开源的，全堆栈的，用C语言写成的php5框架，专为高性能设计。你不需要学习和使用C语言的功能，因为这是一个PHP框架，只不过用C写成而已。同时Phalcon是松耦合的，您可以根据需要使用其他组件。
 
-Phalcon is not only about performance, our goal is to make it robust and easy to use!
+Phalcon不只是性能优越，我们的目标是让它强大而且易于使用!
 
-Table of Contents
------------------
+目录
+--
 
 .. toctree::
    :maxdepth: 2
@@ -59,8 +59,8 @@ Table of Contents
    api/index
    reference/license
 
-Other formats
--------------
+其他格式
+----
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
