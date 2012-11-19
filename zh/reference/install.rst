@@ -68,9 +68,10 @@ Creating the extension:
 （备注）./install其实是默认包含了phpize,configure,make,make install命令。如果您的机器中phpize,php-config不在环境命令中，请执行以下操作后再执行./install
 
 .. code-block:: bash
+
    ln -s phpdir/bin/phpize /usr/bin
    ln -s phpdir/bin/php-cofnig /usr/bin
-   
+
 phpdir是你的php安装路径。
 
 编辑php.ini文件，加入扩展

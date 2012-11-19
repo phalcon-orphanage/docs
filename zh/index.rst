@@ -11,7 +11,7 @@ Phalcon 是一个开源的，全堆栈的，用C语言写成的php5框架，专�
 Phalcon不只是性能优越，我们的目标是让它强大而且易于使用!
 
 目录
---
+-------------
 
 .. toctree::
    :maxdepth: 2
@@ -60,7 +60,7 @@ Phalcon不只是性能优越，我们的目标是让它强大而且易于使用!
    reference/license
 
 其他格式
-----
+---------------
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
