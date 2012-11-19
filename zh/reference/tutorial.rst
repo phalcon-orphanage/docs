@@ -1,19 +1,19 @@
-Tutorial 1: Let's learn by example
+教程 1: 让我们先来学习一个例子
 ==================================
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+在本节教程中，我们将带您创建一个简单的注册表单的应用程序。
+我们还将解释框架的行为的基本方面。如果你有对自动生成部分代码感兴趣，
+您可以查看 :doc:`developer tools <tools>`.
 
-Checking your installation
+检查您的安装
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below:
+我们假设你已经安装了Phalcon,您可以利用Phpinfo()函数来进行输出查看是否有phalcon出现？
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+如果在下面出现了phalcon扩展的字样，那么说明你安装成功了:
 
 .. code-block:: php
 
@@ -28,15 +28,15 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
+创建一个项目
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+学习的最好方法是，您按照本教程的指引一步一步的进行. 您可以从此处获得完整的代码 `here <https://github.com/phalcon/tutorial>`_.
 
-File structure
+目录结构
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon 是松耦合的，因此并没有对文件的目录作固定，您可以根据您的需要或喜好，自定义文件目录结构
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+本教程的目的和出发点, 我们建议您使用以下类似的文件目录结构:
 
 .. code-block:: php
 
@@ -50,13 +50,14 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+需要注意的是，您不需要包含任何类库到此项目中就可以工作了，因为Phalcon已经当作一个php模块加载进来了.
+（译者备注）比如您使用ZF或者其他框架的时候，你要么include进来，要么在include_path中加入框架的路径。但Phalcon却不必这样。
 
-Beautiful URLs
+完美漂亮的URL
 ^^^^^^^^^^^^^^
-We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
+在本教程中，我们将教你如何做出漂亮的（友好的）网址。友好的URL非常有利于搜索引擎优化，因为它们很容易让用户记住。Phalcon支持最流行的Web服务器的重写。使您的应用程序的URL不完全依赖web server就可以写出很友好的格式。
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file:
+在这个例子中，我们将使用为Apache重写模块。我们使用.htaccess文件的重写规则：
 
 .. code-block:: apacheconf
 
@@ -83,9 +84,9 @@ The second set of rules will check if the requested file exists, and if it does 
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+第一步，你需要创建一个程序的引导文件，这个文件是非常重要的，因为它作为您的应用程序的基础，让你控制它的各个方面，在这个文件中，你可以实现初始化组件以及应用程序的行为
 
-The public/index.php file should look like:
+一般我们会以index.php为引导程序的入口程序，public/index.php 内容大致如下:
 
 .. code-block:: php
 
@@ -119,7 +120,7 @@ The public/index.php file should look like:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
+类的自动加载
 ^^^^^^^^^^^
 The first part that we find in the boostrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
 
