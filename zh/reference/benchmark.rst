@@ -1,23 +1,17 @@
-Framework Benchmarks
-====================
+框架基准测试
+======
 
-In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
-able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
-became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
-have a positive impact on a website.
+在过去，开发的web应用程序，性能问题并不是作为首要考虑的问题之一。因为硬件可以填补这方面的不足。然后，当Google决定把网站的速度作为搜索排名的条件之一时，性能的重要性就体现出来了。
 
-The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
-are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
+以下的基准测试，将展示Phalcon和其他传统的PHP框架的性能对比，这些基准框架的版本都是最新的稳定版本。
 
-We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
-or comments please `write us`_. `Check out source at Github`_
+我们欢迎程序员利用我们的基准测试程序进行测试，如果您有更好的优化方案或意见，请 `write us`_. `Check out source at Github`_
 
-What was the test environment?
-------------------------------
-APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
-to avoid potentially additional overheads.
+测试的环境?
+------
+所有的框架都开启了APC缓存，且禁用了apache mod_rewrite模块，以避免产生额外的性能开销.
 
-The testing hardware environment is as follows:
+下面是测试的硬件环境:
 
 * Operating System: Mac OS X Lion 10.7.4
 * Web Server: Apache httpd 2.2.22
@@ -38,7 +32,7 @@ The testing hardware environment is as follows:
 
 
 List of Benchmarks
------------------------
+------------------
 
 .. toctree::
    :maxdepth: 1

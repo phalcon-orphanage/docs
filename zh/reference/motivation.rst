@@ -25,10 +25,10 @@ Why?
 Inner workings of PHP?
 ----------------------
 
-* PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
-* PHP is interpreted and not compiled. The major disadvantage is performance loss
-* Every time a script is requested it must be first interpreted.
-* If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
+* PHP是一种动态的和弱变量类型语言。每次一个二进制运算（例如，2+“2”），PHP就会检查操作数的类型来进行类型转换
+* PHP是解释型语言。主要的缺点是性能上的损失
+* 每一个请求，它必须首先解释.
+* 如果不使用字节码缓存（如APC），则任何时间的任何一个请求它都会进行语法检查
 
 How traditional PHP frameworks work?
 ------------------------------------
