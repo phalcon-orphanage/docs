@@ -1,4 +1,4 @@
-Installation
+安装
 ============
 
 PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either download a binary package for the system of your choice or build it from the sources.
@@ -11,13 +11,13 @@ During the last few months, we have extensively researched PHP's behavior, inves
 Windows
 -------
 
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+在windows上安装任何扩展都是很简单的，安装phalcon也是一样，下载.dll文件，放到extension目录，然后修改php.ini文件，加入以下行：
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+重启web server.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+以下视频是教你如何一步一步在windows上安装phalcon
 
 .. raw:: html
 
@@ -35,7 +35,7 @@ Related Guides
 Unix/Linux
 ----------
 
-On a Unix/Linux system you can easily compile and install the extension from the source code:
+在Unix/Linux操作系统上，你可以很容易的从源代友编译和安装扩展
 
 Requirements
 ^^^^^^^^^^^^
@@ -65,13 +65,21 @@ Creating the extension:
     cd cphalcon/build
     ./install
 
-Add extension to your php.ini
+（备注）./install其实是默认包含了phpize,configure,make,make install命令。如果您的机器中phpize,php-config不在环境命令中，请执行以下操作后再执行./install
+
+.. code-block:: bash
+   ln -s phpdir/bin/phpize /usr/bin
+   ln -s phpdir/bin/php-cofnig /usr/bin
+   
+phpdir是你的php安装路径。
+
+编辑php.ini文件，加入扩展
 
 .. code-block:: bash
 
     extension=phalcon.so
 
-Restart the webserver
+重启web server,如果是php-fpm,重启php-fpm即可
 
 FreeBSD
 ^^^^^^^
