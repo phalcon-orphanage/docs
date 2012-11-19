@@ -1,29 +1,26 @@
-Our motivation
-==============
+我们的目的
+=====
 
-There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
+现在有很多各种各样的PHP框架，但他们没有一个像Phalcon一样（真的，在这点上请相信我）
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and
-ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and
-hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application
-down and subsequently impacts the end user experience.
+几乎所有的程序员都喜欢使用框架，这主要是因为框架提供了很多的功能，已经经过了大量的测试，因此保持代码DRY（不要重复造轮子）。然而，框架本身需要包含大量的文件来解释和执行实际应用中的每个请求，因此会降低应用程序的性能，影响用户体验。
 
 The Question
 ------------
 
-Why can't we have a framework with all of its advantages but with none or very few disadvantages?
+为什么我们不能有这样一个框架，保持它的优势的同时，没有或者很少有缺点呢？
 
-This is why Phalcon was born!
+这就是为什么Phalcon诞生了！
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small).
-Through understanding of the Zend Engine, we managed to remove unnecessary validations, compacted code, performed optimizations and generated
-low-level solutions so as to achieve maximum performance from Phalcon.
+在过去的几个月中，我们已经广泛地研究了PHP的行为，调查区域为显着优化（大或小）。
+通过Zend引擎的理解，我们设法消除不必要的验证，压缩的代码，进行优化和生成的
+低级别的解决方案，从而使Phalcon实现最大的性能。
 
 Why?
 ----
 
 * The use of frameworks has become mandatory in professional development with PHP
-* Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
+* 框架提供了结构化的理念，以轻松维护项目，编写更少的代码，使工作变得更有趣
 
 Inner workings of PHP?
 ----------------------
