@@ -1,16 +1,13 @@
-Tutorial 2: Explaining INVO
+教程 2: 解读分析 INVO 项目
 ===========================
 
-In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon. INVO is one of the applications
-we have created as samples. INVO is a small website that allows their users to generate invoices, and do other tasks as manage their customers and
-products. You can clone its code from Github_.
+在第二个教程中，我们将解读分析一个更完整的应用程序，以强化你对Phalcon的理解，INVO是我们已经创建了的作为示例程序的应用程序之一。你可以从 Github_ 获得INVO的全部代码。
 
-Also, INVO was made with `Twitter Bootstrap <http://twitter.github.com/>`_ as client-side framework. Although the application does not generate
-invoices still it serves as an example to understand how the framework works.
+此外还需要说明的是，INVO的html实现是使用 `Twitter Bootstrap <http://twitter.github.com/>`_ CSS framework来完成的，在这个示例项目中，并不真正的生成发票(这是一个类似于进销存的相关的应用)，但它作为一个例子还是可以告诉你整个框架是如何工作的。
 
-Project Structure
+项目目录结构
 ------------------
-Once you clone the project in your document root you'll see the following structure:
+从Github上克隆了源代码后，你可以发现目录结构是这样的：
 
 .. code-block:: bash
 
@@ -28,26 +25,24 @@ Once you clone the project in your document root you'll see the following struct
             public/js/
         schemas/
 
-As you know, Phalcon does not impose a particular file structure for application development. This project provides a simple MVC
-structure and a public document root.
+在前面的章节已经讲过，Phalcon并没有固定的目录结构，该项目提供了一个简单的MVC目录结构。
 
-Once you open the application in your browser http://localhost/invo you'll something like this:
+通过浏览器打开应用程序 http://localhost/invo 显示效果如下:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided in two parts a frontend, that is a public part where visitors can receive information about INVO and request contact information. The second part is the backend, is an administrative area where a registered user can manage his products and customers.
+INVO应用程序分为两部分，即通常我们说的前台后台。前台部分，用户可以通过INVO查看一些信息，同时可以提交联系方式。后台部分，相当于管理区域，在这里面注册用户可以管理自己的产品和客户。
 
-Routing
--------
-INVO uses the standard route that is builtin with the Router component. This routes matches the following pattern: /:controller/:action/:params. This means that the first part of the url is the controller, the second the action and so on.
+标准路由器
+---------------
+INVO使用标准的内奸路由器组件，此路由的匹配模式如下 /:controller/:action/:params  ，这意味着，URL中的第一部分是控制器，第二个是action方法。
 
-The following route /session/register will execute the controller SessionController and its action registerAction.
+路由 /session/register 将要执行SessionController中的RegisterAction方法
 
 Configuration
 -------------
-INVO has a configuration file that sets general parameters of the application. This file is read in the first lines
-of the bootstrap file (public/index.php):
+INVO有一个配置文件，用于设置一些常用的数据，比如数据库连接参数，目录结构等。在引导文件 (public/index.php) 的第一部分，可以这样读取配置文件
 
 .. code-block:: php
 
@@ -56,8 +51,7 @@ of the bootstrap file (public/index.php):
     //Read the configuration
     $config = new Phalcon\Config\Adapter\Ini(__DIR__.'/../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object oriented way. The configuration file contains the following
-settings:
+:doc:`Phalcon\\Config <config>` 使得读取配置内容是面像对象的，配置文件的定义如下：
 
 .. code-block:: ini
 
@@ -80,13 +74,11 @@ settings:
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon has no defined any convention settings. Sections help us organize the options as appropriate. In this file there are three
-sections to use later.
+Phalcon的配置文件可以分类进行定义，在这个文件中，共定义了三个部分 database,application,metadata
 
 Autoloaders
 -----------
-A second part that appears in the boostrap file (public/index.php) is the autoloader. The autoloader registers a set of directories where the
-application will look for the classes that it eventually will need.
+在引导文件 (public/index.php) 的第二部分是autoloader,autoloader注册了一些目录，在这些目录中放置的是我们应用程序需要用到的类文件
 
 .. code-block:: php
 
@@ -103,13 +95,11 @@ application will look for the classes that it eventually will need.
         )
     )->register();
 
-Note that what has been done is to register the directories that were in the configuration file. The only directory that is not registered is the
-viewsDir, because it contains no classes but html + php files.
+需要注意的是，注册的这些目录并不包括 viewsDir,因为viewsDir中并不包含classes文件，而是html+php文件
 
-Handling the Request
+处理请求
 --------------------
-Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application, this class initializes and executes all
-the necessary to make the application run:
+在引导文件的最后部分，我们使用 Phalcon\\Mvc\\Application ，这个类初始化并执行用户的请求
 
 .. code-block:: php
 
@@ -119,17 +109,15 @@ the necessary to make the application run:
     $application->setDI($di);
     echo $application->handle()->getContent();
 
-Dependency Injection
+依赖注入
 --------------------
-Look at the second line of the code block above, the variable $application is receiving another variable $di. What is the purpose of that variable?
-Phalcon is a highly decoupled framework, so we need a component that act as glue to make everything work together. That component is Phalcon\\DI.
-It is a service container that also performs dependency injection, instantiating all components, as they are needed by the application.
+看上面代码中的第二段，变量$application通过setDI()方法接收了变量$di,该变量的目的是什么呢？
 
-There are many ways of registering in the container services. In INVO most services have been registered using anonymous functions. Thanks to this
-the objects are instantiated in a lazy way, reducing the resources needed by the application.
+Phalcon是一个松耦合的框架，所以我们需要一个组件，把它们整合到一起，让它们一起工作，该组件便是 Phalcon\\DI
 
-For instance, in the following excerpt is registered the session service, the anonymous function will only be called when the application requires
-access to the session data:
+注册到容器的方法有很多，在INVO中，大都采用匿名函数的方式进行注册，因为此种方式是lazy load的加载方式，减少了应用程序请求资源控制。
+
+例如，在下面的代码片断中的session会话服务，采用的是匿名函数的方式进行注册的，因此当使用session的时候，才会被加载。
 
 .. code-block:: php
 
@@ -142,11 +130,13 @@ access to the session data:
         return $session;
     });
 
-Here we have the freedom to change the adapter, perform additional initialization and much more. Note that the service was registered using the
-name "session". This is a convention that will allow the framework to identify the active service in the service container.
+在这里，我们可以自由的更改适配器，以使它执行更多的初始化任务，请注意，服务注册的"session"请不要随意修改，这是一个命名约定。
 
-A request can use many services, register each service one to one can be a cumbersome task. For this reason, the framework provides a variant of
-Phalcon\\DI called Phalcon\\DI\\FactoryDefault.
+译者注：更多的服务组件命名约定可见 :doc:`dependency injection container <di>`#service-name-conventions
+
+一个请求可能使用多个服务组件，一个一个的注册这些组件是一项繁重的任务，出于这个原因，该框架提供了 Phalcon\\DI 的一个实现，就是 Phalcon\\DI\\FactoryDefault
+
+译者注：其实 Phalcon\\DI\\FactoryDefault 就是 Phalcon\\DI 的一个子类
 
 .. code-block:: php
 
@@ -159,13 +149,13 @@ Phalcon\\DI called Phalcon\\DI\\FactoryDefault.
 It registers the majority of services with components provided by the framework as standard. If we need to override the definition of some
 it could be done as above with "session". Now we know the origin of the variable $di.
 
+大多数的服务组件都由框架本身提供，如果我们需要覆盖一些定义的话，比如"session".(翻译的可能不对，英文部分就不去掉了)
+
 Log into the Application
 ------------------------
-Log in will allow us to work on backend controllers. The separation between the controllers of the backend and frontend is only logical.
-All controllers are located in the same directory. To enter the system, we must have a valid username and password. The users are stored in the table "users" of the database "invo".
+登录将使用后端控制器，控制器前后端分离是合乎逻辑的，所有的控制器被放置到相同的目录中。要登录系统，我们必须有一个有效的用户名和密码，用户信息被存储在数据库"invo"的"users"数据表中。
 
-Before we can log in, we need to configure the connection to the database in the application. A service called "db" will be applied to the
-service container for this information. As with the autoloader, this time we are also taking parameters from the configuration file to configure a service:
+在我们登录系统之前，我们需要在应用程序中配置数据库连接。一个命名为"db"的服务组件被注册，与autoloader相同，我们也从配置文件中读取相关配置连接参数
 
 .. code-block:: php
 
@@ -181,11 +171,9 @@ service container for this information. As with the autoloader, this time we are
         ));
     });
 
-Here we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a logger, a profiler
-or change the adapter, or setup it as you want.
+这时，会返回一个MySQL的连接适配器的实例，如果需要的话，你可以做一些其他额外的操作，例如，你还可以定义一个记录器，分析器或更改为其他适配器。或者设置你想要的其他东西
 
-Back then, the following simple form (app/views/session/index.phtml) requests the logon information. We've removed some HTML code to
-make the example more concise:
+那么，下面的这个表单示例 (app/views/session/index.phtml) 是一个登录入口，已经删除了一些HTML代码，使这个例子更简洁：
 
 .. code-block:: html+php
 
