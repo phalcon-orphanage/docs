@@ -132,7 +132,7 @@ Phalcon是一个松耦合的框架，所以我们需要一个组件，把它们�
 
 在这里，我们可以自由的更改适配器，以使它执行更多的初始化任务，请注意，服务注册的"session"请不要随意修改，这是一个命名约定。
 
-译者注：更多的服务组件命名约定可见 :doc:`dependency injection container <di>`#service-name-conventions
+译者注：更多的服务组件命名约定可见 :doc:`dependency injection container <di>`
 
 一个请求可能使用多个服务组件，一个一个的注册这些组件是一项繁重的任务，出于这个原因，该框架提供了 Phalcon\\DI 的一个实现，就是 Phalcon\\DI\\FactoryDefault
 
@@ -189,8 +189,7 @@ Log into the Application
 
     </form>
 
-The SessionController::startAction (app/controllers/SessionController.phtml) have the task of validate the entered data checking
-for a valid user in the database:
+SessionController::startAction (app/controllers/SessionController.phtml) 验证用户登录，通过查询数据库的用户的登录名称和密码是否正确
 
 .. code-block:: php
 
@@ -247,12 +246,11 @@ for a valid user in the database:
 
     }
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in dependency injector from earlier. When accessed the first time, they are injected as part of the controller.
+需要注意的是控制器中有多个公共属性，如$this->flash,$this->request,$this->session。这些属性在引导文件中使用 Phalcon\\DI 注册的，如果你仔细看过前面的章节，应该能想到。因此可以在控制器中直接使用他们
 
-These services are shared, which means that we will always be accessing the same instance regardless of the place where we invoke them.
+这些服务是共享的，这意味着我们访问的是相同的实例，无论我们在任何地方调用它们。
 
-For instance, here we invoke the "session" service and them we store the user identity in the "auth" variable:
+举个例子，在这里我们可以直接调用 "session", 同时把用户的信息存储到变量auth中
 
 .. code-block:: php
 
@@ -265,23 +263,16 @@ For instance, here we invoke the "session" service and them we store the user id
 
 Securing the Backend
 --------------------
-The backend is a private area where only registered users have access. Therefore it is necessary to check that only registered users
-have access to these controllers. If you aren't logged in the application and you try to access by example the products controller
-(that is private) you'll see a screen like this:
+后端是一个私有区域，只有注册的用户才可以访问。因此，它必须进行检查验证，只有注册用户才可以访问这些控制器。如果你没有登录应用程序，你尝试访问的时候，你会看到这样的界面：
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone try to access any controller and action, the application verifies that the current role has access to it, otherwise
-it displays a message like the above and forwards the flow to the home page.
+每当有人试图访问任何控制器和动作，应用程序就会验证当前用户的角色是否能够访问，否则会显示一个信息，同时跳转到首页面。
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called Dispatcher. It is
-informed about the route found by the component Router. Based on this is responsible for loading the appropriate controller and execute
-the corresponding action method.
+现在，我们来看看应用程序如何实现这一点。首先要知道的是，有一个组件叫分发器(Dispatcher)，你还需要了解一个路由。在此基础上，负载加载相应的控制器和执行相应的动作。
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to make a special action that is check before
-executing the required action if the user has access to it or not. To achieve this we replace the component by creating a function
-defined by us in the bootstrap:
+通常情况下，框架会自动创建分发器，在这个例子中，我们要专门创建一个动作，显示出用户成功访问和不成功访问的情况。为了实现这一目标，我们更在引导文件(bootstrap)中创建一个函数：
 
 .. code-block:: php
 
@@ -292,14 +283,13 @@ defined by us in the bootstrap:
         return $dispatcher;
     });
 
-We now have total control of the Dispatcher used by the application. Now, many components of the framework launch events that allow us
-to modify the internal flow of operation. As the dependency Injector component acts as glue for components, a new component called
-EventsManager helps us to bring the events produced by some component to the objects that require them.
+现在，我们的应用程序中就有了控制分发器，现实中，我们需要修改框架中有许多组件的内部流程，这时一个新的组件EventsManager出来了，它可以提供在组件中加入一些其他对像。
 
-Events Management
+译者注：如在分发器中加入验证，在数据库连接中加入记录器等
+
+事件管理
 ^^^^^^^^^^^^^^^^^
-A EventsManager allows us to attach listeners to a particular type of event. The type that interests us now is "dispatch" that filters
-all events produced by the Dispatcher:
+一个事件管理器，可以让我们针听一个特定类型的事件，下面看一下在分发器中加入安全验证的例子：
 
 .. code-block:: php
 
@@ -324,8 +314,11 @@ all events produced by the Dispatcher:
         return $dispatcher;
     });
 
-The Security plugin is a class located at (app/plugins/Security.php). This class implements the method "beforeExecuteRoute". This is the same
-name as one of the events produced in the Dispatcher:
+
+安全插件是一个类文件(app/plugins/Security.php)，这个类实现了"beforeExecuteRoute"方法.
+
+译者注：都可以实现哪些方法，可以查看 :doc:`分发器 <dispatching>` Dispatch Loop Events 部分
+
 
 .. code-block:: php
 
