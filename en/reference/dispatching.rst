@@ -80,6 +80,27 @@ The following example demonstrates how to attach listeners to this component:
         return $dispatcher;
     });
 
+Instantiated controllers act automatically as listeners for dispatch events, so you can implement methods as callbacks:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function beforeExecuteRoute($dispatcher)
+        {
+            // Executed before every found action
+        }
+
+        public function afterExecuteRoute($dispatcher)
+        {
+            // Executed after every found action
+        }
+
+    }
+
 Forwarding to other actions
 ---------------------------
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
@@ -103,7 +124,10 @@ access to certain options, redirect users to other screens or simply reuse code.
             // .. store some product and forward the user
 
             // Forward flow to the index action
-            $this->dispatcher->forward(array("controller" => "post", "action" => "index"));
+            $this->dispatcher->forward(array(
+                "controller" => "post",
+                "action" => "index"
+            ));
         }
 
     }
@@ -111,6 +135,31 @@ access to certain options, redirect users to other screens or simply reuse code.
 Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
 The "forward" doesn't reloads the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
 to complete the process.
+
+More forwarding examples:
+
+.. code-block:: php
+
+    <?php
+
+    // Forward flow to another action in the current controller
+    $this->dispatcher->forward(array(
+        "action" => "search"
+    ));
+
+    // Forward flow to another action in the current controller
+    // passing parameters
+    $this->dispatcher->forward(array(
+        "action" => "search",
+        "params" => array(1, 2, 3)
+    ));
+
+    // Forward flow to another action in the current controller
+    // passing parameters
+    $this->dispatcher->forward(array(
+        "action" => "search",
+        "params" => array(1, 2, 3)
+    ));
 
 Getting Parameters
 ------------------
@@ -150,7 +199,7 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
     <?php
 
-    $di->set('dispatcher', function(){
+    $di->setShared('dispatcher', function() {
 
         //Create/Get an EventManager
         $eventsManager = new Phalcon\Events\Manager();
@@ -189,3 +238,6 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
         return $dispatcher;
     });
 
+Implementing your own Dispatcher
+--------------------------------
+The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher replacing the one providing by Phalcon.

@@ -46,6 +46,12 @@ examples offer the same behavior:
     // Automatically applying the filter
     $email = $request->getPost("user_email", "email");
 
+    // Setting a default value if the param is null
+    $email = $request->getPost("user_email", "email", "some@example.com");
+
+    // Setting a default value if the param is null without filtering
+    $email = $request->getPost("user_email", null, "some@example.com");
+
 
 Accessing the Request from Controllers
 --------------------------------------

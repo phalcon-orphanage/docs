@@ -63,7 +63,10 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array("controller" => "users", "action" => "signin"));
+            $this->dispatcher->forward(array(
+                "controller" => "users",
+                "action" => "signin"
+            ));
         }
 
     }
@@ -125,7 +128,7 @@ action is executed on a controller. The use of the "__construct" method is not r
 
 Injecting Services
 ------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it have easy access to the service
+If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
 container in application. For example, if we have registered a service like this:
 
 .. code-block:: php
@@ -136,7 +139,7 @@ container in application. For example, if we have registered a service like this
 
     $di->set('storage', function(){
         return new Storage('/some/directory');
-    });
+    }, true);
 
 Then, we can access to that service by this way:
 
@@ -156,8 +159,11 @@ Then, we can access to that service by this way:
             //Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service
+            //Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
+
+            //Another way to access the service using the magic getter
+            $this->getDi()->getStorage()->save('/some/file');
         }
 
     }

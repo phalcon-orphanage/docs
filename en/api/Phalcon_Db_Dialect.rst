@@ -31,13 +31,13 @@ Gets a list of columns
 
 
 
-protected *string*  **_getSqlExpression** ()
+public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar)
 
 Transform an intermediate representation for a expression into a database system valid expression
 
 
 
-protected *string*  **_getSqlTable** ()
+public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar)
 
 Transform an intermediate representation for a schema/table into a database system valid expression
 

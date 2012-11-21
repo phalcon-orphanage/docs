@@ -132,7 +132,9 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    class Module
+    use Phalcon\Mvc\ModuleDefinitionInterface;
+
+    class Module implements ModuleDefinitionInterface
     {
 
         /**
@@ -248,6 +250,34 @@ A special bootstrap file is required to load the a multi-module MVC architecture
     } catch(Phalcon\Exception $e){
         echo $e->getMessage();
     }
+
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
+module:
+
+.. code-block:: php
+
+    <?php
+
+    //Creating a view component
+    $view = new \Phalcon\Mvc\View();
+
+    // Register the installed modules
+    $application->registerModules(
+        array(
+            'frontend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            },
+            'backend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            }
+        )
+    );
 
 When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
 necessary that every matched route returns a valid module. Each registered module has an associated class

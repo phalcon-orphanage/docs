@@ -26,6 +26,11 @@ h2 {
 	margin: 25px 0 0;
 }
 
+h3 {
+    font-weight: 600;
+    margin: 15px 0 10px;
+}
+
 /*p, li {
 	color: #434343;
 }*/

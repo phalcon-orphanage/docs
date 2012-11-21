@@ -116,7 +116,7 @@ maintenance of the class list very cumbersome and it is not recommended.
     // Creates the autoloader
     $loader = new \Phalcon\Loader();
 
-    // Register some directories
+    // Register some classes
     $loader->registerClasses(
         array(
             "Some"         => "library/OtherComponent/Other/Some.php",
@@ -147,6 +147,25 @@ are using additional extensions you could set it with the method "setExtensions"
     //Set file extensions to check
     $loader->setExtensions(array("php", "inc", "phb"));
 
+Modifying current strategies
+----------------------------
+Additional data could be added to the existing values for strategies in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    // Adding more directories
+    $loader->registerDirs(
+        array(
+            "../app/library/"
+            "../app/plugins/"
+        ),
+        true
+    );
+
+Passing "true" as second parameter will merge the current values with new ones in any strategy.
+
 Autoloading Events
 ------------------
 In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
@@ -166,7 +185,7 @@ In the following example, the EventsManager is working with the class loader, al
     ));
 
     //Listen all the loader events
-    $eventsManager->attach('loader', function(){
+    $eventsManager->attach('loader', function() {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();
         }

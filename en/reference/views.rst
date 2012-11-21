@@ -666,7 +666,7 @@ template engine, you can register it in the initialize() method of the controlle
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    class PostsController extends \Phalcon\Mvc\Controller implements Phalcon\Mvc\View\EngineInterface
     {
 
         public function initialize()
@@ -734,7 +734,7 @@ A template engine adapter for Twig would look like:
     /**
      * Adapter to use Twig library as templating engine
      */
-    class My_Twig_Adapter extends \Phalcon\Mvc\View\Engine
+    class My_Twig_Adapter extends \Phalcon\Mvc\View\Engine implements Phalcon\Mvc\View\EngineInterface
     {
 
         protected $_twig;
@@ -826,10 +826,11 @@ A template engine adapter for Smarty would look like:
 
     <?php
 
-    class SmartyEngine extends \Phalcon\Mvc\View\Engine
+    class SmartyEngine extends \Phalcon\Mvc\View\Engine implements Phalcon\Mvc\View\EngineInterface
     {
 
         protected $_smarty;
+
         protected $_params;
 
         public function __construct(Phalcon\Mvc\View $view, Phalcon\DI $di)
@@ -929,7 +930,7 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    $di->set('view', function(){
+    $di->set('view', function() {
 
         //Create an event manager
         $eventsManager = new Phalcon\Events\Manager();
@@ -957,7 +958,8 @@ The following example shows how to create a plugin that clean/repair the HTML pr
     class TidyPlugin
     {
 
-        public function afterRender($event, $view){
+        public function afterRender($event, $view)
+        {
 
             $tidyConfig = array(
                 'clean' => true,

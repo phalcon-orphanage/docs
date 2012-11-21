@@ -161,7 +161,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     <?php
 
-    class MyComponent
+    class MyComponent implements \Phalcon\Events\EventsAwareInterface
     {
 
         protected $_eventsManager;
@@ -169,6 +169,11 @@ This component is EventsManager aware; when its method "someTask" is executed it
         public function setEventsManager($eventsManager)
         {
             $this->_eventsManager = $eventsManager;
+        }
+
+        public function getEventsManager()
+        {
+            return $this->_eventsManager
         }
 
         public function someTask()
@@ -267,3 +272,7 @@ If a listener it's only interested in listening a specific type of event you can
     $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
         //...
     });
+
+Implementing your own EventsManager
+-----------------------------------
+The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
