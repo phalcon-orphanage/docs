@@ -5,6 +5,9 @@ Volt is an ultra-fast and designer friendly templating language written in C for
 helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
 just as you can use it as a stand-alone component in your applications.
 
+.. figure:: ../_static/img/volt.jpg
+   :align: center
+
 Volt is inspired on Twig_, originally created by Armin Ronacher, which in turn is inspired in Jinja_.
 Therefore many developers will be in familiar ground using the same syntax they have been using
 with Twig. Volt’s syntax and features have been enhanced with more elements and of course
@@ -576,6 +579,11 @@ The following options are available in Volt:
 | stat              | Whether Phalcon must check if exists differences between the template file and its compiled path                               | true    |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 
+External Resources
+------------------
+
+* A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
+* Our website is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
 
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
