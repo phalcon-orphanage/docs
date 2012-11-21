@@ -339,12 +339,13 @@ Securing the Backend
 
     }
 
-The hooks events always receive a first parameter that contains contextual information of the event produced and a second that is the
-object that produced the event itself. Plugins should not extend the class Phalcon\\Mvc\\User\\Plugin, but by doing it they gain easier
-access to the services of the application.
+插件程序接收两个参数，第一个参数是event上下文信息，第二个是事件管理器要管理的对象，插件程序并不一定非得继承自 :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>` ,但如果这样继承了，他们更容易的访问应用程序的其他服务组件。
 
-Now, we're verifying the role in the current session, check to see if he has access using the ACL list. If he does not have access we
-redirect hom to the home screen as explained:
+译者注：目前的 Phalcon\\Mvc\\User\\Plugin 以及 Phalcon\\Mvc\\User\\Component 是一样的，其实两者的侧重点应该是不同的，只是作者还未完善而已。具体请看stackoverflow的贴子
+
+http://stackoverflow.com/questions/12879284/whats-different-between-phalcon-mvc-user-component-and-phalcon-mvc-user-plugin
+
+现在，我们验证登录用户的权限，看他的权限是否在ACL列表中，如果没有(也就是说没有权限的话)，分发器将使流程跳转到主页：
 
 .. code-block:: php
 
@@ -399,6 +400,8 @@ redirect hom to the home screen as explained:
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
+权限管理部分，我一般不太喜欢使用这种方式的权限验证，不过大多数框架都提供了这种验证，包括ZF。
+
 In the previous example we obtain the ACL using the method $this->_getAcl(). This method is also implemented in the Plugin.
 Now explain step by step how we built the access control list:
 
@@ -474,13 +477,13 @@ of both the frontend and the backend. The role "Guests" only have access to the 
 
 Hooray!, the ACL is now complete.
 
-User Components
+用户自定义组件
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through Twitter Boostrap. Some elements, such as the
-navigation bar change according to the state of the application. For example, in the upper right corner, the link "Log in / Sign Up"
-changes to "Log out" if a user is logged into the application.
+本应用所有的UI组件和显示风格都是使用的Twitter的CSS Framework。
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+这部分被实现使用成Component (api/library/Elements.php)。
+
+译者注：在上面讲Plugins的时候，专门介绍了Component,没注意的可以往上看一下。
 
 .. code-block:: php
 
@@ -501,8 +504,7 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but if it helps to
-more quickly access the application services. Now, we register this class in the Dependency Injector Container:
+这个类继承自 Phalcon\\Mvc\\User\\Component,虽然框架本身不强制要求继承，但如果你继承了它，将更方便的访问应用程序中的其他组件。现在，我们把它注入到容器中：
 
 .. code-block:: php
 
@@ -513,7 +515,7 @@ more quickly access the application services. Now, we register this class in the
         return new Elements();
     });
 
-As controllers, plugins or components within a view also can access the services registered in the container just accessing an attribute by name:
+在控制器中以及视图中，插件以及组件可以通过注册的名称很方便的被调用
 
 .. code-block:: html+php
 
@@ -539,16 +541,15 @@ As controllers, plugins or components within a view also can access the services
         </footer>
     </div>
 
-The important part is:
+重点看这句：
 
 .. code-block:: html+php
 
     <?php echo $this->elements->getMenu() ?>
 
-Working with the CRUD
+增删查改
 ---------------------
-Most options that manipulate data (companies, products and types of products), were developed using a basic and common CRUD_ (Create,
-Read, Update and Delete). Each CRUD contains the following files:
+大多数菜单选项数据(如公司，产品，产品类型等)，我们开发按照普遍的 CRUD_ (Create, Read, Update and Delete)方式，每个CURD包含以下文件：
 
 .. code-block:: bash
 
@@ -565,7 +566,9 @@ Read, Update and Delete). Each CRUD contains the following files:
                     new.phtml
                     search.phtml
 
-Each controller have the following actions:
+每个控制器包含以下一些动作(控制器类中的方法)：
+
+译者注：这些动作名称并不是约定的，可以按你的喜好自由修改，比如searchAction,你可以写成soAction都没问题。但请求的时候就不再请求到products/search了，而是需要请求到products/so
 
 .. code-block:: php
 
@@ -633,11 +636,11 @@ Each controller have the following actions:
 
     }
 
-The Search Form
+检索表单
 ^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user to create a search criteria from any field.
-The "products" table has a relationship to the table "products_types". In this case we previously query the records in this table in order to
-facilitate the search by that field:
+检索表单显示了数据表(products)中的所有可查询的字段，允许用户根据自定义检索内容。
+
+数据表"products"，关联了数据表"products_types"，在这种情况下，我们在检索页面这样写：
 
 .. code-block:: php
 
@@ -652,8 +655,7 @@ facilitate the search by that field:
         $this->view->setVar("productTypes", ProductTypes::find());
     }
 
-All the "product types" are queried and passed to the view as a local variable "productTypes". Then in the view (app/views/index.phtml) we show a "select" tag
-filled with those results:
+所有"product types"将通过变量"productTypes"显示到视图文件中，视图文件(app/views/index.phtml)的代码如下：
 
 .. code-block:: php
 
@@ -669,14 +671,11 @@ filled with those results:
         )) ?>
     </div>
 
-Note that the $productTypes contains the data necessary to fill the SELECT tag with Phalcon\\Tag::select. Once the form is submitted, it will
-execute the action "search" in the controller who will perform the search based on the data entered by the user.
+变量$productTypes包含的数据通过 :doc:`Phalcon\\Tag::select <../api/Phalcon_Tag>` 填充到视图进行显示。一旦提交检索表单，它会请求到 products/search，并根据用户提交的数据进行数据检索
 
-Performing a Search
+执行一个检索
 ^^^^^^^^^^^^^^^^^^^
-The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the form.
-But when accessed via GET it moves the current page in the paginator. To differentiate one from the other HTTP method,
-we check it using the :doc:`Request <request>` component:
+"search",即products/search 这个动作具有双重行为，当通过POST访问时，它会根据用户提交的数据进行条件检索。但是，当我们通过GET访问时，将显示所有产品的列表。这些都是通过HTTP方法来进行区分的。详情请查看  :doc:`Request <request>` component:
 
 .. code-block:: php
 
@@ -699,8 +698,7 @@ we check it using the :doc:`Request <request>` component:
 
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search conditions
-intelligently based on the data types and values sent from the form:
+使用:doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ，我们可以很方便的把表单提交的数据(值)和数据类型(属性或字段)绑定到一起
 
 .. code-block:: php
 
@@ -708,14 +706,11 @@ intelligently based on the data types and values sent from the form:
 
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create the query:
-If the data type of a field is text or similar (char, varchar, text, etc.) it will use a "like" operator to filter the results.
-If the data type is not text or similar, it'll use the operator "=".
+该方法的绑定过程是这样的，首先验证客户端提交的表单数据是否为空""(空字符串)，如果不是，将绑定到数据字段上。如果提交的表单数据是字符串类型的(CHAR, VARCHAR, TEXT等)，将使用 "like '%%'"这样的形式来进行检索数据。如果不是或不类似于字符串，它会直接使用操作符"="进行检索。
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table. Also, values ​​are automatically escaped
-using "bound parameters".
+此外，如果提交的数据中不包括在数据表字段（也可以说成是model字段）中，这些数据将被忽略。此外，提交的数据会自动使用bound parameter的方式进行绑定。
 
-Now, we store the produced params in the controller's session bag:
+我们把提交的绑定数据存储到session中，此处使用的是 :doc:`Session Bag <../api/Phalcon_Session_Bag>`
 
 .. code-block:: php
 
@@ -723,10 +718,11 @@ Now, we store the produced params in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute of a controller that persists between requests. When accesed, this attribute injects
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service, that's independent in each controller.
+Session Bag是一个特殊的属性，它存在于控制器中。这个属性注入的其实是 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 组件。
 
-Then, based on the built params we perform the query:
+译者注：经测试，使用 $this->persistent->xxx，只能在同一控制器中的不同Action中进行访问，不能在其他控制器中访问到数据。如果需要在不同的控制器访问到变量xxx的数据，可以使用session
+
+封装绑定好数据后，我们通过这个参数来进行数据检索：
 
 .. code-block:: php
 
@@ -738,8 +734,7 @@ Then, based on the built params we perform the query:
         return $this->forward("products/index");
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+如果检索不到任何产品，将跳转到 products/index 页面。否则，读取检索到的数据，进行分页显示：
 
 .. code-block:: php
 
@@ -754,7 +749,7 @@ search returned results, then we create a paginator to navigate easily through t
     //Get active page in the paginator
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+最后，把分页的数据绑定到视图上。即把变量$page绑定到视图的page上:
 
 .. code-block:: php
 
@@ -762,7 +757,7 @@ Finally we pass the returned page to view:
 
     $this->view->setVar("page", $page);
 
-In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
+在视图文件(app/views/products/search.phtml) 中,我们这样进行数据显示： 
 
 .. code-block:: html+php
 
@@ -778,7 +773,7 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
         </tr>
     <?php } ?>
 
-Creating and Updating Records
+创建以及更新一条数据记录
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
 are sent to the actions "create" and "save" that perform actions of "create" and "update" products respectively.
