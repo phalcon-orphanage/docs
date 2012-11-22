@@ -698,7 +698,7 @@ Hooray!, the ACL is now complete.
 
     }
 
-使用:doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ，我们可以很方便的把表单提交的数据(值)和数据类型(属性或字段)绑定到一起
+使用 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ，我们可以很方便的把表单提交的数据(值)和数据类型(属性或字段)绑定到一起
 
 .. code-block:: php
 
@@ -775,10 +775,13 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
 创建以及更新一条数据记录
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "create" and "update" products respectively.
+现在，让我们来看看如何使用CURD创建和更新一个记录。通过控制器的"new"和"edit"两个Action，我们可以提交数据输入。他们分别能过"create"和"save"两个Action来保存提交的数据。
 
-In the creation case, we recover the data sent and assign them to a new "products" instance:
+译者注：说白了就是 newAction就是新建产品页面，点击右上角的Save按钮保存时，会调用createAction。同理....
+
+在创建的情况下，我们把用户提交的数据和"products"这个产品实例进行绑定。
+
+译者注：即把用户提交的数据通过绑定到model上，以实现保存到数据库的目的。
 
 .. code-block:: php
 
@@ -801,8 +804,7 @@ In the creation case, we recover the data sent and assign them to a new "product
 
     }
 
-Data is filtered before being assigned to the object. When saving we'll know whether the data conforms to the business rules
-and validations implemented in the model Products:
+提交的数据被过滤，然后再赋值到对象的属性，保存时，我们就可以知道用户提交的数据有没有符合业务规则。同时，可以在 Products Model中实现验证。
 
 .. code-block:: php
 
@@ -831,7 +833,7 @@ and validations implemented in the model Products:
 
     }
 
-Now in the case of product updating, first we must present to the user the data currently in the edited record:
+现在来说产品编辑部分，首先得保证数据库中有可编辑的数据：
 
 .. code-block:: php
 
@@ -855,8 +857,7 @@ Now in the case of product updating, first we must present to the user the data 
 
     }
 
-The displayTo helper sets a default value in the form on the attribute with the same name. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+通过 displayTo helper设置从数据库中取得的数据到页面，然后用户可以更改这些数据，然后再通过saveAction保存到数据库。
 
 .. code-block:: php
 
@@ -882,10 +883,9 @@ the user can change any value and then sent it back to the database through to t
 
     }
 
-Changing the Title Dynamically
+动态更改标题
 ------------------------------
-When you browse between one option and another will see that the title changes dynamically indicating where we are currently working.
-This is achieved in each controller initializer:
+当你浏览不同的控制器及动作时，网页标题会不同，如果更改标题呢，可以在每个控制器进行初始化：
 
 .. code-block:: php
 
@@ -905,7 +905,7 @@ This is achieved in each controller initializer:
 
     }
 
-Note, that the method parent::initialize() is also called, it adds more data to the title:
+注意，上面的方法中调用了 parent::initialize() ，你可以在 parent::initialize() 方法中加入更多的内容到标题：
 
 .. code-block:: php
 
@@ -923,7 +923,7 @@ Note, that the method parent::initialize() is also called, it adds more data to 
         //...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+最后，我们在视图文件 (app/views/index.phtml) 中这样获得标题：
 
 .. code-block:: html+php
 
@@ -936,9 +936,9 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         <!-- ... -->
     </html>
 
-Conclusion
+结束语
 ----------
-This tutorial covers many more aspects of building applications with Phalcon, hope you have served to learn more and get more out of the framework.
+本教程从各个方面讲解了如何使用Phalcon来创建一个应用程序，希望你也能提供示例程序，同时学习更多的内容。
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
