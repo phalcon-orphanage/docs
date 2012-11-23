@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\Model\Query &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Mvc\Model\Query\Lang" href="Phalcon_Mvc_Model_Query_Lang.html" />
+    <link rel="prev" title="Class Phalcon\Mvc\Model\MetaData\Session" href="Phalcon_Mvc_Model_MetaData_Session.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_Query_Lang.html" title="Class Phalcon\Mvc\Model\Query\Lang"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_MetaData_Session.html" title="Class Phalcon\Mvc\Model\MetaData\Session"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\Model\Query</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_Model_MetaData_Session.html"
+                                  title="上一章">Class <strong>Phalcon\Mvc\Model\MetaData\Session</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_Model_Query_Lang.html"
+                                  title="下一章">Class <strong>Phalcon\Mvc\Model\Query\Lang</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Mvc_Model_Query.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-mvc-model-query">
+<h1>Class <strong>Phalcon\Mvc\Model\Query</strong><a class="headerlink" href="#class-phalcon-mvc-model-query" title="永久链接至标题">¶</a></h1>
+<p>This class takes a PHQL intermediate representation and executes it.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="nv">$phql</span>  <span class="o">=</span> <span class="s2">&quot;SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b WHERE b.name = :name: ORDER BY c.name&quot;</span><span class="p">;</span>
+
+ <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+   <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lamborghini&#39;</span>
+ <span class="p">));</span>
+
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$result</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="s2">&quot;Name: &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">cars</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="k">echo</span> <span class="s2">&quot;Price: &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">cars</span><span class="o">-&gt;</span><span class="na">price</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="k">echo</span> <span class="s2">&quot;Taxes: &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">taxes</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>__construct</strong> (<em>string</em> $phql)</p>
+<p>Phalcon\Mvc\Model\Query constructor</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector)</p>
+<p>Sets the dependency injection container</p>
+<p>public <a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a>  <strong>getDI</strong> ()</p>
+<p>Returns the dependency injection container</p>
+<p>protected <em>string</em>  <strong>_getQualified</strong> ()</p>
+<p>Replaces the model&#8217;s name to its source name in a qualifed-name expression</p>
+<p>protected <em>string</em>  <strong>_getCallArgument</strong> ()</p>
+<p>Resolves a expression in a single call argument</p>
+<p>protected <em>string</em>  <strong>_getFunctionCall</strong> ()</p>
+<p>Resolves a expression in a single call argument</p>
+<p>protected <em>string</em>  <strong>_getExpression</strong> ()</p>
+<p>Resolves an expression from its intermediate code into a string</p>
+<p>protected <em>array</em>  <strong>_getSelectColumn</strong> ()</p>
+<p>Resolves a column from its intermediate representation into an array used to determine if the resulset produced will be simple or complex</p>
+<p>protected <em>string</em>  <strong>_getTable</strong> ()</p>
+<p>Resolves a table in a SELECT statement checking if the model exists</p>
+<p>protected <em>array</em>  <strong>_getJoin</strong> ()</p>
+<p>Resolves a JOIN clause checking if the associated models exist</p>
+<p>protected <em>string</em>  <strong>_getJoinType</strong> ()</p>
+<p>Resolves a JOIN type</p>
+<p>protected <em>array</em>  <strong>_getJoins</strong> ()</p>
+<p>Resolves all the JOINS in a SELECT statement</p>
+<p>protected <em>string</em>  <strong>_getLimitClause</strong> ()</p>
+<p>Returns a processed limit clause for a SELECT statement</p>
+<p>protected <em>string</em>  <strong>_getOrderClause</strong> ()</p>
+<p>Returns a processed order clause for a SELECT statement</p>
+<p>protected <em>string</em>  <strong>_getGroupClause</strong> ()</p>
+<p>Returns a processed group clause for a SELECT statement</p>
+<p>protected  <strong>_prepareSelect</strong> ()</p>
+<p>Analyzes a SELECT intermediate code and produces an array to be executed later</p>
+<p>protected <em>array</em>  <strong>_prepareInsert</strong> ()</p>
+<p>Analyzes an INSERT intermediate code and produces an array to be executed later</p>
+<p>protected <em>array</em>  <strong>_prepareUpdate</strong> ()</p>
+<p>Analyzes an UPDATE intermediate code and produces an array to be executed later</p>
+<p>protected <em>array</em>  <strong>_prepareDelete</strong> ()</p>
+<p>Analyzes a DELETE intermediate code and produces an array to be executed later</p>
+<p>public <em>array</em>  <strong>parse</strong> (<a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $manager)</p>
+<p>Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another intermediate representation that could be executed by Phalcon\Mvc\Model\Query</p>
+<p>protected <a class="reference internal" href="Phalcon_Mvc_Model_Resultset.html"><em>Phalcon\Mvc\Model\Resultset</em></a>  <strong>_executeSelect</strong> ()</p>
+<p>Executes the SELECT intermediate representation producing a Phalcon\Mvc\Model\Resultset</p>
+<p>protected <a class="reference internal" href="Phalcon_Mvc_Model_Query_Status.html"><em>Phalcon\Mvc\Model\Query\Status</em></a>  <strong>_executeInsert</strong> ()</p>
+<p>Executes the INSERT intermediate representation producing a Phalcon\Mvc\Model\Query\Status</p>
+<p>protected <a class="reference internal" href="Phalcon_Mvc_Model_Query_Status.html"><em>Phalcon\Mvc\Model\Query\Status</em></a>  <strong>_executeUpdate</strong> ()</p>
+<p>Executes the UPDATE intermediate representation producing a Phalcon\Mvc\Model\Query\Status</p>
+<p>protected <a class="reference internal" href="Phalcon_Mvc_Model_Query_Status.html"><em>Phalcon\Mvc\Model\Query\Status</em></a>  <strong>_executeDelete</strong> ()</p>
+<p>Executes the DELETE intermediate representation producing a Phalcon\Mvc\Model\Query\Status</p>
+<p>public <em>mixed</em>  <strong>execute</strong> (<em>array</em> $placeholders)</p>
+<p>Executes a parsed PHQL statement</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_Query_Lang.html" title="Class Phalcon\Mvc\Model\Query\Lang"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_MetaData_Session.html" title="Class Phalcon\Mvc\Model\MetaData\Session"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

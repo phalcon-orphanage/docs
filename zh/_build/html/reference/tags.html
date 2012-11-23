@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>View Helpers &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Volt: Template Engine" href="volt.html" />
+    <link rel="prev" title="Using Views" href="views.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="volt.html" title="Volt: Template Engine"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Using Views"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">View Helpers</a><ul>
+<li><a class="reference internal" href="#using-name-aliasing">Using Name Aliasing</a></li>
+<li><a class="reference internal" href="#document-type-of-content">Document Type of Content</a></li>
+<li><a class="reference internal" href="#generating-links">Generating Links</a></li>
+<li><a class="reference internal" href="#creating-forms">Creating Forms</a></li>
+<li><a class="reference internal" href="#helpers-to-generate-form-elements">Helpers to Generate Form Elements</a></li>
+<li><a class="reference internal" href="#making-select-boxes">Making Select Boxes</a></li>
+<li><a class="reference internal" href="#assigning-html-attributes">Assigning HTML attributes</a></li>
+<li><a class="reference internal" href="#setting-helper-values">Setting Helper Values</a><ul>
+<li><a class="reference internal" href="#from-controllers">From Controllers</a></li>
+<li><a class="reference internal" href="#from-the-request">From the Request</a></li>
+<li><a class="reference internal" href="#specifying-values-directly">Specifying values directly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#changing-dynamically-the-document-title">Changing dynamically the Document Title</a></li>
+<li><a class="reference internal" href="#static-content-helpers">Static Content Helpers</a><ul>
+<li><a class="reference internal" href="#images">Images</a></li>
+<li><a class="reference internal" href="#stylesheets">Stylesheets</a></li>
+<li><a class="reference internal" href="#javascript">Javascript</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-your-own-helpers">Creating your own helpers</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="views.html"
+                                  title="上一章">Using Views</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="volt.html"
+                                  title="下一章">Volt: Template Engine</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tags.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="view-helpers">
+<h1>View Helpers<a class="headerlink" href="#view-helpers" title="永久链接至标题">¶</a></h1>
+<p>Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a>, which in turn offers view helpers to generate HTML markup.</p>
+<blockquote class="highlights">
+<div>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> page in the API for a complete reference.</div></blockquote>
+<div class="section" id="using-name-aliasing">
+<h2>Using Name Aliasing<a class="headerlink" href="#using-name-aliasing" title="永久链接至标题">¶</a></h2>
+<p>You could use name aliasing to get short names for classes. In this case, a Tag name can be used to alias the <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> class.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">use</span> <span class="nx">\Phalcon\Tag</span> <span class="k">as</span> <span class="nx">Tag</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="document-type-of-content">
+<h2>Document Type of Content<a class="headerlink" href="#document-type-of-content" title="永久链接至标题">¶</a></h2>
+<p>Phalcon provides Phalcon\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
+For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.</p>
+<p>Available document type constants in Phalcon\Tag namespace are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Constant</th>
+<th class="head">Document type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HTML32</td>
+<td>HTML 3.2</td>
+</tr>
+<tr class="row-odd"><td>HTML401_STRICT</td>
+<td>HTML 4.01 Strict</td>
+</tr>
+<tr class="row-even"><td>HTML401_TRANSITIONAL</td>
+<td>HTML 4.01 Transitional</td>
+</tr>
+<tr class="row-odd"><td>HTML401_FRAMESET</td>
+<td>HTML 4.01 Frameset</td>
+</tr>
+<tr class="row-even"><td>HTML5</td>
+<td>HTML 5</td>
+</tr>
+<tr class="row-odd"><td>XHTML10_STRICT</td>
+<td>XHTML 1.0 Strict</td>
+</tr>
+<tr class="row-even"><td>XHTML10_TRANSITIONAL</td>
+<td>XHTML 1.0 Transitional</td>
+</tr>
+<tr class="row-odd"><td>XHTML10_FRAMESET</td>
+<td>XHTML 1.0 Frameset</td>
+</tr>
+<tr class="row-even"><td>XHTML11</td>
+<td>XHTML 1.1</td>
+</tr>
+<tr class="row-odd"><td>XHTML20</td>
+<td>XHTML 2.0</td>
+</tr>
+<tr class="row-even"><td>XHTML5</td>
+<td>XHTML 5</td>
+</tr>
+</tbody>
+</table>
+<p>Setting document type.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">setDoctype</span><span class="p">(</span><span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">HTML401_STRICT</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Getting document type.</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">getDoctype</span><span class="p">()</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="c">&lt;!-- your HTML code --&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>The following HTML will be produced.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
+<span class="cp">        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="c">&lt;!-- your HTML code --&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-links">
+<h2>Generating Links<a class="headerlink" href="#generating-links" title="永久链接至标题">¶</a></h2>
+<p>A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
+When they are internal URLs we can create them in the following manner:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- for the default route --&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+<span class="c">&lt;!-- for a named route --&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;for&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;show-product&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;carrots&#39;</span><span class="p">))</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>Actually, all produced URLs are generated by the component <a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a> (or service &#8220;url&#8221; failing)</p>
+</div>
+<div class="section" id="creating-forms">
+<h2>Creating Forms<a class="headerlink" href="#creating-forms" title="永久链接至标题">¶</a></h2>
+<p>Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">use</span> <span class="nx">\Phalcon\Tag</span> <span class="k">as</span> <span class="nx">Tag</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="c">&lt;!-- Sending the form by method POST --&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+    <span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="c">&lt;!-- Specyfing another method or attributes for the FORM tag --&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">,</span> <span class="s2">&quot;method&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;get&quot;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="cp">&lt;?</span><span class="o">=</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<p>This last code will generate the following HTML:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;/store/products/search/&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;q&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Search&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/endform&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helpers-to-generate-form-elements">
+<h2>Helpers to Generate Form Elements<a class="headerlink" href="#helpers-to-generate-form-elements" title="永久链接至标题">¶</a></h2>
+<p>Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the getPost() and getQuery() methods on the request object ($this-&gt;request).</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="o">=&gt;</span> <span class="s2">&quot;5&quot;</span>
+<span class="p">))</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">textArea</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;This is the content of the text-area&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cols&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rows&quot;</span> <span class="o">=&gt;</span> <span class="mi">20</span>
+<span class="p">))</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">passwordField</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">hiddenField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="o">=&gt;</span> <span class="s2">&quot;5&quot;</span>
+<span class="p">))</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="making-select-boxes">
+<h2>Making Select Boxes<a class="headerlink" href="#making-select-boxes" title="永久链接至标题">¶</a></h2>
+<p>Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\Tag::select() and Phalcon\Tag::selectStatic().
+Phalcon\Tag::selectStatic() has been was specifically designed to work with <a class="reference internal" href="models.html"><em>Phalcon\Mvc\Model</em></a>, while Phalcon\Tag::selectStatic() can with PHP arrays.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Using data from a resultset</span>
+<span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">select</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;productId&quot;</span><span class="p">,</span>
+        <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;type = &#39;vegetables&#39;&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;using&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Using data from an array</span>
+<span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">selectStatic</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;A&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Active&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Inactive&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The following HTML will generated:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;productId&quot;</span> <span class="na">name=</span><span class="s">&quot;productId&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;101&quot;</span><span class="nt">&gt;</span>Tomato<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;102&quot;</span><span class="nt">&gt;</span>Lettuce<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;103&quot;</span><span class="nt">&gt;</span>Beans<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;status&quot;</span> <span class="na">name=</span><span class="s">&quot;status&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;A&quot;</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;I&quot;</span><span class="nt">&gt;</span>Inactive<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="assigning-html-attributes">
+<h2>Assigning HTML attributes<a class="headerlink" href="#assigning-html-attributes" title="永久链接至标题">¶</a></h2>
+<p>All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span>        <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">&quot;maxlength&quot;</span>   <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">&quot;placeholder&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Enter a price&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>The following HTML will generated:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">id=</span><span class="s">&quot;price&quot;</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">maxlength=</span><span class="s">&quot;30&quot;</span>
+    <span class="na">placeholder=</span><span class="s">&quot;Enter a price&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-helper-values">
+<h2>Setting Helper Values<a class="headerlink" href="#setting-helper-values" title="永久链接至标题">¶</a></h2>
+<div class="section" id="from-controllers">
+<h3>From Controllers<a class="headerlink" href="#from-controllers" title="永久链接至标题">¶</a></h3>
+<p>It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
+You can set those values directly from the controller using Phalcon\Tag::setDefaultValue().
+This helper preloads a value for any helpers present in the view. If any helper in the view has
+a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setDefaultValue</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;Blue&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At the view, a selectStatic helper matches the same index used to preset the value. In this case &#8220;color&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">selectStatic</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;Yellow&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Yellow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Blue&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Red&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;Red&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>This will generate the following select tag with the value &#8220;Blue&#8221; selected:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;color&quot;</span> <span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Yellow&quot;</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Blue&quot;</span> <span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Red&quot;</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="from-the-request">
+<h3>From the Request<a class="headerlink" href="#from-the-request" title="永久链接至标题">¶</a></h3>
+<p>A special feature that the <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> helpers have is that they keep the values
+of form helpers between requests. This way you can easily show validation messages without losing entered data.</p>
+</div>
+<div class="section" id="specifying-values-directly">
+<h3>Specifying values directly<a class="headerlink" href="#specifying-values-directly" title="永久链接至标题">¶</a></h3>
+<p>Every form helper supports the parameter &#8220;value&#8221;. With it you can specify a value for the helper directly.
+When this parameter is present, any preset value using setDefaultValue() or via request will be ignored.</p>
+</div>
+</div>
+<div class="section" id="changing-dynamically-the-document-title">
+<h2>Changing dynamically the Document Title<a class="headerlink" href="#changing-dynamically-the-document-title" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> offers helpers to change dynamically the document title from the controller.
+The following example demonstrates just that:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setTitle</span><span class="p">(</span><span class="s2">&quot; Your Website&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">prependTitle</span><span class="p">(</span><span class="s2">&quot;Index of Posts - &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span><span class="cp">&lt;?php</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">getTitle</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>The following HTML will generated:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Index of Posts - Your Website<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+      <span class="nt">&lt;body&gt;</span>
+
+      <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-content-helpers">
+<h2>Static Content Helpers<a class="headerlink" href="#static-content-helpers" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application</p>
+<div class="section" id="images">
+<h3>Images<a class="headerlink" href="#images" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Generate &lt;img src=&quot;/your-app/img/hello.gif&quot;&gt;</span>
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">image</span><span class="p">(</span><span class="s2">&quot;img/hello.gif&quot;</span><span class="p">);</span>
+
+<span class="c1">// Generate &lt;img alt=&quot;alternative text&quot; src=&quot;/your-app/img/hello.gif&quot;&gt;</span>
+<span class="k">echo</span> <span class="nx">\PhalconTag</span><span class="o">::</span><span class="na">image</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+       <span class="s2">&quot;img/hello.gif&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;alt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;alternative text&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stylesheets">
+<h3>Stylesheets<a class="headerlink" href="#stylesheets" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Generate &lt;link rel=&quot;stylesheet&quot; href=&quot;http://fonts.googleapis.com/css?family=Rosario&quot; type=&quot;text/css&quot;&gt;</span>
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">stylesheetLink</span><span class="p">(</span><span class="s2">&quot;http://fonts.googleapis.com/css?family=Rosario&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="c1">// Generate &lt;link rel=&quot;stylesheet&quot; href=&quot;/your-app/css/styles.css&quot; type=&quot;text/css&quot;&gt;</span>
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">stylesheetLink</span><span class="p">(</span><span class="s2">&quot;css/styles.css&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javascript">
+<h3>Javascript<a class="headerlink" href="#javascript" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Generate &lt;script src=&quot;http://localhost/javascript/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;http://localhost/javascript/jquery.min.js&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="c1">// Generate &lt;script src=&quot;/your-app/javascript/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+<span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;javascript/jquery.min.js&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-your-own-helpers">
+<h2>Creating your own helpers<a class="headerlink" href="#creating-your-own-helpers" title="永久链接至标题">¶</a></h2>
+<p>You can easily create your own helpers by extending the <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> and implementing your own helper. Below is a simple example of a custom helper:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">MyTags</span> <span class="k">extends</span> <span class="nx">\Phalcon\Tag</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">    * Generates a widget to show a HTML5 audio tag</span>
+<span class="sd">    *</span>
+<span class="sd">    * @param array</span>
+<span class="sd">    * @return string</span>
+<span class="sd">    */</span>
+    <span class="k">static</span> <span class="k">function</span> <span class="nf">audioField</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Converting parameters to array if it is not</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Determining attributes &quot;id&quot; and &quot;name&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span> <span class="p">{</span>
+                <span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Determining widget value,</span>
+        <span class="c1">// \Phalcon\Tag::setDefault() allows to set the widget value</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">];</span>
+            <span class="nb">unset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$value</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">getValue</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Generate the tag code</span>
+        <span class="nv">$code</span> <span class="o">=</span> <span class="s1">&#39;&lt;audio id=&quot;&#39;</span><span class="o">.</span><span class="nv">$id</span><span class="o">.</span><span class="s1">&#39;&quot; value=&quot;&#39;</span><span class="o">.</span><span class="nv">$value</span><span class="o">.</span><span class="s1">&#39;&quot; &#39;</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$parameters</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$attributeValue</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_integer</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$code</span><span class="o">.=</span> <span class="nv">$key</span><span class="o">.</span><span class="s1">&#39;=&quot;&#39;</span><span class="o">.</span><span class="nv">$attributeValue</span><span class="o">.</span><span class="s1">&#39;&quot; &#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nv">$code</span><span class="o">.=</span><span class="s2">&quot; /&gt;&quot;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nv">$code</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In next chapter, we&#8217;ll talk about <a class="reference internal" href="volt.html"><em>Volt</em></a> a faster template engine for PHP, where you can use a
+more friendly syntax for using helpers provided by PhalconTag.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="volt.html" title="Volt: Template Engine"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Using Views"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

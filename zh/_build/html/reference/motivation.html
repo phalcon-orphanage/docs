@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>我们的目的 &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="框架基准测试" href="benchmark.html" />
+    <link rel="prev" title="Welcome!" href="../index.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="benchmark.html" title="框架基准测试"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome!"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">我们的目的</a><ul>
+<li><a class="reference internal" href="#the-question">The Question</a></li>
+<li><a class="reference internal" href="#why">Why?</a></li>
+<li><a class="reference internal" href="#inner-workings-of-php">Inner workings of PHP?</a></li>
+<li><a class="reference internal" href="#how-traditional-php-frameworks-work">How traditional PHP frameworks work?</a></li>
+<li><a class="reference internal" href="#how-does-a-php-c-extension-work">How does a PHP C-extension work?</a></li>
+<li><a class="reference internal" href="#how-does-phalcon-work">How does Phalcon work?</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="../index.html"
+                                  title="上一章">Welcome!</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="benchmark.html"
+                                  title="下一章">框架基准测试</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/motivation.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>我们的目的<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>现在有很多各种各样的PHP框架，但他们没有一个像Phalcon一样（真的，在这点上请相信我）</p>
+<p>几乎所有的程序员都喜欢使用框架，这主要是因为框架提供了很多的功能，已经经过了大量的测试，因此保持代码DRY（不要重复造轮子）。然而，框架本身需要包含大量的文件来解释和执行实际应用中的每个请求，因此会降低应用程序的性能，影响用户体验。</p>
+<div class="section" id="the-question">
+<h2>The Question<a class="headerlink" href="#the-question" title="永久链接至标题">¶</a></h2>
+<p>为什么我们不能有这样一个框架，保持它的优势的同时，没有或者很少有缺点呢？</p>
+<p>这就是为什么Phalcon诞生了！</p>
+<p>在过去的几个月中，我们已经广泛地研究了PHP的行为，调查区域为显着优化（大或小）。
+通过Zend引擎的理解，我们设法消除不必要的验证，压缩的代码，进行优化和生成的
+低级别的解决方案，从而使Phalcon实现最大的性能。</p>
+</div>
+<div class="section" id="why">
+<h2>Why?<a class="headerlink" href="#why" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>The use of frameworks has become mandatory in professional development with PHP</li>
+<li>框架提供了结构化的理念，以轻松维护项目，编写更少的代码，使工作变得更有趣</li>
+</ul>
+</div>
+<div class="section" id="inner-workings-of-php">
+<h2>Inner workings of PHP?<a class="headerlink" href="#inner-workings-of-php" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>PHP是一种动态的和弱变量类型语言。每次一个二进制运算（例如，2+“2”），PHP就会检查操作数的类型来进行类型转换</li>
+<li>PHP是解释型语言。主要的缺点是性能上的损失</li>
+<li>每一个请求，它必须首先解释.</li>
+<li>如果不使用字节码缓存（如APC），则任何时间的任何一个请求它都会进行语法检查</li>
+</ul>
+</div>
+<div class="section" id="how-traditional-php-frameworks-work">
+<h2>How traditional PHP frameworks work?<a class="headerlink" href="#how-traditional-php-frameworks-work" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders</li>
+<li>Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)</li>
+<li>Continuous loading or interpreting is expensive and impacts performance</li>
+<li>The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made</li>
+</ul>
+</div>
+<div class="section" id="how-does-a-php-c-extension-work">
+<h2>How does a PHP C-extension work?<a class="headerlink" href="#how-does-a-php-c-extension-work" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>C extensions are loaded together with PHP one time on the web server&#8217;s daemon start process</li>
+<li>Classes and functions provided by the extension are ready to use for any application</li>
+<li>The code isn&#8217;t interpreted because is already compiled to a specific platform and processor</li>
+</ul>
+</div>
+<div class="section" id="how-does-phalcon-work">
+<h2>How does Phalcon work?<a class="headerlink" href="#how-does-phalcon-work" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>Components are loosely coupled. With Phalcon, nothing is imposed on you: you&#8217;re free to use the full framework, or just some parts of it as a glue components.</li>
+<li>Low-level optimizations provides the lowest overhead for MVC-based applications</li>
+<li>Interact with databases with maximum performance by using a C-language ORM for PHP</li>
+<li>Phalcon directly accesses internal PHP structures optimizing execution in that way as well</li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way to develop applications without be worrying about performance. Enjoy!</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="benchmark.html" title="框架基准测试"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome!"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

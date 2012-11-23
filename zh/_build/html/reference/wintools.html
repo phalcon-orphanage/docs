@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Phalcon Developer Tools on Windows &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="Phalcon Developer Tools" href="tools.html" />
+    <link rel="next" title="Phalcon Developer Tools on Mac OS X" href="mactools.html" />
+    <link rel="prev" title="Phalcon Developer Tools" href="tools.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="mactools.html" title="Phalcon Developer Tools on Mac OS X"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon Developer Tools"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="tools.html" accesskey="U">Phalcon Developer Tools</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Phalcon Developer Tools on Windows</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#download">Download</a><ul>
+<li><a class="reference internal" href="#adding-php-and-tools-to-your-system-path">Adding PHP and Tools to your system PATH</a></li>
+<li><a class="reference internal" href="#related-guides">Related Guides</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="tools.html"
+                                  title="上一章">Phalcon Developer Tools</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="mactools.html"
+                                  title="下一章">Phalcon Developer Tools on Mac OS X</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/wintools.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="phalcon-developer-tools-on-windows">
+<h1>Phalcon Developer Tools on Windows<a class="headerlink" href="#phalcon-developer-tools-on-windows" title="永久链接至标题">¶</a></h1>
+<p>These steps will guide you through the process of installing Phalcon Developer Tools for Windows.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="永久链接至标题">¶</a></h2>
+<p>The Phalcon PHP extension is required to run Phalcon Tools. If you haven&#8217;t installed it yet, please see the <a class="reference internal" href="install.html"><em>Installation</em></a> section for instructions.</p>
+</div>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="永久链接至标题">¶</a></h2>
+<p>You can download a cross platform package containing the developer tools from the <a class="reference external" href="http://phalconphp.com/download">Download</a> section. Also you can clone it from <a class="reference external" href="https://github.com/phalcon/phalcon-devtools">Github</a>.</p>
+<p>On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. <em>c:\phalcon-tools</em>. You will need this path in the steps below. Edit the file &#8220;phalcon.bat&#8221; by right clicking on the file and selecting &#8220;Edit&#8221;:</p>
+<div class="figure align-center">
+<img alt="../_images/path-0.png" src="../_images/path-0.png" />
+</div>
+<p>Change the path to the one you installed the Phalcon tools:</p>
+<div class="figure align-center">
+<img alt="../_images/path-01.png" src="../_images/path-01.png" />
+</div>
+<p>Save the changes.</p>
+<div class="section" id="adding-php-and-tools-to-your-system-path">
+<h3>Adding PHP and Tools to your system PATH<a class="headerlink" href="#adding-php-and-tools-to-your-system-path" title="永久链接至标题">¶</a></h3>
+<p>Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: <em>C:\wampbin\php\php5.3.10\php.exe</em>.</p>
+<p>From the Windows start menu, right mouse click on the &#8220;My Computer&#8221; icon and select &#8220;Properties&#8221;:</p>
+<div class="figure align-center">
+<img alt="../_images/path-1.png" src="../_images/path-1.png" />
+</div>
+<p>Click the &#8220;Advanced&#8221; tab and then the button &#8220;Environment Variables&#8221;:</p>
+<div class="figure align-center">
+<img alt="../_images/path-2.png" src="../_images/path-2.png" />
+</div>
+<p>At the bottom, look for the section &#8220;System variables&#8221; and edit the variable &#8220;Path&#8221;:</p>
+<div class="figure align-center">
+<img alt="../_images/path-3.png" src="../_images/path-3.png" />
+</div>
+<p>Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the &#8221;;&#8221; character to separate the differents paths in the variable:</p>
+<div class="figure align-center">
+<img alt="../_images/path-4.png" src="../_images/path-4.png" />
+</div>
+<p>Accept the changes made by clicking &#8220;OK&#8221; and close the dialogs opened. From the start menu click on the option &#8220;Run&#8221;. If you can&#8217;t find this option, press &#8220;Windows Key&#8221; + &#8220;R&#8221;.</p>
+<div class="figure align-center">
+<img alt="../_images/path-5.png" src="../_images/path-5.png" />
+</div>
+<p>Type &#8220;cmd&#8221; and press enter to open the windows command line utility:</p>
+<div class="figure align-center">
+<img alt="../_images/path-6.png" src="../_images/path-6.png" />
+</div>
+<p>Type the commands &#8220;php -v&#8221; and &#8220;phalcon&#8221; and you will see something like this:</p>
+<div class="figure align-center">
+<img alt="../_images/path-7.png" src="../_images/path-7.png" />
+</div>
+<p>Congratulations you now have Phalcon tools installed!</p>
+</div>
+<div class="section" id="related-guides">
+<h3>Related Guides<a class="headerlink" href="#related-guides" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="tools.html"><em>Using Developer Tools</em></a></li>
+<li><a class="reference internal" href="mactools.html"><em>Installation on OS X</em></a></li>
+<li><a class="reference internal" href="linuxtools.html"><em>Installation on Linux</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="mactools.html" title="Phalcon Developer Tools on Mac OS X"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon Developer Tools"
+             >上一页</a> |</li>
+          <li><a href="tools.html" >Phalcon Developer Tools</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

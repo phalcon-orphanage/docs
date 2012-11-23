@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Improving Performance with Cache &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Access Control Lists ACL" href="acl.html" />
+    <link rel="prev" title="Data Pagination" href="pagination.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="acl.html" title="Access Control Lists ACL"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="pagination.html" title="Data Pagination"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Improving Performance with Cache</a><ul>
+<li><a class="reference internal" href="#when-to-implement-cache">When to implement cache?</a></li>
+<li><a class="reference internal" href="#caching-behavior">Caching Behavior</a></li>
+<li><a class="reference internal" href="#caching-output-fragments">Caching Output Fragments</a></li>
+<li><a class="reference internal" href="#caching-arbitrary-data">Caching Arbitrary Data</a><ul>
+<li><a class="reference internal" href="#file-backend-example">File Backend Example</a></li>
+<li><a class="reference internal" href="#memcached-backend-example">Memcached Backend Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#querying-the-cache">Querying the cache</a></li>
+<li><a class="reference internal" href="#deleting-data-from-the-cache">Deleting data from the cache</a></li>
+<li><a class="reference internal" href="#checking-cache-existance">Checking cache existance</a></li>
+<li><a class="reference internal" href="#frontend-adapters">Frontend Adapters</a></li>
+<li><a class="reference internal" href="#backend-adapters">Backend Adapters</a><ul>
+<li><a class="reference internal" href="#file-backend-options">File Backend Options</a></li>
+<li><a class="reference internal" href="#memcached-backend-options">Memcached Backend Options</a></li>
+<li><a class="reference internal" href="#apc-backend-options">APC Backend Options</a></li>
+<li><a class="reference internal" href="#mongo-backend-options">Mongo Backend Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="pagination.html"
+                                  title="上一章">Data Pagination</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="acl.html"
+                                  title="下一章">Access Control Lists ACL</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/cache.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="improving-performance-with-cache">
+<h1>Improving Performance with Cache<a class="headerlink" href="#improving-performance-with-cache" title="永久链接至标题">¶</a></h1>
+<p>Phalcon provides the <a class="reference internal" href=""><em>Phalcon\Cache</em></a> class allowing faster access to frequently used or already processed data.
+<a class="reference internal" href=""><em>Phalcon\Cache</em></a> is written in C, achieving higher performance and reducing the overhead when getting items from the backends.
+This class uses an internal structure of frontend and backend components. Front-end components act as input sources or
+interfaces, while backend components offer storage options to the class.</p>
+<div class="section" id="when-to-implement-cache">
+<h2>When to implement cache?<a class="headerlink" href="#when-to-implement-cache" title="永久链接至标题">¶</a></h2>
+<p>Although this component is very fast, implementing it in cases that is not needed could lead to loss of performance than gain.
+We recommend you check this cases before use cache:</p>
+<ul class="simple">
+<li>You are making complex calculations that every time return the same result (changing infrequently)</li>
+<li>You are using a lot of helpers and the output generated is almost always the same</li>
+<li>You are accessing database data constantly and these data rarely change</li>
+</ul>
+<blockquote class="highlights">
+<div><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
+be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</div></blockquote>
+</div>
+<div class="section" id="caching-behavior">
+<h2>Caching Behavior<a class="headerlink" href="#caching-behavior" title="永久链接至标题">¶</a></h2>
+<p>The caching process is divided into 2 parts:</p>
+<ul class="simple">
+<li><strong>Frontend</strong>: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-</li>
+<li><strong>Backend</strong>: This part is responsible for communicating, writing/reading the data required by the frontend.</li>
+</ul>
+</div>
+<div class="section" id="caching-output-fragments">
+<h2>Caching Output Fragments<a class="headerlink" href="#caching-output-fragments" title="永久链接至标题">¶</a></h2>
+<p>An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured
+from the ob_* functions or the PHP output so that it can be saved in the cache. The following example demonstrates such usage.
+It receives the output generated by PHP and stores it into a file. The contents of the file are refreshed every 172800 seconds (2 days).</p>
+<p>The implementation of this caching mechanism allows us to gain performance by not executing the helper Phalcon\Tag::linkTo
+call every time this piece of code is called.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Create an Output frontend. Cache the files for 2 days</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Output</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">172800</span>
+<span class="p">));</span>
+
+<span class="c1">// Create the component that will cache from the &quot;Output&quot; to a &quot;File&quot; backend</span>
+<span class="c1">// Set the cache file directory - it&#39;s important to keep the &quot;/&quot; at the end of</span>
+<span class="c1">// the value for the folder</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\File</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cacheDir&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../app/cache/&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Get/Set the cache file to ../app/cache/my-cache.html</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">(</span><span class="s2">&quot;my-cache.html&quot;</span><span class="p">);</span>
+
+<span class="c1">// If $content is null then the content will be generated for the cache</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$content</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//Print date and time</span>
+    <span class="k">echo</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+
+    <span class="c1">//Generate a link to the sign-up action</span>
+    <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;user/signup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Sign Up&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;class&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;signup-button&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Store the output into the cache file</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+    <span class="c1">// Echo the cached output</span>
+    <span class="k">echo</span> <span class="nv">$content</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component
+transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user
+pre-compiled from a previous call, thus avoiding expensive operations.</p>
+</div>
+<div class="section" id="caching-arbitrary-data">
+<h2>Caching Arbitrary Data<a class="headerlink" href="#caching-arbitrary-data" title="永久链接至标题">¶</a></h2>
+<p>Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data,
+thus speeding up your application.</p>
+<div class="section" id="file-backend-example">
+<h3>File Backend Example<a class="headerlink" href="#file-backend-example" title="永久链接至标题">¶</a></h3>
+<p>One of the caching adapters is &#8216;File&#8217;. The only key area for this adapter is the location of where the cache files will be stored.
+This is controlled by the cacheDir option which <em>must</em> have a backslash at the end of it.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Cache the files for 2 days using a Data frontend</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">172800</span>
+<span class="p">));</span>
+
+<span class="c1">// Create the component that will cache &quot;Data&quot; to a &quot;File&quot; backend</span>
+<span class="c1">// Set the cache file directory - important to keep the &quot;/&quot; at the end of</span>
+<span class="c1">// of the value for the folder</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\File</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cacheDir&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../app/cache/&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Try to get cached records</span>
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;robots_order_id.cache&#39;</span><span class="p">;</span>
+<span class="nv">$robots</span>    <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// $robots is null due to cache expiration or data does not exist</span>
+    <span class="c1">// Make the database call and populate the variable</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;id&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Store it in the cache</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Use $robots :)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memcached-backend-example">
+<h3>Memcached Backend Example<a class="headerlink" href="#memcached-backend-example" title="永久链接至标题">¶</a></h3>
+<p>The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Cache data for one hour</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
+<span class="p">));</span>
+
+<span class="c1">// Create the component that will cache &quot;Data&quot; to a &quot;Memcached&quot; backend</span>
+<span class="c1">// Memcached connection settings</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Memcached</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Try to get cached records</span>
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;robots_order_id.cache&#39;</span><span class="p">;</span>
+<span class="nv">$robots</span>    <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// $robots is null due to cache expiration or data does not exist</span>
+    <span class="c1">// Make the database call and populate the variable</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;id&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Store it in the cache</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Use $robots :)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="querying-the-cache">
+<h2>Querying the cache<a class="headerlink" href="#querying-the-cache" title="永久链接至标题">¶</a></h2>
+<p>The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the
+actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does
+not exist, the get method will return null.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Retrieve products by key &quot;myProducts&quot;</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;myProducts&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you want to know which keys are stored in the cache you could call the queryKeys method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Query all keys used in the cache</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$keys</span> <span class="k">as</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="s2">&quot; Data=&quot;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//Query keys in the cache that begins with &quot;my-prefix&quot;</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">(</span><span class="s2">&quot;my-prefix&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-data-from-the-cache">
+<h2>Deleting data from the cache<a class="headerlink" href="#deleting-data-from-the-cache" title="永久链接至标题">¶</a></h2>
+<p>There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data).
+The only requirement is to know the key that the data has been stored with.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Delete an item with a specific key</span>
+<span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
+
+<span class="c1">// Delete all items from the cache</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$keys</span> <span class="k">as</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking-cache-existance">
+<h2>Checking cache existance<a class="headerlink" href="#checking-cache-existance" title="永久链接至标题">¶</a></h2>
+<p>It is possible to check if cache is already exists with given key.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Cache does not exists!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="frontend-adapters">
+<h2>Frontend Adapters<a class="headerlink" href="#frontend-adapters" title="永久链接至标题">¶</a></h2>
+<p>The available frontend adapters that are used as interfaces or input sources to the cache are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="59%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Adapter</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Output</td>
+<td>Read input data from standard PHP output</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Output.html"><em>Phalcon\Cache\Frontend\Output</em></a></td>
+</tr>
+<tr class="row-odd"><td>Data</td>
+<td>It&#8217;s used to cache any kind of PHP data (big arrays, objects, text, etc). The data is serialized before stored in the backend.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Data.html"><em>Phalcon\Cache\Frontend\Data</em></a></td>
+</tr>
+<tr class="row-even"><td>Base64</td>
+<td>It&#8217;s used to cache binary data. The data is serialized using base64_encode before be stored in the backend.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Base64.html"><em>Phalcon\Cache\Frontend\Base64</em></a></td>
+</tr>
+<tr class="row-odd"><td>None</td>
+<td>It&#8217;s used to cache any kind of PHP data without serializing them.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_None.html"><em>Phalcon\Cache\Frontend\Data</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="backend-adapters">
+<h2>Backend Adapters<a class="headerlink" href="#backend-adapters" title="永久链接至标题">¶</a></h2>
+<p>The backend adapters available to store cache data are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="27%" />
+<col width="7%" />
+<col width="12%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Adapter</th>
+<th class="head">Description</th>
+<th class="head">Info</th>
+<th class="head">Required Extensions</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>File</td>
+<td>Stores data to local plain files</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_File.html"><em>Phalcon\Cache\Backend\File</em></a></td>
+</tr>
+<tr class="row-odd"><td>Memcached</td>
+<td>Stores data to a memcached server</td>
+<td><a class="reference external" href="http://php.net/manual/en/book.apc.php">Memcached</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/memcache">memcache</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memcache.html"><em>Phalcon\Cache\Backend\Memcache</em></a></td>
+</tr>
+<tr class="row-even"><td>APC</td>
+<td>Stores data to the Alternative PHP Cache (APC)</td>
+<td><a class="reference external" href="http://php.net/manual/en/book.apc.php">APC</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/APC">APC extension</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Apc.html"><em>Phalcon\Cache\Backend\Apc</em></a></td>
+</tr>
+<tr class="row-odd"><td>Mongo</td>
+<td>Stores data to Mongo Database</td>
+<td><a class="reference external" href="http://mongodb.org/">MongoDb</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/mongo">Mongo</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Mongo.html"><em>Phalcon\Cache\Backend\Mongo</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="file-backend-options">
+<h3>File Backend Options<a class="headerlink" href="#file-backend-options" title="永久链接至标题">¶</a></h3>
+<p>This backend will store cached content into files in the local server. The available options for this backend are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cacheDir</td>
+<td>A writable directory on which cached files will be placed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="memcached-backend-options">
+<h3>Memcached Backend Options<a class="headerlink" href="#memcached-backend-options" title="永久链接至标题">¶</a></h3>
+<p>This backend will store cached content on a memcached server. The available options for this backend are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>host</td>
+<td>memcached host</td>
+</tr>
+<tr class="row-odd"><td>port</td>
+<td>memcached port</td>
+</tr>
+<tr class="row-even"><td>persistent</td>
+<td>create a persitent connection to memcached?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="apc-backend-options">
+<h3>APC Backend Options<a class="headerlink" href="#apc-backend-options" title="永久链接至标题">¶</a></h3>
+<p>This backend will store cached content on Alternative PHP Cache (<a class="reference external" href="http://php.net/manual/en/book.apc.php">APC</a>). This cache backend does not require any additional configuration options.</p>
+</div>
+<div class="section" id="mongo-backend-options">
+<h3>Mongo Backend Options<a class="headerlink" href="#mongo-backend-options" title="永久链接至标题">¶</a></h3>
+<p>This backend will store cached content on a MongoDB server. The available options for this backend are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>server</td>
+<td>A MongoDB connection string</td>
+</tr>
+<tr class="row-odd"><td>db</td>
+<td>Mongo database name</td>
+</tr>
+<tr class="row-even"><td>collection</td>
+<td>Mongo collection in the database</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="acl.html" title="Access Control Lists ACL"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="pagination.html" title="Data Pagination"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Dispatcher &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Escaper" href="Phalcon_Escaper.html" />
+    <link rel="prev" title="Class Phalcon\Db\Result\Pdo" href="Phalcon_Db_Result_Pdo.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Escaper.html" title="Class Phalcon\Escaper"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Result_Pdo.html" title="Class Phalcon\Db\Result\Pdo"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Dispatcher</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Db_Result_Pdo.html"
+                                  title="上一章">Class <strong>Phalcon\Db\Result\Pdo</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Escaper.html"
+                                  title="下一章">Class <strong>Phalcon\Escaper</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Dispatcher.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-dispatcher">
+<h1>Class <strong>Phalcon\Dispatcher</strong><a class="headerlink" href="#class-phalcon-dispatcher" title="永久链接至标题">¶</a></h1>
+<p>This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\CLI\Dispatcher</p>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>EXCEPTION_NO_DI</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_CYCLIC_ROUTING</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_HANDLER_NOT_FOUND</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_INVALID_PARAMS</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_ACTION_NOT_FOUND</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>__construct</strong> ()</p>
+<p>...</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector)</p>
+<p>Sets the dependency injector</p>
+<p>public <a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a>  <strong>getDI</strong> ()</p>
+<p>Returns the internal dependency injector</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a> $eventsManager)</p>
+<p>Sets the events manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>  <strong>getEventsManager</strong> ()</p>
+<p>Returns the internal event manager</p>
+<p>public  <strong>setActionSuffix</strong> (<em>string</em> $actionSuffix)</p>
+<p>Sets the default action suffix</p>
+<p>public  <strong>setDefaultNamespace</strong> (<em>string</em> $namespace)</p>
+<p>Sets the default namespace</p>
+<p>public  <strong>setDefaultAction</strong> (<em>string</em> $actionName)</p>
+<p>Sets the default action name</p>
+<p>public  <strong>setActionName</strong> (<em>string</em> $actionName)</p>
+<p>Sets the action name to be dispatched</p>
+<p>public <em>string</em>  <strong>getActionName</strong> ()</p>
+<p>Gets last dispatched action name</p>
+<p>public  <strong>setParams</strong> (<em>array</em> $params)</p>
+<p>Sets action params to be dispatched</p>
+<p>public <em>array</em>  <strong>getParams</strong> ()</p>
+<p>Gets action params</p>
+<p>public  <strong>setParam</strong> (<em>mixed</em> $param, <em>mixed</em> $value)</p>
+<p>Set a param by its name or numeric index</p>
+<p>public <em>mixed</em>  <strong>getParam</strong> (<em>mixed</em> $param, <em>string|array</em> $filters)</p>
+<p>Gets a param by its name or numeric index</p>
+<p>public <em>boolean</em>  <strong>isFinished</strong> ()</p>
+<p>Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach</p>
+<p>public <em>mixed</em>  <strong>getReturnedValue</strong> ()</p>
+<p>Returns value returned by the lastest dispatched action</p>
+<p>public <em>object</em>  <strong>dispatch</strong> ()</p>
+<p>Dispatches a handle action taking into account the routing parameters</p>
+<p>public  <strong>forward</strong> (<em>array</em> $forward)</p>
+<p>Forwards the execution flow to another controller/action</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Escaper.html" title="Class Phalcon\Escaper"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Result_Pdo.html" title="Class Phalcon\Db\Result\Pdo"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

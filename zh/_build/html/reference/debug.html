@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Debugging Applications &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Phalcon Developer Tools" href="tools.html" />
+    <link rel="prev" title="Database Migrations" href="migrations.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon Developer Tools"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="migrations.html" title="Database Migrations"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Debugging Applications</a><ul>
+<li><a class="reference internal" href="#catching-exceptions">Catching Exceptions</a></li>
+<li><a class="reference internal" href="#reflection-and-instrospection">Reflection and Instrospection</a></li>
+<li><a class="reference internal" href="#using-xdebug">Using XDebug</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="migrations.html"
+                                  title="上一章">Database Migrations</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="tools.html"
+                                  title="下一章">Phalcon Developer Tools</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/debug.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="debugging-applications">
+<h1>Debugging Applications<a class="headerlink" href="#debugging-applications" title="永久链接至标题">¶</a></h1>
+<p>PHP offers tools to debug applications with notices, warnings, errors and exceptions. The <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a> offers information such as the file, line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.</p>
+<p>Despite being written in C, Phalcon runs methods in the PHP userland, providing the debug capability that any other application or framework written in PHP has.</p>
+<div class="section" id="catching-exceptions">
+<h2>Catching Exceptions<a class="headerlink" href="#catching-exceptions" title="永久链接至标题">¶</a></h2>
+<p>Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">//... some phalcon code</span>
+
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Phalcon\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Any exception thrown within the block is captured in the variable $e. A <a class="reference internal" href="../api/Phalcon_Exception.html"><em>PhalconException</em></a> extends the PHP <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a> and is used to understand whether the exception came from Phalcon or PHP itself.</p>
+<p>All exceptions generated by PHP are based on the <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a>, and have at least the following elements:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Exception</span>
+<span class="p">{</span>
+
+    <span class="cm">/* Properties */</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">int</span> <span class="nv">$code</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$file</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">int</span> <span class="nv">$line</span><span class="p">;</span>
+
+    <span class="cm">/* Methods */</span>
+    <span class="k">public</span> <span class="nx">__construct</span> <span class="p">([</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">[,</span> <span class="nx">int</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">[,</span> <span class="nx">Exception</span> <span class="nv">$previous</span> <span class="o">=</span> <span class="k">NULL</span> <span class="p">]]])</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getMessage</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">Exception</span> <span class="nx">getPrevious</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">mixed</span> <span class="nx">getCode</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getFile</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">int</span> <span class="nx">getLine</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="k">array</span> <span class="nx">getTrace</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">public</span> <span class="nx">string</span> <span class="nx">getTraceAsString</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nx">__toString</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+    <span class="k">final</span> <span class="k">private</span> <span class="nx">void</span> <span class="nx">__clone</span> <span class="p">(</span> <span class="nx">void</span> <span class="p">)</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Retrieving information from <a class="reference internal" href="../api/Phalcon_Exception.html"><em>PhalconException</em></a> is the same as PHP&#8217;s <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">//... app code ...</span>
+
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\Phalcon\Exception</span> <span class="nv">$e</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nv">$e</span><span class="p">),</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot; File=&quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot; Line=&quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getTraceAsString</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It&#8217;s therefore easy to find which file and line of the application&#8217;s code generated the exception, as well as the components involved in generating the exception.</p>
+<div class="highlight-html"><div class="highlight"><pre>PDOException: SQLSTATE[28000] [1045] Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password: NO)
+ File=/Applications/MAMP/htdocs/invo/public/index.php
+ Line=74
+#0 [internal function]: PDO-&gt;__construct(&#39;mysql:host=loca...&#39;, &#39;root&#39;, &#39;&#39;, Array)
+#1 [internal function]: Phalcon\Db\Adapter\Pdo-&gt;connect(Array)
+#2 /Applications/MAMP/htdocs/invo/public/index.php(74): Phalcon\Db\Adapter\Pdo-&gt;__construct(Array)
+#3 [internal function]: {closure}()
+#4 [internal function]: call_user_func_array(Object(Closure), Array)
+#5 [internal function]: Phalcon\DI-&gt;_factory(Object(Closure), Array)
+#6 [internal function]: Phalcon\DI-&gt;get(&#39;db&#39;, Array)
+#7 [internal function]: Phalcon\DI-&gt;getShared(&#39;db&#39;)
+#8 [internal function]: Phalcon\Mvc\Model-&gt;getConnection()
+#9 [internal function]: Phalcon\Mvc\Model::_getOrCreateResultset(&#39;Users&#39;, Array, true)
+#10 /Applications/MAMP/htdocs/invo/app/controllers/SessionController.php(83): Phalcon\Mvc\Model::findFirst(&#39;email=&#39;demo@pha...&#39;)
+#11 [internal function]: SessionController-&gt;startAction()
+#12 [internal function]: call_user_func_array(Array, Array)
+#13 [internal function]: Phalcon\Mvc\Dispatcher-&gt;dispatch()
+#14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application-&gt;handle()
+#15 {main}
+</pre></div>
+</div>
+<p>As you can see from the above output the Phalcon&#8217;s classes and methods are displayed just like any other component, and even show the parameters that were invoked in every call. The method <a class="reference external" href="http://www.php.net/manual/en/exception.gettrace.php">Exception::getTrace</a> provides additional information if needed.</p>
+</div>
+<div class="section" id="reflection-and-instrospection">
+<h2>Reflection and Instrospection<a class="headerlink" href="#reflection-and-instrospection" title="永久链接至标题">¶</a></h2>
+<p>Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It&#8217;s possible to use the Reflection API or simply print any object to show how is its internal state:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$router</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>It&#8217;s easy to know the internal state of any object. The above example prints the following:</p>
+<div class="highlight-html"><div class="highlight"><pre>Phalcon\Mvc\Router Object
+(
+    [_dependencyInjector:protected] =&gt;
+    [_module:protected] =&gt;
+    [_controller:protected] =&gt;
+    [_action:protected] =&gt;
+    [_params:protected] =&gt; Array
+        (
+        )
+    [_routes:protected] =&gt; Array
+        (
+            [0] =&gt; Phalcon\Mvc\Router\Route Object
+                (
+                    [_pattern:protected] =&gt; #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                    [_compiledPattern:protected] =&gt; #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                    [_paths:protected] =&gt; Array
+                        (
+                            [controller] =&gt; 1
+                        )
+
+                    [_methods:protected] =&gt;
+                    [_id:protected] =&gt; 0
+                    [_name:protected] =&gt;
+                )
+
+            [1] =&gt; Phalcon\Mvc\Router\Route Object
+                (
+                    [_pattern:protected] =&gt; #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                    [_compiledPattern:protected] =&gt; #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                    [_paths:protected] =&gt; Array
+                        (
+                            [controller] =&gt; 1
+                            [action] =&gt; 2
+                            [params] =&gt; 3
+                        )
+                    [_methods:protected] =&gt;
+                    [_id:protected] =&gt; 1
+                    [_name:protected] =&gt;
+                )
+        )
+    [_matchedRoute:protected] =&gt;
+    [_matches:protected] =&gt;
+    [_wasMatched:protected] =&gt;
+    [_defaultModule:protected] =&gt;
+    [_defaultController:protected] =&gt;
+    [_defaultAction:protected] =&gt;
+    [_defaultParams:protected] =&gt; Array
+        (
+        )
+)
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-xdebug">
+<h2>Using XDebug<a class="headerlink" href="#using-xdebug" title="永久链接至标题">¶</a></h2>
+<p><a class="reference external" href="http://xdebug.org">XDebug</a> is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.</p>
+<p>Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages. The following example implements xdebug_print_function_stack to stop the execution and generate a backtrace:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Request variables from html form</span>
+        <span class="nv">$name</span>  <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">);</span>
+        <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Stop execution and show a backtrace</span>
+        <span class="k">return</span> <span class="nx">xdebug_print_function_stack</span><span class="p">(</span><span class="s2">&quot;stop here!&quot;</span><span class="p">);</span>
+
+        <span class="nv">$user</span>        <span class="o">=</span> <span class="k">new</span> <span class="nx">Users</span><span class="p">();</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span>  <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="nv">$email</span><span class="p">;</span>
+
+        <span class="c1">// Store and check for errors</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this instance, Xdebug will also show us the variables in the local scope, and a backtrace as well:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php on line 19</span>
+
+<span class="x">Call Stack:</span>
+<span class="x">    0.0383     654600   1. {main}() /Applications/MAMP/htdocs/tutorial/public/index.php:0</span>
+<span class="x">    0.0392     663864   2. Phalcon\Mvc\Application-&gt;handle() /Applications/MAMP/htdocs/tutorial/public/index.php:37</span>
+<span class="x">    0.0418     738848   3. SignupController-&gt;registerAction() /Applications/MAMP/htdocs/tutorial/public/index.php:0</span>
+<span class="x">    0.0419     740144   4. xdebug_print_function_stack() /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19</span>
+</pre></div>
+</div>
+<p>Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the <a class="reference external" href="http://xdebug.org/docs">XDebug documentation</a> for more information.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon Developer Tools"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="migrations.html" title="Database Migrations"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

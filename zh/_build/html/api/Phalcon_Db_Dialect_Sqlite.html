@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Db\Dialect\Sqlite &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Db\Exception" href="Phalcon_Db_Exception.html" />
+    <link rel="prev" title="Class Phalcon\Db\Dialect\Postgresql" href="Phalcon_Db_Dialect_Postgresql.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Db_Exception.html" title="Class Phalcon\Db\Exception"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Dialect_Postgresql.html" title="Class Phalcon\Db\Dialect\Postgresql"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Db\Dialect\Sqlite</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Db_Dialect_Postgresql.html"
+                                  title="上一章">Class <strong>Phalcon\Db\Dialect\Postgresql</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Db_Exception.html"
+                                  title="下一章">Class <strong>Phalcon\Db\Exception</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Db_Dialect_Sqlite.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-db-dialect-sqlite">
+<h1>Class <strong>Phalcon\Db\Dialect\Sqlite</strong><a class="headerlink" href="#class-phalcon-db-dialect-sqlite" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Generates database specific SQL for the Sqlite RBDM</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public <em>string</em>  <strong>getColumnList</strong> (<em>array</em> $columnList)</p>
+<p>Gets a list of columns</p>
+<p>public  <strong>getColumnDefinition</strong> (<a class="reference internal" href="Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a> $column)</p>
+<p>Gets the column name in Sqlite</p>
+<p>public <em>string</em>  <strong>addColumn</strong> ()</p>
+<p>Generates SQL to add a column to a table</p>
+<p>public <em>string</em>  <strong>modifyColumn</strong> ()</p>
+<p>Generates SQL to modify a column in a table</p>
+<p>public <em>string</em>  <strong>dropColumn</strong> ()</p>
+<p>Generates SQL to delete a column from a table</p>
+<p>public <em>string</em>  <strong>addIndex</strong> ()</p>
+<p>Generates SQL to add an index to a table</p>
+<p>public <em>string</em>  <strong>dropIndex</strong> ()</p>
+<p>Generates SQL to delete an index from a table</p>
+<p>public <em>string</em>  <strong>addPrimaryKey</strong> ()</p>
+<p>Generates SQL to add the primary key to a table</p>
+<p>public <em>string</em>  <strong>dropPrimaryKey</strong> ()</p>
+<p>Generates SQL to delete primary key from a table</p>
+<p>public <em>string</em>  <strong>addForeignKey</strong> ()</p>
+<p>Generates SQL to add an index to a table</p>
+<p>public <em>string</em>  <strong>dropForeignKey</strong> ()</p>
+<p>Generates SQL to delete a foreign key from a table</p>
+<p>protected <em>array</em>  <strong>_getTableOptions</strong> ()</p>
+<p>Generates SQL to add the table creation options</p>
+<p>public <em>string</em>  <strong>createTable</strong> ()</p>
+<p>Generates SQL to create a table in PostgreSQL</p>
+<p>public <em>boolean</em>  <strong>dropTable</strong> (<em>string</em> $tableName, <em>string</em> $schemaName, <em>boolean</em> $ifExists)</p>
+<p>Generates SQL to drop a table</p>
+<p>public <em>string</em>  <strong>tableExists</strong> (<em>string</em> $tableName, <em>string</em> $schemaName)</p>
+<p>Generates SQL checking for the existence of a schema.table &lt;code&gt;echo $dialect-&gt;tableExists(&#8220;posts&#8221;, &#8220;blog&#8221;) &lt;code&gt;echo $dialect-&gt;tableExists(&#8220;posts&#8221;)</p>
+<p>public <em>string</em>  <strong>describeColumns</strong> (<em>string</em> $table, <em>string</em> $schema)</p>
+<p>Generates a SQL describing a table &lt;code&gt;print_r($dialect-&gt;describeColumns(&#8220;posts&#8221;) ?&gt;</p>
+<p>public <em>array</em>  <strong>listTables</strong> (<em>string</em> $schemaName)</p>
+<p>List all tables on database &lt;code&gt;print_r($dialect-&gt;listTables(&#8220;blog&#8221;) ?&gt;</p>
+<p>public <em>string</em>  <strong>describeIndexes</strong> (<em>string</em> $table, <em>string</em> $schema)</p>
+<p>Generates SQL to query indexes on a table</p>
+<p>public <em>string</em>  <strong>describeIndex</strong> (<em>string</em> $indexName)</p>
+<p>Generates SQL to query indexes detail on a table</p>
+<p>public <em>string</em>  <strong>describeReferences</strong> (<em>string</em> $table, <em>string</em> $schema)</p>
+<p>Generates SQL to query foreign keys on a table</p>
+<p>public <em>string</em>  <strong>tableOptions</strong> (<em>string</em> $table, <em>string</em> $schema)</p>
+<p>Generates the SQL to describe the table creation options</p>
+<p>public <em>string</em>  <strong>limit</strong> (<em>string</em> $sqlQuery, <em>int</em> $number) inherited from Phalcon\Db\Dialect</p>
+<p>Generates the SQL for LIMIT clause</p>
+<p>public <em>string</em>  <strong>forUpdate</strong> (<em>string</em> $sqlQuery) inherited from Phalcon\Db\Dialect</p>
+<p>Returns a SQL modified with a FOR UPDATE clause</p>
+<p>public <em>string</em>  <strong>sharedLock</strong> (<em>string</em> $sqlQuery) inherited from Phalcon\Db\Dialect</p>
+<p>Returns a SQL modified with a LOCK IN SHARE MODE clause</p>
+<p>public <em>string</em>  <strong>select</strong> (<em>array</em> $definition) inherited from Phalcon\Db\Dialect</p>
+<p>Builds a SELECT statement</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Db_Exception.html" title="Class Phalcon\Db\Exception"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Dialect_Postgresql.html" title="Class Phalcon\Db\Dialect\Postgresql"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

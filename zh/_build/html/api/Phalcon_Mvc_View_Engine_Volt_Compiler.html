@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\View\Engine\Volt\Compiler &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Mvc\View\Exception" href="Phalcon_Mvc_View_Exception.html" />
+    <link rel="prev" title="Class Phalcon\Mvc\View\Engine\Volt" href="Phalcon_Mvc_View_Engine_Volt.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Exception.html" title="Class Phalcon\Mvc\View\Exception"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Engine_Volt.html" title="Class Phalcon\Mvc\View\Engine\Volt"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\View\Engine\Volt\Compiler</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_View_Engine_Volt.html"
+                                  title="上一章">Class <strong>Phalcon\Mvc\View\Engine\Volt</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_View_Exception.html"
+                                  title="下一章">Class <strong>Phalcon\Mvc\View\Exception</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Mvc_View_Engine_Volt_Compiler.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-mvc-view-engine-volt-compiler">
+<h1>Class <strong>Phalcon\Mvc\View\Engine\Volt\Compiler</strong><a class="headerlink" href="#class-phalcon-mvc-view-engine-volt-compiler" title="永久链接至标题">¶</a></h1>
+<p>This class reads and compiles volt templates into PHP plain code</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>setDI</strong> (<em>unknown</em> $di)</p>
+<p>...</p>
+<p>public  <strong>getDI</strong> ()</p>
+<p>...</p>
+<p>protected  <strong>_functionCall</strong> ()</p>
+<p>Resolves function intermediate code into PHP function calls</p>
+<p>protected  <strong>_filter</strong> ()</p>
+<p>Resolves filter intermediate code into PHP function calls</p>
+<p>public  <strong>_expression</strong> (<em>array</em> $expr, <em>bool</em> $extendsMode, <em>bool</em> $prependDollar)</p>
+<p>Resolves an expression node in an AST volt tree</p>
+<p>protected <em>string</em>  <strong>_statementList</strong> ()</p>
+<p>Traverses a statement list compiling each of its nodes</p>
+<p>protected <em>string</em>  <strong>_compileSource</strong> ()</p>
+<p>Compiles a Volt source code returning a PHP plain version</p>
+<p>public <em>string</em>  <strong>compileString</strong> (<em>string</em> $viewCode, <em>boolean</em> $extendsMode)</p>
+<p>Compiles a template in a string</p>
+<p>public  <strong>compile</strong> (<em>string</em> $path, <em>string</em> $compiledPath)</p>
+<p>Compiles a template into a file</p>
+<p>public <em>array</em>  <strong>parse</strong> (<em>string</em> $viewCode)</p>
+<p>Parses a Volt template returning its intermediate representation</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Exception.html" title="Class Phalcon\Mvc\View\Exception"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Engine_Volt.html" title="Class Phalcon\Mvc\View\Engine\Volt"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

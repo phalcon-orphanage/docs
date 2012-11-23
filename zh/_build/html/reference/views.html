@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Views &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="View Helpers" href="tags.html" />
+    <link rel="prev" title="ODM (Object-Document Mapper)" href="odm.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="tags.html" title="View Helpers"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="odm.html" title="ODM (Object-Document Mapper)"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Using Views</a><ul>
+<li><a class="reference internal" href="#integrating-views-with-controllers">Integrating Views with Controllers</a></li>
+<li><a class="reference internal" href="#using-templates">Using Templates</a></li>
+<li><a class="reference internal" href="#using-partials">Using Partials</a></li>
+<li><a class="reference internal" href="#transfer-values-from-the-controller-to-views">Transfer values from the controller to views</a></li>
+<li><a class="reference internal" href="#control-rendering-levels">Control Rendering Levels</a></li>
+<li><a class="reference internal" href="#using-models-in-the-view-layer">Using models in the view layer</a></li>
+<li><a class="reference internal" href="#picking-views">Picking Views</a></li>
+<li><a class="reference internal" href="#caching-view-fragments">Caching View Fragments</a></li>
+<li><a class="reference internal" href="#disabling-the-view">Disabling the view</a></li>
+<li><a class="reference internal" href="#template-engines">Template Engines</a><ul>
+<li><a class="reference internal" href="#creating-your-own-template-engine-adapter">Creating your own Template Engine Adapter</a></li>
+<li><a class="reference internal" href="#changing-the-template-engine">Changing the Template Engine</a></li>
+<li><a class="reference internal" href="#using-mustache">Using Mustache</a></li>
+<li><a class="reference internal" href="#using-twig">Using Twig</a></li>
+<li><a class="reference internal" href="#using-smarty">Using Smarty</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#injecting-services-in-view">Injecting services in View</a></li>
+<li><a class="reference internal" href="#stand-alone-component">Stand-Alone Component</a></li>
+<li><a class="reference internal" href="#view-events">View Events</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="odm.html"
+                                  title="上一章">ODM (Object-Document Mapper)</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="tags.html"
+                                  title="下一章">View Helpers</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/views.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="using-views">
+<h1>Using Views<a class="headerlink" href="#using-views" title="永久链接至标题">¶</a></h1>
+<p>Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the
+presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.</p>
+<p>The <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> is responsible for the managing the view layer of your MVC application.</p>
+<p>A hierarchy of files is supported by the component. This hierarchy allows for common layout points (commonly used views), as well as controller
+named folders defining respective view templates.</p>
+<div class="section" id="integrating-views-with-controllers">
+<h2>Integrating Views with Controllers<a class="headerlink" href="#integrating-views-with-controllers" title="永久链接至标题">¶</a></h2>
+<p>Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
+will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
+executed. For instance, if a request is made to the URL <em>http://127.0.0.1/blog/posts/show/301</em>, Phalcon will parse the URL as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="63%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Server Address</td>
+<td>127.0.0.1</td>
+</tr>
+<tr class="row-even"><td>Phalcon Directory</td>
+<td>blog</td>
+</tr>
+<tr class="row-odd"><td>Controller</td>
+<td>posts</td>
+</tr>
+<tr class="row-even"><td>Action</td>
+<td>show</td>
+</tr>
+<tr class="row-odd"><td>Parameter</td>
+<td>301</td>
+</tr>
+</tbody>
+</table>
+<p>The dispatcher will look for a &#8220;PostsController&#8221; and its action &#8220;showAction&#8221;. A simple controller file for this example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$postId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Pass the $postId parameter to the view</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;postId&quot;</span><span class="p">,</span> <span class="nv">$postId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
+how to pass the $postId parameter to the respective view template.</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> uses PHP itself as the template engine, therefore views should have the .phtml extension.
+If the views directory is  <em>app/views</em> then view component will find automatically for these 3 view files.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="12%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">File</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Action View</td>
+<td>app/views/posts/show.phtml</td>
+<td>This is the view related to the action. It only will be shown when the &#8220;show&#8221; action was executed.</td>
+</tr>
+<tr class="row-odd"><td>Controller Layout</td>
+<td>app/views/layouts/posts.phtml</td>
+<td>This is the view related to the controller. It only will be shown for every action executed within the controller &#8220;posts&#8221;. All the code implemented in the layout will be reused for all the actions in this controller.</td>
+</tr>
+<tr class="row-even"><td>Main Layout</td>
+<td>app/views/index.phtml</td>
+<td>This is main action it will be shown for every controller or action executed within the application.</td>
+</tr>
+</tbody>
+</table>
+<p>You are not required to implement all of the files mentioned above. <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> will simply move to the
+next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/posts/show.phtml --&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>This is show view!<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>I have received the parameter <span class="cp">&lt;?php</span> <span class="nv">$postId</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/layouts/posts.phtml --&gt;</span>
+
+<span class="nt">&lt;h2&gt;</span>This is the &quot;posts&quot; controller layout!<span class="nt">&lt;/h2&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">()</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/index.phtml --&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Example<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="nt">&lt;h1&gt;</span>This is main layout!<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">()</span> <span class="cp">?&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Note the lines where the method <em>$this-&gt;getContent()</em> was called. This method instructs <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a>
+on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:</p>
+<div class="figure align-center">
+<img alt="../_images/views-1.png" src="../_images/views-1.png" />
+</div>
+<p>The generated HTML by the request will be:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/index.phtml --&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Example<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="nt">&lt;h1&gt;</span>This is main layout!<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="c">&lt;!-- app/views/layouts/posts.phtml --&gt;</span>
+
+        <span class="nt">&lt;h2&gt;</span>This is the &quot;posts&quot; controller layout!<span class="nt">&lt;/h2&gt;</span>
+
+        <span class="c">&lt;!-- app/views/posts/show.phtml --&gt;</span>
+
+        <span class="nt">&lt;h3&gt;</span>This is show view!<span class="nt">&lt;/h3&gt;</span>
+
+        <span class="nt">&lt;p&gt;</span>I have received the parameter 101<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-templates">
+<h2>Using Templates<a class="headerlink" href="#using-templates" title="永久链接至标题">¶</a></h2>
+<p>Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setTemplateAfter</span><span class="p">(</span><span class="s1">&#39;common&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">lastAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">&quot;These are the latest posts&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/index.phtml --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Blog&#39;s title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">()</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/layouts/common.phtml --&gt;</span>
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/articles&quot;</span><span class="nt">&gt;</span>Articles<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/contact&quot;</span><span class="nt">&gt;</span>Contact us<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/layouts/posts.phtml --&gt;</span>
+
+<span class="nt">&lt;h1&gt;</span>Blog Title<span class="nt">&lt;/h1&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">()</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/layouts/posts/last.phtml --&gt;</span>
+
+<span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>This is a title<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is the post content<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/article&gt;</span>
+
+<span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>This is another title<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This is another post content<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/article&gt;</span>
+</pre></div>
+</div>
+<p>The final output will be the following:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/index.phtml --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Blog&#39;s title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="c">&lt;!-- app/views/layouts/common.phtml --&gt;</span>
+
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/articles&quot;</span><span class="nt">&gt;</span>Articles<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/contact&quot;</span><span class="nt">&gt;</span>Contact us<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+
+            <span class="c">&lt;!-- app/views/layouts/posts.phtml --&gt;</span>
+
+            <span class="nt">&lt;h1&gt;</span>Blog Title<span class="nt">&lt;/h1&gt;</span>
+
+            <span class="c">&lt;!-- app/views/layouts/posts/last.phtml --&gt;</span>
+
+            <span class="nt">&lt;article&gt;</span>
+                <span class="nt">&lt;h2&gt;</span>This is a title<span class="nt">&lt;/h2&gt;</span>
+                <span class="nt">&lt;p&gt;</span>This is the post content<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/article&gt;</span>
+
+            <span class="nt">&lt;article&gt;</span>
+                <span class="nt">&lt;h2&gt;</span>This is another title<span class="nt">&lt;/h2&gt;</span>
+                <span class="nt">&lt;p&gt;</span>This is another post content<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/article&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-partials">
+<h2>Using Partials<a class="headerlink" href="#using-partials" title="永久链接至标题">¶</a></h2>
+<p>Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
+parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.</p>
+<p>One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code can be
+more easily understood. For example, you might have a view that looks like this:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s2">&quot;shared/ad_banner&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+<span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Check out our specials for robots:<span class="nt">&lt;/p&gt;</span>
+...
+
+<span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s2">&quot;shared/footer&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transfer-values-from-the-controller-to-views">
+<h2>Transfer values from the controller to views<a class="headerlink" href="#transfer-values-from-the-controller-to-views" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> is available in each controller using the view variable ($this-&gt;view). You can use that
+object to set variables directly to the view from a controller action by using the setVar() method.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//Pass all the posts to the views</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="nx">Posts</span><span class="o">:</span><span class="nx">find</span><span class="p">());</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A variable with the name of the first parameter of setView() will be created in the view, ready to be used. The variable can be of any type,
+from a simple string, integer etc. variable to a more complex structure such as array, collection etc.</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+<span class="cp">&lt;?php</span>
+
+  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$posts</span> <span class="k">as</span> <span class="nv">$post</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;&quot;</span><span class="p">,</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">,</span> <span class="s2">&quot;&lt;/h1&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="control-rendering-levels">
+<h2>Control Rendering Levels<a class="headerlink" href="#control-rendering-levels" title="永久链接至标题">¶</a></h2>
+<p>As seen above, <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> supports a view hierarchy. You might need to control the level of rendering
+produced by the view component. The method PhalconMvc\View::setRenderLevel() offers this functionality.</p>
+<p>This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// This is an Ajax response so don&#39;t generate any kind of view</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span><span class="nx">\Phalcon\Mvc\View</span><span class="o">::</span><span class="na">LEVEL_NO_RENDER</span><span class="p">);</span>
+
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$postId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Shows only the view related to the action</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span><span class="nx">\Phalcon\Mvc\View</span><span class="o">::</span><span class="na">LEVEL_ACTION_VIEW</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The available render levels are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Class Constant</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>LEVEL_NO_RENDER</td>
+<td>Indicates to avoid generating any kind of presentation.</td>
+</tr>
+<tr class="row-odd"><td>LEVEL_ACTION_VIEW</td>
+<td>Generates the presentation to the view associated to the action.</td>
+</tr>
+<tr class="row-even"><td>LEVEL_BEFORE_TEMPLATE</td>
+<td>Generates presentation templates prior to the controller layout.</td>
+</tr>
+<tr class="row-odd"><td>LEVEL_LAYOUT</td>
+<td>Generates the presentation to the controller layout.</td>
+</tr>
+<tr class="row-even"><td>LEVEL_AFTER_TEMPLATE</td>
+<td>Generates the presentation to the templates after the controller layout.</td>
+</tr>
+<tr class="row-odd"><td>LEVEL_MAIN_LAYOUT</td>
+<td>Generates the presentation to the main layout. File views/index.phtml</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-models-in-the-view-layer">
+<h2>Using models in the view layer<a class="headerlink" href="#using-models-in-the-view-layer" title="永久链接至标题">¶</a></h2>
+<p>Application models are always available at the view layer. The <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> will instantiate them at runtime automatically:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;categories&quot;</span><span class="nt">&gt;</span>
+<span class="cp">&lt;?php</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nx">Catergories</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;status = 1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="s2">&quot;&lt;span class=&#39;category&#39;&gt;&quot;</span><span class="p">,</span> <span class="nv">$category</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;&lt;/span&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since it is not
+possible to forward the execution flow to another controller in the case of an error or an exception.</p>
+</div>
+<div class="section" id="picking-views">
+<h2>Picking Views<a class="headerlink" href="#picking-views" title="永久链接至标题">¶</a></h2>
+<p>As mentioned above, when <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> is managed by <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>
+the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\Mvc\View::pick() method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">listAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Pick &quot;views-dir/products/search&quot; as view to render</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caching-view-fragments">
+<h2>Caching View Fragments<a class="headerlink" href="#caching-view-fragments" title="永久链接至标题">¶</a></h2>
+<p>Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> offers caching a part or the whole rendered output to increase performance.</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> integrates with <a class="reference internal" href="cache.html"><em>Phalcon\Cache</em></a> to provide an easier way to cache output fragments.
+You could manually set the cache handler or set a global handler:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//Cache the view using the default settings</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showArticleAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Cache this view for 1 hour</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">resumeAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//Cache this view for 1 day with the key &quot;resume-cache&quot;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span><span class="p">,</span>
+                <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;resume-cache&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When the View component needs to cache something it will request a cache service to the services container. The service name convention for this
+service is &#8220;viewCache&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Set the views cache service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;viewCache&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+
+    <span class="c1">//Cache data for one day by default</span>
+    <span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Output</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+    <span class="p">));</span>
+
+    <span class="c1">//Memcached connection settings</span>
+    <span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Memcached</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+    <span class="p">));</span>
+
+    <span class="k">return</span> <span class="nv">$cache</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disabling-the-view">
+<h2>Disabling the view<a class="headerlink" href="#disabling-the-view" title="永久链接至标题">¶</a></h2>
+<p>If your controller doesn&#8217;t produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UsersController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">closeSessionAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">//Disable the view</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">disable</span><span class="p">();</span>
+
+        <span class="c1">//The same</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span><span class="nx">Phalcon\Mvc\View</span><span class="o">::</span><span class="na">LEVEL_NO_RENDER</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="template-engines">
+<h2>Template Engines<a class="headerlink" href="#template-engines" title="永久链接至标题">¶</a></h2>
+<p>Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
+called <a class="reference internal" href="volt.html"><em>Volt</em></a>.</p>
+<p>Additionally, <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> allows you to use other template engines instead of plain PHP or Volt.</p>
+<p>Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
+for the user. This usually increases the number of resources that your application are using.</p>
+<p>If an external template engine is used, <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> provides exactly the same view hierarchy and it&#8217;s
+still possible to access the API inside these templates with a little more effort.</p>
+<p>The component uses adapters, these help Phalcon to speak with those external template engines in a unified, let&#8217;s see how to do that integration.</p>
+<div class="section" id="creating-your-own-template-engine-adapter">
+<h3>Creating your own Template Engine Adapter<a class="headerlink" href="#creating-your-own-template-engine-adapter" title="永久链接至标题">¶</a></h3>
+<p>There are many template engines, which you might want to integrate or create one of your own. The first step to use an external template engine
+it&#8217;s create an adapter for it.</p>
+<p>A template engine adapter is a class that acts as bridge between <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> and the template engine itself.
+Usually it only needs two methods implemented: __construct() and render(). The first one receives the <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a>
+instance that creates the engine adapter and the DI container used by the application.</p>
+<p>The method render() accepts an absolute path to the view file and the view parameters set using $this-&gt;view-&gt;setVar(). You could read or require it
+when it&#8217;s necessary.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">MyTemplateAdapter</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\View\Engine</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Adapter constructor</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param \Phalcon\Mvc\View $view</span>
+<span class="sd">     * @param \Phalcon\DI $di</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//Initiliaze here the adapter</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Renders a view using the template engine</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $path</span>
+<span class="sd">     * @param array $params</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Access view</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="p">;</span>
+
+        <span class="c1">// Access options</span>
+        <span class="nv">$options</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span><span class="p">;</span>
+
+        <span class="c1">//Render the view</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-template-engine">
+<h3>Changing the Template Engine<a class="headerlink" href="#changing-the-template-engine" title="永久链接至标题">¶</a></h3>
+<p>You can replace or add more a template engine from the controller as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the engine</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;.my-html&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyTemplateAdapter&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Using more than one template engine</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;.my-html&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyTemplateAdapter&#39;</span>
+                <span class="s2">&quot;.phtml&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Mvc\View\Engine\Php&#39;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can replace the template engine completely or use more than one template engine at the same time. The method Phalcon\Mvc\View::registerEngines()
+accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
+Template files related to the particular engine must have those extensions.</p>
+<p>The order that the template engines are defined with Phalcon\Mvc\View::reginsterEngines() defines the relevance of execution. If
+<a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> finds two views with the same name but different extensions, it will only render the first one.</p>
+<p>If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Setting up the view component</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;.my-html&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyTemplateAdapter&#39;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>To better explain how to create an adapter for template engines, let&#8217;s make the integration with two well known: Mustache and Twig.</p>
+</div>
+<div class="section" id="using-mustache">
+<h3>Using Mustache<a class="headerlink" href="#using-mustache" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://github.com/bobthecow/mustache.php">Mustache</a> is a logic-less template engine available for many platforms and languages. A PHP implementation is available in <a class="reference external" href="https://github.com/bobthecow/mustache.php">this Github repository</a>.</p>
+<p>You need to manually load the Mustache library before use its engine adapter. Either registering an autoload function or including
+the relevant file first can achieve this.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s2">&quot;path/to/Mustache/Autoloader.php&quot;</span><span class="p">;</span>
+<span class="nx">Mustache_Autoloader</span><span class="o">::</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>A template engine adapter for Mustache would look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Adapter to use Mustache library as templating engine</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">My_Mustache_Adapter</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\View\Engine</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_mustache</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_params</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Phalcon\Mvc\View</span> <span class="nv">$view</span><span class="p">,</span> <span class="nx">Phalcon\DI</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_mustache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mustache_Engine</span><span class="p">();</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_mustache</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$path</span><span class="p">),</span> <span class="nv">$params</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, in the controller it&#8217;s necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this
+template engine, you can register it in the initialize() method of the controller.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Changing PHP engine by Mustache</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span><span class="s2">&quot;.mhtml&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;My_Mustache_Adapter&quot;</span><span class="p">)</span>
+        <span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;showPost&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;some title&quot;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="s2">&quot;a cool content&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A related view (views-dir/posts/show.mhtml) could be defined using the Mustache syntax:</p>
+<div class="highlight-html+php"><div class="highlight"><pre>{{#showPost}}
+    <span class="nt">&lt;h1&gt;</span>{{title}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>{{body}}<span class="nt">&lt;/p&gt;</span>
+{{/showPost}}
+</pre></div>
+</div>
+<p>Additionally, as seen above, you must call the method $this-&gt;getContent() inside a view to include the contents of a view at a higher
+level. In Moustache, this can be done as follows:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;some-menu&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- the menu --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;some-main-content&quot;</span><span class="nt">&gt;</span>
+    {{content}}
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-twig">
+<h3>Using Twig<a class="headerlink" href="#using-twig" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="http://twig.sensiolabs.org">Twig</a> is a modern template engine for PHP.</p>
+<p>You need to manually load the Twig library before use its engine adapter. Registering its autoloader could do this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s2">&quot;path/to/Twig/Autoloader.php&quot;</span><span class="p">;</span>
+<span class="nx">Twig_Autoloader</span><span class="o">::</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>A template engine adapter for Twig would look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Adapter to use Twig library as templating engine</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">My_Twig_Adapter</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\View\Engine</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_twig</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Phalcon\Mvc\View</span> <span class="nv">$view</span><span class="p">,</span> <span class="nx">Phalcon\DI</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Twig_Loader_Filesystem</span><span class="p">(</span><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getViewsDir</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_twig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Twig_Environment</span><span class="p">(</span><span class="nv">$loader</span><span class="p">);</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$view</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$relativePath</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getViewsDir</span><span class="p">(),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$path</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_twig</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$relativePath</span><span class="p">,</span> <span class="nv">$params</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As seen above, it&#8217;s necessary to replace the default engine by twig or use it together with other.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Changing PHP engine by Twig</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span><span class="s2">&quot;.twig&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Twig&quot;</span><span class="p">)</span>
+        <span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;showPost&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;some title&quot;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="s2">&quot;a cool content&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this case, the related view will be views-dir/posts/show.twig, this is a file that contains Twig code:</p>
+<div class="highlight-html+php"><div class="highlight"><pre>{{% if showPost %}}
+    <span class="nt">&lt;h1&gt;</span>{{ title }}<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>{{ body }}<span class="nt">&lt;/p&gt;</span>
+{{% endif %}}
+</pre></div>
+</div>
+<p>To include the contents of a view at a higher level, the &#8220;content&#8221; variable is available:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;some-messages&quot;</span><span class="nt">&gt;</span>
+    {{ content }}
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-smarty">
+<h3>Using Smarty<a class="headerlink" href="#using-smarty" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="http://www.smarty.net/">Smarty</a> is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.</p>
+<p>You need to manually include the Smarty library before use its engine adapter. Including its adapter:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require_once</span> <span class="s1">&#39;Smarty3/Smarty.class.php&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>A template engine adapter for Smarty would look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SmartyEngine</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\View\Engine</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_smarty</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$_params</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Phalcon\Mvc\View</span> <span class="nv">$view</span><span class="p">,</span> <span class="nx">Phalcon\DI</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Smarty</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="nx">SMARTY_DIR</span> <span class="o">.</span> <span class="s1">&#39;templates_c&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">config_dir</span> <span class="o">=</span> <span class="nx">SMARTY_DIR</span> <span class="o">.</span> <span class="s1">&#39;configs&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="nx">SMARTY_DIR</span> <span class="o">.</span> <span class="s1">&#39;cache&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">debugging</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">){</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_smarty</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nv">$path</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="injecting-services-in-view">
+<h2>Injecting services in View<a class="headerlink" href="#injecting-services-in-view" title="永久链接至标题">¶</a></h2>
+<p>Every view executed is included inside a <a class="reference internal" href="../api/Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a> instance, providing easy access
+to the application&#8217;s service container.</p>
+<p>The following example shows how to write a jQquery <a class="reference external" href="http://api.jquery.com/jQuery.ajax/">ajax request</a> using a url with the framework conventions. The service &#8220;url&#8221; is
+injected in the view by just only accessing it:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;cities/get&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="s2">&quot;</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stand-alone-component">
+<h2>Stand-Alone Component<a class="headerlink" href="#stand-alone-component" title="永久链接至标题">¶</a></h2>
+<p>All the components in Phalcon can be used as <em>glue</em> components individually because they are loosely coupled to each other. Using
+<a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> in a stand-alone mode can be demonstrated below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+<span class="c1">// Passing variables to the views, these will be created as local variables</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;someProducts&quot;</span><span class="p">,</span> <span class="nv">$products</span><span class="p">);</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;someFeatureEnabled&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">//Start the output buffering</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+<span class="c1">//Render all the view hierarchy related to the view products/list.phtml</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;products&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">);</span>
+
+<span class="c1">//Finish the output buffering</span>
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-events">
+<h2>View Events<a class="headerlink" href="#view-events" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> is able to send events to a <a class="reference internal" href="events.html"><em>EventsManager</em></a> if it&#8217;s present. Events
+are triggered using the type &#8220;view&#8221;. Some events when returning boolean false could stop the active operation. The following events are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="58%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event Name</th>
+<th class="head">Triggered</th>
+<th class="head">Can stop operation?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeRender</td>
+<td>Triggered before start the render process</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>beforeRenderView</td>
+<td>Triggered before render an existing view</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>afterRenderView</td>
+<td>Triggered after render an existing view</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>afterRender</td>
+<td>Triggered after complete the render process</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The following example demonstrates how to attach listeners to this component:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+
+    <span class="c1">//Create an event manager</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
+
+    <span class="c1">//Attach a listener for type &quot;view&quot;</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">(),</span> <span class="s1">&#39; - &#39;</span><span class="p">,</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getActiveRenderPath</span><span class="p">(),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+    <span class="c1">//Bind the eventsManager to the view component</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventManagers</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The following example shows how to create a plugin that clean/repair the HTML produced by the render process using <a class="reference external" href="http://www.php.net/manual/en/book.tidy.php">Tidy</a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">TidyPlugin</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterRender</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$view</span><span class="p">){</span>
+
+        <span class="nv">$tidyConfig</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;clean&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">&#39;output-xhtml&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">&#39;show-body-only&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="s1">&#39;wrap&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">);</span>
+
+        <span class="nv">$tidy</span> <span class="o">=</span> <span class="nx">tidy_parse_string</span><span class="p">(</span><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="nv">$tidyConfig</span><span class="p">,</span> <span class="s1">&#39;UTF8&#39;</span><span class="p">);</span>
+        <span class="nv">$tidy</span><span class="o">-&gt;</span><span class="na">cleanRepair</span><span class="p">();</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$tidy</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">//Attach the plugin as a listener</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;view:afterRender&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">TidyPlugin</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="tags.html" title="View Helpers"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="odm.html" title="ODM (Object-Document Mapper)"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

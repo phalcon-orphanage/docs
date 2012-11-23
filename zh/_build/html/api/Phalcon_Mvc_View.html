@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\View &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Mvc\View\Engine" href="Phalcon_Mvc_View_Engine.html" />
+    <link rel="prev" title="Class Phalcon\Mvc\User\Plugin" href="Phalcon_Mvc_User_Plugin.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Engine.html" title="Class Phalcon\Mvc\View\Engine"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_User_Plugin.html" title="Class Phalcon\Mvc\User\Plugin"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\View</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_User_Plugin.html"
+                                  title="上一章">Class <strong>Phalcon\Mvc\User\Plugin</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_View_Engine.html"
+                                  title="下一章">Class <strong>Phalcon\Mvc\View\Engine</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Mvc_View.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-mvc-view">
+<h1>Class <strong>Phalcon\Mvc\View</strong><a class="headerlink" href="#class-phalcon-mvc-view" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> <a class="reference internal" href="Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a></p>
+<p>Phalcon\Mvc\View is a class for working with the &#8220;view&#8221; portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="c1">//Setting views directory</span>
+ <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">();</span>
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;app/views/&#39;</span><span class="p">);</span>
+
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+ <span class="c1">//Shows recent posts view (app/views/posts/recent.phtml)</span>
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;recent&#39;</span><span class="p">);</span>
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">();</span>
+
+ <span class="c1">//Printing views output</span>
+ <span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>LEVEL_MAIN_LAYOUT</strong></p>
+<p><em>integer</em> <strong>LEVEL_AFTER_TEMPLATE</strong></p>
+<p><em>integer</em> <strong>LEVEL_LAYOUT</strong></p>
+<p><em>integer</em> <strong>LEVEL_BEFORE_TEMPLATE</strong></p>
+<p><em>integer</em> <strong>LEVEL_ACTION_VIEW</strong></p>
+<p><em>integer</em> <strong>LEVEL_NO_RENDER</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>__construct</strong> (<em>array</em> $options)</p>
+<p>Phalcon\Mvc\View constructor</p>
+<p>public  <strong>setViewsDir</strong> (<em>string</em> $viewsDir)</p>
+<p>Sets views directory. Depending of your platform, always add a trailing slash or backslash</p>
+<p>public <em>string</em>  <strong>getViewsDir</strong> ()</p>
+<p>Gets views directory</p>
+<p>public  <strong>setBasePath</strong> (<em>string</em> $basePath)</p>
+<p>Sets base path. Depending of your platform, always add a trailing slash or backslash</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>setRenderLevel</strong> (<em>string</em> $level)</p>
+<p>Sets the render level for the view</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="c1">//Render the view related to the controller only</span>
+ <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span><span class="nx">Phalcon\Mvc\View</span><span class="o">::</span><span class="na">LEVEL_VIEW</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>setMainView</strong> (<em>unknown</em> $viewPath)</p>
+<p>Sets default view name. Must be a file without extension in the views directory</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="c1">//Renders as main view views-dir/inicio.phtml</span>
+ <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setMainView</span><span class="p">(</span><span class="s1">&#39;inicio&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>setTemplateBefore</strong> (<em>string|array</em> $templateBefore)</p>
+<p>Appends template before controller layout</p>
+<p>public  <strong>cleanTemplateBefore</strong> ()</p>
+<p>Resets any template before layouts</p>
+<p>public  <strong>setTemplateAfter</strong> (<em>string|array</em> $templateAfter)</p>
+<p>Appends template after controller layout</p>
+<p>public  <strong>cleanTemplateAfter</strong> ()</p>
+<p>Resets any template before layouts</p>
+<p>public  <strong>setParamToView</strong> (<em>string</em> $key, <em>mixed</em> $value)</p>
+<p>Adds parameters to views (alias of setVar)</p>
+<p>public  <strong>setVar</strong> (<em>string</em> $key, <em>mixed</em> $value)</p>
+<p>Adds parameters to views</p>
+<p>public <em>array</em>  <strong>getParamsToView</strong> ()</p>
+<p>Returns parameters to views</p>
+<p>public <em>string</em>  <strong>getControllerName</strong> ()</p>
+<p>Gets the name of the controller rendered</p>
+<p>public <em>string</em>  <strong>getActionName</strong> ()</p>
+<p>Gets the name of the action rendered</p>
+<p>public <em>array</em>  <strong>getParams</strong> ()</p>
+<p>Gets extra parameters of the action rendered</p>
+<p>public  <strong>start</strong> ()</p>
+<p>Starts rendering process enabling the output buffering</p>
+<p>protected <em>array</em>  <strong>_loadTemplateEngines</strong> ()</p>
+<p>Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php</p>
+<p>protected  <strong>_engineRender</strong> ()</p>
+<p>Checks whether view exists on registered extensions and render it</p>
+<p>public  <strong>registerEngines</strong> (<em>array</em> $engines)</p>
+<p>Register templating engines</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s2">&quot;.phtml&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon\Mvc\View\Engine\Php&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;.volt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon\Mvc\View\Engine\Volt&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;.mhtml&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyCustomEngine&quot;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>public  <strong>render</strong> (<em>string</em> $controllerName, <em>string</em> $actionName, <em>array</em> $params)</p>
+<p>Executes render process from dispatching data</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+ <span class="c1">//Shows recent posts view (app/views/posts/recent.phtml)</span>
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;recent&#39;</span><span class="p">);</span>
+ <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>public  <strong>pick</strong> (<em>string</em> $renderView)</p>
+<p>Choose a view different to render than last-controller/last-action</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+ <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+         <span class="c1">//Do some save stuff...</span>
+
+         <span class="c1">//Then show the list view</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s2">&quot;products/list&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>public <em>string</em>  <strong>partial</strong> (<em>string</em> $partialPath)</p>
+<p>Renders a partial view</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="c1">//Show a partial inside another view</span>
+ <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">&#39;shared/footer&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>finish</strong> ()</p>
+<p>Finishes the render process by stopping the output buffering</p>
+<p>protected <a class="reference internal" href="Phalcon_Cache_Backend.html"><em>Phalcon\Cache\Backend</em></a>  <strong>_createCache</strong> ()</p>
+<p>Create a Phalcon\Cache based on the internal cache options</p>
+<p>public <a class="reference internal" href="Phalcon_Cache_Backend.html"><em>Phalcon\Cache\Backend</em></a>  <strong>getCache</strong> ()</p>
+<p>Returns the cache instance used to cache</p>
+<p>public  <strong>cache</strong> (<em>boolean|array</em> $options)</p>
+<p>Cache the actual view render to certain level</p>
+<p>public  <strong>setContent</strong> (<em>string</em> $content)</p>
+<p>Externally sets the view content</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public <em>string</em>  <strong>getContent</strong> ()</p>
+<p>Returns cached ouput from another view stage</p>
+<p>public <em>string</em>  <strong>getActiveRenderPath</strong> ()</p>
+<p>Returns the path of the view that is currently rendered</p>
+<p>public  <strong>disable</strong> ()</p>
+<p>Disable view. Don&#8217;t show any view or template</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector) inherited from Phalcon\DI\Injectable</p>
+<p>Sets the dependency injector</p>
+<p>public <a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a>  <strong>getDI</strong> () inherited from Phalcon\DI\Injectable</p>
+<p>Returns the internal dependency injector</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a> $eventsManager) inherited from Phalcon\DI\Injectable</p>
+<p>Sets the event manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>  <strong>getEventsManager</strong> () inherited from Phalcon\DI\Injectable</p>
+<p>Returns the internal event manager</p>
+<p>public  <strong>__get</strong> (<em>string</em> $propertyName) inherited from Phalcon\DI\Injectable</p>
+<p>Magic method __get</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_View_Engine.html" title="Class Phalcon\Mvc\View\Engine"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_User_Plugin.html" title="Class Phalcon\Mvc\User\Plugin"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

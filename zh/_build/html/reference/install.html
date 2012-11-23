@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>安装 &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Installation on XAMPP" href="xampp.html" />
+    <link rel="prev" title="Micro Benchmark" href="benchmark/micro.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="xampp.html" title="Installation on XAMPP"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="benchmark/micro.html" title="Micro Benchmark"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">安装</a><ul>
+<li><a class="reference internal" href="#windows">Windows</a><ul>
+<li><a class="reference internal" href="#related-guides">Related Guides</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unix-linux">Unix/Linux</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#compilation">Compilation</a></li>
+<li><a class="reference internal" href="#freebsd">FreeBSD</a></li>
+<li><a class="reference internal" href="#installation-notes">Installation Notes</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="benchmark/micro.html"
+                                  title="上一章">Micro Benchmark</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="xampp.html"
+                                  title="下一章">Installation on XAMPP</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/install.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>安装<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either download a binary package for the system of your choice or build it from the sources.</p>
+<p>During the last few months, we have extensively researched PHP&#8217;s behavior, investigating areas for significant optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations, compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance from Phalcon.</p>
+<blockquote class="highlights">
+<div>Phalcon compiles from PHP 5.3.1, but due to old PHP bugs causing memory leaks, we highly recommend you to use at least PHP 5.3.11 or greater.</div></blockquote>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="永久链接至标题">¶</a></h2>
+<p>在windows上安装任何扩展都是很简单的，安装phalcon也是一样，下载.dll文件，放到extension目录，然后修改php.ini文件，加入以下行：</p>
+<blockquote>
+<div>extension=php_phalcon.dll</div></blockquote>
+<p>重启web server.</p>
+<p>以下视频是教你如何一步一步在windows上安装phalcon</p>
+<div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div><div class="section" id="related-guides">
+<h3>Related Guides<a class="headerlink" href="#related-guides" title="永久链接至标题">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xampp.html">Installation on XAMPP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wamp.html">Installation on WAMP</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="unix-linux">
+<h2>Unix/Linux<a class="headerlink" href="#unix-linux" title="永久链接至标题">¶</a></h2>
+<p>在Unix/Linux操作系统上，你可以很容易的从源代友编译和安装扩展</p>
+<div class="section" id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="永久链接至标题">¶</a></h3>
+<p>Prerequisite packages are:</p>
+<ul class="simple">
+<li>PHP 5.x development resources</li>
+<li>GCC compiler (Linux) or Xcode (Mac)</li>
+<li>Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#Ubuntu</span>
+sudo apt-get install php5-dev php5-mysql gcc
+sudo apt-get install git-core
+
+<span class="c">#Suse</span>
+yast2 -i php5-pear php5-dev php5-mysql gcc
+yast2 -i git-core
+</pre></div>
+</div>
+</div>
+<div class="section" id="compilation">
+<h3>Compilation<a class="headerlink" href="#compilation" title="永久链接至标题">¶</a></h3>
+<p>Creating the extension:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/phalcon/cphalcon.git
+<span class="nb">cd </span>cphalcon/build
+./install
+</pre></div>
+</div>
+<p>（译者备注）./install其实是默认包含了phpize,configure,make,make install命令。如果您的机器中phpize,php-config不在环境命令中，请执行以下操作后再执行./install</p>
+<div class="highlight-bash"><div class="highlight"><pre>ln -s phpdir/bin/phpize /usr/bin
+ln -s phpdir/bin/php-cofnig /usr/bin
+</pre></div>
+</div>
+<p>phpdir是你的php安装路径。</p>
+<p>编辑php.ini文件，加入扩展</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">extension</span><span class="o">=</span>phalcon.so
+</pre></div>
+</div>
+<p>重启web server,如果是php-fpm,重启php-fpm即可</p>
+</div>
+<div class="section" id="freebsd">
+<h3>FreeBSD<a class="headerlink" href="#freebsd" title="永久链接至标题">¶</a></h3>
+<p>A port is available for FreeBSD. Just only need these simple line commands to install it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pkg_add -r phalcon
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-O2 -fno-delete-null-pointer-checks&quot;</span>
+<span class="nb">cd</span> /usr/ports/www/phalcon <span class="o">&amp;&amp;</span> make install clean
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-notes">
+<h3>Installation Notes<a class="headerlink" href="#installation-notes" title="永久链接至标题">¶</a></h3>
+<p>Installation notes for Web Servers:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nginx.html">Nginx Installation Notes</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="xampp.html" title="Installation on XAMPP"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="benchmark/micro.html" title="Micro Benchmark"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

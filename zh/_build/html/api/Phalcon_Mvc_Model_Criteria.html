@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\Model\Criteria &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Mvc\Model\Exception" href="Phalcon_Mvc_Model_Exception.html" />
+    <link rel="prev" title="Class Phalcon\Mvc\Model" href="Phalcon_Mvc_Model.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_Exception.html" title="Class Phalcon\Mvc\Model\Exception"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model.html" title="Class Phalcon\Mvc\Model"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\Model\Criteria</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_Model.html"
+                                  title="上一章">Class <strong>Phalcon\Mvc\Model</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_Model_Exception.html"
+                                  title="下一章">Class <strong>Phalcon\Mvc\Model\Exception</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Mvc_Model_Criteria.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-mvc-model-criteria">
+<h1>Class <strong>Phalcon\Mvc\Model\Criteria</strong><a class="headerlink" href="#class-phalcon-mvc-model-criteria" title="永久链接至标题">¶</a></h1>
+<p>This class allows to build the array parameter required by Phalcon\Mvc\Model::find and Phalcon\Mvc\Model::findFirst, using an object-oriented interfase</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>__construct</strong> ()</p>
+<p>...</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector)</p>
+<p>Sets the DependencyInjector container</p>
+<p>public <a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a>  <strong>getDI</strong> ()</p>
+<p>Returns the DependencyInjector container</p>
+<p>public  <strong>setModelName</strong> (<em>string</em> $modelName)</p>
+<p>Set a model on which the query will be executed</p>
+<p>public <em>string</em>  <strong>getModelName</strong> ()</p>
+<p>Returns an internal model name on which the criteria will be applied</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>bind</strong> (<em>string</em> $bindParams)</p>
+<p>Adds the bind parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>where</strong> (<em>string</em> $conditions)</p>
+<p>Adds the conditions parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>conditions</strong> (<em>string</em> $conditions)</p>
+<p>Adds the conditions parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>order</strong> (<em>string</em> $orderColumns)</p>
+<p>Adds the order-by parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>limit</strong> (<em>int</em> $limit, <em>int</em> $offset)</p>
+<p>Adds the limit parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>forUpdate</strong> (<em>boolean</em> $forUpdate)</p>
+<p>Adds the &#8220;for_update&#8221; parameter to the criteria</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Criteria</em></a>  <strong>sharedLock</strong> (<em>boolean</em> $sharedLock)</p>
+<p>Adds the &#8220;shared_lock&#8221; parameter to the criteria</p>
+<p>public <em>string</em>  <strong>getWhere</strong> ()</p>
+<p>Returns the conditions parameter in the criteria</p>
+<p>public <em>string</em>  <strong>getConditions</strong> ()</p>
+<p>Returns the conditions parameter in the criteria</p>
+<p>public <em>string</em>  <strong>getLimit</strong> ()</p>
+<p>Returns the limit parameter in the criteria</p>
+<p>public <em>string</em>  <strong>getOrder</strong> ()</p>
+<p>Returns the order parameter in the criteria</p>
+<p>public <em>string</em>  <strong>getParams</strong> ()</p>
+<p>Returns all the parameters defined in the criteria</p>
+<p>public static  <strong>fromInput</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector, <em>string</em> $modelName, <em>array</em> $data)</p>
+<p>Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Model_Resultset.html"><em>Phalcon\Mvc\Model\Resultset</em></a>  <strong>execute</strong> ()</p>
+<p>Executes a find using the parameters built with the criteria</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model_Exception.html" title="Class Phalcon\Mvc\Model\Exception"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Model.html" title="Class Phalcon\Mvc\Model"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

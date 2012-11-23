@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 3: Creating a Simple REST API &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Using Dependency Injection" href="di.html" />
+    <link rel="prev" title="教程 2: 解读分析 INVO 项目" href="tutorial-invo.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="di.html" title="Using Dependency Injection"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="教程 2: 解读分析 INVO 项目"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Tutorial 3: Creating a Simple REST API</a><ul>
+<li><a class="reference internal" href="#defining-the-api">Defining the API</a></li>
+<li><a class="reference internal" href="#creating-the-application">Creating the Application</a></li>
+<li><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
+<li><a class="reference internal" href="#retrieving-data">Retrieving Data</a></li>
+<li><a class="reference internal" href="#inserting-data">Inserting Data</a></li>
+<li><a class="reference internal" href="#updating-data">Updating Data</a></li>
+<li><a class="reference internal" href="#deleting-data">Deleting Data</a></li>
+<li><a class="reference internal" href="#testing-our-application">Testing our Application</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="tutorial-invo.html"
+                                  title="上一章">教程 2: 解读分析 INVO 项目</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="di.html"
+                                  title="下一章">Using Dependency Injection</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tutorial-rest.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="tutorial-3-creating-a-simple-rest-api">
+<h1>Tutorial 3: Creating a Simple REST API<a class="headerlink" href="#tutorial-3-creating-a-simple-rest-api" title="永久链接至标题">¶</a></h1>
+<p>In this tutorial, we will explain how to create a simple application that provides a <a class="reference external" href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> API using the different HTTP methods:</p>
+<ul class="simple">
+<li>GET to retrieve and search data</li>
+<li>POST to add data</li>
+<li>PUT to update data</li>
+<li>DELETE to delete data</li>
+</ul>
+<div class="section" id="defining-the-api">
+<h2>Defining the API<a class="headerlink" href="#defining-the-api" title="永久链接至标题">¶</a></h2>
+<p>The API consists of the following methods:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="30%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">URL</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GET</td>
+<td>/api/robots</td>
+<td>Retrieves all robots</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/robots/search/Astro</td>
+<td>Searches for robots with ‘Astro’ in their name</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/robots/2</td>
+<td>Retrieves robots based on primary key</td>
+</tr>
+<tr class="row-odd"><td>POST</td>
+<td>/api/robots</td>
+<td>Adds a new robot</td>
+</tr>
+<tr class="row-even"><td>PUT</td>
+<td>/api/robots/2</td>
+<td>Updates robots based on primary key</td>
+</tr>
+<tr class="row-odd"><td>DELETE</td>
+<td>/api/robots/2</td>
+<td>Deletes robots based on primary key</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="creating-the-application">
+<h2>Creating the Application<a class="headerlink" href="#creating-the-application" title="永久链接至标题">¶</a></h2>
+<p>As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a <a class="reference internal" href="micro.html"><em>micro application</em></a>
+to meet our goal.</p>
+<p>The following file structure is more than enough:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">my-rest-api/</span>
+<span class="x">    models/</span>
+<span class="x">        Robots.php</span>
+<span class="x">    index.php</span>
+<span class="x">    .htaccess</span>
+</pre></div>
+</div>
+<p>First, we need an .htaccess file that contains all the rules to rewrite the URIs to the index.php file, that is our application:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^(.*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>Then, in the index.php file we create the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">//define the routes here</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Now we will create the routes as we defined above:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">//Retrieves all robots</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">//Searches for robots with $name in their name</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">//Retrieves robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">//Adds a new robot</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">//Updates robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">//Deletes robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case
+the handler is an anonymous function. The following route: &#8216;/api/robots/{id:[0-9]+}&#8217;, by example, explicitly set that the &#8220;id&#8221; parameter must have a numeric format.</p>
+<p>When a defined route matches the requested URI then the application will execute the corresponding handler.</p>
+</div>
+<div class="section" id="creating-a-model">
+<h2>Creating a Model<a class="headerlink" href="#creating-a-model" title="永久链接至标题">¶</a></h2>
+<p>Our API provides information about robots, these data are stored in a database. The following model allows us to access that table in an object oriented way.
+We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data
+meet the requirements of our application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">\Phalcon\Mvc\Model\Message</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\Phalcon\Mvc\Model\Validator\InclusionIn</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\Phalcon\Mvc\Model\Validator\Uniqueness</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//Type must be: droid, mechanical or virtual</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">InclusionIn</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;domain&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;droid&quot;</span><span class="p">,</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">,</span> <span class="s2">&quot;virtual&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="c1">//Robot name must be unique</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uniqueness</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The robot name must be unique&quot;</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="c1">//Year cannot be less than zero</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s2">&quot;The year cannot be less than zero&quot;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">//Check if any messages have been produced</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validationHasFailed</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we must set up a connection to be used by this model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DI\FactoryDefault</span><span class="p">();</span>
+
+<span class="c1">//Set up the database service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;asimov&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;zeroth&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;robotics&quot;</span>
+    <span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">//Bind the DI to the application</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-data">
+<h2>Retrieving Data<a class="headerlink" href="#retrieving-data" title="永久链接至标题">¶</a></h2>
+<p>The first &#8220;handler&#8221; that we will implement is which by method GET returns all available robots. Let&#8217;s use PHQL to perform this simple query returning the results as JSON:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Retrieves all robots</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots ORDER BY name&quot;</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+    <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">){</span>
+        <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="phql.html"><em>PHQL</em></a>, allow us to write queries using a high level, object oriented SQL dialect that internally
+translates to the right SQL statements depending on the database system we are using. The clause &#8220;use&#8221; in the anonymous function allows
+us to pass some variables from global to local scope easily.</p>
+<p>The searching by name handler would look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Searches for robots with $name in their name</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name&quot;</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;%&#39;</span>
+    <span class="p">));</span>
+
+    <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">){</span>
+        <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Searching by the field &#8220;id&#8221; it&#8217;s quite similar, in this case, we&#8217;re also notifying if the robot was found or not:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Retrieves robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+    <span class="p">))</span><span class="o">-&gt;</span><span class="na">getFirst</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">==</span><span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;NOT-FOUND&#39;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOUND&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inserting-data">
+<h2>Inserting Data<a class="headerlink" href="#inserting-data" title="永久链接至标题">¶</a></h2>
+<p>Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Adds a new robot</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getRawBody</span><span class="p">());</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)&quot;</span><span class="p">;</span>
+
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span>
+    <span class="p">));</span>
+
+    <span class="c1">//Check if the insertion was successfull</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span><span class="o">==</span><span class="k">true</span><span class="p">){</span>
+
+        <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getModel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">//Change the HTTP status</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Internal Error&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+        <span class="c1">//Send errors to the client</span>
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-data">
+<h2>Updating Data<a class="headerlink" href="#updating-data" title="永久链接至标题">¶</a></h2>
+<p>The data update is similar to insertion. The &#8220;id&#8221; passed as parameter indicates what robot must be updated:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Updates robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span><span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getRawBody</span><span class="p">());</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span>
+    <span class="p">));</span>
+
+    <span class="c1">//Check if the insertion was successfull</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span><span class="o">==</span><span class="k">true</span><span class="p">){</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">//Change the HTTP status</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Internal Error&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-data">
+<h2>Deleting Data<a class="headerlink" href="#deleting-data" title="永久链接至标题">¶</a></h2>
+<p>The data update is similar to insertion. The &#8220;id&#8221; passed as parameter indicates what robot must be updated:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Deletes robots based on primary key</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM Robots WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+    <span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span><span class="o">==</span><span class="k">true</span><span class="p">){</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">//Change the HTTP status</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Internal Error&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-our-application">
+<h2>Testing our Application<a class="headerlink" href="#testing-our-application" title="永久链接至标题">¶</a></h2>
+<p>Using <a class="reference external" href="http://en.wikipedia.org/wiki/CURL">curl</a> we&#8217;ll test every route in our application verifying its proper operation:</p>
+<p>Obtain all the robots:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:05:13 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 117
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;1&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Robotina&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}]</span>
+</pre></div>
+</div>
+<p>Search a robot by its name:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:09:23 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 31
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}]</span>
+</pre></div>
+</div>
+<p>Obtain a robot by its id:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots/3
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:12:18 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 56
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;FOUND&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}}</span>
+</pre></div>
+</div>
+<p>Insert a new robot:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X POST -d <span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span>
+    http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:15:09 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 75
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;C-3PO&quot;</span>,<span class="s2">&quot;type&quot;</span>:<span class="s2">&quot;droid&quot;</span>,<span class="s2">&quot;year&quot;</span>:1977,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;4&quot;</span><span class="o">}}</span>
+</pre></div>
+</div>
+<p>Try to insert a new robot with the name of an existing robot:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X POST -d <span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span>
+    http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 500 Internal Error
+Date: Wed, 12 Sep 2012 07:18:28 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 63
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;The robot name must be unique&quot;</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>Or update a robot with an unknown type:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X PUT -d <span class="s1">&#39;{&quot;name&quot;:&quot;ASIMO&quot;,&quot;type&quot;:&quot;humanoid&quot;,&quot;year&quot;:2000}&#39;</span>
+    http://localhost/my-rest-api/api/robots/4
+
+HTTP/1.1 500 Internal Error
+Date: Wed, 12 Sep 2012 08:48:01 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 104
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;Value of field &#39;type&#39; must be part of</span>
+<span class="s2">    list: droid, mechanical, virtual&quot;</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>Finally, delete a robot:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 08:49:29 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 15
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we&#8217;ll explain in detail how to
+use micro applications and the <a class="reference internal" href="phql.html"><em>PHQL</em></a> language.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="di.html" title="Using Dependency Injection"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="教程 2: 解读分析 INVO 项目"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

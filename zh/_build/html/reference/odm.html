@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ODM (Object-Document Mapper) &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Using Views" href="views.html" />
+    <link rel="prev" title="Phalcon Query Language (PHQL)" href="phql.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="views.html" title="Using Views"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Phalcon Query Language (PHQL)"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">ODM (Object-Document Mapper)</a><ul>
+<li><a class="reference internal" href="#creating-models">Creating Models</a></li>
+<li><a class="reference internal" href="#understanding-documents-to-objects">Understanding Documents To Objects</a></li>
+<li><a class="reference internal" href="#models-in-namespaces">Models in Namespaces</a></li>
+<li><a class="reference internal" href="#setting-a-connection">Setting a Connection</a></li>
+<li><a class="reference internal" href="#finding-documents">Finding Documents</a></li>
+<li><a class="reference internal" href="#creating-updating-records">Creating Updating/Records</a><ul>
+<li><a class="reference internal" href="#validation-messages">Validation Messages</a></li>
+<li><a class="reference internal" href="#validation-events-and-events-manager">Validation Events and Events Manager</a></li>
+<li><a class="reference internal" href="#implementing-a-business-rule">Implementing a Business Rule</a></li>
+<li><a class="reference internal" href="#validating-data-integrity">Validating Data Integrity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deleting-records">Deleting Records</a></li>
+<li><a class="reference internal" href="#validation-failed-events">Validation Failed Events</a></li>
+<li><a class="reference internal" href="#setting-multiple-databases">Setting multiple databases</a></li>
+<li><a class="reference internal" href="#injecting-services-into-models">Injecting services into Models</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="phql.html"
+                                  title="上一章">Phalcon Query Language (PHQL)</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="views.html"
+                                  title="下一章">Using Views</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/odm.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="odm-object-document-mapper">
+<h1>ODM (Object-Document Mapper)<a class="headerlink" href="#odm-object-document-mapper" title="永久链接至标题">¶</a></h1>
+<p>In addition to its ability to <a class="reference internal" href="models.html"><em>map tables</em></a> in relational databases, Phalcon can map documents from NoSQL databases.
+The ODM offers a CRUD functionality, events, validations among other services.</p>
+<p>Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach.
+Additionally, there are no SQL building eliminating the possibility of SQL injections.</p>
+<p>The following NoSQL databases are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="http://www.mongodb.org/">MongoDB</a></td>
+<td>MongoDB is a scalable, high-performance, open source NoSQL database.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="creating-models">
+<h2>Creating Models<a class="headerlink" href="#creating-models" title="永久链接至标题">¶</a></h2>
+<p>A model is a class that extends from <a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a>. It must be placed in the models directory. A model
+file must contain a single class; its class name should be in camel case notation:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>If you&#8217;re using PHP 5.4 is recommended declare each column that makes part of the model in order to save
+memory and reduce the memory allocation.</div></blockquote>
+<p>By default model &#8220;Robots&#8221; will refer to the collection &#8220;robots&#8221;. If you want to manually specify another name for the mapping collection,
+you can use the getSource() method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;the_robots&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="understanding-documents-to-objects">
+<h2>Understanding Documents To Objects<a class="headerlink" href="#understanding-documents-to-objects" title="永久链接至标题">¶</a></h2>
+<p>Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example,
+for a collection &#8220;robots&#8221; with the documents:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mongo <span class="nb">test</span>
+MongoDB shell version: 1.8.2
+connecting to: <span class="nb">test</span>
+&gt; db.robots.find<span class="o">()</span>
+<span class="o">{</span> <span class="s2">&quot;_id&quot;</span> : ObjectId<span class="o">(</span><span class="s2">&quot;508735512d42b8c3d15ec4e1&quot;</span><span class="o">)</span>, <span class="s2">&quot;name&quot;</span> : <span class="s2">&quot;Astro Boy&quot;</span>, <span class="s2">&quot;year&quot;</span> : 1952,
+        <span class="s2">&quot;type&quot;</span> : <span class="s2">&quot;mechanical&quot;</span> <span class="o">}</span>
+<span class="o">{</span> <span class="s2">&quot;_id&quot;</span> : ObjectId<span class="o">(</span><span class="s2">&quot;5087358f2d42b8c3d15ec4e2&quot;</span><span class="o">)</span>, <span class="s2">&quot;name&quot;</span> : <span class="s2">&quot;Bender&quot;</span>, <span class="s2">&quot;year&quot;</span> : 1999,
+        <span class="s2">&quot;type&quot;</span> : <span class="s2">&quot;mechanical&quot;</span> <span class="o">}</span>
+<span class="o">{</span> <span class="s2">&quot;_id&quot;</span> : ObjectId<span class="o">(</span><span class="s2">&quot;508735d32d42b8c3d15ec4e3&quot;</span><span class="o">)</span>, <span class="s2">&quot;name&quot;</span> : <span class="s2">&quot;Wall-E&quot;</span>, <span class="s2">&quot;year&quot;</span> : 2008 <span class="o">}</span>
+&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="models-in-namespaces">
+<h2>Models in Namespaces<a class="headerlink" href="#models-in-namespaces" title="永久链接至标题">¶</a></h2>
+<p>Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;robots&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You could find a certain document by its id and then print its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Find record with _id = &quot;5087358f2d42b8c3d15ec4e2&quot;</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findById</span><span class="p">(</span><span class="s2">&quot;5087358f2d42b8c3d15ec4e2&quot;</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;Bender&quot;</span>
+<span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Once the record is in memory, you can make modifications to its data and then save changes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Voltron&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-a-connection">
+<h2>Setting a Connection<a class="headerlink" href="#setting-a-connection" title="永久链接至标题">¶</a></h2>
+<p>Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called &#8220;mongo&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Simple database connection to localhost</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;mongo&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mongo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$mongo</span><span class="o">-&gt;</span><span class="na">selectDb</span><span class="p">(</span><span class="s2">&quot;store&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Connecting to a domain socket, falling back to localhost connection</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;mongo&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mongo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb:///tmp/mongodb-27017.sock,localhost:27017&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$mongo</span><span class="o">-&gt;</span><span class="na">selectDb</span><span class="p">(</span><span class="s2">&quot;store&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-documents">
+<h2>Finding Documents<a class="headerlink" href="#finding-documents" title="永久链接至标题">¶</a></h2>
+<p>As <a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> relies on the Mongo PHP extension you have the same facilities
+to query documents and convert them transparently to model instances:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// How many robots are there?</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$robots</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// How many mechanical robots are there?</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$robots</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// Get and print mechanical robots ordered by name upward</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;sort&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Get first 100 mechanical robots ordered by name</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;sort&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">100</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You could also use the findFirst() method to get only the first record matching the given criteria:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// What&#39;s the first robot in robots collection?</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;The robot name is &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// What&#39;s the first mechanical robot in robots collection?</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;The first mechanical robot name is &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Both find() and findFirst() methods accept an associative array specifying the search criteria:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// First robot where type = &quot;mechanical&quot; and year = &quot;1999&quot;</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;1999&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// All virtual robots ordered by name downward</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;virtual&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;sort&quot;</span>       <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The available query options are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="69%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>conditions</td>
+<td>Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions.</td>
+<td>&#8220;conditions&#8221; =&gt; array(&#8216;$gt&#8217; =&gt; 1990)</td>
+</tr>
+<tr class="row-odd"><td>sort</td>
+<td>Is used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward</td>
+<td>&#8220;order&#8221; =&gt; array(&#8220;name&#8221; =&gt; -1, &#8220;statys&#8221; =&gt; 1)</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>Limit the results of the query to results to certain range</td>
+<td>&#8220;limit&#8221; =&gt; 10</td>
+</tr>
+<tr class="row-odd"><td>skip</td>
+<td>Skips a number of results</td>
+<td>&#8220;skip&#8221; =&gt; 50</td>
+</tr>
+</tbody>
+</table>
+<p>If you have experience with SQL databases, you may want to check the <a class="reference external" href="http://www.php.net/manual/en/mongo.sqltomongo.php">SQL to Mongo Mapping Chart</a>.</p>
+</div>
+<div class="section" id="creating-updating-records">
+<h2>Creating Updating/Records<a class="headerlink" href="#creating-updating-records" title="永久链接至标题">¶</a></h2>
+<p>The method Phalcon\Mvc\Collection::save() allows you to create/update documents according to whether they already exist in the collection
+associated with a model. The save method is called internally by the create and update methods of <a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a>.</p>
+<p>Also the method executes associated validators and events that are defined in the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span>       <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1952</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Umh, We can&#39;t store robots right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Great, a new robot was saved successfully!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#8220;_id&#8221; property is automatically updated with the <a class="reference external" href="http://www.php.net/manual/en/class.mongoid.php">MongoId</a> object created by the driver:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;The generated id is: &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="validation-messages">
+<h3>Validation Messages<a class="headerlink" href="#validation-messages" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> has a messaging subsystem that provides a flexible way to output or store the
+validation messages generated during the insert/update processes.</p>
+<p>Each message consists of an instance of the class <a class="reference internal" href="../api/Phalcon_Mvc_Model_Message.html"><em>Phalcon\Mvc\Model\Message</em></a>. The set of
+messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
+generated the message or the message type:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Message: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s2">&quot;Field: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getField</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s2">&quot;Type: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation-events-and-events-manager">
+<h3>Validation Events and Events Manager<a class="headerlink" href="#validation-events-and-events-manager" title="永久链接至标题">¶</a></h3>
+<p>Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a
+certain model. The following are the events supported by <a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> and their order of execution:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="12%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Name</th>
+<th class="head">Can stop operation?</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>beforeValidation</td>
+<td>YES</td>
+<td>Is executed before the validation process and the final insert/update to the database</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>beforeValidationOnCreate</td>
+<td>YES</td>
+<td>Is executed before the validation process only when an insertion operation is being made</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>beforeValidationOnUpdate</td>
+<td>YES</td>
+<td>Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting/Updating</td>
+<td>onValidationFails</td>
+<td>YES (already stopped)</td>
+<td>Is executed before the validation process only when an insertion operation is being made</td>
+</tr>
+<tr class="row-even"><td>Inserting</td>
+<td>afterValidationOnCreate</td>
+<td>YES</td>
+<td>Is executed after the validation process when an insertion operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Updating</td>
+<td>afterValidationOnUpdate</td>
+<td>YES</td>
+<td>Is executed after the validation process when an updating operation is being made</td>
+</tr>
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>afterValidation</td>
+<td>YES</td>
+<td>Is executed after the validation process</td>
+</tr>
+<tr class="row-odd"><td>Inserting/Updating</td>
+<td>beforeSave</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>beforeUpdate</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system only when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>beforeCreate</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system only when an inserting operation is being made</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>afterUpdate</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system only when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>afterCreate</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system only when an inserting operation is being made</td>
+</tr>
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>afterSave</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system</td>
+</tr>
+</tbody>
+</table>
+<p>To make a model to react to an event, we must to implement a method with the same name of the event:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeValidationOnCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;This is executed before create a Robot!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Events can be useful to assign values before perform a operation, for example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the creation date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeUpdate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the modification date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modified_in</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Additionally, this component is integrated with <a class="reference internal" href="events.html"><em>Phalcon\Events\Manager</em></a>, this means we can create
+listeners that run when an event is triggered.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
+
+<span class="c1">//Attach an anonymous function as a listener for &quot;model&quot; events</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+    <span class="s1">&#39;model&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$robot</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeSave&#39;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">==</span> <span class="s1">&#39;Scooby Doo&#39;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">echo</span> <span class="s2">&quot;Scooby Doo isn&#39;t a robot!&quot;</span><span class="p">;</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Scooby Doo&#39;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1969</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>In the above example the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
+objects created in our application use the same EventsManager then we need to assign this to the Models Manager:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Registering the collectionManager service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;collectionManager&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
+
+        <span class="c1">// Attach an anonymous function as a listener for &quot;model&quot; events</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s1">&#39;model&#39;</span><span class="p">,</span>
+            <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$model</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">get_class</span><span class="p">(</span><span class="nv">$model</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Robots&#39;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeSave&#39;</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">==</span> <span class="s1">&#39;Scooby Doo&#39;</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="k">echo</span> <span class="s2">&quot;Scooby Doo isn&#39;t a robot!&quot;</span><span class="p">;</span>
+                            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Setting a default EventsManager</span>
+        <span class="nv">$modelsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Collection\Manager</span><span class="p">();</span>
+        <span class="nv">$modelsManager</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$modelsManager</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-a-business-rule">
+<h3>Implementing a Business Rule<a class="headerlink" href="#implementing-a-business-rule" title="永久链接至标题">¶</a></h3>
+<p>When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.</p>
+<p>We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.</p>
+<p>The following example implements an event that validates the year cannot be smaller than 0 on update or insert:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeSave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Year cannot be smaller than zero!&quot;</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Some events return false as an indication to stop the current operation. If an event doesn&#8217;t return anything,
+<a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> will assume a true value.</p>
+</div>
+<div class="section" id="validating-data-integrity">
+<h3>Validating Data Integrity<a class="headerlink" href="#validating-data-integrity" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> provides several events to validate data and implement business rules. The special &#8220;validation&#8221;
+event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.</p>
+<p>The following example shows how to use it:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Validator\InclusionIn</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Validator\Uniqueness</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">InclusionIn</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;domain&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Mechanical&quot;</span><span class="p">,</span> <span class="s2">&quot;Virtual&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uniqueness</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The robot name must be unique&quot;</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validationHasFailed</span><span class="p">()</span> <span class="o">!=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above example performs a validation using the built-in validator &#8220;InclusionIn&#8221;. It checks the value of the field &#8220;type&#8221; in a domain list. If
+the value is not included in the method then the validator will fail and return false. The following built-in validators are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="63%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Explanation</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Email</td>
+<td>Validates that field contains a valid email format</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Email.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>ExclusionIn</td>
+<td>Validates that a value is not within a list of possible values</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Exclusionin.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>InclusionIn</td>
+<td>Validates that a value is within a list of possible values</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Inclusionin.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Numericality</td>
+<td>Validates that a field has a numeric format</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Numericality.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>Regex</td>
+<td>Validates that the value of a field matches a regular expression</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Regex.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Uniqueness</td>
+<td>Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_Uniqueness.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>StringLength</td>
+<td>Validates the length of a string</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Validator_StringLength.html"><em>Example</em></a></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the built-in validatiors, you can create your own validators:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UrlValidator</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection\Validator</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">$model</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$field</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">(</span><span class="s1">&#39;field&#39;</span><span class="p">);</span>
+
+        <span class="nv">$value</span>    <span class="o">=</span> <span class="nv">$model</span><span class="o">-&gt;</span><span class="nv">$field</span><span class="p">;</span>
+        <span class="nv">$filtered</span> <span class="o">=</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_URL</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$filtered</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="s2">&quot;The URL is invalid&quot;</span><span class="p">,</span> <span class="nv">$field</span><span class="p">,</span> <span class="s2">&quot;UrlValidator&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Adding the validator to a model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Customers</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">UrlValidator</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validationHasFailed</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The idea of ​​creating validators is make them reusable between several models. A validator can also be as simple as:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">==</span> <span class="s2">&quot;Old&quot;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Model\Message</span><span class="p">(</span>
+                <span class="s2">&quot;Sorry, old robots are not allowed anymore&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MyType&quot;</span>
+            <span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="deleting-records">
+<h2>Deleting Records<a class="headerlink" href="#deleting-records" title="永久链接至标题">¶</a></h2>
+<p>The method Phalcon\Mvc\Collection::delete() allows to delete a document. You can use it as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">!=</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Sorry, we can&#39;t delete the robot right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;The robot was deleted successfully!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also delete many documents by traversing a resultset with a foreach:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Sorry, we can&#39;t delete the robot right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;The robot was deleted successfully!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following events are available to define custom business rules that can be executed when a delete operation is performed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="24%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Name</th>
+<th class="head">Can stop operation?</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Deleting</td>
+<td>beforeDelete</td>
+<td>YES</td>
+<td>Runs before the delete operation is made</td>
+</tr>
+<tr class="row-odd"><td>Deleting</td>
+<td>afterDelete</td>
+<td>NO</td>
+<td>Runs after the delete operation was made</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="validation-failed-events">
+<h2>Validation Failed Events<a class="headerlink" href="#validation-failed-events" title="永久链接至标题">¶</a></h2>
+<p>Another type of events is available when the data validation process finds any inconsistency:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="18%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Name</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Insert or Update</td>
+<td>notSave</td>
+<td>Triggered when the insert/update operation fails for any reason</td>
+</tr>
+<tr class="row-odd"><td>Insert, Delete or Update</td>
+<td>onValidationFails</td>
+<td>Triggered when any data manipulation operation fails</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="setting-multiple-databases">
+<h2>Setting multiple databases<a class="headerlink" href="#setting-multiple-databases" title="永久链接至标题">¶</a></h2>
+<p>In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
+<a class="reference internal" href="../api/Phalcon_Mvc_Collection.html"><em>Phalcon\Mvc\Collection</em></a> needs to connect to the database it requests the &#8220;mongo&#8221; service
+in the application&#8217;s services container. You can overwrite this service setting it in the initialize method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// This service returns a mongo database at 192.168.1.100</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;mongo1&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mongo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://scott:nekhen@192.168.1.100&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$mongo</span><span class="o">-&gt;</span><span class="na">selectDb</span><span class="p">(</span><span class="s2">&quot;management&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// This service returns a mongo database at localhost</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;mongo2&#39;</span><span class="p">,</span>
+    <span class="k">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$mongo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mongo</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$mongo</span><span class="o">-&gt;</span><span class="na">selectDb</span><span class="p">(</span><span class="s2">&quot;invoicing&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Then, in the Initialize method, we define the connection service for the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setConnectionService</span><span class="p">(</span><span class="s1">&#39;mongo1&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="injecting-services-into-models">
+<h2>Injecting services into Models<a class="headerlink" href="#injecting-services-into-models" title="永久链接至标题">¶</a></h2>
+<p>You may be required to access the application services within a model, the following example explains how to do that:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Collection</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">notSave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Obtain the flash service from the DI container</span>
+        <span class="nv">$flash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">&#39;flash&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Show validation messages</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMesages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$message</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#8220;notSave&#8221; event is triggered every time that a &#8220;create&#8221; or &#8220;update&#8221; action fails. So we&#8217;re flashing the validation messages
+obtaining the &#8220;flash&#8221; service from the DI container. By doing this, we don&#8217;t have to print messages after each save.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="views.html" title="Using Views"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Phalcon Query Language (PHQL)"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

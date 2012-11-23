@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Phalcon Developer Tools &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Phalcon Developer Tools on Windows" href="wintools.html" />
+    <link rel="prev" title="Debugging Applications" href="debug.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="wintools.html" title="Phalcon Developer Tools on Windows"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugging Applications"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Phalcon Developer Tools</a><ul>
+<li><a class="reference internal" href="#download">Download</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getting-available-commands">Getting Available Commands</a></li>
+<li><a class="reference internal" href="#generating-a-project-skeleton">Generating a Project Skeleton</a></li>
+<li><a class="reference internal" href="#generating-controllers">Generating Controllers</a></li>
+<li><a class="reference internal" href="#preparing-database-settings">Preparing Database Settings</a></li>
+<li><a class="reference internal" href="#generating-models">Generating Models</a></li>
+<li><a class="reference internal" href="#scaffold-a-crud">Scaffold a CRUD</a></li>
+<li><a class="reference internal" href="#web-interface-to-tools">Web Interface to Tools</a></li>
+<li><a class="reference internal" href="#integrating-tools-with-phpstorm-ide">Integrating Tools with PhpStorm IDE</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="debug.html"
+                                  title="上一章">Debugging Applications</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="wintools.html"
+                                  title="下一章">Phalcon Developer Tools on Windows</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tools.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="phalcon-developer-tools">
+<h1>Phalcon Developer Tools<a class="headerlink" href="#phalcon-developer-tools" title="永久链接至标题">¶</a></h1>
+<p>These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with
+a simple command, allowing you to easily develop applications using Phalcon.</p>
+<blockquote class="highlights">
+<div><strong>Important:</strong> Phalcon Framework version 0.5.0 or greater is needed to use developer tools. It is highly recommended
+to use PHP 5.3.6 or greater. If you prefer to use the web version instead of the console, this <a class="reference external" href="http://blog.phalconphp.com/post/23251010409/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.</div></blockquote>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="永久链接至标题">¶</a></h2>
+<p>You can download or clone a cross platform package containing the developer tools from <a class="reference external" href="https://github.com/phalcon/phalcon-devtools">Github</a>.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h3>
+<p>These are detailed instructions on how to install the developer tools on different platforms:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wintools.html">Phalcon Developer Tools on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mactools.html">Phalcon Developer Tools on Mac OS X</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linuxtools.html">Phalcon Developer Tools on Linux</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="getting-available-commands">
+<h2>Getting Available Commands<a class="headerlink" href="#getting-available-commands" title="永久链接至标题">¶</a></h2>
+<p>You can get a list of available commands in Phalcon tools by typing: phalcon commands</p>
+<div class="figure align-center">
+<img alt="../_images/tools-4.png" src="../_images/tools-4.png" />
+</div>
+</div>
+<div class="section" id="generating-a-project-skeleton">
+<h2>Generating a Project Skeleton<a class="headerlink" href="#generating-a-project-skeleton" title="永久链接至标题">¶</a></h2>
+<p>You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the
+project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-1.png" src="../_images/tools-1.png" />
+</div>
+<p>The above recommended project structure was generated:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-2.png" src="../_images/tools-2.png" />
+</div>
+<p>You could add the parameter <em>&#8211;help</em> to get help on the usage of a certain script:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-3.png" src="../_images/tools-3.png" />
+</div>
+<p>Accessing the project from the web server will show you:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-6.png" src="../_images/tools-6.png" />
+</div>
+</div>
+<div class="section" id="generating-controllers">
+<h2>Generating Controllers<a class="headerlink" href="#generating-controllers" title="永久链接至标题">¶</a></h2>
+<p>The command &#8220;create-controller&#8221; generates controller skeleton structures. It&#8217;s important to invoke this command inside a directory
+that already has a Phalcon project.</p>
+<div class="figure align-center">
+<img alt="../_images/tools-5.png" src="../_images/tools-5.png" />
+</div>
+<p>The following code is generated by the script:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">TestController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparing-database-settings">
+<h2>Preparing Database Settings<a class="headerlink" href="#preparing-database-settings" title="永久链接至标题">¶</a></h2>
+<p>When a project is generated using developer tools. A configuration file can be found in <em>app/config/config.ini</em> To generate models
+or scaffold, you will need to change the settings used to connect to your database.</p>
+<p>Change the database section in your config.ini file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[database]</span>
+<span class="na">adapter</span>  <span class="o">=</span> <span class="s">Mysql</span>
+<span class="na">host</span>     <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+<span class="na">username</span> <span class="o">=</span> <span class="s">&quot;root&quot;</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">&quot;secret&quot;</span>
+<span class="na">name</span>     <span class="o">=</span> <span class="s">&quot;store_db&quot;</span>
+
+<span class="k">[phalcon]</span>
+<span class="na">controllersDir</span> <span class="o">=</span> <span class="s">&quot;../app/controllers/&quot;</span>
+<span class="na">modelsDir</span>      <span class="o">=</span> <span class="s">&quot;../app/models/&quot;</span>
+<span class="na">viewsDir</span>       <span class="o">=</span> <span class="s">&quot;../app/views/&quot;</span>
+<span class="na">baseUri</span>        <span class="o">=</span> <span class="s">&quot;/store/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-models">
+<h2>Generating Models<a class="headerlink" href="#generating-models" title="永久链接至标题">¶</a></h2>
+<p>There are several ways to create models. You can create all models from the default database connection or some selectively. Models
+can have public attributes for the field representations or setters/getters can be used. The simplest way to generate a model is:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-7.png" src="../_images/tools-7.png" />
+</div>
+<p>All table fields are declared public for direct access.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$types_id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$price</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$quantity</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$status</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By adding the <em>&#8211;get-set</em> you can generate the fields with protected variables and public setter/getter methods. Those methods
+can help in business logic implementation within the setter/getter methods.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$types_id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$price</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$quantity</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$status</span><span class="p">;</span>
+
+
+    <span class="sd">/**</span>
+<span class="sd">     * Method to set the value of field id</span>
+<span class="sd">     * @param integer $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setId</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Method to set the value of field types_id</span>
+<span class="sd">     * @param integer $types_id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setTypesId</span><span class="p">(</span><span class="nv">$types_id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">types_id</span> <span class="o">=</span> <span class="nv">$types_id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns the value of field status</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStatus</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the
+addition or removal of fields and properties, without worrying about losing changes made to the model itself.
+The following screencast shows you how it works:</p>
+<div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>
+<div class="section" id="scaffold-a-crud">
+<h2>Scaffold a CRUD<a class="headerlink" href="#scaffold-a-crud" title="永久链接至标题">¶</a></h2>
+<p>Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and
+controllers for a new resource in a single operation, scaffolding is the tool for the job.</p>
+<p>Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting
+to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the
+framework works or develop prototypes. The screenshot below shows a scaffold based on the table &#8220;products&#8221;:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-9.png" src="../_images/tools-9.png" />
+</div>
+<p>The scaffold generator will build several files in your application, along with some folders. Here&#8217;s a quick overview of what will be generated:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">File</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>app/controllers/ProductsController.php</td>
+<td>The Products controller</td>
+</tr>
+<tr class="row-odd"><td>app/models/Products.php</td>
+<td>The Products model</td>
+</tr>
+<tr class="row-even"><td>app/views/layout/products.phtml</td>
+<td>Controller layout for Products</td>
+</tr>
+<tr class="row-odd"><td>app/views/products/new.phtml</td>
+<td>View for the action &#8220;new&#8221;</td>
+</tr>
+<tr class="row-even"><td>app/views/products/edit.phtml</td>
+<td>View for the action &#8220;edit&#8221;</td>
+</tr>
+<tr class="row-odd"><td>app/views/products/search.phtml</td>
+<td>View for the action &#8220;search&#8221;</td>
+</tr>
+<tr class="row-even"><td>app/views/products/edit.phtml</td>
+<td>View for the action &#8220;edit&#8221;</td>
+</tr>
+</tbody>
+</table>
+<p>When browsing the recently generated controller, you will see a search form and a link to create a new Product:</p>
+<div class="figure align-center">
+<img alt="../_images/tools-10.png" src="../_images/tools-10.png" />
+</div>
+<p>The &#8220;create page&#8221; allows you to create products applying validations on the Products model. Phalcon will automatically validate
+not null fields producing warnings if any of them is required.</p>
+<div class="figure align-center">
+<img alt="../_images/tools-11.png" src="../_images/tools-11.png" />
+</div>
+<p>After performing a search, a pager component is available to show paged results. Use the &#8220;Edit&#8221; or &#8220;Delete&#8221; links in front of each result to perform such actions.</p>
+<div class="figure align-center">
+<img alt="../_images/tools-12.png" src="../_images/tools-12.png" />
+</div>
+</div>
+<div class="section" id="web-interface-to-tools">
+<h2>Web Interface to Tools<a class="headerlink" href="#web-interface-to-tools" title="永久链接至标题">¶</a></h2>
+<p>Also, if you prefer, it&#8217;s possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:</p>
+<div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>
+<div class="section" id="integrating-tools-with-phpstorm-ide">
+<h2>Integrating Tools with PhpStorm IDE<a class="headerlink" href="#integrating-tools-with-phpstorm-ide" title="永久链接至标题">¶</a></h2>
+<p>The screencast below shows how to integrate developer tools with the <a class="reference external" href="http://www.jetbrains.com/phpstorm/">PhpStorm IDE</a>. The configuration steps could be easily adapted to other IDEs for PHP.</p>
+<div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="wintools.html" title="Phalcon Developer Tools on Windows"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugging Applications"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

@@ -214,7 +214,6 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         $router->add(
             "/products/:action",
             array(
-                'module'     => 'frontend',
                 'controller' => 'products',
                 'action'     => 1,
             )
@@ -325,7 +324,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     <?php
 
-    // Request the services from the DI container
+    // Request the services from the services container
     $router = $di->getShared('router');
     $router->handle();
 
@@ -402,3 +401,8 @@ The following example demonstrates how to attach listeners to this component:
             // ...
         }
     );
+
+External Resources
+------------------
+
+* `MVC examples on Github <https://github.com/phalcon/mvc>`_

@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation on WAMP &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="安装" href="install.html" />
+    <link rel="next" title="Nginx Installation Notes" href="nginx.html" />
+    <link rel="prev" title="Installation on XAMPP" href="xampp.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="nginx.html" title="Nginx Installation Notes"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="xampp.html" title="Installation on XAMPP"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="install.html" accesskey="U">安装</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Installation on WAMP</a><ul>
+<li><a class="reference internal" href="#download-the-right-version-of-phalcon">Download the right version of Phalcon</a></li>
+<li><a class="reference internal" href="#related-guides">Related Guides</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="xampp.html"
+                                  title="上一章">Installation on XAMPP</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="nginx.html"
+                                  title="下一章">Nginx Installation Notes</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/wamp.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="installation-on-wamp">
+<h1>Installation on WAMP<a class="headerlink" href="#installation-on-wamp" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="http://www.wampserver.com/en/">WampServer</a> is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.</p>
+<div class="section" id="download-the-right-version-of-phalcon">
+<h2>Download the right version of Phalcon<a class="headerlink" href="#download-the-right-version-of-phalcon" title="永久链接至标题">¶</a></h2>
+<p>WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.</p>
+<p>After download the Phalcon library you will have a zip file like the one shown below:</p>
+<div class="figure align-center">
+<img alt="../_images/xampp-1.png" src="../_images/xampp-1.png" />
+</div>
+<p>Extract the library from the archive to get the Phalcon DLL:</p>
+<div class="figure align-center">
+<img alt="../_images/xampp-2.png" src="../_images/xampp-2.png" />
+</div>
+<p>Copy the file php_phalcon.dll to the PHP extensions. If WAMP is installed in the c:\wamp folder, the extension needs to be in ﻿C:\wamp\bin\php\php5.3.10\ext</p>
+<div class="figure align-center">
+<img alt="../_images/wamp-1.png" src="../_images/wamp-1.png" />
+</div>
+<p>Edit the php.ini file, it is located at ﻿﻿C:\wamp\bin\php\php5.3.10\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.</p>
+<div class="figure align-center">
+<img alt="../_images/wamp-2.png" src="../_images/wamp-2.png" />
+</div>
+<p>Also edit another php.ini file, which is located at ﻿﻿﻿C:\wamp\bin\apache\Apache2.2.21\bin\php.ini. Append at the end of the file: extension=php_phalcon.dll and save it.</p>
+<p>Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose &#8220;Restart All Services&#8221; from the pop-up menu. Check out that tray icon will become green again.</p>
+<div class="figure align-center">
+<img alt="../_images/wamp-3.png" src="../_images/wamp-3.png" />
+</div>
+<p>Open your browser to navigate to <a class="reference external" href="http://localhost">http://localhost</a>. The WAMP welcome page will appear. Look at the section &#8220;extensions loaded&#8221; to check if phalcon was loaded.</p>
+<div class="figure align-center">
+<img alt="../_images/wamp-4.png" src="../_images/wamp-4.png" />
+</div>
+<p>Congrats!, You are now flying with Phalcon.</p>
+</div>
+<div class="section" id="related-guides">
+<h2>Related Guides<a class="headerlink" href="#related-guides" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="install.html"><em>General Installation</em></a></li>
+<li><a class="reference internal" href="xampp.html"><em>Detailed Installation on XAMPP for Windows</em></a></li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="nginx.html" title="Nginx Installation Notes"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="xampp.html" title="Installation on XAMPP"
+             >上一页</a> |</li>
+          <li><a href="install.html" >安装</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data Pagination &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Improving Performance with Cache" href="cache.html" />
+    <link rel="prev" title="Reading Configuration" href="config.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="cache.html" title="Improving Performance with Cache"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="Reading Configuration"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Data Pagination</a><ul>
+<li><a class="reference internal" href="#data-adapters">Data Adapters</a></li>
+<li><a class="reference internal" href="#using-paginators">Using Paginators</a></li>
+<li><a class="reference internal" href="#page-attributes">Page Attributes</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="config.html"
+                                  title="上一章">Reading Configuration</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="cache.html"
+                                  title="下一章">Improving Performance with Cache</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/pagination.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="data-pagination">
+<h1>Data Pagination<a class="headerlink" href="#data-pagination" title="永久链接至标题">¶</a></h1>
+<p>The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\Paginator offers a
+fast and convenient way to split these sets of data browsable pages.</p>
+<div class="section" id="data-adapters">
+<h2>Data Adapters<a class="headerlink" href="#data-adapters" title="永久链接至标题">¶</a></h2>
+<p>This component makes use of adapters to encapsulate different sources of data:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Adapter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>NativeArray</td>
+<td>Use a PHP array as source data</td>
+</tr>
+<tr class="row-odd"><td>Model</td>
+<td>Use a Phalcon\Model\Resultset object as source data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-paginators">
+<h2>Using Paginators<a class="headerlink" href="#using-paginators" title="永久链接至标题">¶</a></h2>
+<p>In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Current page to show</span>
+<span class="c1">// In a controller this can be:</span>
+<span class="c1">// $this-&gt;request-&gt;getQuery(&#39;page&#39;, &#39;int&#39;); // GET</span>
+<span class="c1">// $this-&gt;request-&gt;getPost(&#39;page&#39;, &#39;int&#39;); // POST</span>
+<span class="nv">$currentPage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&quot;page&quot;</span><span class="p">];</span>
+
+<span class="c1">// The data set to paginate</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// Create a Model paginator, show 10 rows by page starting from $currentPage</span>
+<span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Paginator\Adapter\Model</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;data&quot;</span> <span class="o">=&gt;</span> <span class="nv">$robots</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span><span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span> <span class="o">=&gt;</span> <span class="nv">$numberPage</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Get the paginated results</span>
+<span class="nv">$page</span> <span class="o">=</span> <span class="nv">$paginator</span><span class="o">-&gt;</span><span class="na">getPaginate</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Variable $currentPage controls the page to be displayed. The $paginator-&gt;getPaginate() returns a $page object that contains the paginated data. It can be used for generating the pagination:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Id<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Type<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$page</span><span class="o">-&gt;</span><span class="na">items</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span> <span class="p">{</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div>
+</div>
+<p>The $page object also contains navigation data:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search&quot;</span><span class="nt">&gt;</span>First<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">last</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Last<span class="nt">&lt;/a&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">&quot;You are in page &quot;</span><span class="p">,</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">current</span><span class="p">,</span> <span class="s2">&quot; of &quot;</span><span class="p">,</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">total_pages</span><span class="p">;</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="page-attributes">
+<h2>Page Attributes<a class="headerlink" href="#page-attributes" title="永久链接至标题">¶</a></h2>
+<p>The $page object has the following attributes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Adapter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>items</td>
+<td>The set of records to be displayed at the current page</td>
+</tr>
+<tr class="row-odd"><td>before</td>
+<td>The previous page to the current one</td>
+</tr>
+<tr class="row-even"><td>next</td>
+<td>The next page to the current one</td>
+</tr>
+<tr class="row-odd"><td>last</td>
+<td>The last page in the set of records</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="cache.html" title="Improving Performance with Cache"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="Reading Configuration"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

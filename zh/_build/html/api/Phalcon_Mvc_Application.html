@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\Application &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Mvc\Application\Exception" href="Phalcon_Mvc_Application_Exception.html" />
+    <link rel="prev" title="Class Phalcon\Logger\Item" href="Phalcon_Logger_Item.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Application_Exception.html" title="Class Phalcon\Mvc\Application\Exception"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Logger_Item.html" title="Class Phalcon\Logger\Item"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\Application</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="Phalcon_Logger_Item.html"
+                                  title="上一章">Class <strong>Phalcon\Logger\Item</strong></a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Mvc_Application_Exception.html"
+                                  title="下一章">Class <strong>Phalcon\Mvc\Application\Exception</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Mvc_Application.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-mvc-application">
+<h1>Class <strong>Phalcon\Mvc\Application</strong><a class="headerlink" href="#class-phalcon-mvc-application" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> <a class="reference internal" href="Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a></p>
+<p>This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Application</span>
+ <span class="p">{</span>
+
+    <span class="o">/**</span>
+     <span class="o">*</span> <span class="nx">Register</span> <span class="nx">the</span> <span class="nx">services</span> <span class="nx">here</span> <span class="nx">to</span> <span class="nx">make</span> <span class="nx">them</span> <span class="nx">general</span> <span class="k">or</span> <span class="nx">register</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">ModuleDefinition</span> <span class="nx">to</span> <span class="nx">make</span> <span class="nx">them</span> <span class="nx">module</span><span class="o">-</span><span class="nx">specific</span>
+     <span class="o">*</span><span class="nx">\</span><span class="o">/</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">_registerServices</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="o">/**</span>
+     <span class="o">*</span> <span class="k">This</span> <span class="nx">method</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">right</span> <span class="nx">module</span>
+     <span class="o">*</span><span class="nx">\</span><span class="o">/</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerModules</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;frontend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Frontend\Module&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/frontend/Module.php&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;backend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Backend\Module&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/backend/Module.php&#39;</span>
+                    <span class="p">)</span>
+            <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">();</span>
+<span class="nv">$application</span><span class="o">-&gt;</span><span class="na">main</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a> $dependencyInjector)</p>
+<p>Sets the DependencyInjector container</p>
+<p>public <a class="reference internal" href="Phalcon_DI.html"><em>Phalcon\DI</em></a>  <strong>getDI</strong> ()</p>
+<p>Returns the DependencyInjector container</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a> $eventsManager)</p>
+<p>Sets the events manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>  <strong>getEventsManager</strong> ()</p>
+<p>Returns the internal event manager</p>
+<p>public  <strong>registerModules</strong> (<em>array</em> $modules)</p>
+<p>Register an array of modules present in the application</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerModules</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;frontend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Frontend\Module&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/frontend/Module.php&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;backend&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple\Backend\Module&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/backend/Module.php&#39;</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>public <em>array</em>  <strong>getModules</strong> ()</p>
+<p>Return the modules registered in the application</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a>  <strong>handle</strong> ()</p>
+<p>Handles a MVC request</p>
+<p>public  <strong>__get</strong> (<em>string</em> $propertyName) inherited from Phalcon\DI\Injectable</p>
+<p>Magic method __get</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Mvc_Application_Exception.html" title="Class Phalcon\Mvc\Application\Exception"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Logger_Item.html" title="Class Phalcon\Logger\Item"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

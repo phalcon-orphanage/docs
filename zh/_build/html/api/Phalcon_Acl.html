@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Acl &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Acl\Adapter\Memory" href="Phalcon_Acl_Adapter_Memory.html" />
+    <link rel="prev" title="API Indice" href="index.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Acl_Adapter_Memory.html" title="Class Phalcon\Acl\Adapter\Memory"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="API Indice"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Acl</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="index.html"
+                                  title="上一章">API Indice</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="Phalcon_Acl_Adapter_Memory.html"
+                                  title="下一章">Class <strong>Phalcon\Acl\Adapter\Memory</strong></a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Acl.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="class-phalcon-acl">
+<h1>Class <strong>Phalcon\Acl</strong><a class="headerlink" href="#class-phalcon-acl" title="永久链接至标题">¶</a></h1>
+<p>This component allows to manage ACL lists. An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span><span class="p">();</span>
+
+<span class="c1">//Default action is deny access</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span><span class="nx">Phalcon\Acl</span><span class="o">::</span><span class="na">DENY</span><span class="p">);</span>
+
+<span class="c1">//Create some roles</span>
+<span class="nv">$roleAdmins</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s1">&#39;Administrators&#39;</span><span class="p">,</span> <span class="s1">&#39;Super-User role&#39;</span><span class="p">);</span>
+<span class="nv">$roleGuests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;Guests&quot; role to acl</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$roleGuests</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;Designers&quot; role to acl</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s1">&#39;Designers&#39;</span><span class="p">));</span>
+
+<span class="c1">//Define the &quot;Customers&quot; resource</span>
+<span class="nv">$customersResource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">(</span><span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers management&#39;</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;customers&quot; resource with a couple of operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">));</span>
+
+<span class="c1">//Set access level for roles into resources</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">);</span>
+
+<span class="c1">//Check whether role has access to the operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="c1">//Returns 0</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+</pre></div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>ALLOW</strong></p>
+<p><em>integer</em> <strong>DENY</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>setEventsManager</strong> (<em>unknown</em> $eventsManager)</p>
+<p>Sets the events manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>  <strong>getEventsManager</strong> ()</p>
+<p>Returns the internal event manager</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Acl_Adapter_Memory.html" title="Class Phalcon\Acl\Adapter\Memory"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="API Indice"
+             >上一页</a> |</li>
+          <li><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

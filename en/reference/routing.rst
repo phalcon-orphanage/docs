@@ -98,6 +98,10 @@ to understand. The following placeholders are supported:
 +--------------+--------------------+--------------------------------------------------------------------+
 | /:params     | (/.*)*             | Matches a list of optional words separated by slashes              |
 +--------------+--------------------+--------------------------------------------------------------------+
+| /:namespace  | /([a-zA-Z0-9\_]+)  | Matches a single level namespace name                              |
++--------------+--------------------+--------------------------------------------------------------------+
+| /:int        | /([0-9]+)          | Matches an integer parameter                                       |
++--------------+--------------------+--------------------------------------------------------------------+
 
 Since you can add many routes as you need using add(), the order in which you add the routes indicates
 their relevance, last routes added have more relevance than first added. Internally, all defined routes
@@ -217,6 +221,23 @@ The following examples produce the same result:
         )
     );
 
+Mixing Array and Short Syntax
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
+are added to the route paths according to the position on which they were defined:
+
+.. code-block:: php
+
+    <?php
+
+    //First position must be skipped because it is used for
+    //the named parameter 'country'
+    $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
+        array(
+            'section' => 2, //Positions start with 2
+            'article' => 3
+        )
+    );
 
 Routing to Modules
 ^^^^^^^^^^^^^^^^^^

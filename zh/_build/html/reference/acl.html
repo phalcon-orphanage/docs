@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Access Control Lists ACL &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Multi-lingual Support" href="translate.html" />
+    <link rel="prev" title="Improving Performance with Cache" href="cache.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="translate.html" title="Multi-lingual Support"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="cache.html" title="Improving Performance with Cache"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Access Control Lists ACL</a><ul>
+<li><a class="reference internal" href="#creating-an-acl">Creating an ACL</a></li>
+<li><a class="reference internal" href="#adding-roles-to-the-acl">Adding Roles to the ACL</a></li>
+<li><a class="reference internal" href="#adding-resources">Adding Resources</a></li>
+<li><a class="reference internal" href="#defining-access-controls">Defining Access Controls</a></li>
+<li><a class="reference internal" href="#querying-an-acl">Querying an ACL</a></li>
+<li><a class="reference internal" href="#roles-inheritance">Roles Inheritance</a></li>
+<li><a class="reference internal" href="#serializing-acl-lists">Serializing ACL lists</a></li>
+<li><a class="reference internal" href="#acl-events">Acl Events</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="cache.html"
+                                  title="上一章">Improving Performance with Cache</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="translate.html"
+                                  title="下一章">Multi-lingual Support</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/acl.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="access-control-lists-acl">
+<h1>Access Control Lists ACL<a class="headerlink" href="#access-control-lists-acl" title="永久链接至标题">¶</a></h1>
+<p><a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> provides an easy and lightweight management of ACLs as well as the permissions attached to them. <a class="reference external" href="http://en.wikipedia.org/wiki/Access_control_list">Access Control Lists</a> (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.</p>
+<p>In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.</p>
+<div class="section" id="creating-an-acl">
+<h2>Creating an ACL<a class="headerlink" href="#creating-an-acl" title="永久链接至标题">¶</a></h2>
+<p>This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Adapter\Memory</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>By default <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a &#8220;deny&#8221; level as a default access level.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Default action is deny access</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span><span class="nx">Phalcon\Acl</span><span class="o">::</span><span class="na">DENY</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-roles-to-the-acl">
+<h2>Adding Roles to the ACL<a class="headerlink" href="#adding-roles-to-the-acl" title="永久链接至标题">¶</a></h2>
+<p>A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><em>Phalcon\Acl\Role</em></a> class is available to create roles in a more structured way. Let&#8217;s add some roles to our recently created list:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Create some roles</span>
+<span class="nv">$roleAdmins</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Administrators&quot;</span><span class="p">,</span> <span class="s2">&quot;Super-User role&quot;</span><span class="p">);</span>
+<span class="nv">$roleGuests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add &quot;Guests&quot; role to acl</span>
+<span class="nx">acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$roleGuests</span><span class="p">);</span>
+
+<span class="c1">// Add &quot;Designers&quot; role to acl without a Phalcon\Acl\Role</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">&quot;Designers&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As you can see, roles are defined directly without using a instance.</p>
+</div>
+<div class="section" id="adding-resources">
+<h2>Adding Resources<a class="headerlink" href="#adding-resources" title="永久链接至标题">¶</a></h2>
+<p>Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the <a class="reference internal" href="../api/Phalcon_Acl_Resource.html"><em>Phalcon\Acl\Resource</em></a> class can be used in defining resources. It&#8217;s important to add related actions or operations to a resource so that the ACL can understand what it should to control.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Define the &quot;Customers&quot; resource</span>
+<span class="nv">$customersResource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Resource</span><span class="p">(</span><span class="s2">&quot;Customers&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add &quot;customers&quot; resource with a couple of operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-access-controls">
+<h2>Defining Access Controls<a class="headerlink" href="#defining-access-controls" title="永久链接至标题">¶</a></h2>
+<p>Now we&#8217;ve roles and resources. It&#8217;s time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level &#8220;allow&#8221; or &#8220;deny&#8221;.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Set access level for roles into resources</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.</p>
+</div>
+<div class="section" id="querying-an-acl">
+<h2>Querying an ACL<a class="headerlink" href="#querying-an-acl" title="永久链接至标题">¶</a></h2>
+<p>Once the list has been completely defined. We can query it to check if a role has a given permission or not.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Check whether role has access to the operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">);</span>   <span class="c1">//Returns 0</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="roles-inheritance">
+<h2>Roles Inheritance<a class="headerlink" href="#roles-inheritance" title="永久链接至标题">¶</a></h2>
+<p>You can build complex role structures using the inheritance that <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><em>Phalcon\Acl\Role</em></a> provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Create some roles</span>
+<span class="nv">$roleAdmins</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Administrators&quot;</span><span class="p">,</span> <span class="s2">&quot;Super-User role&quot;</span><span class="p">);</span>
+<span class="nv">$roleGuests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add &quot;Guests&quot; role to acl</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$roleGuests</span><span class="p">);</span>
+
+<span class="c1">// Add &quot;Administrators&quot; role inheriting from &quot;Guests&quot; its accesses</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$roleAdmins</span><span class="p">,</span> <span class="nv">$roleGuests</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="serializing-acl-lists">
+<h2>Serializing ACL lists<a class="headerlink" href="#serializing-acl-lists" title="永久链接至标题">¶</a></h2>
+<p>To improve performance <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Check whether acl data already exist</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">file_exists</span><span class="p">(</span><span class="s2">&quot;app/security/acl.data&quot;</span><span class="p">))</span> <span class="p">{</span>
+
+    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl</span><span class="p">(</span><span class="s2">&quot;Memory&quot;</span><span class="p">);</span>
+
+    <span class="c1">//... Define roles, resources, access, etc</span>
+
+    <span class="c1">// Store serialized list into plain file</span>
+    <span class="nb">file_put_contents</span><span class="p">(</span><span class="s2">&quot;app/security/acl.data&quot;</span><span class="p">,</span> <span class="nb">serialize</span><span class="p">(</span><span class="nv">$acl</span><span class="p">));</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+     <span class="c1">//Restore acl object from serialized file</span>
+     <span class="nv">$acl</span> <span class="o">=</span> <span class="nb">unserialize</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;app/security/acl.data&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Use acl list as needed</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Access granted!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Access denied :(&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="acl-events">
+<h2>Acl Events<a class="headerlink" href="#acl-events" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> is able to send events to a <a class="reference internal" href="events.html"><em>EventsManager</em></a> if it&#8217;s present. Events
+are triggered using the type &#8220;acl&#8221;. Some events when returning boolean false could stop the active operation. The following events are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="58%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event Name</th>
+<th class="head">Triggered</th>
+<th class="head">Can stop operation?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeCheckAccess</td>
+<td>Triggered before check if a role/resource has access</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>afterCheckAccess</td>
+<td>Triggered after check if a role/resource has access</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The following example demonstrates how to attach listeners to this component:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Create an event manager</span>
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
+
+<span class="c1">//Attach a listener for type &quot;acl&quot;</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;acl&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$acl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeCheckAccess&#39;</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">echo</span>   <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">getActiveRole</span><span class="p">(),</span>
+                <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">getActiveResource</span><span class="p">(),</span>
+                <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">getActiveAccess</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Adapter\Memory</span><span class="p">();</span>
+
+<span class="c1">//Setup the $acl</span>
+<span class="c1">//...</span>
+
+<span class="c1">//Bind the eventsManager to the acl component</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventManagers</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="translate.html" title="Multi-lingual Support"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="cache.html" title="Improving Performance with Cache"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>

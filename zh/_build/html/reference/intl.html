@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Internationalization &mdash; Phalcon 0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/configurationblock.css" type="text/css" />
+    <!--
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/layout.css" type="text/css" />
+    -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
+    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
+    <link rel="stylesheet" href="../_static/s.css" type="text/css">
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 0.6.0 documentation" href="../index.html" />
+    <link rel="next" title="Database Migrations" href="migrations.html" />
+    <link rel="prev" title="Database Abstraction Layer" href="db.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="header">
+        <h1><a href="http://phalconphp.com/index" ><img border="0" src="../_static/img/logo-small.png"></a></h1>
+        <div align="center">
+          <div id="nav-main" role="navigation">
+            <div class="menubar">
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
+              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="migrations.html" title="Database Migrations"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="db.html" title="Database Abstraction Layer"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 0.6.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            
+            <div id="searchbox" style="">
+              <h3>Search</h3>
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="text" name="q" size="18">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Internationalization</a><ul>
+<li><a class="reference internal" href="#find-out-best-available-locale">Find out best available Locale</a></li>
+<li><a class="reference internal" href="#formatting-messages-based-on-locale">Formatting messages based on Locale</a></li>
+<li><a class="reference internal" href="#locale-sensitive-comparison">Locale-Sensitive comparison</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="db.html"
+                                  title="上一章">Database Abstraction Layer</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="migrations.html"
+                                  title="下一章">Database Migrations</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/intl.txt"
+                     rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                <div class="body" >
+                      
+  <div class="section" id="internationalization">
+<h1>Internationalization<a class="headerlink" href="#internationalization" title="永久链接至标题">¶</a></h1>
+<p>Phalcon is written in C as an extension for PHP. There is a <a class="reference external" href="http://pecl.php.net/package/intl">PECL</a> extension that offers internationalization functions to PHP applications called <a class="reference external" href="http://pecl.php.net/package/intl">intl</a>. Its documentation can be found in the pages of the official <a class="reference external" href="http://www.php.net/manual/en/intro.intl.php">PHP manual</a>.</p>
+<p>Phalcon does not offer this functionality, since creating such a component would be replicating existing code.</p>
+<p>In the examples below, we will show you how to implement the <a class="reference external" href="http://pecl.php.net/package/intl">intl</a> extension&#8217;s functionality into Phalcon powered applications.</p>
+<blockquote class="highlights">
+<div>This guide is not intended to be a complete documentation of the <a class="reference external" href="http://pecl.php.net/package/intl">intl</a> extension. Please visit its the <a class="reference external" href="http://www.php.net/manual/en/book.intl.php">documentation</a> of the extension for a reference.</div></blockquote>
+<div class="section" id="find-out-best-available-locale">
+<h2>Find out best available Locale<a class="headerlink" href="#find-out-best-available-locale" title="永久链接至标题">¶</a></h2>
+<p>There are several ways to find out the best available locale using <a class="reference external" href="http://pecl.php.net/package/intl">intl</a>. One of them is to check the HTTP &#8220;Accept-Language&#8221; header:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$locale</span> <span class="o">=</span> <span class="nx">Locale</span><span class="o">::</span><span class="na">acceptFromHttp</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_ACCEPT_LANGUAGE&quot;</span><span class="p">]);</span>
+
+<span class="c1">// Locale could be something like &quot;en_GB&quot; or &quot;en&quot;</span>
+<span class="k">echo</span> <span class="nv">$locale</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API. Examples of identifiers include:</p>
+<ul class="simple">
+<li>en-US (English, United States)</li>
+<li>zh-Hant-TW (Chinese, Traditional Script, Taiwan)</li>
+<li>fr-CA, fr-FR (French for Canada and France respectively)</li>
+</ul>
+</div>
+<div class="section" id="formatting-messages-based-on-locale">
+<h2>Formatting messages based on Locale<a class="headerlink" href="#formatting-messages-based-on-locale" title="永久链接至标题">¶</a></h2>
+<p>Part of creating a localized application is to produce concatenated, language-neutral messages. The <a class="reference external" href="http://www.php.net/manual/en/class.messageformatter.php">MessageFormatter</a> allows for the production of those messages.</p>
+<p>Printing numbers formatted based on some locale:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Prints € 4 560</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="s2">&quot;€ {0, number, integer}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">4560</span><span class="p">));</span>
+
+<span class="c1">// Prints USD$ 4,560.5</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;USD$ {0, number}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mf">4560.50</span><span class="p">));</span>
+
+<span class="c1">// Prints ARS$ 1.250,25</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;es_AR&quot;</span><span class="p">,</span> <span class="s2">&quot;ARS$ {0, number}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mf">1250.25</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Message formatting using time and date patterns:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Setting parameters</span>
+<span class="nv">$time</span>   <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nv">$time</span><span class="p">,</span> <span class="nv">$time</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;At 3:50:31 PM on Apr 19, 2012, there was a disturbance on planet 7.&quot;</span>
+<span class="nv">$pattern</span>   <span class="o">=</span> <span class="s2">&quot;At {1, time} on {1, date}, there was a disturbance on planet {0, number}.&quot;</span><span class="p">;</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;À 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planète 7.&quot;</span>
+<span class="nv">$pattern</span>   <span class="o">=</span> <span class="s2">&quot;À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.&quot;</span><span class="p">;</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locale-sensitive-comparison">
+<h2>Locale-Sensitive comparison<a class="headerlink" href="#locale-sensitive-comparison" title="永久链接至标题">¶</a></h2>
+<p>The <a class="reference external" href="http://www.php.net/manual/en/class.collator.php">Collator</a> class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the examples below on the usage of this class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Create a collator using Spanish locale</span>
+<span class="nv">$collator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collator</span><span class="p">(</span><span class="s2">&quot;es&quot;</span><span class="p">);</span>
+
+<span class="c1">// Returns that the strings are equal, in spite of the emphasis on the &quot;o&quot;</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">PRIMARY</span><span class="p">);</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s2">&quot;una canción&quot;</span><span class="p">,</span> <span class="s2">&quot;una cancion&quot;</span><span class="p">);</span>
+
+<span class="c1">// Returns that the strings are not equal</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">DEFAULT</span><span class="p">);</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s2">&quot;una canción&quot;</span><span class="p">,</span> <span class="s2">&quot;una cancion&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="migrations.html" title="Database Migrations"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="db.html" title="Database Abstraction Layer"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+             &copy; 版权所有 2012, Phalcon Team.
+             最后更新日期是 Nov 23, 2012.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        </div>
+
+    </div>
+
+  </body>
+</html>
