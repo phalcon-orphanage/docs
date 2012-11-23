@@ -492,6 +492,10 @@ those paths the component could automatically fill it:
         "action" => "index"
     ));
 
+Implementing your own Router
+----------------------------
+The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one providing by Phalcon.
+
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
 
 

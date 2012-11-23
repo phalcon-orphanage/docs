@@ -122,3 +122,7 @@ The produced routes would look like:
 
     //This produce: /invo/index.php/products/save
     echo $url->get("products/save");
+
+Implementing your own Url Generator
+-----------------------------------
+The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL generator replacing the one providing by Phalcon.

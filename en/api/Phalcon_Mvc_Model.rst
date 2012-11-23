@@ -577,7 +577,7 @@ Updates a model instance. If the instance doesn't exists in the persistance it w
     //Updating a robot name
     $robot = Robots::findFirst("id=100");
     $robot->name = "Biomass";
-    $robot->save();
+    $robot->update();
 
 
 

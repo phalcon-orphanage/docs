@@ -172,5 +172,8 @@ The following example demonstrates how to attach listeners to this component:
     //Bind the eventsManager to the acl component
     $acl->setEventsManager($eventManagers);
 
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
 
 .. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list

@@ -133,7 +133,7 @@ access to certain options, redirect users to other screens or simply reuse code.
     }
 
 Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reloads the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
+The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
 to complete the process.
 
 More forwarding examples:
@@ -160,6 +160,20 @@ More forwarding examples:
         "action" => "search",
         "params" => array(1, 2, 3)
     ));
+
+A forward action accepts the following parameters:
+
++----------------+--------------------------------------------------------+
+| Parameter      | Triggered                                              |
++================+========================================================+
+| controller     | A valid controller name to forward to.                 |
++----------------+--------------------------------------------------------+
+| action         | A valid action name to forward to.                     |
++----------------+--------------------------------------------------------+
+| params         | An array of parameters for the action                  |
++----------------+--------------------------------------------------------+
+| namespace      | A valid namespace name where the controller is part of |
++----------------+--------------------------------------------------------+
 
 Getting Parameters
 ------------------

@@ -60,6 +60,18 @@ Sets the default action suffix
 
 
 
+public  **setNamespaceName** (*string* $namespaceName)
+
+Sets a namespace to be prepended to the handler name
+
+
+
+public *string*  **getNamespaceName** ()
+
+Gets a namespace to be prepended to the current handler name
+
+
+
 public  **setDefaultNamespace** (*string* $namespace)
 
 Sets the default namespace
@@ -108,7 +120,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters)
+public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue)
 
 Gets a param by its name or numeric index
 

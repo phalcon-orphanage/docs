@@ -121,6 +121,18 @@ Sets the default action suffix
 
 
 
+public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+
+Sets a namespace to be prepended to the handler name
+
+
+
+public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+
+Gets a namespace to be prepended to the current handler name
+
+
+
 public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
@@ -169,7 +181,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 

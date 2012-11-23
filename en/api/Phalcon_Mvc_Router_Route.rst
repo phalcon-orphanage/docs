@@ -65,13 +65,19 @@ Returns the route's pattern
 
 public *string*  **getCompiledPattern** ()
 
-Returns the route's pattern
+Returns the route's compiled pattern
 
 
 
 public *array*  **getPaths** ()
 
 Returns the paths
+
+
+
+public *array*  **getReversedPaths** ()
+
+Returns the paths using positions as keys and names as values
 
 
 
