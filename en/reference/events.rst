@@ -262,7 +262,7 @@ In a listener the third parameter also receives this data:
         print_r($event->getData());
     });
 
-If a listener it's only interested in listening a specific type of event you can attach a listener directly:
+If a listener it is only interested in listening a specific type of event you can attach a listener directly:
 
 .. code-block:: php
 
@@ -272,6 +272,37 @@ If a listener it's only interested in listening a specific type of event you can
     $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
         //...
     });
+
+Event Propagation/Cancelation
+-----------------------------
+Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
+The listeners are notified in the order they were registered in the EventsManager. Some events are cancellable, indicating that
+these may be stopped preventing other listeners are notified about the event:
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager->attach('db', function($event, $connection){
+
+        //We stop the event if it is cancelable
+        if ($event->isCancelable()) {
+            //Stop the event, so other listeners will not be notified about this
+            $event->stop();
+        }
+
+        //...
+
+    });
+
+By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
+by passing "false" in the four parameter of fire:
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
 Implementing your own EventsManager
 -----------------------------------

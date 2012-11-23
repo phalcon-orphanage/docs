@@ -325,12 +325,12 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     <?php
 
     // Request the services from the services container
-    $router = $di->getShared('router');
+    $router = $di->get('router');
     $router->handle();
 
     $view = $di->getShared('view');
 
-    $dispatcher = $di->getShared('dispatcher');
+    $dispatcher = $di->get('dispatcher');
 
     // Pass the proccessed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
@@ -353,7 +353,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Finish the view
     $view->finish();
 
-    $response = $di->getShared('response');
+    $response = $di->get('response');
 
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
