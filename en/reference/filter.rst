@@ -175,7 +175,7 @@ PHP itself provides an excellent filter extension you can use. Check out its doc
 
 Implementing your own Filter
 ----------------------------
-The :doc:`Phalcon\\Mvc\\FilterInterface <../api/Phalcon_Mvc_FilterInterface>` interface must be implemented to create your own filtering service replacing the one providing by Phalcon.
+The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service replacing the one providing by Phalcon.
 
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
