@@ -1,11 +1,8 @@
 Using Dependency Injection
 ==========================
-The following example is a bit lengthy, but explains why using a service container and dependency injection. To begin with, let's pretend we
-are developing a component called SomeComponent. This performs a task that is not important right now. Our component has some dependency
-that is a connection to a database.
+下面要讲的这个例子有点长，但可以很好的解释为什么使用Service Container以及DI。首先，我们假设，我们要开发一个组件命名为SomeComponent。这个组件中现在将要注入一个数据库连接。
 
-In this first example, the connection is created inside the component. This approach is impractical; practically we can not change the
-connection parameters or the type of database system because the component only works as created.
+在这个例子中，数据库连接在component中被创建，这种方法是不切实际的，这样做的话，我们将不能改变数据库连接参数及数据库类型等一些参数。
 
 .. code-block:: php
 
@@ -36,7 +33,7 @@ connection parameters or the type of database system because the component only 
     $some = new SomeComponent();
     $some->someDbTask();
 
-To solve this we create a setter that injects the dependency externally before use it. For now, this seems to be a good solution:
+为了解决上面所说的问题，我们需要在使用前创建一个外部连接，并注入到容器中。就目前而言，这看起来是一个很好的解决方案：
 
 .. code-block:: php
 
