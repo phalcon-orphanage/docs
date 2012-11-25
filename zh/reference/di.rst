@@ -76,9 +76,7 @@ Using Dependency Injection
 
     $some->someDbTask();
 
-Now consider that we use this component in different parts of the application and then we will need to create the connection several times before
-pass it to the component. Using some kind of global registry where we obtain the connection instance and not have to create it again and
-again could solve this:
+现在我们来考虑一个问题，我们在应用程序中的不同地方使用此组件，将多次创建数据库连接。使用一种类似全局注册表的方式，从这获得一个数据库连接实例，而不是使用一次就创建一次。
 
 .. code-block:: php
 
@@ -130,7 +128,7 @@ again could solve this:
 
     $some->someDbTask();
 
-Now, let's imagine that we must to implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
+现在，让我们来想像一下，我们必须在组件中实现两个方法，首先需要创建一个新的数据库连接，第二个总是获得一个共享连接：
 
 .. code-block:: php
 
@@ -218,9 +216,9 @@ Now, let's imagine that we must to implement two methods in the component, the f
     //Here, we always pass a new connection as parameter
     $some->someOtherDbTask(Registry::getConnection());
 
-So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead of creating them internally in the code makes our application more maintainable and decoupled. However to long term, this form of dependency injection have some disadvantages.
+到此为止，我们已经看到了如何使用依赖注入解决我们的问题。不是在代码内部创建依赖关系，而是让其作为一个参数传递，这使得我们的程序更容易维护，降低程序代码的耦合度，实现一种松耦合。但是从长远来看，这种形式的依赖注入也有一些缺点。
 
-For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass the dependencies or create a constructor that pass them with many arguments, additionally create dependencies before use the component, every time, makes our code not maintainable as we would like:
+例如，如果组件中有较多的依赖关系，我们需要创建多个setter方法传递，或创建构造函数进行传递。另外，每次使用组件时，都需要创建依赖组件，使代码维护不太易，我们编写的代码可能像这样：
 
 .. code-block:: php
 
@@ -244,7 +242,7 @@ For instance, if the component has many dependencies, we will need to create mul
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies, we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating the object:
+我想，我们不得不在应用程序的许多地方创建这个对象。如果你不需要依赖的组件后，我们又要去代码注入部分移除构造函数中的参数或者是setter方法。为了解决这个问题，我们再次返回去使用一个全局注册表来创建组件。但是，在创建对象之前，它增加了一个新的抽象层：
 
 .. code-block:: php
 
@@ -272,9 +270,9 @@ Think we had to create this object in many parts of our application. If you ever
 
     }
 
-One moment, we returned back to the beginning, we are building again the dependencies inside the component! We can move on and find out a way to solve this problem every time. But it seems that time and again we fall back into bad practices.
+这一刻，我们好像回到了问题的开始，我们正在创建组件内部的依赖，我们每次都在修改以及找寻一种解决问题的办法，但这都不是很好的做法。
 
-A practical and elegant way to solve these problems is to use a container for dependencies. The containers act as the global registry that we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity of our component:
+一种实用和优雅的来解决这些问题，是使用容器的依赖注入，像我们在前面看到的，容器作为全局注册表，使用容器的依赖注入做为一种桥梁来解决依赖可以使我们的代码耦合度更低，很好的降低了组件的复杂性：
 
 .. code-block:: php
 
@@ -340,9 +338,7 @@ A practical and elegant way to solve these problems is to use a container for de
 
     $some->someTask();
 
-The component now simply access the service it require when it needs it, if it does not requires a service, that is not even initialized saving resources.
-The component is now highly decoupled. For example, we can replace the manner in which connections are created, their behavior or any other aspect of them
-and that would not affect the component.
+现在，该组件只有访问某种service的时候才需要它，如果它不需要，它甚至不初始化，以节约资源。该组件是高度解耦。他们的行为，或者说他们的任何其他方面都不会影响到组件本身。
 
 Our approach
 ------------
