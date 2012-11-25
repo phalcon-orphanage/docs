@@ -204,7 +204,7 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
 In this instance, Xdebug will also show us the variables in the local scope, and a backtrace as well:
 
-.. code-block:: php
+.. code-block:: html
 
     Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php
         on line 19

@@ -1,7 +1,7 @@
 Flashing Messages
 =================
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of
-messages can be generated using
+messages can be generated using this component
 
 Adapters
 --------

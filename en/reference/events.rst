@@ -306,4 +306,5 @@ by passing "false" in the four parameter of fire:
 
 Implementing your own EventsManager
 -----------------------------------
-The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
+The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own
+EventsManager replacing the one provided by Phalcon.

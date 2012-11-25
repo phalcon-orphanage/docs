@@ -530,6 +530,8 @@ Not all blocks must be replaced at a child template, only those which are needed
         </body>
     </html>
 
+As partials, the path set to "extends" is a relative path under the current directory for views (i.e app/views/).
+
 Setting up the Volt Engine
 --------------------------
 Volt can be configured to alter its default behavior, the following example explain how to do that:

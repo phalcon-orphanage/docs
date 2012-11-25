@@ -313,4 +313,33 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     }
 
+Events in Controllers
+---------------------
+Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
+you to implement hook points before/after the actions are executed:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function beforeExecuteRoute($dispatcher)
+        {
+            // This is executed before every found action
+
+            if ($dispatcher->getActionName() == 'save') {
+                $this->flash->error("You don't have permission to save posts");
+                return false;
+            }
+        }
+
+        public function afterExecuteRoute($dispatcher)
+        {
+            // Executed after every found action
+        }
+
+    }
+
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself
