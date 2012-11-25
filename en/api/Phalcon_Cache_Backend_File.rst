@@ -66,9 +66,9 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName)
+public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
 
-Checks if cache exists.
+Checks if cache exists and it isn't expired
 
 
 

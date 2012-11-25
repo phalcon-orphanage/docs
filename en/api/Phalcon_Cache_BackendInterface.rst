@@ -49,9 +49,33 @@ Gets the last key stored by the cache
 
 
 
-abstract public  **get** (*unknown* $key)
+abstract public *mixed*  **get** (*int|string* $keyName, *long* $lifetime)
 
-Returns data from the backend
+Returns a cached content
+
+
+
+abstract public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+
+Stores cached content into the file backend and stops the frontend
+
+
+
+abstract public *boolean*  **delete** (*int|string* $keyName)
+
+Deletes a value from the cache by its key
+
+
+
+abstract public *array*  **queryKeys** (*string* $prefix)
+
+Query the existing cached keys
+
+
+
+abstract public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
+
+Checks if cache exists and it hasn't expired
 
 
 

@@ -1,7 +1,9 @@
 Class **Phalcon\\DI\\Service**
 ==============================
 
-Phalcon\\DI  Represents a service in the services container
+*implements* :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`
+
+Represents individually a service in the services container
 
 
 Methods
@@ -25,7 +27,7 @@ Sets if the service is shared or not
 
 
 
-public *boolean*  **getShared** ()
+public *boolean*  **isShared** ()
 
 Check whether the service is shared or not
 

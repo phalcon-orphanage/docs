@@ -47,6 +47,12 @@ Returns a service definition without resolving
 
 
 
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\DI
+
+Returns a Phalcon\\Di\\Service instance
+
+
+
 public *mixed*  **get** (*string* $name, *array* $parameters) inherited from Phalcon\\DI
 
 Resolves the service based on its configuration

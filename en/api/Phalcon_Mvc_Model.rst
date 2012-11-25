@@ -568,7 +568,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
 public *boolean*  **update** (*array* $data)
 
-Updates a model instance. If the instance doesn't exists in the persistance it will throw an exception Returning true on success or false otherwise. 
+Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 
 .. code-block:: php
 

@@ -49,6 +49,12 @@ Returns a service definition without resolving
 
 
 
+abstract public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name)
+
+Returns the corresponding Phalcon\\Di\\Service instance for a service
+
+
+
 abstract public *boolean*  **has** (*string* $alias)
 
 Check whether the DI contains a service by a name
