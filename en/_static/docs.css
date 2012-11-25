@@ -467,6 +467,15 @@ div.highlight {
     font-weight: bold;
 }
 
+.highlight .kn {
+    color: #000000;
+    font-weight: normal;
+}
+
+.highlight .sr {
+    color: #717171;
+}
+
 pre {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }

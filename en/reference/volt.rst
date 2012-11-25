@@ -532,6 +532,12 @@ Not all blocks must be replaced at a child template, only those which are needed
 
 As partials, the path set to "extends" is a relative path under the current directory for views (i.e app/views/).
 
+.. highlights::
+
+    By default, and for performance reasons, Volt only checks for changes in the children templates,
+    so it is recommended initialize Volt with the option 'compileAlways' => true. Thus, the templates
+    are compiled always taking into account changes in the parent templates.
+
 Setting up the Volt Engine
 --------------------------
 Volt can be configured to alter its default behavior, the following example explain how to do that:
@@ -543,7 +549,7 @@ Volt can be configured to alter its default behavior, the following example expl
     //Register Volt as a service
     $di->set('voltService', function($view, $di) {
 
-        $volt = new Phalcon\Mvc\View\Engine\Volt($view, $di);
+        $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
 
         $volt->setOptions(array(
             "compiledPath" => "../app/compiled-templates/",
@@ -567,6 +573,33 @@ Volt can be configured to alter its default behavior, the following example expl
         return $view;
     });
 
+If you do not want to reuse Volt as a service you can pass an anonymous function to register the engine instead of a service name:
+
+.. code-block:: php
+
+    <?php
+
+    //Register Volt as template engine with an anonymous function
+    $di->set('view', function() {
+
+        $view = new \Phalcon\Mvc\View();
+
+        $view->setViewsDir('../app/views/');
+
+        $view->registerEngines(array(
+            ".volt" => function($view, $di) {
+                $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+                //set some options here
+
+                return $volt;
+            }
+        ));
+
+        return $view;
+    });
+
+
 The following options are available in Volt:
 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
@@ -579,6 +612,8 @@ The following options are available in Volt:
 | compiledSeparator | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory   | %%      |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 | stat              | Whether Phalcon must check if exists differences between the template file and its compiled path                               | true    |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 
 External Resources
