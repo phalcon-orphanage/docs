@@ -398,10 +398,12 @@ the view rendered is the one related with the last controller and action execute
 
 Caching View Fragments
 ----------------------
-Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole rendered output to increase performance.
+Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
+the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
+rendered output to increase performance.
 
-:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way to cache output fragments.
-You could manually set the cache handler or set a global handler:
+:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
+to cache output fragments. You could manually set the cache handler or set a global handler:
 
 .. code-block:: php
 
@@ -419,7 +421,9 @@ You could manually set the cache handler or set a global handler:
         public function showArticleAction()
         {
             // Cache this view for 1 hour
-            $this->view->cache(array("lifetime" => 3600));
+            $this->view->cache(array(
+                "lifetime" => 3600
+            ));
         }
 
         public function resumeAction()
@@ -433,10 +437,25 @@ You could manually set the cache handler or set a global handler:
             );
         }
 
+        public function downloadAction()
+        {
+            //Passing a custom service
+            $this->view->cache(
+                array(
+                    "service"  => "myCache",
+                    "lifetime" => 86400,
+                    "key"      => "resume-cache",
+                )
+            );
+        }
+
     }
 
-When the View component needs to cache something it will request a cache service to the services container. The service name convention for this
-service is "viewCache":
+When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name currently rendered.
+It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
+
+When the View component needs to cache something it will request a cache service to the services container.
+The service name convention for this service is "viewCache":
 
 .. code-block:: php
 
@@ -457,7 +476,35 @@ service is "viewCache":
         ));
 
         return $cache;
-    });
+    }, true);
+
+When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed in the views.
+
+To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the
+calculations/queries to display data in the view:
+
+<?php
+
+class DownloadController extends Phalcon\Mvc\Controller
+{
+
+    public function indexAction()
+    {
+
+        //Check if the cache with key "downloads" exists or has expired
+        if ($this->view->getCache()->exists('downloads')) {
+
+            //Query the latest downloads
+            $latest = Downloads::find(array('order' => 'created_at DESC'));
+
+            $this->view->setVar('latest', $latest);
+        }
+
+        //Enable the cache with the same key "downloads"
+        $this->view->cache(array('key' => 'downloads'));
+    }
+
+}
 
 Disabling the view
 ------------------

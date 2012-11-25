@@ -38,7 +38,6 @@ Related Guides
 
 Unix/Linux
 ----------
-
 On a Unix/Linux system you can easily compile and install the extension from the source code:
 
 Requirements
