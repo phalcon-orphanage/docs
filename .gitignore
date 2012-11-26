@@ -5,3 +5,5 @@ _templates
 *.komodoproject
 *.sublime-*
 .idea/
+
+.DS_Store
