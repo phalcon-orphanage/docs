@@ -1,4 +1,4 @@
-Using Dependency Injection
+使用依赖注入
 ==========================
 下面要讲的这个例子有点长，但可以很好的解释为什么使用Service Container以及DI。首先，我们假设，我们要开发一个组件命名为SomeComponent。这个组件中现在将要注入一个数据库连接。
 
@@ -340,31 +340,28 @@ Using Dependency Injection
 
 现在，该组件只有访问某种service的时候才需要它，如果它不需要，它甚至不初始化，以节约资源。该组件是高度解耦。他们的行为，或者说他们的任何其他方面都不会影响到组件本身。
 
-Our approach
+我们的实现办法
 ------------
 
-Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them.
+Phalcon\\DI 是一个实现了服务的依赖注入功能的组件，它本身也是一个容器。
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component
-to inject dependencies and manage global instances of the different classes used in the application.
+由于Phalcon高度解耦，Phalcon\\DI 是框架用来集成其他组件的必不可少的部分，开发人员也可以使用这个组件依赖注入和管理应用程序中不同类文件的实例。
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies using setters or
-constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
+基本上，这个组件实现了 `Inversion of Control`_  模式。基于此，对象不再以构造函数接收参数或者使用setter的方式来实现注入，而是直接请求服务的依赖注入。这就大大降低了整体程序的复杂性，因为只有一个方法用以获得所需要的一个组件的依赖关系。
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+此外，这种模式增强了代码的可测试性，从而使它不容易出错。
 
-Registering services in the Container
+在容器中注册服务
 -------------------------------------
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
-can request component B from the container, rather than creating a new instance component B.
+框架本身或开发人员都可以注册服务。当一个组件A要求调用组件B（或它的类的一个实例），可以从容器中请求调用组件B，而不是创建组件B的一个实例。
 
-This way of working gives us many advantages:
+这种工作方式为我们提供了许多优点：
 
-* We can replace a component by one created by ourselves or a third party one easily.
-* We have full control of the object initialization, allowing us to set this objects, as you need before delivery them to components.
-* We can get global instances of components in a structured and unified way
+* 我们可以更换一个组件，从他们本身或者第三方轻松创建。
+* 在组件发布之前，我们可以充分的控制对象的初始化，并对对象进行各种设置。
+* 我们可以使用统一的方式从组件得到一个结构化的全局实例
 
-Services can be registered in several ways:
+服务可以通过以下几种方式注入到容器：
 
 .. code-block:: php
 
@@ -389,17 +386,15 @@ Services can be registered in several ways:
         "className" => 'Phalcon\Http\Request'
     ));
 
-In the above example, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
-The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+在上面的例子中，当向框架请求访问一个请求数据时，它将首先确定容器中是否存在这个"reqeust"名称的服务。
 
-Each of the methods (demonstrated in the above example) used to set/register a service has advantages and disadvantages. It is up to the
-developer and the particular requirements that will designate which one is used.
+容器会反回一个请求数据的实例，开发人员最终得到他们想要的组件。
 
-Setting a service by a string is simple but lacks flexibility. Setting services using an array offers a lot more flexibility but makes the
-code more complicated. The lambda function is a good balance between the two but could lead to more maintenance than one would expect.
+在上面示例中的每一种方法都有优缺点，具体使用哪一种，由开发过程中的特定场景来决定的。
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string etc.) will be lazy loaded i.e. instantiated only when requested.
+用一个字符串来设定一个服务非常简单，但缺少灵活性。设置服务时，使用数组则提供了更多的灵活性，而且可以使用较复杂的代码。lambda函数是两者之间一个很好的平衡，但也可能导致更多的维护管理成本。
+
+Phalcon\\DI 提供服务的延迟加载。除非开发人员在注入服务的时候直接实例化一个对象，然后存存储到容器中。在容器中，通过数组，字符串等方式存储的服务都将被延迟加载，即只有在请求对象的时候才被初始化。
 
 .. code-block:: php
 
@@ -428,7 +423,7 @@ in the container, any object stored in it (via array, string etc.) will be lazy 
         ));
     });
 
-Both service registrations above produce the same result. The array definition however, allows for alteration of the service parameters if needed:
+以上这两种服务的注册方式产生相同的结果。然后，通过数组定义的，在后面需要的时候，你可以修改服务参数：
 
 .. code-block:: php
 
@@ -440,13 +435,13 @@ Both service registrations above produce the same result. The array definition h
         "password" => "secret"
     ));
 
-Obtaining a service from the container is a matter of simply calling the “get” method. A new instance of the service will be returned:
+从容器中获得服务的最简单方式就是使用"get"方法，它将从容器中返回一个新的实例：
 
 .. code-block:: php
 
     <?php $request = $di->get("request");
 
-Or by calling through the magic method:
+或者通过下面这种魔术方法的形式调用：
 
 .. code-block:: php
 
@@ -454,8 +449,9 @@ Or by calling through the magic method:
 
     $request = $di->getRequest();
 
-Phalcon\\DI also allows for services to be reusable. To get a service previously instantiated the getShared() method can be used.
-Specifically for the Phalcon\\Http\\Request example shown above:
+Phalcon\\DI 同时允许服务重用，为了得到一个已经实例化过的服务，可以使用 getShared() 方法的形式来获得服务。
+
+具体的 Phalcon\\Http\\Request 请求示例：
 
 .. code-block:: php
 
@@ -463,7 +459,7 @@ Specifically for the Phalcon\\Http\\Request example shown above:
 
     $request = $di->getShared("request");
 
-Arguments can be passed to the constructor by adding an array parameter to the method "get":
+参数还可以在请求的时候通过将一个数组参数传递给构造函数的方式：
 
 .. code-block:: php
 
@@ -473,18 +469,15 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 Factory Default DI
 ------------------
-Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
-framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
-registers the appropriate services bundled with the framework to act as full-stack.
+虽然Phalcon在解耦方面为我们提供了很大的自由度和灵活性，也许我们只是单纯的把它当作一个full-stack的框架来使用。为了实现这一目标，该框架提供了 Phalcon\\DI 的一个变种 Phalcon\\DI\\FactoryDefault 。这个类会自动注册相应的服务，使各种服务组件绑定到框架。
 
 .. code-block:: php
 
     <?php $di = new Phalcon\DI\FactoryDefault();
 
-Service Name Conventions
+服务命名约定
 ------------------------
-Although you can register services with the names you want. Phalcon has a seriers of service naming conventions that allow it to get the
-right services when you need it requires them.
+虽然你可以任意注入你想要的服务(名称)到容器中，但Phalcon有一系列的命名约定，使用它们以能得到适当的服务。
 
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+
 | Service Name        | Description                                 | Default                                                                                            |
@@ -518,8 +511,7 @@ right services when you need it requires them.
 
 Instantiating classes via the Services Container
 ------------------------------------------------
-When you request a service to the services container, if it can't find out a service with the same name it'll try to load a class with
-the same name. With this behavior we can replace any class by another simply by registering a service with its name:
+当你向服务容器请求服务的时候，如果在容器中找不到这个服务，它会尝试加载具有相同名称的一个类，通过这种行为，我们可以使用注册为一个服务的形式来获取一个类的实例：
 
 .. code-block:: php
 
@@ -541,12 +533,11 @@ the same name. With this behavior we can replace any class by another simply by 
     //Create a instance via the services container
     $myComponent = $di->get('MyOtherComponent');
 
-You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will
-fallback to a valid autoloader to finally load the class.
+你可以利用这个特点，总是通过向服务容器(即使它们没有被注册为服务)请求服务来获得类的实例，DI会通过 autoloader 加载的类返回一个类的实例。
 
 Accessing the DI in a static way
 --------------------------------
-If needed you can access the latest DI created in an static function in the following way:
+如果你需要，你还可以通过以下的方式使用DI来创建一个静态函数
 
 .. code-block:: php
 
