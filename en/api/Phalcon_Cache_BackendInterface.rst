@@ -7,7 +7,7 @@ Phalcon\\Cache\\BackendInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontendObject, *array* $backendOptions)
+abstract public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
 
 Phalcon\\Cache\\Backend constructor
 
@@ -31,6 +31,12 @@ Returns front-end instance adapter related to the back-end
 
 
 
+abstract public *array*  **getOptions** ()
+
+Returns the backend options
+
+
+
 abstract public *boolean*  **isFresh** ()
 
 Checks whether the last cache is fresh or cached
@@ -40,6 +46,12 @@ Checks whether the last cache is fresh or cached
 abstract public *boolean*  **isStarted** ()
 
 Checks whether the cache has starting buffering or not
+
+
+
+abstract public  **setLastKey** (*string* $lastKey)
+
+Sets the last key used in the cache
 
 
 

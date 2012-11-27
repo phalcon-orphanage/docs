@@ -64,7 +64,7 @@ Checks if cache exists and it hasn't expired
 
 
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontendObject, *array* $backendOptions) inherited from Phalcon\\Cache\\Backend
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
 
@@ -88,6 +88,12 @@ Returns front-end instance adapter related to the back-end
 
 
 
+public *array*  **getOptions** () inherited from Phalcon\\Cache\\Backend
+
+Returns the backend options
+
+
+
 public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
@@ -97,6 +103,12 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
+
+
+
+public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
+
+Sets the last key used in the cache
 
 
 

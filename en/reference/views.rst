@@ -1032,3 +1032,4 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
 .. _Smarty: http://www.smarty.net/
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php
+.. _md5: http://php.net/manual/en/function.md5.php

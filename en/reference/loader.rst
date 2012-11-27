@@ -185,7 +185,7 @@ In the following example, the EventsManager is working with the class loader, al
     ));
 
     //Listen all the loader events
-    $eventsManager->attach('loader', function() {
+    $eventsManager->attach('loader', function($event, $loader) {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();
         }

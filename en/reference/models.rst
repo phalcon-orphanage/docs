@@ -375,7 +375,7 @@ Strings are automatically escaped using PDO_. This function takes into account t
 the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
 when storing or retrieving data.
 
-Additionally you can set the parameter "bindTypes", this allows to define how the parameters should be binded according to its data type:
+Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
 
 .. code-block:: php
 
@@ -389,8 +389,8 @@ Additionally you can set the parameter "bindTypes", this allows to define how th
 
     //Casting Types
     $types = array(
-        Phalcon\Db\Column::BIND_TYPE_STR,
-        Phalcon\Db\Column::BIND_TYPE_INT
+        Phalcon\Db\Column::BIND_PARAM_STR,
+        Phalcon\Db\Column::BIND_PARAM_INT
     );
 
     // Query robots binding parameters with string placeholders
@@ -1755,7 +1755,7 @@ The following example shows how to define the meta-data manually:
                 //The identity column
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
-                //How every column must be binded/casted
+                //How every column must be bound/casted
                 MetaData::MODELS_DATA_TYPES_BIND => array(
                     'id' => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,

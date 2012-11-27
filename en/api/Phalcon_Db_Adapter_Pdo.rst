@@ -36,7 +36,7 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-protected *\PDOStatement*  **_executePrepared** ()
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes)
 
 Executes a prepared statement binding
 

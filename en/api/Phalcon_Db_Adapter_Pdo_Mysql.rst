@@ -57,7 +57,7 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-protected *\PDOStatement*  **_executePrepared** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding
 

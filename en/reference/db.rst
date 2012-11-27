@@ -173,7 +173,9 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
 
 Binding Parameters
 ------------------
-Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
+bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
+injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 

@@ -55,7 +55,7 @@ Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 
 
-protected *\PDOStatement*  **_executePrepared** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding
 

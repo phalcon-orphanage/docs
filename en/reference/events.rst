@@ -210,7 +210,7 @@ the same name. Now let's create a listener to this component:
 
     }
 
-A listener is simply a class that implements any of all the events triggered by the component. Now let's all working together:
+A listener is simply a class that implements any of all the events triggered by the component. Now let's make everything work together:
 
 .. code-block:: php
 

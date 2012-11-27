@@ -34,9 +34,9 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 Methods
 ---------
 
-public  **__construct** (*mixed* $frontendObject, *array* $backendOptions)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
 
-Phalcon\\Backend\\Adapter\\Mongo constructor
+Phalcon\\Cache\\Backend\\Mongo constructor
 
 
 
@@ -94,6 +94,12 @@ Returns front-end instance adapter related to the back-end
 
 
 
+public *array*  **getOptions** () inherited from Phalcon\\Cache\\Backend
+
+Returns the backend options
+
+
+
 public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
@@ -103,6 +109,12 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
+
+
+
+public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
+
+Sets the last key used in the cache
 
 
 
