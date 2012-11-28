@@ -13,7 +13,7 @@ Thanks to the service container, we can ensure that the session is accessed only
     <?php
 
     //Start the session the first time when some component request the session service
-    $di->set('session', function(){
+    $di->setShared('session', function(){
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -169,3 +169,117 @@ In a component:
 
 The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
 can only be accessed in the scope of the current class.
+
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+
+.. code-block:: php
+
+    <?php
+
+    class MySessionHandler implements Phalcon\Session\AdapterInterface
+    {
+
+        /**
+         * MySessionHandler construtor
+         *
+         * @param array $options
+         */
+        public function __construct($options=null)
+        {
+        }
+
+        /**
+         * Starts session, optionally using an adapter
+         *
+         * @param array $options
+         */
+        public function start()
+        {
+        }
+
+        /**
+         * Sets session options
+         *
+         * @param array $options
+         */
+        public function setOptions($options)
+        {
+        }
+
+        /**
+         * Get internal options
+         *
+         * @return array
+         */
+        public function getOptions()
+        {
+        }
+
+        /**
+         * Gets a session variable from an application context
+         *
+         * @param string $index
+         */
+        public function get($index)
+        {
+        }
+
+        /**
+         * Sets a session variable in an application context
+         *
+         * @param string $index
+         * @param string $value
+         */
+        public function set($index, $value)
+        {
+        }
+
+        /**
+         * Check whether a session variable is set in an application context
+         *
+         * @param string $index
+         */
+        public function has($index)
+        {
+        }
+
+        /**
+         * Removes a session variable from an application context
+         *
+         * @param string $index
+         */
+        public function remove($index)
+        {
+        }
+
+        /**
+         * Returns active session id
+         *
+         * @return string
+         */
+        public function getId()
+        {
+        }
+
+        /**
+         * Check whether the session has been started
+         *
+         * @return boolean
+         */
+        public function isStarted()
+        {
+        }
+
+        /**
+         * Destroys the active session
+         *
+         * @return boolean
+         */
+        public function destroy()
+        {
+        }
+
+    }
+

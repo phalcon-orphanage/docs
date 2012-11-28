@@ -59,13 +59,13 @@ Phalcon\\Mvc\\Model\\MetaData\\Files constructor
 
 public *array*  **read** (*unknown* $key)
 
-Reads meta-data from $_SESSION
+Reads meta-data from files
 
 
 
 public  **write** (*string* $key, *array* $data)
 
-Writes the meta-data to $_SESSION
+Writes the meta-data to files
 
 
 

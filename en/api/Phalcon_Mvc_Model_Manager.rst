@@ -162,7 +162,7 @@ Gets hasOne relations defined on a model
 
 public *array*  **getRelations** (*string* $first, *string* $second)
 
-Query the relations between two models
+Query the relationships between two models
 
 
 
@@ -175,6 +175,12 @@ Creates a Phalcon\\Mvc\\Model\\Query without execute it
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **executeQuery** (*string* $phql, *array* $placeholders)
 
 Creates a Phalcon\\Mvc\\Model\\Query and execute it
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **createBuilder** (*string* $params)
+
+Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 
 
 

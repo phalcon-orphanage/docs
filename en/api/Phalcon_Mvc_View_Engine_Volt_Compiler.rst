@@ -7,29 +7,31 @@ This class reads and compiles volt templates into PHP plain code
 Methods
 ---------
 
-public  **setDI** (*unknown* $di)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
-...
-
-
-public  **getDI** ()
-
-...
+Sets the dependency injector
 
 
-protected  **_functionCall** ()
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+
+Returns the internal dependency injector
+
+
+
+protected *string*  **_functionCall** ()
 
 Resolves function intermediate code into PHP function calls
 
 
 
-protected  **_filter** ()
+protected *string*  **_filter** ()
 
 Resolves filter intermediate code into PHP function calls
 
 
 
-public  **_expression** (*array* $expr, *bool* $extendsMode, *bool* $prependDollar)
+public *string*  **_expression** (*array* $expr, *bool* $extendsMode, *bool* $prependDollar)
 
 Resolves an expression node in an AST volt tree
 

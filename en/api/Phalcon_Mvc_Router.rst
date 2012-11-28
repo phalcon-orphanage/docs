@@ -42,6 +42,12 @@ Get rewrite info
 
 
 
+public  **setDefaultNamespace** (*string* $namespaceName)
+
+Sets the name of the default namespace
+
+
+
 public  **setDefaultModule** (*string* $moduleName)
 
 Sets the name of the default module
@@ -117,6 +123,12 @@ Adds a route to the router that only match if the HTTP method is HEAD
 public  **clear** ()
 
 Removes all the pre-defined routes
+
+
+
+public *string*  **getNamespaceName** ()
+
+Returns processed namespace name
 
 
 

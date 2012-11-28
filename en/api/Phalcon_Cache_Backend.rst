@@ -7,7 +7,7 @@ This class implements common functionality for backend adapters. All the backend
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontendObject, *array* $backendOptions)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
 
 Phalcon\\Cache\\Backend constructor
 
@@ -31,6 +31,12 @@ Returns front-end instance adapter related to the back-end
 
 
 
+public *array*  **getOptions** ()
+
+Returns the backend options
+
+
+
 public *boolean*  **isFresh** ()
 
 Checks whether the last cache is fresh or cached
@@ -43,14 +49,15 @@ Checks whether the cache has starting buffering or not
 
 
 
+public  **setLastKey** (*string* $lastKey)
+
+Sets the last key used in the cache
+
+
+
 public *string*  **getLastKey** ()
 
 Gets the last key stored by the cache
 
-
-
-abstract public  **get** ()
-
-...
 
 

@@ -187,6 +187,56 @@ The following HTML will generated:
         <option value="I">Inactive</option>
     </select>
 
+You can add an "empty" option to the generated HTML:
+
+.. code-block:: php
+
+    <?php
+
+    // Creating a Select Tag with an empty option
+    echo Phalcon\Tag::select(
+        array(
+            "productId",
+            Products::find("type = 'vegetables'"),
+            "using" => array("id", "name")
+        ),
+        'useEmpty' => true
+    );
+
+.. code-block:: html
+
+    <select id="productId" name="productId">
+        <option value="">Choose..</option>
+        <option value="101">Tomato</option>
+        <option value="102">Lettuce</option>
+        <option value="103">Beans</option>
+    </select>
+
+.. code-block:: php
+
+    <?php
+
+    // Creating a Select Tag with an empty option with default text
+    echo Phalcon\Tag::select(
+        array(
+            "productId",
+            Products::find("type = 'vegetables'"),
+            "using" => array("id", "name")
+        ),
+        'useEmpty' => true,
+        'emptyText' => 'Please, choose one...',
+        'emptyValue' => '@'
+    );
+
+.. code-block:: html
+
+    <select id="productId" name="productId">
+        <option value="@">Please, choose one..</option>
+        <option value="101">Tomato</option>
+        <option value="102">Lettuce</option>
+        <option value="103">Beans</option>
+    </select>
+
 Assigning HTML attributes
 -------------------------
 All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.

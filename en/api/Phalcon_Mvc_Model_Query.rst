@@ -23,6 +23,17 @@ This class takes a PHQL intermediate representation and executes it.
 
 
 
+Constants
+---------
+
+*integer* **TYPE_SELECT**
+
+*integer* **TYPE_INSERT**
+
+*integer* **TYPE_UPDATE**
+
+*integer* **TYPE_DELETE**
+
 Methods
 ---------
 
@@ -98,12 +109,6 @@ Resolves all the JOINS in a SELECT statement
 
 
 
-protected *string*  **_getLimitClause** ()
-
-Returns a processed limit clause for a SELECT statement
-
-
-
 protected *string*  **_getOrderClause** ()
 
 Returns a processed order clause for a SELECT statement
@@ -146,9 +151,22 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-public  **setCache** ()
+public  **cache** (*array* $cacheOptions)
 
-...
+Sets the cache parameters of the query
+
+
+
+public  **getCacheOptions** ()
+
+Returns the current cache options
+
+
+
+public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+
+Returns the current cache backend instance
+
 
 
 protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_executeSelect** ()
@@ -160,6 +178,12 @@ Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\
 protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** ()
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
+
+
+
+protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** ()
+
+Query the records on which the UPDATE/DELETE operation well be done
 
 
 
@@ -178,6 +202,30 @@ Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\
 public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
 
 Executes a parsed PHQL statement
+
+
+
+public  **setType** (*int* $type)
+
+Sets the type of PHQL statement to be executed
+
+
+
+public *int*  **getType** ()
+
+Gets the type of PHQL statement executed
+
+
+
+public  **setIntermediate** (*array* $intermediate)
+
+Allows to set the IR to be executed
+
+
+
+public *array*  **getIntermediate** ()
+
+Returns the intermediate representation of the PHQL statement
 
 
 

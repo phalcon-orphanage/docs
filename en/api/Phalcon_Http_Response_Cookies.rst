@@ -1,7 +1,9 @@
 Class **Phalcon\\Http\\Response\\Cookies**
 ==========================================
 
-Phalcon\\Http\\Response\\Headers  This class is a bag to manage the response headers
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+This class is a bag to manage the cookies
 
 
 Methods
@@ -13,15 +15,27 @@ Phalcon\\Http\\Response\\Cookies constructor
 
 
 
-public  **set** ()
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+
+Sets the dependency injector
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+
+Returns the internal dependency injector
+
+
+
+public  **set** (*string* $name, *mixed* $value, *int* $expire, *string* $path)
 
 Sets a header to be sent at the end of the request
 
 
 
-public *string*  **get** ()
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **get** (*string* $name)
 
-Gets a header value from the internal bag
+Gets a cookie from the bag
 
 
 

@@ -57,7 +57,7 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
-protected *\PDOStatement*  **_executePrepared** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding
 
@@ -208,7 +208,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -227,7 +227,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $placeholders) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 

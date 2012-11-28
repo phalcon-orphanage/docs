@@ -149,13 +149,13 @@ Gets a list of columns
 
 
 
-protected *string*  **_getSqlExpression** () inherited from Phalcon\\Db\\Dialect
+public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
 
 Transform an intermediate representation for a expression into a database system valid expression
 
 
 
-protected *string*  **_getSqlTable** () inherited from Phalcon\\Db\\Dialect
+public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
 
 Transform an intermediate representation for a schema/table into a database system valid expression
 

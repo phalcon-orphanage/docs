@@ -245,6 +245,10 @@ The available frontend adapters that are used as interfaces or input sources to 
 | None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_None>`     |
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
+Implementing your own Frontend adapters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>` interface must be implemented in order to create your own frontend adapters or extend the existing ones.
+
 Backend Adapters
 ----------------
 The backend adapters available to store cache data are:
@@ -260,6 +264,10 @@ The backend adapters available to store cache data are:
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 | Mongo     | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+
+Implementing your own Backend adapters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
 File Backend Options
 ^^^^^^^^^^^^^^^^^^^^
@@ -302,6 +310,7 @@ This backend will store cached content on a MongoDB server. The available option
 +------------+---------------------------------------------+
 | collection | Mongo collection in the database            |
 +------------+---------------------------------------------+
+
 
 .. _Memcached: http://php.net/manual/en/book.apc.php
 .. _memcache: http://pecl.php.net/package/memcache

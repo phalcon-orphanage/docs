@@ -8,7 +8,7 @@
  * php scripts/gen-api.php
  */
 
-define('CPHALCON_DIR', '/Users/kenjikobe/cphalcon/ext/');
+define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
 
 class API_Generator {
 

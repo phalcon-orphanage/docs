@@ -1,6 +1,8 @@
 Class **Phalcon\\Http\\Response\\Headers**
 ==========================================
 
+*implements* :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`
+
 This class is a bag to manage the response headers
 
 

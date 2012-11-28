@@ -36,9 +36,9 @@ Allows to cache output fragments using a file backend
 Methods
 ---------
 
-public  **__construct** (*mixed* $frontendObject, *array* $backendOptions)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
 
-Phalcon\\Backend\\Adapter\\File constructor
+Phalcon\\Cache\\Backend\\File constructor
 
 
 
@@ -66,9 +66,9 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName)
+public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
 
-Checks if cache exists.
+Checks if cache exists and it isn't expired
 
 
 
@@ -90,6 +90,12 @@ Returns front-end instance adapter related to the back-end
 
 
 
+public *array*  **getOptions** () inherited from Phalcon\\Cache\\Backend
+
+Returns the backend options
+
+
+
 public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
@@ -99,6 +105,12 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
+
+
+
+public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
+
+Sets the last key used in the cache
 
 
 

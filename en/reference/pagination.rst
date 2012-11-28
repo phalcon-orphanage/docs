@@ -90,3 +90,35 @@ The $page object has the following attributes:
 | last    | The last page in the set of records                    |
 +---------+--------------------------------------------------------+
 
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+
+.. code-block:: php
+
+    <?php
+
+    class MyPaginator implements Phalcon\Paginator\AdapterInterface  {
+
+        /**
+         * Adapter constructor
+         *
+         * @param array $config
+         */
+        public function __construct($config);
+
+        /**
+         * Set the current page number
+         *
+         * @param int $page
+         */
+        public function setCurrentPage($page);
+
+        /**
+         * Returns a slice of the resultset to show in the pagination
+         *
+         * @return stdClass
+         */
+        public function getPaginate();
+
+    }

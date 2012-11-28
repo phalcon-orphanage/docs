@@ -67,6 +67,7 @@ API Indice
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
    Phalcon_Http_Cookie
+   Phalcon_Http_Cookie_Exception
    Phalcon_Http_Request
    Phalcon_Http_Request_Exception
    Phalcon_Http_Request_File
@@ -159,6 +160,7 @@ API Indice
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_DI_InjectionAwareInterface
+   Phalcon_DI_ServiceInterface
    Phalcon_Db_AdapterInterface
    Phalcon_Db_ColumnInterface
    Phalcon_Db_DialectInterface
@@ -175,6 +177,7 @@ API Indice
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
+   Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
