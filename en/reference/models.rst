@@ -281,15 +281,15 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a certain position.
-Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning
-and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
+Phalcon's resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
+to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
+in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
+is traversed several times, the query must be executed the same number of times.
 
-Some database systems drivers like SQLite doesn't support scrollable cursors, additionally, store large query results in memory can
-consume many resources, due to this resultsets are obtained from the database in chunks of 32 rows reducing the need to
-re-execute the request in several cases.
+Storing large query results in memory could consume many resources, because of this, resultsets are obtained
+from the database in chunks of 32 rows reducing the need for re-execute the request in several cases.
 
-Note that resultsets can be serialized and stored in a a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
+Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
 thus consuming more memory while this process takes place.
 
@@ -946,7 +946,7 @@ generated the message or the message type:
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | ConstraintViolation | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue        | Generated when a validator failed due to an invalid value                                                                          |
+| InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 Validation Events and Events Manager
@@ -984,7 +984,7 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
-To make a model to react to an event, we must to implement a method with the same name of the event:
+To make a model react to events, we must to implement a method with the same name of the event:
 
 .. code-block:: php
 
@@ -995,13 +995,12 @@ To make a model to react to an event, we must to implement a method with the sam
 
         public function beforeValidationOnCreate()
         {
-
             echo "This is executed before create a Robot!";
         }
 
     }
 
-Events can be useful to assign values before perform a operation, for example:
+Events can be useful to assign values before performing an operation, for example:
 
 .. code-block:: php
 
@@ -1024,8 +1023,8 @@ Events can be useful to assign values before perform a operation, for example:
 
     }
 
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`, this means we can create
-listeners that run when an event is triggered.
+Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+this means we can create listeners that run when an event is triggered.
 
 .. code-block:: php
 
@@ -1050,8 +1049,8 @@ listeners that run when an event is triggered.
     $robot->year = 1969;
     $robot->save();
 
-In the above example the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
-objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
+If we want all objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
 
 .. code-block:: php
 
@@ -1083,9 +1082,11 @@ objects created in our application use the same EventsManager then we need to as
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
+When an insert, update or delete is executed, the model verifies if there are any methods with the names of
+the events listed in the table above.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+We recommend that validation methods are declared protected to prevent that business logic implementation
+from being exposed publicly.
 
 The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
