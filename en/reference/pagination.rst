@@ -37,7 +37,7 @@ In the example below, the paginator will use as its source data the result of a 
         array(
             "data" => $robots,
             "limit"=> 10,
-            "page" => $numberPage
+            "page" => $currentPage
         )
     );
 
