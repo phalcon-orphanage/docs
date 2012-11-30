@@ -1,7 +1,9 @@
 Class **Phalcon\\Escaper**
 ==========================
 
-Escapes different kinds of text securing them. By using this component you may prevent XSS attacks. This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support. 
+*implements* :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`
+
+Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.  This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.  
 
 .. code-block:: php
 
@@ -28,7 +30,7 @@ Returns the internal encoding used by the escaper
 
 
 
-public  **setHtmlQuoteType** (*unknown* $quoteType)
+public  **setHtmlQuoteType** (*int* $quoteType)
 
 Sets the HTML quoting type for htmlspecialchars
 
@@ -40,9 +42,10 @@ Escapes a HTML string. Internally uses htmlspeciarchars
 
 
 
-public  **escapeHtmlAttr** (*unknown* $text)
+public *string*  **escapeHtmlAttr** (*string* $text)
 
-...
+Escapes a HTML attribute string
+
 
 
 public *string*  **cssSanitize** (*array* $matches)

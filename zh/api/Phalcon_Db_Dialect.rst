@@ -25,6 +25,24 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
+public *string*  **getColumnList** (*array* $columnList)
+
+Gets a list of columns
+
+
+
+public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar)
+
+Transform an intermediate representation for a expression into a database system valid expression
+
+
+
+public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar)
+
+Transform an intermediate representation for a schema/table into a database system valid expression
+
+
+
 public *string*  **select** (*array* $definition)
 
 Builds a SELECT statement

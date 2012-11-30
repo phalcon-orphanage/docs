@@ -1,9 +1,11 @@
 Class **Phalcon\\Logger\\Adapter\\File**
 ========================================
 
-*extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
+*extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
-Adapter to store logs in plain text files 
+*implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
+
+Adapter to store logs in plain text files  
 
 .. code-block:: php
 
@@ -16,29 +18,6 @@ Adapter to store logs in plain text files
     $logger->close();
 
 
-
-Constants
----------
-
-*integer* **SPECIAL**
-
-*integer* **CUSTOM**
-
-*integer* **DEBUG**
-
-*integer* **INFO**
-
-*integer* **NOTICE**
-
-*integer* **WARNING**
-
-*integer* **ERROR**
-
-*integer* **ALERT**
-
-*integer* **CRITICAL**
-
-*integer* **EMERGENCE**
 
 Methods
 ---------
@@ -58,12 +37,6 @@ Set the log format
 public *format*  **getFormat** ()
 
 Returns the log format
-
-
-
-public *string*  **getTypeString** (*integer* $type)
-
-Returns the string meaning of a logger constant
 
 
 
@@ -121,37 +94,43 @@ Opens the internal file handler after unserialization
 
 
 
-public  **debug** (*string* $message) inherited from Phalcon\\Logger
+public *string*  **getTypeString** (*integer* $type) inherited from Phalcon\\Logger\\Adapter
+
+Returns the string meaning of a logger constant
+
+
+
+public  **debug** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*string* $message) inherited from Phalcon\\Logger
+public  **error** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*string* $message) inherited from Phalcon\\Logger
+public  **info** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*string* $message) inherited from Phalcon\\Logger
+public  **notice** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*string* $message) inherited from Phalcon\\Logger
+public  **warning** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*string* $message) inherited from Phalcon\\Logger
+public  **alert** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an alert message to the log
 

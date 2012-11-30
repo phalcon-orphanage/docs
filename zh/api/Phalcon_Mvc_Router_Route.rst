@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Router\\Route**
 =====================================
 
+*implements* :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`
+
 This class represents every route defined in the router.
 
 
@@ -63,13 +65,19 @@ Returns the route's pattern
 
 public *string*  **getCompiledPattern** ()
 
-Returns the route's pattern
+Returns the route's compiled pattern
 
 
 
 public *array*  **getPaths** ()
 
 Returns the paths
+
+
+
+public *array*  **getReversedPaths** ()
+
+Returns the paths using positions as keys and names as values
 
 
 

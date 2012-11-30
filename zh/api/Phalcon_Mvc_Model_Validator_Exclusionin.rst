@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Exclusionin**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Phalcon\\Mvc\\Model\\Validator\\ExclusionIn Check if a value is not included into a list of values 
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
+Phalcon\\Mvc\\Model\\Validator\\ExclusionIn  Check if a value is not included into a list of values  
 
 .. code-block:: php
 
@@ -32,7 +34,7 @@ Phalcon\\Mvc\\Model\\Validator\\ExclusionIn Check if a value is not included int
 Methods
 ---------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

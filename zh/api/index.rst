@@ -34,7 +34,9 @@ API Indice
    Phalcon_DI_FactoryDefault
    Phalcon_DI_FactoryDefault_CLI
    Phalcon_DI_Injectable
+   Phalcon_DI_Service
    Phalcon_Db
+   Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
    Phalcon_Db_Adapter_Pdo_Postgresql
@@ -64,15 +66,19 @@ API Indice
    Phalcon_Flash_Direct
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
+   Phalcon_Http_Cookie
+   Phalcon_Http_Cookie_Exception
    Phalcon_Http_Request
    Phalcon_Http_Request_Exception
    Phalcon_Http_Request_File
    Phalcon_Http_Response
+   Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
    Phalcon_Loader
    Phalcon_Loader_Exception
    Phalcon_Logger
+   Phalcon_Logger_Adapter
    Phalcon_Logger_Adapter_File
    Phalcon_Logger_Exception
    Phalcon_Logger_Item
@@ -97,6 +103,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query
+   Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
    Phalcon_Mvc_Model_Query_Status
    Phalcon_Mvc_Model_Resultset
@@ -134,6 +141,7 @@ API Indice
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Exception
    Phalcon_Session
+   Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Bag
    Phalcon_Session_Exception
@@ -142,6 +150,56 @@ API Indice
    Phalcon_Tag_Select
    Phalcon_Text
    Phalcon_Translate
+   Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
    Phalcon_Version
+   Phalcon_Acl_AdapterInterface
+   Phalcon_Acl_ResourceInterface
+   Phalcon_Acl_RoleInterface
+   Phalcon_Cache_BackendInterface
+   Phalcon_Cache_FrontendInterface
+   Phalcon_DI_InjectionAwareInterface
+   Phalcon_DI_ServiceInterface
+   Phalcon_Db_AdapterInterface
+   Phalcon_Db_ColumnInterface
+   Phalcon_Db_DialectInterface
+   Phalcon_Db_IndexInterface
+   Phalcon_Db_ReferenceInterface
+   Phalcon_Db_ResultInterface
+   Phalcon_DiInterface
+   Phalcon_DispatcherInterface
+   Phalcon_EscaperInterface
+   Phalcon_Events_EventsAwareInterface
+   Phalcon_Events_ManagerInterface
+   Phalcon_FilterInterface
+   Phalcon_FlashInterface
+   Phalcon_Http_RequestInterface
+   Phalcon_Http_Request_FileInterface
+   Phalcon_Http_ResponseInterface
+   Phalcon_Http_Response_HeadersInterface
+   Phalcon_Logger_AdapterInterface
+   Phalcon_Mvc_ControllerInterface
+   Phalcon_Mvc_DispatcherInterface
+   Phalcon_Mvc_ModelInterface
+   Phalcon_Mvc_Model_CriteriaInterface
+   Phalcon_Mvc_Model_ManagerInterface
+   Phalcon_Mvc_Model_MessageInterface
+   Phalcon_Mvc_Model_MetaDataInterface
+   Phalcon_Mvc_Model_QueryInterface
+   Phalcon_Mvc_Model_Query_StatusInterface
+   Phalcon_Mvc_Model_ResultInterface
+   Phalcon_Mvc_Model_ResultsetInterface
+   Phalcon_Mvc_Model_TransactionInterface
+   Phalcon_Mvc_Model_Transaction_ManagerInterface
+   Phalcon_Mvc_Model_ValidatorInterface
+   Phalcon_Mvc_ModuleDefinitionInterface
+   Phalcon_Mvc_RouterInterface
+   Phalcon_Mvc_Router_RouteInterface
+   Phalcon_Mvc_UrlInterface
+   Phalcon_Mvc_ViewInterface
+   Phalcon_Mvc_View_EngineInterface
+   Phalcon_Paginator_AdapterInterface
+   Phalcon_Session_AdapterInterface
+   Phalcon_Session_BagInterface
+   Phalcon_Translate_AdapterInterface

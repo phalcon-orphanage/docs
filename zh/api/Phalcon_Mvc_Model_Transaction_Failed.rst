@@ -9,19 +9,19 @@ Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch bloc
 Methods
 ---------
 
-public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
 
 
-public *string*  **getRecordMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getRecordMessages** ()
 
 Returns validation record messages which stop the transaction
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getRecord** ()
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getRecord** ()
 
 Returns validation record messages which stop the transaction
 

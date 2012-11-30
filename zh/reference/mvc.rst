@@ -1,24 +1,24 @@
-The MVC Architecture
+MVC架构
 ====================
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as MVC_) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon提供了面向对象的类，用以在应用程序中实现模型，视图，控制器架构（通常我们称之为 MVC_ 架构）。这种设计模式被广泛的应用到其他Web框架以及桌面应用程序中。
 
-MVC benefits include:
+MVC的好处包括：
 
-* Isolation of business logic from the user interface and the database layer
-* Making it clear where different types of code belong for easier maintenance
+* 分离业务逻辑与用户界面以及数据库层
+* 清晰的代码结构，使代码更容易维护
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC_ architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
+如果你决定使用MVC架构来开发你的程序，那么应用程序的每个请求都将采用 MVC_ 架构的方式来管理。Phalcon是一个采用C语言开发的php框架，这种模式是一种可以很好的提供高性能的方法。
 
-Models
+模型
 ------
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. :doc:`Learn more <models>`
 
-Views
+视图
 -----
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. :doc:`Learn more <views>`
 
-Controllers
+控制器
 -----------
 The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
 

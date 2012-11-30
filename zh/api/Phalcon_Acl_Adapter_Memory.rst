@@ -3,7 +3,9 @@ Class **Phalcon\\Acl\\Adapter\\Memory**
 
 *extends* :doc:`Phalcon\\Acl <Phalcon_Acl>`
 
-Manages ACL lists in memory 
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
+
+Manages ACL lists in memory  
 
 .. code-block:: php
 
@@ -71,7 +73,8 @@ Methods
 
 public  **__construct** ()
 
-...
+Phalcon\\Acl\\Adapter\\Memory constructor
+
 
 
 public  **setDefaultAction** (*int* $defaultAccess)
@@ -80,13 +83,13 @@ Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
 
 
-public  **getDefaultAction** ()
+public *int*  **getDefaultAction** ()
 
 Returns the default ACL access level
 
 
 
-public *boolean*  **addRole** (*string* $roleObject, *array* $accessInherits)
+public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $roleObject, *array* $accessInherits)
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
 
@@ -151,7 +154,8 @@ Removes an access from a resource
 
 protected  **_allowOrDeny** ()
 
-...
+Checks if a role has access to a resource
+
 
 
 public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
@@ -247,7 +251,7 @@ Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\Acl
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Acl
 
 Returns the internal event manager
 

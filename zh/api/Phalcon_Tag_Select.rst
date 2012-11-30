@@ -1,7 +1,7 @@
 Class **Phalcon\\Tag\\Select**
 ==============================
 
-Generates a SELECT html tag using an static array of values or a Phalcon\\Model resultset
+Generates a SELECT html tag using a static array of values or a Phalcon\\Mvc\\Model resultset
 
 
 Methods
@@ -15,7 +15,8 @@ Generates a SELECT tag
 
 protected static  **_optionsFromResultset** ()
 
-...
+Generate the OPTION tags based on the rows
+
 
 
 protected static  **_optionsFromArray** ()

@@ -3,9 +3,6 @@ Class **Phalcon\\Tag\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Exceptions thrown in Phalcon\\Tag will use this class
-
-
 Methods
 ---------
 

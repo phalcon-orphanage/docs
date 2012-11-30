@@ -1,7 +1,9 @@
 Class **Phalcon\\Mvc\\Router**
 ==============================
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request   
+*implements* :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
 
 .. code-block:: php
 
@@ -22,13 +24,13 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
 
@@ -37,6 +39,12 @@ Returns the internal dependency injector
 protected *string*  **_getRewriteUri** ()
 
 Get rewrite info
+
+
+
+public  **setDefaultNamespace** (*string* $namespaceName)
+
+Sets the name of the default namespace
 
 
 
@@ -72,31 +80,31 @@ Handles routing information received from the rewrite engine
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, *string/array* $paths, *string* $httpMethods)
 
-Add a route to the router on any HTTP method
+Adds a route to the router on any HTTP method
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addGet** (*string* $pattern, *string/array* $paths)
 
-Add a route to the router that only match if the HTTP method is GET
+Adds a route to the router that only match if the HTTP method is GET
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPost** (*string* $pattern, *string/array* $paths)
 
-Add a route to the router that only match if the HTTP method is POST
+Adds a route to the router that only match if the HTTP method is POST
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPut** (*string* $pattern, *string/array* $paths)
 
-Add a route to the router that only match if the HTTP method is PUT
+Adds a route to the router that only match if the HTTP method is PUT
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*string* $pattern, *string/array* $paths)
 
-Add a route to the router that only match if the HTTP method is DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
@@ -108,7 +116,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*string* $pattern, *string/array* $paths)
 
-Add a route to the router that only match if the HTTP method is HEAD
+Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
@@ -118,27 +126,33 @@ Removes all the pre-defined routes
 
 
 
+public *string*  **getNamespaceName** ()
+
+Returns processed namespace name
+
+
+
 public *string*  **getModuleName** ()
 
-Returns proccesed module name
+Returns processed module name
 
 
 
 public *string*  **getControllerName** ()
 
-Returns proccesed controller name
+Returns processed controller name
 
 
 
 public *string*  **getActionName** ()
 
-Returns proccesed action name
+Returns processed action name
 
 
 
 public *array*  **getParams** ()
 
-Returns proccesed extra params
+Returns processed extra params
 
 
 

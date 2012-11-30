@@ -104,6 +104,7 @@ Installation notes for Web Servers:
 
 .. toctree::
    :maxdepth: 1
-
+   
+   apache
    nginx
 

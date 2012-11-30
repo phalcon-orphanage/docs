@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Dispatcher**
 
 *extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller. 
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
+
+Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.  
 
 .. code-block:: php
 
@@ -31,6 +33,8 @@ Constants
 *integer* **EXCEPTION_CYCLIC_ROUTING**
 
 *integer* **EXCEPTION_HANDLER_NOT_FOUND**
+
+*integer* **EXCEPTION_INVALID_HANDLER**
 
 *integer* **EXCEPTION_INVALID_PARAMS**
 
@@ -83,28 +87,29 @@ Returns the active controller in the dispatcher
 
 public  **__construct** () inherited from Phalcon\\Dispatcher
 
-...
+Phalcon\\Dispatcher constructor
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\\Dispatcher
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** () inherited from Phalcon\\Dispatcher
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Dispatcher
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
 
 Returns the internal event manager
 
@@ -116,9 +121,27 @@ Sets the default action suffix
 
 
 
+public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+
+Sets a namespace to be prepended to the handler name
+
+
+
+public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+
+Gets a namespace to be prepended to the current handler name
+
+
+
 public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
+
+
+
+public *string*  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
+
+Returns the default namespace
 
 
 
@@ -158,7 +181,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -166,7 +189,7 @@ Gets a param by its name or numeric index
 
 public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
 
-Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
 
 
 

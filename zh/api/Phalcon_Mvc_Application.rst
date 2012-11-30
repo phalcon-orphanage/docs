@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Application**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired. 
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.  
 
 .. code-block:: php
 
@@ -46,31 +48,7 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
-
-Sets the DependencyInjector container
-
-
-
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
-
-Returns the DependencyInjector container
-
-
-
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager)
-
-Sets the events manager
-
-
-
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
-
-Returns the internal event manager
-
-
-
-public  **registerModules** (*array* $modules)
+public  **registerModules** (*array* $modules, *boolean* $merge)
 
 Register an array of modules present in the application 
 
@@ -98,9 +76,33 @@ Return the modules registered in the application
 
 
 
-public :doc:`Phalcon\\Http\\Response <Phalcon_Http_Response>`  **handle** ()
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ()
 
 Handles a MVC request
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+
+Sets the dependency injector
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal dependency injector
+
+
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+
+Sets the event manager
+
+
+
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal event manager
 
 
 
