@@ -15,13 +15,13 @@ Phalcon\\DI constructor
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared)
 
 Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config)
 
 Registers an "always shared" service in the services container
 
@@ -33,7 +33,7 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared)
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
@@ -45,7 +45,7 @@ Returns a service definition without resolving
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*unknown* $name)
 
 Returns a Phalcon\\Di\\Service instance
 
