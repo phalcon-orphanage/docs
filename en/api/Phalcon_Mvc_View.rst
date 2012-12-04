@@ -138,6 +138,12 @@ Adds parameters to views
 
 
 
+public *mixed*  **getVar** (*string* $key)
+
+Returns a parameter previously set in the view
+
+
+
 public *array*  **getParamsToView** ()
 
 Returns parameters to views

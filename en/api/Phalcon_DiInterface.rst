@@ -79,7 +79,7 @@ Set a default dependency injection container to be obtained into static methods
 
 
 
-abstract public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDefault** ()
+abstract public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** ()
 
 Return the last DI created
 

@@ -11,7 +11,7 @@ Allows to define translation lists using PHP arrays
 Methods
 ---------
 
-public  **__construct** (*unknown* $options)
+public  **__construct** (*array* $options)
 
 Phalcon\\Translate\\Adapter\\NativeArray constructor
 

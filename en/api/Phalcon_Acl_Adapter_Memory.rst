@@ -1,7 +1,7 @@
 Class **Phalcon\\Acl\\Adapter\\Memory**
 =======================================
 
-*extends* :doc:`Phalcon\\Acl <Phalcon_Acl>`
+*extends* :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
@@ -61,13 +61,6 @@ Manages ACL lists in memory
 
 
 
-Constants
----------
-
-*integer* **ALLOW**
-
-*integer* **DENY**
-
 Methods
 ---------
 
@@ -77,19 +70,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 
-public  **setDefaultAction** (*int* $defaultAccess)
-
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
-
-
-
-public *int*  **getDefaultAction** ()
-
-Returns the default ACL access level
-
-
-
-public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $roleObject, *array* $accessInherits)
+public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, *array* $accessInherits)
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
 
@@ -221,39 +202,51 @@ Check whether a role is allowed to access an action from a resource
 
 
 
-public *string*  **getActiveRole** ()
-
-Returns the role which the list is checking if it's allowed to certain resource/access
-
-
-
-public *string*  **getActiveResource** ()
-
-Returns the resource which the list is checking if some role can access it
-
-
-
-public *string*  **getActiveAccess** ()
-
-Returns the access which the list is checking if some role can access it
-
-
-
 protected  **_rebuildAccessList** ()
 
 Rebuild the list of access from the inherit lists
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Acl
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Acl\\Adapter
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Acl
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Acl\\Adapter
 
 Returns the internal event manager
+
+
+
+public  **setDefaultAction** (*int* $defaultAccess) inherited from Phalcon\\Acl\\Adapter
+
+Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+
+
+
+public *int*  **getDefaultAction** () inherited from Phalcon\\Acl\\Adapter
+
+Returns the default ACL access level
+
+
+
+public *string*  **getActiveRole** () inherited from Phalcon\\Acl\\Adapter
+
+Returns the role which the list is checking if it's allowed to certain resource/access
+
+
+
+public *string*  **getActiveResource** () inherited from Phalcon\\Acl\\Adapter
+
+Returns the resource which the list is checking if some role can access it
+
+
+
+public *string*  **getActiveAccess** () inherited from Phalcon\\Acl\\Adapter
+
+Returns the access which the list is checking if some role can access it
 
 
 

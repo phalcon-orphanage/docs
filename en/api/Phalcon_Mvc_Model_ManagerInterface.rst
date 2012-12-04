@@ -127,3 +127,9 @@ Creates a Phalcon\\Mvc\\Model\\Query and execute it
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **createBuilder** (*string* $params)
+
+Creates a Phalcon\\Mvc\\Model\\Query\\Builder
+
+
+

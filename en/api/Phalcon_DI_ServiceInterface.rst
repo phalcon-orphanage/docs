@@ -9,7 +9,7 @@ Methods
 
 abstract public  **__construct** (*string* $name, *mixed* $definition, *boolean* $shared)
 
-Phalcon\\DI\\Service
+
 
 
 
@@ -49,7 +49,7 @@ Resolves the service
 
 
 
-abstract public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** (*array* $attributes)
+abstract public static :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **__set_state** (*array* $attributes)
 
 Restore the interal state of a service
 

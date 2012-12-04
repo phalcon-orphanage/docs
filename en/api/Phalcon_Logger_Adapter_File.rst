@@ -28,36 +28,6 @@ Phalcon\\Logger\\Adapter\\File constructor
 
 
 
-public  **setFormat** (*string* $format)
-
-Set the log format
-
-
-
-public *format*  **getFormat** ()
-
-Returns the log format
-
-
-
-protected *string*  **_applyFormat** ()
-
-Applies the internal format to the message
-
-
-
-public  **setDateFormat** (*string* $date)
-
-Sets the internal date format
-
-
-
-public *string*  **getDateFormat** ()
-
-Returns the internal date format
-
-
-
 public  **log** (*string* $message, *int* $type)
 
 Sends/Writes messages to the file log
@@ -91,6 +61,36 @@ Closes the logger
 public  **__wakeup** ()
 
 Opens the internal file handler after unserialization
+
+
+
+public  **setFormat** (*string* $format) inherited from Phalcon\\Logger\\Adapter
+
+Set the log format
+
+
+
+public *format*  **getFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the log format
+
+
+
+protected *string*  **_applyFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Applies the internal format to the message
+
+
+
+public  **setDateFormat** (*string* $date) inherited from Phalcon\\Logger\\Adapter
+
+Sets the internal date format
+
+
+
+public *string*  **getDateFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the internal date format
 
 
 

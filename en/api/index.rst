@@ -5,6 +5,7 @@ API Indice
    :maxdepth: 1
 
    Phalcon_Acl
+   Phalcon_Acl_Adapter
    Phalcon_Acl_Adapter_Memory
    Phalcon_Acl_Exception
    Phalcon_Acl_Resource
@@ -187,6 +188,7 @@ API Indice
    Phalcon_Mvc_Model_MessageInterface
    Phalcon_Mvc_Model_MetaDataInterface
    Phalcon_Mvc_Model_QueryInterface
+   Phalcon_Mvc_Model_Query_BuilderInterface
    Phalcon_Mvc_Model_Query_StatusInterface
    Phalcon_Mvc_Model_ResultInterface
    Phalcon_Mvc_Model_ResultsetInterface
