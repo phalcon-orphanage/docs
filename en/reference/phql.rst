@@ -40,9 +40,9 @@ To better explain how PHQL works consider the following example. We have two mod
 
         public $style;
 
-       /**
-        * This model is mapped to the table sample_cars
-        */
+        /**
+         * This model is mapped to the table sample_cars
+         */
         public function getSource()
         {
             return 'sample_cars';
@@ -169,8 +169,7 @@ a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Results
 
     $phql = "SELECT c.* FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -181,8 +180,7 @@ This is exactly the same as:
     <?php
 
     $cars = Cars::find(array("order" => "name"));
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -195,8 +193,7 @@ other types of queries that do not return complete objects, for example:
 
     $phql = "SELECT c.id, c.name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
@@ -213,8 +210,7 @@ literals, expressions, etc..:
 
     $phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo $car->id_name, "\n";
     }
 
@@ -234,8 +230,7 @@ This allows access to both complete objects and scalars at once:
 
     <?php
 
-    foreach ($result as $row)
-    {
+    foreach ($result as $row) {
         echo "Name: ", $row->cars->name, "\n";
         echo "Price: ", $row->cars->price, "\n";
         echo "Taxes: ", $row->taxes, "\n";
@@ -254,8 +249,7 @@ relationships in the models. PHQL adds these conditions automatically:
 
     $phql  = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
     }
@@ -295,8 +289,7 @@ Also, the joins can be created using multiple tables in the FROM clause:
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo "Car: ", $row->cars->name, "\n";
         echo "Brand: ", $row->brands->name, "\n";
     }
@@ -309,8 +302,7 @@ If an alias is used to rename the models in the query, those will be used to nam
 
     $phql = "SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo "Car: ", $row->c->name, "\n";
         echo "Brand: ", $row->b->name, "\n";
     }
@@ -331,31 +323,27 @@ The following examples show how to use aggregations in PHQL:
     // How many cars are by each brand?
     $phql = "SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->brand_id, ' ', $row["1"], "\n";
     }
 
     // How many cars are by each brand?
     $phql = "SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->name, ' ', $row["1"], "\n";
     }
 
     $phql = "SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row["maximum"], ' ', $row["minimum"], "\n";
     }
 
     // Count distinct used brands
     $phql = "SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->brandId, "\n";
     }
 
@@ -481,7 +469,7 @@ because the price does not meet the business rule that we implemented:
 
 Updating Data
 -------------
-Updating rows is very similar than Inserting rows. As you may know, the instruction to
+Updating rows is very similar than inserting rows. As you may know, the instruction to
 update records is UPDATE. When a record is updated the events related to the update operation
 will be executed for each row.
 
@@ -503,14 +491,47 @@ will be executed for each row.
 
     // Using placeholders
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
-    $manager->executeQuery(
-        $phql,
-        array(
-            0 => 7000.00,
-            1 => 'Sedan',
-            2 => 5
-        )
-    );
+    $manager->executeQuery($phql, array(
+        0 => 7000.00,
+        1 => 'Sedan',
+        2 => 5
+    ));
+
+An UPDATE statement performs the update in two phases:
+
+* First, if the UPDATE has a WHERE clause it retrieves all the objects that match that criteria,
+* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
+
+This way of operation allows that events, virtual foreign keys and validations take part of the updating process.
+In summary, the following code:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+    $success = $manager->executeQuery($phql);
+
+is somewhat equivalent to:
+
+.. code-block:: php
+
+    <?php
+
+    $messages = null;
+
+    $process = function() use (&$messages) {
+        foreach (Cars::find("id > 101") as $car) {
+            $car->price = 15000;
+            if ($car->save() == false) {
+                $messages = $car->getMessages();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    $success = $process();
 
 Deleting Data
 -------------
@@ -537,6 +558,8 @@ When a record is deleted the events related to the delete operation will be exec
             'final' => '100
         )
     );
+
+DELETE operations are also executed in two phases like UPDATEs.
 
 Creating queries using the Query Builder
 ----------------------------------------

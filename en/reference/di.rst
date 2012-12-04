@@ -16,7 +16,7 @@ connection parameters or the type of database system because the component only 
 
         /**
          * The instantiation of the connection is hardcoded inside
-         * the component so is difficult to replace it externally
+         * the component so is difficult replacing it externally
          * or change its behavior
          */
         public function someDbTask()
@@ -322,7 +322,7 @@ of our component:
     $di = new Phalcon\DI();
 
     //Register a "db" service in the container
-    $di->set('db', function(){
+    $di->set('db', function() {
         return new Connection(array(
             "host" => "localhost",
             "username" => "root",
@@ -332,12 +332,12 @@ of our component:
     });
 
     //Register a "filter" service in the container
-    $di->set('filter', function(){
+    $di->set('filter', function() {
         return new Filter();
     });
 
     //Register a "session" service in the container
-    $di->set('session', function(){
+    $di->set('session', function() {
         return new Session();
     });
 
@@ -387,7 +387,7 @@ Services can be registered in several ways:
     $di->set("request", 'Phalcon\Http\Request');
 
     //Using an anonymous function, the instance will lazy loaded
-    $di->set("request", function(){
+    $di->set("request", function() {
         return new Phalcon\Http\Request();
     });
 
@@ -429,7 +429,7 @@ in the container, any object stored in it (via array, string etc.) will be lazy 
     ));
 
     //Using an anonymous function
-    $di->set("db", function(){
+    $di->set("db", function() {
         return new Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => "localhost",
              "username" => "root",
@@ -526,7 +526,7 @@ Once a service is registered in services container, you can retrieve it in other
     $requestService = $di->getService('request');
 
     //Change its definition
-    $requestService->setDefinition(function(){
+    $requestService->setDefinition(function() {
         return new Phalcon\Http\Request();
     });
 
@@ -598,7 +598,7 @@ the same name. With this behavior we can replace any class by another simply by 
     $di->set('IndexController', function() {
         $component = new Component();
         return $component;
-    });
+    }, true);
 
     //Register a controller as a service
     $di->set('MyOtherComponent', function() {
@@ -611,7 +611,8 @@ the same name. With this behavior we can replace any class by another simply by 
     $myComponent = $di->get('MyOtherComponent');
 
 You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will
-fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition for it.
+fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition
+for it.
 
 Automatic Injecting of the DI itself
 ------------------------------------
@@ -650,6 +651,46 @@ Then once the service is resolved, the $di will be passed to setDi automatically
 
     //Resolve the service (also $myClass->setDi($di) is automatically called)
     $myClass = $di->get('myClass');
+
+Avoiding service resolution
+---------------------------
+Some services are used in each of the requests made to the application, eliminate the process of resolving the service
+could add some small improvement in performance.
+
+.. code-block:: php
+
+    <?php
+
+    //Resolve the object externally instead of using a definition for it:
+    $router = new MyRouter();
+
+    //Pass the resolved object to the service registration
+    $di->set('router', $router);
+
+Organizing services in files
+----------------------------
+You can better organize your application by moving the service registration to individual files instead of
+doing everything in the application's bootstrap:
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('router', function() {
+        return include ("../app/config/routes.php");
+    });
+
+Then in the file ("../app/config/routes.php") return the object resolved:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new MyRouter();
+
+    $router->post('/login');
+
+    return $router;
 
 Accessing the DI in a static way
 --------------------------------

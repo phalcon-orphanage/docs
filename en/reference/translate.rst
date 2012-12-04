@@ -162,4 +162,4 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
 
     }
 
-
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_

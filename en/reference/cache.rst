@@ -298,7 +298,7 @@ APC Backend Options
 This backend will store cached content on Alternative PHP Cache (APC_). This cache backend does not require any additional configuration options.
 
 Mongo Backend Options
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a MongoDB server. The available options for this backend are:
 
 +------------+---------------------------------------------+
@@ -311,6 +311,7 @@ This backend will store cached content on a MongoDB server. The available option
 | collection | Mongo collection in the database            |
 +------------+---------------------------------------------+
 
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
 
 .. _Memcached: http://php.net/manual/en/book.apc.php
 .. _memcache: http://pecl.php.net/package/memcache
