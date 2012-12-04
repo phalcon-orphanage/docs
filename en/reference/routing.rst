@@ -163,7 +163,7 @@ by the request. Inside the controller, those named parameters can be accessed as
 
     }
 
-Note that the values ​​of the parameters are obtained from the dispatcher. This happens because it is the
+Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
 component that finally interacts with the drivers of your application. Moreover, there is also another
 way to create named parameters as part of the pattern:
 
@@ -179,7 +179,7 @@ way to create named parameters as part of the pattern:
         )
     );
 
-You can access their values ​​in the same way as before:
+You can access their values in the same way as before:
 
 .. code-block:: php
 
