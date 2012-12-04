@@ -389,8 +389,8 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     //Casting Types
     $types = array(
-        Phalcon\Db\Column::BIND_PARAM_STR,
-        Phalcon\Db\Column::BIND_PARAM_INT
+        "name" => \Phalcon\Db\Column::BIND_PARAM_STR,
+        "year" => \Phalcon\Db\Column::BIND_PARAM_INT
     );
 
     // Query robots binding parameters with string placeholders
@@ -401,6 +401,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "bindTypes" => $types
     ));
 
+Since the default bind-type is \Phalcon\Db\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
 
