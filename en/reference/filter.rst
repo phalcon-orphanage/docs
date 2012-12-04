@@ -1,6 +1,7 @@
 Filtering and Sanitizing
 ========================
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted.
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
+access to the content of your application, mainly user data, or even the server your application is hosted.
 
 .. figure:: ../_static/img/sql.png
    :align: center
@@ -11,7 +12,8 @@ The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of c
 
 Sanitizing data
 ---------------
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
+By sanitizing input we ensure that application integrity will be intact.
 
 .. code-block:: php
 
@@ -34,7 +36,8 @@ Sanitizing is the process which removes specific characters from a value, that a
 
 Sanitizing from Controllers
 ---------------------------
-You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
+(through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
 .. code-block:: php
 
@@ -86,7 +89,8 @@ The next example shows you how to sanitize the action parameters within a contro
 
 Filtering data
 --------------
-In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to the format we expect.
+In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
+the format we expect.
 
 .. code-block:: php
 
@@ -151,9 +155,11 @@ Or, if you prefer, you can implement the filter in a class:
 
     <?php
 
-    class IPv4Filter {
+    class IPv4Filter
+    {
 
-        public function filter($value){
+        public function filter($value)
+        {
             return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
 
@@ -170,6 +176,11 @@ Or, if you prefer, you can implement the filter in a class:
 Complex Sanitizing and Filtering
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
+
+Implementing your own Filter
+----------------------------
+The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
+replacing the one providing by Phalcon.
 
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php

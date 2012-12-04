@@ -5,6 +5,7 @@ API Indice
    :maxdepth: 1
 
    Phalcon_Acl
+   Phalcon_Acl_Adapter
    Phalcon_Acl_Adapter_Memory
    Phalcon_Acl_Exception
    Phalcon_Acl_Resource
@@ -67,6 +68,7 @@ API Indice
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
    Phalcon_Http_Cookie
+   Phalcon_Http_Cookie_Exception
    Phalcon_Http_Request
    Phalcon_Http_Request_Exception
    Phalcon_Http_Request_File
@@ -102,6 +104,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_Query
+   Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
    Phalcon_Mvc_Model_Query_Status
    Phalcon_Mvc_Model_Resultset
@@ -158,6 +161,7 @@ API Indice
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_DI_InjectionAwareInterface
+   Phalcon_DI_ServiceInterface
    Phalcon_Db_AdapterInterface
    Phalcon_Db_ColumnInterface
    Phalcon_Db_DialectInterface
@@ -174,7 +178,9 @@ API Indice
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
+   Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_CriteriaInterface
@@ -182,11 +188,14 @@ API Indice
    Phalcon_Mvc_Model_MessageInterface
    Phalcon_Mvc_Model_MetaDataInterface
    Phalcon_Mvc_Model_QueryInterface
+   Phalcon_Mvc_Model_Query_BuilderInterface
    Phalcon_Mvc_Model_Query_StatusInterface
+   Phalcon_Mvc_Model_ResultInterface
    Phalcon_Mvc_Model_ResultsetInterface
    Phalcon_Mvc_Model_TransactionInterface
    Phalcon_Mvc_Model_Transaction_ManagerInterface
    Phalcon_Mvc_Model_ValidatorInterface
+   Phalcon_Mvc_ModuleDefinitionInterface
    Phalcon_Mvc_RouterInterface
    Phalcon_Mvc_Router_RouteInterface
    Phalcon_Mvc_UrlInterface

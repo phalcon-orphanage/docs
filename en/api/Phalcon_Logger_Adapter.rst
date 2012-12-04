@@ -7,6 +7,36 @@ Base class for Phalcon\\Logger adapters
 Methods
 ---------
 
+public  **setFormat** (*string* $format)
+
+Set the log format
+
+
+
+public *format*  **getFormat** ()
+
+Returns the log format
+
+
+
+protected *string*  **_applyFormat** ()
+
+Applies the internal format to the message
+
+
+
+public  **setDateFormat** (*string* $date)
+
+Sets the internal date format
+
+
+
+public *string*  **getDateFormat** ()
+
+Returns the internal date format
+
+
+
 public *string*  **getTypeString** (*integer* $type)
 
 Returns the string meaning of a logger constant

@@ -19,7 +19,7 @@ Returns the default ACL access level
 
 
 
-abstract public *boolean*  **addRole** (:doc:`Phalcon\\Mvc\\RoleInterface <Phalcon_Mvc_RoleInterface>` $roleObject, *array* $accessInherits)
+abstract public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, *array* $accessInherits)
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 

@@ -17,13 +17,13 @@ Phalcon\\DI\\FactoryDefault constructor
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **set** (*string* $name, *mixed* $config, *boolean* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared) inherited from Phalcon\\DI
 
 Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **setShared** (*string* $name, *mixed* $config) inherited from Phalcon\\DI
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config) inherited from Phalcon\\DI
 
 Registers an "always shared" service in the services container
 
@@ -35,7 +35,7 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared) inherited from Phalcon\\DI
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
@@ -44,6 +44,12 @@ Attempts to register a service in the services container Only is successful if a
 public *mixed*  **getRaw** (*string* $name) inherited from Phalcon\\DI
 
 Returns a service definition without resolving
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\DI
+
+Returns a Phalcon\\Di\\Service instance
 
 
 

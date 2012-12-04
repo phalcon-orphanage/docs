@@ -201,7 +201,7 @@ make the example more concise:
 
     </form>
 
-The SessionController::startAction (app/controllers/SessionController.phtml) have the task of validate the entered data checking
+The SessionController::startAction (app/controllers/SessionController.phtml) has the task of validate the entered data checking
 for a valid user in the database:
 
 .. code-block:: php
@@ -232,14 +232,17 @@ for a valid user in the database:
                 $password = sha1($password);
 
                 //Find for the user in the database
-                $user = Users::findFirst("email='$email' AND password='$password' AND active='Y'");
+                $user = Users::findFirst(array(
+                    "email=:email: AND password=:password: AND active='Y'",
+                    "bind" => array('email' => $email, 'password' => $password)
+                ));
                 if ($user != false) {
 
                     $this->_registerSession($user);
 
                     $this->flash->success('Welcome '.$user->name);
 
-                    //Forward to the invoices controller if the user is valid
+                    //Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -260,7 +263,7 @@ for a valid user in the database:
     }
 
 Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in dependency injector from earlier. When accessed the first time, they are injected as part of the controller.
+These are services defined in services container from earlier. When accessed the first time, they are injected as part of the controller.
 
 These services are shared, which means that we will always be accessing the same instance regardless of the place where we invoke them.
 
@@ -291,8 +294,8 @@ Now let's find out how the application accomplishes this. The first thing to kno
 informed about the route found by the component Router. Based on this is responsible for loading the appropriate controller and execute
 the corresponding action method.
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to make a special action that is check before
-executing the required action if the user has access to it or not. To achieve this we replace the component by creating a function
+Normally, the framework creates the Dispatcher automatically. In our case, we want to make a special action that is checked before
+executing the required action, checking if the user has access to it or not. To achieve this we replace the component by creating a function
 defined by us in the bootstrap:
 
 .. code-block:: php
@@ -310,7 +313,7 @@ EventsManager helps us to bring the events produced by some component to the obj
 
 Events Management
 ^^^^^^^^^^^^^^^^^
-A EventsManager allows us to attach listeners to a particular type of event. The type that interests us now is "dispatch" that filters
+A EventsManager allows us to attach listeners to a particular type of event. The type that interest us now is "dispatch", this filters
 all events produced by the Dispatcher:
 
 .. code-block:: php
@@ -362,8 +365,8 @@ The hooks events always receive a first parameter that contains contextual infor
 object that produced the event itself. Plugins should not extend the class Phalcon\\Mvc\\User\\Plugin, but by doing it they gain easier
 access to the services of the application.
 
-Now, we're verifying the role in the current session, check to see if he has access using the ACL list. If he does not have access we
-redirect hom to the home screen as explained:
+Now, we're verifying the role in the current session, check to see if he has access using the ACL list. If he/she does not have access we
+redirect him/her to the home screen as explained:
 
 .. code-block:: php
 
@@ -418,7 +421,7 @@ redirect hom to the home screen as explained:
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
-In the previous example we obtain the ACL using the method $this->_getAcl(). This method is also implemented in the Plugin.
+In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also implemented in the Plugin.
 Now explain step by step how we built the access control list:
 
 .. code-block:: php
@@ -471,7 +474,7 @@ the resources:
     }
 
 The ACL now have knowledge of the existing controllers and their related actions. The role "Users" has access to all the resources
-of both the frontend and the backend. The role "Guests" only have access to the public area:
+of both frontend and backend. The role "Guests" only has access to the public area:
 
 .. code-block:: php
 
@@ -495,8 +498,8 @@ Hooray!, the ACL is now complete.
 
 User Components
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through Twitter Boostrap. Some elements, such as the
-navigation bar change according to the state of the application. For example, in the upper right corner, the link "Log in / Sign Up"
+All the UI elements and visual style of the application has been achieved mostly through `Twitter Boostrap`_. Some elements, such as the
+navigation bar changes according to the state of the application. For example, in the upper right corner, the link "Log in / Sign Up"
 changes to "Log out" if a user is logged into the application.
 
 This part of the application is implemented in the component "Elements" (app/library/Elements.php).
@@ -521,7 +524,7 @@ This part of the application is implemented in the component "Elements" (app/lib
     }
 
 This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but if it helps to
-more quickly access the application services. Now, we register this class in the Dependency Injector Container:
+more quickly access the application services. Now, we register this class in the services container:
 
 .. code-block:: php
 
@@ -532,7 +535,8 @@ more quickly access the application services. Now, we register this class in the
         return new Elements();
     });
 
-As controllers, plugins or components within a view also can access the services registered in the container just accessing an attribute by name:
+As controllers, plugins or components within a view, this component also has access to the services registered in the container
+just accessing an attribute with the same name as a previously registered service:
 
 .. code-block:: html+php
 
@@ -584,7 +588,7 @@ Read, Update and Delete). Each CRUD contains the following files:
                     new.phtml
                     search.phtml
 
-Each controller have the following actions:
+Each controller has the following actions:
 
 .. code-block:: php
 
@@ -654,7 +658,7 @@ Each controller have the following actions:
 
 The Search Form
 ^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user to create a search criteria from any field.
+Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user creating a search criteria from any field.
 The "products" table has a relationship to the table "products_types". In this case we previously query the records in this table in order to
 facilitate the search by that field:
 
@@ -688,13 +692,13 @@ filled with those results:
         )) ?>
     </div>
 
-Note that the $productTypes contains the data necessary to fill the SELECT tag with Phalcon\\Tag::select. Once the form is submitted, it will
+Note that the $productTypes contains the data necessary to fill the SELECT tag in Phalcon\\Tag::select. Once the form is submitted, it will
 execute the action "search" in the controller who will perform the search based on the data entered by the user.
 
 Performing a Search
 ^^^^^^^^^^^^^^^^^^^
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the form.
-But when accessed via GET it moves the current page in the paginator. To differentiate one from the other HTTP method,
+But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
 we check it using the :doc:`Request <request>` component:
 
 .. code-block:: php
@@ -800,7 +804,7 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
 Creating and Updating Records
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "create" and "update" products respectively.
+are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
 
 In the creation case, we recover the data sent and assign them to a new "products" instance:
 
@@ -966,3 +970,4 @@ This tutorial covers many more aspects of building applications with Phalcon, ho
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _Twitter Boostrap: http://bootstrap.github.com/
