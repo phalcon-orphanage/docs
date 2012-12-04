@@ -1,9 +1,12 @@
 
 Using Controllers
 =================
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
+the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each part like this:
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+part like this:
 
 +------------------------+----------------+
 | **Phalcon Directory**  | blog           |
@@ -17,7 +20,8 @@ For instance, when you access a URL like this: http://localhost/blog/posts/show/
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
+could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
 
 Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
 
@@ -40,11 +44,59 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
 
     }
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to the application services.
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
+optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to
+the application services.
+
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function showAction($year=2012, $postTitle='some default title')
+        {
+
+        }
+
+    }
+
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function showAction()
+        {
+            $year = $this->dispatcher->getParam('year');
+            $postTitle = $this->dispatcher->getParam('postTitle');
+        }
+
+    }
+
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
+action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
+execution to a different controller/action.
 
 .. code-block:: php
 
@@ -63,7 +115,10 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array("controller" => "users", "action" => "signin"));
+            $this->dispatcher->forward(array(
+                "controller" => "users",
+                "action" => "signin"
+            ));
         }
 
     }
@@ -125,7 +180,7 @@ action is executed on a controller. The use of the "__construct" method is not r
 
 Injecting Services
 ------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it have easy access to the service
+If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
 container in application. For example, if we have registered a service like this:
 
 .. code-block:: php
@@ -134,11 +189,11 @@ container in application. For example, if we have registered a service like this
 
     $di = new Phalcon\DI();
 
-    $di->set('storage', function(){
+    $di->set('storage', function() {
         return new Storage('/some/directory');
-    });
+    }, true);
 
-Then, we can access to that service by this way:
+Then, we can access to that service in several ways:
 
 .. code-block:: php
 
@@ -156,8 +211,11 @@ Then, we can access to that service by this way:
             //Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service
+            //Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
+
+            //Another way to access the service using the magic getter
+            $this->getDi()->getStorage()->save('/some/file');
         }
 
     }
@@ -304,6 +362,42 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     class UsersController extends ControllerBase
     {
+
+    }
+
+Events in Controllers
+---------------------
+Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
+you to implement hook points before/after the actions are executed:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function beforeExecuteRoute($dispatcher)
+        {
+            // This is executed before every found action
+
+            if ($dispatcher->getActionName() == 'save') {
+
+                $this->flash->error("You don't have permission to save posts");
+
+                $this->dispatcher->forward(array(
+                    'controller' => 'home',
+                    'action' => 'index'
+                ));
+
+                return false;
+            }
+        }
+
+        public function afterExecuteRoute($dispatcher)
+        {
+            // Executed after every found action
+        }
 
     }
 

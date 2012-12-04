@@ -26,6 +26,11 @@ h2 {
 	margin: 25px 0 0;
 }
 
+h3 {
+    font-weight: 600;
+    margin: 15px 0 10px;
+}
+
 /*p, li {
 	color: #434343;
 }*/
@@ -460,6 +465,15 @@ div.highlight {
 .highlight .ni {
     color: teal;
     font-weight: bold;
+}
+
+.highlight .kn {
+    color: #000000;
+    font-weight: normal;
+}
+
+.highlight .sr {
+    color: #717171;
 }
 
 pre {

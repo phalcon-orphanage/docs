@@ -1,6 +1,7 @@
-Reading Configuration
-=====================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into PHP objects for use in an application.
+Reading Configurations
+======================
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
+PHP objects for use in an application.
 
 File Adapters
 -------------
@@ -16,7 +17,8 @@ The adapters available are:
 
 Native Arrays
 -------------
-The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are read during this request.
+The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
+read during this request.
 
 .. code-block:: php
 

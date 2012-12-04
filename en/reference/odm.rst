@@ -762,7 +762,7 @@ You may be required to access the application services within a model, the follo
 
     }
 
-The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
+The "notSave" event is triggered whenever a "creating" or "updating" action fails. We're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
 .. _MongoDB: http://www.mongodb.org/
