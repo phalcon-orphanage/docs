@@ -22,12 +22,6 @@ This components controls the initialization of models, keeping record of relatio
 Methods
 ---------
 
-public  **__construct** ()
-
-Phalcon\\Mvc\\Model\\Manager constructor
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container

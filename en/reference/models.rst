@@ -796,12 +796,12 @@ it as a service in the services container:
     $di->set('modelsCache', function(){
 
         //Cache data for one day by default
-        $frontCache = new Phalcon\Cache\Frontend\Data(array(
+        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
+        $cache = new \Phalcon\Cache\Backend\Memcached($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -821,7 +821,7 @@ Once the cache setup is properly defined you could cache resultsets as follows:
 
     // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
     $products = Products::find(array(
-        cache" => array("key" => "my-cache")
+        "cache" => array("key" => "my-cache")
     ));
 
     // Cache the resultset only for 5 minutes
@@ -1082,7 +1082,7 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new \Phalcon\Events\Manager();
 
     //Attach an anonymous function as a listener for "model" events
     $eventsManager->attach('model', function($event, $robot) {
@@ -1111,7 +1111,7 @@ If we want all objects created in our application use the same EventsManager the
     //Registering the modelsManager service
     $di->setShared('modelsManager', function() {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new \Phalcon\Events\Manager();
 
         //Attach an anonymous function as a listener for "model" events
         $eventsManager->attach('model', function($event, $model){
@@ -1173,8 +1173,8 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
-    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Uniqueness;
 
     class Robots extends \Phalcon\Mvc\Model
     {
@@ -1230,8 +1230,8 @@ In addition to the built-in validatiors, you can create your own validators:
 
     <?php
 
-    use \Phalcon\Mvc\Model\Validator,
-        \Phalcon\Mvc\Model\ValidatorInterface;
+    use Phalcon\Mvc\Model\Validator,
+        Phalcon\Mvc\Model\ValidatorInterface;
 
     class UrlValidator extends Validator implements ValidatorInterface
     {
@@ -1467,7 +1467,7 @@ Transactions in Phalcon allow you to commit all operations if they have been exe
     try {
 
         //Create a transaction manager
-        $manager = new Phalcon\Mvc\Model\Transaction\Manager();
+        $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
 
         // Request a transaction
         $transaction = $manager->get();
@@ -1512,7 +1512,7 @@ Transactions can be used to delete many records in a consistent way:
         $transaction = $manager->get();
 
         //Get the robots will be deleted
-        foreach (Robots::find("type='mechanical'") as $robot) {
+        foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
                 //Something goes wrong, we should to rollback the transaction
@@ -1539,7 +1539,7 @@ is performed. You can use the service container to create an overall transaction
     <?php
 
     $di->setShared('transactions', function(){
-        return new Phalcon\Mvc\Model\Transaction\Manager();
+        return new \Phalcon\Mvc\Model\Transaction\Manager();
     });
 
 Then access it from a controller or view:
@@ -1574,7 +1574,7 @@ in the code. A change in the column map in the model will take care of the rest.
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends \Phalcon\Mvc\Model
     {
 
         public function columnMap()
@@ -1618,7 +1618,13 @@ Then you can use the new names naturally in your code:
 Take into consideration the following the next when renaming your columns:
 
 * References to attributes in relationships/validators must use the new names
-* Refer the column names will result in an exception by the ORM
+* Refer the real column names will result in an exception by the ORM
+
+The independent column map allow you to:
+
+* Write applications using your own conventions
+* Eliminate vendor prefixes/suffixes in your code
+* Change column names without change your application code
 
 Models Meta-Data
 ----------------
@@ -1671,7 +1677,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
     $di->setShared('modelsMetadata', function() {
 
         // Create a meta-data manager with APC
-        $metaData = new Phalcon\Mvc\Model\MetaData\Apc(
+        $metaData = \new Phalcon\Mvc\Model\MetaData\Apc(
             array(
                 "lifetime" => 86400,
                 "suffix"   => "my-suffix"
@@ -1693,10 +1699,10 @@ The following example shows how to define the meta-data manually:
 
     <?php
 
-    use Phalcon\Mvc\Model\MetaData;
-    use Phalcon\Db\Column;
+    use Phalcon\Mvc\Model\MetaData,
+        Phalcon\Db\Column;
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends \Phalcon\Mvc\Model
     {
 
         public function metaData()
@@ -1834,9 +1840,9 @@ statements as they happen.
 
     $di->set('db', function() {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new \Phalcon\Events\Manager();
 
-        $logger = new Phalcon\Logger\Adapter\File("app/logs/debug.log");
+        $logger = new \Phalcon\Logger\Adapter\File("app/logs/debug.log");
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($logger) {
@@ -1889,12 +1895,12 @@ this you can diagnose performance problems and to discover bottlenecks.
     <?php
 
     $di->set('profiler', function(){
-        return new Phalcon\Db\Profiler();
+        return new \Phalcon\Db\Profiler();
     });
 
     $di->set('db', function() use ($di) {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new \Phalcon\Events\Manager();
 
         //Get a shared instance of the DbProfiler
         $profiler = $di->getProfiler();

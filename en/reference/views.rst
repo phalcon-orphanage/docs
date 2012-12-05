@@ -463,15 +463,15 @@ The service name convention for this service is "viewCache":
     <?php
 
     //Set the views cache service
-    $di->set('viewCache', function(){
+    $di->set('viewCache', function() {
 
         //Cache data for one day by default
-        $frontCache = new Phalcon\Cache\Frontend\Output(array(
+        $frontCache = new \Phalcon\Cache\Frontend\Output(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
+        $cache = new \Phalcon\Cache\Backend\Memcached($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -488,7 +488,7 @@ calculations/queries to display data in the view:
 
     <?php
 
-    class DownloadController extends Phalcon\Mvc\Controller
+    class DownloadController extends \Phalcon\Mvc\Controller
     {
 
         public function indexAction()
@@ -509,6 +509,8 @@ calculations/queries to display data in the view:
 
     }
 
+The `PHP alternative site`_ is a example of implementing the caching of fragments.
+
 Disabling the view
 ------------------
 If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
@@ -527,10 +529,6 @@ If your controller doesn't produce any output in the view (or not even have one)
         }
 
     }
-
-Creating widgets for your applications
---------------------------------------
-
 
 Template Engines
 ----------------
@@ -790,3 +788,4 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 .. _Smarty: http://www.smarty.net/
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php
 .. _md5: http://php.net/manual/en/function.md5.php
+.. _PHP alternative site: https://github.com/phalcon/php-site

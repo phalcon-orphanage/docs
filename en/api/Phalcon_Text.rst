@@ -18,8 +18,6 @@ Converts strings to camelize style
     echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
 
 
-
-
 public static *string*  **uncamelize** (*string* $str)
 
 Uncamelize strings which are camelized 
@@ -29,7 +27,6 @@ Uncamelize strings which are camelized
     <?php
 
     echo Phalcon\Text::camelize('CocoBongo'); //coco_bongo
-
 
 
 
