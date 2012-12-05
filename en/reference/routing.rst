@@ -303,14 +303,15 @@ Or bind them to specific namespaces:
         'action' => 'index'
     ));
 
-A controller can also be a full class name:
+Namespaces/class names must be passed separated:
 
 .. code-block:: php
 
     <?php
 
     $router->add("/login", array(
-        'controller' => 'Backend\Controllers\Login',
+        'namespace' => 'Backend\Controllers\\',
+        'controller' => 'login',
         'action' => 'index'
     ));
 
