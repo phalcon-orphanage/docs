@@ -43,6 +43,8 @@ Dispatch Loop Events
 +======================+=============================================================================================================================================================================================================+=====================+
 | beforeDispatchLoop   | Triggered before enter in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+| beforeDispatch       | Triggered after enter in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | beforeExecuteRoute   | Triggered before execute the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                       | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | afterExecuteRoute    | Triggered after execute the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                         | No                  |
@@ -50,6 +52,8 @@ Dispatch Loop Events
 | beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                   | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                        | Yes                 |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+| afterDispatch        | Triggered after execute the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                         | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | afterDispatchLoop    | Triggered after exit the dispatch loop                                                                                                                                                                      | No                  |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
@@ -80,7 +84,7 @@ The following example demonstrates how to attach listeners to this component:
         return $dispatcher;
     });
 
-Instantiated controllers act automatically as listeners for dispatch events, so you can implement methods as callbacks:
+A instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
 
 .. code-block:: php
 
