@@ -679,5 +679,12 @@ More examples of the builder:
     $builder->from('Robots')
             ->limit(10, 5)
 
+Troubleshooting
+---------------
+Some things to keep in mind when using PHQL:
+
+* Classes are case sensitive, if a class is not defined as it was defined this could lead to unexpected behaviors
+* The correct charset must be defined in the connection to bind parameters with success
+
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

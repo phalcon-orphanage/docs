@@ -207,5 +207,14 @@ Some events when returning boolean false could stop the active operation. The fo
 | afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
+Troubleshooting
+---------------
+Some things to keep in mind when using the universal autoloader:
+
+* Auto-loading process is case-sensitive, the class will be loaded as it is written in the code
+* Strategies based on namespaces/prefixes are faster than the directories strategy
+* If a cache bytecode like APC_ is installed this will used to retrieve the requested file (an implicit caching of the file is performed)
+
 .. _autoloading classes: http://www.php.net/manual/en/language.oop5.autoload.php
 .. _lazy initialization: http://en.wikipedia.org/wiki/Lazy_initialization
+.. _APC: http://php.net/manual/en/book.apc.php
