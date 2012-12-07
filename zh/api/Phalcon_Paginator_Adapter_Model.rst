@@ -1,6 +1,11 @@
 Class **Phalcon\\Paginator\\Adapter\\Model**
 ============================================
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+
+>>>>>>> 0.7.0
 This adapter allows to paginate data using Phalcon\\Model resultsets.
 
 

@@ -1,6 +1,11 @@
 Class **Phalcon\\Paginator\\Adapter\\NativeArray**
 ==================================================
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+
+>>>>>>> 0.7.0
 Component of pagination by array data
 
 

@@ -1,6 +1,11 @@
 Class **Phalcon\\Http\\Response\\Headers**
 ==========================================
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`
+
+>>>>>>> 0.7.0
 This class is a bag to manage the response headers
 
 
@@ -9,7 +14,12 @@ Methods
 
 public  **__construct** ()
 
+<<<<<<< HEAD
 ...
+=======
+Phalcon\\Http\\Response\\Headers constructor
+
+>>>>>>> 0.7.0
 
 
 public  **set** (*string* $name, *string* $value)

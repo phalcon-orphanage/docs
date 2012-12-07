@@ -1,6 +1,7 @@
 Class **Phalcon\\Translate**
 ============================
 
+<<<<<<< HEAD
 *implements* ArrayAccess
 
 Translate component allows the creation of multi-language applications using different adapters for translation lists.
@@ -39,3 +40,5 @@ Returns the translation related to the given key
 
 
 
+=======
+>>>>>>> 0.7.0

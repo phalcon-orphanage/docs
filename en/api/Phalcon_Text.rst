@@ -33,8 +33,3 @@ Uncamelize strings which are camelized
 
 
 
-public static  **x** (*unknown* $a, *unknown* $b)
-
-...
-
-

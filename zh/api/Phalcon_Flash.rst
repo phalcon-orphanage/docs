@@ -1,7 +1,11 @@
 Class **Phalcon\\Flash**
 ========================
 
+<<<<<<< HEAD
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS 
+=======
+Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 

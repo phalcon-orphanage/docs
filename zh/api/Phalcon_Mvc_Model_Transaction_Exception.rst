@@ -3,9 +3,12 @@ Class **Phalcon\\Mvc\\Model\\Transaction\\Exception**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 
+<<<<<<< HEAD
 Exceptions thrown in Phalcon\\Mvc\\Model\\Transaction will use this class
 
 
+=======
+>>>>>>> 0.7.0
 Methods
 ---------
 

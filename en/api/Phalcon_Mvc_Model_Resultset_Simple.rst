@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
-*implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+*implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
 Simple resultsets only contains a complete object. This class builds every complete object as it's required
 
@@ -11,7 +11,7 @@ Simple resultsets only contains a complete object. This class builds every compl
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache)
+public  **__construct** (*unknown* $columnMap, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache)
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 

@@ -13,7 +13,7 @@ Thanks to the service container, we can ensure that the session is accessed only
     <?php
 
     //Start the session the first time when some component request the session service
-    $di->set('session', function(){
+    $di->setShared('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -41,8 +41,7 @@ and store items and retrieve them in the following way:
         {
 
             //Check if the variable is defined
-            if ($this->session->has("user-name"))
-            {
+            if ($this->session->has("user-name")) {
 
                 //Retrieve its value
                 $name = $this->session->get("user-name");
@@ -169,3 +168,9 @@ In a component:
 
 The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
 can only be accessed in the scope of the current class.
+
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own session adapters or extend the existing ones.
+
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter>`_

@@ -3,9 +3,12 @@ Class **Phalcon\\Mvc\\View\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+<<<<<<< HEAD
 Class for exceptions thrown by Phalcon\\Mvc\\View
 
 
+=======
+>>>>>>> 0.7.0
 Methods
 ---------
 

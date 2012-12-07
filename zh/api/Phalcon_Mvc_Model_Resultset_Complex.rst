@@ -3,7 +3,11 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
+<<<<<<< HEAD
 *implements* Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+=======
+*implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
+>>>>>>> 0.7.0
 
 Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
 
@@ -11,7 +15,11 @@ Complex resultsets may include complete objects and scalar values. This class bu
 Methods
 ---------
 
+<<<<<<< HEAD
 public  **__construct** (*array* $columnsTypes, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache)
+=======
+public  **__construct** (*array* $columnsTypes, :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result, :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache)
+>>>>>>> 0.7.0
 
 Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
 

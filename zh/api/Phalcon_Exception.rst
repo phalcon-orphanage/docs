@@ -3,9 +3,12 @@ Class **Phalcon\\Exception**
 
 *extends* Exception
 
+<<<<<<< HEAD
 All framework exceptions should use or extend this exception
 
 
+=======
+>>>>>>> 0.7.0
 Methods
 ---------
 

@@ -1,7 +1,13 @@
 Class **Phalcon\\Mvc\\Model\\Resultset**
 ========================================
 
+<<<<<<< HEAD
 This component allows to Phalcon\\Mvc\\Model returns large resulsets with the minimum memory consumption Resulsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing. 
+=======
+*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+
+This component allows to Phalcon\\Mvc\\Model returns large resulsets with the minimum memory consumption Resulsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -117,3 +123,21 @@ Returns current row in the resultset
 
 
 
+<<<<<<< HEAD
+=======
+abstract public  **valid** () inherited from Iterator
+
+...
+
+
+abstract public  **serialize** () inherited from Serializable
+
+...
+
+
+abstract public  **unserialize** (*unknown* $serialized) inherited from Serializable
+
+...
+
+
+>>>>>>> 0.7.0

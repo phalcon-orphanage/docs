@@ -1,7 +1,9 @@
 Class **Phalcon\\Cache\\Frontend\\None**
 ========================================
 
-Discards any kind of frontend data input. This frontend does not have expiration time or any other options 
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
+
+Discards any kind of frontend data input. This frontend does not have expiration time or any other options  
 
 .. code-block:: php
 
@@ -45,13 +47,13 @@ Phalcon\\Cache\\Frontend\\None constructor
 
 
 
-public  **getLifetime** ()
+public *int*  **getLifetime** ()
 
 Returns cache lifetime, always one second expiring content
 
 
 
-public  **isBuffering** ()
+public *boolean*  **isBuffering** ()
 
 Check whether if frontend is buffering output, always false
 

@@ -1,7 +1,11 @@
 Class **Phalcon\\Db\\RawValue**
 ===============================
 
+<<<<<<< HEAD
 This class allows to insert/update raw data without quoting or formating. The next example shows how to use the MySQL now() function as a field value. 
+=======
+This class allows to insert/update raw data without quoting or formating.  The next example shows how to use the MySQL now() function as a field value.  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 

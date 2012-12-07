@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
-Simply validates specified string length constraints 
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
+Simply validates specified string length constraints  
 
 .. code-block:: php
 
@@ -18,8 +20,10 @@ Simply validates specified string length constraints
     {
     	$this->validate(new StringLengthValidator(array(
     		'field' => 'name_last',
-    		'max' => 50, //we don't like really long names
-    		'min' => 2, //we want more than just their initials
+    		'max' => 50,
+    		'min' => 2,
+              'maximumMessage' => 'We don't like really long names',
+              'minimumMessage' => 'We want more than just their initials'
     	)));
     	if ($this->validationHasFailed() == true) {
     		return false;
@@ -33,7 +37,7 @@ Simply validates specified string length constraints
 Methods
 ---------
 
-public *boolean*  **validate** (*unknown* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

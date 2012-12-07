@@ -21,6 +21,13 @@ This component makes use of adapters to encapsulate specific database system det
 | SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
+<<<<<<< HEAD
+=======
+Implementing your own adapters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own database adapters or extend the existing ones.
+
+>>>>>>> 0.7.0
 Database Dialects
 -----------------
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
@@ -37,7 +44,16 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 Connecting to Databases
 -----------------------
+<<<<<<< HEAD
 To create a connection it's neccesary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+=======
+To create a connection it's neccesary instantiate the adapter class. It only requires an array with the connection parameters. The example
+below shows how to create a connection passing both required and optional parameters:
+
+Implementing your own dialects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -55,7 +71,11 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     $config["persistent"] = false;
 
     // Create a connection
+<<<<<<< HEAD
     $connection = \Phalcon\Db\Adapter\Pdo\Mysql($config);
+=======
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -73,7 +93,11 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     $config["schema"] = "public";
 
     // Create a connection
+<<<<<<< HEAD
     $connection = \Phalcon\Db\Adapter\Pdo\Postgresql($config);
+=======
+    $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -85,7 +109,11 @@ To create a connection it's neccesary instantiate the adapter class. It only req
     );
 
     // Create a connection
+<<<<<<< HEAD
     $connection = \Phalcon\Db\Adapter\Pdo\Sqlite($config);
+=======
+    $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
+>>>>>>> 0.7.0
 
 Finding Rows
 ------------
@@ -101,7 +129,11 @@ Finding Rows
     $result = $connection->query($sql);
 
     // Print each robot name
+<<<<<<< HEAD
     while ($robot = $result->fetchArray()) {
+=======
+    while ($robot = $result->fetch()) {
+>>>>>>> 0.7.0
        echo $robot["name"];
     }
 
@@ -125,6 +157,11 @@ By default these calls create arrays with both associative and numeric indexes. 
 +--------------------------+-----------------------------------------------------------+
 | Phalcon\\Db::FETCH_BOTH  | Return an array with both associative and numeric indexes |
 +--------------------------+-----------------------------------------------------------+
+<<<<<<< HEAD
+=======
+| Phalcon\\Db::FETCH_OBJ   | Return an object instead of an array                      |
++--------------------------+-----------------------------------------------------------+
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -134,7 +171,11 @@ By default these calls create arrays with both associative and numeric indexes. 
     $result = $connection->query($sql);
 
     $result->setFetchMode(Phalcon\Db::DB_NUM);
+<<<<<<< HEAD
     while ($robot = $result->fetchArray()) {
+=======
+    while ($robot = $result->fetch()) {
+>>>>>>> 0.7.0
        echo $robot[0];
     }
 
@@ -148,13 +189,21 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     $result = $connection->query($sql);
 
     // Traverse the resultset
+<<<<<<< HEAD
     while ($robot = $result->fetchArray()) {
+=======
+    while ($robot = $result->fetch()) {
+>>>>>>> 0.7.0
        echo $robot["name"];
     }
 
     // Seek to the third row
     $result->seek(2);
+<<<<<<< HEAD
     $robot = $result->fetchArray();
+=======
+    $robot = $result->fetch();
+>>>>>>> 0.7.0
 
     // Count the resultset
     echo $result->numRows();
@@ -162,7 +211,13 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
 
 Binding Parameters
 ------------------
+<<<<<<< HEAD
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+=======
+Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
+bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
+injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 

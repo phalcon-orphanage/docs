@@ -1,7 +1,13 @@
 Class **Phalcon\\DI**
 =====================
 
+<<<<<<< HEAD
 Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them. Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application. Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component. Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+=======
+*implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
+
+Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+>>>>>>> 0.7.0
 
 
 Methods
@@ -13,18 +19,33 @@ Phalcon\\DI constructor
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **set** (*string* $alias, *mixed* $config)
+=======
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared)
+>>>>>>> 0.7.0
 
 Registers a service in the services container
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **remove** (*string* $alias)
+=======
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config)
+
+Registers an "always shared" service in the services container
+
+
+
+public  **remove** (*string* $name)
+>>>>>>> 0.7.0
 
 Removes a service in the services container
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **attempt** (*string* $alias, *mixed* $config)
 
 Attempts to register a service in the services container Only is successful if a services hasn't been registered previosly with the same name
@@ -38,11 +59,33 @@ Factories instances based on its config
 
 
 public *mixed*  **get** (*string* $alias, *array* $parameters)
+=======
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared)
+
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+
+
+
+public *mixed*  **getRaw** (*string* $name)
+
+Returns a service definition without resolving
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*unknown* $name)
+
+Returns a Phalcon\\Di\\Service instance
+
+
+
+public *mixed*  **get** (*string* $name, *array* $parameters)
+>>>>>>> 0.7.0
 
 Resolves the service based on its configuration
 
 
 
+<<<<<<< HEAD
 public *mixed*  **getShared** (*string* $alias, *array* $parameters)
 
 Returns a shared service based on its configuration
@@ -50,6 +93,15 @@ Returns a shared service based on its configuration
 
 
 public *boolean*  **has** (*unknown* $alias)
+=======
+public *mixed*  **getShared** (*string* $name, *array* $parameters)
+
+Returns a shared service based on their configuration
+
+
+
+public *boolean*  **has** (*string* $name)
+>>>>>>> 0.7.0
 
 Check whether the DI contains a service by a name
 
@@ -61,21 +113,40 @@ Check whether the last service obtained via getShared produced a fresh instance 
 
 
 
+<<<<<<< HEAD
+=======
+public *array*  **getServices** ()
+
+Return the services registered in the DI
+
+
+
+>>>>>>> 0.7.0
 public *mixed*  **__call** (*string* $method, *array* $arguments)
 
 Magic method to get or set services using setters/getters
 
 
 
+<<<<<<< HEAD
 public static  **setDefault** (*string* $dependencyInjector)
+=======
+public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+>>>>>>> 0.7.0
 
 Set a default dependency injection container to be obtained into static methods
 
 
 
+<<<<<<< HEAD
 public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDefault** ()
 
 Return the last DI created
+=======
+public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** ()
+
+Return the lastest DI created
+>>>>>>> 0.7.0
 
 
 

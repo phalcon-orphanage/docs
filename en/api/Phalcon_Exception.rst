@@ -3,9 +3,6 @@ Class **Phalcon\\Exception**
 
 *extends* Exception
 
-All framework exceptions should use or extend this exception
-
-
 Methods
 ---------
 

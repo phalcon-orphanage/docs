@@ -1,7 +1,13 @@
 Class **Phalcon\\Http\\Request**
 ================================
 
+<<<<<<< HEAD
 Encapsulates request information for easy and secure access from application controllers.   The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.   
+=======
+*implements* :doc:`Phalcon\\Http\\RequestInterface <Phalcon_Http_RequestInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -19,19 +25,31 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
+<<<<<<< HEAD
 public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+=======
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+>>>>>>> 0.7.0
 
 Sets the dependency injector
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+=======
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+>>>>>>> 0.7.0
 
 Returns the internal dependency injector
 
 
 
+<<<<<<< HEAD
 public *mixed*  **get** (*string* $name, *string|array* $filters)
+=======
+public *mixed*  **get** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+>>>>>>> 0.7.0
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed 
 
@@ -48,7 +66,11 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
+<<<<<<< HEAD
 public *mixed*  **getPost** (*string* $name, *string|array* $filters)
+=======
+public *mixed*  **getPost** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+>>>>>>> 0.7.0
 
 Gets a variable from the $_POST superglobal applying filters if needed 
 
@@ -65,7 +87,11 @@ Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
+<<<<<<< HEAD
 public *mixed*  **getQuery** (*string* $name, *string|array* $filters)
+=======
+public *mixed*  **getQuery** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+>>>>>>> 0.7.0
 
 Gets variable from $_GET superglobal applying filters if needed 
 
@@ -78,6 +104,12 @@ Gets variable from $_GET superglobal applying filters if needed
     
     //Returns value from $_GET["id"] with sanitizing
     $id = $request->getQuery("id", "int");
+<<<<<<< HEAD
+=======
+    
+    //Returns value from $_GET["id"] with a default value
+    $id = $request->getQuery("id", null, 150);
+>>>>>>> 0.7.0
 
 
 
@@ -184,7 +216,11 @@ Gets HTTP user agent used to made the request
 
 
 
+<<<<<<< HEAD
 public  **isMethod** (*string|array* $methods)
+=======
+public *boolean*  **isMethod** (*string|array* $methods)
+>>>>>>> 0.7.0
 
 Check if HTTP method match any of the passed methods
 

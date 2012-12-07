@@ -1,7 +1,13 @@
 Class **Phalcon\\Cache\\Frontend\\Output**
 ==========================================
 
+<<<<<<< HEAD
 Allows to cache output fragments captured with ob_* functions 
+=======
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
+
+Allows to cache output fragments captured with ob_* functions  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -63,7 +69,11 @@ Returns cache lifetime
 
 
 
+<<<<<<< HEAD
 public  **isBuffering** ()
+=======
+public *boolean*  **isBuffering** ()
+>>>>>>> 0.7.0
 
 Check whether if frontend is buffering output
 

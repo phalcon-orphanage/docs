@@ -1,7 +1,13 @@
 Class **Phalcon\\Db\\Reference**
 ================================
 
+<<<<<<< HEAD
 Allows to define reference constraints on tables 
+=======
+*implements* :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>`
+
+Allows to define reference constraints on tables  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 

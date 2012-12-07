@@ -15,7 +15,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
     $response->setRawHeader(404, "Not Found");
 
     //Set the content of the response
-    $response->setContent("Sorry, the page doesn't exists");
+    $response->setContent("Sorry, the page doesn't exist");
 
     //Send response to the client
     $response->send();
@@ -67,4 +67,22 @@ With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also 
 
     //Making a redirection specifyng the HTTP status code
     $response->redirect("http://www.example.com/new-location", true, 301);
+
+All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`), in this way you can make redirections
+based on the routes you've currently defined in the application:
+
+.. code-block:: php
+
+    <?php
+
+    //Making a redirection based on a named route
+    $response->redirect(array(
+        "for" => "index-lang",
+        "lang" => "jp",
+        "controller" => "index"
+    ));
+
+Note that making a redirection doesn't disable the view component, so if there is a view asociated with the current action it
+will be executed anyways. You can disable the view from a controller by executing $this->view->disable();
+
 

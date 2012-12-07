@@ -398,10 +398,19 @@ the view rendered is the one related with the last controller and action execute
 
 Caching View Fragments
 ----------------------
+<<<<<<< HEAD
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole rendered output to increase performance.
 
 :doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way to cache output fragments.
 You could manually set the cache handler or set a global handler:
+=======
+Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
+the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
+rendered output to increase performance.
+
+:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
+to cache output fragments. You could manually set the cache handler or set a global handler:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -419,7 +428,13 @@ You could manually set the cache handler or set a global handler:
         public function showArticleAction()
         {
             // Cache this view for 1 hour
+<<<<<<< HEAD
             $this->view->cache(array("lifetime" => 3600));
+=======
+            $this->view->cache(array(
+                "lifetime" => 3600
+            ));
+>>>>>>> 0.7.0
         }
 
         public function resumeAction()
@@ -433,10 +448,32 @@ You could manually set the cache handler or set a global handler:
             );
         }
 
+<<<<<<< HEAD
     }
 
 When the View component needs to cache something it will request a cache service to the services container. The service name convention for this
 service is "viewCache":
+=======
+        public function downloadAction()
+        {
+            //Passing a custom service
+            $this->view->cache(
+                array(
+                    "service"  => "myCache",
+                    "lifetime" => 86400,
+                    "key"      => "resume-cache",
+                )
+            );
+        }
+
+    }
+
+When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name currently rendered.
+It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
+
+When the View component needs to cache something it will request a cache service to the services container.
+The service name convention for this service is "viewCache":
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -457,7 +494,39 @@ service is "viewCache":
         ));
 
         return $cache;
+<<<<<<< HEAD
     });
+=======
+    }, true);
+
+When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed in the views.
+
+To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the
+calculations/queries to display data in the view:
+
+<?php
+
+class DownloadController extends Phalcon\Mvc\Controller
+{
+
+    public function indexAction()
+    {
+
+        //Check if the cache with key "downloads" exists or has expired
+        if ($this->view->getCache()->exists('downloads')) {
+
+            //Query the latest downloads
+            $latest = Downloads::find(array('order' => 'created_at DESC'));
+
+            $this->view->setVar('latest', $latest);
+        }
+
+        //Enable the cache with the same key "downloads"
+        $this->view->cache(array('key' => 'downloads'));
+    }
+
+}
+>>>>>>> 0.7.0
 
 Disabling the view
 ------------------
@@ -666,7 +735,11 @@ template engine, you can register it in the initialize() method of the controlle
 
     <?php
 
+<<<<<<< HEAD
     class PostsController extends \Phalcon\Mvc\Controller
+=======
+    class PostsController extends \Phalcon\Mvc\Controller implements Phalcon\Mvc\View\EngineInterface
+>>>>>>> 0.7.0
     {
 
         public function initialize()
@@ -734,7 +807,11 @@ A template engine adapter for Twig would look like:
     /**
      * Adapter to use Twig library as templating engine
      */
+<<<<<<< HEAD
     class My_Twig_Adapter extends \Phalcon\Mvc\View\Engine
+=======
+    class My_Twig_Adapter extends \Phalcon\Mvc\View\Engine implements Phalcon\Mvc\View\EngineInterface
+>>>>>>> 0.7.0
     {
 
         protected $_twig;
@@ -826,10 +903,18 @@ A template engine adapter for Smarty would look like:
 
     <?php
 
+<<<<<<< HEAD
     class SmartyEngine extends \Phalcon\Mvc\View\Engine
     {
 
         protected $_smarty;
+=======
+    class SmartyEngine extends \Phalcon\Mvc\View\Engine implements Phalcon\Mvc\View\EngineInterface
+    {
+
+        protected $_smarty;
+
+>>>>>>> 0.7.0
         protected $_params;
 
         public function __construct(Phalcon\Mvc\View $view, Phalcon\DI $di)
@@ -929,7 +1014,11 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
+<<<<<<< HEAD
     $di->set('view', function(){
+=======
+    $di->set('view', function() {
+>>>>>>> 0.7.0
 
         //Create an event manager
         $eventsManager = new Phalcon\Events\Manager();
@@ -957,7 +1046,12 @@ The following example shows how to create a plugin that clean/repair the HTML pr
     class TidyPlugin
     {
 
+<<<<<<< HEAD
         public function afterRender($event, $view){
+=======
+        public function afterRender($event, $view)
+        {
+>>>>>>> 0.7.0
 
             $tidyConfig = array(
                 'clean' => true,
@@ -982,4 +1076,9 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
 .. _Smarty: http://www.smarty.net/
+<<<<<<< HEAD
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php
+=======
+.. _Tidy: http://www.php.net/manual/en/book.tidy.php
+.. _md5: http://php.net/manual/en/function.md5.php
+>>>>>>> 0.7.0

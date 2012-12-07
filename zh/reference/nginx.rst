@@ -37,7 +37,11 @@ Dedicated Instance
             # otherwise rewrite it
             if (!-e $request_filename) {
                 rewrite ^(.+)$ /index.php?_url=$1 last;
+<<<<<<< HEAD
             break;
+=======
+                break;
+>>>>>>> 0.7.0
             }
         }
 

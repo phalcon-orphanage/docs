@@ -33,8 +33,11 @@ Uncamelize strings which are camelized
 
 
 
+<<<<<<< HEAD
 public static  **x** (*unknown* $a, *unknown* $b)
 
 ...
 
 
+=======
+>>>>>>> 0.7.0

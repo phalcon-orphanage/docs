@@ -132,7 +132,13 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
+<<<<<<< HEAD
     class Module
+=======
+    use Phalcon\Mvc\ModuleDefinitionInterface;
+
+    class Module implements ModuleDefinitionInterface
+>>>>>>> 0.7.0
     {
 
         /**
@@ -212,7 +218,10 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         $router->add(
             "/products/:action",
             array(
+<<<<<<< HEAD
                 'module'     => 'frontend',
+=======
+>>>>>>> 0.7.0
                 'controller' => 'products',
                 'action'     => 1,
             )
@@ -249,6 +258,37 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         echo $e->getMessage();
     }
 
+<<<<<<< HEAD
+=======
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
+module:
+
+.. code-block:: php
+
+    <?php
+
+    //Creating a view component
+    $view = new \Phalcon\Mvc\View();
+
+    // Register the installed modules
+    $application->registerModules(
+        array(
+            'frontend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            },
+            'backend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            }
+        )
+    );
+
+>>>>>>> 0.7.0
 When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
 necessary that every matched route returns a valid module. Each registered module has an associated class
 that offers functions to set the module itself up. Each module class definition must implement two
@@ -295,13 +335,22 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     <?php
 
+<<<<<<< HEAD
     // Request the services from the DI container
     $router = $di->getShared('router');
+=======
+    // Request the services from the services container
+    $router = $di->get('router');
+>>>>>>> 0.7.0
     $router->handle();
 
     $view = $di->getShared('view');
 
+<<<<<<< HEAD
     $dispatcher = $di->getShared('dispatcher');
+=======
+    $dispatcher = $di->get('dispatcher');
+>>>>>>> 0.7.0
 
     // Pass the proccessed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
@@ -324,7 +373,11 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Finish the view
     $view->finish();
 
+<<<<<<< HEAD
     $response = $di->getShared('response');
+=======
+    $response = $di->get('response');
+>>>>>>> 0.7.0
 
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
@@ -372,3 +425,11 @@ The following example demonstrates how to attach listeners to this component:
             // ...
         }
     );
+<<<<<<< HEAD
+=======
+
+External Resources
+------------------
+
+* `MVC examples on Github <https://github.com/phalcon/mvc>`_
+>>>>>>> 0.7.0

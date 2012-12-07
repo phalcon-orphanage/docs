@@ -102,3 +102,6 @@ change this mode passing additional options to the constructor:
 
 .. _fopen: http://php.net/manual/en/function.fopen.php
 
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` interface must be implemented in order to create your own logger adapters or extend the existing ones.

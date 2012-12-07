@@ -1,6 +1,7 @@
 Class **Phalcon\\Logger**
 =========================
 
+<<<<<<< HEAD
 Phalcon\\Logger is a component whose purpose is to create logs using different backends via adapters, generating options, formats and filters also implementing transactions. 
 
 .. code-block:: php
@@ -15,6 +16,8 @@ Phalcon\\Logger is a component whose purpose is to create logs using different b
 
 
 
+=======
+>>>>>>> 0.7.0
 Constants
 ---------
 
@@ -38,6 +41,7 @@ Constants
 
 *integer* **EMERGENCE**
 
+<<<<<<< HEAD
 Methods
 ---------
 
@@ -82,3 +86,5 @@ public  **log** (*unknown* $message, *unknown* $type)
 ...
 
 
+=======
+>>>>>>> 0.7.0

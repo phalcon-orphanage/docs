@@ -38,19 +38,31 @@ Sets the dependency injector container.
 
 
 
+<<<<<<< HEAD
 public static :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+=======
+public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+>>>>>>> 0.7.0
 
 Internally gets the request dispatcher
 
 
 
+<<<<<<< HEAD
 public static :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **getUrlService** ()
+=======
+public static :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`  **getUrlService** ()
+>>>>>>> 0.7.0
 
 Return a URL service from the DI
 
 
 
+<<<<<<< HEAD
 public static :doc:`Phalcon\\Mvc\\Dispatcher <Phalcon_Mvc_Dispatcher>`  **getDispatcherService** ()
+=======
+public static :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`  **getDispatcherService** ()
+>>>>>>> 0.7.0
 
 Returns a Dispatcher service from the DI
 
@@ -255,6 +267,18 @@ Builds a HTML FORM tag
      echo Phalcon\Tag::form("posts/save");
      echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
 
+<<<<<<< HEAD
+=======
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ form("posts/save") }}
+     {{ form("posts/save", "method": "post") }}
+
+>>>>>>> 0.7.0
 
 
 

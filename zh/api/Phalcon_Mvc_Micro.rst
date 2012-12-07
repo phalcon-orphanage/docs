@@ -3,7 +3,13 @@ Class **Phalcon\\Mvc\\Micro**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
+<<<<<<< HEAD
 With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way. 
+=======
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -24,6 +30,7 @@ Methods
 
 public  **__construct** ()
 
+<<<<<<< HEAD
 ...
 
 
@@ -48,6 +55,15 @@ Sets the events manager
 public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** ()
 
 Returns the internal event manager
+=======
+Phalcon\\Mvc\\Micro constructor
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+
+Sets the DependencyInjector container
+>>>>>>> 0.7.0
 
 
 
@@ -99,7 +115,11 @@ Sets a handler that will be called when the router doesn't match any of the defi
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **getRouter** ()
+=======
+public :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`  **getRouter** ()
+>>>>>>> 0.7.0
 
 Returns the internal router used by the application
 
@@ -117,7 +137,11 @@ Obtains a shared service from the DI
 
 
 
+<<<<<<< HEAD
 public *mixed*  **handle** ()
+=======
+public *mixed*  **handle** (*string* $uri)
+>>>>>>> 0.7.0
 
 Handle the whole request
 
@@ -135,12 +159,37 @@ Return the handler that will be called for the matched route
 
 
 
+<<<<<<< HEAD
 public  **getReturnedValue** ()
+=======
+public *mixed*  **getReturnedValue** ()
+>>>>>>> 0.7.0
 
 Returns the value returned by the executed handler
 
 
 
+<<<<<<< HEAD
+=======
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal dependency injector
+
+
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+
+Sets the event manager
+
+
+
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal event manager
+
+
+
+>>>>>>> 0.7.0
 public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get

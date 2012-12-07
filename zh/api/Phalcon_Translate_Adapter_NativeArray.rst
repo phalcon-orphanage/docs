@@ -1,9 +1,15 @@
 Class **Phalcon\\Translate\\Adapter\\NativeArray**
 ==================================================
 
+<<<<<<< HEAD
 *extends* :doc:`Phalcon\\Translate <Phalcon_Translate>`
 
 *implements* ArrayAccess
+=======
+*extends* :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
+
+*implements* ArrayAccess, :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
+>>>>>>> 0.7.0
 
 Allows to define translation lists using PHP arrays
 
@@ -29,31 +35,51 @@ Check whether is defined a translation key in the internal array
 
 
 
+<<<<<<< HEAD
 public *string*  **_** (*string* $translateKey, *array* $placeholders) inherited from Phalcon\\Translate
+=======
+public *string*  **_** (*string* $translateKey, *array* $placeholders) inherited from Phalcon\\Translate\\Adapter
+>>>>>>> 0.7.0
 
 Returns the translation string of the given key
 
 
 
+<<<<<<< HEAD
 public  **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon\\Translate
+=======
+public  **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon\\Translate\\Adapter
+>>>>>>> 0.7.0
 
 Sets a translation value
 
 
 
+<<<<<<< HEAD
 public *boolean*  **offsetExists** (*string* $translateKey) inherited from Phalcon\\Translate
+=======
+public *boolean*  **offsetExists** (*string* $translateKey) inherited from Phalcon\\Translate\\Adapter
+>>>>>>> 0.7.0
 
 Check whether a translation key exists
 
 
 
+<<<<<<< HEAD
 public  **offsetUnset** (*string* $offset) inherited from Phalcon\\Translate
+=======
+public  **offsetUnset** (*string* $offset) inherited from Phalcon\\Translate\\Adapter
+>>>>>>> 0.7.0
 
 Elimina un indice del diccionario
 
 
 
+<<<<<<< HEAD
 public *string*  **offsetGet** (*string* $traslateKey) inherited from Phalcon\\Translate
+=======
+public *string*  **offsetGet** (*string* $traslateKey) inherited from Phalcon\\Translate\\Adapter
+>>>>>>> 0.7.0
 
 Returns the translation related to the given key
 

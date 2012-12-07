@@ -3,12 +3,18 @@ Class **Phalcon\\Db\\Dialect\\Sqlite**
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
+
+>>>>>>> 0.7.0
 Generates database specific SQL for the Sqlite RBDM
 
 
 Methods
 ---------
 
+<<<<<<< HEAD
 public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
@@ -16,60 +22,99 @@ Gets a list of columns
 
 
 public  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+=======
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Gets the column name in Sqlite
 
 
 
+<<<<<<< HEAD
 public *string*  **addColumn** ()
+=======
+public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Generates SQL to add a column to a table
 
 
 
+<<<<<<< HEAD
 public *string*  **modifyColumn** ()
+=======
+public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Generates SQL to modify a column in a table
 
 
 
+<<<<<<< HEAD
 public *string*  **dropColumn** ()
+=======
+public *string*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
+>>>>>>> 0.7.0
 
 Generates SQL to delete a column from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addIndex** ()
+=======
+public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+>>>>>>> 0.7.0
 
 Generates SQL to add an index to a table
 
 
 
+<<<<<<< HEAD
 public *string*  **dropIndex** ()
+=======
+public *string*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+>>>>>>> 0.7.0
 
 Generates SQL to delete an index from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addPrimaryKey** ()
+=======
+public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+>>>>>>> 0.7.0
 
 Generates SQL to add the primary key to a table
 
 
 
+<<<<<<< HEAD
 public *string*  **dropPrimaryKey** ()
+=======
+public *string*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+>>>>>>> 0.7.0
 
 Generates SQL to delete primary key from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addForeignKey** ()
+=======
+public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
+>>>>>>> 0.7.0
 
 Generates SQL to add an index to a table
 
 
 
+<<<<<<< HEAD
 public *string*  **dropForeignKey** ()
+=======
+public *string*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+>>>>>>> 0.7.0
 
 Generates SQL to delete a foreign key from a table
 
@@ -81,7 +126,11 @@ Generates SQL to add the table creation options
 
 
 
+<<<<<<< HEAD
 public *string*  **createTable** ()
+=======
+public *string*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+>>>>>>> 0.7.0
 
 Generates SQL to create a table in PostgreSQL
 
@@ -153,6 +202,27 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
+<<<<<<< HEAD
+=======
+public *string*  **getColumnList** (*array* $columnList) inherited from Phalcon\\Db\\Dialect
+
+Gets a list of columns
+
+
+
+public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a expression into a database system valid expression
+
+
+
+public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a schema/table into a database system valid expression
+
+
+
+>>>>>>> 0.7.0
 public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement

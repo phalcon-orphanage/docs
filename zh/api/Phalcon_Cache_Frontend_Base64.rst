@@ -1,6 +1,7 @@
 Class **Phalcon\\Cache\\Frontend\\Base64**
 ==========================================
 
+<<<<<<< HEAD
 Allows to cache data converting/deconverting them to base64. This adapters uses the base64_encode/base64_decode PHP's functions 
 
 .. code-block:: php
@@ -32,6 +33,9 @@ Allows to cache data converting/deconverting them to base64. This adapters uses 
      echo $image;
 
 
+=======
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
+>>>>>>> 0.7.0
 
 Methods
 ---------

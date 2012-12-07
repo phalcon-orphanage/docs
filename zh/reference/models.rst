@@ -1,5 +1,6 @@
 Working with Models
 ===================
+<<<<<<< HEAD
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
 the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
 your application. The bulk of your application's business logic will be concentrated in the models.
@@ -18,6 +19,21 @@ Creating Models
 ---------------
 A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
 file must contain a single class; its class name should be in camel case notation:
+=======
+在应用程序中，模型是代表的是一种数据以及通过一些规则来操作这些数据，模型主要用于通过一些规则使其与数据库表进行相互操作，在大多数情况下，每个数据库表将对应到一个模型，整个应用程序的业务逻辑都会集中在模型中。
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 是应用程序中所有模型的基类，它保证了数据库的独立性，基本的CURD操作，高级的查询功能，多表关联等功能。
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 提供了SQL语句的动态转化功能，避免了直接使用SQL语句带来的安全风险。
+
+.. highlights::
+
+   Models是数据库的高级抽象层，如果您需要与数据库直接打交道，你可以查看 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 组件文档。
+
+Creating Models
+---------------
+一个Model就是一个继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的类文件，它必须放到models文件夹目录下，一个Model文件必须是一个独立的类文件，同时它的命名采用驼蜂式的书写方法：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -28,6 +44,7 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
+<<<<<<< HEAD
 The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
 This component provides a great deal of functionality to models that inherit it, including basic database
 CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
@@ -40,6 +57,15 @@ with each other.
 
 By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
 you can use the getSource() method:
+=======
+上面的例子是一个 "Robots"模型类，需要注意的是，类Robots继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。因为继承，该模型提供了大量的功能，包括基本的数据库CRUDCreate, Read, Update, Destroy) 操作，数据验证，先进的检索功能，并且可以同时关联多个模型。
+
+.. highlights::
+
+    推荐你使用PHP5.4版本，这可以使得模型中的属性在保存到内存时，更节省内存。
+
+默认情况下，模型"Robots"对应的是数据库表"robots"，如果你想手工指定映射到其他的数据库表，你可以使用 getSource() 方法：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -55,12 +81,20 @@ you can use the getSource() method:
 
     }
 
+<<<<<<< HEAD
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
 The initialize() method is only called once during the request.
 
 Models in Namespaces
 --------------------
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
+=======
+此时，模型"Robots"映射到数据库表"the_robots"，initialize()方法有助于在模型中建立自定义行为，如，不同的数据表。initialize()方法在请求期间只被调用一次。
+
+Models in Namespaces
+--------------------
+命名空间可以用来避免类名冲突，在这种情况下，使用getSource()方法来指定数据表名称是必要的：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -80,8 +114,12 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
 Understanding Records To Objects
 --------------------------------
+<<<<<<< HEAD
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
 for a table "robots" with the records:
+=======
+每一个模型对象表示数据表中的一行数据，你可以轻松的通过读取对象的属性来访问数据。举个例子，数据表"robots"的记录如下：
+>>>>>>> 0.7.0
 
 .. code-block:: bash
 
@@ -95,7 +133,11 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
+<<<<<<< HEAD
 You could find a certain record by its primary key and then print its name:
+=======
+你可以通过数据库主键查找某条记录，然后打印出它们的名字：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -107,7 +149,11 @@ You could find a certain record by its primary key and then print its name:
     // Prints "Terminator"
     echo $robot->name;
 
+<<<<<<< HEAD
 Once the record is in memory, you can make modifications to its data and then save changes:
+=======
+一旦记录被读取到内存中，你可以修改它的数据，然后保存更改：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -117,6 +163,7 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
+<<<<<<< HEAD
 As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
 abstraction for web applications.
 
@@ -124,6 +171,13 @@ Finding Records
 ---------------
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
 how to query one or more records from a model:
+=======
+正如你所看到的，这里没有使用原始的SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用程序提供了高度的数据库抽象。
+
+Finding Records
+---------------
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 还提供了多种方法来查询数据记录。下面的例子将为你展示如何通过Model查询单条以及多条记录：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -138,18 +192,37 @@ how to query one or more records from a model:
     echo "There are ", count($robots), "\n";
 
     // Get and print virtual robots ordered by name
+<<<<<<< HEAD
     $robots = Robots::find(array("type = 'virtual'", "order" => "name"));
+=======
+    $robots = Robots::find(array(
+        "type = 'virtual'",
+        "order" => "name"
+    ));
+>>>>>>> 0.7.0
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
     // Get first 100 virtual robots ordered by name
+<<<<<<< HEAD
     $robots = Robots::find(array("type = 'virtual'", "order" => "name", "limit" => 100));
+=======
+    $robots = Robots::find(array(
+        "type = 'virtual'",
+        "order" => "name",
+        "limit" => 100
+    ));
+>>>>>>> 0.7.0
     foreach ($robots as $robot) {
        echo $robot->name, "\n";
     }
 
+<<<<<<< HEAD
 You could also use the findFirst() method to get only the first record matching the given criteria:
+=======
+你也可以使用findFirst()方法来获取给定条件下的第一条记录：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -167,7 +240,11 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
+<<<<<<< HEAD
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
+=======
+find()和findFirst()这两个方法都接收一个关联数组作为检索条件：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -188,6 +265,7 @@ Both find() and findFirst() methods accept an associative array specifying the s
         )
     );
 
+<<<<<<< HEAD
 The available query options are:
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -213,6 +291,33 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
+=======
+可用的查询选项列表：
+
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                      | Example                                                                 |
++=============+==================================================================================================================================================================================================+=========================================================================+
+| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\Mvc\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                       | "bind" => array("status" => "A", "type" => "some-time")                 |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                       | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                       | "order" => "name DESC, status"                                          |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| limit       | Limit the results of the query to results to certain range                                                                                                                                       | "limit" => 10                                                           |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                      | "group" => "name, status"                                               |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                            | "for_update" => true                                                    |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                               | "shared_lock" => true                                                   |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                      | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+
+如果你愿意，你也可以通过面向对象的方式创建查询，而不是使用上面讲到的关联数组的形式：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -224,6 +329,7 @@ If you prefer, there is also available a way to create queries in an object orie
         ->order("name")
         ->execute();
 
+<<<<<<< HEAD
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
 Phalcon also offers you the possibility to query records using a high level, object oriented, SQL-like language called :doc:`PHQL <phql>`.
@@ -236,6 +342,18 @@ a resultset has like traversing, seeking specific records, counting, etc.
 
 These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
 is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+=======
+静态方法 query()返回一个 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` 的实例化对象，因此它对IDE自动提示功能非常友好。
+
+
+所有的查询都被进行内部处理成 :doc:`PHQL <phql>` 。PHQL是一个高层次的，面向对象的类SQL语言。这种语言为你提供更多的功能来进行查询，如与其他模型关联查询，定义分组，添加聚合等。
+
+Model Resultsets
+^^^^^^^^^^^^^^^^
+findFirst()方法直接返回一个类的实例对象(查询有数据返回的时候)，find()方法则返回:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的一个实例对象，这个对象是一个封装了所有功能的结果集，比如像数据遍历，寻找特定的数据记录，计数等等。
+
+这些对象比标准数组更为强大，最大的优点之一是  :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 在任何时候它在内存中只保存一条记录，这极大的优化了内存管理，特别是处理大量数据的时候。
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -281,6 +399,7 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
+<<<<<<< HEAD
 Phalcon resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a certain position.
 Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning
 and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
@@ -290,6 +409,14 @@ consume many resources, due to this resultsets are obtained from the database in
 re-execute the request in several cases.
 
 Note that resultsets can be serialized and stored in a a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
+=======
+Phalcon数据集模拟游标的方式，你可以获取任意一行数据，只需要通过访问其位置，或者通过移动内部指针到一个特定的位置。需要注意的是，一些数据库系统并不支持游标，这将会导致每次强制重新执行，游标移动到头部，并从头到尾去查询请求位置。同理，如果一个结果集遍历多次，查询必须被执行相同的次数。
+
+大量的查询结果存储在内存中，会消耗大量的资源。resultsets are obtained
+from the database in chunks of 32 rows reducing the need for re-execute the request in several cases.
+
+请注意，结果集可以被序列化后存储到缓存中。:doc:`Phalcon\\Cache <cache>` 可以帮助完成这项任务。However,
+>>>>>>> 0.7.0
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
 thus consuming more memory while this process takes place.
 
@@ -313,9 +440,13 @@ thus consuming more memory while this process takes place.
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
+<<<<<<< HEAD
 Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
 impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
 to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+=======
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`同样支持参数类型绑定。虽然会有比较小的性能消耗，但我们推荐你使用这种方法，因为它会清除SQL注入攻击，字符串过滤及整形数据验证等。绑定绑定，可以通过如下方式实现：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -323,12 +454,28 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
 
     // Query robots binding parameters with string placeholders
     $conditions = "name = :name: AND type = :type:";
+<<<<<<< HEAD
     $parameters = array("name" => "Robotina", "type" => "maid");
     $robots     = Robots::find(array($conditions, "bind" => $parameters));
+=======
+
+    //Parameters whose keys are the same as placeholders
+    $parameters = array(
+        "name" => "Robotina",
+        "type" => "maid"
+    );
+
+    //Perform the query
+    $robots = Robots::find(array(
+        $conditions,
+        "bind" => $parameters
+    ));
+>>>>>>> 0.7.0
 
     // Query robots binding parameters with integer placeholders
     $conditions = "name = ?1 AND type = ?2";
     $parameters = array(1 => "Robotina", 2 => "maid");
+<<<<<<< HEAD
     $robots     = Robots::find(array($conditions, "bind" => $parameters));
 
     // Query robots binding parameters with both string and integer placeholders
@@ -344,15 +491,59 @@ the correct charset in the connection parameters or in the database configuratio
 when storing or retrieving data.
 
 Additionally you can set the parameter "bindTypes", this allows to define how the parameters should be binded according to its data type:
+=======
+    $robots     = Robots::find(array(
+        $conditions,
+        "bind" => $parameters
+    ));
+
+    // Query robots binding parameters with both string and integer placeholders
+    $conditions = "name = :name: AND type = ?1";
+
+    //Parameters whose keys are the same as placeholders
+    $parameters = array(
+        "name" => "Robotina",
+        1 => "maid"
+    );
+
+    //Perform the query
+    $robots = Robots::find(array(
+        $conditions,
+        "bind" => $parameters
+    ));
+
+当使用数字时，你可能需要定义他们为整形数字。比如 1或2， 在这种情况下，有可能是字符串"1"或"2"，而不是数字，所以这是不正确的。
+
+在使用 PDO_ 的时候字符串是被自动转义的，此功能和数据库连接的字符集有关，所以在进行数据库连接时，必须设置正确的连接参数或者在数据库中设置好，错误的字符集会导致数据在存储读取时产生意想不到的结果。
+
+此外，你还可以通过设置参数"bindTypes"，定义参数的数据类型：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
     <?php
 
+<<<<<<< HEAD
     // Query robots binding parameters with string placeholders
     $conditions = "name = :name: AND year = :year:";
     $parameters = array("name" => "Robotina", "year" => 2008);
     $types = array(Phalcon\Db\Column::BIND_TYPE_STR, Phalcon\Db\Column::BIND_TYPE_INT);
+=======
+    //Bind parameters
+    $parameters = array(
+        "name" => "Robotina",
+        "year" => 2008
+    );
+
+    //Casting Types
+    $types = array(
+        Phalcon\Db\Column::BIND_PARAM_STR,
+        Phalcon\Db\Column::BIND_PARAM_INT
+    );
+
+    // Query robots binding parameters with string placeholders
+    $conditions = "name = :name: AND year = :year:";
+>>>>>>> 0.7.0
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters,
@@ -360,6 +551,7 @@ Additionally you can set the parameter "bindTypes", this allows to define how th
     ));
 
 
+<<<<<<< HEAD
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
 
 Relationships between Models
@@ -383,6 +575,25 @@ Defining relationships
 In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne() or hasMany() define
 the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3
 parameters: local fields, referenced model, referenced fields.
+=======
+参数绑定可以用于所有的查询方法上，比如find()和findFirst()。当然也包括一些计算类的方法，如 count(),sum(),average()等。
+
+模型之间的关系
+----------------------------
+共有四种类型的关系：一对一，一对多，多对一，多对多。关系可以是单向也可以是双向的，并且每个可以是简单的(一个一个的Model)或者更复杂的(组合Model)。模型管理器管理这些关系的外键约束，这将有助于定义参照完整性以及方便快捷的访问关联数据。通过关系映射，可以在一个记录中很容易的访问相关模型中的数据。
+
+单向关系
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Unidirectional relations are those that are generated in relation to one another but not vice versa.
+
+双向关系
+^^^^^^^^^^^^^^^^^^^^^^^
+The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+
+定义关系
+^^^^^^^^^^^^^^^^^^^^^^
+在Phalcon中，关系的定义必须在model的initialize()方法中进行定义，通过方法belongsTo(),hasOne(), hasMany() 进行关联关系，用当前模型的属性关联其他模型。这几个方法都需要3个参数，即： 当前模型属性，关联模型名称，关联模型的属性。
+>>>>>>> 0.7.0
 
 +-----------+----------------------------+
 | Method    | Description                |
@@ -394,7 +605,11 @@ parameters: local fields, referenced model, referenced fields.
 | belongsTo | Defines a n-1 relationship |
 +-----------+----------------------------+
 
+<<<<<<< HEAD
 The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+=======
+下面的schema显示了三个数据表的关系，用这个作为例子有助于我们更好的理解：
+>>>>>>> 0.7.0
 
 .. code-block:: sql
 
@@ -424,9 +639,15 @@ The following schema shows 3 tables whose relations will serve us as an example 
 
 * The model "Robots" has many "RobotsParts".
 * The model "Parts" has many "RobotsParts".
+<<<<<<< HEAD
 * The model "RobotsParts" belongs to "Robots" and "Parts" models as a one-to-many relation.
 
 The models with their relations could be implemented as follows:
+=======
+* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a one-to-many relation.
+
+在模型中他们的实现方法是这样的：
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -470,8 +691,12 @@ The models with their relations could be implemented as follows:
 
     }
 
+<<<<<<< HEAD
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced
 model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+=======
+在映射关系中，第一个参数是当前模型的属性，第二个参数为关联模型的类名称，第三个参数为关联模型的属性。你也可以在映射关系中使用数组定义多个属性。
+>>>>>>> 0.7.0
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -501,11 +726,19 @@ retrieving related results with using the magic method and without:
     $robotsParts = $robot->getRobotsParts();
 
     // Only parts that match conditions
+<<<<<<< HEAD
     $robotsParts = $robot->getRobotsParts("created_at='2012-03-15'");
 
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(array(
         "created_at=:date:",
+=======
+    $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
+
+    // Or using bound parameters
+    $robotsParts = $robot->getRobotsParts(array(
+        "created_at = :date:",
+>>>>>>> 0.7.0
         "bind" => array("date" => "2012-03-15"
     )));
 
@@ -858,6 +1091,33 @@ Also the method executes associated validators, virtual foreign keys and events 
         echo "Great, a new robot was saved successfully!";
     }
 
+<<<<<<< HEAD
+=======
+An array could be passed to "save" to avoid assign every column manually. Phalcon\\Mvc\\Model will check if there are setters implemented for
+the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->save(array(
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952
+    ));
+
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
+an insecure array without worrying about possible SQL injections:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->save($_POST);
+
+>>>>>>> 0.7.0
 Create/Update with Certainty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This could happen if we use
@@ -883,6 +1143,11 @@ created we can change save by "create" or "update":
         echo "Great, a new robot was created successfully!";
     }
 
+<<<<<<< HEAD
+=======
+These methods "create" and "update" also accept an array of values as parameter.
+
+>>>>>>> 0.7.0
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
@@ -946,7 +1211,11 @@ generated the message or the message type:
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | ConstraintViolation | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
+<<<<<<< HEAD
 | InvalidValue        | Generated when a validator failed due to an invalid value                                                                          |
+=======
+| InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
+>>>>>>> 0.7.0
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 Validation Events and Events Manager
@@ -984,7 +1253,11 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
+<<<<<<< HEAD
 To make a model to react to an event, we must to implement a method with the same name of the event:
+=======
+To make a model react to events, we must to implement a method with the same name of the event:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -995,13 +1268,20 @@ To make a model to react to an event, we must to implement a method with the sam
 
         public function beforeValidationOnCreate()
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0.7.0
             echo "This is executed before create a Robot!";
         }
 
     }
 
+<<<<<<< HEAD
 Events can be useful to assign values before perform a operation, for example:
+=======
+Events can be useful to assign values before performing an operation, for example:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -1024,8 +1304,13 @@ Events can be useful to assign values before perform a operation, for example:
 
     }
 
+<<<<<<< HEAD
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`, this means we can create
 listeners that run when an event is triggered.
+=======
+Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+this means we can create listeners that run when an event is triggered.
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -1050,15 +1335,24 @@ listeners that run when an event is triggered.
     $robot->year = 1969;
     $robot->save();
 
+<<<<<<< HEAD
 In the above example the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
 objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+=======
+In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
+If we want all objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
     <?php
 
     //Registering the modelsManager service
+<<<<<<< HEAD
     $di->set('modelsManager', function() {
+=======
+    $di->setShared('modelsManager', function() {
+>>>>>>> 0.7.0
 
         $eventsManager = new Phalcon\Events\Manager();
 
@@ -1083,9 +1377,17 @@ objects created in our application use the same EventsManager then we need to as
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<<<<<<< HEAD
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
 We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+=======
+When an insert, update or delete is executed, the model verifies if there are any methods with the names of
+the events listed in the table above.
+
+We recommend that validation methods are declared protected to prevent that business logic implementation
+from being exposed publicly.
+>>>>>>> 0.7.0
 
 The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
@@ -1177,7 +1479,14 @@ In addition to the built-in validatiors, you can create your own validators:
 
     <?php
 
+<<<<<<< HEAD
     class UrlValidator extends \Phalcon\Mvc\Model\Validator
+=======
+    use \Phalcon\Mvc\Model\Validator,
+        \Phalcon\Mvc\Model\ValidatorInterface;
+
+    class UrlValidator extends Validator implements ValidatorInterface
+>>>>>>> 0.7.0
     {
 
         public function validate($model)
@@ -1444,10 +1753,20 @@ Transactions can be used to delete many records in a consistent way:
 
     <?php
 
+<<<<<<< HEAD
     try {
 
         //Create a transaction manager
         $manager = new Phalcon\Mvc\Model\Transaction\Manager();
+=======
+    use Phalcon\Mvc\Model\Transaction\Manager as Tx,
+        Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+
+    try {
+
+        //Create a transaction manager
+        $manager = new Tx();
+>>>>>>> 0.7.0
 
         //Request a transaction
         $transaction = $manager->get();
@@ -1468,7 +1787,11 @@ Transactions can be used to delete many records in a consistent way:
 
         echo "Robots were deleted successfully!";
 
+<<<<<<< HEAD
     } catch(Phalcon\Mvc\Model\Transaction\Failed $e) {
+=======
+    } catch(TxFailed $e) {
+>>>>>>> 0.7.0
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -1479,7 +1802,11 @@ is performed. You can use the service container to create an overall transaction
 
     <?php
 
+<<<<<<< HEAD
     $di->set('transactions', function(){
+=======
+    $di->setShared('transactions', function(){
+>>>>>>> 0.7.0
         return new Phalcon\Mvc\Model\Transaction\Manager();
     });
 
@@ -1495,7 +1822,11 @@ Then access it from a controller or view:
         {
 
             //Obtain the TransactionsManager from the DI container
+<<<<<<< HEAD
             $manager = $this->di->getShared('transactions');
+=======
+            $manager = $this->di->getTransactions();
+>>>>>>> 0.7.0
 
             //Request a transaction
             $transaction = $manager->get();
@@ -1504,6 +1835,66 @@ Then access it from a controller or view:
 
     }
 
+<<<<<<< HEAD
+=======
+Independent Column Mapping
+--------------------------
+The ORM supports a independent column map, which allows the developer to use different column names in the model to the ones in
+the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
+This is a great feature when one needs to rename fields in the database without having to worry about all the queries
+in the code. A change in the column map in the model will take care of the rest. For example:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+
+        public function columnMap()
+        {
+            //Keys are the real names in the table and
+            //the values their names in the application
+            return array(
+                'id' => 'code',
+                'the_name' => 'theName',
+                'the_type' => 'theType',
+                'the_year' => 'theYear'
+            );
+        }
+
+    }
+
+Then you can use the new names naturally in your code:
+
+.. code-block:: php
+
+    <?php
+
+    //Find a robot by its name
+    $robot = Robots::findFirst("theName = 'Voltron'");
+    echo $robot->theName, "\n";
+
+    //Get robots ordered by type
+    $robot = Robots::find(array('order' => 'theType DESC'));
+    foreach ($robots as $robot) {
+        echo 'Code: ', $robot->code, "\n";
+    }
+
+    //Create a robot
+    $robot = new Robots();
+    $robot->code = '10101';
+    $robot->theName = 'Bender';
+    $robot->theType = 'Industrial';
+    $robot->theYear = 2999;
+    $robot->save();
+
+Take into consideration the following the next when renaming your columns:
+
+* References to attributes in relationships/validators must use the new names
+* Refer the column names will result in an exception by the ORM
+
+>>>>>>> 0.7.0
 Models Meta-Data
 ----------------
 To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
@@ -1552,7 +1943,11 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     <?php
 
+<<<<<<< HEAD
     $di->set('modelsMetadata', function() {
+=======
+    $di->setShared('modelsMetadata', function() {
+>>>>>>> 0.7.0
 
         // Create a meta-data manager with APC
         $metaData = new Phalcon\Mvc\Model\MetaData\Apc(
@@ -1624,7 +2019,11 @@ The following example shows how to define the meta-data manually:
                 //The identity column
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
+<<<<<<< HEAD
                 //How every column must be binded/casted
+=======
+                //How every column must be bound/casted
+>>>>>>> 0.7.0
                 MetaData::MODELS_DATA_TYPES_BIND => array(
                     'id' => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
@@ -1640,11 +2039,17 @@ The following example shows how to define the meta-data manually:
 
     }
 
+<<<<<<< HEAD
 Setting a different schema
 --------------------------
 Models may are mapped to tables that are in different schemas/databases than the default. You can use the getSchema method to define that:
 
 Then, in the Initialize method, we define the connection service for the model:
+=======
+Pointing to a different schema
+------------------------------
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -1776,14 +2181,24 @@ this you can diagnose performance problems and to discover bottlenecks.
 
     $di->set('profiler', function(){
         return new Phalcon\Db\Profiler();
+<<<<<<< HEAD
     })
 
     $di->set('db', function() use($di) {
+=======
+    });
+
+    $di->set('db', function() use ($di) {
+>>>>>>> 0.7.0
 
         $eventsManager = new Phalcon\Events\Manager();
 
         //Get a shared instance of the DbProfiler
+<<<<<<< HEAD
         $profiler = $di->getShared('profiler');
+=======
+        $profiler = $di->getProfiler();
+>>>>>>> 0.7.0
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($profiler) {
@@ -1845,10 +2260,17 @@ You may be required to access the application services within a model, the follo
         public function notSave()
         {
             //Obtain the flash service from the DI container
+<<<<<<< HEAD
             $flash = $this->getDI()->getShared('flash');
 
             //Show validation messages
             foreach($this->getMesages() as $message) {
+=======
+            $flash = $this->getDI()->getFlash();
+
+            //Show validation messages
+            foreach ($this->getMesages() as $message) {
+>>>>>>> 0.7.0
                 $flash->error((string) $message);
             }
         }

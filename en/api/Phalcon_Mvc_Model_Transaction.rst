@@ -1,7 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Transaction**
 ==========================================
 
-Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\\Transaction\\Manager. 
+*implements* :doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>`
+
+Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\\Transaction\\Manager.  
 
 .. code-block:: php
 
@@ -38,13 +40,13 @@ Transactions are protective blocks where SQL statements are only permanent if th
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *boolean* $autoBegin)
+public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $autoBegin)
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
 
 
-public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>` $manager)
+public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
 
 Sets transaction manager related to the transaction
 
@@ -62,7 +64,7 @@ Commits the transaction
 
 
 
-public *boolean*  **rollback** (*string* $rollbackMessage, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $rollbackRecord)
+public *boolean*  **rollback** (*string* $rollbackMessage, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord)
 
 Rollbacks the transaction
 
@@ -104,7 +106,7 @@ Checks whether internal connection is under an active transaction
 
 
 
-public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Sets object which generates rollback action
 

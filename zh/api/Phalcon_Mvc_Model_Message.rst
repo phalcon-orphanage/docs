@@ -1,7 +1,13 @@
 Class **Phalcon\\Mvc\\Model\\Message**
 ======================================
 
+<<<<<<< HEAD
 Encapsulates validation info generated before save/delete records fails 
+=======
+*implements* :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>`
+
+Encapsulates validation info generated before save/delete records fails  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -36,7 +42,11 @@ Phalcon\\Mvc\\Model\\Message constructor
 
 
 
+<<<<<<< HEAD
 public  **setType** (*string* $type)
+=======
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setType** (*string* $type)
+>>>>>>> 0.7.0
 
 Sets message type
 
@@ -48,7 +58,11 @@ Returns message type
 
 
 
+<<<<<<< HEAD
 public  **setMessage** (*string* $message)
+=======
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setMessage** (*string* $message)
+>>>>>>> 0.7.0
 
 Sets verbose message
 
@@ -60,7 +74,11 @@ Returns verbose message
 
 
 
+<<<<<<< HEAD
 public  **setField** (*string* $field)
+=======
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setField** (*string* $field)
+>>>>>>> 0.7.0
 
 Sets field name related to message
 

@@ -1,7 +1,13 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
+<<<<<<< HEAD
 This components aids in the generation of: URIs, URLs and Paths 
+=======
+*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+This components aids in the generation of: URIs, URLs and Paths  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -18,13 +24,21 @@ This components aids in the generation of: URIs, URLs and Paths
 Methods
 ---------
 
+<<<<<<< HEAD
 public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+=======
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+>>>>>>> 0.7.0
 
 Sets the DependencyInjector container
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+=======
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+>>>>>>> 0.7.0
 
 Returns the DependencyInjector container
 

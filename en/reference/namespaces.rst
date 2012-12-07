@@ -21,7 +21,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify in the routes a full class name in the controller path:
+Specify it in the routes as a full class name in the controller path:
 
 .. code-block:: php
 
@@ -35,8 +35,23 @@ Specify in the routes a full class name in the controller path:
         )
     );
 
+Passing it as part of the route:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add(
+        "/:namespace/admin/users/my-profile",
+        array(
+            "namespace"  => 1,
+            "controller" => "Users",
+            "action"     => "profile",
+        )
+    );
+
 If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher. by doing this you don't need to specify a full class name in the router path.
+in the Dispatcher, by doing this you don't need to specify a full class name in the router path:
 
 .. code-block:: php
 

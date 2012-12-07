@@ -1,7 +1,9 @@
 Class **Phalcon\\Cache\\Frontend\\Data**
 ========================================
 
-Allows to cache native PHP data in a serialized form 
+*implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
+
+Allows to cache native PHP data in a serialized form  
 
 .. code-block:: php
 
@@ -48,13 +50,13 @@ Phalcon\\Cache\\Frontend\\Data constructor
 
 
 
-public *integer*  **getLifetime** ()
+public *int*  **getLifetime** ()
 
 Returns cache lifetime
 
 
 
-public  **isBuffering** ()
+public *boolean*  **isBuffering** ()
 
 Check whether if frontend is buffering output
 

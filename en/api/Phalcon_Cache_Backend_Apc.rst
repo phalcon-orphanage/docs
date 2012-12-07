@@ -3,7 +3,9 @@ Class **Phalcon\\Cache\\Backend\\Apc**
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-Allows to cache output fragments, PHP data and raw data using a memcache backend 
+*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+
+Allows to cache output fragments, PHP data and raw data using a memcache backend  
 
 .. code-block:: php
 
@@ -40,7 +42,7 @@ Returns a cached content
 
 public  **save** (*string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
 
-Stores cached content into the file backend
+Stores cached content into the APC backend and stops the frontend
 
 
 
@@ -56,13 +58,13 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName)
+public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
 
-Checks if cache exists.
+Checks if cache exists and it hasn't expired
 
 
 
-public  **__construct** (*mixed* $frontendObject, *array* $backendOptions) inherited from Phalcon\\Cache\\Backend
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
 
@@ -70,13 +72,25 @@ Phalcon\\Cache\\Backend constructor
 
 public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
 
-Starts a cache. The $keyname allow to identify the created fragment
+Starts a cache. The $keyname allows to identify the created fragment
+
+
+
+public  **stop** (*boolean* $stopBuffer) inherited from Phalcon\\Cache\\Backend
+
+Stops the frontend without store any cached content
 
 
 
 public *mixed*  **getFrontend** () inherited from Phalcon\\Cache\\Backend
 
 Returns front-end instance adapter related to the back-end
+
+
+
+public *array*  **getOptions** () inherited from Phalcon\\Cache\\Backend
+
+Returns the backend options
 
 
 
@@ -88,7 +102,13 @@ Checks whether the last cache is fresh or cached
 
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
-Checks whether the cache has started buffering or not
+Checks whether the cache has starting buffering or not
+
+
+
+public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
+
+Sets the last key used in the cache
 
 
 

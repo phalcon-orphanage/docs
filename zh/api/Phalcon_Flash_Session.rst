@@ -3,19 +3,32 @@ Class **Phalcon\\Flash\\Session**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+>>>>>>> 0.7.0
 Temporarily stores the messages in session, then messages can be printed in the next request
 
 
 Methods
 ---------
 
+<<<<<<< HEAD
 public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+=======
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+>>>>>>> 0.7.0
 
 Sets the dependency injector
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+=======
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+>>>>>>> 0.7.0
 
 Returns the internal dependency injector
 

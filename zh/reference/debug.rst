@@ -72,12 +72,22 @@ It's therefore easy to find which file and line of the application's code genera
 
 .. code-block:: html
 
+<<<<<<< HEAD
     PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+=======
+    PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
+        (using password: NO)
+>>>>>>> 0.7.0
      File=/Applications/MAMP/htdocs/invo/public/index.php
      Line=74
     #0 [internal function]: PDO->__construct('mysql:host=loca...', 'root', '', Array)
     #1 [internal function]: Phalcon\Db\Adapter\Pdo->connect(Array)
+<<<<<<< HEAD
     #2 /Applications/MAMP/htdocs/invo/public/index.php(74): Phalcon\Db\Adapter\Pdo->__construct(Array)
+=======
+    #2 /Applications/MAMP/htdocs/invo/public/index.php(74):
+        Phalcon\Db\Adapter\Pdo->__construct(Array)
+>>>>>>> 0.7.0
     #3 [internal function]: {closure}()
     #4 [internal function]: call_user_func_array(Object(Closure), Array)
     #5 [internal function]: Phalcon\DI->_factory(Object(Closure), Array)
@@ -85,7 +95,12 @@ It's therefore easy to find which file and line of the application's code genera
     #7 [internal function]: Phalcon\DI->getShared('db')
     #8 [internal function]: Phalcon\Mvc\Model->getConnection()
     #9 [internal function]: Phalcon\Mvc\Model::_getOrCreateResultset('Users', Array, true)
+<<<<<<< HEAD
     #10 /Applications/MAMP/htdocs/invo/app/controllers/SessionController.php(83): Phalcon\Mvc\Model::findFirst('email='demo@pha...')
+=======
+    #10 /Applications/MAMP/htdocs/invo/app/controllers/SessionController.php(83):
+        Phalcon\Mvc\Model::findFirst('email='demo@pha...')
+>>>>>>> 0.7.0
     #11 [internal function]: SessionController->startAction()
     #12 [internal function]: call_user_func_array(Array, Array)
     #13 [internal function]: Phalcon\Mvc\Dispatcher->dispatch()
@@ -201,6 +216,7 @@ Once you have xdebug installed, you can use its API to get a more detailed infor
 
 In this instance, Xdebug will also show us the variables in the local scope, and a backtrace as well:
 
+<<<<<<< HEAD
 .. code-block:: php
 
     Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php on line 19
@@ -210,6 +226,21 @@ In this instance, Xdebug will also show us the variables in the local scope, and
         0.0392     663864   2. Phalcon\Mvc\Application->handle() /Applications/MAMP/htdocs/tutorial/public/index.php:37
         0.0418     738848   3. SignupController->registerAction() /Applications/MAMP/htdocs/tutorial/public/index.php:0
         0.0419     740144   4. xdebug_print_function_stack() /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
+=======
+.. code-block:: html
+
+    Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php
+        on line 19
+
+    Call Stack:
+        0.0383     654600   1. {main}() /Applications/MAMP/htdocs/tutorial/public/index.php:0
+        0.0392     663864   2. Phalcon\Mvc\Application->handle()
+            /Applications/MAMP/htdocs/tutorial/public/index.php:37
+        0.0418     738848   3. SignupController->registerAction()
+            /Applications/MAMP/htdocs/tutorial/public/index.php:0
+        0.0419     740144   4. xdebug_print_function_stack()
+            /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
+>>>>>>> 0.7.0
 
 Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the `XDebug documentation`_ for more information.
 

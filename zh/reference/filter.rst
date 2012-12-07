@@ -151,9 +151,17 @@ Or, if you prefer, you can implement the filter in a class:
 
     <?php
 
+<<<<<<< HEAD
     class IPv4Filter {
 
         public function filter($value){
+=======
+    class IPv4Filter
+    {
+
+        public function filter($value)
+        {
+>>>>>>> 0.7.0
             return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
         }
 
@@ -171,6 +179,13 @@ Complex Sanitizing and Filtering
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
 
+<<<<<<< HEAD
+=======
+Implementing your own Filter
+----------------------------
+The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service replacing the one providing by Phalcon.
+
+>>>>>>> 0.7.0
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
 .. _trim: http://www.php.net/manual/en/function.trim.php

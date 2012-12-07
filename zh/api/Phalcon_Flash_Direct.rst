@@ -3,6 +3,11 @@ Class **Phalcon\\Flash\\Direct**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
+
+>>>>>>> 0.7.0
 This is a variant of the Phalcon\\Flash that inmediately outputs any message passed to it
 
 

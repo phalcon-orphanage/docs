@@ -1,7 +1,11 @@
 Flashing Messages
 =================
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of
+<<<<<<< HEAD
 messages can be generated using
+=======
+messages can be generated using this component
+>>>>>>> 0.7.0
 
 Adapters
 --------
@@ -174,4 +178,8 @@ In this case you need to print manually the messages in the corresponding view:
 
     <p><?php $this->flashSession->output() ?></p>
 
+<<<<<<< HEAD
 The attribute 'flashSession' is how the flash was previously set into the dependency injector.
+=======
+The attribute 'flashSession' is how the flash was previously set into the dependency injection container.
+>>>>>>> 0.7.0

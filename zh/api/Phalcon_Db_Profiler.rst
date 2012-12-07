@@ -1,7 +1,11 @@
 Class **Phalcon\\Db\\Profiler**
 ===============================
 
+<<<<<<< HEAD
 Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications. 
+=======
+Instances of Phalcon\\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in miliseconds. This helps you to identify bottlenecks in your applications.  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -34,7 +38,12 @@ Methods
 
 public  **__construct** ()
 
+<<<<<<< HEAD
 ...
+=======
+Phalcon\\Db\\Profiler constructor
+
+>>>>>>> 0.7.0
 
 
 public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **startProfile** (*string* $sqlStatement)

@@ -3,7 +3,13 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Inclusionin**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
+<<<<<<< HEAD
 Phalcon\\Mvc\\Model\\Validator\\InclusionIn Check if a value is included into a list of values 
+=======
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
+Phalcon\\Mvc\\Model\\Validator\\InclusionIn  Check if a value is included into a list of values  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -32,7 +38,11 @@ Phalcon\\Mvc\\Model\\Validator\\InclusionIn Check if a value is included into a 
 Methods
 ---------
 
+<<<<<<< HEAD
 public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+=======
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+>>>>>>> 0.7.0
 
 Executes validator
 

@@ -1,7 +1,13 @@
 Class **Phalcon\\CLI\\Router**
 ==============================
 
+<<<<<<< HEAD
 Phalcon\\CLI\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request   
+=======
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+Phalcon\\CLI\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -18,16 +24,28 @@ Methods
 
 public  **__construct** ()
 
+<<<<<<< HEAD
 ...
 
 
 public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+=======
+Phalcon\\CLI\\Router constructor
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+>>>>>>> 0.7.0
 
 Sets the dependency injector
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+=======
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+>>>>>>> 0.7.0
 
 Returns the internal dependency injector
 

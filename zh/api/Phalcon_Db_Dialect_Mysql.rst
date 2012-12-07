@@ -3,12 +3,18 @@ Class **Phalcon\\Db\\Dialect\\Mysql**
 
 *extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
+<<<<<<< HEAD
+=======
+*implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
+
+>>>>>>> 0.7.0
 Generates database specific SQL for the MySQL RBDM
 
 
 Methods
 ---------
 
+<<<<<<< HEAD
 public *string*  **getColumnList** (*array* $columnList)
 
 Gets a list of columns
@@ -16,18 +22,29 @@ Gets a list of columns
 
 
 public  **getColumnDefinition** (:doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+=======
+public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Gets the column name in MySQL
 
 
 
+<<<<<<< HEAD
 public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+=======
+public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Generates SQL to add a column to a table
 
 
 
+<<<<<<< HEAD
 public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` $column)
+=======
+public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+>>>>>>> 0.7.0
 
 Generates SQL to modify a column in a table
 
@@ -39,7 +56,11 @@ Generates SQL to delete a column from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
+=======
+public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+>>>>>>> 0.7.0
 
 Generates SQL to add an index to a table
 
@@ -51,7 +72,11 @@ Generates SQL to delete an index from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` $index)
+=======
+public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+>>>>>>> 0.7.0
 
 Generates SQL to add the primary key to a table
 
@@ -63,7 +88,11 @@ Generates SQL to delete primary key from a table
 
 
 
+<<<<<<< HEAD
 public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
+=======
+public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+>>>>>>> 0.7.0
 
 Generates SQL to add an index to a table
 
@@ -147,6 +176,27 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
+<<<<<<< HEAD
+=======
+public *string*  **getColumnList** (*array* $columnList) inherited from Phalcon\\Db\\Dialect
+
+Gets a list of columns
+
+
+
+public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a expression into a database system valid expression
+
+
+
+public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+
+Transform an intermediate representation for a schema/table into a database system valid expression
+
+
+
+>>>>>>> 0.7.0
 public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement

@@ -87,17 +87,24 @@ first subpattern matched (:controller) is the controller part of the route, the 
 These placeholders help writing regular expressions that are more readable for developers and easier
 to understand. The following placeholders are supported:
 
-+--------------+--------------------+--------------------------------------------------------------------+
-| Placeholder  | Regular Expression | Usage                                                              |
-+==============+====================+====================================================================+
-| /:module     | /([a-zA-Z0-9\_]+)  | Matches a valid module name with alpha-numeric characters only     |
-+--------------+--------------------+--------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_]+)  | Matches a valid controller name with alpha-numeric characters only |
-+--------------+--------------------+--------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)  | Matches a valid action name with alpha-numeric characters only     |
-+--------------+--------------------+--------------------------------------------------------------------+
-| /:params     | (/.*)*             | Matches a list of optional words separated by slashes              |
-+--------------+--------------------+--------------------------------------------------------------------+
++--------------+---------------------+--------------------------------------------------------------------+
+| Placeholder  | Regular Expression  | Usage                                                              |
++==============+=====================+====================================================================+
+| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only     |
++--------------+---------------------+--------------------------------------------------------------------+
+| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only |
++--------------+---------------------+--------------------------------------------------------------------+
+| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only     |
++--------------+---------------------+--------------------------------------------------------------------+
+| /:params     | (/.*)*              | Matches a list of optional words separated by slashes              |
++--------------+---------------------+--------------------------------------------------------------------+
+| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                              |
++--------------+---------------------+--------------------------------------------------------------------+
+| /:int        | /([0-9]+)           | Matches an integer parameter                                       |
++--------------+---------------------+--------------------------------------------------------------------+
+
+Controller names are camelized, this means that characters (-) and (_) are removed and the next character
+is uppercased. For instance, some_controller is converted to SomeController.
 
 Since you can add many routes as you need using add(), the order in which you add the routes indicates
 their relevance, last routes added have more relevance than first added. Internally, all defined routes
@@ -217,6 +224,23 @@ The following examples produce the same result:
         )
     );
 
+Mixing Array and Short Syntax
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
+are added to the route paths according to the position on which they were defined:
+
+.. code-block:: php
+
+    <?php
+
+    //First position must be skipped because it is used for
+    //the named parameter 'country'
+    $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
+        array(
+            'section' => 2, //Positions start with 2
+            'article' => 3
+        )
+    );
 
 Routing to Modules
 ^^^^^^^^^^^^^^^^^^
@@ -265,6 +289,29 @@ Or you can bind specific routes to specific modules:
         'module' => 'frontend',
         'controller' => 'products',
         'action' => 1,
+    ));
+
+Or bind them to specific namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add("/:namespace/login", array(
+        'namespace' => 1,
+        'controller' => 'login',
+        'action' => 'index'
+    ));
+
+A controller can also be a full class name:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add("/login", array(
+        'controller' => 'Backend\Controllers\Login',
+        'action' => 'index'
     ));
 
 HTTP Method Restrictions
@@ -428,6 +475,11 @@ The following are examples of custom routes:
         "Feed::get"
     );
 
+.. highlights::
+    Beware of characters allowed in regular expression for controllers and namespaces. As these
+    become class names and in turn pass through the file system could be used by attackers to
+    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+
 Default Behavior
 ----------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
@@ -471,7 +523,51 @@ those paths the component could automatically fill it:
         "action" => "index"
     ));
 
+Testing your routes
+-------------------
+Since this component has no dependencies, you can create a file as shown below to test your routes:
+
+.. code-block:: php
+
+    <?php
+
+    //These routes simulate real URIs
+    $testRoutes = array(
+        '/',
+        '/index',
+        '/index/index',
+        '/index/test',
+        '/products',
+        '/products/index/',
+        '/products/show/101',
+    );
+
+    $router = new Phalcon\Mvc\Router();
+
+    //Add here your custom routes
+
+    //Testing each route
+    foreach ($testRoutes as $testRoute) {
+
+        //Handle the route
+        $router->handle($testRoute);
+
+        echo 'Testing ', $testRoute, '<br>';
+
+        //Check if some route was matched
+        if ($router->wasMatched()) {
+            echo 'Controller: ', $router->getControllerName(), '<br>';
+            echo 'Action: ', $router->getActionName(), '<br>';
+        } else {
+            echo 'The route wasn\'t matched by any route<br>';
+        }
+        echo '<br>';
+
+    }
+
+Implementing your own Router
+----------------------------
+The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one providing by Phalcon.
+
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
-
-
 

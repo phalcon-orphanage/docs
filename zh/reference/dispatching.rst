@@ -43,6 +43,11 @@ Dispatch Loop Events
 +======================+=============================================================================================================================================================================================================+=====================+
 | beforeDispatchLoop   | Triggered before enter in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+<<<<<<< HEAD
+=======
+| beforeDispatch       | Triggered after enter in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+>>>>>>> 0.7.0
 | beforeExecuteRoute   | Triggered before execute the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                       | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | afterExecuteRoute    | Triggered after execute the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                         | No                  |
@@ -51,6 +56,11 @@ Dispatch Loop Events
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                        | Yes                 |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+<<<<<<< HEAD
+=======
+| afterDispatch        | Triggered after execute the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                         | Yes                 |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
+>>>>>>> 0.7.0
 | afterDispatchLoop    | Triggered after exit the dispatch loop                                                                                                                                                                      | No                  |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 
@@ -80,6 +90,30 @@ The following example demonstrates how to attach listeners to this component:
         return $dispatcher;
     });
 
+<<<<<<< HEAD
+=======
+Instantiated controllers act automatically as listeners for dispatch events, so you can implement methods as callbacks:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function beforeExecuteRoute($dispatcher)
+        {
+            // Executed before every found action
+        }
+
+        public function afterExecuteRoute($dispatcher)
+        {
+            // Executed after every found action
+        }
+
+    }
+
+>>>>>>> 0.7.0
 Forwarding to other actions
 ---------------------------
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
@@ -103,15 +137,67 @@ access to certain options, redirect users to other screens or simply reuse code.
             // .. store some product and forward the user
 
             // Forward flow to the index action
+<<<<<<< HEAD
             $this->dispatcher->forward(array("controller" => "post", "action" => "index"));
+=======
+            $this->dispatcher->forward(array(
+                "controller" => "post",
+                "action" => "index"
+            ));
+>>>>>>> 0.7.0
         }
 
     }
 
 Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
+<<<<<<< HEAD
 The "forward" doesn't reloads the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
 to complete the process.
 
+=======
+The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
+to complete the process.
+
+More forwarding examples:
+
+.. code-block:: php
+
+    <?php
+
+    // Forward flow to another action in the current controller
+    $this->dispatcher->forward(array(
+        "action" => "search"
+    ));
+
+    // Forward flow to another action in the current controller
+    // passing parameters
+    $this->dispatcher->forward(array(
+        "action" => "search",
+        "params" => array(1, 2, 3)
+    ));
+
+    // Forward flow to another action in the current controller
+    // passing parameters
+    $this->dispatcher->forward(array(
+        "action" => "search",
+        "params" => array(1, 2, 3)
+    ));
+
+A forward action accepts the following parameters:
+
++----------------+--------------------------------------------------------+
+| Parameter      | Triggered                                              |
++================+========================================================+
+| controller     | A valid controller name to forward to.                 |
++----------------+--------------------------------------------------------+
+| action         | A valid action name to forward to.                     |
++----------------+--------------------------------------------------------+
+| params         | An array of parameters for the action                  |
++----------------+--------------------------------------------------------+
+| namespace      | A valid namespace name where the controller is part of |
++----------------+--------------------------------------------------------+
+
+>>>>>>> 0.7.0
 Getting Parameters
 ------------------
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends
@@ -150,7 +236,11 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
     <?php
 
+<<<<<<< HEAD
     $di->set('dispatcher', function(){
+=======
+    $di->setShared('dispatcher', function() {
+>>>>>>> 0.7.0
 
         //Create/Get an EventManager
         $eventsManager = new Phalcon\Events\Manager();
@@ -189,3 +279,9 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
         return $dispatcher;
     });
 
+<<<<<<< HEAD
+=======
+Implementing your own Dispatcher
+--------------------------------
+The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher replacing the one providing by Phalcon.
+>>>>>>> 0.7.0

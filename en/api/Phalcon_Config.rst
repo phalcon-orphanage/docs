@@ -1,7 +1,7 @@
 Class **Phalcon\\Config**
 =========================
 
-Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code. 
+Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.  
 
 .. code-block:: php
 
@@ -27,9 +27,15 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 Methods
 ---------
 
-public :doc:`Phalcon\\Config <Phalcon_Config>`  **__construct** (*array* $arrayConfig)
+public  **__construct** (*array* $arrayConfig)
 
 Phalcon\\Config constructor
+
+
+
+public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*unknown* $data)
+
+Restores the state of a Phalcon\\Config object
 
 
 

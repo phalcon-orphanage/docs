@@ -3,7 +3,11 @@ Class **Phalcon\\Config\\Adapter\\Ini**
 
 *extends* :doc:`Phalcon\\Config <Phalcon_Config>`
 
+<<<<<<< HEAD
 Reads ini files and convert it to Phalcon\\Config objects. Given the next configuration file: 
+=======
+Reads ini files and convert it to Phalcon\\Config objects.  Given the next configuration file:  
+>>>>>>> 0.7.0
 
 .. code-block:: ini
 
@@ -21,7 +25,11 @@ Reads ini files and convert it to Phalcon\\Config objects. Given the next config
     modelsDir = "../app/models/"
     viewsDir = "../app/views/"
 
+<<<<<<< HEAD
 You can read it as follows: 
+=======
+  You can read it as follows:  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -36,9 +44,22 @@ You can read it as follows:
 Methods
 ---------
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\Config\\Adapter\\Ini <Phalcon_Config_Adapter_Ini>`  **__construct** (*string* $filePath)
+=======
+public  **__construct** (*string* $filePath)
+>>>>>>> 0.7.0
 
 Phalcon\\Config\\Adapter\\Ini constructor
 
 
 
+<<<<<<< HEAD
+=======
+public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*unknown* $data) inherited from Phalcon\\Config
+
+Restores the state of a Phalcon\\Config object
+
+
+
+>>>>>>> 0.7.0

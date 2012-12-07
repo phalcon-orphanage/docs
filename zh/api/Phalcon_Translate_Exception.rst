@@ -3,9 +3,12 @@ Class **Phalcon\\Translate\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+<<<<<<< HEAD
 Class for exceptions thrown by Phalcon\\Translate
 
 
+=======
+>>>>>>> 0.7.0
 Methods
 ---------
 

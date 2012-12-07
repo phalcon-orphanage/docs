@@ -3,7 +3,13 @@ Class **Phalcon\\Mvc\\Model\\Validator\\PresenceOf**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
+<<<<<<< HEAD
 Allows to validate if a filed have a value different of null and empty string ("") 
+=======
+*implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+
+Allows to validate if a filed have a value different of null and empty string ("")  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -32,7 +38,11 @@ Allows to validate if a filed have a value different of null and empty string ("
 Methods
 ---------
 
+<<<<<<< HEAD
 public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record)
+=======
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+>>>>>>> 0.7.0
 
 Executes the validator
 

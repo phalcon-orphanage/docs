@@ -1,7 +1,13 @@
 Class **Phalcon\\Mvc\\Model\\Query\\Status**
 ============================================
 
+<<<<<<< HEAD
 This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails 
+=======
+*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`
+
+This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails  
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -25,13 +31,21 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
 Methods
 ---------
 
+<<<<<<< HEAD
 public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+=======
+public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+>>>>>>> 0.7.0
 
 
 
 
 
+<<<<<<< HEAD
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getModel** ()
+=======
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
+>>>>>>> 0.7.0
 
 Returns the model which executed the action
 

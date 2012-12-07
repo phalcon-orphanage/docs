@@ -1,9 +1,11 @@
 Class **Phalcon\\Logger\\Adapter\\File**
 ========================================
 
-*extends* :doc:`Phalcon\\Logger <Phalcon_Logger>`
+*extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
-Adapter to store logs in plain text files 
+*implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
+
+Adapter to store logs in plain text files  
 
 .. code-block:: php
 
@@ -17,71 +19,12 @@ Adapter to store logs in plain text files
 
 
 
-Constants
----------
-
-*integer* **SPECIAL**
-
-*integer* **CUSTOM**
-
-*integer* **DEBUG**
-
-*integer* **INFO**
-
-*integer* **NOTICE**
-
-*integer* **WARNING**
-
-*integer* **ERROR**
-
-*integer* **ALERT**
-
-*integer* **CRITICAL**
-
-*integer* **EMERGENCE**
-
 Methods
 ---------
 
 public  **__construct** (*string* $name, *array* $options)
 
 Phalcon\\Logger\\Adapter\\File constructor
-
-
-
-public  **setFormat** (*string* $format)
-
-Set the log format
-
-
-
-public *format*  **getFormat** ()
-
-Returns the log format
-
-
-
-public *string*  **getTypeString** (*integer* $type)
-
-Returns the string meaning of a logger constant
-
-
-
-protected *string*  **_applyFormat** ()
-
-Applies the internal format to the message
-
-
-
-public  **setDateFormat** (*string* $date)
-
-Sets the internal date format
-
-
-
-public *string*  **getDateFormat** ()
-
-Returns the internal date format
 
 
 
@@ -121,37 +64,73 @@ Opens the internal file handler after unserialization
 
 
 
-public  **debug** (*string* $message) inherited from Phalcon\\Logger
+public  **setFormat** (*string* $format) inherited from Phalcon\\Logger\\Adapter
+
+Set the log format
+
+
+
+public *format*  **getFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the log format
+
+
+
+protected *string*  **_applyFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Applies the internal format to the message
+
+
+
+public  **setDateFormat** (*string* $date) inherited from Phalcon\\Logger\\Adapter
+
+Sets the internal date format
+
+
+
+public *string*  **getDateFormat** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the internal date format
+
+
+
+public *string*  **getTypeString** (*integer* $type) inherited from Phalcon\\Logger\\Adapter
+
+Returns the string meaning of a logger constant
+
+
+
+public  **debug** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a debug message to the log
 
 
 
-public  **error** (*string* $message) inherited from Phalcon\\Logger
+public  **error** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an error message to the log
 
 
 
-public  **info** (*string* $message) inherited from Phalcon\\Logger
+public  **info** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an info message to the log
 
 
 
-public  **notice** (*string* $message) inherited from Phalcon\\Logger
+public  **notice** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a notice message to the log
 
 
 
-public  **warning** (*string* $message) inherited from Phalcon\\Logger
+public  **warning** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a warning message to the log
 
 
 
-public  **alert** (*string* $message) inherited from Phalcon\\Logger
+public  **alert** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an alert message to the log
 

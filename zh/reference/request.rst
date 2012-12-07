@@ -27,9 +27,15 @@ contain the values present in forms submitted or the parameters sent via the URL
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
 `Cross Site Scripting (XSS)`_ attacks.
 
+<<<<<<< HEAD
 :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_GET
 and $_POST arrays and sanitize or filter them with :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The following
 examples offer the same behavior:
+=======
+:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
+$_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
+:doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
+>>>>>>> 0.7.0
 
 .. code-block:: php
 
@@ -37,6 +43,10 @@ examples offer the same behavior:
 
     // Manually applying the filter
     $filter = new Phalcon\Filter();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0.7.0
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
@@ -46,6 +56,15 @@ examples offer the same behavior:
     // Automatically applying the filter
     $email = $request->getPost("user_email", "email");
 
+<<<<<<< HEAD
+=======
+    // Setting a default value if the param is null
+    $email = $request->getPost("user_email", "email", "some@example.com");
+
+    // Setting a default value if the param is null without filtering
+    $email = $request->getPost("user_email", null, "some@example.com");
+
+>>>>>>> 0.7.0
 
 Accessing the Request from Controllers
 --------------------------------------
@@ -99,7 +118,17 @@ an object-oriented way to achieve this task:
             if ($this->request->hasFiles() == true) {
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
+<<<<<<< HEAD
                     echo $file->getName(), " ", $file->getSize(), "\n";
+=======
+
+                    //Print file details
+                    echo $file->getName(), " ", $file->getSize(), "\n";
+
+
+                    //Move the file into the application
+                    $file->moveTo('files/');
+>>>>>>> 0.7.0
                 }
             }
         }
