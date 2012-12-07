@@ -1,23 +1,18 @@
 Working with Models
 ===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
-your application. The bulk of your application's business logic will be concentrated in the models.
+在应用程序中，模型是代表的是一种数据以及通过一些规则来操作这些数据，模型主要用于通过一些规则使其与数据库表进行相互操作，在大多数情况下，每个数据库表将对应到一个模型，整个应用程序的业务逻辑都会集中在模型中。
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 是应用程序中所有模型的基类，它保证了数据库的独立性，基本的CURD操作，高级的查询功能，多表关联等功能。
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 提供了SQL语句的动态转化功能，避免了直接使用SQL语句带来的安全风险。
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
-    :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
+   Models是数据库的高级抽象层，如果您需要与数据库直接打交道，你可以查看 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 组件文档。
 
 Creating Models
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+一个Model就是一个继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的类文件，它必须放到models文件夹目录下，一个Model文件必须是一个独立的类文件，同时它的命名采用驼蜂式的书写方法：
 
 .. code-block:: php
 
@@ -28,18 +23,13 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
+上面的例子是一个 "Robots"模型类，需要注意的是，类Robots继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。因为继承，该模型提供了大量的功能，包括基本的数据库CRUDCreate, Read, Update, Destroy) 操作，数据验证，先进的检索功能，并且可以同时关联多个模型。
 
 .. highlights::
 
-    If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    推荐你使用PHP5.4版本，这可以使得模型中的属性在保存到内存时，更节省内存。
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the getSource() method:
+默认情况下，模型"Robots"对应的是数据库表"robots"，如果你想手工指定映射到其他的数据库表，你可以使用 getSource() 方法：
 
 .. code-block:: php
 
@@ -55,12 +45,11 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
-The initialize() method is only called once during the request.
+此时，模型"Robots"映射到数据库表"the_robots"，initialize()方法有助于在模型中建立自定义行为，如，不同的数据表。initialize()方法在请求期间只被调用一次。
 
 Models in Namespaces
 --------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
+命名空间可以用来避免类名冲突，在这种情况下，使用getSource()方法来指定数据表名称是必要的：
 
 .. code-block:: php
 
@@ -80,8 +69,7 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
 Understanding Records To Objects
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
+每一个模型对象表示数据表中的一行数据，你可以轻松的通过读取对象的属性来访问数据。举个例子，数据表"robots"的记录如下：
 
 .. code-block:: bash
 
@@ -95,7 +83,7 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
+你可以通过数据库主键查找某条记录，然后打印出它们的名字：
 
 .. code-block:: php
 
@@ -107,7 +95,7 @@ You could find a certain record by its primary key and then print its name:
     // Prints "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+一旦记录被读取到内存中，你可以修改它的数据，然后保存更改：
 
 .. code-block:: php
 
@@ -117,13 +105,11 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
+正如你所看到的，这里没有使用原始的SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用程序提供了高度的数据库抽象。
 
 Finding Records
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 还提供了多种方法来查询数据记录。下面的例子将为你展示如何通过Model查询单条以及多条记录：
 
 .. code-block:: php
 
@@ -156,7 +142,7 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+你也可以使用findFirst()方法来获取给定条件下的第一条记录：
 
 .. code-block:: php
 
@@ -174,7 +160,7 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+find()和findFirst()这两个方法都接收一个关联数组作为检索条件：
 
 .. code-block:: php
 
@@ -195,7 +181,7 @@ Both find() and findFirst() methods accept an associative array specifying the s
         )
     );
 
-The available query options are:
+可用的查询选项列表：
 
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Parameter   | Description                                                                                                                                                                                      | Example                                                                 |
@@ -219,7 +205,7 @@ The available query options are:
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                      | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
+如果你愿意，你也可以通过面向对象的方式创建查询，而不是使用上面讲到的关联数组的形式：
 
 .. code-block:: php
 
@@ -231,20 +217,16 @@ If you prefer, there is also available a way to create queries in an object orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+静态方法 query()返回一个 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` 的实例化对象，因此它对IDE自动提示功能非常友好。
 
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high level, object oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
+所有的查询都被进行内部处理成 :doc:`PHQL <phql>` 。PHQL是一个高层次的，面向对象的类SQL语言。这种语言为你提供更多的功能来进行查询，如与其他模型关联查询，定义分组，添加聚合等。
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
+findFirst()方法直接返回一个类的实例对象(查询有数据返回的时候)，find()方法则返回:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的一个实例对象，这个对象是一个封装了所有功能的结果集，比如像数据遍历，寻找特定的数据记录，计数等等。
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+这些对象比标准数组更为强大，最大的优点之一是  :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 在任何时候它在内存中只保存一条记录，这极大的优化了内存管理，特别是处理大量数据的时候。
 
 .. code-block:: php
 
@@ -290,15 +272,12 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon's resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
+Phalcon数据集模拟游标的方式，你可以获取任意一行数据，只需要通过访问其位置，或者通过移动内部指针到一个特定的位置。需要注意的是，一些数据库系统并不支持游标，这将会导致每次强制重新执行，游标移动到头部，并从头到尾去查询请求位置。同理，如果一个结果集遍历多次，查询必须被执行相同的次数。
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
+大量的查询结果存储在内存中，会消耗大量的资源。resultsets are obtained
 from the database in chunks of 32 rows reducing the need for re-execute the request in several cases.
 
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
+请注意，结果集可以被序列化后存储到缓存中。:doc:`Phalcon\\Cache <cache>` 可以帮助完成这项任务。However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
 thus consuming more memory while this process takes place.
 
@@ -322,9 +301,7 @@ thus consuming more memory while this process takes place.
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`同样支持参数类型绑定。虽然会有比较小的性能消耗，但我们推荐你使用这种方法，因为它会清除SQL注入攻击，字符串过滤及整形数据验证等。绑定绑定，可以通过如下方式实现：
 
 .. code-block:: php
 
@@ -368,14 +345,11 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
         "bind" => $parameters
     ));
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
-and not numbers, so the placeholder could not be successfully replaced.
+当使用数字时，你可能需要定义他们为整形数字。比如 1或2， 在这种情况下，有可能是字符串"1"或"2"，而不是数字，所以这是不正确的。
 
-Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.
+在使用 PDO_ 的时候字符串是被自动转义的，此功能和数据库连接的字符集有关，所以在进行数据库连接时，必须设置正确的连接参数或者在数据库中设置好，错误的字符集会导致数据在存储读取时产生意想不到的结果。
 
-Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
+此外，你还可以通过设置参数"bindTypes"，定义参数的数据类型：
 
 .. code-block:: php
 
@@ -402,29 +376,23 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     ));
 
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
+参数绑定可以用于所有的查询方法上，比如find()和findFirst()。当然也包括一些计算类的方法，如 count(),sum(),average()等。
 
-Relationships between Models
+模型之间的关系
 ----------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional
-or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages
-foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access
-of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record
-in a uniform way.
+共有四种类型的关系：一对一，一对多，多对一，多对多。关系可以是单向也可以是双向的，并且每个可以是简单的(一个一个的Model)或者更复杂的(组合Model)。模型管理器管理这些关系的外键约束，这将有助于定义参照完整性以及方便快捷的访问关联数据。通过关系映射，可以在一个记录中很容易的访问相关模型中的数据。
 
-Unidirectional relationships
+单向关系
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-Bidirectional relations
+双向关系
 ^^^^^^^^^^^^^^^^^^^^^^^
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-Defining relationships
+定义关系
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne() or hasMany() define
-the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3
-parameters: local fields, referenced model, referenced fields.
+在Phalcon中，关系的定义必须在model的initialize()方法中进行定义，通过方法belongsTo(),hasOne(), hasMany() 进行关联关系，用当前模型的属性关联其他模型。这几个方法都需要3个参数，即： 当前模型属性，关联模型名称，关联模型的属性。
 
 +-----------+----------------------------+
 | Method    | Description                |
@@ -436,7 +404,7 @@ parameters: local fields, referenced model, referenced fields.
 | belongsTo | Defines a n-1 relationship |
 +-----------+----------------------------+
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+下面的schema显示了三个数据表的关系，用这个作为例子有助于我们更好的理解：
 
 .. code-block:: sql
 
@@ -468,7 +436,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 * The model "Parts" has many "RobotsParts".
 * The model "RobotsParts" belongs to both "Robots" and "Parts" models as a one-to-many relation.
 
-The models with their relations could be implemented as follows:
+在模型中他们的实现方法是这样的：
 
 .. code-block:: php
 
@@ -512,8 +480,7 @@ The models with their relations could be implemented as follows:
 
     }
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced
-model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+在映射关系中，第一个参数是当前模型的属性，第二个参数为关联模型的类名称，第三个参数为关联模型的属性。你也可以在映射关系中使用数组定义多个属性。
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
