@@ -233,7 +233,7 @@ for a valid user in the database:
 
                 //Find for the user in the database
                 $user = Users::findFirst(array(
-                    "email=:email: AND password=:password: AND active='Y'",
+                    "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
                 ));
                 if ($user != false) {
@@ -262,10 +262,15 @@ for a valid user in the database:
 
     }
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in services container from earlier. When accessed the first time, they are injected as part of the controller.
+For simplicity, we used "sha1_" to store the password hashes in the database, however, this algorithm is
+not recommended in real applications, use "bcrypt_" instead.
 
-These services are shared, which means that we will always be accessing the same instance regardless of the place where we invoke them.
+Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
+These are services defined in services container from earlier. When accessed the first time, they are injected as part
+of the controller.
+
+These services are shared, which means that we will always be accessing the same instance regardless of the place
+where we invoke them.
 
 For instance, here we invoke the "session" service and them we store the user identity in the "auth" variable:
 
@@ -280,19 +285,19 @@ For instance, here we invoke the "session" service and them we store the user id
 
 Securing the Backend
 --------------------
-The backend is a private area where only registered users have access. Therefore it is necessary to check that only registered users
-have access to these controllers. If you aren't logged in the application and you try to access by example the products controller
-(that is private) you'll see a screen like this:
+The backend is a private area where only registered users have access. Therefore it is necessary to check that only
+registered users have access to these controllers. If you aren't logged in the application and you try to access
+by example the products controller (that is private) you'll see a screen like this:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone try to access any controller and action, the application verifies that the current role has access to it, otherwise
-it displays a message like the above and forwards the flow to the home page.
+Every time someone try to access any controller and action, the application verifies that the current role has access to it,
+otherwise it displays a message like the above and forwards the flow to the home page.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called Dispatcher. It is
-informed about the route found by the component Router. Based on this is responsible for loading the appropriate controller and execute
-the corresponding action method.
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
+Dispatcher. It is informed about the route found by the component Router. Based on this is responsible for loading
+the appropriate controller and execute the corresponding action method.
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to make a special action that is checked before
 executing the required action, checking if the user has access to it or not. To achieve this we replace the component by creating a function
@@ -828,8 +833,10 @@ In the creation case, we recover the data sent and assign them to a new "product
 
     }
 
-Data is filtered before being assigned to the object. When saving we'll know whether the data conforms to the business rules
-and validations implemented in the model Products:
+Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
+performs additional casting according to the column types.
+
+When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
 
 .. code-block:: php
 
@@ -843,7 +850,7 @@ and validations implemented in the model Products:
 
         //...
 
-        if (!$products->save()) {
+        if (!$products->create()) {
 
             //The store failed, the following messages were produced
             foreach ($products->getMessages() as $message) {
@@ -872,7 +879,10 @@ Now in the case of product updating, first we must present to the user the data 
 
         //...
 
-        $product = Products::findFirst("id = '$id'");
+        $product = Products::findFirst(array(
+            'id = ?0',
+            'bind' => array($id)
+        ));
 
         Tag::displayTo("id", $product->id);
         Tag::displayTo("product_types_id", $product->product_types_id);
@@ -898,9 +908,11 @@ the user can change any value and then sent it back to the database through to t
         //...
 
         //Find the product to update
-        $id = $request->getPost("id", "int");
-        $products = Products::findFirst("id='$id'");
-        if ($products == false) {
+        $product = Products::findFirst(array(
+            'id = ?0',
+            'bind' => array($this->request->getPost("id"))
+        ));
+        if (!$product) {
             $this->flash->error("products does not exist ".$id);
             return $this->forward("products/index");
         }
@@ -970,3 +982,5 @@ This tutorial covers many more aspects of building applications with Phalcon, ho
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 .. _Twitter Boostrap: http://bootstrap.github.com/
+.. _sha1: http://php.net/manual/en/function.sha1.php
+.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
