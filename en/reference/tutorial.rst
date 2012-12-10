@@ -438,16 +438,10 @@ Receiving data from the form and storing them in the table is the next step.
         public function registerAction()
         {
 
-            //Request variables from html form
-            $name = $this->request->getPost("name", "string");
-            $email = $this->request->getPost("email", "email");
-
             $user = new Users();
-            $user->name = $name;
-            $user->email = $email;
 
             //Store and check for errors
-            if ($user->save() == true) {
+            if ($user->save($_POST) == true) {
                 echo "Thanks for register!";
             } else {
                 echo "Sorry, the following problems were generated: ";
@@ -459,20 +453,25 @@ Receiving data from the form and storing them in the table is the next step.
 
     }
 
-We can never trust data sent from a user. Variables passed into our application, from user input, need to have a filter applied to them so as to :doc:`validate/sanizite <filter>` their contents. This makes the application more secure because it avoids common attacks like SQL injections.
 
-In our tutorial we apply the filter "string" to the "name" variable to ensure that user did not sent us any malicious characters. The component :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` makes this task trivial, since it is injected from the dependency container into the getPost call.
+We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
+of the record in the users table. Setting the relevant values in the new record and calling save()
+will store the data in the database for that record. The save() method returns a boolean value which
+informs us on whether the storing of the data was successful or not.
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which informs us on whether the storing of the data was successful or not.
+The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the method save().
 
-Additional validation happens automatically on fields that are not null (required). If we don't type any of the required files our screen will look like this:
+Additional validation happens automatically on fields that are not null (required). If we don't type any of the
+required files our screen will look like this:
 
 .. figure:: ../_static/img/tutorial-4.png
 	:align: center
 
 Conclusion
 ----------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
+The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
+features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
 Sample Applications
 -------------------
