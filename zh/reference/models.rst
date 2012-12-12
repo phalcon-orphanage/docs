@@ -1,5 +1,5 @@
-Working with Models
-===================
+使用模型(Working with Models)
+======================================
 在应用程序中，模型是代表的是一种数据以及通过一些规则来操作这些数据，模型主要用于通过一些规则使其与数据库表进行相互操作，在大多数情况下，每个数据库表将对应到一个模型，整个应用程序的业务逻辑都会集中在模型中。
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 是应用程序中所有模型的基类，它保证了数据库的独立性，基本的CURD操作，高级的查询功能，多表关联等功能。
@@ -10,7 +10,7 @@ Working with Models
 
    Models是数据库的高级抽象层，如果您需要与数据库直接打交道，你可以查看 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 组件文档。
 
-Creating Models
+创建模型
 ---------------
 一个Model就是一个继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的类文件，它必须放到models文件夹目录下，一个Model文件必须是一个独立的类文件，同时它的命名采用驼蜂式的书写方法：
 
@@ -47,7 +47,7 @@ Creating Models
 
 此时，模型"Robots"映射到数据库表"the_robots"，initialize()方法有助于在模型中建立自定义行为，如，不同的数据表。initialize()方法在请求期间只被调用一次。
 
-Models in Namespaces
+在模型中使用命名空间
 --------------------
 命名空间可以用来避免类名冲突，在这种情况下，使用getSource()方法来指定数据表名称是必要的：
 
@@ -107,7 +107,7 @@ Understanding Records To Objects
 
 正如你所看到的，这里没有使用原始的SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用程序提供了高度的数据库抽象。
 
-Finding Records
+查找记录
 ---------------
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 还提供了多种方法来查询数据记录。下面的例子将为你展示如何通过Model查询单条以及多条记录：
 
@@ -222,8 +222,8 @@ find()和findFirst()这两个方法都接收一个关联数组作为检索条件
 
 所有的查询都被进行内部处理成 :doc:`PHQL <phql>` 。PHQL是一个高层次的，面向对象的类SQL语言。这种语言为你提供更多的功能来进行查询，如与其他模型关联查询，定义分组，添加聚合等。
 
-Model Resultsets
-^^^^^^^^^^^^^^^^
+模型数据集(Model Resultsets)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 findFirst()方法直接返回一个类的实例对象(查询有数据返回的时候)，find()方法则返回:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的一个实例对象，这个对象是一个封装了所有功能的结果集，比如像数据遍历，寻找特定的数据记录，计数等等。
 
 这些对象比标准数组更为强大，最大的优点之一是  :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 在任何时候它在内存中只保存一条记录，这极大的优化了内存管理，特别是处理大量数据的时候。
@@ -299,9 +299,9 @@ thus consuming more memory while this process takes place.
        echo $part->id;
     }
 
-Binding Parameters
+参数绑定
 ^^^^^^^^^^^^^^^^^^
-在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`同样支持参数类型绑定。虽然会有比较小的性能消耗，但我们推荐你使用这种方法，因为它会清除SQL注入攻击，字符串过滤及整形数据验证等。绑定绑定，可以通过如下方式实现：
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 同样支持参数类型绑定。虽然会有比较小的性能消耗，但我们推荐你使用这种方法，因为它会清除SQL注入攻击，字符串过滤及整形数据验证等。绑定绑定，可以通过如下方式实现：
 
 .. code-block:: php
 
@@ -711,7 +711,7 @@ Max/Min examples:
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-结果集缓存
+缓存结果集
 ^^^^^^^^^^^^^^^^^^
 频繁访问数据库往往是WEB应用性能方面最常见的瓶颈之一。这是由于复杂的连接过程，PHP必须在每个请求都从数据库获取数据。一个较完善的技术架构是，将不经常改变的结果集缓存到系统中可以更快访问的地方（通常是内存）。
 
@@ -950,7 +950,7 @@ Validation Messages
 | InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-Validation Events and Events Manager
+验证事件及事件管理
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 模型允许你实现事件，当执行insert和update的时候，这些事件将被抛出。他们帮助你定义业务规则。以下是 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 支持的事件以及他们的执行顺序：
 
@@ -1240,7 +1240,7 @@ Validating Data Integrity
 
     }
 
-Avoiding SQL injections
+避免SQL注入攻击
 ^^^^^^^^^^^^^^^^^^^^^^^
 每个被赋值到模型属性上的值在保存到数据库之前都将按照数据类型被转义，开发人员不需要手工转义每个值。Phalcon内部使用 `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_ PDO提供转义。
 
@@ -1330,7 +1330,7 @@ Skipping Columns
     $robot->created_at = new Phalcon\Db\RawValue('default');
     $robot->create();
 
-Deleting Records
+删除记录
 ----------------
 Phalcon\\Mvc\\Model::delete() 允许删除一条记录，你可以按如下方式使用：
 
@@ -1390,8 +1390,8 @@ Validation Failed Events
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-Transactions
-------------
+事务管理(Transactions)
+-------------------------
 当一个进程执行多个数据库操作时，如果要保证数据的完整性，那么它每个步骤的执行都必须保证是成功的。事务提供了在数据被提交到数据库之前，保证所有数据库操作被成功执行的能力。
 
 在Phalcon中，事务允许你提交所有操作，如果出现了错误，你可以回滚所有的操作。
@@ -1703,8 +1703,8 @@ Pointing to a different schema
 
     }
 
-Setting multiple databases
---------------------------
+建立多个数据库连接
+-----------------------------------
 在Phalcon中，所有的模型都属于一个数据库连接，实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 需要连接数据库时，它请求服务容器中的"db"服务，在initialize方法中，您可以覆盖此服务：
 
 .. code-block:: php
@@ -1747,7 +1747,7 @@ Setting multiple databases
 
     }
 
-Logging Low-Level SQL Statements
+记录SQL日志
 --------------------------------
 当使用高层次的抽象组件，比如 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 访问数据库时，很难理解这些语句最终发送到数据库时是什么样的。 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部由 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 支持。:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` 与  :doc:`Phalcon\\Db <../api/Phalcon_Db>` 交互工作，可以提供数据库抽象层的日志记录功能，从而使我们能够记录下SQL语句。
 
@@ -1801,7 +1801,7 @@ Logging Low-Level SQL Statements
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
-Profiling SQL Statements
+剖析SQL语句
 ------------------------
 感谢  :doc:`Phalcon\\Db <../api/Phalcon_Db>` ，作为 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的基本组成部分，剖析ORM产生的SQL语句变得可能，以便分析数据库的性能问题，同时你可以诊断性能问题，并发现瓶颈。
 
