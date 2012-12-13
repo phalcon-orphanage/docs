@@ -554,7 +554,7 @@ When a record is deleted the events related to the delete operation will be exec
         $phql,
         array(
             'initial' => 1,
-            'final' => '100
+            'final' => 100
         )
     );
 
