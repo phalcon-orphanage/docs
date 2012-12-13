@@ -515,30 +515,23 @@ Caching View Fragments
 
 模板引擎(Template Engines)
 ----------------------------------
-Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
-called :doc:`Volt <volt>`.
+模板引擎可帮助前端设计人员无需使用复杂的语法就可以创建视图。Phalcon自身包含了一个强大快速的模板引擎 :doc:`Volt <volt>` 。
 
-Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
+此外， :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 还允许你使用其他的模板引擎替代PHP或Volt.
 
-Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
-for the user. This usually increases the number of resources that your application are using.
+使用不同的模板引擎，通常需要复杂的外部PHP库，用于解析模板文件。这通常会增加你的应用程序的资源数量。
 
-If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
-still possible to access the API inside these templates with a little more effort.
+如果你要使用一个外部模板引擎， :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 会提供完全相同的视图层次结构，它同样可以在模板中访问API。
 
-The component uses adapters, these help Phalcon to speak with those external template engines in a unified, let's see how to do that integration.
+该组件使用适配器，这可以帮助外部模板引擎在Phalcon中是统一的，让我们来看看如何整合其他模板引擎的。
 
-Creating your own Template Engine Adapter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to use an external template engine
-it's create an adapter for it.
+创建自己的模板引擎适配器(Creating your own Template Engine Adapter)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+有很多的模板引擎，比如常用的Smarty，你可能需要集成或自己创建一个。使用外部模板引擎的第一步就是要为它创建一个适配器。
 
-A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
-Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-instance that creates the engine adapter and the DI container used by the application.
+模板引擎适配器是一个类，它用作 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 与模板引擎集成工作的一个桥梁。通常只需要实现  __construct() 和 render() 两个方法。构造方法用于传入 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 的实际对象和服务容器(DI).
 
-The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it
-when it's necessary.
+render()方法接收两个参数，第一个为视图文件的绝对路径，第二个参数是通过 $this->view->setVar() 设置模板变量。
 
 .. code-block:: php
 
@@ -579,9 +572,9 @@ when it's necessary.
 
     }
 
-Changing the Template Engine
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can replace or add more a template engine from the controller as follows:
+更换模板引擎(Changing the Template Engine)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+你可以使用以下方式在控制器中替换或添加一个模板引擎：
 
 .. code-block:: php
 
