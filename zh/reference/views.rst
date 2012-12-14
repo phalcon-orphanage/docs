@@ -606,14 +606,11 @@ render()方法接收两个参数，第一个为视图文件的绝对路径，第
 
     }
 
-You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
-accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
-Template files related to the particular engine must have those extensions.
+你还可以完全替换模板引擎，或同时使用多个模板引擎都是可以的。 \Phalcon\\Mvc\\View::registerEngines() 方法接收一个数组参数。数组的KEY是扩展名，值为模板名。扩展名称不要一样，以区别使用的是哪个模板引擎。
 
-The order that the template engines are defined with \Phalcon\\Mvc\\View::reginsterEngines() defines the relevance of execution. If
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
+如果使用多个模板引擎，同时设置的扩展名称一样，那么 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 将只显示第一个。
 
-If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
+如果你想实现在应用程序中每个请求都使用一个或一组模板引擎，你可以注册view服务到服务容器：
 
 .. code-block:: php
 
@@ -635,7 +632,7 @@ If you want to register a template engine or a set of them for each request in t
         return $view;
     });
 
-To better explain how to create an adapter for template engines, let's make the integration with two well known: Mustache and Twig.
+为了更好的理解如何创建一个模板引擎适配器，让我们集成两个众所周知的模板：Mustache 和 Twig.
 
 Using Mustache
 ^^^^^^^^^^^^^^
