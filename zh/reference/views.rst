@@ -636,10 +636,9 @@ render()方法接收两个参数，第一个为视图文件的绝对路径，第
 
 Using Mustache
 ^^^^^^^^^^^^^^
-`Mustache`_ is a logic-less template engine available for many platforms and languages. A PHP implementation is available in `this Github repository`_.
+`Mustache`_ 是一个logic-less的模板引擎，可用于多平台多语言。PHP的实现版本在这里 `this Github repository`_ 。
 
-You need to manually load the Mustache library before use its engine adapter. Either registering an autoload function or including
-the relevant file first can achieve this.
+你需要在使用模板适配器前手工加载Mustache的库文件。可以使用autoload的方式，也可以使用include包含文件的方式。
 
 .. code-block:: php
 
@@ -648,7 +647,7 @@ the relevant file first can achieve this.
     require "path/to/Mustache/Autoloader.php";
     Mustache_Autoloader::register();
 
-A template engine adapter for Mustache would look like:
+Mustache的适配器看起来像这样：
 
 .. code-block:: php
 
@@ -680,8 +679,7 @@ A template engine adapter for Mustache would look like:
 
     }
 
-Now, in the controller it's necessary to replace or add the Mustache adapter to the view component. If all of your actions will use this
-template engine, you can register it in the initialize() method of the controller.
+现在，在控制中你需要把模板引擎替换成 Mustache 适配器，如果你的控制器中的所有Action都使用此模板引擎，你可以在initialize()方法中注册它。
 
 .. code-block:: php
 
@@ -711,7 +709,7 @@ template engine, you can register it in the initialize() method of the controlle
 
     }
 
-A related view (views-dir/posts/show.mhtml) could be defined using the Mustache syntax:
+相对的模板文件 (views-dir/posts/show.mhtml) 将使用 Mustache 语法进行解析。
 
 .. code-block:: html+php
 
@@ -720,8 +718,7 @@ A related view (views-dir/posts/show.mhtml) could be defined using the Mustache 
         <p>{{body}}</p>
     {{/showPost}}
 
-Additionally, as seen above, you must call the method $this->getContent() inside a view to include the contents of a view at a higher
-level. In Moustache, this can be done as follows:
+此外，正如上面看到的，你必须在视图文件中调用方法 $this->getContent() 以包含内容。在Moustache中，它是这么使用的：
 
 .. code-block:: html+php
 
@@ -735,9 +732,9 @@ level. In Moustache, this can be done as follows:
 
 Using Twig
 ^^^^^^^^^^
-Twig_ is a modern template engine for PHP.
+Twig_ 是最近比较流行的PHP模板引擎。
 
-You need to manually load the Twig library before use its engine adapter. Registering its autoloader could do this:
+你在使用模板引擎适配器前同样需要手工加载Twig的库文件，使用autoloader加载可以按如下方式实现：
 
 .. code-block:: php
 
@@ -746,7 +743,7 @@ You need to manually load the Twig library before use its engine adapter. Regist
     require "path/to/Twig/Autoloader.php";
     Twig_Autoloader::register();
 
-A template engine adapter for Twig would look like:
+Twig模板引擎适配器看起来像这样：
 
 .. code-block:: php
 
@@ -782,7 +779,7 @@ A template engine adapter for Twig would look like:
 
     }
 
-As seen above, it's necessary to replace the default engine by twig or use it together with other.
+从上面可以看出，你需要替换默认的模板引擎或让它和其他的模板引擎一起工作。
 
 .. code-block:: php
 
@@ -812,7 +809,7 @@ As seen above, it's necessary to replace the default engine by twig or use it to
 
     }
 
-In this case, the related view will be views-dir/posts/show.twig, this is a file that contains Twig code:
+在这种情况下，相关的视图文件为views-dir/posts/show.twig，这个文件里面写的是包含twig语法的代码。
 
 .. code-block:: html+php
 
@@ -821,7 +818,7 @@ In this case, the related view will be views-dir/posts/show.twig, this is a file
         <p>{{ body }}</p>
     {{% endif %}}
 
-To include the contents of a view at a higher level, the "content" variable is available:
+然后需要把内容包含进来，这里使用变量"content",和Mustache的方式是一样的:
 
 .. code-block:: html+php
 
@@ -831,9 +828,9 @@ To include the contents of a view at a higher level, the "content" variable is a
 
 Using Smarty
 ^^^^^^^^^^^^
-Smarty_ is a template engine for PHP, facilitating the separation of presentation (HTML/CSS) from application logic.
+Smarty_ 是另一个PHP模板引擎，它负责应用逻辑和视图的分隔。
 
-You need to manually include the Smarty library before use its engine adapter. Including its adapter:
+你需要在使用适配器之前手工加载库文件，这么做：
 
 .. code-block:: php
 
@@ -841,7 +838,7 @@ You need to manually include the Smarty library before use its engine adapter. I
 
     require_once 'Smarty3/Smarty.class.php';
 
-A template engine adapter for Smarty would look like:
+Smarty模板引擎适配器看起来是这个样子的：
 
 .. code-block:: php
 
