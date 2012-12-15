@@ -876,13 +876,11 @@ Smarty模板引擎适配器看起来是这个样子的：
 
     }
 
-Injecting services in View
---------------------------
-Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
-to the application's service container.
+在视图中使用服务(Injecting services in View)
+-----------------------------------------------------------
+每个视图文件中都包含  :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的实例对象，方便的提供了访问服务容器的功能。
 
-The following example shows how to write a jQquery `ajax request`_ using a url with the framework conventions. The service "url" is
-injected in the view by just only accessing it:
+下面的例子演示了如何在框架约定下写一个 jQuery `ajax request`_ 。视图文件中包含"url"这个服务，你可以直接使用它：
 
 .. code-block:: html+php
 
@@ -900,8 +898,7 @@ injected in the view by just only accessing it:
 
 Stand-Alone Component
 ---------------------
-All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other. Using
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below:
+在Phalcon中，一般使用 *glue* 组件使一些松散的组件连接在一起相互工作，形成一个full-stack框架开发环境，但是你也可以单独使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` ：
 
 .. code-block:: php
 
@@ -927,8 +924,7 @@ All the components in Phalcon can be used as *glue* components individually beca
 
 View Events
 -----------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
-are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`  可以将事件发送到 :doc:`EventsManager <events>`  。事件通过"view"来触发。一些返回布尔值false的事件可以被停止，支持下列一些事件：
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
@@ -942,7 +938,7 @@ are triggered using the type "view". Some events when returning boolean false co
 | afterRender          | Triggered after complete the render process                | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将事件监听器绑定到组件：
 
 .. code-block:: php
 
@@ -967,7 +963,7 @@ The following example demonstrates how to attach listeners to this component:
         return $view;
     });
 
-The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
+下面的示例展示了如何创建一个插件，用来clean/repair 在渲染过程中的HTML代码。我们使用 Tidy_ 来演示：
 
 .. code-block:: php
 
