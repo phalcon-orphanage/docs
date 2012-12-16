@@ -8,7 +8,7 @@ just as you can use it as a stand-alone component in your applications.
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Twig_, originally created by Armin Ronacher, which in turn is inspired in Jinja_.
+Volt is inspired on Twig_, originally created by `Armin Ronacher`_, which in turn is inspired in Jinja_.
 Therefore many developers will be in familiar ground using the same syntax they have been using
 with Twig. Volt’s syntax and features have been enhanced with more elements and of course
 with the performance that developers have been accustomed to while working with Phalcon.
@@ -222,7 +222,7 @@ As PHP, a if statement checks if an expression is evaluated as true or false:
     <h1>Cyborg Robots</h1>
     <ul>
     {% for robot in robots %}
-      {% if robot.type = "cyborg" %}
+      {% if robot.type == "cyborg" %}
       <li>{{ robot.name|e }}</li>
       {% endif %}
     {% endfor %}
@@ -235,7 +235,7 @@ The else clause is also supported:
     <h1>Robots</h1>
     <ul>
     {% for robot in robots %}
-      {% if robot.type = "cyborg" %}
+      {% if robot.type == "cyborg" %}
       <li>{{ robot.name|e }}</li>
       {% else %}
       <li>{{ robot.name|e }} (not a cyborg)</li>
@@ -297,15 +297,15 @@ You may make calculations in templates using the following operators:
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
 +======================+==============================================================================+
-| \+                   | Perform an adding operation. {{ 2+3 }} returns 5                             |
+| \+                   | Perform an adding operation. {{ 2 + 3 }} returns 5                           |
 +----------------------+------------------------------------------------------------------------------+
-| \-                   | Perform a substraction operation {{ 2-3 }} returns -1                        |
+| \-                   | Perform a substraction operation {{ 2 - 3 }} returns -1                      |
 +----------------------+------------------------------------------------------------------------------+
-| \*                   | Perform a multiplication operation {{ 2*3 }} returns 6                       |
+| \*                   | Perform a multiplication operation {{ 2 * 3 }} returns 6                     |
 +----------------------+------------------------------------------------------------------------------+
-| \/                   | Perform a division operation {{ 10/2 }} returns 5                            |
+| \/                   | Perform a division operation {{ 10 / 2 }} returns 5                          |
 +----------------------+------------------------------------------------------------------------------+
-| \%                   | Calculate the remainder of an integer division {{ 10%3 }} returns 1          |
+| \%                   | Calculate the remainder of an integer division {{ 10 % 3 }} returns 1        |
 +----------------------+------------------------------------------------------------------------------+
 
 Comparisions
@@ -622,6 +622,7 @@ External Resources
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
 * Our website is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
 
+.. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
 .. _trim: http://php.net/manual/en/function.trim.php

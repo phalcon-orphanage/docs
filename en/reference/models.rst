@@ -1743,7 +1743,8 @@ The following example shows how to define the meta-data manually:
                     'year' => true,
                 ),
 
-                //The identity column
+                //The identity column, use boolean false if the model doesn't have
+                //an identity column
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
                 //How every column must be bound/casted
@@ -1754,8 +1755,15 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::BIND_PARAM_INT,
                 ),
 
-                //Fields that must be ignored from INSERT/UPDATE SQL statements
-                MetaData::MODELS_AUTOMATIC_DEFAULT => array('year')
+                //Fields that must be ignored from INSERT SQL statements
+                MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
+                    'year' => true
+                ),
+
+                //Fields that must be ignored from UPDATE SQL statements
+                MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
+                    'year' => true
+                )
 
             );
         }
