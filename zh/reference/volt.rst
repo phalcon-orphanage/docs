@@ -1,19 +1,19 @@
-Volt: Template Engine
+Volt模板引擎
 =====================
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
+Volt是一个超快速和设计者友好的模板语言，C语言编写的PHP。它为您提供了一套
+助理写一个简单的方法的意见。伏法尔康与其他组件的高度集成，
+就像你可以使用它作为一个独立的组件在你的应用程序中。
+
+Volt是一种用C语言编写的超快速并且设计友好的PHP模板引擎，它为你提供了一套很方便的视图助手。Volt与其他的组件高度集成，就像你可以在应用程序中单独使用它一样。
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Twig_, originally created by Armin Ronacher, which in turn is inspired in Jinja_.
-Therefore many developers will be in familiar ground using the same syntax they have been using
-with Twig. Volt’s syntax and features have been enhanced with more elements and of course
-with the performance that developers have been accustomed to while working with Phalcon.
+Volt的灵感来源于 Twig_ 。最初由Armin Ronacher创建，而它则是受 Jinja_ 的启发。
+因此，许多已经在使用Twig的开发人员将熟练的使用相同的语法。Volt的语法和功能更为强大，更多的元素以及更强的性能。
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Volt被编译成PHP代码，因此基本上省却了手动编写PHP代码，实现了业务逻辑与视图分离：
 
 .. code-block:: html+jinja
 
@@ -30,10 +30,9 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
     {% endblock %}
 
-Activating Volt
+激活 Volt
 ---------------
-As other template engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+作为一种模板引擎，你需要把Volt注册到视图组件，并设置一个扩展名称或者使用默认的扩展名 .phtml ：
 
 .. code-block:: php
 
@@ -53,7 +52,7 @@ reusing the standard .phtml:
         return $view;
     });
 
-Use the standard ".phtml" extension:
+使用默认的 ".phtml" 作为扩展名称：
 
 .. code-block:: php
 
@@ -63,13 +62,11 @@ Use the standard ".phtml" extension:
         ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
     ));
 
-Basic Usage
------------
-A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
-prints the result of a expression to the template.
+基本使用方法
+-----------------------
+Volt的代码是由PHP和HTML构成。Volt中有一组特殊的分隔符，{% ... %} 用来执行循环语句或条件判断等，赋值语句使用 {{ ... }}。
 
-Below is a minimal template that illustrates a few basics:
+下面是一个小示例，用于说明一些基本的功能：
 
 .. code-block:: html+jinja
 
@@ -98,8 +95,7 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using Phalcon\\Mvc\\View::setVar you can pass variables from the controller to the views.
-In the previous example, three variables were passed to the view: title, menu and post:
+你可以使用 Phalcon\\Mvc\\View::setVar 把控制器中的变量传递到视图中。在前面的例子中，有三个变量传递到视图中：title, menu 和 post ：
 
 .. code-block:: php
 
@@ -122,20 +118,18 @@ In the previous example, three variables were passed to the view: title, menu an
 
     }
 
-Variables
+变量
 ---------
-Variables may have attributes, those can be accessed using the syntax: foo.bar. If you are
-passing arrays, you can access using the curly braces syntax: foo['bar']
+变量可以有属性，可以通过使用语法访问他们，如：foo.bar。如果它们是数组，你可以使用 foo['bar'] 的方式访问：
 
 .. code-block:: jinja
 
     {{ post.title }}
     {{ post['title'] }}
 
-Filters
+过滤器
 -------
-Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
-variables:
+变量可以使用过滤器格式化或修改，管道操作符 "|" 用于接收过滤器过滤变量：
 
 .. code-block:: jinja
 
@@ -143,7 +137,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+以下列表是Volt内置的过滤器：
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -175,9 +169,9 @@ The following is the list of available built-in filters in Volt:
 | json_encode          | Converts a value into its JSON_ representation                               |
 +----------------------+------------------------------------------------------------------------------+
 
-Comments
+注释
 --------
-Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
+在Volt模板中可以使用 {# ... #} 分隔符添加注释，他们内部的所有文字将被忽略：
 
 .. code-block:: jinja
 
@@ -187,7 +181,7 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
 
 List of Control Structures
 --------------------------
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt提供了一组基本的但功能强大的控制结构：
 
 For
 ^^^
