@@ -54,7 +54,7 @@ Initializes a model in the model manager
 
 public *bool*  **isInitialized** (*string* $modelName)
 
-Check of a model is already initialized
+Check whether a model is already initialized
 
 
 
@@ -64,25 +64,25 @@ Get last initialized model
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*unknown* $modelName)
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName)
 
 Loads a model throwing an exception if it doesn't exist
 
 
 
-public  **addHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, *array* $options)
 
 Setup a 1-1 relation between two models
 
 
 
-public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, *array* $options)
 
 Setup a relation reverse 1-1  between two models
 
 
 
-public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, *array* $options)
+public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, *array* $options)
 
 Setup a relation 1-n between two models
 
@@ -106,7 +106,13 @@ Checks whether a model has a hasOne relation with another model
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>`  **_getRelationRecords** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **getRelationByAlias** (*string* $modelName, *string* $alias)
+
+Returns a relation by its alias
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>`  **getRelationRecords** (:doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>` $relation, *string* $method, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, *array* $parameters)
 
 Helper method to query records based on a relation definition
 
@@ -154,9 +160,9 @@ Gets hasOne relations defined on a model
 
 
 
-public *array*  **getRelations** (*string* $first, *string* $second)
+public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>`  **getRelations** (*string* $first, *string* $second)
 
-Query the relationships between two models
+Query the first relationship defined between two models
 
 
 

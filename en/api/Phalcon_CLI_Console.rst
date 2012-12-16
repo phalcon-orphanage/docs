@@ -41,7 +41,7 @@ Register an array of modules present in the console
 
     <?php
 
-    $this->registerModules(array(
+    $application->registerModules(array(
     	'frontend' => array(
     		'className' => 'Multiple\Frontend\Module',
     		'path' => '../apps/frontend/Module.php'
@@ -57,7 +57,19 @@ Register an array of modules present in the console
 
 public  **addModules** (*array* $modules)
 
-Merge modules with the existing ones
+Merge modules with the existing ones 
+
+.. code-block:: php
+
+    <?php
+
+    $application->addModules(array(
+    	'admin' => array(
+    		'className' => 'Multiple\Admin\Module',
+    		'path' => '../apps/admin/Module.php'
+    	)
+    ));
+
 
 
 

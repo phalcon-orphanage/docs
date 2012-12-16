@@ -40,7 +40,7 @@ Sets a prefix to all the urls generated
 
     <?php
 
-    $url->setBasePath('/invo/');
+    $url->setBaseUri('/invo/');
 
 
 

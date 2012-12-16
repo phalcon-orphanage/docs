@@ -15,12 +15,13 @@ Generates a SELECT tag
 
 protected static  **_optionsFromResultset** ()
 
-Generate the OPTION tags based on the rows
+Generate the OPTION tags based on a resulset
 
 
 
 protected static  **_optionsFromArray** ()
 
-...
+Generate the OPTION tags based on an array
+
 
 

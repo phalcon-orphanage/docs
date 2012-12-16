@@ -94,13 +94,27 @@ Retrieves a database connection
 
 public *mixed*  **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name <code> echo $robot->readAttribute('name');
+Reads an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+    echo $robot->readAttribute('name');
+
 
 
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rosey');
+Writes an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+    $robot->writeAttribute('name', 'Rosey');
+
 
 
 
@@ -142,8 +156,8 @@ Executes validators on every validation call
     {
     
     public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
+    {
+    	$this->validate(new ExclusionIn(array(
     		'field' => 'status',
     		'domain' => array('A', 'I')
     	)));
@@ -171,8 +185,8 @@ Check whether validation process has generated any messages
     {
     
     public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
+    {
+    	$this->validate(new ExclusionIn(array(
     		'field' => 'status',
     		'domain' => array('A', 'I')
     	)));
@@ -210,9 +224,58 @@ Checks if the document exists in the collection
 
 
 
-public  **save** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+
+Returns all the validation messages 
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->type = 'mechanical';
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+    if ($robot->save() == false) {
+    echo "Umh, We can't store robots right now ";
+    foreach ($robot->getMessages() as $message) {
+    	echo $message;
+    }
+    } else {
+    echo "Great, a new robot was saved successfully!";
+    }
 
 
+
+
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+
+Appends a customized message on the validation process 
+
+.. code-block:: php
+
+    <?php
+
+    use \Phalcon\Mvc\Model\Message as Message;
+    
+    class Robots extends Phalcon\Mvc\Model
+    {
+    
+    	public function beforeSave()
+    	{
+    		if (this->name == 'Peter') {
+    			$message = new Message("Sorry, but a robot cannot be named Peter");
+    			$this->appendMessage($message);
+    		}
+    	}
+    }
+
+
+
+
+public *boolean*  **save** ()
+
+Creates/Updates a collection based on the values in the atributes
 
 
 
@@ -290,9 +353,9 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static  **count** (*unknown* $parameters)
+public static *array*  **count** (*array* $parameters)
 
-
+Perform a count over a collection
 
 
 

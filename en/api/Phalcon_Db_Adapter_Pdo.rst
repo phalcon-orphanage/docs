@@ -103,7 +103,7 @@ Escapes a value to avoid SQL injections
 
 
 
-public  **bindParams** (*unknown* $sqlStatement, *array* $params)
+public  **bindParams** (*string* $sqlStatement, *array* $params)
 
 Bind params to a SQL statement
 
@@ -312,7 +312,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
     <?php
 
-     $connection->limit("SELECT * FROM robots", 5);
+     	echo $connection->limit("SELECT * FROM robots", 5);
 
 
 
@@ -325,7 +325,7 @@ Generates SQL checking for the existence of a schema.table
 
     <?php
 
-     $connection->tableExists("blog", "posts")
+     	var_dump($connection->tableExists("blog", "posts"));
 
 
 
@@ -338,7 +338,7 @@ Generates SQL checking for the existence of a schema.view
 
     <?php
 
-     $connection->viewExists("active_users", "posts")
+     var_dump($connection->viewExists("active_users", "posts"));
 
 
 
@@ -405,7 +405,7 @@ Adds a primary key to a table
 
 public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter
 
-Drops primary key from a table
+Drops a table's primary key
 
 
 
@@ -429,7 +429,14 @@ Returns the SQL column definition from a column
 
 public *array*  **listTables** (*string* $schemaName) inherited from Phalcon\\Db\\Adapter
 
-List all tables on a database <code> print_r($connection->listTables("blog") ?>
+List all tables on a database 
+
+.. code-block:: php
+
+    <?php
+
+     	print_r($connection->listTables("blog");
+
 
 
 

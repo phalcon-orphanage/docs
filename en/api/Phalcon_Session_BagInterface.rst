@@ -19,13 +19,31 @@ Destroyes the session bag
 
 
 
+abstract public  **set** (*string* $property, *string* $value)
+
+Setter of values
+
+
+
+abstract public *mixed*  **get** (*string* $property, *mixed* $defaultValue)
+
+Getter of values
+
+
+
+abstract public *boolean*  **has** (*string* $property)
+
+Isset property
+
+
+
 abstract public  **__set** (*string* $property, *string* $value)
 
 Setter of values
 
 
 
-abstract public *string*  **__get** (*string* $property)
+abstract public *mixed*  **__get** (*string* $property)
 
 Getter of values
 

@@ -71,13 +71,13 @@ Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **offsetGet** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -89,13 +89,13 @@ Resulsets cannot be changed. It has only been implemented to meet the definition
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Get first row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getLast** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Get last row in the resultset
 
@@ -113,7 +113,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **getCache** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Returns the associated cache for the resultset
 

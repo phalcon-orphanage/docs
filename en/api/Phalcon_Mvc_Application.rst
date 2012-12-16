@@ -76,7 +76,7 @@ Return the modules registered in the application
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ()
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** (*string* $uri)
 
 Handles a MVC request
 

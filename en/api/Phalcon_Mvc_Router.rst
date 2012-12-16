@@ -38,7 +38,13 @@ Returns the internal dependency injector
 
 protected *string*  **_getRewriteUri** ()
 
-Get rewrite info
+Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
+
+
+
+public  **removeExtraSlashes** (*boolean* $remove)
+
+Set whether router must remove the extra slashes in the handled routes
 
 
 

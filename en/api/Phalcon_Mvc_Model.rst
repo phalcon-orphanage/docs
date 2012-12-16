@@ -758,13 +758,13 @@ Setup a relation 1-n between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $modelName, *array* $arguments)
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, *array* $arguments)
 
 Returns related records based on defined relations
 
 
 
-protected *mixed*  **__getRelatedRecords** ()
+protected *mixed*  **_getRelatedRecords** ()
 
 Returns related records defined relations depending on the method name
 

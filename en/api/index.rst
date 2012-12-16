@@ -107,6 +107,7 @@ API Indice
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
    Phalcon_Mvc_Model_Query_Status
+   Phalcon_Mvc_Model_Relation
    Phalcon_Mvc_Model_Resultset
    Phalcon_Mvc_Model_Resultset_Complex
    Phalcon_Mvc_Model_Resultset_Simple
@@ -141,6 +142,8 @@ API Indice
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Exception
+   Phalcon_Security
+   Phalcon_Security_Exception
    Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files

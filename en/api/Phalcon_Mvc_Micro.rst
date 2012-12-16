@@ -96,7 +96,7 @@ Obtains a service from the DI
 
 
 
-public  **getSharedService** (*unknown* $serviceName)
+public *mixed*  **getSharedService** (*string* $serviceName)
 
 Obtains a shared service from the DI
 

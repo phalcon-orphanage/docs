@@ -17,13 +17,13 @@ Phalcon\\DI\\FactoryDefault constructor
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared) inherited from Phalcon\\DI
 
 Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config) inherited from Phalcon\\DI
 
 Registers an "always shared" service in the services container
 
@@ -35,7 +35,7 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared) inherited from Phalcon\\DI
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
@@ -47,9 +47,9 @@ Returns a service definition without resolving
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\DI
 
-Returns a Phalcon\\Di\\Service instance
+Returns a Phalcon\\DI\\Service instance
 
 
 
@@ -61,7 +61,7 @@ Resolves the service based on its configuration
 
 public *mixed*  **getShared** (*string* $name, *array* $parameters) inherited from Phalcon\\DI
 
-Returns a shared service based on their configuration
+Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
 
 

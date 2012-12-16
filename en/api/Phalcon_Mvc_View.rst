@@ -61,6 +61,18 @@ Gets views directory
 
 
 
+public  **setLayoutsDir** (*string* $layoutsDir)
+
+Sets layouts directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+public *string*  **getLayoutsDir** ()
+
+Gets layouts directory
+
+
+
 public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash 

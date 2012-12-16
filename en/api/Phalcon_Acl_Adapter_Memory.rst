@@ -34,7 +34,7 @@ Manages ACL lists in memory
     	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
     
-    //Private area resources
+    //Public area resources
     $publicResources = array(
     	'index' => array('index'),
     	'about' => array('index'),
@@ -72,7 +72,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, *array* $accessInherits)
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
 
 .. code-block:: php
 

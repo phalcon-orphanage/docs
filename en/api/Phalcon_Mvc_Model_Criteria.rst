@@ -9,12 +9,6 @@ This class allows to build the array parameter required by Phalcon\\Mvc\\Model::
 Methods
 ---------
 
-public  **__construct** ()
-
-Phalcon\\Mvc\\Model\\Criteria constructor
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container

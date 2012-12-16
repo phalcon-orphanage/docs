@@ -57,7 +57,7 @@ Phalcon\\Mvc\\Model\\MetaData\\Files constructor
 
 
 
-public *array*  **read** (*unknown* $key)
+public *array*  **read** (*string* $key)
 
 Reads meta-data from files
 
@@ -77,133 +77,287 @@ Initialize the metadata for certain table
 
 public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads meta-data for certain model
+Reads the complete meta-data for certain model 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->readMetaData(new Robots());
+
 
 
 
 public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads meta-data for certain model using a MODEL_* constant
+Reads meta-data for certain model using a MODEL_* constant 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->writeColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP, array('leName' => 'name')));
+
 
 
 
 public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Writes meta-data for certain model using a MODEL_* constant
+Writes meta-data for certain model using a MODEL_* constant 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->writeColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP, array('leName' => 'name')));
+
 
 
 
 public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads the ordered/reversed column map for certain model
+Reads the ordered/reversed column map for certain model 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->readColumnMap(new Robots()));
+
 
 
 
 public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads column-map information for certain model using a MODEL_* constant
+Reads column-map information for certain model using a MODEL_* constant 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->readColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP));
+
 
 
 
 public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns table attributes names (fields)
+Returns table attributes names (fields) 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getAttributes(new Robots()));
+
 
 
 
 public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an array of fields which are part of the primary key
+Returns an array of fields which are part of the primary key 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getPrimaryKeyAttributes(new Robots()));
+
 
 
 
 public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an arrau of fields which are not part of the primary key
+Returns an arrau of fields which are not part of the primary key 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getNonPrimaryKeyAttributes(new Robots()));
+
 
 
 
 public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an array of not null attributes
+Returns an array of not null attributes 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getNotNullAttributes(new Robots()));
+
 
 
 
 public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes and their data types
+Returns attributes and their data types 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getDataTypes(new Robots()));
+
 
 
 
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes which types are numerical
+Returns attributes which types are numerical 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getDataTypesNumeric(new Robots()));
+
 
 
 
 public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the name of identity field (if one is present)
+Returns the name of identity field (if one is present) 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getIdentityField(new Robots()));
+
 
 
 
 public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes and their bind data types
+Returns attributes and their bind data types 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getBindTypes(new Robots()));
+
 
 
 
 public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes that must be ignored from the INSERT SQL generation
+Returns attributes that must be ignored from the INSERT SQL generation 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getAutomaticCreateAttributes(new Robots()));
+
 
 
 
 public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes that must be ignored from the UPDATE SQL generation
+Returns attributes that must be ignored from the UPDATE SQL generation 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getAutomaticUpdateAttributes(new Robots()));
+
 
 
 
 public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Set the attributes that must be ignored from the INSERT SQL generation
+Set the attributes that must be ignored from the INSERT SQL generation 
+
+.. code-block:: php
+
+    <?php
+
+    $metaData->setAutomaticCreateAttributes(new Robots(), array('created_at' => true));
+
 
 
 
 public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+Set the attributes that must be ignored from the UPDATE SQL generation 
+
+.. code-block:: php
+
+    <?php
+
+    $metaData->setAutomaticUpdateAttributes(new Robots(), array('modified_at' => true));
+
 
 
 
 public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the column map if any
+Returns the column map if any 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getColumnMap(new Robots()));
+
 
 
 
 public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the reverse column map if any
+Returns the reverse column map if any 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getReverseColumnMap(new Robots()));
 
 
 
-public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Check if a model has certain attribute
+public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Check if a model has certain attribute 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($metaData->hasAttribute(new Robots(), 'name'));
+
 
 
 
 public *boolean*  **isEmpty** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Checks if the internal meta-data container is empty
+Checks if the internal meta-data container is empty 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($metaData->isEmpty());
+
 
 
 
 public  **reset** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Resets internal meta-data in order to regenerate it
+Resets internal meta-data in order to regenerate it 
+
+.. code-block:: php
+
+    <?php
+
+    $metaData->reset();
+
 
 
 

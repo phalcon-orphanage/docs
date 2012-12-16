@@ -11,18 +11,6 @@ Designer friendly and fast template engine for PHP written in C
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the dependency injection container
-
-
-
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the dependency injection container
-
-
-
 public  **setOptions** (*array* $options)
 
 Set Volt's options
@@ -35,6 +23,12 @@ Return Volt's options
 
 
 
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **getCompiler** ()
+
+Returns the Volt's compiler
+
+
+
 public  **render** (*string* $templatePath, *array* $params, *boolean* $mustClean)
 
 Renders a view using the template engine
@@ -43,7 +37,13 @@ Renders a view using the template engine
 
 public *int*  **length** (*mixed* $item)
 
-Length filter
+Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+
+
+
+public *string*  **converEncoding** (*string* $text, *string* $from, *string* $to)
+
+Performs a string conversion
 
 
 
@@ -62,6 +62,18 @@ Returns cached ouput on another view stage
 public *string*  **partial** (*string* $partialPath) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+
+Sets the dependency injector
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal dependency injector
 
 
 

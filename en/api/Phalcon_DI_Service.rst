@@ -33,6 +33,12 @@ Check whether the service is shared or not
 
 
 
+public  **setSharedInstance** (*mixed* $sharedInstance)
+
+Sets/Resets the shared instance related to the service
+
+
+
 public  **setDefinition** (*mixed* $definition)
 
 Set the service definition

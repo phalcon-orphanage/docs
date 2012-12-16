@@ -102,7 +102,14 @@ Resets all the stablished headers
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
 
-Sets output expire time header
+Sets a Expires header to use HTTP cache 
+
+.. code-block:: php
+
+    <?php
+
+    $this->response->setExpires(new DateTime());
+
 
 
 
