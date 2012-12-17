@@ -94,6 +94,8 @@ API Indice
    Phalcon_Mvc_Micro
    Phalcon_Mvc_Micro_Exception
    Phalcon_Mvc_Model
+   Phalcon_Mvc_Model_Behavior
+   Phalcon_Mvc_Model_Behavior_Timestampable
    Phalcon_Mvc_Model_Criteria
    Phalcon_Mvc_Model_Exception
    Phalcon_Mvc_Model_Manager
