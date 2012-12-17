@@ -76,7 +76,7 @@ Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, *unknown* $lifetime) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
 

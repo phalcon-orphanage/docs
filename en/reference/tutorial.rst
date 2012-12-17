@@ -483,5 +483,5 @@ The following Phalcon powered applications are also available, providing more co
 
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O' Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
+.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
 

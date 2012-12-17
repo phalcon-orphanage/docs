@@ -51,8 +51,9 @@ Sends SQL statements to the database server returning the success state. Use thi
     <?php
 
     //Querying data
+    $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
+    $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
-$resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'"); $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
 
 

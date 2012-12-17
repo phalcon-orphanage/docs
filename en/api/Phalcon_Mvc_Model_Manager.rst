@@ -78,7 +78,7 @@ Setup a 1-1 relation between two models
 
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, *array* $options)
 
-Setup a relation reverse 1-1  between two models
+Setup a relation reverse many to one between two models
 
 
 
@@ -136,13 +136,20 @@ Gets belongsTo related records from a model
 
 
 
-public *array*  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Gets belongsTo relations defined on a model
+Gets all the belongsTo relations defined in a model 
+
+.. code-block:: php
+
+    <?php
+
+    $relations = $modelsManager->getBelongsTo(new Robots());
 
 
 
-public *array*  **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets hasMany relations defined on a model
 
@@ -178,7 +185,7 @@ Creates a Phalcon\\Mvc\\Model\\Query and execute it
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **createBuilder** (*string* $params)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **createBuilder** (*string* $params)
 
 Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 

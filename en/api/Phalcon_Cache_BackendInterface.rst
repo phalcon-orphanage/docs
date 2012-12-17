@@ -13,7 +13,7 @@ Phalcon\\Cache\\Backend constructor
 
 
 
-abstract public *mixed*  **start** (*int|string* $keyName)
+abstract public *mixed*  **start** (*int|string* $keyName, *long* $lifetime)
 
 Starts a cache. The $keyname allows to identify the created fragment
 

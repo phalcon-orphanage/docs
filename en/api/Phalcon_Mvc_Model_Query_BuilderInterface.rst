@@ -57,7 +57,7 @@ Return the models who makes part of the query
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **join** (*string* $model, *string* $conditions, *string* $alias)
 
-Sets the models who makes part of the query
+Adds a INNER join to the query
 
 
 
@@ -93,7 +93,7 @@ Sets a HAVING condition clause
 
 abstract public *string|array*  **getHaving** ()
 
-Return the columns to be queried
+Returns the HAVING condition clause
 
 
 
