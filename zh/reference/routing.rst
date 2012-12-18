@@ -1,13 +1,10 @@
-Routing
-=======
-The router component allows defining routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine this information. The router has two modes: MVC
-mode and match-only mode. The first mode is ideal for working with MVC applications.
+路由器(Routing)
+=============================
+router组件允许定义用户请求对应到哪个控制器或Action。router解析 URI 以确定这些信息。路由器有两种模式：MVC模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。
 
 Defining Routes
 ---------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
-you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供了一套先进的路由功能。在MVC模式中，你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：
 
 .. code-block:: php
 
@@ -36,14 +33,9 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. Currently, the router does not execute the controller and action, it only collects this
-information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is controller/action it should to execute.
+add() 方法接收两个参数，第一个参数是一个匹配字符串，第二个参数为一组可选的路径。在这种情况下，URI  /admin/users/my-profile， "users"代表控制器，"profile"代表Ation。目前，该路由器不并不执行控制器和Action,只为组件(如： :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`) 收集信息，然后由分发器决定是否立即执行。
 
-An application can have many paths, define routes one by one can be a cumbersome task. In these cases we can
-create more flexible routes:
+应用程序可能有很多个不同的路径，如果一个一个的定义路由的话，会非常麻烦。在这种情况下，我们可以使用更灵活的方式创建route：
 
 .. code-block:: php
 
@@ -62,8 +54,7 @@ create more flexible routes:
         )
     );
 
-In the example above, using wildcards we make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) then:
+在上面的例子中，我们使用通配符来匹配路由。例如，通过访问URL (/admin/users/a/delete/dave/301) ，解析为：
 
 +------------+---------------+
 | Controller | users         |
@@ -75,17 +66,11 @@ following URL (/admin/users/a/delete/dave/301) then:
 | Parameter  | 301           |
 +------------+---------------+
 
-The method add() receives a pattern that optionally could have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used
-is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All routes patterns are case-insensitive.
+add()方法接收一个模式，可选择使用预定义占位符和正则表达式修饰符。所有的路由模式必须以斜线字符（/）开始。正则表达式语法使用与 `PCRE regular expressions`_ 相同的语法。需要注意的是，不必要添加正则表达式分隔符。所有的路由模式是不区分大小写的。
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
-parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the
-first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
+第二个参数定义了如何将匹配部分绑定到controller/action/parameters。匹配部分是占位符或团圆括号中的子模式。另外，在上述的例子中，第一个子模式匹配(:controller)，是route中控制器部分，第二个是action，等。
 
-These placeholders help writing regular expressions that are more readable for developers and easier
-to understand. The following placeholders are supported:
+这些占位符使用正则表达式，更易读，更容易为开发人员理解。支持以下占位符：
 
 +--------------+---------------------+--------------------------------------------------------------------+
 | Placeholder  | Regular Expression  | Usage                                                              |
@@ -103,8 +88,7 @@ to understand. The following placeholders are supported:
 | /:int        | /([0-9]+)           | Matches an integer parameter                                       |
 +--------------+---------------------+--------------------------------------------------------------------+
 
-Controller names are camelized, this means that characters (-) and (_) are removed and the next character
-is uppercased. For instance, some_controller is converted to SomeController.
+控制器名称采用驼峰书写规则，这意味着，字符 (-) 和 (_)将被移除，同时把下一个字符转化为大写字符。比如，some_controller被转化为SomeController。
 
 Since you can add many routes as you need using add(), the order in which you add the routes indicates
 their relevance, last routes added have more relevance than first added. Internally, all defined routes

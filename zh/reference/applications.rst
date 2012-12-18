@@ -1,18 +1,14 @@
 MVC Applications
 ================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
-operations required in the background, instantiating every component needed and integrating it with the
-project, to allow the MVC pattern to operate as desired.
+在 Phalcon 中，所有复杂的MVC相关工作都是由 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 来完成的。该组件封装了所有复杂的后台操作，包括每一个组件的实例化，组件之间的集成等。
 
 Single or Multi Module Applications
 -----------------------------------
-With this component you can run various types of MVC structures:
+使用此组件，您可以运行不同类型的MVC结构：
 
 Single Module
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
-An application like this would have the following file structure:
+单MVC应用程序只包含一个module，可以使用命名空间，但不是必需的。这样的应用程序的文件结构如下：
 
 .. code-block:: php
 
@@ -26,7 +22,7 @@ An application like this would have the following file structure:
             img/
             js/
 
-If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
+如果不使用命名空间，引导文件被用来协调MVC流程：
 
 .. code-block:: php
 
@@ -58,7 +54,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         echo $e->getMessage();
     }
 
-If namespaces are used, the following bootstrap can be used:
+如果使用命名空间，引导文件可以这样做：
 
 .. code-block:: php
 
@@ -103,7 +99,7 @@ If namespaces are used, the following bootstrap can be used:
 
 Multi Module
 ^^^^^^^^^^^^
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+一个multi-module(多模块)的应用程序是指使用相同的Document Root，但有超过一个module。在这种情况下，程序的文件结构如下：
 
 .. code-block:: php
 
@@ -124,7 +120,7 @@ A multi-module application uses the same document root for more than one module.
         img/
         js/
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+在 apps/ 目录下的每个目录都有自己的MVC结构，Module.php是每个Module特定的设置：
 
 .. code-block:: php
 
@@ -178,7 +174,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+一个特殊的引导文件，用以载入 multi-module MVC 结构：
 
 .. code-block:: php
 
@@ -250,8 +246,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+如果你想把配置文件完全写入到引导文件，你可以使用一个匿名函数的方式来注册 Module :
 
 .. code-block:: php
 
@@ -278,16 +273,11 @@ module:
         )
     );
 
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
-necessary that every matched route returns a valid module. Each registered module has an associated class
-that offers functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices(), they will be called by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
+当 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` Module注册后，每个匹配的route都必须返回一个有效的module。注册的module都有一个相关的类，用于设置module本身提供的功能。每个module类都必须实现 registerAutoloaders() 和 registerServices() 这两个方法，:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 将调用它们执行要执行的module。
 
-Understanding the default behavior
+了解默认行为
 ----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
-you may recognize the following bootstrap file:
+如果你一直关注  :doc:`tutorial <tutorial>` 或 使用 :doc:`Phalcon Devtools <tools>` 生成过代码，你可能会熟悉以下的引导文件：
 
 .. code-block:: php
 
@@ -310,7 +300,7 @@ you may recognize the following bootstrap file:
         echo "PhalconException: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when handle() is invoked:
+所有控制器工作的核心是 handle()方法被调用：
 
 .. code-block:: php
 
@@ -318,7 +308,7 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     echo $application->handle()->getContent();
 
-If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
+如果您不希望使用 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` ，上面的代码可以修改如下：
 
 .. code-block:: php
 
@@ -364,14 +354,11 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-Although the above is a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
-should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+尽管上面的代码显得比使用 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 罗唆，但它提供了一种替代bootstrap文件的方式。根据你的需要，你可能希望完全掌握哪些类应该被实例化，或使用自己的组件来扩展默认的功能。
 
 Application Events
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
-(if it is present). Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 能够将事件发送到 :doc:`EventsManager <events>`，事件管理器通过触发 "application"来实现，支持以下的事件：
 
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
@@ -385,7 +372,7 @@ Application Events
 | afterHandleRequest  | After execute the dispatch loop                              |
 +---------------------+--------------------------------------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何在此组件上添加监听器：
 
 .. code-block:: php
 
@@ -402,7 +389,7 @@ The following example demonstrates how to attach listeners to this component:
         }
     );
 
-External Resources
+相关资源
 ------------------
 
 * `MVC examples on Github <https://github.com/phalcon/mvc>`_
