@@ -568,8 +568,9 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    $manager->createBuilder()
-        >join('RobotsParts');
+    $robots = $this->modelsManager->createBuilder()
+        ->join('Robots')
+        ->join('RobotsParts');
         ->limit(20);
         ->order('Robots.name')
         ->getQuery()
