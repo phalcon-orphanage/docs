@@ -449,10 +449,15 @@ foreach($classes as $className){
 						$parameterName =  str_replace("\\", "\\\\", $ret['parameters'][$name]);
 						$cp[] = ':doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name;
 					} else {
-						$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
+						if ($parameter->isOptional()) {
+							$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
+						} else {
+							$cp[] = '[*'.$ret['parameters'][$name].'* '.$name.']';
+						}
 					}
 				} else {
-					$cp[] = '*unknown* '.$name;
+					throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
+					//$cp[] = '*unknown* '.$name;
 				}
 			}
 			$code.=join(', ', $cp).')';
