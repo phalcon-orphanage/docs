@@ -15,16 +15,17 @@ This component encapsulates all the complex operations behind instantiating ever
      {
     
     	/**
-    	 * Register the services here to make them general or register in the ModuleDefinition to make them module-specific
-    	 *\/
+    	 * Register the services here to make them general or register
+    	 * in the ModuleDefinition to make them module-specific
+    	 */
     	protected function _registerServices()
     	{
     
     	}
     
     	/**
-    	 * This method execute the right module
-    	 *\/
+    	 * This method registers all the modules in the application
+    	 */
     	public function main()
     	{
     		$this->registerModules(array(

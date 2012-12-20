@@ -1,98 +1,79 @@
-Class **Phalcon\\Mvc\\Collection**
-==================================
+Interface **Phalcon\\Mvc\\CollectionInterface**
+===============================================
 
-*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+Phalcon\\Mvc\\CollectionInterface initializer
 
-This component implements a high level abstraction for NoSQL databases which works with documents
-
-
-Constants
----------
-
-*integer* **OP_NONE**
-
-*integer* **OP_CREATE**
-
-*integer* **OP_UPDATE**
-
-*integer* **OP_DELETE**
 
 Methods
 ---------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+
+Phalcon\\Mvc\\Collection
 
 
 
-
-
-public  **setId** (*mixed* $id)
+abstract public  **setId** (*mixed* $id)
 
 Sets a value for the _id propery, creates a MongoId object if needed
 
 
 
-public *MongoId*  **getId** ()
+abstract public *MongoId*  **getId** ()
 
 Returns the value of the _id property
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+abstract public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the dependency injection container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+abstract public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+abstract public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
 Returns the internal event manager
 
 
 
-public *array*  **getReservedAttributes** ()
+abstract public *array*  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
 
 
 
-protected :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **setSource** ()
-
-Sets collection name which model should be mapped
-
-
-
-public *string*  **getSource** ()
+abstract public *string*  **getSource** ()
 
 Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** (*string* $connectionService)
+abstract public  **setConnectionService** (*string* $connectionService)
 
 Sets a service in the services container that returns the Mongo database
 
 
 
-public *MongoDb*  **getConnection** ()
+abstract public *MongoDb*  **getConnection** ()
 
 Retrieves a database connection
 
 
 
-public *mixed*  **readAttribute** (*string* $attribute)
+abstract public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -105,7 +86,7 @@ Reads an attribute value by its name
 
 
 
-public  **writeAttribute** (*string* $attribute, *mixed* $value)
+abstract public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name 
 
@@ -118,60 +99,13 @@ Writes an attribute value by its name
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **dumpResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
+abstract public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **dumpResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
 
 Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** ()
-
-Returns a collection resultset
-
-
-
-protected *boolean*  **_preSave** ()
-
-Executes internal hooks before save a document
-
-
-
-protected *boolean*  **_postSave** ()
-
-Executes internal events after save a document
-
-
-
-protected  **validate** ()
-
-Executes validators on every validation call 
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
-    
-    class Subscriptors extends Phalcon\Mvc\Collection
-    {
-    
-    public function validation()
-    {
-    	$this->validate(new ExclusionIn(array(
-    		'field' => 'status',
-    		'domain' => array('A', 'I')
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
-    
-    }
-
-
-
-
-public *boolean*  **validationHasFailed** ()
+abstract public *boolean*  **validationHasFailed** ()
 
 Check whether validation process has generated any messages 
 
@@ -200,31 +134,7 @@ Check whether validation process has generated any messages
 
 
 
-protected *boolean*  **_callEvent** ()
-
-Fires an internal event
-
-
-
-protected *boolean*  **_callEventCancel** ()
-
-Fires an internal event that cancels the operation
-
-
-
-protected *boolean*  **_cancelOperation** ()
-
-Cancel the current operation
-
-
-
-protected  **_exists** ()
-
-Checks if the document exists in the collection
-
-
-
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+abstract public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
 
 Returns all the validation messages 
 
@@ -248,7 +158,7 @@ Returns all the validation messages
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -273,19 +183,19 @@ Appends a customized message on the validation process
 
 
 
-public *boolean*  **save** ()
+abstract public *boolean*  **save** ()
 
 Creates/Updates a collection based on the values in the atributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string* $id)
+abstract public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string* $id)
 
 Find a document by its id
 
 
 
-public static *array*  **findFirst** ([*array* $parameters])
+abstract public static *array*  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -313,7 +223,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static *array*  **find** ([*array* $parameters])
+abstract public static *array*  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -353,13 +263,13 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static *array*  **count** ([*array* $parameters])
+abstract public static *array*  **count** ([*array* $parameters])
 
 Perform a count over a collection
 
 
 
-public *boolean*  **delete** ()
+abstract public *boolean*  **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise. 
 

@@ -186,6 +186,7 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Mvc_CollectionInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface
