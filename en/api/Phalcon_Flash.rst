@@ -15,13 +15,13 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 Methods
 ---------
 
-public  **__construct** (*array* $cssClasses)
+public  **__construct** ([*array* $cssClasses])
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush)
+public  **setImplicitFlush** (*boolean* $implicitFlush)
 
 Set the if the output must be implictly flushed to the output or returned as string
 
@@ -93,7 +93,14 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message)
 
-Outputs a message formatting it with HTML
+Outputs a message formatting it with HTML 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->outputMessage('error', $message);
+
 
 
 

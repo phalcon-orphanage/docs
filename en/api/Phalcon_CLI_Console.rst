@@ -79,7 +79,7 @@ Return the modules registered in the console
 
 
 
-public *mixed*  **handle** (*array* $arguments)
+public *mixed*  **handle** ([*array* $arguments])
 
 Handle the whole command-line tasks
 

@@ -7,7 +7,7 @@ Generates a SELECT html tag using a static array of values or a Phalcon\\Mvc\\Mo
 Methods
 ---------
 
-public static  **selectField** (*array* $parameters, *array* $data)
+public static  **selectField** (*array* $parameters, [*array* $data])
 
 Generates a SELECT tag
 

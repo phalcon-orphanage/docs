@@ -10,9 +10,10 @@ Helps to create PHQL queries using an OO interface
     <?php
 
     $resultset = $this->modelsManager->createBuilder()
-       >join('RobotsParts');
-       ->limit(20);
-       ->order('Robots.name')
+       ->from('Robots')
+       ->join('RobotsParts')
+       ->limit(20)
+       ->orderBy('Robots.name')
        ->getQuery()
        ->execute();
 
@@ -21,7 +22,7 @@ Helps to create PHQL queries using an OO interface
 Methods
 ---------
 
-public  **__construct** (*array* $params)
+public  **__construct** ([*array* $params])
 
 
 
@@ -71,7 +72,7 @@ Sets the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, *string* $alias)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias])
 
 Add a model to take part of the query 
 
@@ -90,7 +91,7 @@ Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, *string* $conditions, *string* $alias)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a join to the query 
 
@@ -131,6 +132,7 @@ Sets a ORDER BY condition clause
     <?php
 
     $builder->orderBy('Robots.name');
+    $builder->orderBy(array('1', 'Robots.name'));
 
 
 
@@ -143,7 +145,7 @@ Return the set ORDER BY clause
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **having** (*string* $having)
 
-Sets a HAVING condition clause 
+Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
 
 .. code-block:: php
 
@@ -160,7 +162,7 @@ Return the columns to be queried
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*int* $limit, *int* $offset)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*int* $limit, [*int* $offset])
 
 Sets a LIMIT clause, optionally a offset clause 
 
@@ -169,6 +171,7 @@ Sets a LIMIT clause, optionally a offset clause
     <?php
 
     $builder->limit(100);
+    $builder->limit(100, 20);
 
 
 

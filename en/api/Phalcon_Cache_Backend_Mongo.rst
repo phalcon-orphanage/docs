@@ -34,7 +34,7 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\Mongo constructor
 
@@ -46,13 +46,13 @@ Returns a MongoDb collection based on the backend parameters
 
 
 
-public *mixed*  **get** (*int|string* $keyName, *long* $lifetime)
+public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
 
 Returns a cached content
 
 
 
-public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the Mongo backend and stops the frontend
 
@@ -64,25 +64,25 @@ Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** (*string* $prefix)
+public *array*  **queryKeys** ([*string* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
+public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **start** (*int|string* $keyName, *unknown* $lifetime) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
 
 
 
-public  **stop** (*boolean* $stopBuffer) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*boolean* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 

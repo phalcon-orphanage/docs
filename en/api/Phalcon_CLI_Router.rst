@@ -42,7 +42,7 @@ Sets the name of the default module
 
 
 
-public  **setDefaultTask** (*unknown* $taskName)
+public  **setDefaultTask** (*string* $taskName)
 
 Sets the default controller name
 
@@ -54,7 +54,7 @@ Sets the default action name
 
 
 
-public  **handle** (*array* $arguments)
+public  **handle** ([*array* $arguments])
 
 Handles routing information received from command-line arguments
 

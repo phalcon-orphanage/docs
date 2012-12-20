@@ -52,7 +52,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*array* $options)
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\Model\\MetaData\\Apc constructor
 

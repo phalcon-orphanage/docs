@@ -53,7 +53,7 @@ Allows to cache output fragments captured with ob_* functions
 Methods
 ---------
 
-public  **__construct** (*array* $frontendOptions)
+public  **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Output constructor
 

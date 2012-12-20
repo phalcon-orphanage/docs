@@ -7,19 +7,19 @@ This class implements common functionality for backend adapters. A backend cache
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*int|string* $keyName, *unknown* $lifetime)
+public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
 
 Starts a cache. The $keyname allows to identify the created fragment
 
 
 
-public  **stop** (*boolean* $stopBuffer)
+public  **stop** ([*boolean* $stopBuffer])
 
 Stops the frontend without store any cached content
 

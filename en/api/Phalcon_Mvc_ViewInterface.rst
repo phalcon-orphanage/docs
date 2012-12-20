@@ -31,7 +31,7 @@ Sets the render level for the view
 
 
 
-abstract public  **setMainView** (*unknown* $viewPath)
+abstract public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory
 
@@ -109,7 +109,7 @@ Register templating engines
 
 
 
-abstract public  **render** (*string* $controllerName, *string* $actionName, *array* $params)
+abstract public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data
 
@@ -139,7 +139,7 @@ Returns the cache instance used to cache
 
 
 
-abstract public  **cache** (*boolean|array* $options)
+abstract public  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level
 

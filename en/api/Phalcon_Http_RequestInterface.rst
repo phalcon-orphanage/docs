@@ -7,19 +7,19 @@ Phalcon\\Http\\RequestInterface initializer
 Methods
 ---------
 
-abstract public *mixed*  **get** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+abstract public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getPost** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+abstract public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getQuery** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+abstract public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed
 
@@ -109,7 +109,7 @@ Gets information about schema, host and port used by the request
 
 
 
-abstract public *string*  **getClientAddress** (*boolean* $trustForwardedHeader)
+abstract public *string*  **getClientAddress** ([*boolean* $trustForwardedHeader])
 
 Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 

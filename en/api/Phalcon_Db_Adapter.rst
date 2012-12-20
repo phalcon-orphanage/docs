@@ -27,7 +27,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes)
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -46,7 +46,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes)
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -69,7 +69,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields, *array* $dataTypes)
+public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -90,7 +90,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition, *array* $dataTypes)
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -112,7 +112,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders, *array* $dataTypes)
+public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -151,7 +151,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
+public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -164,7 +164,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public *string*  **viewExists** (*string* $viewName, *string* $schemaName)
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -195,7 +195,7 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
 
 Drops a table from a schema/database
 
@@ -261,7 +261,7 @@ Returns the SQL column definition from a column
 
 
 
-public *array*  **listTables** (*string* $schemaName)
+public *array*  **listTables** ([*string* $schemaName])
 
 List all tables on a database 
 

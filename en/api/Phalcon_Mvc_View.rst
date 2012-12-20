@@ -43,7 +43,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*array* $options)
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View constructor
 
@@ -100,7 +100,7 @@ Sets the render level for the view
 
 
 
-public  **setMainView** (*unknown* $viewPath)
+public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
 
@@ -215,7 +215,7 @@ Register templating engines
 
 
 
-public  **render** (*string* $controllerName, *string* $actionName, *array* $params)
+public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data 
 
@@ -287,7 +287,7 @@ Returns the cache instance used to cache
 
 
 
-public  **cache** (*boolean|array* $options)
+public  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level
 

@@ -11,7 +11,7 @@ All the template engine adapters must inherit this class. This provides basic in
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\View\\Engine constructor
 

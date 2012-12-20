@@ -9,7 +9,7 @@ Provide OO wrappers to manage a HTTP cookie
 Methods
 ---------
 
-public  **__construct** (*string* $name, *mixed* $value, *int* $expire, *string* $path)
+public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path])
 
 Phalcon\\Http\\Cookie constructor
 
@@ -33,7 +33,7 @@ Sets the cookie's value
 
 
 
-public *mixed*  **getValue** (*unknown* $filters, *unknown* $defaultValue)
+public *mixed*  **getValue** ([*string|array* $filters], [*string* $defaultValue])
 
 Returns the cookie's value
 
@@ -51,7 +51,7 @@ Returns the current expiration time
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*unknown* $path)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*string* $path)
 
 Sets the cookie's expiration time
 

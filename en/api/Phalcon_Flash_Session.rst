@@ -41,25 +41,25 @@ Adds a message to the session flasher
 
 
 
-public *array*  **getMessages** (*string* $type, *boolean* $remove)
+public *array*  **getMessages** ([*string* $type], [*boolean* $remove])
 
 Returns the messages in the session flasher
 
 
 
-public  **output** (*boolean* $remove)
+public  **output** ([*boolean* $remove])
 
 Prints the messages in the session flasher
 
 
 
-public  **__construct** (*array* $cssClasses) inherited from Phalcon\\Flash
+public  **__construct** ([*array* $cssClasses]) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
 Set the if the output must be implictly flushed to the output or returned as string
 
@@ -131,7 +131,14 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
 
-Outputs a message formatting it with HTML
+Outputs a message formatting it with HTML 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->outputMessage('error', $message);
+
 
 
 

@@ -7,7 +7,7 @@ Phalcon\\Mvc\\ModelInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $managerService, *string* $dbService)
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*string* $managerService], [*string* $dbService])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -55,49 +55,49 @@ Assigns values to a model from an array returning a new model
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** (*array* $parameters)
+abstract public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **findFirst** (*array* $parameters)
+abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **query** (*unknown* $dependencyInjector)
+abstract public static :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Create a criteria for a especific model
 
 
 
-abstract public static *int*  **count** (*array* $parameters)
+abstract public static *int*  **count** ([*array* $parameters])
 
 Allows to count how many records match the specified conditions
 
 
 
-abstract public static *double*  **sum** (*array* $parameters)
+abstract public static *double*  **sum** ([*array* $parameters])
 
 Allows to a calculate a summatory on a column that match the specified conditions
 
 
 
-abstract public static *mixed*  **maximum** (*array* $parameters)
+abstract public static *mixed*  **maximum** ([*array* $parameters])
 
 Allows to get the maximum value of a column that match the specified conditions
 
 
 
-abstract public static *mixed*  **minimum** (*array* $parameters)
+abstract public static *mixed*  **minimum** ([*array* $parameters])
 
 Allows to get the minimum value of a column that match the specified conditions
 
 
 
-abstract public static *double*  **average** (*array* $parameters)
+abstract public static *double*  **average** ([*array* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions
 
@@ -121,19 +121,19 @@ Returns all the validation messages
 
 
 
-abstract public *boolean*  **save** (*array* $data)
+abstract public *boolean*  **save** ([*array* $data])
 
 Inserts or updates a model instance. Returning true on success or false otherwise.
 
 
 
-abstract public *boolean*  **create** (*array* $data)
+abstract public *boolean*  **create** ([*array* $data])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.
 
 
 
-abstract public *boolean*  **update** (*array* $data)
+abstract public *boolean*  **update** ([*array* $data])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise.
 
@@ -163,7 +163,7 @@ Writes an attribute value by its name
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $modelName, *array* $arguments)
+abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $modelName, [*array* $arguments])
 
 Returns related records based on defined relations
 

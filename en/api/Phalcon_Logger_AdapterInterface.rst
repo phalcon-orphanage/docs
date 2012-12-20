@@ -37,7 +37,7 @@ Returns the internal date format
 
 
 
-abstract public  **log** (*string* $message, *int* $type)
+abstract public  **log** (*string* $message, [*int* $type])
 
 Sends/Writes messages to the file log
 

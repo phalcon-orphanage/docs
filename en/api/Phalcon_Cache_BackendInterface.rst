@@ -7,19 +7,19 @@ Phalcon\\Cache\\BackendInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
+abstract public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-abstract public *mixed*  **start** (*int|string* $keyName, *long* $lifetime)
+abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
 
 Starts a cache. The $keyname allows to identify the created fragment
 
 
 
-abstract public  **stop** (*boolean* $stopBuffer)
+abstract public  **stop** ([*boolean* $stopBuffer])
 
 Stops the frontend without store any cached content
 
@@ -61,13 +61,13 @@ Gets the last key stored by the cache
 
 
 
-abstract public *mixed*  **get** (*int|string* $keyName, *long* $lifetime)
+abstract public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
 
 Returns a cached content
 
 
 
-abstract public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+abstract public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
@@ -79,13 +79,13 @@ Deletes a value from the cache by its key
 
 
 
-abstract public *array*  **queryKeys** (*string* $prefix)
+abstract public *array*  **queryKeys** ([*string* $prefix])
 
 Query the existing cached keys
 
 
 
-abstract public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
+abstract public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
 

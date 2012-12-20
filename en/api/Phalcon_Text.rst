@@ -46,7 +46,7 @@ Uncamelize strings which are camelized
 
 
 
-public static *string*  **increment** (*string* $str, *string* $separator)
+public static *string*  **increment** (*string* $str, [*string* $separator])
 
 Adds a number to a string or increment that number if it already is defined 
 
@@ -60,7 +60,7 @@ Adds a number to a string or increment that number if it already is defined
 
 
 
-public static *string*  **random** (*int* $type, *int* $length)
+public static *string*  **random** (*int* $type, [*int* $length])
 
 Generates a random string based on the given type. Type is one of the RANDOM_* constants 
 
@@ -73,7 +73,7 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 
 
-public static  **startsWith** (*unknown* $str, *unknown* $start, *unknown* $ignoreCase)
+public static  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
 
 Check if a string starts with a given string 
 
@@ -88,7 +88,7 @@ Check if a string starts with a given string
 
 
 
-public static  **endsWith** (*unknown* $str, *unknown* $start, *unknown* $ignoreCase)
+public static  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
 
 Check if a string ends with a given string 
 

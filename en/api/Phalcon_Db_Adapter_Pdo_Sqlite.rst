@@ -22,13 +22,13 @@ Specific functions for the Sqlite database system
 Methods
 ---------
 
-public *boolean*  **connect** (*array* $descriptor)
+public *boolean*  **connect** ([*array* $descriptor])
 
 This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection.
 
 
 
-public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, *string* $schema)
+public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, [*string* $schema])
 
 Returns an array of Phalcon\\Db\\Column objects describing a table 
 
@@ -41,13 +41,13 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, *string* $schema)
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes
 
 
 
-public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, *string* $schema)
+public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema])
 
 Lists table references
 
@@ -61,11 +61,19 @@ Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Executes a prepared statement binding
+Executes a prepared statement binding. This function uses integer indexes starting from zero 
+
+.. code-block:: php
+
+    <?php
+
+     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
+     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
@@ -80,7 +88,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, *unknown* $bindParams, *unknown* $bindTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
 
@@ -111,37 +119,81 @@ Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by
 
 public *boolean*  **close** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
+Closes active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
 
 
 public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a column/table/schema name
+Escapes a column/table/schema name 
+
+.. code-block:: php
+
+    <?php
+
+    $escapedTable = $connection->escapeIdentifier('robots');
+
 
 
 
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a value to avoid SQL injections
+Escapes a value to avoid SQL injections 
+
+.. code-block:: php
+
+    <?php
+
+    $escapedStr = $connection->escapeString('some dangerous value');
 
 
 
-public  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Bind params to a SQL statement
+public *string*  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Manually bind params to a SQL statement 
+
+.. code-block:: php
+
+    <?php
+
+    $sql = $connection->bindParams('SELECT * FROM robots WHERE name = ?0', array('Bender'));
+      echo $sql; // SELECT * FROM robots WHERE name = 'Bender'
+
 
 
 
 public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Converts bound params such as :name: or ?1 into PDO bind params ?
+Converts bound params such as :name: or ?1 into PDO bind params ? 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->convertBoundParams('SELECT * FROM robots WHERE name = :name:', array('Bender')));
 
 
 
-public *int*  **lastInsertId** (*string* $sequenceName) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns insert id for the auto_increment column inserted in the last SQL statement
+public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Returns insert id for the auto_increment/serial column inserted in the last SQL statement 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Getting the generated id
+     $id = $connection->lastInsertId();
+
 
 
 
@@ -165,7 +217,15 @@ Commits the active transaction in the connection
 
 public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Checks whether connection is under database transaction
+Checks whether connection is under database transaction 
+
+.. code-block:: php
+
+    <?php
+
+     $connection->begin();
+     var_dump($connection->isUnderTransaction()); //true
+
 
 
 
@@ -175,15 +235,34 @@ Return internal PDO handler
 
 
 
-public *array*  **tableOptions** (*string* $tableName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Gets creation options from a table
+Gets creation options from a table 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->tableOptions('robots'));
+
 
 
 
 public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Return the default identity value to insert in an identity column
+Return the default identity value to insert in an identity column 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot with a valid default value for the column 'id'
+     $success = $connection->insert(
+         "robots",
+         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
+         array("id", "name", "year")
+     );
+
 
 
 
@@ -205,7 +284,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -224,7 +303,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 
@@ -247,7 +326,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -268,7 +347,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -290,7 +369,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -329,7 +408,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public *string*  **tableExists** (*string* $tableName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter
+public *string*  **tableExists** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -342,7 +421,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public *string*  **viewExists** (*string* $viewName, *string* $schemaName) inherited from Phalcon\\Db\\Adapter
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -373,7 +452,7 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
 
 Drops a table from a schema/database
 
@@ -439,7 +518,7 @@ Returns the SQL column definition from a column
 
 
 
-public *array*  **listTables** (*string* $schemaName) inherited from Phalcon\\Db\\Adapter
+public *array*  **listTables** ([*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
 List all tables on a database 
 

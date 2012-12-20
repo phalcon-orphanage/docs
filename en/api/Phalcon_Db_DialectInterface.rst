@@ -103,43 +103,43 @@ Generates SQL to create a table
 
 
 
-abstract public  **dropTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $ifExists)
+abstract public *string*  **dropTable** (*string* $tableName, *string* $schemaName)
 
 Generates SQL to drop a table
 
 
 
-abstract public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
+abstract public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table
 
 
 
-abstract public *string*  **describeColumns** (*string* $table, *string* $schema)
+abstract public *string*  **describeColumns** (*string* $table, [*string* $schema])
 
 Generates SQL to describe a table
 
 
 
-abstract public *array*  **listTables** (*string* $schemaName)
+abstract public *array*  **listTables** ([*string* $schemaName])
 
 List all tables on database
 
 
 
-abstract public *string*  **describeIndexes** (*string* $table, *string* $schema)
+abstract public *string*  **describeIndexes** (*string* $table, [*string* $schema])
 
 Generates SQL to query indexes on a table
 
 
 
-abstract public *string*  **describeReferences** (*string* $table, *string* $schema)
+abstract public *string*  **describeReferences** (*string* $table, [*string* $schema])
 
 Generates SQL to query foreign keys on a table
 
 
 
-abstract public *string*  **tableOptions** (*string* $table, *string* $schema)
+abstract public *string*  **tableOptions** (*string* $table, [*string* $schema])
 
 Generates the SQL to describe the table creation options
 

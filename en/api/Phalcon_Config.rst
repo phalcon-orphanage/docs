@@ -29,13 +29,13 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 Methods
 ---------
 
-public  **__construct** (*array* $arrayConfig)
+public  **__construct** ([*array* $arrayConfig])
 
 Phalcon\\Config constructor
 
 
 
-public  **offsetExists** (*unknown* $index)
+public *boolean*  **offsetExists** (*string* $index)
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -48,7 +48,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public  **get** (*unknown* $index, *unknown* $defaultValue)
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -61,7 +61,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public  **offsetGet** (*unknown* $index)
+public *string*  **offsetGet** (*string* $index)
 
 Gets an attribute using the array-syntax 
 
@@ -74,7 +74,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value)
+public  **offsetSet** (*string* $index, *mixed* $value)
 
 Sets an attribute using the array-syntax 
 
@@ -87,7 +87,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*unknown* $index)
+public  **offsetUnset** (*string* $index)
 
 Unsets an attribute using the array-syntax 
 

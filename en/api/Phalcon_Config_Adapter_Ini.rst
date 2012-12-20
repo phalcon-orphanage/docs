@@ -44,7 +44,7 @@ Phalcon\\Config\\Adapter\\Ini constructor
 
 
 
-public  **offsetExists** (*unknown* $index) inherited from Phalcon\\Config
+public *boolean*  **offsetExists** (*string* $index) inherited from Phalcon\\Config
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -57,7 +57,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public  **get** (*unknown* $index, *unknown* $defaultValue) inherited from Phalcon\\Config
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue]) inherited from Phalcon\\Config
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -70,7 +70,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public  **offsetGet** (*unknown* $index) inherited from Phalcon\\Config
+public *string*  **offsetGet** (*string* $index) inherited from Phalcon\\Config
 
 Gets an attribute using the array-syntax 
 
@@ -83,7 +83,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*string* $index, *mixed* $value) inherited from Phalcon\\Config
 
 Sets an attribute using the array-syntax 
 
@@ -96,7 +96,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*unknown* $index) inherited from Phalcon\\Config
+public  **offsetUnset** (*string* $index) inherited from Phalcon\\Config
 
 Unsets an attribute using the array-syntax 
 

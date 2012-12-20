@@ -18,7 +18,7 @@ This class reads and compiles Volt templates into PHP plain code
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view)
+public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view])
 
 
 
@@ -119,7 +119,7 @@ Compiles a Volt source code returning a PHP plain version
 
 
 
-public *string*  **compileString** (*string* $viewCode, *boolean* $extendsMode)
+public *string*  **compileString** (*string* $viewCode, [*boolean* $extendsMode])
 
 Compiles a template into a string 
 
@@ -132,7 +132,7 @@ Compiles a template into a string
 
 
 
-public *string|array*  **compileFile** (*string* $path, *string* $compiledPath, *boolean* $extendsMode)
+public *string|array*  **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
 
 Compiles a template into a file forcing the destination path 
 
@@ -145,7 +145,7 @@ Compiles a template into a file forcing the destination path
 
 
 
-public *string|array*  **compile** (*string* $templatePath, *boolean* $extendsMode)
+public *string|array*  **compile** (*string* $templatePath, [*boolean* $extendsMode])
 
 Compiles a template into a file applying the compiler options 
 

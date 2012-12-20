@@ -25,7 +25,7 @@ Setter of values
 
 
 
-abstract public *mixed*  **get** (*string* $property, *mixed* $defaultValue)
+abstract public *mixed*  **get** (*string* $property, [*mixed* $defaultValue])
 
 Getter of values
 

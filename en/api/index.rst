@@ -76,6 +76,7 @@ API Indice
    Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
+   Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
    Phalcon_Logger

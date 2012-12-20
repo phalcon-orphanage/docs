@@ -17,7 +17,7 @@ Phalcon\\DI\\FactoryDefault constructor
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, *boolean* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, [*boolean* $shared]) inherited from Phalcon\\DI
 
 Registers a service in the services container
 
@@ -35,9 +35,15 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, *unknown* $shared) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, [*boolean* $shared]) inherited from Phalcon\\DI
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+
+
+
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
+
+Sets a service using a raw Phalcon\\DI\\Service definition
 
 
 
@@ -47,19 +53,19 @@ Returns a service definition without resolving
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*string* $name) inherited from Phalcon\\DI
 
 Returns a Phalcon\\DI\\Service instance
 
 
 
-public *mixed*  **get** (*string* $name, *array* $parameters) inherited from Phalcon\\DI
+public *mixed*  **get** (*string* $name, [*array* $parameters]) inherited from Phalcon\\DI
 
 Resolves the service based on its configuration
 
 
 
-public *mixed*  **getShared** (*string* $name, *array* $parameters) inherited from Phalcon\\DI
+public *mixed*  **getShared** (*string* $name, [*array* $parameters]) inherited from Phalcon\\DI
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
@@ -83,7 +89,7 @@ Return the services registered in the DI
 
 
 
-public *mixed*  **__call** (*string* $method, *array* $arguments) inherited from Phalcon\\DI
+public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\DI
 
 Magic method to get or set services using setters/getters
 

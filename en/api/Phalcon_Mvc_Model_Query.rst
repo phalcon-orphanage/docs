@@ -37,7 +37,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*string* $phql)
+public  **__construct** ([*string* $phql])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -199,7 +199,7 @@ Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\
 
 
 
-public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
+public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 

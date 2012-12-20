@@ -48,7 +48,7 @@ This component encapsulates all the complex operations behind instantiating ever
 Methods
 ---------
 
-public  **registerModules** (*array* $modules, *boolean* $merge)
+public  **registerModules** (*array* $modules, [*boolean* $merge])
 
 Register an array of modules present in the application 
 
@@ -76,7 +76,7 @@ Return the modules registered in the application
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** (*string* $uri)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*string* $uri])
 
 Handles a MVC request
 

@@ -90,7 +90,7 @@ Returns the internal router used by the application
 
 
 
-public *object*  **getService** (*unknown* $serviceName)
+public *object*  **getService** (*string* $serviceName)
 
 Obtains a service from the DI
 
@@ -102,7 +102,7 @@ Obtains a shared service from the DI
 
 
 
-public *mixed*  **handle** (*string* $uri)
+public *mixed*  **handle** ([*string* $uri])
 
 Handle the whole request
 

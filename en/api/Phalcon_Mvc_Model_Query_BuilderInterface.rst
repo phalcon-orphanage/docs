@@ -7,7 +7,7 @@ Phalcon\\Mvc\\Model\\Query\\BuilderInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*array* $params)
+abstract public  **__construct** ([*array* $params])
 
 Phalcon\\Mvc\\Model\\Query\\Builder
 
@@ -43,7 +43,7 @@ Sets the models who makes part of the query
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **addFrom** (*string* $model, *string* $alias)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **addFrom** (*string* $model, [*string* $alias])
 
 Add a model to take part of the query
 
@@ -55,7 +55,7 @@ Return the models who makes part of the query
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **join** (*string* $model, *string* $conditions, *string* $alias)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a INNER join to the query
 
@@ -97,7 +97,7 @@ Returns the HAVING condition clause
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **limit** (*int* $limit, *int* $offset)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **limit** (*int* $limit, [*int* $offset])
 
 Sets a LIMIT clause
 

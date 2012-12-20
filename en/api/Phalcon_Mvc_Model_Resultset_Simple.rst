@@ -11,7 +11,7 @@ Simple resultsets only contains a complete object. This class builds every compl
 Methods
 ---------
 
-public  **__construct** (*unknown* $columnMap, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache)
+public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, [:doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 

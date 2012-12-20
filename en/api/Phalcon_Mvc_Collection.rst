@@ -20,7 +20,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 
 
@@ -285,7 +285,7 @@ Find a document by its id
 
 
 
-public static *array*  **findFirst** (*array* $parameters)
+public static *array*  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -313,7 +313,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static *array*  **find** (*array* $parameters)
+public static *array*  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -353,7 +353,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static *array*  **count** (*array* $parameters)
+public static *array*  **count** ([*array* $parameters])
 
 Perform a count over a collection
 

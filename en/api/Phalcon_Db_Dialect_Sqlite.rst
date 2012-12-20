@@ -83,31 +83,31 @@ Generates SQL to create a table in PostgreSQL
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
 
 Generates SQL to drop a table
 
 
 
-public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
+public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
 
 
 
-public *string*  **describeColumns** (*string* $table, *string* $schema)
+public *string*  **describeColumns** (*string* $table, [*string* $schema])
 
 Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
 
 
 
-public *array*  **listTables** (*string* $schemaName)
+public *array*  **listTables** ([*string* $schemaName])
 
 List all tables on database <code>print_r($dialect->listTables("blog") ?>
 
 
 
-public *string*  **describeIndexes** (*string* $table, *string* $schema)
+public *string*  **describeIndexes** (*string* $table, [*string* $schema])
 
 Generates SQL to query indexes on a table
 
@@ -119,13 +119,13 @@ Generates SQL to query indexes detail on a table
 
 
 
-public *string*  **describeReferences** (*string* $table, *string* $schema)
+public *string*  **describeReferences** (*string* $table, [*string* $schema])
 
 Generates SQL to query foreign keys on a table
 
 
 
-public *string*  **tableOptions** (*string* $table, *string* $schema)
+public *string*  **tableOptions** (*string* $table, [*string* $schema])
 
 Generates the SQL to describe the table creation options
 
@@ -133,19 +133,43 @@ Generates the SQL to describe the table creation options
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
 
-Generates the SQL for LIMIT clause
+Generates the SQL for LIMIT clause 
+
+.. code-block:: php
+
+    <?php
+
+     $sql = $dialect->limit('SELECT * FROM robots', 10);
+     echo $sql; // SELECT * FROM robots LIMIT 10
+
 
 
 
 public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause 
+
+.. code-block:: php
+
+    <?php
+
+     $sql = $dialect->forUpdate('SELECT * FROM robots');
+     echo $sql; // SELECT * FROM robots FOR UPDATE
+
 
 
 
 public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a LOCK IN SHARE MODE clause 
+
+.. code-block:: php
+
+    <?php
+
+     $sql = $dialect->sharedLock('SELECT * FROM robots');
+     echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+
 
 
 
@@ -155,13 +179,13 @@ Gets a list of columns
 
 
 
-public *string*  **getSqlExpression** (*array* $expression, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+public *string*  **getSqlExpression** (*array* $expression, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
-Transform an intermediate representation for a expression into a database system valid expression
+Transforms an intermediate representation for a expression into a database system valid expression
 
 
 
-public *string*  **getSqlTable** (*unknown* $table, *string* $escapeChar) inherited from Phalcon\\Db\\Dialect
+public *string*  **getSqlTable** (*array* $table, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Transform an intermediate representation for a schema/table into a database system valid expression
 

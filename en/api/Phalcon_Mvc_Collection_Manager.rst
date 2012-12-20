@@ -26,13 +26,15 @@ Phalcon\\Mvc\\Collection\\Manager constructor
 
 
 
-public  **isInitialized** (*unknown* $collection)
+public *boolean*  **isInitialized** (*string* $collection)
 
-...
+Check if a collection is already initialized
 
 
-public  **initialize** ()
 
-...
+public  **initialize** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $collection)
+
+Initialize a model globally
+
 
 

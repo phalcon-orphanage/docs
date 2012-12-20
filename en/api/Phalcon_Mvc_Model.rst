@@ -38,7 +38,7 @@ Constants
 Methods
 ---------
 
-final public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $managerService, *string* $dbService)
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*string* $managerService], [*string* $dbService])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -155,7 +155,7 @@ Gets the internal database connection
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, *boolean* $forceExists)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*boolean* $forceExists])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -172,7 +172,7 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *boolean* $forceExists)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*boolean* $forceExists])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -189,7 +189,7 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** (*array* $parameters)
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -220,7 +220,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** (*array* $parameters)
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -243,7 +243,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** (*unknown* $dependencyInjector)
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Create a criteria for a especific model
 
@@ -261,7 +261,7 @@ Generate a PHQL SELECT statement for an aggregate
 
 
 
-public static *int*  **count** (*array* $parameters)
+public static *int*  **count** ([*array* $parameters])
 
 Allows to count how many records match the specified conditions 
 
@@ -280,7 +280,7 @@ Allows to count how many records match the specified conditions
 
 
 
-public static *double*  **sum** (*array* $parameters)
+public static *double*  **sum** ([*array* $parameters])
 
 Allows to calculate a summatory on a column that match the specified conditions 
 
@@ -299,7 +299,7 @@ Allows to calculate a summatory on a column that match the specified conditions
 
 
 
-public static *mixed*  **maximum** (*array* $parameters)
+public static *mixed*  **maximum** ([*array* $parameters])
 
 Allows to get the maximum value of a column that match the specified conditions 
 
@@ -318,7 +318,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 
 
-public static *mixed*  **minimum** (*array* $parameters)
+public static *mixed*  **minimum** ([*array* $parameters])
 
 Allows to get the minimum value of a column that match the specified conditions 
 
@@ -337,7 +337,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 
 
-public static *double*  **average** (*array* $parameters)
+public static *double*  **average** ([*array* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions 
 
@@ -517,7 +517,7 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-public *boolean*  **save** (*array* $data)
+public *boolean*  **save** ([*array* $data])
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -540,7 +540,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public *boolean*  **create** (*array* $data)
+public *boolean*  **create** ([*array* $data])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -566,7 +566,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
 
 
-public *boolean*  **update** (*array* $data)
+public *boolean*  **update** ([*array* $data])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -758,7 +758,7 @@ Setup a relation 1-n between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, *array* $arguments)
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
 
@@ -770,7 +770,7 @@ Returns related records defined relations depending on the method name
 
 
 
-public *mixed*  **__call** (*string* $method, *array* $arguments)
+public *mixed*  **__call** (*string* $method, [*array* $arguments])
 
 Handles methods when a method does not exist
 
@@ -788,8 +788,15 @@ Unserializes the object from a serialized string
 
 
 
-public  **dump** ()
+public *array*  **dump** ()
 
-...
+Returns a simple representation of the object that can be used with var_dump
+
+
+
+public  **__wakeup** ()
+
+This method implements the magic method wake up, this reinitializes the model using the default DI
+
 
 
