@@ -1,19 +1,19 @@
-Volt: Template Engine
+Volt模板引擎
 =====================
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
+Volt是一个超快速和设计者友好的模板语言，C语言编写的PHP。它为您提供了一套
+助理写一个简单的方法的意见。伏法尔康与其他组件的高度集成，
+就像你可以使用它作为一个独立的组件在你的应用程序中。
+
+Volt是一种用C语言编写的超快速并且设计友好的PHP模板引擎，它为你提供了一套很方便的视图助手。Volt与其他的组件高度集成，就像你可以在应用程序中单独使用它一样。
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Twig_, originally created by Armin Ronacher, which in turn is inspired in Jinja_.
-Therefore many developers will be in familiar ground using the same syntax they have been using
-with Twig. Volt’s syntax and features have been enhanced with more elements and of course
-with the performance that developers have been accustomed to while working with Phalcon.
+Volt的灵感来源于 Twig_ 。最初由Armin Ronacher创建，而它则是受 Jinja_ 的启发。
+因此，许多已经在使用Twig的开发人员将熟练的使用相同的语法。Volt的语法和功能更为强大，更多的元素以及更强的性能。
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Volt被编译成PHP代码，因此基本上省却了手动编写PHP代码，实现了业务逻辑与视图分离：
 
 .. code-block:: html+jinja
 
@@ -30,10 +30,9 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
     {% endblock %}
 
-Activating Volt
+激活 Volt
 ---------------
-As other template engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+作为一种模板引擎，你需要把Volt注册到视图组件，并设置一个扩展名称或者使用默认的扩展名 .phtml ：
 
 .. code-block:: php
 
@@ -53,7 +52,7 @@ reusing the standard .phtml:
         return $view;
     });
 
-Use the standard ".phtml" extension:
+使用默认的 ".phtml" 作为扩展名称：
 
 .. code-block:: php
 
@@ -63,13 +62,11 @@ Use the standard ".phtml" extension:
         ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
     ));
 
-Basic Usage
------------
-A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
-prints the result of a expression to the template.
+基本使用方法
+-----------------------
+Volt的代码是由PHP和HTML构成。Volt中有一组特殊的分隔符，{% ... %} 用来执行循环语句或条件判断等，赋值语句使用 {{ ... }}。
 
-Below is a minimal template that illustrates a few basics:
+下面是一个小示例，用于说明一些基本的功能：
 
 .. code-block:: html+jinja
 
@@ -98,8 +95,7 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using Phalcon\\Mvc\\View::setVar you can pass variables from the controller to the views.
-In the previous example, three variables were passed to the view: title, menu and post:
+你可以使用 Phalcon\\Mvc\\View::setVar 把控制器中的变量传递到视图中。在前面的例子中，有三个变量传递到视图中：title, menu 和 post ：
 
 .. code-block:: php
 
@@ -122,20 +118,18 @@ In the previous example, three variables were passed to the view: title, menu an
 
     }
 
-Variables
+变量
 ---------
-Variables may have attributes, those can be accessed using the syntax: foo.bar. If you are
-passing arrays, you can access using the curly braces syntax: foo['bar']
+变量可以有属性，可以通过使用语法访问他们，如：foo.bar。如果它们是数组，你可以使用 foo['bar'] 的方式访问：
 
 .. code-block:: jinja
 
     {{ post.title }}
     {{ post['title'] }}
 
-Filters
+过滤器
 -------
-Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
-variables:
+变量可以使用过滤器格式化或修改，管道操作符 "|" 用于接收过滤器过滤变量：
 
 .. code-block:: jinja
 
@@ -143,7 +137,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+以下列表是Volt内置的过滤器：
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -175,9 +169,9 @@ The following is the list of available built-in filters in Volt:
 | json_encode          | Converts a value into its JSON_ representation                               |
 +----------------------+------------------------------------------------------------------------------+
 
-Comments
+注释
 --------
-Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
+在Volt模板中可以使用 {# ... #} 分隔符添加注释，他们内部的所有文字将被忽略：
 
 .. code-block:: jinja
 
@@ -187,7 +181,7 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
 
 List of Control Structures
 --------------------------
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt提供了一组基本的但功能强大的控制结构：
 
 For
 ^^^
@@ -202,7 +196,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
     {% endfor %}
     </ul>
 
-for-loops can also be nested:
+for循环嵌套:
 
 .. code-block:: html+jinja
 
@@ -243,9 +237,9 @@ The else clause is also supported:
     {% endfor %}
     </ul>
 
-Assignments
+变量赋值
 -----------
-Variables may be changed in a template using the instruction "set":
+在模板文件中，可以使用 "set" 设置或改变变量的值：
 
 .. code-block:: html+jinja
 
@@ -254,7 +248,7 @@ Variables may be changed in a template using the instruction "set":
 
 Expressions
 -----------
-Volt provides a basic set of expression support, including literals and common operators:
+Volt对表达式提供了一组基本的支持，包括字符串以及常用的操作：
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -274,7 +268,9 @@ Volt provides a basic set of expression support, including literals and common o
 
 Arrays
 ^^^^^^
-Whether you're using PHP 5.3 or 5.4, you can create arrays by enclosing a list of values ​​in square brackets:
+无论你使用PHP 5.3 或 5.4，你都可以用 "[ ]" 括起来的形式来创建数组：
+
+译者注：如果在PHP文件中想用这种方式创建数组，PHP最低版本应该为PHP 5.4
 
 .. code-block:: html+jinja
 
@@ -290,9 +286,9 @@ Whether you're using PHP 5.3 or 5.4, you can create arrays by enclosing a list o
     {# Hash-style array #}
     {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 
-Math
-^^^^
-You may make calculations in templates using the following operators:
+数学计算(Math)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+你可以在模板文件中直接使用以下操作符进行计算：
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -308,9 +304,9 @@ You may make calculations in templates using the following operators:
 | \%                   | Calculate the remainder of an integer division {{ 10%3 }} returns 1          |
 +----------------------+------------------------------------------------------------------------------+
 
-Comparisions
-^^^^^^^^^^^^
-The following comparision operators are available:
+比较运算符(Comparisions)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+下面是在模板中可用的比较运算符：
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -334,8 +330,8 @@ The following comparision operators are available:
 | !==                  | Check whether both operands aren't identical                                 |
 +----------------------+------------------------------------------------------------------------------+
 
-Logic
-^^^^^
+逻辑运算符(Logic)
+^^^^^^^^^^^^^^^^^
 Logic operators are useful in the "if" expression evaluation to combine multiple tests:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -350,8 +346,8 @@ Logic operators are useful in the "if" expression evaluation to combine multiple
 | ( expr )             | Parenthesis groups expressions                                               |
 +----------------------+------------------------------------------------------------------------------+
 
-Other Operators
-^^^^^^^^^^^^^^^
+其他操作符(Other Operators)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additional operators seen the following operators are available:
 
 +----------------------+----------------------------------------------------------------------------------------------+
@@ -382,7 +378,7 @@ The following example shows how to use operators:
 
 Using Tag Helpers
 -----------------
-Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use the helpers provided by that component in a Volt template:
+Volt 高度集成  :doc:`Phalcon\\Tag <tags>`,因此你可以在Volt模板中方便的使用它们：
 
 .. code-block:: html+jinja
 
@@ -400,7 +396,7 @@ Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use t
 
     </form>
 
-The following PHP is generated:
+下面是生成的PHP代码：
 
 .. code-block:: html+php
 
@@ -418,7 +414,7 @@ The following PHP is generated:
 
     </form>
 
-To call a Phalcon\Tag helper, you only need to call an uncamelized version of the method:
+要想在Volt模板中调用  Phalcon\Tag 助手，你只需要使用它们在Volt中对应的缩写版本即可：
 
 +------------------------------------+-----------------------+
 | Method                             | Volt function         |
@@ -460,9 +456,9 @@ To call a Phalcon\Tag helper, you only need to call an uncamelized version of th
 | Phalcon\\Tag::friendlyTitle        | friendly_title        |
 +------------------------------------+-----------------------+
 
-View Integration
-----------------
-Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
+视图集成(View Integration)
+-------------------------------
+Volt 模板集成了 :doc:`Phalcon\\Mvc\\View <views>`, 你的模板层次结构和默认的层次结构一样，你可以这样使用 partials ：
 
 .. code-block:: html+jinja
 
@@ -470,10 +466,9 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
 
     {{ partial("partials/footer.volt") }}
 
-Template Inheritance
---------------------
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
-define *blocks* than can be overriden by a child template. Let's pretend that we have the following base template:
+模板继承(Template Inheritance)
+-------------------------------------------
+模板继承：你可以创建一个基础模板，其他模板继承自这个基础模板，可提高模板文件的复用性。基础模板使用 *blocks* 定义一个块，这个块可以是可以被子模板覆盖的。现在让我们假设，我们有以下的基础模板：
 
 .. code-block:: html+jinja
 
@@ -494,7 +489,7 @@ define *blocks* than can be overriden by a child template. Let's pretend that we
         </body>
     </html>
 
-From other template we could extend the base template replacing the blocks:
+其他的模板可以继承自这个基础模板，同时替换掉基础模板中的 block:
 
 .. code-block:: jinja
 
@@ -509,7 +504,7 @@ From other template we could extend the base template replacing the blocks:
         <p class="important">Welcome on my awesome homepage.</p>
     {% endblock %}
 
-Not all blocks must be replaced at a child template, only those which are needed. The final output produced will be the following:
+并非所有的 block 都需要在子模板中进行替换(意思是，你可以替换需要的那一部分)。上面的示例最终输出结果如下：
 
 .. code-block:: html
 
@@ -530,17 +525,15 @@ Not all blocks must be replaced at a child template, only those which are needed
         </body>
     </html>
 
-As partials, the path set to "extends" is a relative path under the current directory for views (i.e app/views/).
+作为一个片断，"extends" 后跟的路径是一个相对于视图存放目录的相对路径(即 app/views).
 
 .. highlights::
 
-    By default, and for performance reasons, Volt only checks for changes in the children templates,
-    so it is recommended initialize Volt with the option 'compileAlways' => true. Thus, the templates
-    are compiled always taking into account changes in the parent templates.
+    默认情况下，出于对性能的考虑，Volt只检查子模板是否有修改。因为建议在开发阶段初始时使用 'compileAlways' => true。这样的话，模板始终检查父模板是否有修改。
 
 Setting up the Volt Engine
 --------------------------
-Volt can be configured to alter its default behavior, the following example explain how to do that:
+Volt是可以通过配置改变默认的行为的，下面的例子说明如何做到这一点：
 
 .. code-block:: php
 
@@ -573,7 +566,7 @@ Volt can be configured to alter its default behavior, the following example expl
         return $view;
     });
 
-If you do not want to reuse Volt as a service you can pass an anonymous function to register the engine instead of a service name:
+如果你不重用 Volt，你可以不把它作为一个服务，而是在注册 view 服务的时候，用匿名函数的方式注册Volt模板引擎：
 
 .. code-block:: php
 
@@ -599,8 +592,7 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
         return $view;
     });
 
-
-The following options are available in Volt:
+Volt 配置选项：
 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 | Option            | Description                                                                                                                    | Default |
@@ -616,7 +608,7 @@ The following options are available in Volt:
 | compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 
-External Resources
+相关资源
 ------------------
 
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_

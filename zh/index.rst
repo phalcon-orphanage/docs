@@ -29,7 +29,7 @@ Phalcon不只是性能优越，我们的目标是让它强大而且易于使用!
 
 本文档的中文地址存放在 http://phalcon.5iunix.net
 
-Github上的地址为： https://github.com/netstu/phalcondocs ，您如果发现有些地方译的有些操蛋，烦请你clone它，并完善她。
+Github上的地址为： https://github.com/netstu/phalcondocs ，您如果发现有些地方译的有些操蛋，烦请你fork它，并完善她。
 
 目录
 -------------

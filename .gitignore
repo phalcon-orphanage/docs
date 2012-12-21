@@ -1,3 +1,4 @@
+.project
 build
 en/_build
 zh/_build
@@ -5,3 +6,8 @@ _templates
 *.komodoproject
 *.sublime-*
 .idea/
+<<<<<<< HEAD
+
+.DS_Store
+=======
+>>>>>>> 0.7.0

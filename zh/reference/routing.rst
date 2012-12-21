@@ -1,13 +1,10 @@
-Routing
-=======
-The router component allows defining routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine this information. The router has two modes: MVC
-mode and match-only mode. The first mode is ideal for working with MVC applications.
+路由器(Routing)
+=============================
+router组件允许定义用户请求对应到哪个控制器或Action。router解析 URI 以确定这些信息。路由器有两种模式：MVC模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。
 
 Defining Routes
 ---------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
-you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供了一套先进的路由功能。在MVC模式中，你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：
 
 .. code-block:: php
 
@@ -36,14 +33,9 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. Currently, the router does not execute the controller and action, it only collects this
-information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is controller/action it should to execute.
+add() 方法接收两个参数，第一个参数是一个匹配字符串，第二个参数为一组可选的路径。在这种情况下，URI  /admin/users/my-profile， "users"代表控制器，"profile"代表Ation。目前，该路由器不并不执行控制器和Action,只为组件(如： :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`) 收集信息，然后由分发器决定是否立即执行。
 
-An application can have many paths, define routes one by one can be a cumbersome task. In these cases we can
-create more flexible routes:
+应用程序可能有很多个不同的路径，如果一个一个的定义路由的话，会非常麻烦。在这种情况下，我们可以使用更灵活的方式创建route：
 
 .. code-block:: php
 
@@ -62,8 +54,7 @@ create more flexible routes:
         )
     );
 
-In the example above, using wildcards we make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) then:
+在上面的例子中，我们使用通配符来匹配路由。例如，通过访问URL (/admin/users/a/delete/dave/301) ，解析为：
 
 +------------+---------------+
 | Controller | users         |
@@ -75,17 +66,11 @@ following URL (/admin/users/a/delete/dave/301) then:
 | Parameter  | 301           |
 +------------+---------------+
 
-The method add() receives a pattern that optionally could have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used
-is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All routes patterns are case-insensitive.
+add()方法接收一个模式，可选择使用预定义占位符和正则表达式修饰符。所有的路由模式必须以斜线字符（/）开始。正则表达式语法使用与 `PCRE regular expressions`_ 相同的语法。需要注意的是，不必要添加正则表达式分隔符。所有的路由模式是不区分大小写的。
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
-parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the
-first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
+第二个参数定义了如何将匹配部分绑定到controller/action/parameters。匹配部分是占位符或团圆括号中的子模式。另外，在上述的例子中，第一个子模式匹配(:controller)，是route中控制器部分，第二个是action，等。
 
-These placeholders help writing regular expressions that are more readable for developers and easier
-to understand. The following placeholders are supported:
+这些占位符使用正则表达式，更易读，更容易为开发人员理解。支持以下占位符：
 
 +--------------+---------------------+--------------------------------------------------------------------+
 | Placeholder  | Regular Expression  | Usage                                                              |
@@ -103,8 +88,7 @@ to understand. The following placeholders are supported:
 | /:int        | /([0-9]+)           | Matches an integer parameter                                       |
 +--------------+---------------------+--------------------------------------------------------------------+
 
-Controller names are camelized, this means that characters (-) and (_) are removed and the next character
-is uppercased. For instance, some_controller is converted to SomeController.
+控制器名称采用驼峰书写规则，这意味着，字符 (-) 和 (_)将被移除，同时把下一个字符转化为大写字符。比如，some_controller被转化为SomeController。
 
 Since you can add many routes as you need using add(), the order in which you add the routes indicates
 their relevance, last routes added have more relevance than first added. Internally, all defined routes
@@ -131,9 +115,7 @@ The example below demonstrates how to define names to route parameters:
         )
     );
 
-In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced
-with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched
-by the request. Inside the controller, those named parameters can be accessed as follows:
+在上述的例子中，该路由并没有定义"controller" 和 "action"部分。这两部分被固定值("posts" 和 "show")取代。用户并不知道使用的是哪个控制器。在控制器内部，可以通过以下方式访问这些参数：
 
 .. code-block:: php
 
@@ -163,9 +145,7 @@ by the request. Inside the controller, those named parameters can be accessed as
 
     }
 
-Note that the values ​​of the parameters are obtained from the dispatcher. This happens because it is the
-component that finally interacts with the drivers of your application. Moreover, there is also another
-way to create named parameters as part of the pattern:
+请注意，上述示例中传递的参数是使用dispatcher获取的。此外，也有另一种方法来创建命名参数作为模式的一部分：
 
 .. code-block:: php
 
@@ -179,7 +159,7 @@ way to create named parameters as part of the pattern:
         )
     );
 
-You can access their values ​​in the same way as before:
+你可以按上面的例子一样的方式获取他们的值：
 
 .. code-block:: php
 
@@ -203,8 +183,7 @@ You can access their values ​​in the same way as before:
 
 Short Syntax
 ^^^^^^^^^^^^
-If you don't like using an array to define the route paths, an alternative syntax is also available.
-The following examples produce the same result:
+如果你不喜欢使用一个数组的形式来定义路由，可以使用另一种语法。下面的示例产生相同的结果：
 
 .. code-block:: php
 
@@ -244,8 +223,7 @@ are added to the route paths according to the position on which they were define
 
 Routing to Modules
 ^^^^^^^^^^^^^^^^^^
-You can define routes whose paths include modules. This is specially suitable to multi-module applications.
-It's possible define a default route that includes a module wildcard:
+你可以在路由定义中包含module，这适合多个module的应用程序。定义路由也可以使用缺省设置：
 
 .. code-block:: php
 
@@ -260,8 +238,7 @@ It's possible define a default route that includes a module wildcard:
         'params' => 4
     ));
 
-In this case, the route always must have the module name as part of the URL. For example, the following
-URL: /admin/users/edit/sonny, will be processed as:
+在这种情况下，URL部分必须包含module的名称。例如，下面的URL：/admin/users/edit/sonny,将被解析为：
 
 +------------+---------------+
 | Module     | admin         |
@@ -273,7 +250,7 @@ URL: /admin/users/edit/sonny, will be processed as:
 | Parameter  | sonny         |
 +------------+---------------+
 
-Or you can bind specific routes to specific modules:
+或者，你也可以绑定特定的module到路由上：
 
 .. code-block:: php
 
@@ -291,7 +268,7 @@ Or you can bind specific routes to specific modules:
         'action' => 1,
     ));
 
-Or bind them to specific namespaces:
+也可绑定到特定的命名空间上：
 
 .. code-block:: php
 
@@ -303,7 +280,7 @@ Or bind them to specific namespaces:
         'action' => 'index'
     ));
 
-A controller can also be a full class name:
+controller也可指定全称：
 
 .. code-block:: php
 
@@ -316,8 +293,7 @@ A controller can also be a full class name:
 
 HTTP Method Restrictions
 ^^^^^^^^^^^^^^^^^^^^^^^^
-When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
-this is especially useful when creating RESTful applications:
+当你使用add()方法添加一个路由时，该路由将应用到所有HTTP方法上。有时候，我们想要限制到一个特定的HTTP方法，比如创建一个RESTful的应用程序时：
 
 .. code-block:: php
 
@@ -334,9 +310,7 @@ this is especially useful when creating RESTful applications:
 
 Matching Routes
 ---------------
-Now we must a URI to Router in order that it check which is the defined route that matches the given URI.
-By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
-module. A couple of rewrite rules that work very well with Phalcon are:
+现在，我们需要定义一个路由，以检查定义的路由是否匹配给定的URL。默认情况下，路由的URI可以通过 $_GET['url'] 这个变量获得，Phalcon可以使用下列URL重写规则很好的工作：
 
 .. code-block:: apacheconf
 
@@ -345,7 +319,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
 
-The following example shows how to use this component:
+下面的示例将展示如果使用此组件：
 
 .. code-block:: php
 
@@ -374,9 +348,7 @@ The following example shows how to use this component:
 
 Naming Routes
 -------------
-Each route that is added to the router is stored internally as an object :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
-That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
-This is especially useful if you want to create URLs from it.
+每个被添加的路由都存储到对象 :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>` 中，这个类封装了路由的细节。例如，我们可以给应用程序中的路由设置一个唯一的名称。如果你想创建URLs,这将非常有用。
 
 .. code-block:: php
 
@@ -390,7 +362,7 @@ This is especially useful if you want to create URLs from it.
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
-Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` we can build routes from its name:
+然后，我们可以使用 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 组件通过路由的名称创建一个路由：
 
 .. code-block:: php
 
@@ -399,9 +371,9 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
     // returns /posts/2012/phalcon-1-0-released
     $url->get(array("for" => "show-posts", "year" => "2012", "title" => "phalcon-1-0-released"));
 
-Usage Examples
+用法示例
 --------------
-The following are examples of custom routes:
+下面是自定义路由的例子：
 
 .. code-block:: php
 
@@ -476,16 +448,13 @@ The following are examples of custom routes:
     );
 
 .. highlights::
-    Beware of characters allowed in regular expression for controllers and namespaces. As these
-    become class names and in turn pass through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+    请注意，因为控制器和命名空间允许使用正规表达式，因此，一些攻击都可能会反过来推导出文件系统中未经授权的文件。一个安全的正则表达式： /([a-zA-Z0-9\_\-]+)
 
 Default Behavior
 ----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
-always expects a URI that matches the following pattern: /:controller/:action/:params
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 有一个默认提供了一个非常简单的路由，总是匹配这样的模式：/:controller/:action/:params 。
 
-For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows:
+例如，对于URL *http://phalconphp.com/documentation/show/about.html* ，路由将按如下方式解析：
 
 +------------+---------------+
 | Controller | documentation |
@@ -495,7 +464,7 @@ For example, for a URL like this *http://phalconphp.com/documentation/show/about
 | Parameter  | about.html    |
 +------------+---------------+
 
-If you don't want use this routes as default in your application, you must create the router passing false as parameter:
+如果你不想在应用程序中使用路由的默认行为，你可以创建一个路由，并把false参数传递给它：
 
 .. code-block:: php
 
@@ -506,8 +475,7 @@ If you don't want use this routes as default in your application, you must creat
 
 Setting default paths
 ---------------------
-It's possible to define default values for common paths like module, controller or action. When a route is missing any of
-those paths the component could automatically fill it:
+你可以对module,controller,action设置默认值，当在路由中找不到路径时，它将自动填充它：
 
 .. code-block:: php
 
@@ -523,9 +491,11 @@ those paths the component could automatically fill it:
         "action" => "index"
     ));
 
+译者注：比如一个单module的站点，URL：http://site/，其中没有controller和action，那么默认它将访问 http://site/index/index
+
 Testing your routes
 -------------------
-Since this component has no dependencies, you can create a file as shown below to test your routes:
+由于此组件不存在依赖关系，你可以创建一个文件来测试你的路由，如下所示：
 
 .. code-block:: php
 
@@ -567,7 +537,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
 Implementing your own Router
 ----------------------------
-The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one providing by Phalcon.
+Phalcon 还提供了 :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` 接口用来实现自定义路由。
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
 
