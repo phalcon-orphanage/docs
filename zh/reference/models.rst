@@ -1,23 +1,18 @@
-Working with Models
-===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
-your application. The bulk of your application's business logic will be concentrated in the models.
+使用模型(Working with Models)
+======================================
+在应用程序中，模型是代表的是一种数据以及通过一些规则来操作这些数据，模型主要用于通过一些规则使其与数据库表进行相互操作，在大多数情况下，每个数据库表将对应到一个模型，整个应用程序的业务逻辑都会集中在模型中。
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 是应用程序中所有模型的基类，它保证了数据库的独立性，基本的CURD操作，高级的查询功能，多表关联等功能。
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 提供了SQL语句的动态转化功能，避免了直接使用SQL语句带来的安全风险。
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
-    :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
+   Models是数据库的高级抽象层，如果您需要与数据库直接打交道，你可以查看 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 组件文档。
 
-Creating Models
+创建模型
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+一个Model就是一个继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的类文件，它必须放到models文件夹目录下，一个Model文件必须是一个独立的类文件，同时它的命名采用驼蜂式的书写方法：
 
 .. code-block:: php
 
@@ -28,18 +23,13 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Destroy) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
+上面的例子是一个 "Robots"模型类，需要注意的是，类Robots继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。因为继承，该模型提供了大量的功能，包括基本的数据库CRUDCreate, Read, Update, Destroy) 操作，数据验证，先进的检索功能，并且可以同时关联多个模型。
 
 .. highlights::
 
-    If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    推荐你使用PHP5.4版本，这可以使得模型中的属性在保存到内存时，更节省内存。
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the getSource() method:
+默认情况下，模型"Robots"对应的是数据库表"robots"，如果你想手工指定映射到其他的数据库表，你可以使用 getSource() 方法：
 
 .. code-block:: php
 
@@ -55,12 +45,11 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
-The initialize() method is only called once during the request.
+此时，模型"Robots"映射到数据库表"the_robots"，initialize()方法有助于在模型中建立自定义行为，如，不同的数据表。initialize()方法在请求期间只被调用一次。
 
-Models in Namespaces
+在模型中使用命名空间
 --------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
+命名空间可以用来避免类名冲突，在这种情况下，使用getSource()方法来指定数据表名称是必要的：
 
 .. code-block:: php
 
@@ -80,8 +69,7 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
 Understanding Records To Objects
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
+每一个模型对象表示数据表中的一行数据，你可以轻松的通过读取对象的属性来访问数据。举个例子，数据表"robots"的记录如下：
 
 .. code-block:: bash
 
@@ -95,7 +83,7 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
+你可以通过数据库主键查找某条记录，然后打印出它们的名字：
 
 .. code-block:: php
 
@@ -107,7 +95,7 @@ You could find a certain record by its primary key and then print its name:
     // Prints "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+一旦记录被读取到内存中，你可以修改它的数据，然后保存更改：
 
 .. code-block:: php
 
@@ -117,13 +105,11 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
+正如你所看到的，这里没有使用原始的SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用程序提供了高度的数据库抽象。
 
-Finding Records
+查找记录
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 还提供了多种方法来查询数据记录。下面的例子将为你展示如何通过Model查询单条以及多条记录：
 
 .. code-block:: php
 
@@ -156,7 +142,7 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+你也可以使用findFirst()方法来获取给定条件下的第一条记录：
 
 .. code-block:: php
 
@@ -174,7 +160,7 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+find()和findFirst()这两个方法都接收一个关联数组作为检索条件：
 
 .. code-block:: php
 
@@ -195,7 +181,7 @@ Both find() and findFirst() methods accept an associative array specifying the s
         )
     );
 
-The available query options are:
+可用的查询选项列表：
 
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Parameter   | Description                                                                                                                                                                                      | Example                                                                 |
@@ -219,7 +205,7 @@ The available query options are:
 | cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                      | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
+如果你愿意，你也可以通过面向对象的方式创建查询，而不是使用上面讲到的关联数组的形式：
 
 .. code-block:: php
 
@@ -231,20 +217,16 @@ If you prefer, there is also available a way to create queries in an object orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+静态方法 query()返回一个 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` 的实例化对象，因此它对IDE自动提示功能非常友好。
 
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high level, object oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
+所有的查询都被进行内部处理成 :doc:`PHQL <phql>` 。PHQL是一个高层次的，面向对象的类SQL语言。这种语言为你提供更多的功能来进行查询，如与其他模型关联查询，定义分组，添加聚合等。
 
-Model Resultsets
-^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
+模型数据集(Model Resultsets)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+findFirst()方法直接返回一个类的实例对象(查询有数据返回的时候)，find()方法则返回:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的一个实例对象，这个对象是一个封装了所有功能的结果集，比如像数据遍历，寻找特定的数据记录，计数等等。
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+这些对象比标准数组更为强大，最大的优点之一是  :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 在任何时候它在内存中只保存一条记录，这极大的优化了内存管理，特别是处理大量数据的时候。
 
 .. code-block:: php
 
@@ -290,15 +272,12 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon's resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
+Phalcon数据集模拟游标的方式，你可以获取任意一行数据，只需要通过访问其位置，或者通过移动内部指针到一个特定的位置。需要注意的是，一些数据库系统并不支持游标，这将会导致每次强制重新执行，游标移动到头部，并从头到尾去查询请求位置。同理，如果一个结果集遍历多次，查询必须被执行相同的次数。
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
+大量的查询结果存储在内存中，会消耗大量的资源。resultsets are obtained
 from the database in chunks of 32 rows reducing the need for re-execute the request in several cases.
 
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
+请注意，结果集可以被序列化后存储到缓存中。:doc:`Phalcon\\Cache <cache>` 可以帮助完成这项任务。However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
 thus consuming more memory while this process takes place.
 
@@ -320,11 +299,9 @@ thus consuming more memory while this process takes place.
        echo $part->id;
     }
 
-Binding Parameters
+参数绑定
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 同样支持参数类型绑定。虽然会有比较小的性能消耗，但我们推荐你使用这种方法，因为它会清除SQL注入攻击，字符串过滤及整形数据验证等。绑定绑定，可以通过如下方式实现：
 
 .. code-block:: php
 
@@ -368,14 +345,11 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
         "bind" => $parameters
     ));
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
-and not numbers, so the placeholder could not be successfully replaced.
+当使用数字时，你可能需要定义他们为整形数字。比如 1或2， 在这种情况下，有可能是字符串"1"或"2"，而不是数字，所以这是不正确的。
 
-Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.
+在使用 PDO_ 的时候字符串是被自动转义的，此功能和数据库连接的字符集有关，所以在进行数据库连接时，必须设置正确的连接参数或者在数据库中设置好，错误的字符集会导致数据在存储读取时产生意想不到的结果。
 
-Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
+此外，你还可以通过设置参数"bindTypes"，定义参数的数据类型：
 
 .. code-block:: php
 
@@ -402,29 +376,23 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     ));
 
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
+参数绑定可以用于所有的查询方法上，比如find()和findFirst()。当然也包括一些计算类的方法，如 count(),sum(),average()等。
 
-Relationships between Models
+模型之间的关系
 ----------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional
-or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages
-foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access
-of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record
-in a uniform way.
+共有四种类型的关系：一对一，一对多，多对一，多对多。关系可以是单向也可以是双向的，并且每个可以是简单的(一个一个的Model)或者更复杂的(组合Model)。模型管理器管理这些关系的外键约束，这将有助于定义参照完整性以及方便快捷的访问关联数据。通过关系映射，可以在一个记录中很容易的访问相关模型中的数据。
 
-Unidirectional relationships
+单向关系
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-Bidirectional relations
+双向关系
 ^^^^^^^^^^^^^^^^^^^^^^^
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-Defining relationships
+定义关系
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne() or hasMany() define
-the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3
-parameters: local fields, referenced model, referenced fields.
+在Phalcon中，关系的定义必须在model的initialize()方法中进行定义，通过方法belongsTo(),hasOne(), hasMany() 进行关联关系，用当前模型的属性关联其他模型。这几个方法都需要3个参数，即： 当前模型属性，关联模型名称，关联模型的属性。
 
 +-----------+----------------------------+
 | Method    | Description                |
@@ -436,7 +404,7 @@ parameters: local fields, referenced model, referenced fields.
 | belongsTo | Defines a n-1 relationship |
 +-----------+----------------------------+
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+下面的schema显示了三个数据表的关系，用这个作为例子有助于我们更好的理解：
 
 .. code-block:: sql
 
@@ -468,7 +436,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 * The model "Parts" has many "RobotsParts".
 * The model "RobotsParts" belongs to both "Robots" and "Parts" models as a one-to-many relation.
 
-The models with their relations could be implemented as follows:
+在模型中他们的实现方法是这样的：
 
 .. code-block:: php
 
@@ -512,12 +480,11 @@ The models with their relations could be implemented as follows:
 
     }
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced
-model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+在映射关系中，第一个参数是当前模型的属性，第二个参数为关联模型的类名称，第三个参数为关联模型的属性。你也可以在映射关系中使用数组定义多个属性。
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+当明确定义了模型之间的关系后，就很容易通过查找到的记录找到相关模型的记录
 
 .. code-block:: php
 
@@ -528,9 +495,7 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->getParts()->name, "\n";
     }
 
-Phalcon uses the magic method __call to retrieve data from a relationship. If the called method has a "get" prefix
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a findFirst()/find() result. The following example compares
-retrieving related results with using the magic method and without:
+Phalcon使用魔术方法 __call来获得关联模型的数据。如果被调用的方法中含有"get"前辍，:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 将返回 findFirst()/find()的结果集。下面的示例展示了使用和未使用魔术方法获取数据的区别：
 
 .. code-block:: php
 
@@ -581,7 +546,7 @@ Getting related records manually:
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
-The prefix "get" is used to find()/findFirst() related records. You can also use "count" prefix to return an integer denoting the count of the related records:
+前辍"get"使用find()/findFirst()来获取关联记录。当然你也可以"count"前辍来获取记录的数量：
 
 .. code-block:: php
 
@@ -590,13 +555,11 @@ The prefix "get" is used to find()/findFirst() related records. You can also use
     $robot = Robots::findFirst(2);
     echo "The robot have ", $robot->countRobotsParts(), " parts\n";
 
-Virtual Foreign Keys
+虚拟外键
 ^^^^^^^^^^^^^^^^^^^^
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
-value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
-when defining a relationship.
+默认情况下，关联关系并不定义外键约束，也就是说，如果你尝试insert/update数据的话，将不会进行外键验证，Phalcon也不会提示验证信息。你可以修改此行为，增加一个参数定义这种关系。
 
-The RobotsPart model can be changed to demonstrate this feature:
+RobotsPart模型可以这样修改，以实现此功能：
 
 .. code-block:: php
 
@@ -620,9 +583,7 @@ The RobotsPart model can be changed to demonstrate this feature:
 
     }
 
-If you alter a belongsTo() relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
-valid value on the referenced model. Similarly, if a hasMany()/hasOne() is altered it will validate that the records cannot be deleted
-if that record is used on a referenced model.
+如果你在belongsTo()中设置了外键约束，它将会验证insert/update的值是不是一个有效的值。同样地，如果你在hasMany()/hasOne()中设置了外键约束，它将会验证记录是否可以删除。
 
 .. code-block:: php
 
@@ -644,8 +605,7 @@ if that record is used on a referenced model.
 
 Generating Calculations
 -----------------------
-Calculations are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
+数量统计是数据库中常用的功能，如COUNT,SUM,MAX,MIN,AVG. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 可以通过公开的方法实现此种功能。
 
 Count examples:
 
@@ -751,17 +711,13 @@ Max/Min examples:
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-Caching Resultsets
+缓存结果集
 ^^^^^^^^^^^^^^^^^^
-Access to database systems is often one of the most common bottlenecks in terms of performance. This is due to the complex connection
-process that PHP must do in each request to obtain data from the database. A well established technique to avoid the continuous access
-to the database is to cache resultsets that don't change frequently in a system with faster access (usually memory).
+频繁访问数据库往往是WEB应用性能方面最常见的瓶颈之一。这是由于复杂的连接过程，PHP必须在每个请求都从数据库获取数据。一个较完善的技术架构是，将不经常改变的结果集缓存到系统中可以更快访问的地方（通常是内存）。
 
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will request it to the Dependency
-Injector Container with the convention name "modelsCache".
+当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 需要缓存结果集时，它会依赖于容器中的"modelsCache"这个服务。
 
-As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models. First you need to register
-it as a service in the services container:
+Phalcon提供了一个组件缓存任何类型的数据，我们下面将介绍它如何与模型一块工作。首先，你需要把它作为一个服务注册到服务容器中：
 
 .. code-block:: php
 
@@ -784,8 +740,7 @@ it as a service in the services container:
         return $cache;
     });
 
-You have complete control in creating and customizing the cache before being used to record the service as an anonymous function.
-Once the cache setup is properly defined you could cache resultsets as follows:
+你可以创建和自定义缓存规则，然后作为一个匿名函数使用它们。一量缓存被正确设置，可以按如下方式缓存结果集：
 
 .. code-block:: php
 
@@ -816,11 +771,7 @@ Once the cache setup is properly defined you could cache resultsets as follows:
     // Using a custom cache
     $products = Products::find(array("cache" => $myCache));
 
-By default, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will create a unique key to store the resultset, using a md5 hash
-of the SQL select statement generated internally. This is very practical because it generates a new unique key for every change in
-the parameters passed in the object. If you wish to control the cache keys, you could always use the key() parameter as seen in the
-example above. The getLastKey() method retrieves the key of the last cached entry so that you can target and retrieve the resultset
-later on from the cache.:
+默认情况下，:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 将创建一个唯一的KEY来保存结果集数据，它使用md5 hash内部SQL语句的方式来生成唯一KEY，这将是非常实用的，因为它会产生一个新的唯一的KEY值。如果你想改变KEY值，你可以像上面的示例一样随时使用key参数进行指定，getLastKey()方法检索最后的缓存KEY值，这样就可以从缓存中定位和检索结果集：
 
 .. code-block:: php
 
@@ -837,8 +788,7 @@ later on from the cache.:
         //...
     }
 
-Cache keys automatically generated by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` are always prefixed with "phc". This helps
-to easily identify the cached entries related to :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
+缓存的KEY是通过 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 自动生成的，而且问题以"phc"为前辍，这将有助于识别此类缓存KEY是与 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 相关的：
 
 .. code-block:: php
 
@@ -852,12 +802,9 @@ to easily identify the cached entries related to :doc:`Phalcon\\Mvc\\Model <../a
          echo $key, "\n";
     }
 
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they are invalidated very
-quickly and caching in that case impacts performance. Additionally, large datasets that do not change frequently could be cached but
-that is a decision that the developer has to make based on the available caching mechanism and whether the performance impact to simply
-retrieve that data in the first place is acceptable.
+请注意，并非所有的结果集都必须被缓存。变化非常频繁的结果不应该被缓存起来，因为在这种情况下他们是无效的，而且会影响性能。此外，不经常更改的大数据集可以被缓存，但是否一定需要缓存得衡量一下，不对性能造成一定的影响，还是可以按受的。
 
-Caching could be also applied to resultsets generated using relationships:
+同样，缓存系统也可以应用于使用关联关系生成的结果集：
 
 .. code-block:: php
 
@@ -872,16 +819,13 @@ Caching could be also applied to resultsets generated using relationships:
     // Get comments related to a post, setting lifetime
     $comments = $post->getComments(array("cache" => true, "lifetime" => 3600));
 
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the generated key.
+当获取缓存结果集失败时，你可以简单的通过它的KEY值从缓存系统中删除它。
 
 Creating Updating/Records
 -------------------------
-The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
-associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
-should be updated or created.
+Phalcon\\Mvc\\Model::save() 方法允许你创建/更新记录。save方法自动调用 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部的create和update方法，如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。
 
-Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
+同时，方法的执行关联到 validators,虚拟外键以及在模型中定义的事件：
 
 .. code-block:: php
 
@@ -900,8 +844,7 @@ Also the method executes associated validators, virtual foreign keys and events 
         echo "Great, a new robot was saved successfully!";
     }
 
-An array could be passed to "save" to avoid assign every column manually. Phalcon\\Mvc\\Model will check if there are setters implemented for
-the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+save方法还可以直接通过传入一个数组的形式进行保存数据，Phalcon\\Mvc\\Model 会自动完成数组和对象的绑定的，而不需要直接指定对象的属性值：
 
 .. code-block:: php
 
@@ -914,8 +857,7 @@ the columns passed in the array giving priority to them instead of assign direct
         "year" => 1952
     ));
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
-an insecure array without worrying about possible SQL injections:
+数据直接赋值或通过数组绑定，这些数据都会根据相关的数据类型被escaped/sanitized，所以你可以传递一个不安全的数组，而不必担心发生SQL注入：
 
 .. code-block:: php
 
@@ -926,9 +868,7 @@ an insecure array without worrying about possible SQL injections:
 
 Create/Update with Certainty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This could happen if we use
-Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be certain that a record will be created or updated
-created we can change save by "create" or "update":
+当一个应用程序有很多的竞争的时候，也许我们希望创建一个记录，但实际上是更新一个记录（想不到老外也搞作孽，哈哈）。如果我们使用Phalcon\\Mvc\\Model::save()保存数据到数据库，首先我们得确定我们的记录是将被创建还是更新：
 
 .. code-block:: php
 
@@ -949,13 +889,11 @@ created we can change save by "create" or "update":
         echo "Great, a new robot was created successfully!";
     }
 
-These methods "create" and "update" also accept an array of values as parameter.
+方法"create"和"update"都接受数组作为参数.
 
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the  value generated in the database system for it:
+有些模型可能有标识列。这些列通常是映射数据表的主键。  :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 可以识别标识列，同时会忽略它内部的SQL INSERT，所以数据库系统能够生成一个自动生成的值。在创建一个记录后，标识列总是会通过数据库系统产生一个值：
 
 .. code-block:: php
 
@@ -964,11 +902,9 @@ Always after creating a record, the identity field will be registered with the  
     $robot->save();
     echo "The generated id is: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 能够识别标识列。根据不同的数据库系统，这些列可能是串行列，例如PostgreSQL以及MYSQL的auto_increment列。
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+PostgreSQL使用序列来生成自动的数值，默认情况下，Phalcon试图多序列table_field_seq来获得生成的值，例如：robots_id_seq，如果该序列具有不同的名称，"getSequenceName"方法需要明确指定：
 
 .. code-block:: php
 
@@ -986,12 +922,9 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 有一个消息传递子系统，它提供了一个灵活的输出方式，或存储在insert/update过程中的验证消息。
 
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
-generated the message or the message type:
+每个消息都是类 :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>` 的一个实例对象。生成的该组消息可以通过getMessages()方法来获取。每个消息都提供了扩展的信息，如字段名称，同时产生了消息及消息类型：
 
 .. code-block:: php
 
@@ -1005,7 +938,7 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 也可以产生以下类型的验证消息：
 
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                | Description                                                                                                                        |
@@ -1017,10 +950,9 @@ generated the message or the message type:
 | InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-Validation Events and Events Manager
+验证事件及事件管理
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+模型允许你实现事件，当执行insert和update的时候，这些事件将被抛出。他们帮助你定义业务规则。以下是 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 支持的事件以及他们的执行顺序：
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         |
@@ -1052,7 +984,7 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
-To make a model react to events, we must to implement a method with the same name of the event:
+为了使模型对事件作出反应，我们必须实现一个方法具有相同名称的事件：
 
 .. code-block:: php
 
@@ -1068,7 +1000,7 @@ To make a model react to events, we must to implement a method with the same nam
 
     }
 
-Events can be useful to assign values before performing an operation, for example:
+事件同样可以在执行一个操作之前做赋值操作，这将会很有用，下面是示例：
 
 .. code-block:: php
 
@@ -1091,8 +1023,7 @@ Events can be useful to assign values before performing an operation, for exampl
 
     }
 
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
-this means we can create listeners that run when an event is triggered.
+此外，该组件将与 :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>` 一同工作，这意味着当事件被触发时，我们可以创建监听器。
 
 .. code-block:: php
 
@@ -1117,8 +1048,7 @@ this means we can create listeners that run when an event is triggered.
     $robot->year = 1969;
     $robot->save();
 
-In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-If we want all objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+在上面的例子中，事件管理只是作为对象和监听器（匿名函数）之间的桥梁。如果我们想要在我们的应用程序中创建的所有对象使用相同的事件管理，那么我们就需要到指定的模型管理器：
 
 .. code-block:: php
 
@@ -1150,13 +1080,11 @@ If we want all objects created in our application use the same EventsManager the
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of
-the events listed in the table above.
+当执行insert,update或delete的时候，如果有任何方法名称与上表列出的事件名称相同，模型验证将起作用。
 
-We recommend that validation methods are declared protected to prevent that business logic implementation
-from being exposed publicly.
+我们建议验证方法被声明为protected，以防止业务逻辑不被公开。
 
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+下面的示例实现验证在update或insert时，year不小于0的事件：
 
 .. code-block:: php
 
@@ -1175,15 +1103,13 @@ The following example implements an event that validates the year cannot be smal
 
     }
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-will assume a true value.
+有些事件返回false用于指示停止当前操作。如果一个事件没有返回任何东西，:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 将假设它返回true。
 
 Validating Data Integrity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 提供了几个事件来验证数据，并实现业务规则。特殊的"validation"事件能使我们能够调用内置的验证器。Phalcon发布了一些内置的验证器，可用于在这个阶段的验证。
 
-The following example shows how to use it:
+以下示例显示了如何使用它：
 
 .. code-block:: php
 
@@ -1217,8 +1143,7 @@ The following example shows how to use it:
 
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+上面的例子中，使用内置的验证器“InclusionIn”执行验证。检查值在域列表中的“type”。如果该值没有被包括在该方法中，那么验证程序将失败并返回false。下列内置的验证器是可用的：
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Explanation                                                                                                                                                      | Example                                                           |
@@ -1240,7 +1165,7 @@ the value is not included in the method then the validator will fail and return 
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+除了使用这些内置验证器，你还可以创建你自己的验证器：
 
 .. code-block:: php
 
@@ -1267,7 +1192,7 @@ In addition to the built-in validatiors, you can create your own validators:
 
     }
 
-Adding the validator to a model:
+把你编写的验证器绑定到模型上：
 
 .. code-block:: php
 
@@ -1290,7 +1215,7 @@ Adding the validator to a model:
 
     }
 
-The idea of ​​creating validators is make them reusable between several models. A validator can also be as simple as:
+创建自定义验证器，主要想法是让他们可以在不同的模型中使用，即代码复用。一个验证器也可以按以下方式实现：
 
 .. code-block:: php
 
@@ -1315,11 +1240,9 @@ The idea of ​​creating validators is make them reusable between several mode
 
     }
 
-Avoiding SQL injections
+避免SQL注入攻击
 ^^^^^^^^^^^^^^^^^^^^^^^
-Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
-each value before store it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
-capability provided by PDO.
+每个被赋值到模型属性上的值在保存到数据库之前都将按照数据类型被转义，开发人员不需要手工转义每个值。Phalcon内部使用 `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_ PDO提供转义。
 
 .. code-block:: bash
 
@@ -1335,7 +1258,7 @@ capability provided by PDO.
     +------------------+------------------+------+-----+---------+----------------+
     5 rows in set (0.00 sec)
 
-If we use just PDO to store a record in a secure way, we need to write the following code:
+如果我们只使用PDO来安全的存储一条记录，我们需要编写以下代码：
 
 .. code-block:: php
 
@@ -1356,7 +1279,7 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     $sth->execute();
 
-The good news is that Phalcon do this automatically for you:
+好消息是，Phalcon自动为您做到这一点：
 
 .. code-block:: php
 
@@ -1371,8 +1294,7 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that omits some fields in the creation and/or update in order to delegate the database
-system assigns the value by a trigger or a default:
+有时候，有一些数据使用数据库系统的触发器或默认值，因此我们在insert/update的时候，会忽略掉这些属性：
 
 .. code-block:: php
 
@@ -1395,8 +1317,8 @@ system assigns the value by a trigger or a default:
 
     }
 
-This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
-Forcing a default value can be done in the following way:
+这时，在整个应用程序中执行insert/update的时候，都会忽略这些值的传递。
+强制一个默认值，可以以下列方式进行：
 
 .. code-block:: php
 
@@ -1408,9 +1330,9 @@ Forcing a default value can be done in the following way:
     $robot->created_at = new Phalcon\Db\RawValue('default');
     $robot->create();
 
-Deleting Records
+删除记录
 ----------------
-The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
+Phalcon\\Mvc\\Model::delete() 允许删除一条记录，你可以按如下方式使用：
 
 .. code-block:: php
 
@@ -1428,7 +1350,7 @@ The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use 
         }
     }
 
-You can also delete many records by traversing a resultset with a foreach:
+你也可以通过使用foreach遍历一个结果集的方式删除多条记录：
 
 .. code-block:: php
 
@@ -1445,7 +1367,7 @@ You can also delete many records by traversing a resultset with a foreach:
         }
     }
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+当执行一个删除操作时，你可以使用以下事件定义一个自定义的业务规则：
 
 +-----------+--------------+---------------------+------------------------------------------+
 | Operation | Name         | Can stop operation? | Explanation                              |
@@ -1458,7 +1380,7 @@ The following events are available to define custom business rules that can be e
 Validation Failed Events
 ------------------------
 
-Another type of events is available when the data validation process finds any inconsistency:
+另一种类型的事件是，当你验证数据过程中发现任何不一致时：
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
@@ -1468,13 +1390,11 @@ Another type of events is available when the data validation process finds any i
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-Transactions
-------------
-When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
-be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-is committed in the database.
+事务管理(Transactions)
+-------------------------
+当一个进程执行多个数据库操作时，如果要保证数据的完整性，那么它每个步骤的执行都必须保证是成功的。事务提供了在数据被提交到数据库之前，保证所有数据库操作被成功执行的能力。
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback all operations if something went wrong.
+在Phalcon中，事务允许你提交所有操作，如果出现了错误，你可以回滚所有的操作。
 
 .. code-block:: php
 
@@ -1547,8 +1467,7 @@ Transactions can be used to delete many records in a consistent way:
         echo "Failed, reason: ", $e->getMessage();
     }
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
-is performed. You can use the service container to create an overall transaction manager for the entire application:
+事务总是被重复使用。我们希望只有当commit()或rollback()被执行的时候，才会产生一个事务的实例，你可以把事务注册为整个应用程序的一个服务，当作一个整体的事务管理器使用：
 
 .. code-block:: php
 
@@ -1558,7 +1477,7 @@ is performed. You can use the service container to create an overall transaction
         return new Phalcon\Mvc\Model\Transaction\Manager();
     });
 
-Then access it from a controller or view:
+然后我们可以在控制器和视图中直接访问它：
 
 .. code-block:: php
 
@@ -1581,10 +1500,8 @@ Then access it from a controller or view:
 
 Independent Column Mapping
 --------------------------
-The ORM supports a independent column map, which allows the developer to use different column names in the model to the ones in
-the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
-This is a great feature when one needs to rename fields in the database without having to worry about all the queries
-in the code. A change in the column map in the model will take care of the rest. For example:
+ORM支持独立的列映射，它允许开发人员在模型中的属性不同于数据库的字段名称。Phalcon能够识别新的列名，并会相应的进行重命名，以对应数据库中的字段。
+这是一个伟大的功能，当你需要重命名数据库中的字段，而不必担心代码中所有的查询。示例如下：
 
 .. code-block:: php
 
@@ -1607,7 +1524,7 @@ in the code. A change in the column map in the model will take care of the rest.
 
     }
 
-Then you can use the new names naturally in your code:
+然后你就可以在你的代码中理所当然的使用新的属性名称：
 
 .. code-block:: php
 
@@ -1631,18 +1548,16 @@ Then you can use the new names naturally in your code:
     $robot->theYear = 2999;
     $robot->save();
 
-Take into consideration the following the next when renaming your columns:
+当有下面的情况时，你可以考虑使用新的别名：
 
-* References to attributes in relationships/validators must use the new names
-* Refer the column names will result in an exception by the ORM
+* 在relationships/validators中，必须使用新的名称
+* 列名会导致ORM的异常发生
 
 Models Meta-Data
 ----------------
-To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
-related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
-and cache table meta-data.
+为了加快开发 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 帮助你从数据表中查询字段以及查询数据库的约束。要做到这一点，:doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` 用于管理和缓存这些元数据。
 
-Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance as follows:
+有时，需要使用模型获取那些元数据的，你可以通过以下示例获得：
 
 .. code-block:: php
 
@@ -1663,8 +1578,7 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
 Caching Meta-Data
 ^^^^^^^^^^^^^^^^^
-Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each
-time you use the table. This could be done caching the meta-data using any of the following adapters:
+应用程序在一个生产阶段时，没有必要总是从数据库系统中查询元数据，你可以使用以下的几种适配器把这些元数据缓存起来：
 
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                                       |
@@ -1678,7 +1592,7 @@ time you use the table. This could be done caching the meta-data using any of th
 | Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
-As other ORM's dependencies, the metadata manager is requested from the services container:
+作为其他ORM的依赖，元数据需要从服务容器中获得：
 
 .. code-block:: php
 
@@ -1699,11 +1613,10 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
 Manual Meta-Data
 ^^^^^^^^^^^^^^^^
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually.
-Remember that when defining the metadata manually, new columns added/modified/removed to/from the mapped
-table must be added/modified/removed also for everything to work correctly.
+Phalcon可以自动的获得元数据，不强制开发人员必须手工设定他们。
+请注意，手工定义元数据时，添加/修改/删除 数据表字段的时候，必须手工添加／修改／删除 元数据对应列，以保证一切正常工作。
 
-The following example shows how to define the meta-data manually:
+下面的例子演示了如何手工定义元数据：
 
 .. code-block:: php
 
@@ -1774,7 +1687,7 @@ The following example shows how to define the meta-data manually:
 
 Pointing to a different schema
 ------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+如果模型映射的表不是默认的schemas/databases，你可以通过 getSchema 方法手工指定它：
 
 .. code-block:: php
 
@@ -1790,11 +1703,9 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     }
 
-Setting multiple databases
---------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
+建立多个数据库连接
+-----------------------------------
+在Phalcon中，所有的模型都属于一个数据库连接，实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 需要连接数据库时，它请求服务容器中的"db"服务，在initialize方法中，您可以覆盖此服务：
 
 .. code-block:: php
 
@@ -1820,7 +1731,7 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-Then, in the Initialize method, we define the connection service for the model:
+然后，在模型的Initialize方法中，我们可以通过以下方式访问一个数据库连接：
 
 .. code-block:: php
 
@@ -1836,13 +1747,9 @@ Then, in the Initialize method, we define the connection service for the model:
 
     }
 
-Logging Low-Level SQL Statements
+记录SQL日志
 --------------------------------
-When using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is
-difficult to understand which statements are finally sent to the database system. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-is supported internally by :doc:`Phalcon\\Db <../api/Phalcon_Db>`. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts
-with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
-statements as they happen.
+当使用高层次的抽象组件，比如 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 访问数据库时，很难理解这些语句最终发送到数据库时是什么样的。 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部由 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 支持。:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` 与  :doc:`Phalcon\\Db <../api/Phalcon_Db>` 交互工作，可以提供数据库抽象层的日志记录功能，从而使我们能够记录下SQL语句。
 
 .. code-block:: php
 
@@ -1874,7 +1781,7 @@ statements as they happen.
         return $connection;
     });
 
-As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
+当模型访问默认的数据库连接时，所有的SQL语句都会被记录在该文件中：
 
 .. code-block:: php
 
@@ -1887,18 +1794,16 @@ As models access the default database connection, all SQL statements that are se
         echo "Cannot save robot";
     }
 
-As above, the file *app/logs/db.log* will contain something like this:
+如上文所述，文件 *app/logs/db.log* 包含这样的内容：
 
 .. code-block:: irc
 
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
-Profiling SQL Statements
+剖析SQL语句
 ------------------------
-Thanks to :doc:`Phalcon\\Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`,
-it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With
-this you can diagnose performance problems and to discover bottlenecks.
+感谢  :doc:`Phalcon\\Db <../api/Phalcon_Db>` ，作为 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的基本组成部分，剖析ORM产生的SQL语句变得可能，以便分析数据库的性能问题，同时你可以诊断性能问题，并发现瓶颈。
 
 .. code-block:: php
 
@@ -1959,11 +1864,11 @@ Profiling some queries:
        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement.
+每个生成的profile文件，都是以毫秒为单位。
 
 Injecting services into Models
 ------------------------------
-You may be required to access the application services within a model, the following example explains how to do that:
+你可能需要在模型中访问服务容器的一个服务，下面的示例将为你展示如何使用：
 
 .. code-block:: php
 
@@ -1985,8 +1890,7 @@ You may be required to access the application services within a model, the follo
 
     }
 
-The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+"create"或"update"操作失败的时候，"notSave"事件总是被触发，所以我们通过访问服务容器中的"flash"服务来输出验证消息。
 
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php

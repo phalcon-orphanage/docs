@@ -48,6 +48,7 @@ copyright = '2012, Phalcon Team'
 # built documents.
 #
 # The short X.Y version.
+
 version = '0.7.x'
 
 # The full version, including alpha/beta/rc tags.
