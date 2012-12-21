@@ -55,7 +55,7 @@ Sets the response content-type mime, optionally the charset
 
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** (*string* $location, [*boolean* $externalRedirect], [*int* $statusCode])
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL
 

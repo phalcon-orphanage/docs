@@ -411,7 +411,7 @@ The following example demonstrates just that:
 
     <html>
         <head>
-            <title><?php \Phalcon\Tag::getTitle(); ?></title>
+            <?php echo \Phalcon\Tag::getTitle(); ?>
         </head>
         <body>
 
@@ -446,7 +446,7 @@ Images
     echo \Phalcon\Tag::image("img/hello.gif");
 
     // Generate <img alt="alternative text" src="/your-app/img/hello.gif">
-    echo \PhalconTag::image(
+    echo \Phalcon\Tag::image(
         array(
            "img/hello.gif",
            "alt" => "alternative text"
@@ -526,7 +526,7 @@ You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../a
         * @param array
         * @return string
         */
-        static function audioField($parameters)
+        static public function audioField($parameters)
         {
 
             // Converting parameters to array if it is not

@@ -17,13 +17,13 @@ Phalcon\\DI\\FactoryDefault\\CLI constructor
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $config, [*boolean* $shared]) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared]) inherited from Phalcon\\DI
 
 Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition) inherited from Phalcon\\DI
 
 Registers an "always shared" service in the services container
 
@@ -35,7 +35,7 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $config, [*boolean* $shared]) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared]) inherited from Phalcon\\DI
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 

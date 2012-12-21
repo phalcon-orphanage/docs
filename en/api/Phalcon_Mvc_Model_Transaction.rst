@@ -70,9 +70,9 @@ Rollbacks the transaction
 
 
 
-public *string*  **getConnection** ()
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
 
-Returns connection related to transaction
+Returns the connection related to transaction
 
 
 

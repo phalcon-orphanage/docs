@@ -489,7 +489,7 @@ Reads "belongs to" relations and check the virtual foreign keys when inserting o
 
 protected *boolean*  **_checkForeignKeysReverse** ()
 
-Reads both "hasMany" and "hasOne" relations and check the virtual foreign keys when deleting records
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys when deleting records
 
 
 
@@ -758,6 +758,31 @@ Setup a relation 1-n between two models
 
 
 
+protected  **hasManyThrough** ()
+
+Setup a relation n-n between two models through an intermediate relation 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+           //A reference relation must be set
+           $this->hasMany('id', 'RobotsParts', 'robots_id');
+    
+           //Setup a many-many relation to Parts through RobotsParts
+           $this->hasManyThrough('Parts', 'RobotsParts');
+       }
+    
+    }
+
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
@@ -797,6 +822,12 @@ Returns a simple representation of the object that can be used with var_dump
 public  **__wakeup** ()
 
 This method implements the magic method wake up, this reinitializes the model using the default DI
+
+
+
+public static  **setup** (*array* $options)
+
+Enables/disables options in the ORM
 
 
 

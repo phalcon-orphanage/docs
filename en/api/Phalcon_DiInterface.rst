@@ -7,13 +7,13 @@ Phalcon\\DiInterface initializer
 Methods
 ---------
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $alias, *mixed* $config, [*boolean* $shared])
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $alias, *mixed* $definition, [*boolean* $shared])
 
 Registers a service in the services container
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $config)
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition)
 
 Registers an "always shared" service in the services container
 
@@ -25,7 +25,7 @@ Removes a service in the services container
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $alias, *mixed* $config, [*boolean* $shared])
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $alias, *mixed* $definition, [*boolean* $shared])
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 

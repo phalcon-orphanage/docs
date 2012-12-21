@@ -63,13 +63,25 @@ Gets views directory
 
 public  **setLayoutsDir** (*string* $layoutsDir)
 
-Sets layouts directory. Depending of your platform, always add a trailing slash or backslash
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
 
 
 
 public *string*  **getLayoutsDir** ()
 
-Gets layouts directory
+Gets the current layouts sub-directory
+
+
+
+public  **setPartialsDir** (*string* $partialsDir)
+
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+public *string*  **getPartialsDir** ()
+
+Gets the current partials sub-directory
 
 
 
@@ -81,7 +93,7 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
     <?php
 
-     $view->setBasePath(__DIR__.'/');
+     	$view->setBasePath(__DIR__.'/');
 
 
 
@@ -100,6 +112,20 @@ Sets the render level for the view
 
 
 
+public  **disableLevel** (*int|array* $level)
+
+Disables an specific level of rendering 
+
+.. code-block:: php
+
+    <?php
+
+    Render all levels except ACTION level
+    $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
+
+
+
+
 public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
@@ -108,8 +134,8 @@ Sets default view name. Must be a file without extension in the views directory
 
     <?php
 
-     //Renders as main view views-dir/inicio.phtml
-     $this->view->setMainView('inicio');
+     	//Renders as main view views-dir/inicio.phtml
+     	$this->view->setMainView('inicio');
 
 
 
@@ -233,7 +259,7 @@ Executes render process from dispatching data
 
 public  **pick** (*string* $renderView)
 
-Choose a view different to render than last-controller/last-action 
+Choose different to render than last-controller/last-action 
 
 .. code-block:: php
 
@@ -263,8 +289,8 @@ Renders a partial view
 
     <?php
 
-     //Show a partial inside another view
-     $this->partial('shared/footer');
+     	//Show a partial inside another view
+     	$this->partial('shared/footer');
 
 
 

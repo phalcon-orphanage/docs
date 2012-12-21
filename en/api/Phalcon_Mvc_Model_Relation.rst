@@ -13,6 +13,10 @@ Constants
 
 *integer* **HAS_MANY**
 
+*integer* **HAS_ONE_THROUGH**
+
+*integer* **HAS_MANY_THROUGH**
+
 *integer* **MANY_TO_MANY**
 
 Methods
@@ -63,6 +67,18 @@ Check whether the relation act as a foreign key
 public *string|array*  **getForeignKey** ()
 
 Returns the foreign key configuration
+
+
+
+public *boolean*  **hasThrough** ()
+
+Check whether the relation
+
+
+
+public *string*  **getThrough** ()
+
+Returns the 'through' relation if any
 
 
 

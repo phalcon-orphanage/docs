@@ -23,19 +23,19 @@ Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
 Set the if the output must be implictly flushed to the output or returned as string
 
 
 
-public  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
 
 Set the if the output must be implictly formatted with HTML
 
 
 
-public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 
