@@ -216,7 +216,7 @@ The available query options are:
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                               | "shared_lock" => true                                                   |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                      | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
+| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                     | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
@@ -290,7 +290,7 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon's resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
+Phalcon's resultsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
 to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
 in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
 is traversed several times, the query must be executed the same number of times.
@@ -401,7 +401,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "bindTypes" => $types
     ));
 
-Since the default bind-type is \Phalcon\Db\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
+Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
 
@@ -857,9 +857,9 @@ Once the cache setup is properly defined you could cache resultsets as follows:
         "cache" => array("key" => "my-cache")
     ));
 
-    // Cache the resultset only for 5 minutes
+    // Cache the resultset for only for 5 minutes
     $products = Products::find(array(
-        cache" => array("key" => "my-cache", "lifetime" => 300)
+        "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
     // Using a custom cache

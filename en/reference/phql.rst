@@ -569,9 +569,9 @@ A builder is available to create PHQL queries without the need to write PHQL sta
     <?php
 
     $robots = $this->modelsManager->createBuilder()
-        ->join('Robots')
-        ->join('RobotsParts');
-        ->limit(20);
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->limit(20)
         ->order('Robots.name')
         ->getQuery()
         ->execute();
@@ -603,12 +603,12 @@ More examples of the builder:
     $phql = $builder->columns('*')
                     ->from('Robots')
 
-    // 'SELECT id, name FROM Robots'
-    $builder->columns(array('id', 'name'))
+    // 'SELECT id FROM Robots'
+    $builder->columns('id')
             ->from('Robots')
 
     // 'SELECT id, name FROM Robots'
-    $builder->columns('id, name')
+    $builder->columns(array('id', 'name'))
             ->from('Robots')
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"'
