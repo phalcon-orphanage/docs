@@ -467,7 +467,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 
 * The model "Robots" has many "RobotsParts".
 * The model "Parts" has many "RobotsParts".
-* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a one-to-many relation.
+* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
 
 The models with their relations could be implemented as follows:
 
@@ -477,6 +477,10 @@ The models with their relations could be implemented as follows:
 
     class Robots extends \Phalcon\Mvc\Model
     {
+        public $id;
+
+        public $name;
+
         public function initialize()
         {
             $this->hasMany("id", "RobotsParts", "robots_id");
@@ -491,6 +495,10 @@ The models with their relations could be implemented as follows:
     class Parts extends \Phalcon\Mvc\Model
     {
 
+        public $id;
+
+        public $name;
+
         public function initialize()
         {
             $this->hasMany("id", "RobotsParts", "parts_id");
@@ -504,6 +512,12 @@ The models with their relations could be implemented as follows:
 
     class RobotsParts extends \Phalcon\Mvc\Model
     {
+
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
 
         public function initialize()
         {
@@ -589,7 +603,11 @@ The prefix "get" is used to find()/findFirst() related records. You can also use
     <?php
 
     $robot = Robots::findFirst(2);
-    echo "The robot have ", $robot->countRobotsParts(), " parts\n";
+    echo "The robot has ", $robot->countRobotsParts(), " parts\n";
+
+Aliasing Relationships
+^^^^^^^^^^^^^^^^^^^^^^
+The aliasing relations is useful in the following cases:
 
 Magic Getters vs. Explicit methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -602,6 +620,15 @@ you can define those methods explicitly with the corresponding docblocks helping
 
     class Robots extends \Phalcon\Mvc\Model
     {
+
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany("id", "RobotsParts", "robots_id");
+        }
 
         /**
          * Return the related "robots parts"
@@ -630,6 +657,12 @@ The RobotsPart model can be changed to demonstrate this feature:
     class RobotsParts extends \Phalcon\Mvc\Model
     {
 
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
+
         public function initialize()
         {
             $this->belongsTo("robots_id", "Robots", "id", array(
@@ -638,7 +671,7 @@ The RobotsPart model can be changed to demonstrate this feature:
 
             $this->belongsTo("parts_id", "Parts", "id", array(
                 "foreignKey" => array(
-                    "message" => "The part_id does not exist on the parts model"
+                    "message" => "The part_id does not exist on the Parts model"
                 )
             ));
         }
@@ -1985,6 +2018,34 @@ You may be required to access the application services within a model, the follo
 
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+
+Disabling/Enabling Features
+---------------------------
+In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
+According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Mvc\Model::setup(array(
+        'events' => false,
+        'columnRenaming' => false
+    ));
+
+The available options are:
+
++---------------------+----------------------------------------------------------------------------------+
+| Option              | Description                                                                      |
++=====================+==================================================================================+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models    |
++---------------------+----------------------------------------------------------------------------------+
+| columnRenaming      | Enables/Disables the column renaming                                             |
++---------------------+----------------------------------------------------------------------------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  |
++---------------------+----------------------------------------------------------------------------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        |
++---------------------+----------------------------------------------------------------------------------+
 
 Stand-Alone component
 ---------------------

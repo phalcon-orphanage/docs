@@ -20,6 +20,10 @@ component designed to achieve this task. HTTP responses are usually composed by 
     //Send response to the client
     $response->send();
 
+.. highlights::
+
+    Keep in mind that if you're using the full MVC stack there is no need to create responses manually.
+
 Working with Headers
 --------------------
 Headers are an important part of the whole HTTP response. It contains useful information about the response state like the HTTP status,
@@ -59,7 +63,10 @@ With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also 
 
     <?php
 
-    //Making a redirection using the local base uri
+    //Making a redirection to the default URI
+    $response->redirect();
+
+    //Making a redirection using the local base URI
     $response->redirect("posts/index");
 
     //Making a redirection to an external URL
@@ -84,5 +91,85 @@ based on the routes you've currently defined in the application:
 
 Note that making a redirection doesn't disable the view component, so if there is a view asociated with the current action it
 will be executed anyways. You can disable the view from a controller by executing $this->view->disable();
+
+HTTP Cache
+----------
+One of the easiest ways to improve the performance in your applications also reducing the traffic is the HTTP Cache.
+Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
+
+The secret are the headers sent by the application when serving a page for the first time, these headers are:
+
+* *Expires:* With this header the application can set a date in the future or the past telling the browser when the page must expire.
+* *Cache-Control:* This header allow to specify how much time a page should be considered fresh in the browser.
+* *Last-Modified:* This header tells the browser which was the last time the site was updated avoiding page re-loads
+* *ETag:* A etag is a unique identifier that must be created including the modification timestamp of the current page
+
+Setting a Expiration Time
+^^^^^^^^^^^^^^^^^^^^^^^^^
+The expiration date is one of the most easy and effective ways to cache a page in the client (browser).
+Starting from the current date we add over time, then, this will maintain the page stored
+in the browser cache until this date expires without requesting the content to the server again:
+
+.. code-block:: php
+
+    <?php
+
+    $expireDate = new DateTime();
+    $expireDate->modify('+2 months');
+
+    $response->setExpires(expireDate);
+
+The Response component automatically shows the date in GMT timezone in order as is expected in a Expires header.
+
+Moreover if we set a date in the past this will tell the browser to always refresh the requested page:
+
+.. code-block:: php
+
+    <?php
+
+    $expireDate = new DateTime();
+    $expireDate->modify('-10 minutes');
+
+    $response->setExpires(expireDate);
+
+Browsers relies on the client's clock to assess if this date has passed or not, the client clock can be modified to
+make pages expire, this may represent a limitation for this cache mechanism.
+
+Cache-Control
+^^^^^^^^^^^^^
+This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
+how much time it must keep the page in its cache:
+
+.. code-block:: php
+
+    <?php
+
+    //Starting from now, cache the page for one day
+    $response->setHeader('Cache-Control', 'max-age=86400');
+
+The opposite effect (avoid page caching) is achieved in this way:
+
+.. code-block:: php
+
+    <?php
+
+    //Never cache the served page
+    $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
+
+E-Tag
+^^^^^
+A "entity-tag" or "E-tag" is a unique identifier that helps the browser to realize if the page has changed or not between two requests.
+The identifier must be calculated taking into account that this must change if the content has changed previously served:
+
+.. code-block:: php
+
+    <?php
+
+    //Calculate the E-Tag based on the modification time of the latest news
+    $recentDate = News::maximum(array('column' => 'created_at'));
+    $eTag = md5($recentDate);
+
+    //Send a E-Tag header
+    $response->setHeader('E-Tag', $eTag);
 
 
