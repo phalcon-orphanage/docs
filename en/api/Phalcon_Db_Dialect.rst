@@ -51,7 +51,14 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 public *string*  **getColumnList** (*array* $columnList)
 
-Gets a list of columns
+Gets a list of columns with escaped identifiers 
+
+.. code-block:: php
+
+    <?php
+
+     echo $dialect->getColumnList(array('column1', 'column'));
+
 
 
 

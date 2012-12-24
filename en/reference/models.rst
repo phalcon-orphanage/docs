@@ -290,7 +290,7 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon's resultsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
 to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
 in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
 is traversed several times, the query must be executed the same number of times.

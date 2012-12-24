@@ -25,30 +25,6 @@ Returns the value of the _id property
 
 
 
-abstract public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the dependency injection container
-
-
-
-abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the dependency injection container
-
-
-
-abstract public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
-
-Sets the event manager
-
-
-
-abstract public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
-
-Returns the internal event manager
-
-
-
 abstract public *array*  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
