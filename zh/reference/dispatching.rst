@@ -1,14 +1,10 @@
 Dispatching Controllers
 =======================
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible of instantiate controllers and execute the required actions
-on them in an MVC application. Understand its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 组件负责在MVC应用程序中负责实例化控制器以及执行所需操作的。了解它的具体运作方法能很好的帮助我们了解整个框架提供的服务。
 
 The Dispatch Loop
 -----------------
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
-dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another
-controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
-within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
+很多重要的过程发生在MVC工作流本身，尤其是在控制器部分。这些工作发生在控制调度度期间，控制器文件的读取，加载，初始化，以及操作的执行。如果一个action中的流程跳转到另一个控制器的controller/action上，控制调度器再次启动，为了更好的说明这一点，下面的例子将展示  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 内部执行的过程：
 
 .. code-block:: php
 
@@ -32,11 +28,11 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
     }
 
-The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
+上面的代码没有添加验证器，过滤器以及额外的检查，但它很好的展示了分发器在正常的调度程序中的操作流程。
 
 Dispatch Loop Events
 ^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 也能够发送事件到  :doc:`EventsManager <events>` 。事件被触发的类型名称为 "dispatch"。其中的一些事件，返回布尔值false时，可以停止事件的运作。主要支持以下事件：
 
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                                                                                                                                                                   | Can stop operation? |
@@ -58,9 +54,9 @@ Dispatch Loop Events
 | afterDispatchLoop    | Triggered after exit the dispatch loop                                                                                                                                                                      | No                  |
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
 
-The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
+:doc:`INVO <tutorial-invo>` 教程中演示了如何使用分发器配合 :doc:`Acl <acl>` 实现安全认证。
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例将演示如何在分发器上注册监听器事件：
 
 .. code-block:: php
 
@@ -107,8 +103,7 @@ Instantiated controllers act automatically as listeners for dispatch events, so 
 
 Forwarding to other actions
 ---------------------------
-The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
-access to certain options, redirect users to other screens or simply reuse code.
+分发器允许我们从一个controller/action跳转到另一个controller/action。这是非常有用的，如果我们需要在代码中进行用户检查等事项，可以将用户重定向到其他页面。
 
 .. code-block:: php
 
@@ -136,11 +131,9 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     }
 
-Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
-to complete the process.
+请记住，"forward"和HTTP重定向不一样，虽然他们显示了相同的结果。"forward"不刷新当前页面，所有的重定向都发生在一个单一的请求中，而HTTP重定向则需要完成两个请求。
 
-More forwarding examples:
+更多关于forward的例子：
 
 .. code-block:: php
 
@@ -165,7 +158,7 @@ More forwarding examples:
         "params" => array(1, 2, 3)
     ));
 
-A forward action accepts the following parameters:
+跳转动作按受以下一些参数：
 
 +----------------+--------------------------------------------------------+
 | Parameter      | Triggered                                              |
@@ -181,8 +174,7 @@ A forward action accepts the following parameters:
 
 Getting Parameters
 ------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends
-:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+当一条路由提供了命名参数，你可以在控制器，视图文件或者其他任何继承了 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获取值。
 
 .. code-block:: php
 
@@ -211,7 +203,7 @@ When a route provides named parameters you can receive them in a controller, a v
 
 Handling Not-Found Exceptions
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when a controller/action wasn't found.
+使用  :doc:`EventsManager <events>` ，插入一个挂钩点，以使在controller/action不存在的时候，抛出一个异常信息。
 
 .. code-block:: php
 
@@ -258,4 +250,4 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
 
 Implementing your own Dispatcher
 --------------------------------
-The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher replacing the one providing by Phalcon.
+通过实现 :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口文件可以在Phalcon中创建一个自定义的分发器。
