@@ -30,8 +30,8 @@ The Dispatch Loop
 
 上面的代码没有添加验证器，过滤器以及额外的检查，但它很好的展示了分发器在正常的调度程序中的操作流程。
 
-Dispatch Loop Events
-^^^^^^^^^^^^^^^^^^^^
+分发器事件(Dispatch Loop Events)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 也能够发送事件到  :doc:`EventsManager <events>` 。事件被触发的类型名称为 "dispatch"。其中的一些事件，返回布尔值false时，可以停止事件的运作。主要支持以下事件：
 
 +----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+
@@ -172,8 +172,8 @@ Forwarding to other actions
 | namespace      | A valid namespace name where the controller is part of |
 +----------------+--------------------------------------------------------+
 
-Getting Parameters
-------------------
+获取参数(Getting Parameters)
+-----------------------------------------
 当一条路由提供了命名参数，你可以在控制器，视图文件或者其他任何继承了 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获取值。
 
 .. code-block:: php
@@ -248,6 +248,6 @@ Handling Not-Found Exceptions
         return $dispatcher;
     });
 
-Implementing your own Dispatcher
---------------------------------
+实现自定义分发器(Implementing your own Dispatcher)
+------------------------------------------------------------------
 通过实现 :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口文件可以在Phalcon中创建一个自定义的分发器。
