@@ -1,17 +1,17 @@
 Filtering and Sanitizing
 ========================
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted.
+对用户输入的数据进行过滤/消毒是软件开发的重要组成部分。过分信任或忽略过滤用户输入，可能导致用户访问到未经授权的页面，主要是用户数据，甚至是你应用程序的服务器托管的所有内容。
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
 Full image (from xkcd)
 
-The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+:doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 组件提供了一组常用的用于过滤以及处理用户输入数据的助手工具。它提供了一种面像对象的方式来包装PHP filter扩展。
 
 Sanitizing data
 ---------------
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+Sanitizing 处理从字符串中移除指定字符，这并不是必须的，需要开发者明确指定。sanitizing后的用户输入数据，能确保应用程序的完整和安全。
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@ Sanitizing is the process which removes specific characters from a value, that a
 
 Sanitizing from Controllers
 ---------------------------
-You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+你可以在控制器中访问  :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 对象，当需要访问GET或POST输入数据时(通过request对象)。第一个参数是变量的名称，第二个参数是filter类型。
 
 .. code-block:: php
 
@@ -63,7 +63,7 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
 Filtering Action Parameters
 ---------------------------
-The next example shows you how to sanitize the action parameters within a controller action:
+下面的示例将向你展示如何在controller/action中 sanitize Action的参数：
 
 .. code-block:: php
 
@@ -86,7 +86,7 @@ The next example shows you how to sanitize the action parameters within a contro
 
 Filtering data
 --------------
-In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to the format we expect.
+除了sanitizing功能，:doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 还提供了删除或修改输入数据的过滤功能，以生成我们想要的数据。
 
 .. code-block:: php
 
@@ -101,7 +101,7 @@ In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also p
     $filter->filter("  Hello   ", "trim");
 
 
-Types of Built-in Filters
+Filters内置类型
 -------------------------
 The following are the built-in filters provided by this component:
 
@@ -127,9 +127,9 @@ The following are the built-in filters provided by this component:
 | upper     | Applies the strtoupper_ function                                          |
 +-----------+---------------------------------------------------------------------------+
 
-Creating your own Filters
+自定义Filters
 -------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+你可以创建自定义过滤器添加到 :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`。过滤函数可以使用匿名函数的形式：
 
 .. code-block:: php
 
@@ -145,7 +145,7 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
     //Sanitize with the "md5" filter
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
-Or, if you prefer, you can implement the filter in a class:
+或者，如果你愿意，你也可以实现一个过滤器类：
 
 .. code-block:: php
 
@@ -171,7 +171,7 @@ Or, if you prefer, you can implement the filter in a class:
 
 Complex Sanitizing and Filtering
 --------------------------------
-PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
+PHP本身也提供了一个极好的filter扩展，查阅文档：`Data Filtering at PHP Documentation`_
 
 Implementing your own Filter
 ----------------------------

@@ -1,11 +1,10 @@
-Flashing Messages
-=================
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of
-messages can be generated using this component
+发送消息(Flashing Messages)
+==================================
+发送消息被用于向用户发送请求状态或用户行为等。使用此组件可以生成消息。
 
-Adapters
---------
-This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
+适配器(Adapters)
+---------------------------
+此组件使用适配器来决定使用哪种行为向用户发送消息：
 
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | Adapter | Description                                                                                   | API                                                                        |
@@ -15,11 +14,9 @@ This component makes use of adapters to define the behavior of the messages afte
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request  | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-Usage
------
-Usually the Flash Messaging service is requested from the services container,
-if you're using :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`
-then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automatically registered as "flash" service:
+使用方法(Usage)
+---------------------------
+通常情况下，消息发送这个服务被注册到服务容器中，如果你使用  :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`,那么默认将自动注册 "flash"服务为类型 :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`：
 
 .. code-block:: php
 
@@ -30,7 +27,7 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
         return new \Phalcon\Flash\Direct();
     });
 
-This way, you can use it in controllers or views by injecting the service in the required scope:
+通过这种方式，你可以直接在控制器或视图文件中访问此服务：
 
 .. code-block:: php
 
@@ -51,7 +48,7 @@ This way, you can use it in controllers or views by injecting the service in the
 
     }
 
-There are four built-in message types supported:
+内置支持的消息类型有：
 
 .. code-block:: php
 
@@ -62,7 +59,7 @@ There are four built-in message types supported:
     $this->flash->notice("this a very important information");
     $this->flash->warning("best check yo self, you're not looking too good.");
 
-You can add messages with your own types:
+你也可以增加你自己的消息类型：
 
 .. code-block:: php
 
@@ -70,9 +67,9 @@ You can add messages with your own types:
 
     $this->flash->message("debug", "this is debug message, you don't say");
 
-Printing Messages
+输出消息
 -----------------
-Messages sent to the flasher are automatically formatted with html:
+消息发送到客户端会自动转化为HTML：
 
 .. code-block:: html
 
@@ -81,8 +78,7 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="noticeMessage">this a very important information</div>
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
-of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
+可以看出，有一些CSS的类名被自动添加到DIV上。这些CSS类允许你自定义在浏览器中的显示形式。CSS类可以被覆盖，例如，如果你使用 Twitter bootstrap，CSS类需这样定义：
 
 .. code-block:: php
 
@@ -98,7 +94,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
         return $flash;
     });
 
-Then the messages would be printed as follows:
+上例将输出以下HTML：
 
 .. code-block:: html
 
@@ -106,11 +102,9 @@ Then the messages would be printed as follows:
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
 
-Implicit Flush vs. Session
---------------------------
-Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later.
-When should you use each? That usually depends on the type of redirection you do after sending the messages. For example if you make a "forward"
-is not necessary to store the messages in session, but if you do a HTTP redirect then they need to be stored in session:
+适配器选型(Implicit Flush vs. Session)
+-------------------------------------------------------
+根据选用的适配器类型，它可以直接输出消息，也可以暂时存储到用户会话中，稍后再显示。应该选用哪种适配器？这通常取决于发送消息在页面重定向之前还是之后。例如，如果你对页面做了一个"forward"类型的重定向，那么就没有必要把消息存储到用户会话中，但是如果你做了一个HTTP重定向，你需要把消息存储到用户会话中：
 
 .. code-block:: php
 
@@ -138,7 +132,7 @@ is not necessary to store the messages in session, but if you do a HTTP redirect
 
     }
 
-Or using a HTTP redirection:
+或使用HTTP重定向：
 
 .. code-block:: php
 
@@ -166,7 +160,7 @@ Or using a HTTP redirection:
 
     }
 
-In this case you need to print manually the messages in the corresponding view:
+在这种情况下，你需要手工设置消息在相应视图中的显示位置：
 
 .. code-block:: html+php
 
@@ -174,4 +168,4 @@ In this case you need to print manually the messages in the corresponding view:
 
     <p><?php $this->flashSession->output() ?></p>
 
-The attribute 'flashSession' is how the flash was previously set into the dependency injection container.
+属性  'flashSession' 是之前注册'flash'服务到容器中时产生的。
