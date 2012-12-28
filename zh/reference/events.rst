@@ -1,13 +1,13 @@
-Events Manager
+事件管理
 ==============
 
-The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
-points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
+此组件的目的是通过创建挂钩点拦截框架中大部分组件的执行。这些挂钩点允许开发者获取状态信息，操作数据或改变一个组件在执行过程中的流程。
 
-Usage Example
+译者注：挂钩点(hooks point)类似于SVN或GIT中的hook。在使用SVN开发过程中，我们想实现把提交的代码直接部署到演示环境下，那么就需要SVN的hook.
+
+使用示例
 -------------
-In the following example, we use the EventsManager to listen for events produced in a MySQL connection managed by :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-First of all, we need a listener object to do this. We created a class whose methods are the events we want to listen:
+在下面的例子中，我们使用EventsManager侦听使用 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 进行MySQL连接管理过程中产生的事件。首先，我们需要一个侦听器对象，我们创建一个类，它的方法是我们要侦听的事件：
 
 .. code-block:: php
 
@@ -33,8 +33,7 @@ First of all, we need a listener object to do this. We created a class whose met
 
     }
 
-This new class can be as verbose as we need it to. The EventsManager will interface between the component and our listener class,
-offering hook points based on the methods we defined in our listener class:
+这个新的类文件可以更详细一些，因为我们需要使用它。EventsManager 将充当组件与侦听器之间的桥梁，为我们创建的侦听类的方法提供挂钩点：
 
 .. code-block:: php
 
@@ -61,8 +60,8 @@ offering hook points based on the methods we defined in our listener class:
     //Send a SQL command to the database server
     $connection->query("SELECT * FROM products p WHERE p.status = 1");
 
-In order to log all the SQL statements executed by our application, we need to use the event “afterQuery”. The first parameter passed to
-the event listener contains contextual information about the event that is running, the second is the connection itself.
+为了记录我们的应用程序执行的所有SQL语句，我们需要使用事件“afterQuery”。第一个参数传递给
+事件侦听器，包含正在运行的事件的上下文信息，第二个是连接本身。
 
 .. code-block:: php
 
@@ -85,7 +84,7 @@ the event listener contains contextual information about the event that is runni
 
     }
 
-As part of this example, we will also implement the Phalcon\\Db\\Profiler to detect the SQL statements that are taking longer to execute than expected:
+作为示例的一部分，我们需要实现 Phalcon\\Db\\Profiler，以检测SQL语句比预期花费多长时间：
 
 .. code-block:: php
 
@@ -122,7 +121,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
     }
 
-The resulting profile data can be obtained from the listener:
+可以从监听器获得返回的数据：
 
 .. code-block:: php
 
@@ -138,7 +137,7 @@ The resulting profile data can be obtained from the listener:
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-In a similar manner we can register an lambda function to perform the task instead of a separate listener class (as seen above):
+以类似的方式，我们可以注册一个lambda形式的匿名函数来执行任务，而不是一个单独的监听器类(见上面示例)：
 
 .. code-block:: php
 
@@ -153,9 +152,7 @@ In a similar manner we can register an lambda function to perform the task inste
 
 Creating components that trigger Events
 ---------------------------------------
-You can create components in your application that trigger events to a EventsManager. As a consequence, there may exist listeners
-that react to these events when generated. In the following example we're creating a component called "MyComponent".
-This component is EventsManager aware; when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
+你也可以在应用程序中创建自己的组件，使用EventsManager触发事件。作为结果，事件运行时监听器会作出相应的反应。在下面的例子中，我们创建了一个叫"MyComponent"的组件。这个组件实现了EventsManager aware接口，当它的方法 "someTask" 执行时，监听器会触发相应的两个事件：
 
 .. code-block:: php
 
@@ -187,9 +184,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     }
 
-Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us to
-identify events that are generated from certain component. You can even generate events outside of the component with
-the same name. Now let's create a listener to this component:
+请注意，这个事件在触发时使用的前辍是  "my-component"，这是一个唯一标志字符，以帮助我们知道事件是由哪个组件产生的。你甚至可以在组件之个创建相同名称的事件。现在，让我们来创建一个监听器监听这个组件：
 
 .. code-block:: php
 
@@ -210,7 +205,7 @@ the same name. Now let's create a listener to this component:
 
     }
 
-A listener is simply a class that implements any of all the events triggered by the component. Now let's make everything work together:
+一个监听器就是一个简单的类文件，它实现了所有组件触发的事件。现在，让我们使他们联合在一起工作：
 
 .. code-block:: php
 
@@ -231,14 +226,14 @@ A listener is simply a class that implements any of all the events triggered by 
     //Execute methods in the component
     $myComponent->someTask();
 
-As "someTask" is executed, the two methods in the listener will be executed, producing the following output:
+"someTask"执行后，监听器中的两个方法也会被执行，下面是输出结果：
 
 .. code-block:: php
 
     Here, beforeSomeTask
     Here, afterSomeTask
 
-Additional data may also passed when triggering an event using the third parameter of "fire":
+其他数据也可以通过 "fire" 调用第三个参数进行触发：
 
 .. code-block:: php
 
@@ -246,7 +241,7 @@ Additional data may also passed when triggering an event using the third paramet
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData);
 
-In a listener the third parameter also receives this data:
+在监听器中，第三个参数也接收此数据：
 
 .. code-block:: php
 
@@ -262,7 +257,7 @@ In a listener the third parameter also receives this data:
         print_r($event->getData());
     });
 
-If a listener it is only interested in listening a specific type of event you can attach a listener directly:
+如果监听器只对一个特定类型的事件感兴趣，你可以直接绑定：
 
 .. code-block:: php
 
@@ -273,11 +268,9 @@ If a listener it is only interested in listening a specific type of event you ca
         //...
     });
 
-Event Propagation/Cancelation
------------------------------
-Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
-The listeners are notified in the order they were registered in the EventsManager. Some events are cancellable, indicating that
-these may be stopped preventing other listeners are notified about the event:
+事件的发布与取消(Event Propagation/Cancelation)
+------------------------------------------------------------------
+许多监听器可能会添加相同的事件，这意味着，对于同类类型的事件，许多监听器都会被触发(即会有非常多同类型的消息输出)。根据注册到 EventsManager 的顺序，监听器被一一触发。一些事件可以被撤消，表明可以停止一些其他的监听器事件被触发：
 
 .. code-block:: php
 
@@ -295,8 +288,7 @@ these may be stopped preventing other listeners are notified about the event:
 
     });
 
-By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
-by passing "false" in the four parameter of fire:
+在默认情况下，事件是可以被取消的，甚至在框架中的大部分事件都是可以被取消的。你可以使用fire方法传递第四个参数，值为"false"，以达到不可取消的目的：
 
 .. code-block:: php
 
@@ -304,7 +296,7 @@ by passing "false" in the four parameter of fire:
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
-Implementing your own EventsManager
------------------------------------
+实现自定义EventsManager(Implementing your own EventsManager)
+---------------------------------------------------------------------------
 The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own
 EventsManager replacing the one provided by Phalcon.

@@ -1,11 +1,10 @@
-Data Pagination
+数据分页
 ===============
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
-fast and convenient way to split these sets of data browsable pages.
+当有一大组数据需要呈现时，我们需要用到数据分页。Phalcon\\Paginator 提供了一个快捷，方便的方法对大组数据进行分割，以达到分页浏览的效果。
 
 Data Adapters
 -------------
-This component makes use of adapters to encapsulate different sources of data:
+这个组件使用不同的适配器来封装不同的数据源：
 
 +--------------+-------------------------------------------------------+
 | Adapter      | Description                                           |
@@ -17,7 +16,7 @@ This component makes use of adapters to encapsulate different sources of data:
 
 Using Paginators
 ----------------
-In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
+在下面的例子中，paginator将从model中读取数据作为其数据源，并限制每页显示10条记录：
 
 .. code-block:: php
 
@@ -44,7 +43,7 @@ In the example below, the paginator will use as its source data the result of a 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page object that contains the paginated data. It can be used for generating the pagination:
+变量 $currentPage 控制将显示哪一页。 $paginator->getPaginate() 返回一个包含分页数据的 $page 对象，它将用于生成分页：
 
 .. code-block:: html+php
 
@@ -63,7 +62,7 @@ Variable $currentPage controls the page to be displayed. The $paginator->getPagi
         <?php } ?>
     </table>
 
-The $page object also contains navigation data:
+$page对象还包含以下数据：
 
 .. code-block:: html+php
 
@@ -74,9 +73,9 @@ The $page object also contains navigation data:
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
-Page Attributes
+Page 属性
 ---------------
-The $page object has the following attributes:
+$page对象包含以下一些属性：
 
 +---------+--------------------------------------------------------+
 | Adapter | Description                                            |
@@ -90,7 +89,7 @@ The $page object has the following attributes:
 | last    | The last page in the set of records                    |
 +---------+--------------------------------------------------------+
 
-Implementing your own adapters
+实现自定义的分页适配器
 ------------------------------
 The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
