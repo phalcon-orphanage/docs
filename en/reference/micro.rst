@@ -320,7 +320,7 @@ In the following example, we explain how to control the application security usi
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                return $app->response->redirect("/");
             }
         }
 
