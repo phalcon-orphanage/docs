@@ -1,14 +1,13 @@
-Working with Namespaces
+使用命名空间
 =======================
-Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
-it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
+Namespaces_ 可以用来避免类名冲突，这意味着，如果你有两个控制器，在应用程序中使用相同的名称，
+可以使用命名空间来区分他们。命名空间是也可用于创建module。
 
 Setting up the framework
 ------------------------
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
-to perform one or all of the following tasks:
+使用命名空间时对加载相应控制器会有一定的影响。需要调整框架命名空间的行为，可以实现加载一个或全部：
 
-Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
+使用自动加载的方式需要考虑命名空间的影响，以下是使用 Phalcon\\Loader 的示例：
 
 .. code-block:: php
 
@@ -21,7 +20,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify it in the routes as a full class name in the controller path:
+在定义路由时，控制器的路径可以指定控制器的全名称：
 
 .. code-block:: php
 
@@ -35,7 +34,7 @@ Specify it in the routes as a full class name in the controller path:
         )
     );
 
-Passing it as part of the route:
+把命名空间当作路由定义的参数(详见路由器章节)：
 
 .. code-block:: php
 
@@ -50,8 +49,7 @@ Passing it as part of the route:
         )
     );
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher, by doing this you don't need to specify a full class name in the router path:
+如果你只在你的应用程序中对每个控制器使用相同的命名空间，那么你可以在注册分发器时定义一个默认的命名空间，这样做的话，你就不再需要在定义路由的时候指定完整的类名称了：
 
 .. code-block:: php
 
@@ -66,7 +64,7 @@ in the Dispatcher, by doing this you don't need to specify a full class name in 
 
 Controllers with Namespaces
 ---------------------------
-The following example shows how to implement a controller that use namespaces:
+下面的示例演示如何实现使用命名空间来编写一个控制器：
 
 .. code-block:: php
 
@@ -91,7 +89,7 @@ The following example shows how to implement a controller that use namespaces:
 
 Models in Namespaces
 --------------------
-For models it's necessary to indicate the name of the related table using getSource:
+对于模型，使用getSource来指定关联的数据表是非常必要的：
 
 .. code-block:: php
 
@@ -109,7 +107,7 @@ For models it's necessary to indicate the name of the related table using getSou
 
     }
 
-Additionally because namespaces some magical methods may not work as expected, to manually define its correct behavior they can be defined as follows:
+另外，因为命名空间的原因，一些魔术方法不能如预期般运行，你可以按如下方式手工定义正确的行为：
 
 .. code-block:: php
 
