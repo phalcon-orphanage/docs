@@ -638,6 +638,8 @@ The following built-in functions are available in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | constant             | Reads a PHP constant                                                         |
 +----------------------+------------------------------------------------------------------------------+
+| url                  | Generate a URL using the 'url' service                                       |
++----------------------+------------------------------------------------------------------------------+
 
 View Integration
 ----------------
@@ -1020,6 +1022,18 @@ Setting an specific number of seconds:
 
 The caching is done by the :doc:`Phalcon\\Cache <cache>` component via the view component.
 Learn more about how this integration works in the section :doc:`"Caching View Fragments" <views>`.
+
+Inject Services into a Template
+-------------------------------
+If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+
+.. code-block:: html+jinja
+
+    {# Inject the 'flash' service #}
+    <div id="messages">{{ flash.output() }}</div>
+
+    {# Inject the 'security' service #}
+    <input type="hidden" name="token" value="{{ security.getToken() }}">
 
 Stand-alone component
 ---------------------
