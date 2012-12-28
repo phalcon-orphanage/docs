@@ -213,7 +213,7 @@ The following examples produce the same result:
     // Short form
     $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
 
-    // Array form:
+    // Array form
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
         array(
@@ -333,6 +333,25 @@ this is especially useful when creating RESTful applications:
     // This route will be matched if the HTTP method is POST or PUT
     $router->add("/products/update")->via(array("POST", "PUT"));
 
+Using convertions
+^^^^^^^^^^^^^^^^^
+Convertions allow to freely transform the route's parameters before pass them to the dispatcher, the following examples show how to use them:
+
+.. code-block:: php
+
+    <?php
+
+    //The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    $router
+        ->add('/products/({slug:[a-z\-]+})', array(
+            'controller' => 'products',
+            'action' => 'show'
+        ))
+        ->convert('slug', function($slug) {
+            //Transform the slug removing the dashes
+            return str_replace('-', '', $slug);
+        });
+
 Matching Routes
 ---------------
 Now we must a URI to Router in order that it check which is the defined route that matches the given URI.
@@ -414,7 +433,7 @@ The following are examples of custom routes:
         array(
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3,
+            "params"     => 3
         )
     );
 
@@ -424,7 +443,7 @@ The following are examples of custom routes:
         array(
             "controller" => 2,
             "action"     => "index",
-            "language"   => 1,
+            "language"   => 1
         )
     );
 
@@ -433,7 +452,7 @@ The following are examples of custom routes:
         "/{language:[a-z]{2}}/:controller",
         array(
             "controller" => 2,
-            "action"     => "index",
+            "action"     => "index"
         )
     );
 
@@ -443,7 +462,7 @@ The following are examples of custom routes:
         array(
             "controller" => 1,
             "action"     => 2,
-            "id"         => 3,
+            "id"         => 3
         )
     );
 
@@ -455,7 +474,7 @@ The following are examples of custom routes:
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4,
+            "title"      => 4
         )
     );
 
@@ -466,7 +485,7 @@ The following are examples of custom routes:
             "controller" => "manual",
             "action"     => "show",
             "language"   => 1,
-            "file"       => 2,
+            "file"       => 2
         )
     );
 
@@ -508,7 +527,7 @@ If you don't want use this routes as default in your application, you must creat
 Setting default paths
 ---------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
-those paths the component could automatically fill it:
+those paths can be automatically filled by the component:
 
 .. code-block:: php
 

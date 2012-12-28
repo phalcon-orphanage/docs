@@ -106,11 +106,9 @@ Once the record is in memory, you can make modifications to its data and then sa
 
 	<?php
 
-	$robot = Robots::findFirst(
-		array(
-			array('name' => 'Astroy Boy')
-		)
-	);
+	$robot = Robots::findFirst(array(
+		array('name' => 'Astroy Boy')
+	));
 	$robot->name = "Voltron";
 	$robot->save();
 
@@ -148,33 +146,27 @@ to query documents and convert them transparently to model instances:
 	echo "There are ", count($robots), "\n";
 
 	// How many mechanical robots are there?
-	$robots = Robots::find(
-		array(
-			array("type" => "mechanical")
-		)
-	);
+	$robots = Robots::find(array(
+		array("type" => "mechanical")
+	));
 	echo "There are ", count($robots), "\n";
 
 	// Get and print mechanical robots ordered by name upward
-	$robots = Robots::find(
-		array(
-			array("type" => "mechanical"),
-			"sort" => array("name" => 1)
-		)
-	);
+	$robots = Robots::find(array(
+		array("type" => "mechanical"),
+		"sort" => array("name" => 1)
+	));
 
 	foreach ($robots as $robot) {
 		echo $robot->name, "\n";
 	}
 
 	// Get first 100 mechanical robots ordered by name
-	$robots = Robots::find(
-		array(
-			array("type" => "mechanical"),
-			"sort" => array("name" => 1),
-			"limit" => 100
-		)
-	);
+	$robots = Robots::find(array(
+		array("type" => "mechanical"),
+		"sort" => array("name" => 1),
+		"limit" => 100
+	));
 
 	foreach ($robots as $robot) {
 	   echo $robot->name, "\n";
@@ -191,11 +183,9 @@ You could also use the findFirst() method to get only the first record matching 
 	echo "The robot name is ", $robot->name, "\n";
 
 	// What's the first mechanical robot in robots collection?
-	$robot = Robots::findFirst(
-		array(
-			array("type" => "mechanical")
-		)
-	);
+	$robot = Robots::findFirst(array(
+		array("type" => "mechanical")
+	));
 	echo "The first mechanical robot name is ", $robot->name, "\n";
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
@@ -205,20 +195,16 @@ Both find() and findFirst() methods accept an associative array specifying the s
 	<?php
 
 	// First robot where type = "mechanical" and year = "1999"
-	$robot = Robots::findFirst(
-		array(
-			"type" => "mechanical",
-			"year" => "1999"
-		)
-	);
+	$robot = Robots::findFirst(array(
+		"type" => "mechanical",
+		"year" => "1999"
+	));
 
 	// All virtual robots ordered by name downward
-	$robots = Robots::find(
-		array(
-			"conditions" => array("type" => "virtual"),
-			"sort"       => array("name" => -1)
-		)
-	);
+	$robots = Robots::find(array(
+		"conditions" => array("type" => "virtual"),
+		"sort"       => array("name" => -1)
+	));
 
 The available query options are:
 
@@ -374,7 +360,7 @@ listeners that run when an event is triggered.
 	$eventsManager = new Phalcon\Events\Manager();
 
 	//Attach an anonymous function as a listener for "model" events
-	$eventsManager->attach('model', function($event, $robot) {
+	$eventsManager->attach('collection', function($event, $robot) {
 		if ($event->getType() == 'beforeSave') {
 			if ($robot->name == 'Scooby Doo') {
 				echo "Scooby Doo isn't a robot!";
@@ -403,7 +389,7 @@ objects created in our application use the same EventsManager then we need to as
 		$eventsManager = new Phalcon\Events\Manager();
 
 		// Attach an anonymous function as a listener for "model" events
-		$eventsManager->attach('model', function($event, $model) {
+		$eventsManager->attach('collection', function($event, $model) {
 			if (get_class($model) == 'Robots') {
 				if ($event->getType() == 'beforeSave') {
 					if ($model->name == 'Scooby Doo') {
@@ -505,8 +491,6 @@ the value is not included in the method then the validator will fail and return 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Regex        | Validates that the value of a field matches a regular expression                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
-+--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
@@ -545,11 +529,9 @@ Adding the validator to a model:
 
 		public function validation()
 		{
-			$this->validate(new UrlValidator(
-				array(
-					"field"  => "url",
-				)
-			));
+			$this->validate(new UrlValidator(array(
+				"field"  => "url",
+			)));
 			if ($this->validationHasFailed() == true) {
 				return false;
 			}

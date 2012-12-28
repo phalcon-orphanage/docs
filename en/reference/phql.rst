@@ -262,7 +262,7 @@ By default, a INNER JOIN is assumed. You can specify the type of JOIN in the que
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql = "SELECT CCars.*, Brands.* FROM Cars LEFT JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands";
@@ -686,6 +686,5 @@ Some things to keep in mind when using PHQL:
 
 * Classes are case sensitive, if a class is not defined as it was defined this could lead to unexpected behaviors
 * The correct charset must be defined in the connection to bind parameters with success
-
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

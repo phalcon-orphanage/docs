@@ -76,7 +76,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     [models]
     metadata.adapter  = "Memory"
 
-You can read the file as follows
+You can read the file as follows:
 
 .. code-block:: php
 
@@ -87,4 +87,47 @@ You can read the file as follows
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
+
+Merging Configurations
+----------------------
+Phalcon\\Config allows to merge a configuration object into another one recursively:
+
+.. code-block:: php
+
+    <?php
+
+    $config = new Phalcon\Config(array(
+        'database' => array(
+            'host' => 'localhost',
+            'name' => 'test_db'
+        ),
+        'debug' => 1
+    ));
+
+    $config2 = new Phalcon\Config(array(
+        'database' => array(
+            'username' => 'scott',
+            'password' => 'secret',
+        )
+    ));
+
+    $config->merge($config2);
+
+    print_r($config);
+
+The above code produces the following:
+
+.. code-block:: html
+
+    Phalcon\Config Object
+    (
+        [database] => Phalcon\Config Object
+            (
+                [host] => localhost
+                [name] => test_db
+                [username] => scott
+                [password] => secret
+            )
+        [debug] => 1
+    )
 

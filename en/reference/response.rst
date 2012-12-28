@@ -20,9 +20,31 @@ component designed to achieve this task. HTTP responses are usually composed by 
     //Send response to the client
     $response->send();
 
-.. highlights::
+Keep in mind that if you're using the full MVC stack there is no need to create responses manually. However if you need to return a responde
+directly from a controller's action follow this example:
 
-    Keep in mind that if you're using the full MVC stack there is no need to create responses manually.
+.. code-block:: php
+
+    <?php
+
+    class FeedController extends Phalcon\Mvc\Controller
+    {
+
+        public function getAction()
+        {
+            // Getting a request instance
+            $request = new \Phalcon\Http\Request();
+
+            $feed = //.. load here the feed
+
+            //Set the content of the response
+            $response->setContent($feed->asString());
+
+            //Return the response
+            return $response;
+        }
+
+    }
 
 Working with Headers
 --------------------
