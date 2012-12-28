@@ -1,23 +1,17 @@
-Universal Class Loader
+万能的类文件加载器
 ======================
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` is a component that allows you to load project classes automatically, based on some predefined rules.
-Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 这个组件允许你根据预定义规则自动加载项目中的类文件。
+此组件采用C语言编写，在读取和解析PHP文件方面，使用了最低的性能开销。
 
-The behavior of this component is based on the PHP's capability of `autoloading classes`_. If a class that does not exist is used in any part of the
-code, a special handler will try to load it. :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` serves as the special handler for this operation. By
-loading classes on a need to load basis, the overall performance is increased since the only file reads that occur are for the files needed. This
-technique is called `lazy initialization`_.
+此组件功能是基于PHP自身的 `autoloading classes`_ 实现的。如果在任何代码部分未找到类，那么它将尝试使用特殊的处理加载它,:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 就是用于处理这种任务的。加载类文件采用按需加载的方式，只有需要某个类文件时，才会进行加载及文件读取。这种技术被称为延时初始化( `lazy initialization`_ )。
 
-With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ compliant.
+使用此组件，你可以从其他项目或vendors(不知道是什么，应该指的是其他服务器)加载文件，autoloader 采用 `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ 标准。
 
-:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
+:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 提供四种方式自动加载类文件，你可以一次只使用其中一个，或者混合使用。
 
 Registering Namespaces
 ----------------------
-If you're organizing your code using namespaces, or external libraries do so, the registerNamespaces() provides the autoloading mechanism. It
-takes an associative array, which keys are namespace prefixes and their values are directories where the classes are located in. The namespace
-separator will be replaced by the directory separator when the loader try to find the classes. Remember always to add a trailing slash at
-the end of the paths.
+如果你的代码使用了命名空间或外部库文件，可以使用registerNamespaces()，它提供了一种自动加载机制，可以通过传递一个关联数组，key是命名空间前辍，value是类文件存放的目录。当加载并试图查找类文件时，分隔符被替换成目录分隔符，以便正确加载类文件。还有一点请注意，value末尾一定要以"/"结尾。
 
 .. code-block:: php
 
@@ -44,9 +38,7 @@ the end of the paths.
 
 Registering Prefixes
 ----------------------
-This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
-where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
-the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.
+这种策略非常类似上面讲到的命名空间的加载机制。它也需要一个关联数组，key是前辍，value是类所在的目录。加载的时候，命名空间分隔符和下划线"_"将要被替换为目录分隔符。还是请注意，value的结尾一定要以"/"作为结束符。
 
 .. code-block:: php
 
@@ -73,9 +65,7 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
 Registering Directories
 -----------------------
-The second option is to register directories, in which classes could be found. This option is not recommended in terms of performance,
-since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class.
-It's important to register the directories in relevance order. Remember always add a trailing slash at the end of the paths.
+第三种方式是注册目录，在注册的目录中找到类文件。在性能方面，不建议使用此种方式，因为Phalcon将对注册的所有目录及文件进行查找，直接查找具有相同名称的类文件。注册目录时的顺序是非常重要的。请注意，结尾以"/"结束。
 
 .. code-block:: php
 
@@ -104,10 +94,7 @@ It's important to register the directories in relevance order. Remember always a
 
 Registering Classes
 -------------------
-The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the
-project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading.
-However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make
-maintenance of the class list very cumbersome and it is not recommended.
+最后一种方式是注册类的名称和路径。这种加载方面是最快的一种加载方式。然而，随着应用程序的增长，更多的类及文件需要加载，这将使维护工作变得非常麻烦，因为不太建议使用。
 
 .. code-block:: php
 
@@ -132,10 +119,9 @@ maintenance of the class list very cumbersome and it is not recommended.
     // i.e. library/OtherComponent/Other/Some.php
     $some = new Some();
 
-Additional file extensions
+其他扩展名文件的加载
 --------------------------
-Some autoloading strategies such as  "prefixes", "namespaces" or "directories" automatically append the "php" extension at the end of the checked file. If you
-are using additional extensions you could set it with the method "setExtensions". Files are checked in the order as it were defined:
+一些自动加载策略，如"prefixes","namespaces",或"directories"都会自动加载扩展名为".php"的文件。如果你想自动加载其他扩展类型的文件时，你可以使用"setExtensions"方法。示例如下：
 
 .. code-block:: php
 
@@ -149,7 +135,7 @@ are using additional extensions you could set it with the method "setExtensions"
 
 Modifying current strategies
 ----------------------------
-Additional data could be added to the existing values for strategies in the following way:
+通过下面的方式可以把需要后来加载的其他文件合并到上述加载策略中：
 
 .. code-block:: php
 
@@ -164,11 +150,11 @@ Additional data could be added to the existing values for strategies in the foll
         true
     );
 
-Passing "true" as second parameter will merge the current values with new ones in any strategy.
+通过传递第二个参数"true"，可以让新的目录或类文件合并到上述四种加载策略中。
 
 Autoloading Events
 ------------------
-In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
+在下面的例子中，EventsManager与类加载器协同工作，使我们能够获得操作流程的调试信息：
 
 .. code-block:: php
 
@@ -195,7 +181,7 @@ In the following example, the EventsManager is working with the class loader, al
 
     $loader->register();
 
-Some events when returning boolean false could stop the active operation. The following events are supported:
+当事件返回布尔值false时，可以停止激活的操作。支持以下一些事件：
 
 +------------------+---------------------------------------------------------------------------------------------------------------------+---------------------+
 | Event Name       | Triggered                                                                                                           | Can stop operation? |

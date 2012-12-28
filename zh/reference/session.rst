@@ -1,12 +1,11 @@
-Storing data in Session
-=======================
+把数据存储到Session(Storing data in Session)
+=====================================================================
 
-The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
+:doc:`Phalcon\\Session <../api/Phalcon_Session>` 组件提供了一种面象对象的方式访问session数据。
 
-Starting the Session
+初始化Session
 --------------------
-Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually.
-Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
+有一些应用程序是会话密集型的，几乎所有的操作都需要访问Session数据。还有一些则不太需要用户会话。有了服务容器，我们可以确保只有在需要它的时候，就可以访问它：
 
 .. code-block:: php
 
@@ -19,10 +18,9 @@ Thanks to the service container, we can ensure that the session is accessed only
         return $session;
     });
 
-Storing/Retrieving data in Session
+存储/获取 Session数据
 ----------------------------------
-From a controller, a view or any other component thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
-and store items and retrieve them in the following way:
+你可以在控制器，视图文件，以及只要继承自 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中方便的访问session服务，并且可方便的存储或获取它们的值。请看示例：
 
 .. code-block:: php
 
@@ -51,9 +49,9 @@ and store items and retrieve them in the following way:
 
     }
 
-Removing/Destroying Sessions
+移除/销毁 Session数据
 ----------------------------
-It's also possible remove specific variables or destroy the whole session:
+你可以移除指定的session数据，也可销毁整个session:
 
 .. code-block:: php
 
@@ -78,9 +76,7 @@ It's also possible remove specific variables or destroy the whole session:
 
 Isolating Session Data between Applications
 -------------------------------------------
-Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session,
-we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a
-prefix for every session variable created in a certain application:
+有时，我们可能部署相同的应用程序在同一台服务器上两次，而使用相同的会话。当然，如果我们在会话中使用变量，我们希望每个应用程序都有其单独的会话数据(即使相同代码和相同的变量名称)。为了解决这个问题，你可以在某个应用程序中为每个会话创建的变量添加一个前辍：
 
 .. code-block:: php
 
@@ -103,9 +99,7 @@ prefix for every session variable created in a certain application:
 
 Session Bags
 ------------
-:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
-Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
-it's automatically stored in session:
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 组件帮助把session数据导入到 "namespaces"。通过这种方式，你可以轻松的创建一组会话变量到应用程序中，只需设置变量为 "bag",它会自动存储为session数据：
 
 .. code-block:: php
 
@@ -118,9 +112,9 @@ it's automatically stored in session:
 
 Persistent Data in Components
 -----------------------------
-Controller, components and classes thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
-Thanks to this you can persist data between requests in every class in an independent way.
+控制器，组件，或者其他继承自  :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的类都可以注入到  :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.使用这个类的会话数据在每个类中的变量是隔离开的，基于此，你可以隔离每个请求持久化数据。
+
+译者注： 我曾在翻译tutorial invo章节时测试过此属性，并添加了注释。可以查阅 :doc:`tutorial-invo <../reference/tutorial-invo>`，搜索 '译者注'查看
 
 .. code-block:: php
 
@@ -167,10 +161,9 @@ In a component:
 
     }
 
-The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
-can only be accessed in the scope of the current class.
+通过 ($this->session) 添加的变量，可在整个应用程序进行访问。而通过 ($this->persistent) 添加的变量，只能在当前类访问。
 
-Implementing your own adapters
+实现自定义适配器
 ------------------------------
 The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
