@@ -1,17 +1,17 @@
-Internationalization
+国际化
 ====================
-Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_. Its documentation can be found in the pages of the official `PHP manual`_.
+Phalcon是一个用C语言编写的PHP扩展。这儿有一个 PECL_ 扩展，为PHP程序提供国际化功能，叫 intl_ 。我们可以通过PHP官方文档 `PHP manual`_ 学习它。
 
-Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
+Phalcon原生不支持国际化的功能，因为创建一个这样的组件与PHP intl功能重复。
 
-In the examples below, we will show you how to implement the intl_ extension's functionality into Phalcon powered applications.
+在下面的例子中，我们将向您展示如何实现使用 intl_ 扩展为Phalcon应用提供国际化功能。
 
 .. highlights::
-   This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
-
+   本指南并不打算完全讲述 intl_ 扩展的使用。如需要，请访问PHP官方文档: documentation_ 
+   
 Find out best available Locale
 ------------------------------
-There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
+有几种方式可以找出最佳的可用的语言环境使用 intl_ 。其中之一就是检查HTTP的 "Accept-Language" 头信息：
 
 .. code-block:: php
 

@@ -1,4 +1,4 @@
-Debugging Applications
+应用程序调试
 ======================
 PHP offers tools to debug applications with notices, warnings, errors and exceptions. The `Exception class`_ offers information such as the file, line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
 
