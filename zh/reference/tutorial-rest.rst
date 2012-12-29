@@ -1,16 +1,16 @@
-Tutorial 3: Creating a Simple REST API
+教程 3: 创建 RESTful风格 API
 ======================================
-In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the different HTTP methods:
+在本节教程中，我们将展示如何使用不同的HTTP方法创建一个简单的 RESTful_ 风格的API。
 
-* GET to retrieve and search data
-* POST to add data
-* PUT to update data
-* DELETE to delete data
+* 使用HTTP GET方法获取以及检索数据
+* 使用HTTP POST方法添加数据
+* 使用HTTP PUT方法更新数据
+* 使用HTTP DELETE方法删除数据
 
 Defining the API
 ----------------
 
-The API consists of the following methods:
+API包括以下方法：
 
 +--------+----------------------------+----------------------------------------------------------+
 | Method |  URL                       | Action                                                   |
@@ -28,12 +28,11 @@ The API consists of the following methods:
 | DELETE | /api/robots/2              | Deletes robots based on primary key                      |
 +--------+----------------------------+----------------------------------------------------------+
 
-Creating the Application
+创建应用
 ------------------------
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a :doc:`micro application <micro>`
-to meet our goal.
+RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环境来开发它。在这种情况下，我们只要使用 :doc:`micro application <micro>` 就可以了。
 
-The following file structure is more than enough:
+下面的文件结构足够了：
 
 .. code-block:: php
 
@@ -43,7 +42,9 @@ The following file structure is more than enough:
         index.php
         .htaccess
 
-First, we need an .htaccess file that contains all the rules to rewrite the URIs to the index.php file, that is our application:
+首先，我们需要创建一个.htaccess的文件，包含index.php文件的全部重写规则，下面示例就是此文件的全部：
+
+译者注：使用.htaccess文件，前提是指定了你使用的是Apache WEB Sever.
 
 .. code-block:: apacheconf
 
@@ -53,7 +54,7 @@ First, we need an .htaccess file that contains all the rules to rewrite the URIs
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-Then, in the index.php file we create the following:
+然后，我们按以下方式创建 index.php 文件：
 
 .. code-block:: php
 
@@ -65,7 +66,7 @@ Then, in the index.php file we create the following:
 
     $app->handle();
 
-Now we will create the routes as we defined above:
+现在，我们按我们上面的定义创建路由规则：
 
 .. code-block:: php
 
@@ -105,16 +106,13 @@ Now we will create the routes as we defined above:
 
     $app->handle();
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case
-the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}', by example, explicitly set that the "id" parameter must have a numeric format.
+每个API方法都需要定义一个与定义的HTTP方法相同名称的路由规则，第一个参数传递路由规则，第二个是处理程序，在这种情况下，处理程序是一个匿名函数。路由规则  '/api/robots/{id:[0-9]+}'，明确设置'id'参数必须是一个数字。
 
-When a defined route matches the requested URI then the application will execute the corresponding handler.
+当用户请求匹配上已定义的路由时，应用程序将执行相应的处理程序。
 
-Creating a Model
+创建模型(Model)
 ----------------
-Our API provides information about robots, these data are stored in a database. The following model allows us to access that table in an object oriented way.
-We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data
-meet the requirements of our application:
+API需要提供robots的相关信息，这些数据都存储在数据库中。下面的模型使我们以一种面向对象的方式访问数据表。我们需要使用内置的验证器实现一些业务规则。这样做，会使我们对数据更安全的存储放心，以达到我们想要实现的目的：
 
 .. code-block:: php
 
@@ -158,7 +156,7 @@ meet the requirements of our application:
 
     }
 
-Now, we must set up a connection to be used by this model:
+现在，我们来创建数据库连接以便使用这个模型：
 
 .. code-block:: php
 
@@ -181,9 +179,9 @@ Now, we must set up a connection to be used by this model:
     //Bind the DI to the application
     $app->setDI($di);
 
-Retrieving Data
+获取数据
 ---------------
-The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON:
+第一个"handler"实现通过HTTP GET获取所有可用的robots。让我们使用PHQL执行一个简单的数据查询，并返回JSON数据格式：
 
 .. code-block:: php
 
@@ -207,11 +205,11 @@ The first "handler" that we will implement is which by method GET returns all av
 
     });
 
-:doc:`PHQL <phql>`, allow us to write queries using a high level, object oriented SQL dialect that internally
-translates to the right SQL statements depending on the database system we are using. The clause "use" in the anonymous function allows
-us to pass some variables from global to local scope easily.
+:doc:`PHQL <phql>`,根据我们使用的数据库系统，允许我们使用面向对象的SQL方言，在内部将其转化为普通的SQL语言，此例使用"use"关键词的匿名函数，允许从整体到局部传递变量。
 
-The searching by name handler would look like:
+译者注：不了解匿名函数及use语法的，请查看PHP 5.4版本的文档（具体是5.3开始，还是5.4开始我也不太清楚，就不查证了）。
+
+处理程序看起来像这样：
 
 .. code-block:: php
 
@@ -237,7 +235,7 @@ The searching by name handler would look like:
 
     });
 
-Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
+通过字段"id"检索与上例相当类似，在这种情况下，如果没有检索到，会提示未找到。
 
 .. code-block:: php
 
@@ -266,9 +264,9 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         echo json_encode($response);
     });
 
-Inserting Data
+插入数据
 --------------
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
+客户端提交JSON包装的字符串，我们也使用PHQL插入：
 
 .. code-block:: php
 
@@ -313,9 +311,9 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
     });
 
-Updating Data
+更新数据
 -------------
-The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+更新数据非常类似于插入数据。传递的"id"参数指明哪个robots将被更新：
 
 .. code-block:: php
 
@@ -357,9 +355,9 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
     });
 
-Deleting Data
+删除数据
 -------------
-The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+删除数据非常类似于更新数据。传递的"id"参数指明哪个robot被删除：
 
 .. code-block:: php
 
@@ -394,11 +392,11 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
     });
 
-Testing our Application
+测试应用
 -----------------------
-Using curl_ we'll test every route in our application verifying its proper operation:
+使用 curl_ 可以测试应用程序中每个操作的正确性：
 
-Obtain all the robots:
+获取所有robots:
 
 .. code-block:: bash
 
@@ -412,7 +410,7 @@ Obtain all the robots:
 
     [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 
-Search a robot by its name:
+通过名称查找robot:
 
 .. code-block:: bash
 
@@ -426,7 +424,7 @@ Search a robot by its name:
 
     [{"id":"2","name":"Astro Boy"}]
 
-Obtain a robot by its id:
+通过 id 查找 robot:
 
 .. code-block:: bash
 
@@ -440,7 +438,7 @@ Obtain a robot by its id:
 
     {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 
-Insert a new robot:
+插入一个新的robot:
 
 .. code-block:: bash
 
@@ -455,7 +453,7 @@ Insert a new robot:
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
-Try to insert a new robot with the name of an existing robot:
+尝试插入一个与存在的robot相同名称的robot:
 
 .. code-block:: bash
 
@@ -470,7 +468,7 @@ Try to insert a new robot with the name of an existing robot:
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
 
-Or update a robot with an unknown type:
+或者使用错误的type值更新一个robot:
 
 .. code-block:: bash
 
@@ -486,7 +484,7 @@ Or update a robot with an unknown type:
     {"status":"ERROR","messages":["Value of field 'type' must be part of
         list: droid, mechanical, virtual"]}
 
-Finally, delete a robot:
+最后，测试删除一个robot数据：
 
 .. code-block:: bash
 
@@ -500,10 +498,9 @@ Finally, delete a robot:
 
     {"status":"OK"}
 
-Conclusion
+结论
 ----------
-As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we'll explain in detail how to
-use micro applications and the :doc:`PHQL <phql>` language.
+正如你所看到的那样，使用Phalcon开发RESTful风格的API相当容易。在接下来的文档中，我们会具体讲解如何开发微应用(micro applications)以及如何使用 :doc:`PHQL <phql>` 。
 
 .. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer

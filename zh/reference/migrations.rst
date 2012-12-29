@@ -1,4 +1,4 @@
-Database Migrations
+数据库迁移
 ===================
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
