@@ -497,6 +497,13 @@ The following are examples of custom routes:
         "Feed::get"
     );
 
+    // matches /api/v1/users/peter.json
+    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)', array(
+        'controller' => 'api',
+        'version' => 1,
+        'format' => 4
+    ));
+
 .. highlights::
     Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
