@@ -514,7 +514,8 @@ can be a little more verbose:
         'className' => 'Phalcon\Logger\Adapter\File',
         'arguments' => array(
             array(
-                'type' => 'parameter', 'value' => '../apps/logs/error.log'
+                'type' => 'parameter',
+                'value' => '../apps/logs/error.log'
             )
         )
     ));
@@ -534,7 +535,10 @@ Both service registrations above produce the same result. The array definition h
     $di->getService('logger')->setClassName('MyCustomLogger');
 
     //Change the first parameter without instantiate the logger
-    $di->getService('logger')->setParameter(0, '../apps/logs/error.log');
+    $di->getService('logger')->setParameter(0, array(
+        'type' => 'parameter',
+        'value' => '../apps/logs/error.log'
+    ));
 
 In addition by using the array syntax you can use three types of dependency injection:
 
