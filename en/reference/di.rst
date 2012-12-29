@@ -572,7 +572,9 @@ The service can be registered this way:
 
     <?php
 
-    $di->set('response', 'Phalcon\Http\Response');
+    $di->set('response', array(
+        'className' => 'Phalcon\Http\Response'
+    ));
 
     $di->set('someComponent', array(
         'className' => 'SomeApp\SomeComponent',
@@ -622,7 +624,9 @@ A service with setter injection can be registered as follows:
 
     <?php
 
-    $di->set('response', 'Phalcon\Http\Response');
+    $di->set('response', array(
+        'className' => 'Phalcon\Http\Response'
+    ));
 
     $di->set('someComponent', array(
         'className' => 'SomeApp\SomeComponent',
@@ -669,21 +673,41 @@ A service with properties injection can be registered as follows:
 
     <?php
 
-    $di->set('response', 'Phalcon\Http\Response');
+    $di->set('response', array(
+        'className' => 'Phalcon\Http\Response'
+    ));
 
     $di->set('someComponent', array(
         'className' => 'SomeApp\SomeComponent',
         'properties' => array(
             array(
-                'property' => 'response',
+                'name' => 'response',
                 'value' => array('type' => 'service', 'name' => 'response')
             ),
             array(
-                'property' => 'someFlag',
+                'name' => 'someFlag',
                 'value' => array('type' => 'parameter', 'value' => true)
             )
         )
     ));
+
+Supported parameter types include the following:
+
++-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| Type        | Description                                              | Example                                                                            |
++=============+==========================================================+====================================================================================+
+| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                      |
++-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| service     | Represents another service in the services container     | array('type' => 'service', 'name' => 'request')                                    |
++-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+| instance    | Represents a object that must be built dynamically       | array('type' => 'service', 'className' => 'DateTime', 'arguments' => array('now')) |
++-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
+
+Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions, however
+these provide a more robust approach to define and inject services.
+
+Mixing different types of definitions is allowed, everyone can decide which is the most appropriate way to register the services
+in the application.
 
 Resolving Services
 ==================
@@ -940,7 +964,7 @@ right services when you need it requires them.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | flash               | Flash Messaging Service                     | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                                        | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
-| flashSession        | Flash Session Messaging Service             | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`                                        | Yes    |
+| flashSession        | Flash Session Messaging Service             | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`                                      | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | session             | Session Service                             | :doc:`Phalcon\\Session\\Adapter\\Files <../api/Phalcon_Session_Adapter_Files>`                     | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
