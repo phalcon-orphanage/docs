@@ -359,7 +359,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
 Deleting Data
 -------------
-The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
 
 .. code-block:: php
 

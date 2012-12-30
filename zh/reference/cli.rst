@@ -1,7 +1,7 @@
-Command Line Applications
+命令行程序
 =========================
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+命令行程序是指在命名行下执行的程序，他们通常用来创建定时(cron)任务，脚本，命令行式实用程序或其他。
 
 Tasks
 -----
