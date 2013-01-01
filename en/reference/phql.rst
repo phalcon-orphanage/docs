@@ -619,6 +619,16 @@ More examples of the builder:
     $builder->from('Robots')
             ->where(100)
 
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" AND Robots.id > 50'
+    $builder->from('Robots')
+            ->where('type = "virtual"')
+            ->andWhere('id > 50')
+
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" OR Robots.id > 50'
+    $builder->from('Robots')
+            ->where('type = "virtual"')
+            ->orWhere('id > 50')
+
     // 'SELECT Robots.* FROM Robots GROUP BY Robots.name'
     $builder->from('Robots')
             ->groupBy('Robots.name')

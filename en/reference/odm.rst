@@ -4,7 +4,7 @@ In addition to its ability to :doc:`map tables <models>` in relational databases
 The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach.
-Additionally, there are no SQL building eliminating the possibility of SQL injections.
+Additionally, there are no SQL building reducing the possibility of SQL injections.
 
 The following NoSQL databases are supported:
 
