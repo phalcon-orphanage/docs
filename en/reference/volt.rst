@@ -309,6 +309,30 @@ Additionally, a if evaluation can be optionally set:
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
+Loop Controls
+^^^^^^^^^^^^^
+The 'break' and 'continue' statements can be used to exit from a loop or force a iteration in the current block:
+
+.. code-block:: html+jinja
+
+    {# skip the even robots #}
+    {% for index, robot in robots %}
+        {% if index is even %}
+            {% continue %}
+        {% endif %}
+        ...
+    {% endfor %}
+
+.. code-block:: html+jinja
+
+    {# exit the foreach on the first even robot #}
+    {% for index, robot in robots %}
+        {% if index is even %}
+            {% break %}
+        {% endif %}
+        ...
+    {% endfor %}
+
 If
 ^^
 As PHP, a if statement checks if an expression is evaluated as true or false:
@@ -809,6 +833,21 @@ As partials, the path set to "extends" is a relative path under the current view
     to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
     'compileAlways' => true. Thus, the templates are compiled always taking into account changes in
     the parent templates.
+
+Autoescape mode
+---------------
+You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+
+.. code-block:: html+jinja
+
+    Manually escaped: {{ robot.name|e }}
+
+    {% autoescape true %}
+        Autoescaped: {{ robot.name }}
+        {% autoescape false %}
+            No Autoescaped: {{ robot.name }}
+        {% endautoescape %}
+    {% endautoescape %}
 
 Setting up the Volt Engine
 --------------------------
