@@ -1,11 +1,11 @@
-Class **Phalcon\\Mvc\\Model\\Behavior\\Timestampable**
-======================================================
+Class **Phalcon\\Mvc\\Model\\Behavior\\SoftDelete**
+===================================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
-Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
+Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
 
 Methods

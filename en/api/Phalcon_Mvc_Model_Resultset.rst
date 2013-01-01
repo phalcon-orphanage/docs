@@ -119,6 +119,18 @@ Returns current row in the resultset
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+
+Returns the error messages produced by a batch operation
+
+
+
+public *boolean*  **delete** ([*Closure* $conditionCallback])
+
+Delete every record in the resultset
+
+
+
 abstract public  **valid** () inherited from Iterator
 
 ...

@@ -1,6 +1,8 @@
 Interface **Phalcon\\DiInterface**
 ==================================
 
+*extends* ArrayAccess
+
 Phalcon\\DiInterface initializer
 
 
@@ -95,5 +97,25 @@ abstract public static  **reset** ()
 
 Resets the internal default DI
 
+
+
+abstract public  **offsetExists** (*unknown* $offset) inherited from ArrayAccess
+
+...
+
+
+abstract public  **offsetGet** (*unknown* $offset) inherited from ArrayAccess
+
+...
+
+
+abstract public  **offsetSet** (*unknown* $offset, *unknown* $value) inherited from ArrayAccess
+
+...
+
+
+abstract public  **offsetUnset** (*unknown* $offset) inherited from ArrayAccess
+
+...
 
 

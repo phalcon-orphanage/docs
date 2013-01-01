@@ -67,6 +67,18 @@ Sets conditions for the query
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a AND operator
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a OR operator
+
+
+
 abstract public *string|array*  **getWhere** ()
 
 Return the conditions for the query

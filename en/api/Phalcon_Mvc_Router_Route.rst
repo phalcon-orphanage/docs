@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Router\\Route**
 
 *implements* :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`
 
-This class represents every route defined in the router.
+This class represents every route added to the router
 
 
 Methods
@@ -21,7 +21,7 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public  **via** (*string|array* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **via** (*string|array* $httpMethods)
 
 Set one or more HTTP methods that constraint the matching of the route
 
@@ -39,13 +39,13 @@ Returns the route's name
 
 
 
-public  **setName** (*string* $name)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **setName** (*string* $name)
 
 Sets the route's name
 
 
 
-public  **setHttpMethods** (*string|array* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **setHttpMethods** (*string|array* $httpMethods)
 
 Sets a set of HTTP methods that constraint the matching of the route
 
@@ -84,6 +84,18 @@ Returns the paths using positions as keys and names as values
 public *string|array*  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **convert** (*string* $name, *callable* $converter)
+
+Adds a converter to perform an additional transformation for certain parameter
+
+
+
+public *array*  **getConverters** ()
+
+Returns the router converter
 
 
 

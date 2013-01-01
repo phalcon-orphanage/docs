@@ -125,3 +125,15 @@ Returns current row in the resultset
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** () inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Returns the error messages produced by a batch operation
+
+
+
+public *boolean*  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Delete every record in the resultset
+
+
+

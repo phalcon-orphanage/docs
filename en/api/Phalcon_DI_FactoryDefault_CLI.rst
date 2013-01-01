@@ -83,9 +83,47 @@ Check whether the last service obtained via getShared produced a fresh instance 
 
 
 
-public *array*  **getServices** () inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>` [] **getServices** () inherited from Phalcon\\DI
 
 Return the services registered in the DI
+
+
+
+public *boolean*  **offsetExists** (*string* $alias) inherited from Phalcon\\DI
+
+Check if a service is registered using the array syntax
+
+
+
+public  **offsetSet** (*string* $alias, *mixed* $definition) inherited from Phalcon\\DI
+
+Allows to register a shared service using the array syntax 
+
+.. code-block:: php
+
+    <?php
+
+    $di['request'] = new Phalcon\Http\Request();
+
+
+
+
+public *mixed*  **offsetGet** (*string* $alias) inherited from Phalcon\\DI
+
+Allows to obtain a shared service using the array syntax 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($di['request']);
+
+
+
+
+public  **offsetUnset** (*string* $alias) inherited from Phalcon\\DI
+
+Removes a service from the services container using the array syntax
 
 
 

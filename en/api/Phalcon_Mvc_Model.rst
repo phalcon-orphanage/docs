@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model**
 =============================
 
-*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
 Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
 
@@ -38,7 +38,7 @@ Constants
 Methods
 ---------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*string* $managerService], [*string* $dbService])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -56,15 +56,27 @@ Returns the dependency injection container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+protected  **setEventsManager** ()
 
-Sets the event manager
+Sets a custom events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+protected :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
-Returns the internal event manager
+Returns the custom events manager
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`  **getModelsMetaData** ()
+
+Returns the models meta-data service related to the entity instance
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`  **getModelsManager** ()
+
+Returns the models manager related to the entity instance
 
 
 
@@ -94,7 +106,7 @@ Sets a transaction related to the Model instance
       $robotPart->setTransaction($transaction);
       $robotPart->type = 'head';
       if ($robotPart->save() == false) {
-        $transaction->rollback("Can't save robot part");
+        $transaction->rollback("Robot part cannot be saved");
       }
     
       $transaction->commit();
@@ -109,7 +121,7 @@ Sets a transaction related to the Model instance
 
 protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** ()
 
-Sets table name which model should be mapped
+Sets table name which model should be mapped (deprecated)
 
 
 
@@ -121,7 +133,7 @@ Returns table name mapped in the model
 
 protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** ()
 
-Sets schema name where table mapped is located
+Sets schema name where table mapped is located (deprecated)
 
 
 
@@ -133,7 +145,7 @@ Returns schema name where table mapped is located
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
 
-Sets the DependencyInjection connection service
+Sets the DependencyInjection connection service name
 
 
 
@@ -356,15 +368,15 @@ Allows to calculate the average value on a column matching the specified conditi
 
 
 
-protected *boolean*  **_callEvent** ()
+public *boolean*  **fireEvent** (*string* $eventName)
 
-Fires an internal event
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-protected *boolean*  **_callEventCancel** ()
+public *boolean*  **fireEventCancel** (*string* $eventName)
 
-Fires an internal event that cancels the operation
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
 
 
@@ -606,6 +618,12 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 
 
 
+public  **skipOperation** (*boolean* $skip)
+
+Skips the current operation forcing a success state
+
+
+
 public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
@@ -774,8 +792,36 @@ Setup a relation n-n between two models through an intermediate relation
            //A reference relation must be set
            $this->hasMany('id', 'RobotsParts', 'robots_id');
     
-           //Setup a many-many relation to Parts through RobotsParts
+           //Setup a many-to-many relation to Parts through RobotsParts
            $this->hasManyThrough('Parts', 'RobotsParts');
+       }
+    
+    }
+
+
+
+
+protected  **addBehavior** ()
+
+Setups a behavior in a model 
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Behaviors\Timestampable;
+    
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+    	$this->addBehavior(new Timestampable(
+    		'onCreate' => array(
+    			'field' => 'created_at',
+    			'format' => 'Y-m-d'
+    		)
+    	));
        }
     
     }
@@ -815,13 +861,27 @@ Unserializes the object from a serialized string
 
 public *array*  **dump** ()
 
-Returns a simple representation of the object that can be used with var_dump
+Returns a simple representation of the object that can be used with var_dump 
+
+.. code-block:: php
+
+    <?php
+
+     var_dump($robot->dump());
 
 
 
-public  **__wakeup** ()
 
-This method implements the magic method wake up, this reinitializes the model using the default DI
+public *array*  **toArray** ()
+
+Returns the instance as an array representation 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($robot->toArray());
+
 
 
 

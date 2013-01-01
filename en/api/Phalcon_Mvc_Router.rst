@@ -108,6 +108,12 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPatch** (*string* $pattern, [*string/array* $paths])
+
+Adds a route to the router that only match if the HTTP method is PATCH
+
+
+
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is DELETE

@@ -11,7 +11,7 @@ Generates database specific SQL for the PostgreSQL RBDM
 Methods
 ---------
 
-public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in PostgreSQL
 

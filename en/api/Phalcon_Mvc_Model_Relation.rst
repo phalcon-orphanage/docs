@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Model\\Relation**
 =======================================
 
+*implements* :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`
+
 This class represents each relationship between two models
 
 
@@ -24,7 +26,7 @@ Methods
 
 public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
 
-
+Phalcon\\Mvc\\Model\\Relation constructor
 
 
 

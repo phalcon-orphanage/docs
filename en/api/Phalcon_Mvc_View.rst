@@ -120,8 +120,8 @@ Disables an specific level of rendering
 
     <?php
 
-    Render all levels except ACTION level
-    $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
+     //Render all levels except ACTION level
+     $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
 
 
 
@@ -166,13 +166,40 @@ Resets any template before layouts
 
 public  **setParamToView** (*string* $key, *mixed* $value)
 
-Adds parameters to views (alias of setVar)
+Adds parameters to views (alias of setVar) 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView('products', $products);
+
+
+
+
+public  **setVars** (*array* $params)
+
+Set all the render params 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView(array('products' => $products));
+
 
 
 
 public  **setVar** (*string* $key, *mixed* $value)
 
-Adds parameters to views
+Set a single view parameter 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView('products', $products);
+
 
 
 
@@ -291,6 +318,19 @@ Renders a partial view
 
      	//Show a partial inside another view
      	$this->partial('shared/footer');
+
+
+
+
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params])
+
+Perform the automatic rendering returning the output as a string 
+
+.. code-block:: php
+
+    <?php
+
+     	$template = $this->view->getRender('products', 'show', array('products' => $products));
 
 
 

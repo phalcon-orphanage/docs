@@ -193,6 +193,12 @@ Checks if the dispatch loop is finished or has more pendent controllers/tasks to
 
 
 
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+
+Sets the latest returned value by an action manually
+
+
+
 public *mixed*  **getReturnedValue** () inherited from Phalcon\\Dispatcher
 
 Returns value returned by the lastest dispatched action

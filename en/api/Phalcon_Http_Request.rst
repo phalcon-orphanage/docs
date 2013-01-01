@@ -213,6 +213,12 @@ Checks whether HTTP method is PUT. if $_SERVER['REQUEST_METHOD']=='PUT'
 
 
 
+public *boolean*  **isPatch** ()
+
+Checks whether HTTP method is PATCH. if $_SERVER['REQUEST_METHOD']=='PATCH'
+
+
+
 public *boolean*  **isHead** ()
 
 Checks whether HTTP method is HEAD. if $_SERVER['REQUEST_METHOD']=='HEAD'

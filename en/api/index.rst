@@ -36,6 +36,7 @@ API Indice
    Phalcon_DI_FactoryDefault_CLI
    Phalcon_DI_Injectable
    Phalcon_DI_Service
+   Phalcon_DI_Service_Builder
    Phalcon_Db
    Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
@@ -96,6 +97,7 @@ API Indice
    Phalcon_Mvc_Micro_Exception
    Phalcon_Mvc_Model
    Phalcon_Mvc_Model_Behavior
+   Phalcon_Mvc_Model_Behavior_SoftDelete
    Phalcon_Mvc_Model_Behavior_Timestampable
    Phalcon_Mvc_Model_Criteria
    Phalcon_Mvc_Model_Exception
@@ -190,6 +192,7 @@ API Indice
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface
+   Phalcon_Mvc_Model_BehaviorInterface
    Phalcon_Mvc_Model_CriteriaInterface
    Phalcon_Mvc_Model_ManagerInterface
    Phalcon_Mvc_Model_MessageInterface
@@ -197,6 +200,7 @@ API Indice
    Phalcon_Mvc_Model_QueryInterface
    Phalcon_Mvc_Model_Query_BuilderInterface
    Phalcon_Mvc_Model_Query_StatusInterface
+   Phalcon_Mvc_Model_RelationInterface
    Phalcon_Mvc_Model_ResultInterface
    Phalcon_Mvc_Model_ResultsetInterface
    Phalcon_Mvc_Model_TransactionInterface

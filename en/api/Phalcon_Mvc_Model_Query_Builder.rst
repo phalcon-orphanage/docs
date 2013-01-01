@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Query\\Builder**
 =============================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Helps to create PHQL queries using an OO interface  
 
@@ -24,7 +24,7 @@ Methods
 
 public  **__construct** ([*array* $params])
 
-
+Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 
 
@@ -113,6 +113,32 @@ Sets the query conditions
     <?php
 
     $builder->where('name = :name: AND id > :id:');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a AND operator 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->andWhere('name = :name: AND id > :id:');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a OR operator 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->orWhere('name = :name: AND id > :id:');
 
 
 

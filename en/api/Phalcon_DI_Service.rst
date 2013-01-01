@@ -63,9 +63,21 @@ Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*array* $parameters])
+public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
+
+
+
+public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **setParameter** (*long* $position, *array* $parameter)
+
+Changes a parameter in the definition without resolve the service
+
+
+
+public *array*  **getParameter** (*int* $position)
+
+Returns a parameter in an specific position
 
 
 

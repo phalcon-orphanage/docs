@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
-*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 
@@ -20,9 +20,9 @@ Constants
 Methods
 ---------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
 
-
+Phalcon\\Mvc\\Model constructor
 
 
 
@@ -50,15 +50,15 @@ Returns the dependency injection container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+protected  **setEventsManager** ()
 
-Sets the event manager
+Sets a custom events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+protected :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
-Returns the internal event manager
+Returns the custom events manager
 
 
 
@@ -80,9 +80,15 @@ Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
 
-Sets a service in the services container that returns the Mongo database
+Sets the DependencyInjection connection service name
+
+
+
+public *string*  **getConnectionService** ()
+
+Returns DependencyInjection connection service
 
 
 
@@ -200,13 +206,13 @@ Check whether validation process has generated any messages
 
 
 
-protected *boolean*  **_callEvent** ()
+public *boolean*  **fireEvent** (*string* $eventName)
 
 Fires an internal event
 
 
 
-protected *boolean*  **_callEventCancel** ()
+public *boolean*  **fireEventCancel** (*string* $eventName)
 
 Fires an internal event that cancels the operation
 

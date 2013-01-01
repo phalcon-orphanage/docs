@@ -275,7 +275,14 @@ Builds a HTML close FORM tag
 
 public static  **setTitle** (*string* $title)
 
-Set the title of view content
+Set the title of view content 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Tag::setTitle('Welcome to my Page');
+
 
 
 

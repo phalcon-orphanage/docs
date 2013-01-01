@@ -11,7 +11,7 @@ Generates database specific SQL for the Sqlite RBDM
 Methods
 ---------
 
-public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in Sqlite
 
@@ -79,7 +79,7 @@ Generates SQL to add the table creation options
 
 public *string*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
 
-Generates SQL to create a table in PostgreSQL
+Generates SQL to create a table in Sqlite
 
 
 

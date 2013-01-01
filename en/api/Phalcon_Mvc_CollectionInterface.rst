@@ -81,6 +81,18 @@ Returns a cloned collection
 
 
 
+abstract public *boolean*  **fireEvent** (*string* $eventName)
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
+
+
+
+abstract public *boolean*  **fireEventCancel** (*string* $eventName)
+
+Fires an event, implicitly listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
+
+
+
 abstract public *boolean*  **validationHasFailed** ()
 
 Check whether validation process has generated any messages 

@@ -7,7 +7,7 @@ Phalcon\\Mvc\\ModelInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [*string* $managerService], [*string* $dbService])
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -81,7 +81,7 @@ Allows to count how many records match the specified conditions
 
 abstract public static *double*  **sum** ([*array* $parameters])
 
-Allows to a calculate a summatory on a column that match the specified conditions
+Allows to calculate a summatory on a column that match the specified conditions
 
 
 
@@ -100,6 +100,18 @@ Allows to get the minimum value of a column that match the specified conditions
 abstract public static *double*  **average** ([*array* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions
+
+
+
+abstract public *boolean*  **fireEvent** (*string* $eventName)
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
+
+
+
+abstract public *boolean*  **fireEventCancel** (*string* $eventName)
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
 
 

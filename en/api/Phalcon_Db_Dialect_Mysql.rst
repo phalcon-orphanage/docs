@@ -11,7 +11,7 @@ Generates database specific SQL for the MySQL RBDM
 Methods
 ---------
 
-public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in MySQL
 
@@ -83,7 +83,7 @@ Generates SQL to create a table in MySQL
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+public *string*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
 
 Generates SQL to drop a table
 
@@ -91,7 +91,15 @@ Generates SQL to drop a table
 
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
+Generates SQL checking for the existence of a schema.table 
+
+.. code-block:: php
+
+    <?php
+
+     echo $dialect->tableExists("posts", "blog");
+     echo $dialect->tableExists("posts");
+
 
 
 
