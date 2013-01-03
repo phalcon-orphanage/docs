@@ -523,7 +523,10 @@ The service name convention for this service is "viewCache":
         ));
 
         return $cache;
-    }, true);
+    });
+
+.. highlights::
+    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as always open (not shared)
 
 When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed in the views.
 
