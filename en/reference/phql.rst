@@ -690,6 +690,21 @@ More examples of the builder:
     $builder->from('Robots')
             ->limit(10, 5)
 
+Escaping Reserved Words
+-----------------------
+PHQL has a few number of reserved words, if you want to use any of them as attributes or models names, you need to escape those
+words using the cross-database escaping delimiters '[' and ']':
+
+.. code-block:: php
+
+    $phql = "SELECT * FROM [Update]";
+    $result = $manager->executeQuery($phql);
+
+    $phql = "SELECT id, [Like] FROM Posts";
+    $result = $manager->executeQuery($phql);
+
+The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+
 Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:

@@ -1631,9 +1631,11 @@ A behavior must be added in the model initializer, a model can has zero or more 
         public function initialize()
         {
             $this->addBehavior(new Timestampable(
-                'beforeCreate' => array(
-                    'field' => 'created_at',
-                    'format' => 'Y-m-d'
+                array(
+                    'beforeCreate' => array(
+                        'field' => 'created_at',
+                        'format' => 'Y-m-d'
+                    )
                 )
             ));
         }
@@ -1661,9 +1663,11 @@ This behavior receives an array of options, the first level key must be a event 
     public function initialize()
     {
         $this->addBehavior(new Timestampable(
-            'beforeCreate' => array(
-                'field' => 'created_at',
-                'format' => 'Y-m-d'
+            array(
+                'beforeCreate' => array(
+                    'field' => 'created_at',
+                    'format' => 'Y-m-d'
+                )
             )
         ));
     }
@@ -1678,12 +1682,14 @@ as format of the PHP's function date_, format can also be an anonymous function 
     public function initialize()
     {
         $this->addBehavior(new Timestampable(
-            'beforeCreate' => array(
-                'field' => 'created_at',
-                'format' => function() {
-                    $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
-                    return $datetime->format('Y-m-d H:i:sP');
-                }
+            array(
+                'beforeCreate' => array(
+                    'field' => 'created_at',
+                    'format' => function() {
+                        $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
+                        return $datetime->format('Y-m-d H:i:sP');
+                    }
+                )
             )
         ));
     }
@@ -1716,8 +1722,10 @@ This behavior can be used in the following way:
         public function initialize()
         {
             $this->addBehavior(new SoftDelete(
-                'field' => 'status',
-                'value' => Users::DELETED
+                array(
+                    'field' => 'status',
+                    'value' => Users::DELETED
+                )
             ));
         }
 
