@@ -7,7 +7,7 @@ the minimal overhead when escaping different kinds of texts.
 
 We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_
 
-Additionally, this component relies on mbstring to support almost any charset.
+Additionally, this component relies on mbstring_ to support almost any charset.
 
 To illustrate how this component works and why it is important, consider the following example:
 
@@ -165,3 +165,4 @@ You can escape an HTML attribute by using the escapeJs method:
 .. _OWASP : https://www.owasp.org
 .. _XSS : https://www.owasp.org/index.php/XSS
 .. _`XSS (Cross Site Scripting) Prevention Cheat Sheet` : https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
+.. _mbstring : http://php.net/manual/en/book.mbstring.php

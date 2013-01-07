@@ -255,7 +255,8 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
-    });
+
+    }, true);
 
 Implementing your own Dispatcher
 --------------------------------
