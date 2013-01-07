@@ -1770,7 +1770,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 Creating your own behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalon\\Mvc\\Model\\BehaviorInterface <../api/Phalon_Mvc_Model_BehaviorInterface>`
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
 Also the class Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blamable behavior which helps to use identify what user perform an operation over

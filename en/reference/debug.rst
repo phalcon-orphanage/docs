@@ -1,8 +1,11 @@
 Debugging Applications
 ======================
-PHP offers tools to debug applications with notices, warnings, errors and exceptions. The `Exception class`_ offers information such as the file, line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
+PHP offers tools to debug applications with notices, warnings, errors and exceptions. The `Exception class`_ offers information such as the file,
+line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate
+this functionality and provide information back to the developer or user.
 
-Despite being written in C, Phalcon runs methods in the PHP userland, providing the debug capability that any other application or framework written in PHP has.
+Despite being written in C, Phalcon runs methods in the PHP userland, providing the debug capability that any other application or framework
+written in PHP has.
 
 Catching Exceptions
 -------------------
@@ -68,7 +71,8 @@ Retrieving information from :doc:`Phalcon\Exception <../api/Phalcon_Exception>` 
         echo $e->getTraceAsString();
     }
 
-It's therefore easy to find which file and line of the application's code generated the exception, as well as the components involved in generating the exception.
+It's therefore easy to find which file and line of the application's code generated the exception, as well as the components involved in
+generating the exception:
 
 .. code-block:: html
 
@@ -95,7 +99,10 @@ It's therefore easy to find which file and line of the application's code genera
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even show the parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
+As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the
+parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
+
+By installing the '`Pretty Exceptions`' utility in your appplication you can print exceptions with a nicely presentation.
 
 Reflection and Instrospection
 -----------------------------
@@ -220,7 +227,8 @@ In this instance, Xdebug will also show us the variables in the local scope, and
 
 Xdebug provides several ways to get debug and trace information regarding the execution of your application using Phalcon. You can check the `XDebug documentation`_ for more information.
 
+.. _`Pretty Exceptions` : https://github.com/phalcon/pretty-exceptions
 .. _Exception class: http://www.php.net/manual/en/language.exceptions.php
-.. _Exception::getTrace: http://www.php.net/manual/en/exception.gettrace.php
+.. _Exception::getTrace : http://www.php.net/manual/en/exception.gettrace.php
 .. _XDebug: http://xdebug.org
 .. _XDebug documentation: http://xdebug.org/docs
