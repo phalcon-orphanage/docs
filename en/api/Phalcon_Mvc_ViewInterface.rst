@@ -19,6 +19,30 @@ Gets views directory
 
 
 
+abstract public  **setLayoutsDir** (*string* $layoutsDir)
+
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getLayoutsDir** ()
+
+Gets the current layouts sub-directory
+
+
+
+abstract public  **setPartialsDir** (*string* $partialsDir)
+
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getPartialsDir** ()
+
+Gets the current partials sub-directory
+
+
+
 abstract public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash
@@ -34,6 +58,24 @@ Sets the render level for the view
 abstract public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory
+
+
+
+abstract public *string*  **getMainView** ()
+
+Returns the name of the main view
+
+
+
+abstract public  **setLayout** (*string* $layout)
+
+Change the layout to be used instead of using the name of the latest controller name
+
+
+
+abstract public *string*  **getLayout** ()
+
+Returns the name of the main view
 
 
 

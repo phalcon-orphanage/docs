@@ -13,18 +13,6 @@ Phalcon\\Mvc\\Model\\Query\\Builder
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the DependencyInjector container
-
-
-
-abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the DependencyInjector container
-
-
-
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **columns** (*string|array* $columns)
 
 Sets the columns to be queried

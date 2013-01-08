@@ -106,7 +106,7 @@ Receives events generated in the models and dispatches them to a events-manager 
 
 
 
-public *boolean*  **missingMethod** (*unknown* $model, *string* $eventName, *unknown* $data)
+public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *aray* $data)
 
 Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
@@ -134,6 +134,11 @@ public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInt
 
 Setup a relation 1-n between two models
 
+
+
+public  **addHasManyThrough** ()
+
+...
 
 
 public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
@@ -215,7 +220,13 @@ Gets hasOne relations defined on a model
 
 
 
-public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>`  **getRelations** (*string* $first, *string* $second)
+public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>` [] **getRelations** (*string* $modelName)
+
+Query all the relationships defined on a model
+
+
+
+public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>`  **getRelationsBetween** (*string* $first, *string* $second)
 
 Query the first relationship defined between two models
 

@@ -147,7 +147,7 @@ Compiles a template into a file forcing the destination path
 
 public *string|array*  **compile** (*string* $templatePath, [*boolean* $extendsMode])
 
-Compiles a template into a file applying the compiler options 
+Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled 
 
 .. code-block:: php
 

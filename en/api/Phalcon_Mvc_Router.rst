@@ -10,7 +10,17 @@ Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of
     <?php
 
     $router = new Phalcon\Mvc\Router();
+    
+      $router->add(
+    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
+    	array(
+    		"controller" => "documentation",
+    		"action"     => "show"
+    	)
+    );
+    
     $router->handle();
+    
     echo $router->getControllerName();
 
 
@@ -74,19 +84,43 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults)
 
-Sets an array of default paths
+Sets an array of default paths. This defaults apply for all the routes 
+
+.. code-block:: php
+
+    <?php
+
+     $router->setDefaults(array(
+    	'module' => 'common',
+    	'action' => 'index'
+     ));
+
 
 
 
 public  **handle** ([*string* $uri])
 
-Handles routing information received from the rewrite engine
+Handles routing information received from the rewrite engine 
+
+.. code-block:: php
+
+    <?php
+
+     $router->handle('/posts/edit/1');
+
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
 
-Adds a route to the router on any HTTP method
+Adds a route to the router on any HTTP method 
+
+.. code-block:: php
+
+    <?php
+
+     $router->add('/about', 'About::index');
+
 
 
 
@@ -132,6 +166,12 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
+public  **mount** (*unknown* $group)
+
+Mounts a group of routes in the router
+
+
+
 public  **clear** ()
 
 Removes all the pre-defined routes
@@ -140,31 +180,31 @@ Removes all the pre-defined routes
 
 public *string*  **getNamespaceName** ()
 
-Returns processed namespace name
+Returns the processed namespace name
 
 
 
 public *string*  **getModuleName** ()
 
-Returns processed module name
+Returns the processed module name
 
 
 
 public *string*  **getControllerName** ()
 
-Returns processed controller name
+Returns the processed controller name
 
 
 
 public *string*  **getActionName** ()
 
-Returns processed action name
+Returns the processed action name
 
 
 
 public *array*  **getParams** ()
 
-Returns processed extra params
+Returns the processed parameters
 
 
 
@@ -176,19 +216,19 @@ Returns the route that matchs the handled URI
 
 public *array*  **getMatches** ()
 
-Return the sub expressions in the regular expression matched
+Returns the sub expressions in the regular expression matched
 
 
 
 public *bool*  **wasMatched** ()
 
-Check if the router macthes any of the defined routes
+Checks if the router macthes any of the defined routes
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` [] **getRoutes** ()
 
-Return all the routes defined in the router
+Returns all the routes defined in the router
 
 
 

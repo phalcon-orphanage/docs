@@ -165,7 +165,7 @@ Sets a ORDER BY condition clause
 
 public *string|array*  **getOrderBy** ()
 
-Return the set ORDER BY clause
+Returns the set ORDER BY clause
 
 
 

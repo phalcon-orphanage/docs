@@ -176,6 +176,24 @@ Removes a service from the internal services container using the array syntax
 
 
 
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **before** (*callable* $handler)
+
+Appends a before middleware to be called before execute the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **after** (*callable* $handler)
+
+Appends an 'after' middleware to be called after execute the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
+
+Appends an 'finish' middleware to be called when the request is finished
+
+
+
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector

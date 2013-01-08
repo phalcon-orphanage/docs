@@ -63,7 +63,14 @@ Gets views directory
 
 public  **setLayoutsDir** (*string* $layoutsDir)
 
-Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+     $view->setLayoutsDir('../common/layouts/');
+
 
 
 
@@ -75,7 +82,15 @@ Gets the current layouts sub-directory
 
 public  **setPartialsDir** (*string* $partialsDir)
 
-Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+    *
+     $view->setPartialsDir('../common/partials/');
+
 
 
 
@@ -106,8 +121,8 @@ Sets the render level for the view
 
     <?php
 
-     //Render the view related to the controller only
-     $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
+     	//Render the view related to the controller only
+     	$this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
 
 
 
@@ -137,6 +152,31 @@ Sets default view name. Must be a file without extension in the views directory
      	//Renders as main view views-dir/inicio.phtml
      	$this->view->setMainView('inicio');
 
+
+
+
+public *string*  **getMainView** ()
+
+Returns the name of the main view
+
+
+
+public  **setLayout** (*string* $layout)
+
+Change the layout to be used instead of using the name of the latest controller name 
+
+.. code-block:: php
+
+    <?php
+
+     	$this->view->setLayout('main');
+
+
+
+
+public *string*  **getLayout** ()
+
+Returns the name of the main view
 
 
 

@@ -94,6 +94,7 @@ API Indice
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Dispatcher_Exception
    Phalcon_Mvc_Micro
+   Phalcon_Mvc_Micro_Collection
    Phalcon_Mvc_Micro_Exception
    Phalcon_Mvc_Model
    Phalcon_Mvc_Model_Behavior
@@ -132,6 +133,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
    Phalcon_Mvc_Router_Exception
+   Phalcon_Mvc_Router_Group
    Phalcon_Mvc_Router_Route
    Phalcon_Mvc_Url
    Phalcon_Mvc_Url_Exception

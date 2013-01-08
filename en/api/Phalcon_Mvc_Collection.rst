@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
-*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 
@@ -361,7 +361,14 @@ Allows to query a set of records that match the specified conditions
 
 public static *array*  **count** ([*array* $parameters])
 
-Perform a count over a collection
+Perform a count over a collection 
+
+.. code-block:: php
+
+    <?php
+
+     echo 'There are ', Robots::count(), ' robots';
+
 
 
 
@@ -380,6 +387,18 @@ Deletes a model instance. Returning true on success or false otherwise.
        $robot->delete();
     }
 
+
+
+
+public *string*  **serialize** ()
+
+Serializes the object ignoring connections or protected properties
+
+
+
+public  **unserialize** (*string* $data)
+
+Unserializes the object from a serialized string
 
 
 

@@ -56,6 +56,18 @@ Returns the dependency injection container
 
 
 
+public  **setUniqueRow** (*boolean* $uniqueRow)
+
+Tells to the query if only the first row in the resultset must be resturned
+
+
+
+public *boolean*  **getUniqueRow** ()
+
+Check if the query is programmed to get only the first row in the resultset
+
+
+
 protected *string*  **_getQualified** ()
 
 Replaces the model's name to its source name in a qualifed-name expression

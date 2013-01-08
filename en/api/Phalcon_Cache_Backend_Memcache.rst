@@ -76,12 +76,6 @@ Checks if cache exists and it hasn't expired
 
 
 
-public  **__destruct** ()
-
-Destructs the backend closing the memcached connection
-
-
-
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment

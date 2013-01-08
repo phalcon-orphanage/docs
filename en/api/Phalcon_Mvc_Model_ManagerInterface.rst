@@ -31,19 +31,19 @@ Loads a model throwing an exception if it doesn't exist
 
 
 
-abstract public  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a 1-1 relation between two models
 
 
 
-abstract public  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation reverse 1-1  between two models
 
 
 
-abstract public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation 1-n between two models
 
@@ -109,7 +109,13 @@ Gets hasOne relations defined on a model
 
 
 
-abstract public *array*  **getRelations** (*string* $first, *string* $second)
+abstract public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>` [] **getRelations** (*string* $modelName)
+
+Query all the relationships defined on a model
+
+
+
+abstract public *array*  **getRelationsBetween** (*string* $firstModel, *string* $secondModel)
 
 Query the relations between two models
 
@@ -130,6 +136,24 @@ Creates a Phalcon\\Mvc\\Model\\Query and execute it
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **createBuilder** ([*string* $params])
 
 Creates a Phalcon\\Mvc\\Model\\Query\\Builder
+
+
+
+abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
+
+Binds a behavior to a model
+
+
+
+abstract public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+
+
+
+abstract public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *aray* $data)
+
+Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
 
 
