@@ -96,7 +96,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
 
     <?php
 
-    $config = new Phalcon\Config(array(
+    $config = new \Phalcon\Config(array(
         'database' => array(
             'host' => 'localhost',
             'name' => 'test_db'
@@ -104,7 +104,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
         'debug' => 1
     ));
 
-    $config2 = new Phalcon\Config(array(
+    $config2 = new \Phalcon\Config(array(
         'database' => array(
             'username' => 'scott',
             'password' => 'secret',
@@ -131,3 +131,5 @@ The above code produces the following:
         [debug] => 1
     )
 
+Reading with defaults
+---------------------

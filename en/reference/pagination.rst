@@ -33,7 +33,7 @@ In the example below, the paginator will use as its source data the result of a 
     $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = new Phalcon\Paginator\Adapter\Model(
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
         array(
             "data" => $robots,
             "limit"=> 10,
