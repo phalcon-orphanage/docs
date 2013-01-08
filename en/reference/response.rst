@@ -8,8 +8,8 @@ component designed to achieve this task. HTTP responses are usually composed by 
 
     <?php
 
-    // Getting a request instance
-    $request = new \Phalcon\Http\Request();
+    // Getting a response instance
+    $response = new \Phalcon\Http\Response();
 
     //Set status code
     $response->setRawHeader(404, "Not Found");
@@ -32,8 +32,8 @@ directly from a controller's action follow this example:
 
         public function getAction()
         {
-            // Getting a request instance
-            $request = new \Phalcon\Http\Request();
+            // Getting a response instance
+            $response = new \Phalcon\Http\Request();
 
             $feed = //.. load here the feed
 

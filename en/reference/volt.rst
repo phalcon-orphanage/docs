@@ -8,10 +8,10 @@ just as you can use it as a stand-alone component in your applications.
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Twig_, originally created by `Armin Ronacher`_, which in turn is inspired in Jinja_.
-Therefore many developers will be in familiar ground using the same syntax they have been using
-with Twig. Volt’s syntax and features have been enhanced with more elements and of course
-with the performance that developers have been accustomed to while working with Phalcon.
+Volt is inspired on Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
+ground using the same syntax they have been using with similar template engines. Volt’s syntax and features
+have been enhanced with more elements and of course with the performance that developers have been
+accustomed to while working with Phalcon.
 
 Introduction
 ------------
@@ -563,6 +563,35 @@ More examples:
 
 .. code-block:: html+jinja
 
+    {% if robot is empty %}
+        The robot is null or isn't defined
+    {% endif }
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
+        {% if key is even %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
+        {% if key is odd %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
+        {% if key is numeric %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
+    {% if robots is iterable %}
+        {% for robot in robots %}
+            ...
+        {% endfor %}
+    {% endif %}
+
 Using Tag Helpers
 -----------------
 Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use the helpers provided by that component in a Volt template:
@@ -696,7 +725,7 @@ Keep the following points in mind when choosing to use the "partial" function or
 * 'Partial' allow you to pass an expression like a variable allowing to include the content of other view dynamically
 * 'Partial' are better if the content that you've included changes frequently
 
-* 'Include' copies the compiled content into the view which it's including improving the performance
+* 'Include' copies the compiled content into the view which improves the performance
 * 'Include' only allows to include templates made with Volt
 * 'Include' requires an existing template at compile time
 
