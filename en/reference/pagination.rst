@@ -7,13 +7,13 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+-------------------------------------------------------+
-| Adapter      | Description                                           |
-+==============+=======================================================+
-| NativeArray  | Use a PHP array as source data                        |
-+--------------+-------------------------------------------------------+
-| Model        | Use a Phalcon\\Model\\Resultset object as source data |
-+--------------+-------------------------------------------------------+
++--------------+------------------------------------------------------------+
+| Adapter      | Description                                                |
++==============+============================================================+
+| NativeArray  | Use a PHP array as source data                             |
++--------------+------------------------------------------------------------+
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data |
++--------------+------------------------------------------------------------+
 
 Using Paginators
 ----------------
@@ -44,7 +44,8 @@ In the example below, the paginator will use as its source data the result of a 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page object that contains the paginated data. It can be used for generating the pagination:
+Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page
+object that contains the paginated data. It can be used for generating the pagination:
 
 .. code-block:: html+php
 
@@ -54,7 +55,7 @@ Variable $currentPage controls the page to be displayed. The $paginator->getPagi
             <th>Name</th>
             <th>Type</th>
         </tr>
-        <?php foreach($page->items as $item) { ?>
+        <?php foreach ($page->items as $item) { ?>
         <tr>
             <td><?php echo $item->id; ?></td>
             <td><?php echo $item->name; ?></td>
