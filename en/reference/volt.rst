@@ -154,6 +154,12 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | escape               | Applies Phalcon\\Escaper->escapeHtml to the value                            |
 +----------------------+------------------------------------------------------------------------------+
+| escape_css           | Applies Phalcon\\Escaper->escapeCss to the value                             |
++----------------------+------------------------------------------------------------------------------+
+| escape_js            | Applies Phalcon\\Escaper->escapeJs to the value                              |
++----------------------+------------------------------------------------------------------------------+
+| escape_attr          | Applies Phalcon\\Escaper->escapeHtmlAttr to the value                        |
++----------------------+------------------------------------------------------------------------------+
 | trim                 | Applies the trim_ PHP function to the value. Removing extra spaces           |
 +----------------------+------------------------------------------------------------------------------+
 | striptags            | Applies the striptags_ PHP function to the value. Removing HTML tags         |

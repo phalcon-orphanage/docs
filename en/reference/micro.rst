@@ -188,8 +188,8 @@ Redirections could be performed to forward the execution flow to another route:
         echo 'This is the new Welcome';
     });
 
-Generating URLs for Routes
---------------------------
+Generating URLs from Routes
+---------------------------
 :doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
 by this way the "url" service can produce the corresponding URL:
 
@@ -215,12 +215,10 @@ by this way the "url" service can produce the corresponding URL:
 
     });
 
-
-Interacting with the Dependency Injector
-----------------------------------------
+Interacting with the Services Container
+---------------------------------------
 In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
-can create outside of the application a container to
-manipulate its services:
+can create it outside the application container to manipulate its services:
 
 .. code-block:: php
 
@@ -245,6 +243,14 @@ manipulate its services:
         $app->flash->success('Yes!, the contact was made!');
     });
 
+The array-syntax can be use to access the services in the container:
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->post('/contact', function () use ($app) {
+        $app['response']->setHeader(500, 'Application error');
+        $app['flash']->error('This is an error!');
+    });
 
 Not-Found Handler
 -----------------
@@ -320,7 +326,8 @@ In the following example, we explain how to control the application security usi
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
                 $app->flashSession->error("The user isn't authenticated");
-                return $app->response->redirect("/");
+                $app->response->redirect("/");
+                return false;
             }
         }
 
@@ -330,5 +337,24 @@ In the following example, we explain how to control the application security usi
 
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
+
+Middleware events
+-----------------
+In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Executed before every route executed
+    $app->before(function() use ($app) {
+        if ($app['session']->get('auth') == false) {
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+            return false;
+        }
+    });
 
 :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.

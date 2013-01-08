@@ -352,6 +352,44 @@ Convertions allow to freely transform the route's parameters before pass them to
             return str_replace('-', '', $slug);
         });
 
+Groups of Routes
+^^^^^^^^^^^^^^^^
+If a set of routes have common paths they can be grouped to easily maintain them:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new \Phalcon\Mvc\Router();
+
+    //Create a group with a common module and controller
+    $blog = new \Phalcon\Mvc\Router\Group(array(
+        'module' => 'blog',
+        'controller' => 'index'
+    ));
+
+    //All the routes start with /blog
+    $blog->setPrefix('/blog');
+
+    //Add a route to the group
+    $blog->add('/save', array(
+        'action' => 'save'
+    ));
+
+    //Add another route to the group
+    $blog->add('/edit/{id}', array(
+        'action' => 'edit'
+    ));
+
+    //This route maps to a controller different than the default
+    $blog->add('/blog', array(
+        'controller' => 'about',
+        'action' => 'index'
+    ));
+
+    //Add the group to the router
+    $router->mount($blog);
+
 Matching Routes
 ---------------
 Now we must a URI to Router in order that it check which is the defined route that matches the given URI.
@@ -418,7 +456,9 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
 
     // returns /posts/2012/phalcon-1-0-released
     echo $url->get(array(
-        "for" => "show-posts", "year" => "2012", "title" => "phalcon-1-0-released"
+        "for" => "show-posts",
+        "year" => "2012", "title" =>
+        "phalcon-1-0-released"
     ));
 
 Usage Examples
@@ -566,7 +606,7 @@ those paths can be automatically filled by the component:
         "action" => "index"
     ));
 
-Dealing with Extra/Trailing slashes
+Dealing with extra/trailing slashes
 -----------------------------------
 Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
 a not-found status in the dispatcher. You can setup the router to automatically remove the slashes from the end of handled route:
@@ -616,6 +656,7 @@ Since this component has no dependencies, you can create a file as shown below t
     $router = new Phalcon\Mvc\Router();
 
     //Add here your custom routes
+    //...
 
     //Testing each route
     foreach ($testRoutes as $testRoute) {
@@ -641,4 +682,3 @@ Implementing your own Router
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one provided by Phalcon.
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
-
