@@ -60,7 +60,7 @@ Return file extensions registered in the loader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*array* $namespaces, *boolean* $merge)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*array* $namespaces, [*boolean* $merge])
 
 Register namespaces and their related directories
 
@@ -72,7 +72,7 @@ Return current namespaces registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*unknown* $prefixes, *boolean* $merge)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*array* $prefixes, [*boolean* $merge])
 
 Register directories on which "not found" classes could be found
 
@@ -84,7 +84,7 @@ Return current prefixes registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories, *boolean* $merge)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories, [*boolean* $merge])
 
 Register directories on which "not found" classes could be found
 
@@ -96,7 +96,7 @@ Return current directories registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*array* $classes, *boolean* $merge)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*array* $classes, [*boolean* $merge])
 
 Register classes and their locations
 

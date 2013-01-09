@@ -7,21 +7,9 @@ Phalcon\\Mvc\\Model\\Query\\BuilderInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*array* $params)
+abstract public  **__construct** ([*array* $params])
 
 Phalcon\\Mvc\\Model\\Query\\Builder
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the DependencyInjector container
-
-
-
-abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the DependencyInjector container
 
 
 
@@ -43,7 +31,7 @@ Sets the models who makes part of the query
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **addFrom** (*string* $model, *string* $alias)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **addFrom** (*string* $model, [*string* $alias])
 
 Add a model to take part of the query
 
@@ -55,15 +43,27 @@ Return the models who makes part of the query
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **join** (*string* $model, *string* $conditions, *string* $alias)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Sets the models who makes part of the query
+Adds a INNER join to the query
 
 
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **where** (*string* $conditions)
 
 Sets conditions for the query
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a AND operator
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using a OR operator
 
 
 
@@ -93,11 +93,11 @@ Sets a HAVING condition clause
 
 abstract public *string|array*  **getHaving** ()
 
-Return the columns to be queried
+Returns the HAVING condition clause
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **limit** (*int* $limit, *int* $offset)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **limit** (*int* $limit, [*int* $offset])
 
 Sets a LIMIT clause
 

@@ -7,7 +7,7 @@ Phalcon\\Session\\AdapterInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*array* $options)
+abstract public  **__construct** ([*array* $options])
 
 Phalcon\\Session construtor
 
@@ -31,7 +31,7 @@ Get internal options
 
 
 
-abstract public  **get** (*string* $index)
+abstract public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
 
 Gets a session variable from an application context
 
@@ -43,7 +43,7 @@ Sets a session variable in an application context
 
 
 
-abstract public  **has** (*string* $index)
+abstract public *boolean*  **has** (*string* $index)
 
 Check whether a session variable is set in an application context
 

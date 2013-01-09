@@ -534,6 +534,8 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 +=================+============================================================================================================================================+==========+
 | "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "primary"       | True if the table is part of the table's primary key                                                                                       | Yes      |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Yes      |
@@ -543,6 +545,8 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 | "notNull"       | Column can store null values?                                                                                                              | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
++-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
+| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+

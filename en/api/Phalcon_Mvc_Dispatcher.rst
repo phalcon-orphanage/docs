@@ -181,7 +181,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -190,6 +190,12 @@ Gets a param by its name or numeric index
 public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+
+
+
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+
+Sets the latest returned value by an action manually
 
 
 

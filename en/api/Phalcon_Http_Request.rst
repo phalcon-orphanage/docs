@@ -33,7 +33,7 @@ Returns the internal dependency injector
 
 
 
-public *mixed*  **get** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed 
 
@@ -50,7 +50,7 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-public *mixed*  **getPost** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_POST superglobal applying filters if needed 
 
@@ -67,7 +67,7 @@ Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-public *mixed*  **getQuery** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed 
 
@@ -171,7 +171,7 @@ Gets information about schema, host and port used by the request
 
 
 
-public *string*  **getClientAddress** (*boolean* $trustForwardedHeader)
+public *string*  **getClientAddress** ([*boolean* $trustForwardedHeader])
 
 Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
@@ -210,6 +210,12 @@ Checks whether HTTP method is GET. if $_SERVER['REQUEST_METHOD']=='GET'
 public *boolean*  **isPut** ()
 
 Checks whether HTTP method is PUT. if $_SERVER['REQUEST_METHOD']=='PUT'
+
+
+
+public *boolean*  **isPatch** ()
+
+Checks whether HTTP method is PATCH. if $_SERVER['REQUEST_METHOD']=='PATCH'
 
 
 

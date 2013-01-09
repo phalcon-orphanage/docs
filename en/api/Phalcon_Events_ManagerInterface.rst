@@ -13,13 +13,13 @@ Attach a listener to the events manager
 
 
 
-abstract public  **dettachAll** (*unknown* $type)
+abstract public  **dettachAll** ([*string* $type])
 
 Removes all events from the EventsManager
 
 
 
-abstract public *mixed*  **fire** (*string* $eventType, *object* $source, *mixed* $data)
+abstract public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
 
 Fires a event in the events manager causing that the acive listeners will be notified about it
 

@@ -27,7 +27,7 @@ Returns the internal dependency injector
 
 
 
-public  **set** (*string* $name, *mixed* $value, *int* $expire, *string* $path)
+public  **set** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path])
 
 Sets a header to be sent at the end of the request
 

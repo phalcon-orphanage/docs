@@ -46,6 +46,8 @@ Table of Contents
    reference/config
    reference/pagination
    reference/cache
+   reference/security
+   reference/escaper
    reference/acl
    reference/translate
    reference/loader

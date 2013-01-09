@@ -102,7 +102,14 @@ Resets all the stablished headers
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
 
-Sets output expire time header
+Sets a Expires header to use HTTP cache 
+
+.. code-block:: php
+
+    <?php
+
+    $this->response->setExpires(new DateTime());
+
 
 
 
@@ -112,7 +119,7 @@ Sends a Not-Modified response
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, *string* $charset)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, [*string* $charset])
 
 Sets the response content-type mime, optionally the charset 
 
@@ -126,7 +133,7 @@ Sets the response content-type mime, optionally the charset
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** (*string* $location, *boolean* $externalRedirect, *int* $statusCode)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
 

@@ -34,7 +34,7 @@ Manages ACL lists in memory
     	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
     
-    //Private area resources
+    //Public area resources
     $publicResources = array(
     	'index' => array('index'),
     	'about' => array('index'),
@@ -70,9 +70,9 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 
-public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, *array* $accessInherits)
+public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array* $accessInherits])
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role Example: 
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
 
 .. code-block:: php
 
@@ -102,7 +102,7 @@ Check whether resource exist in the resources list
 
 
 
-public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, *unknown* $accessList)
+public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, [*array* $accessList])
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
 
@@ -185,7 +185,7 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-public *boolean*  **isAllowed** (*string* $role, *string* $resource, *unknown* $access)
+public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access)
 
 Check whether a role is allowed to access an action from a resource 
 
@@ -208,7 +208,7 @@ Rebuild the list of access from the inherit lists
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Acl\\Adapter
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Acl\\Adapter
 
 Sets the events manager
 

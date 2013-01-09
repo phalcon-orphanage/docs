@@ -8,11 +8,13 @@ just as you can use it as a stand-alone component in your applications.
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Twig_, originally created by `Armin Ronacher`_, which in turn is inspired in Jinja_.
-Therefore many developers will be in familiar ground using the same syntax they have been using
-with Twig. Volt’s syntax and features have been enhanced with more elements and of course
-with the performance that developers have been accustomed to while working with Phalcon.
+Volt is inspired on Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
+ground using the same syntax they have been using with similar template engines. Volt’s syntax and features
+have been enhanced with more elements and of course with the performance that developers have been
+accustomed to while working with Phalcon.
 
+Introduction
+------------
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 .. code-block:: html+jinja
@@ -152,6 +154,12 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | escape               | Applies Phalcon\\Escaper->escapeHtml to the value                            |
 +----------------------+------------------------------------------------------------------------------+
+| escape_css           | Applies Phalcon\\Escaper->escapeCss to the value                             |
++----------------------+------------------------------------------------------------------------------+
+| escape_js            | Applies Phalcon\\Escaper->escapeJs to the value                              |
++----------------------+------------------------------------------------------------------------------+
+| escape_attr          | Applies Phalcon\\Escaper->escapeHtmlAttr to the value                        |
++----------------------+------------------------------------------------------------------------------+
 | trim                 | Applies the trim_ PHP function to the value. Removing extra spaces           |
 +----------------------+------------------------------------------------------------------------------+
 | striptags            | Applies the striptags_ PHP function to the value. Removing HTML tags         |
@@ -162,9 +170,9 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | capitalize           | Capitalizes a string by applying the ucwords_ PHP function to the value      |
 +----------------------+------------------------------------------------------------------------------+
-| lowercase            | Change the case of a string to lowercase                                     |
+| lower                | Change the case of a string to lowercase                                     |
 +----------------------+------------------------------------------------------------------------------+
-| uppercase            | Change the case of a string to uppercase                                     |
+| upper                | Change the case of a string to uppercase                                     |
 +----------------------+------------------------------------------------------------------------------+
 | length               | Counts the string length or how many items are in an array or object         |
 +----------------------+------------------------------------------------------------------------------+
@@ -172,8 +180,78 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | sort                 | Sorts an array using the PHP function asort_                                 |
 +----------------------+------------------------------------------------------------------------------+
+| keys                 | Returns the array keys using array_keys_                                     |
++----------------------+------------------------------------------------------------------------------+
+| join                 | Joins the array parts using a separator join_                                |
++----------------------+------------------------------------------------------------------------------+
+| format               | Formats a string using sprintf_.                                             |
++----------------------+------------------------------------------------------------------------------+
 | json_encode          | Converts a value into its JSON_ representation                               |
 +----------------------+------------------------------------------------------------------------------+
+| json_decode          | Converts a value from its JSON_ representation to a PHP representation       |
++----------------------+------------------------------------------------------------------------------+
+| abs                  | Applies the abs_ PHP function to a value.                                    |
++----------------------+------------------------------------------------------------------------------+
+| url_encode           | Applies the urlencode_ PHP function to the value                             |
++----------------------+------------------------------------------------------------------------------+
+| default              | Sets a default value in case that the evaluated expression is null           |
++----------------------+------------------------------------------------------------------------------+
+| convert_encoding     | Converts a string from one charset to another                                |
++----------------------+------------------------------------------------------------------------------+
+
+Examples:
+
+.. code-block:: jinja
+
+    {# e or escape filter #}
+    {{ "<h1>Hello<h1>"|e }}
+    {{ "<h1>Hello<h1>"|escape }}
+
+    {# trim filter #}
+    {{ "   hello   "|trim }}
+
+    {# striptags filter #}
+    {{ "<h1>Hello<h1>"|striptags }}
+
+    {# slashes filter #}
+    {{ "'this is a string'"|slashes }}
+
+    {# stripslashes filter #}
+    {{ "\'this is a string\'"|stripslashes }}
+
+    {# capitalize filter #}
+    {{ "hello"|capitalize }}
+
+    {# lower filter #}
+    {{ "HELLO"|lower }}
+
+    {# upper filter #}
+    {{ "hello"|upper }}
+
+    {# length filter #}
+    {{ "robots"|length }}
+    {{ [1, 2, 3]|length }}
+
+    {# nl2br filter #}
+    {{ "some\ntext"|nl2br }}
+
+    {# sort filter #}
+    {{ [3, 1, 2]|sort }}
+
+    {# keys filter #}
+    {{ ['first': 1, 'second': 2, 'third': 3]|keys }}
+
+    {# json_encode filter #}
+    {{ robots|json_encode }}
+
+    {# json_decode filter #}
+    {{ '{"one":1,"two":2,"three":3}'|json_decode }}
+
+    {# url_encode filter #}
+    {{ post.permanent_link|url_encode }}
+
+    {# convert_encoding filter #}
+    {{ "désolé"|convert_encoding('utf8', 'latin1') }}
 
 Comments
 --------
@@ -211,6 +289,54 @@ for-loops can also be nested:
       {% for part in robot.parts %}
       Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
       {% endfor %}
+    {% endfor %}
+
+You can get the element "keys" as in the PHP counterpart using the following syntax:
+
+.. code-block:: html+jinja
+
+    {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
+
+    {% for name, value in numbers %}
+      Name: {{ name }} Value: {{ value }}
+    {% endfor %}
+
+Additionally, a if evaluation can be optionally set:
+
+.. code-block:: html+jinja
+
+    {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
+
+    {% for value in numbers if value < 2 %}
+      Name: {{ name }} Value: {{ value }}
+    {% endfor %}
+
+    {% for name, value in numbers if name != 'two' %}
+      Name: {{ name }} Value: {{ value }}
+    {% endfor %}
+
+Loop Controls
+^^^^^^^^^^^^^
+The 'break' and 'continue' statements can be used to exit from a loop or force a iteration in the current block:
+
+.. code-block:: html+jinja
+
+    {# skip the even robots #}
+    {% for index, robot in robots %}
+        {% if index is even %}
+            {% continue %}
+        {% endif %}
+        ...
+    {% endfor %}
+
+.. code-block:: html+jinja
+
+    {# exit the foreach on the first even robot #}
+    {% for index, robot in robots %}
+        {% if index is even %}
+            {% break %}
+        {% endif %}
+        ...
     {% endfor %}
 
 If
@@ -254,7 +380,24 @@ Variables may be changed in a template using the instruction "set":
 
 Expressions
 -----------
-Volt provides a basic set of expression support, including literals and common operators:
+Volt provides a basic set of expression support, including literals and common operators.
+
+A expression can be evaluated and printed using the '{{' and '}}' delimiters:
+
+.. code-block:: html+jinja
+
+    {{ (1 + 1) * 2 }}
+
+If an expression needs to be evaluated without be printed the 'do' statement can be used:
+
+.. code-block:: html+jinja
+
+    {% do (1 + 1) * 2 %}
+
+Literals
+^^^^^^^^
+
+The following literals are supported:
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -363,7 +506,7 @@ Additional operators seen the following operators are available:
 +----------------------+----------------------------------------------------------------------------------------------+
 | \.\.                 | Creates a range {{ 'a'..'z' }} {{ 1..10 }}                                                   |
 +----------------------+----------------------------------------------------------------------------------------------+
-| is                   | Same as == (equals)                                                                          |
+| is                   | Same as == (equals), also performs tests                                                     |
 +----------------------+----------------------------------------------------------------------------------------------+
 | is not               | Same as != (not equals)                                                                      |
 +----------------------+----------------------------------------------------------------------------------------------+
@@ -379,6 +522,75 @@ The following example shows how to use operators:
             {{ "Name: " ~ robots[index] }}
         {% endif %}
     {% endfor %}
+
+Tests
+-----
+Tests can be used to test if a variable has a valid expected value. The operator "is" is used to perform the tests:
+
+.. code-block:: html+jinja
+
+    {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
+
+    {% for position, name in robots %}
+        {% if position is odd %}
+            {{ value }}
+        {% endif %}
+    {% endfor %}
+
+The following built-in tests are available in Volt:
+
++----------------------+----------------------------------------------------------------------------------------------+
+| Test                 | Description                                                                                  |
++======================+==============================================================================================+
+| empty                | Checks if a variable is empty                                                                |
++----------------------+----------------------------------------------------------------------------------------------+
+| even                 | Checks if a numeric value is even                                                            |
++----------------------+----------------------------------------------------------------------------------------------+
+| odd                  | Checks if a numeric value is odd                                                             |
++----------------------+----------------------------------------------------------------------------------------------+
+| numeric              | Checks if value is numeric                                                                   |
++----------------------+----------------------------------------------------------------------------------------------+
+| scalar               | Checks if value is scalar (not an array or object)                                           |
++----------------------+----------------------------------------------------------------------------------------------+
+| iterable             | Checks if a value is iterable. Can be traversed by a "for" statement                         |
++----------------------+----------------------------------------------------------------------------------------------+
+| divisibleby          | Checks if a value is divisible by other value                                                |
++----------------------+----------------------------------------------------------------------------------------------+
+| sameas               | Checks if a value is identical to other value                                                |
++----------------------+----------------------------------------------------------------------------------------------+
+
+More examples:
+
+.. code-block:: html+jinja
+
+    {% if robot is empty %}
+        The robot is null or isn't defined
+    {% endif }
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
+        {% if key is even %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
+        {% if key is odd %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
+        {% if key is numeric %}
+            {{ name }}
+        {% endif }
+    {% endfor %}
+
+    {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
+    {% if robots is iterable %}
+        {% for robot in robots %}
+            ...
+        {% endfor %}
+    {% endif %}
 
 Using Tag Helpers
 -----------------
@@ -460,6 +672,34 @@ To call a Phalcon\Tag helper, you only need to call an uncamelized version of th
 | Phalcon\\Tag::friendlyTitle        | friendly_title        |
 +------------------------------------+-----------------------+
 
+Functions
+---------
+The following built-in functions are available in Volt:
+
++----------------------+------------------------------------------------------------------------------+
+| Name                 | Description                                                                  |
++======================+==============================================================================+
+| content              | Includes the content produced in a previous rendering stage                  |
++----------------------+------------------------------------------------------------------------------+
+| get_content          | Same as 'content'                                                            |
++----------------------+------------------------------------------------------------------------------+
+| partial              | Dynamically loads a partial view in the current template                     |
++----------------------+------------------------------------------------------------------------------+
+| super                | Render the contents of the parent block                                      |
++----------------------+------------------------------------------------------------------------------+
+| time                 | Calls the PHP function with the same name                                    |
++----------------------+------------------------------------------------------------------------------+
+| date                 | Calls the PHP function with the same name                                    |
++----------------------+------------------------------------------------------------------------------+
+| dump                 | Calls the PHP function 'var_dump'                                            |
++----------------------+------------------------------------------------------------------------------+
+| version              | Returns the current version of the framework                                 |
++----------------------+------------------------------------------------------------------------------+
+| constant             | Reads a PHP constant                                                         |
++----------------------+------------------------------------------------------------------------------+
+| url                  | Generate a URL using the 'url' service                                       |
++----------------------+------------------------------------------------------------------------------+
+
 View Integration
 ----------------
 Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
@@ -468,7 +708,26 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
 
     {{ content() }}
 
-    {{ partial("partials/footer.volt") }}
+    <div id="footer">{{ partial("partials/footer") }}</div>
+
+A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
+as part of the view which was included:
+
+.. code-block:: html+jinja
+
+    <div id="footer">{% include "partials/footer" %}</div>
+
+Partial vs Include
+^^^^^^^^^^^^^^^^^^
+Keep the following points in mind when choosing to use the "partial" function or "include":
+
+* 'Partial' allow you to include templates made in Volt and other template engines as well
+* 'Partial' allow you to pass an expression like a variable allowing to include the content of other view dynamically
+* 'Partial' are better if the content that you've included changes frequently
+
+* 'Include' copies the compiled content into the view which improves the performance
+* 'Include' only allows to include templates made with Volt
+* 'Include' requires an existing template at compile time
 
 Template Inheritance
 --------------------
@@ -530,13 +789,100 @@ Not all blocks must be replaced at a child template, only those which are needed
         </body>
     </html>
 
-As partials, the path set to "extends" is a relative path under the current directory for views (i.e app/views/).
+Multiple Inheritance
+^^^^^^^^^^^^^^^^^^^^
+Extended templates can extend other templates. The following example illustrates this:
+
+.. code-block:: html+jinja
+
+    {# main.volt #}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Title</title>
+        </head>
+        <body>
+            {% block content %}{% endblock %}
+        </body>
+    </html>
+
+Template "layout.volt" extends "main.volt"
+
+.. code-block:: html+jinja
+
+    {# layout.volt #}
+    {% extends "main.volt" %}
+
+    {% block content %}
+
+        <h1>Table of contents</h1>
+
+    {% endblock %}
+
+Finally a view that extends "layout.volt":
+
+.. code-block:: html+jinja
+
+    {# index.volt #}
+    {% extends "layout.volt" %}
+
+    {% block content %}
+
+        {{ super() }}
+
+        <ul>
+            <li>Some option</li>
+            <li>Some other option</li>
+        </ul>
+
+    {% endblock %}
+
+Rendering "index.volt" produces:
+
+.. code-block:: html
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Title</title>
+        </head>
+        <body>
+
+            <h1>Table of contents</h1>
+
+            <ul>
+                <li>Some option</li>
+                <li>Some other option</li>
+            </ul>
+
+        </body>
+    </html>
+
+Note the call to the function "super()". With that function it's possible to render the contents of the parent block.
+
+As partials, the path set to "extends" is a relative path under the current views directory (i.e app/views/).
 
 .. highlights::
 
-    By default, and for performance reasons, Volt only checks for changes in the children templates,
-    so it is recommended initialize Volt with the option 'compileAlways' => true. Thus, the templates
-    are compiled always taking into account changes in the parent templates.
+    By default, and for performance reasons, Volt only checks for changes in the children templates
+    to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
+    'compileAlways' => true. Thus, the templates are compiled always taking into account changes in
+    the parent templates.
+
+Autoescape mode
+---------------
+You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+
+.. code-block:: html+jinja
+
+    Manually escaped: {{ robot.name|e }}
+
+    {% autoescape true %}
+        Autoescaped: {{ robot.name }}
+        {% autoescape false %}
+            No Autoescaped: {{ robot.name }}
+        {% endautoescape %}
+    {% endautoescape %}
 
 Setting up the Volt Engine
 --------------------------
@@ -615,12 +961,188 @@ The following options are available in Volt:
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 | compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| prefix            | Allows to prepend a prefix to the templates in the compilation path                                                            | null    |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+
+Extending Volt
+--------------
+Unlike other template engines, Volt itself is not required to run the compiled templates.
+Once the templates are compiled there is no dependence on Volt. With performance independence in mind,
+Volt only acts as a compiler for PHP templates.
+
+The Volt compiler allow you to extend it adding more functions, tests or filters to existing ones.
+
+Functions
+^^^^^^^^^
+Functions act as normal PHP functions, a valid string name is required as function name.
+Functions can be added using two strategies, returning a simple string or using an anonymous
+function. Always is required that the chosen strategy returns a valid PHP string expression:
+
+.. code-block:: php
+
+    <?php
+
+    $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+    $compiler = $volt->getCompiler();
+
+    //This binds the function 'shuffle' in Volt to the PHP function 'str_shuffle'
+    $compiler->addFunction('shuffle', 'str_shuffle');
+
+Register the function with an anonymous function. This case we use $resolvedArgs to pass the arguments exactly
+as were passed in the arguments:
+
+.. code-block:: php
+
+    <?php
+
+    $compiler->addFunction('widget', function($resolvedArgs, $exprArgs) {
+        return 'MyLibrary\Widgets::get('.$resolvedArgs.')';
+    });
+
+Treat the arguments independently and unresolved:
+
+.. code-block:: php
+
+    <?php
+
+    $compiler->addFunction('repeat', function($resolvedArgs, $exprArgs) use ($compiler) {
+
+        //Resolve the first argument
+        $firstArgument = $compiler->expression($exprArgs[0]['expr']);
+
+        //Checks if the second argument was passed
+        if (isset($exprArgs[1])) {
+            $secondArgument = $compiler->expression($exprArgs[1]['expr']);
+        } else {
+            //Use '10' as default
+            $secondArgument = '10';
+        }
+
+        return 'str_repeat('.$firstArgument.', '.$secondArgument.')';
+    });
+
+Generate the code based on some function availability:
+
+.. code-block:: php
+
+    <?php
+
+    $compiler->addFunction('include_text', function($resolvedArgs, $exprArgs) {
+        if (function_exists('mb_stripos')) {
+            return 'mb_stripos('.$resolvedArgs.')';
+        } else {
+            return 'stripos('.$resolvedArgs.')';
+        }
+    });
+
+Built-in functions can be overrided adding a function with its name:
+
+.. code-block:: php
+
+    <?php
+
+    //Replace built-in function dump
+    $compiler->addFunction('dump', 'print_r');
+
+Filters
+^^^^^^^
+A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters
+is similar as seen with the functions:
+
+.. code-block:: php
+
+    <?php
+
+    //This creates a filter 'hash' that uses the PHP function 'md5'
+    $compiler->addFilter('hash', 'md5');
+
+.. code-block:: php
+
+    <?php
+
+    $compiler->addFilter('int', function($resolvedArgs, $exprArgs) {
+        return 'intval('.$resolvedArgs.')';
+    });
+
+Built-in filters can be overrided adding a function with its name:
+
+.. code-block:: php
+
+    <?php
+
+    //Replace built-in filter 'capitalize'
+    $compiler->addFilter('capitalize', 'lcfirst');
+
+Caching view fragments
+----------------------
+With Volt it's easy cache view fragments. This caching improves performance preventing
+that the contents of a block is executed by PHP each time the view is displayed:
+
+.. code-block:: html+jinja
+
+    {% cache sidebar %}
+        <!-- this content is slow so we are caching it -->
+    {% endcache %}
+
+Setting an specific number of seconds:
+
+.. code-block:: html+jinja
+
+    {# cache the sidebar by 1 hour #}
+    {% cache sidebar 3600 %}
+        <!-- this content is slow so we are caching it -->
+    {% endcache %}
+
+The caching is done by the :doc:`Phalcon\\Cache <cache>` component via the view component.
+Learn more about how this integration works in the section :doc:`"Caching View Fragments" <views>`.
+
+Inject Services into a Template
+-------------------------------
+If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+
+.. code-block:: html+jinja
+
+    {# Inject the 'flash' service #}
+    <div id="messages">{{ flash.output() }}</div>
+
+    {# Inject the 'security' service #}
+    <input type="hidden" name="token" value="{{ security.getToken() }}">
+
+Stand-alone component
+---------------------
+Using Volt in a stand-alone mode can be demonstrated below:
+
+.. code-block:: php
+
+    <?php
+
+    //Create a compiler
+    $compiler = \Phalcon\Mvc\View\Engine\Volt\Compiler();
+
+    //Optionally add some options
+    $compiler->setOptions(array(
+        //...
+    ));
+
+    //Compile a template string returning PHP code
+    echo $compiler->compileString('{{ "hello" }}');
+
+    //Compile a template in a file specifying the destination file
+    $compiler->compileFile('layouts/main.volt', 'cache/layouts/main.volt.php');
+
+    //Compile a template in a file based on the options passed to the compiler
+    $compiler->compile('layouts/main.volt');
+
+    //Require the compiled templated (optional)
+    require $compiler->getCompiledPath();
 
 External Resources
 ------------------
 
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
-* Our website is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
+* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
+* `Album-O-Rama <https://github.com/phalcon/album-o-rama>`_ is a sample application using Volt as template engine, check out its code on
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
@@ -632,4 +1154,9 @@ External Resources
 .. _ucwords: http://php.net/manual/en/function.ucwords.php
 .. _nl2br: http://php.net/manual/en/function.nl2br.php
 .. _asort: http://php.net/manual/en/function.asort.php
+.. _array_keys: http://php.net/manual/en/function.array-keys.php
+.. _abs: http://php.net/manual/en/function.abs.php
+.. _urlencode: http://php.net/manual/en/function.urlencode.php
+.. _sprintf: http://php.net/manual/en/function.sprintf.php
+.. _join: http://php.net/manual/en/function.join.php
 .. _JSON: http://php.net/manual/en/function.json-encode.php

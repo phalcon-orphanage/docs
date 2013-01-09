@@ -12,6 +12,9 @@ from Phalcon.
 .. highlights::
 	Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you to use at least PHP 5.3.11 or greater.
 
+.. highlights::
+	PHP versions below 5.3.9 have several security flaws and they aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+
 Windows
 -------
 
@@ -101,4 +104,3 @@ Installation notes for Web Servers:
 
 	apache
 	nginx
-

@@ -295,8 +295,7 @@ from a simple string, integer etc. variable to a more complex structure such as 
     <div class="post">
     <?php
 
-      foreach ($posts as $post)
-      {
+      foreach ($posts as $post) {
         echo "<h1>", $post->title, "</h1>";
       }
 
@@ -325,7 +324,7 @@ This method can be invoked from the controller or from a superior view layer to 
         public function findAction()
         {
 
-            // This is an Ajax response so don't generate any kind of view
+            // This is an Ajax response so it doesn't generate any kind of view
             $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
 
             //...
@@ -341,21 +340,68 @@ This method can be invoked from the controller or from a superior view layer to 
 
 The available render levels are:
 
-+-----------------------+--------------------------------------------------------------------------+
-| Class Constant        | Description                                                              |
-+=======================+==========================================================================+
-| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  |
-+-----------------------+--------------------------------------------------------------------------+
-| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         |
-+-----------------------+--------------------------------------------------------------------------+
-| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         |
-+-----------------------+--------------------------------------------------------------------------+
-| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     |
-+-----------------------+--------------------------------------------------------------------------+
-| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. |
-+-----------------------+--------------------------------------------------------------------------+
-| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    |
-+-----------------------+--------------------------------------------------------------------------+
++-----------------------+--------------------------------------------------------------------------+-------+
+| Class Constant        | Description                                                              | Order |
++=======================+==========================================================================+=======+
+| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  |       |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         | 1     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         | 2     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     | 3     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. | 4     |
++-----------------------+--------------------------------------------------------------------------+-------+
+| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
++-----------------------+--------------------------------------------------------------------------+-------+
+
+Disabling render levels
+^^^^^^^^^^^^^^^^^^^^^^^
+You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\View;
+
+    $di->set('view', function(){
+
+        $view = new View();
+
+        //Disable several levels
+        $view->disableLevel(array(
+            View::LEVEL_LAYOUT => true,
+            View::LEVEL_MAIN_LAYOUT => true
+        ));
+
+        return $view;
+
+    }, true);
+
+Or disable temporarily in some part of the application:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\View;
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function findAction()
+        {
+            $view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+        }
+
+    }
 
 Using models in the view layer
 ------------------------------
@@ -452,7 +498,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
     }
 
-When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name currently rendered.
+When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name is currently rendered.
 It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
 
 When the View component needs to cache something it will request a cache service to the services container.
@@ -477,7 +523,10 @@ The service name convention for this service is "viewCache":
         ));
 
         return $cache;
-    }, true);
+    });
+
+.. highlights::
+    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as always open (not shared)
 
 When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed in the views.
 
@@ -498,13 +547,17 @@ calculations/queries to display data in the view:
             if ($this->view->getCache()->exists('downloads')) {
 
                 //Query the latest downloads
-                $latest = Downloads::find(array('order' => 'created_at DESC'));
+                $latest = Downloads::find(array(
+                    'order' => 'created_at DESC'
+                ));
 
                 $this->view->setVar('latest', $latest);
             }
 
             //Enable the cache with the same key "downloads"
-            $this->view->cache(array('key' => 'downloads'));
+            $this->view->cache(array(
+                'key' => 'downloads'
+            ));
         }
 
     }
@@ -592,6 +645,7 @@ when it's necessary.
             $options = $this->_options;
 
             //Render the view
+            //...
         }
 
     }
@@ -650,14 +704,13 @@ If you want to register a template engine or a set of them for each request in t
 
         $view->setViewsDir('../app/views/');
 
-        $view->registerEngines(
-            array(
-                ".my-html" => 'MyTemplateAdapter'
-            )
-        );
+        $view->registerEngines(array(
+            ".my-html" => 'MyTemplateAdapter'
+        ));
 
         return $view;
-    });
+
+    }, true);
 
 There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
 
@@ -667,7 +720,7 @@ Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/P
 to the application's service container.
 
 The following example shows how to write a jQuery `ajax request`_ using a url with the framework conventions.
-The service "url" (usually :doc:`Phalcon\Mvc\Url <url>`) is injected in the view by accessing a property with the same name:
+The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
 
 .. code-block:: html+php
 
@@ -749,7 +802,8 @@ The following example demonstrates how to attach listeners to this component:
         $view->setEventsManager($eventManagers);
 
         return $view;
-    });
+
+    }, true);
 
 The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
 
@@ -781,11 +835,8 @@ The following example shows how to create a plugin that clean/repair the HTML pr
     //Attach the plugin as a listener
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
-.. _Mustache: https://github.com/bobthecow/mustache.php
-.. _Twig: http://twig.sensiolabs.org
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
-.. _Smarty: http://www.smarty.net/
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php
 .. _md5: http://php.net/manual/en/function.md5.php
 .. _PHP alternative site: https://github.com/phalcon/php-site

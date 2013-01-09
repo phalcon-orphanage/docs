@@ -82,7 +82,8 @@ The following example demonstrates how to attach listeners to this component:
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
-    });
+
+    }, true);
 
 A instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
 
@@ -254,8 +255,10 @@ Using the :doc:`EventsManager <events>` it's possible to insert a hook point bef
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
-    });
+
+    }, true);
 
 Implementing your own Dispatcher
 --------------------------------
-The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher replacing the one providing by Phalcon.
+The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher
+replacing the one provided by Phalcon.

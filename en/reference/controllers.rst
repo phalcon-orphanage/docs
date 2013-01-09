@@ -216,6 +216,9 @@ Then, we can access to that service in several ways:
 
             //Another way to access the service using the magic getter
             $this->getDi()->getStorage()->save('/some/file');
+
+            //Using the array-syntax
+            $this->di['storage']->save('/some/file');
         }
 
     }
@@ -242,7 +245,6 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
         public function saveAction()
         {
-
             // Check if request has made with POST
             if ($this->request->isPost() == true) {
                 // Access POST data

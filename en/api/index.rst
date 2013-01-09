@@ -36,6 +36,7 @@ API Indice
    Phalcon_DI_FactoryDefault_CLI
    Phalcon_DI_Injectable
    Phalcon_DI_Service
+   Phalcon_DI_Service_Builder
    Phalcon_Db
    Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
@@ -76,6 +77,7 @@ API Indice
    Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
+   Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
    Phalcon_Logger
@@ -92,8 +94,12 @@ API Indice
    Phalcon_Mvc_Dispatcher
    Phalcon_Mvc_Dispatcher_Exception
    Phalcon_Mvc_Micro
+   Phalcon_Mvc_Micro_Collection
    Phalcon_Mvc_Micro_Exception
    Phalcon_Mvc_Model
+   Phalcon_Mvc_Model_Behavior
+   Phalcon_Mvc_Model_Behavior_SoftDelete
+   Phalcon_Mvc_Model_Behavior_Timestampable
    Phalcon_Mvc_Model_Criteria
    Phalcon_Mvc_Model_Exception
    Phalcon_Mvc_Model_Manager
@@ -107,6 +113,7 @@ API Indice
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
    Phalcon_Mvc_Model_Query_Status
+   Phalcon_Mvc_Model_Relation
    Phalcon_Mvc_Model_Resultset
    Phalcon_Mvc_Model_Resultset_Complex
    Phalcon_Mvc_Model_Resultset_Simple
@@ -126,6 +133,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
    Phalcon_Mvc_Router_Exception
+   Phalcon_Mvc_Router_Group
    Phalcon_Mvc_Router_Route
    Phalcon_Mvc_Url
    Phalcon_Mvc_Url_Exception
@@ -141,6 +149,8 @@ API Indice
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Exception
+   Phalcon_Security
+   Phalcon_Security_Exception
    Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
@@ -180,9 +190,11 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Mvc_CollectionInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface
+   Phalcon_Mvc_Model_BehaviorInterface
    Phalcon_Mvc_Model_CriteriaInterface
    Phalcon_Mvc_Model_ManagerInterface
    Phalcon_Mvc_Model_MessageInterface
@@ -190,6 +202,7 @@ API Indice
    Phalcon_Mvc_Model_QueryInterface
    Phalcon_Mvc_Model_Query_BuilderInterface
    Phalcon_Mvc_Model_Query_StatusInterface
+   Phalcon_Mvc_Model_RelationInterface
    Phalcon_Mvc_Model_ResultInterface
    Phalcon_Mvc_Model_ResultsetInterface
    Phalcon_Mvc_Model_TransactionInterface
