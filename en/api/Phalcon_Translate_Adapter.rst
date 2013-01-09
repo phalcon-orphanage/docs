@@ -9,7 +9,7 @@ Base class for Phalcon\\Translate adapters
 Methods
 ---------
 
-public *string*  **_** (*string* $translateKey, *array* $placeholders)
+public *string*  **_** (*string* $translateKey, [*array* $placeholders])
 
 Returns the translation string of the given key
 

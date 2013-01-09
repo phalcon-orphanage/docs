@@ -43,6 +43,12 @@ Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal repr
 
 
 
+abstract public *string*  **escapeJs** (*string* $js)
+
+Escape Javascript strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+
+
 abstract public *string*  **escapeUrl** (*string* $url)
 
 Escapes a URL. Internally uses rawurlencode

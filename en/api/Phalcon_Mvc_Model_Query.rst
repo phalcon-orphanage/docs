@@ -9,7 +9,8 @@ This class takes a PHQL intermediate representation and executes it.
 
     <?php
 
-     $phql  = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b WHERE b.name = :name: ORDER BY c.name";
+     $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
+              WHERE b.name = :name: ORDER BY c.name";
     
      $result = $manager->executeQuery($phql, array(
        'name' => 'Lamborghini'
@@ -37,7 +38,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*string* $phql)
+public  **__construct** ([*string* $phql])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -52,6 +53,18 @@ Sets the dependency injection container
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the dependency injection container
+
+
+
+public  **setUniqueRow** (*boolean* $uniqueRow)
+
+Tells to the query if only the first row in the resultset must be resturned
+
+
+
+public *boolean*  **getUniqueRow** ()
+
+Check if the query is programmed to get only the first row in the resultset
 
 
 
@@ -199,7 +212,7 @@ Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\
 
 
 
-public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
+public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 

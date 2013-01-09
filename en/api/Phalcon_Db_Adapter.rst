@@ -27,7 +27,7 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes)
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -46,7 +46,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, *int* $fetchMode, *array* $bindParams, *array* $bindTypes)
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -69,7 +69,7 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, *array* $fields, *array* $dataTypes)
+public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -90,7 +90,7 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, *string* $whereCondition, *array* $dataTypes)
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -112,7 +112,7 @@ Updates data on a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **delete** (*string* $table, *string* $whereCondition, *array* $placeholders, *array* $dataTypes)
+public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -146,12 +146,12 @@ Appends a LIMIT clause to $sqlQuery argument
 
     <?php
 
-     $connection->limit("SELECT * FROM robots", 5);
+     	echo $connection->limit("SELECT * FROM robots", 5);
 
 
 
 
-public *string*  **tableExists** (*string* $tableName, *string* $schemaName)
+public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -159,12 +159,12 @@ Generates SQL checking for the existence of a schema.table
 
     <?php
 
-     $connection->tableExists("blog", "posts")
+     	var_dump($connection->tableExists("blog", "posts"));
 
 
 
 
-public *string*  **viewExists** (*string* $viewName, *string* $schemaName)
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -172,7 +172,7 @@ Generates SQL checking for the existence of a schema.view
 
     <?php
 
-     $connection->viewExists("active_users", "posts")
+     var_dump($connection->viewExists("active_users", "posts"));
 
 
 
@@ -195,7 +195,7 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, *boolean* $ifExists)
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
 
 Drops a table from a schema/database
 
@@ -239,7 +239,7 @@ Adds a primary key to a table
 
 public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
 
-Drops primary key from a table
+Drops a table's primary key
 
 
 
@@ -261,9 +261,16 @@ Returns the SQL column definition from a column
 
 
 
-public *array*  **listTables** (*string* $schemaName)
+public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on a database <code> print_r($connection->listTables("blog") ?>
+List all tables on a database 
+
+.. code-block:: php
+
+    <?php
+
+     	print_r($connection->listTables("blog");
+
 
 
 

@@ -19,7 +19,7 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-abstract public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
+abstract public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 

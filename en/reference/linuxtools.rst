@@ -4,11 +4,12 @@ These steps will guide you through the process of installing Phalcon Developer T
 
 Prerequisites
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
+The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>`
+section for instructions.
 
 Download
 --------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_. 
+You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 
 Open a terminal and type the commands below:
 

@@ -11,9 +11,9 @@ Adapter to store logs in plain text files
 
     <?php
 
-    $logger = new Phalcon\Logger\Adapter\File("app/logs/test.log");
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
     $logger->log("This is a message");
-    $logger->log("This is an error", Phalcon\Logger::ERROR);
+    $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
     $logger->close();
 
@@ -22,13 +22,13 @@ Adapter to store logs in plain text files
 Methods
 ---------
 
-public  **__construct** (*string* $name, *array* $options)
+public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\\Logger\\Adapter\\File constructor
 
 
 
-public  **log** (*string* $message, *int* $type)
+public  **log** (*string* $message, [*int* $type])
 
 Sends/Writes messages to the file log
 

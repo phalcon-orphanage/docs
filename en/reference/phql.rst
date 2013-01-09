@@ -262,7 +262,7 @@ By default, a INNER JOIN is assumed. You can specify the type of JOIN in the que
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql = "SELECT CCars.*, Brands.* FROM Cars LEFT JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands";
@@ -568,9 +568,10 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
-    $manager->createBuilder()
-        >join('RobotsParts');
-        ->limit(20);
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->limit(20)
         ->order('Robots.name')
         ->getQuery()
         ->execute();
@@ -602,12 +603,12 @@ More examples of the builder:
     $phql = $builder->columns('*')
                     ->from('Robots')
 
-    // 'SELECT id, name FROM Robots'
-    $builder->columns(array('id', 'name'))
+    // 'SELECT id FROM Robots'
+    $builder->columns('id')
             ->from('Robots')
 
     // 'SELECT id, name FROM Robots'
-    $builder->columns('id, name')
+    $builder->columns(array('id', 'name'))
             ->from('Robots')
 
     // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"'
@@ -617,6 +618,16 @@ More examples of the builder:
     // 'SELECT Robots.* FROM Robots WHERE Robots.id = 100'
     $builder->from('Robots')
             ->where(100)
+
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" AND Robots.id > 50'
+    $builder->from('Robots')
+            ->where('type = "virtual"')
+            ->andWhere('id > 50')
+
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" OR Robots.id > 50'
+    $builder->from('Robots')
+            ->where('type = "virtual"')
+            ->orWhere('id > 50')
 
     // 'SELECT Robots.* FROM Robots GROUP BY Robots.name'
     $builder->from('Robots')
@@ -679,12 +690,26 @@ More examples of the builder:
     $builder->from('Robots')
             ->limit(10, 5)
 
+Escaping Reserved Words
+-----------------------
+PHQL has a few number of reserved words, if you want to use any of them as attributes or models names, you need to escape those
+words using the cross-database escaping delimiters '[' and ']':
+
+.. code-block:: php
+
+    $phql = "SELECT * FROM [Update]";
+    $result = $manager->executeQuery($phql);
+
+    $phql = "SELECT id, [Like] FROM Posts";
+    $result = $manager->executeQuery($phql);
+
+The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+
 Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:
 
 * Classes are case sensitive, if a class is not defined as it was defined this could lead to unexpected behaviors
 * The correct charset must be defined in the connection to bind parameters with success
-
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

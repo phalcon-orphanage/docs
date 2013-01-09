@@ -216,7 +216,7 @@ The available query options are:
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                               | "shared_lock" => true                                                   |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resulset, reducing the continuous access to the relational system                                                                                                                      | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
+| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                     | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
@@ -290,7 +290,7 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = robots->getLast();
 
-Phalcon's resulsets emulates scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
 to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
 in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
 is traversed several times, the query must be executed the same number of times.
@@ -401,7 +401,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "bindTypes" => $types
     ));
 
-Since the default bind-type is \Phalcon\Db\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
+Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
 
@@ -467,7 +467,12 @@ The following schema shows 3 tables whose relations will serve us as an example 
 
 * The model "Robots" has many "RobotsParts".
 * The model "Parts" has many "RobotsParts".
-* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a one-to-many relation.
+* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
+
+Check the EER diagram to understand better the relations:
+
+.. figure:: ../_static/img/eer-1.png
+   :align: center
 
 The models with their relations could be implemented as follows:
 
@@ -477,6 +482,10 @@ The models with their relations could be implemented as follows:
 
     class Robots extends \Phalcon\Mvc\Model
     {
+        public $id;
+
+        public $name;
+
         public function initialize()
         {
             $this->hasMany("id", "RobotsParts", "robots_id");
@@ -491,6 +500,10 @@ The models with their relations could be implemented as follows:
     class Parts extends \Phalcon\Mvc\Model
     {
 
+        public $id;
+
+        public $name;
+
         public function initialize()
         {
             $this->hasMany("id", "RobotsParts", "parts_id");
@@ -504,6 +517,12 @@ The models with their relations could be implemented as follows:
 
     class RobotsParts extends \Phalcon\Mvc\Model
     {
+
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
 
         public function initialize()
         {
@@ -589,12 +608,103 @@ The prefix "get" is used to find()/findFirst() related records. You can also use
     <?php
 
     $robot = Robots::findFirst(2);
-    echo "The robot have ", $robot->countRobotsParts(), " parts\n";
+    echo "The robot has ", $robot->countRobotsParts(), " parts\n";
+
+Aliasing Relationships
+^^^^^^^^^^^^^^^^^^^^^^
+To explain better how aliases work, let's check the following example:
+
+The table "robots_similar" has the function to define what robots are similar to others:
+
+.. code-block:: bash
+
+    mysql> desc robots_similar;
+    +-------------------+------------------+------+-----+---------+----------------+
+    | Field             | Type             | Null | Key | Default | Extra          |
+    +-------------------+------------------+------+-----+---------+----------------+
+    | id                | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    | robots_id         | int(10) unsigned | NO   | MUL | NULL    |                |
+    | similar_robots_id | int(10) unsigned | NO   |     | NULL    |                |
+    +-------------------+------------------+------+-----+---------+----------------+
+    3 rows in set (0.00 sec)
+
+Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
+
+.. figure:: ../_static/img/eer-2.png
+   :align: center
+
+A model that maps this table and its relationships is the following:
+
+.. code-block:: php
+
+    <?php
+
+    class RobotsSimilar extends Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->belongsTo('robots_id', 'Robots', 'id');
+            $this->belongsTo('similar_robots_id', 'Robots', 'id');
+        }
+
+    }
+
+Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+
+.. code-block:: php
+
+    <?php
+
+    $robotsSimilar = RobotsSimilar::findFirst();
+
+    //Returns the related record based on the column (robots_id)
+    //Also as is a belongsTo it's only returning one record
+    //but the name 'getRobots' seems to imply that return more than one
+    $robot = $robotsSimilar->getRobots();
+
+    //but, how to get the related record based on the column (similar_robots_id)
+    //if both relationships have the same name?
+
+The aliases allow us to rename both releationships to solve these problems:
+
+.. code-block:: php
+
+    <?php
+
+    class RobotsSimilar extends Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->belongsTo('robots_id', 'Robots', 'id', array(
+                'alias' => 'Robot'
+            ));
+            $this->belongsTo('similar_robots_id', 'Robots', 'id', array(
+                'alias' => 'SimilarRobot'
+            ));
+        }
+
+    }
+
+With the aliasing we can get the related records easily:
+
+.. code-block:: php
+
+    <?php
+
+    $robotsSimilar = RobotsSimilar::findFirst();
+
+    //Returns the related record based on the column (robots_id)
+    $robot = $robotsSimilar->getRobot();
+
+    //Returns the related record based on the column (similar_robots_id)
+    $similarRobot = $robotsSimilar->getSimilarRobot();
 
 Magic Getters vs. Explicit methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters, instead of use the magic getters
-you can define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
+you can optionally define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
 
 .. code-block:: php
 
@@ -602,6 +712,15 @@ you can define those methods explicitly with the corresponding docblocks helping
 
     class Robots extends \Phalcon\Mvc\Model
     {
+
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany("id", "RobotsParts", "robots_id");
+        }
 
         /**
          * Return the related "robots parts"
@@ -630,6 +749,12 @@ The RobotsPart model can be changed to demonstrate this feature:
     class RobotsParts extends \Phalcon\Mvc\Model
     {
 
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
+
         public function initialize()
         {
             $this->belongsTo("robots_id", "Robots", "id", array(
@@ -638,7 +763,7 @@ The RobotsPart model can be changed to demonstrate this feature:
 
             $this->belongsTo("parts_id", "Parts", "id", array(
                 "foreignKey" => array(
-                    "message" => "The part_id does not exist on the parts model"
+                    "message" => "The part_id does not exist on the Parts model"
                 )
             ));
         }
@@ -711,33 +836,27 @@ Sum examples:
     $total = Employees::sum(array("column" => "salary"));
 
     // How much are the salaries of all employees in the Sales area?
-    $total = Employees::sum(
-        array(
-            "column"     => "salary",
-            "conditions" => "area = 'Sales'"
-        )
-    );
+    $total = Employees::sum(array(
+        "column"     => "salary",
+        "conditions" => "area = 'Sales'"
+    ));
 
     // Generate a grouping of the salaries of each area
-    $group = Employees::sum(
-        array(
-            "column" => "salary",
-            "group"  => "area"
-        )
-    );
+    $group = Employees::sum(array(
+        "column" => "salary",
+        "group"  => "area"
+    ));
     foreach ($group as $row) {
        echo "The sum of salaries of the ", $group->area, " is ", $group->sumatory;
     }
 
     // Generate a grouping of the salaries of each area ordering
     // salaries from higher to lower
-    $group = Employees::sum(
-        array(
-            "column" => "salary",
-            "group"  => "area",
-            "order"  => "sumatory DESC"
-        )
-    );
+    $group = Employees::sum(array(
+        "column" => "salary",
+        "group"  => "area",
+        "order"  => "sumatory DESC"
+    ));
 
 Average examples:
 
@@ -749,12 +868,10 @@ Average examples:
     $average = Employees::average(array("column" => "salary"));
 
     // What is the average salary for the Sales's area employees?
-    $average = Employees::average(
-        array(
-            "column" => "salary",
-            "conditions" => "area = 'Sales'"
-        )
-    );
+    $average = Employees::average(array(
+        "column" => "salary",
+        "conditions" => "area = 'Sales'"
+    ));
 
 Max/Min examples:
 
@@ -766,12 +883,10 @@ Max/Min examples:
     $age = Employees::maximum(array("column" => "age"));
 
     // What is the oldest of employees from the Sales area?
-    $age = Employees::maximum(
-        array(
-            "column" => "age",
-            "conditions" => "area = 'Sales'"
-        )
-    );
+    $age = Employees::maximum(array(
+        "column" => "age",
+        "conditions" => "area = 'Sales'"
+    ));
 
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
@@ -793,7 +908,7 @@ it as a service in the services container:
     <?php
 
     //Set the models cache service
-    $di->set('modelsCache', function(){
+    $di->set('modelsCache', function() {
 
         //Cache data for one day by default
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
@@ -824,9 +939,9 @@ Once the cache setup is properly defined you could cache resultsets as follows:
         "cache" => array("key" => "my-cache")
     ));
 
-    // Cache the resultset only for 5 minutes
+    // Cache the resultset for only for 5 minutes
     $products = Products::find(array(
-        cache" => array("key" => "my-cache", "lifetime" => 300)
+        "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
     // Using a custom cache
@@ -1001,9 +1116,9 @@ generated the message or the message type:
 | InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
 +---------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-Validation Events and Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a
+Events and Events Manager
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Models allow you to implement events that will be thrown when performing an insert/update/delete. They help to define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
@@ -1036,7 +1151,10 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
-To make a model react to events, we must to implement a method with the same name of the event:
+Implementing events in the Model's class
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
 
 .. code-block:: php
 
@@ -1075,6 +1193,8 @@ Events can be useful to assign values before performing an operation, for exampl
 
     }
 
+Using a custom Events Manager
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
 this means we can create listeners that run when an event is triggered.
 
@@ -1082,27 +1202,35 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
-    $eventsManager = new \Phalcon\Events\Manager();
+    class Robots extends Phalcon\Mvc\Model
+    {
 
-    //Attach an anonymous function as a listener for "model" events
-    $eventsManager->attach('model', function($event, $robot) {
-        if ($event->getType() == 'beforeSave') {
-            if ($robot->name == 'Scooby Doo') {
-                echo "Scooby Doo isn't a robot!";
-                return false;
-            }
+        public function initialize()
+        {
+
+            $eventsManager = new \Phalcon\Events\Manager();
+
+            //Attach an anonymous function as a listener for "model" events
+            $eventsManager->attach('model', function($event, $robot) {
+                if ($event->getType() == 'beforeSave') {
+                    if ($robot->name == 'Scooby Doo') {
+                        echo "Scooby Doo isn't a robot!";
+                        return false;
+                    }
+                }
+                return true;
+            });
         }
-        return true;
-    });
+
+    }
 
     $robot = new Robots();
-    $robot->setEventsManager($eventsManager);
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
 
 In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-If we want all objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+If we want all objects created in our application use the same EventsManager then we need to assign it to the Models Manager:
 
 .. code-block:: php
 
@@ -1115,13 +1243,17 @@ If we want all objects created in our application use the same EventsManager the
 
         //Attach an anonymous function as a listener for "model" events
         $eventsManager->attach('model', function($event, $model){
+
+            //Catch events produced by the Robots model
             if (get_class($model) == 'Robots') {
+
                 if ($event->getType() == 'beforeSave') {
                     if ($modle->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
                 }
+
             }
             return true;
         });
@@ -1131,6 +1263,8 @@ If we want all objects created in our application use the same EventsManager the
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
     });
+
+If a listener returns false that will stop the operation that is executing currently.
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1303,7 +1437,7 @@ Avoiding SQL injections
 ^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
 each value before store it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
-capability provided by PDO.
+capability provided by PDO to automatically escape every value to be stored in the database.
 
 .. code-block:: bash
 
@@ -1355,8 +1489,8 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that omits some fields in the creation and/or update in order to delegate the database
-system assigns the value by a trigger or a default:
+To tell to Phalcon\\Mvc\\Model that omits some fields in the creation and/or update of records in order to delegate the database
+system the assignation of the values by a trigger or a default:
 
 .. code-block:: php
 
@@ -1439,9 +1573,30 @@ The following events are available to define custom business rules that can be e
 | Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
 
+With the above events can also define business rules in the models:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+
+        public function beforeDelete()
+        {
+
+            if ($this->status == 'A') {
+                echo "The robot is active, it can be deleted";
+                return false;
+            }
+
+            return true;
+        }
+
+    }
+
 Validation Failed Events
 ------------------------
-
 Another type of events is available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
@@ -1451,6 +1606,291 @@ Another type of events is available when the data validation process finds any i
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
+
+Behaviors
+---------
+Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides a API to implement
+behaviors in your models. Also you can use the events and callbacks as seen before to implement Behaviors with more free.
+
+A behavior must be added in the model initializer, a model can has zero or more behaviors:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
+
+    class Users extends \Phalcon\Mvc\Model
+    {
+        public $id;
+
+        public $name;
+
+        public $created_at;
+
+        public function initialize()
+        {
+            $this->addBehavior(new Timestampable(
+                array(
+                    'beforeCreate' => array(
+                        'field' => 'created_at',
+                        'format' => 'Y-m-d'
+                    )
+                )
+            ));
+        }
+
+    }
+
+The following built-in behaviors are provided by the framework:
+
++----------------+-------------------------------------------------------------------------------------------------------------------------------+
+| Name           | Description                                                                                                                   |
++================+===============================================================================================================================+
+| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated                    |
++----------------+-------------------------------------------------------------------------------------------------------------------------------+
+| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                     |
++----------------+-------------------------------------------------------------------------------------------------------------------------------+
+
+Timestampable
+^^^^^^^^^^^^^
+This behavior receives an array of options, the first level key must be a event name indicating when the column must be assigned:
+
+.. code-block:: php
+
+    <?php
+
+    public function initialize()
+    {
+        $this->addBehavior(new Timestampable(
+            array(
+                'beforeCreate' => array(
+                    'field' => 'created_at',
+                    'format' => 'Y-m-d'
+                )
+            )
+        ));
+    }
+
+Each event can has its own options, 'field' is the name of the column that must be updated, if 'format' is an string it will be used
+as format of the PHP's function date_, format can also be an anonymous function providing you the free to generate any kind timestamp:
+
+.. code-block:: php
+
+    <?php
+
+    public function initialize()
+    {
+        $this->addBehavior(new Timestampable(
+            array(
+                'beforeCreate' => array(
+                    'field' => 'created_at',
+                    'format' => function() {
+                        $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
+                        return $datetime->format('Y-m-d H:i:sP');
+                    }
+                )
+            )
+        ));
+    }
+
+If the option 'format' is omitted a timestamp using the PHP's function time_, will be used.
+
+SoftDelete
+^^^^^^^^^^
+This behavior can be used in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Behavior\SoftDelete;
+
+    class Users extends \Phalcon\Mvc\Model
+    {
+
+        const DELETED = 'D';
+
+        const NOT_DELETED = 'N';
+
+        public $id;
+
+        public $name;
+
+        public $status;
+
+        public function initialize()
+        {
+            $this->addBehavior(new SoftDelete(
+                array(
+                    'field' => 'status',
+                    'value' => Users::DELETED
+                )
+            ));
+        }
+
+    }
+
+This behavior accept two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
+Let's pretend the table 'users' has the following data:
+
+.. code-block:: bash
+
+    mysql> select * from users;
+    +----+---------+--------+
+    | id | name    | status |
+    +----+---------+--------+
+    |  1 | Lana    | N      |
+    |  2 | Brandon | N      |
+    +----+---------+--------+
+    2 rows in set (0.00 sec)
+
+If we delete any of the two records the status will be updated instead of delete the record:
+
+.. code-block:: php
+
+    <?php
+
+    Users::findFirst(2)->delete();
+
+The operation will result in the following data in the table:
+
+.. code-block:: bash
+
+    mysql> select * from users;
+    +----+---------+--------+
+    | id | name    | status |
+    +----+---------+--------+
+    |  1 | Lana    | N      |
+    |  2 | Brandon | D      |
+    +----+---------+--------+
+    2 rows in set (0.01 sec)
+
+Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
+
+Creating your own behaviors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
+Also the class Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+
+The following behavior is an example, it implements the Blamable behavior which helps to use identify what user perform an operation over
+the model:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\ModelInterface,
+        Phalcon\Mvc\Model\Behavior,
+        Phalcon\Mvc\Model\BehaviorInterface;
+
+    class Blameable extends Behavior implements BehaviorInterface
+    {
+
+        public function notify($eventType, ModelInterface $model)
+        {
+            switch ($eventType) {
+
+                case 'afterCreate':
+                case 'afterDelete':
+                case 'afterUpdate':
+
+
+                    $userName = // ... get the current user from session
+
+                    //Store in a log the username - event type and primary key
+                    file_put_contents('logs/blamable-log.txt', $userName.' '.$eventType.' '.$model->id);
+
+                    break;
+
+                default:
+                    /* ignore the rest of events */
+            }
+        }
+
+    }
+
+The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
+
+.. code-block:: php
+
+    <?php
+
+    class Profiles extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->addBehavior(new Blamable());
+        }
+
+    }
+
+A behavior is also capable of intercept missing methods on your models:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\ModelInterface,
+        Phalcon\Mvc\Model\Behavior,
+        Phalcon\Mvc\Model\BehaviorInterface;
+
+    class Sluggable extends Behavior implements BehaviorInterface
+    {
+
+        public function missingMethod(ModelInterface $model, $method, $arguments=array())
+        {
+            // if the method is 'getSlug' convert the title
+            if ($method == 'getSlug') {
+                return Phalcon\Tag::friendlyTitle($model->title);
+            }
+        }
+
+    }
+
+Call that method on a method that implements Sluggable will return a SEO friendly title:
+
+.. code-block:: php
+
+    <?php
+
+    $title = $post->getSlug();
+
+Using Traits as behaviors
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way of implement custom behaviors.
+The following trait implements a simple version of the Timestampable behavior:
+
+.. code-block:: php
+
+    <?php
+
+    trait MyTimestampable
+    {
+
+        public function beforeCreate()
+        {
+            $this->created_at = date('r');
+        }
+
+        public function beforeUpdate()
+        {
+            $this->updated_at = date('r');
+        }
+
+    }
+
+Then you can use it in your model as follows:
+
+.. code-block:: php
+
+    <?php
+
+    class Products extends \Phalcon\Mvc\Model
+    {
+        use MyTimestampable;
+    }
 
 Transactions
 ------------
@@ -1464,17 +1904,20 @@ Transactions in Phalcon allow you to commit all operations if they have been exe
 
     <?php
 
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager,
+        Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+
     try {
 
         //Create a transaction manager
-        $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
+        $manager = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
         $robot = new Robots();
         $robot->setTransaction($transaction);
-        $robot->name = "WALLÂ·E";
+        $robot->name = "WALL·E";
         $robot->created_at = date("Y-m-d");
         if ($robot->save() == false) {
             $transaction->rollback("Cannot save robot");
@@ -1490,7 +1933,7 @@ Transactions in Phalcon allow you to commit all operations if they have been exe
         //Everything goes fine, let's commit the transaction
         $transaction->commit();
 
-    } catch(Phalcon\Mvc\Model\Transaction\Failed $e) {
+    } catch(TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -1500,13 +1943,13 @@ Transactions can be used to delete many records in a consistent way:
 
     <?php
 
-    use Phalcon\Mvc\Model\Transaction\Manager as Tx,
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager,
         Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
     try {
 
         //Create a transaction manager
-        $manager = new Tx();
+        $manager = new TxManager();
 
         //Request a transaction
         $transaction = $manager->get();
@@ -1553,7 +1996,7 @@ Then access it from a controller or view:
         public function saveAction()
         {
 
-            //Obtain the TransactionsManager from the DI container
+            //Obtain the TransactionsManager from the services container
             $manager = $this->di->getTransactions();
 
             //Request a transaction
@@ -1626,6 +2069,100 @@ The independent column map allow you to:
 * Eliminate vendor prefixes/suffixes in your code
 * Change column names without change your application code
 
+Operations over Resultsets
+--------------------------
+If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+
+Updating related records
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of doing this:
+
+.. code-block:: php
+
+    <?php
+
+    foreach ($robots->getParts() as $part) {
+        $part->stock = 100;
+        $part->updated_at = time();
+        if ($part->update() == false) {
+            foreach ($part->getMessages() as $message) {
+                echo $message;
+            }
+            break;
+        }
+    }
+
+you can do this:
+
+.. code-block:: php
+
+    <?php
+
+    $robots->getParts()->update(array(
+        'stock' => 100,
+        'updated_at' => time()
+    ));
+
+'update' also accepts an anonymous function to filter what records must be updated:
+
+.. code-block:: php
+
+    <?php
+
+    $data = array(
+        'stock' => 100,
+        'updated_at' => time()
+    );
+
+    //Update all the parts except these whose type is basic
+    $robots->getParts()->update($data, function($part) {
+        if ($part->type == Part::TYPE_BASIC) {
+            return false;
+        }
+        return true;
+    }
+
+Deleting related records
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of doing this:
+
+.. code-block:: php
+
+    <?php
+
+    foreach ($robots->getParts() as $part) {
+        if ($part->delete() == false) {
+            foreach ($part->getMessages() as $message) {
+                echo $message;
+            }
+            break;
+        }
+    }
+
+you can do this:
+
+.. code-block:: php
+
+    <?php
+
+    $robots->getParts()->delete();
+
+'delete' also accepts an anonymous function to filter what records must be deleted:
+
+.. code-block:: php
+
+    <?php
+
+    //Delete only whose stock is greater or equal than zero
+    $robots->getParts()->delete(function($part) {
+        if ($part->stock < 0) {
+            return false;
+        }
+        return true;
+    });
+
 Models Meta-Data
 ----------------
 To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
@@ -1641,7 +2178,7 @@ Sometimes it is necessary to get those attributes when working with models. You 
     $robot = new Robots();
 
     // Get Phalcon\Mvc\Model\Metadata instance
-    $metaData = $robot->getDI()->getModelsMetaData();
+    $metaData = $robot->getModelsMetaData();
 
     // Get robots fields names
     $attributes = $metaData->getAttributes($robot);
@@ -1677,12 +2214,10 @@ As other ORM's dependencies, the metadata manager is requested from the services
     $di->setShared('modelsMetadata', function() {
 
         // Create a meta-data manager with APC
-        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(
-            array(
-                "lifetime" => 86400,
-                "suffix"   => "my-suffix"
-            )
-        );
+        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+            "lifetime" => 86400,
+            "suffix"   => "my-suffix"
+        ));
 
         return $metaData;
     });
@@ -1986,6 +2521,34 @@ You may be required to access the application services within a model, the follo
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
+Disabling/Enabling Features
+---------------------------
+In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
+According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Mvc\Model::setup(array(
+        'events' => false,
+        'columnRenaming' => false
+    ));
+
+The available options are:
+
++---------------------+----------------------------------------------------------------------------------+
+| Option              | Description                                                                      |
++=====================+==================================================================================+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models    |
++---------------------+----------------------------------------------------------------------------------+
+| columnRenaming      | Enables/Disables the column renaming                                             |
++---------------------+----------------------------------------------------------------------------------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  |
++---------------------+----------------------------------------------------------------------------------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        |
++---------------------+----------------------------------------------------------------------------------+
+
 Stand-Alone component
 ---------------------
 Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstrated below:
@@ -2016,3 +2579,6 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
 .. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
+.. _date: http://php.net/manual/en/function.date.php
+.. _time: http://php.net/manual/en/function.time.php
+.. _Traits: http://php.net/manual/en/language.oop5.traits.php

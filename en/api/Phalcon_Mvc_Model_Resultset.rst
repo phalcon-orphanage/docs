@@ -10,13 +10,13 @@ This component allows to Phalcon\\Mvc\\Model returns large resulsets with the mi
     <?php
 
      //Using a standard foreach
-     $robots = $Robots::find(array("type='virtual'", "order" => "name"));
+     $robots = Robots::find(array("type='virtual'", "order" => "name"));
      foreach($robots as $robot){
       echo $robot->name, "\n";
      }
     
      //Using a while
-     $robots = $Robots::find(array("type='virtual'", "order" => "name"));
+     $robots = Robots::find(array("type='virtual'", "order" => "name"));
      $robots->rewind();
      while($robots->valid()){
       $robot = $robots->current();
@@ -65,13 +65,13 @@ Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index)
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $value)
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -83,13 +83,13 @@ Resulsets cannot be changed. It has only been implemented to meet the definition
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getFirst** ()
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** ()
 
 Get first row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **getLast** ()
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** ()
 
 Get last row in the resultset
 
@@ -107,7 +107,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **getCache** ()
+public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
 
 Returns the associated cache for the resultset
 
@@ -116,6 +116,18 @@ Returns the associated cache for the resultset
 public *object*  **current** ()
 
 Returns current row in the resultset
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+
+Returns the error messages produced by a batch operation
+
+
+
+public *boolean*  **delete** ([*Closure* $conditionCallback])
+
+Delete every record in the resultset
 
 
 

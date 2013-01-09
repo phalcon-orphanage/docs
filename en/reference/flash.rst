@@ -175,3 +175,4 @@ In this case you need to print manually the messages in the corresponding view:
     <p><?php $this->flashSession->output() ?></p>
 
 The attribute 'flashSession' is how the flash was previously set into the dependency injection container.
+You need to start the :doc:`session <session>` first to successfully use the flashSession messenger.

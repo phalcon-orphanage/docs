@@ -51,6 +51,8 @@ Constants
 
 *integer* **BIND_PARAM_STR**
 
+*integer* **BIND_PARAM_BOOL**
+
 *integer* **BIND_PARAM_DECIMAL**
 
 *integer* **BIND_SKIP**

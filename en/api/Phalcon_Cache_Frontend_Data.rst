@@ -44,7 +44,7 @@ Allows to cache native PHP data in a serialized form
 Methods
 ---------
 
-public  **__construct** (*array* $frontendOptions)
+public  **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Data constructor
 

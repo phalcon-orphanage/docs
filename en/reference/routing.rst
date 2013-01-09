@@ -213,7 +213,7 @@ The following examples produce the same result:
     // Short form
     $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
 
-    // Array form:
+    // Array form
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
         array(
@@ -333,6 +333,63 @@ this is especially useful when creating RESTful applications:
     // This route will be matched if the HTTP method is POST or PUT
     $router->add("/products/update")->via(array("POST", "PUT"));
 
+Using convertions
+^^^^^^^^^^^^^^^^^
+Convertions allow to freely transform the route's parameters before pass them to the dispatcher, the following examples show how to use them:
+
+.. code-block:: php
+
+    <?php
+
+    //The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    $router
+        ->add('/products/{slug:[a-z\-]+}', array(
+            'controller' => 'products',
+            'action' => 'show'
+        ))
+        ->convert('slug', function($slug) {
+            //Transform the slug removing the dashes
+            return str_replace('-', '', $slug);
+        });
+
+Groups of Routes
+^^^^^^^^^^^^^^^^
+If a set of routes have common paths they can be grouped to easily maintain them:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new \Phalcon\Mvc\Router();
+
+    //Create a group with a common module and controller
+    $blog = new \Phalcon\Mvc\Router\Group(array(
+        'module' => 'blog',
+        'controller' => 'index'
+    ));
+
+    //All the routes start with /blog
+    $blog->setPrefix('/blog');
+
+    //Add a route to the group
+    $blog->add('/save', array(
+        'action' => 'save'
+    ));
+
+    //Add another route to the group
+    $blog->add('/edit/{id}', array(
+        'action' => 'edit'
+    ));
+
+    //This route maps to a controller different than the default
+    $blog->add('/blog', array(
+        'controller' => 'about',
+        'action' => 'index'
+    ));
+
+    //Add the group to the router
+    $router->mount($blog);
+
 Matching Routes
 ---------------
 Now we must a URI to Router in order that it check which is the defined route that matches the given URI.
@@ -398,7 +455,11 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
     <?php
 
     // returns /posts/2012/phalcon-1-0-released
-    $url->get(array("for" => "show-posts", "year" => "2012", "title" => "phalcon-1-0-released"));
+    echo $url->get(array(
+        "for" => "show-posts",
+        "year" => "2012", "title" =>
+        "phalcon-1-0-released"
+    ));
 
 Usage Examples
 --------------
@@ -414,7 +475,7 @@ The following are examples of custom routes:
         array(
             "controller" => 1,
             "action"     => 2,
-            "params"     => 3,
+            "params"     => 3
         )
     );
 
@@ -424,7 +485,7 @@ The following are examples of custom routes:
         array(
             "controller" => 2,
             "action"     => "index",
-            "language"   => 1,
+            "language"   => 1
         )
     );
 
@@ -433,7 +494,7 @@ The following are examples of custom routes:
         "/{language:[a-z]{2}}/:controller",
         array(
             "controller" => 2,
-            "action"     => "index",
+            "action"     => "index"
         )
     );
 
@@ -443,7 +504,7 @@ The following are examples of custom routes:
         array(
             "controller" => 1,
             "action"     => 2,
-            "id"         => 3,
+            "id"         => 3
         )
     );
 
@@ -455,7 +516,7 @@ The following are examples of custom routes:
             "action"     => "show",
             "year"       => 1,
             "month"      => 2,
-            "title"      => 4,
+            "title"      => 4
         )
     );
 
@@ -466,7 +527,7 @@ The following are examples of custom routes:
             "controller" => "manual",
             "action"     => "show",
             "language"   => 1,
-            "file"       => 2,
+            "file"       => 2
         )
     );
 
@@ -476,9 +537,16 @@ The following are examples of custom routes:
         "Feed::get"
     );
 
+    // matches /api/v1/users/peter.json
+    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)', array(
+        'controller' => 'api',
+        'version' => 1,
+        'format' => 4
+    ));
+
 .. highlights::
     Beware of characters allowed in regular expression for controllers and namespaces. As these
-    become class names and in turn pass through the file system could be used by attackers to
+    become class names and in turn they're passed through the file system could be used by attackers to
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
 Default Behavior
@@ -505,10 +573,24 @@ If you don't want use this routes as default in your application, you must creat
     // Create the router without default routes
     $router = new \Phalcon\Mvc\Router(false);
 
+Setting the default route
+-------------------------
+When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page
+in your website/application:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add("/", array(
+        'controller' => 'index',
+        'action' => 'index'
+    ));
+
 Setting default paths
 ---------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
-those paths the component could automatically fill it:
+those paths can be automatically filled by the component:
 
 .. code-block:: php
 
@@ -523,6 +605,34 @@ those paths the component could automatically fill it:
         "controller" => "index",
         "action" => "index"
     ));
+
+Dealing with extra/trailing slashes
+-----------------------------------
+Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
+a not-found status in the dispatcher. You can setup the router to automatically remove the slashes from the end of handled route:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new \Phalcon\Mvc\Router();
+
+    //Remove trailing slashes automatically
+    $router->removeExtraSlashes(true);
+
+Or, you can modify specific routes to optionally accept trailing slashes:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add(
+        "/{language:[a-z]{2}}/:controller[/]{0,1}",
+        array(
+            "controller" => 2,
+            "action"     => "index"
+        )
+    );
 
 Testing your routes
 -------------------
@@ -546,6 +656,7 @@ Since this component has no dependencies, you can create a file as shown below t
     $router = new Phalcon\Mvc\Router();
 
     //Add here your custom routes
+    //...
 
     //Testing each route
     foreach ($testRoutes as $testRoute) {
@@ -568,7 +679,6 @@ Since this component has no dependencies, you can create a file as shown below t
 
 Implementing your own Router
 ----------------------------
-The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one providing by Phalcon.
+The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one provided by Phalcon.
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
-

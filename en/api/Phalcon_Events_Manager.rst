@@ -15,15 +15,22 @@ Attach a listener to the events manager
 
 
 
-public  **dettachAll** (*unknown* $type)
+public  **dettachAll** ([*string* $type])
 
 Removes all events from the EventsManager
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source, *mixed* $data, *int* $cancelable)
+public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*int* $cancelable])
 
-Fires a event in the events manager causing that the acive listeners will be notified about it
+Fires a event in the events manager causing that the acive listeners will be notified about it 
+
+.. code-block:: php
+
+    <?php
+
+     $eventsManager->fire('db', $connection);
+
 
 
 

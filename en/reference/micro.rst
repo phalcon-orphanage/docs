@@ -188,8 +188,8 @@ Redirections could be performed to forward the execution flow to another route:
         echo 'This is the new Welcome';
     });
 
-Generating URLs for Routes
---------------------------
+Generating URLs from Routes
+---------------------------
 :doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
 by this way the "url" service can produce the corresponding URL:
 
@@ -215,12 +215,10 @@ by this way the "url" service can produce the corresponding URL:
 
     });
 
-
-Interacting with the Dependency Injector
-----------------------------------------
+Interacting with the Services Container
+---------------------------------------
 In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
-can create outside of the application a container to
-manipulate its services:
+can create it outside the application container to manipulate its services:
 
 .. code-block:: php
 
@@ -245,6 +243,14 @@ manipulate its services:
         $app->flash->success('Yes!, the contact was made!');
     });
 
+The array-syntax can be use to access the services in the container:
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->post('/contact', function () use ($app) {
+        $app['response']->setHeader(500, 'Application error');
+        $app['flash']->error('This is an error!');
+    });
 
 Not-Found Handler
 -----------------
@@ -271,7 +277,7 @@ Models in Micro Applications
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(array(
-        __DIR__.'/models/'
+        __DIR__ . '/models/'
     ))->register();
 
     $app = new \Phalcon\Mvc\Micro();
@@ -294,7 +300,7 @@ Events are triggered using the type "micro". The following events are supported:
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
 +=====================+============================================================================================================================+======================+
-| beforeHandleRoute   | The main method is just called, at this point the application don't know if there is some matched route                    | Yes                  |
+| beforeHandleRoute   | The main method is just called, at this point the application doesn't know if there is some matched route                  | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
@@ -319,8 +325,12 @@ In the following example, we explain how to control the application security usi
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
+
                 $app->flashSession->error("The user isn't authenticated");
                 $app->response->redirect("/");
+
+                //Return (false) stop the operation
+                return false;
             }
         }
 
@@ -330,5 +340,96 @@ In the following example, we explain how to control the application security usi
 
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
+
+Middleware events
+-----------------
+In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Executed before every route executed
+    $app->before(function() use ($app) {
+        if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            //Return false stops the normal execution
+            return false;
+        }
+    });
+
+    $app->after(function() use ($app) {
+        //This is executed after the route is executed
+    });
+
+    $app->finish(function() use ($app) {
+        //This is executed when is the request has been served
+    });
+
+You can call the methods several times to add more events of the same type. The following table explains the events:
+
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
++=====================+============================================================================================================================+======================+
+| before              | Before execute the handler. It can be used to control the access to the application                                        | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| after               | Executed after the handler is executed. It can be used to prepare the response                                             | No                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| finish              | Executed after send the response. It can be used to perform clean-up                                                       | No                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+
+Returning Responses
+-------------------
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Return a response
+    $app->get('/welcome/index', function() {
+
+        $response = new Phalcon\Http\Response();
+
+        $response->setStatusCode(401, "Unauthorized");
+
+        $response->setContent("Access is not authorized");
+
+        return $response;
+    });
+
+Rendering Views
+---------------
+:doc:`Phalcon\\Mvc\\View <views>` can be used to render views, the following example shows how to do that:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app['view'] = function() {
+        $view = new \Phalcon\Mvc\View();
+        $view->setViewsDir('app/views/');
+        return $view;
+    };
+
+    //Return a rendered view
+    $app->get('/products/show', function() use ($app) {
+
+        // Render app/views/products/show.phtml passing some variables
+        echo $app['view']->getRender('products', 'show', array(
+            'id' => 100,
+            'name' => 'Artichoke'
+        ));
+
+    });
 
 :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.

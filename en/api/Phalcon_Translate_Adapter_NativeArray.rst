@@ -17,7 +17,7 @@ Phalcon\\Translate\\Adapter\\NativeArray constructor
 
 
 
-public *string*  **query** (*string* $index, *array* $placeholders)
+public *string*  **query** (*string* $index, [*array* $placeholders])
 
 Returns the translation related to the given key
 
@@ -29,7 +29,7 @@ Check whether is defined a translation key in the internal array
 
 
 
-public *string*  **_** (*string* $translateKey, *array* $placeholders) inherited from Phalcon\\Translate\\Adapter
+public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key
 

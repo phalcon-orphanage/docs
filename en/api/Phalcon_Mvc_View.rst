@@ -43,7 +43,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*array* $options)
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View constructor
 
@@ -61,6 +61,45 @@ Gets views directory
 
 
 
+public  **setLayoutsDir** (*string* $layoutsDir)
+
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+     $view->setLayoutsDir('../common/layouts/');
+
+
+
+
+public *string*  **getLayoutsDir** ()
+
+Gets the current layouts sub-directory
+
+
+
+public  **setPartialsDir** (*string* $partialsDir)
+
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+    *
+     $view->setPartialsDir('../common/partials/');
+
+
+
+
+public *string*  **getPartialsDir** ()
+
+Gets the current partials sub-directory
+
+
+
 public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash 
@@ -69,7 +108,7 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
     <?php
 
-     $view->setBasePath(__DIR__.'/');
+     	$view->setBasePath(__DIR__.'/');
 
 
 
@@ -82,13 +121,27 @@ Sets the render level for the view
 
     <?php
 
-     //Render the view related to the controller only
-     $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
+     	//Render the view related to the controller only
+     	$this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
 
 
 
 
-public  **setMainView** (*unknown* $viewPath)
+public  **disableLevel** (*int|array* $level)
+
+Disables an specific level of rendering 
+
+.. code-block:: php
+
+    <?php
+
+     //Render all levels except ACTION level
+     $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
+
+
+
+
+public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
 
@@ -96,9 +149,34 @@ Sets default view name. Must be a file without extension in the views directory
 
     <?php
 
-     //Renders as main view views-dir/inicio.phtml
-     $this->view->setMainView('inicio');
+     	//Renders as main view views-dir/inicio.phtml
+     	$this->view->setMainView('inicio');
 
+
+
+
+public *string*  **getMainView** ()
+
+Returns the name of the main view
+
+
+
+public  **setLayout** (*string* $layout)
+
+Change the layout to be used instead of using the name of the latest controller name 
+
+.. code-block:: php
+
+    <?php
+
+     	$this->view->setLayout('main');
+
+
+
+
+public *string*  **getLayout** ()
+
+Returns the name of the main view
 
 
 
@@ -128,13 +206,40 @@ Resets any template before layouts
 
 public  **setParamToView** (*string* $key, *mixed* $value)
 
-Adds parameters to views (alias of setVar)
+Adds parameters to views (alias of setVar) 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView('products', $products);
+
+
+
+
+public  **setVars** (*array* $params)
+
+Set all the render params 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView(array('products' => $products));
+
 
 
 
 public  **setVar** (*string* $key, *mixed* $value)
 
-Adds parameters to views
+Set a single view parameter 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView('products', $products);
+
 
 
 
@@ -203,7 +308,7 @@ Register templating engines
 
 
 
-public  **render** (*string* $controllerName, *string* $actionName, *array* $params)
+public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data 
 
@@ -221,7 +326,7 @@ Executes render process from dispatching data
 
 public  **pick** (*string* $renderView)
 
-Choose a view different to render than last-controller/last-action 
+Choose different to render than last-controller/last-action 
 
 .. code-block:: php
 
@@ -251,8 +356,21 @@ Renders a partial view
 
     <?php
 
-     //Show a partial inside another view
-     $this->partial('shared/footer');
+     	//Show a partial inside another view
+     	$this->partial('shared/footer');
+
+
+
+
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params])
+
+Perform the automatic rendering returning the output as a string 
+
+.. code-block:: php
+
+    <?php
+
+     	$template = $this->view->getRender('products', 'show', array('products' => $products));
 
 
 
@@ -275,7 +393,7 @@ Returns the cache instance used to cache
 
 
 
-public  **cache** (*boolean|array* $options)
+public  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level
 

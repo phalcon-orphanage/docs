@@ -229,6 +229,67 @@ It is possible to check if cache is already exists with given key.
     }
 
 
+Lifetime
+--------
+A "lifetime" is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation.
+You can set a specific lifetime in the creation or retrieving of the data from the cache:
+
+Setting the lifetime when retrieving:
+
+.. code-block:: php
+
+    <?php
+
+    $cacheKey = 'my.cache';
+
+    //Setting the cache when getting a result
+    $robots = $cache->get($cacheKey, 3600);
+    if ($robots === null) {
+
+        $robots = "some robots";
+
+        // Store it in the cache
+        $cache->save($cacheKey, $robots);
+    }
+
+Setting the lifetime when saving:
+
+.. code-block:: php
+
+    <?php
+
+    $cacheKey = 'my.cache';
+
+    $robots = $cache->get($cacheKey);
+    if ($robots === null) {
+
+        $robots = "some robots";
+
+        //Setting the cache when saving data
+        $cache->save($cacheKey, $robots, 3600);
+    }
+
+Due to the different nature of the backends maybe is required to use some form or another.
+For example, the file adapter requires that the "lifetime" will be defined when retrieving,
+while "Apc" when saving.
+
+A cross-backend way to do this is the following:
+
+.. code-block:: php
+
+    <?php
+
+    $lifetime = 3600;
+    $cacheKey = 'my.cache';
+
+    $robots = $cache->get($cacheKey, $lifetime);
+    if ($robots === null) {
+
+        $robots = "some robots";
+
+        $cache->save($cacheKey, $robots, $lifetime);
+    }
+
 Frontend Adapters
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:

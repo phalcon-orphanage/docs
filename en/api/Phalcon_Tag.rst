@@ -32,7 +32,7 @@ Constants
 Methods
 ---------
 
-public static  **setDI** (*unknown* $dependencyInjector)
+public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector container.
 
@@ -91,7 +91,7 @@ Resets the request and internal values to avoid those fields will have any defau
 
 
 
-public static *string*  **linkTo** (*array* $parameters, *unknown* $text)
+public static *string*  **linkTo** (*array|string* $parameters, [*string* $text])
 
 Builds a HTML A tag using framework conventions 
 
@@ -188,7 +188,7 @@ Builds a HTML input[type="radio"] tag
 
 
 
-public static *string*  **submitButton** (*unknown* $parameters)
+public static *string*  **submitButton** (*array* $parameters)
 
 Builds a HTML input[type="submit"] tag 
 
@@ -201,7 +201,7 @@ Builds a HTML input[type="submit"] tag
 
 
 
-public static *string*  **selectStatic** (*array* $parameters, *unknown* $data)
+public static *string*  **selectStatic** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a PHP array for options 
 
@@ -214,7 +214,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
 
 
-public static *string*  **select** (*unknown* $parameters, *unknown* $data)
+public static *string*  **select** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a Phalcon_Model resultset as options 
 
@@ -244,7 +244,7 @@ Builds a HTML TEXTAREA tag
 
 
 
-public static *string*  **form** (*array* $parameters)
+public static *string*  **form** ([*array* $parameters])
 
 Builds a HTML FORM tag 
 
@@ -275,29 +275,36 @@ Builds a HTML close FORM tag
 
 public static  **setTitle** (*string* $title)
 
-Set the title of view content
+Set the title of view content 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Tag::setTitle('Welcome to my Page');
+
 
 
 
 public static  **appendTitle** (*string* $title)
 
-Add to title of view content
+Appends a text to current document title
 
 
 
 public static  **prependTitle** (*string* $title)
 
-Add before the title of view content
+Prepends a text to current document title
 
 
 
 public static *string*  **getTitle** ()
 
-Get the title of view content
+Gets the current document title
 
 
 
-public static *string*  **stylesheetLink** (*array* $parameters, *boolean* $local)
+public static *string*  **stylesheetLink** ([*array* $parameters], [*boolean* $local])
 
 Builds a LINK[rel="stylesheet"] tag 
 
@@ -311,7 +318,7 @@ Builds a LINK[rel="stylesheet"] tag
 
 
 
-public static *string*  **javascriptInclude** (*array* $parameters, *boolean* $local)
+public static *string*  **javascriptInclude** ([*array* $parameters], [*boolean* $local])
 
 Builds a SCRIPT[type="javascript"] tag 
 
@@ -334,13 +341,13 @@ Volt syntax:
 
 
 
-public static *string*  **image** (*array* $parameters)
+public static *string*  **image** ([*array* $parameters])
 
 Builds HTML IMG tags
 
 
 
-public static *text*  **friendlyTitle** (*string* $text, *string* $separator, *boolean* $lowercase)
+public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase])
 
 Converts texts into URL-friendly titles
 

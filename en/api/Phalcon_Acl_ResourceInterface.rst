@@ -7,7 +7,7 @@ Phalcon\\Acl\\ResourceInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*string* $name, *string* $description)
+abstract public  **__construct** (*string* $name, [*string* $description])
 
 Phalcon\\Acl\\ResourceInterface constructor
 

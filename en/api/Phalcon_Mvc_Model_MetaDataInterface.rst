@@ -121,7 +121,7 @@ Returns the reverse column map if any
 
 
 
-abstract public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+abstract public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute)
 
 Check if a model has certain attribute
 
@@ -139,7 +139,7 @@ Resets internal meta-data in order to regenerate it
 
 
 
-abstract public *array*  **read** (*unknown* $key)
+abstract public *array*  **read** (*string* $key)
 
 Reads meta-data from the adapter
 

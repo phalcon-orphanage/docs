@@ -120,7 +120,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a param by its name or numeric index
 
@@ -129,6 +129,12 @@ Gets a param by its name or numeric index
 public *boolean*  **isFinished** ()
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+
+
+
+public  **setReturnedValue** (*mixed* $value)
+
+Sets the latest returned value by an action manually
 
 
 
