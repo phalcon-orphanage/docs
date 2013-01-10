@@ -22,7 +22,7 @@ These were the measurements we record to identify the overall performance of eac
 Pariticipant Frameworks
 -----------------------
 
-* Yii_ (YII_DEBUG=false) (yii-1.1.12.b600af)
+* Yii_ (YII_DEBUG=false) (yii-1.1.13)
 * Symfony_ (2.0.11)
 * `Zend Framework`_ (1.11.11)
 * Kohana_ (3.2.0)
@@ -35,8 +35,8 @@ Pariticipant Frameworks
 Results
 -------
 
-Yii (YII_DEBUG=false) Version yii-1.1.12.b600af
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Yii (YII_DEBUG=false) Version yii-1.1.13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -140,7 +140,7 @@ CodeIgniter 2.1.0
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/codeigniter/index.php/say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/codeigniter/index.php/say/hello
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -152,46 +152,45 @@ CodeIgniter 2.1.0
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/codeigniter/index.php/say/hello
+	Document Path:          /bench/helloworld/codeigniter/index.php/say/hello
 	Document Length:        16 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   1.159 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   1.888 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      209000 bytes
-	HTML transferred:       16000 bytes
-	Requests per second:    862.58 [#/sec] (mean)
-	Time per request:       5.797 [ms] (mean)
-	Time per request:       1.159 [ms] (mean, across all concurrent requests)
-	Transfer rate:          176.05 [Kbytes/sec] received
+	Total transferred:      418000 bytes
+	HTML transferred:       32000 bytes
+	Requests per second:    1059.05 [#/sec] (mean)
+	Time per request:       9.442 [ms] (mean)
+	Time per request:       0.944 [ms] (mean, across all concurrent requests)
+	Transfer rate:          216.15 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0    6   3.3      5      34
-	Processing:     0    0   1.5      0      34
-	Waiting:        0    0   1.5      0      34
-	Total:          2    6   3.5      5      35
+	Connect:        0    9   4.1      9      33
+	Processing:     0    0   0.8      0      19
+	Waiting:        0    0   0.7      0      16
+	Total:          3    9   4.2      9      33
 
 	Percentage of the requests served within a certain time (ms)
-	  50%      5
-	  66%      6
-	  75%      6
-	  80%      7
-	  90%      8
-	  95%     12
-	  98%     17
+	  50%      9
+	  66%     10
+	  75%     11
+	  80%     12
+	  90%     14
+	  95%     16
+	  98%     21
 	  99%     24
-	 100%     35 (longest request)
-
+	 100%     33 (longest request)
 
 Kohana 3.2.0
 ^^^^^^^^^^^^
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/kohana/index.php/say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/kohana/index.php/say/hello
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -203,46 +202,45 @@ Kohana 3.2.0
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/kohana/index.php/say/hello
+	Document Path:          /bench/helloworld/kohana/index.php/say/hello
 	Document Length:        15 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   1.375 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   2.324 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      223000 bytes
-	HTML transferred:       15000 bytes
-	Requests per second:    727.07 [#/sec] (mean)
-	Time per request:       6.877 [ms] (mean)
-	Time per request:       1.375 [ms] (mean, across all concurrent requests)
-	Transfer rate:          158.34 [Kbytes/sec] received
+	Total transferred:      446446 bytes
+	HTML transferred:       30030 bytes
+	Requests per second:    860.59 [#/sec] (mean)
+	Time per request:       11.620 [ms] (mean)
+	Time per request:       1.162 [ms] (mean, across all concurrent requests)
+	Transfer rate:          187.60 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0    7   3.3      6      37
-	Processing:     0    0   0.6      0      10
-	Waiting:        0    0   0.4      0       6
-	Total:          3    7   3.3      6      37
+	Connect:        0   11   5.1     10      64
+	Processing:     0    0   1.9      0      39
+	Waiting:        0    0   1.4      0      35
+	Total:          3   11   5.3     11      64
 
 	Percentage of the requests served within a certain time (ms)
-	  50%      6
-	  66%      7
-	  75%      8
-	  80%      8
-	  90%     10
-	  95%     13
-	  98%     16
-	  99%     20
-	 100%     37 (longest request)
-
+	  50%     11
+	  66%     13
+	  75%     15
+	  80%     15
+	  90%     17
+	  95%     18
+	  98%     24
+	  99%     31
+	 100%     64 (longest request)
 
 Fuel 1.2.1
 ^^^^^^^^^^
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/fuel/say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/fuel/public/say/hello
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -254,38 +252,38 @@ Fuel 1.2.1
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/fuel/public/say/hello
+	Document Path:          /bench/helloworld/fuel/public/say/hello
 	Document Length:        16 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   1.759 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   2.742 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      209000 bytes
-	HTML transferred:       16000 bytes
-	Requests per second:    568.41 [#/sec] (mean)
-	Time per request:       8.796 [ms] (mean)
-	Time per request:       1.759 [ms] (mean, across all concurrent requests)
-	Transfer rate:          116.01 [Kbytes/sec] received
+	Total transferred:      418000 bytes
+	HTML transferred:       32000 bytes
+	Requests per second:    729.42 [#/sec] (mean)
+	Time per request:       13.709 [ms] (mean)
+	Time per request:       1.371 [ms] (mean, across all concurrent requests)
+	Transfer rate:          148.88 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0    9   4.3      8      51
-	Processing:     0    0   1.3      0      34
-	Waiting:        0    0   1.3      0      34
-	Total:          4    9   4.4      8      51
+	Connect:        0   13   6.0     12      79
+	Processing:     0    0   1.3      0      22
+	Waiting:        0    0   0.8      0      21
+	Total:          4   14   6.1     13      80
 
 	Percentage of the requests served within a certain time (ms)
-	  50%      8
-	  66%      9
-	  75%     10
-	  80%     11
-	  90%     13
-	  95%     17
-	  98%     22
-	  99%     26
-	 100%     51 (longest request)
+	  50%     13
+	  66%     15
+	  75%     17
+	  80%     17
+	  90%     19
+	  95%     24
+	  98%     30
+	  99%     38
+	 100%     80 (longest request)
 
 Cake 2.1.3
 ^^^^^^^^^^
@@ -342,7 +340,7 @@ Zend Framework 1.11.11
 
 .. code-block:: php
 
-	# ab -n 10 -c 5 http://localhost/bench/zendfw/public/say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/zendfw/public/index.php
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -354,44 +352,46 @@ Zend Framework 1.11.11
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/zendfw/public/say/hello
+	Document Path:          /bench/helloworld/zendfw/public/index.php
 	Document Length:        16 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   3.086 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   5.641 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      209000 bytes
-	HTML transferred:       16000 bytes
-	Requests per second:    324.02 [#/sec] (mean)
-	Time per request:       15.431 [ms] (mean)
-	Time per request:       3.086 [ms] (mean, across all concurrent requests)
-	Transfer rate:          66.13 [Kbytes/sec] received
+	Total transferred:      418000 bytes
+	HTML transferred:       32000 bytes
+	Requests per second:    354.55 [#/sec] (mean)
+	Time per request:       28.205 [ms] (mean)
+	Time per request:       2.820 [ms] (mean, across all concurrent requests)
+	Transfer rate:          72.36 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0   15   6.1     14      61
-	Processing:     0    0   1.7      0      37
-	Waiting:        0    0   1.7      0      36
-	Total:          8   15   6.1     14      61
+	Connect:        0   27   9.6     25      89
+	Processing:     0    1   3.0      0      70
+	Waiting:        0    0   2.9      0      70
+	Total:          9   28   9.6     26      90
 
 	Percentage of the requests served within a certain time (ms)
-	  50%     14
-	  66%     16
-	  75%     17
-	  80%     18
-	  90%     23
-	  95%     27
-	  98%     33
-	  99%     37
-	 100%     61 (longest request)
+	  50%     26
+	  66%     28
+	  75%     32
+	  80%     34
+	  90%     41
+	  95%     46
+	  98%     55
+	  99%     62
+	 100%     90 (longest request)
 
 Laravel 3.2.5
 ^^^^^^^^^^^^^
 
 .. code-block:: php
 
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/laravel/public/say/hello
+
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -403,45 +403,45 @@ Laravel 3.2.5
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/laravel/public/say/hello
+	Document Path:          /bench/helloworld/laravel/public/say/hello
 	Document Length:        15 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   2.353 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   4.090 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      831190 bytes
-	HTML transferred:       15000 bytes
-	Requests per second:    424.97 [#/sec] (mean)
-	Time per request:       11.765 [ms] (mean)
-	Time per request:       2.353 [ms] (mean, across all concurrent requests)
-	Transfer rate:          344.96 [Kbytes/sec] received
+	Total transferred:      1665162 bytes
+	HTML transferred:       30045 bytes
+	Requests per second:    489.03 [#/sec] (mean)
+	Time per request:       20.449 [ms] (mean)
+	Time per request:       2.045 [ms] (mean, across all concurrent requests)
+	Transfer rate:          397.61 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0   12   5.6     10      56
-	Processing:     0    0   0.6      0      10
-	Waiting:        0    0   0.5      0      10
-	Total:          5   12   5.6     10      56
+	Connect:        0   20   7.6     19      92
+	Processing:     0    0   2.5      0      53
+	Waiting:        0    0   2.5      0      53
+	Total:          6   20   7.6     19      93
 
 	Percentage of the requests served within a certain time (ms)
-	  50%     10
-	  66%     12
-	  75%     13
-	  80%     15
-	  90%     18
-	  95%     22
-	  98%     29
-	  99%     36
-	 100%     56 (longest request)
+	  50%     19
+	  66%     21
+	  75%     23
+	  80%     24
+	  90%     29
+	  95%     34
+	  98%     42
+	  99%     48
+	 100%     93 (longest request)
 
 Nette 2.0.4
 ^^^^^^^^^^^
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/nette/www/index.php
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/nette/www/index.php
 
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
@@ -455,45 +455,45 @@ Nette 2.0.4
 	Server Port:            80
 
 	Document Path:          /bench/helloworld/nette/www/index.php
-	Document Length:        205 bytes
+	Document Length:        24963 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   3.569 seconds
-	Complete requests:      1000
-	Failed requests:        0
+	Concurrency Level:      10
+	Time taken for tests:   7.750 seconds
+	Complete requests:      2000
+	Failed requests:        200
+	   (Connect: 0, Receive: 0, Length: 200, Exceptions: 0)
 	Write errors:           0
-	Total transferred:      448000 bytes
-	HTML transferred:       205000 bytes
-	Requests per second:    280.18 [#/sec] (mean)
-	Time per request:       17.846 [ms] (mean)
-	Time per request:       3.569 [ms] (mean, across all concurrent requests)
-	Transfer rate:          122.58 [Kbytes/sec] received
+	Total transferred:      50370200 bytes
+	HTML transferred:       49926200 bytes
+	Requests per second:    258.07 [#/sec] (mean)
+	Time per request:       38.749 [ms] (mean)
+	Time per request:       3.875 [ms] (mean, across all concurrent requests)
+	Transfer rate:          6347.24 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0   18   6.6     16      63
-	Processing:     0    0   1.0      0      20
-	Waiting:        0    0   1.0      0      20
-	Total:          9   18   6.6     16      63
+	Connect:        0   38  13.1     34     115
+	Processing:     0    1   4.7      0      99
+	Waiting:        0    0   4.5      0      98
+	Total:         15   39  13.2     34     116
 
 	Percentage of the requests served within a certain time (ms)
-	  50%     16
-	  66%     19
-	  75%     20
-	  80%     22
-	  90%     27
-	  95%     31
-	  98%     37
-	  99%     39
-	 100%     63 (longest request)
+	  50%     34
+	  66%     38
+	  75%     46
+	  80%     50
+	  90%     58
+	  95%     64
+	  98%     75
+	  99%     82
+	 100%    116 (longest request)
 
-
-Phalcon Version 0.5.0
+Phalcon Version 0.8.0
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/phalcon/index.php?_url=/say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/phalcon/index.php?_url=/say/hello
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -505,39 +505,38 @@ Phalcon Version 0.5.0
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/phalcon/index.php?_url=/say/hello
+	Document Path:          /bench/helloworld/phalcon/index.php?_url=/say/hello
 	Document Length:        16 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   0.419 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   0.789 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      209000 bytes
-	HTML transferred:       16000 bytes
-	Requests per second:    2386.74 [#/sec] (mean)
-	Time per request:       2.095 [ms] (mean)
-	Time per request:       0.419 [ms] (mean, across all concurrent requests)
-	Transfer rate:          487.14 [Kbytes/sec] received
+	Total transferred:      418000 bytes
+	HTML transferred:       32000 bytes
+	Requests per second:    2535.82 [#/sec] (mean)
+	Time per request:       3.943 [ms] (mean)
+	Time per request:       0.394 [ms] (mean, across all concurrent requests)
+	Transfer rate:          517.56 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0    2   1.1      2      17
-	Processing:     0    0   0.1      0       3
-	Waiting:        0    0   0.1      0       2
-	Total:          1    2   1.1      2      17
+	Connect:        0    4   1.7      3      23
+	Processing:     0    0   0.2      0       6
+	Waiting:        0    0   0.2      0       6
+	Total:          2    4   1.7      3      23
 
 	Percentage of the requests served within a certain time (ms)
-	  50%      2
-	  66%      2
-	  75%      2
-	  80%      2
-	  90%      3
-	  95%      4
-	  98%      5
-	  99%      7
-	 100%     17 (longest request)
-
+	  50%      3
+	  66%      4
+	  75%      4
+	  80%      4
+	  90%      5
+	  95%      6
+	  98%      8
+	  99%     14
+	 100%     23 (longest request)
 
 Graphs
 ^^^^^^
@@ -558,15 +557,15 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Requests per second');
 			data.addRows([
-				['Nette', 280.18],
-				['Zend', 324.02],
-				['Laravel', 424.97],
+				['Nette', 258.07],
+				['Zend', 354.55],
+				['Laravel', 489.03],
 				['Symfony', 541.01],
 				['Fuel', 568.41],
-				['Kohana', 727.07],
-				['Yii', 762.55],
-				['CodeIgniter', 862.58],
-				['Phalcon', 2386.74]
+				['Yii', 851.83],
+				['Kohana', 860.59],
+				['CodeIgniter', 1059.05],
+				['Phalcon', 2535.82]
 			]);
 
 			var options = {
@@ -588,15 +587,15 @@ The first graph shows how many requests per second each framework was able to ac
 			data.addColumn('string', 'Framework');
 			data.addColumn('number', 'Time per Request');
 			data.addRows([
-				['Nette', 3.569],
-				['Zend', 3.086],
-				['Laravel', 2.353],
+				['Nette', 3.875],
+				['Zend', 2.820],
+				['Laravel', 2.045],
 				['Symfony', 1.848],
-				['Fuel', 1.759],
-				['Kohana', 1.375],
+				['Fuel', 1.371],
 				['Yii', 1.174],
-				['CodeIgniter', 1.159],
-				['Phalcon', 0.419]
+				['Kohana', 1.162],
+				['CodeIgniter', 0.944],
+				['Phalcon', 0.394]
 			]);
 
 			var options = {

@@ -577,7 +577,6 @@ The associative array passed in Phalcon\\Db::createTable() can have the possible
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-
 Altering Tables
 ^^^^^^^^^^^^^^^
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
