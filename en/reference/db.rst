@@ -441,7 +441,7 @@ Describing Tables and Databases
     $exists = $connection->tableExists("robots");
 
     // Get name, data types and special features of robots fields
-    $fields = $connection->describeTable("robots");
+    $fields = $connection->describeColumns("robots");
     foreach ($fields as $field) {
         echo "Column Type: ", $field["Type"];
     }
