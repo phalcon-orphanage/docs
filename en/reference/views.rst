@@ -688,7 +688,7 @@ You can replace the template engine completely or use more than one template eng
 accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
 Template files related to the particular engine must have those extensions.
 
-The order that the template engines are defined with \Phalcon\\Mvc\\View::reginsterEngines() defines the relevance of execution. If
+The order that the template engines are defined with \Phalcon\\Mvc\\View::registerEngines() defines the relevance of execution. If
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
 
 If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
@@ -764,7 +764,7 @@ All the components in Phalcon can be used as *glue* components individually beca
 
 View Events
 -----------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to an :doc:`EventsManager <events>` if it's present. Events
 are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
 
 +----------------------+------------------------------------------------------------+---------------------+

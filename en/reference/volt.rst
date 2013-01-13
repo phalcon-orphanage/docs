@@ -301,7 +301,7 @@ You can get the element "keys" as in the PHP counterpart using the following syn
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-Additionally, a if evaluation can be optionally set:
+Additionally, an "if" evaluation can be optionally set:
 
 .. code-block:: html+jinja
 
@@ -341,7 +341,7 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
 
 If
 ^^
-As PHP, a if statement checks if an expression is evaluated as true or false:
+As PHP, an "if" statement checks if an expression is evaluated as true or false:
 
 .. code-block:: html+jinja
 
