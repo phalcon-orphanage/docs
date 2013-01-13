@@ -5,6 +5,7 @@ zh/_build
 _templates
 *.komodoproject
 *.sublime-*
+.pydevproject
 .idea/
 <<<<<<< HEAD
 

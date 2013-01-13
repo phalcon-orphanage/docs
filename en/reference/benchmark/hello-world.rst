@@ -4,11 +4,19 @@ Hello World Benchmark
 How the benchmarks were performed?
 ----------------------------------
 
-We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many people don't like this kind of benchmark because real-world applications require more complex features or structures. However, these tests identify the minimum time spent by each framework to perform a simple task. Such a task represents the mimimum requirement for every framework to process a single request.
+We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
+people don't like this kind of benchmark because real-world applications require more complex features or
+structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
+Such a task represents the mimimum requirement for every framework to process a single request.
 
-More specifically, the benchmark only measures the time it takes for a framework to start, run an action and free up resources at the end of the request. Any PHP application based on an MVC architecture will require this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex request will be higher.
+More specifically, the benchmark only measures the time it takes for a framework to start, run an action and
+free up resources at the end of the request. Any PHP application based on an MVC architecture will require
+this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex
+request will be higher.
 
-A controller and a view have been created for each framework. The controller "say" and action "hello". The action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 1000 requests using 5 concurrent connections to each framework.
+A controller and a view have been created for each framework. The controller "say" and action "hello". The
+action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 2000
+requests using 10 concurrent connections to each framework.
 
 What measurements were recorded?
 --------------------------------
@@ -40,7 +48,7 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/yii/index.php?r=say/hello
+	# ab -n 2000 -c 10 http://localhost/bench/helloworld/yii/index.php?r=say/hello
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -52,45 +60,45 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
 	Server Hostname:        localhost
 	Server Port:            80
 
-	Document Path:          /bench/yii/index.php?r=say/hello
+	Document Path:          /bench/helloworld/yii/index.php?r=say/hello
 	Document Length:        61 bytes
 
-	Concurrency Level:      5
-	Time taken for tests:   1.174 seconds
-	Complete requests:      1000
+	Concurrency Level:      10
+	Time taken for tests:   2.081 seconds
+	Complete requests:      2000
 	Failed requests:        0
 	Write errors:           0
-	Total transferred:      254000 bytes
-	HTML transferred:       61000 bytes
-	Requests per second:    851.83 [#/sec] (mean)
-	Time per request:       5.870 [ms] (mean)
-	Time per request:       1.174 [ms] (mean, across all concurrent requests)
-	Transfer rate:          211.29 [Kbytes/sec] received
+	Total transferred:      508000 bytes
+	HTML transferred:       122000 bytes
+	Requests per second:    961.28 [#/sec] (mean)
+	Time per request:       10.403 [ms] (mean)
+	Time per request:       1.040 [ms] (mean, across all concurrent requests)
+	Transfer rate:          238.44 [Kbytes/sec] received
 
 	Connection Times (ms)
 	              min  mean[+/-sd] median   max
-	Connect:        0    6   2.5      5      20
-	Processing:     0    0   0.4      0       6
-	Waiting:        0    0   0.3      0       6
-	Total:          2    6   2.5      5      20
+	Connect:        0   10   4.3      9      42
+	Processing:     0    0   1.0      0      24
+	Waiting:        0    0   0.8      0      17
+	Total:          3   10   4.3      9      42
 
 	Percentage of the requests served within a certain time (ms)
-	  50%      5
-	  66%      6
-	  75%      7
-	  80%      7
-	  90%      9
-	  95%     11
-	  98%     14
-	  99%     15
-	 100%     20 (longest request)
+	  50%      9
+	  66%     11
+	  75%     13
+	  80%     14
+	  90%     15
+	  95%     17
+	  98%     21
+	  99%     26
+	 100%     42 (longest request)
 
-Symfony Version 2.0.11
+Symfony Version 2.1.6
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
-	# ab -n 1000 -c 5 http://localhost/bench/Symfony/web/app.php/say/hello/
+	# ab -n 2000 -c 10 http://localhost/bench/Symfony/web/app.php/say/hello/
 	This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 	Licensed to The Apache Software Foundation, http://www.apache.org/
