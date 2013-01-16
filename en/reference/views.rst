@@ -517,7 +517,7 @@ The service name convention for this service is "viewCache":
         ));
 
         //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcached($frontCache, array(
+        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));

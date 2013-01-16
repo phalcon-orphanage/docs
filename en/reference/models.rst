@@ -916,7 +916,7 @@ it as a service in the services container:
         ));
 
         //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcached($frontCache, array(
+        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));

@@ -39,27 +39,30 @@ Related Guides
 	xampp
 	wamp
 
-Unix/Linux
-----------
-On a Unix/Linux system you can easily compile and install the extension from the source code:
+Linux/Solaris/Mac
+-----------------
+On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
 
 Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP 5.x development resources
-* GCC compiler (Linux) or Xcode (Mac)
+* PHP 5.3.x/5.4.x development resources
+* GCC compiler (Linux/Solaris) or Xcode (Mac)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
 .. code-block:: bash
 
 	#Ubuntu
-	sudo apt-get install php5-dev php5-mysql gcc
+	sudo apt-get install php5-dev php5-mysql gcc autoconf
 	sudo apt-get install git-core
 
 	#Suse
-	yast2 -i php5-pear php5-dev php5-mysql gcc
+	yast2 -i php5-pear php5-devel php5-mysql gcc autoconf2.13
 	yast2 -i git-core
+
+	#Solaris
+	pkg install php-53 apache-php53 gcc-45
 
 Compilation
 ^^^^^^^^^^^
