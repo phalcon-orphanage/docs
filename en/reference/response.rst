@@ -139,7 +139,7 @@ in the browser cache until this date expires without requesting the content to t
     $expireDate = new DateTime();
     $expireDate->modify('+2 months');
 
-    $response->setExpires(expireDate);
+    $response->setExpires($expireDate);
 
 The Response component automatically shows the date in GMT timezone in order as is expected in a Expires header.
 
@@ -152,7 +152,7 @@ Moreover if we set a date in the past this will tell the browser to always refre
     $expireDate = new DateTime();
     $expireDate->modify('-10 minutes');
 
-    $response->setExpires(expireDate);
+    $response->setExpires($expireDate);
 
 Browsers relies on the client's clock to assess if this date has passed or not, the client clock can be modified to
 make pages expire, this may represent a limitation for this cache mechanism.
