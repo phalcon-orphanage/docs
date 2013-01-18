@@ -246,9 +246,9 @@ You can add an "empty" option to the generated HTML:
         array(
             "productId",
             Products::find("type = 'vegetables'"),
-            "using" => array("id", "name")
-        ),
-        'useEmpty' => true
+            "using" => array("id", "name"),
+            "useEmpty" => true
+        )
     );
 
 .. code-block:: html
