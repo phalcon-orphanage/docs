@@ -42,12 +42,10 @@ you can use the getSource() method:
 
 	class Robots extends \Phalcon\Mvc\Collection
 	{
-
 		public function getSource()
 		{
 			return "the_robots";
 		}
-
 	}
 
 Understanding Documents To Objects
@@ -590,11 +588,9 @@ You can also delete many documents by traversing a resultset with a foreach:
 
 	<?php
 
-	$robots = Robots::find(
-		array(
-			array("type" => "mechanical"
-		)
-	);
+	$robots = Robots::find(array(
+		array("type" => "mechanical")
+	));
 	foreach ($robots as $robot) {
 		if ($robot->delete() == false) {
 			echo "Sorry, we can't delete the robot right now: \n";
