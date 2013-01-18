@@ -328,7 +328,7 @@ Setting Helper Values
 From Controllers
 ^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
-You can set those values directly from the controller using Phalcon\\Tag::setDefaultValue().
+You can set those values directly from the controller using Phalcon\\Tag::setDefault().
 This helper preloads a value for any helpers present in the view. If any helper in the view has
 a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.
 
@@ -341,7 +341,7 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 
         public function indexAction()
         {
-            Phalcon\Tag::setDefaultValue("color", "Blue");
+            Phalcon\Tag::setDefault("color", "Blue");
         }
 
     }
@@ -381,7 +381,7 @@ of form helpers between requests. This way you can easily show validation messag
 Specifying values directly
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Every form helper supports the parameter "value". With it you can specify a value for the helper directly.
-When this parameter is present, any preset value using setDefaultValue() or via request will be ignored.
+When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
 Changing dynamically the Document Title
 ---------------------------------------
