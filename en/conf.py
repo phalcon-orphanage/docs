@@ -230,8 +230,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'PhalconDocumentation', 'Phalcon PHP Framework Documentation',
-   'Phalcon Team', 'PhalconDocumentation', 'PhalconPHP is a web framework delivered as a C extension providing high performance and lower resource consumption.',
-   'Miscellaneous'),
+   'Phalcon Team', 'PhalconDocumentation', 'PhalconPHP is a web framework delivered as a C extension providing high performance and lower resource consumption.', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
