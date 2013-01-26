@@ -97,3 +97,15 @@ Returns the access which the list is checking if some role can access it
 
 
 
+abstract public :doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` [] **getRoles** ()
+
+Return an array with every role registered in the list
+
+
+
+abstract public :doc:`Phalcon\\Acl\\ResourcesInterface <Phalcon_Acl_ResourcesInterface>` [] **getResources** ()
+
+Return an array with every resource registered in the list
+
+
+

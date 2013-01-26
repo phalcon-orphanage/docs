@@ -46,13 +46,25 @@ Internally gets the request dispatcher
 
 public static :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`  **getUrlService** ()
 
-Return a URL service from the DI
+Return a URL service from the default DI
 
 
 
 public static :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`  **getDispatcherService** ()
 
-Returns a Dispatcher service from the DI
+Returns a Dispatcher service from the default DI
+
+
+
+public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
+
+Returns an Escaper service from the default DI
+
+
+
+public static  **setAutoescape** (*boolean* $autoescape)
+
+Set autoescape mode in generated html
 
 
 
@@ -79,7 +91,7 @@ Alias of Phalcon\\Tag::setDefault
 
 
 
-public static *mixed*  **getValue** (*string* $name)
+public static *mixed*  **getValue** (*string* $name, *array* $params)
 
 Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
 
@@ -312,8 +324,8 @@ Builds a LINK[rel="stylesheet"] tag
 
     <?php
 
-     echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
-     echo Phalcon\Tag::stylesheetLink("css/style.css");
+     	echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+     	echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 
 

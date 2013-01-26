@@ -56,7 +56,7 @@ Returns the dependency injection container
 
 
 
-public  **setUniqueRow** (*boolean* $uniqueRow)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setUniqueRow** (*boolean* $uniqueRow)
 
 Tells to the query if only the first row in the resultset must be resturned
 
@@ -164,7 +164,7 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-public  **cache** (*array* $cacheOptions)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **cache** (*array* $cacheOptions)
 
 Sets the cache parameters of the query
 
@@ -218,7 +218,7 @@ Executes a parsed PHQL statement
 
 
 
-public  **setType** (*int* $type)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setType** (*int* $type)
 
 Sets the type of PHQL statement to be executed
 
@@ -230,7 +230,7 @@ Gets the type of PHQL statement executed
 
 
 
-public  **setIntermediate** (*array* $intermediate)
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setIntermediate** (*array* $intermediate)
 
 Allows to set the IR to be executed
 

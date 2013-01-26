@@ -149,7 +149,7 @@ Checks whether request has been made using any secure layer
 
 public *string*  **getRawBody** ()
 
-Gets HTTP raws request body
+Gets HTTP raw request body
 
 
 
@@ -173,7 +173,7 @@ Gets information about schema, host and port used by the request
 
 public *string*  **getClientAddress** ([*boolean* $trustForwardedHeader])
 
-Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
+Gets most possible client IPv4 Address. This method search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
 
 

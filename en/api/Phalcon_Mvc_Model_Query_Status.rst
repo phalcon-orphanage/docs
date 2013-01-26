@@ -18,7 +18,7 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
     ));
     
     \//Check if the update was successful
-    if($status->success()==true){
+    if ($status->success() == true) {
        echo 'OK';
     }
 
@@ -35,13 +35,13 @@ public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface 
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
 
-Returns the model which executed the action
+Returns the model that executed the action
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>` [] **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
 
-Returns the messages produced by a operation failed
+Returns the messages produced by a failed operation
 
 
 

@@ -202,6 +202,18 @@ Check whether a role is allowed to access an action from a resource
 
 
 
+public :doc:`Phalcon\\Acl\\Role <Phalcon_Acl_Role>` [] **getRoles** ()
+
+Return an array with every role registered in the list
+
+
+
+public :doc:`Phalcon\\Acl\\Resources <Phalcon_Acl_Resources>` [] **getResources** ()
+
+Return an array with every resource registered in the list
+
+
+
 protected  **_rebuildAccessList** ()
 
 Rebuild the list of access from the inherit lists

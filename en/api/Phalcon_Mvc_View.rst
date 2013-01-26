@@ -122,7 +122,7 @@ Sets the render level for the view
     <?php
 
      	//Render the view related to the controller only
-     	$this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
+     	$this->view->setRenderLevel(View::LEVEL_VIEW);
 
 
 
@@ -225,7 +225,7 @@ Set all the render params
 
     <?php
 
-    $this->view->setParamToView(array('products' => $products));
+    $this->view->setVars(array('products' => $products));
 
 
 
@@ -238,7 +238,7 @@ Set a single view parameter
 
     <?php
 
-    $this->view->setParamToView('products', $products);
+    $this->view->setVar('products', $products);
 
 
 
@@ -387,6 +387,12 @@ Create a Phalcon\\Cache based on the internal cache options
 
 
 
+public *boolean*  **isCaching** ()
+
+Check if the component is currently caching the output content
+
+
+
 public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
 
 Returns the cache instance used to cache
@@ -442,6 +448,32 @@ Resets the view component to its factory default values
 
 
 
+public  **__set** (*string* $key, *mixed* $value)
+
+Magic method to pass variables to the views 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->products = $products;
+
+
+
+
+public *mixed*  **__get** (*string* $key)
+
+Magic method to retrieve a variable passed to the view 
+
+.. code-block:: php
+
+    <?php
+
+    echo $this->view->products;
+
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
@@ -463,12 +495,6 @@ Sets the event manager
 public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal event manager
-
-
-
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
-
-Magic method __get
 
 
 

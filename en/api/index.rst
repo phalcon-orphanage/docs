@@ -10,6 +10,13 @@ API Indice
    Phalcon_Acl_Exception
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
+   Phalcon_Annotations_Adapter
+   Phalcon_Annotations_Adapter_Memory
+   Phalcon_Annotations_Annotation
+   Phalcon_Annotations_Collection
+   Phalcon_Annotations_Exception
+   Phalcon_Annotations_Reader
+   Phalcon_Annotations_Reflection
    Phalcon_CLI_Console
    Phalcon_CLI_Console_Exception
    Phalcon_CLI_Dispatcher
@@ -109,6 +116,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
+   Phalcon_Mvc_Model_MetaData_Strategy_Introspection
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
@@ -132,6 +140,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
+   Phalcon_Mvc_Router_Annotations
    Phalcon_Mvc_Router_Exception
    Phalcon_Mvc_Router_Group
    Phalcon_Mvc_Router_Route

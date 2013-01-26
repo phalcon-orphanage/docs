@@ -9,13 +9,13 @@ This components controls the initialization of models, keeping record of relatio
 
     <?php
 
-     $dependencyInjector = new Phalcon\DI();
+     $di = new Phalcon\DI();
     
-     $dependencyInjector->set('collectionManager', function(){
+     $di->set('collectionManager', function(){
           return new Phalcon\Mvc\Collection\Manager();
      });
     
-     $robot = new Robots($dependencyInjector);
+     $robot = new Robots($di);
 
 
 
@@ -60,7 +60,7 @@ Returns a custom events manager related to a model
 
 public  **initialize** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
-Initializes a model in the model manager
+Initializes a model in the models manager
 
 
 
@@ -72,13 +72,25 @@ Check whether a model is already initialized
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLastInitialized** ()
 
-Get the lastest initialized model
+Get the latest initialized model
 
 
 
 public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
 
-Set a connection service for a model
+Sets a connection service for a specific model
+
+
+
+public  **useImplicitObjectIds** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *boolean* $useImplicitObjectIds)
+
+Sets if a model must use implicit objects ids
+
+
+
+public *boolean*  **isUsingImplicitObjectIds** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Checks if a model is using implicit object ids
 
 
 

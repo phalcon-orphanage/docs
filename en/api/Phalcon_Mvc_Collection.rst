@@ -28,11 +28,11 @@ Phalcon\\Mvc\\Model constructor
 
 public  **setId** (*mixed* $id)
 
-Sets a value for the _id propery, creates a MongoId object if needed
+Sets a value for the _id property, creates a MongoId object if needed
 
 
 
-public *MongoId*  **getId** ()
+public *\MongoId*  **getId** ()
 
 Returns the value of the _id property
 
@@ -62,9 +62,21 @@ Returns the custom events manager
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`  **getModelsManager** ()
+
+Returns the models manager related to the entity instance
+
+
+
 public *array*  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
+
+
+
+protected  **useImplicitObjectIds** ()
+
+Sets if a model must use implicit objects ids
 
 
 
@@ -92,7 +104,7 @@ Returns DependencyInjection connection service
 
 
 
-public *MongoDb*  **getConnection** ()
+public *\MongoDb*  **getConnection** ()
 
 Retrieves a database connection
 
@@ -124,7 +136,7 @@ Writes an attribute value by its name
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **dumpResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
 
 Returns a cloned collection
 
@@ -187,7 +199,7 @@ Check whether validation process has generated any messages
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
     
-    class Subscriptors extends Phalcon\Mvc\Model
+    class Subscriptors extends Phalcon\Mvc\Collection
     {
     
     public function validation()
@@ -285,9 +297,9 @@ Creates/Updates a collection based on the values in the atributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string* $id)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
 
-Find a document by its id
+Find a document by its id (_id)
 
 
 
@@ -299,22 +311,22 @@ Allows to query the first record that match the specified conditions
 
     <?php
 
-     //What's the first robot in robots table?
+     //What's the first robot in the robots table?
      $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name;
+     echo "The robot name is ", $robot->name, "\n";
     
      //What's the first mechanical robot in robots table?
      $robot = Robots::findFirst(array(
          array("type" => "mechanical")
      ));
-     echo "The first mechanical robot name is ", $robot->name;
+     echo "The first mechanical robot name is ", $robot->name, "\n";
     
      //Get first virtual robot ordered by name
      $robot = Robots::findFirst(array(
          array("type" => "mechanical"),
          "order" => array("name" => 1)
      ));
-     echo "The first virtual robot name is ", $robot->name;
+     echo "The first virtual robot name is ", $robot->name, "\n";
 
 
 
@@ -329,13 +341,13 @@ Allows to query a set of records that match the specified conditions
 
      //How many robots are there?
      $robots = Robots::find();
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //How many mechanical robots are there?
      $robots = Robots::find(array(
          array("type" => "mechanical")
      ));
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //Get and print virtual robots ordered by name
      $robots = Robots::findFirst(array(
@@ -383,9 +395,22 @@ Deletes a model instance. Returning true on success or false otherwise.
     $robot = Robots::findFirst();
     $robot->delete();
     
-    foreach(Robots::find() as $robot){
-       $robot->delete();
+    foreach (Robots::find() as $robot) {
+    	$robot->delete();
     }
+
+
+
+
+public *array*  **toArray** ()
+
+Returns the instance as an array representation 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($robot->toArray());
 
 
 
