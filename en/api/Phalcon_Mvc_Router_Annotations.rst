@@ -5,25 +5,43 @@ Class **Phalcon\\Mvc\\Router\\Annotations**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
 
-A router that reads routes annotations from classes
+A router that reads routes annotations from classes/resources  
+
+.. code-block:: php
+
+    <?php
+
+     $di->set('router', function() {
+    
+    	//Use the annotations router
+    	$router = new \Phalcon\Mvc\Router\Annotations();
+    
+    	//This will do the same as above but only if the handled uri starts with /robots
+     		$router->addResource('Robots', '/robots');
+    
+     		return $router;
+    });
+
 
 
 Methods
 ---------
 
-public  **addResource** (*unknown* $handler, [*unknown* $prefix])
+public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addResource** (*string* $handler, [*string* $prefix])
 
-...
-
-
-public  **handle** ([*unknown* $uri])
-
-...
+Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 
-public  **processControllerAnnotation** (*unknown* $handler, *unknown* $annotation)
+
+public  **handle** ([*string* $uri])
+
+Produce the routing parameters from the rewrite information
 
 
+
+public  **processControllerAnnotation** (*string* $handler, *unknown* $annotation)
+
+Checks for annotations in the controller docblock
 
 
 

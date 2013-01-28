@@ -1,60 +1,69 @@
 Class **Phalcon\\Annotations\\Annotation**
 ==========================================
 
-Phalcon\\Annotations\\Annotation initializer
+Represents a single annotation in an annotations collection
 
 
 Methods
 ---------
 
-public  **__construct** (*unknown* $reflectionData)
+public  **__construct** (*array* $reflectionData)
 
 Phalcon\\Annotations\\Annotation constructor
 
 
 
-public  **getName** ()
+public *string*  **getName** ()
 
-...
-
-
-public  **getExpression** (*unknown* $expr)
-
-...
+Returns the annotation's name
 
 
-public  **getExprArguments** ()
 
-...
+public *mixed*  **getExpression** (*array* $expr)
 
-
-public  **getArguments** ()
-
-...
+Resolves an annotation expression
 
 
-public  **numberArguments** ()
 
-...
+public *array*  **getExprArguments** ()
 
-
-public  **getArgument** (*unknown* $position)
-
-...
+Returns the expression arguments without resolving
 
 
-public  **hasArgument** (*unknown* $position)
 
-...
+public *array*  **getArguments** ()
 
-
-public  **getNamedParameter** (*unknown* $name)
-
-...
+Returns the expression arguments
 
 
-public  **hasNamedArgument** (*unknown* $name)
 
-...
+public *int*  **numberArguments** ()
+
+Returns the number of arguments that the annotation has
+
+
+
+public *mixed*  **getArgument** (*unknown* $position)
+
+Returns an argument in an specific position
+
+
+
+public *mixed*  **hasArgument** (*unknown* $position)
+
+Returns an argument in an specific position
+
+
+
+public *mixed*  **getNamedParameter** (*string* $name)
+
+Returns a named argument
+
+
+
+public *boolean*  **hasNamedArgument** (*unknown* $name)
+
+Checks if the annotation has a specific named argument
+
 
 

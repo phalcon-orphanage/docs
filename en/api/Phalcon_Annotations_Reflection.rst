@@ -34,7 +34,7 @@ Returns the annotations found in the class docblock
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>` [] **getMethodAnnotations** ()
+public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>` [] **getMethodsAnnotations** ()
 
 Returns the annotations found in the methods' docblocks
 

@@ -152,7 +152,7 @@ Escapes a value to avoid SQL injections
 
 public *string*  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Manually bind params to a SQL statement 
+Manually bind params to a SQL statement. This method requires an active connection to a database system 
 
 .. code-block:: php
 

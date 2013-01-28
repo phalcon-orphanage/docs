@@ -177,6 +177,8 @@ API Indice
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface
    Phalcon_Acl_RoleInterface
+   Phalcon_Annotations_AdapterInterface
+   Phalcon_Annotations_ReaderInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_DI_InjectionAwareInterface

@@ -326,7 +326,7 @@ Executes render process from dispatching data
 
 public  **pick** (*string* $renderView)
 
-Choose different to render than last-controller/last-action 
+Choose a different view to render instead of last-controller/last-action 
 
 .. code-block:: php
 

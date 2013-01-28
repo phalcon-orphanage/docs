@@ -310,9 +310,22 @@ Prepends a text to current document title
 
 
 
-public static *string*  **getTitle** ()
+public static *string*  **getTitle** ([*unknown* $tags])
 
-Gets the current document title
+Gets the current document title 
+
+.. code-block:: php
+
+    <?php
+
+     	echo Phalcon\Tag::getTitle();
+
+.. code-block:: php
+
+    <?php
+
+     	{{ get_title() }}
+
 
 
 
@@ -338,8 +351,8 @@ Builds a SCRIPT[type="javascript"] tag
 
     <?php
 
-     echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-     echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+     	echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
+     	echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 Volt syntax: 
 

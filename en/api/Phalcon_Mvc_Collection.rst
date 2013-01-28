@@ -148,6 +148,12 @@ Returns a collection resultset
 
 
 
+protected static *int*  **_getGroupResultset** ()
+
+Perform a count over a resultset
+
+
+
 protected *boolean*  **_preSave** ()
 
 Executes internal hooks before save a document
