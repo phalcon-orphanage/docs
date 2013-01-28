@@ -401,17 +401,19 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "bindTypes" => $types
     ));
 
-Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no need to specify the "bindTypes" parameter if all of the columns are of that type.
+Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no need to specify the
+"bindTypes" parameter if all of the columns are of that type.
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation methods like count(), sum(), average() etc.
+Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
+methods like count(), sum(), average() etc.
 
 Relationships between Models
 ----------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional
-or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages
-foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access
-of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record
-in a uniform way.
+There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
+unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
+The model manager manages foreign key constraints for these relationships, the definition of these helps referential
+integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
+it is easy to access data in related models from each record in a uniform way.
 
 Unidirectional relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -532,8 +534,8 @@ The models with their relations could be implemented as follows:
 
     }
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced
-model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+The first parameter indicates the field of the local model used in the relationship; the second indicates the name
+of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -544,13 +546,34 @@ When explicitly defining the relationships between models, it is easy to find re
     <?php
 
     $robot = Robots::findFirst(2);
-    foreach ($robot->getRobotsParts() as $robotPart) {
-        echo $robotPart->getParts()->name, "\n";
+    foreach ($robot->robotsParts as $robotPart) {
+        echo $robotPart->parts->name, "\n";
     }
 
-Phalcon uses the magic method __call to retrieve data from a relationship. If the called method has a "get" prefix
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a findFirst()/find() result. The following example compares
-retrieving related results with using the magic method and without:
+Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
+
+By accesing an attribute with the same name as the relationship will retrieve all its related record(s).
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Robots::findFirst();
+    $robot->robotsParts; // all the related records in RobotsParts
+
+Also, you can use a magic getter:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Robots::findFirst();
+    $robot->getRobotsParts(); // all the related records in RobotsParts
+    $robot->getRobotsParts(array('limit' => 5)); // passing parameters
+
+If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
+findFirst()/find() result. The following example compares retrieving related results with using magic methods
+and without:
 
 .. code-block:: php
 
@@ -560,7 +583,7 @@ retrieving related results with using the magic method and without:
 
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts then
-    $robotsParts = $robot->getRobotsParts();
+    $robotsParts = $robot->robotsParts;
 
     // Only parts that match conditions
     $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
@@ -568,14 +591,14 @@ retrieving related results with using the magic method and without:
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
-        "bind" => array("date" => "2012-03-15"
-    )));
+        "bind" => array("date" => "2012-03-15")
+    ));
 
     $robotPart = RobotsParts::findFirst(1);
 
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
-    $robot = $robotPart->getRobots();
+    $robot = $robotPart->robots;
 
 Getting related records manually:
 
@@ -586,12 +609,12 @@ Getting related records manually:
     $robot = Robots::findFirst(2);
 
     // Robots model has a 1-n (hasMany)
-    // relationship to RobotsParts then
+    // relationship to RobotsParts, then
     $robotsParts = RobotsParts::find("robots_id = '" . $robot->id . "'");
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at='2012-03-15'"
+        "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
     );
 
     $robotPart = RobotsParts::findFirst(1);
@@ -601,7 +624,20 @@ Getting related records manually:
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
-The prefix "get" is used to find()/findFirst() related records. You can also use "count" prefix to return an integer denoting the count of the related records:
+The prefix "get" is used to find()/findFirst() related records. Depending on the type of relation it will use
+'find' or 'findFirst':
+
++---------------------+---------------------------------------------------------------------------------------------------------------+
+| Type                | Description                                                                          | Implicit Method        |
++=====================+===============================================================================================================+
+| Belongs-To          | Returns a model instance of the related record directly                              | findFirst              |
++---------------------+---------------------------------------------------------------------------------------------------------------+
+| Has-One             | Returns a model instance of the related record directly                              | findFirst              |
++---------------------+---------------------------------------------------------------------------------------------------------------+
+| Has-Many            | Returns a collection of model instances of the referenced model                      | find                   |
++---------------------+---------------------------------------------------------------------------------------------------------------+
+
+You can also use "count" prefix to return an integer denoting the count of the related records:
 
 .. code-block:: php
 
@@ -697,14 +733,17 @@ With the aliasing we can get the related records easily:
 
     //Returns the related record based on the column (robots_id)
     $robot = $robotsSimilar->getRobot();
+    $robot = $robotsSimilar->robot;
 
     //Returns the related record based on the column (similar_robots_id)
     $similarRobot = $robotsSimilar->getSimilarRobot();
+    $similarRobot = $robotsSimilar->similarRobot;
 
 Magic Getters vs. Explicit methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters, instead of use the magic getters
-you can optionally define those methods explicitly with the corresponding docblocks helping the IDE to produce a better auto-completion:
+Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters,
+instead of use the magic getters you can optionally define those methods explicitly with the corresponding
+docblocks helping the IDE to produce a better auto-completion:
 
 .. code-block:: php
 
@@ -893,15 +932,16 @@ Max/Min examples:
 
 Caching Resultsets
 ^^^^^^^^^^^^^^^^^^
-Access to database systems is often one of the most common bottlenecks in terms of performance. This is due to the complex connection
-process that PHP must do in each request to obtain data from the database. A well established technique to avoid the continuous access
-to the database is to cache resultsets that don't change frequently in a system with faster access (usually memory).
+Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
+the complex connection processes that PHP must do in each request to obtain data from the database. A well
+established technique to avoid the continuous access to the database is to cache resultsets that don't change
+frequently using a system with faster access (usually memory).
 
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will request it to the Dependency
-Injector Container with the convention name "modelsCache".
+When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
+request it to the Dependency Injector Container with the convention name "modelsCache".
 
-As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models. First you need to register
-it as a service in the services container:
+As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models.
+First you must to register it as a service in the services container:
 
 .. code-block:: php
 
@@ -924,8 +964,8 @@ it as a service in the services container:
         return $cache;
     });
 
-You have complete control in creating and customizing the cache before being used to record the service as an anonymous function.
-Once the cache setup is properly defined you could cache resultsets as follows:
+You have complete control in creating and customizing the cache before being used by registering the service
+as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
 
 .. code-block:: php
 
@@ -947,11 +987,6 @@ Once the cache setup is properly defined you could cache resultsets as follows:
     // Using a custom cache
     $products = Products::find(array("cache" => $myCache));
 
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they are invalidated very
-quickly and caching in that case impacts performance. Additionally, large datasets that do not change frequently could be cached but
-that is a decision that the developer has to make based on the available caching mechanism and whether the performance impact to simply
-retrieve that data in the first place is acceptable.
-
 Caching could be also applied to resultsets generated using relationships:
 
 .. code-block:: php
@@ -972,6 +1007,12 @@ Caching could be also applied to resultsets generated using relationships:
     ));
 
 When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
+
+Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
+are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
+do not change frequently could be cached but that is a decision that the developer has to make based on the
+available caching mechanism and whether the performance impact to simply retrieve that data in the
+first place is acceptable.
 
 Creating Updating/Records
 -------------------------
@@ -1025,9 +1066,9 @@ an insecure array without worrying about possible SQL injections:
 
 Create/Update with Certainty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This could happen if we use
-Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be certain that a record will be created or updated
-created we can change save by "create" or "update":
+When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This
+could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be
+certain if a record is created or updated we can change save using the methods "create" or "update":
 
 .. code-block:: php
 
@@ -1082,6 +1123,64 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
         }
 
     }
+
+Storing related records
+^^^^^^^^^^^^^^^^^^^^^^^
+Magic properties can be used to store a records and its related properties:
+
+.. code-block:: php
+
+    <?php
+
+    // Create a robot
+    $artist = new Artists();
+    $artist->name = 'Shinichi Osawa';
+    $artist->country = 'Japan';
+
+    // Create an album
+    $album = new Albums();
+    $album->name = 'The One';
+    $album->artist = $artist; //Assign the artist
+    $album->year = 2008;
+
+    //Save both records
+    $album->save();
+
+Saving a record and its related records in a has-many relation:
+
+.. code-block:: php
+
+    <?php
+
+    // Get an existing artist
+    $artist = Artists::findFirst('name = "Shinichi Osawa"');
+
+    // Create an album
+    $album = new Albums();
+    $album->name = 'The One';
+    $album->artist = $artist;
+
+    $songs = array();
+
+    // Create a first song
+    $songs[0] = new Songs();
+    $songs[0]->name = 'Star Guitar';
+    $songs[0]->duration = '5:54';
+
+    // Create a second song
+    $songs[1] = new Songs();
+    $songs[1]->name = 'Last Days';
+    $songs[1]->duration = '4:29';
+
+    // Assign the songs array
+    $album->songs = $songs;
+
+    // Save the album + its songs
+    $album->save();
+
+Saving the album and the artist at the same time uses a transaction so if anything goes wrong with
+saving the related records, the parent will not saved either. Messages are passed back to the user
+for information regarding any errors
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -1489,8 +1588,8 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that omits some fields in the creation and/or update of records in order to delegate the database
-system the assignation of the values by a trigger or a default:
+To tell to Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
+to delegate the database system the assignation of the values by a trigger or a default:
 
 .. code-block:: php
 
@@ -1523,8 +1622,24 @@ Forcing a default value can be done in the following way:
     $robot = new Robots();
     $robot->name = 'Bender';
     $robot->year = 1999;
-    $robot->created_at = new Phalcon\Db\RawValue('default');
+    $robot->created_at = new \Phalcon\Db\RawValue('default');
     $robot->create();
+
+A callback also can be used to create a conditional assigment of automatic default values:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+        public function beforeCreate()
+        {
+            if ($this->price > 10000) {
+                $robot->type = new \Phalcon\Db\RawValue('default');
+            }
+        }
+    }
 
 Deleting Records
 ----------------
@@ -1563,7 +1678,8 @@ You can also delete many records by traversing a resultset with a foreach:
         }
     }
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+The following events are available to define custom business rules that can be executed when a delete operation is
+performed:
 
 +-----------+--------------+---------------------+------------------------------------------+
 | Operation | Name         | Can stop operation? | Explanation                              |
@@ -1584,12 +1700,10 @@ With the above events can also define business rules in the models:
 
         public function beforeDelete()
         {
-
             if ($this->status == 'A') {
                 echo "The robot is active, it can be deleted";
                 return false;
             }
-
             return true;
         }
 
@@ -1597,7 +1711,7 @@ With the above events can also define business rules in the models:
 
 Validation Failed Events
 ------------------------
-Another type of events is available when the data validation process finds any inconsistency:
+Another type of events are available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
@@ -1898,7 +2012,71 @@ When a process performs multiple database operations, it is often that each step
 be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
 is committed in the database.
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback all operations if something went wrong.
+Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
+all operations if something went wrong.
+
+Manual Transactions
+^^^^^^^^^^^^^^^^^^^
+If an application only uses one connection and the transactions aren't very complex, a transaction can be
+created by just moving the current transaction to transaction mode, doing a rollback or commit if the operation
+is successfully or not:
+
+.. code-block:: php
+
+    <?php
+
+    class RobotsController extends Phalcon\Mvc\Controller
+    {
+        public function x()
+        {
+            $this->db->begin();
+
+            $robot = new Robots();
+
+            $robot->name = "WALL·E";
+            $robot->created_at = date("Y-m-d");
+            if ($robot->save() == false) {
+                $this->db->rollback();
+                return;
+            }
+
+            $robotPart = new RobotParts();
+            $robotPart->robots_id = $robot->id;
+            $robotPart->type = "head";
+            if ($robotPart->save() == false) {
+                $this->db->rollback();
+                return;
+            }
+
+            $this->db->commit();
+        }
+    }
+
+Implicit Transactions
+^^^^^^^^^^^^^^^^^^^^^
+Existing relationships can be used to store records and their related instances, these kind of operations
+implicitly create a transaction to ensure that data is correctly stored:
+
+.. code-block:: php
+
+    <?php
+
+    $robotPart = new RobotParts();
+    $robotPart->type = "head";
+
+    $robot = new Robots();
+    $robot->name = "WALL·E";
+    $robot->created_at = date("Y-m-d");
+    $robot->robotPart = $robotPart;
+
+    $robot->save(); //Creates an implicit transaction to store both records
+
+Isolated Transactions
+^^^^^^^^^^^^^^^^^^^^^
+Isolated transactions are executed in a new transaction ensuring that all the generated SQL,
+virtual foreign key checkings and business rules are isolated from the main connection.
+This kind of transactions requires a transaction manager that globally manages each
+transaction created ensuring that it's correctly rollbacked/commited before end the request:
 
 .. code-block:: php
 
@@ -1925,6 +2103,7 @@ Transactions in Phalcon allow you to commit all operations if they have been exe
 
         $robotPart = new RobotParts();
         $robotPart->setTransaction($transaction);
+        $robotPart->robots_id = $robot->id;
         $robotPart->type = "head";
         if ($robotPart->save() == false) {
             $transaction->rollback("Cannot save robot part");
@@ -1999,9 +2178,13 @@ Then access it from a controller or view:
             //Obtain the TransactionsManager from the services container
             $manager = $this->di->getTransactions();
 
+            //Or
+            $manager = $this->transactions;
+
             //Request a transaction
             $transaction = $manager->get();
 
+            //...
         }
 
     }
