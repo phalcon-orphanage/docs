@@ -61,6 +61,25 @@ relevant adapter (File in this case) in a single atomic operation.
     // Commit messages to file
     $logger->commit();
 
+Logging to Multiple Handlers
+----------------------------
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` allows to send messages to multiple handlers with a just single call:
+
+.. code-block:: php
+
+    <?php
+
+    $logger = new \Phalcon\Logger\Multiple();
+
+    $logger->push(new \Phalcon\Logger\Adapter\File('test.log'));
+    $logger->push(new \Phalcon\Logger\Adapter\Stream('php://stdout'));
+
+    $logger->log("This is a message");
+    $logger->log("This is an error", \Phalcon\Logger::ERROR);
+    $logger->error("This is another error");
+
+The messages are sent to the handlers in the order they where registered.
+
 Message Formatting
 ------------------
 This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
