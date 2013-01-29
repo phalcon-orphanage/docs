@@ -8,11 +8,11 @@ Allows to manipulate the annotations reflection in an OO manner
     <?php
 
      //Parse the annotations in a class
-     $reader = new Phalcon\Annotations\Reader();
+     $reader = new \Phalcon\Annotations\Reader();
      $parsing = $reader->parse('MyComponent');
     
      //Create the reflection
-     $reflection = new Phalcon\Annotations\Reflection($parsing);
+     $reflection = new \Phalcon\Annotations\Reflection($parsing);
     
      //Get the annotations in the class docblock
      $classAnnotations = $reflection->getClassAnnotations();
@@ -22,7 +22,7 @@ Allows to manipulate the annotations reflection in an OO manner
 Methods
 ---------
 
-public  **__construct** (*array* $reflectionData)
+public  **__construct** ([*array* $reflectionData])
 
 Phalcon\\Annotations\\Reflection constructor
 

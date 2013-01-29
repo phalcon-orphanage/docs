@@ -11,6 +11,7 @@ API Indice
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
    Phalcon_Annotations_Adapter
+   Phalcon_Annotations_Adapter_Files
    Phalcon_Annotations_Adapter_Memory
    Phalcon_Annotations_Annotation
    Phalcon_Annotations_Collection
@@ -90,8 +91,15 @@ API Indice
    Phalcon_Logger
    Phalcon_Logger_Adapter
    Phalcon_Logger_Adapter_File
+   Phalcon_Logger_Adapter_Stream
+   Phalcon_Logger_Adapter_Syslog
    Phalcon_Logger_Exception
+   Phalcon_Logger_Formatter
+   Phalcon_Logger_Formatter_Json
+   Phalcon_Logger_Formatter_Line
+   Phalcon_Logger_Formatter_Syslog
    Phalcon_Logger_Item
+   Phalcon_Logger_Multiple
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
@@ -201,6 +209,7 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface

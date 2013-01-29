@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Collection**
 ==========================================
 
-*implements* Iterator, Traversable
+*implements* Iterator, Traversable, Countable
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily  
 
@@ -28,6 +28,12 @@ Methods
 public  **__construct** ([*array* $reflectionData])
 
 Phalcon\\Annotations\\Collection constructor
+
+
+
+public *int*  **count** ()
+
+Returns the number of annotations in the collection
 
 
 

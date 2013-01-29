@@ -1,25 +1,40 @@
-Class **Phalcon\\Annotations\\Adapter\\Memory**
-===============================================
+Class **Phalcon\\Annotations\\Adapter\\Files**
+==============================================
 
 *extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Stores the parsed annotations in memory. This adapter is the suitable for development/testing
+Stores the parsed annotations in memory. This adapter is the suitable for development/testing  
+
+.. code-block:: php
+
+    <?php
+
+     $annotations = new \Phalcon\Annotations\Adapter\Files(array(
+        'metaDataDir' => 'app/cache/metadata/'
+     ));
+
 
 
 Methods
 ---------
 
+public  **__construct** ([*array* $options])
+
+Phalcon\\Annotations\\Adapter\\Files constructor
+
+
+
 public *array*  **read** (*string* $key)
 
-Reads meta-data from memory
+Reads parsed annotations from files
 
 
 
 public  **write** (*string* $key, *array* $data)
 
-Writes the meta-data to files
+Writes parsed annotations to files
 
 
 

@@ -1,21 +1,20 @@
-Class **Phalcon\\Logger\\Adapter\\File**
-========================================
+Class **Phalcon\\Logger\\Adapter\\Stream**
+==========================================
 
 *extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 
-Adapter to store logs in plain text files  
+Sends logs to a valid PHP stream  
 
 .. code-block:: php
 
     <?php
 
-    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+    $logger = new \Phalcon\Logger\Adapter\Stream("php://stderr");
     $logger->log("This is a message");
     $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
-    $logger->close();
 
 
 
@@ -24,7 +23,7 @@ Methods
 
 public  **__construct** (*string* $name, [*array* $options])
 
-Phalcon\\Logger\\Adapter\\File constructor
+Phalcon\\Logger\\Adapter\\Stream constructor
 
 
 
@@ -36,19 +35,13 @@ Returns the internal formatter
 
 public  **logInternal** (*string* $message, *int* $type, *int* $time)
 
-Writes the log to the file itself
+Writes the log to the stream itself
 
 
 
 public *boolean*  **close** ()
 
 Closes the logger
-
-
-
-public  **__wakeup** ()
-
-Opens the internal file handler after unserialization
 
 
 
