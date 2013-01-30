@@ -1963,7 +1963,7 @@ A behavior is also capable of intercept missing methods on your models:
 
     }
 
-Call that method on a method that implements Sluggable will return a SEO friendly title:
+Call that method on a model that implements Sluggable returns a SEO friendly title:
 
 .. code-block:: php
 
@@ -1973,8 +1973,8 @@ Call that method on a method that implements Sluggable will return a SEO friendl
 
 Using Traits as behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way of implement custom behaviors.
-The following trait implements a simple version of the Timestampable behavior:
+Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way to implement
+custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
 .. code-block:: php
 
@@ -2018,7 +2018,7 @@ all operations if something went wrong.
 Manual Transactions
 ^^^^^^^^^^^^^^^^^^^
 If an application only uses one connection and the transactions aren't very complex, a transaction can be
-created by just moving the current transaction to transaction mode, doing a rollback or commit if the operation
+created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
 is successfully or not:
 
 .. code-block:: php
@@ -2027,7 +2027,7 @@ is successfully or not:
 
     class RobotsController extends Phalcon\Mvc\Controller
     {
-        public function x()
+        public function saveAction()
         {
             $this->db->begin();
 
@@ -2055,7 +2055,7 @@ is successfully or not:
 Implicit Transactions
 ^^^^^^^^^^^^^^^^^^^^^
 Existing relationships can be used to store records and their related instances, these kind of operations
-implicitly create a transaction to ensure that data is correctly stored:
+implicitly creates a transaction to ensure that data are correctly stored:
 
 .. code-block:: php
 
@@ -2073,7 +2073,7 @@ implicitly create a transaction to ensure that data is correctly stored:
 
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
-Isolated transactions are executed in a new transaction ensuring that all the generated SQL,
+Isolated transactions are executed in a new connection ensuring that all the generated SQL,
 virtual foreign key checkings and business rules are isolated from the main connection.
 This kind of transactions requires a transaction manager that globally manages each
 transaction created ensuring that it's correctly rollbacked/commited before end the request:
@@ -2170,7 +2170,8 @@ Then access it from a controller or view:
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller {
+    class ProductsController extends \Phalcon\Mvc\Controller
+    {
 
         public function saveAction()
         {
@@ -2188,6 +2189,8 @@ Then access it from a controller or view:
         }
 
     }
+
+While a transaction is active, the transaction manager will always return the same transaction across the application.
 
 Independent Column Mapping
 --------------------------
