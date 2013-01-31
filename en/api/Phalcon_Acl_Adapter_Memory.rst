@@ -208,7 +208,7 @@ Return an array with every role registered in the list
 
 
 
-public :doc:`Phalcon\\Acl\\Resources <Phalcon_Acl_Resources>` [] **getResources** ()
+public :doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` [] **getResources** ()
 
 Return an array with every resource registered in the list
 

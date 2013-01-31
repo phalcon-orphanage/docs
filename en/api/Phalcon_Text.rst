@@ -117,7 +117,6 @@ Uppercases a string, this function make use of the mbstring extension if availab
 
 public  **x** ()
 
-
-
+...
 
 

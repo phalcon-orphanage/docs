@@ -103,7 +103,7 @@ Return an array with every role registered in the list
 
 
 
-abstract public :doc:`Phalcon\\Acl\\ResourcesInterface <Phalcon_Acl_ResourcesInterface>` [] **getResources** ()
+abstract public :doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>` [] **getResources** ()
 
 Return an array with every resource registered in the list
 

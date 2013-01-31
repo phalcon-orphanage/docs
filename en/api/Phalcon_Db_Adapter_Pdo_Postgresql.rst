@@ -86,7 +86,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row 
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
 
 .. code-block:: php
 
@@ -101,7 +101,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 public *int*  **affectedRows** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by the database system 
+Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed in the database system 
 
 .. code-block:: php
 
@@ -115,7 +115,7 @@ Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by
 
 public *boolean*  **close** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Closes active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
+Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
 
 
@@ -161,7 +161,7 @@ Manually bind params to a SQL statement. This method requires an active connecti
 
 public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Converts bound params such as :name: or ?1 into PDO bind params ? 
+Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
 .. code-block:: php
 
@@ -174,7 +174,7 @@ Converts bound params such as :name: or ?1 into PDO bind params ?
 
 public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns insert id for the auto_increment/serial column inserted in the last SQL statement 
+Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
 
 .. code-block:: php
 
@@ -213,7 +213,7 @@ Commits the active transaction in the connection
 
 public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Checks whether connection is under database transaction 
+Checks whether the connection is under a transaction 
 
 .. code-block:: php
 

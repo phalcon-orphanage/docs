@@ -211,6 +211,7 @@ API Indice
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface
+   Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface

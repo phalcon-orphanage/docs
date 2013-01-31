@@ -89,7 +89,7 @@ Reads the complete meta-data for certain model
 
 
 
-public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **readMetaDataIndex** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Reads meta-data for certain model using a MODEL_* constant 
 

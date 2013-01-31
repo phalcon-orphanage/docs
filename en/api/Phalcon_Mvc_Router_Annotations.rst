@@ -11,7 +11,7 @@ A router that reads routes annotations from classes/resources
 
     <?php
 
-     $di->set('router', function() {
+     $di['router'] = function() {
     
     	//Use the annotations router
     	$router = new \Phalcon\Mvc\Router\Annotations();
@@ -20,7 +20,7 @@ A router that reads routes annotations from classes/resources
      		$router->addResource('Robots', '/robots');
     
      		return $router;
-    });
+    };
 
 
 
@@ -45,9 +45,9 @@ Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*unknown* $controller, *unknown* $action, *unknown* $annotation)
+public  **processActionAnnotation** (*string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
 
-
+Checks for annotations in the public methods of the controller
 
 
 

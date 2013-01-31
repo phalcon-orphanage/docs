@@ -114,7 +114,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*boolean* $isFresh)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*boolean* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
@@ -126,7 +126,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public  **setHydrateMode** (*int* $hydrateMode)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*int* $hydrateMode)
 
 Sets the hydration mode in the resultset
 
@@ -144,7 +144,7 @@ Returns the associated cache for the resultset
 
 
 
-public *object*  **current** ()
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** ()
 
 Returns current row in the resultset
 

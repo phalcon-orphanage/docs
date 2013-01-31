@@ -121,7 +121,12 @@ The example below shows how to change the log format:
 
     //Changing the logger format
     $formatter = new Phalcon\Logger\Formatter\Line("%date% - %message%");
-    $logger->setFormat($formatter);
+    $logger->setFormatter($formatter);
+
+Implementing your own formatters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` interface must be implemented in order to
+create your own logger formatter or extend the existing ones.
 
 Adapters
 --------
@@ -129,7 +134,7 @@ The following examples show the basic use of each adapter:
 
 Stream Logger
 ^^^^^^^^^^^^^
-The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`:
+The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`_:
 
 .. code-block:: php
 
@@ -174,6 +179,6 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     ));
 
 Implementing your own adapters
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` interface must be implemented in order to
 create your own logger adapters or extend the existing ones.
