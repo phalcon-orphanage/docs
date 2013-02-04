@@ -220,13 +220,13 @@ Gets hasOne relations defined on a model
 
 
 
-public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>` [] **getRelations** (*string* $modelName)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getRelations** (*string* $modelName)
 
 Query all the relationships defined on a model
 
 
 
-public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>`  **getRelationsBetween** (*string* $first, *string* $second)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **getRelationsBetween** (*string* $first, *string* $second)
 
 Query the first relationship defined between two models
 

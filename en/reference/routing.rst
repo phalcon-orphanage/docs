@@ -403,7 +403,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
 
-The following example shows how to use this component:
+The following example shows how to use this component in stand-alone mode:
 
 .. code-block:: php
 
@@ -679,9 +679,113 @@ Since this component has no dependencies, you can create a file as shown below t
 
 Annotations Router
 ------------------
+This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
+you can write the routes directly in the controllers instead of writing them in the service registration:
+
+.. code-block:: php
+
+    <?php
+
+    $di['router'] = function() {
+
+        //Use the annotations router
+        $router = new \Phalcon\Mvc\Router\Annotations(false);
+
+        //Read the annotations from ProductsController if the uri starts with /api/products
+        $router->addResource('Products', '/api/products');
+
+        return $router;
+    });
+
+The annotations can be defined in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    /**
+     * @RoutePrefix("/api/products")
+     */
+    class ProductsController
+    {
+
+        /**
+         * @Get("/")
+         */
+        public function indexAction()
+        {
+
+        }
+
+        /**
+         * @Get("/edit/{id:[0-9]+}", name="edit-robot")
+         */
+        public function editAction($id)
+        {
+
+        }
+
+        /**
+         * @Route("/save", methods={"POST", "PUT"}, name="save-robot")
+         */
+        public function saveAction()
+        {
+
+        }
+
+        /**
+         * @Route("/delete/{id:[0-9]+}", methods="DELETE",
+         *      conversors={id="MyConversors::checkId"})
+         */
+        public function deleteAction($id)
+        {
+
+        }
+
+        public function infoAction($id)
+        {
+
+        }
+
+    }
+
+Only methods marked with valid annotations are used as routes. List of annotations supported:
+
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Name         | Description                                                                                       | Usage                                                              |
++==============+===================================================================================================+====================================================================+
+| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Get          | This annotation marks a method as a route restricting the HTTP method to GET                      | @Get("/api/products/search")                                       |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Post         | This annotation marks a method as a route restricting the HTTP method to POST                     | @Post("/api/products/save")                                        |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Put          | This annotation marks a method as a route restricting the HTTP method to PUT                      | @Put("/api/products/save")                                         |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Delete       | This annotation marks a method as a route restricting the HTTP method to DELETE                   | @Delete("/api/products/delete/{id}")                               |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | @Option("/api/products/info")                                      |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
+For annotations that add routes, the following parameters are supported:
+
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Name         | Description                                                                                       | Usage                                                              |
++==============+===================================================================================================+====================================================================+
+| methods      | Define one or more HTTP method that route must meet with                                          | @Route("/api/products", methods={"GET", "POST"})                   |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| paths        | An array of paths like the one passed to Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
++--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 Implementing your own Router
 ----------------------------
-The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one provided by Phalcon.
+The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
+the one provided by Phalcon.
 
 .. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php

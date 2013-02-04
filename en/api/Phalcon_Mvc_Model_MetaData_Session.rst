@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 Stores model meta-data in session. Data will erased when the session finishes. Meta-data are permanent while the session is active.  You can query the meta-data by printing $_SESSION['$PMM$']  
 
@@ -75,6 +75,30 @@ Initialize the metadata for certain table
 
 
 
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Sets the DependencyInjector container
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns the DependencyInjector container
+
+
+
+public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Set the meta-data extraction strategy
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>`  **getStrategy** () inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Return the strategy to obtain the meta-data
+
+
+
 public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Reads the complete meta-data for certain model 
@@ -88,7 +112,7 @@ Reads the complete meta-data for certain model
 
 
 
-public  **readMetaDataIndex** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Reads meta-data for certain model using a MODEL_* constant 
 

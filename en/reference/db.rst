@@ -174,7 +174,6 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     // Count the resultset
     echo $result->numRows();
 
-
 Binding Parameters
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using

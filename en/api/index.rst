@@ -124,6 +124,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
+   Phalcon_Mvc_Model_MetaData_Strategy_Annotations
    Phalcon_Mvc_Model_MetaData_Strategy_Introspection
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder

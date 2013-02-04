@@ -50,9 +50,9 @@ Also, an annotation could be placed at any part of a docblock:
 	 * This a property with a special feature
 	 *
 	 * @SpecialFeature
-     *
+	 *
 	 * More comments
-     *
+	 *
 	 * @AnotherSpecialFeature(true)
 	 */
 
@@ -112,15 +112,16 @@ A reflector is implemented to easily get the annotations defined on a class usin
 		print_r($annotation->getArguments());
 	}
 
-:doc:`Phalcon\Annotations\Adapter\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
-only caches the annotations while the request is running, for this reason this adapter is more suitable for development.
-
 The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter.
-Adapters cache the processed annotations avoiding the need of parse the annotations.
+Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+
+:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
+only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
+other adapters to swap out when the application is in production stage.
 
 Types of Annotations
 --------------------
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an arrays, a hashed list or other annotation:
+Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 .. code-block:: php
 
@@ -156,18 +157,129 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 	 * Passing a hash as parameter
 	 *
 	 * @SomeAnnotation({first=1, second=2, third=3})
-	 * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
 	 * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
+	 * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
+	 * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
 	 */
 
-	 /**
-	 * Nested arrays
+	/**
+	 * Nested arrays/hashes
 	 *
 	 * @SomeAnnotation({"name"="SomeName", "other"={
-	 *		"foo1": "bar1", "foo2": "bar2",
+	 *		"foo1": "bar1", "foo2": "bar2", {1, 2, 3},
 	 * }})
 	 */
 
-Let’s pretend we’ve the following controller and the developer wants to create a plugin that automatically starts the
-cache if the latest action executed is marked as cacheable:
+	/**
+	 * Nested Annotations
+	 *
+	 * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
+	 */
+
+Practical Usage
+---------------
+Let's pretend we've the following controller and the developer wants to create a plugin that automatically starts the
+cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
+to be notified when a route is executed:
+
+.. code-block:: php
+
+	$di['dispatcher'] = function() {
+
+		$eventsManager = new \Phalcon\Events\Manager();
+
+		//Attach the plugin to 'dispatch' events
+		$eventsManager->attach('dispatch', new CacheEnablerPlugin());
+
+		$dispatcher = new \Phalcon\Mvc\Dispatcher();
+		$dispatcher->setEventsManager($eventsManager);
+		return $dispatcher;
+	};
+
+CacheEnablerPlugin is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+
+.. code-block:: php
+
+	<?php
+
+	/**
+	 * Enables the cache for a view if the latest
+	 * executed action has the annotation @Cache
+	 */
+	class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
+	{
+
+		/**
+		 * This event is executed before every route is executed in the dispatcher
+		 *
+		 */
+		public function beforeExecuteRoute($event, $dispatcher)
+		{
+
+			//Parse the annotations in the method currently executed
+			$annotations = $this->annotations->getMethod(
+				$dispatcher->getActiveController(),
+				$dispatcher->getActiveMethod()
+			);
+
+			//Check if the method has an annotation 'Cache'
+			if ($annotations->has('Cache')) {
+
+				//The method has the annotation 'Cache'
+				$annotation = $annotations->get('Cache');
+
+				//Get the lifetime
+				$lifetime = $annotation->getNamedParameter('lifetime');
+
+				$options = array('lifetime' => $lifetime);
+
+				//Check if there is a user defined cache key
+				if ($annotation->hasNamedParameter('key')) {
+					$options['key'] = $annotation->getNamedParameter('key');
+				}
+
+				//Enable the cache for the current method
+				$this->view->cache($options);
+			}
+
+		}
+
+	}
+
+Now, we can use the annotation in a controller:
+
+.. code-block:: php
+
+	<?php
+
+	class NewsController extends \Phalcon\Mvc\Controller
+	{
+
+		public function indexAction()
+		{
+
+		}
+
+		/**
+		 * This is comment
+		 *
+		 * @Cache(lifetime=86400)
+		 */
+		public function showAllAction()
+		{
+			$this->view->article = Articles::find();
+		}
+
+		/**
+		 * This is comment
+		 *
+		 * @Cache(key="my-key", lifetime=86400)
+		 */
+		public function showAction($slug)
+		{
+			$this->view->article = Articles::findFirstByTitle($slug);
+		}
+
+	}
+
 

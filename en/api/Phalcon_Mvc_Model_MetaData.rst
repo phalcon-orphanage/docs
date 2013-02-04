@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Model\\MetaData**
 =======================================
 
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
 Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
 
 .. code-block:: php
@@ -53,6 +55,30 @@ Initialize the metadata for certain table
 
 
 
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+
+Sets the DependencyInjector container
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+
+Returns the DependencyInjector container
+
+
+
+public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy)
+
+Set the meta-data extraction strategy
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>`  **getStrategy** ()
+
+Return the strategy to obtain the meta-data
+
+
+
 public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Reads the complete meta-data for certain model 
@@ -66,7 +92,7 @@ Reads the complete meta-data for certain model
 
 
 
-public  **readMetaDataIndex** (:doc:`\\Phalcon\\Mvc\\ModelInterface <_Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
 
 Reads meta-data for certain model using a MODEL_* constant 
 

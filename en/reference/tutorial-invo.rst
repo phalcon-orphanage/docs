@@ -84,7 +84,7 @@ contains the following settings:
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon has no defined any convention settings. Sections help us to organize the options as appropriate. In this file
+Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
 there are three sections to be used later.
 
 Autoloaders

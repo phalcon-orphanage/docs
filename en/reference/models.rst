@@ -218,6 +218,8 @@ The available query options are:
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                     | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                      | "hydration" => Resultset::HYDRATION_OBJECTS                             |
++-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
 
@@ -227,12 +229,12 @@ If you prefer, there is also available a way to create queries in an object orie
 
     $robots = Robots::query()
         ->where("type = :type:")
+        ->andWhere("year < 2000")
         ->bind(array("type" => "mechanical"))
         ->order("name")
         ->execute();
 
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
-
 
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high level, object oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
@@ -296,7 +298,7 @@ in order to rewind the cursor to the beginning and obtain the record at the requ
 is traversed several times, the query must be executed the same number of times.
 
 Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases.
+from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
 
 Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
@@ -1013,6 +1015,70 @@ are invalidated very quickly and caching in that case impacts performance. Addit
 do not change frequently could be cached but that is a decision that the developer has to make based on the
 available caching mechanism and whether the performance impact to simply retrieve that data in the
 first place is acceptable.
+
+Hydration Modes
+---------------
+As mentioned above, resultsets are collection of complete objects, this means that every returned result is an object
+representing a row in the database. These objects can be modified an saved again to persistance:
+
+.. code-block:: php
+
+    <?php
+
+    //Manipulating a resultset of complete objects
+    foreach (Robots::find() as $robot) {
+        $robot->year = 2000;
+        $robot->save();
+    }
+
+Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
+to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
+returned in a resultset is called 'hydration mode':
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset;
+
+    $robots = Robots::find();
+
+    //Return every robot as an array
+    $robots->setHydrateMode(Resultset::HYDRATION_ARRAYS);
+
+    foreach ($robots as $robot) {
+        echo $robot['year'], PHP_EOL;
+    }
+
+    //Return every robot as an stdClass
+    $robots->setHydrateMode(Resultset::HYDRATION_OBJECTS);
+
+    foreach ($robots as $robot) {
+        echo $robot->year, PHP_EOL;
+    }
+
+    //Return every robot as a Robots instance
+    $robots->setHydrateMode(Resultset::HYDRATION_RECORDS);
+
+    foreach ($robots as $robot) {
+        echo $robot->year, PHP_EOL;
+    }
+
+The hydration mode can be passed as a parameter of 'find':
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset;
+
+    $robots = Robots::find(array(
+        'hydration' => Resultset::HYDRATION_ARRAYS
+    ));
+
+    foreach ($robots as $robot) {
+        echo $robot['year'], PHP_EOL;
+    }
 
 Creating Updating/Records
 -------------------------
@@ -2397,22 +2463,136 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     <?php
 
-    $di->setShared('modelsMetadata', function() {
+    $di['modelsMetadata'] = function() {
 
         // Create a meta-data manager with APC
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
             "lifetime" => 86400,
-            "suffix"   => "my-suffix"
+            "prefix"   => "my-prefix"
         ));
 
         return $metaData;
-    });
+    };
+
+Meta-Data Strategies
+^^^^^^^^^^^^^^^^^^^^
+As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information
+schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
+
+You can change the default meta-data introspection in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    $di['modelsMetadata'] = function() {
+
+        // Instantiate a meta-data adapter
+        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+            "lifetime" => 86400,
+            "prefix"   => "my-prefix"
+        ));
+
+        //Set a custom meta-data introspection strategy
+        $metaData->setStrategy(new MyInstrospectionStrategy());
+
+        return $metaData;
+    };
+
+Database Introspection Strategy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
+
+Annotations Strategy
+^^^^^^^^^^^^^^^^^^^^
+This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        /**
+         * @Primary
+         * @Identity
+         * @Column(type="integer", nullable=false)
+         */
+        public $id;
+
+        /**
+         * @Column(type="string", length=70, nullable=false)
+         */
+        public $name;
+
+        /**
+         * @Column(type="string", length=32, nullable=false)
+         */
+        public $type;
+
+        /**
+         * @Column(type="integer", nullable=false)
+         */
+        public $year;
+
+    }
+
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation
+are handled as simple class attributes.
+
+The following annotations are supported:
+
++----------+-------------------------------------------------------+
+| Name     | Description                                           |
++==========+=======================================================+
+| Primary  | Mark the field as part of the table's primary key     |
++----------+-------------------------------------------------------+
+| Identity | The field is an auto_increment/serial column          |
++----------+-------------------------------------------------------+
+| Column   | This marks an attribute as a mapped column            |
++----------+-------------------------------------------------------+
+
+The annotation @Column supports the following parameters:
+
++----------+-------------------------------------------------------+
+| Name     | Description                                           |
++==========+=======================================================+
+| type     | The column's type (string, integer, decimal, boolean) |
++----------+-------------------------------------------------------+
+| length   | The column's length if any                            |
++----------+-------------------------------------------------------+
+| nullable | Set whether the column accepts null values or not     |
++----------+-------------------------------------------------------+
+
+The annotations strategy could be set up this way:
+
+.. code-block:: php
+
+    <?php
+
+    $di['modelsMetadata'] = function() {
+
+        // Instantiate a meta-data adapter
+        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+            "lifetime" => 86400,
+            "prefix"   => "my-prefix"
+        ));
+
+        //Set a custom meta-data database introspection
+        $metaData->setStrategy(new \Phalcon\Mvc\Model\MetaData\Strategy\Annotations());
+
+        return $metaData;
+    };
 
 Manual Meta-Data
 ^^^^^^^^^^^^^^^^
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually.
-Remember that when defining the metadata manually, new columns added/modified/removed to/from the mapped
-table must be added/modified/removed also for everything to work correctly.
+Phalcon can obtain the metadata for each model automatically without the developer must set them manually
+using any of the introspection strategies presented above.
+
+The developer also has the option of define the metadata manually. This strategy overrides
+any strategy set in the  meta-data manager. New columns added/modified/removed to/from the mapped
+table must be added/modified/removed also for everything to work properly.
 
 The following example shows how to define the meta-data manually:
 
@@ -2716,7 +2896,7 @@ According to how you use the ORM you can disable that you aren't using. These op
 
     <?php
 
-    Phalcon\Mvc\Model::setup(array(
+    \Phalcon\Mvc\Model::setup(array(
         'events' => false,
         'columnRenaming' => false
     ));

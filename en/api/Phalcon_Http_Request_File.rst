@@ -56,7 +56,7 @@ Returns the temporal name of the uploaded file
 
 public *boolean*  **moveTo** (*string* $destination)
 
-Move the temporary file to a destination
+Move the temporary file to a destination whithin the application
 
 
 

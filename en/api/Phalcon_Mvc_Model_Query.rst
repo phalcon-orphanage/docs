@@ -218,6 +218,12 @@ Executes a parsed PHQL statement
 
 
 
+public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
+
+Executes the query returning the first result
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setType** (*int* $type)
 
 Sets the type of PHQL statement to be executed

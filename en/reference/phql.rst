@@ -110,9 +110,15 @@ From a controller or a view, it's easy create/execute them using a injected :doc
 
     <?php
 
+    //Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
-
     $robots = $query->execute();
+
+    //With bound parameters
+    $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
+    $robots = $query->execute(array(
+        'name' => 'Audi'
+    ));
 
 Or simply execute it:
 
@@ -120,7 +126,13 @@ Or simply execute it:
 
     <?php
 
+    //Executing a simple query
     $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars");
+
+    //Executing with bound parameters
+    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
+        'name' => 'Audi'
+    ));
 
 Selecting Records
 -----------------

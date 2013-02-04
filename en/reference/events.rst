@@ -304,6 +304,17 @@ by passing "false" in the four parameter of fire:
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
+Listener Priorities
+-------------------
+When attaching listeners you can set an specifical priority. With this feature you can attach listeners indicating the order
+in which they must be called:
+
+    <?php
+
+    $evManager->attach('db', new DbListener(), 150); //More priority
+    $evManager->attach('db', new DbListener(), 100); //Normal priority
+    $evManager->attach('db', new DbListener(), 50); //Less priority
+
 Implementing your own EventsManager
 -----------------------------------
 The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own
