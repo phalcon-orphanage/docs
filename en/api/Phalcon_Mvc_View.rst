@@ -88,7 +88,6 @@ Sets a partials sub-directory. Must be a directory under the views directory. De
 
     <?php
 
-    *
      $view->setPartialsDir('../common/partials/');
 
 
