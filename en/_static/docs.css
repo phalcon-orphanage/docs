@@ -384,7 +384,14 @@ p.versionchanged, blockquote.highlights {
 
 div#footer {
 	padding: 50px 10px;
-	background: none repeat scroll 0 0 #0088CC;
+	background: none repeat scroll 0 0 #006DA5;
+	font-size: 12px;
+}
+
+div#footer p {
+	display: block;
+	margin: 0px;
+	font-size: 12px;
 }
 
 div.highlight, blockquote {
@@ -406,7 +413,7 @@ div.highlight {
 }
 
 .highlight .sd {
-    color: #93A1A1;
+    color: #717171;
     font-weight: normal;
 }
 

@@ -677,6 +677,9 @@ Since this component has no dependencies, you can create a file as shown below t
 
     }
 
+Annotations Router
+------------------
+
 Implementing your own Router
 ----------------------------
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing the one provided by Phalcon.

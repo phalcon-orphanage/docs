@@ -14,7 +14,7 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    reference/motivation
    reference/benchmark
@@ -43,15 +43,16 @@ Table of Contents
    reference/flash
    reference/session
    reference/filter
+   reference/escaper
    reference/config
    reference/pagination
    reference/cache
    reference/security
-   reference/escaper
    reference/acl
    reference/translate
    reference/loader
    reference/logging
+   reference/annotations
    reference/cli
    reference/db
    reference/intl

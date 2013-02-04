@@ -61,7 +61,7 @@
 
                 <select name="versions" id="versions">
             {% for slug, url in versions %}
-            <option value="http://readthedocs.org{{ url }}">{{ slug }}</option>
+            <option value="http://docs.phalconphp.com{{ url }}">{{ slug }}</option>
             {% endfor %}
                 </select>
             {% endif %}
@@ -232,17 +232,29 @@
 
       {%- block footer %}
         <div id="footer">
-          {%- if hasdoc('copyright') %}
-             {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
-          {%- else %}
-             {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
-          {%- endif %}
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+
           {%- if last_updated %}
              {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
           {%- endif %}
           {%- if show_sphinx %}
             {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
           {%- endif %}
+
+          <p>
+          {%- if hasdoc('copyright') %}
+             {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+          {%- else %}
+             {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+          {%- endif %}
+          </p>
+
         </div>
       {%- endblock %}
 

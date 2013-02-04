@@ -931,7 +931,7 @@ Max/Min examples:
     $salary = Employees::minimum(array("column" => "salary"));
 
 Caching Resultsets
-^^^^^^^^^^^^^^^^^^
+------------------
 Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
 the complex connection processes that PHP must do in each request to obtain data from the database. A well
 established technique to avoid the continuous access to the database is to cache resultsets that don't change
