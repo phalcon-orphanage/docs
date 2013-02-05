@@ -26,6 +26,19 @@ This component allows to Phalcon\\Mvc\\Model returns large resulsets with the mi
 
 
 
+Constants
+---------
+
+*integer* **TYPE_RESULT_FULL**
+
+*integer* **TYPE_RESULT_PARTIAL**
+
+*integer* **HYDRATE_RECORDS**
+
+*integer* **HYDRATE_OBJECTS**
+
+*integer* **HYDRATE_ARRAYS**
+
 Methods
 ---------
 
@@ -83,6 +96,12 @@ Resulsets cannot be changed. It has only been implemented to meet the definition
 
 
 
+public *int*  **getType** ()
+
+Returns the internal type of data retrieval that the resultset is using
+
+
+
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** ()
 
 Get first row in the resultset
@@ -95,7 +114,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*boolean* $isFresh)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*boolean* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
@@ -107,13 +126,25 @@ Tell if the resultset if fresh or an old one cached
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*int* $hydrateMode)
+
+Sets the hydration mode in the resultset
+
+
+
+public *int*  **getHydrateMode** ()
+
+Returns the current hydration mode
+
+
+
 public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
 
 Returns the associated cache for the resultset
 
 
 
-public *object*  **current** ()
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** ()
 
 Returns current row in the resultset
 
@@ -128,6 +159,12 @@ Returns the error messages produced by a batch operation
 public *boolean*  **delete** ([*Closure* $conditionCallback])
 
 Delete every record in the resultset
+
+
+
+abstract public *array*  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
+
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
 
 
 

@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 
 *extends* Exception
 
-Phalcon\\Mvc\\Model\\Transaction\\Failed will be thrown to exit a try/catch block for transactions
+This class will be thrown to exit a try/catch block for isolated transactions
 
 
 Methods

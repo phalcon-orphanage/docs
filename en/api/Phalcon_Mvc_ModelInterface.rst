@@ -49,9 +49,21 @@ Gets internal database connection
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $result)
+abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model
+
+
+
+abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  $result **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $result)
+
+Assigns values to a model from an array returning a new model
+
+
+
+abstract public static  **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
+
+Returns an hydrated result based on the data and the column map
 
 
 

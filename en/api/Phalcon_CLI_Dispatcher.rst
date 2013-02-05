@@ -159,7 +159,7 @@ Sets the action name to be dispatched
 
 public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
 
-Gets last dispatched action name
+Gets the lastest dispatched action name
 
 
 
@@ -184,6 +184,12 @@ Set a param by its name or numeric index
 public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
+
+
+
+public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+
+Returns the current method to be/executed in the dispatcher
 
 
 

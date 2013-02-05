@@ -10,6 +10,14 @@ API Indice
    Phalcon_Acl_Exception
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
+   Phalcon_Annotations_Adapter
+   Phalcon_Annotations_Adapter_Files
+   Phalcon_Annotations_Adapter_Memory
+   Phalcon_Annotations_Annotation
+   Phalcon_Annotations_Collection
+   Phalcon_Annotations_Exception
+   Phalcon_Annotations_Reader
+   Phalcon_Annotations_Reflection
    Phalcon_CLI_Console
    Phalcon_CLI_Console_Exception
    Phalcon_CLI_Dispatcher
@@ -83,8 +91,15 @@ API Indice
    Phalcon_Logger
    Phalcon_Logger_Adapter
    Phalcon_Logger_Adapter_File
+   Phalcon_Logger_Adapter_Stream
+   Phalcon_Logger_Adapter_Syslog
    Phalcon_Logger_Exception
+   Phalcon_Logger_Formatter
+   Phalcon_Logger_Formatter_Json
+   Phalcon_Logger_Formatter_Line
+   Phalcon_Logger_Formatter_Syslog
    Phalcon_Logger_Item
+   Phalcon_Logger_Multiple
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
@@ -109,6 +124,8 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Session
+   Phalcon_Mvc_Model_MetaData_Strategy_Annotations
+   Phalcon_Mvc_Model_MetaData_Strategy_Introspection
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
@@ -132,6 +149,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness
    Phalcon_Mvc_Router
+   Phalcon_Mvc_Router_Annotations
    Phalcon_Mvc_Router_Exception
    Phalcon_Mvc_Router_Group
    Phalcon_Mvc_Router_Route
@@ -168,6 +186,8 @@ API Indice
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface
    Phalcon_Acl_RoleInterface
+   Phalcon_Annotations_AdapterInterface
+   Phalcon_Annotations_ReaderInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_DI_InjectionAwareInterface
@@ -190,7 +210,9 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
+   Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface
+   Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_ModelInterface

@@ -84,7 +84,7 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults)
 
-Sets an array of default paths. This defaults apply for all the routes 
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
 .. code-block:: php
 
@@ -106,6 +106,10 @@ Handles routing information received from the rewrite engine
 
     <?php
 
+     //Read the info from the rewrite engine
+     $router->handle();
+    
+     //Manually passing an URL
      $router->handle('/posts/edit/1');
 
 

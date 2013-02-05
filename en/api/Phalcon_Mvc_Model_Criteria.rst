@@ -45,6 +45,18 @@ Adds the conditions parameter to the criteria
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an AND operator
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an OR operator
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **conditions** (*string* $conditions)
 
 Adds the conditions parameter to the criteria

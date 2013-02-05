@@ -369,6 +369,18 @@ The else clause is also supported:
     {% endfor %}
     </ul>
 
+The 'elseif' control flow structure can be used together with if to emulate a 'switch' block:
+
+.. code-block:: html+jinja
+
+    {% if robot.type == "cyborg" %}
+        Robot is a cyborg
+    {% elseif robot.type == "virtual" %}
+        Robot is virtual
+    {% elseif robot.type == "mechanical" %}
+        Robot is mechanical
+    {% endif %}
+
 Assignments
 -----------
 Variables may be changed in a template using the instruction "set":
@@ -1081,8 +1093,8 @@ that the contents of a block is executed by PHP each time the view is displayed:
 
 .. code-block:: html+jinja
 
-    {% cache sidebar %}
-        <!-- this content is slow so we are caching it -->
+    {% cache "sidebar" %}
+        <!-- generate this content is slow so we are going to cache it -->
     {% endcache %}
 
 Setting an specific number of seconds:
@@ -1090,8 +1102,20 @@ Setting an specific number of seconds:
 .. code-block:: html+jinja
 
     {# cache the sidebar by 1 hour #}
-    {% cache sidebar 3600 %}
-        <!-- this content is slow so we are caching it -->
+    {% cache "sidebar" 3600 %}
+        <!-- generate this content is slow so we are going to cache it -->
+    {% endcache %}
+
+Any valid expression can be used as cache key:
+
+.. code-block:: html+jinja
+
+    {% cache ("article-" ~ post.id) 3600 %}
+
+        <h1>{{ post.title }}</h1>
+
+        <p>{{ post.content }}</p>
+
     {% endcache %}
 
 The caching is done by the :doc:`Phalcon\\Cache <cache>` component via the view component.

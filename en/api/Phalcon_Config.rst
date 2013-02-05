@@ -116,7 +116,7 @@ Merges a configuration into the current one
 
 public *array*  **toArray** ()
 
-Converts recursivelly the object to an array 
+Converts recursively the object to an array 
 
 .. code-block:: php
 

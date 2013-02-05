@@ -11,27 +11,28 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
     try {
     
-      $transaction = Phalcon\Mvc\Model\Transaction\Manager::get();
+      $manager = new Phalcon\Mvc\Model\Transaction\Manager();
+    
+      $transaction = $manager->get();
     
       $robot = new Robots();
       $robot->setTransaction($transaction);
       $robot->name = 'WALL·E';
       $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
+      if ($robot->save() == false) {
         $transaction->rollback("Can't save robot");
       }
     
       $robotPart = new RobotParts();
       $robotPart->setTransaction($transaction);
       $robotPart->type = 'head';
-      if($robotPart->save()==false){
+      if ($robotPart->save() == false) {
         $transaction->rollback("Can't save robot part");
       }
     
       $transaction->commit();
     
-    }
-    catch(Phalcon\Mvc\Model\Transaction\Failed $e){
+    } catch(Phalcon\Mvc\Model\Transaction\Failed $e) {
       echo 'Failed, reason: ', $e->getMessage();
     }
 
@@ -40,7 +41,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin])
+public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 

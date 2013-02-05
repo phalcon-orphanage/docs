@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-app-id')  
 
@@ -73,6 +73,30 @@ Writes the meta-data to APC
 protected  **_initialize** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Initialize the metadata for certain table
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Sets the DependencyInjector container
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns the DependencyInjector container
+
+
+
+public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Set the meta-data extraction strategy
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>`  **getStrategy** () inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Return the strategy to obtain the meta-data
 
 
 

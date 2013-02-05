@@ -9,9 +9,9 @@ Escapes different kinds of text securing them. By using this component you may p
 
     <?php
 
-     $escaper = new Phalcon\Escaper();
-     $escaped = $escaper->escapeCss("font-family: <Verdana>");
-     echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
+    $escaper = new Phalcon\Escaper();
+    $escaped = $escaper->escapeCss("font-family: <Verdana>");
+    echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 
 

@@ -125,7 +125,7 @@ Merges a configuration into the current one
 
 public *array*  **toArray** () inherited from Phalcon\\Config
 
-Converts recursivelly the object to an array 
+Converts recursively the object to an array 
 
 .. code-block:: php
 

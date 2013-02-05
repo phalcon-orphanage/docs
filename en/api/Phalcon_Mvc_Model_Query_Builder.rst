@@ -184,7 +184,7 @@ Sets a HAVING condition clause. You need to escape PHQL reserved words using [ a
 
 public *string|array*  **getHaving** ()
 
-Return the columns to be queried
+Return the current having clause
 
 
 
@@ -205,6 +205,25 @@ Sets a LIMIT clause, optionally a offset clause
 public *string|array*  **getLimit** ()
 
 Returns the current LIMIT clause
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **offset** (*int* $offset)
+
+Sets an OFFSET clause 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->offset(30);
+
+
+
+
+public *string|array*  **getOffset** ()
+
+Returns the current OFFSET clause
 
 
 

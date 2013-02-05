@@ -35,6 +35,12 @@ Constants
 
 *integer* **OP_DELETE**
 
+*integer* **DIRTY_STATE_PERSISTENT**
+
+*integer* **DIRTY_STATE_TRANSIENT**
+
+*integer* **DIRTY_STATE_DETACHED**
+
 Methods
 ---------
 
@@ -88,17 +94,20 @@ Sets a transaction related to the Model instance
 
     <?php
 
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+    use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+    
     try {
     
-      $transactionManager = new Phalcon\Mvc\Model\Transaction\Manager();
+      $txManager = new TxManager();
     
-      $transaction = $transactionManager->get();
+      $transaction = $txManager->get();
     
       $robot = new Robots();
       $robot->setTransaction($transaction);
       $robot->name = 'WALL·E';
       $robot->created_at = date('Y-m-d');
-      if($robot->save()==false){
+      if ($robot->save() == false) {
         $transaction->rollback("Can't save robot");
       }
     
@@ -111,8 +120,7 @@ Sets a transaction related to the Model instance
     
       $transaction->commit();
     
-    }
-    catch(Phalcon\Mvc\Model\Transaction\Failed $e){
+    } catch (TxFailed $e) {
       echo 'Failed, reason: ', $e->getMessage();
     }
 
@@ -151,13 +159,19 @@ Sets the DependencyInjection connection service name
 
 public *string*  **getConnectionService** ()
 
-Returns DependencyInjection connection service
+Returns the DependencyInjection connection service name related to the model
 
 
 
-public  **setForceExists** (*boolean* $forceExists)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setDirtyState** (*int* $dirtyState)
 
-Forces that model doesn't need to be checked if exists before store it
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+
+
+
+public *int*  **getDirtyState** ()
+
+Returns one of the DIRTY_STATE_* constants telling if the record exists in the database or not
 
 
 
@@ -167,7 +181,7 @@ Gets the internal database connection
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*boolean* $forceExists])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -175,7 +189,7 @@ Assigns values to a model from an array returning a new model.
 
     <?php
 
-    $robot = Phalcon\Mvc\Model::dumpResult(new Robots(), array(
+    $robot = \Phalcon\Mvc\Model::cloneResultMap(new Robots(), array(
       'type' => 'mechanical',
       'name' => 'Astro Boy',
       'year' => 1952
@@ -184,15 +198,21 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **dumpResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*boolean* $forceExists])
+public static *mixed*  **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
 
-Assigns values to a model from an array returning a new model. 
+Returns an hydrated result based on the data and the column map
+
+
+
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
+
+Assigns values to a model from an array returning a new model 
 
 .. code-block:: php
 
     <?php
 
-    $robot = Phalcon\Mvc\Model::dumpResult(new Robots(), array(
+    $robot = Phalcon\Mvc\Model::cloneResult(new Robots(), array(
       'type' => 'mechanical',
       'name' => 'Astro Boy',
       'year' => 1952
@@ -211,11 +231,11 @@ Allows to query a set of records that match the specified conditions
 
      //How many robots are there?
      $robots = Robots::find();
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //How many mechanical robots are there?
      $robots = Robots::find("type='mechanical'");
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //Get and print virtual robots ordered by name
      $robots = Robots::find(array("type='virtual'", "order" => "name"));
@@ -257,7 +277,7 @@ Allows to query the first record that match the specified conditions
 
 public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
-Create a criteria for a especific model
+Create a criteria for a specific model
 
 
 
@@ -283,11 +303,11 @@ Allows to count how many records match the specified conditions
 
      //How many robots are there?
      $number = Robots::count();
-     echo "There are ", $number;
+     echo "There are ", $number, "\n";
     
      //How many mechanical robots are there?
      $number = Robots::count("type='mechanical'");
-     echo "There are ", $number, " mechanical robots";
+     echo "There are ", $number, " mechanical robots\n";
 
 
 
@@ -302,11 +322,11 @@ Allows to calculate a summatory on a column that match the specified conditions
 
      //How much are all robots?
      $sum = Robots::sum(array('column' => 'price'));
-     echo "The total price of robots is ", $sum;
+     echo "The total price of robots is ", $sum, "\n";
     
      //How much are mechanical robots?
      $sum = Robots::sum(array("type='mechanical'", 'column' => 'price'));
-     echo "The total price of mechanical robots is  ", $sum;
+     echo "The total price of mechanical robots is  ", $sum, "\n";
 
 
 
@@ -321,11 +341,11 @@ Allows to get the maximum value of a column that match the specified conditions
 
      //What is the maximum robot id?
      $id = Robots::maximum(array('column' => 'id'));
-     echo "The maximum robot id is: ", $id;
+     echo "The maximum robot id is: ", $id, "\n";
     
      //What is the maximum id of mechanical robots?
      $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
-     echo "The maximum robot id of mechanical robots is ", $id;
+     echo "The maximum robot id of mechanical robots is ", $id, "\n";
 
 
 
@@ -359,11 +379,11 @@ Allows to calculate the average value on a column matching the specified conditi
 
      //What's the average price of robots?
      $average = Robots::average(array('column' => 'price'));
-     echo "The average price is ", $average;
+     echo "The average price is ", $average, "\n";
     
      //What's the average price of mechanical robots?
      $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
-     echo "The average price of mechanical robots is ", $average;
+     echo "The average price of mechanical robots is ", $average, "\n";
 
 
 
@@ -482,12 +502,12 @@ Returns all the validation messages
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     if ($robot->save() == false) {
-      echo "Umh, We can't store robots right now ";
-      foreach ($robot->getMessages() as $message) {
-        echo $message;
-      }
+      	echo "Umh, We can't store robots right now ";
+      	foreach ($robot->getMessages() as $message) {
+    		echo $message;
+    	}
     } else {
-      echo "Great, a new robot was saved successfully!";
+      	echo "Great, a new robot was saved successfully!";
     }
 
 
@@ -526,6 +546,18 @@ Sends a pre-build INSERT SQL statement to the relational database system
 protected *boolean*  **_doLowUpdate** ()
 
 Sends a pre-build UPDATE SQL statement to the relational database system
+
+
+
+protected  **_preSaveRelatedRecords** ()
+
+
+
+
+
+protected  **_postSaveRelatedRecords** ()
+
+
 
 
 
@@ -843,7 +875,31 @@ Returns related records defined relations depending on the method name
 
 public *mixed*  **__call** (*string* $method, [*array* $arguments])
 
-Handles methods when a method does not exist
+Handles method calls when a method is not implemented
+
+
+
+public static *mixed*  **__callStatic** (*string* $method, [*array* $arguments])
+
+Handles method calls when a static method is not implemented
+
+
+
+public  **__set** (*string* $property, *mixed* $value)
+
+Magic method to assign values to the the model
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **__get** (*string* $property)
+
+Magic method to get related records using the relation alias as a property
+
+
+
+public  **__isset** (*string* $property)
+
+Magic method to check if a property is a valid relation
 
 
 

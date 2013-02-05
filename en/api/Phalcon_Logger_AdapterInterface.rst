@@ -7,36 +7,6 @@ Phalcon\\Logger\\AdapterInterface initializer
 Methods
 ---------
 
-abstract public  **setFormat** (*string* $format)
-
-Set the log format
-
-
-
-abstract public *format*  **getFormat** ()
-
-Returns the log format
-
-
-
-abstract public *string*  **getTypeString** (*integer* $type)
-
-Returns the string meaning of a logger constant
-
-
-
-abstract public  **setDateFormat** (*string* $date)
-
-Sets the internal date format
-
-
-
-abstract public *string*  **getDateFormat** ()
-
-Returns the internal date format
-
-
-
 abstract public  **log** (*string* $message, [*int* $type])
 
 Sends/Writes messages to the file log

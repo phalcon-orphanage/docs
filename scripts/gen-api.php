@@ -8,7 +8,7 @@
  * php scripts/gen-api.php
  */
 
-define('CPHALCON_DIR', '/home/gutierrezandresfelipe/cphalcon/ext/');
+define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
 
 class API_Generator
 {
@@ -468,7 +468,7 @@ foreach($classes as $className){
 				} else {
 					if ($className!='Phalcon\Kernel'){
 						if($simpleClassName==$docClassName){
-							throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
+							//throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
 						}
 					}
 					if (!$parameter->isOptional()) {
