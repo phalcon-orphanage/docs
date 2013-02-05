@@ -81,9 +81,15 @@ Generates a pseudo random token value to be used as input's value in a CSRF chec
 
 
 
-public *boolean*  **checkToken** ([*string* $tokenKey])
+public *boolean*  **checkToken** ([*string* $tokenKey], [*string* $tokenValue])
 
 Check if the CSRF token sent in the request is the same that the current in session
+
+
+
+public *string*  **getSessionToken** ()
+
+Returns the value of the CSRF token in session
 
 
 

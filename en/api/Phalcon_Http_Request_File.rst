@@ -12,16 +12,16 @@ Provides OO wrappers to the $_FILES superglobal
     class PostsController extends \Phalcon\Mvc\Controller
     {
     
-    public function uploadAction()
-    {
-    	//Check if the user has uploaded files
-    	if ($this->request->hasFiles() == true) {
-    		//Print the real file names and their sizes
-    		foreach ($this->request->getUploadedFiles() as $file){
-    			echo $file->getName(), " ", $file->getSize(), "\n";
+    	public function uploadAction()
+    	{
+    		//Check if the user has uploaded files
+    		if ($this->request->hasFiles() == true) {
+    			//Print the real file names and their sizes
+    			foreach ($this->request->getUploadedFiles() as $file){
+    				echo $file->getName(), " ", $file->getSize(), "\n";
+    			}
     		}
     	}
-    }
     
     }
 
@@ -56,7 +56,7 @@ Returns the temporal name of the uploaded file
 
 public *boolean*  **moveTo** (*string* $destination)
 
-Move the temporary file to a destination
+Move the temporary file to a destination whithin the application
 
 
 

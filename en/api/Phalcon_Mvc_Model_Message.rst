@@ -9,14 +9,14 @@ Encapsulates validation info generated before save/delete records fails
 
     <?php
 
-     use Phalcon\Mvc\Model\Message as Message;
+      use Phalcon\Mvc\Model\Message as Message;
     
-     class Robots extends Phalcon\Mvc\Model
-    {
+      class Robots extends Phalcon\Mvc\Model
+      {
     
-       public function beforeSave()
-       {
-         if (this->name == 'Peter') {
+        public function beforeSave()
+        {
+          if (this->name == 'Peter') {
             $text = "A robot cannot be named Peter";
             $field = "name";
             $type = "InvalidValue";
@@ -32,7 +32,7 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 ---------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
@@ -71,6 +71,18 @@ Sets field name related to message
 public *string*  **getField** ()
 
 Returns field name related to message
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Set the model who generates the message
+
+
+
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
+
+Returns the model that produced the message
 
 
 

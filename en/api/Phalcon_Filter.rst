@@ -34,13 +34,13 @@ Adds a user-defined filter
 
 public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)
 
-Sanizites a value with a specified single or set of filters
+Sanitizes a value with a specified single or set of filters
 
 
 
 protected *mixed*  **_sanitize** ()
 
-Internal sanizite wrapper to filter_var
+Internal sanitize wrapper to filter_var
 
 
 

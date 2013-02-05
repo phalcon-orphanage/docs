@@ -59,7 +59,7 @@ ChangeLog
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
 
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
-.. _write us: http://phalcon.uservoice.com/
+.. _write us: https://github.com/phalcon/framework-bench
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
 

@@ -8,6 +8,19 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
 
 
+Constants
+---------
+
+*integer* **TYPE_RESULT_FULL**
+
+*integer* **TYPE_RESULT_PARTIAL**
+
+*integer* **HYDRATE_RECORDS**
+
+*integer* **HYDRATE_OBJECTS**
+
+*integer* **HYDRATE_ARRAYS**
+
 Methods
 ---------
 
@@ -20,6 +33,12 @@ Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
 public *boolean*  **valid** ()
 
 Check whether internal resource has rows to fetch
+
+
+
+public *array*  **toArray** ()
+
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
 
 
 
@@ -89,6 +108,12 @@ Resulsets cannot be changed. It has only been implemented to meet the definition
 
 
 
+public *int*  **getType** () inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Returns the internal type of data retrieval that the resultset is using
+
+
+
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Get first row in the resultset
@@ -101,7 +126,7 @@ Get last row in the resultset
 
 
 
-public  **setIsFresh** (*boolean* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*boolean* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Set if the resultset is fresh or an old one cached
 
@@ -113,13 +138,25 @@ Tell if the resultset if fresh or an old one cached
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*int* $hydrateMode) inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Sets the hydration mode in the resultset
+
+
+
+public *int*  **getHydrateMode** () inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Returns the current hydration mode
+
+
+
 public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Returns the associated cache for the resultset
 
 
 
-public *object*  **current** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Returns current row in the resultset
 

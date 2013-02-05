@@ -84,3 +84,8 @@ Returns the 'through' relation if any
 
 
 
+public  **isReusable** ()
+
+...
+
+

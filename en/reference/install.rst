@@ -80,10 +80,18 @@ Add extension to your php.ini
 
 	extension=phalcon.so
 
-Restart the webserver
+Restart the webserver.
+
+You can compile for a specific architecture using:
+
+.. code-block:: bash
+
+	sudo ./install 32bits
+	sudo ./install 64bits
+	sudo ./install safe
 
 FreeBSD
-^^^^^^^
+-------
 A port is available for FreeBSD. Just only need these simple line commands to install it:
 
 .. code-block:: bash
@@ -98,7 +106,7 @@ or
 	cd /usr/ports/www/phalcon && make install clean
 
 Installation Notes
-^^^^^^^^^^^^^^^^^^
+------------------
 
 Installation notes for Web Servers:
 

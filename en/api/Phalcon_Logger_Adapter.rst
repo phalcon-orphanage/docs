@@ -7,39 +7,33 @@ Base class for Phalcon\\Logger adapters
 Methods
 ---------
 
-public  **setFormat** (*string* $format)
+public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
-Set the log format
-
-
-
-public *format*  **getFormat** ()
-
-Returns the log format
+Sets the message formatter
 
 
 
-protected *string*  **_applyFormat** ()
+public  **begin** ()
 
-Applies the internal format to the message
-
-
-
-public  **setDateFormat** (*string* $date)
-
-Sets the internal date format
+Starts a transaction
 
 
 
-public *string*  **getDateFormat** ()
+public  **commit** ()
 
-Returns the internal date format
+Commits the internal transaction
 
 
 
-public *string*  **getTypeString** (*integer* $type)
+public  **rollback** ()
 
-Returns the string meaning of a logger constant
+Rollbacks the internal transaction
+
+
+
+public  **emergence** (*string* $message)
+
+Sends/Writes an emergence message to the log
 
 
 
@@ -79,9 +73,9 @@ Sends/Writes an alert message to the log
 
 
 
-public  **log** (*string* $message, *int* $type)
+public  **log** (*string* $message, [*int* $type])
 
-Logs a message
+Logs messages to the internal loggger. Appends logs to the
 
 
 

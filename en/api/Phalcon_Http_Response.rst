@@ -19,6 +19,12 @@ Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Respon
 Methods
 ---------
 
+public  **__construct** ([*string* $content], [*int* $code], [*string* $status])
+
+Phalcon\\Http\\Response constructor
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector

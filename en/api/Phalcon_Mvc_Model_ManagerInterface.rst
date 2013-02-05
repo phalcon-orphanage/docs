@@ -109,7 +109,7 @@ Gets hasOne relations defined on a model
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>` [] **getRelations** (*string* $modelName)
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getRelations** (*string* $modelName)
 
 Query all the relationships defined on a model
 

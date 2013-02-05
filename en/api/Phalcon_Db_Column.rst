@@ -45,6 +45,8 @@ Constants
 
 *integer* **TYPE_FLOAT**
 
+*integer* **TYPE_BOOLEAN**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**

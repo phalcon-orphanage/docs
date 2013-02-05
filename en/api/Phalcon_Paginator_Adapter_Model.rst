@@ -3,7 +3,7 @@ Class **Phalcon\\Paginator\\Adapter\\Model**
 
 *implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
-This adapter allows to paginate data using Phalcon\\Model resultsets.
+This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as base
 
 
 Methods

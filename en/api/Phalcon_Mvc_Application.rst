@@ -77,6 +77,18 @@ Return the modules registered in the application
 
 
 
+public  **setDefaultModule** (*string* $defaultModule)
+
+Sets the module name to be used if the router doesn't return a valid module
+
+
+
+public *string*  **getDefaultModule** ()
+
+Returns the default module name
+
+
+
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*string* $uri])
 
 Handles a MVC request

@@ -28,27 +28,15 @@ Phalcon\\Logger\\Adapter\\File constructor
 
 
 
-public  **log** (*string* $message, [*int* $type])
+public :doc:`Phalcon\\Logger\\Formatter\\Line <Phalcon_Logger_Formatter_Line>`  **getFormatter** ()
 
-Sends/Writes messages to the file log
-
-
-
-public  **begin** ()
-
-Starts a transaction
+Returns the internal formatter
 
 
 
-public  **commit** ()
+public  **logInternal** (*string* $message, *int* $type, *int* $time)
 
-Commits the internal transaction
-
-
-
-public  **rollback** ()
-
-Rollbacks the internal transaction
+Writes the log to the file itself
 
 
 
@@ -64,39 +52,33 @@ Opens the internal file handler after unserialization
 
 
 
-public  **setFormat** (*string* $format) inherited from Phalcon\\Logger\\Adapter
+public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter) inherited from Phalcon\\Logger\\Adapter
 
-Set the log format
-
-
-
-public *format*  **getFormat** () inherited from Phalcon\\Logger\\Adapter
-
-Returns the log format
+Sets the message formatter
 
 
 
-protected *string*  **_applyFormat** () inherited from Phalcon\\Logger\\Adapter
+public  **begin** () inherited from Phalcon\\Logger\\Adapter
 
-Applies the internal format to the message
-
-
-
-public  **setDateFormat** (*string* $date) inherited from Phalcon\\Logger\\Adapter
-
-Sets the internal date format
+Starts a transaction
 
 
 
-public *string*  **getDateFormat** () inherited from Phalcon\\Logger\\Adapter
+public  **commit** () inherited from Phalcon\\Logger\\Adapter
 
-Returns the internal date format
+Commits the internal transaction
 
 
 
-public *string*  **getTypeString** (*integer* $type) inherited from Phalcon\\Logger\\Adapter
+public  **rollback** () inherited from Phalcon\\Logger\\Adapter
 
-Returns the string meaning of a logger constant
+Rollbacks the internal transaction
+
+
+
+public  **emergence** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+
+Sends/Writes an emergence message to the log
 
 
 
@@ -133,6 +115,12 @@ Sends/Writes a warning message to the log
 public  **alert** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an alert message to the log
+
+
+
+public  **log** (*string* $message, [*int* $type]) inherited from Phalcon\\Logger\\Adapter
+
+Logs messages to the internal loggger. Appends logs to the
 
 
 

@@ -171,6 +171,21 @@ Helper method to query records based on a relation definition
 
 
 
+public  **getReusableRecords** (*unknown* $modelName, *unknown* $key)
+
+...
+
+
+public  **setReusableRecords** (*unknown* $modelName, *unknown* $key, *unknown* $records)
+
+...
+
+
+public  **clearReusableObjects** ()
+
+...
+
+
 public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
 
 Gets belongsTo related records from a model
@@ -220,13 +235,13 @@ Gets hasOne relations defined on a model
 
 
 
-public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>` [] **getRelations** (*string* $modelName)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getRelations** (*string* $modelName)
 
 Query all the relationships defined on a model
 
 
 
-public :doc:`Phalcon\\Mvc\\RelationInterface <Phalcon_Mvc_RelationInterface>`  **getRelationsBetween** (*string* $first, *string* $second)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **getRelationsBetween** (*string* $first, *string* $second)
 
 Query the first relationship defined between two models
 

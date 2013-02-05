@@ -614,7 +614,6 @@ The following events are available to define custom business rules that can be e
 
 Validation Failed Events
 ------------------------
-
 Another type of events is available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
@@ -624,6 +623,21 @@ Another type of events is available when the data validation process finds any i
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
+
+Implicit Ids vs. User Primary Keys
+---------------------------------
+By default Phalcon\Mvc\Collection assumes that the _id attribute is automatically generated using MongoIds_.
+If a model uses custom primary keys this behavior can be overriden:
+
+<?php
+
+class Robots extends Phalcon\Mvc\Collection
+{
+	public function initialize()
+	{
+		$this->useImplicitObjectIds(false);
+	}
+}
 
 Setting multiple databases
 --------------------------

@@ -98,7 +98,7 @@ Sets the action name to be dispatched
 
 public *string*  **getActionName** ()
 
-Gets last dispatched action name
+Gets the lastest dispatched action name
 
 
 
@@ -123,6 +123,12 @@ Set a param by its name or numeric index
 public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a param by its name or numeric index
+
+
+
+public *string*  **getActiveMethod** ()
+
+Returns the current method to be/executed in the dispatcher
 
 
 

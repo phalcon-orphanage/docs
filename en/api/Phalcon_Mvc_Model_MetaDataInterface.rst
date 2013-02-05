@@ -7,6 +7,18 @@ Phalcon\\Mvc\\Model\\MetaDataInterface initializer
 Methods
 ---------
 
+abstract public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy)
+
+Set the meta-data extraction strategy
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>`  **getStrategy** ()
+
+Return the strategy to obtain the meta-data
+
+
+
 abstract public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Reads meta-data for certain model

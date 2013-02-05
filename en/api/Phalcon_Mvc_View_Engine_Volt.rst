@@ -47,6 +47,12 @@ Performs a string conversion
 
 
 
+public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
+
+Extracts a slice from an string/array/traversable object value
+
+
+
 public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor

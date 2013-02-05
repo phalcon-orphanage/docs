@@ -978,6 +978,10 @@ right services when you need it requires them.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | security            | Security helpers                            | :doc:`Phalcon\\Security <../api/Phalcon_Security>`                                                 | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
+| escaper             | Contextual Escaping                         | :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`                                                   | Yes    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
+| annotations         | Annotations Parser                          | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>`           | Yes    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | modelsManager       | Models Management Service                   | :doc:`Phalcon\\Mvc\\Model\\Manager <../api/Phalcon_Mvc_Model_Manager>`                             | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | modelsMetadata      | Models Meta-Data Service                    | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`            | Yes    |
@@ -991,7 +995,7 @@ right services when you need it requires them.
 
 Implementing your own DI
 ========================
-The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon.
+The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 .. _`Inversion of Control`: http://en.wikipedia.org/wiki/Inversion_of_control
 .. _Singletons: http://en.wikipedia.org/wiki/Singleton_pattern

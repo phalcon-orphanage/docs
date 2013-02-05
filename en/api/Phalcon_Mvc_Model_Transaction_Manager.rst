@@ -62,9 +62,33 @@ Returns the dependency injection container
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setDbService** (*string* $service)
+
+Sets the database service used to run the isolated transactions
+
+
+
+public *string*  **getDbService** ()
+
+Returns the database service used to isolate the transaction
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setRollbackPendent** (*boolean* $rollbackPendent)
+
+Set if the transaction manager must register a shutdown function to clean up pendent transactions
+
+
+
+public *boolean*  **getRollbackPendent** ()
+
+Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+
+
+
 public *boolean*  **has** ()
 
-Checks whether manager has an active transaction
+Checks whether the manager has an active transaction
 
 
 

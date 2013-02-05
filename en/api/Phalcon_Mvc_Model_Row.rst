@@ -9,9 +9,9 @@ This component allows Phalcon\\Mvc\\Model to return rows without an associated e
 Methods
 ---------
 
-public  **setForceExists** (*boolean* $forceExists)
+public  **setDirtyState** (*int* $dirtyState)
 
-Forces that a model doesn't need to be checked if exists before store it
+Set the current object's state
 
 
 
