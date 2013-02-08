@@ -454,9 +454,10 @@ This type of definition does not allow to define arguments for the class constru
 
 Object
 ^^^^^^
-This type expect an object, because the object does not need to be resolved because it is already an object
-one could say that there is no really dependency injection here, however it is useful if you want to force that
-the returned dependency will always the same object:
+This type expect an object, because the object does not need to be resolved because it is 
+already an object, one could say that there is no really dependency injection here, 
+however it is useful if you want to force that the returned dependency will 
+always the same object/value:
 
 .. code-block:: php
 
