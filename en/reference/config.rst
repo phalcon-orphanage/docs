@@ -131,5 +131,3 @@ The above code produces the following:
         [debug] => 1
     )
 
-Reading with defaults
----------------------

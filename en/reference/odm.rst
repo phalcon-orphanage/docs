@@ -625,19 +625,21 @@ Another type of events is available when the data validation process finds any i
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
 Implicit Ids vs. User Primary Keys
----------------------------------
+----------------------------------
 By default Phalcon\Mvc\Collection assumes that the _id attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overriden:
 
-<?php
+.. code-block:: php
 
-class Robots extends Phalcon\Mvc\Collection
-{
-	public function initialize()
+	<?php
+
+	class Robots extends Phalcon\Mvc\Collection
 	{
-		$this->useImplicitObjectIds(false);
+		public function initialize()
+		{
+			$this->useImplicitObjectIds(false);
+		}
 	}
-}
 
 Setting multiple databases
 --------------------------
@@ -705,4 +707,5 @@ obtaining the "flash" service from the DI container. By doing this, we don't hav
 
 .. _MongoDB: http://www.mongodb.org/
 .. _MongoId: http://www.php.net/manual/en/class.mongoid.php
+.. _MongoIds: http://www.php.net/manual/en/class.mongoid.php
 .. _`SQL to Mongo Mapping Chart`: http://www.php.net/manual/en/mongo.sqltomongo.php
