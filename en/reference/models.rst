@@ -197,29 +197,29 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
 The available query options are:
 
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                      | Example                                                                 |
-+=============+==================================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\Mvc\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                       | "bind" => array("status" => "A", "type" => "some-time")                 |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                       | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                       | "order" => "name DESC, status"                                          |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                       | "limit" => 10                                                           |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                      | "group" => "name, status"                                               |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                            | "for_update" => true                                                    |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                               | "shared_lock" => true                                                   |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                     | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                      | "hydration" => Resultset::HYDRATION_OBJECTS                             |
-+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
++=============+====================================================================================================================================================================================================+=========================================================================+
+| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | "bind" => array("status" => "A", "type" => "some-time")                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | "order" => "name DESC, status"                                          |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| limit       | Limit the results of the query to results to certain range                                                                                                                                         | "limit" => 10                                                           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | "group" => "name, status"                                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                              | "for_update" => true                                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                 | "shared_lock" => true                                                   |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATION_OBJECTS                             |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
 
@@ -1271,15 +1271,47 @@ generated the message or the message type:
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
 
-+---------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| Type                | Description                                                                                                                        |
-+=====================+====================================================================================================================================+
-| PresenceOf          | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-+---------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| ConstraintViolation | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-+---------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue        | Generated when a validator failed because of an invalid value                                                                      |
-+---------------------+------------------------------------------------------------------------------------------------------------------------------------+
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| Type                 | Description                                                                                                                        |
++======================+====================================================================================================================================+
+| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+The method getMessages() can be overriden in a model to replace/translate the default messages generated automatically by the ORM:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function getMessages()
+        {
+            $messages = array();
+            foreach (parent::getMessages() as $message) {
+                switch ($message->getType()) {
+                    case 'InvalidCreateAttempt':
+                        $messages[] = 'The record cannot be created because it already exists';
+                        break;
+                    case 'InvalidUpdateAttempt':
+                        $messages[] = 'The record cannot be updated because it already exists';
+                        break;
+                    case 'PresenceOf':
+                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                        break;
+                }
+            }
+            return $messages;
+        }
+    }
 
 Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^
