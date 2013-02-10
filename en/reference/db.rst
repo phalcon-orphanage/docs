@@ -472,7 +472,6 @@ A table description is very similar to the MySQL describe command, it contains t
 | Null  | Does the column allow null values?                 |
 +-------+----------------------------------------------------+
 
-
 Creating/Altering/Dropping Tables
 ---------------------------------
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
@@ -623,7 +622,6 @@ is limited by these constraints.
 
 Dropping Tables
 ^^^^^^^^^^^^^^^
-
 Examples on dropping tables:
 
 .. code-block:: php
