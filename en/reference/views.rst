@@ -702,6 +702,7 @@ If you want to register a template engine or a set of them for each request in t
 
         $view = new \Phalcon\Mvc\View();
 
+        //A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
@@ -745,6 +746,8 @@ All the components in Phalcon can be used as *glue* components individually beca
     <?php
 
     $view = new \Phalcon\Mvc\View();
+
+    //A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
