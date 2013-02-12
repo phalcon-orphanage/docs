@@ -5,7 +5,7 @@ Class **Phalcon\\CLI\\Task**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "runAction" method  
+Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method  
 
 .. code-block:: php
 
@@ -15,18 +15,12 @@ Every command-line task should extend this class that encapsulates all the task 
     {
     
       //This action will be executed by default
-      public function runAction()
+      public function mainAction()
       {
     
       }
     
       public function findAction()
-      {
-    
-      }
-    
-      //This action will be executed when a non existent action is requested
-      public function notFoundAction()
       {
     
       }

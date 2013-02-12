@@ -106,7 +106,7 @@ Receives events generated in the models and dispatches them to a events-manager 
 
 
 
-public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *aray* $data)
+public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *array* $data)
 
 Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
@@ -171,19 +171,22 @@ Helper method to query records based on a relation definition
 
 
 
-public  **getReusableRecords** (*unknown* $modelName, *unknown* $key)
+public *object*  **getReusableRecords** (*string* $modelName, *string* $key)
 
-...
+Returns a reusable object from the internal list
 
 
-public  **setReusableRecords** (*unknown* $modelName, *unknown* $key, *unknown* $records)
 
-...
+public *object*  **setReusableRecords** (*string* $modelName, *string* $key, *unknown* $records)
+
+Stores a reusable record in the internal list
+
 
 
 public  **clearReusableObjects** ()
 
-...
+Clears the internal reusable list
+
 
 
 public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])

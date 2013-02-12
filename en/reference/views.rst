@@ -398,7 +398,7 @@ Or disable temporarily in some part of the application:
 
         public function findAction()
         {
-            $view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+            $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         }
 
     }
@@ -600,8 +600,8 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 Creating your own Template Engine Adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to use an external template engine
-it's create an adapter for it.
+There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine
+is create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
 Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`

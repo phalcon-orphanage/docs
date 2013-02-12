@@ -21,7 +21,7 @@ Checks whether offset exists in the row
 
 
 
-public *string|Phalcon\Mvc\ModelInterface*  **offsetGet** (*int* $index)
+public *string|\Phalcon\Mvc\ModelInterface*  **offsetGet** (*int* $index)
 
 Gets row in a specific position of the row
 

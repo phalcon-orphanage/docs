@@ -557,7 +557,7 @@ protected  **_preSaveRelatedRecords** ()
 
 protected  **_postSaveRelatedRecords** ()
 
-
+Save the related records assigned in the has-one/has-many relations
 
 
 

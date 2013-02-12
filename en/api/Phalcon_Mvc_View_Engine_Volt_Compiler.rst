@@ -72,6 +72,18 @@ Register the user registered filters
 
 
 
+public  **setUniquePrefix** (*string* $prefix)
+
+Set a unique prefix to be used as prefix for compiled variables
+
+
+
+public *string*  **getUniquePrefix** ()
+
+Return a unique prefix to be used as prefix for compiled variables and contexts
+
+
+
 public *string*  **attributeReader** (*array* $expr)
 
 Resolves attribute reading
@@ -103,6 +115,60 @@ Resolves an expression node in an AST volt tree
 
 
 protected  **_statementListOrExtends** ()
+
+...
+
+
+public *string*  **compileForeach** (*array* $statement, [*boolean* $extendsMode])
+
+Compiles a 'foreach' intermediate code representation into plain PHP code
+
+
+
+public *string*  **compileForElse** ()
+
+Generates a 'forelse' PHP code
+
+
+
+public  **compileIf** (*unknown* $statement, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileElseIf** (*unknown* $statement)
+
+...
+
+
+public  **compileCache** (*unknown* $statement, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileEcho** (*unknown* $statement)
+
+...
+
+
+public  **compileInclude** (*unknown* $statement)
+
+...
+
+
+public  **compileSet** (*unknown* $statement)
+
+
+
+
+
+public  **compileDo** (*unknown* $statement)
+
+
+
+
+
+public  **compileAutoEscape** (*unknown* $statement, *unknown* $extendsMode)
 
 ...
 
@@ -156,6 +222,12 @@ Compiles a template into a file applying the compiler options This method does n
     $compiler->compile('views/layouts/main.volt');
     require $compiler->getCompiledTemplatePath();
 
+
+
+
+public *string*  **getTemplatePath** ()
+
+Returns the path that is currently beign compiled
 
 
 

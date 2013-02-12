@@ -381,7 +381,7 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
     }
 
 The hooks events always receive a first parameter that contains contextual information of the event produced and a
-second one that is the object that produced the event itself. Plugins should not extend the class
+second one that is the object that produced the event itself. It is not mandatory that plugins extend the class
 Phalcon\\Mvc\\User\\Plugin, but by doing it they gain easier access to the services in the application.
 
 Now, we're verifying the role in the current session, check to see if he/she has access using the ACL list.
@@ -459,7 +459,7 @@ implemented in the Plugin. Now we going to explain step by step how we built the
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
     );
-    foreach($roles as $role){
+    foreach ($roles as $role) {
         $acl->addRole($role);
     }
 
