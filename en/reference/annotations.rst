@@ -184,6 +184,8 @@ to be notified when a route is executed:
 
 .. code-block:: php
 
+	<?php
+
 	$di['dispatcher'] = function() {
 
 		$eventsManager = new \Phalcon\Events\Manager();
