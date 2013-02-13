@@ -99,7 +99,7 @@ which the route is constrained for:
 
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^
-Defining parameters in routes is very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter
+Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
 formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
 
 .. code-block:: php
@@ -140,7 +140,7 @@ The following rules can be used together with Apache to rewrite the URis:
 
 Working with Responses
 ----------------------
-You are free to produce any kind of responses in a handler: directly make an output, use a template engine, include a view,
+You are free to produce any kind of response in a handler: directly make an output, use a template engine, include a view,
 return a json, etc.:
 
 .. code-block:: php
@@ -227,7 +227,7 @@ by this way the "url" service can produce the corresponding URL:
 Interacting with the Dependency Injector
 ----------------------------------------
 In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
-can create outside of the application a container to manipulate its services:
+can create outside the application a container to manipulate its services:
 
 .. code-block:: php
 
@@ -401,11 +401,11 @@ You can call the methods several times to add more events of the same type. The 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
 +=====================+============================================================================================================================+======================+
-| before              | Before execute the handler. It can be used to control the access to the application                                        | Yes                  |
+| before              | Before executing the handler. It can be used to control the access to the application                                      | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | after               | Executed after the handler is executed. It can be used to prepare the response                                             | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| finish              | Executed after send the response. It can be used to perform clean-up                                                       | No                   |
+| finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 Returning Responses

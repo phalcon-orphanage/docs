@@ -69,7 +69,7 @@ Basic Usage
 -----------
 A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
 Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
-prints the result of a expression to the template.
+prints the result of an expression to the template.
 
 Below is a minimal template that illustrates a few basics:
 
@@ -317,7 +317,7 @@ Additionally, an "if" evaluation can be optionally set:
 
 Loop Controls
 ^^^^^^^^^^^^^
-The 'break' and 'continue' statements can be used to exit from a loop or force a iteration in the current block:
+The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
 
 .. code-block:: html+jinja
 
@@ -744,7 +744,7 @@ Keep the following points in mind when choosing to use the "partial" function or
 Template Inheritance
 --------------------
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
-define *blocks* than can be overriden by a child template. Let's pretend that we have the following base template:
+define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
 .. code-block:: html+jinja
 
@@ -780,7 +780,7 @@ From other template we could extend the base template replacing the blocks:
         <p class="important">Welcome on my awesome homepage.</p>
     {% endblock %}
 
-Not all blocks must be replaced at a child template, only those which are needed. The final output produced will be the following:
+Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
 
 .. code-block:: html
 
@@ -872,7 +872,7 @@ Rendering "index.volt" produces:
 
 Note the call to the function "super()". With that function it's possible to render the contents of the parent block.
 
-As partials, the path set to "extends" is a relative path under the current views directory (i.e app/views/).
+As partials, the path set to "extends" is a relative path under the current views directory (i.e. app/views/).
 
 .. highlights::
 
@@ -982,7 +982,7 @@ Unlike other template engines, Volt itself is not required to run the compiled t
 Once the templates are compiled there is no dependence on Volt. With performance independence in mind,
 Volt only acts as a compiler for PHP templates.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to existing ones.
+The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
 
 Functions
 ^^^^^^^^^
@@ -1166,7 +1166,7 @@ External Resources
 
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
-* `Album-O-Rama <https://github.com/phalcon/album-o-rama>`_ is a sample application using Volt as template engine, check out its code on
+* `Album-O-Rama <https://github.com/phalcon/album-o-rama>`_ is a sample application using Volt as template engine, check out its code on Github
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference

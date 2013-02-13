@@ -108,7 +108,7 @@ Now we will create the routes as we defined above:
     $app->handle();
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
-followed by a handler. In this case the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
+followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
 by example, explicitly sets that the "id" parameter must have a numeric format.
 
 When a defined route matches the requested URI then the application executes the corresponding handler.
@@ -116,8 +116,8 @@ When a defined route matches the requested URI then the application executes the
 Creating a Model
 ----------------
 Our API provides information about 'robots', these data are stored in a database. The following model allows us to
-access that table in an object oriented way. We have implemented some business rules using built-in validators
-and simple validations. Doing this will give us the peace of mind that saved data meets the requirements of our
+access that table in an object-oriented way. We have implemented some business rules using built-in validators
+and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
 application:
 
 .. code-block:: php
@@ -211,7 +211,7 @@ perform this simple query returning the results as JSON:
         echo json_encode($data);
     });
 
-:doc:`PHQL <phql>`, allow us to write queries using a high level, object oriented SQL dialect that internally
+:doc:`PHQL <phql>`, allow us to write queries using a high-level, object-oriented SQL dialect that internally
 translates to the right SQL statements depending on the database system we are using. The clause "use" in the
 anonymous function allows us to pass some variables from the global to local scope easily.
 
@@ -506,7 +506,7 @@ Finally, delete a robot:
 
 Conclusion
 ----------
-As we have seen, develop Restful APIs with Phalcon is easy. Later in the documentation we'll explain in detail how to
+As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
 use micro applications and the :doc:`PHQL <phql>` language.
 
 .. _curl : http://en.wikipedia.org/wiki/CURL

@@ -221,7 +221,7 @@ The available query options are:
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATION_OBJECTS                             |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
+If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 .. code-block:: php
 
@@ -236,7 +236,7 @@ If you prefer, there is also available a way to create queries in an object orie
 
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high level, object oriented and SQL-like language.
+All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
 
 Model Resultsets

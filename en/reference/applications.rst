@@ -280,7 +280,7 @@ module:
 
 When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
 necessary that every matched route returns a valid module. Each registered module has an associated class
-that offers functions to set the module itself up. Each module class definition must implement two
+offering functions to set the module itself up. Each module class definition must implement two
 methods: registerAutoloaders() and registerServices(), they will be called by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
 

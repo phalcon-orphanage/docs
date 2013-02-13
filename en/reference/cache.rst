@@ -197,7 +197,7 @@ If you want to know which keys are stored in the cache you could call the queryK
 Deleting data from the cache
 ----------------------------
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data).
-The only requirement is to know the key that the data has been stored with.
+The only requirement is to know the key that the data have been stored with.
 
 .. code-block:: php
 

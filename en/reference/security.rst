@@ -1,6 +1,6 @@
 Security
 ========
-This component aids the developer in common security tasks such as password hashing an and Cross-Site Request Forgery protection (CSRF).
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
 
 Password Hashing
 ----------------
@@ -9,7 +9,7 @@ accounts thus being able to engage in unauthorized activities. To combat that, m
 “md5_” and “sha1_”. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable
 to brute force attacks. These attacks are also known as `rainbow tables`_.
 
-To solve this problem we can use hash algorithms as bcrypt. Why bcrypt? Thanks to its “Eksblowfish” key setup algorithm
+To solve this problem we can use hash algorithms as bcrypt_. Why bcrypt? Thanks to its “Eksblowfish_” key setup algorithm
 we could make the password encryption as “slow” as we want. Slow algorithms make the process to calculate the real
 password behind a hash extremely difficult if not impossible. This will protect your for a long time from a
 possible attack using rainbow tables.
@@ -79,7 +79,7 @@ Cross-Site Request Forgery (CSRF) protection
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments
 are vulnerable to this attack.
 
-The idea is to prevent the form values from being sent outside our application. To fix this we generate a `random nonce`_ (token) in each
+The idea is to prevent the form values from being sent outside our application. To fix this, we generate a `random nonce`_ (token) in each
 form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored
 token in the session to the one submitted by the form:
 
@@ -141,6 +141,7 @@ to setup it's options:
 .. _openssl : http://php.net/manual/en/book.openssl.php
 .. _captcha : http://www.google.com/recaptcha
 .. _`random nonce`: http://en.wikipedia.org/wiki/Cryptographic_nonce
-
+.. _bcrypt : http://en.wikipedia.org/wiki/Bcrypt
+.. _Eksblowfish : http://en.wikipedia.org/wiki/Bcrypt#Algorithm
 
 .. _`rainbow tables`: http://en.wikipedia.org/wiki/Rainbow_table

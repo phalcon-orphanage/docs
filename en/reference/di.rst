@@ -1,10 +1,10 @@
 Using Dependency Injection
 **************************
-The following example is a bit lengthy, but explains why using a service container and dependency injection. To begin with, let's pretend we
-are developing a component called SomeComponent. This performs a task that is not important right now. Our component has some dependency
+The following example is a bit lengthy, but explains why using a service container and dependency injection. First, let's pretend we
+are developing a component called SomeComponent. This performs a task that is not important now. Our component has some dependency
 that is a connection to a database.
 
-In this first example, the connection is created inside the component. This approach is impractical; practically we can not change the
+In this first example, the connection is created inside the component. This approach is impractical; practically we cannot change the
 connection parameters or the type of database system because the component only works as created.
 
 .. code-block:: php
@@ -36,7 +36,8 @@ connection parameters or the type of database system because the component only 
     $some = new SomeComponent();
     $some->someDbTask();
 
-To solve this we create a setter that injects the dependency externally before use it. For now, this seems to be a good solution:
+To solve this, we create a setter that injects the dependency externally before using it. For now, this seems to be
+a good solution:
 
 .. code-block:: php
 
@@ -79,9 +80,10 @@ To solve this we create a setter that injects the dependency externally before u
 
     $some->someDbTask();
 
-Now consider that we use this component in different parts of the application and then we will need to create the connection several times before
-pass it to the component. Using some kind of global registry where we obtain the connection instance and not have to create it again and
-again could solve this:
+Now consider that we use this component in different parts of the application and
+then we will need to create the connection several times before passing it to the component.
+Using some kind of global registry where we obtain the connection instance and not have
+to create it again and again could solve this:
 
 .. code-block:: php
 
@@ -133,7 +135,7 @@ again could solve this:
 
     $some->someDbTask();
 
-Now, let's imagine that we must to implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
+Now, let's imagine that we must implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
 
 .. code-block:: php
 
@@ -221,9 +223,13 @@ Now, let's imagine that we must to implement two methods in the component, the f
     //Here, we always pass a new connection as parameter
     $some->someOtherDbTask(Registry::getConnection());
 
-So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead of creating them internally in the code makes our application more maintainable and decoupled. However to long term, this form of dependency injection have some disadvantages.
+So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead
+of creating them internally in the code makes our application more maintainable and decoupled. However, to long-term,
+this form of dependency injection have some disadvantages.
 
-For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass the dependencies or create a constructor that pass them with many arguments, additionally create dependencies before use the component, every time, makes our code not maintainable as we would like:
+For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
+the dependencies or create a constructor that pass them with many arguments, additionally create dependencies
+before using the component, every time, makes our code not maintainable as we would like:
 
 .. code-block:: php
 
@@ -247,7 +253,10 @@ For instance, if the component has many dependencies, we will need to create mul
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies, we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating the object:
+Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies,
+we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this,
+we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating
+the object:
 
 .. code-block:: php
 
@@ -275,10 +284,10 @@ Think we had to create this object in many parts of our application. If you ever
 
     }
 
-One moment, we returned back to the beginning, we are building again the dependencies inside the component! We can move on and find out a way
+One moment, we returned to the beginning, we are building again the dependencies inside the component! We can move on and find out a way
 to solve this problem every time. But it seems that time and again we fall back into bad practices.
 
-A practical and elegant way to solve these problems is to use a container for dependencies. The containers act as the global registry that
+A practical and elegant way to solve these problems are using a container for dependencies. The containers act as the global registry that
 we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity
 of our component:
 
@@ -346,19 +355,19 @@ of our component:
 
     $some->someTask();
 
-The component now simply access the service it require when it needs it, if it does not requires a service, that is not even initialized
+The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
 their behavior or any other aspect of them and that would not affect the component.
 
 Our approach
 ============
-Phalcon\\DI is a component that implements Dependency Injection and Location of services and it's itself a container for them.
+Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
 Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
 Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies using setters or
-constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the
+constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the
 required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
@@ -371,7 +380,7 @@ can request component B from the container, rather than creating a new instance 
 This way of working gives us many advantages:
 
 * We can replace a component by one created by ourselves or a third party one easily.
-* We have full control of the object initialization, allowing us to set this objects, as you need before delivery them to components.
+* We have full control of the object initialization, allowing us to set these objects, as you need before delivery them to components.
 * We can get global instances of components in a structured and unified way
 
 Services can be registered using several types of definitions:
@@ -424,17 +433,17 @@ The array syntax is also allowed to register services:
         "className" => 'Phalcon\Http\Request'
     );
 
-In the above examples, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
+In the examples given above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
 The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
 
-Each of the methods (demonstrated in the above example) used to set/register a service has advantages and disadvantages. It is up to the
+Each of the methods (demonstrated in the example given above) used to set/register a service has advantages and disadvantages. It is up to the
 developer and the particular requirements that will designate which one is used.
 
-Setting a service by a string is simple but lacks flexibility. Setting services using an array offers a lot more flexibility but makes the
-code more complicated. The lambda function is a good balance between the two but could lead to more maintenance than one would expect.
+Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
+code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
 Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string etc.) will be lazy loaded i.e. instantiated only when requested.
+in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 Simple Registration
 -------------------
@@ -442,7 +451,7 @@ As seen before, there are several ways to register services. These are we call s
 
 String
 ^^^^^^
-This type expect the name of a valid class, returning an object of the specified class, if the class is not loaded is loaded using an auto-loader.
+This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded is loaded using an auto-loader.
 This type of definition does not allow to define arguments for the class constructor or parameters:
 
 .. code-block:: php
@@ -454,9 +463,9 @@ This type of definition does not allow to define arguments for the class constru
 
 Object
 ^^^^^^
-This type expect an object, because the object does not need to be resolved because it is 
-already an object, one could say that there is no really dependency injection here, 
-however it is useful if you want to force that the returned dependency will 
+This type expects an object because the object does not need to be resolved because it is
+already an object, one could say that there is not really dependency injection here,
+but it is useful if you want to force that the returned dependency will
 always the same object/value:
 
 .. code-block:: php
@@ -468,7 +477,7 @@ always the same object/value:
 
 Closures/Anonymous functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This method offers greater freedom to build the dependency as desired, however it is difficult to
+This method offers greater freedom to build the dependency as desired, however, it is difficult to
 change some of the parameters externally without having to completely change the definition of dependency:
 
 .. code-block:: php
@@ -502,8 +511,8 @@ Some of the limitations can be overcome by passing additional variables to the c
 
 Complex Registration
 --------------------
-If is required to change the definition of a service without instantiating/resolving the service as such,
-then we need to define the services using the array syntax. Define a service using an array definition
+If it is required to change the definition of a service without instantiating/resolving the service,
+then, we need to define the services using the array syntax. Define a service using an array definition
 can be a little more verbose:
 
 .. code-block:: php
@@ -708,11 +717,11 @@ Supported parameter types include the following:
 | instance    | Represents a object that must be built dynamically       | array('type' => 'service', 'className' => 'DateTime', 'arguments' => array('now')) |
 +-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
 
-Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions, however
+Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions. However,
 these provide a more robust approach to define and inject services.
 
-Mixing different types of definitions is allowed, everyone can decide which is the most appropriate way to register the services
-in the application.
+Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
+according to the application needs.
 
 Resolving Services
 ==================
@@ -777,8 +786,8 @@ An alternative way to register services is pass "true" as third parameter of "se
         //...
     }, true);
 
-If a service isn't registered as shared and you want to be sure that a shared instance will be accesed every time the service
-is obtained from the DI, you can use the 'getShared' method:
+If a service isn't registered as shared and you want to be sure that a shared instance will be accessed every time
+the service is obtained from the DI, you can use the 'getShared' method:
 
 .. code-block:: php
 
@@ -842,8 +851,8 @@ for it.
 
 Automatic Injecting of the DI itself
 ====================================
-If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances creates by it, To do this,
-you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
+If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances creates by it,
+to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
 

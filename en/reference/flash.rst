@@ -1,7 +1,7 @@
 Flashing Messages
 =================
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. This kind of
-messages can be generated using this component
+Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
+These kind of messages can be generated using this component
 
 Adapters
 --------
@@ -82,7 +82,7 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
 As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
-of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootrstrap, classes can be configured as:
+of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootstrap, classes can be configured as:
 
 .. code-block:: php
 
@@ -109,8 +109,8 @@ Then the messages would be printed as follows:
 Implicit Flush vs. Session
 --------------------------
 Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later.
-When should you use each? That usually depends on the type of redirection you do after sending the messages. For example if you make a "forward"
-is not necessary to store the messages in session, but if you do a HTTP redirect then they need to be stored in session:
+When should you use each? That usually depends on the type of redirection you do after sending the messages. For example,
+if you make a "forward" is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 
 .. code-block:: php
 

@@ -60,7 +60,7 @@ of the bootstrap file (public/index.php):
     //Read the configuration
     $config = new Phalcon\Config\Adapter\Ini(__DIR__ . '/../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object oriented way. The configuration file
+:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
 contains the following settings:
 
 .. code-block:: ini
@@ -282,10 +282,10 @@ Note that multiple public attributes are accessed in the controller like: $this-
 These are services defined in services container from earlier. When they're accessed the first time, are injected as part
 of the controller.
 
-These services are shared, which means that we always are accessing the same instance regardless of the place
+These services are shared, which means that we are always accessing the same instance regardless of the place
 where we invoke them.
 
-For instance, here we invoke the "session" service and then we store the user identity in the "auth" variable:
+For instance, here we invoke the "session" service and then we stored the user identity in the "auth" variable:
 
 .. code-block:: php
 
@@ -298,9 +298,9 @@ For instance, here we invoke the "session" service and then we store the user id
 
 Securing the Backend
 --------------------
-The backend is a private area where only registered users have access. Therefore it is necessary to check that only
+The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
 registered users have access to these controllers. If you aren't logged in the application and you try to access,
-for example, the products controller (that is private) you'll see a screen like this:
+for example, the products controller (that is private) you will see a screen like this:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
@@ -309,7 +309,7 @@ Every time someone attempts to access any controller/action, the application ver
 has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
 Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
-:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then
+:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then,
 it is responsible for loading the appropriate controller and execute the corresponding action method.
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
@@ -441,7 +441,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
 In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also
-implemented in the Plugin. Now we going to explain step by step how we built the access control list:
+implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list:
 
 .. code-block:: php
 
@@ -517,7 +517,7 @@ Hooray!, the ACL is now complete.
 
 User Components
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through `Twitter Boostrap`_.
+All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
 upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
 
@@ -679,7 +679,7 @@ The Search Form
 ^^^^^^^^^^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
 creating a search criteria from any field. The "products" table has a relationship to the table "products_types".
-In this case we previously query the records in this table in order to facilitate the search by that field:
+In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
 .. code-block:: php
 
@@ -694,7 +694,7 @@ In this case we previously query the records in this table in order to facilitat
         $this->view->setVar("productTypes", ProductTypes::find());
     }
 
-All the "product types" are queried and passed to the view as a local variable "productTypes". Then in the view
+All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
 (app/views/index.phtml) we show a "select" tag filled with those results:
 
 .. code-block:: php
@@ -754,7 +754,7 @@ conditions intelligently based on the data types and values sent from the form:
 This method verifies which values are different from "" (empty string) and null and takes them into account to create
 the query:
 
-* If the field data type is text or similar (char, varchar, text, etc.) It use a SQL "like" operator to filter the results.
+* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
 * If the data type is not text or similar, it'll use the operator "=".
 
 Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
@@ -768,8 +768,8 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests. When accesed, this attribute injects
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service, that is independent in each controller.
+A session bag, is a special attribute in a controller that persists between requests. When accessed, this attribute injects
+a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service that is independent in each controller.
 
 Then, based on the built params we perform the query:
 
@@ -1000,6 +1000,6 @@ learn more and get more out of the framework.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
-.. _Twitter Boostrap: http://bootstrap.github.com/
+.. _Twitter Bootstrap: http://bootstrap.github.com/
 .. _sha1: http://php.net/manual/en/function.sha1.php
 .. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php

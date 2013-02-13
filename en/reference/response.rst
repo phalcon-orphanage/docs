@@ -20,7 +20,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
     //Send response to the client
     $response->send();
 
-Keep in mind that if you're using the full MVC stack there is no need to create responses manually. However if you need to return a responde
+Keep in mind that if you're using the full MVC stack there is no need to create responses manually. However, if you need to return a responde
 directly from a controller's action follow this example:
 
 .. code-block:: php
@@ -112,7 +112,7 @@ based on the routes you've currently defined in the application:
     ));
 
 Note that making a redirection doesn't disable the view component, so if there is a view asociated with the current action it
-will be executed anyways. You can disable the view from a controller by executing $this->view->disable();
+will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTP Cache
 ----------
@@ -122,12 +122,12 @@ Most modern browsers support HTTP caching and is one of the reasons why many web
 The secret are the headers sent by the application when serving a page for the first time, these headers are:
 
 * *Expires:* With this header the application can set a date in the future or the past telling the browser when the page must expire.
-* *Cache-Control:* This header allow to specify how much time a page should be considered fresh in the browser.
+* *Cache-Control:* This header allows to specify how much time a page should be considered fresh in the browser.
 * *Last-Modified:* This header tells the browser which was the last time the site was updated avoiding page re-loads
-* *ETag:* A etag is a unique identifier that must be created including the modification timestamp of the current page
+* *ETag:* An etag is a unique identifier that must be created including the modification timestamp of the current page
 
-Setting a Expiration Time
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Setting an Expiration Time
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 The expiration date is one of the most easy and effective ways to cache a page in the client (browser).
 Starting from the current date we add over time, then, this will maintain the page stored
 in the browser cache until this date expires without requesting the content to the server again:
@@ -141,7 +141,7 @@ in the browser cache until this date expires without requesting the content to t
 
     $response->setExpires($expireDate);
 
-The Response component automatically shows the date in GMT timezone in order as is expected in a Expires header.
+The Response component automatically shows the date in GMT timezone in order as is expected in an Expires header.
 
 Moreover if we set a date in the past this will tell the browser to always refresh the requested page:
 

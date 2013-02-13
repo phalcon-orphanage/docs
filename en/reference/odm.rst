@@ -223,7 +223,7 @@ If you have experience with SQL databases, you may want to check the `SQL to Mon
 Creating Updating/Records
 -------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
-associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
+associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
 
 Also the method executes associated validators and events that are defined in the model:
 
@@ -276,7 +276,7 @@ generated the message or the message type:
 
 Validation Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a
+Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
@@ -374,8 +374,8 @@ listeners that run when an event is triggered.
 	$robot->year = 1969;
 	$robot->save();
 
-In the above example the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
-objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+In the example given above the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
+objects created in our application use the same EventsManager, then we need to assign this to the Models Manager:
 
 .. code-block:: php
 
@@ -473,8 +473,8 @@ The following example shows how to use it:
 
 	}
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
+the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Explanation                                                                                                                            | Example                                                           |
@@ -537,7 +537,7 @@ Adding the validator to a model:
 
 	}
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
 
 .. code-block:: php
 

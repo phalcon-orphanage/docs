@@ -1,7 +1,7 @@
 Working with Namespaces
 =======================
 Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
-it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
+a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 Setting up the framework
 ------------------------
@@ -21,7 +21,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify it in the routes as a full class name in the controller path:
+Specify it in the routes as a separate parameter in the route's paths:
 
 .. code-block:: php
 
@@ -30,7 +30,8 @@ Specify it in the routes as a full class name in the controller path:
     $router->add(
         "/admin/users/my-profile",
         array(
-            "controller" => "Store\Admin\Users",
+            "namespace"  => "Store\Admin",
+            "controller" => "Users",
             "action"     => "profile",
         )
     );
@@ -51,7 +52,7 @@ Passing it as part of the route:
     );
 
 If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher, by doing this you don't need to specify a full class name in the router path:
+in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:
 
 .. code-block:: php
 
