@@ -8,7 +8,7 @@ interfaces, while backend components offer storage options to the class.
 When to implement cache?
 ------------------------
 Although this component is very fast, implementing it in cases that is not needed could lead to loss of performance than gain.
-We recommend you check this cases before use cache:
+We recommend you check this cases before using a cache:
 
 * You are making complex calculations that every time return the same result (changing infrequently)
 * You are using a lot of helpers and the output generated is almost always the same

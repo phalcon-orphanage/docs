@@ -380,7 +380,7 @@ can request component B from the container, rather than creating a new instance 
 This way of working gives us many advantages:
 
 * We can replace a component by one created by ourselves or a third party one easily.
-* We have full control of the object initialization, allowing us to set these objects, as you need before delivery them to components.
+* We have full control of the object initialization, allowing us to set these objects, as you need before delivering them to components.
 * We can get global instances of components in a structured and unified way
 
 Services can be registered using several types of definitions:

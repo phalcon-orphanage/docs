@@ -1018,8 +1018,8 @@ first place is acceptable.
 
 Hydration Modes
 ---------------
-As mentioned above, resultsets are collection of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified an saved again to persistance:
+As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
+representing a row in the database. These objects can be modified and saved again to persistence:
 
 .. code-block:: php
 
@@ -1245,7 +1245,7 @@ Saving a record and its related records in a has-many relation:
     $album->save();
 
 Saving the album and the artist at the same time uses a transaction so if anything goes wrong with
-saving the related records, the parent will not saved either. Messages are passed back to the user
+saving the related records, the parent will not be saved either. Messages are passed back to the user
 for information regarding any errors
 
 Validation Messages
@@ -1315,7 +1315,7 @@ The method getMessages() can be overriden in a model to replace/translate the de
 
 Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help to define business rules for a
+Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
@@ -1362,7 +1362,7 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before create a Robot!";
+            echo "This is executed before creating a Robot!";
         }
 
     }
@@ -1426,8 +1426,8 @@ this means we can create listeners that run when an event is triggered.
     $robot->year = 1969;
     $robot->save();
 
-In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-If we want all objects created in our application use the same EventsManager then we need to assign it to the Models Manager:
+In the example given above the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
+If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
 
 .. code-block:: php
 
@@ -1633,7 +1633,7 @@ The idea of creating validators is make them reusable between several models. A 
 Avoiding SQL injections
 ^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
-each value before store it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
+each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
 capability provided by PDO to automatically escape every value to be stored in the database.
 
 .. code-block:: bash
@@ -1822,7 +1822,7 @@ Another type of events are available when the data validation process finds any 
 Behaviors
 ---------
 Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides a API to implement
-behaviors in your models. Also you can use the events and callbacks as seen before to implement Behaviors with more free.
+behaviors in your models. Also you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
 A behavior must be added in the model initializer, a model can has zero or more behaviors:
 

@@ -65,7 +65,7 @@ You can set headers in the following way:
     $response->setRawHeader("HTTP/1.1 200 OK");
 
 A :doc:`Phalcon\\HTTP\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
-allows to manage headers before sent it to client:
+allows to manage headers before sending it to client:
 
 .. code-block:: php
 

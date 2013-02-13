@@ -773,13 +773,13 @@ are triggered using the type "view". Some events when returning boolean false co
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
 +======================+============================================================+=====================+
-| beforeRender         | Triggered before start the render process                  | Yes                 |
+| beforeRender         | Triggered before starting the render process               | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Triggered before render an existing view                   | Yes                 |
+| beforeRenderView     | Triggered before rendering an existing view                | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Triggered after render an existing view                    | No                  |
+| afterRenderView      | Triggered after rendering an existing view                 | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Triggered after complete the render process                | No                  |
+| afterRender          | Triggered after completing the render process              | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:
