@@ -1686,7 +1686,7 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
+To tell Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
 to delegate the database system the assignation of the values by a trigger or a default:
 
 .. code-block:: php
@@ -1821,10 +1821,10 @@ Another type of events are available when the data validation process finds any 
 
 Behaviors
 ---------
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides a API to implement
-behaviors in your models. Also you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
+behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
-A behavior must be added in the model initializer, a model can has zero or more behaviors:
+A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
 .. code-block:: php
 
@@ -1866,7 +1866,7 @@ The following built-in behaviors are provided by the framework:
 
 Timestampable
 ^^^^^^^^^^^^^
-This behavior receives an array of options, the first level key must be a event name indicating when the column must be assigned:
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 .. code-block:: php
 
@@ -1884,7 +1884,7 @@ This behavior receives an array of options, the first level key must be a event 
         ));
     }
 
-Each event can has its own options, 'field' is the name of the column that must be updated, if 'format' is an string it will be used
+Each event can have its own options, 'field' is the name of the column that must be updated, if 'format' is a string it will be used
 as format of the PHP's function date_, format can also be an anonymous function providing you the free to generate any kind timestamp:
 
 .. code-block:: php
@@ -1943,7 +1943,7 @@ This behavior can be used in the following way:
 
     }
 
-This behavior accept two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
+This behavior accepts two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
 Let's pretend the table 'users' has the following data:
 
 .. code-block:: bash
@@ -1983,10 +1983,10 @@ Note that you need to specify the deleted condition in your queries to effective
 Creating your own behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also the class Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
-The following behavior is an example, it implements the Blamable behavior which helps to use identify what user perform an operation over
-the model:
+The following behavior is an example, it implements the Blamable behavior which helps identify the user
+that is performed operations over a model:
 
 .. code-block:: php
 
@@ -2108,7 +2108,7 @@ Transactions
 ------------
 When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
 be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-is committed in the database.
+are committed to the database.
 
 Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
 all operations if something went wrong.
@@ -2152,7 +2152,7 @@ is successfully or not:
 
 Implicit Transactions
 ^^^^^^^^^^^^^^^^^^^^^
-Existing relationships can be used to store records and their related instances, these kind of operations
+Existing relationships can be used to store records and their related instances, this kind of operation
 implicitly creates a transaction to ensure that data are correctly stored:
 
 .. code-block:: php
@@ -2172,9 +2172,9 @@ implicitly creates a transaction to ensure that data are correctly stored:
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
 Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checkings and business rules are isolated from the main connection.
-This kind of transactions requires a transaction manager that globally manages each
-transaction created ensuring that it's correctly rollbacked/commited before end the request:
+virtual foreign key checking and business rules are isolated from the main connection.
+This kind of transaction requires a transaction manager that globally manages each
+transaction created ensuring that it's correctly rollbacked/commited before ending the request:
 
 .. code-block:: php
 
@@ -2292,7 +2292,7 @@ While a transaction is active, the transaction manager will always return the sa
 
 Independent Column Mapping
 --------------------------
-The ORM supports a independent column map, which allows the developer to use different column names in the model to the ones in
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
 the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
 This is a great feature when one needs to rename fields in the database without having to worry about all the queries
 in the code. A change in the column map in the model will take care of the rest. For example:
