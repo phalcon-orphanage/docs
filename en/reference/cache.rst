@@ -303,7 +303,7 @@ The available frontend adapters that are used as interfaces or input sources to 
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 | Base64  | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                    | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>` |
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_None>`     |
+| None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`     |
 +---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 Implementing your own Frontend adapters
@@ -374,9 +374,9 @@ This backend will store cached content on a MongoDB server. The available option
 
 There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
 
-.. _Memcached: http://php.net/manual/en/book.apc.php
+.. _Memcached: http://www.php.net/memcache
 .. _memcache: http://pecl.php.net/package/memcache
-.. _APC: http://php.net/manual/en/book.apc.php
+.. _APC: http://php.net/apc
 .. _APC extension: http://pecl.php.net/package/APC
 .. _MongoDb: http://mongodb.org/
 .. _Mongo: http://pecl.php.net/package/mongo
