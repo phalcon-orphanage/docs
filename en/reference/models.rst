@@ -1044,21 +1044,21 @@ returned in a resultset is called 'hydration mode':
     $robots = Robots::find();
 
     //Return every robot as an array
-    $robots->setHydrateMode(Resultset::HYDRATION_ARRAYS);
+    $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
     //Return every robot as an stdClass
-    $robots->setHydrateMode(Resultset::HYDRATION_OBJECTS);
+    $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
     //Return every robot as a Robots instance
-    $robots->setHydrateMode(Resultset::HYDRATION_RECORDS);
+    $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
@@ -1073,7 +1073,7 @@ The hydration mode can be passed as a parameter of 'find':
     use Phalcon\Mvc\Model\Resultset;
 
     $robots = Robots::find(array(
-        'hydration' => Resultset::HYDRATION_ARRAYS
+        'hydration' => Resultset::HYDRATE_ARRAYS
     ));
 
     foreach ($robots as $robot) {
@@ -1130,6 +1130,12 @@ an insecure array without worrying about possible SQL injections:
     $robot = new Robots();
     $robot->save($_POST);
 
+.. highlights::
+
+    Without precautions mass assignment could allow attackers to set any database column’s value. Only use this feature
+    if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
+    form.
+
 Create/Update with Certainty
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This
@@ -1168,6 +1174,7 @@ Always after creating a record, the identity field will be registered with the  
     <?php
 
     $robot->save();
+
     echo "The generated id is: ", $robot->id;
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
@@ -1554,6 +1561,8 @@ the value is not included in the method then the validator will fail and return 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Validates a URL format                                                                                                                                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validatiors, you can create your own validators:
 
@@ -1564,17 +1573,20 @@ In addition to the built-in validatiors, you can create your own validators:
     use Phalcon\Mvc\Model\Validator,
         Phalcon\Mvc\Model\ValidatorInterface;
 
-    class UrlValidator extends Validator implements ValidatorInterface
+    class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
         public function validate($model)
         {
             $field = $this->getOption('field');
 
+            $min = $this->getOption('min');
+            $max = $this->getOption('max');
+
             $value = $model->$field;
-            $filtered = filter_var($value, FILTER_VALIDATE_URL);
-            if (!$filtered) {
-                $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+
+            if ($min <= $value && $value <= $max) {
+                $this->appendMessage("The price doesn't have the right range of values", $field, "MaxMinValidator");
                 return false;
             }
             return true;
@@ -1593,9 +1605,11 @@ Adding the validator to a model:
 
         public function validation()
         {
-            $this->validate(new UrlValidator(
+            $this->validate(new MaxMinValidator(
                 array(
-                    "field"  => "url",
+                    "field"  => "price",
+                    "min" => 10,
+                    "max" => 100
                 )
             ));
             if ($this->validationHasFailed() == true) {
@@ -1671,7 +1685,7 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     $sth->execute();
 
-The good news is that Phalcon do this automatically for you:
+The good news is that Phalcon do this for you automatically:
 
 .. code-block:: php
 

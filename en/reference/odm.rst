@@ -220,6 +220,13 @@ The available query options are:
 
 If you have experience with SQL databases, you may want to check the `SQL to Mongo Mapping Chart`_.
 
+Aggregations
+------------
+A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
+With this option is easy perform tasks such as totaling or averaging field values:
+
+
+
 Creating Updating/Records
 -------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
@@ -709,3 +716,4 @@ obtaining the "flash" service from the DI container. By doing this, we don't hav
 .. _MongoId: http://www.php.net/manual/en/class.mongoid.php
 .. _MongoIds: http://www.php.net/manual/en/class.mongoid.php
 .. _`SQL to Mongo Mapping Chart`: http://www.php.net/manual/en/mongo.sqltomongo.php
+.. _`aggregation framework`: http://docs.mongodb.org/manual/applications/aggregation/
