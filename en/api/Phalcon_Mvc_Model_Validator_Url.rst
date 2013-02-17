@@ -1,34 +1,30 @@
-Class **Phalcon\\Mvc\\Model\\Validator\\StringLength**
-======================================================
+Class **Phalcon\\Mvc\\Model\\Validator\\Url**
+=============================================
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Validator <Phalcon_Mvc_Model_Validator>`
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
-Simply validates specified string length constraints  
+Allows to validate if a field has a url format  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\StringLength as StringLengthValidator;
+    use Phalcon\Mvc\Model\Validator\Url as UrlValidator;
     
-    class Subscriptors extends Phalcon\Mvc\Model
+    class Posts extends Phalcon\Mvc\Model
     {
     
-    public function validation()
-    {
-    	$this->validate(new StringLengthValidator(array(
-    		'field' => 'name_last',
-    		'max' => 50,
-    		'min' => 2,
-      		'messageMaximum' => 'We don\'t like really long names',
-      		'messageMinimum' => 'We want more than just their initials'
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
+      public function validation()
+      {
+          $this->validate(new UrlValidator(array(
+              'field' => 'source_url'
+          )));
+          if ($this->validationHasFailed() == true) {
+              return false;
+          }
+      }
     
     }
 

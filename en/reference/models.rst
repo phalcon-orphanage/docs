@@ -218,7 +218,7 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATION_OBJECTS                             |
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
@@ -932,90 +932,6 @@ Max/Min examples:
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-Caching Resultsets
-------------------
-Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
-the complex connection processes that PHP must do in each request to obtain data from the database. A well
-established technique to avoid the continuous access to the database is to cache resultsets that don't change
-frequently using a system with faster access (usually memory).
-
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
-request it to the Dependency Injector Container with the convention name "modelsCache".
-
-As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models.
-First you must to register it as a service in the services container:
-
-.. code-block:: php
-
-    <?php
-
-    //Set the models cache service
-    $di->set('modelsCache', function() {
-
-        //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-            "lifetime" => 86400
-        ));
-
-        //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
-
-        return $cache;
-    });
-
-You have complete control in creating and customizing the cache before being used by registering the service
-as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
-
-.. code-block:: php
-
-    <?php
-
-    // Get products without caching
-    $products = Products::find();
-
-    // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache")
-    ));
-
-    // Cache the resultset for only for 5 minutes
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
-
-    // Using a custom cache
-    $products = Products::find(array("cache" => $myCache));
-
-Caching could be also applied to resultsets generated using relationships:
-
-.. code-block:: php
-
-    <?php
-
-    // Query some post
-    $post = Post::findFirst();
-
-    // Get comments related to a post, also cache it
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key")
-    ));
-
-    // Get comments related to a post, setting lifetime
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key", "lifetime" => 3600)
-    ));
-
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
-
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
-are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
-do not change frequently could be cached but that is a decision that the developer has to make based on the
-available caching mechanism and whether the performance impact to simply retrieve that data in the
-first place is acceptable.
-
 Hydration Modes
 ---------------
 As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
@@ -1355,9 +1271,8 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
-Implementing events in the Model's class
+Implementing Events in the Model's class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
 
 .. code-block:: php
@@ -1586,7 +1501,7 @@ In addition to the built-in validatiors, you can create your own validators:
             $value = $model->$field;
 
             if ($min <= $value && $value <= $max) {
-                $this->appendMessage("The price doesn't have the right range of values", $field, "MaxMinValidator");
+                $this->appendMessage("The field doesn't have the right range of values", $field, "MaxMinValidator");
                 return false;
             }
             return true;
@@ -1752,6 +1667,12 @@ A callback also can be used to create a conditional assigment of automatic defau
             }
         }
     }
+
+.. highlights::
+
+    Never use a \\Phalcon\\Db\\RawValue to assign external data (such as user input)
+    or variable data. The value of these fields is ignored when binding parameters to the query.
+    So it could be used to attack the application injecting SQL.
 
 Deleting Records
 ----------------

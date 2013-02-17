@@ -76,6 +76,11 @@ API Indice
    Phalcon_Flash_Direct
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
+   Phalcon_Forms_Element
+   Phalcon_Forms_Element_Text
+   Phalcon_Forms_Exception
+   Phalcon_Forms_Form
+   Phalcon_Forms_Manager
    Phalcon_Http_Cookie
    Phalcon_Http_Cookie_Exception
    Phalcon_Http_Request
@@ -148,6 +153,7 @@ API Indice
    Phalcon_Mvc_Model_Validator_Regex
    Phalcon_Mvc_Model_Validator_StringLength
    Phalcon_Mvc_Model_Validator_Uniqueness
+   Phalcon_Mvc_Model_Validator_Url
    Phalcon_Mvc_Router
    Phalcon_Mvc_Router_Annotations
    Phalcon_Mvc_Router_Exception
@@ -182,6 +188,12 @@ API Indice
    Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception
+   Phalcon_Validation
+   Phalcon_Validation_Exception
+   Phalcon_Validation_Message
+   Phalcon_Validation_Validator
+   Phalcon_Validation_Validator_Identical
+   Phalcon_Validation_Validator_PresenceOf
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface

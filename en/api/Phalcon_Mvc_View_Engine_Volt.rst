@@ -41,6 +41,12 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 
 
 
+public *boolean*  **isIncluded** (*mixed* $needle, *mixed* $haystack)
+
+Checks if the needle is included in the haystack
+
+
+
 public *string*  **converEncoding** (*string* $text, *string* $from, *string* $to)
 
 Performs a string conversion

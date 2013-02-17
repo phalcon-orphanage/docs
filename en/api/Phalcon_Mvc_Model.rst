@@ -181,6 +181,23 @@ Gets the internal database connection
 
 
 
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
+
+Assigns values to a model from an array returning a new model 
+
+.. code-block:: php
+
+    <?php
+
+    $robot->assign(array(
+      'type' => 'mechanical',
+      'name' => 'Astro Boy',
+      'year' => 1952
+    ));
+
+
+
+
 public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model. 
@@ -650,6 +667,12 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 
 
 
+public  **refresh** ()
+
+
+
+
+
 public  **skipOperation** (*boolean* $skip)
 
 Skips the current operation forcing a success state
@@ -677,7 +700,7 @@ Writes an attribute value by its name
 
     <?php
 
-     $robot->writeAttribute('name', 'Rosey');
+     	$robot->writeAttribute('name', 'Rosey');
 
 
 

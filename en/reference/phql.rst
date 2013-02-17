@@ -102,7 +102,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     $query->setDI($di);
 
     // Execute the query returning a result if any
-    $robots = $query->execute();
+    $cars = $query->execute();
 
 From a controller or a view, it's easy create/execute them using a injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
@@ -112,11 +112,11 @@ From a controller or a view, it's easy create/execute them using a injected :doc
 
     //Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
-    $robots = $query->execute();
+    $cars = $query->execute();
 
     //With bound parameters
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
-    $robots = $query->execute(array(
+    $cars = $query->execute(array(
         'name' => 'Audi'
     ));
 
@@ -127,10 +127,10 @@ Or simply execute it:
     <?php
 
     //Executing a simple query
-    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars");
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
     //Executing with bound parameters
-    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
 
@@ -718,6 +718,14 @@ words using the cross-database escaping delimiters '[' and ']':
     $result = $manager->executeQuery($phql);
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+
+PHQL Lifecycle
+--------------
+Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
+The following is the life cycle of each PHQL statement executed:
+
+* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
+* The IR is converted to valid SQL according to the database system associated to the model
 
 Troubleshooting
 ---------------

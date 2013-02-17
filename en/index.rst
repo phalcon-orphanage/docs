@@ -27,6 +27,7 @@ Table of Contents
    reference/controllers
    reference/models
    reference/phql
+   reference/models-cache
    reference/odm
    reference/views
    reference/tags
