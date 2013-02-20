@@ -752,6 +752,37 @@ A database system could offer specific SQL extensions that aren't supported by P
         }
     }
 
+If Raw SQL queries are common in your application a generic method could be added to your model:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByRawSql($conditions, $params=null)
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE $conditions";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql, $params));
+        }
+    }
+
+The above findByRawSql could be used as follows:
+
+.. code-block:: php
+
+    <?php
+
+    $robots = Robots::findByRawSql('id > 0');
+
 Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:
