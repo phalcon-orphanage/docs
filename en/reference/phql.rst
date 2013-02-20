@@ -727,6 +727,31 @@ The following is the life cycle of each PHQL statement executed:
 * The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
 * The IR is converted to valid SQL according to the database system associated to the model
 
+Using Raw SQL
+-------------
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByCreateInterval()
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE id > 0";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
+        }
+    }
+
 Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:

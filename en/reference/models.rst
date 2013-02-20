@@ -1052,11 +1052,11 @@ an insecure array without worrying about possible SQL injections:
     if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
     form.
 
-Create/Update with Certainty
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be
-certain if a record is created or updated we can change save using the methods "create" or "update":
+Create/Update with Confidence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
+could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. f we want to be absolutely
+sure that a record is created or updated, we can change the save() call with create() or update():
 
 .. code-block:: php
 
@@ -1082,8 +1082,8 @@ These methods "create" and "update" also accept an array of values as parameter.
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the  value generated in the database system for it:
+can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
+Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
 .. code-block:: php
 
