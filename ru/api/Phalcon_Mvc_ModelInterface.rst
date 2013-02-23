@@ -33,19 +33,49 @@ Returns schema name where table mapped is located
 
 abstract public  **setConnectionService** (*string* $connectionService)
 
-Sets the DependencyInjection connection service
+Sets both read/write connection services
 
 
 
-abstract public *string*  **getConnectionService** ()
+abstract public  **setWriteConnectionService** (*string* $connectionService)
 
-Returns DependencyInjection connection service
+Sets the DependencyInjection connection service used to write data
 
 
 
-abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
+abstract public  **setReadConnectionService** (*string* $connectionService)
+
+Sets the DependencyInjection connection service used to read data
+
+
+
+abstract public *string*  **getReadConnectionService** ()
+
+Returns DependencyInjection connection service used to read data
+
+
+
+abstract public *string*  **getWriteConnectionService** ()
+
+Returns DependencyInjection connection service used to write data
+
+
+
+abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** ()
 
 Gets internal database connection
+
+
+
+abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** ()
+
+Gets internal database connection
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
+
+Assigns values to a model from an array
 
 
 
@@ -172,6 +202,12 @@ Deletes a model instance. Returning true on success or false otherwise.
 abstract public *int*  **getOperationMade** ()
 
 Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
+
+
+
+abstract public  **refresh** ()
+
+Refreshes the model attributes re-querying the record from the database
 
 
 

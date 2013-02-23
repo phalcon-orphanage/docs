@@ -214,6 +214,12 @@ Return an array with every resource registered in the list
 
 
 
+public *boolean*  **deleteRole** (*string* $role)
+
+Deletes a role from the ACL list
+
+
+
 protected  **_rebuildAccessList** ()
 
 Rebuild the list of access from the inherit lists

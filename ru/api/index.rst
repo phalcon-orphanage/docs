@@ -11,6 +11,7 @@ API Indice
    Phalcon_Acl_Resource
    Phalcon_Acl_Role
    Phalcon_Annotations_Adapter
+   Phalcon_Annotations_Adapter_Apc
    Phalcon_Annotations_Adapter_Files
    Phalcon_Annotations_Adapter_Memory
    Phalcon_Annotations_Annotation
@@ -29,12 +30,14 @@ API Indice
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
    Phalcon_Cache_Backend_Memcache
+   Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
+   Phalcon_Cache_Multiple
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Exception

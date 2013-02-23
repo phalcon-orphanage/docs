@@ -14,7 +14,7 @@ A router that reads routes annotations from classes/resources
      $di['router'] = function() {
     
     	//Use the annotations router
-    	$router = new \Phalcon\Mvc\Router\Annotations();
+    	$router = new \Phalcon\Mvc\Router\Annotations(false);
     
     	//This will do the same as above but only if the handled uri starts with /robots
      		$router->addResource('Robots', '/robots');
@@ -33,6 +33,12 @@ Adds a resource to the annotations handler A resource is a class that contains r
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addModuleResource** (*string* $module, *string* $handler, [*string* $prefix])
+
+Adds a resource to the annotations handler. The resource is a class that contains routing annotations The class is located in a module
+
+
+
 public  **handle** ([*string* $uri])
 
 Produce the routing parameters from the rewrite information
@@ -45,9 +51,27 @@ Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
+public  **processActionAnnotation** (*string* $module, *string* $namespace, *string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
 
 Checks for annotations in the public methods of the controller
+
+
+
+public  **setControllerSuffix** (*string* $controllerSuffix)
+
+Change the controller class suffix
+
+
+
+public  **setActionSuffix** (*string* $actionSuffix)
+
+Change the action class suffix
+
+
+
+public *array*  **getResources** ()
+
+Return the registered resources
 
 
 
@@ -179,6 +203,12 @@ Adds a route to the router that only match if the HTTP method is HEAD
 public  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
 
 Mounts a group of routes in the router
+
+
+
+public  **notFound** (*unknown* $paths) inherited from Phalcon\\Mvc\\Router
+
+A set of paths used to
 
 
 

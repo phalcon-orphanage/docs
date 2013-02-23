@@ -157,9 +157,27 @@ Sets the DependencyInjection connection service name
 
 
 
-public *string*  **getConnectionService** ()
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setReadConnectionService** (*string* $connectionService)
 
-Returns the DependencyInjection connection service name related to the model
+Sets the DependencyInjection connection service name used to read data
+
+
+
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setWriteConnectionService** (*string* $connectionService)
+
+Sets the DependencyInjection connection service name used to write data
+
+
+
+public *string*  **getReadConnectionService** ()
+
+Returns the DependencyInjection connection service name used to read data related the model
+
+
+
+public *string*  **getWriteConnectionService** ()
+
+Returns the DependencyInjection connection service name used to write data related to the model
 
 
 
@@ -175,15 +193,21 @@ Returns one of the DIRTY_STATE_* constants telling if the record exists in the d
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** ()
 
-Gets the internal database connection
+Gets the connection used to read data for the model
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** ()
+
+Gets the connection used to write data to the model
 
 
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
 
-Assigns values to a model from an array returning a new model 
+Assigns values to a model from an array 
 
 .. code-block:: php
 
@@ -198,7 +222,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -669,7 +693,7 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 
 public  **refresh** ()
 
-
+Refreshes the model attributes re-querying the record from the database
 
 
 
@@ -881,6 +905,42 @@ Setups a behavior in a model
     
     }
 
+
+
+
+protected  **keepSnapshots** ()
+
+Sets if the model should keep the original record snapshot in memory
+
+
+
+public  **setSnapshotData** (*array* $data, [*array* $columnMap])
+
+Sets the record's snapshot data
+
+
+
+public *boolean*  **hasSnapshotData** ()
+
+Checks if the object has internal snapshot data
+
+
+
+public *array*  **getSnapshotData** ()
+
+Returns the internal snapshot data
+
+
+
+public  **hasChanged** ([*boolean* $fieldName])
+
+Check if an specific attribute has changed This only works if the model is keeping data snapshots
+
+
+
+public *array*  **getChangedFields** ()
+
+Returns a list of changed values
 
 
 
