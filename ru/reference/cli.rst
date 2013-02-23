@@ -1,11 +1,11 @@
-Command Line Applications
+Консольные приложения
 =========================
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI приложения выполняются в командной строке. Они часто используются для работы cron'a, скриптов с долгим временем выполнения, командных утилит и т.п.
 
-Tasks
+Задачи
 -----
-Tasks are similar to controllers, on them can be implemented
+Задачи похожи на контроллеры, в них может быть реализовано
 
 .. code-block:: php
 

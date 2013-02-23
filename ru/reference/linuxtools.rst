@@ -1,34 +1,33 @@
-Phalcon Developer Tools on Linux
+Инструменты разработчика Phalcon Developer Tools в Linux
 ================================
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+Этот шаг поможет вам установить Phalcon Developer Tools в Linux.
 
-Prerequisites
+Требования
 -------------
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>`
-section for instructions.
+Для запуска инструментов разработчика необходимо установленное расширение Phalcon PHP. Если оно еще не установлено, прочитайте инструкции в разделе :doc:`Установка <install>`.
 
-Download
+Скачать
 --------
-You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
+Вы можете скачать кроссплатформенный пакет инструментов разработчиков из раздела Download_. Также вы можете его слить ( git clone ) на Github_.
 
-Open a terminal and type the commands below:
+Введите в терминале следующие команды:
 
 .. figure:: ../_static/img/linux-1.png
-   :align: center
+:align: center
 
-Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
+Затем в каталоге инструментов выполните ". ./phalcon.sh", (не забудьте точку в начале):
 
 .. figure:: ../_static/img/linux-2.png
-   :align: center
+:align: center
 
-Congratulations you now have Phalcon tools installed!
+Поздравляем инструменты разработчика Phalcon установлены!
 
-Related Guides
+Краткие руководства
 ^^^^^^^^^^^^^^
 
-* :doc:`Using Developer Tools <tools>`
-* :doc:`Installation on Windows <wintools>`
-* :doc:`Installation on Mac <mactools>`
+* :doc:`Использование инструментов разработчика <tools>`
+* :doc:`Установка на Windows <wintools>`
+* :doc:`Установка на Mac <mactools>`
 
 .. _Download: http://phalconphp.com/download
 .. _Github: https://github.com/phalcon/phalcon-devtools
