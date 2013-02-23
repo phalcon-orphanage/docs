@@ -7,13 +7,13 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+-------------------------------------------------------+
-| Adapter      | Description                                           |
-+==============+=======================================================+
-| NativeArray  | Use a PHP array as source data                        |
-+--------------+-------------------------------------------------------+
-| Model        | Use a Phalcon\\Model\\Resultset object as source data |
-+--------------+-------------------------------------------------------+
++--------------+------------------------------------------------------------+
+| Adapter      | Description                                                |
++==============+============================================================+
+| NativeArray  | Use a PHP array as source data                             |
++--------------+------------------------------------------------------------+
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data |
++--------------+------------------------------------------------------------+
 
 Using Paginators
 ----------------
@@ -33,16 +33,19 @@ In the example below, the paginator will use as its source data the result of a 
     $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $robots,
-        "limit"=> 10,
-        "page" => $numberPage
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
+        array(
+            "data" => $robots,
+            "limit"=> 10,
+            "page" => $currentPage
+        )
     );
 
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page object that contains the paginated data. It can be used for generating the pagination:
+Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page
+object that contains the paginated data. It can be used for generating the pagination:
 
 .. code-block:: html+php
 
@@ -52,7 +55,7 @@ Variable $currentPage controls the page to be displayed. The $paginator->getPagi
             <th>Name</th>
             <th>Type</th>
         </tr>
-        <?php foreach($page->items as $item) { ?>
+        <?php foreach ($page->items as $item) { ?>
         <tr>
             <td><?php echo $item->id; ?></td>
             <td><?php echo $item->name; ?></td>
@@ -88,3 +91,35 @@ The $page object has the following attributes:
 | last    | The last page in the set of records                    |
 +---------+--------------------------------------------------------+
 
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+
+.. code-block:: php
+
+    <?php
+
+    class MyPaginator implements Phalcon\Paginator\AdapterInterface  {
+
+        /**
+         * Adapter constructor
+         *
+         * @param array $config
+         */
+        public function __construct($config);
+
+        /**
+         * Set the current page number
+         *
+         * @param int $page
+         */
+        public function setCurrentPage($page);
+
+        /**
+         * Returns a slice of the resultset to show in the pagination
+         *
+         * @return stdClass
+         */
+        public function getPaginate();
+
+    }

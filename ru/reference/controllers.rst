@@ -1,9 +1,12 @@
 
 Using Controllers
 =================
-The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
+the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each part like this:
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+part like this:
 
 +------------------------+----------------+
 | **Phalcon Directory**  | blog           |
@@ -17,7 +20,8 @@ For instance, when you access a URL like this: http://localhost/blog/posts/show/
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
 
-In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
+In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
+could be loaded using :doc:`autoloaders <loader>`, so you're free to organize your controllers as you need.
 
 Controllers must have the suffix "Controller" while actions the suffix "Action". A sample of a controller is as follows:
 
@@ -40,11 +44,59 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
 
     }
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to the application services.
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
+optionally extend :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`. By doing this, the controller can have easy access to
+the application services.
+
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function showAction($year=2012, $postTitle='some default title')
+        {
+
+        }
+
+    }
+
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function showAction()
+        {
+            $year = $this->dispatcher->getParam('year');
+            $postTitle = $this->dispatcher->getParam('postTitle');
+        }
+
+    }
+
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
+action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
+execution to a different controller/action.
 
 .. code-block:: php
 
@@ -63,7 +115,10 @@ The dispatch loop will be executed within the Dispatcher until there are no acti
             $this->flash->error("You don't have permission to access this area");
 
             // Forward flow to another action
-            $this->dispatcher->forward(array("controllers" => "users", "action" => "signin"));
+            $this->dispatcher->forward(array(
+                "controller" => "users",
+                "action" => "signin"
+            ));
         }
 
     }
@@ -89,11 +144,14 @@ If users don't have permissions to access a certain action then will be forwarde
 
     }
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC which is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
+your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
+the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
 Initializing Controllers
 ------------------------
-:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any action is executed on a controller. The use of the "__construct" method is not recommended.
+:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
+action is executed on a controller. The use of the "__construct" method is not recommended.
 
 .. code-block:: php
 
@@ -122,7 +180,8 @@ Initializing Controllers
 
 Injecting Services
 ------------------
-If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it have easy access to the service container in application. For example, if we have registered a service like this:
+If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
+container in application. For example, if we have registered a service like this:
 
 .. code-block:: php
 
@@ -130,11 +189,11 @@ If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Contr
 
     $di = new Phalcon\DI();
 
-    $di->set('storage', function(){
+    $di->set('storage', function() {
         return new Storage('/some/directory');
-    });
+    }, true);
 
-Then, we can access to that service by this way:
+Then, we can access to that service in several ways:
 
 .. code-block:: php
 
@@ -152,8 +211,14 @@ Then, we can access to that service by this way:
             //Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service
+            //Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
+
+            //Another way to access the service using the magic getter
+            $this->getDi()->getStorage()->save('/some/file');
+
+            //Using the array-syntax
+            $this->di['storage']->save('/some/file');
         }
 
     }
@@ -162,7 +227,9 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 Request and Response
 --------------------
-Assuming that the registered services are provided by the framework. We explain how to interact with the HTTP environment. The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response" contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
+The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
+contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
 
 .. code-block:: php
 
@@ -178,7 +245,6 @@ Assuming that the registered services are provided by the framework. We explain 
 
         public function saveAction()
         {
-
             // Check if request has made with POST
             if ($this->request->isPost() == true) {
                 // Access POST data
@@ -189,7 +255,8 @@ Assuming that the registered services are provided by the framework. We explain 
 
     }
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an afterDispatch event - it can be useful to access the response directly:
+The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
+an afterDispatch event - it can be useful to access the response directly:
 
 .. code-block:: php
 
@@ -211,11 +278,12 @@ The response object is not usually used directly, but is built up before the exe
 
     }
 
-Learn more about the HTTP environment in their dedicated articles `request <request.html>`_ and `response <response.html>`_.
+Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
 
 Session Data
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` from any controller to encapsulate data that need to be persistent.
+Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+from any controller to encapsulate data that need to be persistent.
 
 .. code-block:: php
 
@@ -238,7 +306,8 @@ Sessions help us maintain persistent data between requests. You could access a :
 
 Using Services as Controllers
 -----------------------------
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, a controller can be easily replaced by any other class registered with its name:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
+any other class registered with its name can easily replace a controller:
 
 .. code-block:: php
 
@@ -252,9 +321,15 @@ Services may act as controllers, controllers classes are always requested from t
 
 Creating a Base Controller
 --------------------------
-Some application features like access control lists, translation, cache, and template engines are often common to many controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have access to the common functionality.
+Some application features like access control lists, translation, cache, and template engines are often common to many
+controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
+controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
+the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
+access to the common functionality.
 
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder, e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be loaded using any autoloader:
+This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
+e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
+loaded using any autoloader:
 
 .. code-block:: php
 
@@ -289,6 +364,42 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     class UsersController extends ControllerBase
     {
+
+    }
+
+Events in Controllers
+---------------------
+Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
+you to implement hook points before/after the actions are executed:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function beforeExecuteRoute($dispatcher)
+        {
+            // This is executed before every found action
+
+            if ($dispatcher->getActionName() == 'save') {
+
+                $this->flash->error("You don't have permission to save posts");
+
+                $this->dispatcher->forward(array(
+                    'controller' => 'home',
+                    'action' => 'index'
+                ));
+
+                return false;
+            }
+        }
+
+        public function afterExecuteRoute($dispatcher)
+        {
+            // Executed after every found action
+        }
 
     }
 

@@ -3,9 +3,6 @@ Class **Phalcon\\Acl\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Class for exceptions thrown by Phalcon\\Acl
-
-
 Methods
 ---------
 
@@ -15,7 +12,7 @@ Clone the exception
 
 
 
-public  **__construct** (*string* $message, *int* $code, *Exception* $previous) inherited from Exception
+public  **__construct** ([*string* $message], [*int* $code], [*Exception* $previous]) inherited from Exception
 
 Exception constructor
 

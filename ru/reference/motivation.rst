@@ -3,7 +3,10 @@ Our motivation
 
 There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application down and subsequently impacts the end user experience.
+Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and
+ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and
+hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application
+down and subsequently impacts the end user experience.
 
 The Question
 ------------
@@ -12,7 +15,9 @@ Why can't we have a framework with all of its advantages but with none or very f
 
 This is why Phalcon was born!
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unnecessary validations, compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance from Phalcon. 
+During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations (big or small).
+Through understanding of the Zend Engine, we managed to remove unnecessary validations, compacted code, performed optimizations and generated
+low-level solutions so as to achieve maximum performance from Phalcon.
 
 Why?
 ----
@@ -53,5 +58,5 @@ How does Phalcon work?
 
 Conclusion
 ----------
-Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way to develop applications without be worrying about performance. Enjoy! 
+Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way to develop applications without be worrying about performance. Enjoy!
 

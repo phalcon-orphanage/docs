@@ -1,6 +1,7 @@
 Multi-lingual Support
 =====================
-The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component,
+display content in different languages, based on the user's chosen language supported by the application.
 
 Adapters
 --------
@@ -14,7 +15,8 @@ This component makes use of adapters to read translation messages from different
 
 Component Usage
 ---------------
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
+Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
+to organize your translation strings. A simple structure could be:
 
 .. code-block:: bash
 
@@ -23,7 +25,8 @@ Translation strings are stored in files. The structure of these files could vary
     app/messages/fr.php
     app/messages/zh.php
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in
+different files, where keys remain the same and values contain the translated strings depending on each language.
 
 .. code-block:: php
 
@@ -49,9 +52,11 @@ Each file contains an array of the translations in a key/value manner. For each 
         "song"    => "La chanson est %song%"
     );
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
+automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
-A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACCEPT_LANGUAGE'] contents, or if you wish, access it directly by calling $this->request->getBestLanguage() from an action/controller:
+A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACCEPT_LANGUAGE'] contents, or if you wish, access it
+directly by calling $this->request->getBestLanguage() from an action/controller:
 
 .. code-block:: php
 
@@ -89,7 +94,8 @@ A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACC
 
     }
 
-The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it, we can translate strings in that layer:
+The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it,
+we can translate strings in that layer:
 
 .. code-block:: html+php
 
@@ -97,7 +103,9 @@ The _getTranslation method is available for all actions that require translation
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
 
-The "_" function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+The "_" function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
+calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters
+are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 .. code-block:: html+php
 
@@ -105,5 +113,53 @@ The "_" function is returning the translated string based on the index passed. S
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement this by using a :doc:`Router <routing>`.
+Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
+this by using a :doc:`Router <routing>`.
 
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+
+.. code-block:: php
+
+    <?php
+
+    class MyTranslateAdapter implements Phalcon\Translate\AdapterInterface
+    {
+
+        /**
+         * Adapter constructor
+         *
+         * @param array $data
+         */
+        public function __construct($options);
+
+        /**
+         * Returns the translation string of the given key
+         *
+         * @param   string $translateKey
+         * @param   array $placeholders
+         * @return  string
+         */
+        public function _($translateKey, $placeholders=null);
+
+        /**
+         * Returns the translation related to the given key
+         *
+         * @param   string $index
+         * @param   array $placeholders
+         * @return  string
+         */
+        public function query($index, $placeholders=null);
+
+        /**
+         * Check whether is defined a translation key in the internal array
+         *
+         * @param   string $index
+         * @return  bool
+         */
+        public function exists($index);
+
+    }
+
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_

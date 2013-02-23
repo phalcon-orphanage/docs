@@ -1,7 +1,7 @@
 Class **Phalcon\\Version**
 ==========================
 
-This version allows to get version of the framework
+This class allows to get the installed version of the framework
 
 
 Methods
@@ -15,13 +15,27 @@ Area where the version number is set. The format is as follows: ABBCCDE A - Majo
 
 public static *string*  **get** ()
 
-Returns the active version (string)
+Returns the active version (string) 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Version::get();
+
 
 
 
 public static *int*  **getId** ()
 
-Returns the numeric active version
+Returns the numeric active version 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Version::getId();
+
 
 
 

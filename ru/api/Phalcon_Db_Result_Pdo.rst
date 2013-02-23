@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Result\\Pdo**
 ==================================
 
-Encapsulates the resultset internals 
+Encapsulates the resultset internals  
 
 .. code-block:: php
 
@@ -18,7 +18,7 @@ Encapsulates the resultset internals
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>` $connection, *PDOStatement* $result, *string* $sqlStatement, *array* $placeholders)
+public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
 Phalcon\\Db\\Result\\Pdo constructor
 
@@ -30,7 +30,24 @@ Allows to executes the statement again. Some database systems don't support scro
 
 
 
-public *boolean*  **fetchArray** ()
+public *mixed*  **fetch** ()
+
+Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
+
+.. code-block:: php
+
+    <?php
+
+    $result = $connection->query("SELECT * FROM robots ORDER BY name");
+    $result->setFetchMode(Phalcon\Db::FETCH_OBJ);
+    while($robot = $result->fetch()){
+    	echo $robot->name;
+    }
+
+
+
+
+public *mixed*  **fetchArray** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -85,14 +102,14 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->dataSeek(2); // Move to third row on result
-    $row = $result->fetchArray(); // Fetch third row
+    $row = $result->fetch(); // Fetch third row
 
 
 
 
 public  **setFetchMode** (*int* $fetchMode)
 
-Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetchArray 
+Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch() 
 
 .. code-block:: php
 
@@ -106,11 +123,14 @@ Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetchArray
     
     //Return associative array together with integer indexes
     $result->setFetchMode(Phalcon\Db::FETCH_BOTH);
+    
+    //Return an object
+    $result->setFetchMode(Phalcon\Db::FETCH_OBJ);
 
 
 
 
-public *PDOStatement*  **getInternalResult** ()
+public *\PDOStatement*  **getInternalResult** ()
 
 Gets the internal PDO result object
 

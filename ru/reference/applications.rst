@@ -1,6 +1,9 @@
 MVC Applications
 ================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
+operations required in the background, instantiating every component needed and integrating it with the
+project, to allow the MVC pattern to operate as desired.
 
 Single or Multi Module Applications
 -----------------------------------
@@ -8,7 +11,8 @@ With this component you can run various types of MVC structures:
 
 Single Module
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
+Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
+An application like this would have the following file structure:
 
 .. code-block:: php
 
@@ -128,7 +132,9 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    class Module
+    use Phalcon\Mvc\ModuleDefinitionInterface;
+
+    class Module implements ModuleDefinitionInterface
     {
 
         /**
@@ -208,7 +214,6 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         $router->add(
             "/products/:action",
             array(
-                'module'     => 'frontend',
                 'controller' => 'products',
                 'action'     => 1,
             )
@@ -218,33 +223,71 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     });
 
-    // Register the installed modules
-    $this->registerModules(
-        array(
-            'frontend' => array(
-                'className' => 'Multiple\Frontend\Module',
-                'path'      => '../apps/frontend/Module.php',
-            ),
-            'backend'  => array(
-                'className' => 'Multiple\Backend\Module',
-                'path'      => '../apps/backend/Module.php',
-            )
-        )
-    );
-
     try {
+
+        //Create an application
         $application = new \Phalcon\Mvc\Application();
         $application->setDI($di);
+
+        // Register the installed modules
+        $application->registerModules(
+            array(
+                'frontend' => array(
+                    'className' => 'Multiple\Frontend\Module',
+                    'path'      => '../apps/frontend/Module.php',
+                ),
+                'backend'  => array(
+                    'className' => 'Multiple\Backend\Module',
+                    'path'      => '../apps/backend/Module.php',
+                )
+            )
+        );
+
+        //Handle the request
         echo $application->handle()->getContent();
+
     } catch(Phalcon\Exception $e){
         echo $e->getMessage();
     }
 
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class that offers functions to set the module itself up. Each module class definition must implement two methods: registerAutoloaders() and registerServices().
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
+module:
+
+.. code-block:: php
+
+    <?php
+
+    //Creating a view component
+    $view = new \Phalcon\Mvc\View();
+
+    // Register the installed modules
+    $application->registerModules(
+        array(
+            'frontend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            },
+            'backend' => function($di) use ($view) {
+                $di->setShared('view', function() use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
+                    return $view;
+                });
+            }
+        )
+    );
+
+When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
+necessary that every matched route returns a valid module. Each registered module has an associated class
+offering functions to set the module itself up. Each module class definition must implement two
+methods: registerAutoloaders() and registerServices(), they will be called by
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
 
 Understanding the default behavior
 ----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`, you may recognize the following bootstrap file:
+If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
+you may recognize the following bootstrap file:
 
 .. code-block:: php
 
@@ -281,13 +324,13 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     <?php
 
-    // Request the services from the DI container
-    $router = $di->getShared('router');
+    // Request the services from the services container
+    $router = $di->get('router');
     $router->handle();
 
     $view = $di->getShared('view');
 
-    $dispatcher = $di->getShared('dispatcher');
+    $dispatcher = $di->get('dispatcher');
 
     // Pass the proccessed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
@@ -310,7 +353,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Finish the view
     $view->finish();
 
-    $response = $di->getShared('response');
+    $response = $di->get('response');
 
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
@@ -321,11 +364,14 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-Although the above is a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+Although the above is a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
+it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
+should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 Application Events
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>` (if it is present). Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
+(if it is present). Events are triggered using the type "application". The following events are supported:
 
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
@@ -345,13 +391,18 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-        $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new Phalcon\Events\Manager();
 
-        $application->setEventsManager($eventsManager);
+    $application->setEventsManager($eventsManager);
 
-        $eventsManager->attach(
-            "application",
-            function($event, $application) {
-                // ...
-            }
-        );
+    $eventsManager->attach(
+        "application",
+        function($event, $application) {
+            // ...
+        }
+    );
+
+External Resources
+------------------
+
+* `MVC examples on Github <https://github.com/phalcon/mvc>`_

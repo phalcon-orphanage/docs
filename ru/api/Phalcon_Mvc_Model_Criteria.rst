@@ -1,30 +1,27 @@
 Class **Phalcon\\Mvc\\Model\\Criteria**
 =======================================
 
+*implements* :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
 This class allows to build the array parameter required by Phalcon\\Mvc\\Model::find and Phalcon\\Mvc\\Model::findFirst, using an object-oriented interfase
 
 
 Methods
 ---------
 
-public  **__construct** ()
-
-...
-
-
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public  **setModelName** (*string* $modelName)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **setModelName** (*string* $modelName)
 
 Set a model on which the query will be executed
 
@@ -48,6 +45,18 @@ Adds the conditions parameter to the criteria
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an AND operator
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an OR operator
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **conditions** (*string* $conditions)
 
 Adds the conditions parameter to the criteria
@@ -60,19 +69,19 @@ Adds the order-by parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **limit** (*unknown* $limit)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **limit** (*int* $limit, [*int* $offset])
 
 Adds the limit parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **forUpdate** (*unknown* $forUpdate)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **forUpdate** ([*boolean* $forUpdate])
 
 Adds the "for_update" parameter to the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **sharedLock** (*unknown* $sharedLock)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **sharedLock** ([*boolean* $sharedLock])
 
 Adds the "shared_lock" parameter to the criteria
 
@@ -108,13 +117,13 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector, *string* $modelName, *array* $data)
+public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **execute** ()
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
 
 Executes a find using the parameters built with the criteria
 

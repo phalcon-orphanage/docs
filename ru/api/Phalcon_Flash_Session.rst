@@ -3,19 +3,21 @@ Class **Phalcon\\Flash\\Session**
 
 *extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
+*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
 Temporarily stores the messages in session, then messages can be printed in the next request
 
 
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
 
@@ -39,37 +41,37 @@ Adds a message to the session flasher
 
 
 
-public *array*  **getMessages** (*string* $type, *boolean* $remove)
+public *array*  **getMessages** ([*string* $type], [*boolean* $remove])
 
 Returns the messages in the session flasher
 
 
 
-public  **output** (*boolean* $remove)
+public  **output** ([*boolean* $remove])
 
 Prints the messages in the session flasher
 
 
 
-public  **__construct** (*array* $cssClasses) inherited from Phalcon\\Flash
+public  **__construct** ([*array* $cssClasses]) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
 Set the if the output must be implictly flushed to the output or returned as string
 
 
 
-public  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
 
 Set the if the output must be implictly formatted with HTML
 
 
 
-public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 
@@ -129,7 +131,14 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
 
-Outputs a message formatting it with HTML
+Outputs a message formatting it with HTML 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->outputMessage('error', $message);
+
 
 
 

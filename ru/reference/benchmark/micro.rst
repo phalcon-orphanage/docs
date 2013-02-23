@@ -20,8 +20,8 @@ These were the measurements we record to identify the overall performance of eac
 Pariticipant Frameworks
 -----------------------
 
-* Slim
-* Silex
+* Slim_
+* Silex_
 
 Results
 -------
@@ -282,10 +282,9 @@ The first graph shows how many requests per second each framework was able to ac
 
 Conclusion
 ----------
-
 The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
-
-
+.. _Slim: http://slimframework.com/
+.. _Silex: http://silex.sensiolabs.org/
