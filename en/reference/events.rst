@@ -7,7 +7,7 @@ points allow the developer to obtain status information, manipulate data or chan
 Usage Example
 -------------
 In the following example, we use the EventsManager to listen for events produced in a MySQL connection managed by :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-First of all, we need a listener object to do this. We created a class whose methods are the events we want to listen:
+First, we need a listener object to do this. We created a class whose methods are the events we want to listen:
 
 .. code-block:: php
 
@@ -153,7 +153,7 @@ In a similar manner we can register an lambda function to perform the task inste
 
 Creating components that trigger Events
 ---------------------------------------
-You can create components in your application that trigger events to a EventsManager. As a consequence, there may exist listeners
+You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners
 that react to these events when generated. In the following example we're creating a component called "MyComponent".
 This component is EventsManager aware; when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
 
@@ -187,8 +187,8 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     }
 
-Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us to
-identify events that are generated from certain component. You can even generate events outside of the component with
+Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us
+identify events that are generated from certain component. You can even generate events outside the component with
 the same name. Now let's create a listener to this component:
 
 .. code-block:: php
@@ -276,7 +276,7 @@ If a listener it is only interested in listening a specific type of event you ca
 Event Propagation/Cancelation
 -----------------------------
 Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
-The listeners are notified in the order they were registered in the EventsManager. Some events are cancellable, indicating that
+The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
 these may be stopped preventing other listeners are notified about the event:
 
 .. code-block:: php
@@ -296,7 +296,7 @@ these may be stopped preventing other listeners are notified about the event:
     });
 
 By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
-by passing "false" in the four parameter of fire:
+by passing "false" in the fourth parameter of fire:
 
 .. code-block:: php
 
@@ -306,8 +306,10 @@ by passing "false" in the four parameter of fire:
 
 Listener Priorities
 -------------------
-When attaching listeners you can set an specifical priority. With this feature you can attach listeners indicating the order
+When attaching listeners you can set a specifical priority. With this feature you can attach listeners indicating the order
 in which they must be called:
+
+.. code-block:: php
 
     <?php
 

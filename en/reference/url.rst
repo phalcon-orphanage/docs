@@ -8,8 +8,8 @@ Setting a base URI
 ------------------
 Dependending of which directory of your document root your application is installed, it may have a base uri or not.
 
-For example, If your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
-baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root then your baseUri is /.
+For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
+baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
 Execute the following code to know the base uri detected by Phalcon:
 
 .. code-block:: php
@@ -20,7 +20,7 @@ Execute the following code to know the base uri detected by Phalcon:
     echo $url->getBaseUri();
 
 By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application
-is recommended to set up it manually:
+is recommended setting up it manually:
 
 .. code-block:: php
 
@@ -30,7 +30,7 @@ is recommended to set up it manually:
 
     $url->setBaseUri('/invo/');
 
-Usually, this component must be registered in the Dependency Injector container, so you can setup it on it:
+Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
 
 .. code-block:: php
 
@@ -44,7 +44,7 @@ Usually, this component must be registered in the Dependency Injector container,
 
 Generating URIs
 ---------------
-If you are using the :doc:`Router <routing>` with its default behavior. Your application is able the match routes based on the
+If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the
 following pattern: /:controller/:action/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other
 pattern defined in the router) passing a string to the method "get":
 
@@ -52,7 +52,7 @@ pattern defined in the router) passing a string to the method "get":
 
     <?php echo $url->get("products/save") ?>
 
-Note that isn't necessary to prepend the base uri. If you have named routes you can easily change it creating it dinamically.
+Note that isn't necessary to prepend the base uri. If you have named routes you can easily change it creating it dynamically.
 For Example if you have the following route:
 
 .. code-block:: php
@@ -108,7 +108,7 @@ You can also use $_SERVER["REQUEST_URI"]:
     //Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php/');
 
-In this case, it's neccesary to manually handle the required URI in the Router:
+In this case, it's necessary to manually handle the required URI in the Router:
 
 .. code-block:: php
 

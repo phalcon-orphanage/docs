@@ -1,9 +1,9 @@
 Request Environment
 ===================
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
-files, variables etc. A web based application needs to parse that information so as to provide the correct
+files, variables, etc. A web based application needs to parse that information so as to provide the correct
 response back to the requester. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` encapsulates the
-information of the request, allowing you to access it in an object oriented way.
+information of the request, allowing you to access it in an object-oriented way.
 
 .. code-block:: php
 
@@ -126,8 +126,8 @@ only the information related to each file uploaded with the request.
 
 Working with Headers
 --------------------
-As mentioned above, request headers contain useful information that allow us to send the proper response back to t
-he user. The following examples show usages of that information:
+As mentioned above, request headers contain useful information that allow us to send the proper response back to
+the user. The following examples show usages of that information:
 
 .. code-block:: php
 

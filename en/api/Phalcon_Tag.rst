@@ -85,6 +85,23 @@ Assigns default values to generated tags by helpers
 
 
 
+public static  **setDefaults** (*array* $values)
+
+Assigns default values to generated tags by helpers 
+
+.. code-block:: php
+
+    <?php
+
+     //Assigning "peter" to "name" component
+     Phalcon\Tag::setDefaults(array("name" => "peter"));
+    
+     //Later in the view
+     echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
+
+
+
+
 public static  **displayTo** (*string* $id, *string* $value)
 
 Alias of Phalcon\\Tag::setDefault
@@ -196,6 +213,19 @@ Builds a HTML input[type="radio"] tag
     <?php
 
      echo Phalcon\Tag::radioField(array("name", "size" => 30))
+
+
+
+
+public static *string*  **imageInput** (*array* $parameters)
+
+Builds a HTML input[type="image"] tag 
+
+.. code-block:: php
+
+    <?php
+
+     echo Phalcon\Tag::imageInput(array("src" => "/img/button.png"));
 
 
 

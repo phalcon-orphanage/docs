@@ -7,6 +7,30 @@ Phalcon\\Logger\\AdapterInterface initializer
 Methods
 ---------
 
+abstract public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
+
+Sets the message formatter
+
+
+
+abstract public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
+
+Returns the internal formatter
+
+
+
+abstract public  **setLogLevel** (*int* $level)
+
+Filters the logs sent to the handlers to be greater or equals than a specific level
+
+
+
+abstract public *int*  **getLogLevel** ()
+
+Returns the current log level
+
+
+
 abstract public  **log** (*string* $message, [*int* $type])
 
 Sends/Writes messages to the file log

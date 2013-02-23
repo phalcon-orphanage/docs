@@ -1,13 +1,13 @@
 Phalcon Query Language (PHQL)
 =============================
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high level, object oriented SQL dialect that allows to write queries using a
+Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
 standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
 To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
 provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-The parser first checks the syntax of the passed PHQL statement, then builds an intermediate representation of the statement and
+The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
 finally it converts it to the respective SQL dialect of the target RDBMS.
 
 In PHQL, we've implemented a set of features to make your access to databases more secure:
@@ -16,7 +16,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL only allows one SQL statement to be executed per call preventing injections
 * PHQL ignores all SQL comments which are often used in SQL injections
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high level abstraction allowing you handling models as tables and class attributes as fields
+* PHQL implements a high-level abstraction allowing you to handle models as tables and class attributes as fields
 
 Usage Example
 -------------
@@ -102,7 +102,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     $query->setDI($di);
 
     // Execute the query returning a result if any
-    $robots = $query->execute();
+    $cars = $query->execute();
 
 From a controller or a view, it's easy create/execute them using a injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
@@ -112,11 +112,11 @@ From a controller or a view, it's easy create/execute them using a injected :doc
 
     //Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
-    $robots = $query->execute();
+    $cars = $query->execute();
 
     //With bound parameters
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
-    $robots = $query->execute(array(
+    $cars = $query->execute(array(
         'name' => 'Audi'
     ));
 
@@ -127,10 +127,10 @@ Or simply execute it:
     <?php
 
     //Executing a simple query
-    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars");
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
     //Executing with bound parameters
-    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
 
@@ -170,9 +170,9 @@ Most of the SQL standard is supported by PHQL even nonstandard directives as LIM
        . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
     $query = $manager->createQuery($phql);
 
-Results Types
-^^^^^^^^^^^^^
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object then the object returned will be
+Result Types
+^^^^^^^^^^^^
+Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
 a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
 
 .. code-block:: php
@@ -209,9 +209,9 @@ other types of queries that do not return complete objects, for example:
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table therefore those cannot be considered an entire object. In this case also returns a type
-resulset :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is an standard
-object that only contains the two columns that were requested.
+We are only requesting some fields in the table therefore those cannot be considered an entire object. In this case, also returns a
+resulset type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
+object that only contain the two columns that were requested.
 
 These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -360,7 +360,7 @@ The following examples show how to use aggregations in PHQL:
 
 Conditions
 ^^^^^^^^^^
-Conditions allow us to filter the set of records we want to query. The WHERE clause allows to to that:
+Conditions allow us to filter the set of records we want to query. The WHERE clause allows to do that:
 
 .. code-block:: php
 
@@ -439,7 +439,7 @@ With PHQL is possible insert data using the familiar INSERT statement:
 
 Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined
 in the model are executed as if we created individual objects manually. Let's add a business rule
-o the model cars. A car cannot cost less than $ 10,000:
+on the model cars. A car cannot cost less than $ 10,000:
 
 .. code-block:: php
 
@@ -461,7 +461,7 @@ o the model cars. A car cannot cost less than $ 10,000:
 
     }
 
-If we made the following INSERT in the the models Cars, the operation will not be successful
+If we made the following INSERT in the models Cars, the operation will not be successful
 because the price does not meet the business rule that we implemented:
 
 .. code-block:: php
@@ -510,7 +510,7 @@ will be executed for each row.
 
 An UPDATE statement performs the update in two phases:
 
-* First, if the UPDATE has a WHERE clause it retrieves all the objects that match that criteria,
+* First, if the UPDATE has a WHERE clause it retrieves all the objects that match these criteria,
 * Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
 This way of operation allows that events, virtual foreign keys and validations take part of the updating process.
@@ -574,7 +574,7 @@ DELETE operations are also executed in two phases like UPDATEs.
 
 Creating queries using the Query Builder
 ----------------------------------------
-A builder is available to create PHQL queries without the need to write PHQL statements that is also IDE friendly:
+A builder is available to create PHQL queries without the need to write PHQL statements, this is also IDE friendly:
 
 .. code-block:: php
 
@@ -704,10 +704,12 @@ More examples of the builder:
 
 Escaping Reserved Words
 -----------------------
-PHQL has a few number of reserved words, if you want to use any of them as attributes or models names, you need to escape those
+PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
 words using the cross-database escaping delimiters '[' and ']':
 
 .. code-block:: php
+
+    <?php
 
     $phql = "SELECT * FROM [Update]";
     $result = $manager->executeQuery($phql);
@@ -717,11 +719,76 @@ words using the cross-database escaping delimiters '[' and ']':
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
+PHQL Lifecycle
+--------------
+Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
+The following is the life cycle of each PHQL statement executed:
+
+* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
+* The IR is converted to valid SQL according to the database system associated to the model
+
+Using Raw SQL
+-------------
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByCreateInterval()
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE id > 0";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
+        }
+    }
+
+If Raw SQL queries are common in your application a generic method could be added to your model:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByRawSql($conditions, $params=null)
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE $conditions";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql, $params));
+        }
+    }
+
+The above findByRawSql could be used as follows:
+
+.. code-block:: php
+
+    <?php
+
+    $robots = Robots::findByRawSql('id > 0');
+
 Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:
 
-* Classes are case sensitive, if a class is not defined as it was defined this could lead to unexpected behaviors
-* The correct charset must be defined in the connection to bind parameters with success
+* Classes are case-sensitive, if a class is not defined as it was defined this could lead to an unexpected behavior.
+* The correct charset must be defined in the connection to bind parameters with success.
+* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

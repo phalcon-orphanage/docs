@@ -7,12 +7,6 @@ Phalcon\\Cache\\BackendInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
-
-Phalcon\\Cache\\Backend constructor
-
-
-
 abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
 
 Starts a cache. The $keyname allows to identify the created fragment

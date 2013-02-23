@@ -220,10 +220,17 @@ The available query options are:
 
 If you have experience with SQL databases, you may want to check the `SQL to Mongo Mapping Chart`_.
 
+Aggregations
+------------
+A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
+With this option is easy perform tasks such as totaling or averaging field values:
+
+
+
 Creating Updating/Records
 -------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
-associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
+associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
 
 Also the method executes associated validators and events that are defined in the model:
 
@@ -276,7 +283,7 @@ generated the message or the message type:
 
 Validation Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert or update. They help to define business rules for a
+Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
@@ -320,12 +327,12 @@ To make a model to react to an event, we must to implement a method with the sam
 
 		public function beforeValidationOnCreate()
 		{
-			echo "This is executed before create a Robot!";
+			echo "This is executed before creating a Robot!";
 		}
 
 	}
 
-Events can be useful to assign values before perform a operation, for example:
+Events can be useful to assign values before performing a operation, for example:
 
 .. code-block:: php
 
@@ -374,8 +381,8 @@ listeners that run when an event is triggered.
 	$robot->year = 1969;
 	$robot->save();
 
-In the above example the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
-objects created in our application use the same EventsManager then we need to assign this to the Models Manager:
+In the example given above the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
+objects created in our application use the same EventsManager, then we need to assign this to the Models Manager:
 
 .. code-block:: php
 
@@ -473,8 +480,8 @@ The following example shows how to use it:
 
 	}
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
+the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Explanation                                                                                                                            | Example                                                           |
@@ -537,7 +544,7 @@ Adding the validator to a model:
 
 	}
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
 
 .. code-block:: php
 
@@ -703,9 +710,10 @@ You may be required to access the application services within a model, the follo
 	}
 
 The "notSave" event is triggered whenever a "creating" or "updating" action fails. We're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each saving.
 
 .. _MongoDB: http://www.mongodb.org/
 .. _MongoId: http://www.php.net/manual/en/class.mongoid.php
 .. _MongoIds: http://www.php.net/manual/en/class.mongoid.php
 .. _`SQL to Mongo Mapping Chart`: http://www.php.net/manual/en/mongo.sqltomongo.php
+.. _`aggregation framework`: http://docs.mongodb.org/manual/applications/aggregation/

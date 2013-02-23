@@ -61,7 +61,7 @@ Which produces the following:
 .. figure:: ../_static/img/escape.jpeg
     :align: center
 
-Every text was escaped according to its context. Use the appropiate context it's important to avoid XSS attacks.
+Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
 
 Escaping HTML
 -------------
@@ -85,8 +85,8 @@ Which produces:
 
 Escaping HTML Attributes
 ------------------------
-Escape HTML attributes is different than escape a full HTML content. The escape works by changing every non-alphanumeric
-character to the form . This kind of escaping it's intented to most simpler attributes excepting complex ones like href or url:
+Escape HTML attributes is different from escape a full HTML content. The escape works by changing every non-alphanumeric
+character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
 
 .. code-block:: html
 

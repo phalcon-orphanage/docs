@@ -342,7 +342,7 @@ Implementing that method will remove the exception:
     }
 
 If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored
-in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object oriented code.
+in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
 Creating a Model
 ^^^^^^^^^^^^^^^^

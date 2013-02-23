@@ -91,7 +91,7 @@ Returns all the parameters defined in the criteria
 
 
 
-abstract public static  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
+abstract public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 

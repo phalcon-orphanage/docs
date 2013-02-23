@@ -12,7 +12,7 @@ Stores model meta-data in the APC cache. Data will erased if the web server is r
     <?php
 
     $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
-    	'suffix' => 'my-app-id',
+    	'prefix' => 'my-app-id',
     	'lifetime' => 86400
     ));
 

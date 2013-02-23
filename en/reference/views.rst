@@ -398,7 +398,7 @@ Or disable temporarily in some part of the application:
 
         public function findAction()
         {
-            $view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+            $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         }
 
     }
@@ -600,8 +600,8 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 Creating your own Template Engine Adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to use an external template engine
-it's create an adapter for it.
+There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine
+is create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
 Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
@@ -773,13 +773,13 @@ are triggered using the type "view". Some events when returning boolean false co
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
 +======================+============================================================+=====================+
-| beforeRender         | Triggered before start the render process                  | Yes                 |
+| beforeRender         | Triggered before starting the render process               | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Triggered before render an existing view                   | Yes                 |
+| beforeRenderView     | Triggered before rendering an existing view                | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Triggered after render an existing view                    | No                  |
+| afterRenderView      | Triggered after rendering an existing view                 | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Triggered after complete the render process                | No                  |
+| afterRender          | Triggered after completing the render process              | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:

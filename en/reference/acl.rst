@@ -144,9 +144,9 @@ are triggered using the type "acl". Some events when returning boolean false cou
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
 +======================+============================================================+=====================+
-| beforeCheckAccess    | Triggered before check if a role/resource has access       | Yes                 |
+| beforeCheckAccess    | Triggered before checking if a role/resource has access    | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterCheckAccess     | Triggered after check if a role/resource has access        | No                  |
+| afterCheckAccess     | Triggered after checking if a role/resource has access     | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:

@@ -280,7 +280,7 @@ Database Events
 | beforeDisconnect | Before close a temporal database connection               | No                  |
 +------------------+-----------------------------------------------------------+---------------------+
 
-Bind a EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
+Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
 
 .. code-block:: php
 

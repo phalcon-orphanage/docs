@@ -37,7 +37,7 @@ you can define routes and map them to controllers/actions that you require. A ro
     $router->handle();
 
 The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
+In this case, if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
 will be executed. Currently, the router does not execute the controller and action, it only collects this
 information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
 that this is controller/action it should to execute.
@@ -81,7 +81,7 @@ is the same as the `PCRE regular expressions`_. Note that, it is not necessary t
 delimiters. All routes patterns are case-insensitive.
 
 The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
-parts are placeholders or subpatterns delimited by parentheses (round brackets). In the above example, the
+parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
 first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
 
 These placeholders help writing regular expressions that are more readable for developers and easier
@@ -335,7 +335,7 @@ this is especially useful when creating RESTful applications:
 
 Using convertions
 ^^^^^^^^^^^^^^^^^
-Convertions allow to freely transform the route's parameters before pass them to the dispatcher, the following examples show how to use them:
+Convertions allow to freely transform the route's parameters before passing them to the dispatcher, the following examples show how to use them:
 
 .. code-block:: php
 
@@ -392,7 +392,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
 Matching Routes
 ---------------
-Now we must a URI to Router in order that it check which is the defined route that matches the given URI.
+A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
 By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
 module. A couple of rewrite rules that work very well with Phalcon are:
 
@@ -609,7 +609,7 @@ those paths can be automatically filled by the component:
 Dealing with extra/trailing slashes
 -----------------------------------
 Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
-a not-found status in the dispatcher. You can setup the router to automatically remove the slashes from the end of handled route:
+a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
 
 .. code-block:: php
 
@@ -680,7 +680,7 @@ Since this component has no dependencies, you can create a file as shown below t
 Annotations Router
 ------------------
 This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
-you can write the routes directly in the controllers instead of writing them in the service registration:
+you can write the routes directly in the controllers instead of adding them in the service registration:
 
 .. code-block:: php
 
@@ -695,7 +695,7 @@ you can write the routes directly in the controllers instead of writing them in 
         $router->addResource('Products', '/api/products');
 
         return $router;
-    });
+    };
 
 The annotations can be defined in the following way:
 

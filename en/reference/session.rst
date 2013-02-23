@@ -21,7 +21,7 @@ Thanks to the service container, we can ensure that the session is accessed only
 
 Storing/Retrieving data in Session
 ----------------------------------
-From a controller, a view or any other component thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
+From a controller, a view or any other component that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
 and store items and retrieve them in the following way:
 
 .. code-block:: php

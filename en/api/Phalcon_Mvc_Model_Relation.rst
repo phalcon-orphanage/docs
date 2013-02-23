@@ -84,8 +84,9 @@ Returns the 'through' relation if any
 
 
 
-public  **isReusable** ()
+public *boolean*  **isReusable** ()
 
-...
+Check if records in belongs-to/has-many are implicitly cached during the current request
+
 
 

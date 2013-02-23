@@ -12,7 +12,7 @@ Stores model meta-data in session. Data will erased when the session finishes. M
     <?php
 
      $metaData = new Phalcon\Mvc\Model\Metadata\Session(array(
-        'suffix' => 'my-app-id'
+        'prefix' => 'my-app-id'
      ));
 
 

@@ -52,6 +52,18 @@ Opens the internal file handler after unserialization
 
 
 
+public  **setLogLevel** (*int* $level) inherited from Phalcon\\Logger\\Adapter
+
+Filters the logs sent to the handlers to be less or equals than a specific level
+
+
+
+public  **getLogLevel** () inherited from Phalcon\\Logger\\Adapter
+
+Returns the current log level
+
+
+
 public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter) inherited from Phalcon\\Logger\\Adapter
 
 Sets the message formatter
