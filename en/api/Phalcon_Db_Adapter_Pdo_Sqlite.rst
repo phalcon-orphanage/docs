@@ -36,7 +36,7 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
     <?php
 
-     print_r($connection->describeColumns("posts")); ?>
+     	print_r($connection->describeColumns("posts"));
 
 
 

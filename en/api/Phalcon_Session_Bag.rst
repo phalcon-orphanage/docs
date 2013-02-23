@@ -133,3 +133,29 @@ Magic isset to check whether a property is defined in the bag
 
 
 
+public *boolean*  **remove** (*string* $property)
+
+Removes a property from the internal bag 
+
+.. code-block:: php
+
+    <?php
+
+     $user->remove('name'));
+
+
+
+
+public *boolean*  **__unset** (*string* $property)
+
+Magic unset to remove items using the array syntax 
+
+.. code-block:: php
+
+    <?php
+
+     unset($user['name']);
+
+
+
+

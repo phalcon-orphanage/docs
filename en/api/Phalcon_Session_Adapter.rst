@@ -48,37 +48,79 @@ Gets a session variable from an application context
 
 public  **set** (*string* $index, *string* $value)
 
-Sets a session variable in an application context <comment> $session->set('auth', 'yes'); </comment>
+Sets a session variable in an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->set('auth', 'yes');
+
 
 
 
 public  **has** (*string* $index)
 
-Check whether a session variable is set in an application context <comment> var_dump($session->has('auth')); </comment>
+Check whether a session variable is set in an application context 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->has('auth'));
+
 
 
 
 public  **remove** (*string* $index)
 
-Removes a session variable from an application context <comment> $session->remove('auth'); </comment>
+Removes a session variable from an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->remove('auth');
+
 
 
 
 public *string*  **getId** ()
 
-Returns active session id <comment> echo $session->getId(); </comment>
+Returns active session id 
+
+.. code-block:: php
+
+    <?php
+
+    echo $session->getId();
+
 
 
 
 public *boolean*  **isStarted** ()
 
-Check whether the session has been started <comment> var_dump($session->isStarted()); </comment>
+Check whether the session has been started 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->isStarted());
+
 
 
 
 public *boolean*  **destroy** ()
 
-Destroys the active session <comment> var_dump($session->destroy()); </comment>
+Destroys the active session 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->destroy());
+
 
 
 
