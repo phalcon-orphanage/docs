@@ -1,0 +1,14 @@
+Class **Phalcon\\Db**
+=====================
+
+Constants
+---------
+
+*integer* **FETCH_ASSOC**
+
+*integer* **FETCH_BOTH**
+
+*integer* **FETCH_NUM**
+
+*integer* **FETCH_OBJ**
+

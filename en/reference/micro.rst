@@ -1,7 +1,8 @@
 Micro Applications
 ==================
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a
-PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of
+code to create a PHP application. Micro applications are suitable to implement small applications, APIs and
+prototypes in a practical way.
 
 .. code-block:: php
 
@@ -27,8 +28,10 @@ Creating a Micro Application
 
 Defining routes
 ---------------
-After instantiating the object, you will need to add some routes. Routing is internally managed by :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`.
-Routes must always start with /. A HTTP method constraint to a route can be added, so as to instruct the route to match only the requests matched to the HTTP methods. The following example shows how to define a route for the method GET:
+After instantiating the object, you will need to add some routes. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` manages routing internally.
+Routes must always start with /. A HTTP method constraint is optionally required when defining routes, so as to instruct
+the router to match only if the request also matches the HTTP methods. The following example shows how to define
+a route for the method GET:
 
 .. code-block:: php
 
@@ -38,7 +41,9 @@ Routes must always start with /. A HTTP method constraint to a route can be adde
         echo "<h1>Hello! $name</h1>";
     });
 
-The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed directly to the route handler. Handlers are executed when a route is matched. A handler could be any callable item in the PHP userland. The following example shows how to defined different types of handlers:
+The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
+directly to the route handler (the anonymous function). Handlers are executed when a route is matched. A handler could be
+any callable item in the PHP userland. The following example shows how to define different types of handlers:
 
 .. code-block:: php
 
@@ -56,14 +61,15 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
 
     // With a method in an object
     $myController = new MyController();
-    $app->get('/say/hello/{name}', array($this, "myController"));
+    $app->get('/say/hello/{name}', array($myController, "someAction"));
 
     //Anonymous function
     $app->get('/say/hello/{name}', function ($name) {
         echo "<h1>Hello! $name</h1>";
     });
 
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods) which the route is constrained for:
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods)
+which the route is constrained for:
 
 .. code-block:: php
 
@@ -84,13 +90,17 @@ The "get" method indicates that the associated HTTP method is GET. The route /sa
     //Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
 
+    //Matches if the HTTP method is PATCH
+    $app->patch('/api/products/update/{id}', "info_product");
+
     //Matches if the HTTP method is GET or POST
     $app->map('/repos/store/refs')->via(array('GET', 'POST'));
 
 
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^
-Defining parameters in routes as very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
+Defining parameters in routes is very easy as demonstrated above. The parameter name has to be enclosed in brackets. Parameter
+formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
 
 .. code-block:: php
 
@@ -104,7 +114,8 @@ Defining parameters in routes as very easy as demonstrated above. The parameter 
 
 Starting Route
 ^^^^^^^^^^^^^^
-Normally, the starting route in an application will be the / route, and it will more frequent than not be accessed by the method GET. This scenario is coded as follows:
+Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
+This scenario is coded as follows:
 
 .. code-block:: php
 
@@ -129,7 +140,8 @@ The following rules can be used together with Apache to rewrite the URis:
 
 Working with Responses
 ----------------------
-You are free to produce any kind of responses in a handler: directly make an output, use a template engine, include a view, return a json, etc.:
+You are free to produce any kind of responses in a handler: directly make an output, use a template engine, include a view,
+return a json, etc.:
 
 .. code-block:: php
 
@@ -150,7 +162,8 @@ You are free to produce any kind of responses in a handler: directly make an out
         echo json_encode(array("some", "important", "data"));
     });
 
-In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the response:
+In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the
+response:
 
 .. code-block:: php
 
@@ -185,7 +198,8 @@ Redirections could be performed to forward the execution flow to another route:
 
 Generating URLs for Routes
 --------------------------
-:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route, by this way the "url" service can produce the corresponding URL:
+:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
+by this way the "url" service can produce the corresponding URL:
 
 .. code-block:: php
 
@@ -199,21 +213,21 @@ Generating URLs for Routes
     })->setName('show-post');
 
     //produce a url somewhere
-    $app->get('/', function() use ($app){
+    $app->get('/', function() use ($app) {
 
-        echo $app->url->get(array(
+        echo '<a href="', $app->url->get(array(
             'for' => 'show-post',
             'title' => 'php-is-a-great-framework',
             'year' => 2012
-        ));
+        )), '">Show the post</a>';
 
     });
 
 
 Interacting with the Dependency Injector
 ----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly, additionally you can create outside of the application a container to
-manipulate its services:
+In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
+can create outside of the application a container to manipulate its services:
 
 .. code-block:: php
 
@@ -238,10 +252,35 @@ manipulate its services:
         $app->flash->success('Yes!, the contact was made!');
     });
 
+The array-syntax is allowed to easily set/get services in the internal services container:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Setup the database service
+    $app['db'] = function() {
+        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "root",
+            "password" => "secret",
+            "dbname" => "test_db"
+        ));
+    };
+
+    $app->get('/blog', function () use ($app) {
+        $news = $app['db']->query('SELECT * FROM news');
+        foreach ($news as $new) {
+            echo $new->title;
+        }
+    });
 
 Not-Found Handler
 -----------------
-When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler. An example of that behavior is below:
+When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
+An example of that behavior is below:
 
 .. code-block:: php
 
@@ -263,7 +302,7 @@ Models in Micro Applications
     $loader = new \Phalcon\Loader();
 
     $loader->registerDirs(array(
-        __DIR__.'/models/'
+        __DIR__ . '/models/'
     ))->register();
 
     $app = new \Phalcon\Mvc\Micro();
@@ -280,12 +319,13 @@ Models in Micro Applications
 
 Micro Application Events
 ------------------------
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present). Events are triggered using the type "micro". The following events are supported:
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
+Events are triggered using the type "micro". The following events are supported:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
 +=====================+============================================================================================================================+======================+
-| beforeHandleRoute   | The main method is just called, at this point the application don't know if there is some matched route                    | Yes                  |
+| beforeHandleRoute   | The main method is just called, at this point the application doesn't know if there is some matched route                  | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
@@ -310,8 +350,12 @@ In the following example, we explain how to control the application security usi
 
         if ($event->getType() == 'beforeExecuteRoute') {
             if ($app->session->get('auth') == false) {
+
                 $app->flashSession->error("The user isn't authenticated");
                 $app->response->redirect("/");
+
+                //Return (false) stop the operation
+                return false;
             }
         }
 
@@ -322,3 +366,95 @@ In the following example, we explain how to control the application security usi
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
 
+Middleware events
+-----------------
+In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Executed before every route executed
+    $app->before(function() use ($app) {
+        if ($app['session']->get('auth') == false) {
+
+            $app['flashSession']->error("The user isn't authenticated");
+            $app['response']->redirect("/error");
+
+            //Return false stops the normal execution
+            return false;
+        }
+    });
+
+    $app->after(function() use ($app) {
+        //This is executed after the route is executed
+    });
+
+    $app->finish(function() use ($app) {
+        //This is executed when is the request has been served
+    });
+
+You can call the methods several times to add more events of the same type. The following table explains the events:
+
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
++=====================+============================================================================================================================+======================+
+| before              | Before execute the handler. It can be used to control the access to the application                                        | Yes                  |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| after               | Executed after the handler is executed. It can be used to prepare the response                                             | No                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+| finish              | Executed after send the response. It can be used to perform clean-up                                                       | No                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+
+Returning Responses
+-------------------
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    //Return a response
+    $app->get('/welcome/index', function() {
+
+        $response = new Phalcon\Http\Response();
+
+        $response->setStatusCode(401, "Unauthorized");
+
+        $response->setContent("Access is not authorized");
+
+        return $response;
+    });
+
+Rendering Views
+---------------
+:doc:`Phalcon\\Mvc\\View <views>` can be used to render views, the following example shows how to do that:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app['view'] = function() {
+        $view = new \Phalcon\Mvc\View();
+        $view->setViewsDir('app/views/');
+        return $view;
+    };
+
+    //Return a rendered view
+    $app->get('/products/show', function() use ($app) {
+
+        // Render app/views/products/show.phtml passing some variables
+        echo $app['view']->getRender('products', 'show', array(
+            'id' => 100,
+            'name' => 'Artichoke'
+        ));
+
+    });
+
+:doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.

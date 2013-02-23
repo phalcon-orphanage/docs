@@ -1,7 +1,9 @@
 Class **Phalcon\\Http\\Request**
 ================================
 
-Encapsulates request information for easy and secure access from application controllers.   The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.   
+*implements* :doc:`Phalcon\\Http\\RequestInterface <Phalcon_Http_RequestInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
 
 .. code-block:: php
 
@@ -19,21 +21,38 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public *mixed*  **getPost** (*string* $name, *string|array* $filters)
+public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets variable from $_POST superglobal applying filters if needed 
+Gets a variable from the $_REQUEST superglobal applying filters if needed 
+
+.. code-block:: php
+
+    <?php
+
+    //Returns value from $_REQUEST["user_email"] without sanitizing
+    $userEmail = $request->get("user_email");
+    
+    //Returns value from $_REQUEST["user_email"] with sanitizing
+    $userEmail = $request->get("user_email", "email");
+
+
+
+
+public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
+
+Gets a variable from the $_POST superglobal applying filters if needed 
 
 .. code-block:: php
 
@@ -48,7 +67,7 @@ Gets variable from $_POST superglobal applying filters if needed
 
 
 
-public *mixed*  **getQuery** (*string* $name, *string|array* $filters)
+public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed 
 
@@ -61,6 +80,9 @@ Gets variable from $_GET superglobal applying filters if needed
     
     //Returns value from $_GET["id"] with sanitizing
     $id = $request->getQuery("id", "int");
+    
+    //Returns value from $_GET["id"] with a default value
+    $id = $request->getQuery("id", null, 150);
 
 
 
@@ -68,6 +90,12 @@ Gets variable from $_GET superglobal applying filters if needed
 public *mixed*  **getServer** (*string* $name)
 
 Gets variable from $_SERVER superglobal
+
+
+
+public *boolean*  **has** (*string* $name)
+
+Checks whether $_SERVER superglobal has certain index
 
 
 
@@ -103,7 +131,7 @@ Gets HTTP schema (http/https)
 
 public *boolean*  **isAjax** ()
 
-Checks whether request has been made using ajax
+Checks whether request has been made using ajax. Checks if $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest'
 
 
 
@@ -121,7 +149,7 @@ Checks whether request has been made using any secure layer
 
 public *string*  **getRawBody** ()
 
-Gets HTTP raws request body
+Gets HTTP raw request body
 
 
 
@@ -143,9 +171,9 @@ Gets information about schema, host and port used by the request
 
 
 
-public *string*  **getClientAddress** ()
+public *string*  **getClientAddress** ([*boolean* $trustForwardedHeader])
 
-Gets most possibly client IPv4 Address. This methods search in $_SERVER['HTTP_X_FORWARDED_FOR'] and $_SERVER['REMOTE_ADDR']
+Gets most possible client IPv4 Address. This method search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
 
 
@@ -161,7 +189,7 @@ Gets HTTP user agent used to made the request
 
 
 
-public  **isMethod** (*string|array* $methods)
+public *boolean*  **isMethod** (*string|array* $methods)
 
 Check if HTTP method match any of the passed methods
 
@@ -182,6 +210,12 @@ Checks whether HTTP method is GET. if $_SERVER['REQUEST_METHOD']=='GET'
 public *boolean*  **isPut** ()
 
 Checks whether HTTP method is PUT. if $_SERVER['REQUEST_METHOD']=='PUT'
+
+
+
+public *boolean*  **isPatch** ()
+
+Checks whether HTTP method is PATCH. if $_SERVER['REQUEST_METHOD']=='PATCH'
 
 
 

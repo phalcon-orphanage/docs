@@ -3,7 +3,9 @@ Class **Phalcon\\CLI\\Dispatcher**
 
 *extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it. 
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
+
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.  
 
 .. code-block:: php
 
@@ -22,6 +24,21 @@ Dispatching is the process of taking the command-line arguments, extracting the 
     $handle = $dispatcher->dispatch();
 
 
+
+Constants
+---------
+
+*integer* **EXCEPTION_NO_DI**
+
+*integer* **EXCEPTION_CYCLIC_ROUTING**
+
+*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+
+*integer* **EXCEPTION_INVALID_HANDLER**
+
+*integer* **EXCEPTION_INVALID_PARAMS**
+
+*integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
 ---------
@@ -70,28 +87,29 @@ Returns the active task in the dispatcher
 
 public  **__construct** () inherited from Phalcon\\Dispatcher
 
-...
+Phalcon\\Dispatcher constructor
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\\Dispatcher
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** () inherited from Phalcon\\Dispatcher
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Dispatcher
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Dispatcher
 
 Returns the internal event manager
 
@@ -103,9 +121,27 @@ Sets the default action suffix
 
 
 
+public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+
+Sets a namespace to be prepended to the handler name
+
+
+
+public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+
+Gets a namespace to be prepended to the current handler name
+
+
+
 public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
+
+
+
+public *string*  **getDefaultNamespace** () inherited from Phalcon\\Dispatcher
+
+Returns the default namespace
 
 
 
@@ -123,7 +159,7 @@ Sets the action name to be dispatched
 
 public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
 
-Gets last dispatched action name
+Gets the lastest dispatched action name
 
 
 
@@ -145,15 +181,27 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
 
 
+public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+
+Returns the current method to be/executed in the dispatcher
+
+
+
 public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
 
-Checks if the dispatch loop is finished or have more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+
+
+
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+
+Sets the latest returned value by an action manually
 
 
 

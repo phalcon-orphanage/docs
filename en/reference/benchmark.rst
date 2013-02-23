@@ -1,15 +1,21 @@
 Framework Benchmarks
 ====================
 
-In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance became one of the top priorities alongside functionality. This is yet another way in which improving web performance will have a positive impact on a website.
+In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
+able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
+became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
+have a positive impact on a website.
 
-The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
+The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
+are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
 
-We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations or comments please `write us`_. `Check out source at Github`_
+We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
+or comments please `write us`_. `Check out source at Github`_
 
 What was the test environment?
 ------------------------------
-APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible to avoid potentially additional overheads.
+APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
+to avoid potentially additional overheads.
 
 The testing hardware environment is as follows:
 
@@ -57,8 +63,6 @@ ChangeLog
 
 .. versionchanged:: 1.4
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
-
-   benchmark/hello-world
 
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 .. _write us: http://phalcon.uservoice.com/

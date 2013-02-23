@@ -3,7 +3,9 @@ Class **Phalcon\\Mvc\\View**
 
 *extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
-Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping. 
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`
+
+Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.  
 
 .. code-block:: php
 
@@ -41,7 +43,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*array* $options)
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View constructor
 
@@ -59,6 +61,44 @@ Gets views directory
 
 
 
+public  **setLayoutsDir** (*string* $layoutsDir)
+
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+     $view->setLayoutsDir('../common/layouts/');
+
+
+
+
+public *string*  **getLayoutsDir** ()
+
+Gets the current layouts sub-directory
+
+
+
+public  **setPartialsDir** (*string* $partialsDir)
+
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
+
+.. code-block:: php
+
+    <?php
+
+     $view->setPartialsDir('../common/partials/');
+
+
+
+
+public *string*  **getPartialsDir** ()
+
+Gets the current partials sub-directory
+
+
+
 public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash 
@@ -67,7 +107,7 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
     <?php
 
-     $view->setBasePath(__DIR__.'/');
+     	$view->setBasePath(__DIR__.'/');
 
 
 
@@ -80,13 +120,27 @@ Sets the render level for the view
 
     <?php
 
-     //Render the view related to the controller only
-     $this->view->setRenderLevel(Phalcon\Mvc\View::LEVEL_VIEW);
+     	//Render the view related to the controller only
+     	$this->view->setRenderLevel(View::LEVEL_VIEW);
 
 
 
 
-public  **setMainView** (*unknown* $viewPath)
+public  **disableLevel** (*int|array* $level)
+
+Disables an specific level of rendering 
+
+.. code-block:: php
+
+    <?php
+
+     //Render all levels except ACTION level
+     $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
+
+
+
+
+public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
 
@@ -94,9 +148,34 @@ Sets default view name. Must be a file without extension in the views directory
 
     <?php
 
-     //Renders as main view views-dir/inicio.phtml
-     $this->view->setMainView('inicio');
+     	//Renders as main view views-dir/inicio.phtml
+     	$this->view->setMainView('inicio');
 
+
+
+
+public *string*  **getMainView** ()
+
+Returns the name of the main view
+
+
+
+public  **setLayout** (*string* $layout)
+
+Change the layout to be used instead of using the name of the latest controller name 
+
+.. code-block:: php
+
+    <?php
+
+     	$this->view->setLayout('main');
+
+
+
+
+public *string*  **getLayout** ()
+
+Returns the name of the main view
 
 
 
@@ -126,13 +205,46 @@ Resets any template before layouts
 
 public  **setParamToView** (*string* $key, *mixed* $value)
 
-Adds parameters to views (alias of setVar)
+Adds parameters to views (alias of setVar) 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setParamToView('products', $products);
+
+
+
+
+public  **setVars** (*array* $params)
+
+Set all the render params 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setVars(array('products' => $products));
+
 
 
 
 public  **setVar** (*string* $key, *mixed* $value)
 
-Adds parameters to views
+Set a single view parameter 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->setVar('products', $products);
+
+
+
+
+public *mixed*  **getVar** (*string* $key)
+
+Returns a parameter previously set in the view
 
 
 
@@ -188,13 +300,14 @@ Register templating engines
 
     $this->view->registerEngines(array(
       ".phtml" => "Phalcon\Mvc\View\Engine\Php",
-      ".mhtml" => "MyMustacheEngine"
+      ".volt" => "Phalcon\Mvc\View\Engine\Volt",
+      ".mhtml" => "MyCustomEngine"
     ));
 
 
 
 
-public  **render** (*string* $controllerName, *string* $actionName, *array* $params)
+public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data 
 
@@ -212,7 +325,7 @@ Executes render process from dispatching data
 
 public  **pick** (*string* $renderView)
 
-Choose a view different to render than last-controller/last-action 
+Choose a different view to render instead of last-controller/last-action 
 
 .. code-block:: php
 
@@ -242,8 +355,21 @@ Renders a partial view
 
     <?php
 
-     //Show a partial inside another view
-     $this->partial('shared/footer');
+     	//Show a partial inside another view
+     	$this->partial('shared/footer');
+
+
+
+
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params])
+
+Perform the automatic rendering returning the output as a string 
+
+.. code-block:: php
+
+    <?php
+
+     	$template = $this->view->getRender('products', 'show', array('products' => $products));
 
 
 
@@ -254,19 +380,25 @@ Finishes the render process by stopping the output buffering
 
 
 
-protected :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **_createCache** ()
+protected :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **_createCache** ()
 
 Create a Phalcon\\Cache based on the internal cache options
 
 
 
-public :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **getCache** ()
+public *boolean*  **isCaching** ()
+
+Check if the component is currently caching the output content
+
+
+
+public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
 
 Returns the cache instance used to cache
 
 
 
-public  **cache** (*boolean|array* $options)
+public  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level
 
@@ -299,37 +431,69 @@ Returns the path of the view that is currently rendered
 
 public  **disable** ()
 
-Disable view. No show any view or template
+Disables the auto-rendering process
 
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **enable** ()
+
+Enables the auto-rendering process
+
+
+
+public  **reset** ()
+
+Resets the view component to its factory default values
+
+
+
+public  **__set** (*string* $key, *mixed* $value)
+
+Magic method to pass variables to the views 
+
+.. code-block:: php
+
+    <?php
+
+    $this->view->products = $products;
+
+
+
+
+public *mixed*  **__get** (*string* $key)
+
+Magic method to retrieve a variable passed to the view 
+
+.. code-block:: php
+
+    <?php
+
+    echo $this->view->products;
+
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\Manager <Phalcon_Events_Manager>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal event manager
-
-
-
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
-
-Magic method __get
 
 
 

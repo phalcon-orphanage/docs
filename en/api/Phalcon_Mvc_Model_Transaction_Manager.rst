@@ -1,7 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Manager**
 ===================================================
 
-A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them. This class manages the objects that compose a transaction. A trasaction produces a unique connection that is passed to every object part of the transaction. 
+*implements* :doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+
+A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.  This class manages the objects that compose a transaction. A trasaction produces a unique connection that is passed to every object part of the transaction.  
 
 .. code-block:: php
 
@@ -42,30 +44,55 @@ A transaction acts on a single database connection. If you have multiple class-s
 Methods
 ---------
 
-public  **__construct** (*unknown* $dependencyInjector)
-
-...
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 
-public  **setDI** (:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector)
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DI <Phalcon_DI>`  **getDI** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the dependency injection container
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setDbService** (*string* $service)
+
+Sets the database service used to run the isolated transactions
+
+
+
+public *string*  **getDbService** ()
+
+Returns the database service used to isolate the transaction
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Transaction\\Manager <Phalcon_Mvc_Model_Transaction_Manager>`  **setRollbackPendent** (*boolean* $rollbackPendent)
+
+Set if the transaction manager must register a shutdown function to clean up pendent transactions
+
+
+
+public *boolean*  **getRollbackPendent** ()
+
+Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+
+
+
 public *boolean*  **has** ()
 
-Checks whether manager has an active transaction
+Checks whether the manager has an active transaction
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>`  **get** (*boolean* $autoBegin)
+public :doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>`  **get** ([*boolean* $autoBegin])
 
 Returns a new Phalcon\\Mvc\\Model\\Transaction or an already created once
 
@@ -83,27 +110,28 @@ Commmits active transactions within the manager
 
 
 
-public  **rollback** (*boolean* $collect)
+public  **rollback** ([*boolean* $collect])
 
 Rollbacks active transactions within the manager Collect will remove transaction from the manager
 
 
 
-public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
+public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\Transaction <Phalcon_Mvc_Model_Transaction>` $transaction)
+public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Notifies the manager about a commited transaction
 
 
 
-private  **_collectTransaction** ()
+protected  **_collectTransaction** ()
 
-...
+Removes transactions from the TransactionManager
+
 
 
 public  **collectTransactions** ()

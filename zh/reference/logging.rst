@@ -1,0 +1,107 @@
+Logging
+=======
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
+
+Adapters
+--------
+This component makes use of backend adapters to store data. The use of adapters allows for a common interface for logging while switching backends if necessary. The backends supported are:
+
++---------+---------------------------+----------------------------------------------------------------------------+
+| Adapter | Description               | API                                                                        |
++=========+===========================+============================================================================+
+| File    | Logs to a plain text file | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>` |
++---------+---------------------------+----------------------------------------------------------------------------+
+
+Creating a Log
+--------------
+The example below shows how to create a log and add messages to it:
+
+.. code-block:: php
+
+    <?php
+
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+    $logger->log("This is a message");
+    $logger->log("This is an error", \Phalcon\Logger::ERROR);
+    $logger->error("This is another error");
+    $logger->close();
+
+The log generated is below:
+
+.. code-block:: php
+
+    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
+    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
+
+Transactions
+------------
+Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
+
+.. code-block:: php
+
+    <?php
+
+    // Create the logger
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+
+    // Start a transaction
+    $logger->begin();
+
+    // Add messages
+    $logger->alert("This is an alert");
+    $logger->error("This is another error");
+
+    // Commit messages to file
+    $logger->commit();
+
+    $logger->close();
+
+
+Message Formatting
+------------------
+The default logging format is:
+
+[%date%][%type%] %message%
+
+:doc:`Phalcon\Logger <../api/Phalcon_Logger>` offers the setFormat() method, which allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
+
++-----------+------------------------------------------+
+| Variable  | Description                              |
++===========+==========================================+
+| %message% | The message itself expected to be logged |
++-----------+------------------------------------------+
+| %date%    | Date the message was added               |
++-----------+------------------------------------------+
+| %type%    | Uppercase string with message type       |
++-----------+------------------------------------------+
+
+The example below shows how to change the log format:
+
+.. code-block:: php
+
+    <?php
+
+    //Changing the logger format
+    $logger->setFormat("%date% - %message%");
+
+File Logger
+-----------
+This logger uses plain files to log any kind of data. File handlers are internally open with function `fopen`_. By default all logger files are open using
+'ab' mode which open the files for writing only; placing the file pointer at the end of the file. If the file does not exist, attempt to create it. You can
+change this mode passing additional options to the constructor:
+
+.. code-block:: php
+
+    <?php
+
+    // Create the file logger in 'w' mode
+    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log", array(
+        'mode' => 'w'
+    ));
+
+.. _fopen: http://php.net/manual/en/function.fopen.php
+
+Implementing your own adapters
+------------------------------
+The :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` interface must be implemented in order to create your own logger adapters or extend the existing ones.

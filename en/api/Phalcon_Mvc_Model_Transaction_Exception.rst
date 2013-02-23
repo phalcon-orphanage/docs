@@ -3,9 +3,6 @@ Class **Phalcon\\Mvc\\Model\\Transaction\\Exception**
 
 *extends* :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 
-Exceptions thrown in Phalcon\\Mvc\\Model\\Transaction will use this class
-
-
 Methods
 ---------
 
@@ -15,7 +12,7 @@ Clone the exception
 
 
 
-public  **__construct** (*string* $message, *int* $code, *Exception* $previous) inherited from Exception
+public  **__construct** ([*string* $message], [*int* $code], [*Exception* $previous]) inherited from Exception
 
 Exception constructor
 

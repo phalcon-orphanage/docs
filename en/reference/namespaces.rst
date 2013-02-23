@@ -1,6 +1,6 @@
 Working with Namespaces
 =======================
-Namespaces_ can be used to avoid class name collisions, this means that if you have two controllers in an application with the same name,
+Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
 it's possible use a namespace to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 Setting up the framework
@@ -21,7 +21,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify in the routes a full class name in the controller path:
+Specify it in the routes as a full class name in the controller path:
 
 .. code-block:: php
 
@@ -35,8 +35,23 @@ Specify in the routes a full class name in the controller path:
         )
     );
 
+Passing it as part of the route:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add(
+        "/:namespace/admin/users/my-profile",
+        array(
+            "namespace"  => 1,
+            "controller" => "Users",
+            "action"     => "profile",
+        )
+    );
+
 If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher. by doing this you don't need to specify a full class name in the router path.
+in the Dispatcher, by doing this you don't need to specify a full class name in the router path:
 
 .. code-block:: php
 
@@ -70,26 +85,6 @@ The following example shows how to implement a controller that use namespaces:
         public function profileAction()
         {
 
-        }
-
-    }
-
-Models in Namespaces
---------------------
-For models it's necessary to indicate the name of the related table using getSource:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    class Robots extends \Phalcon\Mvc\Model
-    {
-
-        public function getSource()
-        {
-            return "robots";
         }
 
     }

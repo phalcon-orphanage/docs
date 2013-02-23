@@ -10,7 +10,40 @@ maximum performance for your PHP applications.
 
 Configuring Nginx for Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon.
+The following are potential configurations you can use to setup nginx with Phalcon:
+
+Basic configuration
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: nginx
+
+    server {
+        listen   8080;
+        server_name localhost.dev;
+
+        root /var/www/phalcon/public;
+        index index.php index.html index.htm;
+
+        location / {
+            if (-f $request_filename) {
+                break;
+            }
+
+            if (!-e $request_filename) {
+                rewrite ^(.+)$ /index.php?_url=$1 last;
+                break;
+            }
+        }
+
+        location ~ \.php$ {
+                try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+    }
 
 Dedicated Instance
 ^^^^^^^^^^^^^^^^^^
@@ -37,7 +70,7 @@ Dedicated Instance
             # otherwise rewrite it
             if (!-e $request_filename) {
                 rewrite ^(.+)$ /index.php?_url=$1 last;
-            break;
+                break;
             }
         }
 

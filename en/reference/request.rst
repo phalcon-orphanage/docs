@@ -27,9 +27,9 @@ contain the values present in forms submitted or the parameters sent via the URL
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
 `Cross Site Scripting (XSS)`_ attacks.
 
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_GET
-and $_POST arrays and sanitize or filter them with :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The following
-examples offer the same behavior:
+:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
+$_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
+:doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
 
 .. code-block:: php
 
@@ -37,6 +37,7 @@ examples offer the same behavior:
 
     // Manually applying the filter
     $filter = new Phalcon\Filter();
+
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
@@ -45,6 +46,12 @@ examples offer the same behavior:
 
     // Automatically applying the filter
     $email = $request->getPost("user_email", "email");
+
+    // Setting a default value if the param is null
+    $email = $request->getPost("user_email", "email", "some@example.com");
+
+    // Setting a default value if the param is null without filtering
+    $email = $request->getPost("user_email", null, "some@example.com");
 
 
 Accessing the Request from Controllers
@@ -84,7 +91,7 @@ the $this->request public property of the controller:
 Uploading Files
 ---------------
 Another common task is file uploading. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` offers
-an object oriented way to achieve this task:
+an object-oriented way to achieve this task:
 
 .. code-block:: php
 
@@ -99,7 +106,13 @@ an object oriented way to achieve this task:
             if ($this->request->hasFiles() == true) {
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
+
+                    //Print file details
                     echo $file->getName(), " ", $file->getSize(), "\n";
+
+
+                    //Move the file into the application
+                    $file->moveTo('files/');
                 }
             }
         }
