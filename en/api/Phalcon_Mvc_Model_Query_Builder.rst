@@ -28,7 +28,7 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the DependencyInjector container
 

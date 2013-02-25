@@ -45,7 +45,7 @@ Returns a shared service based on their configuration
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, *Phalcon\\DI\\ServiceInterface* $rawDefinition)
 
 Sets a service using a raw Phalcon\\DI\\Service definition
 
@@ -81,7 +81,7 @@ Return the services registered in the DI
 
 
 
-abstract public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+abstract public static  **setDefault** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 

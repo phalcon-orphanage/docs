@@ -9,7 +9,7 @@ Validates that a value is not null or empty string
 Methods
 ---------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Validator <Phalcon_Validator>` $validator, *string* $attribute)
+public *boolean*  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
 
 Executes the validation
 

@@ -13,7 +13,7 @@ Validate a set of data according to a set of rules
 
 
 
-public :doc:`Phalcon\\Validator <Phalcon_Validator>`  **add** (*string* $attribute, *unknown* $validator)
+public *Phalcon\\Validator*  **add** (*string* $attribute, *unknown* $validator)
 
 Adds a validator to a field
 
@@ -31,13 +31,13 @@ Returns the validation messages produced by the validation process
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
+public  **appendMessage** (*Phalcon\\Validation\\MessageInterface* $message)
 
 Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validator <Phalcon_Validator>`  **bind** (*array* $data)
+public *Phalcon\\Validator*  **bind** (*array* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 

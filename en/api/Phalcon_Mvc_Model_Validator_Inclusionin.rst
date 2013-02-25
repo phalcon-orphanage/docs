@@ -34,7 +34,7 @@ Phalcon\\Mvc\\Model\\Validator\\InclusionIn  Check if a value is included into a
 Methods
 ---------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+public *boolean*  **validate** (*Phalcon\\Mvc\\ModelInterface* $record)
 
 Executes validator
 

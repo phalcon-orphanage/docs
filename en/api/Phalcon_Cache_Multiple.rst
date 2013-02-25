@@ -7,13 +7,13 @@ Allows to read to chained backends writing to multiple backends
 Methods
 ---------
 
-public  **__construct** ([:doc:`Phalcon\\Cache\\BackendInterface[] <Phalcon_Cache_BackendInterface[]>` $backends])
+public  **__construct** ([*Phalcon\\Cache\\BackendInterface[]* $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
 
 
-public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $backend)
+public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (*Phalcon\\Cache\\BackendInterface* $backend)
 
 Adds a backend
 

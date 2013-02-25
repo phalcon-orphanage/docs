@@ -7,7 +7,7 @@ Phalcon\\Logger\\AdapterInterface initializer
 Methods
 ---------
 
-abstract public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
+abstract public  **setFormatter** (*Phalcon\\Logger\\FormatterInterface* $formatter)
 
 Sets the message formatter
 

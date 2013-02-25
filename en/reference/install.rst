@@ -1,6 +1,5 @@
 Installation
 ============
-
 PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
 download a binary package for the system of your choice or build it from the sources.
 
@@ -17,7 +16,6 @@ from Phalcon.
 
 Windows
 -------
-
 To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
 
 	extension=php_phalcon.dll
@@ -122,3 +120,4 @@ Installation notes for Web Servers:
 
 	apache
 	nginx
+	cherokee

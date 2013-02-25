@@ -9,7 +9,7 @@ This component allows to create CLI applications using Phalcon
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -21,7 +21,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager)
 
 Sets the events manager
 
