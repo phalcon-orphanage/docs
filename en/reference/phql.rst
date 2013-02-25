@@ -781,7 +781,7 @@ The above findByRawSql could be used as follows:
 
     <?php
 
-    $robots = Robots::findByRawSql('id > 0');
+    $robots = Robots::findByRawSql('id > ?', array(10));
 
 Troubleshooting
 ---------------

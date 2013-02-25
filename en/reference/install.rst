@@ -51,18 +51,25 @@ Prerequisite packages are:
 * GCC compiler (Linux/Solaris) or Xcode (Mac)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
+Specific packages for common platforms:
+
 .. code-block:: bash
 
 	#Ubuntu
-	sudo apt-get install php5-dev php5-mysql gcc autoconf
-	sudo apt-get install git-core
+	sudo apt-get install git-core gcc autoconf
+	sudo apt-get install php5-dev php5-mysql
 
 	#Suse
-	yast2 -i php5-pear php5-devel php5-mysql gcc autoconf2.13
-	yast2 -i git-core
+	sudo yast -i gcc make autoconf2.13
+	sudo yast -i php5-devel php5-mysql
+
+	#CentOS/RedHat
+	sudo yum install gcc make
+	sudo yum install php-devel
 
 	#Solaris
-	pkg install php-53 apache-php53 gcc-45
+	pkg install gcc-45
+	pkg install php-53 apache-php53
 
 Compilation
 ^^^^^^^^^^^
