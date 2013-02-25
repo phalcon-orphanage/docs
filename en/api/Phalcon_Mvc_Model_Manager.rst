@@ -82,21 +82,69 @@ Loads a model throwing an exception if it doesn't exist
 
 
 
+public *string*  **setModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $source)
+
+Sets the mapped source for a model
+
+
+
+public *string*  **getModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+
+Returns the mapped source for a model
+
+
+
+public *string*  **setModelSchema** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $schema)
+
+Sets the mapped schema for a model
+
+
+
+public *string*  **getModelSchema** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+
+Returns the mapped schema for a model
+
+
+
 public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
 
-Set a connection service for a model
+Sets both write and read connection service for a model
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **setWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
 
-Returns the connection related to a model
+Sets write connection service for a model
 
 
 
-public  **getConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **setReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
 
-Returns the service name related to a model
+Sets read connection service for a model
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the connection to write data related to a model
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the connection to read data related to a model
+
+
+
+public  **getReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the connection service name used to read data related to a model
+
+
+
+public  **getWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Returns the connection service name used to write data related to a model
 
 
 
@@ -115,6 +163,18 @@ Dispatch a event to the listeners and behaviors This method expects that the end
 public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
 
 Binds a behavior to a model
+
+
+
+public  **keepSnapshots** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *boolean* $keepSnapshots)
+
+Sets if a model must keep snapshots
+
+
+
+public *boolean*  **isKeepingSnapshots** (*unknown* $model)
+
+Checks if a model is keeping snapshots for the queried records
 
 
 
@@ -177,7 +237,7 @@ Returns a reusable object from the internal list
 
 
 
-public *object*  **setReusableRecords** (*string* $modelName, *string* $key, *unknown* $records)
+public  **setReusableRecords** (*string* $modelName, *string* $key, *mixed* $records)
 
 Stores a reusable record in the internal list
 

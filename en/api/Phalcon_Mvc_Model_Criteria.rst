@@ -47,7 +47,7 @@ Adds the conditions parameter to the criteria
 
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions)
 
-Appends a condition to the current conditions using an AND operator
+Appends a condition to the current conditions using an AND operator (deprecated)
 
 
 

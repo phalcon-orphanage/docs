@@ -1,40 +1,32 @@
-Class **Phalcon\\Annotations\\Adapter\\Files**
-==============================================
+Class **Phalcon\\Annotations\\Adapter\\Apc**
+============================================
 
 *extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Stores the parsed annotations in diles. This adapter is the suitable for production  
+Phalcon\\Annotations\\Adapter\\Files  Stores the parsed annotations in APC. This adapter is the suitable for production  
 
 .. code-block:: php
 
     <?php
 
-     $annotations = new \Phalcon\Annotations\Adapter\Files(array(
-        'metaDataDir' => 'app/cache/metadata/'
-     ));
+     $annotations = new \Phalcon\Annotations\Adapter\Apc();
 
 
 
 Methods
 ---------
 
-public  **__construct** ([*array* $options])
-
-Phalcon\\Annotations\\Adapter\\Files constructor
-
-
-
 public *array*  **read** (*string* $key)
 
-Reads parsed annotations from files
+Reads parsed annotations from Apc
 
 
 
 public  **write** (*string* $key, *array* $data)
 
-Writes parsed annotations to files
+Writes parsed annotations to APC
 
 
 

@@ -1,64 +1,45 @@
-Class **Phalcon\\Cache\\Backend\\File**
-=======================================
+Class **Phalcon\\Cache\\Backend\\Memory**
+=========================================
 
 *extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
-Allows to cache output fragments using a file backend  
+Stores content in memory. Data is lost when the request is finished  
 
 .. code-block:: php
 
     <?php
 
-    //Cache the file for 2 days
-    $frontendOptions = array(
-    	'lifetime' => 172800
-    );
+    //Cache data
+    $frontCache = new Phalcon\Cache\Frontend\Data();
     
-      //Create a output cache
-      $frontCache = \Phalcon\Cache\Frontend\Output($frontOptions);
+      $cache = new Phalcon\Cache\Backend\Memory($frontCache);
     
-    //Set the cache directory
-    $backendOptions = array(
-    	'cacheDir' => '../app/cache/'
-    );
+    //Cache arbitrary data
+    $cache->save('my-data', array(1, 2, 3, 4, 5));
     
-      //Create the File backend
-      $cache = new \Phalcon\Cache\Backend\File($frontCache, $backendOptions);
-    
-    $content = $cache->start('my-cache');
-    if ($content === null) {
-      	echo '<h1>', time(), '</h1>';
-      	$cache->save();
-    } else {
-    	echo $content;
-    }
+    //Get data
+    $data = $cache->get('my-data');
 
 
 
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
-
-Phalcon\\Cache\\Backend\\File constructor
-
-
-
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
 
 Returns a cached content
 
 
 
-public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+Stores cached content into the APC backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean*  **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
@@ -72,7 +53,13 @@ Query the existing cached keys
 
 public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
-Checks if cache exists and it isn't expired
+Checks if cache exists and it hasn't expired
+
+
+
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
+
+Phalcon\\Cache\\Backend constructor
 
 
 

@@ -176,6 +176,12 @@ Mounts a group of routes in the router
 
 
 
+public  **notFound** (*unknown* $paths)
+
+A set of paths used to
+
+
+
 public  **clear** ()
 
 Removes all the pre-defined routes

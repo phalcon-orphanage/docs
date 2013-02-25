@@ -49,37 +49,79 @@ Gets a session variable from an application context
 
 public  **set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
 
-Sets a session variable in an application context <comment> $session->set('auth', 'yes'); </comment>
+Sets a session variable in an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->set('auth', 'yes');
+
 
 
 
 public  **has** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
-Check whether a session variable is set in an application context <comment> var_dump($session->has('auth')); </comment>
+Check whether a session variable is set in an application context 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->has('auth'));
+
 
 
 
 public  **remove** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
-Removes a session variable from an application context <comment> $session->remove('auth'); </comment>
+Removes a session variable from an application context 
+
+.. code-block:: php
+
+    <?php
+
+    $session->remove('auth');
+
 
 
 
 public *string*  **getId** () inherited from Phalcon\\Session\\Adapter
 
-Returns active session id <comment> echo $session->getId(); </comment>
+Returns active session id 
+
+.. code-block:: php
+
+    <?php
+
+    echo $session->getId();
+
 
 
 
 public *boolean*  **isStarted** () inherited from Phalcon\\Session\\Adapter
 
-Check whether the session has been started <comment> var_dump($session->isStarted()); </comment>
+Check whether the session has been started 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->isStarted());
+
 
 
 
 public *boolean*  **destroy** () inherited from Phalcon\\Session\\Adapter
 
-Destroys the active session <comment> var_dump($session->destroy()); </comment>
+Destroys the active session 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->destroy());
+
 
 
 
