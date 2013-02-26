@@ -32,7 +32,7 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 ---------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*Phalcon\\Mvc\\ModelInterface* $model])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
@@ -74,7 +74,7 @@ Returns field name related to message
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Set the model who generates the message
 

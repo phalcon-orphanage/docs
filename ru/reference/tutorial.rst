@@ -209,7 +209,7 @@ The controller classes must have the suffix "Controller" and controller actions 
 you should see something like this:
 
 .. figure:: ../_static/img/tutorial-1.png
-    :align: center
+:align: center
 
 Congratulations, you're flying with Phalcon!
 
@@ -478,10 +478,12 @@ Sample Applications
 The following Phalcon powered applications are also available, providing more complete examples:
 
 * `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application.
+* `PHP Alternative website`_: Multilingual and advanced routing application
 * `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
+* `Phosphorum`_: A simple and clean forum
 
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 .. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
+.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
 

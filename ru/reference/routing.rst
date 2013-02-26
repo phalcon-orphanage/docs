@@ -310,7 +310,7 @@ Namespaces/class names must be passed separated:
     <?php
 
     $router->add("/login", array(
-        'namespace' => 'Backend\Controllers\\',
+        'namespace' => 'Backend\Controllers',
         'controller' => 'login',
         'action' => 'index'
     ));
@@ -545,7 +545,7 @@ The following are examples of custom routes:
     ));
 
 .. highlights::
-    Beware of characters allowed in regular expression for controllers and namespaces. As these
+Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
@@ -587,16 +587,32 @@ in your website/application:
         'action' => 'index'
     ));
 
+Not Found Paths
+---------------
+If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
+
+.. code-block:: php
+
+    <?php
+
+    //Set 404 paths
+    $router->notFound(array(
+        "controller" => "index",
+        "action" => "route404"
+    ));
+
 Setting default paths
 ---------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
-those paths can be automatically filled by the component:
+those paths they can be automatically filled by the router:
 
 .. code-block:: php
 
     <?php
 
     //Individually
+    $router->setDefaultModule("backend");
+    $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController("index");
     $router->setDefaultAction("index");
 
@@ -782,6 +798,23 @@ For annotations that add routes, the following parameters are supported:
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
+If routes map to controllers in modules is better use the addModuleResource method:
+
+.. code-block:: php
+
+    <?php
+
+    $di['router'] = function() {
+
+        //Use the annotations router
+        $router = new \Phalcon\Mvc\Router\Annotations(false);
+
+        //Read the annotations from Backend\Controllers\ProductsController if the uri starts with /api/products
+        $router->addModuleResource('backend', 'Products', '/api/products');
+
+        return $router;
+    };
 
 Implementing your own Router
 ----------------------------

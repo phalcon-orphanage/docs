@@ -476,7 +476,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 Check the EER diagram to understand better the relations:
 
 .. figure:: ../_static/img/eer-1.png
-   :align: center
+:align: center
 
 The models with their relations could be implemented as follows:
 
@@ -669,7 +669,7 @@ The table "robots_similar" has the function to define what robots are similar to
 Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
 
 .. figure:: ../_static/img/eer-2.png
-   :align: center
+:align: center
 
 A model that maps this table and its relationships is the following:
 
@@ -1241,35 +1241,35 @@ Events and Events Manager
 Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         |
-+====================+==========================+=======================+=====================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                      |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                         |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
++====================+==========================+=======================+===================================================================================================================================+
+| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 Implementing Events in the Model's class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

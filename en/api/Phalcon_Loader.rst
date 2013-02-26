@@ -36,7 +36,7 @@ Phalcon\\Loader constructor
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager)
 
 Sets the events manager
 

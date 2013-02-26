@@ -60,7 +60,7 @@ Returns the current log level
 
 
 
-public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter) inherited from Phalcon\\Logger\\Adapter
+public  **setFormatter** (*Phalcon\\Logger\\FormatterInterface* $formatter) inherited from Phalcon\\Logger\\Adapter
 
 Sets the message formatter
 

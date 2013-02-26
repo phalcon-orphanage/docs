@@ -38,7 +38,7 @@ Writes parsed annotations to files
 
 
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from Phalcon\\Annotations\\Adapter
+public  **setReader** (*Phalcon\\Annotations\\ReaderInterface* $reader) inherited from Phalcon\\Annotations\\Adapter
 
 Sets the annotations parser
 

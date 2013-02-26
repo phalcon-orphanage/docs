@@ -1,6 +1,5 @@
 Installation
 ============
-
 PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
 download a binary package for the system of your choice or build it from the sources.
 
@@ -10,14 +9,13 @@ compacted code, performed optimizations and generated low-level solutions so as 
 from Phalcon.
 
 .. highlights::
-	Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you to use at least PHP 5.3.11 or greater.
+	Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
 
 .. highlights::
-	PHP versions below 5.3.9 have several security flaws and they aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-
 To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
 
 	extension=php_phalcon.dll
@@ -51,18 +49,25 @@ Prerequisite packages are:
 * GCC compiler (Linux/Solaris) or Xcode (Mac)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
+Specific packages for common platforms:
+
 .. code-block:: bash
 
 	#Ubuntu
-	sudo apt-get install php5-dev php5-mysql gcc autoconf
-	sudo apt-get install git-core
+	sudo apt-get install git-core gcc autoconf
+	sudo apt-get install php5-dev php5-mysql
 
 	#Suse
-	yast2 -i php5-pear php5-devel php5-mysql gcc autoconf2.13
-	yast2 -i git-core
+	sudo yast -i gcc make autoconf2.13
+	sudo yast -i php5-devel php5-mysql
+
+	#CentOS/RedHat
+	sudo yum install gcc make
+	sudo yum install php-devel
 
 	#Solaris
-	pkg install php-53 apache-php53 gcc-45
+	pkg install gcc-45
+	pkg install php-53 apache-php53
 
 Compilation
 ^^^^^^^^^^^
@@ -82,7 +87,7 @@ Add extension to your php.ini
 
 Restart the webserver.
 
-You can compile for a specific architecture using:
+Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
 .. code-block:: bash
 
@@ -115,3 +120,4 @@ Installation notes for Web Servers:
 
 	apache
 	nginx
+	cherokee

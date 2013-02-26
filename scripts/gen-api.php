@@ -377,9 +377,13 @@ foreach($classes as $className){
 	if ($documentationData['extends']) {
 		$extendsName = $documentationData['extends']->name;
 		if (strpos($extendsName, 'Phalcon') !== false) {
-			$extendsPath =  str_replace("\\", "_", $extendsName);
-			$extendsName =  str_replace("\\", "\\\\", $extendsName);
-			$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+			if (class_exists($extendsName)) {
+				$extendsPath =  str_replace("\\", "_", $extendsName);
+				$extendsName =  str_replace("\\", "\\\\", $extendsName);
+				$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+			} else {
+				$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
+			}
 		} else {
 			$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
 		}
@@ -390,9 +394,13 @@ foreach($classes as $className){
 		$implements = array();
 		foreach ($documentationData['implements'] as $interfaceName) {
 			if (strpos($interfaceName, 'Phalcon') !== false) {
-				$interfacePath =  str_replace("\\", "_", $interfaceName);
-				$interfaceName =  str_replace("\\", "\\\\", $interfaceName);
-				$implements[] = ':doc:`'.$interfaceName.' <'.$interfacePath.'>`';
+				if (interface_exists($interfaceName)) {
+					$interfacePath =  str_replace("\\", "_", $interfaceName);
+					$interfaceName =  str_replace("\\", "\\\\", $interfaceName);
+					$implements[] = ':doc:`'.$interfaceName.' <'.$interfacePath.'>`';
+				} else {
+					$implements[] = str_replace("\\", "\\\\", $interfaceName);
+				}
 			} else {
 				$implements[] = $interfaceName;
 			}
@@ -436,9 +444,15 @@ foreach($classes as $className){
 
 			if (isset($ret['return'])) {
 				if (preg_match('/^(Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
-					$extendsPath =  str_replace("\\", "_", $matches[1]);
-					$extendsName =  str_replace("\\", "\\\\", $matches[1]);
-					$code.= str_replace($matches[1], ':doc:`'.$extendsName.' <'.$extendsPath.'>` ', $ret['return']);
+					if (class_exists($matches[0]) || interface_exists($matches[0])) {
+						$extendsPath =  str_replace("\\", "_", $matches[1]);
+						$extendsName =  str_replace("\\", "\\\\", $matches[1]);
+						$code.= str_replace($matches[1], ':doc:`'.$extendsName.' <'.$extendsPath.'>` ', $ret['return']);
+					} else {
+						$extendsName = str_replace("\\", "\\\\", $ret['return']);
+						$code.= '*'.$extendsName.'* ';
+					}
+
 				} else {
 					$code.= '*'.$ret['return'].'* ';
 				}
@@ -451,12 +465,21 @@ foreach($classes as $className){
 				$name = '$'.$parameter->name;
 				if (isset($ret['parameters'][$name])) {
 					if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
-						$parameterPath =  str_replace("\\", "_", $ret['parameters'][$name]);
-						$parameterName =  str_replace("\\", "\\\\", $ret['parameters'][$name]);
-						if (!$parameter->isOptional()) {
-							$cp[] = ':doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name;
+						if (class_exists($parameterName) || interface_exists($parameterName)) {
+							$parameterPath =  str_replace("\\", "_", $ret['parameters'][$name]);
+							$parameterName =  str_replace("\\", "\\\\", $ret['parameters'][$name]);
+							if (!$parameter->isOptional()) {
+								$cp[] = ':doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name;
+							} else {
+								$cp[] = '[:doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name.']';
+							}
 						} else {
-							$cp[] = '[:doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name.']';
+							$parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
+							if (!$parameter->isOptional()) {
+								$cp[] = '*'.$parameterName.'* '.$name;
+							} else {
+								$cp[] = '[*'.$parameterName.'* '.$name.']';
+							}
 						}
 					} else {
 						if (!$parameter->isOptional()) {

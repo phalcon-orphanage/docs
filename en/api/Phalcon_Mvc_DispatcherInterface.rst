@@ -1,7 +1,7 @@
 Interface **Phalcon\\Mvc\\DispatcherInterface**
 ===============================================
 
-*extends* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
+*extends* Phalcon\DispatcherInterface
 
 Phalcon\\Mvc\\DispatcherInterface initializer
 

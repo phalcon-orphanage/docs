@@ -1,41 +1,51 @@
 Class **Phalcon\\Validation**
 =============================
 
+
+
+
 Methods
 ---------
 
-public  **validate** ([*unknown* $data])
+public  **validate** ([*array|object* $data])
 
-...
-
-
-public  **add** (*unknown* $attribute, *unknown* $validator)
-
-...
+Validate a set of data according to a set of rules
 
 
-public  **getValidators** ()
 
-...
+public *Phalcon\\Validator*  **add** (*string* $attribute, *unknown* $validator)
 
-
-public  **getMessages** ()
-
-...
+Adds a validator to a field
 
 
-public  **appendMessage** (*unknown* $message)
 
-...
+public *array*  **getValidators** ()
 
-
-public  **bind** (*unknown* $data)
-
-...
+Returns the registered validators
 
 
-public  **getValue** (*unknown* $key)
 
-...
+public *array*  **getMessages** ()
+
+Returns the validation messages produced by the validation process
+
+
+
+public  **appendMessage** (*Phalcon\\Validation\\MessageInterface* $message)
+
+Appends a message to the messages list
+
+
+
+public *Phalcon\\Validator*  **bind** (*array* $data)
+
+Assigns the data to an entity The entity is used to obtain the validation values
+
+
+
+public *mixed*  **getValue** (*unknown* $key)
+
+Obtain an value from the data passed to the validator If an entity is
+
 
 

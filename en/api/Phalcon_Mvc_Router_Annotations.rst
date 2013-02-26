@@ -51,7 +51,7 @@ Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*string* $module, *string* $namespace, *string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
+public  **processActionAnnotation** (*string* $module, *string* $namespace, *string* $controller, *string* $action, *Phalcon\\Annotations\\Annotation* $annotation)
 
 Checks for annotations in the public methods of the controller
 
@@ -81,7 +81,7 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\Router
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\Mvc\\Router
 
 Sets the dependency injector
 

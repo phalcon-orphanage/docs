@@ -24,8 +24,8 @@ focused on the configuration of the mod-rewrite module allowing to use friendly 
 Directory under the main Document Root
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This being the most common case, the application is installed in any directory under the document root.
-In this case, we use .htaccess 2 files, the first one to hide the application code and forward all requests
-to the application document root (public/).
+In this case, we use two .htaccess files, the first one to hide the application code forwarding all requests
+to the application's document root (public/).
 
 .. code-block:: apacheconf
 
@@ -73,7 +73,7 @@ If you do not want to use .htaccess files you can move these configurations to t
 
 Virtual Hosts
 ^^^^^^^^^^^^^
-And this second configuration allow you to install a Phalcon application in a virtual host:
+And this second configuration allows you to install a Phalcon application in a virtual host:
 
 .. code-block:: apacheconf
 

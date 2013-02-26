@@ -44,13 +44,13 @@ A transaction acts on a single database connection. If you have multiple class-s
 Methods
 ---------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector])
 
 
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -122,13 +122,13 @@ Rollbacks active transactions within the manager Collect will remove transaction
 
 
 
-public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+public  **notifyRollback** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+public  **notifyCommit** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
 
 Notifies the manager about a commited transaction
 

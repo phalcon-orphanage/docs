@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\User\\Module**
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
@@ -20,7 +20,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
 
