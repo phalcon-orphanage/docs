@@ -113,6 +113,14 @@ Once the extension is installed use the following setting to enable APC:
 
 	apc.enabled = On
 
+Google Page Speed
+-----------------
+mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module automatically applies web
+performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring
+that you modify your existing content or workflow.
+
+
+
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/
 .. _rules for high performance web pages: http://developer.yahoo.com/performance/rules.html
@@ -121,3 +129,4 @@ Once the extension is installed use the following setting to enable APC:
 .. _Speed Tracer: https://developers.google.com/web-toolkit/speedtracer/
 .. _Webgrind: http://github.com/jokkedk/webgrind/
 .. _APC: http://php.net/manual/en/book.apc.php
+.. _mod_pagespeed: https://developers.google.com/speed/pagespeed/mod
