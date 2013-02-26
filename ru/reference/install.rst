@@ -1,34 +1,38 @@
-Installation
+Установка
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+Расширения для PHP устанавливаются несколько иначе чем обычные библиотеки или php-фреймворки. Вы можете скачать готовый бинарный
+файл для своей системы, или собрать его их исходников самостоятельно.
 
 During the last few months, we have extensively researched PHP's behavior, investigating areas for significant
 optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations,
 compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance
 from Phalcon.
 
-.. highlights::
-	Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
+Последние несколько месяцев мы глубоко исследовали возможности PHP для любой оптимизации большой или маленькой.
+Поняв Zend Engine, мы смогли убрать лишние проверки, уменьшить код и выполнить такие низкоуровневые оптимизации, которые позволили добиться максимальной
+производителньости от Phalcon.
 
 .. highlights::
-	PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	Phalcon работает с PHP 5.3.1, но ошибки в старых версиях PHP вызывают утечки памяти, и для надёжной работы рекомендуем использовать как минимум PHP 5.3.11, а лучше еще новее.
+
+.. highlights::
+	В PHP версии ниже 5.3.9 есть ошибки влиязие на безопасность, эти версии не рекомендуется использовать. `Подробнее <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+Для использования Phalcon в среде Windows достаточно скачать DLL библиотеку и добавить в конце php.ini :
 
 	extension=php_phalcon.dll
 
-Restart your webserver.
+Перезапустить веб-сервер.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+существует обучающий скринкаст с пошаговой установкой Phalcon на Windows:
 
 .. raw:: html
 
 	<div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
+Краткое руководство
 ^^^^^^^^^^^^^^
 
 .. toctree::
@@ -39,17 +43,17 @@ Related Guides
 
 Linux/Solaris/Mac
 -----------------
-On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
+Пользователи Linux/Solaris/Mac могут очень просто собрать Phalcon из исходных файлов:
 
-Requirements
+Требования
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Необходимы пакеты:
 
-* PHP 5.3.x/5.4.x development resources
-* GCC compiler (Linux/Solaris) or Xcode (Mac)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* Иструменты разработки PHP 5.3.x/5.4.x
+* Компилятор GCC (Linux/Solaris) или Xcode (Mac)
+* Git (если он не установлен - пакет можно загрузить с GitHub и закачать на свой сервер по FTP/SFTP)
 
-Specific packages for common platforms:
+Специфичные пакеты для разных платформ:
 
 .. code-block:: bash
 
@@ -69,9 +73,9 @@ Specific packages for common platforms:
 	pkg install gcc-45
 	pkg install php-53 apache-php53
 
-Compilation
+Компиляция
 ^^^^^^^^^^^
-Creating the extension:
+Создайте расширение:
 
 .. code-block:: bash
 
@@ -79,15 +83,15 @@ Creating the extension:
 	cd cphalcon/build
 	sudo ./install
 
-Add extension to your php.ini
+Добавьте его в php.ini
 
 .. code-block:: bash
 
 	extension=phalcon.so
 
-Restart the webserver.
+Перезапустите веб-сервер.
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+При компиляции Phalcon сам выявляет тип платформы, но можно указать и явно:
 
 .. code-block:: bash
 
@@ -97,23 +101,23 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Порт доступен для FreeBSD. Для установки служат простые команды:
 
 .. code-block:: bash
 
 	pkg_add -r phalcon
 
-or
+или
 
 .. code-block:: bash
 
 	export CFLAGS="-O2 -fno-delete-null-pointer-checks"
 	cd /usr/ports/www/phalcon && make install clean
 
-Installation Notes
+Замечанпия по установке
 ------------------
 
-Installation notes for Web Servers:
+Установка на разные веб-сервера:
 
 .. toctree::
 	:maxdepth: 1
