@@ -1,6 +1,5 @@
 Framework Benchmarks
 ====================
-
 In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
 able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
 became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
@@ -65,7 +64,7 @@ ChangeLog
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
 
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
-.. _write us: http://phalcon.uservoice.com/
+.. _write us: https://github.com/phalcon/framework-bench
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
 
