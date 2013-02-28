@@ -3,11 +3,6 @@
 Расширения для PHP устанавливаются несколько иначе чем обычные библиотеки или php-фреймворки. Вы можете скачать готовый бинарный
 файл для своей системы, или собрать его их исходников самостоятельно.
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant
-optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations,
-compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance
-from Phalcon.
-
 Последние несколько месяцев мы глубоко исследовали возможности PHP для любой оптимизации большой или маленькой.
 Поняв Zend Engine, мы смогли убрать лишние проверки, уменьшить код и выполнить такие низкоуровневые оптимизации, которые позволили добиться максимальной
 производителньости от Phalcon.
