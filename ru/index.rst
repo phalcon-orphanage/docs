@@ -64,6 +64,7 @@ Phalcon заботится не только о производительнос
    reference/migrations
    reference/debug
    reference/tools
+   reference/whats-next
    api/index
    reference/license
 
