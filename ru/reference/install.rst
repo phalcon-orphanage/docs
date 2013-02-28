@@ -109,7 +109,7 @@ FreeBSD
 	export CFLAGS="-O2 -fno-delete-null-pointer-checks"
 	cd /usr/ports/www/phalcon && make install clean
 
-Замечанпия по установке
+Замечания по установке
 ------------------
 
 Установка на разные веб-сервера:
