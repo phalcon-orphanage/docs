@@ -1,18 +1,19 @@
-Nginx Installation Notes
+Установка на Nginx
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike
-traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven
-(asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Nginx_ это свободный, с открытым исходным кодом, высокопроизводительный HTTP-сервер и прокси-сервер, а также IMAP/POP3 прокси-сервер. В отличие от
+традиционных серверов, Nginx_ не использует потоки для обработки запросов. Вместо этого он использует гораздо более масштабируемую управляемую событиями
+(асинхронную) архитектуру. Эта архитектура под высокой нагрузкой позволяет использует небольшой, и главное, предсказуемый объем памяти.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is
-bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer
-maximum performance for your PHP applications.
+"PHP-FPM`_ (Менеджер процессов FastCGI) обычно используется для обработки PHP-файлов в Nginx_. В настоящее время, `PHP-FPM`_ 
+идёт в комплекте с любым дистрибутивом PHP в Unix. Связка Phalcon + Nginx_ + `PHP-FPM`_ предоставляет мощный набор инструментов,
+который позволяет добиться максимальной производительности в ваших PHP-приложениях.
 
-Configuring Nginx for Phalcon
+Конфигурация Nginx для Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+Конфигурации ниже позволят настроить Nginx для работы с Phalcon:
 
-Basic configuration
+
+Базовая конфигурация
 ^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: nginx
@@ -45,7 +46,7 @@ Basic configuration
         }
     }
 
-Dedicated Instance
+Частный случай
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: nginx
@@ -92,9 +93,9 @@ Dedicated Instance
         }
     }
 
-Configuration by Host
+Конфигурация по хосту
 ^^^^^^^^^^^^^^^^^^^^^
-And this second configuration allow you to have different configurations by host:
+Такая конфигурация позволит иметь разные конфигурации для хостов:
 
 .. code-block:: nginx
 
