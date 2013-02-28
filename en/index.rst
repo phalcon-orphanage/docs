@@ -60,6 +60,7 @@ Table of Contents
    reference/migrations
    reference/debug
    reference/tools
+   reference/whats-next
    api/index
    reference/license
 

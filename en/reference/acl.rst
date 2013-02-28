@@ -107,7 +107,8 @@ You can build complex role structures using the inheritance that :doc:`Phalcon\\
 
 Serializing ACL lists
 ---------------------
-To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be serialized and stored in APC, session, text files or a database table
+so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
 
 .. code-block:: php
 

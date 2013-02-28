@@ -1,5 +1,9 @@
 Debugging Applications
 ======================
+
+.. figure:: ../_static/img/xdebug-1.jpg
+    :align: center
+
 PHP offers tools to debug applications with notices, warnings, errors and exceptions. The `Exception class`_ offers information such as the file,
 line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate
 this functionality and provide information back to the developer or user.
@@ -103,7 +107,10 @@ generating the exception:
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the
 parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
-By installing the '`Pretty Exceptions`_' utility in your appplication you can print exceptions with a nicely presentation.
+By installing the '`Pretty Exceptions`_' utility in your appplication you can print exceptions with a nicely presentation:
+
+.. figure:: ../_static/img/pretty.jpg
+    :align: center
 
 Reflection and Instrospection
 -----------------------------
