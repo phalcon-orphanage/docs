@@ -33,7 +33,7 @@ directly from a controller's action follow this example:
         public function getAction()
         {
             // Getting a response instance
-            $response = new \Phalcon\Http\Request();
+            $response = new \Phalcon\Http\Response();
 
             $feed = //.. load here the feed
 
