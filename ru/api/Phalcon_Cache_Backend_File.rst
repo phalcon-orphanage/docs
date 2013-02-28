@@ -40,7 +40,7 @@ Allows to cache output fragments using a file backend
 Methods
 ---------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
+public  **__construct** (*Phalcon\\Cache\\FrontendInterface* $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\File constructor
 

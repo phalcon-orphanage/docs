@@ -9,7 +9,7 @@ This class allows to build the array parameter required by Phalcon\\Mvc\\Model::
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -47,7 +47,7 @@ Adds the conditions parameter to the criteria
 
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions)
 
-Appends a condition to the current conditions using an AND operator
+Appends a condition to the current conditions using an AND operator (deprecated)
 
 
 
@@ -117,7 +117,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
+public static *static*  **fromInput** (*Phalcon\\DiInterface* $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 

@@ -109,7 +109,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config) inherited from Phalcon\\Config
+public  **merge** (*Phalcon\\Config* $config) inherited from Phalcon\\Config
 
 Merges a configuration into the current one 
 

@@ -7,7 +7,7 @@ This is the base class for Phalcon\\Annotations adapters
 Methods
 ---------
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader)
+public  **setReader** (*Phalcon\\Annotations\\ReaderInterface* $reader)
 
 Sets the annotations parser
 

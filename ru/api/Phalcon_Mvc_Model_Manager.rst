@@ -22,7 +22,7 @@ This components controls the initialization of models, keeping record of relatio
 Methods
 ---------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -34,7 +34,7 @@ Returns the DependencyInjector container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager)
 
 Sets a global events manager
 
@@ -46,19 +46,19 @@ Returns the internal event manager
 
 
 
-public  **setCustomEventsManager** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setCustomEventsManager** (*Phalcon\\Mvc\\ModelInterface* $model, *Phalcon\\Events\\ManagerInterface* $eventsManager)
 
 Sets a custom events manager for a specific model
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getCustomEventsManager** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getCustomEventsManager** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns a custom events manager related to a model
 
 
 
-public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **initialize** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Initializes a model in the model manager
 
@@ -82,91 +82,91 @@ Loads a model throwing an exception if it doesn't exist
 
 
 
-public *string*  **setModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $source)
+public *string*  **setModelSource** (*Phalcon\\Mvc\\Model* $model, *string* $source)
 
 Sets the mapped source for a model
 
 
 
-public *string*  **getModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *string*  **getModelSource** (*Phalcon\\Mvc\\Model* $model)
 
 Returns the mapped source for a model
 
 
 
-public *string*  **setModelSchema** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $schema)
+public *string*  **setModelSchema** (*Phalcon\\Mvc\\Model* $model, *string* $schema)
 
 Sets the mapped schema for a model
 
 
 
-public *string*  **getModelSchema** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *string*  **getModelSchema** (*Phalcon\\Mvc\\Model* $model)
 
 Returns the mapped schema for a model
 
 
 
-public  **setConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
+public  **setConnectionService** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $connectionService)
 
 Sets both write and read connection service for a model
 
 
 
-public  **setWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
+public  **setWriteConnectionService** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $connectionService)
 
 Sets write connection service for a model
 
 
 
-public  **setReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $connectionService)
+public  **setReadConnectionService** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $connectionService)
 
 Sets read connection service for a model
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the connection to write data related to a model
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the connection to read data related to a model
 
 
 
-public  **getReadConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getReadConnectionService** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the connection service name used to read data related to a model
 
 
 
-public  **getWriteConnectionService** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getWriteConnectionService** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the connection service name used to write data related to a model
 
 
 
-public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **notifyEvent** (*string* $eventName, *Phalcon\\Mvc\\ModelInterface* $model)
 
 Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 
-public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *array* $data)
+public *boolean*  **missingMethod** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $eventName, *array* $data)
 
 Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
 
 
-public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
+public  **addBehavior** (*Phalcon\\Mvc\\ModelInterface* $model, *Phalcon\\Mvc\\Model\\BehaviorInterface* $behavior)
 
 Binds a behavior to a model
 
 
 
-public  **keepSnapshots** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *boolean* $keepSnapshots)
+public  **keepSnapshots** (*Phalcon\\Mvc\\Model* $model, *boolean* $keepSnapshots)
 
 Sets if a model must keep snapshots
 
@@ -178,19 +178,19 @@ Checks if a model is keeping snapshots for the queried records
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasOne** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasOne** (*Phalcon\\Mvc\\Model* $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a 1-1 relation between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addBelongsTo** (*Phalcon\\Mvc\\Model* $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation reverse many to one between two models
 
 
 
-public  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public  **addHasMany** (*Phalcon\\Mvc\\ModelInterface* $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation 1-n between two models
 
@@ -225,7 +225,7 @@ Returns a relation by its alias
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>`  **getRelationRecords** (:doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>` $relation, *string* $method, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record, [*array* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <Phalcon_Mvc_Model_Resultset_Simple>`  **getRelationRecords** (*Phalcon\\Mvc\\Model\\Relation* $relation, *string* $method, *Phalcon\\Mvc\\ModelInterface* $record, [*array* $parameters])
 
 Helper method to query records based on a relation definition
 
@@ -249,25 +249,25 @@ Clears the internal reusable list
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
 
 Gets belongsTo related records from a model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
 
 Gets hasMany related records from a model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
 
 Gets belongsTo related records from a model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getBelongsTo** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Gets all the belongsTo relations defined in a model 
 
@@ -280,19 +280,19 @@ Gets all the belongsTo relations defined in a model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getHasMany** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Gets hasMany relations defined on a model
 
 
 
-public *array*  **getHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public *array*  **getHasOne** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Gets hasOne relations defined on a model
 
 
 
-public *array*  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public *array*  **getHasOneAndHasMany** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Gets hasOne relations defined on a model
 

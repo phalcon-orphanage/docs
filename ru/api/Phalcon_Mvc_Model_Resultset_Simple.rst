@@ -24,7 +24,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
+public  **__construct** (*array* $columnMap, *Phalcon\\Mvc\\ModelInterface* $model, *Phalcon\\Db\\Result\\Pdo* $result, [*Phalcon\\Cache\\BackendInterface* $cache], [*boolean* $keepSnapshots])
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
@@ -96,7 +96,7 @@ Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*int* $index, *Phalcon\\Mvc\\ModelInterface* $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

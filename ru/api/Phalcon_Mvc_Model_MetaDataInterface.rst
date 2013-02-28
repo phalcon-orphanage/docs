@@ -7,7 +7,7 @@ Phalcon\\Mvc\\Model\\MetaDataInterface initializer
 Methods
 ---------
 
-abstract public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy)
+abstract public  **setStrategy** (*Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection* $strategy)
 
 Set the meta-data extraction strategy
 
@@ -19,121 +19,121 @@ Return the strategy to obtain the meta-data
 
 
 
-abstract public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **readMetaData** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Reads meta-data for certain model
 
 
 
-abstract public *mixed*  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+abstract public *mixed*  **readMetaDataIndex** (*Phalcon\\Mvc\\ModelInterface* $model, *int* $index)
 
 Reads meta-data for certain model using a MODEL_* constant
 
 
 
-abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data)
+abstract public  **writeMetaDataIndex** (*Phalcon\\Mvc\\Model* $model, *int* $index, *mixed* $data)
 
 Writes meta-data for certain model using a MODEL_* constant
 
 
 
-abstract public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **readColumnMap** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Reads the ordered/reversed column map for certain model
 
 
 
-abstract public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+abstract public  **readColumnMapIndex** (*Phalcon\\Mvc\\ModelInterface* $model, *int* $index)
 
 Reads column-map information for certain model using a MODEL_* constant
 
 
 
-abstract public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns table attributes names (fields)
 
 
 
-abstract public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getPrimaryKeyAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns an array of fields which are part of the primary key
 
 
 
-abstract public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getNonPrimaryKeyAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns an arrau of fields which are not part of the primary key
 
 
 
-abstract public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getNotNullAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns an array of not null attributes
 
 
 
-abstract public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getDataTypes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns attributes and their data types
 
 
 
-abstract public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getDataTypesNumeric** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns attributes which types are numerical
 
 
 
-abstract public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *string*  **getIdentityField** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the name of identity field (if one is present)
 
 
 
-abstract public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getBindTypes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns attributes and their bind data types
 
 
 
-abstract public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getAutomaticCreateAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns attributes that must be ignored from the INSERT SQL generation
 
 
 
-abstract public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getAutomaticUpdateAttributes** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-abstract public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+abstract public  **setAutomaticCreateAttributes** (*Phalcon\\Mvc\\ModelInterface* $model, *array* $attributes)
 
 Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-abstract public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+abstract public  **setAutomaticUpdateAttributes** (*Phalcon\\Mvc\\ModelInterface* $model, *array* $attributes)
 
 Set the attributes that must be ignored from the UPDATE SQL generation
 
 
 
-abstract public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getColumnMap** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the column map if any
 
 
 
-abstract public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public *array*  **getReverseColumnMap** (*Phalcon\\Mvc\\ModelInterface* $model)
 
 Returns the reverse column map if any
 
 
 
-abstract public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute)
+abstract public *boolean*  **hasAttribute** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $attribute)
 
 Check if a model has certain attribute
 

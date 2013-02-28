@@ -70,7 +70,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 
-public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array* $accessInherits])
+public *boolean*  **addRole** (*Phalcon\\Acl\\RoleInterface* $role, [*array* $accessInherits])
 
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
 
@@ -102,7 +102,7 @@ Check whether resource exist in the resources list
 
 
 
-public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, [*array* $accessList])
+public *boolean*  **addResource** (*Phalcon\\Acl\\Resource* $resource, [*array* $accessList])
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
 
@@ -226,7 +226,7 @@ Rebuild the list of access from the inherit lists
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Acl\\Adapter
+public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\Acl\\Adapter
 
 Sets the events manager
 

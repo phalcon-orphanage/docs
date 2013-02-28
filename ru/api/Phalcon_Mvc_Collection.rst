@@ -20,7 +20,7 @@ Constants
 Methods
 ---------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
+final public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector], [*Phalcon\\Mvc\\Collection\\ManagerInterface* $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -38,7 +38,7 @@ Returns the value of the _id property
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -136,7 +136,7 @@ Writes an attribute value by its name
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (*Phalcon\\Mvc\\Collection* $collection, *array* $document)
 
 Returns a cloned collection
 
@@ -272,7 +272,7 @@ Returns all the validation messages
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+public  **appendMessage** (*Phalcon\\Mvc\\Model\\MessageInterface* $message)
 
 Appends a customized message on the validation process 
 

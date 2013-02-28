@@ -7,7 +7,7 @@ Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+abstract public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Transaction\\Manager
 
@@ -43,13 +43,13 @@ Rollbacks active transactions within the manager Collect will remove transaction
 
 
 
-abstract public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+abstract public  **notifyRollback** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-abstract public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+abstract public  **notifyCommit** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
 
 Notifies the manager about a commited transaction
 

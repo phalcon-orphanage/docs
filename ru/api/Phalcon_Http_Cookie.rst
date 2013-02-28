@@ -15,7 +15,7 @@ Phalcon\\Http\\Cookie constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -27,7 +27,7 @@ Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\CookieInterface <Phalcon_Http_CookieInterface>`  **setValue** (*string* $value)
+public *Phalcon\\Http\\CookieInterface*  **setValue** (*string* $value)
 
 Sets the cookie's value
 

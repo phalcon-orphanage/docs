@@ -18,7 +18,7 @@ This class reads and compiles Volt templates into PHP plain code
 Methods
 ---------
 
-public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view])
+public  **__construct** ([*Phalcon\\Mvc\\ViewInterface* $view])
 
 
 
@@ -36,7 +36,7 @@ Returns the compiler options
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injector
 

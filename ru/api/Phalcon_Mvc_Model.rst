@@ -44,13 +44,13 @@ Constants
 Methods
 ---------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
+final public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector], [*Phalcon\\Mvc\\Model\\ManagerInterface* $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -86,7 +86,7 @@ Returns the models manager related to the entity instance
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -222,7 +222,7 @@ Assigns values to a model from an array
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*Phalcon\\Mvc\\Model* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -245,7 +245,7 @@ Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (*Phalcon\\Mvc\\Model* $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -316,7 +316,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([*Phalcon\\DiInterface* $dependencyInjector])
 
 Create a criteria for a specific model
 
@@ -447,7 +447,7 @@ Cancel the current operation
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+public  **appendMessage** (*Phalcon\\Mvc\\Model\\MessageInterface* $message)
 
 Appends a customized message on the validation process 
 

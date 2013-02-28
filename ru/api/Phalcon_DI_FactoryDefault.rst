@@ -41,7 +41,7 @@ Attempts to register a service in the services container Only is successful if a
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, *Phalcon\\DI\\ServiceInterface* $rawDefinition) inherited from Phalcon\\DI
 
 Sets a service using a raw Phalcon\\DI\\Service definition
 
@@ -133,7 +133,7 @@ Magic method to get or set services using setters/getters
 
 
 
-public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI
+public static  **setDefault** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\DI
 
 Set a default dependency injection container to be obtained into static methods
 

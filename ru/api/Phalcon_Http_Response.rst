@@ -25,7 +25,7 @@ Phalcon\\Http\\Response constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -50,7 +50,7 @@ Sets the HTTP response code
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeaders** (:doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>` $headers)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeaders** (*Phalcon\\Http\\Response\\HeadersInterface* $headers)
 
 Sets a headers bag for the response externally
 
@@ -62,13 +62,13 @@ Returns headers set by the user
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (:doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>` $cookies)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (*Phalcon\\Http\\Response\\CookiesInterface* $cookies)
 
 Sets a cookies bag for the response externally
 
 
 
-public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **getCookies** ()
+public *Phalcon\\Http\\Response\\CookiesInterface*  **getCookies** ()
 
 Returns coookies set by the user
 
