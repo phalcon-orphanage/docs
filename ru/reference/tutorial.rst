@@ -206,7 +206,7 @@ The controller classes must have the suffix "Controller" and controller actions 
 you should see something like this:
 
 .. figure:: ../_static/img/tutorial-1.png
-:align: center
+		:align: center
 
 Congratulations, you're flying with Phalcon!
 

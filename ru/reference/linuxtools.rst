@@ -13,12 +13,12 @@
 Введите в терминале следующие команды:
 
 .. figure:: ../_static/img/linux-1.png
-:align: center
+		:align: center
 
 Затем в каталоге инструментов выполните ". ./phalcon.sh", (не забудьте точку в начале):
 
 .. figure:: ../_static/img/linux-2.png
-:align: center
+		:align: center
 
 Поздравляем инструменты разработчика Phalcon установлены!
 

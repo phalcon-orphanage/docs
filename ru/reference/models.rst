@@ -476,7 +476,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 Check the EER diagram to understand better the relations:
 
 .. figure:: ../_static/img/eer-1.png
-:align: center
+		:align: center
 
 The models with their relations could be implemented as follows:
 
@@ -669,7 +669,7 @@ The table "robots_similar" has the function to define what robots are similar to
 Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
 
 .. figure:: ../_static/img/eer-2.png
-:align: center
+		:align: center
 
 A model that maps this table and its relationships is the following:
 
