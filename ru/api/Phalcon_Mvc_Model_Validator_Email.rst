@@ -33,7 +33,7 @@ Allows to validate if email fields has correct values
 Methods
 ---------
 
-public *boolean*  **validate** (*Phalcon\\Mvc\\ModelInterface* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

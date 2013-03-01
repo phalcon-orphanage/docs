@@ -176,6 +176,8 @@ API Indice
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Exception
+   Phalcon_Queue_Beanstalk
+   Phalcon_Queue_Beanstalk_Job
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Session
@@ -194,9 +196,12 @@ API Indice
    Phalcon_Validation
    Phalcon_Validation_Exception
    Phalcon_Validation_Message
+   Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
+   Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_Identical
    Phalcon_Validation_Validator_PresenceOf
+   Phalcon_Validation_Validator_Regex
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface

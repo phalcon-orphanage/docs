@@ -27,7 +27,7 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
 Methods
 ---------
 
-public  **__construct** (*boolean* $success, *Phalcon\\Mvc\\ModelInterface* $model)
+public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 
 

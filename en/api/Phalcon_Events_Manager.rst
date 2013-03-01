@@ -39,7 +39,7 @@ Removes all events from the EventsManager
 
 
 
-public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, *Phalcon\\Events\\Event* $event)
+public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
 Internal handler to call a queue of events
 

@@ -217,7 +217,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public  **setVars** (*array* $params)
+public  **setVars** (*array* $params, [*boolean* $merge])
 
 Set all the render params 
 
@@ -474,7 +474,7 @@ Magic method to retrieve a variable passed to the view
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
@@ -486,7 +486,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
 

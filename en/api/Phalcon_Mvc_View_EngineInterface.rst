@@ -7,7 +7,7 @@ Phalcon\\Mvc\\View\\EngineInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*Phalcon\\Mvc\\ViewInterface* $view, [*Phalcon\\DiInterface* $dependencyInjector])
+abstract public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\View\\Engine constructor
 

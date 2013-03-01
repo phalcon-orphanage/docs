@@ -91,7 +91,7 @@ Phalcon\\Dispatcher constructor
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\Dispatcher
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
@@ -103,7 +103,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 

@@ -7,7 +7,7 @@ Phalcon\\EscaperInterface initializer
 Methods
 ---------
 
-abstract public  **setEnconding** (*string* $encoding)
+abstract public  **setEncoding** (*string* $encoding)
 
 Sets the encoding to be used by the escaper
 

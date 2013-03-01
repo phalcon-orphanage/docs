@@ -57,7 +57,7 @@ Checks if cache exists and it hasn't expired
 
 
 
-public  **__construct** (*Phalcon\\Cache\\FrontendInterface* $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
 

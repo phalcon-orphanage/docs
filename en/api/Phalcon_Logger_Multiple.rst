@@ -7,7 +7,7 @@ Handles multiples logger handlers
 Methods
 ---------
 
-public  **push** (*Phalcon\\Logger\\AdapterInterface* $logger)
+public  **push** (:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger)
 
 Pushes a logger to the logger tail
 
@@ -19,7 +19,7 @@ Returns the registered loggers
 
 
 
-public  **setFormatter** (*Phalcon\\Logger\\FormatterInterface* $formatter)
+public  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
 Sets a global formatter
 

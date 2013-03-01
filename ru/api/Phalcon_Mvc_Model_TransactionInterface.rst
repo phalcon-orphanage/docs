@@ -7,13 +7,13 @@ Phalcon\\Mvc\\Model\\TransactionInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*Phalcon\\DiInterface* $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
+abstract public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
 
 
-abstract public  **setTransactionManager** (*Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface* $manager)
+abstract public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
 
 Sets transaction manager related to the transaction
 
@@ -31,7 +31,7 @@ Commits the transaction
 
 
 
-abstract public *boolean*  **rollback** ([*string* $rollbackMessage], [*Phalcon\\Mvc\\ModelInterface* $rollbackRecord])
+abstract public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
 
 Rollbacks the transaction
 
@@ -73,7 +73,7 @@ Checks whether internal connection is under an active transaction
 
 
 
-abstract public  **setRollbackedRecord** (*Phalcon\\Mvc\\ModelInterface* $record)
+abstract public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Sets object which generates rollback action
 

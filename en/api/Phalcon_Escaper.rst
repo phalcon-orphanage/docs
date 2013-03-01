@@ -18,7 +18,7 @@ Escapes different kinds of text securing them. By using this component you may p
 Methods
 ---------
 
-public  **setEnconding** (*string* $encoding)
+public  **setEncoding** (*string* $encoding)
 
 Sets the encoding to be used by the escaper 
 
