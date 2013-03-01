@@ -1,64 +1,63 @@
-Request Environment
-===================
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
-files, variables, etc. A web based application needs to parse that information so as to provide the correct
-response back to the requester. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` encapsulates the
-information of the request, allowing you to access it in an object-oriented way.
+Заголовки запроса (Request)
+===========================
+Каждый HTTP-запрос (исходящий как правило из браузера) содержит дополнительную информацию о запросе, такую как заголовок,
+данные, файлы, переменны и т.д. Веб-приложению требуется разобрать и проанализировать эту информацию, чтобы возвратить
+правильный ответ. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` инкапсулирует информацию запроса, 
+позволяя вам получать доступ к ней объектно-ориентированным способом.
 
 .. code-block:: php
 
     <?php
 
-    // Getting a request instance
+    // Получение инстации request 
     $request = new \Phalcon\Http\Request();
 
-    // Check whether the request was made with method POST
+    // Проверка что даные пришли методом POST
     if ($request->isPost() == true) {
-        // Check whether the request was made with Ajax
+        // Проверка что request создан через Ajax
         if ($request->isAjax() == true) {
-            echo "Request was made using POST and AJAX";
+            echo "Request создан используя POST и AJAX";
         }
     }
 
-Getting Values
------------------
-PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
-contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
-never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
-`Cross Site Scripting (XSS)`_ attacks.
+Получение значений
+------------------
+PHP автоматически заполняет суперглобальные массивы $_GET и $_POST в зависимости от типа запроса. Эти массивы
+содержат значения, которые получены из формы или параметры, отправляемые через URL. Переменные в массивы
+никогда не обезопасены и могут содержать недопустимые символы или даже вредоносный код, который может привести
+к `SQL injection`_ или `Cross Site Scripting (XSS)`_ атакам.
 
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
-$_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
-:doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
+:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` предоставляет доступ к значениям $_REQUEST,
+$_GET и $_POST массивам и обезопасивает или фильтрует через специальный сервис 'filter', (по умолчанию
+:doc:`Phalcon\\Filter <filter>`). Следующие примеры показывают одинаковое поведение:
 
 .. code-block:: php
 
-    <?php
+    <?php           
 
-    // Manually applying the filter
+    // Ручная фильтрация
     $filter = new Phalcon\Filter();
 
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
-    // Manually applying the filter to the value
+    // Ручная фильтрация значения
     $filter = new Phalcon\Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
-    // Automatically applying the filter
+    // Автоматическая фильтрация значения
     $email = $request->getPost("user_email", "email");
 
-    // Setting a default value if the param is null
+    // Получение значения по умолчанию, если параметр равен NULL
     $email = $request->getPost("user_email", "email", "some@example.com");
 
-    // Setting a default value if the param is null without filtering
+    // Получение значения по умолчанию, если параметр равен NULL без использования фильтрации
     $email = $request->getPost("user_email", null, "some@example.com");
 
 
-Accessing the Request from Controllers
---------------------------------------
-The most common place to access the request environment is in an action of a controller. To access the
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
-the $this->request public property of the controller:
+Доступ к Request из Контроллера
+-------------------------------
+Доступ к Request чаще всего требуется в действиях контроллера. Для доступа к объекту
+:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` из контроллера, необходимо обратиться к публичному свойству $this->request:
 
 .. code-block:: php
 
@@ -75,10 +74,10 @@ the $this->request public property of the controller:
         public function saveAction()
         {
 
-            // Check if request has made with POST
+            // Проверка что данные пришли методом POST POST
             if ($this->request->isPost() == true) {
 
-                // Access POST data
+                // Получение POST данных
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
 
@@ -88,10 +87,10 @@ the $this->request public property of the controller:
 
     }
 
-Uploading Files
+Загрузка файлов
 ---------------
-Another common task is file uploading. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` offers
-an object-oriented way to achieve this task:
+Еще одна частая задача - загрузка файлов :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` предлогает
+объектно-ориентированный подход для решения этой задачи:
 
 .. code-block:: php
 
@@ -102,16 +101,16 @@ an object-oriented way to achieve this task:
 
         public function uploadAction()
         {
-            // Check if the user has uploaded files
+            // Проверяем что файл загрузился
             if ($this->request->hasFiles() == true) {
-                // Print the real file names and sizes
+                // Выводим имя и размер файла
                 foreach ($this->request->getUploadedFiles() as $file) {
 
-                    //Print file details
+                    // Выводим детали
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
 
-                    //Move the file into the application
+                    // Перемещаем в приложение
                     $file->moveTo('files/');
                 }
             }
@@ -119,52 +118,52 @@ an object-oriented way to achieve this task:
 
     }
 
-Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instance of the
-:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` class. Using the $_FILES superglobal
-array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates
-only the information related to each file uploaded with the request.
+Каждый объект, возвращаемый Phalcon\\Http\\Request::getUploadedFiles() является инстанцией для
+:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>`. Использование суперглобального массива $_FILES 
+предоставляет такое же поведение. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` инкапсулирует
+только информацию, относящуюся к каждому загруженному в текущем запросе файлу.
 
-Working with Headers
+Работа с заголовками
 --------------------
-As mentioned above, request headers contain useful information that allow us to send the proper response back to
-the user. The following examples show usages of that information:
+Как уже упоминалось выше, заголовки запросов содержат полезную информацию, которая позволит нам оправить правильный ответ
+пользователю. Следующие примеры показывают как получить эту информацию:
 
 .. code-block:: php
 
     <?php
 
-    // get the Http-X-Requested-With header
+    // Получение заголовка Http-X-Requested-With
     $requestedWith = $response->getHeader("X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
-        echo "The request was made with Ajax";
+        echo "Запрос отправлен через Ajax";
     }
 
-    // Same as above
+    // Или так
     if ($request->isAjax()) {
         echo "The request was made with Ajax";
     }
 
-    // Check the request layer
+    // Проверка уровня запроса
     if ($request->isSecureRequest() == true) {
         echo "The request was made using a secure layer";
     }
 
-    // Get the servers's ip address. ie. 192.168.0.100
+    // Получение IP сервера, например 192.168.0.100
     $ipAddress = $request->getServerAddress();
 
-    // Get the client's ip address ie. 201.245.53.51
+    // Получение IP клиента, например 201.245.53.51
     $ipAddress = $request->getClientAddress();
 
-    // Get the User Agent (HTTP_USER_AGENT)
+    // Получение строки User Agent (HTTP_USER_AGENT)
     $userAgent = $request->getUserAgent();
 
-    // Get the best acceptable content by the browser. ie text/xml
+    // Получение оптимального типа контента для браузера, например text/xml
     $contentType = $request->getAcceptableContent();
 
-    // Get the best charset accepted by the browser. ie. utf-8
+    // Получение лучшей кодировки для браузера, например utf-8
     $charset = $request->getBestCharset();
 
-    // Get the best language accepted configured in the browser. ie. en-us
+    // Получение лучшего языка на котрый настроен браузер, например en-us
     $language = $request->getBestLanguage();
 
 
