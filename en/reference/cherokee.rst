@@ -31,7 +31,7 @@ Normally this behavior does not require additional settings. Add another behavio
 this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
 then make sure the option 'Match any file' is enabled:
 
-.. figure:: ../_static/img/cherokee-5.jpg
+.. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
 In the 'Handler' tab choose 'List & Send' as handler:
