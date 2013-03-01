@@ -1,19 +1,18 @@
-Tutorial 1: Let's learn by example
-==================================
+Урок 1: Рассотрим на примере
+============================
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+В этом примере рассмотрим создание приложения с простой формой регистрацией "с нуля".
+Также рассмотрим основные аспекты поведения фреймворка. Если вам интересна автоматическая генерация кода, посмотрите :doc:`developer tools <tools>`.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below:
+Проверка установки
+------------------
+Будем считать что у вас уже установлено расширение Phalcon. Проверьте, есть ли в результатах phpinfo() секция "Phalcon" или выполните следующий код:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+В результате вы должны увидеть Phalcon в списке:
 
 .. code-block:: php
 
@@ -28,15 +27,15 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
-------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+Создание проекта
+----------------
+Лучше всего следовать данному руководсву шаг за шагом. Полный код можно посмотреть `здесь <https://github.com/phalcon/tutorial>`_.
 
-File structure
-^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Структура каталогов
+^^^^^^^^^^^^^^^^^^^
+Phalcon не обязывает использовать определенную структуру каталогов. В виду слабой связанности фреймворка, вы можете использовать любую удобную структуру.
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+Для целей данного урока и для начала, мы предалгаем следующую структуру:
 
 .. code-block:: php
 
@@ -50,13 +49,13 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
 
-Beautiful URLs
-^^^^^^^^^^^^^^
-We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
+"Красивые" URLs
+^^^^^^^^^^^^^^^
+В этом примере будем использовать красивые УРЛ (ЧПУ). ЧПУ хороши как для SEO, так и лучше воспринимаются пользователем. Phalcon поддерживает rewrite-модули, представленные самыми распространенными веб-серверами. Вы не обязаны использовать ЧПУ в вашем приложении, вы можете с легкостью обойтись и без них.
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file:
+В этом примере будем использовать rewrite модуль для Apache. Создадим несколько правил в файле /.htaccess:
 
 .. code-block:: apacheconf
 
@@ -67,9 +66,9 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
+Все запросы будут перенаправлены в каталог public/ тем самым делая его корневым. Данный шаг обеспечивает закрытость внутренних файлов проекта от внешнего пользователя.
 
-The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewritten by the web server module:
+Следующий набор правил проверяет существует ли запрашиваемый файл, и если нет перенаправляет запрос index-файлу:
 
 .. code-block:: apacheconf
 
@@ -83,9 +82,9 @@ The second set of rules will check if the requested file exists, and if it does 
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Это превый файл, который вам необходимо создать. Это основной файл приложения, предназначенный для управления всеми его аспектами. Здесь вы можете реализовать как инициализацию компонентов приложения, так и его поведение.
 
-The public/index.php file should look like:
+Файл public/index.php содержит следующее:
 
 .. code-block:: php
 
@@ -119,11 +118,11 @@ The public/index.php file should look like:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
-^^^^^^^^^^^
-The first part that we find in the boostrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+Автозагрузка
+^^^^^^^^^^^^
+В первую очередь зарегистрируем автозагрузчик. Он будет использоваться для загрузки классов как контроллеров и моделей. Например мы можем зарегистрировать одну или более директорий для контроллеров, увеличив гибкость приложения. В данном примере используется компонент Phalcon\\Loader.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+С помощью него можно использовать раные стратегии загрузки классов, но в данном примере мы решили расположить классы в определенных директориях:
 
 .. code-block:: php
 
@@ -137,14 +136,12 @@ With it, we can load classes using various strategies but for this example we ha
         )
     )->register();
 
-Dependency Management
-^^^^^^^^^^^^^^^^^^^^^
-A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is
-actually very simple and practical.
+Управление зависимостями
+^^^^^^^^^^^^^^^^^^^^^^^^
+Важная концепция, которую стоит понять при использовании Phalcon это :doc:`dependency injection <di>`.
 
-A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, will
-ask the container using a name service agreed. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the
-different components achieving their work together in a transparent manner.
+DI представляет из себя глобальный контейнер для сервисов, необходимых нашему приложению. Каждый раз, когда фреймворку необходим какой-то компонент, он будет обращаться за ним к контейнеру используя определенное имя компонента.
+Так как Phalcon является слабосвязанным фреймворком, Phalcon\\DI выступает в роли клея, помогающего разным компонентам прозрачно взаимодействовать друг с другом.
 
 .. code-block:: php
 
