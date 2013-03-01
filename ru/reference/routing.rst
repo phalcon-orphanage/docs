@@ -546,7 +546,7 @@ The following are examples of custom routes:
 
 .. highlights::
 
-Beware of characters allowed in regular expression for controllers and namespaces. As these
+		Beware of characters allowed in regular expression for controllers and namespaces. As these
     become class names and in turn they're passed through the file system could be used by attackers to
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
