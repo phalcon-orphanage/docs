@@ -1,14 +1,17 @@
-Working with Namespaces
-=======================
-Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
-a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+Работа с пространством имён
+===========================
+`Пространства имён`_ могут быть использованы для исключения пересечений названий классов; это означает, что если в вашем приложении два контроллера с одинаковыми именами,
+пространства имен могут использоваться, чтобы различать их. Пространства имен также полезны для создания бандлов (bundles) или модулей.
 
-Setting up the framework
-------------------------
+Настройка фреймворка
+--------------------
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
 to perform one or all of the following tasks:
 
-Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
+Использование пространств имен накладывает некоторые последствия на загрузку соответствующего контроллера. Для настройки работы фреймворка
+с пространством имен необходимо выполнить одно или все из следующих задач:
+
+Использовать автозагрузку с учетом пространства имен, например как в Phalcon\\Loader:
 
 .. code-block:: php
 
@@ -21,7 +24,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify it in the routes as a separate parameter in the route's paths:
+Использовать в роутинге, как отдельный параметр маршрутизации пути:
 
 .. code-block:: php
 
@@ -36,7 +39,7 @@ Specify it in the routes as a separate parameter in the route's paths:
         )
     );
 
-Passing it as part of the route:
+Использовать как часть маршрута:
 
 .. code-block:: php
 
@@ -51,23 +54,23 @@ Passing it as part of the route:
         )
     );
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:
+Если в вашем приложении используется единое пространство имён для контроллеров, то вы можете определить пространство имен по умолчанию в диспетчере.
+Делая это, вы не потребуется указывать полное имя класса в пути маршрутизатора:
 
 .. code-block:: php
 
     <?php
 
-    //Registering a dispatcher
+    // Регистрация диспетчера
     $di->set('dispatcher', function() {
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
         $dispatcher->setDefaultNamespace('Store\Admin\Controllers\\');
         return $dispatcher;
     });
 
-Controllers with Namespaces
----------------------------
-The following example shows how to implement a controller that use namespaces:
+Контроллеры с пространством имён
+---------------------------------
+В следующем примере показано как использовать контроллер, который использует пространство имен:
 
 .. code-block:: php
 
@@ -90,4 +93,4 @@ The following example shows how to implement a controller that use namespaces:
 
     }
 
-.. _Namespaces: http://php.net/manual/en/language.namespaces.php
+.. _`Пространства имён:`: http://php.net/manual/en/language.namespaces.php
