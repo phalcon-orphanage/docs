@@ -64,6 +64,6 @@ APC_ использовался для всех фреймворков. По в�
 
 .. _стали: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 .. _напишите нам: http://phalcon.uservoice.com/
-.. _Скачайте исходники тестов на Github: https://github.com/phalcon/framework-bench
+.. _исходники тестов на Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
 

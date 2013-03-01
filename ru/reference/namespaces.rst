@@ -93,4 +93,4 @@ to perform one or all of the following tasks:
 
     }
 
-.. _`Пространства имён:`: http://php.net/manual/en/language.namespaces.php
+.. _Пространства имён: http://php.net/manual/en/language.namespaces.php
