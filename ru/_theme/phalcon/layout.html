@@ -17,7 +17,6 @@
         {%- endfor %}
         {%- block rootrellink %}
         <li><a href="http://www.phalconphp.com">Официальный сайт</a> &raquo;</li>
-        <li><a href="http://www.phalconphp.com">Русский сайт</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -58,7 +57,7 @@
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
             {% if versions %}
-                <h3>Project Versions</h3>
+                <h3>Версия проекта</h3>
 
                 <select name="versions" id="versions">
             {% for slug, url in versions %}
@@ -191,6 +190,7 @@
           <div id="nav-main" role="navigation">
             <div class="menubar">
               <div class="nav-main-features nav-first"><a href="http://phalconphp.com/" >ОФИЦИАЛЬНЫЙ САЙТ</a></div>
+                <div class="nav-main-features nav-first"><a href="http://phalconphp.ru/" >РУССКОЕ ЗЕРКАЛО</a></div>
               <div class="nav-main-features nav-first"><a href="http://phalconphp.ru/download" >СКАЧАТЬ</a></div>
               <div class="nav-main-features"><a href="http://phalconphp.ru/documentation" >ДОКУМЕНТАЦИЯ</a></div>
               <div class="nav-main-features"><a href="http://phalconphp.ru/support" >SUPPORT</a></div>
