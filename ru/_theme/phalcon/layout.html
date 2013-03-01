@@ -16,7 +16,8 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="http://www.phalconphp.com">Официальный сайт</a> &raquo;</li>
+        <li><a href="http://www.phalconphp.com">Русский сайт</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -66,7 +67,7 @@
                 </select>
             {% endif %}
             <div id="searchbox" style="">
-              <h3>Search</h3>
+              <h3>Поиск</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
                   <input type="text" name="q" size="18">
                   <input type="submit" value="Go">
@@ -109,7 +110,7 @@
       {%- endif %}{% endif %}
 {%- endmacro %}
 
-<html lang="en">
+<html lang="ru">
   <head>
     {% if sourcename == "error.txt" %}
     <base href="http://phalconphp.com/">
@@ -189,12 +190,12 @@
         <div align="center">
           <div id="nav-main" role="navigation">
             <div class="menubar">
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
-              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
-              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/" >ОФИЦИАЛЬНЫЙ САЙТ</a></div>
+              <div class="nav-main-features nav-first"><a href="http://phalconphp.ru/download" >СКАЧАТЬ</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.ru/documentation" >ДОКУМЕНТАЦИЯ</a></div>
+              <div class="nav-main-features"><a href="http://phalconphp.ru/support" >SUPPORT</a></div>
               <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
-              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">БЛОГ</a></div>
             </div>
           </div>
         </div>
@@ -234,18 +235,18 @@
       {%- block footer %}
         <div id="footer">
 
-          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
-          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+          <p>Нашли ошибку или опечатку? Желаете улучший этот документ? Исходники документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нажна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/support">страницу помощи</a></p>
 
-          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
-          <p>Except where otherwise noted, content on this site is licensed under the
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с 
             <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
           {%- if last_updated %}
-             {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+             {% trans last_updated=last_updated|e %}Последнее обновление {{ last_updated }}.{% endtrans %}
           {%- endif %}
           {%- if show_sphinx %}
-            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+            {% trans sphinx_version=sphinx_version|e %}Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
           {%- endif %}
 
           <p>
