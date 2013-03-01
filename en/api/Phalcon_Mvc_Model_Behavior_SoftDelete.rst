@@ -11,7 +11,7 @@ Instead of permanently delete a record it marks the record as deleted changing t
 Methods
 ---------
 
-public  **notify** (*string* $type, *Phalcon\\Mvc\\ModelInterface* $model)
+public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Listens for notifications from the models manager
 
@@ -35,7 +35,7 @@ Returns the behavior options related to an event
 
 
 
-public  **missingMethod** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
+public  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\Model\\Behavior
 
 Acts as fallbacks when a missing method is called on the model
 

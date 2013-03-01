@@ -7,7 +7,7 @@ Phalcon\\DI\\InjectionAwareInterface initializer
 Methods
 ---------
 
-abstract public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+abstract public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 

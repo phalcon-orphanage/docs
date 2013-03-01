@@ -61,6 +61,18 @@ Adds the "shared_lock" parameter to the criteria
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an AND operator
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions)
+
+Appends a condition to the current conditions using an OR operator
+
+
+
 abstract public *string*  **getWhere** ()
 
 Returns the conditions parameter in the criteria
@@ -91,7 +103,7 @@ Returns all the parameters defined in the criteria
 
 
 
-abstract public static *static*  **fromInput** (*Phalcon\\DiInterface* $dependencyInjector, *string* $modelName, *array* $data)
+abstract public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
 
 Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 

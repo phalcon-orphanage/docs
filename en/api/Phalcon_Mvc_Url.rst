@@ -20,7 +20,7 @@ This components aids in the generation of: URIs, URLs and Paths
 Methods
 ---------
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 

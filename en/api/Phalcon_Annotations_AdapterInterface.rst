@@ -7,7 +7,7 @@ Phalcon\\Annotations\\AdapterInterface initializer
 Methods
 ---------
 
-abstract public  **setReader** (*Phalcon\\Annotations\\ReaderInterface* $reader)
+abstract public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader)
 
 Sets the annotations parser
 

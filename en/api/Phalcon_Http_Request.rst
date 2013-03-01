@@ -21,7 +21,7 @@ Encapsulates request information for easy and secure access from application con
 Methods
 ---------
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 

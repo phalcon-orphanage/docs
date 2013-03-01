@@ -299,7 +299,7 @@ Check whether the database system requires a sequence to produce auto-numeric va
 
 
 
-public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\Db\\Adapter
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Db\\Adapter
 
 Sets the event manager
 
@@ -485,13 +485,13 @@ Drops a table from a schema/database
 
 
 
-public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Adds a column to a table
 
 
 
-public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Modifies a table column based on a definition
 
@@ -503,7 +503,7 @@ Drops a column from a table
 
 
 
-public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds an index to a table
 
@@ -515,7 +515,7 @@ Drop an index from a table
 
 
 
-public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index) inherited from Phalcon\\Db\\Adapter
 
 Adds a primary key to a table
 
@@ -527,7 +527,7 @@ Drops a table's primary key
 
 
 
-public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ReferenceInterface* $reference) inherited from Phalcon\\Db\\Adapter
+public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference) inherited from Phalcon\\Db\\Adapter
 
 Adds a foreign key to a table
 
@@ -539,7 +539,7 @@ Drops a foreign key from a table
 
 
 
-public *string*  **getColumnDefinition** (*Phalcon\\Db\\ColumnInterface* $column) inherited from Phalcon\\Db\\Adapter
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\Adapter
 
 Returns the SQL column definition from a column
 

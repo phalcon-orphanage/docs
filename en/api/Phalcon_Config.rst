@@ -100,7 +100,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (*Phalcon\\Config* $config)
+public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config)
 
 Merges a configuration into the current one 
 

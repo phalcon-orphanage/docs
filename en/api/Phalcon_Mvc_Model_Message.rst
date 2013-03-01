@@ -32,7 +32,7 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 ---------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*Phalcon\\Mvc\\ModelInterface* $model])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
@@ -74,7 +74,7 @@ Returns field name related to message
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (*Phalcon\\Mvc\\ModelInterface* $model)
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setModel** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Set the model who generates the message
 
@@ -94,7 +94,7 @@ Magic __toString method returns verbose message
 
 public static :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **__set_state** (*array* $message)
 
-Magic __set_state helps to recover messsages from serialization
+Magic __set_state helps to re-build messages variable exporting
 
 
 

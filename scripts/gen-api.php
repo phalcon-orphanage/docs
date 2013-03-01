@@ -465,7 +465,7 @@ foreach($classes as $className){
 				$name = '$'.$parameter->name;
 				if (isset($ret['parameters'][$name])) {
 					if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
-						if (class_exists($parameterName) || interface_exists($parameterName)) {
+						if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
 							$parameterPath =  str_replace("\\", "_", $ret['parameters'][$name]);
 							$parameterName =  str_replace("\\", "\\\\", $ret['parameters'][$name]);
 							if (!$parameter->isOptional()) {

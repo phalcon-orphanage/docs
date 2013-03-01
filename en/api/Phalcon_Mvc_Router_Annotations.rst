@@ -35,7 +35,7 @@ Adds a resource to the annotations handler A resource is a class that contains r
 
 public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addModuleResource** (*string* $module, *string* $handler, [*string* $prefix])
 
-Adds a resource to the annotations handler. The resource is a class that contains routing annotations The class is located in a module
+Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 
 
@@ -51,7 +51,7 @@ Checks for annotations in the controller docblock
 
 
 
-public  **processActionAnnotation** (*string* $module, *string* $namespace, *string* $controller, *string* $action, *Phalcon\\Annotations\\Annotation* $annotation)
+public  **processActionAnnotation** (*string* $module, *string* $namespace, *string* $controller, *string* $action, :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` $annotation)
 
 Checks for annotations in the public methods of the controller
 
@@ -59,13 +59,13 @@ Checks for annotations in the public methods of the controller
 
 public  **setControllerSuffix** (*string* $controllerSuffix)
 
-Change the controller class suffix
+Changes the controller class suffix
 
 
 
 public  **setActionSuffix** (*string* $actionSuffix)
 
-Change the action class suffix
+Changes the action method suffix
 
 
 
@@ -81,7 +81,7 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\Mvc\\Router
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\Router
 
 Sets the dependency injector
 
@@ -147,7 +147,7 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods]) inherited from Phalcon\\Mvc\\Router
 
-Adds a route to the router on any HTTP method 
+Adds a route to the router without any HTTP constraint 
 
 .. code-block:: php
 
