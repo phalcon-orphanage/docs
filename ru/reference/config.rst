@@ -1,24 +1,24 @@
-Reading Configurations
-======================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
-PHP objects for use in an application.
+Чтение конфигурации
+===================
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` это компонент для чтения конфигурации в разных форматах (используя адаптеры), и преобразует её
+в PHP объекты для использования в приложении.
 
-File Adapters
--------------
-The adapters available are:
+Файловый адаптер
+----------------
+Доступные адаптеры:
 
 +-----------+---------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                       |
+| Тип файла | Описание                                                                                          |
 +===========+===================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file.    |
+| Ini       | Использует INI файлы для хранения конфигурации. Использует PHP функцию parse_ini_file.            |
 +-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
+| Array     | Использует многомерные массивы PHP для конфигурации. Этот адаптер максимально производителен.     |
 +-----------+---------------------------------------------------------------------------------------------------+
 
-Native Arrays
--------------
-The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
-read during this request.
+Нативные массивы
+----------------
+Следующий пример показывает как конвертировать нативный массив в объект Phalcon\\Config. Адаптер для нативных массивов более производителен,
+так как файлы не разбираются при обращении.
 
 .. code-block:: php
 
@@ -46,7 +46,7 @@ read during this request.
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-If you want to better organize your project you can save the array in another file and then read it.
+Если вы хотите лучшей организации для вашего проекта, можно сохранить массив в другой файл и затем прочитать его.
 
 .. code-block:: php
 
@@ -55,9 +55,10 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
     $config = new \Phalcon\Config($settings);
 
-Reading INI Files
+Чтение INI файлов
 -----------------
-Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+Ini файлы являются довольно распространённым способом хранения конфигурации. Phalcon\\Config использует оптимизированную PHP функцию parse_ini_file 
+для чтения таких файлов. Разделы файла разбиваются в подпункты конфигурации для более лёгкого доступа.
 
 .. code-block:: ini
 
@@ -76,7 +77,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     [models]
     metadata.adapter  = "Memory"
 
-You can read the file as follows:
+Чтение файла можно произвести таким способом:
 
 .. code-block:: php
 
@@ -88,9 +89,9 @@ You can read the file as follows:
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Merging Configurations
-----------------------
-Phalcon\\Config allows to merge a configuration object into another one recursively:
+Объединение конфигураций
+------------------------
+Phalcon\\Config позволяет объединить объекты конфигурации друг в друга рекурсивно:
 
 .. code-block:: php
 
@@ -115,7 +116,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
 
     print_r($config);
 
-The above code produces the following:
+Код выше выдаёт такой результат:
 
 .. code-block:: html
 

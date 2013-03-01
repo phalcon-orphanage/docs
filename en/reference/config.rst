@@ -1,24 +1,24 @@
-Чтение конфигурации
-===================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` это компонент для чтения конфигурации в разных форматах (используя адаптеры), и преобразует её
-в PHP объекты для использования в приложении.
+Reading Configurations
+======================
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
+PHP objects for use in an application.
 
-Файловый адаптер
-----------------
-Доступные адаптеры:
+File Adapters
+-------------
+The adapters available are:
 
 +-----------+---------------------------------------------------------------------------------------------------+
-| Тип файла | Описание                                                                                          |
+| File Type | Description                                                                                       |
 +===========+===================================================================================================+
-| Ini       | Использует INI файлы для хранения конфигурации. Использует PHP функцию parse_ini_file.            |
+| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file.    |
 +-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Использует многомерные массивы PHP для конфигурации. Этот адаптер максимально производителен.     |
+| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
 +-----------+---------------------------------------------------------------------------------------------------+
 
-Нативные массивы
-----------------
-Следующий пример показывает как конвертировать нативный массив в объект Phalcon\\Config. Адаптер для нативных массивов более производителен,
-так как файлы не разбираются при обращении.
+Native Arrays
+-------------
+The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
+read during this request.
 
 .. code-block:: php
 
@@ -46,7 +46,7 @@
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-Если вы хотите лучшей организации для вашего проекта, можно сохранить массив в другой файл и затем прочитать его.
+If you want to better organize your project you can save the array in another file and then read it.
 
 .. code-block:: php
 
@@ -55,10 +55,9 @@
     require "config/config.php";
     $config = new \Phalcon\Config($settings);
 
-Чтение INI файлов
+Reading INI Files
 -----------------
-Ini файлы являются довольно распространённым способом хранения конфигурации. Phalcon\\Config использует оптимизированную PHP функцию parse_ini_file 
-для чтения таких файлов. Разделы файла разбиваются в подпункты конфигурации для более лёгкого доступа.
+Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
 
 .. code-block:: ini
 
@@ -77,7 +76,7 @@ Ini файлы являются довольно распространённы�
     [models]
     metadata.adapter  = "Memory"
 
-Чтение файла можно произвести таким способом:
+You can read the file as follows:
 
 .. code-block:: php
 
@@ -89,9 +88,9 @@ Ini файлы являются довольно распространённы�
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Объединение конфигураций
-------------------------
-Phalcon\\Config позволяет объединить объекты конфигурации друг в друга рекурсивно:
+Merging Configurations
+----------------------
+Phalcon\\Config allows to merge a configuration object into another one recursively:
 
 .. code-block:: php
 
@@ -116,7 +115,7 @@ Phalcon\\Config позволяет объединить объекты конф�
 
     print_r($config);
 
-Код выше выдаёт такой результат:
+The above code produces the following:
 
 .. code-block:: html
 
