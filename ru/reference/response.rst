@@ -1,5 +1,5 @@
-Returning Responses
-===================
+Заголовки ответа (Responses)
+============================
 
 Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The basic usage is the following:
