@@ -11,19 +11,19 @@ Generates database specific SQL for the Sqlite RBDM
 Methods
 ---------
 
-public *string*  **getColumnDefinition** (*Phalcon\\Db\\ColumnInterface* $column)
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Gets the column name in Sqlite
 
 
 
-public *string*  **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column)
+public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Generates SQL to add a column to a table
 
 
 
-public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column)
+public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Generates SQL to modify a column in a table
 
@@ -35,7 +35,7 @@ Generates SQL to delete a column from a table
 
 
 
-public *string*  **addIndex** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index)
+public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add an index to a table
 
@@ -47,7 +47,7 @@ Generates SQL to delete an index from a table
 
 
 
-public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index)
+public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Generates SQL to add the primary key to a table
 
@@ -59,7 +59,7 @@ Generates SQL to delete primary key from a table
 
 
 
-public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\Reference* $reference)
+public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` $reference)
 
 Generates SQL to add an index to a table
 

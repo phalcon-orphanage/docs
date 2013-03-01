@@ -1,9 +1,9 @@
-Class **Phalcon\\Validation\\Validator\\Identical**
-===================================================
+Class **Phalcon\\Validation\\Validator\\Email**
+===============================================
 
 *extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
-Checks if a value is identical to other
+Checks if a value has a correct e-mail format
 
 
 Methods

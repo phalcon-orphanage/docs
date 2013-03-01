@@ -7,7 +7,7 @@ Phalcon\\Mvc\\Model\\Query\\StatusInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*boolean* $success, *Phalcon\\Mvc\\ModelInterface* $model)
+abstract public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Phalcon\\Mvc\\Model\\Query\\Status
 

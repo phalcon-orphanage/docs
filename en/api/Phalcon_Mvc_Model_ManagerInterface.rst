@@ -7,7 +7,7 @@ Phalcon\\Mvc\\Model\\ManagerInterface initializer
 Methods
 ---------
 
-abstract public  **initialize** (*Phalcon\\Mvc\\ModelInterface* $model)
+abstract public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Initializes a model in the model manager
 
@@ -31,19 +31,19 @@ Loads a model throwing an exception if it doesn't exist
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasOne** (*Phalcon\\Mvc\\ModelInterface* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a 1-1 relation between two models
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addBelongsTo** (*Phalcon\\Mvc\\ModelInterface* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation reverse 1-1  between two models
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasMany** (*Phalcon\\Mvc\\ModelInterface* $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation 1-n between two models
 
@@ -67,43 +67,43 @@ Checks whether a model has a hasOne relation with another model
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
+abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
 
 Gets belongsTo related records from a model
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
+abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
 
 Gets hasMany related records from a model
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, *Phalcon\\Mvc\\Model* $record, [*array* $parameters])
+abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
 
 Gets belongsTo related records from a model
 
 
 
-abstract public *array*  **getBelongsTo** (*Phalcon\\Mvc\\ModelInterface* $model)
+abstract public *array*  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets belongsTo relations defined on a model
 
 
 
-abstract public *array*  **getHasMany** (*Phalcon\\Mvc\\ModelInterface* $model)
+abstract public *array*  **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets hasMany relations defined on a model
 
 
 
-abstract public *array*  **getHasOne** (*Phalcon\\Mvc\\ModelInterface* $model)
+abstract public *array*  **getHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets hasOne relations defined on a model
 
 
 
-abstract public *array*  **getHasOneAndHasMany** (*Phalcon\\Mvc\\ModelInterface* $model)
+abstract public *array*  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets hasOne relations defined on a model
 
@@ -139,19 +139,19 @@ Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 
 
 
-abstract public  **addBehavior** (*Phalcon\\Mvc\\ModelInterface* $model, *Phalcon\\Mvc\\Model\\BehaviorInterface* $behavior)
+abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
 
 Binds a behavior to a model
 
 
 
-abstract public  **notifyEvent** (*string* $eventName, *Phalcon\\Mvc\\ModelInterface* $model)
+abstract public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 
-abstract public *boolean*  **missingMethod** (*Phalcon\\Mvc\\ModelInterface* $model, *string* $eventName, *array* $data)
+abstract public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *array* $data)
 
 Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 

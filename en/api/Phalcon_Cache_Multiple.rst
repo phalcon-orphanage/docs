@@ -13,7 +13,7 @@ Phalcon\\Cache\\Multiple constructor
 
 
 
-public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (*Phalcon\\Cache\\BackendInterface* $backend)
+public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $backend)
 
 Adds a backend
 

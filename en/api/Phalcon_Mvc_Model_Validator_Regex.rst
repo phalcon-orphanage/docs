@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Regex**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
-Allows to validate if the value of a field matches a regular expression  
+Allows validate if the value of a field matches a regular expression  
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@ Allows to validate if the value of a field matches a regular expression
 Methods
 ---------
 
-public *boolean*  **validate** (*Phalcon\\Mvc\\ModelInterface* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 
