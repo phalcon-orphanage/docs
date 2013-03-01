@@ -91,13 +91,13 @@ Drops a table from a schema/database
 
 
 
-abstract public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column)
+abstract public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Adds a column to a table
 
 
 
-abstract public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ColumnInterface* $column)
+abstract public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Modifies a table column based on a definition
 
@@ -109,7 +109,7 @@ Drops a column from a table
 
 
 
-abstract public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index)
+abstract public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds an index to a table
 
@@ -121,7 +121,7 @@ Drop an index from a table
 
 
 
-abstract public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\IndexInterface* $index)
+abstract public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
 Adds a primary key to a table
 
@@ -133,7 +133,7 @@ Drops primary key from a table
 
 
 
-abstract public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, *Phalcon\\Db\\ReferenceInterface* $reference)
+abstract public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
 
 Adds a foreign key to a table
 
@@ -145,7 +145,7 @@ Drops a foreign key from a table
 
 
 
-abstract public *string*  **getColumnDefinition** (*Phalcon\\Db\\ColumnInterface* $column)
+abstract public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
 Returns the SQL column definition from a column
 

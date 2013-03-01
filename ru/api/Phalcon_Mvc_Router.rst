@@ -34,7 +34,7 @@ Phalcon\\Mvc\\Router constructor
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 
@@ -117,7 +117,7 @@ Handles routing information received from the rewrite engine
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
 
-Adds a route to the router on any HTTP method 
+Adds a route to the router without any HTTP constraint 
 
 .. code-block:: php
 

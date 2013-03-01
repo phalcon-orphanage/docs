@@ -7,7 +7,7 @@ Phalcon\\Mvc\\CollectionInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector])
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Collection
 
@@ -75,7 +75,7 @@ Writes an attribute value by its name
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (*Phalcon\\Mvc\\Collection* $collection, *array* $document)
+abstract public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
 
 Returns a cloned collection
 
@@ -146,7 +146,7 @@ Returns all the validation messages
 
 
 
-abstract public  **appendMessage** (*Phalcon\\Mvc\\Model\\MessageInterface* $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 

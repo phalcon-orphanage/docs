@@ -24,7 +24,7 @@ Phalcon\\CLI\\Router constructor
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
 

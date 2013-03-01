@@ -34,7 +34,7 @@ Allows to validate if a filed have a value different of null and empty string ("
 Methods
 ---------
 
-public *boolean*  **validate** (*Phalcon\\Mvc\\ModelInterface* $record)
+public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Executes the validator
 

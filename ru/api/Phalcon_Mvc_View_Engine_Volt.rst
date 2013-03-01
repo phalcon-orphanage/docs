@@ -59,7 +59,7 @@ Extracts a slice from an string/array/traversable object value
 
 
 
-public  **__construct** (*Phalcon\\Mvc\\ViewInterface* $view, [*Phalcon\\DiInterface* $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -83,7 +83,7 @@ Returns the view component related to the adapter
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
@@ -95,7 +95,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (*Phalcon\\Events\\ManagerInterface* $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
 

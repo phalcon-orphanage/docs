@@ -44,13 +44,13 @@ Constants
 Methods
 ---------
 
-final public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector], [*Phalcon\\Mvc\\Model\\ManagerInterface* $modelsManager])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public  **setDI** (*Phalcon\\DiInterface* $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -86,7 +86,7 @@ Returns the models manager related to the entity instance
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -222,7 +222,7 @@ Assigns values to a model from an array
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*Phalcon\\Mvc\\Model* $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -245,7 +245,7 @@ Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (*Phalcon\\Mvc\\Model* $base, *array* $data, [*int* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -316,7 +316,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([*Phalcon\\DiInterface* $dependencyInjector])
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Create a criteria for a specific model
 
@@ -447,7 +447,7 @@ Cancel the current operation
 
 
 
-public  **appendMessage** (*Phalcon\\Mvc\\Model\\MessageInterface* $message)
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -910,13 +910,28 @@ Setups a behavior in a model
 
 protected  **keepSnapshots** ()
 
-Sets if the model should keep the original record snapshot in memory
+Sets if the model must keep the original record snapshot in memory 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+    	$this->keepSnapshots(true);
+       }
+    
+    }
+
 
 
 
 public  **setSnapshotData** (*array* $data, [*array* $columnMap])
 
-Sets the record's snapshot data
+Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
 
 
@@ -941,6 +956,27 @@ Check if an specific attribute has changed This only works if the model is keepi
 public *array*  **getChangedFields** ()
 
 Returns a list of changed values
+
+
+
+protected  **useDynamicUpdate** ()
+
+Sets if a model must use dynamic update instead of the all-field update 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+    	$this->useDynamicUpdate(true);
+       }
+    
+    }
+
 
 
 

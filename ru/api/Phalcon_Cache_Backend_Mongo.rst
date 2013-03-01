@@ -34,7 +34,7 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 Methods
 ---------
 
-public  **__construct** (*Phalcon\\Cache\\FrontendInterface* $frontend, [*array* $options])
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\Mongo constructor
 

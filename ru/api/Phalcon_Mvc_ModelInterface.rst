@@ -7,13 +7,13 @@ Phalcon\\Mvc\\ModelInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** ([*Phalcon\\DiInterface* $dependencyInjector], [*Phalcon\\Mvc\\Model\\ManagerInterface* $modelsManager])
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **setTransaction** (*Phalcon\\Mvc\\Model\\TransactionInterface* $transaction)
+abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
 Sets a transaction related to the Model instance
 
@@ -79,13 +79,13 @@ Assigns values to a model from an array
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **cloneResultMap** (*Phalcon\\Mvc\\Model* $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
+abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  $result **cloneResult** (*Phalcon\\Mvc\\ModelInterface* $base, *array* $result)
+abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  $result **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *array* $result)
 
 Assigns values to a model from an array returning a new model
 
@@ -109,7 +109,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **query** ([*Phalcon\\DiInterface* $dependencyInjector])
+abstract public static :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Create a criteria for a especific model
 
@@ -157,7 +157,7 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 
 
-abstract public  **appendMessage** (*Phalcon\\Mvc\\Model\\MessageInterface* $message)
+abstract public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process
 
