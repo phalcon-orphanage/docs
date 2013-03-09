@@ -1,21 +1,23 @@
-Class **Phalcon\\Validation\\Validator\\Regex**
-===============================================
+Class **Phalcon\\Validation\\Validator\\StringLength**
+======================================================
 
 *extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Allows validate if the value of a field matches a regular expression  
+Validates that a string has the specified maximum and minimum constraints  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\Regex as RegexValidator;
+    use Phalcon\Validation\Validator\StringLength as StringLength;
     
-    $validator->add('created_at', new RegexValidator(array(
-       'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
-       'message' => 'The creation date is invalid'
+    $validation->validate('name_last', new StringLength(array(
+    'max' => 50,
+    'min' => 2,
+    'messageMaximum' => 'We don't like really long names',
+    'messageMinimum' => 'We want more than just their initials'
     )));
 
 

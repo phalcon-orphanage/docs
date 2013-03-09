@@ -1,9 +1,9 @@
-Class **Phalcon\\Forms\\Element\\Text**
-=======================================
+Class **Phalcon\\Forms\\Element\\Password**
+===========================================
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Text component INPUT[type=text] for forms
+Text component INPUT[type=password] for forms
 
 
 Methods

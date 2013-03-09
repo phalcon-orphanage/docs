@@ -530,7 +530,7 @@ The following example shows how to use operators:
     {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
 
     {% for index in 0..robots|length %}
-        {% if isset robots[index] %}
+        {% if robots[index] is defined %}
             {{ "Name: " ~ robots[index] }}
         {% endif %}
     {% endfor %}

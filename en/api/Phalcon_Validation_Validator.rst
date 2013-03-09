@@ -15,7 +15,7 @@ Phalcon\\Validation\\Validator constructor
 
 public *mixed*  **getOption** (*string* $key)
 
-Returns an option in the validator's option Returns null if the option hasn't been passed
+Returns an option in the validator's options Returns null if the option hasn't been set
 
 
 

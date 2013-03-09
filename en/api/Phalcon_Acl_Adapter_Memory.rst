@@ -70,7 +70,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 
-public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array* $accessInherits])
+public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array|string* $accessInherits])
 
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
 

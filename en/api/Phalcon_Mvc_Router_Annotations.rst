@@ -24,6 +24,13 @@ A router that reads routes annotations from classes/resources
 
 
 
+Constants
+---------
+
+*integer* **URI_SOURCE_GET_URL**
+
+*integer* **URI_SOURCE_SERVER_REQUEST_URI**
+
 Methods
 ---------
 
@@ -96,6 +103,19 @@ Returns the internal dependency injector
 protected *string*  **_getRewriteUri** () inherited from Phalcon\\Mvc\\Router
 
 Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
+
+
+
+public  **setUriSource** (*string* $uriSource) inherited from Phalcon\\Mvc\\Router
+
+Sets the URI source. One of the URI_SOURCE_* constants 
+
+.. code-block:: php
+
+    <?php
+
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+
 
 
 

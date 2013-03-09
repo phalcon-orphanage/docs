@@ -80,6 +80,19 @@ Appends a message to the group
 
 
 
+public  **appendMessages** (*Phalcon\\Validation\\MessageInterface[]* $messages)
+
+Appends an array of messages to the group 
+
+.. code-block:: php
+
+    <?php
+
+     $messages->appendMessages($messagesArray);
+
+
+
+
 public *int*  **count** ()
 
 Returns the number of messages in the list

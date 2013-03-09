@@ -80,6 +80,7 @@ API Indice
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
    Phalcon_Forms_Element
+   Phalcon_Forms_Element_Password
    Phalcon_Forms_Element_Text
    Phalcon_Forms_Exception
    Phalcon_Forms_Form
@@ -199,9 +200,12 @@ API Indice
    Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
    Phalcon_Validation_Validator_Email
+   Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_Identical
+   Phalcon_Validation_Validator_InclusionIn
    Phalcon_Validation_Validator_PresenceOf
    Phalcon_Validation_Validator_Regex
+   Phalcon_Validation_Validator_StringLength
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface
@@ -260,3 +264,4 @@ API Indice
    Phalcon_Session_AdapterInterface
    Phalcon_Session_BagInterface
    Phalcon_Translate_AdapterInterface
+   Phalcon_Validation_ValidatorInterface

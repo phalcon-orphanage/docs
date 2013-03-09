@@ -73,6 +73,20 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
 
 
 
+public *\PDOStatement*  **prepare** (*string* $sqlStatement) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Returns a PDO prepared statement to be executed with 'executePrepared' 
+
+.. code-block:: php
+
+    <?php
+
+     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
+     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+
+
+
+
 public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
@@ -125,7 +139,7 @@ Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed
 
     <?php
 
-    $connection->query("DELETE FROM robots");
+    $connection->execute("DELETE FROM robots");
     echo $connection->affectedRows(), ' were deleted';
 
 

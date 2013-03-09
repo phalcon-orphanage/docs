@@ -129,7 +129,7 @@ Sets a transaction related to the Model instance
 
 protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** ()
 
-Sets table name which model should be mapped (deprecated)
+Sets table name which model should be mapped
 
 
 
@@ -141,7 +141,7 @@ Returns table name mapped in the model
 
 protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** ()
 
-Sets schema name where table mapped is located (deprecated)
+Sets schema name where table mapped is located
 
 
 
@@ -602,7 +602,7 @@ Save the related records assigned in the has-one/has-many relations
 
 
 
-public *boolean*  **save** ([*array* $data])
+public *boolean*  **save** ([*array* $data], [*array* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -625,7 +625,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public *boolean*  **create** ([*array* $data])
+public *boolean*  **create** ([*array* $data], [*array* $whiteList])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -651,7 +651,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
 
 
-public *boolean*  **update** ([*array* $data])
+public *boolean*  **update** ([*array* $data], [*array* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 

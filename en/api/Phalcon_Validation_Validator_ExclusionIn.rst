@@ -1,11 +1,11 @@
-Class **Phalcon\\Validation\\Validator\\Email**
-===============================================
+Class **Phalcon\\Validation\\Validator\\ExclusionIn**
+=====================================================
 
 *extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Checks if a value has a correct e-mail format
+Check if a value is not included into a list of values
 
 
 Methods
