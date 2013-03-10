@@ -1,164 +1,163 @@
-Access Control Lists ACL
+Список Контроля Доступа (ACL)
 ========================
-:doc:`Phalcon\\Acl <../api/Phalcon_Acl>` provides an easy and lightweight management of ACLs as well as the permissions
-attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying
-objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+:doc:`Phalcon\\Acl <../api/Phalcon_Acl>` предоставляет простое и легкое управление контролем доступа и прикрепленными разрешениями. `Список контроля доступа`_ (ACL) позволяет приложению управлять доступом к своим областям и основным запрошенным объектам.
+Необходимо понимать основные методологии ACL, чтобы понимать принцип работы.
 
-In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by
-the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
+И в заключении: ACL состоит из ролей и ресурсов. Ресурсами являются объекты, на которые накладываются определенные разрешения с помощью ACL.
+Ролями являются объекты, которые запрашивают доступ к ресурсам и получаются ответ от ACL: разрешено/запрещенно.
 
-Creating an ACL
+Создание ACL
 ---------------
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:
+Этот компонент изначально сделан так, чтобы работать непосредственно в памяти. Это предоставляет простое использование и скорость в обращении к любому аспекту списка. Конструктор :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` принимает в качестве первого параметра адаптер, который будет использоваться для получения информации связанной с контролируемым списком. Пример использования адаптера памяти:
 
 .. code-block:: php
 
     <?php $acl = new \Phalcon\Acl\Adapter\Memory();
 
-By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level.
+По умолчанию :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` предоставляет доступ к действию над ресурсом, которое еще не было определенно в ACL. Чтобы увеличить уровень безопасности мы можем указать уровень "запрещенно", как уровень по умолчанию.
 
 .. code-block:: php
 
     <?php
 
-    // Default action is deny access
+    // Указываем "запрещенно" по умолчанию для тех объектов, которые не были занесены в список контроля доступа
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-Adding Roles to the ACL
+Добавление ролей в ACL
 -----------------------
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+Ролью является объект, который имеет или не имеет доступа к определенному ресурсу в списке доступа. Для примера, мы определим роли людей из организации. Класс :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`  позволяет создать роли в более структурированной форме. Давайте добавим несколько ролей в наш недавно созданный список:
 
 .. code-block:: php
 
     <?php
 
-    // Create some roles
+    // Создаем роли
     $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
     $roleGuests = new \Phalcon\Acl\Role("Guests");
 
-    // Add "Guests" role to acl
+    // Добавляем "Guests" в список ACL
     acl->addRole($roleGuests);
 
-    // Add "Designers" role to acl without a Phalcon\Acl\Role
+    // Добавляем "Designers" без класса Phalcon\Acl\Role
     $acl->addRole("Designers");
 
-As you can see, roles are defined directly without using a instance.
+Как вы можете видеть, роли определяются непосредственно, без использования экземпляра.
 
-Adding Resources
+Добавление ресурсов
 ----------------
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+Ресурсами являются объекты, доступ к которым контролируется. Обычно в MVC приложениях ресурсы относятся к контроллерам. Хотя это не является обязательным, класс :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` может быть использован при определении любых ресурсов. Важно добавить связующие действия или операции над ресурсами, чтобы ACL мог понимать, что ему нужно контролировать.
 
 .. code-block:: php
 
     <?php
 
-    // Define the "Customers" resource
+    // Определяем ресурс "Customers"
     $customersResource = new \Phalcon\Acl\Resource("Customers");
 
-    // Add "customers" resource with a couple of operations
+    // Добавим ресурс "Customers" с несколькими операциями
     $acl->addResource($customersResource, "search");
     $acl->addResource($customersResource, array("create", "update"));
 
-Defining Access Controls
+Определение контроля доступа
 ------------------------
-Now we've roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level "allow" or "deny".
+Теперь у нас есть роли и ресурсы. Настало время указать для ACL какие разрешения имеют роли при доступе к ресурсам. Данная часть очень важна, особенно принимая во внимание используемый по умолчанию уровень "разрешить" или "запретить".
 
 .. code-block:: php
 
     <?php
 
-    // Set access level for roles into resources
+    // Задаем уровень доступа для ролей на определенный ресурс
     $acl->allow("Guests", "Customers", "search");
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.
+Метод "allow" определяет, что данная роль имеет доступ к действию над ресурсом. Метод "deny" делает обратное.
 
-Querying an ACL
+Запрос к ACL
 ---------------
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+После того, как список был полностью составлен мы можем запрашивать проверку на права той или иной роли.
 
 .. code-block:: php
 
     <?php
 
-    // Check whether role has access to the operations
-    $acl->isAllowed("Guests", "Customers", "edit");   //Returns 0
-    $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
-    $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
+    // Проверяем, имеет ли роль "Guests" доступ к разным операциям по отношению к ресурсу "Customers"
+    $acl->isAllowed("Guests", "Customers", "edit");   // Возвращает 0
+    $acl->isAllowed("Guests", "Customers", "search"); // Возвращает 1
+    $acl->isAllowed("Guests", "Customers", "create"); // Возвращает 1
 
-Roles Inheritance
+Наследование ролей
 -----------------
-You can build complex role structures using the inheritance that :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list.
+Вы можете строить сложные структуры ролей используя наследование, которое предоставляет класс :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`. Роли могут наследовать доступ других ролей. Чтобы использовать наследование ролей вам необходимо передать в качестве второго параметра другую роль при определении роли.
 
 .. code-block:: php
 
     <?php
 
-    // Create some roles
+    // Создаем несколько ролей
     $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
     $roleGuests = new \Phalcon\Acl\Role("Guests");
 
-    // Add "Guests" role to acl
+    // Добавляем роль "Guests"
     $acl->addRole($roleGuests);
 
-    // Add "Administrators" role inheriting from "Guests" its accesses
+    // Добавляем роль "Administrators" наследуемую от роли "Guests"
     $acl->addRole($roleAdmins, $roleGuests);
 
-Serializing ACL lists
+Сериализация ACL
 ---------------------
-To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+Чтобы увеличить производительность :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` можно сериализовать объект для хранения в текстовом формате или в базе данных, чтобы можно было использовать :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` без переобъявления всего списка каждый раз. Вы можете сделать это следующим образом:
 
 .. code-block:: php
 
     <?php
 
-    //Check whether acl data already exist
+    // Проверяем существует ли сериализованный файл
     if (!file_exists("app/security/acl.data")) {
 
         $acl = new \Phalcon\Acl("Memory");
 
-        //... Define roles, resources, access, etc
+        //... Определяем роли, ресурсы, доступ и т.д.
 
-        // Store serialized list into plain file
+        // Сохраняем сериализованный объект в файл
         file_put_contents("app/security/acl.data", serialize($acl));
 
     } else {
 
-         //Restore acl object from serialized file
+         // Восстанавливаем ACL объект из текстового файла
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
-    // Use acl list as needed
+    // Используем ACL
     if ($acl->isAllowed("Guests", "Customers", "edit")) {
-        echo "Access granted!";
+        echo "Доступ разрешен!";
     } else {
-        echo "Access denied :(";
+        echo "Доступ запрещен :(";
     }
 
-Acl Events
+Acl События
 ----------
-:doc:`Phalcon\\Acl <../api/Phalcon_Acl>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
-are triggered using the type "acl". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Acl <../api/Phalcon_Acl>` может отправлять события в :doc:`EventsManager <events>`. События срабатывают
+  используя тип "acl". Некоторые события могут возвращать boolean значение 'false', чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-+----------------------+------------------------------------------------------------+---------------------+
-| Event Name           | Triggered                                                  | Can stop operation? |
-+======================+============================================================+=====================+
-| beforeCheckAccess    | Triggered before checking if a role/resource has access    | Yes                 |
-+----------------------+------------------------------------------------------------+---------------------+
-| afterCheckAccess     | Triggered after checking if a role/resource has access     | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
++----------------------+------------------------------------------------------------+----------------------------+
+| Название события     | Когда срабатывает                                          | Может остановить операцию? |
++======================+============================================================+============================+
+| beforeCheckAccess    | Срабатывает перед проверкой доступа роли/ресурса           | Да                         |
++----------------------+------------------------------------------------------------+----------------------------+
+| afterCheckAccess     | Срабатывает после проверки доступа роли/ресурса            | Нет                        |
++----------------------+------------------------------------------------------------+----------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+В следующем примере показано, как прикрепить слушателей (listeners) к компоненту:
 
 .. code-block:: php
 
     <?php
 
-    //Create an event manager
+    // Создаем менеджер событий
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Attach a listener for type "acl"
+    // Прикрепляем слушателя (функцию/callback) к типу "acl"
     $eventsManager->attach("acl", function($event, $acl) {
         if ($event->getType() == 'beforeCheckAccess') {
              echo   $acl->getActiveRole(),
@@ -169,15 +168,15 @@ The following example demonstrates how to attach listeners to this component:
 
     $acl = new \Phalcon\Acl\Adapter\Memory();
 
-    //Setup the $acl
+    // Настраиваем $acl
     //...
 
-    //Bind the eventsManager to the acl component
+    // Присваиваем менеджера событий к компоненту ACL
     $acl->setEventsManager($eventManagers);
 
-Implementing your own adapters
-------------------------------
-The :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` interface must be implemented in order
-to create your own ACL adapters or extend the existing ones.
+Реализация собственных адаптеров
+--------------------------------
+Должен быть реализован интерфейс :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` для того,
+чтобы создать свой адаптер или унаследовать от существующего.
 
-.. _Access Control Lists: http://en.wikipedia.org/wiki/Access_control_list
+.. _Список контроля доступа: http://ru.wikipedia.org/wiki/ACL
