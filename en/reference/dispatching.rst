@@ -159,12 +159,6 @@ More forwarding examples:
         "params" => array(1, 2, 3)
     ));
 
-    // Forward flow to another action in the current controller
-    // passing parameters
-    $this->dispatcher->forward(array(
-        "action" => "search",
-        "params" => array(1, 2, 3)
-    ));
 
 A forward action accepts the following parameters:
 
