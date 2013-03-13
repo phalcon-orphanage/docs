@@ -1142,7 +1142,7 @@ Using Volt in a stand-alone mode can be demonstrated below:
     <?php
 
     //Create a compiler
-    $compiler = \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
 
     //Optionally add some options
     $compiler->setOptions(array(
