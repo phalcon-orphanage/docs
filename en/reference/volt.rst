@@ -733,9 +733,9 @@ Partial vs Include
 ^^^^^^^^^^^^^^^^^^
 Keep the following points in mind when choosing to use the "partial" function or "include":
 
-* 'Partial' allow you to include templates made in Volt and other template engines as well
-* 'Partial' allow you to pass an expression like a variable allowing to include the content of other view dynamically
-* 'Partial' are better if the content that you've included changes frequently
+* 'Partial' allows you to include templates made in Volt and in other template engines as well
+* 'Partial' allows you to pass an expression like a variable allowing to include the content of other view dynamically
+* 'Partial' is better if the content that you have to include changes frequently
 
 * 'Include' copies the compiled content into the view which improves the performance
 * 'Include' only allows to include templates made with Volt
