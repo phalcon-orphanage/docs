@@ -383,6 +383,8 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     <?php
 
+    use \Phalcon\Db\Column;
+
     //Bind parameters
     $parameters = array(
         "name" => "Robotina",
@@ -391,8 +393,8 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     //Casting Types
     $types = array(
-        "name" => \Phalcon\Db\Column::BIND_PARAM_STR,
-        "year" => \Phalcon\Db\Column::BIND_PARAM_INT
+        "name" => Column::BIND_PARAM_STR,
+        "year" => Column::BIND_PARAM_INT
     );
 
     // Query robots binding parameters with string placeholders
@@ -1674,6 +1676,27 @@ A callback also can be used to create a conditional assigment of automatic defau
     or variable data. The value of these fields is ignored when binding parameters to the query.
     So it could be used to attack the application injecting SQL.
 
+Dynamic Update
+^^^^^^^^^^^^^^
+SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update). 
+You can change specific models to make dynamic updates, in this case, just the fields that had changed
+are used to create the final SQL statement.
+
+In some cases this could improve the performance by reducing the traffic between the application and the database server,
+this specially helps when the table has blob/text fields:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function initalize()
+        {
+            $this->useDynamicUpdate(true);
+        }
+    }
+
 Deleting Records
 ----------------
 The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
@@ -1978,14 +2001,13 @@ A behavior is also capable of intercept missing methods on your models:
 
     <?php
 
-    use Phalcon\Mvc\ModelInterface,
-        Phalcon\Mvc\Model\Behavior,
+    use Phalcon\Mvc\Model\Behavior,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
 
-        public function missingMethod(ModelInterface $model, $method, $arguments=array())
+        public function missingMethod($model, $method, $arguments=array())
         {
             // if the method is 'getSlug' convert the title
             if ($method == 'getSlug') {
@@ -2381,6 +2403,43 @@ you can do this:
         return true;
     });
 
+
+Record Snapshots
+----------------
+Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what 
+fields are changed according to the data queried from the persistence:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function initalize()
+        {
+            $this->keepSnapshots(true);
+        }
+    }
+
+When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
+In models that have this feature activated you can check what fields changed:
+
+.. code-block:: php
+
+    <?php
+
+    //Get a record from the database
+    $robot = Robots::findFirst();
+
+    //Change a column
+    $robot->name = 'Other name';
+
+    var_dump($robot->getChangedFields()); // ['name']
+    var_dump($robot->hasChanged('name')); // true
+    var_dump($robot->hasChanged('type')); // false
+
+    
+
 Models Meta-Data
 ----------------
 To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
@@ -2653,7 +2712,7 @@ If a model is mapped to a table that is in a different schemas/databases than th
             return "toys";
         }
 
-    }
+    }    
 
 Setting multiple databases
 --------------------------
@@ -2700,6 +2759,69 @@ Then, in the Initialize method, we define the connection service for the model:
         }
 
     }
+
+But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
+to balance the load to your databases implementing a master-slave architecture:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->setReadConnectionService('dbSlave');
+            $this->setWriteConnectionService('dbMaster');
+        }
+
+    }
+
+The ORM also provides Horizontal Sharding facilities, by allowing you to implement any 'shard' selection
+according to the query conditions:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        {
+            //Check if there is a 'where' clause in the select
+            if (isset($intermediate['where'])) {
+
+                $conditions = $intermediate['where'];
+
+                //Choose the possible shard according to the conditions
+                if ($conditions['left']['name'] == 'id') {
+                    $id = $conditions['right']['value'];
+                    if ($id > 0 && $id < 10000) {
+                        return $this->getDI()->get('dbShard1');
+                    }
+                    if ($id > 10000) {
+                        return $this->getDI()->get('dbShard2');
+                    }
+                }
+            }
+
+            //Use a default shard
+            return $this->getDI()->get('dbShard0');
+        }
+
+    }
+
+The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
+query executed:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Robots::findFirst('id = 101');
+
+
 
 Logging Low-Level SQL Statements
 --------------------------------

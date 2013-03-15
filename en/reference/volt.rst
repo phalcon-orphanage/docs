@@ -301,7 +301,7 @@ You can get the element "keys" as in the PHP counterpart using the following syn
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-Additionally, an "if" evaluation can be optionally set:
+An "if" evaluation can be optionally set:
 
 .. code-block:: html+jinja
 
@@ -313,6 +313,17 @@ Additionally, an "if" evaluation can be optionally set:
 
     {% for name, value in numbers if name != 'two' %}
       Name: {{ name }} Value: {{ value }}
+    {% endfor %}
+
+If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
+
+.. code-block:: html+jinja
+
+    <h1>Robots</h1>
+    {% for robot in robots %}      
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
+    {% else %}
+        There are no robots to show
     {% endfor %}
 
 Loop Controls
@@ -380,6 +391,28 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
     {% elseif robot.type == "mechanical" %}
         Robot is mechanical
     {% endif %}
+
+Loop Context
+^^^^^^^^^^^^
+A special variable is available inside 'for' loops providing you information about 
+
++----------------------+------------------------------------------------------------------------------+
+| Variable             | Description                                                                  |
++======================+==============================================================================+
+| loop.index           | The current iteration of the loop. (1 indexed)                               |
++----------------------+------------------------------------------------------------------------------+
+| loop.index0          | The current iteration of the loop. (0 indexed)                               |
++----------------------+------------------------------------------------------------------------------+
+| loop.revindex        | The number of iterations from the end of the loop (1 indexed)                |
++----------------------+------------------------------------------------------------------------------+
+| loop.revindex0       | The number of iterations from the end of the loop (0 indexed)                |
++----------------------+------------------------------------------------------------------------------+
+| loop.first           | True if is the first iteration.                                              |
++----------------------+------------------------------------------------------------------------------+
+| loop.last            | True if is the last iteration.                                               |
++----------------------+------------------------------------------------------------------------------+
+| loop.length          | The number of items to itarate                                               |
++----------------------+------------------------------------------------------------------------------+
 
 Assignments
 -----------
@@ -520,7 +553,13 @@ Additional operators seen the following operators are available:
 +----------------------+----------------------------------------------------------------------------------------------+
 | is                   | Same as == (equals), also performs tests                                                     |
 +----------------------+----------------------------------------------------------------------------------------------+
+| in                   | To check if a expression is contained into other expressions if "a" in "abc"                 |
++----------------------+----------------------------------------------------------------------------------------------+
 | is not               | Same as != (not equals)                                                                      |
++----------------------+----------------------------------------------------------------------------------------------+
+| is not               | Same as != (not equals)                                                                      |
++----------------------+----------------------------------------------------------------------------------------------+
+| 'a' ? 'b' : 'c'      | Ternary operator. The same as the PHP ternary operator                                       |
 +----------------------+----------------------------------------------------------------------------------------------+
 
 The following example shows how to use operators:

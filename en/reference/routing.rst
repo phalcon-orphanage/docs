@@ -650,6 +650,26 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
+URI Sources
+-----------
+By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to 
+Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
+
+.. code-block:: php
+
+    <?php
+
+    $router->setUriSource(Router::URI_SOURCE_GET_URL); // use $_GET['_url'] (default)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // use $_SERVER['REQUEST_URI'] (default)
+
+Or you can manually pass a URI to the 'handle' method:
+
+.. code-block:: php
+
+    <?php
+
+    $router->handle('/some/route/to/handle');
+
 Testing your routes
 -------------------
 Since this component has no dependencies, you can create a file as shown below to test your routes:

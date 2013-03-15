@@ -7,7 +7,8 @@ you can check our :doc:`developer tools <tools>`.
 
 Checking your installation
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the code snippet below:
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the 
+code snippet below:
 
 .. code-block:: php
 
@@ -441,7 +442,7 @@ Receiving data from the form and storing them in the table is the next step.
             $user = new Users();
 
             //Store and check for errors
-            if ($user->save($_POST) == true) {
+            if ($user->save($_POST, array('name', 'email')) == true) {
                 echo "Thanks for register!";
             } else {
                 echo "Sorry, the following problems were generated: ";

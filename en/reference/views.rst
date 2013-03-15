@@ -1,7 +1,6 @@
 Using Views
 ===========
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the
-presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
 
 The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is responsible for the managing the view layer of your MVC application.
 
@@ -600,8 +599,7 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 Creating your own Template Engine Adapter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine
-is create an adapter for it.
+There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
 Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
@@ -780,6 +778,8 @@ are triggered using the type "view". Some events when returning boolean false co
 | afterRenderView      | Triggered after rendering an existing view                 | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 | afterRender          | Triggered after completing the render process              | No                  |
++----------------------+------------------------------------------------------------+---------------------+
+| notFoundView         | Triggered when a view was not found                        | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
 The following example demonstrates how to attach listeners to this component:
