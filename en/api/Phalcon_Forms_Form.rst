@@ -1,25 +1,51 @@
 Class **Phalcon\\Forms\\Form**
 ==============================
 
+*implements* Countable, Iterator, Traversable
+
 This component allows to build forms
 
 
 Methods
 ---------
 
-public  **__construct** ([*boolean* $entity])
+public  **__construct** ([*object* $entity])
 
 Phalcon\\Forms\\Form constructor
 
 
 
-public *boolean*  **isValid** ([*array|object* $data], [*object* $entity])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEntity** (*object* $entity)
+
+Sets the entity related to the model
 
 
 
+public *object*  **getEntity** ()
+
+Returns the entity related to the model
 
 
-public *array*  **getMessages** ([*unknown* $byItemName])
+
+public *Phalcon\\Forms\\ElementInterface[]*  **getElements** ()
+
+Returns the form elements added to the form
+
+
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **bind** (*array* $data, *object* $entity, [*unknown* $whitelist])
+
+Binds data to the entity
+
+
+
+public *boolean*  **isValid** ([*array* $data], [*object* $entity])
+
+Validates the form
+
+
+
+public *array*  **getMessages** ([*boolean* $byItemName])
 
 Returns the messages generated in the validation
 
@@ -46,6 +72,60 @@ Renders an specific item in the form
 public *Phalcon\\Forms\\ElementInterface*  **get** (*string* $name)
 
 Returns an element added to the form by its name
+
+
+
+public *string*  **label** (*string* $name)
+
+Generate the label of a element added to the form including HTML
+
+
+
+public *string*  **getLabel** (*string* $name)
+
+Returns the label
+
+
+
+public *mixed*  **getValue** (*string* $name)
+
+Gets a value from the the internal related entity or from the default value
+
+
+
+public *int*  **count** ()
+
+Returns the number of elements in the form
+
+
+
+public  **rewind** ()
+
+Rewinds the internal iterator
+
+
+
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **current** ()
+
+Returns the current element in the iterator
+
+
+
+public *int*  **key** ()
+
+Returns the current position/key in the iterator
+
+
+
+public  **next** ()
+
+Moves the internal iteration pointer to the next position
+
+
+
+public *boolean*  **valid** ()
+
+Check if the current element in the iterator is valid
 
 
 

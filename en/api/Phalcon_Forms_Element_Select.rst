@@ -1,23 +1,41 @@
-Class **Phalcon\\Forms\\Element\\Text**
-=======================================
+Class **Phalcon\\Forms\\Element\\Select**
+=========================================
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Component INPUT[type=text] for forms
+Component SELECT (choice) for forms
 
 
 Methods
 ---------
 
+public  **__construct** (*string* $name, [*object|array* $options], [*array* $attributes])
+
+Phalcon\\Forms\\Element constructor
+
+
+
+public :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`  **setOptions** (*array|object* $options)
+
+Set the choice's options
+
+
+
+public *array|object*  **getOptions** ()
+
+Returns the choices' options
+
+
+
+public *$this;*  **addOption** (*array* $option)
+
+Adds an option to the current options
+
+
+
 public *string*  **render** ([*array* $attributes])
 
 Renders the element widget
-
-
-
-public  **__construct** (*string* $name, [*array* $attributes]) inherited from Phalcon\\Forms\\Element
-
-Phalcon\\Forms\\Element constructor
 
 
 

@@ -108,7 +108,13 @@ Alias of Phalcon\\Tag::setDefault
 
 
 
-public static *mixed*  **getValue** (*string* $name, *array* $params)
+public static *boolean*  **hasValue** (*string* $name)
+
+Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from $_POST
+
+
+
+public static *mixed*  **getValue** (*string* $name, [*array* $params])
 
 Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
 
@@ -258,7 +264,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
 public static *string*  **select** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a Phalcon_Model resultset as options 
+Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options 
 
 .. code-block:: php
 

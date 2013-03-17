@@ -91,7 +91,7 @@ Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
 Adds a join to the query 
 
@@ -100,6 +100,32 @@ Adds a join to the query
     <?php
 
     $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a LEFT join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->leftJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a RIGHT join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->rightJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
 
 
 

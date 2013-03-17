@@ -80,8 +80,14 @@ API Indice
    Phalcon_Flash_Exception
    Phalcon_Flash_Session
    Phalcon_Forms_Element
+   Phalcon_Forms_Element_Check
+   Phalcon_Forms_Element_File
+   Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Password
+   Phalcon_Forms_Element_Select
+   Phalcon_Forms_Element_Submit
    Phalcon_Forms_Element_Text
+   Phalcon_Forms_Element_TextArea
    Phalcon_Forms_Exception
    Phalcon_Forms_Form
    Phalcon_Forms_Manager

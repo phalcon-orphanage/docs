@@ -107,7 +107,7 @@ Rewinds the internal iterator
 
 public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **current** ()
 
-Returns the current annotation in the iterator
+Returns the current message in the iterator
 
 
 
@@ -125,7 +125,7 @@ Moves the internal iteration pointer to the next position
 
 public *boolean*  **valid** ()
 
-Check if the current annotation in the iterator is valid
+Check if the current message the iterator is valid
 
 
 

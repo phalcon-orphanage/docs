@@ -3,41 +3,55 @@ Class **Phalcon\\Forms\\Element\\Password**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Text component INPUT[type=password] for forms
+Component INPUT[type=password] for forms
 
 
 Methods
 ---------
 
-public *string*  **render** ([*unknown* $attributes])
+public *string*  **render** ([*array* $attributes])
 
 Renders the element widget
 
 
 
-public  **__construct** (*string* $name) inherited from Phalcon\\Forms\\Element
+public  **__construct** (*string* $name, [*array* $attributes]) inherited from Phalcon\\Forms\\Element
 
 Phalcon\\Forms\\Element constructor
 
 
 
-public  **setName** (*unknown* $name) inherited from Phalcon\\Forms\\Element
+public *Phalcon\\Forms\\ElementInterface*  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form) inherited from Phalcon\\Forms\\Element
 
-...
-
-
-public  **getName** () inherited from Phalcon\\Forms\\Element
-
-...
+Sets the parent form to the element
 
 
-public  **addValidators** (*unknown* $validators) inherited from Phalcon\\Forms\\Element
+
+public *Phalcon\\Forms\\ElementInterface*  **getForm** () inherited from Phalcon\\Forms\\Element
+
+Returns the parent form to the element
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setName** (*string* $name) inherited from Phalcon\\Forms\\Element
+
+Sets the element's name
+
+
+
+public *string*  **getName** () inherited from Phalcon\\Forms\\Element
+
+Returns the element's name
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **addValidators** (*unknown* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
 
 Adds a group of validators
 
 
 
-public  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
+public *Phalcon\\Forms\\ElementInterface*  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
 
 Adds a validator to the element
 
@@ -46,6 +60,42 @@ Adds a validator to the element
 public :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` [] **getValidators** () inherited from Phalcon\\Forms\\Element
 
 Returns the validators registered for the element
+
+
+
+public *array*  **prepareAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
+
+Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setAttribute** (*string* $attribute, *mixed* $value) inherited from Phalcon\\Forms\\Element
+
+Sets a default attribute for the element
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
+
+Sets default attributes for the element
+
+
+
+public *array*  **getAttributes** () inherited from Phalcon\\Forms\\Element
+
+Returns the default attributes for the element
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setLabel** (*string* $label) inherited from Phalcon\\Forms\\Element
+
+Sets the element label
+
+
+
+public *string*  **getLabel** () inherited from Phalcon\\Forms\\Element
+
+Returns the element's label
 
 
 

@@ -7,6 +7,12 @@ Class **Phalcon\\Validation**
 Methods
 ---------
 
+public  **__construct** ([*array* $validators])
+
+Phalcon\\Validation constructor
+
+
+
 public  **validate** (*array|object* $data, [*object* $entity])
 
 Validate a set of data according to a set of rules
@@ -49,8 +55,9 @@ Assigns the data to an entity The entity is used to obtain the validation values
 
 
 
-public  **getValue** (*unknown* $attribute)
+public *mixed*  **getValue** (*string* $attribute)
 
-...
+Gets the a value to validate in the array/object data source
+
 
 

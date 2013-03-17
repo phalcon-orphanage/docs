@@ -23,6 +23,12 @@ Phalcon\\Validation\\Validator constructor
 
 
 
+public *mixed*  **isSetOption** (*string* $key) inherited from Phalcon\\Validation\\Validator
+
+Checks if an option is defined
+
+
+
 public *mixed*  **getOption** (*string* $key) inherited from Phalcon\\Validation\\Validator
 
 Returns an option in the validator's options Returns null if the option hasn't been set

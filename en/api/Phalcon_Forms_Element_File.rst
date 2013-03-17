@@ -1,9 +1,9 @@
-Class **Phalcon\\Forms\\Element\\Text**
+Class **Phalcon\\Forms\\Element\\File**
 =======================================
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Component INPUT[type=text] for forms
+Component INPUT[type=file] for forms
 
 
 Methods
