@@ -45,6 +45,8 @@ Table of Contents
    reference/session
    reference/filter
    reference/escaper
+   reference/validation
+   reference/forms
    reference/config
    reference/pagination
    reference/cache

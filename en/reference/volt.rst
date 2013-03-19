@@ -320,7 +320,7 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
 .. code-block:: html+jinja
 
     <h1>Robots</h1>
-    {% for robot in robots %}      
+    {% for robot in robots %}
         Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
     {% else %}
         There are no robots to show
@@ -394,7 +394,7 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
 
 Loop Context
 ^^^^^^^^^^^^
-A special variable is available inside 'for' loops providing you information about 
+A special variable is available inside 'for' loops providing you information about
 
 +----------------------+------------------------------------------------------------------------------+
 | Variable             | Description                                                                  |
@@ -413,6 +413,27 @@ A special variable is available inside 'for' loops providing you information abo
 +----------------------+------------------------------------------------------------------------------+
 | loop.length          | The number of items to itarate                                               |
 +----------------------+------------------------------------------------------------------------------+
+
+.. code-block:: html+jinja
+
+    {% for robot in robots %}
+    	{% if loop.first %}
+    		<table>
+    		<tr>
+                <th>#</th>
+    			<th>Id</th>
+    			<th>Name</th>
+    		</tr>
+    	{% endif %}
+    		<tr>
+                <td>{{ loop.index }}</td>
+    			<td>{{ robot.id }}</td>
+    			<td>{{ robot.name }}</td>
+    		</tr>
+    	{% if loop.last %}
+    		</table>
+    	{% endif %}
+    {% endfor %}
 
 Assignments
 -----------
