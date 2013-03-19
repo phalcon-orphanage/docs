@@ -35,7 +35,7 @@ Forms can be rendered based on the form definition:
 
 		<p>
 			<label>Telephone</label>
-			<?php echo $form->render("name") ?>
+			<?php echo $form->render("telephone") ?>
 		</p>
 
 		<p>
