@@ -106,8 +106,8 @@ to understand. The following placeholders are supported:
 Controller names are camelized, this means that characters (-) and (_) are removed and the next character
 is uppercased. For instance, some_controller is converted to SomeController.
 
-Since you can add many routes as you need using add(), the order in which you add the routes indicates
-their relevance, last routes added have more relevance than first added. Internally, all defined routes
+Since you can add many routes as you need using add(), the order in which routes are added indicate
+their relevance, lastest routes added have more relevance than first added. Internally, all defined routes
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
 

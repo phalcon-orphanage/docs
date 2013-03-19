@@ -311,7 +311,7 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new \Phalcon\Events\Manager();
 
     $profiler = new \Phalcon\Db\Profiler();
 
@@ -326,6 +326,9 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
             $profiler->stopProfile();
         }
     });
+
+    //Assign the events manager to the connection
+    $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
          . "FROM buyers "
