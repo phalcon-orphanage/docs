@@ -172,6 +172,8 @@ in the form's elements or assign the values from the form to the entity easily:
 
 .. code-block:: php
 
+	<?php
+
 	$robot = Robots::findFirst();
 
 	$form = new Form($robot);
@@ -186,9 +188,9 @@ Once the form is rendered if there is no default values assigned to the elements
 	
 	<?php echo $form->render('name') ?>
 
-You can validate and assign the values from the user input in the following way:
+You can validate the form and assign the values from the user input in the following way:
 
-.. code-block:: html+php
+.. code-block:: php
 	
 	<?php
 
@@ -208,7 +210,16 @@ Phalcon provides a set of built-in elements to use in your forms:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
-| Text         | Validates that a field's value isn't null or empty string.                                                                                                       | :doc:`Example <../api/Phalcon_Forms_Element_Text>`                |
+| Text         | Generate INPUT[type=text] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Text>`                |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Password     | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Password>`            |
+| Password     | Generate INPUT[type=password] elements                                                                                                                           | :doc:`Example <../api/Phalcon_Forms_Element_Password>`            |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Select       | Generate SELECT tag (combo lists) elements based on choices                                                                                                      | :doc:`Example <../api/Phalcon_Forms_Element_Select>`              |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Radio        | Generate INPUT[type=radio] elements                                                                                                                              | :doc:`Example <../api/Phalcon_Forms_Element_Radio>`               |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Check        | Generate INPUT[type=check] elements                                                                                                                              | :doc:`Example <../api/Phalcon_Forms_Element_Check>`               |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Textarea     | Generate TEXTAREA elements                                                                                                                                       | :doc:`Example <../api/Phalcon_Forms_Element_TextArea>`            |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+

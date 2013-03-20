@@ -91,7 +91,7 @@ Additional validators can be created by the developer. The following class expla
 	}
 
 Validation Messages
-^^^^^^^^^^^^^^^^^^^
+-------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the validation processes.
 
