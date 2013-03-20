@@ -1,5 +1,5 @@
 Validation
-----------
+==========
 Phalcon\Validation is an independent validation component to validate an arbitrary set of data.
 This component can be used to implement validation rules that does not belong to a model or collection.
 
@@ -89,4 +89,57 @@ Additional validators can be created by the developer. The following class expla
 		}
 
 	}
+
+Validation Messages
+^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
+validation messages generated during the validation processes.
+
+Each message consists of an instance of the class :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
+messages generated can be retrieved with the method getMessages(). Each message provides extended information like the attribute that
+generated the message or the message type:
+
+.. code-block:: php
+
+    <?php
+
+    $messages = $validation->validate();
+    if (count($messages)) {
+        foreach ($validation->getMessages() as $message) {
+            echo "Message: ", $message->getMessage(), "\n";
+            echo "Field: ", $message->getField(), "\n";
+            echo "Type: ", $message->getType(), "\n";
+        }
+    }
+
+
+The method getMessages() can be overriden in a validation class to replace/translate the default messages generated automatically by the validators:
+
+.. code-block:: php
+
+    <?php
+
+    class MyValidation extends Phalcon\Validation
+    {
+        public function getMessages()
+        {
+            $messages = array();
+            foreach (parent::getMessages() as $message) {
+                switch ($message->getType()) {                    
+                    case 'PresenceOf':
+                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                        break;
+                }
+            }
+            return $messages;
+        }
+    }
+
+Or you can pass a parameter 'message' to change the default message in each validator:
+
+.. code-block:: php
+
+	$validation->add('email', new Phalcon\Validation\Validator\Email(
+		'message' => 'The e-mail is not valid'
+	));
 
