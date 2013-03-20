@@ -400,7 +400,7 @@ The following example demonstrates just that:
 
         public function initialize()
         {
-            Phalcon\Tag::setTitle(" Your Website");
+            Phalcon\Tag::setTitle("Your Website");
         }
 
         public function indexAction()

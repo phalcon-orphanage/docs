@@ -1,8 +1,8 @@
 Using Dependency Injection
 **************************
-The following example is a bit lengthy, but explains why using a service container and dependency injection. First, let's pretend we
-are developing a component called SomeComponent. This performs a task that is not important now. Our component has some dependency
-that is a connection to a database.
+The following example is a bit lengthy, but explains why using a service container, service location and dependency injection. 
+First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now. 
+Our component has some dependency that is a connection to a database.
 
 In this first example, the connection is created inside the component. This approach is impractical; practically we cannot change the
 connection parameters or the type of database system because the component only works as created.
@@ -228,7 +228,7 @@ of creating them internally in the code makes our application more maintainable 
 this form of dependency injection have some disadvantages.
 
 For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
-the dependencies or create a constructor that pass them with many arguments, additionally create dependencies
+the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies
 before using the component, every time, makes our code not maintainable as we would like:
 
 .. code-block:: php
@@ -366,9 +366,9 @@ Phalcon\\DI is a component implementing Dependency Injection and Location of ser
 Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies using setters or
-constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the
-required dependencies within a component.
+Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies 
+using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only 
+one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
@@ -929,7 +929,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
 
 Accessing the DI in a static way
 ================================
-If needed you can access the latest DI created in an static function in the following way:
+If needed you can access the latest DI created in a static function in the following way:
 
 .. code-block:: php
 
