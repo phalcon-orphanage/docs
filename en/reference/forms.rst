@@ -69,3 +69,18 @@ HTML Attributes also can be set in the element's definition:
 		'placeholder' => 'Type your name'
 	)));
 
+Validation
+----------
+Phalcon forms are integrated with the validation component to offer instant validation of forms. Built-in or
+custom validators could be set to each element:
+
+.. code-block:: php
+
+	$text = new Text("name");
+
+	$text->addValidator(new PresenceOf(
+
+	));
+
+	$form->add($text);
+
