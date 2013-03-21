@@ -46,7 +46,7 @@ Methods
 
 public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
-
+Phalcon\\Mvc\\Model\\Transaction\\Manager constructor
 
 
 

@@ -23,7 +23,7 @@ Allows validate if the value of a field matches a regular expression
 Methods
 ---------
 
-public  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 
 Executes the validation
 

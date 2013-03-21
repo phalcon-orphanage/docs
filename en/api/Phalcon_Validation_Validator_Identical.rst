@@ -11,7 +11,7 @@ Checks if a value is identical to other
 Methods
 ---------
 
-public *boolean*  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 
 Executes the validation
 

@@ -763,7 +763,7 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
     
        public function initialize()
        {
-           $this->skipAttributesOnUpdate(array('created_at'));
+           $this->skipAttributesOnCreate(array('created_at'));
        }
     
     }

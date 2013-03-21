@@ -5,13 +5,25 @@ Class **Phalcon\\Validation\\Validator\\InclusionIn**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Check if a value is included into a list of values
+Check if a value is included into a list of values  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\InclusionIn;
+    
+    $validator->add('status', new InclusionIn(array(
+       'message' => 'The status must be A or B'
+       'domain' => array('A', 'B')
+    )));
+
 
 
 Methods
 ---------
 
-public *boolean*  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 
 Executes the validation
 
