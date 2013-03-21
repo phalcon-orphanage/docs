@@ -218,10 +218,10 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATION_OBJECTS                             |
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object oriented way, instead of using an array of parameters:
+If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 .. code-block:: php
 
@@ -236,7 +236,7 @@ If you prefer, there is also available a way to create queries in an object orie
 
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high level, object oriented and SQL-like language.
+All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
 
 Model Resultsets
@@ -383,6 +383,8 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     <?php
 
+    use \Phalcon\Db\Column;
+
     //Bind parameters
     $parameters = array(
         "name" => "Robotina",
@@ -391,8 +393,8 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     //Casting Types
     $types = array(
-        "name" => \Phalcon\Db\Column::BIND_PARAM_STR,
-        "year" => \Phalcon\Db\Column::BIND_PARAM_INT
+        "name" => Column::BIND_PARAM_STR,
+        "year" => Column::BIND_PARAM_INT
     );
 
     // Query robots binding parameters with string placeholders
@@ -932,94 +934,10 @@ Max/Min examples:
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-Caching Resultsets
-------------------
-Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
-the complex connection processes that PHP must do in each request to obtain data from the database. A well
-established technique to avoid the continuous access to the database is to cache resultsets that don't change
-frequently using a system with faster access (usually memory).
-
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
-request it to the Dependency Injector Container with the convention name "modelsCache".
-
-As Phalcon provides a component to cache any kind of data, we'll explain how to integrate it with Models.
-First you must to register it as a service in the services container:
-
-.. code-block:: php
-
-    <?php
-
-    //Set the models cache service
-    $di->set('modelsCache', function() {
-
-        //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-            "lifetime" => 86400
-        ));
-
-        //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
-            "host" => "localhost",
-            "port" => "11211"
-        ));
-
-        return $cache;
-    });
-
-You have complete control in creating and customizing the cache before being used by registering the service
-as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
-
-.. code-block:: php
-
-    <?php
-
-    // Get products without caching
-    $products = Products::find();
-
-    // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache")
-    ));
-
-    // Cache the resultset for only for 5 minutes
-    $products = Products::find(array(
-        "cache" => array("key" => "my-cache", "lifetime" => 300)
-    ));
-
-    // Using a custom cache
-    $products = Products::find(array("cache" => $myCache));
-
-Caching could be also applied to resultsets generated using relationships:
-
-.. code-block:: php
-
-    <?php
-
-    // Query some post
-    $post = Post::findFirst();
-
-    // Get comments related to a post, also cache it
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key")
-    ));
-
-    // Get comments related to a post, setting lifetime
-    $comments = $post->getComments(array(
-        "cache" => array("key" => "my-key", "lifetime" => 3600)
-    ));
-
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
-
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
-are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
-do not change frequently could be cached but that is a decision that the developer has to make based on the
-available caching mechanism and whether the performance impact to simply retrieve that data in the
-first place is acceptable.
-
 Hydration Modes
 ---------------
-As mentioned above, resultsets are collection of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified an saved again to persistance:
+As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
+representing a row in the database. These objects can be modified and saved again to persistence:
 
 .. code-block:: php
 
@@ -1044,21 +962,21 @@ returned in a resultset is called 'hydration mode':
     $robots = Robots::find();
 
     //Return every robot as an array
-    $robots->setHydrateMode(Resultset::HYDRATION_ARRAYS);
+    $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
     //Return every robot as an stdClass
-    $robots->setHydrateMode(Resultset::HYDRATION_OBJECTS);
+    $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
     //Return every robot as a Robots instance
-    $robots->setHydrateMode(Resultset::HYDRATION_RECORDS);
+    $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
@@ -1073,7 +991,7 @@ The hydration mode can be passed as a parameter of 'find':
     use Phalcon\Mvc\Model\Resultset;
 
     $robots = Robots::find(array(
-        'hydration' => Resultset::HYDRATION_ARRAYS
+        'hydration' => Resultset::HYDRATE_ARRAYS
     ));
 
     foreach ($robots as $robot) {
@@ -1130,11 +1048,17 @@ an insecure array without worrying about possible SQL injections:
     $robot = new Robots();
     $robot->save($_POST);
 
-Create/Update with Certainty
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, maybe we expect to create a record but that is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be
-certain if a record is created or updated we can change save using the methods "create" or "update":
+.. highlights::
+
+    Without precautions mass assignment could allow attackers to set any database column’s value. Only use this feature
+    if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
+    form.
+
+Create/Update with Confidence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
+could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. f we want to be absolutely
+sure that a record is created or updated, we can change the save() call with create() or update():
 
 .. code-block:: php
 
@@ -1160,14 +1084,15 @@ These methods "create" and "update" also accept an array of values as parameter.
 Auto-generated identity columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column and will omit it from the internal SQL INSERT, so the database system could generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the  value generated in the database system for it:
+can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
+Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
 .. code-block:: php
 
     <?php
 
     $robot->save();
+
     echo "The generated id is: ", $robot->id;
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
@@ -1245,7 +1170,7 @@ Saving a record and its related records in a has-many relation:
     $album->save();
 
 Saving the album and the artist at the same time uses a transaction so if anything goes wrong with
-saving the related records, the parent will not saved either. Messages are passed back to the user
+saving the related records, the parent will not be saved either. Messages are passed back to the user
 for information regarding any errors
 
 Validation Messages
@@ -1315,42 +1240,41 @@ The method getMessages() can be overriden in a model to replace/translate the de
 
 Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help to define business rules for a
+Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
 
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         |
-+====================+==========================+=======================+=====================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                      |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                         |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made            |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made           |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
-+--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
++====================+==========================+=======================+===================================================================================================================================+
+| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
++--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
-Implementing events in the Model's class
+Implementing Events in the Model's class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
 
 .. code-block:: php
@@ -1362,7 +1286,7 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before create a Robot!";
+            echo "This is executed before creating a Robot!";
         }
 
     }
@@ -1426,8 +1350,8 @@ this means we can create listeners that run when an event is triggered.
     $robot->year = 1969;
     $robot->save();
 
-In the above example the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-If we want all objects created in our application use the same EventsManager then we need to assign it to the Models Manager:
+In the example given above the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
+If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
 
 .. code-block:: php
 
@@ -1554,6 +1478,8 @@ the value is not included in the method then the validator will fail and return 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Validates a URL format                                                                                                                                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validatiors, you can create your own validators:
 
@@ -1564,17 +1490,20 @@ In addition to the built-in validatiors, you can create your own validators:
     use Phalcon\Mvc\Model\Validator,
         Phalcon\Mvc\Model\ValidatorInterface;
 
-    class UrlValidator extends Validator implements ValidatorInterface
+    class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
         public function validate($model)
         {
             $field = $this->getOption('field');
 
+            $min = $this->getOption('min');
+            $max = $this->getOption('max');
+
             $value = $model->$field;
-            $filtered = filter_var($value, FILTER_VALIDATE_URL);
-            if (!$filtered) {
-                $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+
+            if ($min <= $value && $value <= $max) {
+                $this->appendMessage("The field doesn't have the right range of values", $field, "MaxMinValidator");
                 return false;
             }
             return true;
@@ -1593,9 +1522,11 @@ Adding the validator to a model:
 
         public function validation()
         {
-            $this->validate(new UrlValidator(
+            $this->validate(new MaxMinValidator(
                 array(
-                    "field"  => "url",
+                    "field"  => "price",
+                    "min" => 10,
+                    "max" => 100
                 )
             ));
             if ($this->validationHasFailed() == true) {
@@ -1633,7 +1564,7 @@ The idea of creating validators is make them reusable between several models. A 
 Avoiding SQL injections
 ^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
-each value before store it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
+each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
 capability provided by PDO to automatically escape every value to be stored in the database.
 
 .. code-block:: bash
@@ -1671,7 +1602,7 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     $sth->execute();
 
-The good news is that Phalcon do this automatically for you:
+The good news is that Phalcon do this for you automatically:
 
 .. code-block:: php
 
@@ -1686,7 +1617,7 @@ The good news is that Phalcon do this automatically for you:
 
 Skipping Columns
 ----------------
-To tell to Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
+To tell Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
 to delegate the database system the assignation of the values by a trigger or a default:
 
 .. code-block:: php
@@ -1736,6 +1667,33 @@ A callback also can be used to create a conditional assigment of automatic defau
             if ($this->price > 10000) {
                 $robot->type = new \Phalcon\Db\RawValue('default');
             }
+        }
+    }
+
+.. highlights::
+
+    Never use a \\Phalcon\\Db\\RawValue to assign external data (such as user input)
+    or variable data. The value of these fields is ignored when binding parameters to the query.
+    So it could be used to attack the application injecting SQL.
+
+Dynamic Update
+^^^^^^^^^^^^^^
+SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update).
+You can change specific models to make dynamic updates, in this case, just the fields that had changed
+are used to create the final SQL statement.
+
+In some cases this could improve the performance by reducing the traffic between the application and the database server,
+this specially helps when the table has blob/text fields:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function initalize()
+        {
+            $this->useDynamicUpdate(true);
         }
     }
 
@@ -1821,10 +1779,10 @@ Another type of events are available when the data validation process finds any 
 
 Behaviors
 ---------
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides a API to implement
-behaviors in your models. Also you can use the events and callbacks as seen before to implement Behaviors with more free.
+Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
+behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
-A behavior must be added in the model initializer, a model can has zero or more behaviors:
+A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
 .. code-block:: php
 
@@ -1866,7 +1824,7 @@ The following built-in behaviors are provided by the framework:
 
 Timestampable
 ^^^^^^^^^^^^^
-This behavior receives an array of options, the first level key must be a event name indicating when the column must be assigned:
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 .. code-block:: php
 
@@ -1884,7 +1842,7 @@ This behavior receives an array of options, the first level key must be a event 
         ));
     }
 
-Each event can has its own options, 'field' is the name of the column that must be updated, if 'format' is an string it will be used
+Each event can have its own options, 'field' is the name of the column that must be updated, if 'format' is a string it will be used
 as format of the PHP's function date_, format can also be an anonymous function providing you the free to generate any kind timestamp:
 
 .. code-block:: php
@@ -1943,7 +1901,7 @@ This behavior can be used in the following way:
 
     }
 
-This behavior accept two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
+This behavior accepts two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
 Let's pretend the table 'users' has the following data:
 
 .. code-block:: bash
@@ -1983,23 +1941,22 @@ Note that you need to specify the deleted condition in your queries to effective
 Creating your own behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also the class Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
-The following behavior is an example, it implements the Blamable behavior which helps to use identify what user perform an operation over
-the model:
+The following behavior is an example, it implements the Blamable behavior which helps identify the user
+that is performed operations over a model:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\ModelInterface,
-        Phalcon\Mvc\Model\Behavior,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
     {
 
-        public function notify($eventType, ModelInterface $model)
+        public function notify($eventType, $model)
         {
             switch ($eventType) {
 
@@ -2044,14 +2001,13 @@ A behavior is also capable of intercept missing methods on your models:
 
     <?php
 
-    use Phalcon\Mvc\ModelInterface,
-        Phalcon\Mvc\Model\Behavior,
+    use Phalcon\Mvc\Model\Behavior,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
 
-        public function missingMethod(ModelInterface $model, $method, $arguments=array())
+        public function missingMethod($model, $method, $arguments=array())
         {
             // if the method is 'getSlug' convert the title
             if ($method == 'getSlug') {
@@ -2108,7 +2064,7 @@ Transactions
 ------------
 When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
 be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-is committed in the database.
+are committed to the database.
 
 Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
 all operations if something went wrong.
@@ -2152,7 +2108,7 @@ is successfully or not:
 
 Implicit Transactions
 ^^^^^^^^^^^^^^^^^^^^^
-Existing relationships can be used to store records and their related instances, these kind of operations
+Existing relationships can be used to store records and their related instances, this kind of operation
 implicitly creates a transaction to ensure that data are correctly stored:
 
 .. code-block:: php
@@ -2172,9 +2128,9 @@ implicitly creates a transaction to ensure that data are correctly stored:
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
 Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checkings and business rules are isolated from the main connection.
-This kind of transactions requires a transaction manager that globally manages each
-transaction created ensuring that it's correctly rollbacked/commited before end the request:
+virtual foreign key checking and business rules are isolated from the main connection.
+This kind of transaction requires a transaction manager that globally manages each
+transaction created ensuring that it's correctly rollbacked/commited before ending the request:
 
 .. code-block:: php
 
@@ -2292,7 +2248,7 @@ While a transaction is active, the transaction manager will always return the sa
 
 Independent Column Mapping
 --------------------------
-The ORM supports a independent column map, which allows the developer to use different column names in the model to the ones in
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
 the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
 This is a great feature when one needs to rename fields in the database without having to worry about all the queries
 in the code. A change in the column map in the model will take care of the rest. For example:
@@ -2446,6 +2402,43 @@ you can do this:
         }
         return true;
     });
+
+
+Record Snapshots
+----------------
+Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what
+fields are changed according to the data queried from the persistence:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function initalize()
+        {
+            $this->keepSnapshots(true);
+        }
+    }
+
+When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
+In models that have this feature activated you can check what fields changed:
+
+.. code-block:: php
+
+    <?php
+
+    //Get a record from the database
+    $robot = Robots::findFirst();
+
+    //Change a column
+    $robot->name = 'Other name';
+
+    var_dump($robot->getChangedFields()); // ['name']
+    var_dump($robot->hasChanged('name')); // true
+    var_dump($robot->hasChanged('type')); // false
+
+
 
 Models Meta-Data
 ----------------
@@ -2766,6 +2759,69 @@ Then, in the Initialize method, we define the connection service for the model:
         }
 
     }
+
+But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
+to balance the load to your databases implementing a master-slave architecture:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->setReadConnectionService('dbSlave');
+            $this->setWriteConnectionService('dbMaster');
+        }
+
+    }
+
+The ORM also provides Horizontal Sharding facilities, by allowing you to implement any 'shard' selection
+according to the query conditions:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        {
+            //Check if there is a 'where' clause in the select
+            if (isset($intermediate['where'])) {
+
+                $conditions = $intermediate['where'];
+
+                //Choose the possible shard according to the conditions
+                if ($conditions['left']['name'] == 'id') {
+                    $id = $conditions['right']['value'];
+                    if ($id > 0 && $id < 10000) {
+                        return $this->getDI()->get('dbShard1');
+                    }
+                    if ($id > 10000) {
+                        return $this->getDI()->get('dbShard2');
+                    }
+                }
+            }
+
+            //Use a default shard
+            return $this->getDI()->get('dbShard0');
+        }
+
+    }
+
+The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
+query executed:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = Robots::findFirst('id = 101');
+
+
 
 Logging Low-Level SQL Statements
 --------------------------------
