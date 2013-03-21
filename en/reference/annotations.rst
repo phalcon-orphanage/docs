@@ -1,7 +1,7 @@
 Annotations Parser
 ==================
-It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\Annotations is a general purpose component
-that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\\Annotations is
+a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
@@ -85,7 +85,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 Reading Annotations
 -------------------
-A reflector is implemented to easily get the annotations defined on a class using an object oriented interface:
+A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 .. code-block:: php
 
@@ -183,6 +183,8 @@ cache if the latest action executed is marked as cacheable. First off all we reg
 to be notified when a route is executed:
 
 .. code-block:: php
+
+	<?php
 
 	$di['dispatcher'] = function() {
 
