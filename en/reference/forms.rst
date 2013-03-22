@@ -216,10 +216,96 @@ Phalcon provides a set of built-in elements to use in your forms:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Select       | Generate SELECT tag (combo lists) elements based on choices                                                                                                      | :doc:`Example <../api/Phalcon_Forms_Element_Select>`              |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Radio        | Generate INPUT[type=radio] elements                                                                                                                              | :doc:`Example <../api/Phalcon_Forms_Element_Radio>`               |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Check        | Generate INPUT[type=check] elements                                                                                                                              | :doc:`Example <../api/Phalcon_Forms_Element_Check>`               |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Textarea     | Generate TEXTAREA elements                                                                                                                                       | :doc:`Example <../api/Phalcon_Forms_Element_TextArea>`            |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
+Rendering Forms
+---------------
+You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+
+.. code-block:: html+php
+	
+	<?php
+
+	<form method="post">
+		<?php
+			//Traverse the form
+			foreach ($form as $element) {
+
+				//Get any generated messages for the current element
+				$messages = $form->getMessagesFor($element->getName());
+
+				if (count($messages)) {
+					//Print each element
+					echo '<div class="messages">';
+					foreach ($messages as $message) {
+						echo $message;
+					}
+					echo '</div>';
+				}
+
+				echo '<p>';		
+				echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+				echo $element;
+				echo '</p>';
+				
+			}
+		?>
+		<input type="submit" value="Send"/>
+	</form>
+
+Or reuse the logic in your form class:
+
+.. code-block:: php
+	
+	<?php
+
+	class ContactForm extends Phalcon\Forms\Form
+	{
+		public function initialize()
+		{
+			//...
+		}
+
+		public function renderDecorated($name)
+		{
+			$element = $this->get($name);
+
+			//Get any generated messages for the current element
+			$messages = $this->getMessagesFor($element->getName());
+
+			if (count($messages)) {
+				//Print each element
+				echo '<div class="messages">';
+				foreach ($messages as $message) {
+					echo $message;
+				}
+				echo '</div>';
+			}
+
+			echo '<p>';		
+			echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+			echo $element;
+			echo '</p>';
+		}
+
+	}
+
+Creating Form Elements
+----------------------
+In addition to the form elements provided by Phalcon you can create your own custom elements:
+
+.. code-block:: php
+
+	<?php
+
+	class MyElement extends Phalcon\Forms\Element
+	{
+		public function render($attributes=null)
+		{
+			$html = //... produce some html
+			return $html;
+		}
+	}

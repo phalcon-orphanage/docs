@@ -1,36 +1,34 @@
 Framework Benchmarks
 ====================
-In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
-able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
-became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
-have a positive impact on a website.
+En el pasado, el rendimiento no era considerado una prioridad al desarrollar aplicaciones web. Tener un buen hardware
+era suficiente para compensarlo. Ahora que Google ha decidido_ tener en cuenta la velocidad en sus rankings de búsqueda,
+esta se ha vuelto una proridad junto con el contenido y la funcionalidad. 
 
-The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
-are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
+Los benchmarks acontinuación, muestran que tan eficiente es Phalcon al ser comparado con frameworks PHP tradicionales.
+Estos benchmarks son actualizados en la medida que nuevas versiones son liberadas.
 
-We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
-or comments please `write us`_. `Check out source at Github`_
+Puedes clonar la test suite que se usó para estos benchmarks. Si tienes optimizaciones adicionales o comentarios puedes
+`escribirnos`_. `Check out source at Github`_
 
-What was the test environment?
+¿Cuál es el entorno de pruebas?
 ------------------------------
-APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
-to avoid potentially additional overheads.
+APC_ fue habilitado para todos los frameworks. Módulos como mod-rewrite fueron desabilitados para evitar posibles overheads.
 
-The testing hardware environment is as follows:
+El hardware utilizado es el siguiente:
 
-* Operating System: Mac OS X Lion 10.7.4
+* Sistema Operativo: Mac OS X Lion 10.7.4
 * Web Server: Apache httpd 2.2.22
 * PHP: 5.3.15
 * CPU: 2.04 Ghz Intel Core i5
-* Main Memory: 4GB 1333 MHz DDR3
-* Hard Drive: 500GB SATA Disk
+* Memoria Principal: 4GB 1333 MHz DDR3
+* Disco duro: 500GB SATA Disk
 
-*PHP version and info:*
+*Versión de PHP e información:*
 
 .. figure:: ../_static/img/bench-4.png
     :align: center
 
-*APC settings:*
+*Configuración de APC:*
 
 .. figure:: ../_static/img/bench-5.png
     :align: center
@@ -63,8 +61,8 @@ ChangeLog
 .. versionchanged:: 1.4
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
 
-.. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
-.. _write us: https://github.com/phalcon/framework-bench
+.. _decidido: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
+.. _escribirnos: https://github.com/phalcon/framework-bench
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
 

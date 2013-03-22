@@ -55,5 +55,5 @@ Como los frameworks tradicionales para PHP trabajan?
 
 Conclusión
 ----------
-Phalcon es un esfuerzo por contruir el framework más rápido para PHP, al mismo tiempo usando una herramienta sencilla y robusta para crear aplicaciones web sin preocuparse por el rendimiento. Disfruta!
+Phalcon es un esfuerzo por construir el framework más rápido para PHP, al mismo tiempo ofrecer una herramienta sencilla y robusta para crear aplicaciones web sin preocuparse por el rendimiento. Disfruta!
 
