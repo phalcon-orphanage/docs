@@ -129,7 +129,7 @@ The resulting profile data can be obtained from the listener:
     <?php
 
     //Send a SQL command to the database server
-    $connection->query("SELECT * FROM products p WHERE p.status = 1");
+    $connection->execute("SELECT * FROM products p WHERE p.status = 1");
 
     foreach($dbListener->getProfiler()->getProfiles() as $profile){
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
