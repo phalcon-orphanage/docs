@@ -1,35 +1,30 @@
-Installation
-============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
-
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant
-optimizations (big or small). Through understanding of the Zend Engine, we managed to remove unecessary validations,
-compacted code, performed optimizations and generated low-level solutions so as to achieve maximum performance
-from Phalcon.
+Instalación
+===========
+Las extensiones de PHP requieren un método diferente de instalación a los frameworks o librerias tradicionales. 
+Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el código fuente.
 
 .. highlights::
-	Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
+	Phalcon compila desde PHP 5.3.1, pero debido a errores antiguos de PHP que causan memory leaks, recomendamos usar al menos 5.3.11.
 
 .. highlights::
-	PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Aprender más <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+Para usar Phalcon en Windows debes descargar un DLL y ubicarlo en el directorio de extensiones. Edita el php.ini y agrega al final:
 
 	extension=php_phalcon.dll
 
-Restart your webserver.
+Reiniciar el servidor web.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+El siguiente screencast explica como instalar Phalcon en Windows paso a paso:
 
 .. raw:: html
 
 	<div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
-^^^^^^^^^^^^^^
+Guías Relacionadas
+^^^^^^^^^^^^^^^^^^
 
 .. toctree::
 	:maxdepth: 1
