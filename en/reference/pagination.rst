@@ -79,17 +79,17 @@ Page Attributes
 ---------------
 The $page object has the following attributes:
 
-+---------+--------------------------------------------------------+
-| Adapter | Description                                            |
-+=========+========================================================+
-| items   | The set of records to be displayed at the current page |
-+---------+--------------------------------------------------------+
-| before  | The previous page to the current one                   |
-+---------+--------------------------------------------------------+
-| next    | The next page to the current one                       |
-+---------+--------------------------------------------------------+
-| last    | The last page in the set of records                    |
-+---------+--------------------------------------------------------+
++-----------+--------------------------------------------------------+
+| Attribute | Description                                            |
++===========+========================================================+
+| items     | The set of records to be displayed at the current page |
++-----------+--------------------------------------------------------+
+| before    | The previous page to the current one                   |
++-----------+--------------------------------------------------------+
+| next      | The next page to the current one                       |
++-----------+--------------------------------------------------------+
+| last      | The last page in the set of records                    |
++-----------+--------------------------------------------------------+
 
 Implementing your own adapters
 ------------------------------
