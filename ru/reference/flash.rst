@@ -1,36 +1,36 @@
-Flashing Messages
-=================
-Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
-These kind of messages can be generated using this component
+Всплывающие сообщения
+=====================
+Всплывающие сообщения используются для уведомления пользователей о состоянии действий, которые он/она сделал или просто
+показывает информацию пользователям.
+Такой тип сообщений может быть сгенерирован с помощью этого компонента.
 
-Adapters
+Адаптеры
 --------
-This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
+Этот компонент включает в себя несколько адаптеров, чтобы определить поведений сообщений:
 
-+---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Adapter | Description                                                                                   | API                                                                        |
-+=========+===============================================================================================+============================================================================+
-| Direct  | Directly outputs the messages passed to the flasher                                           | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                |
-+---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| Session | Temporarily stores the messages in session, then messages can be printed in the next request  | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
-+---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
++---------+----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Адаптер | Описание                                                                   | API                                                                        |
++=========+============================================================================+============================================================================+
+| Direct  | Выводит сообщение напрямую пользователю                                    | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                |
++---------+----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| Session | Времено сохраняет сообщения в сессию для вывода в следующем запросе        | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
++---------+----------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-Usage
------
-Usually the Flash Messaging service is requested from the services container,
-if you're using :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`
-then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automatically registered as "flash" service:
+Использование
+-------------
+Обычно компонент всплывающих сообщений доступен и контейнера сервисов, если вы используете :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`
+то :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` будет автоматически зарегистрирован как "flash" сервис:
 
 .. code-block:: php
 
     <?php
 
-    //Set up the flash service
+    // Устанавливаем сервис
     $di->set('flash', function() {
         return new \Phalcon\Flash\Direct();
     });
 
-This way, you can use it in controllers or views by injecting the service in the required scope:
+Таким образом вы можете использовать его в контроллерах или в представлениях (view):
 
 .. code-block:: php
 
@@ -51,7 +51,7 @@ This way, you can use it in controllers or views by injecting the service in the
 
     }
 
-There are four built-in message types supported:
+Существует четыре типа встроенных сообщений:
 
 .. code-block:: php
 
@@ -62,7 +62,7 @@ There are four built-in message types supported:
     $this->flash->notice("this a very important information");
     $this->flash->warning("best check yo self, you're not looking too good.");
 
-You can add messages with your own types:
+Вы можете добавлять сообщения со своими типами:
 
 .. code-block:: php
 
@@ -70,9 +70,9 @@ You can add messages with your own types:
 
     $this->flash->message("debug", "this is debug message, you don't say");
 
-Printing Messages
------------------
-Messages sent to the flasher are automatically formatted with html:
+Вывод сообщений
+---------------
+Сообщения посланные в компонент автоматически форматируются с html:
 
 .. code-block:: html
 
@@ -81,14 +81,14 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="noticeMessage">this a very important information</div>
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
-of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootstrap, classes can be configured as:
+Как видно на примере выше - используются некоторые CSS классы, которые автоматически добавляются в тег 'DIV'. Эти классы позволяют вам
+видоизменять вывод сообщений. CSS классы могут быть изменены, например, если вы используете Twitter Bootstrap, то можно указать следующие классы:
 
 .. code-block:: php
 
     <?php
 
-    //Register the flash service with custom CSS classes
+    // Регистрируем компонент сообщений с CSS классами
     $di->set('flash', function(){
         $flash = new \Phalcon\Flash\Direct(array(
             'error' => 'alert alert-error',
@@ -98,7 +98,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
         return $flash;
     });
 
-Then the messages would be printed as follows:
+После этого сообщение будут выводится таким образом:
 
 .. code-block:: html
 
@@ -106,11 +106,12 @@ Then the messages would be printed as follows:
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
 
-Implicit Flush vs. Session
---------------------------
-Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later.
-When should you use each? That usually depends on the type of redirection you do after sending the messages. For example,
-if you make a "forward" is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
+Понимание разницы между адаптерами Direct и Session
+---------------------------------------------------
+В зависимости от адаптера, используемого для отправки сообщений вывод будет производится сразу или временно сохраняться в сессии для дальнейшего вывода.
+В каких случаях надо их использовать? Это обычно зависит от типа перенаправления, которое вы делаете после отправки сообщения.
+Например, если вы делаете прямой вывод (или внутреннее перенаправление), то сохранять в сессии нет необходимости, но если вы делаете HTTP перенаправление, то
+сообщения необходимо сохранить в сессии, чтобы их можно было позже вывести пользователю:
 
 .. code-block:: php
 
@@ -127,18 +128,18 @@ if you make a "forward" is not necessary to store the messages in session, but i
         public function saveAction()
         {
 
-            //store the post
+            // сохраняем объект в бд
 
-            //Using direct flash
+            // Выводим прямое сообщение
             $this->flash->success("Your information were stored correctly!");
 
-            //Forward to the index action
+            // Делаем внутреннее перенапрвляем на другое действие
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
     }
 
-Or using a HTTP redirection:
+Или используя HTTP перенаправление:
 
 .. code-block:: php
 
@@ -155,18 +156,18 @@ Or using a HTTP redirection:
         public function saveAction()
         {
 
-            //store the post
+            // сохраняем объект в бд
 
-            //Using session flash
+            // Отправляем сообщение в сессию
             $this->flashSession->success("Your information were stored correctly!");
 
-            //Make a full HTTP redirection
+            // Делаем полное HTTP перенаправление
             return $this->response->redirect("contact/index");
         }
 
     }
 
-In this case you need to print manually the messages in the corresponding view:
+В таком случае вам необходимо в ручную вывести сообщение в соответствующем представлении:
 
 .. code-block:: html+php
 
@@ -174,5 +175,5 @@ In this case you need to print manually the messages in the corresponding view:
 
     <p><?php $this->flashSession->output() ?></p>
 
-The attribute 'flashSession' is how the flash was previously set into the dependency injection container.
-You need to start the :doc:`session <session>` first to successfully use the flashSession messenger.
+Атрибут 'flashSession' означает, каким способом изначально был задан компонент в контейнере сервисов.
+Вам необходимо запустить :doc:`session <session>`, чтобы успешно использовать сообщения из сессии.

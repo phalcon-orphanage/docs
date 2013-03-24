@@ -1,33 +1,33 @@
-Contextual Escaping
-===================
+Контекстное экранирование
+=========================
 
-Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
-those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
-the minimal overhead when escaping different kinds of texts.
+Веб-сайты и веб приложения уязвимы к XSS_ атакам, несмотря на то, что PHP предоставляет некоторое количество функция для
+экранирования, в некоторых случаях этого бывает недостаточно. Класс :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` предоставляет
+контекстное экранирование позволяя выполнять экранированию любых текстов с минимальными затратами ресурсов.
 
-We designed this component based on the `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ created by the OWASP_
+Мы разработали компонент, базируемый на `XSS (Cross Site Scripting) Prevention Cheat Sheet`_ который был создан в OWASP_
 
-Additionally, this component relies on mbstring_ to support almost any charset.
+Этот компонент полагается на mbstring_ для того чтобы поддерживать любую кодировку.
 
-To illustrate how this component works and why it is important, consider the following example:
+Для демонстрации работы компонента и его важности рассмотрим следующий пример:
 
 .. code-block:: html+php
 
     <?php
 
-        //Document title with malicious extra HTML tags
+        // Заголовок документа с вредоносным кодом
         $maliciousTitle = '</title><script>alert(1)</script>';
 
-        //Malicious CSS class name
+        // Вредоносные название CSS класса
         $className = ';`(';
 
-        //Malicious CSS font name
+        // Вредоносное название CSS шрифта
         $fontName = 'Verdana"</style>';
 
-        //Malicious Javascript text
+        // Вредоносный Javascript текст
         $javascriptText = "';</script>Hello";
 
-        //Create a escaper
+        // Создаем компонент экранирования
         $e = new Phalcon\Escaper();
 
     ?>
@@ -56,103 +56,104 @@ To illustrate how this component works and why it is important, consider the fol
     </body>
     </html>
 
-Which produces the following:
+В итоге получим такой html документ:
 
 .. figure:: ../_static/img/escape.jpeg
     :align: center
 
-Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
+Все текстовые переменные были экранированы в соответсвии с их контекстом. Использовании необходимого контекста важно для
+избежания XSS атак.
 
-Escaping HTML
--------------
-The most common situation when inserting unsafe data is between HTML tags:
+Экранирование HTML
+------------------
+Наиболее распространенная ситуация, при вставке небезопасных данных между HTML тегами:
 
 .. code-block:: html
 
-    <div class="comments"><!-- Escape unstrusted data here! --></div>
+    <div class="comments"><!-- Экранируем данные, которым не доверяем! --></div>
 
-You can escape those data using the escapeHtml method:
+Вы можете экранировать эти данные с помощью метода escapeHtml:
 
 .. code-block:: html+php
 
     <div class="comments"><?php echo $e->escapeHtml('></div><h1>myattack</h1>'); ?></div>
 
-Which produces:
+Что приведет к:
 
 .. code-block:: html
 
     <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
 
-Escaping HTML Attributes
+Экранирование HTML Атрибутов
+----------------------------
+Экранирование HTML атрибутов отличается от простого экранирования HTML контента. Экранирование изменяет все не цифры и не буквы.
+Этот вид экранирования предназначен для самых простых атрибутов, без учета сложных, таких как 'href' или 'url':
+
+.. code-block:: html
+
+    <table width="Экранируем данные, которым не доверяем!"><tr><td>Привет</td></tr></table>
+
+Вы можете экранировать HTML атрибуты используя метод escapeHtmlAttr:
+
+.. code-block:: html+php
+
+    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Привет</table'); ?>"><tr><td>Привет</td></tr></table>
+
+Что приведет к:
+
+.. code-block:: html
+
+    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Привет</td></tr></table>
+
+Экранирование ссылок
+--------------------
+Некоторые атрибуты, такие как 'href' или 'url' необходимо экранировать по другому:
+
+.. code-block:: html
+
+    <a href="Экранируем данные, которым не доверяем!">Some link</a>
+
+Вы можете экранировать этот HTML атрибуты используя метод escapeUrl:
+
+.. code-block:: html+php
+
+    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">Ссылка</a>
+
+Что приведет к:
+
+.. code-block:: html
+
+    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Ссылка</a>
+
+Экранирование CSS
+-----------------
+CSS идентификаторы/значения могут быть тоже экранированы:
+
+.. code-block:: html
+
+    <a style="color: Экранируем данные, которым не доверяем!">Ссылка</a>
+
+Экранирование в этом случае можно выполнить с помощью метода escapeCss:
+
+.. code-block:: html+php
+
+    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">Ссылка</a>
+
+Что приведет к:
+
+.. code-block:: html
+
+    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Ссылка</a>
+
+Экранирование Javascript
 ------------------------
-Escape HTML attributes is different from escape a full HTML content. The escape works by changing every non-alphanumeric
-character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
+Строки, которые попадают в код javascript тоже должны быть правильно экранированы:
 
 .. code-block:: html
 
-    <table width="Escape unstrusted data here!"><tr><td>Hello</td></tr></table>
+    <script>document.title = 'Экранируем данные, которым не доверяем!'</script>
 
-You can escape an HTML attribute by using the escapeHtmlAttr method:
-
-.. code-block:: html+php
-
-    <table width="<?php echo $e->escapeHtmlAttr('"><h1>Hello</table'); ?>"><tr><td>Hello</td></tr></table>
-
-Which produces:
-
-.. code-block:: html
-
-    <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
-
-Escaping URLs
--------------
-Some HTML attributes like 'href' or 'url' need to be escaped differently:
-
-.. code-block:: html
-
-    <a href="Escape unstrusted data here!">Some link</a>
-
-You can escape an HTML attribute by using the escapeUrl method:
-
-.. code-block:: html+php
-
-    <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
-
-Which produces:
-
-.. code-block:: html
-
-    <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
-
-Escaping CSS
-------------
-CSS identifiers/values can be escaped too:
-
-.. code-block:: html
-
-    <a style="color: Escape unstrusted data here">Some link</a>
-
-You can escape an HTML attribute by using the escapeCss method:
-
-.. code-block:: html+php
-
-    <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">Some link</a>
-
-Which produces:
-
-.. code-block:: html
-
-    <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
-
-Escaping Javascript
--------------------
-Strings to be inserted into javascript code also must be properly escaped:
-
-.. code-block:: html
-
-    <script>document.title = 'Escape unstrusted data here'</script>
-
-You can escape an HTML attribute by using the escapeJs method:
+Для этого используем метод escapeJs:
 
 .. code-block:: html+php
 
@@ -165,4 +166,4 @@ You can escape an HTML attribute by using the escapeJs method:
 .. _OWASP : https://www.owasp.org
 .. _XSS : https://www.owasp.org/index.php/XSS
 .. _`XSS (Cross Site Scripting) Prevention Cheat Sheet` : https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
-.. _mbstring : http://php.net/manual/en/book.mbstring.php
+.. _mbstring : http://php.net/manual/ru/book.mbstring.php

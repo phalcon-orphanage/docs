@@ -1,19 +1,21 @@
-Filtering and Sanitizing
-========================
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
-access to the content of your application, mainly user data, or even the server your application is hosted.
+Фильтрация и очистка
+====================
+Фильтрация пользовательского ввода является критической частью разработки приложений. Доверие или пренебрежение очисткой и
+фильтрацией ввода произведенного пользователем может привести к несанкционированному доступу к контенту вашего приложения,
+данным или даже к серверу, где ваше приложение размещенно.
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
-Full image (from xkcd)
+Полное изображение (с сайта xkcd)
 
-The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+Компонент :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` предоставляет набор основных фильтров для корректирования данных.
+Он обеспечивает объектно-ориентированную обертку вокруг PHP фильтра.
 
-Sanitizing data
----------------
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
-By sanitizing input we ensure that application integrity will be intact.
+Очистка данных
+--------------
+Очистка - это процесс, который удаляет определенный символ из значения, которое было введено пользователем.
+С помощью очистки входных данных мы гарантируем, что целостность приложения не будет нарушена.
 
 .. code-block:: php
 
@@ -21,23 +23,23 @@ By sanitizing input we ensure that application integrity will be intact.
 
     $filter = new \Phalcon\Filter();
 
-    // returns "someone@example.com"
+    // возвращает "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
 
-    // returns "hello"
+    // возвращает "hello"
     $filter->sanitize("hello<<", "string");
 
-    // returns "100019"
+    // возвращает "100019"
     $filter->sanitize("!100a019", "int");
 
-    // returns "100019.01"
+    // возвращает "100019.01"
     $filter->sanitize("!100a019.01a", "float");
 
 
-Sanitizing from Controllers
----------------------------
-You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
-(through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+Очистка из контроллеров
+-----------------------
+Доступ к объекту :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` можно получить из контроллера для очистки GET или POST входных данных.
+Первым параметром является название переменной, которую необходимо получить, а вторым - название фильтра, который должен быть применен относительно этой переменной.
 
 .. code-block:: php
 
@@ -54,19 +56,19 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
         public function saveAction()
         {
 
-            // Sanitizing price from input
+            // Чистим price из ввода
             $price = $this->request->getPost("price", "double");
 
-            // Sanitizing email from input
+            // Чистим email из ввода
             $email = $this->request->getPost("customerEmail", "email");
 
         }
 
     }
 
-Filtering Action Parameters
----------------------------
-The next example shows you how to sanitize the action parameters within a controller action:
+Фильтруем параметры действия (Action)
+-------------------------------------
+Слудующий пример показывает, как чистить параметры действий в контроллере:
 
 .. code-block:: php
 
@@ -87,10 +89,10 @@ The next example shows you how to sanitize the action parameters within a contro
 
     }
 
-Filtering data
---------------
-In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
-the format we expect.
+Фильтрация данных
+-----------------
+В дополнение к очистке, класс :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` так же предоставляет фильтрацию, которая изменяет или удаляет
+данные в соответствии с ожидаемым форматом.
 
 .. code-block:: php
 
@@ -98,42 +100,42 @@ the format we expect.
 
     $filter = new \Phalcon\Filter();
 
-    // returns "Hello"
+    // возвращает "Hello"
     $filter->filter("<h1>Hello</h1>", "striptags");
 
-    // returns "Hello"
+    // возвращает "Hello"
     $filter->filter("  Hello   ", "trim");
 
 
-Types of Built-in Filters
--------------------------
-The following are the built-in filters provided by this component:
+Типы встроенных фильтров
+------------------------
+В таблице приведены все типы фильтров, которыми распологает компонент:
 
-+-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
-+===========+===========================================================================+
-| string    | Strip tags                                                                |
-+-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
-+-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
-+-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
-+-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
-+-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
-+-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
-+-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
-+-----------+---------------------------------------------------------------------------+
++-------------+---------------------------------------------------------------------------+
+| Название    | Описание                                                                  |
++=============+===========================================================================+
+| string      | Преобразовывает теги                                                      |
++-------------+---------------------------------------------------------------------------+
+| email       | Удаляет все символы, за исключением букв, цифр и !#$%&*+-/=?^_`{|}~@.[].  |
++-------------+---------------------------------------------------------------------------+
+| int         | Удаляет все символы, за исключением цифр и знаков плюс/минус.             |
++-------------+---------------------------------------------------------------------------+
+| float       | Удаляет все символы, за исключением цифр, точек и знаков плюс/минус.      |
++-------------+---------------------------------------------------------------------------+
+| alphanum    | Удаляет все символы, за исключением [a-zA-Z0-9]                           |
++-------------+---------------------------------------------------------------------------+
+| striptags   | Применяет strip_tags_ функцию                                             |
++-------------+---------------------------------------------------------------------------+
+| trim        | Применяет trim_ функцию                                                   |
++-------------+---------------------------------------------------------------------------+
+| lower       | Применяет strtolower_ функцию                                             |
++-------------+---------------------------------------------------------------------------+
+| upper       | Применяет strtoupper_ функцию                                             |
++-------------+---------------------------------------------------------------------------+
 
-Creating your own Filters
--------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+Создание собственных фильтров
+-----------------------------
+Вы можете добавлять своим фильтры в :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. Функция фильтрации может быть анонимной:
 
 .. code-block:: php
 
@@ -141,15 +143,15 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
 
     $filter = new \Phalcon\Filter();
 
-    //Using an anonymous function
+    // Используем анонимную функцию
     $filter->add('md5', function($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
-    //Sanitize with the "md5" filter
+    // Используем "md5" фильтр
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
-Or, if you prefer, you can implement the filter in a class:
+Вы можете реализовать фильтр с помощью класса:
 
 .. code-block:: php
 
@@ -167,23 +169,23 @@ Or, if you prefer, you can implement the filter in a class:
 
     $filter = new \Phalcon\Filter();
 
-    //Using an object
+    // Используем объект
     $filter->add('ipv4', new IPv4Filter());
 
-    //Sanitize with the "ipv4" filter
+    // Фильтруем с помощью "ipv4"
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
-Complex Sanitizing and Filtering
---------------------------------
-PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
-
-Implementing your own Filter
+Сложная очистка и фильтрация
 ----------------------------
-The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
-replacing the one provided by Phalcon.
+PHP предоставляет отличную фильтрацию, которой вы можете воспользоваться. Посмотрите на документацию: `Фильтрация данных в документации PHP`_
 
-.. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
-.. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
-.. _trim: http://www.php.net/manual/en/function.trim.php
-.. _strtolower: http://www.php.net/manual/en/function.strtolower.php
-.. _strtoupper: http://www.php.net/manual/en/function.strtoupper.php
+Разработка собственной системы фильтрации
+-----------------------------------------
+Используйте интерфейс :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` для создания собственной системы фильтрации,
+чтобы заменить существуюущую в Phalcon.
+
+.. _Фильтрация данных в документации PHP: http://www.php.net/manual/ru/book.filter.php
+.. _strip_tags: http://www.php.net/manual/ru/function.strip-tags.php
+.. _trim: http://www.php.net/manual/ru/function.trim.php
+.. _strtolower: http://www.php.net/manual/ru/function.strtolower.php
+.. _strtoupper: http://www.php.net/manual/ru/function.strtoupper.php
