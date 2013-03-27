@@ -858,7 +858,7 @@ Count examples:
     //Count employees grouping results by their area
     $group = Employees::count(array("group" => "area"));
     foreach ($group as $row) {
-       echo "There are ", $group->rowcount, " in ", $group->area;
+       echo "There are ", $row->rowcount, " in ", $row->area;
     }
 
     // Count employees grouping by their area and ordering the result by count
@@ -890,7 +890,7 @@ Sum examples:
         "group"  => "area"
     ));
     foreach ($group as $row) {
-       echo "The sum of salaries of the ", $group->area, " is ", $group->sumatory;
+       echo "The sum of salaries of the ", $row->area, " is ", $row->sumatory;
     }
 
     // Generate a grouping of the salaries of each area ordering
