@@ -104,7 +104,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     // Execute the query returning a result if any
     $cars = $query->execute();
 
-From a controller or a view, it's easy create/execute them using a injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
+From a controller or a view, it's easy create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
 .. code-block:: php
 
@@ -265,7 +265,7 @@ relationships in the models. PHQL adds these conditions automatically:
         echo $row->brand_name, "\n";
     }
 
-By default, a INNER JOIN is assumed. You can specify the type of JOIN in the query:
+By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
 
 .. code-block:: php
 

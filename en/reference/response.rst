@@ -191,7 +191,7 @@ The identifier must be calculated taking into account that this must change if t
     $recentDate = News::maximum(array('column' => 'created_at'));
     $eTag = md5($recentDate);
 
-    //Send a E-Tag header
+    //Send an E-Tag header
     $response->setHeader('E-Tag', $eTag);
 
 

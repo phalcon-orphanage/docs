@@ -42,7 +42,7 @@ A role is an object that can or cannot access certain resources in the access li
     // Add "Designers" role to acl without a Phalcon\Acl\Role
     $acl->addRole("Designers");
 
-As you can see, roles are defined directly without using a instance.
+As you can see, roles are defined directly without using an instance.
 
 Adding Resources
 ----------------

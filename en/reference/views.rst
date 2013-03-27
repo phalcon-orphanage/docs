@@ -561,7 +561,7 @@ calculations/queries to display data in the view:
 
     }
 
-The `PHP alternative site`_ is a example of implementing the caching of fragments.
+The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
 Disabling the view
 ------------------

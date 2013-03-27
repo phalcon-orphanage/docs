@@ -79,7 +79,7 @@ Below is a minimal template that illustrates a few basics:
     <!DOCTYPE html>
     <html>
         <head>
-            <title>{{ title }} - A example blog</title>
+            <title>{{ title }} - An example blog</title>
         </head>
         <body>
 
@@ -574,7 +574,7 @@ Additional operators seen the following operators are available:
 +----------------------+----------------------------------------------------------------------------------------------+
 | is                   | Same as == (equals), also performs tests                                                     |
 +----------------------+----------------------------------------------------------------------------------------------+
-| in                   | To check if a expression is contained into other expressions if "a" in "abc"                 |
+| in                   | To check if an expression is contained into other expressions if "a" in "abc"                |
 +----------------------+----------------------------------------------------------------------------------------------+
 | is not               | Same as != (not equals)                                                                      |
 +----------------------+----------------------------------------------------------------------------------------------+

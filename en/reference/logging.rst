@@ -84,15 +84,15 @@ Message Formatting
 ------------------
 This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
 
-+---------+----------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter | Description                                  | API                                                                                |
-+=========+==============================================+====================================================================================+
-| Line    | Formats the messages using a one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
-+---------+----------------------------------------------+------------------------------------------------------------------------------------+
-| Json    | Prepares a message to be encoded with JSON   | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
-+---------+----------------------------------------------+------------------------------------------------------------------------------------+
-| Syslog  | Prepares a message to be sent to syslog      | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
-+---------+----------------------------------------------+------------------------------------------------------------------------------------+
++---------+-----------------------------------------------+------------------------------------------------------------------------------------+
+| Adapter | Description                                   | API                                                                                |
++=========+===============================================+====================================================================================+
+| Line    | Formats the messages using an one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
++---------+-----------------------------------------------+------------------------------------------------------------------------------------+
+| Json    | Prepares a message to be encoded with JSON    | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
++---------+-----------------------------------------------+------------------------------------------------------------------------------------+
+| Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
++---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 
 Line Formatter
 ^^^^^^^^^^^^^^

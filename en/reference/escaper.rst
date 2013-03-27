@@ -27,7 +27,7 @@ To illustrate how this component works and why it is important, consider the fol
         //Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        //Create a escaper
+        //Create an escaper
         $e = new Phalcon\Escaper();
 
     ?>

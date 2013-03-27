@@ -332,7 +332,7 @@ To make a model to react to an event, we must to implement a method with the sam
 
 	}
 
-Events can be useful to assign values before performing a operation, for example:
+Events can be useful to assign values before performing an operation, for example:
 
 .. code-block:: php
 

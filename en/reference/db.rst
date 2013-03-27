@@ -375,7 +375,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
-    //Create a EventsManager
+    //Create an EventsManager
     $eventsManager = new Phalcon\Events\Manager();
 
     //Create a listener

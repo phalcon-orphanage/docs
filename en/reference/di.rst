@@ -1,7 +1,7 @@
 Using Dependency Injection
 **************************
-The following example is a bit lengthy, but explains why using a service container, service location and dependency injection. 
-First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now. 
+The following example is a bit lengthy, but explains why using a service container, service location and dependency injection.
+First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
 Our component has some dependency that is a connection to a database.
 
 In this first example, the connection is created inside the component. This approach is impractical; practically we cannot change the
@@ -321,7 +321,7 @@ of our component:
             // this will return the same connection everytime
             $connection = $this->_di->getShared('db');
 
-            //This method also requires a input filtering service
+            //This method also requires an input filtering service
             $filter = $this->_db->get('filter');
 
         }
@@ -366,8 +366,8 @@ Phalcon\\DI is a component implementing Dependency Injection and Location of ser
 Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies 
-using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only 
+Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
+using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only
 one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
@@ -707,15 +707,15 @@ A service with properties injection can be registered as follows:
 
 Supported parameter types include the following:
 
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| Type        | Description                                              | Example                                                                            |
-+=============+==========================================================+====================================================================================+
-| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                      |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| service     | Represents another service in the services container     | array('type' => 'service', 'name' => 'request')                                    |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| instance    | Represents a object that must be built dynamically       | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| Type        | Description                                              | Example                                                                             |
++=============+==========================================================+=====================================================================================+
+| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                       |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| service     | Represents another service in the services container     | array('type' => 'service', 'name' => 'request')                                     |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| instance    | Represents an object that must be built dynamically      | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions. However,
 these provide a more robust approach to define and inject services.
