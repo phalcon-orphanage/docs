@@ -714,7 +714,7 @@ Supported parameter types include the following:
 +-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
 | service     | Represents another service in the services container     | array('type' => 'service', 'name' => 'request')                                    |
 +-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| instance    | Represents a object that must be built dynamically       | array('type' => 'service', 'className' => 'DateTime', 'arguments' => array('now')) |
+| instance    | Represents a object that must be built dynamically       | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
 +-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
 
 Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions. However,
