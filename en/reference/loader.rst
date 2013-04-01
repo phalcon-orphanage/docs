@@ -160,7 +160,7 @@ Additional data could be added to the existing values for strategies in the foll
     // Adding more directories
     $loader->registerDirs(
         array(
-            "../app/library/"
+            "../app/library/",
             "../app/plugins/"
         ),
         true
