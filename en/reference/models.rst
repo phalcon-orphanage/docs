@@ -563,7 +563,7 @@ By accesing an attribute with the same name as the relationship will retrieve al
     <?php
 
     $robot = Robots::findFirst();
-    $robot->robotsParts; // all the related records in RobotsParts
+    $robotsParts = $robot->robotsParts; // all the related records in RobotsParts
 
 Also, you can use a magic getter:
 
@@ -572,8 +572,8 @@ Also, you can use a magic getter:
     <?php
 
     $robot = Robots::findFirst();
-    $robot->getRobotsParts(); // all the related records in RobotsParts
-    $robot->getRobotsParts(array('limit' => 5)); // passing parameters
+    $robotsParts = $robot->getRobotsParts(); // all the related records in RobotsParts
+    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // passing parameters
 
 If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
 findFirst()/find() result. The following example compares retrieving related results with using magic methods
@@ -1053,6 +1053,16 @@ an insecure array without worrying about possible SQL injections:
     Without precautions mass assignment could allow attackers to set any database column’s value. Only use this feature
     if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
     form.
+
+You can set an additional parameter to save to set a whitelist of fields that only must taken into account when doing
+the mass assignment:
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->save($_POST, array('name', 'type'));    
 
 Create/Update with Confidence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

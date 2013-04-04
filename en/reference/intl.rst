@@ -87,15 +87,30 @@ examples below on the usage of this class:
 
     // Returns that the strings are equal, in spite of the emphasis on the "o"
     $collator->setStrength(Collator::PRIMARY);
-    $collator->compare("una canción", "una cancion");
+    var_dump($collator->compare("una canción", "una cancion"));
 
     // Returns that the strings are not equal
     $collator->setStrength(Collator::DEFAULT);
-    $collator->compare("una canción", "una cancion");
+    var_dump($collator->compare("una canción", "una cancion"));
 
+Transliteration
+---------------
+Transliterator_ provides transliteration of strings:
+
+.. code-block:: php
+
+    <?php
+
+    $id = "Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();";
+    $transliterator = Transliterator::create($id);
+
+    $string = "garçon-étudiant-où-L'école";
+    echo $transliterator->transliterate($string); // garconetudiantoulecole
+    
 .. _PECL: http://pecl.php.net/package/intl
 .. _intl: http://pecl.php.net/package/intl
 .. _PHP manual: http://www.php.net/manual/en/intro.intl.php
 .. _documentation: http://www.php.net/manual/en/book.intl.php
 .. _MessageFormatter: http://www.php.net/manual/en/class.messageformatter.php
 .. _Collator: http://www.php.net/manual/en/class.collator.php
+.. _Transliterator: http://www.php.net/manual/en/class.transliterator.php
