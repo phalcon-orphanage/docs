@@ -1,44 +1,6 @@
 Class **Phalcon\\Mvc\\Router\\Group**
 =====================================
 
-Helper class to create a group of routes with common attributes  
-
-.. code-block:: php
-
-    <?php
-
-     $router = new Phalcon\Mvc\Router();
-    
-     //Create a group with a common module and controller
-     $blog = new Phalcon\Mvc\Router\Group(array(
-     	'module' => 'blog',
-     	'controller' => 'index'
-     ));
-    
-     //All the routes start with /blog
-     $blog->setPrefix('/blog');
-    
-     //Add a route to the group
-     $blog->add('/save', array(
-     	'action' => 'save'
-     ));
-    
-     //Add another route to the group
-     $blog->add('/edit/{id}', array(
-     	'action' => 'edit'
-     ));
-    
-     //This route maps to a controller different than the default
-     $blog->add('/blog', array(
-     	'controller' => 'about',
-     	'action' => 'index'
-     ));
-    
-     //Add the group to the router
-     $router->mount($blog);
-
-
-
 Methods
 ---------
 
@@ -86,7 +48,7 @@ Adds a route applying the common attributes
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
 
-Adds a route to the router on any HTTP method 
+Adds a route to the router on any HTTP method 
 
 .. code-block:: php
 

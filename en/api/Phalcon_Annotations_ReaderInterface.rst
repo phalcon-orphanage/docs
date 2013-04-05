@@ -1,9 +1,6 @@
 Interface **Phalcon\\Annotations\\ReaderInterface**
 ===================================================
 
-Phalcon\\Annotations\\ReaderInterface initializer
-
-
 Methods
 ---------
 

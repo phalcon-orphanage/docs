@@ -5,9 +5,6 @@ Class **Phalcon\\Flash\\Session**
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Temporarily stores the messages in session, then messages can be printed in the next request
-
-
 Methods
 ---------
 
@@ -79,7 +76,7 @@ Set an array with CSS classes to format the messages
 
 public *string*  **error** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML error message 
+Shows a HTML error message 
 
 .. code-block:: php
 
@@ -92,7 +89,7 @@ Shows a HTML error message
 
 public *string*  **notice** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML notice/information message 
+Shows a HTML notice/information message 
 
 .. code-block:: php
 
@@ -105,7 +102,7 @@ Shows a HTML notice/information message
 
 public *string*  **success** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML success message 
+Shows a HTML success message 
 
 .. code-block:: php
 
@@ -118,7 +115,7 @@ Shows a HTML success message
 
 public *string*  **warning** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML warning message 
+Shows a HTML warning message 
 
 .. code-block:: php
 
@@ -131,7 +128,7 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
 
-Outputs a message formatting it with HTML 
+Outputs a message formatting it with HTML 
 
 .. code-block:: php
 

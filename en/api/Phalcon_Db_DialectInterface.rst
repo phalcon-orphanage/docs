@@ -1,9 +1,6 @@
 Interface **Phalcon\\Db\\DialectInterface**
 ===========================================
 
-Phalcon\\Db\\DialectInterface initializer
-
-
 Methods
 ---------
 

@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\Collection\\ManagerInterface**
 ========================================================
 
-Phalcon\\Mvc\\Collection\\ManagerInterface initializer
-
-
 Methods
 ---------
 
@@ -63,7 +60,7 @@ Returns the connection related to a model
 
 abstract public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 

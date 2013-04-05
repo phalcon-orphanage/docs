@@ -3,27 +3,6 @@ Class **Phalcon\\Mvc\\Model\\Query**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-This class takes a PHQL intermediate representation and executes it.  
-
-.. code-block:: php
-
-    <?php
-
-     $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
-              WHERE b.name = :name: ORDER BY c.name";
-    
-     $result = $manager->executeQuery($phql, array(
-       'name' => 'Lamborghini'
-     ));
-    
-     foreach ($result as $row) {
-       echo "Name: ", $row->cars->name, "\n";
-       echo "Price: ", $row->cars->price, "\n";
-       echo "Taxes: ", $row->taxes, "\n";
-     }
-
-
-
 Constants
 ---------
 
@@ -94,7 +73,7 @@ Resolves an expression from its intermediate code into a string
 
 protected *array*  **_getSelectColumn** ()
 
-Resolves a column from its intermediate representation into an array used to determine if the resulset produced is simple or complex
+Resolves a column from its intermediate representation into an array used to determine if the resulset produced is simple or complex
 
 
 
@@ -160,7 +139,7 @@ Analyzes a DELETE intermediate code and produces an array to be executed later
 
 public *array*  **parse** ()
 
-Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
+Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 

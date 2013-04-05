@@ -1,9 +1,6 @@
 Class **Phalcon\\Tag**
 ======================
 
-Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
-
-
 Constants
 ---------
 
@@ -70,16 +67,16 @@ Set autoescape mode in generated html
 
 public static  **setDefault** (*string* $id, *string* $value)
 
-Assigns default values to generated tags by helpers 
+Assigns default values to generated tags by helpers 
 
 .. code-block:: php
 
     <?php
 
-     //Assigning "peter" to "name" component
-     Phalcon\Tag::setDefault("name", "peter");
-    
-     //Later in the view
+     //Assigning "peter" to "name" component
+     Phalcon\Tag::setDefault("name", "peter");
+    
+     //Later in the view
      echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
@@ -87,16 +84,16 @@ Assigns default values to generated tags by helpers
 
 public static  **setDefaults** (*array* $values)
 
-Assigns default values to generated tags by helpers 
+Assigns default values to generated tags by helpers 
 
 .. code-block:: php
 
     <?php
 
-     //Assigning "peter" to "name" component
-     Phalcon\Tag::setDefaults(array("name" => "peter"));
-    
-     //Later in the view
+     //Assigning "peter" to "name" component
+     Phalcon\Tag::setDefaults(array("name" => "peter"));
+    
+     //Later in the view
      echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
@@ -116,7 +113,7 @@ Check if a helper has a default value set using Phalcon\\Tag::setDefault or valu
 
 public static *mixed*  **getValue** (*string* $name, [*array* $params])
 
-Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
+Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
 
 
 
@@ -128,7 +125,7 @@ Resets the request and internal values to avoid those fields will have any defau
 
 public static *string*  **linkTo** (*array|string* $parameters, [*string* $text])
 
-Builds a HTML A tag using framework conventions 
+Builds a HTML A tag using framework conventions 
 
 .. code-block:: php
 
@@ -147,7 +144,7 @@ Builds generic INPUT tags
 
 public static *string*  **textField** (*array* $parameters)
 
-Builds a HTML input[type="text"] tag 
+Builds a HTML input[type="text"] tag 
 
 .. code-block:: php
 
@@ -160,7 +157,7 @@ Builds a HTML input[type="text"] tag
 
 public static *string*  **passwordField** (*array* $parameters)
 
-Builds a HTML input[type="password"] tag 
+Builds a HTML input[type="password"] tag 
 
 .. code-block:: php
 
@@ -173,7 +170,7 @@ Builds a HTML input[type="password"] tag
 
 public static *string*  **hiddenField** (*array* $parameters)
 
-Builds a HTML input[type="hidden"] tag 
+Builds a HTML input[type="hidden"] tag 
 
 .. code-block:: php
 
@@ -186,7 +183,7 @@ Builds a HTML input[type="hidden"] tag
 
 public static *string*  **fileField** (*array* $parameters)
 
-Builds a HTML input[type="file"] tag 
+Builds a HTML input[type="file"] tag 
 
 .. code-block:: php
 
@@ -199,7 +196,7 @@ Builds a HTML input[type="file"] tag
 
 public static *string*  **checkField** (*array* $parameters)
 
-Builds a HTML input[type="check"] tag 
+Builds a HTML input[type="check"] tag 
 
 .. code-block:: php
 
@@ -212,7 +209,7 @@ Builds a HTML input[type="check"] tag
 
 public static *string*  **radioField** (*array* $parameters)
 
-Builds a HTML input[type="radio"] tag 
+Builds a HTML input[type="radio"] tag 
 
 .. code-block:: php
 
@@ -225,7 +222,7 @@ Builds a HTML input[type="radio"] tag
 
 public static *string*  **imageInput** (*array* $parameters)
 
-Builds a HTML input[type="image"] tag 
+Builds a HTML input[type="image"] tag 
 
 .. code-block:: php
 
@@ -238,7 +235,7 @@ Builds a HTML input[type="image"] tag
 
 public static *string*  **submitButton** (*array* $parameters)
 
-Builds a HTML input[type="submit"] tag 
+Builds a HTML input[type="submit"] tag 
 
 .. code-block:: php
 
@@ -251,7 +248,7 @@ Builds a HTML input[type="submit"] tag
 
 public static *string*  **selectStatic** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a PHP array for options 
+Builds a HTML SELECT tag using a PHP array for options 
 
 .. code-block:: php
 
@@ -264,16 +261,16 @@ Builds a HTML SELECT tag using a PHP array for options
 
 public static *string*  **select** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options 
+Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options 
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon\Tag::selectStatic(array(
-    	"robotId",
-    	Robots::find("type = 'mechanical'"),
-    	"using" => array("id", "name")
+    echo Phalcon\Tag::selectStatic(array(
+    	"robotId",
+    	Robots::find("type = 'mechanical'"),
+    	"using" => array("id", "name")
      	));
 
 
@@ -281,7 +278,7 @@ Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
 
 public static *string*  **textArea** (*array* $parameters)
 
-Builds a HTML TEXTAREA tag 
+Builds a HTML TEXTAREA tag 
 
 .. code-block:: php
 
@@ -294,22 +291,22 @@ Builds a HTML TEXTAREA tag
 
 public static *string*  **form** ([*array* $parameters])
 
-Builds a HTML FORM tag 
+Builds a HTML FORM tag 
 
 .. code-block:: php
 
     <?php
 
-     echo Phalcon\Tag::form("posts/save");
+     echo Phalcon\Tag::form("posts/save");
      echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
 
-Volt syntax: 
+Volt syntax: 
 
 .. code-block:: php
 
     <?php
 
-     {{ form("posts/save") }}
+     {{ form("posts/save") }}
      {{ form("posts/save", "method": "post") }}
 
 
@@ -323,7 +320,7 @@ Builds a HTML close FORM tag
 
 public static  **setTitle** (*string* $title)
 
-Set the title of view content 
+Set the title of view content 
 
 .. code-block:: php
 
@@ -348,7 +345,7 @@ Prepends a text to current document title
 
 public static *string*  **getTitle** ([*unknown* $tags])
 
-Gets the current document title 
+Gets the current document title 
 
 .. code-block:: php
 
@@ -367,13 +364,13 @@ Gets the current document title
 
 public static *string*  **stylesheetLink** ([*array* $parameters], [*boolean* $local])
 
-Builds a LINK[rel="stylesheet"] tag 
+Builds a LINK[rel="stylesheet"] tag 
 
 .. code-block:: php
 
     <?php
 
-     	echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+     	echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
      	echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 
@@ -381,22 +378,22 @@ Builds a LINK[rel="stylesheet"] tag
 
 public static *string*  **javascriptInclude** ([*array* $parameters], [*boolean* $local])
 
-Builds a SCRIPT[type="javascript"] tag 
+Builds a SCRIPT[type="javascript"] tag 
 
 .. code-block:: php
 
     <?php
 
-     	echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
+     	echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
      	echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
-Volt syntax: 
+Volt syntax: 
 
 .. code-block:: php
 
     <?php
 
-     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
+     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
      {{ javascript_include("javascript/jquery.js") }}
 
 

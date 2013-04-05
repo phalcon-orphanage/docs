@@ -5,19 +5,6 @@ Class **Phalcon\\Logger\\Adapter\\Stream**
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 
-Sends logs to a valid PHP stream  
-
-.. code-block:: php
-
-    <?php
-
-    $logger = new \Phalcon\Logger\Adapter\Stream("php://stderr");
-    $logger->log("This is a message");
-    $logger->log("This is an error", \Phalcon\Logger::ERROR);
-    $logger->error("This is another error");
-
-
-
 Methods
 ---------
 

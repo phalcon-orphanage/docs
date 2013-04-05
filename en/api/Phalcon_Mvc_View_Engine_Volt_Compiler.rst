@@ -3,18 +3,6 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-This class reads and compiles Volt templates into PHP plain code  
-
-.. code-block:: php
-
-    <?php
-
-    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
-    $compiler->compile('views/partials/header.volt');
-    require $compiler->getCompiledTemplatePath();
-
-
-
 Methods
 ---------
 
@@ -187,7 +175,7 @@ Compiles a Volt source code returning a PHP plain version
 
 public *string*  **compileString** (*string* $viewCode, [*boolean* $extendsMode])
 
-Compiles a template into a string 
+Compiles a template into a string 
 
 .. code-block:: php
 
@@ -200,7 +188,7 @@ Compiles a template into a string
 
 public *string|array*  **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
 
-Compiles a template into a file forcing the destination path 
+Compiles a template into a file forcing the destination path 
 
 .. code-block:: php
 
@@ -213,13 +201,13 @@ Compiles a template into a file forcing the destination path
 
 public *string|array*  **compile** (*string* $templatePath, [*boolean* $extendsMode])
 
-Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled 
+Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled 
 
 .. code-block:: php
 
     <?php
 
-    $compiler->compile('views/layouts/main.volt');
+    $compiler->compile('views/layouts/main.volt');
     require $compiler->getCompiledTemplatePath();
 
 
@@ -239,7 +227,7 @@ Returns the path to the last compiled template
 
 public *array*  **parse** (*string* $viewCode)
 
-Parses a Volt template returning its intermediate representation 
+Parses a Volt template returning its intermediate representation 
 
 .. code-block:: php
 

@@ -1,9 +1,6 @@
 Interface **Phalcon\\DI\\InjectionAwareInterface**
 ==================================================
 
-Phalcon\\DI\\InjectionAwareInterface initializer
-
-
 Methods
 ---------
 

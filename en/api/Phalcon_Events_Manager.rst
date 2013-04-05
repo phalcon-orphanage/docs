@@ -3,9 +3,6 @@ Class **Phalcon\\Events\\Manager**
 
 *implements* :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`
 
-Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
-
-
 Methods
 ---------
 
@@ -17,13 +14,13 @@ Attach a listener to the events manager
 
 public  **collectResponses** (*boolean* $collect)
 
-Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
+Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
 
 
 
 public  **isCollecting** ()
 
-Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
 
 
 
@@ -47,7 +44,7 @@ Internal handler to call a queue of events
 
 public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*int* $cancelable])
 
-Fires an event in the events manager causing that active listeners be notified about it 
+Fires an event in the events manager causing that active listeners be notified about it 
 
 .. code-block:: php
 

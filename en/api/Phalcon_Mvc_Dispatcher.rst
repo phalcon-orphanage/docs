@@ -5,26 +5,6 @@ Class **Phalcon\\Mvc\\Dispatcher**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.  
-
-.. code-block:: php
-
-    <?php
-
-    $di = new Phalcon\DI();
-    
-    $dispatcher = new Phalcon\Mvc\Dispatcher();
-    
-      $dispatcher->setDI($di);
-    
-    $dispatcher->setControllerName('posts');
-    $dispatcher->setActionName('index');
-    $dispatcher->setParams(array());
-    
-    $controller = $dispatcher->dispatch();
-
-
-
 Constants
 ---------
 

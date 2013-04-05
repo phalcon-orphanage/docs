@@ -1,9 +1,6 @@
 Interface **Phalcon\\Http\\Response\\HeadersInterface**
 =======================================================
 
-Phalcon\\Http\\Response\\HeadersInterface initializer
-
-
 Methods
 ---------
 

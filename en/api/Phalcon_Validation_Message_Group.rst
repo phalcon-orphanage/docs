@@ -3,9 +3,6 @@ Class **Phalcon\\Validation\\Message\\Group**
 
 *implements* Countable, ArrayAccess, Iterator, Traversable
 
-Represents a group of validation messages
-
-
 Methods
 ---------
 
@@ -17,7 +14,7 @@ Phalcon\\Validation\\Message\\Group constructor
 
 public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **offsetGet** (*string* $index)
 
-Gets an attribute a message using the array syntax 
+Gets an attribute a message using the array syntax 
 
 .. code-block:: php
 
@@ -30,7 +27,7 @@ Gets an attribute a message using the array syntax
 
 public  **offsetSet** (*string* $index, :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
-Sets an attribute using the array-syntax 
+Sets an attribute using the array-syntax 
 
 .. code-block:: php
 
@@ -43,7 +40,7 @@ Sets an attribute using the array-syntax
 
 public *boolean*  **offsetExists** (*string* $index)
 
-Checks if an index exists 
+Checks if an index exists 
 
 .. code-block:: php
 
@@ -56,7 +53,7 @@ Checks if an index exists
 
 public  **offsetUnset** (*string* $index)
 
-Removes a message from the list 
+Removes a message from the list 
 
 .. code-block:: php
 
@@ -69,7 +66,7 @@ Removes a message from the list
 
 public  **appendMessage** (*Phalcon\\Validation\\MessageInterface* $message)
 
-Appends a message to the group 
+Appends a message to the group 
 
 .. code-block:: php
 
@@ -82,7 +79,7 @@ Appends a message to the group
 
 public  **appendMessages** (*Phalcon\\Validation\\MessageInterface[]* $messages)
 
-Appends an array of messages to the group 
+Appends an array of messages to the group 
 
 .. code-block:: php
 

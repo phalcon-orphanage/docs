@@ -1,9 +1,6 @@
 Class **Phalcon\\Validation\\Message**
 ======================================
 
-Encapsulates validation info generated in the validation process
-
-
 Methods
 ---------
 

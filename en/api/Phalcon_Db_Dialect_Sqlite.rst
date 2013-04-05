@@ -5,9 +5,6 @@ Class **Phalcon\\Db\\Dialect\\Sqlite**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
-Generates database specific SQL for the Sqlite RBDM
-
-
 Methods
 ---------
 
@@ -91,19 +88,19 @@ Generates SQL to drop a table
 
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
+Generates SQL checking for the existence of a schema.table <code>echo $dialect->tableExists("posts", "blog") <code>echo $dialect->tableExists("posts")
 
 
 
 public *string*  **describeColumns** (*string* $table, [*string* $schema])
 
-Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
+Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
 
 
 
 public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on database <code>print_r($dialect->listTables("blog") ?>
+List all tables on database <code>print_r($dialect->listTables("blog") ?>
 
 
 
@@ -133,13 +130,13 @@ Generates the SQL to describe the table creation options
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
 
-Generates the SQL for LIMIT clause 
+Generates the SQL for LIMIT clause 
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->limit('SELECT * FROM robots', 10);
+     $sql = $dialect->limit('SELECT * FROM robots', 10);
      echo $sql; // SELECT * FROM robots LIMIT 10
 
 
@@ -147,13 +144,13 @@ Generates the SQL for LIMIT clause
 
 public *string*  **forUpdate** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
-Returns a SQL modified with a FOR UPDATE clause 
+Returns a SQL modified with a FOR UPDATE clause 
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->forUpdate('SELECT * FROM robots');
+     $sql = $dialect->forUpdate('SELECT * FROM robots');
      echo $sql; // SELECT * FROM robots FOR UPDATE
 
 
@@ -161,13 +158,13 @@ Returns a SQL modified with a FOR UPDATE clause
 
 public *string*  **sharedLock** (*string* $sqlQuery) inherited from Phalcon\\Db\\Dialect
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause 
+Returns a SQL modified with a LOCK IN SHARE MODE clause 
 
 .. code-block:: php
 
     <?php
 
-     $sql = $dialect->sharedLock('SELECT * FROM robots');
+     $sql = $dialect->sharedLock('SELECT * FROM robots');
      echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 
@@ -175,7 +172,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 public *string*  **getColumnList** (*array* $columnList) inherited from Phalcon\\Db\\Dialect
 
-Gets a list of columns with escaped identifiers 
+Gets a list of columns with escaped identifiers 
 
 .. code-block:: php
 

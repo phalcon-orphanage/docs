@@ -3,9 +3,6 @@ Class **Phalcon\\Db\\Adapter**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-Base class for Phalcon\\Db adapters
-
-
 Methods
 ---------
 
@@ -29,18 +26,18 @@ Returns the internal event manager
 
 public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Returns the first row in a SQL query result 
+Returns the first row in a SQL query result 
 
 .. code-block:: php
 
     <?php
 
-    //Getting first robot
-    $robot = $connection->fecthOne("SELECT * FROM robots");
-    print_r($robot);
-    
-    //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    //Getting first robot
+    $robot = $connection->fecthOne("SELECT * FROM robots");
+    print_r($robot);
+    
+    //Getting first robot with associative indexes only
+    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 
@@ -48,22 +45,22 @@ Returns the first row in a SQL query result
 
 public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Dumps the complete result of a query into an array 
+Dumps the complete result of a query into an array 
 
 .. code-block:: php
 
     <?php
 
-    //Getting all robots
-    $robots = $connection->fetchAll("SELECT * FROM robots");
-    foreach($robots as $robot){
-    	print_r($robot);
-    }
-    
-    //Getting all robots with associative indexes only
-    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
-    foreach($robots as $robot){
-    	print_r($robot);
+    //Getting all robots
+    $robots = $connection->fetchAll("SELECT * FROM robots");
+    foreach($robots as $robot){
+    	print_r($robot);
+    }
+    
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach($robots as $robot){
+    	print_r($robot);
     }
 
 
@@ -71,20 +68,20 @@ Dumps the complete result of a query into an array
 
 public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserts data into a table using custom RBDM SQL syntax 
+Inserts data into a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array("Astro Boy", 1952),
-         array("name", "year")
-     );
-    
-     //Next SQL sentence is sent to the database system
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Next SQL sentence is sent to the database system
      INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 
@@ -92,21 +89,21 @@ Inserts data into a table using custom RBDM SQL syntax
 
 public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax 
+Updates data on a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Updating existing robot
-     $success = $connection->update(
-         "robots",
-         array("name")
-         array("New Astro Boy"),
-         "id = 101"
-     );
-    
-     //Next SQL sentence is sent to the database system
+     //Updating existing robot
+     $success = $connection->update(
+         "robots",
+         array("name")
+         array("New Astro Boy"),
+         "id = 101"
+     );
+    
+     //Next SQL sentence is sent to the database system
      UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 
@@ -114,19 +111,19 @@ Updates data on a table using custom RBDM SQL syntax
 
 public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Deletes data from a table using custom RBDM SQL syntax 
+Deletes data from a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Deleting existing robot
-     $success = $connection->delete(
-         "robots",
-         "id = 101"
-     );
-    
-     //Next SQL sentence is generated
+     //Deleting existing robot
+     $success = $connection->delete(
+         "robots",
+         "id = 101"
+     );
+    
+     //Next SQL sentence is generated
      DELETE FROM `robots` WHERE `id` = 101
 
 
@@ -140,7 +137,7 @@ Gets a list of columns
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
-Appends a LIMIT clause to $sqlQuery argument 
+Appends a LIMIT clause to $sqlQuery argument 
 
 .. code-block:: php
 
@@ -153,7 +150,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.table 
+Generates SQL checking for the existence of a schema.table 
 
 .. code-block:: php
 
@@ -166,7 +163,7 @@ Generates SQL checking for the existence of a schema.table
 
 public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.view 
+Generates SQL checking for the existence of a schema.view 
 
 .. code-block:: php
 
@@ -263,7 +260,7 @@ Returns the SQL column definition from a column
 
 public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on a database 
+List all tables on a database 
 
 .. code-block:: php
 

@@ -3,9 +3,6 @@ Class **Phalcon\\Paginator\\Adapter\\NativeArray**
 
 *implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
 
-Component of pagination by array data
-
-
 Methods
 ---------
 

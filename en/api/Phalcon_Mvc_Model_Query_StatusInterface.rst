@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\Model\\Query\\StatusInterface**
 =========================================================
 
-Phalcon\\Mvc\\Model\\Query\\StatusInterface initializer
-
-
 Methods
 ---------
 

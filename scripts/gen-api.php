@@ -8,12 +8,22 @@
  * php scripts/gen-api.php
  */
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+if (!extension_loaded('phalcon')) {
+	throw new Exception("Phalcon extension is required");
+}
+
+define('CPHALCON_DIR', 'C:\Users\Horacio Carreola\Documents\GitHub\cphalcon\ext\\');
+
+if (!file_exists(CPHALCON_DIR)) {
+	throw new Exception("CPHALCON directory does not exist");
+}
 
 class API_Generator
 {
 
 	protected $_docs = array();
+
+	protected $_classDocs = array();
 
 	public function __construct($directory)
 	{
@@ -38,12 +48,13 @@ class API_Generator
 		}
 	}
 
-	protected function _getDocs($file){
+	protected function _getDocs($file)
+	{
 		$firstDoc = true;
 		$openComment = false;
 		$nextLineMethod = false;
 		$comment = '';
-		foreach(file($file) as $line){
+		foreach (file($file) as $line) {
 			if (trim($line) == '/**') {
 				$openComment = true;
 				$comment.=$line;
@@ -79,13 +90,14 @@ class API_Generator
 					$nextLineMethod = true;
 				}
 			}
+			if (preg_match('/^PHALCON_INIT_CLASS\(([a-zA-Z0-9\_]+)\)/', $line, $matches)) {
+				$className = $matches[1];
+			}
 		}
 		if (isset($classDoc)) {
-			if (isset($className)) {
-				if (!isset($this->_classDocs[$className])) {
-					$this->_classDocs[$className] = $classDoc;
-				}
-			} else {
+
+			if (!isset($className)) {
+
 				$fileName = str_replace(CPHALCON_DIR, '', $file);
 				$fileName = str_replace('.c', '', $fileName);
 
@@ -93,25 +105,34 @@ class API_Generator
 				foreach (explode(DIRECTORY_SEPARATOR, $fileName) as $part) {
 					$parts[] = ucfirst($part);
 				}
-				$className = 'Phalcon\\'.join('\\', $parts);
-				if (!isset($this->_classDocs[$className])) {
-					if (class_exists($className)) {
-						$this->_classDocs[$className] = $classDoc;
-					}
+
+				$className = 'Phalcon\\' . join('\\', $parts);
+			} else {
+				$className = str_replace('_', '\\', $className);
+			}
+
+			//echo $className, PHP_EOL;
+
+			if (!isset($this->_classDocs[$className])) {
+				if (class_exists($className) or interface_exists($className)) {
+					$this->_classDocs[$className] = $classDoc;
 				}
 			}
 		}
 	}
 
-	public function getDocs(){
+	public function getDocs()
+	{
 		return $this->_docs;
 	}
 
-	public function getClassDocs(){
+	public function getClassDocs()
+	{
 		return $this->_classDocs;
 	}
 
-	public function getPhpDoc($phpdoc, $className, $methodName, $realClassName){
+	public function getPhpDoc($phpdoc, $className, $methodName, $realClassName)
+	{
 
 		$ret = array();
 		$lines = array();
@@ -212,7 +233,7 @@ class API_Generator
 			} else {
 				$type = 'php';
 			}
-			$c = str_replace('%%'.$n.'%%', PHP_EOL.PHP_EOL.'.. code-block:: '.$type.PHP_EOL.PHP_EOL.$cc.PHP_EOL.PHP_EOL, $c);
+			$c = str_replace('%%'.$n.'%%', PHP_EOL . PHP_EOL . '.. code-block:: '.$type.PHP_EOL.PHP_EOL.$cc.PHP_EOL.PHP_EOL, $c);
 		}
 
 		$final = '';
@@ -326,7 +347,7 @@ sort($classes);
 
 $indexClasses = array();
 $indexInterfaces = array();
-foreach($classes as $className){
+foreach ($classes as $className) {
 
 	$realClassName = $className;
 
@@ -501,9 +522,9 @@ foreach($classes as $className){
 					}
 				}
 			}
-			$code.=join(', ', $cp).')';
+			$code .= join(', ', $cp).')';
 
-			if($simpleClassName!=$docClassName){
+			if ($simpleClassName != $docClassName) {
 				$code.=' inherited from '.str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
 			}
 

@@ -3,9 +3,6 @@ Class **Phalcon\\Acl\\Adapter**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-Adapter for Phalcon\\Acl adapters
-
-
 Methods
 ---------
 

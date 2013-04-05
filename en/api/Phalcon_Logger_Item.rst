@@ -1,9 +1,6 @@
 Class **Phalcon\\Logger\\Item**
 ===============================
 
-Represents each item in a logging transaction
-
-
 Methods
 ---------
 

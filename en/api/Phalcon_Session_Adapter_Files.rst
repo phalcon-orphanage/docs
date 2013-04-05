@@ -22,14 +22,14 @@ Starts the session (if headers are already sent the session will not started)
 
 public  **setOptions** (*array* $options) inherited from Phalcon\\Session\\Adapter
 
-Sets session's options 
+Sets session's options 
 
 .. code-block:: php
 
     <?php
 
-    $session->setOptions(array(
-    	'uniqueId' => 'my-private-app'
+    $session->setOptions(array(
+    	'uniqueId' => 'my-private-app'
     ));
 
 
@@ -49,7 +49,7 @@ Gets a session variable from an application context
 
 public  **set** (*string* $index, *string* $value) inherited from Phalcon\\Session\\Adapter
 
-Sets a session variable in an application context 
+Sets a session variable in an application context 
 
 .. code-block:: php
 
@@ -62,7 +62,7 @@ Sets a session variable in an application context
 
 public  **has** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
-Check whether a session variable is set in an application context 
+Check whether a session variable is set in an application context 
 
 .. code-block:: php
 
@@ -75,7 +75,7 @@ Check whether a session variable is set in an application context
 
 public  **remove** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
-Removes a session variable from an application context 
+Removes a session variable from an application context 
 
 .. code-block:: php
 
@@ -88,7 +88,7 @@ Removes a session variable from an application context
 
 public *string*  **getId** () inherited from Phalcon\\Session\\Adapter
 
-Returns active session id 
+Returns active session id 
 
 .. code-block:: php
 
@@ -101,7 +101,7 @@ Returns active session id
 
 public *boolean*  **isStarted** () inherited from Phalcon\\Session\\Adapter
 
-Check whether the session has been started 
+Check whether the session has been started 
 
 .. code-block:: php
 
@@ -114,7 +114,7 @@ Check whether the session has been started
 
 public *boolean*  **destroy** () inherited from Phalcon\\Session\\Adapter
 
-Destroys the active session 
+Destroys the active session 
 
 .. code-block:: php
 

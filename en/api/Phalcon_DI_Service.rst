@@ -3,21 +3,6 @@ Class **Phalcon\\DI\\Service**
 
 *implements* :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`
 
-Represents individually a service in the services container  
-
-.. code-block:: php
-
-    <?php
-
-     $service = new Phalcon\DI\Service('request', 'Phalcon\Http\Request');
-     $request = $service->resolve();
-
-.. code-block:: php
-
-    <?php
-
-
-
 Methods
 ---------
 

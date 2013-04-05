@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\Model\\MessageInterface**
 ===================================================
 
-Phalcon\\Mvc\\Model\\MessageInterface initializer
-
-
 Methods
 ---------
 

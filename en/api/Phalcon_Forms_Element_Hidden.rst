@@ -3,9 +3,6 @@ Class **Phalcon\\Forms\\Element\\Hidden**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Component INPUT[type=hidden] for forms
-
-
 Methods
 ---------
 
@@ -65,7 +62,7 @@ Returns the validators registered for the element
 
 public *array*  **prepareAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
 
-Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
+Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
 
 
 

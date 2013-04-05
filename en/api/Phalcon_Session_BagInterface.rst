@@ -1,9 +1,6 @@
 Interface **Phalcon\\Session\\BagInterface**
 ============================================
 
-Phalcon\\Session\\BagInterface initializer
-
-
 Methods
 ---------
 

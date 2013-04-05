@@ -1,9 +1,6 @@
 Interface **Phalcon\\Acl\\AdapterInterface**
 ============================================
 
-Phalcon\\Acl\\AdapterInterface initializer
-
-
 Methods
 ---------
 
@@ -45,7 +42,7 @@ Check whether resource exist in the resources list
 
 abstract public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>` $resource, [*array* $accessList])
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
+Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
 
 
 

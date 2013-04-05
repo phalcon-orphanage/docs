@@ -1,9 +1,6 @@
 Class **Phalcon\\Db\\Profiler\\Item**
 =====================================
 
-This class identifies each profile in a Phalcon\\Db\\Profiler
-
-
 Methods
 ---------
 

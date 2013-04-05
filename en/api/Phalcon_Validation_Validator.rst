@@ -1,9 +1,6 @@
 Class **Phalcon\\Validation\\Validator**
 ========================================
 
-This is a base class for validators
-
-
 Methods
 ---------
 
@@ -21,7 +18,7 @@ Checks if an option is defined
 
 public *mixed*  **getOption** (*string* $key)
 
-Returns an option in the validator's options Returns null if the option hasn't been set
+Returns an option in the validator's options Returns null if the option hasn't been set
 
 
 

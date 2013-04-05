@@ -1,9 +1,6 @@
 Interface **Phalcon\\Db\\ReferenceInterface**
 =============================================
 
-Phalcon\\Db\\ReferenceInterface initializer
-
-
 Methods
 ---------
 

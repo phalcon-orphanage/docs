@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\UrlInterface**
 ========================================
 
-Phalcon\\Mvc\\UrlInterface initializer
-
-
 Methods
 ---------
 

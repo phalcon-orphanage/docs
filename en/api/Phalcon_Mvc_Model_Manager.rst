@@ -3,22 +3,6 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
-
-.. code-block:: php
-
-    <?php
-
-     $dependencyInjector = new Phalcon\DI();
-    
-     $dependencyInjector->set('modelsManager', function(){
-          return new Phalcon\Mvc\Model\Manager();
-     });
-    
-     $robot = new Robots($dependencyInjector);
-
-
-
 Methods
 ---------
 
@@ -150,13 +134,13 @@ Returns the connection service name used to write data related to a model
 
 public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 
 public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *array* $data)
 
-Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
+Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
 
 
 
@@ -281,7 +265,7 @@ Gets belongsTo related records from a model
 
 public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Gets all the belongsTo relations defined in a model 
+Gets all the belongsTo relations defined in a model 
 
 .. code-block:: php
 

@@ -3,26 +3,6 @@ Class **Phalcon\\DI**
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
-Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.  
-
-.. code-block:: php
-
-    <?php
-
-     $di = new Phalcon\DI();
-    
-     //Using a string definition
-     $di->set('request', 'Phalcon\Http\Request', true);
-    
-     //Using an anonymous function
-     $di->set('request', function(){
-      return new Phalcon\Http\Request();
-     }, true);
-    
-     $request = $di->getRequest();
-
-
-
 Methods
 ---------
 
@@ -52,7 +32,7 @@ Removes a service in the services container
 
 public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 
@@ -112,7 +92,7 @@ Check if a service is registered using the array syntax
 
 public  **offsetSet** (*string* $alias, *mixed* $definition)
 
-Allows to register a shared service using the array syntax 
+Allows to register a shared service using the array syntax 
 
 .. code-block:: php
 
@@ -125,7 +105,7 @@ Allows to register a shared service using the array syntax
 
 public *mixed*  **offsetGet** (*string* $alias)
 
-Allows to obtain a shared service using the array syntax 
+Allows to obtain a shared service using the array syntax 
 
 .. code-block:: php
 

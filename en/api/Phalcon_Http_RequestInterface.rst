@@ -1,9 +1,6 @@
 Interface **Phalcon\\Http\\RequestInterface**
 =============================================
 
-Phalcon\\Http\\RequestInterface initializer
-
-
 Methods
 ---------
 

@@ -1,9 +1,6 @@
 Class **Phalcon\\Validation**
 =============================
 
-
-
-
 Methods
 ---------
 
@@ -51,7 +48,7 @@ Appends a message to the messages list
 
 public *Phalcon\\Validator*  **bind** (*string* $entity, *string* $data)
 
-Assigns the data to an entity The entity is used to obtain the validation values
+Assigns the data to an entity The entity is used to obtain the validation values
 
 
 

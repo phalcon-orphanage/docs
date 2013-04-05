@@ -5,25 +5,6 @@ Class **Phalcon\\Mvc\\Router\\Annotations**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
 
-A router that reads routes annotations from classes/resources  
-
-.. code-block:: php
-
-    <?php
-
-     $di['router'] = function() {
-    
-    	//Use the annotations router
-    	$router = new \Phalcon\Mvc\Router\Annotations(false);
-    
-    	//This will do the same as above but only if the handled uri starts with /robots
-     		$router->addResource('Robots', '/robots');
-    
-     		return $router;
-    };
-
-
-
 Constants
 ---------
 
@@ -36,13 +17,13 @@ Methods
 
 public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addResource** (*string* $handler, [*string* $prefix])
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations
+Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addModuleResource** (*string* $module, *string* $handler, [*string* $prefix])
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
+Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 
 
@@ -108,7 +89,7 @@ Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the 
 
 public  **setUriSource** (*string* $uriSource) inherited from Phalcon\\Mvc\\Router
 
-Sets the URI source. One of the URI_SOURCE_* constants 
+Sets the URI source. One of the URI_SOURCE_* constants 
 
 .. code-block:: php
 
@@ -151,15 +132,15 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults) inherited from Phalcon\\Mvc\\Router
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
 .. code-block:: php
 
     <?php
 
-     $router->setDefaults(array(
-    	'module' => 'common',
-    	'action' => 'index'
+     $router->setDefaults(array(
+    	'module' => 'common',
+    	'action' => 'index'
      ));
 
 
@@ -167,7 +148,7 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods]) inherited from Phalcon\\Mvc\\Router
 
-Adds a route to the router without any HTTP constraint 
+Adds a route to the router without any HTTP constraint 
 
 .. code-block:: php
 

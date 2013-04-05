@@ -3,18 +3,6 @@ Class **Phalcon\\Session\\Bag**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`
 
-This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
-
-.. code-block:: php
-
-    <?php
-
-    $user = new \Phalcon\Session\Bag();
-    $user->name = "Kimbra Johnson";
-    $user->age = 22;
-
-
-
 Methods
 ---------
 
@@ -44,7 +32,7 @@ Initializes the session bag. This method must not be called directly, the class 
 
 public  **destroy** ()
 
-Destroyes the session bag 
+Destroyes the session bag 
 
 .. code-block:: php
 
@@ -57,7 +45,7 @@ Destroyes the session bag
 
 public  **set** (*string* $property, *string* $value)
 
-Sets a value in the session bag 
+Sets a value in the session bag 
 
 .. code-block:: php
 
@@ -70,7 +58,7 @@ Sets a value in the session bag
 
 public  **__set** (*string* $property, *string* $value)
 
-Magic setter to assign values to the session bag 
+Magic setter to assign values to the session bag 
 
 .. code-block:: php
 
@@ -83,7 +71,7 @@ Magic setter to assign values to the session bag
 
 public *mixed*  **get** (*string* $property, [*string* $defaultValue])
 
-Obtains a value from the session bag optionally setting a default value 
+Obtains a value from the session bag optionally setting a default value 
 
 .. code-block:: php
 
@@ -96,7 +84,7 @@ Obtains a value from the session bag optionally setting a default value
 
 public *string*  **__get** (*string* $property)
 
-Magic getter to obtain values from the session bag 
+Magic getter to obtain values from the session bag 
 
 .. code-block:: php
 
@@ -109,7 +97,7 @@ Magic getter to obtain values from the session bag
 
 public *boolean*  **has** (*string* $property)
 
-Check whether a property is defined in the internal bag 
+Check whether a property is defined in the internal bag 
 
 .. code-block:: php
 
@@ -122,7 +110,7 @@ Check whether a property is defined in the internal bag
 
 public *boolean*  **__isset** (*string* $property)
 
-Magic isset to check whether a property is defined in the bag 
+Magic isset to check whether a property is defined in the bag 
 
 .. code-block:: php
 
@@ -135,7 +123,7 @@ Magic isset to check whether a property is defined in the bag
 
 public *boolean*  **remove** (*string* $property)
 
-Removes a property from the internal bag 
+Removes a property from the internal bag 
 
 .. code-block:: php
 
@@ -148,7 +136,7 @@ Removes a property from the internal bag
 
 public *boolean*  **__unset** (*string* $property)
 
-Magic unset to remove items using the array syntax 
+Magic unset to remove items using the array syntax 
 
 .. code-block:: php
 

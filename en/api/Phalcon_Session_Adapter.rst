@@ -1,9 +1,6 @@
 Class **Phalcon\\Session\\Adapter**
 ===================================
 
-Base class for Phalcon\\Session adapters
-
-
 Methods
 ---------
 
@@ -21,14 +18,14 @@ Starts the session (if headers are already sent the session will not started)
 
 public  **setOptions** (*array* $options)
 
-Sets session's options 
+Sets session's options 
 
 .. code-block:: php
 
     <?php
 
-    $session->setOptions(array(
-    	'uniqueId' => 'my-private-app'
+    $session->setOptions(array(
+    	'uniqueId' => 'my-private-app'
     ));
 
 
@@ -48,7 +45,7 @@ Gets a session variable from an application context
 
 public  **set** (*string* $index, *string* $value)
 
-Sets a session variable in an application context 
+Sets a session variable in an application context 
 
 .. code-block:: php
 
@@ -61,7 +58,7 @@ Sets a session variable in an application context
 
 public  **has** (*string* $index)
 
-Check whether a session variable is set in an application context 
+Check whether a session variable is set in an application context 
 
 .. code-block:: php
 
@@ -74,7 +71,7 @@ Check whether a session variable is set in an application context
 
 public  **remove** (*string* $index)
 
-Removes a session variable from an application context 
+Removes a session variable from an application context 
 
 .. code-block:: php
 
@@ -87,7 +84,7 @@ Removes a session variable from an application context
 
 public *string*  **getId** ()
 
-Returns active session id 
+Returns active session id 
 
 .. code-block:: php
 
@@ -100,7 +97,7 @@ Returns active session id
 
 public *boolean*  **isStarted** ()
 
-Check whether the session has been started 
+Check whether the session has been started 
 
 .. code-block:: php
 
@@ -113,7 +110,7 @@ Check whether the session has been started
 
 public *boolean*  **destroy** ()
 
-Destroys the active session 
+Destroys the active session 
 
 .. code-block:: php
 

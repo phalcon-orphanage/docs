@@ -5,21 +5,6 @@ Class **Phalcon\\Validation\\Validator\\ExclusionIn**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Check if a value is not included into a list of values  
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation\Validator\ExclusionIn;
-    
-    $validator->add('status', new ExclusionIn(array(
-       'message' => 'The status must not be A or B'
-       'domain' => array('A', 'B')
-    )));
-
-
-
 Methods
 ---------
 
@@ -43,7 +28,7 @@ Checks if an option is defined
 
 public *mixed*  **getOption** (*string* $key) inherited from Phalcon\\Validation\\Validator
 
-Returns an option in the validator's options Returns null if the option hasn't been set
+Returns an option in the validator's options Returns null if the option hasn't been set
 
 
 

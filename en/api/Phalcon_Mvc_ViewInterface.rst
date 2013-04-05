@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\ViewInterface**
 =========================================
 
-Phalcon\\Mvc\\ViewInterface initializer
-
-
 Methods
 ---------
 

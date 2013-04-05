@@ -3,9 +3,6 @@ Class **Phalcon\\Mvc\\Router\\Route**
 
 *implements* :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`
 
-This class represents every route added to the router
-
-
 Methods
 ---------
 

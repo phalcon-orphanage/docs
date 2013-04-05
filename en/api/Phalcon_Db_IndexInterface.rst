@@ -1,9 +1,6 @@
 Interface **Phalcon\\Db\\IndexInterface**
 =========================================
 
-Phalcon\\Db\\IndexInterface initializer
-
-
 Methods
 ---------
 

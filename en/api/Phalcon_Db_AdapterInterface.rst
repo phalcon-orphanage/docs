@@ -1,9 +1,6 @@
 Interface **Phalcon\\Db\\AdapterInterface**
 ===========================================
 
-Phalcon\\Db\\AdapterInterface initializer
-
-
 Methods
 ---------
 
@@ -153,7 +150,7 @@ Returns the SQL column definition from a column
 
 abstract public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on a database <code> print_r($connection->listTables("blog") ?>
+List all tables on a database <code> print_r($connection->listTables("blog") ?>
 
 
 
@@ -213,19 +210,19 @@ Returns internal dialect instance
 
 abstract public *boolean*  **connect** ([*array* $descriptor])
 
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
 
 
 
 abstract public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes])
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows
 
 
 
 abstract public *boolean*  **execute** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes])
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row
 
 
 

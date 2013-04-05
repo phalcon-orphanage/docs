@@ -1,9 +1,6 @@
 Class **Phalcon\\Logger\\Formatter**
 ====================================
 
-This is a base class for logger formatters
-
-
 Methods
 ---------
 

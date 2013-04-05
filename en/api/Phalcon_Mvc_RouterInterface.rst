@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\RouterInterface**
 ===========================================
 
-Phalcon\\Mvc\\RouterInterface initializer
-
-
 Methods
 ---------
 

@@ -1,9 +1,6 @@
 Interface **Phalcon\\Events\\EventsAwareInterface**
 ===================================================
 
-Phalcon\\Events\\EventsAwareInterface initializer
-
-
 Methods
 ---------
 

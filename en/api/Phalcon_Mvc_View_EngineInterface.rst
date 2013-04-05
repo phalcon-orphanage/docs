@@ -1,9 +1,6 @@
 Interface **Phalcon\\Mvc\\View\\EngineInterface**
 =================================================
 
-Phalcon\\Mvc\\View\\EngineInterface initializer
-
-
 Methods
 ---------
 

@@ -5,9 +5,6 @@ Class **Phalcon\\DI\\FactoryDefault\\CLI**
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
-This is a variant of the standard Phalcon\\DI. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
-
-
 Methods
 ---------
 
@@ -37,7 +34,7 @@ Removes a service in the services container
 
 public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared]) inherited from Phalcon\\DI
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 
@@ -97,7 +94,7 @@ Check if a service is registered using the array syntax
 
 public  **offsetSet** (*string* $alias, *mixed* $definition) inherited from Phalcon\\DI
 
-Allows to register a shared service using the array syntax 
+Allows to register a shared service using the array syntax 
 
 .. code-block:: php
 
@@ -110,7 +107,7 @@ Allows to register a shared service using the array syntax
 
 public *mixed*  **offsetGet** (*string* $alias) inherited from Phalcon\\DI
 
-Allows to obtain a shared service using the array syntax 
+Allows to obtain a shared service using the array syntax 
 
 .. code-block:: php
 

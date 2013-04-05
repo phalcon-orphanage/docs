@@ -1,9 +1,6 @@
 Class **Phalcon\\Forms\\Manager**
 =================================
 
-Manages forms whithin the application. Allowing the developer to access them from any part of the application
-
-
 Methods
 ---------
 

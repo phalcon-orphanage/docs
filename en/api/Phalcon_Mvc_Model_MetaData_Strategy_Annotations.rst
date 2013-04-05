@@ -1,9 +1,6 @@
 Class **Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Annotations**
 ==============================================================
 
-Queries the table meta-data in order to instrospect the model's metadata
-
-
 Methods
 ---------
 

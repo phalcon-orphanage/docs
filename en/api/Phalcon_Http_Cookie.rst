@@ -3,9 +3,6 @@ Class **Phalcon\\Http\\Cookie**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Provide OO wrappers to manage a HTTP cookie
-
-
 Methods
 ---------
 

@@ -3,19 +3,6 @@ Class **Phalcon\\Http\\Response**
 
 *implements* :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.  
-
-.. code-block:: php
-
-    <?php
-
-    $response = new Phalcon\Http\Response();
-    $response->setStatusCode(200, "OK");
-    $response->setContent("<html><body>Hello</body></html>");
-    $response->send();
-
-
-
 Methods
 ---------
 
@@ -39,7 +26,7 @@ Returns the internal dependency injector
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setStatusCode** (*int* $code, *string* $message)
 
-Sets the HTTP response code 
+Sets the HTTP response code 
 
 .. code-block:: php
 
@@ -76,7 +63,7 @@ Returns coookies set by the user
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeader** (*string* $name, *string* $value)
 
-Overwrites a header in the response 
+Overwrites a header in the response 
 
 .. code-block:: php
 
@@ -89,7 +76,7 @@ Overwrites a header in the response
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setRawHeader** (*string* $header)
 
-Send a raw header to the response 
+Send a raw header to the response 
 
 .. code-block:: php
 
@@ -108,7 +95,7 @@ Resets all the stablished headers
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
 
-Sets a Expires header to use HTTP cache 
+Sets a Expires header to use HTTP cache 
 
 .. code-block:: php
 
@@ -127,13 +114,13 @@ Sends a Not-Modified response
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, [*string* $charset])
 
-Sets the response content-type mime, optionally the charset 
+Sets the response content-type mime, optionally the charset 
 
 .. code-block:: php
 
     <?php
 
-    $response->setContentType('application/pdf');
+    $response->setContentType('application/pdf');
     $response->setContentType('text/plain', 'UTF-8');
 
 
@@ -141,15 +128,15 @@ Sets the response content-type mime, optionally the charset
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
-Redirect by HTTP to another action or URL 
+Redirect by HTTP to another action or URL 
 
 .. code-block:: php
 
     <?php
 
-      //Using a string redirect (internal/external)
-    $response->redirect("posts/index");
-    $response->redirect("http://en.wikipedia.org", true);
+      //Using a string redirect (internal/external)
+    $response->redirect("posts/index");
+    $response->redirect("http://en.wikipedia.org", true);
     $response->redirect("http://www.example.com/new-location", true, 301);
 
 
@@ -157,7 +144,7 @@ Redirect by HTTP to another action or URL
 
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContent** (*string* $content)
 
-Sets HTTP response body 
+Sets HTTP response body 
 
 .. code-block:: php
 

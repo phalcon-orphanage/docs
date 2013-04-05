@@ -1,9 +1,6 @@
 Class **Phalcon\\Forms\\Element**
 =================================
 
-This is a base class for form elements
-
-
 Methods
 ---------
 
@@ -57,7 +54,7 @@ Returns the validators registered for the element
 
 public *array*  **prepareAttributes** (*array* $attributes)
 
-Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
+Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
 
 
 

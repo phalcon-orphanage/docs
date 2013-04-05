@@ -3,9 +3,6 @@ Class **Phalcon\\Security**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-This component provides a set of functions to improve the security in Phalcon applications
-
-
 Methods
 ---------
 

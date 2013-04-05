@@ -3,9 +3,6 @@ Class **Phalcon\\Http\\Response\\Cookies**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-This class is a bag to manage the cookies
-
-
 Methods
 ---------
 
