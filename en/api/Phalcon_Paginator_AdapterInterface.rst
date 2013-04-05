@@ -1,6 +1,9 @@
 Interface **Phalcon\\Paginator\\AdapterInterface**
 ==================================================
 
+Phalcon\\Paginator\\AdapterInterface initializer
+
+
 Methods
 ---------
 

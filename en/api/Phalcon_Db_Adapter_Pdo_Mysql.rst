@@ -5,6 +5,24 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
+Specific functions for the Mysql database system 
+
+.. code-block:: php
+
+    <?php
+
+    $config = array(
+    	"host" => "192.168.0.11",
+    	"dbname" => "blog",
+    	"port" => 3306,
+    	"username" => "sigma",
+    	"password" => "secret"
+    );
+    
+    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
+
+
+
 Methods
 ---------
 

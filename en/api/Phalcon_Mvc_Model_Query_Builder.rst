@@ -3,6 +3,22 @@ Class **Phalcon\\Mvc\\Model\\Query\\Builder**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+Helps to create PHQL queries using an OO interface  
+
+.. code-block:: php
+
+    <?php
+
+    $resultset = $this->modelsManager->createBuilder()
+       ->from('Robots')
+       ->join('RobotsParts')
+       ->limit(20)
+       ->orderBy('Robots.name')
+       ->getQuery()
+       ->execute();
+
+
+
 Methods
 ---------
 

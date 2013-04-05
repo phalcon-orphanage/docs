@@ -5,6 +5,32 @@ Class **Phalcon\\Mvc\\Model\\Validator\\PresenceOf**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
+Allows to validate if a filed have a value different of null and empty string ("")  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Validator\PresenceOf;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
+    {
+    
+      public function validation()
+      {
+          $this->validate(new PresenceOf(array(
+              'field' => 'name',
+              'message' => 'The name is required'
+          )));
+          if ($this->validationHasFailed() == true) {
+              return false;
+          }
+      }
+    
+    }
+
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Interface **Phalcon\\Acl\\RoleInterface**
 =========================================
 
+Phalcon\\Acl\\RoleInterface initializer
+
+
 Methods
 ---------
 

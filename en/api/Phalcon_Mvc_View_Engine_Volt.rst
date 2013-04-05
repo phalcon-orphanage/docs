@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
 
+Designer friendly and fast template engine for PHP written in C
+
+
 Methods
 ---------
 

@@ -3,6 +3,9 @@ Interface **Phalcon\\Mvc\\DispatcherInterface**
 
 *extends* Phalcon\DispatcherInterface
 
+Phalcon\\Mvc\\DispatcherInterface initializer
+
+
 Methods
 ---------
 

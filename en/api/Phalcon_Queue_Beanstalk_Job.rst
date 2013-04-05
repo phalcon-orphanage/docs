@@ -1,6 +1,9 @@
 Class **Phalcon\\Queue\\Beanstalk\\Job**
 ========================================
 
+Phalcon\\Queue\\Beanstalk\\Job initializer
+
+
 Methods
 ---------
 

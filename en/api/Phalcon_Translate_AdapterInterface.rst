@@ -1,6 +1,9 @@
 Interface **Phalcon\\Translate\\AdapterInterface**
 ==================================================
 
+Phalcon\\Translate\\AdapterInterface initializer
+
+
 Methods
 ---------
 

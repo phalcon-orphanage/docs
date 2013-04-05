@@ -1,6 +1,9 @@
 Class **Phalcon\\Logger\\Adapter**
 ==================================
 
+Base class for Phalcon\\Logger adapters
+
+
 Methods
 ---------
 

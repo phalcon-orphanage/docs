@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\TransactionInterface**
 =======================================================
 
+Phalcon\\Mvc\\Model\\TransactionInterface initializer
+
+
 Methods
 ---------
 

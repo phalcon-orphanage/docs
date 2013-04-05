@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\CollectionInterface**
 ===============================================
 
+Phalcon\\Mvc\\CollectionInterface initializer
+
+
 Methods
 ---------
 

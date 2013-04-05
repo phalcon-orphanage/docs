@@ -3,6 +3,9 @@ Class **Phalcon\\DI\\Injectable**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
+
+
 Methods
 ---------
 

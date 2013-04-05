@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\ValidatorInterface**
 =====================================================
 
+Phalcon\\Mvc\\Model\\ValidatorInterface initializer
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Class **Phalcon\\Session\\Adapter**
 ===================================
 
+Base class for Phalcon\\Session adapters
+
+
 Methods
 ---------
 

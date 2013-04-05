@@ -1,6 +1,9 @@
 Interface **Phalcon\\Db\\ColumnInterface**
 ==========================================
 
+Phalcon\\Db\\ColumnInterface initializer
+
+
 Methods
 ---------
 

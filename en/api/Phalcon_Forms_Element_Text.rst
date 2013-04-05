@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\Text**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component INPUT[type=text] for forms
+
+
 Methods
 ---------
 

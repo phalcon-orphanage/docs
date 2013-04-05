@@ -5,6 +5,20 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Sqlite**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
+Specific functions for the Sqlite database system 
+
+.. code-block:: php
+
+    <?php
+
+     $config = array(
+      "dbname" => "/tmp/test.sqlite"
+     );
+    
+     $connection = new Phalcon\Db\Adapter\Pdo\Sqlite($config);
+
+
+
 Methods
 ---------
 

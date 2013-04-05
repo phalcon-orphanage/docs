@@ -1,6 +1,9 @@
 Class **Phalcon\\Events\\Event**
 ================================
 
+This class offers contextual information of a fired event in the EventsManager
+
+
 Methods
 ---------
 

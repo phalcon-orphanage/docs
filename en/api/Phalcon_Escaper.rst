@@ -3,6 +3,18 @@ Class **Phalcon\\Escaper**
 
 *implements* :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`
 
+Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.  This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.  
+
+.. code-block:: php
+
+    <?php
+
+    $escaper = new Phalcon\Escaper();
+    $escaped = $escaper->escapeCss("font-family: <Verdana>");
+    echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
+
+
+
 Methods
 ---------
 

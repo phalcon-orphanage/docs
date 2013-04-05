@@ -1,6 +1,9 @@
 Interface **Phalcon\\FilterInterface**
 ======================================
 
+Phalcon\\FilterInterface initializer
+
+
 Methods
 ---------
 

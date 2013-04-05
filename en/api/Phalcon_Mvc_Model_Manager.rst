@@ -3,6 +3,22 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
+
+.. code-block:: php
+
+    <?php
+
+     $dependencyInjector = new Phalcon\DI();
+    
+     $dependencyInjector->set('modelsManager', function(){
+          return new Phalcon\Mvc\Model\Manager();
+     });
+    
+     $robot = new Robots($dependencyInjector);
+
+
+
 Methods
 ---------
 

@@ -3,6 +3,9 @@ Class **Phalcon\\Db\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+Exceptions thrown in Phalcon\\Db will use this class
+
+
 Methods
 ---------
 

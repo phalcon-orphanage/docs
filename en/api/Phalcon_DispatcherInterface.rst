@@ -1,6 +1,9 @@
 Interface **Phalcon\\DispatcherInterface**
 ==========================================
 
+Phalcon\\DispatcherInterface initializer
+
+
 Methods
 ---------
 

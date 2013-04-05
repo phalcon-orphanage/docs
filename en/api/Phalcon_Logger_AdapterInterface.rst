@@ -1,6 +1,9 @@
 Interface **Phalcon\\Logger\\AdapterInterface**
 ===============================================
 
+Phalcon\\Logger\\AdapterInterface initializer
+
+
 Methods
 ---------
 

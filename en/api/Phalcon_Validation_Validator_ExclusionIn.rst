@@ -5,6 +5,21 @@ Class **Phalcon\\Validation\\Validator\\ExclusionIn**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+Check if a value is not included into a list of values  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\ExclusionIn;
+    
+    $validator->add('status', new ExclusionIn(array(
+       'message' => 'The status must not be A or B'
+       'domain' => array('A', 'B')
+    )));
+
+
+
 Methods
 ---------
 

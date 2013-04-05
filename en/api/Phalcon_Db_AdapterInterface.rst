@@ -1,6 +1,9 @@
 Interface **Phalcon\\Db\\AdapterInterface**
 ===========================================
 
+Phalcon\\Db\\AdapterInterface initializer
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Interface **Phalcon\\Validation\\ValidatorInterface**
 =====================================================
 
+Phalcon\\Validation\\ValidatorInterface initializer
+
+
 Methods
 ---------
 

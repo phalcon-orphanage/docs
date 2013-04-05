@@ -1,6 +1,9 @@
 Class **Phalcon\\Queue\\Beanstalk**
 ===================================
 
+Class to access the beanstalk queue service. Partially implements the protocol version 1.2
+
+
 Methods
 ---------
 

@@ -5,6 +5,18 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Files**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
+Stores model meta-data in PHP files.  
+
+.. code-block:: php
+
+    <?php
+
+     $metaData = new Phalcon\Mvc\Model\Metadata\Files(array(
+        'metaDataDir' => 'app/cache/metadata/'
+     ));
+
+
+
 Constants
 ---------
 

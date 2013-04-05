@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
+Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
+
+
 Constants
 ---------
 

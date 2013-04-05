@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\CriteriaInterface**
 ====================================================
 
+Phalcon\\Mvc\\Model\\CriteriaInterface initializer
+
+
 Methods
 ---------
 

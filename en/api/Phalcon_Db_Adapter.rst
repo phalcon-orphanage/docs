@@ -3,6 +3,9 @@ Class **Phalcon\\Db\\Adapter**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+Base class for Phalcon\\Db adapters
+
+
 Methods
 ---------
 

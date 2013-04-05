@@ -5,6 +5,20 @@ Class **Phalcon\\Validation\\Validator\\Email**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+Checks if a value has a correct e-mail format  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\Email as EmailValidator;
+    
+    $validator->add('email', new EmailValidator(array(
+       'message' => 'The e-mail is not valid'
+    )));
+
+
+
 Methods
 ---------
 

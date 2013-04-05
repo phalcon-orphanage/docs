@@ -1,6 +1,9 @@
 Interface **Phalcon\\Session\\AdapterInterface**
 ================================================
 
+Phalcon\\Session\\AdapterInterface initializer
+
+
 Methods
 ---------
 

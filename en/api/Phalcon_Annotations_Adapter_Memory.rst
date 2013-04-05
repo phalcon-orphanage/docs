@@ -5,6 +5,9 @@ Class **Phalcon\\Annotations\\Adapter\\Memory**
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
+Stores the parsed annotations in memory. This adapter is the suitable for development/testing
+
+
 Methods
 ---------
 

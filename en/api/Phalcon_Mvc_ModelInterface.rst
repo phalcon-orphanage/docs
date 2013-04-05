@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\ModelInterface**
 ==========================================
 
+Phalcon\\Mvc\\ModelInterface initializer
+
+
 Methods
 ---------
 

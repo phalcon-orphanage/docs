@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Form**
 
 *implements* Countable, Iterator, Traversable
 
+This component allows to build forms
+
+
 Methods
 ---------
 

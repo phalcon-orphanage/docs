@@ -3,6 +3,9 @@ Class **Phalcon\\CLI\\Console**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
+This component allows to create CLI applications using Phalcon
+
+
 Methods
 ---------
 

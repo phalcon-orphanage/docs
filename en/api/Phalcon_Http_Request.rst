@@ -3,6 +3,21 @@ Class **Phalcon\\Http\\Request**
 
 *implements* :doc:`Phalcon\\Http\\RequestInterface <Phalcon_Http_RequestInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
+
+.. code-block:: php
+
+    <?php
+
+    $request = new Phalcon\Http\Request();
+    if ($request->isPost() == true) {
+    	if ($request->isAjax() == true) {
+    		echo 'Request was made using POST and AJAX';
+    	}
+    }
+
+
+
 Methods
 ---------
 

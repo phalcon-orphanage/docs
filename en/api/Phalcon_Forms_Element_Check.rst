@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\Check**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component INPUT[type=check] for forms
+
+
 Methods
 ---------
 

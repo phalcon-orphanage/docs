@@ -94,6 +94,7 @@ class API_Generator
 				$className = $matches[1];
 			}
 		}
+
 		if (isset($classDoc)) {
 
 			if (!isset($className)) {
@@ -345,6 +346,7 @@ $docs['Exception'] = array(
 
 sort($classes);
 
+
 $indexClasses = array();
 $indexInterfaces = array();
 foreach ($classes as $className) {
@@ -429,8 +431,8 @@ foreach ($classes as $className) {
 		$code.='*implements* '.join(', ', $implements).PHP_EOL.PHP_EOL;
 	}
 
-	if (isset($classDocs[$simpleClassName])) {
-		$ret = $api->getPhpDoc($classDocs[$simpleClassName], $className, null, $realClassName);
+	if (isset($classDocs[$realClassName])) {
+		$ret = $api->getPhpDoc($classDocs[$realClassName], $className, null, $realClassName);
 		$code.= $ret['description'].PHP_EOL.PHP_EOL;
 	}
 

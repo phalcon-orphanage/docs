@@ -3,6 +3,21 @@ Class **Phalcon\\Db\\Reference**
 
 *implements* :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>`
 
+Allows to define reference constraints on tables  
+
+.. code-block:: php
+
+    <?php
+
+    $reference = new Phalcon\Db\Reference("field_fk", array(
+    	'referencedSchema' => "invoicing",
+    	'referencedTable' => "products",
+    	'columns' => array("product_type", "product_code"),
+    	'referencedColumns' => array("type", "code")
+    ));
+
+
+
 Methods
 ---------
 

@@ -3,6 +3,9 @@ Class **Phalcon\\Mvc\\Collection**
 
 *implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
+This component implements a high level abstraction for NoSQL databases which works with documents
+
+
 Constants
 ---------
 

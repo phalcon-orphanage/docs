@@ -3,6 +3,9 @@ Interface **Phalcon\\DiInterface**
 
 *extends* ArrayAccess
 
+Phalcon\\DiInterface initializer
+
+
 Methods
 ---------
 

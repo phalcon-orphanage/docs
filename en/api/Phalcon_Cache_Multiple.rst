@@ -1,6 +1,9 @@
 Class **Phalcon\\Cache\\Multiple**
 ==================================
 
+Allows to read to chained backends writing to multiple backends
+
+
 Methods
 ---------
 

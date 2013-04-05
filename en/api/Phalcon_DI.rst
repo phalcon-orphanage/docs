@@ -3,6 +3,26 @@ Class **Phalcon\\DI**
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
+Phalcon\\DI is a component that implements Dependency Injection of services and it's itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.  
+
+.. code-block:: php
+
+    <?php
+
+     $di = new Phalcon\DI();
+    
+     //Using a string definition
+     $di->set('request', 'Phalcon\Http\Request', true);
+    
+     //Using an anonymous function
+     $di->set('request', function(){
+      return new Phalcon\Http\Request();
+     }, true);
+    
+     $request = $di->getRequest();
+
+
+
 Methods
 ---------
 

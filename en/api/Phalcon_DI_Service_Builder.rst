@@ -1,6 +1,9 @@
 Class **Phalcon\\DI\\Service\\Builder**
 =======================================
 
+This class builds instances based on complex definitions
+
+
 Methods
 ---------
 

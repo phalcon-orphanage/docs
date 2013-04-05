@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\BehaviorInterface**
 ====================================================
 
+Phalcon\\Mvc\\Model\\BehaviorInterface initializer
+
+
 Methods
 ---------
 

@@ -5,6 +5,9 @@ Class **Phalcon\\Translate\\Adapter\\NativeArray**
 
 *implements* ArrayAccess, :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
 
+Allows to define translation lists using PHP arrays
+
+
 Methods
 ---------
 

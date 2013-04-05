@@ -5,6 +5,9 @@ Class **Phalcon\\Logger\\Formatter\\Json**
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
+Formats messages using JSON format
+
+
 Methods
 ---------
 

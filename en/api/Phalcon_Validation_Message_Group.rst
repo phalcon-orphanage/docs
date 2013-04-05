@@ -3,6 +3,9 @@ Class **Phalcon\\Validation\\Message\\Group**
 
 *implements* Countable, ArrayAccess, Iterator, Traversable
 
+Represents a group of validation messages
+
+
 Methods
 ---------
 

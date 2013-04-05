@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\File**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component INPUT[type=file] for forms
+
+
 Methods
 ---------
 

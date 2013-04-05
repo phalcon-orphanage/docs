@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
+Stores model meta-data in memory. Data will be erased when the request finishes
+
+
 Constants
 ---------
 

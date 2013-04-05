@@ -3,6 +3,9 @@ Class **Phalcon\\Translate\\Adapter**
 
 *implements* ArrayAccess
 
+Base class for Phalcon\\Translate adapters
+
+
 Methods
 ---------
 

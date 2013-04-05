@@ -3,6 +3,18 @@ Class **Phalcon\\Mvc\\Model\\MetaData**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
+
+.. code-block:: php
+
+    <?php
+
+    $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
+    $attributes = $metaData->getAttributes(new Robots());
+    print_r($attributes);
+
+
+
 Constants
 ---------
 

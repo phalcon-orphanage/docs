@@ -5,6 +5,9 @@ Class **Phalcon\\Flash\\Direct**
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
 
+This is a variant of the Phalcon\\Flash that inmediately outputs any message passed to it
+
+
 Methods
 ---------
 

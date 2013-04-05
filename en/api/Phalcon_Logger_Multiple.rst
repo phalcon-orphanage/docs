@@ -1,6 +1,9 @@
 Class **Phalcon\\Logger\\Multiple**
 ===================================
 
+Handles multiples logger handlers
+
+
 Methods
 ---------
 

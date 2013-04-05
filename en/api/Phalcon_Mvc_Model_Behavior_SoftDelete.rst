@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\Model\\Behavior\\SoftDelete**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
+Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
+
+
 Methods
 ---------
 

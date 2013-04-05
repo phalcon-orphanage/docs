@@ -1,6 +1,9 @@
 Class **Phalcon\\Version**
 ==========================
 
+This class allows to get the installed version of the framework
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Class **Phalcon\\Forms\\Element**
 =================================
 
+This is a base class for form elements
+
+
 Methods
 ---------
 

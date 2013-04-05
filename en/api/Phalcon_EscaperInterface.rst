@@ -1,6 +1,9 @@
 Interface **Phalcon\\EscaperInterface**
 =======================================
 
+Phalcon\\EscaperInterface initializer
+
+
 Methods
 ---------
 

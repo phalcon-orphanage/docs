@@ -1,6 +1,9 @@
 Interface **Phalcon\\DI\\ServiceInterface**
 ===========================================
 
+Phalcon\\DI\\ServiceInterface initializer
+
+
 Methods
 ---------
 

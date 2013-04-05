@@ -3,6 +3,9 @@ Class **Phalcon\\Annotations\\Reader**
 
 *implements* :doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>`
 
+Parses docblocks returning an array with the found annotations
+
+
 Methods
 ---------
 

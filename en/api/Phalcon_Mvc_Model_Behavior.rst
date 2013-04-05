@@ -1,6 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Behavior**
 =======================================
 
+This is an optional base class for ORM behaviors
+
+
 Methods
 ---------
 

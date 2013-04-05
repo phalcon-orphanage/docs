@@ -5,6 +5,9 @@ Class **Phalcon\\Db\\Dialect\\Postgresql**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
+Generates database specific SQL for the PostgreSQL RBDM
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Interface **Phalcon\\Logger\\FormatterInterface**
 =================================================
 
+Phalcon\\Logger\\FormatterInterface initializer
+
+
 Methods
 ---------
 

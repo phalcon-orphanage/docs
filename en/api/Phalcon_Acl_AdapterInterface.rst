@@ -1,6 +1,9 @@
 Interface **Phalcon\\Acl\\AdapterInterface**
 ============================================
 
+Phalcon\\Acl\\AdapterInterface initializer
+
+
 Methods
 ---------
 

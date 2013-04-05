@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\View\\Engine\\Php**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
 
+Adapter to use PHP itself as templating engine
+
+
 Methods
 ---------
 

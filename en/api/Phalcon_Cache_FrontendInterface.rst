@@ -1,6 +1,9 @@
 Interface **Phalcon\\Cache\\FrontendInterface**
 ===============================================
 
+Phalcon\\Cache\\FrontendInterface initializer
+
+
 Methods
 ---------
 

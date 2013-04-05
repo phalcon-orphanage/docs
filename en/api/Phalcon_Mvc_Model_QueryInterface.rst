@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\QueryInterface**
 =================================================
 
+Phalcon\\Mvc\\Model\\QueryInterface initializer
+
+
 Methods
 ---------
 

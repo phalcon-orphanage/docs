@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\MetaDataInterface**
 ====================================================
 
+Phalcon\\Mvc\\Model\\MetaDataInterface initializer
+
+
 Methods
 ---------
 

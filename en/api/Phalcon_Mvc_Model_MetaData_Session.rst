@@ -5,6 +5,18 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Session**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
+Stores model meta-data in session. Data will erased when the session finishes. Meta-data are permanent while the session is active.  You can query the meta-data by printing $_SESSION['$PMM$']  
+
+.. code-block:: php
+
+    <?php
+
+     $metaData = new Phalcon\Mvc\Model\Metadata\Session(array(
+        'prefix' => 'my-app-id'
+     ));
+
+
+
 Constants
 ---------
 

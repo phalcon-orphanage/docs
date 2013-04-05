@@ -5,6 +5,20 @@ Class **Phalcon\\Validation\\Validator\\PresenceOf**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+Validates that a value is not null or empty string  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\PresenceOf;
+    
+    $validator->add('name', new PresenceOf(array(
+       'message' => 'The name is required'
+    )));
+
+
+
 Methods
 ---------
 

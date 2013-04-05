@@ -5,6 +5,9 @@ Class **Phalcon\\Logger\\Formatter\\Syslog**
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
+Prepares a message to be used in a Syslog backend
+
+
 Methods
 ---------
 

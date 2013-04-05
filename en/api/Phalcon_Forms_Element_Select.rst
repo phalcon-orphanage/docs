@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\Select**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component SELECT (choice) for forms
+
+
 Methods
 ---------
 

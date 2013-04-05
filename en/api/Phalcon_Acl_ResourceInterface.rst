@@ -1,6 +1,9 @@
 Interface **Phalcon\\Acl\\ResourceInterface**
 =============================================
 
+Phalcon\\Acl\\ResourceInterface initializer
+
+
 Methods
 ---------
 

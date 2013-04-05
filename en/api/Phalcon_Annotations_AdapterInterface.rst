@@ -1,6 +1,9 @@
 Interface **Phalcon\\Annotations\\AdapterInterface**
 ====================================================
 
+Phalcon\\Annotations\\AdapterInterface initializer
+
+
 Methods
 ---------
 

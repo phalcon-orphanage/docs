@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\TextArea**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component TEXTAREA for forms
+
+
 Methods
 ---------
 

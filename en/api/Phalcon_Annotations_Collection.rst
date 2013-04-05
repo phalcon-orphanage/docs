@@ -3,6 +3,25 @@ Class **Phalcon\\Annotations\\Collection**
 
 *implements* Iterator, Traversable, Countable
 
+Represents a collection of annotations. This class allows to traverse a group of annotations easily  
+
+.. code-block:: php
+
+    <?php
+
+     //Traverse annotations
+     foreach ($classAnnotations as $annotation) {
+         echo 'Name=', $annotation->getName(), PHP_EOL;
+     }
+    
+     //Check if the annotations has an specific
+     var_dump($classAnnotations->has('Cacheable'));
+    
+     //Get an specific annotation in the collection
+     $annotation = $classAnnotations->get('Cacheable');
+
+
+
 Methods
 ---------
 

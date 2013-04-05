@@ -1,6 +1,9 @@
 Class **Phalcon\\Validation\\Validator**
 ========================================
 
+This is a base class for validators
+
+
 Methods
 ---------
 

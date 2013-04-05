@@ -3,6 +3,9 @@ Class **Phalcon\\Acl\\Exception**
 
 *extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
+Class for exceptions thrown by Phalcon\\Acl
+
+
 Methods
 ---------
 

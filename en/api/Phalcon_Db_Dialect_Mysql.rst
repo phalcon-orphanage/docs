@@ -5,6 +5,9 @@ Class **Phalcon\\Db\\Dialect\\Mysql**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
+Generates database specific SQL for the MySQL RBDM
+
+
 Methods
 ---------
 

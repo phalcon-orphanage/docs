@@ -1,6 +1,9 @@
 Interface **Phalcon\\Db\\ResultInterface**
 ==========================================
 
+Phalcon\\Db\\ResultInterface initializer
+
+
 Methods
 ---------
 

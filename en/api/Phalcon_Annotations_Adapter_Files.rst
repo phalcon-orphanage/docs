@@ -5,6 +5,18 @@ Class **Phalcon\\Annotations\\Adapter\\Files**
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
+Stores the parsed annotations in diles. This adapter is the suitable for production  
+
+.. code-block:: php
+
+    <?php
+
+     $annotations = new \Phalcon\Annotations\Adapter\Files(array(
+        'metaDataDir' => 'app/cache/metadata/'
+     ));
+
+
+
 Methods
 ---------
 

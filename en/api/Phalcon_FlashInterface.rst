@@ -1,6 +1,9 @@
 Interface **Phalcon\\FlashInterface**
 =====================================
 
+Phalcon\\FlashInterface initializer
+
+
 Methods
 ---------
 

@@ -3,6 +3,27 @@ Class **Phalcon\\Mvc\\Model\\Query**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+This class takes a PHQL intermediate representation and executes it.  
+
+.. code-block:: php
+
+    <?php
+
+     $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
+              WHERE b.name = :name: ORDER BY c.name";
+    
+     $result = $manager->executeQuery($phql, array(
+       'name' => 'Lamborghini'
+     ));
+    
+     foreach ($result as $row) {
+       echo "Name: ", $row->cars->name, "\n";
+       echo "Price: ", $row->cars->price, "\n";
+       echo "Taxes: ", $row->taxes, "\n";
+     }
+
+
+
 Constants
 ---------
 

@@ -3,6 +3,9 @@ Class **Phalcon\\Mvc\\Model\\Relation**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`
 
+This class represents each relationship between two models
+
+
 Constants
 ---------
 

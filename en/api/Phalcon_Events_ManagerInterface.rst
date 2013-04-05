@@ -1,6 +1,9 @@
 Interface **Phalcon\\Events\\ManagerInterface**
 ===============================================
 
+Phalcon\\Events\\ManagerInterface initializer
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Interface **Phalcon\\Mvc\\Model\\ResultsetInterface**
 =====================================================
 
+Phalcon\\Mvc\\Model\\ResultsetInterface initializer
+
+
 Methods
 ---------
 

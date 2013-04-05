@@ -1,6 +1,9 @@
 Class **Phalcon\\Annotations\\Adapter**
 =======================================
 
+This is the base class for Phalcon\\Annotations adapters
+
+
 Methods
 ---------
 

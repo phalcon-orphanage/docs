@@ -1,6 +1,9 @@
 Class **Phalcon\\Mvc\\Micro\\Collection**
 =========================================
 
+Groups handlers as controllers
+
+
 Methods
 ---------
 

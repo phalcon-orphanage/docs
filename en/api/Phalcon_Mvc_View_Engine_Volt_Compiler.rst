@@ -3,6 +3,18 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+This class reads and compiles Volt templates into PHP plain code  
+
+.. code-block:: php
+
+    <?php
+
+    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    $compiler->compile('views/partials/header.volt');
+    require $compiler->getCompiledTemplatePath();
+
+
+
 Methods
 ---------
 

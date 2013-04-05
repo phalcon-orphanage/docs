@@ -5,6 +5,25 @@ Class **Phalcon\\Mvc\\Router\\Annotations**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
 
+A router that reads routes annotations from classes/resources  
+
+.. code-block:: php
+
+    <?php
+
+     $di['router'] = function() {
+    
+    	//Use the annotations router
+    	$router = new \Phalcon\Mvc\Router\Annotations(false);
+    
+    	//This will do the same as above but only if the handled uri starts with /robots
+     		$router->addResource('Robots', '/robots');
+    
+     		return $router;
+    };
+
+
+
 Constants
 ---------
 

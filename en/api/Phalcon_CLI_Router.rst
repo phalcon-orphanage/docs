@@ -3,6 +3,18 @@ Class **Phalcon\\CLI\\Router**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+Phalcon\\CLI\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\CLI\Router();
+    $router->handle(array());
+    echo $router->getTaskName();
+
+
+
 Methods
 ---------
 

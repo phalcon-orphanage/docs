@@ -5,6 +5,9 @@ Class **Phalcon\\Mvc\\User\\Component**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+This class can be used to provide user components easy access to services in the application
+
+
 Methods
 ---------
 

@@ -1,6 +1,9 @@
 Interface **Phalcon\\Cache\\BackendInterface**
 ==============================================
 
+Phalcon\\Cache\\BackendInterface initializer
+
+
 Methods
 ---------
 

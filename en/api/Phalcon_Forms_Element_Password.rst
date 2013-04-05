@@ -3,6 +3,9 @@ Class **Phalcon\\Forms\\Element\\Password**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+Component INPUT[type=password] for forms
+
+
 Methods
 ---------
 

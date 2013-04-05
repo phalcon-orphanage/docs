@@ -5,6 +5,23 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
+Specific functions for the Postgresql database system 
+
+.. code-block:: php
+
+    <?php
+
+     $config = array(
+      "host" => "192.168.0.11",
+      "dbname" => "blog",
+      "username" => "postgres",
+      "password" => ""
+     );
+    
+     $connection = new Phalcon\Db\Adapter\Pdo\Postgresql($config);
+
+
+
 Methods
 ---------
 

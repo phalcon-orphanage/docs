@@ -3,6 +3,28 @@ Class **Phalcon\\Mvc\\Router**
 
 *implements* :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+    
+      $router->add(
+    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
+    	array(
+    		"controller" => "documentation",
+    		"action"     => "show"
+    	)
+    );
+    
+    $router->handle();
+    
+    echo $router->getControllerName();
+
+
+
 Constants
 ---------
 

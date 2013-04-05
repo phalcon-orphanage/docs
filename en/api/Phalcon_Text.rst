@@ -1,6 +1,9 @@
 Class **Phalcon\\Text**
 =======================
 
+Provides utilities when working with strings
+
+
 Constants
 ---------
 

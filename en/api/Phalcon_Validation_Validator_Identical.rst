@@ -5,6 +5,9 @@ Class **Phalcon\\Validation\\Validator\\Identical**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
+Checks if a value is identical to other
+
+
 Methods
 ---------
 
