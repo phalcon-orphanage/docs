@@ -27,7 +27,7 @@ The following example shows its basic usage:
 	$messages = $validation->validate($_POST);
 	if (count($messages)) {
 		foreach ($messages as $message) {
-			echo $message, '<br>;
+			echo $message, '<br>';
 		}
 	}
 
