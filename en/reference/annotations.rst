@@ -284,4 +284,21 @@ Now, we can use the annotation in a controller:
 
 	}
 
+Annotations Adapters
+--------------------
+This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or prodiving facilities to development/testing:
 
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
++============+======================================================================================================================================================================================================================================+=========================================================================================+
+| Memory     | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage                                                    | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>`|
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| Files      | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                                                                                | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`      |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| APC        | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`  |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+
+Implementing your own adapters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
+database adapters or extend the existing ones.
