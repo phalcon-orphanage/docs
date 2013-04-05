@@ -22,7 +22,7 @@ Methods
 
 public static *string*  **camelize** (*string* $str)
 
-Converts strings to camelize style 
+Converts strings to camelize style 
 
 .. code-block:: php
 
@@ -35,7 +35,7 @@ Converts strings to camelize style
 
 public static *string*  **uncamelize** (*string* $str)
 
-Uncamelize strings which are camelized 
+Uncamelize strings which are camelized 
 
 .. code-block:: php
 
@@ -48,13 +48,13 @@ Uncamelize strings which are camelized
 
 public static *string*  **increment** (*string* $str, [*string* $separator])
 
-Adds a number to a string or increment that number if it already is defined 
+Adds a number to a string or increment that number if it already is defined 
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon\Text::increment("a"); // "a_1"
+    echo Phalcon\Text::increment("a"); // "a_1"
       echo Phalcon\Text::increment("a_1"); // "a_2"
 
 
@@ -62,7 +62,7 @@ Adds a number to a string or increment that number if it already is defined
 
 public static *string*  **random** (*int* $type, [*int* $length])
 
-Generates a random string based on the given type. Type is one of the RANDOM_* constants 
+Generates a random string based on the given type. Type is one of the RANDOM_* constants 
 
 .. code-block:: php
 
@@ -75,14 +75,14 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 public static  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
 
-Check if a string starts with a given string 
+Check if a string starts with a given string 
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon\Text::startsWith("Hello", "He"); // true
-      echo Phalcon\Text::startsWith("Hello", "he"); // false
+    echo Phalcon\Text::startsWith("Hello", "He"); // true
+      echo Phalcon\Text::startsWith("Hello", "he"); // false
       echo Phalcon\Text::startsWith("Hello", "he", false); // true
 
 
@@ -90,14 +90,14 @@ Check if a string starts with a given string
 
 public static  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
 
-Check if a string ends with a given string 
+Check if a string ends with a given string 
 
 .. code-block:: php
 
     <?php
 
-    echo Phalcon\Text::endsWith("Hello", "llo"); // true
-      echo Phalcon\Text::endsWith("Hello", "LLO"); // false
+    echo Phalcon\Text::endsWith("Hello", "llo"); // true
+      echo Phalcon\Text::endsWith("Hello", "LLO"); // false
       echo Phalcon\Text::endsWith("Hello", "LLO", false); // true
 
 

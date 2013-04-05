@@ -3,28 +3,28 @@ Class **Phalcon\\Mvc\\Model\\Message**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>`
 
-Encapsulates validation info generated before save/delete records fails  
+Encapsulates validation info generated before save/delete records fails  
 
 .. code-block:: php
 
     <?php
 
-      use Phalcon\Mvc\Model\Message as Message;
-    
-      class Robots extends Phalcon\Mvc\Model
-      {
-    
-        public function beforeSave()
-        {
-          if (this->name == 'Peter') {
-            $text = "A robot cannot be named Peter";
-            $field = "name";
-            $type = "InvalidValue";
-            $message = new Message($text, $field, $type);
-            $this->appendMessage($message);
-         }
-       }
-    
+      use Phalcon\Mvc\Model\Message as Message;
+    
+      class Robots extends Phalcon\Mvc\Model
+      {
+    
+        public function beforeSave()
+        {
+          if (this->name == 'Peter') {
+            $text = "A robot cannot be named Peter";
+            $field = "name";
+            $type = "InvalidValue";
+            $message = new Message($text, $field, $type);
+            $this->appendMessage($message);
+         }
+       }
+    
      }
 
 

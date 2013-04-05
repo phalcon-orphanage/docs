@@ -5,27 +5,27 @@ Class **Phalcon\\Mvc\\Model\\Validator\\Email**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
 
-Allows to validate if email fields has correct values  
+Allows to validate if email fields has correct values  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
-    
-    class Subscriptors extends Phalcon\Mvc\Model
-    {
-    
-    	public function validation()
-    	{
-    		$this->validate(new EmailValidator(array(
-    			'field' => 'electronic_mail'
-          	)));
-          	if ($this->validationHasFailed() == true) {
-    			return false;
-          	}
-      	}
-    
+    use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
+    
+    class Subscriptors extends Phalcon\Mvc\Model
+    {
+    
+    	public function validation()
+    	{
+    		$this->validate(new EmailValidator(array(
+    			'field' => 'electronic_mail'
+          	)));
+          	if ($this->validationHasFailed() == true) {
+    			return false;
+          	}
+      	}
+    
     }
 
 

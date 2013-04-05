@@ -5,19 +5,19 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
-Specific functions for the Postgresql database system 
+Specific functions for the Postgresql database system 
 
 .. code-block:: php
 
     <?php
 
-     $config = array(
-      "host" => "192.168.0.11",
-      "dbname" => "blog",
-      "username" => "postgres",
-      "password" => ""
-     );
-    
+     $config = array(
+      "host" => "192.168.0.11",
+      "dbname" => "blog",
+      "username" => "postgres",
+      "password" => ""
+     );
+    
      $connection = new Phalcon\Db\Adapter\Pdo\Postgresql($config);
 
 
@@ -27,13 +27,13 @@ Methods
 
 public *boolean*  **connect** ([*array* $descriptor])
 
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection. Support set search_path after connectted if schema is specified in config.
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection. Support set search_path after connectted if schema is specified in config.
 
 
 
 public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, [*string* $schema])
 
-Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
+Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
 
 
 
@@ -57,13 +57,13 @@ Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 public *\PDOStatement*  **prepare** (*string* $sqlStatement) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns a PDO prepared statement to be executed with 'executePrepared' 
+Returns a PDO prepared statement to be executed with 'executePrepared' 
 
 .. code-block:: php
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
+     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
      $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
@@ -71,13 +71,13 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Executes a prepared statement binding. This function uses integer indexes starting from zero 
+Executes a prepared statement binding. This function uses integer indexes starting from zero 
 
 .. code-block:: php
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
+     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
      $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
@@ -85,14 +85,14 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
 public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
 .. code-block:: php
 
     <?php
 
-    //Querying data
-    $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
+    //Querying data
+    $resultset = $connection->query("SELECT * FROM robots WHERE type='mechanical'");
     $resultset = $connection->query("SELECT * FROM robots WHERE type=?", array("mechanical"));
 
 
@@ -100,14 +100,14 @@ Sends SQL statements to the database server returning the success state. Use th
 
 public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
 
 .. code-block:: php
 
     <?php
 
-    //Inserting data
-    $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
+    //Inserting data
+    $success = $connection->execute("INSERT INTO robots VALUES (1, 'Astro Boy')");
     $success = $connection->execute("INSERT INTO robots VALUES (?, ?)", array(1, 'Astro Boy'));
 
 
@@ -115,13 +115,13 @@ Sends SQL statements to the database server returning the success state. Use th
 
 public *int*  **affectedRows** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed in the database system 
+Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed in the database system 
 
 .. code-block:: php
 
     <?php
 
-    $connection->execute("DELETE FROM robots");
+    $connection->execute("DELETE FROM robots");
     echo $connection->affectedRows(), ' were deleted';
 
 
@@ -129,13 +129,13 @@ Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed
 
 public *boolean*  **close** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
+Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
 
 
 public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a column/table/schema name 
+Escapes a column/table/schema name 
 
 .. code-block:: php
 
@@ -148,7 +148,7 @@ Escapes a column/table/schema name
 
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a value to avoid SQL injections 
+Escapes a value to avoid SQL injections 
 
 .. code-block:: php
 
@@ -161,13 +161,13 @@ Escapes a value to avoid SQL injections
 
 public *string*  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Manually bind params to a SQL statement. This method requires an active connection to a database system 
+Manually bind params to a SQL statement. This method requires an active connection to a database system 
 
 .. code-block:: php
 
     <?php
 
-    $sql = $connection->bindParams('SELECT * FROM robots WHERE name = ?0', array('Bender'));
+    $sql = $connection->bindParams('SELECT * FROM robots WHERE name = ?0', array('Bender'));
       echo $sql; // SELECT * FROM robots WHERE name = 'Bender'
 
 
@@ -175,7 +175,7 @@ Manually bind params to a SQL statement. This method requires an active connecti
 
 public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Converts bound parameters such as :name: or ?1 into PDO bind params ? 
+Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
 .. code-block:: php
 
@@ -188,20 +188,20 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
+Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
 
 .. code-block:: php
 
     <?php
 
-     //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array("Astro Boy", 1952),
-         array("name", "year")
-     );
-    
-     //Getting the generated id
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Getting the generated id
      $id = $connection->lastInsertId();
 
 
@@ -227,13 +227,13 @@ Commits the active transaction in the connection
 
 public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Checks whether the connection is under a transaction 
+Checks whether the connection is under a transaction 
 
 .. code-block:: php
 
     <?php
 
-     $connection->begin();
+     $connection->begin();
      var_dump($connection->isUnderTransaction()); //true
 
 
@@ -247,7 +247,7 @@ Return internal PDO handler
 
 public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Lists table indexes 
+Lists table indexes 
 
 .. code-block:: php
 
@@ -260,7 +260,7 @@ Lists table indexes
 
 public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Lists table references 
+Lists table references 
 
 .. code-block:: php
 
@@ -273,7 +273,7 @@ Lists table references
 
 public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Gets creation options from a table 
+Gets creation options from a table 
 
 .. code-block:: php
 
@@ -298,18 +298,18 @@ Returns the internal event manager
 
 public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
-Returns the first row in a SQL query result 
+Returns the first row in a SQL query result 
 
 .. code-block:: php
 
     <?php
 
-    //Getting first robot
-    $robot = $connection->fecthOne("SELECT * FROM robots");
-    print_r($robot);
-    
-    //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    //Getting first robot
+    $robot = $connection->fecthOne("SELECT * FROM robots");
+    print_r($robot);
+    
+    //Getting first robot with associative indexes only
+    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 
@@ -317,22 +317,22 @@ Returns the first row in a SQL query result
 
 public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
 
-Dumps the complete result of a query into an array 
+Dumps the complete result of a query into an array 
 
 .. code-block:: php
 
     <?php
 
-    //Getting all robots
-    $robots = $connection->fetchAll("SELECT * FROM robots");
-    foreach($robots as $robot){
-    	print_r($robot);
-    }
-    
-    //Getting all robots with associative indexes only
-    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
-    foreach($robots as $robot){
-    	print_r($robot);
+    //Getting all robots
+    $robots = $connection->fetchAll("SELECT * FROM robots");
+    foreach($robots as $robot){
+    	print_r($robot);
+    }
+    
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach($robots as $robot){
+    	print_r($robot);
     }
 
 
@@ -340,20 +340,20 @@ Dumps the complete result of a query into an array
 
 public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
-Inserts data into a table using custom RBDM SQL syntax 
+Inserts data into a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array("Astro Boy", 1952),
-         array("name", "year")
-     );
-    
-     //Next SQL sentence is sent to the database system
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Next SQL sentence is sent to the database system
      INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 
@@ -361,21 +361,21 @@ Inserts data into a table using custom RBDM SQL syntax
 
 public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
-Updates data on a table using custom RBDM SQL syntax 
+Updates data on a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Updating existing robot
-     $success = $connection->update(
-         "robots",
-         array("name")
-         array("New Astro Boy"),
-         "id = 101"
-     );
-    
-     //Next SQL sentence is sent to the database system
+     //Updating existing robot
+     $success = $connection->update(
+         "robots",
+         array("name")
+         array("New Astro Boy"),
+         "id = 101"
+     );
+    
+     //Next SQL sentence is sent to the database system
      UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 
@@ -383,19 +383,19 @@ Updates data on a table using custom RBDM SQL syntax
 
 public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter
 
-Deletes data from a table using custom RBDM SQL syntax 
+Deletes data from a table using custom RBDM SQL syntax 
 
 .. code-block:: php
 
     <?php
 
-     //Deleting existing robot
-     $success = $connection->delete(
-         "robots",
-         "id = 101"
-     );
-    
-     //Next SQL sentence is generated
+     //Deleting existing robot
+     $success = $connection->delete(
+         "robots",
+         "id = 101"
+     );
+    
+     //Next SQL sentence is generated
      DELETE FROM `robots` WHERE `id` = 101
 
 
@@ -409,7 +409,7 @@ Gets a list of columns
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Adapter
 
-Appends a LIMIT clause to $sqlQuery argument 
+Appends a LIMIT clause to $sqlQuery argument 
 
 .. code-block:: php
 
@@ -422,7 +422,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
-Generates SQL checking for the existence of a schema.table 
+Generates SQL checking for the existence of a schema.table 
 
 .. code-block:: php
 
@@ -435,7 +435,7 @@ Generates SQL checking for the existence of a schema.table
 
 public *string*  **viewExists** (*string* $viewName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
-Generates SQL checking for the existence of a schema.view 
+Generates SQL checking for the existence of a schema.view 
 
 .. code-block:: php
 
@@ -532,7 +532,7 @@ Returns the SQL column definition from a column
 
 public *array*  **listTables** ([*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
 
-List all tables on a database 
+List all tables on a database 
 
 .. code-block:: php
 

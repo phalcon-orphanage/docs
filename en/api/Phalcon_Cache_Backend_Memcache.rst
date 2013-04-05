@@ -5,28 +5,28 @@ Class **Phalcon\\Cache\\Backend\\Memcache**
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
+Allows to cache output fragments, PHP data or raw data to a memcache backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
 
 .. code-block:: php
 
     <?php
 
-     // Cache data for 2 days
-     $frontCache = new Phalcon\Cache\Frontend\Data(array(
-        "lifetime" => 172800
-     ));
-    
-     //Create the Cache setting memcached connection options
-     $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
-    	'host' => 'localhost',
-    	'port' => 11211,
-      	'persistent' => false
-     ));
-    
-     //Cache arbitrary data
-     $cache->save('my-data', array(1, 2, 3, 4, 5));
-    
-     //Get data
+     // Cache data for 2 days
+     $frontCache = new Phalcon\Cache\Frontend\Data(array(
+        "lifetime" => 172800
+     ));
+    
+     //Create the Cache setting memcached connection options
+     $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
+    	'host' => 'localhost',
+    	'port' => 11211,
+      	'persistent' => false
+     ));
+    
+     //Cache arbitrary data
+     $cache->save('my-data', array(1, 2, 3, 4, 5));
+    
+     //Get data
      $data = $cache->get('my-data');
 
 

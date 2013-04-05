@@ -153,7 +153,7 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 abstract public *boolean*  **fireEventCancel** (*string* $eventName)
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
 
 
@@ -183,13 +183,13 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 abstract public *boolean*  **create** ([*array* $data])
 
-Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.
+Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.
 
 
 
 abstract public *boolean*  **update** ([*array* $data])
 
-Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise.
+Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise.
 
 
 
@@ -201,7 +201,7 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 abstract public *int*  **getOperationMade** ()
 
-Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
+Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
 
 
 

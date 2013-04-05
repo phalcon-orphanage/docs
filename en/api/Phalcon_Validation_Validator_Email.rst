@@ -5,16 +5,16 @@ Class **Phalcon\\Validation\\Validator\\Email**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Checks if a value has a correct e-mail format  
+Checks if a value has a correct e-mail format  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\Email as EmailValidator;
-    
-    $validator->add('email', new EmailValidator(array(
-       'message' => 'The e-mail is not valid'
+    use Phalcon\Validation\Validator\Email as EmailValidator;
+    
+    $validator->add('email', new EmailValidator(array(
+       'message' => 'The e-mail is not valid'
     )));
 
 
@@ -42,7 +42,7 @@ Checks if an option is defined
 
 public *mixed*  **getOption** (*string* $key) inherited from Phalcon\\Validation\\Validator
 
-Returns an option in the validator's options Returns null if the option hasn't been set
+Returns an option in the validator's options Returns null if the option hasn't been set
 
 
 

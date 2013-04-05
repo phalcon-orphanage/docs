@@ -29,7 +29,7 @@ Removes a service in the services container
 
 abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $alias, *mixed* $definition, [*boolean* $shared])
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 

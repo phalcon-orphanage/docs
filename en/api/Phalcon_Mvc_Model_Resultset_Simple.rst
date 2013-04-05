@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
-Simple resultsets only contains a complete objects This class builds every complete object as it is required
+Simple resultsets only contains a complete objects This class builds every complete object as it is required
 
 
 Constants
@@ -38,7 +38,7 @@ Check whether internal resource has rows to fetch
 
 public *array*  **toArray** ()
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
 
 
 

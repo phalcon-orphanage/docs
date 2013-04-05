@@ -39,7 +39,7 @@ Commmits active transactions within the manager
 
 abstract public  **rollback** ([*boolean* $collect])
 
-Rollbacks active transactions within the manager Collect will remove transaction from the manager
+Rollbacks active transactions within the manager Collect will remove transaction from the manager
 
 
 

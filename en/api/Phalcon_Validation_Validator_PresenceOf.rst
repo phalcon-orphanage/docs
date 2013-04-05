@@ -5,16 +5,16 @@ Class **Phalcon\\Validation\\Validator\\PresenceOf**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Validates that a value is not null or empty string  
+Validates that a value is not null or empty string  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf;
-    
-    $validator->add('name', new PresenceOf(array(
-       'message' => 'The name is required'
+    use Phalcon\Validation\Validator\PresenceOf;
+    
+    $validator->add('name', new PresenceOf(array(
+       'message' => 'The name is required'
     )));
 
 
@@ -42,7 +42,7 @@ Checks if an option is defined
 
 public *mixed*  **getOption** (*string* $key) inherited from Phalcon\\Validation\\Validator
 
-Returns an option in the validator's options Returns null if the option hasn't been set
+Returns an option in the validator's options Returns null if the option hasn't been set
 
 
 

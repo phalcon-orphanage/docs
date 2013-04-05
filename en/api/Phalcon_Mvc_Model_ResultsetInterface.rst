@@ -45,7 +45,7 @@ Returns the associated cache for the resultset
 
 abstract public *array*  **toArray** ()
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
 
 
 

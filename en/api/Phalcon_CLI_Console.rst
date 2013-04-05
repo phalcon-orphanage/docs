@@ -35,21 +35,21 @@ Returns the internal event manager
 
 public  **registerModules** (*array* $modules)
 
-Register an array of modules present in the console 
+Register an array of modules present in the console 
 
 .. code-block:: php
 
     <?php
 
-    $application->registerModules(array(
-    	'frontend' => array(
-    		'className' => 'Multiple\Frontend\Module',
-    		'path' => '../apps/frontend/Module.php'
-    	),
-    	'backend' => array(
-    		'className' => 'Multiple\Backend\Module',
-    		'path' => '../apps/backend/Module.php'
-    	)
+    $application->registerModules(array(
+    	'frontend' => array(
+    		'className' => 'Multiple\Frontend\Module',
+    		'path' => '../apps/frontend/Module.php'
+    	),
+    	'backend' => array(
+    		'className' => 'Multiple\Backend\Module',
+    		'path' => '../apps/backend/Module.php'
+    	)
     ));
 
 
@@ -57,17 +57,17 @@ Register an array of modules present in the console
 
 public  **addModules** (*array* $modules)
 
-Merge modules with the existing ones 
+Merge modules with the existing ones 
 
 .. code-block:: php
 
     <?php
 
-    $application->addModules(array(
-    	'admin' => array(
-    		'className' => 'Multiple\Admin\Module',
-    		'path' => '../apps/admin/Module.php'
-    	)
+    $application->addModules(array(
+    	'admin' => array(
+    		'className' => 'Multiple\Admin\Module',
+    		'path' => '../apps/admin/Module.php'
+    	)
     ));
 
 

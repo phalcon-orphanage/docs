@@ -3,24 +3,24 @@ Class **Phalcon\\Mvc\\Router**
 
 *implements* :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
 
 .. code-block:: php
 
     <?php
 
-    $router = new Phalcon\Mvc\Router();
-    
-      $router->add(
-    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
-    	array(
-    		"controller" => "documentation",
-    		"action"     => "show"
-    	)
-    );
-    
-    $router->handle();
-    
+    $router = new Phalcon\Mvc\Router();
+    
+      $router->add(
+    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
+    	array(
+    		"controller" => "documentation",
+    		"action"     => "show"
+    	)
+    );
+    
+    $router->handle();
+    
     echo $router->getControllerName();
 
 
@@ -61,7 +61,7 @@ Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the 
 
 public  **setUriSource** (*string* $uriSource)
 
-Sets the URI source. One of the URI_SOURCE_* constants 
+Sets the URI source. One of the URI_SOURCE_* constants 
 
 .. code-block:: php
 
@@ -104,15 +104,15 @@ Sets the default action name
 
 public  **setDefaults** (*array* $defaults)
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
 .. code-block:: php
 
     <?php
 
-     $router->setDefaults(array(
-    	'module' => 'common',
-    	'action' => 'index'
+     $router->setDefaults(array(
+    	'module' => 'common',
+    	'action' => 'index'
      ));
 
 
@@ -120,16 +120,16 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 public  **handle** ([*string* $uri])
 
-Handles routing information received from the rewrite engine 
+Handles routing information received from the rewrite engine 
 
 .. code-block:: php
 
     <?php
 
-     //Read the info from the rewrite engine
-     $router->handle();
-    
-     //Manually passing an URL
+     //Read the info from the rewrite engine
+     $router->handle();
+    
+     //Manually passing an URL
      $router->handle('/posts/edit/1');
 
 
@@ -137,7 +137,7 @@ Handles routing information received from the rewrite engine
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
 
-Adds a route to the router without any HTTP constraint 
+Adds a route to the router without any HTTP constraint 
 
 .. code-block:: php
 

@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Behavior\\Timestampable**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
-Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
+Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
 
 Methods

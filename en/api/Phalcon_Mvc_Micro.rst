@@ -5,18 +5,18 @@ Class **Phalcon\\Mvc\\Micro**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, ArrayAccess
 
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.  
+With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.  
 
 .. code-block:: php
 
     <?php
 
-     $app = new Phalcon\Mvc\Micro();
-    
-     $app->get('/say/welcome/{name}', function ($name) {
-        echo "<h1>Welcome $name!</h1>";
-     });
-    
+     $app = new Phalcon\Mvc\Micro();
+    
+     $app->get('/say/welcome/{name}', function ($name) {
+        echo "<h1>Welcome $name!</h1>";
+     });
+    
      $app->handle();
 
 
@@ -146,7 +146,7 @@ Check if a service is registered in the internal services container using the ar
 
 public  **offsetSet** (*string* $alias, *mixed* $definition)
 
-Allows to register a shared service in the internal services container using the array syntax 
+Allows to register a shared service in the internal services container using the array syntax 
 
 .. code-block:: php
 
@@ -159,7 +159,7 @@ Allows to register a shared service in the internal services container using the
 
 public *mixed*  **offsetGet** (*string* $alias)
 
-Allows to obtain a shared service in the internal services container using the array syntax 
+Allows to obtain a shared service in the internal services container using the array syntax 
 
 .. code-block:: php
 

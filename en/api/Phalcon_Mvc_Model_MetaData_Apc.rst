@@ -5,15 +5,15 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
-Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-app-id')  
+Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-app-id')  
 
 .. code-block:: php
 
     <?php
 
-    $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
-    	'prefix' => 'my-app-id',
-    	'lifetime' => 86400
+    $metaData = new Phalcon\Mvc\Model\Metadata\Apc(array(
+    	'prefix' => 'my-app-id',
+    	'lifetime' => 86400
     ));
 
 
@@ -102,7 +102,7 @@ Return the strategy to obtain the meta-data
 
 public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads the complete meta-data for certain model 
+Reads the complete meta-data for certain model 
 
 .. code-block:: php
 
@@ -115,7 +115,7 @@ Reads the complete meta-data for certain model
 
 public  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads meta-data for certain model using a MODEL_* constant 
+Reads meta-data for certain model using a MODEL_* constant 
 
 .. code-block:: php
 
@@ -128,7 +128,7 @@ Reads meta-data for certain model using a MODEL_* constant
 
 public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Writes meta-data for certain model using a MODEL_* constant 
+Writes meta-data for certain model using a MODEL_* constant 
 
 .. code-block:: php
 
@@ -141,7 +141,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads the ordered/reversed column map for certain model 
+Reads the ordered/reversed column map for certain model 
 
 .. code-block:: php
 
@@ -154,7 +154,7 @@ Reads the ordered/reversed column map for certain model
 
 public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Reads column-map information for certain model using a MODEL_* constant 
+Reads column-map information for certain model using a MODEL_* constant 
 
 .. code-block:: php
 
@@ -167,7 +167,7 @@ Reads column-map information for certain model using a MODEL_* constant
 
 public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns table attributes names (fields) 
+Returns table attributes names (fields) 
 
 .. code-block:: php
 
@@ -180,7 +180,7 @@ Returns table attributes names (fields)
 
 public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an array of fields which are part of the primary key 
+Returns an array of fields which are part of the primary key 
 
 .. code-block:: php
 
@@ -193,7 +193,7 @@ Returns an array of fields which are part of the primary key
 
 public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an arrau of fields which are not part of the primary key 
+Returns an arrau of fields which are not part of the primary key 
 
 .. code-block:: php
 
@@ -206,7 +206,7 @@ Returns an arrau of fields which are not part of the primary key
 
 public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns an array of not null attributes 
+Returns an array of not null attributes 
 
 .. code-block:: php
 
@@ -219,7 +219,7 @@ Returns an array of not null attributes
 
 public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes and their data types 
+Returns attributes and their data types 
 
 .. code-block:: php
 
@@ -232,7 +232,7 @@ Returns attributes and their data types
 
 public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes which types are numerical 
+Returns attributes which types are numerical 
 
 .. code-block:: php
 
@@ -245,7 +245,7 @@ Returns attributes which types are numerical
 
 public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the name of identity field (if one is present) 
+Returns the name of identity field (if one is present) 
 
 .. code-block:: php
 
@@ -258,7 +258,7 @@ Returns the name of identity field (if one is present)
 
 public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes and their bind data types 
+Returns attributes and their bind data types 
 
 .. code-block:: php
 
@@ -271,7 +271,7 @@ Returns attributes and their bind data types
 
 public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes that must be ignored from the INSERT SQL generation 
+Returns attributes that must be ignored from the INSERT SQL generation 
 
 .. code-block:: php
 
@@ -284,7 +284,7 @@ Returns attributes that must be ignored from the INSERT SQL generation
 
 public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attributes that must be ignored from the UPDATE SQL generation 
+Returns attributes that must be ignored from the UPDATE SQL generation 
 
 .. code-block:: php
 
@@ -297,7 +297,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Set the attributes that must be ignored from the INSERT SQL generation 
+Set the attributes that must be ignored from the INSERT SQL generation 
 
 .. code-block:: php
 
@@ -310,7 +310,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Set the attributes that must be ignored from the UPDATE SQL generation 
+Set the attributes that must be ignored from the UPDATE SQL generation 
 
 .. code-block:: php
 
@@ -323,7 +323,7 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the column map if any 
+Returns the column map if any 
 
 .. code-block:: php
 
@@ -336,7 +336,7 @@ Returns the column map if any
 
 public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns the reverse column map if any 
+Returns the reverse column map if any 
 
 .. code-block:: php
 
@@ -349,7 +349,7 @@ Returns the reverse column map if any
 
 public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Check if a model has certain attribute 
+Check if a model has certain attribute 
 
 .. code-block:: php
 
@@ -362,7 +362,7 @@ Check if a model has certain attribute
 
 public *boolean*  **isEmpty** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Checks if the internal meta-data container is empty 
+Checks if the internal meta-data container is empty 
 
 .. code-block:: php
 
@@ -375,7 +375,7 @@ Checks if the internal meta-data container is empty
 
 public  **reset** () inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Resets internal meta-data in order to regenerate it 
+Resets internal meta-data in order to regenerate it 
 
 .. code-block:: php
 

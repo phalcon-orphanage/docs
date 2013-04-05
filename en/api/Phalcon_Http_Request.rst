@@ -3,17 +3,17 @@ Class **Phalcon\\Http\\Request**
 
 *implements* :doc:`Phalcon\\Http\\RequestInterface <Phalcon_Http_RequestInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
+Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
 
 .. code-block:: php
 
     <?php
 
-    $request = new Phalcon\Http\Request();
-    if ($request->isPost() == true) {
-    	if ($request->isAjax() == true) {
-    		echo 'Request was made using POST and AJAX';
-    	}
+    $request = new Phalcon\Http\Request();
+    if ($request->isPost() == true) {
+    	if ($request->isAjax() == true) {
+    		echo 'Request was made using POST and AJAX';
+    	}
     }
 
 
@@ -35,16 +35,16 @@ Returns the internal dependency injector
 
 public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets a variable from the $_REQUEST superglobal applying filters if needed 
+Gets a variable from the $_REQUEST superglobal applying filters if needed 
 
 .. code-block:: php
 
     <?php
 
-    //Returns value from $_REQUEST["user_email"] without sanitizing
-    $userEmail = $request->get("user_email");
-    
-    //Returns value from $_REQUEST["user_email"] with sanitizing
+    //Returns value from $_REQUEST["user_email"] without sanitizing
+    $userEmail = $request->get("user_email");
+    
+    //Returns value from $_REQUEST["user_email"] with sanitizing
     $userEmail = $request->get("user_email", "email");
 
 
@@ -52,16 +52,16 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets a variable from the $_POST superglobal applying filters if needed 
+Gets a variable from the $_POST superglobal applying filters if needed 
 
 .. code-block:: php
 
     <?php
 
-    //Returns value from $_POST["user_email"] without sanitizing
-    $userEmail = $request->getPost("user_email");
-    
-    //Returns value from $_POST["user_email"] with sanitizing
+    //Returns value from $_POST["user_email"] without sanitizing
+    $userEmail = $request->getPost("user_email");
+    
+    //Returns value from $_POST["user_email"] with sanitizing
     $userEmail = $request->getPost("user_email", "email");
 
 
@@ -69,19 +69,19 @@ Gets a variable from the $_POST superglobal applying filters if needed
 
 public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets variable from $_GET superglobal applying filters if needed 
+Gets variable from $_GET superglobal applying filters if needed 
 
 .. code-block:: php
 
     <?php
 
-    //Returns value from $_GET["id"] without sanitizing
-    $id = $request->getQuery("id");
-    
-    //Returns value from $_GET["id"] with sanitizing
-    $id = $request->getQuery("id", "int");
-    
-    //Returns value from $_GET["id"] with a default value
+    //Returns value from $_GET["id"] without sanitizing
+    $id = $request->getQuery("id");
+    
+    //Returns value from $_GET["id"] with sanitizing
+    $id = $request->getQuery("id", "int");
+    
+    //Returns value from $_GET["id"] with a default value
     $id = $request->getQuery("id", null, 150);
 
 

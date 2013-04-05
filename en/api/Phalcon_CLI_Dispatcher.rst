@@ -5,22 +5,22 @@ Class **Phalcon\\CLI\\Dispatcher**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 
-Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.  
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.  
 
 .. code-block:: php
 
     <?php
 
-    $di = new Phalcon\DI();
-    
-    $dispatcher = new Phalcon\CLI\Dispatcher();
-    
-      $dispatcher->setDI($di);
-    
-    $dispatcher->setTaskName('posts');
-    $dispatcher->setActionName('index');
-    $dispatcher->setParams(array());
-    
+    $di = new Phalcon\DI();
+    
+    $dispatcher = new Phalcon\CLI\Dispatcher();
+    
+      $dispatcher->setDI($di);
+    
+    $dispatcher->setTaskName('posts');
+    $dispatcher->setActionName('index');
+    $dispatcher->setParams(array());
+    
     $handle = $dispatcher->dispatch();
 
 

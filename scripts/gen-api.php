@@ -138,7 +138,10 @@ class API_Generator
 		$ret = array();
 		$lines = array();
 		$description = '';
+
 		$phpdoc = trim($phpdoc);
+		$phpdoc = str_replace("\r", "", $phpdoc);
+
 		foreach (explode("\n", $phpdoc) as $line) {
 			$line = preg_replace('#^/\*\*#', '', $line);
 			$line = str_replace('*/', '', $line);

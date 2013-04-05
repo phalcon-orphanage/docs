@@ -5,7 +5,7 @@ Class **Phalcon\\Annotations\\Adapter\\Apc**
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Phalcon\\Annotations\\Adapter\\Files  Stores the parsed annotations in APC. This adapter is the suitable for production  
+Phalcon\\Annotations\\Adapter\\Files  Stores the parsed annotations in APC. This adapter is the suitable for production  
 
 .. code-block:: php
 

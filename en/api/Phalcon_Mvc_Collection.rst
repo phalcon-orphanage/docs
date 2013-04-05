@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Collection**
 
 *implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
-This component implements a high level abstraction for NoSQL databases which works with documents
+This component implements a high level abstraction for NoSQL databases which works with documents
 
 
 Constants
@@ -112,7 +112,7 @@ Retrieves a database connection
 
 public *mixed*  **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name 
+Reads an attribute value by its name 
 
 .. code-block:: php
 
@@ -125,7 +125,7 @@ Reads an attribute value by its name
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name 
+Writes an attribute value by its name 
 
 .. code-block:: php
 
@@ -168,28 +168,28 @@ Executes internal events after save a document
 
 protected  **validate** ()
 
-Executes validators on every validation call 
+Executes validators on every validation call 
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
-    
-    class Subscriptors extends Phalcon\Mvc\Collection
-    {
-    
-    public function validation()
-    {
-    	$this->validate(new ExclusionIn(array(
-    		'field' => 'status',
-    		'domain' => array('A', 'I')
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
-    
+    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
+    
+    class Subscriptors extends Phalcon\Mvc\Collection
+    {
+    
+    public function validation()
+    {
+    	$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
+    }
+    
     }
 
 
@@ -197,28 +197,28 @@ Executes validators on every validation call
 
 public *boolean*  **validationHasFailed** ()
 
-Check whether validation process has generated any messages 
+Check whether validation process has generated any messages 
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
-    
-    class Subscriptors extends Phalcon\Mvc\Collection
-    {
-    
-    public function validation()
-    {
-    	$this->validate(new ExclusionIn(array(
-    		'field' => 'status',
-    		'domain' => array('A', 'I')
-    	)));
-    	if ($this->validationHasFailed() == true) {
-    		return false;
-    	}
-    }
-    
+    use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
+    
+    class Subscriptors extends Phalcon\Mvc\Collection
+    {
+    
+    public function validation()
+    {
+    	$this->validate(new ExclusionIn(array(
+    		'field' => 'status',
+    		'domain' => array('A', 'I')
+    	)));
+    	if ($this->validationHasFailed() == true) {
+    		return false;
+    	}
+    }
+    
     }
 
 
@@ -250,23 +250,23 @@ Checks if the document exists in the collection
 
 public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
 
-Returns all the validation messages 
+Returns all the validation messages 
 
 .. code-block:: php
 
     <?php
 
-    $robot = new Robots();
-    $robot->type = 'mechanical';
-    $robot->name = 'Astro Boy';
-    $robot->year = 1952;
-    if ($robot->save() == false) {
-    echo "Umh, We can't store robots right now ";
-    foreach ($robot->getMessages() as $message) {
-    	echo $message;
-    }
-    } else {
-    echo "Great, a new robot was saved successfully!";
+    $robot = new Robots();
+    $robot->type = 'mechanical';
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+    if ($robot->save() == false) {
+    echo "Umh, We can't store robots right now ";
+    foreach ($robot->getMessages() as $message) {
+    	echo $message;
+    }
+    } else {
+    echo "Great, a new robot was saved successfully!";
     }
 
 
@@ -274,24 +274,24 @@ Returns all the validation messages
 
 public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
-Appends a customized message on the validation process 
+Appends a customized message on the validation process 
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Mvc\Model\Message as Message;
-    
-    class Robots extends Phalcon\Mvc\Model
-    {
-    
-    	public function beforeSave()
-    	{
-    		if (this->name == 'Peter') {
-    			$message = new Message("Sorry, but a robot cannot be named Peter");
-    			$this->appendMessage($message);
-    		}
-    	}
+    use \Phalcon\Mvc\Model\Message as Message;
+    
+    class Robots extends Phalcon\Mvc\Model
+    {
+    
+    	public function beforeSave()
+    	{
+    		if (this->name == 'Peter') {
+    			$message = new Message("Sorry, but a robot cannot be named Peter");
+    			$this->appendMessage($message);
+    		}
+    	}
     }
 
 
@@ -311,27 +311,27 @@ Find a document by its id (_id)
 
 public static *array*  **findFirst** ([*array* $parameters])
 
-Allows to query the first record that match the specified conditions 
+Allows to query the first record that match the specified conditions 
 
 .. code-block:: php
 
     <?php
 
-     //What's the first robot in the robots table?
-     $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name, "\n";
-    
-     //What's the first mechanical robot in robots table?
-     $robot = Robots::findFirst(array(
-         array("type" => "mechanical")
-     ));
-     echo "The first mechanical robot name is ", $robot->name, "\n";
-    
-     //Get first virtual robot ordered by name
-     $robot = Robots::findFirst(array(
-         array("type" => "mechanical"),
-         "order" => array("name" => 1)
-     ));
+     //What's the first robot in the robots table?
+     $robot = Robots::findFirst();
+     echo "The robot name is ", $robot->name, "\n";
+    
+     //What's the first mechanical robot in robots table?
+     $robot = Robots::findFirst(array(
+         array("type" => "mechanical")
+     ));
+     echo "The first mechanical robot name is ", $robot->name, "\n";
+    
+     //Get first virtual robot ordered by name
+     $robot = Robots::findFirst(array(
+         array("type" => "mechanical"),
+         "order" => array("name" => 1)
+     ));
      echo "The first virtual robot name is ", $robot->name, "\n";
 
 
@@ -339,39 +339,39 @@ Allows to query the first record that match the specified conditions
 
 public static *array*  **find** ([*array* $parameters])
 
-Allows to query a set of records that match the specified conditions 
+Allows to query a set of records that match the specified conditions 
 
 .. code-block:: php
 
     <?php
 
-     //How many robots are there?
-     $robots = Robots::find();
-     echo "There are ", count($robots), "\n";
-    
-     //How many mechanical robots are there?
-     $robots = Robots::find(array(
-         array("type" => "mechanical")
-     ));
-     echo "There are ", count($robots), "\n";
-    
-     //Get and print virtual robots ordered by name
-     $robots = Robots::findFirst(array(
-         array("type" => "virtual"),
-         "order" => array("name" => 1)
-     ));
-     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
-     }
-    
-     //Get first 100 virtual robots ordered by name
-     $robots = Robots::find(array(
-         array("type" => "virtual"),
-         "order" => array("name" => 1),
-         "limit" => 100
-     ));
-     foreach ($robots as $robot) {
-       echo $robot->name, "\n";
+     //How many robots are there?
+     $robots = Robots::find();
+     echo "There are ", count($robots), "\n";
+    
+     //How many mechanical robots are there?
+     $robots = Robots::find(array(
+         array("type" => "mechanical")
+     ));
+     echo "There are ", count($robots), "\n";
+    
+     //Get and print virtual robots ordered by name
+     $robots = Robots::findFirst(array(
+         array("type" => "virtual"),
+         "order" => array("name" => 1)
+     ));
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
+     }
+    
+     //Get first 100 virtual robots ordered by name
+     $robots = Robots::find(array(
+         array("type" => "virtual"),
+         "order" => array("name" => 1),
+         "limit" => 100
+     ));
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
      }
 
 
@@ -379,7 +379,7 @@ Allows to query a set of records that match the specified conditions
 
 public static *array*  **count** ([*array* $parameters])
 
-Perform a count over a collection 
+Perform a count over a collection 
 
 .. code-block:: php
 
@@ -392,7 +392,7 @@ Perform a count over a collection
 
 public static *array*  **aggregate** (*array* $parameters)
 
-Perform an aggregation using the Mongo aggregation framework 
+Perform an aggregation using the Mongo aggregation framework 
 
 .. code-block:: php
 
@@ -405,17 +405,17 @@ Perform an aggregation using the Mongo aggregation framework
 
 public *boolean*  **delete** ()
 
-Deletes a model instance. Returning true on success or false otherwise. 
+Deletes a model instance. Returning true on success or false otherwise. 
 
 .. code-block:: php
 
     <?php
 
-    $robot = Robots::findFirst();
-    $robot->delete();
-    
-    foreach (Robots::find() as $robot) {
-    	$robot->delete();
+    $robot = Robots::findFirst();
+    $robot->delete();
+    
+    foreach (Robots::find() as $robot) {
+    	$robot->delete();
     }
 
 
@@ -423,7 +423,7 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 public *array*  **toArray** ()
 
-Returns the instance as an array representation 
+Returns the instance as an array representation 
 
 .. code-block:: php
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Queue\\Beanstalk**
 ===================================
 
-Class to access the beanstalk queue service. Partially implements the protocol version 1.2
+Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
 
 Methods
@@ -55,7 +55,7 @@ protected  **readStatus** ()
 
 public *string|boolean Data or `false` on error.*  **read** ([*unknown* $length])
 
-Reads a packet from the socket. Prior to reading from the socket will check for availability of the connection.
+Reads a packet from the socket. Prior to reading from the socket will check for availability of the connection.
 
 
 

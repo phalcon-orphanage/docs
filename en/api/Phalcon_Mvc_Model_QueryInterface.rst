@@ -15,7 +15,7 @@ Phalcon\\Mvc\\Model\\Query constructor
 
 abstract public *array*  **parse** ()
 
-Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
+Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang generating another intermediate representation that could be executed by Phalcon\\Mvc\\Model\\Query
 
 
 

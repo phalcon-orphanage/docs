@@ -3,18 +3,18 @@ Class **Phalcon\\Mvc\\Model\\Query\\Builder**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-Helps to create PHQL queries using an OO interface  
+Helps to create PHQL queries using an OO interface  
 
 .. code-block:: php
 
     <?php
 
-    $resultset = $this->modelsManager->createBuilder()
-       ->from('Robots')
-       ->join('RobotsParts')
-       ->limit(20)
-       ->orderBy('Robots.name')
-       ->getQuery()
+    $resultset = $this->modelsManager->createBuilder()
+       ->from('Robots')
+       ->join('RobotsParts')
+       ->limit(20)
+       ->orderBy('Robots.name')
+       ->getQuery()
        ->execute();
 
 
@@ -42,7 +42,7 @@ Returns the DependencyInjector container
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*string|array* $columns)
 
-Sets the columns to be queried 
+Sets the columns to be queried 
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ Return the columns to be queried
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **from** (*string|array* $models)
 
-Sets the models who makes part of the query 
+Sets the models who makes part of the query 
 
 .. code-block:: php
 
@@ -74,7 +74,7 @@ Sets the models who makes part of the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias])
 
-Add a model to take part of the query 
+Add a model to take part of the query 
 
 .. code-block:: php
 
@@ -93,7 +93,7 @@ Return the models who makes part of the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
-Adds a join to the query 
+Adds a join to the query 
 
 .. code-block:: php
 
@@ -106,7 +106,7 @@ Adds a join to the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a LEFT join to the query 
+Adds a LEFT join to the query 
 
 .. code-block:: php
 
@@ -119,7 +119,7 @@ Adds a LEFT join to the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a RIGHT join to the query 
+Adds a RIGHT join to the query 
 
 .. code-block:: php
 
@@ -132,7 +132,7 @@ Adds a RIGHT join to the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions)
 
-Sets the query conditions 
+Sets the query conditions 
 
 .. code-block:: php
 
@@ -145,7 +145,7 @@ Sets the query conditions
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions)
 
-Appends a condition to the current conditions using a AND operator 
+Appends a condition to the current conditions using a AND operator 
 
 .. code-block:: php
 
@@ -158,7 +158,7 @@ Appends a condition to the current conditions using a AND operator
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions)
 
-Appends a condition to the current conditions using a OR operator 
+Appends a condition to the current conditions using a OR operator 
 
 .. code-block:: php
 
@@ -177,13 +177,13 @@ Return the conditions for the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string* $orderBy)
 
-Sets a ORDER BY condition clause 
+Sets a ORDER BY condition clause 
 
 .. code-block:: php
 
     <?php
 
-    $builder->orderBy('Robots.name');
+    $builder->orderBy('Robots.name');
     $builder->orderBy(array('1', 'Robots.name'));
 
 
@@ -197,7 +197,7 @@ Returns the set ORDER BY clause
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **having** (*string* $having)
 
-Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
+Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
 
 .. code-block:: php
 
@@ -216,13 +216,13 @@ Return the current having clause
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*int* $limit, [*int* $offset])
 
-Sets a LIMIT clause, optionally a offset clause 
+Sets a LIMIT clause, optionally a offset clause 
 
 .. code-block:: php
 
     <?php
 
-    $builder->limit(100);
+    $builder->limit(100);
     $builder->limit(100, 20);
 
 
@@ -236,7 +236,7 @@ Returns the current LIMIT clause
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **offset** (*int* $offset)
 
-Sets an OFFSET clause 
+Sets an OFFSET clause 
 
 .. code-block:: php
 
@@ -255,7 +255,7 @@ Returns the current OFFSET clause
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*string* $group)
 
-Sets a GROUP BY clause 
+Sets a GROUP BY clause 
 
 .. code-block:: php
 

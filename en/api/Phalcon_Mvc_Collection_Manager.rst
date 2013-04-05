@@ -3,18 +3,18 @@ Class **Phalcon\\Mvc\\Collection\\Manager**
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
 
 .. code-block:: php
 
     <?php
 
-     $di = new Phalcon\DI();
-    
-     $di->set('collectionManager', function(){
-          return new Phalcon\Mvc\Collection\Manager();
-     });
-    
+     $di = new Phalcon\DI();
+    
+     $di->set('collectionManager', function(){
+          return new Phalcon\Mvc\Collection\Manager();
+     });
+    
      $robot = new Robots($di);
 
 
@@ -102,7 +102,7 @@ Returns the connection related to a model
 
 public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
 
 
 
