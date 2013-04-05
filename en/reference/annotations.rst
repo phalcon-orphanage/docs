@@ -301,4 +301,4 @@ This component makes use of adapters to cache or no cache the parsed and process
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
-database adapters or extend the existing ones.
+annotations adapters or extend the existing ones.
