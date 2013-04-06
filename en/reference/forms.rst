@@ -6,51 +6,51 @@ The following example shows its basic usage:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	use Phalcon\Forms\Form,
-		Phalcon\Forms\Element\Text,
-		Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form,
+        Phalcon\Forms\Element\Text,
+        Phalcon\Forms\Element\Select;
 
-	$form = new Form();
+    $form = new Form();
 
-	$form->add(new Text("name"));
+    $form->add(new Text("name"));
 
-	$form->add(new Text("telephone"));
+    $form->add(new Text("telephone"));
 
-	$form->add(new Select("telephoneType", array(
-		'H' => 'Home',
-		'C' => 'Cell'
-	)));
+    $form->add(new Select("telephoneType", array(
+        'H' => 'Home',
+        'C' => 'Cell'
+    )));
 
 Forms can be rendered based on the form definition:
 
 .. code-block:: html+php
 
-	<h1>Contacts</h1>
+    <h1>Contacts</h1>
 
-	<form method="post">
+    <form method="post">
 
-		<p>
-			<label>Name</label>
-			<?php echo $form->render("name") ?>
-		</p>
+        <p>
+            <label>Name</label>
+            <?php echo $form->render("name") ?>
+        </p>
 
-		<p>
-			<label>Telephone</label>
-			<?php echo $form->render("telephone") ?>
-		</p>
+        <p>
+            <label>Telephone</label>
+            <?php echo $form->render("telephone") ?>
+        </p>
 
-		<p>
-			<label>Type</label>
-			<?php echo $form->render("telephoneType") ?>
-		</p>
+        <p>
+            <label>Type</label>
+            <?php echo $form->render("telephoneType") ?>
+        </p>
 
-		<p>
-			<input type="submit" value="Save" />
-		</p>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
 
-	</form>
+    </form>
 
 Each element in the form can be rendered as required by the developer. Internally,
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the right HTML for each element,
@@ -58,21 +58,21 @@ you can pass additional html attributes as second parameter for render:
 
 .. code-block:: html+php
 
-	<p>
-		<label>Name</label>
-		<?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
-	</p>
+    <p>
+        <label>Name</label>
+        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
+    </p>
 
 HTML Attributes also can be set in the element's definition:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$form->add(new Text("name", array(
-		'maxlength' => 30,
-		'placeholder' => 'Type your name'
-	)));
+    $form->add(new Text("name", array(
+        'maxlength' => 30,
+        'placeholder' => 'Type your name'
+    )));
 
 Initializing forms
 ------------------
@@ -81,25 +81,25 @@ classes implementing the form in a separated file:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	use Phalcon\Forms\Form,
-		Phalcon\Forms\Element\Text,
-		Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form,
+        Phalcon\Forms\Element\Text,
+        Phalcon\Forms\Element\Select;
 
-	class ContactsForm extends Form
-	{
-		public function initialize()
-		{
-			$this->add(new Text("name"));
+    class ContactsForm extends Form
+    {
+        public function initialize()
+        {
+            $this->add(new Text("name"));
 
-			$this->add(new Text("telephone"));
+            $this->add(new Text("telephone"));
 
-			$this->add(new Select("telephoneType", TelephoneTypes::find(), array(
-				'using' => array('id', 'name')
-			)));
-		}		
-	}
+            $this->add(new Select("telephoneType", TelephoneTypes::find(), array(
+                'using' => array('id', 'name')
+            )));
+        }
+    }
 
 Validation
 ----------
@@ -108,62 +108,62 @@ custom validators could be set to each element:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	use Phalcon\Forms\Element\Text,
-		Phalcon\Validation\Validator\PresenceOf,
-		Phalcon\Validation\Validator\StringLength;
+    use Phalcon\Forms\Element\Text,
+        Phalcon\Validation\Validator\PresenceOf,
+        Phalcon\Validation\Validator\StringLength;
 
-	$name = new Text("name");
+    $name = new Text("name");
 
-	$name->addValidator(new PresenceOf(array(
-		'message' => 'The name is required'
-	)));
+    $name->addValidator(new PresenceOf(array(
+        'message' => 'The name is required'
+    )));
 
-	$name->addValidator(new StringLength(array(
-		'min' => 10,
-		'messageMinimum' => 'The name is too short'
-	)));
+    $name->addValidator(new StringLength(array(
+        'min' => 10,
+        'messageMinimum' => 'The name is too short'
+    )));
 
-	$form->add($name);
+    $form->add($name);
 
 Then you can validate the form according to the input entered by the user:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	if (!$form->isValid($_POST)) {
-		foreach ($form->getMessages() as $message) {
-			echo $message, '<br>';
-		}
-	}
+    if (!$form->isValid($_POST)) {
+        foreach ($form->getMessages() as $message) {
+            echo $message, '<br>';
+        }
+    }
 
-Validators are executed in the same order as they were registered.	
+Validators are executed in the same order as they were registered.
 
 By default messages generated by all the elements in the form are joined so they can be traversed using a single foreach,
 you can change this behavior to get the messages separated by the field:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	foreach ($form->getMessages(false) as $attribute => $messages) {
-		echo 'Messages generated by ', $attribute, ':', "\n";
-		foreach ($messages as $message) {
-			echo $message, '<br>;
-		}
-	}
+    foreach ($form->getMessages(false) as $attribute => $messages) {
+        echo 'Messages generated by ', $attribute, ':', "\n";
+        foreach ($messages as $message) {
+            echo $message, '<br>';
+        }
+    }
 
 Or get specific messages for an element:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	foreach ($form->getMessagesFor('name') as $message) {
-		echo $message, '<br>;
-	}
+    foreach ($form->getMessagesFor('name') as $message) {
+        echo $message, '<br>';
+    }
 
 Forms + Entities
 ----------------
@@ -172,36 +172,36 @@ in the form's elements or assign the values from the form to the entity easily:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robot = Robots::findFirst();
+    $robot = Robots::findFirst();
 
-	$form = new Form($robot);
+    $form = new Form($robot);
 
-	$form->add(new Text("name"));
+    $form->add(new Text("name"));
 
-	$form->add(new Text("year"));
+    $form->add(new Text("year"));
 
 Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
 
 .. code-block:: html+php
-	
-	<?php echo $form->render('name') ?>
+
+    <?php echo $form->render('name') ?>
 
 You can validate the form and assign the values from the user input in the following way:
 
 .. code-block:: php
-	
-	<?php
 
-	$form->bind($_POST, $robot);
+    <?php
 
-	//Check if the form is valid
-	if ($form->isValid()) {
+    $form->bind($_POST, $robot);
 
-		//Save the entity
-		$robot->save();
-	}
+    //Check if the form is valid
+    if ($form->isValid()) {
+
+        //Save the entity
+        $robot->save();
+    }
 
 Form Elements
 -------------
@@ -226,72 +226,72 @@ Rendering Forms
 You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
 
 .. code-block:: html+php
-	
-	<?php
 
-	<form method="post">
-		<?php
-			//Traverse the form
-			foreach ($form as $element) {
+    <?php
 
-				//Get any generated messages for the current element
-				$messages = $form->getMessagesFor($element->getName());
+    <form method="post">
+        <?php
+            //Traverse the form
+            foreach ($form as $element) {
 
-				if (count($messages)) {
-					//Print each element
-					echo '<div class="messages">';
-					foreach ($messages as $message) {
-						echo $message;
-					}
-					echo '</div>';
-				}
+                //Get any generated messages for the current element
+                $messages = $form->getMessagesFor($element->getName());
 
-				echo '<p>';		
-				echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
-				echo $element;
-				echo '</p>';
-				
-			}
-		?>
-		<input type="submit" value="Send"/>
-	</form>
+                if (count($messages)) {
+                    //Print each element
+                    echo '<div class="messages">';
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                    echo '</div>';
+                }
+
+                echo '<p>';
+                echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+                echo $element;
+                echo '</p>';
+
+            }
+        ?>
+        <input type="submit" value="Send"/>
+    </form>
 
 Or reuse the logic in your form class:
 
 .. code-block:: php
-	
-	<?php
 
-	class ContactForm extends Phalcon\Forms\Form
-	{
-		public function initialize()
-		{
-			//...
-		}
+    <?php
 
-		public function renderDecorated($name)
-		{
-			$element = $this->get($name);
+    class ContactForm extends Phalcon\Forms\Form
+    {
+        public function initialize()
+        {
+            //...
+        }
 
-			//Get any generated messages for the current element
-			$messages = $this->getMessagesFor($element->getName());
+        public function renderDecorated($name)
+        {
+            $element = $this->get($name);
 
-			if (count($messages)) {
-				//Print each element
-				echo '<div class="messages">';
-				foreach ($messages as $message) {
-					echo $message;
-				}
-				echo '</div>';
-			}
+            //Get any generated messages for the current element
+            $messages = $this->getMessagesFor($element->getName());
 
-			echo '<p>';		
-			echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
-			echo $element;
-			echo '</p>';
-		}
+            if (count($messages)) {
+                //Print each element
+                echo '<div class="messages">';
+                foreach ($messages as $message) {
+                    echo $message;
+                }
+                echo '</div>';
+            }
 
-	}
+            echo '<p>';
+            echo '<label for="', $element->getName(), '">', $element->getLabel(), '</label>';
+            echo $element;
+            echo '</p>';
+        }
+
+    }
 
 Creating Form Elements
 ----------------------
@@ -299,13 +299,13 @@ In addition to the form elements provided by Phalcon you can create your own cus
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class MyElement extends Phalcon\Forms\Element
-	{
-		public function render($attributes=null)
-		{
-			$html = //... produce some html
-			return $html;
-		}
-	}
+    class MyElement extends \Phalcon\Forms\Element
+    {
+        public function render($attributes=null)
+        {
+            $html = //... produce some html
+            return $html;
+        }
+    }

@@ -16,6 +16,10 @@ body {
 	background-image: -moz-linear-gradient(center top , #333333, #222222);
 }
 
+#nav-main div.menubar {
+	text-align: right;
+}
+
 h2 {
 	font-family: "Open Sans",sans-serif;
 	font-style: normal;
@@ -25,11 +29,14 @@ h2 {
 	line-height: 24px;
 	font-weight: 500;
 	margin: 25px 0 0;
+	margin-bottom: 10px;
 }
 
 h3 {
-    font-weight: 600;
+	font-size: 18px;
+    font-style: normal;
     margin: 15px 0 10px;
+    font-weight: none;
 }
 
 /*p, li {
@@ -132,7 +139,7 @@ div.related li.right {
 }
 
 div.related li.right a {
-	background: none repeat scroll 0 0 #0088CC;
+	background: rgb(108, 166, 141);
 	padding: 10px;
 	border-radius: 5px;
 	color: #fff;
@@ -400,14 +407,14 @@ div#footer p {
 div.highlight, blockquote {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 	background-color: #F5F5F5;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px 4px 4px 4px;
+    /*border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px 4px 4px 4px;*/
     display: block;
     font-size: 13px;
     line-height: 17px;
-    margin: 0 0 11px;
+    /*margin: 0 0 11px;
     padding: 5px;
-    padding-left: 10px;
+    padding-left: 10px;*/
     word-wrap: break-word;
 }
 
@@ -489,3 +496,16 @@ div.highlight {
 pre {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }
+
+header .navbar { margin-bottom: 20px; }
+header .navbar-inner { border: none; border-bottom: 1px solid #000; border-radius: 0px; }
+header .navbar-inner { background: #1A1A1A; }
+header .navbar-inner .brand img { height: 30px; }
+header .navbar-inner .nav { margin-top: 5px; }
+header .navbar-inner .nav li { text-transform: uppercase; font-size: 12px; font-weight: bold; margin-right: 5px; }
+header .navbar-inner .nav li > a { color: #dadada; text-shadow: none; }
+header .navbar-inner .nav li > a:hover { color: #d3ebe3; }
+header .navbar-inner .nav li > a:active { position: relative; top: 2px; }
+header .navbar-inner .nav li.active {}
+header .navbar-inner .nav li.active > a { color: #dadada; background: none; box-shadow: none; }
+header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: none; color: #d3ebe3; }

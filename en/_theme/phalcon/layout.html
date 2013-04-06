@@ -124,16 +124,11 @@
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/configurationblock.css', 1) }}" type="text/css" />
-    <!--
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/layout.css', 1) }}" type="text/css" />
-    -->
-    <meta name="google-site-verification" content="SqkII4OGzq3HkpvVYsmOaSTZyN-hyURvRkbWWU4j3dc" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
-    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
-    <link rel="stylesheet" href="{{ pathto('_static/s.css', 1) }}" type="text/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css">
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
+
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -184,21 +179,27 @@
   <body>
     <div id="wrapper">
 
-      <div id="header">
-        <h1><a href="http://phalconphp.com/index" ><img border="0" src="{{ pathto('_static/img/logo-small.png', 1) }}"></a></h1>
-        <div align="center">
-          <div id="nav-main" role="navigation">
-            <div class="menubar">
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
-              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
-              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
-              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
-              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
-            </div>
+      <header>
+        <div class="navbar">
+          <div class="navbar-inner">
+              <div class="container-fluid">
+                  <a class="brand" href="http://phalconphp.com/index">
+                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo Small Sp">
+                  </a>
+                  <div class="nav-collapse collapse pull-right">
+                      <ul class="nav">
+                          <li><a href="http://phalconphp.com/index">HOME</a></li>
+                          <li><a href="http://phalconphp.com/download">Download</a></li>
+                          <li><a href="http://phalconphp.com/documentation">Documentation</a></li>
+                          <li><a href="http://phalconphp.com/support">Support</a></li>
+                          <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
+                          <li><a href="http://blog.phalconphp.com/">Blog</a></li>
+                      </ul>
+                  </div>
+              </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {%- block header %}{% endblock %}
 

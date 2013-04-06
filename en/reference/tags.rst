@@ -157,6 +157,8 @@ Same form generated in Volt:
         {{ submit_button("Search") }}
     </form>
 
+Phalcon also provides a :doc:`form builder <forms>` to create forms in an object-oriented manner.
+
 Helpers to Generate Form Elements
 ---------------------------------
 Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the getPost() and getQuery() methods on the request object ($this->request).

@@ -7,29 +7,29 @@ The following example shows its basic usage:
 
 .. code-block:: php
 
-	use Phalcon\Validation\Validator\PresenceOf,
-		Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf,
+        Phalcon\Validation\Validator\Email;
 
-	$validation = new Phalcon\Validation();
+    $validation = new Phalcon\Validation();
 
-	$validation->add('name', new PresenceOf(
-		'message' => 'The name is required'
-	));
+    $validation->add('name', new PresenceOf(
+        'message' => 'The name is required'
+    ));
 
-	$validation->add('email', new PresenceOf(
-		'message' => 'The e-mail is required'
-	));
+    $validation->add('email', new PresenceOf(
+        'message' => 'The e-mail is required'
+    ));
 
-	$validation->add('email', new Email(
-		'message' => 'The e-mail is not valid'
-	));
+    $validation->add('email', new Email(
+        'message' => 'The e-mail is not valid'
+    ));
 
-	$messages = $validation->validate($_POST);
-	if (count($messages)) {
-		foreach ($messages as $message) {
-			echo $message, '<br>';
-		}
-	}
+    $messages = $validation->validate($_POST);
+    if (count($messages)) {
+        foreach ($messages as $message) {
+            echo $message, '<br>';
+        }
+    }
 
 Validators
 ----------
@@ -55,40 +55,40 @@ Additional validators can be created by the developer. The following class expla
 
 .. code-block:: php
 
-	use Phalcon\Validation\Validator,
-		Phalcon\Validation\ValidatorInterface,
-		Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator,
+        Phalcon\Validation\ValidatorInterface,
+        Phalcon\Validation\Message;
 
-	class IpValidator extends Validator implements ValidatorInterface
-	{
+    class IpValidator extends Validator implements ValidatorInterface
+    {
 
-		/**
-		 * Executes the validation
-		 *
-		 * @param Phalcon\Validation $validator
-		 * @param string $attribute
-		 * @return boolean
-		 */
-		public function validate($validator, $attribute)
-		{
-			$value = $validator->getValue($attribute);
+        /**
+         * Executes the validation
+         *
+         * @param Phalcon\Validation $validator
+         * @param string $attribute
+         * @return boolean
+         */
+        public function validate($validator, $attribute)
+        {
+            $value = $validator->getValue($attribute);
 
-			if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))) {
+            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))) {
 
-				$message = $this->getOption('message');
-				if (!$message) {
-					$message = 'The IP is not valid';
-				}
+                $message = $this->getOption('message');
+                if (!$message) {
+                    $message = 'The IP is not valid';
+                }
 
-				$validator->appendMessage(new Message($message, $attribute, 'Ip'));
+                $validator->appendMessage(new Message($message, $attribute, 'Ip'));
 
-				return false;
-			}
+                return false;
+            }
 
-			return true;
-		}
+            return true;
+        }
 
-	}
+    }
 
 Validation Messages
 -------------------
@@ -125,7 +125,7 @@ The method getMessages() can be overriden in a validation class to replace/trans
         {
             $messages = array();
             foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {                    
+                switch ($message->getType()) {
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
                         break;
@@ -139,7 +139,7 @@ Or you can pass a parameter 'message' to change the default message in each vali
 
 .. code-block:: php
 
-	$validation->add('email', new Phalcon\Validation\Validator\Email(
-		'message' => 'The e-mail is not valid'
-	));
+    $validation->add('email', new Phalcon\Validation\Validator\Email(
+        'message' => 'The e-mail is not valid'
+    ));
 
