@@ -36,9 +36,9 @@ Check whether internal resource has rows to fetch
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*boolean* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
 
 
 

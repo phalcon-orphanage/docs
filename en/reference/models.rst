@@ -1062,7 +1062,7 @@ the mass assignment:
     <?php
 
     $robot = new Robots();
-    $robot->save($_POST, array('name', 'type'));    
+    $robot->save($_POST, array('name', 'type'));
 
 Create/Update with Confidence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1624,6 +1624,17 @@ The good news is that Phalcon do this for you automatically:
     $product->price = 10.5;
     $product->active = 'Y';
     $product->create();
+
+Boolean Statuses vs. Exceptions
+-------------------------------
+As seen before, the saving process (inserting/updating) returns a boolean value indicating if the process was successful
+or it failed.
+
+.. code-block:: php
+
+    <?php
+
+
 
 Skipping Columns
 ----------------
@@ -2831,7 +2842,7 @@ query executed:
 
     $robot = Robots::findFirst('id = 101');
 
-
+With this structure you can easily implement horizontal sharding in your applications.
 
 Logging Low-Level SQL Statements
 --------------------------------
@@ -3001,17 +3012,19 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+----------------------------------------------------------------------------------+
-| Option              | Description                                                                      |
-+=====================+==================================================================================+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models    |
-+---------------------+----------------------------------------------------------------------------------+
-| columnRenaming      | Enables/Disables the column renaming                                             |
-+---------------------+----------------------------------------------------------------------------------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  |
-+---------------------+----------------------------------------------------------------------------------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        |
-+---------------------+----------------------------------------------------------------------------------+
++-----------------------+------------------------------------------------------------------------------------------------+
+| Option                | Description                                                                                    |
++=======================+================================================================================================+
+| events                | Enables/Disables callbacks, hooks and event notifications from all the models                  |
++-----------------------+------------------------------------------------------------------------------------------------+
+| columnRenaming        | Enables/Disables the column renaming                                                           |
++-----------------------+------------------------------------------------------------------------------------------------+
+| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table                |
++-----------------------+------------------------------------------------------------------------------------------------+
+| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                      |
++-----------------------+------------------------------------------------------------------------------------------------+
+| exceptionOnFailedSave | Enables/Disables throws an exception when the saving process fails instead of return a boolean |
++-----------------------+------------------------------------------------------------------------------------------------+
 
 Stand-Alone component
 ---------------------
@@ -3031,7 +3044,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     //Set a models manager
     $di->set('modelsManager', new \Phalcon\Mvc\Model\Manager());
 
-    //Use the memory meta-data adapter or other
+    //Use the memory meta-data adapter or another
     $di->set('modelsMetadata', new \Phalcon\Mvc\Model\Metadata\Memory());
 
     class Robots extends Phalcon\Mvc\Model

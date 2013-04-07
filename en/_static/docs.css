@@ -106,8 +106,9 @@ div.documentwrapper h1 {
 	/*font: italic 36px Georgia,"Times New Roman",Times,serif;
 	letter-spacing: -3px;
 	text-rendering: optimizelegibility;*/
-	font: 400 30px/44px 'Open Sans','Lucida Sans Unicode','Lucida Grande',sans-serif;
+	font: 400 28px 'Open Sans','Lucida Sans Unicode','Lucida Grande',sans-serif;
 	margin: 0;
+	margin-bottom: 7px;
 }
 
 div.section {
@@ -375,8 +376,13 @@ div#constants em {
 p.method-desc {
 	margin-left: 25px;
 	font-size: 14px;
-	margin-bottom: 20px;
 	margin-top: 10px;
+	border-left: 2px solid #dadada;
+	padding-left: 5px;
+}
+
+p.method-signature {
+	margin-top: 15px;
 }
 
 div#methods span.modifier {
@@ -386,6 +392,28 @@ div#methods span.modifier {
 div#methods span.inherited {
 	color: #999999;
 	font-style: italic;
+}
+
+p.extends-class,
+p.implements-interface {
+	padding: 7px;
+	padding-left: 25px;
+	font-size: 13px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+p.extends-class {
+	background: url('img/class.png') #fafafa no-repeat;
+	background-position-y: 12px;
+	background-position-x: 7px;
+}
+
+p.implements-interface {
+	background: url('img/interface.png') #fafafa no-repeat;
+	background-position-y: 12px;
+	background-position-x: 7px;
+	margin-bottom: 20px;
 }
 
 em {
@@ -510,6 +538,10 @@ div.highlight {
 pre {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 	line-height: 17px;
+}
+
+div#methods div.highlight {
+	margin-left: 30px;
 }
 
 header .navbar { margin-bottom: 20px; }

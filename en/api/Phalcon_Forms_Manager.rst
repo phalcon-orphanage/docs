@@ -7,14 +7,27 @@ Manages forms whithin the application. Allowing the developer to access them fro
 Methods
 ---------
 
-public  **create** ([*unknown* $name], [*unknown* $entity])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **create** ([*string* $name], [*object* $entity])
 
-...
+Creates a form registering it in the forms manager
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **get** ()
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **get** (*string* $name)
 
 Returns a form by its name
+
+
+
+public *boolean*  **has** (*string* $name)
+
+Checks if a form is registered in the forms manager
+
+
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **set** (*string* $name, *unknown* $form)
+
+Registers a form in the Forms Manager
 
 
 

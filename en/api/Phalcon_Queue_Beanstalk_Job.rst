@@ -1,15 +1,27 @@
 Class **Phalcon\\Queue\\Beanstalk\\Job**
 ========================================
 
-Phalcon\\Queue\\Beanstalk\\Job initializer
+Represents a job in a beanstalk queue
 
 
 Methods
 ---------
 
-public  **__construct** (*unknown* $queue, *unknown* $id, *unknown* $body)
+public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *string* $id, *string* $body)
 
-Phalcon\\Queue\\Beanstalk\\Job constructor
+
+
+
+
+public *string*  **getId** ()
+
+Returns the job id
+
+
+
+public *string*  **getBody** ()
+
+Returns the job body
 
 
 
