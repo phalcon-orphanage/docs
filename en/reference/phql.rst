@@ -702,6 +702,18 @@ More examples of the builder:
     $builder->from('Robots')
             ->limit(10, 5)
 
+    // 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100
+    $builder->from('Robots')
+            ->betweenWhere('id', 1, 100);
+
+    // 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)
+    $builder->from('Robots')
+            ->inWhere('id', array(1, 2, 3));
+
+    // 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)
+    $builder->from('Robots')
+            ->notInWhere('id', array(1, 2, 3));
+
 Escaping Reserved Words
 -----------------------
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
