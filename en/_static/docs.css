@@ -36,7 +36,13 @@ h3 {
 	font-size: 18px;
     font-style: normal;
     margin: 15px 0 10px;
-    font-weight: none;
+    font-weight: normal;
+}
+
+h4 {
+	font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
 }
 
 /*p, li {
@@ -396,12 +402,20 @@ div#footer {
 	padding: 50px 10px;
 	background: none repeat scroll 0 0 #006DA5;
 	font-size: 12px;
+	text-align: center;
+	color: #fafafa;
 }
 
 div#footer p {
 	display: block;
 	margin: 0px;
 	font-size: 12px;
+	color: #fafafa;
+}
+
+div#footer a {
+	color: #fafafa;
+	text-decoration: underline;
 }
 
 div.highlight, blockquote {
@@ -495,6 +509,7 @@ div.highlight {
 
 pre {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+	line-height: 17px;
 }
 
 header .navbar { margin-bottom: 20px; }

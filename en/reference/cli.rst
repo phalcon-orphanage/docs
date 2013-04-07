@@ -9,29 +9,29 @@ Tasks are similar to controllers, on them can be implemented
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class MonitoringTask extends \Phalcon\CLI\Task
-	{
+    class MonitoringTask extends \Phalcon\CLI\Task
+    {
 
-	    public function mainAction()
-	    {
+        public function mainAction()
+        {
 
-	    }
+        }
 
-	}
+    }
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	//Using the CLI factory default services container
-	$di = new Phalcon\DI\FactoryDefault\CLI();
+    //Using the CLI factory default services container
+    $di = new Phalcon\DI\FactoryDefault\CLI();
 
-	//Create a console application
-	$console = new \Phalcon\CLI\Console();
-	$console->setDI($di);
+    //Create a console application
+    $console = new \Phalcon\CLI\Console();
+    $console->setDI($di);
 
-	//
-	$console->handle(array('shell_script_name', 'echo'));
+    //
+    $console->handle(array('shell_script_name', 'echo'));
 

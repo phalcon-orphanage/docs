@@ -21,32 +21,32 @@ file must contain a single class; its class name should be in camel case notatio
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-	}
+    }
 
 .. highlights::
 
-	If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
-	memory and reduce the memory allocation.
+    If you're using PHP 5.4 is recommended declare each column that makes part of the model in order to save
+    memory and reduce the memory allocation.
 
 By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
 you can use the getSource() method:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
-		public function getSource()
-		{
-			return "the_robots";
-		}
-	}
+    class Robots extends \Phalcon\Mvc\Collection
+    {
+        public function getSource()
+        {
+            return "the_robots";
+        }
+    }
 
 Understanding Documents To Objects
 ----------------------------------
@@ -55,16 +55,16 @@ for a collection "robots" with the documents:
 
 .. code-block:: bash
 
-	$ mongo test
-	MongoDB shell version: 1.8.2
-	connecting to: test
-	> db.robots.find()
-	{ "_id" : ObjectId("508735512d42b8c3d15ec4e1"), "name" : "Astro Boy", "year" : 1952,
-		"type" : "mechanical" }
-	{ "_id" : ObjectId("5087358f2d42b8c3d15ec4e2"), "name" : "Bender", "year" : 1999,
-		"type" : "mechanical" }
-	{ "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
-	>
+    $ mongo test
+    MongoDB shell version: 1.8.2
+    connecting to: test
+    > db.robots.find()
+    { "_id" : ObjectId("508735512d42b8c3d15ec4e1"), "name" : "Astro Boy", "year" : 1952,
+        "type" : "mechanical" }
+    { "_id" : ObjectId("5087358f2d42b8c3d15ec4e2"), "name" : "Bender", "year" : 1999,
+        "type" : "mechanical" }
+    { "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
+    >
 
 Models in Namespaces
 --------------------
@@ -72,43 +72,43 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	namespace Store\Toys;
+    namespace Store\Toys;
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function getSource()
-		{
-			return "robots";
-		}
+        public function getSource()
+        {
+            return "robots";
+        }
 
-	}
+    }
 
 You could find a certain document by its id and then print its name:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// Find record with _id = "5087358f2d42b8c3d15ec4e2"
-	$robot = Robots::findById("5087358f2d42b8c3d15ec4e2");
+    // Find record with _id = "5087358f2d42b8c3d15ec4e2"
+    $robot = Robots::findById("5087358f2d42b8c3d15ec4e2");
 
-	// Prints "Bender"
-	echo $robot->name;
+    // Prints "Bender"
+    echo $robot->name;
 
 Once the record is in memory, you can make modifications to its data and then save changes:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robot = Robots::findFirst(array(
-		array('name' => 'Astroy Boy')
-	));
-	$robot->name = "Voltron";
-	$robot->save();
+    $robot = Robots::findFirst(array(
+        array('name' => 'Astroy Boy')
+    ));
+    $robot->name = "Voltron";
+    $robot->save();
 
 Setting a Connection
 --------------------
@@ -116,19 +116,19 @@ Connections are retrieved from the services container. By default, Phalcon tries
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// Simple database connection to localhost
-	$di->set('mongo', function() {
-		$mongo = new Mongo();
-		return $mongo->selectDb("store");
-	}, true);
+    // Simple database connection to localhost
+    $di->set('mongo', function() {
+        $mongo = new Mongo();
+        return $mongo->selectDb("store");
+    }, true);
 
-	// Connecting to a domain socket, falling back to localhost connection
-	$di->set('mongo', function() {
-		$mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-		return $mongo->selectDb("store");
-	}, true);
+    // Connecting to a domain socket, falling back to localhost connection
+    $di->set('mongo', function() {
+        $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
+        return $mongo->selectDb("store");
+    }, true);
 
 Finding Documents
 -----------------
@@ -137,72 +137,72 @@ to query documents and convert them transparently to model instances:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// How many robots are there?
-	$robots = Robots::find();
-	echo "There are ", count($robots), "\n";
+    // How many robots are there?
+    $robots = Robots::find();
+    echo "There are ", count($robots), "\n";
 
-	// How many mechanical robots are there?
-	$robots = Robots::find(array(
-		array("type" => "mechanical")
-	));
-	echo "There are ", count($robots), "\n";
+    // How many mechanical robots are there?
+    $robots = Robots::find(array(
+        array("type" => "mechanical")
+    ));
+    echo "There are ", count($robots), "\n";
 
-	// Get and print mechanical robots ordered by name upward
-	$robots = Robots::find(array(
-		array("type" => "mechanical"),
-		"sort" => array("name" => 1)
-	));
+    // Get and print mechanical robots ordered by name upward
+    $robots = Robots::find(array(
+        array("type" => "mechanical"),
+        "sort" => array("name" => 1)
+    ));
 
-	foreach ($robots as $robot) {
-		echo $robot->name, "\n";
-	}
+    foreach ($robots as $robot) {
+        echo $robot->name, "\n";
+    }
 
-	// Get first 100 mechanical robots ordered by name
-	$robots = Robots::find(array(
-		array("type" => "mechanical"),
-		"sort" => array("name" => 1),
-		"limit" => 100
-	));
+    // Get first 100 mechanical robots ordered by name
+    $robots = Robots::find(array(
+        array("type" => "mechanical"),
+        "sort" => array("name" => 1),
+        "limit" => 100
+    ));
 
-	foreach ($robots as $robot) {
-	   echo $robot->name, "\n";
-	}
+    foreach ($robots as $robot) {
+       echo $robot->name, "\n";
+    }
 
 You could also use the findFirst() method to get only the first record matching the given criteria:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// What's the first robot in robots collection?
-	$robot = Robots::findFirst();
-	echo "The robot name is ", $robot->name, "\n";
+    // What's the first robot in robots collection?
+    $robot = Robots::findFirst();
+    echo "The robot name is ", $robot->name, "\n";
 
-	// What's the first mechanical robot in robots collection?
-	$robot = Robots::findFirst(array(
-		array("type" => "mechanical")
-	));
-	echo "The first mechanical robot name is ", $robot->name, "\n";
+    // What's the first mechanical robot in robots collection?
+    $robot = Robots::findFirst(array(
+        array("type" => "mechanical")
+    ));
+    echo "The first mechanical robot name is ", $robot->name, "\n";
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// First robot where type = "mechanical" and year = "1999"
-	$robot = Robots::findFirst(array(
-		"type" => "mechanical",
-		"year" => "1999"
-	));
+    // First robot where type = "mechanical" and year = "1999"
+    $robot = Robots::findFirst(array(
+        "type" => "mechanical",
+        "year" => "1999"
+    ));
 
-	// All virtual robots ordered by name downward
-	$robots = Robots::find(array(
-		"conditions" => array("type" => "virtual"),
-		"sort"       => array("name" => -1)
-	));
+    // All virtual robots ordered by name downward
+    $robots = Robots::find(array(
+        "conditions" => array("type" => "virtual"),
+        "sort"       => array("name" => -1)
+    ));
 
 The available query options are:
 
@@ -236,29 +236,29 @@ Also the method executes associated validators and events that are defined in th
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robot       = new Robots();
-	$robot->type = "mechanical";
-	$robot->name = "Astro Boy";
-	$robot->year = 1952;
-	if ($robot->save() == false) {
-		echo "Umh, We can't store robots right now: \n";
-		foreach ($robot->getMessages() as $message) {
-			echo $message, "\n";
-		}
-	} else {
-		echo "Great, a new robot was saved successfully!";
-	}
+    $robot       = new Robots();
+    $robot->type = "mechanical";
+    $robot->name = "Astro Boy";
+    $robot->year = 1952;
+    if ($robot->save() == false) {
+        echo "Umh, We can't store robots right now: \n";
+        foreach ($robot->getMessages() as $message) {
+            echo $message, "\n";
+        }
+    } else {
+        echo "Great, a new robot was saved successfully!";
+    }
 
 The "_id" property is automatically updated with the MongoId_ object created by the driver:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robot->save();
-	echo "The generated id is: ", $robot->getId();
+    $robot->save();
+    echo "The generated id is: ", $robot->getId();
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -271,15 +271,15 @@ generated the message or the message type:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	if ($robot->save() == false) {
-		foreach ($robot->getMessages() as $message) {
-			echo "Message: ", $message->getMessage();
-			echo "Field: ", $message->getField();
-			echo "Type: ", $message->getType();
-		}
-	}
+    if ($robot->save() == false) {
+        foreach ($robot->getMessages() as $message) {
+            echo "Message: ", $message->getMessage();
+            echo "Field: ", $message->getField();
+            echo "Type: ", $message->getType();
+        }
+    }
 
 Validation Events and Events Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -320,98 +320,98 @@ To make a model to react to an event, we must to implement a method with the sam
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function beforeValidationOnCreate()
-		{
-			echo "This is executed before creating a Robot!";
-		}
+        public function beforeValidationOnCreate()
+        {
+            echo "This is executed before creating a Robot!";
+        }
 
-	}
+    }
 
 Events can be useful to assign values before performing an operation, for example:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Products extends \Phalcon\Mvc\Collection
-	{
+    class Products extends \Phalcon\Mvc\Collection
+    {
 
-		public function beforeCreate()
-		{
-			// Set the creation date
-			$this->created_at = date('Y-m-d H:i:s');
-		}
+        public function beforeCreate()
+        {
+            // Set the creation date
+            $this->created_at = date('Y-m-d H:i:s');
+        }
 
-		public function beforeUpdate()
-		{
-			// Set the modification date
-			$this->modified_in = date('Y-m-d H:i:s');
-		}
+        public function beforeUpdate()
+        {
+            // Set the modification date
+            $this->modified_in = date('Y-m-d H:i:s');
+        }
 
-	}
+    }
 
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <events>`, this means we can create
 listeners that run when an event is triggered.
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new Phalcon\Events\Manager();
 
-	//Attach an anonymous function as a listener for "model" events
-	$eventsManager->attach('collection', function($event, $robot) {
-		if ($event->getType() == 'beforeSave') {
-			if ($robot->name == 'Scooby Doo') {
-				echo "Scooby Doo isn't a robot!";
-				return false;
-			}
-		}
-		return true;
-	});
+    //Attach an anonymous function as a listener for "model" events
+    $eventsManager->attach('collection', function($event, $robot) {
+        if ($event->getType() == 'beforeSave') {
+            if ($robot->name == 'Scooby Doo') {
+                echo "Scooby Doo isn't a robot!";
+                return false;
+            }
+        }
+        return true;
+    });
 
-	$robot = new Robots();
-	$robot->setEventsManager($eventsManager);
-	$robot->name = 'Scooby Doo';
-	$robot->year = 1969;
-	$robot->save();
+    $robot = new Robots();
+    $robot->setEventsManager($eventsManager);
+    $robot->name = 'Scooby Doo';
+    $robot->year = 1969;
+    $robot->save();
 
 In the example given above the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all
 objects created in our application use the same EventsManager, then we need to assign this to the Models Manager:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	//Registering the collectionManager service
-	$di->set('collectionManager', function() {
+    //Registering the collectionManager service
+    $di->set('collectionManager', function() {
 
-		$eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new Phalcon\Events\Manager();
 
-		// Attach an anonymous function as a listener for "model" events
-		$eventsManager->attach('collection', function($event, $model) {
-			if (get_class($model) == 'Robots') {
-				if ($event->getType() == 'beforeSave') {
-					if ($model->name == 'Scooby Doo') {
-						echo "Scooby Doo isn't a robot!";
-						return false;
-					}
-				}
-			}
-			return true;
-		});
+        // Attach an anonymous function as a listener for "model" events
+        $eventsManager->attach('collection', function($event, $model) {
+            if (get_class($model) == 'Robots') {
+                if ($event->getType() == 'beforeSave') {
+                    if ($model->name == 'Scooby Doo') {
+                        echo "Scooby Doo isn't a robot!";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        });
 
-		// Setting a default EventsManager
-		$modelsManager = new Phalcon\Mvc\Collection\Manager();
-		$modelsManager->setEventsManager($eventsManager);
-		return $modelsManager;
+        // Setting a default EventsManager
+        $modelsManager = new Phalcon\Mvc\Collection\Manager();
+        $modelsManager->setEventsManager($eventsManager);
+        return $modelsManager;
 
-	}, true);
+    }, true);
 
 Implementing a Business Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -423,20 +423,20 @@ The following example implements an event that validates the year cannot be smal
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function beforeSave()
-		{
-			if ($this->year < 0) {
-				echo "Year cannot be smaller than zero!";
-				return false;
-			}
-		}
+        public function beforeSave()
+        {
+            if ($this->year < 0) {
+                echo "Year cannot be smaller than zero!";
+                return false;
+            }
+        }
 
-	}
+    }
 
 Some events return false as an indication to stop the current operation. If an event doesn't return anything,
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` will assume a true value.
@@ -450,35 +450,35 @@ The following example shows how to use it:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	use Phalcon\Mvc\Model\Validator\InclusionIn;
-	use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function validation()
-		{
+        public function validation()
+        {
 
-			$this->validate(new InclusionIn(
-				array(
-					"field"  => "type",
-					"domain" => array("Mechanical", "Virtual")
-				)
-			));
+            $this->validate(new InclusionIn(
+                array(
+                    "field"  => "type",
+                    "domain" => array("Mechanical", "Virtual")
+                )
+            ));
 
-			$this->validate(new Uniqueness(
-				array(
-					"field"   => "name",
-					"message" => "The robot name must be unique"
-				)
-			));
+            $this->validate(new Uniqueness(
+                array(
+                    "field"   => "name",
+                    "message" => "The robot name must be unique"
+                )
+            ));
 
-			return $this->validationHasFailed() != true;
-		}
+            return $this->validationHasFailed() != true;
+        }
 
-	}
+    }
 
 The example given above performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method, then the validator will fail and return false. The following built-in validators are available:
@@ -503,71 +503,71 @@ In addition to the built-in validatiors, you can create your own validators:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class UrlValidator extends \Phalcon\Mvc\Collection\Validator
-	{
+    class UrlValidator extends \Phalcon\Mvc\Collection\Validator
+    {
 
-		public function validate($model)
-		{
-			$field = $this->getOption('field');
+        public function validate($model)
+        {
+            $field = $this->getOption('field');
 
-			$value    = $model->$field;
-			$filtered = filter_var($value, FILTER_VALIDATE_URL);
-			if (!$filtered) {
-				$this->appendMessage("The URL is invalid", $field, "UrlValidator");
-				return false;
-			}
-			return true;
-		}
+            $value    = $model->$field;
+            $filtered = filter_var($value, FILTER_VALIDATE_URL);
+            if (!$filtered) {
+                $this->appendMessage("The URL is invalid", $field, "UrlValidator");
+                return false;
+            }
+            return true;
+        }
 
-	}
+    }
 
 Adding the validator to a model:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Customers extends \Phalcon\Mvc\Collection
-	{
+    class Customers extends \Phalcon\Mvc\Collection
+    {
 
-		public function validation()
-		{
-			$this->validate(new UrlValidator(array(
-				"field"  => "url",
-			)));
-			if ($this->validationHasFailed() == true) {
-				return false;
-			}
-		}
+        public function validation()
+        {
+            $this->validate(new UrlValidator(array(
+                "field"  => "url",
+            )));
+            if ($this->validationHasFailed() == true) {
+                return false;
+            }
+        }
 
-	}
+    }
 
 The idea of creating validators is make them reusable across several models. A validator can also be as simple as:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function validation()
-		{
-			if ($this->type == "Old") {
-				$message = new Phalcon\Mvc\Model\Message(
-					"Sorry, old robots are not allowed anymore",
-					"type",
-					"MyType"
-				);
-				$this->appendMessage($message);
-				return false;
-			}
-			return true;
-		}
+        public function validation()
+        {
+            if ($this->type == "Old") {
+                $message = new Phalcon\Mvc\Model\Message(
+                    "Sorry, old robots are not allowed anymore",
+                    "type",
+                    "MyType"
+                );
+                $this->appendMessage($message);
+                return false;
+            }
+            return true;
+        }
 
-	}
+    }
 
 Deleting Records
 ----------------
@@ -575,39 +575,39 @@ The method Phalcon\\Mvc\\Collection::delete() allows to delete a document. You c
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robot = Robots::findFirst();
-	if ($robot != false) {
-		if ($robot->delete() == false) {
-			echo "Sorry, we can't delete the robot right now: \n";
-			foreach ($robot->getMessages() as $message) {
-				echo $message, "\n";
-			}
-		} else {
-			echo "The robot was deleted successfully!";
-		}
-	}
+    $robot = Robots::findFirst();
+    if ($robot != false) {
+        if ($robot->delete() == false) {
+            echo "Sorry, we can't delete the robot right now: \n";
+            foreach ($robot->getMessages() as $message) {
+                echo $message, "\n";
+            }
+        } else {
+            echo "The robot was deleted successfully!";
+        }
+    }
 
 You can also delete many documents by traversing a resultset with a foreach:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$robots = Robots::find(array(
-		array("type" => "mechanical")
-	));
-	foreach ($robots as $robot) {
-		if ($robot->delete() == false) {
-			echo "Sorry, we can't delete the robot right now: \n";
-			foreach ($robot->getMessages() as $message) {
-				echo $message, "\n";
-			}
-		} else {
-			echo "The robot was deleted successfully!";
-		}
-	}
+    $robots = Robots::find(array(
+        array("type" => "mechanical")
+    ));
+    foreach ($robots as $robot) {
+        if ($robot->delete() == false) {
+            echo "Sorry, we can't delete the robot right now: \n";
+            foreach ($robot->getMessages() as $message) {
+                echo $message, "\n";
+            }
+        } else {
+            echo "The robot was deleted successfully!";
+        }
+    }
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
@@ -638,15 +638,15 @@ If a model uses custom primary keys this behavior can be overriden:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends Phalcon\Mvc\Collection
-	{
-		public function initialize()
-		{
-			$this->useImplicitObjectIds(false);
-		}
-	}
+    class Robots extends Phalcon\Mvc\Collection
+    {
+        public function initialize()
+        {
+            $this->useImplicitObjectIds(false);
+        }
+    }
 
 Setting multiple databases
 --------------------------
@@ -656,34 +656,34 @@ in the application's services container. You can overwrite this service setting 
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	// This service returns a mongo database at 192.168.1.100
-	$di->set('mongo1', function() {
-		$mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
-		return $mongo->selectDb("management");
-	}, true);
+    // This service returns a mongo database at 192.168.1.100
+    $di->set('mongo1', function() {
+        $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
+        return $mongo->selectDb("management");
+    }, true);
 
-	// This service returns a mongo database at localhost
-	$di->set('mongo2', function() {
-		$mongo = new Mongo("mongodb://localhost");
-		return $mongo->selectDb("invoicing");
-	}, true);
+    // This service returns a mongo database at localhost
+    $di->set('mongo2', function() {
+        $mongo = new Mongo("mongodb://localhost");
+        return $mongo->selectDb("invoicing");
+    }, true);
 
 Then, in the Initialize method, we define the connection service for the model:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
-		public function initialize()
-		{
-			$this->setConnectionService('mongo1');
-		}
+    class Robots extends \Phalcon\Mvc\Collection
+    {
+        public function initialize()
+        {
+            $this->setConnectionService('mongo1');
+        }
 
-	}
+    }
 
 Injecting services into Models
 ------------------------------
@@ -691,23 +691,23 @@ You may be required to access the application services within a model, the follo
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class Robots extends \Phalcon\Mvc\Collection
-	{
+    class Robots extends \Phalcon\Mvc\Collection
+    {
 
-		public function notSave()
-		{
-			// Obtain the flash service from the DI container
-			$flash = $this->getDI()->getShared('flash');
+        public function notSave()
+        {
+            // Obtain the flash service from the DI container
+            $flash = $this->getDI()->getShared('flash');
 
-			// Show validation messages
-			foreach ($this->getMesages() as $message){
-				$flash->error((string) $message);
-			}
-		}
+            // Show validation messages
+            foreach ($this->getMesages() as $message){
+                $flash->error((string) $message);
+            }
+        }
 
-	}
+    }
 
 The "notSave" event is triggered whenever a "creating" or "updating" action fails. We're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each saving.
