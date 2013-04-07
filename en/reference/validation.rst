@@ -12,17 +12,17 @@ The following example shows its basic usage:
 
     $validation = new Phalcon\Validation();
 
-    $validation->add('name', new PresenceOf(
+    $validation->add('name', new PresenceOf(array(
         'message' => 'The name is required'
-    ));
+    )));
 
-    $validation->add('email', new PresenceOf(
+    $validation->add('email', new PresenceOf(array(
         'message' => 'The e-mail is required'
-    ));
+    )));
 
-    $validation->add('email', new Email(
+    $validation->add('email', new Email(array(
         'message' => 'The e-mail is not valid'
-    ));
+    )));
 
     $messages = $validation->validate($_POST);
     if (count($messages)) {
@@ -30,6 +30,8 @@ The following example shows its basic usage:
             echo $message, '<br>';
         }
     }
+
+The loose-coupled design of this component allows you to create your own validators together with the ones provided by the framework.
 
 Validators
 ----------
@@ -40,6 +42,8 @@ Phalcon exposes a set of built-in validators for this component:
 +==============+==================================================================================================================================================================+===================================================================+
 | PresenceOf   | Validates that a field's value isn't null or empty string.                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
@@ -49,6 +53,8 @@ Phalcon exposes a set of built-in validators for this component:
 | Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 Additional validators can be created by the developer. The following class explains how to create a validator for this component:
@@ -139,7 +145,36 @@ Or you can pass a parameter 'message' to change the default message in each vali
 
 .. code-block:: php
 
-    $validation->add('email', new Phalcon\Validation\Validator\Email(
-        'message' => 'The e-mail is not valid'
-    ));
+    use Phalcon\Validation\Validator\Email;
 
+    $validation->add('email', new Email(array(
+        'message' => 'The e-mail is not valid'
+    )));
+
+Validation Canceling
+--------------------
+By default, all validators assigned to a field are validated regardless if one of them fail or not. You can change this behavior
+by telling the validation component which validator must stop the validation:
+
+.. code-block:: php
+
+    use Phalcon\Validation\Validator\PresenceOf,
+        Phalcon\Validation\Validator\Regex;
+
+    $validation = new Phalcon\Validation();
+
+    $validation
+        ->add('telephone', new PresenceOf(array(
+            'message' => 'The telephone is required',
+            'cancelOnFail' => true
+        )))
+        ->add('telephone', new Regex(array(
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/'
+        )))
+        ->add('telephone', new StringLength(array(
+            'minimumMessage' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/'
+        )));
+
+The first validator has the option 'cancelOnFail' => true, therefore if that validator fails the next validator in the chain is not executed.
