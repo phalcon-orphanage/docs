@@ -279,7 +279,7 @@ foreach(get_declared_classes() as $className){
 	$classes[] = $className;
 }
 
-foreach(get_declared_interfaces() as $className){
+foreach (get_declared_interfaces() as $className) {
 	if (!preg_match('#^Phalcon#', $className)) {
 		continue;
 	}
