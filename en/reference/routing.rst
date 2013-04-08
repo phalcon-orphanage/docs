@@ -610,7 +610,7 @@ those paths they can be automatically filled by the router:
 
     <?php
 
-    //Individually
+    //Setting a specific default
     $router->setDefaultModule("backend");
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController("index");
@@ -650,9 +650,54 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
+Match Callbacks
+---------------
+Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
+'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session'
+    ))->beforeMatch(function($uri, $route) {
+        //Check if the request was made with Ajax
+        if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
+            return false;
+        }
+        return true;
+    });
+
+You can re-use these extra conditions in classes:
+
+.. code-block:: php
+
+    <?php
+
+    class AjaxFilter
+    {
+        public function check()
+        {
+            return $_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest';
+        }
+    }
+
+And use this class instead of the anonymous function:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session'
+    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+
 URI Sources
 -----------
-By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to 
+By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
 Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
 .. code-block:: php
