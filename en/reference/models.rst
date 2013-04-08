@@ -411,6 +411,23 @@ Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
 
+Magic Finders
+-------------
+Phalcon\Mvc\Model provides magic finders to find rows simplifing the coding:
+
+.. code-block:: php
+
+    <?php
+
+    // findFirst("id = 1");
+    $robot = Robots::findFirstById(1);
+
+    // find("type = 'virtual'")
+    $robots = Robots::findByType('virtual');
+
+    // count("type = 'virtual'")
+    $robots = Robots::countByType('virtual');
+
 Relationships between Models
 ----------------------------
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be

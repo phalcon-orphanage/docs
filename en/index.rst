@@ -31,6 +31,7 @@ Table of Contents
    reference/odm
    reference/views
    reference/tags
+   reference/assets
    reference/volt
    reference/applications
    reference/routing
