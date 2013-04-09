@@ -428,7 +428,7 @@ p.versionchanged, blockquote.highlights {
 
 div#footer {
 	padding: 50px 10px;
-	background: none repeat scroll 0 0 #006DA5;
+	background: #222222;
 	font-size: 12px;
 	text-align: center;
 	color: #fafafa;
@@ -438,11 +438,11 @@ div#footer p {
 	display: block;
 	margin: 0px;
 	font-size: 12px;
-	color: #fafafa;
+	color: #dadada;
 }
 
 div#footer a {
-	color: #fafafa;
+	color: #dadada;
 	text-decoration: underline;
 }
 

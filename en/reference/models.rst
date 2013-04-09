@@ -1384,19 +1384,22 @@ If we want all objects created in our application use the same EventsManager, th
 
     <?php
 
-    //Registering the modelsManager service
-    $di->setShared('modelsManager', function() {
+    use Phalcon\Events\Manager as EventsManager,
+        Phalcon\Mvc\Models\Manager as ModelsManager;
 
-        $eventsManager = new \Phalcon\Events\Manager();
+    //Registering the modelsManager service
+    $di->set('modelsManager', function() {
+
+        $eventsManager = new EventsManager();
 
         //Attach an anonymous function as a listener for "model" events
-        $eventsManager->attach('model', function($event, $model){
+        $eventsManager->attach('model', function($event, $model) {
 
             //Catch events produced by the Robots model
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
-                    if ($modle->name == 'Scooby Doo') {
+                    if ($model->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
@@ -1407,10 +1410,11 @@ If we want all objects created in our application use the same EventsManager, th
         });
 
         //Setting a default EventsManager
-        $modelsManager = new Phalcon\Mvc\Models\Manager();
+        $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
-    });
+
+    }, true);
 
 If a listener returns false that will stop the operation that is executing currently.
 
@@ -1901,9 +1905,10 @@ This behavior can be used in the following way:
 
     <?php
 
-    use Phalcon\Mvc\Model\Behavior\SoftDelete;
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Model
     {
 
         const DELETED = 'D';
@@ -2106,7 +2111,9 @@ is successfully or not:
 
     <?php
 
-    class RobotsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class RobotsController extends Controllers
     {
         public function saveAction()
         {
@@ -2284,7 +2291,7 @@ While a transaction is active, the transaction manager always return the same tr
 Boolean Statuses vs. Exceptions
 -------------------------------
 As seen before, the saving process (inserting/updating) returns a boolean value indicating if the process was successful
-or it failed. This design allows you to
+or it failed. This design gives you more control and flexibility when a model cannot be saved:
 
 .. code-block:: php
 
