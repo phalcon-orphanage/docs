@@ -7,6 +7,8 @@ The following example shows its basic usage:
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Validation\Validator\PresenceOf,
         Phalcon\Validation\Validator\Email;
 
@@ -60,6 +62,8 @@ Phalcon exposes a set of built-in validators for this component:
 Additional validators can be created by the developer. The following class explains how to create a validator for this component:
 
 .. code-block:: php
+
+    <?php
 
     use Phalcon\Validation\Validator,
         Phalcon\Validation\ValidatorInterface,
@@ -145,6 +149,8 @@ Or you can pass a parameter 'message' to change the default message in each vali
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Validation\Validator\Email;
 
     $validation->add('email', new Email(array(
@@ -157,6 +163,8 @@ By default, all validators assigned to a field are validated regardless if one o
 by telling the validation component which validator must stop the validation:
 
 .. code-block:: php
+
+    <?php
 
     use Phalcon\Validation\Validator\PresenceOf,
         Phalcon\Validation\Validator\Regex;
