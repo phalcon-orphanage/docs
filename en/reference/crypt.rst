@@ -94,6 +94,51 @@ In order that encryption is properly transmited (emails) or displayed (browsers)
 
     echo $encryption->decryptBase64($text, $key);
 
+Setting up an Encryption service
+--------------------------------
+You can set up the encryption component in the services container in order to use it from any part of the application:
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('encryption', function() {
+
+        $encryption = new Phalcon\Crypt();
+
+        //Set a global encryption key
+        $encription->setKey('311e86effdada283219971cca5ad5a19');
+
+        return $encription;
+    }, true);
+
+Then, for example, in a controller you can use it as follows:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class SecretsController extends Controller
+    {
+
+        public function saveAction()
+        {
+            $secret = new Secrets();
+
+            $text = $this->request->getPost('text');
+
+            $secret->content = $this->encryption->encrypt($text);
+
+            if ($secret->save()) {
+                $this->flash->success('Secret was successfully created!');
+            }
+
+        }
+
+    }
+
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
 .. _here: http://www.php.net/manual/en/mcrypt.ciphers.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

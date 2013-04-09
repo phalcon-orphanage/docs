@@ -20,7 +20,9 @@ This component gives you the ability to use this algorithm in a simple way:
 
     <?php
 
-    class UsersController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function registerAction()
@@ -48,7 +50,9 @@ its encryption will be slow. We can check if the password is correct as follows:
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
 
         public function loginAction()
@@ -100,7 +104,9 @@ Then in the controller's action you can check if the CSRF token is valid:
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
 
         public function loginAction()

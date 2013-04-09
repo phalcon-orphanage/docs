@@ -1642,17 +1642,6 @@ The good news is that Phalcon do this for you automatically:
     $product->active = 'Y';
     $product->create();
 
-Boolean Statuses vs. Exceptions
--------------------------------
-As seen before, the saving process (inserting/updating) returns a boolean value indicating if the process was successful
-or it failed.
-
-.. code-block:: php
-
-    <?php
-
-
-
 Skipping Columns
 ----------------
 To tell Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
@@ -1711,7 +1700,7 @@ A callback also can be used to create a conditional assigment of automatic defau
 .. highlights::
 
     Never use a \\Phalcon\\Db\\RawValue to assign external data (such as user input)
-    or variable data. The value of these fields is ignored when binding parameters to the query.
+    or variable data. The values of these fields are ignored when binding parameters to the query.
     So it could be used to attack the application injecting SQL.
 
 Dynamic Update
@@ -2153,15 +2142,20 @@ implicitly creates a transaction to ensure that data are correctly stored:
 
     <?php
 
+    //Create the parts
     $robotPart = new RobotParts();
     $robotPart->type = "head";
 
+    //Create the robot
     $robot = new Robots();
     $robot->name = "WALL·E";
     $robot->created_at = date("Y-m-d");
+
+    //Assign the $robotPart instance to a virtual property named as the relation
     $robot->robotPart = $robotPart;
 
-    $robot->save(); //Creates an implicit transaction to store both records
+    //Creates an implicit transaction to store both records
+    $robot->save();
 
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2204,7 +2198,7 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
         //Everything goes fine, let's commit the transaction
         $transaction->commit();
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -2225,10 +2219,13 @@ Transactions can be used to delete many records in a consistent way:
         //Request a transaction
         $transaction = $manager->get();
 
-        //Get the robots will be deleted
+        //Get the robots that must be deleted
         foreach (Robots::find("type = 'mechanical'") as $robot) {
+
             $robot->setTransaction($transaction);
+
             if ($robot->delete() == false) {
+
                 //Something goes wrong, we should to rollback the transaction
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
@@ -2241,7 +2238,7 @@ Transactions can be used to delete many records in a consistent way:
 
         echo "Robots were deleted successfully!";
 
-    } catch(TxFailed $e) {
+    } catch (TxFailed $e) {
         echo "Failed, reason: ", $e->getMessage();
     }
 
@@ -2252,9 +2249,9 @@ is performed. You can use the service container to create an overall transaction
 
     <?php
 
-    $di->setShared('transactions', function(){
+    $di->set('transactions', function(){
         return new \Phalcon\Mvc\Model\Transaction\Manager();
-    });
+    }, true);
 
 Then access it from a controller or view:
 
@@ -2282,7 +2279,92 @@ Then access it from a controller or view:
 
     }
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+While a transaction is active, the transaction manager always return the same transaction across the application.
+
+Boolean Statuses vs. Exceptions
+-------------------------------
+As seen before, the saving process (inserting/updating) returns a boolean value indicating if the process was successful
+or it failed. This design allows you to
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+
+    try {
+
+        $transaction = $this->transactions->get();
+
+        $product = new Products();
+        $product->setTransaction($transaction);
+        $product->name = $name;
+
+        //Save the product
+        $success = $product->save();
+
+        if (!$success) {
+            $transaction->rollback('Save product failed: ' . $product->getMessages()[0]);
+        }
+
+        foreach ($productStocks as $stock) {
+
+            $productStock = new ProductStocks();
+            $productStock->setTransaction($transaction);
+
+            $productStock->productId = $product->id;
+            $productStock->stock = $stock;
+
+            $success = $productStock->save();
+            if (!$success) {
+                $transaction->rollback('Save product stock failed: ' .
+                    $productStock->getMessages()[0]);
+            }
+        }
+
+    } catch (TxFailed $e) {
+        echo "Failed, reason: ", $e->getMessage();
+    }
+
+By setting 'exceptionOnFailedSave' to boolean true in the ORM global options, you can change this behavior, to throw
+an exception when the validation fails:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\ValidationException;
+
+    try {
+
+        $this->db->begin();
+
+        $product = new Products();
+        $product->name = $name;
+
+        //Save the product
+        $product->save();
+
+        foreach ($stocks as $stock) {
+
+            $productStock = new ProductStocks();
+
+            $productStock->productId = $product->id;
+            $productStock->stock = $stock;
+
+            //Save the product stock
+            $productStock->save();
+        }
+
+        $this->db->commit();
+
+    } catch (ValidationException $e) {
+
+        //Rollback the transaction
+        $this->db->rollback();
+
+        echo 'Save failed, reason:', $e->getMessage();
+    }
 
 Independent Column Mapping
 --------------------------
@@ -2434,7 +2516,7 @@ you can do this:
     <?php
 
     //Delete only whose stock is greater or equal than zero
-    $robots->getParts()->delete(function($part) {
+    $robots->getParts()->delete(function ($part) {
         if ($part->stock < 0) {
             return false;
         }
@@ -2475,8 +2557,6 @@ In models that have this feature activated you can check what fields changed:
     var_dump($robot->getChangedFields()); // ['name']
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
-
-
 
 Models Meta-Data
 ----------------
