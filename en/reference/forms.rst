@@ -87,7 +87,7 @@ classes implementing the form in a separated file:
         Phalcon\Forms\Element\Text,
         Phalcon\Forms\Element\Select;
 
-    class ContactsForm extends Form
+    class ContactForm extends Form
     {
         public function initialize()
         {
@@ -98,6 +98,42 @@ classes implementing the form in a separated file:
             $this->add(new Select("telephoneType", TelephoneTypes::find(), array(
                 'using' => array('id', 'name')
             )));
+        }
+    }
+
+:doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`
+so you have access to the application services if needed:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Form,
+        Phalcon\Forms\Element\Text,
+        Phalcon\Forms\Element\Hidden;
+
+    class ContactForm extends Form
+    {
+
+        /**
+         * This method returns the default value for field 'csrf'
+         */
+        public function getCsrf()
+        {
+            return $this->security->getToken();
+        }
+
+        public function initialize()
+        {
+
+            //Set the same form as entity
+            $this->setEntity($this);
+
+            //Add a text element to capture the 'email'
+            $this->add(new Text("email"));
+
+            //Add a text element to put a hidden csrf
+            $this->add(new Hidden("csrf"));
         }
     }
 
@@ -167,7 +203,7 @@ Or get specific messages for an element:
 
 Forms + Entities
 ----------------
-An entity such as a model/collection instance or just a plain PHP class can be linked to the form in order to set default values
+An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
 in the form's elements or assign the values from the form to the entity easily:
 
 .. code-block:: php
@@ -203,9 +239,70 @@ You can validate the form and assign the values from the user input in the follo
         $robot->save();
     }
 
+Setting up a plain class as entity also is possible:
+
+.. code-block:: php
+
+    <?php
+
+    class Preferences
+    {
+
+        public $timezone = 'Europe/Amsterdam';
+
+        public $receiveEmails = 'No';
+
+    }
+
+Using this class as entity, allows the form to take the default values from it:
+
+.. code-block:: php
+
+    <?php
+
+    $form = new Form(new Preferences());
+
+    $form->add(new Select("timezone", array(
+        'America/New_York' => 'New York',
+        'Europe/Amsterdam' => 'Amsterdam',
+        'America/Sao_Paulo' => 'Sao Paulo',
+        'Asia/Tokio' => 'Tokio',
+    )));
+
+    $form->add(new Select("receiveEmails", array(
+        'Yes' => 'Yes, please!',
+        'No' => 'No, thanks'
+    )));
+
+Entities can implement getters, which have more precedence than public propierties, these methods
+give you more free to produce values:
+
+.. code-block:: php
+
+    <?php
+
+    class Preferences
+    {
+
+        public $timezone;
+
+        public $receiveEmails;
+
+        public function getTimezone()
+        {
+            return 'Europe/Amsterdam';
+        }
+
+        public function getTimezone()
+        {
+            return 'No';
+        }
+
+    }
+
 Form Elements
 -------------
-Phalcon provides a set of built-in elements to use in your forms:
+Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\Forms\Element namespace:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
@@ -286,7 +383,7 @@ Or reuse the logic in your form class:
                 //Print each element
                 echo '<div class="messages">';
                 foreach ($messages as $message) {
-                    echo $message;
+                    echo $this->flash->error($message);
                 }
                 echo '</div>';
             }
@@ -299,6 +396,14 @@ Or reuse the logic in your form class:
 
     }
 
+In the view:
+
+    <?php
+
+    echo $element->renderDecorated('name');
+
+    echo $element->renderDecorated('telephone');
+
 Creating Form Elements
 ----------------------
 In addition to the form elements provided by Phalcon you can create your own custom elements:
@@ -307,7 +412,9 @@ In addition to the form elements provided by Phalcon you can create your own cus
 
     <?php
 
-    class MyElement extends \Phalcon\Forms\Element
+    use Phalcon\Forms\Element;
+
+    class MyElement extends Element
     {
         public function render($attributes=null)
         {

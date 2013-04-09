@@ -306,7 +306,7 @@ by passing "false" in the fourth parameter of fire:
 
 Listener Priorities
 -------------------
-When attaching listeners you can set a specifical priority. With this feature you can attach listeners indicating the order
+When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order
 in which they must be called:
 
 .. code-block:: php
@@ -316,6 +316,43 @@ in which they must be called:
     $evManager->attach('db', new DbListener(), 150); //More priority
     $evManager->attach('db', new DbListener(), 100); //Normal priority
     $evManager->attach('db', new DbListener(), 50); //Less priority
+
+Collecting Responses
+--------------------
+The events manager can collect every response returned by every notified listener, this example explains how it works:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Manager as EventsManager;
+
+    $evManager = new EventsManager();
+
+    //Set up the events manager to collect responses
+    $evManager->collectResponses(true);
+
+    //Attach a listener
+    $evManager->attach('custom:custom', function() {
+        return 'first response';
+    });
+
+    //Attach a listener
+    $evManager->attach('custom:custom', function() {
+        return 'second response';
+    });
+
+    //Fire the event
+    $evManager->fire('custom:custom', null);
+
+    //Get all the collected responses
+    print_r($evManager->getResponses());
+
+The above example produces:
+
+.. code-block:: html
+
+    Array ( [0] => first response [1] => second response )
 
 Implementing your own EventsManager
 -----------------------------------
