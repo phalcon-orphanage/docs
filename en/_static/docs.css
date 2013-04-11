@@ -448,15 +448,10 @@ div#footer a {
 
 div.highlight, blockquote {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
-	background-color: #F5F5F5;
-    /*border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px 4px 4px 4px;*/
+	background-color: #f7f7f9;
     display: block;
     font-size: 13px;
     line-height: 17px;
-    /*margin: 0 0 11px;
-    padding: 5px;
-    padding-left: 10px;*/
     word-wrap: break-word;
 }
 
@@ -537,6 +532,8 @@ div.highlight {
 
 pre {
 	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+	border: 1px solid #e1e1e8;
+	background-color: #f7f7f9;
 	line-height: 17px;
 }
 

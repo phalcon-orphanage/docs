@@ -58,26 +58,6 @@ you can use the getSource() method:
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
 The initialize() method is only called once during the request.
 
-Models in Namespaces
---------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
-
-    class Robots extends \Phalcon\Mvc\Model
-    {
-
-        public function getSource()
-        {
-            return "robots";
-        }
-
-    }
-
 Understanding Records To Objects
 --------------------------------
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
@@ -2491,11 +2471,10 @@ you can do this:
             return false;
         }
         return true;
-    }
+    });
 
 Deleting related records
 ^^^^^^^^^^^^^^^^^^^^^^^^
-
 Instead of doing this:
 
 .. code-block:: php
@@ -3028,12 +3007,12 @@ this you can diagnose performance problems and to discover bottlenecks.
         Phalcon\Db\Profiler;
 
     $di->set('profiler', function(){
-        return new EventsManager();
+        return new Profiler();
     }, true);
 
     $di->set('db', function() use ($di) {
 
-        $eventsManager = new Profiler();
+        $eventsManager = new EventsManager();
 
         //Get a shared instance of the DbProfiler
         $profiler = $di->getProfiler();
@@ -3083,6 +3062,8 @@ Profiling some queries:
     }
 
 Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement.
+
+Check out the :doc:`events <events>` chapter for more information about the events manager and listeners.
 
 Injecting services into Models
 ------------------------------
