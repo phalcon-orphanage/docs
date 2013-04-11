@@ -1350,13 +1350,16 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model,
+        Phalcon\Events\Manager as EventsManager;
+
+    class Robots extends Model
     {
 
         public function initialize()
         {
 
-            $eventsManager = new \Phalcon\Events\Manager();
+            $eventsManager = new EventsManager();
 
             //Attach an anonymous function as a listener for "model" events
             $eventsManager->attach('model', function($event, $robot) {
@@ -2960,11 +2963,15 @@ statements as they happen.
 
     <?php
 
+    use Phalcon\Logger\Adapter\File as FileLogger,
+        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
+        Phalcon\Events\Manager as EventsManager;
+
     $di->set('db', function() {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
-        $logger = new \Phalcon\Logger\Adapter\File("app/logs/debug.log");
+        $logger = new FileLogger("app/logs/debug.log");
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($logger) {
@@ -2973,7 +2980,7 @@ statements as they happen.
             }
         });
 
-        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        $connection = new DbAdapter(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -3016,13 +3023,17 @@ this you can diagnose performance problems and to discover bottlenecks.
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager,
+        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter,
+        Phalcon\Db\Profiler;
+
     $di->set('profiler', function(){
-        return new \Phalcon\Db\Profiler();
+        return new EventsManager();
     }, true);
 
     $di->set('db', function() use ($di) {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new Profiler();
 
         //Get a shared instance of the DbProfiler
         $profiler = $di->getProfiler();
@@ -3037,7 +3048,7 @@ this you can diagnose performance problems and to discover bottlenecks.
             }
         });
 
-        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        $connection = new DbAdapter(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -3062,7 +3073,7 @@ Profiling some queries:
     Robots::find(array("limit" => 30);
 
     //Get the generated profiles from the profiler
-    $profiles = $di->get('profiler')->getProfiles();
+    $profiles = $di->getProfiler()->getProfiles();
 
     foreach ($profiles as $profile) {
        echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -3138,18 +3149,28 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     <?php
 
+    use Phalcon\Mvc\Model\Manager as ModelsManager,
+        Phalcon\Mvc\Model\Metadata\Memory as MemoryMetaData,
+        Phalcon\Db\Adapter\Pdo\Sqlite as DbAdapter;
+
     $di = new Phalcon\DI();
 
     //Setup a connection
-    $di->set('db', new \Phalcon\Db\Adapter\Pdo\Sqlite(array(
+    $di->set('db', new DbAdapter(array(
         "dbname" => "sample.db"
     )));
 
     //Set a models manager
-    $di->set('modelsManager', new \Phalcon\Mvc\Model\Manager());
+    $di->set('modelsManager', new ModelsManager());
 
     //Use the memory meta-data adapter or another
-    $di->set('modelsMetadata', new \Phalcon\Mvc\Model\Metadata\Memory());
+    $di->set('modelsMetadata', new MemoryMetaData());
+
+Models can be used as usual:
+
+.. code-block:: php
+
+    <?php
 
     class Robots extends Phalcon\Mvc\Model
     {
