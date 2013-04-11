@@ -580,13 +580,21 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
+    //Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->limit(20)
         ->order('Robots.name')
         ->getQuery()
         ->execute();
+
+    //Getting the first row
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->order('Robots.name')
+        ->getQuery()
+        ->getSingleResult();
 
 That is the same as:
 

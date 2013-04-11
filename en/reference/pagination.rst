@@ -1,5 +1,5 @@
-Data Pagination
-===============
+Pagination
+==========
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
 fast and convenient way to split these sets of data browsable pages.
 
@@ -7,13 +7,15 @@ Data Adapters
 -------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+------------------------------------------------------------+
-| Adapter      | Description                                                |
-+==============+============================================================+
-| NativeArray  | Use a PHP array as source data                             |
-+--------------+------------------------------------------------------------+
-| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data |
-+--------------+------------------------------------------------------------+
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter      | Description                                                                                                                                                                 |
++==============+=============================================================================================================================================================================+
+| NativeArray  | Use a PHP array as source data                                                                                                                                              |
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this paginator don't be used to paginate a large number of records |
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
++--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Using Paginators
 ----------------
@@ -84,6 +86,8 @@ The $page object has the following attributes:
 +=============+========================================================+
 | items       | The set of records to be displayed at the current page |
 +-------------+--------------------------------------------------------+
+| current     | The current page                                       |
++-------------+--------------------------------------------------------+
 | before      | The previous page to the current one                   |
 +-------------+--------------------------------------------------------+
 | next        | The next page to the current one                       |
@@ -101,7 +105,8 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     <?php
 
-    class MyPaginator implements Phalcon\Paginator\AdapterInterface  {
+    class MyPaginator implements Phalcon\Paginator\AdapterInterface
+    {
 
         /**
          * Adapter constructor

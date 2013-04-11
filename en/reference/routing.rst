@@ -87,21 +87,21 @@ first subpattern matched (:controller) is the controller part of the route, the 
 These placeholders help writing regular expressions that are more readable for developers and easier
 to understand. The following placeholders are supported:
 
-+--------------+---------------------+--------------------------------------------------------------------+
-| Placeholder  | Regular Expression  | Usage                                                              |
-+==============+=====================+====================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only     |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only     |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes              |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                              |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                       |
-+--------------+---------------------+--------------------------------------------------------------------+
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| Placeholder  | Regular Expression  | Usage                                                                                                  |
++==============+=====================+========================================================================================================+
+| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 
 Controller names are camelized, this means that characters (-) and (_) are removed and the next character
 is uppercased. For instance, some_controller is converted to SomeController.

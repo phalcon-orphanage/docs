@@ -233,13 +233,17 @@ can create outside the application a container to manipulate its services:
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Micro,
+        Phalcon\Config\Adapter\Ini as IniConfig;
+
+    $di = new FactoryDefault();
 
     $di->set('config', function() {
-        return new \Phalcon\Config\Adapter\Ini("config.ini");
+        return new IniConfig("config.ini");
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     $app->setDI($di);
 
@@ -258,11 +262,14 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro,
+        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+
+    $app = new Micro();
 
     //Setup the database service
     $app['db'] = function() {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        return new MysqlAdapter(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -342,8 +349,11 @@ In the following example, we explain how to control the application security usi
 
     <?php
 
+    use Phalcon\Mvc\Micro,
+        Phalcon\Events\Manager as EventsManager;
+
     //Create a events manager
-    $eventManager = \Phalcon\Events\Manager();
+    $eventManager = new EventsManager();
 
     //Listen all the application events
     $eventManager->attach('micro', function($event, $app) {
@@ -361,7 +371,7 @@ In the following example, we explain how to control the application security usi
 
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
@@ -420,12 +430,15 @@ Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro,
+        Phalcon\Http\Response;
+
+    $app = new Micro();
 
     //Return a response
     $app->get('/welcome/index', function() {
 
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         $response->setStatusCode(401, "Unauthorized");
 
