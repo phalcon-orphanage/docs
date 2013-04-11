@@ -47,6 +47,7 @@ API Indice
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Exception
+   Phalcon_Crypt
    Phalcon_DI
    Phalcon_DI_Exception
    Phalcon_DI_FactoryDefault
@@ -189,6 +190,7 @@ API Indice
    Phalcon_Mvc_View_Exception
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
+   Phalcon_Paginator_Adapter_QueryBuilder
    Phalcon_Paginator_Exception
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job

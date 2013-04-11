@@ -11,7 +11,19 @@ Methods
 
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **add** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 
-Adds a resource to
+Adds a resource to the collection
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*string* $path, [*boolean* $local])
+
+Adds a CSS resource to the collection
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local])
+
+Adds a Js resource to the collection
 
 
 

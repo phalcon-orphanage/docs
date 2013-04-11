@@ -89,9 +89,9 @@ Returns the CSS collection of assets
 
 
 
-public  **collection** ()
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **collection** (*string* $name)
 
-
+Creates/Returns a collection of resources
 
 
 
