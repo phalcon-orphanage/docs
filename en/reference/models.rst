@@ -2323,7 +2323,7 @@ an exception when the validation fails:
 
     <?php
 
-    use Phalcon\Mvc\Model\ValidationException;
+    use Phalcon\Mvc\Model\ValidationFailed;
 
     try {
 
@@ -2348,7 +2348,7 @@ an exception when the validation fails:
 
         $this->db->commit();
 
-    } catch (ValidationException $e) {
+    } catch (ValidationFailed $e) {
 
         //Rollback the transaction
         $this->db->rollback();

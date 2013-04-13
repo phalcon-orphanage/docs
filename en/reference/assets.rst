@@ -127,3 +127,29 @@ Collections can be URL-prefixed, this allows to easily change from a server to o
 
     $scripts->addJs('js/jquery.js')
             ->addJs('js/bootstrap.min.js');
+
+A chaineable syntax is available too:
+
+.. code-block:: php
+
+    <?php
+
+    $scripts = $assets
+        ->collection('header')
+        ->setPrefix('http:://cdn.example.com/')
+        ->setLocal(false)
+        ->addJs('js/jquery.js')
+        ->addJs('js/bootstrap.min.js');
+
+Custom Output
+-------------
+Methods outputJs and outputCss are available to generate the necessary HTML code according to each type of resources.
+You can override this method or print the resources manually in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    foreach ($this->assets->collection('js') as $resource) {
+        echo Phalcon_Tag::javascriptInclude($resource->getPath());
+    }
