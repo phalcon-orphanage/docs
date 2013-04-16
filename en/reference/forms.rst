@@ -324,6 +324,19 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | Submit       | Generate INPUT[type=submit] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
+Event Callbacks
+---------------
+Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
+in the form's class to perform pre-validations and post-validations:
+
+<?php
+
+class ContactForm extends Phalcon\Mvc\Form
+{
+
+}
+
+
 Rendering Forms
 ---------------
 You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
