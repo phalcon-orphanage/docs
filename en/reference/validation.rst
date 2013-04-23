@@ -13,15 +13,15 @@ The following example shows its basic usage:
     $validation = new Phalcon\Validation();
 
     $validation->add('name', new PresenceOf(
-        'message' => 'The name is required'
+        array('message' => 'The name is required')
     ));
 
     $validation->add('email', new PresenceOf(
-        'message' => 'The e-mail is required'
+        array('message' => 'The e-mail is required')
     ));
 
     $validation->add('email', new Email(
-        'message' => 'The e-mail is not valid'
+        array('message' => 'The e-mail is not valid')
     ));
 
     $messages = $validation->validate($_POST);
@@ -73,7 +73,7 @@ Additional validators can be created by the developer. The following class expla
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))) {
+            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
