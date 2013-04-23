@@ -248,7 +248,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     // Generating dynamically the necessary SQL
     $success = $connection->update(
        "robots",
-       array("name")
+       array("name"),
        array("New Astro Boy"),
        "id = 101"
     );
