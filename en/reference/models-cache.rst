@@ -285,7 +285,7 @@ we can override the find/findFirst method to force every query to be cached:
 		{
 
 			//Convert the parameters to an array
-			if (!is_array($parameters))) {
+			if (!is_array($parameters)) {
 				$parameters = array($parameters);
 			}
 
@@ -815,7 +815,7 @@ Finally, we could replace the find method in the Robots model to use the custom 
 			}
 
 			$builder = new CustomQueryBuilder($parameters);
-			$builder->from(get_called_class())
+			$builder->from(get_called_class());
 
 			if (isset($parameters['bind'])) {
 				return $builder->getQuery()->execute($parameters['bind']);
