@@ -841,11 +841,11 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     {
 
         $products = new Products();
-        $products->id = $request->getPost("id", "int");
-        $products->product_types_id = $request->getPost("product_types_id", "int");
-        $products->name = $request->getPost("name", "striptags");
-        $products->price = $request->getPost("price", "double");
-        $products->active = $request->getPost("active");
+        $products->id = $this->request->getPost("id", "int");
+        $products->product_types_id = $this->request->getPost("product_types_id", "int");
+        $products->name = $this->request->getPost("name", "striptags");
+        $products->price = $this->request->getPost("price", "double");
+        $products->active = $this->request->getPost("active");
 
         //...
 
