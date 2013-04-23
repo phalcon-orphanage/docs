@@ -94,7 +94,7 @@ which the route is constrained for:
     $app->patch('/api/products/update/{id}', "info_product");
 
     //Matches if the HTTP method is GET or POST
-    $app->map('/repos/store/refs')->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
 Routes with Parameters
