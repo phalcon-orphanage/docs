@@ -31,21 +31,15 @@ class API_Generator
 	}
 
 	protected function _scanSources($directory)
-	{
-		$iterator = new DirectoryIterator($directory);
-		foreach ($iterator as $item) {
-			if ($item->isDir()){
-				if($item->getFileName() != '.' && $item->getFileName() != '..') {
-					$this->_scanSources($item->getPathname());
-				}
-			} else {
-				if (preg_match('/\.c$/', $item->getPathname())) {
-					if (strpos($item->getPathname(), 'kernel') === false) {
-						$this->_getDocs($item->getPathname());
-					}
-				}
-			}
-		}
+        {
+        	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory , FilesystemIterator::SKIP_DOTS));
+        	foreach ( $iterator as $item ) {
+            	if ( $item->getExtension() == 'c' ) {
+                	if ( strpos($item->getPathname() , 'kernel') === false ) {
+	                    $this->_getDocs($item->getPathname());
+                	}
+	            }
+        	}
 	}
 
 	protected function _getDocs($file)
