@@ -274,7 +274,7 @@ You can add an "empty" option to the generated HTML:
         array(
             'productId',
             Products::find("type = 'vegetables'"),
-            'using' => array('id', "name')
+            'using' => array('id', "name"),
             'useEmpty' => true,
             'emptyText' => 'Please, choose one...',
             'emptyValue' => '@'
