@@ -276,21 +276,21 @@ is that at any time there is only one record in memory. This greatly helps in me
 
     // Move the internal cursor to the third robot
     $robots->seek(2);
-    $robot = $robots->current()
+    $robot = $robots->current();
 
     // Access a robot by its position in the resultset
     $robot = $robots[5];
 
     // Check if there is a record in certain position
-    if (isset($robots[3]) {
+    if (isset($robots[3])) {
        $robot = $robots[3];
     }
 
     // Get the first record in the resultset
-    $robot = robots->getFirst();
+    $robot = $robots->getFirst();
 
     // Get the last record
-    $robot = robots->getLast();
+    $robot = $robots->getLast();
 
 Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
 to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
@@ -1379,7 +1379,7 @@ If we want all objects created in our application use the same EventsManager, th
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
-                    if ($modle->name == 'Scooby Doo') {
+                    if ($model->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
@@ -1390,7 +1390,7 @@ If we want all objects created in our application use the same EventsManager, th
         });
 
         //Setting a default EventsManager
-        $modelsManager = new Phalcon\Mvc\Models\Manager();
+        $modelsManager = new Phalcon\Mvc\Model\Manager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
     });
@@ -1675,7 +1675,7 @@ A callback also can be used to create a conditional assigment of automatic defau
         public function beforeCreate()
         {
             if ($this->price > 10000) {
-                $robot->type = new \Phalcon\Db\RawValue('default');
+                $this->type = new \Phalcon\Db\RawValue('default');
             }
         }
     }
@@ -1960,7 +1960,7 @@ that is performed operations over a model:
 
     <?php
 
-    use Phalcon\Mvc\ModelInterface,
+    use Phalcon\Mvc\Model\Behavior,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
@@ -2371,7 +2371,7 @@ you can do this:
             return false;
         }
         return true;
-    }
+    });
 
 Deleting related records
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2879,7 +2879,7 @@ As models access the default database connection, all SQL statements that are se
 
     $robot = new Robots();
     $robot->name = "Robby the Robot";
-    $robot->created_at = "1956-07-21"
+    $robot->created_at = "1956-07-21";
     if ($robot->save() == false) {
         echo "Cannot save robot";
     }
@@ -2943,8 +2943,8 @@ Profiling some queries:
 
     // Send some SQL statements to the database
     Robots::find();
-    Robots::find(array("order" => "name");
-    Robots::find(array("limit" => 30);
+    Robots::find(array("order" => "name"));
+    Robots::find(array("limit" => 30));
 
     //Get the generated profiles from the profiler
     $profiles = $di->get('profiler')->getProfiles();
