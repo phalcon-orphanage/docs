@@ -72,7 +72,7 @@ next view level in the hierarchy of files. If all three view files are implement
 
     <h3>This is show view!</h3>
 
-    <p>I have received the parameter <?php $postId ?></p>
+    <p>I have received the parameter <?php echo $postId ?></p>
 
 .. code-block:: html+php
 
