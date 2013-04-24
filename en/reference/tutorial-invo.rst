@@ -697,9 +697,7 @@ In this case, we previously queried the records in this table in order to facili
 All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
 (app/views/index.phtml) we show a "select" tag filled with those results:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     <div>
         <label for="product_types_id">Product Type</label>
