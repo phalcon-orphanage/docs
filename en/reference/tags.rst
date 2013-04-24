@@ -138,7 +138,7 @@ Forms in web applications play an essential part in retrieving user input. The f
 
 This last code will generate the following HTML:
 
-.. code-block:: html+php
+.. code-block:: html
 
     <form action="/store/products/search/" method="get">
          <label for="q">Search:</label>
