@@ -12,7 +12,7 @@ if (!extension_loaded('phalcon')) {
 	throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', 'C:\Users\Horacio Carreola\Documents\GitHub\cphalcon\ext\\');
+define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
 	throw new Exception("CPHALCON directory does not exist");
@@ -273,7 +273,7 @@ foreach(get_declared_classes() as $className){
 	$classes[] = $className;
 }
 
-foreach(get_declared_interfaces() as $className){
+foreach (get_declared_interfaces() as $className) {
 	if (!preg_match('#^Phalcon#', $className)) {
 		continue;
 	}

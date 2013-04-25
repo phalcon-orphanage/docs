@@ -580,13 +580,21 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 
     <?php
 
+    //Getting a whole set
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->limit(20)
         ->order('Robots.name')
         ->getQuery()
         ->execute();
+
+    //Getting the first row
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->order('Robots.name')
+        ->getQuery()
+        ->getSingleResult();
 
 That is the same as:
 
@@ -701,6 +709,18 @@ More examples of the builder:
     // 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5'
     $builder->from('Robots')
             ->limit(10, 5);
+
+    // 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100
+    $builder->from('Robots')
+            ->betweenWhere('id', 1, 100);
+
+    // 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)
+    $builder->from('Robots')
+            ->inWhere('id', array(1, 2, 3));
+
+    // 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)
+    $builder->from('Robots')
+            ->notInWhere('id', array(1, 2, 3));
 
 Escaping Reserved Words
 -----------------------

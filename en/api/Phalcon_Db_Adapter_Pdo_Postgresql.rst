@@ -323,14 +323,17 @@ Dumps the complete result of a query into an array
 
     <?php
 
-    //Getting all robots
-    $robots = $connection->fetchAll("SELECT * FROM robots");
-    foreach($robots as $robot){
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach ($robots as $robot) {
     	print_r($robot);
     }
     
-    //Getting all robots with associative indexes only
-    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+      //Getting all robots that contains word "robot" withing the name
+      $robots = $connection->fetchAll("SELECT * FROM robots WHERE name LIKE :name",
+    	Phalcon\Db::FETCH_ASSOC,
+    	array('name' => '%robot%')
+      );
     foreach($robots as $robot){
     	print_r($robot);
     }

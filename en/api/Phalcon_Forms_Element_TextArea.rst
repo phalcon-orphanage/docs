@@ -63,9 +63,9 @@ Returns the validators registered for the element
 
 
 
-public *array*  **prepareAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
+public *array*  **prepareAttributes** ([*array* $attributes]) inherited from Phalcon\\Forms\\Element
 
-Returns an array of attributes for Phalcon\\Tag helpers prepared according to the element's parameters
+Returns an array of attributes for  prepared attributes for Phalcon\\Tag helpers according to the element's parameters
 
 
 
@@ -96,6 +96,18 @@ Sets the element label
 public *string*  **getLabel** () inherited from Phalcon\\Forms\\Element
 
 Returns the element's label
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setDefault** (*mixed* $value) inherited from Phalcon\\Forms\\Element
+
+Sets a default value in case the form does not use an entity or there is no value available for the element in $_POST
+
+
+
+public *mixed*  **getDefault** () inherited from Phalcon\\Forms\\Element
+
+Returns the default value assigned to the element
 
 
 

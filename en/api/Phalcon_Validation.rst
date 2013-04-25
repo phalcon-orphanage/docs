@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation**
 =============================
 
-
+Allows to validate data using validators
 
 
 Methods

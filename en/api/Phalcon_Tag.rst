@@ -50,12 +50,6 @@ Return a URL service from the default DI
 
 
 
-public static :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`  **getDispatcherService** ()
-
-Returns a Dispatcher service from the default DI
-
-
-
 public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
@@ -135,6 +129,8 @@ Builds a HTML A tag using framework conventions
     <?php
 
     echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
+    echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!'));
+    echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!', 'class' => 'btn-primary'));
 
 
 
@@ -205,7 +201,7 @@ Builds a HTML input[type="check"] tag
 
     <?php
 
-     echo Phalcon\Tag::checkField(array("name", "size" => 30))
+     echo Phalcon\Tag::checkField(array("name"))
 
 
 
@@ -218,7 +214,7 @@ Builds a HTML input[type="radio"] tag
 
     <?php
 
-     echo Phalcon\Tag::radioField(array("name", "size" => 30))
+     echo Phalcon\Tag::radioField(array("name"))
 
 
 
@@ -233,6 +229,14 @@ Builds a HTML input[type="image"] tag
 
      echo Phalcon\Tag::imageInput(array("src" => "/img/button.png"));
 
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ image_input('src': '/img/button.png') }}
+
 
 
 
@@ -245,6 +249,14 @@ Builds a HTML input[type="submit"] tag
     <?php
 
      echo Phalcon\Tag::submitButton("Save")
+
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ submit_button('Save') }}
 
 
 
@@ -270,11 +282,19 @@ Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
 
     <?php
 
-    echo Phalcon\Tag::selectStatic(array(
+    echo Phalcon\Tag::select(array(
     	"robotId",
     	Robots::find("type = 'mechanical'"),
     	"using" => array("id", "name")
      	));
+
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ select("robotId", robots, "using": ["id", "name"]) }}
 
 
 
@@ -288,6 +308,14 @@ Builds a HTML TEXTAREA tag
     <?php
 
      echo Phalcon\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
+
+Volt syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     {{ text_area("comments", "cols": 10, "rows": 4) }}
 
 
 

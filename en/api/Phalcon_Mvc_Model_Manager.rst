@@ -58,7 +58,7 @@ Returns a custom events manager related to a model
 
 
 
-public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public *boolean*  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Initializes a model in the model manager
 

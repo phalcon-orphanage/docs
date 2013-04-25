@@ -1,23 +1,22 @@
-Class **Phalcon\\Validation\\Validator\\StringLength**
-======================================================
+Class **Phalcon\\Validation\\Validator\\Between**
+=================================================
 
 *extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Validates that a string has the specified maximum and minimum constraints  
+Validates that a value is between a range of two values  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\StringLength as StringLength;
+    use Phalcon\Validation\Validator\Between;
     
-    $validation->validate('name_last', new StringLength(array(
-          'max' => 50,
-          'min' => 2,
-          'messageMaximum' => 'We don\'t like really long names',
-          'messageMinimum' => 'We want more than just their initials'
+    $validator->add('name', new Between(array(
+       'minimum' => 0
+       'maximum' => 100
+       'message' => 'The price must be between 0 and 100'
     )));
 
 

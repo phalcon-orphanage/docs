@@ -28,7 +28,14 @@ is recommended setting up it manually:
 
     $url = new Phalcon\Mvc\Url();
 
+    //Setting a relative base URI
     $url->setBaseUri('/invo/');
+
+    //Setting a full domain as base URI
+    $url->setBaseUri('//my.domain.com/');
+
+    //Setting a full domain as base URI
+    $url->setBaseUri('http://my.domain.com/my-app/');
 
 Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
 
@@ -102,10 +109,10 @@ You can also use $_SERVER["REQUEST_URI"]:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI using $_SERVER["REQUEST_URI"]
+    //Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //Pass the URI in $_GET["_url"]
+    //Pass the URI using $_SERVER["REQUEST_URI"]
     $url->setBaseUri('/invo/index.php/');
 
 In this case, it's necessary to manually handle the required URI in the Router:

@@ -19,6 +19,12 @@ API Indice
    Phalcon_Annotations_Exception
    Phalcon_Annotations_Reader
    Phalcon_Annotations_Reflection
+   Phalcon_Assets_Collection
+   Phalcon_Assets_Exception
+   Phalcon_Assets_Manager
+   Phalcon_Assets_Resource
+   Phalcon_Assets_Resource_Css
+   Phalcon_Assets_Resource_Js
    Phalcon_CLI_Console
    Phalcon_CLI_Console_Exception
    Phalcon_CLI_Dispatcher
@@ -41,6 +47,7 @@ API Indice
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Exception
+   Phalcon_Crypt
    Phalcon_DI
    Phalcon_DI_Exception
    Phalcon_DI_FactoryDefault
@@ -154,6 +161,7 @@ API Indice
    Phalcon_Mvc_Model_Transaction_Exception
    Phalcon_Mvc_Model_Transaction_Failed
    Phalcon_Mvc_Model_Transaction_Manager
+   Phalcon_Mvc_Model_ValidationFailed
    Phalcon_Mvc_Model_Validator
    Phalcon_Mvc_Model_Validator_Email
    Phalcon_Mvc_Model_Validator_Exclusionin
@@ -182,6 +190,7 @@ API Indice
    Phalcon_Mvc_View_Exception
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
+   Phalcon_Paginator_Adapter_QueryBuilder
    Phalcon_Paginator_Exception
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
@@ -205,6 +214,7 @@ API Indice
    Phalcon_Validation_Message
    Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
+   Phalcon_Validation_Validator_Between
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_Identical

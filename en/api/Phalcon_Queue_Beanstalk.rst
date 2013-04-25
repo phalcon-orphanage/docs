@@ -26,7 +26,7 @@ Inserts jobs into the queue
 
 public *boolean|Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
 
-
+Reserves a job in the queue
 
 
 
