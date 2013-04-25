@@ -22,7 +22,7 @@ Simply validates specified string length constraints
     		'field' => 'name_last',
     		'max' => 50,
     		'min' => 2,
-    		'messageMaximum' => 'We don't like really long names',
+    		'messageMaximum' => 'We don\'t like really long names',
     		'messageMinimum' => 'We want more than just their initials'
     	)));
     	if ($this->validationHasFailed() == true) {

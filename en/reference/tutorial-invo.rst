@@ -697,9 +697,7 @@ In this case, we previously queried the records in this table in order to facili
 All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
 (app/views/index.phtml) we show a "select" tag filled with those results:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     <div>
         <label for="product_types_id">Product Type</label>
@@ -841,11 +839,11 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     {
 
         $products = new Products();
-        $products->id = $request->getPost("id", "int");
-        $products->product_types_id = $request->getPost("product_types_id", "int");
-        $products->name = $request->getPost("name", "striptags");
-        $products->price = $request->getPost("price", "double");
-        $products->active = $request->getPost("active");
+        $products->id = $this->request->getPost("id", "int");
+        $products->product_types_id = $this->request->getPost("product_types_id", "int");
+        $products->name = $this->request->getPost("name", "striptags");
+        $products->price = $this->request->getPost("price", "double");
+        $products->active = $this->request->getPost("active");
 
         //...
 

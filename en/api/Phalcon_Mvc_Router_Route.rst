@@ -62,20 +62,6 @@ Sets the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*string|array* $httpMethods)
-
-Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
-
-.. code-block:: php
-
-    <?php
-
-     $route->setHttpMethods('GET');
-     $route->setHttpMethods(array('GET', 'POST'));
-
-
-
-
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **beforeMatch** (*callback* $callback)
 
 Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched
@@ -118,9 +104,42 @@ Returns the paths using positions as keys and names as values
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*string|array* $httpMethods)
+
+Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
+
+.. code-block:: php
+
+    <?php
+
+     $route->setHttpMethods('GET');
+     $route->setHttpMethods(array('GET', 'POST'));
+
+
+
+
 public *string|array*  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHostname** (*unknown* $hostname)
+
+Sets a hostname restriction to the route 
+
+.. code-block:: php
+
+    <?php
+
+     $route->setHostname('localhost');
+
+
+
+
+public *string*  **getHostname** ()
+
+Returns the hostname restriction if any
 
 
 

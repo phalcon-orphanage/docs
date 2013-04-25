@@ -59,11 +59,13 @@ API Indice
    Phalcon_Db_Adapter
    Phalcon_Db_Adapter_Pdo
    Phalcon_Db_Adapter_Pdo_Mysql
+   Phalcon_Db_Adapter_Pdo_Oracle
    Phalcon_Db_Adapter_Pdo_Postgresql
    Phalcon_Db_Adapter_Pdo_Sqlite
    Phalcon_Db_Column
    Phalcon_Db_Dialect
    Phalcon_Db_Dialect_Mysql
+   Phalcon_Db_Dialect_Oracle
    Phalcon_Db_Dialect_Postgresql
    Phalcon_Db_Dialect_Sqlite
    Phalcon_Db_Exception
@@ -88,8 +90,10 @@ API Indice
    Phalcon_Flash_Session
    Phalcon_Forms_Element
    Phalcon_Forms_Element_Check
+   Phalcon_Forms_Element_Date
    Phalcon_Forms_Element_File
    Phalcon_Forms_Element_Hidden
+   Phalcon_Forms_Element_Numeric
    Phalcon_Forms_Element_Password
    Phalcon_Forms_Element_Select
    Phalcon_Forms_Element_Submit
@@ -215,6 +219,7 @@ API Indice
    Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
    Phalcon_Validation_Validator_Between
+   Phalcon_Validation_Validator_Confirmation
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_Identical

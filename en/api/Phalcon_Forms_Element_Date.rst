@@ -1,9 +1,9 @@
-Class **Phalcon\\Forms\\Element\\Submit**
-=========================================
+Class **Phalcon\\Forms\\Element\\Date**
+=======================================
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
-Component INPUT[type=submit] for forms
+Component INPUT[type=date] for forms
 
 
 Methods
@@ -11,7 +11,7 @@ Methods
 
 public *string*  **render** ([*array* $attributes])
 
-Renders the element widget
+Renders the element widget returning html
 
 
 

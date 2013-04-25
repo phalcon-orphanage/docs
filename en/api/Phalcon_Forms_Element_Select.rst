@@ -27,7 +27,7 @@ Returns the choices' options
 
 
 
-public *$this;*  **addOption** (*array* $option)
+public *$this*  **addOption** (*array* $option)
 
 Adds an option to the current options
 
@@ -63,6 +63,18 @@ Returns the element's name
 
 
 
+public *Phalcon\\Forms\\ElementInterface*  **setFilters** (*array|string* $filters) inherited from Phalcon\\Forms\\Element
+
+Sets the element's filters
+
+
+
+public *mixed*  **getFilters** () inherited from Phalcon\\Forms\\Element
+
+Returns the element's filters
+
+
+
 public *Phalcon\\Forms\\ElementInterface*  **addValidators** (*unknown* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
 
 Adds a group of validators
@@ -93,6 +105,12 @@ Sets a default attribute for the element
 
 
 
+public *mixed*  **getAttribute** (*string* $attribute, [*mixed* $defaultValue]) inherited from Phalcon\\Forms\\Element
+
+Returns the value of an attribute if present
+
+
+
 public *Phalcon\\Forms\\ElementInterface*  **setAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
 
 Sets default attributes for the element
@@ -102,6 +120,30 @@ Sets default attributes for the element
 public *array*  **getAttributes** () inherited from Phalcon\\Forms\\Element
 
 Returns the default attributes for the element
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setUserOption** (*string* $option, *mixed* $value) inherited from Phalcon\\Forms\\Element
+
+Sets an option for the element
+
+
+
+public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue]) inherited from Phalcon\\Forms\\Element
+
+Returns the value of an option if present
+
+
+
+public *Phalcon\\Forms\\ElementInterface*  **setUserOptions** (*array* $options) inherited from Phalcon\\Forms\\Element
+
+Sets options for the element
+
+
+
+public *array*  **getUserOptions** () inherited from Phalcon\\Forms\\Element
+
+Returns the options for the element
 
 
 
@@ -117,6 +159,12 @@ Returns the element's label
 
 
 
+public *string*  **label** () inherited from Phalcon\\Forms\\Element
+
+Generate the HTML to label the element
+
+
+
 public *Phalcon\\Forms\\ElementInterface*  **setDefault** (*mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in $_POST
@@ -126,6 +174,24 @@ Sets a default value in case the form does not use an entity or there is no valu
 public *mixed*  **getDefault** () inherited from Phalcon\\Forms\\Element
 
 Returns the default value assigned to the element
+
+
+
+public *mixed*  **getValue** () inherited from Phalcon\\Forms\\Element
+
+Returns the element's value
+
+
+
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** () inherited from Phalcon\\Forms\\Element
+
+Returns the messages that belongs to the element The element needs to be attached to a form
+
+
+
+public *boolean*  **hasMessages** () inherited from Phalcon\\Forms\\Element
+
+Returns the messages that belongs to the element The element needs to be attached to a form
 
 
 
