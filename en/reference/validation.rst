@@ -161,28 +161,3 @@ Validation Canceling
 --------------------
 By default, all validators assigned to a field are validated regardless if one of them fail or not. You can change this behavior
 by telling the validation component which validator must stop the validation:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Regex;
-
-    $validation = new Phalcon\Validation();
-
-    $validation
-        ->add('telephone', new PresenceOf(array(
-            'message' => 'The telephone is required',
-            'cancelOnFail' => true
-        )))
-        ->add('telephone', new Regex(array(
-            'message' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )))
-        ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
-        )));
-
-The first validator has the option 'cancelOnFail' => true, therefore if that validator fails the next validator in the chain is not executed.

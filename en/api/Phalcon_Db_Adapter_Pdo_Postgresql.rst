@@ -37,6 +37,12 @@ Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r
 
 
 
+public *boolean*  **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
+
+
+
 public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
 
 Return the default identity value to insert in an identity column
@@ -159,20 +165,6 @@ Escapes a value to avoid SQL injections
 
 
 
-public *string*  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Manually bind params to a SQL statement. This method requires an active connection to a database system 
-
-.. code-block:: php
-
-    <?php
-
-    $sql = $connection->bindParams('SELECT * FROM robots WHERE name = ?0', array('Bender'));
-      echo $sql; // SELECT * FROM robots WHERE name = 'Bender'
-
-
-
-
 public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
@@ -225,6 +217,12 @@ Commits the active transaction in the connection
 
 
 
+public *int*  **getTransactionLevel** () inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Returns the current transaction nesting level
+
+
+
 public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Checks whether the connection is under a transaction 
@@ -242,45 +240,6 @@ Checks whether the connection is under a transaction
 public *\PDO*  **getInternalHandler** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Return internal PDO handler
-
-
-
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Lists table indexes 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->describeIndexes('robots_parts'));
-
-
-
-
-public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Lists table references 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->describeReferences('robots_parts'));
-
-
-
-
-public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Gets creation options from a table 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->tableOptions('robots'));
-
 
 
 
@@ -373,7 +332,7 @@ Updates data on a table using custom RBDM SQL syntax
      //Updating existing robot
      $success = $connection->update(
          "robots",
-         array("name")
+         array("name"),
          array("New Astro Boy"),
          "id = 101"
      );
@@ -541,7 +500,46 @@ List all tables on a database
 
     <?php
 
-     	print_r($connection->listTables("blog");
+     	print_r($connection->listTables("blog"));
+
+
+
+
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter
+
+Lists table indexes 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->describeIndexes('robots_parts'));
+
+
+
+
+public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter
+
+Lists table references 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->describeReferences('robots_parts'));
+
+
+
+
+public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+Gets creation options from a table 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->tableOptions('robots'));
 
 
 

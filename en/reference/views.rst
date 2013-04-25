@@ -72,7 +72,7 @@ next view level in the hierarchy of files. If all three view files are implement
 
     <h3>This is show view!</h3>
 
-    <p>I have received the parameter <?php $postId ?></p>
+    <p>I have received the parameter <?php echo $postId ?></p>
 
 .. code-block:: html+php
 
@@ -281,7 +281,7 @@ object to set variables directly to the view from a controller action by using t
         public function showAction()
         {
             //Pass all the posts to the views
-            $this->view->setVar("posts", Posts:find());
+            $this->view->setVar("posts", Posts::find());
         }
 
     }
@@ -678,7 +678,7 @@ You can replace or add more a template engine from the controller as follows:
             // Using more than one template engine
             $this->view->registerEngines(
                 array(
-                    ".my-html" => 'MyTemplateAdapter'
+                    ".my-html" => 'MyTemplateAdapter',
                     ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
@@ -806,7 +806,7 @@ The following example demonstrates how to attach listeners to this component:
         $view->setViewsDir("../app/views/");
 
         //Bind the eventsManager to the view component
-        $view->setEventsManager($eventManagers);
+        $view->setEventsManager($eventsManager);
 
         return $view;
 

@@ -9,7 +9,7 @@ Component of pagination by array data
 Methods
 ---------
 
-public  **__construct** (*unknown* $config)
+public  **__construct** (*array* $config)
 
 
 
@@ -17,11 +17,13 @@ public  **__construct** (*unknown* $config)
 
 public  **setCurrentPage** (*unknown* $currentPage)
 
-...
+Set the current page number
 
 
-public  **getPaginate** ()
 
-...
+public *stdClass*  **getPaginate** ()
+
+Returns a slice of the resultset to show in the pagination
+
 
 

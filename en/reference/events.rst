@@ -46,7 +46,7 @@ offering hook points based on the methods we defined in our listener class:
     $eventsManager = new EventsManager();
 
     //Create a database listener
-    $dbListener = new MyDbListener()
+    $dbListener = new MyDbListener();
 
     //Listen all the database events
     $eventsManager->attach('db', $dbListener);
@@ -151,7 +151,7 @@ The resulting profile data can be obtained from the listener:
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
-        echo "Start Time: ", $profile->getInitialTime(), "\n"
+        echo "Start Time: ", $profile->getInitialTime(), "\n";
         echo "Final Time: ", $profile->getFinalTime(), "\n";
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
@@ -193,7 +193,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
         public function getEventsManager()
         {
-            return $this->_eventsManager
+            return $this->_eventsManager;
         }
 
         public function someTask()

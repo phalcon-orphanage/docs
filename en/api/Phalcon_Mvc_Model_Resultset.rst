@@ -162,6 +162,23 @@ Delete every record in the resultset
 
 
 
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
+
+Filters a resultset returning only those the developer requires 
+
+.. code-block:: php
+
+    <?php
+
+     $filtered = $robots->filter(function($robot){
+    	if ($robot->id < 3) {
+    		return $robot;
+    	}
+    });
+
+
+
+
 abstract public *array*  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
 
 Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.

@@ -138,7 +138,7 @@ Forms in web applications play an essential part in retrieving user input. The f
 
 This last code will generate the following HTML:
 
-.. code-block:: html+php
+.. code-block:: html
 
     <form action="/store/products/search/" method="get">
          <label for="q">Search:</label>
@@ -274,7 +274,7 @@ You can add an "empty" option to the generated HTML:
         array(
             'productId',
             Products::find("type = 'vegetables'"),
-            'using' => array('id', "name')
+            'using' => array('id', "name"),
             'useEmpty' => true,
             'emptyText' => 'Please, choose one...',
             'emptyValue' => '@'
@@ -513,6 +513,36 @@ Volt syntax:
 
     {# Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script> #}
     {{ javascript_include("javascript/jquery.min.js") }}
+
+HTML5 elements - generic HTML helper
+^^^^^^^^^^
+
+Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
+
+
+.. code-block:: php
+
+    <?php
+
+    // Generate 
+    // <canvas id="canvas1" width="300" class="cnvclass">
+    // This is my canvas
+    // </canvas>
+    echo \Phalcon\Tag::tagHtml("canvas", array("id" => "canvas1", width" => "300", "class" => "cnvclass", false, true, true);
+    echo "This is my canvas";
+    echo \Phalcon\Tag:tagHtmlClose("canvas")
+
+Volt syntax:
+
+.. code-block:: jinja
+
+    {# Generate #}
+    {# <canvas id="canvas1" width="300" class="cnvclass"> #}
+    {# This is my canvas #}
+    {# </canvas> #}
+    {{ tag_html("canvas", ["id":"canvas1", width":"300", "class":"cnvclass"], false, true, true) }}
+    This is my canvas
+    {{ tag_html_close("canvas") }}
 
 Creating your own helpers
 -------------------------

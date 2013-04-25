@@ -90,7 +90,7 @@ examples below on the usage of this class:
     var_dump($collator->compare("una canción", "una cancion"));
 
     // Returns that the strings are not equal
-    $collator->setStrength(Collator::DEFAULT);
+    $collator->setStrength(Collator::DEFAULT_VALUE);
     var_dump($collator->compare("una canción", "una cancion"));
 
 Transliteration

@@ -37,7 +37,7 @@ A role is an object that can or cannot access certain resources in the access li
     $roleGuests = new \Phalcon\Acl\Role("Guests");
 
     // Add "Guests" role to acl
-    acl->addRole($roleGuests);
+    $acl->addRole($roleGuests);
 
     // Add "Designers" role to acl without a Phalcon\Acl\Role
     $acl->addRole("Designers");
@@ -117,7 +117,7 @@ so that they can be loaded at will without having to redefine the whole list. Yo
     //Check whether acl data already exist
     if (!file_exists("app/security/acl.data")) {
 
-        $acl = new \Phalcon\Acl("Memory");
+        $acl = new \Phalcon\Acl\Adapter\Memory();
 
         //... Define roles, resources, access, etc
 

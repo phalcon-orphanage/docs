@@ -253,12 +253,6 @@ Escapes a value to avoid SQL injections
 
 
 
-abstract public  **bindParams** (*string* $sqlStatement, *array* $params)
-
-Bind params to a SQL statement
-
-
-
 abstract public *array*  **convertBoundParams** (*string* $sqlStatement, *array* $params)
 
 Converts bound params like :name: or ?1 into ? bind params
@@ -316,6 +310,12 @@ Lists table references
 abstract public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName])
 
 Gets creation options from a table
+
+
+
+abstract public *boolean*  **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
 
 
 

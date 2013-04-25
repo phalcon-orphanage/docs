@@ -1,21 +1,21 @@
-Class **Phalcon\\Validation\\Validator\\ExclusionIn**
-=====================================================
+Class **Phalcon\\Validation\\Validator\\Confirmation**
+======================================================
 
 *extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Check if a value is not included into a list of values  
+Checks that two values have the same value  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\ExclusionIn;
+    use Phalcon\Validation\Validator\Confirmation;
     
-    $validator->add('status', new ExclusionIn(array(
-       'message' => 'The status must not be A or B',
-       'domain' => array('A', 'B')
+    $validator->add('password', new Confirmation(array(
+       'message' => 'Password doesn\'t match confirmation',
+       'with' => 'confirmPassword'
     )));
 
 

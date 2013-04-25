@@ -15,6 +15,18 @@ Attach a listener to the events manager
 
 
 
+public  **enablePriorities** (*boolean* $enablePriorities)
+
+Set if priorities are enabled in the EventsManager
+
+
+
+public *boolean*  **arePrioritiesEnabled** ()
+
+Returns if priorities are enabled
+
+
+
 public  **collectResponses** (*boolean* $collect)
 
 Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
