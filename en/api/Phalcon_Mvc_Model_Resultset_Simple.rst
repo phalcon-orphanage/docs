@@ -174,3 +174,20 @@ Delete every record in the resultset
 
 
 
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Filters a resultset returning only those the developer requires 
+
+.. code-block:: php
+
+    <?php
+
+     $filtered = $robots->filter(function($robot){
+    	if ($robot->id < 3) {
+    		return $robot;
+    	}
+    });
+
+
+
+

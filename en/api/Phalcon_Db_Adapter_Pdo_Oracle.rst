@@ -1,75 +1,83 @@
-Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
-==========================================
+Class **Phalcon\\Db\\Adapter\\Pdo\\Oracle**
+===========================================
 
 *extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
-Specific functions for the Mysql database system 
+Specific functions for the Oracle database system 
 
 .. code-block:: php
 
     <?php
 
-    $config = array(
-    	"host" => "192.168.0.11",
-    	"dbname" => "blog",
-    	"port" => 3306,
-    	"username" => "sigma",
-    	"password" => "secret"
-    );
+     $config = array(
+      "dbname" => "//localhost/dbname",
+      "username" => "oracle",
+      "password" => "oracle"
+     );
     
-    $connection = new Phalcon\Db\Adapter\Pdo\Mysql($config);
+     $connection = new Phalcon\Db\Adapter\Pdo\Oracle($config);
 
 
 
 Methods
 ---------
 
-public *string*  **escapeIdentifier** (*string* $identifier)
+public *boolean*  **connect** ([*array* $descriptor])
 
-Escapes a column/table/schema name
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection.
 
 
 
 public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, [*string* $schema])
 
-Returns an array of Phalcon\\Db\\Column objects describing a table 
+Returns an array of Phalcon\\Db\\Column objects describing a table <code>print_r($connection->describeColumns("posts")); ?>
+
+
+
+public *int*  **lastInsertId** ([*string* $sequenceName])
+
+Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
 
 .. code-block:: php
 
     <?php
 
-     print_r($connection->describeColumns("posts")); ?>
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Getting the generated id
+     $id = $connection->lastInsertId();
 
+
+
+
+public *boolean*  **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
+
+
+
+public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
+
+Return the default identity value to insert in an identity column
+
+
+
+public *boolean*  **supportSequences** ()
+
+Check whether the database system requires a sequence to produce auto-numeric values
 
 
 
 public  **__construct** (*array* $descriptor) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Constructor for Phalcon\\Db\\Adapter\\Pdo
-
-
-
-public *boolean*  **connect** ([*array* $descriptor]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection 
-
-.. code-block:: php
-
-    <?php
-
-     //Make a connection
-     $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
-      'host' => '192.168.0.11',
-      'username' => 'sigma',
-      'password' => 'secret',
-      'dbname' => 'blog',
-     ));
-    
-     //Reconnect
-     $connection->connect();
-
 
 
 
@@ -151,6 +159,19 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 
 
+public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Escapes a column/table/schema name 
+
+.. code-block:: php
+
+    <?php
+
+    $escapedTable = $connection->escapeIdentifier('robots');
+
+
+
+
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Escapes a value to avoid SQL injections 
@@ -173,27 +194,6 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
     <?php
 
      print_r($connection->convertBoundParams('SELECT * FROM robots WHERE name = :name:', array('Bender')));
-
-
-
-
-public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement 
-
-.. code-block:: php
-
-    <?php
-
-     //Inserting a new robot
-     $success = $connection->insert(
-         "robots",
-         array("Astro Boy", 1952),
-         array("name", "year")
-     );
-    
-     //Getting the generated id
-     $id = $connection->lastInsertId();
 
 
 
@@ -540,36 +540,6 @@ Gets creation options from a table
 
      print_r($connection->tableOptions('robots'));
 
-
-
-
-public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** () inherited from Phalcon\\Db\\Adapter
-
-Returns the default identity value to be inserted in an identity column 
-
-.. code-block:: php
-
-    <?php
-
-     //Inserting a new robot with a valid default value for the column 'id'
-     $success = $connection->insert(
-         "robots",
-         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
-         array("id", "name", "year")
-     );
-
-
-
-
-public *boolean*  **supportSequences** () inherited from Phalcon\\Db\\Adapter
-
-Check whether the database system requires a sequence to produce auto-numeric values
-
-
-
-public *boolean*  **useExplicitIdValue** () inherited from Phalcon\\Db\\Adapter
-
-Check whether the database system requires an explicit value for identity columns
 
 
 

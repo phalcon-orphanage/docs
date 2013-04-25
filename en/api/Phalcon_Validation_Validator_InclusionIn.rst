@@ -14,7 +14,7 @@ Check if a value is included into a list of values
     use Phalcon\Validation\Validator\InclusionIn;
     
     $validator->add('status', new InclusionIn(array(
-       'message' => 'The status must be A or B'
+       'message' => 'The status must be A or B',
        'domain' => array('A', 'B')
     )));
 

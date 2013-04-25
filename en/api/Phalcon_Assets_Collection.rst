@@ -69,3 +69,27 @@ Check if the current element in the iterator is valid
 
 
 
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setPrefix** (*string* $prefix)
+
+Sets a common prefix for all the resources
+
+
+
+public *string*  **getPrefix** ()
+
+Returns the prefix
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setLocal** (*boolean* $local)
+
+Sets if the collection uses local resources by default
+
+
+
+public *boolean*  **getLocal** ()
+
+Returns if the collection uses local resources by default
+
+
+
