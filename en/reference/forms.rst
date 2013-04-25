@@ -201,6 +201,15 @@ Or get specific messages for an element:
         echo $message, '<br>';
     }
 
+Filtering
+---------
+A form is also able to filter data before be validated, you can set filters in each element:
+
+
+
+Setting User Options
+--------------------
+
 Forms + Entities
 ----------------
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
@@ -329,13 +338,17 @@ Event Callbacks
 Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
 in the form's class to perform pre-validations and post-validations:
 
-<?php
+.. code-block:: html+php
 
-class ContactForm extends Phalcon\Mvc\Form
-{
+    <?php
 
-}
+    class ContactForm extends Phalcon\Mvc\Form
+    {
+        public function beforeValidation()
+        {
 
+        }
+    }
 
 Rendering Forms
 ---------------
@@ -410,6 +423,8 @@ Or reuse the logic in your form class:
     }
 
 In the view:
+
+.. code-block:: php
 
     <?php
 

@@ -1225,8 +1225,9 @@ External Resources
 ------------------
 
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
-* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, check out its code on `github <https://github.com/phalcon/website>`_
-* `Album-O-Rama <https://github.com/phalcon/album-o-rama>`_ is a sample application using Volt as template engine, check out its code on Github
+* `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <<https://github.com/phalcon/album-o-rama>`_]
+* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
+* `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
