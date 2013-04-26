@@ -3,14 +3,14 @@ Class **Phalcon\\Mvc\\Model**
 
 *implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
 
 .. code-block:: php
 
     <?php
 
      $robot = new Robots();
-     $robot->type = 'mechanical'
+     $robot->type = 'mechanical';
      $robot->name = 'Astro Boy';
      $robot->year = 1952;
      if ($robot->save() == false) {
@@ -447,7 +447,7 @@ Cancel the current operation
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -462,7 +462,7 @@ Appends a customized message on the validation process
     
        public function beforeSave()
        {
-         if (this->name == 'Peter') {
+         if ($this->name == 'Peter') {
             $message = new Message("Sorry, but a robot cannot be named Peter");
             $this->appendMessage($message);
          }
@@ -472,7 +472,7 @@ Appends a customized message on the validation process
 
 
 
-protected  **validate** ()
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** ()
 
 Executes validators on every validation call 
 
@@ -612,7 +612,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
     //Creating a new robot
     $robot = new Robots();
-    $robot->type = 'mechanical'
+    $robot->type = 'mechanical';
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->save();
@@ -635,7 +635,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
     //Creating a new robot
     $robot = new Robots();
-    $robot->type = 'mechanical'
+    $robot->type = 'mechanical';
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->create();
@@ -678,7 +678,7 @@ Deletes a model instance. Returning true on success or false otherwise.
     $robot = Robots::findFirst("id=100");
     $robot->delete();
     
-    foreach(Robots::find("type = 'mechanical'") as $robot){
+    foreach (Robots::find("type = 'mechanical'") as $robot) {
        $robot->delete();
     }
 
@@ -895,12 +895,12 @@ Setups a behavior in a model
     
        public function initialize()
        {
-    	$this->addBehavior(new Timestampable(
+    	$this->addBehavior(new Timestampable(array(
     		'onCreate' => array(
     			'field' => 'created_at',
     			'format' => 'Y-m-d'
     		)
-    	));
+    	)));
        }
     
     }

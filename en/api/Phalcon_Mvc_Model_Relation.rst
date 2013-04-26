@@ -60,7 +60,7 @@ Returns the options
 
 
 
-public *string|array*  **isForeingKey** ()
+public *string|array*  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 

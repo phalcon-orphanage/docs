@@ -514,6 +514,36 @@ Volt syntax:
     {# Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script> #}
     {{ javascript_include("javascript/jquery.min.js") }}
 
+HTML5 elements - generic HTML helper
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
+
+
+.. code-block:: php
+
+    <?php
+
+    // Generate 
+    // <canvas id="canvas1" width="300" class="cnvclass">
+    // This is my canvas
+    // </canvas>
+    echo \Phalcon\Tag::tagHtml("canvas", array("id" => "canvas1", width" => "300", "class" => "cnvclass", false, true, true);
+    echo "This is my canvas";
+    echo \Phalcon\Tag:tagHtmlClose("canvas")
+
+Volt syntax:
+
+.. code-block:: jinja
+
+    {# Generate #}
+    {# <canvas id="canvas1" width="300" class="cnvclass"> #}
+    {# This is my canvas #}
+    {# </canvas> #}
+    {{ tag_html("canvas", ["id":"canvas1", width":"300", "class":"cnvclass"], false, true, true) }}
+    This is my canvas
+    {{ tag_html_close("canvas") }}
+
 Creating your own helpers
 -------------------------
 You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:

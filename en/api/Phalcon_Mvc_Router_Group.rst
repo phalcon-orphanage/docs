@@ -48,6 +48,18 @@ Phalcon\\Mvc\\Router\\Group constructor
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setHostname** (*string* $hostname)
+
+Set a hostname restriction for all the routes in the group
+
+
+
+public *string*  **getHostname** ()
+
+Returns the hostname restriction
+
+
+
 public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setPrefix** (*string* $prefix)
 
 Set a common uri prefix for all the routes in this group
@@ -57,6 +69,18 @@ Set a common uri prefix for all the routes in this group
 public *string*  **getPrefix** ()
 
 Returns the common prefix for all the routes
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **beforeMatch** (*unknown* $beforeMatch)
+
+Set a before-match condition for the whole group
+
+
+
+public *string*  **getBeforeMatch** ()
+
+Returns the before-match condition if any
 
 
 

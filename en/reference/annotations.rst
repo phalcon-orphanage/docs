@@ -302,3 +302,9 @@ Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
 annotations adapters or extend the existing ones.
+
+External Resources
+------------------
+
+* `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
+

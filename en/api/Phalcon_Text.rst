@@ -73,7 +73,7 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 
 
-public static  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
+public static *boolean*  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
 
 Check if a string starts with a given string 
 
@@ -88,7 +88,7 @@ Check if a string starts with a given string
 
 
 
-public static  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
+public static *boolean*  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
 
 Check if a string ends with a given string 
 

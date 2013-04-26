@@ -75,7 +75,13 @@ Returns the internal annotations as an array
 
 public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **get** (*string* $name)
 
-Returns an annotation by its name
+Returns the first annotation that match a name
+
+
+
+public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` [] **getAll** (*string* $name)
+
+Returns all the annotations that match a name
 
 
 

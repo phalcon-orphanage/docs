@@ -33,7 +33,7 @@ Elimina un indice del diccionario
 
 
 
-public *string*  **offsetGet** (*string* $traslateKey)
+public *string*  **offsetGet** (*string* $translateKey)
 
 Returns the translation related to the given key
 

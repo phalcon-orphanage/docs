@@ -43,7 +43,7 @@ Returns the options
 
 
 
-abstract public *string|array*  **isForeingKey** ()
+abstract public *string|array*  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 

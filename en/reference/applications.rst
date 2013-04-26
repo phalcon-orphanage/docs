@@ -32,7 +32,13 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader,
+        Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Application,
+        Phalcon\Exception,
+        Phalcon\Mvc\View;
+
+    $loader = new Loader();
 
     $loader->registerDirs(
         array(
@@ -41,20 +47,22 @@ If namespaces are not used, the following bootstrap file could be used to orches
         )
     )->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new ();
 
     // Registering the view component
     $di->set('view', function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
     });
 
     try {
-        $application = new \Phalcon\Mvc\Application();
+
+        $application = new Application();
         $application->setDI($di);
         echo $application->handle()->getContent();
-    } catch(Phalcon\Exception $e) {
+
+    } catch (Exception $e) {
         echo $e->getMessage();
     }
 
@@ -64,7 +72,14 @@ If namespaces are used, the following bootstrap can be used:
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader,
+        Phalcon\Mvc\View,
+        Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\Application,
+        Phalcon\Exception;
+
+    $loader = new Loader();
 
     // Use autoloading with namespaces prefixes
     $loader->registerNamespaces(
@@ -74,29 +89,29 @@ If namespaces are used, the following bootstrap can be used:
         )
     )->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
     // Register the dispatcher setting a Namespace for controllers
-    // Pay special attention to the double slashes at the end of the
-    // parameter used in the setDefaultNamespace function
     $di->set('dispatcher', function() {
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Single\Controllers\\');
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Registering the view component
     $di->set('view', function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
     });
 
     try {
-        $application = new \Phalcon\Mvc\Application();
+
+        $application = new Application();
         $application->setDI($di);
         echo $application->handle()->getContent();
-    } catch(Phalcon\Exception $e){
+
+    } catch(Exception $e){
         echo $e->getMessage();
     }
 
@@ -132,7 +147,10 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    use Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\View,
+        Phalcon\Mvc\ModuleDefinitionInterface;
 
     class Module implements ModuleDefinitionInterface
     {
@@ -143,7 +161,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         public function registerAutoloaders()
         {
 
-            $loader = new \Phalcon\Loader();
+            $loader = new Loader();
 
             $loader->registerNamespaces(
                 array(
@@ -163,14 +181,14 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
             //Registering a dispatcher
             $di->set('dispatcher', function() {
-                $dispatcher = new \Phalcon\Mvc\Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers\\");
+                $dispatcher = new Dispatcher();
+                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
             //Registering the view component
             $di->set('view', function() {
-                $view = new \Phalcon\Mvc\View();
+                $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
@@ -184,12 +202,17 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\Mvc\Router,
+        Phalcon\Mvc\Application,
+        Phalcon\DI\FactoryDefault,
+        Phalcon\Exception;
+
+    $di = new FactoryDefault();
 
     //Specify routes for modules
     $di->set('router', function () {
 
-        $router = new \Phalcon\Mvc\Router();
+        $router = new Router();
 
         $router->setDefaultModule("frontend");
 
@@ -226,7 +249,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
     try {
 
         //Create an application
-        $application = new \Phalcon\Mvc\Application();
+        $application = new Application();
         $application->setDI($di);
 
         // Register the installed modules
@@ -246,7 +269,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         //Handle the request
         echo $application->handle()->getContent();
 
-    } catch(Phalcon\Exception $e){
+    } catch(Exception $e){
         echo $e->getMessage();
     }
 
@@ -259,6 +282,9 @@ module:
 
     //Creating a view component
     $view = new \Phalcon\Mvc\View();
+
+    //Set options to view component
+    //...
 
     // Register the installed modules
     $application->registerModules(
@@ -325,12 +351,13 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     <?php
 
     // Request the services from the services container
-    $router = $di->get('router');
+    $router = $di['router'];
+
     $router->handle();
 
-    $view = $di->getShared('view');
+    $view = $di['view'];
 
-    $dispatcher = $di->get('dispatcher');
+    $dispatcher = $di['dispatcher'];
 
     // Pass the proccessed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
@@ -353,7 +380,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Finish the view
     $view->finish();
 
-    $response = $di->get('response');
+    $response = $di['response'];
 
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
@@ -391,7 +418,9 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager;
+
+    $eventsManager = new EventsManager();
 
     $application->setEventsManager($eventsManager);
 

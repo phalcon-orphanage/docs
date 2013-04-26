@@ -7,22 +7,24 @@ The following example shows its basic usage:
 
 .. code-block:: php
 
+    <?php
+
     use Phalcon\Validation\Validator\PresenceOf,
         Phalcon\Validation\Validator\Email;
 
     $validation = new Phalcon\Validation();
 
-    $validation->add('name', new PresenceOf(
-        array('message' => 'The name is required')
-    ));
+    $validation->add('name', new PresenceOf(array(
+        'message' => 'The name is required'
+    )));
 
-    $validation->add('email', new PresenceOf(
-        array('message' => 'The e-mail is required')
-    ));
+    $validation->add('email', new PresenceOf(array(
+        'message' => 'The e-mail is required'
+    )));
 
-    $validation->add('email', new Email(
-        array('message' => 'The e-mail is not valid')
-    ));
+    $validation->add('email', new Email(array(
+        'message' => 'The e-mail is not valid'
+    )));
 
     $messages = $validation->validate($_POST);
     if (count($messages)) {
@@ -30,6 +32,8 @@ The following example shows its basic usage:
             echo $message, '<br>';
         }
     }
+
+The loose-coupled design of this component allows you to create your own validators together with the ones provided by the framework.
 
 Validators
 ----------
@@ -39,6 +43,8 @@ Phalcon exposes a set of built-in validators for this component:
 | Name         | Explanation                                                                                                                                                      | Example                                                           |
 +==============+==================================================================================================================================================================+===================================================================+
 | PresenceOf   | Validates that a field's value isn't null or empty string.                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -50,10 +56,14 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 Additional validators can be created by the developer. The following class explains how to create a validator for this component:
 
 .. code-block:: php
+
+    <?php
 
     use Phalcon\Validation\Validator,
         Phalcon\Validation\ValidatorInterface,
@@ -73,7 +83,7 @@ Additional validators can be created by the developer. The following class expla
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
@@ -139,7 +149,15 @@ Or you can pass a parameter 'message' to change the default message in each vali
 
 .. code-block:: php
 
-    $validation->add('email', new Phalcon\Validation\Validator\Email(
-        'message' => 'The e-mail is not valid'
-    ));
+    <?php
 
+    use Phalcon\Validation\Validator\Email;
+
+    $validation->add('email', new Email(array(
+        'message' => 'The e-mail is not valid'
+    )));
+
+Validation Canceling
+--------------------
+By default, all validators assigned to a field are validated regardless if one of them fail or not. You can change this behavior
+by telling the validation component which validator must stop the validation:

@@ -47,7 +47,7 @@ Checks if the needle is included in the haystack
 
 
 
-public *string*  **converEncoding** (*string* $text, *string* $from, *string* $to)
+public *string*  **convertEncoding** (*string* $text, *string* $from, *string* $to)
 
 Performs a string conversion
 
