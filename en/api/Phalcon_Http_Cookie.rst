@@ -47,7 +47,8 @@ Sends the cookie to the HTTP client Stores the cookie definition in session
 
 public  **restore** ()
 
-...
+Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
+
 
 
 public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setExpiration** (*int* $expire)

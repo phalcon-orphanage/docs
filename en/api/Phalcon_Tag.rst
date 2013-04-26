@@ -529,7 +529,7 @@ Builds a HTML tag
 
     <?php
 
-     echo Phalcon\Tag::tagHtml($name, $parameters, $selfClose, $onlyStart, $eol))
+    echo Phalcon\Tag::tagHtml($name, $parameters, $selfClose, $onlyStart, $eol);
 
 
 
@@ -542,7 +542,7 @@ Builds a HTML tag closing tag
 
     <?php
 
-     echo Phalcon\Tag::tagHtmlClose($name, $eol))
+    echo Phalcon\Tag::tagHtmlClose('script', true)
 
 
 
