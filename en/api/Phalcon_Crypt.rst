@@ -67,8 +67,9 @@ Decrypt a text that is coded as a base64 string
 
 
 
-public  **getAvailableCiphers** ()
+public *array*  **getAvailableCiphers** ()
 
-...
+Returns a list of available cyphers
+
 
 

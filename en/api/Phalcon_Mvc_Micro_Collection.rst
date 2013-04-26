@@ -1,13 +1,14 @@
 Class **Phalcon\\Mvc\\Micro\\Collection**
 =========================================
 
-Groups handlers as controllers  
+Groups Micro-Mvc handlers as controllers  
 
 .. code-block:: php
 
     <?php
 
      $app = new Phalcon\Mvc\Micro();
+    
      $collection = new Phalcon\Mvc\Micro\Collection();
     
      $collection->setHandler(new PostsController());
@@ -23,7 +24,8 @@ Methods
 
 protected  **_addMap** ()
 
-...
+Internal function to add a handler to the group
+
 
 
 public *array*  **getHandlers** ()
@@ -32,7 +34,7 @@ Returns the registered handlers
 
 
 
-public  **setHandler** (*mixed* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setHandler** (*mixed* $handler)
 
 Sets the main handler
 
