@@ -515,7 +515,7 @@ Volt syntax:
     {{ javascript_include("javascript/jquery.min.js") }}
 
 HTML5 elements - generic HTML helper
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
