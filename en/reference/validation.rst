@@ -83,7 +83,7 @@ Additional validators can be created by the developer. The following class expla
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED))) {
+            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {

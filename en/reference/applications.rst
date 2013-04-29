@@ -359,7 +359,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the proccessed router parameters to the dispatcher
+    // Pass the processed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
