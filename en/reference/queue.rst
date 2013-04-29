@@ -25,7 +25,7 @@ structure according to the needs of the application:
     ));
 
     //Insert the job in the queue
-    $queue->put(array('proccessVideo' => 4871));
+    $queue->put(array('processVideo' => 4871));
 
 Available connection options are:
 
@@ -48,7 +48,7 @@ Additional options as time to run, priority and delay could be passed as second 
 
     //Insert the job in the queue with options
     $queue->put(
-        array('proccessVideo' => 4871),
+        array('processVideo' => 4871),
         array('priority' => 250, 'delay' => 10, 'ttr' => 3600)
     );
 
@@ -70,7 +70,7 @@ Every job put into the queue returns a "job id" the developer can use to track t
 
     <?php
 
-    $jobId = $queue->put(array('proccessVideo' => 4871));
+    $jobId = $queue->put(array('processVideo' => 4871));
 
 Retrieving Messages
 -------------------
