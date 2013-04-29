@@ -30,7 +30,7 @@ read during this request.
             "host"     => "localhost",
             "username" => "scott",
             "password" => "cheetah",
-            "name"     => "test_db",
+            "dbname"     => "test_db",
         ),
          "app" => array(
             "controllersDir" => "../app/controllers/",
@@ -66,7 +66,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     host     = localhost
     username = scott
     password = cheetah
-    name     = test_db
+    dbname     = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -99,7 +99,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
     $config = new \Phalcon\Config(array(
         'database' => array(
             'host' => 'localhost',
-            'name' => 'test_db'
+            'dbname' => 'test_db'
         ),
         'debug' => 1
     ));
@@ -124,7 +124,7 @@ The above code produces the following:
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [name] => test_db
+                [dbname] => test_db
                 [username] => scott
                 [password] => secret
             )

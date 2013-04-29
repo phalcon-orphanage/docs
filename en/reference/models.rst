@@ -1701,7 +1701,7 @@ this specially helps when the table has blob/text fields:
 
     class Robots extends Phalcon\Mvc\Model
     {
-        public function initalize()
+        public function initialize()
         {
             $this->useDynamicUpdate(true);
         }
@@ -2425,7 +2425,7 @@ fields are changed according to the data queried from the persistence:
 
     class Robots extends Phalcon\Mvc\Model
     {
-        public function initalize()
+        public function initialize()
         {
             $this->keepSnapshots(true);
         }
