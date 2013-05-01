@@ -10,7 +10,11 @@ Phalcon\\CLI\\Router is the standard framework router. Routing is the process of
     <?php
 
     $router = new Phalcon\CLI\Router();
-    $router->handle(array());
+    $router->handle(array(
+    	'module' => 'main',
+    	'task' => 'videos',
+    	'action' => 'process'
+    ));
     echo $router->getTaskName();
 
 

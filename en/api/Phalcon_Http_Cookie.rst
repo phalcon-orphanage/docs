@@ -9,7 +9,7 @@ Provide OO wrappers to manage a HTTP cookie
 Methods
 ---------
 
-public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path])
+public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*boolean* $httpOnly])
 
 Phalcon\\Http\\Cookie constructor
 
@@ -45,9 +45,27 @@ Sends the cookie to the HTTP client Stores the cookie definition in session
 
 
 
-public  **restore** ()
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **restore** ()
 
 Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
+
+
+
+public  **delete** ()
+
+Deletes the cookie by setting an expire time in the past
+
+
+
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **useEncryption** (*boolean* $useEncryption)
+
+Sets if the cookie must be encrypted/decrypted automatically
+
+
+
+public *boolean*  **isUsingEncryption** ()
+
+Check if the cookie is using implicit encryption
 
 
 
@@ -108,6 +126,12 @@ Sets if the cookie is accessible only through the HTTP protocol
 public *boolean*  **getHttpOnly** ()
 
 Returns if the cookie is accessible only through the HTTP protocol
+
+
+
+public *mixed*  **__toString** ()
+
+Magic __toString method converts the cookie's value to string
 
 
 
