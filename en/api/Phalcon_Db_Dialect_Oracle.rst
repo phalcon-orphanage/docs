@@ -5,7 +5,7 @@ Class **Phalcon\\Db\\Dialect\\Oracle**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
-Phalcon\\Db\\Dialect\\Postgresql  Generates database specific SQL for the PostgreSQL RBDM
+Generates database specific SQL for the Oracle RBDM
 
 
 Methods
@@ -13,7 +13,7 @@ Methods
 
 public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
-Gets the column name in PostgreSQL
+Gets the column name in Oracle
 
 
 
@@ -97,13 +97,13 @@ Generates SQL checking for the existence of a schema.table <code>echo $dialect->
 
 public *string*  **describeColumns** (*string* $table, [*string* $schema])
 
-Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts") ?>
+Generates a SQL describing a table <code>print_r($dialect->describeColumns("posts")) ?>
 
 
 
 public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on database <code>print_r($dialect->listTables("blog") ?>
+List all tables on database <code>print_r($dialect->listTables("blog")) ?>
 
 
 
@@ -125,13 +125,7 @@ Generates the SQL to describe the table creation options
 
 
 
-public *string*  **select** (*array* $definition)
-
-Builds a SELECT statement
-
-
-
-public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
+public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
 Generates the SQL for LIMIT clause 
 
@@ -142,6 +136,12 @@ Generates the SQL for LIMIT clause
      $sql = $dialect->limit('SELECT * FROM robots', 10);
      echo $sql; // SELECT * FROM robots LIMIT 10
 
+
+
+
+public *string*  **select** (*array* $definition)
+
+Builds a SELECT statement
 
 
 

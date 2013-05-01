@@ -235,8 +235,8 @@ Checks whether the connection is under a transaction
 
     <?php
 
-     $connection->begin();
-     var_dump($connection->isUnderTransaction()); //true
+    $connection->begin();
+    var_dump($connection->isUnderTransaction()); //true
 
 
 

@@ -28,15 +28,39 @@ Internal function to add a handler to the group
 
 
 
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setPrefix** (*string* $prefix)
+
+Sets a prefix for all routes added to the collection
+
+
+
+public *string*  **getPrefix** ()
+
+Returns the collection prefix if any
+
+
+
 public *array*  **getHandlers** ()
 
 Returns the registered handlers
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setHandler** (*mixed* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
 Sets the main handler
+
+
+
+public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setLazy** (*boolean* $lazy)
+
+Sets if the main handler must be lazy loaded
+
+
+
+public *boolean*  **isLazy** ()
+
+Returns if the main handler must be lazy loaded
 
 
 
