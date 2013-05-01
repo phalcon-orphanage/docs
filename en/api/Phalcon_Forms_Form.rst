@@ -31,7 +31,7 @@ Returns the form's action
 
 public *Phalcon\\Forms\\ElementInterface*  **setUserOption** (*string* $option, *mixed* $value)
 
-Sets an option for the element
+Sets an option for the form
 
 
 

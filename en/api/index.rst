@@ -41,6 +41,7 @@ API Indice
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
+   Phalcon_Cache_Frontend_Json
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
@@ -48,6 +49,7 @@ API Indice
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Exception
    Phalcon_Crypt
+   Phalcon_Crypt_Exception
    Phalcon_DI
    Phalcon_DI_Exception
    Phalcon_DI_FactoryDefault
@@ -235,6 +237,7 @@ API Indice
    Phalcon_Annotations_ReaderInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
+   Phalcon_CryptInterface
    Phalcon_DI_InjectionAwareInterface
    Phalcon_DI_ServiceInterface
    Phalcon_Db_AdapterInterface
@@ -253,6 +256,7 @@ API Indice
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
+   Phalcon_Http_Response_CookiesInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface

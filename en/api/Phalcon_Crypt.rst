@@ -1,6 +1,8 @@
 Class **Phalcon\\Crypt**
 ========================
 
+*implements* :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`
+
 Provides encryption facilities to phalcon applications
 
 
@@ -70,6 +72,12 @@ Decrypt a text that is coded as a base64 string
 public *array*  **getAvailableCiphers** ()
 
 Returns a list of available cyphers
+
+
+
+public *array*  **getAvailableModes** ()
+
+Returns a list of available modes
 
 
 

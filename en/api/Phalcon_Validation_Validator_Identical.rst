@@ -5,7 +5,19 @@ Class **Phalcon\\Validation\\Validator\\Identical**
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Checks if a value is identical to other
+Checks if a value is identical to other  
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator\Identical;
+    
+    $validator->add('terms', new Identical(array(
+       'accepted' => 'yes',
+       'message' => 'Terms and conditions must be accepted'
+    )));
+
 
 
 Methods

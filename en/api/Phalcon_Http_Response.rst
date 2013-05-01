@@ -62,13 +62,13 @@ Returns headers set by the user
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (*Phalcon\\Http\\Response\\CookiesInterface* $cookies)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (:doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>` $cookies)
 
 Sets a cookies bag for the response externally
 
 
 
-public *Phalcon\\Http\\Response\\CookiesInterface*  **getCookies** ()
+public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **getCookies** ()
 
 Returns coookies set by the user
 
