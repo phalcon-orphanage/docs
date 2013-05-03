@@ -162,7 +162,7 @@ Builds a HTML input[type="number"] tag
 
     <?php
 
-    echo Phalcon\Tag::numericField(array("price", "min" => "1" "max" => "5"));
+    echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
 
 
 

@@ -109,7 +109,7 @@ Adds an element to the form
 
 public *string*  **render** (*string* $name, [*array* $attributes])
 
-Renders an specific item in the form
+Renders a specific item in the form
 
 
 

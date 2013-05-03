@@ -77,7 +77,7 @@ Changes a parameter in the definition without resolve the service
 
 public *array*  **getParameter** (*int* $position)
 
-Returns a parameter in an specific position
+Returns a parameter in a specific position
 
 
 

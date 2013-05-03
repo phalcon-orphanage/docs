@@ -128,7 +128,7 @@ Sets the render level for the view
 
 public  **disableLevel** (*int|array* $level)
 
-Disables an specific level of rendering 
+Disables a specific level of rendering 
 
 .. code-block:: php
 

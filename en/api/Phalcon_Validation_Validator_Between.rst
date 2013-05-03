@@ -14,8 +14,8 @@ Validates that a value is between a range of two values
     use Phalcon\Validation\Validator\Between;
     
     $validator->add('name', new Between(array(
-       'minimum' => 0
-       'maximum' => 100
+       'minimum' => 0,
+       'maximum' => 100,
        'message' => 'The price must be between 0 and 100'
     )));
 

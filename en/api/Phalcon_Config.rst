@@ -15,7 +15,7 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
     		"host" => "localhost",
     		"username" => "scott",
     		"password" => "cheetah",
-    		"name" => "test_db"
+    		"dbname" => "test_db"
     	),
     	"phalcon" => array(
     		"controllersDir" => "../app/controllers/",

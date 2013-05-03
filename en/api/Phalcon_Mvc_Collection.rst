@@ -392,14 +392,7 @@ Perform a count over a collection
 
 public static *array*  **aggregate** (*array* $parameters)
 
-Perform an aggregation using the Mongo aggregation framework 
-
-.. code-block:: php
-
-    <?php
-
-     echo 'There are ', Robots::aggregate(), ' robots';
-
+Perform an aggregation using the Mongo aggregation framework
 
 
 

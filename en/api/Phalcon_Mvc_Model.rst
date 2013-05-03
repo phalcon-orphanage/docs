@@ -949,7 +949,7 @@ Returns the internal snapshot data
 
 public  **hasChanged** ([*boolean* $fieldName])
 
-Check if an specific attribute has changed This only works if the model is keeping data snapshots
+Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
 
 

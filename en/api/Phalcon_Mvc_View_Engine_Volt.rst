@@ -55,7 +55,7 @@ Performs a string conversion
 
 public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
 
-Extracts a slice from an string/array/traversable object value
+Extracts a slice from a string/array/traversable object value
 
 
 
