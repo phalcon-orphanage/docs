@@ -181,8 +181,8 @@ by telling the validation component which validator must stop the validation:
             'pattern' => '/\+44 [0-9]+/'
         )))
         ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is required',
-            'pattern' => '/\+44 [0-9]+/'
+            'min' => 2,
+            'messageMinimum' => 'Length > 2 description error'
         )));
 
 The first validator has the option 'cancelOnFail' => true, therefore if that validator fails the next validator in the chain is not executed.
