@@ -9,7 +9,7 @@ This component helps to separate session data into "namespaces". Working by this
 
     <?php
 
-    $user = new \Phalcon\Session\Bag();
+    $user = new \Phalcon\Session\Bag('user');
     $user->name = "Kimbra Johnson";
     $user->age = 22;
 
@@ -76,7 +76,7 @@ Magic setter to assign values to the session bag
 
     <?php
 
-     $user->name = Kimbra;
+     $user->name = "Kimbra";
 
 
 
@@ -141,7 +141,7 @@ Removes a property from the internal bag
 
     <?php
 
-     $user->remove('name'));
+     $user->remove('name');
 
 
 

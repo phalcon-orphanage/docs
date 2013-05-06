@@ -45,19 +45,25 @@ Returns the number of arguments that the annotation has
 
 public *mixed*  **getArgument** (*unknown* $position)
 
-Returns an argument in an specific position
+Returns an argument in a specific position
 
 
 
 public *mixed*  **hasArgument** (*unknown* $position)
 
-Returns an argument in an specific position
+Returns an argument in a specific position
+
+
+
+public *mixed*  **getNamedArgument** (*string* $name)
+
+Returns a named argument
 
 
 
 public *mixed*  **getNamedParameter** (*string* $name)
 
-Returns a named argument
+Returns a named argument (deprecated)
 
 
 

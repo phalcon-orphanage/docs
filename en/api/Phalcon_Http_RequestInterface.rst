@@ -7,19 +7,19 @@ Phalcon\\Http\\RequestInterface initializer
 Methods
 ---------
 
-abstract public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed
 

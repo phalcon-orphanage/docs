@@ -8,7 +8,7 @@ PHP offers tools to debug applications with notices, warnings, errors and except
 line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate
 this functionality and provide information back to the developer or user.
 
-Despite being written in C, Phalcon runs methods in the PHP userland, providing the debug capability that any other application or framework
+Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework
 written in PHP has.
 
 Catching Exceptions

@@ -47,7 +47,7 @@ Checks if the needle is included in the haystack
 
 
 
-public *string*  **converEncoding** (*string* $text, *string* $from, *string* $to)
+public *string*  **convertEncoding** (*string* $text, *string* $from, *string* $to)
 
 Performs a string conversion
 
@@ -55,7 +55,7 @@ Performs a string conversion
 
 public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
 
-Extracts a slice from an string/array/traversable object value
+Extracts a slice from a string/array/traversable object value
 
 
 

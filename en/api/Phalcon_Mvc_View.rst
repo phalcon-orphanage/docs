@@ -88,7 +88,6 @@ Sets a partials sub-directory. Must be a directory under the views directory. De
 
     <?php
 
-    *
      $view->setPartialsDir('../common/partials/');
 
 
@@ -129,7 +128,7 @@ Sets the render level for the view
 
 public  **disableLevel** (*int|array* $level)
 
-Disables an specific level of rendering 
+Disables a specific level of rendering 
 
 .. code-block:: php
 
@@ -362,7 +361,7 @@ Renders a partial view
 
 
 
-public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params])
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
 
 Perform the automatic rendering returning the output as a string 
 

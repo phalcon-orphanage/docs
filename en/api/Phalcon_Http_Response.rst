@@ -62,13 +62,13 @@ Returns headers set by the user
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (*Phalcon\\Http\\Response\\CookiesInterface* $cookies)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setCookies** (:doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>` $cookies)
 
 Sets a cookies bag for the response externally
 
 
 
-public *Phalcon\\Http\\Response\\CookiesInterface*  **getCookies** ()
+public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **getCookies** ()
 
 Returns coookies set by the user
 
@@ -139,6 +139,19 @@ Sets the response content-type mime, optionally the charset
 
 
 
+public  **setEtag** (*string* $etag)
+
+Set a custom ETag 
+
+.. code-block:: php
+
+    <?php
+
+    $response->setEtag(md5(time()));
+
+
+
+
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
@@ -168,6 +181,19 @@ Sets HTTP response body
 
 
 
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
+
+Sets HTTP response body. The parameter is automatically converted to JSON 
+
+.. code-block:: php
+
+    <?php
+
+    $response->setJsonContent(array("status" => "OK"));
+
+
+
+
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
@@ -192,9 +218,20 @@ Sends headers to the client
 
 
 
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendCookies** ()
+
+Sends cookies to the client
+
+
+
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **send** ()
 
 Prints out HTTP response to the client
 
+
+
+public  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName])
+
+...
 
 

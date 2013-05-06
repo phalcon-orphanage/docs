@@ -16,7 +16,7 @@ Reads ini files and convert it to Phalcon\\Config objects.  Given the next confi
     host = localhost
     username = scott
     password = cheetah
-    name = test_db
+    dbname = test_db
     
     [phalcon]
     controllersDir = "../app/controllers/"

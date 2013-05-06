@@ -292,8 +292,8 @@ A cross-backend way to do this is the following:
 
 Multi-Level Cache
 -----------------
-This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful 
-because you can save the same data in several cache​ locations​ with different lifetimes, reading ​first from the one with 
+This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful
+because you can save the same data in several cache​ locations​ with different lifetimes, reading ​first from the one with
 the faster adapter and ending with the slowest one until the data expire​s​:
 
 .. code-block:: php
@@ -335,17 +335,19 @@ Frontend Adapters
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-+---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Adapter | Description                                                                                                                    | Example                                                                        |
-+=========+================================================================================================================================+================================================================================+
-| Output  | Read input data from standard PHP output                                                                                       | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). The data is serialized before stored in the backend. | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`     |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Base64  | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                    | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>` |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| None    | It's used to cache any kind of PHP data without serializing them.                                                              | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`     |
-+---------+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Adapter | Description                                                                                                                                                          | Example                                                                        |
++=========+======================================================================================================================================================================+================================================================================+
+| Output  | Read input data from standard PHP output                                                                                                                             | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                           | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`     |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Base64  | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                          | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>` |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| Json    | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks.       | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`     |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+| None    | It's used to cache any kind of PHP data without serializing them.                                                                                                    | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`     |
++---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 Implementing your own Frontend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

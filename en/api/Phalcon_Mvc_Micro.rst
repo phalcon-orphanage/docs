@@ -78,7 +78,13 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public  **notFound** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **mount** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection)
+
+Mounts a collection of handlers
+
+
+
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
@@ -191,6 +197,12 @@ Appends an 'after' middleware to be called after execute the route
 public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
 
 Appends an 'finish' middleware to be called when the request is finished
+
+
+
+public *array*  **getHandlers** ()
+
+Returns the internal handlers attached to the application
 
 
 

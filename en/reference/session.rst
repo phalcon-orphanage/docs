@@ -3,6 +3,12 @@ Storing data in Session
 
 The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
+Reasons to use this component instead of raw-sessions:
+
+* You can easily isolate session data across applications on the same domain
+* Intercept where session data is set/get in your application
+* Change the session adapter according to the application needs
+
 Starting the Session
 --------------------
 Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually.

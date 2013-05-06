@@ -36,9 +36,9 @@ Check whether internal resource has rows to fetch
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*boolean* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
 
 
 
@@ -171,6 +171,23 @@ Returns the error messages produced by a batch operation
 public *boolean*  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Delete every record in the resultset
+
+
+
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Filters a resultset returning only those the developer requires 
+
+.. code-block:: php
+
+    <?php
+
+     $filtered = $robots->filter(function($robot){
+    	if ($robot->id < 3) {
+    		return $robot;
+    	}
+    });
+
 
 
 
