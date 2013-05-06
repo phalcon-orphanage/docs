@@ -15,7 +15,7 @@ Phalcon\\Session\\Adapter constructor
 
 public *boolean*  **start** ()
 
-Starts the session (if headers are already sent the session will not started)
+Starts the session (if headers are already sent the session will not be started)
 
 
 

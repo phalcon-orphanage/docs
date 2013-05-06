@@ -233,13 +233,17 @@ can create outside the application a container to manipulate its services:
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Micro,
+        Phalcon\Config\Adapter\Ini as IniConfig;
+
+    $di = new FactoryDefault();
 
     $di->set('config', function() {
-        return new \Phalcon\Config\Adapter\Ini("config.ini");
+        return new IniConfig("config.ini");
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     $app->setDI($di);
 
@@ -258,11 +262,14 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro,
+        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+
+    $app = new Micro();
 
     //Setup the database service
     $app['db'] = function() {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        return new MysqlAdapter(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -342,8 +349,11 @@ In the following example, we explain how to control the application security usi
 
     <?php
 
+    use Phalcon\Mvc\Micro,
+        Phalcon\Events\Manager as EventsManager;
+
     //Create a events manager
-    $eventManager = \Phalcon\Events\Manager();
+    $eventManager = new EventsManager();
 
     //Listen all the application events
     $eventManager->attach('micro', function($event, $app) {
@@ -361,7 +371,7 @@ In the following example, we explain how to control the application security usi
 
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     //Bind the events manager to the app
     $app->setEventsManager($eventsManager);
@@ -397,10 +407,53 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->finish(function() use ($app) {
-        //This is executed when is the request has been served
+        //This is executed when the request has been served
     });
 
-You can call the methods several times to add more events of the same type. The following table explains the events:
+You can call the methods several times to add more events of the same type.
+
+Code for middlewares can be reused using separate classes:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro\MiddlewareInterface;
+
+    /**
+     * CacheMiddleware
+     *
+     * Caches pages to reduce processing
+     */
+    class CacheMiddleware implements MiddlewareInterface
+    {
+        public function call($application)
+        {
+
+            $cache = $application['cache'];
+            $router = $application['router'];
+
+            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+
+            //Check if the request is cached
+            if ($cache->exists($key)) {
+                echo $cache->get($key);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+Then add the instance to the application:
+
+.. code-block:: php
+
+    <?php
+
+    $app->before(new CacheMiddleware());
+
+The following middleware events are available:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -412,20 +465,80 @@ You can call the methods several times to add more events of the same type. The 
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
-Returning Responses
--------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+Using Controllers as Handlers
+-----------------------------
+Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
+You can use :doc:`Phalcon\\Mvc\\Micro\\Collection` to group handlers that belongs to controllers:
 
 .. code-block:: php
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro\Collection as MicroCollection;
+
+    $posts = new MicroCollection();
+
+    //Set the main handler. ie. a controller instance
+    $posts->setHandler(new PostsController());
+
+    //Set a common prefix for all routes
+    $posts->setPrefix('/posts');
+
+    //Use the method 'index' in PostsController
+    $posts->get('/', 'index');
+
+    //Use the method 'show' in PostsController
+    $posts->get('/show/{slug}', 'show');
+
+    $app->mount($posts);
+
+The controller 'PostsController' might look like this:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends Phalcon\Mvc\Controller
+    {
+
+        public function index()
+        {
+            //...
+        }
+
+        public function show($slug)
+        {
+            //...
+        }
+    }
+
+The example driver directly instantiated, Collection also is provided in the ability to load
+the drivers only if the route is matched:
+
+.. code-block:: php
+
+    <?php
+
+    $posts->setHandler('PostsController', true);
+    $posts->setHandler('Blog\Controllers\PostsController', true);
+
+Returning Responses
+-------------------
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro,
+        Phalcon\Http\Response;
+
+    $app = new Micro();
 
     //Return a response
     $app->get('/welcome/index', function() {
 
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         $response->setStatusCode(401, "Unauthorized");
 
@@ -461,4 +574,8 @@ Rendering Views
 
     });
 
+Related Sources
+---------------
+
 :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
+

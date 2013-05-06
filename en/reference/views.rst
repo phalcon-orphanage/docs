@@ -312,7 +312,10 @@ This method can be invoked from the controller or from a superior view layer to 
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller,
+        Phalcon\Mvc\View;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -324,7 +327,7 @@ This method can be invoked from the controller or from a superior view layer to 
         {
 
             // This is an Ajax response so it doesn't generate any kind of view
-            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+            $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
             //...
         }
@@ -332,7 +335,7 @@ This method can be invoked from the controller or from a superior view layer to 
         public function showAction($postId)
         {
             // Shows only the view related to the action
-            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
+            $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
 
     }
@@ -385,9 +388,10 @@ Or disable temporarily in some part of the application:
 
     <?php
 
-    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View,
+        Phalcon\Mvc\Controller;
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -762,6 +766,26 @@ All the components in Phalcon can be used as *glue* components individually beca
     $view->finish();
 
     echo $view->getContent();
+
+A short syntax is also available:
+
+.. code-block:: php
+
+    <?php
+
+    $view = new \Phalcon\Mvc\View();
+
+    echo $view->getRender('products', 'list',
+        array(
+            "someProducts" => $products,
+            "someFeatureEnabled" => true
+        ),
+        function($view) {
+            //Set any extra options here
+            $view->setViewsDir("../app/views/");
+            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
+        }
+    );
 
 View Events
 -----------

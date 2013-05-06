@@ -87,21 +87,21 @@ first subpattern matched (:controller) is the controller part of the route, the 
 These placeholders help writing regular expressions that are more readable for developers and easier
 to understand. The following placeholders are supported:
 
-+--------------+---------------------+--------------------------------------------------------------------+
-| Placeholder  | Regular Expression  | Usage                                                              |
-+==============+=====================+====================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only     |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only     |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes              |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                              |
-+--------------+---------------------+--------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                       |
-+--------------+---------------------+--------------------------------------------------------------------+
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| Placeholder  | Regular Expression  | Usage                                                                                                  |
++==============+=====================+========================================================================================================+
+| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
+| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
++--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 
 Controller names are camelized, this means that characters (-) and (_) are removed and the next character
 is uppercased. For instance, some_controller is converted to SomeController.
@@ -390,6 +390,53 @@ If a set of routes have common paths they can be grouped to easily maintain them
     //Add the group to the router
     $router->mount($blog);
 
+You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
+
+.. code-block:: php
+
+    <?php
+
+    class BlogRoutes extends Phalcon\Mvc\Router\Group
+    {
+        public function initialize()
+        {
+            //Default paths
+            $this->setPaths(array(
+                'module' => 'blog',
+                'namespace' => 'Blog\Controllers'
+            ));
+
+            //All the routes start with /blog
+            $this->setPrefix('/blog');
+
+            //Add a route to the group
+            $this->add('/save', array(
+                'action' => 'save'
+            ));
+
+            //Add another route to the group
+            $this->add('/edit/{id}', array(
+                'action' => 'edit'
+            ));
+
+            //This route maps to a controller different than the default
+            $this->add('/blog', array(
+                'controller' => 'about',
+                'action' => 'index'
+            ));
+
+        }
+    }
+
+Then mount the group in the router:
+
+.. code-block:: php
+
+    <?php
+
+    //Add the group to the router
+    $router->mount(new BlogRoutes());
+
 Matching Routes
 ---------------
 A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
@@ -610,7 +657,7 @@ those paths they can be automatically filled by the router:
 
     <?php
 
-    //Individually
+    //Setting a specific default
     $router->setDefaultModule("backend");
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController("index");
@@ -650,9 +697,117 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
+Match Callbacks
+---------------
+Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
+'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session'
+    ))->beforeMatch(function($uri, $route) {
+        //Check if the request was made with Ajax
+        if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
+            return false;
+        }
+        return true;
+    });
+
+You can re-use these extra conditions in classes:
+
+.. code-block:: php
+
+    <?php
+
+    class AjaxFilter
+    {
+        public function check()
+        {
+            return $_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest';
+        }
+    }
+
+And use this class instead of the anonymous function:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/get/info/{id}', array(
+        'controller' => 'products',
+        'action' => 'info'
+    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+
+Hostname Constraints
+--------------------
+The router allow to set hostname contraints, this means that specific routes or a group of routes can be restricted
+to only match if the route also meets the hostname constraint:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session',
+        'action' => 'login'
+    ))->setHostName('admin.company.com');
+
+Hostname can also be regular expressions:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session',
+        'action' => 'login'
+    ))->setHostName('([a-z+]).company.com');
+
+In groups of routes you can set up a hostname constraint that apply for every route in the group:
+
+.. code-block:: php
+
+    <?php
+
+    //Create a group with a common module and controller
+    $blog = new \Phalcon\Mvc\Router\Group(array(
+        'module' => 'blog',
+        'controller' => 'posts'
+    ));
+
+    //Hostname restriction
+    $blog->setHostName('blog.mycompany.com');
+
+    //All the routes start with /blog
+    $blog->setPrefix('/blog');
+
+    //Default route
+    $blog->add('/', array(
+        'action' => 'index'
+    ));
+
+    //Add a route to the group
+    $blog->add('/save', array(
+        'action' => 'save'
+    ));
+
+    //Add another route to the group
+    $blog->add('/edit/{id}', array(
+        'action' => 'edit'
+    ));
+
+    //Add the group to the router
+    $router->mount($blog);
+
 URI Sources
 -----------
-By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to 
+By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
 Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
 .. code-block:: php

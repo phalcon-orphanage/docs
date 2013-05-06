@@ -28,11 +28,11 @@ Specify it in the routes as a separate parameter in the route's paths:
     <?php
 
     $router->add(
-        "/admin/users/my-profile",
+        '/admin/users/my-profile',
         array(
-            "namespace"  => "Store\Admin",
-            "controller" => "Users",
-            "action"     => "profile",
+            'namespace"  => 'Store\Admin',
+            'controller" => 'Users',
+            'action"     => 'profile',
         )
     );
 
@@ -43,11 +43,11 @@ Passing it as part of the route:
     <?php
 
     $router->add(
-        "/:namespace/admin/users/my-profile",
+        '/:namespace/admin/users/my-profile',
         array(
-            "namespace"  => 1,
-            "controller" => "Users",
-            "action"     => "profile",
+            'namespace"  => 1,
+            'controller" => 'Users',
+            'action"     => 'profile',
         )
     );
 
@@ -61,7 +61,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
     //Registering a dispatcher
     $di->set('dispatcher', function() {
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Store\Admin\Controllers\\');
+        $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
         return $dispatcher;
     });
 

@@ -21,9 +21,17 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **via** (*string|array* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **via** (*string|array* $httpMethods)
 
-Set one or more HTTP methods that constraint the matching of the route
+Set one or more HTTP methods that constraint the matching of the route 
+
+.. code-block:: php
+
+    <?php
+
+     $route->via('GET');
+     $route->via(array('GET', 'POST'));
+
 
 
 
@@ -39,15 +47,30 @@ Returns the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **setName** (*string* $name)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setName** (*string* $name)
 
-Sets the route's name
+Sets the route's name 
+
+.. code-block:: php
+
+    <?php
+
+     $router->add('/about', array(
+         'controller' => 'about'
+     ))->setName('about');
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **setHttpMethods** (*string|array* $httpMethods)
 
-Sets a set of HTTP methods that constraint the matching of the route
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **beforeMatch** (*callback* $callback)
+
+Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched
+
+
+
+public *mixed*  **getBeforeMatch** ()
+
+Returns the 'before match' callback if any
 
 
 
@@ -81,13 +104,46 @@ Returns the paths using positions as keys and names as values
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*string|array* $httpMethods)
+
+Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
+
+.. code-block:: php
+
+    <?php
+
+     $route->setHttpMethods('GET');
+     $route->setHttpMethods(array('GET', 'POST'));
+
+
+
+
 public *string|array*  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **convert** (*string* $name, *callable* $converter)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHostname** (*unknown* $hostname)
+
+Sets a hostname restriction to the route 
+
+.. code-block:: php
+
+    <?php
+
+     $route->setHostname('localhost');
+
+
+
+
+public *string*  **getHostname** ()
+
+Returns the hostname restriction if any
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **convert** (*string* $name, *callable* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 

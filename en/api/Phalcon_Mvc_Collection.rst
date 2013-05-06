@@ -287,7 +287,7 @@ Appends a customized message on the validation process
     
     	public function beforeSave()
     	{
-    		if (this->name == 'Peter') {
+    		if ($this->name == 'Peter') {
     			$message = new Message("Sorry, but a robot cannot be named Peter");
     			$this->appendMessage($message);
     		}
@@ -392,14 +392,7 @@ Perform a count over a collection
 
 public static *array*  **aggregate** (*array* $parameters)
 
-Perform an aggregation using the Mongo aggregation framework 
-
-.. code-block:: php
-
-    <?php
-
-     echo 'There are ', Robots::aggregate(), ' robots';
-
+Perform an aggregation using the Mongo aggregation framework
 
 
 

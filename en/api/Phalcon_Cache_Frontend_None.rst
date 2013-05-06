@@ -9,43 +9,37 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
     <?php
 
-     //Create a None Cache
-     $frontCache = new Phalcon\Cache\Frontend\None();
+    //Create a None Cache
+    $frontCache = new Phalcon\Cache\Frontend\None();
     
-     // Create the component that will cache "Data" to a "Memcached" backend
-     // Memcached connection settings
-     $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
-         "host" => "localhost",
-         "port" => "11211"
-     ));
+    // Create the component that will cache "Data" to a "Memcached" backend
+    // Memcached connection settings
+    $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
+    	"host" => "localhost",
+    	"port" => "11211"
+    ));
     
-     // This Frontend always return the data as it's returned by the backend
-     $cacheKey = 'robots_order_id.cache';
-     $robots    = $cache->get($cacheKey);
-     if ($robots === null) {
+    // This Frontend always return the data as it's returned by the backend
+    $cacheKey = 'robots_order_id.cache';
+    $robots    = $cache->get($cacheKey);
+    if ($robots === null) {
     
-         // This cache doesn't perform any expiration checking, so the data is always expired
-         // Make the database call and populate the variable
-         $robots = Robots::find(array("order" => "id"));
+    	// This cache doesn't perform any expiration checking, so the data is always expired
+    	// Make the database call and populate the variable
+    	$robots = Robots::find(array("order" => "id"));
     
-         $cache->save($cacheKey, $robots);
-     }
+    	$cache->save($cacheKey, $robots);
+    }
     
-     // Use $robots :)
-     foreach ($robots as $robot) {
-        echo $robot->name, "\n";
-     }
+    // Use $robots :)
+    foreach ($robots as $robot) {
+    	echo $robot->name, "\n";
+    }
 
 
 
 Methods
 ---------
-
-public  **__construct** ([*array* $frontendOptions])
-
-Phalcon\\Cache\\Frontend\\None constructor
-
-
 
 public *int*  **getLifetime** ()
 

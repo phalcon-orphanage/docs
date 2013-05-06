@@ -53,7 +53,7 @@ Elimina un indice del diccionario
 
 
 
-public *string*  **offsetGet** (*string* $traslateKey) inherited from Phalcon\\Translate\\Adapter
+public *string*  **offsetGet** (*string* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation related to the given key
 

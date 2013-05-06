@@ -236,6 +236,30 @@ Gets the type of PHQL statement executed
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindParams** (*array* $bindParams)
+
+Set default bind parameters
+
+
+
+public *array*  **getBindParams** ()
+
+Returns default bind params
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindTypes** (*array* $bindTypes)
+
+Set default bind parameters
+
+
+
+public *array*  **getBindTypes** ()
+
+Returns default bind types
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setIntermediate** (*array* $intermediate)
 
 Allows to set the IR to be executed
