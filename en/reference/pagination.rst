@@ -17,8 +17,8 @@ This component makes use of adapters to encapsulate different sources of data:
 | QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
 +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Using Paginators
-----------------
+Examples
+--------
 In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
 
 .. code-block:: php
@@ -77,6 +77,52 @@ The $page object also contains navigation data:
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
+Adapters Usage
+--------------
+An example of the source data that must be used for each adapter:
+
+.. code-block:: php
+
+    <?php
+
+    //Passing a resultset as data
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
+        array(
+            "data"  => Products::find(),
+            "limit" => 10,
+            "page"  => $currentPage
+        )
+    );
+
+    //Passing an array as data
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
+        array(
+            "data"  => array(
+                array('id' => 1, 'name' => 'Artichoke'),
+                array('id' => 2, 'name' => 'Carrots'),
+                array('id' => 3, 'name' => 'Beet'),
+                array('id' => 4, 'name' => 'Lettuce'),
+                array('id' => 5, 'name' => '')
+            ),
+            "limit" => 2,
+            "page"  => $currentPage
+        )
+    );
+
+    //Passing a querybuilder as data
+
+    $builder = $this->modelsManager->createBuilder()
+        ->columns('id, name')
+        ->from('Robots')
+        ->orderBy('name');
+
+    $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
+        "builder" => $builder,
+        "limit"=> 20,
+        "page" => 1
+    ));
+
+
 Page Attributes
 ---------------
 The $page object has the following attributes:
@@ -95,6 +141,8 @@ The $page object has the following attributes:
 | last        | The last page in the set of records                    |
 +-------------+--------------------------------------------------------+
 | total_pages | The number of pages                                    |
++-------------+--------------------------------------------------------+
+| total_items | The number of items in the source data                 |
 +-------------+--------------------------------------------------------+
 
 Implementing your own adapters

@@ -41,6 +41,7 @@ Table of Contents
    reference/events
    reference/request
    reference/response
+   reference/cookies
    reference/url
    reference/flash
    reference/session
