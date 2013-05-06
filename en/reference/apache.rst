@@ -93,5 +93,4 @@ And this second configuration allows you to install a Phalcon application in a v
 
     </VirtualHost>
 
-
 .. _Apache: http://httpd.apache.org/

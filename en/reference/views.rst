@@ -767,6 +767,26 @@ All the components in Phalcon can be used as *glue* components individually beca
 
     echo $view->getContent();
 
+A short syntax is also available:
+
+.. code-block:: php
+
+    <?php
+
+    $view = new \Phalcon\Mvc\View();
+
+    echo $view->getRender('products', 'list',
+        array(
+            "someProducts" => $products,
+            "someFeatureEnabled" => true
+        ),
+        function($view) {
+            //Set any extra options here
+            $view->setViewsDir("../app/views/");
+            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
+        }
+    );
+
 View Events
 -----------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to an :doc:`EventsManager <events>` if it's present. Events

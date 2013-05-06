@@ -15,14 +15,14 @@ This component is designed to provide a very simple usage:
     <?php
 
     //Create an instance
-    $encryption = new Phalcon\Crypt();
+    $crypt = new Phalcon\Crypt();
 
     $key = 'le password';
     $text = 'This is a secret text';
 
-    $encrypted = $encryption->encrypt($text, $key);
+    $encrypted = $crypt->encrypt($text, $key);
 
-    echo $encryption->decrypt($encrypted, $key);
+    echo $crypt->decrypt($encrypted, $key);
 
 You can use the same instance to encrypt/decrypt several times:
 
@@ -31,7 +31,7 @@ You can use the same instance to encrypt/decrypt several times:
     <?php
 
     //Create an instance
-    $encryption = new Phalcon\Crypt();
+    $crypt = new Phalcon\Crypt();
 
     $texts = array(
         'my-key' => 'This is a secret text',
@@ -41,10 +41,10 @@ You can use the same instance to encrypt/decrypt several times:
     foreach ($texts as $key => $text) {
 
         //Perform the encryption
-        $encrypted = $encryption->encrypt($text, $key);
+        $encrypted = $crypt->encrypt($text, $key);
 
         //Now decrypt
-        echo $encryption->decrypt($encrypted, $key);
+        echo $crypt->decrypt($encrypted, $key);
     }
 
 Encryption Options
@@ -66,15 +66,15 @@ Example:
     <?php
 
     //Create an instance
-    $encryption = new Phalcon\Crypt();
+    $crypt = new Phalcon\Crypt();
 
     //Use blowfish
-    $encryption->setCipher('blowfish');
+    $crypt->setCipher('blowfish');
 
     $key = 'le password';
     $text = 'This is a secret text';
 
-    echo $encryption->encrypt($text, $key);
+    echo $crypt->encrypt($text, $key);
 
 Base64 Support
 --------------
@@ -85,14 +85,14 @@ In order that encryption is properly transmited (emails) or displayed (browsers)
     <?php
 
     //Create an instance
-    $encryption = new Phalcon\Crypt();
+    $crypt = new Phalcon\Crypt();
 
     $key = 'le password';
     $text = 'This is a secret text';
 
-    $encrypt = $encryption->encryptBase64($text, $key);
+    $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $encryption->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($text, $key);
 
 Setting up an Encryption service
 --------------------------------
@@ -102,14 +102,14 @@ You can set up the encryption component in the services container in order to us
 
     <?php
 
-    $di->set('encryption', function() {
+    $di->set('crypt', function() {
 
-        $encryption = new Phalcon\Crypt();
+        $crypt = new Phalcon\Crypt();
 
         //Set a global encryption key
-        $encryption->setKey('311e86effdada283219971cca5ad5a19');
+        $crypt->setKey('%31.1e$i86e$f!8jz');
 
-        return $encryption;
+        return $crypt;
     }, true);
 
 Then, for example, in a controller you can use it as follows:
@@ -129,7 +129,7 @@ Then, for example, in a controller you can use it as follows:
 
             $text = $this->request->getPost('text');
 
-            $secret->content = $this->encryption->encrypt($text);
+            $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
                 $this->flash->success('Secret was successfully created!');

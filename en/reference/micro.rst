@@ -407,10 +407,53 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->finish(function() use ($app) {
-        //This is executed when is the request has been served
+        //This is executed when the request has been served
     });
 
-You can call the methods several times to add more events of the same type. The following table explains the events:
+You can call the methods several times to add more events of the same type.
+
+Code for middlewares can be reused using separate classes:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro\MiddlewareInterface;
+
+    /**
+     * CacheMiddleware
+     *
+     * Caches pages to reduce processing
+     */
+    class CacheMiddleware implements MiddlewareInterface
+    {
+        public function call($application)
+        {
+
+            $cache = $application['cache'];
+            $router = $application['router'];
+
+            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+
+            //Check if the request is cached
+            if ($cache->exists($key)) {
+                echo $cache->get($key);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+Then add the instance to the application:
+
+.. code-block:: php
+
+    <?php
+
+    $app->before(new CacheMiddleware());
+
+The following middleware events are available:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -422,9 +465,66 @@ You can call the methods several times to add more events of the same type. The 
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
+Using Controllers as Handlers
+-----------------------------
+Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
+You can use :doc:`Phalcon\\Mvc\\Micro\\Collection` to group handlers that belongs to controllers:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro\Collection as MicroCollection;
+
+    $posts = new MicroCollection();
+
+    //Set the main handler. ie. a controller instance
+    $posts->setHandler(new PostsController());
+
+    //Set a common prefix for all routes
+    $posts->setPrefix('/posts');
+
+    //Use the method 'index' in PostsController
+    $posts->get('/', 'index');
+
+    //Use the method 'show' in PostsController
+    $posts->get('/show/{slug}', 'show');
+
+    $app->mount($posts);
+
+The controller 'PostsController' might look like this:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends Phalcon\Mvc\Controller
+    {
+
+        public function index()
+        {
+            //...
+        }
+
+        public function show($slug)
+        {
+            //...
+        }
+    }
+
+The example driver directly instantiated, Collection also is provided in the ability to load
+the drivers only if the route is matched:
+
+.. code-block:: php
+
+    <?php
+
+    $posts->setHandler('PostsController', true);
+    $posts->setHandler('Blog\Controllers\PostsController', true);
+
 Returning Responses
 -------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface:
 
 .. code-block:: php
 
@@ -474,4 +574,8 @@ Rendering Views
 
     });
 
+Related Sources
+---------------
+
 :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
+
