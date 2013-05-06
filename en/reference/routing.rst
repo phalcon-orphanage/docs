@@ -390,6 +390,53 @@ If a set of routes have common paths they can be grouped to easily maintain them
     //Add the group to the router
     $router->mount($blog);
 
+You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
+
+.. code-block:: php
+
+    <?php
+
+    class BlogRoutes extends Phalcon\Mvc\Router\Group
+    {
+        public function initialize()
+        {
+            //Default paths
+            $this->setPaths(array(
+                'module' => 'blog',
+                'namespace' => 'Blog\Controllers'
+            ));
+
+            //All the routes start with /blog
+            $this->setPrefix('/blog');
+
+            //Add a route to the group
+            $this->add('/save', array(
+                'action' => 'save'
+            ));
+
+            //Add another route to the group
+            $this->add('/edit/{id}', array(
+                'action' => 'edit'
+            ));
+
+            //This route maps to a controller different than the default
+            $this->add('/blog', array(
+                'controller' => 'about',
+                'action' => 'index'
+            ));
+
+        }
+    }
+
+Then mount the group in the router:
+
+.. code-block:: php
+
+    <?php
+
+    //Add the group to the router
+    $router->mount(new BlogRoutes());
+
 Matching Routes
 ---------------
 A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
@@ -690,10 +737,73 @@ And use this class instead of the anonymous function:
 
     <?php
 
+    $router->add('/get/info/{id}', array(
+        'controller' => 'products',
+        'action' => 'info'
+    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+
+Hostname Constraints
+--------------------
+The router allow to set hostname contraints, this means that specific routes or a group of routes can be restricted
+to only match if the route also meets the hostname constraint:
+
+.. code-block:: php
+
+    <?php
+
     $router->add('/login', array(
         'module' => 'admin',
-        'controller' => 'session'
-    ))->beforeMatch(array(new AjaxFilter(), 'check'));
+        'controller' => 'session',
+        'action' => 'login'
+    ))->setHostName('admin.company.com');
+
+Hostname can also be regular expressions:
+
+.. code-block:: php
+
+    <?php
+
+    $router->add('/login', array(
+        'module' => 'admin',
+        'controller' => 'session',
+        'action' => 'login'
+    ))->setHostName('([a-z+]).company.com');
+
+In groups of routes you can set up a hostname constraint that apply for every route in the group:
+
+.. code-block:: php
+
+    <?php
+
+    //Create a group with a common module and controller
+    $blog = new \Phalcon\Mvc\Router\Group(array(
+        'module' => 'blog',
+        'controller' => 'posts'
+    ));
+
+    //Hostname restriction
+    $blog->setHostName('blog.mycompany.com');
+
+    //All the routes start with /blog
+    $blog->setPrefix('/blog');
+
+    //Default route
+    $blog->add('/', array(
+        'action' => 'index'
+    ));
+
+    //Add a route to the group
+    $blog->add('/save', array(
+        'action' => 'save'
+    ));
+
+    //Add another route to the group
+    $blog->add('/edit/{id}', array(
+        'action' => 'edit'
+    ));
+
+    //Add the group to the router
+    $router->mount($blog);
 
 URI Sources
 -----------

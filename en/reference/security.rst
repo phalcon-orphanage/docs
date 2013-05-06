@@ -141,6 +141,11 @@ to setup it's options:
         return $security;
     }, true);
 
+External Resources
+------------------
+
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
+
 .. _sha1 : http://php.net/manual/en/function.sha1.php
 .. _md5 : http://php.net/manual/en/function.md5.php
 .. _openssl_random_pseudo_bytes : http://php.net/manual/en/function.openssl-random-pseudo-bytes.php

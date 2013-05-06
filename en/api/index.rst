@@ -139,6 +139,7 @@ API Indice
    Phalcon_Mvc_Micro
    Phalcon_Mvc_Micro_Collection
    Phalcon_Mvc_Micro_Exception
+   Phalcon_Mvc_Micro_LazyLoader
    Phalcon_Mvc_Model
    Phalcon_Mvc_Model_Behavior
    Phalcon_Mvc_Model_Behavior_SoftDelete
@@ -252,6 +253,7 @@ API Indice
    Phalcon_Events_EventsAwareInterface
    Phalcon_Events_ManagerInterface
    Phalcon_FilterInterface
+   Phalcon_Filter_UserFilterInterface
    Phalcon_FlashInterface
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
@@ -264,6 +266,7 @@ API Indice
    Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
+   Phalcon_Mvc_Micro_CollectionInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_BehaviorInterface
    Phalcon_Mvc_Model_CriteriaInterface

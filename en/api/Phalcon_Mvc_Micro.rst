@@ -200,6 +200,12 @@ Appends an 'finish' middleware to be called when the request is finished
 
 
 
+public *array*  **getHandlers** ()
+
+Returns the internal handlers attached to the application
+
+
+
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector

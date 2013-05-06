@@ -1,6 +1,8 @@
 Class **Phalcon\\Mvc\\Micro\\Collection**
 =========================================
 
+*implements* :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`
+
 Groups Micro-Mvc handlers as controllers  
 
 .. code-block:: php

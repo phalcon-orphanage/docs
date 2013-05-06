@@ -325,6 +325,17 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
         There are no robots to show
     {% endfor %}
 
+Alternative syntax:
+
+.. code-block:: html+jinja
+
+    <h1>Robots</h1>
+    {% for robot in robots %}
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br/>
+    {% elsefor %}
+        There are no robots to show
+    {% endfor %}
+
 Loop Controls
 ^^^^^^^^^^^^^
 The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
@@ -613,6 +624,8 @@ The following built-in tests are available in Volt:
 +----------------------+----------------------------------------------------------------------------------------------+
 | Test                 | Description                                                                                  |
 +======================+==============================================================================================+
+| defined              | Checks if a variable is defined (isset)                                                      |
++----------------------+----------------------------------------------------------------------------------------------+
 | empty                | Checks if a variable is empty                                                                |
 +----------------------+----------------------------------------------------------------------------------------------+
 | even                 | Checks if a numeric value is even                                                            |
@@ -629,10 +642,16 @@ The following built-in tests are available in Volt:
 +----------------------+----------------------------------------------------------------------------------------------+
 | sameas               | Checks if a value is identical to other value                                                |
 +----------------------+----------------------------------------------------------------------------------------------+
+| type                 | Checks if a value is of the specified type                                                   |
++----------------------+----------------------------------------------------------------------------------------------+
 
 More examples:
 
 .. code-block:: html+jinja
+
+    {% if robot is defined %}
+        The robot variable is defined
+    {% endif }
 
     {% if robot is empty %}
         The robot is null or isn't defined
@@ -661,6 +680,16 @@ More examples:
         {% for robot in robots %}
             ...
         {% endfor %}
+    {% endif %}
+
+    {% set world = "hello" %}
+    {% if world is sameas("hello") %}
+        {{ "it's hello" }}
+    {% endif %}
+
+    {% set external = false %}
+    {% if external is type('boolean') %}
+        {{ "external is false or true" }}
     {% endif %}
 
 Using Tag Helpers
@@ -719,6 +748,10 @@ To call a Phalcon\Tag helper, you only need to call an uncamelized version of th
 | Phalcon\\Tag::checkField           | check_field           |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::radioField           | radio_field           |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::dateField            | date_field            |
++------------------------------------+-----------------------+
+| Phalcon\\Tag::numberField          | number_field          |
 +------------------------------------+-----------------------+
 | Phalcon\\Tag::submitButton         | submit_button         |
 +------------------------------------+-----------------------+
@@ -1099,11 +1132,11 @@ Generate the code based on some function availability:
 
     <?php
 
-    $compiler->addFunction('include_text', function($resolvedArgs, $exprArgs) {
+    $compiler->addFunction('contains_text', function($resolvedArgs, $exprArgs) {
         if (function_exists('mb_stripos')) {
-            return 'mb_stripos('.$resolvedArgs.')';
+            return 'mb_stripos(' . $resolvedArgs . ')';
         } else {
-            return 'stripos('.$resolvedArgs.')';
+            return 'stripos(' . $resolvedArgs . ')';
         }
     });
 
@@ -1227,6 +1260,7 @@ External Resources
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
 * `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that uses Volt, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference

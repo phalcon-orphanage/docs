@@ -137,6 +137,45 @@ so you have access to the application services if needed:
         }
     }
 
+The associated entity added to the form in the initialization and custom user options are passed to the form constructor:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Forms\Form,
+        Phalcon\Forms\Element\Text,
+        Phalcon\Forms\Element\Hidden;
+
+    class UsersForm extends Form
+    {
+        /**
+         * Forms initializer
+         *
+         * @param Users $user
+         * @param array $options
+         */
+        public function initialize($user, $options)
+        {
+
+            if ($options['edit']) {
+                $this->add(new Hidden('id'));
+            } else {
+                $this->add(new Text('id'));
+            }
+
+            $this->add(new Text('name'));
+        }
+    }
+
+In the form's instantiation you must use:
+
+.. code-block:: php
+
+    <?php
+
+    $form = new UsersForm(new Users(), array('edit' => true));
+
 Validation
 ----------
 Phalcon forms are integrated with the :doc:`validation <validation>` component to offer instant validation. Built-in or
@@ -330,6 +369,10 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | File         | Generate INPUT[type=file] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_File>`                |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Date         | Generate INPUT[type=date] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Date>`                |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numeric      | Generate INPUT[type=number] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Numeric>`             |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Submit       | Generate INPUT[type=submit] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
@@ -450,3 +493,8 @@ In addition to the form elements provided by Phalcon you can create your own cus
             return $html;
         }
     }
+
+External Resources
+------------------
+
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create forms in this application, [`Github <https://github.com/phalcon/vokuro>`_]
