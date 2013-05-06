@@ -47,7 +47,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         )
     )->register();
 
-    $di = new ();
+    $di = new FactoryDefault();
 
     // Registering the view component
     $di->set('view', function() {
