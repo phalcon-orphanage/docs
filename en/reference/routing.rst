@@ -383,7 +383,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     //This route maps to a controller different than the default
     $blog->add('/blog', array(
-        'controller' => 'about',
+        'controller' => 'blog',
         'action' => 'index'
     ));
 
