@@ -7,7 +7,7 @@ you can check our :doc:`developer tools <tools>`.
 
 Checking your installation
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the 
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
 code snippet below:
 
 .. code-block:: php
@@ -410,11 +410,11 @@ A database connection is just another service that our application has that can 
         });
 
         //Handle the request
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+        $application = new \Phalcon\Mvc\Application($di);
+
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch(Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 

@@ -551,7 +551,6 @@ Graphs
 
 The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
 
-
 .. raw:: html
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>

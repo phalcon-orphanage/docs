@@ -553,3 +553,47 @@ header .navbar-inner .nav li > a:active { position: relative; top: 2px; }
 header .navbar-inner .nav li.active {}
 header .navbar-inner .nav li.active > a { color: #dadada; background: none; box-shadow: none; }
 header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: none; color: #d3ebe3; }
+
+.sample {
+	width: 330px;
+	height: 250px;
+}
+
+.sample div {
+	position: relative;
+	top: 105px;
+	left: -1px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+}
+
+.sample a {
+	color: #fff;
+}
+
+.sample-1 {
+	background: url('img/sample-1.png');
+}
+
+.sample-2 {
+	background: url('img/sample-2.png');
+}
+
+.sample-3 {
+	background: url('img/sample-3.png');
+}
+
+.sample-4 {
+	background: url('img/sample-4.png');
+}
+
+.sample-5 {
+	background: url('img/sample-5.png');
+}
+
+.sample-6 {
+	background: url('img/sample-6.png');
+}
+
+

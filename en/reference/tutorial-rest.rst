@@ -124,11 +124,12 @@ application:
 
     <?php
 
-    use \Phalcon\Mvc\Model\Message;
-    use \Phalcon\Mvc\Model\Validator\InclusionIn;
-    use \Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Message,
+        Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Uniqueness;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
@@ -226,7 +227,7 @@ The searching by name handler would look like:
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%'.$name.'%'
+            'name' => '%' . $name . '%'
         ));
 
         $data = array();

@@ -16,7 +16,7 @@ connection parameters or the type of database system because the component only 
 
         /**
          * The instantiation of the connection is hardcoded inside
-         * the component so is difficult replacing it externally
+         * the component so is difficult replace it externally
          * or change its behavior
          */
         public function someDbTask()
@@ -36,7 +36,7 @@ connection parameters or the type of database system because the component only 
     $some = new SomeComponent();
     $some->someDbTask();
 
-To solve this, we create a setter that injects the dependency externally before using it. For now, this seems to be
+To solve this, we have created a setter that injects the dependency externally before using it. For now, this seems to be
 a good solution:
 
 .. code-block:: php

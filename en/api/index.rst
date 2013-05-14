@@ -267,6 +267,7 @@ API Indice
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
    Phalcon_Mvc_Micro_CollectionInterface
+   Phalcon_Mvc_Micro_MiddlewareInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_BehaviorInterface
    Phalcon_Mvc_Model_CriteriaInterface

@@ -21,6 +21,9 @@ Validates that a field or a combination of a set of fields are not present more 
           $this->validate(new UniquenessValidator(array(
               'field' => 'email'
           )));
+          $this->validate(new UniquenessValidator(array(
+              'field' => array('username','phone')
+          )));
           if ($this->validationHasFailed() == true) {
               return false;
           }
