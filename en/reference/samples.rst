@@ -6,7 +6,7 @@ as base for your own websites/applications:
 
 .. raw:: html
 
-	<table align="center">
+	<table align="center" cellspacing="0">
 		<tr>
 			<td class="sample-1 sample">
 				<div><a href="http://github.com/phalcon/website">Phalcon's website</a></div>
@@ -20,7 +20,7 @@ as base for your own websites/applications:
 		<tr>
 		<tr>
 			<td class="sample-3 sample">
-				<div><a href="http://github.com/phalcon/website">PHP Alternative website</a></div>
+				<div><a href="http://github.com/phalcon/phpsite">PHP Alternative website</a></div>
 			</td>
 			<td class="sample-4 sample">
 				<div><a href="http://github.com/phalcon/albumorama">Phosphorum</a></div>
