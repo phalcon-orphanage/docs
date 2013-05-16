@@ -151,5 +151,5 @@ You can override this method or print the resources manually in the following wa
     <?php
 
     foreach ($this->assets->collection('js') as $resource) {
-        echo Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
     }
