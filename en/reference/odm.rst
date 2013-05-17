@@ -452,8 +452,8 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
-    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Numericality;
 
     class Robots extends \Phalcon\Mvc\Collection
     {
@@ -464,14 +464,15 @@ The following example shows how to use it:
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
+                    "message" => "Type must be: mechanical or virtual"
                     "domain" => array("Mechanical", "Virtual")
                 )
             ));
 
-            $this->validate(new Uniqueness(
+            $this->validate(new Numericality(
                 array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+                    "field"  => "price",
+                    "message" => "Price must be numeric"
                 )
             ));
 

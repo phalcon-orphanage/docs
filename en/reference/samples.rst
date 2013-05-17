@@ -23,7 +23,7 @@ as base for your own websites/applications:
 				<div><a href="http://github.com/phalcon/phpsite">PHP Alternative website</a></div>
 			</td>
 			<td class="sample-4 sample">
-				<div><a href="http://github.com/phalcon/albumorama">Phosphorum</a></div>
+				<div><a href="http://github.com/phalcon/forum">Phosphorum</a></div>
 			</td>
 		</tr>
 		</tr>
@@ -31,7 +31,7 @@ as base for your own websites/applications:
 		<tr>
 		<tr>
 			<td class="sample-5 sample">
-				<div><a href="http://github.com/phalcon/forum">Album O'Rama</a></div>
+				<div><a href="http://github.com/phalcon/albumorama">Album O'Rama</a></div>
 			</td>
 			<td class="sample-6 sample">
 				<div><a href="http://github.com/phalcon/vokuro">Vökuró</a></div>
