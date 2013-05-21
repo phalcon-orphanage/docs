@@ -225,7 +225,21 @@ Aggregations
 A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
 With this option is easy perform tasks such as totaling or averaging field values:
 
+.. code-block:: php
 
+    <?php
+
+    $data = Article::aggregate(array(
+        array(
+            '$project' => array('category' => 1)
+        ),
+        array(
+            '$group' => array(
+                '_id' => array('category' => '$category'),
+                'id' => array('$max' => '$_id')
+            )
+        )
+    ));
 
 Creating Updating/Records
 -------------------------
