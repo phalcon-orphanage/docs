@@ -533,7 +533,8 @@ div.highlight {
 pre {
 	font-family: 'Anonymous Pro', Monaco, Menlo, Consolas, "Courier New", monospace;
 	background-color: transparent;
-	line-height: 17px;
+	line-height: 19px;
+	font-size: 17px;
 }
 
 div#methods div.highlight {
