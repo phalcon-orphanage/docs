@@ -4,11 +4,11 @@ html {
 }
 
 body {
-    color: #333333;
-    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 22px;
-    margin: 0 0 11px;
+	color: #333333;
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	margin: 0 0 11px;
 }
 
 #nav-main {
@@ -34,15 +34,15 @@ h2 {
 
 h3 {
 	font-size: 18px;
-    font-style: normal;
-    margin: 15px 0 10px;
-    font-weight: normal;
+	font-style: normal;
+	margin: 15px 0 10px;
+	font-weight: normal;
 }
 
 h4 {
 	font-size: 16px;
-    font-style: normal;
-    font-weight: normal;
+	font-style: normal;
+	font-weight: normal;
 }
 
 /*p, li {
@@ -236,26 +236,26 @@ div.figure {
 }
 
 .highlight .cp {
-    color: #DCDCCC;
+	color: #DCDCCC;
 }
 
 .highlight .nb {
-    color: #EFDCBC;
+	color: #EFDCBC;
 }
 
 .highlight .k {
-    color: #F0DFAF;
-    font-weight: bold;
+	color: #F0DFAF;
+	font-weight: bold;
 }
 
 .highlight .c1,
 .highlight .cm {
 	color: #7F9F7F;
-    font-style: italic;
+	font-style: italic;
 }
 
 .highlight .nx {
-    color: #FAFAFA;
+	color: #FAFAFA;
 }
 
 .highlight .na {
@@ -274,17 +274,17 @@ div.figure {
 }
 
 .highlight .o {
-    color: #DCDCCC;
+	color: #DCDCCC;
 }
 
 .highlight .nc {
-    color: #fafafa;
-    font-weight: bold;
+	color: #fafafa;
+	font-weight: bold;
 }
 
 .highlight .nf {
 	color: #fafafa;
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .highlight .mi,
@@ -298,27 +298,27 @@ div.figure {
 }
 
 .highlight .sd {
-    color: #7F9F7F;
-    font-style: italic;
+	color: #7F9F7F;
+	font-style: italic;
 }
 
 .highlight .se {
-    color: #ababab;
-    font-weight: bold;
+	color: #ababab;
+	font-weight: bold;
 }
 
 .highlight .kn {
-    color: #FAFAFA;
-    font-weight: bold;
+	color: #FAFAFA;
+	font-weight: bold;
 }
 
 .highlight .sr {
-    color: #DADADA;
+	color: #DADADA;
 }
 
 .highlight .si {
-    color: #EFDCBC;
-    font-style: italic;
+	color: #EFDCBC;
+	font-style: italic;
 }
 
 .highlight .kd {
@@ -328,20 +328,20 @@ div.figure {
 table.docutils {
 	border-collapse: collapse;
 	border-top: 1px solid #DDDDDD;
-    border-left: 1px solid #DDDDDD;
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
-    margin-bottom: 15px;
-    border-radius: 4px;
+	border-left: 1px solid #DDDDDD;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	margin-bottom: 15px;
+	border-radius: 4px;
 }
 
 table.docutils td,
 table.docutils th {
 	color: #434343;
 	border-bottom: 1px solid #DDDDDD;
-    border-right: 1px solid #DDDDDD;
-    padding: 5px;
+	border-right: 1px solid #DDDDDD;
+	padding: 5px;
 }
 
 table.docutils th {
@@ -361,16 +361,16 @@ div#constants h2 {
 
 div#methods a,
 div#constants a, {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 div#methods a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 div#methods em,
 div#constants em {
-    color: #0088CC;
+	color: #0088CC;
 }
 
 p.method-desc {
@@ -421,9 +421,9 @@ em {
 }
 
 p.versionchanged, blockquote.highlights {
-    background-color: #D9EDF7;
-    border-color: #BCE8F1;
-    color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	color: #3A87AD;
 }
 
 div#footer {
@@ -449,10 +449,10 @@ div#footer a {
 div.highlight, blockquote {
 	font-family: 'Anonymous Pro', Monaco, Menlo, Consolas, "Courier New", monospace;
 	background-color: transparent;
-    display: block;
-    font-size: 17px;
-    line-height: 18px;
-    word-wrap: break-word;
+	display: block;
+	font-size: 17px;
+	line-height: 18px;
+	word-wrap: break-word;
 }
 
 div.highlight {
@@ -460,46 +460,46 @@ div.highlight {
 }
 
 .highlight .sd {
-    color: #717171;
-    font-weight: normal;
+	color: #717171;
+	font-weight: normal;
 }
 
 .highlight .k {
-    color: #1E347B;
-    font-weight: normal;
+	color: #1E347B;
+	font-weight: normal;
 }
 
 .highlight .nf,
 .highlight .nc {
-    color: #48484C;
-    font-weight: normal;
+	color: #48484C;
+	font-weight: normal;
 }
 
 .highlight .nv {
-    color: #48484C;
+	color: #48484C;
 }
 
 .highlight .nx,
 .highlight .na,
 .highlight .nb  {
-    color: teal;
+	color: teal;
 }
 
 .highlight .s, .highlight .s1, .highlight .s2, .highlight .sb {
-    color: #DD1144;
+	color: #DD1144;
 }
 
 .highlight .c1, .highlight .cm {
-    color: #93A1A1;
-    font-style: italic;
+	color: #93A1A1;
+	font-style: italic;
 }
 
 .highlight .o {
-    color: #1E347B;
+	color: #1E347B;
 }
 
 .highlight .cp {
-    color: rgba(0, 0, 0, 0.4);
+	color: rgba(0, 0, 0, 0.4);
 }
 
 .highlight .nt {
@@ -508,26 +508,26 @@ div.highlight {
 }
 
 .highlight .si {
-    color: coral;
-    font-weight: normal;
+	color: coral;
+	font-weight: normal;
 }
 
 .highlight .mi, .highlight .mf, .highlight .m {
-    color: teal;
+	color: teal;
 }
 
 .highlight .ni {
-    color: teal;
-    font-weight: bold;
+	color: teal;
+	font-weight: bold;
 }
 
 .highlight .kn {
-    color: #000000;
-    font-weight: normal;
+	color: #000000;
+	font-weight: normal;
 }
 
 .highlight .sr {
-    color: #717171;
+	color: #717171;
 }
 
 pre {
@@ -594,5 +594,3 @@ header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: no
 .sample-6 {
 	background: url('img/sample-6.png');
 }
-
-

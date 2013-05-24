@@ -19,7 +19,7 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
         $finished = true;
 
-        $controllerClass = $controllerName."Controller";
+        $controllerClass = $controllerName . "Controller";
 
         //Instantiating the controller class via autoloaders
         $controller = new $controllerClass();

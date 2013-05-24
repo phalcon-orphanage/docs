@@ -1062,7 +1062,7 @@ the mass assignment:
     <?php
 
     $robot = new Robots();
-    $robot->save($_POST, array('name', 'type'));    
+    $robot->save($_POST, array('name', 'type'));
 
 Create/Update with Confidence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
