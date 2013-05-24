@@ -23,6 +23,8 @@ database engines are supported:
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,6 +43,8 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
++------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
+| Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
 Implementing your own dialects
@@ -99,6 +103,41 @@ below shows how to create a connection passing both required and optional parame
 
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
+
+.. code-block:: php
+
+    <?php
+
+    // Required
+    $config = array(
+        'username' => 'scott',
+        'password' => 'tiger',
+        'dbname' => '192.168.10.145/orcl',
+        'charset' => 'CL8MSWIN1251'
+    );
+
+    // Create a connection
+    $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
+
+Setting up additional PDO options
+---------------------------------
+You can set PDO options at connection time by passing the parameters 'options':
+
+.. code-block:: php
+
+    <?php
+
+    // Create a connection with PDO options
+    $connection = new \Phalcon\Db\Adapter\Pdo\Oracle(array(
+        "host" => "localhost",
+        "username" => "root",
+        "password" => "sigma",
+        "dbname" => "test_db",
+        "options" => array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
+            PDO::ATTR_CASE => PDO::CASE_LOWER
+        )
+    ));
 
 Finding Rows
 ------------
@@ -597,33 +636,21 @@ is limited by these constraints.
     use \Phalcon\Db\Column as Column;
 
     // Adding a new column
-    $connection->addColumn(
-        "robots",
-        null,
-        new Column(
-            "robot_type",
-            array(
-                "type"    => Column::TYPE_VARCHAR,
-                "size"    => 32,
-                "notNull" => true,
-                "after"   => "name",
-            )
-        )
+    $connection->addColumn("robots", null,
+        new Column("robot_type", array(
+            "type"    => Column::TYPE_VARCHAR,
+            "size"    => 32,
+            "notNull" => true,
+            "after"   => "name",
+        ))
     );
 
     // Modifying an existing column
-    $connection->modifyColumn(
-        "robots",
-        null,
-        new Column(
-            "name",
-            array(
-                "type" => Column::TYPE_VARCHAR,
-                "size" => 40,
-                "notNull" => true,
-            )
-        )
-    );
+    $connection->modifyColumn("robots", null, new Column("name", array(
+        "type" => Column::TYPE_VARCHAR,
+        "size" => 40,
+        "notNull" => true,
+    )));
 
     // Deleting the column "name"
     $connection->deleteColumn("robots", null, "name");
