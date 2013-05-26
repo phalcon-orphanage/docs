@@ -1,4 +1,18 @@
 
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Anonymous Pro'), local('Anonymous Pro'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousPro.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Anonymous Pro Bold'), local('Anonymous Pro Bold'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousProB.ttf) format('truetype');
+}
+
 html {
 	background: none;
 }
@@ -595,3 +609,5 @@ header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: no
 .sample-6 {
 	background: url('img/sample-6.png');
 }
+
+
