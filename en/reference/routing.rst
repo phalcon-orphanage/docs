@@ -192,10 +192,10 @@ You can access their values in the same way as before:
         {
 
             // Returns "name" parameter
-            $year = $this->dispatcher->getParam("name");
+            $name = $this->dispatcher->getParam("name");
 
             // Returns "type" parameter
-            $year = $this->dispatcher->getParam("type");
+            $type = $this->dispatcher->getParam("type");
 
         }
 
