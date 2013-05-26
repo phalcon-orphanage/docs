@@ -1,16 +1,16 @@
 
 @font-face {
-  font-family: 'Anonymous Pro';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Anonymous Pro'), local('Anonymous Pro'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousPro.ttf) format('truetype');
+	font-family: 'Anonymous Pro';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Anonymous Pro'), local('Anonymous Pro'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousPro.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Anonymous Pro';
-  font-style: normal;
-  font-weight: bold;
-  src: local('Anonymous Pro Bold'), local('Anonymous Pro Bold'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousProB.ttf) format('truetype');
+	font-family: 'Anonymous Pro';
+	font-style: normal;
+	font-weight: bold;
+	src: local('Anonymous Pro Bold'), local('Anonymous Pro Bold'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousProB.ttf) format('truetype');
 }
 
 html {
@@ -19,9 +19,9 @@ html {
 
 body {
 	color: #333333;
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 14px;
-	line-height: 22px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	line-height: 27px;
 	margin: 0 0 11px;
 }
 
@@ -35,8 +35,8 @@ body {
 }
 
 h2 {
-	font-family: "Open Sans",sans-serif;
-	font-style: normal;
+	font-family: Helvetica, Arial ,sans-serif;
+	font-style: bold;
 	letter-spacing: normal;
 	color: #333333;
 	font-size: 20px;
@@ -71,7 +71,7 @@ td.primary-box li {
 }
 
 td.second-box li {
-	margin-bottom: 0em;
+	margin-bottom: 4px;
 }
 
 td.second-box li.toctree-l1 {
@@ -117,9 +117,6 @@ td.second-box {
 div.documentwrapper h1 {
 	color: #000000;
 	display: block;
-	/*font: italic 36px Georgia,"Times New Roman",Times,serif;
-	letter-spacing: -3px;
-	text-rendering: optimizelegibility;*/
 	font: 400 28px 'Open Sans','Lucida Sans Unicode','Lucida Grande',sans-serif;
 	margin: 0;
 	margin-bottom: 7px;
@@ -258,14 +255,8 @@ div.figure {
 }
 
 .highlight .k {
-	color: #F0DFAF;
+	color: #219;
 	font-weight: bold;
-}
-
-.highlight .c1,
-.highlight .cm {
-	color: #7F9F7F;
-	font-style: italic;
 }
 
 .highlight .nx {
@@ -479,7 +470,7 @@ div.highlight {
 }
 
 .highlight .k {
-	color: #1E347B;
+	color: #219;
 	font-weight: normal;
 }
 
@@ -504,7 +495,7 @@ div.highlight {
 }
 
 .highlight .c1, .highlight .cm {
-	color: #93A1A1;
+	color: #a50;
 	font-style: italic;
 }
 
@@ -540,6 +531,10 @@ div.highlight {
 	font-weight: normal;
 }
 
+.highlight .c {
+	color: #a50;
+}
+
 .highlight .sr {
 	color: #717171;
 }
@@ -549,6 +544,7 @@ pre {
 	background-color: transparent;
 	line-height: 19px;
 	font-size: 17px;
+	border: 1px solid #eaeaea;
 }
 
 div#methods div.highlight {

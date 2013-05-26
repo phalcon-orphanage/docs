@@ -1,5 +1,5 @@
-Using Dependency Injection
-**************************
+Dependency Injection/Service Location
+*************************************
 The following example is a bit lengthy, but explains why using a service container, service location and dependency injection.
 First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
 Our component has some dependency that is a connection to a database.

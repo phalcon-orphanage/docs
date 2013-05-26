@@ -57,15 +57,6 @@
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
-            {% if versions %}
-                <h3>Project Versions</h3>
-
-                <select name="versions" id="versions">
-            {% for slug, url in versions %}
-            <option value="http://docs.phalconphp.com{{ url }}">{{ slug }}</option>
-            {% endfor %}
-                </select>
-            {% endif %}
             <div id="searchbox" style="">
               <h3>Search</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
@@ -184,7 +175,7 @@
           <div class="navbar-inner">
               <div class="container-fluid">
                   <a class="brand" href="http://phalconphp.com/index">
-                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo Small Sp">
+                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo">
                   </a>
                   <div class="nav-collapse collapse pull-right">
                       <ul class="nav">
