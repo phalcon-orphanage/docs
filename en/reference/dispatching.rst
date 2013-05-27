@@ -27,9 +27,9 @@ within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
         // Execute the action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
-        // Finished should be reloaded to check if the flow was forwarded to another controller
-        // $finished = false;
-
+        // '$finished' should be reloaded to check if the flow
+        // was forwarded to another controller
+        $finished = true;
     }
 
 The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.

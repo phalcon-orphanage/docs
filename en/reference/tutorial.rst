@@ -112,8 +112,8 @@ The public/index.php file should look like:
         });
 
         //Handle the request
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+        $application = new \Phalcon\Mvc\Application($di);
+
         echo $application->handle()->getContent();
 
     } catch(\Phalcon\Exception $e) {
@@ -180,8 +180,8 @@ route the incoming request, and then dispatch any discovered actions; it aggrega
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application();
-    $application->setDI($di);
+    $application = new \Phalcon\Mvc\Application($di);
+
     echo $application->handle()->getContent();
 
 As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less
@@ -442,7 +442,9 @@ Receiving data from the form and storing them in the table is the next step.
             $user = new Users();
 
             //Store and check for errors
-            if ($user->save($_POST, array('name', 'email')) == true) {
+            $success = $user->save($this->request->getPost(), array('name', 'email'));
+
+            if ($success) {
                 echo "Thanks for register!";
             } else {
                 echo "Sorry, the following problems were generated: ";

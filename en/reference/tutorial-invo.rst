@@ -58,7 +58,7 @@ of the bootstrap file (public/index.php):
     <?php
 
     //Read the configuration
-    $config = new Phalcon\Config\Adapter\Ini(__DIR__ . '/../app/config/config.ini');
+    $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
 contains the following settings:
@@ -100,10 +100,10 @@ of directories where the application will look for the classes that it eventuall
 
     $loader->registerDirs(
         array(
-            __DIR__ . $config->application->controllersDir,
-            __DIR__ . $config->application->pluginsDir,
-            __DIR__ . $config->application->libraryDir,
-            __DIR__ . $config->application->modelsDir,
+            $config->application->controllersDir,
+            $config->application->pluginsDir,
+            $config->application->libraryDir,
+            $config->application->modelsDir,
         )
     )->register();
 
@@ -238,7 +238,7 @@ data entered checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Taking the variables sent by POST
+                //Receiving the variables sent by POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
@@ -253,7 +253,7 @@ data entered checking for a valid user in the database:
 
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome '.$user->name);
+                    $this->flash->success('Welcome ' . $user->name);
 
                     //Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
