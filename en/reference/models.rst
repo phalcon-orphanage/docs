@@ -1767,7 +1767,7 @@ With the above events can also define business rules in the models:
         public function beforeDelete()
         {
             if ($this->status == 'A') {
-                echo "The robot is active, it can be deleted";
+                echo "The robot is active, it can't be deleted";
                 return false;
             }
             return true;
@@ -2606,16 +2606,19 @@ The annotations strategy could be set up this way:
 
     <?php
 
+    use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData,
+        Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
+
     $di['modelsMetadata'] = function() {
 
         // Instantiate a meta-data adapter
-        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+        $metaData = new ApcMetaData(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
 
         //Set a custom meta-data database introspection
-        $metaData->setStrategy(new \Phalcon\Mvc\Model\MetaData\Strategy\Annotations());
+        $metaData->setStrategy(new StrategyAnnotations());
 
         return $metaData;
     };
@@ -2635,10 +2638,11 @@ The following example shows how to define the meta-data manually:
 
     <?php
 
-    use Phalcon\Mvc\Model\MetaData,
-        Phalcon\Db\Column;
+    use Phalcon\Mvc\Model,
+        Phalcon\Db\Column,
+        Phalcon\Mvc\Model\MetaData;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function metaData()
@@ -2788,8 +2792,8 @@ to balance the load to your databases implementing a master-slave architecture:
 
     }
 
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement any 'shard' selection
-according to the query conditions:
+The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
+according to the current query conditions:
 
 .. code-block:: php
 
@@ -2797,6 +2801,13 @@ according to the query conditions:
 
     class Robots extends Phalcon\Mvc\Model
     {
+        /**
+         * Dynamically selects a shard
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
             //Check if there is a 'where' clause in the select
@@ -2831,8 +2842,6 @@ query executed:
 
     $robot = Robots::findFirst('id = 101');
 
-
-
 Logging Low-Level SQL Statements
 --------------------------------
 When using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is
@@ -2845,20 +2854,25 @@ statements as they happen.
 
     <?php
 
+    use Phalcon\Logger,
+        Phalcon\Db\Adapter\Pdo\Mysql as Connection,
+        Phalcon\Events\Manager,
+        Phalcon\Logger\Adapter\File;
+
     $di->set('db', function() {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
-        $logger = new \Phalcon\Logger\Adapter\File("app/logs/debug.log");
+        $logger = new Logger("app/logs/debug.log");
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($logger) {
             if ($event->getType() == 'beforeQuery') {
-                $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+                $logger->log($connection->getSQLStatement(), Logger::INFO);
             }
         });
 
-        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        $connection = new Connection(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -3021,24 +3035,32 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     <?php
 
-    $di = new Phalcon\DI();
+    use Phalcon\DI,
+        Phalcon\Db\Adapter\Pdo\Sqlite,
+        Phalcon\Mvc\Model\Manager as ModelsManager,
+        Phalcon\Mvc\Model\Metadata\Memory as MetaData,
+        Phalcon\Mvc\Model;
+
+    $di = new DI();
 
     //Setup a connection
-    $di->set('db', new \Phalcon\Db\Adapter\Pdo\Sqlite(array(
+    $di->set('db', new Connection(array(
         "dbname" => "sample.db"
     )));
 
     //Set a models manager
-    $di->set('modelsManager', new \Phalcon\Mvc\Model\Manager());
+    $di->set('modelsManager', new ModelsManager());
 
     //Use the memory meta-data adapter or other
-    $di->set('modelsMetadata', new \Phalcon\Mvc\Model\Metadata\Memory());
+    $di->set('modelsMetadata', new MetaData());
 
-    class Robots extends Phalcon\Mvc\Model
+    //Create a model
+    class Robots extends Model
     {
 
     }
 
+    //Use the model
     echo Robots::count();
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
