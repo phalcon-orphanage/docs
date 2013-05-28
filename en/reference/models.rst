@@ -322,6 +322,24 @@ thus consuming more memory while this process takes place.
        echo $part->id;
     }
 
+Filtering Resultsets
+^^^^^^^^^^^^^^^^^^^^
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
+Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+
+.. code-block:: php
+
+    <?php
+
+    $customers = Customers::find()->filter(function($customer) {
+
+        //Return only customers with a valid e-mail
+        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL))) {
+            return $customer;
+        }
+
+    });
+
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
 Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
@@ -3036,7 +3054,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     <?php
 
     use Phalcon\DI,
-        Phalcon\Db\Adapter\Pdo\Sqlite,
+        Phalcon\Db\Adapter\Pdo\Sqlite as Connection,
         Phalcon\Mvc\Model\Manager as ModelsManager,
         Phalcon\Mvc\Model\Metadata\Memory as MetaData,
         Phalcon\Mvc\Model;

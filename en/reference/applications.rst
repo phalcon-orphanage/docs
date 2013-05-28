@@ -107,8 +107,8 @@ If namespaces are used, the following bootstrap can be used:
 
     try {
 
-        $application = new Application();
-        $application->setDI($di);
+        $application = new Application($di);
+
         echo $application->handle()->getContent();
 
     } catch(Exception $e){
