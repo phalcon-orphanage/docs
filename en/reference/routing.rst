@@ -421,7 +421,7 @@ You can move groups of routes to separate files in order to improve the organiza
 
             //This route maps to a controller different than the default
             $this->add('/blog', array(
-                'controller' => 'about',
+                'controller' => 'blog',
                 'action' => 'index'
             ));
 
