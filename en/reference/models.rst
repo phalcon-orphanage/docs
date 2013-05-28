@@ -287,10 +287,10 @@ is that at any time there is only one record in memory. This greatly helps in me
     }
 
     // Get the first record in the resultset
-    $robot = robots->getFirst();
+    $robot = $robots->getFirst();
 
     // Get the last record
-    $robot = robots->getLast();
+    $robot = $robots->getLast();
 
 Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
 to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
