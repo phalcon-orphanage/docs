@@ -512,8 +512,8 @@ The controller 'PostsController' might look like this:
         }
     }
 
-The example driver directly instantiated, Collection also is provided in the ability to load
-the drivers only if the route is matched:
+In the above example the controller is directly instantiated, Collection also have the ability to lazy-load controllers, this option
+provide better performance loading controllers only if the related routes are matched:
 
 .. code-block:: php
 
