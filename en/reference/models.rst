@@ -1371,6 +1371,9 @@ this means we can create listeners that run when an event is triggered.
                 }
                 return true;
             });
+
+            //Attach the events manager to the event
+            $this->setEventsManager($eventsManager);
         }
 
     }
