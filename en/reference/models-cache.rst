@@ -813,7 +813,7 @@ tell us the possible range to be used in the cache:
         }
     }
 
-Finally, we could replace the find method in the Robots model to use the custom classes we've created:
+Finally, we can replace the find method in the Robots model to use the custom classes we've created:
 
 .. code-block:: php
 
@@ -839,3 +839,60 @@ Finally, we could replace the find method in the Robots model to use the custom 
 
         }
     }
+
+Caching of PHQL planning
+------------------------
+As well as most moderns database systems PHQL internally caches the execution plan,
+if the same statement is executed several times PHQL reuses the previously generated plan
+improving performance, for a developer to take better advantage of this is highly recommended
+build all your SQL statements passing variable parameters as bound parameters:
+
+.. code-block:: php
+
+    <?php
+
+    for ($i = 1; $i <= 10; $i++) {
+
+        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $robots = $this->modelsManager->executeQuery($phql);
+
+        //...
+    }
+
+In the above example, ten plans were generated increasing the memory usage and processing in the application.
+Rewriting the code to take advantage of bound parameters reduce the processing by both ORM and database system:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+
+    for ($i = 1; $i <= 10; $i++) {
+
+        $robots = $this->modelsManager->executeQuery($phql, array($i));
+
+        //...
+    }
+
+Performance can be also improved reusing the PHQL query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $query = $this->modelsManager->createQuery($phql);
+
+    for ($i = 1; $i <= 10; $i++) {
+
+        $robots = $query->execute($phql, array($i));
+
+        //...
+    }
+
+Execution plans for queries involving `prepared statetements`_ are also cached by most database systems
+reducing the overall execution time, also protecting your application against `SQL Injections`_.
+
+.. _`prepared statetements` : http://en.wikipedia.org/wiki/Prepared_statement
+.. _`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
