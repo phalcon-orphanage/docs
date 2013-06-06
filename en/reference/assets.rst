@@ -1,6 +1,6 @@
 Assets Management
 =================
-Phalcon\Assets is a component that allows the developer to manage static resources
+Phalcon\\Assets is a component that allows the developer to manage static resources
 such as css stylesheets or javascript libraries in a web application.
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` is available in the services
