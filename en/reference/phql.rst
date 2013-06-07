@@ -722,6 +722,10 @@ More examples of the builder:
     $builder->from('Robots')
             ->notInWhere('id', array(1, 2, 3));
 
+    // 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%'
+    $builder->from('Robots')
+            ->where('name LIKE :name:', array('name' => '%' . $name . '%'));
+
 Bound Parameters
 ^^^^^^^^^^^^^^^^
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:

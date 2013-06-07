@@ -1,7 +1,7 @@
 Returning Responses
 ===================
 
-Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` is the Phalcon
+Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The basic usage is the following:
 
 .. code-block:: php
@@ -12,7 +12,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
     $response = new \Phalcon\Http\Response();
 
     //Set status code
-    $response->setRawHeader(404, "Not Found");
+    $response->setStatusCode(404, "Not Found");
 
     //Set the content of the response
     $response->setContent("Sorry, the page doesn't exist");
@@ -105,7 +105,7 @@ based on the routes you've currently defined in the application:
     <?php
 
     //Making a redirection based on a named route
-    $response->redirect(array(
+    return $response->redirect(array(
         "for" => "index-lang",
         "lang" => "jp",
         "controller" => "index"
@@ -193,5 +193,4 @@ The identifier must be calculated taking into account that this must change if t
 
     //Send an E-Tag header
     $response->setHeader('E-Tag', $eTag);
-
 

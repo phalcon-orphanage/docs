@@ -14,6 +14,7 @@ information of the request, allowing you to access it in an object-oriented way.
 
     // Check whether the request was made with method POST
     if ($request->isPost() == true) {
+
         // Check whether the request was made with Ajax
         if ($request->isAjax() == true) {
             echo "Request was made using POST and AJAX";
@@ -64,7 +65,9 @@ the $this->request public property of the controller:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -97,22 +100,24 @@ an object-oriented way to achieve this task:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function uploadAction()
         {
             // Check if the user has uploaded files
             if ($this->request->hasFiles() == true) {
+
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
 
                     //Print file details
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
-
                     //Move the file into the application
-                    $file->moveTo('files/');
+                    $file->moveTo('files/' . $file->getName());
                 }
             }
         }

@@ -225,7 +225,21 @@ Aggregations
 A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
 With this option is easy perform tasks such as totaling or averaging field values:
 
+.. code-block:: php
 
+    <?php
+
+    $data = Article::aggregate(array(
+        array(
+            '$project' => array('category' => 1)
+        ),
+        array(
+            '$group' => array(
+                '_id' => array('category' => '$category'),
+                'id' => array('$max' => '$_id')
+            )
+        )
+    ));
 
 Creating Updating/Records
 -------------------------
@@ -452,8 +466,8 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
-    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Numericality;
 
     class Robots extends \Phalcon\Mvc\Collection
     {
@@ -464,14 +478,15 @@ The following example shows how to use it:
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
+                    "message" => "Type must be: mechanical or virtual"
                     "domain" => array("Mechanical", "Virtual")
                 )
             ));
 
-            $this->validate(new Uniqueness(
+            $this->validate(new Numericality(
                 array(
-                    "field"   => "name",
-                    "message" => "The robot name must be unique"
+                    "field"  => "price",
+                    "message" => "Price must be numeric"
                 )
             ));
 

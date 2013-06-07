@@ -7,19 +7,19 @@ Phalcon\\Db\\AdapterInterface initializer
 Methods
 ---------
 
-abstract public  **__construct** (*array* $descriptor)
+abstract public  **__construct** ()
 
 Constructor for Phalcon\\Db\\Adapter
 
 
 
-abstract public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*int* $placeholders])
+abstract public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Returns the first row in a SQL query result
 
 
 
-abstract public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*int* $placeholders])
+abstract public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Dumps the complete result of a query into an array
 

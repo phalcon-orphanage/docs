@@ -263,7 +263,7 @@ cancelled:
 
     use Phalcon\Validation;
 
-    class LoginValidation extends Phalcon\Validation
+    class LoginValidation extends Validation
     {
 
         public function initialize()

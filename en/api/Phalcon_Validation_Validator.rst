@@ -25,3 +25,9 @@ Returns an option in the validator's options Returns null if the option hasn't b
 
 
 
+public  **setOption** (*string* $key, *mixed* $value)
+
+Sets an option in the validator
+
+
+

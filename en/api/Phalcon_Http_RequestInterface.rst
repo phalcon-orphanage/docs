@@ -169,13 +169,13 @@ Checks whether HTTP method is OPTIONS. if $_SERVER['REQUEST_METHOD']=='OPTIONS'
 
 
 
-abstract public *boolean*  **hasFiles** ()
+abstract public *boolean*  **hasFiles** ([*unknown* $notErrored])
 
 Checks whether request include attached files
 
 
 
-abstract public :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>` [] **getUploadedFiles** ()
+abstract public :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>` [] **getUploadedFiles** ([*unknown* $notErrored])
 
 Gets attached files as Phalcon\\Http\\Request\\FileInterface compatible instances
 
