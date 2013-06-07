@@ -551,7 +551,6 @@ Graphs
 
 The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
 
-
 .. raw:: html
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -674,7 +673,6 @@ The first graph shows how many requests per second each framework was able to ac
 
 Conclusion
 ----------
-
 The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php

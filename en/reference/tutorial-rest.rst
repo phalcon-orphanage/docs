@@ -124,11 +124,12 @@ application:
 
     <?php
 
-    use \Phalcon\Mvc\Model\Message;
-    use \Phalcon\Mvc\Model\Validator\InclusionIn;
-    use \Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Message,
+        Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Uniqueness;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
@@ -201,7 +202,7 @@ perform this simple query returning the results as JSON:
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -226,11 +227,11 @@ The searching by name handler would look like:
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%'.$name.'%'
+            'name' => '%' . $name . '%'
         ));
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -255,7 +256,7 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
             'id' => $id
         ))->getFirst();
 
-        if ($robot==false) {
+        if ($robot == false) {
             $response = array('status' => 'NOT-FOUND');
         } else {
             $response = array(
@@ -291,8 +292,8 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Check if the insertion was successful
+        if ($status->success() == true) {
 
             $robot->id = $status->getModel()->id;
 
@@ -338,8 +339,8 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Check if the insertion was successful
+        if ($status->success() == true) {
 
             $response = array('status' => 'OK');
 
@@ -376,7 +377,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
-        if($status->success()==true){
+        if ($status->success() == true) {
 
             $response = array('status' => 'OK');
 

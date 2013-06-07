@@ -21,17 +21,24 @@ Tasks are similar to controllers, on them can be implemented
 
     }
 
+Creating a Bootstrap
+--------------------
+As MVC applications, a bootstrap is available to
+
 .. code-block:: php
 
     <?php
 
+    use Phalcon\DI\FactoryDefault\CLI as CliDI,
+        Phalcon\CLI\Console as ConsoleApp;
+
     //Using the CLI factory default services container
-    $di = new Phalcon\DI\FactoryDefault\CLI();
+    $di = new CliDI();
 
     //Create a console application
-    $console = new \Phalcon\CLI\Console();
+    $console = new ConsoleApp();
     $console->setDI($di);
 
     //
-    $console->handle(array('shell_script_name', 'echo'));
+    $console->handle(array('task' => 'shell_script_name', 'action' => 'echo'));
 

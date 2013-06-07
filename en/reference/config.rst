@@ -131,3 +131,4 @@ The above code produces the following:
         [debug] => 1
     )
 
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_

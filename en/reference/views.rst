@@ -814,7 +814,7 @@ The following example demonstrates how to attach listeners to this component:
 
     $di->set('view', function() {
 
-        //Create an event manager
+        //Create an events manager
         $eventsManager = new Phalcon\Events\Manager();
 
         //Attach a listener for type "view"

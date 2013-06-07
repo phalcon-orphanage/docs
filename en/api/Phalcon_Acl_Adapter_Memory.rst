@@ -5,16 +5,16 @@ Class **Phalcon\\Acl\\Adapter\\Memory**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
-Manages ACL lists in memory  
+Manages ACL lists in memory
 
 .. code-block:: php
 
     <?php
 
     $acl = new Phalcon\Acl\Adapter\Memory();
-    
+
     $acl->setDefaultAction(Phalcon\Acl::DENY);
-    
+
     //Register roles
     $roles = array(
     	'users' => new Phalcon\Acl\Role('Users'),
@@ -23,9 +23,9 @@ Manages ACL lists in memory
     foreach ($roles as $role) {
     	$acl->addRole($role);
     }
-    
+
     //Private area resources
-      $privateResources = array(
+    $privateResources = array(
     	'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
     	'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
     	'invoices' => array('index', 'profile')
@@ -33,7 +33,7 @@ Manages ACL lists in memory
     foreach ($privateResources as $resource => $actions) {
     	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
-    
+
     //Public area resources
     $publicResources = array(
     	'index' => array('index'),
@@ -44,14 +44,14 @@ Manages ACL lists in memory
       foreach ($publicResources as $resource => $actions) {
     	$acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
-    
+
       //Grant access to public areas to both users and guests
     foreach ($roles as $role){
     	foreach ($publicResources as $resource => $actions) {
     		$acl->allow($role->getName(), $resource, '*');
     	}
     }
-    
+
     //Grant access to private area to role Users
       foreach ($privateResources as $resource => $actions) {
      		foreach ($actions as $action) {
@@ -72,7 +72,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array|string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
 
 .. code-block:: php
 
@@ -104,7 +104,7 @@ Check whether resource exist in the resources list
 
 public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` $resource, [*array* $accessList])
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
+Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
 
 .. code-block:: php
 
@@ -113,7 +113,7 @@ Adds a resource to the ACL list Access names can be a particular action, by exam
      //Add a resource to the the list allowing access to an action
      $acl->addResource(new Phalcon\Acl\Resource('customers'), 'search');
      $acl->addResource('customers', 'search');
-    
+
      //Add a resource  with an access list
      $acl->addResource(new Phalcon\Acl\Resource('customers'), array('create', 'search'));
      $acl->addResource('customers', array('create', 'search'));
@@ -141,7 +141,7 @@ Checks if a role has access to a resource
 
 public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
-Allow access to a role on a resource You can use '*' as wildcard Example: 
+Allow access to a role on a resource You can use '*' as wildcard Example:
 
 .. code-block:: php
 
@@ -149,13 +149,13 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
 
      //Allow access to guests to search on customers
      $acl->allow('guests', 'customers', 'search');
-    
+
      //Allow access to guests to search or create on customers
      $acl->allow('guests', 'customers', array('search', 'create'));
-    
+
      //Allow access to any role to browse on products
      $acl->allow('*', 'products', 'browse');
-    
+
      //Allow access to any role to browse on any resource
      $acl->allow('*', '*', 'browse');
 
@@ -164,7 +164,7 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
 
 public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
 
-Deny access to a role on a resource You can use '*' as wildcard Example: 
+Deny access to a role on a resource You can use '*' as wildcard Example:
 
 .. code-block:: php
 
@@ -172,13 +172,13 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
      //Deny access to guests to search on customers
      $acl->deny('guests', 'customers', 'search');
-    
+
      //Deny access to guests to search or create on customers
      $acl->deny('guests', 'customers', array('search', 'create'));
-    
+
      //Deny access to any role to browse on products
      $acl->deny('*', 'products', 'browse');
-    
+
      //Deny access to any role to browse on any resource
      $acl->deny('*', '*', 'browse');
 
@@ -187,7 +187,7 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
 public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access)
 
-Check whether a role is allowed to access an action from a resource 
+Check whether a role is allowed to access an action from a resource
 
 .. code-block:: php
 
@@ -195,7 +195,7 @@ Check whether a role is allowed to access an action from a resource
 
      //Does andres have access to the customers resource to create?
      $acl->isAllowed('andres', 'Products', 'create');
-    
+
      //Do guests have access to any resource to edit?
      $acl->isAllowed('guests', '*', 'edit');
 

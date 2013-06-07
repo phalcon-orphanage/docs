@@ -192,10 +192,10 @@ You can access their values in the same way as before:
         {
 
             // Returns "name" parameter
-            $year = $this->dispatcher->getParam("name");
+            $name = $this->dispatcher->getParam("name");
 
             // Returns "type" parameter
-            $year = $this->dispatcher->getParam("type");
+            $type = $this->dispatcher->getParam("type");
 
         }
 
@@ -383,7 +383,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     //This route maps to a controller different than the default
     $blog->add('/blog', array(
-        'controller' => 'about',
+        'controller' => 'blog',
         'action' => 'index'
     ));
 
@@ -421,7 +421,7 @@ You can move groups of routes to separate files in order to improve the organiza
 
             //This route maps to a controller different than the default
             $this->add('/blog', array(
-                'controller' => 'about',
+                'controller' => 'blog',
                 'action' => 'index'
             ));
 

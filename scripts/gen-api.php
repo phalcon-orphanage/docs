@@ -379,19 +379,19 @@ foreach ($classes as $className) {
 	);
 
 	if ($reflector->isInterface() == true) {
-		$indexInterfaces[] = '   '.$simpleClassName.PHP_EOL;
+		$indexInterfaces[] = '   ' . $simpleClassName . PHP_EOL;
 	} else {
-		$indexClasses[] = '   '.$simpleClassName.PHP_EOL;
+		$indexClasses[] = '   ' . $simpleClassName . PHP_EOL;
 	}
 
 	$nsClassName = str_replace("\\", "\\\\", $className);
 
 	if ($reflector->isInterface() == true) {
-		$code = 'Interface **'.$nsClassName.'**'.PHP_EOL;
-		$code.= str_repeat("=", strlen($nsClassName)+14).PHP_EOL.PHP_EOL;
+		$code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
+		$code.= str_repeat("=", strlen($nsClassName) + 14) . PHP_EOL . PHP_EOL;
 	} else {
-		$code = 'Class **'.$nsClassName.'**'.PHP_EOL;
-		$code.= str_repeat("=", strlen($nsClassName)+10).PHP_EOL.PHP_EOL;
+		$code = 'Class **' . $nsClassName . '**' . PHP_EOL;
+		$code.= str_repeat("=", strlen($nsClassName) + 10) . PHP_EOL . PHP_EOL;
 	}
 
 	if ($documentationData['extends']) {
@@ -400,9 +400,9 @@ foreach ($classes as $className) {
 			if (class_exists($extendsName)) {
 				$extendsPath =  str_replace("\\", "_", $extendsName);
 				$extendsName =  str_replace("\\", "\\\\", $extendsName);
-				$code.='*extends* :doc:`'.$extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
+				$code.='*extends* :doc:`' . $extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
 			} else {
-				$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
+				$code.='*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
 			}
 		} else {
 			$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
@@ -542,8 +542,8 @@ foreach ($classes as $className) {
 
 	}
 
-	file_put_contents('en/api/'.$simpleClassName.'.rst', $code);
+	file_put_contents('en/api/' . $simpleClassName . '.rst', $code);
 }
 
-file_put_contents('en/api/index.rst', $index.join('', $indexClasses).join('', $indexInterfaces));
+file_put_contents('en/api/index.rst', $index . join('', $indexClasses) . join('', $indexInterfaces));
 

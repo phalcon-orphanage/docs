@@ -1,6 +1,7 @@
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock %}
+
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set url_root = pathto('', 1) %}
@@ -16,7 +17,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -56,15 +57,6 @@
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
-            {% if versions %}
-                <h3>Project Versions</h3>
-
-                <select name="versions" id="versions">
-            {% for slug, url in versions %}
-            <option value="http://docs.phalconphp.com{{ url }}">{{ slug }}</option>
-            {% endfor %}
-                </select>
-            {% endif %}
             <div id="searchbox" style="">
               <h3>Search</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
@@ -123,11 +115,10 @@
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/configurationblock.css', 1) }}" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
     {%- if not embedded %}
     <script type="text/javascript">
@@ -140,7 +131,7 @@
       };
     </script>
 
-    <script type="text/javascript" src="{{ pathto('_static/jquery.js', 1) }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ pathto('_static/docs.js', 1) }}"></script>
 
     {%- if use_opensearch %}
@@ -184,14 +175,16 @@
           <div class="navbar-inner">
               <div class="container-fluid">
                   <a class="brand" href="http://phalconphp.com/index">
-                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo Small Sp">
+                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo">
                   </a>
                   <div class="nav-collapse collapse pull-right">
                       <ul class="nav">
-                          <li><a href="http://phalconphp.com/index">HOME</a></li>
+                          <li><a href="http://phalconphp.com/">HOME</a></li>
                           <li><a href="http://phalconphp.com/download">Download</a></li>
                           <li><a href="http://phalconphp.com/documentation">Documentation</a></li>
                           <li><a href="http://phalconphp.com/support">Support</a></li>
+                          <li><a href="http://phalconphp.com/donate">Donate</a></li>
+                          <li><a href="http://store.phalconphp.com">Store</a></li>
                           <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
                           <li><a href="http://blog.phalconphp.com/">Blog</a></li>
                       </ul>

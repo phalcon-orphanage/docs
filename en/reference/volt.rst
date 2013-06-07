@@ -114,10 +114,10 @@ In the previous example, three variables were passed to the view: title, menu an
 
             $post = Post::findFirst();
 
-            $this->view->setVar("title", $post->title);
-            $this->view->setVar("post", $post);
-            $this->view->setVar("menu", Menu::find());
-            $this->view->setVar("show_navigation", true);
+            $this->view->title = $post->title;
+            $this->view->post = $post;
+            $this->view->menu = Menu::find();
+            $this->view->show_navigation = true;
 
         }
 
@@ -1260,7 +1260,7 @@ External Resources
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
 * `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
-* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that uses Volt, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference

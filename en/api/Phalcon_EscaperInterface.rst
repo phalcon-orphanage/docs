@@ -31,7 +31,7 @@ Escapes a HTML string
 
 
 
-abstract public *string*  **escapeHtmlAttr** (*string* $text)
+abstract public *string*  **escapeHtmlAttr** (*unknown* $attribute)
 
 Escapes a HTML attribute string
 

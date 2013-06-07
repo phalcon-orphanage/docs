@@ -17,7 +17,7 @@ We recommend you check this cases before using a cache:
 .. highlights::
 
     *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
-    be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+    be done, especially in the case of Memcache or Apc, with the relevant tools that backends provide.
 
 Caching Behavior
 ----------------
