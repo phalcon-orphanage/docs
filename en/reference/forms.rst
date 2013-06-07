@@ -1,6 +1,6 @@
 Forms
 =====
-Phalcon\\Forms is a component aids the developer in the creation and maintenance of forms in web applications.
+Phalcon\\Forms is a component that aid the developer in the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
 
@@ -494,7 +494,35 @@ In addition to the form elements provided by Phalcon you can create your own cus
         }
     }
 
+Forms Manager
+-------------
+This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
+
+.. code-block:: php
+
+    <?php
+
+    $di['forms'] = function() {
+        return new Phalcon\Forms\Manager();
+    }
+
+Forms are added to the forms manager and referenced by a unique name:
+
+.. code-block:: php
+
+    <?php
+
+    $this->forms->set('login', new LoginForm());
+
+Using the unique name, forms can be accesed in any part of the application:
+
+.. code-block:: php
+
+    <?php
+
+    echo $this->forms->get('login')->render();
+
 External Resources
 ------------------
 
-* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create forms in this application, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]
