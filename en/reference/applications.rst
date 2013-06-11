@@ -60,6 +60,9 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
         $application = new Application();
         $application->setDI($di);
+        // OR 
+        $application = new Application($di);
+
         echo $application->handle()->getContent();
 
     } catch (Exception $e) {
@@ -249,8 +252,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
     try {
 
         //Create an application
-        $application = new Application();
-        $application->setDI($di);
+        $application = new Application($di);
 
         // Register the installed modules
         $application->registerModules(
