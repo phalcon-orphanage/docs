@@ -729,7 +729,7 @@ The following PHP is generated:
 
     </form>
 
-To call a Phalcon\Tag helper, you only need to call an uncamelized version of the method:
+To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
 
 +------------------------------------+-----------------------+
 | Method                             | Volt function         |
