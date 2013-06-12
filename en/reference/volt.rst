@@ -427,22 +427,22 @@ A special variable is available inside 'for' loops providing you information abo
 .. code-block:: html+jinja
 
     {% for robot in robots %}
-    	{% if loop.first %}
-    		<table>
-    		<tr>
+        {% if loop.first %}
+            <table>
+            <tr>
                 <th>#</th>
-    			<th>Id</th>
-    			<th>Name</th>
-    		</tr>
-    	{% endif %}
-    		<tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        {% endif %}
+            <tr>
                 <td>{{ loop.index }}</td>
-    			<td>{{ robot.id }}</td>
-    			<td>{{ robot.name }}</td>
-    		</tr>
-    	{% if loop.last %}
-    		</table>
-    	{% endif %}
+                <td>{{ robot.id }}</td>
+                <td>{{ robot.name }}</td>
+            </tr>
+        {% if loop.last %}
+            </table>
+        {% endif %}
     {% endfor %}
 
 Assignments
