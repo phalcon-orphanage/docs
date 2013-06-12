@@ -24,7 +24,6 @@ Results
 -------
 Slim Framework
 ^^^^^^^^^^^^^^
-
 .. code-block:: php
 
     # ab -n 1000 -c 5 http://localhost/bench/micro/slim/say/hello/Sonny
@@ -73,8 +72,7 @@ Slim Framework
      100%     33 (longest request)
 
 Silex
-^^^^^^^^^^^^^^^^^^^^^^
-
+^^^^^
 .. code-block:: php
 
     # ab -n 1000 -c 5 http://localhost/bench/micro/silex/say/hello/Sonny
@@ -123,8 +121,7 @@ Silex
      100%     45 (longest request)
 
 Phalcon 0.5.0
-^^^^^^^^^^^^^^^^^^^^^
-
+^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 1000 -c 5 http://localhost/bench/micro/phalcon/say/hello/Sonny
@@ -172,11 +169,8 @@ Phalcon 0.5.0
       99%      5
      100%     11 (longest request)
 
-
-
 Graphs
 ^^^^^^
-
 The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
 
 

@@ -119,8 +119,6 @@ mod_pagespeed_ speeds up your site and reduces page load time. This open-source 
 performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring
 that you modify your existing content or workflow.
 
-
-
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/
 .. _rules for high performance web pages: http://developer.yahoo.com/performance/rules.html

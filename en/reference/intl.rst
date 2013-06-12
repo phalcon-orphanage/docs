@@ -106,7 +106,7 @@ Transliterator_ provides transliteration of strings:
 
     $string = "garçon-étudiant-où-L'école";
     echo $transliterator->transliterate($string); // garconetudiantoulecole
-    
+
 .. _PECL: http://pecl.php.net/package/intl
 .. _intl: http://pecl.php.net/package/intl
 .. _PHP manual: http://www.php.net/manual/en/intro.intl.php

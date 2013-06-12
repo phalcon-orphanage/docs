@@ -2397,7 +2397,6 @@ you can do this:
 
 Deleting related records
 ^^^^^^^^^^^^^^^^^^^^^^^^
-
 Instead of doing this:
 
 .. code-block:: php
@@ -2469,8 +2468,6 @@ In models that have this feature activated you can check what fields changed:
     var_dump($robot->getChangedFields()); // ['name']
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
-
-
 
 Models Meta-Data
 ----------------
