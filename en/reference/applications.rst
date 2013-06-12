@@ -60,7 +60,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
         $application = new Application();
         $application->setDI($di);
-        // OR 
+        // OR
         $application = new Application($di);
 
         echo $application->handle()->getContent();
@@ -435,5 +435,4 @@ The following example demonstrates how to attach listeners to this component:
 
 External Resources
 ------------------
-
 * `MVC examples on Github <https://github.com/phalcon/mvc>`_

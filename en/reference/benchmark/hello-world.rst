@@ -1,9 +1,7 @@
 Hello World Benchmark
 =====================
-
 How the benchmarks were performed?
 ----------------------------------
-
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
 people don't like this kind of benchmark because real-world applications require more complex features or
 structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
@@ -29,7 +27,6 @@ These were the measurements we record to identify the overall performance of eac
 
 Pariticipant Frameworks
 -----------------------
-
 * Yii_ (YII_DEBUG=false) (yii-1.1.13)
 * Symfony_ (2.0.11)
 * `Zend Framework`_ (1.11.11)
@@ -42,10 +39,8 @@ Pariticipant Frameworks
 
 Results
 -------
-
 Yii (YII_DEBUG=false) Version yii-1.1.13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/yii/index.php?r=say/hello
@@ -95,7 +90,6 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
 
 Symfony Version 2.1.6
 ^^^^^^^^^^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/Symfony/web/app.php/say/hello/
@@ -145,7 +139,6 @@ Symfony Version 2.1.6
 
 CodeIgniter 2.1.0
 ^^^^^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/codeigniter/index.php/say/hello
@@ -195,7 +188,6 @@ CodeIgniter 2.1.0
 
 Kohana 3.2.0
 ^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/kohana/index.php/say/hello
@@ -245,7 +237,6 @@ Kohana 3.2.0
 
 Fuel 1.2.1
 ^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/fuel/public/say/hello
@@ -295,7 +286,6 @@ Fuel 1.2.1
 
 Cake 2.1.3
 ^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 10 -c 5 http://localhost/bench/cake/say/hello
@@ -345,7 +335,6 @@ Cake 2.1.3
 
 Zend Framework 1.11.11
 ^^^^^^^^^^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/zendfw/public/index.php
@@ -395,7 +384,6 @@ Zend Framework 1.11.11
 
 Laravel 3.2.5
 ^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/laravel/public/say/hello
@@ -446,7 +434,6 @@ Laravel 3.2.5
 
 Nette 2.0.4
 ^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/nette/www/index.php
@@ -498,7 +485,6 @@ Nette 2.0.4
 
 Phalcon Version 0.8.0
 ^^^^^^^^^^^^^^^^^^^^^
-
 .. code-block:: php
 
 	# ab -n 2000 -c 10 http://localhost/bench/helloworld/phalcon/index.php?_url=/say/hello
@@ -548,7 +534,6 @@ Phalcon Version 0.8.0
 
 Graphs
 ^^^^^^
-
 The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
 
 .. raw:: html

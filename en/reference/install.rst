@@ -30,7 +30,6 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 
 Related Guides
 ^^^^^^^^^^^^^^
-
 .. toctree::
 	:maxdepth: 1
 
@@ -112,7 +111,6 @@ or
 
 Installation Notes
 ------------------
-
 Installation notes for Web Servers:
 
 .. toctree::

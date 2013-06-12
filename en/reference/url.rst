@@ -1,6 +1,5 @@
 Generating URLs and Paths
 =========================
-
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 

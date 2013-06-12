@@ -1,9 +1,7 @@
 Micro Benchmark
 =====================
-
 How the benchmarks were performed?
 ----------------------------------
-
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
 
 Using a route for the HTTP method 'GET' we pass a parameter to a handler returning a "Hello $name" response.
@@ -19,13 +17,11 @@ These were the measurements we record to identify the overall performance of eac
 
 Pariticipant Frameworks
 -----------------------
-
 * Slim_
 * Silex_
 
 Results
 -------
-
 Slim Framework
 ^^^^^^^^^^^^^^
 

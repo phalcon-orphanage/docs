@@ -1,6 +1,5 @@
 Tutorial 1: Let's learn by example
 ==================================
-
 Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
 We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
 you can check our :doc:`developer tools <tools>`.
