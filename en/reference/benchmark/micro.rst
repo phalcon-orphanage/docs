@@ -1,5 +1,5 @@
 Micro Benchmark
-=====================
+===============
 How the benchmarks were performed?
 ----------------------------------
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
@@ -15,8 +15,8 @@ These were the measurements we record to identify the overall performance of eac
 * Number of included PHP files on a single request (measured using function get_included_files_.
 * Memory Usage per request (measured using function memory_get_usage_.
 
-Pariticipant Frameworks
------------------------
+Participant Frameworks
+----------------------
 * Slim_
 * Silex_
 
