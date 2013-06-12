@@ -2,7 +2,7 @@ Request Environment
 ===================
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
 files, variables, etc. A web based application needs to parse that information so as to provide the correct
-response back to the requester. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` encapsulates the
+response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
 information of the request, allowing you to access it in an object-oriented way.
 
 .. code-block:: php
@@ -28,7 +28,7 @@ contain the values present in forms submitted or the parameters sent via the URL
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
 `Cross Site Scripting (XSS)`_ attacks.
 
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
 $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
 :doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
 
@@ -58,7 +58,7 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
 Accessing the Request from Controllers
 --------------------------------------
 The most common place to access the request environment is in an action of a controller. To access the
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
 the $this->request public property of the controller:
 
 .. code-block:: php
@@ -93,7 +93,7 @@ the $this->request public property of the controller:
 
 Uploading Files
 ---------------
-Another common task is file uploading. :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` offers
+Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
 an object-oriented way to achieve this task:
 
 .. code-block:: php
