@@ -305,6 +305,5 @@ annotations adapters or extend the existing ones.
 
 External Resources
 ------------------
-
 * `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_
 

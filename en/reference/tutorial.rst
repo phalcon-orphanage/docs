@@ -1,6 +1,5 @@
 Tutorial 1: Let's learn by example
 ==================================
-
 Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
 We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
 you can check our :doc:`developer tools <tools>`.
@@ -263,7 +262,7 @@ The generated HTML code displays an "A" html tag linking to a new controller:
 To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
 
 .. figure:: ../_static/img/tutorial-2.png
-	:align: center
+    :align: center
 
 Here is the controller Signup (app/controllers/SignupController.php):
 
@@ -310,7 +309,7 @@ The empty index action gives the clean pass to a view with the form definition:
 Viewing the form in your browser will show something like this:
 
 .. figure:: ../_static/img/tutorial-3.png
-	:align: center
+    :align: center
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
@@ -468,7 +467,7 @@ Additional validation happens automatically on fields that are not null (require
 required files our screen will look like this:
 
 .. figure:: ../_static/img/tutorial-4.png
-	:align: center
+    :align: center
 
 Conclusion
 ----------

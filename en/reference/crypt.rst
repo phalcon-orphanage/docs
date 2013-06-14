@@ -1,6 +1,5 @@
 Encryption/Decryption
 =====================
-
 Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
 This class offers simple object-oriented wrappers to the mcrypt_ php's encryption library.
 

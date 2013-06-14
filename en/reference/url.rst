@@ -1,6 +1,5 @@
 Generating URLs and Paths
 =========================
-
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 
@@ -44,9 +43,9 @@ Usually, this component must be registered in the Dependency Injector container,
     <?php
 
     $di->set('url', function(){
-    	$url = new Phalcon\Mvc\Url();
-    	$url->setBaseUri('/invo/');
-    	return $url;
+        $url = new Phalcon\Mvc\Url();
+        $url->setBaseUri('/invo/');
+        return $url;
     });
 
 Generating URIs
