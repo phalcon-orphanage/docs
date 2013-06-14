@@ -170,7 +170,7 @@ Returns the error messages produced by a batch operation
 
 public *boolean*  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Delete every record in the resultset
+Deletes every record in the resultset
 
 
 

@@ -3,19 +3,19 @@ Class **Phalcon\\Mvc\\Model\\Manager**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector Container such as Phalcon\\DI.  
+This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\\DI.  
 
 .. code-block:: php
 
     <?php
 
-     $dependencyInjector = new Phalcon\DI();
+     $di = new Phalcon\DI();
     
-     $dependencyInjector->set('modelsManager', function(){
+     $di->set('modelsManager', function() {
           return new Phalcon\Mvc\Model\Manager();
      });
     
-     $robot = new Robots($dependencyInjector);
+     $robot = new Robots($di);
 
 
 
@@ -208,9 +208,10 @@ Setup a relation 1-n between two models
 
 
 
-public  **addHasManyThrough** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasManyToMany** (*unknown* $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
 
-...
+Setups a relation n-m between two models
+
 
 
 public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
@@ -342,7 +343,13 @@ Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 
 public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **getLastQuery** ()
 
-Returns the last query created or executed in the models manager
+Returns the lastest query created or executed in the models manager
+
+
+
+public  **__destruct** ()
+
+Destroys the PHQL cache
 
 
 

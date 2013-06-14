@@ -27,6 +27,18 @@ Returns the internal event manager
 
 
 
+public  **setDialect** (*unknown* $dialect)
+
+Sets the dialect used to produce the SQL
+
+
+
+public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** ()
+
+Returns internal dialect instance
+
+
+
 public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
 Returns the first row in a SQL query result 
@@ -198,9 +210,21 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists])
 
 Drops a table from a schema/database
+
+
+
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+
+Creates a view
+
+
+
+public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists])
+
+Drops a view
 
 
 
@@ -277,6 +301,19 @@ List all tables on a database
 
 
 
+public *array*  **listViews** ([*string* $schemaName])
+
+List all views on a database 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->listViews("blog")); ?>
+
+
+
+
 public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes 
@@ -313,6 +350,42 @@ Gets creation options from a table
 
      print_r($connection->tableOptions('robots'));
 
+
+
+
+public *boolean*  **createSavepoint** (*string* $name)
+
+Creates a new savepoint
+
+
+
+public *boolean*  **releaseSavepoint** (*string* $name)
+
+Releases given savepoint
+
+
+
+public *boolean*  **rollbackSavepoint** (*string* $name)
+
+Rollbacks given savepoint
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints)
+
+Set if nested transactions should use savepoints
+
+
+
+public *boolean*  **isNestedTransactionsWithSavepoints** ()
+
+Returns if nested transactions should use savepoints
+
+
+
+public *string*  **getNestedTransactionSavepointName** ()
+
+Returns the savepoint name to use for nested transactions
 
 
 
@@ -391,12 +464,6 @@ Returns type of database system the adapter is used for
 public *string*  **getDialectType** ()
 
 Returns the name of the dialect used
-
-
-
-public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** ()
-
-Returns internal dialect instance
 
 
 

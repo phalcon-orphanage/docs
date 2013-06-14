@@ -58,7 +58,7 @@ Returns the dependency injection container
 
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setUniqueRow** (*boolean* $uniqueRow)
 
-Tells to the query if only the first row in the resultset must be resturned
+Tells to the query if only the first row in the resultset must be returned
 
 
 
@@ -113,6 +113,18 @@ Resolves a JOIN clause checking if the associated models exist
 protected *string*  **_getJoinType** ()
 
 Resolves a JOIN type
+
+
+
+protected *array*  **_getSingleJoin** ()
+
+Resolves joins involving has-one/belongs-to/has-many relations
+
+
+
+protected *array*  **_getMultiJoin** ()
+
+Resolves joins involving many-to-many relations
 
 
 

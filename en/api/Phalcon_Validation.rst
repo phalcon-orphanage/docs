@@ -43,7 +43,7 @@ Returns all the filters or a specific one
 
 public *array*  **getValidators** ()
 
-Returns the data that is currently validated
+Returns the validators added to the validation
 
 
 

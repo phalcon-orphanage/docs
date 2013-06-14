@@ -12,7 +12,7 @@ Stores the parsed annotations in diles. This adapter is the suitable for product
     <?php
 
      $annotations = new \Phalcon\Annotations\Adapter\Files(array(
-        'metaDataDir' => 'app/cache/metadata/'
+        'annotationsDir' => 'app/cache/annotations/'
      ));
 
 

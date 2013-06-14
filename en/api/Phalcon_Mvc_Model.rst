@@ -554,15 +554,21 @@ Returns all the validation messages
 
 
 
-protected *boolean*  **_checkForeignKeys** ()
+protected *boolean*  **_checkForeignKeysRestrict** ()
 
-Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records
+Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
 
 
 
-protected *boolean*  **_checkForeignKeysReverse** ()
+protected *boolean*  **_checkForeignKeysReverseRestrict** ()
 
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys when deleting records
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+
+
+
+protected *boolean*  **_checkForeignKeysReverseCascade** ()
+
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
 
 
 
@@ -590,13 +596,13 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected  **_preSaveRelatedRecords** ()
+protected *boolean*  **_preSaveRelatedRecords** ()
+
+Saves related records that must be stored prior to save the master record
 
 
 
-
-
-protected  **_postSaveRelatedRecords** ()
+protected *boolean*  **_postSaveRelatedRecords** ()
 
 Save the related records assigned in the has-one/has-many relations
 
@@ -792,7 +798,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-protected  **hasOne** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
 
 Setup a 1-1 relation between two models 
 
@@ -813,7 +819,7 @@ Setup a 1-1 relation between two models
 
 
 
-protected  **belongsTo** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
 
 Setup a relation reverse 1-1  between two models 
 
@@ -834,7 +840,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-protected  **hasMany** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
 
 Setup a relation 1-n between two models 
 
@@ -855,7 +861,7 @@ Setup a relation 1-n between two models
 
 
 
-protected  **hasManyThrough** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -868,11 +874,15 @@ Setup a relation n-n between two models through an intermediate relation
     
        public function initialize()
        {
-           //A reference relation must be set
-           $this->hasMany('id', 'RobotsParts', 'robots_id');
-    
            //Setup a many-to-many relation to Parts through RobotsParts
-           $this->hasManyThrough('Parts', 'RobotsParts');
+           $this->hasManyToMany(
+    		'id',
+    		'RobotsParts',
+    		'robots_id',
+    		'parts_id',
+    		'Parts',
+    		'id'
+    	);
        }
     
     }
@@ -888,7 +898,7 @@ Setups a behavior in a model
 
     <?php
 
-    use Phalcon\Mvc\Model\Behaviors\Timestampable;
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
     
     class Robots extends \Phalcon\Mvc\Model
     {

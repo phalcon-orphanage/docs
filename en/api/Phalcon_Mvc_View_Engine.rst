@@ -23,7 +23,7 @@ Returns cached ouput on another view stage
 
 
 
-public *string*  **partial** (*string* $partialPath)
+public *string*  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial inside another view
 

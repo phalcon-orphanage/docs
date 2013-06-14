@@ -61,13 +61,13 @@ Phalcon\\Flash constructor
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
-Set the if the output must be implictly flushed to the output or returned as string
+Set whether the output must be implictly flushed to the output or returned as string
 
 
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
 
-Set the if the output must be implictly formatted with HTML
+Set if the output must be implictily formatted with HTML
 
 
 

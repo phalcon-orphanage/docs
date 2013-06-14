@@ -54,9 +54,15 @@ Returns the temporal name of the uploaded file
 
 
 
+public *string*  **getType** ()
+
+Returns the mime type reported by the browser
+
+
+
 public *boolean*  **moveTo** (*string* $destination)
 
-Move the temporary file to a destination whithin the application
+Move the temporary file to a destination within the application
 
 
 

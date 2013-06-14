@@ -7,19 +7,31 @@ Manages collections of CSS/Javascript assets
 Methods
 ---------
 
+public  **__construct** ([*array* $options])
+
+Phalcon\\Assets\\Manager constructor
+
+
+
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setOptions** (*array* $options)
+
+Sets the manager's options
+
+
+
 public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **useImplicitOutput** (*boolean* $implicitOutput)
 
-Sets if the html generated must be directly printed or returned
+Sets if the HTML generated must be directly printed or returned
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addCss** (*string* $path, [*boolean* $local])
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addCss** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a Css resource to the 'css' collection
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addJs** (*string* $path, [*boolean* $local])
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the 'js' collection
 
@@ -105,5 +117,22 @@ public  **outputJs** ([*string* $collectionName])
 
 Prints the HTML for JS resources
 
+
+
+public  **filter** ()
+
+Filters
+
+
+
+public  **hasChanged** (*unknown* $resources)
+
+Checks if a group of resources
+
+
+
+public  **getResourceContent** (*unknown* $resource)
+
+...
 
 

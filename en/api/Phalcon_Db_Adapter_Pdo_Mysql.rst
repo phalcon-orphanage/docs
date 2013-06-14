@@ -5,7 +5,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
-Specific functions for the Mysql database system 
+Specific functions for the Mysql database system  
 
 .. code-block:: php
 
@@ -153,7 +153,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a value to avoid SQL injections 
+Escapes a value to avoid SQL injections according to the active charset in the connection 
 
 .. code-block:: php
 
@@ -251,6 +251,18 @@ Sets the event manager
 public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Db\\Adapter
 
 Returns the internal event manager
+
+
+
+public  **setDialect** (*unknown* $dialect) inherited from Phalcon\\Db\\Adapter
+
+Sets the dialect used to produce the SQL
+
+
+
+public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** () inherited from Phalcon\\Db\\Adapter
+
+Returns internal dialect instance
 
 
 
@@ -425,9 +437,21 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
 
 Drops a table from a schema/database
+
+
+
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+Creates a view
+
+
+
+public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
+
+Drops a view
 
 
 
@@ -504,6 +528,19 @@ List all tables on a database
 
 
 
+public *array*  **listViews** ([*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+List all views on a database 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->listViews("blog")); ?>
+
+
+
+
 public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter
 
 Lists table indexes 
@@ -540,6 +577,42 @@ Gets creation options from a table
 
      print_r($connection->tableOptions('robots'));
 
+
+
+
+public *boolean*  **createSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Creates a new savepoint
+
+
+
+public *boolean*  **releaseSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Releases given savepoint
+
+
+
+public *boolean*  **rollbackSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Rollbacks given savepoint
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints) inherited from Phalcon\\Db\\Adapter
+
+Set if nested transactions should use savepoints
+
+
+
+public *boolean*  **isNestedTransactionsWithSavepoints** () inherited from Phalcon\\Db\\Adapter
+
+Returns if nested transactions should use savepoints
+
+
+
+public *string*  **getNestedTransactionSavepointName** () inherited from Phalcon\\Db\\Adapter
+
+Returns the savepoint name to use for nested transactions
 
 
 
@@ -618,12 +691,6 @@ Returns type of database system the adapter is used for
 public *string*  **getDialectType** () inherited from Phalcon\\Db\\Adapter
 
 Returns the name of the dialect used
-
-
-
-public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** () inherited from Phalcon\\Db\\Adapter
-
-Returns internal dialect instance
 
 
 

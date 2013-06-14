@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Complex**
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
-Complex resultsets may include complete objects and scalar values. This class builds every complex row as the're required
+Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
 
 
 Constants
@@ -170,7 +170,7 @@ Returns the error messages produced by a batch operation
 
 public *boolean*  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Delete every record in the resultset
+Deletes every record in the resultset
 
 
 

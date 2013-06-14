@@ -21,6 +21,8 @@ API Indice
    Phalcon_Annotations_Reflection
    Phalcon_Assets_Collection
    Phalcon_Assets_Exception
+   Phalcon_Assets_Filters_Cssmin
+   Phalcon_Assets_Filters_Jsmin
    Phalcon_Assets_Manager
    Phalcon_Assets_Resource
    Phalcon_Assets_Resource_Css
@@ -93,6 +95,7 @@ API Indice
    Phalcon_Forms_Element
    Phalcon_Forms_Element_Check
    Phalcon_Forms_Element_Date
+   Phalcon_Forms_Element_Email
    Phalcon_Forms_Element_File
    Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Numeric
@@ -131,6 +134,7 @@ API Indice
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Document
    Phalcon_Mvc_Collection_Exception
    Phalcon_Mvc_Collection_Manager
    Phalcon_Mvc_Controller
@@ -195,6 +199,7 @@ API Indice
    Phalcon_Mvc_View_Engine_Volt
    Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
+   Phalcon_Mvc_View_Simple
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder

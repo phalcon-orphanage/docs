@@ -107,7 +107,7 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
     <?php
 
-     	$view->setBasePath(__DIR__.'/');
+     	$view->setBasePath(__DIR__ . '/');
 
 
 
@@ -323,7 +323,7 @@ Executes render process from dispatching data
 
 
 
-public  **pick** (*string* $renderView)
+public  **pick** (*string|array* $renderView)
 
 Choose a different view to render instead of last-controller/last-action 
 
@@ -347,7 +347,7 @@ Choose a different view to render instead of last-controller/last-action
 
 
 
-public *string*  **partial** (*string* $partialPath)
+public  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial view 
 
@@ -357,6 +357,13 @@ Renders a partial view
 
      	//Show a partial inside another view
      	$this->partial('shared/footer');
+
+.. code-block:: php
+
+    <?php
+
+     	//Show a partial inside another view with parameters
+     	$this->partial('shared/footer', array('conent' => $html));
 
 
 
@@ -419,7 +426,7 @@ Externally sets the view content
 
 public *string*  **getContent** ()
 
-Returns cached ouput from another view stage
+Returns cached output from another view stage
 
 
 
