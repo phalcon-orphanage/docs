@@ -1,6 +1,5 @@
 Returning Responses
 ===================
-
 Part of the HTTP cycle is return responses to the clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The basic usage is the following:
 
@@ -64,7 +63,7 @@ You can set headers in the following way:
     //Setting a raw header
     $response->setRawHeader("HTTP/1.1 200 OK");
 
-A :doc:`Phalcon\\HTTP\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
+A :doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>` bag internally manages headers. This class
 allows to manage headers before sending it to client:
 
 .. code-block:: php
@@ -79,7 +78,7 @@ allows to manage headers before sending it to client:
 
 Making Redirections
 -------------------
-With :doc:`Phalcon\\HTTP\\Response <../api/Phalcon_Http_Response>` you can also make HTTP redirections:
+With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also make HTTP redirections:
 
 .. code-block:: php
 

@@ -1,6 +1,5 @@
 Contextual Escaping
 ===================
-
 Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
 those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
 the minimal overhead when escaping different kinds of texts.

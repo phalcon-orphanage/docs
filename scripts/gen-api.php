@@ -255,7 +255,7 @@ class API_Generator
 }
 
 $index = 'API Indice
------------------
+----------
 
 .. toctree::
    :maxdepth: 1'.PHP_EOL.PHP_EOL;

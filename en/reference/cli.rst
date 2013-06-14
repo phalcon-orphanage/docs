@@ -1,6 +1,5 @@
 Command Line Applications
 =========================
-
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 Tasks

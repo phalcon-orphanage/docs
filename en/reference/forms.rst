@@ -1,6 +1,6 @@
 Forms
 =====
-Phalcon\\Forms is a component aids the developer in the creation and maintenance of forms in web applications.
+Phalcon\\Forms is a component that aid the developer in the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
 
@@ -248,7 +248,6 @@ A form is also able to filter data before be validated, you can set filters in e
 
 Setting User Options
 --------------------
-
 Forms + Entities
 ----------------
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
@@ -350,7 +349,7 @@ give you more free to produce values:
 
 Form Elements
 -------------
-Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\Forms\Element namespace:
+Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\\Forms\\Element namespace:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
@@ -494,7 +493,34 @@ In addition to the form elements provided by Phalcon you can create your own cus
         }
     }
 
+Forms Manager
+-------------
+This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
+
+.. code-block:: php
+
+    <?php
+
+    $di['forms'] = function() {
+        return new Phalcon\Forms\Manager();
+    }
+
+Forms are added to the forms manager and referenced by a unique name:
+
+.. code-block:: php
+
+    <?php
+
+    $this->forms->set('login', new LoginForm());
+
+Using the unique name, forms can be accesed in any part of the application:
+
+.. code-block:: php
+
+    <?php
+
+    echo $this->forms->get('login')->render();
+
 External Resources
 ------------------
-
-* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create forms in this application, [`Github <https://github.com/phalcon/vokuro>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]

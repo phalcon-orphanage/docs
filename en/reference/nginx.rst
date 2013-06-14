@@ -91,7 +91,6 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
 
 Dedicated Instance
 ^^^^^^^^^^^^^^^^^^
-
 .. code-block:: nginx
 
     server {
