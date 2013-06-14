@@ -248,7 +248,6 @@ A form is also able to filter data before be validated, you can set filters in e
 
 Setting User Options
 --------------------
-
 Forms + Entities
 ----------------
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
@@ -350,7 +349,7 @@ give you more free to produce values:
 
 Form Elements
 -------------
-Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\Forms\Element namespace:
+Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\\Forms\\Element namespace:
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
@@ -524,5 +523,4 @@ Using the unique name, forms can be accesed in any part of the application:
 
 External Resources
 ------------------
-
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]

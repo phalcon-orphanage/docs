@@ -427,22 +427,22 @@ A special variable is available inside 'for' loops providing you information abo
 .. code-block:: html+jinja
 
     {% for robot in robots %}
-    	{% if loop.first %}
-    		<table>
-    		<tr>
+        {% if loop.first %}
+            <table>
+            <tr>
                 <th>#</th>
-    			<th>Id</th>
-    			<th>Name</th>
-    		</tr>
-    	{% endif %}
-    		<tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        {% endif %}
+            <tr>
                 <td>{{ loop.index }}</td>
-    			<td>{{ robot.id }}</td>
-    			<td>{{ robot.name }}</td>
-    		</tr>
-    	{% if loop.last %}
-    		</table>
-    	{% endif %}
+                <td>{{ robot.id }}</td>
+                <td>{{ robot.name }}</td>
+            </tr>
+        {% if loop.last %}
+            </table>
+        {% endif %}
     {% endfor %}
 
 Assignments
@@ -472,7 +472,6 @@ If an expression needs to be evaluated without be printed the 'do' statement can
 
 Literals
 ^^^^^^^^
-
 The following literals are supported:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -728,7 +727,7 @@ The following PHP is generated:
 
     </form>
 
-To call a Phalcon\Tag helper, you only need to call an uncamelized version of the method:
+To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
 
 +------------------------------------+-----------------------+
 | Method                             | Volt function         |
@@ -1253,7 +1252,6 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
 External Resources
 ------------------
-
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]

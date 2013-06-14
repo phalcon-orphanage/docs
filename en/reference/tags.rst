@@ -329,7 +329,6 @@ The following HTML is generated:
 
 Setting Helper Values
 ---------------------
-
 From Controllers
 ^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
@@ -442,7 +441,6 @@ Static Content Helpers
 
 Images
 ^^^^^^
-
 .. code-block:: php
 
     <?php
@@ -470,7 +468,6 @@ Volt syntax:
 
 Stylesheets
 ^^^^^^^^^^^
-
 .. code-block:: php
 
     <?php
@@ -493,7 +490,6 @@ Volt syntax:
 
 Javascript
 ^^^^^^^^^^
-
 .. code-block:: php
 
     <?php
@@ -516,7 +512,6 @@ Volt syntax:
 
 HTML5 elements - generic HTML helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
 
@@ -524,7 +519,7 @@ Phalcon offers a generic HTML helper that allows the generation of any kind of H
 
     <?php
 
-    // Generate 
+    // Generate
     // <canvas id="canvas1" width="300" class="cnvclass">
     // This is my canvas
     // </canvas>

@@ -1,6 +1,5 @@
 Events Manager
 ==============
-
 The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 

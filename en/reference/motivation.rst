@@ -1,6 +1,5 @@
 Our motivation
 ==============
-
 There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
 
 Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and
@@ -10,7 +9,6 @@ down and subsequently impacts the end user experience.
 
 The Question
 ------------
-
 Why can't we have a framework with all of its advantages but with none or very few disadvantages?
 
 This is why Phalcon was born!
@@ -21,13 +19,11 @@ low-level solutions so as to achieve maximum performance from Phalcon.
 
 Why?
 ----
-
 * The use of frameworks has become mandatory in professional development with PHP
 * Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
 
 Inner workings of PHP?
 ----------------------
-
 * PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
 * PHP is interpreted and not compiled. The major disadvantage is performance loss
 * Every time a script is requested it must be first interpreted.
@@ -35,7 +31,6 @@ Inner workings of PHP?
 
 How traditional PHP frameworks work?
 ------------------------------------
-
 * Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
 * Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
 * Continuous loading or interpreting is expensive and impacts performance
@@ -43,14 +38,12 @@ How traditional PHP frameworks work?
 
 How does a PHP C-extension work?
 --------------------------------
-
 * C extensions are loaded together with PHP one time on the web server's daemon start process
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
 
 How does Phalcon work?
 ----------------------
-
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
 * Low-level optimizations provides the lowest overhead for MVC-based applications
 * Interact with databases with maximum performance by using a C-language ORM for PHP

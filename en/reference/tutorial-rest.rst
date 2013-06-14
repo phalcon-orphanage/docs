@@ -10,7 +10,6 @@ different HTTP methods:
 
 Defining the API
 ----------------
-
 The API consists of the following methods:
 
 +--------+----------------------------+----------------------------------------------------------+

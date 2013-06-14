@@ -61,7 +61,6 @@ Congratulations you now have Phalcon tools installed!
 
 Related Guides
 ^^^^^^^^^^^^^^
-
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
