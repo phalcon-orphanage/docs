@@ -1,6 +1,5 @@
 Tutorial 2: Explaining INVO
 ===========================
-
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
 generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
@@ -43,7 +42,7 @@ registered user can manage his/her products and customers.
 Routing
 -------
 INVO uses the standard route that is built-in with the Router component. These routes matches the following
-pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
+pattern: /:controller/:action/:params. This means that the first part of an URI is the controller, the second the
 action and the rest are the parameters.
 
 The following route /session/register executes the controller SessionController and its action registerAction.
@@ -58,7 +57,7 @@ of the bootstrap file (public/index.php):
     <?php
 
     //Read the configuration
-    $config = new Phalcon\Config\Adapter\Ini(__DIR__ . '/../app/config/config.ini');
+    $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
 :doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
 contains the following settings:
@@ -100,10 +99,10 @@ of directories where the application will look for the classes that it eventuall
 
     $loader->registerDirs(
         array(
-            __DIR__ . $config->application->controllersDir,
-            __DIR__ . $config->application->pluginsDir,
-            __DIR__ . $config->application->libraryDir,
-            __DIR__ . $config->application->modelsDir,
+            $config->application->controllersDir,
+            $config->application->pluginsDir,
+            $config->application->libraryDir,
+            $config->application->modelsDir,
         )
     )->register();
 
@@ -119,9 +118,9 @@ this class initializes and executes all the necessary to make the application ru
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application();
-    $application->setDI($di);
-    echo $application->handle()->getContent();
+    $app = new \Phalcon\Mvc\Application($di);
+
+    echo $app->handle()->getContent();
 
 Dependency Injection
 --------------------
@@ -134,7 +133,7 @@ There are many ways of registering services in the container. In INVO most servi
 anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
 by the application.
 
-For instance, in the following excerpt is registered the session service, the anonymous function will only be
+For instance, in the following excerpt, the session service is registered, the anonymous function will only be
 called when the application requires access to the session data:
 
 .. code-block:: php
@@ -148,7 +147,7 @@ called when the application requires access to the session data:
         return $session;
     });
 
-Here we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
+Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
 was registered using the name "session". This is a convention that will allow the framework to identify the active
 service in the services container.
 
@@ -170,15 +169,15 @@ existence of the variable $di.
 
 Log into the Application
 ------------------------
-Log in will allow us to work on backend controllers. The separation between backend's controllers and the frontend ones
-is only logical. All controllers are located in the same directory.
+"Log in" will allow us to work on backend controllers. The separation between backend's controllers and the frontend ones
+is only logical. All controllers are located in the same directory (app/controllers/).
 
 To enter into the system, we must have a valid username and password. Users are stored in the table "users"
 in the database "invo".
 
-Before we can start session, we need to configure the connection to the database in the application. A service
+Before we can start a session, we need to configure the connection to the database in the application. A service
 called "db" is set up in the service container with that information. As with the autoloader, this time we are
-also taking parameters from the configuration file to configure a service:
+also taking parameters from the configuration file in order to configure a service:
 
 .. code-block:: php
 
@@ -194,7 +193,7 @@ also taking parameters from the configuration file to configure a service:
         ));
     });
 
-Here we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
+Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
 logger, a profiler or change the adapter, setting up it as you want.
 
 Back then, the following simple form (app/views/session/index.phtml) requests the logon information. We've removed
@@ -238,7 +237,7 @@ data entered checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Taking the variables sent by POST
+                //Receiving the variables sent by POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
@@ -253,7 +252,7 @@ data entered checking for a valid user in the database:
 
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome '.$user->name);
+                    $this->flash->success('Welcome ' . $user->name);
 
                     //Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
@@ -285,7 +284,7 @@ of the controller.
 These services are shared, which means that we are always accessing the same instance regardless of the place
 where we invoke them.
 
-For instance, here we invoke the "session" service and then we stored the user identity in the "auth" variable:
+For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
 
 .. code-block:: php
 
@@ -325,8 +324,8 @@ replaced the component by creating a function in the bootstrap:
         return $dispatcher;
     });
 
-We now have total control over the Dispatcher used in the application. Many components in the framework launch
-events that allow us to modify the internal flow of operation. As the dependency Injector component acts as glue
+We now have total control over the Dispatcher used in the application. Many components in the framework trigger
+events that allow us to modify their internal flow of operation. As the dependency Injector component acts as glue
 for components, a new component called :doc:`EventsManager <events>` aids us to intercept the events produced
 by a component routing the events to listeners.
 
@@ -365,10 +364,11 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\User\Plugin;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
@@ -380,21 +380,23 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
 
     }
 
-The hooks events always receive a first parameter that contains contextual information of the event produced and a
-second one that is the object that produced the event itself. It is not mandatory that plugins extend the class
-Phalcon\\Mvc\\User\\Plugin, but by doing it they gain easier access to the services in the application.
+The hooks events always receive a first parameter that contains contextual information of the event produced ($event)
+and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
+plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
+available in the application.
 
-Now, we're verifying the role in the current session, check to see if he/she has access using the ACL list.
+Now, we're verifying the role in the current session, checking if he/she has access using the ACL list.
 If he/she does not have access we redirect him/her to the home screen as explained before:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\User\Plugin;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
@@ -441,7 +443,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
 In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also
-implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list:
+implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php
 
@@ -472,10 +474,10 @@ accesses for the resources:
 
     //Private area resources (backend)
     $privateResources = array(
-        'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'invoices' => array('index', 'profile')
+      'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'invoices' => array('index', 'profile')
     );
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
@@ -483,10 +485,10 @@ accesses for the resources:
 
     //Public area resources (frontend)
     $publicResources = array(
-        'index' => array('index'),
-        'about' => array('index'),
-        'session' => array('index', 'register', 'start', 'end'),
-        'contact' => array('index', 'send')
+      'index' => array('index'),
+      'about' => array('index'),
+      'session' => array('index', 'register', 'start', 'end'),
+      'contact' => array('index', 'send')
     );
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
@@ -519,7 +521,7 @@ User Components
 ---------------
 All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
+upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
 
 This part of the application is implemented in the component "Elements" (app/library/Elements.php).
 
@@ -527,7 +529,9 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     <?php
 
-    class Elements extends Phalcon\Mvc\User\Component
+    use Phalcon\Mvc\User\Component;
+
+    class Elements extends Component
     {
 
         public function getMenu()
@@ -543,7 +547,7 @@ This part of the application is implemented in the component "Elements" (app/lib
     }
 
 This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but
-if it helps to more quickly access the application services. Now, we register this class in the services container:
+it helps to get access more quickly to the application services. Now, we register this class in the services container:
 
 .. code-block:: php
 
@@ -678,7 +682,7 @@ Each controller has the following actions:
 The Search Form
 ^^^^^^^^^^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
-creating a search criteria from any field. The "products" table has a relationship to the table "products_types".
+creating a search criteria from any field. Table "products" has a relationship to the table "products_types".
 In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
 .. code-block:: php
@@ -691,15 +695,13 @@ In this case, we previously queried the records in this table in order to facili
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->setVar("productTypes", ProductTypes::find());
+        $this->view->productTypes = ProductTypes::find();
     }
 
 All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
 (app/views/index.phtml) we show a "select" tag filled with those results:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     <div>
         <label for="product_types_id">Product Type</label>
@@ -752,7 +754,7 @@ conditions intelligently based on the data types and values sent from the form:
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
 This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the query:
+the search criteria:
 
 * If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
 * If the data type is not text or similar, it'll use the operator "=".
@@ -841,11 +843,12 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     {
 
         $products = new Products();
-        $products->id = $request->getPost("id", "int");
-        $products->product_types_id = $request->getPost("product_types_id", "int");
-        $products->name = $request->getPost("name", "striptags");
-        $products->price = $request->getPost("price", "double");
-        $products->active = $request->getPost("active");
+
+        $products->id = $this->request->getPost("id", "int");
+        $products->product_types_id = $this->request->getPost("product_types_id", "int");
+        $products->name = $this->request->getPost("name", "striptags");
+        $products->price = $this->request->getPost("price", "double");
+        $products->active = $this->request->getPost("active");
 
         //...
 
@@ -897,20 +900,17 @@ Now, in the case of product updating, first we must present to the user the data
 
         //...
 
-        $product = Products::findFirst(array(
-            'id = ?0',
-            'bind' => array($id)
-        ));
+        $product = Products::findFirstById($id);
 
-        Tag::displayTo("id", $product->id);
-        Tag::displayTo("product_types_id", $product->product_types_id);
-        Tag::displayTo("name", $product->name);
-        Tag::displayTo("price", $product->price);
-        Tag::displayTo("active", $product->active);
+        Tag::setDefault("id", $product->id);
+        Tag::setDefault("product_types_id", $product->product_types_id);
+        Tag::setDefault("name", $product->name);
+        Tag::setDefault("price", $product->price);
+        Tag::setDefault("active", $product->active);
 
     }
 
-The displayTo helper sets a default value in the form on the attribute with the same name. Thanks to this,
+The "setDefault" helper sets a default value in the form on the attribute with the same name. Thanks to this,
 the user can change any value and then sent it back to the database through to the "save" action:
 
 .. code-block:: php
@@ -926,12 +926,9 @@ the user can change any value and then sent it back to the database through to t
         //...
 
         //Find the product to update
-        $product = Products::findFirst(array(
-            'id = ?0',
-            'bind' => array($this->request->getPost("id"))
-        ));
+        $product = Products::findFirstById($this->request->getPost("id"));
         if (!$product) {
-            $this->flash->error("products does not exist ".$id);
+            $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 

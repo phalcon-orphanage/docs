@@ -15,8 +15,8 @@ Phalcon no es solo sobre rendimiento, nuestro objetivo es hacerlo robosto, compl
 
 .. highlights::
 
-    Esta documentación está traducida de su versión en inglés. Si quieres colaborar traduciendo o mejorando lo existente
-    por favor crea un nuevo 'issue' en Github.
+    Esta documentación está traducida de su versión en inglés y se encuentra en progreso. Si quieres colaborar
+    traduciendo o mejorando lo existente por favor crea un nuevo 'issue' en Github. Gracias por adelantado!
 
 Table of Contents
 -----------------
