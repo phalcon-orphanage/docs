@@ -2,7 +2,7 @@ Tutorial 1: Aprendamos usando ejemplos
 ======================================
 Atraves de este tutorial, realizaremos la creación de una aplicación que tiene un sencillo formulario de registro desde cero.
 Adicionalmente explicaremos algunos aspectos básicos del framework. Si estas interesado en generación automática de código
-para Phalcon, puedes ver nuestros :doc:`developer tools <tools>`.
+para Phalcon, puedes ver nuestro :doc:`developer tools <tools>`.
 
 Revisando tu instalación
 ------------------------
@@ -127,7 +127,7 @@ El archivo public/index.php debería verse así:
 
 Autoloaders
 ^^^^^^^^^^^
-La primera parte que encontramos en el bootstrap es el registro de un atuoloader. Esto será usado para cargar clases como controladores y modelos en la aplicación.
+La primera parte que encontramos en el bootstrap es el registro de un atuoloader. Este será usado para cargar clases como controladores y modelos en la aplicación.
 Por ejemplo podemos registrar uno o más directorios de controladores incrementando la flexibilidad de la aplicación.
 
 En nuestro ejemplo hemos usado el componente Phalcon\\Loader. Con él, podemos cargar clases usando varias estrategias, para
@@ -147,7 +147,7 @@ este ejemplo vamos a cargar las clases basado en unos directorios predeterminado
 
 Administración de Dependencias
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Un concepto muy importante que debemos entender al trabajar con Phalcon es su :doc:`contenedor/injector de dependencias <di>`.
+Un concepto muy importante que debemos entender al trabajar con Phalcon es su :doc:`contenedor/inyector de dependencias <di>`.
 Puede sonar complejo pero en realidad es muy sencillo y práctico.
 
 Un contenedor de servicios es una bolsa donde globalmente registramos los servicios que nuestra aplicación necesita para trabajar.
@@ -463,7 +463,7 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
             $user = new Users();
 
-            /Almacenar y verificar errores de validación
+            //Almacenar y verificar errores de validación
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
