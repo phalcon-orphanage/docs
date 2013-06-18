@@ -1,13 +1,13 @@
 Instalación
 ===========
-Las extensiones de PHP requieren un método diferente de instalación a los frameworks o librerias tradicionales. 
+Las extensiones de PHP requieren un método diferente de instalación a los frameworks o librerias tradicionales.
 Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el código fuente.
 
 .. highlights::
-	Phalcon puede ser compilado como mínimo para la version 5.3.1 de PHP, pero debido a errores antiguos de PHP que causan fallos de memoria, recomendamos usar al menos 5.3.11.
+	Phalcon puede ser compilado como mínimo para la version 5.3.1 de PHP, pero debido a errores antiguos de PHP que causan fallos y fugas de memoria, recomendamos usar al menos 5.3.11.
 
 .. highlights::
-	Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Para saber más <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Más información <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
@@ -15,9 +15,9 @@ Para usar Phalcon en Windows debes descargar un DLL y ubicarlo en el directorio 
 
 	extension=php_phalcon.dll
 
-Reiniciar el servidor web.
+Finalmente, reinicia el servidor web.
 
-El siguiente video explica como instalar Phalcon en Windows paso a paso, el material se encuentra en Ingles.
+El siguiente video explica como instalar Phalcon en Windows paso a paso, el material se encuentra en Inglés.
 
 .. raw:: html
 
@@ -66,7 +66,7 @@ Paquetes especificos para plataformas comunes:
 
 Compilación
 ^^^^^^^^^^^
-Creando la extensión:
+Compilando la extensión:
 
 .. code-block:: bash
 
@@ -82,7 +82,7 @@ Añadiendo la extensión a php.ini
 
 Reiniciando el servidor web.
 
-Phalcon automaticamente detecta tu arquitectura, sin embargo, puedes forzar la compilación para la arquitectura deseada:
+Phalcon automáticamente detecta tu arquitectura de procesador, sin embargo, puedes forzar la compilación para la arquitectura deseada:
 
 .. code-block:: bash
 
@@ -92,7 +92,7 @@ Phalcon automaticamente detecta tu arquitectura, sin embargo, puedes forzar la c
 
 FreeBSD
 -------
-Existe una variante disponible para FreeBSD. Solo necesitas esta simple linea de comandos para instalarlo:
+Existe una variante disponible para FreeBSD. Solo necesitas esta simple línea de comandos para instalarlo:
 
 .. code-block:: bash
 

@@ -5,8 +5,9 @@ Hay muchos frameworks para PHP hoy en día, pero ninguno como Phalcon (en serio)
 
 Casi todos los programadores preferimos usar un framework. Esto debido a que nos proporcionan una gran funcionalidad que esta probada
 y lista para usar, al mismo tiempo no repitiendonos y reusando código. Sin embargo, los frameworks requieren incluir muchos archivos
-e interpretar miles de lineas de código en cada petición. Esta operación hace que las aplicaciones sean más lentas por consiguiente
-impactando la experiencia de usuario.
+e interpretar miles de lineas de código en cada petición. Adicionalmente frameworks orientados a objetos agregan una cantidad
+consirable de overhead. Todas estas operaciones hace que las aplicaciones sean más lentas por consiguiente
+impactando la experiencia de usuario de manera negativa.
 
 La pregunta
 -----------

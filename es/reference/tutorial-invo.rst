@@ -710,8 +710,8 @@ su búsqueda por este campo.
         $this->view->productTypes = ProductTypes::find();
     }
 
-All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
-(app/views/index.phtml) we show a "select" tag filled with those results:
+Todos los tipos de productos son consultados y pasados a la vista como una variable local $productTypes. Luego,
+en la vista (app/views/index.phtml) mostramos una etiqueta "select" llena con esos datos:
 
 .. code-block:: html+php
 
@@ -725,39 +725,45 @@ All the "product types" are queried and passed to the view as a local variable "
         )) ?>
     </div>
 
-Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
-is submitted, the action "search" is executed in the controller performing the search based on the data entered by
-the user.
+Fijate que $productTypes contiene todos los datos necesarios para llenar la etiqueta SELECT usando Phalcon\\Tag::select.
+Una vez el formulario sea
 
-Performing a Search
-^^^^^^^^^^^^^^^^^^^
+Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
+is enviado, la acción "search" es ejecutada en el controlado realizando la búsqueda basada en los parámetros digitados
+por el usuario.
+
+Realizando una Búsqueda
+^^^^^^^^^^^^^^^^^^^^^^^
+La acción tiene "search" tiene un doble objetivo. Cuando es accedida via POST, realiza una búsqueda basada en los parámetros
+ingresados por el usuario y cuando se accede via GET mueve la pagína actual en el paginador.
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
-form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
-we check it using the :doc:`Request <request>` component:
+form. But when accessed via GET it moves the current page in the paginator. Para diferenciar un método del
+otro usamos el componente :doc:`Request <request>`:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Execute the "search" based on the criteria sent from the "index"
-     * Returning a paginator for the results
+     * Realiza la búsqueda basada en los parámetros de usuario
+     * devolviendo un paginador
      */
     public function searchAction()
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            //crear las condiciones de búsqueda
         } else {
-            //paginate using the existing conditions
+            //paginar usando las condiciones existentes
         }
 
         //...
 
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
-conditions intelligently based on the data types and values sent from the form:
+
+Con la ayuda de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, podemos crear una búsqueda
+de manera inteligente basada en los tipos de datos enviados en el formulario:
 
 .. code-block:: php
 
@@ -765,16 +771,15 @@ conditions intelligently based on the data types and values sent from the form:
 
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the search criteria:
+Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y los toma en cuenta para crear el criterio de búsqueda
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
-* If the data type is not text or similar, it'll use the operator "=".
+* Si el campo tiene un tipo de dato de texto o similar (char, varchar, text, etc.) Usa un operador SQL "like" para filtrar los resultados
+* Si el tipo de dato no es texto, entonces usará el operador "="
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
-Values are automatically escaped using "bound parameters".
+Adicionalmente, "Criteria" ignora todas las variables $_POST que no correspondan a campos en la tabla.
+Los valores son automáticamente escapados usando "bound parameters" evitando inyecciones de SQL.
 
-Now, we store the produced parameters in the controller's session bag:
+Ahora, almacenamos los parametros producidos in la bolsa de datos de sesión del controlador:
 
 .. code-block:: php
 
@@ -782,10 +787,11 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests. When accessed, this attribute injects
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service that is independent in each controller.
+Una bolsa de sesión, es un atributo especial en un controlador que es persistente entre peticiones.
+Al ser accedido, este atributo es inyectado con un servicio :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+que es independiente por controlador/clase.
 
-Then, based on the built params we perform the query:
+Luego, basado en los parámetros construidos anteriormente:
 
 .. code-block:: php
 
@@ -797,8 +803,8 @@ Then, based on the built params we perform the query:
         return $this->forward("products/index");
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+Si la búsqueda no retorna ningún producto, redireccionamos el usuario a la vista de inicio nuevamente.
+Supongamos que retornó registros, entonces creamos un páginador para navegar facilmente a través de ellos:
 
 .. code-block:: php
 
@@ -810,18 +816,18 @@ search returned results, then we create a paginator to navigate easily through t
         "page" => $numberPage   //Active page
     ));
 
-    //Get active page in the paginator
+    //Obtener la página activa
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+Finalmente pasamos la página devuelta a la vista:
 
 .. code-block:: php
 
     <?php
 
-    $this->view->setVar("page", $page);
+    $this->view->page = $page;
 
-In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
+En la vista (app/views/products/search.phtml), recorremos los resultados correspondientes de la página actual:
 
 .. code-block:: html+php
 
