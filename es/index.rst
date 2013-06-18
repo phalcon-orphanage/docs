@@ -1,3 +1,4 @@
+
 Bienvenido!
 ===========
 
@@ -11,6 +12,11 @@ No necesitas aprender o usar C, toda su funcionalidad está expuesta como clases
 debilmente acoplado permitiendote usar sus clases como componentes de acuerdo a como tu aplicación lo requiera.
 
 Phalcon no es solo sobre rendimiento, nuestro objetivo es hacerlo robosto, completo y fácil de usar!
+
+.. highlights::
+
+    Esta documentación está traducida de su versión en inglés. Si quieres colaborar traduciendo o mejorando lo existente
+    por favor crea un nuevo 'issue' en Github.
 
 Table of Contents
 -----------------

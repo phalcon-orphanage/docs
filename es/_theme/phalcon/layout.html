@@ -17,7 +17,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="http://phalconphp.com">Inicio</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -58,10 +58,10 @@
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
             <div id="searchbox" style="">
-              <h3>Search</h3>
+              <h3>Buscar</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
                   <input type="text" name="q" size="18">
-                  <input type="submit" value="Go">
+                  <input type="submit" value="Ir">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>
             </div>
@@ -179,12 +179,12 @@
                   </a>
                   <div class="nav-collapse collapse pull-right">
                       <ul class="nav">
-                          <li><a href="http://phalconphp.com/">HOME</a></li>
-                          <li><a href="http://phalconphp.com/download">Download</a></li>
-                          <li><a href="http://phalconphp.com/documentation">Documentation</a></li>
-                          <li><a href="http://phalconphp.com/support">Support</a></li>
-                          <li><a href="http://phalconphp.com/donate">Donate</a></li>
-                          <li><a href="http://store.phalconphp.com">Store</a></li>
+                          <li><a href="http://phalconphp.com/">INICIO</a></li>
+                          <li><a href="http://phalconphp.com/download">Descarga</a></li>
+                          <li><a href="http://phalconphp.com/documentation">Documentación</a></li>
+                          <li><a href="http://phalconphp.com/support">Soporte</a></li>
+                          <li><a href="http://phalconphp.com/donate">Donar</a></li>
+                          <li><a href="http://store.phalconphp.com">Tienda</a></li>
                           <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
                           <li><a href="http://blog.phalconphp.com/">Blog</a></li>
                       </ul>
@@ -228,11 +228,11 @@
       {%- block footer %}
         <div id="footer">
 
-          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
-          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+          <p>¿Encontraste un error? ¿Quieres mejorar un documento? La documentación se encuentra disponible en <a href="http://github.com/andresgutierrez/docs">Github</a></p>
+          <p>Necesitas soporte o tienes preguntas? Checa la página de <a href="http://phalconphp.com/support">soporte</a></p>
 
-          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
-          <p>Except where otherwise noted, content on this site is licensed under the
+          <p>Phalcon PHP Framework es liberado bajo la licencia <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Excepto donde sea indicado, el contenido de este sitio está liberado bajo licencia
             <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
           {%- if last_updated %}
