@@ -112,7 +112,7 @@ Dedicated Instance
 
             # otherwise rewrite it
             if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
+                rewrite ^(.+)$ /index.php?_url=/$1 last;
                 break;
             }
         }
@@ -155,7 +155,7 @@ And this second configuration allow you to have different configurations by host
         try_files $uri $uri/ @rewrite;
 
         location @rewrite {
-            rewrite ^/(.*)$ /index.php?_url=$1;
+            rewrite ^/(.*)$ /index.php?_url=/$1;
         }
 
         location ~ \.php {
