@@ -4,7 +4,8 @@ There are many PHP frameworks nowadays, but none of them is like Phalcon (Really
 
 Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and
 ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and
-hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application
+hundreds of lines of code to be interpreted and executed on each request from the actual application. Object-Oriented frameworks also 
+add a lot of overhead to execution making complex application slow. All these operations slows the application
 down and subsequently impacts the end user experience.
 
 The Question
