@@ -843,12 +843,13 @@ En la vista (app/views/products/search.phtml), recorremos los resultados corresp
         </tr>
     <?php } ?>
 
-Creating and Updating Records
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+Creando y Actualizando Registros
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ahora vemos como en un CRUD se puede crear y actualizar registros. Desde las vistas "new" y "edit" los datos
+son ingresados por el usuario y enviados a las acciones "create" y "save" que realizan las acciones de crear y
+actualizar productos respectivamente.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+En el caso de creación, recuperamos los datos enviados y los asignamos a una nueva instancia de "Products":
 
 .. code-block:: php
 
@@ -872,10 +873,11 @@ In the creation case, we recover the data submitted and assign them to a new "pr
 
     }
 
-Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
-performs additional casting according to the column types.
+Los datos son filtrados antes de ser asignados al objeto. Realizar este filtrado es opcional, el ORM escapa los datos
+de entrada y realiza conversiones de tipos de dato antes de guardar. Sin embargo, es recomendable para asegurarnos
+que la entrada no contiene caracteres basura ó invalidos.
 
-When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
+Al guardar, sabremos si los datos cumplen con las reglas de negocio y validaciones adicionales implementadas en el modulo Products:
 
 .. code-block:: php
 
@@ -891,12 +893,12 @@ When saving we'll know whether the data conforms to the business rules and valid
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            //Guardar falló, mostrar los mensajes
             foreach ($products->getMessages() as $message) {
-                $this->flash->error((string) $message);
+                $this->flash->error($message);
             }
-            return $this->forward("products/new");
 
+            return $this->forward("products/new");
         } else {
             $this->flash->success("Product was created successfully");
             return $this->forward("products/index");
@@ -904,14 +906,14 @@ When saving we'll know whether the data conforms to the business rules and valid
 
     }
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+Ahora, en el caso de la actualización, primero debemos presentar al usuario los datos correspondientes al registro editado:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Shows the view to "edit" an existing product
+     * Muestra la vista para editar un producto existente
      */
     public function editAction($id)
     {
@@ -928,36 +930,36 @@ Now, in the case of product updating, first we must present to the user the data
 
     }
 
-The "setDefault" helper sets a default value in the form on the attribute with the same name. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+El método "Tag::setDefault" nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
+Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos usando la acción "save":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Actualiza un producto basado en los datos ingresados en la acción "edit"
      */
     public function saveAction()
     {
 
         //...
 
-        //Find the product to update
+        //Buscar el producto a actualizar
         $product = Products::findFirstById($this->request->getPost("id"));
         if (!$product) {
             $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        //... asignar los valores al objeto y guardar
 
     }
 
-Changing the Title Dynamically
-------------------------------
-When you browse between one option and another will see that the title changes dynamically indicating where
-we are currently working. This is achieved in each controller initializer:
+Cambiar el título dinámicamente
+-------------------------------
+Cuando navegas entre una opción y otra verás que el título de la página cambia dinamicamente indicando
+donde estamos trabajando actualmente. Esto se logra en el método inicializador de cada controlador:
 
 .. code-block:: php
 
@@ -968,7 +970,7 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            //Establecer el título de la página
             Tag::setTitle('Manage your product types');
             parent::initialize();
         }
@@ -977,7 +979,7 @@ we are currently working. This is achieved in each controller initializer:
 
     }
 
-Note, that the method parent::initialize() is also called, it adds more data to the title:
+El método parent::initialize() en la clase padre se llama igualmente, esté agrega más información al título:
 
 .. code-block:: php
 
@@ -988,14 +990,14 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            //Agregar el nombre de la aplicación al principio del título
             Phalcon\Tag::prependTitle('INVO | ');
         }
 
         //...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+Finalmente, el título se imprime en la vista principal (app/views/index.phtml):
 
 .. code-block:: html+php
 
@@ -1008,10 +1010,10 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         <!-- ... -->
     </html>
 
-Conclusion
+Conclusión
 ----------
-This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
-learn more and get more out of the framework.
+Este tutorial cubre muchos más aspectos del desarrollo de aplicaciones con Phalcon, esperamos te hayan
+servido para aprender más y sacar más provecho al framework.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
