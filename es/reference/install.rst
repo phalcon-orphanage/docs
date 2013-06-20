@@ -1,6 +1,6 @@
 Instalación
 ===========
-Las extensiones de PHP requieren un método diferente de instalación a los frameworks o librerias tradicionales.
+Las extensiones de PHP requieren un método diferente de instalación a los frameworks o bibliotecas tradicionales.
 Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el código fuente.
 
 .. highlights::

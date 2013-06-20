@@ -1,12 +1,12 @@
 Tutorial 1: Aprendamos usando ejemplos
 ======================================
-Atraves de este tutorial, realizaremos la creación de una aplicación que tiene un sencillo formulario de registro desde cero.
-Adicionalmente explicaremos algunos aspectos básicos del framework. Si estas interesado en generación automática de código
+A lo largo de este tutorial, te guiaremos en la creación desde cero de una aplicación que contiene un simple formulario de registro.
+Además explicaremos algunos aspectos básicos del framework. Si estas interesado en la generación automática de código
 para Phalcon, puedes ver nuestro :doc:`developer tools <tools>`.
 
 Revisando tu instalación
 ------------------------
-Asumiremos que ya has instalado Phalcon. Revisa la salida de tu phpinfo() que incluya una sección mencionando "Phalcon" o
+Asumiremos que ya has instalado Phalcon. Revisa que la salida de tu phpinfo() incluya una sección mencionando "Phalcon" o
 ejecuta el siguiente código a continuación:
 
 .. code-block:: php
@@ -30,11 +30,11 @@ La extensión de Phalcon debe aparecer como parte de la salida:
 
 Creando un proyecto
 -------------------
-La mejor forma de seguir esta guia es seguir paso a paso. Puedes encontrar el código completo `aquí <https://github.com/phalcon/tutorial>`_.
+La mejor forma de usar esta guia es siguiendo cada paso. Si lo deseas puedes encontrar el código completo `aquí <https://github.com/phalcon/tutorial>`_.
 
 Estructura de Directorios
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Phalcon no te impone que uses una determinada estructura de directorios para desarrollar. Gracias al hecho que es debilmente acoplado, puedes crear aplicaciones con Phalcon con cualquier estructura con
+Phalcon no te impone que uses una determinada estructura de directorios para desarrollar. Gracias al hecho que es libremente acoplado, puedes crear aplicaciones con Phalcon con cualquier estructura con
 la que te sientas cómodo.
 
 Para efectos de este tutorial y como punto de inicio, te sugerimos la siguiente estructura:
@@ -51,13 +51,13 @@ Para efectos de este tutorial y como punto de inicio, te sugerimos la siguiente 
         img/
         js/
 
-Ten en cuenta que no necesitas un directorio "library" para Phalcon. El framework está en memoria y listo para usar en cualquier parte.
+Ten en cuenta que no necesitas un directorio "library" para Phalcon. El framework está en memoria y listo para ser usado en cualquier parte.
 
-URLs Bonitas
+URLs Amigables
 ^^^^^^^^^^^^
-Usaremos URLS bonitas o amigables para este tutorial. Estas Urls son mejores para SEO, adicionalmente los usuarios las recuerdan más fácil.
+Usaremos URLS bonitas o amigables para este tutorial. Estas Urls son mejores para SEO, además los usuarios las recuerdan más fácilmente.
 Phalcon soporta modulos de reescritura (rewrite) proporcionados por los servidores web más populares. Que tus aplicaciones tengan URLs
-amigables no es una obligación y también podrías desarrollar sin ellas.
+amigables no es una obligación y también podrás desarrollar tu aplicación sin ellas.
 
 En este ejemplo usaremos el modulo rewrite para Apache. Vamos a crear una serie de reglas en el archivo /.htaccess:
 
@@ -70,10 +70,10 @@ En este ejemplo usaremos el modulo rewrite para Apache. Vamos a crear una serie 
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-Todas las peticiones a el proyecto serán reescritas al directorio public/ haciendo como de raíz de documentos.
+Todas las peticiones al proyecto serán dirigidas al directorio public/ ejerciendo este como directorio raíz.
 Este paso asegura que los archivos internos del proyecto permanezcan ocultos del público evitando posibles problemas de seguridad.
 
-El segundo conjunto de reglas permitirá servir los archivos existentes y redireccionar lo no existe al bootstrap de la aplicación:
+El segundo conjunto de reglas permitirá servir los archivos existentes y redireccionar lo demás al bootstrap de la aplicación:
 
 .. code-block:: apacheconf
 
@@ -87,7 +87,7 @@ El segundo conjunto de reglas permitirá servir los archivos existentes y redire
 
 Bootstrap
 ^^^^^^^^^
-El primer archivo que debes crear el es bootstrap. Este archivo es muy importante, ya que sirve como base a tu aplicación, dándote
+El primer archivo que debes crear es el bootstrap. Este archivo es muy importante, ya que sirve como base de tu aplicación, dándote
 control sobre muchos aspectos en ella. En este archivo podemos implementar la inicialización de componentes así como cambiar
 el comportamiento de la aplicación.
 
@@ -99,15 +99,15 @@ El archivo public/index.php debería verse así:
 
     try {
 
-        //Registrar un autoloader
+        //Registrar un autocargador
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Crear un DI
-        $di = new Phalcon\DI\FactoryDefault();
+        //Crear un Inyector de dependencias
+        $di = new \Phalcon\DI\FactoryDefault();
 
         //Configurar el componente de vistas
         $di->set('view', function(){
@@ -125,9 +125,9 @@ El archivo public/index.php debería verse así:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
+Autocargadores
 ^^^^^^^^^^^
-La primera parte que encontramos en el bootstrap es el registro de un atuoloader. Este será usado para cargar clases como controladores y modelos en la aplicación.
+La primera parte que encontramos en el bootstrap es el registro de un autocargador. Este será usado para cargar clases como controladores y modelos en la aplicación.
 Por ejemplo podemos registrar uno o más directorios de controladores incrementando la flexibilidad de la aplicación.
 
 En nuestro ejemplo hemos usado el componente Phalcon\\Loader. Con él, podemos cargar clases usando varias estrategias, para
@@ -152,7 +152,7 @@ Puede sonar complejo pero en realidad es muy sencillo y práctico.
 
 Un contenedor de servicios es una bolsa donde globalmente registramos los servicios que nuestra aplicación necesita para trabajar.
 Cada vez que requerimos un componente, le solicitaremos al contenedor el servicio usando un nombre previamente convenido.
-Ya que Phalcon es un framework debilmente acoplado, Phalcon\\DI actúa como intermediario facilitando la integración
+Ya que Phalcon es un framework libremente acoplado, Phalcon\\DI actúa como intermediario facilitando la integración
 de los diferentes componentes logrando que trabajen juntos de manera transparente.
 
 .. code-block:: php
@@ -164,11 +164,10 @@ de los diferentes componentes logrando que trabajen juntos de manera transparent
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` es una variante de Phalcon\\DI.
 Para hacer las cosas más fáciles, él ya tiene registrado la mayoría de componentes que vienen con Phalcon.
-De esta manera no debemos registrarlos uno a uno. Después no tenemos problema en reemplazar
-algún componente por otro.
+De esta manera no debemos registrarlos uno a uno. Puedes reemplazar un componente por otro en cualquier momento que lo desees.
 
 Luego, registramos el servicio 'view', en él indicamos el directorio que el framework debe utilizar para cargar los archivos de vistas.
-Como las vistas no son clases como tal, ellas no pueden ser cargadas usando un auto-loader.
+Como las vistas no son clases como tal, ellas no pueden ser cargadas usando un autocargadores.
 
 Los servicios pueden ser registrados de muchas maneras, para nuestro tutorial usaremos funciones anónimas:
 
@@ -212,13 +211,13 @@ El controlador Index (app/controllers/IndexController.php) se ve así:
 
         public function indexAction()
         {
-            echo "<h1>Hello!</h1>";
+            echo "<h1>Hola!</h1>";
         }
 
     }
 
-Las clases de controlador deben tener el sufijo "Controller" y las acciones el sufijo "Action". Si accesas la aplicación desde tu navegador,
-debes ver algo como esto:
+Las clases de controlador deben tener el sufijo "Controller" y las acciones el sufijo "Action". Si accedes a tu aplicación desde el navegador,
+podrás ver algo como esto:
 
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
@@ -228,7 +227,7 @@ Felicidades, estás volando con Phalcon!
 Generando salida a la vista
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Generar salidas desde los controladores es a veces necesario pero no deseable para la mayoria de puristas del MVC.
-Todo debe ser pasado a la vista que es responsable de imprimirla y presentarla para el cliente.
+Toda información debe ser pasada a la vista la cual es responsable de imprimirla y presentarla al cliente.
 Phalcon buscará una vista con el mismo nombre de la última acción ejecutada dentro de un directorio
 con el nombre del último controlador ejecutado. En nuestro caso (app/views/index/index.phtml):
 
@@ -252,8 +251,8 @@ Ahora nuestro controlador (app/controllers/IndexController.php) tiene la impleme
 
     }
 
-La salida en el navagador permanece igual. El :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` es automaticamente creado y terminado cuando la petición termina.
-Aprender más sobre el :doc:`uso de vistas aquí <views>` .
+La salida en el navagador permanece igual. El :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` es automáticamente creado y terminado cuando la petición termina.
+Puedes ver más sobre el :doc:`uso de vistas aquí <views>` .
 
 Diseñando una formulario de registro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
