@@ -1,12 +1,13 @@
 Increasing Performance: What's next?
 ====================================
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight
-scenarios where you can improve performance and how detect what is really slow in your application.
+Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
+In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
+your application.
 
 Profile on the Server
 ---------------------
 Each application is different, the permanent profiling is important to understand where performance can be increased.
-Profiling gives us a real picture on what is really slow and what do not. Profiles can vary between a request and another,
+Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another,
 so it is important to make enough measurements to make conclusions.
 
 Profiling with XDebug
@@ -106,20 +107,29 @@ Javascript evaluation and CSS styling.
 
 Use a PHP Bytecode Cache
 ------------------------
-APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request.
-Once the extension is installed use the following setting to enable APC:
+APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
+in each request. Once the extension is installed use the following setting to enable APC:
 
 .. code-block:: ini
 
 	apc.enabled = On
+
+Do blocking work in the background
+----------------------------------
+Process a video, send e-mails, compress a file or an image are slow tasks that must be processed in background jobs.
+There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+
+* `Beanstalkd <http://kr.github.io/beanstalkd/>`_
+* `RabbitMQ <http://www.rabbitmq.com/>`_
+* `Resque <https://github.com/chrisboulton/php-resque>`_
+* `Gearman <http://gearman.org/>`_
+* `ZeroMQ <http://www.zeromq.org/>`_
 
 Google Page Speed
 -----------------
 mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module automatically applies web
 performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring
 that you modify your existing content or workflow.
-
-
 
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/

@@ -213,9 +213,9 @@ The only requirement is to know the key that the data have been stored with.
     }
 
 
-Checking cache existance
+Checking cache existence
 ------------------------
-It is possible to check if cache is already exists with given key.
+It is possible to check if a cache already exists with a given key:
 
 .. code-block:: php
 
@@ -223,8 +223,7 @@ It is possible to check if cache is already exists with given key.
 
     if ($cache->exists("someKey")) {
         echo $cache->get("someKey");
-    }
-    else {
+    } else {
         echo "Cache does not exists!";
     }
 
@@ -269,27 +268,6 @@ Setting the lifetime when saving:
         $cache->save($cacheKey, $robots, 3600);
     }
 
-Due to the different nature of the backends maybe is required to use some form or another.
-For example, the file adapter requires that the "lifetime" will be defined when retrieving,
-while "Apc" when saving.
-
-A cross-backend way to do this is the following:
-
-.. code-block:: php
-
-    <?php
-
-    $lifetime = 3600;
-    $cacheKey = 'my.cache';
-
-    $robots = $cache->get($cacheKey, $lifetime);
-    if ($robots === null) {
-
-        $robots = "some robots";
-
-        $cache->save($cacheKey, $robots, $lifetime);
-    }
-
 Multi-Level Cache
 -----------------
 This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful
@@ -300,29 +278,35 @@ the faster adapter and ending with the slowest one until the data expire​s​:
 
     <?php
 
-    $ultraFastFrontend = new Phalcon\Cache\Frontend\Data(array(
+    use Phalcon\Cache\Frontend\Data as DataFrontend,
+        Phalcon\Cache\Multiple,
+        Phalcon\Cache\Backend\Apc as ApcCache,
+        Phalcon\Cache\Backend\Memcache as MemcacheCache,
+        Phalcon\Cache\Backend\File as FileCache;
+
+    $ultraFastFrontend = new DataFrontend(array(
         "lifetime" => 3600
     ));
 
-    $fastFrontend = new Phalcon\Cache\Frontend\Data(array(
+    $fastFrontend = new DataFrontend(array(
         "lifetime" => 86400
     ));
 
-    $slowFrontend = new Phalcon\Cache\Frontend\Data(array(
+    $slowFrontend = new DataFrontend(array(
         "lifetime" => 604800
     ));
 
     //Backends are registered from the fastest to the slower
-    $cache = new \Phalcon\Cache\Multiple(array(
-        new Phalcon\Cache\Backend\Apc($ultraFastFrontend, array(
+    $cache = new Multiple(array(
+        new ApcCache($ultraFastFrontend, array(
             "prefix" => 'cache',
         )),
-        new Phalcon\Cache\Backend\Memcache($fastFrontend, array(
+        new MemcacheCache($fastFrontend, array(
             "prefix" => 'cache',
             "host" => "localhost",
             "port" => "11211"
         )),
-        new Phalcon\Cache\Backend\File($slowFrontend, array(
+        new FileCache($slowFrontend, array(
             "prefix" => 'cache',
             "cacheDir" => "../app/cache/"
         ))

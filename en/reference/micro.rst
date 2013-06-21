@@ -524,7 +524,8 @@ provide better performance loading controllers only if the related routes are ma
 
 Returning Responses
 -------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface:
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+When responses are returned by handlers they are automatically sent by the application.
 
 .. code-block:: php
 
@@ -579,5 +580,3 @@ Related Sources
 
 * :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
 * `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].
-
-

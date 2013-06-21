@@ -161,6 +161,10 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | trim                 | Applies the trim_ PHP function to the value. Removing extra spaces           |
 +----------------------+------------------------------------------------------------------------------+
+| left_trim            | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
++----------------------+------------------------------------------------------------------------------+
+| right_trim           | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
++----------------------+------------------------------------------------------------------------------+
 | striptags            | Applies the striptags_ PHP function to the value. Removing HTML tags         |
 +----------------------+------------------------------------------------------------------------------+
 | slashes              | Applies the slashes_ PHP function to the value. Escaping values              |
@@ -1264,6 +1268,8 @@ External Resources
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
 .. _trim: http://php.net/manual/en/function.trim.php
+.. _ltrim: http://php.net/manual/en/function.ltrim.php
+.. _rtrim: http://php.net/manual/en/function.rtrim.php
 .. _striptags: http://php.net/manual/en/function.striptags.php
 .. _slashes: http://php.net/manual/en/function.slashes.php
 .. _stripslashes: http://php.net/manual/en/function.stripslashes.php
