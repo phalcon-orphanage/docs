@@ -648,7 +648,7 @@ Another type of events is available when the data validation process finds any i
 
 Implicit Ids vs. User Primary Keys
 ----------------------------------
-By default Phalcon\Mvc\Collection assumes that the _id attribute is automatically generated using MongoIds_.
+By default Phalcon\\Mvc\\Collection assumes that the _id attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overriden:
 
 .. code-block:: php

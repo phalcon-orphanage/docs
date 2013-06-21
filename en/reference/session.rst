@@ -1,6 +1,5 @@
 Storing data in Session
 =======================
-
 The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
 Reasons to use this component instead of raw-sessions:

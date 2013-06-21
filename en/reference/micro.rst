@@ -468,7 +468,7 @@ The following middleware events are available:
 Using Controllers as Handlers
 -----------------------------
 Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
-You can use :doc:`Phalcon\\Mvc\\Micro\\Collection` to group handlers that belongs to controllers:
+You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
 
 .. code-block:: php
 
@@ -577,6 +577,5 @@ Rendering Views
 
 Related Sources
 ---------------
-
 * :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
 * `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].

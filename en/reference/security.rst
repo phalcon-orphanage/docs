@@ -140,7 +140,6 @@ to setup it's options:
 
 External Resources
 ------------------
-
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _sha1 : http://php.net/manual/en/function.sha1.php

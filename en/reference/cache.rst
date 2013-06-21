@@ -209,7 +209,7 @@ The only requirement is to know the key that the data have been stored with.
     // Delete all items from the cache
     $keys = $cache->queryKeys();
     foreach ($keys as $key) {
-    	$cache->delete($key);
+        $cache->delete($key);
     }
 
 

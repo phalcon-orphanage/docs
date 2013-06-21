@@ -16,12 +16,12 @@ Xdebug_ provides an easier way to profile PHP applications, just install the ext
 
 .. code-block:: ini
 
-	xdebug.profiler_enable = On
+    xdebug.profiler_enable = On
 
 Using a tool like Webgrind_ you can see which functions/methods are slower than others:
 
 .. figure:: ../_static/img/webgrind.jpg
-	:align: center
+    :align: center
 
 Profiling with Xhprof
 ^^^^^^^^^^^^^^^^^^^^^
@@ -29,34 +29,34 @@ Xhprof_ is another interesting extension to profile PHP applications. Add the fo
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+    xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
 Then at the end of the file save the profiling data:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$xhprof_data = xhprof_disable('/tmp');
+    $xhprof_data = xhprof_disable('/tmp');
 
-	$XHPROF_ROOT = "/var/www/xhprof/";
-	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
-	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+    $XHPROF_ROOT = "/var/www/xhprof/";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
 
-	$xhprof_runs = new XHProfRuns_Default();
-	$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
+    $xhprof_runs = new XHProfRuns_Default();
+    $run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
 
-	echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
+    echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
 Xhprof provides a built-in html viewer to analize the profile data:
 
 .. figure:: ../_static/img/xhprof-2.jpg
-	:align: center
+    :align: center
 
 .. figure:: ../_static/img/xhprof-1.jpg
-	:align: center
+    :align: center
 
 Profiling SQL Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,8 +65,8 @@ in the server side. In the Mysql case, you can use the slow query log to know wh
 
 .. code-block:: ini
 
-	log-slow-queries = /var/log/slow-queries.log
-	long_query_time = 1.5
+    log-slow-queries = /var/log/slow-queries.log
+    long_query_time = 1.5
 
 Profile on the Client
 ---------------------
@@ -79,19 +79,19 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 loading of the different resources required by a single page:
 
 .. figure:: ../_static/img/chrome-1.jpg
-	:align: center
+    :align: center
 
 Firebug_ provides a similar functionality:
 
 .. figure:: ../_static/img/firefox-1.jpg
-	:align: center
+    :align: center
 
 Yahoo! YSlow
 ------------
 YSlow_ analyzes web pages and suggests ways to improve their performance based on a set of `rules for high performance web pages`_
 
 .. figure:: ../_static/img/yslow-1.jpg
-	:align: center
+    :align: center
 
 Profile with Speed Tracer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,7 +100,7 @@ from low level instrumentation points inside of the browser and analyzes them as
 Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
 .. figure:: ../_static/img/speed-tracer.jpg
-	:align: center
+    :align: center
 
 This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
 Javascript evaluation and CSS styling.
@@ -112,7 +112,7 @@ in each request. Once the extension is installed use the following setting to en
 
 .. code-block:: ini
 
-	apc.enabled = On
+    apc.enabled = On
 
 Do blocking work in the background
 ----------------------------------

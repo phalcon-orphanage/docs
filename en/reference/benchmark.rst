@@ -38,7 +38,6 @@ The testing hardware environment is as follows:
 
 List of Benchmarks
 ------------------
-
 .. toctree::
    :maxdepth: 1
 
@@ -47,7 +46,6 @@ List of Benchmarks
 
 ChangeLog
 ---------
-
 .. versionadded:: 1.0
     Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
 
@@ -65,9 +63,8 @@ ChangeLog
 
 External Resources
 ------------------
-
-* `For Impatient Web Users, an Eye Blink Is Just Too Long to Wait <http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=0>`
-* `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`
+* `For Impatient Web Users, an Eye Blink Is Just Too Long to Wait <http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=0>`_
+* `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`_
 
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 .. _write us: https://github.com/phalcon/framework-bench

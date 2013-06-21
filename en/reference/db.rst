@@ -536,7 +536,6 @@ differentiate the SQL syntax based on the target storage system.
 
 Creating Tables
 ^^^^^^^^^^^^^^^
-
 The following example shows how to create a table:
 
 .. code-block:: php
