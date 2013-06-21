@@ -7,19 +7,19 @@ Phalcon\\Http\\RequestInterface initializer
 Methods
 ---------
 
-abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **get** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **getPost** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+abstract public *mixed*  **getQuery** (*string* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed
 
@@ -169,13 +169,13 @@ Checks whether HTTP method is OPTIONS. if $_SERVER['REQUEST_METHOD']=='OPTIONS'
 
 
 
-abstract public *boolean*  **hasFiles** ([*boolean* $notErrored])
+abstract public *boolean*  **hasFiles** ()
 
 Checks whether request include attached files
 
 
 
-abstract public :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>` [] **getUploadedFiles** ([*boolean* $notErrored])
+abstract public :doc:`Phalcon\\Http\\Request\\FileInterface <Phalcon_Http_Request_FileInterface>` [] **getUploadedFiles** ()
 
 Gets attached files as Phalcon\\Http\\Request\\FileInterface compatible instances
 

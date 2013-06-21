@@ -47,9 +47,3 @@ Returns an option in the validator's options Returns null if the option hasn't b
 
 
 
-public  **setOption** (*string* $key, *mixed* $value) inherited from Phalcon\\Validation\\Validator
-
-Sets an option in the validator
-
-
-

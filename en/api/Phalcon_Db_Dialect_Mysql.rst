@@ -89,18 +89,6 @@ Generates SQL to drop a table
 
 
 
-public *string*  **createView** (*string* $viewName, *array* $definition, *string* $schemaName)
-
-Generates SQL to create a view
-
-
-
-public *string*  **dropView** (*string* $viewName, *string* $schemaName, [*boolean* $ifExists])
-
-Generates SQL to drop a view
-
-
-
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
@@ -112,12 +100,6 @@ Generates SQL checking for the existence of a schema.table
      echo $dialect->tableExists("posts", "blog");
      echo $dialect->tableExists("posts");
 
-
-
-
-public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
-
-Generates SQL checking for the existence of a schema.view
 
 
 
@@ -144,12 +126,6 @@ List all tables on database
 
     print_r($dialect->listTables("blog")) ?>
 
-
-
-
-public *array*  **listViews** ([*string* $schemaName])
-
-Generates the SQL to list all views of a schema or user
 
 
 
@@ -241,36 +217,6 @@ Transform an intermediate representation for a schema/table into a database syst
 public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement
-
-
-
-public *boolean*  **supportsSavepoints** () inherited from Phalcon\\Db\\Dialect
-
-Checks whether the platform supports savepoints
-
-
-
-public *boolean*  **supportsReleaseSavepoints** () inherited from Phalcon\\Db\\Dialect
-
-Checks whether the platform supports releasing savepoints.
-
-
-
-public *string*  **createSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
-
-Generate SQL to create a new savepoint
-
-
-
-public *string*  **releaseSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
-
-Generate SQL to release a savepoint
-
-
-
-public *string*  **rollbackSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
-
-Generate SQL to rollback a savepoint
 
 
 

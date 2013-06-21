@@ -9,12 +9,6 @@ This component allows to create CLI applications using Phalcon
 Methods
 ---------
 
-public  **__construct** ([*unknown* $dependencyInjector])
-
-Phalcon\\CLI\\Console constructor
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container

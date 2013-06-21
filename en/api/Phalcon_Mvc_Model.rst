@@ -554,22 +554,14 @@ Returns all the validation messages
 
 
 
-protected *boolean*  **_checkForeignKeysRestrict** ()
+protected  **_checkForeignKeys** ()
 
-Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
-
-
-
-protected *boolean*  **_checkForeignKeysReverseRestrict** ()
-
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+...
 
 
+protected  **_checkForeignKeysReverse** ()
 
-protected *boolean*  **_checkForeignKeysReverseCascade** ()
-
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
-
+...
 
 
 protected *boolean*  **_preSave** ()
@@ -861,33 +853,9 @@ Setup a relation 1-n between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
+protected  **hasManyThrough** ()
 
-Setup a relation n-n between two models through an intermediate relation 
-
-.. code-block:: php
-
-    <?php
-
-    class Robots extends \Phalcon\Mvc\Model
-    {
-    
-       public function initialize()
-       {
-           //Setup a many-to-many relation to Parts through RobotsParts
-           $this->hasManyToMany(
-    		'id',
-    		'RobotsParts',
-    		'robots_id',
-    		'parts_id',
-    		'Parts',
-    		'id'
-    	);
-       }
-    
-    }
-
-
+...
 
 
 protected  **addBehavior** ()
@@ -1034,7 +1002,7 @@ Magic method to check if a property is a valid relation
 
 public *string*  **serialize** ()
 
-Serializes the object ignoring connections or static properties
+Serializes the object ignoring connections, services, related objects or static properties
 
 
 

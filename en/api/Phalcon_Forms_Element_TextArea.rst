@@ -51,12 +51,6 @@ Sets the element's filters
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **addFilter** (*string* $filter) inherited from Phalcon\\Forms\\Element
-
-Adds a filter to current list of filters
-
-
-
 public *mixed*  **getFilters** () inherited from Phalcon\\Forms\\Element
 
 Returns the element's filters
@@ -180,18 +174,6 @@ Returns the messages that belongs to the element The element needs to be attache
 public *boolean*  **hasMessages** () inherited from Phalcon\\Forms\\Element
 
 Returns the messages that belongs to the element The element needs to be attached to a form
-
-
-
-public *Phalcon\\Forms\\ElementInterface*  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group) inherited from Phalcon\\Forms\\Element
-
-Sets the validation messages related to the element
-
-
-
-public *Phalcon\\Forms\\ElementInterface*  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message) inherited from Phalcon\\Forms\\Element
-
-Appends a message to the internal message list
 
 
 

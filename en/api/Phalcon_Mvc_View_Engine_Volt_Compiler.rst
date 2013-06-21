@@ -26,33 +26,9 @@ public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInt
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the dependency injector
-
-
-
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the internal dependency injector
-
-
-
 public  **setOptions** (*array* $options)
 
 Sets the compiler options
-
-
-
-public  **setOption** (*string* $option, *string* $value)
-
-Sets a single compiler option
-
-
-
-public *string*  **getOption** (*string* $option)
-
-Returns a compiler's option
 
 
 
@@ -62,21 +38,15 @@ Returns the compiler options
 
 
 
-public *mixed*  **fireExtensionEvent** (*string* $name, [*array* $arguments])
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
-Fires an event to registered extensions
-
-
-
-public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addExtension** (*object* $extension)
-
-Registers a Volt's extension
+Sets the dependency injector
 
 
 
-public *array*  **getExtensions** ()
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
-Returns the list of extensions registered in Volt
+Returns the internal dependency injector
 
 
 
@@ -266,7 +236,7 @@ Compiles a template into a file applying the compiler options This method does n
 
 public *string*  **getTemplatePath** ()
 
-Returns the path that is currently beign compiled
+Returns the path that is currently being compiled
 
 
 

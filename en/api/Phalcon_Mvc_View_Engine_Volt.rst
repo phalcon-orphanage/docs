@@ -47,10 +47,9 @@ Checks if the needle is included in the haystack
 
 
 
-public *string*  **convertEncoding** (*string* $text, *string* $from, *string* $to)
+public  **converEncoding** (*unknown* $text, *unknown* $from, *unknown* $to)
 
-Performs a string conversion
-
+...
 
 
 public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
@@ -71,7 +70,7 @@ Returns cached ouput on another view stage
 
 
 
-public *string*  **partial** (*string* $partialPath, [*array* $params]) inherited from Phalcon\\Mvc\\View\\Engine
+public *string*  **partial** (*string* $partialPath) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view
 

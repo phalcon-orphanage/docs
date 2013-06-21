@@ -208,10 +208,9 @@ Setup a relation 1-n between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasManyToMany** (*unknown* $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
+public  **addHasManyThrough** ()
 
-Setups a relation n-m between two models
-
+...
 
 
 public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
@@ -344,12 +343,6 @@ Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **getLastQuery** ()
 
 Returns the lastest query created or executed in the models manager
-
-
-
-public  **__destruct** ()
-
-Destroys the PHQL cache
 
 
 

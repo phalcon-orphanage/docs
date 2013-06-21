@@ -80,33 +80,3 @@ Builds a SELECT statement
 
 
 
-public *boolean*  **supportsSavepoints** ()
-
-Checks whether the platform supports savepoints
-
-
-
-public *boolean*  **supportsReleaseSavepoints** ()
-
-Checks whether the platform supports releasing savepoints.
-
-
-
-public *string*  **createSavepoint** (*string* $name)
-
-Generate SQL to create a new savepoint
-
-
-
-public *string*  **releaseSavepoint** (*string* $name)
-
-Generate SQL to release a savepoint
-
-
-
-public *string*  **rollbackSavepoint** (*string* $name)
-
-Generate SQL to rollback a savepoint
-
-
-

@@ -126,12 +126,6 @@ Handle the whole request
 
 
 
-public  **stop** ()
-
-Stops the middleware execution avoiding than other middlewares be executed
-
-
-
 public  **setActiveHandler** (*callable* $activeHandler)
 
 Sets externally the handler that must be called by the matched route
@@ -203,12 +197,6 @@ Appends an 'after' middleware to be called after execute the route
 public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
 
 Appends a 'finish' middleware to be called when the request is finished
-
-
-
-public *array*  **getHandlers** ()
-
-Returns the internal handlers attached to the application
 
 
 

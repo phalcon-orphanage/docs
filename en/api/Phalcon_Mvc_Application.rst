@@ -55,12 +55,6 @@ public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
 
 
-public  **useImplicitView** (*boolean* $implicitView)
-
-By default. The view is implicitly buffering all the output You can full disable the view component using this method
-
-
-
 public  **registerModules** (*array* $modules, [*boolean* $merge])
 
 Register an array of modules present in the application 

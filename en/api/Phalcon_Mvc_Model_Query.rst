@@ -116,18 +116,6 @@ Resolves a JOIN type
 
 
 
-protected *array*  **_getSingleJoin** ()
-
-Resolves joins involving has-one/belongs-to/has-many relations
-
-
-
-protected *array*  **_getMultiJoin** ()
-
-Resolves joins involving many-to-many relations
-
-
-
 protected *array*  **_getJoins** ()
 
 Resolves all the JOINS in a SELECT statement

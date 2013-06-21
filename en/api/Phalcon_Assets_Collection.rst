@@ -15,13 +15,13 @@ Adds a resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*string* $path, [*boolean* $local])
 
 Adds a CSS resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local])
 
 Adds a javascript resource to the collection
 
@@ -69,12 +69,6 @@ Check if the current element in the iterator is valid
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setName** (*string* $name)
-
-Sets the name of the file for the filtered/join output
-
-
-
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setPrefix** (*string* $prefix)
 
 Sets a common prefix for all the resources
@@ -96,42 +90,6 @@ Sets if the collection uses local resources by default
 public *boolean*  **getLocal** ()
 
 Returns if the collection uses local resources by default
-
-
-
-public *$this*  **setAttributes** (*array* $attributes)
-
-Sets extra HTML attributes
-
-
-
-public *array*  **getAttributes** ()
-
-Returns extra HTML attributes
-
-
-
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (*Phalcon\\Assets\\FilterInterface* $filter)
-
-Adds a filter to the collection
-
-
-
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setFilters** (*array* $filters)
-
-Sets an array of filters in the collection
-
-
-
-public *array*  **getFilters** ()
-
-Returns the filters set in the collection
-
-
-
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **join** (*boolean* $join)
-
-Sets if all filtered resources in the collection must be joined in a single result file
 
 
 

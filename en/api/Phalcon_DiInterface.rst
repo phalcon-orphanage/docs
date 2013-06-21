@@ -9,7 +9,7 @@ Phalcon\\DiInterface initializer
 Methods
 ---------
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*unknown* $alias, *mixed* $definition, [*boolean* $shared])
 
 Registers a service in the services container
 
@@ -21,25 +21,25 @@ Registers an "always shared" service in the services container
 
 
 
-abstract public  **remove** (*string* $name)
+abstract public  **remove** (*unknown* $alias)
 
 Removes a service in the services container
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared])
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*unknown* $alias, *mixed* $definition, [*boolean* $shared])
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 
-abstract public *mixed*  **get** (*string* $name, [*array* $parameters])
+abstract public *mixed*  **get** (*unknown* $alias, [*array* $parameters])
 
 Resolves the service based on its configuration
 
 
 
-abstract public *mixed*  **getShared** (*string* $name, [*array* $parameters])
+abstract public *mixed*  **getShared** (*unknown* $alias, [*array* $parameters])
 
 Returns a shared service based on their configuration
 
@@ -63,7 +63,7 @@ Returns the corresponding Phalcon\\Di\\Service instance for a service
 
 
 
-abstract public *boolean*  **has** (*string* $name)
+abstract public *boolean*  **has** (*unknown* $alias)
 
 Check whether the DI contains a service by a name
 

@@ -111,9 +111,3 @@ Gets the last key stored by the cache
 
 
 
-public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last lifetime set
-
-
-

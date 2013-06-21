@@ -61,9 +61,3 @@ Gets the last key stored by the cache
 
 
 
-public *int*  **getLifetime** ()
-
-Gets the last lifetime set
-
-
-
