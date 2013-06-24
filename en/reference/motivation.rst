@@ -50,7 +50,13 @@ How does Phalcon work?
 * Interact with databases with maximum performance by using a C-language ORM for PHP
 * Phalcon directly accesses internal PHP structures optimizing execution in that way as well
 
+Phalcon was not only designed to optimize `compute-bound`_ (procesor usage) and `memory-bound`_ (memory consumption), 
+it also provides extensive use of caches to optimize the `I/O bound`_ (file system, network).
+
 Conclusion
 ----------
 Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way to develop applications without be worrying about performance. Enjoy!
 
+.. _`compute-bound` : http://en.wikipedia.org/wiki/CPU_bound
+.. _`memory-bound` : http://en.wikipedia.org/wiki/Memory_bound
+.. _`I/O bound` : http://en.wikipedia.org/wiki/IO_bound
