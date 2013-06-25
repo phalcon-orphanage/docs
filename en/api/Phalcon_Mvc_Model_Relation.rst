@@ -19,7 +19,11 @@ Constants
 
 *integer* **HAS_MANY_THROUGH**
 
-*integer* **MANY_TO_MANY**
+*integer* **NO_ACTION**
+
+*integer* **ACTION_RESTRICT**
+
+*integer* **ACTION_CASCADE**
 
 Methods
 ---------
@@ -27,6 +31,12 @@ Methods
 public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
 
 Phalcon\\Mvc\\Model\\Relation constructor
+
+
+
+public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
+
+Sets the intermediate model data for has-*-through relations
 
 
 
@@ -60,9 +70,10 @@ Returns the options
 
 
 
-public  **isForeingKey** ()
+public *string|array*  **isForeignKey** ()
 
-...
+Check whether the relation act as a foreign key
+
 
 
 public *string|array*  **getForeignKey** ()
@@ -71,19 +82,33 @@ Returns the foreign key configuration
 
 
 
-public  **hasThrough** ()
+public *boolean*  **isThrough** ()
 
-...
+Check whether the relation is a 'many-to-many' relation or not
 
-
-public  **getThrough** ()
-
-...
 
 
 public *boolean*  **isReusable** ()
 
 Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+
+
+
+public *string|array*  **getIntermediateFields** ()
+
+Gets the intermediate fields for has-*-through relations
+
+
+
+public *string*  **getIntermediateModel** ()
+
+Gets the intermediate model for has-*-through relations
+
+
+
+public *string|array*  **getIntermediateReferencedFields** ()
+
+Gets the intermediate referenced fields for has-*-through relations
 
 
 

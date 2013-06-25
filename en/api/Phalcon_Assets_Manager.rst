@@ -7,13 +7,31 @@ Manages collections of CSS/Javascript assets
 Methods
 ---------
 
+public  **__construct** ([*array* $options])
+
+Phalcon\\Assets\\Manager constructor
+
+
+
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setOptions** (*array* $options)
+
+Sets the manager's options
+
+
+
+public *array*  **getOptions** ()
+
+Returns the manager's options
+
+
+
 public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **useImplicitOutput** (*boolean* $implicitOutput)
 
 Sets if the HTML generated must be directly printed or returned
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addCss** (*string* $path, [*boolean* $local])
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addCss** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a Css resource to the 'css' collection 
 
@@ -27,7 +45,7 @@ Adds a Css resource to the 'css' collection
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addJs** (*string* $path, [*boolean* $local])
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the 'js' collection 
 
@@ -108,6 +126,12 @@ Returns the CSS collection of assets
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **collection** (*string* $name)
 
 Creates/Returns a collection of resources
+
+
+
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback)
+
+Traverses a collection calling the callback to generate its HTML
 
 
 

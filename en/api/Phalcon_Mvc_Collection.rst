@@ -396,6 +396,12 @@ Perform an aggregation using the Mongo aggregation framework
 
 
 
+public static *array*  **summatory** (*string* $field, [*array* $conditions], [*string* $finalize])
+
+Allows to perform a summatory group for a column in the collection
+
+
+
 public *boolean*  **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise. 

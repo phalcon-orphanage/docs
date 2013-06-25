@@ -208,9 +208,10 @@ Setup a relation 1-n between two models
 
 
 
-public  **addHasManyThrough** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **addHasManyToMany** (*unknown* $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
 
-...
+Setups a relation n-m between two models
+
 
 
 public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
@@ -343,6 +344,30 @@ Creates a Phalcon\\Mvc\\Model\\Query\\Builder
 public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **getLastQuery** ()
 
 Returns the lastest query created or executed in the models manager
+
+
+
+public  **registerNamespaceAlias** (*string* $alias, *string* $namespace)
+
+Registers shorter aliases for namespaces in PHQL statements
+
+
+
+public *string*  **getNamespaceAlias** (*string* $alias)
+
+Returns a real namespace from its alias
+
+
+
+public *array*  **getNamespaceAliases** ()
+
+Returns all the registered namespace aliases
+
+
+
+public  **__destruct** ()
+
+Destroys the PHQL cache
 
 
 

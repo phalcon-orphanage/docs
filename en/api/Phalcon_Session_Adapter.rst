@@ -59,7 +59,7 @@ Sets a session variable in an application context
 
 
 
-public  **has** (*string* $index)
+public *boolean*  **has** (*string* $index)
 
 Check whether a session variable is set in an application context 
 

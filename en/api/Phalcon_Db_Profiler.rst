@@ -32,11 +32,6 @@ Instances of Phalcon\\Db can generate execution profiles on SQL statements sent 
 Methods
 ---------
 
-public  **__construct** ()
-
-...
-
-
 public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **startProfile** (*string* $sqlStatement)
 
 Starts the profile of a SQL sentence

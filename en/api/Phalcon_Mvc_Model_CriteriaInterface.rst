@@ -25,6 +25,12 @@ Adds the bind parameter to the criteria
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bindTypes** (*string* $bindTypes)
+
+Sets the bind types in the criteria This method replaces all previously set bound parameters
+
+
+
 abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions)
 
 Adds the conditions parameter to the criteria
@@ -37,9 +43,10 @@ Adds the conditions parameter to the criteria
 
 
 
-abstract public  **order** (*unknown* $orderColumns)
+abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **orderBy** (*string* $orderColumns)
 
-...
+Adds the order-by parameter to the criteria
+
 
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **limit** (*int* $limit, [*int* $offset])
@@ -60,15 +67,67 @@ Sets the "shared_lock" parameter to the criteria
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions)
+abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an OR operator
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->betweenWhere('price', 100.25, 200.50);
+
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a NOT BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->notBetweenWhere('price', 100.25, 200.50);
+
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+
+Appends an IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->inWhere('id', [1, 2, 3]);
+
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+
+Appends a NOT IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->notInWhere('id', [1, 2, 3]);
+
 
 
 

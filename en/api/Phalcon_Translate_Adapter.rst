@@ -33,7 +33,7 @@ Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $traslateKey)
+public *string*  **offsetGet** (*string* $translateKey)
 
 Returns the translation related to the given key
 

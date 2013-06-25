@@ -75,7 +75,7 @@ Starts every backend
 
 public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APC backend and stops the frontend
+Stores cached content into all backends and stops the frontend
 
 
 

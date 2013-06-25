@@ -5,7 +5,15 @@ Class **Phalcon\\Mvc\\View\\Simple**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
-This component provides a simpler view component
+This component allows to render views without hicherquical levels  
+
+.. code-block:: php
+
+    <?php
+
+     $view = new Phalcon\Mvc\View\Simple();
+     echo $view->render('templates/my-view', array('content' => $html));
+
 
 
 Methods
@@ -52,6 +60,12 @@ Loads registered template engines, if none is registered it will use Phalcon\\Mv
 
 
 
+protected  **_internalRender** ()
+
+Tries to render the view with every engine registered in the component
+
+
+
 public *string*  **render** (*string* $path, [*array* $params])
 
 Renders a view
@@ -74,12 +88,49 @@ Renders a partial view
     <?php
 
      	//Show a partial inside another view with parameters
-     	$this->partial('shared/footer', array('conent' => $html));
+     	$this->partial('shared/footer', array('content' => $html));
 
 
 
 
-public  **setParamToView** (*string* $key, *mixed* $value)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*array* $options)
+
+Sets the cache options
+
+
+
+public *array*  **getCacheOptions** ()
+
+Returns the cache options
+
+
+
+protected :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **_createCache** ()
+
+Create a Phalcon\\Cache based on the internal cache options
+
+
+
+public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+
+Returns the cache instance used to cache
+
+
+
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **cache** ([*boolean|array* $options])
+
+Cache the actual view render to certain level 
+
+.. code-block:: php
+
+    <?php
+
+      $this->view->cache(array('key' => 'my-key', 'lifetime' => 86400));
+
+
+
+
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setParamToView** (*string* $key, *mixed* $value)
 
 Adds parameters to views (alias of setVar) 
 
@@ -92,7 +143,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public  **setVars** (*array* $params, [*boolean* $merge])
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVars** (*array* $params, [*boolean* $merge])
 
 Set all the render params 
 
@@ -105,7 +156,7 @@ Set all the render params
 
 
 
-public  **setVar** (*string* $key, *mixed* $value)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVar** (*string* $key, *mixed* $value)
 
 Set a single view parameter 
 
@@ -130,7 +181,7 @@ Returns parameters to views
 
 
 
-public  **setContent** (*string* $content)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setContent** (*string* $content)
 
 Externally sets the view content 
 

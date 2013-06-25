@@ -55,6 +55,12 @@ Returns an argument in a specific position
 
 
 
+public *mixed*  **getNamedArgument** (*string* $name)
+
+Returns a named argument
+
+
+
 public *mixed*  **getNamedParameter** (*string* $name)
 
 Returns a named argument (deprecated)

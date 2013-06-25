@@ -60,6 +60,18 @@ Sets the default action suffix
 
 
 
+public  **setModuleName** (*string* $moduleName)
+
+Sets the module where the controller is (only informative)
+
+
+
+public *string*  **getModuleName** ()
+
+Gets the module where the controller class is
+
+
+
 public  **setNamespaceName** (*string* $namespaceName)
 
 Sets the namespace where the controller class is
@@ -166,6 +178,12 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
       $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
 
+
+
+
+public *boolean*  **wasForwarded** ()
+
+Check if the current executed action was forwarded by another one
 
 
 

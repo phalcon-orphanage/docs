@@ -20,11 +20,6 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 Methods
 ---------
 
-public  **__construct** ()
-
-...
-
-
 public :doc:`Phalcon\\Filter <Phalcon_Filter>`  **add** (*string* $name, *callable* $handler)
 
 Adds a user-defined filter

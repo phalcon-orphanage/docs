@@ -51,27 +51,156 @@ Sets the bound parameters in the criteria This method replaces all previously se
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **where** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bindTypes** (*string* $bindTypes)
+
+Sets the bind types in the criteria This method replaces all previously set bound parameters
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*string|array* $columns)
+
+Sets the columns to be queried 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->columns(array('id', 'name'));
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+
+Adds a INNER join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->join('Robots');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a INNER join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->innerJoin('Robots');
+    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
+    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a LEFT join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->leftJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a RIGHT join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->rightJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Sets the conditions parameter in the criteria
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **addWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator (deprecated)
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an AND operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using an OR operator
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->betweenWhere('price', 100.25, 200.50);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a NOT BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->notBetweenWhere('price', 100.25, 200.50);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+
+Appends an IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->inWhere('id', [1, 2, 3]);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+
+Appends a NOT IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->notInWhere('id', [1, 2, 3]);
+
 
 
 
@@ -84,6 +213,12 @@ Adds the conditions parameter to the criteria
 public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **order** (*string* $orderColumns)
 
 Adds the order-by parameter to the criteria (deprecated)
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orderBy** (*string* $orderColumns)
+
+Adds the order-by parameter to the criteria
 
 
 
@@ -108,6 +243,12 @@ Adds the "shared_lock" parameter to the criteria
 public *string*  **getWhere** ()
 
 Returns the conditions parameter in the criteria
+
+
+
+public *string|array*  **getColumns** ()
+
+Return the columns to be queried
 
 
 

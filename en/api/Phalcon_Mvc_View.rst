@@ -345,7 +345,7 @@ Choose a different view to render instead of last-controller/last-action
 
 
 
-public  **partial** (*string* $partialPath)
+public  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial view 
 
@@ -366,7 +366,7 @@ Renders a partial view
 
 
 
-public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params])
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
 
 Perform the automatic rendering returning the output as a string 
 

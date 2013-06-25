@@ -93,6 +93,12 @@ Appends an array of messages to the group
 
 
 
+public *array*  **filter** (*string* $fieldName)
+
+Filters the message group by field name
+
+
+
 public *int*  **count** ()
 
 Returns the number of messages in the list

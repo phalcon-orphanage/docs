@@ -41,11 +41,6 @@ Discards any kind of frontend data input. This frontend does not have expiration
 Methods
 ---------
 
-public  **__construct** ([*unknown* $frontendOptions])
-
-...
-
-
 public *int*  **getLifetime** ()
 
 Returns cache lifetime, always one second expiring content

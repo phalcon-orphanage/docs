@@ -79,13 +79,13 @@ Assigns values to a model from an array
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState])
+abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  $result **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *unknown* $result)
+abstract public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
 
 Assigns values to a model from an array returning a new model
 
@@ -175,19 +175,19 @@ Returns all the validation messages
 
 
 
-abstract public *boolean*  **save** ([*array* $data])
+abstract public *boolean*  **save** ([*array* $data], [*array* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise.
 
 
 
-abstract public *boolean*  **create** ([*array* $data])
+abstract public *boolean*  **create** ([*array* $data], [*array* $whiteList])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.
 
 
 
-abstract public *boolean*  **update** ([*array* $data])
+abstract public *boolean*  **update** ([*array* $data], [*array* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise.
 
@@ -223,7 +223,7 @@ Writes an attribute value by its name
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*unknown* $modelName, [*array* $arguments])
+abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
 

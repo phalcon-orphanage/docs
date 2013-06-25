@@ -554,14 +554,22 @@ Returns all the validation messages
 
 
 
-protected  **_checkForeignKeys** ()
+protected *boolean*  **_checkForeignKeysRestrict** ()
 
-...
+Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
 
 
-protected  **_checkForeignKeysReverse** ()
 
-...
+protected *boolean*  **_checkForeignKeysReverseRestrict** ()
+
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+
+
+
+protected *boolean*  **_checkForeignKeysReverseCascade** ()
+
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
+
 
 
 protected *boolean*  **_preSave** ()
@@ -853,9 +861,33 @@ Setup a relation 1-n between two models
 
 
 
-protected  **hasManyThrough** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
-...
+Setup a relation n-n between two models through an intermediate relation 
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+           //Setup a many-to-many relation to Parts through RobotsParts
+           $this->hasManyToMany(
+    		'id',
+    		'RobotsParts',
+    		'robots_id',
+    		'parts_id',
+    		'Parts',
+    		'id'
+    	);
+       }
+    
+    }
+
+
 
 
 protected  **addBehavior** ()

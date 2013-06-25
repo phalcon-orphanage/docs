@@ -141,6 +141,12 @@ Builds generic INPUT tags
 
 
 
+protected static *string*  **_inputFieldChecked** ()
+
+Builds INPUT tags that implements the checked attribute
+
+
+
 public static *string*  **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
@@ -163,6 +169,19 @@ Builds a HTML input[type="number"] tag
     <?php
 
     echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
+
+
+
+
+public static *string*  **emailField** (*array* $parameters)
+
+Builds a HTML input[type="email"] tag 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::emailField("email");
 
 
 
@@ -473,7 +492,7 @@ Volt syntax:
 
 
 
-public static *string*  **image** ([*array* $parameters])
+public static *string*  **image** ([*array* $parameters], [*boolean* $local])
 
 Builds HTML IMG tags 
 
@@ -531,6 +550,19 @@ Builds a HTML tag
     <?php
 
     echo Phalcon\Tag::tagHtml($name, $parameters, $selfClose, $onlyStart, $eol);
+
+
+
+
+public static *string*  **tagHtmlClose** (*string* $tagName, [*boolean* $useEol])
+
+Builds a HTML tag closing tag 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::tagHtmlClose('script', true)
 
 
 

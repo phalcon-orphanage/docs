@@ -66,7 +66,7 @@ Methods
 
 public  **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+
 
 
 
@@ -211,12 +211,6 @@ Return an array with every role registered in the list
 public :doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` [] **getResources** ()
 
 Return an array with every resource registered in the list
-
-
-
-protected  **_rebuildAccessList** ()
-
-Rebuild the list of access from the inherit lists
 
 
 

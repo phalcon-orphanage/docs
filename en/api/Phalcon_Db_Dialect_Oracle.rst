@@ -89,6 +89,18 @@ Generates SQL to drop a table
 
 
 
+public *string*  **createView** (*string* $viewName, *array* $definition, *string* $schemaName)
+
+Generates SQL to create a view
+
+
+
+public *string*  **dropView** (*string* $viewName, *string* $schemaName, [*boolean* $ifExists])
+
+Generates SQL to drop a view
+
+
+
 public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
@@ -100,6 +112,12 @@ Generates SQL checking for the existence of a schema.table
     var_dump($dialect->tableExists("posts", "blog"));
     var_dump($dialect->tableExists("posts"));
 
+
+
+
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
+
+Generates SQL checking for the existence of a schema.view
 
 
 
@@ -129,6 +147,12 @@ List all tables on database
 
 
 
+public *array*  **listViews** ([*string* $schemaName])
+
+Generates the SQL to list all views of a schema or user
+
+
+
 public *string*  **describeIndexes** (*string* $table, [*string* $schema])
 
 Generates SQL to query indexes on a table
@@ -147,13 +171,7 @@ Generates the SQL to describe the table creation options
 
 
 
-public *string*  **select** (*array* $definition)
-
-Builds a SELECT statement
-
-
-
-public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
+public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
 Generates the SQL for LIMIT clause 
 
@@ -164,6 +182,24 @@ Generates the SQL for LIMIT clause
      $sql = $dialect->limit('SELECT * FROM robots', 10);
      echo $sql; // SELECT * FROM robots LIMIT 10
 
+
+
+
+public *string*  **select** (*array* $definition)
+
+Builds a SELECT statement
+
+
+
+public *boolean*  **supportsSavepoints** ()
+
+Checks whether the platform supports savepoints
+
+
+
+public *boolean*  **supportsReleaseSavepoints** ()
+
+Checks whether the platform supports releasing savepoints.
 
 
 
@@ -217,6 +253,24 @@ Transforms an intermediate representation for a expression into a database syste
 public *string*  **getSqlTable** (*array* $table, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Transform an intermediate representation for a schema/table into a database system valid expression
+
+
+
+public *string*  **createSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to create a new savepoint
+
+
+
+public *string*  **releaseSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to release a savepoint
+
+
+
+public *string*  **rollbackSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to rollback a savepoint
 
 
 

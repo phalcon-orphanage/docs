@@ -21,6 +21,8 @@ API Indice
    Phalcon_Annotations_Reflection
    Phalcon_Assets_Collection
    Phalcon_Assets_Exception
+   Phalcon_Assets_Filters_Cssmin
+   Phalcon_Assets_Filters_Jsmin
    Phalcon_Assets_Manager
    Phalcon_Assets_Resource
    Phalcon_Assets_Resource_Css
@@ -41,6 +43,7 @@ API Indice
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
+   Phalcon_Cache_Frontend_Json
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
@@ -48,6 +51,7 @@ API Indice
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Exception
    Phalcon_Crypt
+   Phalcon_Crypt_Exception
    Phalcon_DI
    Phalcon_DI_Exception
    Phalcon_DI_FactoryDefault
@@ -75,6 +79,7 @@ API Indice
    Phalcon_Db_RawValue
    Phalcon_Db_Reference
    Phalcon_Db_Result_Pdo
+   Phalcon_Debug
    Phalcon_Dispatcher
    Phalcon_Escaper
    Phalcon_Escaper_Exception
@@ -91,6 +96,7 @@ API Indice
    Phalcon_Forms_Element
    Phalcon_Forms_Element_Check
    Phalcon_Forms_Element_Date
+   Phalcon_Forms_Element_Email
    Phalcon_Forms_Element_File
    Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Numeric
@@ -129,6 +135,7 @@ API Indice
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Document
    Phalcon_Mvc_Collection_Exception
    Phalcon_Mvc_Collection_Manager
    Phalcon_Mvc_Controller
@@ -137,6 +144,7 @@ API Indice
    Phalcon_Mvc_Micro
    Phalcon_Mvc_Micro_Collection
    Phalcon_Mvc_Micro_Exception
+   Phalcon_Mvc_Micro_LazyLoader
    Phalcon_Mvc_Model
    Phalcon_Mvc_Model_Behavior
    Phalcon_Mvc_Model_Behavior_SoftDelete
@@ -192,6 +200,7 @@ API Indice
    Phalcon_Mvc_View_Engine_Volt
    Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
+   Phalcon_Mvc_View_Simple
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder
@@ -219,6 +228,7 @@ API Indice
    Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
    Phalcon_Validation_Validator_Between
+   Phalcon_Validation_Validator_Confirmation
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_Identical
@@ -234,6 +244,7 @@ API Indice
    Phalcon_Annotations_ReaderInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
+   Phalcon_CryptInterface
    Phalcon_DI_InjectionAwareInterface
    Phalcon_DI_ServiceInterface
    Phalcon_Db_AdapterInterface
@@ -248,10 +259,12 @@ API Indice
    Phalcon_Events_EventsAwareInterface
    Phalcon_Events_ManagerInterface
    Phalcon_FilterInterface
+   Phalcon_Filter_UserFilterInterface
    Phalcon_FlashInterface
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface
+   Phalcon_Http_Response_CookiesInterface
    Phalcon_Http_Response_HeadersInterface
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface
@@ -259,6 +272,8 @@ API Indice
    Phalcon_Mvc_Collection_ManagerInterface
    Phalcon_Mvc_ControllerInterface
    Phalcon_Mvc_DispatcherInterface
+   Phalcon_Mvc_Micro_CollectionInterface
+   Phalcon_Mvc_Micro_MiddlewareInterface
    Phalcon_Mvc_ModelInterface
    Phalcon_Mvc_Model_BehaviorInterface
    Phalcon_Mvc_Model_CriteriaInterface

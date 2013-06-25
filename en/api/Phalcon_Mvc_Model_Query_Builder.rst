@@ -22,7 +22,7 @@ Helps to create PHQL queries using an OO interface
 Methods
 ---------
 
-public  **__construct** ([*array* $params])
+public  **__construct** ([*array* $params], [:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
@@ -108,6 +108,22 @@ Adds a INNER join to the query
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a INNER join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->innerJoin('Robots');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a LEFT join to the query 
@@ -185,6 +201,19 @@ Appends a BETWEEN condition to the current conditions
     <?php
 
     $builder->betweenWhere('price', 100.25, 200.50);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a NOT BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->notBetweenWhere('price', 100.25, 200.50);
 
 
 

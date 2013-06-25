@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 ==================================================
 
-*extends* Exception
+*extends* :doc:`Phalcon\\Mvc\\Model\\Transaction\\Exception <Phalcon_Mvc_Model_Transaction_Exception>`
 
 This class will be thrown to exit a try/catch block for isolated transactions
 

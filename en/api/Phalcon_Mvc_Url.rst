@@ -46,6 +46,19 @@ Sets a prefix for all the URIs to be generated
 
 
 
+public  **setStaticBaseUri** (*string* $staticBaseUri)
+
+Sets a prefix for all static URLs generated 
+
+.. code-block:: php
+
+    <?php
+
+    $url->setStaticBaseUri('/invo/');
+
+
+
+
 public *string*  **getBaseUri** ()
 
 Returns the prefix for all the generated urls. By default /
@@ -85,6 +98,12 @@ Generates a URL
      //Generate a URL for a predefined route
      echo $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2012'));
 
+
+
+
+public *string*  **getStatic** ([*string|array* $uri])
+
+Generates a URL for a static resource
 
 
 

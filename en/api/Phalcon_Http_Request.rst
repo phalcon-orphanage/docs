@@ -153,6 +153,12 @@ Gets HTTP raw request body
 
 
 
+public *string*  **getJsonRawBody** ()
+
+Gets decoded JSON HTTP raw request body
+
+
+
 public *string*  **getServerAddress** ()
 
 Gets active server address IP
@@ -246,6 +252,12 @@ Checks whether request include attached files
 public :doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` [] **getUploadedFiles** ([*boolean* $notErrored])
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
+
+
+
+public  **getHeaders** ()
+
+Returns the headers in the
 
 
 

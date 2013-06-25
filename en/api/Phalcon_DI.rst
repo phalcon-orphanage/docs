@@ -104,13 +104,13 @@ Return the services registered in the DI
 
 
 
-public *boolean*  **offsetExists** (*unknown* $alias)
+public *boolean*  **offsetExists** (*string* $name)
 
 Check if a service is registered using the array syntax
 
 
 
-public  **offsetSet** (*unknown* $alias, *mixed* $definition)
+public  **offsetSet** (*string* $name, *mixed* $definition)
 
 Allows to register a shared service using the array syntax 
 
@@ -123,7 +123,7 @@ Allows to register a shared service using the array syntax
 
 
 
-public *mixed*  **offsetGet** (*unknown* $alias)
+public *mixed*  **offsetGet** (*string* $name)
 
 Allows to obtain a shared service using the array syntax 
 
@@ -136,7 +136,7 @@ Allows to obtain a shared service using the array syntax
 
 
 
-public  **offsetUnset** (*unknown* $alias)
+public  **offsetUnset** (*string* $name)
 
 Removes a service from the services container using the array syntax
 

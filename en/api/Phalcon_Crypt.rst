@@ -1,7 +1,23 @@
 Class **Phalcon\\Crypt**
 ========================
 
-Provides encryption facilities to phalcon applications
+*implements* :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`
+
+Provides encryption facilities to phalcon applications  
+
+.. code-block:: php
+
+    <?php
+
+    $crypt = new Phalcon\Crypt();
+    
+    $key = 'le password';
+    $text = 'This is a secret text';
+    
+    $encrypted = $crypt->encrypt($text, $key);
+    
+    echo $crypt->decrypt($encrypted, $key);
+
 
 
 Methods
@@ -45,13 +61,27 @@ Returns the encryption key
 
 public *string*  **encrypt** (*string* $text, [*string* $key])
 
-Encrypts a text
+Encrypts a text 
+
+.. code-block:: php
+
+    <?php
+
+    $encrypted = $crypt->encrypt("Ultra-secret text", "encrypt password");
+
 
 
 
 public *string*  **decrypt** (*string* $text, [*string* $key])
 
-Decrypts a text
+Decrypts an encrypted text 
+
+.. code-block:: php
+
+    <?php
+
+    echo $crypt->decrypt($encrypted, "decrypt password");
+
 
 
 
@@ -70,6 +100,12 @@ Decrypt a text that is coded as a base64 string
 public *array*  **getAvailableCiphers** ()
 
 Returns a list of available cyphers
+
+
+
+public *array*  **getAvailableModes** ()
+
+Returns a list of available modes
 
 
 

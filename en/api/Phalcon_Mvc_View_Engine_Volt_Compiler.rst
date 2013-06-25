@@ -26,18 +26,6 @@ public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInt
 
 
 
-public  **setOptions** (*array* $options)
-
-Sets the compiler options
-
-
-
-public *array*  **getOptions** ()
-
-Returns the compiler options
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
@@ -47,6 +35,48 @@ Sets the dependency injector
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
+
+
+
+public  **setOptions** (*array* $options)
+
+Sets the compiler options
+
+
+
+public  **setOption** (*string* $option, *string* $value)
+
+Sets a single compiler option
+
+
+
+public *string*  **getOption** (*string* $option)
+
+Returns a compiler's option
+
+
+
+public *array*  **getOptions** ()
+
+Returns the compiler options
+
+
+
+public *mixed*  **fireExtensionEvent** (*string* $name, [*array* $arguments])
+
+Fires an event to registered extensions
+
+
+
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addExtension** (*object* $extension)
+
+Registers a Volt's extension
+
+
+
+public *array*  **getExtensions** ()
+
+Returns the list of extensions registered in Volt
 
 
 
@@ -179,6 +209,18 @@ Compiles a 'do' statement returning PHP code
 public *string*  **compileAutoEscape** (*array* $statement, *boolean* $extendsMode)
 
 Compiles a 'autoescape' statement returning PHP code
+
+
+
+public *string*  **compileMacro** (*array* $statement, *boolean* $extendsMode)
+
+Compiles macros
+
+
+
+public *string*  **compileCall** ()
+
+Compiles calls to macros
 
 
 

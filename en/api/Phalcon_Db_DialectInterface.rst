@@ -145,3 +145,33 @@ Generates the SQL to describe the table creation options
 
 
 
+abstract public *boolean*  **supportsSavepoints** ()
+
+Checks whether the platform supports savepoints
+
+
+
+abstract public *boolean*  **supportsReleaseSavepoints** ()
+
+Checks whether the platform supports releasing savepoints.
+
+
+
+abstract public *string*  **createSavepoint** (*string* $name)
+
+Generate SQL to create a new savepoint
+
+
+
+abstract public *string*  **releaseSavepoint** (*string* $name)
+
+Generate SQL to release a savepoint
+
+
+
+abstract public *string*  **rollbackSavepoint** (*string* $name)
+
+Generate SQL to rollback a savepoint
+
+
+
