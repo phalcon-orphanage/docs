@@ -274,8 +274,8 @@ El HTML generado muestra una eqiqueta "A" enlazando al nuevo controlador:
     <h1>Hello!</h1> <a href="/test/signup">Sign Up Here!</a>
 
 Para generar la etiqueta hemos usado la clase :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`.
-Esta es una clase utilitaria que nos permite construir HTML teniendo en cuenta las convenciones del framework.
-Un artículo más detallado en cuanto a la generación de HTML puede ser encontrado aquí :doc:`found here <tags>`
+Esta es una clase utilitaria que nos permite construir código HTML teniendo en cuenta las convenciones del framework.
+Puedes encontrar más información relacionada a la generación de etiquetas HTML aquí :doc:`found here <tags>`
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -296,28 +296,28 @@ Aquí está el controlador Signup (app/controllers/SignupController.php):
 
     }
 
-La acción vacía para 'index' simplemente le da paso a la vista que contiene el formulario:
+Al encontrarce la acción 'index' vacía se da paso a la vista, la cual contiene el formulario:
 
 .. code-block:: html+php
 
     <?php use Phalcon\Tag; ?>
 
-    <h2>Sign using this form</h2>
+    <h2>Registrate haciendo uso de este formulario</h2>
 
     <?php echo Tag::form("signup/register"); ?>
 
      <p>
-        <label for="name">Name</label>
+        <label for="name">Nombre</label>
         <?php echo Tag::textField("name") ?>
      </p>
 
      <p>
-        <label for="name">E-Mail</label>
+        <label for="name">Correo electrónico</label>
         <?php echo Tag::textField("email") ?>
      </p>
 
      <p>
-        <?php echo Tag::submitButton("Register") ?>
+        <?php echo Tag::submitButton("Registrarme") ?>
      </p>
 
     </form>
@@ -331,12 +331,12 @@ Visualizando el formulario en tu navegador mostrará algo como esto:
 
 El método Phalcon\\Tag::form recibe un parámetro, una URI relativa a el controlador/acción en la aplicación.
 
-Al hacer click en el botón "Send", verás que el framework lanza una excepción indicando que
+Al hacer click en el botón "Registrarme", verás que el framework lanza una excepción indicando que
 nos hace falta definir la acción "register" en el controlador "signup":
 
     PhalconException: Action "register" was not found on controller "signup"
 
-Implementar esa acción quitará la excepción:
+Continuemos con la implementación de esta acción para no mostrar más la excepción:
 
 .. code-block:: php
 
@@ -357,18 +357,18 @@ Implementar esa acción quitará la excepción:
 
     }
 
-Si haces click nuevamente en el botón "Send", verás una página en blanco.
-El nombre y email que el usuario proporcionó deben ser almacenados en una base de datos.
+Si haces click nuevamente en el botón "Registrarme", verás esta vez una página en blanco.
+Necesitamos ahora almacenar el nombre y correo electrónico que el usuario proporcionó en una base de datos.
 
-De acuerdo con el MVC, las interacciones con la base de datos deben realizarse a través de modelos models así también
+De acuerdo con el patrón MVC, las interacciones con la base de datos deben realizarse a través de modelos (models) así también
 nos aseguramos que la aplicación está completamente orientada a objetos.
 
-Crear un Modelo
+Creando un Modelo
 ^^^^^^^^^^^^^^^
-Phalcon trae el primer ORM para PHP escrito totalmente en C. En vez de aumentar la complejidad del desarrollo, la simplifica.
+Phalcon posee el primer ORM para PHP escrito totalmente en C. En vez de aumentar la complejidad del desarrollo, la simplifica.
 
 Antes de crear nuestro primer modelo, necesitamos una tabla que el modelo use para mapearse. Una simple tabla para guardar los
-usuarios registrados es la siguiente:
+usuarios registrados puede ser la siguiente:
 
 .. code-block:: sql
 
@@ -390,7 +390,7 @@ Según como hemos organizado esta aplicación, un modelo debe ser ubicado en el 
 
     }
 
-Estableciendo la configuración a la base de datos
+Estableciendo la conexión a la base de datos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Para poder conectarnos a una base de datos y por lo tanto usar nuestros modelos, necesitamos especificar esta configuración en el bootstrap
 de la aplicación.
@@ -436,7 +436,7 @@ Una conexión a una base de datos es simplemente otro servicio que nuestra aplic
         echo $application->handle()->getContent();
 
     } catch(Exception $e) {
-         echo "PhalconException: ", $e->getMessage();
+         echo "Phalcon Exception: ", $e->getMessage();
     }
 
 Con una configuración correcta, nuestros modelos están listos para trabajar e interactuar con el resto de la aplicación.
@@ -466,9 +466,9 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
-                echo "Thanks for register!";
+                echo "Gracias por registrarte!";
             } else {
-                echo "Sorry, the following problems were generated: ";
+                echo "Lo sentimos, los siguientes errores ocurrieron mientras te dabamos de alta: ";
                 foreach ($user->getMessages() as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
@@ -479,28 +479,28 @@ Recibir datos desde el formulario y posteriormente guardarlos en una tabla es el
 
 Instanciamos la clase "Users", que corresponde a un registro de la tabla "users". Las propiedades públicas en la clase
 representan los campos que tiene cada registro en la tabla. Establecemos los datos necesarios en el modelo
-y llamamos a "save()" para que almacene estos datos en la tabla. El método save() retorna un valor booleano (true/false)
+y llamamos al método "save()" para que almacene estos datos en la tabla. El método save() retorna un valor booleano (true/false)
 que indica si el proceso de guardar fue correcto o no.
 
 El ORM automaticamente escapa la entrada de datos previniendo inyecciones de SQL, de esta manera podemos simplemente pasar
 los datos al método save().
 
-Validación adicional sobre campos que no permiten nulos (obligatorios) es ejecutada de manera automática.
-Si no digitamos ningún valor en el formulario y tratamos de guardar veremos lo siguiente:
+Una validación adicional sobre los campos que no permiten valores nulos (obligatorios) es ejecutada de manera automática.
+Si no entramos ningún valor en el formulario y tratamos de guardar veremos lo siguiente:
 
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
 Conclusión
 ----------
-Como podrás ver es un tutorial muy sencillo, es fácil empezar a crear aplicaciones con Phalcon.
+Como podrás ver este es un tutorial muy sencillo que permite aprender a crear aplicaciones con Phalcon.
 El hecho de que PHalcon es una extensión para PHP no ha interferido en la facilidad de desarrollo
 o características disponibles. Te invitamos a que continues leyendo el manual y descubrar muchas más características
 que ofrece Phalcon!
 
 Aplicaciones de Ejemplo
 -----------------------
-Las siguientes aplicaciones de ejemplo están disponibles proporcionando ejemplos más complejos de uso:
+A continuación tienes ejemplos de aplicaciones de mayor complejidad:
 
 * `INVO application`_: Generación de facturas. Permite adiministrar clientes, productos, tipos de producto. etc.
 * `PHP Alternative website`_: Aplicación multi-idioma con enrutamiento avanzado
