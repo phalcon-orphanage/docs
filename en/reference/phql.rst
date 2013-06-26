@@ -15,7 +15,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL only allows one SQL statement to be executed per call preventing injections
 * PHQL ignores all SQL comments which are often used in SQL injections
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high-level abstraction allowing you to handle models as tables and class attributes as fields
+* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
 Usage Example
 -------------
