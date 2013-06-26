@@ -115,7 +115,8 @@ to create it again and again could solve this:
         /**
          * Sets the connection externally
          */
-        public function setConnection($connection){
+        public function setConnection($connection)
+        {
             $this->_connection = $connection;
         }
 
@@ -189,7 +190,8 @@ Now, let's imagine that we must implement two methods in the component, the firs
         /**
          * Sets the connection externally
          */
-        public function setConnection($connection){
+        public function setConnection($connection)
+        {
             $this->_connection = $connection;
         }
 
@@ -803,7 +805,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
     <?php
 
-    //Register the session service as "always shared"
+    //Register the "register" service
     $di->set('request', 'Phalcon\Http\Request');
 
     //Get the service
@@ -912,7 +914,7 @@ doing everything in the application's bootstrap:
     <?php
 
     $di->set('router', function() {
-        return include ("../app/config/routes.php");
+        return include "../app/config/routes.php";
     });
 
 Then in the file ("../app/config/routes.php") return the object resolved:
@@ -991,6 +993,8 @@ the correct (built-in) service when you need it.
 | security            | Security helpers                            | :doc:`Phalcon\\Security <../api/Phalcon_Security>`                                                 | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | crypt               | Encrypt/Decrypt data                        | :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`                                                       | Yes    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
+| tag                 | HTML generation helpers                     | :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`                                                           | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | escaper             | Contextual Escaping                         | :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`                                                   | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
