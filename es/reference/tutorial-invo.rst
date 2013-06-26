@@ -4,10 +4,10 @@ En este segundo tutorial, explicaremos una aplicación más completa con el obje
 con Phalcon.
 
 INVO es una de las aplicaciones que hemos creado como ejemplo. INVO es un pequeño sitio web que permite a sus clientes
-generar facturas así como otras tareas como administrar clientes y productos. Puedes clonar su código fuente de Github_.
+generar facturas, además de otras tareas como administrar clientes y productos. Puedes clonar su código fuente de Github_.
 
 Adicionalmente, INVO fue creada con `Twitter Bootstrap`_ como framework en el cliente. A pesar que la aplicación
-no genera facturas sirve como ejemplo para entender muchos aspectos y funcionalidad en el framework.
+no genera facturas sirve como ejemplo para entender muchos aspectos y funcionalidades en el framework.
 
 Estructura del Proyecto
 -----------------------
@@ -29,7 +29,7 @@ Una vez clones el proyecto en tu raíz de directorios verás la siguiente estruc
             public/js/
         schemas/
 
-Como sábes, Phalcon no te impone una estructura de directorios en particular. Este proyecto tiene una
+Como sabes, Phalcon no te impone una estructura de directorios en particular. Este proyecto tiene una
 estructura de directorios para un MVC sencillo y una raíz pública de documentos.
 
 Una vez abres la aplicación en tu navegador: http://localhost/invo verás algo como:
@@ -37,11 +37,11 @@ Una vez abres la aplicación en tu navegador: http://localhost/invo verás algo 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-La aplicación está dividida en dos partes, un frontend, ques es la parte publica que cualquier visitante puede ver,
-encontrando información sobre INVO y solicitando más información.
+La aplicación está dividida en dos partes, un frontend, que es la parte pública donde los visitante pueden recivir 
+información además de solicitar información de contácto.
 
-La segunda parte es el backend, un área administrativa donde un usuario registrado
-puede administrar sus productos y clientes.
+La segunda parte es el backend, un área administrativa donde un usuario registrado puede administrar
+sus productos y clientes.
 
 Enrutamiento
 ------------
@@ -91,9 +91,9 @@ El archivo de configuración contiene la siguiente configuración.
 Phalcon no tiene convenciones de configuración predeterminadas. Las secciones en el archivo nos ayudan a organizar la configuración
 de manera apropiada. En este archivo hay trés secciones que se usarán luego.
 
-Autoloaders
+Autocargadores
 -----------
-Una segunda parte que aparece en el bootstrap (public/index.php) es el autoloader. Este registra un conjunto
+Una segunda parte que aparece en el bootstrap (public/index.php) es el autocargador (autoloader). Este registra un conjunto
 de directorios que la aplicación utilizará para cargar las clases que eventualmente necesitará.
 
 .. code-block:: php
@@ -116,7 +116,7 @@ directorio que no está registrado es el viewsDir', porque estas no contienen cl
 
 Atendiendo la petición
 ----------------------
-Vamos mucho más adelante, al final del archivo, la petición es finalmente atendida por Phalcon\\Mvc\\Application,
+Vallamos mucho más adelante, al final del archivo, la petición es finalmente atendida por Phalcon\\Mvc\\Application,
 esta clase inicializa y ejecuta todo lo necesario para que la aplicación sea ejecutada:
 
 .. code-block:: php
@@ -137,7 +137,7 @@ instanciando e inicializando todos los componentes a medida que son requeridos p
 
 Hay muchas formas de registrar servicios en el contenedor. En INVO, la mayoría de servicios han sido registrados
 usando funciones anonimas. Gracias a esto, Los objetos son instanciados solo cuando son requeridos, reduciendo
-la cantidad de recursos requeridos por una aplicación.
+la cantidad de recursos requeridos por la aplicación.
 
 Por ejemplo, en el siguiente codigo, el servicio de sesión es registrado, la función anónima solo es ejecutada
 si la aplicación requiere acceder a datos de sessión:
@@ -169,22 +169,22 @@ todos los servicios proporcionados por un framework full-stack.
     // todos los servicios proporcionando un framework full stack
     $di = new \Phalcon\DI\FactoryDefault();
 
-El registra la mayoria de servicios con componentes proporcionados por el framework como estándar. Si queremos
+Así se registran la mayoria de servicios con componentes proporcionados por el framework como estándar. Si queremos
 reemplazar la definición de un servicio podemos hacerla como hicimos antes con el servicio "session". Esta es la razón
 de la existencia de la variable $di.
 
 Iniciar sesión en la Aplicación
 -------------------------------
-El enlace "Log In" nos permitirá trabajar en los controladores del backend. La separación entrre los controladores
-del backend y los del frontend es solo logica. Todos los controladores se encuentran ubicados en el directorio
+El enlace "Log In" nos permitirá trabajar en los controladores del backend. La separación entre los controladores
+del backend y los del frontend es solo lógica. Todos los controladores se encuentran ubicados en el directorio
 (app/controllers/).
 
-Para ingresar al sistema, debemos tener un nombre de usuario y contraseña validos. Los usuarios son almacenados
+Para ingresar al sistema, debemos tener un nombre de usuario y contraseña válidos. Los usuarios son almacenados
 en la tabla "users" de la base de datos "invo".
 
 Antes de iniciar sesión, necesitamos configurar la conexión a la base de datos de la aplicación. Un servicio
 llamado "db" esta configurado en el contenedor de servicios con esta información. Así como lo hicimos con el
-autoloader también vamos a tomar los parámetros del archivo de configuración.
+autocargador también vamos a tomar los parámetros del archivo de configuración.
 
 .. code-block:: php
 
@@ -203,20 +203,20 @@ autoloader también vamos a tomar los parámetros del archivo de configuración.
 Este servicio retorna una instancia del adaptador de conexión a MySQL. De llegar a ser requerido, puedes hacer
 acciones extra como agregar un logger, un profiler, cambiar el adaptador, agregar más opciones de configuración, etc.
 
-Retomando el login, tenemos una forma muy sencilla (app/views/session/index.phtml) que solicita los datos de inicio de
-sesión. Hemos quitado algo de HTML para hacer el ejemplo más concreto:
+Retomando el login, tenemos un formulario muy sencillo (app/views/session/index.phtml) que solicita los datos de inicio de
+sesión. Hemos quitado algo de HTML para hacer el ejemplo más simple:
 
 .. code-block:: html+php
 
     <?php echo Tag::form('session/start') ?>
 
-        <label for="email">Username/Email</label>
+        <label for="email">Nombre de usuario/Correo electrónico</label>
         <?php echo Tag::textField(array("email", "size" => "30")) ?>
 
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
         <?php echo Tag::passwordField(array("password", "size" => "30")) ?>
 
-        <?php echo Tag::submitButton(array('Login')) ?>
+        <?php echo Tag::submitButton(array('Autenticar')) ?>
 
     </form>
 
@@ -283,7 +283,7 @@ datos ingresados verificando si el usuario existe y sus credenciales son validas
 Por simplicidad, hemos usado "sha1_" para guardar los passwords en la base de datos, sin embargo, este
 algoritmo no es recomendado para aplicaciones reales, usa mejor " :doc:`bcrypt <security>`".
 
-Como pudiste ver, muchos atributos publicos fueron accedidos en el controlador como: $this->flash, $this->request y $this->session.
+Como pudiste ver, muchos atributos públicos fueron accedidos desde el controlador como: $this->flash, $this->request y $this->session.
 Estos son servicios en el contenedor de servicios anteriormente. Cuando ellos son accedidos la primera vez, son injectados
 como parte del controlador.
 
