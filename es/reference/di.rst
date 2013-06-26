@@ -1,11 +1,13 @@
-Using Dependency Injection
-**************************
-The following example is a bit lengthy, but explains why using a service container, service location and dependency injection. 
-First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now. 
-Our component has some dependency that is a connection to a database.
+Inyección de Dependencias/Localización de Servicios
+***************************************************
+El siguiente ejemplo es un poco largo, pero explica porqué usar un contenedor de servicios, localización de servicios e
+inyección de dependencias. Primero, pensemos que estamos creando algún componente llamado SomeComponent. Este realiza
+alguna tarea que no es importante en este momento. Nuestro componente tiene una dependencia que es una conexión a una
+base de datos.
 
-In this first example, the connection is created inside the component. This approach is impractical; practically we cannot change the
-connection parameters or the type of database system because the component only works as created.
+En este primer ejemplo, la conexión es creada dentro del componente, esto es impráctico, ya que no podemos
+cambiar los parámetros de conexión o el tipo de sistema de base de datos externamente ya que el componente
+solo funciona como fue creado.
 
 .. code-block:: php
 
@@ -15,9 +17,8 @@ connection parameters or the type of database system because the component only 
     {
 
         /**
-         * The instantiation of the connection is hardcoded inside
-         * the component so is difficult replacing it externally
-         * or change its behavior
+         * La instanciación del componente es realizada dentro de él
+         * así que es díficil cambiar su comportamiento o parámetros
          */
         public function someDbTask()
         {
@@ -36,8 +37,8 @@ connection parameters or the type of database system because the component only 
     $some = new SomeComponent();
     $some->someDbTask();
 
-To solve this, we create a setter that injects the dependency externally before using it. For now, this seems to be
-a good solution:
+Para solucionar esto, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Por ahora,
+esto parece ser una buena solución.
 
 .. code-block:: php
 
@@ -67,7 +68,7 @@ a good solution:
 
     $some = new SomeComponent();
 
-    //Create the connection
+    //Crear la conexión
     $connection = new Connection(array(
         "host" => "localhost",
         "username" => "root",
@@ -75,15 +76,14 @@ a good solution:
         "dbname" => "invo"
     ));
 
-    //Inject the connection in the component
+    //Inyectarla en el componente
     $some->setConnection($connection);
 
     $some->someDbTask();
 
-Now consider that we use this component in different parts of the application and
-then we will need to create the connection several times before passing it to the component.
-Using some kind of global registry where we obtain the connection instance and not have
-to create it again and again could solve this:
+Ahora pensemos que usamos este componente en distintas partes de la aplicación, por lo tanto
+vamos a requerir crear siempre la conexión y pasarla siempre al componente. Usar
+algún tipo de registro global donde obtengamos la conexión y no tengamos que crearla nuevamente:
 
 .. code-block:: php
 
@@ -93,7 +93,7 @@ to create it again and again could solve this:
     {
 
         /**
-         * Returns the connection
+         * Devuelve una conexión
          */
         public static function getConnection()
         {
@@ -113,9 +113,10 @@ to create it again and again could solve this:
         protected $_connection;
 
         /**
-         * Sets the connection externally
+         * Establecer la conexión externamente
          */
-        public function setConnection($connection){
+        public function setConnection($connection)
+        {
             $this->_connection = $connection;
         }
 
@@ -130,12 +131,13 @@ to create it again and again could solve this:
 
     $some = new SomeComponent();
 
-    //Pass the connection defined in the registry
+    //Pasar la conexión definida en el registro
     $some->setConnection(Registry::getConnection());
 
     $some->someDbTask();
 
-Now, let's imagine that we must implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
+Ahora, imaginemos que debemos implementar dos métodos en el componente, el primero siempre necesita una conexión nueva y
+el segundo siempre debe usar una conexión existente.
 
 .. code-block:: php
 
@@ -147,7 +149,7 @@ Now, let's imagine that we must implement two methods in the component, the firs
         protected static $_connection;
 
         /**
-         * Creates a connection
+         * Crea una conexión
          */
         protected static function _createConnection()
         {
@@ -160,7 +162,7 @@ Now, let's imagine that we must implement two methods in the component, the firs
         }
 
         /**
-         * Creates a connection only once and returns it
+         * Crea una conexión o devuelve una existente
          */
         public static function getSharedConnection()
         {
@@ -172,7 +174,7 @@ Now, let's imagine that we must implement two methods in the component, the firs
         }
 
         /**
-         * Always returns a new connection
+         * Siempre devuelve una nueva conexión
          */
         public static function getNewConnection()
         {
@@ -187,14 +189,15 @@ Now, let's imagine that we must implement two methods in the component, the firs
         protected $_connection;
 
         /**
-         * Sets the connection externally
+         * Establecer la conexión
          */
-        public function setConnection($connection){
+        public function setConnection($connection)
+        {
             $this->_connection = $connection;
         }
 
         /**
-         * This method always needs the shared connection
+         * Este método requiere la conexión compartida
          */
         public function someDbTask()
         {
@@ -204,7 +207,7 @@ Now, let's imagine that we must implement two methods in the component, the firs
         }
 
         /**
-         * This method always needs a new connection
+         * Este método siempre requiere una nueva conexión
          */
         public function someOtherDbTask($connection)
         {
@@ -215,37 +218,37 @@ Now, let's imagine that we must implement two methods in the component, the firs
 
     $some = new SomeComponent();
 
-    //This injects the shared connection
+    //Inyectar la conexión compartida
     $some->setConnection(Registry::getSharedConnection());
 
     $some->someDbTask();
 
-    //Here, we always pass a new connection as parameter
+    //Aquí, pasamos una nueva conexión
     $some->someOtherDbTask(Registry::getConnection());
 
-So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead
-of creating them internally in the code makes our application more maintainable and decoupled. However, to long-term,
-this form of dependency injection have some disadvantages.
+Hasta aquí hemos visto como inyectar dependencias en los componentes soluciona nuestros problemas.
+Pasar dependencias como argumentos en vez de crearlos internamente hace nuestra aplicación más mantenible y
+desacoplada. Sin embargo, a largo plazo este tipo de inyección de dependencias podría tener algunas desventajas.
 
 For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
 the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies
-before using the component, every time, makes our code not maintainable as we would like:
+before using the component, every time, makes our code not as maintainable as we would like:
 
 .. code-block:: php
 
     <?php
 
-    //Create the dependencies or retrieve them from the registry
+    //Crear la dependencia o obtenerla del registro
     $connection = new Connection();
     $session = new Session();
     $fileSystem = new FileSystem();
     $filter = new Filter();
     $selector = new Selector();
 
-    //Pass them as constructor parameters
+    //Pasar las dependencias en el constructor del componente
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
-    // ... or using setters
+    // ... o usar setters
 
     $some->setConnection($connection);
     $some->setSession($session);
@@ -253,10 +256,10 @@ before using the component, every time, makes our code not maintainable as we wo
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies,
-we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this,
-we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating
-the object:
+Piensa que debemos crear este objeto en muchas partes de nuestra aplicación, si ya no se requiere alguna dependencia
+debemos ir a cada parte y quitar el parámetro del constructor o del setter donde la inyectamos. Para resolver esto
+podríamos volver a usar el registro global para crear el componente. Sin embargo, esto agrega una nueva capa de
+abstracción antes de crear el objeto:
 
 .. code-block:: php
 
@@ -268,11 +271,10 @@ the object:
         // ...
 
         /**
-         * Define a factory method to create SomeComponent instances injecting its dependencies
+         * Definir un método fabrica para crear instancias de SomeComponent inyectando sus dependencias
          */
         public static function factory()
         {
-
             $connection = new Connection();
             $session = new Session();
             $fileSystem = new FileSystem();
@@ -284,12 +286,14 @@ the object:
 
     }
 
-One moment, we returned to the beginning, we are building again the dependencies inside the component! We can move on and find out a way
-to solve this problem every time. But it seems that time and again we fall back into bad practices.
+Si nos damos cuenta, hemos vuelto al principio, nuevamente estamos creando dependencias dentro del componente!
+Podemos dar y dar vueltas sobre este problema y veremos que caemos una y otra vez en malas prácticas. Dependiendo
+de la complejidad de nuestra aplicación esto puede ser un problema a largo plazo.
 
-A practical and elegant way to solve these problems are using a container for dependencies. The containers act as the global registry that
-we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity
-of our component:
+Una forma práctica y elegante de solucionar estos problemas es usar un localizador de servicios.
+Los contenedores de servicios trabajan de manera similar a un registro global que vimos anteriormente.
+Usar el contenedor de dependencias como un puente para obtener las dependencias permitirá reducir la complejidad
+del componente:
 
 .. code-block:: php
 
@@ -308,8 +312,7 @@ of our component:
         public function someDbTask()
         {
 
-            // Get the connection service
-            // Always returns a new connection
+            // Obtener la conexión localizando el servicio
             $connection = $this->_di->get('db');
 
         }
@@ -317,20 +320,20 @@ of our component:
         public function someOtherDbTask()
         {
 
-            // Get a shared connection service,
-            // this will return the same connection everytime
+            // Obtener una conexión compartida
             $connection = $this->_di->getShared('db');
 
-            //This method also requires a input filtering service
+            //Este método también requiere el servicio de filtrado
             $filter = $this->_db->get('filter');
 
         }
 
     }
 
+    //Crear el localizador de servicios
     $di = new Phalcon\DI();
 
-    //Register a "db" service in the container
+    //Registrar un servicio 'db'
     $di->set('db', function() {
         return new Connection(array(
             "host" => "localhost",
@@ -340,145 +343,152 @@ of our component:
         ));
     });
 
-    //Register a "filter" service in the container
+    //Registrar un servicio "filter"
     $di->set('filter', function() {
         return new Filter();
     });
 
-    //Register a "session" service in the container
+    //Registrar un servicio 'session'
     $di->set('session', function() {
         return new Session();
     });
 
-    //Pass the service container as unique parameter
+    //Pasar el localizador de servicios como único componente
     $some = new SomeComponent($di);
 
     $some->someTask();
 
-The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
-saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
-their behavior or any other aspect of them and that would not affect the component.
+El componente simplemente accede al servicio que requiere cuando lo necesita, si no lo requiere entonces ni siquiera es inicializado
+ahorrando recursos. Por ejemplo, podemos cambiar la manera en la que las conexiones son creadas y su comportamiento
+o cualquier otro aspecto no afectarán el componente.
 
 Our approach
 ============
-Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+Phalcon\\DI es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera
+es un contenedor para ellos.
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
-also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Ya que Phalcon es altamente desacoplado, Phalcon\\DI es esencial para integrar los diferentes componentes del framework.
+El desarrollador puede usar este componente para inyectar dependencias y administrar instancias globales de las distintas
+clases usadas en el framework.
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies 
-using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only 
-one way to get the required dependencies within a component.
+Basicamente, la localización de servicios significa que los objetos no reciben sus dependencias
+a partir de setters o en su constructor, sino que los solicitan al localizador.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+Esto reduce la complejidad ya que solo hay una manera únificada de acceder a las dependencias requeridas dentro de un componente.
 
-Registering services in the Container
-=====================================
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
-can request component B from the container, rather than creating a new instance component B.
+Adicionalmente, este patrón hace el código más testeable, haciendolo menos propenso a errores.
+
+Registrar servicios en el contenedor
+====================================
+El framework en si mismo ó el desarrollador pueden registrar servicios. Cuando un componente A requiere del componente B (o una instancia de su clase)
+para operar, puede obtener el componente B del contenedor, en vez de crear una instancia directamente del componente B.
 
 This way of working gives us many advantages:
+Esta manera de trabajar nos da muchas ventajas:
 
-* We can replace a component by one created by ourselves or a third party one easily.
-* We have full control of the object initialization, allowing us to set these objects, as you need before delivering them to components.
-* We can get global instances of components in a structured and unified way
+* Podemos facilmente reemplazar un componente con uno creado por nosotros mismos o un tercero
+* Podemos controlar la manera en la que los objetos se inicializan, permitiendonos configurarlos como se requiera antes de entregarlos a sus componentes
+* Podemos mantener instancias globales de componentes de manera estructurada y únificada
 
-Services can be registered using several types of definitions:
+Los servicios pueden ser registrados de distintas maneras:
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    //Crear el inyector de dependencias
     $di = new Phalcon\DI();
 
-    //By its class name
+    //Por su nombre de clase
     $di->set("request", 'Phalcon\Http\Request');
 
-    //Using an anonymous function, the instance will lazy loaded
+    //Usando una función anónima, la instancia se creará solo cuando el servicio sea accedido
     $di->set("request", function() {
         return new Phalcon\Http\Request();
     });
 
-    //Registering directly an instance
+    //Registrando una instancia directamente
     $di->set("request", new Phalcon\Http\Request());
 
-    //Using an array definition
+    //Usar una definición en un array
     $di->set("request", array(
         "className" => 'Phalcon\Http\Request'
     ));
 
-The array syntax is also allowed to register services:
+También podemos registrar servicios en el DI usando la sintaxis de array:
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    //Crear el inyector de dependencias
     $di = new Phalcon\DI();
 
-    //By its class name
+    //Por su nombre de clase
     $di["request"] = 'Phalcon\Http\Request';
 
-    //Using an anonymous function, the instance will lazy loaded
+    //Usar una función anónima, la instancia se creará solo cuando el servicio sea accedido
     $di["request"] = function() {
         return new Phalcon\Http\Request();
     };
 
-    //Registering directly an instance
+    //Registrar la instancia directamente
     $di["request"] = new Phalcon\Http\Request();
 
-    //Using an array definition
+    //Usar un array como definición
     $di["request"] = array(
         "className" => 'Phalcon\Http\Request'
     );
 
-In the examples given above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
-The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará
+es solicitar un servicio identificado como 'request' en el contenedor. Este lo que hará es "resolver" el servicio requerido
+devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente,
+su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.
 
-Each of the methods (demonstrated in the example given above) used to set/register a service has advantages and disadvantages. It is up to the
-developer and the particular requirements that will designate which one is used.
+En el ejemplo anterior, cada uno de las formas de registrar servicios tiene ventajas y desventajas.
+Depende del desarrollador y de sus necesidades particulares escoger la que más le convenga.
 
-Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
-code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando
+un array ofrece más flexibilidad pero puede ser un poco más complicado.
+La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización
+sino es editando directamente su código.
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+La mayoría de estrategias para registrar servicios en Phalcon\\DI inicializan los servicios solo la primera vez
+que son requeridas.
 
-Simple Registration
--------------------
-As seen before, there are several ways to register services. These are we call simple:
+Registro simple
+---------------
+Como se vió anteriormente, hay muchos tipos de registrar servicios, a estos les denomiamos simples:
 
 String
 ^^^^^^
-This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded is loaded using an auto-loader.
-This type of definition does not allow to define arguments for the class constructor or parameters:
+Este tipo requiere un nombre de clase válido, y devuelve un objeto de la clase indicada, si la clase no está cargada
+se usará un auto-loader. Este tipo de definición no permite indicar parámetros para su constructor o setters.
 
 .. code-block:: php
 
     <?php
 
-    // return new Phalcon\Http\Request();
+    // devuelve new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
-Object
-^^^^^^
-This type expects an object because the object does not need to be resolved because it is
-already an object, one could say that there is not really dependency injection here,
-but it is useful if you want to force that the returned dependency will
-always the same object/value:
+Objetos
+^^^^^^^
+Este tipo requiere un objeto. Debido a que el objeto como tal ya está resuelto no necesita
+resolverse nuevamente. Es útil cuando queremos forzar el objeto sea el mismo y no pueda ser cambiado:
 
 .. code-block:: php
 
     <?php
 
-    // return new Phalcon\Http\Request();
+    // devuelve new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
-Closures/Anonymous functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This method offers greater freedom to build the dependency as desired, however, it is difficult to
-change some of the parameters externally without having to completely change the definition of dependency:
+Funciones anónimas
+^^^^^^^^^^^^^^^^^^
+Este método ofrece una gran libertad pra construir las dependencias como se requiera, sin embargo,
+puede ser díficil cambiar la definición del servicio en runtime ó dinámicamente sin tener
+que cambiar la definición en código de la dependencia:
 
 .. code-block:: php
 
@@ -493,13 +503,14 @@ change some of the parameters externally without having to completely change the
         ));
     });
 
-Some of the limitations can be overcome by passing additional variables to the closure's environment:
+Alguna de las limitaciones pueden compensarse pasando variables adicionales al contexto de la función
+anónima:
 
 .. code-block:: php
 
     <?php
 
-    //Using the $config variable in the current scope
+    //Usar la variable $config en el contexto de la función anónima
     $di->set("db", function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => $config->host,
@@ -509,17 +520,17 @@ Some of the limitations can be overcome by passing additional variables to the c
         ));
     });
 
-Complex Registration
---------------------
-If it is required to change the definition of a service without instantiating/resolving the service,
-then, we need to define the services using the array syntax. Define a service using an array definition
-can be a little more verbose:
+Registro Avanzado
+-----------------
+Si es requerido cambiar la definición del servicio sin instanciar o resolver el servicio,
+luego, necesitamos definir el servicio usando la sintaxís de array. Definir un servicio usando
+la definición de array puede requerir más código:
 
 .. code-block:: php
 
     <?php
 
-    //Register a service 'logger' with a class name and its parameters
+    //Registrar el servicio 'logger' con un nombre de clase y sus parámetros
     $di->set('logger', array(
         'className' => 'Phalcon\Logger\Adapter\File',
         'arguments' => array(
@@ -530,32 +541,33 @@ can be a little more verbose:
         )
     ));
 
-    //Using an anonymous function
+    //Igual pero usando una función anónima
     $di->set('logger', function() {
         return new \Phalcon\Logger\Adapter\File('../apps/logs/error.log');
     });
 
-Both service registrations above produce the same result. The array definition however, allows for alteration of the service parameters if needed:
+Ambas definiciones construyen la instancia de la misma manera, sin embargo la definición de array, permite alterar los parámetros
+del servicio de manera más sencilla si se requiere:
 
 .. code-block:: php
 
     <?php
 
-    //Change the service class name
+    //Cambiar el nombre de la clase
     $di->getService('logger')->setClassName('MyCustomLogger');
 
-    //Change the first parameter without instantiate the logger
+    //Cambiar el primer parámetro
     $di->getService('logger')->setParameter(0, array(
         'type' => 'parameter',
         'value' => '../apps/logs/error.log'
     ));
 
-In addition by using the array syntax you can use three types of dependency injection:
+Adicionalmente, al usar la construcción avanzada de dependencias puedes usar 3 tipos de inyección de dependencias:
 
-Constructor Injection
-^^^^^^^^^^^^^^^^^^^^^
-This injection type passes the dependencies/arguments to the class constructor.
-Let's pretend we have the following component:
+Inyección en el Constructor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Este tipo de inyección pasa sus dependencias/argumentos al constructor de su clase.
+Prentendamos que tenemos el siguiente componente:
 
 .. code-block:: php
 
@@ -580,7 +592,7 @@ Let's pretend we have the following component:
 
     }
 
-The service can be registered this way:
+El servicio puede ser registrado de la siguiente forma:
 
 .. code-block:: php
 
@@ -598,12 +610,13 @@ The service can be registered this way:
         )
     ));
 
-The service "response" (Phalcon\\Http\\Response) is resolved to be passed as the first argument of the constructor,
-while the second is a boolean value (true) that is passed as it is.
+El servicio "response" (Phalcon\\Http\\Response) es resuelto y se pasa como primer argumetno del constructor,
+mientras que el segundo es un valor booleano (true) que se pasa tal y como está.
 
-Setter Injection
-^^^^^^^^^^^^^^^^
-Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
+Inyección via Setters
+^^^^^^^^^^^^^^^^^^^^^
+Las clases pueden tener setters que inyectan dependencias opcionales, nuestra clase previa puede ser cambiada
+para aceptar las dependencias con setters:
 
 .. code-block:: php
 
@@ -632,7 +645,7 @@ Classes may have setters to inject optional dependencies, our previous class can
 
     }
 
-A service with setter injection can be registered as follows:
+Un servicio con inyección de setters se puede registrar así:
 
 .. code-block:: php
 
@@ -660,9 +673,9 @@ A service with setter injection can be registered as follows:
         )
     ));
 
-Properties Injection
-^^^^^^^^^^^^^^^^^^^^
-A less common strategy is to inject dependencies or parameters directly in public attributes of the class:
+Inyección de Propiedades
+^^^^^^^^^^^^^^^^^^^^^^^^
+Una estrategia menos común es inyectar las dependencias directamente a los atributos públicos de la clase:
 
 .. code-block:: php
 
@@ -681,7 +694,7 @@ A less common strategy is to inject dependencies or parameters directly in publi
 
     }
 
-A service with properties injection can be registered as follows:
+Un servicio con dependencias inyectadas en sus propiedades se puede registrar así:
 
 .. code-block:: php
 
@@ -705,33 +718,33 @@ A service with properties injection can be registered as follows:
         )
     ));
 
-Supported parameter types include the following:
+Los tipos de parámetros soportados incluyen los siguientes:
 
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| Type        | Description                                              | Example                                                                            |
-+=============+==========================================================+====================================================================================+
-| parameter   | Represents a literal value to be passed as parameter     | array('type' => 'parameter', 'value' => 1234)                                      |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| service     | Represents another service in the services container     | array('type' => 'service', 'name' => 'request')                                    |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
-| instance    | Represents a object that must be built dynamically       | array('type' => 'service', 'className' => 'DateTime', 'arguments' => array('now')) |
-+-------------+----------------------------------------------------------+------------------------------------------------------------------------------------+
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| Tipo        | Descripción                                              | Ejemplo                                                                             |
++=============+==========================================================+=====================================================================================+
+| parameter   | Representa un valor literal a ser inyectado              | array('type' => 'parameter', 'value' => 1234)                                       |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| service     | Representa el resultado de resolver otro servicio en DI  | array('type' => 'service', 'name' => 'request')                                     |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
+| instance    | Representa un objeto que debe ser construído por el DI   | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
++-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
 
-Resolving a service whose definition is complex may be slightly slower than previously seen simple definitions. However,
-these provide a more robust approach to define and inject services.
+Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas
+inicialmente. Sin embargo, estas proporcionan una estrategía más robusta para inyectar servicios:
 
-Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
-according to the application needs.
+Mezclar distintos tipos de definiciones está permitido, cada quien puede decidir cuál es la forma más apropiada de acuerdo
+a las necesidades de la aplicación.
 
-Resolving Services
+Resolver Servicios
 ==================
-Obtaining a service from the container is a matter of simply calling the “get” method. A new instance of the service will be returned:
+Resolver y obtener un servicio del contenedor es simplemente usar el método "get". Una nueva instancia del servicio será devuelta:
 
 .. code-block:: php
 
     <?php $request = $di->get("request");
 
-Or by calling through the magic method:
+También es posible usar métodos mágicos:
 
 .. code-block:: php
 
@@ -739,7 +752,7 @@ Or by calling through the magic method:
 
     $request = $di->getRequest();
 
-Or using the array-access syntax:
+O usar la sintaxis de array:
 
 .. code-block:: php
 
@@ -748,6 +761,7 @@ Or using the array-access syntax:
     $request = $di['request'];
 
 Arguments can be passed to the constructor by adding an array parameter to the method "get":
+Los argumentos se pueden pasar al constructor agregando un array como parámetro del método "get":
 
 .. code-block:: php
 
@@ -756,38 +770,38 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     // new MyComponent("some-parameter", "other")
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
-Shared services
-===============
-Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
-the same instance it's returned every time a consumer retrieve the service from the container:
+Servicios Compartidos
+=====================
+Los servicios pueden ser registrados como compartidos esto significa que actuarán como singletons_. Una vez el servicio
+se resuelva por primera vez la misma instancia será retornada cada vez que alguien consuma el servicio en el contenedor:
 
 .. code-block:: php
 
     <?php
 
-    //Register the session service as "always shared"
+    //Registrar el servicio "session" como siempre compartido
     $di->setShared('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-    $session = $di->get('session'); // Locates the service for the first time
-    $session = $di->getSession(); // Returns the first instantiated object
+    $session = $di->get('session'); // Localiza y resuelve el servicio por primera vez
+    $session = $di->getSession(); // Devuelve el objeto instanciado inicialmente
 
-An alternative way to register services is pass "true" as third parameter of "set":
+Una manera alternativa de registrar un servicio compartido es pasar "true" como tercer parámetro de "set":
 
 .. code-block:: php
 
     <?php
 
-    //Register the session service as "always shared"
+    //Registrar un servicio como "siempre compartido"
     $di->set('session', function() {
         //...
     }, true);
 
-If a service isn't registered as shared and you want to be sure that a shared instance will be accessed every time
-the service is obtained from the DI, you can use the 'getShared' method:
+Si un servicio no está registrado como compartido y lo que quieres es estar seguro que una instancia compartida
+será siempre devuelta , entonces debes usar el método 'getShared':
 
 .. code-block:: php
 
@@ -795,34 +809,37 @@ the service is obtained from the DI, you can use the 'getShared' method:
 
     $request = $di->getShared("request");
 
-Manipulating services individually
-==================================
-Once a service is registered in services container, you can retrieve it to manipulate it individually:
+Manipular servicios individualmente
+===================================
+Una vez un servicio está registrado en el contenedor de servicios, puedes obtenerlo y manipularlo indivualmente:
 
 .. code-block:: php
 
     <?php
 
-    //Register the session service as "always shared"
+    //Registrar el servicio de sesión
     $di->set('request', 'Phalcon\Http\Request');
 
-    //Get the service
+    //Obtener el servicio como tal
     $requestService = $di->getService('request');
 
-    //Change its definition
+    //Cambiar su definición
     $requestService->setDefinition(function() {
-        return new Phalcon\Http\Request();
+        return new MyRequest();
     });
 
-    //Change it to shared
+    //Volverlo compartido
     $request->setShared(true);
 
-    //Resolve the service (return a Phalcon\Http\Request instance)
+    //Resolver el servicio (devuelve una instancia de MyRequest)
     $request = $requestService->resolve();
 
-Instantiating classes via the Services Container
+Instanciar clases via el contenedor de servicios
 ================================================
-When you request a service to the services container, if it can't find out a service with the same name it'll try to load a class with
+Cuando solicitas un servicio al contenedor de servicios y este no ha sido registrado con ese nombre, el tratará de obtener
+un nombre de clase con el mismo nombre. Con este comportamiento
+
+When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with
 the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
 .. code-block:: php
@@ -842,16 +859,16 @@ the same name. With this behavior we can replace any class by another simply by 
         return $component;
     });
 
-    //Create a instance via the services container
+    //Create an instance via the service container
     $myComponent = $di->get('MyOtherComponent');
 
-You can take advantage of this, always instantiating your classes via the services container (even if they aren't registered as services). The DI will
+You can take advantage of this, always instantiating your classes via the service container (even if they aren't registered as services). The DI will
 fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition
 for it.
 
 Automatic Injecting of the DI itself
 ====================================
-If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances creates by it,
+If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
 to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
 
 .. code-block:: php
@@ -884,7 +901,7 @@ Then once the service is resolved, the $di will be passed to setDi automatically
     //Register the service
     $di->set('myClass', 'MyClass');
 
-    //Resolve the service (also $myClass->setDi($di) is automatically called)
+    //Resolve the service (NOTE: $myClass->setDi($di) is automatically called)
     $myClass = $di->get('myClass');
 
 Avoiding service resolution
@@ -958,8 +975,8 @@ registers the appropriate services bundled with the framework to act as full-sta
 
 Service Name Conventions
 ========================
-Although you can register services with the names you want. Phalcon has a seriers of service naming conventions that allow it to get the
-right services when you need it requires them.
+Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
+the correct (built-in) service when you need it.
 
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | Service Name        | Description                                 | Default                                                                                            | Shared |
@@ -974,6 +991,8 @@ right services when you need it requires them.
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | response            | HTTP Response Environment Service           | :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`                                      | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
+| cookies             | HTTP Cookies Management Service             | :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`                     | Yes    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | filter              | Input Filtering Service                     | :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`                                                     | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | flash               | Flash Messaging Service                     | :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`                                        | Yes    |
@@ -987,6 +1006,8 @@ right services when you need it requires them.
 | db                  | Low-Level Database Connection Service       | :doc:`Phalcon\\Db <../api/Phalcon_Db>`                                                             | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | security            | Security helpers                            | :doc:`Phalcon\\Security <../api/Phalcon_Security>`                                                 | Yes    |
++---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
+| crypt               | Encrypt/Decrypt data                        | :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`                                                       | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | escaper             | Contextual Escaping                         | :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`                                                   | Yes    |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
