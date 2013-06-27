@@ -1692,13 +1692,16 @@ A callback also can be used to create a conditional assigment of automatic defau
 .. code-block:: php
 
     <?php
+    
+    use Phalcon\Mvc\Model,
+        Phalcon\Db\RawValue;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
         public function beforeCreate()
         {
             if ($this->price > 10000) {
-                $robot->type = new \Phalcon\Db\RawValue('default');
+                $this->type = new RawValue('default');
             }
         }
     }
