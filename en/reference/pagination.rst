@@ -95,7 +95,7 @@ An example of the source data that must be used for each adapter:
     );
 
     //Passing an array as data
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
         array(
             "data"  => array(
                 array('id' => 1, 'name' => 'Artichoke'),
