@@ -4,7 +4,8 @@ There are many PHP frameworks nowadays, but none of them is like Phalcon (Really
 
 Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality that is already tested and
 ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework itself demands a lot of file inclusions and
-hundreds of lines of code to be interpreted and executed on each request from the actual application. This operation slows the application
+hundreds of lines of code to be interpreted and executed on each request from the actual application. Object-Oriented frameworks also 
+add a lot of overhead to execution making complex application slow. All these operations slows the application
 down and subsequently impacts the end user experience.
 
 The Question
@@ -49,7 +50,13 @@ How does Phalcon work?
 * Interact with databases with maximum performance by using a C-language ORM for PHP
 * Phalcon directly accesses internal PHP structures optimizing execution in that way as well
 
+Phalcon was not only designed to optimize `compute-bound`_ (procesor usage) and `memory-bound`_ (memory consumption), 
+it also provides extensive use of caches to optimize the `I/O bound`_ (file system, network).
+
 Conclusion
 ----------
 Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way to develop applications without be worrying about performance. Enjoy!
 
+.. _`compute-bound` : http://en.wikipedia.org/wiki/CPU_bound
+.. _`memory-bound` : http://en.wikipedia.org/wiki/Memory_bound
+.. _`I/O bound` : http://en.wikipedia.org/wiki/IO_bound

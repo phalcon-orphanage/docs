@@ -1,6 +1,7 @@
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock %}
+
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set url_root = pathto('', 1) %}
@@ -16,7 +17,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="http://phalconphp.com">Inicio</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -37,7 +38,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- for parent in parents %}
-          <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+          <li class="right"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
         {%- endfor %}
         {%- block relbardownitems %} {% endblock %}
       </ul>
@@ -56,20 +57,11 @@
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
-            {% if versions %}
-                <h3>Project Versions</h3>
-
-                <select name="versions" id="versions">
-            {% for slug, url in versions %}
-            <option value="http://docs.phalconphp.com{{ url }}">{{ slug }}</option>
-            {% endfor %}
-                </select>
-            {% endif %}
             <div id="searchbox" style="">
-              <h3>Search</h3>
+              <h3>Buscar</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
                   <input type="text" name="q" size="18">
-                  <input type="submit" value="Go">
+                  <input type="submit" value="Ir">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>
             </div>
@@ -85,12 +77,12 @@
           {%- if prev %}
             <h4>{{ _('Previous topic') }}</h4>
             <p class="topless"><a href="{{ prev.link|e }}"
-                                  title="{{ _('previous chapter') }}">{{ prev.title }}</a></p>
+                                  title="{{ _('previous chapter') }}">&lt; {{ prev.title }}</a></p>
           {%- endif %}
           {%- if next %}
             <h4>{{ _('Next topic') }}</h4>
             <p class="topless"><a href="{{ next.link|e }}"
-                                  title="{{ _('next chapter') }}">{{ next.title }}</a></p>
+                                  title="{{ _('next chapter') }}">{{ next.title }} &gt;</a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsourcelink %}
@@ -123,17 +115,11 @@
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/configurationblock.css', 1) }}" type="text/css" />
-    <!--
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/layout.css', 1) }}" type="text/css" />
-    -->
-    <meta name="google-site-verification" content="SqkII4OGzq3HkpvVYsmOaSTZyN-hyURvRkbWWU4j3dc" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
-    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
-    <link rel="stylesheet" href="{{ pathto('_static/s.css', 1) }}" type="text/css">
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
+
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -145,7 +131,7 @@
       };
     </script>
 
-    <script type="text/javascript" src="{{ pathto('_static/jquery.js', 1) }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ pathto('_static/docs.js', 1) }}"></script>
 
     {%- if use_opensearch %}
@@ -184,21 +170,29 @@
   <body>
     <div id="wrapper">
 
-      <div id="header">
-        <h1><a href="http://phalconphp.com/index" ><img border="0" src="{{ pathto('_static/img/logo-small.png', 1) }}"></a></h1>
-        <div align="center">
-          <div id="nav-main" role="navigation">
-            <div class="menubar">
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
-              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
-              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
-              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
-              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
-            </div>
+      <header>
+        <div class="navbar">
+          <div class="navbar-inner">
+              <div class="container-fluid">
+                  <a class="brand" href="http://phalconphp.com/index">
+                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo">
+                  </a>
+                  <div class="nav-collapse collapse pull-right">
+                      <ul class="nav">
+                          <li><a href="http://phalconphp.com/">INICIO</a></li>
+                          <li><a href="http://phalconphp.com/download">Descarga</a></li>
+                          <li><a href="http://phalconphp.com/documentation">Documentación</a></li>
+                          <li><a href="http://phalconphp.com/support">Soporte</a></li>
+                          <li><a href="http://phalconphp.com/donate">Donar</a></li>
+                          <li><a href="http://store.phalconphp.com">Tienda</a></li>
+                          <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
+                          <li><a href="http://blog.phalconphp.com/">Blog</a></li>
+                      </ul>
+                  </div>
+              </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {%- block header %}{% endblock %}
 
@@ -234,11 +228,11 @@
       {%- block footer %}
         <div id="footer">
 
-          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
-          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+          <p>¿Encontraste un error? ¿Quieres mejorar un documento? La documentación se encuentra disponible en <a href="http://github.com/andresgutierrez/docs">Github</a></p>
+          <p>Necesitas soporte o tienes preguntas? Checa la página de <a href="http://phalconphp.com/support">soporte</a></p>
 
-          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
-          <p>Except where otherwise noted, content on this site is licensed under the
+          <p>Phalcon PHP Framework es liberado bajo la licencia <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Excepto donde sea indicado, el contenido de este sitio está liberado bajo licencia
             <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
           {%- if last_updated %}

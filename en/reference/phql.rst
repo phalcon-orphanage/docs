@@ -583,7 +583,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->order('Robots.name')
+        ->orderBy('Robots.name')
         ->getQuery()
         ->execute();
 
@@ -591,7 +591,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->order('Robots.name')
+        ->orderBy('Robots.name')
         ->getQuery()
         ->getSingleResult();
 

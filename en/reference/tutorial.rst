@@ -121,7 +121,7 @@ The public/index.php file should look like:
 
 Autoloaders
 ^^^^^^^^^^^
-The first part that we find in the boostrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
 
 With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
 
