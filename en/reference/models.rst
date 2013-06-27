@@ -417,15 +417,14 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "year" => Column::BIND_PARAM_INT
     );
 
-    // Query robots binding parameters with string placeholders
-    $conditions = "name = :name: AND year = :year:";
+    // Query robots binding parameters with string placeholders    
     $robots = Robots::find(array(
-        $conditions,
+        "name = :name: AND year = :year:",
         "bind" => $parameters,
         "bindTypes" => $types
     ));
 
-Since the default bind-type is \\Phalcon\\Db\\Column::BIND_TYPE_STR, there is no need to specify the
+Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
 "bindTypes" parameter if all of the columns are of that type.
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
@@ -674,7 +673,7 @@ Aliasing Relationships
 ^^^^^^^^^^^^^^^^^^^^^^
 To explain better how aliases work, let's check the following example:
 
-The table "robots_similar" has the function to define what robots are similar to others:
+Table "robots_similar" has the function to define what robots are similar to others:
 
 .. code-block:: bash
 
@@ -1316,7 +1315,7 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before creating a Robot!";
+            echo "This is executed beforecreating a Robot!";
         }
 
     }
@@ -1574,14 +1573,17 @@ The idea of creating validators is make them reusable between several models. A 
 .. code-block:: php
 
     <?php
+    
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Message;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
         {
             if ($this->type == "Old") {
-                $message = new Phalcon\Mvc\Model\Message(
+                $message = new Message(
                     "Sorry, old robots are not allowed anymore",
                     "type",
                     "MyType"
