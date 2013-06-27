@@ -88,7 +88,7 @@ there are three sections to be used later.
 
 Autoloaders
 -----------
-A second part that appears in the boostrap file (public/index.php) is the autoloader. The autoloader registers a set
+A second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
 of directories where the application will look for the classes that it eventually will need.
 
 .. code-block:: php

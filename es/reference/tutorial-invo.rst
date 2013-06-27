@@ -1,16 +1,17 @@
-Tutorial 2: Explaining INVO
+Tutorial 2: Explicando INVO
 ===========================
+En este segundo tutorial, explicaremos una aplicación más completa con el objetivo de profundizar en el desarrollo
+con Phalcon.
 
-In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
-INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
-generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
+INVO es una de las aplicaciones que hemos creado como ejemplo. INVO es un pequeño sitio web que permite a sus clientes
+generar facturas así como otras tareas como administrar clientes y productos. Puedes clonar su código fuente de Github_.
 
-Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
-invoices still it serves as an example to understand how the framework works.
+Adicionalmente, INVO fue creada con `Twitter Bootstrap`_ como framework en el cliente. A pesar que la aplicación
+no genera facturas sirve como ejemplo para entender muchos aspectos y funcionalidad en el framework.
 
-Project Structure
-------------------
-Once you clone the project in your document root you'll see the following structure:
+Estructura del Proyecto
+-----------------------
+Una vez clones el proyecto en tu raíz de directorios verás la siguiente estructura:
 
 .. code-block:: bash
 
@@ -28,40 +29,43 @@ Once you clone the project in your document root you'll see the following struct
             public/js/
         schemas/
 
-As you know, Phalcon does not impose a particular file structure for application development. This project
-provides a simple MVC structure and a public document root.
+Como sábes, Phalcon no te impone una estructura de directorios en particular. Este proyecto tiene una
+estructura de directorios para un MVC sencillo y una raíz pública de documentos.
 
-Once you open the application in your browser http://localhost/invo you'll something like this:
+Una vez abres la aplicación en tu navegador: http://localhost/invo verás algo como:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided in two parts, a frontend, that is a public part where visitors can receive information
-about INVO and request contact information. The second part is the backend, an administrative area where a
-registered user can manage his/her products and customers.
+La aplicación está dividida en dos partes, un frontend, ques es la parte publica que cualquier visitante puede ver,
+encontrando información sobre INVO y solicitando más información.
 
-Routing
--------
-INVO uses the standard route that is built-in with the Router component. These routes matches the following
-pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
-action and the rest are the parameters.
+La segunda parte es el backend, un área administrativa donde un usuario registrado
+puede administrar sus productos y clientes.
 
-The following route /session/register executes the controller SessionController and its action registerAction.
+Enrutamiento
+------------
+INVO usa la forma estándar de enrutar que viene con el componente de enrutamiento. Estas rutas
+usán el patrón que viene con el componente Router. El patrón es: /:controller/:action/:params.
+Esto significa que la primera parte de la URI es el controlador, la segunda la acción y el resto
+son los parámetros.
 
-Configuration
+La ruta /session/register ejecuta el controlador "SessionController" y su acción "registerAction".
+
+Configuración
 -------------
-INVO has a configuration file that sets general parameters in the application. This file is read in the first lines
-of the bootstrap file (public/index.php):
+INVO tiene un archivo de configuración que establece parametros generales en la aplicación.
+Este archivo es leído en las primeras líneas del bootstrap (public/index.php):
 
 .. code-block:: php
 
     <?php
 
-    //Read the configuration
-    $config = new Phalcon\Config\Adapter\Ini(__DIR__ . '/../app/config/config.ini');
+    //Leer la configuración
+    $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
-contains the following settings:
+:doc:`Phalcon\\Config <config>` nos permite manipular el archivo usando programación orientada a objetos.
+El archivo de configuración contiene la siguiente configuración.
 
 .. code-block:: ini
 
@@ -84,13 +88,13 @@ contains the following settings:
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
-there are three sections to be used later.
+Phalcon no tiene convenciones de configuración predeterminadas. Las secciones en el archivo nos ayudan a organizar la configuración
+de manera apropiada. En este archivo hay trés secciones que se usarán luego.
 
 Autoloaders
 -----------
-A second part that appears in the boostrap file (public/index.php) is the autoloader. The autoloader registers a set
-of directories where the application will look for the classes that it eventually will need.
+Una segunda parte que aparece en el bootstrap (public/index.php) es el autoloader. Este registra un conjunto
+de directorios que la aplicación utilizará para cargar las clases que eventualmente necesitará.
 
 .. code-block:: php
 
@@ -100,91 +104,93 @@ of directories where the application will look for the classes that it eventuall
 
     $loader->registerDirs(
         array(
-            __DIR__ . $config->application->controllersDir,
-            __DIR__ . $config->application->pluginsDir,
-            __DIR__ . $config->application->libraryDir,
-            __DIR__ . $config->application->modelsDir,
+            $config->application->controllersDir,
+            $config->application->pluginsDir,
+            $config->application->libraryDir,
+            $config->application->modelsDir,
         )
     )->register();
 
-Note that what has been done is registing the directories that were defined in the configuration file. The only
-directory that is not registered is the viewsDir, because it contains no classes but html + php files.
+Lo que se ha hecho es registrar los directorios que están definidos en el archivo de configuración. El único
+directorio que no está registrado es el viewsDir', porque estas no contienen clases sino HTML y PHP.
 
-Handling the Request
---------------------
-Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application,
-this class initializes and executes all the necessary to make the application run:
-
-.. code-block:: php
-
-    <?php
-
-    $application = new \Phalcon\Mvc\Application();
-    $application->setDI($di);
-    echo $application->handle()->getContent();
-
-Dependency Injection
---------------------
-Look at the second line of the code block above, the variable $application is receiving another variable $di.
-What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
-to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
-dependency injection, instantiating all components, as they are needed by the application.
-
-There are many ways of registering services in the container. In INVO most services have been registered using
-anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
-by the application.
-
-For instance, in the following excerpt is registered the session service, the anonymous function will only be
-called when the application requires access to the session data:
+Atendiendo la petición
+----------------------
+Vamos mucho más adelante, al final del archivo, la petición es finalmente atendida por Phalcon\\Mvc\\Application,
+esta clase inicializa y ejecuta todo lo necesario para que la aplicación sea ejecutada:
 
 .. code-block:: php
 
     <?php
 
-    //Start the session the first time when some component request the session service
+    $app = new \Phalcon\Mvc\Application($di);
+
+    echo $app->handle()->getContent();
+
+Inyección de Dependencias
+-------------------------
+En el código anterior, la variable $di es pasada al constructor de Phalcon\\Mvc\\Application.
+¿Cuál es el proposito de esta variable? Como Phalcon es un framework altamente desacoplado, necesitamos un componente
+que actúe como intermediario entre los distintos componentes para hacer que todo trabaje junto de una manera sencilla.
+Este componente es Phalcon\\DI. Es un contenedor de servicios que también permite injeccción de dependencias,
+instanciando e inicializando todos los componentes a medida que son requeridos por la aplicación.
+
+Hay muchas formas de registrar servicios en el contenedor. En INVO, la mayoría de servicios han sido registrados
+usando funciones anonimas. Gracias a esto, Los objetos son instanciados solo cuando son requeridos, reduciendo
+la cantidad de recursos requeridos por una aplicación.
+
+Por ejemplo, en el siguiente codigo, el servicio de sesión es registrado, la función anónima solo es ejecutada
+si la aplicación requiere acceder a datos de sessión:
+
+.. code-block:: php
+
+    <?php
+
+    //Iniciar la sesión solamente la primera vez que un componente requiera el servicio de sesión
     $di->set('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-Here we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
-was registered using the name "session". This is a convention that will allow the framework to identify the active
-service in the services container.
+Gracias a esto, tenemos la libertad de cambiar el adaptador, ejecutar inicializaciones adicionales y mucho más.
+Ten en cuenta que el servicio se registró usando el nombre "session". Esta es una convención que ayudará a los demás
+componentes a solicitar el servicio correcto en el contenedor de servicios.
 
-A request can use many services, register each service one to one can be a cumbersome task. For that reason,
-the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
-all services providing a full-stack framework.
+Una petición puede usar muchos servicios, registrar cada servicio puede ser tedioso. Por esta razón,
+el framework proporciona una variante Phalcon\\DI llamada Phalcon\\DI\\FactoryDefault cuyo objetivo es registrar
+todos los servicios proporcionados por un framework full-stack.
 
 .. code-block:: php
 
     <?php
 
-    // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full stack framework
+    // El FactoryDefault Dependency Injector registra automáticamente
+    // todos los servicios proporcionando un framework full stack
     $di = new \Phalcon\DI\FactoryDefault();
 
-It registers the majority of services with components provided by the framework as standard. If we need to override
-the definition of some service we could just set it again as we did above with "session". This is the reason for the
-existence of the variable $di.
+El registra la mayoria de servicios con componentes proporcionados por el framework como estándar. Si queremos
+reemplazar la definición de un servicio podemos hacerla como hicimos antes con el servicio "session". Esta es la razón
+de la existencia de la variable $di.
 
-Log into the Application
-------------------------
-Log in will allow us to work on backend controllers. The separation between backend's controllers and the frontend ones
-is only logical. All controllers are located in the same directory.
+Iniciar sesión en la Aplicación
+-------------------------------
+El enlace "Log In" nos permitirá trabajar en los controladores del backend. La separación entrre los controladores
+del backend y los del frontend es solo logica. Todos los controladores se encuentran ubicados en el directorio
+(app/controllers/).
 
-To enter into the system, we must have a valid username and password. Users are stored in the table "users"
-in the database "invo".
+Para ingresar al sistema, debemos tener un nombre de usuario y contraseña validos. Los usuarios son almacenados
+en la tabla "users" de la base de datos "invo".
 
-Before we can start session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with that information. As with the autoloader, this time we are
-also taking parameters from the configuration file to configure a service:
+Antes de iniciar sesión, necesitamos configurar la conexión a la base de datos de la aplicación. Un servicio
+llamado "db" esta configurado en el contenedor de servicios con esta información. Así como lo hicimos con el
+autoloader también vamos a tomar los parámetros del archivo de configuración.
 
 .. code-block:: php
 
     <?php
 
-    // Database connection is created based on the parameters defined in the configuration file
+    // La conexión a la base de datos es creada basada en los parámetros definidos en el archivo de configuración
     $di->set('db', function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
@@ -194,11 +200,11 @@ also taking parameters from the configuration file to configure a service:
         ));
     });
 
-Here we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting up it as you want.
+Este servicio retorna una instancia del adaptador de conexión a MySQL. De llegar a ser requerido, puedes hacer
+acciones extra como agregar un logger, un profiler, cambiar el adaptador, agregar más opciones de configuración, etc.
 
-Back then, the following simple form (app/views/session/index.phtml) requests the logon information. We've removed
-some HTML code to make the example more concise:
+Retomando el login, tenemos una forma muy sencilla (app/views/session/index.phtml) que solicita los datos de inicio de
+sesión. Hemos quitado algo de HTML para hacer el ejemplo más concreto:
 
 .. code-block:: html+php
 
@@ -214,8 +220,8 @@ some HTML code to make the example more concise:
 
     </form>
 
-The SessionController::startAction (app/controllers/SessionController.phtml) has the task of validate the
-data entered checking for a valid user in the database:
+SessionController::startAction (app/controllers/SessionController.phtml) tiene la tarea de validar los
+datos ingresados verificando si el usuario existe y sus credenciales son validas:
 
 .. code-block:: php
 
@@ -238,13 +244,13 @@ data entered checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Taking the variables sent by POST
+                //Recibir los datos ingresados por el usuario
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find for the user in the database
+                //Buscar el usuario en la base de datos
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -253,9 +259,8 @@ data entered checking for a valid user in the database:
 
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome '.$user->name);
-
-                    //Forward to the 'invoices' controller if the user is valid
+                    $this->flash->success('Welcome ' . $user->name);
+                    //Redireccionar la ejecución si el usuario es valido
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -265,7 +270,7 @@ data entered checking for a valid user in the database:
                 $this->flash->error('Wrong email/password');
             }
 
-            //Forward to the login form again
+            //Redireccionar a el forma de login nuevamente
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -275,17 +280,17 @@ data entered checking for a valid user in the database:
 
     }
 
-For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use " :doc:`bcrypt <security>`" instead.
+Por simplicidad, hemos usado "sha1_" para guardar los passwords en la base de datos, sin embargo, este
+algoritmo no es recomendado para aplicaciones reales, usa mejor " :doc:`bcrypt <security>`".
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in services container from earlier. When they're accessed the first time, are injected as part
-of the controller.
+Como pudiste ver, muchos atributos publicos fueron accedidos en el controlador como: $this->flash, $this->request y $this->session.
+Estos son servicios en el contenedor de servicios anteriormente. Cuando ellos son accedidos la primera vez, son injectados
+como parte del controlador.
 
-These services are shared, which means that we are always accessing the same instance regardless of the place
-where we invoke them.
+Estos servicios son compartidos, esto significa que siempre que accedamos a ellos estaremos accediendo a la misma instancia
+sin importar desde donde los solicitemos.
 
-For instance, here we invoke the "session" service and then we stored the user identity in the "auth" variable:
+Por ejemplo, aquí invocamos el servicio "session" y luego almacenamos la identidad del usuario logueado en la variable 'auth':
 
 .. code-block:: php
 
@@ -296,25 +301,25 @@ For instance, here we invoke the "session" service and then we stored the user i
         'name' => $user->name
     ));
 
-Securing the Backend
---------------------
-The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
-registered users have access to these controllers. If you aren't logged in the application and you try to access,
-for example, the products controller (that is private) you will see a screen like this:
+Asegurando el Backend
+---------------------
+El backend es una área privada donde solamente los usuarios registrados tienen acceso. Por lo tanto, es necesario
+chequear que solo usuarios registrados tengan acceso a esos controladores. Si no estás logueado en la aplicación y
+tratas, por ejemplo de acceder al controlador 'products' (que es privado) entonces verás una pantalla como esta:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone attempts to access any controller/action, the application verifies that the current role (in session)
-has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
+Cada vez que alguien intente acceder a cualquier controlador/acción, la aplicación verifica si el perfil actual (en sesión)
+tiene acceso a él, en caso contrario visualiza un mensaje como el anterior y redirecciona el usuario al inicio de la página.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
-:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then,
-it is responsible for loading the appropriate controller and execute the corresponding action method.
+Ahora, descubramos como la aplicación logra esto. La primera cosa a saber es que hay un componente llamado
+:doc:`Dispatcher <dispatching>`. Este es informado sobre la ruta encontrada por componente el :doc:`Router <routing>`.
+Luego es responsable de cargar el controlador apropiado y ejecutar la acción correspondiente.
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
-before executing the required action, checking if the user has access to it or not. To achieve this, we have
-replaced the component by creating a function in the bootstrap:
+Normalmente, el framework crea el dispatcher automaticamente. En nuestro caso como debemos verificar
+antes de ejecutar las acciones y revisar si el usuario tiene acceso a ellas. Para lograr esto, debemos
+reemplazar la creación automática y crear una función en el bootstrap.
 
 .. code-block:: php
 
@@ -325,15 +330,15 @@ replaced the component by creating a function in the bootstrap:
         return $dispatcher;
     });
 
-We now have total control over the Dispatcher used in the application. Many components in the framework launch
-events that allow us to modify the internal flow of operation. As the dependency Injector component acts as glue
-for components, a new component called :doc:`EventsManager <events>` aids us to intercept the events produced
-by a component routing the events to listeners.
+Ahora tenemos total control sobre como el Dispatcher es inicializado y usado en la aplicación. Muchos componentes
+del framework lanzan eventos que nos permiten cambiar el funcionamiento interno o su operación. Así como el inyector
+de dependencias funciona como intermedario de componentes, un nuevo componente llamado :doc:`EventsManager <events>`
+nos ayuda a interceptar eventos producidos por un componente enrutando los eventos a los listeners.
 
-Events Management
-^^^^^^^^^^^^^^^^^
-A :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
-interest us now is "dispatch", the following code filters all events produced by the Dispatcher:
+Administración de Events
+^^^^^^^^^^^^^^^^^^^^^^^^
+Un :doc:`EventsManager <events>` nos permite agregar listeners a un tipo particular de evento. El tipo que
+nos interesa ahora es "dispatch", el siguiente código filtra todos los eventos producidos por Dispatcher:
 
 .. code-block:: php
 
@@ -341,34 +346,35 @@ interest us now is "dispatch", the following code filters all events produced by
 
     $di->set('dispatcher', function() use ($di) {
 
-        //Obtain the standard eventsManager from the DI
-        $eventsManager = $di->getShared('eventsManager');
+        //Crear un administrador de eventos
+        $eventsManager = new Phalcon\Events\Manager();
 
-        //Instantiate the Security plugin
+        //Instanciar el plugin de seguridad
         $security = new Security($di);
 
-        //Listen for events produced in the dispatcher using the Security plugin
+        //Enviar todos los eventos producidos en el Dispatcher al Security plugin
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the Dispatcher
+        //Asignar el administrador de eventos al dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     });
 
-The Security plugin is a class located at (app/plugins/Security.php). This class implements the method
-"beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
+El Security plugin es una clase ubicada en (app/plugins/Security.php). Esta clase implementa
+el método "beforeExecuteRoute". Este tiene el mismo nombre de uno de los eventos producidos en el dispatcher.
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\User\Plugin;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
@@ -380,21 +386,23 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
 
     }
 
-The hooks events always receive a first parameter that contains contextual information of the event produced and a
-second one that is the object that produced the event itself. It is not mandatory that plugins extend the class
-Phalcon\\Mvc\\User\\Plugin, but by doing it they gain easier access to the services in the application.
+Los listeners de eventos siempre reciben un primer parámetro que contiene información contextual del evento producido
+y un segundo que es el objeto que produjo el evento como tal ($dispatcher). No es obligatorio que los plugins extiendan
+la clase Phalcon\\Mvc\\User\\Plugin, pero haciendo esto, ellos ganan acceso sencillo a los servicios disponibles
+en la aplicación.
 
-Now, we're verifying the role in the current session, check to see if he/she has access using the ACL list.
-If he/she does not have access we redirect him/her to the home screen as explained before:
+Ahora, verificamos si el perfil (role) actual en sesión tiene acceso usando una lista de control de acceso ACL.
+Si él no tiene acceso lo redireccionamos a la pantalla de inicio como explicamos anteriormente:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\User\Plugin;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
@@ -402,7 +410,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            //Verificar si la variable de sessión 'auth' está definida, esto indica si hay un usuario logueado
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -410,18 +418,18 @@ If he/she does not have access we redirect him/her to the home screen as explain
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            //Obtener el controlador y acción actual desde el Dispatcher
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            //Obtener la lista ACL
             $acl = $this->_getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            //Verificar si el perfil (role) tiene acceso al controlador/acción
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Phalcon\Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                //Si no tiene acceso mostramos un mensaje y lo redireccionamos al inicio
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -430,7 +438,8 @@ If he/she does not have access we redirect him/her to the home screen as explain
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                //Devolver "false" le indica al Dispatcher que debe detener la operación
+                //y evitar que la acción se ejecute
                 return false;
             }
 
@@ -438,23 +447,23 @@ If he/she does not have access we redirect him/her to the home screen as explain
 
     }
 
-Providing an ACL list
-^^^^^^^^^^^^^^^^^^^^^
-In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also
-implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list:
+Crear una lista ACL
+^^^^^^^^^^^^^^^^^^^
+En el ejemplo anterior, hemos obtenido la lista ACL usando el método $this->_getAcl(). Este método
+también es implementado en el plugin. Ahora, explicaremos paso a paso como construir la lista de control de acceso.
 
 .. code-block:: php
 
     <?php
 
-    //Create the ACL
+    //Crear el ACL
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //The default action is DENY access
+    //La acción por defecto es denegar (DENY)
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Register two roles, Users is registered users
-    //and guests are users without a defined identity
+    //Registrar dos roles, 'users' son usuarios registrados
+    //y 'guests' son los usuarios sin un perfil definido (invitados)
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -463,71 +472,74 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
         $acl->addRole($role);
     }
 
-Now we define the resources for each area respectively. Controller names are resources and their actions are
-accesses for the resources:
+Ahora definiremos los recursos para cada área respectivamente. Los nombres de controladores son recursos y
+sus acciones son accesos a los recursos:
 
 .. code-block:: php
 
     <?php
 
-    //Private area resources (backend)
+    //Recursos del área privada (backend)
     $privateResources = array(
-        'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'invoices' => array('index', 'profile')
+      'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'invoices' => array('index', 'profile')
     );
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    //Recursos del área pública (frontend)
     $publicResources = array(
-        'index' => array('index'),
-        'about' => array('index'),
-        'session' => array('index', 'register', 'start', 'end'),
-        'contact' => array('index', 'send')
+      'index' => array('index'),
+      'about' => array('index'),
+      'session' => array('index', 'register', 'start', 'end'),
+      'contact' => array('index', 'send')
     );
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
-all the resources of both frontend and backend. The role "Guests" only has access to the public area:
+El ACL ahora tiene conocimiento de los controladores existentes y sus acciones. El perfil "Users"
+tiene acceso tanto al backend y al frontend. El perfil "Guests" solo tiene acceso al área pública.
 
 .. code-block:: php
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    //Darle acceso al área pública tanto a usuarios como a invitados
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    //Darle acceso al área privada solo al perfil "Users"
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
         }
     }
 
-Hooray!, the ACL is now complete.
+Super!, la ACL está ahora completa
 
-User Components
----------------
-All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
-Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
+Componentes de Usuario
+----------------------
+Todos los elementos visuales en la aplicación han sido logrados usando mayormente con `Twitter Bootstrap`_.
+Algunos elementos, como la barra de navegación cambian de acuerdo al estado actual de la aplicación.
+Por ejemplo, en la esquina superior derecha, el link "Log in / Sign Up" cambia a "Log out" si un
+usuario se ha iniciado sesión en la aplicación.
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+Esta parte de la aplicación es implementada en el componente de usuario "Elements" (app/library/Elements.php).
 
 .. code-block:: php
 
     <?php
 
-    class Elements extends Phalcon\Mvc\User\Component
+    use Phalcon\Mvc\User\Component;
+
+    class Elements extends Component
     {
 
         public function getMenu()
@@ -542,20 +554,22 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but
-if it helps to more quickly access the application services. Now, we register this class in the services container:
+Esta clase extiende de Phalcon\\Mvc\\User\\Component, no es obligatorio que los componentes de usuario extiendan de esa clase,
+sin embargo esto ayuda a que puedan acceder facilmente a los servicios de la aplicación. Ahora vamos a registrar
+esta clase en el contenedor de servicios:
 
 .. code-block:: php
 
     <?php
 
-    //Register an user component
-    $di->set('elements', function(){
+    //Registrar un componente de usuario
+    $di->set('elements', function() {
         return new Elements();
     });
 
-As controllers, plugins or components within a view, this component also has access to the services registered
-in the container and by just accessing an attribute with the same name as a previously registered service:
+Así como los controladores, plugins o componentes, dentro de una vista, este componente también se puede
+acceder a los servicios de la aplicación simplemente accediendo a un atributo con el mismo nombre de un
+servicio previamente registrado:
 
 .. code-block:: html+php
 
@@ -581,16 +595,17 @@ in the container and by just accessing an attribute with the same name as a prev
         </footer>
     </div>
 
-The important part is:
+La parte relevante es:
 
 .. code-block:: html+php
 
     <?php echo $this->elements->getMenu() ?>
 
-Working with the CRUD
----------------------
-Most options that manipulate data (companies, products and types of products), were developed using a basic and
-common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
+Trabajando con CRUDs
+--------------------
+La mayor parte de opciones que manipulan datos
+Most options that manipulate data (compañias, productos y tipos de productos), han sido desarrollados
+usando un básico y común CRUD_ (Create, Read, Update and Delete). Cada CRUD contiene los siguientes archivos:
 
 .. code-block:: bash
 
@@ -607,7 +622,7 @@ common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following
                     new.phtml
                     search.phtml
 
-Each controller has the following actions:
+Cada controlador implementa las siguientes acciones:
 
 .. code-block:: php
 
@@ -617,7 +632,7 @@ Each controller has the following actions:
     {
 
         /**
-         * The start action, it shows the "search" view
+         * La acción de inicio, permite buscar productos
          */
         public function indexAction()
         {
@@ -625,8 +640,8 @@ Each controller has the following actions:
         }
 
         /**
-         * Execute the "search" based on the criteria sent from the "index"
-         * Returning a paginator for the results
+         * Realiza la búsqueda basada en los parámetros de usuario
+         * devolviendo un paginador
          */
         public function searchAction()
         {
@@ -634,7 +649,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to create a "new" product
+         * Muestra la vista de crear nuevos productos
          */
         public function newAction()
         {
@@ -642,7 +657,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to "edit" an existing product
+         * Muestra la vista para editar productos existentes
          */
         public function editAction()
         {
@@ -650,7 +665,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Creates a product based on the data entered in the "new" action
+         * Crea un nuevo producto basado en los datos ingresados en la acción "new"
          */
         public function createAction()
         {
@@ -658,7 +673,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Updates a product based on the data entered in the "edit" action
+         * Actualiza un producto basado en los datos ingresados en la acción "edit"
          */
         public function saveAction()
         {
@@ -666,7 +681,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Deletes an existing product
+         * Elimina un producto existente
          */
         public function deleteAction($id)
         {
@@ -675,11 +690,12 @@ Each controller has the following actions:
 
     }
 
-The Search Form
-^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
-creating a search criteria from any field. The "products" table has a relationship to the table "products_types".
-In this case, we previously queried the records in this table in order to facilitate the search by that field:
+Formulario de Buscar
+^^^^^^^^^^^^^^^^^^^^
+Cada CRUD inicia con un formulario de búsqueda. Este formulario muestra cada campo que tiene la tabla (productos),
+permitiendo al usuario crear un criterio de búsqueda por cada campo. La tabla "productos" tiene una relación
+a la tabla "product_types". En este caso, previamente consultamos los registros en esta tabla para facilitar al usuario
+su búsqueda por este campo.
 
 .. code-block:: php
 
@@ -691,15 +707,13 @@ In this case, we previously queried the records in this table in order to facili
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->setVar("productTypes", ProductTypes::find());
+        $this->view->productTypes = ProductTypes::find();
     }
 
-All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
-(app/views/index.phtml) we show a "select" tag filled with those results:
+Todos los tipos de productos son consultados y pasados a la vista como una variable local $productTypes. Luego,
+en la vista (app/views/index.phtml) mostramos una etiqueta "select" llena con esos datos:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     <div>
         <label for="product_types_id">Product Type</label>
@@ -711,39 +725,45 @@ All the "product types" are queried and passed to the view as a local variable "
         )) ?>
     </div>
 
-Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
-is submitted, the action "search" is executed in the controller performing the search based on the data entered by
-the user.
+Fijate que $productTypes contiene todos los datos necesarios para llenar la etiqueta SELECT usando Phalcon\\Tag::select.
+Una vez el formulario sea
 
-Performing a Search
-^^^^^^^^^^^^^^^^^^^
+Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
+is enviado, la acción "search" es ejecutada en el controlado realizando la búsqueda basada en los parámetros digitados
+por el usuario.
+
+Realizando una Búsqueda
+^^^^^^^^^^^^^^^^^^^^^^^
+La acción tiene "search" tiene un doble objetivo. Cuando es accedida via POST, realiza una búsqueda basada en los parámetros
+ingresados por el usuario y cuando se accede via GET mueve la pagína actual en el paginador.
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
-form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
-we check it using the :doc:`Request <request>` component:
+form. But when accessed via GET it moves the current page in the paginator. Para diferenciar un método del
+otro usamos el componente :doc:`Request <request>`:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Execute the "search" based on the criteria sent from the "index"
-     * Returning a paginator for the results
+     * Realiza la búsqueda basada en los parámetros de usuario
+     * devolviendo un paginador
      */
     public function searchAction()
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            //crear las condiciones de búsqueda
         } else {
-            //paginate using the existing conditions
+            //paginar usando las condiciones existentes
         }
 
         //...
 
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
-conditions intelligently based on the data types and values sent from the form:
+
+Con la ayuda de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, podemos crear una búsqueda
+de manera inteligente basada en los tipos de datos enviados en el formulario:
 
 .. code-block:: php
 
@@ -751,16 +771,15 @@ conditions intelligently based on the data types and values sent from the form:
 
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the query:
+Este método verifica que valores son diferentes a "" (cadena vacia) y nulo y los toma en cuenta para crear el criterio de búsqueda
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
-* If the data type is not text or similar, it'll use the operator "=".
+* Si el campo tiene un tipo de dato de texto o similar (char, varchar, text, etc.) Usa un operador SQL "like" para filtrar los resultados
+* Si el tipo de dato no es texto, entonces usará el operador "="
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
-Values are automatically escaped using "bound parameters".
+Adicionalmente, "Criteria" ignora todas las variables $_POST que no correspondan a campos en la tabla.
+Los valores son automáticamente escapados usando "bound parameters" evitando inyecciones de SQL.
 
-Now, we store the produced parameters in the controller's session bag:
+Ahora, almacenamos los parametros producidos in la bolsa de datos de sesión del controlador:
 
 .. code-block:: php
 
@@ -768,10 +787,11 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests. When accessed, this attribute injects
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service that is independent in each controller.
+Una bolsa de sesión, es un atributo especial en un controlador que es persistente entre peticiones.
+Al ser accedido, este atributo es inyectado con un servicio :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
+que es independiente por controlador/clase.
 
-Then, based on the built params we perform the query:
+Luego, basado en los parámetros construidos anteriormente:
 
 .. code-block:: php
 
@@ -783,8 +803,8 @@ Then, based on the built params we perform the query:
         return $this->forward("products/index");
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+Si la búsqueda no retorna ningún producto, redireccionamos el usuario a la vista de inicio nuevamente.
+Supongamos que retornó registros, entonces creamos un páginador para navegar facilmente a través de ellos:
 
 .. code-block:: php
 
@@ -796,18 +816,18 @@ search returned results, then we create a paginator to navigate easily through t
         "page" => $numberPage   //Active page
     ));
 
-    //Get active page in the paginator
+    //Obtener la página activa
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+Finalmente pasamos la página devuelta a la vista:
 
 .. code-block:: php
 
     <?php
 
-    $this->view->setVar("page", $page);
+    $this->view->page = $page;
 
-In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
+En la vista (app/views/products/search.phtml), recorremos los resultados correspondientes de la página actual:
 
 .. code-block:: html+php
 
@@ -823,12 +843,13 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
         </tr>
     <?php } ?>
 
-Creating and Updating Records
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+Creando y Actualizando Registros
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ahora vemos como en un CRUD se puede crear y actualizar registros. Desde las vistas "new" y "edit" los datos
+son ingresados por el usuario y enviados a las acciones "create" y "save" que realizan las acciones de crear y
+actualizar productos respectivamente.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+En el caso de creación, recuperamos los datos enviados y los asignamos a una nueva instancia de "Products":
 
 .. code-block:: php
 
@@ -841,20 +862,22 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     {
 
         $products = new Products();
-        $products->id = $request->getPost("id", "int");
-        $products->product_types_id = $request->getPost("product_types_id", "int");
-        $products->name = $request->getPost("name", "striptags");
-        $products->price = $request->getPost("price", "double");
-        $products->active = $request->getPost("active");
+
+        $products->id = $this->request->getPost("id", "int");
+        $products->product_types_id = $this->request->getPost("product_types_id", "int");
+        $products->name = $this->request->getPost("name", "striptags");
+        $products->price = $this->request->getPost("price", "double");
+        $products->active = $this->request->getPost("active");
 
         //...
 
     }
 
-Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
-performs additional casting according to the column types.
+Los datos son filtrados antes de ser asignados al objeto. Realizar este filtrado es opcional, el ORM escapa los datos
+de entrada y realiza conversiones de tipos de dato antes de guardar. Sin embargo, es recomendable para asegurarnos
+que la entrada no contiene caracteres basura ó invalidos.
 
-When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
+Al guardar, sabremos si los datos cumplen con las reglas de negocio y validaciones adicionales implementadas en el modulo Products:
 
 .. code-block:: php
 
@@ -870,12 +893,12 @@ When saving we'll know whether the data conforms to the business rules and valid
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            //Guardar falló, mostrar los mensajes
             foreach ($products->getMessages() as $message) {
-                $this->flash->error((string) $message);
+                $this->flash->error($message);
             }
-            return $this->forward("products/new");
 
+            return $this->forward("products/new");
         } else {
             $this->flash->success("Product was created successfully");
             return $this->forward("products/index");
@@ -883,66 +906,60 @@ When saving we'll know whether the data conforms to the business rules and valid
 
     }
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+Ahora, en el caso de la actualización, primero debemos presentar al usuario los datos correspondientes al registro editado:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Shows the view to "edit" an existing product
+     * Muestra la vista para editar un producto existente
      */
     public function editAction($id)
     {
 
         //...
 
-        $product = Products::findFirst(array(
-            'id = ?0',
-            'bind' => array($id)
-        ));
+        $product = Products::findFirstById($id);
 
-        Tag::displayTo("id", $product->id);
-        Tag::displayTo("product_types_id", $product->product_types_id);
-        Tag::displayTo("name", $product->name);
-        Tag::displayTo("price", $product->price);
-        Tag::displayTo("active", $product->active);
+        Tag::setDefault("id", $product->id);
+        Tag::setDefault("product_types_id", $product->product_types_id);
+        Tag::setDefault("name", $product->name);
+        Tag::setDefault("price", $product->price);
+        Tag::setDefault("active", $product->active);
 
     }
 
-The displayTo helper sets a default value in the form on the attribute with the same name. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+El método "Tag::setDefault" nos permite asignar un valor predeterminado a un atributo con el mismo nombre en la forma.
+Gracias a esto, un usuario puede cambiar cualquier valor y luego enviarlo de vuelta a la base de datos usando la acción "save":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Actualiza un producto basado en los datos ingresados en la acción "edit"
      */
     public function saveAction()
     {
 
         //...
 
-        //Find the product to update
-        $product = Products::findFirst(array(
-            'id = ?0',
-            'bind' => array($this->request->getPost("id"))
-        ));
+        //Buscar el producto a actualizar
+        $product = Products::findFirstById($this->request->getPost("id"));
         if (!$product) {
-            $this->flash->error("products does not exist ".$id);
+            $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        //... asignar los valores al objeto y guardar
 
     }
 
-Changing the Title Dynamically
-------------------------------
-When you browse between one option and another will see that the title changes dynamically indicating where
-we are currently working. This is achieved in each controller initializer:
+Cambiar el título dinámicamente
+-------------------------------
+Cuando navegas entre una opción y otra verás que el título de la página cambia dinamicamente indicando
+donde estamos trabajando actualmente. Esto se logra en el método inicializador de cada controlador:
 
 .. code-block:: php
 
@@ -953,7 +970,7 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
+            //Establecer el título de la página
             Tag::setTitle('Manage your product types');
             parent::initialize();
         }
@@ -962,7 +979,7 @@ we are currently working. This is achieved in each controller initializer:
 
     }
 
-Note, that the method parent::initialize() is also called, it adds more data to the title:
+El método parent::initialize() en la clase padre se llama igualmente, esté agrega más información al título:
 
 .. code-block:: php
 
@@ -973,14 +990,14 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            //Agregar el nombre de la aplicación al principio del título
             Phalcon\Tag::prependTitle('INVO | ');
         }
 
         //...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+Finalmente, el título se imprime en la vista principal (app/views/index.phtml):
 
 .. code-block:: html+php
 
@@ -993,10 +1010,10 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         <!-- ... -->
     </html>
 
-Conclusion
+Conclusión
 ----------
-This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
-learn more and get more out of the framework.
+Este tutorial cubre muchos más aspectos del desarrollo de aplicaciones con Phalcon, esperamos te hayan
+servido para aprender más y sacar más provecho al framework.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
