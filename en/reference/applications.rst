@@ -405,6 +405,8 @@ Application Events
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
 +=====================+==============================================================+
+| boot                | Executed when the application handles its first request      |
++---------------------+--------------------------------------------------------------+
 | beforeStartModule   | Before initialize a module, only when modules are registered |
 +---------------------+--------------------------------------------------------------+
 | afterStartModule    | After initialize a module, only when modules are registered  |

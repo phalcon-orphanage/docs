@@ -18,11 +18,15 @@ html {
 }
 
 body {
-	color: #333333;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #000;
+	font: 16px/20px Ubuntu, sans-serif;
 	font-size: 16px;
 	line-height: 27px;
 	margin: 0 0 11px;
+}
+
+a {
+	color: #118f9e;
 }
 
 #nav-main {
@@ -35,7 +39,6 @@ body {
 }
 
 h2 {
-	font-family: Helvetica, Arial ,sans-serif;
 	font-style: bold;
 	letter-spacing: normal;
 	color: #333333;
@@ -102,7 +105,7 @@ td.primary-box li {
 }
 
 td.primary-box a {
-	color: #0088CC;
+	color: #118f9e;
 	font-size: 13px;
 	line-height: 20px;
 	text-decoration: none;
@@ -115,11 +118,11 @@ td.second-box {
 }
 
 div.documentwrapper h1 {
-	color: #000000;
-	display: block;
-	font: 400 28px 'Open Sans','Lucida Sans Unicode','Lucida Grande',sans-serif;
-	margin: 0;
-	margin-bottom: 7px;
+	font-size: 36px;
+	line-height: 38px;
+	font-weight: normal;
+	margin: 15px 0 10px;
+	padding: 0;
 }
 
 div.section {
@@ -133,19 +136,25 @@ a.headerlink {
 }
 
 div.related {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 95%;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	background: #f2f2f2;
+	height: 25px;
+	color: #f2f2f2;
 }
 
 div.related li {
 	float: left;
 	padding-right: 20px;
 	list-style: none outside none;
+	color: #717171;
 }
 
 div.related a {
-	font-size: 13px;
+	color: #000;
+	font-size: 17px;
+	text-decoration: none;
+	border-bottom: 1px dashed #9a9a9a;
 }
 
 div.related li.right {
@@ -157,10 +166,9 @@ div.related li.right {
 }
 
 div.related li.right a {
-	background: rgb(108, 166, 141);
-	padding: 10px;
-	border-radius: 5px;
+	background: #0ec281;
 	color: #fff;
+	padding: 10px;
 }
 
 .align-center {
@@ -179,17 +187,22 @@ p.versionadded {
 
 p.versionchanged,
 blockquote.highlights {
-	color: #414141;
-	font-family: "Open Sans",sans-serif;
-	background: none repeat scroll 0 0 #D5E9F6;
+	font-family: Ubuntu, arial, sans-serif;
+	background-color: #F0712F;
+	border-color: #D03C00;
+	color: #fff;
 	line-height: 24px;
 	padding: 10px;
 	text-align: left;
-	text-rendering: optimizelegibility;
 	font-size: 15px;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 10px;
+}
+
+p.versionchanged a,
+blockquote.highlights a {
+	color: #fff;
 }
 
 blockquote.highlights {
@@ -350,7 +363,7 @@ table.docutils th {
 }
 
 table.docutils th {
-	background: none repeat scroll 0 0 #F9F9F9;
+	background: transparent;
 	text-align: center;
 }
 
@@ -425,29 +438,21 @@ em {
 	font-style: normal;
 }
 
-p.versionchanged, blockquote.highlights {
-	background-color: #D9EDF7;
-	border-color: #BCE8F1;
-	color: #3A87AD;
-}
-
 div#footer {
 	padding: 50px 10px;
-	background: #222222;
+	/*background: #222222;*/
 	font-size: 12px;
 	text-align: center;
-	color: #fafafa;
+	/*color: #fafafa;*/
 }
 
 div#footer p {
 	display: block;
 	margin: 0px;
 	font-size: 12px;
-	color: #dadada;
 }
 
 div#footer a {
-	color: #dadada;
 	text-decoration: underline;
 }
 
@@ -540,10 +545,10 @@ div.highlight {
 }
 
 pre {
-	font-family: 'Anonymous Pro', Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-family: Consolas, Menlo, "Courier New", monospace;
 	background-color: transparent;
 	line-height: 19px;
-	font-size: 17px;
+	font-size: 13px;
 	border: 1px solid #eaeaea;
 }
 
@@ -551,18 +556,24 @@ div#methods div.highlight {
 	margin-left: 30px;
 }
 
-header .navbar { margin-bottom: 20px; }
+/*header .navbar { margin-bottom: 20px; }
 header .navbar-inner { border: none; border-bottom: 1px solid #000; border-radius: 0px; }
 header .navbar-inner { background: #1A1A1A; }
 header .navbar-inner .brand img { height: 30px; }
 header .navbar-inner .nav { margin-top: 5px; }
-header .navbar-inner .nav li { text-transform: uppercase; font-size: 12px; font-weight: bold; margin-right: 5px; }
-header .navbar-inner .nav li > a { color: #dadada; text-shadow: none; }
+header .navbar-inner .nav li { text-transform: uppercase; font-size: 12px; font-weight: bold; margin-right: 5px; }*/
+header .navbar-inner .nav li > a { color: #000; text-decoration: underline; font-size: 16px; line-height: 19px;  }
 header .navbar-inner .nav li > a:hover { color: #d3ebe3; }
 header .navbar-inner .nav li > a:active { position: relative; top: 2px; }
 header .navbar-inner .nav li.active {}
-header .navbar-inner .nav li.active > a { color: #dadada; background: none; box-shadow: none; }
+header .navbar-inner .nav li.active > a { color: #111111; background: none; box-shadow: none; }
 header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: none; color: #d3ebe3; }
+
+header .navbar { padding: 55px 0 20px; padding-top: 20px; }
+header .navbar-inner { border: none; background: transparent; webkit-box-shadow: none; box-shadow: none; }
+header .navbar-inner .brand img { height: 30px; }
+
+.container-fluid { padding-top: 30px; }
 
 .sample {
 	width: 330px;
@@ -606,4 +617,74 @@ header .navbar-inner .nav li.active > a:hover { background: none; box-shadow: no
 	background: url('img/sample-6.png');
 }
 
+input[type="submit"] {
+	background: #f06715;
+	border: none;
+	color: #fff;
+}
 
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
+.highlight .nx, .highlight .na, .highlight .nb,
+.highlight .c, .highlight .nt {
+	color: #111111;
+}
+
+.highlight .k {
+	color: #111111;
+	font-weight: bold;
+}
+
+.highlight .sd,
+.highlight .c1,
+.highlight .cm {
+	color: #717171;
+}
+
+div.highlight, blockquote {
+	border-left: 3px solid #0ec281;
+	background: #f2f2f2;
+}
+
+.header-line {
+	min-width: 980px;
+	height: 87px;
+	background: #5da49e url('http://new.phalconphp.ru/images/header-line.jpg') 50% 0 no-repeat;
+	margin: 0 0 20px;
+	overflow: hidden;
+}
+
+.header-line-title {
+	font-size: 48px;
+	line-height: 50px;
+	padding: 20px 0;
+}
+
+.size-wrap {
+	margin: 0 auto;
+	min-width: 960px;
+	max-width: 1440px;
+	padding: 0 15px;
+}
+
+.title-white {
+	color: #fff;
+	text-shadow: 0 0 2px rgba(0,0,0,0.7);
+	font-weight: bold;
+}
+
+.donate-wrap {
+	margin: 10px 0;
+	padding: 15px 0;
+	border-color: #525252;
+	border-width: 1px;
+	border-style: solid none;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.donate-wrap .button,
+.donate-wrap a {
+	margin: 0 10px;
+}

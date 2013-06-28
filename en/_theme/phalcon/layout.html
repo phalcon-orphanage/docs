@@ -8,6 +8,11 @@
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
     <div class="related">
       <ul>
         {%- for rellink in rellinks %}
@@ -51,16 +56,15 @@
           {%- block sidebarlogo %}
           {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+              <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/>
             </a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
             <div id="searchbox" style="">
-              <h3>Search</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="text" name="q" size="18">
+                  <input type="search" name="q" size="15" placeholder="Search">
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>
@@ -115,8 +119,7 @@
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
@@ -179,11 +182,10 @@
                   </a>
                   <div class="nav-collapse collapse pull-right">
                       <ul class="nav">
-                          <li><a href="http://phalconphp.com/">HOME</a></li>
+                          <li><a href="http://phalconphp.com/">Home</a></li>
                           <li><a href="http://phalconphp.com/download">Download</a></li>
                           <li><a href="http://phalconphp.com/documentation">Documentation</a></li>
                           <li><a href="http://phalconphp.com/support">Support</a></li>
-                          <li><a href="http://phalconphp.com/donate">Donate</a></li>
                           <li><a href="http://store.phalconphp.com">Store</a></li>
                           <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
                           <li><a href="http://blog.phalconphp.com/">Blog</a></li>
@@ -249,6 +251,16 @@
              {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
           {%- endif %}
           </p>
+
+          <div class="donate-wrap">
+            Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+            or
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+              <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+            </form>
+          </div>
 
         </div>
       {%- endblock %}

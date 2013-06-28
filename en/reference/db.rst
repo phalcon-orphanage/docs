@@ -224,41 +224,19 @@ Binding Parameters
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
-injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 
     <?php
 
     // Binding with numeric placeholders
-    $sql    = "SELECT * FROM robots WHERE name = ?1 ORDER BY name";
-    $sql    = $connection->bindParams($sql, array(1 => "Wall-E"));
-    $result = $connection->query($sql);
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array("Wall-E"));
 
     // Binding with named placeholders
-    $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name:, :year:)";
-    $sql     = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
-    $success = $connection->query($sql);
-
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
-are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
-data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
-
-This function takes into account the connection charset, so its recommended to define the correct charset
-in the connection parameters or in your database server configuration, as a wrong
-charset will produce undesired effects when storing or retrieving data.
-
-Also, you can pass your parameterers directly to the execute/query methods. In this case
-bound parameters are directly passed to PDO:
-
-.. code-block:: php
-
-    <?php
-
-    // Binding with PDO placeholders
-    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
-
+    $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
+    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
 Inserting/Updating/Deleting Rows
 --------------------------------
