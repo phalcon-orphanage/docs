@@ -30,8 +30,8 @@ Specify it in the routes as a separate parameter in the route's paths:
     $router->add(
         '/admin/users/my-profile',
         array(
-            'namespace"  => 'Store\Admin',
-            'controller" => 'Users',
+            'namespace'  => 'Store\Admin',
+            'controller' => 'Users',
             'action"     => 'profile',
         )
     );
@@ -45,9 +45,9 @@ Passing it as part of the route:
     $router->add(
         '/:namespace/admin/users/my-profile',
         array(
-            'namespace"  => 1,
-            'controller" => 'Users',
-            'action"     => 'profile',
+            'namespace'  => 1,
+            'controller' => 'Users',
+            'action'     => 'profile',
         )
     );
 

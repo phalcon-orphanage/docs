@@ -627,10 +627,14 @@ input[type="submit"] {
 	color: #fff;
 }
 
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
 .highlight .nx, .highlight .na, .highlight .nb,
 .highlight .c, .highlight .nt {
 	color: #111111;
+}
+
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
+.highlight .se {
+	color: #f06715;
 }
 
 .highlight .k {
