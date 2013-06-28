@@ -184,7 +184,7 @@ Consider the following example:
         }
     });
 
-The previous auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
 
 .. code-block:: php
