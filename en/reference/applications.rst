@@ -299,7 +299,7 @@ module:
             },
             'backend' => function($di) use ($view) {
                 $di->setShared('view', function() use ($view) {
-                    $view->setViewsDir('../apps/frontend/views/');
+                    $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
             }
