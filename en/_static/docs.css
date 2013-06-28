@@ -41,19 +41,20 @@ a {
 h2 {
 	font-style: bold;
 	letter-spacing: normal;
-	color: #333333;
-	font-size: 20px;
+	font-size: 24px;
 	line-height: 24px;
 	font-weight: 500;
 	margin: 25px 0 0;
 	margin-bottom: 10px;
+	border-bottom: 1px solid #c0c0c0;
 }
 
 h3 {
-	font-size: 18px;
+	font-size: 22px;
 	font-style: normal;
 	margin: 15px 0 10px;
 	font-weight: normal;
+	border-bottom: 1px solid #c0c0c0;
 }
 
 h4 {
