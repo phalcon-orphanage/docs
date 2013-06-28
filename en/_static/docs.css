@@ -29,6 +29,10 @@ a {
 	color: #118f9e;
 }
 
+li {
+	line-height: 24px;
+}
+
 #nav-main {
 	background-color: #2C2C2C;
 	background-image: -moz-linear-gradient(center top , #333333, #222222);
@@ -440,11 +444,10 @@ em {
 }
 
 div#footer {
-	padding: 50px 10px;
-	/*background: #222222;*/
-	font-size: 12px;
+	font-size: 13px;
 	text-align: center;
-	/*color: #fafafa;*/
+	border-top: 1px solid #525252;
+	margin-top: 20px;
 }
 
 div#footer p {
