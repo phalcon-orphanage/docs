@@ -11,7 +11,7 @@ Prepares a message to be used in a Syslog backend
 Methods
 ---------
 
-public  **format** (*string* $message, *int* $type, *int* $timestamp)
+public *array*  **format** (*string* $message, *int* $type, *int* $timestamp)
 
 Applies a format to a message before sent it to the internal log
 

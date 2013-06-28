@@ -14,6 +14,7 @@ API Indice
    Phalcon_Annotations_Adapter_Apc
    Phalcon_Annotations_Adapter_Files
    Phalcon_Annotations_Adapter_Memory
+   Phalcon_Annotations_Adapter_Xcache
    Phalcon_Annotations_Annotation
    Phalcon_Annotations_Collection
    Phalcon_Annotations_Exception
@@ -40,9 +41,11 @@ API Indice
    Phalcon_Cache_Backend_Memcache
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
+   Phalcon_Cache_Backend_Xcache
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
+   Phalcon_Cache_Frontend_Igbinary
    Phalcon_Cache_Frontend_Json
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
@@ -160,6 +163,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations
    Phalcon_Mvc_Model_MetaData_Strategy_Introspection
+   Phalcon_Mvc_Model_MetaData_Xcache
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang

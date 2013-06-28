@@ -73,9 +73,9 @@ Returns the validators registered for the element
 
 
 
-public *array*  **prepareAttributes** ([*array* $attributes])
+public *array*  **prepareAttributes** ([*array* $attributes], [*boolean* $useChecked])
 
-Returns an array of attributes for  prepared attributes for Phalcon\\Tag helpers according to the element's parameters
+Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element's parameters
 
 
 
@@ -171,7 +171,7 @@ Returns the messages that belongs to the element The element needs to be attache
 
 public *boolean*  **hasMessages** ()
 
-Returns the messages that belongs to the element The element needs to be attached to a form
+Checks whether there is messages attached to the element
 
 
 
@@ -184,6 +184,12 @@ Sets the validation messages related to the element
 public *Phalcon\\Forms\\ElementInterface*  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
 Appends a message to the internal message list
+
+
+
+public :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`  **clear** ()
+
+Clears every element in the form to its default value
 
 
 

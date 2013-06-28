@@ -95,7 +95,7 @@ Gets variable from $_SERVER superglobal
 
 public *boolean*  **has** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_REQUEST superglobal has certain index
 
 
 
@@ -107,7 +107,7 @@ Checks whether $_POST superglobal has certain index
 
 public *boolean*  **hasQuery** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_GET superglobal has certain index
 
 
 
@@ -255,9 +255,9 @@ Gets attached files as Phalcon\\Http\\Request\\File instances
 
 
 
-public  **getHeaders** ()
+public *array*  **getHeaders** ()
 
-Returns the headers in the
+Returns the available headers in the request
 
 
 

@@ -21,7 +21,7 @@ Sets if files the exception's backtrace must be showed
 
 public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowFiles** (*boolean* $showFiles)
 
-Sets if files must be opened to show where the exception happened
+Set if files part of the backtrace must be shown in the output
 
 
 
