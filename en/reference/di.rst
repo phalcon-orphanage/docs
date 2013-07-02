@@ -16,7 +16,7 @@ connection parameters or the type of database system because the component only 
 
         /**
          * The instantiation of the connection is hardcoded inside
-         * the component so is difficult replace it externally
+         * the component, therefore it's difficult replace it externally
          * or change its behavior
          */
         public function someDbTask()

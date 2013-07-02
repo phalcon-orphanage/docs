@@ -144,6 +144,24 @@ The function "url" is available in volt to generate URLs using this component:
 
     <a href="{{ url("posts/edit/1002") }}">Edit</a>
 
+Static vs. Dynamic Uris
+-----------------------
+This component allow you to set up a different base uri for static resources in the application:
+
+.. code-block:: php
+
+    <?php
+
+    $url = new Phalcon\Mvc\Url();
+
+    //Dynamic URIs are
+    $url->setBaseUri('/');
+
+    //Static resources go through a CDN
+    $url->setBaseUri('  http://static.mywebsite.com/');
+
+:doc:`Phalcon\\Tag <tags>` will request static URIs using this component
+
 Implementing your own Url Generator
 -----------------------------------
 The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL

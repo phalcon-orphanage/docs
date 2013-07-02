@@ -180,20 +180,16 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
     <?php
 
-    $robot = Robots::findFirst(
-        array(
-            "type = 'virtual'",
-            "order" => "name DESC",
-            "limit" => 30
-        )
-    );
+    $robot = Robots::findFirst(array(
+        "type = 'virtual'",
+        "order" => "name DESC",
+        "limit" => 30
+    ));
 
-    $robots = Robots::find(
-        array(
-            "conditions" => "type = ?1",
-            "bind"       => array(1 => "virtual")
-        )
-    );
+    $robots = Robots::find(array(
+        "conditions" => "type = ?1",
+        "bind"       => array(1 => "virtual")
+    ));
 
 The available query options are:
 
@@ -417,7 +413,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "year" => Column::BIND_PARAM_INT
     );
 
-    // Query robots binding parameters with string placeholders    
+    // Query robots binding parameters with string placeholders
     $robots = Robots::find(array(
         "name = :name: AND year = :year:",
         "bind" => $parameters,
@@ -874,19 +870,23 @@ Count examples:
     // How many employees are in the Testing area?
     $rowcount = Employees::count("area = 'Testing'");
 
-    //Count employees grouping results by their area
+    // Count employees grouping results by their area
     $group = Employees::count(array("group" => "area"));
     foreach ($group as $row) {
        echo "There are ", $row->rowcount, " in ", $row->area;
     }
 
     // Count employees grouping by their area and ordering the result by count
-    $group = Employees::count(
-        array(
-            "group" => "area",
-            "order" => "rowcount"
-        )
-    );
+    $group = Employees::count(array(
+        "group" => "area",
+        "order" => "rowcount"
+    ));
+
+    // Avoid SQL injections using bound parameters
+    $group = Employees::count(array(
+        "type > ?0"
+        "bind" => array($type)
+    ));
 
 Sum examples:
 
@@ -920,6 +920,12 @@ Sum examples:
         "order"  => "sumatory DESC"
     ));
 
+    // Avoid SQL injections using bound parameters
+    $group = Employees::sum(array(
+        "conditions" => "area > ?0"
+        "bind" => array($area)
+    ));
+
 Average examples:
 
 .. code-block:: php
@@ -933,6 +939,13 @@ Average examples:
     $average = Employees::average(array(
         "column" => "salary",
         "conditions" => "area = 'Sales'"
+    ));
+
+    // Avoid SQL injections using bound parameters
+    $average = Employees::average(array(
+        "column" => "age"
+        "conditions" => "area > ?0"
+        "bind" => array($area)
     ));
 
 Max/Min examples:
@@ -962,7 +975,7 @@ representing a row in the database. These objects can be modified and saved agai
 
     <?php
 
-    //Manipulating a resultset of complete objects
+    // Manipulating a resultset of complete objects
     foreach (Robots::find() as $robot) {
         $robot->year = 2000;
         $robot->save();
@@ -1001,7 +1014,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-The hydration mode can be passed as a parameter of 'find':
+Hydration mode can also be passed as a parameter of 'find':
 
 .. code-block:: php
 
@@ -1573,7 +1586,7 @@ The idea of creating validators is make them reusable between several models. A 
 .. code-block:: php
 
     <?php
-    
+
     use Phalcon\Mvc\Model,
         Phalcon\Mvc\Model\Message;
 
@@ -1694,7 +1707,7 @@ A callback also can be used to create a conditional assigment of automatic defau
 .. code-block:: php
 
     <?php
-    
+
     use Phalcon\Mvc\Model,
         Phalcon\Db\RawValue;
 

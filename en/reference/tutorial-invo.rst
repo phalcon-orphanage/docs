@@ -442,7 +442,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
-In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also
+In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php

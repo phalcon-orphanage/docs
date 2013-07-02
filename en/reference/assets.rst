@@ -141,6 +141,10 @@ A chaineable syntax is available too:
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
+Minification
+------------
+
+
 Custom Output
 -------------
 Methods outputJs and outputCss are available to generate the necessary HTML code according to each type of resources.
