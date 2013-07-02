@@ -144,6 +144,12 @@ The function "url" is available in volt to generate URLs using this component:
 
     <a href="{{ url("posts/edit/1002") }}">Edit</a>
 
+Generate static routes:
+
+.. code-block:: html+jinja
+
+    <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
+
 Static vs. Dynamic Uris
 -----------------------
 This component allow you to set up a different base uri for static resources in the application:
@@ -158,9 +164,9 @@ This component allow you to set up a different base uri for static resources in 
     $url->setBaseUri('/');
 
     //Static resources go through a CDN
-    $url->setBaseUri('  http://static.mywebsite.com/');
+    $url->setBaseUri('http://static.mywebsite.com/');
 
-:doc:`Phalcon\\Tag <tags>` will request static URIs using this component
+:doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
 Implementing your own Url Generator
 -----------------------------------

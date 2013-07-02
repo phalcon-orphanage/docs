@@ -180,10 +180,8 @@ Now, we must set up a connection to be used by this model:
         ));
     });
 
-    $app = new \Phalcon\Mvc\Micro();
-
-    //Bind the DI to the application
-    $app->setDI($di);
+    //Create and bind the DI to the application
+    $app = new \Phalcon\Mvc\Micro($di);
 
 Retrieving Data
 ---------------
@@ -255,19 +253,22 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
             'id' => $id
         ))->getFirst();
 
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
         if ($robot == false) {
-            $response = array('status' => 'NOT-FOUND');
+            $response->setJsonContent(array('status' => 'NOT-FOUND'));
         } else {
-            $response = array(
+            $response->setJsonContent(array(
                 'status' => 'FOUND',
                 'data' => array(
                     'id' => $robot->id,
                     'name' => $robot->name
                 )
-            );
+            ));
         }
 
-        echo json_encode($response);
+        return $response;
     });
 
 Inserting Data
@@ -281,7 +282,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
     //Adds a new robot
     $app->post('/api/robots', function() use ($app) {
 
-        $robot = json_decode($app->request->getRawBody());
+        $robot = $app->request->getJsonRawBody();
 
         $phql = "INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)";
 
@@ -291,17 +292,20 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
         //Check if the insertion was successful
         if ($status->success() == true) {
 
             $robot->id = $status->getModel()->id;
 
-            $response = array('status' => 'OK', 'data' => $robot);
+            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
 
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $response->setStatusCode(500, "Internal Error");
 
             //Send errors to the client
             $errors = array();
@@ -309,12 +313,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
-
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
 Updating Data
@@ -328,7 +330,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
     //Updates robots based on primary key
     $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
 
-        $robot = json_decode($app->request->getRawBody());
+        $robot = $app->request->getJsonRawBody();
 
         $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
@@ -338,27 +340,26 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
         //Check if the insertion was successful
         if ($status->success() == true) {
-
-            $response = array('status' => 'OK');
-
+            $response->setJsonContent(array('status' => 'OK'));
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $response->setStatusCode(500, "Internal Error");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
-
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
 Deleting Data
@@ -376,26 +377,27 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
+
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
         if ($status->success() == true) {
-
-            $response = array('status' => 'OK');
-
+            $response->setJsonContent(array('status' => 'OK'));
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $response->setStatusCode(500, "Internal Error");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
 
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
 Testing our Application

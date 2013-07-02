@@ -444,19 +444,21 @@ The bidirectional relations build relationships in both models and each model de
 
 Defining relationships
 ^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne() or hasMany() define
-the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3
-parameters: local fields, referenced model, referenced fields.
+In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne(),
+hasMany() and hasManyToMany() define the relationship between one or more fields from the current model to fields in
+another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-+-----------+----------------------------+
-| Method    | Description                |
-+===========+============================+
-| hasMany   | Defines a 1-n relationship |
-+-----------+----------------------------+
-| hasOne    | Defines a 1-1 relationship |
-+-----------+----------------------------+
-| belongsTo | Defines a n-1 relationship |
-+-----------+----------------------------+
++---------------+----------------------------+
+| Method        | Description                |
++===============+============================+
+| hasMany       | Defines a 1-n relationship |
++---------------+----------------------------+
+| hasOne        | Defines a 1-1 relationship |
++---------------+----------------------------+
+| belongsTo     | Defines a n-1 relationship |
++---------------+----------------------------+
+| hasManyToMany | Defines a n-n relationship |
++---------------+----------------------------+
 
 The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
 
@@ -489,6 +491,7 @@ The following schema shows 3 tables whose relations will serve us as an example 
 * The model "Robots" has many "RobotsParts".
 * The model "Parts" has many "RobotsParts".
 * The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
+* The model "Robots" has a relation many-to-many to "Parts" through "RobotsParts"
 
 Check the EER diagram to understand better the relations:
 
@@ -555,6 +558,31 @@ The models with their relations could be implemented as follows:
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name
 of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+
+Many to many relationships require 3 models and define the attributes involved in the relationship:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasManyToMany(
+                "id",
+                "RobotsParts",
+                "robots_id", "parts_id",
+                "Parts",
+                "id"
+            );
+        }
+
+    }
 
 Taking advantage of relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

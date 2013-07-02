@@ -95,10 +95,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     <?php
 
     // Instantiate the Query
-    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars");
-
-    // Pass the DI container
-    $query->setDI($di);
+    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $di);
 
     // Execute the query returning a result if any
     $cars = $query->execute();
@@ -282,7 +279,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-Also is possibly, manually set the conditions of the JOIN:
+Also is possible set manually the conditions of the JOIN:
 
 .. code-block:: php
 
@@ -316,6 +313,26 @@ If an alias is used to rename the models in the query, those will be used to nam
         echo "Car: ", $row->c->name, "\n";
         echo "Brand: ", $row->b->name, "\n";
     }
+
+When the joined model has a many-to-many relation to the 'from' model, implicitly the
+intermediate model is added to the generated query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $result = $this->modelsManager->query($phql);
+
+Produce the following SQL in MySQL:
+
+.. code-block:: sql
+
+    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
+    INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
+    WHERE `artists`.`genre` = 'Trip-Hop'
 
 Aggregations
 ^^^^^^^^^^^^
