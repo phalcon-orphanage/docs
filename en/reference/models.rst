@@ -821,7 +821,7 @@ docblocks helping the IDE to produce a better auto-completion:
     }
 
 Virtual Foreign Keys
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
 value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
 when defining a relationship.
@@ -878,9 +878,43 @@ if that record is used on a referenced model.
 
     }
 
+Cascade/Restrict actions
+^^^^^^^^^^^^^^^^^^^^^^^^
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records
+to maintain the integrity of data:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Models;
+
+    use Phalcon\Mvc\Model
+        Phalcon\Mvc\Model\Relation;
+
+    class Robots extends Model
+    {
+
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany('id', 'Store\\Models\Parts', 'robots_id', [
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE
+                ]
+            ]);
+        }
+
+    }
+
+The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+
 Generating Calculations
 -----------------------
-Calculations are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
 
 Count examples:
