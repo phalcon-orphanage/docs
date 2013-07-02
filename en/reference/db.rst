@@ -336,7 +336,7 @@ is created:
             //Start a nested transaction
             $connection->begin();
 
-            //Execute these SQL statements in a nested transaction
+            //Execute these SQL statements into the nested transaction
             $connection->execute("DELETE `robots` WHERE `id` = 102");
             $connection->execute("DELETE `robots` WHERE `id` = 103");
 
@@ -348,7 +348,7 @@ is created:
             $connection->rollback();
         }
 
-        //Execute more SQL statements
+        //Continue, executing more SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 104");
 
         //Commit if everything goes well
@@ -414,8 +414,9 @@ Stop SQL operations are very useful if for example you want to implement some la
 
     $eventsManager->attach('db:beforeQuery', function($event, $connection) {
 
-        if (preg_match('/DROP /i', $connection->getSQLStatement())) {
-            // DROP operations aren't allowed in the application,
+        //Check for malicious words in SQL statements
+        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
+            // DROP/ALTER operations aren't allowed in the application,
             // this must be a SQL injection!
             return false;
         }
@@ -519,7 +520,8 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
+    use Phalcon\Logger,
+        Phalcon\Events\Manager as EventsManager,
         Phalcon\Logger\Adapter\File as Logger;
 
     $eventsManager = new EventsManager();
@@ -529,7 +531,7 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
     //Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
@@ -725,7 +727,7 @@ is limited by these constraints.
 
     <?php
 
-    use \Phalcon\Db\Column as Column;
+    use Phalcon\Db\Column as Column;
 
     // Adding a new column
     $connection->addColumn("robots", null,

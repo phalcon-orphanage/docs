@@ -512,6 +512,14 @@ Whether you're using PHP 5.3 or 5.4, you can create arrays by enclosing a list o
     {# Hash-style array #}
     {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 
+Curly braces also can be used to define arrays or hashes:
+
+.. code-block:: html+jinja
+
+    {% set myArray = {'Apple', 'Banana', 'Orange'} %}
+    {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
+
+
 Math
 ^^^^
 You may make calculations in templates using the following operators:
