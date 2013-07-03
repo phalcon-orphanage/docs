@@ -342,6 +342,6 @@ You can override this method or print the resources manually in the following wa
         echo \Phalcon\Tag::javascriptInclude($resource->getPath());
     }
 
-.. YUI_ : http://yui.github.io/yuicompressor/
-.. Closure_ : https://developers.google.com/closure/compiler/?hl=fr
-.. Sass_ : http://sass-lang.com/
+.. _YUI : http://yui.github.io/yuicompressor/
+.. _Closure : https://developers.google.com/closure/compiler/?hl=fr
+.. _Sass : http://sass-lang.com/

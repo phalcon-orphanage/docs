@@ -32,7 +32,7 @@ blockquote {display: block; text-align: center; padding: 15px 0; margin: 15px 0;
 h1, .h1 {font-size: 36px; line-height: 38px; font-weight: normal; margin: 15px 0 10px; padding: 0;}
 h2, .h2 {font-size: 30px; line-height: 32px; font-weight: normal; margin: 10px 0 5px; padding: 0 0 5px; position: relative;}
 h2:after, .h2:after {
-    content: ''; display: block; height: 1px; width: 100%; border-color:#c0c0c0; border-style: solid none; border-width: 1px; position: absolute; bottom: 0; left: 0;
+    content: ''; display: block; height: 1px; width: 100%; position: absolute; bottom: 0; left: 0;
 }
 
 h3, .h3 {font-size: 24px; line-height: 24px; font-weight: normal; margin: 5px 0 3px;}
@@ -49,7 +49,7 @@ h2 + h3 {margin-top: 20px;}
 .with-hash {position: relative; padding-right: 20px; }
 .hash-link { text-decoration: none; font-size: 16px; position: absolute; top:0; right: 5px;}
 
-ul {margin: 15px 0; padding: 0 0 0 26px;}
+ul {padding: 0 0 0 26px;}
 
 ul.unstyled {list-style: none; padding: 0;}
 

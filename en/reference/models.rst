@@ -901,11 +901,11 @@ to maintain the integrity of data:
 
         public function initialize()
         {
-            $this->hasMany('id', 'Store\\Models\Parts', 'robots_id', [
-                'foreignKey' => [
+            $this->hasMany('id', 'Store\\Models\Parts', 'robots_id', array(
+                'foreignKey' => array(
                     'action' => Relation::ACTION_CASCADE
-                ]
-            ]);
+                )
+            ));
         }
 
     }
@@ -1148,7 +1148,7 @@ an insecure array without worrying about possible SQL injections:
     if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
     form.
 
-You can set an additional parameter to save to set a whitelist of fields that only must taken into account when doing
+You can set an additional parameter in 'save' to set a whitelist of fields that only must taken into account when doing
 the mass assignment:
 
 .. code-block:: php
@@ -1161,7 +1161,7 @@ the mass assignment:
 Create/Update with Confidence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. f we want to be absolutely
+could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
 sure that a record is created or updated, we can change the save() call with create() or update():
 
 .. code-block:: php
@@ -1610,7 +1610,11 @@ In addition to the built-in validatiors, you can create your own validators:
             $value = $model->$field;
 
             if ($min <= $value && $value <= $max) {
-                $this->appendMessage("The field doesn't have the right range of values", $field, "MaxMinValidator");
+                $this->appendMessage(
+                    "The field doesn't have the right range of values",
+                    $field,
+                    "MaxMinValidator"
+                );
                 return false;
             }
             return true;
@@ -2081,7 +2085,10 @@ that is performed operations over a model:
                     $userName = // ... get the current user from session
 
                     //Store in a log the username - event type and primary key
-                    file_put_contents('logs/blamable-log.txt', $userName.' '.$eventType.' '.$model->id);
+                    file_put_contents(
+                        'logs/blamable-log.txt',
+                        $userName . ' ' . $eventType . ' ' . $model->id
+                    );
 
                     break;
 
@@ -3114,17 +3121,19 @@ According to how you use the ORM you can disable that you aren't using. These op
 
 The available options are:
 
-+---------------------+----------------------------------------------------------------------------------+
-| Option              | Description                                                                      |
-+=====================+==================================================================================+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models    |
-+---------------------+----------------------------------------------------------------------------------+
-| columnRenaming      | Enables/Disables the column renaming                                             |
-+---------------------+----------------------------------------------------------------------------------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  |
-+---------------------+----------------------------------------------------------------------------------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        |
-+---------------------+----------------------------------------------------------------------------------+
++---------------------+----------------------------------------------------------------------------------+---------+
+| Option              | Description                                                                      | Default |
++=====================+==================================================================================+=========+
+| events              | Enables/Disables callbacks, hooks and event notifications from all the models    | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
+| columnRenaming      | Enables/Disables the column renaming                                             | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
+| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
+| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
+| phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
 
 Stand-Alone component
 ---------------------
