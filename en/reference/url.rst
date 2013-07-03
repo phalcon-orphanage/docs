@@ -164,7 +164,7 @@ This component allow you to set up a different base uri for static resources in 
     $url->setBaseUri('/');
 
     //Static resources go through a CDN
-    $url->setBaseUri('http://static.mywebsite.com/');
+    $url->setStaticBaseUri('http://static.mywebsite.com/');
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
