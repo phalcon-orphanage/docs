@@ -198,19 +198,19 @@ Returns the insert id for the auto_increment/serial column inserted in the laste
 
 
 
-public *boolean*  **begin** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **begin** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Starts a transaction in the connection
 
 
 
-public *boolean*  **rollback** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **rollback** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Rollbacks the active transaction in the connection
 
 
 
-public *boolean*  **commit** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **commit** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Commits the active transaction in the connection
 

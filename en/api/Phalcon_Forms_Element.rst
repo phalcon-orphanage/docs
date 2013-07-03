@@ -171,7 +171,7 @@ Returns the messages that belongs to the element The element needs to be attache
 
 public *boolean*  **hasMessages** ()
 
-Checks whether there is messages attached to the element
+Checks whether there are messages attached to the element
 
 
 

@@ -82,7 +82,7 @@ Serializes data before storing them
 
 public *mixed*  **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrival
+Unserializes data after retrieval
 
 
 

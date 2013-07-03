@@ -191,19 +191,19 @@ Returns the insert id for the auto_increment/serial column inserted in the laste
 
 
 
-public *boolean*  **begin** ()
+public *boolean*  **begin** ([*boolean* $nesting])
 
 Starts a transaction in the connection
 
 
 
-public *boolean*  **rollback** ()
+public *boolean*  **rollback** ([*boolean* $nesting])
 
 Rollbacks the active transaction in the connection
 
 
 
-public *boolean*  **commit** ()
+public *boolean*  **commit** ([*boolean* $nesting])
 
 Commits the active transaction in the connection
 

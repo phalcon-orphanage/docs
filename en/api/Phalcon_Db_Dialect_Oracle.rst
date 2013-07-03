@@ -171,6 +171,12 @@ Generates the SQL to describe the table creation options
 
 
 
+public *string*  **getSqlTable** (*array* $table, [*string* $escapeChar])
+
+Transform an intermediate representation for a schema/table into a database system valid expression
+
+
+
 public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
 Generates the SQL for LIMIT clause 
@@ -247,12 +253,6 @@ Gets a list of columns with escaped identifiers
 public *string*  **getSqlExpression** (*array* $expression, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Transforms an intermediate representation for a expression into a database system valid expression
-
-
-
-public *string*  **getSqlTable** (*array* $table, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
-
-Transform an intermediate representation for a schema/table into a database system valid expression
 
 
 

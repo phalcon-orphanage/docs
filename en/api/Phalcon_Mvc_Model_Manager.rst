@@ -232,6 +232,12 @@ Checks whether a model has a hasOne relation with another model
 
 
 
+public *boolean*  **existsHasManyToMany** (*string* $modelName, *string* $modelRelation)
+
+Checks whether a model has a hasManyToMany relation with another model
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **getRelationByAlias** (*string* $modelName, *string* $alias)
 
 Returns a relation by its alias
@@ -302,6 +308,12 @@ Gets hasMany relations defined on a model
 public *array*  **getHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Gets hasOne relations defined on a model
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getHasManyToMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+
+Gets hasManyToMany relations defined on a model
 
 
 

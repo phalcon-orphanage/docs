@@ -206,6 +206,12 @@ Compiles a 'do' statement returning PHP code
 
 
 
+public *string*  **compileReturn** (*array* $statement)
+
+Compiles a 'return' statement returning PHP code
+
+
+
 public *string*  **compileAutoEscape** (*array* $statement, *boolean* $extendsMode)
 
 Compiles a 'autoescape' statement returning PHP code

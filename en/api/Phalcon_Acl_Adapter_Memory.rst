@@ -66,7 +66,7 @@ Methods
 
 public  **__construct** ()
 
-
+Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 

@@ -59,6 +59,12 @@ Extracts a slice from a string/array/traversable object value
 
 
 
+public *array*  **sort** (*array* $value)
+
+Sorts an array
+
+
+
 public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
