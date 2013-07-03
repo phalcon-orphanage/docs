@@ -766,6 +766,39 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute(array('name' => $name, 'type' => $type));
 
+Disabling Literals
+------------------
+Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
+will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
+to potential SQL injections:
+
+.. code-block:: php
+
+    <?php
+
+    $login = 'voltron';
+    $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
+    $result = $manager->executeQuery($phql);
+
+If $login is changed to ' OR '' = ', the produced PHQL is:
+
+.. code-block:: sql
+
+    SELECT * FROM Models\Users WHERE login = '' OR '' = ''
+
+Which is always true no matter what the login stored in the database is.
+
+If literals are disallowed strings can be used as part of a PHQL statement, thus an exception
+will be thrown forcing the developer to use bound parameters. The same query can be written in a
+secure way like this:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
+    $result = $manager->executeQuery($phql, array('name' => $name));
+
 Escaping Reserved Words
 -----------------------
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
