@@ -55,8 +55,40 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
-The initialize() method is only called once during the request.
+The model Robots now maps to "the_robots" table. In addition to the above method the 'initialize' method is available.
+This method aids in setting up the model with a custom behavior i.e. a different table:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function initialize()
+        {
+            $this->setSource("the_robots");
+        }
+
+    }
+
+The initialize() method is only called once during the request, it's intended to perform initializations that apply for
+all instances of the model created within the application. If you want to perform initialization tasks for every instance
+created you can 'onConstruct':
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        public function onConstruct()
+        {
+            //...
+        }
+
+    }
 
 Models in Namespaces
 --------------------
@@ -420,11 +452,39 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
         "bindTypes" => $types
     ));
 
-Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
-"bindTypes" parameter if all of the columns are of that type.
+.. highlights::
+
+    Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
+    "bindTypes" parameter if all of the columns are of that type.
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
+
+Initializing fetched records
+----------------------------
+M ay be the case that after obtaining a record of the database is necessary to initialise the data before
+being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
+will be executed just after create the instance and assign the data to it:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+
+        public function beforeSave()
+        {
+            //Convert the array into a string
+            $this->status = join(',', $this->status);
+        }
+
+        public function afterFetch()
+        {
+            //Convert the string to an array
+            $this->status = explode(',', $this->status);
+        }
+    }
 
 Relationships between Models
 ----------------------------
@@ -674,15 +734,17 @@ Getting related records manually:
 The prefix "get" is used to find()/findFirst() related records. Depending on the type of relation it will use
 'find' or 'findFirst':
 
-+---------------------+--------------------------------------------------------------------------------------+------------------------+
-| Type                | Description                                                                          | Implicit Method        |
-+=====================+======================================================================================+========================+
-| Belongs-To          | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+--------------------------------------------------------------------------------------+------------------------+
-| Has-One             | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+--------------------------------------------------------------------------------------+------------------------+
-| Has-Many            | Returns a collection of model instances of the referenced model                      | find                   |
-+---------------------+--------------------------------------------------------------------------------------+------------------------+
++---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Type                | Description                                                                                                                | Implicit Method        |
++=====================+============================================================================================================================+========================+
+| Belongs-To          | Returns a model instance of the related record directly                                                                    | findFirst              |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-One             | Returns a model instance of the related record directly                                                                    | findFirst              |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-Many            | Returns a collection of model instances of the referenced model                                                            | find                   |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
+| Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
++---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 
 You can also use "count" prefix to return an integer denoting the count of the related records:
 
@@ -1273,9 +1335,9 @@ Saving a record and its related records in a has-many relation:
     // Save the album + its songs
     $album->save();
 
-Saving the album and the artist at the same time uses a transaction so if anything goes wrong with
-saving the related records, the parent will not be saved either. Messages are passed back to the user
-for information regarding any errors
+Saving the album and the artist at the same time implictly makes use of a transaction so if anything
+goes wrong with saving the related records, the parent will not be saved either. Messages are
+passed back to the user for information regarding any errors.
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
@@ -1390,7 +1452,7 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed beforecreating a Robot!";
+            echo "This is executed before creating a Robot!";
         }
 
     }
@@ -1427,13 +1489,16 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model,
+        Phalcon\Events\Manager as EventsManager;
+
+    class Robots extends Model
     {
 
         public function initialize()
         {
 
-            $eventsManager = new \Phalcon\Events\Manager();
+            $eventsManager = new EventsManager();
 
             //Attach an anonymous function as a listener for "model" events
             $eventsManager->attach('model', function($event, $robot) {
@@ -1452,12 +1517,18 @@ this means we can create listeners that run when an event is triggered.
 
     }
 
+In the example given above, EventsManager only acts as a bridge between an object and a listener (the anonymous function).
+Events will be fired to the listener when 'robots' are saved:
+
+.. code-block:: php
+
+    <?php
+
     $robot = new Robots();
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
 
-In the example given above the EventsManager only acts as a bridge between an object and a listener (the anonymous function).
 If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
 
 .. code-block:: php
@@ -1585,7 +1656,7 @@ the value is not included in the method then the validator will fail and return 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates a URL format                                                                                                                                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
+| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 In addition to the built-in validatiors, you can create your own validators:
@@ -2593,7 +2664,9 @@ time you use the table. This could be done caching the meta-data using any of th
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed every time a new session starts. This also requires the use of session_start() to start the session before using any models.                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Apc     | The Apc adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                            | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
+| Apc     | This adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                               | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
++---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| XCache  | This adapter uses `XCache`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\XCache <../api/Phalcon_Mvc_Model_MetaData_XCache>`   |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
@@ -3172,6 +3245,7 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     echo Robots::count();
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
+.. _XCache: http://xcache.lighttpd.net/
 .. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
 .. _date: http://php.net/manual/en/function.date.php
 .. _time: http://php.net/manual/en/function.time.php
