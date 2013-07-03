@@ -319,19 +319,21 @@ Frontend Adapters
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Adapter | Description                                                                                                                                                          | Example                                                                        |
-+=========+======================================================================================================================================================================+================================================================================+
-| Output  | Read input data from standard PHP output                                                                                                                             | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>` |
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Data    | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                           | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`     |
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Base64  | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                          | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>` |
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| Json    | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks.       | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`     |
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-| None    | It's used to cache any kind of PHP data without serializing them.                                                                                                    | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`     |
-+---------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| Adapter  | Description                                                                                                                                                          | Example                                                                            |
++==========+======================================================================================================================================================================+====================================================================================+
+| Output   | Read input data from standard PHP output                                                                                                                             | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| Data     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                           | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| Base64   | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                          | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| Json     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks.       | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| IgBinary | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using IgBinary before be stored in the backend.                         | :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| None     | It's used to cache any kind of PHP data without serializing them.                                                                                                    | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 
 Implementing your own Frontend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,6 +354,8 @@ The backend adapters available to store cache data are:
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 | Mongo     | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
+| XCache    | Stores data in XCache                          | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
++-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 
 Implementing your own Backend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -361,43 +365,65 @@ File Backend Options
 ^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content into files in the local server. The available options for this backend are:
 
-+----------+-----------------------------------------------------------+
-| Option   | Description                                               |
-+==========+===========================================================+
-| cacheDir | A writable directory on which cached files will be placed |
-+----------+-----------------------------------------------------------+
++----------+-------------------------------------------------------------+
+| Option   | Description                                                 |
++==========+=============================================================+
+| prefix   | A prefix that is automatically prepended to the cache keys  |
++----------+-------------------------------------------------------------+
+| cacheDir | A writable directory on which cached files will be placed   |
++----------+-------------------------------------------------------------+
 
 Memcached Backend Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a memcached server. The available options for this backend are:
 
-+------------+---------------------------------------------+
-| Option     | Description                                 |
-+============+=============================================+
-| host       | memcached host                              |
-+------------+---------------------------------------------+
-| port       | memcached port                              |
-+------------+---------------------------------------------+
-| persistent | create a persitent connection to memcached? |
-+------------+---------------------------------------------+
++------------+-------------------------------------------------------------+
+| Option     | Description                                                 |
++============+=============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys  |
++------------+-------------------------------------------------------------+
+| host       | memcached host                                              |
++------------+-------------------------------------------------------------+
+| port       | memcached port                                              |
++------------+-------------------------------------------------------------+
+| persistent | create a persitent connection to memcached?                 |
++------------+-------------------------------------------------------------+
 
 APC Backend Options
 ^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on Alternative PHP Cache (APC_). This cache backend does not require any additional configuration options.
+This backend will store cached content on Alternative PHP Cache (APC_). The available options for this backend are:
+
++------------+-------------------------------------------------------------+
+| Option     | Description                                                 |
++============+=============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys  |
++------------+-------------------------------------------------------------+
 
 Mongo Backend Options
 ^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a MongoDB server. The available options for this backend are:
 
-+------------+---------------------------------------------+
-| Option     | Description                                 |
-+============+=============================================+
-| server     | A MongoDB connection string                 |
-+------------+---------------------------------------------+
-| db         | Mongo database name                         |
-+------------+---------------------------------------------+
-| collection | Mongo collection in the database            |
-+------------+---------------------------------------------+
++------------+-------------------------------------------------------------+
+| Option     | Description                                                 |
++============+=============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys  |
++------------+-------------------------------------------------------------+
+| server     | A MongoDB connection string                                 |
++------------+-------------------------------------------------------------+
+| db         | Mongo database name                                         |
++------------+-------------------------------------------------------------+
+| collection | Mongo collection in the database                            |
++------------+-------------------------------------------------------------+
+
+XCache Backend Options
+^^^^^^^^^^^^^^^^^^^^^^
+This backend will store cached content on XCache (XCache_). The available options for this backend are:
+
++------------+-------------------------------------------------------------+
+| Option     | Description                                                 |
++============+=============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys  |
++------------+-------------------------------------------------------------+
 
 There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
 
@@ -407,3 +433,5 @@ There are more adapters available for this components in the `Phalcon Incubator 
 .. _APC extension: http://pecl.php.net/package/APC
 .. _MongoDb: http://mongodb.org/
 .. _Mongo: http://pecl.php.net/package/mongo
+.. _XCache: http://xcache.lighttpd.net/
+.. _XCache extension: http://pecl.php.net/package/xcache

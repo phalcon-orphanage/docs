@@ -183,6 +183,28 @@ action is executed on a controller. The use of the "__construct" method is not r
     Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
     that application logic in the initializer cannot be executed without authorization.
 
+If you want to execute some initialization logic just after build the controller object you can implement the
+method 'onConstruct':
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function onConstruct()
+        {
+            //...
+        }
+    }
+
+.. highlights::
+
+    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
+    in the controller or the user does not have access to it (according to custom control access
+    provided by developer).
+
 Injecting Services
 ------------------
 If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
