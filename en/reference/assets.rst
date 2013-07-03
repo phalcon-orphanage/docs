@@ -141,8 +141,8 @@ A chaineable syntax is available too:
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-Minification
-------------
+Minification/Filtering
+----------------------
 Phalcon\\Assets provides built-in minification of Javascript and CSS resources. The developer can create a collection of
 resources instructing the Assets Manager which ones must be filtered and which ones must be​ left as they are.
 In addition to the above, Jsmin by Douglas Crockford is part of the core extension offering minification of javascript files
@@ -225,7 +225,7 @@ Note that both built-in and custom filters can be transparently applied to colle
 Last step is decide if all the resources in the collection must be joined in a single file or serve each of them
 individually. To tell the collection that all resources must be joined you can use the method 'join':
 
-    .. code-block:: php
+.. code-block:: php
 
     <?php
 
@@ -242,8 +242,8 @@ If resources are going to be joined, we need also to define which file will be u
 and which uri will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
 
 Built-In Filters
-----------------
-Phalcon provide 2 built-in filters to minify both javascript and css respectively, their C-backend provide
+^^^^^^^^^^^^^^^^
+Phalcon provides 2 built-in filters to minify both javascript and css respectively, their C-backend provide
 the minimum overhead to perform this task:
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
@@ -255,7 +255,7 @@ the minimum overhead to perform this task:
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 
 Custom Filters
---------------
+^^^^^^^^^^^^^^
 In addition to built-in filters, a developer can create his own filters. These can take advantage of existing
 and more advanced tools like YUI_, Sass_, Closure_, etc.:
 

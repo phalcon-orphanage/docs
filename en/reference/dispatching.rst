@@ -66,17 +66,20 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
     $di->set('dispatcher', function(){
 
         //Create an event manager
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         //Attach a listener for type "dispatch"
         $eventsManager->attach("dispatch", function($event, $dispatcher) {
             //...
         });
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
 
         //Bind the eventsManager to the view component
         $dispatcher->setEventsManager($eventsManager);
@@ -206,44 +209,38 @@ When a route provides named parameters you can receive them in a controller, a v
 
 Handling Not-Found Exceptions
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception when a controller/action wasn't found.
+Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
+when the controller/action combination wasn't found:
 
 .. code-block:: php
 
     <?php
 
-    $di->setShared('dispatcher', function() {
+    use Phalcon\Dispatcher,
+        Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
 
-        //Create/Get an EventManager
-        $eventsManager = new Phalcon\Events\Manager();
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
 
         //Attach a listener
-        $eventsManager->attach("dispatch", function($event, $dispatcher, $exception) {
+        $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
-            //The controller exists but the action not
-            if ($event->getType() == 'beforeNotFoundAction') {
-                $dispatcher->forward(array(
-                    'controller' => 'index',
-                    'action' => 'show404'
-                ));
-                return false;
-            }
-
-            //Alternative way, controller or action doesn't exist
-            if ($event->getType() == 'beforeException') {
-                switch ($exception->getCode()) {
-                    case Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                        $dispatcher->forward(array(
-                            'controller' => 'index',
-                            'action' => 'show404'
-                        ));
-                        return false;
+            switch ($exception->getCode()) {
+                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    $dispatcher->forward(array(
+                        'controller' => 'index',
+                        'action' => 'show404'
+                    ));
+                    return false;
                 }
             }
         });
 
-        $dispatcher = new Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
 
         //Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
