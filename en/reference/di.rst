@@ -352,7 +352,7 @@ their behavior or any other aspect of them and that would not affect the compone
 
 Our approach
 ============
-Phalcon\\DI is a component that implements Dependency Injection and Location of services and it's itself a container for them.
+Phalcon\\DI is a component that implements Dependency Injection and Location of services and is itself a container for them.
 
 Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
 also use this component to inject dependencies and manage global instances of the different classes used in the application.
