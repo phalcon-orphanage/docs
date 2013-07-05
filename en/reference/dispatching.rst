@@ -1,12 +1,12 @@
 Dispatching Controllers
 =======================
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible of instantiate controllers and execute the required actions
-on them in an MVC application. Understand its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
+on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 The Dispatch Loop
 -----------------
 This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
-dispatcher. The controller files are read, loaded, instantiated, to then the required actions are executed. If an action forwards the flow to another
+dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another
 controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
 within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
 
