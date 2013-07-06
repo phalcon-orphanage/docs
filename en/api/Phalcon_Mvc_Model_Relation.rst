@@ -96,13 +96,13 @@ Check if records returned by getting belongs-to/has-many are implicitly cached d
 
 public *string|array*  **getIntermediateFields** ()
 
-Gets the intermediate fields for has-*-through relations
+Gets the intermediate fields for has-\*-through relations
 
 
 
 public *string*  **getIntermediateModel** ()
 
-Gets the intermediate model for has-*-through relations
+Gets the intermediate model for has-\*-through relations
 
 
 
