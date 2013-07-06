@@ -14,7 +14,7 @@ This component encapsulates all the complex operations behind instantiating ever
      class Application extends \Phalcon\Mvc\Application
      {
     
-    	/**
+    	/\**
     	 * Register the services here to make them general or register
     	 * in the ModuleDefinition to make them module-specific
     	 */
@@ -23,7 +23,7 @@ This component encapsulates all the complex operations behind instantiating ever
     
     	}
     
-    	/**
+    	/\**
     	 * This method registers all the modules in the application
     	 */
     	public function main()

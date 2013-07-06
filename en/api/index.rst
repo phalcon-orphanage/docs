@@ -246,6 +246,7 @@ API Indice
    Phalcon_Acl_RoleInterface
    Phalcon_Annotations_AdapterInterface
    Phalcon_Annotations_ReaderInterface
+   Phalcon_Assets_FilterInterface
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_CryptInterface

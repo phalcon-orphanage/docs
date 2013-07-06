@@ -141,7 +141,7 @@ Returns extra HTML attributes
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (*Phalcon\\Assets\\FilterInterface* $filter)
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (:doc:`Phalcon\\Assets\\FilterInterface <Phalcon_Assets_FilterInterface>` $filter)
 
 Adds a filter to the collection
 

@@ -149,7 +149,7 @@ Removes an element from the form
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ()
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ([*array* $fields])
 
 Clears every element in the form to its default value
 
