@@ -1,18 +1,4 @@
 
-@font-face {
-    font-family: 'Anonymous Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Anonymous Pro'), local('Anonymous Pro'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousPro.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: 'Anonymous Pro';
-    font-style: normal;
-    font-weight: bold;
-    src: local('Anonymous Pro Bold'), local('Anonymous Pro Bold'), url(http://static.phalconphp.com/fonts/AnonymousPro/AnonymousProB.ttf) format('truetype');
-}
-
 html {
     background: none;
 }
@@ -460,7 +446,7 @@ div#footer a {
 }
 
 div.highlight, blockquote {
-    font-family: 'Anonymous Pro', Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
     display: block;
     font-size: 17px;
     line-height: 18px;
@@ -652,7 +638,7 @@ blockquote {
 .header-line {
     min-width: 980px;
     height: 87px;
-    background: #5da49e url('http://new.phalconphp.ru/images/header-line.jpg') 50% 0 no-repeat;
+    background: #5da49e url('img/header-line.jpg') 50% 0 no-repeat;
     margin: 0 0 20px;
     overflow: hidden;
 }
