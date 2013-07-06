@@ -1,7 +1,7 @@
 Class **Phalcon\\Forms\\Manager**
 =================================
 
-Manages forms whithin the application. Allowing the developer to access them from any part of the application
+Manages forms within the application. Allowing the developer to access them from any part of the application
 
 
 Methods
@@ -25,7 +25,7 @@ Checks if a form is registered in the forms manager
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **set** (*string* $name, *unknown* $form)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **set** (*string* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Registers a form in the Forms Manager
 

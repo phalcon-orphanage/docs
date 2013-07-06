@@ -13,7 +13,7 @@ Resolves a constructor/call parameter
 
 
 
-protected *arguments*  **_buildParameters** ()
+protected *array*  **_buildParameters** ()
 
 Resolves an array of parameters
 

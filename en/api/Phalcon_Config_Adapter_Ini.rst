@@ -5,7 +5,7 @@ Class **Phalcon\\Config\\Adapter\\Ini**
 
 *implements* ArrayAccess
 
-Reads ini files and convert it to Phalcon\\Config objects.  Given the next configuration file:  
+Reads ini files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 
 .. code-block:: ini
 

@@ -31,6 +31,18 @@ Returns the temporal name of the uploaded file
 
 
 
+abstract public *string*  **getType** ()
+
+Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+
+
+
+abstract public *string*  **getRealType** ()
+
+Gets the real mime type of the upload file using finfo
+
+
+
 abstract public *boolean*  **moveTo** (*string* $destination)
 
 Move the temporary file to a destination

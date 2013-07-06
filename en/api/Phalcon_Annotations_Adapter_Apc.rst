@@ -5,7 +5,7 @@ Class **Phalcon\\Annotations\\Adapter\\Apc**
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Stores the parsed annotations in APC. This adapter is the suitable for production  
+Stores the parsed annotations in APC. This adapter is suitable for production  
 
 .. code-block:: php
 
@@ -18,13 +18,13 @@ Stores the parsed annotations in APC. This adapter is the suitable for productio
 Methods
 ---------
 
-public *array*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
-Reads parsed annotations from Apc
+Reads parsed annotations from APC
 
 
 
-public  **write** (*string* $key, *array* $data)
+public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
 
 Writes parsed annotations to APC
 

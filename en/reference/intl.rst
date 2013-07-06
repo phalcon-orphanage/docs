@@ -1,7 +1,7 @@
 Internationalization
 ====================
 Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
-Starting from PHP 5.4 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
+Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
 
 Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
 

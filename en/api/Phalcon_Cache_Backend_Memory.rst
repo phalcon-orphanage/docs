@@ -35,7 +35,7 @@ Returns a cached content
 
 public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APC backend and stops the frontend
+Stores cached content into the backend and stops the frontend
 
 
 
@@ -108,6 +108,12 @@ Sets the last key used in the cache
 public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last key stored by the cache
+
+
+
+public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+
+Gets the last lifetime set
 
 
 

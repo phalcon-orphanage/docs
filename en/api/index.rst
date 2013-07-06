@@ -14,6 +14,7 @@ API Indice
    Phalcon_Annotations_Adapter_Apc
    Phalcon_Annotations_Adapter_Files
    Phalcon_Annotations_Adapter_Memory
+   Phalcon_Annotations_Adapter_Xcache
    Phalcon_Annotations_Annotation
    Phalcon_Annotations_Collection
    Phalcon_Annotations_Exception
@@ -21,6 +22,8 @@ API Indice
    Phalcon_Annotations_Reflection
    Phalcon_Assets_Collection
    Phalcon_Assets_Exception
+   Phalcon_Assets_Filters_Cssmin
+   Phalcon_Assets_Filters_Jsmin
    Phalcon_Assets_Manager
    Phalcon_Assets_Resource
    Phalcon_Assets_Resource_Css
@@ -38,9 +41,11 @@ API Indice
    Phalcon_Cache_Backend_Memcache
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
+   Phalcon_Cache_Backend_Xcache
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
    Phalcon_Cache_Frontend_Data
+   Phalcon_Cache_Frontend_Igbinary
    Phalcon_Cache_Frontend_Json
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
@@ -77,6 +82,7 @@ API Indice
    Phalcon_Db_RawValue
    Phalcon_Db_Reference
    Phalcon_Db_Result_Pdo
+   Phalcon_Debug
    Phalcon_Dispatcher
    Phalcon_Escaper
    Phalcon_Escaper_Exception
@@ -93,6 +99,7 @@ API Indice
    Phalcon_Forms_Element
    Phalcon_Forms_Element_Check
    Phalcon_Forms_Element_Date
+   Phalcon_Forms_Element_Email
    Phalcon_Forms_Element_File
    Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Numeric
@@ -131,6 +138,7 @@ API Indice
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Collection
+   Phalcon_Mvc_Collection_Document
    Phalcon_Mvc_Collection_Exception
    Phalcon_Mvc_Collection_Manager
    Phalcon_Mvc_Controller
@@ -155,6 +163,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations
    Phalcon_Mvc_Model_MetaData_Strategy_Introspection
+   Phalcon_Mvc_Model_MetaData_Xcache
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Lang
@@ -195,6 +204,7 @@ API Indice
    Phalcon_Mvc_View_Engine_Volt
    Phalcon_Mvc_View_Engine_Volt_Compiler
    Phalcon_Mvc_View_Exception
+   Phalcon_Mvc_View_Simple
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder

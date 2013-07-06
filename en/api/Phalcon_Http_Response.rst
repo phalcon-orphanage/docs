@@ -164,6 +164,13 @@ Redirect by HTTP to another action or URL
     $response->redirect("posts/index");
     $response->redirect("http://en.wikipedia.org", true);
     $response->redirect("http://www.example.com/new-location", true, 301);
+    
+    //Making a redirection based on a named route
+    $response->redirect(array(
+    	"for" => "index-lang",
+    	"lang" => "jp",
+    	"controller" => "index"
+    ));
 
 
 
@@ -181,7 +188,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content, [*int* $jsonOptions])
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -230,8 +237,9 @@ Prints out HTTP response to the client
 
 
 
-public  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName])
+public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
 
-...
+Sets an attached file to be sent at the end of the request
+
 
 

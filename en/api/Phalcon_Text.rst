@@ -105,13 +105,13 @@ Check if a string ends with a given string
 
 public static *string*  **lower** (*string* $str)
 
-Lowecases a string, this function make use of the mbstring extension if available
+Lowercases a string, this function makes use of the mbstring extension if available
 
 
 
 public static *string*  **upper** (*string* $str)
 
-Uppercases a string, this function make use of the mbstring extension if available
+Uppercases a string, this function makes use of the mbstring extension if available
 
 
 

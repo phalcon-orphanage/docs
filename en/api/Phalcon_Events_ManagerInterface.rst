@@ -7,7 +7,7 @@ Phalcon\\Events\\ManagerInterface initializer
 Methods
 ---------
 
-abstract public  **attach** (*string* $eventType, *object* $handler, [*unknown* $priority])
+abstract public  **attach** (*string* $eventType, *object* $handler)
 
 Attach a listener to the events manager
 
@@ -19,7 +19,7 @@ Removes all events from the EventsManager
 
 
 
-abstract public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*unknown* $cancelable])
+abstract public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
 
 Fires a event in the events manager causing that the acive listeners will be notified about it
 

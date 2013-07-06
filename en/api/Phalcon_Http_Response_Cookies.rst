@@ -33,7 +33,7 @@ Returns if the bag is automatically encrypting/decrypting cookies
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **set** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*boolean* $httpOnly])
+public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **set** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
 Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
 
@@ -51,7 +51,7 @@ Check if a cookie is defined in the bag or exists in the $_COOKIE superglobal
 
 
 
-public *boolean*  **delete** ()
+public *boolean*  **delete** (*string* $name)
 
 Deletes a cookie by its name This method does not removes cookies from the $_COOKIE superglobal
 

@@ -5,13 +5,13 @@ Class **Phalcon\\Logger\\Formatter\\Json**
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
-Formats messages using JSON format
+Formats messages using JSON encoding
 
 
 Methods
 ---------
 
-public  **format** (*string* $message, *int* $type, *int* $timestamp)
+public *string*  **format** (*string* $message, *int* $type, *int* $timestamp)
 
 Applies a format to a message before sent it to the internal log
 

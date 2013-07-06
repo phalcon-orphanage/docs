@@ -260,6 +260,11 @@ more easily understood. For example, you might have a view that looks like this:
 
     <?php $this->partial("shared/footer") ?>
 
+Method partial() does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+
+.. code-block:: html+php
+
+    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
 Transfer values from the controller to views
 --------------------------------------------

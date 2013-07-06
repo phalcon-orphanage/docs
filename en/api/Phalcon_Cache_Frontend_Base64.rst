@@ -74,15 +74,15 @@ Stops output frontend
 
 
 
-public  **beforeStore** (*mixed* $data)
+public *string*  **beforeStore** (*mixed* $data)
 
-Serializes data before storing it
+Serializes data before storing them
 
 
 
-public  **afterRetrieve** (*mixed* $data)
+public *mixed*  **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieving it
+Unserializes data after retrieval
 
 
 

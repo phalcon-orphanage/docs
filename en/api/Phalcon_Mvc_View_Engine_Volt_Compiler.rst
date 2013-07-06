@@ -10,6 +10,7 @@ This class reads and compiles Volt templates into PHP plain code
     <?php
 
     $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    
     $compiler->compile('views/partials/header.volt');
     
     require $compiler->getCompiledTemplatePath();
@@ -25,18 +26,6 @@ public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInt
 
 
 
-public  **setOptions** (*array* $options)
-
-Sets the compiler options
-
-
-
-public *array*  **getOptions** ()
-
-Returns the compiler options
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the dependency injector
@@ -46,6 +35,48 @@ Sets the dependency injector
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
 Returns the internal dependency injector
+
+
+
+public  **setOptions** (*array* $options)
+
+Sets the compiler options
+
+
+
+public  **setOption** (*string* $option, *string* $value)
+
+Sets a single compiler option
+
+
+
+public *string*  **getOption** (*string* $option)
+
+Returns a compiler's option
+
+
+
+public *array*  **getOptions** ()
+
+Returns the compiler options
+
+
+
+public *mixed*  **fireExtensionEvent** (*string* $name, [*array* $arguments])
+
+Fires an event to registered extensions
+
+
+
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addExtension** (*object* $extension)
+
+Registers a Volt's extension
+
+
+
+public *array*  **getExtensions** ()
+
+Returns the list of extensions registered in Volt
 
 
 
@@ -115,9 +146,10 @@ Resolves an expression node in an AST volt tree
 
 
 
-protected  **_statementListOrExtends** ()
+protected *string|array*  **_statementListOrExtends** ()
 
-...
+Compiles a block of statements
+
 
 
 public *string*  **compileForeach** (*array* $statement, [*boolean* $extendsMode])
@@ -132,46 +164,70 @@ Generates a 'forelse' PHP code
 
 
 
-public  **compileIf** (*unknown* $statement, [*unknown* $extendsMode])
+public *string*  **compileIf** (*array* $statement, [*boolean* $extendsMode])
 
-...
-
-
-public  **compileElseIf** (*unknown* $statement)
-
-...
-
-
-public  **compileCache** (*unknown* $statement, [*unknown* $extendsMode])
-
-...
-
-
-public  **compileEcho** (*unknown* $statement)
-
-...
-
-
-public  **compileInclude** (*unknown* $statement)
-
-...
-
-
-public  **compileSet** (*unknown* $statement)
+Compiles a 'if' statement returning PHP code
 
 
 
+public *string*  **compileElseIf** (*array* $statement)
 
-
-public  **compileDo** (*unknown* $statement)
-
-
+Compiles a 'elseif' statement returning PHP code
 
 
 
-public  **compileAutoEscape** (*unknown* $statement, *unknown* $extendsMode)
+public *string*  **compileCache** (*array* $statement, [*boolean* $extendsMode])
 
-...
+Compiles a 'cache' statement returning PHP code
+
+
+
+public *string*  **compileEcho** (*array* $statement)
+
+Compiles a '{{' '}}' statement returning PHP code
+
+
+
+public *string*  **compileInclude** (*array* $statement)
+
+Compiles a 'include' statement returning PHP code
+
+
+
+public *string*  **compileSet** (*array* $statement)
+
+Compiles a 'set' statement returning PHP code
+
+
+
+public *string*  **compileDo** (*array* $statement)
+
+Compiles a 'do' statement returning PHP code
+
+
+
+public *string*  **compileReturn** (*array* $statement)
+
+Compiles a 'return' statement returning PHP code
+
+
+
+public *string*  **compileAutoEscape** (*array* $statement, *boolean* $extendsMode)
+
+Compiles a 'autoescape' statement returning PHP code
+
+
+
+public *string*  **compileMacro** (*array* $statement, *boolean* $extendsMode)
+
+Compiles macros
+
+
+
+public *string*  **compileCall** ()
+
+Compiles calls to macros
+
 
 
 protected *string*  **_statementList** ()
@@ -228,7 +284,7 @@ Compiles a template into a file applying the compiler options This method does n
 
 public *string*  **getTemplatePath** ()
 
-Returns the path that is currently beign compiled
+Returns the path that is currently being compiled
 
 
 

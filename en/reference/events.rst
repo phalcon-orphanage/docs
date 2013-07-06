@@ -107,7 +107,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         protected $_logger;
 
         /**
-         * Creates the profiler and starts the logger
+         * Creates the profiler and starts the logging
          */
         public function __construct()
         {
@@ -116,7 +116,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         }
 
         /**
-         * This executed if the event triggered is 'beforeQuery'
+         * This is executed if the event triggered is 'beforeQuery'
          */
         public function beforeQuery($event, $connection)
         {
@@ -124,7 +124,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         }
 
         /**
-         * This executed if the event triggered is 'afterQuery'
+         * This is executed if the event triggered is 'afterQuery'
          */
         public function afterQuery($event, $connection)
         {
