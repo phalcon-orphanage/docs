@@ -124,7 +124,7 @@ this class initializes and executes all the necessary to make the application ru
 
 Dependency Injection
 --------------------
-Look at the second line of the code block above, the variable $application is receiving another variable $di.
+Look at the first line of the code block above, the variable $app is receiving another variable $di in its constructor.
 What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
 to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
 dependency injection, instantiating all components, as they are needed by the application.
@@ -442,7 +442,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
 
 Providing an ACL list
 ^^^^^^^^^^^^^^^^^^^^^
-In the previous example we have obtained the ACL using the method $this->_getAcl(). This method is also
+In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php

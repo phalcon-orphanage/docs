@@ -50,7 +50,7 @@ Returns the internal event manager
 
 public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*array* $extensions)
 
-Sets an array of extensions that the Loader must check together with the path
+Sets an array of extensions that the loader must try in each attempt to locate the file
 
 
 

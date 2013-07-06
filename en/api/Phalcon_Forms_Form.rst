@@ -5,7 +5,7 @@ Class **Phalcon\\Forms\\Form**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Countable, Iterator, Traversable
 
-This component allows to build forms
+This component allows to build forms using an object-oriented interface
 
 
 Methods
@@ -29,7 +29,7 @@ Returns the form's action
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOption** (*string* $option, *mixed* $value)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the form
 
@@ -127,13 +127,13 @@ Generate the label of a element added to the form including HTML
 
 public *string*  **getLabel** (*string* $name)
 
-Returns the label
+Returns a label for an element
 
 
 
 public *mixed*  **getValue** (*string* $name)
 
-Gets a value from the the internal related entity or from the default value
+Gets a value from the internal related entity or from the default value
 
 
 
@@ -146,6 +146,12 @@ Check if the form contains an element
 public *boolean*  **remove** (*string* $name)
 
 Removes an element from the form
+
+
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ()
+
+Clears every element in the form to its default value
 
 
 

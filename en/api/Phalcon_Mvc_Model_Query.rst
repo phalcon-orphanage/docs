@@ -38,7 +38,7 @@ Constants
 Methods
 ---------
 
-public  **__construct** ([*string* $phql])
+public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -58,7 +58,7 @@ Returns the dependency injection container
 
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setUniqueRow** (*boolean* $uniqueRow)
 
-Tells to the query if only the first row in the resultset must be resturned
+Tells to the query if only the first row in the resultset must be returned
 
 
 
@@ -116,9 +116,21 @@ Resolves a JOIN type
 
 
 
+protected *array*  **_getSingleJoin** ()
+
+Resolves joins involving has-one/belongs-to/has-many relations
+
+
+
+protected *array*  **_getMultiJoin** ()
+
+Resolves joins involving many-to-many relations
+
+
+
 protected *array*  **_getJoins** ()
 
-Resolves all the JOINS in a SELECT statement
+Processes the JOINs in the query returning an internal representation for the database dialect
 
 
 

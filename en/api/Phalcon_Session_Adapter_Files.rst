@@ -78,7 +78,7 @@ Sets a session variable in an application context
 
 
 
-public  **has** (*string* $index) inherited from Phalcon\\Session\\Adapter
+public *boolean*  **has** (*string* $index) inherited from Phalcon\\Session\\Adapter
 
 Check whether a session variable is set in an application context 
 

@@ -5,7 +5,7 @@ Class **Phalcon\\Cache\\Backend\\Apc**
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
-Allows to cache output fragments, PHP data and raw data using a memcache backend  
+Allows to cache output fragments, PHP data and raw data using an APC backend  
 
 .. code-block:: php
 
@@ -112,6 +112,12 @@ Sets the last key used in the cache
 public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last key stored by the cache
+
+
+
+public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+
+Gets the last lifetime set
 
 
 

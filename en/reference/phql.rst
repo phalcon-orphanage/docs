@@ -15,7 +15,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL only allows one SQL statement to be executed per call preventing injections
 * PHQL ignores all SQL comments which are often used in SQL injections
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high-level abstraction allowing you to handle models as tables and class attributes as fields
+* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
 Usage Example
 -------------
@@ -95,10 +95,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     <?php
 
     // Instantiate the Query
-    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars");
-
-    // Pass the DI container
-    $query->setDI($di);
+    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $di);
 
     // Execute the query returning a result if any
     $cars = $query->execute();
@@ -282,7 +279,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-Also is possibly, manually set the conditions of the JOIN:
+Also is possible set manually the conditions of the JOIN:
 
 .. code-block:: php
 
@@ -316,6 +313,26 @@ If an alias is used to rename the models in the query, those will be used to nam
         echo "Car: ", $row->c->name, "\n";
         echo "Brand: ", $row->b->name, "\n";
     }
+
+When the joined model has a many-to-many relation to the 'from' model, implicitly the
+intermediate model is added to the generated query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $result = $this->modelsManager->query($phql);
+
+Produce the following SQL in MySQL:
+
+.. code-block:: sql
+
+    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
+    INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
+    WHERE `artists`.`genre` = 'Trip-Hop'
 
 Aggregations
 ^^^^^^^^^^^^
@@ -749,6 +766,39 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute(array('name' => $name, 'type' => $type));
 
+Disabling Literals
+------------------
+Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
+will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
+to potential SQL injections:
+
+.. code-block:: php
+
+    <?php
+
+    $login = 'voltron';
+    $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
+    $result = $manager->executeQuery($phql);
+
+If $login is changed to ' OR '' = ', the produced PHQL is:
+
+.. code-block:: sql
+
+    SELECT * FROM Models\Users WHERE login = '' OR '' = ''
+
+Which is always true no matter what the login stored in the database is.
+
+If literals are disallowed strings can be used as part of a PHQL statement, thus an exception
+will be thrown forcing the developer to use bound parameters. The same query can be written in a
+secure way like this:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
+    $result = $manager->executeQuery($phql, array('name' => $name));
+
 Escaping Reserved Words
 -----------------------
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
@@ -835,8 +885,9 @@ Troubleshooting
 ---------------
 Some things to keep in mind when using PHQL:
 
-* Classes are case-sensitive, if a class is not defined as it was defined this could lead to an unexpected behavior.
-* The correct charset must be defined in the connection to bind parameters with success.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
+* Correct charset must be defined in the connection to bind parameters with success
 * Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings
+* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

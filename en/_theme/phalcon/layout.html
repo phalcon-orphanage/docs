@@ -8,6 +8,11 @@
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
     <div class="related">
       <ul>
         {%- for rellink in rellinks %}
@@ -51,16 +56,15 @@
           {%- block sidebarlogo %}
           {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+              <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/> PHALCON
             </a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
             <div id="searchbox" style="">
-              <h3>Search</h3>
                 <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="text" name="q" size="18">
+                  <input type="search" name="q" size="15" placeholder="Search">
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>
@@ -76,21 +80,18 @@
           {%- block sidebarrel %}
           {%- if prev %}
             <h4>{{ _('Previous topic') }}</h4>
-            <p class="topless"><a href="{{ prev.link|e }}"
-                                  title="{{ _('previous chapter') }}">&lt; {{ prev.title }}</a></p>
+            <p class="topless"><a href="{{ prev.link|e }}" title="{{ _('previous chapter') }}">&lt; {{ prev.title }}</a></p>
           {%- endif %}
           {%- if next %}
             <h4>{{ _('Next topic') }}</h4>
-            <p class="topless"><a href="{{ next.link|e }}"
-                                  title="{{ _('next chapter') }}">{{ next.title }} &gt;</a></p>
+            <p class="topless"><a href="{{ next.link|e }}" title="{{ _('next chapter') }}">{{ next.title }} &gt;</a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsourcelink %}
           {%- if show_source and has_source and sourcename %}
             <h3>{{ _('This Page') }}</h3>
             <ul class="this-page-menu">
-              <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}"
-                     rel="nofollow">{{ _('Show Source') }}</a></li>
+              <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow">{{ _('Show Source') }}</a></li>
             </ul>
           {%- endif %}
           {%- endblock %}
@@ -115,9 +116,9 @@
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" type="text/css" />-->
+    <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
     {%- if not embedded %}
@@ -170,29 +171,26 @@
   <body>
     <div id="wrapper">
 
-      <header>
-        <div class="navbar">
-          <div class="navbar-inner">
-              <div class="container-fluid">
-                  <a class="brand" href="http://phalconphp.com/index">
-                      <img src="{{ pathto('_static/img/logo-small-sp.png', 1) }}" alt="Logo">
-                  </a>
-                  <div class="nav-collapse collapse pull-right">
-                      <ul class="nav">
-                          <li><a href="http://phalconphp.com/">HOME</a></li>
-                          <li><a href="http://phalconphp.com/download">Download</a></li>
-                          <li><a href="http://phalconphp.com/documentation">Documentation</a></li>
-                          <li><a href="http://phalconphp.com/support">Support</a></li>
-                          <li><a href="http://phalconphp.com/donate">Donate</a></li>
-                          <li><a href="http://store.phalconphp.com">Store</a></li>
-                          <li><a href="https://github.com/phalcon/cphalcon">Github</a></li>
-                          <li><a href="http://blog.phalconphp.com/">Blog</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="#"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+                            allowtransparency="true" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active" target="_blank">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                    <li><a href="/support" class="header-nav-link">Support</a></li>
+                    <li><a href="/examples" class="header-nav-link">Examples</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                </ul>
+            </div>
+
         </div>
-      </header>
 
       {%- block header %}{% endblock %}
 
@@ -210,7 +208,7 @@
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
                   <div class="bodywrapper">
                 {%- endif %}{% endif %}
-                <div class="body" {% if theme_nosidebar|tobool %}style="margin: auto;"{% endif %}>
+                    <div class="body" {% if theme_nosidebar|tobool %}style="margin: auto;"{% endif %}>
                       {% block body %} {% endblock %}
                     </div>
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
@@ -250,10 +248,30 @@
           {%- endif %}
           </p>
 
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
         </div>
       {%- endblock %}
 
     </div>
-
   </body>
 </html>

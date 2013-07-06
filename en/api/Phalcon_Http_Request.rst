@@ -95,7 +95,7 @@ Gets variable from $_SERVER superglobal
 
 public *boolean*  **has** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_REQUEST superglobal has certain index
 
 
 
@@ -107,7 +107,7 @@ Checks whether $_POST superglobal has certain index
 
 public *boolean*  **hasQuery** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_GET superglobal has certain index
 
 
 
@@ -150,6 +150,12 @@ Checks whether request has been made using any secure layer
 public *string*  **getRawBody** ()
 
 Gets HTTP raw request body
+
+
+
+public *string*  **getJsonRawBody** ()
+
+Gets decoded JSON HTTP raw request body
 
 
 
@@ -246,6 +252,12 @@ Checks whether request include attached files
 public :doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` [] **getUploadedFiles** ([*boolean* $notErrored])
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
+
+
+
+public *array*  **getHeaders** ()
+
+Returns the available headers in the request
 
 
 

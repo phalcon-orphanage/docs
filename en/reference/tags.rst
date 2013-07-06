@@ -531,12 +531,12 @@ Volt syntax:
 
 .. code-block:: jinja
 
-    {# Generate #}
-    {# <canvas id="canvas1" width="300" class="cnvclass"> #}
-    {# This is my canvas #}
-    {# </canvas> #}
-    {{ tag_html("canvas", ["id":"canvas1", width":"300", "class":"cnvclass"], false, true, true) }}
+    {# Generate
+    <canvas id="canvas1" width="300" class="cnvclass">
     This is my canvas
+    </canvas> #}
+    {{ tag_html("canvas", ["id": "canvas1", width": "300", "class": "cnvclass"], false, true, true) }}
+        This is my canvas
     {{ tag_html_close("canvas") }}
 
 Creating your own helpers

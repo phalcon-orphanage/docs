@@ -48,9 +48,10 @@ Inspect the next ready job.
 
 
 
-protected  **readStatus** ()
+protected *array*  **readStatus** ()
 
-...
+Reads the latest status from the Beanstalkd server
+
 
 
 public *string|boolean Data or `false` on error.*  **read** ([*unknown* $length])

@@ -89,13 +89,13 @@ Stops output frontend
 
 
 
-public  **beforeStore** (*mixed* $data)
+public *mixed*  **beforeStore** (*mixed* $data)
 
 Prepare data to be stored
 
 
 
-public  **afterRetrieve** (*mixed* $data)
+public *mixed*  **afterRetrieve** (*mixed* $data)
 
 Prepares data to be retrieved to user
 

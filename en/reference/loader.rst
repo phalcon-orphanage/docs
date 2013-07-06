@@ -60,8 +60,8 @@ the loader try to find the classes. Remember always to add a trailing slash at t
     //Register some prefixes
     $loader->registerPrefixes(
         array(
-           "Example_Base"    => "vendor/example/base/",
-           "Example_Adapter" => "vendor/example/adapter/",
+           "Example_Base"     => "vendor/example/base/",
+           "Example_Adapter"  => "vendor/example/adapter/",
            "Example_"         => "vendor/example/",
         )
     );
@@ -151,7 +151,7 @@ are using additional extensions you could set it with the method "setExtensions"
 
 Modifying current strategies
 ----------------------------
-Additional data could be added to the existing values for strategies in the following way:
+Additional auto-loading data can be added to existing values in the following way:
 
 .. code-block:: php
 
@@ -167,6 +167,43 @@ Additional data could be added to the existing values for strategies in the foll
     );
 
 Passing "true" as second parameter will merge the current values with new ones in any strategy.
+
+Security Layer
+--------------
+Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+Consider the following example:
+
+.. code-block:: php
+
+    <?php
+
+    //Basic autoloader
+    spl_autoload_register(function($className) {
+        if (file_exists($className . '.php')) {
+            require $className . '.php';
+        }
+    });
+
+The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
+a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
+
+.. code-block:: php
+
+    <?php
+
+    //This variable is not filtered and comes from an insecure source
+    $className = '../processes/important-process';
+
+    //Check if the class exists triggering the auto-loader
+    if (class_exists($className)) {
+        //...
+    }
+
+If '../processes/important-process.php' is a valid file, an external user could execute the file without
+authorization.
+
+To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invalid character from the class name
+reducing the possibility of being attacked.
 
 Autoloading Events
 ------------------

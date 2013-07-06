@@ -55,7 +55,7 @@ Set a param by its name or numeric index
 
 
 
-abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*unknown* $defaultValue])
+abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters])
 
 Gets a param by its name or numeric index
 

@@ -67,6 +67,19 @@ Sets HTTP response body
 
 
 
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
+
+Sets HTTP response body. The parameter is automatically converted to JSON 
+
+.. code-block:: php
+
+    <?php
+
+    $response->setJsonContent(array("status" => "OK"));
+
+
+
+
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **appendContent** (*string* $content)
 
 Appends a string to the HTTP response body
@@ -85,9 +98,21 @@ Sends headers to the client
 
 
 
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendCookies** ()
+
+Sends cookies to the client
+
+
+
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **send** ()
 
 Prints out HTTP response to the client
+
+
+
+abstract public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
+
+Sets an attached file to be sent at the end of the request
 
 
 

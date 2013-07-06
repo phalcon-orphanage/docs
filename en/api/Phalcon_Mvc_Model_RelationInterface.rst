@@ -13,9 +13,15 @@ Phalcon\\Mvc\\Model\\Relation constructor
 
 
 
+abstract public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
+
+Sets the intermediate model dat for has-*-through relations
+
+
+
 abstract public *int*  **getType** ()
 
-Returns the relation's type
+Returns the relations type
 
 
 
@@ -55,15 +61,27 @@ Returns the foreign key configuration
 
 
 
-abstract public *boolean*  **hasThrough** ()
+abstract public *boolean*  **isThrough** ()
 
-Check whether the relation
+Check whether the relation is a 'many-to-many' relation or not
 
 
 
-abstract public *string*  **getThrough** ()
+abstract public *string|array*  **getIntermediateFields** ()
 
-Returns the 'through' relation if any
+Gets the intermediate fields for has-*-through relations
+
+
+
+abstract public *string*  **getIntermediateModel** ()
+
+Gets the intermediate model for has-*-through relations
+
+
+
+abstract public *string|array*  **getIntermediateReferencedFields** ()
+
+Gets the intermediate referenced fields for has-*-through relations
 
 
 

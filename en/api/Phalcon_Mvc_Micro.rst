@@ -24,6 +24,12 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 ---------
 
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+
+Phalcon\\Mvc\\Micro constructor
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container

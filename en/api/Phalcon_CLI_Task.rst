@@ -34,7 +34,7 @@ Methods
 
 final public  **__construct** ()
 
-Phalcon\\CLI\\Task constructor
+Phalcon_CLI_Task constructor
 
 
 

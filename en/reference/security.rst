@@ -61,17 +61,14 @@ its encryption will be slow. We can check if the password is correct as follows:
             $login = $this->request->getPost('login');
             $password = $this->request->getPost('password');
 
-            $user = Users::findFirst(array(
-                "login = ?0",
-                "bind" => array($login)
-            ));
+            $user = Users::findFirstByLogin($login);
             if ($user) {
                 if ($this->security->checkHash($password, $user->password)) {
                     //The password is valid
                 }
             }
 
-            //The validation failed
+            //The validation has failed
         }
 
     }

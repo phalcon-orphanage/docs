@@ -141,6 +141,12 @@ Builds generic INPUT tags
 
 
 
+protected static *string*  **_inputFieldChecked** ()
+
+Builds INPUT tags that implements the checked attribute
+
+
+
 public static *string*  **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
@@ -163,6 +169,19 @@ Builds a HTML input[type="number"] tag
     <?php
 
     echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
+
+
+
+
+public static *string*  **emailField** (*array* $parameters)
+
+Builds a HTML input[type="email"] tag 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Tag::emailField("email");
 
 
 
@@ -227,7 +246,7 @@ Builds a HTML input[type="check"] tag
 
     <?php
 
-     echo Phalcon\Tag::checkField(array("name"));
+     echo Phalcon\Tag::checkField(array("terms", "value" => "Y"));
 
 
 
@@ -240,7 +259,7 @@ Builds a HTML input[type="radio"] tag
 
     <?php
 
-     echo Phalcon\Tag::radioField(array("name"))
+     echo Phalcon\Tag::radioField(array("wheather", "value" => "hot"))
 
 Volt syntax: 
 
@@ -473,7 +492,7 @@ Volt syntax:
 
 
 
-public static *string*  **image** ([*array* $parameters])
+public static *string*  **image** ([*array* $parameters], [*boolean* $local])
 
 Builds HTML IMG tags 
 
@@ -492,6 +511,7 @@ Volt Syntax:
 
      	{{ image("img/bg.png") }}
      	{{ image("img/photo.jpg", "alt": "Some Photo") }}
+     	{{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 
 
@@ -504,7 +524,7 @@ Converts texts into URL-friendly titles
 
     <?php
 
-     echo Phalcon\Tag::friendlyTitle('Thiese are big important news', '-')
+     echo Phalcon\Tag::friendlyTitle('These are big important news', '-')
 
 
 

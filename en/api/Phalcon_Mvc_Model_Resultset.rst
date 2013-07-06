@@ -158,7 +158,7 @@ Returns the error messages produced by a batch operation
 
 public *boolean*  **delete** ([*Closure* $conditionCallback])
 
-Delete every record in the resultset
+Deletes every record in the resultset
 
 
 

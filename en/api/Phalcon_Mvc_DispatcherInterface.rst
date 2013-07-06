@@ -93,7 +93,7 @@ Set a param by its name or numeric index
 
 
 
-abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*unknown* $defaultValue]) inherited from Phalcon\\DispatcherInterface
+abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\DispatcherInterface
 
 Gets a param by its name or numeric index
 

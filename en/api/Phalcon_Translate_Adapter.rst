@@ -29,7 +29,7 @@ Check whether a translation key exists
 
 public  **offsetUnset** (*string* $offset)
 
-Elimina un indice del diccionario
+Unsets a translation from the dictionary
 
 
 

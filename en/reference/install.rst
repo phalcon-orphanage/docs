@@ -44,7 +44,7 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP 5.3.x/5.4.x development resources
+* PHP 5.3.x/5.4.x/5.5.x development resources
 * GCC compiler (Linux/Solaris) or Xcode (Mac)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
