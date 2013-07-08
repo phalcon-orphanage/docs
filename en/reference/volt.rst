@@ -421,11 +421,11 @@ A special variable is available inside 'for' loops providing you information abo
 +----------------------+------------------------------------------------------------------------------+
 | loop.revindex0       | The number of iterations from the end of the loop (0 indexed)                |
 +----------------------+------------------------------------------------------------------------------+
-| loop.first           | True if is the first iteration.                                              |
+| loop.first           | True if in the first iteration.                                              |
 +----------------------+------------------------------------------------------------------------------+
-| loop.last            | True if is the last iteration.                                               |
+| loop.last            | True if in the last iteration.                                               |
 +----------------------+------------------------------------------------------------------------------+
-| loop.length          | The number of items to itarate                                               |
+| loop.length          | The number of items to iterate                                               |
 +----------------------+------------------------------------------------------------------------------+
 
 .. code-block:: html+jinja
