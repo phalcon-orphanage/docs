@@ -177,36 +177,6 @@ A forward action accepts the following parameters:
 | namespace      | A valid namespace name where the controller is part of |
 +----------------+--------------------------------------------------------+
 
-Getting Parameters
-------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends
-:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
-
-.. code-block:: php
-
-    <?php
-
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
-
-        public function indexAction()
-        {
-
-        }
-
-        public function saveAction()
-        {
-
-            // Get the post's title passed in the URL as parameter
-            $title = $this->dispatcher->getParam("title");
-
-            // Get the post's year passed in the URL as parameter
-            // also filtering it
-            $year = $this->dispatcher->getParam("year", "int");
-        }
-
-    }
-
 Preparing Parameters
 --------------------
 Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
@@ -214,7 +184,7 @@ adapt your application to any URL schema:
 
 For example, you want your URLs look like: http://mywebsite.com/controller/key1/value1/key2/value
 
-Parameters by default are passed as they come in the URL, you can transform them to the desired schema:
+Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:
 
 .. code-block:: php
 
@@ -230,21 +200,23 @@ Parameters by default are passed as they come in the URL, you can transform them
         $eventsManager = new EventsManager();
 
         //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher, $exception) {
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
+            //Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
                 if ($number & 1) {
                     $keyParams[$params[$number - 1]] = $value;
                 }
             }
 
+            //Override parameters
             $dispatcher->setParams($keyParams);
         });
 
-        $dispatcher = new Phalcon\MVc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -266,20 +238,119 @@ If the desired schema is: http://mywebsite.com/controller/key1:value1/key2:value
         $eventsManager = new EventsManager();
 
         //Attach a listener
-        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher, $exception) {
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
+            //Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value)
                 $keyParams[$parts[0]] = $parts[1];
             }
 
+            //Override parameters
             $dispatcher->setParams($keyParams);
         });
 
-        $dispatcher = new Phalcon\MVc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    });
+
+Getting Parameters
+------------------
+When a route provides named parameters you can receive them in a controller, a view or any other component that extends
+:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function saveAction()
+        {
+
+            // Get the post's title passed in the URL as parameter
+            // or prepared in an event
+            $title = $this->dispatcher->getParam("title");
+
+            // Get the post's year passed in the URL as parameter
+            // or prepared in an event also filtering it
+            $year = $this->dispatcher->getParam("year", "int");
+        }
+
+    }
+
+Preparing actions
+-----------------
+You can also define an arbitrary schema for actions before be dispatched.
+
+If the original URL is: http://mywebsite.com/admin/products/show-latest-products,
+and for example you want to camelize 'show-latest-products' to 'showLatestProducts',
+the following code is required:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        //Camelize actions
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+            $dispatcher->setActionName(Phalcon\Text::camelize($dispatcher->getActionName()));
+        });
+
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    });
+
+If the original URL always contains a '.php' extension:
+
+http://mywebsite.com/admin/products/show-latest-products.php
+http://mywebsite.com/admin/products/index.php
+
+You can remove it before dispatch the controller/action combination:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        //Camelize actions
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+
+            //Remove extension
+            $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
+
+            //Override action
+            $dispatcher->setActionName($action);
+        });
+
+        $dispatcher = new MvcDispatcher();
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
