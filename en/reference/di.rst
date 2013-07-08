@@ -1,11 +1,11 @@
 Dependency Injection/Service Location
 *************************************
-The following example is a bit lengthy, but explains why using a service container, service location and dependency injection.
+The following example is a bit lengthy, but explains why use service location and dependency injection.
 First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
 Our component has some dependency that is a connection to a database.
 
-In this first example, the connection is created inside the component. This approach is impractical; practically we cannot change the
-connection parameters or the type of database system because the component only works as created.
+In this first example, the connection is created inside the component. This approach is impractical; due to the fact
+we cannot change the connection parameters or the type of database system because the component only works as created.
 
 .. code-block:: php
 
