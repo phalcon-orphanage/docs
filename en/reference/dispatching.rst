@@ -207,6 +207,84 @@ When a route provides named parameters you can receive them in a controller, a v
 
     }
 
+Preparing Parameters
+--------------------
+Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
+adapt your application to any URL schema:
+
+For example, you want your URLs look like: http://mywebsite.com/controller/key1/value1/key2/value
+
+Parameters by default are passed as they come in the URL, you can transform them to the desired schema:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Dispatcher,
+        Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        //Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher, $exception) {
+
+            $keyParams = array();
+            $params = $dispatcher->getParams();
+
+            foreach ($params as $number => $value) {
+                if ($number & 1) {
+                    $keyParams[$params[$number - 1]] = $value;
+                }
+            }
+
+            $dispatcher->setParams($keyParams);
+        });
+
+        $dispatcher = new Phalcon\MVc\Dispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    });
+
+If the desired schema is: http://mywebsite.com/controller/key1:value1/key2:value, the following code is required:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Dispatcher,
+        Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        //Attach a listener
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher, $exception) {
+
+            $keyParams = array();
+            $params = $dispatcher->getParams();
+
+            foreach ($params as $number => $value) {
+                $parts = explode(':', $value)
+                $keyParams[$parts[0]] = $parts[1];
+            }
+
+            $dispatcher->setParams($keyParams);
+        });
+
+        $dispatcher = new Phalcon\MVc\Dispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    });
+
 Handling Not-Found Exceptions
 -----------------------------
 Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception

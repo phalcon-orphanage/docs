@@ -107,11 +107,6 @@ generating the exception:
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the
 parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
-By installing the '`Pretty Exceptions`_' utility in your appplication you can print exceptions with a nicely presentation:
-
-.. figure:: ../_static/img/pretty.jpg
-    :align: center
-
 Debug component
 ---------------
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application
@@ -209,12 +204,21 @@ Using XDebug
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together
 with Phalcon without additional configuration or side effects.
 
+The following screencast shows a Xdebug session with Phalcon:
+
+.. raw:: html
+
+    <div align="center">
+        <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
+
+Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
+
 .. highlights::
 
     We highly recommend use at least XDebug 2.2.3 for a better compatibility with Phalcon
 
-Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages. The following
-example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace:
+The following example implements xdebug_print_function_stack_ to stop the execution and generate a backtrace
 
 .. code-block:: php
 
