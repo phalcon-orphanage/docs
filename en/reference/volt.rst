@@ -126,7 +126,7 @@ In the above example, three variables were passed to the view: title, menu and p
 Variables
 ---------
 Variables may have attributes, those can be accessed using the syntax: foo.bar. If you are
-passing arrays, you can access using the curly braces syntax: foo['bar']
+passing arrays, you can access using the square bracket syntax: foo['bar']
 
 .. code-block:: jinja
 
