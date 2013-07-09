@@ -212,7 +212,6 @@ The only requirement is to know the key that the data have been stored with.
         $cache->delete($key);
     }
 
-
 Checking cache existence
 ------------------------
 It is possible to check if a cache already exists with a given key:

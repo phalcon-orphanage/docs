@@ -90,6 +90,78 @@ created you can 'onConstruct':
 
     }
 
+Public properties vs. Setters/Getters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Models can be implemented with properties as public properties, this means that the visibility of every property
+is public, a property can be read/updated from any part of the application without restriction:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+        public $id;
+
+        public $name;
+
+        public $price;
+    }
+
+By using setters and getters you can control which properties are visible publicly, additionally add validation rules
+before internal attributes are assigned or transform existing data before being used by the application:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+        protected $id;
+
+        protected $name;
+
+        protected $price;
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function setName($name)
+        {
+            //The name is too short?
+            if (strlen($name) < 10) {
+                throw new \InvalidArgumentException('The name is too short');
+            }
+            $this->name = $name;
+        }
+
+        public function getName()
+        {
+            return $this->name;
+        }
+
+        public function setPrice($price)
+        {
+            //Negative prices aren't allowed
+            if ($price < 0) {
+                throw new \InvalidArgumentException('Price can\'t be negative');
+            }
+            $this->price = $price;
+        }
+
+        public function getPrice()
+        {
+            //Convert the value to double before be used
+            return (double) $this->price;
+        }
+    }
+
+Public properties provide less complexity in the development while using setters/getters can increase application
+maintainability of applications. Developers can decide which strategy is more
+appropriate for the application they are creating. The ORM is compatible with both schemes of defining properties.
+
 Models in Namespaces
 --------------------
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
@@ -102,11 +174,6 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
-        public function getSource()
-        {
-            return "robots";
-        }
 
     }
 
@@ -460,9 +527,9 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
 
-Initializing fetched records
-----------------------------
-M ay be the case that after obtaining a record of the database is necessary to initialise the data before
+Initializing/Preparing fetched records
+--------------------------------------
+May be the case that after obtaining a record from the database is necessary to initialise the data before
 being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
 will be executed just after create the instance and assign the data to it:
 
@@ -472,6 +539,12 @@ will be executed just after create the instance and assign the data to it:
 
     class Robots extends Phalcon\Mvc\Model
     {
+
+        public $id;
+
+        public $name;
+
+        public $status;
 
         public function beforeSave()
         {
@@ -484,6 +557,28 @@ will be executed just after create the instance and assign the data to it:
             //Convert the string to an array
             $this->status = explode(',', $this->status);
         }
+    }
+
+If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
+accessed:
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public $id;
+
+        public $name;
+
+        public $status;
+
+        public function getStatus()
+        {
+            return explode(',', $this->status)
+        }
+
     }
 
 Relationships between Models
