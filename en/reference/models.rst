@@ -92,8 +92,8 @@ created you can 'onConstruct':
 
 Public properties vs. Setters/Getters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties as public properties, this means that the visibility of every property
-is public, a property can be read/updated from any part of the application without restriction:
+Models can be implemented with properties of public scope, meaning that each property can be read/updated
+from any part of the code that has instantiated that model class without any restrictions:
 
 .. code-block:: php
 
@@ -108,8 +108,8 @@ is public, a property can be read/updated from any part of the application witho
         public $price;
     }
 
-By using setters and getters you can control which properties are visible publicly, additionally add validation rules
-before internal attributes are assigned or transform existing data before being used by the application:
+By using getters and setters you can control which properties are visible publicly perform various transformations
+to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
 
 .. code-block:: php
 
@@ -158,13 +158,13 @@ before internal attributes are assigned or transform existing data before being 
         }
     }
 
-Public properties provide less complexity in the development while using setters/getters can increase application
-maintainability of applications. Developers can decide which strategy is more
-appropriate for the application they are creating. The ORM is compatible with both schemes of defining properties.
+Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
+extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
+application they are creating. The ORM is compatible with both schemes of defining properties.
 
 Models in Namespaces
---------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related table using getSource:
+^^^^^^^^^^^^^^^^^^^^
+Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
 
 .. code-block:: php
 
