@@ -117,8 +117,8 @@ in each request. Once the extension is installed use the following setting to en
 .. code-block:: ini
 
     apc.enabled = On
-    
-PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4. 
+
+PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4.
 
 Do blocking work in the background
 ----------------------------------
@@ -134,8 +134,8 @@ There are a variety of tools that provide queuing or messaging systems that work
 
 Google Page Speed
 -----------------
-mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available 
-for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets 
+mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available
+for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets
 (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
 
 .. _firebug: http://getfirebug.com/

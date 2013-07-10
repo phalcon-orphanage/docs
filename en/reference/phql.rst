@@ -742,6 +742,10 @@ More examples of the builder:
     $builder->from('Robots')
             ->where('name LIKE :name:', array('name' => '%' . $name . '%'));
 
+    // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%'
+    $builder->from(['r' => 'Store\Robots'])
+            ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
+
 Bound Parameters
 ^^^^^^^^^^^^^^^^
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
@@ -766,8 +770,8 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute(array('name' => $name, 'type' => $type));
 
-Disabling Literals
-------------------
+Disallow literals in PHQL
+-------------------------
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
 will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
 to potential SQL injections:
@@ -782,9 +786,11 @@ to potential SQL injections:
 
 If $login is changed to ' OR '' = ', the produced PHQL is:
 
-.. code-block:: sql
+.. code-block:: php
 
-    SELECT * FROM Models\Users WHERE login = '' OR '' = ''
+    <?php
+
+    "SELECT * FROM Models\Users WHERE login = '' OR '' = ''"
 
 Which is always true no matter what the login stored in the database is.
 
@@ -798,6 +804,17 @@ secure way like this:
 
     $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
     $result = $manager->executeQuery($phql, array('name' => $name));
+
+You can disallow literals in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Mvc\Model::setup(array('phqlLiterals' => false));
+
+Bound parameters can be used even if literals are allowed or not. Disallowing them is just
+another security decision a developer could take in web applications.
 
 Escaping Reserved Words
 -----------------------
