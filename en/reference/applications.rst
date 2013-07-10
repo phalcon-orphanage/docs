@@ -35,7 +35,6 @@ If namespaces are not used, the following bootstrap file could be used to orches
     use Phalcon\Loader,
         Phalcon\DI\FactoryDefault,
         Phalcon\Mvc\Application,
-        Phalcon\Exception,
         Phalcon\Mvc\View;
 
     $loader = new Loader();
@@ -58,14 +57,11 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     try {
 
-        $application = new Application();
-        $application->setDI($di);
-        // OR
         $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -79,8 +75,7 @@ If namespaces are used, the following bootstrap can be used:
         Phalcon\Mvc\View,
         Phalcon\DI\FactoryDefault,
         Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\Application,
-        Phalcon\Exception;
+        Phalcon\Mvc\Application;
 
     $loader = new Loader();
 
@@ -114,7 +109,7 @@ If namespaces are used, the following bootstrap can be used:
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e){
+    } catch(\Exception $e){
         echo $e->getMessage();
     }
 
@@ -207,8 +202,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     use Phalcon\Mvc\Router,
         Phalcon\Mvc\Application,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Exception;
+        Phalcon\DI\FactoryDefault;
 
     $di = new FactoryDefault();
 
@@ -219,34 +213,24 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
         $router->setDefaultModule("frontend");
 
-        $router->add(
-            "/login",
-            array(
-                'module'     => 'backend',
-                'controller' => 'login',
-                'action'     => 'index',
-            )
-        );
+        $router->add("/login", array(
+            'module'     => 'backend',
+            'controller' => 'login',
+            'action'     => 'index',
+        ));
 
-        $router->add(
-            "/admin/products/:action",
-            array(
-                'module'     => 'backend',
-                'controller' => 'products',
-                'action'     => 1,
-            )
-        );
+        $router->add("/admin/products/:action", array(
+            'module'     => 'backend',
+            'controller' => 'products',
+            'action'     => 1,
+        ));
 
-        $router->add(
-            "/products/:action",
-            array(
-                'controller' => 'products',
-                'action'     => 1,
-            )
-        );
+        $router->add("/products/:action", array(
+            'controller' => 'products',
+            'action'     => 1,
+        ));
 
         return $router;
-
     });
 
     try {
@@ -271,7 +255,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         //Handle the request
         echo $application->handle()->getContent();
 
-    } catch(Exception $e){
+    } catch(\Exception $e){
         echo $e->getMessage();
     }
 
@@ -334,8 +318,8 @@ you may recognize the following bootstrap file:
         $application->setDI($di);
         echo $application->handle()->getContent();
 
-    } catch (\Phalcon\Exception $e) {
-        echo "PhalconException: ", $e->getMessage();
+    } catch (\Exception $e) {
+        echo "Exception: ", $e->getMessage();
     }
 
 The core of all the work of the controller occurs when handle() is invoked:
@@ -393,7 +377,85 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-Although the above is a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
+The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
+it suitable for Rest APIs:
+
+.. code-block:: php
+
+    <?php
+
+    // Request the services from the services container
+    $router = $di['router'];
+
+    $router->handle();
+
+    $dispatcher = $di['dispatcher'];
+
+    // Pass the processed router parameters to the dispatcher
+    $dispatcher->setControllerName($router->getControllerName());
+    $dispatcher->setActionName($router->getActionName());
+    $dispatcher->setParams($router->getParams());
+
+    // Dispatch the request
+    $dispatcher->dispatch();
+
+    //Get the returned value by the lastest executed action
+    $response = $dispatcher->getReturnedValue();
+
+    //Check if the action returned is a 'response' object
+    if ($response instanceof Phalcon\Http\ResponseInterface) {
+
+        //Send the request
+        $response->send();
+    }
+
+Yet another alternative that catch exceptions in the dispatcher forwarding to another actions consequently:
+
+.. code-block:: php
+
+    <?php
+
+    // Request the services from the services container
+    $router = $di['router'];
+
+    $router->handle();
+
+    $dispatcher = $di['dispatcher'];
+
+    // Pass the processed router parameters to the dispatcher
+    $dispatcher->setControllerName($router->getControllerName());
+    $dispatcher->setActionName($router->getActionName());
+    $dispatcher->setParams($router->getParams());
+
+    try {
+
+        // Dispatch the request
+        $dispatcher->dispatch();
+
+    } catch (Exception $e) {
+
+        //An exception has ocurred, dispatch some controller/action aimed for that
+
+        // Pass the processed router parameters to the dispatcher
+        $dispatcher->setControllerName('errors');
+        $dispatcher->setActionName('action503');
+
+        // Dispatch the request
+        $dispatcher->dispatch();
+
+    }
+
+    //Get the returned value by the lastest executed action
+    $response = $dispatcher->getReturnedValue();
+
+    //Check if the action returned is a 'response' object
+    if ($response instanceof Phalcon\Http\ResponseInterface) {
+
+        //Send the request
+        $response->send();
+    }
+
+Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
 it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
 should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 

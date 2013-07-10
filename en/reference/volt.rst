@@ -911,30 +911,37 @@ View Integration
 ----------------
 Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
 
-.. code-block:: html+jinja
+.. code-block:: html+php
 
     {{ content() }}
 
+    <!-- Simple include of a partial -->
     <div id="footer">{{ partial("partials/footer") }}</div>
+
+    <!-- Passing extra variables -->
+    <div id="footer">{{ partial("partials/footer", array('links' => $links)) }}</div>
 
 A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
 as part of the view which was included:
 
 .. code-block:: html+jinja
 
+    {# Simple include of a partial #}
     <div id="footer">{% include "partials/footer" %}</div>
 
-Partial vs Include
-^^^^^^^^^^^^^^^^^^
-Keep the following points in mind when choosing to use the "partial" function or "include":
+    {# Passing extra variables #}
+    <div id="footer">{% include "partials/footer" with ['links': links] %}</div>
 
-* 'Partial' allows you to include templates made in Volt and in other template engines as well
-* 'Partial' allows you to pass an expression like a variable allowing to include the content of other view dynamically
-* 'Partial' is better if the content that you have to include changes frequently
+Include
+^^^^^^^
+'include' has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension
+when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent
+template where it's included. Templates aren't inlined if the 'include' have variables passed with 'with':
 
-* 'Include' copies the compiled content into the view which improves the performance
-* 'Include' only allows to include templates made with Volt
-* 'Include' requires an existing template at compile time
+.. code-block:: html+jinja
+
+    {# The contents of 'partials/footer.volt' is compiled and inlined #}
+    <div id="footer">{% include "partials/footer.volt" %}</div>
 
 Template Inheritance
 --------------------
@@ -1234,7 +1241,7 @@ as were passed in the arguments:
     <?php
 
     $compiler->addFunction('widget', function($resolvedArgs, $exprArgs) {
-        return 'MyLibrary\Widgets::get('.$resolvedArgs.')';
+        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
     });
 
 Treat the arguments independently and unresolved:
