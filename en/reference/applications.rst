@@ -314,8 +314,8 @@ you may recognize the following bootstrap file:
         //...
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+        $application = new \Phalcon\Mvc\Application($di);
+
         echo $application->handle()->getContent();
 
     } catch (\Exception $e) {
@@ -330,13 +330,15 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     echo $application->handle()->getContent();
 
+Manual bootstraping
+-------------------
 If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
 .. code-block:: php
 
     <?php
 
-    // Request the services from the services container
+    // Get the 'router' service
     $router = $di['router'];
 
     $router->handle();
@@ -384,7 +386,7 @@ it suitable for Rest APIs:
 
     <?php
 
-    // Request the services from the services container
+    // Get the 'router' service
     $router = $di['router'];
 
     $router->handle();
@@ -409,13 +411,13 @@ it suitable for Rest APIs:
         $response->send();
     }
 
-Yet another alternative that catch exceptions in the dispatcher forwarding to another actions consequently:
+Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
 
 .. code-block:: php
 
     <?php
 
-    // Request the services from the services container
+    // Get the 'router' service
     $router = $di['router'];
 
     $router->handle();

@@ -665,7 +665,7 @@ blockquote {
 .donate-wrap {
     margin: 10px 0;
     padding: 15px 0;
-    border-color: #525252;
+    border-color: #c0c0c0;
     border-width: 1px;
     border-style: solid none;
     font-size: 18px;
@@ -678,7 +678,6 @@ blockquote {
 .donate-wrap a {
     margin: 0 10px;
 }
-
 
 .highlight  { background: #242424; color: #f6f3e8}
 .highlight .hll { background-color: #ffffcc }
