@@ -296,6 +296,8 @@ Preparing actions
 -----------------
 You can also define an arbitrary schema for actions before be dispatched.
 
+Camelize action names
+^^^^^^^^^^^^^^^^^^^^^
 If the original URL is: http://mywebsite.com/admin/products/show-latest-products,
 and for example you want to camelize 'show-latest-products' to 'showLatestProducts',
 the following code is required:
@@ -304,7 +306,8 @@ the following code is required:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
+    use Phalcon\Text,
+        Phalcon\Mvc\Dispatcher as MvcDispatcher,
         Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
@@ -314,7 +317,7 @@ the following code is required:
 
         //Camelize actions
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
-            $dispatcher->setActionName(Phalcon\Text::camelize($dispatcher->getActionName()));
+            $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
         });
 
         $dispatcher = new MvcDispatcher();
@@ -323,6 +326,8 @@ the following code is required:
         return $dispatcher;
     });
 
+Remove legacy extensions
+^^^^^^^^^^^^^^^^^^^^^^^^
 If the original URL always contains a '.php' extension:
 
 http://mywebsite.com/admin/products/show-latest-products.php
@@ -342,7 +347,7 @@ You can remove it before dispatch the controller/action combination:
         //Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Camelize actions
+        //Remove extension before dispatch
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             //Remove extension
@@ -357,6 +362,90 @@ You can remove it before dispatch the controller/action combination:
 
         return $dispatcher;
     });
+
+Inject model instances
+^^^^^^^^^^^^^^^^^^^^^^
+In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
+inject model instances.
+
+The controller looks like:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+        /**
+         * Shows posts
+         *
+         * @param \Posts $post
+         */
+        public function showAction(Posts $post)
+        {
+            $this->view->post = $post;
+        }
+    }
+
+Method 'showAction' receives an instance of the model \Posts, the developer could inspect this
+before dispatch the action preparing the parameter accordingly:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Text,
+        Phalcon\Mvc\Dispatcher as MvcDispatcher,
+        Phalcon\Events\Manager as EventsManager;
+
+    $di->set('dispatcher', function() {
+
+        //Create an EventsManager
+        $eventsManager = new EventsManager();
+
+        $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
+
+            //Possible controller class name
+            $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
+
+            //Possible method name
+            $actionName = $dispatcher->getActionName() . 'Action';
+
+            try {
+
+                //Get the reflection for the method to be executed
+                $reflection = new \ReflectionMethod($controllerName, $actionName);
+
+                //Check parameters
+                foreach ($reflection->getParameters() as $parameter) {
+
+                    //Get the expected model name
+                    $className = $parameter->getClass()->name;
+
+                    //Check if the parameter expects a model instance
+                    if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
+
+                        $model = $className::findFirstById($dispatcher->getParams()[0]);
+
+                        //Override the parameters by the model instance
+                        $dispatcher->setParams(array($model));
+                    }
+                }
+
+            } catch (\Exception $e) {
+                //An exception has ocurred, maybe the class or action does not exist?
+            }
+
+        });
+
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
+
+        return $dispatcher;
+    });
+
+The above example has been simplified for academic purposes.
+A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
 Handling Not-Found Exceptions
 -----------------------------

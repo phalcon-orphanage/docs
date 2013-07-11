@@ -178,6 +178,10 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 Practical Usage
 ---------------
+Next we will explain some practical examples of annotations in PHP applications:
+
+Cache Enabler with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
 cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
 to be notified when a route is executed:
@@ -283,6 +287,11 @@ Now, we can use the annotation in a controller:
         }
 
     }
+
+Cache Enabler with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 Annotations Adapters
 --------------------

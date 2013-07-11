@@ -459,6 +459,8 @@ Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applica
 
         $application = new Application($di);
 
+        $application->
+
         echo $application->handle()->getContent();
 
     } catch (\Exception $e) {
