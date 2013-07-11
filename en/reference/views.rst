@@ -137,7 +137,8 @@ The generated HTML by the request will be:
 
 Using Templates
 ^^^^^^^^^^^^^^^
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
+Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
+layouts directory.
 
 .. code-block:: php
 
@@ -457,9 +458,9 @@ Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applica
 
     try {
 
-        $application = new Application($di);
+        $application = new Phalcon\Mvc\Application($di);
 
-        $application->
+        $application->useImplicitView(false);
 
         echo $application->handle()->getContent();
 
