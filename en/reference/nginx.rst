@@ -101,8 +101,10 @@ Dedicated Instance
 
         #access_log  /var/log/nginx/host.access.log  main;
 
+        set $root_path '/srv/www/htdocs/phalcon-website/public';
+
         location / {
-            root   /srv/www/htdocs/phalcon-website/public;
+            root   $root_path;
             index  index.php index.html index.htm;
 
             # if file exists return it right away
