@@ -319,3 +319,16 @@ ul.footer-links-list {margin:0;}
 
 .social-link.vm {background-position: -132px 0;}
 .social-link.vm:hover {background-position: -132px -44px;}
+
+.translation-in-progress {
+    width: 100%; height: 30px;background-color: #FFF5D9;
+    text-align: center;font-size: 12px;color: #666;
+}
+
+.translation-in-progress a{
+    color:#118f9e;
+}
+
+.translation-in-progress a:hover{
+    color:#000;
+}
