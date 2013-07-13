@@ -7,8 +7,7 @@ _templates
 *.sublime-*
 .pydevproject
 .idea/
-<<<<<<< HEAD
 
 .DS_Store
-=======
->>>>>>> 0.7.0
+
+/nbproject/

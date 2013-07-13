@@ -1,16 +1,16 @@
-Welcome!
+Bienvenue !
 ========
 
-Bienvenue à Phalcon cadre, une nouvelle approche sur des frameworks PHP. Notre mission est de vous donner un outil de pointe pour développer des sites Web et des applications sans se soucier de la performance.
+Bienvenue sur le framework Phalcon, une toute nouvelle approche des frameworks PHP. Notre objectif est de vous donner un outil de pointe pour développer des sites Web et des applications sans se soucier des performances.
 
-What is Phalcon?
+Qu'est-ce qu'est Phalcon ?
 ----------------
 
-Phalcon is an open source, full stack framework for PHP 5 written as a C-extension, optimized for high performance. You don't need learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
+Phalcon est un framework PHP 5 complet et open source. Il est écrit en C et disponible en tant qu'extension php ce qui en fait un framework optimisé et très performant. Il n'est pas nécessaire d'apprendre ou d'utiliser le langage C puisque les fonctionnalités sont disponibles en tant que classes pour PHP prêtes à l'utilisation. Phalcon est également extrêmement modulable, vous permettant ainsi d'utiliser ses composants comme vous le souhaitez au sein de votre application, ou de n'importe quelle autre application.
 
-Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!
+En plus des performances, notre but est de faire de Phalcon un framework robuste, riche en fonctionnalités et facile d'utilisation !
 
-Table of Contents
+table des matières
 -----------------
 
 .. toctree::
