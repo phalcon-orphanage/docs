@@ -245,7 +245,7 @@ Examples:
     {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
 
     {# json_encode filter #}
-    {% robots|json_encode }}
+    {% robots|json_encode %}
 
     {# json_decode filter #}
     {% set decoded='{"one":1,"two":2,"three":3}'|json_decode %}
@@ -692,7 +692,7 @@ More examples:
 
     {% if robot is defined %}
         The robot variable is defined
-    {% endif }
+    {% endif %}
 
     {% if robot is empty %}
         The robot is null or isn't defined
