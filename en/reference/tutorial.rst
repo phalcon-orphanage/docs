@@ -280,7 +280,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition:
+The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
 
 .. code-block:: html+php
 
@@ -359,7 +359,7 @@ Before creating our first model, we need a database table to map it to. A simple
       PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory. The model mapping to "users" table:
+A model should be located in the app/models directory (app/models/Users.php). The model mapping to "users" table:
 
 .. code-block:: php
 
