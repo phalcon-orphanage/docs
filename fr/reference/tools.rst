@@ -285,7 +285,7 @@ Regardez la vidéo suivante pour voir comment faire :
 
    <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Integrer les outils sur PhpStorm
+Intégrer les outils sur PhpStorm
 -----------------------------------
 La vidéo suivante vous montre comment intégrer les outils de développeur avec  `PhpStorm IDE`_. 
 La configuration peut facilement être adaptée à d'autres IDE pour PHP.

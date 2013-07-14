@@ -1,14 +1,15 @@
-Working with Namespaces
+Travailler avec les espaces de nom
 =======================
-Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
-a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+Namespaces_, c'est le nom anglais des espaces de nom. Ces derniers peuvent être utilisés pour éviter la collision des noms de classe.
+Par exemple si vous avez deux controlleurs dans votre application avec le même nom, un namespace peut être utilisé pour les différencier.
+Les espaces de nom sont aussi utiles pour créer des paquets ou des modules.
 
-Setting up the framework
+Mise en place
 ------------------------
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
-to perform one or all of the following tasks:
+utiliser les espaces de nom a quelques implications quand on charge le controlleur approprié.
+Pour ajuster le comportement du framework aux namespace, il est nécessaire de faire une (ou toutes)les tâches suivantes.
 
-Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
+Utiliser un autoload qui prends en compte les espaces de nom, par exemple Phalcon\\Loader:
 
 .. code-block:: php
 
@@ -21,7 +22,7 @@ Use an autoload strategy that takes into account the namespaces, for example wit
         )
     );
 
-Specify it in the routes as a separate parameter in the route's paths:
+Vous pouvez le spécifier aux routes comme un paramètre séparé :
 
 .. code-block:: php
 
@@ -36,7 +37,7 @@ Specify it in the routes as a separate parameter in the route's paths:
         )
     );
 
-Passing it as part of the route:
+Le passer en tant que partie du chemin:
 
 .. code-block:: php
 
@@ -51,8 +52,8 @@ Passing it as part of the route:
         )
     );
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace
-in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:
+Si vous travailler avec le même namespace pour tous les controlleurs de votre application, vous pouvez le définir en tant que namespace par défaut dans le dispatcher,
+en faisant ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le chemin du routeur:
 
 .. code-block:: php
 
@@ -65,9 +66,9 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
         return $dispatcher;
     });
 
-Controllers with Namespaces
+Controlleur avec namespace
 ---------------------------
-The following example shows how to implement a controller that use namespaces:
+L'exemple suivante montre comment implémenter un controlleur qui utilise des espaces de nom:
 
 .. code-block:: php
 
