@@ -1,13 +1,13 @@
 Travailler avec les espaces de nom
 =======================
-Namespaces_, c'est le nom anglais des espaces de nom. Ces derniers peuvent être utilisés pour éviter la collision des noms de classe.
+Namespaces_, c'est le nom anglais des espaces de nom. Ces derniers peuvent être utilisés pour éviter le conflit des noms de classe.
 Par exemple si vous avez deux controlleurs dans votre application avec le même nom, un namespace peut être utilisé pour les différencier.
 Les espaces de nom sont aussi utiles pour créer des paquets ou des modules.
 
 Mise en place
 ------------------------
-utiliser les espaces de nom a quelques implications quand on charge le controlleur approprié.
-Pour ajuster le comportement du framework aux namespace, il est nécessaire de faire une (ou toutes)les tâches suivantes.
+Utiliser les espaces de nom a quelques implications quand on charge le controlleur approprié.
+Pour ajuster le comportement du framework aux namespaces, il est nécessaire de faire une (ou toutes)les tâches suivante:
 
 Utiliser un autoload qui prends en compte les espaces de nom, par exemple Phalcon\\Loader:
 
@@ -53,7 +53,7 @@ Le passer en tant que partie du chemin:
     );
 
 Si vous travailler avec le même namespace pour tous les controlleurs de votre application, vous pouvez le définir en tant que namespace par défaut dans le dispatcher,
-en faisant ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le chemin du routeur:
+ainsi, vous n'avez pas besoin de spécifier le nom complet de la classe dans le chemin du routeur:
 
 .. code-block:: php
 

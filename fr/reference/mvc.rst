@@ -4,17 +4,18 @@ Phalcon offre les classes orientés objets nécessaires pour implémenter l'arch
 Ce design pattern est très largement utilisé par les autres framework web et applications bureau.
 
 Les avantages du MVC:
+
 * Isolation de la partie logique du code et de la partie interface utilisateur ainsi que la partie gestion de base de données.
 * Rendre clair à quelle partie un code appartient pour une maintenance plus aisée.
 
 Si vous décidez d'utiliser le MVC, chaque requête de votre application sera gérée par l'architecture MVC_.
-Les classes de Phalcon sont écrites en C, ce qui offre une haute performance à ce principe pour une application PHP.
+Les classes de Phalcon sont écrites en C, ce qui offre une haute performance à ce principe, pour une application PHP.
 
 Les modèles
 ------
 Un modèle représente les informations (données) de l'application et les règles pour manipuler ces données.
 Les modèles sont principalement utilisés pour gérer l'intéraction avec une base de données.
-Dans la plupart des cas, chaque table de votre base de donnée correspondra ) un model de votre application.
+Dans la plupart des cas, chaque table de votre base de données correspondra à un model de votre application.
 L'essentiel de la logique de votre application sera concentrée sur les models. :doc:`En savoir plus <models>`
 
 Les vues
