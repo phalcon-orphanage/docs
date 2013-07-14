@@ -1,7 +1,7 @@
 Using PHP Built-in webserver
-=========================
+============================
 
-As of PHP 5.4.0, you can use PHP's on .. built-in: http://php.net/manual/en/features.commandline.webserver.php web server for development.
+As of PHP 5.4.0, you can use PHP's on _built-in web server for development.
 
 To start the server type
 
@@ -14,12 +14,10 @@ If you want to rewrite the URIs to the index.php file use the following router f
 .. code-block:: php
 
     <?php
-    if (file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
-        return false; 
-    } else {
+    if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
         $_GET['_url'] = $_SERVER['REQUEST_URI'];
-        return false;
     }
+    return false;
 
 and then start the server with:
 
@@ -27,3 +25,4 @@ and then start the server with:
 
     php -S localhost:8000 -t /web_root .htrouter.php
 
+.. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
