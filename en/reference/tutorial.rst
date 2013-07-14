@@ -280,7 +280,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition:
+The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
 
 .. code-block:: html+php
 
