@@ -4,8 +4,7 @@ Ces outils sont une collection de scripts utiles pour générer un squelette de 
 Des composants principaux de votre application peuvent être générés avec une simple commande, vous permettant de développer des applications facilement avec phalcon.
 
 .. highlights::
-    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs.
-	Il est fortement recommandé d'utilisé PHP 5.3.6 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
+    **Important:** Le framework Phalcon version 0.5.0 ou supérieur est nécessaire pour utiliser les outils pour développeurs. Il est fortement recommandé d'utilisé PHP 5.3.6 ou supérieur. Si vous préférez utiliser la version web plutôt que la console ce `blog post`_ donne plus d'informations.
 
 Téléchargement
 --------
@@ -77,12 +76,11 @@ Le code suivant sera généré par le script :
 
     }
 
-Preparez les paramètres de base de données
+Préparez les paramètres de base de données
 ---------------------------
 Quand un projet est généré avec les outils pour développeurs, un fichier de configuration sera disponible dans *app/config/config.ini*.
 Pour générer un model vous devrez changer les paramètres utilisés pour se connecter à la base de données.
 
-Change the database section in your config.ini file:
 
 .. code-block:: ini
 
@@ -99,9 +97,9 @@ Change the database section in your config.ini file:
     viewsDir       = "../app/views/"
     baseUri        = "/store/"
 
-Generer des models
+Générer des models
 -----------------
-Il y a plusieurs manière de générer des models. Vous pouvez créer tous les models à partir de la connexion par défaut à la base de données ou de manière plus sélective.
+Il y a plusieurs manières de générer des models. Vous pouvez créer tous les models à partir de la connexion par défaut à la base de données ou de manière plus sélective.
 Les models peuvent avoir des attributs public pour la représentation des champs ou des setters/getters peuvent être utilisés.
 La manière la plus simple de générer un model est d'écrire cela :
 
@@ -224,7 +222,7 @@ En ajoutant le paramètre *--get-set*, vous pouvez générer les champs avec des
 
 Une fonctionnalité intéressante de la génération de model est qu'il garde trace des changements fait par les développeurs entre les générations de code.
 Cela permet d'ajouter ou de supprimer des champs ou des propriétés sans peur de perdre les changements déjà apportés au model.
-La vidéo suivante vous montre comment ça marche :
+La vidéo suivante vous montre comment cela fonctionne :
 
 .. raw:: html
 
@@ -273,14 +271,14 @@ La création de page permet de créer des produits qui doivent valider les valid
 .. figure:: ../_static/img/tools-11.png
    :align: center
 
-Après avoir effectué une recherche, un composant de pagination est disponible pour voir les résultats. Utilisez les liens "Edit" ou "Delete" sur chaque lignes pour effectuer l'action d'édition ou de suppression.
+Après avoir effectué une recherche, un composant de pagination est disponible pour voir les résultats. Utilisez les liens "Edit" ou "Delete" sur chaque ligne pour effectuer l'action d'édition ou de suppression.
 
 .. figure:: ../_static/img/tools-12.png
    :align: center
 
 L'interface web des outils
 ----------------------
-Si vous préférez il est tout a fait possible d'utiliser les outils de développeur Phalcon à partir d'une interface web.
+Si vous préférez il est tout à fait possible d'utiliser les outils de développeur Phalcon à partir d'une interface web.
 Regardez la vidéo suivante pour voir comment faire :
 
 .. raw:: html
