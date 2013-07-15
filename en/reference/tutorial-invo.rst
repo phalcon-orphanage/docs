@@ -201,15 +201,15 @@ some HTML code to make the example more concise:
 
 .. code-block:: html+php
 
-    <?php echo Tag::form('session/start') ?>
+    <?php echo $this->tag->form('session/start') ?>
 
         <label for="email">Username/Email</label>
-        <?php echo Tag::textField(array("email", "size" => "30")) ?>
+        <?php echo $this->tag->textField(array("email", "size" => "30")) ?>
 
         <label for="password">Password</label>
-        <?php echo Tag::passwordField(array("password", "size" => "30")) ?>
+        <?php echo $this->tag->passwordField(array("password", "size" => "30")) ?>
 
-        <?php echo Tag::submitButton(array('Login')) ?>
+        <?php echo $this->tag->submitButton(array('Login')) ?>
 
     </form>
 
@@ -705,7 +705,7 @@ All the "product types" are queried and passed to the view as a local variable "
 
     <div>
         <label for="product_types_id">Product Type</label>
-        <?php echo Tag::select(array(
+        <?php echo $this->tag->select(array(
             "product_types_id",
             $productTypes,
             "using" => array("id", "name"),
@@ -820,8 +820,8 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
             <td><?= $product->name ?></td>
             <td><?= $product->price ?></td>
             <td><?= $product->active ?></td>
-            <td><?= Tag::linkTo("products/edit/" . $product->id, 'Edit') ?></td>
-            <td><?= Tag::linkTo("products/delete/" . $product->id, 'Delete') ?></td>
+            <td><?= $this->tag->linkTo("products/edit/" . $product->id, 'Edit') ?></td>
+            <td><?= $this->tag->linkTo("products/delete/" . $product->id, 'Delete') ?></td>
         </tr>
     <?php } ?>
 
@@ -902,11 +902,11 @@ Now, in the case of product updating, first we must present to the user the data
 
         $product = Products::findFirstById($id);
 
-        Tag::setDefault("id", $product->id);
-        Tag::setDefault("product_types_id", $product->product_types_id);
-        Tag::setDefault("name", $product->name);
-        Tag::setDefault("price", $product->price);
-        Tag::setDefault("active", $product->active);
+        $this->tag->setDefault("id", $product->id);
+        $this->tag->setDefault("product_types_id", $product->product_types_id);
+        $this->tag->setDefault("name", $product->name);
+        $this->tag->setDefault("price", $product->price);
+        $this->tag->setDefault("active", $product->active);
 
     }
 
@@ -951,7 +951,7 @@ we are currently working. This is achieved in each controller initializer:
         public function initialize()
         {
             //Set the document title
-            Tag::setTitle('Manage your product types');
+            $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
@@ -971,7 +971,7 @@ Note, that the method parent::initialize() is also called, it adds more data to 
         protected function initialize()
         {
             //Prepend the application name to the title
-            Phalcon\Tag::prependTitle('INVO | ');
+            $this->tag->prependTitle('INVO | ');
         }
 
         //...
@@ -981,11 +981,10 @@ Finally, the title is printed in the main view (app/views/index.phtml):
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag as Tag ?>
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo Tag::getTitle() ?>
+            <?php echo $this->tag->getTitle() ?>
         </head>
         <!-- ... -->
     </html>

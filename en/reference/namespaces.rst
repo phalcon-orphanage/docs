@@ -32,7 +32,7 @@ Specify it in the routes as a separate parameter in the route's paths:
         array(
             'namespace'  => 'Store\Admin',
             'controller' => 'Users',
-            'action"     => 'profile',
+            'action'     => 'profile',
         )
     );
 
@@ -65,8 +65,8 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
         return $dispatcher;
     });
 
-Controllers with Namespaces
----------------------------
+Controllers in Namespaces
+-------------------------
 The following example shows how to implement a controller that use namespaces:
 
 .. code-block:: php
@@ -89,5 +89,44 @@ The following example shows how to implement a controller that use namespaces:
         }
 
     }
+
+Models in Namespaces
+--------------------
+Take the following into consideration when using models in namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Models;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+
+    }
+
+If models have relationships they must include the namespace too:
+
+.. code-block:: php
+
+    namespace Store\Models;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public function initialize()
+        {
+            $this->hasMany('id', 'Store\Models\Parts', 'robots_id', array(
+                'alias' => 'parts'
+            ));
+        }
+    }
+
+In PHQL you must write the statements including namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
 
 .. _Namespaces: http://php.net/manual/en/language.namespaces.php

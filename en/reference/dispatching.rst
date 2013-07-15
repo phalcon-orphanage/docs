@@ -458,7 +458,8 @@ when the controller/action combination wasn't found:
 
     use Phalcon\Dispatcher,
         Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+        Phalcon\Events\Manager as EventsManager,
+        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     $di->set('dispatcher', function() {
 
@@ -468,16 +469,22 @@ when the controller/action combination wasn't found:
         //Attach a listener
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
-            switch ($exception->getCode()) {
-                case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-                    $dispatcher->forward(array(
-                        'controller' => 'index',
-                        'action' => 'show404'
-                    ));
-                    return false;
-                }
+            //Handle 404 exceptions
+            if ($exception instanceof DispatchException)
+                $dispatcher->forward(array(
+                    'controller' => 'index',
+                    'action' => 'show404'
+                ));
+                return false;
             }
+
+            //Handle other exceptions
+            $dispatcher->forward(array(
+                'controller' => 'index',
+                'action' => 'show503'
+            ));
+
+            return false;
         });
 
         $dispatcher = new MvcDispatcher();
@@ -488,6 +495,45 @@ when the controller/action combination wasn't found:
         return $dispatcher;
 
     }, true);
+
+Of course, this method can be moved onto independent plugin classes, allowing more than one class
+take actions when an exception is produced in the dispatch loop:
+
+    <?php
+
+    use Phalcon\Mvc\Dispatcher,
+        Phalcon\Events\Event,
+        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+
+    class ExceptionsPlugin
+    {
+        public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
+        {
+
+            //Handle 404 exceptions
+            if ($exception instanceof DispatchException)
+                $dispatcher->forward(array(
+                    'controller' => 'index',
+                    'action' => 'show404'
+                ));
+                return false;
+            }
+
+            //Handle other exceptions
+            $dispatcher->forward(array(
+                'controller' => 'index',
+                'action' => 'show503'
+            ));
+
+            return false;
+        }
+    }
+
+.. highlights::
+
+    Only exceptions produced by the dispatcher and exceptions produced in the executed action
+    are notified in the 'beforeException' events. Exceptions produced in listeners or
+    controller events are redirected to the latest try/catch.
 
 Implementing your own Dispatcher
 --------------------------------

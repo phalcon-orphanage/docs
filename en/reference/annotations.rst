@@ -288,8 +288,11 @@ Now, we can use the annotation in a controller:
 
     }
 
-Cache Enabler with Annotations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Choose template to render
+^^^^^^^^^^^^^^^^^^^^^^^^^
+In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
+once the action has been executed:
+
 
 
 
