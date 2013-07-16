@@ -1,39 +1,40 @@
-Tutorial 3: Creating a Simple REST API
+Tutorial 3: Créer une application REST API
 ======================================
-In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
-different HTTP methods:
+Dans ce tutoriel, nous allons montrer comment créer une simple application qui fourni une API RESTful_ en utilisant les
+méthodes HTTP suivantes :
 
-* GET to retrieve and search data
-* POST to add data
-* PUT to update data
-* DELETE to delete data
 
-Defining the API
+* GET pour récupérer et chercher les données
+* POST pour ajouter des données
+* PUT pour modifier les données
+* DELETE pour supprimer les données
+
+Définir l'API
 ----------------
-The API consists of the following methods:
+L'API comprends les méthodes suivantes :
 
 +--------+----------------------------+----------------------------------------------------------+
 | Method |  URL                       | Action                                                   |
 +========+============================+==========================================================+
-| GET    | /api/robots                | Retrieves all robots                                     |
+| GET    | /api/robots                | Récupérer tous les robots                                |
 +--------+----------------------------+----------------------------------------------------------+
-| GET    | /api/robots/search/Astro   | Searches for robots with ‘Astro’ in their name           |
+| GET    | /api/robots/search/Astro   | Cherche les robots ayant 'Astro' dans leur nom           |
 +--------+----------------------------+----------------------------------------------------------+
-| GET    | /api/robots/2              | Retrieves robots based on primary key                    |
+| GET    | /api/robots/2              | Récupèrer les robots à partir de leur clé primaire       |
 +--------+----------------------------+----------------------------------------------------------+
-| POST   | /api/robots                | Adds a new robot                                         |
+| POST   | /api/robots                | Ajouter un nouveau robot                                 |
 +--------+----------------------------+----------------------------------------------------------+
-| PUT    | /api/robots/2              | Updates robots based on primary key                      |
+| PUT    | /api/robots/2              | Modifier les robots à partir de leur clé primaire        |
 +--------+----------------------------+----------------------------------------------------------+
-| DELETE | /api/robots/2              | Deletes robots based on primary key                      |
+| DELETE | /api/robots/2              | Supprimer les robots à partir de leur clé primaire       |
 +--------+----------------------------+----------------------------------------------------------+
 
-Creating the Application
+Créer l'application
 ------------------------
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case,
-we will use a :doc:`micro application <micro>` to meet our goal.
+Comme l'application est relativement simple, nous n'allons pas implémenter un environnement MVC complet.
+Dans notre cas nous allons utiliser une :doc:`micro application <micro>`.
 
-The following file structure is more than enough:
+La structure de fichier suivante sera largement suffisante :
 
 .. code-block:: php
 
@@ -43,8 +44,7 @@ The following file structure is more than enough:
         index.php
         .htaccess
 
-First, we need an .htaccess file that contains all the rules to rewrite the URIs to the index.php file,
-that is our application:
+Tout d'abord nous avons besoin d'un .htaccess qui va contenir toutes les règles de réécriture d'URL pour notre fichier index.php.
 
 .. code-block:: apacheconf
 
@@ -54,7 +54,7 @@ that is our application:
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-Then, in the index.php file we create the following:
+Ensuite dans notre fichier index.php, on ajoute ceci :
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ Then, in the index.php file we create the following:
 
     $app->handle();
 
-Now we will create the routes as we defined above:
+Maintenant, nous allons créer les routes comme défini au dessus (le tableau) :
 
 .. code-block:: php
 
@@ -106,18 +106,17 @@ Now we will create the routes as we defined above:
 
     $app->handle();
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
-followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
-by example, explicitly sets that the "id" parameter must have a numeric format.
+Chaque route est définie avec une méthode qui a le même nom que la requête HTTP. Le premier paramètre est le modèle de la route
+suivi par une fonction anonyme. La route suivante '/api/robots/{id:[0-9]+}', par exemple, prends un paramètre ID qui doit nécessairement avoir un format numérique.
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+Quand une requête URI corresponds à une route défini, l'application exécute la fonction anonyme qui lui est liée.
 
-Creating a Model
+Créer un Model
 ----------------
-Our API provides information about 'robots', these data are stored in a database. The following model allows us to
-access that table in an object-oriented way. We have implemented some business rules using built-in validators
-and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
-application:
+Notre API fourni des informations sur les 'robots', ces données doivent donc être enregistrés dans une base de données.
+Le model suivant nous permet d'accéder à la table comme si c'était un objet. Nous avons implémenté quelques règles en utilisant
+des validateurs. Ainsi nous seront tranquille car les données respecteront toujours les conditions nécessaire pour notre application:
+
 
 .. code-block:: php
 
@@ -161,8 +160,7 @@ application:
         }
 
     }
-
-Now, we must set up a connection to be used by this model:
+Maintenant nous devons mettre en place la connexion qui sera utilisée par le model :
 
 .. code-block:: php
 
@@ -183,10 +181,11 @@ Now, we must set up a connection to be used by this model:
     //Create and bind the DI to the application
     $app = new \Phalcon\Mvc\Micro($di);
 
-Retrieving Data
+Récupérer les données
 ---------------
-The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
-perform this simple query returning the results as JSON:
+Le premier gestionnaire que l'on a implémenté est celui qui retourne tous les robots à partir d'une méthode GET.
+Utilisons PHQL pour exécuter une simple requête qui retourne les résultats sous forme de JSON :
+
 
 .. code-block:: php
 
@@ -209,11 +208,11 @@ perform this simple query returning the results as JSON:
         echo json_encode($data);
     });
 
-:doc:`PHQL <phql>`, allow us to write queries using a high-level, object-oriented SQL dialect that internally
-translates to the right SQL statements depending on the database system we are using. The clause "use" in the
-anonymous function allows us to pass some variables from the global to local scope easily.
+:doc:`PHQL <phql>`, nous permet d'écrire des requêtes en utilisant un dialect SQL haut niveau et orienté objet qui va
+traduire la syntaxe SQL des requêtes en fonction du système de base de données que l'on utilise.
+Le mot clé "use" dans la fonction anonyme nous permet de passer des variable golables sous forme locale facilement.
 
-The searching by name handler would look like:
+La recherche par nom ressemblera à cela :
 
 .. code-block:: php
 
@@ -239,7 +238,7 @@ The searching by name handler would look like:
 
     });
 
-Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
+Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nous allons notifier l'utilisateur si le robot n'existe pas :
 
 .. code-block:: php
 
@@ -271,8 +270,9 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         return $response;
     });
 
-Inserting Data
+Ajouter des données
 --------------
+Prenons la données comme une chaine JSON que l'on insert dans le corps de la requête. Nous allons utiliser PHQL pour l'insertion.
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
 .. code-block:: php
@@ -319,9 +319,9 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         return $response;
     });
 
-Updating Data
+Modifier les données
 -------------
-The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+La modification de données est similaire à l'insertion. L'ID passé en paramètre indique quel robot doit être modifié :
 
 .. code-block:: php
 
@@ -362,9 +362,11 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
         return $response;
     });
 
-Deleting Data
+Supprimer des données
 -------------
-The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
+La suppression de données est relativement identique à la modification.
+L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être supprimé.
+
 
 .. code-block:: php
 
@@ -400,11 +402,11 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         return $response;
     });
 
-Testing our Application
+Tester notre application
 -----------------------
-Using curl_ we'll test every route in our application verifying its proper operation:
+En utilisant curl_ nous allons tester chaque route de notre application et vérifier que les opérations fonctionnent correctement:
 
-Obtain all the robots:
+Récupérer tous les robots :
 
 .. code-block:: bash
 
@@ -418,7 +420,7 @@ Obtain all the robots:
 
     [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 
-Search a robot by its name:
+Chercher un robot par son nom :
 
 .. code-block:: bash
 
@@ -432,7 +434,7 @@ Search a robot by its name:
 
     [{"id":"2","name":"Astro Boy"}]
 
-Obtain a robot by its id:
+Récupérer un robot par son ID :
 
 .. code-block:: bash
 
@@ -446,7 +448,7 @@ Obtain a robot by its id:
 
     {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 
-Insert a new robot:
+Insérer un nouveau robot :
 
 .. code-block:: bash
 
@@ -461,7 +463,7 @@ Insert a new robot:
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
-Try to insert a new robot with the name of an existing robot:
+Essayer d'insérer un nouveau robot avec le nom d'un robot existant :
 
 .. code-block:: bash
 
@@ -476,7 +478,7 @@ Try to insert a new robot with the name of an existing robot:
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
 
-Or update a robot with an unknown type:
+Modifier un robot avec un type inconnu :
 
 .. code-block:: bash
 
@@ -492,7 +494,7 @@ Or update a robot with an unknown type:
     {"status":"ERROR","messages":["Value of field 'type' must be part of
         list: droid, mechanical, virtual"]}
 
-Finally, delete a robot:
+Enfin, la suppresion de robots :
 
 .. code-block:: bash
 
@@ -508,8 +510,8 @@ Finally, delete a robot:
 
 Conclusion
 ----------
-As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
-use micro applications and the :doc:`PHQL <phql>` language.
+Comme nous l'abons vu, développer une API RESTful avec Phalcon est simple. Plus loin dans la documentation, nous expliqueront en détail comment
+utiliser une micro application et nous aborderont aussi le langage :doc:`PHQL <phql>` plus en détail.
 
 .. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer
