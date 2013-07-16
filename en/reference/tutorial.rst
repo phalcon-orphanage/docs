@@ -451,6 +451,8 @@ Receiving data from the form and storing them in the table is the next step.
                     echo $message->getMessage(), "<br/>";
                 }
             }
+            
+            $this->view->disable();
         }
 
     }
