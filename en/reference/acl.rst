@@ -72,7 +72,7 @@ Now we've roles and resources. It's time to define the ACL i.e. which roles can 
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.
+The allow method designates that a particular role has granted access to a particular resource. The deny method does the opposite.
 
 Querying an ACL
 ---------------
