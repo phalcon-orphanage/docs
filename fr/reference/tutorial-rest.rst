@@ -273,7 +273,6 @@ Chercher avec l'identifiant "id" est relativement identique, dans notre cas, nou
 Ajouter des données
 --------------
 Prenons la données comme une chaine JSON que l'on insert dans le corps de la requête. Nous allons utiliser PHQL pour l'insertion.
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
 .. code-block:: php
 
