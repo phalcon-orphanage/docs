@@ -1446,7 +1446,7 @@ Using Volt in a stand-alone mode can be demonstrated below:
     $compiler->compile('layouts/main.volt');
 
     //Require the compiled templated (optional)
-    require $compiler->getCompiledPath();
+    require $compiler->getCompiledTemplatePath();
 
 External Resources
 ------------------
