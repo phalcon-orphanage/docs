@@ -2,7 +2,7 @@ Tutoriel 2: Expliquer INVO
 ===========================
 Dans ce second tutoriel, nous allons expliquer une application plus complète de manière à approfondir le développement de Phalcon.
 INVO est l'une des applications que nous avons créé en tant qu'exemples. INVO est un petit site web qui permet aux utilisateur de générer des factures et faire
-d'autres tâches comme gérer ses clients et ses produits. Vous pouvez cloner son code de Github_.
+d'autres tâches comme gérer ses clients et ses produits. Vous pouvez cloner son code à partir de Github_.
 
 Aussi, INVO utilise `Twitter Bootstrap`_ comme framework côté client. Même si l'application ne génère pas de factures, cela donne un exemple pour comprendre comment le framework fonctionne.
 
@@ -36,18 +36,18 @@ Une fois l'application ouverte dans votre navigateur à l'adresse : http://local
    :align: center
 
 Cette application est divisé en deux parties, un frontend, qui est une partie publique où les visiteurs peuvent obtenir des informations à propos d'INVO et des informations de contact.
-La seconde partie est le backend, une zone administrative où un utilisateur enregistré peu gérer ses produits et ses clients
+La seconde partie est le backend, une zone administrative où un utilisateur enregistré peu gérer ses produits et ses clients.
 
 Routage
 -------
-INVO utilise le routage standard qui est construit avec le composant Router. Ces routes correcpondent au schèma suivant : /:controller/:action/:params.
+INVO utilise le routage standard qui est construit avec le composant Router. Ces routes correspondent au schéma suivant : /:controller/:action/:params.
 Cela signifie que la première partie de l'URI est le controller, la seconde est l'action et la suite sont les paramètres.
 
-La route suivante /session/register exécute le controlleur SessionController et son action registerAction.
+La route suivante /session/register exécute le controlleur "SessionController" et son action "registerAction".
 
 Configuration
 -------------
-INVO a un fichier de configuration qui définie les paramètres génèraux de l'application. Ce fichier est lu par les premières lignes du fichier boostrap (public/index.php) :
+INVO a un fichier de configuration qui définit les paramètres génèraux de l'application. Ce fichier est lu par les premières lignes du fichier boostrap (public/index.php) :
 
 .. code-block:: php
 
@@ -79,11 +79,12 @@ INVO a un fichier de configuration qui définie les paramètres génèraux de l'
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon n'a pas de convention de codage défini. Les sections nous permettent d'organiser les options de manière appropriée. Dans ce fichier il y a trois sections qu'on utilisera plus tard.
+Phalcon n'a pas de convention de codage défini. Les sections nous permettent d'organiser les options de manière appropriée. Dans ce fichier il y a trois sections que l'on utilisera plus tard.
 
 Autoloaders
 -----------
-La seconde partie du fichier boostrap (public/index.php) est l'autoloader. L'autoloader enregistre un ensemble de dossies où l'application va chercher les classes dont il va avoir besoin.
+La seconde partie du fichier boostrap (public/index.php) est l'autoloader (mécanisme de chargement automatique).
+L'autoloader enregistre un ensemble de dossies où l'application va chercher les classes dont il va avoir besoin.
 
 .. code-block:: php
 
@@ -100,12 +101,12 @@ La seconde partie du fichier boostrap (public/index.php) est l'autoloader. L'aut
         )
     )->register();
 	
-Notez que ce qui fait est d'enregistrer les dossiers qui ont été défini dans le fichier de configuration.
-Le seul dossier qui n'est pas enregistré est viewsDir parce qu'il ne contient pas de classes mais les fichiers de type HTML + PHP.
+Notez que ce qu'il fait est d'enregistrer les dossiers qui sont définis dans le fichier de configuration.
+Le seul dossier qui n'est pas enregistré est viewsDir parce qu'il ne contient pas de classes mais des fichiers de type HTML + PHP.
 
 Gérer la requête
 --------------------
-Allons plus loin dans le fichier, à la fin, la requète est finalement géré par Phalcon\\Mvc\\Application,
+Allons plus loin dans le fichier, à la fin, la requête est finalement gérée par Phalcon\\Mvc\\Application,
 cette classe initialise et exécute tous ce qui est nécessaire pour faire tourner l'application:
 
 .. code-block:: php
@@ -122,10 +123,10 @@ Injection de dépendances
 Regardez à la premiére ligne du code juste au dessus, la variable $app reçoit une autre variable $di dans son constructeur.
 Quel est le but de cette variable ? Phalcon est un framework fortement découplé, donc on a besoin d'un composant qui agit comme une sorte de colle pour que tout fonctionne ensemble, correctement.
 
-Ce composant est Phalcon\\DI. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaire pour l'application.
+Ce composant est Phalcon\\DI. C'est un conteneur de services qui fait des injections de dépendances et qui instancie tous les composants quand ils sont nécessaires pour l'application.
 
 Il y a différents moyens d'enregistrer les services dans un conteneur. Dans INVO la plupart des services ont été enregistrés en utilisant des fonctions anonymes.
-Grace à cela, les objets sont instanciés paresseusement (donc uniquement lorsque nécessaire) , ce qui réduit les ressources requises par l'application.
+Grace à cela, les objets sont instanciés paresseusement (= uniquement lorsque nécessaire) , ce qui réduit les ressources requises par l'application.
 
 Par exemple, dans l'extrait suivant, le service de session est enregistré, la fonction anonyme sera appelée uniquement lorsque l'application aura besoin d'accéder aux données de la session:
 
@@ -143,7 +144,7 @@ Par exemple, dans l'extrait suivant, le service de session est enregistré, la f
 Dans cette situation, on a la possibilité de changer l'adaptateur, de faire des initialisation supplémentaires ainsi que beaucoup d'autres choses.
 Notez que le service est enregistré avec le nom "session", c'est une convention qui va permettre au framework d'identifier le service actifdans le conteneur de service.
 
-Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peu être une lourde têche.
+Une requête peux utiliser plusieurs services, enregistrer chaque services un par un peux être une lourde tâche.
 Pour cette raison le framework fournit une variante à Phalcon\\DI appelée Phalcon\\DI\\FactoryDefault qui a pour mission d'enregistrer tous les services, fournissant ainsi un framework complet.
 
 .. code-block:: php
@@ -154,20 +155,19 @@ Pour cette raison le framework fournit une variante à Phalcon\\DI appelée Phal
     // right services providing a full stack framework
     $di = new \Phalcon\DI\FactoryDefault();
 
+Cet extrait enregistre la majorité des services avec les composants fournis par le framework. Si on a besoin d'outrepasser la définition de certains services
+on pourrait le modifier comme on l'a fait pour la "session" au dessus. C'est l'intérêt de la variable $di.
 
-It registers the majority of services with components provided by the framework as standard. If we need to override
-the definition of some service we could just set it again as we did above with "session". This is the reason for the
-existence of the variable $di.
 
 Se connecter à l'application
 ------------------------
-"Se connecter" va nous premettre de travailler sur les controlleurs du backend. La séparation entre les controlleurs du backend et du frontend sont purement d'ordre logique,
-car tous les controlleurs sont localisés dans le même dossier (app/controllers/).
+Se connecter va nous premettre de travailler sur les controlleurs du backend. La séparation entre les controlleurs du backend et du frontend sont purement d'ordre logique,
+car tous les contrôleurs sont localisés dans le même dossier (app/controllers/).
 
 Pour se connecter il faut un nom d'utilsateur et un mot de passe valide. Les utilisateurs sont stockés dans la table "users" de la base de données "invo".
 
-Avant de pouvoir commencer une session, nous devons configurer la connexion à la base de données. Un service appelé "db" est installé dans le conteneur de service avec cette information.
-Pour ce qui est de l'autoloader, cette fois on prends en paramètres les informations du fichier de configuration de manière à configurer le service :
+Avant de pouvoir commencer une session, nous devons configurer la connexion à la base de données. Un service appelé "db" est utilisé dans le conteneur de service avec cette information.
+Pour ce qui est de l'autoloader, on prends en paramètres les informations du fichier de configuration de manière à configurer le service :
 
 .. code-block:: php
 
@@ -204,7 +204,7 @@ Certaines lignes HTML ont été supprimés dans l'extrait suivant pour rendre l'
     </form>
 
 
-Le SessionController::startAction (app/controllers/SessionController.phtml) a pour tâche de valider les données entrées à la recherche d'un utilisateur valid dans la bas de données :
+Le SessionController::startAction (app/controllers/SessionController.phtml) a pour tâche de valider les données entrées à la recherche d'un utilisateur valide dans la base de données :
 
 .. code-block:: php
 
@@ -267,7 +267,7 @@ Le SessionController::startAction (app/controllers/SessionController.phtml) a po
 Pour des raisons de simplicité, nous avons utilisé "sha1_" pour stocker le mot de passe hashé dans la base de données, cependant cet algorithme n'est pas recommandé pour une vraie application,
 il est préférable d'utiliser " :doc:`bcrypt <security>`" à la place.
 
-Veuillez noter que plusieurs attributs public sont accessible dans le controller avec $this->flash, $this->request ou $this->session.
+Veuillez noter que plusieurs attributs public sont accessibles dans le contrôleur avec $this->flash, $this->request ou $this->session.
 Ceux-ci sont des servies défini dans le conteneur de service de tout à l'heure. Quand ils sont accédés pour la première fois, ils sont insérés dans le controlleur.
 
 Ces services sont partagés, ce qui signifie qu'on accéde à la même instance sans tenir compte de l'endroit où on les a créés.
@@ -285,20 +285,20 @@ Par exemple, ici on créé le service de sessions et on enregistre l'identité d
 
 Sécuriser le Backend
 --------------------
-Le backend est une zone privé que seul les personnes enregistrés ont accès. Par conséquent il est nécessaire de vérifier que seul les utilisateurs enregistrés ont accés à ces controlleurs.
-Si vous n'êtes pas connectés à l'application et que vous essayez d'accéder au controlleur product, par exemple, vous verrez le message suivant :
+Le backend est une zone privé où seul les personnes enregistrés ont accès. Par conséquent il est nécessaire de vérifier que seul les utilisateurs enregistrés ont accés à ces contrôleurs.
+Si vous n'êtes pas connectés à l'application et que vous essayez d'accéder au contrôleur product, par exemple, vous verrez le message suivant :
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-A chaque fois que quelqu'un essayes d'accéder à n'importe quel controlleur/action, l'application va vérifier que le rôle de l'utilisateur (en session) lui permet d'y accéder,
+A chaque fois que quelqu'un essaye d'accéder à n'importe quel contrôleur/action, l'application va vérifier que le rôle de l'utilisateur (en session) lui permet d'y accéder,
 sinon il affiche un message comme celui du dessus et transfert le flux à la page d'accueil.
 
 Maintenant, découvrons comment l'application fait cela. La première chose à savoir est qu'il y a un composant appelé :doc:`Dispatcher <dispatching>`.
-Il est informé de la route trouvé par le composant :doc:`Routing <routing>`. Puis, il est responsable de chargé le controlleur approprié et d'exécuter l'action correspondante.
+Il est informé de la route trouvé par le composant :doc:`Routing <routing>`. Puis, il est responsable de charger le contrôleur approprié et d'exécuter l'action correspondante.
 
 En temps normal, le framework créé le dispatcher automatiquement. Dans notre cas, nous voulons faire une vérification avant d'exécuter l'action requise,
-vérifier si l'utilisateur y a accés ou pas. Pour faire cela, nous avons remplacé le composant en créant une fonction dans le bootstrap (public/index.php):
+vérifier si l'utilisateur y a accès ou pas. Pour faire cela, nous avons remplacé le composant en créant une fonction dans le bootstrap (public/index.php):
 
 .. code-block:: php
 
@@ -311,7 +311,7 @@ vérifier si l'utilisateur y a accés ou pas. Pour faire cela, nous avons rempla
 
 Nous avons maintenant un contrôle complet sur le dispatcher utilisé dans notre application.
 Plusieurs composants du framework déclenchent des évènements qui nous autorisent à modifier le flux interne des opérations.
-Comme l'injecteur de dépendances agit comme une "colle" pour composants, un nouveau composant appellé :doc:`EventsManager <events>`
+Comme l'injecteur de dépendances agit comme une "colle" pour composants, un nouveau composant appelé :doc:`EventsManager <events>`
 nous aide à intercepter les évènements produits par un composant routant les évènements aux listeners.
 
 
@@ -369,11 +369,11 @@ C'est le même nom qu'un des évènement produit dans le dispatcer :
     }
 
 Les évènements "hooks" reçoivent toujours un premier paramètre qui contient le contexte de l'information de l'évènement produit ($event)
-et un second paramètre qui est l'objet produit par l'évènement lui-même ($dispatcher). Il n'est pas obligatoire de faire étendre le plugin, de la classe
-Phalcon\\Mvc\\User\\Plugin, mais en faisant ainsi on gagne un accès facilité aux services disponibles de l'application.
+et un second paramètre qui est l'objet produit par l'évènement lui-même ($dispatcher). Il n'est pas obligatoire de faire étendre le plugin de la classe
+Phalcon\\Mvc\\User\\Plugin, mais en faisant ainsi on a un accès facilité aux services disponibles de l'application.
 
-Maintenant nous allons vérifier le rôle de la session courrante, vérifier si l'utilisatuer à accès en utilisant les listes ACL (access control list).
-S'il/elle n'a pas accès, il/elle sera redirigé vers la page d'accueil comme expliqué précédemment.
+Maintenant nous allons vérifier le rôle de la session courrante, vérifier si l'utilisateur a accès en utilisant les listes ACL (access control list).
+S'il/elle n'a pas accès, il/elle sera redirigé(e) vers la page d'accueil comme expliqué précédemment.
 
 
 .. code-block:: php
@@ -483,8 +483,8 @@ On défini les ressources pour chaque zone. Le nom des contrôleurs sont des res
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-Les ACL ont maintenant connaissance des contrôleurs et de leurs actions. Le role "Users" a accès à toutes les ressources du
-backend et du frontend. Le rôle "Guest" en revanche n'a accès qu'a la partie publique :
+Les ACL ont maintenant connaissance des contrôleurs et de leurs actions. Le rôle "Users" a accès à toutes les ressources du
+backend et du frontend. Le rôle "Guest" en revanche n'a accès qu'à la partie publique :
 
 
 .. code-block:: php
@@ -509,9 +509,9 @@ Hooray!, les ACL sont maintenant terminés.
 
 Composants utilisateurs
 ---------------
-Tous les éléments graphique et visuels de l'application ont été réalisé principalement avec `Twitter Bootstrap`_.
+Tous les éléments graphique et visuels de l'application ont été réalisés principalement avec `Twitter Bootstrap`_.
 Certains éléments, comme la barre de navigation, changent en fonction de l'état de l'applicatin (connecté/déconnecté).
-Par exemple dans le coin en haut à droite, le lien "Log in/Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter)
+Par exemple dans le coin en haut à droite, les liens "Log in/Sign up" (se connecter/s'inscrire) se changent en "Log out" (Se déconnecter)
 quand un utilisateur se connecte.
 
 Cette partie de l'application est implémentée en utilisant le composant "Elements" (app/library/Elements.php).
@@ -550,8 +550,7 @@ Maintenant enregistrons cette classe au conteneur de service :
         return new Elements();
     });
 
-Tout comme les controlleurs, les plugins et les composants à l'intérieur des vues, ce composant a aussi accès aux services requis dans le conteneur
-et en accédant juste à l'attribut.
+Tout comme les contrôleurs, les plugins et les composants à l'intérieur des vues, ce composant à aussi accès aux services requis dans le conteneur en accédant juste à l'attribut.
 
 .. code-block:: html+php
 
@@ -675,7 +674,7 @@ Chaque contrôleur a les actions suivantes :
 Formulaire de recherche
 ^^^^^^^^^^^^^^^
 Tous les CRUD commencent avec le formulaire de recherche. Ce formulaire montre tous les champs que la table products possède,
-permettant à l'utilisateur de filtrer ses recherches. La tache "products" est liée à la table "products_types".
+permettant à l'utilisateur de filtrer ses recherches. La tâche "products" est liée à la table "products_types".
 Dans notre cas, nous avons déjà demandé des enregistrements de cette table, afin de faciliter la recherche dans ce champ :
 
 
@@ -693,7 +692,7 @@ Dans notre cas, nous avons déjà demandé des enregistrements de cette table, a
         $this->view->productTypes = ProductTypes::find();
     }
 
-Tous les types de produits sont cherché et passé à la vue en tant que variable locale "productType". Puis, dans la vue
+Tous les types de produits sont cherchés et passés à la vue en tant que variable locale "productType". Puis, dans la vue
 (app/views/index.phtml) on montre un champ "select" remplis avec ces résultats :
 
 .. code-block:: html+php
@@ -715,7 +714,7 @@ données entrées par l'utilisateur.
 
 Exécuter une recherche
 ^^^^^^^^^^^^^^^^^^^
-L'action de recherche à un double comportement. Quand on y accéde avec POST, cela fait une recherche basé sur les données
+L'action de recherche a un double comportement. Quand on y accéde avec POST, cela fait une recherche basé sur les données
 que l'on a envoyé à partir du formulaire. Mais quand on y accéde via GET cela change la page courante dans le paginateur.
 Pour différencier la méthode (GET ou POST), nous utilisons le composant :doc:`Request <request>` :
 
@@ -750,7 +749,7 @@ Avec l'aide de :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Cri
 
 Cette méthode vérifie quelle valeur est différente de "" (chaine vide) et "null" et les prends en compte pour créer les critères de recherche :
 
-* Si le champs de donnée est "text" ou similaire (char, varchar, text, etc.). L'opérateur "like" sera utilisé pour filtrer les résultats.
+* Si le champs de données est "text" ou similaire (char, varchar, text, etc.). L'opérateur "like" sera utilisé pour filtrer les résultats.
 * Si le type de donnée est différent, l'opérateur "=" sera utilisé
 
 De plus, "Criteria" ignore toutes les variables POST qui ne correspondent à aucun champs de la table.
@@ -780,7 +779,7 @@ Puis, basé sur les paramètres passé, on génère la requête :
     }
 
 Si la recherche ne retourne aucun produit, on transfert l'utilisateur à l'action index. Si la recherche retourne des résultats,
-on créé un paginateur pour se déplacé à travers les pages facilement :
+on créé un paginateur pour se déplacer à travers les pages facilement :
 
 .. code-block:: php
 
@@ -796,7 +795,6 @@ on créé un paginateur pour se déplacé à travers les pages facilement :
     $page = $paginator->getPaginate();
 
 Enfin, on passe la page retournée à la vue:
-Finally we pass the returned page to view:
 
 .. code-block:: php
 
@@ -804,7 +802,7 @@ Finally we pass the returned page to view:
 
     $this->view->setVar("page", $page);
 
-Dans la vue (app/views/products/search.phtml), on affiche le résultat correspondant à la page actuel:
+Dans la vue (app/views/products/search.phtml), on affiche le résultat correspondant à la page actuelle :
 
 .. code-block:: html+php
 
@@ -823,7 +821,7 @@ Dans la vue (app/views/products/search.phtml), on affiche le résultat correspon
 Créer et modifier des entrées
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Voyons comment le CRUD créé et modifie des entrées. A partir des vues "new" et "edit", la donnée entrée par l'utilisateur
-est envoyé à l'action "create" et "save" qui exécute l'action de créer or de modifier les produits.
+est envoyé à l'action "create" et "save" qui exécute l'action de créer ou de modifier les produits.
 
 Dans la page de création, on récupère les données envoyés et on leur assigne une nouvelle instance de produit :
 
@@ -852,7 +850,7 @@ Dans la page de création, on récupère les données envoyés et on leur assign
 Les données sont filtrés avant d'être assignés à l'objet. Ce filtrage est optionnel, l'ORM échappe les données entrées et
 caste les données en fonction des types des champs.
 
-Quand on sauvegarde, nous saurons si la donnée est conforme aux règles et validations implémenté dans le model Products:
+Quand on sauvegarde, nous saurons si la donnée est conforme aux règles et validations implémentés dans le model Products:
 
 .. code-block:: php
 
@@ -972,7 +970,7 @@ Notez que la méthode parent::initialize() est aussi appelée, cela ajoute plus 
         //...
     }
 
-Enfin, le titre est afiché dans la vue principale (app/views/index.phtml) :
+Enfin, le titre est affiché dans la vue principale (app/views/index.phtml) :
 
 .. code-block:: html+php
 
