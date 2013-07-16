@@ -115,7 +115,7 @@ so that they can be loaded at will without having to redefine the whole list. Yo
     <?php
 
     //Check whether acl data already exist
-    if (!file_exists("app/security/acl.data")) {
+    if (!is_file("app/security/acl.data")) {
 
         $acl = new \Phalcon\Acl\Adapter\Memory();
 
@@ -161,7 +161,7 @@ The following example demonstrates how to attach listeners to this component:
 
     //Attach a listener for type "acl"
     $eventsManager->attach("acl", function($event, $acl) {
-        if ($event->getType() == 'beforeCheckAccess') {
+        if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
                     $acl->getActiveAccess();
