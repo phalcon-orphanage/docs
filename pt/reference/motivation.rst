@@ -2,7 +2,8 @@
 ==============
 Hoje em dia existem muitos frameworks em php, todavia nenhum deles é como o Phalcon (Sério, acredite no que estamos dizendo).
 
-A maioria dos programadores preferem utilizar um framework. Isso basicamente acontece pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o código base DRY (acrônimo de Don't Repeat Yourself, conceito que diz respeito a não repetição de códigos, mantendo o code base mais limpo e reutilizável). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objetos sempre adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
+A maioria dos programadores hoje em dia preferem utilizar um framework, esse fato ocorre principalmente pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o código base DRY (acrônimo de Don't Repeat Yourself, conjunto de conceitos em que um de seus princípios diz respeito a não repetição de códigos, mantendo o code base mais limpo e reutilizável). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objetos sempre adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
+
 
 The Question
 ------------
