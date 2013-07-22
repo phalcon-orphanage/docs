@@ -1,12 +1,8 @@
-Our motivation
+﻿Nossa Motivação
 ==============
-There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
+Hoje em dia existem muitos frameworks em php, todavia nenhum deles é como o Phalcon (Sério, acredite no que estamos dizendo).
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality
-that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework
-itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request
-from the actual application. Object-Oriented frameworks also add a lot of overhead to execution making complex
-application slow. All these operations slows the application down and subsequently impacts the end user experience.
+A maioria dos programadores preferem utilizar um framework. Isso basicamente acontece pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o código base DRY (acrônimo de Don't Repeat Yourself, conceito que diz respeito a não repetição de códigos, mantendo o code base mais limpo e reutilizável). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objetos sempre adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
 
 The Question
 ------------
