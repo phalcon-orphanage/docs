@@ -1,16 +1,16 @@
-Welcome!
+Seja Bem Vindo!
 ========
 
-Welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without worrying about performance.
+Bem vindo ao Phalcon framework, um novo conceito em framework para PHP. Nossa missão é oferecer uma ferramenta avançada em desenvolvimento de web sites e aplicações sem as preocupações quanto a performance.  
 
-What is Phalcon?
+O que é o Phalcon?
 ----------------
 
-Phalcon is an open source, full stack framework for PHP 5 written as a C-extension, optimized for high performance. You don't need learn or use the C language, since the functionality is exposed as PHP classes ready for you to use. Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.
+Phalcon é open source (código aberto), full stack framework (framework completo com todas funcionalidades necessárias para escrever uma aplicação completa) desenvolvido na forma de uma extensão em C (C-extension) para PHP 5, otimizado para alta performance. Você não precisa aprender a linguagem C e nem mesmo usa-la, pois todas as funcionalidades compiladas em C são expostas como classes em PHP pronta para seu uso. Phalcon possui baixo acoplamento, permitindo você utilizar seus objetos como componentes completamente independentes baseado na necessidades da sua aplicação.
 
-Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!
+Phalcon não é somente um framework de alta performance, nosso objetivo é fazer-lo robusto, rico em funcionalidades prontas para uso. 
 
-Table of Contents
+Tabela do Conteúdo
 -----------------
 
 .. toctree::
@@ -71,10 +71,9 @@ Table of Contents
    api/index
    reference/license
 
-Other formats
+Outros formatos
 -------------
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
 * `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
-
