@@ -122,6 +122,12 @@ Returns the content of the resource as an string Optionally a base path where th
 
 
 
+public *string*  **getRealTargetUri** ()
+
+Returns the real target uri for the generated HTML
+
+
+
 public *string*  **getRealSourcePath** ([*string* $basePath])
 
 Returns the complete location where the resource is located

@@ -73,6 +73,18 @@ Throws an internal exception
 
 
 
+protected  **_handleException** ()
+
+Handles a user exception
+
+
+
+public *string*  **getTaskClass** ()
+
+Possible task class name that will be located to dispatch the request
+
+
+
 public :doc:`Phalcon\\CLI\\Task <Phalcon_CLI_Task>`  **getLastTask** ()
 
 Returns the lastest dispatched controller
@@ -245,6 +257,12 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
 
 
 

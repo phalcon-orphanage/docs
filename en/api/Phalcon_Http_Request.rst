@@ -245,7 +245,7 @@ Checks whether HTTP method is OPTIONS. if $_SERVER['REQUEST_METHOD']=='OPTIONS'
 
 public *boolean*  **hasFiles** ([*unknown* $notErrored])
 
-Checks whether request include attached files
+Checks whether request includes attached files
 
 
 

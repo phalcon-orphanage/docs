@@ -70,7 +70,7 @@ Sets a value in the session bag
 
 public  **__set** (*string* $property, *string* $value)
 
-Magic setter to assign values to the session bag 
+Magic setter to assign values to the session bag. Alias for Phalcon\\Session\\Bag::set() 
 
 .. code-block:: php
 
@@ -96,7 +96,7 @@ Obtains a value from the session bag optionally setting a default value
 
 public *string*  **__get** (*string* $property)
 
-Magic getter to obtain values from the session bag 
+Magic getter to obtain values from the session bag. Alias for Phalcon\\Session\\Bag::get() 
 
 .. code-block:: php
 
@@ -122,7 +122,7 @@ Check whether a property is defined in the internal bag
 
 public *boolean*  **__isset** (*string* $property)
 
-Magic isset to check whether a property is defined in the bag 
+Magic isset to check whether a property is defined in the bag. Alias for Phalcon\\Session\\Bag::has() 
 
 .. code-block:: php
 
@@ -148,7 +148,7 @@ Removes a property from the internal bag
 
 public *boolean*  **__unset** (*string* $property)
 
-Magic unset to remove items using the array syntax 
+Magic unset to remove items using the property syntax. Alias for Phalcon\\Session\\Bag::remove() 
 
 .. code-block:: php
 

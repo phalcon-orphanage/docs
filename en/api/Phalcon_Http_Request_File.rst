@@ -30,7 +30,7 @@ Provides OO wrappers to the $_FILES superglobal
 Methods
 ---------
 
-public  **__construct** (*array* $file)
+public  **__construct** (*array* $file, [*unknown* $key])
 
 Phalcon\\Http\\Request\\File constructor
 
@@ -66,9 +66,31 @@ Gets the real mime type of the upload file using finfo
 
 
 
+public *string*  **getError** ()
+
+Returns the error code
+
+
+
+public *string*  **getKey** ()
+
+Returns the file key
+
+
+
+public  **isUploadedFile** ()
+
+...
+
+
 public *boolean*  **moveTo** (*string* $destination)
 
 Moves the temporary file to a destination within the application
 
+
+
+public static  **__set_state** (*unknown* $file, [*unknown* $key])
+
+...
 
 

@@ -106,13 +106,13 @@ Return the services registered in the DI
 
 public *boolean*  **offsetExists** (*string* $name)
 
-Check if a service is registered using the array syntax
+Check if a service is registered using the array syntax. Alias for Phalcon\\Di::has()
 
 
 
 public  **offsetSet** (*string* $name, *mixed* $definition)
 
-Allows to register a shared service using the array syntax 
+Allows to register a shared service using the array syntax. Alias for Phalcon\\Di::setShared() 
 
 .. code-block:: php
 
@@ -123,9 +123,9 @@ Allows to register a shared service using the array syntax
 
 
 
-public *mixed*  **offsetGet** (*string* $name)
+public *mixed*  **offsetGet** (*string* $name, [*unknown* $parameters])
 
-Allows to obtain a shared service using the array syntax 
+Allows to obtain a shared service using the array syntax. Alias for Phalcon\\Di::getShared() 
 
 .. code-block:: php
 
@@ -138,7 +138,7 @@ Allows to obtain a shared service using the array syntax
 
 public  **offsetUnset** (*string* $name)
 
-Removes a service from the services container using the array syntax
+Removes a service from the services container using the array syntax. Alias for Phalcon\\Di::remove()
 
 
 

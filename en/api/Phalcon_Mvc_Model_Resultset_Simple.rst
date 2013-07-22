@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
-Simple resultsets only contains complete objects This class builds every complete object as it is required.
+Simple resultsets only contains complete objects. This class builds every complete object as it is required
 
 
 Constants
@@ -56,13 +56,13 @@ Unserializing a resultset only works on the rows present in the saved state
 
 public  **next** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Moves the cursor to next row in the resultset
+Moves cursor to next row in the resultset
 
 
 
 public *int*  **key** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Gets pointer number of the active row in the resultset
+Gets pointer number of active row in the resultset
 
 
 
@@ -86,25 +86,25 @@ Counts how many rows are in the resultset
 
 public *boolean*  **offsetExists** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Checks whether the offset exists in the resultset
+Checks whether offset exists in the resultset
 
 
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Gets the row at a specific position of the resultset
+Gets row in a specific position of the resultset
 
 
 
 public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
 public  **offsetUnset** (*int* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
@@ -116,13 +116,13 @@ Returns the internal type of data retrieval that the resultset is using
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Get the first row in the resultset
+Get first row in the resultset
 
 
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Get the last row in the resultset
+Get last row in the resultset
 
 
 
@@ -134,7 +134,7 @@ Set if the resultset is fresh or an old one cached
 
 public *boolean*  **isFresh** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Tell if the resultset is fresh or an old one cached
+Tell if the resultset if fresh or an old one cached
 
 
 
@@ -158,7 +158,7 @@ Returns the associated cache for the resultset
 
 public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Returns the current row in the resultset
+Returns current row in the resultset
 
 
 

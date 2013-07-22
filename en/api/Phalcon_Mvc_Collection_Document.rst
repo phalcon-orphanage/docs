@@ -11,7 +11,7 @@ Methods
 
 public *boolean*  **offsetExists** (*int* $index)
 
-Checks whether offset exists in the row
+Checks whether an offset exists in the document
 
 
 

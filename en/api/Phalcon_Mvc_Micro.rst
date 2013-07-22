@@ -156,15 +156,15 @@ Returns the value returned by the executed handler
 
 
 
-public *boolean*  **offsetExists** (*string* $alias)
+public *boolean*  **offsetExists** (*unknown* $serviceName)
 
-Check if a service is registered in the internal services container using the array syntax
+Check if a service is registered in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::hasService()
 
 
 
-public  **offsetSet** (*string* $alias, *mixed* $definition)
+public  **offsetSet** (*unknown* $serviceName, *mixed* $definition, [*unknown* $shared])
 
-Allows to register a shared service in the internal services container using the array syntax 
+Allows to register a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::setService() 
 
 .. code-block:: php
 
@@ -175,9 +175,9 @@ Allows to register a shared service in the internal services container using the
 
 
 
-public *mixed*  **offsetGet** (*string* $alias)
+public *mixed*  **offsetGet** (*unknown* $serviceName)
 
-Allows to obtain a shared service in the internal services container using the array syntax 
+Allows to obtain a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::getService() 
 
 .. code-block:: php
 

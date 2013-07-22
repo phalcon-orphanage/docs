@@ -41,7 +41,7 @@ Returns the value of an option if present
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOptions** (*array* $options)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options)
 
 Sets options for the element
 
@@ -65,7 +65,7 @@ Returns the entity related to the model
 
 
 
-public *Phalcon\\Forms\\ElementInterface[]*  **getElements** ()
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` [] **getElements** ()
 
 Returns the form elements added to the form
 
@@ -101,7 +101,7 @@ Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (*Phalcon\\Forms\\ElementInterface* $element)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element)
 
 Adds an element to the form
 
@@ -113,7 +113,7 @@ Renders a specific item in the form
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **get** (*string* $name)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **get** (*string* $name)
 
 Returns an element added to the form by its name
 

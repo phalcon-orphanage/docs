@@ -117,6 +117,12 @@ Returns the content of the resource as an string Optionally a base path where th
 
 
 
+public *string*  **getRealTargetUri** () inherited from Phalcon\\Assets\\Resource
+
+Returns the real target uri for the generated HTML
+
+
+
 public *string*  **getRealSourcePath** ([*string* $basePath]) inherited from Phalcon\\Assets\\Resource
 
 Returns the complete location where the resource is located

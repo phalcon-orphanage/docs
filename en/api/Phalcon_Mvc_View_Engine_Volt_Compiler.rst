@@ -104,7 +104,7 @@ Register the user registered filters
 
 
 
-public  **setUniquePrefix** (*string* $prefix)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **setUniquePrefix** (*string* $prefix)
 
 Set a unique prefix to be used as prefix for compiled variables
 

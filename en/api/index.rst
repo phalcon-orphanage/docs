@@ -24,6 +24,7 @@ API Indice
    Phalcon_Assets_Exception
    Phalcon_Assets_Filters_Cssmin
    Phalcon_Assets_Filters_Jsmin
+   Phalcon_Assets_Filters_None
    Phalcon_Assets_Manager
    Phalcon_Assets_Resource
    Phalcon_Assets_Resource_Css
@@ -52,6 +53,7 @@ API Indice
    Phalcon_Cache_Multiple
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
+   Phalcon_Config_Adapter_Json
    Phalcon_Config_Exception
    Phalcon_Crypt
    Phalcon_Crypt_Exception
@@ -126,10 +128,12 @@ API Indice
    Phalcon_Logger
    Phalcon_Logger_Adapter
    Phalcon_Logger_Adapter_File
+   Phalcon_Logger_Adapter_Firephp
    Phalcon_Logger_Adapter_Stream
    Phalcon_Logger_Adapter_Syslog
    Phalcon_Logger_Exception
    Phalcon_Logger_Formatter
+   Phalcon_Logger_Formatter_Firephp
    Phalcon_Logger_Formatter_Json
    Phalcon_Logger_Formatter_Line
    Phalcon_Logger_Formatter_Syslog
@@ -266,6 +270,7 @@ API Indice
    Phalcon_FilterInterface
    Phalcon_Filter_UserFilterInterface
    Phalcon_FlashInterface
+   Phalcon_Forms_ElementInterface
    Phalcon_Http_RequestInterface
    Phalcon_Http_Request_FileInterface
    Phalcon_Http_ResponseInterface

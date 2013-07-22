@@ -3,6 +3,8 @@ Class **Phalcon\\Forms\\Element\\Date**
 
 *extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
+*implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
+
 Component INPUT[type=date] for forms
 
 
@@ -21,19 +23,19 @@ Phalcon\\Forms\\Element constructor
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form) inherited from Phalcon\\Forms\\Element
 
 Sets the parent form to the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **getForm** () inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **getForm** () inherited from Phalcon\\Forms\\Element
 
 Returns the parent form to the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setName** (*string* $name) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setName** (*string* $name) inherited from Phalcon\\Forms\\Element
 
 Sets the element's name
 
@@ -45,13 +47,13 @@ Returns the element's name
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setFilters** (*array|string* $filters) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*array|string* $filters) inherited from Phalcon\\Forms\\Element
 
 Sets the element's filters
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **addFilter** (*string* $filter) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addFilter** (*string* $filter) inherited from Phalcon\\Forms\\Element
 
 Adds a filter to current list of filters
 
@@ -63,13 +65,13 @@ Returns the element's filters
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **addValidators** (*unknown* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidators** (*unknown* $validators, [*unknown* $merge]) inherited from Phalcon\\Forms\\Element
 
 Adds a group of validators
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
 
 Adds a validator to the element
 
@@ -87,7 +89,7 @@ Returns an array of prepared attributes for Phalcon\\Tag helpers according to th
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setAttribute** (*string* $attribute, *mixed* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*string* $attribute, *mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets a default attribute for the element
 
@@ -99,7 +101,7 @@ Returns the value of an attribute if present
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttributes** (*array* $attributes) inherited from Phalcon\\Forms\\Element
 
 Sets default attributes for the element
 
@@ -111,7 +113,7 @@ Returns the default attributes for the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOption** (*string* $option, *mixed* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*string* $option, *mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets an option for the element
 
@@ -123,7 +125,7 @@ Returns the value of an option if present
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOptions** (*array* $options) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options) inherited from Phalcon\\Forms\\Element
 
 Sets options for the element
 
@@ -135,7 +137,7 @@ Returns the options for the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setLabel** (*string* $label) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** (*string* $label) inherited from Phalcon\\Forms\\Element
 
 Sets the element label
 
@@ -153,7 +155,7 @@ Generate the HTML to label the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setDefault** (*mixed* $value) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*mixed* $value) inherited from Phalcon\\Forms\\Element
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in $_POST
 
@@ -183,13 +185,13 @@ Checks whether there are messages attached to the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setMessages** (:doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` $group) inherited from Phalcon\\Forms\\Element
 
 Sets the validation messages related to the element
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message) inherited from Phalcon\\Forms\\Element
 
 Appends a message to the internal message list
 

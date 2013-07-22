@@ -31,12 +31,6 @@ Every application controller should extend this class that encapsulates all the 
        return $this->dispatcher->forward(array('controller' => 'people', 'action' => 'index'));
       }
     
-      //This action will be executed when a non existent action is requested
-      public function notFoundAction()
-      {
-    
-      }
-    
     }
 
 

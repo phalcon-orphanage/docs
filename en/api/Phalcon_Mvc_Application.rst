@@ -55,7 +55,7 @@ public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
 
 
-public  **useImplicitView** (*boolean* $implicitView)
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **useImplicitView** (*boolean* $implicitView)
 
 By default. The view is implicitly buffering all the output You can full disable the view component using this method
 
@@ -89,7 +89,7 @@ Return the modules registered in the application
 
 
 
-public  **setDefaultModule** (*string* $defaultModule)
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **setDefaultModule** (*string* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
 

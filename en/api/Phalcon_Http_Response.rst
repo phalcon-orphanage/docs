@@ -237,7 +237,7 @@ Prints out HTTP response to the client
 
 
 
-public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
+public  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
 
 Sets an attached file to be sent at the end of the request
 

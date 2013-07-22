@@ -86,13 +86,13 @@ Gets row in a specific position of the resultset
 
 public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
 public  **offsetUnset** (*int* $offset)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 

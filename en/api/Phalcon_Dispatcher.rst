@@ -187,3 +187,9 @@ Check if the current executed action was forwarded by another one
 
 
 
+public *string*  **getHandlerClass** ()
+
+Possible class name that will be located to dispatch the request
+
+
+

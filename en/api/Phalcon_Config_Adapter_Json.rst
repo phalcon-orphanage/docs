@@ -1,27 +1,17 @@
-Class **Phalcon\\Config\\Adapter\\Ini**
-=======================================
+Class **Phalcon\\Config\\Adapter\\Json**
+========================================
 
 *extends* :doc:`Phalcon\\Config <Phalcon_Config>`
 
 *implements* Countable, ArrayAccess
 
-Reads ini files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
+Reads JSON files and converts them to Phalcon\\Config objects.  Given the following configuration file:  
 
-.. code-block:: ini
+.. code-block:: php
 
     <?php
 
-    [database]
-    adapter = Mysql
-    host = localhost
-    username = scott
-    password = cheetah
-    dbname = test_db
-    
-    [phalcon]
-    controllersDir = "../app/controllers/"
-    modelsDir = "../app/models/"
-    viewsDir = "../app/views/"
+    {"phalcon":{"baseuri":"\/phalcon\/"},"models":{"metadata":"memory"}}
 
   You can read it as follows:  
 
@@ -29,9 +19,9 @@ Reads ini files and converts them to Phalcon\\Config objects.  Given the next co
 
     <?php
 
-    $config = new Phalcon\Config\Adapter\Ini("path/config.ini");
-    echo $config->phalcon->controllersDir;
-    echo $config->database->username;
+    $config = new Phalcon\Config\Adapter\Json("path/config.json");
+    echo $config->phalcon->baseuri;
+    echo $config->models->metadata;
 
 
 
@@ -40,7 +30,7 @@ Methods
 
 public  **__construct** (*string* $filePath)
 
-Phalcon\\Config\\Adapter\\Ini constructor
+Phalcon\\Config\\Adapter\\Json constructor
 
 
 
