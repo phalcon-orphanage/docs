@@ -1,43 +1,41 @@
 ﻿Nossa Motivação
 ==============
-Hoje em dia existem muitos frameworks em php, todavia nenhum deles é como o Phalcon (Sério, acredite no que estamos dizendo).
+Hoje em dia existem muitos frameworks em php, todavia nenhum deles é como o Phalcon (Sério, acredite em nós quanto a esse framework).
 
-A maioria dos programadores hoje em dia preferem utilizar um framework, esse fato ocorre principalmente pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o código base DRY (acrônimo de Don't Repeat Yourself, conjunto de conceitos em que um de seus princípios diz respeito a não repetição de códigos, mantendo o code base mais limpo e reutilizável). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objetos sempre adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
+A maioria dos programadores atualmente preferem utilizar um framework, esse fato ocorre principalmente pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o code base DRY (acrônimo de Don't Repeat Yourself). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objeto também adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
 
-
-The Question
+A Questão
 ------------
-Why can't we have a robust framework with all of its advantages but with none or very few disadvantages?
+Porque não podemos ter um framework robusto com todas suas vantagens sem nenhuma ou pouca desvantagem?
 
-This is why Phalcon was born!
+É por esse motivo que nasceu o Phalcon!
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations
-(big or small). Through this understanding, we managed to remove unnecessary validations, compacted code, performed optimizations
-and generated low-level solutions so as to achieve maximum performance from Phalcon.
+Durante os último meses, pesquisamos extensivamente o comportamento do PHP, investigando áreas de significantes otimizações (pequenas ou grande).
+Através desse entendimento, removemos validações desnecessárias, compactando o código, executamos otimizações à um baixo nível de solução, assim alcançamos o máximo de performance para o Phalcon.
 
-Why?
+Por que?
 ----
-* The use of frameworks has become mandatory in professional development with PHP
-* Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
-* We love PHP and we think it can be used to create larger and more ambitious projects
+* O uso do framework tornou-se mandatório para um profissional de desenvolvimento em PHP.
+* Frameworks oferecem um conjunto de princípios estruturados que facilitam a manutenção do projeto, escrevendo menos código e tornando o trabalho mais divertido. 
+* Nós adoramos PHP e o consideramos que o mesmo pode ser utilizado na criação de grandes e ambiciosos projetos.
 
-Inner workings of PHP?
+Como é o funcionamento interno do PHP?
 ----------------------
-* PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
-* PHP is interpreted and not compiled. The major disadvantage is performance loss
-* Every time a script is requested it must be first interpreted
-* If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
+* PHP possui tipagem de variáveis dinâmica e fraca. Toda vez que uma operação ocorre (ex. 2 + “2”), o PHP verifica o tipo de operação e executa as devidas conversões dos dados.
+* PHP é interpretado e não compilado. A maior desvantagem dessa característica é a perda de performance.
+* Toda vez que um script é requisitado, primeiramente deverá ser interpretado.
+* Se o cache do bytecode (como o APC) não estiver habilitado, a cada requisição o compilador ira fazer a checagem da sintaxe para todos os arquivos.
 
-How traditional PHP frameworks work?
+Como os tradicionais frameworks em PHP funcionam?
 ------------------------------------
-* Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
-* Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
+* Muitos arquivos com definição de classes e funções são lidos a cada requisição. A leitura em disco onera em termos de performance, especialmente quando os arquivos são estruturados em profundas hierárquica de diretórios. 
+* Frameworks modernos possuem inclusão automática de arquivos (autoload ou lazy-loading) para melhorar a performance, executando os arquivos sob demanda.
 * Some of these classes contain methods that aren't used in every request but they're loaded always consuming memory
 * Continuous loading or interpreting is expensive and impacts performance
 * The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
 
 How does a PHP C-extension work?
---------------------------------
+------------Object-Oriented frameworks also add a lot of overhead to execution making complex application slow.--------------------
 * C extensions are loaded together with PHP one time on the web server's daemon start process
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
