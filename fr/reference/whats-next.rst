@@ -1,3 +1,6 @@
+.. highlights::
+Attention: Cette documentation est incomplète.
+
 Améliorer les performances : C'est quoi la suite ?
 ====================================
 Avoir des applications plus rapides nécessite l'amélioration de différents composants : Le serveur, le client, le réseau
@@ -74,7 +77,7 @@ du côté serveur. Dans le cas de MySQL, vous pouvez utiliser les "slow queries 
 
 Profilage côté Client
 ---------------------
-Des fois, on ait besoin d'améliorer le chargement des éléments statiques comme des images, du javascript et du CSS pour améliorer les performances.
+Des fois, on as besoin d'améliorer le chargement des éléments statiques comme des images, du javascript et du CSS pour améliorer les performances.
 Les outils suivants sont très utiles pour détecter les goulot d'étranglement du côté client :
 
 
@@ -100,10 +103,9 @@ YSlow_  analyse les pages web et suggère des moyens d'améliorer les performanc
 
 Profilage avec Speed Tracer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-`Speed Tracer`_ est un outil pour vous aider à identifier et corriger les problèmes de votre application web. Il visualise les métriques
-s a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken
-from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a
-Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
+`Speed Tracer`_ is a tool to help you identify and fix performance problems in your web applications.
+It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs.
+Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
 .. figure:: ../_static/img/speed-tracer.jpg
     :align: center

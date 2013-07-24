@@ -1,10 +1,9 @@
 .. highlights::
-Attention: cette traduction n'est pas parfaite, si des éléments vous paraissent faux ou mal expliqués, merci de modifier la documentation. Lisez la documentation en anglais pour avoir toutes les
-explications.
+Attention: cette traduction n'est pas parfaite, si des éléments vous paraissent faux ou mal expliqués, merci de modifier la documentation.
 
-Stoquer des données dans une session
+Stocker des données dans une session
 =======================
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` fournit un ensemble de fonctions liés à la gestion des sessions.
+:doc:`Phalcon\\Session <../api/Phalcon_Session>` fourni un ensemble de fonctions liés à la gestion des sessions.
 
 Pourquoi utiliser ce composant plutôt que les sessions par défaut ?
 
@@ -30,10 +29,10 @@ Grâce au conteneur de services, on peux s'assurer que les sessions sont accessi
         return $session;
     });
 
-Stoquer/Récupérer les données en session
+Stocker/Récupérer les données en session
 ----------------------------------
 A partir d'un contrôleur, d'une vue ou de n'importe quel autre composant qui hérite de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` vous pourrez
-accéder aux services de session et stoquer/récupérer des informations de cette manière :
+accéder aux services de session et stocker/récupérer des informations de cette manière :
 
 
 .. code-block:: php
@@ -89,7 +88,7 @@ Il est aussi tout à fait possible de supprimer des variables spécifiques de se
 
 Isoler les données de sessions entre les applications
 -------------------------------------------
-Dés fois un utilisateur peut utiliser la même application plusieurs fois sur le même serveur, dans la même session.
+Des fois un utilisateur peut utiliser la même application plusieurs fois sur le même serveur, dans la même session.
 Bien sûr, si on utilise des variables de session, nous voulons que chaque application ait ses propres données (même s'ils doivent utiliser les même noms de variable).
 Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions de variable créé dans une certaine application :
 
@@ -117,7 +116,7 @@ Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions 
 Sac de Session
 ------------
 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` est un composant qui aide à séparer les données de sessions dans des "espaces de noms".
-En travaillant de cette manière on peux facilement créer des groupes de sessions dans l'application. En plaçant les variables dans le "sac", cela stoque
+En travaillant de cette manière on peux facilement créer des groupes de sessions dans l'application. En plaçant les variables dans le "sac", cela stocke
 automatiquement les données dans la session :
 
 
@@ -135,7 +134,7 @@ Données persistantes dans les composants
 -----------------------------
 Les contrôleurs, composants et classes qui héritent de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` peuvent injecter un :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.
 Cette classe isole les variables pour chaque classes.
-Grace à cela, vous pouvez faire durer vos données entre les requêtes de chaque classes de manière indépendant.
+Grace à cela, vous pouvez faire durer vos données entre les requêtes de chaque classes de manière indépendantes.
 
 .. code-block:: php
 
@@ -186,7 +185,7 @@ Les données ajoutés à la session ($this->session) sont disponibles à travers
 partir de la portée de la classe courante.
 
 
-Implementer son propre adaptateur
+Implémenter son propre adaptateur
 ------------------------------
 :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` est une interface qui doit être implémentée pour créer ses propres adaptateurs de session
 ou hériter d'adaptateurs déjà existants.
