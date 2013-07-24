@@ -1,31 +1,38 @@
-Increasing Performance: What's next?
+.. highlights::
+Attention: Cette documentation est incomplète.
+
+Améliorer les performances : C'est quoi la suite ?
 ====================================
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
-In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
-your application.
+Avoir des applications plus rapides nécessite l'amélioration de différents composants : Le serveur, le client, le réseau
+la base de données, le serveur web, les sources statiques, etc.
+Dans ce chapitre nous avons sélectionné des scénarios où l'on pourra améliorer les performances et où nous verrons comment voir ce qui
+ralentit notre application.
 
-Profile on the Server
+
+Profilage du Server
 ---------------------
-Each application is different, the permanent profiling is important to understand where performance can be increased.
-Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another,
-so it is important to make enough measurements to make conclusions.
+Chaque application est différente, le profilage (l'analyse) constante est importante pour comprendre où les performances peuvent être améliorés.
+Le profilage nous permet d'avoir une idée réelle de ce qui est lent et de ce qui ne l'est pas. Chaque analyse varie en fonction des requêtes, donc
+il est important de faire assez de mesures pour obtenir des conclusions efficace.
 
-Profiling with XDebug
+
+Profilage avec XDebug
 ^^^^^^^^^^^^^^^^^^^^^
-Xdebug_ provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
+Xdebug_ nous fournit un moyen simple d'analyser des applications php, il suffit d'installer l'extension et d'autoriser le profilage dans php.ini :
 
 .. code-block:: ini
 
     xdebug.profiler_enable = On
 
-Using a tool like Webgrind_ you can see which functions/methods are slower than others:
+En utilisant un outils comme Webgrind_ on peux voir quelles fonctions/méthodes sont lentes par rapport aux autres :
 
 .. figure:: ../_static/img/webgrind.jpg
     :align: center
 
-Profiling with Xhprof
+Profilage avec Xhprof
 ^^^^^^^^^^^^^^^^^^^^^
-Xhprof_ is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
+Xhprof_ est une autre extension intéressante pour l'analyse d'applications php.
+Ajoutez le code suivant au début du fichier index.php (le fichier bootstrap qui se trouve normalement dans public/) :
 
 .. code-block:: php
 
@@ -33,7 +40,7 @@ Xhprof_ is another interesting extension to profile PHP applications. Add the fo
 
     xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
-Then at the end of the file save the profiling data:
+Puis à la fin de ce même fichier, ajoutez ceci :
 
 .. code-block:: php
 
@@ -50,7 +57,7 @@ Then at the end of the file save the profiling data:
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in html viewer to analize the profile data:
+Xhprof fournit un aperçu en html pour analyser les données récupérés :
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center
@@ -58,72 +65,75 @@ Xhprof provides a built-in html viewer to analize the profile data:
 .. figure:: ../_static/img/xhprof-1.jpg
     :align: center
 
-Profiling SQL Statements
+Profilage des requête SQL
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important to increase the performance
-in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
+La plupart des bases de données fournissent des outils pour identifier les requêtes lourdes. Détecter et corriger ces requêtes est très important pour améliorer les performances
+du côté serveur. Dans le cas de MySQL, vous pouvez utiliser les "slow queries logs" (logs de requêtes lentes) pour savoir quelles requêtes prennent plus de temps que prévu :
 
 .. code-block:: ini
 
     log-slow-queries = /var/log/slow-queries.log
     long_query_time = 1.5
 
-Profile on the Client
+Profilage côté Client
 ---------------------
-Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance.
-The following tools are useful to detect common bottlenecks in the client side:
+Des fois, on as besoin d'améliorer le chargement des éléments statiques comme des images, du javascript et du CSS pour améliorer les performances.
+Les outils suivants sont très utiles pour détecter les goulot d'étranglement du côté client :
 
-Profile with Chrome/Firefox
+
+Profilage avec Chrome/Firefox
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the
-loading of the different resources required by a single page:
+La plupart des navigateurs modernes ont des outils pour profiler le chargement des pages. Dans chrome vous pouvez utiliser l'inspecteur d'élément
+pour savoir ce qui prends du temps à charger sur une page.
 
 .. figure:: ../_static/img/chrome-1.jpg
     :align: center
 
-Firebug_ provides a similar functionality:
+Firebug_ fournit les mêmes fonctionnalités sous firefox :
 
 .. figure:: ../_static/img/firefox-1.jpg
     :align: center
 
 Yahoo! YSlow
 ------------
-YSlow_ analyzes web pages and suggests ways to improve their performance based on a set of `rules for high performance web pages`_
+YSlow_  analyse les pages web et suggère des moyens d'améliorer les performances en fonction d'un ensemble de `règles pour des pages de hautes performances`_
 
 .. figure:: ../_static/img/yslow-1.jpg
     :align: center
 
-Profile with Speed Tracer
+Profilage avec Speed Tracer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-`Speed Tracer`_ is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken
-from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a
-Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
+`Speed Tracer`_ is a tool to help you identify and fix performance problems in your web applications.
+It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs.
+Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
 .. figure:: ../_static/img/speed-tracer.jpg
     :align: center
 
-This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
-Javascript evaluation and CSS styling.
+Cet outil est très pratique parce qu'il permet d'avoir un vrai temps de chargement nécessaire pour l'affichage de la page complet (y compris le parsage des éléments HTML, Javascript et CSS).
 
-Use a recent PHP version
-------------------------
-PHP is faster every day, using the latest version improves the performance of your applications and also Phalcon.
 
-Use a PHP Bytecode Cache
+Utiliser une version récente de PHP
 ------------------------
-APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
-in each request. Once the extension is installed use the following setting to enable APC:
+PHP est plus rapide chaque jour, en utilisant la dernière version, vous pourrez améliorer les performances de votre application
+et aussi de PHP.
+
+Utiliser un cache PHP Bytecode
+------------------------
+APC_, comme beaucoup d'autre cache bytecode, aide une application à réduire le temps de chargement des lectures, il segmente et parse les fichiers PHP pour chaque requêtes.
+Une fois l'extension installé, utilisez la ligne suivante pour le mettre en place :
+
 
 .. code-block:: ini
 
     apc.enabled = On
     
-PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4. 
+PHP 5.5 inclus un cache bytecode intégré appelé ZendOptimizer+, cette extension est aussi disponible pour PHP 5.3 et 5.4.
 
-Do blocking work in the background
+Mettez le travail lent en tâche de fond
 ----------------------------------
-Process a video, send e-mails, compress a file or an image are slow tasks that must be processed in background jobs.
-There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+Traiter une vidéo, envoyer des emails, compresser un fichier ou une image sont des tâches lentes qui doivent être mises en tâche de fond.
+Voici une variété d'outils qui fournissent un système de mise en queue (effectuer les tâches les unes après les autres) ou un système de messages programme à programme qui fonctionne bien avec PHP :
 
 * `Beanstalkd <http://kr.github.io/beanstalkd/>`_
 * `Redis <http://redis.io/>`_
@@ -134,13 +144,13 @@ There are a variety of tools that provide queuing or messaging systems that work
 
 Google Page Speed
 -----------------
-mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available 
-for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets 
-(CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
+mod_pagespeed_ accélère votre site et réduit le temps de chargement des pages. Ce module apache open-source (aussi disponible pour nginx sous le nom ngx_pagespeed)
+met en place les meilleures pratique d'optimisation sur votre serveur, automatique. Il associe aussi les fichiers CSS, javascript et les images sans que vous n'ayez besoin de
+modifier le contenu de votre site.
 
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/
-.. _rules for high performance web pages: http://developer.yahoo.com/performance/rules.html
+.. _règles pour des pages de hautes performances: http://developer.yahoo.com/performance/rules.html
 .. _XDebug: http://xdebug.org/docs
 .. _Xhprof: https://github.com/facebook/xhprof
 .. _Speed Tracer: https://developers.google.com/web-toolkit/speedtracer/
