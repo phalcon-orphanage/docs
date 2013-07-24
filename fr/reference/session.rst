@@ -1,17 +1,22 @@
-Storing data in Session
+.. highlights::
+Attention: cette traduction n'est pas parfaite, si des éléments vous paraissent faux ou mal expliqués, merci de modifier la documentation.
+
+Stocker des données dans une session
 =======================
-The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
+:doc:`Phalcon\\Session <../api/Phalcon_Session>` fourni un ensemble de fonctions liés à la gestion des sessions.
 
-Reasons to use this component instead of raw-sessions:
+Pourquoi utiliser ce composant plutôt que les sessions par défaut ?
 
-* You can easily isolate session data across applications on the same domain
-* Intercept where session data is set/get in your application
-* Change the session adapter according to the application needs
+* Vous pouvez facilement isoler des données de session à travers différentes applications du même domaine.
+* Vous pouvez intercepter où les sessions sont définis/récupérés (get/set) dans votre application.
+* Changer l'adaptateur de session en fonction de vos besoins.
 
-Starting the Session
+
+Commencer la Session
 --------------------
-Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually.
-Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
+Certaines applications sont très dépendantes des sessions, pratiquement chaque action qui est réalisé nécessite l'accès aux données de sessions.
+Il y a aussi d'autres applications qui nécessiteront moins les sessions.
+Grâce au conteneur de services, on peux s'assurer que les sessions sont accessiblent seulement quand nécessaire :
 
 .. code-block:: php
 
@@ -24,10 +29,11 @@ Thanks to the service container, we can ensure that the session is accessed only
         return $session;
     });
 
-Storing/Retrieving data in Session
+Stocker/Récupérer les données en session
 ----------------------------------
-From a controller, a view or any other component that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
-and store items and retrieve them in the following way:
+A partir d'un contrôleur, d'une vue ou de n'importe quel autre composant qui hérite de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` vous pourrez
+accéder aux services de session et stocker/récupérer des informations de cette manière :
+
 
 .. code-block:: php
 
@@ -55,9 +61,9 @@ and store items and retrieve them in the following way:
 
     }
 
-Removing/Destroying Sessions
+Supprimer / Détruire des sessions
 ----------------------------
-It's also possible remove specific variables or destroy the whole session:
+Il est aussi tout à fait possible de supprimer des variables spécifiques de session ou de supprimer la session entièrement :
 
 .. code-block:: php
 
@@ -80,11 +86,13 @@ It's also possible remove specific variables or destroy the whole session:
 
     }
 
-Isolating Session Data between Applications
+Isoler les données de sessions entre les applications
 -------------------------------------------
-Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session,
-we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a
-prefix for every session variable created in a certain application:
+Des fois un utilisateur peut utiliser la même application plusieurs fois sur le même serveur, dans la même session.
+Bien sûr, si on utilise des variables de session, nous voulons que chaque application ait ses propres données (même s'ils doivent utiliser les même noms de variable).
+Pour résoudre ce problème, vous pouvez ajouter un prefix pour chaque sessions de variable créé dans une certaine application :
+
+
 
 .. code-block:: php
 
@@ -105,11 +113,12 @@ prefix for every session variable created in a certain application:
         return $session;
     });
 
-Session Bags
+Sac de Session
 ------------
-:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
-Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
-it's automatically stored in session:
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` est un composant qui aide à séparer les données de sessions dans des "espaces de noms".
+En travaillant de cette manière on peux facilement créer des groupes de sessions dans l'application. En plaçant les variables dans le "sac", cela stocke
+automatiquement les données dans la session :
+
 
 .. code-block:: php
 
@@ -121,11 +130,11 @@ it's automatically stored in session:
     $user->age  = 22;
 
 
-Persistent Data in Components
+Données persistantes dans les composants
 -----------------------------
-Controller, components and classes thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
-Thanks to this you can persist data between requests in every class in an independent way.
+Les contrôleurs, composants et classes qui héritent de :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` peuvent injecter un :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.
+Cette classe isole les variables pour chaque classes.
+Grace à cela, vous pouvez faire durer vos données entre les requêtes de chaque classes de manière indépendantes.
 
 .. code-block:: php
 
@@ -150,7 +159,7 @@ Thanks to this you can persist data between requests in every class in an indepe
 
     }
 
-In a component:
+Dans un composant :
 
 .. code-block:: php
 
@@ -172,11 +181,13 @@ In a component:
 
     }
 
-The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
-can only be accessed in the scope of the current class.
+Les données ajoutés à la session ($this->session) sont disponibles à travers toute l'application, tandis qu'avec $this->persistant, on ne peux y accéder qu'à
+partir de la portée de la classe courante.
 
-Implementing your own adapters
+
+Implémenter son propre adaptateur
 ------------------------------
-The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own session adapters or extend the existing ones.
+:doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` est une interface qui doit être implémentée pour créer ses propres adaptateurs de session
+ou hériter d'adaptateurs déjà existants.
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter>`_
+Il y a plus d'adaptateur disponibles pour ce composant dans l'`Incubator Phalcon <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter>`_
