@@ -1,74 +1,61 @@
-Our motivation
+﻿Nossa Motivação
 ==============
-There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
+Hoje em dia existem muitos frameworks em PHP, todavia nenhum deles é como o Phalcon (Sério, acredite em nós quanto a esse framework).
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality
-that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework
-itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request
-from the actual application. Object-Oriented frameworks also add a lot of overhead to execution making complex
-application slow. All these operations slows the application down and subsequently impacts the end user experience.
+A maioria dos programadores atualmente preferem utilizar um framework, esse fato ocorre principalmente pelo grande conjunto de funcionalidades já prontas e testadas para o uso, mantendo o code base DRY (acrônimo de Don't Repeat Yourself). Entretanto, um framework por si só demanda uma porção de inclusões de arquivos e centenas de linhas de código para serem interpretadas e executadas a cada requisição da aplicação. Frameworks Orientados à Objeto também adicionam bastante overhead à cada execução, deixando a aplicação complexa e lenta. Todas essas operações retardam a aplicação e consequentemente afeta a experiencia do usuário final.
 
-The Question
+A Questão
 ------------
-Why can't we have a robust framework with all of its advantages but with none or very few disadvantages?
+Porque não podemos ter um framework robusto com todas suas vantagens sem nenhuma ou pouca desvantagem?
 
-This is why Phalcon was born!
+É por essa questão que o Phalcon nasceu!
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations
-(big or small). Through this understanding, we managed to remove unnecessary validations, compacted code, performed optimizations
-and generated low-level solutions so as to achieve maximum performance from Phalcon.
+Durante os último meses, pesquisamos extensivamente o comportamento do PHP, investigando áreas de significantes otimizações (pequenas ou grande).
+Através desse entendimento, removemos validações desnecessárias, compactando o código, executando otimizações e geramos soluções de baixo nível, assim alcançamos o máximo de performance para o Phalcon.
 
-Why?
+Por que?
 ----
-* The use of frameworks has become mandatory in professional development with PHP
-* Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
-* We love PHP and we think it can be used to create larger and more ambitious projects
+* O uso do framework tornou-se mandatório para um profissional de desenvolvimento em PHP.
+* Frameworks oferecem um conjunto de princípios estruturados que facilitam a manutenção do projeto, escrevendo menos código e tornando o trabalho mais divertido. 
+* Nós adoramos PHP e consideramos que o mesmo pode ser utilizado na criação de grandes e ambiciosos projetos.
 
-Inner workings of PHP?
+Como é o funcionamento interno do PHP?
 ----------------------
-* PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
-* PHP is interpreted and not compiled. The major disadvantage is performance loss
-* Every time a script is requested it must be first interpreted
-* If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
+* PHP possui tipagem de variáveis dinâmica e fraca. Toda vez que uma operação ocorre (ex. 2 + “2”), o PHP verifica o tipo dos operadores e executa as devidas conversões dos dados.
+* PHP é interpretado e não compilado. A maior desvantagem dessa característica é a perda de performance.
+* Toda vez que um script é requisitado, primeiramente deverá ser interpretado.
+* Se o cache do bytecode (como o APC) não estiver habilitado, a cada requisição o compilador ira fazer a checagem da sintaxe para todos os arquivos.
 
-How traditional PHP frameworks work?
+Como os tradicionais frameworks em PHP funcionam?
 ------------------------------------
-* Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
-* Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
-* Some of these classes contain methods that aren't used in every request but they're loaded always consuming memory
-* Continuous loading or interpreting is expensive and impacts performance
-* The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
+* Muitos arquivos com definição de classes e métodos são lidos a cada requisição. A leitura em disco onera em termos de performance, especialmente quando os arquivos são estruturados em profundas hierarquias de diretórios. 
+* Frameworks modernos possuem inclusão automática de arquivos (autoload,lazy loading) para melhorar a performance, executando os arquivos sob demanda.
+* Algumas dessas classes contêm métodos que não são utilizados a toda requisição, todavia a toda requisição tais métodos são interpretados e sempre consumindo memória 
+* O carregamento continuo e a interpretação dos códigos onera e impacta na performance 
+* O código de um framework não é alterado com frequência, entretanto uma aplicação precisa carregar e interpretar esse código a toda requisição.
 
-How does a PHP C-extension work?
+Como uma extensão em C funciona no PHP?
 --------------------------------
-* C extensions are loaded together with PHP one time on the web server's daemon start process
-* Classes and functions provided by the extension are ready to use for any application
-* The code isn't interpreted because is already compiled to a specific platform and processor
+* Extensões em C são carregadas junto com o PHP uma única vez quando o daemon do servidor web é startado.
+* Classes e funções fornecidas pela extensão ficam prontas para uso por qualquer aplicação no servidor.
+* O código não é interpretado, pois já foi compilado para a plataforma e processador específicos 
 
-How does Phalcon work?
+Como o Phalcon funciona?
 ----------------------
-* Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
-* Low-level optimizations provides the lowest overhead for MVC-based applications
-* Interact with databases with maximum performance by using a C-language ORM for PHP
-* Phalcon directly accesses internal PHP structures optimizing execution in that way as well
+* Componentes possuem baixo acoplamento. Com o Phalcon, nada é imposto a você (desenvolvedor): você é livre para utilizar o framework completo, ou somente algumas partes, utilizando os componentes do frameworks de forma independente. 
+* As otimizações de baixo nível fornecem menos overhead para aplicações baseadas em MVC. 
+* Utilizando ORM para PHP com a linguagem em C, interage com banco de dados com o máximo de desempenho 
+* Phalcon acessa diretamente as estruturas internas do PHP, otimizando a execução da melhor forma.
 
-Why do I need Phalcon?
+Por que preciso do Phalcon?
 ----------------------
-Each application requirements and tasks are different than another's. Some for instance are designed to do a set
-of tasks and generate content that rarely changes. These applications can be created with any programming language or
-framework. Using a front-end cache, usually makes such an application, no matter how poorly designed or slow it might be,
-perform very fast.
+Os requisitos de cada aplicação e suas atividades são diferentes uma das outras. Algumas dessas, por exemplo, são projetadas para executar um conjunto de atividades que raramente geram conteúdos modificados. Tais aplicações podem ser criadas com qualquer linguagem ou framework. Utilizando um sistema de cache para o conteúdo, e normalmente tais aplicações o utilizam, não importa o quão mal projetada ou quão lenta ela pode ser, elas executam rapidamente.
 
-Other applications generate content almost immediately that changes from request to request. In this case, PHP is used
-to address all requests and generate the content. These applications can be APIs, discussion forums with high traffic loads,
-blogs with a high number of comments and contributors, statistic applications, admin dashboards, enterprise resource
-planners (ERP), business-intelligence software dealing with real time data and more.
+Outras aplicações geram conteúdos quase que instantaneamente com alterações à toda requisição. E nesse caso, o PHP trata todas as requisições e gera o respectivo conteúdo. Essas aplicações podem ser APIs,forums de discussão com cargas de alto tráfego, blogs com um grade número de comentários e colaboradores, aplicações de estatísticas, painéis administrativo, sistemas integrados de gestão empresarial (SIGE ou SIG, do inglês ERP), softwares de Inteligência Empresarial (Business Intelligence) que tratam os dados em tempo real e muito mais outros.
 
-An application will be as slow as its slowest component/process. Phalcon offers a very fast yet feature rich framework
-that allows developers to concentrate on making their applications/code faster. Following proper coding processes,
-Phalcon can deliver a lot more functionality/requests with less memory consumption and processing cycles.
+Uma aplicação será tão lenta quanto mais lentos os seus componentes/processos forem. Phalcon oferece um framework muito rápido (de grande performance) e ainda  repleto de ricas funcionalidades, que permiti aos desenvolvedores concentrarem em fazer suas aplicações/código mais rápido. Seguindo adequadamente os processos de codificação, Phalcon pode produzir muito mais funcionalidades por requisições, com menos consumo de memória e ciclos de processamento.
 
-Conclusion
+Conclusão
 ----------
-Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way
-to develop applications with a framework implemented with the philosophy "Performance Really Matters"! Enjoy!
+Phalcon é um esforço para criar o mais rápido framework para PHP. Agora você tem uma forma fácil e robusta para desenvolver aplicações com um framework implementado com a filosofia: ”Desempenho Realmente Importa”! Aproveite!
+
