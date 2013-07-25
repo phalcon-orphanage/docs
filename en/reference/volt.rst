@@ -7,8 +7,8 @@ just as you can use it as a stand-alone component in your applications.
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired on Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
-ground using the same syntax they have been using with similar template engines. Volt’s syntax and features
+Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
+territory using the same syntax they have been using with similar template engines. Volt’s syntax and features
 have been enhanced with more elements and of course with the performance that developers have been
 accustomed to while working with Phalcon.
 
@@ -66,7 +66,7 @@ Use the standard ".phtml" extension:
 
 Basic Usage
 -----------
-A view consists on Volt code, PHP and HTML. A set of special delimiters is available to enter in
+A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
 Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
 prints the result of an expression to the template.
 
@@ -125,7 +125,7 @@ In the above example, three variables were passed to the view: title, menu and p
 
 Variables
 ---------
-Variables may have attributes, those can be accessed using the syntax: foo.bar. If you are
+Variables may have attributes which can be accessed using the syntax: foo.bar. If you are
 passing arrays, you can access using the square bracket syntax: foo['bar']
 
 .. code-block:: jinja
