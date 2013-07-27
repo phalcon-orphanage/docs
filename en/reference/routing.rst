@@ -325,10 +325,10 @@ this is especially useful when creating RESTful applications:
     <?php
 
     // This route only will be matched if the HTTP method is GET
-    $router->addGet("/products/edit/{id}", "Posts::edit");
+    $router->addGet("/products/edit/{id}", "Products::edit");
 
     // This route only will be matched if the HTTP method is POST
-    $router->addPost("/products/save", "Posts::save");
+    $router->addPost("/products/save", "Products::save");
 
     // This route will be matched if the HTTP method is POST or PUT
     $router->add("/products/update")->via(array("POST", "PUT"));
@@ -504,8 +504,8 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
     // returns /posts/2012/phalcon-1-0-released
     echo $url->get(array(
         "for" => "show-posts",
-        "year" => "2012", "title" =>
-        "phalcon-1-0-released"
+        "year" => "2012",
+        "title" => "phalcon-1-0-released"
     ));
 
 Usage Examples
@@ -585,11 +585,13 @@ The following are examples of custom routes:
     );
 
     // matches /api/v1/users/peter.json
-    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)', array(
-        'controller' => 'api',
-        'version' => 1,
-        'format' => 4
-    ));
+    $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
+        array(
+            'controller' => 'api',
+            'version' => 1,
+            'format' => 4
+        )
+    );
 
 .. highlights::
     Beware of characters allowed in regular expression for controllers and namespaces. As these
@@ -658,15 +660,15 @@ those paths they can be automatically filled by the router:
     <?php
 
     //Setting a specific default
-    $router->setDefaultModule("backend");
+    $router->setDefaultModule('backend');
     $router->setDefaultNamespace('Backend\Controllers');
-    $router->setDefaultController("index");
-    $router->setDefaultAction("index");
+    $router->setDefaultController('index');
+    $router->setDefaultAction('index');
 
     //Using an array
     $router->setDefaults(array(
-        "controller" => "index",
-        "action" => "index"
+        'controller' => 'index',
+        'action' => 'index'
     ));
 
 Dealing with extra/trailing slashes
@@ -690,10 +692,10 @@ Or, you can modify specific routes to optionally accept trailing slashes:
     <?php
 
     $router->add(
-        "/{language:[a-z]{2}}/:controller[/]{0,1}",
+        '/{language:[a-z]{2}}/:controller[/]{0,1}',
         array(
-            "controller" => 2,
-            "action"     => "index"
+            'controller' => 2,
+            'action'     => 'index'
         )
     );
 
