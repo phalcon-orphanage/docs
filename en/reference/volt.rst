@@ -919,7 +919,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     <div id="footer">{{ partial("partials/footer") }}</div>
 
     <!-- Passing extra variables -->
-    <div id="footer">{{ partial("partials/footer", array('links' => $links)) }}</div>
+    <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
 
 A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
 as part of the view which was included:
