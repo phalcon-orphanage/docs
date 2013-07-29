@@ -519,7 +519,7 @@ Phalcon offers a generic HTML helper that allows the generation of any kind of H
 
 Volt syntax:
 
-.. code-block:: jinja
+.. code-block:: html+jinja
 
     {# Generate
     <canvas id="canvas1" width="300" class="cnvclass">
@@ -528,6 +528,7 @@ Volt syntax:
     {{ tag_html("canvas", ["id": "canvas1", width": "300", "class": "cnvclass"], false, true, true) }}
         This is my canvas
     {{ tag_html_close("canvas") }}
+
 
 Tag Service
 -----------
