@@ -6,32 +6,9 @@ Structure
 ---------
 A minimal structure of a CLI application will look like this:
 
-    * app/config/config.php
-    * app/tasks/MainTask.php
-    * app/cli.php <-- main bootstrap file
-
-
-Tasks
------
-Tasks work similar to controllers. Any CLI application needs at least a mainTask and a mainAction and every task needs
-to have a mainAction which will run if no action is given explicitly.
-
-Below is an example of the app/tasks/MainTask.php file
-
-.. code-block:: php
-
-    <?php
-
-    class mainTask extends \Phalcon\CLI\Task
-    {
-
-        public function mainAction()
-        {
-             echo "\nThis is the default task and the default action \n";
-        }
-
-    }
-
+* app/config/config.php
+* app/tasks/MainTask.php
+* app/cli.php <-- main bootstrap file
 
 Creating a Bootstrap
 --------------------
@@ -78,17 +55,24 @@ Below is a sample boostrap that is being used for this example.
     $console->setDI($di);
     
     /**
-     * Get the console arguments
-     */
+    * Process the console arguments
+    */
     $arguments = array();
+    $params = array();
     
-    if(isset($argv[1])) {
-        $arguments['task'] = $argv[1];
+    foreach($argv as $k => $arg) {
+        if($k == 1) {
+            $arguments['task'] = $arg;
+        } elseif($k == 2) {
+            $arguments['action'] = $arg;
+        } elseif($k >= 3) {
+           $params[] = $arg;
+        }
     }
-    if(isset($argv[2])) {
-        $arguments['action'] = $argv[2];
+    if(count($params) > 0) {
+        $arguments['params'] = $params;
     }
-    
+
     // define global constants for the current task and action
     define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));
     define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
@@ -107,13 +91,64 @@ This piece of code can be run using:
 .. code-block:: bash
 
     $ php app/cli.php
+   
+    This is the default task and the default action
     
+    
+Tasks
+-----
+Tasks work similar to controllers. Any CLI application needs at least a mainTask and a mainAction and every task needs
+to have a mainAction which will run if no action is given explicitly.
 
-While will output:
+Below is an example of the app/tasks/MainTask.php file
+
+.. code-block:: php
+
+    <?php
+
+    class mainTask extends \Phalcon\CLI\Task
+    {
+
+        public function mainAction() {
+             echo "\nThis is the default task and the default action \n";
+        }
+
+    }
+
+
+Processing action parameters
+----------------------------
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+
+If you run the the application with the following parameters and action:
+
+
+.. code-block:: php
+
+    <?php
+
+    class mainTask extends \Phalcon\CLI\Task
+    {
+
+        public function mainAction() {
+             echo "\nThis is the default task and the default action \n";
+        }
+        
+        /**
+        * @param array $params
+        */
+       public function testAction(array $params) {
+           echo sprintf('hello %s', $params[0]) . PHP_EOL;
+           echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+       }
+    }
 
 .. code-block:: bash
 
-    This is the default task and the default action
+   $ php app/cli.php main test world universe
+   
+   hello world
+   best regards, universe
     
 
 Running tasks in a chain
@@ -135,7 +170,7 @@ Then you can use the console inside of any task. Below is an example of a modifi
 .. code-block:: php
 
     
-    class MainTask extends \Phalcon\CLI\Task{
+    class MainTask extends \Phalcon\CLI\Task {
     
         public function mainAction() {
             echo "\nThis is the default task and the default action \n";
@@ -152,5 +187,5 @@ Then you can use the console inside of any task. Below is an example of a modifi
 
     }
     
-However, it's a better idea to extend \Phalcon\CLI\Task and implement it there.
+However, it's a better idea to extend \\Phalcon\\CLI\\Task and implement this kind of logic there.
 
