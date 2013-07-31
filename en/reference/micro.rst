@@ -395,7 +395,7 @@ In the following example, we explain how to control the application security usi
     $app = new Micro();
 
     //Bind the events manager to the app
-    $app->setEventsManager($eventsManager);
+    $app->setEventsManager($eventManager);
 
 Middleware events
 -----------------
