@@ -652,6 +652,7 @@ Conclusão
 ----------
 A compilação natural do Phalcon oferece extraordinário desempenho que supera todos os outros frameworks mensurados nesse benchmarks.
 
+
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
 .. _Yii: http://www.yiiframework.com/
