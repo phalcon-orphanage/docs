@@ -470,7 +470,7 @@ when the controller/action combination wasn't found:
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
             //Handle 404 exceptions
-            if ($exception instanceof DispatchException)
+            if ($exception instanceof DispatchException) 
                 $dispatcher->forward(array(
                     'controller' => 'index',
                     'action' => 'show404'
@@ -498,6 +498,9 @@ when the controller/action combination wasn't found:
 
 Of course, this method can be moved onto independent plugin classes, allowing more than one class
 take actions when an exception is produced in the dispatch loop:
+
+
+.. code-block:: php
 
     <?php
 
