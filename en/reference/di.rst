@@ -817,7 +817,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     });
 
     //Change it to shared
-    $request->setShared(true);
+    $requestService->setShared(true);
 
     //Resolve the service (return a Phalcon\Http\Request instance)
     $request = $requestService->resolve();
