@@ -555,7 +555,7 @@ use that object to set variables directly to the view from a controller action b
 
     }
 
-A variable with the name of the first parameter of setView() will be created in the view, ready to be used. The variable can be of any type,
+A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
 from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
 
 .. code-block:: html+php
