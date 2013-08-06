@@ -71,6 +71,7 @@ Table of Contents
    reference/debug
    reference/tools
    reference/whats-next
+   reference/unit-testing
    api/index
    reference/license
 
