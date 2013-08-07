@@ -16,7 +16,7 @@ Extraia a biblioteca DLL do phalcon do arquivo zip:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copie o arquivo php_phalcon.dll para o diretório de extensões do PHP. Se você tiver o XAMPP instalado no c:\xampp, a extensão precisa estar no c:\xampp\php\ext.
+Copie o arquivo php_phalcon.dll para o diretório de extensões do PHP. Se você tiver o XAMPP instalado no c:\\xampp, a extensão precisa estar no c:\\xampp\\php\\ext.
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
