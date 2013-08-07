@@ -81,7 +81,7 @@ the task:
 
     <?php
 
-    while (($job = $b->peekReady()) !== false) {
+    while (($job = $queue->peekReady()) !== false) {
 
         $message = $job->getBody();
 
