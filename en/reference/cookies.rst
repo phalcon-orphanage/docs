@@ -66,5 +66,11 @@ In case of using encryption a global key must be set in the 'crypt' service:
         return $crypt;
     });
 
+.. highlights::
+
+    Send data cookies without encryption including complex objects structures, resultsets, service information
+    could expose internal application details that could be used by an attack to attack the application.
+    If you do not want to use encryption, we highly recommend you only send cookie data like numbers or  small
+    string literals.
 
 .. _Cookies : http://en.wikipedia.org/wiki/HTTP_cookie
