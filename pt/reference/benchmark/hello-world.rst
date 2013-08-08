@@ -1,31 +1,23 @@
-Hello World Benchmark
+﻿Hello World Benchmark
 =====================
-How the benchmarks were performed?
+Como os benchmarks foram realizados?
 ----------------------------------
-We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
-people don't like this kind of benchmark because real-world applications require more complex features or
-structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
-Such a task represents the mimimum requirement for every framework to process a single request.
+Criamos um benchmark "Hello World" procurando identificar a menor carga de cada um dos frameworks. Muitas pessoas não gostam desses tipos de benchmark, pois uma  aplicação no mundo real requer estruturas e recursos mais complexos. Entretanto esses testes identificam o menor tempo gasto por cada framework para executarem uma tarefa simples. Tal tarefa representa o menor requerimento para cada framework processar uma única requisição.
 
-More specifically, the benchmark only measures the time it takes for a framework to start, run an action and
-free up resources at the end of the request. Any PHP application based on an MVC architecture will require
-this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex
-request will be higher.
+Para ser mais específico, o benchmark somente mede o tempo gasto por cada framework para startar, executar uma ação (action) e liberar os recursos no final da requisição. Qualquer aplicação PHP baseada na arquitetura MVC precisará  deste tempo. A despeito da simplicidade do benchmark, nós certificamos que o tempo necessário para uma atividade mais complexa será maior.
 
-A controller and a view have been created for each framework. The controller "say" and action "hello". The
-action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 2000
-requests using 10 concurrent connections to each framework.
+Uma controladora e uma view foram criadas para cada framework: a controladora “say” e uma action “hello”. A action somente envia dados para a view na qual mostra: "Hello!". Utilizando a ferramenta de benchmark “ab” nós enviamos 2000 requisições usando 10 conexões concorrentes para cada framework. 
 
-What measurements were recorded?
+Quais foram as medidas registradas? 
 --------------------------------
-These were the measurements we record to identify the overall performance of each framework:
+Estas foram as medidas registradas para identificar o desempenho geral de cada framework: 
 
-* Requests per second
-* Time across all concurrent requests
-* Number of included PHP files on a single request (measured using function get_included_files_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* Requisições por segundo
+* Tempo em todas as requisições simultâneas. 
+* Quantidade de arquivos PHP inclusos em uma única requisição (mensurado utilizando a função get_included_files_ ). 
+* Utilização da memória por cada requisição (mensurado utilizando a função memory_get_usage_ ). 
 
-Pariticipant Frameworks
+Frameworks Participantes
 -----------------------
 * Yii_ (YII_DEBUG=false) (yii-1.1.13)
 * Symfony_ (2.0.11)
@@ -37,7 +29,7 @@ Pariticipant Frameworks
 * CodeIgniter_ (2.1.0)
 * Nette_ (2.0.4)
 
-Results
+Resultados
 -------
 Yii (YII_DEBUG=false) Version yii-1.1.13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -532,9 +524,9 @@ Phalcon Version 0.8.0
       99%     14
      100%     23 (longest request)
 
-Graphs
+Gráficos
 ^^^^^^
-The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
+O primeiro gráfico mostra quantas resuisições por segundo cada framework foi capaz de aceitar. O segundo mostra o tempo médio gasto por todas as requisições simultâneas. 
 
 .. raw:: html
 
@@ -656,9 +648,10 @@ The first graph shows how many requests per second each framework was able to ac
         <div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
     </div>
 
-Conclusion
+Conclusão
 ----------
-The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
+A compilação natural do Phalcon oferece extraordinário desempenho que supera todos os outros frameworks mensurados nesses benchmarks.
+
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
