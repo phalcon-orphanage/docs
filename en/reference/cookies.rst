@@ -40,7 +40,7 @@ Encryption/Decryption of Cookies
 --------------------------------
 By default, cookies are automatically encrypted before be sent to the client and decrypted when retrieved.
 This protection allow unauthorized users to see the cookies' contents in the client (browser).
-Although this protection sensitive data should not be stored on cookies.
+Although this protection, sensitive data should not be stored on cookies.
 
 You can disable encryption in the following way:
 
@@ -68,9 +68,9 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
 .. highlights::
 
-    Send data cookies without encryption including complex objects structures, resultsets, service information
-    could expose internal application details that could be used by an attack to attack the application.
-    If you do not want to use encryption, we highly recommend you only send cookie data like numbers or  small
-    string literals.
+    Send cookies data without encryption to clients including complex objects structures, resultsets,
+    service information, etc. could expose internal application details that could be used by an attacker
+    to attack the application. If you do not want to use encryption, we highly recommend you only send very
+    basic cookie data like numbers or small string literals.
 
 .. _Cookies : http://en.wikipedia.org/wiki/HTTP_cookie
