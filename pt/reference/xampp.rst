@@ -51,9 +51,9 @@ O seguinte screencast é um guia passo-a-passo para instalação do Phalcon no W
 
    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
+Guias Relacionados
 --------------
-* :doc:`General Installation </reference/install>`
-* :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
+* :doc:`Instalação Geral </reference/install>`
+* :doc:`Instalação Detalhada do WAMP para Windows </reference/wamp>`
 
 .. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html
