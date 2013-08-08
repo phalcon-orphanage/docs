@@ -87,7 +87,19 @@ Return the modules registered in the console
 
 public *mixed*  **handle** ([*array* $arguments])
 
-Handle the whole command-line tasks
+Handle the command-line arguments. 
+
+.. code-block:: php
+
+    <?php
+
+     	$arguments = array(
+     		'task' => 'taskname',
+     		'action' => 'action',
+     		'params' => array('parameter1', 'parameter2')
+     	);
+     	$console->handle($arguments);
+
 
 
 

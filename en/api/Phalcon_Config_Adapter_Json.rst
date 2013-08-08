@@ -131,6 +131,11 @@ public  **count** () inherited from Phalcon\\Config
 ...
 
 
+public  **__wakeup** () inherited from Phalcon\\Config
+
+...
+
+
 public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*array* $data) inherited from Phalcon\\Config
 
 Restores the state of a Phalcon\\Config object
