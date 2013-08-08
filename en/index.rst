@@ -2,7 +2,7 @@ Welcome!
 ========
 
 Welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for
-developing web sites and applications without worrying about performance.
+developing web sites and applications without worrying about performance. 
 
 What is Phalcon?
 ----------------
