@@ -1,12 +1,10 @@
-Apache Installation Notes
+﻿Notas de Instalação do Apache
 =========================
-Apache_ is a popular and well known web server available on many platforms.
+Apache_ é um popular e bem conhecido servidor web, disponível para muitas plataformas.
 
-Configuring Apache for Phalcon
+Configurando o Apache para o Phalcon 
 ------------------------------
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
-focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
-:doc:`router component <routing>`. Commonly an application has the following structure:
+A seguir existem potenciais configurações que você pode usar para configurar o Apache com o Phalcon. Essas notas são primariamente focadas na configuração do modulo mod-rewrite, permitindo utilizar ulrs amigáveis e o :doc:`componente de rotas <routing>`. Normalmente  uma aplicação terá a seguinte estrutura:
 
 .. code-block:: php
 
@@ -21,11 +19,9 @@ focused on the configuration of the mod-rewrite module allowing to use friendly 
         js/
         index.php
 
-Directory under the main Document Root
+Diretório principal sob o Documento Raiz (DocumentRoot)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This being the most common case, the application is installed in any directory under the document root.
-In this case, we use two .htaccess files, the first one to hide the application code forwarding all requests
-to the application's document root (public/).
+Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob a raiz do documento. Neste caso, utilizamos dois .htaccess, o primeiro para esconder o código da aplicação enviando todas as requisições para o documento raiz (DocumentRoot) da aplicação (public/). 
 
 .. code-block:: apacheconf
 
@@ -37,7 +33,7 @@ to the application's document root (public/).
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-Now a second .htaccess file is located in the public/ directory, this re-writes all the URIs to the public/index.php file:
+Agora o segundo .htaccess é localizado no diretório public/, este contem os re-writes de todas URIs para o public/index.php:
 
 .. code-block:: apacheconf
 
@@ -50,7 +46,7 @@ Now a second .htaccess file is located in the public/ directory, this re-writes 
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-If you do not want to use .htaccess files you can move these configurations to the apache's main configuration file:
+Se você não quiser usar o .htaccess, você pode mover essas configurações para o arquivo principal de configuração do apache:
 
 .. code-block:: apacheconf
 
@@ -73,7 +69,7 @@ If you do not want to use .htaccess files you can move these configurations to t
 
 Virtual Hosts
 ^^^^^^^^^^^^^
-And this second configuration allows you to install a Phalcon application in a virtual host:
+Esta segunda configuração permite você instalar uma aplicação Phalcon em um virtual host:
 
 .. code-block:: apacheconf
 

@@ -1,29 +1,28 @@
-Installation
+﻿Instalação
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+A instalação de uma extensão PHP é levemente diferente dos métodos tradicionais de instalação das bibliotecas de um framework baseado em PHP. Você pode fazer o download dos pacotes binários construído para o seu sistema de sua escolha ou compilar-los a partir das fontes.
 
 .. highlights::
-    Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
+    Phalcon é compilado do PHP 5.3.1, como as versões antigas do PHP causavam bugs relacionados à falha de memória, recomendamos fortemente utilizar pelo menos uma versão 5.3.11 ou maior.
 
 .. highlights::
-    PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+    Versões do PHP abaixo da 5.3.9 tem várias falhas de segurança e essas versões não são recomendadas para sites em produção.`Saiba Mais <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+Para utilizar o phalcon no Windows você pode fazer o download da biblioteca DLL. Editar o seu php.ini adicionando no final a seguinte instrução:
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+Reinicie seu servidor web.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+O seguinte screencast é um passo-a-passo para instalação do Phalcon no Windows: 
 
 .. raw:: html
 
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
+Guias Relacionados
 ^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
@@ -33,17 +32,17 @@ Related Guides
 
 Linux/Solaris/Mac
 -----------------
-On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
+Nos sistemas Linux/Solaris/Mac você pode facilmente compilar e instalar a extensão diretamente dos códigos fontes: 
 
-Requirements
+Requerimentos
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Os pacotes pré-requisitos são:
 
-* PHP 5.3.x/5.4.x/5.5.x development resources
-* GCC compiler (Linux/Solaris) or Xcode (Mac)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* PHP 5.3.x/5.4.x/5.5.(recursos de desenvolvimento)
+* Compilador GCC (Linux/Solaris) ou Xcode (Mac)
+* Git (caso ainda não esteja instalado no seu sistema - a menos que você faça o download do pacote no GitHub e depois o upload para o seu servidor via FTP/SFTP) 
 
-Specific packages for common platforms:
+Pacotes específicos para plataformas em comum: 
 
 .. code-block:: bash
 
@@ -63,9 +62,9 @@ Specific packages for common platforms:
     pkg install gcc-45
     pkg install php-53 apache-php53
 
-Compilation
+Compilação
 ^^^^^^^^^^^
-Creating the extension:
+Criando a extensão:
 
 .. code-block:: bash
 
@@ -73,15 +72,15 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php.ini
+Adicione a extensão ao seu php.ini
 
 .. code-block:: bash
 
     extension=phalcon.so
 
-Restart the webserver.
+Reinicie o servidor web.
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon automaticamente detecta a sua arquitetura, no entanto, você poderá força a compilação para uma arquitetura especifica:
 
 .. code-block:: bash
 
@@ -91,22 +90,22 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Um port esta disponível para o FreeBSD. Basta um simples comando na linha de comando para instalar-lo: 
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+ou
 
 .. code-block:: bash
 
     export CFLAGS="-O2 -fno-delete-null-pointer-checks"
     cd /usr/ports/www/phalcon && make install clean
 
-Installation Notes
+Notas de Instalação
 ------------------
-Installation notes for Web Servers:
+Notas de Instalação para os Servidores Web:
 
 .. toctree::
     :maxdepth: 1
