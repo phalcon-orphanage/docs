@@ -100,7 +100,7 @@ Take the following into consideration when using models in namespaces:
 
     namespace Store\Models;
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends \Phalcon\Mvc\Model
     {
 
     }
