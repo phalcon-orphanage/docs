@@ -247,7 +247,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
             //Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value)
+                $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
