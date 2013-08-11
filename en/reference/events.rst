@@ -178,7 +178,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     <?php
 
-    use Phalcon\Events\EventsAwareInterface
+    use Phalcon\Events\EventsAwareInterface;
 
     class MyComponent implements EventsAwareInterface
     {
