@@ -520,8 +520,7 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Events\Manager as EventsManager,
+    use Phalcon\Events\Manager as EventsManager,
         Phalcon\Logger\Adapter\File as Logger;
 
     $eventsManager = new EventsManager();
