@@ -85,7 +85,7 @@ which the route is constrained for:
     $app->put('/api/products/update/{id}', "update_product");
 
     //Matches if the HTTP method is DELETE
-    $app->put('/api/products/remove/{id}', "delete_product");
+    $app->delete('/api/products/remove/{id}', "delete_product");
 
     //Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");

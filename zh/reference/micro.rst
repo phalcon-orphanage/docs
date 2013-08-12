@@ -82,7 +82,7 @@ The following example shows how to defined different types of handlers:
     $app->put('/api/products/update/{id}', "update_product");
 
     //Matches if the HTTP method is DELETE
-    $app->put('/api/products/remove/{id}', "delete_product");
+    $app->delete('/api/products/remove/{id}', "delete_product");
 
     //Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
