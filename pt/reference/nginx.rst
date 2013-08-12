@@ -1,20 +1,16 @@
-Nginx Installation Notes
+﻿Notas de Instalação do Nginx
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike
-traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven
-(asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Nginx_ é um servidor http e proxy reverso de alto desempenho, livre, de código aberto, e bem conhecido como um servidor proxy de IMAP/POP3. Diferente dos servidores tradicionais, Nginx_ não depende de threads para processar as requisições. Ao invés, utiliza uma arquitetura orientada a eventos(assíncrono) muito mais escalonável. Esta arquitetura utiliza pequenas quantidades de memória, e muito mais importante do que isso, utiliza porções de memória configuradas sob demanda.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is
-bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer
-maximum performance for your PHP applications.
+O `PHP-FPM`_ (FastCGI Process Manager) é normalmente utilizado para permitir o Nginx_ processar arquivos PHP. Hoje em dia, `PHP-FPM`_ vem com qualquer distribuição UNIX PHP. Phalcon + Nginx_ + `PHP-FPM`_  provê um poderoso conjunto de ferramentas que oferece o máximo de desempenho para sua aplicação PHP.
 
-Configuring Nginx for Phalcon
+Configurando Nginx para o Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+A seguir existem possíveis configurações que você pode utilizar para configurar o Phalcon com o nginx:
 
-Basic configuration
+Configuração Básica
 ^^^^^^^^^^^^^^^^^^^
-Using $_GET['_url'] as source of URIs:
+Utilizando $_GET['_url'] como fonte das URIs:
 
 .. code-block:: nginx
 
@@ -54,7 +50,7 @@ Using $_GET['_url'] as source of URIs:
         }
     }
 
-Using $_SERVER['REQUEST_URI'] as source of URIs:
+Utilizando $_SERVER['REQUEST_URI'] como fonte das URIs:
 
 .. code-block:: nginx
 
@@ -89,7 +85,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
         }
     }
 
-Dedicated Instance
+Instância Dedicada
 ^^^^^^^^^^^^^^^^^^
 .. code-block:: nginx
 
@@ -137,9 +133,9 @@ Dedicated Instance
         }
     }
 
-Configuration by Host
+Configuração por Host 
 ^^^^^^^^^^^^^^^^^^^^^
-And this second configuration allow you to have different configurations by host:
+Esta segunda configuração permite você ter diferentes configurações por host:
 
 .. code-block:: nginx
 
