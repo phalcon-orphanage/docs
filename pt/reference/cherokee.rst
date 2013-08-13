@@ -19,12 +19,12 @@ O servidor virtual adicionado recentemente deverá aparecer na barra esquerda da
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Adicione a linguagem PHP usando o assistente de configuração (wizard). Esse behavior (:ref:`notas-traducao-behaviors`) permite você executar aplicações em PHP:
+Adicione a linguagem PHP usando o assistente de configuração (wizard). Esse behavior permite você executar aplicações em PHP:
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normalmente esse behavior (:ref:`notas-traducao-behaviors`) não requer configurações adicionais. Adicione outro behavior, dessa vez na seção 'Manual Configuration'. Em 'Rule Type' selecione 'File Exists', e certifique-se que a opção 'Match any file' esteja ativada:
+Normalmente esse behavior não requer configurações adicionais. Adicione outro behavior, dessa vez na seção 'Manual Configuration'. Em 'Rule Type' selecione 'File Exists', e certifique-se que a opção 'Match any file' esteja ativada:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
@@ -53,5 +53,6 @@ Execute a aplicação no browser:
 
 
 
-.. _notas-traducao-behaviors: Tradução ao pé da letra para o Português é “comportamento”, todavia esse termo aqui é aplicado de forma mais abrangente, como extensões de funcionalidade do servidor. Como se trata de um termo técnico, e a semântica aqui aplicada não seria adequada a tradução para comportamento, foi mantida a palavra original. 
+.. rubric::  behavior
+Tradução ao pé da letra para o Português é “comportamento”, todavia esse termo aqui é aplicado de forma mais abrangente, como extensões de funcionalidade do servidor. Como se trata de um termo técnico, e a semântica aqui aplicada não seria adequada a tradução para comportamento, foi mantida a palavra original. 
 
