@@ -52,5 +52,6 @@ Execute a aplicação no browser:
 .. _Cherokee: http://www.cherokee-project.com/
 
 
+
 .. _notas-traducao-behaviors: Tradução ao pé da letra para o Português é “comportamento”, todavia esse termo aqui é aplicado de forma mais abrangente, como extensões de funcionalidade do servidor. Como se trata de um termo técnico, e a semântica aqui aplicada não seria adequada a tradução para comportamento, foi mantida a palavra original. 
 
