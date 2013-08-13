@@ -1,58 +1,56 @@
-Cherokee Installation Notes
+﻿Notas de Instalação do Cherokee
 ===========================
-Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
+Cherokee_ é um servidor web de alto desempenho, muito rápido, flexível e fácil de configurar.
 
-Configuring Cherokee for Phalcon
+Configurando o Cherokee Para o Phalcon
 --------------------------------
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
-Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin
+Cherokee provê uma interface gráfica amigável para configurar a maioria de todas as configurações disponíveis no servidor web. Inicie o administrativo do cherokee executando com o root: /path-para-cherokee/sbin/cherokee-admin 
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center
 
-Create a new virtual host by clicking on 'vServers', then add a new virtual server:
+Crie um novo host virtual clicando em 'vServers',e em seguida adicione um novo servidor virtual:
 
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab
-you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button.
-Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+O servidor virtual adicionado recentemente deverá aparecer na barra esquerda da tela. Na aba 'Behaviors'  você encontrará um conjunto de behaviors :ref:`notas-traducao-behaviors` padrão para esse servidor virtal. Clique no botão 'Rule Management'. Remova os rotulados como 'Directory /cherokee_themes' e 'Directory /icons':
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Add the 'PHP Language' behavior using the wizard. This behavior allow you to run PHP applications:
+Adicione a linguagem PHP usando o assistente de configuração (wizard). Esse behavior (:ref:`notas-traducao-behaviors`) permite você executar aplicações em PHP:
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normally this behavior does not require additional settings. Add another behavior,
-this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
-then make sure the option 'Match any file' is enabled:
+Normalmente esse behavior (:ref:`notas-traducao-behaviors`) não requer configurações adicionais. Adicione outro behavior, dessa vez na seção 'Manual Configuration'. Em 'Rule Type' selecione 'File Exists', e certifique-se que a opção 'Match any file' esteja ativada:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
-In the 'Handler' tab choose 'List & Send' as handler:
+Na aba 'Handler' escolha 'List & Send' como um “handler”:
 
 .. figure:: ../_static/img/cherokee-7.jpg
     :align: center
 
-Edit the 'Default' behavior in order to enable the URL-rewrite engine. Change the handler to 'Redirection',
-then add the following regular expression to the engine ^(.*)$:
+Edite o behavior padrão afim de permitir a ativação do mecanismo de URL-rewrite.   Altere o “handler” para 'Redirection', em seguida, adicione a seguinte expressão regular ^(.*)$:
 
 .. figure:: ../_static/img/cherokee-6.jpg
     :align: center
 
-Finally, make sure the behaviors have the following order:
+Finalmente, certifique-se que os behaviors tenham a seguinte ordem: 
 
 .. figure:: ../_static/img/cherokee-8.jpg
     :align: center
 
-Execute the application in a browser:
+Execute a aplicação no browser:
 
 .. figure:: ../_static/img/cherokee-9.jpg
     :align: center
 
 .. _Cherokee: http://www.cherokee-project.com/
+
+
+.. _notas-traducao-behaviors: Tradução ao pé da letra para o Português é “comportamento”, todavia esse termo aqui é aplicado de forma mais abrangente, como extensões de funcionalidade do servidor. Como se trata de um termo técnico, e a semântica aqui aplicada não seria adequada a tradução para comportamento, foi mantida a palavra original. 
+
