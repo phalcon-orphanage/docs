@@ -19,7 +19,8 @@ Se você quer reescrever as URIs para o index.php, utilize o seguinte arquivo de
     }
     return false;
 
- E inicie o servidor com o seguinte o comando:
+ 
+E inicie o servidor com o seguinte o comando:
 
 .. code-block:: bash
 
