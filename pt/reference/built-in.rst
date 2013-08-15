@@ -26,6 +26,6 @@ E inicie o servidor com o seguinte o comando:
 
     php -S localhost:8000 -t /web_root .htrouter.php
 
-Então navegue com o seu browser para o endereço http://localhost:8000/ e verifique se tudo esta funcionando.
+Em seguida navegue com o seu browser para o endereço http://localhost:8000/ e verifique se tudo esta funcionando.
 
 .. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
