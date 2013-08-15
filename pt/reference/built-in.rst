@@ -1,15 +1,15 @@
-Using PHP Built-in webserver
+﻿Usando o Servidor Embutido do PHP
 ============================
 
-As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.
+Desde o PHP 5.4.0 você pode usar o servidor embutido (built-in_ ) do PHP para o desenvolvimento.
 
-To start the server type:
+Para iniciar o servidor digite o seguinte comando:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root
 
-If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
+Se você quer reescrever as URIs para o index.php, utilize o seguinte arquivo de rotas (.htrouter.php):
 
 .. code-block:: php
 
@@ -19,12 +19,13 @@ If you want to rewrite the URIs to the index.php file use the following router f
     }
     return false;
 
-and then start the server with:
+ 
+E inicie o servidor com o seguinte o comando:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root .htrouter.php
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Em seguida navegue com o seu browser para o endereço http://localhost:8000/ e verifique se tudo esta funcionando.
 
 .. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
