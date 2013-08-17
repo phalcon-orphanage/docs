@@ -50,7 +50,7 @@ You can disable encryption in the following way:
 
     $di->set('cookies', function() {
         $cookies = new Phalcon\Http\Response\Cookies();
-        $cookies->setEncryption(false);
+        $cookies->useEncryption(false);
         return $cookies;
     });
 
