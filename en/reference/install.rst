@@ -53,7 +53,7 @@ Specific packages for common platforms:
 
     #Suse
     sudo yast -i gcc make autoconf2.13
-    sudo yast -i php5-devel php5-mysql
+    sudo yast -i php5-devel php5-pear php5-mysql
 
     #CentOS/RedHat
     sudo yum install gcc make
