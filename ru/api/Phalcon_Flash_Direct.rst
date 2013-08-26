@@ -1,0 +1,108 @@
+Class **Phalcon\\Flash\\Direct**
+================================
+
+*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+
+*implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
+
+This is a variant of the Phalcon\\Flash that inmediately outputs any message passed to it
+
+
+Methods
+---------
+
+public *string*  **message** (*string* $type, *string* $message)
+
+Outputs a message
+
+
+
+public  **__construct** ([*array* $cssClasses]) inherited from Phalcon\\Flash
+
+Phalcon\\Flash constructor
+
+
+
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
+
+Set whether the output must be implictly flushed to the output or returned as string
+
+
+
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
+
+Set if the output must be implictily formatted with HTML
+
+
+
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
+
+Set an array with CSS classes to format the messages
+
+
+
+public *string*  **error** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML error message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->error('This is an error');
+
+
+
+
+public *string*  **notice** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML notice/information message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->notice('This is an information');
+
+
+
+
+public *string*  **success** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML success message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->success('The process was finished successfully');
+
+
+
+
+public *string*  **warning** (*string* $message) inherited from Phalcon\\Flash
+
+Shows a HTML warning message 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->warning('Hey, this is important');
+
+
+
+
+public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
+
+Outputs a message formatting it with HTML 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->outputMessage('error', $message);
+
+
+
+
