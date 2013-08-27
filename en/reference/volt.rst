@@ -566,9 +566,9 @@ You may make calculations in templates using the following operators:
 | \%                   | Calculate the remainder of an integer division {{ 10 % 3 }} returns 1        |
 +----------------------+------------------------------------------------------------------------------+
 
-Comparisions
+Comparisons
 ^^^^^^^^^^^^
-The following comparision operators are available:
+The following omparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
