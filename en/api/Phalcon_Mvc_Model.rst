@@ -823,15 +823,14 @@ protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **b
 
 Setup a relation reverse 1-1  between two models.
 
-Parameters
------------------
+***Parameters***
 
 **$this_model_field**: The field from the current model you are trying to reference to another model.
 **$reference_model**: The model you are pointing to.
 **$reference_model_field**: The field on the reference model that you are connecting to.
 **$options**: An array of key => value pairs. The following keys are accepted: 
-    **'alias'**: .. _Docs http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
-    **'foreignKey'**: .. _Docs `http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
+  *'alias'*: http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
+  *'foreignKey'*: `http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
 
 .. code-block:: php
 
