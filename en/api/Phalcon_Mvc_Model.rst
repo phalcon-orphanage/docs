@@ -819,9 +819,19 @@ Setup a 1-1 relation between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (string *$this_model_field*, string *$reference_model*, string *$reference_model_field* [, array *$options*])
 
-Setup a relation reverse 1-1  between two models 
+Setup a relation reverse 1-1  between two models.
+
+Parameters
+-----------------
+
+**$this_model_field**: The field from the current model you are trying to reference to another model.
+**$reference_model**: The model you are pointing to.
+**$reference_model_field**: The field on the reference model that you are connecting to.
+**$options**: An array of key => value pairs. The following keys are accepted: 
+    **'alias'**: .. _Docs http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
+    **'foreignKey'**: .. _Docs `http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
 
 .. code-block:: php
 
