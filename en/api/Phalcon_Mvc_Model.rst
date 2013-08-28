@@ -819,18 +819,25 @@ Setup a 1-1 relation between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (string *$this_model_field*, string *$reference_model*, string *$reference_model_field* [, array *$options*])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (*$this_model_field*, *$reference_model*, *$reference_model_field* [, *$options*])
 
 Setup a relation reverse 1-1  between two models.
 
-***Parameters***
+*Parameters*
 
-**$this_model_field**: The field from the current model you are trying to reference to another model.
-**$reference_model**: The model you are pointing to.
-**$reference_model_field**: The field on the reference model that you are connecting to.
-**$options**: An array of key => value pairs. The following keys are accepted: 
-  *'alias'*: http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
-  *'foreignKey'*: `http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
+    **$this_model_field**: (string) The field from the current model you are trying to reference to another model.
+
+    **$reference_model**: (string) The model you are pointing to.
+
+    **$reference_model_field**: (string) The field on the reference model that you are connecting to.
+
+    **$options**: (array) An array of key => value pairs. The following keys are accepted: 
+        *'alias'*: Alias_Docs_ 
+
+        *'foreignKey'*: Foreign_Key_Docs_ 
+
+.. _Alias_Docs: http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
+.. _Foreign_Key_Docs: http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
 
 .. code-block:: php
 
