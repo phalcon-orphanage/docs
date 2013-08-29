@@ -31,8 +31,8 @@ Inner workings of PHP?
 * Every time a script is requested it must be first interpreted
 * If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
 
-How traditional PHP frameworks work?
-------------------------------------
+How do traditional PHP frameworks work?
+---------------------------------------
 * Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
 * Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
 * Some of these classes contain methods that aren't used in every request but they're loaded always consuming memory

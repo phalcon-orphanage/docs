@@ -132,6 +132,11 @@ public  **count** ()
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
 public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*array* $data)
 
 Restores the state of a Phalcon\\Config object

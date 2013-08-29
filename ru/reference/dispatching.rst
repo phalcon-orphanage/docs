@@ -184,7 +184,7 @@ Preparing Parameters
 Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
 adapt your application to any URL schema:
 
-For example, you want your URLs look like: http://mywebsite.com/controller/key1/value1/key2/value
+For example, you want your URLs look like: http://example.com/controller/key1/value1/key2/value
 
 Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:
 
@@ -224,7 +224,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         return $dispatcher;
     });
 
-If the desired schema is: http://mywebsite.com/controller/key1:value1/key2:value, the following code is required:
+If the desired schema is: http://example.com/controller/key1:value1/key2:value, the following code is required:
 
 .. code-block:: php
 
@@ -247,7 +247,7 @@ If the desired schema is: http://mywebsite.com/controller/key1:value1/key2:value
 
             //Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value)
+                $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
@@ -298,7 +298,7 @@ You can also define an arbitrary schema for actions before be dispatched.
 
 Camelize action names
 ^^^^^^^^^^^^^^^^^^^^^
-If the original URL is: http://mywebsite.com/admin/products/show-latest-products,
+If the original URL is: http://example.com/admin/products/show-latest-products,
 and for example you want to camelize 'show-latest-products' to 'showLatestProducts',
 the following code is required:
 
@@ -330,8 +330,8 @@ Remove legacy extensions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 If the original URL always contains a '.php' extension:
 
-http://mywebsite.com/admin/products/show-latest-products.php
-http://mywebsite.com/admin/products/index.php
+http://example.com/admin/products/show-latest-products.php
+http://example.com/admin/products/index.php
 
 You can remove it before dispatch the controller/action combination:
 

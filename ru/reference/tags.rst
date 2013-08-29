@@ -267,8 +267,7 @@ You can add an "empty" option to the generated HTML:
             'useEmpty' => true,
             'emptyText' => 'Please, choose one...',
             'emptyValue' => '@'
-        ),
-
+        )
     );
 
 .. code-block:: html
