@@ -93,7 +93,7 @@ Sets a collection in the Assets Manager
 
     <?php
 
-     $assets->set('js', $collection);
+     $assets->get('js', $collection);
 
 
 
@@ -129,7 +129,7 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback)
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, [*unknown* $type])
 
 Traverses a collection calling the callback to generate its HTML
 

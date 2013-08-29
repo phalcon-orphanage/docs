@@ -522,11 +522,11 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     use Phalcon\Logger,
         Phalcon\Events\Manager as EventsManager,
-        Phalcon\Logger\Adapter\File as Logger;
+        Phalcon\Logger\Adapter\File as FileLogger;
 
     $eventsManager = new EventsManager();
 
-    $logger = new Logger("app/logs/db.log");
+    $logger = new FileLogger("app/logs/db.log");
 
     //Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($logger) {

@@ -125,13 +125,13 @@ In the above example, three variables were passed to the view: title, menu and p
 
 Variables
 ---------
-Variables may have attributes which can be accessed using the syntax: foo.bar. If you are
-passing arrays, you can access using the square bracket syntax: foo['bar']
+Object variables may have attributes which can be accessed using the syntax: foo.bar. 
+If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
 .. code-block:: jinja
 
-    {{ post.title }}
-    {{ post['title'] }}
+    {{ post.title }} {# for $post->title #}
+    {{ post['title'] }} {# for $post['title'] #}
 
 Filters
 -------
@@ -566,9 +566,9 @@ You may make calculations in templates using the following operators:
 | \%                   | Calculate the remainder of an integer division {{ 10 % 3 }} returns 1        |
 +----------------------+------------------------------------------------------------------------------+
 
-Comparisions
+Comparisons
 ^^^^^^^^^^^^
-The following comparision operators are available:
+The following omparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
