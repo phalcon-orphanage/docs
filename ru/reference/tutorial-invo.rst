@@ -926,7 +926,8 @@ the user can change any value and then sent it back to the database through to t
         //...
 
         //Find the product to update
-        $product = Products::findFirstById($this->request->getPost("id"));
+        $id = $this->request->getPost("id");
+        $product = Products::findFirstById($id);
         if (!$product) {
             $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");

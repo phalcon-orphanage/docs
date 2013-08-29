@@ -480,7 +480,7 @@ The following example shows how to use it:
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
-                    "message" => "Type must be: mechanical or virtual"
+                    "message" => "Type must be: mechanical or virtual",
                     "domain" => array("Mechanical", "Virtual")
                 )
             ));

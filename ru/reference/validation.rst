@@ -277,6 +277,7 @@ cancelled:
          * @param array $data
          * @param object $entity
          * @param Phalcon\Validation\Message\Group $messages
+         * @return bool
          */
         public function beforeValidation($data, $entity, $messages)
         {

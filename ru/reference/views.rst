@@ -916,7 +916,7 @@ A short syntax is also available:
         function($view) {
             //Set any extra options here
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
+            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT);
         }
     );
 

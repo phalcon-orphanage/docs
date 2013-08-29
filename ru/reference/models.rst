@@ -373,13 +373,13 @@ is that at any time there is only one record in memory. This greatly helps in me
 
     // Move the internal cursor to the third robot
     $robots->seek(2);
-    $robot = $robots->current()
+    $robot = $robots->current();
 
     // Access a robot by its position in the resultset
     $robot = $robots[5];
 
     // Check if there is a record in certain position
-    if (isset($robots[3]) {
+    if (isset($robots[3])) {
        $robot = $robots[3];
     }
 
@@ -431,7 +431,7 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
     $customers = Customers::find()->filter(function($customer) {
 
         //Return only customers with a valid e-mail
-        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL))) {
+        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
             return $customer;
         }
 
@@ -576,7 +576,7 @@ accessed:
 
         public function getStatus()
         {
-            return explode(',', $this->status)
+            return explode(',', $this->status);
         }
 
     }
@@ -1046,7 +1046,7 @@ to maintain the integrity of data:
 
     namespace Store\Models;
 
-    use Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model,
         Phalcon\Mvc\Model\Relation;
 
     class Robots extends Model
@@ -1103,7 +1103,7 @@ Count examples:
 
     // Avoid SQL injections using bound parameters
     $group = Employees::count(array(
-        "type > ?0"
+        "type > ?0",
         "bind" => array($type)
     ));
 
@@ -1141,7 +1141,7 @@ Sum examples:
 
     // Avoid SQL injections using bound parameters
     $group = Employees::sum(array(
-        "conditions" => "area > ?0"
+        "conditions" => "area > ?0",
         "bind" => array($area)
     ));
 
@@ -1162,8 +1162,8 @@ Average examples:
 
     // Avoid SQL injections using bound parameters
     $average = Employees::average(array(
-        "column" => "age"
-        "conditions" => "area > ?0"
+        "column" => "age",
+        "conditions" => "area > ?0",
         "bind" => array($area)
     ));
 
@@ -2646,7 +2646,7 @@ you can do this:
             return false;
         }
         return true;
-    }
+    });
 
 Deleting related records
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3167,7 +3167,7 @@ As models access the default database connection, all SQL statements that are se
 
     $robot = new Robots();
     $robot->name = "Robby the Robot";
-    $robot->created_at = "1956-07-21"
+    $robot->created_at = "1956-07-21";
     if ($robot->save() == false) {
         echo "Cannot save robot";
     }
@@ -3231,8 +3231,8 @@ Profiling some queries:
 
     // Send some SQL statements to the database
     Robots::find();
-    Robots::find(array("order" => "name");
-    Robots::find(array("limit" => 30);
+    Robots::find(array("order" => "name"));
+    Robots::find(array("limit" => 30));
 
     //Get the generated profiles from the profiler
     $profiles = $di->get('profiler')->getProfiles();

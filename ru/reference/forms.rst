@@ -503,7 +503,7 @@ This component provides a forms manager that can be used by the developer to reg
 
     $di['forms'] = function() {
         return new Phalcon\Forms\Manager();
-    }
+    };
 
 Forms are added to the forms manager and referenced by a unique name:
 
