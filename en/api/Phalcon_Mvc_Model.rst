@@ -825,10 +825,10 @@ Setup a relation reverse 1-1  between two models.
 
 *Parameters*
 
-* **$this_model_field**: (string) The field from the current model you are trying to reference to another model.
-* **$reference_model**: (string) The model you are pointing to.
-* **$reference_model_field**: (string) The field on the reference model that you are connecting to.
-* **$options**: (array) An array of key => value pairs. The following keys are accepted: 
+* *$this_model_field*: (string) The field from the current model you are trying to reference to another model.
+* *$reference_model*: (string) The model you are pointing to.
+* *$reference_model_field*: (string) The field on the reference model that you are connecting to.
+* *$options*: (array) An array of key => value pairs. The following keys are accepted: 
     * *'alias'*: Alias_Docs_ 
     * *'foreignKey'*: Foreign_Key_Docs_ 
 
