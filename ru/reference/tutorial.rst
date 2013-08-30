@@ -1,19 +1,17 @@
-Tutorial 1: Let's learn by example
-==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+Урок 1: Рассмотрим на примере
+=============================
+В этом примере рассмотрим создание приложения с простой формой регистрации "с нуля".
+Также рассмотрим основные аспекты поведения фреймворка. Если вам интересна автоматическая генерация кода, посмотрите :doc:`developer tools <tools>`.
 
-Checking your installation
---------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
-code snippet below:
+Проверка установки
+------------------
+Будем считать что у вас уже установлено расширение Phalcon. Проверьте, есть ли в результатах phpinfo() секция "Phalcon" или выполните следующий код:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+В результате вы должны увидеть Phalcon в списке:
 
 .. code-block:: php
 
@@ -28,15 +26,15 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
+Создание проекта
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+Лучше всего следовать данному руководсвту шаг за шагом. Полный код можно посмотреть `здесь <https://github.com/phalcon/tutorial>`_.
 
-File structure
-^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Структура каталогов
+^^^^^^^^^^^^^^^^^^^
+Phalcon не обязывает использовать определенную структуру каталогов. В виду слабой связанности фреймворка, вы можете использовать любую удобную структуру.
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+Для целей данного урока и для начала, мы предалгаем следующую структуру:
 
 .. code-block:: php
 
@@ -50,13 +48,14 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
 
-Beautiful URLs
-^^^^^^^^^^^^^^
-We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
+"Красивые" ссылки (URLs)
+^^^^^^^^^^^^^^^^^^^^^^^^
+В этом примере будем использовать красивые УРЛ (ЧПУ). ЧПУ хороши как для SEO, так и лучше воспринимаются пользователем. Phalcon поддерживает rewrite-модули,
+представленные самыми распространенными веб-серверами. Вы не обязаны использовать ЧПУ в вашем приложении, вы можете с легкостью обойтись и без них.
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file:
+В этом примере будем использовать rewrite модуль для Apache. Создадим несколько правил в файле /.htaccess:
 
 .. code-block:: apacheconf
 
@@ -67,9 +66,9 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus posing security threats.
+Все запросы будут перенаправлены в каталог public/ тем самым делая его корневым. Данный шаг обеспечивает закрытость внутренних файлов проекта от внешнего пользователя.
 
-The second set of rules will check if the requested file exists, and if it does it doesn't have to be rewritten by the web server module:
+Следующий набор правил проверяет существует ли запрашиваемый файл, и если нет перенаправляет запрос index-файлу:
 
 .. code-block:: apacheconf
 
@@ -83,9 +82,10 @@ The second set of rules will check if the requested file exists, and if it does 
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Это первый файл, который вам необходимо создать. Это основной файл приложения, предназначенный для управления всеми его аспектами. Здесь
+вы можете реализовать как инициализацию компонентов приложения, так и его поведение.
 
-The public/index.php file should look like:
+Файл public/index.php содержит следующее:
 
 .. code-block:: php
 
@@ -119,11 +119,12 @@ The public/index.php file should look like:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
-^^^^^^^^^^^
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+Автозагрузка
+^^^^^^^^^^^^
+В первую очередь зарегистрируем автозагрузчик. Он будет использоваться для загрузки классов, таких как контроллеры и модели. Например мы можем
+зарегистрировать одну или более директорий для контроллеров, увеличив гибкость приложения. В данном примере используется компонент Phalcon\\Loader.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+С помощью него можно использовать разные стратегии загрузки классов, но в данном примере мы решили расположить классы в определенных директориях:
 
 .. code-block:: php
 
@@ -137,14 +138,14 @@ With it, we can load classes using various strategies but for this example we ha
         )
     )->register();
 
-Dependency Management
-^^^^^^^^^^^^^^^^^^^^^
-A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is
-actually very simple and practical.
+Управление зависимостями
+^^^^^^^^^^^^^^^^^^^^^^^^
+Важная концепция, которую стоит понять при использовании Phalcon это :doc:`dependency injection <di>`. Это может показаться сложным, 
+но на самом деле это очень простое и практичное.
 
-A service container is a bag where we globally store the services that our application will use to work. Each time the framework requires a component, it will
-ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the
-different components achieving their work together in a transparent manner.
+DI представляет из себя глобальный контейнер для сервисов, необходимых нашему приложению. Каждый раз, когда фреймворку необходим какой-то компонент, он будет обращаться
+за ним к контейнеру используя определенное имя компонента.
+Так как Phalcon является слабосвязанным фреймворком, Phalcon\\DI выступает в роли клея, помогающего разным компонентам прозрачно взаимодействовать друг с другом.
 
 .. code-block:: php
 
@@ -153,13 +154,12 @@ different components achieving their work together in a transparent manner.
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components
-that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` является вариантом Phalcon\\DI. Он берет на себя функции регистрации большинства компонентов из состава Phalcon, поэтому нам не придется регистрировать их вручную, один за другим.
+В будущем нет никакой проблемы для замены этого сервиса своим.
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes,
-they cannot be charged with an autoloader.
+На следующем шаге мы регистрируем сервис 'view', который указывает на папку с файлами 'view' (вьюхи). Т.к. данные файлы не относится к классам, они не могут быть подгружены автолоадером.
 
-Services can be registered in several ways, but for our tutorial we'll use lambda functions:
+Существует несколько путей для регистрации сервисов, но в нашем примере мы используем анонимную функцию:
 
 .. code-block:: php
 
@@ -172,8 +172,8 @@ Services can be registered in several ways, but for our tutorial we'll use lambd
         return $view;
     });
 
-In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment,
-route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+На последнем этапе мы используем :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`.
+Данная компонента служит для инициализации окружения входящих запросов, их перенаправления и обслуживания относящихся к ним действий. После отработки всех доступных действий, компонента возвращает полученные результаты.
 
 .. code-block:: php
 
@@ -183,13 +183,12 @@ route the incoming request, and then dispatch any discovered actions; it aggrega
 
     echo $application->handle()->getContent();
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less
-than 30 lines of code.
+Как можно увидеть, файл инициализации очень короткий, нам нет необходимости подключать какие-либо дополнительные файлы. Таким образом, мы настроили гибкую структуру MVC-приложения менее чем за 30 строк кода.
 
-Creating a Controller
-^^^^^^^^^^^^^^^^^^^^^
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index
-controller (app/controllers/IndexController.php) looks like:
+Создание контроллера
+^^^^^^^^^^^^^^^^^^^^
+По умолчанию Phalcon будет искать контроллер с именем "Index". Как и во многих других фреймворках, он является исходной точкой, когда ни один другой контроллер или действие не были запрошены.
+Наш контроллер по умолчанию (app/controllers/IndexController.php) выглядит так:
 
 .. code-block:: php
 
@@ -200,30 +199,29 @@ controller (app/controllers/IndexController.php) looks like:
 
         public function indexAction()
         {
-            echo "<h1>Hello!</h1>";
+            echo "<h1>Привет!</h1>";
         }
 
     }
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser,
-you should see something like this:
+Классы контроллеров должны заканчиваться на "Controller", чтобы автозагрузчик смог загрузить их, а их действия должны заканчиваться на "Action" по той же причине. Теперь можно открыть браузер и увидеть результат:
 
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
 
-Congratulations, you're flying with Phalcon!
+Удача! Phalcon моментально отображает нашу простенькую страницу!
 
-Sending output to a view
-^^^^^^^^^^^^^^^^^^^^^^^^
-Sending output on the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be
-passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a
-directory named as the last executed controller. In our case (app/views/index/index.phtml):
+Отправка результатов для просмотра
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Отображение вывода напрямую из контроллера временами может быть хорошей идеей (например, когда нужно отправить JSON), но не всегда разумно, и сторонники шаблона MVC это подтвердят. Гораздо правильнее использовать отдельные файлы представлений (view).
+Phalcon ищет файл представления с именем, совпадающим с именем действия внутри папки, совпадающей с именем последнего запущенного контроллера.
+В нашем случае это будет выглядеть так (app/views/index/index.phtml):
 
 .. code-block:: php
 
-    <?php echo "<h1>Hello!</h1>";
+    <?php echo "<h1>Привет!</h1>";
 
-Our controller (app/controllers/IndexController.php) now has an empty action definition:
+В нашем контроллере (app/controllers/IndexController.php) теперь пустое определение действия:
 
 .. code-block:: php
 
@@ -239,32 +237,32 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
+Вывод браузера останется прежним. Когда действие завершит свою работу, будет автоматически создан статический компонент :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`. Узнать больше о представлениях можно :doc:`здесь <views>`.
 
-Designing a sign up form
-^^^^^^^^^^^^^^^^^^^^^^^^
-Now we will change the index.phtml view file, to add a link to a new controller named "signup". The goal is to allow users to sign up in our application.
+Проектирование формы регистрации
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Давайте теперь изменим файл представления index.phtml, добавив ссылку на новый контроллер "signup". Идея проста - позволить пользователям регистрироваться в нашем приложении.
 
 .. code-block:: php
 
     <?php
 
-    echo "<h1>Hello!</h1>";
+    echo "<h1>Привет!</h1>";
 
-    echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
+    echo Phalcon\Tag::linkTo("signup", "Регистрируйся!");
 
-The generated HTML code displays an "A" html tag linking to a new controller:
+Сгенерированный код HTML будет выводить тэг "<a>", указывающий на наш новый контроллер:
 
 .. code-block:: html
 
-    <h1>Hello!</h1> <a href="/test/signup">Sign Up Here!</a>
+    <h1>Привет!</h1> <a href="/test/signup">Регистрируйся!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+Для генерации тэга мы воспользовались встроенный классом :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. Это служебный класс, позволяющий конструировать HTML-разметку в Phalcon-подобном стиле. Более подробно можно :doc:`узнать здесь<tags>`.
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
 
-Here is the controller Signup (app/controllers/SignupController.php):
+Контроллер Signup сейчас очень похож на предыдущий контроллер и выглядит так (app/controllers/SignupController.php):
 
 .. code-block:: php
 
@@ -280,7 +278,7 @@ Here is the controller Signup (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
+Пустое действие index говорит нам о том, что будет использоваться одноименный файл представления с нашей формой для регистрации (app/views/signup/index.phtml):
 
 .. code-block:: html+php
 
@@ -291,7 +289,7 @@ The empty index action gives the clean pass to a view with the form definition (
     <?php echo Tag::form("signup/register"); ?>
 
      <p>
-        <label for="name">Name</label>
+        <label for="name">Имя</label>
         <?php echo Tag::textField("name") ?>
      </p>
 
@@ -301,26 +299,25 @@ The empty index action gives the clean pass to a view with the form definition (
      </p>
 
      <p>
-        <?php echo Tag::submitButton("Register") ?>
+        <?php echo Tag::submitButton("Регистрация") ?>
      </p>
 
     </form>
 
-Viewing the form in your browser will show something like this:
+В браузере это будет выглядеть так:
 
 .. figure:: ../_static/img/tutorial-3.png
     :align: center
 
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
+Класс :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` также содержит полезные методы для работы с формами.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+Метод Phalcon\\Tag::form принимает единственный аргумент, например, относительный идентификатор контроллер/действие приложения.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework,
-indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
+При нажатии на кнопку "Регистрация" видим исключение, вызванное фреймворком. Оно говорит нам о том, что отсутствует действие "register" нашего контроллера "signup":
 
     PhalconException: Action "register" was not found on controller "signup"
 
-Implementing that method will remove the exception:
+Не будем испытывать судьбу и реализуем данный метод:
 
 .. code-block:: php
 
@@ -341,14 +338,14 @@ Implementing that method will remove the exception:
 
     }
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored
-in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Снова жмем на кнопку "Регистрация" и видим пустую страницу. Поля name и email, введенные пользователем, должны сохраниться в базе данных.
+Следуя традиции MVC, все взаимодействие с БД должно вестись через модели, следуя традициям ООП-стиля.
 
-Creating a Model
-^^^^^^^^^^^^^^^^
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Создание модели
+^^^^^^^^^^^^^^^
+Phalcon содержит первую ORM для PHP, полностью написанную на языке C. Вместо усложнения процесса разработки, он упрощает ее!
 
-Before creating our first model, we need a database table to map it to. A simple table to store registered users can be defined like this:
+Мы должны связать таблицу в нашей базе данных перед созданием нашей первой модели. Простейшая таблица для регистрации пользователей приведена ниже:
 
 .. code-block:: sql
 
@@ -359,7 +356,7 @@ Before creating our first model, we need a database table to map it to. A simple
       PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory (app/models/Users.php). The model mapping to "users" table:
+Файлы моделей должны находиться в папке app/models (app/models/Users.php). Модель, представляющая таблицу "users", выглядит следующим образом:
 
 .. code-block:: php
 
@@ -370,10 +367,10 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
     }
 
-Setting a Database Connection
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process.
-A database connection is just another service that our application has that can be use for several components:
+Настройка соединения с базой данных
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Для использования базы данных и получения к ней доступа через наши модели, нам необходимо указать настройки в процессе инициализации нашего приложения.
+Соединение с базой данных это всего лишь еще один сервис в нашем сервис-локаторе:
 
 .. code-block:: php
 
@@ -417,11 +414,11 @@ A database connection is just another service that our application has that can 
          echo "PhalconException: ", $e->getMessage();
     }
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+При правильных настройках подключения наши модели готовы к работе и взаимодействию с остальными частями приложения.
 
-Storing data using models
-^^^^^^^^^^^^^^^^^^^^^^^^^
-Receiving data from the form and storing them in the table is the next step.
+Сохранение данных при работе с моделями
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Следующим шагом будет обработка данных нашей формы регистрации и сохранение их в таблице базы данных.
 
 .. code-block:: php
 
@@ -444,9 +441,9 @@ Receiving data from the form and storing them in the table is the next step.
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
-                echo "Thanks for register!";
+                echo "Спасибо за регистрацию!";
             } else {
-                echo "Sorry, the following problems were generated: ";
+                echo "К сожалению, возникли следующие проблемы: ";
                 foreach ($user->getMessages() as $message) {
                     echo $message->getMessage(), "<br/>";
                 }
@@ -458,33 +455,31 @@ Receiving data from the form and storing them in the table is the next step.
     }
 
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling save()
-will store the data in the database for that record. The save() method returns a boolean value which
-informs us on whether the storing of the data was successful or not.
+В действии 'register' мы создаем экземпляр модели Users, отвечающий за записи пользователей. Публичные свойства класса указывают на их одноименные названия полей в таблице базы данных.
+Установка необходимых значений нашей модели и вызов метода save() приводит к сохранению этих данных в базе данных.
+Метод save() возвращает булево значение указывающее, успешно ли были сохранены данные в таблице или нет (true и false, соответственно).
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the method save().
+ORM автоматически экранирует ввод для предотвращения SQL-инъекций, так что мы можем передавать массив $_POST напрямую методу save().
 
-Additional validation happens automatically on fields that are not null (required). If we don't type any of the
-required files our screen will look like this:
+Для полей, у которых установлен параметр not null (обязательные), необходима дополнительная валидация. Без нее мы получим что-то вроде этого:
 
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
-Conclusion
+Заключение
 ----------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+На этом очень простом руководстве можно увидеть, как просто начать создавать приложения с помощью Phalcon.
+То, что Phalcon является расширением, никак не влияет на сложность разработки и доступные возможности.
+Продолжайте читать данное руководство для изучения новых возможностей, которые предоставляет Phalcon!
 
-Sample Applications
+Примеры приложений
 -------------------
-The following Phalcon powered applications are also available, providing more complete examples:
+Можно ознакомиться с более развернутыми примерами приложений, написанных с помощью Phalcon:
 
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
+* `INVO application`_: Приложение для создания счетов. Позволяет редактировать продукты, компании, типы продуктов и др.
+* `PHP Alternative website`_: Мультиязычное приложение с продвинутым роутингом.
+* `Album O'Rama`_: Витрина музыкальных альбомов. Обработка больших объемов данных с помощью диалекта :doc:`PHQL <phql>` и шаблонизатора :doc:`Volt <volt>`
+* `Phosphorum`_: Простой форум
 
 .. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site

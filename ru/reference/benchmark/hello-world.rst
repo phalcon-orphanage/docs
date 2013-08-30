@@ -1,32 +1,31 @@
-Hello World Benchmark
-=====================
-How the benchmarks were performed?
-----------------------------------
-We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
-people don't like this kind of benchmark because real-world applications require more complex features or
-structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
-Such a task represents the mimimum requirement for every framework to process a single request.
+Тест производительности Hello World
+===================================
+Цель тестирования
+-----------------
+Мы создали тест "Hello World" для создания минимальной нагрузки на каждый фреймворк. Большинство не любит такие
+сравнения, потому что в реальных приложения используются более сложные функции и структуры. Однако, данный тест позволяет выявить
+минимальное время, необходимое каждому фреймворку для выполнения одной простой задачи. Такая задача требует выполнения минимальных
+условий для работы каждого фреймворка.
 
-More specifically, the benchmark only measures the time it takes for a framework to start, run an action and
-free up resources at the end of the request. Any PHP application based on an MVC architecture will require
-this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex
-request will be higher.
+По своей сути, тест только измеряет время необходимое фреймворку для запуска, выполнения действия и освобождения ресурсов в конце работы.
+Любому PHP приложению с поддержкой MVC архитектуры на это требуется время. Выполняя такой простейший тест, мы можем быть уверены что время
+требуемое для более сложных операций будет выше.
 
-A controller and a view have been created for each framework. The controller "say" and action "hello". The
-action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 2000
-requests using 10 concurrent connections to each framework.
+Для каждого фреймворка были созданы Контроллер и представление (view). Контроллер называется "say", а выполняемое действие "hello". Контроллер
+только передает в представление данные для отображения строки ("Hello!"). Для тестирования была использована утилита "ab", мы отправляли фреймворкам
+2000 запросов с 10 одновременными подключениями.
 
-What measurements were recorded?
---------------------------------
-These were the measurements we record to identify the overall performance of each framework:
+Контрольные замеры
+------------------
+Параметры ниже были выбраны для сравнения производительности каждого фреймворка:
 
-* Requests per second
-* Time across all concurrent requests
-* Number of included PHP files on a single request (measured using function get_included_files_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* Число обработанных запросов в секунду (Requests per second)
+* Время на выполнение всех запросов в тесте
+* Число используемых файлов на один запрос (использована функция get_included_files_).
+* Использование памяти на запрос (использована функция memory_get_usage_).
 
-Pariticipant Frameworks
------------------------
+Соперники
+---------
 * Yii_ (YII_DEBUG=false) (yii-1.1.13)
 * Symfony_ (2.0.11)
 * `Zend Framework`_ (1.11.11)
@@ -36,10 +35,10 @@ Pariticipant Frameworks
 * Laravel_ 3.2.5
 * CodeIgniter_ (2.1.0)
 
-Results
--------
-Yii (YII_DEBUG=false) Version yii-1.1.13
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Результаты
+----------
+Yii (YII_DEBUG=false) версии yii-1.1.13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/yii/index.php?r=say/hello
@@ -87,8 +86,8 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
       99%     26
      100%     42 (longest request)
 
-Symfony Version 2.1.6
-^^^^^^^^^^^^^^^^^^^^^^
+Symfony версии 2.1.6
+^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/Symfony/web/app.php/say/hello/
@@ -136,8 +135,8 @@ Symfony Version 2.1.6
       99%     30
      100%     61 (longest request)
 
-CodeIgniter 2.1.0
-^^^^^^^^^^^^^^^^^
+CodeIgniter версии 2.1.0
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/codeigniter/index.php/say/hello
@@ -185,8 +184,8 @@ CodeIgniter 2.1.0
       99%     24
      100%     33 (longest request)
 
-Kohana 3.2.0
-^^^^^^^^^^^^
+Kohana версии 3.2.0
+^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/kohana/index.php/say/hello
@@ -234,8 +233,8 @@ Kohana 3.2.0
       99%     31
      100%     64 (longest request)
 
-Fuel 1.2.1
-^^^^^^^^^^
+Fuel версии 1.2.1
+^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/fuel/public/say/hello
@@ -283,8 +282,8 @@ Fuel 1.2.1
       99%     38
      100%     80 (longest request)
 
-Cake 2.1.3
-^^^^^^^^^^
+Cake версии 2.1.3
+^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 10 -c 5 http://localhost/bench/cake/say/hello
@@ -332,8 +331,8 @@ Cake 2.1.3
       99%  15040
      100%  15040 (longest request)
 
-Zend Framework 1.11.11
-^^^^^^^^^^^^^^^^^^^^^^
+Zend Framework версии 1.11.11
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/zendfw/public/index.php
@@ -381,8 +380,8 @@ Zend Framework 1.11.11
       99%     62
      100%     90 (longest request)
 
-Laravel 3.2.5
-^^^^^^^^^^^^^
+Laravel версии 3.2.5
+^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/laravel/public/say/hello
@@ -431,7 +430,7 @@ Laravel 3.2.5
       99%     48
      100%     93 (longest request)
 
-Phalcon Version 0.8.0
+Phalcon версии 0.8.0
 ^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -480,9 +479,9 @@ Phalcon Version 0.8.0
       99%     14
      100%     23 (longest request)
 
-Graphs
-^^^^^^
-The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
+Графики
+^^^^^^^
+Первый график показывает, сколько запросов в секунду смог обработать каждый фреймворк. Второй график показывает среднее время выполнения всех запросов.
 
 .. raw:: html
 
@@ -494,8 +493,8 @@ The first graph shows how many requests per second each framework was able to ac
         function drawChart() {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Requests per second');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Запросов в секунду');
             data.addRows([
                 ['Zend', 354.55],
                 ['Laravel', 489.03],
@@ -508,7 +507,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Requests per second (#/sec) [more is better]',
+                title: 'Фреймворк / Число обработанных запросов в секунду (Requests per second) (#/sec) [больше лучше]',
                 colors: ['#3366CC'],
                 animation: {
                     duration: 0.5
@@ -523,8 +522,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Time per Request');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Время на запрос');
             data.addRows([
                 ['Zend', 2.820],
                 ['Laravel', 2.045],
@@ -537,7 +536,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Time per Request (mean, across all concurrent requests) [less is better]',
+                title: 'Фреймворк / Время на запрос (для всех параллельных запросов) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -546,8 +545,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Memory Usage (MB)');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Использовано памяти (MB)');
             data.addRows([
                 ['Zend', 1.75],
                 ['Symfony', 1.5],
@@ -560,7 +559,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Memory Usage (mean, megabytes per request) [less is better]',
+                title: 'Фреймворк / Расход памяти (мегабайт на один запрос) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -569,8 +568,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Number of included PHP files');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Число использованных PHP файлов');
             data.addRows([
                 ['Zend', 66],
                 ['Laravel', 46],
@@ -583,7 +582,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Number of included PHP files (mean, number on a single request) [less is better]',
+                title: 'Фреймворк / Число используемых файлов (необходимых в для одного запроса) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -600,9 +599,9 @@ The first graph shows how many requests per second each framework was able to ac
         <div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
     </div>
 
-Conclusion
+Заключение
 ----------
-The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
+Уникальная структура Phalcon предоставляет исключительную производительность и превосходит все используемые в этом тесте фреймворки.
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
