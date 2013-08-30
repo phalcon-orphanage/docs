@@ -1,27 +1,27 @@
-Micro Benchmark
-===============
-How the benchmarks were performed?
+Тест производительности микро фреймворков
+=========================================
+Цель тестирования
 ----------------------------------
-We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
+Мы создали тест "Hello World" для создания минимальной нагрузки на каждый фреймворк. Единообразный тест выполнялся с каждым фреймворком.
 
-Using a route for the HTTP method 'GET' we pass a parameter to a handler returning a "Hello $name" response.
+Используя маршрутизацию для HTTP метода "GET" мы передаем параметр в обработчик и возвращаем ответ "Hello $name".
 
-What measurements were recorded?
---------------------------------
-These were the measurements we record to identify the overall performance of each framework:
+Контрольные замеры
+------------------
+Параметры ниже были выбраны для сравнения производительности каждого фреймворка:
 
-* Requests per second
-* Time across all concurrent requests
-* Number of included PHP files on a single request (measured using function get_included_files_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* Число обработанных запросов в секунду (Requests per second)
+* Время на выполнение всех запросов в тесте
+* Число используемых файлов на один запрос (использована функция get_included_files_).
+* Использование памяти на запрос (использована функция memory_get_usage_).
 
-Participant Frameworks
-----------------------
+Соперники
+---------
 * Slim_
 * Silex_
 
-Results
--------
+Результаты
+----------
 Slim Framework
 ^^^^^^^^^^^^^^
 .. code-block:: php
@@ -169,9 +169,9 @@ Phalcon 0.5.0
       99%      5
      100%     11 (longest request)
 
-Graphs
-^^^^^^
-The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
+Графики
+^^^^^^^
+Первый график показывает, сколько запросов в секунду смог обработать каждый фреймворк. Второй график показывает среднее время выполнения всех запросов.
 
 
 .. raw:: html
@@ -184,8 +184,8 @@ The first graph shows how many requests per second each framework was able to ac
         function drawChart() {
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Requests per second');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Запросов в секунду');
             data.addRows([
                 ['Silex',    448.75],
                 ['Slim',    1134.21],
@@ -193,7 +193,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Requests per second (#/sec) [more is better]',
+                title: 'Фреймворк / Число обработанных запросов в секунду (Requests per second) [больше лучше]',
                 colors: ['#3366CC'],
                 animation: {
                     duration: 0.5
@@ -208,8 +208,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Time per Request');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Время на запрос');
             data.addRows([
                 ['Silex',   2.228],
                 ['Slim',    0.882],
@@ -217,7 +217,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Time per Request (mean, across all concurrent requests) [less is better]',
+                title: 'Фреймворк / Время на запрос (для всех параллельных запросов) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -226,8 +226,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Memory Usage (MB)');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Использовано памяти (MB)');
             data.addRows([
                 ['Silex',   1.25],
                 ['Slim',    1.25],
@@ -235,7 +235,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Memory Usage (mean, megabytes per request) [less is better]',
+                title: 'реймворк / Расход памяти (мегабайт на один запрос) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -244,8 +244,8 @@ The first graph shows how many requests per second each framework was able to ac
             chart.draw(data, options);
 
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Framework');
-            data.addColumn('number', 'Number of included PHP files');
+            data.addColumn('string', 'Фреймворк');
+            data.addColumn('number', 'Число использованных PHP файлов');
             data.addRows([
                 ['Silex',    54],
                 ['Slim',     17],
@@ -253,7 +253,7 @@ The first graph shows how many requests per second each framework was able to ac
             ]);
 
             var options = {
-                title: 'Framework / Number of included PHP files (mean, number on a single request) [less is better]',
+                title: 'Фреймворк / Число используемых файлов (необходимых в для одного запроса) [меньше лучше]',
                 colors: ['#3366CC'],
                 fontSize: 11
             };
@@ -270,9 +270,9 @@ The first graph shows how many requests per second each framework was able to ac
         <div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
     </div>
 
-Conclusion
+Заключение
 ----------
-The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
+Уникальная структура Phalcon предоставляет исключительную производительность и превосходит все используемые в этом тесте фреймворки.
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php

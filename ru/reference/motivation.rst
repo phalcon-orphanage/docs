@@ -1,74 +1,72 @@
-Our motivation
+Наша мотивация
 ==============
-There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
+Сейчас существует множество PHP фреймворков, но Phalcon такой один (правда, поверьте).
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality
-that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework
-itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request
-from the actual application. Object-Oriented frameworks also add a lot of overhead to execution making complex
-application slow. All these operations slows the application down and subsequently impacts the end user experience.
+Почти все программисты предпочитают использовать фреймворки. Это обусловлено тем, что они обеспечивают богатый функционал который уже готов
+для использования и поддерживают принцип DRY ( Don’t repeat yourself - не повторяй себя). Тем не менее фреймворки в большинстве своём состоят
+из множества файлов и сотен строк кода, которые должны подключаться и выполнятся при каждом запросе пользователя. Это существенно замедляет
+работу приложения, и так же негативно влияет на скорость работы и эмоции конечного пользователя.
 
-The Question
-------------
-Why can't we have a robust framework with all of its advantages but with none or very few disadvantages?
+Вопрос
+------
+Почему мы не можем получить фреймворк со всеми этими преимуществами, но лишенный недостатков или сводящий их к минимуму?
 
-This is why Phalcon was born!
+Так и появился Phalcon!
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations
-(big or small). Through this understanding, we managed to remove unnecessary validations, compacted code, performed optimizations
-and generated low-level solutions so as to achieve maximum performance from Phalcon.
+Последние несколько месяцев мы глубоко исследовали возможности PHP для любой оптимизации большой или маленькой.
+Поняв Zend Engine, мы смогли убрать лишние проверки, уменьшить код и выполнить такие низкоуровневые оптимизации, которые
+позволили добиться максимальной производительности от Phalcon.
 
-Why?
-----
-* The use of frameworks has become mandatory in professional development with PHP
-* Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
-* We love PHP and we think it can be used to create larger and more ambitious projects
+Почему?
+-------
+* Фреймворки стали обязательными для профессионального развития и работы с PHP
+* Фреймворки предлагают чёткую философию, лёгкую поддержку и написание кода, а саму работу делают увлекательной и приятной
+* Мы любим PHP и думаем, что он может быть использован для создания более крупных и амбициозных проектов
 
-Inner workings of PHP?
-----------------------
-* PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
-* PHP is interpreted and not compiled. The major disadvantage is performance loss
-* Every time a script is requested it must be first interpreted
-* If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
+Как работает PHP внутри?
+------------------------
+* PHP - язык динамический, в нём присутствует так называемый слабый контроль типов. Каждый раз, при выполнении бинарной операции (например, 2 + "2"), PHP сначала проверяет типы операндов для выполнения преобразований
+* PHP каждый раз заново интерпретируется и не компилируется. В этом основная проблема и главная потеря производительности
+* При каждом запросе все сценарии должны быть сначала интерпретированы
+* Если не используются акселераторы, кэширующие PHP-код в скомпилированный байт-код (например APC), то при каждом запросе так же проверяется синтаксис каждого файла
 
-How do traditional PHP frameworks work?
----------------------------------------
-* Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
-* Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
-* Some of these classes contain methods that aren't used in every request but they're loaded always consuming memory
-* Continuous loading or interpreting is expensive and impacts performance
-* The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
+Как работают традиционные фреймворки на PHP?
+--------------------------------------------
+* Много файлов с разными классами и функциями считываются при каждом обращении. Чтение файлов с диска пагубно влияет на производительность, особенно когда каталогов и файлов много
+* Современный фреймворки используют так называемую ленивую или отложенную загрузку (автозагрузку) для увеличения производительности (для сценария используются только необходимые файлы с кодом)
+* Некоторые из этих файлов содержат классы и методы, которые не используются в каждом запросе, но они загружены всегда, потребляя при этом память
+* Последовательная загрузка или интерпретация довольно сильно нагружает сервер и негативно влияет на производительность
+* Код фреймворка меняется не часто, но приложение должно его каждый раз загружать, проверять и интерпретировать, каждый раз, на каждый запрос
 
-How does a PHP C-extension work?
---------------------------------
-* C extensions are loaded together with PHP one time on the web server's daemon start process
-* Classes and functions provided by the extension are ready to use for any application
-* The code isn't interpreted because is already compiled to a specific platform and processor
+Как работает расширение PHP?
+----------------------------
+* Си расширение загружается один раз, вместе с загрузкой библиотеки или демона PHP
+* Классы и функции расширения готовы к использованию всегда и в любых приложениях
+* Код не интерпретируется, он уже скомпилирован и оптимизирован. При этом оптимизирован с учётом особенностей текущей системы и используемого процессора
 
-How does Phalcon work?
-----------------------
-* Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
-* Low-level optimizations provides the lowest overhead for MVC-based applications
-* Interact with databases with maximum performance by using a C-language ORM for PHP
-* Phalcon directly accesses internal PHP structures optimizing execution in that way as well
+Как работает Phalcon?
+---------------------
+* Компоненты фреймворка слабо связаны между собой. С Phalcon можно использовать всю базу, или только отдельные части
+* Низкоуровневая оптимизация позволяет минимизировать накладные расходы на реализацию в приложении паттерна MVC
+* Взаимодействие с базами данных реализовано на Си по технологии ORM и выдаёт максимальную производительность
+* Phalcon напрямую обращается к внутренним структурам PHP, что позволяет делать все операции максимально быстро
 
-Why do I need Phalcon?
-----------------------
-Each application requirements and tasks are different than another's. Some for instance are designed to do a set
-of tasks and generate content that rarely changes. These applications can be created with any programming language or
-framework. Using a front-end cache, usually makes such an application, no matter how poorly designed or slow it might be,
-perform very fast.
+Почему вам нужен Phalcon?
+-------------------------
+Каждое приложение имеет свои требования и задачи. Некоторые, например, предназначены для выполнения ряда задач и создания контента, который редко меняется.
+Эти приложения могут быть созданы с помощью любого языка программирования или фреймворка. Использование кэша,
+как правило, делает такую реализацию быстрой, независимо от того, на сколько медленно или быстро работает приложение.
 
-Other applications generate content almost immediately that changes from request to request. In this case, PHP is used
-to address all requests and generate the content. These applications can be APIs, discussion forums with high traffic loads,
-blogs with a high number of comments and contributors, statistic applications, admin dashboards, enterprise resource
-planners (ERP), business-intelligence software dealing with real time data and more.
+Другие приложения генерируют контент практически сразу, измененяя от запроса к запросу. В этом случае PHP используется
+для адресации всех запросов и генерирования содержимого. Это могут быть приложения с API-интерфейсом, дискуссионные форумы с
+высокой нагрузкой, блоги с большим количеством комментариев и участников, статистические приложения, панель администратора,
+планирование ресурсов предприятия (ERP), программное обеспечения для обработки данных в реальном времени и многое другое.
 
-An application will be as slow as its slowest component/process. Phalcon offers a very fast yet feature rich framework
-that allows developers to concentrate on making their applications/code faster. Following proper coding processes,
-Phalcon can deliver a lot more functionality/requests with less memory consumption and processing cycles.
+Приложение будет работать так медленно, на сколько медленно работает его самая медленная часть/процесс. Phalcon предлагает очень быструю,
+но функциональную базу, которая позволяет разработчикам сконцентрироваться на ускорении работы своих приложений/кода.
+В процессе соответствующей разработки Phalcon может обработать гораздо больше функций/запросов с меньшим потреблением памяти и циклов обработки.
 
-Conclusion
+Заключение
 ----------
-Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way
-to develop applications with a framework implemented with the philosophy "Performance Really Matters"! Enjoy!
+Phalcon это попытка сделать быстрейший фреймворк для PHP. Вы получаете возможность использовать очень простой и надёжный инструмент
+для создания быстрых приложений без проблем с производительностью. Наслаждайтесь!
