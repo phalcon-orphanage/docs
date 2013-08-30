@@ -1,59 +1,59 @@
-Installation on XAMPP
-=====================
-XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
+Установка на XAMPP
+==================
+XAMPP_ представляет собой лёгкий вариант установки Apache в комплекте с MySQL, PHP и Perl. Просто скачав XAMPP его сразу можно использовать. Ниже представлены детальная инструкция по установке Phalcon на XAMPP для Windows. Крайне рекомендуем использовать послдение версии XAMPP.
 
-Download the right version of Phalcon
--------------------------------------
-XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
+Скачайте правильную версию Phalcon
+----------------------------------
+XAMPP всегда выпускается с 32 разрядными версиими Apache и PHP. Вам необходимо так же скачивать x86 версию Phalcon для Windows в разделе скачиваний.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+После скачивания библиотеки Phalcon у вас будет zip файл, примерно такой как показано ниже:
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center
 
-Extract the library from the archive to get the Phalcon DLL:
+Распакуйте архив и получите файл библиотеки Phalcon DLL:
 
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the c:\\xampp folder, the extension needs to be in c:\\xampp\\php\\ext
+Скопируйте файл php_phalcon.dll в каталог PHP расширений. Если вы установили XAMPP в каталог c:\\xampp, то расширения будут в c:\\xampp\\php\\ext
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
-Edit the php.ini file, it is located at ﻿C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.
+Отредактируйте ваш php.ini file, он распологается в C:\\xampp\\php\\php.ini. Для редактирования можно использовать Блокнот или любую подобную программу. Мы рекомендуем использовать Notepad++ для избежания проблем с окончание и переводом строк. Добавьте в конец файла: extension=php_phalcon.dll и сохраните его.
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
+Перезапустите сервер Apache из контрольной панели XAMPP. PHP должен загрузиться с новой конфигурацией.
 
 .. figure:: ../_static/img/xampp-5.png
     :align: center
 
-Open your browser to navigate to http://localhost. The XAMPP welcome page will appear. Click on the link phpinfo().
+Откройте ваш браузер и перейдите на http://localhost. Должна появиться страница приветствия XAMPP. Нажмите на ссылку phpinfo().
 
 .. figure:: ../_static/img/xampp-6.png
     :align: center
 
-phpinfo() will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+phpinfo() выводит обширную информацию о текущем состоянии PHP. Прокрутите страницу ниже и убедитесь что расширение phalcon загруженно корреткно.
 
 .. figure:: ../_static/img/xampp-7.png
     :align: center
 
-If you can see the phalcon version in the phpinfo() output, congrats!, You are now flying with Phalcon.
+Если вы увидели версию phalcon в выдаче phpinfo(), поздравляем!, вы готовы к полёту с Phalcon.
 
-Screencast
-----------
-The following screencast is a step by step guide to install Phalcon on Windows:
+Скринкаст
+---------
+Нижеприведённый скрикаст отображает пошаговую установку Phalcon на Windows:
 
 .. raw:: html
 
    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
---------------
-* :doc:`General Installation </reference/install>`
-* :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
+Дополнительные руководства
+--------------------------
+* :doc:`Информация по установке </reference/install>`
+* :doc:`Подробная установка на WAMP для Windows </reference/wamp>`
 
 .. _XAMPP: http://www.apachefriends.org/en/xampp-windows.html

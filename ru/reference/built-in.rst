@@ -1,15 +1,15 @@
-Using PHP Built-in webserver
-============================
+Установка на встроенный в PHP веб-сервер
+========================================
 
-As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.
+В PHP версии 5.4.0 был добавлен встроенный веб-сервер, который можно использовать для разработки.
 
-To start the server type:
+Для запуска сервера выполните команду:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root
 
-If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
+Если вы хотите перенаправлять запросы на файл index.php, добавьте файл .htrouter.php со следующим кодом:
 
 .. code-block:: php
 
@@ -19,12 +19,12 @@ If you want to rewrite the URIs to the index.php file use the following router f
     }
     return false;
 
-and then start the server with:
+и запустите сервер следующей командой:
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root .htrouter.php
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Откройте свой браузер и перейдите по адресу http://localhost:8000/ , чтобы убедиться, что всё работает.
 
-.. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
+.. _built-in: http://php.net/manual/en/features.commandline.webserver.php
