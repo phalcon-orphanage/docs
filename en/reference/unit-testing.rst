@@ -1,6 +1,6 @@
 Unit testing
 ============
-Writing proper tests can assist in writing better software. If you set up proper test cases you can elimitate most 
+Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most 
 functional bugs and better maintain your software.
 
 Integrating PHPunit with phalcon
