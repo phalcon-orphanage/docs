@@ -2414,9 +2414,9 @@ implicitly creates a transaction to ensure that data are correctly stored:
 Isolated Transactions
 ^^^^^^^^^^^^^^^^^^^^^
 Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checking and business rules are isolated from the main connection.
+virtual foreign key checks and business rules are isolated from the main connection.
 This kind of transaction requires a transaction manager that globally manages each
-transaction created ensuring that it's correctly rollbacked/commited before ending the request:
+transaction created ensuring that they are correctly rolled back/committed before ending the request:
 
 .. code-block:: php
 
@@ -2494,7 +2494,7 @@ Transactions can be used to delete many records in a consistent way:
     }
 
 Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
-is performed. You can use the service container to create an overall transaction manager for the entire application:
+is performed. You can use the service container to create the global transaction manager for the entire application:
 
 .. code-block:: php
 
