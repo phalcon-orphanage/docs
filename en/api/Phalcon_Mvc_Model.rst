@@ -798,7 +798,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
 
 Setup a 1-1 relation between two models 
 
@@ -819,21 +819,9 @@ Setup a 1-1 relation between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (*$this_model_field*, *$reference_model*, *$reference_model_field* [, *$options*])
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
 
-Setup a relation reverse 1-1  between two models.
-
-*Parameters*
-
-* *$this_model_field*: (string) The field from the current model you are trying to reference to another model.
-* *$reference_model*: (string) The model you are pointing to.
-* *$reference_model_field*: (string) The field on the reference model that you are connecting to.
-* *$options*: (array) An array of key => value pairs. The following keys are accepted: 
-    * *'alias'*: Alias_Docs_ 
-    * *'foreignKey'*: Foreign_Key_Docs_ 
-
-.. _Alias_Docs: http://docs.phalconphp.com/en/latest/reference/models.html#aliasing-relationships
-.. _Foreign_Key_Docs: http://docs.phalconphp.com/en/latest/reference/models.html#virtual-foreign-keys
+Setup a relation reverse 1-1  between two models 
 
 .. code-block:: php
 
@@ -852,7 +840,7 @@ Setup a relation reverse 1-1  between two models.
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
 
 Setup a relation 1-n between two models 
 
@@ -873,7 +861,7 @@ Setup a relation 1-n between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -902,7 +890,7 @@ Setup a relation n-n between two models through an intermediate relation
 
 
 
-protected  **addBehavior** ()
+public  **addBehavior** ()
 
 Setups a behavior in a model 
 

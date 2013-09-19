@@ -274,3 +274,8 @@ Returns a route object by its name
 
 
 
+public  **isExactControllerName** ()
+
+...
+
+

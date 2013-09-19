@@ -47,6 +47,8 @@ Constants
 
 *integer* **TYPE_BOOLEAN**
 
+*integer* **TYPE_DOUBLE**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**

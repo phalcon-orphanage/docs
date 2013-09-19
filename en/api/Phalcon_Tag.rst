@@ -392,7 +392,6 @@ Volt syntax:
 
      {{ form("posts/save") }}
      {{ form("posts/save", "method": "post") }}
-     {{ form("posts/save", "method": "post", "class":"class1,class2") }}
 
 
 

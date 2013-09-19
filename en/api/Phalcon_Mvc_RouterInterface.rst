@@ -145,3 +145,8 @@ Returns a route object by its name
 
 
 
+abstract public  **isExactControllerName** ()
+
+...
+
+
