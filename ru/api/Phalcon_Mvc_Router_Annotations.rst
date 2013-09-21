@@ -304,3 +304,8 @@ Returns a route object by its name
 
 
 
+public  **isExactControllerName** () inherited from Phalcon\\Mvc\\Router
+
+...
+
+

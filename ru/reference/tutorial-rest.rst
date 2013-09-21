@@ -1,39 +1,39 @@
-Tutorial 3: Creating a Simple REST API
-======================================
-In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
-different HTTP methods:
+Урок 3: Создание простейшего REST API
+=====================================
+В этом уроке мы объясним, как создать простейшее приложение, предоставляющее RESTful_ API с использованием 
+различных HTTP методов:
 
-* GET to retrieve and search data
-* POST to add data
-* PUT to update data
-* DELETE to delete data
+* GET для получения и поиска данных
+* POST для добавления данных
+* PUT для обновления данных
+* DELETE для удаления данных
 
-Defining the API
-----------------
-The API consists of the following methods:
+Определение API
+---------------
+Наше API содержит следующие методы:
 
 +--------+----------------------------+----------------------------------------------------------+
-| Method |  URL                       | Action                                                   |
+| Метод |  URL                       | Действие                                                  |
 +========+============================+==========================================================+
-| GET    | /api/robots                | Retrieves all robots                                     |
+| GET    | /api/robots                | Возвращает всех роботов                                  |
 +--------+----------------------------+----------------------------------------------------------+
-| GET    | /api/robots/search/Astro   | Searches for robots with ‘Astro’ in their name           |
+| GET    | /api/robots/search/Astro   | роизводит поиск роботов с "Astro" в имени                |
 +--------+----------------------------+----------------------------------------------------------+
-| GET    | /api/robots/2              | Retrieves robots based on primary key                    |
+| GET    | /api/robots/2              | Возвращает робота по его ключу (primary key)             |
 +--------+----------------------------+----------------------------------------------------------+
-| POST   | /api/robots                | Adds a new robot                                         |
+| POST   | /api/robots                | Добавляет нового робота                                  |
 +--------+----------------------------+----------------------------------------------------------+
-| PUT    | /api/robots/2              | Updates robots based on primary key                      |
+| PUT    | /api/robots/2              | Обновляет робота по его ключу                            |
 +--------+----------------------------+----------------------------------------------------------+
-| DELETE | /api/robots/2              | Deletes robots based on primary key                      |
+| DELETE | /api/robots/2              | Удаляет робота по его ключу                              |
 +--------+----------------------------+----------------------------------------------------------+
 
-Creating the Application
-------------------------
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case,
-we will use a :doc:`micro application <micro>` to meet our goal.
+Создание приложения
+-------------------
+Поскольку приложение очень простое, мы не будем включать полное MVC окружение для его разработки. В этом случае для
+достижения нашей цели мы будем использовать :doc:`micro application <micro>`.
 
-The following file structure is more than enough:
+Такой структуры файлов будет более, чем достаточно:
 
 .. code-block:: php
 
@@ -43,8 +43,8 @@ The following file structure is more than enough:
         index.php
         .htaccess
 
-First, we need an .htaccess file that contains all the rules to rewrite the URIs to the index.php file,
-that is our application:
+Прежде всего, нам понадобится файл .htaccess, который содержит все правила перенаправления URI на файл index.php.
+Для нашего приложения он будет таким:
 
 .. code-block:: apacheconf
 
@@ -54,7 +54,7 @@ that is our application:
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-Then, in the index.php file we create the following:
+После этого, создаём файл index.php:
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ Then, in the index.php file we create the following:
 
     $app->handle();
 
-Now we will create the routes as we defined above:
+Теперь мы пропишем роуты, как определили выше:
 
 .. code-block:: php
 
@@ -106,18 +106,22 @@ Now we will create the routes as we defined above:
 
     $app->handle();
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
-followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
-by example, explicitly sets that the "id" parameter must have a numeric format.
+Каждый роут задан с помощью метода таким же названием, что и HTTP метод. В качестве первого параметра мы передаём шаблон роута,
+вторым — обработчик, который, в нашем случае является анонимной функцией. Такой роут как '/api/robots/{id:[0-9]+}'
+однозначно устанавливает, что параметр "id" должен быть числом.
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+Когда определено соответствие роутов запрашиваемым URI, тогда приложение выполняет соответствующие им обработчики.
 
-Creating a Model
-----------------
+Создание модели
+---------------
 Our API provides information about 'robots', these data are stored in a database. The following model allows us to
 access that table in an object-oriented way. We have implemented some business rules using built-in validators
 and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
 application:
+Наше API предоставляет информацию о "роботах", хранящуюся в базе данных. Описанная ниже модель позволяет нам
+получить доступ к таблице объектно-ориентированным путём. Мы реализуем немного бизнес-правил, используя встроенные
+валидаторы с простейшими проверками. Мы делаем это, чтобы иметь уверенность в том, что сохраняемые данные отвечают
+требованиям нашего приложения:
 
 .. code-block:: php
 
@@ -162,7 +166,7 @@ application:
 
     }
 
-Now, we must set up a connection to be used by this model:
+Теперь мы должны настроить соединение с базой данных, чтобы использовать его в этой модели
 
 .. code-block:: php
 
@@ -183,16 +187,18 @@ Now, we must set up a connection to be used by this model:
     //Create and bind the DI to the application
     $app = new \Phalcon\Mvc\Micro($di);
 
-Retrieving Data
----------------
+Получение данных
+----------------
 The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
 perform this simple query returning the results as JSON:
+Сначала мы реализуем обработчик, который отвечает на GET-запрос и возвращает всех доступных роботов. Для выполнения
+этой задачи будем использовать PHQL, который будет возвращать результат выполнения простого запроса в формате JSON:
 
 .. code-block:: php
 
     <?php
 
-    //Retrieves all robots
+    // Получение всех роботов
     $app->get('/api/robots', function() use ($app) {
 
         $phql = "SELECT * FROM Robots ORDER BY name";
@@ -209,17 +215,17 @@ perform this simple query returning the results as JSON:
         echo json_encode($data);
     });
 
-:doc:`PHQL <phql>`, allow us to write queries using a high-level, object-oriented SQL dialect that internally
-translates to the right SQL statements depending on the database system we are using. The clause "use" in the
-anonymous function allows us to pass some variables from the global to local scope easily.
+:doc:`PHQL <phql>` позволяет нам писать запросы с помощью высокоуровневого, объектно-ориентированного SQL-диалекта,
+которые внутри него будут переведён в правильные SQL-операторы в зависимости от используемой СУБД. Условие "use" при
+определении анонимной функции позволяет нам легко передать некоторые переменные из глобальной области видимости в локальную.
 
-The searching by name handler would look like:
+Обработчик поиска по названию будет выглядеть следующим образом:
 
 .. code-block:: php
 
     <?php
 
-    //Searches for robots with $name in their name
+    // Поиск роботов, в названии которых содержится $name
     $app->get('/api/robots/search/{name}', function($name) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
@@ -239,13 +245,13 @@ The searching by name handler would look like:
 
     });
 
-Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
+В нашем случае поиск по полю "id" очень похож, кроме того, мы сообщаем, найден робот или нет:
 
 .. code-block:: php
 
     <?php
 
-    //Retrieves robots based on primary key
+    // Получение робота по ключу
     $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
 
         $phql = "SELECT * FROM Robots WHERE id = :id:";
@@ -271,15 +277,15 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         return $response;
     });
 
-Inserting Data
+Вставка данных
 --------------
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
+Получая данные в виде JSON-строки, вставленной в тело запроса, мы точно так же используем PHQL для вставки:
 
 .. code-block:: php
 
     <?php
 
-    //Adds a new robot
+    // Добавление нового робота
     $app->post('/api/robots', function() use ($app) {
 
         $robot = $app->request->getJsonRawBody();
@@ -292,10 +298,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
-        //Create a response
+        // Формируем ответ
         $response = new Phalcon\Http\Response();
 
-        //Check if the insertion was successful
+        //Проверка, что вставка произведена успешно
         if ($status->success() == true) {
 
             $robot->id = $status->getModel()->id;
@@ -304,10 +310,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
         } else {
 
-            //Change the HTTP status
+            // Изменение HTML статуса
             $response->setStatusCode(500, "Internal Error");
 
-            //Send errors to the client
+            //Отправляем сообщение об ошибке клиенту
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
@@ -319,15 +325,15 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         return $response;
     });
 
-Updating Data
--------------
-The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
+Обновление данных
+-----------------
+Обновление данных аналогично их вставке. Полученный параметр "id" сообщает о том, информацию о каком роботе необходимо обновить:
 
 .. code-block:: php
 
     <?php
 
-    //Updates robots based on primary key
+    // Обновление робота по ключу
     $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
 
         $robot = $app->request->getJsonRawBody();
@@ -340,15 +346,15 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
-        //Create a response
+        // Формируем ответ
         $response = new Phalcon\Http\Response();
 
-        //Check if the insertion was successful
+        // Проверка, что обновление произведено успешно
         if ($status->success() == true) {
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Change the HTTP status
+            //Изменение HTML статуса
             $response->setStatusCode(500, "Internal Error");
 
             $errors = array();
@@ -362,15 +368,15 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
         return $response;
     });
 
-Deleting Data
--------------
-The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
+Удаление данных
+---------------
+Удаление очень похоже на обновление. Полученный параметр "id" сообщает о том, какого робота необходимо удалить:
 
 .. code-block:: php
 
     <?php
 
-    //Deletes robots based on primary key
+    // Удаление робота по ключу
     $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
 
         $phql = "DELETE FROM Robots WHERE id = :id:";
@@ -378,14 +384,14 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
             'id' => $id
         ));
 
-        //Create a response
+        // Формируем ответ
         $response = new Phalcon\Http\Response();
 
         if ($status->success() == true) {
             $response->setJsonContent(array('status' => 'OK'));
         } else {
 
-            //Change the HTTP status
+            // Изменение HTTP статуса
             $response->setStatusCode(500, "Internal Error");
 
             $errors = array();
@@ -400,11 +406,11 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         return $response;
     });
 
-Testing our Application
+Тестирование приложения
 -----------------------
-Using curl_ we'll test every route in our application verifying its proper operation:
+Используя curl_ мы протестируем все роуты нашего приложения для проверки правильности его функционирования:
 
-Obtain all the robots:
+Получение всех роботов:
 
 .. code-block:: bash
 
@@ -418,7 +424,7 @@ Obtain all the robots:
 
     [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 
-Search a robot by its name:
+Поиск робота по имени:
 
 .. code-block:: bash
 
@@ -432,7 +438,7 @@ Search a robot by its name:
 
     [{"id":"2","name":"Astro Boy"}]
 
-Obtain a robot by its id:
+Получение робота по id:
 
 .. code-block:: bash
 
@@ -446,7 +452,7 @@ Obtain a robot by its id:
 
     {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 
-Insert a new robot:
+Добавление робота:
 
 .. code-block:: bash
 
@@ -461,7 +467,7 @@ Insert a new robot:
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
-Try to insert a new robot with the name of an existing robot:
+Попытка добавить робота с уже существующим именем:
 
 .. code-block:: bash
 
@@ -476,7 +482,7 @@ Try to insert a new robot with the name of an existing robot:
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
 
-Or update a robot with an unknown type:
+Или обновление робота с непонятным типом:
 
 .. code-block:: bash
 
@@ -492,7 +498,7 @@ Or update a robot with an unknown type:
     {"status":"ERROR","messages":["Value of field 'type' must be part of
         list: droid, mechanical, virtual"]}
 
-Finally, delete a robot:
+И, наконец, удаление робота:
 
 .. code-block:: bash
 
@@ -506,10 +512,10 @@ Finally, delete a robot:
 
     {"status":"OK"}
 
-Conclusion
+Заключение
 ----------
-As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
-use micro applications and the :doc:`PHQL <phql>` language.
+Как видно, с помощью Phalcon легко разработать RESTful API. Позже мы подробно объясним в документации как использовать
+микро-приложения и язык :doc:`PHQL <phql>`.
 
 .. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer
