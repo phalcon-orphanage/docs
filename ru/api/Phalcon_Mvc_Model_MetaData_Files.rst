@@ -107,7 +107,7 @@ Reads the complete meta-data for certain model
 
     <?php
 
-    print_r($metaData->readMetaData(new Robots());
+    print_r($metaData->readMetaData(new Robots()));
 
 
 
@@ -125,7 +125,7 @@ Reads meta-data for certain model using a MODEL_* constant
 
 
 
-public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -294,7 +294,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Set the attributes that must be ignored from the INSERT SQL generation 
 
@@ -307,7 +307,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Set the attributes that must be ignored from the UPDATE SQL generation 
 

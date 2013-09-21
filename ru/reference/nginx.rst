@@ -114,7 +114,7 @@ Nginx_ это свободный, с открытым исходным кодо�
 
             # otherwise rewrite it
             if (!-e $request_filename) {
-                rewrite ^(.+)$ /index.php?_url=$1 last;
+                rewrite ^(.+)$ /index.php?_url=/$1 last;
                 break;
             }
         }
@@ -157,7 +157,7 @@ Nginx_ это свободный, с открытым исходным кодо�
         try_files $uri $uri/ @rewrite;
 
         location @rewrite {
-            rewrite ^/(.*)$ /index.php?_url=$1;
+            rewrite ^/(.*)$ /index.php?_url=/$1;
         }
 
         location ~ \.php {
