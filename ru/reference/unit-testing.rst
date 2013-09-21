@@ -1,18 +1,18 @@
-Unit testing
-============
-Writing proper tests can assist in writing better software. If you set up proper test cases you can elimitate most 
-functional bugs and better maintain your software.
+Модульное тестирование (Unit test)
+==================================
+Написание качественных тестов может помочь в созданиекачественного программного обеспечения. Если вы используете модульное тестирование
+вы можете избежать большое количество ошибок и упростить поддержку программного обеспечение.
 
-Integrating PHPunit with phalcon
---------------------------------
-If you don't already have phpunit installed, you can do it by using the following composer command:
+Интеграция Phalcon с PHPUnit
+----------------------------
+Если вы еще не установили PHPUnit, вы можете сделать это с помощью следующей команды composer:
 
 .. code-block:: bash
 
   composer require phpunit/phpunit
 
 
-or by manually adding it to composer.json:
+или вручную добавить его в composer.json:
 
 .. code-block:: json
 
@@ -23,7 +23,7 @@ or by manually adding it to composer.json:
   }
 
 
-Or if you don't have composer you can install phpunit via pear:
+Или, если у вас нет composer можно установить с помощью pear PHPUnit:
 
 .. code-block:: bash
 
@@ -31,22 +31,20 @@ Or if you don't have composer you can install phpunit via pear:
   pear install pear.phpunit.de/PHPUnit
 
 
-Once phpunit is installed create directory called 'tests' in your root directory:
+После установки PHPUnit, ​​создайте директорию tests' в корне проекта:
 
 .. code-block:: bash
 
   app/
   public/
   tests/
-  
-Next, we need a 'helper' file to bootstrap the application for unit testing.
 
-The PHPunit helper file
-------------------------
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the
-file in your tests/ directory as TestHelper.php.
+Далее, нам понадобится файл "загрузчик" для подготовки приложения модульного тестирования.
 
-
+Загрузчик PHPunit
+-----------------
+Файл загрузчик необходим для подготовки приложение к запуску тестов. Мы подготовили образец файла.
+Поместите файл TestHelper.php в /tests.
 
 
 .. code-block:: php
@@ -54,54 +52,54 @@ file in your tests/ directory as TestHelper.php.
   <?php
   use Phalcon\DI,
       Phalcon\DI\FactoryDefault;
-  
+
   ini_set('display_errors',1);
   error_reporting(E_ALL);
-  
+
   define('ROOT_PATH', __DIR__);
   define('PATH_LIBRARY', __DIR__ . '/../app/library/');
   define('PATH_SERVICES', __DIR__ . '/../app/services/');
   define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
-  
+
   set_include_path(
       ROOT_PATH . PATH_SEPARATOR . get_include_path()
   );
-  
+
   // required for phalcon/incubator
   include __DIR__ . "/../vendor/autoload.php";
-  
+
   // use the application autoloader to autoload the classes
   // autoload the dependencies found in composer
   $loader = new \Phalcon\Loader();
-  
+
   $loader->registerDirs(array(
       ROOT_PATH
   ));
-  
+
   $loader->register();
-  
+
   $di = new FactoryDefault();
   DI::reset();
-  
+
   // add any needed services to the DI here
-  
+
   DI::setDefault($di);
 
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your
-main application.
+Если вам необходимо протестировать любой компонент из вашей библиотеки, добавьте их в автозагрузку,
+или использовать загрузчик вашего основного приложения.
 
-To help you build the unit tests, we made a few abstract classes you can use to bootstrap the unit tests themselves.
-These files exist in the Phalcon incubator @ https://github.com/phalcon/incubator.
+Чтобы помочь вам построить юнит-тесты, мы сделали несколько абстрактных классов, которые вы можете использовать для загрузки самих тестов.
+Вы можете взять их в репозитарии инкубатора Phalcon @ https://github.com/phalcon/incubator.
 
-You can use the incubator library by adding it as a dependency:
+Вы можете использовать инкубатор добавив его в зависимости composer:
 
 .. code-block:: bash
 
   composer require phalcon/incubator
 
 
-or by manually adding it to composer.json:
+или вручную добавить его в composer.json:
 
 .. code-block:: json
 
@@ -111,11 +109,11 @@ or by manually adding it to composer.json:
       }
   }
 
-You can also clone the repository using the repo link above.
+Вы также можете клонировать репозитория, используя ссылку выше.
 
-PHPunit.xml file
------------------
-Now, create a phpunit file:
+Файл PHPunit.xml
+----------------
+Теперь создайте phpunit файл:
 
 .. code-block:: xml
 
@@ -135,56 +133,55 @@ Now, create a phpunit file:
           <directory>./</directory>
       </testsuite>
   </phpunit>
-  
-Modify the phpunit.xml to fit your needs and save it in tests/.
 
-This will run any tests under the tests/ directory. 
+Изменить phpunit.xml чтобы соответствовал вашим потребностям и сохраните его в tests/.
 
-Sample unit test
-----------------
-To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you
-to do is create the files and phpunit will run the tests for you.
+Пример юнит-теста
+-----------------
+Для работы с юнит-тестом необходимо его определить. Автозагрузчик сам будет загружать все созданные вами файлы и передавать из
+PHPUnit для выполнения тестов.
+так что вам нужно сделать, это создать файлы и PHPUnit будет запускать тесты для вас.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the DI and get it 
-the UnitTestCase file.
+Этот пример не содержит конфигурационного файла, хотя в большинстве случаев без него не обойтись в тестах.
+Вы можете добавить его в DI и получить его файле UnitTestCase.
 
-First create a base unit test called UnitTestCase.php in your /tests folder:
+Сначала создайте базовый файл для ваших юнть-тестов UnitTestCase.php в папке /tests:
 
 .. code-block:: php
 
   <?php
   use Phalcon\DI,
       \Phalcon\Test\UnitTestCase as PhalconTestCase;
-  
+
   abstract class UnitTestCase extends PhalconTestCase {
-  
+
       /**
        * @var \Voice\Cache
        */
       protected $_cache;
-  
+
       /**
        * @var \Phalcon\Config
        */
       protected $_config;
-  
+
       /**
        * @var bool
        */
       private $_loaded = false;
-  
+
       public function setUp() {
-  
+
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
-  
+
           // get any DI components here, if you have a config, be sure to pass it to the parent
-  
+
           parent::setUp($di);
-  
+
           $this->_loaded = true;
       }
-  
+
       /**
        * Check if the test case is setup properly
        * @throws \PHPUnit_Framework_IncompleteTestError;
@@ -195,9 +192,9 @@ First create a base unit test called UnitTestCase.php in your /tests folder:
           }
       }
   }
-  
-It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namesace
-'Test'. So create a file called \tests\Test\UnitTest.php:
+
+Хорошая идея, разделять юнит-тесты тесты в пространствах имен. Для этого теста мы создадим
+пространство имен 'Test'. Создайте файл с названием \tests\Test\UnitTest.php:
 
 .. code-block:: php
 
@@ -207,39 +204,39 @@ It's always a good idea to seperate your Unit tests in namespaces. For this test
    * Class UnitTest
    */
   class UnitTest extends \UnitTestCase {
-  
-  
-  
+
+
+
       public function testTestCase() {
-  
+
           $this->assertEquals('works',
               'works',
               'This is OK'
           );
-  
+
           $this->assertEquals('works',
               'works1',
               'This wil fail'
           );
-  
-  
+
+
       }
   }
 
 
-Now when you execute 'phpunit' in your command-line from the \tests directory you will get the following output:
+После выполнения 'phpunit' в командной строке в каталоге \tests вы получите следующий результат:
 
 .. code-block:: bash
 
   $ phpunit
   PHPUnit 3.7.23 by Sebastian Bergmann.
-  
+
   Configuration read from /private/var/www/tests/phpunit.xml
-  
+
   Time: 3 ms, Memory: 3.25Mb
-  
+
   There was 1 failure:
-  
+
   1) Test\UnitTest::testTestCase
   This wil fail
   Failed asserting that two strings are equal.
@@ -248,13 +245,13 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
   @@ @@
   -'works'
   +'works1'
-  
+
   /private/var/www/tests/Test/UnitTest.php:25
-  
+
   FAILURES!
   Tests: 1, Assertions: 2, Failures: 1.
-  
-Now you can start building your unit tests. You can view a good guide here (we also recommend reading the
-PHPunit documentation if you're not familiar with PHPunit):
+
+Теперь вы можете начать писать собственные юнит-тесты. Здесь находится хорошее руководство (
+Мы рекомендуем вам ознокомится с документацией PHPUnit, если вы ещё не знакомы с PHPUnit):
 
 http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/
