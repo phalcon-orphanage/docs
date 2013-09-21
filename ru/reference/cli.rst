@@ -152,7 +152,7 @@ If you run the the application with the following parameters and action:
     
 
 Running tasks in a chain
----------
+------------------------
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself
 to the DI:
 
