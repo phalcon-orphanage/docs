@@ -45,4 +45,4 @@ WAMP существует в 32 и 64 битных версиях. В разде
 * :doc:`Информация по установке </reference/install>`
 * :doc:`Подробная установка на XAMPP для Windows </reference/xampp>`
 
-.. _WampServer: http://www.wampserver.com/en/
+.. _WampServer: http://www.wampserver.com/ru/

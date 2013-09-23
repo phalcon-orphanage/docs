@@ -1,31 +1,30 @@
-Increasing Performance: What's next?
-====================================
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
-In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
-your application.
+Повышение производительности: Что дальше?
+=========================================
+Для получения более быстроо приложения треуется уточнение множества аспектов: сервера, клиента, сети, базы данных, веб-сервере, статических
+источников и т.д. Здесь мы рассмотрим сценарии по улучшению производительности и поиску наиболее медленных мест приложения.
 
-Profile on the Server
----------------------
-Each application is different, the permanent profiling is important to understand where performance can be increased.
-Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another,
-so it is important to make enough measurements to make conclusions.
+Профилирование на сервере
+-------------------------
+Все приложения разные, использование постоянного профилирования даёт понять, где производительность может быть увеличена.
+Профилирование дает нам реальное представление о наиболее медленных местах. Результаты замеров могут различаться от разу к разу,
+поэтому необходимо сделать достаточное количество измерений, чтобы сделать правильные выводы.
 
-Profiling with XDebug
-^^^^^^^^^^^^^^^^^^^^^
-Xdebug_ provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
+Профилирование с XDebug
+^^^^^^^^^^^^^^^^^^^^^^^
+Xdebug_ предоставляет простой способ профилирования приложений на PHP, просто установите расширение и включите его в php.ini:
 
 .. code-block:: ini
 
     xdebug.profiler_enable = On
 
-Using a tool like Webgrind_ you can see which functions/methods are slower than others:
+С помощью инструмента Webgrind_ можно визуально понять какие функции и методы медленнее остальных:
 
 .. figure:: ../_static/img/webgrind.jpg
     :align: center
 
-Profiling with Xhprof
-^^^^^^^^^^^^^^^^^^^^^
-Xhprof_ is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
+Профилирование с Xhprof
+^^^^^^^^^^^^^^^^^^^^^^^
+Xhprof_ еще одно интересное расширение для профилирования PHP приложений. Добавьте следующую строку в начало загрузочного файла:
 
 .. code-block:: php
 
@@ -33,7 +32,7 @@ Xhprof_ is another interesting extension to profile PHP applications. Add the fo
 
     xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
-Then at the end of the file save the profiling data:
+Потом, в конце файла, сохраните данные профилирования:
 
 .. code-block:: php
 
@@ -50,7 +49,7 @@ Then at the end of the file save the profiling data:
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in html viewer to analize the profile data:
+Xhprof обеспечивает встроенный просмотрщик для анализа данных профилирования:
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center
@@ -58,61 +57,58 @@ Xhprof provides a built-in html viewer to analize the profile data:
 .. figure:: ../_static/img/xhprof-1.jpg
     :align: center
 
-Profiling SQL Statements
-^^^^^^^^^^^^^^^^^^^^^^^^
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important to increase the performance
-in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
+Профилирование SQL запросов
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Большинство систем баз данных предоставляет средства для выявления медленных SQL запросов. Обнаружения и фиксации медленных запросов
+очень важно для увеличения производительности на стороне сервера. В случае с Mysql, вы можете использовать slow query log, чтобы понять
+какие SQL-запросы работают больше времени, чем ожидалось:
 
 .. code-block:: ini
 
     log-slow-queries = /var/log/slow-queries.log
     long_query_time = 1.5
 
-Profile on the Client
----------------------
-Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance.
-The following tools are useful to detect common bottlenecks in the client side:
+Профилирование на клиенте
+-------------------------
+Иногда, для увеличения производительности, может понадобиться проанализировать приложение и веб-сервер для улучшения загрузки статических
+элементов, таких как картинки, javascript и css. Следующие инструменты полезны для выявления общих узких мест на стороне клиента:
 
-Profile with Chrome/Firefox
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the
-loading of the different resources required by a single page:
+Профилирование в Chrome/Firefox
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+У большинства современных браузеров есть все инструменты для профилирования загрузки страницы. В Chrome для получения информации о загрузке
+различных ресурсов можно использовать веб-инспектор:
 
 .. figure:: ../_static/img/chrome-1.jpg
     :align: center
 
-Firebug_ provides a similar functionality:
+Firebug_ обеспечивает схожую функциональность:
 
 .. figure:: ../_static/img/firefox-1.jpg
     :align: center
 
-Yahoo! YSlow
-------------
-YSlow_ analyzes web pages and suggests ways to improve their performance based on a set of `rules for high performance web pages`_
+Использование Yahoo! YSlow
+--------------------------
+YSlow_ анализирует веб-страницу и показывает советы по улучшению производительности на основе комплекса `правил для высокопроизводительных веб-страниц`_
 
 .. figure:: ../_static/img/yslow-1.jpg
     :align: center
 
-Profile with Speed Tracer
-^^^^^^^^^^^^^^^^^^^^^^^^^
-`Speed Tracer`_ is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken
-from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a
-Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
+Использование Speed Tracer
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+`Speed Tracer`_ - инструмент, помогающий обнаружить и устранить проблемы производительности в клиентсвой части веб-приложения. Он показывает метрики,
+полученные из работы браузера на самом низком уровне. Speed Racer доступен как расширение для Google Ghrome и работает на всех поддерживаемых в настоящее
+время платформах (Windows и Linux).
 
 .. figure:: ../_static/img/speed-tracer.jpg
     :align: center
 
-This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
-Javascript evaluation and CSS styling.
+Этот инструмент очень полезен, так как он позволяет получать в реальном времени параметры, используемые для отображения полной страницы, включая разбор HTML,
+оценку Javascript и CSS стилей.
 
-Use a recent PHP version
-------------------------
-PHP is faster every day, using the latest version improves the performance of your applications and also Phalcon.
-
-Use a PHP Bytecode Cache
-------------------------
-APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
-in each request. Once the extension is installed use the following setting to enable APC:
+Использование акселераторов PHP
+-------------------------------
+APC_ как и многие другие PHP акселераторы помогает приложению: уменьшает накладные расходы на чтение, разбивку и разбор PHP файлов при каждом запросе.
+После учтановки расширения используйте следующий параметр, чтобы включить APC:
 
 .. code-block:: ini
 
@@ -120,31 +116,18 @@ in each request. Once the extension is installed use the following setting to en
 
 PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4.
 
-Do blocking work in the background
-----------------------------------
-Process a video, send e-mails, compress a file or an image are slow tasks that must be processed in background jobs.
-There are a variety of tools that provide queuing or messaging systems that work well with PHP:
-
-* `Beanstalkd <http://kr.github.io/beanstalkd/>`_
-* `Redis <http://redis.io/>`_
-* `RabbitMQ <http://www.rabbitmq.com/>`_
-* `Resque <https://github.com/chrisboulton/php-resque>`_
-* `Gearman <http://gearman.org/>`_
-* `ZeroMQ <http://www.zeromq.org/>`_
-
-Google Page Speed
------------------
-mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available
-for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets
-(CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
+Модуль Google Page Speed
+------------------------
+mod_pagespeed_ увеличивает скорость вашего сайта и уменьшает время загрузки страницы. Это open-source модуль для HTTP сервера Apache, он использует
+для повышения web производительности лучшие практики обработки страниц, и соответствующих ресурсов (CSS, JavaScript, изображений), не требуя
+ручной модификации уже существующего контента или настроек.
 
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/
-.. _rules for high performance web pages: http://developer.yahoo.com/performance/rules.html
+.. _правил для высокопроизводительных веб-страниц: http://developer.yahoo.com/performance/rules.html
 .. _XDebug: http://xdebug.org/docs
 .. _Xhprof: https://github.com/facebook/xhprof
 .. _Speed Tracer: https://developers.google.com/web-toolkit/speedtracer/
 .. _Webgrind: http://github.com/jokkedk/webgrind/
 .. _APC: http://php.net/manual/en/book.apc.php
 .. _mod_pagespeed: https://developers.google.com/speed/pagespeed/mod
-.. _ngx_pagespeed: https://developers.google.com/speed/pagespeed/ngx

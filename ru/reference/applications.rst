@@ -1,18 +1,18 @@
-MVC Applications
-================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
-operations required in the background, instantiating every component needed and integrating it with the
-project, to allow the MVC pattern to operate as desired.
+MVC Приложения
+==============
+Всю тяжелую работу при планировании работы MVC в Phalcon обычно выполняет
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`.
+Этот компонент инкапсулирует все сложные задачи необходимые изнутри, создаёт компоненты и интегрирует их в проект
+для реализации шаблона MVC по своему желанию.
 
-Single or Multi Module Applications
------------------------------------
-With this component you can run various types of MVC structures:
+Одно или Мульти - модульные приложения
+--------------------------------------
+С помощью этого компонета можно запускать разные типы MVC приложений.
 
-Single Module
+Одномодульные
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
-An application like this would have the following file structure:
+Одномодульное MVC приложение состоит лишь из одного модуля. Можно использовать пространства имён, но необязательно.
+Такое приложение может иметь такую структуру:
 
 .. code-block:: php
 
@@ -26,7 +26,7 @@ An application like this would have the following file structure:
             img/
             js/
 
-If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
+Если не используется пространство имён, то в качестве файла загрузки MVC можно использовать:
 
 .. code-block:: php
 
@@ -48,7 +48,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     $di = new FactoryDefault();
 
-    // Registering the view component
+    // Регистрация компонента представлений
     $di->set('view', function() {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -65,7 +65,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         echo $e->getMessage();
     }
 
-If namespaces are used, the following bootstrap can be used:
+Если же используются пространства имён, то файл может быть таким:
 
 .. code-block:: php
 
@@ -79,7 +79,7 @@ If namespaces are used, the following bootstrap can be used:
 
     $loader = new Loader();
 
-    // Use autoloading with namespaces prefixes
+    // Использование автозагрузки по префиксу пространства имён
     $loader->registerNamespaces(
         array(
             'Single\Controllers' => '../apps/controllers/',
@@ -89,14 +89,14 @@ If namespaces are used, the following bootstrap can be used:
 
     $di = new FactoryDefault();
 
-    // Register the dispatcher setting a Namespace for controllers
+    // Регистрация диспетчера c пространством имён для контроллеров
     $di->set('dispatcher', function() {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
-    // Registering the view component
+    // Регистрация компонента представлений
     $di->set('view', function() {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -106,7 +106,6 @@ If namespaces are used, the following bootstrap can be used:
     try {
 
         $application = new Application($di);
-
         echo $application->handle()->getContent();
 
     } catch(\Exception $e){
@@ -114,9 +113,9 @@ If namespaces are used, the following bootstrap can be used:
     }
 
 
-Multi Module
-^^^^^^^^^^^^
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+Мультимодульные
+^^^^^^^^^^^^^^^
+Мультимодульное приложение использует единый корень документов для нескольких модулей приложения. Файловая структура тогда может быть такой:
 
 .. code-block:: php
 
@@ -137,7 +136,8 @@ A multi-module application uses the same document root for more than one module.
         img/
         js/
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+Каждый каталог в apps/ содержит собственную MVC структуру. Файл Module.php внутри такого каталога создан для настройки параметров этого модуля,
+таких как автозагрузка и настраиваемые сервисы.
 
 .. code-block:: php
 
@@ -154,7 +154,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
     {
 
         /**
-         * Register a specific autoloader for the module
+         * Регистрация автозагрузчика, специфичного для текущего модуля
          */
         public function registerAutoloaders()
         {
@@ -172,19 +172,19 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         }
 
         /**
-         * Register specific services for the module
+         * Регистрация специфичных сервисов для модуля
          */
         public function registerServices($di)
         {
 
-            //Registering a dispatcher
+            // Регистрация диспетчера
             $di->set('dispatcher', function() {
                 $dispatcher = new Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
+                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers\\");
                 return $dispatcher;
             });
 
-            //Registering the view component
+            // Регистрация компонента представлений
             $di->set('view', function() {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
@@ -194,7 +194,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+Для загрузки мультимодульных MVC приложений можно использовать такой файл автозагрузки:
 
 .. code-block:: php
 
@@ -206,7 +206,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     $di = new FactoryDefault();
 
-    //Specify routes for modules
+    // Специфичные роуты для модуля
     $di->set('router', function () {
 
         $router = new Router();
@@ -235,10 +235,10 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     try {
 
-        //Create an application
+        // Создание приложения
         $application = new Application($di);
 
-        // Register the installed modules
+        // Регистрация установленных модулей
         $application->registerModules(
             array(
                 'frontend' => array(
@@ -252,27 +252,26 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             )
         );
 
-        //Handle the request
+        // Обработка запроса
         echo $application->handle()->getContent();
 
     } catch(\Exception $e){
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+Если вы хотите разместить в файле загрузки модуль с конфигурацией, вы можете использовать анонимную функцию для его регистрации:
 
 .. code-block:: php
 
     <?php
 
-    //Creating a view component
+    // Создание компонента представлений
     $view = new \Phalcon\Mvc\View();
 
-    //Set options to view component
+    // Установка параметров компонента представлений
     //...
 
-    // Register the installed modules
+    // Регистрация установленых модулей
     $application->registerModules(
         array(
             'frontend' => function($di) use ($view) {
@@ -290,16 +289,16 @@ module:
         )
     );
 
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
-necessary that every matched route returns a valid module. Each registered module has an associated class
-offering functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices(), they will be called by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
+Когда :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` зарегистрирует модули, всегда необходимо
+чтобы каждая регистрация возвращала существующий модуль. Каждый зарегистрированный модуль должен иметь соответствующий класс
+и функцию для настройки самого модуля. Каждый модуль должен обязательно содержать два методы: registerAutoloaders() и registerServices(),
+они будут автоматически вызваны :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` при выполнении модуля.
 
-Understanding the default behavior
-----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
-you may recognize the following bootstrap file:
+
+Понятие поведения по умолчанию
+------------------------------
+Если вы смотрели :doc:`руководство <tutorial>` или сгенерировали код используя :doc:`Инструменты разработчика <tools>`,
+вы можете узнать следующий код:
 
 .. code-block:: php
 
@@ -322,7 +321,7 @@ you may recognize the following bootstrap file:
         echo "Exception: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when handle() is invoked:
+Ядро выполняет основную работу по запуску контроллера, при вызыве handle():
 
 .. code-block:: php
 
@@ -332,13 +331,13 @@ The core of all the work of the controller occurs when handle() is invoked:
 
 Manual bootstraping
 -------------------
-If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
+Если вы не хотите использовать :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, код выше можно изменить вот так:
 
 .. code-block:: php
 
     <?php
 
-    // Get the 'router' service
+    // Получаем  сервис из контернейра сервисов
     $router = $di['router'];
 
     $router->handle();
@@ -347,36 +346,36 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // Передаём обработанные параметры моршрутизатора в диспетчер
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
-    // Start the view
+    // Запускаем представление
     $view->start();
 
-    // Dispatch the request
+    // Выполняем запрос
     $dispatcher->dispatch();
 
-    // Render the related views
+    // Выводим необходимое представление
     $view->render(
         $dispatcher->getControllerName(),
         $dispatcher->getActionName(),
         $dispatcher->getParams()
     );
 
-    // Finish the view
+    // Завершаем работу представления
     $view->finish();
 
     $response = $di['response'];
 
-    // Pass the output of the view to the response
+    // Передаём результат для ответа
     $response->setContent($view->getContent());
 
-    // Send the request headers
+    // Отправляем заголовки
     $response->sendHeaders();
 
-    // Print the response
+    // Выводим ответ
     echo $response->getContent();
 
 The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
@@ -457,30 +456,28 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
         $response->send();
     }
 
-Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
-should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+Несмотря на то, что этот код более многословен чем код при использовании :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
+он предоставляет альтернативу для запуска вашего приложения. В зависимости от своих потребностей, вы, возможно, захотите иметь полный контроль
+того будет ли создан ответ или нет, или захотите заменить определённые компоненты на свои, либо расширить их функциональность.
 
-Application Events
+События приложения
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
-(if it is present). Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` может вызывать события :doc:`EventsManager <events>`
+(если они присутствуют). События запускаются с помощью типа "application". Поддерживаются следующие события:
 
 +---------------------+--------------------------------------------------------------+
-| Event Name          | Triggered                                                    |
+| Название события    | Выполняется при                                              |
 +=====================+==============================================================+
-| boot                | Executed when the application handles its first request      |
+| beforeStartModule   | До инициализации зарегистрированного модуля                  |
 +---------------------+--------------------------------------------------------------+
-| beforeStartModule   | Before initialize a module, only when modules are registered |
+| afterStartModule    | После инициализации зарегистрированнного модуля              |
 +---------------------+--------------------------------------------------------------+
-| afterStartModule    | After initialize a module, only when modules are registered  |
+| beforeHandleRequest | До выполнения цикла диспетчера                               |
 +---------------------+--------------------------------------------------------------+
-| beforeHandleRequest | Before execute the dispatch loop                             |
-+---------------------+--------------------------------------------------------------+
-| afterHandleRequest  | After execute the dispatch loop                              |
+| afterHandleRequest  | После выполнения цикла диспетчера                            |
 +---------------------+--------------------------------------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+В примере ниже показано как указать обработчика событий в компоненте:
 
 .. code-block:: php
 
@@ -499,6 +496,6 @@ The following example demonstrates how to attach listeners to this component:
         }
     );
 
-External Resources
-------------------
-* `MVC examples on Github <https://github.com/phalcon/mvc>`_
+Внешние источники
+-----------------
+* `Примеры MVC Github <https://github.com/phalcon/mvc>`_

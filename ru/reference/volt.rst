@@ -1,20 +1,15 @@
-Volt: Template Engine
-=====================
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
+Шаблонизатор Volt
+=================
+Volt — ультрабыстрый и дружелюбный по отношению к дизайнеру язык шаблонизирования, написанный на C для PHP. Он предоставляет набор подручных средств, который позволит вам легко создавать представления. Volt очень сильно связан с остальными компонентами Phalcon, однако, вы можете использовать его в качестве самостоятельного компонента вашего приложения.
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
-territory using the same syntax they have been using with similar template engines. Volt’s syntax and features
-have been enhanced with more elements and of course with the performance that developers have been
-accustomed to while working with Phalcon.
+Volt был написан под вдохновлением от Jinja_, который был создан `Armin Ronacher`_. По этой причине многие разработчики будут чувствовать себя как дома, используя такой же синтаксис, что и в похожих шаблонизаторах. Возможности и синтаксис Volt были улучшены многими вещами и, конечно же, производительностью, к которым так привыкли разработчики, работая с Phalcon.
 
-Introduction
-------------
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Введение
+--------
+Представления на Volt компилируются в чистый PHP код, избавляя тем самым от необходимости писать его вручную:
 
 .. code-block:: html+jinja
 
@@ -31,10 +26,10 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
     {% endblock %}
 
-Activating Volt
----------------
-As other template engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+
+Подключение Volt
+----------------
+Вы можете подключить Volt в компоненте представлений как любой другой шаблонизатор, используя при этом новое расширение для файлов, или всё то же стандартное .phtml:
 
 .. code-block:: php
 
@@ -54,7 +49,7 @@ reusing the standard .phtml:
         return $view;
     });
 
-Use the standard ".phtml" extension:
+Использование стандартного расширения ".phtml":
 
 .. code-block:: php
 
@@ -64,13 +59,11 @@ Use the standard ".phtml" extension:
         ".phtml" => 'Phalcon\Mvc\View\Engine\Volt'
     ));
 
-Basic Usage
------------
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
-prints the result of an expression to the template.
+Основы
+------
+Представление состоит из Volt кода, PHP и HTML. Набор специальных разделителей позволяет входить в режим Volt. Разделители {% ... %} используются для выполнения операторов, таких как циклы for и присваивания, а {{ ... }} выводит результат выражения в шаблон.
 
-Below is a minimal template that illustrates a few basics:
+Ниже представлен небольшой шаблон, иллюстрирующий эти основные возможности:
 
 .. code-block:: html+jinja
 
@@ -78,7 +71,7 @@ Below is a minimal template that illustrates a few basics:
     <!DOCTYPE html>
     <html>
         <head>
-            <title>{{ title }} - An example blog</title>
+            <title>{{ title }} - A example blog</title>
         </head>
         <body>
 
@@ -99,8 +92,7 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using Phalcon\\Mvc\\View you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: title, menu and post:
+Используя Phalcon\\Mvc\\View::setVar вы можете передать переменные из контроллера в представление. В предыдущем примере это были три переменные: title, menu и post:
 
 .. code-block:: php
 
@@ -114,8 +106,9 @@ In the above example, three variables were passed to the view: title, menu and p
 
             $post = Post::findFirst();
 
-            $this->view->title = $post->title;
-            $this->view->post = $post;
+            $this->view->setVar("title", $post->title);
+            $this->view->setVar("post", $post);
+            // или
             $this->view->menu = Menu::find();
             $this->view->show_navigation = true;
 
@@ -123,20 +116,20 @@ In the above example, three variables were passed to the view: title, menu and p
 
     }
 
-Variables
----------
-Object variables may have attributes which can be accessed using the syntax: foo.bar. 
-If you are passing arrays, you have to use the square bracket syntax: foo['bar']
+
+Переменные
+----------
+Переменные могут иметь аттрибуты, доступные при использовании синтаксиса: foo.bar. Если вы передаёте массивы, то обратиться к их элементам можно посредством квадратных скобок: foo['bar']
 
 .. code-block:: jinja
 
-    {{ post.title }} {# for $post->title #}
-    {{ post['title'] }} {# for $post['title'] #}
+    {{ post.title }}
+    {{ post['title'] }}
 
-Filters
+Фильтры
 -------
-Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
-variables:
+Вывод переменных можно форматировать или модифицировать при помощи фильтров. Для их применения используется оператор | (вертикальная черта):
+
 
 .. code-block:: jinja
 
@@ -144,98 +137,94 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+Список встроенных в Volt фильтров:
 
-+----------------------+------------------------------------------------------------------------------+
-| Filter               | Description                                                                  |
-+======================+==============================================================================+
-| e                    | Applies Phalcon\\Escaper->escapeHtml to the value                            |
-+----------------------+------------------------------------------------------------------------------+
-| escape               | Applies Phalcon\\Escaper->escapeHtml to the value                            |
-+----------------------+------------------------------------------------------------------------------+
-| escape_css           | Applies Phalcon\\Escaper->escapeCss to the value                             |
-+----------------------+------------------------------------------------------------------------------+
-| escape_js            | Applies Phalcon\\Escaper->escapeJs to the value                              |
-+----------------------+------------------------------------------------------------------------------+
-| escape_attr          | Applies Phalcon\\Escaper->escapeHtmlAttr to the value                        |
-+----------------------+------------------------------------------------------------------------------+
-| trim                 | Applies the trim_ PHP function to the value. Removing extra spaces           |
-+----------------------+------------------------------------------------------------------------------+
-| left_trim            | Applies the ltrim_ PHP function to the value. Removing extra spaces          |
-+----------------------+------------------------------------------------------------------------------+
-| right_trim           | Applies the rtrim_ PHP function to the value. Removing extra spaces          |
-+----------------------+------------------------------------------------------------------------------+
-| striptags            | Applies the striptags_ PHP function to the value. Removing HTML tags         |
-+----------------------+------------------------------------------------------------------------------+
-| slashes              | Applies the slashes_ PHP function to the value. Escaping values              |
-+----------------------+------------------------------------------------------------------------------+
-| stripslashes         | Applies the stripslashes_ PHP function to the value. Removing escaped quotes |
-+----------------------+------------------------------------------------------------------------------+
-| capitalize           | Capitalizes a string by applying the ucwords_ PHP function to the value      |
-+----------------------+------------------------------------------------------------------------------+
-| lower                | Change the case of a string to lowercase                                     |
-+----------------------+------------------------------------------------------------------------------+
-| upper                | Change the case of a string to uppercase                                     |
-+----------------------+------------------------------------------------------------------------------+
-| length               | Counts the string length or how many items are in an array or object         |
-+----------------------+------------------------------------------------------------------------------+
-| nl2br                | Changes newlines \\n by line breaks (<br />). Uses the PHP function nl2br_   |
-+----------------------+------------------------------------------------------------------------------+
-| sort                 | Sorts an array using the PHP function asort_                                 |
-+----------------------+------------------------------------------------------------------------------+
-| keys                 | Returns the array keys using array_keys_                                     |
-+----------------------+------------------------------------------------------------------------------+
-| join                 | Joins the array parts using a separator join_                                |
-+----------------------+------------------------------------------------------------------------------+
-| format               | Formats a string using sprintf_.                                             |
-+----------------------+------------------------------------------------------------------------------+
-| json_encode          | Converts a value into its JSON_ representation                               |
-+----------------------+------------------------------------------------------------------------------+
-| json_decode          | Converts a value from its JSON_ representation to a PHP representation       |
-+----------------------+------------------------------------------------------------------------------+
-| abs                  | Applies the abs_ PHP function to a value.                                    |
-+----------------------+------------------------------------------------------------------------------+
-| url_encode           | Applies the urlencode_ PHP function to the value                             |
-+----------------------+------------------------------------------------------------------------------+
-| default              | Sets a default value in case that the evaluated expression is null           |
-+----------------------+------------------------------------------------------------------------------+
-| convert_encoding     | Converts a string from one charset to another                                |
-+----------------------+------------------------------------------------------------------------------+
++----------------------+-------------------------------------------------------------------------------+
+| Фильтр               | Описание                                                                      |
++======================+===============================================================================+
+| e                    | Применяет к значению Phalcon\\Escaper->escapeHtml                             |
++----------------------+-------------------------------------------------------------------------------+
+| escape               | Применяет к значению Phalcon\\Escaper->escapeHtml                             |
++----------------------+-------------------------------------------------------------------------------+
+| escape_css           | Применяет к значению Phalcon\\Escaper->escapeCss                              |
++----------------------+-------------------------------------------------------------------------------+
+| escape_js            | Применяет к значению Phalcon\\Escaper->escapeJs                               |
++----------------------+-------------------------------------------------------------------------------+
+| escape_attr          | Применяет к значению Phalcon\\Escaper->escapeHtmlAttr                         |
++----------------------+-------------------------------------------------------------------------------+
+| trim                 | Применяет к значению PHP-фукнцию trim_, которая удаляет лишние пробелы        |
++----------------------+-------------------------------------------------------------------------------+
+| striptags            | Применяет к значению PHP-фукнцию strip_tags_, удаляющую HTML тэги             |
++----------------------+-------------------------------------------------------------------------------+
+| slashes              | Применяет к значению PHP-фукнцию addslashes_, экранирующую значение           |
++----------------------+-------------------------------------------------------------------------------+
+| stripslashes         | Применяет к значению PHP-фукнцию stripslashes_, удаляющую экранирующие кавычки|
++----------------------+-------------------------------------------------------------------------------+
+| capitalize           | Делает первую букву строки заглавной, используя PHP-фукнцию ucwords_          |
++----------------------+-------------------------------------------------------------------------------+
+| lower                | Преобразует все символы строки к нижнему регистру                             |
++----------------------+-------------------------------------------------------------------------------+
+| upper                | Преобразует все символы строки к верхнему регистру                            |
++----------------------+-------------------------------------------------------------------------------+
+| length               | Подсчитывает длину строки, или количество элементов в массиве/объекте         |
++----------------------+-------------------------------------------------------------------------------+
+| nl2br                | Изменяет \\n на HTML вариант(<br />). Применяет функцию nl2br_                |
++----------------------+-------------------------------------------------------------------------------+
+| sort                 | Sorts an array using the PHP function asort_                                  |
++----------------------+-------------------------------------------------------------------------------+
+| keys                 | Возвращает ключи массива, используя array_keys_                               |
++----------------------+-------------------------------------------------------------------------------+
+| join                 | Объединяет части массива, используя join_                                     |
++----------------------+-------------------------------------------------------------------------------+
+| format               | Форматирует строку, используя sprintf_.                                       |
++----------------------+-------------------------------------------------------------------------------+
+| json_encode          | Преобразует значение в JSON_ с помощью функции json_encode_                   |
++----------------------+-------------------------------------------------------------------------------+
+| json_decode          | Преобразует значение из JSON_ в PHP с помощью функции json_decode_            |
++----------------------+-------------------------------------------------------------------------------+
+| abs                  | Применяет к значению PHP-функцию abs_                                         |
++----------------------+-------------------------------------------------------------------------------+
+| url_encode           | Применяет к значению PHP-функцию urlencode_                                   |
++----------------------+-------------------------------------------------------------------------------+
+| default              | Устанавливает значение по умолчанию, если полученное выражение равно null     |
++----------------------+-------------------------------------------------------------------------------+
+| convert_encoding     | Преобразует строку из одной кодировки в другую                                |
++----------------------+-------------------------------------------------------------------------------+
 
-Examples:
+Примеры:
 
 .. code-block:: jinja
 
-    {# e or escape filter #}
+    {# e или escape #}
     {{ "<h1>Hello<h1>"|e }}
     {{ "<h1>Hello<h1>"|escape }}
 
-    {# trim filter #}
+    {# trim #}
     {{ "   hello   "|trim }}
 
-    {# striptags filter #}
+    {# striptags #}
     {{ "<h1>Hello<h1>"|striptags }}
 
-    {# slashes filter #}
+    {# slashes #}
     {{ "'this is a string'"|slashes }}
 
-    {# stripslashes filter #}
+    {# stripslashes #}
     {{ "\'this is a string\'"|stripslashes }}
 
-    {# capitalize filter #}
+    {# capitalize #}
     {{ "hello"|capitalize }}
 
-    {# lower filter #}
+    {# lower #}
     {{ "HELLO"|lower }}
 
-    {# upper filter #}
+    {# upper #}
     {{ "hello"|upper }}
 
-    {# length filter #}
+    {# length #}
     {{ "robots"|length }}
     {{ [1, 2, 3]|length }}
 
-    {# nl2br filter #}
+    {# nl2br #}
     {{ "some\ntext"|nl2br }}
 
     {# sort filter #}
@@ -256,9 +245,9 @@ Examples:
     {# convert_encoding filter #}
     {{ "désolé"|convert_encoding('utf8', 'latin1') }}
 
-Comments
---------
-Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
+Комментарии
+-----------
+В шаблон можно добавить комментарии, используя разделители {# ... #}. Любой текст внутри них будет проигнорирован и не попадёт в вывод:
 
 .. code-block:: jinja
 
@@ -266,13 +255,13 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
         {% set price = 100; %}
     #}
 
-List of Control Structures
---------------------------
-Volt provides a set of basic but powerful control structures for use in templates:
+Список управляющих конструкций
+------------------------------
+Volt позволяет использовать в шаблонах набор основных, но мощных управляющих структур:
 
 For
 ^^^
-Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
+Цикл по всем элементам в последовательности. Пример ниже показывает, как пройти по набору "robots" и вывести их имена:
 
 .. code-block:: html+jinja
 
@@ -283,7 +272,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
     {% endfor %}
     </ul>
 
-for-loops can also be nested:
+циклы так же могут быть вложенными:
 
 .. code-block:: html+jinja
 
@@ -294,7 +283,7 @@ for-loops can also be nested:
       {% endfor %}
     {% endfor %}
 
-You can get the element "keys" as in the PHP counterpart using the following syntax:
+Вы можете получить ключи значений массива так же, как и в PHP используя такой синтаксис:
 
 .. code-block:: html+jinja
 
@@ -304,7 +293,8 @@ You can get the element "keys" as in the PHP counterpart using the following syn
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-An "if" evaluation can be optionally set:
+
+Кроме того для выборочного прохода по элементам, можно определить условие "if":
 
 .. code-block:: html+jinja
 
@@ -318,7 +308,7 @@ An "if" evaluation can be optionally set:
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
+Если 'else' определяется внутри 'for', то этот блок будет выполнен в том случае, когда не будет произведено ни одной итерации:
 
 .. code-block:: html+jinja
 
@@ -329,7 +319,7 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
         There are no robots to show
     {% endfor %}
 
-Alternative syntax:
+Альтернативный синтаксис:
 
 .. code-block:: html+jinja
 
@@ -340,13 +330,13 @@ Alternative syntax:
         There are no robots to show
     {% endfor %}
 
-Loop Controls
-^^^^^^^^^^^^^
-The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
+Управление циклами
+^^^^^^^^^^^^^^^^^^
+Такие операторы как 'break' and 'continue' могут быть использованы для выхода из цикла вообще, или перехода к следующей итерации:
 
 .. code-block:: html+jinja
 
-    {# skip the even robots #}
+    {# пропустить робота с четным индексом #}
     {% for index, robot in robots %}
         {% if index is even %}
             {% continue %}
@@ -356,7 +346,7 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
 
 .. code-block:: html+jinja
 
-    {# exit the foreach on the first even robot #}
+    {# выход из цикла при первом встреченном четном роботе #}
     {% for index, robot in robots %}
         {% if index is even %}
             {% break %}
@@ -366,7 +356,7 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
 
 If
 ^^
-As PHP, an "if" statement checks if an expression is evaluated as true or false:
+Как и в PHP оператор "if" проверяет значение выражения на ложь или истину:
 
 .. code-block:: html+jinja
 
@@ -379,7 +369,7 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
     {% endfor %}
     </ul>
 
-The else clause is also supported:
+Условие else тоже поддерживается:
 
 .. code-block:: html+jinja
 
@@ -394,7 +384,7 @@ The else clause is also supported:
     {% endfor %}
     </ul>
 
-The 'elseif' control flow structure can be used together with if to emulate a 'switch' block:
+Структура "elseif" может быть использована совместно с "if" для повторения функционала "switch":
 
 .. code-block:: html+jinja
 
@@ -406,26 +396,26 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
         Robot is mechanical
     {% endif %}
 
-Loop Context
-^^^^^^^^^^^^
-A special variable is available inside 'for' loops providing you information about
+Контекст цикла
+^^^^^^^^^^^^^^
+Внутри цикла 'for' доступна специальная переменная, предоставляющая информацию о нём
 
 +----------------------+------------------------------------------------------------------------------+
-| Variable             | Description                                                                  |
+| Переменная           | Описание                                                                     |
 +======================+==============================================================================+
-| loop.index           | The current iteration of the loop. (1 indexed)                               |
+| loop.index           | Текущая итерация цикла (нумерация с 1)                                       |
 +----------------------+------------------------------------------------------------------------------+
-| loop.index0          | The current iteration of the loop. (0 indexed)                               |
+| loop.index0          | Текущая итерация цикла (нумерация с 0)                                       |
 +----------------------+------------------------------------------------------------------------------+
-| loop.revindex        | The number of iterations from the end of the loop (1 indexed)                |
+| loop.revindex        | Номер итерации с конца цикла (нумерация с 1)                                 |
 +----------------------+------------------------------------------------------------------------------+
-| loop.revindex0       | The number of iterations from the end of the loop (0 indexed)                |
+| loop.revindex0       | Номер итерации с конца цикла (нумерация с 0)                                 |
 +----------------------+------------------------------------------------------------------------------+
-| loop.first           | True if in the first iteration.                                              |
+| loop.first           | Возвращает true, если текущая итерация — первая                              |
 +----------------------+------------------------------------------------------------------------------+
-| loop.last            | True if in the last iteration.                                               |
+| loop.last            | Возвращает true, если текущая итерация — последняя                           |
 +----------------------+------------------------------------------------------------------------------+
-| loop.length          | The number of items to iterate                                               |
+| loop.length          | Количество элементов для итерирования                                        |
 +----------------------+------------------------------------------------------------------------------+
 
 .. code-block:: html+jinja
@@ -449,9 +439,9 @@ A special variable is available inside 'for' loops providing you information abo
         {% endif %}
     {% endfor %}
 
-Assignments
------------
-Variables may be changed in a template using the instruction "set":
+Присваивания
+------------
+Переменные могут быть изменены в шаблоне. для этого используется оператор "set":
 
 .. code-block:: html+jinja
 
@@ -487,11 +477,11 @@ The following operators are available:
 | /=                   | Division assignment                                                          |
 +----------------------+------------------------------------------------------------------------------+
 
-Expressions
------------
-Volt provides a basic set of expression support, including literals and common operators.
+Выражения
+---------
+Volt позволяет использовать базовый набор выражений, включая литералы.
 
-A expression can be evaluated and printed using the '{{' and '}}' delimiters:
+Выражения вычисляются и выводятся с использованием разделителей '{{' и '}}':
 
 .. code-block:: html+jinja
 
@@ -503,42 +493,42 @@ If an expression needs to be evaluated without be printed the 'do' statement can
 
     {% do (1 + 1) * 2 %}
 
-Literals
-^^^^^^^^
-The following literals are supported:
+Литералы
+^^^^^^^^^^^^^^^^^^^^
+Поддерживаются следующие литералы:
 
 +----------------------+------------------------------------------------------------------------------+
-| Filter               | Description                                                                  |
+| Литералы             | Описание                                                                     |
 +======================+==============================================================================+
-| “this is a string”   | Text between double quotes or single quotes are handled as strings           |
+| "это строка"         | Текст, заключенный в двойные или одинарные кавычки воспринимается как строка |
 +----------------------+------------------------------------------------------------------------------+
-| 100.25               | Numbers with a decimal part are handled as doubles/floats                    |
+| 100.25               | Числа, с десятичной частью воспринимаются как числа с плавающей запятой      |
 +----------------------+------------------------------------------------------------------------------+
-| 100                  | Numbers without a decimal part are handled as integers                       |
+| 100                  | Числа без десятичной части воспринимаются как целые                          |
 +----------------------+------------------------------------------------------------------------------+
-| false                | Constant "false" is the boolean false value                                  |
+| false                | Константа "false" воспринимается как булевое значение "false"                |
 +----------------------+------------------------------------------------------------------------------+
-| true                 | Constant "true" is the boolean true value                                    |
+| true                 | Константа "true" воспринимается как булевое значение "true"                  |
 +----------------------+------------------------------------------------------------------------------+
-| null                 | Constant "null" is the Null value                                            |
+| null                 | Константа "null" воспринимается как NULL-значение                            |
 +----------------------+------------------------------------------------------------------------------+
 
-Arrays
-^^^^^^
-Whether you're using PHP 5.3, 5.4 or 5.5, you can create arrays by enclosing a list of values in square brackets:
+Массивы
+^^^^^^^
+Если вы используете PHP 5.3 or 5.4, 5.5, то можете создавать массивы, перечисляя список значений в квадратных скобках:
 
 .. code-block:: html+jinja
 
-    {# Simple array #}
+    {# Простой массив #}
     {{ ['Apple', 'Banana', 'Orange'] }}
 
-    {# Other simple array #}
+    {# Еще один простой массив #}
     {{ ['Apple', 1, 2.5, false, null] }}
 
-    {# Multi-Dimensional array #}
+    {# Многомерный массив #}
     {{ [[1, 2], [3, 4], [5, 6]] }}
 
-    {# Hash-style array #}
+    {# Хэш-массив #}
     {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 
 Curly braces also can be used to define arrays or hashes:
@@ -548,93 +538,93 @@ Curly braces also can be used to define arrays or hashes:
     {% set myArray = {'Apple', 'Banana', 'Orange'} %}
     {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
-Math
-^^^^
-You may make calculations in templates using the following operators:
+Математические операторы
+^^^^^^^^^^^^^^^^^^^^^^^^
+Вы можете производить вычисления в шаблонах, используя следующие операторы:
 
 +----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
+| Оператор             | Оператор                                                                     |
 +======================+==============================================================================+
-| \+                   | Perform an adding operation. {{ 2 + 3 }} returns 5                           |
+| \+                   | Производит операцию сложения. {{ 2 + 3 }} вернёт 5                           |
 +----------------------+------------------------------------------------------------------------------+
-| \-                   | Perform a substraction operation {{ 2 - 3 }} returns -1                      |
+| \-                   | Производит операцию вычитания. {{ 2 - 3 }} вернёт -1                         |
 +----------------------+------------------------------------------------------------------------------+
-| \*                   | Perform a multiplication operation {{ 2 * 3 }} returns 6                     |
+| \*                   | Производит операцию умножения. {{ 2 * 3 }} вернёт 6                          |
 +----------------------+------------------------------------------------------------------------------+
-| \/                   | Perform a division operation {{ 10 / 2 }} returns 5                          |
+| \/                   | Производит операцию деления. {{ 10 / 2 }} вернёт 5                           |
 +----------------------+------------------------------------------------------------------------------+
-| \%                   | Calculate the remainder of an integer division {{ 10 % 3 }} returns 1        |
+| \%                   | Вычисляет остаток от деления целых чисел. {{ 10 % 3 }} вернёт 1              |
 +----------------------+------------------------------------------------------------------------------+
 
-Comparisons
-^^^^^^^^^^^^
-The following omparison operators are available:
+Операторы сравнения
+^^^^^^^^^^^^^^^^^^^
+Доступны следующие операторы сравнения:
 
 +----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
+| Оператор             | Описание                                                                     |
 +======================+==============================================================================+
-| ==                   | Check whether both operands are equal                                        |
+| ==                   | Проверяет равенство двух операндов                                           |
 +----------------------+------------------------------------------------------------------------------+
-| !=                   | Check whether both operands aren't equal                                     |
+| !=                   | Проверяет неравенство двух операндов                                         |
 +----------------------+------------------------------------------------------------------------------+
-| \<\>                 | Check whether both operands aren't equal                                     |
+| \<\>                 | Проверяет неравенство двух операндов                                         |
 +----------------------+------------------------------------------------------------------------------+
-| \>                   | Check whether left operand is greater than right operand                     |
+| \>                   | Проверяет, что левый операнд больше, чем правый                              |
 +----------------------+------------------------------------------------------------------------------+
-| \<                   | Check whether left operand is less than right operand                        |
+| \<                   | Проверяет, что левый операнд меньше, чем правый                              |
 +----------------------+------------------------------------------------------------------------------+
-| <=                   | Check whether left operand is less or equal than right operand               |
+| <=                   | Проверяет, что левый операнд меньше или равен правому                        |
 +----------------------+------------------------------------------------------------------------------+
-| >=                   | Check whether left operand is greater or equal than right operand            |
+| >=                   | Проверяет, что левый операнд больше или равен правому                        |
 +----------------------+------------------------------------------------------------------------------+
-| ===                  | Check whether both operands are identical                                    |
+| ===                  | Проверяет строгое равенство операндов                                        |
 +----------------------+------------------------------------------------------------------------------+
-| !==                  | Check whether both operands aren't identical                                 |
-+----------------------+------------------------------------------------------------------------------+
-
-Logic
-^^^^^
-Logic operators are useful in the "if" expression evaluation to combine multiple tests:
-
-+----------------------+------------------------------------------------------------------------------+
-| Operator             | Description                                                                  |
-+======================+==============================================================================+
-| or                   | Return true if the left or right operand is evaluated as true                |
-+----------------------+------------------------------------------------------------------------------+
-| and                  | Return true if both left and right operands are evaluated as true            |
-+----------------------+------------------------------------------------------------------------------+
-| not                  | Negates an expression                                                        |
-+----------------------+------------------------------------------------------------------------------+
-| ( expr )             | Parenthesis groups expressions                                               |
+| !==                  | Проверяет строгое неравенство операндов                                      |
 +----------------------+------------------------------------------------------------------------------+
 
-Other Operators
-^^^^^^^^^^^^^^^
-Additional operators seen the following operators are available:
+Логические операторы
+^^^^^^^^^^^^^^^^^^^^
+Логические операторы полезны в выражении "if" чтобы объединить несколько проверок:
+
++----------------------+-------------------------------------------------------------------------------+
+| Оператор             | Описание                                                                      |
++======================+===============================================================================+
+| or                   | Возвращает true, если левый или правый операнды возвращают true               |
++----------------------+-------------------------------------------------------------------------------+
+| and                  | Возвращает true, если одновременно и левый, и правый операнды возвращают true |
++----------------------+-------------------------------------------------------------------------------+
+| not                  | Отрицание выражения                                                           |
++----------------------+-------------------------------------------------------------------------------+
+| ( выражение )        | Скобки для группирования выражений                                            |
++----------------------+-------------------------------------------------------------------------------+
+
+Другие операторы
+^^^^^^^^^^^^^^^^
+Доступны так же дополнительные операторы:
 
 +----------------------+----------------------------------------------------------------------------------------------+
-| Operator             | Description                                                                                  |
+| Оператор             | Описание                                                                                     |
 +======================+==============================================================================================+
-| \~                   | Concatenates both operands {{ "hello " \~ "world" }}                                         |
+| \~                   | Конкатенация двух опернадов  {{ "hello " ~ "world" }}                                        |
 +----------------------+----------------------------------------------------------------------------------------------+
-| \|                   | Applies a filter in the right operand to the left {{ "hello"\|uppercase }}                   |
+| \|                   | Примеяет фильтр, указанный справа к операнду слева {{ "hello"\|uppercase }}                  |
 +----------------------+----------------------------------------------------------------------------------------------+
-| \.\.                 | Creates a range {{ 'a'..'z' }} {{ 1..10 }}                                                   |
+| \.\.                 | Создаёт диапазон значений {{ 'a'..'z' }} {{ 1..10 }}                                         |
 +----------------------+----------------------------------------------------------------------------------------------+
-| is                   | Same as == (equals), also performs tests                                                     |
+| is                   | То же самое, что и == (равно), также выполняет проверки (см. ниже)                           |
 +----------------------+----------------------------------------------------------------------------------------------+
-| in                   | To check if an expression is contained into other expressions if "a" in "abc"                |
+| in                   | Проверяет, что выражение содержится в другом выражении if "a" in "abc"                       |
 +----------------------+----------------------------------------------------------------------------------------------+
-| is not               | Same as != (not equals)                                                                      |
+| is not               | То же самое, что и != (не равно)                                                             |
 +----------------------+----------------------------------------------------------------------------------------------+
-| 'a' ? 'b' : 'c'      | Ternary operator. The same as the PHP ternary operator                                       |
+| 'a' ? 'b' : 'c'      | Тернарный оператор. Аналогичен тернароному оператору в PHP                                   |
 +----------------------+----------------------------------------------------------------------------------------------+
 | ++                   | Increments a value                                                                           |
 +----------------------+----------------------------------------------------------------------------------------------+
 | --                   | Decrements a value                                                                           |
 +----------------------+----------------------------------------------------------------------------------------------+
 
-The following example shows how to use operators:
+Пример ниже показывает их использование:
 
 .. code-block:: html+jinja
 
@@ -646,9 +636,9 @@ The following example shows how to use operators:
         {% endif %}
     {% endfor %}
 
-Tests
------
-Tests can be used to test if a variable has a valid expected value. The operator "is" is used to perform the tests:
+Проверки
+--------
+Проверки могут быть использованы для определения соответствия переменной какому-то ожидаемому значению. Оператор "is" используется для выполнения проверок:
 
 .. code-block:: html+jinja
 
@@ -663,30 +653,30 @@ Tests can be used to test if a variable has a valid expected value. The operator
 The following built-in tests are available in Volt:
 
 +----------------------+----------------------------------------------------------------------------------------------+
-| Test                 | Description                                                                                  |
+| Проверка             | Описание                                                                                     |
 +======================+==============================================================================================+
-| defined              | Checks if a variable is defined (isset)                                                      |
+| defined              | Проверяет существование переменной (isset)                                                   |
 +----------------------+----------------------------------------------------------------------------------------------+
-| empty                | Checks if a variable is empty                                                                |
+| empty                | Проверяет, если значение пусто                                                               |
 +----------------------+----------------------------------------------------------------------------------------------+
-| even                 | Checks if a numeric value is even                                                            |
+| even                 | Проверяет чётность целочисленного значения                                                   |
 +----------------------+----------------------------------------------------------------------------------------------+
-| odd                  | Checks if a numeric value is odd                                                             |
+| odd                  | Проверяет нечётность целочисленного значения                                                 |
 +----------------------+----------------------------------------------------------------------------------------------+
-| numeric              | Checks if value is numeric                                                                   |
+| numeric              | Проверяет, является ли значение числом                                                       |
 +----------------------+----------------------------------------------------------------------------------------------+
-| scalar               | Checks if value is scalar (not an array or object)                                           |
+| scalar               | Проверяет, что значение скаляр (не массив или объект)                                        |
 +----------------------+----------------------------------------------------------------------------------------------+
-| iterable             | Checks if a value is iterable. Can be traversed by a "for" statement                         |
+| iterable             | Проверяет, является ли значение итерируемым, т.е. может быть использовано в цикле "for"      |
 +----------------------+----------------------------------------------------------------------------------------------+
-| divisibleby          | Checks if a value is divisible by other value                                                |
+| divisibleby          | Проверяет, делится ли значение на другое без остатка                                         |
 +----------------------+----------------------------------------------------------------------------------------------+
-| sameas               | Checks if a value is identical to other value                                                |
+| sameas               | Проверяет, что значение совпадает с другим                                                   |
 +----------------------+----------------------------------------------------------------------------------------------+
-| type                 | Checks if a value is of the specified type                                                   |
+| type                 | Проверяет специфичный тип переменной                                                         |
 +----------------------+----------------------------------------------------------------------------------------------+
 
-More examples:
+Больше примеров:
 
 .. code-block:: html+jinja
 
@@ -793,9 +783,9 @@ And receive optional parameters:
     {{ '<p>' ~ my_input('name') ~ '</p>' }}
     {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 
-Using Tag Helpers
------------------
-Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use the helpers provided by that component in a Volt template:
+Использование Tag Helpers
+-------------------------
+Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому можно легко использовать в Volt-шаблонах helpers, предоставляемые этим компонентом:
 
 .. code-block:: html+jinja
 
@@ -813,7 +803,7 @@ Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use t
 
     </form>
 
-The following PHP is generated:
+В результате будет сгенерирован следующий PHP-код:
 
 .. code-block:: html+php
 
@@ -831,10 +821,10 @@ The following PHP is generated:
 
     </form>
 
-To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
+Для вызова Phalcon\Tag helper, вам необходимо лишь вызвать соответсвующие версии методов не в Camelcase:
 
 +------------------------------------+-----------------------+
-| Method                             | Volt function         |
+| Метод                              | Функция Volt          |
 +====================================+=======================+
 | Phalcon\\Tag::linkTo               | link_to               |
 +------------------------------------+-----------------------+
@@ -879,37 +869,37 @@ To call a Phalcon\\Tag helper, you only need to call an uncamelized version of t
 | Phalcon\\Tag::friendlyTitle        | friendly_title        |
 +------------------------------------+-----------------------+
 
-Functions
----------
-The following built-in functions are available in Volt:
+Функции
+-------
+В Volt доступны перечисленные ниже встроенные функции:
 
 +----------------------+------------------------------------------------------------------------------+
-| Name                 | Description                                                                  |
+| Название             | Описание                                                                     |
 +======================+==============================================================================+
-| content              | Includes the content produced in a previous rendering stage                  |
+| content              | Включает результат рендера предыдущего этапа                                 |
 +----------------------+------------------------------------------------------------------------------+
-| get_content          | Same as 'content'                                                            |
+| get_content          | То же самое, что и 'content'                                                 |
 +----------------------+------------------------------------------------------------------------------+
-| partial              | Dynamically loads a partial view in the current template                     |
+| partial              | Динамически загружает partial представление в текущий шаблон                 |
 +----------------------+------------------------------------------------------------------------------+
-| super                | Render the contents of the parent block                                      |
+| super                | Отрисовывает содержимое родительского блока                                  |
 +----------------------+------------------------------------------------------------------------------+
-| time                 | Calls the PHP function with the same name                                    |
+| time                 | Вызывает одноимённую PHP-функцию                                             |
 +----------------------+------------------------------------------------------------------------------+
-| date                 | Calls the PHP function with the same name                                    |
+| date                 | Вызывает одноимённую PHP-функцию                                             |
 +----------------------+------------------------------------------------------------------------------+
-| dump                 | Calls the PHP function 'var_dump'                                            |
+| dump                 | Вызывает PHP-функцию 'var_dump'                                              |
 +----------------------+------------------------------------------------------------------------------+
-| version              | Returns the current version of the framework                                 |
+| version              | Возвращает текущую версию фреймворка                                         |
 +----------------------+------------------------------------------------------------------------------+
-| constant             | Reads a PHP constant                                                         |
+| constant             | Читает PHP константу                                                         |
 +----------------------+------------------------------------------------------------------------------+
-| url                  | Generate a URL using the 'url' service                                       |
+| url                  | Генерирует URL, используя сервис 'url'                                       |
 +----------------------+------------------------------------------------------------------------------+
 
-View Integration
-----------------
-Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
+Связывание с представлениями
+----------------------------
+Кроме того, Volt связан с :doc:`Phalcon\\Mvc\\View <views>`, что позволяет вам поиграться с иерархией и включением partials:
 
 .. code-block:: html+php
 
@@ -921,8 +911,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     <!-- Passing extra variables -->
     <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
 
-A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
-as part of the view which was included:
+Partial включается в момент выполнения, Volt так же предоставляет "include", которая собирает содержимое представления и возвращает его в виде включаемой части:
 
 .. code-block:: html+jinja
 
@@ -943,10 +932,9 @@ template where it's included. Templates aren't inlined if the 'include' have var
     {# The contents of 'partials/footer.volt' is compiled and inlined #}
     <div id="footer">{% include "partials/footer.volt" %}</div>
 
-Template Inheritance
---------------------
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
-define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+Наследование шаблонов
+---------------------
+С помощью наследования шаблонов вы можете создавать базовые шаблоны, которые могут быть расширены другими шаблонами, что позволит повторно использовать уже написанный код. Базовый шаблон определяет *блоки*, которые могут быть переопределены дочерними шаблонами. Предположим, что у нас есть некоторый базовый шаблон:
 
 .. code-block:: html+jinja
 
@@ -967,7 +955,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
         </body>
     </html>
 
-From other template we could extend the base template replacing the blocks:
+Заменяя блоки, мы расширим базовый шаблон другим:
 
 .. code-block:: jinja
 
@@ -982,7 +970,7 @@ From other template we could extend the base template replacing the blocks:
         <p class="important">Welcome on my awesome homepage.</p>
     {% endblock %}
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+Не обязательно заменять все блоки дочерними шаблонами, можно только те, которые необходимо. В результате, вывод будет таким:
 
 .. code-block:: html
 
@@ -1003,9 +991,9 @@ Not all blocks must be replaced at a child template, only those that are needed.
         </body>
     </html>
 
-Multiple Inheritance
-^^^^^^^^^^^^^^^^^^^^
-Extended templates can extend other templates. The following example illustrates this:
+Множественное наследование
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Шаблоны, которые наследуют другие шаблоны, так же могут быть унаследованы. Это иллюстрирует следующий пример:
 
 .. code-block:: html+jinja
 
@@ -1020,7 +1008,7 @@ Extended templates can extend other templates. The following example illustrates
         </body>
     </html>
 
-Template "layout.volt" extends "main.volt"
+Шаблон "layout.volt" наследует "main.volt"
 
 .. code-block:: html+jinja
 
@@ -1033,7 +1021,7 @@ Template "layout.volt" extends "main.volt"
 
     {% endblock %}
 
-Finally a view that extends "layout.volt":
+Финальное представление, наследующее "layout.volt":
 
 .. code-block:: html+jinja
 
@@ -1051,7 +1039,7 @@ Finally a view that extends "layout.volt":
 
     {% endblock %}
 
-Rendering "index.volt" produces:
+Отрисовка "index.volt":
 
 .. code-block:: html
 
@@ -1072,20 +1060,17 @@ Rendering "index.volt" produces:
         </body>
     </html>
 
-Note the call to the function "super()". With that function it's possible to render the contents of the parent block.
+Обратите внимание на вызов функции "super()". Эта функция позволяет отрисовать содержимое родительского блока.
 
-As partials, the path set to "extends" is a relative path under the current views directory (i.e. app/views/).
+Как и partials, путь, установленный в "extends" — это путь относительно текущей папки с представлениями (т.е. app/views/).
 
 .. highlights::
 
-    By default, and for performance reasons, Volt only checks for changes in the children templates
-    to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
-    'compileAlways' => true. Thus, the templates are compiled always taking into account changes in
-    the parent templates.
+    По умолчанию и из соображений производительности, Volt проверяет только изменения в дочерних шаблонах, чтобы понять, когда нужно снова пересобрать PHP, поэтому рекомендуется инициализировать Volt с опцией 'compileAlways' => true. Таким образом, шаблоны компилируются с учётом изменений родительского шаблона.
 
-Autoescape mode
----------------
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Режим автоматического экранирования
+-----------------------------------
+Вы можете включить режим автоматического экранирования всех выводимых в блоке переменных:
 
 .. code-block:: html+jinja
 
@@ -1098,9 +1083,9 @@ You can enable auto-escaping of all variables printed in a block using the autoe
         {% endautoescape %}
     {% endautoescape %}
 
-Setting up the Volt Engine
---------------------------
-Volt can be configured to alter its default behavior, the following example explain how to do that:
+Настройка шаблонизатора Volt
+----------------------------
+Volt можно настроить так, чтобы изменить его поведение по умолчанию. В следующем примере объясняется, как это можно сделать:
 
 .. code-block:: php
 
@@ -1136,13 +1121,13 @@ Volt can be configured to alter its default behavior, the following example expl
         return $view;
     });
 
-If you do not want to reuse Volt as a service you can pass an anonymous function to register the engine instead of a service name:
+Если вы не хотите использовать Volt в качестве сервиса, вы можете передать при регистрации шаблонизатора анонимную функцию, вместо имени сервиса:
 
 .. code-block:: php
 
     <?php
 
-    //Register Volt as template engine with an anonymous function
+    // Регистрация Volt в качестве шаблонизатора с анонимной функцией
     $di->set('view', function() {
 
         $view = new \Phalcon\Mvc\View();
@@ -1153,7 +1138,7 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
             ".volt" => function($view, $di) {
                 $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
 
-                //set some options here
+                // тут установка каких-то настроек
 
                 return $volt;
             }
@@ -1162,27 +1147,26 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
         return $view;
     });
 
+В Volt могут быть следующие опции:
 
-The following options are available in Volt:
-
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| Option            | Description                                                                                                                    | Default |
-+===================+================================================================================================================================+=========+
-| compiledPath      | A writable path where the compiled PHP templates will be placed                                                                | ./      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compiledExtension | An additional extension appended to the compiled PHP file                                                                      | .php    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compiledSeparator | Volt replaces the directory separators / and \\ by this separator in order to create a single file in the compiled directory   | %%      |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| stat              | Whether Phalcon must check if exists differences between the template file and its compiled path                               | true    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
-| prefix            | Allows to prepend a prefix to the templates in the compilation path                                                            | null    |
-+-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| Опция             | Описание                                                                                                                       | По умолчанию |
++===================+================================================================================================================================+==============+
+| compiledPath      | Путь для записи скомпилированных шаблонов                                                                                      | ./           |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| compiledExtension | Дополнительное расширение, добавляемое к скомпилированным PHP-файлам                                                           | .php         |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| compiledSeparator | Volt заменяет разделители папок / и \\ этим разделителем для создания одного файла в папке скомпилированных PHP файлов         | %%           |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| stat              | Если Phalcon должен проверять, существуют ли различия между файлом шаблона и его скомпилированным результатом                  | true         |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| compileAlways     | Указывает Volt, должны ли шаблоны собираться на каждый запрос, или только тогда, когда они изменяются                          | false        |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
+| prefix            | Позволяет добавлять префикс к шаблонам в папке скомпилированных PHP файлов                                                     | null         |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+--------------+
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
-an anonymous function can be used to generate it, this function receives the relative path to the template in the
+an anonymous function can be used to generate the compilation path, this function receives the relative path to the template in the
 views directory. The following examples show how to change the compilation path dynamically:
 
 .. code-block:: php
@@ -1208,19 +1192,15 @@ views directory. The following examples show how to change the compilation path 
         }
     ));
 
-Extending Volt
---------------
-Unlike other template engines, Volt itself is not required to run the compiled templates.
-Once the templates are compiled there is no dependence on Volt. With performance independence in mind,
-Volt only acts as a compiler for PHP templates.
+Расширение Volt
+---------------
+В отличие от других шаблонизаторов, Volt не требуется для запуска скомпилированных шаблонов. После того, как шаблон был собран, он больше никак не зависит от Volt. Иными словами, он используется лишь в качестве компилятора для PHP-шаблонов.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+Volt-компилятор позволяет вам расширить его, добавив больше функций, проверки или фильтр к уже существующим.
 
-Functions
-^^^^^^^^^
-Functions act as normal PHP functions, a valid string name is required as function name.
-Functions can be added using two strategies, returning a simple string or using an anonymous
-function. Always is required that the chosen strategy returns a valid PHP string expression:
+Функции
+^^^^^^^
+Функции действуют как обычные PHP-функции, поэтому им требуется строковое имя, разрешенное для функций в PHP. Функции можно добавить двумя способами: передать простое строчное имя, или использовать анонимную функцию. Любой способ должен возращать допустимое PHP-выражение.
 
 .. code-block:: php
 
@@ -1230,21 +1210,20 @@ function. Always is required that the chosen strategy returns a valid PHP string
 
     $compiler = $volt->getCompiler();
 
-    //This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
+    // Тут к функции 'shuffle' в Volt привязывается PHP-функция 'str_shuffle'
     $compiler->addFunction('shuffle', 'str_shuffle');
 
-Register the function with an anonymous function. This case we use $resolvedArgs to pass the arguments exactly
-as were passed in the arguments:
+При регистрации функции, как анонимной, мы используем $resolvedArgs для передачи аргументов точно так же, как они были приняты:
 
 .. code-block:: php
 
     <?php
 
     $compiler->addFunction('widget', function($resolvedArgs, $exprArgs) {
-        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+        return 'MyLibrary\Widgets::get('.$resolvedArgs.')';
     });
 
-Treat the arguments independently and unresolved:
+Учитывайте, что параметры независимы или не переданы:
 
 .. code-block:: php
 
@@ -1252,21 +1231,21 @@ Treat the arguments independently and unresolved:
 
     $compiler->addFunction('repeat', function($resolvedArgs, $exprArgs) use ($compiler) {
 
-        //Resolve the first argument
+        // Получение первого параметра
         $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-        //Checks if the second argument was passed
+        // Проверка, что второй параметр был передан
         if (isset($exprArgs[1])) {
             $secondArgument = $compiler->expression($exprArgs[1]['expr']);
         } else {
-            //Use '10' as default
+            // По умолчанию используется '10'
             $secondArgument = '10';
         }
 
         return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
     });
 
-Generate the code based on some function availability:
+Генерация кода на основе некоторой готовой функции:
 
 .. code-block:: php
 
@@ -1280,25 +1259,24 @@ Generate the code based on some function availability:
         }
     });
 
-Built-in functions can be overrided adding a function with its name:
+Встроенные функции могут быть перегружены добавлением функций с таким же именем:
 
 .. code-block:: php
 
     <?php
 
-    //Replace built-in function dump
+    // Заменяет встроенную функцию 'dump'
     $compiler->addFunction('dump', 'print_r');
 
-Filters
+Фильтры
 ^^^^^^^
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters
-is similar as seen with the functions:
+Фильтры имеют следующий вид в шаблоне: leftExpr|name(optional-args). Добавление новых фильтров аналогично добавлению функций:
 
 .. code-block:: php
 
     <?php
 
-    //This creates a filter 'hash' that uses the PHP function 'md5'
+    // Создаёт фильтр 'hash', который использует функцию PHP 'md5'
     $compiler->addFilter('hash', 'md5');
 
 .. code-block:: php
@@ -1309,7 +1287,7 @@ is similar as seen with the functions:
         return 'intval(' . $resolvedArgs . ')';
     });
 
-Built-in filters can be overrided adding a function with its name:
+Встроенные фильтры могут быть перегружены добавлением фильтра с таким же именем:
 
 .. code-block:: php
 
@@ -1373,10 +1351,9 @@ Volt extensions must be in registered in the compiler making them available in c
     //Register the extension in the compiler
     $compiler->addExtension(new PhpFunctionExtension());
 
-Caching view fragments
-----------------------
-With Volt it's easy cache view fragments. This caching improves performance preventing
-that the contents of a block from being executed by PHP each time the view is displayed:
+Кэширование частей представления
+--------------------------------
+С помощью Volt легко можно кэшировать части представления. Это повышает производительность, предотвращая выполнение PHP содержимого блока каждый раз, когда он отображается:
 
 .. code-block:: html+jinja
 
@@ -1384,16 +1361,16 @@ that the contents of a block from being executed by PHP each time the view is di
         <!-- generate this content is slow so we are going to cache it -->
     {% endcache %}
 
-Setting a specific number of seconds:
+Установка времени жизни кэша на определённое количество секунд:
 
 .. code-block:: html+jinja
 
-    {# cache the sidebar by 1 hour #}
+    {# кэширование сайдбара на 1 час #}
     {% cache "sidebar" 3600 %}
-        <!-- generate this content is slow so we are going to cache it -->
+        <!-- генерация этого содержимого достаточно медленна и мы решили её закэшировать -->
     {% endcache %}
 
-Any valid expression can be used as cache key:
+В качестве ключа кэша может быть использовано любое разрешённое выражение:
 
 .. code-block:: html+jinja
 
@@ -1405,72 +1382,71 @@ Any valid expression can be used as cache key:
 
     {% endcache %}
 
-The caching is done by the :doc:`Phalcon\\Cache <cache>` component via the view component.
-Learn more about how this integration works in the section :doc:`"Caching View Fragments" <views>`.
+Кэширование выполняется компонентом :doc:`Phalcon\\Cache <cache>` через компонент представления. Узнать больше о том, как это работает можно в разделе :doc:`"Caching View Fragments" <views>`.
 
-Inject Services into a Template
--------------------------------
-If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+Использование сервисов в шаблоне
+--------------------------------
+Если контейнер сервисов (DI) доступен для Volt, вы можете использовать сервисы в шаблоне, получая доступ к ним по их именам:
 
 .. code-block:: html+jinja
 
-    {# Inject the 'flash' service #}
+    {# Использование сервиса 'flash' #}
     <div id="messages">{{ flash.output() }}</div>
 
-    {# Inject the 'security' service #}
+    {# Использование сервиса 'security' #}
     <input type="hidden" name="token" value="{{ security.getToken() }}">
 
-Stand-alone component
----------------------
-Using Volt in a stand-alone mode can be demonstrated below:
+Отдельный компонент
+-------------------
+Ниже продемонстрировано использование Volt, как отдельного компонента:
 
 .. code-block:: php
 
     <?php
 
-    //Create a compiler
+    // Создание компилятора
     $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
 
-    //Optionally add some options
+    // Добавление каких-то опций
     $compiler->setOptions(array(
         //...
     ));
 
-    //Compile a template string returning PHP code
+    // Компиляция шаблона-строки, возвращающая PHP-код
     echo $compiler->compileString('{{ "hello" }}');
 
-    //Compile a template in a file specifying the destination file
+    // Компиляция шаблона-файла в определённый файл
     $compiler->compileFile('layouts/main.volt', 'cache/layouts/main.volt.php');
 
-    //Compile a template in a file based on the options passed to the compiler
+    // Компиляция шаблона-файла, в файл, определённый в настройках, переданных в компилятор
     $compiler->compile('layouts/main.volt');
 
-    //Require the compiled templated (optional)
+    // Запрос собранных шаблонов (по желанию)
     require $compiler->getCompiledTemplatePath();
 
-External Resources
-------------------
-* A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
-* `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
-* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
-* `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
-* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
+Внешние ресурсы
+---------------
+* Пакет для Sublime/Textmate можно скачать [`на Github <https://github.com/phalcon/volt-sublime-textmate>`_]
+* `Album-O-Rama <https://github.com/phalcon/album-o-rama>`_ — пример приложения, использующего Volt в качестве шаблонизатоа, [`код album-o-rama на Github <https://github.com/phalcon/album-o-rama>`_]
+* `Наш сайт <http://phalconphp.com>`_ работает на шаблонизаторе Volt, [`код website на Github <https://github.com/phalcon/website>`_]
+* `Phosphorum <http://forum.phalconphp.com>`_, форум Phalcon так же использует Volt, [`код forum на Github <https://github.com/phalcon/forum>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, еще одно приложение с использованием Volt, [`код vokuro на Github <https://github.com/phalcon/vokuro>`_]
 
 .. _Armin Ronacher: https://github.com/mitsuhiko
 .. _Twig: https://github.com/vito/chyrp/wiki/Twig-Reference
 .. _Jinja: http://jinja.pocoo.org/
-.. _trim: http://php.net/manual/en/function.trim.php
-.. _ltrim: http://php.net/manual/en/function.ltrim.php
-.. _rtrim: http://php.net/manual/en/function.rtrim.php
-.. _striptags: http://php.net/manual/en/function.striptags.php
-.. _slashes: http://php.net/manual/en/function.slashes.php
-.. _stripslashes: http://php.net/manual/en/function.stripslashes.php
-.. _ucwords: http://php.net/manual/en/function.ucwords.php
-.. _nl2br: http://php.net/manual/en/function.nl2br.php
-.. _asort: http://php.net/manual/en/function.asort.php
-.. _array_keys: http://php.net/manual/en/function.array-keys.php
-.. _abs: http://php.net/manual/en/function.abs.php
-.. _urlencode: http://php.net/manual/en/function.urlencode.php
-.. _sprintf: http://php.net/manual/en/function.sprintf.php
-.. _join: http://php.net/manual/en/function.join.php
-.. _JSON: http://php.net/manual/en/function.json-encode.php
+.. _trim: http://www.php.net/manual/ru/function.trim.php
+.. _strip_tags: http://www.php.net/manual/ru/function.strip-tags.php
+.. _addslashes: http://www.php.net/manual/ru/function.addslashes.php
+.. _stripslashes: http://www.php.net/manual/ru/function.stripslashes.php
+.. _ucwords: http://www.php.net/manual/ru/function.ucwords.php
+.. _nl2br: http://www.php.net/manual/ru/function.nl2br.php
+.. _asort: http://www.php.net/manual/ru/function.asort.php
+.. _array_keys: http://www.php.net/manual/ru/function.array-keys.php
+.. _abs: http://www.php.net/manual/ru/function.abs.php
+.. _urlencode: http://www.php.net/manual/ru/function.urlencode.php
+.. _sprintf: http://www.php.net/manual/ru/function.sprintf.php
+.. _join: http://www.php.net/manual/ru/function.join.php
+.. _JSON: http://ru.wikipedia.org/wiki/JSON
+.. _json_encode: http://www.php.net/manual/ru/function.json-encode.php
+.. _json_decode: http://www.php.net/manual/ru/function.json-decode.php

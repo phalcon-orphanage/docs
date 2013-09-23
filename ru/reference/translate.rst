@@ -1,22 +1,22 @@
-Multi-lingual Support
-=====================
-The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component,
-display content in different languages, based on the user's chosen language supported by the application.
+Поддержка многоязычности
+========================
+Компонент :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` поможет в создании многоязычных приложений. Приложения, использующие
+этот компонент, отображают контент на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.
 
-Adapters
+Адаптеры
 --------
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Этот компонент позволяет использовать адаптеры для чтения, перевода сообщений из различных источников в едином виде.
 
-+-------------+-----------------------------------------------------------------------------------------+
-| Adapter     | Description                                                                             |
-+=============+=========================================================================================+
-| NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-+-------------+-----------------------------------------------------------------------------------------+
++-------------+--------------------------------------------------------------------------------------------+
+| Адаптер     | Описание                                                                                   |
++=============+============================================================================================+
+| NativeArray | Использует PHP массивы для хранения. Это лучший вариант с точки зрения производительности. |
++-------------+--------------------------------------------------------------------------------------------+
 
-Component Usage
----------------
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
-to organize your translation strings. A simple structure could be:
+Использование компонента
+------------------------
+Строки переводов хранятся в файлах. Структура этих файлов может отличаться в зависимости от используемого адаптера. Phalcon дает вам свободу
+выбора в организации правил перевода строк. Типичной структурой может быть:
 
 .. code-block:: bash
 
@@ -25,14 +25,14 @@ to organize your translation strings. A simple structure could be:
     app/messages/fr.php
     app/messages/zh.php
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in
-different files, where keys remain the same and values contain the translated strings depending on each language.
+Каждый файл содержит массив строк с переводами в виде ключ=>значение. Для каждого файла перевода, ключи уникальны. Один и тот же массив используется в
+разных файлах, ключи в нём остаются прежними, а значения содержат переводы строк, разные для разных языков.
 
 .. code-block:: php
 
     <?php
 
-    //app/messages/es.php
+    //app/messages/en.php
     $messages = array(
         "hi"      => "Hello",
         "bye"     => "Good Bye",
@@ -44,19 +44,19 @@ different files, where keys remain the same and values contain the translated st
 
     <?php
 
-    //app/messages/fr.php
+    //app/messages/ru.php
     $messages = array(
-        "hi"      => "Bonjour",
-        "bye"     => "Au revoir",
-        "hi-name" => "Bonjour %name%",
-        "song"    => "La chanson est %song%"
+        "hi"      => "Здарова",
+        "bye"     => "Прощай",
+        "hi-name" => "Здарова %name%",
+        "song"    => "Композиция %song%"
     );
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
-automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Механизм осуществления перевода в приложении тривиален, но зависит от того, как вы хотите реализовать ее. Вы можете использовать
+автоматическое определение языка из браузера пользователя, или вы можете предоставить выбор языка пользователю.
 
-A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACCEPT_LANGUAGE'] contents, or if you wish, access it
-directly by calling $this->request->getBestLanguage() from an action/controller:
+Простой способ обнаружения языка пользователя - разбор содержимого $_SERVER['HTTP_ACCEPT_LANGUAGE'], доступ к нему можно получить
+непосредственно обратившись в $this->request->getBestLanguage() из действия/контроллера:
 
 .. code-block:: php
 
@@ -68,18 +68,18 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
       protected function _getTranslation()
       {
 
-        //Ask browser what is the best language
+        // Получение оптимального языка из браузера
         $language = $this->request->getBestLanguage();
 
-        //Check if we have a translation file for that lang
+        // Проверка существования перевода для полученного языка
         if (file_exists("app/messages/".$language.".php")) {
            require "app/messages/".$language.".php";
         } else {
-           // fallback to some default
+           // Переключение на язык по умолчанию
            require "app/messages/en.php";
         }
 
-        //Return a translation object
+        // Возвращение объекта работы с переводом
         return new \Phalcon\Translate\Adapter\NativeArray(array(
            "content" => $messages
         ));
@@ -94,8 +94,8 @@ directly by calling $this->request->getBestLanguage() from an action/controller:
 
     }
 
-The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it,
-we can translate strings in that layer:
+Метод _getTranslation в этом примере доступен для всех действий требующих перевода. Переменная $t передается в представление и позволяет
+непосредственно переводить строки:
 
 .. code-block:: html+php
 
@@ -107,18 +107,22 @@ The "_" function is returning the translated string based on the index passed. S
 calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters
 are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
+Функция "_" возвращает переведенные строки на основе используемого индекса. В некоторых строках необходимо использовать шаблоны подстановок,
+например: "Здравствуйте % name%". Эти подстановки (placeholders) могут быть заменены передаваемыми параметрами в функцию "_". Параметры должны
+передаваться в виде массива ключ/значение, где ключ соответствует названию подстановки, а значение - фактическим данным для заменены:
+
 .. code-block:: html+php
 
     <!-- welcome -->
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
-this by using a :doc:`Router <routing>`.
+Существуют так же приложения с многоязычностью основанной на параметрах в URL, например как http://www.mozilla.org/**es-ES**/firefox/.
+Реализовать такую схему на Phalcon можно используя компонент :doc:`Router <routing>`.
 
-Implementing your own adapters
-------------------------------
-The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+Реализация собственных адаптеров
+--------------------------------
+Для создания адаптера необходимо реализовать интерфейс :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` или расширить существующий:
 
 .. code-block:: php
 
@@ -135,7 +139,7 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
         public function __construct($options);
 
         /**
-         * Returns the translation string of the given key
+         * Возвращает перевод строки по ключу
          *
          * @param   string $translateKey
          * @param   array $placeholders
@@ -144,7 +148,7 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
         public function _($translateKey, $placeholders=null);
 
         /**
-         * Returns the translation related to the given key
+         * Возвращает перевод, связанный с заданным ключом
          *
          * @param   string $index
          * @param   array $placeholders
@@ -153,7 +157,7 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
         public function query($index, $placeholders=null);
 
         /**
-         * Check whether is defined a translation key in the internal array
+         * Проверяет существование перевода ключа во внутреннем массиве
          *
          * @param   string $index
          * @return  bool
@@ -162,4 +166,4 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
 
     }
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_
+Больше адаптеров перевода можно найти в `Инкубаторе Phalcon <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_

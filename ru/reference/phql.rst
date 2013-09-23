@@ -1,25 +1,22 @@
-Phalcon Query Language (PHQL)
-=============================
-Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
-standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+Язык запросов Phalcon (PHQL)
+============================
+Язык запросов phalcon, PhalconQL или просто PHQL — это высокоуровневый объектно-ориентированный диалект SQL, позволяющий писать запросы с использованием стандартизированного языка, похожего на SQL. PHQL реализован в виде парсера (написанного на C), который переводит синтаксис целевой СУБД.
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
-provides a small in-memory parser with a very low memory footprint that is also thread-safe.
+Чтобы достигнуть максимально возможной производительности, Phalcon предоставляет парсер, используя технологию схожую с SQLite_. Эта технология предоставляет небольшой парсер, который расходует малый объем памяти и, при этом, является поточно-ориентированным.
 
-The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
-finally it converts it to the respective SQL dialect of the target RDBMS.
+Сначала этот парсер проверяет синтаксис переданного выражения, затем строит его промежуточное представление и, в конце концов, преобразует его в SQL-диалект, соответствующий целевой СУБД.
 
-In PHQL, we've implemented a set of features to make your access to databases more secure:
+В PHQL мы реализовали некоторый набор фич, чтобы ваш доступ к базе данных был более безопасным:
 
-* Bound parameters are part of the PHQL language helping you to secure your code
-* PHQL only allows one SQL statement to be executed per call preventing injections
-* PHQL ignores all SQL comments which are often used in SQL injections
-* PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
+* Связанные (bound) параметры — часть языка PHQL, помогающая вам обезопасить ваш код
+* PHQL разрешает выполнить только один SQL оператор за вызов, предотвращая инъекции
+* PHQL игнорирует любые SQL-комментарии, часто используещиеся в SQL-инъекциях
+* PHQL разрешает выполнять только операторы работы с данными, избегая изменения или удаления таблиц/баз данных по ошибке или извне без авторизации
+* PHQL реализует высокоуровневую абстракцию, позволяющую вам оперировать моделями как таблицами и аттрибутами класса — как полями таблицы.
 
-Usage Example
--------------
-To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
+Пример использования
+--------------------
+Чтобы лучше объяснить, как работает PHQL рассмотрим следующий пример. У нас есть две модели, "Автомобили" и "Марки":
 
 .. code-block:: php
 
@@ -40,7 +37,7 @@ To better explain how PHQL works consider the following example. We have two mod
         public $style;
 
         /**
-         * This model is mapped to the table sample_cars
+         * Эта модель отображается на таблицу sample_cars
          */
         public function getSource()
         {
@@ -48,7 +45,7 @@ To better explain how PHQL works consider the following example. We have two mod
         }
 
         /**
-         * A car only has a Brand, but a Brand have many Cars
+         * Автомобиль может быть всего лишь одной марки, в то время как одну марку могут иметь множество автомобилей
          */
         public function initialize()
         {
@@ -56,7 +53,7 @@ To better explain how PHQL works consider the following example. We have two mod
         }
     }
 
-And every Car has a Brand, so a Brand has many Cars:
+И каждый автомобиль имеет марку, в то время как у марки — множество автомобилей (в общем, "связь один ко многим")
 
 .. code-block:: php
 
@@ -86,53 +83,53 @@ And every Car has a Brand, so a Brand has many Cars:
         }
     }
 
-Creating PHQL Queries
----------------------
-PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
+Создание PHQL запросов
+----------------------
+PHQL запросы могут быть созданы только как экземпляр класса :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
 
 .. code-block:: php
 
     <?php
 
-    // Instantiate the Query
+    // Экземпляр Query
     $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $di);
 
-    // Execute the query returning a result if any
+    // Выполнение запроса возвращает какой-то результат
     $cars = $query->execute();
 
-From a controller or a view, it's easy create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
+В контроллере или в представлении их проще создавать/выполнять используя внедрённый :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
 .. code-block:: php
 
     <?php
 
-    //Executing a simple query
+    // Исполнение простого запроса
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars = $query->execute();
 
-    //With bound parameters
+    // Со связыванием (bound) параметров
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars = $query->execute(array(
         'name' => 'Audi'
     ));
 
-Or simply execute it:
+Или еще проще:
 
 .. code-block:: php
 
     <?php
 
-    //Executing a simple query
+    // Исполнение простого запроса
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Со связыванием (bound) параметров
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
 
-Selecting Records
------------------
-As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
+Выборка записей
+---------------
+Как и в SQL, PHQL позволяет запрашивать записи используя оператор SELECT, с тем отличием, что вместо названий таблиц используются модели:
 
 .. code-block:: php
 
@@ -141,7 +138,7 @@ As the familiar SQL, PHQL allows querying of records using the SELECT statement 
     $query = $manager->createQuery("SELECT * FROM Cars ORDER BY Cars.name");
     $query = $manager->createQuery("SELECT Cars.name FROM Cars ORDER BY Cars.name");
 
-Classes in namespaces are also allowed:
+Так же разрешены неймспейсы классов:
 
 .. code-block:: php
 
@@ -156,7 +153,7 @@ Classes in namespaces are also allowed:
     $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
     $query = $manager->createQuery($phql);
 
-Most of the SQL standard is supported by PHQL even nonstandard directives as LIMIT:
+PHQL поддерживает большинство стандартов SQL, даже такие нестандартные директивы как LIMIT:
 
 .. code-block:: php
 
@@ -166,10 +163,9 @@ Most of the SQL standard is supported by PHQL even nonstandard directives as LIM
        . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
     $query = $manager->createQuery($phql);
 
-Result Types
-^^^^^^^^^^^^
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
-a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
+Типы результата
+^^^^^^^^^^^^^^^
+Тип результата может меняться в зависимости от типа запрашиваемого нами столбца. При получении одного целого объекта, будет возвращён :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. Этот вид результата представляет собой полноценный объект модели:
 
 .. code-block:: php
 
@@ -181,7 +177,7 @@ a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Results
         echo "Name: ", $car->name, "\n";
     }
 
-This is exactly the same as:
+Это то же самое, что и:
 
 .. code-block:: php
 
@@ -192,8 +188,7 @@ This is exactly the same as:
         echo "Name: ", $car->name, "\n";
     }
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are
-other types of queries that do not return complete objects, for example:
+Полноценные объекты могут быть изменены и пересохраненые в базе данных потому что они представляют собой полноценную запись в связанной таблице. Есть другие типы запросов, которые не возвращают такие объекты, например:
 
 .. code-block:: php
 
@@ -205,11 +200,9 @@ other types of queries that do not return complete objects, for example:
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table therefore those cannot be considered an entire object. In this case, also returns a
-resulset type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
-object that only contain the two columns that were requested.
+Тут мы запросили только некоторые поля таблицы, поэтому это не может являться объектом. Однако и в этом случае тоже возвращается :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. Но, тем не менее, каждый элемент выборки будет стандартным объектом, содержащим значения только двух запрошенных столбцов.
 
-These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+Такие значения, которые не представляют собой полноценного объекта мы называем скалярами. PHQL позволяет вам запрашивать все типы скаляров: поля, функции, литералы, выражения и т.д.:
 
 .. code-block:: php
 
@@ -221,7 +214,7 @@ These values that don't represent complete objects we call them scalars. PHQL al
         echo $car->id_name, "\n";
     }
 
-As we can query complete objects or scalars, also we can query both at once:
+Раз уж мы можем запрашивать полноценные объекты и скаляры, то мы так же можем запросить их одновременно:
 
 .. code-block:: php
 
@@ -230,8 +223,7 @@ As we can query complete objects or scalars, also we can query both at once:
     $phql   = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
     $result = $manager->executeQuery($phql);
 
-The result in this case is an object :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`.
-This allows access to both complete objects and scalars at once:
+В этом случае результатом будет объект :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`. Он позволяет получить доступ и к полноценному объекту и к скаляру одновременно:
 
 .. code-block:: php
 
@@ -243,12 +235,11 @@ This allows access to both complete objects and scalars at once:
         echo "Taxes: ", $row->taxes, "\n";
     }
 
-Scalars are mapped as properties of each "row", while complete objects are mapped as properties with the name of its related model.
+Скаляры представлены как свойства каждой "row", в то время как полноценные объекты — свойствами с названиями связанной модели.
 
-Joins
-^^^^^
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
-relationships in the models. PHQL adds these conditions automatically:
+Джоины (Joins)
+^^^^^^^^^^^^^^
+Используя PHQL очень просто запрашивать записи из нескольких моделей. Поддерживаются большинство различных джоинов. PHQL автоматически добавляет условия, которые мы определили при связывании моделей:
 
 .. code-block:: php
 
@@ -261,7 +252,7 @@ relationships in the models. PHQL adds these conditions automatically:
         echo $row->brand_name, "\n";
     }
 
-By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
+По умолчанию используется INNER JOIN. Вы можете сами определить тип JOIN в запросе:
 
 .. code-block:: php
 
@@ -279,7 +270,7 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-Also is possible set manually the conditions of the JOIN:
+Так же можно вручную задавать условия для JOIN'ов:
 
 .. code-block:: php
 
@@ -288,7 +279,7 @@ Also is possible set manually the conditions of the JOIN:
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
 
-Also, the joins can be created using multiple tables in the FROM clause:
+Джоины так же могут быть созданы, если в условии FROM фигурируют несколько таблиц:
 
 .. code-block:: php
 
@@ -301,7 +292,7 @@ Also, the joins can be created using multiple tables in the FROM clause:
         echo "Brand: ", $row->brands->name, "\n";
     }
 
-If an alias is used to rename the models in the query, those will be used to name the attributes in the every row of the result:
+Если в запросе используется алиас для переименования модели, то это имя будет использовано для именования аттрибутов в кадой строке результата:
 
 .. code-block:: php
 
@@ -334,27 +325,27 @@ Produce the following SQL in MySQL:
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
 
-Aggregations
-^^^^^^^^^^^^
-The following examples show how to use aggregations in PHQL:
+Аггрегаторы
+^^^^^^^^^^^
+Следующий пример показывает, как использовать аггрегаторы в PHQL:
 
 .. code-block:: php
 
     <?php
 
-    // How much are the prices of all the cars?
+    // Сколько стоят все машины?
     $phql = "SELECT SUM(price) AS summatory FROM Cars";
     $row  = $manager->executeQuery($phql)->getFirst();
     echo $row['summatory'];
 
-    // How many cars are by each brand?
+    // Сколько машин каждой марки?
     $phql = "SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id";
     $rows = $manager->executeQuery($phql);
     foreach ($rows as $row) {
         echo $row->brand_id, ' ', $row["1"], "\n";
     }
 
-    // How many cars are by each brand?
+    // Сколько различных марок?
     $phql = "SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1";
     $rows = $manager->executeQuery($phql);
     foreach ($rows as $row) {
@@ -367,22 +358,22 @@ The following examples show how to use aggregations in PHQL:
         echo $row["maximum"], ' ', $row["minimum"], "\n";
     }
 
-    // Count distinct used brands
+    // Сколько различных марок машин использовано?
     $phql = "SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars";
     $rows = $manager->executeQuery($phql);
     foreach ($rows as $row) {
         echo $row->brandId, "\n";
     }
 
-Conditions
-^^^^^^^^^^
-Conditions allow us to filter the set of records we want to query. The WHERE clause allows to do that:
+Условия
+^^^^^^^
+Условия позволяют отфильтровать необходимый нам набор записей для запроса. WHERE позволяет это сделать:
 
 .. code-block:: php
 
     <?php
 
-    // Simple conditions
+    // Простые условия
     $phql = "SELECT * FROM Cars WHERE Cars.name = 'Lamborghini Espada'";
     $cars = $manager->executeQuery($phql);
 
@@ -410,7 +401,7 @@ Conditions allow us to filter the set of records we want to query. The WHERE cla
     $phql = "SELECT * FROM Cars WHERE Cars.id BETWEEN 1 AND 100";
     $cars = $manager->executeQuery($phql);
 
-Also, as part of PHQL, prepared parameters automatically escape the input data, introducing more security:
+Так же, как часть PHQL, в целях безопасности, входные данные, переданные в качестве параметров будут автоматически экранированы:
 
 .. code-block:: php
 
@@ -422,26 +413,25 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
     $phql = "SELECT * FROM Cars WHERE Cars.name = ?0";
     $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
 
-
-Inserting Data
+Вставка данных
 --------------
-With PHQL is possible insert data using the familiar INSERT statement:
+С помощью PHQL можно вставлять данные используя знакомый уже оператор INSERT:
 
 .. code-block:: php
 
     <?php
 
-    // Inserting without columns
+    // Вставка без указания столбцов
     $phql = "INSERT INTO Cars VALUES (NULL, 'Lamborghini Espada', "
           . "7, 10000.00, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    // Specifyng columns to insert
+    // Указание конкретных столбцов для вставки
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES ('Lamborghini Espada', 7, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    // Inserting using placeholders
+    // Вставка с использованием плейсхолдеров
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES (:name:, :brand_id:, :year:, :style)";
     $manager->executeQuery($sql,
@@ -453,9 +443,7 @@ With PHQL is possible insert data using the familiar INSERT statement:
         )
     );
 
-Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined
-in the model are executed as if we created individual objects manually. Let's add a business rule
-on the model cars. A car cannot cost less than $ 10,000:
+Phalcon не только преобразует PHQL выражения в SQL. Все события и бизнес-правила, определённые в модели будут выполнены, даже если мы создаём отдельные объекты вручную. Добавим правило в модель автомобилей, например, цена не может быть меньше $ 10 000:
 
 .. code-block:: php
 
@@ -477,8 +465,7 @@ on the model cars. A car cannot cost less than $ 10,000:
 
     }
 
-If we made the following INSERT in the models Cars, the operation will not be successful
-because the price does not meet the business rule that we implemented:
+Теперь, если мы сделаем INSERT в модель Автомобилей, то эта операция не будет выполнена, потому что цена, которую мы передаем не удовлетворяет реализованному правилу:
 
 .. code-block:: php
 
@@ -494,29 +481,27 @@ because the price does not meet the business rule that we implemented:
         }
     }
 
-Updating Data
--------------
-Updating rows is very similar than inserting rows. As you may know, the instruction to
-update records is UPDATE. When a record is updated the events related to the update operation
-will be executed for each row.
+Изменение данных
+-----------------
+Изменение записей очень похоже на их вставку. Как вы знаете, для изменения данных используется UPDATE. Когда запись изменяется, события связанные с этой операцией вызываются для каждой записи.
 
 .. code-block:: php
 
     <?php
 
-    // Updating a single column
+    // Изменение одного столбца
     $phql = "UPDATE Cars SET price = 15000.00 WHERE id = 101";
     $manager->executeQuery($phql);
 
-    // Updating multiples columns
+    // Изменение нескольких столбцов
     $phql = "UPDATE Cars SET price = 15000.00, type = 'Sedan' WHERE id = 101";
     $manager->executeQuery($phql);
 
-    // Updating multiples rows
+    // Изменение нескольких строк
     $phql = "UPDATE Cars SET price = 7000.00, type = 'Sedan' WHERE brands_id > 5";
     $manager->executeQuery($phql);
 
-    // Using placeholders
+    // Использование плейсхолдеров
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
     $manager->executeQuery($phql, array(
         0 => 7000.00,
@@ -524,13 +509,16 @@ will be executed for each row.
         2 => 5
     ));
 
-An UPDATE statement performs the update in two phases:
+UPDATE выполняет изменение в два этапа:
+
+* Сначала, если у UPDATE есть условия WHERE, извлекаются все записи подходящие под эти условия,
+* Затем, на основе выбранных объектов их изменённые поля сохраняются в базе данных
 
 * First, if the UPDATE has a WHERE clause it retrieves all the objects that match these criteria,
 * Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
-This way of operation allows that events, virtual foreign keys and validations take part of the updating process.
-In summary, the following code:
+Такой способ выполнения позволяет событиям, виртуальным внешним ключам и проверкам (validations) принять участие в процессе изменения данных.
+В итоге, вот такой код:
 
 .. code-block:: php
 
@@ -539,7 +527,7 @@ In summary, the following code:
     $phql = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
     $success = $manager->executeQuery($phql);
 
-is somewhat equivalent to:
+эквивалентен такому:
 
 .. code-block:: php
 
@@ -560,23 +548,23 @@ is somewhat equivalent to:
 
     $success = $process();
 
-Deleting Data
--------------
-When a record is deleted the events related to the delete operation will be executed for each row:
+Удаление данных
+---------------
+Когда запись удаляется, события связанные с этой операцией будут выполнены для каждой записи:
 
 .. code-block:: php
 
     <?php
 
-    // Deleting a single row
+    // Удаление одной записи
     $phql = "DELETE FROM Cars WHERE id = 101";
     $manager->executeQuery($phql);
 
-    // Deleting multiple rows
+    // Удаление нескольких записей
     $phql = "DELETE FROM Cars WHERE id > 100";
     $manager->executeQuery($phql);
 
-    // Using placeholders
+    // Использование плейсхолдеров
     $phql = "DELETE FROM Cars WHERE id BETWEEN :initial: AND :final:";
     $manager->executeQuery(
         $phql,
@@ -586,33 +574,33 @@ When a record is deleted the events related to the delete operation will be exec
         )
     );
 
-DELETE operations are also executed in two phases like UPDATEs.
+Операция DELETE выполняется так же в два этапа, как и UPDATE.
 
-Creating queries using the Query Builder
-----------------------------------------
-A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
+Создание запросов с использованием Query Builder
+------------------------------------------------
+Есть специальный конструктор для создания PHQL-запросов, избавляющий от необходимости писать PHQL-операторы и он так же весьма IDE-дружественен:
 
 .. code-block:: php
 
     <?php
 
-    //Getting a whole set
+    // Получение целого набора
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->orderBy('Robots.name')
+        ->order('Robots.name')
         ->getQuery()
         ->execute();
 
-    //Getting the first row
+    // Получение первой записи
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->join('RobotsParts')
-        ->orderBy('Robots.name')
+        ->order('Robots.name')
         ->getQuery()
         ->getSingleResult();
 
-That is the same as:
+Что то же самое, что и:
 
 .. code-block:: php
 
@@ -623,7 +611,7 @@ That is the same as:
         ORDER BY Robots.name LIMIT 20";
     $result = $manager->executeQuery($phql);
 
-More examples of the builder:
+Больше примеров использования конструктора:
 
 .. code-block:: php
 
@@ -746,15 +734,15 @@ More examples of the builder:
     $builder->from(['r' => 'Store\Robots'])
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
-Bound Parameters
-^^^^^^^^^^^^^^^^
-Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
+Связанные параметры
+^^^^^^^^^^^^^^^^^^^
+В Query Builder можно устанавливать связанные параметры, указывать их можно непосредственно в запросе, либо в момент выполнения:
 
 .. code-block:: php
 
     <?php
 
-    //Passing parameters in the query construction
+    // Указываем параметры в формирующих участках
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:', array('name' => $name))
@@ -762,7 +750,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute();
 
-    //Passing parameters in query execution
+    // Указываем параметры при выполнении запроса
     $robots = $this->modelsManager->createBuilder()
         ->from('Robots')
         ->where('name = :name:')
@@ -816,10 +804,9 @@ You can disallow literals in the following way:
 Bound parameters can be used even if literals are allowed or not. Disallowing them is just
 another security decision a developer could take in web applications.
 
-Escaping Reserved Words
------------------------
-PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
-words using the cross-database escaping delimiters '[' and ']':
+Экранирование зарезервированных слов
+------------------------------------
+У PHQL есть несколько зарезервированных слов, и если вы хотите использовать какое-то из них в качестве аттрибутов или названий моделей, то вам придётся их экранировать с помощью '[' и ']':
 
 .. code-block:: php
 
@@ -831,20 +818,19 @@ words using the cross-database escaping delimiters '[' and ']':
     $phql = "SELECT id, [Like] FROM Posts";
     $result = $manager->executeQuery($phql);
 
-The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+Эти разделители будут динамически преобразованы в валидные разделители той СУБД, которая используется приложением в текущий момент.
 
-PHQL Lifecycle
---------------
-Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
-The following is the life cycle of each PHQL statement executed:
+Жизненный цикл PHQL
+-------------------
+Будучи высокоуровневым языком, PHQL даёт разработчикам возможность персонализировать и настраивать различные аспекты под свои нужды. Ниже представлен жизненный цикл исполнения каждого PHQL-оператора:
 
-* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
-* The IR is converted to valid SQL according to the database system associated to the model
-* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
+* PHQL разбирает и преобразует в промежуточное представление, независящее от текущей СУБД
+* Это промежуточное представление перобразуется в валидный SQL, соответствующий СУБД, связанной с моделью
+* Все параметры и сформированный PHQL запрос кешируется в памяти. Повторные выполнения этого же запроса производятся в разы быстрее
 
-Using Raw SQL
--------------
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+Использование чистого SQL
+-------------------------
+СУБД могут предлагать свои специфические SQL-расширения, не поддерживаемые PHQL, в этом случае можно использовать чистый SQL:
 
 .. code-block:: php
 
@@ -856,18 +842,18 @@ A database system could offer specific SQL extensions that aren't supported by P
     {
         public static function findByCreateInterval()
         {
-            // A raw SQL statement
+            // Выражение на чистом SQL
             $sql = "SELECT * FROM robots WHERE id > 0";
 
-            // Base model
+            // Модель
             $robot = new Robots();
 
-            // Execute the query
+            // Выполнение запроса
             return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
         }
     }
 
-If Raw SQL queries are common in your application a generic method could be added to your model:
+Если чистые SQL-запросы являются общими для вашего приожения, то в модель можно добавить универсальный метод:
 
 .. code-block:: php
 
@@ -879,18 +865,18 @@ If Raw SQL queries are common in your application a generic method could be adde
     {
         public static function findByRawSql($conditions, $params=null)
         {
-            // A raw SQL statement
+            // Выражение на чистом SQL
             $sql = "SELECT * FROM robots WHERE $conditions";
 
-            // Base model
+            // Модель
             $robot = new Robots();
 
-            // Execute the query
+            // Выполнение запроса
             return new Resultset(null, $robot, $robot->getReadConnection()->query($sql, $params));
         }
     }
 
-The above findByRawSql could be used as follows:
+Определённый выше метод findByRawSql может быть использован следующим образом:
 
 .. code-block:: php
 
@@ -898,13 +884,12 @@ The above findByRawSql could be used as follows:
 
     $robots = Robots::findByRawSql('id > ?', array(10));
 
-Troubleshooting
----------------
-Some things to keep in mind when using PHQL:
+Поиск и исправление проблем
+---------------------------
+Имейте в виду следующие моменты, когда используете PHQL:
 
-* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-* Correct charset must be defined in the connection to bind parameters with success
-* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver
+* Классы регистрозависимы, если класс не определён так, как он определён, то это может привести к неожиданному поведению.
+* Чтобы успешно связывать (bind) параметры, в соединении должна быть опеределена правильная кодировка.
+* Классы, для которых заданы алиасы не заменяются классами с неймспейсами, поскольку это происходит только в PHP коде, а не внутри строк.
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

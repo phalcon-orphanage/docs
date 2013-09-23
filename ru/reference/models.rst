@@ -1,23 +1,22 @@
-Working with Models
-===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
-your application. The bulk of your application's business logic will be concentrated in the models.
+Работа с Моделями
+=================
+Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используются для управления правилами
+взаимодействия с соответствующими таблицами базы данных. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении.
+Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` является родительским классом для всех моделей в вашем приложении Phalcon. Он обеспечивает независимость данных
+от вашей базы, основные CRUD операции, расширенные поисковые возможности, а также возможность построения зависимостей между моделями.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` исключает необходимость использования SQL запросов, потому как данный класс динамически переводит методы на соответствующие им операции СУБД.
 
 .. highlights::
 
-    Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
-    :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
+    Модели предназначены для работы с базой данных на высшем уровне абстракции. Если вы испытваете потребность в работе с базой данных на низшем уровне, обратитесь к документации
+    компонента :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 
-Creating Models
+Создание Модели
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+Модель это класс, который расширяет :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Файл с моделью должен быть помещен в директорию models.
+Файл должен содержать только один класс; его имя должно быть записано в CamelCase стиле.
 
 .. code-block:: php
 
@@ -28,18 +27,17 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Delete) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
+Пример выше демонстрирует реализацию модели "Robots". Обратите внимание, что класс Robots наследуется от :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
+Данный компонент предоставляет большой набор функционала для модели, которая наследует его, включая основные операции CRUD (Create, Read, Update, Delete),
+валидацию данных, а также поддержку усложненного поиска и возможность связывать несколько моделей друг с другом.
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    Если вы используете PHP 5.4/5.5 рекомендованно объявлять каждый столбец базы данных, который входит в модель в целях экономии памяти и
+    уменьшения общего выделения памяти на выполнение.
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the getSource() method:
+По умолчанию модель "Robots" будет ссылаться на таблицу 'robots'. Если вы захотите вручную указать другое имя для маппинга таблицы,
+вы можете использовать метод getSource():
 
 .. code-block:: php
 
@@ -55,8 +53,8 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. In addition to the above method the 'initialize' method is available.
-This method aids in setting up the model with a custom behavior i.e. a different table:
+Теперь модель Robots маппирует (использует) таблицу "the_robots". Метод initialize() помогает в создании модели с пользовательским поведением, т.е. использовании другой таблицы.
+Метод initialize() вызывает лишь однажды во время запроса.
 
 .. code-block:: php
 
@@ -162,9 +160,10 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating. The ORM is compatible with both schemes of defining properties.
 
-Models in Namespaces
-^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
+Модели в Пространствах Имен
+---------------------------
+Пространства имен могут быть использованы во избежание конфликтов, связанных с именами классов. В этих случаях, необходимо указывать имя соответствующей
+таблицы базы данных используя метод getSource:
 
 .. code-block:: php
 
@@ -177,10 +176,10 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
     }
 
-Understanding Records To Objects
---------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
+Понимание Записей В Объектах
+----------------------------
+Каждый экземпляр объекта модели представляет собой строку таблицы базы данных. Вы можете легко получить доступ к любой записи, считывая свойство объекта.
+К примеру, для таблицы "robots" с записями:
 
 .. code-block:: bash
 
@@ -192,9 +191,9 @@ for a table "robots" with the records:
     |  2 | Astro Boy  | mechanical | 1952 |
     |  3 | Terminator | cyborg     | 2029 |
     +----+------------+------------+------+
-    3 rows in set (0.00 sec)
+    3 строки в наборе (0,00 сек)
 
-You could find a certain record by its primary key and then print its name:
+Вы можете найти опеределенную запись по ее первичному ключу и напечатать ее имя:
 
 .. code-block:: php
 
@@ -203,10 +202,10 @@ You could find a certain record by its primary key and then print its name:
     // Find record with id = 3
     $robot = Robots::findFirst(3);
 
-    // Prints "Terminator"
+    // Печатать "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Как только запись будет зарезервирована в памяти, мы можете производить изменения ее данных, а затем сохранить изменения.
 
 .. code-block:: php
 
@@ -216,13 +215,12 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
+Как вы можете видеть, нет никакой необходимости в использовании необработанных SQL запросов. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+предоставляет высший уровень абстракции базы данных для веб-приложений.
 
-Finding Records
----------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
+Поиск записей
+-------------
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` также предлагает несколько методов для выборки записей. В следующем примере мы покажем вам как запросить одну или несколько записей из модели:
 
 .. code-block:: php
 
@@ -255,7 +253,7 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+Вы также можете использовать метод findFirst(), чтобы получить только первую запись для данного критерия:
 
 .. code-block:: php
 
@@ -273,7 +271,7 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+Оба метода find() и findFirst() принимают ассоциативный массив, определяющий критерии поиска:
 
 .. code-block:: php
 
@@ -290,35 +288,35 @@ Both find() and findFirst() methods accept an associative array specifying the s
         "bind"       => array(1 => "virtual")
     ));
 
-The available query options are:
+Доступные параметры запроса:
 
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
-+=============+====================================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | "columns" => "id, name"                                                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | "bind" => array("status" => "A", "type" => "some-time")                 |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | "order" => "name DESC, status"                                          |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                         | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | "group" => "name, status"                                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                              | "for_update" => true                                                    |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                 | "shared_lock" => true                                                   |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
-+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| Parameter   | Description                                                                                                                                                                                                    | Пример                                                                  |
++=============+================================================================================================================================================================================================================+=========================================================================+
+| conditions  | Условие поиска. Он используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. По умолчанию Phalcon\\Mvc\\Model предполагает что первый параметр является условием поиска  | "conditions" => "name LIKE 'steve%'"                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| columns     | Используется для указания списка столбцов возвращаемого в модели. Объект будет не полным при использовании этого параметра                                                                                     | "columns" => "id, name"                                                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bind        | Используется вместе с условием поиск, он заменяет указатели, освобождает значения для увеличения безопасности                                                                                                  | "bind" => array("status" => "A", "type" => "some-time")                 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| bindTypes   | При использовании связующих указателей вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность                                                                    | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| order       | Используется для сортировки результатов. Можно использовать несколько полей через запятую                                                                                                                      | "order" => "name DESC, status"                                          |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| limit       | Огарничивает результаты запроса.                                                                                                                                                                               | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| group       | Позволяет собирать данные на несколько записей и групп результатов по одному или нескольким столбцам                                                                                                           | "group" => "name, status"                                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| for_update  | С этой опцией, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` читает последние достпуные данные, устанавливает исключительные блокировки на каждую прочтенную запись                                    | "for_update" => true                                                    |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| shared_lock | С этой опцией, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` читает последние достпуные данные, устанавливает общие блокировки на каждую прочтенную запись                                             | "shared_lock" => true                                                   |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| cache       | Кэширует результаты, уменьшая нагрузку на реляционну систему.                                                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                    | "hydration" => Resultset::HYDRATE_OBJECTS                               |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+Существует еще один вариант записи запросов поиска, в объектно-ориентированном стиле:
 
 .. code-block:: php
 
@@ -331,19 +329,18 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+Статический метод query() возвращает :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` объект, который нормально работает с автокомплитом среды разработки.
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
+Все запросы внутри обрабатываются как :doc:`PHQL <phql>` запросы. PHQL это высокоуровневый, объектно-ориентированный, SQL подобный язык.
+Этот язык предоставит вам больше возможностей для выполнения запросов, таких как объединение с другими моделями, определение группировок, добавление агрегации и т.д.
 
-Model Resultsets
-^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
+Возвращение результатов моделью
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+В то время как findFirst() возвращает непосредственно экземпляр вызванного класса (когда это возвращаемые данные), метод find() возвращает
+:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. Этот объект включает в себя весь функционал такой как, обходы, поиск определенных записей, подсчет и прочее.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+Эти объекты являются более мощными, чем стандартные массивы. Одна из важнейших особенностей :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
+является то, что в любой момент времени, в памяти, есть только одна запись. Это очень помогает в управлении памятью особенно при работе с большими объемами данных.
 
 .. code-block:: php
 
@@ -373,13 +370,13 @@ is that at any time there is only one record in memory. This greatly helps in me
 
     // Move the internal cursor to the third robot
     $robots->seek(2);
-    $robot = $robots->current();
+    $robot = $robots->current()
 
     // Access a robot by its position in the resultset
     $robot = $robots[5];
 
     // Check if there is a record in certain position
-    if (isset($robots[3])) {
+    if (isset($robots[3]) {
        $robot = $robots[3];
     }
 
@@ -389,17 +386,17 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = $robots->getLast();
 
-Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
+Набор результатов в Phalcon эмулирует перемещение курсора, вы можете получить любую строку указав её позицию или найти внутренний указатель для определенной позиции.
+Обратите внимание, что некоторые системы баз данных не поддерживают курсоры с прокруткой, это заставляет базу данных повторно выполнить запрос
+для того, чтобы перемотать курсор в начало и получить запись в нужную позицию.
+Аналогично, если набор результатов вызывается несколько раз, запрос должен быть выполнен такое же количество раз.
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
+Хранение больших результатов запроса в памяти может потребовать много ресурсов, из-за этого наборы результатов получаются
+из базы данных блоками по 32 строк снижая потребность в повторном выполнении запроса в ряде случаев экономя память.
 
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
-serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
-thus consuming more memory while this process takes place.
+Обратите внимание, что наборы результатов могут быть сериализованы и хранится в кэше бэкэнда. :doc:`Phalcon\\Cache <cache>` может помочь с этой задачей.
+Тем не менее, сериализация данных вызывает :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` для получения всех данных из базы данных в массив,
+таким образом, потребление памяти увеличивается.
 
 .. code-block:: php
 
@@ -419,29 +416,10 @@ thus consuming more memory while this process takes place.
        echo $part->id;
     }
 
-Filtering Resultsets
-^^^^^^^^^^^^^^^^^^^^
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
-Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
-
-.. code-block:: php
-
-    <?php
-
-    $customers = Customers::find()->filter(function($customer) {
-
-        //Return only customers with a valid e-mail
-        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
-            return $customer;
-        }
-
-    });
-
-Binding Parameters
-^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Привязка параметров
+^^^^^^^^^^^^^^^^^^^
+Привязка параметров также поддерживается в :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Использование привязки параметров рекомендуется,
+чтобы исключить возможность SQL инъекции. Привязка параметров поддерживает строки и числа.
 
 .. code-block:: php
 
@@ -485,14 +463,11 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
         "bind" => $parameters
     ));
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
-and not numbers, so the placeholder could not be successfully replaced.
-
-Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.
-
-Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
+При использовании цифровых указателей, необходимо определить их как целые числа, то есть 1 или 2. В этом случае "1" или "2" считаются строками,
+поэтому указатель не может быть успешно заменен. Строки автоматически изолируются используя PDO_.
+Эта функция принимает во внимание кодировку соединения с базой данных, поэтому её рекомендуется определять в параметрах соединения или в конфигурации базы данных,
+неправильная кодировка будет приводить к некорректным хранении и извлечении данных.
+Кроме того, вы можете установить параметр "bindTypes", что позволит определить, каким образом параметры должны быть связаны в соответствии с его типом данных:
 
 .. code-block:: php
 
@@ -524,8 +499,9 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
     "bindTypes" parameter if all of the columns are of that type.
 
-Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
-methods like count(), sum(), average() etc.
+Поскольку по умолчанию связывание типа это \\Phalcon\\Db\\Column::BIND_TYPE_STR, нет необходимости указывать "bindTypes" параметр, если все столбцы этого типа.
+
+Привязка параметров доступна для всех запросов метода, таких как find() и findFirst(), а так же для методов count(), sum(), average() и т.д.
 
 Initializing/Preparing fetched records
 --------------------------------------
@@ -576,46 +552,46 @@ accessed:
 
         public function getStatus()
         {
-            return explode(',', $this->status);
+            return explode(',', $this->status)
         }
 
     }
 
-Relationships between Models
-----------------------------
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
-unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
-The model manager manages foreign key constraints for these relationships, the definition of these helps referential
-integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
-it is easy to access data in related models from each record in a uniform way.
+Отношения между моделями
+------------------------
+Существует четыре типа отношений: один-к-одному, один-ко-многим, многие-к-одному и многие-ко-многим.
+Отношения могут быть однонаправленным или двунаправленным, и каждое может быть простым (один модель к одной) или более сложные (комбинация моделей).
+Модель менеджер управляет ограничением внешних ключей для этих отношений, их определение помогает ссылочной целостности,
+а также обеспечивает легкий и быстрый доступ к соответствующей записи в модели.
+Благодаря реализации отношений, легко получить доступ к данным в связных моделях для любой выбранной записи(-ей).
 
-Unidirectional relationships
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+Однонаправленные отношения
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Однонаправленные отношения это те отношения, которые генерируются в отношении друг к друга, но не наоборот.
 
-Bidirectional relations
-^^^^^^^^^^^^^^^^^^^^^^^
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+Двунаправленные отношений
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Двунаправленные отношения создают отношения в обоих моделях, и каждая модель определяет обратную связь от другой.
 
-Defining relationships
-^^^^^^^^^^^^^^^^^^^^^^
-In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne(),
-hasMany() and hasManyToMany() define the relationship between one or more fields from the current model to fields in
-another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+Определение отношений
+^^^^^^^^^^^^^^^^^^^^^
+В Phalcon, отношения должны быть определены в методе initialize() модели.
+Методы belongsTo(), hasOne() or hasMany() определяют отношения между одним или несколькими полями из текущей модели в поля другой модели.
+Каждый из этих методов требует 3 параметра: local fields, referenced model, referenced fields.
 
-+---------------+----------------------------+
-| Method        | Description                |
-+===============+============================+
-| hasMany       | Defines a 1-n relationship |
-+---------------+----------------------------+
-| hasOne        | Defines a 1-1 relationship |
-+---------------+----------------------------+
-| belongsTo     | Defines a n-1 relationship |
-+---------------+----------------------------+
-| hasManyToMany | Defines a n-n relationship |
-+---------------+----------------------------+
++---------------+--------------------------+
+| Метод         | Описание                 |
++===============+==========================+
+| hasMany       | Определяет 1-n отношения |
++---------------+--------------------------+
+| hasOne        | Определяет 1-1 отношения |
++---------------+--------------------------+
+| belongsTo     | Определяет n-1 отношения |
++---------------+--------------------------+
+| hasManyToMany | Определяет n-n отношения |
++---------------+--------------------------+
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+Следующая схема показывает 3 таблицы, чьи отношения будут служить нам в качестве примера, касающиеся отношений:
 
 .. code-block:: sql
 
@@ -643,17 +619,17 @@ The following schema shows 3 tables whose relations will serve us as an example 
         PRIMARY KEY (`id`)
     );
 
-* The model "Robots" has many "RobotsParts".
-* The model "Parts" has many "RobotsParts".
-* The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
+* Модель "Robots" имеет несколько "RobotsParts".
+* Модель "Parts" имеет несколько "RobotsParts".
+* Модель "RobotsParts" пренадлежит обоим "Robots" и "Parts" моделям как многие-к-одному.
 * The model "Robots" has a relation many-to-many to "Parts" through "RobotsParts"
 
-Check the EER diagram to understand better the relations:
+Посмотрим EER схему, чтобы лучше понять отношения:
 
 .. figure:: ../_static/img/eer-1.png
-   :align: center
+    :align: center
 
-The models with their relations could be implemented as follows:
+Модели с их отношениями моут быть реализованы следующим образом:
 
 .. code-block:: php
 
@@ -711,9 +687,6 @@ The models with their relations could be implemented as follows:
 
     }
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name
-of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
-
 Many to many relationships require 3 models and define the attributes involved in the relationship:
 
 .. code-block:: php
@@ -739,9 +712,12 @@ Many to many relationships require 3 models and define the attributes involved i
 
     }
 
-Taking advantage of relationships
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+Первый параметр указывает локальные поля модели, используемые в отношениях; второй указывает имя модели и третье имя поля в указанной модели.
+Вы также можете использовать массивы для определения нескольких полей в отношениях.
+
+Преимущества отношений
+^^^^^^^^^^^^^^^^^^^^^^
+При явном определении отношений между моделями, легко найти относящиеся записи для конкретной записи.
 
 .. code-block:: php
 
@@ -752,9 +728,9 @@ When explicitly defining the relationships between models, it is easy to find re
         echo $robotPart->parts->name, "\n";
     }
 
-Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
+Phalcon использует магические методы __set/__get/__call для сохранения или извлечения связанных данных, используя отношения.
 
-By accesing an attribute with the same name as the relationship will retrieve all its related record(s).
+По доступу к атрибуту с таким же именем, что и отношения, будем получать все связанные с ней записи.
 
 .. code-block:: php
 
@@ -763,7 +739,7 @@ By accesing an attribute with the same name as the relationship will retrieve al
     $robot = Robots::findFirst();
     $robotsParts = $robot->robotsParts; // all the related records in RobotsParts
 
-Also, you can use a magic getter:
+Кроме того, вы можете использовать магию получателя:
 
 .. code-block:: php
 
@@ -773,9 +749,8 @@ Also, you can use a magic getter:
     $robotsParts = $robot->getRobotsParts(); // all the related records in RobotsParts
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // passing parameters
 
-If the called method has a "get" prefix :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` will return a
-findFirst()/find() result. The following example compares retrieving related results with using magic methods
-and without:
+Если вызываемый метод "get" префикс :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` вернет findFirst()/find().
+В следующем примере сравниваются получение соответствующих результатов с использованием магических методов и без:
 
 .. code-block:: php
 
@@ -802,7 +777,7 @@ and without:
     // relationship to RobotsParts then
     $robot = $robotPart->robots;
 
-Getting related records manually:
+Получение связанных записей вручную:
 
 .. code-block:: php
 
@@ -826,22 +801,21 @@ Getting related records manually:
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
-The prefix "get" is used to find()/findFirst() related records. Depending on the type of relation it will use
-'find' or 'findFirst':
+Префикс "get" используется для find()/findFirst() связанных записей. В зависимости от типа отношений он будет использовать 'find' or 'findFirst':
 
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Type                | Description                                                                                                                | Implicit Method        |
-+=====================+============================================================================================================================+========================+
-| Belongs-To          | Returns a model instance of the related record directly                                                                    | findFirst              |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-One             | Returns a model instance of the related record directly                                                                    | findFirst              |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-Many            | Returns a collection of model instances of the referenced model                                                            | find                   |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
-| Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
++--------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+
+| Тип                | Описание                                                                                                                   | Неявный метод       |
++====================+============================================================================================================================+=====================+
+| Belongs-To         | Возвращает экземпляр модели взаимосвязанной записи                                                                         | findFirst           |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+
+| Has-One            | Возвращает экземпляр модели взаимосвязанной записи                                                                         | findFirst           |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+
+| Has-Many           | Возвращает коллекцию экземпляров модели для основной модели                                                                | find                |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+
+| Has-Many-to-Many   | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)     |
++--------------------+----------------------------------------------------------------------------------------------------------------------------+---------------------+
 
-You can also use "count" prefix to return an integer denoting the count of the related records:
+Вы можете также использовать префикс "count" для подсчета количества связанных записей:
 
 .. code-block:: php
 
@@ -850,11 +824,11 @@ You can also use "count" prefix to return an integer denoting the count of the r
     $robot = Robots::findFirst(2);
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
 
-Aliasing Relationships
-^^^^^^^^^^^^^^^^^^^^^^
-To explain better how aliases work, let's check the following example:
+Алиасы отношений
+^^^^^^^^^^^^^^^^
+Чтобы лучше объяснить, как алиасы работают, давайте рассмотрим следующий пример:
 
-Table "robots_similar" has the function to define what robots are similar to others:
+В таблице "robots_similar" есть функция, для определения, что роботы похожи на других:
 
 .. code-block:: bash
 
@@ -868,12 +842,12 @@ Table "robots_similar" has the function to define what robots are similar to oth
     +-------------------+------------------+------+-----+---------+----------------+
     3 rows in set (0.00 sec)
 
-Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
+Оба "robots_id" и "similar_robots_id" имеют отношение к модели Robots:
 
 .. figure:: ../_static/img/eer-2.png
    :align: center
 
-A model that maps this table and its relationships is the following:
+Модель, которая отображает эту таблицу и ее отношения выглядит так:
 
 .. code-block:: php
 
@@ -890,7 +864,7 @@ A model that maps this table and its relationships is the following:
 
     }
 
-Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+Так как отношения указывают на ту же модель (Robots), получить записи, относящиеся к взаимосвязи корректно нельзя:
 
 .. code-block:: php
 
@@ -906,7 +880,7 @@ Since both relations point to the same model (Robots), obtain the records relate
     //but, how to get the related record based on the column (similar_robots_id)
     //if both relationships have the same name?
 
-The aliases allow us to rename both releationships to solve these problems:
+Алиасы позволяют переименовать оба отношения для решения этих проблем:
 
 .. code-block:: php
 
@@ -927,7 +901,7 @@ The aliases allow us to rename both releationships to solve these problems:
 
     }
 
-With the aliasing we can get the related records easily:
+С алиасами мы можем легко получить соответствующие записи:
 
 .. code-block:: php
 
@@ -943,11 +917,9 @@ With the aliasing we can get the related records easily:
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
-Magic Getters vs. Explicit methods
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters,
-instead of use the magic getters you can optionally define those methods explicitly with the corresponding
-docblocks helping the IDE to produce a better auto-completion:
+Магические методы против явных
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Большинство сред IDE и редакторов с авто-заполнением не могут определить правильность типов при использовании магических методов, вместо того, для получения удобства вы можете задать эти методы явно с соответствующим docblocks, помогая IDE для получения лучшего авто-завершения:
 
 .. code-block:: php
 
@@ -977,13 +949,11 @@ docblocks helping the IDE to produce a better auto-completion:
 
     }
 
-Virtual Foreign Keys
---------------------
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
-value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
-when defining a relationship.
+Виртуальные внешние ключи
+-------------------------
+По умолчанию, отношения не действуют как внешние ключи базы данных, то есть, если вы пытаетесь вставить/обновить значение, не имея действительного значения в эталонной модели, Phalcon не будет производить проверку сообщений. Вы можете изменить данное поведение, добавив четвертый параметр при определении отношения.
 
-The RobotsPart model can be changed to demonstrate this feature:
+Модель RobotsPart может быть изменена, чтобы продемонстрировать эту функцию:
 
 .. code-block:: php
 
@@ -1013,9 +983,7 @@ The RobotsPart model can be changed to demonstrate this feature:
 
     }
 
-If you alter a belongsTo() relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
-valid value on the referenced model. Similarly, if a hasMany()/hasOne() is altered it will validate that the records cannot be deleted
-if that record is used on a referenced model.
+Если вы изменяете belongsTo() отношения в качестве внешнего ключа, он будет проверять, что значения вставляется/обновляется на тех полях где значение допустимое для эталонной модели. Аналогичным образом, если HasMany()/hasOne () изменяется он будет проверять, что записи не могут быть удалены, если эта запись используется для эталонной моделью.
 
 .. code-block:: php
 
@@ -1046,7 +1014,7 @@ to maintain the integrity of data:
 
     namespace Store\Models;
 
-    use Phalcon\Mvc\Model,
+    use Phalcon\Mvc\Model
         Phalcon\Mvc\Model\Relation;
 
     class Robots extends Model
@@ -1069,12 +1037,12 @@ to maintain the integrity of data:
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
-Generating Calculations
------------------------
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
+Использование Расчетов
+----------------------
+Расчеты являются помощниками для часто используемых функций СУБД, такие как COUNT, SUM, MAX, MIN или AVG.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` позволяет использовать эти функции непосредственно с доступными методами.
 
-Count examples:
+Пример подсчета:
 
 .. code-block:: php
 
@@ -1103,11 +1071,11 @@ Count examples:
 
     // Avoid SQL injections using bound parameters
     $group = Employees::count(array(
-        "type > ?0",
+        "type > ?0"
         "bind" => array($type)
     ));
 
-Sum examples:
+Пример суммы:
 
 .. code-block:: php
 
@@ -1141,11 +1109,11 @@ Sum examples:
 
     // Avoid SQL injections using bound parameters
     $group = Employees::sum(array(
-        "conditions" => "area > ?0",
+        "conditions" => "area > ?0"
         "bind" => array($area)
     ));
 
-Average examples:
+Пример поиска среднего:
 
 .. code-block:: php
 
@@ -1162,12 +1130,12 @@ Average examples:
 
     // Avoid SQL injections using bound parameters
     $average = Employees::average(array(
-        "column" => "age",
-        "conditions" => "area > ?0",
+        "column" => "age"
+        "conditions" => "area > ?0"
         "bind" => array($area)
     ));
 
-Max/Min examples:
+Пример нахождения максимального/минимального:
 
 .. code-block:: php
 
@@ -1185,8 +1153,8 @@ Max/Min examples:
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-Hydration Modes
----------------
+Hydration ModesHydration Modes
+------------------------------
 As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
 representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -2646,7 +2614,7 @@ you can do this:
             return false;
         }
         return true;
-    });
+    }
 
 Deleting related records
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3167,7 +3135,7 @@ As models access the default database connection, all SQL statements that are se
 
     $robot = new Robots();
     $robot->name = "Robby the Robot";
-    $robot->created_at = "1956-07-21";
+    $robot->created_at = "1956-07-21"
     if ($robot->save() == false) {
         echo "Cannot save robot";
     }
@@ -3231,8 +3199,8 @@ Profiling some queries:
 
     // Send some SQL statements to the database
     Robots::find();
-    Robots::find(array("order" => "name"));
-    Robots::find(array("limit" => 30));
+    Robots::find(array("order" => "name");
+    Robots::find(array("limit" => 30);
 
     //Get the generated profiles from the profiler
     $profiles = $di->get('profiler')->getProfiles();
@@ -3345,3 +3313,4 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 .. _date: http://php.net/manual/en/function.date.php
 .. _time: http://php.net/manual/en/function.time.php
 .. _Traits: http://php.net/manual/en/language.oop5.traits.php
+

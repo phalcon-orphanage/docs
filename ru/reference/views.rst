@@ -1,31 +1,26 @@
-Using Views
-===========
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks
-related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
-is used to make requests from your application.
+Использование представлений (Views)
+===================================
+Представления (views) — это пользовательский интерфейс вашего приложения. Чаще всего это HTML-файлы со вставками PHP-кода, который выполняет только задачи, связанные с выводом данных. Представления управляют работой по передаче данных в браузер или другой инструмент, использующийся для выполнения запросов к вашему приложению.
 
-The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
-are responsible for the managing the view layer of your MVC application.
+The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` и :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` отвечают за управление слоем представления в вашем MVC-приложении.
 
-Integrating Views with Controllers
-----------------------------------
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
-will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
-executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Совместное использование Представлений и Контроллеров
+-----------------------------------------------------
+Как только какой-то определённый контроллер завершает свой цикл работы, Phalcon автоматически передаёт управление компоненту представления. Этот компонент ищет в папке представлений такое, название которое совпадает с последним исполнившимся контроллером, а затем — файл, имя которого соответствует последнему выполненному действию (action). Например, запрос по URL *http://127.0.0.1/blog/posts/show/301* Phalcon будет разбирать следующим образом:
 
 +-------------------+-----------+
-| Server Address    | 127.0.0.1 |
+| Адрес сервера     | 127.0.0.1 |
 +-------------------+-----------+
-| Phalcon Directory | blog      |
+| Папка Phalcon     | blog      |
 +-------------------+-----------+
-| Controller        | posts     |
+| Контроллер        | posts     |
 +-------------------+-----------+
-| Action            | show      |
+| Действие          | show      |
 +-------------------+-----------+
-| Parameter         | 301       |
+| Параметр          | 301       |
 +-------------------+-----------+
 
-The dispatcher will look for a "PostsController" and its action "showAction". A simple controller file for this example:
+Dispatcher будет искать "PostsController" и его действие "showAction". Листинг простейшего контроллера для этого примера:
 
 .. code-block:: php
 
@@ -41,35 +36,34 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
 
         public function showAction($postId)
         {
-            // Pass the $postId parameter to the view
+            // Передать параметр $postId в представление
             $this->view->setVar("postId", $postId);
         }
 
     }
 
-The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
-how to pass the $postId parameter to the respective view template.
+Метод setVar позволяет создавать переменные, необходимые для представления, которые могут быть использованы в шаблоне. Это и продемонстрировано выше, на примере передачи в шаблон параметра $postId.
 
 Hierarchical Rendering
 ----------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
-This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
+Компонент поддерживает иерархическую структуру файлов. Эта иерархия определяет местоположение как общих шаблонов, так и шаблонов контроллеров, расположенных в папках с соответствующими названиями.
 
-This component uses by default PHP itself as the template engine, therefore views should have the .phtml extension.
-If the views directory is  *app/views* then view component will find automatically for these 3 view files.
+В качестве движка по умолчанию компонент использует сам PHP, поэтому представления должны иметь расширение .phtml.
+Если в качестве папки с представлениями используется *app/views*, то компонент автоматически будет искать следующие 3 файла.
 
-+-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Name              | File                          | Description                                                                                                                                                                                                              |
-+===================+===============================+==========================================================================================================================================================================================================================+
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                       |
-+-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
-+-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
-+-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Название          | Файл                          | Описание                                                                                                                                                                             |
++===================+===============================+======================================================================================================================================================================================+
+| Action View       | app/views/posts/show.phtml    | Представление, связанное с конкретным действием контроллера. Используется только при выполнении этого действия.                                                                      |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Controller Layout | app/views/layouts/posts.phtml | Представление, связанное с контроллером. Используется для любого действия контроллера "posts". Код, реализованный в layout будет повторно использован для всех действий контроллера. |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Main Layout       | app/views/index.phtml         | Основной шаблон. Используется для любого контроллера или действия в приложении.                                                                                                      |
++-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-You are not required to implement all of the files mentioned above. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` will simply move to the
-next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+
+Вам совершенно не обязательно использовать все упомянутые выше файлы. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` просто перейдёт на следующий уровень представлений в иерархии файлов.
+В том случае, если существуют все три файла представлений, то они будут обработаны следующим образом:
 
 .. code-block:: html+php
 
@@ -103,13 +97,13 @@ next view level in the hierarchy of files. If all three view files are implement
         </body>
     </html>
 
-Note the lines where the method *$this->getContent()* was called. This method instructs :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
+Обратите внимание на строчки, в которых происходит вызов метода *$this->getContent()*. Он указывает :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
+где необходимо вставить содержимое представления, которое исполнялось выше по иерархии. Вывод для нашего примера будет представлять собой следующее:
 
 .. figure:: ../_static/img/views-1.png
    :align: center
 
-The generated HTML by the request will be:
+Сгенерированный HTML-код по этому запросу:
 
 .. code-block:: html+php
 
@@ -135,10 +129,9 @@ The generated HTML by the request will be:
         </body>
     </html>
 
-Using Templates
-^^^^^^^^^^^^^^^
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
-layouts directory.
+Использование Шаблонов
+^^^^^^^^^^^^^^^^^^^^^^
+Шаблоны — это представления, которые могут быть использованы для предоставления общего доступа к коду представлений. Они выступают в роли layouts для контроллеров, поэтому вам необходимо помещать их в папку для layouts.
 
 .. code-block:: php
 
@@ -192,7 +185,7 @@ layouts directory.
 
 .. code-block:: html+php
 
-    <!-- app/views/layouts/posts/last.phtml -->
+    <!-- app/views/posts/last.phtml -->
 
     <article>
         <h2>This is a title</h2>
@@ -204,7 +197,7 @@ layouts directory.
         <p>This is another post content</p>
     </article>
 
-The final output will be the following:
+На выходе получится следующее:
 
 .. code-block:: html+php
 
@@ -230,7 +223,7 @@ The final output will be the following:
 
                 <h1>Blog Title</h1>
 
-                <!-- app/views/layouts/posts/last.phtml -->
+                <!-- app/views/posts/last.phtml -->
 
                 <article>
                     <h2>This is a title</h2>
@@ -247,12 +240,11 @@ The final output will be the following:
         </body>
     </html>
 
-Control Rendering Levels
-^^^^^^^^^^^^^^^^^^^^^^^^
-As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
-produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
+Управление уровнями отрисовки (Rendering Levels)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Как видно выше — :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` поддерживает иерархию представлений. У вас может возникнуть необходимость в управлении уровнями отрисовки, производимой компонентом представления. Этот функционал предоставляется методом Phalcon\Mvc\\View::setRenderLevel().
 
-This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
+Этот метод может быть вызван из контроллера или вышестоящего уровня представления с целью вмешательства в процесс отрисовки.
 
 .. code-block:: php
 
@@ -272,7 +264,7 @@ This method can be invoked from the controller or from a superior view layer to 
         public function findAction()
         {
 
-            // This is an Ajax response so it doesn't generate any kind of view
+            // Ajax-ответ, генерация представления не нужна
             $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
             //...
@@ -280,33 +272,33 @@ This method can be invoked from the controller or from a superior view layer to 
 
         public function showAction($postId)
         {
-            // Shows only the view related to the action
+            // Показать только представление, относящееся к конкретному действию контроллера
             $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
 
     }
 
-The available render levels are:
+Допустимые уровни отрисовки:
 
-+-----------------------+--------------------------------------------------------------------------+-------+
-| Class Constant        | Description                                                              | Order |
-+=======================+==========================================================================+=======+
-| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  |       |
-+-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         | 1     |
-+-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         | 2     |
-+-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     | 3     |
-+-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. | 4     |
-+-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
-+-----------------------+--------------------------------------------------------------------------+-------+
++-----------------------+--------------------------------------------------------------------------+---------+
+| Константы             | Описание                                                                 | Порядок |
++=======================+==========================================================================+=========+
+| LEVEL_NO_RENDER       | Указывает, что нужно избежать генерации любых представлений.             |         |
++-----------------------+--------------------------------------------------------------------------+---------+
+| LEVEL_ACTION_VIEW     | Генерация представления, относящегося к конкретному действию.            | 1       |
++-----------------------+--------------------------------------------------------------------------+---------+
+| LEVEL_BEFORE_TEMPLATE | Генерация шаблонов представлений, предшествующих layout контроллера.     | 2       |
++-----------------------+--------------------------------------------------------------------------+---------+
+| LEVEL_LAYOUT          | Генерация представления, для layout контроллера.                         | 3       |
++-----------------------+--------------------------------------------------------------------------+---------+
+| LEVEL_AFTER_TEMPLATE  | Генерация шаблонов представлений, следующих за layout контроллера.       | 4       |
++-----------------------+--------------------------------------------------------------------------+---------+
+| LEVEL_MAIN_LAYOUT     | Генерация представления для главного layout. Файл views/index.phtml      | 5       |
++-----------------------+--------------------------------------------------------------------------+---------+
 
-Disabling render levels
-^^^^^^^^^^^^^^^^^^^^^^^
-You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
+Отключение уровней отрисовки
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Вы можете отключить уровни отрисовки временно или насовсем. Уровень может быть отключен насовсем, если он вообще не используется в приложении:
 
 .. code-block:: php
 
@@ -318,7 +310,7 @@ You can permanently or temporarily disable render levels. A level could be perma
 
         $view = new View();
 
-        //Disable several levels
+        // Отключить несколько уровней
         $view->disableLevel(array(
             View::LEVEL_LAYOUT => true,
             View::LEVEL_MAIN_LAYOUT => true
@@ -328,7 +320,7 @@ You can permanently or temporarily disable render levels. A level could be perma
 
     }, true);
 
-Or disable temporarily in some part of the application:
+Или временно для какой-либо части приложения:
 
 .. code-block:: php
 
@@ -352,10 +344,9 @@ Or disable temporarily in some part of the application:
 
     }
 
-Picking Views
-^^^^^^^^^^^^^
-As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
-the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\\Mvc\\View::pick() method:
+Переопределение Представлений (Picking Views)
+---------------------------------------------
+Как уже упоминалось выше, когда :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` находится под управлением :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, тогда отрисовываемым представлением будет какое-то из связанных с последними исполнявшимися контроллером и действием. Это можно переопределить, используя метод Phalcon\\Mvc\\View::pick():
 
 .. code-block:: php
 
@@ -378,10 +369,10 @@ the view rendered is the one related with the last controller and action execute
 
     }
 
-Disabling the view
-^^^^^^^^^^^^^^^^^^
-If your controller doesn't produce any output in the view (or not even have one) you may disable the view component
-avoiding unnecessary processing:
+Отключение представления
+------------------------
+Если в контроллере не производится никакого вывода, то для избежания ненужных обработок можно отключить компонент представления:
+
 
 .. code-block:: php
 
@@ -494,13 +485,11 @@ To render a view is necessary to call the render method explicitly indicating th
 
     }
 
-Using Partials
---------------
-Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
-parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
+Использование частитей шаблонов (Partials)
+------------------------------------------
+Частичные шаблоны (Partial templates) — это ещё один способ дробления процесса отрисовки на простые и более управляемые части, которые впоследствии могут быть использованы в различных частях приложения. С помощью partial вы можете переместить код отрисовки какой-то конкретной части в отдельный, отвечающий за это, файл.
 
-One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code
-can be more easily understood. For example, you might have a view that looks like this:
+Один из способов использования partials — это отнестись к ним, как к некоторому подобию подпрограммы. Иными словами — вынести детали реализации из представления, с целью сделать код более простым для понимания. Например, вы могли бы получить представление, выглядещее следующим образом:
 
 .. code-block:: html+php
 
@@ -521,10 +510,13 @@ Method partial() does accept a second parameter as an array of variables/paramet
 
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
-Transfer values from the controller to views
---------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
-use that object to set variables directly to the view from a controller action by using the setVar() method.
+Передача значений переменных из контроллера в представление
+-----------------------------------------------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` позволяет использовать в каждом контроллере переменную представления  ($this->view). Вы можете использовать этот объект, чтобы устанавливать значения переменных для представления непосредственно из действия контроллера, используя метод setVar().
+
+.. code-block:: php
+
+    <?php
 
 .. code-block:: php
 
@@ -555,8 +547,7 @@ use that object to set variables directly to the view from a controller action b
 
     }
 
-A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
-from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
+Первым параметром метода setVar() передаётся название переменной, которая будет создана и может быть использована в представлении. Эта переменная может быть любого типа: от простых строк или целых чисел до более сложных структур, таких, как массивы или коллекции.
 
 .. code-block:: html+php
 
@@ -570,10 +561,9 @@ from a simple string, integer etc. variable to a more complex structure such as 
     ?>
     </div>
 
-Using models in the view layer
-------------------------------
-Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
-runtime automatically:
+Использование моделей в слое представления
+------------------------------------------
+Модели приложения всегда доступны из слоя представления. Во время исполнения :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` автоматически создаёт их копии:
 
 .. code-block:: html+php
 
@@ -587,17 +577,13 @@ runtime automatically:
     ?>
     </div>
 
-Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since
-it is not possible to forward the execution flow to another controller in the case of an error or an exception.
+Хотя вы и можете вызывать в слое представления такие методы модели, как insert() или update(), это не рекомендуется, так как при этом невозможно передать выполнение другому контроллеру в случае возникновения ошибки или исключения.
 
-Caching View Fragments
-----------------------
-Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
-the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
-rendered output to increase performance.
+Кэширование фрагментов Представления
+------------------------------------
+Иногда при разработке динамических веб-сайтов некоторые их области обновляются не так часто. Поэтому результат выполнения похожих запросов так же совпадает. Для увеличения производительности :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` предоставляет возможность кэширования части или всего отрисованного вывода.
 
-:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
-to cache output fragments. You could manually set the cache handler or set a global handler:
+:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` используется совместно с :doc:`Phalcon\\Cache <cache>`, чтобы обеспечить простой способ кэширования фрагментов вывода. Вы можете вручную установить обработчик кэша или глобальный обработчик:
 
 .. code-block:: php
 
@@ -608,13 +594,13 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function showAction()
         {
-            //Cache the view using the default settings
+            // Кэширование с помощью настроек по умолчанию
             $this->view->cache(true);
         }
 
         public function showArticleAction()
         {
-            // Cache this view for 1 hour
+            // Кэширование на один час
             $this->view->cache(array(
                 "lifetime" => 3600
             ));
@@ -622,7 +608,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function resumeAction()
         {
-            //Cache this view for 1 day with the key "resume-cache"
+            // Кэширование представления этого действия на один день с ключем "resume-cache"
             $this->view->cache(
                 array(
                     "lifetime" => 86400,
@@ -633,7 +619,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function downloadAction()
         {
-            //Passing a custom service
+            // Использование стороннего сервиса для кэширования
             $this->view->cache(
                 array(
                     "service"  => "myCache",
@@ -645,11 +631,11 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
     }
 
-When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name is currently rendered.
-It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
+Если ключ кэша не задан, то компонент автоматически создаёт его используя md5_ для имени представления, отрисовываемого в данный момент.
+Это хорошая практика задания ключей кэша для действий, позволяющая идентифицировать кэш, относящийся к конкретному представлению.
 
-When the View component needs to cache something it will request a cache service to the services container.
-The service name convention for this service is "viewCache":
+Когда компонент Представления должен что-то закэшировать, он запрашивает сервис кэша у контейнера сервисов.
+По соглашению, этот сервис именуется как "viewCache":
 
 .. code-block:: php
 
@@ -658,15 +644,15 @@ The service name convention for this service is "viewCache":
     use Phalcon\Cache\Frontend\Output as OutputFrontend,
         Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
-    //Set the views cache service
+    // Назначение сервиса кэширования представлений
     $di->set('viewCache', function() {
 
-        //Cache data for one day by default
+        // Кэширование данных на сутки по умолчанию
         $frontCache = new OutputFrontend(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Настройки соединения с Memcached
         $cache = new MemcacheBackend($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -676,14 +662,11 @@ The service name convention for this service is "viewCache":
     });
 
 .. highlights::
-    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
-    always open (not shared) in the services container (DI)
+    Интерфейс всегда должен быть Phalcon\\Cache\\Frontend\\Output, а сервис "viewCache" должен быть зарегистрирован как всегда открытый (not shared) в контейнере сервисов (DI)
 
-When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed
-in the views.
+Использование кэширования представлений также бывает полезно, чтобы предотвратить действия контроллеров, направленные на получение данных, используемых для отображения в представлениях.
 
-To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has
-expired to make the calculations/queries to display data in the view:
+Для достижения этой цели необходимо однозначно идентифицировать каждый кэш с помощью ключа. Прежде чем выполнять вычисления или запросы для отображаемых в представлении данных, необходимо убедиться, что кэш не существует или его срок истек:
 
 .. code-block:: html+php
 
@@ -695,10 +678,10 @@ expired to make the calculations/queries to display data in the view:
         public function indexAction()
         {
 
-            //Check whether the cache with key "downloads" exists or has expired
+            // Проверяет, кэш с ключом "downloads" на существование или истёкший срок
             if ($this->view->getCache()->exists('downloads')) {
 
-                //Query the latest downloads
+                // Запрос последних загрузок
                 $latest = Downloads::find(array(
                     'order' => 'created_at DESC'
                 ));
@@ -706,7 +689,7 @@ expired to make the calculations/queries to display data in the view:
                 $this->view->latest = $latest;
             }
 
-            //Enable the cache with the same key "downloads"
+            // Включает кэширование с ключом "downloads"
             $this->view->cache(array(
                 'key' => 'downloads'
             ));
@@ -714,33 +697,27 @@ expired to make the calculations/queries to display data in the view:
 
     }
 
-The `PHP alternative site`_ is an example of implementing the caching of fragments.
+Пример реализации кэширования фрагментов — `PHP alternative site`_.
 
-Template Engines
-----------------
-Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
-called :doc:`Volt <volt>`.
+Шаблонизаторы
+-------------
+Шаблонизаторы помогают дизайнерам создавать представления без использования сложного синтаксиса. Phalcon включает в себя мощный и одновременно быстрый шаблонизатор :doc:`Volt <volt>`.
 
-Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
+Кроме того, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` позволяет использовать другие шаблонизаторы вместо обычного PHP или Volt.
 
-Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
-for the user. This usually increases the number of resources that your application are using.
+Использование различных шаблонизаторов, как правило, требует сложного разбора кода с применением внешних PHP-библиотек, генерирующих результат для пользователя. Это, в свою очередь, увеличивает количество ресурсов, используемых приложением.
 
-If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
-still possible to access the API inside these templates with a little more effort.
+Если используется внешний шаблонизатор, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` обеспечивает иерархию файловой структуры и по-прежнему предоставляет доступ к API из этих шаблонов, но с чуть большими затратами.
 
-This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
+Этот компонент использует адаптеры, что позволяет Phalcon общаться с внешними шаблонизаторами единым образом. Рассмотрим, как это происходит.
 
-Creating your own Template Engine Adapter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
+Создание собственного адаптера для шаблонизатора
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Существует множество шаблонизаторов, которые вы можете подключить или создать свой собственный. Первый шаг к использованию внешнего шаблонизатора — это создание адаптера для него.
 
-A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
-Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-instance that creates the engine adapter and the DI container used by the application.
+Адаптер шаблонизатора — это класс, который служит мостом :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` и самим шаблонизатором. Обычно необходимо реализовать всего два метода: _construct() и render(). В первый передаются экземпляр :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` и контейнер DI, используемый в приложении.
 
-The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it
-when it's necessary.
+Во второй — абсолютный путь к файлу представления и параметры, устанавливаемые с помощью $this->view->setVar(). Их можно использовать, как только в них появится необходимость.
 
 .. code-block:: php
 
@@ -750,19 +727,19 @@ when it's necessary.
     {
 
         /**
-         * Adapter constructor
+         * Конструктор адаптера
          *
          * @param \Phalcon\Mvc\View $view
          * @param \Phalcon\DI $di
          */
         public function __construct($view, $di)
         {
-            //Initiliaze here the adapter
+            // Инициализация адаптера
             parent::__construct($view, $di);
         }
 
         /**
-         * Renders a view using the template engine
+         * Отрисовывает представление с помощью шаблонизатора
          *
          * @param string $path
          * @param array $params
@@ -770,10 +747,10 @@ when it's necessary.
         public function render($path, $params)
         {
 
-            // Access view
+            // Доступ к view
             $view = $this->_view;
 
-            // Access options
+            // Доступ к настройкам
             $options = $this->_options;
 
             //Render the view
@@ -782,9 +759,9 @@ when it's necessary.
 
     }
 
-Changing the Template Engine
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can replace or add more a template engine from the controller as follows:
+Изменение шаблонизатора
+^^^^^^^^^^^^^^^^^^^^^^^
+Вы можете изменить или дополнить шаблонизатор из контроллера следующим образом:
 
 .. code-block:: php
 
@@ -795,7 +772,7 @@ You can replace or add more a template engine from the controller as follows:
 
         public function indexAction()
         {
-            // Set the engine
+            // Назначение шаблонизатора
             $this->view->registerEngines(
                 array(
                     ".my-html" => "MyTemplateAdapter"
@@ -805,7 +782,7 @@ You can replace or add more a template engine from the controller as follows:
 
         public function showAction()
         {
-            // Using more than one template engine
+            // Использование нескольких шаблонизаторов
             $this->view->registerEngines(
                 array(
                     ".my-html" => 'MyTemplateAdapter',
@@ -816,25 +793,22 @@ You can replace or add more a template engine from the controller as follows:
 
     }
 
-You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
-accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
-Template files related to the particular engine must have those extensions.
+Вы можете полностью заменить шаблонизатор или использовать несколько шаблонизаторов одновременно. Метод \Phalcon\\Mvc\\View::registerEngines() принимает в качестве параметра массив, в котором описываются данные шаблонизаторов. Ключами массива в этом случае будут расширения файлов, что помогает отличить их друг от друга. Файлы шаблонов, относящиеся к этим шаблонизаторам должны иметь соответствующие расширения.
 
-The order that the template engines are defined with \Phalcon\\Mvc\\View::registerEngines() defines the relevance of execution. If
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
+Порядок выполнения шаблонизаторов определяется порядком, в котором они описаны в \Phalcon\\Mvc\\View::registerEngines(). Если :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` обнаружит два представления с одинаковым именами, но разными расширениями, то он отрисует тот, который был указан первым.
 
-If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
+Если вы хотите зарегистрировать шаблонизатор или назначить его для любого запроса в приложении, вы можете сделать это при создании сервиса представления:
 
 .. code-block:: php
 
     <?php
 
-    //Setting up the view component
+    // Настройка компонента представления
     $di->set('view', function() {
 
         $view = new \Phalcon\Mvc\View();
 
-        //A trailing directory separator is required
+        // A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
@@ -845,15 +819,14 @@ If you want to register a template engine or a set of them for each request in t
 
     }, true);
 
-There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
+Адаптеры для некоторых шаблонизаторов можно найти здесь: `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_.
 
-Injecting services in View
---------------------------
-Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
-to the application's service container.
+Внедрение сервисов в Представление
+----------------------------------
+Каждое представление, исполняемое внутри экземпляра :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` получает простой доступ к сервисам приложения.
 
-The following example shows how to write a jQuery `ajax request`_ using a url with the framework conventions.
-The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
+Следующий пример демонстрирует как можно написать `ajax request`_ на jQuery используя url из фреймворка.
+Сервис "url" (обычно это :doc:`Phalcon\\Mvc\\Url <url>`) внедрён в представление и доступен как свойство с таким же именем:
 
 .. code-block:: html+php
 
@@ -868,9 +841,9 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
 
     </script>
 
-Stand-Alone Component
----------------------
-All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
+Отдельное использование компонента
+----------------------------------
+Все компоненты в Phalcon могут быть использованы по-отдельности благодаря их слабой связи друг с другом. Ниже приводится пример самостоятельного использования :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`:
 
 Hierarchical Rendering
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -885,22 +858,22 @@ Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode 
     //A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
-    // Passing variables to the views, these will be created as local variables
+    // Передача переменных в представление
     $view->setVar("someProducts", $products);
     $view->setVar("someFeatureEnabled", true);
 
-    //Start the output buffering
+    // Начало буферизации вывода
     $view->start();
 
-    //Render all the view hierarchy related to the view products/list.phtml
+    // Отрисовка всей иерархии представлений, связанной с products/list.phtml
     $view->render("products", "list");
 
-    //Finish the output buffering
+    // Конец буферизации вывода
     $view->finish();
 
     echo $view->getContent();
 
-A short syntax is also available:
+Так же доступен короткий синтаксис:
 
 .. code-block:: php
 
@@ -916,7 +889,7 @@ A short syntax is also available:
         function($view) {
             //Set any extra options here
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT);
+            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT)
         }
     );
 
@@ -942,27 +915,26 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
         'content' => $content
     ));
 
-View Events
------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
-events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning
-boolean false could stop the active operation. The following events are supported:
+События компонента представлений
+--------------------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` и :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` могут отправлять события :doc:`EventsManager <events>`, если последний представлен. Тип событий —  "view". Некоторые из них, возвращая булевое значение false могут остановить текущую операцию. Поддерживаются следующие события:
 
-+----------------------+------------------------------------------------------------+---------------------+
-| Event Name           | Triggered                                                  | Can stop operation? |
-+======================+============================================================+=====================+
-| beforeRender         | Triggered before starting the render process               | Yes                 |
-+----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Triggered before rendering an existing view                | Yes                 |
-+----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Triggered after rendering an existing view                 | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Triggered after completing the render process              | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
-| notFoundView         | Triggered when a view was not found                        | No                  |
-+----------------------+------------------------------------------------------------+---------------------+
++----------------------+------------------------------------------------------------+-------------------------------+
+| Названия события     | Условия срабатывания                                       | Могут ли остановить операцию? |
++======================+============================================================+===============================+
+| beforeRender         | Перед началом процесса отрисовки                           | Да                            |
++----------------------+------------------------------------------------------------+-------------------------------+
+| beforeRenderView     | Перед отрисовкой существующего представления               | Да                            |
++----------------------+------------------------------------------------------------+-------------------------------+
+| afterRenderView      | После отрисовки существующего представления                | Нет                           |
++----------------------+------------------------------------------------------------+-------------------------------+
+| afterRender          | После завершения процесса отрисовки                        | Нет                           |
++----------------------+------------------------------------------------------------+-------------------------------+
+| notFoundView         | Если представление не найдено                              | Нет                           |
++----------------------+------------------------------------------------------------+-------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+
+Пример ниже демонстрирует как назначить слушателей (listeners) для этого компонента:
 
 .. code-block:: php
 
@@ -970,10 +942,10 @@ The following example demonstrates how to attach listeners to this component:
 
     $di->set('view', function() {
 
-        //Create an events manager
+        // Создание обработчика событий
         $eventsManager = new Phalcon\Events\Manager();
 
-        //Attach a listener for type "view"
+        // Назначение слушателя для событий типа "view"
         $eventsManager->attach("view", function($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
@@ -981,14 +953,14 @@ The following example demonstrates how to attach listeners to this component:
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir("../app/views/");
 
-        //Bind the eventsManager to the view component
+        // Назначение обработчика событий для компонента представления
         $view->setEventsManager($eventsManager);
 
         return $view;
 
     }, true);
 
-The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
+Следующий пример показывает, как создать плагин, который очищает/исправляет HTML, сгенерированный с использованием Tidy_:
 
 .. code-block:: php
 
@@ -1015,7 +987,7 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 
     }
 
-    //Attach the plugin as a listener
+    // Назначение плагина в качестве слушателя
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php

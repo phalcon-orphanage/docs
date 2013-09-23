@@ -1,8 +1,8 @@
-Forms
+Формы
 =====
-Phalcon\\Forms is a component that aid the developer in the creation and maintenance of forms in web applications.
+Компонент Phalcon\\Forms позволяет создавать и управлять формами вашего приложения.
 
-The following example shows its basic usage:
+Ниже представлен базовый пример работы с формами:
 
 .. code-block:: php
 
@@ -23,47 +23,47 @@ The following example shows its basic usage:
         'C' => 'Cell'
     )));
 
-Forms can be rendered based on the form definition:
+Элементы форм выводятся по указанным при создании именам:
 
 .. code-block:: html+php
 
-    <h1>Contacts</h1>
+    <h1>Контакты</h1>
 
     <form method="post">
 
         <p>
-            <label>Name</label>
+            <label>Имя</label>
             <?php echo $form->render("name") ?>
         </p>
 
         <p>
-            <label>Telephone</label>
+            <label>Телефон</label>
             <?php echo $form->render("telephone") ?>
         </p>
 
         <p>
-            <label>Type</label>
+            <label>Тип телефона</label>
             <?php echo $form->render("telephoneType") ?>
         </p>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
 
     </form>
 
-Each element in the form can be rendered as required by the developer. Internally,
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is used to produce the right HTML for each element,
-you can pass additional html attributes as second parameter for render:
+Каждый элемент формы может быть настроен по желанию разработчика. Внутри компонент исполльзует возможности
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` для генерации HTML кода каждого документа, вы можете передавать дополнительные
+html-атрибуты вторым параметром:
 
 .. code-block:: html+php
 
     <p>
-        <label>Name</label>
-        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
+        <label>Имя</label>
+        <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Введите своё имя')) ?>
     </p>
 
-HTML Attributes also can be set in the element's definition:
+Аттрибуты HTML могут быть указаны в параметрах при создании элемента:
 
 .. code-block:: php
 
@@ -71,13 +71,14 @@ HTML Attributes also can be set in the element's definition:
 
     $form->add(new Text("name", array(
         'maxlength' => 30,
-        'placeholder' => 'Type your name'
+        'placeholder' => 'Введите своё имя'
     )));
 
-Initializing forms
-------------------
-As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form
-classes implementing the form in a separated file:
+
+Инициализация
+-------------
+Как уже говорилось ранее, формы могут быть инициализированы вне форм класса путем добавления элементов к нему. Вы можете повторно использовать
+код или организовать формы собранные из разных файлов:
 
 .. code-block:: php
 
@@ -101,8 +102,9 @@ classes implementing the form in a separated file:
         }
     }
 
-:doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`
-so you have access to the application services if needed:
+
+Формы :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` наследуются от :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`,
+предоставляя доступ к службам приложения, если это необходимо:
 
 .. code-block:: php
 
@@ -116,7 +118,7 @@ so you have access to the application services if needed:
     {
 
         /**
-         * This method returns the default value for field 'csrf'
+         * Этот метод возвращает значение по умолчанию для поля 'csrf'
          */
         public function getCsrf()
         {
@@ -126,18 +128,18 @@ so you have access to the application services if needed:
         public function initialize()
         {
 
-            //Set the same form as entity
+            // Установка сущности
             $this->setEntity($this);
 
-            //Add a text element to capture the 'email'
+            // Установка поля 'email'
             $this->add(new Text("email"));
 
-            //Add a text element to put a hidden csrf
+            // Добавление скрытого поля csrf
             $this->add(new Hidden("csrf"));
         }
     }
 
-The associated entity added to the form in the initialization and custom user options are passed to the form constructor:
+При инициализации формы в конструктор передаётся объект пользователя и другие параметры:
 
 .. code-block:: php
 
@@ -150,7 +152,7 @@ The associated entity added to the form in the initialization and custom user op
     class UsersForm extends Form
     {
         /**
-         * Forms initializer
+         * Инициализация формы
          *
          * @param Users $user
          * @param array $options
@@ -168,7 +170,7 @@ The associated entity added to the form in the initialization and custom user op
         }
     }
 
-In the form's instantiation you must use:
+Теперь можно использовать экземпляр формы:
 
 .. code-block:: php
 
@@ -176,10 +178,10 @@ In the form's instantiation you must use:
 
     $form = new UsersForm(new Users(), array('edit' => true));
 
-Validation
-----------
-Phalcon forms are integrated with the :doc:`validation <validation>` component to offer instant validation. Built-in or
-custom validators could be set to each element:
+Валидация
+---------
+Формы в Phalcon интегрированы с компонентом :doc:`валидации <validation>` для быстрой проверки введённых данных. Для каждого элемента формы можно
+устанавливать готовый или настраиваемый валидатор:
 
 .. code-block:: php
 
@@ -192,17 +194,17 @@ custom validators could be set to each element:
     $name = new Text("name");
 
     $name->addValidator(new PresenceOf(array(
-        'message' => 'The name is required'
+        'message' => 'Поле Name обязательно для заполнения'
     )));
 
     $name->addValidator(new StringLength(array(
         'min' => 10,
-        'messageMinimum' => 'The name is too short'
+        'messageMinimum' => 'Значение поля Name слишком короткое'
     )));
 
     $form->add($name);
 
-Then you can validate the form according to the input entered by the user:
+Затем вы сможете проверить правильность заполнения формы пользователем:
 
 .. code-block:: php
 
@@ -214,23 +216,24 @@ Then you can validate the form according to the input entered by the user:
         }
     }
 
-Validators are executed in the same order as they were registered.
+Валидаторы выполняются в порядке регистрации.
 
-By default messages generated by all the elements in the form are joined so they can be traversed using a single foreach,
-you can change this behavior to get the messages separated by the field:
+По умолчанию сообщения, генерируемые всеми элементами формы объединены, чтобы их можно было собрать одним проходом foreach,
+вы можете изменить это поведение, чтобы получить сообщения, разделенные по типам:
 
 .. code-block:: php
 
     <?php
 
     foreach ($form->getMessages(false) as $attribute => $messages) {
-        echo 'Messages generated by ', $attribute, ':', "\n";
+        echo 'Сообщение создано ', $attribute, ':', "\n";
         foreach ($messages as $message) {
             echo $message, '<br>';
         }
     }
 
-Or get specific messages for an element:
+
+Так же можно получить сообщения конкретного элемента:
 
 .. code-block:: php
 
@@ -240,18 +243,18 @@ Or get specific messages for an element:
         echo $message, '<br>';
     }
 
-Filtering
----------
-A form is also able to filter data before be validated, you can set filters in each element:
+
+Фильтрация
+----------
+Форма может фильтровать данные до валидации, вы можете установить фильтры в каждом из элементов:
 
 
-
-Setting User Options
---------------------
-Forms + Entities
+Настройка пользовательских параметров
+-------------------------------------
+Формы и сущности
 ----------------
-An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
-in the form's elements or assign the values from the form to the entity easily:
+Модели или коллекции являются такими сущностями, которые можно без проблем связать с формами, их значения в таком случае будут использоваться
+по умолчанию для соответствующих по именам значений элементов форм. Всё это делается очень легко:
 
 .. code-block:: php
 
@@ -265,13 +268,13 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+При отображении формы, если нет значений по умолчанию для элементов, будут использованы значения из сущностей:
 
 .. code-block:: html+php
 
     <?php echo $form->render('name') ?>
 
-You can validate the form and assign the values from the user input in the following way:
+Проверить введённые пользователем значения в форму можно следующим образом:
 
 .. code-block:: php
 
@@ -279,14 +282,14 @@ You can validate the form and assign the values from the user input in the follo
 
     $form->bind($_POST, $robot);
 
-    //Check if the form is valid
+    // Проверка правильности введённых данных формы
     if ($form->isValid()) {
 
-        //Save the entity
+        // Сохранение сущности
         $robot->save();
     }
 
-Setting up a plain class as entity also is possible:
+Установка обычного класса в качестве сущности тоже возможна:
 
 .. code-block:: php
 
@@ -301,7 +304,7 @@ Setting up a plain class as entity also is possible:
 
     }
 
-Using this class as entity, allows the form to take the default values from it:
+Использование данного класса в виде сущности позволяет форме брать из него значения по умолчанию:
 
 .. code-block:: php
 
@@ -321,8 +324,8 @@ Using this class as entity, allows the form to take the default values from it:
         'No' => 'No, thanks'
     )));
 
-Entities can implement getters, which have more precedence than public propierties, these methods
-give you more free to produce values:
+Сущности могут содержать геттеры, приоритет которых выше, чем у публичных свойств. Эти методы
+дают вам больше свободы для работы со значениями:
 
 .. code-block:: php
 
@@ -340,45 +343,45 @@ give you more free to produce values:
             return 'Europe/Amsterdam';
         }
 
-        public function getTimezone()
+        public function getReceiveEmails()
         {
             return 'No';
         }
 
     }
 
-Form Elements
+Элементы форм
 -------------
-Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\\Forms\\Element namespace:
+Phalcon предоставляет набор элементов для использования в ваших формах:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Description                                                                                                                                                      | Example                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| Text         | Generate INPUT[type=text] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Text>`                |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Password     | Generate INPUT[type=password] elements                                                                                                                           | :doc:`Example <../api/Phalcon_Forms_Element_Password>`            |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Select       | Generate SELECT tag (combo lists) elements based on choices                                                                                                      | :doc:`Example <../api/Phalcon_Forms_Element_Select>`              |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Check        | Generate INPUT[type=check] elements                                                                                                                              | :doc:`Example <../api/Phalcon_Forms_Element_Check>`               |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Textarea     | Generate TEXTAREA elements                                                                                                                                       | :doc:`Example <../api/Phalcon_Forms_Element_TextArea>`            |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Hidden       | Generate INPUT[type=hidden] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Hidden>`              |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| File         | Generate INPUT[type=file] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_File>`                |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Date         | Generate INPUT[type=date] elements                                                                                                                               | :doc:`Example <../api/Phalcon_Forms_Element_Date>`                |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numeric      | Generate INPUT[type=number] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Numeric>`             |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Submit       | Generate INPUT[type=submit] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Название     | Описание                                                          | Пример использования                                    |
++==============+===================================================================+=========================================================+
+| Text         | Генерирует элемент INPUT[type=text]                               | :doc:`Пример <../api/Phalcon_Forms_Element_Text>`       |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Password     | Генерирует элемент INPUT[type=password]                           | :doc:`Пример <../api/Phalcon_Forms_Element_Password>`   |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Select       | Генерирует элемент раскрывающегося списка SELECT                  | :doc:`Пример <../api/Phalcon_Forms_Element_Select>`     |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Check        | Генерирует элемент INPUT[type=check]                              | :doc:`Пример <../api/Phalcon_Forms_Element_Check>`      |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Textarea     | Генерирует элемент TEXTAREA                                       | :doc:`Пример <../api/Phalcon_Forms_Element_TextArea>`   |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Hidden       | Генерирует элемент INPUT[type=hidden]                             | :doc:`Пример <../api/Phalcon_Forms_Element_Hidden>`     |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| File         | Генерирует элемент INPUT[type=file]                               | :doc:`Пример <../api/Phalcon_Forms_Element_File>`       |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Date         | Генерирует элемент INPUT[type=date]                               | :doc:`Пример <../api/Phalcon_Forms_Element_Date>`       |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Numeric      | Генерирует элемент INPUT[type=number]                             | :doc:`Пример <../api/Phalcon_Forms_Element_Numeric>`    |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
+| Submit       | Генерирует элемент INPUT[type=submit]                             | :doc:`Пример <../api/Phalcon_Forms_Element_Submit>`     |
++--------------+-------------------------------------------------------------------+---------------------------------------------------------+
 
-Event Callbacks
----------------
-Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
-in the form's class to perform pre-validations and post-validations:
+Дополнительные условия
+----------------------
+Когда формы реализованы в виде классов, в них могут быть определены функции обратного вызова:
+beforeValidation и afterValidation. Данные методы позволяют осуществлять проверки до и после валидации соответственно:
 
 .. code-block:: html+php
 
@@ -392,9 +395,9 @@ in the form's class to perform pre-validations and post-validations:
         }
     }
 
-Rendering Forms
----------------
-You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
+Отрисовка форм
+--------------
+Вы можете гибко отрисовывать формы. Данный пример показывает, как отрисовать каждый элемент, используя стандартную процедуру:
 
 .. code-block:: html+php
 
@@ -402,14 +405,14 @@ You can render the form with total flexibility, the following example shows how 
 
     <form method="post">
         <?php
-            //Traverse the form
+            // Проходим через форму
             foreach ($form as $element) {
 
-                //Get any generated messages for the current element
+                // Собираем все сгенерированные сообщения для текущего элемента
                 $messages = $form->getMessagesFor($element->getName());
 
                 if (count($messages)) {
-                    //Print each element
+                    // Выводим каждый элемент
                     echo '<div class="messages">';
                     foreach ($messages as $message) {
                         echo $message;
@@ -427,7 +430,7 @@ You can render the form with total flexibility, the following example shows how 
         <input type="submit" value="Send"/>
     </form>
 
-Or reuse the logic in your form class:
+Или повторно использовать логику в классе формы:
 
 .. code-block:: php
 
@@ -444,11 +447,11 @@ Or reuse the logic in your form class:
         {
             $element = $this->get($name);
 
-            //Get any generated messages for the current element
+            // Собираем все сгенерированные сообщения для текущего элемента
             $messages = $this->getMessagesFor($element->getName());
 
             if (count($messages)) {
-                //Print each element
+                // Выводим каждый элемент
                 echo '<div class="messages">';
                 foreach ($messages as $message) {
                     echo $this->flash->error($message);
@@ -464,7 +467,7 @@ Or reuse the logic in your form class:
 
     }
 
-In the view:
+В представлении:
 
 .. code-block:: php
 
@@ -474,9 +477,9 @@ In the view:
 
     echo $element->renderDecorated('telephone');
 
-Creating Form Elements
-----------------------
-In addition to the form elements provided by Phalcon you can create your own custom elements:
+Создание элементов форм
+-----------------------
+В дополнение к элементам форм, которые предоставляет Phalcon, вы можете создавать свои собственные элементы:
 
 .. code-block:: php
 
@@ -488,14 +491,15 @@ In addition to the form elements provided by Phalcon you can create your own cus
     {
         public function render($attributes=null)
         {
-            $html = //... produce some html
+            $html = //... немного html-кода
             return $html;
         }
     }
 
-Forms Manager
+Менеджер форм
 -------------
-This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
+Этот компонент предоставляет доступ к менеджеру форм, который может быть использован разработчиком для регистрации форм
+и доступа к ним через локатор сервисов:
 
 .. code-block:: php
 
@@ -503,9 +507,9 @@ This component provides a forms manager that can be used by the developer to reg
 
     $di['forms'] = function() {
         return new Phalcon\Forms\Manager();
-    };
+    }
 
-Forms are added to the forms manager and referenced by a unique name:
+Формы добавляются к менеджеру форм и в дальнейшем могут быть доступны через уникальное имя:
 
 .. code-block:: php
 
@@ -513,7 +517,7 @@ Forms are added to the forms manager and referenced by a unique name:
 
     $this->forms->set('login', new LoginForm());
 
-Using the unique name, forms can be accesed in any part of the application:
+С помощью уникального имени формы могут быть доступны в любой части приложения:
 
 .. code-block:: php
 
@@ -521,6 +525,6 @@ Using the unique name, forms can be accesed in any part of the application:
 
     echo $this->forms->get('login')->render();
 
-External Resources
-------------------
-* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]
+Внешние источники
+-----------------
+* `Vökuró <http://vokuro.phalconphp.com>`_, простое приложение, которое использует конструктор форм для создания форм в приложении, [`Github <https://github.com/phalcon/vokuro>`_]

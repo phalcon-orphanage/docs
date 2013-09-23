@@ -31,7 +31,7 @@ Reads meta-data for certain model using a MODEL_* constant
 
 
 
-abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data)
+abstract public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *int* $index, *mixed* $data, *unknown* $replace)
 
 Writes meta-data for certain model using a MODEL_* constant
 
@@ -109,13 +109,13 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-abstract public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+abstract public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace)
 
 Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-abstract public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+abstract public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace)
 
 Set the attributes that must be ignored from the UPDATE SQL generation
 

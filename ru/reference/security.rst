@@ -1,20 +1,19 @@
-Security
-========
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
+Безопасность
+============
+Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery (CSRF).
 
-Password Hashing
-----------------
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user
-accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods
-“md5_” and “sha1_”. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable
-to brute force attacks. These attacks are also known as `rainbow tables`_.
+Хеширование паролей
+-------------------
+Хранение паролей в открытом виде является плохой практикой. Любой, кто имеет доступ к базе данных, мгновенно получит доступ ко всем пользовательским
+аккаунтам и, таким образом, получает возможность производить неавторизованные действия. Для противостояния этому, многие приложения используют знакомые методы
+одностороннего хеширования вроде "md5_" и "sha1_". Однако аппаратное обеспечение развивается с каждым днем, становится быстрее, и эти алгоритмы становятся уязвимы
+к атакам методом перебора. Данные атаки также известны как "радужные таблицы" (`rainbow tables`_).
 
-To solve this problem we can use hash algorithms as bcrypt_. Why bcrypt? Thanks to its “Eksblowfish_” key setup algorithm
-we can make the password encryption as “slow” as we want. Slow algorithms make the process to calculate the real
-password behind a hash extremely difficult if not impossible. This will protect your for a long time from a
-possible attack using rainbow tables.
+Для решения этой проблемы, мы можем использовать такие алгоритмы хеширования, как bcrypt_. Почему bcrypt? Благодаря алгоритму установки ключа “Eksblowfish_”
+мы можем сделать шифрование пароля настолько "медленным", насколько мы этого захотим. Медленные алгоритмы делают процесс вычисления настоящего
+пароля, скрытого за хешем, крайне сложным, если не невозможным. Это защитит вас на долгое время от возможных атак с использованием радужных таблиц.
 
-This component gives you the ability to use this algorithm in a simple way:
+Этот компонент дает вам возможность простым способом использовать данный алгоритм:
 
 .. code-block:: php
 
@@ -23,79 +22,80 @@ This component gives you the ability to use this algorithm in a simple way:
     use Phalcon\Mvc\Controller;
 
     class UsersController extends Controller
-    {
-
-        public function registerAction()
         {
 
-            $user = new Users();
+            public function registerAction()
+            {
 
-            $login = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+                $user = new Users();
 
-            $user->login = $login;
+                $login = $this->request->getPost('login');
+                $password = $this->request->getPost('password');
 
-            //Store the password hashed
-            $user->password = $this->security->hash($password);
+                $user->login = $login;
 
-            $user->save();
+                //Сохраняем пароль хешированным
+                $user->password = $this->security->hash($password);
+
+                $user->save();
+            }
+
         }
 
-    }
-
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as
-its encryption will be slow. We can check if the password is correct as follows:
+Мы сохранили пароль хешированным с коэффициентом хеширования по-умолчанию. Более высокий коэффициент хеширования сделает пароль менее уязвимым, так как
+его шифрование будет медленным. Мы можем проверить правильность пароля следующим способом:
 
 .. code-block:: php
-
-    <?php
 
     use Phalcon\Mvc\Controller;
 
     class SessionController extends Controller
-    {
-
-        public function loginAction()
         {
 
-            $login = $this->request->getPost('login');
-            $password = $this->request->getPost('password');
+            public function loginAction()
+            {
 
-            $user = Users::findFirstByLogin($login);
-            if ($user) {
-                if ($this->security->checkHash($password, $user->password)) {
-                    //The password is valid
+                $login = $this->request->getPost('login');
+                $password = $this->request->getPost('password');
+
+                $user = Users::findFirst(array(
+                    "login = ?0",
+                    "bind" => array($login)
+                ));
+                if ($user) {
+                    if ($this->security->checkHash($password, $user->password)) {
+                        //Пароль верный
+                    }
                 }
+
+                //неудачная проверка
             }
 
-            //The validation has failed
         }
 
-    }
+Соль генерируется с использованием псевдослучайных байтов функции PHP openssl_random_pseudo_bytes_, поэтому необходимо, чтобы расширение openssl_ было загружено.
 
-The salt is generated using pseudo-random bytes with the PHP's function openssl_random_pseudo_bytes_ so is required to have the openssl_ extension loaded.
+Защита от Cross-Site Request Forgery (CSRF)
+-------------------------------------------
+Это один из других видов атак на веб-сайты и приложения. Формы, созданные для выполнения таких задач, как регистрация или добавление комментариев,
+уязвимы для этих атак.
 
-Cross-Site Request Forgery (CSRF) protection
---------------------------------------------
-This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments
-are vulnerable to this attack.
-
-The idea is to prevent the form values from being sent outside our application. To fix this, we generate a `random nonce`_ (token) in each
-form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored
-token in the session to the one submitted by the form:
+Основной идеей является предотвращение отправления значений формы куда-либо вне нашего приложения. Чтобы это сделать, мы генерируем токен (`nonce`_)
+для каждой формы, добавляем этот токен в сессию, а после, как только форма возвращает данные нашему приложению, проверяем токен, сравнивая присланный формой
+токен с его сохраненным значением в сессии:
 
 .. code-block:: html+php
 
-    <?php echo Tag::form('session/login') ?>
+        <?php echo Tag::form('session/login') ?>
 
-        <!-- login and password inputs ... -->
+            <!-- поля логина и пароля ... -->
 
-        <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
-            value="<?php echo $this->security->getToken() ?>"/>
+            <input type="hidden" name="<?php echo $this->security->getTokenKey() ?>"
+                value="<?php echo $this->security->getToken() ?>"/>
 
-    </form>
+        </form>
 
-Then in the controller's action you can check if the CSRF token is valid:
+После этого, в действии контроллера вы можете проверить CSRF-токен на правильность:
 
 .. code-block:: php
 
@@ -104,51 +104,50 @@ Then in the controller's action you can check if the CSRF token is valid:
     use Phalcon\Mvc\Controller;
 
     class SessionController extends Controller
-    {
-
-        public function loginAction()
         {
-            if ($this->request->isPost()) {
-                if ($this->security->checkToken()) {
-                    //The token is ok
+
+            public function loginAction()
+            {
+                if ($this->request->isPost()) {
+                    if ($this->security->checkToken()) {
+                        //Токен верный
+                    }
                 }
             }
+
         }
 
-    }
+Также рекомендуется добавление каптчи (captcha_) в форму, чтобы полностью избежать рисков от этого типа атак.
 
-Adding a captcha_ to the form is also recommended to completely avoid the risks of this attack.
-
-Setting up the component
-------------------------
-This component is automatically registered in the services container as 'security', you can re-register it
-to setup it's options:
+Настройка компонента
+--------------------
+Компонент автоматически регистрируется в контейнере сервисов под названием 'security', вы можете его перерегистрировать
+для настройки параметров:
 
 .. code-block:: php
 
-    <?php
+        <?php
 
-    $di->set('security', function(){
+        $di->set('security', function(){
 
-        $security = new Phalcon\Security();
+            $security = new Phalcon\Security();
 
-        //Set the password hashing factor to 12 rounds
-        $security->setWorkFactor(12);
+            //Устанавливаем фактор хеширования в 12 раундов
+            $security->setWorkFactor(12);
 
-        return $security;
-    }, true);
+            return $security;
+        }, true);
 
-External Resources
-------------------
-* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
+Внешние источники
+-----------------
+* `Vökuró <http://vokuro.phalconphp.com>`_, пример приложения с использованием Security для избежание CSRF и хешированием паролей [`Github <https://github.com/phalcon/vokuro>`_]
 
-.. _sha1 : http://php.net/manual/en/function.sha1.php
-.. _md5 : http://php.net/manual/en/function.md5.php
-.. _openssl_random_pseudo_bytes : http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
-.. _openssl : http://php.net/manual/en/book.openssl.php
+.. _sha1 : http://php.net/manual/ru/function.sha1.php
+.. _md5 : http://php.net/manual/ru/function.md5.php
+.. _openssl_random_pseudo_bytes : http://php.net/manual/ru/function.openssl-random-pseudo-bytes.php
+.. _openssl : http://php.net/manual/ru/book.openssl.php
 .. _captcha : http://www.google.com/recaptcha
-.. _`random nonce`: http://en.wikipedia.org/wiki/Cryptographic_nonce
-.. _bcrypt : http://en.wikipedia.org/wiki/Bcrypt
-.. _Eksblowfish : http://en.wikipedia.org/wiki/Bcrypt#Algorithm
-
-.. _`rainbow tables`: http://en.wikipedia.org/wiki/Rainbow_table
+.. _`nonce`: http://ru.wikipedia.org/wiki/Nonce
+.. _bcrypt : http://ru.wikipedia.org/wiki/Bcrypt
+.. _Eksblowfish : http://ru.wikipedia.org/wiki/Bcrypt#.D0.90.D0.BB.D0.B3.D0.BE.D1.80.D0.B8.D1.82.D0.BC
+.. _`rainbow tables`: http://ru.wikipedia.org/wiki/Rainbow_table

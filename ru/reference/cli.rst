@@ -1,6 +1,6 @@
-Command Line Applications
-=========================
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Консольные приложения
+=====================
+CLI приложения выполняются в командной строке. Они часто используются для работы cron'a, скриптов с долгим временем выполнения, командных утилит и т.п.
 
 Structure
 ---------
@@ -20,19 +20,19 @@ Below is a sample boostrap that is being used for this example.
 .. code-block:: php
 
    <?php
-    
+
     use Phalcon\DI\FactoryDefault\CLI as CliDI,
         Phalcon\CLI\Console as ConsoleApp;
-    
+
     define('VERSION', '1.0.0');
-    
+
     //Using the CLI factory default services container
     $di = new CliDI();
-    
+
     // Define path to application directory
     defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
-    
+
     /**
      * Register the autoloader and tell it to register the tasks directory
      */
@@ -43,23 +43,23 @@ Below is a sample boostrap that is being used for this example.
         )
     );
     $loader->register();
-    
-    // Load the configuration file (if any) 
+
+    // Load the configuration file (if any)
     if(is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
-    }    
-    
+    }
+
     //Create a console application
     $console = new ConsoleApp();
     $console->setDI($di);
-    
+
     /**
     * Process the console arguments
     */
     $arguments = array();
     $params = array();
-    
+
     foreach($argv as $k => $arg) {
         if($k == 1) {
             $arguments['task'] = $arg;
@@ -76,7 +76,7 @@ Below is a sample boostrap that is being used for this example.
     // define global constants for the current task and action
     define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));
     define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
-    
+
     try {
         // handle incoming arguments
         $console->handle($arguments);
@@ -91,10 +91,10 @@ This piece of code can be run using:
 .. code-block:: bash
 
     $ php app/cli.php
-   
+
     This is the default task and the default action
-    
-    
+
+
 Tasks
 -----
 Tasks work similar to controllers. Any CLI application needs at least a mainTask and a mainAction and every task needs
@@ -133,7 +133,7 @@ If you run the the application with the following parameters and action:
         public function mainAction() {
              echo "\nThis is the default task and the default action \n";
         }
-        
+
         /**
         * @param array $params
         */
@@ -146,10 +146,10 @@ If you run the the application with the following parameters and action:
 .. code-block:: bash
 
    $ php app/cli.php main test world universe
-   
+
    hello world
    best regards, universe
-    
+
 
 Running tasks in a chain
 ------------------------
@@ -157,35 +157,35 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 to the DI:
 
 .. code-block:: php
-    
+
      $di->setShared('console', $console);
-     
+
      try {
         // handle incoming arguments
         $console->handle($arguments);
     }
-    
+
 Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 .. code-block:: php
 
-    
+
     class MainTask extends \Phalcon\CLI\Task {
-    
+
         public function mainAction() {
             echo "\nThis is the default task and the default action \n";
-    
+
             $this->console->handle(array(
                'task' => 'main',
                'action' => 'test'
             ));
         }
-    
+
         public function testAction() {
             echo '\nI will get printed too!\n';
         }
 
     }
-    
+
 However, it's a better idea to extend \\Phalcon\\CLI\\Task and implement this kind of logic there.
 

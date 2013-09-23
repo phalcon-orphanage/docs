@@ -1,32 +1,31 @@
-The MVC Architecture
-====================
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture
-(often referred to as MVC_) in your application. This design pattern is widely used by other web frameworks
-and desktop applications.
+Архитектура MVC
+===============
+Phalcon поддерживает использование парадигмы объектно-ориентированного программирования и поддержку классов необходимых для разделения на Model, View,
+Controller ( кратко MVC_).
+Этот шаблон проектирования активно используется в других web и desktop платформах.
 
-MVC benefits include:
+Преимущества MVC:
+* Отделение бизнес-логики от пользовательского интерфейса и работы с базой данных
+* Позволяет распологать разные части в разных местах, что благоприятно сказывается на поддержке и обслуживании
 
-* Isolation of business logic from the user interface and the database layer
-* Making it clear where different types of code belong for easier maintenance
+Если вы выберите MVC, все запросы будут выполнятся по MVC_ архитектуре. Phalcon поддерживает MVC своими классами написаными на C, что позволяет работать с
+повышенной производительностью.
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC_ architecture.
-Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
-Models
-------
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for
-managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond
-to one model in your application. The bulk of your application's business logic will be concentrated in the models. :doc:`Learn more <models>`
+Модель ( Models )
+-----------------
+Модель отвечает за информацию (данные) приложения и правила управления этими данными. Модели в основном используется для управления соответствующей таблицой
+базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в базе данных будет соответствовать одной модели в вашем приложении. Основная
+часть бизнес-логики приложения будет сосредоточена в моделях. :doc:`Подробнее про модель <models>`
 
-Views
------
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks
-related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
-is used to make requests from your application. :doc:`Learn more <views>`
+Представление ( Views )
+-----------------------
+Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно вывода данных. Этот слой
+отвечает за вывод данных в веб-браузер или другой инструмент который обращается к вашему приложению. :doc:`Подробнее про представление <views>`
 
-Controllers
------------
-The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests
-from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
+Контроллер ( Controllers )
+--------------------------
+Контроллеры обеспечивают обмен данными между моделью и представлением. Контроллеры отвечают за обработку входящих запросов от веб-браузера, запрашивают данные
+у модели и передают эти данные в предсталвение для вывода. :doc:`Подробнее про контроллер <controllers>`
 
 .. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
