@@ -188,7 +188,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content, [*int* $jsonOptions])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content, [*unknown* $jsonOptions])
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -197,7 +197,9 @@ Sets HTTP response body. The parameter is automatically converted to JSON
     <?php
 
     $response->setJsonContent(array("status" => "OK"));
+    $response->setJsonContent(array("status" => "OK"), JSON_NUMERIC_CHECK);
 
+*
 
 
 

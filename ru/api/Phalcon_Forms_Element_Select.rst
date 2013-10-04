@@ -155,7 +155,7 @@ Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** (*string* $label) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** ([*string* $label]) inherited from Phalcon\\Forms\\Element
 
 Sets the element label
 
@@ -167,7 +167,7 @@ Returns the element's label
 
 
 
-public *string*  **label** () inherited from Phalcon\\Forms\\Element
+public *string*  **label** (*unknown* $attributes) inherited from Phalcon\\Forms\\Element
 
 Generate the HTML to label the element
 
@@ -223,7 +223,7 @@ Clears every element in the form to its default value
 
 public *string*  **__toString** () inherited from Phalcon\\Forms\\Element
 
-Magic method __toString renders the widget without atttributes
+Magic method __toString renders the widget without attributes
 
 
 

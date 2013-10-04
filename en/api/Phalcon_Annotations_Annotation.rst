@@ -49,25 +49,25 @@ Returns an argument in a specific position
 
 
 
-public *mixed*  **hasArgument** (*unknown* $position)
+public *bool*  **hasArgument** (*unknown* $position)
 
-Returns an argument in a specific position
+Checks if the annotation has a specific argument
 
 
 
-public *mixed*  **getNamedArgument** (*string* $name)
+public *mixed*  **getNamedArgument** (*unknown* $position)
 
 Returns a named argument
 
 
 
-public *mixed*  **getNamedParameter** (*string* $name)
+public *mixed*  **getNamedParameter** (*unknown* $position)
 
 Returns a named argument (deprecated)
 
 
 
-public *boolean*  **hasNamedArgument** (*unknown* $name)
+public *boolean*  **hasNamedArgument** (*unknown* $position)
 
 Checks if the annotation has a specific named argument
 

@@ -20,7 +20,8 @@ Encapsulates validation info generated before save/delete records fails
             $text = "A robot cannot be named Peter";
             $field = "name";
             $type = "InvalidValue";
-            $message = new Message($text, $field, $type);
+            $code = 103;
+            $message = new Message($text, $field, $type, $code);
             $this->appendMessage($message);
          }
        }
@@ -32,7 +33,7 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 ---------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
+public  **__construct** (*string* $message, [*string* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model], [*unknown* $code])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
@@ -47,6 +48,18 @@ Sets message type
 public *string*  **getType** ()
 
 Returns message type
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Message <Phalcon_Mvc_Model_Message>`  **setCode** (*string* $code)
+
+Sets message code
+
+
+
+public *string*  **getCode** ()
+
+Returns message code
 
 
 

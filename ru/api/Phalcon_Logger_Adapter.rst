@@ -25,6 +25,12 @@ Sets the message formatter
 
 
 
+public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **isTransaction** ()
+
+Returns the current transaction
+
+
+
 public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **begin** ()
 
 Starts a transaction

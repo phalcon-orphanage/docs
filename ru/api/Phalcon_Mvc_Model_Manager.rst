@@ -341,7 +341,7 @@ Creates a Phalcon\\Mvc\\Model\\Query without execute it
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **executeQuery** (*string* $phql, [*array* $placeholders])
+public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **executeQuery** (*string* $phql, [*array* $placeholders], [*unknown* $types])
 
 Creates a Phalcon\\Mvc\\Model\\Query and execute it
 

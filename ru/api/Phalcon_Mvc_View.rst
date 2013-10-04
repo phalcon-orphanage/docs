@@ -112,6 +112,18 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 
 
+public *int*  **getCurrentRenderLevel** ()
+
+Returns the render level for the view
+
+
+
+public *int*  **getRenderLevel** ()
+
+Returns the render level for the view
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setRenderLevel** (*string* $level)
 
 Sets the render level for the view 
@@ -137,6 +149,12 @@ Disables a specific level of rendering
      //Render all levels except ACTION level
      $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
 
+
+
+
+public *array*  **getDisabledLevels** ()
+
+Returns an array with disabled render levels
 
 
 
@@ -453,6 +471,12 @@ Enables the auto-rendering process
 
 
 
+public *bool*  **isDisabled** ()
+
+Whether automatic rendering is enabled
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **reset** ()
 
 Resets the view component to its factory default values
@@ -481,6 +505,19 @@ Magic method to retrieve a variable passed to the view
     <?php
 
     echo $this->view->products;
+
+
+
+
+public *mixed*  **__isset** (*string* $key)
+
+Magic method to inaccessible a variable passed to the view 
+
+.. code-block:: php
+
+    <?php
+
+    isset($this->view->products)
 
 
 

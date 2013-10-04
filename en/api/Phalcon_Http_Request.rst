@@ -33,7 +33,7 @@ Returns the internal dependency injector
 
 
 
-public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned 
 
@@ -50,7 +50,7 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed. If no
 
 
 
-public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
 
 Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned 
 
@@ -67,7 +67,7 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
-public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
 
@@ -186,6 +186,12 @@ Gets most possible client IPv4 Address. This method search in $_SERVER['REMOTE_A
 public *string*  **getMethod** ()
 
 Gets HTTP method which request has been made
+
+
+
+public *string*  **getURI** ()
+
+Gets HTTP URI which request has been made
 
 
 
@@ -312,6 +318,18 @@ Gets languages array and their quality accepted by the browser/client from $_SER
 public *string*  **getBestLanguage** ()
 
 Gets best language accepted by the browser/client from $_SERVER['HTTP_ACCEPT_LANGUAGE']
+
+
+
+public *array*  **getBasicAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_USER']
+
+
+
+public *array*  **getDigestAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_DIGEST']
 
 
 

@@ -83,7 +83,7 @@ Validates the form
 
 
 
-public *array*  **getMessages** ([*boolean* $byItemName])
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** ([*boolean* $byItemName])
 
 Returns the messages generated in the validation
 
@@ -119,7 +119,7 @@ Returns an element added to the form by its name
 
 
 
-public *string*  **label** (*string* $name)
+public *string*  **label** (*string* $name, [*unknown* $attributes])
 
 Generate the label of a element added to the form including HTML
 

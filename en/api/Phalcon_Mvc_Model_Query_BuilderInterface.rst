@@ -13,6 +13,16 @@ Phalcon\\Mvc\\Model\\Query\\Builder
 
 
 
+abstract public  **distinct** (*unknown* $distinct)
+
+...
+
+
+abstract public  **getDistinct** ()
+
+...
+
+
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **columns** (*string|array* $columns)
 
 Sets the columns to be queried

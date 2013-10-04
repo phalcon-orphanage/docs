@@ -146,6 +146,11 @@ Returns a processed group clause for a SELECT statement
 
 
 
+protected  **_getLimitClause** ()
+
+...
+
+
 protected *array*  **_prepareSelect** ()
 
 Analyzes a SELECT intermediate code and produces an array to be executed later

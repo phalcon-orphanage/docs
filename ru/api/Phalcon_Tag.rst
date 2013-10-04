@@ -40,7 +40,7 @@ Sets the dependency injector container.
 
 public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
-Internally gets the request dispatcher
+Internally gets the dependency injector
 
 
 
@@ -53,6 +53,12 @@ Return a URL service from the default DI
 public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
+
+
+
+public static *bool*  **getAutoescape** ()
+
+Get current autoescape mode
 
 
 
@@ -147,6 +153,12 @@ Builds INPUT tags that implements the checked attribute
 
 
 
+public static *string*  **colorField** (*array* $parameters)
+
+Builds a HTML input[type="color"] tag
+
+
+
 public static *string*  **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
@@ -170,6 +182,12 @@ Builds a HTML input[type="number"] tag
 
     echo Phalcon\Tag::numericField(array("price", "min" => "1", "max" => "5"));
 
+
+
+
+public static *string*  **rangeField** (*array* $parameters)
+
+Builds a HTML input[type="range"] tag
 
 
 
@@ -199,6 +217,36 @@ Builds a HTML input[type="date"] tag
 
 
 
+public static *string*  **dateTimeField** (*array* $parameters)
+
+Builds a HTML input[type="datetime"] tag
+
+
+
+public static *string*  **dateTimeLocalField** (*array* $parameters)
+
+Builds a HTML input[type="datetime-local"] tag
+
+
+
+public static *string*  **monthField** (*array* $parameters)
+
+Builds a HTML input[type="month"] tag
+
+
+
+public static *string*  **timeField** (*array* $parameters)
+
+Builds a HTML input[type="time"] tag
+
+
+
+public static *string*  **weekField** (*array* $parameters)
+
+Builds a HTML input[type="week"] tag
+
+
+
 public static *string*  **passwordField** (*array* $parameters)
 
 Builds a HTML input[type="password"] tag 
@@ -222,6 +270,24 @@ Builds a HTML input[type="hidden"] tag
 
      echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"));
 
+
+
+
+public static *string*  **searchField** (*array* $parameters)
+
+Builds a HTML input[type="search"] tag
+
+
+
+public static *string*  **telField** (*array* $parameters)
+
+Builds a HTML input[type="tel"] tag
+
+
+
+public static *string*  **urlField** (*array* $parameters)
+
+Builds a HTML input[type="url"] tag
 
 
 

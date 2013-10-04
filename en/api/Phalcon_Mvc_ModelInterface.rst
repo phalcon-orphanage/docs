@@ -169,7 +169,7 @@ Check whether validation process has generated any messages
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+abstract public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ([*unknown* $filter])
 
 Returns all the validation messages
 

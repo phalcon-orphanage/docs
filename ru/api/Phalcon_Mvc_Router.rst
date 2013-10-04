@@ -84,9 +84,21 @@ Sets the name of the default namespace
 
 
 
+public *string*  **getDefaultNamespace** ()
+
+Returns the name of the default namespace
+
+
+
 public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultModule** (*string* $moduleName)
 
 Sets the name of the default module
+
+
+
+public *string*  **getDefaultModule** ()
+
+Returns the name of the default module
 
 
 
@@ -96,9 +108,21 @@ Sets the default controller name
 
 
 
+public *string*  **getDefaultController** ()
+
+Returns the default controller name
+
+
+
 public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
+
+
+
+public *string*  **getDefaultAction** ()
+
+Returns the default action name
 
 
 
@@ -115,6 +139,12 @@ Sets an array of default paths. If a route is missing a path the router will use
     	'action' => 'index'
      ));
 
+
+
+
+public *array*  **getDefaults** ()
+
+Returns an array of default paths
 
 
 
@@ -272,10 +302,5 @@ public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRoute
 
 Returns a route object by its name
 
-
-
-public  **isExactControllerName** ()
-
-...
 
 

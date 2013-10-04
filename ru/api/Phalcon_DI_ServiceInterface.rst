@@ -43,6 +43,11 @@ Returns the service definition
 
 
 
+abstract public  **isResolved** ()
+
+...
+
+
 abstract public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service

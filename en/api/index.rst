@@ -39,6 +39,7 @@ API Indice
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
+   Phalcon_Cache_Backend_Libmemcached
    Phalcon_Cache_Backend_Memcache
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
@@ -122,6 +123,11 @@ API Indice
    Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
+   Phalcon_Image
+   Phalcon_Image_Adapter
+   Phalcon_Image_Adapter_GD
+   Phalcon_Image_Adapter_Imagick
+   Phalcon_Image_Exception
    Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
@@ -276,6 +282,7 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_CookiesInterface
    Phalcon_Http_Response_HeadersInterface
+   Phalcon_Image_AdapterInterface
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface

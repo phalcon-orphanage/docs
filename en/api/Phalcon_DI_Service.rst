@@ -81,6 +81,12 @@ Returns a parameter in a specific position
 
 
 
+public *bool*  **isResolved** ()
+
+Returns true if the service was resolved
+
+
+
 public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** (*array* $attributes)
 
 Restore the internal state of a service

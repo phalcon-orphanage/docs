@@ -24,13 +24,7 @@ Groups Micro-Mvc handlers as controllers
 Methods
 ---------
 
-protected  **_addMap** ()
-
-Internal function to add a handler to the group
-
-
-
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setPrefix** (*string* $prefix)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **setPrefix** (*string* $prefix)
 
 Sets a prefix for all routes added to the collection
 
@@ -48,13 +42,13 @@ Returns the registered handlers
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setHandler** (*mixed* $handler, [*boolean* $lazy])
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
 Sets the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setLazy** (*boolean* $lazy)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **setLazy** (*boolean* $lazy)
 
 Sets if the main handler must be lazy loaded
 
@@ -72,49 +66,49 @@ Returns the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **map** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **map** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **get** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **get** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **post** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **post** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **put** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **put** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **patch** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **patch** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **head** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **head** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **delete** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **delete** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **options** (*string* $routePattern, *callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **options** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
