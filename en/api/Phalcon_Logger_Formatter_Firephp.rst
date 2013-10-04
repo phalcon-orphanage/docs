@@ -17,6 +17,16 @@ Returns the string meaning of a logger constant
 
 
 
+public  **getShowBacktrace** ()
+
+...
+
+
+public  **setShowBacktrace** ([*unknown* $show])
+
+...
+
+
 public *string*  **format** (*string* $message, *int* $type, *int* $timestamp)
 
 Applies a format to a message before sending it to the log

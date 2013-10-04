@@ -40,7 +40,7 @@ Sets the dependency injector container.
 
 public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
-Internally gets the request dispatcher
+Internally gets the dependency injector
 
 
 
@@ -53,6 +53,12 @@ Return a URL service from the default DI
 public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
+
+
+
+public static *bool*  **getAutoescape** ()
+
+Get current autoescape mode
 
 
 
