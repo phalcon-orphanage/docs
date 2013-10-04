@@ -1,18 +1,19 @@
-Internationalization
-====================
-Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
-Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
+Интернационализация
+===================
+Phalcon является расширением для PHP, написанным на языке C. Существует PECL_-расширение intl_, которое предоставляет функции, обеспечивающие
+поддержку интернационализации в PHP.
+Начиная с PHP 5.4/5.5, это расширение поставляется вместе с PHP. Документация по нему может быть найдена на страницах официального `Руководства по PHP`_.
 
-Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
+Phalcon не предоставляет функциональности этого расширения, так как создание такого компонента являлось бы повторением существующего кода.
 
-In the examples below, we will show you how to implement the intl_ extension's functionality into Phalcon powered applications.
+В примере ниже мы покажем вам как воспользоваться функциональностью расширения intl_ в приложениях, написанных с использованием Phalcon.
 
 .. highlights::
-   This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
+   Данное руководство не ставит перед собой цель подробно документировать расширение intl_. Для справок, пожалуйста, обратитесь к `документации`_ этого расширения.
 
-Find out best available Locale
-------------------------------
-There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
+Выяснение наиболее подходящей локали
+------------------------------------
+Существует несколько способов для выяснения наиболее подходящей локали с помощью intl_. Одним из них является проверка HTTP-заголовка "Accept-Language":
 
 .. code-block:: php
 
@@ -20,82 +21,84 @@ There are several ways to find out the best available locale using intl_. One of
 
     $locale = Locale::acceptFromHttp($_SERVER["HTTP_ACCEPT_LANGUAGE"]);
 
-    // Locale could be something like "en_GB" or "en"
+    // Локалью может быть что-то вроде "ru_RU" или "ru"
     echo $locale;
 
-Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
-Examples of identifiers include:
+Метод выше возвращает идентифицированную локаль. Она используется для получения языковых, культурных или региональных особенностей поведения с использованием
+API класса Locale.
+Примерами идентификаторов локали являются:
 
-* en-US (English, United States)
-* zh-Hant-TW (Chinese, Traditional Script, Taiwan)
-* fr-CA, fr-FR (French for Canada and France respectively)
+* en-US (Английский, США)
+* ru-RU (Русский, Россиия)
+* zh-Hant-TW (Китай, Традиционный китайский, Тайвань)
+* fr-CA, fr-FR (Французский для Канады и Франции соответственно)
 
-Formatting messages based on Locale
------------------------------------
-Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
-production of those messages.
+Форматирование сообщений на основании локали
+--------------------------------------------
+Неотъемлемой частью разработки локализованного приложения является создание объединенных, независимых от языка сообщений. MessageFormatter_ позволяет
+создавать такие сообщения.
 
-Printing numbers formatted based on some locale:
+Печать форматированных чисел на основе разных локалей:
 
 .. code-block:: php
 
     <?php
 
-    // Prints € 4 560
+    // Выведет € 4 560
     $formatter = new MessageFormatter("fr_FR", "€ {0, number, integer}");
     echo $formatter->format(array(4560));
 
-    // Prints USD$ 4,560.5
+    // Выведет USD$ 4,560.5
     $formatter = new MessageFormatter("en_US", "USD$ {0, number}");
     echo $formatter->format(array(4560.50));
 
-    // Prints ARS$ 1.250,25
+    // Выведет ARS$ 1.250,25
     $formatter = new MessageFormatter("es_AR", "ARS$ {0, number}");
     echo $formatter->format(array(1250.25));
 
-Message formatting using time and date patterns:
+Форматирование сообщений, используя шаблоны времени и даты:
 
 .. code-block:: php
 
     <?php
 
-    //Setting parameters
+    //Устанавливаем параметры
     $time   = time();
     $values = array(7, $time, $time);
 
-    // Prints "At 3:50:31 PM on Apr 19, 2012, there was a disturbance on planet 7."
+    // Выведет "At 3:50:31 PM on Apr 19, 2012, there was a disturbance on planet 7."
     $pattern   = "At {1, time} on {1, date}, there was a disturbance on planet {0, number}.";
     $formatter = new MessageFormatter("en_US", $pattern);
     echo $formatter->format($values);
 
-    // Prints "À 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planète 7."
+    // Выведет "À 15:53:01 le 19 avr. 2012, il y avait une perturbation sur la planète 7."
     $pattern   = "À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.";
     $formatter = new MessageFormatter("fr_FR", $pattern);
     echo $formatter->format($values);
 
-Locale-Sensitive comparison
----------------------------
-The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
-examples below on the usage of this class:
+Сравнение строк с учетом локали
+-------------------------------
+Класс Collator_ предоставляет возможности по сравнению строк, чувствительных к локали, с поддержкой соответствующих правил сравнений. Ниже приведены
+примеры, демонстрирующие использование этого класса:
 
 .. code-block:: php
 
     <?php
 
-    // Create a collator using Spanish locale
+    // Создаем коллатор, использующий испанскую локаль
     $collator = new Collator("es");
 
-    // Returns that the strings are equal, in spite of the emphasis on the "o"
+    // Результат сравнения будет положительный, несмотря на ударение над "о"
     $collator->setStrength(Collator::PRIMARY);
     var_dump($collator->compare("una canción", "una cancion"));
 
-    // Returns that the strings are not equal
+    // Результат сравнения будет отрицательный
     $collator->setStrength(Collator::DEFAULT_VALUE);
     var_dump($collator->compare("una canción", "una cancion"));
 
-Transliteration
----------------
-Transliterator_ provides transliteration of strings:
+Транслитерация
+--------------
+Компонент Transliterator_ добавляет возможность транслитерации строк:
 
 .. code-block:: php
 
@@ -109,8 +112,8 @@ Transliterator_ provides transliteration of strings:
 
 .. _PECL: http://pecl.php.net/package/intl
 .. _intl: http://pecl.php.net/package/intl
-.. _PHP manual: http://www.php.net/manual/en/intro.intl.php
-.. _documentation: http://www.php.net/manual/en/book.intl.php
-.. _MessageFormatter: http://www.php.net/manual/en/class.messageformatter.php
-.. _Collator: http://www.php.net/manual/en/class.collator.php
+.. _`Руководства по PHP`: http://www.php.net/manual/ru/intro.intl.php
+.. _документации: http://www.php.net/manual/ru/book.intl.php
+.. _MessageFormatter: http://www.php.net/manual/ru/class.messageformatter.php
+.. _Collator: http://www.php.net/manual/ru/class.collator.php
 .. _Transliterator: http://www.php.net/manual/en/class.transliterator.php

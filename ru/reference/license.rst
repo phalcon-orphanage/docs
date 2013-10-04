@@ -1,11 +1,11 @@
-License
-=======
-Phalcon is brought to you by the Phalcon Team! [`Twitter`_ - `Google Plus`_ - `Github`_]
+Лицензия
+========
+Phalcon создан в Phalcon Team! [`Twitter`_ - `Google Plus`_ - `Github`_]
 
-The Phalcon PHP Framework is released under the `new BSD license`_. Except where otherwise noted, content on
-this site is licensed under the `Creative Commons Attribution 3.0 License`_.
+Фреймворк Phalcon PHP Framework распостраняется под лицензией `new BSD license`_. в случаях, когда не указано иное,
+содержимое текущего сайта распространяется под лицензией `Creative Commons Attribution 3.0 License`_.
 
-If you love Phalcon please return something to the community! :)
+Если вам понравился Phalcon, поделитесь своей радостью и работами с сообществом! :)
 
 .. _Twitter: https://twitter.com/#!/phalconphp
 .. _Google Plus: https://plus.google.com/u/0/102376109340560896457/posts

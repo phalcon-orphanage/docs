@@ -1,101 +1,102 @@
-Encryption/Decryption
-=====================
-Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
-This class offers simple object-oriented wrappers to the mcrypt_ php's encryption library.
+﻿Зашифрование и расшифрование
+============================
+Phalcon предоставляет средства шифрования с помощью компонента :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`.
+Этот класс предоставляет простые объектно-ориентированные обертки к php библиотеке mcrypt_.
 
-By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
+По умолчанию данный компонент использует надежный алгоритм шифрования AES-256 (rijndael-256-cbc).
 
-Basic Usage
------------
-This component is designed to provide a very simple usage:
+Базовое использование
+---------------------
+Данный компонент разработан так, чтобы быть максимально простым в использовании:
 
 .. code-block:: php
 
     <?php
 
-    //Create an instance
+    // Создание экземпляра
     $crypt = new Phalcon\Crypt();
 
-    $key = 'le password';
-    $text = 'This is a secret text';
+    $key = 'это пароль';
+    $text = 'Это секретный текст';
 
     $encrypted = $crypt->encrypt($text, $key);
 
     echo $crypt->decrypt($encrypted, $key);
 
-You can use the same instance to encrypt/decrypt several times:
+Вы можете использовать тот же экземпляр для многократного зашифрования или расшифрования:
 
 .. code-block:: php
 
     <?php
 
-    //Create an instance
+    // Создание экземпляра
     $crypt = new Phalcon\Crypt();
 
     $texts = array(
-        'my-key' => 'This is a secret text',
-        'other-key' => 'This is a very secret'
+        'my-key' => 'Это секретный текст',
+        'other-key' => 'Это очень секретно'
     );
 
     foreach ($texts as $key => $text) {
 
-        //Perform the encryption
+        // Зашифровываем
         $encrypted = $crypt->encrypt($text, $key);
 
-        //Now decrypt
+        // Теперь расшифровываем
         echo $crypt->decrypt($encrypted, $key);
     }
 
-Encryption Options
-------------------
-The following options are available to change the encryption behavior:
+Атрибуты шифрования
+-------------------
+Для изменения в поведении шифрования доступны следующие атрибуты:
 
 +------------+---------------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                       |
+| Атрибут    | Описание                                                                                          |
 +============+===================================================================================================+
-| Cipher     | The cipher is one of the encryption algorithms supported by libmcrypt. You can see a list here_   |
+| Cipher     | Один из алгоритмов шифрования поддерживаемый libmcrypt. Посмотреть список Вы можете `здесь`_      |
 +------------+---------------------------------------------------------------------------------------------------+
-| Mode       | One of the encryption modes supported by libmcrypt (ecb, cbc, cfb, ofb)                           |
+| Mode       | Один из режимов шифрования поддерживаемый libmcrypt (ecb, cbc, cfb, ofb)                          |
 +------------+---------------------------------------------------------------------------------------------------+
 
-Example:
+Пример:
 
 .. code-block:: php
 
     <?php
 
-    //Create an instance
+    // Создаем экземпляр
     $crypt = new Phalcon\Crypt();
 
-    //Use blowfish
+    // Используем алгоритм blowfish
     $crypt->setCipher('blowfish');
 
-    $key = 'le password';
-    $text = 'This is a secret text';
+    $key = 'это пароль';
+    $text = 'Это секретный текст';
 
     echo $crypt->encrypt($text, $key);
 
-Base64 Support
---------------
-In order that encryption is properly transmited (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
+Поддержка Base64
+----------------
+Для того, чтобы зашифрованный текст должным образом передать (по электронной почте) или отобразить (в браузере) очень часто
+применяется кодирование base64_.
 
 .. code-block:: php
 
     <?php
 
-    //Create an instance
+    // Создаем экземпляр
     $crypt = new Phalcon\Crypt();
 
-    $key = 'le password';
-    $text = 'This is a secret text';
+    $key = 'это пароль';
+    $text = 'Это секретный текст';
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
     echo $crypt->decryptBase64($text, $key);
 
-Setting up an Encryption service
---------------------------------
-You can set up the encryption component in the services container in order to use it from any part of the application:
+Настройка сервиса
+-----------------
+Чтобы использовать компонент шифрования из любой точки приложения, Вы можете поместить его в контейнер сервисов:
 
 .. code-block:: php
 
@@ -105,13 +106,13 @@ You can set up the encryption component in the services container in order to us
 
         $crypt = new Phalcon\Crypt();
 
-        //Set a global encryption key
+        // Устанавливаем глобальный ключ шифрования
         $crypt->setKey('%31.1e$i86e$f!8jz');
 
         return $crypt;
     }, true);
 
-Then, for example, in a controller you can use it as follows:
+Затем, как пример, Вы можете использовать его в контроллере следующим образом:
 
 .. code-block:: php
 
@@ -131,7 +132,7 @@ Then, for example, in a controller you can use it as follows:
             $secret->content = $this->crypt->encrypt($text);
 
             if ($secret->save()) {
-                $this->flash->success('Secret was successfully created!');
+                $this->flash->success('Секрет успешно создан!');
             }
 
         }
@@ -139,5 +140,5 @@ Then, for example, in a controller you can use it as follows:
     }
 
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php
-.. _here: http://www.php.net/manual/en/mcrypt.ciphers.php
+.. _здесь: http://www.php.net/manual/en/mcrypt.ciphers.php
 .. _base64: http://www.php.net/manual/en/function.base64-encode.php

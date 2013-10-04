@@ -1,22 +1,22 @@
-Routing
-=======
-The router component allows defining routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine this information. The router has two modes: MVC
-mode and match-only mode. The first mode is ideal for working with MVC applications.
+Маршрутизация (Routing, Роутинг)
+================================
+Компонент маршрутизации позволяет определять маршруты, которые будут привязаны к контроллерам, или обработчикам для получения
+запроса. Маршрутизатор просто разбирает URI для определения информации. Маршрутизатор имеет два режима: MVC
+режим и режим совпадения. Первый режим идеально подходит для работы с MVC приложениями.
 
-Defining Routes
----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
-you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+Определение маршрутов
+---------------------
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` предоставляет расширенные возможности маршрутизации. В MVC режиме вы
+можете определить маршруты и направить их на контроллеры/действия, которые вам требуются. Маршруты определяются следующим образом:
 
 .. code-block:: php
 
     <?php
 
-    // Create the router
+    // Создание маршрутизатора
     $router = new \Phalcon\Mvc\Router();
 
-    //Define a route
+    // Определение правила маршрутизации
     $router->add(
         "/admin/users/my-profile",
         array(
@@ -25,7 +25,7 @@ you can define routes and map them to controllers/actions that you require. A ro
         )
     );
 
-    //Another route
+    // Еще одно правило
     $router->add(
         "/admin/users/change-password",
         array(
@@ -36,23 +36,22 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     $router->handle();
 
-The method add() receives as first parameter a pattern and optionally a set of paths as second parameter.
-In this case, if the URI is exactly: /admin/users/my-profile, then the "users" controller with its action "profile"
-will be executed. Currently, the router does not execute the controller and action, it only collects this
-information to inform the correct component (ie. :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`)
-that this is controller/action it should to execute.
+Метод add() принимает в качестве первого параметра шаблон ссылки, вторым параметром настройки этого маршрута.
+В этом случае, если URI соответствует /admin/users/my-profile, и будет выполнен контроллер "users", а в нём действие "profile".
+Маршрутизатор не выполняет действие контроллера, он только собирает эту информацию, чтобы сообщить правильные параметры в компонент
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`.
 
-An application can have many paths, define routes one by one can be a cumbersome task. In these cases we can
-create more flexible routes:
+Приложение может иметь множество маршрутов, определения их по одному может быть достаточно трудоемкой задачей. В таких случаях мы можем
+создавать более гибкие маршруты:
 
 .. code-block:: php
 
     <?php
 
-    // Create the router
+    // Создание маршрутизатора
     $router = new \Phalcon\Mvc\Router();
 
-    //Define a route
+    // Определение правила маршрутизации
     $router->add(
         "/admin/:controller/a/:action/:params",
         array(
@@ -62,58 +61,57 @@ create more flexible routes:
         )
     );
 
-In the example above, using wildcards we make a route valid for many URIs. For example, by accessing the
-following URL (/admin/users/a/delete/dave/301) then:
+В примере, приведенном выше, с помощью подстановочных элементов мы делаем маршрут подходящим для множества ссылок. Например, при получении
+URL (/admin/users/a/delete/dave/301), маршрутизатор раберёт его в:
 
-+------------+---------------+
-| Controller | users         |
-+------------+---------------+
-| Action     | delete        |
-+------------+---------------+
-| Parameter  | dave          |
-+------------+---------------+
-| Parameter  | 301           |
-+------------+---------------+
++-------------------------+----------+
+| Контроллер / Controller | users    |
++-------------------------+----------+
+| Действие / Action       | delete   |
++-------------------------+----------+
+| Параметр / Parameter    | dave     |
++-------------------------+----------+
+| Параметр / Parameter    | 301      |
++-------------------------+----------+
 
-The method add() receives a pattern that optionally could have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a slash character (/). The regular expression syntax used
-is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All routes patterns are case-insensitive.
+Метод add() принимает шаблон, который по желанию может быть написан с использованием регулярных выражений. Все
+маршруты должны начинаться с косой черты (/). Регулярные выражения должны соответствовать формату  `регулярных выражений PCRE`_.
+Отметим, что это не нужно добавлять в регулярные выражения разделители. Все маршруты не зависят от регистра.
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
-parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
-first subpattern matched (:controller) is the controller part of the route, the second the action and so on.
+Второй параметр определяет, какие из подходящих частей следует "привязать" к controller/action/parameters. Соответствующие
+части берутся из "заполнителей" или по маскам ограничивающимися круглыми скобками. В примере, приведенном выше,
+первой части соответствует контроллеру (:controller), второй действию и так далее.
 
-These placeholders help writing regular expressions that are more readable for developers and easier
-to understand. The following placeholders are supported:
+Заполнители помогают написанию регулярных выражений, они более читабельны для разработчиков и проще
+для понимания. Существуют такие заполнители:
 
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 | Placeholder  | Regular Expression  | Usage                                                                                                  |
 +==============+=====================+========================================================================================================+
-| /:module     | /([a-zA-Z0-9\_\-]+) | Matches a valid module name with alpha-numeric characters only                                         |
+| /:module     | /([a-zA-Z0-9\_\-]+) | Проверяет соответствие названия модуля алфавитно-цифровым символам                                     |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:controller | /([a-zA-Z0-9\_\-]+) | Matches a valid controller name with alpha-numeric characters only                                     |
+| /:controller | /([a-zA-Z0-9\_\-]+) | Проверяет соответствие названия контроллера алфавитно-цифровым символам                                |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:action     | /([a-zA-Z0-9\_]+)   | Matches a valid action name with alpha-numeric characters only                                         |
+| /:action     | /([a-zA-Z0-9\_]+)   | Проверяет соответствие названия действия алфавитно-цифровым символам                                   |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:params     | (/.*)*              | Matches a list of optional words separated by slashes. Use only this placeholder at the end of a route |
+| /:params     | (/.*)*              | Проверяет список дополнительных частей, разделенных косыми чертами. Использовать только в конце ссылок |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:namespace  | /([a-zA-Z0-9\_\-]+) | Matches a single level namespace name                                                                  |
+| /:namespace  | /([a-zA-Z0-9\_\-]+) | Проверяет пространство имен                                                                            |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
-| /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
+| /:int        | /([0-9]+)           | Проверяет соответсвие цифровому формату                                                                |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 
-Controller names are camelized, this means that characters (-) and (_) are removed and the next character
-is uppercased. For instance, some_controller is converted to SomeController.
+Названия контроллеров "camelized", это означает, что символы (-) и (_) удаляются, и следующий после них символ
+преобразуется в верхний регистр. Например, some_controller преобразуется в SomeController.
 
-Since you can add many routes as you need using add(), the order in which routes are added indicate
-their relevance, lastest routes added have more relevance than first added. Internally, all defined routes
-are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
-one that matches the given URI and processes it, while ignoring the rest.
+Поскольку вы можете использовать множество маршрутов, добавляя их методом add(), порядок, в котором маршруты добавляются указывает
+их актуальность, последние добавленные маршруты имеют больший приоритет, чем добавленные ранее. Внутри все определенные маршруты
+перемещаются в обратном порядке, пока :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` не найдёт
+тот, который соответствует данному URI и использует его, игнорируя остальные.
 
-Parameters with Names
+Именованные параметры
 ^^^^^^^^^^^^^^^^^^^^^
-The example below demonstrates how to define names to route parameters:
+В примере ниже показано, как определить имена для параметров маршрутов:
 
 .. code-block:: php
 
@@ -131,9 +129,9 @@ The example below demonstrates how to define names to route parameters:
         )
     );
 
-In the above example, the route doesn't define a "controller" or "action" part. These parts are replaced
-with fixed values ("posts" and "show"). The user will not know the controller that is really dispatched
-by the request. Inside the controller, those named parameters can be accessed as follows:
+В приведенном выше примере, в маршруте не определены части для "контроллера" или "действия". Эти параметры заменяются
+фиксированными значениями ("posts" и "show"). Пользователь не будет видеть вызванный контроллер.
+Внутри контроллера именованные параметры можно получить следующим образом:
 
 .. code-block:: php
 
@@ -150,22 +148,22 @@ by the request. Inside the controller, those named parameters can be accessed as
         public function showAction()
         {
 
-            // Return "year" parameter
+            // Возвращает параметр "year"
             $year = $this->dispatcher->getParam("year");
 
-            // Return "month" parameter
+            // Возвращает параметр "month"
             $month = $this->dispatcher->getParam("month");
 
-            // Return "day" parameter
+            // Возвращает параметр "day"
             $day = $this->dispatcher->getParam("day");
 
         }
 
     }
 
-Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
-component that finally interacts with the drivers of your application. Moreover, there is also another
-way to create named parameters as part of the pattern:
+Обратите внимание, что значения параметров получаются из диспетчера. Это происходит потому, что это
+компонент, который, непосредственно запускает в работу ваше приложение.
+Кроме того, существует и другой способ создавать именованные параметры, например, как часть правила маршрутизации:
 
 .. code-block:: php
 
@@ -179,7 +177,7 @@ way to create named parameters as part of the pattern:
         )
     );
 
-You can access their values in the same way as before:
+Вы можете получить доступ к их значениям так же, как раньше:
 
 .. code-block:: php
 
@@ -191,29 +189,29 @@ You can access their values in the same way as before:
         public function showAction()
         {
 
-            // Returns "name" parameter
+            // Возвращает параметр "name"
             $name = $this->dispatcher->getParam("name");
 
-            // Returns "type" parameter
+            // Возвращает параметр "type"
             $type = $this->dispatcher->getParam("type");
 
         }
 
     }
 
-Short Syntax
-^^^^^^^^^^^^
-If you don't like using an array to define the route paths, an alternative syntax is also available.
-The following examples produce the same result:
+Краткий сантаксис
+^^^^^^^^^^^^^^^^^
+Если вам не нравится использование массивов для определения правил маршрута, альтернативный синтаксис также доступен.
+Следующие примеры дают одинаковый результат:
 
 .. code-block:: php
 
     <?php
 
-    // Short form
+    // Краткий синтаксис
     $router->add("/posts/{year:[0-9]+}/{title:[a-z\-]+}", "Posts::show");
 
-    // Array form
+    // Использование массива
     $router->add(
         "/posts/([0-9]+)/([a-z\-]+)",
         array(
@@ -224,28 +222,27 @@ The following examples produce the same result:
         )
     );
 
-Mixing Array and Short Syntax
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
-are added to the route paths according to the position on which they were defined:
+Совмещение массивов и краткого синтаксиса
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Массив и краткий синтаксис может быть смешанны, в данном случае, обратите внимание, что именованные параметры автоматически
+добавляются в маршрут в соответствии с положением, на котором они были определены:
 
 .. code-block:: php
 
     <?php
 
-    //First position must be skipped because it is used for
-    //the named parameter 'country'
+    // В качестве первой позиции выступает параметр 'country'
     $router->add('/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
         array(
-            'section' => 2, //Positions start with 2
+            'section' => 2, // Это уже позиция номер 2
             'article' => 3
         )
     );
 
-Routing to Modules
-^^^^^^^^^^^^^^^^^^
-You can define routes whose paths include modules. This is specially suitable to multi-module applications.
-It's possible define a default route that includes a module wildcard:
+Маршрутизация модулей
+^^^^^^^^^^^^^^^^^^^^^
+Вы можете определить маршруты, пути которых включают в себя модули. Это особенно подходит для мульти-модульных приложений.
+Возможно так же определить маршрут по умолчанию, который включает в себя модуль шаблона:
 
 .. code-block:: php
 
@@ -260,8 +257,8 @@ It's possible define a default route that includes a module wildcard:
         'params' => 4
     ));
 
-In this case, the route always must have the module name as part of the URL. For example, the following
-URL: /admin/users/edit/sonny, will be processed as:
+В этом случае маршрут всегда должен иметь имя модуля в качестве части URL-адреса. Например, в следующем
+URL: /admin/users/edit/sonny, будут обработан как:
 
 +------------+---------------+
 | Module     | admin         |
@@ -273,7 +270,7 @@ URL: /admin/users/edit/sonny, will be processed as:
 | Parameter  | sonny         |
 +------------+---------------+
 
-Or you can bind specific routes to specific modules:
+Или вы можете привязать конкретные маршруты к конкретным модулям:
 
 .. code-block:: php
 
@@ -291,7 +288,7 @@ Or you can bind specific routes to specific modules:
         'action' => 1,
     ));
 
-Or bind them to specific namespaces:
+Или привязать к конкретному пространству имен:
 
 .. code-block:: php
 
@@ -303,7 +300,7 @@ Or bind them to specific namespaces:
         'action' => 'index'
     ));
 
-Namespaces/class names must be passed separated:
+Пространства имён и названия классов должны передаваться раздельно:
 
 .. code-block:: php
 
@@ -315,46 +312,46 @@ Namespaces/class names must be passed separated:
         'action' => 'index'
     ));
 
-HTTP Method Restrictions
-^^^^^^^^^^^^^^^^^^^^^^^^
-When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
-this is especially useful when creating RESTful applications:
+Разделение по HTTP методам
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+При добавлении маршрута, используя метод add(), маршрут будет активен для любого HTTP-метода. Иногда можно использовать маршрут для
+конкретного метода, это особенно полезно при создании RESTful приложений:
 
 .. code-block:: php
 
     <?php
 
-    // This route only will be matched if the HTTP method is GET
+    // Маршрут соответствует только HTTP методу GET
     $router->addGet("/products/edit/{id}", "Products::edit");
 
-    // This route only will be matched if the HTTP method is POST
+    // Маршрут соответствует только HTTP методу POST
     $router->addPost("/products/save", "Products::save");
 
-    // This route will be matched if the HTTP method is POST or PUT
+    // Маршрут соответствует сразу двум HTTP методам POST и PUT
     $router->add("/products/update")->via(array("POST", "PUT"));
 
-Using convertions
-^^^^^^^^^^^^^^^^^
-Convertions allow to freely transform the route's parameters before passing them to the dispatcher, the following examples show how to use them:
+Использование преобразований
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Метод convert позволяет трансформировать параметры маршрута до передачи их диспетчеру, следующий пример показывает вариант использования:
 
 .. code-block:: php
 
     <?php
 
-    //The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation
+    // Название действия разрешает использование "-": /products/new-ipod-nano-4-generation
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
             'action' => 'show'
         ))
         ->convert('slug', function($slug) {
-            //Transform the slug removing the dashes
+            // Удаляем тире из выбранного параметра
             return str_replace('-', '', $slug);
         });
 
-Groups of Routes
+Группы маршрутов
 ^^^^^^^^^^^^^^^^
-If a set of routes have common paths they can be grouped to easily maintain them:
+Если наборы маршрутов имеют общие пути они могут быть сгруппированы для легкой поддержки:
 
 .. code-block:: php
 
@@ -362,35 +359,35 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     $router = new \Phalcon\Mvc\Router();
 
-    //Create a group with a common module and controller
+    // Создаётся группа с общим модулем и контроллером
     $blog = new \Phalcon\Mvc\Router\Group(array(
         'module' => 'blog',
         'controller' => 'index'
     ));
 
-    //All the routes start with /blog
+    // Маршруты начинаются с /blog
     $blog->setPrefix('/blog');
 
-    //Add a route to the group
+    // Добавление маршрута в группу
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Еще один маршрут
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //This route maps to a controller different than the default
+    // Маршрут для действия по умолчанию
     $blog->add('/blog', array(
         'controller' => 'blog',
         'action' => 'index'
     ));
 
-    //Add the group to the router
+    // Добавление группы в общие правила маршрутизации
     $router->mount($blog);
 
-You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
+Вы можете размещать группы маршрутов в разных файлах приложения, добиваясь оптимальной структуры и чистоты кода:
 
 .. code-block:: php
 
@@ -400,26 +397,26 @@ You can move groups of routes to separate files in order to improve the organiza
     {
         public function initialize()
         {
-            //Default paths
+            // Параметры по умолчанию
             $this->setPaths(array(
                 'module' => 'blog',
                 'namespace' => 'Blog\Controllers'
             ));
 
-            //All the routes start with /blog
+            // Маршруты начинаются с преффикса /blog
             $this->setPrefix('/blog');
 
-            //Add a route to the group
+            // Добавляем маршрут
             $this->add('/save', array(
                 'action' => 'save'
             ));
 
-            //Add another route to the group
+            // Еще маршрут
             $this->add('/edit/{id}', array(
                 'action' => 'edit'
             ));
 
-            //This route maps to a controller different than the default
+            // Данные для маршрута по умолчанию
             $this->add('/blog', array(
                 'controller' => 'blog',
                 'action' => 'index'
@@ -428,20 +425,20 @@ You can move groups of routes to separate files in order to improve the organiza
         }
     }
 
-Then mount the group in the router:
+Созданную группу надо подмонтировать в маршрутизатор:
 
 .. code-block:: php
 
     <?php
 
-    //Add the group to the router
+    // Добавляем маршруты в общий марщрутизатор:
     $router->mount(new BlogRoutes());
 
-Matching Routes
----------------
-A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
-By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
-module. A couple of rewrite rules that work very well with Phalcon are:
+Соответствие маршрутов
+----------------------
+Текущий URI передаётся маршрутизатору для сопоставления его маршруту. По умолчанию, URI для обработки берется из
+переменной $_GET['_url'], полученной с использованием mod_rewrite.
+Для Phalcon подходят очень простые правила mod_rewrite:
 
 .. code-block:: apacheconf
 
@@ -450,38 +447,38 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
 
-The following example shows how to use this component in stand-alone mode:
+В следующем примере показано, как использовать этот компонент автономно:
 
 .. code-block:: php
 
     <?php
 
-    // Creating a router
+    // Создание маршрутизатора
     $router = new \Phalcon\Mvc\Router();
 
-    // Define routes here if any
+    // Тут устанавливаются правила маршрутизации
     // ...
 
-    // Taking URI from $_GET["_url"]
+    // Будет использован $_GET["_url"]
     $router->handle();
 
-    // or Setting the URI value directly
+    // Можно указать параметр самостоятельно
     $router->handle("/employees/edit/17");
 
-    // Getting the processed controller
+    // Получаем выбранный контроллер
     echo $router->getControllerName();
 
-    // Getting the processed action
+    // .. и соответсвющее действие
     echo $router->getActionName();
 
-    //Get the matched route
+    // Получаем сам выбранный для ссылки маршрут
     $route = $router->getMatchedRoute();
 
-Naming Routes
--------------
-Each route that is added to the router is stored internally as an object :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
-That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
-This is especially useful if you want to create URLs from it.
+Именованные маршруты
+--------------------
+Каждый маршрут, добавленный в маршрутизатор хранится как объект :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
+Этот класс включает в себя все детали каждого маршрута. Например, мы можем дать ему имя и однозначно идентифицировать в нашем приложении.
+Это особенно полезно, если вы хотите создать ссылки для него.
 
 .. code-block:: php
 
@@ -491,32 +488,32 @@ This is especially useful if you want to create URLs from it.
 
     $route->setName("show-posts");
 
-    //or just
+    // или проще
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
-Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` we can build routes from its name:
+Затем, при помощи компонента :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` и названия маршрута можно создать ссылку:
 
 .. code-block:: php
 
     <?php
 
-    // returns /posts/2012/phalcon-1-0-released
+    // возвратит /posts/2012/phalcon-1-0-released
     echo $url->get(array(
         "for" => "show-posts",
         "year" => "2012",
         "title" => "phalcon-1-0-released"
     ));
 
-Usage Examples
---------------
-The following are examples of custom routes:
+Примеры использования
+---------------------
+Ниже приведены примеры пользовательских маршрутов:
 
 .. code-block:: php
 
     <?php
 
-    // matches "/system/admin/a/edit/7001"
+    // пример - "/system/admin/a/edit/7001"
     $router->add(
         "/system/:controller/a/:action/:params",
         array(
@@ -526,7 +523,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/es/news"
+    // пример - "/es/news"
     $router->add(
         "/([a-z]{2})/:controller",
         array(
@@ -536,7 +533,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/es/news"
+    // пример - "/es/news"
     $router->add(
         "/{language:[a-z]{2}}/:controller",
         array(
@@ -545,7 +542,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/admin/posts/edit/100"
+    // пример - "/admin/posts/edit/100"
     $router->add(
         "/admin/:controller/:action/:int",
         array(
@@ -555,7 +552,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/posts/2010/02/some-cool-content"
+    // пример - "/posts/2010/02/some-cool-content"
     $router->add(
         "/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)",
         array(
@@ -567,7 +564,7 @@ The following are examples of custom routes:
         )
     );
 
-    // matches "/manual/en/translate.adapter.html"
+    // пример - "/manual/en/translate.adapter.html"
     $router->add(
         "/manual/([a-z]{2})/([a-z\.]+)\.html",
         array(
@@ -578,13 +575,13 @@ The following are examples of custom routes:
         )
     );
 
-    // matches /feed/fr/le-robots-hot-news.atom
+    // пример - /feed/fr/le-robots-hot-news.atom
     $router->add(
         "/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}",
         "Feed::get"
     );
 
-    // matches /api/v1/users/peter.json
+    // пример - /api/v1/users/peter.json
     $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
@@ -594,16 +591,16 @@ The following are examples of custom routes:
     );
 
 .. highlights::
-    Beware of characters allowed in regular expression for controllers and namespaces. As these
-    become class names and in turn they're passed through the file system could be used by attackers to
-    read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
+    Остерегайтесь использования спецсимволов в регулярных выражениях для контроллеров и пространст имён. Эти
+    параметры формируют имена классов и файлов, что в слою очередь взаимодействует с файловой системой, и может
+    использоваться злоумышленником для чтения несанкционированных файлов. Безопасным является регулярное выражение: /([a-zA-Z0-9\_\-]+)
 
-Default Behavior
-----------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
-always expects a URI that matches the following pattern: /:controller/:action/:params
+Поведение по умолчанию
+----------------------
+У компонента :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` есть поведение по умолчанию, при котором все URL
+обрабатываются по простому шаблону: /:controller/:action/:params
 
-For example, for a URL like this *http://phalconphp.com/documentation/show/about.html*, this router will translate it as follows:
+Например, ссылку вида *http://phalconphp.com/documentation/show/about.html* маршрутизатор проанализирует как:
 
 +------------+---------------+
 | Controller | documentation |
@@ -613,19 +610,18 @@ For example, for a URL like this *http://phalconphp.com/documentation/show/about
 | Parameter  | about.html    |
 +------------+---------------+
 
-If you don't want use this routes as default in your application, you must create the router passing false as parameter:
+Если вы не хотите использовать маршруты по умолчанию в вашем приложении, вы должны указать false в качестве параметра при создании объекта маршрутизатора:
 
 .. code-block:: php
 
     <?php
 
-    // Create the router without default routes
+    // Создания маршрутизатора без поддержки стандартной маршрутизации
     $router = new \Phalcon\Mvc\Router(false);
 
-Setting the default route
--------------------------
-When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page
-in your website/application:
+Указание маршрута по умолчанию
+------------------------------
+При обращению к главной странице приложения срабатывает маршрут '/', в нём надо указать что должно срабатывать:
 
 .. code-block:: php
 
@@ -636,45 +632,45 @@ in your website/application:
         'action' => 'index'
     ));
 
-Not Found Paths
----------------
-If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
+404 страница
+------------
+Если ни один из указанных маршрутов в маршрутизаторе не совпадёт, вы можете определить действие для этого случая:
 
 .. code-block:: php
 
     <?php
 
-    //Set 404 paths
+    // Указание действия для 404 страницы
     $router->notFound(array(
         "controller" => "index",
         "action" => "route404"
     ));
 
-Setting default paths
----------------------
-It's possible to define default values for common paths like module, controller or action. When a route is missing any of
-those paths they can be automatically filled by the router:
+Установка параметров по умолчанию
+---------------------------------
+Можно определить значения по умолчанию для некоторых частей маршрута, таких как модуль, контроллер или действие. Когда в маршруте отсутствует любая из
+указанных частей, они будут автоматически заполнены маршрутизатором из значений по умолчанию:
 
 .. code-block:: php
 
     <?php
 
-    //Setting a specific default
+    // Установка по умолчанию
     $router->setDefaultModule('backend');
     $router->setDefaultNamespace('Backend\Controllers');
     $router->setDefaultController('index');
     $router->setDefaultAction('index');
 
-    //Using an array
+    // Используя значения массива
     $router->setDefaults(array(
         'controller' => 'index',
         'action' => 'index'
     ));
 
-Dealing with extra/trailing slashes
------------------------------------
-Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
-a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
+Использование конечного /
+-------------------------
+Иногда обращение к маршруту может быть с дополнительной косой чертой (слэш) и в конце маршрута, это в отдельных случаях может привести
+к несооответсвию маршруту. Вы можете настроить маршрутизатор для автоматического удаления слэша из конца обрабатываемого маршрута:
 
 .. code-block:: php
 
@@ -682,10 +678,10 @@ a not-found status in the dispatcher. You can set up the router to automatically
 
     $router = new \Phalcon\Mvc\Router();
 
-    //Remove trailing slashes automatically
+    // Конечные косые черты будут автоматически удалены
     $router->removeExtraSlashes(true);
 
-Or, you can modify specific routes to optionally accept trailing slashes:
+Или, вы можете изменить определенные маршруты в которых необходимо использовать косые черты:
 
 .. code-block:: php
 
@@ -699,10 +695,12 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
-Match Callbacks
----------------
-Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
-'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
+Дополнительные условия
+----------------------
+Иногда требуется, чтобы перед выполнением маршрут удовлетворял определённым условиям.
+Вы можете добавлять произвольные условия используя функцию обратного вызова (callback)
+'beforeMatch'. Если эта функция вернёт false, то запрос не совпадёт с условием и
+маршрут не выполнится:
 
 .. code-block:: php
 
@@ -712,14 +710,14 @@ Sometimes, routes must be matched if they meet specific conditions, you can add 
         'module' => 'admin',
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
-        //Check if the request was made with Ajax
+        // Проверим, что это был Ajax-запрос
         if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
         return true;
     });
 
-You can re-use these extra conditions in classes:
+Вы можете повторно использовать эти дополнительные условия в классах:
 
 .. code-block:: php
 
@@ -733,7 +731,7 @@ You can re-use these extra conditions in classes:
         }
     }
 
-And use this class instead of the anonymous function:
+И использовать этот класс вместо анонимной функции:
 
 .. code-block:: php
 
@@ -744,10 +742,10 @@ And use this class instead of the anonymous function:
         'action' => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
-Hostname Constraints
---------------------
-The router allow to set hostname contraints, this means that specific routes or a group of routes can be restricted
-to only match if the route also meets the hostname constraint:
+Ограничение по имени хоста
+--------------------------
+Маршрутизатор позволяет вам выставлять ограничения по имени хоста. Это означает, что
+конкретные маршруты или группы маршрутов могут быть привязаны к конкретным именам хостов:
 
 .. code-block:: php
 
@@ -759,7 +757,7 @@ to only match if the route also meets the hostname constraint:
         'action' => 'login'
     ))->setHostName('admin.company.com');
 
-Hostname can also be regular expressions:
+Имя хоста так же может быть регулярным выражением:
 
 .. code-block:: php
 
@@ -771,55 +769,56 @@ Hostname can also be regular expressions:
         'action' => 'login'
     ))->setHostName('([a-z+]).company.com');
 
-In groups of routes you can set up a hostname constraint that apply for every route in the group:
+В группах маршрутов вы можете установить ограничение по имени хоста, которое будет
+применяться к каждому маршруту в группе:
 
 .. code-block:: php
 
     <?php
 
-    //Create a group with a common module and controller
+    // Создаём группу с общим модулем и контроллером
     $blog = new \Phalcon\Mvc\Router\Group(array(
         'module' => 'blog',
         'controller' => 'posts'
     ));
 
-    //Hostname restriction
+    // Ограничиваем по имени хоста
     $blog->setHostName('blog.mycompany.com');
 
-    //All the routes start with /blog
+    // Все маршруты начинаются с /blog
     $blog->setPrefix('/blog');
 
-    //Default route
+    // Маршрут по умолчанию
     $blog->add('/', array(
         'action' => 'index'
     ));
 
-    //Add a route to the group
+    // Добавляем маршрут в группу
     $blog->add('/save', array(
         'action' => 'save'
     ));
 
-    //Add another route to the group
+    // Добавляем ещё один маршрут в группу
     $blog->add('/edit/{id}', array(
         'action' => 'edit'
     ));
 
-    //Add the group to the router
+    // Добавляем группу в маршрутизатор
     $router->mount($blog);
 
-URI Sources
------------
-By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
-Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
+Источники URI
+-------------
+По умолчанию текущий URI для обработки берётся из переменной $_GET['_url'], так устроено внутри Phalcon и стандартных правилах mod-rewrite,
+очень просто можно указать использование для этих целей переменную $_SERVER['REQUEST_URI']:
 
 .. code-block:: php
 
     <?php
 
-    $router->setUriSource(Router::URI_SOURCE_GET_URL); // use $_GET['_url'] (default)
-    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // use $_SERVER['REQUEST_URI'] (default)
+    $router->setUriSource(Router::URI_SOURCE_GET_URL); // использование $_GET['_url'] (по умолчанию)
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // использование $_SERVER['REQUEST_URI'] (по умолчанию)
 
-Or you can manually pass a URI to the 'handle' method:
+Или вы можете самостоятельно передавать URI в метод "handle":
 
 .. code-block:: php
 
@@ -827,15 +826,15 @@ Or you can manually pass a URI to the 'handle' method:
 
     $router->handle('/some/route/to/handle');
 
-Testing your routes
--------------------
-Since this component has no dependencies, you can create a file as shown below to test your routes:
+Тестирование маршрутов
+----------------------
+Компонент маршрутизации не имеет внутренних зависимостей, вы можете создать файл, как показано ниже, для проверки свои маршрутов:
 
 .. code-block:: php
 
     <?php
 
-    //These routes simulate real URIs
+    // Маршруты для проверки
     $testRoutes = array(
         '/',
         '/index',
@@ -848,32 +847,34 @@ Since this component has no dependencies, you can create a file as shown below t
 
     $router = new Phalcon\Mvc\Router();
 
-    //Add here your custom routes
+    // Тут необходимо установить правила маршрутизации
     //...
 
-    //Testing each route
+    // Цикл проверки маршрутов
     foreach ($testRoutes as $testRoute) {
 
-        //Handle the route
+        // Обработка маршрута
         $router->handle($testRoute);
 
-        echo 'Testing ', $testRoute, '<br>';
+        echo 'Тестирование ', $testRoute, '<br>';
 
-        //Check if some route was matched
+        // Проверка выбранного маршрута
         if ($router->wasMatched()) {
-            echo 'Controller: ', $router->getControllerName(), '<br>';
-            echo 'Action: ', $router->getActionName(), '<br>';
+            echo 'Контроллер (Controller): ', $router->getControllerName(), '<br>';
+            echo 'Действие (Action): ', $router->getActionName(), '<br>';
         } else {
-            echo 'The route wasn\'t matched by any route<br>';
+            echo 'Маршрут не поддерживается<br>';
         }
         echo '<br>';
 
     }
 
-Annotations Router
-------------------
-This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
-you can write the routes directly in the controllers instead of adding them in the service registration:
+Маршруты на аннотациях
+----------------------
+Компонент :doc:`Phalcon\\Mvc\\Router\\Annotations <../api/Phalcon_Mvc_Router_Annotations>` интегрированн с
+компонентом :doc:`annotations <annotations>`, и позволяет получать информацию о маршрутах из doc-блоков внутри
+кода контроллеров. Используя эту стратегию, вы можете указывать маршруты непосредственно в контроллерах, вместо
+того, чтобы указывать их в отдельных правилах маршрутизации:
 
 .. code-block:: php
 
@@ -881,16 +882,16 @@ you can write the routes directly in the controllers instead of adding them in t
 
     $di['router'] = function() {
 
-        //Use the annotations router
+        // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //Read the annotations from ProductsController if the uri starts with /api/products
+        // Чтение аннотаций из контроллера ProductsController для ссылок начинающихся на /api/products
         $router->addResource('Products', '/api/products');
 
         return $router;
     };
 
-The annotations can be defined in the following way:
+Аннотации могут быть определены следующим образом:
 
 .. code-block:: php
 
@@ -942,41 +943,41 @@ The annotations can be defined in the following way:
 
     }
 
-Only methods marked with valid annotations are used as routes. List of annotations supported:
+Маршрутизатор поддерживает только строго определённые методы, вот список текущих поддерживаемых аннотации:
 
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                              |
-+==============+===================================================================================================+====================================================================+
-| RoutePrefix  | A prefix to be prepended to each route uri. This annotation must be placed at the class' docblock | @RoutePrefix("/api/products")                                      |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Route        | This annotation marks a method as a route. This annotation must be placed in a method docblock    | @Route("/api/products/show")                                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Get          | This annotation marks a method as a route restricting the HTTP method to GET                      | @Get("/api/products/search")                                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Post         | This annotation marks a method as a route restricting the HTTP method to POST                     | @Post("/api/products/save")                                        |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Put          | This annotation marks a method as a route restricting the HTTP method to PUT                      | @Put("/api/products/save")                                         |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Delete       | This annotation marks a method as a route restricting the HTTP method to DELETE                   | @Delete("/api/products/delete/{id}")                               |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | @Option("/api/products/info")                                      |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Название     | Описание                                                                                               | Использование                                          |
++==============+========================================================================================================+========================================================+
+| RoutePrefix  | Префикс добавляемый к каждому маршруту. Эта аннотация должна быть в комментариях класса (контроллера)  | @RoutePrefix("/api/products")                          |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Route        | Эта аннотация создаёт маршрут для метода, она должна быть в комментариях метода                        | @Route("/api/products/show")                           |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Get          | Эта аннотация создаёт маршрут для метода, разрешается только HTTP метод GET                            | @Get("/api/products/search")                           |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Post         | Эта аннотация создаёт маршрут для метода, разрешается только HTTP метод POST                           | @Post("/api/products/save")                            |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Put          | Эта аннотация создаёт маршрут для метода, разрешается только HTTP метод PUT                            | @Put("/api/products/save")                             |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Delete       | Эта аннотация создаёт маршрут для метода, разрешается только HTTP метод DELETE                         | @Delete("/api/products/delete/{id}")                   |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| Options      | Эта аннотация создаёт маршрут для метода, разрешается только HTTP метод OPTIONS                        | @Option("/api/products/info")                          |
++--------------+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------+
 
-For annotations that add routes, the following parameters are supported:
+Для аннотации при добавлении маршрутов поддерживаются следующие параметры:
 
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| Name         | Description                                                                                       | Usage                                                              |
-+==============+===================================================================================================+====================================================================+
-| methods      | Define one or more HTTP method that route must meet with                                          | @Route("/api/products", methods={"GET", "POST"})                   |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| name         | Define a name for the route                                                                       | @Route("/api/products", name="get-products")                       |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| paths        | An array of paths like the one passed to Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
-| conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
-+--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
++--------------+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| Название     | Описание                                                                                   | Использование                                                      |
++==============+============================================================================================+====================================================================+
+| methods      | Определяет HTTP метод доступа к маршруту                                                   | @Route("/api/products", methods={"GET", "POST"})                   |
++--------------+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| name         | Определяет название маршрута                                                               | @Route("/api/products", name="get-products")                       |
++--------------+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| paths        | Массив дополнительных частей пути Phalcon\\Mvc\\Router::add                                | @Route("/posts/{id}/{slug}", paths={module="backend"})             |
++--------------+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+| conversors   | Метод преобразования для применения к параметрам                                           | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
++--------------+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
-If routes map to controllers in modules is better use the addModuleResource method:
+Для формирования маршрутов из контроллеров модулей стоит использовать метод addModuleResource:
 
 .. code-block:: php
 
@@ -984,18 +985,18 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
     $di['router'] = function() {
 
-        //Use the annotations router
+        // Используем маршрутизатор на аннотациях
         $router = new \Phalcon\Mvc\Router\Annotations(false);
 
-        //Read the annotations from Backend\Controllers\ProductsController if the uri starts with /api/products
+        // Чтение аннотаций из контроллера Backend\Controllers\ProductsController для ссылок начинающихся на /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
 
         return $router;
     };
 
-Implementing your own Router
-----------------------------
-The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
-the one provided by Phalcon.
+Создание собственного маршрутизатора
+------------------------------------
+Для создания адаптера необходимо реализовать интерфейс :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>`.
+Созданным классом надо подменить маршрутизатор ('router') в момент инициализации приложения.
 
-.. _PCRE regular expressions: http://www.php.net/manual/en/book.pcre.php
+.. _регулярных выражений PCRE: http://www.php.net/manual/en/book.pcre.php

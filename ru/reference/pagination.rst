@@ -1,40 +1,41 @@
-Pagination
-==========
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
-fast and convenient way to split these sets of data browsable pages.
+Постраничная навигация (Paginators)
+===================================
+Разделение данных на страницы бывает актуально при необходимости вывести большой объём данных поэтапно. Компонент Phalcon\\Paginator
+предлагает простой и удобный способ для этого случая.
 
-Data Adapters
--------------
-This component makes use of adapters to encapsulate different sources of data:
+Адаптеры данных
+---------------
+Компонент имеет встроенные адаптеры для разделения данных на страницы:
 
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter      | Description                                                                                                                                                                 |
-+==============+=============================================================================================================================================================================+
-| NativeArray  | Use a PHP array as source data                                                                                                                                              |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this paginator don't be used to paginate a large number of records |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
-+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------+---------------------------------------------------------+
+| Адаптер                         | Описание                                                |
++=================================+=========================================================+
+| Нативные массивы (NativeArray)  | Использует стандартные PHP-массивы                      |
++---------------------------------+---------------------------------------------------------+
+| Модели (Model)                  | Использует объекты типа Phalcon\\Mvc\\Model\\Resultset  |
++---------------------------------+---------------------------------------------------------+
+| QueryBuilder                    | Использует обхект Phalcon\\Mvc\\Model\\Query\\Builder   |
++---------------------------------+---------------------------------------------------------+
 
-Examples
---------
-In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
+Пример
+------
+В примере, приведенном ниже, пагинатор будет использовать в качестве источника результат запроса данных модели, и будет выводить
+данные по 10 записей на странице:
 
 .. code-block:: php
 
     <?php
 
-    // Current page to show
-    // In a controller this can be:
+    // Текущая страница
+    // В контроллерах можно использовать:
     // $this->request->getQuery('page', 'int'); // GET
     // $this->request->getPost('page', 'int'); // POST
     $currentPage = (int) $_GET["page"];
 
-    // The data set to paginate
+    // Набор данных для разбивки на страницы
     $robots = Robots::find();
 
-    // Create a Model paginator, show 10 rows by page starting from $currentPage
+    // Создаём пагинатор, отображаются 10 элементов на странице, начиная с текущей - $currentPage
     $paginator = new \Phalcon\Paginator\Adapter\Model(
         array(
             "data" => $robots,
@@ -43,19 +44,19 @@ In the example below, the paginator will use as its source data the result of a 
         )
     );
 
-    // Get the paginated results
+    // Получение результатов работы ппагинатора
     $page = $paginator->getPaginate();
 
-Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page
-object that contains the paginated data. It can be used for generating the pagination:
+Переменная $currentPage указывает то, какая страница сейчас отображается. Метод $paginator->getPaginate() возвращает содержащие
+данные разбивки объект $page. Он может быть использован для вывода данные с разделением на страницы:
 
 .. code-block:: html+php
 
     <table>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Type</th>
+            <th>Имя</th>
+            <th>Тип</th>
         </tr>
         <?php foreach ($page->items as $item) { ?>
         <tr>
@@ -66,26 +67,26 @@ object that contains the paginated data. It can be used for generating the pagin
         <?php } ?>
     </table>
 
-The $page object also contains navigation data:
+Объект $page также содержит данные для навигации:
 
 .. code-block:: html+php
 
-    <a href="/robots/search">First</a>
-    <a href="/robots/search?page=<?= $page->before; ?>">Previous</a>
-    <a href="/robots/search?page=<?= $page->next; ?>">Next</a>
-    <a href="/robots/search?page=<?= $page->last; ?>">Last</a>
+    <a href="/robots/search">Первая</a>
+    <a href="/robots/search?page=<?= $page->before; ?>">Предыдущая</a>
+    <a href="/robots/search?page=<?= $page->next; ?>">Следующая</a>
+    <a href="/robots/search?page=<?= $page->last; ?>">Последняя</a>
 
-    <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
+    <?php echo "Вы на странице ", $page->current, " из ", $page->total_pages; ?>
 
-Adapters Usage
---------------
-An example of the source data that must be used for each adapter:
+Использование адаптера
+----------------------
+Пример источника данных, который должен быть использован для каждого адаптера:
 
 .. code-block:: php
 
     <?php
 
-    //Passing a resultset as data
+    // Передача данных модели
     $paginator = new \Phalcon\Paginator\Adapter\Model(
         array(
             "data"  => Products::find(),
@@ -94,7 +95,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing an array as data
+    // Передача данных из массива
     $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
         array(
             "data"  => array(
@@ -109,7 +110,7 @@ An example of the source data that must be used for each adapter:
         )
     );
 
-    //Passing a querybuilder as data
+    // Передача данных querybuilder
 
     $builder = $this->modelsManager->createBuilder()
         ->columns('id, name')
@@ -123,31 +124,31 @@ An example of the source data that must be used for each adapter:
     ));
 
 
-Page Attributes
----------------
-The $page object has the following attributes:
+Атрибуты страниц
+----------------
+Объект $page содержит следующие атрибуты:
 
-+-------------+--------------------------------------------------------+
-| Attribute   | Description                                            |
-+=============+========================================================+
-| items       | The set of records to be displayed at the current page |
-+-------------+--------------------------------------------------------+
-| current     | The current page                                       |
-+-------------+--------------------------------------------------------+
-| before      | The previous page to the current one                   |
-+-------------+--------------------------------------------------------+
-| next        | The next page to the current one                       |
-+-------------+--------------------------------------------------------+
-| last        | The last page in the set of records                    |
-+-------------+--------------------------------------------------------+
-| total_pages | The number of pages                                    |
-+-------------+--------------------------------------------------------+
-| total_items | The number of items in the source data                 |
-+-------------+--------------------------------------------------------+
++-------------+----------------------------------------------+
+| Атрибут     | Описание                                     |
++=============+==============================================+
+| items       | Набор записей для вывода на текущей странице |
++-------------+----------------------------------------------+
+| current     | Текущая страница                             |
++-------------+----------------------------------------------+
+| before      | Номер предыдущей страницы                    |
++-------------+----------------------------------------------+
+| next        | Номер следующей страницы                     |
++-------------+----------------------------------------------+
+| last        | Номер последней страницы                     |
++-------------+----------------------------------------------+
+| total_pages | Общее число страниц                          |
++-------------+----------------------------------------------+
+| total_items | Число записей в источнике                    |
++-------------+----------------------------------------------+
 
-Implementing your own adapters
-------------------------------
-The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+Реализация собственных адаптеров
+--------------------------------
+Для создания адаптера необходимо реализовать интерфейс :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` или расширить существующий:
 
 .. code-block:: php
 
@@ -157,21 +158,21 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
     {
 
         /**
-         * Adapter constructor
+         * Конструктор адаптера
          *
          * @param array $config
          */
         public function __construct($config);
 
         /**
-         * Set the current page number
+         * Установка текущей страницы
          *
          * @param int $page
          */
         public function setCurrentPage($page);
 
         /**
-         * Returns a slice of the resultset to show in the pagination
+         * Возвращает срез данных для вывода
          *
          * @return stdClass
          */

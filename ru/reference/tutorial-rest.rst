@@ -1,6 +1,6 @@
 Урок 3: Создание простейшего REST API
 =====================================
-В этом уроке мы объясним, как создать простейшее приложение, предоставляющее RESTful_ API с использованием 
+В этом уроке мы объясним, как создать простейшее приложение, предоставляющее RESTful_ API с использованием
 различных HTTP методов:
 
 * GET для получения и поиска данных
@@ -62,7 +62,7 @@
 
     $app = new \Phalcon\Mvc\Micro();
 
-    //define the routes here
+    // тут определяются роуты
 
     $app->handle();
 
@@ -74,32 +74,32 @@
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Retrieves all robots
+    // Получение списка всех роботов
     $app->get('/api/robots', function() {
 
     });
 
-    //Searches for robots with $name in their name
+    // Поиск роботов с $name в названии
     $app->get('/api/robots/search/{name}', function($name) {
 
     });
 
-    //Retrieves robots based on primary key
+    // Получение робота по указанному ключу
     $app->get('/api/robots/{id:[0-9]+}', function($id) {
 
     });
 
-    //Adds a new robot
+    // Добавление нового робота
     $app->post('/api/robots', function() {
 
     });
 
-    //Updates robots based on primary key
+    // Обновление робота по ключу
     $app->put('/api/robots/{id:[0-9]+}', function() {
 
     });
 
-    //Deletes robots based on primary key
+    // Удаление робота по ключу
     $app->delete('/api/robots/{id:[0-9]+}', function() {
 
     });
@@ -113,15 +113,8 @@
 Когда определено соответствие роутов запрашиваемым URI, тогда приложение выполняет соответствующие им обработчики.
 
 Создание модели
----------------
-Our API provides information about 'robots', these data are stored in a database. The following model allows us to
-access that table in an object-oriented way. We have implemented some business rules using built-in validators
-and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
-application:
-Наше API предоставляет информацию о "роботах", хранящуюся в базе данных. Описанная ниже модель позволяет нам
-получить доступ к таблице объектно-ориентированным путём. Мы реализуем немного бизнес-правил, используя встроенные
-валидаторы с простейшими проверками. Мы делаем это, чтобы иметь уверенность в том, что сохраняемые данные отвечают
-требованиям нашего приложения:
+----------------
+Наше API предоставляет информацию о "роботах", хранящуюся в базе данных. Описанная ниже модель позволяет нам получить доступ к таблице объектно-ориентированным путём. Мы реализуем немного бизнес-правил, используя встроенные валидаторы с простейшими проверками. Мы делаем это, чтобы иметь уверенность в том, что сохраняемые данные отвечают требованиям нашего приложения:
 
 .. code-block:: php
 
@@ -137,7 +130,7 @@ application:
 
         public function validation()
         {
-            //Type must be: droid, mechanical or virtual
+            // Тип робота должен быть: droid, mechanical или virtual
             $this->validate(new InclusionIn(
                 array(
                     "field"  => "type",
@@ -145,7 +138,7 @@ application:
                 )
             ));
 
-            //Robot name must be unique
+            // Имя робота должно быть уникально
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
@@ -153,12 +146,12 @@ application:
                 )
             ));
 
-            //Year cannot be less than zero
+            // Год не может быть меньше нулевого
             if ($this->year < 0) {
                 $this->appendMessage(new Message("The year cannot be less than zero"));
             }
 
-            //Check if any messages have been produced
+            // Проверяет, были ли получены какие-либо сообщения при валидации
             if ($this->validationHasFailed() == true) {
                 return false;
             }
@@ -174,7 +167,7 @@ application:
 
     $di = new \Phalcon\DI\FactoryDefault();
 
-    //Set up the database service
+    // Настройка сервиса базы данных
     $di->set('db', function(){
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
@@ -184,13 +177,10 @@ application:
         ));
     });
 
-    //Create and bind the DI to the application
     $app = new \Phalcon\Mvc\Micro($di);
 
 Получение данных
 ----------------
-The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
-perform this simple query returning the results as JSON:
 Сначала мы реализуем обработчик, который отвечает на GET-запрос и возвращает всех доступных роботов. Для выполнения
 этой задачи будем использовать PHQL, который будет возвращать результат выполнения простого запроса в формате JSON:
 
@@ -205,7 +195,7 @@ perform this simple query returning the results as JSON:
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach ($robots as $robot) {
+        foreach( $robots as $robot){
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -234,7 +224,8 @@ perform this simple query returning the results as JSON:
         ));
 
         $data = array();
-        foreach ($robots as $robot) {
+
+        foreach ($robots as $robot){
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
