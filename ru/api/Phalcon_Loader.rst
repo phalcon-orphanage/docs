@@ -66,7 +66,7 @@ Register namespaces and their related directories
 
 
 
-public  **getNamespaces** ()
+public *array*  **getNamespaces** ()
 
 Return current namespaces registered in the autoloader
 

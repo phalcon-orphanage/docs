@@ -145,8 +145,9 @@ Returns a route object by its name
 
 
 
-abstract public  **isExactControllerName** ()
+abstract public *bool*  **isExactControllerName** ()
 
-...
+Returns whether controller name should not be mangled
+
 
 

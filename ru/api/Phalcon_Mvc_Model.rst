@@ -1083,7 +1083,13 @@ Returns the instance as an array representation
 
 public static  **setup** (*array* $options)
 
-Enables/disables options in the ORM
+Enables/disables options in the ORM Available options:
+	events                — Enables/Disables globally the internal events
+	virtualForeignKeys    — Enables/Disables virtual foreign keys
+	columnRenaming        — Enables/Disables column renaming
+	notNullValidations    — Enables/Disables automatic not null validation
+	exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails
+	phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
 
 
 

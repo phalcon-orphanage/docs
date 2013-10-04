@@ -24,7 +24,24 @@ Methods
 
 public  **__construct** ([*array* $params], [:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
-Phalcon\\Mvc\\Model\\Query\\Builder constructor
+Phalcon\\Mvc\\Model\\Query\\Builder constructor 
+
+.. code-block:: php
+
+    <?php
+
+     $params = array(
+        'models'     => array('Users'),
+        'columns'    => array('id', 'name', 'status'),
+        'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
+        'group'      => array('id', 'name'),
+        'having'     => "name = 'Kamil'",
+        'order'      => array('name', 'id'),
+        'limit'      => 20,
+        'offset'     => 20,
+    );
+    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
+
 
 
 
