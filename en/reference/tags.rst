@@ -105,6 +105,9 @@ Same links generated with Volt:
     <!-- for a named route -->
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
 
+    <!-- for a named route with class -->
+    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
+
 Creating Forms
 --------------
 Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:
