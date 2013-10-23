@@ -324,7 +324,7 @@
             $connection = $this->_di->getShared('db');
 
             // Этот метод так же требует сервиса фильтрации входных данных
-            $filter = $this->_db->get('filter');
+            $filter = $this->_di->get('filter');
 
         }
 
