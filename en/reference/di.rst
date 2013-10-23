@@ -324,7 +324,7 @@ of our component:
             $connection = $this->_di->getShared('db');
 
             //This method also requires an input filtering service
-            $filter = $this->_db->get('filter');
+            $filter = $this->_di->get('filter');
 
         }
 
