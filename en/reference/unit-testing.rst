@@ -31,7 +31,7 @@ Or if you don't have composer you can install phpunit via pear:
   pear install pear.phpunit.de/PHPUnit
 
 
-Once phpunit is installed create directory called 'tests' in your root directory:
+Once phpunit is installed create a directory called 'tests' in your root directory:
 
 .. code-block:: bash
 
@@ -143,12 +143,11 @@ This will run any tests under the tests/ directory.
 Sample unit test
 ----------------
 To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you
-to do is create the files and phpunit will run the tests for you.
+need to do is create the files and phpunit will run the tests for you.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the DI and get it 
-the UnitTestCase file.
+This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.
 
-First create a base unit test called UnitTestCase.php in your /tests folder:
+First create a base unit test called UnitTestCase.php in your /tests directory:
 
 .. code-block:: php
 
@@ -178,7 +177,7 @@ First create a base unit test called UnitTestCase.php in your /tests folder:
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
   
-          // get any DI components here, if you have a config, be sure to pass it to the parent
+          // get any DI components here. If you have a config, be sure to pass it to the parent
   
           parent::setUp($di);
   
@@ -196,7 +195,7 @@ First create a base unit test called UnitTestCase.php in your /tests folder:
       }
   }
   
-It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namesace
+It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namespace
 'Test'. So create a file called \tests\Test\UnitTest.php:
 
 .. code-block:: php
