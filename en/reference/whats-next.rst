@@ -33,7 +33,7 @@ Xhprof_ is another interesting extension to profile PHP applications. Add the fo
 
     xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
-Then at the end of the file save the profiling data:
+Then at the end of the file save the profiled data:
 
 .. code-block:: php
 
@@ -50,7 +50,7 @@ Then at the end of the file save the profiling data:
 
     echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in html viewer to analize the profile data:
+Xhprof provides a built-in html viewer to analize the profiled data:
 
 .. figure:: ../_static/img/xhprof-2.jpg
     :align: center
@@ -60,7 +60,7 @@ Xhprof provides a built-in html viewer to analize the profile data:
 
 Profiling SQL Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important to increase the performance
+Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance
 in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
 
 .. code-block:: ini
@@ -107,7 +107,7 @@ Javascript evaluation and CSS styling.
 
 Use a recent PHP version
 ------------------------
-PHP is faster every day, using the latest version improves the performance of your applications and also Phalcon.
+PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
 
 Use a PHP Bytecode Cache
 ------------------------
@@ -122,7 +122,7 @@ PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension
 
 Do blocking work in the background
 ----------------------------------
-Process a video, send e-mails, compress a file or an image are slow tasks that must be processed in background jobs.
+Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs.
 There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
 * `Beanstalkd <http://kr.github.io/beanstalkd/>`_
