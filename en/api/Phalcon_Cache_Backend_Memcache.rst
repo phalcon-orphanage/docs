@@ -130,3 +130,15 @@ Gets the last lifetime set
 
 
 
+public *int*  **increment** (*int|string* $keyname, [*int* $step = 1]) 
+
+Atomic increment $keyname by $step
+
+
+
+public *int*  **decrement** (*int|string* $keyname, [*int* $step = 1]) 
+
+Atomic decrement $keyname by $step
+
+
+

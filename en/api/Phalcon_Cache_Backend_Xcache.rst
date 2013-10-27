@@ -121,3 +121,15 @@ Gets the last lifetime set
 
 
 
+public *int*  **increment** (*int|string* $keyname, [*int* $step = 1]) 
+
+If xcache_inc exists, this is an atomic increment, otherwise it wraps the functionality non-atomic. Increment $keyname by $step
+
+
+
+public *int*  **decrement** (*int|string* $keyname, [*int* $step = 1]) 
+
+If xcache_dec exists, this is an atomic decrement, otherwise it wraps the functionality non-atomic. Decrement $keyname by $step
+
+
+
