@@ -1,21 +1,21 @@
 Консольные приложения
 =====================
-CLI приложения выполняются в командной строке. Они часто используются для работы cron'a, скриптов с долгим временем выполнения, командных утилит и т.п.
+CLI приложения выполняются в командной строке. Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
 
-Structure
+Структура
 ---------
-A minimal structure of a CLI application will look like this:
+Минимальная структура приложений CLI будет выглядеть следующим образом:
 
 * app/config/config.php
 * app/tasks/MainTask.php
-* app/cli.php <-- main bootstrap file
+* app/cli.php <-- основной загрузочный файл
 
-Creating a Bootstrap
---------------------
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper
-in web applications, we use a cli.php file for bootstrapping the application.
+Создани загрузочного файла
+--------------------------
+Как и в обычных приложениях MVC, загрузочный файл используется для загрузки приложения. Вместо загрузочного файла 
+index.php, как в веб-приложениях, мы используем cli.php.
 
-Below is a sample boostrap that is being used for this example.
+Ниже приведен образец загрузочного файлов, который используется для этого примера.
 
 .. code-block:: php
 
@@ -26,15 +26,15 @@ Below is a sample boostrap that is being used for this example.
 
     define('VERSION', '1.0.0');
 
-    //Using the CLI factory default services container
+    //Используем стандартный для CLI контейнер зависимостей 
     $di = new CliDI();
 
-    // Define path to application directory
+    // Определяем путь к каталогу приложений
     defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
 
     /**
-     * Register the autoloader and tell it to register the tasks directory
+     * Регистрируем автозагрузчик, и скажем ему, чтобы зарегистрировал каталог задач
      */
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(
@@ -44,18 +44,18 @@ Below is a sample boostrap that is being used for this example.
     );
     $loader->register();
 
-    // Load the configuration file (if any)
+    // Загружаем файл конфигурации, если он есть
     if(is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);
     }
 
-    //Create a console application
+    //Создаем консольное приложение
     $console = new ConsoleApp();
     $console->setDI($di);
 
     /**
-    * Process the console arguments
+    * Определяем консольные аргументы
     */
     $arguments = array();
     $params = array();
@@ -73,12 +73,12 @@ Below is a sample boostrap that is being used for this example.
         $arguments['params'] = $params;
     }
 
-    // define global constants for the current task and action
+    // определяем глобальные константы для текущей задачи и действия
     define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));
     define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
 
     try {
-        // handle incoming arguments
+        // обрабатываем входящие аргументы
         $console->handle($arguments);
     }
     catch (\Phalcon\Exception $e) {
@@ -86,7 +86,7 @@ Below is a sample boostrap that is being used for this example.
         exit(255);
     }
 
-This piece of code can be run using:
+Эта часть кода может быть запущена с помощью команды:
 
 .. code-block:: bash
 
@@ -95,12 +95,13 @@ This piece of code can be run using:
     This is the default task and the default action
 
 
-Tasks
------
-Tasks work similar to controllers. Any CLI application needs at least a mainTask and a mainAction and every task needs
-to have a mainAction which will run if no action is given explicitly.
+Задачи
+------
+Принцип работы задач похож на работу контролеров. Любое приложение CLI нуждается, по крайней 
+мере, в MainTask и mainAction, и каждая задача должна иметь mainAction, который будет выполняться, 
+если действие не задано явно.
 
-Below is an example of the app/tasks/MainTask.php file
+Ниже приведен пример задачи из файла 'app/tasks/MainTask.php':
 
 .. code-block:: php
 
@@ -116,11 +117,11 @@ Below is an example of the app/tasks/MainTask.php file
     }
 
 
-Processing action parameters
-----------------------------
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Обработка параметров в Action
+-----------------------------
+Имеется возможность передавать параметры в Action, код для этого уже присутствует в образце загрузочного файла.
 
-If you run the the application with the following parameters and action:
+Если вы запустите приложение со следующими параметрами и Action:
 
 
 .. code-block:: php
@@ -151,21 +152,20 @@ If you run the the application with the following parameters and action:
    best regards, universe
 
 
-Running tasks in a chain
+Запуск цепочки команд
 ------------------------
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself
-to the DI:
+Вы также можете запустить цепочку задач, для этого вы должны добавить саму консоль в контейнер зависимостей:
 
 .. code-block:: php
 
      $di->setShared('console', $console);
 
      try {
-        // handle incoming arguments
+        // обрабатываем входящие аргументы
         $console->handle($arguments);
     }
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Затем, вы сможете использовать консоль внутри любой задачи. Ниже приведен пример модифицированного MainTask.php:
 
 .. code-block:: php
 
@@ -187,5 +187,4 @@ Then you can use the console inside of any task. Below is an example of a modifi
 
     }
 
-However, it's a better idea to extend \\Phalcon\\CLI\\Task and implement this kind of logic there.
-
+Тем не менее, лучшей идеей будет реализовать свой класс, расширяющий \Phalcon\CLI\Task, и реализовать такую логику там. 
