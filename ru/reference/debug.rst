@@ -5,16 +5,16 @@
     :align: center
 
 PHP предлагает набор инструментов для отладки приложений с выводом уведомлений, предупреждений, ошибок и исключений.
-Класс `Exception class`_ передает различную информацию, там где вызывается исключение: файл, линию, сообщение, код ошибки, список вызовов и т.п.
+Класс `Exception class`_ передает различную информацию, там, где вызывается исключение: файл, линию, сообщение, код ошибки, список вызовов и т.п.
 ООП системы, такие как Phalcon, в основном используют этот класс в качестве родительского для добавления различного функционала и предоставления
 информации разработчику или пользователю.
 
-Несмотря на то что Phalcon написан на языке C, он вызывает методы из пользовательского уровня PHP, обеспечивая возможность
+Несмотря на то, что Phalcon написан на языке C, он вызывает методы из пользовательского уровня PHP, обеспечивая возможность
 отладки и совместимость с другими приложениями.
 
 Перехват исключений
 -------------------
-Существует основной сопсоб перехвата исключений, через конструкцию try/catch:
+Существует основной способ перехвата исключений, через конструкцию try/catch:
 
 .. code-block:: php
 
@@ -28,7 +28,7 @@ PHP предлагает набор инструментов для отладк
 
     }
 
-Исключение перехваченное в этом блоке попадает в переменную $e. А :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` унаследован от
+Исключение, перехваченное в этом блоке, попадает в переменную $e. А :doc:`Phalcon\\Exception <../api/Phalcon_Exception>` унаследован от
 PHP класса `Exception class`_ и используется, чтобы понять, является ли исключение из Phalcon или из PHP.
 
 Все исключение сгенерированные в PHP базируются на классе `Exception class`_, и имеют следующий набор элементов:
@@ -77,7 +77,7 @@ PHP класса `Exception class`_ и используется, чтобы по
         echo $e->getTraceAsString();
     }
 
-Таким образом можно легко узнать, где было сгенерировано исключение (файл, строка) и какие компоненты участвовали в генерации:
+Таким образом, можно легко узнать, где было сгенерировано исключение (файл, строка) и какие компоненты участвовали в генерации:
 
 .. code-block:: html
 
@@ -104,15 +104,15 @@ PHP класса `Exception class`_ и используется, чтобы по
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-Как вы можете увидеть из вывода исключения все методы прозрачны и можно полностью отследить работу приложения, а так же параметры,
+Как вы можете увидеть из вывода исключения, все методы прозрачны, и можно полностью отследить работу приложения, а так же параметры,
 которые передавались в методы. Метод `Exception::getTrace`_ предоставляет дополнительную информацию, если необходимо.
 
-Debug component
----------------
-Phalcon provides a debug component that allows the developer to easily find errors produced in an application
-created with the framework.
+Компонент отладки
+-----------------
+Phalcon предоставляет компонент отладки, который позволяет разработчикам легко находить ошибки, возникающие в 
+приложении, созданным с помощью фрэймворка.
 
-The following screencast explains how it works:
+Следующий ролик объясняет, как это работает:
 
 .. raw:: html
 
@@ -120,7 +120,7 @@ The following screencast explains how it works:
         <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-To enable it, add the following to your bootstrap:
+Чтобы включить его, вставьте следующие строки в файл загрузки приложения:
 
 .. code-block:: php
 
@@ -129,12 +129,13 @@ To enable it, add the following to your bootstrap:
     $debug = new \Phalcon\Debug();
     $debug->listen();
 
-Any Try/Catch blocks must be removed or disabled to make this component work properly.
+Любой обработчик исключений (try/catch) должен быть удален или заблокирован, чтобы позволить этому компоненту самому
+перехватывать всплывающие исключения.
 
 Рефлексия (Reflection)
 ----------------------
 Любой экземпляр класса в Phalcon предоставляет тоже поведение, что и во всех экземплярах PHP классов. Можно использовать
-`Reflection API`_ или просто вывести любой объект, чтобы увидить его состояние:
+`Reflection API`_ или просто вывести любой объект, чтобы увидеть его состояние:
 
 .. code-block:: php
 
@@ -143,7 +144,7 @@ Any Try/Catch blocks must be removed or disabled to make this component work pro
     $router = new Phalcon\Mvc\Router();
     print_r($router);
 
-Таким образом можно узнать всю информацию о любом объекте. Этот пример выводит такую информацию:
+Таким образом, можно узнать всю информацию о любом объекте. Этот пример выводит такую информацию:
 
 .. code-block:: html
 
@@ -204,7 +205,7 @@ Any Try/Catch blocks must be removed or disabled to make this component work pro
 XDebug_ великолепный инструмент для отладки PHP приложений. Он так же является дополнением, написанным на языке C, и вы можете использовать
 его вместе с Phalcon без дополнительной конфигурации или побочных эффектов.
 
-The following screencast shows a Xdebug session with Phalcon:
+Следующий ролик показывает работу Xdebug  с Phalcon:
 
 .. raw:: html
 
@@ -212,13 +213,13 @@ The following screencast shows a Xdebug session with Phalcon:
         <iframe src="http://player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
-
+После того, как вы установите Xdebug, вы сможете использовать свой API, чтобы получить более подробные 
+сведения об исключениях и сообщениях.
 .. highlights::
 
-    We highly recommend use at least XDebug 2.2.3 for a better compatibility with Phalcon
+    Мы настоятельно рекомендуем использовать по крайней мере XDebug версии 2.2.3 для лучшей совместимости с Phalcon
 
-Слудующий пример использует xdebug_print_function_stack_ для остановки выполнения программы и вывода стека вызовов:
+Следующий пример использует xdebug_print_function_stack_ для остановки выполнения программы и вывода стека вызовов:
 
 .. code-block:: php
 
