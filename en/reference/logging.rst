@@ -185,22 +185,6 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
 .. code-block:: php
 
     <?php
-
-    use Phalcon\Logger\Adapter\Firephp as Firephp;
-
-    $logger = new Firephp("");
- 	$logger->log("This is a message");
- 	$logger->log("This is an error", \Phalcon\Logger::ERROR);
- 	$logger->error("This is another error");
-    
-FirePHP Logger
-^^^^^^^^^^^^^^
-This logger sends messages to the FirePHP.
-
-.. code-block:: php
-
-    <?php
-
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // Basic Usage
@@ -211,6 +195,22 @@ This logger sends messages to the FirePHP.
         'option' => LOG_NDELAY,
         'facility' => LOG_MAIL
     ));    
+    
+    
+FirePHP Logger
+^^^^^^^^^^^^^^
+This logger sends messages to the FirePHP.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Logger\Adapter\Firephp as Firephp;
+
+    $logger = new Firephp("");
+ 	$logger->log("This is a message");
+ 	$logger->log("This is an error", \Phalcon\Logger::ERROR);
+ 	$logger->error("This is another error");
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
