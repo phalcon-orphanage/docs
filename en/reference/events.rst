@@ -242,7 +242,7 @@ A listener is simply a class that implements any of all the events triggered by 
     $myComponent = new MyComponent();
 
     //Bind the eventsManager to the instance
-    $myComponent->setEventsManager($myComponent);
+    $myComponent->setEventsManager($eventsManager);
 
     //Attach the listener to the EventsManager
     $eventsManager->attach('my-component', new SomeListener());
