@@ -1,5 +1,5 @@
-Class **Phalcon\\Db\\Adapter**
-==============================
+Abstract class **Phalcon\\Db\\Adapter**
+=======================================
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 

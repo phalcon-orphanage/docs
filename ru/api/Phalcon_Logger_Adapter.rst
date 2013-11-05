@@ -1,5 +1,5 @@
-Class **Phalcon\\Logger\\Adapter**
-==================================
+Abstract class **Phalcon\\Logger\\Adapter**
+===========================================
 
 Base class for Phalcon\\Logger adapters
 

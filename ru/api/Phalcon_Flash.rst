@@ -1,5 +1,5 @@
-Class **Phalcon\\Flash**
-========================
+Abstract class **Phalcon\\Flash**
+=================================
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
 

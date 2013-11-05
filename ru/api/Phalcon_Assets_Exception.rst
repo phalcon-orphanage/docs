@@ -1,7 +1,7 @@
 Class **Phalcon\\Assets\\Exception**
 ====================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Phalcon\\DI\\Exception  Exceptions thrown in Phalcon\\Assets will use this class
 

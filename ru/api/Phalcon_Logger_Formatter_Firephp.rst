@@ -1,7 +1,7 @@
 Class **Phalcon\\Logger\\Formatter\\Firephp**
 =============================================
 
-*extends* :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
+*extends* abstract class :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 
@@ -15,6 +15,16 @@ public *string*  **getTypeString** (*integer* $type)
 
 Returns the string meaning of a logger constant
 
+
+
+public  **getShowBacktrace** ()
+
+...
+
+
+public  **setShowBacktrace** ([*unknown* $show])
+
+...
 
 
 public *string*  **format** (*string* $message, *int* $type, *int* $timestamp)

@@ -1,5 +1,5 @@
-Class **Phalcon\\Logger\\Formatter**
-====================================
+Abstract class **Phalcon\\Logger\\Formatter**
+=============================================
 
 This is a base class for logger formatters
 

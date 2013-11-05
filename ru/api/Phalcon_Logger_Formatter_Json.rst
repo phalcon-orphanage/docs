@@ -1,7 +1,7 @@
 Class **Phalcon\\Logger\\Formatter\\Json**
 ==========================================
 
-*extends* :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
+*extends* abstract class :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
 

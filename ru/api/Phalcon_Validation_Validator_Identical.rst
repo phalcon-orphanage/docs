@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation\\Validator\\Identical**
 ===================================================
 
-*extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
+*extends* abstract class :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
@@ -14,7 +14,7 @@ Checks if a value is identical to other
     use Phalcon\Validation\Validator\Identical;
     
     $validator->add('terms', new Identical(array(
-       'accepted' => 'yes',
+       'value'   => 'yes',
        'message' => 'Terms and conditions must be accepted'
     )));
 

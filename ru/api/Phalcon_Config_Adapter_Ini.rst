@@ -1,7 +1,7 @@
 Class **Phalcon\\Config\\Adapter\\Ini**
 =======================================
 
-*extends* :doc:`Phalcon\\Config <Phalcon_Config>`
+*extends* class :doc:`Phalcon\\Config <Phalcon_Config>`
 
 *implements* Countable, ArrayAccess
 

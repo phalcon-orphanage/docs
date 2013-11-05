@@ -1,5 +1,5 @@
-Class **Phalcon\\Validation\\Validator**
-========================================
+Abstract class **Phalcon\\Validation\\Validator**
+=================================================
 
 This is a base class for validators
 

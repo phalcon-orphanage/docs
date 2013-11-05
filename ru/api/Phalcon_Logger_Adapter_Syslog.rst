@@ -1,7 +1,7 @@
 Class **Phalcon\\Logger\\Adapter\\Syslog**
 ==========================================
 
-*extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 

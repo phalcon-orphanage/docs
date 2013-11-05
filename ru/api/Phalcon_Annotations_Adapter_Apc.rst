@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Adapter\\Apc**
 ============================================
 
-*extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 

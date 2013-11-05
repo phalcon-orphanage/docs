@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
@@ -55,7 +55,7 @@ Sets the default controller name
 
 
 
-public  **setControllerName** (*string* $controllerName)
+public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
 Sets the controller name to be dispatched
 

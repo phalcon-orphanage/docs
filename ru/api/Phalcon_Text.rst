@@ -1,5 +1,5 @@
-Class **Phalcon\\Text**
-=======================
+Abstract class **Phalcon\\Text**
+================================
 
 Provides utilities to work with texts
 

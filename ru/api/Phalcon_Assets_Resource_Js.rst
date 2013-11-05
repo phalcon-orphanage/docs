@@ -1,7 +1,7 @@
 Class **Phalcon\\Assets\\Resource\\Js**
 =======================================
 
-*extends* :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`
+*extends* class :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`
 
 Represents Javascript resources
 

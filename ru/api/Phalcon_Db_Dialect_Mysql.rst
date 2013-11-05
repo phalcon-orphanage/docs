@@ -1,7 +1,7 @@
 Class **Phalcon\\Db\\Dialect\\Mysql**
 =====================================
 
-*extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
+*extends* abstract class :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 

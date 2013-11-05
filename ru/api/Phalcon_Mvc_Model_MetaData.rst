@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\Model\\MetaData**
-=======================================
+Abstract class **Phalcon\\Mvc\\Model\\MetaData**
+================================================
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
