@@ -1,5 +1,5 @@
-Class **Phalcon\\Cache\\Backend**
-=================================
+Abstract class **Phalcon\\Cache\\Backend**
+==========================================
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 

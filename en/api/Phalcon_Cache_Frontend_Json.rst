@@ -14,7 +14,7 @@ Allows to cache data converting/deconverting them to JSON.  This adapters uses t
         "lifetime" => 172800
      ));
     
-    * //Create the Cache setting memcached connection options
+     //Create the Cache setting memcached connection options
      $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
     	'host' => 'localhost',
     	'port' => 11211,

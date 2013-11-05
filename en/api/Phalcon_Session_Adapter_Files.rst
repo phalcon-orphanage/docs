@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Adapter\\Files**
 ==========================================
 
-*extends* :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
 *implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`
 

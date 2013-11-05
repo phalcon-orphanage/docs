@@ -1,7 +1,7 @@
 Class **Phalcon\\DI\\FactoryDefault\\CLI**
 ==========================================
 
-*extends* :doc:`Phalcon\\DI\\FactoryDefault <Phalcon_DI_FactoryDefault>`
+*extends* class :doc:`Phalcon\\DI\\FactoryDefault <Phalcon_DI_FactoryDefault>`
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 

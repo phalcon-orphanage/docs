@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation**
 =============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -65,7 +65,7 @@ Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*string* $entity, *string* $data)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*object* $entity, *object|array* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 

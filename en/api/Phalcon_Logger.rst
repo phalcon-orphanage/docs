@@ -1,5 +1,5 @@
-Class **Phalcon\\Logger**
-=========================
+Abstract class **Phalcon\\Logger**
+==================================
 
 Phalcon\\Logger is a component whose purpose is create logs using different backends via adapters, generating options, formats and filters also implementing transactions.  
 

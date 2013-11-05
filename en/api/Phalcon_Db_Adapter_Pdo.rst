@@ -1,7 +1,7 @@
-Class **Phalcon\\Db\\Adapter\\Pdo**
-===================================
+Abstract class **Phalcon\\Db\\Adapter\\Pdo**
+============================================
 
-*extends* :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 

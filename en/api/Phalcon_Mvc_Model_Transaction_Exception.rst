@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Exception**
 =====================================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
+*extends* class :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 
 Exceptions thrown in Phalcon\\Mvc\\Model\\Transaction will use this class
 

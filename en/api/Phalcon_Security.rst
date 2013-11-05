@@ -72,7 +72,7 @@ Creates a password hash using bcrypt with a pseudo random salt
 
 
 
-public *boolean*  **checkHash** (*string* $password, *string* $passwordHash)
+public *boolean*  **checkHash** (*string* $password, *string* $passwordHash, [*int* $maxPasswordLength])
 
 Checks a plain text password and its hash version to check if the password matches
 

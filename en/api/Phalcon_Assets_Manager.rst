@@ -129,7 +129,7 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, [*unknown* $type])
+public  **output** (:doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>` $collection, *callback* $callback, [*string* $type])
 
 Traverses a collection calling the callback to generate its HTML
 

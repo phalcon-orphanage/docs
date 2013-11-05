@@ -50,7 +50,7 @@ Returns the real name of the uploaded file
 
 public *string*  **getTempName** ()
 
-Returns the temporary name of the uploaded file
+Returns the temporal name of the uploaded file
 
 
 

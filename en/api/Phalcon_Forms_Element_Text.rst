@@ -1,7 +1,7 @@
 Class **Phalcon\\Forms\\Element\\Text**
 =======================================
 
-*extends* :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
+*extends* abstract class :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 

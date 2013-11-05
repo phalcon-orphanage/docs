@@ -390,12 +390,12 @@ foreach ($classes as $className) {
 		$code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
 		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
 	} else {
-		
+
 		$classPrefix = 'Class';
 		if (strtolower($typeClass) != 'public') {
 			$classPrefix = ucfirst(strtolower($typeClass)) . ' class';
 		}
-		
+
 		$code = $classPrefix . ' **' . $nsClassName . '**' . PHP_EOL;
 		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
 	}
@@ -408,12 +408,12 @@ foreach ($classes as $className) {
 				$extendsPath  = str_replace("\\", "_", $extendsName);
 				$extendsName  = str_replace("\\", "\\\\", $extendsName);
 				$reflector    = new ReflectionClass($extendsClass);
-				
+
 				$prefix = 'class';
 				if ($reflector->isAbstract() == true) {
 					$prefix = 'abstract class';
 				}
-				
+
 				$code.='*extends* ' . $prefix . ' :doc:`' . $extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
 			} else {
 				$code.='*extends* ' . $extendsName . PHP_EOL . PHP_EOL;

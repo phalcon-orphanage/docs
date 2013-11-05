@@ -1,7 +1,7 @@
 Class **Phalcon\\Flash\\Session**
 =================================
 
-*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+*extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 

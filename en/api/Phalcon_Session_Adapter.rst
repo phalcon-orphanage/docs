@@ -1,5 +1,5 @@
-Class **Phalcon\\Session\\Adapter**
-===================================
+Abstract class **Phalcon\\Session\\Adapter**
+============================================
 
 Base class for Phalcon\\Session adapters
 
