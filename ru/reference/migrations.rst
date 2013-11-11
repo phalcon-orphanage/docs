@@ -1,13 +1,18 @@
-Database Migrations
-===================
-Migrations are a convenient way for you to alter your database in a structured and organized manner.
+Миграции базы данных
+====================
+Миграции это удобный для вас способ, структурировано и организовано изменять ваши базы данных.
 
 .. highlights::
-    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.3.11 or greater installed.
+    **Важно:** Миграции доступны через :doc:`Phalcon Developer Tools <tools>`. 
+    Вам потребуется Phalcon версии не ниже 0.5.0для использования инструментов разработчика. 
+    Также рекомендуется использовать PHP версии 5.3.11 или более поздней версии.
 
-Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
+Часто при разработке необходимо вносить изменения на production окружении. Некоторые из этих изменений могут касаться 
+изменений в базе данных: новые столбцы, новые таблицы, удаление индексов и т.д. 
 
-When a migration is generated a set of classes are created to describe how your database is structured at that moment. These classes can be used to synchronize the schema structure on remote databases setting your database ready to work with the new changes that your application implements. Migrations describe these transformations using plain PHP.
+При миграции создается набор классов, чтобы описать, как ваша база данных структурирована в данный момент. Эти классы 
+могут использоваться для синхронизации структуры схемы в удаленных базах данных и подготовки вашей базы данных к работе 
+с новыми изменениями, которые реализует ваше приложение. Миграции описывают эти изменения с использованием простого PHP.
 
 .. raw:: html
 
@@ -15,34 +20,42 @@ When a migration is generated a set of classes are created to describe how your 
         <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-Schema Dumping
---------------
-The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
+Дампинг схемы
+-------------
+:doc:`Phalcon Developer Tools <tools>` предоставляет скрипт для управления миграциями (генерация, запуск и откат).
 
-The available options for generating migrations are:
+Доступные опции для генерации миграций: 
 
 .. figure:: ../_static/img/migrations-1.png
    :align: center
 
-Running this script without any parameters will simply dump every object (tables and views) from your database in migration classes.
+Запуск скрипта без параметров делает простой дамп каждого объекта (таблиц и представлений) из базы данных в классы 
+миграции.
 
-Each migration has a version identifier associated to it. The version number allows us to identify if the migration is newer or older than the current 'version' of our database. Versions also inform Phalcon of the running order when executing a migration.
+Каждая миграция имеет идентификатор версии связанный с ним. Номер версии позволяет нам определить, является ли миграция
+старше или новее текущей версии нашей базы данных. Версии также сообщают Phalcon о рабочем состоянии при выполнении 
+миграции.
 
 .. figure:: ../_static/img/migrations-2.png
    :align: center
 
-When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
+При генерации миграций, инструкции отображаются в консоли для описания различных этапов миграции и времени выполнения 
+этих операторов. В конце концов, версия миграция будет создана. 
 
-By default :doc:`Phalcon Developer Tools <tools>` use the *app/migrations* directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+По умолчанию :doc:`Phalcon Developer Tools <tools>` использует директорию *app/migrations* для дампа файлов миграции.
+Вы можете изменить расположение, установив один из параметров по генерации скрипта. Каждая таблица в базе данных имеет 
+свой соответствующий класс, созданный в отдельном файле директории, ссылающейся на ее версию.
 
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
-Migration Class Anatomy
------------------------
-Each file contains a unique class that extends the Phalcon\\Mvc\\Model\\Migration These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back.
+Структура класса Migration
+--------------------------
+Каждый файл содержит уникальный класс, который расширяет Phalcon\Mvc\Model\Migration. Эти классы обычно имеют два 
+метода: up() и down(). Up() выполняет миграцию, а down() откатывает ее.
 
-Up() also contains the *magic* method morphTable(). The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
+Метод Up() также содержит магический метод morphTable(). Магия начинается тогда, когда он распознает изменения, 
+требующие синхронизации фактической таблицы в базе данных, приведенные выше.
 
 .. code-block:: php
 
@@ -134,45 +147,47 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
 
     }
 
-The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.0.0. morphTable() receives an associative array with 4 possible sections:
+Класс называется "ProductsMigration_100". Suffix 100 указывает на версию 1.0.0. morphTable() принимает ассоциативный 
+массив с 4 возможными типами данных:
 
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Index        | Description                                                                                                                                 | Optional |
+| Индекс       | Описание                                                                                                                                  | Optional |
 +==============+=============================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns                                                                                                        | No       |
+| "columns"    | Массив с набором столбцов таблицы.                                                                                                          | No       |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes.                                                                                                       | Yes      |
+| "indexes"    | Массив с набором индексов таблицы.                                                                                                          | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys).                                                                                     | Yes      |
+| "references" | Массив с набором ссылок на таблицы (внешние ключи).                                                                                         | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
+| "options"    | Массив с набором опций для создания таблицы. Эти опции зачастую связаны с системой базы данных, в которой миграция был сгенерирована.       | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Defining Columns
-^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
+Определение столбцов
+^^^^^^^^^^^^^^^^^^^^
+
+:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` используется для определения столбцов таблицы. it encapsulates column related features. Его конструктор принимает в качестве первого параметра имя столбца и массив, описывающий колонки. Доступны следующие опции при описании столбцов:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Option          | Description                                                                                                                                | Optional |
+| Опция           | Описание                                                                                                                                   | Optional |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` constant (see below)                                            | No       |
+| "type"          | Тип столбца. :doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` должен быть константой (смотрите ниже)                                    | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | Некоторые типы столбцов, как VARCHAR или INTEGER  могут иметь определенный размер                                                          | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Yes      |
+| "scale"         | Столбцы DECIMAL или NUMBER могут иметь разрешение точности, чтобы указать до какого десятичного знака необходимо хранить значение.         | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | INTEGER столбцы могут быть знаковыми или беззнаковыми. Эта опция не распространяется на другие типы столбцов                               | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | Столбец может хранить нулевые значения?                                                                                                    | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | С помощью этого атрибута столбец заполняется автоматически с автоинкрементным целым. Только один столбец в таблице может иметь этот атрибут| Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | Столбец должны быть расположены на первые позиции в порядке столбцов                                                                       | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | Колонка должна быть помещена после указанного столбца                                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Database migrations support the following database column types:
+Миграции базы данных поддерживают следующие типы столбцов базы данных:
 
 * Phalcon\\Db\\Column::TYPE_INTEGER
 * Phalcon\\Db\\Column::TYPE_DATE
@@ -182,29 +197,36 @@ Database migrations support the following database column types:
 * Phalcon\\Db\\Column::TYPE_CHAR
 * Phalcon\\Db\\Column::TYPE_TEXT
 
-Defining Indexes
-^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
+Определение индексов
+^^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` определяет индексы таблицы. Для создания индекса требуется 
+определить его имя и список столбцов. Заметим, что если любой индекс имеет название PRIMARY, то Phalcon создаст 
+индекс первичного ключа в этой таблице.
 
-Defining References
-^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
+Определение внешних ключей
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` определяет ссылки на таблицы (также называемые внешними 
+ключами). Следующие опции могут быть использованы для определения внешних ключей:
 
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| Index               | Description                                                                                         | Optional |
-+=====================+=====================================================================================================+==========+
-| "referencedTable"   | It's auto-descriptive. It refers to the name of the referenced table.                               | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "columns"           | An array with the name of the columns at the table that have the reference                          | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "referencedColumns" | An array with the name of the columns at the referenced table                                       | No       |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
-| "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      |
-+---------------------+-----------------------------------------------------------------------------------------------------+----------+
++---------------------+-----------------------------------------------------------------------------------------------------------------+----------+
+| Индекс              | Описание                                                                                                        | Optional |
++=====================+=================================================================================================================+==========+
+| "referencedTable"   | It's auto-descriptive. Содержит имя ссылочной таблицы.                                                          | No       |
++---------------------+-----------------------------------------------------------------------------------------------------------------+----------+
+| "columns"           | Массив с названием столбцов в таблице, которые имеют ссылки.                                                    | No       |
++---------------------+-----------------------------------------------------------------------------------------------------------------+----------+
+| "referencedColumns" | Массив с именем столбцов в указанной таблице.                                                                   | No       |
++---------------------+-----------------------------------------------------------------------------------------------------------------+----------+
+| "referencedTable"   | Ссылочной таблицы, может быть, находится в другой схеме или базе данных. Эта опция позволяет вам определить это.| Yes      |
++---------------------+-----------------------------------------------------------------------------------------------------------------+----------+
 
-Writing Migrations
-------------------
-Migrations aren't only designed to "morph" table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the :doc:`database component <db>`.
+Запись миграций
+---------------
+
+Миграции не только предназначены для "морфинга" таблицы. Миграция является обычным классом PHP, так что вы не ограничены
+этими функциями. Например, после добавления столбца можно написать код для установки значений этого столбца для 
+существующих записей. Для более подробной информации и примеров отдельных методов, 
+проверьте :doc:`database component <db>`.
 
 .. code-block:: php
 
@@ -225,15 +247,17 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     }
 
-Running Migrations
-------------------
-Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
+Запуск миграций
+---------------
+Как только сгенерированные миграции, загруженных на целевой сервер, вы можете легко запустить их, как показано в 
+следующем примере:
 
 .. figure:: ../_static/img/migrations-4.png
    :align: center
 
 .. figure:: ../_static/img/migrations-5.png
    :align: center
-
-Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.
-
+   
+В зависимости от того, насколько сильно устаревшей является база данных по миграции, Phalcon может запускать несколько 
+версий миграции в одном процессе миграции. Если указать целевую версию, Phalcon будет запускать нужные миграций пока не 
+достигнет указанной версии.
