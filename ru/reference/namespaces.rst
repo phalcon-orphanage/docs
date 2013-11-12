@@ -67,7 +67,7 @@
 
 Контроллеры в пространстве имён
 -------------------------------
-В следующем примере показано как использовать контроллер, который использует пространство имен:
+В следующем примере показано, как использовать контроллер, который использует пространство имен:
 
 .. code-block:: php
 
@@ -90,9 +90,9 @@
 
     }
 
-Models in Namespaces
---------------------
-Take the following into consideration when using models in namespaces:
+Модели в пространстве имён
+--------------------------
+Примите во внимание при использовании модели в пространстве имен следующее:
 
 .. code-block:: php
 
@@ -105,7 +105,7 @@ Take the following into consideration when using models in namespaces:
 
     }
 
-If models have relationships they must include the namespace too:
+Если модели имеют связи с другими моделями, то они тоже должны быть включены в пространство имен:
 
 .. code-block:: php
 
@@ -121,7 +121,7 @@ If models have relationships they must include the namespace too:
         }
     }
 
-In PHQL you must write the statements including namespaces:
+В PHQL вы должны писать запросы с указанием пространства имен:
 
 .. code-block:: php
 
