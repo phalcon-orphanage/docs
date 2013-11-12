@@ -725,10 +725,11 @@ The following built-in tests are available in Volt:
 
 Macros
 ------
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+Макросы могут быть использованы для избежания повторений в шаблоне, они действуют как функции PHP, они могут получать параметры и возвращать значения:
 
 .. code-block:: html+jinja
 
+   {# Макрос "Вывода списка ссылок на похожие темы" #}
     {%- macro related_bar(related_links) %}
         <ul>
             {%- for rellink in related_links %}
@@ -737,15 +738,15 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
         </ul>
     {%- endmacro %}
 
-    {# Print related links #}
+    {# Используем макрос "Вывода списка ссылок на пожие темы" #}
     {{ related_bar(links) }}
 
     <div>This is the content</div>
 
-    {# Print related links again #}
+    {# Используем макрос "Вывода списка ссылок на похожие темы" снова #}
     {{ related_bar(links) }}
 
-When calling macros, parameters can be passed by name:
+При использовании макросов, параметры могут быть переданы по имени:
 
 .. code-block:: html+jinja
 
@@ -757,10 +758,10 @@ When calling macros, parameters can be passed by name:
         </div>
     {%- endmacro %}
 
-    {# Call the macro #}
+    {# Использование макроса #}
     {{ error_messages('type': 'Invalid', 'message': 'The name is invalid', 'field': 'name') }}
 
-Macros can return values:
+Макросы могут возвращать значения:
 
 .. code-block:: html+jinja
 
@@ -768,10 +769,10 @@ Macros can return values:
         {% return text_field(name, 'class': class) %}
     {%- endmacro %}
 
-    {# Call the macro #}
+    {# Использование макроса #}
     {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 
-And receive optional parameters:
+И задавать параметры по умолчанию:
 
 .. code-block:: html+jinja
 
@@ -779,7 +780,7 @@ And receive optional parameters:
         {% return text_field(name, 'class': class) %}
     {%- endmacro %}
 
-    {# Call the macro #}
+    {# Использование макроса#}
     {{ '<p>' ~ my_input('name') ~ '</p>' }}
     {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 
