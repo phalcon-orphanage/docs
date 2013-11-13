@@ -204,7 +204,7 @@ The only requirement is to know the key that the data have been stored with.
     <?php
 
     // Delete an item with a specific key
-    $cache->queryKeys("someKey");
+    $cache->delete("someKey");
 
     // Delete all items from the cache
     $keys = $cache->queryKeys();

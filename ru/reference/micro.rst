@@ -86,7 +86,7 @@ HTTP используется, чтобы запросы путей соотве
     $app->put('/api/products/update/{id}', "update_product");
 
     // Совпадет, если HTTP-метод - DELETE
-    $app->put('/api/products/remove/{id}', "delete_product");
+    $app->delete('/api/products/remove/{id}', "delete_product");
 
     // Совпадет, если HTTP-метод - OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
