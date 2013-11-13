@@ -202,7 +202,7 @@ Phalcon предоставляет класс :doc:`Phalcon\\Cache <cache>`, д�
     <?php
 
     // Удаляем элемент по определенному ключу
-    $cache->queryKeys("someKey");
+    $cache->delete("someKey");
 
     // Удаляем все из кэша
     $keys = $cache->queryKeys();
