@@ -109,6 +109,8 @@ If models have relationships they must include the namespace too:
 
 .. code-block:: php
 
+    <?php
+
     namespace Store\Models;
 
     class Robots extends Phalcon\Mvc\Model
