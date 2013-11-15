@@ -305,8 +305,8 @@ PHQL поддерживает большинство стандартов SQL, �
         echo "Brand: ", $row->b->name, "\n";
     }
 
-When the joined model has a many-to-many relation to the 'from' model, implicitly the
-intermediate model is added to the generated query:
+Когда присоединяемая модель имеет связь многие-ко-многим к 'from' модели, промежуточная модель 
+неявно добавляется в сгенерированный запрос:
 
 .. code-block:: php
 
@@ -316,7 +316,7 @@ intermediate model is added to the generated query:
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
     $result = $this->modelsManager->query($phql);
 
-Produce the following SQL in MySQL:
+Получаем следующий SQL в MySQL:
 
 .. code-block:: sql
 
@@ -465,7 +465,7 @@ Phalcon не только преобразует PHQL выражения в SQL.
 
     }
 
-Теперь, если мы сделаем INSERT в модель Автомобилей, то эта операция не будет выполнена, потому что цена, которую мы передаем не удовлетворяет реализованному правилу:
+Теперь, если мы сделаем INSERT в модель Автомобилей, то эта операция не будет выполнена, потому что цена, которую мы передаем, не удовлетворяет реализованному правилу:
 
 .. code-block:: php
 
@@ -513,9 +513,6 @@ UPDATE выполняет изменение в два этапа:
 
 * Сначала, если у UPDATE есть условия WHERE, извлекаются все записи подходящие под эти условия,
 * Затем, на основе выбранных объектов их изменённые поля сохраняются в базе данных
-
-* First, if the UPDATE has a WHERE clause it retrieves all the objects that match these criteria,
-* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
 Такой способ выполнения позволяет событиям, виртуальным внешним ключам и проверкам (validations) принять участие в процессе изменения данных.
 В итоге, вот такой код:
@@ -758,11 +755,12 @@ UPDATE выполняет изменение в два этапа:
         ->getQuery()
         ->execute(array('name' => $name, 'type' => $type));
 
-Disallow literals in PHQL
--------------------------
-Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
-will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
-to potential SQL injections:
+Запрет на константы в PHQL
+--------------------------
+
+Константы можно отключить в PHQL, это означает, что напрямую строки, числа или булевы значения 
+использовать в PHQL будет нельзя.  Если PHQL запросы создаются со встраиванием внешних данных с 
+помощью констант, то это может открыть приложение для потенциальных SQL-инъекций:
 
 .. code-block:: php
 
@@ -772,7 +770,7 @@ to potential SQL injections:
     $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
     $result = $manager->executeQuery($phql);
 
-If $login is changed to ' OR '' = ', the produced PHQL is:
+Если значение $login заменить на ' OR '' = ', то получим следующий PHQL:
 
 .. code-block:: php
 
@@ -780,11 +778,11 @@ If $login is changed to ' OR '' = ', the produced PHQL is:
 
     "SELECT * FROM Models\Users WHERE login = '' OR '' = ''"
 
-Which is always true no matter what the login stored in the database is.
+Что всегда имеет место быть, независимо от того, что логин хранится в базе данных.
 
-If literals are disallowed strings can be used as part of a PHQL statement, thus an exception
-will be thrown forcing the developer to use bound parameters. The same query can be written in a
-secure way like this:
+Если константы запрещены, строки могут быть использованы как часть PHQL  запроса, таким образом будет 
+брошено исключение, заставляющее разработчика использовать связанные параметры. Этот же запрос можно 
+записать в безопасном виде вот так:
 
 .. code-block:: php
 
@@ -793,7 +791,7 @@ secure way like this:
     $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
     $result = $manager->executeQuery($phql, array('name' => $name));
 
-You can disallow literals in the following way:
+Запретить константы можно следующим способом:
 
 .. code-block:: php
 
@@ -801,8 +799,8 @@ You can disallow literals in the following way:
 
     Phalcon\Mvc\Model::setup(array('phqlLiterals' => false));
 
-Bound parameters can be used even if literals are allowed or not. Disallowing them is just
-another security decision a developer could take in web applications.
+Связанные параметры можно использовать, даже если константы разрешены. Запрет на них является еще 
+одним безопасным решением, которое разработчик может использовать в web-приложениях. 
 
 Экранирование зарезервированных слов
 ------------------------------------
