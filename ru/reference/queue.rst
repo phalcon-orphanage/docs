@@ -1,70 +1,75 @@
-Queueing
-========
-Perform activities like process a video, resize images or send emails aren't suitables to be executed
-online or in real time because it may slow the loading time of pages, impacting the user experience.
+Очереди
+=======
+Выполнение работы, такой как обработка видео, изменения размера изображения или рассылка 
+электронной почты, не подходит для выполнения в Интернете или в реальном времени, потому 
+что это может замедлить время загрузки страниц, влияющее на впечатление пользователей.
 
-The best solution here is implementing background jobs. A web application must put the job
-into a queue and wait that it will be processed.
+Лучшим решением здесь являются фоновые процессы. Веб-приложение должно поставить работу в очередь 
+и ждать, когда она будет выполнена.
 
-While you can find more sophisticated PHP extensions to address queueing in your applications like RabbitMQ_;
-Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
-It’s simple, lightweight, and completely specialized on job queueing.
 
-Putting Jobs into the Queue
----------------------------
-After connecting to Bens can insert as many jobs as required. The developer can define the message
-structure according to the needs of the application:
+Хотя вы можете найти более сложные расширения PHP для реализации очередей в ваших приложениях 
+(такие как RabbitMQ_), Phalcon предоставляет клиент для Beanstalk_, в котором реализация очередей 
+была вдохновлена Memcache_. Этот клиент прост, легок, и полностью специализируется на работе 
+очереди.
+
+Добавление заданий в очередь
+----------------------------
+После подключения к Bens, вы можете добавлять столько заданий сколько необходимо. Разработчик 
+может определить структуру сообщения в соответствии с потребностями приложения:
 
 .. code-block:: php
 
     <?php
 
-    //Connect to the queue
+    // Подключение к очереди
     $queue = new Phalcon\Queue\Beanstalk(array(
         'host' => '192.168.0.21'
     ));
 
-    //Insert the job in the queue
+    // Добавляем задание
     $queue->put(array('processVideo' => 4871));
 
-Available connection options are:
+Доступные варианты подключения:
 
-+----------+----------------------------------------------------------+-----------+
-| Option   | Description                                              | Default   |
-+==========+==========================================================+===========+
-| host     | IP where the beanstalk server is located                 | 127.0.0.1 |
-+----------+----------------------------------------------------------+-----------+
-| port     | Connection port                                          | 11300     |
-+----------+----------------------------------------------------------+-----------+
++----------+----------------------------------------------------------+----------------+
+| Опция    | Описание                                                 | По умолчвнию   |
++==========+==========================================================+================+
+| host     | IP где расположен сервер Beanstalk                       | 127.0.0.1      |
++----------+----------------------------------------------------------+----------------+
+| port     | Порт которой слушает Beanstalk                           | 11300          |
++----------+----------------------------------------------------------+----------------+
 
-In the above example we stored a message which will allow a background job to process a video.
-The message is stored in the queue immediately and does not have a certain time to life.
+В приведенном выше примере мы сохранили сообщение, которое позволит фоновому заданию обработать 
+видео. Сообщение сохраняется в очереди немедленно и не имеет определенного времени жизни.
 
-Additional options as time to run, priority and delay could be passed as second parameter:
+Дополнительные опции как времени для запуска, приоритет и задержка может быть передан в 
+качестве второго параметра:
 
 .. code-block:: php
 
     <?php
 
-    //Insert the job in the queue with options
+    // Добавление задания с опциями в очереди 
     $queue->put(
         array('processVideo' => 4871),
         array('priority' => 250, 'delay' => 10, 'ttr' => 3600)
     );
 
-The following options are available:
+Доступны следующие опции:
 
-+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Option   | Description                                                                                                                                                                                 |
-+==========+=============================================================================================================================================================================================+
-| priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
-+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the "delayed" state during this time.                                               |
-+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
-+----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Опции    | Описание                                                                                                                                                                                                      |
++==========+===============================================================================================================================================================================================================+
+| priority | Это целое число  <2 ** 32. Задания с меньшими значениями приоритета будут выполнены раньше, чем задачи с большими приоритетами. Самая первоочередная задача состоит 0; менее первоочередная задача 4294967295.|
++----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| delay    | Это целое число секунд, которое пройдет, прежде чем задача будет добавлена  в очередь.  Работа будет в статусе "delayed" все это время.                                                                        |
++----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ttr      | Время для запуска - это целое число секунд которое дается на то, чтобы позволить запустить эту задачу. Это время отсчитывается с момента, когда задача была добавлена.                                        |
++----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Every job put into the queue returns a "job id" the developer can use to track the status of the job:
+Каждое задание, помещаемое в очередь, возвращает "id задачи", разработчик может использовать для 
+отслеживания статуса задачи:
 
 .. code-block:: php
 
@@ -72,10 +77,12 @@ Every job put into the queue returns a "job id" the developer can use to track t
 
     $jobId = $queue->put(array('processVideo' => 4871));
 
-Retrieving Messages
--------------------
-Once a job is placed into the queue, those messages can be consumed by a background job which have enough time to complete
-the task:
+
+Прием сообщений
+---------------
+
+После того, как задание помещается в очередь, эти сообщения могут быть получены из фонового задания, 
+которое имеет достаточно времени для выполнения задачи:
 
 .. code-block:: php
 
@@ -90,8 +97,8 @@ the task:
         $job->delete();
     }
 
-Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented,
-jobs must be "reserved" so other workers don't re-process them while other workers have them reserved:
+Задания должны быть удалены из очереди, чтобы избежать двойной обработки. Если будут реализованы несколько 
+обработчиков задач, то задачи должны быть защищены от возможности повторного запуска другим обработчиком:
 
 .. code-block:: php
 
@@ -108,8 +115,8 @@ jobs must be "reserved" so other workers don't re-process them while other worke
         $job->delete();
     }
 
-Our client implement a basic set of the features provided by Beanstalkd but enough to allow you to build applications
-implementing queues.
+Наш клиент реализует базовый набор функций предоставляемых Beanstalkd, но достаточный, чтобы позволить вам 
+создавать приложения с реализацией очередей.
 
 .. _RabbitMQ: http://pecl.php.net/package/amqp
 .. _Beanstalk: http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/
