@@ -243,7 +243,7 @@
     $myComponent = new MyComponent();
 
     // Связываем компонент и менеджер событий
-    $myComponent->setEventsManager($myComponent);
+    $myComponent->setEventsManager($eventsManager);
 
     // Связываем слушателя и менеджер событий
     $eventsManager->attach('my-component', new SomeListener());
