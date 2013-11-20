@@ -129,7 +129,7 @@ The following example explains how to create additional validators for this comp
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+            if (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
