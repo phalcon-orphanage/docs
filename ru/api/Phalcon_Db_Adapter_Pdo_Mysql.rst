@@ -5,7 +5,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
-Specific functions for the Mysql database system  
+Специфические функции для системы базы данных MySQL  
 
 .. code-block:: php
 
@@ -29,37 +29,44 @@ Methods
 public *string*  **escapeIdentifier** (*string* $identifier)
 
 Escapes a column/table/schema name
+Экранирует названия столбцов/таблиц/баз
+
+.. code-block:: php
+
+	<?php
+	
+	print_r($connection->escapeIdentifier("users")); //return string(7) "`users`"
 
 
 
-public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` [] **describeColumns** (*string* $table, [*string* $schema])
+public :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>` **describeColumns** (*string* $table, [*string* $schema])
 
-Returns an array of Phalcon\\Db\\Column objects describing a table 
+Возвращает массив объектов Phalcon\\Db\\Column, описывающий столбцы таблицы 
 
 .. code-block:: php
 
     <?php
 
-     print_r($connection->describeColumns("posts")); ?>
+     print_r($connection->describeColumns("posts"));
 
 
 
 
 public  **__construct** (*array* $descriptor) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Constructor for Phalcon\\Db\\Adapter\\Pdo
+Конструктор для Phalcon\\Db\\Adapter\\Pdo
 
 
 
 public *boolean*  **connect** ([*array* $descriptor]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection 
+Этот метод автоматически вызывается в конструкторе Phalcon\\Db\\Adapter\\Pdo . Используйте его, когда вам нужно восстановить соединение с базой данных.
 
 .. code-block:: php
 
     <?php
 
-     //Make a connection
+     //Установка соединения
      $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
       'host' => '192.168.0.11',
       'username' => 'sigma',
@@ -67,7 +74,7 @@ This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Ca
       'dbname' => 'blog',
      ));
     
-     //Reconnect
+     //Пересоединение
      $connection->connect();
 
 
