@@ -2,10 +2,10 @@ Tutorial 2: Explaining INVO
 ===========================
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
-generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
+generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
 
 Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
-invoices still it serves as an example to understand how the framework works.
+invoices, it still serves as an example to understand how the framework works.
 
 Project Structure
 ------------------
@@ -30,26 +30,26 @@ Once you clone the project in your document root you'll see the following struct
 As you know, Phalcon does not impose a particular file structure for application development. This project
 provides a simple MVC structure and a public document root.
 
-Once you open the application in your browser http://localhost/invo you'll something like this:
+Once you open the application in your browser http://localhost/invo you'll see something like this:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided in two parts, a frontend, that is a public part where visitors can receive information
+The application is divided into two parts, a frontend, that is a public part where visitors can receive information
 about INVO and request contact information. The second part is the backend, an administrative area where a
 registered user can manage his/her products and customers.
 
 Routing
 -------
-INVO uses the standard route that is built-in with the Router component. These routes matches the following
-pattern: /:controller/:action/:params. This means that the first part of an URI is the controller, the second the
+INVO uses the standard route that is built-in with the Router component. These routes match the following
+pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
 action and the rest are the parameters.
 
 The following route /session/register executes the controller SessionController and its action registerAction.
 
 Configuration
 -------------
-INVO has a configuration file that sets general parameters in the application. This file is read in the first lines
+INVO has a configuration file that sets general parameters in the application. This file is read in the first few lines
 of the bootstrap file (public/index.php):
 
 .. code-block:: php
@@ -88,8 +88,8 @@ there are three sections to be used later.
 
 Autoloaders
 -----------
-A second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
-of directories where the application will look for the classes that it eventually will need.
+The second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
+of directories in which the application will look for the classes that it eventually will need.
 
 .. code-block:: php
 
@@ -106,13 +106,13 @@ of directories where the application will look for the classes that it eventuall
         )
     )->register();
 
-Note that what has been done is registing the directories that were defined in the configuration file. The only
-directory that is not registered is the viewsDir, because it contains no classes but html + php files.
+Note that the above code has registered the directories that were defined in the configuration file. The only
+directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
 
 Handling the Request
 --------------------
-Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application,
-this class initializes and executes all the necessary to make the application run:
+If we skip to the end of the file, the request is finally handled by Phalcon\\Mvc\\Application
+which initializes and executes all that is necessary to make the application run:
 
 .. code-block:: php
 
@@ -124,23 +124,23 @@ this class initializes and executes all the necessary to make the application ru
 
 Dependency Injection
 --------------------
-Look at the first line of the code block above, the variable $app is receiving another variable $di in its constructor.
+Look at the first line of the code block above, the Application class constructor is receiving the variable $di as an argument.
 What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
 to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
-dependency injection, instantiating all components, as they are needed by the application.
+dependency injection, instantiating all components as they are needed by the application.
 
-There are many ways of registering services in the container. In INVO most services have been registered using
+There are many ways of registering services in the container. In INVO, most services have been registered using
 anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
 by the application.
 
-For instance, in the following excerpt, the session service is registered, the anonymous function will only be
+For instance, in the following excerpt the session service is registered. The anonymous function will only be
 called when the application requires access to the session data:
 
 .. code-block:: php
 
     <?php
 
-    //Start the session the first time when some component request the session service
+    //Start the session the first time a component requests the session service
     $di->set('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
@@ -151,7 +151,7 @@ Here, we have the freedom to change the adapter, perform additional initializati
 was registered using the name "session". This is a convention that will allow the framework to identify the active
 service in the services container.
 
-A request can use many services, register each service one to one can be a cumbersome task. For that reason,
+A request can use many services and registering each service individually can be a cumbersome task. For that reason,
 the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
 all services providing a full-stack framework.
 
@@ -160,7 +160,7 @@ all services providing a full-stack framework.
     <?php
 
     // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full stack framework
+    // right services providing a full-stack framework
     $di = new \Phalcon\DI\FactoryDefault();
 
 It registers the majority of services with components provided by the framework as standard. If we need to override
@@ -169,21 +169,21 @@ existence of the variable $di.
 
 Log into the Application
 ------------------------
-"Log in" will allow us to work on backend controllers. The separation between backend's controllers and the frontend ones
+A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones
 is only logical. All controllers are located in the same directory (app/controllers/).
 
-To enter into the system, we must have a valid username and password. Users are stored in the table "users"
+To enter the system, users must have a valid username and password. Users are stored in the table "users"
 in the database "invo".
 
 Before we can start a session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with that information. As with the autoloader, this time we are
-also taking parameters from the configuration file in order to configure a service:
+called "db" is set up in the service container with the connection information. As with the autoloader, we are
+again taking parameters from the configuration file in order to configure a service:
 
 .. code-block:: php
 
     <?php
 
-    // Database connection is created based on the parameters defined in the configuration file
+    // Database connection is created based on parameters defined in the configuration file
     $di->set('db', function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
@@ -194,9 +194,9 @@ also taking parameters from the configuration file in order to configure a servi
     });
 
 Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting up it as you want.
+logger, a profiler or change the adapter, setting it up as you want.
 
-Back then, the following simple form (app/views/session/index.phtml) requests the logon information. We've removed
+The following simple form (app/views/session/index.phtml) requests the login information. We've removed
 some HTML code to make the example more concise:
 
 .. code-block:: html+php
@@ -213,8 +213,8 @@ some HTML code to make the example more concise:
 
     </form>
 
-The SessionController::startAction (app/controllers/SessionController.phtml) has the task of validate the
-data entered checking for a valid user in the database:
+The SessionController::startAction function (app/controllers/SessionController.php) has the task of validating the
+data entered in the form including checking for a valid user in the database:
 
 .. code-block:: php
 
@@ -243,7 +243,7 @@ data entered checking for a valid user in the database:
 
                 $password = sha1($password);
 
-                //Find for the user in the database
+                //Find the user in the database
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -275,10 +275,10 @@ data entered checking for a valid user in the database:
     }
 
 For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use " :doc:`bcrypt <security>`" instead.
+not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
 
 Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in services container from earlier. When they're accessed the first time, are injected as part
+These are services defined in the services container from earlier. When they're accessed the first time, they are injected as part
 of the controller.
 
 These services are shared, which means that we are always accessing the same instance regardless of the place
@@ -298,8 +298,8 @@ For instance, here we invoke the "session" service and then we store the user id
 Securing the Backend
 --------------------
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
-registered users have access to these controllers. If you aren't logged in the application and you try to access,
-for example, the products controller (that is private) you will see a screen like this:
+registered users have access to these controllers. If you aren't logged into the application and you try to access,
+for example, the products controller (which is private) you will see a screen like this:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
@@ -325,14 +325,14 @@ replaced the component by creating a function in the bootstrap:
     });
 
 We now have total control over the Dispatcher used in the application. Many components in the framework trigger
-events that allow us to modify their internal flow of operation. As the dependency Injector component acts as glue
-for components, a new component called :doc:`EventsManager <events>` aids us to intercept the events produced
-by a component routing the events to listeners.
+events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
+for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
+by a component, routing the events to listeners.
 
 Events Management
 ^^^^^^^^^^^^^^^^^
-A :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
-interest us now is "dispatch", the following code filters all events produced by the Dispatcher:
+An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
+interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
 
 .. code-block:: php
 
@@ -358,43 +358,45 @@ interest us now is "dispatch", the following code filters all events produced by
     });
 
 The Security plugin is a class located at (app/plugins/Security.php). This class implements the method
-"beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
+"beforeDispatch". This is the same name as one of the events produced in the Dispatcher:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Events\Event,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\User\Plugin;
+	    Phalcon\Mvc\User\Plugin,
+	    Phalcon\Mvc\Dispatcher,
+	    Phalcon\Acl;
 
     class Security extends Plugin
     {
 
         // ...
 
-        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
 
     }
 
-The hooks events always receive a first parameter that contains contextual information of the event produced ($event)
+The hook events always receive a first parameter that contains contextual information of the event produced ($event)
 and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
 plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
 available in the application.
 
-Now, we're verifying the role in the current session, checking if he/she has access using the ACL list.
-If he/she does not have access we redirect him/her to the home screen as explained before:
+Now, we're verifying the role in the current session, checking if the user has access using the ACL list.
+If the user does not have access we redirect to the home screen as explained before:
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Events\Event,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\User\Plugin;
+	    Phalcon\Mvc\User\Plugin,
+	    Phalcon\Mvc\Dispatcher,
+	    Phalcon\Acl;
 
     class Security extends Plugin
     {
@@ -417,11 +419,11 @@ If he/she does not have access we redirect him/her to the home screen as explain
             $action = $dispatcher->getActionName();
 
             //Obtain the ACL list
-            $acl = $this->_getAcl();
+            $acl = $this->getAcl();
 
             //Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Phalcon\Acl::ALLOW) {
+            if ($allowed != Acl::ALLOW) {
 
                 //If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
