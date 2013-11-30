@@ -65,11 +65,11 @@
       ROOT_PATH . PATH_SEPARATOR . get_include_path()
   );
 
-  // required for phalcon/incubator
+  // требуется для phalcon/incubator
   include __DIR__ . "/../vendor/autoload.php";
 
-  // use the application autoloader to autoload the classes
-  // autoload the dependencies found in composer
+  // Используем автозагрузчик приложений для автозагрузки классов.
+  // Автозагрузка зависимостей найденных в composer.
   $loader = new \Phalcon\Loader();
 
   $loader->registerDirs(array(
@@ -81,7 +81,7 @@
   $di = new FactoryDefault();
   DI::reset();
 
-  // add any needed services to the DI here
+  // здесь можно добавить любые необходимые сервисы в контейнер зависимостей
 
   DI::setDefault($di);
 
@@ -172,10 +172,10 @@ PHPUnit для выполнения тестов.
 
       public function setUp() {
 
-          // Load any additional services that might be required during testing
+          // Загрузка дополнительных сервисов, которые могут потребоваться во время тестирования
           $di = DI::getDefault();
 
-          // get any DI components here, if you have a config, be sure to pass it to the parent
+          // получаем любые компоненты DI, если у вас есть настройки, не забудьте передать его родителю
 
           parent::setUp($di);
 
@@ -183,7 +183,7 @@ PHPUnit для выполнения тестов.
       }
 
       /**
-       * Check if the test case is setup properly
+       * Проверка на то, что тест правильно настроен
        * @throws \PHPUnit_Framework_IncompleteTestError;
        */
       public function __destruct() {
