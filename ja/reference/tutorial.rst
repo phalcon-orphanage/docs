@@ -4,7 +4,7 @@ Throughout this first tutorial, we'll walk you through the creation of an applic
 We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
 you can check our :doc:`developer tools <tools>`.
 
-Checking your installation
+インストールの確認
 --------------------------
 We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
 code snippet below:
@@ -28,11 +28,11 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
+プロジェクトの作成
 ------------------
 The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
 
-File structure
+ファイル構造
 ^^^^^^^^^^^^^^
 Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
@@ -144,7 +144,7 @@ With it, we can load classes using various strategies but for this example we ha
         )
     )->register();
 
-Dependency Management
+依存性の管理
 ^^^^^^^^^^^^^^^^^^^^^
 A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
@@ -199,7 +199,7 @@ In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/P
 
 As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
 
-Creating a Controller
+コントローラの作成
 ^^^^^^^^^^^^^^^^^^^^^
 By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
 
@@ -224,7 +224,7 @@ The controller classes must have the suffix "Controller" and controller actions 
 
 Congratulations, you're flying with Phalcon!
 
-Sending output to a view
+Viewへのアウトプットの送信
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
 
@@ -250,7 +250,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
 The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
 
-Designing a sign up form
+サインアップフォームのデザイン
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Now we will change the index.phtml view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
@@ -351,7 +351,7 @@ Implementing that method will remove the exception:
 
 If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
-Creating a Model
+モデルの作成
 ^^^^^^^^^^^^^^^^
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -377,7 +377,7 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
     }
 
-Setting a Database Connection
+データベース接続の設定
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
@@ -432,7 +432,7 @@ In order to be able to use a database connection and subsequently access data th
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
-Storing data using models
+モデルを使用したデータの保存
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Receiving data from the form and storing them in the table is the next step.
 
@@ -481,13 +481,13 @@ Additional validation happens automatically on fields that are defined as not nu
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
-Conclusion
+結論
 ----------
 This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
 The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
 features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
-Sample Applications
+サンプル アプリケーション
 -------------------
 The following Phalcon-powered applications are also available, providing more complete examples:
 

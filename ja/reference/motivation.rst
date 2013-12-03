@@ -8,7 +8,7 @@ itself demands a lot of file inclusions and hundreds of lines of code to be inte
 from the actual application. Object-Oriented frameworks also add a lot of overhead to execution making complex
 application slow. All these operations slows the application down and subsequently impacts the end user experience.
 
-The Question
+質問
 ------------
 Why can't we have a robust framework with all of its advantages but with none or very few disadvantages?
 
@@ -18,20 +18,20 @@ During the last few months, we have extensively researched PHP's behavior, inves
 (big or small). Through this understanding, we managed to remove unnecessary validations, compacted code, performed optimizations
 and generated low-level solutions so as to achieve maximum performance from Phalcon.
 
-Why?
+なぜ?
 ----
 * The use of frameworks has become mandatory in professional development with PHP
 * Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
 * We love PHP and we think it can be used to create larger and more ambitious projects
 
-Inner workings of PHP?
+PHPの内部での動作は?
 ----------------------
 * PHP has dynamic and weak variable types. Every time a binary operation is made (ex. 2 + "2"), PHP checks the operand types to perform potential conversions
 * PHP is interpreted and not compiled. The major disadvantage is performance loss
 * Every time a script is requested it must be first interpreted
 * If a bytecode cache (like APC) isn't used, syntax checking is performed every time for every file in the request
 
-How do traditional PHP frameworks work?
+従来のPHPフレームワークはどう動作するか?
 ---------------------------------------
 * Many files with classes and functions are read on every request made. Disk reading is expensive in terms of performance, especially when the file structure includes deep folders
 * Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
@@ -39,20 +39,20 @@ How do traditional PHP frameworks work?
 * Continuous loading or interpreting is expensive and impacts performance
 * The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
 
-How does a PHP C-extension work?
+PHPのC拡張はどう動作するか?
 --------------------------------
 * C extensions are loaded together with PHP one time on the web server's daemon start process
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
 
-How does Phalcon work?
+Palcon はどう動作するか?
 ----------------------
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
 * Low-level optimizations provides the lowest overhead for MVC-based applications
 * Interact with databases with maximum performance by using a C-language ORM for PHP
 * Phalcon directly accesses internal PHP structures optimizing execution in that way as well
 
-Why do I need Phalcon?
+なぜPhalconを必要とするのか?
 ----------------------
 Each application requirements and tasks are different than another's. Some for instance are designed to do a set
 of tasks and generate content that rarely changes. These applications can be created with any programming language or
@@ -68,7 +68,7 @@ An application will be as slow as its slowest component/process. Phalcon offers 
 that allows developers to concentrate on making their applications/code faster. Following proper coding processes,
 Phalcon can deliver a lot more functionality/requests with less memory consumption and processing cycles.
 
-Conclusion
+結論
 ----------
 Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way
 to develop applications with a framework implemented with the philosophy "Performance Really Matters"! Enjoy!

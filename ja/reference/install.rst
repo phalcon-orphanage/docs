@@ -104,7 +104,7 @@ or
     export CFLAGS="-O2 -fno-delete-null-pointer-checks"
     cd /usr/ports/www/phalcon && make install clean
 
-Installation Notes
+インストール ノート
 ------------------
 Installation notes for Web Servers:
 
