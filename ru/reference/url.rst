@@ -143,15 +143,15 @@
 
     <a href="{{ url("posts/edit/1002") }}">Редактировать</a>
 
-Generate static routes:
+Генерация статических маршрутов:
 
 .. code-block:: html+jinja
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-Static vs. Dynamic Uris
------------------------
-This component allow you to set up a different base uri for static resources in the application:
+Статические против динамических URI
+-----------------------------------
+Этот компонент позволит вам настроить другой базовый URI для статических ресурсов в приложении:
 
 .. code-block:: php
 
@@ -159,13 +159,13 @@ This component allow you to set up a different base uri for static resources in 
 
     $url = new Phalcon\Mvc\Url();
 
-    //Dynamic URIs are
+    // Динамический URI
     $url->setBaseUri('/');
 
-    //Static resources go through a CDN
+    // Статические ресурсы проходят через CDN
     $url->setStaticBaseUri('http://static.example.com/');
 
-:doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
+:doc:`Phalcon\\Tag <tags>` будет запрашивать, как динамические, так и статические URI, используя этот компонент.
 
 Реализация своего генератора ссылок
 -----------------------------------
