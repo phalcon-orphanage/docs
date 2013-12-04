@@ -8,7 +8,7 @@ different HTTP methods:
 * PUT to update data
 * DELETE to delete data
 
-Defining the API
+APIの定義
 ----------------
 The API consists of the following methods:
 
@@ -28,7 +28,7 @@ The API consists of the following methods:
 | DELETE | /api/robots/2              | Deletes robots based on primary key                      |
 +--------+----------------------------+----------------------------------------------------------+
 
-Creating the Application
+アプリケーションの作成
 ------------------------
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case,
 we will use a :doc:`micro application <micro>` to meet our goal.
@@ -112,7 +112,7 @@ by example, explicitly sets that the "id" parameter must have a numeric format.
 
 When a defined route matches the requested URI then the application executes the corresponding handler.
 
-Creating a Model
+モデルの作成
 ----------------
 Our API provides information about 'robots', these data are stored in a database. The following model allows us to
 access that table in an object-oriented way. We have implemented some business rules using built-in validators
@@ -183,7 +183,7 @@ Now, we must set up a connection to be used by this model:
     //Create and bind the DI to the application
     $app = new \Phalcon\Mvc\Micro($di);
 
-Retrieving Data
+データの取得
 ---------------
 The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
 perform this simple query returning the results as JSON:
@@ -271,7 +271,7 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         return $response;
     });
 
-Inserting Data
+データの登録
 --------------
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
@@ -319,7 +319,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         return $response;
     });
 
-Updating Data
+データの更新
 -------------
 The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
 
@@ -362,7 +362,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
         return $response;
     });
 
-Deleting Data
+データの削除
 -------------
 The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
 
@@ -400,7 +400,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         return $response;
     });
 
-Testing our Application
+アプリケーションのテスト
 -----------------------
 Using curl_ we'll test every route in our application verifying its proper operation:
 
@@ -506,7 +506,7 @@ Finally, delete a robot:
 
     {"status":"OK"}
 
-Conclusion
+まとめ
 ----------
 As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
 use micro applications and the :doc:`PHQL <phql>` language.
