@@ -7,7 +7,7 @@ generate invoices, and do other tasks such as manage their customers and product
 Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
 invoices, it still serves as an example to understand how the framework works.
 
-Project Structure
+プロジェクト構造
 ------------------
 Once you clone the project in your document root you'll see the following structure:
 
@@ -39,7 +39,7 @@ The application is divided into two parts, a frontend, that is a public part whe
 about INVO and request contact information. The second part is the backend, an administrative area where a
 registered user can manage his/her products and customers.
 
-Routing
+ルーティング
 -------
 INVO uses the standard route that is built-in with the Router component. These routes match the following
 pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
@@ -47,7 +47,7 @@ action and the rest are the parameters.
 
 The following route /session/register executes the controller SessionController and its action registerAction.
 
-Configuration
+設定
 -------------
 INVO has a configuration file that sets general parameters in the application. This file is read in the first few lines
 of the bootstrap file (public/index.php):
@@ -86,7 +86,7 @@ contains the following settings:
 Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
 there are three sections to be used later.
 
-Autoloaders
+オートローダ
 -----------
 The second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
 of directories in which the application will look for the classes that it eventually will need.
@@ -109,7 +109,7 @@ of directories in which the application will look for the classes that it eventu
 Note that the above code has registered the directories that were defined in the configuration file. The only
 directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
 
-Handling the Request
+リクエストのハンドリング
 --------------------
 If we skip to the end of the file, the request is finally handled by Phalcon\\Mvc\\Application
 which initializes and executes all that is necessary to make the application run:
@@ -122,7 +122,7 @@ which initializes and executes all that is necessary to make the application run
 
     echo $app->handle()->getContent();
 
-Dependency Injection
+依存性の注入 (Dependency Injection)
 --------------------
 Look at the first line of the code block above, the Application class constructor is receiving the variable $di as an argument.
 What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
@@ -167,7 +167,7 @@ It registers the majority of services with components provided by the framework 
 the definition of some service we could just set it again as we did above with "session". This is the reason for the
 existence of the variable $di.
 
-Log into the Application
+アプリケーションへのログイン
 ------------------------
 A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones
 is only logical. All controllers are located in the same directory (app/controllers/).
@@ -295,7 +295,7 @@ For instance, here we invoke the "session" service and then we store the user id
         'name' => $user->name
     ));
 
-Securing the Backend
+バックエンドのセキュリティ保護
 --------------------
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
 registered users have access to these controllers. If you aren't logged into the application and you try to access,
@@ -329,7 +329,7 @@ events that allow us to modify their internal flow of operation. As the Dependen
 for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
 by a component, routing the events to listeners.
 
-Events Management
+イベント管理
 ^^^^^^^^^^^^^^^^^
 An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
 interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
@@ -442,7 +442,7 @@ If the user does not have access we redirect to the home screen as explained bef
 
     }
 
-Providing an ACL list
+ACLリストの提供
 ^^^^^^^^^^^^^^^^^^^^^
 In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
@@ -519,7 +519,7 @@ all the resources of both frontend and backend. The role "Guests" only has acces
 
 Hooray!, the ACL is now complete.
 
-User Components
+User コンポーネント
 ---------------
 All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
@@ -593,7 +593,7 @@ The important part is:
 
     <?php echo $this->elements->getMenu() ?>
 
-Working with the CRUD
+CRUDを使用した作業
 ---------------------
 Most options that manipulate data (companies, products and types of products), were developed using a basic and
 common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
@@ -719,7 +719,7 @@ Note that $productTypes contains the data necessary to fill the SELECT tag using
 is submitted, the action "search" is executed in the controller performing the search based on the data entered by
 the user.
 
-Performing a Search
+検索の実行
 ^^^^^^^^^^^^^^^^^^^
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
 form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
@@ -827,7 +827,7 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
         </tr>
     <?php } ?>
 
-Creating and Updating Records
+レコードの登録と更新
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
 are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
@@ -939,7 +939,7 @@ the user can change any value and then sent it back to the database through to t
 
     }
 
-Changing the Title Dynamically
+タイトルの動的な変更
 ------------------------------
 When you browse between one option and another will see that the title changes dynamically indicating where
 we are currently working. This is achieved in each controller initializer:
@@ -992,7 +992,7 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         <!-- ... -->
     </html>
 
-Conclusion
+まとめ
 ----------
 This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
 learn more and get more out of the framework.

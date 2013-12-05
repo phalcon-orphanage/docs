@@ -361,7 +361,7 @@ The component now simply access the service it requires when it needs it, if it 
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
 their behavior or any other aspect of them and that would not affect the component.
 
-Our approach
+私たちのアプローチ
 ============
 Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
@@ -374,7 +374,7 @@ one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
-Registering services in the Container
+サービスのコンテナへの登録
 =====================================
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
 can request component B from the container, rather than creating a new instance component B.
@@ -447,11 +447,11 @@ code more complicated. The lambda function is a good balance between the two, bu
 Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
 in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
-Simple Registration
+簡単な登録
 -------------------
 As seen before, there are several ways to register services. These we call simple:
 
-String
+文字列
 ^^^^^^
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader.
 This type of definition does not allow to specify arguments for the class constructor or parameters:
@@ -463,7 +463,7 @@ This type of definition does not allow to specify arguments for the class constr
     // return new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
-Object
+オブジェクト
 ^^^^^^
 This type expects an object. Due to the fact that object does not need to be resolved as it is
 already an object, one could say that it is not really a dependency injection,
@@ -477,7 +477,7 @@ the same object/value:
     // return new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
-Closures/Anonymous functions
+クロージャ／無名関数
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This method offers greater freedom to build the dependency as desired, however, it is difficult to
 change some of the parameters externally without having to completely change the definition of dependency:
@@ -511,7 +511,7 @@ Some of the limitations can be overcome by passing additional variables to the c
         ));
     });
 
-Complex Registration
+複雑な登録
 --------------------
 If it is required to change the definition of a service without instantiating/resolving the service,
 then, we need to define the services using the array syntax. Define a service using an array definition
@@ -725,7 +725,7 @@ these provide a more robust approach to define and inject services.
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
 according to the application needs.
 
-Resolving Services
+サービスの解決
 ==================
 Obtaining a service from the container is a matter of simply calling the “get” method. A new instance of the service will be returned:
 
@@ -758,7 +758,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     // new MyComponent("some-parameter", "other")
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
-Shared services
+共有サービス
 ===============
 Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
 the same instance of it is returned every time a consumer retrieve the service from the container:
@@ -797,7 +797,7 @@ the service is obtained from the DI, you can use the 'getShared' method:
 
     $request = $di->getShared("request");
 
-Manipulating services individually
+個別のサービスの操作
 ==================================
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -929,7 +929,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
 
     return $router;
 
-Accessing the DI in a static way
+静的な方法でのDIへのアクセス
 ================================
 If needed you can access the latest DI created in a static function in the following way:
 
@@ -958,7 +958,7 @@ registers the appropriate services bundled with the framework to act as full-sta
 
     <?php $di = new Phalcon\DI\FactoryDefault();
 
-Service Name Conventions
+サービス名の規約
 ========================
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
 the correct (built-in) service when you need it.
@@ -1011,7 +1011,7 @@ the correct (built-in) service when you need it.
 | viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
-Implementing your own DI
+独自のDIの実装
 ========================
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 

@@ -148,7 +148,7 @@ There is no limit on the "forwards" you can have in your application, so long as
 your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
 the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 
-Initializing Controllers
+コントローラの初期化
 ------------------------
 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` offers the initialize method, which is executed first, before any
 action is executed on a controller. The use of the "__construct" method is not recommended.
@@ -205,7 +205,7 @@ method 'onConstruct':
     in the controller or the user does not have access to it (according to custom control access
     provided by developer).
 
-Injecting Services
+サービスの注入
 ------------------
 If a controller extends :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` then it has easy access to the service
 container in application. For example, if we have registered a service like this:
@@ -252,7 +252,7 @@ Then, we can access to that service in several ways:
 
 If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
 
-Request and Response
+リクエストとレスポンス
 --------------------
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
 The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
@@ -307,7 +307,7 @@ an afterDispatch event - it can be useful to access the response directly:
 
 Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
 
-Session Data
+セッションデータ
 ------------
 Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
 from any controller to encapsulate data that need to be persistent.
@@ -352,7 +352,7 @@ any other class registered with its name can easily replace a controller:
         return $component;
     });
 
-Creating a Base Controller
+ベース・コントローラの作成
 --------------------------
 Some application features like access control lists, translation, cache, and template engines are often common to many
 controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
@@ -400,7 +400,7 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
     }
 
-Events in Controllers
+コントローラのイベント
 ---------------------
 Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
 you to implement hook points before/after the actions are executed:
