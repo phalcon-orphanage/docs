@@ -1,9 +1,9 @@
-Flashing Messages
+メッセージのフラッシュ
 =================
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users.
 These kind of messages can be generated using this component.
 
-Adapters
+アダプタ
 --------
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
@@ -15,7 +15,7 @@ This component makes use of adapters to define the behavior of the messages afte
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request  | :doc:`Phalcon\\Flash\\Session <../api/Phalcon_Flash_Session>`              |
 +---------+-----------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
-Usage
+使い方
 -----
 Usually the Flash Messaging service is requested from the services container,
 if you're using :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`
@@ -70,7 +70,7 @@ You can add messages with your own types:
 
     $this->flash->message("debug", "this is debug message, you don't say");
 
-Printing Messages
+メッセージの出力
 -----------------
 Messages sent to the flasher are automatically formatted with html:
 

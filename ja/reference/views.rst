@@ -7,7 +7,7 @@ is used to make requests from your application.
 The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
 are responsible for the managing the view layer of your MVC application.
 
-Integrating Views with Controllers
+コントローラとビューの結合
 ----------------------------------
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
 will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
@@ -50,7 +50,7 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
 The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
 how to pass the $postId parameter to the respective view template.
 
-Hierarchical Rendering
+階層的なレンダリング
 ----------------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
 This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
@@ -135,7 +135,7 @@ The generated HTML by the request will be:
         </body>
     </html>
 
-Using Templates
+テンプレートの使用
 ^^^^^^^^^^^^^^^
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
 layouts directory.
@@ -247,7 +247,7 @@ The final output will be the following:
         </body>
     </html>
 
-Control Rendering Levels
+レンダリングレベルのコントロール
 ^^^^^^^^^^^^^^^^^^^^^^^^
 As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
 produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
@@ -304,7 +304,7 @@ The available render levels are:
 | LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
 +-----------------------+--------------------------------------------------------------------------+-------+
 
-Disabling render levels
+レンダリング レベルの無効化
 ^^^^^^^^^^^^^^^^^^^^^^^
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
@@ -378,7 +378,7 @@ the view rendered is the one related with the last controller and action execute
 
     }
 
-Disabling the view
+Viewの無効化
 ^^^^^^^^^^^^^^^^^^
 If your controller doesn't produce any output in the view (or not even have one) you may disable the view component
 avoiding unnecessary processing:
@@ -424,7 +424,7 @@ You can return a 'response' object to avoid disable the view manually:
 
     }
 
-Simple Rendering
+簡単なレンダリング
 ----------------
 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
@@ -494,7 +494,7 @@ To render a view is necessary to call the render method explicitly indicating th
 
     }
 
-Using Partials
+パーシャルの使用
 --------------
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
 parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
@@ -521,7 +521,7 @@ Method partial() does accept a second parameter as an array of variables/paramet
 
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
-Transfer values from the controller to views
+コントローラからViewへの値の受け渡し
 --------------------------------------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
 use that object to set variables directly to the view from a controller action by using the setVar() method.
@@ -570,7 +570,7 @@ from a simple string, integer etc. variable to a more complex structure such as 
     ?>
     </div>
 
-Using models in the view layer
+Viewレイヤでのモデルの使用
 ------------------------------
 Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
 runtime automatically:
@@ -590,7 +590,7 @@ runtime automatically:
 Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since
 it is not possible to forward the execution flow to another controller in the case of an error or an exception.
 
-Caching View Fragments
+View断片のキャッシュ
 ----------------------
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
 the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
@@ -716,7 +716,7 @@ expired to make the calculations/queries to display data in the view:
 
 The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
-Template Engines
+テンプレートエンジン
 ----------------
 Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
 called :doc:`Volt <volt>`.
@@ -731,7 +731,7 @@ still possible to access the API inside these templates with a little more effor
 
 This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
 
-Creating your own Template Engine Adapter
+独自のテンプレートエンジンアダプタの作成
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
@@ -782,7 +782,7 @@ when it's necessary.
 
     }
 
-Changing the Template Engine
+テンプレートエンジンの変更
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can replace or add more a template engine from the controller as follows:
 
@@ -868,11 +868,11 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
 
     </script>
 
-Stand-Alone Component
+スタンドアロンコンポーネント
 ---------------------
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
-Hierarchical Rendering
+階層的なレンダリング
 ^^^^^^^^^^^^^^^^^^^^^^
 Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below
 
@@ -920,7 +920,7 @@ A short syntax is also available:
         }
     );
 
-Simple Rendering
+簡単なレンダリング
 ^^^^^^^^^^^^^^^^
 Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
 
@@ -942,7 +942,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
         'content' => $content
     ));
 
-View Events
+View イベント
 -----------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
 events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning

@@ -4,7 +4,7 @@ The router component allows defining routes that are mapped to controllers or ha
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
-Defining Routes
+ルーティングの定義
 ---------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
 you can define routes and map them to controllers/actions that you require. A route is defined as follows:
@@ -111,7 +111,7 @@ their relevance, lastest routes added have more relevance than first added. Inte
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
 
-Parameters with Names
+名前付きパラメータ
 ^^^^^^^^^^^^^^^^^^^^^
 The example below demonstrates how to define names to route parameters:
 
@@ -201,7 +201,7 @@ You can access their values in the same way as before:
 
     }
 
-Short Syntax
+短い構文
 ^^^^^^^^^^^^
 If you don't like using an array to define the route paths, an alternative syntax is also available.
 The following examples produce the same result:
@@ -224,7 +224,7 @@ The following examples produce the same result:
         )
     );
 
-Mixing Array and Short Syntax
+配列と短い構文の混合
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
 are added to the route paths according to the position on which they were defined:
@@ -242,7 +242,7 @@ are added to the route paths according to the position on which they were define
         )
     );
 
-Routing to Modules
+モジュールへのルーティング
 ^^^^^^^^^^^^^^^^^^
 You can define routes whose paths include modules. This is specially suitable to multi-module applications.
 It's possible define a default route that includes a module wildcard:
@@ -315,7 +315,7 @@ Namespaces/class names must be passed separated:
         'action' => 'index'
     ));
 
-HTTP Method Restrictions
+HTTP メソッドの制限
 ^^^^^^^^^^^^^^^^^^^^^^^^
 When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
 this is especially useful when creating RESTful applications:
@@ -333,7 +333,7 @@ this is especially useful when creating RESTful applications:
     // This route will be matched if the HTTP method is POST or PUT
     $router->add("/products/update")->via(array("POST", "PUT"));
 
-Using convertions
+ルーティングパラメータの変換
 ^^^^^^^^^^^^^^^^^
 Convertions allow to freely transform the route's parameters before passing them to the dispatcher, the following examples show how to use them:
 
@@ -352,7 +352,7 @@ Convertions allow to freely transform the route's parameters before passing them
             return str_replace('-', '', $slug);
         });
 
-Groups of Routes
+ルーティングのグループ
 ^^^^^^^^^^^^^^^^
 If a set of routes have common paths they can be grouped to easily maintain them:
 
@@ -437,7 +437,7 @@ Then mount the group in the router:
     //Add the group to the router
     $router->mount(new BlogRoutes());
 
-Matching Routes
+ルーティングのマッチング
 ---------------
 A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
 By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
@@ -477,7 +477,7 @@ The following example shows how to use this component in stand-alone mode:
     //Get the matched route
     $route = $router->getMatchedRoute();
 
-Naming Routes
+ルーティングの命名
 -------------
 Each route that is added to the router is stored internally as an object :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
 That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
@@ -508,7 +508,7 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
         "title" => "phalcon-1-0-released"
     ));
 
-Usage Examples
+使用例
 --------------
 The following are examples of custom routes:
 
@@ -598,7 +598,7 @@ The following are examples of custom routes:
     become class names and in turn they're passed through the file system could be used by attackers to
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
-Default Behavior
+デフォルトの動作
 ----------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
 always expects a URI that matches the following pattern: /:controller/:action/:params
@@ -622,7 +622,7 @@ If you don't want use this routes as default in your application, you must creat
     // Create the router without default routes
     $router = new \Phalcon\Mvc\Router(false);
 
-Setting the default route
+デフォルトルーティングの設定
 -------------------------
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page
 in your website/application:
@@ -636,7 +636,7 @@ in your website/application:
         'action' => 'index'
     ));
 
-Not Found Paths
+Not Found パス
 ---------------
 If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
 
@@ -650,7 +650,7 @@ If none of the routes specified in the router are matched, you can define a grou
         "action" => "route404"
     ));
 
-Setting default paths
+デフォルトパスの設定
 ---------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:
@@ -699,7 +699,7 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
-Match Callbacks
+マッチング時のコールバック
 ---------------
 Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
 'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
@@ -744,7 +744,7 @@ And use this class instead of the anonymous function:
         'action' => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
-Hostname Constraints
+ホスト名による制限
 --------------------
 The router allow to set hostname contraints, this means that specific routes or a group of routes can be restricted
 to only match if the route also meets the hostname constraint:
@@ -807,7 +807,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
     //Add the group to the router
     $router->mount($blog);
 
-URI Sources
+URIのソース
 -----------
 By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
 Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
@@ -827,7 +827,7 @@ Or you can manually pass a URI to the 'handle' method:
 
     $router->handle('/some/route/to/handle');
 
-Testing your routes
+ルーティングのテスト
 -------------------
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
@@ -870,7 +870,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
     }
 
-Annotations Router
+アノテーションによるルーティング
 ------------------
 This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
 you can write the routes directly in the controllers instead of adding them in the service registration:
@@ -993,7 +993,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
         return $router;
     };
 
-Implementing your own Router
+独自ルータの実装
 ----------------------------
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
 the one provided by Phalcon.

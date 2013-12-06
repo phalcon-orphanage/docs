@@ -119,7 +119,7 @@ Adapters cache the processed annotations avoiding the need of parse the annotati
 only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
 other adapters to swap out when the application is in production stage.
 
-Types of Annotations
+アノテーションの種類
 --------------------
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -176,11 +176,11 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
      */
 
-Practical Usage
+実用的な使用法
 ---------------
 Next we will explain some practical examples of annotations in PHP applications:
 
-Cache Enabler with Annotations
+アノテーションでのキャッシュの有効化
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
 cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
@@ -288,7 +288,7 @@ Now, we can use the annotation in a controller:
 
     }
 
-Choose template to render
+レンダリングするテンプレートの選択
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
 once the action has been executed:
@@ -296,7 +296,7 @@ once the action has been executed:
 
 
 
-Annotations Adapters
+アノテーションアダプタ
 --------------------
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or prodiving facilities to development/testing:
 
@@ -312,11 +312,11 @@ This component makes use of adapters to cache or no cache the parsed and process
 | XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-Implementing your own adapters
+独自アダプタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
 annotations adapters or extend the existing ones.
 
-External Resources
+外部資料
 ------------------
 * `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_

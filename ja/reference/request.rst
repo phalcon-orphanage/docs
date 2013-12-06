@@ -21,7 +21,7 @@ information of the request, allowing you to access it in an object-oriented way.
         }
     }
 
-Getting Values
+値の取得
 -----------------
 PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
@@ -55,7 +55,7 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
     $email = $request->getPost("user_email", null, "some@example.com");
 
 
-Accessing the Request from Controllers
+コントローラからリクエストへのアクセス
 --------------------------------------
 The most common place to access the request environment is in an action of a controller. To access the
 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
@@ -91,7 +91,7 @@ the $this->request public property of the controller:
 
     }
 
-Uploading Files
+ファイルのアップロード
 ---------------
 Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
 an object-oriented way to achieve this task:
@@ -129,7 +129,7 @@ Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instanc
 array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates
 only the information related to each file uploaded with the request.
 
-Working with Headers
+HTTPヘッダの利用
 --------------------
 As mentioned above, request headers contain useful information that allow us to send the proper response back to
 the user. The following examples show usages of that information:

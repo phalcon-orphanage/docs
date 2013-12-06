@@ -34,7 +34,7 @@ By sanitizing input we ensure that application integrity will be intact.
     $filter->sanitize("!100a019.01a", "float");
 
 
-Sanitizing from Controllers
+コントローラでのサニタイジング
 ---------------------------
 You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
 (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
@@ -87,7 +87,7 @@ The next example shows you how to sanitize the action parameters within a contro
 
     }
 
-Filtering data
+データのフィルタリング
 --------------
 In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
 the format we expect.
@@ -105,7 +105,7 @@ the format we expect.
     $filter->filter("  Hello   ", "trim");
 
 
-Types of Built-in Filters
+ビルトイン・フィルタの種類
 -------------------------
 The following are the built-in filters provided by this component:
 
@@ -131,7 +131,7 @@ The following are the built-in filters provided by this component:
 | upper     | Applies the strtoupper_ function                                          |
 +-----------+---------------------------------------------------------------------------+
 
-Creating your own Filters
+独自フィルタの作成
 -------------------------
 You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
 
@@ -173,11 +173,11 @@ Or, if you prefer, you can implement the filter in a class:
     //Sanitize with the "ipv4" filter
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
-Complex Sanitizing and Filtering
+複雑なサニタイズとフィルタリング
 --------------------------------
 PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
 
-Implementing your own Filter
+独自フィルタの実装
 ----------------------------
 The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
 replacing the one provided by Phalcon.

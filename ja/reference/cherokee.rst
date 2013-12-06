@@ -2,7 +2,7 @@ Cherokee インストール ノート
 ===========================
 Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
 
-Configuring Cherokee for Phalcon
+PhalconのためのCherokeeの設定
 --------------------------------
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin

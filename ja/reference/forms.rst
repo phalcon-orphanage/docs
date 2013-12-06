@@ -74,7 +74,7 @@ HTML Attributes also can be set in the element's definition:
         'placeholder' => 'Type your name'
     )));
 
-Initializing forms
+フォームの初期化
 ------------------
 As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form
 classes implementing the form in a separated file:
@@ -176,7 +176,7 @@ In the form's instantiation you must use:
 
     $form = new UsersForm(new Users(), array('edit' => true));
 
-Validation
+バリデーション
 ----------
 Phalcon forms are integrated with the :doc:`validation <validation>` component to offer instant validation. Built-in or
 custom validators could be set to each element:
@@ -240,13 +240,13 @@ Or get specific messages for an element:
         echo $message, '<br>';
     }
 
-Filtering
+フィルタリング
 ---------
 A form is also able to filter data before be validated, you can set filters in each element:
 
 
 
-Setting User Options
+オプションのセット
 --------------------
 Forms + Entities
 ----------------
@@ -347,7 +347,7 @@ give you more free to produce values:
 
     }
 
-Form Elements
+フォーム要素
 -------------
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the Phalcon\\Forms\\Element namespace:
 
@@ -375,7 +375,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | Submit       | Generate INPUT[type=submit] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-Event Callbacks
+イベント・コールバック
 ---------------
 Whenever forms are implemented as classes, the callbacks: beforeValidation and afterValidation can be implemented
 in the form's class to perform pre-validations and post-validations:
@@ -392,7 +392,7 @@ in the form's class to perform pre-validations and post-validations:
         }
     }
 
-Rendering Forms
+フォームのレンダリング
 ---------------
 You can render the form with total flexibility, the following example shows how to render each element using an standard procedure:
 
@@ -474,7 +474,7 @@ In the view:
 
     echo $element->renderDecorated('telephone');
 
-Creating Form Elements
+フォーム要素の作成
 ----------------------
 In addition to the form elements provided by Phalcon you can create your own custom elements:
 
@@ -521,6 +521,6 @@ Using the unique name, forms can be accesed in any part of the application:
 
     echo $this->forms->get('login')->render();
 
-External Resources
+外部資料
 ------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the forms builder to create and manage forms, [`Github <https://github.com/phalcon/vokuro>`_]
