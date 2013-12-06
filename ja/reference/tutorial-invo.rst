@@ -681,7 +681,7 @@ Each controller has the following actions:
 
     }
 
-The Search Form
+検索フォーム
 ^^^^^^^^^^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
 creating a search criteria from any field. Table "products" has a relationship to the table "products_types".

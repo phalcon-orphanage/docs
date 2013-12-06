@@ -11,7 +11,7 @@ this functionality and provide information back to the developer or user.
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework
 written in PHP has.
 
-Catching Exceptions
+例外のキャッチ
 -------------------
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
@@ -107,7 +107,7 @@ generating the exception:
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the
 parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
-Debug component
+デバッグコンポーネント
 ---------------
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application
 created with the framework.
@@ -199,7 +199,7 @@ It's easy to know the internal state of any object. The above example prints the
     )
 
 
-Using XDebug
+XDebugの使用
 ------------
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together
 with Phalcon without additional configuration or side effects.

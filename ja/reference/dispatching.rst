@@ -111,7 +111,7 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
     }
 
-Forwarding to other actions
+他のアクションへのフォワード
 ---------------------------
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
 access to certain options, redirect users to other screens or simply reuse code.
@@ -261,7 +261,7 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         return $dispatcher;
     });
 
-Getting Parameters
+パラメータの取得
 ------------------
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends
 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
@@ -292,11 +292,11 @@ When a route provides named parameters you can receive them in a controller, a v
 
     }
 
-Preparing actions
+アクションの準備
 -----------------
 You can also define an arbitrary schema for actions before be dispatched.
 
-Camelize action names
+アクション名のキャメルケース化
 ^^^^^^^^^^^^^^^^^^^^^
 If the original URL is: http://example.com/admin/products/show-latest-products,
 and for example you want to camelize 'show-latest-products' to 'showLatestProducts',
@@ -326,7 +326,7 @@ the following code is required:
         return $dispatcher;
     });
 
-Remove legacy extensions
+レガシーな拡張子の削除
 ^^^^^^^^^^^^^^^^^^^^^^^^
 If the original URL always contains a '.php' extension:
 
@@ -363,7 +363,7 @@ You can remove it before dispatch the controller/action combination:
         return $dispatcher;
     });
 
-Inject model instances
+モデルインスタンスの注入
 ^^^^^^^^^^^^^^^^^^^^^^
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
 inject model instances.
@@ -447,7 +447,7 @@ before dispatch the action preparing the parameter accordingly:
 The above example has been simplified for academic purposes.
 A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
-Handling Not-Found Exceptions
+Not-Found Exceptionのハンドリング
 -----------------------------
 Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
 when the controller/action combination wasn't found:
@@ -538,7 +538,7 @@ take actions when an exception is produced in the dispatch loop:
     are notified in the 'beforeException' events. Exceptions produced in listeners or
     controller events are redirected to the latest try/catch.
 
-Implementing your own Dispatcher
+独自のディスパッチャの実装
 --------------------------------
 The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher
 replacing the one provided by Phalcon.

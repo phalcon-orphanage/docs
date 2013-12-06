@@ -2,7 +2,7 @@
 =======
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
 
-Adapters
+アダプタ
 --------
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common interface for logging
 while switching backends if necessary. The adapters supported are:
@@ -19,7 +19,7 @@ while switching backends if necessary. The adapters supported are:
 | Firephp | Logs to the FirePHP       | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
 +---------+---------------------------+----------------------------------------------------------------------------------+
 
-Creating a Log
+ログの作成
 --------------
 The example below shows how to create a log and add messages to it:
 
@@ -42,7 +42,7 @@ The log generated is below:
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
 
-Transactions
+トランザクション
 ------------
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you
 can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the
@@ -67,7 +67,7 @@ relevant adapter (File in this case) in a single atomic operation.
     // Commit messages to file
     $logger->commit();
 
-Logging to Multiple Handlers
+複数のハンドラへのロギング
 ----------------------------
 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` allows to send messages to multiple handlers with a just single call:
 
@@ -91,7 +91,7 @@ Logging to Multiple Handlers
 
 The messages are sent to the handlers in the order they where registered.
 
-Message Formatting
+メッセージフォーマット
 ------------------
 This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
 
@@ -105,7 +105,7 @@ This component makes use of 'formatters' to format messages before sent them to 
 | Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 
-Line Formatter
+行フォーマット
 ^^^^^^^^^^^^^^
 Formats the messages using a one-line string. The default logging format is:
 
@@ -136,16 +136,16 @@ The example below shows how to change the log format:
     $formatter = new LineFormatter("%date% - %message%");
     $logger->setFormatter($formatter);
 
-Implementing your own formatters
+独自フォーマッタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` interface must be implemented in order to
 create your own logger formatter or extend the existing ones.
 
-Adapters
+アダプタ
 --------
 The following examples show the basic use of each adapter:
 
-Stream Logger
+ストリーム ロガー
 ^^^^^^^^^^^^^
 The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`_:
 
@@ -161,7 +161,7 @@ The stream logger writes messages to a valid registered stream in PHP. A list of
     // Writes the logs to stderr
     $logger = new StreamAdapter("php://stderr");
 
-File Logger
+ファイル ロガー
 ^^^^^^^^^^^
 This logger uses plain files to log any kind of data. By default all logger files are open using
 append mode which open the files for writing only; placing the file pointer at the end of the file.
@@ -178,7 +178,7 @@ If the file does not exist, attempt to create it. You can change this mode passi
         'mode' => 'w'
     ));
 
-Syslog Logger
+Syslog ロガー
 ^^^^^^^^^^^^^
 This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
 
@@ -197,7 +197,7 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     ));    
     
     
-FirePHP Logger
+FirePHP ロガー
 ^^^^^^^^^^^^^^
 This logger sends messages to the FirePHP.
 
@@ -212,7 +212,7 @@ This logger sends messages to the FirePHP.
  	$logger->log("This is an error", \Phalcon\Logger::ERROR);
  	$logger->error("This is another error");
 
-Implementing your own adapters
+独自アダプタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` interface must be implemented in order to
 create your own logger adapters or extend the existing ones.

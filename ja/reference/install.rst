@@ -23,7 +23,7 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
+関連ガイド
 ^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
@@ -35,7 +35,7 @@ Linux/Solaris/Mac
 -----------------
 On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
 
-Requirements
+必要条件
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
@@ -63,7 +63,7 @@ Specific packages for common platforms:
     pkg install gcc-45
     pkg install php-53 apache-php53
 
-Compilation
+コンパイル
 ^^^^^^^^^^^
 Creating the extension:
 

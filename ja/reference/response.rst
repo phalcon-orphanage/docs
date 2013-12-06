@@ -76,7 +76,7 @@ retrieves the headers before sending it to client:
     //Get a header by its name
     $contentType = $response->getHeaders()->get("Content-Type");
 
-Making Redirections
+リダイレクト
 -------------------
 With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also execute HTTP redirections:
 
@@ -113,7 +113,7 @@ how you can redirect using a route you have defined in your application:
 Note that a redirection doesn't disable the view component, so if there is a view asociated with the current action it
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
-HTTP Cache
+HTTPキャッシュ
 ----------
 One of the easiest ways to improve the performance in your applications and reduce the server traffic is using HTTP Cache.
 Most modern browsers support HTTP caching. HTTP Cache is one of the reasons many websites are currently fast.
@@ -125,7 +125,7 @@ HTTP Cache can be altered in the following header values sent by the application
 * *Last-Modified:* This header tells the browser which was the last time the site was updated avoiding page re-loads
 * *ETag:* An etag is a unique identifier that must be created including the modification timestamp of the current page
 
-Setting an Expiration Time
+有効期限の設定
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser).
 Starting from the current date we add the amount of time the page will be stored
@@ -156,7 +156,7 @@ If we set this value to a date in the past the browser will always refresh the r
 Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to
 make pages expire and this may represent a limitation for this cache mechanism.
 
-Cache-Control
+キャッシュコントロール
 ^^^^^^^^^^^^^
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
 how long it must keep the page in its cache:
