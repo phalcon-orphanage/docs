@@ -17,7 +17,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
 * PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
-Usage Example
+使用例
 -------------
 To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
 
@@ -86,7 +86,7 @@ And every Car has a Brand, so a Brand has many Cars:
         }
     }
 
-Creating PHQL Queries
+PHQLクエリの作成
 ---------------------
 PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
 
@@ -130,7 +130,7 @@ Or simply execute it:
         'name' => 'Audi'
     ));
 
-Selecting Records
+レコードのセレクト
 -----------------
 As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
@@ -166,7 +166,7 @@ Most of the SQL standard is supported by PHQL even nonstandard directives as LIM
        . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
     $query = $manager->createQuery($phql);
 
-Result Types
+結果タイプ
 ^^^^^^^^^^^^
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
 a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
@@ -245,7 +245,7 @@ This allows access to both complete objects and scalars at once:
 
 Scalars are mapped as properties of each "row", while complete objects are mapped as properties with the name of its related model.
 
-Joins
+表結合(JOIN)
 ^^^^^
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
 relationships in the models. PHQL adds these conditions automatically:
@@ -334,7 +334,7 @@ Produce the following SQL in MySQL:
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
 
-Aggregations
+集約
 ^^^^^^^^^^^^
 The following examples show how to use aggregations in PHQL:
 
@@ -374,7 +374,7 @@ The following examples show how to use aggregations in PHQL:
         echo $row->brandId, "\n";
     }
 
-Conditions
+条件
 ^^^^^^^^^^
 Conditions allow us to filter the set of records we want to query. The WHERE clause allows to do that:
 
@@ -423,7 +423,7 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
     $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
 
 
-Inserting Data
+データの追加
 --------------
 With PHQL is possible insert data using the familiar INSERT statement:
 
@@ -494,7 +494,7 @@ because the price does not meet the business rule that we implemented:
         }
     }
 
-Updating Data
+データの更新
 -------------
 Updating rows is very similar than inserting rows. As you may know, the instruction to
 update records is UPDATE. When a record is updated the events related to the update operation
@@ -560,7 +560,7 @@ is somewhat equivalent to:
 
     $success = $process();
 
-Deleting Data
+データの削除
 -------------
 When a record is deleted the events related to the delete operation will be executed for each row:
 
@@ -588,7 +588,7 @@ When a record is deleted the events related to the delete operation will be exec
 
 DELETE operations are also executed in two phases like UPDATEs.
 
-Creating queries using the Query Builder
+クエリビルダを使用したクエリの作成
 ----------------------------------------
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
@@ -746,7 +746,7 @@ More examples of the builder:
     $builder->from(['r' => 'Store\Robots'])
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
-Bound Parameters
+割り当てられたパラメータ
 ^^^^^^^^^^^^^^^^
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
@@ -770,7 +770,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->getQuery()
         ->execute(array('name' => $name, 'type' => $type));
 
-Disallow literals in PHQL
+PHQL内でのリテラルの無効化
 -------------------------
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
 will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
@@ -816,7 +816,7 @@ You can disallow literals in the following way:
 Bound parameters can be used even if literals are allowed or not. Disallowing them is just
 another security decision a developer could take in web applications.
 
-Escaping Reserved Words
+予約語のエスケープ
 -----------------------
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
 words using the cross-database escaping delimiters '[' and ']':
@@ -833,7 +833,7 @@ words using the cross-database escaping delimiters '[' and ']':
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
-PHQL Lifecycle
+PHQL ライフサイクル
 --------------
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
 The following is the life cycle of each PHQL statement executed:
@@ -842,7 +842,7 @@ The following is the life cycle of each PHQL statement executed:
 * The IR is converted to valid SQL according to the database system associated to the model
 * PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
-Using Raw SQL
+生SQLの使用
 -------------
 A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
 
@@ -898,7 +898,7 @@ The above findByRawSql could be used as follows:
 
     $robots = Robots::findByRawSql('id > ?', array(10));
 
-Troubleshooting
+トラブルシューティング
 ---------------
 Some things to keep in mind when using PHQL:
 

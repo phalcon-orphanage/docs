@@ -17,7 +17,7 @@ This component makes use of adapters to encapsulate different sources of data:
 | QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
 +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Examples
+例
 --------
 In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
 
@@ -77,7 +77,7 @@ The $page object also contains navigation data:
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
-Adapters Usage
+アダプタの使用方法
 --------------
 An example of the source data that must be used for each adapter:
 
@@ -123,7 +123,7 @@ An example of the source data that must be used for each adapter:
     ));
 
 
-Page Attributes
+Pageオブジェクトの持つ属性
 ---------------
 The $page object has the following attributes:
 
@@ -145,7 +145,7 @@ The $page object has the following attributes:
 | total_items | The number of items in the source data                 |
 +-------------+--------------------------------------------------------+
 
-Implementing your own adapters
+独自アダプタの実装
 ------------------------------
 The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 

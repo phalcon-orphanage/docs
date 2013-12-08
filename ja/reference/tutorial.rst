@@ -126,7 +126,7 @@ The tutorial/public/index.php file should look like:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
+オートローダ
 ^^^^^^^^^^^
 The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
 

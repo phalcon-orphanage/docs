@@ -15,7 +15,7 @@ When a migration is generated a set of classes are created to describe how your 
         <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-Schema Dumping
+スキーマのダンプ
 --------------
 The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
 
@@ -38,7 +38,7 @@ By default :doc:`Phalcon Developer Tools <tools>` use the *app/migrations* direc
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
-Migration Class Anatomy
+マイグレーションクラスの構造
 -----------------------
 Each file contains a unique class that extends the Phalcon\\Mvc\\Model\\Migration These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back.
 
@@ -148,7 +148,7 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 | "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Defining Columns
+カラムの定義
 ^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
@@ -182,11 +182,11 @@ Database migrations support the following database column types:
 * Phalcon\\Db\\Column::TYPE_CHAR
 * Phalcon\\Db\\Column::TYPE_TEXT
 
-Defining Indexes
+インデックスの定義
 ^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
 
-Defining References
+テーブル外部参照の定義
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
 
@@ -202,7 +202,7 @@ Defining References
 | "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 
-Writing Migrations
+マイグレーションの記述
 ------------------
 Migrations aren't only designed to "morph" table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the :doc:`database component <db>`.
 
@@ -225,7 +225,7 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     }
 
-Running Migrations
+マイグレーションの実行
 ------------------
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
