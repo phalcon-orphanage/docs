@@ -25,7 +25,7 @@ These were the measurements we record to identify the overall performance of eac
 * Number of included PHP files on a single request (measured using function get_included_files_.
 * Memory Usage per request (measured using function memory_get_usage_.
 
-Pariticipant Frameworks
+Participant Frameworks
 -----------------------
 * Yii_ (YII_DEBUG=false) (yii-1.1.13)
 * Symfony_ (2.0.11)
