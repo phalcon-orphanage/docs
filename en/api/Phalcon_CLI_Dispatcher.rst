@@ -1,7 +1,7 @@
 Class **Phalcon\\CLI\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 

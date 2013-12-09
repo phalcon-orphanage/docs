@@ -1,17 +1,17 @@
 Class **Phalcon\\Image\\Adapter\\GD**
 =====================================
 
-*extends* :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
 
 *implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
 
-Phalcon\\Image\\\\Adapter\\GD  Image manipulation support. Allows images to be resized, cropped, etc.  
+Image manipulation support. Allows images to be resized, cropped, etc.  
 
 .. code-block:: php
 
     <?php
 
-    $image = new Phalcon\Image\Adapter\Imagick("upload/test.jpg");
+    $image = new Phalcon\Image\Adapter\GD("upload/test.jpg");
     $image->resize(200, 200)->rotate(90)->crop(100, 100);
     if ($image->save()) {
     	echo 'success';

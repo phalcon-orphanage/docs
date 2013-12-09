@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Mongo**
 ========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -81,6 +81,24 @@ public  **gc** ()
 ...
 
 
+public *mixed*  **increment** ([*int|string* $keyName], [*long* $value])
+
+Increment of a given key by $value
+
+
+
+public *mixed*  **decrement** ([*int|string* $keyName], [*long* $value])
+
+Decrement of a given key by $value
+
+
+
+public *bool*  **flush** ([*unknown* $keyName], [*unknown* $value])
+
+Immediately invalidates all existing items.
+
+
+
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
@@ -132,18 +150,6 @@ Gets the last key stored by the cache
 public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last lifetime set
-
-
-
-public *int*  **increment** (*int|string* $keyname, [*int* $step = 1]) 
-
-Increment $keyname by $step
-
-
-
-public *int*  **decrement** (*int|string* $keyname, [*int* $step = 1]) 
-
-Decrement $keyname by $step
 
 
 

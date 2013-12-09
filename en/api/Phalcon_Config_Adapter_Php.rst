@@ -1,17 +1,31 @@
-Class **Phalcon\\Config\\Adapter\\Json**
-========================================
+Class **Phalcon\\Config\\Adapter\\Php**
+=======================================
 
 *extends* class :doc:`Phalcon\\Config <Phalcon_Config>`
 
 *implements* Countable, ArrayAccess
 
-Reads JSON files and converts them to Phalcon\\Config objects.  Given the following configuration file:  
+Reads php files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 
 .. code-block:: php
 
     <?php
 
-    {"phalcon":{"baseuri":"\/phalcon\/"},"models":{"metadata":"memory"}}
+    <?php
+    return array(
+    'database' => array(
+    	'adapter' => 'Mysql',
+    	'host' => 'localhost',
+    	'username' => 'scott',
+    	'password' => 'cheetah',
+    	'dbname' => 'test_db'
+    ),
+    
+    'phalcon' => array(
+    	'controllersDir' => '../app/controllers/',
+    	'modelsDir' => '../app/models/',
+    	'viewsDir' => '../app/views/'
+    ));
 
   You can read it as follows:  
 
@@ -19,9 +33,9 @@ Reads JSON files and converts them to Phalcon\\Config objects.  Given the follow
 
     <?php
 
-    $config = new Phalcon\Config\Adapter\Json("path/config.json");
-    echo $config->phalcon->baseuri;
-    echo $config->models->metadata;
+    $config = new Phalcon\Config\Adapter\Php("path/config.php");
+    echo $config->phalcon->controllersDir;
+    echo $config->database->username;
 
 
 
@@ -30,7 +44,7 @@ Methods
 
 public  **__construct** (*string* $filePath)
 
-Phalcon\\Config\\Adapter\\Json constructor
+Phalcon\\Config\\Adapter\\Php constructor
 
 
 

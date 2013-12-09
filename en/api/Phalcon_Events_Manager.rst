@@ -45,7 +45,7 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 
 
 
-public  **dettachAll** ([*string* $type])
+public  **detachAll** ([*string* $type])
 
 Removes all events from the EventsManager
 
@@ -80,5 +80,10 @@ public *array*  **getListeners** (*string* $type)
 
 Returns all the attached listeners of a certain type
 
+
+
+public  **dettachAll** ([*unknown* $type])
+
+...
 
 

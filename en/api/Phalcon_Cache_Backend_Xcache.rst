@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Xcache**
 =========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -67,6 +67,24 @@ Checks if the cache entry exists and has not expired
 
 
 
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+
+Atomic increment of a given key, by number $value
+
+
+
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Atomic decrement of a given key, by number $value
+
+
+
+public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
@@ -118,18 +136,6 @@ Gets the last key stored by the cache
 public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last lifetime set
-
-
-
-public *int*  **increment** (*int|string* $keyname, [*int* $step = 1]) 
-
-If xcache_inc exists, this is an atomic increment, otherwise it wraps the functionality non-atomic. Increment $keyname by $step
-
-
-
-public *int*  **decrement** (*int|string* $keyname, [*int* $step = 1]) 
-
-If xcache_dec exists, this is an atomic decrement, otherwise it wraps the functionality non-atomic. Decrement $keyname by $step
 
 
 

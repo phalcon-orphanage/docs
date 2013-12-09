@@ -1,5 +1,5 @@
-Class **Phalcon\\Forms\\Element**
-=================================
+Abstract class **Phalcon\\Forms\\Element**
+==========================================
 
 This is a base class for form elements
 

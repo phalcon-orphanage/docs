@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation\\Validator\\PresenceOf**
 ====================================================
 
-*extends* :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
+*extends* abstract class :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 

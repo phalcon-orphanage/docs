@@ -177,3 +177,15 @@ Returns the complete location where the joined/filtered collection must be writt
 
 
 
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetLocal** (*boolean* $targetLocal)
+
+Sets the target local
+
+
+
+public *boolean*  **getTargetLocal** ()
+
+Returns the target local
+
+
+

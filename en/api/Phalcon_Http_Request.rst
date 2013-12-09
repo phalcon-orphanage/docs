@@ -67,6 +67,21 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
+public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+
+Gets a variable from put request 
+
+.. code-block:: php
+
+    <?php
+
+    $userEmail = $request->getPut("user_email");
+    
+    $userEmail = $request->getPut("user_email", "email");
+
+
+
+
 public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
@@ -102,6 +117,12 @@ Checks whether $_REQUEST superglobal has certain index
 public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
+
+
+
+public *boolean*  **hasPut** (*string* $name)
+
+Checks whether put has certain index
 
 
 

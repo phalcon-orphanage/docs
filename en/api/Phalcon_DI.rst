@@ -166,3 +166,8 @@ Resets the internal default DI
 
 
 
+public  **__clone** ()
+
+...
+
+

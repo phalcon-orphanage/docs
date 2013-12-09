@@ -1,7 +1,7 @@
 Class **Phalcon\\DI\\FactoryDefault**
 =====================================
 
-*extends* :doc:`Phalcon\\DI <Phalcon_DI>`
+*extends* class :doc:`Phalcon\\DI <Phalcon_DI>`
 
 *implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
@@ -149,5 +149,10 @@ public static  **reset** () inherited from Phalcon\\DI
 
 Resets the internal default DI
 
+
+
+public  **__clone** () inherited from Phalcon\\DI
+
+...
 
 

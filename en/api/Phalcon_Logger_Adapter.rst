@@ -1,5 +1,5 @@
-Class **Phalcon\\Logger\\Adapter**
-==================================
+Abstract class **Phalcon\\Logger\\Adapter**
+===========================================
 
 Base class for Phalcon\\Logger adapters
 
@@ -49,10 +49,15 @@ Rollbacks the internal transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergence** (*string* $message)
+public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergency** (*string* $message)
 
-Sends/Writes an emergence message to the log
+Sends/Writes an emergency message to the log
 
+
+
+public  **emergence** (*unknown* $message)
+
+...
 
 
 public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **debug** (*string* $message)

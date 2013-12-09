@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\File**
 =======================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -76,6 +76,24 @@ Checks if cache exists and it isn't expired
 
 
 
+public *mixed*  **increment** ([*string* $keyName], [*long* $value])
+
+Increment of a given key, by number $value
+
+
+
+public *mixed*  **decrement** ([*string* $keyName], [*long* $value])
+
+Decrement of a given key, by number $value
+
+
+
+public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
@@ -127,18 +145,6 @@ Gets the last key stored by the cache
 public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last lifetime set
-
-
-
-public *int*  **increment** (*int|string* $keyname, [*int* $step = 1]) 
-
-Increment $keyname by $step
-
-
-
-public *int*  **decrement** (*int|string* $keyname, [*int* $step = 1]) 
-
-Decrement $keyname by $step
 
 
 

@@ -108,3 +108,9 @@ Returns the value of the CSRF token in session
 
 
 
+public static  **computeHmac** (*unknown* $data, *unknown* $key, *unknown* $algo, [*unknown* $raw])
+
+string \\Phalcon\\Security::computeHmac(string $data, string $key, string $algo, bool $raw = false)
+
+
+

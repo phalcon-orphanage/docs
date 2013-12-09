@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Exception**
 =====================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Exceptions thrown in Phalcon\\Session will use this class
 

@@ -85,3 +85,21 @@ Checks if cache exists and it hasn't expired
 
 
 
+abstract public *mixed*  **increment** ([*unknown* $key_name], [*unknown* $value])
+
+Increment $key by $value
+
+
+
+abstract public *mixed*  **decrement** ([*unknown* $key_name], [*unknown* $value])
+
+Decrement $key by $value
+
+
+
+abstract public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+

@@ -1,7 +1,7 @@
 Class **Phalcon\\Translate\\Adapter\\NativeArray**
 ==================================================
 
-*extends* :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
 *implements* ArrayAccess, :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
 

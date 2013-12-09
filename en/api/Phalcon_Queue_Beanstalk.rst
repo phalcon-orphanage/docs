@@ -72,3 +72,13 @@ Closes the connection to the beanstalk server.
 
 
 
+public  **__sleep** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+

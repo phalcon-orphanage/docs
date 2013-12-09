@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Router\\Annotations**
 ===========================================
 
-*extends* :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
+*extends* class :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
 

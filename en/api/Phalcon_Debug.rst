@@ -151,3 +151,8 @@ Sets the number of lines deplayed after the error line
 
 
 
+protected  **getFileLink** (*unknown* $file, *unknown* $line, *unknown* $format)
+
+...
+
+

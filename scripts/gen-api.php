@@ -12,7 +12,7 @@ if (!extension_loaded('phalcon')) {
 	throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+define('CPHALCON_DIR', '/home/boston/gits/phalcon/core/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
 	throw new Exception("CPHALCON directory does not exist");
@@ -390,12 +390,12 @@ foreach ($classes as $className) {
 		$code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
 		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
 	} else {
-		
+
 		$classPrefix = 'Class';
 		if (strtolower($typeClass) != 'public') {
 			$classPrefix = ucfirst(strtolower($typeClass)) . ' class';
 		}
-		
+
 		$code = $classPrefix . ' **' . $nsClassName . '**' . PHP_EOL;
 		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
 	}
@@ -408,12 +408,12 @@ foreach ($classes as $className) {
 				$extendsPath  = str_replace("\\", "_", $extendsName);
 				$extendsName  = str_replace("\\", "\\\\", $extendsName);
 				$reflector    = new ReflectionClass($extendsClass);
-				
+
 				$prefix = 'class';
 				if ($reflector->isAbstract() == true) {
 					$prefix = 'abstract class';
 				}
-				
+
 				$code.='*extends* ' . $prefix . ' :doc:`' . $extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
 			} else {
 				$code.='*extends* ' . $extendsName . PHP_EOL . PHP_EOL;

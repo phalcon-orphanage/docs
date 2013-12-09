@@ -37,10 +37,15 @@ Sends a message to each registered logger
 
 
 
-public  **emergence** (*string* $message)
+public  **emergency** (*string* $message)
 
-Sends/Writes an emergence message to the log
+Sends/Writes an emergency message to the log
 
+
+
+public  **emergence** (*unknown* $message)
+
+...
 
 
 public  **debug** (*string* $message)

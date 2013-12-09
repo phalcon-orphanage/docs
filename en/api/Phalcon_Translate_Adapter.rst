@@ -1,5 +1,5 @@
-Class **Phalcon\\Translate\\Adapter**
-=====================================
+Abstract class **Phalcon\\Translate\\Adapter**
+==============================================
 
 *implements* ArrayAccess
 

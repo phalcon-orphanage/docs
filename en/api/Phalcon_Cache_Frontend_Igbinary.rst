@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Frontend\\Igbinary**
 ============================================
 
-*extends* :doc:`Phalcon\\Cache\\Frontend\\Data <Phalcon_Cache_Frontend_Data>`
+*extends* class :doc:`Phalcon\\Cache\\Frontend\\Data <Phalcon_Cache_Frontend_Data>`
 
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 

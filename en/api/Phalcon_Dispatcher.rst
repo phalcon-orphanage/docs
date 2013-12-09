@@ -1,5 +1,5 @@
-Class **Phalcon\\Dispatcher**
-=============================
+Abstract class **Phalcon\\Dispatcher**
+======================================
 
 *implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 

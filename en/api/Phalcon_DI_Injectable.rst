@@ -1,5 +1,5 @@
-Class **Phalcon\\DI\\Injectable**
-=================================
+Abstract class **Phalcon\\DI\\Injectable**
+==========================================
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 

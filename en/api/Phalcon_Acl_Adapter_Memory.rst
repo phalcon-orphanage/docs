@@ -1,7 +1,7 @@
 Class **Phalcon\\Acl\\Adapter\\Memory**
 =======================================
 
-*extends* :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
