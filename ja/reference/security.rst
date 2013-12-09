@@ -2,7 +2,7 @@
 ========
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
 
-Password Hashing
+パスワードのハッシュ化
 ----------------
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user
 accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods
@@ -75,7 +75,7 @@ its encryption will be slow. We can check if the password is correct as follows:
 
 The salt is generated using pseudo-random bytes with the PHP's function openssl_random_pseudo_bytes_ so is required to have the openssl_ extension loaded.
 
-Cross-Site Request Forgery (CSRF) protection
+クロスサイト・リクエスト・フォージェリ(CSRF)保護
 --------------------------------------------
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments
 are vulnerable to this attack.
@@ -119,7 +119,7 @@ Then in the controller's action you can check if the CSRF token is valid:
 
 Adding a captcha_ to the form is also recommended to completely avoid the risks of this attack.
 
-Setting up the component
+コンポーネントのセットアップ
 ------------------------
 This component is automatically registered in the services container as 'security', you can re-register it
 to setup it's options:
@@ -138,7 +138,7 @@ to setup it's options:
         return $security;
     }, true);
 
-External Resources
+外部資料
 ------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
 

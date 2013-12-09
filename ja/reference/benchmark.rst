@@ -44,7 +44,7 @@ The testing hardware environment is as follows:
    benchmark/hello-world
    benchmark/micro
 
-ChangeLog
+変更履歴
 ---------
 .. versionadded:: 1.0
     Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info

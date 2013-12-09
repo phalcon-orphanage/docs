@@ -992,6 +992,45 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
         return $router;
     };
+    
+Registering Router instance
+---------------------------
+
+You can register router during service registration with Phalcon depedency injector to make it available inside controller.
+You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
+
+.. code-block:: php
+
+    <?php
+    
+    /**
+    * add routing capabilities
+    */
+    $di->set('router', function(){
+        require __DIR__.'/../app/config/routes.php';
+        return $router;
+    });
+
+You need to create app/config/routes.php and add router initialization code, for example:
+
+.. code-block:: php
+
+    <?php
+
+    $router = new \Phalcon\Mvc\Router();
+
+    $router->add("/login", array(       
+        'controller' => 'login',
+        'action' => 'index',
+    ));
+
+    $router->add("/products/:action", array(        
+        'controller' => 'products',
+        'action' => 1,
+    ));
+
+    return $router;
+
 
 独自ルータの実装
 ----------------------------

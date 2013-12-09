@@ -10,7 +10,7 @@ access to the content of your application, mainly user data, or even the server 
 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
-Sanitizing data
+データのサニタイズ
 ---------------
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
 By sanitizing input we ensure that application integrity will be intact.

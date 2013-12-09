@@ -35,7 +35,7 @@ The following example shows its basic usage:
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
-Initializing Validation
+バリデーションの初期化
 -----------------------
 Validation chains can be initialized in a direct manner by just adding validators to the Phalcon\\Validation object.
 You can put your validations in a seperate file for better re-use code and organization:
@@ -79,7 +79,7 @@ You can put your validations in a seperate file for better re-use code and organ
         }
     }
 
-Validators
+ビルトイン バリデータ一覧
 ----------
 Phalcon exposes a set of built-in validators for this component:
 
@@ -148,7 +148,7 @@ The following example explains how to create additional validators for this comp
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
-Validation Messages
+バリデーションメッセージ
 -------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the validation processes.
@@ -225,7 +225,7 @@ for a specific field using the 'filter' method:
         }
     }
 
-Filtering of Data
+データのフィルタリング
 -----------------
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -301,7 +301,7 @@ cancelled:
 
     }
 
-Cancelling Validations
+バリデーションのキャンセル
 ---------------------
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:

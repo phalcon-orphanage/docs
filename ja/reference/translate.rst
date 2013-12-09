@@ -3,7 +3,7 @@
 The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component,
 display content in different languages, based on the user's chosen language supported by the application.
 
-Adapters
+アダプタ一覧
 --------
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
@@ -13,7 +13,7 @@ This component makes use of adapters to read translation messages from different
 | NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 +-------------+-----------------------------------------------------------------------------------------+
 
-Component Usage
+コンポーネントの使い方
 ---------------
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
 to organize your translation strings. A simple structure could be:
@@ -116,7 +116,7 @@ are in the form of a key/value array, where the key matches the placeholder name
 Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
 this by using a :doc:`Router <routing>`.
 
-Implementing your own adapters
+独自アダプタの実装
 ------------------------------
 The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
