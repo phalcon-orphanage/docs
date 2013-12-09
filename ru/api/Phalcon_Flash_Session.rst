@@ -1,7 +1,7 @@
 Class **Phalcon\\Flash\\Session**
 =================================
 
-*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+*extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -50,6 +50,12 @@ Returns the messages in the session flasher
 public  **output** ([*boolean* $remove])
 
 Prints the messages in the session flasher
+
+
+
+public  **has** (*unknown* $type)
+
+bool \\Phalcon\\Flash\\Session::has(string $type)
 
 
 

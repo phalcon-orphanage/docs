@@ -1,7 +1,7 @@
 Class **Phalcon\\Loader\\Exception**
 ====================================
 
-*extends* :doc:`Phalcon\\DI\\Exception <Phalcon_DI_Exception>`
+*extends* class :doc:`Phalcon\\DI\\Exception <Phalcon_DI_Exception>`
 
 Exceptions thrown in Phalcon\\Loader will use this class
 

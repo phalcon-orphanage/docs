@@ -1,7 +1,7 @@
 Class **Phalcon\\Logger\\Adapter\\Stream**
 ==========================================
 
-*extends* :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
 
@@ -87,10 +87,15 @@ Rollbacks the internal transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergence** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergency** (*string* $message) inherited from Phalcon\\Logger\\Adapter
 
-Sends/Writes an emergence message to the log
+Sends/Writes an emergency message to the log
 
+
+
+public  **emergence** (*unknown* $message) inherited from Phalcon\\Logger\\Adapter
+
+...
 
 
 public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **debug** (*string* $message) inherited from Phalcon\\Logger\\Adapter

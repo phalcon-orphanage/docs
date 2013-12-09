@@ -1,5 +1,5 @@
-Class **Phalcon\\Image\\Adapter**
-=================================
+Abstract class **Phalcon\\Image\\Adapter**
+==========================================
 
 Base class for Phalcon\\Image adapters
 

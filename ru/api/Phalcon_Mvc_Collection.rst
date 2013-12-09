@@ -445,3 +445,17 @@ Unserializes the object from a serialized string
 
 
 
+public static *array*  **execute** (*mixed* $code, [*array* $args])
+
+Runs JavaScript code on the database server. 
+
+.. code-block:: php
+
+    <?php
+
+     $ret = Robots::execute("function() { return 'Hello, world!';}");
+     echo $ret['retval'], "\n";
+
+
+
+

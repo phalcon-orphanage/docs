@@ -1,7 +1,7 @@
 Class **Phalcon\\Paginator\\Exception**
 =======================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Exceptions thrown in Phalcon\\Paginator will use this class
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
@@ -94,6 +94,18 @@ Returns the lastest dispatched controller
 public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
 
 Returns the active controller in the dispatcher
+
+
+
+public *string*  **getPreviousControllerName** ()
+
+Returns the previous controller in the dispatcher
+
+
+
+public *string*  **getPreviousActionName** ()
+
+Returns the previous action in the dispatcher
 
 
 

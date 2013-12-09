@@ -1,5 +1,5 @@
-Class **Phalcon\\Session\\Adapter**
-===================================
+Abstract class **Phalcon\\Session\\Adapter**
+============================================
 
 Base class for Phalcon\\Session adapters
 
@@ -40,7 +40,7 @@ Get internal options
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*bool* $remove])
 
 Gets a session variable from an application context
 

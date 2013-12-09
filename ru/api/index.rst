@@ -55,6 +55,7 @@ API Indice
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Adapter_Json
+   Phalcon_Config_Adapter_Php
    Phalcon_Config_Exception
    Phalcon_Crypt
    Phalcon_Crypt_Exception
@@ -232,7 +233,6 @@ API Indice
    Phalcon_Tag_Exception
    Phalcon_Tag_Select
    Phalcon_Text
-   Phalcon_Translate
    Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception

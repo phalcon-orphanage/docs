@@ -1,11 +1,11 @@
 Class **Phalcon\\Image\\Adapter\\Imagick**
 ==========================================
 
-*extends* :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`
 
 *implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
 
-Phalcon\\Image\\\\Adapter\\Imagick  Image manipulation support. Allows images to be resized, cropped, etc.  
+Image manipulation support. Allows images to be resized, cropped, etc.  
 
 .. code-block:: php
 
@@ -128,6 +128,16 @@ public  **__destruct** ()
 
 Destroys the loaded image to free up resources.
 
+
+
+public  **getInternalImInstance** ()
+
+...
+
+
+public static  **setResourceLimit** (*unknown* $resource, *unknown* $limit)
+
+...
 
 
 public *string*  **getRealPath** () inherited from Phalcon\\Image\\Adapter

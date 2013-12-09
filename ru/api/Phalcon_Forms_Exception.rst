@@ -1,7 +1,7 @@
 Class **Phalcon\\Forms\\Exception**
 ===================================
 
-*extends* :doc:`Phalcon\\DI\\Exception <Phalcon_DI_Exception>`
+*extends* class :doc:`Phalcon\\DI\\Exception <Phalcon_DI_Exception>`
 
 Exceptions thrown in Phalcon\\Forms will use this class
 

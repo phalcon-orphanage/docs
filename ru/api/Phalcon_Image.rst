@@ -1,5 +1,5 @@
-Class **Phalcon\\Image**
-========================
+Abstract class **Phalcon\\Image**
+=================================
 
 Image manipulation support. Allows images to be resized, cropped, etc.  
 

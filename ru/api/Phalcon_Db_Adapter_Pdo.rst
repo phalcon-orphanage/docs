@@ -1,7 +1,7 @@
-Class **Phalcon\\Db\\Adapter\\Pdo**
-===================================
+Abstract class **Phalcon\\Db\\Adapter\\Pdo**
+============================================
 
-*extends* :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
@@ -60,8 +60,8 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
@@ -74,8 +74,8 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 

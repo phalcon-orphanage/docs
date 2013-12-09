@@ -481,6 +481,19 @@ Set the title of view content
 
 
 
+public static  **setTitleSeparator** (*unknown* $separator)
+
+Set the title separator of view content 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Tag::setTitleSeparator('-');
+
+
+
+
 public static  **appendTitle** (*string* $title)
 
 Appends a text to current document title
@@ -508,6 +521,25 @@ Gets the current document title
     <?php
 
      	{{ get_title() }}
+
+
+
+
+public static *string*  **getTitleSeparator** ()
+
+Gets the current document title separator 
+
+.. code-block:: php
+
+    <?php
+
+     	echo Phalcon\Tag::getTitleSeparator();
+
+.. code-block:: php
+
+    <?php
+
+     	{{ get_title_separator() }}
 
 
 

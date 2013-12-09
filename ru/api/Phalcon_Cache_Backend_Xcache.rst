@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Xcache**
 =========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -64,6 +64,24 @@ Query the existing cached keys
 public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if the cache entry exists and has not expired
+
+
+
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+
+Atomic increment of a given key, by number $value
+
+
+
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Atomic decrement of a given key, by number $value
+
+
+
+public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
 
 
 

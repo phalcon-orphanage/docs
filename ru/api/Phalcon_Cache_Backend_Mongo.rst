@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Mongo**
 ========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -79,6 +79,24 @@ Checks if cache exists and it hasn't expired
 public  **gc** ()
 
 ...
+
+
+public *mixed*  **increment** ([*int|string* $keyName], [*long* $value])
+
+Increment of a given key by $value
+
+
+
+public *mixed*  **decrement** ([*int|string* $keyName], [*long* $value])
+
+Decrement of a given key by $value
+
+
+
+public *bool*  **flush** ([*unknown* $keyName], [*unknown* $value])
+
+Immediately invalidates all existing items.
+
 
 
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
