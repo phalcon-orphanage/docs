@@ -8,7 +8,7 @@ Reasons to use this component instead of raw-sessions:
 * Intercept where session data is set/get in your application
 * Change the session adapter according to the application needs
 
-Starting the Session
+セッションの開始
 --------------------
 Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually.
 Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
@@ -24,7 +24,7 @@ Thanks to the service container, we can ensure that the session is accessed only
         return $session;
     });
 
-Storing/Retrieving data in Session
+セッションへのデータの保存と取得
 ----------------------------------
 From a controller, a view or any other component that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
 and store items and retrieve them in the following way:
@@ -55,7 +55,7 @@ and store items and retrieve them in the following way:
 
     }
 
-Removing/Destroying Sessions
+セッションデータの削除と破棄
 ----------------------------
 It's also possible remove specific variables or destroy the whole session:
 
@@ -80,7 +80,7 @@ It's also possible remove specific variables or destroy the whole session:
 
     }
 
-Isolating Session Data between Applications
+アプリケーション毎に別のセッションを使う
 -------------------------------------------
 Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session,
 we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a
@@ -105,7 +105,7 @@ prefix for every session variable created in a certain application:
         return $session;
     });
 
-Session Bags
+セッション・バッグ
 ------------
 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
 Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
@@ -121,7 +121,7 @@ it's automatically stored in session:
     $user->age  = 22;
 
 
-Persistent Data in Components
+コンポーネントでの永続的なデータ
 -----------------------------
 Controller, components and classes thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
 a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
@@ -175,7 +175,7 @@ In a component:
 The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
 can only be accessed in the scope of the current class.
 
-Implementing your own adapters
+独自アダプタの実装
 ------------------------------
 The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own session adapters or extend the existing ones.
 

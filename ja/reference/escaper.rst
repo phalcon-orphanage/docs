@@ -62,7 +62,7 @@ Which produces the following:
 
 Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
 
-Escaping HTML
+HTMLのエスケープ
 -------------
 The most common situation when inserting unsafe data is between HTML tags:
 
@@ -82,7 +82,7 @@ Which produces:
 
     <div class="comments">&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;</div>
 
-Escaping HTML Attributes
+HTML属性のエスケープ
 ------------------------
 Escape HTML attributes is different from escape a full HTML content. The escape works by changing every non-alphanumeric
 character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like 'href' or 'url':
@@ -103,7 +103,7 @@ Which produces:
 
     <table width="&#x22;&#x3e;&#x3c;h1&#x3e;Hello&#x3c;&#x2f;table"><tr><td>Hello</td></tr></table>
 
-Escaping URLs
+URLのエスケープ
 -------------
 Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
@@ -123,7 +123,7 @@ Which produces:
 
     <a href="%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23">Some link</a>
 
-Escaping CSS
+CSSのエスケープ
 ------------
 CSS identifiers/values can be escaped too:
 
@@ -143,7 +143,7 @@ Which produces:
 
     <a style="color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 ">Some link</a>
 
-Escaping Javascript
+Javascriptのエスケープ
 -------------------
 Strings to be inserted into javascript code also must be properly escaped:
 

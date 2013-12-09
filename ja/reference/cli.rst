@@ -2,7 +2,7 @@
 =========================
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
-Structure
+構造
 ---------
 A minimal structure of a CLI application will look like this:
 
