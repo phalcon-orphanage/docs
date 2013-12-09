@@ -14,7 +14,7 @@ to the respective database engine operations.
     Models are intended to work on a database high layer of abstraction. If you need to work with databases at a lower level check out the
     :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
 
-Creating Models
+モデルの作成
 ---------------
 A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
 file must contain a single class; its class name should be in camel case notation:
@@ -90,7 +90,7 @@ created you can 'onConstruct':
 
     }
 
-Public properties vs. Setters/Getters
+パブリック・プロパティ vs. セッタ/ゲッタ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models can be implemented with properties of public scope, meaning that each property can be read/updated
 from any part of the code that has instantiated that model class without any restrictions:
@@ -162,7 +162,7 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating. The ORM is compatible with both schemes of defining properties.
 
-Models in Namespaces
+名前空間内のモデル
 ^^^^^^^^^^^^^^^^^^^^
 Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
 
@@ -219,7 +219,7 @@ Once the record is in memory, you can make modifications to its data and then sa
 As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
 abstraction for web applications.
 
-Finding Records
+レコードの検索
 ---------------
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
 how to query one or more records from a model:
@@ -336,7 +336,7 @@ The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
 
-Model Resultsets
+モデルの結果セット
 ^^^^^^^^^^^^^^^^
 While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
@@ -419,7 +419,7 @@ thus consuming more memory while this process takes place.
        echo $part->id;
     }
 
-Filtering Resultsets
+結果セットのフィルタリング
 ^^^^^^^^^^^^^^^^^^^^
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
 Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
@@ -437,7 +437,7 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
     });
 
-Binding Parameters
+パラメータの割り当て
 ^^^^^^^^^^^^^^^^^^
 Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
 impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
@@ -527,7 +527,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
 
-Initializing/Preparing fetched records
+取得したレコードの初期化／準備
 --------------------------------------
 May be the case that after obtaining a record from the database is necessary to initialise the data before
 being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
@@ -581,7 +581,7 @@ accessed:
 
     }
 
-Relationships between Models
+モデル間のリレーション
 ----------------------------
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
 unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
@@ -589,15 +589,15 @@ The model manager manages foreign key constraints for these relationships, the d
 integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
 it is easy to access data in related models from each record in a uniform way.
 
-Unidirectional relationships
+単方向のリレーション
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-Bidirectional relations
+双方向のリレーション
 ^^^^^^^^^^^^^^^^^^^^^^^
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-Defining relationships
+リレーションの定義
 ^^^^^^^^^^^^^^^^^^^^^^
 In Phalcon, relationships must be defined in the initialize() method of a model. The methods belongsTo(), hasOne(),
 hasMany() and hasManyToMany() define the relationship between one or more fields from the current model to fields in
@@ -739,7 +739,7 @@ Many to many relationships require 3 models and define the attributes involved i
 
     }
 
-Taking advantage of relationships
+リレーションの活用
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -977,7 +977,7 @@ docblocks helping the IDE to produce a better auto-completion:
 
     }
 
-Virtual Foreign Keys
+仮想外部キー
 --------------------
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
 value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
@@ -1249,7 +1249,7 @@ Hydration mode can also be passed as a parameter of 'find':
         echo $robot['year'], PHP_EOL;
     }
 
-Creating Updating/Records
+レコードの作成、更新
 -------------------------
 The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
@@ -1315,7 +1315,7 @@ the mass assignment:
     $robot = new Robots();
     $robot->save($_POST, array('name', 'type'));
 
-Create/Update with Confidence
+確実に作成／更新する
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
 could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
@@ -1342,7 +1342,7 @@ sure that a record is created or updated, we can change the save() call with cre
 
 These methods "create" and "update" also accept an array of values as parameter.
 
-Auto-generated identity columns
+自動採番のIDカラム
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
@@ -1376,7 +1376,7 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
     }
 
-Storing related records
+関連レコードの保存
 ^^^^^^^^^^^^^^^^^^^^^^^
 Magic properties can be used to store a records and its related properties:
 
@@ -1499,7 +1499,7 @@ The method getMessages() can be overriden in a model to replace/translate the de
         }
     }
 
-Events and Events Manager
+イベントとイベント・マネージャ
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
@@ -1534,7 +1534,7 @@ certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Mod
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
-Implementing Events in the Model's class
+モデルクラス内でのイベントの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
 
@@ -1575,7 +1575,7 @@ Events can be useful to assign values before performing an operation, for exampl
 
     }
 
-Using a custom Events Manager
+カスタムイベントマネージャの使用
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
 this means we can create listeners that run when an event is triggered.
@@ -1660,7 +1660,7 @@ If we want all objects created in our application use the same EventsManager, th
 
 If a listener returns false that will stop the operation that is executing currently.
 
-Implementing a Business Rule
+ビジネス・ルールの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of
 the events listed in the table above.
@@ -1690,7 +1690,7 @@ The following example implements an event that validates the year cannot be smal
 Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 will assume a true value.
 
-Validating Data Integrity
+データ整合性の検証
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
 event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
@@ -1841,7 +1841,7 @@ The idea of creating validators is make them reusable between several models. A 
 
     }
 
-Avoiding SQL injections
+SQLインジェクションの回避
 ^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
 each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
@@ -1980,7 +1980,7 @@ this specially helps when the table has blob/text fields:
         }
     }
 
-Deleting Records
+レコードの削除
 ----------------
 The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
 
@@ -2048,7 +2048,7 @@ With the above events can also define business rules in the models:
 
     }
 
-Validation Failed Events
+バリデーション失敗のイベント
 ------------------------
 Another type of events are available when the data validation process finds any inconsistency:
 
@@ -2060,7 +2060,7 @@ Another type of events are available when the data validation process finds any 
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-Behaviors
+振る舞い(ビヘイビア)
 ---------
 Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
 behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
@@ -2105,7 +2105,7 @@ The following built-in behaviors are provided by the framework:
 | SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                     |
 +----------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-Timestampable
+タイムスタンプ化
 ^^^^^^^^^^^^^
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
@@ -2149,7 +2149,7 @@ as format of the PHP's function date_, format can also be an anonymous function 
 
 If the option 'format' is omitted a timestamp using the PHP's function time_, will be used.
 
-SoftDelete
+論理削除
 ^^^^^^^^^^
 This behavior can be used in the following way:
 
@@ -2221,7 +2221,7 @@ The operation will result in the following data in the table:
 
 Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
-Creating your own behaviors
+独自の振る舞いの作成
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
 Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
@@ -2311,7 +2311,7 @@ Call that method on a model that implements Sluggable returns a SEO friendly tit
 
     $title = $post->getSlug();
 
-Using Traits as behaviors
+振る舞いとしてのトレイトの使用
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way to implement
 custom behaviors. The following trait implements a simple version of the Timestampable behavior:
@@ -2346,7 +2346,7 @@ Then you can use it in your model as follows:
         use MyTimestampable;
     }
 
-Transactions
+トランザクション
 ------------
 When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
 be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
@@ -2355,7 +2355,7 @@ are committed to the database.
 Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
 all operations if something went wrong.
 
-Manual Transactions
+手動のトランザクション
 ^^^^^^^^^^^^^^^^^^^
 If an application only uses one connection and the transactions aren't very complex, a transaction can be
 created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
@@ -2392,7 +2392,7 @@ is successfully or not:
         }
     }
 
-Implicit Transactions
+暗黙的なトランザクション
 ^^^^^^^^^^^^^^^^^^^^^
 Existing relationships can be used to store records and their related instances, this kind of operation
 implicitly creates a transaction to ensure that data are correctly stored:
@@ -2648,7 +2648,7 @@ you can do this:
         return true;
     });
 
-Deleting related records
+関連するレコードの削除
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Instead of doing this:
 
@@ -2984,7 +2984,7 @@ The following example shows how to define the meta-data manually:
 
     }
 
-Pointing to a different schema
+別のスキーマの指定
 ------------------------------
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
 
@@ -3002,7 +3002,7 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     }
 
-Setting multiple databases
+複数のデータベースの設定
 --------------------------
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
