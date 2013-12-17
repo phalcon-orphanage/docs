@@ -1,14 +1,14 @@
-Caching in the ORM
-==================
-Every application is different, we could have models whose data change frequently and others that rarely change.
-Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
-the complex connection/communication processes that PHP must do in each request to obtain data from the database.
-Therefore, if we want to achieve good performance we need to add some layers of caching where the
-application requires it.
+Кэширование в ORM
+=================
+Каждое приложение уникально: у нас могут быть модели c часто изменяемыми данными, так и модели с данными, 
+которые редко  изменяют свои значения. Обращение к базе данных часто является одним из наиболее распространенных 
+узких мест в плане производительности приложения. Это связано со сложными процессами подключения/коммуникации, 
+которые PHP должен выполнять при каждом запросе к базе данных для получения требуемых данных. Поэтому, если мы 
+хотим добиться хорошей производительности, мы должны добавить несколько слоев кэширования, когда приложение в 
+этом нуждается.
 
-This chapter explains the possible points where it is possible to implement caching to improve performance.
-The framework gives you the tools to implement the cache where you demand of it according to the architecture
-of your application.
+В этой главе рассматриваются места, где можно реализовать кэширование для повышения производительности. Фреймворк 
+дает вам инструмент для реализации кэша, в тех местах где вам нужно в соответствии с архитектурой приложения.
 
 Caching Resultsets
 ------------------
