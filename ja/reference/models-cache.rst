@@ -10,7 +10,7 @@ This chapter explains the possible points where it is possible to implement cach
 The framework gives you the tools to implement the cache where you demand of it according to the architecture
 of your application.
 
-Caching Resultsets
+結果セットのキャッシュ
 ------------------
 A well established technique to avoid the continuous access to the database is to cache resultsets that don't change
 frequently using a system with faster access (usually memory).
@@ -252,7 +252,7 @@ Then use this class as base class for each 'Cacheable' model:
 
     }
 
-Forcing Cache
+キャッシュの強制
 -------------
 Earlier we saw how Phalcon\\Mvc\\Model has a built-in integration with the caching component provided by the framework. To make a record/resultset
 cacheable we pass the key 'cache' in the array of parameters:
@@ -308,7 +308,7 @@ we can override the find/findFirst method to force every query to be cached:
 
     }
 
-Caching PHQL Queries
+PHQLクエリのキャッシュ
 --------------------
 All queries in the ORM, no matter how high level syntax we used to create them are handled internally using PHQL.
 This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
@@ -344,7 +344,7 @@ If you don't want to use the implicit cache just save the resulset into your fav
 
     apc_store('my-cars', $cars);
 
-Reusable Related Records
+再利用可能な関連レコード
 ------------------------
 Some models may have relationships to other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -458,7 +458,7 @@ Do not forget to register the custom models manager in the DI:
         return new CustomModelsManager();
     });
 
-Caching Related Records
+関連するレコードのキャッシュ
 -----------------------
 When a related record is queried, the ORM internally builds the appropiate condition and gets the required records using find/findFirst
 in the target model according to the following table:
@@ -503,7 +503,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
         }
     }
 
-Caching Related Records Recursively
+関連するレコードの再帰的なキャッシュ
 -----------------------------------
 In this scenario, we assume that everytime we query a result we also retrieve their associated records.
 If we store the records found together with their related entities perhaps we could reduce a bit the overhead required
@@ -607,7 +607,7 @@ Note that this process can also be performed with PHQL following an alternative 
 
     }
 
-Caching based on Conditions
+条件にもとづくキャッシュ
 ---------------------------
 In this scenario, the cache is implemented conditionally according to current conditions received.
 According to the range where the primary key is located we choose a different cache backend:
@@ -840,7 +840,7 @@ Finally, we can replace the find method in the Robots model to use the custom cl
         }
     }
 
-Caching of PHQL planning
+PHQL実行計画のキャッシュ
 ------------------------
 As well as most moderns database systems PHQL internally caches the execution plan,
 if the same statement is executed several times PHQL reuses the previously generated plan
