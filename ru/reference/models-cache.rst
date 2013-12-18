@@ -1,5 +1,6 @@
 Кэширование в ORM
 =================
+
 Каждое приложение уникально: у нас могут быть модели c часто изменяемыми данными, так и модели с данными, 
 которые редко  изменяют свои значения. Обращение к базе данных часто является одним из наиболее распространенных 
 узких мест в плане производительности приложения. Это связано со сложными процессами подключения/коммуникации, 
@@ -10,30 +11,31 @@
 В этой главе рассматриваются места, где можно реализовать кэширование для повышения производительности. Фреймворк 
 дает вам инструмент для реализации кэша, в тех местах где вам нужно в соответствии с архитектурой приложения.
 
-Caching Resultsets
-------------------
-A well established technique to avoid the continuous access to the database is to cache resultsets that don't change
-frequently using a system with faster access (usually memory).
+Кэширование наборов данных
+--------------------------
 
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
-request it to the Dependency Injector Container with the convention name "modelsCache".
+Имеется методика позволяющая избежать постоянного обращения к базе данных, это кэширование редко изменяемых 
+наборов данных, используя систему с более быстрым доступом (обычно это память).
 
-As Phalcon provides a component to :doc:`cache <cache>` any kind of data, we'll explain how to integrate it with Models.
-First, you must register it as a service in the services container:
+Когда :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` требуется сервис для кэша набоов данных, он будет 
+запрашивать у контейнера зависимостей этот сервис с именем «modelsCache».
+
+Phalcon предоставляет компонент :doc:`cache <cache>` для кэширования любых данных, мы объясним как интегрировать 
+его с моделями. Во-первых, вы должны зарегистрировать его в качестве сервиса в контейнере зависимостей:
 
 .. code-block:: php
 
     <?php
 
-    //Set the models cache service
+    // Регистрация сервиса кэша моделей 
     $di->set('modelsCache', function() {
 
-        //Cache data for one day by default
+        //По умолчанию данные кэша хранятся один день
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Настройки соединения с memcached
         $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -42,55 +44,57 @@ First, you must register it as a service in the services container:
         return $cache;
     });
 
-You have complete control in creating and customizing the cache before being used by registering the service
-as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
+Вы имеете полный контроль в создании и настройке кэша перед его использованием путем регистрации сервиса в 
+качестве анонимной функции. После того, как настройка кэша правильно определена, можно кэшировать наборы данных:
 
 .. code-block:: php
 
     <?php
 
-    // Get products without caching
+    // Получить продукта без кэширования
     $products = Products::find();
 
-    // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
+    // Используем кэширование наборов данных. Кэзш остается в памяти в течении 1 часа (3600 секунд).
     $products = Products::find(array(
         "cache" => array("key" => "my-cache")
     ));
 
-    // Cache the resultset for only for 5 minutes
+    // Кэш набора данных хранится всего 5 минут
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
-    // Using a custom cache
+    // Использование пользовательского кэша
     $products = Products::find(array("cache" => $myCache));
 
-Caching could be also applied to resultsets generated using relationships:
+Кэш может быть также применен к набору данных, генерируемых с помощью отношений:
 
 .. code-block:: php
 
     <?php
 
-    // Query some post
+    // Запрос некоторого сообщения
     $post = Post::findFirst();
 
-    // Get comments related to a post, also cache it
+    // Получаем комментарии, относящиеся к сообщению, и кэшируем их
     $comments = $post->getComments(array(
         "cache" => array("key" => "my-key")
     ));
 
-    // Get comments related to a post, setting lifetime
+    // Получаем комментарии относящиеся к сообщению и устанавливаем срок их хранения
     $comments = $post->getComments(array(
         "cache" => array("key" => "my-key", "lifetime" => 3600)
     ));
 
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
+Когда кэшируемые наборы данных должны быть признаны недействительными, вы можете просто удалить их из кэша с 
+использованием ранее указанного ключа.
 
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
-are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
-do not change frequently could be cached, but that is a decision that the developer has to make based on the
-available caching mechanism and whether the performance impact to simply retrieve that data in the
-first place is acceptable.
+Обратите внимание, что не все наборы данных должны быть в кэше. Данные, которые меняют свои значения очень 
+часто не следует кэшировать, так как они становятся не действительными очень быстро, и кэширование в этом случаи 
+отрицательно влияет на производительность приложения. Кроме того, большие наборы данных, которые не часто 
+меняют свои значения, могут располагаться в кэше, но для реализации этой идеи необходимо оценить имеющиеся 
+механизмы кэширования  и влияния на производительность, так как это не всегда будет способствовать увеличению 
+производительности приложения.
 
 Overriding find/findFirst
 -------------------------
