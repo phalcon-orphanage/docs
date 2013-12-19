@@ -1069,7 +1069,7 @@ to maintain the integrity of data:
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
-Generating Calculations
+計算／集計の実行
 -----------------------
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
@@ -1434,7 +1434,14 @@ Saving the album and the artist at the same time implictly makes use of a transa
 goes wrong with saving the related records, the parent will not be saved either. Messages are
 passed back to the user for information regarding any errors.
 
-Validation Messages
+Note: Adding related entities by overloading the following methods is not possible:
+ - Phalcon\Mvc\Model::beforeSave()
+ - Phalcon\Mvc\Model::beforeCreate()
+ - Phalcon\Mvc\Model::beforeUpdate()
+You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
+
+
+バリデーション・メッセージ
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
@@ -2595,11 +2602,11 @@ The independent column map allow you to:
 * Eliminate vendor prefixes/suffixes in your code
 * Change column names without change your application code
 
-Operations over Resultsets
+結果セットの操作
 --------------------------
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
-Updating related records
+関連するレコードの更新
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Instead of doing this:
 
@@ -2688,7 +2695,7 @@ you can do this:
     });
 
 
-Record Snapshots
+レコードのスナップショット
 ----------------
 Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what
 fields are changed according to the data queried from the persistence:
@@ -2722,7 +2729,7 @@ In models that have this feature activated you can check what fields changed:
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
 
-Models Meta-Data
+モデルのメタデータ
 ----------------
 To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
 related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
@@ -2747,7 +2754,7 @@ Sometimes it is necessary to get those attributes when working with models. You 
     $dataTypes = $metaData->getDataTypes($robot);
     print_r($dataTypes);
 
-Caching Meta-Data
+メタデータのキャッシュ
 ^^^^^^^^^^^^^^^^^
 Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each
 time you use the table. This could be done caching the meta-data using any of the following adapters:
@@ -2783,7 +2790,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
         return $metaData;
     };
 
-Meta-Data Strategies
+メタデータの取得方法
 ^^^^^^^^^^^^^^^^^^^^
 As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information
 schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
@@ -2808,11 +2815,11 @@ You can change the default meta-data introspection in the following way:
         return $metaData;
     };
 
-Database Introspection Strategy
+データベースの内部構造から取得する方法
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
 
-Annotations Strategy
+アノテーションによる方法
 ^^^^^^^^^^^^^^^^^^^^
 This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
 
@@ -2897,7 +2904,7 @@ The annotations strategy could be set up this way:
         return $metaData;
     };
 
-Manual Meta-Data
+手動によるメタデータの管理
 ^^^^^^^^^^^^^^^^
 Phalcon can obtain the metadata for each model automatically without the developer must set them manually
 using any of the introspection strategies presented above.
@@ -3116,7 +3123,7 @@ query executed:
 
     $robot = Robots::findFirst('id = 101');
 
-Logging Low-Level SQL Statements
+低レベルのSQL文のロギング
 --------------------------------
 When using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is
 difficult to understand which statements are finally sent to the database system. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
@@ -3179,7 +3186,7 @@ As above, the file *app/logs/db.log* will contain something like this:
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
-Profiling SQL Statements
+SQL文のプロファイリング
 ------------------------
 Thanks to :doc:`Phalcon\\Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`,
 it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With
@@ -3273,7 +3280,7 @@ You may be required to access the application services within a model, the follo
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
-Disabling/Enabling Features
+機能の無効化/有効化
 ---------------------------
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
 According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
@@ -3303,7 +3310,7 @@ The available options are:
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
 +---------------------+----------------------------------------------------------------------------------+---------+
 
-Stand-Alone component
+スタンドアロン・コンポーネント
 ---------------------
 Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstrated below:
 

@@ -14,7 +14,7 @@ The following NoSQL databases are supported:
 | MongoDB_   | MongoDB is a scalable, high-performance, open source NoSQL database. |
 +------------+----------------------------------------------------------------------+
 
-Creating Models
+モデルの作成
 ---------------
 A model is a class that extends from :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. It must be placed in the models directory. A model
 file must contain a single class; its class name should be in camel case notation:
@@ -66,7 +66,7 @@ for a collection "robots" with the documents:
     { "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
     >
 
-Models in Namespaces
+名前空間内のモデル
 --------------------
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:
 
@@ -110,7 +110,7 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "Voltron";
     $robot->save();
 
-Setting a Connection
+接続設定
 --------------------
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called "mongo":
 
@@ -130,7 +130,7 @@ Connections are retrieved from the services container. By default, Phalcon tries
         return $mongo->selectDb("store");
     }, true);
 
-Finding Documents
+ドキュメントの検索
 -----------------
 As :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` relies on the Mongo PHP extension you have the same facilities
 to query documents and convert them transparently to model instances:
@@ -222,7 +222,7 @@ The available query options are:
 
 If you have experience with SQL databases, you may want to check the `SQL to Mongo Mapping Chart`_.
 
-Aggregations
+集計
 ------------
 A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
 With this option is easy perform tasks such as totaling or averaging field values:
@@ -243,7 +243,7 @@ With this option is easy perform tasks such as totaling or averaging field value
         )
     ));
 
-Creating Updating/Records
+レコードの作成、更新
 -------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
 associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
@@ -276,7 +276,7 @@ The "_id" property is automatically updated with the MongoId_ object created by 
     $robot->save();
     echo "The generated id is: ", $robot->getId();
 
-Validation Messages
+バリデーション・メッセージ
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
@@ -297,7 +297,7 @@ generated the message or the message type:
         }
     }
 
-Validation Events and Events Manager
+バリデーション・イベントとイベント・マネージャ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
@@ -429,7 +429,7 @@ objects created in our application use the same EventsManager, then we need to a
 
     }, true);
 
-Implementing a Business Rule
+ビジネス・ルールの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
@@ -457,7 +457,7 @@ The following example implements an event that validates the year cannot be smal
 Some events return false as an indication to stop the current operation. If an event doesn't return anything,
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` will assume a true value.
 
-Validating Data Integrity
+データ整合性の検証
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` provides several events to validate data and implement business rules. The special "validation"
 event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
@@ -586,7 +586,7 @@ The idea of creating validators is make them reusable across several models. A v
 
     }
 
-Deleting Records
+レコードの削除
 ----------------
 The method Phalcon\\Mvc\\Collection::delete() allows to delete a document. You can use it as follows:
 
@@ -636,7 +636,7 @@ The following events are available to define custom business rules that can be e
 | Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
 
-Validation Failed Events
+バリデーション失敗のイベント
 ------------------------
 Another type of events is available when the data validation process finds any inconsistency:
 
@@ -648,7 +648,7 @@ Another type of events is available when the data validation process finds any i
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-Implicit Ids vs. User Primary Keys
+暗黙のID VS. ユーザー指定プライマリキー
 ----------------------------------
 By default Phalcon\\Mvc\\Collection assumes that the _id attribute is automatically generated using MongoIds_.
 If a model uses custom primary keys this behavior can be overriden:
@@ -665,7 +665,7 @@ If a model uses custom primary keys this behavior can be overriden:
         }
     }
 
-Setting multiple databases
+複数のデータベースの設定
 --------------------------
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` needs to connect to the database it requests the "mongo" service
@@ -702,7 +702,7 @@ Then, in the Initialize method, we define the connection service for the model:
 
     }
 
-Injecting services into Models
+モデルにサービスを注入する
 ------------------------------
 You may be required to access the application services within a model, the following example explains how to do that:
 
