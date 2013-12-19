@@ -96,9 +96,10 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 механизмы кэширования  и влияния на производительность, так как это не всегда будет способствовать увеличению 
 производительности приложения.
 
-Overriding find/findFirst
--------------------------
-As seen above, these methods are available in models that inherit :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
+Переопределение find/findFirst
+------------------------------
+
+Как показано выше, эти методы доступны в моделях, которые наследуют :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
 
 .. code-block:: php
 
@@ -119,9 +120,10 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     }
 
-By doing this, you're intercepting all the calls to these methods, this way, you can add a cache
-layer or run the query if there is no cache. For example, a very basic cache implementation, uses
-a static property to avoid that a record would be queried several times in a same request:
+Сделав это, вы будите перехватывать все вызовы этих методов, таким образом, вы можете добавить 
+кэширующий слой или запускать запросы к базе данных, если кэша нет. Например, очень простой 
+реализацией кэша является использование статического свойства, чтобы избежать того, что запись 
+будет запрашиваться несколько раз в одной и том же запросе:
 
 .. code-block:: php
 
@@ -133,8 +135,8 @@ a static property to avoid that a record would be queried several times in a sam
         protected static $_cache = array();
 
         /**
-         * Implement a method that returns a string key based
-         * on the query parameters
+         * Реализация метода, который возвращает 
+         * строковый ключ на основе параметров запроса
          */
         protected static function _createKey($parameters)
         {
@@ -154,7 +156,7 @@ a static property to avoid that a record would be queried several times in a sam
         public static function find($parameters=null)
         {
 
-            //Create an unique key based on the parameters
+            // Создание уникального ключа на основе параметров
             $key = self::_createKey($parameters);
 
             if (!isset(self::$_cache[$key])) {
@@ -162,7 +164,7 @@ a static property to avoid that a record would be queried several times in a sam
                 self::$_cache[$key] = parent::find($parameters);
             }
 
-            //Return the result in the cache
+            // Вернуть результат в кэше
             return self::$_cache[$key];
         }
 
@@ -173,12 +175,14 @@ a static property to avoid that a record would be queried several times in a sam
 
     }
 
-Access the database is several times slower than calculate a cache key, you're free in implement the
-key generation strategy you find better for your needs. Note that a good key avoids collisions as much as possible,
-this means that different keys returns unrelated records to the find parameters.
+Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша, вы свободны в 
+реализации стратегии генерации ключа, которая лучше подходит для ваших задач.  Следует 
+отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это 
+означает, что разные ключи возвращают unrelated records to the find parameters.
 
-In the above example, we used a cache in memory, it is useful as a first level cache. Once we have the memory cache,
-we can implement a second level cache layer like APC/XCache or a NoSQL database:
+В приведенном выше примере мы использовали кэш в памяти, он полезен в качестве первого 
+уровня кэша. Как только у нас есть кэш в памяти, мы можем реализовать слой кэша второго
+уровня с помощью APC / XCache или базы данных NoSQL:
 
 .. code-block:: php
 
@@ -187,40 +191,42 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
     public static function find($parameters=null)
     {
 
-        //Create an unique key based on the parameters
+        // Создание уникального ключа на основе параметров
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
 
-            //We're using APC as second cache
+            //Мы используем APC как кэш второго уровня
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Store the result in the memory cache
+                //Сохраните результат в кэш памяти
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //There are no memory or apc cache
+            //Если нет кэша в памяти или в APC
             $data = parent::find($parameters);
 
-            //Store the result in the memory cache
+            //Сохраните результат в кэш памяти
             self::$_cache[$key] = $data;
 
-            //Store the result in APC
+            //Сохраните результат в APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Return the result in the cache
+        //Вернуть результат в кэше
         return self::$_cache[$key];
     }
 
-This gives you full control on how the the caches must be implemented for each model, if this strategy is common to several models
-you can create a base class for all of them:
+Это дает вам полный контроль над тем, как кэши должны быть реализованы для 
+каждой модели, эта стратегия может быть общей для нескольких моделей, 
+которую можно вынести в отдельный базовый класс для всех подобных классов:
+
 
 .. code-block:: php
 
@@ -245,7 +251,7 @@ you can create a base class for all of them:
         }
     }
 
-Then use this class as base class for each 'Cacheable' model:
+Затем используйте этот класс в качестве базового класса для каждой модели 'Cacheable':
 
 .. code-block:: php
 
