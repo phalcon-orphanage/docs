@@ -16,7 +16,7 @@ prototypes in a practical way.
 
     $app->handle();
 
-Creating a Micro Application
+マイクロアプリケーションの作成
 ----------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is the class responsible for implementing a micro application.
 
@@ -26,7 +26,7 @@ Creating a Micro Application
 
     $app = new Phalcon\Mvc\Micro();
 
-Defining routes
+ルーティングの設定
 ---------------
 After instantiating the object, you will need to add some routes. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` manages routing internally.
 Routes must always start with /. A HTTP method constraint is optionally required when defining routes, so as to instruct
@@ -97,7 +97,7 @@ which the route is constrained for:
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
-Routes with Parameters
+パラメータを伴うルーティング
 ^^^^^^^^^^^^^^^^^^^^^^
 Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
 formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
@@ -126,7 +126,7 @@ This scenario is coded as follows:
         echo "<h1>Welcome!</h1>";
     });
 
-Rewrite Rules
+Rewrite ルール
 ^^^^^^^^^^^^^
 The following rules can be used together with Apache to rewrite the URis:
 
@@ -200,7 +200,7 @@ Or create a response object and return it from the handler:
         return $response;
     });
 
-Making redirections
+リダイレクト
 -------------------
 Redirections could be performed to forward the execution flow to another route:
 
@@ -217,7 +217,7 @@ Redirections could be performed to forward the execution flow to another route:
         echo 'This is the new Welcome';
     });
 
-Generating URLs for Routes
+ルーティングのURLの生成
 --------------------------
 :doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
 by this way the "url" service can produce the corresponding URL:
@@ -305,7 +305,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
         }
     });
 
-Not-Found Handler
+Not-Found ハンドラ
 -----------------
 When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
 An example of that behavior is below:
@@ -319,7 +319,7 @@ An example of that behavior is below:
         echo 'This is crazy, but this page was not found!';
     });
 
-Models in Micro Applications
+マイクロアプリケーションにおけるモデル
 ----------------------------
 :doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
 
@@ -345,7 +345,7 @@ Models in Micro Applications
 
     $app->handle();
 
-Micro Application Events
+マイクロアプリケーション イベント
 ------------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
 Events are triggered using the type "micro". The following events are supported:
@@ -397,7 +397,7 @@ In the following example, we explain how to control the application security usi
     //Bind the events manager to the app
     $app->setEventsManager($eventManager);
 
-Middleware events
+ミドルウェアイベント
 -----------------
 In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
 
@@ -498,7 +498,7 @@ The following middleware events are available:
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
-Using Controllers as Handlers
+コントローラをハンドラとして使用する
 -----------------------------
 Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
 You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
@@ -555,7 +555,7 @@ provide better performance loading controllers only if the related routes are ma
     $posts->setHandler('PostsController', true);
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
-Returning Responses
+レスポンスの返却
 -------------------
 Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
 When responses are returned by handlers they are automatically sent by the application.
@@ -581,7 +581,7 @@ When responses are returned by handlers they are automatically sent by the appli
         return $response;
     });
 
-Rendering Views
+ビューのレンダリング
 ---------------
 :doc:`Phalcon\\Mvc\\View\\Simple <views>` can be used to render views, the following example shows how to do that:
 
@@ -608,7 +608,7 @@ Rendering Views
 
     });
 
-Related Sources
+関連するソース
 ---------------
 * :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
 * `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].

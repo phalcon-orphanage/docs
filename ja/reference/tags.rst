@@ -10,7 +10,7 @@ This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` t
     This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
     the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
-Document Type of Content
+コンテンツのドキュメントタイプ
 ------------------------
 Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
 For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
@@ -77,7 +77,7 @@ Volt syntax:
     <!-- your HTML code -->
     </html>
 
-Generating Links
+リンクの作成
 ----------------
 A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
 When they are internal URLs we can create them in the following manner:
@@ -108,7 +108,7 @@ Same links generated with Volt:
     <!-- for a named route with class -->
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
 
-Creating Forms
+フォームの作成
 --------------
 Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:
 
@@ -151,7 +151,7 @@ Same form generated in Volt:
 
 Phalcon also provides a :doc:`form builder <forms>` to create forms in an object-oriented manner.
 
-Helpers to Generate Form Elements
+フォーム要素を生成するヘルパー
 ---------------------------------
 Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the getPost() and getQuery() methods on the request object ($this->request).
 
@@ -188,7 +188,7 @@ Volt syntax:
 
     {{ hidden_field("parent_id", "value": "5") }}
 
-Making Select Boxes
+セレクトボックスの作成
 -------------------
 Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\\Tag::select() and Phalcon\\Tag::selectStatic().
 Phalcon\\Tag::select() has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while Phalcon\\Tag::selectStatic() can with PHP arrays.
@@ -290,7 +290,7 @@ Volt syntax for above example:
     {{ select('productId', products, 'using': ['id', 'name'],
         'useEmpty': true, 'emptyText': 'Please, choose one...', 'emptyValue': '@') }}
 
-Assigning HTML attributes
+HTML属性の割り当て
 -------------------------
 All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.
 
@@ -318,10 +318,10 @@ The following HTML is generated:
     <input type="text" name="price" id="price" size="20" maxlength="30"
         placeholder="Enter a price" />
 
-Setting Helper Values
+ヘルパーへの値の設定
 ---------------------
 
-From Controllers
+コントローラで設定する
 ^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
 You can set those values directly from the controller using Phalcon\\Tag::setDefault().
@@ -369,17 +369,17 @@ This will generate the following select tag with the value "Blue" selected:
         <option value="Red">Red</option>
     </select>
 
-From the Request
+リクエストから設定する
 ^^^^^^^^^^^^^^^^
 A special feature that the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values
 of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
-Specifying values directly
+直接 値を設定する
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Every form helper supports the parameter "value". With it you can specify a value for the helper directly.
 When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
-Changing dynamically the Document Title
+ドキュメントのタイトルを動的に変更する
 ---------------------------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller.
 The following example demonstrates just that:
@@ -427,11 +427,11 @@ The following HTML will generated:
           </body>
     </html>
 
-Static Content Helpers
+静的コンテンツヘルパー
 ----------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
 
-Images
+画像
 ^^^^^^
 .. code-block:: php
 
@@ -458,7 +458,7 @@ Volt syntax:
     {# Generate <img alt="alternative text" src="/your-app/img/hello.gif"> #}
     {{ image("img/hello.gif", "alt": "alternative text") }}
 
-Stylesheets
+スタイルシート
 ^^^^^^^^^^^
 .. code-block:: php
 
@@ -502,7 +502,7 @@ Volt syntax:
     {# Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script> #}
     {{ javascript_include("javascript/jquery.min.js") }}
 
-HTML5 elements - generic HTML helper
+HTML5 の要素 - 一般的なHTMLヘルパー
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
@@ -532,7 +532,7 @@ Volt syntax:
     {{ tag_html_close("canvas") }}
 
 
-Tag Service
+タグ サービス
 -----------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is available via the 'tag' service, this means you can access it from any part
 of the application where the services container is located:
@@ -574,7 +574,7 @@ Then change the definition of the service 'tag':
         return new MyTags();
     };
 
-Creating your own helpers
+独自ヘルパーの作成
 -------------------------
 You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:
 
