@@ -262,22 +262,25 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     }
 
-Forcing Cache
--------------
-Earlier we saw how Phalcon\\Mvc\\Model has a built-in integration with the caching component provided by the framework. To make a record/resultset
-cacheable we pass the key 'cache' in the array of parameters:
+Форсирование кэша
+-----------------
+
+Ранее мы видели, как Phalcon\\Mvc\\Model имеет встроенную интеграцию с компонентом 
+кэширования, предоставленного фреймворком. Чтобы сделать запись/результирующий набор кэшируемым, 
+мы передаем ключ 'cache' в массиве параметров:
 
 .. code-block:: php
 
     <?php
 
-    // Cache the resultset for only for 5 minutes
+    // Кэшируем результирующий набор всего на 5 минут
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
-we can override the find/findFirst method to force every query to be cached:
+Это дает нам свободу для кэширования конкретных запросов, поэтому если мы хотим кэшировать 
+глобально все запросы, выполняемые моделью, мы можем переопределить метод find/findFirst,
+чтобы заставить кэшировать каждый запрос.
 
 .. code-block:: php
 
@@ -288,19 +291,19 @@ we can override the find/findFirst method to force every query to be cached:
 
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         public static function find($parameters=null)
         {
 
-            //Convert the parameters to an array
+            // Преобразование параметров в массив
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
 
-            //Check if a cache key wasn't passed
-            //and create the cache parameters
+            // Проверяем, что ключ кэша не был передан
+            //и создаем параметры кэша
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
                     "key" => self::_createKey($parameters),
