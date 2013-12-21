@@ -3,7 +3,7 @@ URLとPathの生成
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 
-Setting a base URI
+ベースURIの設定
 ------------------
 Dependending of which directory of your document root your application is installed, it may have a base uri or not.
 
@@ -48,7 +48,7 @@ Usually, this component must be registered in the Dependency Injector container,
         return $url;
     });
 
-Generating URIs
+URIの生成
 ---------------
 If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the
 following pattern: /:controller/:action/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other
@@ -84,7 +84,7 @@ A URL can be generated in the following way:
         'title' => 'some-blog-post'
     ));
 
-Producing URLs without Mod-Rewrite
+Mod-Rewriteを使用せずにURLを生成する
 ----------------------------------
 You can use this component also to create urls without mod-rewrite:
 
@@ -136,7 +136,7 @@ The produced routes would look like:
     //This produce: /invo/index.php/products/save
     echo $url->get("products/save");
 
-Producing URLs from Volt
+VoltでのURLの生成
 ------------------------
 The function "url" is available in volt to generate URLs using this component:
 
@@ -150,7 +150,7 @@ Generate static routes:
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-Static vs. Dynamic Uris
+静的なURI vs. 動的なURI
 -----------------------
 This component allow you to set up a different base uri for static resources in the application:
 
@@ -168,7 +168,7 @@ This component allow you to set up a different base uri for static resources in 
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
-Implementing your own Url Generator
+独自URLジェネレータの実装
 -----------------------------------
 The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL
 generator replacing the one provided by Phalcon.
