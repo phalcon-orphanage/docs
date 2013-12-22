@@ -7,7 +7,7 @@ objects from requests. You are encouraged to read more about the ACL methodology
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by
 the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
-Creating an ACL
+ACLの生成
 ---------------
 This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:
 
@@ -24,7 +24,7 @@ By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on r
     // Default action is deny access
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-Adding Roles to the ACL
+ACLへのロールの追加
 -----------------------
 A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
 
@@ -44,7 +44,7 @@ A role is an object that can or cannot access certain resources in the access li
 
 As you can see, roles are defined directly without using an instance.
 
-Adding Resources
+リソースの追加
 ----------------
 Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
 
@@ -59,7 +59,7 @@ Resources are objects where access is controlled. Normally in MVC applications r
     $acl->addResource($customersResource, "search");
     $acl->addResource($customersResource, array("create", "update"));
 
-Defining Access Controls
+アクセス制御の定義
 ------------------------
 Now we've roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level "allow" or "deny".
 
@@ -74,7 +74,7 @@ Now we've roles and resources. It's time to define the ACL i.e. which roles can 
 
 The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.
 
-Querying an ACL
+ACLの照会
 ---------------
 Once the list has been completely defined. We can query it to check if a role has a given permission or not.
 
@@ -87,7 +87,7 @@ Once the list has been completely defined. We can query it to check if a role ha
     $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
 
-Roles Inheritance
+ロールの継承
 -----------------
 You can build complex role structures using the inheritance that :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list.
 
@@ -105,7 +105,7 @@ You can build complex role structures using the inheritance that :doc:`Phalcon\\
     // Add "Administrators" role inheriting from "Guests" its accesses
     $acl->addRole($roleAdmins, $roleGuests);
 
-Serializing ACL lists
+ACLリストのシリアライズ
 ---------------------
 To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be serialized and stored in APC, session, text files or a database table
 so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
@@ -137,7 +137,7 @@ so that they can be loaded at will without having to redefine the whole list. Yo
         echo "Access denied :(";
     }
 
-Acl Events
+ACLイベント
 ----------
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` is able to send events to a :doc:`EventsManager <events>` if it's present. Events
 are triggered using the type "acl". Some events when returning boolean false could stop the active operation. The following events are supported:
@@ -176,7 +176,7 @@ The following example demonstrates how to attach listeners to this component:
     //Bind the eventsManager to the acl component
     $acl->setEventsManager($eventManagers);
 
-Implementing your own adapters
+独自アダプタの実装
 ------------------------------
 The :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` interface must be implemented in order
 to create your own ACL adapters or extend the existing ones.

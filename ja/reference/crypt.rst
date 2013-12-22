@@ -5,7 +5,7 @@ This class offers simple object-oriented wrappers to the mcrypt_ php's encryptio
 
 By default, this component provides secure encryption using AES-256 (rijndael-256-cbc).
 
-Basic Usage
+基本的な使い方
 -----------
 This component is designed to provide a very simple usage:
 
@@ -46,7 +46,7 @@ You can use the same instance to encrypt/decrypt several times:
         echo $crypt->decrypt($encrypted, $key);
     }
 
-Encryption Options
+暗号化オプション
 ------------------
 The following options are available to change the encryption behavior:
 
@@ -75,7 +75,7 @@ Example:
 
     echo $crypt->encrypt($text, $key);
 
-Base64 Support
+Base64 サポート
 --------------
 In order that encryption is properly transmited (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
 
@@ -93,7 +93,7 @@ In order that encryption is properly transmited (emails) or displayed (browsers)
 
     echo $crypt->decryptBase64($text, $key);
 
-Setting up an Encryption service
+暗号化サービスのセットアップ
 --------------------------------
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
