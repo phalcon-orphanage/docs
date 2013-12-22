@@ -3,7 +3,7 @@
 The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
-Usage Example
+使用例
 -------------
 In the following example, we use the EventsManager to listen for events produced in a MySQL connection managed by :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
 First, we need a listener object to do this. We created a class whose methods are the events we want to listen:
@@ -168,7 +168,7 @@ In a similar manner we can register an lambda function to perform the task inste
         }
     });
 
-Creating components that trigger Events
+イベントをトリガするコンポーネントの作成
 ---------------------------------------
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners
 that react to these events when generated. In the following example we're creating a component called "MyComponent".
@@ -323,7 +323,7 @@ by passing "false" in the fourth parameter of fire:
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
-Listener Priorities
+リスナーの優先度
 -------------------
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order
 in which they must be called:
@@ -338,7 +338,7 @@ in which they must be called:
     $evManager->attach('db', new DbListener(), 100); //Normal priority
     $evManager->attach('db', new DbListener(), 50); //Less priority
 
-Collecting Responses
+レスポンスの収集
 --------------------
 The events manager can collect every response returned by every notified listener, this example explains how it works:
 
@@ -375,7 +375,7 @@ The above example produces:
 
     Array ( [0] => first response [1] => second response )
 
-Implementing your own EventsManager
+独自イベントマネージャの実装
 -----------------------------------
 The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own
 EventsManager replacing the one provided by Phalcon.
