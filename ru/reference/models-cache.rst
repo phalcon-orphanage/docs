@@ -321,10 +321,13 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     }
 
-Caching PHQL Queries
---------------------
-All queries in the ORM, no matter how high level syntax we used to create them are handled internally using PHQL.
-This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
+Кэширование PHQL запросов
+-------------------------
+
+Все запросы в ORM, независимо от того, насколько высокоуровневый синтаксис 
+мы использовали для их создания, обрабатываются внутри с помощью PHQL. Этот 
+язык дает гораздо больше свободы для создания запросов всех видов. Конечно, 
+эти запросы могут кэшироваться:
 
 .. code-block:: php
 
@@ -343,7 +346,8 @@ This language gives you much more freedom to create all kinds of queries. Of cou
         'name' => 'Audi'
     ));
 
-If you don't want to use the implicit cache just save the resulset into your favorite cache backend:
+Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор 
+в предпочтительный для вас серверный кэш:
 
 .. code-block:: php
 
