@@ -2,7 +2,7 @@ WAMPへのインストール
 =====================
 WampServer_ is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
-Download the right version of Phalcon
+正しいバージョンのPhalconのダウンロード
 -------------------------------------
 WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.
 
@@ -40,7 +40,7 @@ Open your browser to navigate to http://localhost. The WAMP welcome page will ap
 
 Congrats!, You are now flying with Phalcon.
 
-Related Guides
+関連ガイド
 --------------
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on XAMPP for Windows </reference/xampp>`

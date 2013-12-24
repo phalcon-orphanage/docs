@@ -8,11 +8,11 @@ The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to proc
 bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer
 maximum performance for your PHP applications.
 
-Configuring Nginx for Phalcon
+PhalconのためのNginxの設定
 -----------------------------
 The following are potential configurations you can use to setup nginx with Phalcon:
 
-Basic configuration
+基本的な設定
 ^^^^^^^^^^^^^^^^^^^
 Using $_GET['_url'] as source of URIs:
 
@@ -137,7 +137,7 @@ Dedicated Instance
         }
     }
 
-Configuration by Host
+ホスト毎の設定
 ^^^^^^^^^^^^^^^^^^^^^
 And this second configuration allow you to have different configurations by host:
 

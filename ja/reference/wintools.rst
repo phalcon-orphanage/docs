@@ -2,11 +2,11 @@ Phalcon 開発者ツール / Windows向け
 ==================================
 These steps will guide you through the process of installing Phalcon Developer Tools for Windows.
 
-Prerequisites
+前提条件
 -------------
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
-Download
+ダウンロード
 --------
 You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.
 
@@ -22,7 +22,7 @@ Change the path to the one you installed the Phalcon tools:
 
 Save the changes.
 
-Adding PHP and Tools to your system PATH
+システムのパスにPHPとツールを追加
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\wamp\bin\\php\\php5.3.10\\php.exe*.
 
@@ -63,7 +63,7 @@ Type the commands "php -v" and "phalcon" and you will see something like this:
 
 Congratulations you now have Phalcon tools installed!
 
-Related Guides
+関連ガイド
 ^^^^^^^^^^^^^^
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on OS X <mactools>`

@@ -1,16 +1,16 @@
-パフォーマンス改善: 次は何？
+パフォーマンス改善: 次なる手は？
 ====================================
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
 In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
 your application.
 
-Profile on the Server
+サーバー側でのプロファイリング
 ---------------------
 Each application is different, the permanent profiling is important to understand where performance can be increased.
 Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another,
 so it is important to make enough measurements to make conclusions.
 
-Profiling with XDebug
+XDebugによるプロファイリング
 ^^^^^^^^^^^^^^^^^^^^^
 Xdebug_ provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
 
@@ -23,7 +23,7 @@ Using a tool like Webgrind_ you can see which functions/methods are slower than 
 .. figure:: ../_static/img/webgrind.jpg
     :align: center
 
-Profiling with Xhprof
+Xhprofによるプロファイリング
 ^^^^^^^^^^^^^^^^^^^^^
 Xhprof_ is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
 
@@ -58,7 +58,7 @@ Xhprof provides a built-in html viewer to analize the profiled data:
 .. figure:: ../_static/img/xhprof-1.jpg
     :align: center
 
-Profiling SQL Statements
+SQL文のプロファイリング
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance
 in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
@@ -68,12 +68,12 @@ in the server side. In the Mysql case, you can use the slow query log to know wh
     log-slow-queries = /var/log/slow-queries.log
     long_query_time = 1.5
 
-Profile on the Client
+クライアント側でのプロファイリング
 ---------------------
 Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance.
 The following tools are useful to detect common bottlenecks in the client side:
 
-Profile with Chrome/Firefox
+Chrome/Firefoxによるプロファイリング
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the
 loading of the different resources required by a single page:
@@ -93,7 +93,7 @@ YSlow_ analyzes web pages and suggests ways to improve their performance based o
 .. figure:: ../_static/img/yslow-1.jpg
     :align: center
 
-Profile with Speed Tracer
+Speed Tracerによるプロファイリング
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 `Speed Tracer`_ is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken
 from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a
@@ -105,11 +105,11 @@ Chrome extension and works on all platforms where extensions are currently suppo
 This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
 Javascript evaluation and CSS styling.
 
-Use a recent PHP version
+最新バージョンのPHPの使用
 ------------------------
 PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
 
-Use a PHP Bytecode Cache
+PHPバイトコードキャッシュの利用
 ------------------------
 APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
 in each request. Once the extension is installed use the following setting to enable APC:
@@ -120,7 +120,7 @@ in each request. Once the extension is installed use the following setting to en
 
 PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4.
 
-Do blocking work in the background
+バックグラウンドの動作のブロック
 ----------------------------------
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs.
 There are a variety of tools that provide queuing or messaging systems that work well with PHP:

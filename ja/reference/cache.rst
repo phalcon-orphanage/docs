@@ -5,7 +5,7 @@ Phalcon provides the :doc:`Phalcon\\Cache <cache>` class allowing faster access 
 This class uses an internal structure of frontend and backend components. Front-end components act as input sources or
 interfaces, while backend components offer storage options to the class.
 
-When to implement cache?
+どのような時にキャッシュを実装する？
 ------------------------
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain.
 We recommend you check this cases before using a cache:
@@ -19,14 +19,14 @@ We recommend you check this cases before using a cache:
     *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
     be done, especially in the case of Memcache or Apc, with the relevant tools that backends provide.
 
-Caching Behavior
+キャッシュの振る舞い
 ----------------
 The caching process is divided into 2 parts:
 
 * **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
 * **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
 
-Caching Output Fragments
+出力する部品のキャッシュ
 ------------------------
 An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured
 from the ob_* functions or the PHP output so that it can be saved in the cache. The following example demonstrates such usage.
@@ -82,12 +82,12 @@ call whenever this piece of code is called.
 transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user
 pre-compiled from a previous call, thus avoiding expensive operations.
 
-Caching Arbitrary Data
+任意のデータのキャッシュ
 ----------------------
 Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data,
 thus speeding up your application.
 
-File Backend Example
+ファイルをバックエンドとする例
 ^^^^^^^^^^^^^^^^^^^^
 One of the caching adapters is 'File'. The only key area for this adapter is the location of where the cache files will be stored.
 This is controlled by the cacheDir option which *must* have a backslash at the end of it.
@@ -126,7 +126,7 @@ This is controlled by the cacheDir option which *must* have a backslash at the e
        echo $robot->name, "\n";
     }
 
-Memcached Backend Example
+Memcached をバックエンドとする例
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
 
@@ -164,7 +164,7 @@ The above example changes slightly (especially in terms of configuration) when w
        echo $robot->name, "\n";
     }
 
-Querying the cache
+キャッシュの参照
 ------------------
 The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the
 actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does
@@ -212,7 +212,7 @@ The only requirement is to know the key that the data have been stored with.
         $cache->delete($key);
     }
 
-Checking cache existence
+キャッシュが存在するかの確認
 ------------------------
 It is possible to check if a cache already exists with a given key:
 
@@ -227,7 +227,7 @@ It is possible to check if a cache already exists with a given key:
     }
 
 
-Lifetime
+保存期間
 --------
 A "lifetime" is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation.
 You can set a specific lifetime in the creation or retrieving of the data from the cache:
@@ -267,7 +267,7 @@ Setting the lifetime when saving:
         $cache->save($cacheKey, $robots, 3600);
     }
 
-Multi-Level Cache
+マルチレベル・キャッシュ
 -----------------
 This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful
 because you can save the same data in several cache​ locations​ with different lifetimes, reading ​first from the one with
@@ -314,7 +314,7 @@ the faster adapter and ending with the slowest one until the data expire​s​:
     //Save, saves in every backend
     $cache->save('my-key', $data);
 
-Frontend Adapters
+フロントエンド・アダプタ
 -----------------
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
@@ -360,7 +360,7 @@ Implementing your own Backend adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
-File Backend Options
+ファイル・バックエンド オプション
 ^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content into files in the local server. The available options for this backend are:
 
@@ -372,7 +372,7 @@ This backend will store cached content into files in the local server. The avail
 | cacheDir | A writable directory on which cached files will be placed   |
 +----------+-------------------------------------------------------------+
 
-Memcached Backend Options
+Memcached バックエンド オプション
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a memcached server. The available options for this backend are:
 
@@ -388,7 +388,7 @@ This backend will store cached content on a memcached server. The available opti
 | persistent | create a persitent connection to memcached?                 |
 +------------+-------------------------------------------------------------+
 
-APC Backend Options
+APC バックエンド オプション
 ^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on Alternative PHP Cache (APC_). The available options for this backend are:
 
@@ -398,7 +398,7 @@ This backend will store cached content on Alternative PHP Cache (APC_). The avai
 | prefix     | A prefix that is automatically prepended to the cache keys  |
 +------------+-------------------------------------------------------------+
 
-Mongo Backend Options
+Mongo バックエンド オプション
 ^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on a MongoDB server. The available options for this backend are:
 
@@ -414,7 +414,7 @@ This backend will store cached content on a MongoDB server. The available option
 | collection | Mongo collection in the database                            |
 +------------+-------------------------------------------------------------+
 
-XCache Backend Options
+XCache バックエンド オプション
 ^^^^^^^^^^^^^^^^^^^^^^
 This backend will store cached content on XCache (XCache_). The available options for this backend are:
 

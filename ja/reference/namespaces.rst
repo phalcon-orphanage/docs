@@ -3,7 +3,7 @@
 Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
 a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
-Setting up the framework
+フレームワークのセットアップ
 ------------------------
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
 to perform one or all of the following tasks:
@@ -65,7 +65,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
         return $dispatcher;
     });
 
-Controllers in Namespaces
+名前空間内のコントローラ
 -------------------------
 The following example shows how to implement a controller that use namespaces:
 
@@ -90,7 +90,7 @@ The following example shows how to implement a controller that use namespaces:
 
     }
 
-Models in Namespaces
+名前空間内のモデル
 --------------------
 Take the following into consideration when using models in namespaces:
 

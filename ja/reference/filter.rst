@@ -64,7 +64,7 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
     }
 
-Filtering Action Parameters
+アクションパラメータのフィルタリング
 ---------------------------
 The next example shows you how to sanitize the action parameters within a controller action:
 
