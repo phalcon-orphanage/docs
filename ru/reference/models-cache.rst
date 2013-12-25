@@ -361,45 +361,49 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
 
     apc_store('my-cars', $cars);
 
-Reusable Related Records
-------------------------
-Some models may have relationships to other models. This allows us to easily check the records that relate to instances in memory:
+Многократное использование связанных записей
+--------------------------------------------
+
+Некоторые модели могут иметь связи с другими моделями. Это позволяет нам легко проверить записи, 
+которые относятся к экземплярам в памяти:
 
 .. code-block:: php
 
     <?php
 
-    //Get some invoice
+    // Получаем некоторый счет
     $invoice = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Получаем клиента связанного со счетом
     $customer = $invoice->customer;
 
-    //Print his/her name
+    // Выводим его/ее имя
     echo $customer->name, "\n";
 
-This example is very simple, a customer is queried and can be used as required, for example, to show its name.
-This also applies if we retrieve a set of invoices to show customers that correspond to these invoices:
+Этот пример очень простой, клиент получает запрос и который может быть использован при 
+необходимости, например, чтобы показать свое имя. Это также касается случаев если мы 
+извлекаем наборы счетов, чтобы показать клиентам, которые являются владельцами этих счетов:
 
 .. code-block:: php
 
     <?php
 
-    //Get a set of invoices
+    // Получаем набор счетов
     // SELECT * FROM invoices
     foreach (Invoices::find() as $invoice) {
 
-        //Get the customer related to the invoice
+        // Получаем клиента связанного с заказом
         // SELECT * FROM customers WHERE id = ?
         $customer = $invoice->customer;
 
-        //Print his/her name
+        // Выводим его/ее имя
         echo $customer->name, "\n";
     }
 
-A customer may have one or more bills, this means that the customer may be unnecessarily more than once.
-To avoid this, we could mark the relationship as reusable, this way, we tell the ORM to automatically reuse
-the records instead of re-querying them again and again:
+Клиент может иметь один или несколько счетов, это означает, что клиент может быть 
+вызван вызван более одного раза. Чтобы избежать этого, мы можем отметить связь как 
+многоразовую , таким образом, мы говорим ORM автоматически использовать прошлые 
+записи вместо того, чтобы вновь и вновь выполнять один и тот же запросы:
 
 .. code-block:: php
 
@@ -417,8 +421,9 @@ the records instead of re-querying them again and again:
 
     }
 
-This cache works in memory only, this means that cached data are released when the request is terminated. You can
-add a more sophisticated cache for this scenario overriding the models manager:
+Этот кэш работает только в памяти, это означает, что кэшированные данные 
+предоставляются, когда запрос уже был выполнен. Вы можете добавить более сложные 
+кэш для этого сценария, переопределив менеджер модели:
 
 .. code-block:: php
 
@@ -428,7 +433,7 @@ add a more sophisticated cache for this scenario overriding the models manager:
     {
 
         /**
-         * Returns a reusable object from the cache
+         * Возвращает многократно используемый объект из кэша
          *
          * @param string $modelName
          * @param string $key
@@ -436,17 +441,17 @@ add a more sophisticated cache for this scenario overriding the models manager:
          */
         public function getReusableRecords($modelName, $key){
 
-            //If the model is Products use the APC cache
+            // Если модель Products использует кэш APC
             if ($modelName == 'Products'){
                 return apc_fetch($key);
             }
 
-            //For the rest, use the memory cache
+            // Для остальных, использовать кэш памяти
             return parent::getReusableRecords($modelName, $key);
         }
 
         /**
-         * Stores a reusable record in the cache
+         * Сохраняет повторно используемый запись в кэше
          *
          * @param string $modelName
          * @param string $key
@@ -454,18 +459,18 @@ add a more sophisticated cache for this scenario overriding the models manager:
          */
         public function setReusableRecords($modelName, $key, $records){
 
-            //If the model is Products use the APC cache
+            // Если модель Products использует кэш APC
             if ($modelName == 'Products'){
                 apc_store($key, $records);
                 return;
             }
 
-            //For the rest, use the memory cache
+            // Для остальных, использовать кэш памяти
             parent::setReusableRecords($modelName, $key, $records);
         }
     }
 
-Do not forget to register the custom models manager in the DI:
+Не забудьте зарегистрировать свой менеджер моделей в DI:
 
 .. code-block:: php
 
