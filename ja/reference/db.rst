@@ -425,7 +425,7 @@ Stop SQL operations are very useful if for example you want to implement some la
         return true;
     });
 
-Profiling SQL Statements
+SQL文のプロファイリング
 ------------------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 

@@ -1,6 +1,6 @@
 Hello World ベンチマーク
 =====================
-How the benchmarks were performed?
+ベンチマークを実行した方法は？
 ----------------------------------
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
 people don't like this kind of benchmark because real-world applications require more complex features or
@@ -16,7 +16,7 @@ A controller and a view have been created for each framework. The controller "sa
 action only sends data to the view which displays it ("Hello!"). Using the "ab" benchmark tool we sent 2000
 requests using 10 concurrent connections to each framework.
 
-What measurements were recorded?
+どのような測定値を記録しましたか？
 --------------------------------
 These were the measurements we record to identify the overall performance of each framework:
 
