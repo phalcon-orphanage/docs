@@ -993,7 +993,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
         return $router;
     };
     
-Registering Router instance
+ルーター・インスタンスの登録
 ---------------------------
 
 You can register router during service registration with Phalcon depedency injector to make it available inside controller.

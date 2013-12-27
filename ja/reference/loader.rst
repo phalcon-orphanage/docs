@@ -14,7 +14,7 @@ With this component you can load files from other projects or vendors, this auto
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
-Registering Namespaces
+名前空間の登録
 ----------------------
 If you're organizing your code using namespaces, or external libraries do so, the registerNamespaces() provides the autoloading mechanism. It
 takes an associative array, which keys are namespace prefixes and their values are directories where the classes are located in. The namespace
@@ -134,7 +134,7 @@ maintenance of the class list very cumbersome and it is not recommended.
     // i.e. library/OtherComponent/Other/Some.php
     $some = new Some();
 
-Additional file extensions
+ファイル拡張子の追加
 --------------------------
 Some autoloading strategies such as  "prefixes", "namespaces" or "directories" automatically append the "php" extension at the end of the checked file. If you
 are using additional extensions you could set it with the method "setExtensions". Files are checked in the order as it were defined:
@@ -149,7 +149,7 @@ are using additional extensions you could set it with the method "setExtensions"
     //Set file extensions to check
     $loader->setExtensions(array("php", "inc", "phb"));
 
-Modifying current strategies
+現状の振る舞いの変更
 ----------------------------
 Additional auto-loading data can be added to existing values in the following way:
 
@@ -168,7 +168,7 @@ Additional auto-loading data can be added to existing values in the following wa
 
 Passing "true" as second parameter will merge the current values with new ones in any strategy.
 
-Security Layer
+セキュリティレイヤ
 --------------
 Phalcon\\Loader offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:
@@ -205,7 +205,7 @@ authorization.
 To avoid these or most sophisticated attacks, Phalcon\\Loader removes any invalid character from the class name
 reducing the possibility of being attacked.
 
-Autoloading Events
+オートロード時のイベント
 ------------------
 In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
@@ -246,7 +246,7 @@ Some events when returning boolean false could stop the active operation. The fo
 | afterCheckClass  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
-Troubleshooting
+トラブルシューティング
 ---------------
 Some things to keep in mind when using the universal autoloader:
 

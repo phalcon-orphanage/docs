@@ -250,7 +250,7 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
 component or use the built-in ones.
 
-Validation Events
+バリデーション・イベント
 -----------------
 When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
 perform additional checks, filters, clean-up, etc. If 'beforeValidation' method returns false the validation is automatically

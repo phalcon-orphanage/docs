@@ -9,7 +9,7 @@ This component allows for a lower level database manipulation than using traditi
     This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>`
     for a complete reference.
 
-Database Adapters
+データベースアダプタ
 -----------------
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
 database engines are supported:
@@ -26,7 +26,7 @@ database engines are supported:
 | Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
-Implementing your own adapters
+独自アダプタの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own
 database adapters or extend the existing ones.
@@ -51,7 +51,7 @@ Implementing your own dialects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
 
-Connecting to Databases
+データベースへの接続
 -----------------------
 To create a connection it's neccesary instantiate the adapter class. It only requires an array with the connection parameters. The example
 below shows how to create a connection passing both required and optional parameters:
@@ -126,7 +126,7 @@ below shows how to create a connection passing both required and optional parame
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
-Setting up additional PDO options
+追加のPDOオプションの設定
 ---------------------------------
 You can set PDO options at connection time by passing the parameters 'options':
 
@@ -146,7 +146,7 @@ You can set PDO options at connection time by passing the parameters 'options':
         )
     ));
 
-Finding Rows
+レコードの検索
 ------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
@@ -220,7 +220,7 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     // Count the resultset
     echo $result->numRows();
 
-Binding Parameters
+パラメータのバインディング
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
@@ -238,7 +238,7 @@ injection attacks. Both string and positional placeholders are supported. Bindin
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
-Inserting/Updating/Deleting Rows
+レコードの登録/更新/削除
 --------------------------------
 To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 
@@ -288,7 +288,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     // Generating dynamically the necessary SQL
     $success = $connection->delete("robots", "id = 101");
 
-Transactions and Nested Transactions
+トランザクションとネストしたトランザクション
 ------------------------------------
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
 often increase the performance on most database systems:
@@ -359,7 +359,7 @@ is created:
         $connection->rollback();
     }
 
-Database Events
+データベースイベント
 ---------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present.
 Some events when returning boolean false could stop the active operation. The following events are supported:
@@ -512,7 +512,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     //Attach the listener listening for all database events
     $eventsManager->attach('db', $dbProfiler);
 
-Logging SQL Statements
+SQL文のロギング
 ----------------------
 Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
 
@@ -553,7 +553,7 @@ As above, the file *app/logs/db.log* will contain something like this:
     (name, price) VALUES ('Hot pepper', 3.50)
 
 
-Implementing your own Logger
+独自ロガーの実装
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
 The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
@@ -618,14 +618,14 @@ Methods to get information about views are also implemented for every supported 
     // Is there a view 'robots' in the database?
     $exists = $connection->viewExists("robots");
 
-Creating/Altering/Dropping Tables
+テーブルの作成/変更/削除
 ---------------------------------
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
 commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used.
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
 differentiate the SQL syntax based on the target storage system.
 
-Creating Tables
+テーブルの作成
 ^^^^^^^^^^^^^^^
 The following example shows how to create a table:
 
@@ -717,7 +717,7 @@ The associative array passed in Phalcon\\Db::createTable() can have the possible
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Altering Tables
+テーブルの変更
 ^^^^^^^^^^^^^^^
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
 Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
@@ -750,7 +750,7 @@ is limited by these constraints.
     $connection->deleteColumn("robots", null, "name");
 
 
-Dropping Tables
+テーブルの削除
 ^^^^^^^^^^^^^^^
 Examples on dropping tables:
 

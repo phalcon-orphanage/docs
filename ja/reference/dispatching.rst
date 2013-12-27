@@ -179,7 +179,7 @@ A forward action accepts the following parameters:
 | namespace      | A valid namespace name where the controller is part of |
 +----------------+--------------------------------------------------------+
 
-Preparing Parameters
+パラメータの準備
 --------------------
 Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
 adapt your application to any URL schema:
