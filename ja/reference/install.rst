@@ -1,23 +1,23 @@
 インストール
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+PHP拡張モジュールは、従来のPHPベースのライブラリやフレームワークとは若干異なるインストール方法をとります。
+あなたのシステム向けのバイナリパッケージをダウンロードするか、ソースコードからビルドする２つの方法があります。
 
 .. highlights::
-    Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
+    PhalconはPHP 5.3.1以降でコンパイルできますが、古いPHPはメモリリークを引き起こすバグがあるため、少なくとも PHP 5.3.11以降を使用することを推奨しています。
 
 .. highlights::
-    PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+   PHP 5.3.9 以前のものには、いくつかのセキュリティ的な欠陥があり、商用環境のWEBサイトでの使用は推奨しておりません。 `詳細はこちら <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+Windows上でPhalconを使用するには、DLLライブラリをダウンロードします。そして php.iniを編集し、最後に次の行を追加します：
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+最後にWEBサーバーを再起動します。
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+次のスクリーンキャストは、Windows上にPhalconをインストールするステップバイステップガイドです。
 
 .. raw:: html
 
@@ -34,16 +34,17 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 Linux/Solaris/Mac
 -----------------
 On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
+Linux/Solaris/Mac の環境では、簡単に拡張モジュールをソースコードからコンパイルしてインストールすることができます。
 
 必要条件
 ^^^^^^^^^^^^
-Prerequisite packages are:
+必要となるパッケージは次の通りです：
 
 * PHP 5.3.x/5.4.x/5.5.x development resources
 * GCC compiler (Linux/Solaris) or Xcode (Mac)
 * Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
 
-Specific packages for common platforms:
+一般的なプラットフォームにおける具体的なパッケージ:
 
 .. code-block:: bash
 
@@ -65,7 +66,7 @@ Specific packages for common platforms:
 
 コンパイル
 ^^^^^^^^^^^
-Creating the extension:
+拡張モジュールの作成：
 
 .. code-block:: bash
 
@@ -73,15 +74,15 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php.ini
+php.iniに拡張モジュールを追加します。
 
 .. code-block:: bash
 
     extension=phalcon.so
 
-Restart the webserver.
+最後にWEBサーバーを再起動します。
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalconは自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます：
 
 .. code-block:: bash
 
@@ -91,7 +92,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+FreeBSDではportを利用することができます。インストールするには、次のシンプルなコマンドを叩くだけです。
 
 .. code-block:: bash
 
@@ -106,7 +107,7 @@ or
 
 インストール ノート
 ------------------
-Installation notes for Web Servers:
+各WEBサーバーにおけるインストールノート
 
 .. toctree::
     :maxdepth: 1

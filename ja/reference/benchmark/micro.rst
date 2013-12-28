@@ -1,12 +1,12 @@
-Micro Benchmark
+マイクロ ベンチマーク
 ===============
-How the benchmarks were performed?
+ベンチマークを実行した方法は？
 ----------------------------------
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
 
 Using a route for the HTTP method 'GET' we pass a parameter to a handler returning a "Hello $name" response.
 
-What measurements were recorded?
+どのような測定値を記録しましたか？
 --------------------------------
 These were the measurements we record to identify the overall performance of each framework:
 
@@ -15,12 +15,12 @@ These were the measurements we record to identify the overall performance of eac
 * Number of included PHP files on a single request (measured using function get_included_files_.
 * Memory Usage per request (measured using function memory_get_usage_.
 
-Participant Frameworks
+比較対象のフレームワーク
 ----------------------
 * Slim_
 * Silex_
 
-Results
+結果
 -------
 Slim Framework
 ^^^^^^^^^^^^^^
