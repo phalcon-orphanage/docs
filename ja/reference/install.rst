@@ -11,7 +11,7 @@ PHP拡張モジュールは、従来のPHPベースのライブラリやフレ�
 
 Windows
 -------
-Windows上でPhalconを使用するには、DLLライブラリをダウンロードします。そして php.iniを編集し、最後に次の行を追加します：
+Windows上でPhalconを使用するには、DLLライブラリをダウンロードします。そして php.iniを編集し、最後に次の行を追加します。
 
     extension=php_phalcon.dll
 
@@ -33,7 +33,6 @@ Windows上でPhalconを使用するには、DLLライブラリをダウンロー
 
 Linux/Solaris/Mac
 -----------------
-On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
 Linux/Solaris/Mac の環境では、簡単に拡張モジュールをソースコードからコンパイルしてインストールすることができます。
 
 必要条件
@@ -82,7 +81,7 @@ php.iniに拡張モジュールを追加します。
 
 最後にWEBサーバーを再起動します。
 
-Phalconは自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます：
+Phalconは自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます。
 
 .. code-block:: bash
 
