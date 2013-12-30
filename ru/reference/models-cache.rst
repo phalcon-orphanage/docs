@@ -529,11 +529,12 @@ Phalcon предоставляет компонент :doc:`cache <cache>` дл�
         }
     }
 
-Caching Related Records Recursively
------------------------------------
-In this scenario, we assume that everytime we query a result we also retrieve their associated records.
-If we store the records found together with their related entities perhaps we could reduce a bit the overhead required
-to obtain all entities:
+Рекурсивное кэшировоние связанных записей
+-----------------------------------------
+
+В этом сценарии мы предполагаем, что каждый раз когда мы запрашиваем набор данных, мы также получить 
+все связанные записи для данного набора. Если мы будем хранить записи найденные вместе с их связанными 
+сущностями, возможно, мы сможем немного уменьшить накладные расходы для получения всех сущностей:
 
 .. code-block:: php
 
@@ -544,28 +545,28 @@ to obtain all entities:
 
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         protected static function _getCache($key)
         {
-            // returns data from a cache
+            // .. возвращаем данные из кэша
         }
 
         protected static function _setCache($key)
         {
-            // stores data in the cache
+            // .. сохраняет данные в кэше
         }
 
         public static function find($parameters=null)
         {
-            //Create a unique key
+            // Создать уникальный ключ
             $key = self::_createKey($parameters);
 
-            //Check if there are data in the cache
+            // Проверяем наличие данных в кэше
             $results = self::_getCache($key);
 
-            // Valid data is an object
+            // Полученные данные должны быть объектом
             if (is_object($results)) {
                 return $results;
             }
@@ -575,16 +576,16 @@ to obtain all entities:
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
 
-                //Query the related customer
+                // Получение соответствующего клиента
                 $customer = $invoice->customer;
 
-                //Assign it to the record
+                // Помещаем его в запись
                 $invoice->customer = $customer;
 
                 $results[] = $invoice;
             }
 
-            //Store the invoices in the cache + their customers
+            // Сохраняем счета и их клиентов в кэше
             self::_setCache($key, $results);
 
             return $results;
@@ -592,12 +593,13 @@ to obtain all entities:
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // .. добавляем связи и инициализируем другие вещи
         }
     }
 
-Getting the invoices from the cache already obtains the customer data in just one hit, reducing the overall overhead of the operation.
-Note that this process can also be performed with PHQL following an alternative solution:
+Получение из кэша счетов уже содержащих данные о клиентах выполняется всего за одно 
+действие, что снижает общую нагрузку на данную операцию. Следует отметить, что этот 
+процесс можно также проводить с PHQL с помощью следующего альтернативного решения:
 
 .. code-block:: php
 
@@ -608,12 +610,12 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // .. добавляем связи и инициализируем другие вещи
         }
 
         protected static function _createKey($conditions, $params)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         public function getInvoicesCustomers($conditions, $params=null)
