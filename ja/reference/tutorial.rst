@@ -1,19 +1,19 @@
 チュートリアル 1: 例題で学習しよう
 ==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+この最初のチュートリアルでは、簡単な登録フォームを使用したアプリケーションをゼロから作成する手順を見ていきます。
+また、フレームワークの動作の基本的な側面を説明していきます。もしあなたが Phalconのコード自動生成ツールに興味があるのでしたら、
+次のドキュメントを参照ください。 :doc:`developer tools <tools>`.
 
 インストールの確認
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
-code snippet below:
+すでにPhalconはインストールされていると思います。 phpinfo() の "Phalcon"のセクションの出力を確認するか、
+次のコードスニペットを実行してみてください。
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+Phalcon拡張モジュールは下記のように出力の一部に現れるでしょう。
 
 .. code-block:: php
 
@@ -30,7 +30,7 @@ The Phalcon extension should appear as part of the output:
 
 プロジェクトの作成
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+このガイドを使用する最良の方法は、順番にそれぞれのステップに従うことです。完全なコードは、`ここ <https://github.com/phalcon/tutorial>`_ から取得することができます。
 
 ファイル構造
 ^^^^^^^^^^^^^^
