@@ -37,7 +37,7 @@ How do traditional PHP frameworks work?
 * Modern frameworks use lazy loading (autoload) to increase performance (for load and execute only the code needed)
 * Some of these classes contain methods that aren't used in every request but they're loaded always consuming memory
 * Continuous loading or interpreting is expensive and impacts performance
-* The framework code does not change very often, therefore an application needs to load and interpret it every time a request is made
+* The framework code does not change very often, and yet an application needs to load and interpret it every time a request is made
 
 How does a PHP C-extension work?
 --------------------------------
@@ -56,7 +56,7 @@ Why do I need Phalcon?
 ----------------------
 Each application requirements and tasks are different than another's. Some for instance are designed to do a set
 of tasks and generate content that rarely changes. These applications can be created with any programming language or
-framework. Using a front-end cache, usually makes such an application, no matter how poorly designed or slow it might be,
+framework. Using a front-end cache usually makes such an application, no matter how poorly designed or slow it might be,
 perform very fast.
 
 Other applications generate content almost immediately that changes from request to request. In this case, PHP is used
