@@ -576,7 +576,7 @@ Then change the definition of the service 'tag':
 
 Creating your own helpers
 -------------------------
-You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implementing your own helper. Below is a simple example of a custom helper:
+You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it "customhelpers". Next we will create a new file titled ``MyTags.php`` within this new directory. At this point, we have a structure that looks similar to : ``/app/customhelpers/MyTags.php``. In ``MyTags.php``, we will extend the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implement your own helper. Below is a simple example of a custom helper:
 
 .. code-block:: php
 
@@ -635,6 +635,56 @@ You can easily create your own helpers by extending the :doc:`Phalcon\\Tag <../a
         }
 
     }
+
+After creating our custom helper, we will autoload the new directory that contains our helper class from our "index.php" located in the public directory.
+
+.. code-block:: php
+
+    <?php
+
+    try {
+
+        $loader = new \Phalcon\Loader();
+        $loader->registerDirs(array(
+            '../app/controllers',
+            '../app/models',
+            '../app/customhelpers' // Add the new helpers folder
+        ))->register();
+
+        $di = new Phalcon\DI\FactoryDefault();
+
+        // Assign our new tag a definition so we can call it
+        $di->set('MyTags',  function()
+        {
+            return new MyTags();
+        });
+
+        $application = new \Phalcon\Mvc\Application($di);
+        echo $application->handle()->getContent();
+
+        } catch(\Phalcon\Exception $e) {
+             echo "PhalconException: ", $e->getMessage();
+        }
+
+    }
+
+
+Now you are ready to use your new helper within your views:
+
+.. code-block:: php
+
+    <body>
+
+        <?php
+        echo MyTags::audioField(array(
+            'name' => 'test',
+            'id' => 'audio_test',
+            'src' => '/path/to/audio.mp3'
+            ));
+        ?>
+
+    </body>
+
 
 In next chapter, we'll talk about :doc:`Volt <volt>` a faster template engine for PHP, where you can use a
 more friendly syntax for using helpers provided by Phalcon\\Tag.
