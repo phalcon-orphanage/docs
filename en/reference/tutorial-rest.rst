@@ -162,11 +162,18 @@ application:
 
     }
 
-Now, we must set up a connection to be used by this model:
+Now, we must set up a connection to be used by this model and load it within our app:
 
 .. code-block:: php
 
     <?php
+
+    // Use Loader() to autoload our model
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(array(
+        __DIR__ . '/models/'
+    ))->register();
 
     $di = new \Phalcon\DI\FactoryDefault();
 
