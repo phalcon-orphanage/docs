@@ -1,28 +1,28 @@
-私達のモチベーション
+モチベーション
 ==============
-There are many PHP frameworks nowadays, but none of them is like Phalcon (Really, trust us on this one).
+現在、多くのPHPフレームワークがありますが、その中でPhalconのようなものはまだありません。
 
-Almost all programmers prefer to use a framework. This is primarily because it provides a lot of functionality
-that is already tested and ready to use, therefore keeping code DRY (Don't Repeat Yourself). However, the framework
-itself demands a lot of file inclusions and hundreds of lines of code to be interpreted and executed on each request
-from the actual application. Object-Oriented frameworks also add a lot of overhead to execution making complex
-application slow. All these operations slows the application down and subsequently impacts the end user experience.
+ほとんどのプログラマーは、フレームワークを使うことを好みます。第一の理由としては、既にテストされた多くの機能があるからです。
+それにより、「DRY」なコードを担保できます。
+しかし、フレームワークは、アプリケーションからのリクエストごとに解釈＆実行される数百行のコードを含む多くのファイルを必要とします。
+また、オブジェクト指向のフレームワークの場合、複雑なアプリケーションの実行速度を遅くさせてしまうという短所があります。
+全ての操作がアプリケーションの遅さ、さらにはUXに悪い影響を与えてしまいます。
 
 質問
 ------------
-Why can't we have a robust framework with all of its advantages but with none or very few disadvantages?
+ほとんどが強みである堅牢なフレームワークがなぜないのか？
 
-This is why Phalcon was born!
+これはPhalconが生まれた理由です！
 
-During the last few months, we have extensively researched PHP's behavior, investigating areas for significant optimizations
-(big or small). Through this understanding, we managed to remove unnecessary validations, compacted code, performed optimizations
-and generated low-level solutions so as to achieve maximum performance from Phalcon.
+ここ数ヶ月間、大々的にPHPの振る舞いや有効な最適化などについて研究してきました。
+この調査結果を通して、不要な検証を除いたり、コードをコンパクトにしたり、パフォーマンスを最適化したりして、Phalconによってパフォーマンスが最大化できるような
+低レベルでのソリューションを構築してきました。
 
 なぜ?
 ----
-* The use of frameworks has become mandatory in professional development with PHP
-* Frameworks offer a structured philosophy to easily maintain projects writing less code and making work more fun
-* We love PHP and we think it can be used to create larger and more ambitious projects
+* フレームワークを使うことは、PHPの開発者の中で一般的になってきました
+* フレームワークを使うことで、プロジェクトを簡単にメンテナンスできたり、少ないコードでより速く動作できるようにします
+* 我々はPHPを愛しており、大規模で壮大なプロジェクトを作れることを考えています
 
 PHPの内部での動作は?
 ----------------------
@@ -45,7 +45,7 @@ PHPのC拡張はどう動作するか?
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
 
-Palcon はどう動作するか?
+Palconはどう動作するか?
 ----------------------
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
 * Low-level optimizations provides the lowest overhead for MVC-based applications
@@ -70,5 +70,5 @@ Phalcon can deliver a lot more functionality/requests with less memory consumpti
 
 結論
 ----------
-Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way
-to develop applications with a framework implemented with the philosophy "Performance Really Matters"! Enjoy!
+PhalconはPHPの最速フレームワークです。「重要なのはパフォーマンスである」という指針に基づいて実装されたフレームワークであり、
+これを使ったアプリケーションの構築は簡単で堅牢な方法でできます！ぜひ楽しんでください！
