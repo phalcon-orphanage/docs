@@ -210,7 +210,7 @@ Redirections could be performed to forward the execution flow to another route:
 
     //This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("/new/welcome");
     });
 
     $app->post('/new/welcome', function () use ($app) {
