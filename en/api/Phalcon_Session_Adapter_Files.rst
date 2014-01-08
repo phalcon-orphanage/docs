@@ -24,12 +24,17 @@ This adapter store sessions in plain files
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options]) inherited from Phalcon\\Session\\Adapter
 
 Phalcon\\Session\\Adapter constructor
 
+
+
+public  **__destruct** () inherited from Phalcon\\Session\\Adapter
+
+...
 
 
 public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter

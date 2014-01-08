@@ -5,7 +5,7 @@ This is a base class for form elements
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*array* $attributes])
 

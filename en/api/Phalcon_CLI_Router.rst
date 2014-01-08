@@ -20,7 +20,7 @@ Phalcon\\CLI\\Router is the standard framework router. Routing is the process of
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

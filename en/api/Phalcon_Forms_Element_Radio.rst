@@ -1,11 +1,11 @@
-Class **Phalcon\\Forms\\Element\\Text**
-=======================================
+Class **Phalcon\\Forms\\Element\\Radio**
+========================================
 
 *extends* abstract class :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
-Component INPUT[type=text] for forms
+input[type="radio"] for forms
 
 
 Methods
@@ -13,7 +13,7 @@ Methods
 
 public *string*  **render** ([*array* $attributes])
 
-Renders the element widget
+Renders the element widget returning html
 
 
 

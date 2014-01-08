@@ -7,7 +7,7 @@ This class represents every route added to the router
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods])
 
@@ -140,6 +140,18 @@ Sets a hostname restriction to the route
 public *string*  **getHostname** ()
 
 Returns the hostname restriction if any
+
+
+
+public *Phalcon\\Mvc\\RouteInterface*  **setGroup** (:doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` $group)
+
+Sets the group associated with the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` |null **getGroup** ()
+
+Returns the group associated with the route
 
 
 

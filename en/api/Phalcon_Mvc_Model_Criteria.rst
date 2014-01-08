@@ -19,7 +19,7 @@ This class allows to build the array parameter required by Phalcon\\Mvc\\Model::
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

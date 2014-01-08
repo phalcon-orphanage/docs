@@ -40,7 +40,7 @@ Reads php files and converts them to Phalcon\\Config objects.  Given the next co
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $filePath)
 

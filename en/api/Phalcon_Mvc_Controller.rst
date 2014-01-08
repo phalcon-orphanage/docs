@@ -36,7 +36,7 @@ Every application controller should extend this class that encapsulates all the 
 
 
 Methods
----------
+-------
 
 final public  **__construct** ()
 

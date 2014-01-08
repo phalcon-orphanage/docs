@@ -41,7 +41,7 @@ Constants
 *integer* **LEVEL_NO_RENDER**
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -217,7 +217,7 @@ Appends template after controller layout
 
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cleanTemplateAfter** ()
 
-Resets any template before layouts
+Resets any template after layouts
 
 
 
@@ -323,6 +323,17 @@ Register templating engines
     ));
 
 
+
+
+public  **getRegisteredEngines** ()
+
+Returns the registered templating engines
+
+
+
+public  **exists** (*unknown* $view)
+
+...
 
 
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **render** (*string* $controllerName, *string* $actionName, [*array* $params])

@@ -32,7 +32,7 @@ Phalcon\\Mvc\\Model\\Validator\\ExclusionIn  Check if a value is not included in
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 

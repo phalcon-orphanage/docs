@@ -9,7 +9,7 @@ This component allows to build forms using an object-oriented interface
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*object* $entity], [*array* $userOptions])
 

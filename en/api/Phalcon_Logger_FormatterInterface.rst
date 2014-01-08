@@ -5,7 +5,7 @@ Phalcon\\Logger\\FormatterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **format** (*string* $message, *int* $type, *int* $timestamp)
 

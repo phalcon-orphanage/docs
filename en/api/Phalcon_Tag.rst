@@ -30,7 +30,7 @@ Constants
 *integer* **XHTML5**
 
 Methods
----------
+-------
 
 public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -137,6 +137,9 @@ Builds a HTML A tag using framework conventions
     echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
     echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!'));
     echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!', 'class' => 'btn-primary'));
+    echo Phalcon\Tag::linkTo('http://phalconphp.com/', 'Google', FALSE);
+    echo Phalcon\Tag::linkTo(array('http://phalconphp.com/', 'Phalcon Home', FALSE));
+    echo Phalcon\Tag::linkTo(array('http://phalconphp.com/', 'Phalcon Home', 'local' =>FALSE));
 
 
 

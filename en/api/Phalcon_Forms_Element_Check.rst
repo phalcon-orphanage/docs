@@ -9,7 +9,7 @@ Component INPUT[type=check] for forms
 
 
 Methods
----------
+-------
 
 public *string*  **render** ([*array* $attributes])
 

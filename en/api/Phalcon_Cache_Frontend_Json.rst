@@ -32,7 +32,7 @@ Allows to cache data converting/deconverting them to JSON.  This adapters uses t
 
 
 Methods
----------
+-------
 
 public *string*  **beforeStore** (*mixed* $data)
 

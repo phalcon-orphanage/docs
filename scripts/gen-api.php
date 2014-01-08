@@ -12,7 +12,7 @@ if (!extension_loaded('phalcon')) {
 	throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+define('CPHALCON_DIR', '/home/boston/gits/phalcon/core/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
 	throw new Exception("CPHALCON directory does not exist");
@@ -458,7 +458,7 @@ foreach ($classes as $className) {
 	if (count($documentationData['methods'])) {
 
 		$code.='Methods'.PHP_EOL;
-		$code.='---------'.PHP_EOL.PHP_EOL;
+		$code.='-------'.PHP_EOL.PHP_EOL;
 		foreach ($documentationData['methods'] as $method) {
 
 			$docClassName = str_replace("\\", "_", $method->getDeclaringClass()->name);

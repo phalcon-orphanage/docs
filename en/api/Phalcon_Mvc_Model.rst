@@ -42,7 +42,7 @@ Constants
 *integer* **DIRTY_STATE_DETACHED**
 
 Methods
----------
+-------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
@@ -1057,7 +1057,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*array* $columns])
 
 Returns the instance as an array representation 
 

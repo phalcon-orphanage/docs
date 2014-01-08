@@ -7,7 +7,7 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 
 
 Methods
----------
+-------
 
 public  **attach** (*string* $eventType, *object|callable* $handler, [*int* $priority])
 

@@ -38,7 +38,7 @@ Allows to cache output fragments, PHP data or raw data to a libmemcached backend
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 

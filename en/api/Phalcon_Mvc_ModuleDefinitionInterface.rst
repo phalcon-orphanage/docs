@@ -5,7 +5,7 @@ Phalcon\\Mvc\\ModuleDefinitionInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **registerAutoloaders** ()
 

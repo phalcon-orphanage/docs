@@ -5,7 +5,7 @@ Phalcon\\Image\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height])
 

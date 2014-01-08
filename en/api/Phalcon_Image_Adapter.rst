@@ -5,7 +5,7 @@ Base class for Phalcon\\Image adapters
 
 
 Methods
----------
+-------
 
 public *string*  **getRealPath** ()
 

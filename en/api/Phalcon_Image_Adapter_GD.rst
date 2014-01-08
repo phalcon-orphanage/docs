@@ -20,7 +20,7 @@ Image manipulation support. Allows images to be resized, cropped, etc.
 
 
 Methods
----------
+-------
 
 public static *boolean*  **check** ()
 

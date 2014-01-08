@@ -32,16 +32,44 @@ Phalcon\\Db and its related classes provide a simple SQL database interface for 
 Constants
 ---------
 
-*integer* **FETCH_ASSOC**
+*integer* **FETCH_USE_DEFAULT**
 
-*integer* **FETCH_BOTH**
+*integer* **FETCH_LAZY**
+
+*integer* **FETCH_ASSOC**
 
 *integer* **FETCH_NUM**
 
+*integer* **FETCH_BOTH**
+
 *integer* **FETCH_OBJ**
 
+*integer* **FETCH_BOUND**
+
+*integer* **FETCH_COLUMN**
+
+*integer* **FETCH_CLASS**
+
+*integer* **FETCH_INTO**
+
+*integer* **FETCH_FUNC**
+
+*integer* **FETCH_NAMED**
+
+*integer* **FETCH_KEY_PAIR**
+
+*integer* **FETCH_GROUP**
+
+*integer* **FETCH_UNIQUE**
+
+*integer* **FETCH_CLASSTYPE**
+
+*integer* **FETCH_SERIALIZE**
+
+*integer* **FETCH_PROPS_LATE**
+
 Methods
----------
+-------
 
 public static  **setup** (*array* $options)
 

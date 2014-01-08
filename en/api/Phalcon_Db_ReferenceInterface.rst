@@ -5,7 +5,7 @@ Phalcon\\Db\\ReferenceInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*string* $referenceName, *array* $definition)
 

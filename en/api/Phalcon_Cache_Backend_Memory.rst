@@ -25,7 +25,7 @@ Stores content in memory. Data is lost when the request is finished
 
 
 Methods
----------
+-------
 
 public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
 

@@ -5,7 +5,7 @@ Phalcon\\FilterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\FilterInterface <Phalcon_FilterInterface>`  **add** (*string* $name, *callable* $handler)
 

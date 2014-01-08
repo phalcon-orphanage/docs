@@ -19,7 +19,7 @@ Allows to define reference constraints on tables
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $referenceName, *array* $definition)
 

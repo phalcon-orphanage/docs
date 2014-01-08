@@ -40,7 +40,7 @@ Helper class to create a group of routes with common attributes
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $paths])
 

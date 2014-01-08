@@ -36,7 +36,7 @@ Constants
 *integer* **TYPE_DELETE**
 
 Methods
----------
+-------
 
 public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 

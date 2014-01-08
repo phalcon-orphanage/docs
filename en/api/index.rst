@@ -108,6 +108,7 @@ API Indice
    Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Numeric
    Phalcon_Forms_Element_Password
+   Phalcon_Forms_Element_Radio
    Phalcon_Forms_Element_Select
    Phalcon_Forms_Element_Submit
    Phalcon_Forms_Element_Text
@@ -250,6 +251,7 @@ API Indice
    Phalcon_Validation_Validator_PresenceOf
    Phalcon_Validation_Validator_Regex
    Phalcon_Validation_Validator_StringLength
+   Phalcon_Validation_Validator_Url
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface

@@ -7,7 +7,7 @@ This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as ba
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $config)
 

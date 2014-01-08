@@ -7,7 +7,7 @@ Class for exceptions thrown by Phalcon\\Translate
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

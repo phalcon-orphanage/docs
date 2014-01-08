@@ -5,7 +5,7 @@ Encapsulates validation info generated in the validation process
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*int* $code])
 
