@@ -4,12 +4,12 @@ Phalcon\\Assets - это компонент позволяющий разраб�
 такими как каскадные таблицы стилей или javascript'ы.
 
 :doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` доступен в контейнере сервисов,
-т.ч. вы можете добавлять ресурсы из любой части приложения где он доступен.
+т.ч. вы можете добавлять ресурсы из любой части приложения, где он доступен.
 
 Добавление ресурсов
 -------------------
 Поддерживаются ресурсы двух типов: каскадные таблицы стилей и javascript'ы, но при необходимости,
-можете создать и другие. Внтуренний механизм менеджера ресурсов хранит две коллекции, одну
+можете создать и другие. Внутренний механизм менеджера ресурсов хранит две коллекции, одну
 для javascript'ов, а другую для каскадных таблиц стилей.
 
 Добавить ресурсы в эти коллекции очень просто:
@@ -110,7 +110,7 @@ Phalcon\\Assets - это компонент позволяющий разраб�
 
 Префиксы
 --------
-К коллекциям могут применятся URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:
+К коллекциям могут применяться URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:
 
 .. code-block:: php
 
@@ -141,14 +141,16 @@ Phalcon\\Assets - это компонент позволяющий разраб�
         ->addJs('js/bootstrap.min.js');
 
 
-Minification/Filtering
-----------------------
-Phalcon\\Assets provides built-in minification of Javascript and CSS resources. The developer can create a collection of
-resources instructing the Assets Manager which ones must be filtered and which ones must be​ left as they are.
-In addition to the above, Jsmin by Douglas Crockford is part of the core extension offering minification of javascript files
-for maximum performance. In the CSS land, CSSMin by Ryan Day is also available to minify CSS files:
+Минимизация/ Фильтрация
+-----------------------
+Phalcon\Assets предоставляет встроенную возможность минимизации javascript и CSS. 
+Разработчик может создать коллекцию ресурсов с указаниями для Assets Manager, к 
+каким ресурсам должны быть применены фильтры, а к каким нет. В дополнении к 
+вышесказанному, “Jsmin” Дугласа Крокфорда (Douglas Crockford) входит в состав ядра  
+минимизации javascript для увеличения производительности. Для минимизации CSS 
+используется “CSSMin” Райна Дэйя (Ryan Day).
 
-The following example shows how to minify a collection of resources:
+Следующий пример показывает, как минимизировать набор ресурсов:
 
 .. code-block:: php
 
@@ -156,108 +158,110 @@ The following example shows how to minify a collection of resources:
 
     $manager
 
-        //These Javascripts are located in the page's bottom
+        // Этот javascript расположен внизу страницы
         ->collection('jsFooter')
 
-        //The name of the final output
+        //Название получаемого файла
         ->setTargetPath('final.js')
 
-        //The script tag is generated with this URI
+        // С таким URI генерируется тэг html
         ->setTargetUri('production/final.js')
 
-        //This is a remote resource that does not need filtering
+        // Это удаленный ресурс, не нуждающийся в фильтрации
         ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
 
-        //These are local resources that must be filtered
+        // Это локальные ресурсы, к которым необходимо применить фильтры 
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //Join all the resources in a single file
+        // Объединяем все ресурсы в один файл
         ->join(true)
 
-        //Use the built-in Jsmin filter
+        // Используем встроенный фильтр Jsmin
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //Use a custom filter
+        // Используем пользовательский фильтр
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-It starts getting a collection of resources from the assets manager, a collection can contain javascript or css
-resources but not both. Some resources may be remote, that is, they're obtained by HTTP from a remote source
-for further filtering. It is recommended to convert the external resources to local eliminating the overhead
-of obtaining them.
+Менеджер начинает получать набор ресурсов от Assets Manager, который может содержать либо javascript, 
+либо CSS, но не оба типа ресурсов. Некоторые ресурсы могут быть удаленными, то есть, полученными с 
+помощью HTTP запроса для дальнейшей фильтрации. Преобразования внешних ресурсов рекомендуется для 
+устранения накладных расходов на их получение.
 
 .. code-block:: php
 
     <?php
 
-    //These Javascripts are located in the page's bottom
+    // Этот javascript расположен внизу
     $js = $manager->collection('jsFooter');
 
-As seen above, method addJs is used to add resources to the collection, the second parameter indicates
-whether the resource is external or not and the third parameter indicates whether the resource should
-be filtered or left as is:
+Как показано выше, метод addJs используется для добавления ресурсов в коллекцию, второй параметр 
+указывает, является ли ресурс внешних или нет, и третий параметр указывает, должен ли ресурс быть 
+отфильтрован или нет:
 
 .. code-block:: php
 
     <?php
 
-    // This a remote resource that does not need filtering
+    // Это удаленный ресурс, не нуждающийся в фильтрации 
     $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
 
-    // These are local resources that must be filtered
+    // Это локальные ресурсы, к которым необходимо применить фильтры
     $js->addJs('common-functions.js');
     $js->addJs('page-functions.js');
 
-Filters are registered in the collection, multiple filters are allowed, content in resources are filtered
-in the same order as filters were registered:
+Фильтры регистрируются в коллекции, допускается регистрировать несколько фильтров. Ресурсы в наборе 
+фильтруются в том же порядке, в каком были зарегистрированы фильтры:
 
 .. code-block:: php
 
     <?php
 
-    //Use the built-in Jsmin filter
+    // Используем встроенный фильтр Jsmin
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //Use a custom filter
+    // Используем пользовательский фильтр
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
-Note that both built-in and custom filters can be transparently applied to collections.
-Last step is decide if all the resources in the collection must be joined in a single file or serve each of them
-individually. To tell the collection that all resources must be joined you can use the method 'join':
+Заметим, что встроенные и пользовательские фильтры могут сразу применяться к набору ресурсов. 
+Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать 
+каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать 
+метод 'join':
 
 .. code-block:: php
 
     <?php
 
-    // This a remote resource that does not need filtering
+    // Объединяем все ресурсы в один файл
     $js->join(true);
 
-    //The name of the final file path
+    // Название получаемого файла
     $js->setTargetPath('public/production/final.js');
 
-    //The script html tag is generated with this URI
+    // С таким URI генерируется тэг html
     $js->setTargetUri('production/final.js');
 
-If resources are going to be joined, we need also to define which file will be used to store the resources
-and which uri will be used to show it. These settings are set up with setTargetPath() and setTargetUri().
+Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для 
+хранения ресурсов и по какому URI он будет доступен. Эти параметры настраиваются с помощью методов 
+setTargetPath() и setTargetUri().
 
-Built-In Filters
-^^^^^^^^^^^^^^^^
-Phalcon provides 2 built-in filters to minify both javascript and css respectively, their C-backend provide
-the minimum overhead to perform this task:
+Встроенные фильтры
+^^^^^^^^^^^^^^^^^^
+Phalcon имеет два встроенных фильтра минимизации javascript и CSS, их реализация на C обеспечивает 
+минимальные накладные расходы для решения подобной задачи:
 
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Filter                            | Description                                                                                               |
-+===================================+===========================================================================================================+
-| Phalcon\\Assets\\Filters\\Jsmin   | Minifies Javascript removing unnecessary characters that are ignored by Javascript interpreters/compilers |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
-| Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS removing unnecessary characters that are already ignored by browsers                         |
-+-----------------------------------+-----------------------------------------------------------------------------------------------------------+
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Фильтр                            | Описание                                                                                                     |
++===================================+==============================================================================================================+
+| Phalcon\\Assets\\Filters\\Jsmin   | Минимизирует JavaScript удаляя не нужны символы, которые игнорируются интерпретатором/компилятором JavaScript|
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Phalcon\\Assets\\Filters\\Cssmin  | Минимизирует CSS удаляя ненужные символы, которые игнорируются браузерами                                    |
++-----------------------------------+--------------------------------------------------------------------------------------------------------------+
 
-Custom Filters
-^^^^^^^^^^^^^^
-In addition to built-in filters, a developer can create his own filters. These can take advantage of existing
-and more advanced tools like YUI_, Sass_, Closure_, etc.:
+Пользовательские фильтры
+^^^^^^^^^^^^^^^^^^^^^^^^
+Кроме использования встроенных фильтров, разработчик может создавать свои собственные фильтры. Вы можете 
+воспользоваться существующими более продвинутыми инструментами, такими как YUI_, Sass_, Closure_ и другие.
 
 .. code-block:: php
 
@@ -313,7 +317,7 @@ and more advanced tools like YUI_, Sass_, Closure_, etc.:
         }
     }
 
-Usage:
+Применение:
 
 .. code-block:: php
 

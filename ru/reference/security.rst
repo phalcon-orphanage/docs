@@ -47,6 +47,8 @@
 
 .. code-block:: php
 
+	<?php
+
     use Phalcon\Mvc\Controller;
 
     class SessionController extends Controller

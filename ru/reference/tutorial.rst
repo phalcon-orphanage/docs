@@ -5,7 +5,7 @@
 
 Проверка установки
 ------------------
-Будем считать что у вас уже установлено расширение Phalcon. Проверьте, есть ли в результатах phpinfo() секция "Phalcon" или выполните следующий код:
+Будем считать, что у вас уже установлено расширение Phalcon. Проверьте, есть ли в результатах phpinfo() секция "Phalcon" или выполните следующий код:
 
 .. code-block:: php
 
@@ -28,7 +28,7 @@
 
 Создание проекта
 ----------------
-Лучше всего следовать данному руководсвту шаг за шагом. Полный код можно посмотреть `здесь <https://github.com/phalcon/tutorial>`_.
+Лучше всего следовать данному руководству шаг за шагом. Полный код можно посмотреть `здесь <https://github.com/phalcon/tutorial>`_.
 
 Структура каталогов
 ^^^^^^^^^^^^^^^^^^^
@@ -378,17 +378,17 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
     try {
 
-        //Register an autoloader
+        // Регистрация автозагрузчика
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        // Создание DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Set the database service
+        // Настраиваем сервис для работы с БД
         $di->set('db', function(){
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
@@ -398,14 +398,14 @@ Phalcon содержит первую ORM для PHP, полностью нап�
             ));
         });
 
-        //Setting up the view component
+        // Настраиваем компонент View
         $di->set('view', function(){
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
-        //Handle the request
+        // Обработка запроса
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
@@ -437,7 +437,7 @@ Phalcon содержит первую ORM для PHP, полностью нап�
 
             $user = new Users();
 
-            //Store and check for errors
+            // Сохраняем и проверяем на наличие ошибок
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -485,4 +485,3 @@ ORM автоматически экранирует ввод для предот
 .. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
 .. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
 .. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
-

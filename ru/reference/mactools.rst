@@ -1,6 +1,6 @@
 Инструменты разработчика (Developer Tools) в Mac OS X
 =====================================================
-Эти действия покажут вам процесс установки Инструментов разрабоотчика для OS/X.
+Эти действия покажут вам процесс установки Инструментов разработчика для OS/X.
 
 Предпосылки
 -----------
@@ -24,7 +24,7 @@
     unzip -q phalcon-tools.zip
     mv phalcon-phalcon-devtools-* phalcon-tools
 
-Проверьте куда будут установлены Инструменты разработчика Phalcon используя команду *pwd*:
+Проверьте, куда будут установлены Инструменты разработчика Phalcon, используя команду *pwd*:
 
 .. figure:: ../_static/img/mac-2.png
    :align: center
@@ -54,7 +54,7 @@
     ln -s ~/phalcon-tools/phalcon.sh ~/phalcon-tools/phalcon
     chmod +x ~/phalcon-tools/phalcon
 
-Введите команду "phalcon" и вы должны увидить нечто подобное:
+Введите команду "phalcon" и вы должны увидеть нечто подобное:
 
 .. figure:: ../_static/img/mac-5.png
    :align: center

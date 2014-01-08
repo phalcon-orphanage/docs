@@ -12,7 +12,7 @@ This component makes use of adapters to encapsulate different sources of data:
 +==============+=============================================================================================================================================================================+
 | NativeArray  | Use a PHP array as source data                                                                                                                                              |
 +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this paginator don't be used to paginate a large number of records |
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                             |
 +--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

@@ -321,7 +321,7 @@ This language gives you much more freedom to create all kinds of queries. Of cou
 
     $query = $this->modelsManager->createQuery($phql);
 
-    $query->setCache(array(
+    $query->cache(array(
         "key" => "cars-by-name",
         "lifetime" => 300
     ));
@@ -597,7 +597,7 @@ Note that this process can also be performed with PHQL following an alternative 
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
-            $query->setCache(array(
+            $query->cache(array(
                 "key" => self::_createKey($conditions, $params),
                 "lifetime" => 300
             ));

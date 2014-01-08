@@ -1,39 +1,41 @@
-Caching in the ORM
-==================
-Every application is different, we could have models whose data change frequently and others that rarely change.
-Accessing database systems is often one of the most common bottlenecks in terms of performance. This is due to
-the complex connection/communication processes that PHP must do in each request to obtain data from the database.
-Therefore, if we want to achieve good performance we need to add some layers of caching where the
-application requires it.
+Кэширование в ORM
+=================
 
-This chapter explains the possible points where it is possible to implement caching to improve performance.
-The framework gives you the tools to implement the cache where you demand of it according to the architecture
-of your application.
+Каждое приложение уникально: у нас могут быть модели c часто изменяемыми данными, так и модели с данными, 
+которые редко  изменяют свои значения. Обращение к базе данных часто является одним из наиболее распространенных 
+узких мест в плане производительности приложения. Это связано со сложными процессами подключения/коммуникации, 
+которые PHP должен выполнять при каждом запросе к базе данных для получения требуемых данных. Поэтому, если мы 
+хотим добиться хорошей производительности, мы должны добавить несколько слоев кэширования, когда приложение в 
+этом нуждается.
 
-Caching Resultsets
-------------------
-A well established technique to avoid the continuous access to the database is to cache resultsets that don't change
-frequently using a system with faster access (usually memory).
+В этой главе рассматриваются места, где можно реализовать кэширование для повышения производительности. Фреймворк 
+дает вам инструмент для реализации кэша, в тех местах где вам нужно в соответствии с архитектурой приложения.
 
-When :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` requires a service to cache resultsets, it will
-request it to the Dependency Injector Container with the convention name "modelsCache".
+Кэширование наборов данных
+--------------------------
 
-As Phalcon provides a component to :doc:`cache <cache>` any kind of data, we'll explain how to integrate it with Models.
-First, you must register it as a service in the services container:
+Имеется методика позволяющая избежать постоянного обращения к базе данных, это кэширование редко изменяемых 
+наборов данных, используя систему с более быстрым доступом (обычно это память).
+
+Когда :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` требуется сервис для кэша набоов данных, он будет 
+запрашивать у контейнера зависимостей этот сервис с именем «modelsCache».
+
+Phalcon предоставляет компонент :doc:`cache <cache>` для кэширования любых данных, мы объясним как интегрировать 
+его с моделями. Во-первых, вы должны зарегистрировать его в качестве сервиса в контейнере зависимостей:
 
 .. code-block:: php
 
     <?php
 
-    //Set the models cache service
+    // Регистрация сервиса кэша моделей 
     $di->set('modelsCache', function() {
 
-        //Cache data for one day by default
+        //По умолчанию данные кэша хранятся один день
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Настройки соединения с memcached
         $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -42,59 +44,62 @@ First, you must register it as a service in the services container:
         return $cache;
     });
 
-You have complete control in creating and customizing the cache before being used by registering the service
-as an anonymous function. Once the cache setup is properly defined you could cache resultsets as follows:
+Вы имеете полный контроль в создании и настройке кэша перед его использованием путем регистрации сервиса в 
+качестве анонимной функции. После того, как настройка кэша правильно определена, можно кэшировать наборы данных:
 
 .. code-block:: php
 
     <?php
 
-    // Get products without caching
+    // Получить продукта без кэширования
     $products = Products::find();
 
-    // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
+    // Используем кэширование наборов данных. Кэзш остается в памяти в течении 1 часа (3600 секунд).
     $products = Products::find(array(
         "cache" => array("key" => "my-cache")
     ));
 
-    // Cache the resultset for only for 5 minutes
+    // Кэш набора данных хранится всего 5 минут
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
-    // Using a custom cache
+    // Использование пользовательского кэша
     $products = Products::find(array("cache" => $myCache));
 
-Caching could be also applied to resultsets generated using relationships:
+Кэш может быть также применен к набору данных, генерируемых с помощью отношений:
 
 .. code-block:: php
 
     <?php
 
-    // Query some post
+    // Запрос некоторого сообщения
     $post = Post::findFirst();
 
-    // Get comments related to a post, also cache it
+    // Получаем комментарии, относящиеся к сообщению, и кэшируем их
     $comments = $post->getComments(array(
         "cache" => array("key" => "my-key")
     ));
 
-    // Get comments related to a post, setting lifetime
+    // Получаем комментарии относящиеся к сообщению и устанавливаем срок их хранения
     $comments = $post->getComments(array(
         "cache" => array("key" => "my-key", "lifetime" => 3600)
     ));
 
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the previously specified key.
+Когда кэшируемые наборы данных должны быть признаны недействительными, вы можете просто удалить их из кэша с 
+использованием ранее указанного ключа.
 
-Note that not all resultsets must be cached. Results that change very frequently should not be cached since they
-are invalidated very quickly and caching in that case impacts performance. Additionally, large datasets that
-do not change frequently could be cached, but that is a decision that the developer has to make based on the
-available caching mechanism and whether the performance impact to simply retrieve that data in the
-first place is acceptable.
+Обратите внимание, что не все наборы данных должны быть в кэше. Данные, которые меняют свои значения очень 
+часто не следует кэшировать, так как они становятся не действительными очень быстро, и кэширование в этом случаи 
+отрицательно влияет на производительность приложения. Кроме того, большие наборы данных, которые не часто 
+меняют свои значения, могут располагаться в кэше, но для реализации этой идеи необходимо оценить имеющиеся 
+механизмы кэширования  и влияния на производительность, так как это не всегда будет способствовать увеличению 
+производительности приложения.
 
-Overriding find/findFirst
--------------------------
-As seen above, these methods are available in models that inherit :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
+Переопределение find/findFirst
+------------------------------
+
+Как показано выше, эти методы доступны в моделях, которые наследуют :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`:
 
 .. code-block:: php
 
@@ -115,9 +120,10 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     }
 
-By doing this, you're intercepting all the calls to these methods, this way, you can add a cache
-layer or run the query if there is no cache. For example, a very basic cache implementation, uses
-a static property to avoid that a record would be queried several times in a same request:
+Сделав это, вы будите перехватывать все вызовы этих методов, таким образом, вы можете добавить 
+кэширующий слой или запускать запросы к базе данных, если кэша нет. Например, очень простой 
+реализацией кэша является использование статического свойства, чтобы избежать того, что запись 
+будет запрашиваться несколько раз в одной и том же запросе:
 
 .. code-block:: php
 
@@ -129,8 +135,8 @@ a static property to avoid that a record would be queried several times in a sam
         protected static $_cache = array();
 
         /**
-         * Implement a method that returns a string key based
-         * on the query parameters
+         * Реализация метода, который возвращает 
+         * строковый ключ на основе параметров запроса
          */
         protected static function _createKey($parameters)
         {
@@ -150,7 +156,7 @@ a static property to avoid that a record would be queried several times in a sam
         public static function find($parameters=null)
         {
 
-            //Create an unique key based on the parameters
+            // Создание уникального ключа на основе параметров
             $key = self::_createKey($parameters);
 
             if (!isset(self::$_cache[$key])) {
@@ -158,7 +164,7 @@ a static property to avoid that a record would be queried several times in a sam
                 self::$_cache[$key] = parent::find($parameters);
             }
 
-            //Return the result in the cache
+            // Вернуть результат в кэше
             return self::$_cache[$key];
         }
 
@@ -169,12 +175,14 @@ a static property to avoid that a record would be queried several times in a sam
 
     }
 
-Access the database is several times slower than calculate a cache key, you're free in implement the
-key generation strategy you find better for your needs. Note that a good key avoids collisions as much as possible,
-this means that different keys returns unrelated records to the find parameters.
+Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша, вы свободны в 
+реализации стратегии генерации ключа, которая лучше подходит для ваших задач.  Следует 
+отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это 
+означает, что разные ключи возвращают unrelated records to the find parameters.
 
-In the above example, we used a cache in memory, it is useful as a first level cache. Once we have the memory cache,
-we can implement a second level cache layer like APC/XCache or a NoSQL database:
+В приведенном выше примере мы использовали кэш в памяти, он полезен в качестве первого 
+уровня кэша. Как только у нас есть кэш в памяти, мы можем реализовать слой кэша второго
+уровня с помощью APC / XCache или базы данных NoSQL:
 
 .. code-block:: php
 
@@ -183,40 +191,42 @@ we can implement a second level cache layer like APC/XCache or a NoSQL database:
     public static function find($parameters=null)
     {
 
-        //Create an unique key based on the parameters
+        // Создание уникального ключа на основе параметров
         $key = self::_createKey($parameters);
 
         if (!isset(self::$_cache[$key])) {
 
-            //We're using APC as second cache
+            //Мы используем APC как кэш второго уровня
             if (apc_exists($key)) {
 
                 $data = apc_fetch($key);
 
-                //Store the result in the memory cache
+                //Сохраните результат в кэш памяти
                 self::$_cache[$key] = $data;
 
                 return $data;
             }
 
-            //There are no memory or apc cache
+            //Если нет кэша в памяти или в APC
             $data = parent::find($parameters);
 
-            //Store the result in the memory cache
+            //Сохраните результат в кэш памяти
             self::$_cache[$key] = $data;
 
-            //Store the result in APC
+            //Сохраните результат в APC
             apc_store($key, $data);
 
             return $data;
         }
 
-        //Return the result in the cache
+        //Вернуть результат в кэше
         return self::$_cache[$key];
     }
 
-This gives you full control on how the the caches must be implemented for each model, if this strategy is common to several models
-you can create a base class for all of them:
+Это дает вам полный контроль над тем, как кэши должны быть реализованы для 
+каждой модели, эта стратегия может быть общей для нескольких моделей, 
+которую можно вынести в отдельный базовый класс для всех подобных классов:
+
 
 .. code-block:: php
 
@@ -241,7 +251,7 @@ you can create a base class for all of them:
         }
     }
 
-Then use this class as base class for each 'Cacheable' model:
+Затем используйте этот класс в качестве базового класса для каждой модели 'Cacheable':
 
 .. code-block:: php
 
@@ -252,22 +262,25 @@ Then use this class as base class for each 'Cacheable' model:
 
     }
 
-Forcing Cache
--------------
-Earlier we saw how Phalcon\\Mvc\\Model has a built-in integration with the caching component provided by the framework. To make a record/resultset
-cacheable we pass the key 'cache' in the array of parameters:
+Форсирование кэша
+-----------------
+
+Ранее мы видели, как Phalcon\\Mvc\\Model имеет встроенную интеграцию с компонентом 
+кэширования, предоставленного фреймворком. Чтобы сделать запись/результирующий набор кэшируемым, 
+мы передаем ключ 'cache' в массиве параметров:
 
 .. code-block:: php
 
     <?php
 
-    // Cache the resultset for only for 5 minutes
+    // Кэшируем результирующий набор всего на 5 минут
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
-we can override the find/findFirst method to force every query to be cached:
+Это дает нам свободу для кэширования конкретных запросов, поэтому если мы хотим кэшировать 
+глобально все запросы, выполняемые моделью, мы можем переопределить метод find/findFirst,
+чтобы заставить кэшировать каждый запрос.
 
 .. code-block:: php
 
@@ -278,19 +291,19 @@ we can override the find/findFirst method to force every query to be cached:
 
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         public static function find($parameters=null)
         {
 
-            //Convert the parameters to an array
+            // Преобразование параметров в массив
             if (!is_array($parameters)) {
                 $parameters = array($parameters);
             }
 
-            //Check if a cache key wasn't passed
-            //and create the cache parameters
+            // Проверяем, что ключ кэша не был передан
+            //и создаем параметры кэша
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
                     "key" => self::_createKey($parameters),
@@ -308,10 +321,13 @@ we can override the find/findFirst method to force every query to be cached:
 
     }
 
-Caching PHQL Queries
---------------------
-All queries in the ORM, no matter how high level syntax we used to create them are handled internally using PHQL.
-This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
+Кэширование PHQL запросов
+-------------------------
+
+Все запросы в ORM, независимо от того, насколько высокоуровневый синтаксис 
+мы использовали для их создания, обрабатываются внутри с помощью PHQL. Этот 
+язык дает гораздо больше свободы для создания запросов всех видов. Конечно, 
+эти запросы могут кэшироваться:
 
 .. code-block:: php
 
@@ -330,7 +346,8 @@ This language gives you much more freedom to create all kinds of queries. Of cou
         'name' => 'Audi'
     ));
 
-If you don't want to use the implicit cache just save the resulset into your favorite cache backend:
+Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор 
+в предпочтительный для вас серверный кэш:
 
 .. code-block:: php
 
@@ -344,45 +361,49 @@ If you don't want to use the implicit cache just save the resulset into your fav
 
     apc_store('my-cars', $cars);
 
-Reusable Related Records
-------------------------
-Some models may have relationships to other models. This allows us to easily check the records that relate to instances in memory:
+Многократное использование связанных записей
+--------------------------------------------
+
+Некоторые модели могут иметь связи с другими моделями. Это позволяет нам легко проверить записи, 
+которые относятся к экземплярам в памяти:
 
 .. code-block:: php
 
     <?php
 
-    //Get some invoice
+    // Получаем некоторый счет
     $invoice = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Получаем клиента связанного со счетом
     $customer = $invoice->customer;
 
-    //Print his/her name
+    // Выводим его/ее имя
     echo $customer->name, "\n";
 
-This example is very simple, a customer is queried and can be used as required, for example, to show its name.
-This also applies if we retrieve a set of invoices to show customers that correspond to these invoices:
+Этот пример очень простой, клиент получает запрос и который может быть использован при 
+необходимости, например, чтобы показать свое имя. Это также касается случаев если мы 
+извлекаем наборы счетов, чтобы показать клиентам, которые являются владельцами этих счетов:
 
 .. code-block:: php
 
     <?php
 
-    //Get a set of invoices
+    // Получаем набор счетов
     // SELECT * FROM invoices
     foreach (Invoices::find() as $invoice) {
 
-        //Get the customer related to the invoice
+        // Получаем клиента связанного с заказом
         // SELECT * FROM customers WHERE id = ?
         $customer = $invoice->customer;
 
-        //Print his/her name
+        // Выводим его/ее имя
         echo $customer->name, "\n";
     }
 
-A customer may have one or more bills, this means that the customer may be unnecessarily more than once.
-To avoid this, we could mark the relationship as reusable, this way, we tell the ORM to automatically reuse
-the records instead of re-querying them again and again:
+Клиент может иметь один или несколько счетов, это означает, что клиент может быть 
+вызван вызван более одного раза. Чтобы избежать этого, мы можем отметить связь как 
+многоразовую , таким образом, мы говорим ORM автоматически использовать прошлые 
+записи вместо того, чтобы вновь и вновь выполнять один и тот же запросы:
 
 .. code-block:: php
 
@@ -400,8 +421,9 @@ the records instead of re-querying them again and again:
 
     }
 
-This cache works in memory only, this means that cached data are released when the request is terminated. You can
-add a more sophisticated cache for this scenario overriding the models manager:
+Этот кэш работает только в памяти, это означает, что кэшированные данные 
+предоставляются, когда запрос уже был выполнен. Вы можете добавить более сложные 
+кэш для этого сценария, переопределив менеджер модели:
 
 .. code-block:: php
 
@@ -411,7 +433,7 @@ add a more sophisticated cache for this scenario overriding the models manager:
     {
 
         /**
-         * Returns a reusable object from the cache
+         * Возвращает многократно используемый объект из кэша
          *
          * @param string $modelName
          * @param string $key
@@ -419,17 +441,17 @@ add a more sophisticated cache for this scenario overriding the models manager:
          */
         public function getReusableRecords($modelName, $key){
 
-            //If the model is Products use the APC cache
+            // Если модель Products использует кэш APC
             if ($modelName == 'Products'){
                 return apc_fetch($key);
             }
 
-            //For the rest, use the memory cache
+            // Для остальных, использовать кэш памяти
             return parent::getReusableRecords($modelName, $key);
         }
 
         /**
-         * Stores a reusable record in the cache
+         * Сохраняет повторно используемый запись в кэше
          *
          * @param string $modelName
          * @param string $key
@@ -437,18 +459,18 @@ add a more sophisticated cache for this scenario overriding the models manager:
          */
         public function setReusableRecords($modelName, $key, $records){
 
-            //If the model is Products use the APC cache
+            // Если модель Products использует кэш APC
             if ($modelName == 'Products'){
                 apc_store($key, $records);
                 return;
             }
 
-            //For the rest, use the memory cache
+            // Для остальных, использовать кэш памяти
             parent::setReusableRecords($modelName, $key, $records);
         }
     }
 
-Do not forget to register the custom models manager in the DI:
+Не забудьте зарегистрировать свой менеджер моделей в DI:
 
 .. code-block:: php
 
@@ -458,37 +480,41 @@ Do not forget to register the custom models manager in the DI:
         return new CustomModelsManager();
     });
 
-Caching Related Records
------------------------
-When a related record is queried, the ORM internally builds the appropiate condition and gets the required records using find/findFirst
-in the target model according to the following table:
+Кэширование связанных записей
+-----------------------------
 
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Type                | Description                                                                          | Implicit Method        |
-+=====================+===============================================================================================================+
-| Belongs-To          | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-One             | Returns a model instance of the related record directly                              | findFirst              |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-Many            | Returns a collection of model instances of the referenced model                      | find                   |
-+---------------------+---------------------------------------------------------------------------------------------------------------+
+Когда запрашиваются связанные запись, внутри ORM строится соответствующие состояние, 
+и передаются необходимые записи с помощью Find / FindFirst в целевую модель в 
+соответствии со следующей таблицей:
 
-This means that when you get a related record you could intercept how these data are obtained by implementing the corresponding method:
++---------------------+--------------------------------------------------------------------------------------+---------------------------+
+| Тип                 | Описание                                                                             | Вызываемый метод          |
++=====================+======================================================================================+===========================+
+| Belongs-To          | Возвращает непосредственно экземпляр модели взаимосвязанной записи                   | findFirst                 |
++---------------------+--------------------------------------------------------------------------------------+---------------------------+
+| Has-One             | Возвращает непосредственно экземпляр модели взаимосвязанной записи                   | findFirst                 |
++---------------------+--------------------------------------------------------------------------------------+---------------------------+
+| Has-Many            | Возвращает коллекцию экземпляров модели которые ссылаются на модель                  | find                      |
++---------------------+--------------------------------------------------------------------------------------+---------------------------+
+
+Это означает, что когда вы получаете связанные записи, вы можете изменить способ 
+получения данных путем реализации соответствующего метода:
 
 .. code-block:: php
 
     <?php
 
-    //Get some invoice
+    // Получаем счет
     $invoice = Invoices::findFirst();
 
-    //Get the customer related to the invoice
+    // Получаем владельца счета 
     $customer = $invoice->customer; // Invoices::findFirst('...');
 
-    //Same as above
+    // То же самое
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
-Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
+Соответственно, мы могли бы заменить метод FindFirst в моделе счетов и осуществлять 
+кэширование наиболее подходящим способом:
 
 .. code-block:: php
 
@@ -499,15 +525,16 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
         public static function findFirst($parameters=null)
         {
-            //.. custom caching strategy
+            //.. здесь реализуем кэширование данных
         }
     }
 
-Caching Related Records Recursively
------------------------------------
-In this scenario, we assume that everytime we query a result we also retrieve their associated records.
-If we store the records found together with their related entities perhaps we could reduce a bit the overhead required
-to obtain all entities:
+Рекурсивное кэшировоние связанных записей
+-----------------------------------------
+
+В этом сценарии мы предполагаем, что каждый раз когда мы запрашиваем набор данных, мы также получить 
+все связанные записи для данного набора. Если мы будем хранить записи найденные вместе с их связанными 
+сущностями, возможно, мы сможем немного уменьшить накладные расходы для получения всех сущностей:
 
 .. code-block:: php
 
@@ -518,28 +545,28 @@ to obtain all entities:
 
         protected static function _createKey($parameters)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         protected static function _getCache($key)
         {
-            // returns data from a cache
+            // .. возвращаем данные из кэша
         }
 
         protected static function _setCache($key)
         {
-            // stores data in the cache
+            // .. сохраняет данные в кэше
         }
 
         public static function find($parameters=null)
         {
-            //Create a unique key
+            // Создать уникальный ключ
             $key = self::_createKey($parameters);
 
-            //Check if there are data in the cache
+            // Проверяем наличие данных в кэше
             $results = self::_getCache($key);
 
-            // Valid data is an object
+            // Полученные данные должны быть объектом
             if (is_object($results)) {
                 return $results;
             }
@@ -549,16 +576,16 @@ to obtain all entities:
             $invoices = parent::find($parameters);
             foreach ($invoices as $invoice) {
 
-                //Query the related customer
+                // Получение соответствующего клиента
                 $customer = $invoice->customer;
 
-                //Assign it to the record
+                // Помещаем его в запись
                 $invoice->customer = $customer;
 
                 $results[] = $invoice;
             }
 
-            //Store the invoices in the cache + their customers
+            // Сохраняем счета и их клиентов в кэше
             self::_setCache($key, $results);
 
             return $results;
@@ -566,12 +593,13 @@ to obtain all entities:
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // .. добавляем связи и инициализируем другие вещи
         }
     }
 
-Getting the invoices from the cache already obtains the customer data in just one hit, reducing the overall overhead of the operation.
-Note that this process can also be performed with PHQL following an alternative solution:
+Получение из кэша счетов уже содержащих данные о клиентах выполняется всего за одно 
+действие, что снижает общую нагрузку на данную операцию. Следует отметить, что этот 
+процесс можно также проводить с PHQL с помощью следующего альтернативного решения:
 
 .. code-block:: php
 
@@ -582,12 +610,12 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function initialize()
         {
-            // add relations and initialize other stuff
+            // .. добавляем связи и инициализируем другие вещи
         }
 
         protected static function _createKey($conditions, $params)
         {
-            // .. create a cache key based on the parameters
+            // .. создаем ключ кэша на основе параметров
         }
 
         public function getInvoicesCustomers($conditions, $params=null)

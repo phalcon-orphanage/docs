@@ -346,11 +346,11 @@ any other class registered with its name can easily replace a controller:
         return $component;
     });
 
-    //Register a namespaced controller as a service
-    $di->set('Backend\Controllers\IndexController', function() {
-        $component = new Component();
-        return $component;
-    });
+	    //Register a namespaced controller as a service
+	    $di->set('Backend\Controllers\IndexController', function() {
+	        $component = new Component();
+	        return $component;
+	    });
 
 Creating a Base Controller
 --------------------------

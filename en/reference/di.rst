@@ -324,7 +324,7 @@ of our component:
             $connection = $this->_di->getShared('db');
 
             //This method also requires an input filtering service
-            $filter = $this->_db->get('filter');
+            $filter = $this->_di->get('filter');
 
         }
 
@@ -823,7 +823,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     $request = $requestService->resolve();
 
 Instantiating classes via the Service Container
-================================================
+===============================================
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with
 the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 

@@ -30,7 +30,7 @@
 --------------
 После создания экземпляра класса необходимо добавить некоторые пути. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`
 отвечает за управление путями, которые должны всегда начинаться с  /. При создании путей необходимо указывать, какой метод
-HTTP используется, чтобы запросы путей соответствовали методам HTTP. Ниже представлен пример, показывающий как создавать пути
+HTTP используется, чтобы запросы путей соответствовали методам HTTP. Ниже представлен пример, показывающий как создавать пути,
 используя метод GET:
 
 .. code-block:: php
@@ -86,7 +86,7 @@ HTTP используется, чтобы запросы путей соотве
     $app->put('/api/products/update/{id}', "update_product");
 
     // Совпадет, если HTTP-метод - DELETE
-    $app->put('/api/products/remove/{id}', "delete_product");
+    $app->delete('/api/products/remove/{id}', "delete_product");
 
     // Совпадет, если HTTP-метод - OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
@@ -181,7 +181,7 @@ HTTP используется, чтобы запросы путей соотве
 
     });
 
-Or create a response object and return it from the handler:
+Или создайте объект класса Response и верните его из обработчика:
 
 .. code-block:: php
 
@@ -189,16 +189,16 @@ Or create a response object and return it from the handler:
 
     $app->get('/show/data', function () {
 
-        //Create a response
+        // Создаем объект для работы с заголовками ответов
         $response = new Phalcon\Http\Response();
 
-        //Set the Content-Type header
+        // Установка заголовка Content-Type
         $response->setContentType('text/plain');
 
-        //Pass the content of a file
+        // Передаем содержимое файла
         $response->setContent(file_get_contents("data.txt"));
 
-        //Return the response
+        // Возвращаем объект Response
         return $response;
     });
 
@@ -213,7 +213,7 @@ Or create a response object and return it from the handler:
 
     // Этот маршрут выполняет перенаправление на другой маршрут
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("new/welcome")->sendHeaders();
     });
 
     $app->post('/new/welcome', function () use ($app) {
@@ -388,7 +388,7 @@ Events are triggered using the type "micro". The following events are supported:
             if ($app->session->get('auth') == false) {
 
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                $app->response->redirect("/")->sendHeaders();
 
                 // Возвращаем (false) останов операции
                 return false;

@@ -55,8 +55,8 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. In addition to the above method the 'initialize' method is available.
-This method aids in setting up the model with a custom behavior i.e. a different table:
+The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
+The initialize() method is only called once during the request.
 
 .. code-block:: php
 
@@ -1433,6 +1433,13 @@ Saving a record and its related records in a has-many relation:
 Saving the album and the artist at the same time implictly makes use of a transaction so if anything
 goes wrong with saving the related records, the parent will not be saved either. Messages are
 passed back to the user for information regarding any errors.
+
+Note: Adding related entities by overloading the following methods is not possible:
+ - Phalcon\Mvc\Model::beforeSave()
+ - Phalcon\Mvc\Model::beforeCreate()
+ - Phalcon\Mvc\Model::beforeUpdate()
+You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
+
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
