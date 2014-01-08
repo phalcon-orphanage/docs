@@ -18,7 +18,7 @@ This class reads and compiles Volt templates into PHP plain code
 
 
 Methods
----------
+-------
 
 public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view])
 

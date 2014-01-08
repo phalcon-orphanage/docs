@@ -23,7 +23,7 @@ Validates that a string has the specified maximum and minimum constraints
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 

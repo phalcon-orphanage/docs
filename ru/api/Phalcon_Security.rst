@@ -22,7 +22,7 @@ This component provides a set of functions to improve the security in Phalcon ap
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -111,6 +111,18 @@ Returns the value of the CSRF token in session
 public static  **computeHmac** (*unknown* $data, *unknown* $key, *unknown* $algo, [*unknown* $raw])
 
 string \\Phalcon\\Security::computeHmac(string $data, string $key, string $algo, bool $raw = false)
+
+
+
+public static *string The derived key*  **deriveKey** (*unknown* $password, *unknown* $salt, [*unknown* $hash], [*unknown* $iterations], [*unknown* $size])
+
+Derives a key from the given password (PBKDF2).
+
+
+
+public static  **pbkdf2** (*unknown* $password, *unknown* $salt, [*unknown* $hash], [*unknown* $iterations], [*unknown* $size])
+
+
 
 
 

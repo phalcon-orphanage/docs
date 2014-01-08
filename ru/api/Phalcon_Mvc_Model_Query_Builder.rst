@@ -20,7 +20,7 @@ Helps to create PHQL queries using an OO interface
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $params], [:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 

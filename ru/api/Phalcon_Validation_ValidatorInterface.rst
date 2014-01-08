@@ -5,7 +5,7 @@ Phalcon\\Validation\\ValidatorInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **isSetOption** (*string* $key)
 

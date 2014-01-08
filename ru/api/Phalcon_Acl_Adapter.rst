@@ -7,7 +7,7 @@ Adapter for Phalcon\\Acl adapters
 
 
 Methods
----------
+-------
 
 public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 

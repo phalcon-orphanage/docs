@@ -7,7 +7,7 @@ Deletes the characters which are insignificant to JavaScript. Comments will be r
 
 
 Methods
----------
+-------
 
 public *$content*  **filter** (*string* $content)
 

@@ -1,21 +1,20 @@
-Class **Phalcon\\Validation\\Validator\\Regex**
-===============================================
+Class **Phalcon\\Validation\\Validator\\Url**
+=============================================
 
 *extends* abstract class :doc:`Phalcon\\Validation\\Validator <Phalcon_Validation_Validator>`
 
 *implements* :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>`
 
-Allows validate if the value of a field matches a regular expression  
+Checks if a value has a correct URL format  
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Validation\Validator\Regex as RegexValidator;
+    use Phalcon\Validation\Validator\Url as UrlValidator;
     
-    $validator->add('created_at', new RegexValidator(array(
-       'pattern' => '/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/',
-       'message' => 'The creation date is invalid'
+    $validator->add('url', new UrlValidator(array(
+       'message' => 'The url is not valid'
     )));
 
 

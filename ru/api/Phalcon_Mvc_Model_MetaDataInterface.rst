@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\MetaDataInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy)
 

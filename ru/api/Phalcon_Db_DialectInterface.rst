@@ -5,7 +5,7 @@ Phalcon\\Db\\DialectInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *string*  **limit** (*string* $sqlQuery, *int* $number)
 

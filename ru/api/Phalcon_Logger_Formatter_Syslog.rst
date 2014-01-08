@@ -9,7 +9,7 @@ Prepares a message to be used in a Syslog backend
 
 
 Methods
----------
+-------
 
 public *array*  **format** (*string* $message, *int* $type, *int* $timestamp)
 

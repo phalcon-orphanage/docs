@@ -33,7 +33,7 @@ Constants
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
 Methods
----------
+-------
 
 public  **__construct** ([*boolean* $defaultRoutes])
 

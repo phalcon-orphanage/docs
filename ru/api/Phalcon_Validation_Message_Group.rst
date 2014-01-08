@@ -7,7 +7,7 @@ Represents a group of validation messages
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $messages])
 
@@ -67,7 +67,7 @@ Removes a message from the list
 
 
 
-public  **appendMessage** (*Phalcon\\Validation\\MessageInterface* $message)
+public  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
 Appends a message to the group 
 

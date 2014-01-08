@@ -20,7 +20,7 @@ This components controls the initialization of models, keeping record of relatio
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

@@ -7,7 +7,7 @@ Represents CSS resources
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 

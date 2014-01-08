@@ -18,7 +18,7 @@ Constants
 *integer* **OP_DELETE**
 
 Methods
----------
+-------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
 

@@ -9,7 +9,7 @@ Allows to define translation lists using PHP arrays
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $options)
 

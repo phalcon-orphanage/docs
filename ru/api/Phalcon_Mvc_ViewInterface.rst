@@ -5,7 +5,7 @@ Phalcon\\Mvc\\ViewInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setViewsDir** (*string* $viewsDir)
 

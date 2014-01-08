@@ -1,13 +1,13 @@
 Class **Phalcon\\Http\\Request\\Exception**
 ===========================================
 
-*extends* class :doc:`Phalcon\\DI\\Exception <Phalcon_DI_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Exceptions thrown in Phalcon\\Http\\Request will use this class
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

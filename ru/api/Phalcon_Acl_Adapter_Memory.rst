@@ -62,7 +62,7 @@ Manages ACL lists in memory
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

@@ -17,7 +17,7 @@ This component allows to render views without hicherquical levels
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -51,6 +51,12 @@ Register templating engines
       ".mhtml" => "MyCustomEngine"
     ));
 
+
+
+
+public  **getRegisteredEngines** ()
+
+Returns the registered templating engines
 
 
 

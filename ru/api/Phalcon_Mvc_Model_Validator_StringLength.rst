@@ -35,7 +35,7 @@ Simply validates specified string length constraints
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 

@@ -7,7 +7,13 @@ Base class for Phalcon\\Translate adapters
 
 
 Methods
----------
+-------
+
+public  **__construct** ()
+
+Class constructore
+
+
 
 public *string*  **_** (*string* $translateKey, [*array* $placeholders])
 

@@ -24,7 +24,7 @@ Phalcon\\DI is a component that implements Dependency Injection/Service Location
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

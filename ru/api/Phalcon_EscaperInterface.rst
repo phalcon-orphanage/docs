@@ -5,7 +5,7 @@ Phalcon\\EscaperInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setEncoding** (*string* $encoding)
 

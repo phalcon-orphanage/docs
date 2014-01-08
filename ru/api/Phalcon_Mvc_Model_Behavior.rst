@@ -5,7 +5,7 @@ This is an optional base class for ORM behaviors
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

@@ -5,7 +5,7 @@ Class to access the beanstalk queue service. Partially implements the protocol v
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -45,6 +45,18 @@ Change the active tube. By default the tube is 'default'
 public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
 
 Inspect the next ready job.
+
+
+
+public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekDelayed** ()
+
+Return the delayed job with the shortest delay left
+
+
+
+public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekBuried** ()
+
+Return the next job in the list of buried jobs
 
 
 

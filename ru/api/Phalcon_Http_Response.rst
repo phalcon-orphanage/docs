@@ -17,7 +17,7 @@ Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Respon
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*string* $content], [*int* $code], [*string* $status])
 
