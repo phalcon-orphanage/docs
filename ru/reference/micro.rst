@@ -213,7 +213,7 @@ HTTP используется, чтобы запросы путей соотве
 
     // Этот маршрут выполняет перенаправление на другой маршрут
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("new/welcome")->sendHeaders();
     });
 
     $app->post('/new/welcome', function () use ($app) {
@@ -388,7 +388,7 @@ Events are triggered using the type "micro". The following events are supported:
             if ($app->session->get('auth') == false) {
 
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                $app->response->redirect("/")->sendHeaders();
 
                 // Возвращаем (false) останов операции
                 return false;

@@ -210,7 +210,7 @@ Redirections could be performed to forward the execution flow to another route:
 
     //This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("new/welcome")->sendHeaders();
     });
 
     $app->post('/new/welcome', function () use ($app) {
@@ -383,7 +383,7 @@ In the following example, we explain how to control the application security usi
             if ($app->session->get('auth') == false) {
 
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                $app->response->redirect("/")->sendHeaders();
 
                 //Return (false) stop the operation
                 return false;
