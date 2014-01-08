@@ -1,51 +1,59 @@
 XAMPPへのインストール
 =====================
-XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
+XAMPP_はApache、MySQL、PHP、Perlを簡単にインストールできます。
+まず、XAMPPをダウンロードし、解凍を行い、起動させます。
+以下では、Windows版XAMPPを使用する場合のPhalconのインストール方法を記載しています。
+XAMPPは最新のバージョンを使用するようにしてください。
 
-正しいバージョンのPhalconのダウンロード
+Phalconのダウンロード
 -------------------------------------
-XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
+XAMPPでは、32 bitバージョンのApache、PHPを使用しています。
+Windows版Phalconのx86 バージョンをダウンロードする必要があります。
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Phalconライブラリをダウンロードすると、以下のようなzipファイルがあるはずです。
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center
 
-Extract the library from the archive to get the Phalcon DLL:
+アーカイブを解凍し、Phalcon DLLがあるか確認してください。
 
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the c:\\xampp folder, the extension needs to be in c:\\xampp\\php\\ext
+PHPエクステンションにphp_phalcon.dllをコピーしてください。
+c:\\xampp folder にXAMPPがインストールされている場合、エクステンションのパスは、c:\\xampp\\php\\ext となっているはずです。
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
-Edit the php.ini file, it is located at ﻿C:\\xampp\\php\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.
+C:\\xampp\\php\\php.ini にあるphp.iniファイルをテキストエディタなどで編集します。
+ファイルの最後に extension=php_phalcon.dll を追記し保存します。
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
+XAMPPコントロールセンターからApacheを再起動させます。
+新しいPHP設定が読み込まれるはずです。
 
 .. figure:: ../_static/img/xampp-5.png
     :align: center
 
-Open your browser to navigate to http://localhost. The XAMPP welcome page will appear. Click on the link phpinfo().
+ブラウザでhttp://localhostを開くと、XAMPPのウェルカムページが表示されると思います。
+そしたら、phpinfo()のリンクをクリックして開きます。
 
 .. figure:: ../_static/img/xampp-6.png
     :align: center
 
-phpinfo() will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+phpinfo()で、phalconエクステンションがロードされているか確認します。
 
 .. figure:: ../_static/img/xampp-7.png
     :align: center
 
-If you can see the phalcon version in the phpinfo() output, congrats!, You are now flying with Phalcon.
+phpinfo()でphalconのバージョンが表示されていれば、インストール成功です！
 
 スクリーンキャスト
 ----------
-The following screencast is a step by step guide to install Phalcon on Windows:
+以下では、Windows版Phalconのインストール手順を説明しています。
 
 .. raw:: html
 
