@@ -105,7 +105,7 @@ Phalcon exposes a set of built-in validators for this component:
 | Confirmation | Validates that a value is the same as another present in the data                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-The following example explains how to create additional validators for this component:
+Additional validators can be created by the developer. The following example explains how to create a validator for this component:
 
 .. code-block:: php
 
