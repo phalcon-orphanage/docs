@@ -107,7 +107,7 @@ prefix for every session variable created in a certain application:
 
 Session Bags
 ------------
-:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component that helps separing session data into "namespaces".
 Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
 it's automatically stored in session:
 
