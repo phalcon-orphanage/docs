@@ -1,8 +1,8 @@
-マイクロ アプリケーション
+マイクロアプリケーション
 ==================
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of
-code to create a PHP application. Micro applications are suitable to implement small applications, APIs and
-prototypes in a practical way.
+マイクロフレームワークライクなアプリケーションを構築することができます。
+PHPアプリケーションを最小のコードで書くことが可能です。
+マイクロアプリケーションは、小規模アプリケーションやAPI、プロトタイプを実装するのに適切です。
 
 .. code-block:: php
 
@@ -18,7 +18,7 @@ prototypes in a practical way.
 
 マイクロアプリケーションの作成
 ----------------------------
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is the class responsible for implementing a micro application.
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` は、マイクロアプリケーションを実装するためのクラスです。
 
 .. code-block:: php
 
@@ -28,10 +28,12 @@ prototypes in a practical way.
 
 ルーティングの設定
 ---------------
-After instantiating the object, you will need to add some routes. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` manages routing internally.
-Routes must always start with /. A HTTP method constraint is optionally required when defining routes, so as to instruct
-the router to match only if the request also matches the HTTP methods. The following example shows how to define
-a route for the method GET:
+オブジェクトのインスタンスを作成したら、いくつかのルーティングを設定する必要があります。
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` は、ルーティングを管理します。
+ルートは、常に/から開始しなければいけません。ルートを設定する際に、HTTPメソッドを任意に制限することができます。
+指定したHTTPメソッドに一致したリクエストがあった場合にのみ、正しくルーティングされます。
+以下の例では、GETメソッドのルーティングの設定方法を表記しています。
+
 
 .. code-block:: php
 
@@ -41,9 +43,9 @@ a route for the method GET:
         echo "<h1>Hello! $name</h1>";
     });
 
-The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
-directly to the route handler (the anonymous function). Handlers are executed when a route is matched. A handler could be
-any callable item in the PHP userland. The following example shows how to define different types of handlers:
+"get"メソッドは、HTTPメソッドのGETであることを指しています。/say/hello/{name}というルートは、{$name}というパラメータを持っています。
+このパラメータは、無名関数で設定されているハンドラーに渡されます。ハンドラーは、ルートが一致した場合のみ実行されます。
+以下の例では、何種類かあるハンドラーの設定方法を表記しています。
 
 .. code-block:: php
 
@@ -68,8 +70,8 @@ any callable item in the PHP userland. The following example shows how to define
         echo "<h1>Hello! $name</h1>";
     });
 
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods)
-which the route is constrained for:
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` はHTTPメソッドを指定するためのメソッドを提供しています。
+ルートは以下のように制限できます。
 
 .. code-block:: php
 
@@ -97,10 +99,10 @@ which the route is constrained for:
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
-パラメータを伴うルーティング
+パラメータ付きのルーティング
 ^^^^^^^^^^^^^^^^^^^^^^
-Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
-formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
+パラメータ付きのルートは、上記の例のように簡単に設定できます。パラメータ名は括弧で括る必要があります。
+パラメータのフォーマットは正規表現を使用して設定できます。
 
 .. code-block:: php
 
@@ -112,10 +114,9 @@ formatting is also available using regular expressions to ensure consistency of 
         echo "<h2>Year: $year</h2>";
     });
 
-Starting Route
+トップルート
 ^^^^^^^^^^^^^^
-Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
-This scenario is coded as follows:
+通常、アプリケーションのトップルートは、/となり、ほとんどの場合、GETメソッドにてアクセスされると思います。
 
 .. code-block:: php
 
@@ -126,9 +127,9 @@ This scenario is coded as follows:
         echo "<h1>Welcome!</h1>";
     });
 
-Rewrite ルール
+Rewriteルール
 ^^^^^^^^^^^^^
-The following rules can be used together with Apache to rewrite the URis:
+URisのrewriteは、以下のようにApacheで制限します。
 
 .. code-block:: apacheconf
 
@@ -138,10 +139,9 @@ The following rules can be used together with Apache to rewrite the URis:
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-Working with Responses
+レスポンス
 ----------------------
-You are free to produce any kind of response in a handler: directly make an output, use a template engine, include a view,
-return a json, etc.:
+ハンドラーの中では自由にレスポンスを設定できます。直接出力したり、テンプレートエンジンを使用したり、ビューをインクルードしたり、JSONを返したり、など。
 
 .. code-block:: php
 
@@ -162,8 +162,7 @@ return a json, etc.:
         echo json_encode(array("some", "important", "data"));
     });
 
-In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the
-response:
+レスポンスについての詳細は、:doc:`"response" <response>`を参照してください。
 
 .. code-block:: php
 
@@ -179,7 +178,7 @@ response:
 
     });
 
-Or create a response object and return it from the handler:
+レスポンスオブジェクトを作成して、ハンドラーから返す方法もあります。
 
 .. code-block:: php
 
@@ -202,7 +201,7 @@ Or create a response object and return it from the handler:
 
 リダイレクト
 -------------------
-Redirections could be performed to forward the execution flow to another route:
+リダイレクトによって、別のルートへフォワードすることができます。
 
 .. code-block:: php
 
@@ -217,10 +216,10 @@ Redirections could be performed to forward the execution flow to another route:
         echo 'This is the new Welcome';
     });
 
-ルーティングのURLの生成
+ルーティングのURL生成
 --------------------------
-:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
-by this way the "url" service can produce the corresponding URL:
+:doc:`Phalcon\\Mvc\\Url <url>`では、設定したルーティングに基づいてURLを作成できます。
+これを使用するためには、ルートに名前を定義する必要があります。
 
 .. code-block:: php
 
@@ -307,8 +306,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
 Not-Found ハンドラ
 -----------------
-When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
-An example of that behavior is below:
+未定義のルートにアクセスした場合、マイクロアプリケーションでは、"Not-Found"ハンドラーが実行されます。
 
 .. code-block:: php
 
@@ -321,7 +319,8 @@ An example of that behavior is below:
 
 マイクロアプリケーションにおけるモデル
 ----------------------------
-:doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
+マイクロアプリケーションで、:doc:`Models <models>`が使用することができます。
+モデルは自動読み込みで行う必要があります。
 
 .. code-block:: php
 
@@ -486,7 +485,7 @@ Then add the instance to the application:
 
     $app->before(new CacheMiddleware());
 
-The following middleware events are available:
+以下のミドルウェアイベントが利用可能です。
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -498,10 +497,10 @@ The following middleware events are available:
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
-コントローラをハンドラとして使用する
+ハンドラでコントローラの使用
 -----------------------------
-Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
-You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
+Micro\\MVCを使用した中規模アプリケーションでは、コントローラーを使用する場合があると思います。
+:doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` を使用することによって、コントローラーのグルーピングができます。
 
 .. code-block:: php
 
@@ -525,7 +524,7 @@ You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Coll
 
     $app->mount($posts);
 
-The controller 'PostsController' might look like this:
+'PostsController'を以下の例のように記載します。
 
 .. code-block:: php
 
@@ -545,8 +544,8 @@ The controller 'PostsController' might look like this:
         }
     }
 
-In the above example the controller is directly instantiated, Collection also have the ability to lazy-load controllers, this option
-provide better performance loading controllers only if the related routes are matched:
+上記の例では、コントローラーを直接インスタンス生成していますが、コレクションを使用すると遅延ロードすることができます。
+つまり、ルートが一致した場合のみ、コントローラーがロードされます。
 
 .. code-block:: php
 
@@ -555,10 +554,10 @@ provide better performance loading controllers only if the related routes are ma
     $posts->setHandler('PostsController', true);
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
-レスポンスの返却
+レスポンスのリターン
 -------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
-When responses are returned by handlers they are automatically sent by the application.
+ハンドラーは、:doc:`Phalcon\\Http\\Response <response>` を使用した生のレスポンスを返したり、または、ビューなどのインターフェイスコンポーネントを返したりすると思います。
+ハンドラーによってレスポンスが返されるとき、アプリケーションによって自動的にそれが送信されます。
 
 .. code-block:: php
 
@@ -583,7 +582,7 @@ When responses are returned by handlers they are automatically sent by the appli
 
 ビューのレンダリング
 ---------------
-:doc:`Phalcon\\Mvc\\View\\Simple <views>` can be used to render views, the following example shows how to do that:
+:doc:`Phalcon\\Mvc\\View\\Simple <views>` はビューをレンダリングするために使用します。
 
 .. code-block:: php
 
@@ -608,7 +607,7 @@ When responses are returned by handlers they are automatically sent by the appli
 
     });
 
-関連するソース
+関連ソース
 ---------------
 * :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
 * `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].
