@@ -1,12 +1,12 @@
 Apache インストール ノート
 =========================
-Apache_ is a popular and well known web server available on many platforms.
+Apache_ は多くのプラットフォームで利用可能な、人気のあるWebサーバーです。
 
 PhalconのためのApacheの設定
 ------------------------------
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
-focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
-:doc:`router component <routing>`. Commonly an application has the following structure:
+次の設定は、 PhalconをApacheで使う際の設定例です。ここでは主に、使いやすいURLと :doc:`router component <routing>`. を
+使用できるようにmod-rewriteモジュールを設定する方法についてフォーカスしています。
+一般的にアプリケーションは下記のような構造になります。
 
 .. code-block:: php
 
@@ -23,9 +23,9 @@ focused on the configuration of the mod-rewrite module allowing to use friendly 
 
 メインドキュメントルート下のディレクトリ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This being the most common case, the application is installed in any directory under the document root.
-In this case, we use two .htaccess files, the first one to hide the application code forwarding all requests
-to the application's document root (public/).
+これは最も一般的なケースで、アプリケーションはドキュメントルート下の任意のディレクトリにインストールされています。
+このケースでは、2つの .htaccess ファイルを使います。1つめはアプリケーションコードを隠すためにすべてのリクエストを
+アプリケーションのドキュメントルート (public/) へリダイレクトします。
 
 .. code-block:: apacheconf
 
@@ -37,7 +37,7 @@ to the application's document root (public/).
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-Now a second .htaccess file is located in the public/ directory, this re-writes all the URIs to the public/index.php file:
+2つめの .htaccess ファイルは、public/ ディレクトリに配置し、すべてのURIを public/index.php ファイルにリライトします。
 
 .. code-block:: apacheconf
 
@@ -50,7 +50,7 @@ Now a second .htaccess file is located in the public/ directory, this re-writes 
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-If you do not want to use .htaccess files you can move these configurations to the apache's main configuration file:
+もし .htaccessファイルを使用したくない場合は、これらの設定を Apacheのメインの設定ファイルに移動させることができます。
 
 .. code-block:: apacheconf
 
@@ -73,7 +73,7 @@ If you do not want to use .htaccess files you can move these configurations to t
 
 バーチャルホスト
 ^^^^^^^^^^^^^
-And this second configuration allows you to install a Phalcon application in a virtual host:
+そしてこの2つめの設定では、Virtual Host 内に Phalconアプリケーションをインストールすることができます。
 
 .. code-block:: apacheconf
 
