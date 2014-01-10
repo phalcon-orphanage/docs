@@ -22,7 +22,7 @@ information of the request, allowing you to access it in an object-oriented way.
     }
 
 Getting Values
------------------
+--------------
 PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or

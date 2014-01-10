@@ -1,6 +1,6 @@
 Unit testing
 ============
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most 
+Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most
 functional bugs and better maintain your software.
 
 Integrating PHPunit with phalcon
@@ -38,11 +38,11 @@ Once phpunit is installed create a directory called 'tests' in your root directo
   app/
   public/
   tests/
-  
+
 Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 The PHPunit helper file
-------------------------
+-----------------------
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the
 file in your tests/ directory as TestHelper.php.
 
@@ -54,37 +54,37 @@ file in your tests/ directory as TestHelper.php.
   <?php
   use Phalcon\DI,
       Phalcon\DI\FactoryDefault;
-  
+
   ini_set('display_errors',1);
   error_reporting(E_ALL);
-  
+
   define('ROOT_PATH', __DIR__);
   define('PATH_LIBRARY', __DIR__ . '/../app/library/');
   define('PATH_SERVICES', __DIR__ . '/../app/services/');
   define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
-  
+
   set_include_path(
       ROOT_PATH . PATH_SEPARATOR . get_include_path()
   );
-  
+
   // required for phalcon/incubator
   include __DIR__ . "/../vendor/autoload.php";
-  
+
   // use the application autoloader to autoload the classes
   // autoload the dependencies found in composer
   $loader = new \Phalcon\Loader();
-  
+
   $loader->registerDirs(array(
       ROOT_PATH
   ));
-  
+
   $loader->register();
-  
+
   $di = new FactoryDefault();
   DI::reset();
-  
+
   // add any needed services to the DI here
-  
+
   DI::setDefault($di);
 
 
@@ -114,7 +114,7 @@ or by manually adding it to composer.json:
 You can also clone the repository using the repo link above.
 
 PHPunit.xml file
------------------
+----------------
 Now, create a phpunit file:
 
 .. code-block:: xml
@@ -135,10 +135,10 @@ Now, create a phpunit file:
           <directory>./</directory>
       </testsuite>
   </phpunit>
-  
+
 Modify the phpunit.xml to fit your needs and save it in tests/.
 
-This will run any tests under the tests/ directory. 
+This will run any tests under the tests/ directory.
 
 Sample unit test
 ----------------
@@ -154,36 +154,36 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
   <?php
   use Phalcon\DI,
       \Phalcon\Test\UnitTestCase as PhalconTestCase;
-  
+
   abstract class UnitTestCase extends PhalconTestCase {
-  
+
       /**
        * @var \Voice\Cache
        */
       protected $_cache;
-  
+
       /**
        * @var \Phalcon\Config
        */
       protected $_config;
-  
+
       /**
        * @var bool
        */
       private $_loaded = false;
-  
+
       public function setUp() {
-  
+
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
-  
+
           // get any DI components here. If you have a config, be sure to pass it to the parent
-  
+
           parent::setUp($di);
-  
+
           $this->_loaded = true;
       }
-  
+
       /**
        * Check if the test case is setup properly
        * @throws \PHPUnit_Framework_IncompleteTestError;
@@ -194,7 +194,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
           }
       }
   }
-  
+
 It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namespace
 'Test'. So create a file called \tests\Test\UnitTest.php:
 
@@ -206,22 +206,22 @@ It's always a good idea to seperate your Unit tests in namespaces. For this test
    * Class UnitTest
    */
   class UnitTest extends \UnitTestCase {
-  
-  
-  
+
+
+
       public function testTestCase() {
-  
+
           $this->assertEquals('works',
               'works',
               'This is OK'
           );
-  
+
           $this->assertEquals('works',
               'works1',
               'This wil fail'
           );
-  
-  
+
+
       }
   }
 
@@ -232,13 +232,13 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
 
   $ phpunit
   PHPUnit 3.7.23 by Sebastian Bergmann.
-  
+
   Configuration read from /private/var/www/tests/phpunit.xml
-  
+
   Time: 3 ms, Memory: 3.25Mb
-  
+
   There was 1 failure:
-  
+
   1) Test\UnitTest::testTestCase
   This wil fail
   Failed asserting that two strings are equal.
@@ -247,12 +247,12 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
   @@ @@
   -'works'
   +'works1'
-  
+
   /private/var/www/tests/Test/UnitTest.php:25
-  
+
   FAILURES!
   Tests: 1, Assertions: 2, Failures: 1.
-  
+
 Now you can start building your unit tests. You can view a good guide here (we also recommend reading the
 PHPunit documentation if you're not familiar with PHPunit):
 

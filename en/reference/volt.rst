@@ -125,7 +125,7 @@ In the above example, three variables were passed to the view: title, menu and p
 
 Variables
 ---------
-Object variables may have attributes which can be accessed using the syntax: foo.bar. 
+Object variables may have attributes which can be accessed using the syntax: foo.bar.
 If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
 .. code-block:: jinja
@@ -567,7 +567,7 @@ You may make calculations in templates using the following operators:
 +----------------------+------------------------------------------------------------------------------+
 
 Comparisons
-^^^^^^^^^^^^
+^^^^^^^^^^^
 The following omparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
