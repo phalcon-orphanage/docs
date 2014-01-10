@@ -302,7 +302,7 @@ cancelled:
     }
 
 Cancelling Validations
----------------------
+----------------------
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:
 
