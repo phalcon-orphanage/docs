@@ -90,7 +90,7 @@ Change the database section in your config.ini file:
     host     = "127.0.0.1"
     username = "root"
     password = "secret"
-    name     = "store_db"
+    dbname   = "store_db"
 
     [phalcon]
     controllersDir = "../app/controllers/"
