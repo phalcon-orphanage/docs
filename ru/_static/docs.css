@@ -749,3 +749,8 @@ blockquote {
 .highlight .vg { color: #cae682} /* Name.Variable.Global */
 .highlight .vi { color: #cae682} /* Name.Variable.Instance */
 .highlight .il { color: #e5786d} /* Literal.Number.Integer.Long */
+
+hr {
+    color: 1px solid #c0c0c0;
+    background-color: 1px solid #c0c0c0;
+}

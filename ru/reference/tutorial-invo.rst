@@ -8,7 +8,7 @@ Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although
 invoices still it serves as an example to understand how the framework works.
 
 Project Structure
-------------------
+-----------------
 Once you clone the project in your document root you'll see the following structure:
 
 .. code-block:: bash
