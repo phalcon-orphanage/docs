@@ -152,14 +152,13 @@ class PhalconApiGenerator
     }
 
     /**
-     * @param $phpdoc
-     * @param $className
-     * @param $methodName
-     * @param $realClassName
+     * @param      $phpdoc
+     * @param      $className
+     * @param null $realClassName
      *
      * @return array
      */
-    public function getPhpDoc($phpdoc, $className, $methodName, $realClassName)
+    public function getPhpDoc($phpdoc, $className, $realClassName = null)
     {
 
         $ret         = array();
@@ -352,11 +351,6 @@ $docs['Exception'] = array(
  *
  * @return array
 */',
-    'getTrace'         => '/**
- * Gets the stack trace
- *
- * @return array
-*/',
     'getTraceAsString' => '/**
  * Gets the stack trace as a string
  *
@@ -482,7 +476,7 @@ foreach ($classes as $className) {
     }
 
     if (isset($classDocs[$realClassName])) {
-        $ret = $api->getPhpDoc($classDocs[$realClassName], $className, null, $realClassName);
+        $ret = $api->getPhpDoc($classDocs[$realClassName], $className, $realClassName);
         $code .= $ret['description'] . PHP_EOL . PHP_EOL;
     }
 
@@ -500,6 +494,8 @@ foreach ($classes as $className) {
         $code .= '-------' . PHP_EOL . PHP_EOL;
         foreach ($documentationData['methods'] as $method) {
 
+            /** @var $method ReflectionMethod */
+
             $docClassName = str_replace("\\", "_", $method->getDeclaringClass()->name);
             if (isset($docs[$docClassName])) {
                 $docMethods = $docs[$docClassName];
@@ -508,7 +504,7 @@ foreach ($classes as $className) {
             }
 
             if (isset($docMethods[$method->name])) {
-                $ret = $api->getPhpDoc($docMethods[$method->name], $className, $method->name, null);
+                $ret = $api->getPhpDoc($docMethods[$method->name], $className);
             } else {
                 $ret = array();
             }
@@ -566,11 +562,13 @@ foreach ($classes as $className) {
                         }
                     }
                 } else {
-                    if ($className != 'Phalcon\Kernel') {
-                        if ($simpleClassName == $docClassName) {
-                            //throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
-                        }
-                    }
+                    /**
+                     * if ($className != 'Phalcon\Kernel') {
+                     * if ($simpleClassName == $docClassName) {
+                     * throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
+                     * }
+                     * }
+                     */
                     if (!$parameter->isOptional()) {
                         $cp[] = '*unknown* ' . $name;
                     } else {
