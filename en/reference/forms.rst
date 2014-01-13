@@ -322,7 +322,7 @@ Using this class as entity, allows the form to take the default values from it:
     )));
 
 Entities can implement getters, which have more precedence than public propierties, these methods
-give you more free to produce values:
+give you more freedom to produce values:
 
 .. code-block:: php
 
