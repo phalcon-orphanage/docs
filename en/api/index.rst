@@ -4,7 +4,6 @@ API Indice
 .. toctree::
    :maxdepth: 1
 
-   PhalconApiGenerator
    Phalcon_Acl
    Phalcon_Acl_Adapter
    Phalcon_Acl_Adapter_Memory

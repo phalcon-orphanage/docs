@@ -12,7 +12,7 @@ if (!extension_loaded('phalcon')) {
     throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/home/boston/gits/phalcon/core/ext/');
+define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
@@ -21,7 +21,7 @@ if (!file_exists(CPHALCON_DIR)) {
 /**
  * Class ApiGenerator
  */
-class PhalconApiGenerator
+class ApiGenerator
 {
 
     protected $docs = array();
@@ -297,7 +297,7 @@ $index
 .. toctree::
    :maxdepth: 1' . PHP_EOL . PHP_EOL;
 
-$api = new PhalconApiGenerator(CPHALCON_DIR);
+$api = new ApiGenerator(CPHALCON_DIR);
 
 $classDocs = $api->getClassDocs();
 $docs      = $api->getDocs();
