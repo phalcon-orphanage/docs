@@ -4,7 +4,7 @@ In this second tutorial, we'll explain a more complete application in order to d
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
 generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
 
-Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
+Also, INVO was made with `Bootstrap`_ as client-side framework. Although the application does not generate
 invoices, it still serves as an example to understand how the framework works.
 
 Project Structure
@@ -521,7 +521,7 @@ Hooray!, the ACL is now complete.
 
 User Components
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
+All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
 upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
 
@@ -999,6 +999,6 @@ learn more and get more out of the framework.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
-.. _Twitter Bootstrap: http://twitter.github.io/bootstrap/
+.. _Bootstrap: http://getbootstrap.com/
 .. _sha1: http://php.net/manual/en/function.sha1.php
 .. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
