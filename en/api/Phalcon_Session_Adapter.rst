@@ -13,6 +13,11 @@ Phalcon\\Session\\Adapter constructor
 
 
 
+public  **__destruct** ()
+
+...
+
+
 public *boolean*  **start** ()
 
 Starts the session (if headers are already sent the session will not be started)

@@ -32,6 +32,11 @@ Phalcon\\Session\\Adapter constructor
 
 
 
+public  **__destruct** () inherited from Phalcon\\Session\\Adapter
+
+...
+
+
 public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter
 
 Starts the session (if headers are already sent the session will not be started)

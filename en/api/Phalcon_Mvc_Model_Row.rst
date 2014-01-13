@@ -39,3 +39,9 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 
 
+public *array*  **toArray** ()
+
+Returns the instance as an array representation
+
+
+
