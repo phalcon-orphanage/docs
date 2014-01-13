@@ -7,7 +7,7 @@ This class allows to access services in the services container by just only acce
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

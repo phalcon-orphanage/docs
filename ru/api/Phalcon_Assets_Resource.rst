@@ -12,7 +12,7 @@ Represents an asset resource
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 

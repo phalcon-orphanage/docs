@@ -16,7 +16,7 @@ This component helps to separate session data into "namespaces". Working by this
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name)
 

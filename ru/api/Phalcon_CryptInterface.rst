@@ -5,7 +5,7 @@ Phalcon\\CryptInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *Phalcon\\EncryptInterface*  **setCipher** (*string* $cipher)
 

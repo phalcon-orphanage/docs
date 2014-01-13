@@ -9,7 +9,7 @@ Generates database specific SQL for the MySQL RBDM
 
 
 Methods
----------
+-------
 
 public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 

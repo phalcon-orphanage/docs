@@ -5,7 +5,7 @@ Phalcon\\Assets\\FilterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *$content*  **filter** (*string* $content)
 

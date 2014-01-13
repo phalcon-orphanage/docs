@@ -5,7 +5,7 @@ Phalcon\\DispatcherInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setActionSuffix** (*string* $actionSuffix)
 

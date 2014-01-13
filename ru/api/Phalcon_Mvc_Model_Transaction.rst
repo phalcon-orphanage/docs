@@ -39,7 +39,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 

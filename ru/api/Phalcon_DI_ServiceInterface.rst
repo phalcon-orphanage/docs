@@ -5,7 +5,7 @@ Phalcon\\DI\\ServiceInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 

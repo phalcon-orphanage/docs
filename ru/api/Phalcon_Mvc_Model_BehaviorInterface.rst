@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\BehaviorInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** ([*array* $options])
 

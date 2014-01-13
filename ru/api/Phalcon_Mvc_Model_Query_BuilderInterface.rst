@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\Query\\BuilderInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** ([*array* $params])
 

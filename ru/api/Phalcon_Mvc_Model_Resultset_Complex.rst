@@ -22,7 +22,7 @@ Constants
 *integer* **HYDRATE_ARRAYS**
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $columnsTypes, :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 

@@ -5,7 +5,7 @@ Phalcon\\Acl\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setDefaultAction** (*int* $defaultAccess)
 

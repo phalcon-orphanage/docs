@@ -23,7 +23,7 @@ Pagination using a PHQL query builder as source of data
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $config)
 
