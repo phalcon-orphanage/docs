@@ -62,7 +62,7 @@ Constants
 *integer* **BIND_SKIP**
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $columnName, *array* $definition)
 

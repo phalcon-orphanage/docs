@@ -36,7 +36,7 @@ Allows to cache data converting/deconverting them to base64.  This adapters uses
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $frontendOptions])
 

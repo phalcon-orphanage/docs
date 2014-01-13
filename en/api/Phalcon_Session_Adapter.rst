@@ -5,7 +5,7 @@ Base class for Phalcon\\Session adapters
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

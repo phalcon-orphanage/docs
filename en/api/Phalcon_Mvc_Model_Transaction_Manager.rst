@@ -42,7 +42,7 @@ A transaction acts on a single database connection. If you have multiple class-s
 
 
 Methods
----------
+-------
 
 public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 

@@ -5,7 +5,7 @@ This class allows to get the installed version of the framework
 
 
 Methods
----------
+-------
 
 protected static  **_getVersion** ()
 

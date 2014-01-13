@@ -20,7 +20,7 @@ Adapter to store logs in plain text files
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*array* $options])
 

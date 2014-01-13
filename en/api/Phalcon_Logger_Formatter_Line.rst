@@ -9,7 +9,7 @@ Formats messages using an one-line string
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*string* $format], [*string* $dateFormat])
 

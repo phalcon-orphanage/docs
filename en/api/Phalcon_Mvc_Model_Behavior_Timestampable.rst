@@ -9,7 +9,7 @@ Allows to automatically update a model’s attribute saving the datetime when a 
 
 
 Methods
----------
+-------
 
 public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 

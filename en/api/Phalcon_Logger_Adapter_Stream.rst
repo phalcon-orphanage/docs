@@ -19,7 +19,7 @@ Sends logs to a valid PHP stream
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*array* $options])
 

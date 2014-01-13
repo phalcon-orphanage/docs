@@ -41,7 +41,7 @@ Constants
 *integer* **LEVEL_NO_RENDER**
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

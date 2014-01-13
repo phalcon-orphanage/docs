@@ -39,7 +39,7 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
 
 Methods
----------
+-------
 
 public *int*  **getLifetime** ()
 

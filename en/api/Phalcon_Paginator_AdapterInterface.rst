@@ -5,7 +5,7 @@ Phalcon\\Paginator\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*array* $config)
 

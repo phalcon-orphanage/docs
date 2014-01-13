@@ -22,7 +22,7 @@ This component provides a set of functions to improve the security in Phalcon ap
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

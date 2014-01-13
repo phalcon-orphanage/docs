@@ -24,7 +24,7 @@ This adapter store sessions in plain files
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options]) inherited from Phalcon\\Session\\Adapter
 

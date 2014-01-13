@@ -9,7 +9,7 @@ Instead of permanently delete a record it marks the record as deleted changing t
 
 
 Methods
----------
+-------
 
 public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 

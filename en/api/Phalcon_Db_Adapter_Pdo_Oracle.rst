@@ -22,7 +22,7 @@ Specific functions for the Oracle database system
 
 
 Methods
----------
+-------
 
 public *boolean*  **connect** ([*array* $descriptor])
 

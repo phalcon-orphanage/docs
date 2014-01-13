@@ -7,7 +7,7 @@ Class for exceptions thrown by Phalcon\\Acl
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

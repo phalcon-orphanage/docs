@@ -5,7 +5,7 @@ Phalcon\\Mvc\\ModelInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 

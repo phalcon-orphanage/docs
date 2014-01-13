@@ -23,7 +23,7 @@ Represents a collection of annotations. This class allows to traverse a group of
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $reflectionData])
 

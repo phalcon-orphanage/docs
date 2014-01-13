@@ -9,7 +9,7 @@ Component INPUT[type=file] for forms
 
 
 Methods
----------
+-------
 
 public *string*  **render** ([*array* $attributes])
 

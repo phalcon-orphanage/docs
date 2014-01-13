@@ -5,7 +5,7 @@ Base class for Phalcon\\Logger adapters
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **setLogLevel** (*int* $level)
 

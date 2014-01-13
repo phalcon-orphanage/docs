@@ -26,7 +26,7 @@ Reads JSON files and converts them to Phalcon\\Config objects.  Given the follow
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $filePath)
 

@@ -22,7 +22,7 @@ Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $descriptor)
 

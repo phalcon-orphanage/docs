@@ -7,7 +7,7 @@ This class represents every route added to the router
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods])
 

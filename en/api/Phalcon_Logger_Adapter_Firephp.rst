@@ -19,7 +19,7 @@ Sends logs to FirePHP
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`  **getFormatter** ()
 

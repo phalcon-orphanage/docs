@@ -5,7 +5,7 @@ Phalcon\\Http\\ResponseInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setStatusCode** (*int* $code, *string* $message)
 

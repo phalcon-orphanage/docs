@@ -9,332 +9,370 @@
  */
 
 if (!extension_loaded('phalcon')) {
-	throw new Exception("Phalcon extension is required");
+    throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+define('CPHALCON_DIR', '/home/boston/gits/phalcon/core/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
-	throw new Exception("CPHALCON directory does not exist");
+    throw new Exception("CPHALCON directory does not exist");
 }
 
-class API_Generator
+/**
+ * Class ApiGenerator
+ */
+class PhalconApiGenerator
 {
 
-	protected $_docs = array();
+    protected $docs = array();
 
-	protected $_classDocs = array();
+    protected $classDocs = array();
 
-	public function __construct($directory)
-	{
-		$this->_scanSources($directory);
-	}
+    /**
+     * @param $directory
+     */
+    public function __construct($directory)
+    {
+        $this->scanSources($directory);
+    }
 
-	protected function _scanSources($directory)
-        {
-        	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory , FilesystemIterator::SKIP_DOTS));
-        	foreach ( $iterator as $item ) {
-            	if ( $item->getExtension() == 'c' ) {
-                	if ( strpos($item->getPathname() , 'kernel') === false ) {
-	                    $this->_getDocs($item->getPathname());
-                	}
-	            }
-        	}
-	}
+    /**
+     * @param $directory
+     */
+    protected function scanSources($directory)
+    {
+        $recursiveDirectoryIterator = new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS);
 
-	protected function _getDocs($file)
-	{
-		$firstDoc = true;
-		$openComment = false;
-		$nextLineMethod = false;
-		$comment = '';
-		foreach (file($file) as $line) {
-			if (trim($line) == '/**') {
-				$openComment = true;
-				$comment.=$line;
-			}
-			if ($openComment === true) {
-				$comment.=$line;
-			} else {
-				if ($nextLineMethod === true) {
-					if (preg_match('/^PHP_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
-						$this->_docs[$matches[1]][$matches[2]] = $comment;
-						$className = $matches[1];
-					} else {
-						if (preg_match('/^PHALCON_DOC_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
-							$this->_docs[$matches[1]][$matches[2]] = $comment;
-							$className = $matches[1];
-						} else {
-							if ($firstDoc === true) {
-								$classDoc = $comment;
-								$firstDoc = false;
-								$comment = '';
-							}
-						}
-					}
-					$nextLineMethod = false;
-				} else {
-					$comment = '';
-				}
-			}
-			if ($openComment === true) {
-				if (trim($line)=='*/') {
-					$comment.=$line;
-					$openComment = false;
-					$nextLineMethod = true;
-				}
-			}
-			if (preg_match('/^PHALCON_INIT_CLASS\(([a-zA-Z0-9\_]+)\)/', $line, $matches)) {
-				$className = $matches[1];
-			}
-		}
+        /** @var $iterator RecursiveDirectoryIterator[] */
+        $iterator = new RecursiveIteratorIterator($recursiveDirectoryIterator);
 
-		if (isset($classDoc)) {
+        foreach ($iterator as $item) {
 
-			if (!isset($className)) {
+            if ($item->getExtension() == 'c') {
+                if (strpos($item->getPathname(), 'kernel') === false) {
+                    $this->parseDocs($item->getPathname());
+                }
+            }
+        }
+    }
 
-				$fileName = str_replace(CPHALCON_DIR, '', $file);
-				$fileName = str_replace('.c', '', $fileName);
+    /**
+     * Parse docs from file
+     *
+     * @param $file
+     */
+    protected function parseDocs($file)
+    {
+        $firstDoc       = true;
+        $openComment    = false;
+        $nextLineMethod = false;
+        $comment        = '';
+        foreach (file($file) as $line) {
+            if (trim($line) == '/**') {
+                $openComment = true;
+                $comment .= $line;
+            }
+            if ($openComment === true) {
+                $comment .= $line;
+            } else {
+                if ($nextLineMethod === true) {
+                    if (preg_match('/^PHP_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
+                        $this->docs[$matches[1]][$matches[2]] = $comment;
+                        $className                            = $matches[1];
+                    } else {
+                        if (preg_match('/^PHALCON_DOC_METHOD\(([a-zA-Z0-9\_]+), (.*)\)/', $line, $matches)) {
+                            $this->docs[$matches[1]][$matches[2]] = $comment;
+                            $className                            = $matches[1];
+                        } else {
+                            if ($firstDoc === true) {
+                                $classDoc = $comment;
+                                $firstDoc = false;
+                                $comment  = '';
+                            }
+                        }
+                    }
+                    $nextLineMethod = false;
+                } else {
+                    $comment = '';
+                }
+            }
+            if ($openComment === true) {
+                if (trim($line) == '*/') {
+                    $comment .= $line;
+                    $openComment    = false;
+                    $nextLineMethod = true;
+                }
+            }
+            if (preg_match('/^PHALCON_INIT_CLASS\(([a-zA-Z0-9\_]+)\)/', $line, $matches)) {
+                $className = $matches[1];
+            }
+        }
 
-				$parts = array();
-				foreach (explode(DIRECTORY_SEPARATOR, $fileName) as $part) {
-					$parts[] = ucfirst($part);
-				}
+        if (isset($classDoc)) {
 
-				$className = 'Phalcon\\' . join('\\', $parts);
-			} else {
-				$className = str_replace('_', '\\', $className);
-			}
+            if (!isset($className)) {
 
-			//echo $className, PHP_EOL;
+                $fileName = str_replace(CPHALCON_DIR, '', $file);
+                $fileName = str_replace('.c', '', $fileName);
 
-			if (!isset($this->_classDocs[$className])) {
-				if (class_exists($className) or interface_exists($className)) {
-					$this->_classDocs[$className] = $classDoc;
-				}
-			}
-		}
-	}
+                $parts = array();
+                foreach (explode(DIRECTORY_SEPARATOR, $fileName) as $part) {
+                    $parts[] = ucfirst($part);
+                }
 
-	public function getDocs()
-	{
-		return $this->_docs;
-	}
+                $className = 'Phalcon\\' . join('\\', $parts);
+            } else {
+                $className = str_replace('_', '\\', $className);
+            }
 
-	public function getClassDocs()
-	{
-		return $this->_classDocs;
-	}
+            //echo $className, PHP_EOL;
 
-	public function getPhpDoc($phpdoc, $className, $methodName, $realClassName)
-	{
+            if (!isset($this->classDocs[$className])) {
+                if (class_exists($className) or interface_exists($className)) {
+                    $this->classDocs[$className] = $classDoc;
+                }
+            }
+        }
+    }
 
-		$ret = array();
-		$lines = array();
-		$description = '';
+    /**
+     * @return array
+     */
+    public function getDocs()
+    {
+        return $this->docs;
+    }
 
-		$phpdoc = trim($phpdoc);
-		$phpdoc = str_replace("\r", "", $phpdoc);
+    /**
+     * @return array
+     */
+    public function getClassDocs()
+    {
+        return $this->classDocs;
+    }
 
-		foreach (explode("\n", $phpdoc) as $line) {
-			$line = preg_replace('#^/\*\*#', '', $line);
-			$line = str_replace('*/', '', $line);
-			$line = preg_replace('#^[ \t]+\*#', '', $line);
-			$line = str_replace('*\/', '*/', $line);
-			$tline = trim($line);
-			if ($className != $tline) {
-				$lines[] = $line;
-			}
-		}
+    /**
+     * @param $phpdoc
+     * @param $className
+     * @param $methodName
+     * @param $realClassName
+     *
+     * @return array
+     */
+    public function getPhpDoc($phpdoc, $className, $methodName, $realClassName)
+    {
 
-		$rc = str_replace("\\\\", "\\", $realClassName);
+        $ret         = array();
+        $lines       = array();
+        $description = '';
 
-		$numberBlock = -1;
-		$insideCode = false;
-		$codeBlocks = array();
-		foreach ($lines as $line) {
-			if (strpos($line, '<code') !== false) {
-				$numberBlock++;
-				$insideCode = true;
-			}
-			if (strpos($line, '</code') !== false) {
-				$insideCode = false;
-			}
-			if ($insideCode == false) {
-				$line = str_replace('</code>', '', $line);
-				if (trim($line) != $rc) {
-					if (preg_match('/@([a-z0-9]+)/', $line, $matches)) {
-						$content = trim(str_replace($matches[0], '', $line));
-						if ($matches[1] == 'param') {
-							$parts = preg_split('/[ \t]+/', $content);
-							if (count($parts) == 2) {
-								$ret['parameters'][$parts[1]] = trim($parts[0]);
-							} else {
-								//throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
-							}
-						} else {
-							$ret[$matches[1]] = $content;
-						}
-					} else {
-						$description.= ltrim($line)."\n";
-					}
-				}
-			} else {
-				if (!isset($codeBlocks[$numberBlock])) {
-					$line = str_replace('<code>', '', $line);
-					$codeBlocks[$numberBlock] = $line."\n";
-					$description.='%%'.$numberBlock.'%%';
-				} else {
-					$codeBlocks[$numberBlock].=$line."\n";
-				}
-			}
-		}
+        $phpdoc = trim($phpdoc);
+        $phpdoc = str_replace("\r", "", $phpdoc);
 
-		foreach ($codeBlocks as $n => $cc) {
-			$c = '';
-			$firstLine = true;
-			$p = explode("\n", $cc);
-			foreach ($p as $pp) {
-				if ($firstLine) {
-					if (substr(ltrim($pp), 0, 1) != '[') {
-						if (!preg_match('#^<?php#', ltrim($pp))) {
-							if (count($p) == 1) {
-								$c.='    <?php ';
-							} else {
-								$c.='    <?php'.PHP_EOL.PHP_EOL;
-							}
-						}
-					}
-					$firstLine = false;
-				}
-				$pp = preg_replace('#^\t#', '', $pp);
-				if (count($p) != 1) {
-					$c.='    '.$pp.PHP_EOL;
-				} else {
-					$c.= $pp.PHP_EOL;
-				}
-			}
-			$c .= PHP_EOL;
-			$codeBlocks[$n] = rtrim($c);
-		}
+        foreach (explode("\n", $phpdoc) as $line) {
+            $line  = preg_replace('#^/\*\*#', '', $line);
+            $line  = str_replace('*/', '', $line);
+            $line  = preg_replace('#^[ \t]+\*#', '', $line);
+            $line  = str_replace('*\/', '*/', $line);
+            $tline = trim($line);
+            if ($className != $tline) {
+                $lines[] = $line;
+            }
+        }
 
-		$description = str_replace('<p>', '', $description);
-		$description = str_replace('</p>', PHP_EOL.PHP_EOL, $description);
+        $rc = str_replace("\\\\", "\\", $realClassName);
 
-		$c = $description;
-		$c = str_replace("\\", "\\\\", $c);
-		$c = trim(str_replace("\t", "", $c));
-		$c = trim(str_replace("\n", " ", $c));
-		foreach ($codeBlocks as $n => $cc) {
-			if (preg_match('#\[[a-z]+\]#', $cc)) {
-				$type = 'ini';
-			} else {
-				$type = 'php';
-			}
-			$c = str_replace('%%'.$n.'%%', PHP_EOL . PHP_EOL . '.. code-block:: '.$type.PHP_EOL.PHP_EOL.$cc.PHP_EOL.PHP_EOL, $c);
-		}
+        $numberBlock = -1;
+        $insideCode  = false;
+        $codeBlocks  = array();
+        foreach ($lines as $line) {
+            if (strpos($line, '<code') !== false) {
+                $numberBlock++;
+                $insideCode = true;
+            }
+            if (strpos($line, '</code') !== false) {
+                $insideCode = false;
+            }
+            if ($insideCode == false) {
+                $line = str_replace('</code>', '', $line);
+                if (trim($line) != $rc) {
+                    if (preg_match('/@([a-z0-9]+)/', $line, $matches)) {
+                        $content = trim(str_replace($matches[0], '', $line));
+                        if ($matches[1] == 'param') {
+                            $parts = preg_split('/[ \t]+/', $content);
+                            if (count($parts) == 2) {
+                                $ret['parameters'][$parts[1]] = trim($parts[0]);
+                            } else {
+                                //throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
+                            }
+                        } else {
+                            $ret[$matches[1]] = $content;
+                        }
+                    } else {
+                        $description .= ltrim($line) . "\n";
+                    }
+                }
+            } else {
+                if (!isset($codeBlocks[$numberBlock])) {
+                    $line                     = str_replace('<code>', '', $line);
+                    $codeBlocks[$numberBlock] = $line . "\n";
+                    $description .= '%%' . $numberBlock . '%%';
+                } else {
+                    $codeBlocks[$numberBlock] .= $line . "\n";
+                }
+            }
+        }
 
-		$final = '';
-		$blankLine = false;
-		foreach (explode("\n", $c) as $line) {
-			if (trim($line) == '') {
-				if ($blankLine == false) {
-					$final.=$line."\n";
-					$blankLine = true;
-				}
-			} else {
-				$final.=$line."\n";
-				$blankLine = false;
-			}
-		}
+        foreach ($codeBlocks as $n => $cc) {
+            $c         = '';
+            $firstLine = true;
+            $p         = explode("\n", $cc);
+            foreach ($p as $pp) {
+                if ($firstLine) {
+                    if (substr(ltrim($pp), 0, 1) != '[') {
+                        if (!preg_match('#^<?php#', ltrim($pp))) {
+                            if (count($p) == 1) {
+                                $c .= '    <?php ';
+                            } else {
+                                $c .= '    <?php' . PHP_EOL . PHP_EOL;
+                            }
+                        }
+                    }
+                    $firstLine = false;
+                }
+                $pp = preg_replace('#^\t#', '', $pp);
+                if (count($p) != 1) {
+                    $c .= '    ' . $pp . PHP_EOL;
+                } else {
+                    $c .= $pp . PHP_EOL;
+                }
+            }
+            $c .= PHP_EOL;
+            $codeBlocks[$n] = rtrim($c);
+        }
 
-		$ret['description'] = $final;
-		return $ret;
-	}
+        $description = str_replace('<p>', '', $description);
+        $description = str_replace('</p>', PHP_EOL . PHP_EOL, $description);
+
+        $c = $description;
+        $c = str_replace("\\", "\\\\", $c);
+        $c = trim(str_replace("\t", "", $c));
+        $c = trim(str_replace("\n", " ", $c));
+        foreach ($codeBlocks as $n => $cc) {
+            if (preg_match('#\[[a-z]+\]#', $cc)) {
+                $type = 'ini';
+            } else {
+                $type = 'php';
+            }
+            $c = str_replace(
+                '%%' . $n . '%%',
+                PHP_EOL . PHP_EOL . '.. code-block:: ' . $type . PHP_EOL . PHP_EOL . $cc . PHP_EOL . PHP_EOL,
+                $c
+            );
+        }
+
+        $final     = '';
+        $blankLine = false;
+        foreach (explode("\n", $c) as $line) {
+            if (trim($line) == '') {
+                if ($blankLine == false) {
+                    $final .= $line . "\n";
+                    $blankLine = true;
+                }
+            } else {
+                $final .= $line . "\n";
+                $blankLine = false;
+            }
+        }
+
+        $ret['description'] = $final;
+        return $ret;
+    }
 
 }
 
-$index = 'API Indice
+$index
+    = 'API Indice
 ----------
 
 .. toctree::
-   :maxdepth: 1'.PHP_EOL.PHP_EOL;
+   :maxdepth: 1' . PHP_EOL . PHP_EOL;
 
-$api = new API_Generator(CPHALCON_DIR);
+$api = new PhalconApiGenerator(CPHALCON_DIR);
 
 $classDocs = $api->getClassDocs();
-$docs = $api->getDocs();
+$docs      = $api->getDocs();
 
 $classes = array();
-foreach(get_declared_classes() as $className){
-	if (!preg_match('#^Phalcon#', $className)) {
-		continue;
-	}
-	$classes[] = $className;
+foreach (get_declared_classes() as $className) {
+    if (!preg_match('#^Phalcon#', $className)) {
+        continue;
+    }
+    $classes[] = $className;
 }
 
 foreach (get_declared_interfaces() as $className) {
-	if (!preg_match('#^Phalcon#', $className)) {
-		continue;
-	}
-	$classes[] = $className;
+    if (!preg_match('#^Phalcon#', $className)) {
+        continue;
+    }
+    $classes[] = $className;
 }
 
 //Exception class docs
 $docs['Exception'] = array(
-	'__construct' => '/**
+    '__construct'      => '/**
  * Exception constructor
  *
  * @param string $message
  * @param int $code
  * @param Exception $previous
 */',
-	'getMessage' => '/**
+    'getMessage'       => '/**
  * Gets the Exception message
  *
  * @return string
 */',
-	'getCode' => '/**
+    'getCode'          => '/**
  * Gets the Exception code
  *
  * @return int
 */',
-	'getLine' => '/**
+    'getLine'          => '/**
  * Gets the line in which the exception occurred
  *
  * @return int
 */',
-	'getFile' => '/**
+    'getFile'          => '/**
  * Gets the file in which the exception occurred
  *
  * @return string
 */',
-	'getTrace' => '/**
+    'getTrace'         => '/**
  * Gets the stack trace
  *
  * @return array
 */',
-	'getTrace' => '/**
+    'getTrace'         => '/**
  * Gets the stack trace
  *
  * @return array
 */',
-	'getTraceAsString' =>'/**
+    'getTraceAsString' => '/**
  * Gets the stack trace as a string
  *
  * @return Exception
 */',
-	'__clone' => '/**
+    '__clone'          => '/**
  * Clone the exception
  *
  * @return Exception
 */',
-	'getPrevious' => '/**
+    'getPrevious'      => '/**
  * Returns previous Exception
  *
  * @return Exception
 */',
-	'__toString' => '/**
+    '__toString'       => '/**
  * String representation of the exception
  *
  * @return string
@@ -343,221 +381,225 @@ $docs['Exception'] = array(
 
 sort($classes);
 
-
-$indexClasses = array();
+$indexClasses    = array();
 $indexInterfaces = array();
 foreach ($classes as $className) {
 
-	$realClassName = $className;
+    $realClassName = $className;
 
-	$simpleClassName = str_replace("\\", "_", $className);
+    $simpleClassName = str_replace("\\", "_", $className);
 
-	$reflector = new ReflectionClass($className);
+    $reflector = new ReflectionClass($className);
 
-	$documentationData = array();
+    $documentationData = array();
 
-	$typeClass = 'public';
-	if ($reflector->isAbstract() == true) {
-		$typeClass = 'abstract';
-	}
+    $typeClass = 'public';
+    if ($reflector->isAbstract() == true) {
+        $typeClass = 'abstract';
+    }
 
-	if ($reflector->isFinal() == true) {
-		$typeClass = 'final';
-	}
+    if ($reflector->isFinal() == true) {
+        $typeClass = 'final';
+    }
 
-	if ($reflector->isInterface() == true) {
-		$typeClass = '';
-	}
+    if ($reflector->isInterface() == true) {
+        $typeClass = '';
+    }
 
-	$documentationData = array(
-		'type'			=> $typeClass,
-		'description'	=> $realClassName,
-		'extends'		=> $reflector->getParentClass(),
-		'implements'	=> $reflector->getInterfaceNames(),
-		'constants'     => $reflector->getConstants(),
-		'methods'		=> $reflector->getMethods()
-	);
+    $documentationData = array(
+        'type'        => $typeClass,
+        'description' => $realClassName,
+        'extends'     => $reflector->getParentClass(),
+        'implements'  => $reflector->getInterfaceNames(),
+        'constants'   => $reflector->getConstants(),
+        'methods'     => $reflector->getMethods()
+    );
 
-	if ($reflector->isInterface() == true) {
-		$indexInterfaces[] = '   ' . $simpleClassName . PHP_EOL;
-	} else {
-		$indexClasses[] = '   ' . $simpleClassName . PHP_EOL;
-	}
+    if ($reflector->isInterface() == true) {
+        $indexInterfaces[] = '   ' . $simpleClassName . PHP_EOL;
+    } else {
+        $indexClasses[] = '   ' . $simpleClassName . PHP_EOL;
+    }
 
-	$nsClassName = str_replace("\\", "\\\\", $className);
+    $nsClassName = str_replace("\\", "\\\\", $className);
 
-	if ($reflector->isInterface() == true) {
-		$code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
-		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
-	} else {
+    if ($reflector->isInterface() == true) {
+        $code = 'Interface **' . $nsClassName . '**' . PHP_EOL;
+        $code .= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
+    } else {
 
-		$classPrefix = 'Class';
-		if (strtolower($typeClass) != 'public') {
-			$classPrefix = ucfirst(strtolower($typeClass)) . ' class';
-		}
+        $classPrefix = 'Class';
+        if (strtolower($typeClass) != 'public') {
+            $classPrefix = ucfirst(strtolower($typeClass)) . ' class';
+        }
 
-		$code = $classPrefix . ' **' . $nsClassName . '**' . PHP_EOL;
-		$code.= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
-	}
+        $code = $classPrefix . ' **' . $nsClassName . '**' . PHP_EOL;
+        $code .= str_repeat("=", strlen($code) - 1) . PHP_EOL . PHP_EOL;
+    }
 
-	if ($documentationData['extends']) {
-		$extendsName = $documentationData['extends']->name;
-		if (strpos($extendsName, 'Phalcon') !== false) {
-			if (class_exists($extendsName)) {
-				$extendsClass = $extendsName;
-				$extendsPath  = str_replace("\\", "_", $extendsName);
-				$extendsName  = str_replace("\\", "\\\\", $extendsName);
-				$reflector    = new ReflectionClass($extendsClass);
+    if ($documentationData['extends']) {
+        $extendsName = $documentationData['extends']->name;
+        if (strpos($extendsName, 'Phalcon') !== false) {
+            if (class_exists($extendsName)) {
+                $extendsClass = $extendsName;
+                $extendsPath  = str_replace("\\", "_", $extendsName);
+                $extendsName  = str_replace("\\", "\\\\", $extendsName);
+                $reflector    = new ReflectionClass($extendsClass);
 
-				$prefix = 'class';
-				if ($reflector->isAbstract() == true) {
-					$prefix = 'abstract class';
-				}
+                $prefix = 'class';
+                if ($reflector->isAbstract() == true) {
+                    $prefix = 'abstract class';
+                }
 
-				$code.='*extends* ' . $prefix . ' :doc:`' . $extendsName.' <'.$extendsPath.'>`'.PHP_EOL.PHP_EOL;
-			} else {
-				$code.='*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
-			}
-		} else {
-			$code.='*extends* '.$extendsName.PHP_EOL.PHP_EOL;
-		}
-	}
+                $code
+                    .=
+                    '*extends* ' . $prefix . ' :doc:`' . $extendsName . ' <' . $extendsPath . '>`' . PHP_EOL . PHP_EOL;
+            } else {
+                $code .= '*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
+            }
+        } else {
+            $code .= '*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
+        }
+    }
 
-	//Generate the interfaces part
-	if (count($documentationData['implements'])) {
-		$implements = array();
-		foreach ($documentationData['implements'] as $interfaceName) {
-			if (strpos($interfaceName, 'Phalcon') !== false) {
-				if (interface_exists($interfaceName)) {
-					$interfacePath =  str_replace("\\", "_", $interfaceName);
-					$interfaceName =  str_replace("\\", "\\\\", $interfaceName);
-					$implements[] = ':doc:`'.$interfaceName.' <'.$interfacePath.'>`';
-				} else {
-					$implements[] = str_replace("\\", "\\\\", $interfaceName);
-				}
-			} else {
-				$implements[] = $interfaceName;
-			}
-		}
-		$code.='*implements* '.join(', ', $implements).PHP_EOL.PHP_EOL;
-	}
+    //Generate the interfaces part
+    if (count($documentationData['implements'])) {
+        $implements = array();
+        foreach ($documentationData['implements'] as $interfaceName) {
+            if (strpos($interfaceName, 'Phalcon') !== false) {
+                if (interface_exists($interfaceName)) {
+                    $interfacePath = str_replace("\\", "_", $interfaceName);
+                    $interfaceName = str_replace("\\", "\\\\", $interfaceName);
+                    $implements[]  = ':doc:`' . $interfaceName . ' <' . $interfacePath . '>`';
+                } else {
+                    $implements[] = str_replace("\\", "\\\\", $interfaceName);
+                }
+            } else {
+                $implements[] = $interfaceName;
+            }
+        }
+        $code .= '*implements* ' . join(', ', $implements) . PHP_EOL . PHP_EOL;
+    }
 
-	if (isset($classDocs[$realClassName])) {
-		$ret = $api->getPhpDoc($classDocs[$realClassName], $className, null, $realClassName);
-		$code.= $ret['description'].PHP_EOL.PHP_EOL;
-	}
+    if (isset($classDocs[$realClassName])) {
+        $ret = $api->getPhpDoc($classDocs[$realClassName], $className, null, $realClassName);
+        $code .= $ret['description'] . PHP_EOL . PHP_EOL;
+    }
 
-	if (count($documentationData['constants'])) {
-		$code.='Constants'.PHP_EOL;
-		$code.='---------'.PHP_EOL.PHP_EOL;
-		foreach($documentationData['constants'] as $name => $constant){
-			$code.= '*'.gettype($constant).'* **'.$name.'**'.PHP_EOL.PHP_EOL;
-		}
-	}
+    if (count($documentationData['constants'])) {
+        $code .= 'Constants' . PHP_EOL;
+        $code .= '---------' . PHP_EOL . PHP_EOL;
+        foreach ($documentationData['constants'] as $name => $constant) {
+            $code .= '*' . gettype($constant) . '* **' . $name . '**' . PHP_EOL . PHP_EOL;
+        }
+    }
 
-	if (count($documentationData['methods'])) {
+    if (count($documentationData['methods'])) {
 
-		$code.='Methods'.PHP_EOL;
-		$code.='---------'.PHP_EOL.PHP_EOL;
-		foreach ($documentationData['methods'] as $method) {
+        $code .= 'Methods' . PHP_EOL;
+        $code .= '-------' . PHP_EOL . PHP_EOL;
+        foreach ($documentationData['methods'] as $method) {
 
-			$docClassName = str_replace("\\", "_", $method->getDeclaringClass()->name);
-			if (isset($docs[$docClassName])) {
-				$docMethods = $docs[$docClassName];
-			} else {
-				$docMethods = array();
-			}
+            $docClassName = str_replace("\\", "_", $method->getDeclaringClass()->name);
+            if (isset($docs[$docClassName])) {
+                $docMethods = $docs[$docClassName];
+            } else {
+                $docMethods = array();
+            }
 
-			if (isset($docMethods[$method->name])) {
-				$ret = $api->getPhpDoc($docMethods[$method->name], $className, $method->name, null);
-			} else {
-				$ret = array();
-			}
+            if (isset($docMethods[$method->name])) {
+                $ret = $api->getPhpDoc($docMethods[$method->name], $className, $method->name, null);
+            } else {
+                $ret = array();
+            }
 
-			$code.= implode(' ', Reflection::getModifierNames($method->getModifiers())).' ';
+            $code .= implode(' ', Reflection::getModifierNames($method->getModifiers())) . ' ';
 
-			if (isset($ret['return'])) {
-				if (preg_match('/^(Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
-					if (class_exists($matches[0]) || interface_exists($matches[0])) {
-						$extendsPath =  str_replace("\\", "_", $matches[1]);
-						$extendsName =  str_replace("\\", "\\\\", $matches[1]);
-						$code.= str_replace($matches[1], ':doc:`'.$extendsName.' <'.$extendsPath.'>` ', $ret['return']);
-					} else {
-						$extendsName = str_replace("\\", "\\\\", $ret['return']);
-						$code.= '*'.$extendsName.'* ';
-					}
+            if (isset($ret['return'])) {
+                if (preg_match('/^(Phalcon[a-zA-Z0-9\\\\]+)/', $ret['return'], $matches)) {
+                    if (class_exists($matches[0]) || interface_exists($matches[0])) {
+                        $extendsPath = str_replace("\\", "_", $matches[1]);
+                        $extendsName = str_replace("\\", "\\\\", $matches[1]);
+                        $code .= str_replace(
+                            $matches[1],
+                            ':doc:`' . $extendsName . ' <' . $extendsPath . '>` ',
+                            $ret['return']
+                        );
+                    } else {
+                        $extendsName = str_replace("\\", "\\\\", $ret['return']);
+                        $code .= '*' . $extendsName . '* ';
+                    }
 
-				} else {
-					$code.= '*'.$ret['return'].'* ';
-				}
-			}
+                } else {
+                    $code .= '*' . $ret['return'] . '* ';
+                }
+            }
 
-			$code.=' **'.$method->name.'** (';
+            $code .= ' **' . $method->name . '** (';
 
-			$cp = array();
-			foreach ($method->getParameters() as $parameter) {
-				$name = '$'.$parameter->name;
-				if (isset($ret['parameters'][$name])) {
-					if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
-						if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
-							$parameterPath =  str_replace("\\", "_", $ret['parameters'][$name]);
-							$parameterName =  str_replace("\\", "\\\\", $ret['parameters'][$name]);
-							if (!$parameter->isOptional()) {
-								$cp[] = ':doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name;
-							} else {
-								$cp[] = '[:doc:`'.$parameterName.' <'.$parameterPath.'>` '.$name.']';
-							}
-						} else {
-							$parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
-							if (!$parameter->isOptional()) {
-								$cp[] = '*'.$parameterName.'* '.$name;
-							} else {
-								$cp[] = '[*'.$parameterName.'* '.$name.']';
-							}
-						}
-					} else {
-						if (!$parameter->isOptional()) {
-							$cp[] = '*'.$ret['parameters'][$name].'* '.$name;
-						} else {
-							$cp[] = '[*'.$ret['parameters'][$name].'* '.$name.']';
-						}
-					}
-				} else {
-					if ($className!='Phalcon\Kernel'){
-						if($simpleClassName==$docClassName){
-							//throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
-						}
-					}
-					if (!$parameter->isOptional()) {
-						$cp[] = '*unknown* '.$name;
-					} else {
-						$cp[] = '[*unknown* '.$name.']';
-					}
-				}
-			}
-			$code .= join(', ', $cp).')';
+            $cp = array();
+            foreach ($method->getParameters() as $parameter) {
+                $name = '$' . $parameter->name;
+                if (isset($ret['parameters'][$name])) {
+                    if (strpos($ret['parameters'][$name], 'Phalcon') !== false) {
+                        if (class_exists($ret['parameters'][$name]) || interface_exists($ret['parameters'][$name])) {
+                            $parameterPath = str_replace("\\", "_", $ret['parameters'][$name]);
+                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
+                            if (!$parameter->isOptional()) {
+                                $cp[] = ':doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name;
+                            } else {
+                                $cp[] = '[:doc:`' . $parameterName . ' <' . $parameterPath . '>` ' . $name . ']';
+                            }
+                        } else {
+                            $parameterName = str_replace("\\", "\\\\", $ret['parameters'][$name]);
+                            if (!$parameter->isOptional()) {
+                                $cp[] = '*' . $parameterName . '* ' . $name;
+                            } else {
+                                $cp[] = '[*' . $parameterName . '* ' . $name . ']';
+                            }
+                        }
+                    } else {
+                        if (!$parameter->isOptional()) {
+                            $cp[] = '*' . $ret['parameters'][$name] . '* ' . $name;
+                        } else {
+                            $cp[] = '[*' . $ret['parameters'][$name] . '* ' . $name . ']';
+                        }
+                    }
+                } else {
+                    if ($className != 'Phalcon\Kernel') {
+                        if ($simpleClassName == $docClassName) {
+                            //throw new Exception("unknown parameter $className::".$method->name."::".$parameter->name, 1);
+                        }
+                    }
+                    if (!$parameter->isOptional()) {
+                        $cp[] = '*unknown* ' . $name;
+                    } else {
+                        $cp[] = '[*unknown* ' . $name . ']';
+                    }
+                }
+            }
+            $code .= join(', ', $cp) . ')';
 
-			if ($simpleClassName != $docClassName) {
-				$code.=' inherited from '.str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
-			}
+            if ($simpleClassName != $docClassName) {
+                $code .= ' inherited from ' . str_replace("\\", "\\\\", $method->getDeclaringClass()->name);
+            }
 
-			$code.=PHP_EOL.PHP_EOL;
+            $code .= PHP_EOL . PHP_EOL;
 
-			if(isset($ret['description'])){
-				foreach(explode("\n", $ret['description']) as $dline){
-					$code.="".$dline."\n";
-				}
-			} else {
-				$code.="...\n";
-			}
-			$code.=PHP_EOL.PHP_EOL;
+            if (isset($ret['description'])) {
+                foreach (explode("\n", $ret['description']) as $dline) {
+                    $code .= "" . $dline . "\n";
+                }
+            } else {
+                $code .= "...\n";
+            }
+            $code .= PHP_EOL . PHP_EOL;
 
-		}
+        }
 
-	}
+    }
 
-	file_put_contents('en/api/' . $simpleClassName . '.rst', $code);
+    file_put_contents('en/api/' . $simpleClassName . '.rst', $code);
 }
 
 file_put_contents('en/api/index.rst', $index . join('', $indexClasses) . join('', $indexInterfaces));
-

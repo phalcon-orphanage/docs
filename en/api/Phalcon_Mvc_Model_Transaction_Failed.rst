@@ -7,7 +7,7 @@ This class will be thrown to exit a try/catch block for isolated transactions
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 

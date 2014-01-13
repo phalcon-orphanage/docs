@@ -5,7 +5,7 @@ Handles multiples logger handlers
 
 
 Methods
----------
+-------
 
 public  **push** (:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger)
 

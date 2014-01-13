@@ -5,7 +5,7 @@ Phalcon\\Db\\ColumnInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*string* $columnName, *array* $definition)
 

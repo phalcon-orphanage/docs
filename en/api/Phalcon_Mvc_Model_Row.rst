@@ -7,7 +7,7 @@ This component allows Phalcon\\Mvc\\Model to return rows without an associated e
 
 
 Methods
----------
+-------
 
 public  **setDirtyState** (*int* $dirtyState)
 

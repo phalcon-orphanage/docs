@@ -5,7 +5,7 @@ Phalcon\\Db\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*array* $descriptor)
 

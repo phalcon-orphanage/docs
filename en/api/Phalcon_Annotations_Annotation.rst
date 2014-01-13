@@ -5,7 +5,7 @@ Represents a single annotation in an annotations collection
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $reflectionData)
 

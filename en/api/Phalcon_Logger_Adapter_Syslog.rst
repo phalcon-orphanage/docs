@@ -22,7 +22,7 @@ Sends logs to the system logger
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*array* $options])
 

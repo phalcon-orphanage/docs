@@ -5,7 +5,7 @@ Class to access the beanstalk queue service. Partially implements the protocol v
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
