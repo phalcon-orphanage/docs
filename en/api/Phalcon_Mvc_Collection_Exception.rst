@@ -7,7 +7,7 @@ Exceptions thrown in Phalcon\\Mvc\\Collection\\* classes will use this class
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

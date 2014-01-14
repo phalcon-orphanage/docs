@@ -7,7 +7,7 @@ This class is a bag to manage the response headers
 
 
 Methods
----------
+-------
 
 public  **set** (*string* $name, *string* $value)
 

@@ -19,7 +19,7 @@ Sends logs to a valid PHP stream
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*array* $options])
 
@@ -125,7 +125,7 @@ Sends/Writes an alert message to the log
 
 public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **log** (*string* $message, [*int* $type]) inherited from Phalcon\\Logger\\Adapter
 
-Logs messages to the internal loggger. Appends logs to the
+Logs messages to the internal logger. Appends messages to the log
 
 
 

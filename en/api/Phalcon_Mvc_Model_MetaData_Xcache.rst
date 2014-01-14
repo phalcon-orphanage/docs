@@ -50,7 +50,7 @@ Constants
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

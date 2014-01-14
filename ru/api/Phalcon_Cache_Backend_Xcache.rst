@@ -29,7 +29,7 @@ Allows to cache output fragments, PHP data and raw data using an XCache backend
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 

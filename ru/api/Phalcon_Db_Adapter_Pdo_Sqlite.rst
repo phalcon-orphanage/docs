@@ -20,7 +20,7 @@ Specific functions for the Sqlite database system
 
 
 Methods
----------
+-------
 
 public *boolean*  **connect** ([*array* $descriptor])
 

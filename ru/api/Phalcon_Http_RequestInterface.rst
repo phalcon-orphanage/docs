@@ -5,7 +5,7 @@ Phalcon\\Http\\RequestInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 

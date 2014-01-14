@@ -9,7 +9,7 @@ Formats messages so that they can be sent to FirePHP
 
 
 Methods
----------
+-------
 
 public *string*  **getTypeString** (*integer* $type)
 

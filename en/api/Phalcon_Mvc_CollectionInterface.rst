@@ -5,7 +5,7 @@ Phalcon\\Mvc\\CollectionInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 

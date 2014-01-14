@@ -7,7 +7,7 @@ Phalcon\\Mvc\\DispatcherInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setControllerSuffix** (*string* $controllerSuffix)
 

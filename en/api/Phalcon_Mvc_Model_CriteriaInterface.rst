@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\CriteriaInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **setModelName** (*string* $modelName)
 

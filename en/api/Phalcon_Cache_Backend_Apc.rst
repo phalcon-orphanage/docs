@@ -29,7 +29,7 @@ Allows to cache output fragments, PHP data and raw data using an APC backend
 
 
 Methods
----------
+-------
 
 public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
 

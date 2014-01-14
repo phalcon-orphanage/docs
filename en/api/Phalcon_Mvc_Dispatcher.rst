@@ -41,7 +41,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **setControllerSuffix** (*string* $controllerSuffix)
 

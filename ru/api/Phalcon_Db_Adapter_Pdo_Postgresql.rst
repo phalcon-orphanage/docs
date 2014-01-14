@@ -23,7 +23,7 @@ Specific functions for the Postgresql database system
 
 
 Methods
----------
+-------
 
 public *boolean*  **connect** ([*array* $descriptor])
 

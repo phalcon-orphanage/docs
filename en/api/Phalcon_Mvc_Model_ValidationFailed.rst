@@ -7,7 +7,7 @@ This exception is generated when a model fails to save a record Phalcon\\Mvc\\Mo
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *Phalcon\\Mvc\\Model\\Message[]* $validationMessages)
 

@@ -22,7 +22,7 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 
 
 Methods
----------
+-------
 
 public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 

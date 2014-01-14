@@ -7,7 +7,7 @@ Represents a collection of resources
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **add** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
 

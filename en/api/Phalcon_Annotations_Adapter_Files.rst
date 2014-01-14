@@ -18,7 +18,7 @@ Stores the parsed annotations in files. This adapter is suitable for production
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

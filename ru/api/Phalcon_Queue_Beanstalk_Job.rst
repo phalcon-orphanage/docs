@@ -5,7 +5,7 @@ Represents a job in a beanstalk queue
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Queue\\Beanstalk <Phalcon_Queue_Beanstalk>` $queue, *string* $id, *string* $body)
 

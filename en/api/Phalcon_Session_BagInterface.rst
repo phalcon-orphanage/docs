@@ -5,7 +5,7 @@ Phalcon\\Session\\BagInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **initialize** ()
 

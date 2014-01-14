@@ -27,7 +27,7 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $arrayConfig])
 

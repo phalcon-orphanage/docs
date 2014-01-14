@@ -32,7 +32,7 @@ Constants
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addResource** (*string* $handler, [*string* $prefix])
 

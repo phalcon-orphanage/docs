@@ -5,7 +5,7 @@ Queries the table meta-data in order to instrospect the model's metadata
 
 
 Methods
----------
+-------
 
 public *array*  **getMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

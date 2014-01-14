@@ -9,7 +9,7 @@ Allows to validate data using validators
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $validators])
 

@@ -5,7 +5,7 @@ Phalcon\\Events\\ManagerInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **attach** (*string* $eventType, *object* $handler)
 

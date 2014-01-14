@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\ResultInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setDirtyState** (*boolean* $dirtyState)
 

@@ -226,7 +226,6 @@ API Indice
    Phalcon_Tag_Exception
    Phalcon_Tag_Select
    Phalcon_Text
-   Phalcon_Translate
    Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Exception

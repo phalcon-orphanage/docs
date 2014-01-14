@@ -17,7 +17,7 @@ This component allows to render views without hicherquical levels
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

@@ -5,7 +5,7 @@ Represents each item in a logging transaction
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $message, *integer* $type, [*integer* $time])
 

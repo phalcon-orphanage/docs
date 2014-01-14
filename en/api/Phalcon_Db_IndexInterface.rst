@@ -5,7 +5,7 @@ Phalcon\\Db\\IndexInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*string* $indexName, *array* $columns)
 

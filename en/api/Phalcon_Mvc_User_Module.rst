@@ -9,7 +9,7 @@ This class can be used to provide user modules easy access to services in the ap
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 

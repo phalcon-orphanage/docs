@@ -9,7 +9,7 @@ Designer friendly and fast template engine for PHP written in C
 
 
 Methods
----------
+-------
 
 public  **setOptions** (*array* $options)
 

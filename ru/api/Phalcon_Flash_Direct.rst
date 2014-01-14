@@ -9,7 +9,7 @@ This is a variant of the Phalcon\\Flash that inmediately outputs any message pas
 
 
 Methods
----------
+-------
 
 public *string*  **message** (*string* $type, *string* $message)
 

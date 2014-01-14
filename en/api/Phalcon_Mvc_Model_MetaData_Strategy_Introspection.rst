@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Instrospection  Queries the table meta-
 
 
 Methods
----------
+-------
 
 public *array*  **getMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

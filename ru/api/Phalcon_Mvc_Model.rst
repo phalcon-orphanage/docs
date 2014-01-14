@@ -3,7 +3,7 @@ Abstract class **Phalcon\\Mvc\\Model**
 
 *implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
 
 .. code-block:: php
 
@@ -42,7 +42,7 @@ Constants
 *integer* **DIRTY_STATE_DETACHED**
 
 Methods
----------
+-------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
@@ -88,7 +88,7 @@ Returns the models manager related to the entity instance
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 
-Sets a transaction related to the Model instance
+Sets a transaction related to the Model instance 
 
 .. code-block:: php
 
@@ -96,13 +96,13 @@ Sets a transaction related to the Model instance
 
     use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
     use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
-
+    
     try {
-
+    
       $txManager = new TxManager();
-
+    
       $transaction = $txManager->get();
-
+    
       $robot = new Robots();
       $robot->setTransaction($transaction);
       $robot->name = 'WALL·E';
@@ -110,16 +110,16 @@ Sets a transaction related to the Model instance
       if ($robot->save() == false) {
         $transaction->rollback("Can't save robot");
       }
-
+    
       $robotPart = new RobotParts();
       $robotPart->setTransaction($transaction);
       $robotPart->type = 'head';
       if ($robotPart->save() == false) {
         $transaction->rollback("Robot part cannot be saved");
       }
-
+    
       $transaction->commit();
-
+    
     } catch (TxFailed $e) {
       echo 'Failed, reason: ', $e->getMessage();
     }
@@ -207,7 +207,7 @@ Gets the connection used to write data to the model
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
 
-Assigns values to a model from an array
+Assigns values to a model from an array 
 
 .. code-block:: php
 
@@ -224,7 +224,7 @@ Assigns values to a model from an array
 
 public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
-Assigns values to a model from an array returning a new model.
+Assigns values to a model from an array returning a new model. 
 
 .. code-block:: php
 
@@ -247,7 +247,7 @@ Returns an hydrated result based on the data and the column map
 
 public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
 
-Assigns values to a model from an array returning a new model
+Assigns values to a model from an array returning a new model 
 
 .. code-block:: php
 
@@ -264,7 +264,7 @@ Assigns values to a model from an array returning a new model
 
 public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
 
-Allows to query a set of records that match the specified conditions
+Allows to query a set of records that match the specified conditions 
 
 .. code-block:: php
 
@@ -273,17 +273,17 @@ Allows to query a set of records that match the specified conditions
      //How many robots are there?
      $robots = Robots::find();
      echo "There are ", count($robots), "\n";
-
+    
      //How many mechanical robots are there?
      $robots = Robots::find("type='mechanical'");
      echo "There are ", count($robots), "\n";
-
+    
      //Get and print virtual robots ordered by name
      $robots = Robots::find(array("type='virtual'", "order" => "name"));
      foreach ($robots as $robot) {
        echo $robot->name, "\n";
      }
-
+    
      //Get first 100 virtual robots ordered by name
      $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
      foreach ($robots as $robot) {
@@ -295,7 +295,7 @@ Allows to query a set of records that match the specified conditions
 
 public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*array* $parameters])
 
-Allows to query the first record that match the specified conditions
+Allows to query the first record that match the specified conditions 
 
 .. code-block:: php
 
@@ -304,11 +304,11 @@ Allows to query the first record that match the specified conditions
      //What's the first robot in robots table?
      $robot = Robots::findFirst();
      echo "The robot name is ", $robot->name;
-
+    
      //What's the first mechanical robot in robots table?
      $robot = Robots::findFirst("type='mechanical'");
      echo "The first mechanical robot name is ", $robot->name;
-
+    
      //Get first virtual robot ordered by name
      $robot = Robots::findFirst(array("type='virtual'", "order" => "name"));
      echo "The first virtual robot name is ", $robot->name;
@@ -336,7 +336,7 @@ Generate a PHQL SELECT statement for an aggregate
 
 public static *int*  **count** ([*array* $parameters])
 
-Allows to count how many records match the specified conditions
+Allows to count how many records match the specified conditions 
 
 .. code-block:: php
 
@@ -345,7 +345,7 @@ Allows to count how many records match the specified conditions
      //How many robots are there?
      $number = Robots::count();
      echo "There are ", $number, "\n";
-
+    
      //How many mechanical robots are there?
      $number = Robots::count("type='mechanical'");
      echo "There are ", $number, " mechanical robots\n";
@@ -355,7 +355,7 @@ Allows to count how many records match the specified conditions
 
 public static *double*  **sum** ([*array* $parameters])
 
-Allows to calculate a summatory on a column that match the specified conditions
+Allows to calculate a summatory on a column that match the specified conditions 
 
 .. code-block:: php
 
@@ -364,7 +364,7 @@ Allows to calculate a summatory on a column that match the specified conditions
      //How much are all robots?
      $sum = Robots::sum(array('column' => 'price'));
      echo "The total price of robots is ", $sum, "\n";
-
+    
      //How much are mechanical robots?
      $sum = Robots::sum(array("type='mechanical'", 'column' => 'price'));
      echo "The total price of mechanical robots is  ", $sum, "\n";
@@ -374,7 +374,7 @@ Allows to calculate a summatory on a column that match the specified conditions
 
 public static *mixed*  **maximum** ([*array* $parameters])
 
-Allows to get the maximum value of a column that match the specified conditions
+Allows to get the maximum value of a column that match the specified conditions 
 
 .. code-block:: php
 
@@ -383,7 +383,7 @@ Allows to get the maximum value of a column that match the specified conditions
      //What is the maximum robot id?
      $id = Robots::maximum(array('column' => 'id'));
      echo "The maximum robot id is: ", $id, "\n";
-
+    
      //What is the maximum id of mechanical robots?
      $sum = Robots::maximum(array("type='mechanical'", 'column' => 'id'));
      echo "The maximum robot id of mechanical robots is ", $id, "\n";
@@ -393,7 +393,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 public static *mixed*  **minimum** ([*array* $parameters])
 
-Allows to get the minimum value of a column that match the specified conditions
+Allows to get the minimum value of a column that match the specified conditions 
 
 .. code-block:: php
 
@@ -402,7 +402,7 @@ Allows to get the minimum value of a column that match the specified conditions
      //What is the minimum robot id?
      $id = Robots::minimum(array('column' => 'id'));
      echo "The minimum robot id is: ", $id;
-
+    
      //What is the minimum id of mechanical robots?
      $sum = Robots::minimum(array("type='mechanical'", 'column' => 'id'));
      echo "The minimum robot id of mechanical robots is ", $id;
@@ -412,7 +412,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 public static *double*  **average** ([*array* $parameters])
 
-Allows to calculate the average value on a column matching the specified conditions
+Allows to calculate the average value on a column matching the specified conditions 
 
 .. code-block:: php
 
@@ -421,7 +421,7 @@ Allows to calculate the average value on a column matching the specified conditi
      //What's the average price of robots?
      $average = Robots::average(array('column' => 'price'));
      echo "The average price is ", $average, "\n";
-
+    
      //What's the average price of mechanical robots?
      $average = Robots::average(array("type='mechanical'", 'column' => 'price'));
      echo "The average price of mechanical robots is ", $average, "\n";
@@ -449,17 +449,17 @@ Cancel the current operation
 
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
-Appends a customized message on the validation process
+Appends a customized message on the validation process 
 
 .. code-block:: php
 
     <?php
 
      use \Phalcon\Mvc\Model\Message as Message;
-
+    
      class Robots extends Phalcon\Mvc\Model
      {
-
+    
        public function beforeSave()
        {
          if ($this->name == 'Peter') {
@@ -474,17 +474,17 @@ Appends a customized message on the validation process
 
 protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** ()
 
-Executes validators on every validation call
+Executes validators on every validation call 
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
-
+    
     class Subscriptors extends Phalcon\Mvc\Model
     {
-
+    
     public function validation()
       {
      		$this->validate(new ExclusionIn(array(
@@ -495,7 +495,7 @@ Executes validators on every validation call
     		return false;
     	}
     }
-
+    
     }
 
 
@@ -503,17 +503,17 @@ Executes validators on every validation call
 
 public *boolean*  **validationHasFailed** ()
 
-Check whether validation process has generated any messages
+Check whether validation process has generated any messages 
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
-
+    
     class Subscriptors extends Phalcon\Mvc\Model
     {
-
+    
     public function validation()
       {
      		$this->validate(new ExclusionIn(array(
@@ -524,7 +524,7 @@ Check whether validation process has generated any messages
     		return false;
     	}
     }
-
+    
     }
 
 
@@ -532,7 +532,7 @@ Check whether validation process has generated any messages
 
 public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
 
-Returns all the validation messages
+Returns all the validation messages 
 
 .. code-block:: php
 
@@ -610,7 +610,7 @@ Save the related records assigned in the has-one/has-many relations
 
 public *boolean*  **save** ([*array* $data], [*array* $whiteList])
 
-Inserts or updates a model instance. Returning true on success or false otherwise.
+Inserts or updates a model instance. Returning true on success or false otherwise. 
 
 .. code-block:: php
 
@@ -622,7 +622,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->save();
-
+    
     //Updating a robot name
     $robot = Robots::findFirst("id=100");
     $robot->name = "Biomass";
@@ -633,7 +633,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 public *boolean*  **create** ([*array* $data], [*array* $whiteList])
 
-Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.
+Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
 
 .. code-block:: php
 
@@ -645,7 +645,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->create();
-
+    
       //Passing an array to create
       $robot = new Robots();
       $robot->create(array(
@@ -659,7 +659,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
 public *boolean*  **update** ([*array* $data], [*array* $whiteList])
 
-Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise.
+Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 
 .. code-block:: php
 
@@ -675,7 +675,7 @@ Updates a model instance. If the instance doesn't exist in the persistance it wi
 
 public *boolean*  **delete** ()
 
-Deletes a model instance. Returning true on success or false otherwise.
+Deletes a model instance. Returning true on success or false otherwise. 
 
 .. code-block:: php
 
@@ -683,7 +683,7 @@ Deletes a model instance. Returning true on success or false otherwise.
 
     $robot = Robots::findFirst("id=100");
     $robot->delete();
-
+    
     foreach (Robots::find("type = 'mechanical'") as $robot) {
        $robot->delete();
     }
@@ -711,7 +711,7 @@ Skips the current operation forcing a success state
 
 public *mixed*  **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name
+Reads an attribute value by its name 
 
 .. code-block:: php
 
@@ -724,7 +724,7 @@ Reads an attribute value by its name
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name
+Writes an attribute value by its name 
 
 .. code-block:: php
 
@@ -737,7 +737,7 @@ Writes an attribute value by its name
 
 protected  **skipAttributes** ()
 
-Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
+Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement 
 
 .. code-block:: php
 
@@ -745,12 +745,12 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->skipAttributes(array('price'));
        }
-
+    
     }
 
 
@@ -758,7 +758,7 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
 
 protected  **skipAttributesOnCreate** ()
 
-Sets a list of attributes that must be skipped from the generated INSERT statement
+Sets a list of attributes that must be skipped from the generated INSERT statement 
 
 .. code-block:: php
 
@@ -766,12 +766,12 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->skipAttributesOnCreate(array('created_at'));
        }
-
+    
     }
 
 
@@ -779,7 +779,7 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
 
 protected  **skipAttributesOnUpdate** ()
 
-Sets a list of attributes that must be skipped from the generated UPDATE statement
+Sets a list of attributes that must be skipped from the generated UPDATE statement 
 
 .. code-block:: php
 
@@ -787,12 +787,12 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->skipAttributesOnUpdate(array('modified_in'));
        }
-
+    
     }
 
 
@@ -800,7 +800,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
 
-Setup a 1-1 relation between two models
+Setup a 1-1 relation between two models 
 
 .. code-block:: php
 
@@ -808,12 +808,12 @@ Setup a 1-1 relation between two models
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->hasOne('id', 'RobotsDescription', 'robots_id');
        }
-
+    
     }
 
 
@@ -821,7 +821,7 @@ Setup a 1-1 relation between two models
 
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
 
-Setup a relation reverse 1-1  between two models
+Setup a relation reverse 1-1  between two models 
 
 .. code-block:: php
 
@@ -829,12 +829,12 @@ Setup a relation reverse 1-1  between two models
 
     class RobotsParts extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->belongsTo('robots_id', 'Robots', 'id');
        }
-
+    
     }
 
 
@@ -842,7 +842,7 @@ Setup a relation reverse 1-1  between two models
 
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
 
-Setup a relation 1-n between two models
+Setup a relation 1-n between two models 
 
 .. code-block:: php
 
@@ -850,12 +850,12 @@ Setup a relation 1-n between two models
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            $this->hasMany('id', 'RobotsParts', 'robots_id');
        }
-
+    
     }
 
 
@@ -863,7 +863,7 @@ Setup a relation 1-n between two models
 
 public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
-Setup a relation n-n between two models through an intermediate relation
+Setup a relation n-n between two models through an intermediate relation 
 
 .. code-block:: php
 
@@ -871,7 +871,7 @@ Setup a relation n-n between two models through an intermediate relation
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
            //Setup a many-to-many relation to Parts through RobotsParts
@@ -884,7 +884,7 @@ Setup a relation n-n between two models through an intermediate relation
     		'id'
     	);
        }
-
+    
     }
 
 
@@ -892,17 +892,17 @@ Setup a relation n-n between two models through an intermediate relation
 
 public  **addBehavior** ()
 
-Setups a behavior in a model
+Setups a behavior in a model 
 
 .. code-block:: php
 
     <?php
 
     use Phalcon\Mvc\Model\Behavior\Timestampable;
-
+    
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
     	$this->addBehavior(new Timestampable(array(
@@ -912,7 +912,7 @@ Setups a behavior in a model
     		)
     	)));
        }
-
+    
     }
 
 
@@ -920,7 +920,7 @@ Setups a behavior in a model
 
 protected  **keepSnapshots** ()
 
-Sets if the model must keep the original record snapshot in memory
+Sets if the model must keep the original record snapshot in memory 
 
 .. code-block:: php
 
@@ -928,12 +928,12 @@ Sets if the model must keep the original record snapshot in memory
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
     	$this->keepSnapshots(true);
        }
-
+    
     }
 
 
@@ -971,7 +971,7 @@ Returns a list of changed values
 
 protected  **useDynamicUpdate** ()
 
-Sets if a model must use dynamic update instead of the all-field update
+Sets if a model must use dynamic update instead of the all-field update 
 
 .. code-block:: php
 
@@ -979,12 +979,12 @@ Sets if a model must use dynamic update instead of the all-field update
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
+    
        public function initialize()
        {
     	$this->useDynamicUpdate(true);
        }
-
+    
     }
 
 
@@ -1046,7 +1046,7 @@ Unserializes the object from a serialized string
 
 public *array*  **dump** ()
 
-Returns a simple representation of the object that can be used with var_dump
+Returns a simple representation of the object that can be used with var_dump 
 
 .. code-block:: php
 
@@ -1059,7 +1059,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 public *array*  **toArray** ()
 
-Returns the instance as an array representation
+Returns the instance as an array representation 
 
 .. code-block:: php
 
@@ -1072,10 +1072,7 @@ Returns the instance as an array representation
 
 public static  **setup** (*array* $options)
 
-Enables/disables options in the ORM Available options:
-	events                — Enables/Disables globally the internal events
-	virtualForeignKeys    — Enables/Disables virtual foreign keys
-	columnRenaming        — Enables/Disables column renaming
-	notNullValidations    — Enables/Disables automatic not null validation
-	exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails
-	phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
+Enables/disables options in the ORM Available options: events                — Enables/Disables globally the internal events virtualForeignKeys    — Enables/Disables virtual foreign keys columnRenaming        — Enables/Disables column renaming notNullValidations    — Enables/Disables automatic not null validation exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
+
+
+

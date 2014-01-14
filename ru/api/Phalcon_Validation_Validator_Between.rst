@@ -22,7 +22,7 @@ Validates that a value is between a range of two values
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 

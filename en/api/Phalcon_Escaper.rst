@@ -16,7 +16,7 @@ Escapes different kinds of text securing them. By using this component you may p
 
 
 Methods
----------
+-------
 
 public  **setEncoding** (*string* $encoding)
 

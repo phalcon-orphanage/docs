@@ -7,7 +7,7 @@ Phalcon\\DiInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
 

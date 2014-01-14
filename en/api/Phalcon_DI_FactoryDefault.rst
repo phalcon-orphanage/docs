@@ -9,7 +9,7 @@ This is a variant of the standard Phalcon\\DI. By default it automatically regis
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

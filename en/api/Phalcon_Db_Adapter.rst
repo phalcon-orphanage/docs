@@ -7,7 +7,7 @@ Base class for Phalcon\\Db adapters
 
 
 Methods
----------
+-------
 
 protected  **__construct** ()
 

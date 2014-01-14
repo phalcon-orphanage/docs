@@ -28,7 +28,7 @@ This component helps to load your project classes automatically based on some co
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

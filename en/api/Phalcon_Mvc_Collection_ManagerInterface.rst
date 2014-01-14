@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Collection\\ManagerInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setCustomEventsManager** (:doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>` $model, :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 

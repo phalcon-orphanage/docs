@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Micro\\CollectionInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setPrefix** (*string* $prefix)
 

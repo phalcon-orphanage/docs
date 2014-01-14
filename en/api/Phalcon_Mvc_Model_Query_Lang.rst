@@ -12,7 +12,7 @@ PHQL is implemented as a parser (written in C) that translates syntax in that of
 
 
 Methods
----------
+-------
 
 public static *string*  **parsePHQL** (*string* $phql)
 

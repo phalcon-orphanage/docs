@@ -5,7 +5,7 @@ Phalcon\\Logger\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
