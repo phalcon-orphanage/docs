@@ -1384,7 +1384,7 @@ Magic properties can be used to store a records and its related properties:
 
     <?php
 
-    // Create a robot
+    // Create an artist
     $artist = new Artists();
     $artist->name = 'Shinichi Osawa';
     $artist->country = 'Japan';
