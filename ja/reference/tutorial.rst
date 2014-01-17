@@ -67,9 +67,9 @@ Beautiful URLs
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus eliminates security threats of this kind.
+プロジェクトへの全てのリクエストは ドキュメントルートに指定した public/ ディレクトリにリライトされます。これにより、プロジェクトの内部フォルダを閲覧されることを防ぎ、セキュリティの脅威を排除することが保証されます。
 
-The second set of rules will check if the requested file exists and, if it does, it doesn't have to be rewritten by the web server module:
+第二のルールは、リクエストされたフィアルが存在するかチェックし、ファイルが存在した場合はWebサーバーモジュールによるリライトは行われません。
 
 .. code-block:: apacheconf
 
@@ -83,9 +83,9 @@ The second set of rules will check if the requested file exists and, if it does,
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+あなたが最初に作成する必要のあるファイルは bootstrap ファイルです。このファイルはとても重要であり、アプリケーションのベースとなり、すべての側面をコントロールすることを可能にします。このファイルでは、コンポーネントの初期化だけでなく、アプリケーションの振る舞いを実装することができます。
 
-The tutorial/public/index.php file should look like:
+tutorial/public/index.php は次のようになります。
 
 .. code-block:: php
 
