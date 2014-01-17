@@ -5,7 +5,7 @@ Provides debug capabilities to Phalcon applications
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setUri** (*string* $uri)
 

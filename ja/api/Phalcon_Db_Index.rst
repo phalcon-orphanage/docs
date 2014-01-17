@@ -7,7 +7,7 @@ Allows to define indexes to be used on tables. Indexes are a common way to enhan
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $indexName, *array* $columns)
 

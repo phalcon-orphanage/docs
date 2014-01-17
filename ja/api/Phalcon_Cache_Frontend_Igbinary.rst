@@ -44,7 +44,7 @@ Allows to cache native PHP data in a serialized form using igbinary extension
 
 
 Methods
----------
+-------
 
 public *string*  **beforeStore** (*mixed* $data)
 

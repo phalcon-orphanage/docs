@@ -20,7 +20,7 @@ Checks if a value has a correct e-mail format
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 

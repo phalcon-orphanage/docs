@@ -5,7 +5,7 @@ Phalcon\\Cache\\BackendInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
 

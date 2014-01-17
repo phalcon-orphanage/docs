@@ -13,7 +13,7 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $cssClasses])
 

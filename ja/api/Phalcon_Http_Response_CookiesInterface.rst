@@ -5,7 +5,7 @@ Phalcon\\Http\\Response\\CookiesInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`  **useEncryption** (*boolean* $useEncryption)
 

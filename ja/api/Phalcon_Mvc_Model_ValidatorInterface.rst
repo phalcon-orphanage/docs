@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\ValidatorInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *array*  **getMessages** ()
 

@@ -5,7 +5,7 @@ Phalcon\\Translate\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** (*array* $options)
 

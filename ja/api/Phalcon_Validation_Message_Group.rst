@@ -7,7 +7,7 @@ Represents a group of validation messages
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $messages])
 

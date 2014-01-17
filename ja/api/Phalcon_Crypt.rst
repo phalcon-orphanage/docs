@@ -38,7 +38,7 @@ Constants
 *integer* **PADDING_SPACE**
 
 Methods
----------
+-------
 
 public *Phalcon\\Encrypt*  **setCipher** (*string* $cipher)
 

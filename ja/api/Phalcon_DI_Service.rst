@@ -19,7 +19,7 @@ Represents individually a service in the services container
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 

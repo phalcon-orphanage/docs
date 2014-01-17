@@ -20,7 +20,7 @@ Allows to manipulate the annotations reflection in an OO manner
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $reflectionData])
 

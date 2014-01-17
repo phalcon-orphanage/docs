@@ -5,7 +5,7 @@ Minify the css - removes comments removes newlines and line feeds keeping remove
 
 
 Methods
----------
+-------
 
 public *$content*  **filter** (*string* $content)
 

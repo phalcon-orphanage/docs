@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\ManagerInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 

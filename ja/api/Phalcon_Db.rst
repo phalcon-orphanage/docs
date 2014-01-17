@@ -41,7 +41,7 @@ Constants
 *integer* **FETCH_OBJ**
 
 Methods
----------
+-------
 
 public static  **setup** (*array* $options)
 

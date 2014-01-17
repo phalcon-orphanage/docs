@@ -5,7 +5,7 @@ Phalcon\\Mvc\\RouterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setDefaultModule** (*string* $moduleName)
 

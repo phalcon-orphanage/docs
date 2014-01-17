@@ -9,7 +9,7 @@ Adapter to use PHP itself as templating engine
 
 
 Methods
----------
+-------
 
 public  **render** (*string* $path, *array* $params, [*boolean* $mustClean])
 

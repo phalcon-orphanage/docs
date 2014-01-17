@@ -18,7 +18,7 @@ Constants
 *integer* **RANDOM_NOZERO**
 
 Methods
----------
+-------
 
 public static *string*  **camelize** (*string* $str)
 
