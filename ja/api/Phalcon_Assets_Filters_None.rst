@@ -5,7 +5,7 @@ Returns the content without make any modification to the original source
 
 
 Methods
----------
+-------
 
 public *$content*  **filter** (*string* $content)
 

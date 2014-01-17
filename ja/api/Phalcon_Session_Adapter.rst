@@ -5,12 +5,17 @@ Base class for Phalcon\\Session adapters
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
 Phalcon\\Session\\Adapter constructor
 
+
+
+public  **__destruct** ()
+
+...
 
 
 public *boolean*  **start** ()

@@ -24,7 +24,7 @@ Specific functions for the Mysql database system
 
 
 Methods
----------
+-------
 
 public *string*  **escapeIdentifier** (*string* $identifier)
 

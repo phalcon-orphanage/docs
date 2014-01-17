@@ -5,7 +5,7 @@ This is the base class to each database dialect. This implements common methods 
 
 
 Methods
----------
+-------
 
 public *string*  **limit** (*string* $sqlQuery, *int* $number)
 

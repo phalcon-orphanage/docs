@@ -7,7 +7,7 @@ This component allows Phalcon\\Mvc\\Model to return rows without an associated e
 
 
 Methods
----------
+-------
 
 public  **setDirtyState** (*int* $dirtyState)
 
@@ -36,6 +36,12 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 public  **offsetUnset** (*int* $offset)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+public *array*  **toArray** ()
+
+Returns the instance as an array representation
 
 
 

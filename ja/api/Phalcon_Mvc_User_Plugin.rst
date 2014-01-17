@@ -9,7 +9,7 @@ This class can be used to provide user plugins an easy access to services in the
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 

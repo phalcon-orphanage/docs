@@ -7,7 +7,7 @@ This component allows Phalcon\\Mvc\\Collection to return rows without an associa
 
 
 Methods
----------
+-------
 
 public *boolean*  **offsetExists** (*int* $index)
 

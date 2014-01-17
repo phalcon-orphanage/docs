@@ -47,7 +47,7 @@ Constants
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
 Methods
----------
+-------
 
 protected  **_initialize** ()
 

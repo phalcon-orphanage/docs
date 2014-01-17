@@ -28,7 +28,7 @@ Provides OO wrappers to the $_FILES superglobal
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $file, [*unknown* $key])
 

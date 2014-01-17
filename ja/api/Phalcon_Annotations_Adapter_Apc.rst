@@ -16,7 +16,7 @@ Stores the parsed annotations in APC. This adapter is suitable for production
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 

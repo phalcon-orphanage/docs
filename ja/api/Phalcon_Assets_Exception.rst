@@ -7,7 +7,7 @@ Phalcon\\DI\\Exception  Exceptions thrown in Phalcon\\Assets will use this class
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

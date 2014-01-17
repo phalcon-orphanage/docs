@@ -31,7 +31,7 @@ Validates that a field or a combination of a set of fields are not present more 
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 

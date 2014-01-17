@@ -7,7 +7,7 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

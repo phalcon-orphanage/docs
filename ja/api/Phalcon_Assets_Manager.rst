@@ -5,7 +5,7 @@ Manages collections of CSS/Javascript assets
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

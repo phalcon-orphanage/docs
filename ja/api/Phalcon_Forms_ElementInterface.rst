@@ -5,7 +5,7 @@ Phalcon\\Forms\\ElementInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 

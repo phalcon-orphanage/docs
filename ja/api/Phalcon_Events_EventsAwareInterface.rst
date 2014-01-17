@@ -5,7 +5,7 @@ Phalcon\\Events\\EventsAwareInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 

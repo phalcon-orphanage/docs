@@ -7,7 +7,7 @@ This component allows to create CLI applications using Phalcon
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*unknown* $dependencyInjector])
 

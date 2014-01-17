@@ -5,7 +5,7 @@ Phalcon\\Http\\Response\\HeadersInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **set** (*string* $name, *string* $value)
 

@@ -22,7 +22,7 @@ Groups Micro-Mvc handlers as controllers
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Mvc\\Micro\\CollectionInterface <Phalcon_Mvc_Micro_CollectionInterface>`  **setPrefix** (*string* $prefix)
 

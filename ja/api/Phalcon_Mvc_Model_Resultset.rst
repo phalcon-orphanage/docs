@@ -40,7 +40,7 @@ Constants
 *integer* **HYDRATE_ARRAYS**
 
 Methods
----------
+-------
 
 public  **next** ()
 

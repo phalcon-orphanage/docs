@@ -30,7 +30,7 @@ Constants
 *integer* **XHTML5**
 
 Methods
----------
+-------
 
 public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 

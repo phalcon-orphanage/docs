@@ -7,7 +7,7 @@ Parses docblocks returning an array with the found annotations
 
 
 Methods
----------
+-------
 
 public *array*  **parse** (*string* $className)
 

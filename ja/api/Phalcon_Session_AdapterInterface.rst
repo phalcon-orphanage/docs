@@ -5,7 +5,7 @@ Phalcon\\Session\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **__construct** ([*array* $options])
 

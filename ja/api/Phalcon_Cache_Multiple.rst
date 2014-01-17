@@ -47,7 +47,7 @@ Allows to read to chained backends writing to multiple backends
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*Phalcon\\Cache\\BackendInterface[]* $backends])
 

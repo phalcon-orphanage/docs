@@ -47,7 +47,7 @@ This component encapsulates all the complex operations behind instantiating ever
 
 
 Methods
----------
+-------
 
 public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 

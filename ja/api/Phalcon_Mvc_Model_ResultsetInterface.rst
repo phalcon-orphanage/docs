@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\ResultsetInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *int*  **getType** ()
 

@@ -7,7 +7,7 @@ This class defines role entity and its description
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, [*string* $description])
 

@@ -21,7 +21,7 @@ Check if a value is not included into a list of values
 
 
 Methods
----------
+-------
 
 public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
 
