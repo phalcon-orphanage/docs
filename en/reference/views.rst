@@ -757,7 +757,7 @@ when it's necessary.
          */
         public function __construct($view, $di)
         {
-            //Initiliaze here the adapter
+            //Initialize here the adapter
             parent::__construct($view, $di);
         }
 
