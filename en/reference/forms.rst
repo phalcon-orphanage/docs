@@ -265,7 +265,7 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
