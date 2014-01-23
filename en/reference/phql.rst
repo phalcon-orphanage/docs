@@ -436,7 +436,7 @@ With PHQL is possible insert data using the familiar INSERT statement:
           . "7, 10000.00, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    // Specifyng columns to insert
+    // Specifying columns to insert
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES ('Lamborghini Espada', 7, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
@@ -844,7 +844,7 @@ The following is the life cycle of each PHQL statement executed:
 
 Using Raw SQL
 -------------
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropiate:
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 .. code-block:: php
 

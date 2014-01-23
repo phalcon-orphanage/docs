@@ -77,7 +77,7 @@ Example:
 
 Base64 Support
 --------------
-In order that encryption is properly transmited (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
+In order that encryption is properly transmitted (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
 
 .. code-block:: php
 

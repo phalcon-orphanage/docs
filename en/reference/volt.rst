@@ -568,7 +568,7 @@ You may make calculations in templates using the following operators:
 
 Comparisons
 ^^^^^^^^^^^^
-The following omparison operators are available:
+The following comparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -1280,7 +1280,7 @@ Generate the code based on some function availability:
         }
     });
 
-Built-in functions can be overrided adding a function with its name:
+Built-in functions can be overridden adding a function with its name:
 
 .. code-block:: php
 
@@ -1309,7 +1309,7 @@ is similar as seen with the functions:
         return 'intval(' . $resolvedArgs . ')';
     });
 
-Built-in filters can be overrided adding a function with its name:
+Built-in filters can be overridden adding a function with its name:
 
 .. code-block:: php
 

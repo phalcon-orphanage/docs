@@ -433,7 +433,7 @@ before dispatch the action preparing the parameter accordingly:
                 }
 
             } catch (\Exception $e) {
-                //An exception has ocurred, maybe the class or action does not exist?
+                //An exception has occurred, maybe the class or action does not exist?
             }
 
         });

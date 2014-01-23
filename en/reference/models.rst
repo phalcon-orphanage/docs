@@ -334,7 +334,7 @@ If you prefer, there is also available a way to create queries in an object-orie
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
+This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
@@ -754,7 +754,7 @@ When explicitly defining the relationships between models, it is easy to find re
 
 Phalcon uses the magic methods __set/__get/__call to store or retrieve related data using relationships.
 
-By accesing an attribute with the same name as the relationship will retrieve all its related record(s).
+By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
 .. code-block:: php
 
@@ -906,7 +906,7 @@ Since both relations point to the same model (Robots), obtain the records relate
     //but, how to get the related record based on the column (similar_robots_id)
     //if both relationships have the same name?
 
-The aliases allow us to rename both releationships to solve these problems:
+The aliases allow us to rename both relationships to solve these problems:
 
 .. code-block:: php
 
@@ -1430,7 +1430,7 @@ Saving a record and its related records in a has-many relation:
     // Save the album + its songs
     $album->save();
 
-Saving the album and the artist at the same time implictly makes use of a transaction so if anything
+Saving the album and the artist at the same time implicitly makes use of a transaction so if anything
 goes wrong with saving the related records, the parent will not be saved either. Messages are
 passed back to the user for information regarding any errors.
 
@@ -1478,7 +1478,7 @@ generated the message or the message type:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method getMessages() can be overriden in a model to replace/translate the default messages generated automatically by the ORM:
+The method getMessages() can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 .. code-block:: php
 
@@ -1649,7 +1649,7 @@ If we want all objects created in our application use the same EventsManager, th
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
-                    if ($modle->name == 'Scooby Doo') {
+                    if ($model->name == 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
                         return false;
                     }
@@ -1761,7 +1761,7 @@ the value is not included in the method then the validator will fail and return 
 | Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+In addition to the built-in validators, you can create your own validators:
 
 .. code-block:: php
 
@@ -1941,7 +1941,7 @@ Forcing a default value can be done in the following way:
     $robot->created_at = new \Phalcon\Db\RawValue('default');
     $robot->create();
 
-A callback also can be used to create a conditional assigment of automatic default values:
+A callback also can be used to create a conditional assignment of automatic default values:
 
 .. code-block:: php
 
@@ -3251,7 +3251,7 @@ Profiling some queries:
        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement.
+Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
 
 Injecting services into Models
 ------------------------------
@@ -3270,7 +3270,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getFlash();
 
             //Show validation messages
-            foreach ($this->getMesages() as $message) {
+            foreach ($this->getMessages() as $message) {
                 $flash->error($message);
             }
         }

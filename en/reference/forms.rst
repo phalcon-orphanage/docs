@@ -313,7 +313,7 @@ Using this class as entity, allows the form to take the default values from it:
         'America/New_York' => 'New York',
         'Europe/Amsterdam' => 'Amsterdam',
         'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokio' => 'Tokio',
+        'Asia/Tokyo' => 'Tokyo',
     )));
 
     $form->add(new Select("receiveEmails", array(
@@ -321,7 +321,7 @@ Using this class as entity, allows the form to take the default values from it:
         'No' => 'No, thanks'
     )));
 
-Entities can implement getters, which have more precedence than public propierties, these methods
+Entities can implement getters, which have more precedence than public properties, these methods
 give you more free to produce values:
 
 .. code-block:: php
@@ -513,7 +513,7 @@ Forms are added to the forms manager and referenced by a unique name:
 
     $this->forms->set('login', new LoginForm());
 
-Using the unique name, forms can be accesed in any part of the application:
+Using the unique name, forms can be accessed in any part of the application:
 
 .. code-block:: php
 
