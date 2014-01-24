@@ -15,7 +15,7 @@ Creating a Bootstrap
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper
 in web applications, we use a cli.php file for bootstrapping the application.
 
-Below is a sample boostrap that is being used for this example.
+Below is a sample bootstrap that is being used for this example.
 
 .. code-block:: php
 

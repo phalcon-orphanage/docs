@@ -195,7 +195,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
       }
   }
 
-It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namespace
+It's always a good idea to separate your Unit tests in namespaces. For this test we will create the namespace
 'Test'. So create a file called \tests\Test\UnitTest.php:
 
 .. code-block:: php

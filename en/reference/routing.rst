@@ -107,7 +107,7 @@ Controller names are camelized, this means that characters (-) and (_) are remov
 is uppercased. For instance, some_controller is converted to SomeController.
 
 Since you can add many routes as you need using add(), the order in which routes are added indicate
-their relevance, lastest routes added have more relevance than first added. Internally, all defined routes
+their relevance, latest routes added have more relevance than first added. Internally, all defined routes
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
 
@@ -746,7 +746,7 @@ And use this class instead of the anonymous function:
 
 Hostname Constraints
 --------------------
-The router allow to set hostname contraints, this means that specific routes or a group of routes can be restricted
+The router allow to set hostname constraints, this means that specific routes or a group of routes can be restricted
 to only match if the route also meets the hostname constraint:
 
 .. code-block:: php
@@ -996,7 +996,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
 Registering Router instance
 ---------------------------
 
-You can register router during service registration with Phalcon depedency injector to make it available inside controller.
+You can register router during service registration with Phalcon dependency injector to make it available inside controller.
 You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
 
 .. code-block:: php

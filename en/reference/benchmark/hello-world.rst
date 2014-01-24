@@ -5,7 +5,7 @@ How the benchmarks were performed?
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
 people don't like this kind of benchmark because real-world applications require more complex features or
 structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
-Such a task represents the mimimum requirement for every framework to process a single request.
+Such a task represents the minimum requirement for every framework to process a single request.
 
 More specifically, the benchmark only measures the time it takes for a framework to start, run an action and
 free up resources at the end of the request. Any PHP application based on an MVC architecture will require

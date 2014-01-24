@@ -265,7 +265,7 @@ in the form's elements or assign the values from the form to the entity easily:
 
     $form->add(new Text("year"));
 
-Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entiy:
+Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:
 
 .. code-block:: html+php
 
@@ -313,7 +313,7 @@ Using this class as entity, allows the form to take the default values from it:
         'America/New_York' => 'New York',
         'Europe/Amsterdam' => 'Amsterdam',
         'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokio' => 'Tokio',
+        'Asia/Tokyo' => 'Tokyo',
     )));
 
     $form->add(new Select("receiveEmails", array(
@@ -321,8 +321,8 @@ Using this class as entity, allows the form to take the default values from it:
         'No' => 'No, thanks'
     )));
 
-Entities can implement getters, which have more precedence than public propierties, these methods
-give you more freedom to produce values:
+Entities can implement getters, which have more precedence than public properties, these methods
+give you more free to produce values:
 
 .. code-block:: php
 
@@ -513,7 +513,7 @@ Forms are added to the forms manager and referenced by a unique name:
 
     $this->forms->set('login', new LoginForm());
 
-Using the unique name, forms can be accesed in any part of the application:
+Using the unique name, forms can be accessed in any part of the application:
 
 .. code-block:: php
 

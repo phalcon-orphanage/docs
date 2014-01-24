@@ -41,7 +41,7 @@ At the bottom, look for the section "System variables" and edit the variable "Pa
 .. figure:: ../_static/img/path-3.png
    :align: center
 
-Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the ";" character to separate the differents paths in the variable:
+Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the ";" character to separate the different paths in the variable:
 
 .. figure:: ../_static/img/path-4.png
    :align: center

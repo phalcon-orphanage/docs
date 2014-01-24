@@ -460,7 +460,7 @@ Do not forget to register the custom models manager in the DI:
 
 Caching Related Records
 -----------------------
-When a related record is queried, the ORM internally builds the appropiate condition and gets the required records using find/findFirst
+When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find/findFirst
 in the target model according to the following table:
 
 +---------------------+---------------------------------------------------------------------------------------------------------------+
@@ -704,7 +704,7 @@ this class looks like:
     {
 
         /**
-         * The execute method is overrided
+         * The execute method is overridden
          */
         public function execute($params=null, $types=null)
         {

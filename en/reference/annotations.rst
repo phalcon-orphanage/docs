@@ -298,7 +298,7 @@ once the action has been executed:
 
 Annotations Adapters
 --------------------
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or prodiving facilities to development/testing:
+This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                      |

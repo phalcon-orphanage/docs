@@ -1,6 +1,6 @@
 Queueing
 ========
-Perform activities like process a video, resize images or send emails aren't suitables to be executed
+Perform activities like process a video, resize images or send emails aren't suitable to be executed
 online or in real time because it may slow the loading time of pages, impacting the user experience.
 
 The best solution here is implementing background jobs. A web application must put the job
