@@ -1302,7 +1302,7 @@ an insecure array without worrying about possible SQL injections:
 .. highlights::
 
     Without precautions mass assignment could allow attackers to set any database column’s value. Only use this feature
-    if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
+    if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted
     form.
 
 You can set an additional parameter in 'save' to set a whitelist of fields that only must taken into account when doing
