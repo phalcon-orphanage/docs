@@ -117,6 +117,16 @@ Then in the controller's action you can check if the CSRF token is valid:
 
     }
 
+Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
+
+.. code-block:: php
+
+    $di->setShared('session', function() {
+        $session = new Phalcon\Session\Adapter\Files();
+        $session->start();
+        return $session;
+    });
+
 Adding a captcha_ to the form is also recommended to completely avoid the risks of this attack.
 
 Setting up the component
