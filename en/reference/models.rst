@@ -2242,7 +2242,7 @@ that is performed operations over a model:
     <?php
 
     use Phalcon\Mvc\Model\Behavior;
-        Phalcon\Mvc\Model\BehaviorInterface;
+    use Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
     {
