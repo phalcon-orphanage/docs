@@ -88,7 +88,7 @@ And every Car has a Brand, so a Brand has many Cars:
 
 Creating PHQL Queries
 ---------------------
-PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
+PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
 
 .. code-block:: php
 
@@ -100,7 +100,7 @@ PHQL queries can be created just instantiating the class :doc:`Phalcon\\Mvc\\Mod
     // Execute the query returning a result if any
     $cars = $query->execute();
 
-From a controller or a view, it's easy create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
+From a controller or a view, it's easy to create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
 .. code-block:: php
 
@@ -156,7 +156,7 @@ Classes in namespaces are also allowed:
     $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
     $query = $manager->createQuery($phql);
 
-Most of the SQL standard is supported by PHQL even nonstandard directives as LIMIT:
+Most of the SQL standard is supported by PHQL, even nonstandard directives as LIMIT:
 
 .. code-block:: php
 
@@ -205,8 +205,8 @@ other types of queries that do not return complete objects, for example:
         echo "Name: ", $car->name, "\n";
     }
 
-We are only requesting some fields in the table therefore those cannot be considered an entire object. In this case, also returns a
-resulset type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
+We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
+still a resulset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
 object that only contain the two columns that were requested.
 
 These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
@@ -221,7 +221,7 @@ These values that don't represent complete objects we call them scalars. PHQL al
         echo $car->id_name, "\n";
     }
 
-As we can query complete objects or scalars, also we can query both at once:
+As we can query complete objects or scalars, we can also query both at once:
 
 .. code-block:: php
 
@@ -248,7 +248,7 @@ Scalars are mapped as properties of each "row", while complete objects are mappe
 Joins
 ^^^^^
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
-relationships in the models. PHQL adds these conditions automatically:
+relationships in the models, PHQL adds these conditions automatically:
 
 .. code-block:: php
 
@@ -314,8 +314,7 @@ If an alias is used to rename the models in the query, those will be used to nam
         echo "Brand: ", $row->b->name, "\n";
     }
 
-When the joined model has a many-to-many relation to the 'from' model, implicitly the
-intermediate model is added to the generated query:
+When the joined model has a many-to-many relation to the 'from' model, the intermediate model is implicitly added to the generated query:
 
 .. code-block:: php
 
@@ -325,7 +324,7 @@ intermediate model is added to the generated query:
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
     $result = $this->modelsManager->query($phql);
 
-Produce the following SQL in MySQL:
+This code produces the following SQL in MySQL:
 
 .. code-block:: sql
 
@@ -425,7 +424,7 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
 
 Inserting Data
 --------------
-With PHQL is possible insert data using the familiar INSERT statement:
+With PHQL it's possible to insert data using the familiar INSERT statement:
 
 .. code-block:: php
 
