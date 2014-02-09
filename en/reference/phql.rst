@@ -95,7 +95,7 @@ PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\
     <?php
 
     // Instantiate the Query
-    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $di);
+    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $this->getDI());
 
     // Execute the query returning a result if any
     $cars = $query->execute();
