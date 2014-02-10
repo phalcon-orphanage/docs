@@ -72,7 +72,7 @@ You can add messages with your own types:
 
 Printing Messages
 -----------------
-Messages sent to the flasher are automatically formatted with html:
+Messages sent to the flash service are automatically formatted with html:
 
 .. code-block:: html
 
@@ -81,7 +81,7 @@ Messages sent to the flasher are automatically formatted with html:
     <div class="noticeMessage">this a very important information</div>
     <div class="warningMessage">best check yo self, you're not looking too good.</div>
 
-As can be seen, also some CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
+As you can see, CSS classes are added automatically to the DIVs. These classes allow you to define the graphical presentation
 of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter bootstrap, classes can be configured as:
 
 .. code-block:: php
@@ -130,7 +130,7 @@ if you make a "forward" is not necessary to store the messages in session, but i
             //store the post
 
             //Using direct flash
-            $this->flash->success("Your information were stored correctly!");
+            $this->flash->success("Your information was stored correctly!");
 
             //Forward to the index action
             return $this->dispatcher->forward(array("action" => "index"));
@@ -158,7 +158,7 @@ Or using a HTTP redirection:
             //store the post
 
             //Using session flash
-            $this->flashSession->success("Your information were stored correctly!");
+            $this->flashSession->success("Your information was stored correctly!");
 
             //Make a full HTTP redirection
             return $this->response->redirect("contact/index");
@@ -166,7 +166,7 @@ Or using a HTTP redirection:
 
     }
 
-In this case you need to print manually the messages in the corresponding view:
+In this case you need to manually print the messages in the corresponding view:
 
 .. code-block:: html+php
 
