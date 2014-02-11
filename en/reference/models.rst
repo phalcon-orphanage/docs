@@ -336,6 +336,42 @@ The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
+Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
+retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+An example is in order, so taking our Robots model mentioned earlier :
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+        public $id;
+
+        public $name;
+
+        public $price;
+    }
+
+We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
+'Terminator'. This could be written like so :
+
+.. code-block:: php
+
+    <?php
+
+    $name = "Terminator";
+    $robot = Robots::findFirstByName($name);
+
+    if($robot){
+        $this->flash->success("The first robot with the name " . $name . " cost " . $robot->price ".");
+    }else{
+        $this->flash->error("There were no robots found in our table with the name " . $name ".");
+    }
+
+Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
+when we find a match with our query, all the other properties are available to us as well.
+
 Model Resultsets
 ^^^^^^^^^^^^^^^^
 While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
