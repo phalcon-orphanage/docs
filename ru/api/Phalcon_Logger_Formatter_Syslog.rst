@@ -11,7 +11,7 @@ Prepares a message to be used in a Syslog backend
 Methods
 -------
 
-public *array*  **format** (*string* $message, *int* $type, *int* $timestamp)
+public *array*  **format** (*string* $message, *int* $type, *int* $timestamp, *unknown* $context)
 
 Applies a format to a message before sent it to the internal log
 
@@ -20,6 +20,12 @@ Applies a format to a message before sent it to the internal log
 public *string*  **getTypeString** (*integer* $type) inherited from Phalcon\\Logger\\Formatter
 
 Returns the string meaning of a logger constant
+
+
+
+protected  **interpolate** (*string* $message, *array* $context) inherited from Phalcon\\Logger\\Formatter
+
+Interpolates context values into the message placeholders
 
 
 

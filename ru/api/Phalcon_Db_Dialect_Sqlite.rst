@@ -5,7 +5,7 @@ Class **Phalcon\\Db\\Dialect\\Sqlite**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
-Generates database specific SQL for the Sqlite RBDM
+Generates database specific SQL for the SQLite RDBMS
 
 
 Methods
@@ -83,7 +83,7 @@ Generates SQL to create a table in Sqlite
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName)
 
 Generates SQL to drop a table
 

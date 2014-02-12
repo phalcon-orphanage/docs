@@ -1,4 +1,4 @@
-Список API
+API Indice
 ----------
 
 .. toctree::
@@ -223,9 +223,9 @@
    Phalcon_Paginator_Exception
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
+   Phalcon_Registry
    Phalcon_Security
    Phalcon_Security_Exception
-   Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Bag

@@ -133,7 +133,7 @@ Sets the render level for the view
     <?php
 
      	//Render the view related to the controller only
-     	$this->view->setRenderLevel(View::LEVEL_VIEW);
+     	$this->view->setRenderLevel(View::LEVEL_LAYOUT);
 
 
 
@@ -374,7 +374,7 @@ Choose a different view to render instead of last-controller/last-action
 
 
 
-public  **partial** (*string* $partialPath, [*array* $params])
+public  **partial** (*string* $partialPath)
 
 Renders a partial view 
 

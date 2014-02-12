@@ -106,7 +106,7 @@ Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the 
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setUriSource** (*string* $uriSource) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setUriSource** (*int* $uriSource) inherited from Phalcon\\Mvc\\Router
 
 Sets the URI source. One of the URI_SOURCE_* constants 
 
@@ -191,7 +191,7 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 public *array*  **getDefaults** () inherited from Phalcon\\Mvc\\Router
 
-Returns an array of default paths
+Returns an array of default parameters
 
 
 
@@ -256,7 +256,7 @@ Mounts a group of routes in the router
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **notFound** (*array* $paths) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **notFound** (*array|string* $paths) inherited from Phalcon\\Mvc\\Router
 
 Set a group of paths to be returned when none of the defined routes are matched
 
@@ -322,7 +322,7 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteById** (*string* $id) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  | false **getRouteById** (*string* $id) inherited from Phalcon\\Mvc\\Router
 
 Returns a route object by its id
 

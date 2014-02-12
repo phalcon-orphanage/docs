@@ -31,3 +31,8 @@ Returns log timestamp
 
 
 
+public  **getContext** ()
+
+...
+
+

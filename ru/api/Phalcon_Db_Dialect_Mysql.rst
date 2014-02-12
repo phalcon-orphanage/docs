@@ -5,7 +5,7 @@ Class **Phalcon\\Db\\Dialect\\Mysql**
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
-Generates database specific SQL for the MySQL RBDM
+Generates database specific SQL for the MySQL RBDMS
 
 
 Methods
@@ -83,7 +83,7 @@ Generates SQL to create a table in MySQL
 
 
 
-public *string*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+public *string*  **dropTable** (*string* $tableName, *string* $schemaName)
 
 Generates SQL to drop a table
 

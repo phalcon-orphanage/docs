@@ -76,7 +76,7 @@ Get last initialized model
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName, [*boolean* $newInstance])
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName, *boolean* $newInstance)
 
 Loads a model throwing an exception if it doesn't exist
 
@@ -341,7 +341,7 @@ Creates a Phalcon\\Mvc\\Model\\Query without execute it
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **executeQuery** (*string* $phql, [*array* $placeholders], [*unknown* $types])
+public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **executeQuery** (*string* $phql, [*array* $placeholders])
 
 Creates a Phalcon\\Mvc\\Model\\Query and execute it
 

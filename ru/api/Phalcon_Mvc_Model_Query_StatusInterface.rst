@@ -7,12 +7,6 @@ Phalcon\\Mvc\\Model\\Query\\StatusInterface initializer
 Methods
 -------
 
-abstract public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
-
-Phalcon\\Mvc\\Model\\Query\\Status
-
-
-
 abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
 
 Returns the model which executed the action

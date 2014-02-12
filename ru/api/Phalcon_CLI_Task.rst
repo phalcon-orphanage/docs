@@ -32,12 +32,6 @@ Every command-line task should extend this class that encapsulates all the task 
 Methods
 -------
 
-final public  **__construct** ()
-
-Phalcon_CLI_Task constructor
-
-
-
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
@@ -62,7 +56,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

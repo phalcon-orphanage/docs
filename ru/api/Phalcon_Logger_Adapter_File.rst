@@ -34,7 +34,7 @@ Returns the internal formatter
 
 
 
-public  **logInternal** (*string* $message, *int* $type, *int* $time)
+protected  **logInternal** (*string* $message, *int* $type, *int* $time, *array* $context)
 
 Writes the log to the file itself
 
@@ -100,56 +100,62 @@ Rollbacks the internal transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergency** (*string* $message) inherited from Phalcon\\Logger\\Adapter
-
-Sends/Writes an emergency message to the log
-
-
-
-public  **emergence** (*unknown* $message) inherited from Phalcon\\Logger\\Adapter
+public  **emergence** (*unknown* $message, [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
 
 ...
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **debug** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **log** (*unknown* $type, *string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+
+Logs messages to the internal logger. Appends messages to the log
+
+
+
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **debug** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a debug message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **error** (*string* $message) inherited from Phalcon\\Logger\\Adapter
-
-Sends/Writes an error message to the log
-
-
-
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **info** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **info** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an info message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **notice** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **notice** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a notice message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **warning** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **warning** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes a warning message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **alert** (*string* $message) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **error** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+
+Sends/Writes an error message to the log
+
+
+
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **critical** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
+
+Sends/Writes a critical message to the log
+
+
+
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **alert** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Sends/Writes an alert message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **log** (*string* $message, [*int* $type]) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **emergency** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
-Logs messages to the internal logger. Appends messages to the log
+Sends/Writes an emergency message to the log
 
 
 

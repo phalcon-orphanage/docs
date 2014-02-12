@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Annotations\\Adapter**
 ================================================
 
+*implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
+
 This is the base class for Phalcon\\Annotations adapters
 
 

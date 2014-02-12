@@ -18,13 +18,13 @@ public  **connect** ()
 ...
 
 
-public  **put** (*string* $data, [*array* $options])
+public *string|boolean*  **put** (*string* $data, [*array* $options])
 
 Inserts jobs into the queue
 
 
 
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
+public *boolean|\Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
 
 Reserves a job in the queue
 
@@ -42,7 +42,7 @@ Change the active tube. By default the tube is 'default'
 
 
 
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
+public *boolean|\Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
 
 Inspect the next ready job.
 

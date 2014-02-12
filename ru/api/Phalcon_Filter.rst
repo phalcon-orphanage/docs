@@ -26,7 +26,7 @@ Adds a user-defined filter
 
 
 
-public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters, [*unknown* $norecursive])
+public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)
 
 Sanitizes a value with a specified single or set of filters
 

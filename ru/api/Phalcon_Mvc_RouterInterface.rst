@@ -73,6 +73,12 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addPatch** (*string* $pattern, [*string/array* $paths])
+
+Add a route to the router that only match if the HTTP method is PATCH
+
+
+
 abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addHead** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is HEAD

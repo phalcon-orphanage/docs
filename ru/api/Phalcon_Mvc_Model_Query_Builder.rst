@@ -22,7 +22,7 @@ Helps to create PHQL queries using an OO interface
 Methods
 -------
 
-public  **__construct** ([*array* $params], [:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
+public  **__construct** ([*array* $params])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor 
 
@@ -129,7 +129,7 @@ Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
 Adds a INNER join to the query 
 

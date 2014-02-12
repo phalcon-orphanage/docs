@@ -81,19 +81,19 @@ public  **gc** ()
 ...
 
 
-public *mixed*  **increment** ([*int|string* $keyName], [*long* $value])
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
 
 Increment of a given key by $value
 
 
 
-public *mixed*  **decrement** ([*int|string* $keyName], [*long* $value])
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
 
 Decrement of a given key by $value
 
 
 
-public *bool*  **flush** ([*unknown* $keyName], [*unknown* $value])
+public *bool*  **flush** ()
 
 Immediately invalidates all existing items.
 

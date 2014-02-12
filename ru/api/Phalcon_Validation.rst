@@ -77,6 +77,16 @@ Gets the a value to validate in the array/object data source
 
 
 
+public  **setDefaultMessages** ([*unknown* $messages])
+
+...
+
+
+public  **getDefaultMessage** (*unknown* $type)
+
+...
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
@@ -101,7 +111,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

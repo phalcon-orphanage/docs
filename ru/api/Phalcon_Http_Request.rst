@@ -33,7 +33,7 @@ Returns the internal dependency injector
 
 
 
-public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned 
 
@@ -50,7 +50,7 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed. If no
 
 
 
-public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned 
 
@@ -67,7 +67,7 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
-public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a variable from put request 
 
@@ -82,7 +82,7 @@ Gets a variable from put request
 
 
 
-public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
 

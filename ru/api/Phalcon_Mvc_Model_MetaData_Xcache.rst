@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Xcache**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Stores model meta-data in the XCache cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing xcache_get('$PMM$') or xcache_get('$PMM$my-app-id')  
 
@@ -68,6 +68,11 @@ public  **write** (*string* $key, *array* $data)
 
 Writes the metadata to XCache
 
+
+
+public  **reset** ()
+
+...
 
 
 protected  **_initialize** () inherited from Phalcon\\Mvc\\Model\\MetaData
@@ -369,19 +374,6 @@ Checks if the internal meta-data container is empty
     <?php
 
     var_dump($metaData->isEmpty());
-
-
-
-
-public  **reset** () inherited from Phalcon\\Mvc\\Model\\MetaData
-
-Resets internal meta-data in order to regenerate it 
-
-.. code-block:: php
-
-    <?php
-
-    $metaData->reset();
 
 
 

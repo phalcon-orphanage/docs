@@ -7,12 +7,6 @@ Phalcon\\Mvc\\Model\\Query\\BuilderInterface initializer
 Methods
 -------
 
-abstract public  **__construct** ([*array* $params])
-
-Phalcon\\Mvc\\Model\\Query\\Builder
-
-
-
 abstract public  **distinct** (*unknown* $distinct)
 
 ...

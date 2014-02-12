@@ -68,7 +68,7 @@ Escapes a HTML string. Internally uses htmlspecialchars
 
 
 
-public *string*  **escapeHtmlAttr** (*string* $attribute)
+public *string*  **escapeHtmlAttr** (*unknown* $text)
 
 Escapes a HTML attribute string
 
