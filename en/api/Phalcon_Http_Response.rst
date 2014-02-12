@@ -188,7 +188,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content, [*unknown* $jsonOptions])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -239,7 +239,7 @@ Prints out HTTP response to the client
 
 
 
-public  **setFileToSend** (*string* $filePath, [*string* $attachmentName], [*unknown* $attachment])
+public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
 
 Sets an attached file to be sent at the end of the request
 

@@ -25,7 +25,7 @@ Checks if a form is registered in the forms manager
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **set** (*string* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
+public :doc:`Phalcon\\Forms\\Manager <Phalcon_Forms_Manager>`  **set** (*string* $name, :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Registers a form in the Forms Manager
 

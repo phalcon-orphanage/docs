@@ -72,7 +72,7 @@ Sets the columns to be queried
 
 public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
-Adds a INNER join to the query 
+Adds a join to the query 
 
 .. code-block:: php
 
@@ -128,7 +128,7 @@ Adds a RIGHT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions)
 
 Sets the conditions parameter in the criteria
 

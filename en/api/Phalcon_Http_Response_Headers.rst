@@ -27,6 +27,12 @@ Sets a raw header to be sent at the end of the request
 
 
 
+public  **remove** (*unknown* $header_index)
+
+Removes a header to be sent at the end of the request
+
+
+
 public *boolean*  **send** ()
 
 Sends the headers to the client

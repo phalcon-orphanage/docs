@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Image\\Adapter**
 ==========================================
 
+*implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
+
 Base class for Phalcon\\Image adapters
 
 
@@ -43,7 +45,7 @@ Returns the image of images
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master])
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height])
 
 Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.
 
@@ -127,7 +129,7 @@ Save the image. If the filename is omitted, the original image will be overwritt
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $ext], [*unknown* $quality])
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $quality])
 
 Render the image and return the binary string.
 

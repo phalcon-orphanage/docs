@@ -7,12 +7,6 @@ Phalcon\\DI\\ServiceInterface initializer
 Methods
 -------
 
-abstract public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
-
-
-
-
-
 abstract public  **getName** ()
 
 Returns the service's name
@@ -51,12 +45,6 @@ abstract public  **isResolved** ()
 abstract public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
-
-
-
-abstract public static :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **__set_state** (*array* $attributes)
-
-Restore the interal state of a service
 
 
 

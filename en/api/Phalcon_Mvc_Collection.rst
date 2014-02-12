@@ -20,7 +20,7 @@ Constants
 Methods
 -------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -50,7 +50,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** ()
+protected  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets a custom events manager
 
@@ -439,7 +439,7 @@ Serializes the object ignoring connections or protected properties
 
 
 
-public  **unserialize** (*string* $data)
+public  **unserialize** ([*unknown* $serialized])
 
 Unserializes the object from a serialized string
 

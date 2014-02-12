@@ -155,7 +155,7 @@ Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** ([*string* $label]) inherited from Phalcon\\Forms\\Element
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** (*string* $label) inherited from Phalcon\\Forms\\Element
 
 Sets the element label
 

@@ -38,7 +38,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** (*string* $phql)
 
 Phalcon\\Mvc\\Model\\Query constructor
 

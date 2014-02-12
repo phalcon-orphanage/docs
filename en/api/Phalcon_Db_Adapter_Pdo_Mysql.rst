@@ -101,7 +101,7 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
@@ -116,7 +116,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **execute** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
 
@@ -164,7 +164,7 @@ Escapes a value to avoid SQL injections according to the active charset in the c
 
 
 
-public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *array*  **convertBoundParams** (*unknown* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
@@ -266,7 +266,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -285,7 +285,7 @@ Returns the first row in a SQL query result
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 

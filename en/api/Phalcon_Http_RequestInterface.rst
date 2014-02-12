@@ -19,6 +19,11 @@ Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
+abstract public  **getPut** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue])
+
+...
+
+
 abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed
@@ -41,6 +46,11 @@ abstract public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
 
+
+
+abstract public  **hasPut** (*unknown* $name)
+
+...
 
 
 abstract public *boolean*  **hasQuery** (*string* $name)

@@ -7,12 +7,6 @@ Phalcon\\Mvc\\Model\\BehaviorInterface initializer
 Methods
 -------
 
-abstract public  **__construct** ([*array* $options])
-
-Phalcon\\Mvc\\Model\\Behavior
-
-
-
 abstract public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 This method receives the notifications from the EventsManager

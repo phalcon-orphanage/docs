@@ -12,7 +12,7 @@ if (!extension_loaded('phalcon')) {
 	throw new Exception("Phalcon extension is required");
 }
 
-define('CPHALCON_DIR', '/Users/gutierrezandresfelipe/cphalcon/ext/');
+define('CPHALCON_DIR', '/home/boston/gits/phalcon/core/ext/');
 
 if (!file_exists(CPHALCON_DIR)) {
 	throw new Exception("CPHALCON directory does not exist");

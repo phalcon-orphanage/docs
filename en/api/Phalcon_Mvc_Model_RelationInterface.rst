@@ -7,12 +7,6 @@ Phalcon\\Mvc\\Model\\RelationInterface initializer
 Methods
 -------
 
-abstract public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
-
-Phalcon\\Mvc\\Model\\Relation constructor
-
-
-
 abstract public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 
 Sets the intermediate model dat for has-*-through relations

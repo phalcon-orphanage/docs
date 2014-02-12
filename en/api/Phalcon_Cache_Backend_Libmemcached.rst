@@ -82,13 +82,13 @@ Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** ([*string* $keyName], [*long* $value])
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
 
 Increment of a given key, by number $value
 
 
 
-public *mixed*  **decrement** ([*string* $keyName], [*long* $value])
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
 
 Decrement of a given key, by number $value
 

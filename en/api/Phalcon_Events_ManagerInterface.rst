@@ -13,7 +13,7 @@ Attach a listener to the events manager
 
 
 
-abstract public  **dettachAll** ([*string* $type])
+abstract public  **detachAll** ([*string* $type])
 
 Removes all events from the EventsManager
 

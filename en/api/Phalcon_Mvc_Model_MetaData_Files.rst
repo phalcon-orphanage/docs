@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Files**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Stores model meta-data in PHP files.  
 
@@ -67,6 +67,11 @@ public  **write** (*string* $key, *array* $data)
 
 Writes the meta-data to files
 
+
+
+public  **reset** ()
+
+...
 
 
 protected  **_initialize** () inherited from Phalcon\\Mvc\\Model\\MetaData
@@ -368,19 +373,6 @@ Checks if the internal meta-data container is empty
     <?php
 
     var_dump($metaData->isEmpty());
-
-
-
-
-public  **reset** () inherited from Phalcon\\Mvc\\Model\\MetaData
-
-Resets internal meta-data in order to regenerate it 
-
-.. code-block:: php
-
-    <?php
-
-    $metaData->reset();
 
 
 

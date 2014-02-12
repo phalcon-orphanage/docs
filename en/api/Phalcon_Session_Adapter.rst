@@ -1,6 +1,8 @@
 Abstract class **Phalcon\\Session\\Adapter**
 ============================================
 
+*implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`, Countable, IteratorAggregate, Traversable, ArrayAccess
+
 Base class for Phalcon\\Session adapters
 
 
@@ -45,7 +47,7 @@ Get internal options
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue], [*bool* $remove])
+public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
 
 Gets a session variable from an application context
 
@@ -116,7 +118,7 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** ()
+public *boolean*  **destroy** ([*unknown* $session_id])
 
 Destroys the active session 
 
@@ -127,5 +129,55 @@ Destroys the active session
     var_dump($session->destroy());
 
 
+
+
+public  **__get** (*unknown* $property)
+
+...
+
+
+public  **__set** (*unknown* $property, *unknown* $value)
+
+...
+
+
+public  **__isset** (*unknown* $property)
+
+...
+
+
+public  **__unset** (*unknown* $property)
+
+...
+
+
+public  **offsetGet** (*unknown* $property)
+
+...
+
+
+public  **offsetSet** (*unknown* $property, *unknown* $value)
+
+...
+
+
+public  **offsetExists** (*unknown* $property)
+
+...
+
+
+public  **offsetUnset** (*unknown* $property)
+
+...
+
+
+public  **count** ()
+
+...
+
+
+public  **getIterator** ()
+
+...
 
 

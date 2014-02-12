@@ -34,19 +34,19 @@ Phalcon\\Image\\Imagick constructor
 
 
 
-protected  **_resize** (*int* $width, *int* $height)
+protected  **_resize** ([*int* $width], [*int* $height])
 
 Execute a resize.
 
 
 
-protected  **_liquidRescale** (*unknown* $width, *unknown* $height, *unknown* $delta_x, *unknown* $rigidity)
+protected  **_liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $delta_x], [*unknown* $rigidity])
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
 
 
-protected  **_crop** (*int* $width, *int* $height, *int* $offset_x, *int* $offset_y)
+protected  **_crop** (*int* $width, *int* $height, [*int* $offset_x], [*int* $offset_y])
 
 Execute a crop.
 
@@ -70,19 +70,19 @@ Execute a sharpen.
 
 
 
-protected  **_reflection** (*int* $height, *int* $opacity, *boolean* $fade_in)
+protected  **_reflection** ([*int* $height], [*int* $opacity], [*boolean* $fade_in])
 
 Execute a reflection.
 
 
 
-protected  **_watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, *int* $offset_x, *int* $offset_y, *int* $opacity)
+protected  **_watermark** (:doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>` $watermark, [*int* $offset_x], [*int* $offset_y], [*int* $opacity])
 
 Execute a watermarking.
 
 
 
-protected  **_text** (*unknown* $text, *int* $offset_x, *int* $offset_y, *int* $opacity, *int* $r, *int* $g, *int* $b, *int* $size, *string* $fontfile)
+protected  **_text** (*unknown* $text, [*int* $offset_x], [*int* $offset_y], [*int* $opacity], [*unknown* $color], [*int* $size], [*string* $fontfile])
 
 Execute a text
 
@@ -94,31 +94,31 @@ Composite one image onto another
 
 
 
-protected  **_background** (*int* $r, *int* $g, *int* $b, *unknown* $quality)
+protected  **_background** (*unknown* $color, [*unknown* $quality])
 
 Execute a background.
 
 
 
-protected  **_blur** (*unknown* $radius)
+protected  **_blur** ([*unknown* $radius])
 
 Blur image
 
 
 
-protected  **_pixelate** (*unknown* $amount)
+protected  **_pixelate** ([*unknown* $amount])
 
 Pixelate image
 
 
 
-protected *boolean*  **_save** (*string* $file, *int* $quality)
+protected *boolean*  **_save** ([*string* $file], [*int* $quality])
 
 Execute a save.
 
 
 
-protected *string*  **_render** (*string* $type, *int* $quality)
+protected *string*  **_render** ([*string* $type], [*int* $quality])
 
 Execute a render.
 
@@ -176,7 +176,7 @@ Returns the image of images
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master]) inherited from Phalcon\\Image\\Adapter
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height]) inherited from Phalcon\\Image\\Adapter
 
 Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.
 
@@ -260,7 +260,7 @@ Save the image. If the filename is omitted, the original image will be overwritt
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $ext], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
 
 Render the image and return the binary string.
 

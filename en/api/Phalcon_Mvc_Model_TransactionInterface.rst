@@ -7,12 +7,6 @@ Phalcon\\Mvc\\Model\\TransactionInterface initializer
 Methods
 -------
 
-abstract public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
-
-Phalcon\\Mvc\\Model\\Transaction constructor
-
-
-
 abstract public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
 
 Sets transaction manager related to the transaction

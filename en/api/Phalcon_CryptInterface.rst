@@ -55,13 +55,13 @@ Decrypts a text
 
 
 
-abstract public *string*  **encryptBase64** (*string* $text, [*string* $key])
+abstract public *string*  **encryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-abstract public *string*  **decryptBase64** (*string* $text, [*string* $key])
+abstract public *string*  **decryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
 
 Decrypt a text that is coded as a base64 string
 
