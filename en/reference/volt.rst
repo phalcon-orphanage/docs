@@ -197,7 +197,8 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | url_encode           | Applies the urlencode_ PHP function to the value                             |
 +----------------------+------------------------------------------------------------------------------+
-| default              | Sets a default value in case that the evaluated expression is null           |
+| default              | Sets a default value in case that the evaluated expression is empty          |
+|                      | (is not set or evaluates to a falsy value)                                   |
 +----------------------+------------------------------------------------------------------------------+
 | convert_encoding     | Converts a string from one charset to another                                |
 +----------------------+------------------------------------------------------------------------------+
