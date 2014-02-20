@@ -641,7 +641,7 @@ blockquote {
 .header-line {
     min-width: 980px;
     height: 87px;
-    background: #5da49e url('img/header-line.jpg') 50% 0 no-repeat;
+    background: #42AAA9 url('img/header-line.jpg') 50% 0 no-repeat;
     margin: 0 0 20px;
     overflow: hidden;
 }
