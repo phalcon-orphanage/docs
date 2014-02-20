@@ -194,8 +194,10 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
     // First robot where type = "mechanical" and year = "1999"
     $robot = Robots::findFirst(array(
-        "type" => "mechanical",
-        "year" => "1999"
+        "conditions" => array(
+            "type" => "mechanical",
+            "year" => "1999"
+        )
     ));
 
     // All virtual robots ordered by name downward
