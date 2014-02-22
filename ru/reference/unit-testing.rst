@@ -170,7 +170,7 @@ PHPUnit для выполнения тестов.
        */
       private $_loaded = false;
 
-      public function setUp() {
+      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
 
           // Загрузка дополнительных сервисов, которые могут потребоваться во время тестирования
           $di = DI::getDefault();
