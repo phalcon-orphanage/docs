@@ -55,7 +55,7 @@ Sets the default controller name
 
 
 
-public  **setControllerName** (*string* $controllerName)
+public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
 Sets the controller name to be dispatched
 

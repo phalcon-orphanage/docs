@@ -48,7 +48,7 @@ Serializing a resultset will dump all related rows into a big array
 
 
 
-public  **unserialize** (*string* $data)
+public  **unserialize** ([*unknown* $serialized])
 
 Unserializing a resultset will allow to only works on the rows present in the saved state
 
@@ -84,25 +84,25 @@ Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*unknown* $property, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*int* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

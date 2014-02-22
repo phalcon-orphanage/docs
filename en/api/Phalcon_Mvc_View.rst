@@ -494,7 +494,7 @@ Resets the view component to its factory default values
 
 
 
-public  **__set** (*string* $key, *mixed* $value)
+public  **__set** (*unknown* $property, *mixed* $value)
 
 Magic method to pass variables to the views 
 
@@ -507,7 +507,7 @@ Magic method to pass variables to the views
 
 
 
-public *mixed*  **__get** (*string* $key)
+public *mixed*  **__get** (*unknown* $property)
 
 Magic method to retrieve a variable passed to the view 
 
@@ -520,7 +520,7 @@ Magic method to retrieve a variable passed to the view
 
 
 
-public *mixed*  **__isset** (*string* $key)
+public *mixed*  **__isset** (*unknown* $property)
 
 Magic method to inaccessible a variable passed to the view 
 

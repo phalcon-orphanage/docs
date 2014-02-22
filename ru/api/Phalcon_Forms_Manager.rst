@@ -7,6 +7,11 @@ Manages forms within the application. Allowing the developer to access them from
 Methods
 -------
 
+public  **__construct** ()
+
+...
+
+
 public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **create** ([*string* $name], [*object* $entity])
 
 Creates a form registering it in the forms manager

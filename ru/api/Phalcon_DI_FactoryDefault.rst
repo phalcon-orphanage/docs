@@ -23,27 +23,9 @@ Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition) inherited from Phalcon\\DI
-
-Registers an "always shared" service in the services container
-
-
-
 public  **remove** (*string* $name) inherited from Phalcon\\DI
 
 Removes a service in the services container
-
-
-
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared]) inherited from Phalcon\\DI
-
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
-
-
-
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
-
-Sets a service using a raw Phalcon\\DI\\Service definition
 
 
 
@@ -56,6 +38,12 @@ Returns a service definition without resolving
 public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*string* $name) inherited from Phalcon\\DI
 
 Returns a Phalcon\\DI\\Service instance
+
+
+
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (:doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
+
+Sets a service using a raw Phalcon\\DI\\Service definition
 
 
 
@@ -89,50 +77,6 @@ Return the services registered in the DI
 
 
 
-public *boolean*  **offsetExists** (*string* $name) inherited from Phalcon\\DI
-
-Check if a service is registered using the array syntax. Alias for Phalcon\\Di::has()
-
-
-
-public  **offsetSet** (*string* $name, *mixed* $definition) inherited from Phalcon\\DI
-
-Allows to register a shared service using the array syntax. Alias for Phalcon\\Di::setShared() 
-
-.. code-block:: php
-
-    <?php
-
-    $di['request'] = new Phalcon\Http\Request();
-
-
-
-
-public *mixed*  **offsetGet** (*string* $name, [*unknown* $parameters]) inherited from Phalcon\\DI
-
-Allows to obtain a shared service using the array syntax. Alias for Phalcon\\Di::getShared() 
-
-.. code-block:: php
-
-    <?php
-
-    var_dump($di['request']);
-
-
-
-
-public  **offsetUnset** (*string* $name) inherited from Phalcon\\DI
-
-Removes a service from the services container using the array syntax. Alias for Phalcon\\Di::remove()
-
-
-
-public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\DI
-
-Magic method to get or set services using setters/getters
-
-
-
 public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI
 
 Set a default dependency injection container to be obtained into static methods
@@ -148,6 +92,67 @@ Return the lastest DI created
 public static  **reset** () inherited from Phalcon\\DI
 
 Resets the internal default DI
+
+
+
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared]) inherited from Phalcon\\DI
+
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+
+
+
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition) inherited from Phalcon\\DI
+
+Registers an "always shared" service in the services container
+
+
+
+public  **setRaw** (*unknown* $rawDefinition) inherited from Phalcon\\DI
+
+...
+
+
+public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\DI
+
+Check if a service is registered using the array syntax. Alias for Phalcon\\Di::has()
+
+
+
+public  **offsetSet** (*unknown* $property, *unknown* $value) inherited from Phalcon\\DI
+
+Allows to register a shared service using the array syntax. Alias for Phalcon\\Di::setShared() 
+
+.. code-block:: php
+
+    <?php
+
+    $di['request'] = new Phalcon\Http\Request();
+
+
+
+
+public *mixed*  **offsetGet** (*unknown* $property) inherited from Phalcon\\DI
+
+Allows to obtain a shared service using the array syntax. Alias for Phalcon\\Di::getShared() 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($di['request']);
+
+
+
+
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\DI
+
+Removes a service from the services container using the array syntax. Alias for Phalcon\\Di::remove()
+
+
+
+public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\DI
+
+Magic method to get or set services using setters/getters
 
 
 

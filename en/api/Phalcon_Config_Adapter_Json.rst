@@ -34,7 +34,7 @@ Phalcon\\Config\\Adapter\\Json constructor
 
 
 
-public *boolean*  **offsetExists** (*string* $index) inherited from Phalcon\\Config
+public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Config
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -60,7 +60,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public *string*  **offsetGet** (*string* $index) inherited from Phalcon\\Config
+public *string*  **offsetGet** (*unknown* $property) inherited from Phalcon\\Config
 
 Gets an attribute using the array-syntax 
 
@@ -73,7 +73,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*string* $index, *mixed* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*unknown* $property, *mixed* $value) inherited from Phalcon\\Config
 
 Sets an attribute using the array-syntax 
 
@@ -86,7 +86,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*string* $index) inherited from Phalcon\\Config
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Config
 
 Unsets an attribute using the array-syntax 
 
@@ -136,23 +136,28 @@ public  **__wakeup** () inherited from Phalcon\\Config
 ...
 
 
-public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*array* $data) inherited from Phalcon\\Config
+public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** ([*unknown* $properties]) inherited from Phalcon\\Config
 
 Restores the state of a Phalcon\\Config object
 
 
 
-public  **__get** (*unknown* $index) inherited from Phalcon\\Config
+public  **__get** (*unknown* $property) inherited from Phalcon\\Config
 
 ...
 
 
-public  **__set** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Config
+public  **__set** (*unknown* $property, *unknown* $value) inherited from Phalcon\\Config
 
 ...
 
 
-public  **__isset** (*unknown* $index) inherited from Phalcon\\Config
+public  **__isset** (*unknown* $property) inherited from Phalcon\\Config
+
+...
+
+
+public  **__unset** (*unknown* $property) inherited from Phalcon\\Config
 
 ...
 

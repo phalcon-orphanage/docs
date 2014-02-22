@@ -7,15 +7,15 @@ Phalcon\\DI\\ServiceInterface initializer
 Methods
 -------
 
-abstract public  **getName** ()
+abstract public *string*  **getName** ()
 
-Returns the service's name
+Returns the name of the service
 
 
 
 abstract public  **setShared** (*boolean* $shared)
 
-Sets if the service is shared or not
+Sets whether the service is shared or not
 
 
 
@@ -37,12 +37,13 @@ Returns the service definition
 
 
 
-abstract public  **isResolved** ()
+abstract public *bool*  **isResolved** ()
 
-...
+Checks if the service was resolved
 
 
-abstract public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+
+abstract public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 

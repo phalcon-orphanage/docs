@@ -7,10 +7,15 @@ Phalcon\\Image\\AdapterInterface initializer
 Methods
 -------
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height])
+abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master])
 
 Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.
 
+
+
+abstract public  **liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $delta_x], [*unknown* $rigidity])
+
+...
 
 
 abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **crop** (*unknown* $width, *unknown* $height, [*unknown* $offset_x], [*unknown* $offset_y])
@@ -49,10 +54,30 @@ Add a watermark to an image with a specified opacity. Alpha transparency will be
 
 
 
+abstract public  **text** (*unknown* $text, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
+
+...
+
+
+abstract public  **mask** (*unknown* $mask)
+
+...
+
+
 abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $quality])
 
 Set the background color of an image. This is only useful for images with alpha transparency.
 
+
+
+abstract public  **blur** ([*unknown* $radius])
+
+...
+
+
+abstract public  **pixelate** ([*unknown* $amount])
+
+...
 
 
 abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **save** ([*unknown* $file], [*unknown* $quality])

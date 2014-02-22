@@ -304,3 +304,9 @@ Returns a route object by its name
 
 
 
+public  **isExactControllerName** ()
+
+Returns whether controller name should not be mangled
+
+
+

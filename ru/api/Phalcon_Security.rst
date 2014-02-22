@@ -21,6 +21,27 @@ This component provides a set of functions to improve the security in Phalcon ap
 
 
 
+Constants
+---------
+
+*integer* **CRYPT_DEFAULT**
+
+*integer* **CRYPT_STD_DES**
+
+*integer* **CRYPT_EXT_DES**
+
+*integer* **CRYPT_MD5**
+
+*integer* **CRYPT_BLOWFISH**
+
+*integer* **CRYPT_BLOWFISH_X**
+
+*integer* **CRYPT_BLOWFISH_Y**
+
+*integer* **CRYPT_SHA256**
+
+*integer* **CRYPT_SHA512**
+
 Methods
 -------
 
@@ -123,6 +144,18 @@ Derives a key from the given password (PBKDF2).
 public static  **pbkdf2** (*unknown* $password, *unknown* $salt, [*unknown* $hash], [*unknown* $iterations], [*unknown* $size])
 
 
+
+
+
+public  **getDefaultHash** ()
+
+Returns the default hash
+
+
+
+public  **setDefaultHash** (*unknown* $hash)
+
+Sets the default hash
 
 
 
