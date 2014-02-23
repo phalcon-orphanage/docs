@@ -172,7 +172,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
        */
       private $_loaded = false;
 
-      public function setUp() {
+      public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
 
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
