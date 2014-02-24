@@ -69,7 +69,7 @@ Beautiful URLs
 
 プロジェクトへの全てのリクエストは ドキュメントルートに指定した public/ ディレクトリにリライトされます。これにより、プロジェクトの内部フォルダを閲覧されることを防ぎ、セキュリティの脅威を排除することが保証されます。
 
-第二のルールは、リクエストされたフィアルが存在するかチェックし、ファイルが存在した場合はWebサーバーモジュールによるリライトは行われません。
+第二のルールは、リクエストされたファイルが存在するかチェックし、ファイルが存在した場合はWebサーバーモジュールによるリライトは行われません。
 
 .. code-block:: apacheconf
 
@@ -128,9 +128,9 @@ tutorial/public/index.php は次のようになります。
 
 オートローダ
 ^^^^^^^^^^^
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+bootstrapの最初の部分では、オートローダを登録しています。これは、アプリケーション内のコントローラやモデルなどのクラスをロードするために使用されます。例えば、アプリケーションの柔軟性を増加させる、コントローラの1つまたは複数のディレクトリを登録することができます。この例では、Phalcon\\ Loaderコンポーネントを使用しています。
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+これにより、様々な方法でクラスをロードすることができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを検索することを選択しました。 
 
 .. code-block:: php
 
@@ -146,9 +146,9 @@ With it, we can load classes using various strategies but for this example we ha
 
 依存性の管理
 ^^^^^^^^^^^^^^^^^^^^^
-A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+Phalconで開発する際に、理解するべき非常に重要なコンセプトは :doc:`dependency injection container <di>` です。それは複雑に聞こえますが、実際にはシンプルで実用的なものです。
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+サービスコンテナは、アプリケーションが機能するために使用するサービスをグローバルに保存する入れ物です。フレームワークはコンポーネントを必要とするたびに、サービスに決められた名称でコンテナに問い合わせます。Phalconはとても疎結合なフレームワークです。Phalcon\\ DI は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
 
 .. code-block:: php
 
@@ -305,7 +305,7 @@ The empty index action gives the clean pass to a view with the form definition (
      </p>
 
      <p>
-        <label for="name">E-Mail</label>
+        <label for="email">E-Mail</label>
         <?php echo Tag::textField("email") ?>
      </p>
 
@@ -481,7 +481,7 @@ Additional validation happens automatically on fields that are defined as not nu
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
-結論
+まとめ
 ----------
 This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
 The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
