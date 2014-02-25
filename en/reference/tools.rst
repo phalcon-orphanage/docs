@@ -101,10 +101,29 @@ Change the database section in your config.ini file:
 Generating Models
 -----------------
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models
-can have public attributes for the field representations or setters/getters can be used. The simplest way to generate a model is:
+can have public attributes for the field representations or setters/getters can be used.
 
-.. figure:: ../_static/img/tools-7.png
-   :align: center
+Options:
+ --name=s             Table name
+ --schema=s           Name of the schema. [optional]
+ --namespace=s        Model's namespace [optional]
+ --get-set            Attributes will be protected and have setters/getters. [optional]
+ --extends=s          Model extends the class name supplied [optional]
+ --doc                Helps to improve code completion on IDEs [optional]
+ --directory=s        Base path on which project will be created [optional]
+ --force              Rewrite the model. [optional]
+ --trace              Shows the trace of the framework in case of exception. [optional]
+ --mapcolumn          Get some code for map columns. [optional]
+
+The simplest way to generate a model is:
+
+```
+phalcon model products
+```
+
+```
+phalcon model --name tablename
+```
 
 All table fields are declared public for direct access.
 
