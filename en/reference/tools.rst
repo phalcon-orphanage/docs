@@ -26,16 +26,35 @@ Getting Available Commands
 --------------------------
 You can get a list of available commands in Phalcon tools by typing: phalcon commands
 
-.. figure:: ../_static/img/tools-4.png
-   :align: center
+.. code-block:: sh
+
+   $ phalcon commands
+   
+   Phalcon DevTools (1.2.3)
+   
+   Available commands:
+     commands (alias of: list, enumerate)
+     controller (alias of: create-controller)
+     model (alias of: create-model)
+     all-models (alias of: create-all-models)
+     project (alias of: create-project)
+     scaffold
+     migration
+     webtools
+
 
 Generating a Project Skeleton
 -----------------------------
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the
 project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
-.. figure:: ../_static/img/tools-1.png
-   :align: center
+.. code-block:: sh
+
+      $ pwd
+      
+      /Applications/MAMP/htdocs
+      
+      $ phalcon create-project store
 
 The above recommended project structure was generated:
 
