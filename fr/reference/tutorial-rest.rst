@@ -297,6 +297,8 @@ Prenons la données comme une chaine JSON que l'on insert dans le corps de la re
         //Check if the insertion was successful
         if ($status->success() == true) {
 
+            $response->setStatusCode(201, "Created");
+
             $robot->id = $status->getModel()->id;
 
             $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
@@ -304,7 +306,7 @@ Prenons la données comme une chaine JSON que l'on insert dans le corps de la re
         } else {
 
             //Change the HTTP status
-            $response->setStatusCode(500, "Internal Error");
+            $response->setStatusCode(409, "Conflict");
 
             //Send errors to the client
             $errors = array();
@@ -348,7 +350,7 @@ La modification de données est similaire à l'insertion. L'ID passé en paramè
         } else {
 
             //Change the HTTP status
-            $response->setStatusCode(500, "Internal Error");
+            $response->setStatusCode(409, "Conflict");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -387,7 +389,7 @@ L'identifiant est aussi passé en paramètre pour indiquer quel robot doit être
         } else {
 
             //Change the HTTP status
-            $response->setStatusCode(500, "Internal Error");
+            $response->setStatusCode(409, "Conflict");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -454,7 +456,7 @@ Insérer un nouveau robot :
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 200 OK
+    HTTP/1.1 201 Created
     Date: Wed, 12 Sep 2012 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
@@ -469,7 +471,7 @@ Essayer d'insérer un nouveau robot avec le nom d'un robot existant :
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
@@ -484,7 +486,7 @@ Modifier un robot avec un type inconnu :
     curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
         http://localhost/my-rest-api/api/robots/4
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
