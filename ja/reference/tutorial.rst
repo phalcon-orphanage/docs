@@ -159,7 +159,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` は Phalcon\\DI の異形です。 それには、処理をシンプルにするため、Phalconに付属しているコンポーネントのほとんどが登録されています。 したがって、それらをひとつひとつ登録するべきではありません。あとで生成するサービスを変更しても問題ありません。
 
-次のパートでは、フレームワークがviewファイルを探すディレクトリを示す "view" サービスを登録します。 viewファイルはクラスでないため、オートローダで補填されません。
+次のパートでは、フレームワークがviewファイルを探すディレクトリを示す "view" サービスを登録します。 viewファイルはクラスでないため、オートローダで補完されません。
 
 サービスを登録する方法はいくつかありますが、このチュートリアルでは、無名関数 ( `anonymous function`_ ) を使用します。
 
@@ -187,7 +187,7 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
         return $url;
     });   
 
-In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+このファイルの最後のパートで、:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を見つけるでしょう。この目的は、リクエスト環境を初期化し、リクエストのルートを決め、発見したアクションを起動することであり、処理が完了した際にレスポンスを集約し、返却することです。
 
 .. code-block:: php
 
@@ -197,11 +197,11 @@ In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/P
 
     echo $application->handle()->getContent();
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+ご覧のように、bootstrap ファイルはとても短く、追加のファイルを読み込む必要はありません。柔軟なMVCアプリケーションの設定が、30行足らずのコードで行えるのです。
 
 コントローラの作成
 ^^^^^^^^^^^^^^^^^^^^^
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
+デフォルトでは、Phalcon は、"Index" という名称のコントローラを探します。これは、リクエストでいずれのコントローラ、アクションも渡されていない場合の出発点となります。index コントローラ (app/controllers/IndexController.php) は、次のようになります。
 
 .. code-block:: php
 
@@ -217,12 +217,12 @@ By default Phalcon will look for a controller named "Index". It is the starting 
 
     }
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+コントローラクラスには、"Controller" という接尾語をつける必要があり、コントローラアクションには、"Action" という接尾語をつける必要があります。あなたがブラウザからアプリケーションにアクセスしたならば、次のように見えるでしょう。
 
 .. figure:: ../_static/img/tutorial-1.png
     :align: center
 
-Congratulations, you're flying with Phalcon!
+おめでとうございます。あなたはPhalconで飛び立つことができました！
 
 Viewへのアウトプットの送信
 ^^^^^^^^^^^^^^^^^^^^^^^^
