@@ -1,4 +1,4 @@
-Database Abstraction Layer
+数据库抽象层
 ==========================
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -21,7 +21,7 @@ This component makes use of adapters to encapsulate specific database system det
 | SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
-Implementing your own adapters
+实现你自己的适配器
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own database adapters or extend the existing ones.
 
@@ -39,7 +39,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
-Connecting to Databases
+链接到数据库
 -----------------------
 To create a connection it's neccesary instantiate the adapter class. It only requires an array with the connection parameters. The example
 below shows how to create a connection passing both required and optional parameters:
@@ -96,7 +96,7 @@ The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` in
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
-Finding Rows
+查找行
 ------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
@@ -171,7 +171,7 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     echo $result->numRows();
 
 
-Binding Parameters
+绑定参数
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
@@ -211,7 +211,7 @@ bound parameters are directly passed to PDO:
     $result = $connection->query($sql, array(1 => "Wall-E"));
 
 
-Inserting/Updating/Deleting Rows
+插入/更新/删除行
 --------------------------------
 To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 
@@ -379,7 +379,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     $eventsManager->attach('db', $dbProfiler);
 
 
-Logging SQL Statements
+记录SQL语句
 ----------------------
 Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
 
@@ -416,7 +416,7 @@ As above, the file *app/logs/db.log* will contain something like this:
     (name, price) VALUES ('Hot pepper', 3.50)
 
 
-Implementing your own Logger
+实现自己的日志记录类
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
 The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
@@ -477,7 +477,7 @@ commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which da
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
 differentiate the SQL syntax based on the target storage system.
 
-Creating Tables
+创建表
 ^^^^^^^^^^^^^^^
 
 The following example shows how to create a table:
@@ -570,7 +570,7 @@ The associative array passed in Phalcon\\Db::createTable() can have the possible
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 
-Altering Tables
+修改表
 ^^^^^^^^^^^^^^^
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
 Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
@@ -615,10 +615,10 @@ is limited by these constraints.
     $connection->deleteColumn("robots", null, "name");
 
 
-Dropping Tables
+删除表
 ^^^^^^^^^^^^^^^
 
-Examples on dropping tables:
+删除表的实例:
 
 .. code-block:: php
 
