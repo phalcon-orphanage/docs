@@ -428,7 +428,7 @@
 
     <?php
 
-    // {%di_e51e7a2b18392fba4a9b94e5627e680f%}
+    // return new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
 %{di_75df90dfe0a1dbc61cc89f9a6e6f77e9}%
@@ -439,7 +439,7 @@
 
     <?php
 
-    // {%di_e51e7a2b18392fba4a9b94e5627e680f%}
+    // return new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
 %{di_0288243a357389f316e2aa112edc3664}%

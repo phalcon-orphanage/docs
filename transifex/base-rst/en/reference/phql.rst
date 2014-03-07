@@ -664,15 +664,15 @@
         ->groupBy('Robots.name')
         ->having('SUM(Robots.price) > 1000');
 
-    // {%phql_3da322d428e87aa9fb31d0ed2a0f1a39%}
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts');
     $builder->from('Robots')
         ->join('RobotsParts');
 
-    // {%phql_a5e529ab554e39814c8839b2c0b55875%}
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p');
     $builder->from('Robots')
         ->join('RobotsParts', null, 'p');
 
-    // {%phql_9ef532febaeffc7f18f794b2b4081efa%}
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p');
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
 
@@ -694,7 +694,7 @@
     $builder->from(array('r' => 'Robots'))
             ->addFrom('Parts', 'p');
 
-    // {%phql_0d82530e1aa127fd8804c0f34f6c0fa9%}
+    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p');
     $builder->from(array('r' => 'Robots', 'p' => 'Parts'));
 
     // {%phql_d735d0422f7fe369654371b441a5a1ac%}

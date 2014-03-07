@@ -121,7 +121,7 @@
 
     // {%odm_fb044871c011d2b2fd2a8988073dbb20%}
     $di->set('mongo', function() {
-        $mongo = new Mongo("mongodb://{%odm_28b96daa6e0a3860a9649b6ab553ffbb%}
+        $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
         return $mongo->selectDb("store");
     }, true);
 
@@ -659,13 +659,13 @@
 
     // {%odm_30cd4ac5551309dc7c0bc54a17b89201%}
     $di->set('mongo1', function() {
-        $mongo = new Mongo("mongodb://{%odm_cd6caf91a67feb30bef84aceec28f05c%}
+        $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
         return $mongo->selectDb("management");
     }, true);
 
     // {%odm_d196fbb3e7afe012a3c3eae42ad22c26%}
     $di->set('mongo2', function() {
-        $mongo = new Mongo("mongodb://{%odm_45be5a774ce4af6706f11107de0776ce%}
+        $mongo = new Mongo("mongodb://localhost");
         return $mongo->selectDb("invoicing");
     }, true);
 

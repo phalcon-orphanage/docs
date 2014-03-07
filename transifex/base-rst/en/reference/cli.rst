@@ -41,7 +41,7 @@
     );
     $loader->register();
     
-    // {%cli_c8f000aa2055b19d2ba20387d1a2394f%} 
+    // {%cli_c7a24ef50d08a17121ecfb7a9e58ddc8%}
     if(is_readable(APPLICATION_PATH . '/config/config.php')) {
         $config = include APPLICATION_PATH . '/config/config.php';
         $di->set('config', $config);

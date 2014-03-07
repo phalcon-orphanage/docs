@@ -33,8 +33,8 @@ class Docs
 			$section1 = str_replace(array("\r\n", "\n"), ' ', join('', array_slice($section, 0, $number)));
 			$section2 = str_replace(array("\r\n", "\n"), ' ', join('', array_slice($section, $number + 1)));
 
-			$hash1 = md5(mb_strtolower($section1));
-			$hash2 = md5(mb_strtolower($section2));
+			$hash1 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section1)));
+			$hash2 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section2)));
 
 			$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => $separator);
@@ -46,7 +46,7 @@ class Docs
 			if (substr($section[0], 0, 14) == '.. code-block:') {
 				foreach ($section as $str) {
 
-					if (preg_match('#//[ \t]*(.*)$#', rtrim($str), $matches)) {
+					if (preg_match('#//[ \t]*([^;]*)[\r\n]$#', $str, $matches)) {
 						if (preg_match('#[a-zA-Z]#', $str)) {
 							$key = $this->_prefix . '_' . md5($matches[1]);
 							$str = str_replace($matches[1], '{%' . $key . '%}', $str);

@@ -61,7 +61,6 @@
     "models-cache_efe555e4b6c2aa4b091efcfdd07feba7": "Caching Related Records",
     "models-cache_167c1bde680b7a2a0bdf02e7f6a2a846": "When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using find\/findFirst in the target model according to the following table:",
     "models-cache_ae2a8ea75f237e1665de20deddd187af": "This means that when you get a related record you could intercept how these data are obtained by implementing the corresponding method:",
-    "models-cache_888e73a0d05ff6c52b5d8056fcf4494a": "Invoices::findFirst('...');",
     "models-cache_95b197310c9f475e448775744fbd67db": "Same as above",
     "models-cache_1f88a87fa11cb62e4d916071b5cf0ed4": "Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:",
     "models-cache_22d2fa1350f9f3ee06e9af91feb8603f": "Caching Related Records Recursively",

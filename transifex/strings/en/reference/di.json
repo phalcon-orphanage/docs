@@ -51,7 +51,6 @@
     "di_1392edb02b710a6e27f1249390e2f537": "As seen before, there are several ways to register services. These we call simple:",
     "di_20cdd879f4dcfb6fb4d7de18d7e464ff": "String",
     "di_9ef693cf4ecb42b512fbea01a3a35c84": "This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:",
-    "di_e51e7a2b18392fba4a9b94e5627e680f": "return new Phalcon\\Http\\Request();",
     "di_75df90dfe0a1dbc61cc89f9a6e6f77e9": "Object",
     "di_d9691bd1823160ec71e0f0bb30469cff": "This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object\/value:",
     "di_0288243a357389f316e2aa112edc3664": "Closures\/Anonymous functions",

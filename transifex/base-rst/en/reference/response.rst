@@ -87,10 +87,10 @@
     $response->redirect("posts/index");
 
     //{%response_8e030e877e3f99149b0a994107b881b5%}
-    $response->redirect("http://{%response_dfe658f4ac7fd3102141cdf6881a2c65%}
+    $response->redirect("http://en.wikipedia.org", true);
 
     //{%response_88eeb693f326e0e11441130f002200ab%}
-    $response->redirect("http://{%response_4d30e4d9515c27ce97e5ebf7259f9d55%}
+    $response->redirect("http://www.example.com/new-location", true, 301);
 
 %{response_c4d63c5ab656959797d68ed59d14fd18}%
 

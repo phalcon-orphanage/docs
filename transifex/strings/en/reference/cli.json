@@ -9,7 +9,7 @@
     "cli_04117c61cf865aa866cad78bace24460": "Below is a sample bootstrap that is being used for this example.",
     "cli_7de6afb1f05b7a8897d6bdd9e27b7afb": "Using the CLI factory default services container",
     "cli_d414a65783adf1be083dfbc25efed474": "Define path to application directory",
-    "cli_c8f000aa2055b19d2ba20387d1a2394f": "Load the configuration file (if any)",
+    "cli_c7a24ef50d08a17121ecfb7a9e58ddc8": "Load the configuration file (if any) ",
     "cli_6535177d94825112c9adb341afe1fc02": "Create a console application",
     "cli_1fedf20a4623e73400b7e36b68feee2a": "define global constants for the current task and action",
     "cli_5062480511df35df4d7a5bb393556e91": "handle incoming arguments",

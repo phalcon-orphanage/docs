@@ -27,10 +27,10 @@
     $url->setBaseUri('/invo/');
 
     //{%url_1b6850414fe016e6b7bcc0975688e434%}
-    $url->setBaseUri('//{%url_9bc870016c7bac71e69efe1f17ca1382%}
+    $url->setBaseUri('//my.domain.com/');
 
     //{%url_1b6850414fe016e6b7bcc0975688e434%}
-    $url->setBaseUri('http://{%url_8980a049ee5372310fcf3f9147c4c43d%}
+    $url->setBaseUri('http://my.domain.com/my-app/');
 
 %{url_16b2458da6a88dbf842ecaf98a9c0799}%
 
@@ -157,7 +157,7 @@
     $url->setBaseUri('/');
 
     //{%url_bec86b0c6304d0b51011148525a6edb8%}
-    $url->setStaticBaseUri('http://{%url_b4790759b34907309d0d3e32a7c6a3a9%}
+    $url->setStaticBaseUri('http://static.mywebsite.com/');
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 

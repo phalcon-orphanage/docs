@@ -9,7 +9,6 @@
     "whats-next_244719d3a37013227a2f4f2e69954e66": "Profiling with Xhprof",
     "whats-next_988fb6562d947f8da0ae75c1501d0da5": "Xhprof_ is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:",
     "whats-next_c3f35ed9003d3e458d7c35470f58797a": "Then at the end of the file save the profiled data:",
-    "whats-next_5add6cb9747c98eabdeff28a4546e6c8": "localhost\/xhprof\/xhprof_html\/index.php?run={$run_id}&source=xhprof_testing\\n\";",
     "whats-next_efb07d608d7b87bc1a001af0d1f8a864": "Xhprof provides a built-in html viewer to analize the profiled data:",
     "whats-next_f7dc7675831e283edd54b6e7e3501a7e": "Profiling SQL Statements",
     "whats-next_52ed6613f5a2828779a7c8d3b312fd4c": "Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:",

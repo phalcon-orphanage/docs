@@ -114,7 +114,7 @@
     if ($config->environment == 'development') {
         $scripts->setPrefix('/');
     } else {
-        $scripts->setPrefix('http:://{%assets_ddc247728a472f8b6e91d02848f12326%}
+        $scripts->setPrefix('http:://cdn.example.com/');
     }
 
     $scripts->addJs('js/jquery.js')

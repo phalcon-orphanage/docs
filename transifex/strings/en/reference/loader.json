@@ -26,7 +26,7 @@
     "loader_19b41511f55c0eda2a991fcf351d377b": "Requiring a class will automatically include the file it references",
     "loader_d142b7f8a10d00c5f0ca4482e7a181eb": "in the associative array",
     "loader_681e56350f1db61e293841bb6d7b4c06": "Additional file extensions",
-    "loader_0fc8fd6eb3f0b062b870078f9b044468": "Some autoloading strategies such as  \"prefixes\", \"namespaces\" or \"directories\" automatically append the \"php\" extension at the end of the checked file. If you are using additional extensions you could set it with the method \"setExtensions\". Files are checked in the order as it were defined:",
+    "loader_5973661d6bf969480e9ce6961b9ef4e2": "Some autoloading strategies such as  \"prefixes\", \"namespaces\" or \"directories\" automatically append the \"php\" extension at the end of the checked file. If you are using additional extensions you could set it with the method \"setExtensions\". Files are checked in the order as it were defined:",
     "loader_9f6cb2e9ce681cf0eaf7326cc9978301": "Set file extensions to check",
     "loader_9bb8905b56939f589ab60a39a3f7cad3": "Modifying current strategies",
     "loader_69b2ab1eaa9b57f73f1c7f307e98c253": "Additional auto-loading data can be added to existing values in the following way:",

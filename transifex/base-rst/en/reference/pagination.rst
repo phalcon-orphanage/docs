@@ -26,8 +26,8 @@
 
     // {%pagination_f95c5f9340bd0ebb39c000195d0f6c12%}
     // {%pagination_8df2863da0e367967d74af7b1638136c%}
-    // {%pagination_f24db4c78e832557ec685598e444106b%}
-    // {%pagination_26e1ebb9b8a5d8a8058ad391e0fcb746%}
+    // $this->request->getQuery('page', 'int'); // {%pagination_7528035a93ee69cedb1dbddb2f0bfcc8%}
+    // $this->request->getPost('page', 'int'); // {%pagination_a02439ec229d8be0e74b0c1602392310%}
     $currentPage = (int) $_GET["page"];
 
     // {%pagination_4ddbeca7bae6f55c7a824cfee8681109%}

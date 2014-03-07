@@ -7,8 +7,6 @@
     "url_75aca106f3cfa3b32ae8ca3ca717e72d": "By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application is recommended setting up it manually:",
     "url_c17f15740b429bfa48aa04f3d7b46b6b": "Setting a relative base URI",
     "url_1b6850414fe016e6b7bcc0975688e434": "Setting a full domain as base URI",
-    "url_9bc870016c7bac71e69efe1f17ca1382": "my.domain.com\/');",
-    "url_8980a049ee5372310fcf3f9147c4c43d": "my.domain.com\/my-app\/');",
     "url_16b2458da6a88dbf842ecaf98a9c0799": "Usually, this component must be registered in the Dependency Injector container, so you can set up it there:",
     "url_2f1af28e614976174560c19d608f2b30": "Generating URIs",
     "url_6ceb5ad349a020c2d651901ef0007c04": "If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the following pattern: \/:controller\/:action\/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method \"get\":",
@@ -31,6 +29,5 @@
     "url_7f68eed15a0101a787422e177b90b8fb": "Static vs. Dynamic Uris",
     "url_80bb958627f146f8ba26b15d8d8c54fa": "This component allow you to set up a different base uri for static resources in the application:",
     "url_d2169d8236878569814560a7f750afde": "Dynamic URIs are",
-    "url_bec86b0c6304d0b51011148525a6edb8": "Static resources go through a CDN",
-    "url_b4790759b34907309d0d3e32a7c6a3a9": "static.mywebsite.com\/');"
+    "url_bec86b0c6304d0b51011148525a6edb8": "Static resources go through a CDN"
 }

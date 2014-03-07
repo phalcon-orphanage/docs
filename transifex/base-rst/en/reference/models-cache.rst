@@ -455,10 +455,10 @@
     $invoice = Invoices::findFirst();
 
     //{%models-cache_8a4daeca65f733dbdc9dbca6527f851d%}
-    $customer = $invoice->customer; // {%models-cache_888e73a0d05ff6c52b5d8056fcf4494a%}
+    $customer = $invoice->customer; // Invoices::findFirst('...');
 
     //{%models-cache_95b197310c9f475e448775744fbd67db%}
-    $customer = $invoice->getCustomer(); // {%models-cache_888e73a0d05ff6c52b5d8056fcf4494a%}
+    $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
 %{models-cache_1f88a87fa11cb62e4d916071b5cf0ed4}%
 

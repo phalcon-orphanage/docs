@@ -80,7 +80,7 @@
     $logger = new MultipleStream();
 
     $logger->push(new FileAdapter('test.log'));
-    $logger->push(new StreamAdapter('php://{%logging_6c14420b136d0a8862b1a85440a51e55%}
+    $logger->push(new StreamAdapter('php://stdout'));
 
     $logger->log("This is a message");
     $logger->log("This is an error", Logger::ERROR);
@@ -151,10 +151,10 @@
     use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
     // {%logging_50d8004398b59f8b8cf24c2fc36723f2%}
-    $logger = new StreamAdapter("compress.zlib://{%logging_1b95f44c0a527f3ab37adb24edcab32e%}
+    $logger = new StreamAdapter("compress.zlib://week.log.gz");
 
     // {%logging_c2515f4bda92df933bc062b6ae77f9c9%}
-    $logger = new StreamAdapter("php://{%logging_0e09ad10c7cef0109e8635f049c99670%}
+    $logger = new StreamAdapter("php://stderr");
 
 %{logging_ee91c22182c28068ea54db509b31fa5a}%
 ^^^^^^^^^^^

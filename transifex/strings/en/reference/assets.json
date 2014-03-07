@@ -19,7 +19,6 @@
     "assets_4ce74cf3cd3f9c87190cc9cdcdd697de": "Then in the views:",
     "assets_f051468092cd30c784f47c1c1f518b5e": "Prefixes",
     "assets_68847db02bfef9a3f2cbb88f3bb52ebc": "Collections can be URL-prefixed, this allows to easily change from a server to other at any moment:",
-    "assets_ddc247728a472f8b6e91d02848f12326": "cdn.example.com\/');",
     "assets_2dd20ca96e294ccca7d0b0498988674e": "A chainable syntax is available too:",
     "assets_5aa494e28988749ce9c0590848cf362e": "cdn.example.com\/')",
     "assets_ae62cffd270c3e0cab6f30fefed9136c": "Minification\/Filtering",

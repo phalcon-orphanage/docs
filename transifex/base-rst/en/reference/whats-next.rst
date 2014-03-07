@@ -45,7 +45,7 @@
     $xhprof_runs = new XHProfRuns_Default();
     $run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
 
-    echo "http://{%whats-next_5add6cb9747c98eabdeff28a4546e6c8%}
+    echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
 %{whats-next_efb07d608d7b87bc1a001af0d1f8a864}%
 
