@@ -1,6 +1,6 @@
 {
-    "acl_35d27b8250bff15a9954c9f91a0bb3c9": "Access Control Lists ACL",
-    "acl_adbc41ed0c0c423bf90223c0372e0f78": ":doc:`Phalcon\\\\Acl <../api/Phalcon_Acl>` provides an easy and lightweight management of ACLs as well as the permissions attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.",
+    "acl_35d27b8250bff15a9954c9f91a0bb3c9": "Listas de Control de Acceso ACL",
+    "acl_adbc41ed0c0c423bf90223c0372e0f78": ":doc:`Phalcon\\\\Acl <../api/Phalcon_Acl>` proporciona una manera sencilla y ligera de administrar ACLs así como sus permisos agregados a ellas. `Listas de Control de Acceso`_ (ACL) permiten a una aplicación controlar el acceso a un area determinada y sus objetos dependientes. Te invitamos a leer mas sobre las metodologias ACL para familiarizarse con sus conceptos.",
     "acl_e52970115d496c048249a820a58b136a": "In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.",
     "acl_77f422ae2f33689becc2fff60ab01380": "Creating an ACL",
     "acl_82cdf253f5974cfd72e9a832b0ef83a1": "This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:",
