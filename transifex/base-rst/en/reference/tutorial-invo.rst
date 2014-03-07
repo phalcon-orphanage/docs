@@ -691,7 +691,8 @@
 
 %{tutorial-invo_d1186bc6648b7a474a9cf8ec6f717938}%
 
-%{tutorial-invo_065b4fce3559ab3603ffbcee979c4106}%
+* {%tutorial-invo_5e90ae02ef6aaa4078321b45f7366a82%}
+* {%tutorial-invo_ff43286f549da031945d2ef610eb239a%}
 
 %{tutorial-invo_f16803e5e4e4781ab80b5e3af828d753}%
 

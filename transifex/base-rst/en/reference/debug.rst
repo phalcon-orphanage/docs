@@ -1,6 +1,5 @@
 %{debug_4eface2a7de663488d577e631a23894c}%
 ======================
-%{debug_d41d8cd98f00b204e9800998ecf8427e}%
 
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center

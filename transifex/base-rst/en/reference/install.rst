@@ -36,7 +36,9 @@
 ^^^^^^^^^^^^
 %{install_70a4fa2ec4a0a6356164c746dc431647}%
 
-%{install_729d85a542661bbbad5e42e9794108f2}%
+* {%install_25de0b4731ce2b2d06e13f2bafbac98d%}
+* {%install_ea5636317fe66c695b33a0b4f5f1917d%}
+* {%install_b2fe914497fb97b03b2643b4a31fc0c2%}
 
 %{install_6e2d310434cb02d415fcff3819ca2f0b}%
 

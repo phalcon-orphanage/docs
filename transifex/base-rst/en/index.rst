@@ -1,12 +1,10 @@
 %{index_8a6dd07bd4541406e4cf28eb5cdcc175}%
 ========
-%{index_d41d8cd98f00b204e9800998ecf8427e}%
 
 %{index_0ea69a6ad0b19617ae367ad091d98683}%
 
 %{index_0e674667caa52aee120be5d11767fff6}%
 ----------------
-%{index_d41d8cd98f00b204e9800998ecf8427e}%
 
 %{index_ca0511df5225bdb36b59ca233b0ffd2a}%
 
@@ -14,7 +12,6 @@
 
 %{index_2ab666837667234772942c0813d3be32}%
 -----------------
-%{index_d41d8cd98f00b204e9800998ecf8427e}%
 
 .. toctree::
    :maxdepth: 3
@@ -78,7 +75,8 @@
 
 %{index_55bd297b9fb4a01a8e6a56ca12739be3}%
 -------------
-%{index_d41d8cd98f00b204e9800998ecf8427e}%
 
-%{index_9db65a32b1fea355c051363fbeebbdd8}%
+* {%index_c2b27e4c7f233177398db508d4ea2531%}
+* {%index_fae2197f5f0d198cc832a6eede09234a%}
+* {%index_1c72acb835636528dcebdff50a464ae0%}
 

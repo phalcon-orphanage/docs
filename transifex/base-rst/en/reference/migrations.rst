@@ -179,7 +179,13 @@
 
 %{migrations_693f023ec4e718b7c0a6c9a231892599}%
 
-%{migrations_47d26717150280ad3585faf14f7904aa}%
+* {%migrations_e64f0954f63861dae89f79260e579f6e%}
+* {%migrations_652aaca330a0a20efd856f8035d6709e%}
+* {%migrations_77c940959f1f2a9308919a987740ebc1%}
+* {%migrations_4deb53b39e30c5a62952881c49fec2e8%}
+* {%migrations_3e7a50f2c5c3bebed9bed171bd6663a5%}
+* {%migrations_25253fe1d826d42e6db699f3e7d99514%}
+* {%migrations_070faf863b6a1cfe77f660ccdd4d9ee1%}
 
 %{migrations_98592e9224abec7b6a4957b5f4b035b4}%
 ^^^^^^^^^^^^^^^^

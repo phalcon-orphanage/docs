@@ -345,11 +345,11 @@
     <?php
 
     //{%models-cache_734229e26203c940522b7093b2cf214a%}
-    // {%models-cache_48ad1f5511ab1fb7b3018b95e687c51e%}
+    // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
         //{%models-cache_8a4daeca65f733dbdc9dbca6527f851d%}
-        // {%models-cache_b6a2e15a36c109ff8bc87e968e9c38ad%}
+        // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
         //{%models-cache_e16166444362b0fe474040cd3eaad5e1%}
