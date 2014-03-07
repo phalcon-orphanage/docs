@@ -369,11 +369,11 @@ This also applies if we retrieve a set of invoices to show customers that corres
     <?php
 
     //Get a set of invoices
-    // SELECT * FROM invoices
+    // SELECT * FROM invoices;
     foreach (Invoices::find() as $invoice) {
 
         //Get the customer related to the invoice
-        // SELECT * FROM customers WHERE id = ?
+        // SELECT * FROM customers WHERE id = ?;
         $customer = $invoice->customer;
 
         //Print his/her name

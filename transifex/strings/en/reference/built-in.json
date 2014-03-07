@@ -1,9 +1,0 @@
-{
-    "built-in_f4e44f5b67bc461492c485de3482861f": "Using PHP Built-in webserver",
-    "built-in_d41d8cd98f00b204e9800998ecf8427e": "",
-    "built-in_34d6fa77a4b13cf9bfc63b2fea4aac90": "As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.",
-    "built-in_0140884a37f0765e4896b5d62697a5c3": "To start the server type:",
-    "built-in_1b20c836cc0e00031150a50f170c15ea": "If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):",
-    "built-in_699feca0985169a909f4d4beb52e11aa": "and then start the server with:",
-    "built-in_13e0be028514dcaf51fb75036408c591": "Then point your browser to http:\/\/localhost:8000\/ to check if everything is working."
-}

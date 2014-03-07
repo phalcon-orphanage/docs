@@ -30,15 +30,65 @@ class Docs
 
 		if ($twoSections !== false) {
 
-			$section1 = str_replace(array("\r\n", "\n"), ' ', join('', array_slice($section, 0, $number)));
-			$section2 = str_replace(array("\r\n", "\n"), ' ', join('', array_slice($section, $number + 1)));
+			$section1parts = array_slice($section, 0, $number);
+			$section2parts = array_slice($section, $number + 1);
 
-			$hash1 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section1)));
-			$hash2 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section2)));
+			$list1 = true;
+			foreach ($section1parts as $position => $line) {
+				if (!preg_match('#^[ \t]*\* #', $line)) {
+					$list1 = false;
+					break;
+				}
+			}
 
-			$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
+			if ($list1) {
+
+			}
+
+			$list2 = true;
+			foreach ($section2parts as $position => $line) {
+				if (!preg_match('#^[ \t]*\* #', $line)) {
+					$list2 = false;
+					break;
+				}
+			}
+
+			if ($list2) {
+				foreach ($section2parts as $position => $line) {
+					if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
+						$key = $this->_prefix . '_' . md5($matches[1]);
+						$section2parts[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
+						$this->_uniqueStrings[$key] = $matches[1];
+					}
+				}
+			}
+
+			if (!$list1) {
+				$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section1parts));
+				$hash1 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section1)));
+			} else {
+				$section1 = join('', $section1parts);
+			}
+
+			if (!$list2) {
+				$section2 = str_replace(array("\r\n", "\n"), ' ', join('', $section2parts));
+				$hash2 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section2)));
+			} else {
+				$section2 = join('', $section2parts);
+			}
+
+			if (!$list1) {
+				$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
+			} else {
+				$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section2);
+			}
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => $separator);
-			$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash2, 'value' => $section2);
+
+			if (!$list2) {
+				$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash2, 'value' => $section2);
+			} else {
+				$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section2);
+			}
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => PHP_EOL);
 
 		} else {
@@ -65,10 +115,33 @@ class Docs
 					$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
 
 				} else {
-					$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
-					$hash1 = md5(mb_strtolower($section1));
 
-					$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
+					$list = true;
+					foreach ($section as $position => $line) {
+						if (!preg_match('#^[ \t]*\* #', $line)) {
+							$list = false;
+							break;
+						}
+					}
+
+					if ($list) {
+						foreach ($section as $position => $line) {
+							if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
+								$key = $this->_prefix . '_' . md5($matches[1]);
+								$section[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
+								$this->_uniqueStrings[$key] = $matches[1];
+							}
+						}
+					}
+
+					if (!$list) {
+						$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
+						$hash1 = md5(mb_strtolower($section1));
+						$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
+					} else {
+						$section1 = join('', $section);
+						$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section1);
+					}
 					$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
 				}
 			}
@@ -105,7 +178,7 @@ class Docs
 		$section = array();
 		$block = false;
 		$this->_output = '';
-		$this->_uniqueStrings = array();
+		//$this->_uniqueStrings = array();
 		foreach (file($path) as $line) {
 			if (!trim($line) && !$block) {
 				$uniqueStrings = $this->processSection($section);
@@ -149,14 +222,15 @@ class Docs
 					$baseRstPath = 'transifex/base-rst/' . dirname($path);
 					@mkdir($baseRstPath, 0777, true);
 
-					$baseStrPath = 'transifex/strings/' . dirname($path);
-					@mkdir($baseStrPath, 0777, true);
-
 					file_put_contents($baseRstPath . '/' . $this->_prefix . '.rst', $this->_output);
-					file_put_contents($baseStrPath . '/' . $this->_prefix . '.json', json_encode($this->_uniqueStrings, JSON_PRETTY_PRINT));
 				}
 			}
 		}
+
+		$baseStrPath = 'transifex/strings/';
+		@mkdir($baseStrPath, 0777, true);
+
+		file_put_contents($baseStrPath . '/en.json', json_encode($this->_uniqueStrings, JSON_PRETTY_PRINT));
 	}
 
 	public function run()
