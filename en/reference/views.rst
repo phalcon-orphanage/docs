@@ -468,7 +468,7 @@ Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applica
         echo $e->getMessage();
     }
 
-To render a view is necessary to call the render method explicitly indicating the relative path to the view you want to display:
+To render a view it's necessary to call the render method explicitly indicating the relative path to the view you want to display:
 
 .. code-block:: php
 
