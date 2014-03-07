@@ -608,120 +608,119 @@
 
     <?php
 
+    // 'SELECT Robots.* FROM Robots';
     $builder->from('Robots');
-    // {%phql_e15039f1506a3887ee6b4cc8e9d981ae%}
 
-    // {%phql_20f6e89ae1605c474b1bdf4f348c0e3f%}
+    // 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts';
     $builder->from(array('Robots', 'RobotsParts'));
 
-    // {%phql_af53245b61726ce1668350e8996512ec%}
+    // 'SELECT * FROM Robots';
     $phql = $builder->columns('*')
                     ->from('Robots');
 
-    // {%phql_dc3b25c74d1d52aa7b41eb971377afa4%}
+    // 'SELECT id FROM Robots';
     $builder->columns('id')
             ->from('Robots');
 
-    // {%phql_d6f670dcd706e4056a4da1ec932e59f1%}
+    // 'SELECT id, name FROM Robots';
     $builder->columns(array('id', 'name'))
             ->from('Robots');
 
-    // {%phql_9329a68010530916297b3f2b3ece4d42%}
+    // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"';
     $builder->from('Robots')
             ->where('Robots.name = "Voltron"');
 
-    // {%phql_8da471cd465e657cc08124c1f6a6ac95%}
+    // 'SELECT Robots.* FROM Robots WHERE Robots.id = 100';
     $builder->from('Robots')
             ->where(100);
 
-    // {%phql_6cc5b0aa1a0612309db44c82eea3351e%}
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" AND Robots.id > 50';
     $builder->from('Robots')
             ->where('type = "virtual"')
             ->andWhere('id > 50');
 
-    // {%phql_5d27ba7b0a29ca36b05d9b309310d86b%}
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" OR Robots.id > 50';
     $builder->from('Robots')
             ->where('type = "virtual"')
             ->orWhere('id > 50');
 
-    // {%phql_6662333080838eed57803c08328e1922%}
+    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name';
     $builder->from('Robots')
             ->groupBy('Robots.name');
 
-    // {%phql_da92cd12bb42686676e03e53bc5a139e%}
+    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name, Robots.id';
     $builder->from('Robots')
             ->groupBy(array('Robots.name', 'Robots.id'));
 
-    // {%phql_2ce16c057afc6fa1003b45a4960ed794%}
+    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name';
     $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
         ->from('Robots')
         ->groupBy('Robots.name');
 
-    // {%phql_0c0aa0abaee7932a42fc197ee28483ed%}
-    // {%phql_63e577abfff56abdc1383a0f0ac6f5b2%}
+    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name HAVING SUM(Robots.price) > 1000';
     $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
         ->from('Robots')
         ->groupBy('Robots.name')
         ->having('SUM(Robots.price) > 1000');
 
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts';
     $builder->from('Robots')
         ->join('RobotsParts');
 
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p';
     $builder->from('Robots')
         ->join('RobotsParts', null, 'p');
 
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p';
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
 
-    // {%phql_8ca1e9142db3eaf1e88b194ffdb11ba1%}
-    // {%phql_a48121f81382426930e308a767a23043%}
-    // {%phql_9c8c7391fd547833b2cb5b50dc90b8be%}
+    // 'SELECT Robots.* FROM Robots ;
+    // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p ;
+    // JOIN Parts ON Parts.id = RobotsParts.parts_id AS t';
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
         ->join('Parts', 'Parts.id = RobotsParts.parts_id', 't');
 
-    // {%phql_55d77f6abb24fbb75a8ff1eacf58317f%}
+    // 'SELECT r.* FROM Robots AS r';
     $builder->addFrom('Robots', 'r');
 
-    // {%phql_6461d845432152c5ec03bfdacb6a9a40%}
+    // 'SELECT Robots.*, p.* FROM Robots, Parts AS p';
     $builder->from('Robots')
         ->addFrom('Parts', 'p');
 
-    // {%phql_304b126b96d6181360a1e3dac62239c3%}
+    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
     $builder->from(array('r' => 'Robots'))
             ->addFrom('Parts', 'p');
 
-    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p');
+    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
     $builder->from(array('r' => 'Robots', 'p' => 'Parts'));
 
-    // {%phql_d735d0422f7fe369654371b441a5a1ac%}
+    // 'SELECT Robots.* FROM Robots LIMIT 10';
     $builder->from('Robots')
         ->limit(10);
 
-    // {%phql_4b4441be78e65f787ef0555baddf9590%}
+    // 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5';
     $builder->from('Robots')
             ->limit(10, 5);
 
-    // {%phql_d6b4bb901824d0216f9c921ca5265e13%}
+    // 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100';
     $builder->from('Robots')
             ->betweenWhere('id', 1, 100);
 
-    // {%phql_2fee32c64e8ce8d67581419394e66371%}
+    // 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)';
     $builder->from('Robots')
             ->inWhere('id', array(1, 2, 3));
 
-    // {%phql_d1e8269e51134b1e31fbf0121de5b13d%}
+    // 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)';
     $builder->from('Robots')
             ->notInWhere('id', array(1, 2, 3));
 
-    // {%phql_cdfaef016e255b490c19a83546a6c9f8%}
+    // 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%';
     $builder->from('Robots')
             ->where('name LIKE :name:', array('name' => '%' . $name . '%'));
 
-    // {%phql_e8e8a863132d9d19cb8d6f6e1d65164e%}
+    // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
     $builder->from(['r' => 'Store\Robots'])
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
