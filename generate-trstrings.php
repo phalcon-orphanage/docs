@@ -43,7 +43,7 @@ class Docs
 
 		} else {
 
-			if (substr($section[0], 0, 14) == '.. code-block:') {
+			if (preg_match('#[ \t]*\.\.[ \t]+code-block::#', $section[0])) {
 				foreach ($section as $str) {
 
 					if (preg_match('#//[ \t]*([^;]*)[\r\n]$#', $str, $matches)) {
