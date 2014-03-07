@@ -1,0 +1,18 @@
+{
+    "xampp_eda682d3225054770e1557c5c7db9bfd": "Installation on XAMPP",
+    "xampp_b70a128300864dd3dae3f396b5ace740": "XAMPP_ is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.",
+    "xampp_6781878c32a5dee1aeaf59c8ed79e10a": "Download the right version of Phalcon",
+    "xampp_8f4354ffc1e1b700a2f48b5f5056eb1d": "XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.",
+    "xampp_7d83479b3d39a89f33cc156cc88f273b": "After downloading the Phalcon library you will have a zip file like the one shown below:",
+    "xampp_0db1319bdc326b865b8f2c9ff6152b45": "Extract the library from the archive to get the Phalcon DLL:",
+    "xampp_4581535224ce2f47e52b99a3e0fff57d": "Copy the file php_phalcon.dll to the PHP extensions. If you have installed XAMPP in the c:\\\\xampp folder, the extension needs to be in c:\\\\xampp\\\\php\\\\ext",
+    "xampp_dbb3c2a4d22456151e5a9c3f1bcd19e1": "Edit the php.ini file, it is located at \ufeffC:\\\\xampp\\\\php\\\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.",
+    "xampp_0503eb0f288cb6ed4160b426d9a7eb01": "Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.",
+    "xampp_4d3a6772c8eb2181e7cf30f3dd652e9f": "Open your browser to navigate to http:\/\/localhost. The XAMPP welcome page will appear. Click on the link phpinfo().",
+    "xampp_eb736ce5b9709338224c0eb8d1bd10d7": "phpinfo() will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.",
+    "xampp_aeedaf4f1e7bd5b2449f12f993949184": "If you can see the phalcon version in the phpinfo() output, congrats!, You are now flying with Phalcon.",
+    "xampp_397ec7a734977da72a84f9587f6d6b59": "Screencast",
+    "xampp_dca69f2da70de89989a34bedeeb45daa": "The following screencast is a step by step guide to install Phalcon on Windows:",
+    "xampp_7a752ac7821139893d4b7d8eb762a483": "Related Guides",
+    "xampp_e6bd2a34e7bb886905694f89d20f631e": "* :doc:`General Installation <\/reference\/install>` * :doc:`Detailed Installation on WAMP for Windows <\/reference\/wamp>`"
+}

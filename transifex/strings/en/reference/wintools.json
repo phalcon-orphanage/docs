@@ -1,0 +1,23 @@
+{
+    "wintools_0d131205dc57ccc6fefd8a1eb760f6fc": "Phalcon Developer Tools on Windows",
+    "wintools_eb7803f63ed5a54d112edb052012885b": "These steps will guide you through the process of installing Phalcon Developer Tools for Windows.",
+    "wintools_17da86073980dfe20dfa8c157c811998": "Prerequisites",
+    "wintools_3912e149b2c9d2a44404800fe8b905b4": "The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.",
+    "wintools_d779ffb4113a9aa6902414524b888ae6": "Download",
+    "wintools_c52ad3c8bfdd468181a9d135893b6e99": "You can download a cross platform package containing the developer tools from the Download_ section. Also you can clone it from Github_.",
+    "wintools_aed7061f88087f5534673e4af65a7e82": "On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\\\phalcon-tools*. You will need this path in the steps below. Edit the file \"phalcon.bat\" by right clicking on the file and selecting \"Edit\":",
+    "wintools_a836c33da29aab779ed188ecead8ce4b": "Change the path to the one you installed the Phalcon tools:",
+    "wintools_8acd47a705de08d71975b1b011205192": "Save the changes.",
+    "wintools_c3bc2c558cb350d0693d43be98effb9f": "Adding PHP and Tools to your system PATH",
+    "wintools_1eede6426becae71e99ea8c079eb8e1b": "Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file php.exe and copy the path it is located in. For instance, if using the latest WAMP stack, PHP is located in: *C:\\\\wamp\\bin\\\\php\\\\php5.3.10\\\\php.exe*.",
+    "wintools_ba6050a7ca38430c2df5dfd6c5b720b0": "From the Windows start menu, right mouse click on the \"My Computer\" icon and select \"Properties\":",
+    "wintools_2c16eb8355eb52d8b2ed7b28e2b8b52e": "Click the \"Advanced\" tab and then the button \"Environment Variables\":",
+    "wintools_14fa2fc2faa119f4659609fcd0045bd8": "At the bottom, look for the section \"System variables\" and edit the variable \"Path\":",
+    "wintools_70496851a33e144fea373c2aaa6a95bb": "Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the \";\" character to separate the different paths in the variable:",
+    "wintools_7d4a6198d7d3d87c2a2d457b08e68f66": "Accept the changes made by clicking \"OK\" and close the dialogs opened. From the start menu click on the option \"Run\". If you can't find this option, press \"Windows Key\" + \"R\".",
+    "wintools_7187d3ca4387ddf319870b3d98299138": "Type \"cmd\" and press enter to open the windows command line utility:",
+    "wintools_78fc4a588dde51bd67beb4afa10812dc": "Type the commands \"php -v\" and \"phalcon\" and you will see something like this:",
+    "wintools_01e9aefb62a0345d027bcb8b02bbe10e": "Congratulations you now have Phalcon tools installed!",
+    "wintools_7a752ac7821139893d4b7d8eb762a483": "Related Guides",
+    "wintools_8c4876357c1bfa08e6137c7e7fea26ef": "* :doc:`Using Developer Tools <tools>` * :doc:`Installation on OS X <mactools>` * :doc:`Installation on Linux <linuxtools>`"
+}

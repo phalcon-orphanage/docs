@@ -1,0 +1,17 @@
+{
+    "namespaces_410df5ec08cfd7e81928a0f39812fa26": "Working with Namespaces",
+    "namespaces_42fcdb4e0d8452859da49e9a5808053e": "Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.",
+    "namespaces_5034b5fe11096b4eeb1043135044bc64": "Setting up the framework",
+    "namespaces_6d2109c5d5dd2e689723029517e3f6f8": "Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:",
+    "namespaces_7675ee208c8bd2dc92bde0fa3f1b5d1f": "Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\\\Loader:",
+    "namespaces_6e2541a84721a5f09ef6f57df2158147": "Specify it in the routes as a separate parameter in the route's paths:",
+    "namespaces_25a51770d16d8b9a04ca828a7e814611": "Passing it as part of the route:",
+    "namespaces_b4e0ae25071fd246a818cd472f38d085": "If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:",
+    "namespaces_d3477be4fcfb5b2e53eb426e85a84ad1": "Registering a dispatcher",
+    "namespaces_2b7e1df011b57331144cfd6ed3f998cb": "Controllers in Namespaces",
+    "namespaces_80fa39b535ea176e88e04c27287bce90": "The following example shows how to implement a controller that use namespaces:",
+    "namespaces_edc8f4356afdd63c106c2e25e75e3a4a": "Models in Namespaces",
+    "namespaces_f5ea85eb2efe77db362c5d04e5f5f118": "Take the following into consideration when using models in namespaces:",
+    "namespaces_f272cbbd53cdcd2e714c5918e8c811ce": "If models have relationships they must include the namespace too:",
+    "namespaces_1047b252842d7d62176454c6c8b8f677": "In PHQL you must write the statements including namespaces:"
+}

@@ -1,0 +1,16 @@
+{
+    "wamp_1208e8179d40b713ec2bce3fb6d73c1b": "Installation on WAMP",
+    "wamp_8d8b360f75ee6ffa84653d9c0858587e": "WampServer_ is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.",
+    "wamp_6781878c32a5dee1aeaf59c8ed79e10a": "Download the right version of Phalcon",
+    "wamp_369c94d451e2358319ed269801f4e5ed": "WAMP has both 32 and 64 bit versions. From the download section, you can choose the Phalcon for Windows accordingly to your desired architecture.",
+    "wamp_ead744fad813be334172e04c70d09491": "After download the Phalcon library you will have a zip file like the one shown below:",
+    "wamp_0db1319bdc326b865b8f2c9ff6152b45": "Extract the library from the archive to get the Phalcon DLL:",
+    "wamp_f6bc8e11127ce83e9da503a2b5bf6e3d": "Copy the file php_phalcon.dll to the PHP extensions. If WAMP is installed in the c:\\\\wamp folder, the extension needs to be in \ufeffC:\\\\wamp\\\\bin\\\\php\\\\php5.3.10\\\\ext",
+    "wamp_8038675e9b335188a1fe820b481f18a7": "Edit the php.ini file, it is located at \ufeff\ufeffC:\\\\wamp\\\\bin\\\\php\\\\php5.3.10\\\\php.ini. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: extension=php_phalcon.dll and save it.",
+    "wamp_dd2c47e0478b68866f2853f3ac6016b9": "Also edit another php.ini file, which is located at \ufeff\ufeff\ufeffC:\\\\wamp\\\\bin\\\\apache\\\\Apache2.2.21\\\\bin\\\\php.ini. Append at the end of the file: extension=php_phalcon.dll and save it.",
+    "wamp_2f0f9fc803d746e5a951d5e53eca5630": "Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose \"Restart All Services\" from the pop-up menu. Check out that tray icon will become green again.",
+    "wamp_a458c01ca819dfd1ac5874e79d309327": "Open your browser to navigate to http:\/\/localhost. The WAMP welcome page will appear. Look at the section \"extensions loaded\" to check if phalcon was loaded.",
+    "wamp_5ecec852a15637509d8c8f566dd311f8": "Congrats!, You are now flying with Phalcon.",
+    "wamp_7a752ac7821139893d4b7d8eb762a483": "Related Guides",
+    "wamp_2b0238d5debaebd0d87eecff83a98741": "* :doc:`General Installation <\/reference\/install>` * :doc:`Detailed Installation on XAMPP for Windows <\/reference\/xampp>`"
+}
