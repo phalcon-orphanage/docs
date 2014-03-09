@@ -696,7 +696,7 @@ More examples:
 
     {% if robot is empty %}
         The robot is null or isn't defined
-    {% endif }
+    {% endif %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is even %}
@@ -707,13 +707,13 @@ More examples:
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is odd %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
         {% if key is numeric %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
