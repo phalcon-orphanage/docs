@@ -701,7 +701,7 @@ More examples:
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is even %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
