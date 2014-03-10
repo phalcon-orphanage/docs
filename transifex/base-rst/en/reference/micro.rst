@@ -1,6 +1,8 @@
 %{micro_788ba238448c0f22d9c254a70b84065b}%
+
 ==================
 %{micro_648846d5e9eabd0bf02300f083324c8f}%
+
 
 .. code-block:: php
 
@@ -15,8 +17,10 @@
     $app->handle();
 
 %{micro_e31cd488f01b9bb2939d662e1188325b}%
+
 ----------------------------
-%{micro_c3f8dc443c133feb69f8ff42aa51af6a}%
+%{micro_0cca96e627df9983cf88153c2d5fc687}%
+
 
 .. code-block:: php
 
@@ -25,8 +29,10 @@
     $app = new Phalcon\Mvc\Micro();
 
 %{micro_a8a25f2aac05af019b129455c8d4e2eb}%
+
 ---------------
-%{micro_2d41046e7fd9f64847471e5ceb7029b0}%
+%{micro_cd66a5f8e2f703c2f2961dbf23a08512}%
+
 
 .. code-block:: php
 
@@ -91,8 +97,10 @@
 
 
 %{micro_4a215d25b41d831f94fd7b60c56823b3}%
+
 ^^^^^^^^^^^^^^^^^^^^^^
 %{micro_384b68c39a5ef3f758b2911215ecab48}%
+
 
 .. code-block:: php
 
@@ -105,8 +113,10 @@
     });
 
 %{micro_796c0bcf8150277f840e5a6d386a47de}%
+
 ^^^^^^^^^^^^^^
 %{micro_a7fdbf88ca37d62f53e85d18ae5798ef}%
+
 
 .. code-block:: php
 
@@ -118,8 +128,10 @@
     });
 
 %{micro_06227ff2f8829cdfcedeee027ea7298b}%
+
 ^^^^^^^^^^^^^
 %{micro_1be14374a2c637b2bbbb4a3e44954076}%
+
 
 .. code-block:: apacheconf
 
@@ -130,8 +142,10 @@
     </IfModule>
 
 %{micro_1e6e4ade63d9748952ec93d9dfac5e20}%
+
 ----------------------
 %{micro_0ce887b41000aeeb257910c81b702ba0}%
+
 
 .. code-block:: php
 
@@ -152,7 +166,7 @@
         echo json_encode(array("some", "important", "data"));
     });
 
-%{micro_078c18caff766bfd91b697a505e39f3b}%
+%{micro_5c447a72e04a5ddaaa0a58ec327cf825}%
 
 .. code-block:: php
 
@@ -190,8 +204,10 @@
     });
 
 %{micro_85ebb8b1fe35876ecb488660ec541ddb}%
+
 -------------------
 %{micro_5c2a4dda48773c7b7b6acea701a709ee}%
+
 
 .. code-block:: php
 
@@ -207,8 +223,10 @@
     });
 
 %{micro_9798a318dd3602294c210880870c54e0}%
+
 --------------------------
-%{micro_fc9ada7d90a72dbea7d915962b193e3c}%
+%{micro_abee3e3e45f7489d1ed3a7af0125df95}%
+
 
 .. code-block:: php
 
@@ -234,8 +252,10 @@
 
 
 %{micro_1edd36cbfb44041b7c30b16d6c2d799a}%
+
 ----------------------------------------
-%{micro_d6d3077e8d6cc151676e5b21b68818d8}%
+%{micro_aae2fb5d963da74321705d5b59c18693}%
+
 
 .. code-block:: php
 
@@ -293,8 +313,10 @@
     });
 
 %{micro_dfe1468d30627f01538ae98507febc3e}%
+
 -----------------
 %{micro_3cd465e50bae5ff20846030afa6f1c91}%
+
 
 .. code-block:: php
 
@@ -306,8 +328,10 @@
     });
 
 %{micro_4325ce4e9847b0d604ca69b6743b6465}%
+
 ----------------------------
-%{micro_be1942297beba9b13307b53413357aae}%
+%{micro_94d4d62695afcb1d841a41b9d47f4260}%
+
 
 .. code-block:: php
 
@@ -332,8 +356,10 @@
     $app->handle();
 
 %{micro_b2f9f6b99cf3263485d410423f15bf18}%
+
 ------------------------
-%{micro_faad8ad5ff6758d3fb51fe5f61a6f0f7}%
+%{micro_b505075c684a62fc5150a58f45018184}%
+
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -383,8 +409,10 @@
     $app->setEventsManager($eventManager);
 
 %{micro_a954117055b58c8596806ed51d04a5bc}%
+
 -----------------
 %{micro_cd46592838085b7b4c94e18b6cca9f5f}%
+
 
 .. code-block:: php
 
@@ -484,8 +512,10 @@
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 %{micro_8d672192be99dfd34509f659e0938d58}%
+
 -----------------------------
-%{micro_b88f0d3514ad22d0e9b243ac6a6790db}%
+%{micro_d5c2ff46f8c4c2951e8ee0b9c8f58925}%
+
 
 .. code-block:: php
 
@@ -539,8 +569,10 @@
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
 %{micro_96018889300caae7d7d05f83cd8e858c}%
+
 -------------------
-%{micro_e11edfcd2de034201315d289420a5edd}%
+%{micro_c7feff5e66f92496121ef73b5ea437e7}%
+
 
 .. code-block:: php
 
@@ -564,8 +596,10 @@
     });
 
 %{micro_3eeddf70df32086a3d2bb22803b559d4}%
+
 ---------------
-%{micro_157185baf0db14498290e302c87df99c}%
+%{micro_70e1a9347021840524d101419a67e2f7}%
+
 
 .. code-block:: php
 

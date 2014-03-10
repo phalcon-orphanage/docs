@@ -1,10 +1,14 @@
 %{cherokee_652cb67b36f01584f07a075e22fca29c}%
+
 ===========================
 %{cherokee_c1d9745e37dfaf13ee00c49dcfc2722b}%
 
+
 %{cherokee_56a1cdd3587cf76b784a7612b21ef88f}%
+
 --------------------------------
 %{cherokee_f52a598d439cbd672b01adabe69ea284}%
+
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center

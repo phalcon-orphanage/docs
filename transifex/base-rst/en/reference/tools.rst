@@ -1,6 +1,8 @@
 %{tools_f16ba89ee7afed1f5adf9ccfab7fc774}%
+
 =======================
 %{tools_5f86a37a76c402c9a7ef8e85ea9b8fe9}%
+
 
 .. highlights::
     **Important:** Phalcon Framework version 0.5.0 or greater is needed to use developer tools. It is highly recommended
@@ -8,12 +10,16 @@
 
 
 %{tools_d779ffb4113a9aa6902414524b888ae6}%
+
 --------
 %{tools_e0d8720ef3987ed002683da3d43b08b9}%
 
+
 %{tools_c0277e63a218ee84b1414b2c467dfbe2}%
+
 ^^^^^^^^^^^^
 %{tools_618388d79fb02b4b00cdda6d5a1f4242}%
+
 
 .. toctree::
    :maxdepth: 1
@@ -24,8 +30,10 @@
 
 
 %{tools_16dcaef43f145e3d6763695db14944f3}%
+
 --------------------------
 %{tools_111c7ef624beb6d4338c718ef0d22708}%
+
 
 .. code-block:: sh
 
@@ -45,8 +53,10 @@
 
 
 %{tools_6a9c831bc5c1ae5b32aabbc1fe4a3788}%
+
 -----------------------------
 %{tools_6ae7fb5b78692a0f18c712f21f66682c}%
+
 
 .. code-block:: sh
 
@@ -85,8 +95,10 @@
 
 
 %{tools_d7281d770a3c367a891c86662c961e99}%
+
 ----------------------
 %{tools_40d723c00197dab564136975660379ab}%
+
 
 .. code-block:: sh
          
@@ -109,8 +121,10 @@
     }
 
 %{tools_26686a2cd6d0eae99caeca53e31c49e6}%
+
 ---------------------------
 %{tools_2476ca1c4e1fdf94a9a720dd10d3cae8}%
+
 
 %{tools_efc2231631071970e3c45b53b4bc2840}%
 
@@ -130,8 +144,10 @@
     baseUri        = "/store/"
 
 %{tools_103eb217645d47c61117060bf3a071b9}%
+
 -----------------
 %{tools_bbc4c78364dd5d44f17b00b7f76a6b30}%
+
 
 %{tools_e3f69c7f20b479a18d7035ceb3674fce}%
 
@@ -265,8 +281,10 @@
 
 
 %{tools_444dcb6e4ab792f7a397678de08b5b12}%
+
 ---------------
 %{tools_dcce99b2bb012a713c31b24feddf3d1b}%
+
 
 %{tools_547d2484a1540272d09dc63d614bb925}%
 
@@ -313,8 +331,10 @@
 
 
 %{tools_45996c72348c9fda516a66dcf9992659}%
+
 ----------------------
 %{tools_eccae8f5452d061f5aa2cdbfa332b277}%
+
 
 .. raw:: html
 
@@ -322,8 +342,10 @@
 
 
 %{tools_642c39544aab1f7c922b02712472d40a}%
+
 -----------------------------------
 %{tools_6ac7cfa1e44097cc1a0002e16e1746a8}%
+
 
 .. raw:: html
 
@@ -331,6 +353,8 @@
 
 
 %{tools_ee50f1d496b9cd00d5955f10f6dc7517}%
+
 ----------
 %{tools_c7953dac4a7034ef255b13fdac1919f3}%
+
 

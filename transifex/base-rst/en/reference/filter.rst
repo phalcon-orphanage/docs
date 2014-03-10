@@ -1,6 +1,8 @@
 %{filter_754b623fb3822e02354394a3bd087dff}%
+
 ========================
 %{filter_22df063654e4541ad4a79e048ea25624}%
+
 
 .. figure:: ../_static/img/sql.png
    :align: center
@@ -8,11 +10,13 @@
 `Full image (from xkcd)`_
 
 
-%{filter_48352cae72aba688a0bff1c16ef6f2d9}%
+%{filter_6837f21832b11cda7f4a03391d89aaba}%
 
 %{filter_2876899f6219389c80f3cc9e78e9e97b}%
+
 ---------------
 %{filter_894165cfe7953925c85eab1191f3c867}%
+
 
 .. code-block:: php
 
@@ -34,8 +38,10 @@
 
 
 %{filter_e026d5e41103bb84d12f065f4aa23934}%
+
 ---------------------------
-%{filter_dc5420fbbc9b9c4f41a8a90335d54f47}%
+%{filter_57180dfa247e22081ea9f066a8b9bb3d}%
+
 
 .. code-block:: php
 
@@ -63,8 +69,10 @@
     }
 
 %{filter_36ff741b070e90b755ef99fbde9b438c}%
+
 ---------------------------
 %{filter_33e0ab6879b0a768bd0b2097153d4d49}%
+
 
 .. code-block:: php
 
@@ -86,8 +94,10 @@
     }
 
 %{filter_4ebfda3361a1fabe7be70fedcf157699}%
+
 --------------
-%{filter_4b94af7039a1ab25a7b967ac26588f92}%
+%{filter_d1671701035180e8ab9679e7d65dbc56}%
+
 
 .. code-block:: php
 
@@ -103,8 +113,10 @@
 
 
 %{filter_2e03a6d1ccdcf7c081406aad372249a5}%
+
 -------------------------
 %{filter_8a608152ff5bd1cce8bb0fbf62695c80}%
+
 
 +-----------+---------------------------------------------------------------------------+
 | Name      | Description                                                               |
@@ -129,8 +141,10 @@
 +-----------+---------------------------------------------------------------------------+
 
 %{filter_c39f0d2625dc1cb85a72aa84a008fb93}%
+
 -------------------------
-%{filter_1e4204abe542cfdcabd014c47678555b}%
+%{filter_106bea811ba89491db1ebdec526e2428}%
+
 
 .. code-block:: php
 
@@ -171,10 +185,14 @@
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
 %{filter_029798e03ad6c063f6300b5224a5776a}%
+
 --------------------------------
 %{filter_e930612d5387062f0589cb3ea5865cb7}%
 
+
 %{filter_03a91ce6525a43a0db6b9e5e4cd2a8a0}%
+
 ----------------------------
-%{filter_8422e15128d4c2bc11fec87586a93b2a}%
+%{filter_a83a0bfd8ffc21007bfc83a4331b2a9a}%
+
 

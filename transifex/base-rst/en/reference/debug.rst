@@ -1,4 +1,5 @@
 %{debug_4eface2a7de663488d577e631a23894c}%
+
 ======================
 
 .. figure:: ../_static/img/xdebug-1.jpg
@@ -10,8 +11,10 @@
 %{debug_210c8aebc2022b155df5c183bb5cb17f}%
 
 %{debug_73f8f95e13a4d7741a9512277b7c4d7f}%
+
 -------------------
 %{debug_523cc31a1df32a41cce5d95b2c0715e8}%
+
 
 .. code-block:: php
 
@@ -25,7 +28,7 @@
 
     }
 
-%{debug_22849b339431bce03f0835fc32fb96f2}%
+%{debug_3b1f614f778576d1359113c393e27f32}%
 
 %{debug_ff7c8cba77174e8b62a1422d036000c9}%
 
@@ -56,7 +59,7 @@
 
     }
 
-%{debug_34812fc23abd0aa6627bef42421964f1}%
+%{debug_42d2abbd1c5dd98505ebfe6b434ab5e9}%
 
 .. code-block:: php
 
@@ -103,8 +106,10 @@
 %{debug_072141f2639a9394589c5183686392f0}%
 
 %{debug_6815edaaedecedc259ccc2bf3bc9a8ab}%
+
 ---------------
 %{debug_34bf6cfe26a83342319188f04ea2a32b}%
+
 
 %{debug_e5db5bbfbd5738ab0936ea57d5410a0d}%
 
@@ -127,8 +132,10 @@
 %{debug_3f66fbeb4a21fd9a31b32e75e9a6f51b}%
 
 %{debug_3876e10bb15f5eb320587acd70db3601}%
+
 -----------------------------
 %{debug_0a2715f107ac2b7b5c8c256d6a7384af}%
+
 
 .. code-block:: php
 
@@ -194,8 +201,10 @@
 
 
 %{debug_73ed294323e5fd47b34d920d3ad4e48d}%
+
 ------------
 %{debug_6f164c8227eee5c2e705532bdeea1ab4}%
+
 
 %{debug_3178da61cc3ae187bf088906d7a25306}%
 

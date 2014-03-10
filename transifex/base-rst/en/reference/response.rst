@@ -1,6 +1,8 @@
 %{response_96018889300caae7d7d05f83cd8e858c}%
+
 ===================
-%{response_4aa13d66c64755d60950cd5c4cd6f2eb}%
+%{response_6bf4c0dd4e13162f5ed1e37b834dfc4e}%
+
 
 .. code-block:: php
 
@@ -44,8 +46,10 @@
     }
 
 %{response_58c353e11cfea9c1d6ef0400e69c35a4}%
+
 --------------------
 %{response_06f96555b3a97dae4120c22caa515138}%
+
 
 %{response_040c328569c535b4a7a8542911d38a67}%
 
@@ -60,7 +64,7 @@
     //{%response_d226b4fe440905826f7b70a11486e790%}
     $response->setRawHeader("HTTP/1.1 200 OK");
 
-%{response_41a2b129cf88a20c4428a7fa3027d461}%
+%{response_17a252d92bebda16f922904f3944fcf1}%
 
 .. code-block:: php
 
@@ -73,8 +77,10 @@
     $contentType = $response->getHeaders()->get("Content-Type");
 
 %{response_85ebb8b1fe35876ecb488660ec541ddb}%
+
 -------------------
-%{response_0e05cb1ea142cac273618b77cc428e5b}%
+%{response_c8b097c3643885890401f0ca01bf1ec6}%
+
 
 .. code-block:: php
 
@@ -92,7 +98,7 @@
     //{%response_88eeb693f326e0e11441130f002200ab%}
     $response->redirect("http://www.example.com/new-location", true, 301);
 
-%{response_c4d63c5ab656959797d68ed59d14fd18}%
+%{response_a75f2a5b68b397b970285c84345d8356}%
 
 .. code-block:: php
 
@@ -108,8 +114,10 @@
 %{response_1c0880121fbd5fbb3ec25161f3f89ee2}%
 
 %{response_c39d99e2c813a3297d5010729c65001d}%
+
 ----------
 %{response_dde8dc5a1c8921320d8383726bdf80cc}%
+
 
 %{response_a1b56a2d3c1bf4146eff9541966fb92d}%
 
@@ -119,8 +127,10 @@
 * {%response_7c728995514c8ba24d65a6d9c391dbc8%}
 
 %{response_241e831b798a5b2b7d5a163e9d381113}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{response_b2fa40bfebca062b4674810e4352266f}%
+
 
 .. code-block:: php
 
@@ -147,8 +157,10 @@
 %{response_5c02e69f9df0a1141eac838690110ed9}%
 
 %{response_8e676f776be373f5471d3db1665683fa}%
+
 ^^^^^^^^^^^^^
 %{response_637975a76962dc440ceb603a263c1464}%
+
 
 .. code-block:: php
 
@@ -167,6 +179,8 @@
     $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 %{response_5b261d26baa708955489b948c0a8496e}%
+
 ^^^^^
 %{response_d7f987ce71ea42374b851bae4a1252d5}%
+
 

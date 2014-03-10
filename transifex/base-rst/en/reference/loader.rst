@@ -1,16 +1,20 @@
 %{loader_c8f48d17ec17f73c71701dbefa922bbe}%
-======================
-%{loader_e9efafebf4cb67840a64a80aff0daf0c}%
 
-%{loader_e4c6f8515974b8349488fe3d89d75280}%
+======================
+%{loader_3fd4e6f26e3c74c284cd133eb0ef2f31}%
+
+
+%{loader_c5a52da003d39ccadcd5fda3aa1bd43f}%
 
 %{loader_6e14a95cb826e28080486414b346a683}%
 
-%{loader_334d1d8c943955240927884d0cd43b58}%
+%{loader_e7d53f29945ab13e868e53caebd9afb9}%
 
 %{loader_f0d1ea6f8ecdc3c9be68760b4db0bb54}%
+
 ----------------------
 %{loader_e1df98f6943b181da25c4f0cd238e04c}%
+
 
 .. code-block:: php
 
@@ -36,8 +40,10 @@
     $some = new Example\Adapter\Some();
 
 %{loader_9fc168b6855cd7b997409068c74c496a}%
+
 --------------------
 %{loader_bf8461fb6eccab1951e194ec636657d3}%
+
 
 .. code-block:: php
 
@@ -63,8 +69,10 @@
     $some = new Example_Adapter_Some();
 
 %{loader_f9a1bb9e4166386c8996631599b15b81}%
+
 -----------------------
 %{loader_d6e445d6d41140c51fb599b42816e741}%
+
 
 .. code-block:: php
 
@@ -92,8 +100,10 @@
     $some = new Some();
 
 %{loader_3fb81c3fa5af1fb24fa95ce3a29a1546}%
+
 -------------------
 %{loader_ffa6e96687b518bb06e47a1dbba4c2e8}%
+
 
 .. code-block:: php
 
@@ -119,8 +129,10 @@
     $some = new Some();
 
 %{loader_681e56350f1db61e293841bb6d7b4c06}%
+
 --------------------------
-%{loader_5973661d6bf969480e9ce6961b9ef4e2}%
+%{loader_0fc8fd6eb3f0b062b870078f9b044468}%
+
 
 .. code-block:: php
 
@@ -133,8 +145,10 @@
     $loader->setExtensions(array("php", "inc", "phb"));
 
 %{loader_9bb8905b56939f589ab60a39a3f7cad3}%
+
 ----------------------------
 %{loader_69b2ab1eaa9b57f73f1c7f307e98c253}%
+
 
 .. code-block:: php
 
@@ -152,8 +166,10 @@
 %{loader_d90de01f4d9134715969c2aa6bae6174}%
 
 %{loader_d946d4fc503cdc77e799865f0f0ec045}%
+
 --------------
 %{loader_01ac6473cbf5b4105e52ec38365236bc}%
+
 
 .. code-block:: php
 
@@ -185,8 +201,10 @@
 %{loader_45fd426d2bb6952a4b325897f7a59b40}%
 
 %{loader_b6386395fed27ad94fc2fc7a570fe221}%
+
 ------------------
 %{loader_ec0aafc547f07550a41c144843c6af14}%
+
 
 .. code-block:: php
 
@@ -226,8 +244,10 @@
 +------------------+-----------------------------------------------------------+---------------------------------------------------------+---------------------+
 
 %{loader_f07747c719e154f6ba1384e010ddc59e}%
+
 ---------------
 %{loader_1a3657a13f35fe1e1963850259869e36}%
+
 
 * {%loader_c41ed023d18e39c4dd8e2b6752f45ed5%}
 * {%loader_daf1b6007c259755160fee747d44dc4d%}

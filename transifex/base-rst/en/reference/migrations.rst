@@ -1,6 +1,8 @@
 %{migrations_e9344089a64801b2141c890b330a0fcb}%
+
 ===================
 %{migrations_f301d41b7379bf73aa2ec3a13c5aa6e0}%
+
 
 .. highlights::
     **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.3.11 or greater installed.
@@ -18,8 +20,10 @@
 
 
 %{migrations_c2c6a196f47f93f72deb7b1bdb09136d}%
+
 --------------
-%{migrations_8be6a9683bb5d5b5bf2c2c4bac56783f}%
+%{migrations_dafacf70bbd1a474c5d65134fc5d05ea}%
+
 
 %{migrations_203535c85e7bb7824da0d937e8ab2fe0}%
 
@@ -37,15 +41,17 @@
 
 %{migrations_6d7decd5070994a0afa0d63acb389aca}%
 
-%{migrations_28e728f8b1f2d65ed3c758a61286d6d9}%
+%{migrations_2b1b05d9ab89746ef007eeb359671172}%
 
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
 
 %{migrations_b673cb7a0ed9fb88408b3bb89ae3c1ef}%
+
 -----------------------
 %{migrations_1dd1afd8dc05142d04a6cb584c4be3f3}%
+
 
 %{migrations_cbe6b57bfb055245ecb16ec1e3e6fd23}%
 
@@ -154,8 +160,10 @@
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 %{migrations_fdc42990e3b6f6fbdfa0c2091c3dd1b0}%
+
 ^^^^^^^^^^^^^^^^
-%{migrations_d5dd06884d15100629a1a7efa90e4366}%
+%{migrations_9bd114f770bc302f84fa27b173617833}%
+
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -188,12 +196,16 @@
 * {%migrations_070faf863b6a1cfe77f660ccdd4d9ee1%}
 
 %{migrations_98592e9224abec7b6a4957b5f4b035b4}%
+
 ^^^^^^^^^^^^^^^^
-%{migrations_aeb3e98001a3a150150cefe12302d896}%
+%{migrations_173520fb94187f133174d26fa590a3bc}%
+
 
 %{migrations_18f0b0ff59a37b6adc6b8a16e4430559}%
+
 ^^^^^^^^^^^^^^^^^^^
-%{migrations_1f2b29d16db162f94052bbfd388e6954}%
+%{migrations_f0baedbf67e787b77fd3a0c2065a9573}%
+
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 | Index               | Description                                                                                         | Optional |
@@ -208,8 +220,10 @@
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 
 %{migrations_3288ae777aa932ca0f6a2a90da292c6d}%
+
 ------------------
-%{migrations_bcfc0fca08f7f3bfb030bbba1fad022c}%
+%{migrations_cf35cba6fd8ac5359966ed7d8b9c6c93}%
+
 
 .. code-block:: php
 
@@ -231,8 +245,10 @@
     }
 
 %{migrations_d7452f33e484571303e4cc4ab5b15ffe}%
+
 ------------------
 %{migrations_063f176fa57cf226a7d0a5d3b84c0935}%
+
 
 .. figure:: ../_static/img/migrations-4.png
    :align: center

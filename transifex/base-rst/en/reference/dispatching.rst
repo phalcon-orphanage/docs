@@ -1,10 +1,14 @@
 %{dispatching_c7e230188b6b2143ff84328e977f26e6}%
+
 =======================
-%{dispatching_81501364f781f7e734258d205629bc50}%
+%{dispatching_dfeb42ef7cec688fb8e9eabe5358b348}%
+
 
 %{dispatching_9ec793769848dd36d16bc5009d090b78}%
+
 -----------------
-%{dispatching_3aa22fc3cb1379a87cf25f652dcc56b8}%
+%{dispatching_543fff3e579e81cea22e73ba5ff142c6}%
+
 
 .. code-block:: php
 
@@ -31,8 +35,10 @@
 %{dispatching_b400a4664e1eb7d407d32443a5866cbb}%
 
 %{dispatching_0d1e9546c8779eb28895ec882ed3d319}%
+
 ^^^^^^^^^^^^^^^^^^^^
-%{dispatching_14eec6afae10eddb0b0e9b9376b2c5c4}%
+%{dispatching_27e991dba74daabcdfbb1ed543830568}%
+
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered to          |
@@ -56,7 +62,7 @@
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
-%{dispatching_69d78495a25fcaf6e4b4e9fa56d997aa}%
+%{dispatching_b9c4fe6e9da507a752630e4ce78bf945}%
 
 %{dispatching_4eb434eb37be7b4a57c178fa4af88c76}%
 
@@ -108,8 +114,10 @@
     }
 
 %{dispatching_5e377a05e8ff5174b61fbdfc1b15ccb3}%
+
 ---------------------------
 %{dispatching_3b9443771cbb60480ead8f8517713ac9}%
+
 
 .. code-block:: php
 
@@ -173,8 +181,10 @@
 +----------------+--------------------------------------------------------+
 
 %{dispatching_f639eaf462e293dac25b136e656dcbf2}%
+
 --------------------
-%{dispatching_8802f0dbd05437c34f56cb0a6b8ddf81}%
+%{dispatching_ecd78117b6983eb53e4390ab3b96391c}%
+
 
 %{dispatching_b371c1705a0db0cda084736e6897724c}%
 
@@ -254,8 +264,10 @@
     });
 
 %{dispatching_f70a4e022ddce861f63997cab3fab1e4}%
+
 ------------------
-%{dispatching_dd6b7bcdbb4ce2aaeedd235abfe8c8d0}%
+%{dispatching_30bdee532ed3867e8dea7d771570fab6}%
+
 
 .. code-block:: php
 
@@ -284,12 +296,16 @@
     }
 
 %{dispatching_14c198f6c9118247f026bc8e88fbaedf}%
+
 -----------------
 %{dispatching_05d8d38f4f9011a9ac4641a571f84dce}%
 
+
 %{dispatching_e260ea2adfcceb079d4d4b6f1b551608}%
+
 ^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_67688f4ece23aa755f24f8cfb0aad718}%
+
 
 .. code-block:: php
 
@@ -316,8 +332,10 @@
     });
 
 %{dispatching_0a38dd3dddc99f184e2d2e489251cb10}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_0dabb0181ae19b162bc80badf0a4b1cc}%
+
 
 %{dispatching_7572891bc5d9c53bb5cc71ddc41eb601}%
 
@@ -352,8 +370,10 @@
     });
 
 %{dispatching_5525aa566ea8e91ed09eb57d3e25b58a}%
+
 ^^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_81aa760587a36f918d029250fe635836}%
+
 
 %{dispatching_713b76e5d389b872cf6b91937b9a1c59}%
 
@@ -433,8 +453,10 @@
 %{dispatching_e4002ed174de3b9843b8d2a2f8cfbd84}%
 
 %{dispatching_a0b3073d0e9cc13f01fa8fded0cdc7ad}%
+
 -----------------------------
-%{dispatching_f4582eab6580a8e3e9d783c044d1e67e}%
+%{dispatching_6592b8798addabd3b7ddc42c38fc8ae8}%
+
 
 .. code-block:: php
 

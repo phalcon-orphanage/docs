@@ -1,12 +1,16 @@
 %{assets_744c3ef6243d76429a95f010a3d47cff}%
+
 =================
 %{assets_b0278ad267d2461d3eeafc96122e4a31}%
 
-%{assets_4c79a3fe144f02b4051810553a60c81d}%
+
+%{assets_fd61e9b7b5674d8a609137c676c67dd1}%
 
 %{assets_647e8a84d61a2443e8d863a01727bdb8}%
+
 ----------------
 %{assets_fab89985217fa01f7d36db4a2aae5611}%
+
 
 %{assets_adae69cdf99e915a88e999a00581ded7}%
 
@@ -50,8 +54,10 @@
     <html>
 
 %{assets_40aa86d406a1567e2bb210cfccefd275}%
+
 ----------------------
-%{assets_467802b99de71cf3cdd123387595c997}%
+%{assets_9463b3f8353230f7a298e4943a974bd9}%
+
 
 %{assets_3f915d0e3e0a36ea435f995608b6919b}%
 
@@ -65,8 +71,10 @@
         ->addCss('css/style.css', true);
 
 %{assets_ad9b4b4c5b5164f6d3d77012df79c45f}%
+
 -----------
 %{assets_b0af0daf04f160e1588b0acba893eb88}%
+
 
 .. code-block:: php
 
@@ -102,8 +110,10 @@
     <html>
 
 %{assets_f051468092cd30c784f47c1c1f518b5e}%
+
 --------
 %{assets_68847db02bfef9a3f2cbb88f3bb52ebc}%
+
 
 .. code-block:: php
 
@@ -134,8 +144,10 @@
         ->addJs('js/bootstrap.min.js');
 
 %{assets_ae62cffd270c3e0cab6f30fefed9136c}%
+
 ----------------------
-%{assets_5d6201f6b3994c20409263f5f58ea822}%
+%{assets_3bf58860ebfa7528c3c1159d5e0a9565}%
+
 
 %{assets_13288958d7900905c0705e80f54a8091}%
 
@@ -222,8 +234,10 @@
 %{assets_a4bc709eadced84a672028c6471bad63}%
 
 %{assets_4e6bcce78953fc4fab8ab028f9630b0e}%
+
 ^^^^^^^^^^^^^^^^
 %{assets_b71d0d7b82df795a3f71bc36986017d6}%
+
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 | Filter                            | Description                                                                                               |
@@ -234,8 +248,10 @@
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 
 %{assets_d1b2812923f7a6a1b2e2d1c556d842ce}%
+
 ^^^^^^^^^^^^^^
 %{assets_29d376fce56b9b142527b0a8f433e827}%
+
 
 .. code-block:: php
 
@@ -308,6 +324,8 @@
     )));
 
 %{assets_5360cfefe9d89ff1c2f947439de199a3}%
+
 -------------
 %{assets_6a556a51195344c6d4e6f145ea73b690}%
+
 

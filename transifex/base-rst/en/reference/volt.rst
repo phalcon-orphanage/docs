@@ -1,6 +1,8 @@
 %{volt_571e8bcd0fb45cbd5ba7b65afb1874a2}%
+
 =====================
 %{volt_602887edfcc45bcce944deb9fc2309be}%
+
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
@@ -9,8 +11,10 @@
 %{volt_0c743e0803594efbe6ff61566b75f9ef}%
 
 %{volt_c8e0e36307fcd2c5d61b48c9de3d7d94}%
+
 ------------
 %{volt_c8992cedade57d4cdf29fc2cf9404563}%
+
 
 .. code-block:: html+jinja
 
@@ -28,8 +32,10 @@
     {% endblock %}
 
 %{volt_45c981f6cfc4e37497fa4e9d7a255133}%
+
 ---------------
 %{volt_a127ba45d4a8a8a2e9eef9430542b4fe}%
+
 
 .. code-block:: php
 
@@ -60,8 +66,10 @@
     ));
 
 %{volt_b0320f4a950d93f7f09a91c29ce5132b}%
+
 -----------
 %{volt_2f1b5c2f3534c62a3dc3282196b93263}%
+
 
 %{volt_4ffce81a2b7bfd57689e79503f201ae4}%
 
@@ -116,8 +124,10 @@
     }
 
 %{volt_c9019da4d8972191e60b297477584b75}%
+
 ---------
 %{volt_96bbf01a97ca80f6c209236a02ad816c}%
+
 
 .. code-block:: jinja
 
@@ -125,8 +135,10 @@
     {{ post['title'] }} {# for $post['title'] #}
 
 %{volt_c3240673b53669364a902ccbcbbb8ad4}%
+
 -------
 %{volt_ef577735d02c61904e0eb113bc49bcf2}%
+
 
 .. code-block:: jinja
 
@@ -248,8 +260,10 @@
     {{ "désolé"|convert_encoding('utf8', 'latin1') }}
 
 %{volt_5c081d944e6f7f7f6c61bcc0a639b48b}%
+
 --------
 %{volt_673b07a8a673a0b45de959a524696e33}%
+
 
 .. code-block:: jinja
 
@@ -258,12 +272,16 @@
     #}
 
 %{volt_9db4deeb03e5d2de7f9212d5572d19a4}%
+
 --------------------------
 %{volt_27cd8b5b276dd4e9a96ddeb9af448d47}%
 
+
 %{volt_62fd3f87581663e4371e40eb51d66e76}%
+
 ^^^
 %{volt_dfc11531e4c6065af6db90c0bf559a7a}%
+
 
 .. code-block:: html+jinja
 
@@ -332,8 +350,10 @@
     {% endfor %}
 
 %{volt_6e74bbba1b7f688edbce902f37ef8f5c}%
+
 ^^^^^^^^^^^^^
 %{volt_cb6f33544183d282801d26f19ccb1502}%
+
 
 .. code-block:: html+jinja
 
@@ -356,8 +376,10 @@
     {% endfor %}
 
 %{volt_959076d2b0beff36ddd17662b927b4f9}%
+
 ^^
 %{volt_f3cbad907c4b8aee67692607530a21b2}%
+
 
 .. code-block:: html+jinja
 
@@ -398,8 +420,10 @@
     {% endif %}
 
 %{volt_efa793b5e2da5b64c56a613af1dc1bc8}%
+
 ^^^^^^^^^^^^
 %{volt_8d914b2dc5f95fcf2fc984a83379ce92}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Variable             | Description                                                                  |
@@ -441,8 +465,10 @@
     {% endfor %}
 
 %{volt_e65acd0fd0d03ec2e02d25835e130176}%
+
 -----------
 %{volt_90654b2689e90206e2e44e780e2e7e58}%
+
 
 .. code-block:: html+jinja
 
@@ -479,8 +505,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_9d0fb94a51e6c917886df9148183fca6}%
+
 -----------
 %{volt_4b639c382d4725994e39c335c6d5b213}%
+
 
 %{volt_ee8dd2766fcb8a457d5b26d2cd68f8a3}%
 
@@ -495,8 +523,10 @@
     {% do (1 + 1) * 2 %}
 
 %{volt_c1c360db85a10f0534261b4002a0a18b}%
+
 ^^^^^^^^
 %{volt_8975fdee3cfb0570bd8678b75f6946e8}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -515,8 +545,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_71eee481a6c8310dcec0dc7189151d35}%
+
 ^^^^^^
 %{volt_6f40ab5ad99ce887bfbdee755f00a03d}%
+
 
 .. code-block:: html+jinja
 
@@ -540,8 +572,10 @@
     {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 %{volt_f71cfaa0f29dcbf3329bfee182f80554}%
+
 ^^^^
 %{volt_4608f8c719712039f57eecfdfc0ab6ad}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -558,8 +592,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_8daa7d30f3cd9a3a4f4be23c9bd7ed9a}%
+
 ^^^^^^^^^^^
 %{volt_c22664d2a7b40f64b246cb233d00664f}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -584,8 +620,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_4fe4081cffeaece4d9aecd74b4eb8914}%
+
 ^^^^^
 %{volt_162d2ac97f013d264a84a07365114a80}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -600,8 +638,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_93435309515deb73fce1c3d1b568bc92}%
+
 ^^^^^^^^^^^^^^^
 %{volt_0b2bd9c764cd885c45e7a6c0858eb036}%
+
 
 +----------------------+----------------------------------------------------------------------------------------------+
 | Operator             | Description                                                                                  |
@@ -638,8 +678,10 @@
     {% endfor %}
 
 %{volt_6a2499b69a7e0589ed54afa226c18861}%
+
 -----
 %{volt_b0c360ed172ceffde393b0b4988e8755}%
+
 
 .. code-block:: html+jinja
 
@@ -725,8 +767,10 @@
     {% endif %}
 
 %{volt_83958ae729519ff5491ec0dd9fe759df}%
+
 ------
 %{volt_9ac27aedade0d502a3d25ace895b506d}%
+
 
 .. code-block:: html+jinja
 
@@ -785,8 +829,10 @@
     {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 
 %{volt_37bc16dc011e098a69b4c1ca892ddb12}%
+
 -----------------
-%{volt_bd9998800f9ac1269410c0b8bada309c}%
+%{volt_0daeace05b6a62ebbf941d68f76269e9}%
+
 
 .. code-block:: html+jinja
 
@@ -871,8 +917,10 @@
 +------------------------------------+-----------------------+
 
 %{volt_800dd778c0248873014b5d46b6bf8de9}%
+
 ---------
 %{volt_8da62e4de22c35c5145389c947a3836e}%
+
 
 +----------------------+------------------------------------------------------------------------------+
 | Name                 | Description                                                                  |
@@ -899,8 +947,10 @@
 +----------------------+------------------------------------------------------------------------------+
 
 %{volt_e06179c3e64394a27a5d1a1957a16f83}%
+
 ----------------
-%{volt_b0ca2ce1f1c6cd73aad03c81e846a485}%
+%{volt_9b4f0cfb2fc37d32dd8c03d263003ef0}%
+
 
 .. code-block:: html+php
 
@@ -923,8 +973,10 @@
     <div id="footer">{% include "partials/footer" with ['links': links] %}</div>
 
 %{volt_28a7b018cd0d249f86423536e06961c9}%
+
 ^^^^^^^
 %{volt_f227a9159a2de6cdf144f05ad35836f9}%
+
 
 .. code-block:: html+jinja
 
@@ -932,8 +984,10 @@
     <div id="footer">{% include "partials/footer.volt" %}</div>
 
 %{volt_bf76ea164e27de7336aaa9146ea1ea05}%
+
 --------------------
 %{volt_452075260d726282b3506d29ab4dc91e}%
+
 
 .. code-block:: html+jinja
 
@@ -991,8 +1045,10 @@
     </html>
 
 %{volt_6be2debfc1f89c4307f563a5985f71a6}%
+
 ^^^^^^^^^^^^^^^^^^^^
 %{volt_171554bc64b2ea7ab5a3c6b34e8f10fe}%
+
 
 .. code-block:: html+jinja
 
@@ -1072,8 +1128,10 @@
 
 
 %{volt_33fc9d5ccdfdac6f9b3a6b198c182701}%
+
 ---------------
 %{volt_825823aba16d331414c4b6212399156d}%
+
 
 .. code-block:: html+jinja
 
@@ -1087,8 +1145,10 @@
     {% endautoescape %}
 
 %{volt_b8c97bce4488a1fb733ae5e45de2fb72}%
+
 --------------------------
 %{volt_a6e9dbf514ed4b3c2091a71de327231b}%
+
 
 .. code-block:: php
 
@@ -1195,14 +1255,18 @@
     ));
 
 %{volt_c35aaed9c35a2d5e1e7949c14f87d7da}%
+
 --------------
 %{volt_4f614d2e98c02937485f28e55de1ff48}%
+
 
 %{volt_3d5f4485a2f56b1d388425052b976315}%
 
 %{volt_800dd778c0248873014b5d46b6bf8de9}%
+
 ^^^^^^^^^
 %{volt_eff81ebb2e4622502c2770ff681205ca}%
+
 
 .. code-block:: php
 
@@ -1271,8 +1335,10 @@
     $compiler->addFunction('dump', 'print_r');
 
 %{volt_c3240673b53669364a902ccbcbbb8ad4}%
+
 ^^^^^^^
 %{volt_701b73703153b72f1241fb6f987d7971}%
+
 
 .. code-block:: php
 
@@ -1299,8 +1365,10 @@
     $compiler->addFilter('capitalize', 'lcfirst');
 
 %{volt_b3579f83bd62b25c9709fdbca3bf6161}%
+
 ^^^^^^^^^^
 %{volt_7bff1818d33f6c3e4ae5bac1041258c1}%
+
 
 %{volt_0a168806eb5241d25a16d987d09e9510}%
 
@@ -1349,8 +1417,10 @@
     $compiler->addExtension(new PhpFunctionExtension());
 
 %{volt_e2809b8367f23b279052a0c57a34b5ac}%
+
 ----------------------
 %{volt_a9ac5104121ee701d914b8a21f4295e7}%
+
 
 .. code-block:: html+jinja
 
@@ -1379,11 +1449,13 @@
 
     {% endcache %}
 
-%{volt_fa5c494d6a43bf4695d7f529ef52b144}%
+%{volt_211d0d2b80edaa6983fde0e67e623758}%
 
 %{volt_c45c12e738f6cb287f117d8bac15285b}%
+
 -------------------------------
 %{volt_ebd73ba8f93a225dbf5dfd764d03ba90}%
+
 
 .. code-block:: html+jinja
 
@@ -1394,8 +1466,10 @@
     <input type="hidden" name="token" value="{{ security.getToken() }}">
 
 %{volt_d3e54f7c04408d6d1a884897bca4169e}%
+
 ---------------------
 %{volt_f060f739765fe9b113aa46c2df47a2d2}%
+
 
 .. code-block:: php
 
@@ -1422,10 +1496,12 @@
     require $compiler->getCompiledTemplatePath();
 
 %{volt_b0492394b589b5ff8f6fb98048d65d8f}%
+
 ------------------
 * {%volt_42b43a358b2b7d3e0c8379327af7bb7c%}
 * {%volt_51aa6d2259d6af75328c9051e4d37608%}
 * {%volt_e7e5436b3e973d873a31ba8618e429bf%}
 * {%volt_5b0ab295f52ad1738b49531edbafbedd%}
 * {%volt_652581b4ec1cedc35cf25dbc333c67ca%}
+
 

@@ -1,10 +1,14 @@
 %{config_7aace998d2b823d2bade087c56c195b2}%
+
 ======================
-%{config_a03df62f83b6c3752553696d07d63328}%
+%{config_4cc78dc359d25e5a76b6d8e5d9e8602c}%
+
 
 %{config_3bb7a0e24926eb4b6474c7c719359e62}%
+
 -------------
 %{config_159270e976fea8c07aeb4890470109eb}%
+
 
 +-----------+---------------------------------------------------------------------------------------------------+
 | File Type | Description                                                                                       |
@@ -15,8 +19,10 @@
 +-----------+---------------------------------------------------------------------------------------------------+
 
 %{config_bc1cde98089e26b0bef7655a83b83124}%
+
 -------------
 %{config_cdc52ab5db8bfb6f482dcf21c98b48ec}%
+
 
 .. code-block:: php
 
@@ -54,8 +60,10 @@
     $config = new \Phalcon\Config($settings);
 
 %{config_7708d5b9f14191306a80322e64ab347c}%
+
 -----------------
 %{config_2dc5fd108360f45b49fcc5bf77d89296}%
+
 
 .. code-block:: ini
 
@@ -87,8 +95,10 @@
     echo $config->models->metadata->adapter, "\n";
 
 %{config_b427b34340f6904f9bff330505fb4893}%
+
 ----------------------
 %{config_97f80a55499548203fcc6d2e65086bd1}%
+
 
 .. code-block:: php
 

@@ -1,8 +1,10 @@
 %{tags_c3144b8ef940c1ebff02551da1193039}%
-============
-%{tags_26fe4984f9926a35133255f4c1ed5fb8}%
 
-%{tags_97e74baff8001359e1323244c3c485b2}%
+============
+%{tags_5d627ea36694833fa9a53ecc92595be9}%
+
+
+%{tags_6ccdd33ae3f25b19e9bf66a1bc3a3a20}%
 
 .. highlights::
     This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
@@ -10,8 +12,10 @@
 
 
 %{tags_a05301caf81de2b012d3bcc32aadf8d1}%
+
 ------------------------
 %{tags_306666c1bdfab58d2a111c8245c7d5e9}%
+
 
 %{tags_b9f573d409350f9ad0b4b4431e38898e}%
 
@@ -76,8 +80,10 @@
     </html>
 
 %{tags_ebe7861f32b5b88f1adc5867bd84d41a}%
+
 ----------------
 %{tags_6fed5e5e83eff83835948f2a3633d97b}%
+
 
 .. code-block:: html+php
 
@@ -90,7 +96,7 @@
     <!-- for a named route -->
     <?= $this->tag->linkTo(array(array('for' => 'show-product', 'title' => 123, 'name' => 'carrots'), 'Show')) ?>
 
-%{tags_5fff0e2c5e8c35e7d396d640174ca309}%
+%{tags_3b3ddbc8f1671013e5486db4eac42be9}%
 
 %{tags_27a89fa6a2d3db6cdb4d3ed5af1e0d93}%
 
@@ -106,8 +112,10 @@
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
 
 %{tags_d80e3bdaef8244040a542f67fcd04075}%
+
 --------------
 %{tags_da11624fa19e8cda2e99e676ea2e41e3}%
+
 
 .. code-block:: html+php
 
@@ -146,11 +154,13 @@
         {{ submit_button("Search") }}
     </form>
 
-%{tags_acb82f62c8bdc466dfa1f8efbbc35409}%
+%{tags_c0252c60d20dc018cec6e1fd6537fd89}%
 
 %{tags_f78e5a2f28f870991d16a021368871dc}%
+
 ---------------------------------
 %{tags_76edb8ec0dcb4c5d496f53dcb6f6b8b3}%
+
 
 .. code-block::  html+php
 
@@ -186,8 +196,10 @@
     {{ hidden_field("parent_id", "value": "5") }}
 
 %{tags_9d358ff3057e3a6fa9c7e6b31c120392}%
+
 -------------------
-%{tags_abfc004a0ef802ba25505abf41857949}%
+%{tags_d73e23fe81cdb86f93ccdf697994b5e9}%
+
 
 .. code-block:: php
 
@@ -287,8 +299,10 @@
         'useEmpty': true, 'emptyText': 'Please, choose one...', 'emptyValue': '@') }}
 
 %{tags_d7b369e25a0fd32a072012ae2eac6dff}%
+
 -------------------------
 %{tags_96133c6dea59a8e21c1dd8830d7d77d4}%
+
 
 .. code-block:: html+php
 
@@ -315,11 +329,14 @@
         placeholder="Enter a price" />
 
 %{tags_90680a0d6ea8d96ae9c3d278eee75491}%
+
 ---------------------
 
 %{tags_d1f65b9d28d406d8c7cf83f5775c49e1}%
+
 ^^^^^^^^^^^^^^^^
 %{tags_ee6a94af060dc0d282ab7dc0ea202ca0}%
+
 
 .. code-block:: php
 
@@ -363,16 +380,22 @@
     </select>
 
 %{tags_6ac76522c00c412a4fbb903ea19d6032}%
+
 ^^^^^^^^^^^^^^^^
-%{tags_a4c4d2b129dc240a15408fa1a7606e48}%
+%{tags_d4b048be3cd14b64d7143cbdffa43c33}%
+
 
 %{tags_30b618a7301fb8d8b32e47c2a8be084f}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tags_f8114bbc24aaa6312eb398a26ea2066a}%
 
+
 %{tags_f8c9fc84fa74d911f322224af7074c29}%
+
 ---------------------------------------
-%{tags_910b594f8c82327d21d73614dd2c72c6}%
+%{tags_bb789a223617ee312ef517b941700587}%
+
 
 .. code-block:: php
 
@@ -418,12 +441,29 @@
     </html>
 
 %{tags_11fa3ca18323c73cebd6841cd4dcaafe}%
+
 ----------------------
-%{tags_8b872a9b81bce0e4f64179a652555204}%
+%{tags_354a660207c84ba1b5170d16150f99e5}%
+
 
 %{tags_d7e6e0ce3a4102593931f158735cde7a}%
+
 ^^^^^^
-%{tags_0c1c21e9be8e382368436e64c0ec5299}%
+.. code-block:: php
+
+    <?php
+
+    // {%tags_0709149fe66b40772db8d4f138ad844f%}
+    echo $this->tag->image("img/hello.gif");
+
+    // {%tags_c703dc13a5fa39bc5dba3fcb1fc64b82%}
+    echo $this->tag->image(
+        array(
+           "img/hello.gif",
+           "alt" => "alternative text"
+        )
+    );
+
 
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
@@ -436,8 +476,18 @@
     {{ image("img/hello.gif", "alt": "alternative text") }}
 
 %{tags_693fb39361177ed6925aa84de2b9e7d3}%
+
 ^^^^^^^^^^^
-%{tags_77dc31151d7cfc1fcd3f2a3f0800949f}%
+.. code-block:: php
+
+    <?php
+
+    // {%tags_39de7b34ab09608768d7fa2dbe2e7b17%}
+    echo $this->tag->stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+
+    // {%tags_d49fec88842962de27a096734913d9de%}
+    echo $this->tag->stylesheetLink("css/styles.css");
+
 
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
@@ -450,8 +500,18 @@
     {{ stylesheet_link("css/styles.css") }}
 
 %{tags_39404202e17269c2366ceb1a4c9caf3f}%
+
 ^^^^^^^^^^
-%{tags_4fa17e43d71ae1d2de4c6c26d74f669d}%
+.. code-block:: php
+
+    <?php
+
+    // {%tags_6fd356e8df150e822932c73af2d86aa6%}
+    echo $this->tag->javascriptInclude("http://localhost/javascript/jquery.min.js", false);
+
+    // {%tags_9f915dcabdf67591f1c9d4fe162447ec%}
+    echo $this->tag->javascriptInclude("javascript/jquery.min.js");
+
 
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
@@ -464,8 +524,10 @@
     {{ javascript_include("javascript/jquery.min.js") }}
 
 %{tags_70a9b234bde9b99d278cdf4eddefc89b}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tags_98a764ec8520f16e70ae318adaa88522}%
+
 
 .. code-block:: php
 
@@ -493,8 +555,10 @@
 
 
 %{tags_5240a19e8081f79e65b6199ffe9897b9}%
+
 -----------
-%{tags_a8481a14be068e60748f0e6ead523064}%
+%{tags_6d85591ac9da2e7ca2f41b928399880f}%
+
 
 .. code-block:: php
 
@@ -534,8 +598,10 @@
     };
 
 %{tags_0df7dba379145f570f6ddc01d9fe58f4}%
+
 -------------------------
-%{tags_c7e9e5f23cbef8182b99090172b248c9}%
+%{tags_a7572e13c8b7ec0d5d2c61209a06af49}%
+
 
 .. code-block:: php
 

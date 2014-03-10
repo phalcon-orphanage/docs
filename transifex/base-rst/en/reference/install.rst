@@ -1,6 +1,8 @@
 %{install_c0277e63a218ee84b1414b2c467dfbe2}%
+
 ============
 %{install_c872ae13f816fd7dfbfc1f7781ddd782}%
+
 
 .. highlights::
     Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
@@ -10,8 +12,10 @@
 
 
 %{install_8458efd5cfb7e32b7a48fe0ab64285af}%
+
 -------
 %{install_ff1363bcd28f96670272daf6d775d72f}%
+
 
 %{install_44f00144e8778ea8ed7917345caa3bd3}%
 
@@ -25,16 +29,27 @@
 
 
 %{install_7a752ac7821139893d4b7d8eb762a483}%
+
 ^^^^^^^^^^^^^^
-%{install_d5d27d226a19423a7db37bc5f3326a19}%
+.. toctree::
+    :maxdepth: 1
+
+    xampp
+    wamp
+
+
 
 %{install_dda3a9c60b475b60966aa176def7e97b}%
+
 -----------------
 %{install_715c1caf8effafa7bca2e6fad2aef37b}%
 
+
 %{install_72a3660e8fa5fbfc8034c2e330a6f573}%
+
 ^^^^^^^^^^^^
 %{install_70a4fa2ec4a0a6356164c746dc431647}%
+
 
 * {%install_25de0b4731ce2b2d06e13f2bafbac98d%}
 * {%install_ea5636317fe66c695b33a0b4f5f1917d%}
@@ -61,8 +76,10 @@
     pkg install php-53 apache-php53
 
 %{install_9bae46c938052c986789bce50ddc11c1}%
+
 ^^^^^^^^^^^
 %{install_7277a5ce5aea3f76cacc10e144264e7f}%
+
 
 .. code-block:: bash
 
@@ -91,8 +108,10 @@
     sudo ./install safe
 
 %{install_b2f5cb7e2747e60a61390100a08e8376}%
+
 -------
 %{install_d43da86ea091d3cd812a33429d570ae8}%
+
 
 .. code-block:: bash
 
@@ -106,6 +125,8 @@
     cd /usr/ports/www/phalcon && make install clean
 
 %{install_23a4a0eeaa8c65b1110e8da55a261fe4}%
+
 ------------------
 %{install_4c62f4f5d780cac9af64cb12a7120d75}%
+
 

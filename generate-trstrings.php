@@ -9,6 +9,92 @@ class Docs
 
 	private $_uniqueStrings = array();
 
+	public function processUniqueSection($section, &$uniqueStrings)
+	{
+		if (!isset($section[0])) {
+			return array();
+		}
+
+		$first = true;
+		$newSection = array();
+		foreach ($section as $line) {
+			if ($first) {
+				if (!trim($line)) {
+					continue;
+				}
+				$first = false;
+				$newSection[] = $line;
+			} else {
+				$newSection[] = $line;
+			}
+		}
+		$section = $newSection;
+
+		if (preg_match('#[ \t]*\.\.[ \t]+code-block::#', $section[0])) {
+			foreach ($section as $str) {
+
+				if (preg_match('#//[ \t]*([^;]*)[\r\n]$#', $str, $matches)) {
+					if (preg_match('#[a-zA-Z]#', $str)) {
+						$key = $this->_prefix . '_' . md5($matches[1]);
+						$str = str_replace($matches[1], '{%' . $key . '%}', $str);
+						$this->_uniqueStrings[$key] = $matches[1];
+					}
+				}
+
+				$uniqueStrings[] = array('type' => 'code-section', 'value' => $str);
+			}
+		} else {
+
+			if (substr($section[0], 0, 7) == '+------' || preg_match('#[ \t]*\.\.[ \t]+[a-z\-]+::#', $section[0])) {
+
+				$section1 = join('', $section);
+				$uniqueStrings[] = array('type' => 'text-raw',     'value' => $section1);
+				$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
+
+			} else {
+
+				$list = true;
+				foreach ($section as $position => $line) {
+					if (!preg_match('#^[ \t]*\* #', $line)) {
+						$list = false;
+						break;
+					}
+				}
+
+				if ($list) {
+					foreach ($section as $position => $line) {
+						if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
+							$key = $this->_prefix . '_' . md5($matches[1]);
+							$section[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
+							$this->_uniqueStrings[$key] = $matches[1];
+						}
+					}
+				}
+
+				if (!$list) {
+
+					$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
+
+					$placeholders = array();
+					if (preg_match_all('#:doc:`[^`]+`#', $section1, $matches, PREG_SET_ORDER)) {
+						foreach ($matches as $position => $match) {
+							$placeholders[$position] = $match[0];
+							$section1 = str_replace($match[0], ':' . ($position + 1) . ':', $section1);
+						}
+					}
+
+					$hash1 = md5(mb_strtolower($section1));
+					$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1, 'placeholders' => $placeholders);
+
+				} else {
+					$section1 = join('', $section);
+					$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section1);
+				}
+				$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
+			}
+		}
+	}
+
 	public function processSection($section)
 	{
 
@@ -16,12 +102,25 @@ class Docs
 			return array();
 		}
 
-		$uniqueStrings = array();
+		$first = true;
+		$newSection = array();
+		foreach ($section as $line) {
+			if ($first) {
+				if (!trim($line)) {
+					continue;
+				}
+				$first = false;
+				$newSection[] = $line;
+			} else {
+				$newSection[] = $line;
+			}
+		}
+		$section = $newSection;
 
 		$separator = null;
 		$twoSections = false;
 		foreach ($section as $number => $line) {
-			if (preg_match('!^[\-=\~#\^]+$!', trim($line))) {
+			if (preg_match('!^[\-=\~#\^\*]{2,}$!', trim($line))) {
 				$separator = $line;
 				$twoSections = $number;
 				break;
@@ -33,118 +132,17 @@ class Docs
 			$section1parts = array_slice($section, 0, $number);
 			$section2parts = array_slice($section, $number + 1);
 
-			$list1 = true;
-			foreach ($section1parts as $position => $line) {
-				if (!preg_match('#^[ \t]*\* #', $line)) {
-					$list1 = false;
-					break;
-				}
-			}
+			$uniqueStrings = array();
 
-			if ($list1) {
-
-			}
-
-			$list2 = true;
-			foreach ($section2parts as $position => $line) {
-				if (!preg_match('#^[ \t]*\* #', $line)) {
-					$list2 = false;
-					break;
-				}
-			}
-
-			if ($list2) {
-				foreach ($section2parts as $position => $line) {
-					if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
-						$key = $this->_prefix . '_' . md5($matches[1]);
-						$section2parts[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
-						$this->_uniqueStrings[$key] = $matches[1];
-					}
-				}
-			}
-
-			if (!$list1) {
-				$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section1parts));
-				$hash1 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section1)));
-			} else {
-				$section1 = join('', $section1parts);
-			}
-
-			if (!$list2) {
-				$section2 = str_replace(array("\r\n", "\n"), ' ', join('', $section2parts));
-				$hash2 = md5(mb_strtolower(preg_replace('#[ \t\v]+#', ' ', $section2)));
-			} else {
-				$section2 = join('', $section2parts);
-			}
-
-			if (!$list1) {
-				$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
-			} else {
-				$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section2);
-			}
+			$this->processUniqueSection($section1parts, $uniqueStrings);
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => $separator);
 
-			if (!$list2) {
-				$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash2, 'value' => $section2);
-			} else {
-				$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section2);
-			}
+			$this->processUniqueSection($section2parts, $uniqueStrings);
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => PHP_EOL);
 
 		} else {
-
-			if (preg_match('#[ \t]*\.\.[ \t]+code-block::#', $section[0])) {
-				foreach ($section as $str) {
-
-					if (preg_match('#//[ \t]*([^;]*)[\r\n]$#', $str, $matches)) {
-						if (preg_match('#[a-zA-Z]#', $str)) {
-							$key = $this->_prefix . '_' . md5($matches[1]);
-							$str = str_replace($matches[1], '{%' . $key . '%}', $str);
-							$this->_uniqueStrings[$key] = $matches[1];
-						}
-					}
-
-					$uniqueStrings[] = array('type' => 'code-section', 'value' => $str);
-				}
-			} else {
-
-				if (substr($section[0], 0, 7) == '+------' || preg_match('#^\.\. [a-z\-]+::#', $section[0])) {
-
-					$section1 = join('', $section);
-					$uniqueStrings[] = array('type' => 'text-raw',     'value' => $section1);
-					$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
-
-				} else {
-
-					$list = true;
-					foreach ($section as $position => $line) {
-						if (!preg_match('#^[ \t]*\* #', $line)) {
-							$list = false;
-							break;
-						}
-					}
-
-					if ($list) {
-						foreach ($section as $position => $line) {
-							if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
-								$key = $this->_prefix . '_' . md5($matches[1]);
-								$section[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
-								$this->_uniqueStrings[$key] = $matches[1];
-							}
-						}
-					}
-
-					if (!$list) {
-						$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
-						$hash1 = md5(mb_strtolower($section1));
-						$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1);
-					} else {
-						$section1 = join('', $section);
-						$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section1);
-					}
-					$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
-				}
-			}
+			$uniqueStrings = array();
+			$this->processUniqueSection($section, $uniqueStrings);
 		}
 
 		return $uniqueStrings;
@@ -186,7 +184,7 @@ class Docs
 				$section = array();
 			} else {
 				if (!$block) {
-					if (preg_match('#^\.\. ([a-z\-]+)::#', $line)) {
+					if (preg_match('#[ \t]*\.\.[ \t]+[a-z\-]+::#', $line)) {
 						$block = true;
 					}
 				} else {

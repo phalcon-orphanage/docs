@@ -1,12 +1,16 @@
 %{crypt_f360a3a20fa1a3c3b28ba77a0a8d84be}%
+
 =====================
-%{crypt_61a86bea91a553c0ef46ff2d3ce32f88}%
+%{crypt_fa427ff7557122e02a4c26931de50239}%
+
 
 %{crypt_957df3c33bcabdc3862c027235e7ad7b}%
 
 %{crypt_b0320f4a950d93f7f09a91c29ce5132b}%
+
 -----------
 %{crypt_3fa9f2edea33b150c507a3a7430d6b2e}%
+
 
 .. code-block:: php
 
@@ -46,8 +50,10 @@
     }
 
 %{crypt_c6a0e7ea1b497e531e4c2b9ba931ff03}%
+
 ------------------
 %{crypt_36fc07ecbfdf209582225327af389134}%
+
 
 +------------+---------------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                       |
@@ -75,8 +81,10 @@
     echo $crypt->encrypt($text, $key);
 
 %{crypt_347c782d992d779c9a8704504648d478}%
+
 --------------
 %{crypt_8e9cfbbc7197e914936752480dcdb981}%
+
 
 .. code-block:: php
 
@@ -93,8 +101,10 @@
     echo $crypt->decryptBase64($text, $key);
 
 %{crypt_7f46562c8af18fea5e1b5163c2f327e4}%
+
 --------------------------------
 %{crypt_2c1201ff75b1d531fdb8dd633c1904cb}%
+
 
 .. code-block:: php
 

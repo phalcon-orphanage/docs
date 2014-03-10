@@ -1,18 +1,22 @@
 %{acl_35d27b8250bff15a9954c9f91a0bb3c9}%
+
 ========================
-%{acl_adbc41ed0c0c423bf90223c0372e0f78}%
+%{acl_bc62c1d054b372f14b6fe4ec2b61d060}%
+
 
 %{acl_e52970115d496c048249a820a58b136a}%
 
 %{acl_77f422ae2f33689becc2fff60ab01380}%
+
 ---------------
-%{acl_82cdf253f5974cfd72e9a832b0ef83a1}%
+%{acl_71605548bf520a6eff06143df6854839}%
+
 
 .. code-block:: php
 
     <?php $acl = new \Phalcon\Acl\Adapter\Memory();
 
-%{acl_9ca054c0d303ac1dad25b7beb76c86c7}%
+%{acl_53882344e1e60a232a7ae2ffce30b5fc}%
 
 .. code-block:: php
 
@@ -22,8 +26,10 @@
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
 %{acl_af39885efdd670a4d3409f86d065352b}%
+
 -----------------------
-%{acl_d8b6c24974ec49a7de0931969dbb69c6}%
+%{acl_123734cf6682f2bc6aa51eb25eff5c38}%
+
 
 .. code-block:: php
 
@@ -42,8 +48,10 @@
 %{acl_b280833c0715b119a7989f7d286b737f}%
 
 %{acl_647e8a84d61a2443e8d863a01727bdb8}%
+
 ----------------
-%{acl_d0b887d6f2f2316bdcfb3388a5fb7d18}%
+%{acl_44815dee9a04e5f25832fdf831999b6f}%
+
 
 .. code-block:: php
 
@@ -57,8 +65,10 @@
     $acl->addResource($customersResource, array("create", "update"));
 
 %{acl_39f1b51bee0b3e71aa72bd338104fca6}%
+
 ------------------------
 %{acl_ed44085894ac59a68ac1ca5315ff73f1}%
+
 
 .. code-block:: php
 
@@ -72,8 +82,10 @@
 %{acl_ce64c2a97332ea72b17dda609ac2f361}%
 
 %{acl_a5b93a112061fdc9876d21f96101e20e}%
+
 ---------------
 %{acl_9f89b2d7a704bda130e600b7aef4063e}%
+
 
 .. code-block:: php
 
@@ -85,8 +97,10 @@
     $acl->isAllowed("Guests", "Customers", "create"); //{%acl_691d9ca32d3773a83b41f05322d4c409%}
 
 %{acl_8a27d9b40bc8d803daea548f997357b7}%
+
 -----------------
-%{acl_80a17801e24f2a52b7979f12557663d5}%
+%{acl_419fbe2d0531c90e20470119e454dd77}%
+
 
 .. code-block:: php
 
@@ -103,8 +117,10 @@
     $acl->addRole($roleAdmins, $roleGuests);
 
 %{acl_12624f31b9a5c9d94c4533f8f8b52c42}%
+
 ---------------------
-%{acl_67f68b730ec4de1a0cfadeeff91bb0aa}%
+%{acl_0d5458e2758bbbb7f55b22ae4a1826b2}%
+
 
 .. code-block:: php
 
@@ -134,8 +150,10 @@
     }
 
 %{acl_5ec3a4b22225d07937424121b51b1319}%
+
 ----------
-%{acl_b7d11adb78dba3c9e8fcc5b19fa49d62}%
+%{acl_fda3b0872c136bf2722ea7748b2db904}%
+
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
@@ -172,6 +190,8 @@
     $acl->setEventsManager($eventManagers);
 
 %{acl_206bd6266ccc781d8844f3db2de5d557}%
+
 ------------------------------
-%{acl_3f41296882bcc0cbef74b4d784e02dab}%
+%{acl_5c9687621eeedf30792938d48fea3cdf}%
+
 

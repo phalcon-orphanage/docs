@@ -144,7 +144,7 @@ A chainable syntax is available too:
 Minification/Filtering
 ----------------------
 Phalcon\\Assets provides built-in minification of Javascript and CSS resources. The developer can create a collection of
-resources instructing the Assets Manager which ones must be filtered and which ones must be​ left as they are.
+resources instructing the Assets Manager which ones must be filtered and which ones must be left as they are.
 In addition to the above, Jsmin by Douglas Crockford is part of the core extension offering minification of javascript files
 for maximum performance. In the CSS land, CSSMin by Ryan Day is also available to minify CSS files:
 

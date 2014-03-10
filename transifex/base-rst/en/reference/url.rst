@@ -1,10 +1,14 @@
 %{url_ed236d03ec3edd1f8e21243f33a3d69a}%
+
 =========================
-%{url_3985fcf30af8470b326c4128948ce37c}%
+%{url_70a16dc89ce6420741cc934b771f0706}%
+
 
 %{url_68b8722ef7564d65fa4a9ed509690f52}%
+
 ------------------
 %{url_ce8911656909797c0f7cfdd8650db8bc}%
+
 
 %{url_1d5e74ff02459454bd68d8addd28a2d7}%
 
@@ -45,8 +49,10 @@
     });
 
 %{url_2f1af28e614976174560c19d608f2b30}%
+
 ---------------
-%{url_6ceb5ad349a020c2d651901ef0007c04}%
+%{url_2911ed9df12bc18f3dff68009b6bc5c0}%
+
 
 .. code-block:: php
 
@@ -78,8 +84,10 @@
     ));
 
 %{url_11b9173b9cb6348134181f0b0d2c37bb}%
+
 ----------------------------------
 %{url_37df3ff3aa072c2251501097b64e80bf}%
+
 
 .. code-block:: php
 
@@ -130,8 +138,10 @@
     echo $url->get("products/save");
 
 %{url_85f519884f68b0fc2ce37a5a7fb3c9b3}%
+
 ------------------------
 %{url_87db31c993564f594288f7af54b06a86}%
+
 
 .. code-block:: html+jinja
 
@@ -144,8 +154,10 @@
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
 %{url_7f68eed15a0101a787422e177b90b8fb}%
+
 -----------------------
 %{url_80bb958627f146f8ba26b15d8d8c54fa}%
+
 
 .. code-block:: php
 

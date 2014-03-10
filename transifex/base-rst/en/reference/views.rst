@@ -1,12 +1,16 @@
 %{views_7a9935583e6231cd508cd510f32d5668}%
+
 ===========
 %{views_ef03b15f3a9b49a6b4bb80a813368996}%
 
-%{views_17d77a719ddbd45d2f4bbc7715716450}%
+
+%{views_7f5eddac31d156c20aacf5bff7bf948d}%
 
 %{views_003b14d6a910d6e7ddfee381215bb477}%
+
 ----------------------------------
 %{views_dab1c1ef07dda71358c3a6ef720f6bd3}%
+
 
 +-------------------+-----------+
 | Server Address    | 127.0.0.1 |
@@ -45,8 +49,10 @@
 %{views_13c164b379d9671d82a101615ab15151}%
 
 %{views_f529f7a38f66822c201c7a2c549408ec}%
+
 ----------------------
-%{views_2f21f1561bbd4020a45d46f76fefd9aa}%
+%{views_8ac2465f81c555ce4568d72f88805bb7}%
+
 
 %{views_177194bd199b8ca419afc6285ed8638b}%
 
@@ -60,7 +66,7 @@
 | Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-%{views_40c229f1a7c8b8128422cb417c95ca94}%
+%{views_432420006a0fc205c2b2228257adaedc}%
 
 .. code-block:: html+php
 
@@ -94,7 +100,7 @@
         </body>
     </html>
 
-%{views_b321993985d76a08d546f9a7901b3c6d}%
+%{views_a8b92ceac5ca0ab1a9c6987fa73e065b}%
 
 .. figure:: ../_static/img/views-1.png
    :align: center
@@ -127,8 +133,10 @@
     </html>
 
 %{views_10b460a3de8edd71111332979572dd63}%
+
 ^^^^^^^^^^^^^^^
 %{views_702573dde40111cb422cdded5cac3d40}%
+
 
 .. code-block:: php
 
@@ -238,8 +246,10 @@
     </html>
 
 %{views_a4fd48f24a2c518d5b180c6a6d4a79d1}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
-%{views_21a08cde76073183153e0c02dc43cf90}%
+%{views_9b6601fe603e0d89861e09a51d6ec49d}%
+
 
 %{views_d356d43561f53deaf77231c50250ff8d}%
 
@@ -294,8 +304,10 @@
 +-----------------------+--------------------------------------------------------------------------+-------+
 
 %{views_9ff639be8370b38960cba777a5babc2e}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{views_31dd34b13e62e822e96a8dc3d89402f7}%
+
 
 .. code-block:: php
 
@@ -342,8 +354,10 @@
     }
 
 %{views_086c3b4119cecbc37ccd78bb3629dd47}%
+
 ^^^^^^^^^^^^^
-%{views_c6e2d02b8e6136be2851ff89c37f992a}%
+%{views_375b5490f08c2d605cfd4ab2df591e4f}%
+
 
 .. code-block:: php
 
@@ -367,8 +381,10 @@
     }
 
 %{views_0efce5c37e4d187ce85e1c900ab2b4ab}%
+
 ^^^^^^^^^^^^^^^^^^
 %{views_29f0d82a073cc35519b6e8961d07c490}%
+
 
 .. code-block:: php
 
@@ -412,10 +428,12 @@
     }
 
 %{views_e3a9349e409d158182f3e861c8e8e012}%
-----------------
-%{views_f35015ff07641703b167a1739b147a02}%
 
-%{views_c914389eac07b146045365bfe9b43ae6}%
+----------------
+%{views_296069336e18c18983ef66c8b9fda9f5}%
+
+
+%{views_14abd108f8cf1e1500bd3b79528f8d15}%
 
 %{views_abf8ed7d7ae41822d01a13c9c81be2da}%
 
@@ -433,7 +451,7 @@
 
     }, true);
 
-%{views_ebd95f0288cd6070a75a3a30a7dec279}%
+%{views_86bd719622e4b5df9d5a59cb6ef4cf08}%
 
 .. code-block:: php
 
@@ -478,8 +496,10 @@
     }
 
 %{views_83809746bd6d1d7960195e86f68c8da8}%
+
 --------------
 %{views_75f86de4abb898efbb5e31d807256244}%
+
 
 %{views_f71fd72a447e6a2ffb2643169ff2ecfb}%
 
@@ -503,8 +523,10 @@
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
 %{views_fbe970c3f88ead32c74db6ae1f24455c}%
+
 --------------------------------------------
-%{views_11f4881c15938974d44b6e7514313340}%
+%{views_f5224da68bd83a6c0379726567094094}%
+
 
 .. code-block:: php
 
@@ -550,8 +572,10 @@
     </div>
 
 %{views_9b5dfc6e03f2e4c7ce50d991756ca24f}%
+
 ------------------------------
-%{views_712a47a1ca2d73af8f82fe973cc57808}%
+%{views_800ec11913aba66c5e1493bc9cf8efcb}%
+
 
 .. code-block:: html+php
 
@@ -568,10 +592,12 @@
 %{views_32d287c9930a183a4f900372280abba6}%
 
 %{views_e2809b8367f23b279052a0c57a34b5ac}%
-----------------------
-%{views_b2c5981e85b422752e6f5a8234e49b37}%
 
-%{views_a18793af605d23cb8e61ce44de8f6524}%
+----------------------
+%{views_574f1e68dad0ae7dbe462a5b1eac5dbf}%
+
+
+%{views_ff6107ed2333508975d6281de6a46a06}%
 
 .. code-block:: php
 
@@ -687,22 +713,26 @@
 %{views_9d7f5c5fad64a539b7d9e2f14b189916}%
 
 %{views_6e5a69a8dd70f8d2cd5e2ae15b313263}%
-----------------
-%{views_8436fbc2a35e8ace44ce7683ffff75cb}%
 
-%{views_4889731af0682a0ff001941c53287b7f}%
+----------------
+%{views_e61b4854ff38e96e9209df96ac639ed4}%
+
+
+%{views_f26e4d5891d641c183981262cf077f46}%
 
 %{views_d30b9918e0dd94497b8f8e10fa02a03e}%
 
-%{views_033f4b37a8ab437c02d21fb2b200c4d9}%
+%{views_882bafa5fbc240fe19d9ebb6d2572243}%
 
 %{views_36a82d83487a4e3f40f2064c8ea7324f}%
 
 %{views_39112bd6a8127139d0a52a91360e0188}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{views_51eeef9ead467502cae8fc7f197f246a}%
 
-%{views_06f80f0eb563b269df8884b213cd7994}%
+
+%{views_b149ca61294f072ef6b63736581c4041}%
 
 %{views_3e008dba1ca8514936e032d7fada3007}%
 
@@ -747,8 +777,10 @@
     }
 
 %{views_cfdbf34effaf9927896f7e8da605aba4}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{views_1979a43a78910f5cc07142f4eed9a1bd}%
+
 
 .. code-block:: php
 
@@ -782,7 +814,7 @@
 
 %{views_474201dbdde6d46b8d104b4ed325697e}%
 
-%{views_0cc44f316c50b5aed136241cb094037e}%
+%{views_636b010c4455918064c3cf561631860e}%
 
 %{views_eed56c16c3fd884a52e645a2764469d8}%
 
@@ -809,10 +841,12 @@
 %{views_7649f99d9c471d16ff7db8f1c71fd7c0}%
 
 %{views_c7ee7944a5606c39612539a861cac009}%
---------------------------
-%{views_2ec521a259f67d7ede50c9df2312ec77}%
 
-%{views_d0a80f72e3b2fa16960b55573362eb7d}%
+--------------------------
+%{views_c3d45f6d1884c33abbc0daac0adfc286}%
+
+
+%{views_4cb17b45d6be7397bd4c77fa6ecb1b73}%
 
 .. code-block:: html+php
 
@@ -828,12 +862,16 @@
     </script>
 
 %{views_d3e54f7c04408d6d1a884897bca4169e}%
+
 ---------------------
 %{views_3d46da924d710a41a1e398ffcde2234c}%
 
+
 %{views_f529f7a38f66822c201c7a2c549408ec}%
+
 ^^^^^^^^^^^^^^^^^^^^^^
-%{views_55c38e733242b57b98320ed2e01d60ed}%
+%{views_b87b898a4a23d1de6555cdf57f50fb3c}%
+
 
 .. code-block:: php
 
@@ -880,8 +918,10 @@
     );
 
 %{views_e3a9349e409d158182f3e861c8e8e012}%
+
 ^^^^^^^^^^^^^^^^
-%{views_34a10d520dd11d9adf54cd9c921f0964}%
+%{views_c5b75fd5c3845db3b35849961c1ccf23}%
+
 
 .. code-block:: php
 
@@ -902,8 +942,10 @@
     ));
 
 %{views_296b9f4f4f7b51885c71b3592af71235}%
+
 -----------
-%{views_c6a4ae6de7ed5a14215f3044e885e5dd}%
+%{views_c7c67770c456d2f4e1b6dfa9693d4f9f}%
+
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |

@@ -1,10 +1,14 @@
 %{events_afb299ea125f4b358f027bbaeb866b2d}%
+
 ==============
 %{events_aac87938048f8f57d6a8477faebe84e6}%
 
+
 %{events_b2923a136099a523e93b60cda2e7677e}%
+
 -------------
-%{events_8cbb9df0c416197ef9448b6764564317}%
+%{events_d3781bf0aa8891e4b4b478e626ec61ba}%
+
 
 .. code-block:: php
 
@@ -165,8 +169,10 @@
     });
 
 %{events_3b8e6a649d2826cb536fa01f0646965b}%
+
 ---------------------------------------
 %{events_1b4f6a3242af44a8a67fd89078e36bc0}%
+
 
 .. code-block:: php
 
@@ -285,8 +291,10 @@
     });
 
 %{events_aa0f658456ea9d7a3cd2da9a6ccaedf7}%
+
 -----------------------------
 %{events_8959d6f8105504c11841abab2ab8bd84}%
+
 
 .. code-block:: php
 
@@ -313,8 +321,10 @@
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
 %{events_f4e32e14dcbb772d36896def5709ee7b}%
+
 -------------------
 %{events_0fa41c6a956acf07a6651af119844aab}%
+
 
 .. code-block:: php
 
@@ -327,8 +337,10 @@
     $evManager->attach('db', new DbListener(), 50); //{%events_a32ccf656e86ac8335dc85271fd7051f%}
 
 %{events_be2ad66dadd0459a65075bfc2343e9d5}%
+
 --------------------
 %{events_8192798658b3e74a5e39425665bffe65}%
+
 
 .. code-block:: php
 

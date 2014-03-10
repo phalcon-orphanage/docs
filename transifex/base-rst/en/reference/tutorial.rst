@@ -1,10 +1,14 @@
 %{tutorial_9abbbf47909e7ad733fa62e85cb0db75}%
+
 ==================================
-%{tutorial_b5a5e9e57656d19a8547aa34121891f4}%
+%{tutorial_dd40a0d83c2ebb146c6f7c9dde793992}%
+
 
 %{tutorial_37ce9f89b0b1cb6b762c7196bc18ec5f}%
+
 --------------------------
 %{tutorial_1b7c81bdd8889e1c836ffb605111f96e}%
+
 
 .. code-block:: php
 
@@ -26,12 +30,16 @@
     )
 
 %{tutorial_bcd21c14594d49fe915b68d70495a843}%
+
 ------------------
 %{tutorial_264e9e5fa61443e3d949a5b9c3b5af4c}%
 
+
 %{tutorial_e43ba4039b13f24962a8c6077d982e4b}%
+
 ^^^^^^^^^^^^^^
 %{tutorial_61cd3d35ca698a2955d9cb11fa63ca24}%
+
 
 %{tutorial_e213c33711b80713e577d9c25337c509}%
 
@@ -50,8 +58,10 @@
 %{tutorial_d69fe7a293029155d4f8eb9706d65cc1}%
 
 %{tutorial_c9201f5cc910e6fa29ca3304fee066a1}%
+
 ^^^^^^^^^^^^^^
 %{tutorial_1fec206e257daffc0d5b007cdfd72e72}%
+
 
 %{tutorial_0a2bafae2f2945e3d51e54c2cb96a16c}%
 
@@ -79,8 +89,10 @@
     </IfModule>
 
 %{tutorial_e942a5f80992ee93b462ea2482b2afc5}%
+
 ^^^^^^^^^
 %{tutorial_aebd8b2ff258a0ae81307e715cb76197}%
+
 
 %{tutorial_4e04bc143fc46769f56e4ce0ad9bcfd2}%
 
@@ -124,8 +136,10 @@
     }
 
 %{tutorial_adfc9fa0f9bf18986bec56424adfc389}%
+
 ^^^^^^^^^^^
 %{tutorial_308de505979c88301dc76dab7905de5b}%
+
 
 %{tutorial_bea35d534246978a6e020a6d7f5803f3}%
 
@@ -142,8 +156,10 @@
     )->register();
 
 %{tutorial_f0f4e1a66ec21c03b055d8e501cb4fa7}%
+
 ^^^^^^^^^^^^^^^^^^^^^
-%{tutorial_860a7ed52147d82b4589219e54d068f0}%
+%{tutorial_f9818f8386628eac38abefc92be953c2}%
+
 
 %{tutorial_35de02fc6f0f765eb64a8c213b2695dd}%
 
@@ -171,7 +187,7 @@
         return $view;
     });
     
-%{tutorial_2fa24b32d87705508df644418a1f0c40}%
+%{tutorial_0943a524b31c7b5f592c4ea71d758716}%
 
 .. code-block:: php
 
@@ -184,7 +200,7 @@
         return $url;
     });   
 
-%{tutorial_6a03823c97626be953b1e72793b46c33}%
+%{tutorial_f7544311601cc8dca79d56981de1e5ec}%
 
 .. code-block:: php
 
@@ -197,8 +213,10 @@
 %{tutorial_ea446940ef9793df0a8c379dccd7e357}%
 
 %{tutorial_8ca989fe8012615fbfff3eae4fa94e0e}%
+
 ^^^^^^^^^^^^^^^^^^^^^
 %{tutorial_c20772bfe84aac26eb561e3cbb13d636}%
+
 
 .. code-block:: php
 
@@ -223,8 +241,10 @@
 %{tutorial_a0eaaf846c3bcd2d9077c39874eaf46d}%
 
 %{tutorial_cf5eb363412ee2010ef114fd5786aa7e}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{tutorial_339029b02b632c371d94ba2aebd0756e}%
+
 
 .. code-block:: php
 
@@ -246,11 +266,13 @@
 
     }
 
-%{tutorial_d99e70949cc78eb3ca77eb0de64f1e1d}%
+%{tutorial_c9b58198f3b1febd4deca7288442a77b}%
 
 %{tutorial_c60c8e77213c05815057aebb475194ec}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{tutorial_55841a53ac2ee2c9420c8d664a04df95}%
+
 
 .. code-block:: php
 
@@ -266,7 +288,7 @@
 
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
-%{tutorial_e344ac99aac31560af177fc001e82872}%
+%{tutorial_131c513275dc0f4c31d0977565ef2ef6}%
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -352,8 +374,10 @@
 %{tutorial_a485ff15835fc97acf6d435e9dc2c714}%
 
 %{tutorial_0199fa0781bc2af2736301fc88a34dff}%
+
 ^^^^^^^^^^^^^^^^
 %{tutorial_d83190abfc28016cd871726d2d6a760b}%
+
 
 %{tutorial_c9a7ff2f489fe74a934e87905cf1053a}%
 
@@ -378,8 +402,10 @@
     }
 
 %{tutorial_862828392de7bf95c93884e331aeb4c9}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tutorial_113f938008170c70ac87517a5716d95b}%
+
 
 .. code-block:: php
 
@@ -433,8 +459,10 @@
 %{tutorial_1437da6e511407a3142304855b3e3fb2}%
 
 %{tutorial_5d444f51481baf36231e6a4e185a8158}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tutorial_8f44876d9d106d13cbeda0fd65a260d5}%
+
 
 .. code-block:: php
 
@@ -482,12 +510,16 @@
 
 
 %{tutorial_ee50f1d496b9cd00d5955f10f6dc7517}%
+
 ----------
 %{tutorial_ac62b9a74c27c662143e17d4072c0e4c}%
 
+
 %{tutorial_caf1e6f2f68b381886575c075f1fb61b}%
+
 -------------------
 %{tutorial_e69c20c6aafef23fa8314a4414be15b7}%
+
 
 * {%tutorial_13c48a3520e73500c89eb4aaabd09a3f%}
 * {%tutorial_1261ccd6ea25d52a8f6c637a0e3d2549%}

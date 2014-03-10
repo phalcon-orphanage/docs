@@ -1,10 +1,14 @@
 %{routing_476a8980062af9e778f675c1bc4f73ef}%
+
 =======
 %{routing_80737ee348be4a387eda622d15b10c75}%
 
+
 %{routing_a8a25f2aac05af019b129455c8d4e2eb}%
+
 ---------------
-%{routing_9dcf17896733a4c6184918c1fe10972e}%
+%{routing_47146a2ecc8df656ce082727e04a68a1}%
+
 
 .. code-block:: php
 
@@ -33,7 +37,7 @@
 
     $router->handle();
 
-%{routing_af70bfef086f9becd40e8868981bfbc4}%
+%{routing_112145b292308040c6da39af4290ad30}%
 
 %{routing_e337359c3e1a34b84cd25564e88c6b8f}%
 
@@ -90,11 +94,13 @@
 
 %{routing_7eb946b0fa36e208b3b987f9503af17e}%
 
-%{routing_463cf83ff1da5fa1aead4c5adc6d8870}%
+%{routing_e95a5ec2cdeecafeb9842a70f9e44ba2}%
 
 %{routing_3540d24c854e30bda17e43acc7db78b9}%
+
 ^^^^^^^^^^^^^^^^^^^^^
 %{routing_acae6bad7acef0f5d14865c3b631c44e}%
+
 
 .. code-block:: php
 
@@ -179,8 +185,10 @@
     }
 
 %{routing_40d3496dd82862acf7fa645cf5843ca9}%
+
 ^^^^^^^^^^^^
 %{routing_21979d3e12775abb02b191341aff60c1}%
+
 
 .. code-block:: php
 
@@ -201,8 +209,10 @@
     );
 
 %{routing_f3080b2f6ccf5d03da8f1da2560e2d1a}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{routing_ad3d45d5acd8299cd58843284585bf79}%
+
 
 .. code-block:: php
 
@@ -218,8 +228,10 @@
     );
 
 %{routing_ab5679a42afac0c7b0181219d03ba29b}%
+
 ^^^^^^^^^^^^^^^^^^
 %{routing_9add85d11b871eaff3e948f9c4c4b82d}%
+
 
 .. code-block:: php
 
@@ -289,8 +301,10 @@
     ));
 
 %{routing_453efd9a5cf676ae2ae88a43c16a616b}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{routing_1477452518ac56e7c127ba9b933bf10e}%
+
 
 .. code-block:: php
 
@@ -306,8 +320,10 @@
     $router->add("/products/update")->via(array("POST", "PUT"));
 
 %{routing_cf90cec6f911c38eece8ebb5aa3b4b23}%
+
 ^^^^^^^^^^^^^^^^^
 %{routing_8f5321b91956f88f2b4d583c0f1e846b}%
+
 
 .. code-block:: php
 
@@ -325,8 +341,10 @@
         });
 
 %{routing_89645649e65162817ae5591359c8a198}%
+
 ^^^^^^^^^^^^^^^^
 %{routing_9ed218f28edb65d2e1ce51f6ce34c1ec}%
+
 
 .. code-block:: php
 
@@ -410,8 +428,10 @@
     $router->mount(new BlogRoutes());
 
 %{routing_87641826c33ca36481c575395f04a269}%
+
 ---------------
 %{routing_c9305535339c97f0535de63c1c82b540}%
+
 
 .. code-block:: apacheconf
 
@@ -448,8 +468,10 @@
     $route = $router->getMatchedRoute();
 
 %{routing_7ff55897ca1eac97569667483eccf29c}%
+
 -------------
-%{routing_87997b24529888023044e0ac18a908b6}%
+%{routing_6df89922da42abd85f9501e63a6b750a}%
+
 
 .. code-block:: php
 
@@ -463,7 +485,7 @@
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
-%{routing_99826062e7ee46bb65b29bd1bdc47f6c}%
+%{routing_7c33107c5fdf767df91a2620d4323b7d}%
 
 .. code-block:: php
 
@@ -477,8 +499,10 @@
     ));
 
 %{routing_33df0f1f046d5ea7d528ae7e04b5b00f}%
+
 --------------
 %{routing_7d3cc177511a959a88a38ebc77f371bc}%
+
 
 .. code-block:: php
 
@@ -567,8 +591,10 @@
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
 %{routing_455c64f03d8a2db20778f630271ab7eb}%
+
 ----------------
-%{routing_12b50c61cc98da6d971a5884a6f36ea2}%
+%{routing_ac42b4b6d5f1a7086e305de2b9e6e598}%
+
 
 %{routing_d6b9352467b77e061070a12d9d8b2d6c}%
 
@@ -590,8 +616,10 @@
     $router = new \Phalcon\Mvc\Router(false);
 
 %{routing_5aef7c16fc00974efa801f11d5ab1674}%
+
 -------------------------
 %{routing_f263d36de6652a9b4a6d419ea3dc8359}%
+
 
 .. code-block:: php
 
@@ -603,8 +631,10 @@
     ));
 
 %{routing_b09e95ff2020febabcc69da62f468438}%
+
 ---------------
 %{routing_b1656daeb0be1c3b453eed446ec80368}%
+
 
 .. code-block:: php
 
@@ -617,8 +647,10 @@
     ));
 
 %{routing_33a1d5e7ebac5b03e011b0a0f5ef8c27}%
+
 ---------------------
 %{routing_4e85ee960ebc91e99e100ebc61abfceb}%
+
 
 .. code-block:: php
 
@@ -637,8 +669,10 @@
     ));
 
 %{routing_45a6a55a7d1f271400e66f477bc919c8}%
+
 -----------------------------------
 %{routing_84eb8a6b4c6bfbdc6313b9fae680e929}%
+
 
 .. code-block:: php
 
@@ -664,8 +698,10 @@
     );
 
 %{routing_2617728469525c66288abb69d182cb15}%
+
 ---------------
 %{routing_eeec2b22d72619afda05414dbc3c90ff}%
+
 
 .. code-block:: php
 
@@ -708,8 +744,10 @@
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 %{routing_700fdbb69619d592622aa670b3e4aaa2}%
+
 --------------------
 %{routing_f5bb43969cf1dfaf2ed5786dcfbcb3b1}%
+
 
 .. code-block:: php
 
@@ -770,8 +808,10 @@
     $router->mount($blog);
 
 %{routing_d95c9cb668c864c98ce0f13b7cfbb094}%
+
 -----------
 %{routing_fe0a2ee2c90f9752b2a978bfd4b55d83}%
+
 
 .. code-block:: php
 
@@ -789,8 +829,10 @@
     $router->handle('/some/route/to/handle');
 
 %{routing_4336bee9ffb2243f3e531eee35935fc2}%
+
 -------------------
 %{routing_b8b538e16c15ca88ca07203a60c075e5}%
+
 
 .. code-block:: php
 
@@ -832,8 +874,10 @@
     }
 
 %{routing_3b78bfeabfbeef7d8e6fdb177e468dbe}%
+
 ------------------
-%{routing_9efa5035be571cb114e90dfd1d23d7ca}%
+%{routing_2310ee24cb48f9ae5767b3fd5a108858}%
+
 
 .. code-block:: php
 
@@ -954,6 +998,7 @@
     };
     
 %{routing_ac44f232dbf5ec48d8c0868482c9ff0d}%
+
 ---------------------------
 
 %{routing_ac9e9e05ba519f705c4df55d20b55ac7}%
@@ -992,6 +1037,8 @@
 
 
 %{routing_6946292c838dafe294782c973703999a}%
+
 ----------------------------
-%{routing_de0764d78260a6bae6b3dc64f4b95bd7}%
+%{routing_eee2a709e3c64dc9cb5f5ece3c89f130}%
+
 

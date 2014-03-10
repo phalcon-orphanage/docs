@@ -1,8 +1,10 @@
 %{models_34315da4fc43fd95809ef78d65f1b018}%
+
 ===================
 %{models_8f0e1f8b78c2a43f902d3f235a635750}%
 
-%{models_fda8f2e4669b60c323af927eb41204c6}%
+
+%{models_1fc29f5b10e37dd7b4270c6440455798}%
 
 .. highlights::
 
@@ -11,8 +13,10 @@
 
 
 %{models_6fe6eff5591f581f3c7a8b8db8748e2d}%
+
 ---------------
-%{models_d135e1d450a6ca13fa8c9bd4d3a24f1d}%
+%{models_7eb42c46882238eaeb6d7ea069aaa281}%
+
 
 .. code-block:: php
 
@@ -23,7 +27,7 @@
 
     }
 
-%{models_c6eeed8dc109d973af70ae10efb30dc7}%
+%{models_139aca56b2ede05fc3717f08091de0d8}%
 
 .. highlights::
 
@@ -80,8 +84,10 @@
     }
 
 %{models_1e97aa8d4dac7771bfc41fdd1894aef2}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_8f39f4de8a4468ca1841f16ca911e887}%
+
 
 .. code-block:: php
 
@@ -148,8 +154,10 @@
 %{models_9cf07cd93f23ce62d9699d5b32fbd557}%
 
 %{models_edc8f4356afdd63c106c2e25e75e3a4a}%
+
 ^^^^^^^^^^^^^^^^^^^^
 %{models_88ac463f7dbfa7bdbca9de455e37429b}%
+
 
 .. code-block:: php
 
@@ -163,8 +171,10 @@
     }
 
 %{models_0041176d3d251a7208621f2d87b1cb93}%
+
 --------------------------------
 %{models_d33935c04822b910b774c26ef3232937}%
+
 
 .. code-block:: bash
 
@@ -200,11 +210,13 @@
     $robot->name = "RoboCop";
     $robot->save();
 
-%{models_f96a615cf8822c8ecb1594128d824ad1}%
+%{models_ad50e75016400a97bdbd274e354b4c44}%
 
 %{models_f1139dc3521d331b62f0df072477011a}%
+
 ---------------
-%{models_a62df1bcce86e38056342166d562c27b}%
+%{models_085a171b5244fb1f6da123f09f092416}%
+
 
 .. code-block:: php
 
@@ -313,9 +325,9 @@
         ->order("name")
         ->execute();
 
-%{models_eff92fa31585b7a86f16556298c5b9ba}%
+%{models_887526ed65120cae817e8c820fdf4a1d}%
 
-%{models_5104248a4f23183095b6a1e1bd83e503}%
+%{models_c09a664f846ecd7a4810662c0677495e}%
 
 %{models_be15026641c23ccd2162e2863a36cfa7}%
 
@@ -350,10 +362,12 @@
 %{models_8958e99220592664d45664886ce5861e}%
 
 %{models_21a896556ad0bf6560957107ee309ba3}%
-^^^^^^^^^^^^^^^^
-%{models_a89d6f4cf9795b5cd99ce6ebe01324b0}%
 
-%{models_5879a30ada37d9820f02d6bf881526b2}%
+^^^^^^^^^^^^^^^^
+%{models_8c9a59a26ff1dad486ed903b0d891601}%
+
+
+%{models_6edf89bff321568a3a675fc6973dbedc}%
 
 .. code-block:: php
 
@@ -403,7 +417,7 @@
 
 %{models_889722c4fb3fe2f1e51e29ccbcc6fdd8}%
 
-%{models_04994a739d95a892e21c0460202fc507}%
+%{models_9567ddda707a429493dd5ce29805b383}%
 
 .. code-block:: php
 
@@ -424,8 +438,10 @@
     }
 
 %{models_8e1663749196053db8cdfcf3c68e1dc1}%
+
 ^^^^^^^^^^^^^^^^^^^^
 %{models_86e0576c863b930319c4291189b39a6a}%
+
 
 .. code-block:: php
 
@@ -441,8 +457,10 @@
     });
 
 %{models_822e9e4f30d1487b43dff638b7288be9}%
+
 ^^^^^^^^^^^^^^^^^^
-%{models_a16930bc751cfe4911bc9b8184ca4fdc}%
+%{models_2a61bf497a134af628a074d221cbc575}%
+
 
 .. code-block:: php
 
@@ -525,8 +543,10 @@
 %{models_3b77c94021fad5966050602759289f10}%
 
 %{models_e3367d0cb8544964094a208970c13117}%
+
 --------------------------------------
 %{models_c78c4b381ccc68e2f068e656ecb1f40a}%
+
 
 .. code-block:: php
 
@@ -576,20 +596,28 @@
     }
 
 %{models_0d9e9111f6bc1e0e1dc17a2561b5064f}%
+
 ----------------------------
 %{models_4bc54330429e293995594ada1ed43cf9}%
 
+
 %{models_4ea603f3ea62e73772697db5f1650fb8}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_107da6f7c5aa5bb8a906812d1d01e5a4}%
 
+
 %{models_095247fb250888acc0b22d0143826fef}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f0a1887228b0c923e22a57c7e338501}%
 
+
 %{models_863202c90ac552ca019f552d58be5afd}%
+
 ^^^^^^^^^^^^^^^^^^^^^^
 %{models_c7cb02eea3259c9b6054bb64ee43bff6}%
+
 
 +---------------+----------------------------+
 | Method        | Description                |
@@ -728,8 +756,10 @@
     }
 
 %{models_2c2bc35a9e8125c1fe4646eb067470d3}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_0ba5ccfa2677fd8a79b241b5c04e4412}%
+
 
 .. code-block:: php
 
@@ -761,7 +791,7 @@
     $robotsParts = $robot->getRobotsParts(); // {%models_37634994dd76aceff8cc62e7660f001e%}
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // {%models_52cf0d0467fe9114e378ef9752ff0b3b%}
 
-%{models_a91c13b9f41ef7d5c56349cf70da6736}%
+%{models_0b0ad8c13ef82f79c176d5e2d7772e21}%
 
 .. code-block:: php
 
@@ -836,8 +866,10 @@
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
 
 %{models_54e332a56dc132b3e61043f709d4f3db}%
+
 ^^^^^^^^^^^^^^^^^^^^^^
 %{models_10f4a34f73f5d711081cd02fbea0d570}%
+
 
 %{models_c1c8d588fd78b55da43042ea6e0e8c53}%
 
@@ -930,8 +962,10 @@
     $similarRobot = $robotsSimilar->similarRobot;
 
 %{models_c0498d367be6f00cf53866b7a15650a9}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_61ea72907fef0cf5280b43a54ce12a13}%
+
 
 .. code-block:: php
 
@@ -962,8 +996,10 @@
     }
 
 %{models_b8ddd6c9fa9efe7f8b22d5ee64b4e038}%
+
 --------------------
 %{models_ad089347bed015a469de37c65982646d}%
+
 
 %{models_2807669f80c008114b3d11ad29bad56e}%
 
@@ -1016,8 +1052,10 @@
     }
 
 %{models_390f3980d9010ee42c5db1e409646b00}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_6d74d8a3eee3d85fb1e76211926aa2fb}%
+
 
 .. code-block:: php
 
@@ -1049,8 +1087,10 @@
 %{models_b52c5786f39bc338ec9a3f4758cb9cbf}%
 
 %{models_c8243703df38120bbd35d539ca33d3a9}%
+
 -----------------------
-%{models_8f780a02e6339acff64e3f78b1e5fcf5}%
+%{models_6be948a780036412e5132cd7b8af4fe5}%
+
 
 %{models_960fa28a7174efaf18899956c56050cf}%
 
@@ -1164,8 +1204,10 @@
     $salary = Employees::minimum(array("column" => "salary"));
 
 %{models_da300e626c96660279800817373be665}%
+
 ---------------
 %{models_6d7c6eb4758655c54dc6990ff7f19123}%
+
 
 .. code-block:: php
 
@@ -1225,8 +1267,10 @@
     }
 
 %{models_a7f6efdf628627cbfb0183f461cfcd29}%
+
 -------------------------
-%{models_62ded37b7cefd67930177b264d24a9a1}%
+%{models_d10514567f77ab7496ba0dccd7b51875}%
+
 
 %{models_c7e343496bcfc784c6263a56f00b407d}%
 
@@ -1285,8 +1329,10 @@
     $robot->save($_POST, array('name', 'type'));
 
 %{models_7d4b758e7334c310d6b7a126d7eedbdc}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_2e0f8969e5a5cf5d5c5674faf5409f74}%
+
 
 .. code-block:: php
 
@@ -1310,8 +1356,10 @@
 %{models_9afbc94d7c87924852bb6eaec4c24f2f}%
 
 %{models_47d10dbbf95de1e4e67a5f17a81c4370}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_29c7ee3bdd564bd359523f21345ff7a8}%
+%{models_81a1ef00ba1fddad4f51fc66def6bc3d}%
+
 
 .. code-block:: php
 
@@ -1341,8 +1389,10 @@
     }
 
 %{models_e0035a0f5ffbb4f6d432b4f70697cf78}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{models_501eac663748a2ce8ff81a0ca4077ee9}%
+
 
 .. code-block:: php
 
@@ -1401,10 +1451,12 @@
 %{models_14fef3e904b2f9aa6116cf7656675e02}%
 
 %{models_39d425478bbbd8c190c1571d56968719}%
-^^^^^^^^^^^^^^^^^^^
-%{models_c1d232b39fe05b959dd845b2db801665}%
 
-%{models_7c9973d06444177ad84e1c25a39a6b63}%
+^^^^^^^^^^^^^^^^^^^
+%{models_1dfb448799cd9391845e5659e6a08fa1}%
+
+
+%{models_d27c98baf8000da38be80c02eed41dc0}%
 
 .. code-block:: php
 
@@ -1463,8 +1515,10 @@
     }
 
 %{models_88dc8b91807ff4ba675e3c4d5fc6b7db}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_490378dd5616a5b5dca102f7f4ba4b09}%
+%{models_ec346e4dfa21eab0d23bf387d6f1fe88}%
+
 
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
@@ -1497,8 +1551,10 @@
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 %{models_ffdc056a5ad04de3bf87e0e2bfb1cdb3}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_4fba9529bed771a750169aea7fe11c01}%
+
 
 .. code-block:: php
 
@@ -1538,8 +1594,10 @@
     }
 
 %{models_f11eaba96f0c61a573317f0a69292340}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_1269794fb5e9ed3766ac39927a2fe7fa}%
+%{models_f8398ace84457fa6a9c43e61ca429370}%
+
 
 .. code-block:: php
 
@@ -1621,8 +1679,10 @@
 %{models_a99f116006a7e6f8e0beedf2fa1f7293}%
 
 %{models_a2333fe1d4949c60e0ffa88a36ec8b24}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_55a005b019c6e5cffa73b951673ab855}%
+
 
 %{models_58acea561b884f8775c83234389a6c67}%
 
@@ -1645,11 +1705,13 @@
 
     }
 
-%{models_0d590ac8cf9976147c85986c173f0475}%
+%{models_cc0c64759378d22ce091113bdd1a7f1c}%
 
 %{models_53c9ef435efdc751976636021ca78ae8}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_8484829147088674434ff98d8df7f214}%
+%{models_44f73e5f781842638380d87cc3e0e58d}%
+
 
 %{models_1cc9ab87bdb41eb59d0ed209160c60d8}%
 
@@ -1797,8 +1859,10 @@
     }
 
 %{models_a5b8ba4670620d3d0495cd4b993c2c36}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{models_93b20b51cdce173a1a9d2feb2f37e64d}%
+
 
 .. code-block:: bash
 
@@ -1849,8 +1913,10 @@
     $product->create();
 
 %{models_e7d653d41a47b75951d0301d92fae13e}%
+
 ----------------
 %{models_52905496ae0f50797717b9709adf5134}%
+
 
 .. code-block:: php
 
@@ -1911,8 +1977,10 @@
     So it could be used to attack the application injecting SQL.
 
 %{models_eeb5861768cb1d8e1b83f34166ba75e3}%
+
 ^^^^^^^^^^^^^^
 %{models_cae7b7f779c605b98263207fc0c50b74}%
+
 
 %{models_de37cceeaaf2862d1cfebbc7e0214218}%
 
@@ -1929,8 +1997,10 @@
     }
 
 %{models_0dcecd441d09452dc45fa5fb8fdf84c9}%
+
 ----------------
 %{models_0e75de2f191dfee5ebf610adee2f593b}%
+
 
 .. code-block:: php
 
@@ -1996,8 +2066,10 @@
     }
 
 %{models_9b8dadaae5e0186045cc25e173cc28e3}%
+
 ------------------------
 %{models_1c5941aa841724d5c5c3b19995195e7b}%
+
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
@@ -2008,8 +2080,10 @@
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
 %{models_b9d973fddd00b0e7a636cdc2488b97c2}%
+
 ---------
 %{models_ba55633b90ce74fe56a1f26bc2caa70c}%
+
 
 %{models_a4ae958a2c79dbebf8a92d103bddf65f}%
 
@@ -2052,8 +2126,10 @@
 +----------------+-------------------------------------------------------------------------------------------------------------------------------+
 
 %{models_e7809539aa252eae6a52c0e6ae502cb6}%
+
 ^^^^^^^^^^^^^
 %{models_bb8b7c604e76018faa85a3e26939e787}%
+
 
 .. code-block:: php
 
@@ -2095,8 +2171,10 @@
 %{models_46ad3d1c14e7ffc25f0de5834a23d3fc}%
 
 %{models_af281cbd0128f9b889a08e8e6a23414d}%
+
 ^^^^^^^^^^
 %{models_0141a60aa91a8b35e1b87ed208a7cf3e}%
+
 
 .. code-block:: php
 
@@ -2166,8 +2244,10 @@
 %{models_6cdd8eeb2c674a7ca7d8f638e3908bf5}%
 
 %{models_0387f5f8f86514fd76635c5b996298a7}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_e524ed516361608aad5f4a6b0b2a3b29}%
+%{models_5169662f81f2a1d71453f90ff87be761}%
+
 
 %{models_fbefc8402833e62596c10cc8fd57186b}%
 
@@ -2254,8 +2334,10 @@
     $title = $post->getSlug();
 
 %{models_86902028f578be3733203f273cf005f9}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_15225e9a2356f6a977351d29714d8c55}%
+
 
 .. code-block:: php
 
@@ -2288,14 +2370,18 @@
     }
 
 %{models_70f40070204552b5f24220685f1af1d5}%
+
 ------------
 %{models_523caad38dca5a70a0f0df8adfa5392b}%
+
 
 %{models_e3bf59100a4c3abaa191650a6f5136e7}%
 
 %{models_088212b633bc7551876ebcd09049afd5}%
+
 ^^^^^^^^^^^^^^^^^^^
 %{models_1baaab4adfb83d440c5b42201356136b}%
+
 
 .. code-block:: php
 
@@ -2329,8 +2415,10 @@
     }
 
 %{models_40fbff140ccf45a6aebbd09ef8b19fdf}%
+
 ^^^^^^^^^^^^^^^^^^^^^
 %{models_4a388701aafbd80f2477b8eeef2d0e8b}%
+
 
 .. code-block:: php
 
@@ -2347,8 +2435,10 @@
     $robot->save(); //{%models_d6eb181c63ee8d0d3e27606f53733df5%}
 
 %{models_b343a6effee4b8a33a6d3cd345196c36}%
+
 ^^^^^^^^^^^^^^^^^^^^^
 %{models_cde7e7a38238e1e4337277766e8d4882}%
+
 
 .. code-block:: php
 
@@ -2464,8 +2554,10 @@
 %{models_fa2202eae95bafde3a1d0f80d04c9ea0}%
 
 %{models_b06efa6d21e5b000c6aa2d0359cf548b}%
+
 --------------------------
 %{models_42bf3fa32fab55ab4a3ff67d1d6c7c68}%
+
 
 .. code-block:: php
 
@@ -2524,12 +2616,16 @@
 * {%models_72493b148e97c79baeaace0eab6fd5ee%}
 
 %{models_4fec5c7316082223510a448180b8dad4}%
+
 --------------------------
 %{models_1c044d7aaef440ba786bdc767bda9fd9}%
 
+
 %{models_b77e6d4bf8411c1cc8b034cc2a02b89a}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f5266b4beb59809046580a6b9a8d954}%
+
 
 .. code-block:: php
 
@@ -2577,8 +2673,10 @@
     });
 
 %{models_3a148cb8c3ab4930a041c5abd3aa9bdb}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f5266b4beb59809046580a6b9a8d954}%
+
 
 .. code-block:: php
 
@@ -2617,8 +2715,10 @@
 
 
 %{models_68ad0c2d8a1b1d369991023ff57d29b7}%
+
 ----------------
 %{models_f88a41ead0b918d0234e87adadb8f2b8}%
+
 
 .. code-block:: php
 
@@ -2649,8 +2749,10 @@
     var_dump($robot->hasChanged('type')); // {%models_68934a3e9455fa72420237eb05902327%}
 
 %{models_70374a9ca8493aae79270629e397bd00}%
+
 ----------------
-%{models_10a44ce65ee88b722fe348261f6527f9}%
+%{models_9a962a5619f9371532434aab8feac19c}%
+
 
 %{models_a8a4fb9cdb3c450c510e3f24ce4f4253}%
 
@@ -2672,8 +2774,10 @@
     print_r($dataTypes);
 
 %{models_bfd71f3927f6c86526558f97925a5e8f}%
+
 ^^^^^^^^^^^^^^^^^
 %{models_1440dbcf5f811b0cef85d8a3c4ee376a}%
+
 
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                                       |
@@ -2707,8 +2811,10 @@
     };
 
 %{models_55ca78ce00d3f2722f71be1173f6b3ce}%
+
 ^^^^^^^^^^^^^^^^^^^^
 %{models_f8d1077a4feeb4ed05c90c606db3dc50}%
+
 
 %{models_b0c27aa05dcb7d1c9b7811f112ad76d8}%
 
@@ -2731,12 +2837,16 @@
     };
 
 %{models_fb54cb01fbccd42cd7a3b5b4b29c760f}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_9d03c973b5fc84b79884ffb6e8dabef1}%
 
+
 %{models_ea3cffb13799871aefa54facf52160c4}%
+
 ^^^^^^^^^^^^^^^^^^^^
-%{models_554bbb7c9e96dfc5bddb7298f9d0f42f}%
+%{models_6f0310d76056f6e2ab63703f26e90a1b}%
+
 
 .. code-block:: php
 
@@ -2819,8 +2929,10 @@
     };
 
 %{models_e2245e0ad6ce4309e33f9319c2be6b9c}%
+
 ^^^^^^^^^^^^^^^^
 %{models_67cc3bdd8608baa67d5af54d1cb344e4}%
+
 
 %{models_16d0fb50c035c6c0bda4e4df25a95edc}%
 
@@ -2903,8 +3015,10 @@
     }
 
 %{models_56d911cac7c77478592e074bfe9e0460}%
+
 ------------------------------
 %{models_13738e1aa3deb47d73c26d2c1d47b25b}%
+
 
 .. code-block:: php
 
@@ -2921,8 +3035,10 @@
     }
 
 %{models_78d81576bf0a8efea929a760098c2829}%
+
 --------------------------
-%{models_f762fdcf65979470be761b730b35105a}%
+%{models_48ad6c28516042ea030885a80828dbce}%
+
 
 .. code-block:: php
 
@@ -3030,8 +3146,10 @@
     $robot = Robots::findFirst('id = 101');
 
 %{models_97bf04884de98c0f2516aba8c1820c0a}%
+
 --------------------------------
-%{models_b2e5d8f0af6d33cc287434310bacbfd3}%
+%{models_8ebbcaebc2cc8a15596bd23885982a50}%
+
 
 .. code-block:: php
 
@@ -3089,8 +3207,10 @@
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
 %{models_f7dc7675831e283edd54b6e7e3501a7e}%
+
 ------------------------
-%{models_8897cc2c3e448f5e8a8702db423ee722}%
+%{models_0a2a06fb3507bac817f276ad915dd3e9}%
+
 
 .. code-block:: php
 
@@ -3154,8 +3274,10 @@
 %{models_6c6b6fc7cddd80dc56fd5605ee79726d}%
 
 %{models_bf20ac68334be437956a656824fc4005}%
+
 ------------------------------
 %{models_4b0148a30c76d202c67e8fd1fd0e8642}%
+
 
 .. code-block:: php
 
@@ -3180,8 +3302,10 @@
 %{models_f651a3f30dbfb9e7186a28cc284e8ce5}%
 
 %{models_6b15f5193c9dc33fd43d3c2de2f7a3fe}%
+
 ---------------------------
 %{models_e90dafd6a6d737e3f11771c9e2615633}%
+
 
 .. code-block:: php
 
@@ -3209,6 +3333,8 @@
 +---------------------+----------------------------------------------------------------------------------+---------+
 
 %{models_d3e54f7c04408d6d1a884897bca4169e}%
+
 ---------------------
-%{models_4066bb86ebbf825c613167cf60cdd5bf}%
+%{models_c5b75fd5c3845db3b35849961c1ccf23}%
+
 

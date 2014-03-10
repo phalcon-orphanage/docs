@@ -1,6 +1,8 @@
 %{phql_5386430706e3d70dcd6721cfffc4e04d}%
+
 =============================
 %{phql_b876fbd21078f3f503088a28152f5c24}%
+
 
 %{phql_770e44dedceb2f0e5f5b89dbad1cae91}%
 
@@ -15,8 +17,10 @@
 * {%phql_c2c5bc9abeb3c749bdb78ceea7b38e45%}
 
 %{phql_b2923a136099a523e93b60cda2e7677e}%
+
 -------------
 %{phql_d22afdc2a2ef5fa71cb68ec9cee108e3}%
+
 
 .. code-block:: php
 
@@ -84,8 +88,10 @@
     }
 
 %{phql_99e03f118557b526d8879d653323d7e0}%
+
 ---------------------
-%{phql_fbd53b85ed0193a035d9a2e10e612704}%
+%{phql_2cb86955cae7abce7d14732f9ae2a2e3}%
+
 
 .. code-block:: php
 
@@ -97,7 +103,7 @@
     // {%phql_3ddf5c225412a7acb145b96766a5d0b7%}
     $cars = $query->execute();
 
-%{phql_0080a39b5259541169eff46ea9c5ea5c}%
+%{phql_0217d23ec05b3dec6d446db354c27e9b}%
 
 .. code-block:: php
 
@@ -128,8 +134,10 @@
     ));
 
 %{phql_0afa7a4c7c005ec76d601567c48161aa}%
+
 -----------------
 %{phql_e893a9b9e54a8e1c795bb12607cc5d30}%
+
 
 .. code-block:: php
 
@@ -164,8 +172,10 @@
     $query = $manager->createQuery($phql);
 
 %{phql_916cd70dd9c9093314fa736afb3fa271}%
+
 ^^^^^^^^^^^^
-%{phql_bc4220d30d228afa326f33c7a14e364b}%
+%{phql_f2bb641e6d353ea46fba8d036d485032}%
+
 
 .. code-block:: php
 
@@ -200,7 +210,7 @@
         echo "Name: ", $car->name, "\n";
     }
 
-%{phql_f5d0f1eb448afd6d210e17c26cb318a1}%
+%{phql_6bc4440b38f2457d423213478e2183ad}%
 
 %{phql_78dcbe0c98269dba3f1d5ed10a082def}%
 
@@ -223,7 +233,7 @@
     $phql   = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
     $result = $manager->executeQuery($phql);
 
-%{phql_dbdab4ba0af00fb264476765639c133f}%
+%{phql_5b72836dcff3256bb180180a38ce6a14}%
 
 .. code-block:: php
 
@@ -238,8 +248,10 @@
 %{phql_c0989395fd723b460ecba688406c428f}%
 
 %{phql_949a9ea10ee823acc28ef307f9bca73c}%
+
 ^^^^^
 %{phql_f8d1d2d3bb81b845d9ea4aa7975d2fa3}%
+
 
 .. code-block:: php
 
@@ -325,8 +337,10 @@
     WHERE `artists`.`genre` = 'Trip-Hop'
 
 %{phql_0c496866e3b7ef5ccb7d7b86d29300ac}%
+
 ^^^^^^^^^^^^
 %{phql_46101d69c165924fce0b932d0b0548ba}%
+
 
 .. code-block:: php
 
@@ -365,8 +379,10 @@
     }
 
 %{phql_ec9a533445b22960d8dee63554092547}%
+
 ^^^^^^^^^^
 %{phql_d3190497c5ffa0d31b5787a970b17b92}%
+
 
 .. code-block:: php
 
@@ -414,8 +430,10 @@
 
 
 %{phql_d70f9732a93804895552d4041ad92122}%
+
 --------------
 %{phql_a7834c88201ad71e5c5127802aad3100}%
+
 
 .. code-block:: php
 
@@ -482,8 +500,10 @@
     }
 
 %{phql_7e95ceac582a15ef3f27c690a4862c5a}%
+
 -------------
 %{phql_596650f1fbee737a2e58cffc3309beb2}%
+
 
 .. code-block:: php
 
@@ -545,8 +565,10 @@
     $success = $process();
 
 %{phql_12f49100cf21592b1bed0daa5b42bcd9}%
+
 -------------
 %{phql_d901c3161bdaf00898323fc337f3bc75}%
+
 
 .. code-block:: php
 
@@ -573,8 +595,10 @@
 %{phql_ce996524e4b2ec0b5dfd262e78b54e70}%
 
 %{phql_c45f0d6895e27b7d482aae69f4248daa}%
+
 ----------------------------------------
 %{phql_9ec79915f86b984af84bfed7258f981f}%
+
 
 .. code-block:: php
 
@@ -730,8 +754,10 @@
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
 %{phql_1f784a870292bdaabbe7fc60b31ed9fd}%
+
 ^^^^^^^^^^^^^^^^
 %{phql_e390c52bab27bb0f6db5df479386930e}%
+
 
 .. code-block:: php
 
@@ -754,8 +780,10 @@
         ->execute(array('name' => $name, 'type' => $type));
 
 %{phql_a134584ccac2fddfcf5b203f45920a47}%
+
 -------------------------
 %{phql_95562861ff6ac47d167e77c98715380c}%
+
 
 .. code-block:: php
 
@@ -795,8 +823,10 @@
 %{phql_40a67d40a5341adea99c58b52c7b3cd0}%
 
 %{phql_10a77d4c1d136c3f869772725d0dd66f}%
+
 -----------------------
 %{phql_82759b93009043bc9741c004abc098cb}%
+
 
 .. code-block:: php
 
@@ -811,16 +841,20 @@
 %{phql_80b58ea91a646d68e6caf9009bceec79}%
 
 %{phql_c69f6d0581529e1032622e5cbdfe36d4}%
+
 --------------
 %{phql_861e30126232847422608f9c138961de}%
+
 
 * {%phql_23312b5db721d135bd856b7ba9bee379%}
 * {%phql_b8e3793002ddc51cd1915323cca8bf7c%}
 * {%phql_bd38b1186c164c021510018994a4aa4a%}
 
 %{phql_49c62a60348782860b0968b26fbc1d74}%
+
 -------------
 %{phql_5cac6cfb9413d2ca60be37b78373e5ef}%
+
 
 .. code-block:: php
 
@@ -875,8 +909,10 @@
     $robots = Robots::findByRawSql('id > ?', array(10));
 
 %{phql_f07747c719e154f6ba1384e010ddc59e}%
+
 ---------------
 %{phql_acfbc5f424a4b0cc8fbc9c7662993076}%
+
 
 * {%phql_12aa5d10897089c55e8200546c477834%}
 * {%phql_3bd06ebbf25c778ca66f8778ec3942f1%}

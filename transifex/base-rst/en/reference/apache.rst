@@ -1,10 +1,14 @@
 %{apache_980177b08e4d9434a584ed1d7affd9c5}%
+
 =========================
 %{apache_f5f74f14af90f6465d786a06e1e0d6ec}%
 
+
 %{apache_68d3e85aa63aa662569b0bc09eadc769}%
+
 ------------------------------
-%{apache_302e3e21e0f814fce2fec0a678c9cb8d}%
+%{apache_2bba5ba339b034ecb764feee844e310c}%
+
 
 .. code-block:: php
 
@@ -20,8 +24,10 @@
         index.php
 
 %{apache_16ffba90f0c26620fe972d6349e62c45}%
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{apache_687c102724c0c1508f209430f2403a32}%
+
 
 .. code-block:: apacheconf
 
@@ -68,6 +74,8 @@
     </IfModule>
 
 %{apache_ebcc030276fd3491142c88ffb86f1201}%
+
 ^^^^^^^^^^^^^
 %{apache_3d95c0322dd81f6a93fa8bb93ab0d95b}%
+
 

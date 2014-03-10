@@ -1,10 +1,14 @@
 %{translate_98c9d4681c477ea707d4970e7778f6a8}%
+
 =====================
-%{translate_e2a32b33e39ede9f0811702ad8db95e8}%
+%{translate_4cbdb893e5aec7e8a38b05616613ecd8}%
+
 
 %{translate_59016d3191a4f3dbf5870903d350a278}%
+
 --------
 %{translate_db2308e32b86da819830c6c2e5abd251}%
+
 
 +-------------+-----------------------------------------------------------------------------------------+
 | Adapter     | Description                                                                             |
@@ -13,8 +17,10 @@
 +-------------+-----------------------------------------------------------------------------------------+
 
 %{translate_8a2060f36ca4f202fdf743f442c4474a}%
+
 ---------------
 %{translate_52e146ffe8d9422a0563efc4216170b8}%
+
 
 .. code-block:: bash
 
@@ -105,11 +111,13 @@
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-%{translate_09613af9cbc9a0e2587a2beaac3dec73}%
+%{translate_bb2e4b323e92c9955c11a0f6c68ed7a8}%
 
 %{translate_206bd6266ccc781d8844f3db2de5d557}%
+
 ------------------------------
-%{translate_203d60c4b261829f5f0f43be5147b498}%
+%{translate_436fc39d983c41f556d736bfba690d89}%
+
 
 .. code-block:: php
 
