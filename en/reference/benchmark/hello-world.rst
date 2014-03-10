@@ -1,5 +1,6 @@
 Hello World Benchmark
 =====================
+
 How the benchmarks were performed?
 ----------------------------------
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Many
@@ -37,8 +38,10 @@ Participant Frameworks
 
 Results
 -------
+
 Yii (YII_DEBUG=false) Version yii-1.1.13
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/yii/index.php?r=say/hello
@@ -88,6 +91,7 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
 
 Symfony Version 2.1.6
 ^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/Symfony/web/app.php/say/hello/
@@ -137,6 +141,7 @@ Symfony Version 2.1.6
 
 CodeIgniter 2.1.0
 ^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/codeigniter/index.php/say/hello
@@ -186,6 +191,7 @@ CodeIgniter 2.1.0
 
 Kohana 3.2.0
 ^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/kohana/index.php/say/hello
@@ -235,6 +241,7 @@ Kohana 3.2.0
 
 Fuel 1.2.1
 ^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/fuel/public/say/hello
@@ -284,6 +291,7 @@ Fuel 1.2.1
 
 Zend Framework 1.11.11
 ^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/zendfw/public/index.php
@@ -333,6 +341,7 @@ Zend Framework 1.11.11
 
 Laravel 3.2.5
 ^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/laravel/public/say/hello
@@ -383,6 +392,7 @@ Laravel 3.2.5
 
 Phalcon Version 0.8.0
 ^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/phalcon/index.php?_url=/say/hello

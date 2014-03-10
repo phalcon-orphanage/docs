@@ -1,6 +1,9 @@
 %{hello-world_1800af32d03bd008a9402366cb562b10}%
 =====================
-%{hello-world_be607a94ba810fb49f1d348cd29b87bb}%
+
+%{hello-world_8c760de0e55016aff8070c32111cb899}%
+----------------------------------
+%{hello-world_4f155b32e56ee1e16e7edb490f8d3544}%
 
 %{hello-world_e097d55e97d0ff4d888a1c2a9eed5357}%
 
@@ -27,10 +30,61 @@
 
 %{hello-world_b41eb33ab6ec77b77338ec73c1482297}%
 -------
-%{hello-world_eebbb5a7a6f98f95cb182222e9e99afd}%
+
+%{hello-world_554f6acc0768e3c37be3076951b18cb2}%
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+
+    # ab -n 2000 -c 10 http://{%hello-world_7b4a95f3d066b3953d50b6de061578ad%}
+    This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+    Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://{%hello-world_8867914463339f2de85ba83ed5558268%}
+    Licensed to The Apache Software Foundation, http://{%hello-world_6ea2f8b0a2d60668dd736d98dedbd3b9%}
+
+    Benchmarking localhost (be patient)
+
+
+    Server Software:        Apache/2.2.22
+    Server Hostname:        localhost
+    Server Port:            80
+
+    Document Path:          /bench/helloworld/yii/index.php?r=say/hello
+    Document Length:        61 bytes
+
+    Concurrency Level:      10
+    Time taken for tests:   2.081 seconds
+    Complete requests:      2000
+    Failed requests:        0
+    Write errors:           0
+    Total transferred:      508000 bytes
+    HTML transferred:       122000 bytes
+    Requests per second:    961.28 [#/sec] (mean)
+    Time per request:       10.403 [ms] (mean)
+    Time per request:       1.040 [ms] (mean, across all concurrent requests)
+    Transfer rate:          238.44 [Kbytes/sec] received
+
+    Connection Times (ms)
+                  min  mean[+/-sd] median   max
+    Connect:        0   10   4.3      9      42
+    Processing:     0    0   1.0      0      24
+    Waiting:        0    0   0.8      0      17
+    Total:          3   10   4.3      9      42
+
+    Percentage of the requests served within a certain time (ms)
+      50%      9
+      66%     11
+      75%     13
+      80%     14
+      90%     15
+      95%     17
+      98%     21
+      99%     26
+     100%     42 (longest request)
+
 
 %{hello-world_1f68a2266ffba5950c721cc793e612c9}%
 ^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_48e76b0b84660431c3da92ec7e5dc67f%}
@@ -81,6 +135,7 @@
 
 %{hello-world_c1227286363b63972f06ff817d206c93}%
 ^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_569bccad7acf9a43ca3b7453ad07c9d3%}
@@ -131,6 +186,7 @@
 
 %{hello-world_f2e90ea49af5972b53ac103544e70493}%
 ^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_87245e37e5d13d3584052c0721154a82%}
@@ -181,6 +237,7 @@
 
 %{hello-world_8f62194b8e4f52233f1177a108718f7b}%
 ^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_c5f6f35c74d217893615cdea37de662a%}
@@ -231,6 +288,7 @@
 
 %{hello-world_792a2e281fc8a89af0a6f20f04efc9d6}%
 ^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_7659b81b72e8d355f7e16f921ac01e83%}
@@ -281,6 +339,7 @@
 
 %{hello-world_d55c02a93225bb3b6c5ffcf017d93e85}%
 ^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_b31d24289741d5bb7d7a3efdea5debb4%}
@@ -332,6 +391,7 @@
 
 %{hello-world_48c229f162cc5fe15ece777a27c869d9}%
 ^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://{%hello-world_396e421716a36dc752e4ab5147ac6b49%}
