@@ -4,7 +4,7 @@
 
 %{apache_68d3e85aa63aa662569b0bc09eadc769}%
 ------------------------------
-%{apache_2bba5ba339b034ecb764feee844e310c|:doc:`router component <routing>`}%
+%{apache_302e3e21e0f814fce2fec0a678c9cb8d|:doc:`router component <routing>`}%
 
 .. code-block:: php
 

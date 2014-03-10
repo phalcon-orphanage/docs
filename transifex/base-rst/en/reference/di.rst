@@ -355,7 +355,7 @@
 
 %{di_3fa3eaafa26e9ffe84116c67d0fefbf1}%
 
-%{di_14de896c95c7b172bb718236f182c58e|`Inversion of Control`_}%
+%{di_fbb2fa5e81cfb83763e38d50f7fb41c3|`Inversion of Control`_}%
 
 %{di_99b587c85d45df1407dcd0788d9587a5}%
 
@@ -365,9 +365,9 @@
 
 %{di_c61eadc667d87fdc8772798841b75116}%
 
-* {%di_c55dd049176f84390a842a994fd6dfed%}
-* {%di_514ce89f57c942a30863c249f1ac452c%}
-* {%di_c39e30ca19da022a355ef60f060482d9%}
+* {%di_73b3c1c4fe50701956e8d2344f743ec9%}
+* {%di_cae060cf9b2180c49e440fef044d3713%}
+* {%di_ec29bb5c91fef25ddedc0fb665cf43c6%}
 
 %{di_b9902c5ec0e172db9ea3ef4a360a4772}%
 
@@ -841,7 +841,7 @@
 
 %{di_f490448655b0bd4ef0ac8da57a753c8e}%
 ====================================
-%{di_c77905bd4245e5c3b749e6c9bc650c5c|:doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>`}%
+%{di_f82822663c272f5d23969e02e67203db|:doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>`}%
 
 .. code-block:: php
 
@@ -1003,5 +1003,5 @@
 
 %{di_fbd70cc43e51089bc8589a32fe15143f}%
 ========================
-%{di_8bd5c399f99c511fda646c0c969edfa4|:doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>`}%
+%{di_7a91b02925ab6cdbaa40291e51a1f94e|:doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>`}%
 

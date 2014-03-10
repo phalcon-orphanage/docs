@@ -4,11 +4,11 @@
 
 %{mactools_17da86073980dfe20dfa8c157c811998}%
 -------------
-%{mactools_df4f59adbadce22d3eb87c92c51d828d|:doc:`Installation <install>`}%
+%{mactools_3912e149b2c9d2a44404800fe8b905b4|:doc:`Installation <install>`}%
 
 %{mactools_d779ffb4113a9aa6902414524b888ae6}%
 --------
-%{mactools_7302cb718430ad71ea1ffc6b658f4a86|`Download`_|`Github`_}%
+%{mactools_1e9ca6cd729bb432fc56d6c2a05ebc0a|`Download`_|`Github`_}%
 
 %{mactools_74e34247256f47b8add2686dfa66e055}%
 

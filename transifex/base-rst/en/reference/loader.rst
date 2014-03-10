@@ -1,12 +1,12 @@
 %{loader_c8f48d17ec17f73c71701dbefa922bbe}%
 ======================
-%{loader_3fd4e6f26e3c74c284cd133eb0ef2f31|:doc:`Phalcon\\Loader <../api/Phalcon_Loader>`}%
+%{loader_e9efafebf4cb67840a64a80aff0daf0c|:doc:`Phalcon\\Loader <../api/Phalcon_Loader>`}%
 
-%{loader_081f32314b7fef6f3896d9728ad0e773|`autoloading classes`_|`lazy initialization`_}%
+%{loader_e4c6f8515974b8349488fe3d89d75280|`autoloading classes`_|`lazy initialization`_}%
 
-%{loader_e0de49bd6dc21dda713ee207bd33275f|`PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_}%
+%{loader_6e14a95cb826e28080486414b346a683|`PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_}%
 
-%{loader_e7d53f29945ab13e868e53caebd9afb9|:doc:`Phalcon\\Loader <../api/Phalcon_Loader>`}%
+%{loader_334d1d8c943955240927884d0cd43b58|:doc:`Phalcon\\Loader <../api/Phalcon_Loader>`}%
 
 %{loader_f0d1ea6f8ecdc3c9be68760b4db0bb54}%
 ----------------------
@@ -239,7 +239,7 @@
 ---------------
 %{loader_1a3657a13f35fe1e1963850259869e36}%
 
-* {%loader_c41ed023d18e39c4dd8e2b6752f45ed5%}
-* {%loader_daf1b6007c259755160fee747d44dc4d%}
-* {%loader_53685fe9f50d44be7ecd136537332cc5%}
+* {%loader_d4f107b682e4b15db5380eb0c2a050b5%}
+* {%loader_4c54cf1f5e17f7dd643543f0113c3c84%}
+* {%loader_c7f535c50766c55c428ef4bd2a5b595c%}
 

@@ -1,19 +1,19 @@
 %{acl_35d27b8250bff15a9954c9f91a0bb3c9}%
 ========================
-%{acl_2a30f41cd27cd899f81c88a54afd85cd|`Access Control Lists`_}%
+%{acl_adbc41ed0c0c423bf90223c0372e0f78|`Access Control Lists`_}%
 
 %{acl_e52970115d496c048249a820a58b136a}%
 
 %{acl_77f422ae2f33689becc2fff60ab01380}%
 ---------------
-%{acl_71605548bf520a6eff06143df6854839|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
+%{acl_82cdf253f5974cfd72e9a832b0ef83a1|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
 
 .. code-block:: php
 
     <?php $acl = new \Phalcon\Acl\Adapter\Memory();
 
 
-%{acl_53882344e1e60a232a7ae2ffce30b5fc|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
+%{acl_9ca054c0d303ac1dad25b7beb76c86c7|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
 
 .. code-block:: php
 
@@ -25,7 +25,7 @@
 
 %{acl_af39885efdd670a4d3409f86d065352b}%
 -----------------------
-%{acl_123734cf6682f2bc6aa51eb25eff5c38|:doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`}%
+%{acl_d8b6c24974ec49a7de0931969dbb69c6|:doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`}%
 
 .. code-block:: php
 
@@ -46,7 +46,7 @@
 
 %{acl_647e8a84d61a2443e8d863a01727bdb8}%
 ----------------
-%{acl_44815dee9a04e5f25832fdf831999b6f|:doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>`}%
+%{acl_d0b887d6f2f2316bdcfb3388a5fb7d18|:doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>`}%
 
 .. code-block:: php
 
@@ -92,7 +92,7 @@
 
 %{acl_8a27d9b40bc8d803daea548f997357b7}%
 -----------------
-%{acl_419fbe2d0531c90e20470119e454dd77|:doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`}%
+%{acl_80a17801e24f2a52b7979f12557663d5|:doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>`}%
 
 .. code-block:: php
 
@@ -111,7 +111,7 @@
 
 %{acl_12624f31b9a5c9d94c4533f8f8b52c42}%
 ---------------------
-%{acl_0d5458e2758bbbb7f55b22ae4a1826b2|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
+%{acl_67f68b730ec4de1a0cfadeeff91bb0aa|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`}%
 
 .. code-block:: php
 
@@ -143,7 +143,7 @@
 
 %{acl_5ec3a4b22225d07937424121b51b1319}%
 ----------
-%{acl_fda3b0872c136bf2722ea7748b2db904|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`|:doc:`EventsManager <events>`}%
+%{acl_b7d11adb78dba3c9e8fcc5b19fa49d62|:doc:`Phalcon\\Acl <../api/Phalcon_Acl>`|:doc:`EventsManager <events>`}%
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
@@ -183,5 +183,5 @@
 
 %{acl_206bd6266ccc781d8844f3db2de5d557}%
 ------------------------------
-%{acl_5c9687621eeedf30792938d48fea3cdf|:doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>`}%
+%{acl_3f41296882bcc0cbef74b4d784e02dab|:doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>`}%
 

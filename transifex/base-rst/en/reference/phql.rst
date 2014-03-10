@@ -8,11 +8,11 @@
 
 %{phql_a7c2ad8614a5f3c85370ac420ac4f2de}%
 
-* {%phql_418c9f8a96bfcaba77f08dd01695dfdc%}
-* {%phql_6abe27f2b855ffc5b0ccb3de82be890b%}
-* {%phql_c326424f184441a151b5eaea6ed30b78%}
-* {%phql_5b8261b09c3443ee0f6627bcf409c678%}
-* {%phql_c2c5bc9abeb3c749bdb78ceea7b38e45%}
+* {%phql_c99643ab0e3888897db70e8b2476b80e%}
+* {%phql_46d54e8fadbdace19fb90b882bc1b473%}
+* {%phql_73cc168ca64d92ccf976aa588a36b792%}
+* {%phql_11404c2131f16a9c23ed9a8bbe64b395%}
+* {%phql_4020e687fabadfb9960f68a5980d05e0%}
 
 %{phql_b2923a136099a523e93b60cda2e7677e}%
 -------------
@@ -87,7 +87,7 @@
 
 %{phql_99e03f118557b526d8879d653323d7e0}%
 ---------------------
-%{phql_2cb86955cae7abce7d14732f9ae2a2e3|:doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`}%
+%{phql_fbd53b85ed0193a035d9a2e10e612704|:doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`}%
 
 .. code-block:: php
 
@@ -100,7 +100,7 @@
     $cars = $query->execute();
 
 
-%{phql_0217d23ec05b3dec6d446db354c27e9b|:doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`}%
+%{phql_0080a39b5259541169eff46ea9c5ea5c|:doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`}%
 
 .. code-block:: php
 
@@ -173,7 +173,7 @@
 
 %{phql_916cd70dd9c9093314fa736afb3fa271}%
 ^^^^^^^^^^^^
-%{phql_f2bb641e6d353ea46fba8d036d485032|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`}%
+%{phql_bc4220d30d228afa326f33c7a14e364b|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`}%
 
 .. code-block:: php
 
@@ -211,7 +211,7 @@
     }
 
 
-%{phql_6bc4440b38f2457d423213478e2183ad|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`}%
+%{phql_f5d0f1eb448afd6d210e17c26cb318a1|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`}%
 
 %{phql_78dcbe0c98269dba3f1d5ed10a082def}%
 
@@ -236,7 +236,7 @@
     $result = $manager->executeQuery($phql);
 
 
-%{phql_5b72836dcff3256bb180180a38ce6a14|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`}%
+%{phql_dbdab4ba0af00fb264476765639c133f|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`}%
 
 .. code-block:: php
 
@@ -539,8 +539,8 @@
 
 %{phql_0979c3765dec192eaa96d839b8f054d7}%
 
-* {%phql_b5590b1b657139e9443cb2e82bb7a63a%}
-* {%phql_81ef2faca65f01a3b0a86157e6986ab6%}
+* {%phql_030bd3a5553ac5013d1dcaf54323e23f%}
+* {%phql_41a22f40f6b4936bd2b05c488954f049%}
 
 %{phql_69ef98663df382b084d84d6fd923f0dd}%
 
@@ -854,9 +854,9 @@
 --------------
 %{phql_861e30126232847422608f9c138961de}%
 
-* {%phql_23312b5db721d135bd856b7ba9bee379%}
-* {%phql_b8e3793002ddc51cd1915323cca8bf7c%}
-* {%phql_bd38b1186c164c021510018994a4aa4a%}
+* {%phql_ef3e24987078ebff7f462877847823ec%}
+* {%phql_e43721a9801312d362816e7039e4455e%}
+* {%phql_dcd66346494733efa89f19314da80e61%}
 
 %{phql_49c62a60348782860b0968b26fbc1d74}%
 -------------
@@ -921,8 +921,8 @@
 ---------------
 %{phql_acfbc5f424a4b0cc8fbc9c7662993076}%
 
-* {%phql_12aa5d10897089c55e8200546c477834%}
-* {%phql_3bd06ebbf25c778ca66f8778ec3942f1%}
-* {%phql_6f581a2fffee0b94d455e0623d333346%}
-* {%phql_66b60772022b8aef5952733b4260dd17%}
+* {%phql_f3ac81ad5b263e1751119c762ae96024%}
+* {%phql_38e4bbc7f6baf279ed76b7411805153a%}
+* {%phql_1dd8b481d687801bac5391715fd7d92a%}
+* {%phql_11d61b7dfcefe77621d61aec7d754cca%}
 

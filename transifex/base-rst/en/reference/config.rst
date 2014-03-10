@@ -1,6 +1,6 @@
 %{config_7aace998d2b823d2bade087c56c195b2}%
 ======================
-%{config_4cc78dc359d25e5a76b6d8e5d9e8602c|:doc:`Phalcon\\Config <../api/Phalcon_Config>`}%
+%{config_a03df62f83b6c3752553696d07d63328|:doc:`Phalcon\\Config <../api/Phalcon_Config>`}%
 
 %{config_3bb7a0e24926eb4b6474c7c719359e62}%
 -------------

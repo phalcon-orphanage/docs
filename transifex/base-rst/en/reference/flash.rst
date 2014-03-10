@@ -17,7 +17,7 @@
 
 %{flash_8674ea60087629c4dc1584b943b9f3cb}%
 -----
-%{flash_c490f7b344b4148068d275ad02ed2f03|:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`|:doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`}%
+%{flash_f71687222a5d029baf5498b0cbc24864|:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>`|:doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>`}%
 
 .. code-block:: php
 

@@ -1,14 +1,14 @@
 %{cache_06ac1885f3b22cac3acb8fef0ae8ee71}%
 ================================
-%{cache_d8421a5a215219954badc01c72c33db8|:doc:`Phalcon\\Cache <cache>`|:doc:`Phalcon\\Cache <cache>`}%
+%{cache_3122c9dd1e17c470686f28adea6b37ad|:doc:`Phalcon\\Cache <cache>`|:doc:`Phalcon\\Cache <cache>`}%
 
 %{cache_2b70fe8d1826a4e23acf89d33ef5f6b5}%
 ------------------------
 %{cache_adf301b4ffdcf215970175563ee6a903}%
 
-* {%cache_7c6d2499e794e7178ddf37db0974ca57%}
-* {%cache_8e660014ba66b283ac0a77af0ebab448%}
-* {%cache_216cd8fbfa6aaad8fe14fcb91d04869a%}
+* {%cache_cd0db037be2510443f9b193ae9b3600a%}
+* {%cache_9dda392669c21d7bc679e1eec7cc0392%}
+* {%cache_484d8d6a4c26b6cef270d928860ff767%}
 
 .. highlights::
 
@@ -21,8 +21,8 @@
 ----------------
 %{cache_1472c7d751cd680997c7e65cd9e8deeb}%
 
-* {%cache_67fd59e4c5562c5563990bbb2fc4f50f%}
-* {%cache_db29a57760b7259630566c13d1912cd9%}
+* {%cache_296e7f3495199a11551ae23331add0c4%}
+* {%cache_17270e790dcc56563afe60043579dfae%}
 
 %{cache_a30294c78d838e8593e4a0bc1059c46a}%
 ------------------------
@@ -333,7 +333,7 @@
 
 %{cache_61a21d3b5fd23a15bcccc1482b40870e}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{cache_e77ca7aed8c81e24579c19f86f18e02c|:doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>`}%
+%{cache_6eb7d539f744f20b5192425630a0e81f|:doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>`}%
 
 %{cache_902d7a8c16652aae3221595c8601c0af}%
 ----------------
@@ -356,7 +356,7 @@
 
 %{cache_297b2519b953eb1823cc82dba9b7b55b}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{cache_ea6983dccc24a7af5bd8aa92f57d85a6|:doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>`}%
+%{cache_93b1796cb05e39ef4485e27c0b90b547|:doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>`}%
 
 %{cache_31b59e1c932ab419df1003b4ddb7795d}%
 ^^^^^^^^^^^^^^^^^^^^
@@ -427,5 +427,5 @@
 +------------+-------------------------------------------------------------+
 
 
-%{cache_9ec560cc1c6e7af9dc81cf707c3e1242|`Phalcon Incubator <https://github.com/phalcon/incubator>`_}%
+%{cache_abe87b090af1d6029dbe8840c214141d|`Phalcon Incubator <https://github.com/phalcon/incubator>`_}%
 

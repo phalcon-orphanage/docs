@@ -1,6 +1,6 @@
 %{db_9aa0bb0b13e498761331dad3fb71c147}%
 ==========================
-%{db_dd7a9ea0a5bd6767dbe2e787be6b8749|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
+%{db_c56879b8ed347ed1ba9bd4090926fe2a|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{db_57a3a9bee3091b994011058761abea1e}%
 
@@ -29,7 +29,7 @@
 
 %{db_206bd6266ccc781d8844f3db2de5d557}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{db_b29dfc4cee5a4d57c6c80fafe9d45300|:doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>`}%
+%{db_cd9e7a9ee60d9ba1a2514d90d735c5e2|:doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>`}%
 
 %{db_1c404351c1ded3af7104b1367eca2298}%
 -----------------
@@ -50,7 +50,7 @@
 
 %{db_4cab8540827f652e67fdeca3664ad02d}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{db_4eff546c0e12b30b81bb114b580b80c3|:doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`}%
+%{db_4c59c53a42f9ff7526ba048854fd8666|:doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`}%
 
 %{db_1e84f34a1540652f1d97e6e1b494eaba}%
 -----------------------
@@ -150,7 +150,7 @@
 
 %{db_9e5e34140a91e9ba6f06e56f6ed231fc}%
 ------------
-%{db_325bb36cd0a7cf870946ddf1b5a4eaff|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_bf772b6dc335f562852b638549526151|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -204,7 +204,7 @@
     }
 
 
-%{db_1c59b3da59b8272679fd5df52d3c41d8|:doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`}%
+%{db_7c13e5e14c2516b4682395562588620f|:doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`}%
 
 .. code-block:: php
 
@@ -228,7 +228,7 @@
 
 %{db_822e9e4f30d1487b43dff638b7288be9}%
 ------------------
-%{db_dd4e5a58a426942b5f2b39f71ce93056|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_20fba1c0ff797b4571fcf2e266e43c1e|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -321,7 +321,7 @@
     }
 
 
-%{db_b0bc1bb3d3f3534fc77857f7acb96867|`nested transactions`_}%
+%{db_3b8eafd4e241b95551713b224b483665|`nested transactions`_}%
 
 .. code-block:: php
 
@@ -366,7 +366,7 @@
 
 %{db_754a52a77d610f44a39532d53dcc379c}%
 ---------------
-%{db_1228f1a3099b65199cdf4dbd36ec9610|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`EventsManager <events>`}%
+%{db_92349b2878385d609e923e4f9828453a|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`EventsManager <events>`}%
 
 +---------------------+-----------------------------------------------------------+---------------------+
 | Event Name          | Triggered                                                 | Can stop operation? |
@@ -434,9 +434,9 @@
 
 %{db_f7dc7675831e283edd54b6e7e3501a7e}%
 ------------------------
-%{db_436beb4c7f7b14d292720d029778673f|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
+%{db_46e98951d10febc90834515008579195|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
-%{db_e420b53e6636cfef39f921139e0a78a3|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
+%{db_a3df99eff2894edce98fa52a5fb22368|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
 .. code-block:: php
 
@@ -480,7 +480,7 @@
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 
-%{db_273d004566cba2d67a4f24007c2635d2|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
+%{db_455bb6bd87e31bb960b18a325c1857f9|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
 .. code-block:: php
 
@@ -523,7 +523,7 @@
 
 %{db_e88928f2fded39f58528a121fb3de45c}%
 ----------------------
-%{db_98a062ff44434de3c243c3d660aefbcb|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_a7114da51552b196b64a17bf1631aefd|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -570,7 +570,7 @@
 
 %{db_ecd1c68e16f252c70d68cfe1e6e0dcc1}%
 -----------------------
-%{db_30ed1e1bed6a8b3bb205c970e0746eaf|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_1f5f5c687a00cec49123314bc85a2042|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -632,7 +632,7 @@
 
 %{db_42bc1888fdf7c5f77d9ca21f38e0ed72}%
 ---------------------------------
-%{db_104661c5a61310750d9438ca194d8a0a|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_3e32a6ea6f8c9617413a066ca88504a3|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 %{db_5a549338622e7f241d71991a1a20c6f2}%
 ^^^^^^^^^^^^^^^
@@ -676,7 +676,7 @@
     );
 
 
-%{db_9f3a3c4406f9de1d302ba18c03442921|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
+%{db_accf3385a06a95bd8f27cae7026a5b33|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -705,13 +705,13 @@
 
 %{db_dc7a84782c94708e2445f7047dac825c}%
 
-* {%db_e64f0954f63861dae89f79260e579f6e%}
-* {%db_652aaca330a0a20efd856f8035d6709e%}
-* {%db_77c940959f1f2a9308919a987740ebc1%}
-* {%db_4deb53b39e30c5a62952881c49fec2e8%}
-* {%db_3e7a50f2c5c3bebed9bed171bd6663a5%}
-* {%db_25253fe1d826d42e6db699f3e7d99514%}
-* {%db_070faf863b6a1cfe77f660ccdd4d9ee1%}
+* {%db_fe7ebd9868a24f4d94e7571d6ad9777d%}
+* {%db_75f9a80d8632ac4324c0448868cf0a2f%}
+* {%db_b3d1b996d6ec9ea4505f6d33bc37c0f1%}
+* {%db_71e6628e8bd0f49a16f167ff06a44092%}
+* {%db_8779dd20292f14882b4da2bd3cb06e73%}
+* {%db_e1c672080a2ed8b106cae6b062a5ac78%}
+* {%db_66689482f9de2295ca0d59d4361a86f5%}
 
 %{db_6a6f6804cf8c152946cdee5720e2d35f}%
 
@@ -730,7 +730,7 @@
 
 %{db_c3ed2bc70e428245f4bdd9edcf4cd667}%
 ^^^^^^^^^^^^^^^
-%{db_6863bc8cccccba68363558b317c65eb3|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{db_7d43aa05cba8f136df19e848497ebcc4|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 

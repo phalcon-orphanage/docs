@@ -1,12 +1,12 @@
 %{session_961ade92d171ac826834b6f63182e0b1}%
 =======================
-%{session_b9582f2bd8e772e6946609d88c33af10|:doc:`Phalcon\\Session <../api/Phalcon_Session>`}%
+%{session_56daaf4c7a750ae3122b3e809deba99f|:doc:`Phalcon\\Session <../api/Phalcon_Session>`}%
 
 %{session_38d2fe6e9c58265de29d17ae9b99a96b}%
 
-* {%session_a2db5644ceaeb65c4119ad98b8442d57%}
-* {%session_6d6fbd30d8f41b93139a5b54def291a6%}
-* {%session_1b9e74d9e73da4617b8994f10942160b%}
+* {%session_dae600b68345b115f97afabba25c9e0f%}
+* {%session_d9a7fb9510a74b0502263f5d7f61452a%}
+* {%session_42ca17971b451fadfb2de0213e911134%}
 
 %{session_61d74fee93771ffdddeab2a05d73d187}%
 --------------------
@@ -26,7 +26,7 @@
 
 %{session_abc90f1094f9dbe4b58d5a265c369631}%
 ----------------------------------
-%{session_87ec8cb4e8370ad36c308f9df4267121|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
+%{session_231c5d26b99f3ebcb4c7d4fa58173200|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
 
 .. code-block:: php
 
@@ -107,7 +107,7 @@
 
 %{session_9f2d377c6b1d6a3308b97290c79339b2}%
 ------------
-%{session_0984532cbe02c59931523ca2d6309f3d|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
+%{session_b610736ecc58a9c50fb6048524b03ba2|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -122,7 +122,7 @@
 
 %{session_e19c5c57ed64b3c3b7b34a9e22e1ebaa}%
 -----------------------------
-%{session_030dee748e8517caa90f774c3ab0e157|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
+%{session_7aa6ce2eeaa1521067a8e46555fc143c|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -175,5 +175,5 @@
 
 %{session_206bd6266ccc781d8844f3db2de5d557}%
 ------------------------------
-%{session_8d76ebf6ce9c56b07418472e0ee234b0|:doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>`}%
+%{session_48588cac7e0db092898287389fcf5296|:doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>`}%
 

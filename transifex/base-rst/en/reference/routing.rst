@@ -4,7 +4,7 @@
 
 %{routing_a8a25f2aac05af019b129455c8d4e2eb}%
 ---------------
-%{routing_47146a2ecc8df656ce082727e04a68a1|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
+%{routing_9dcf17896733a4c6184918c1fe10972e|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 .. code-block:: php
 
@@ -34,7 +34,7 @@
     $router->handle();
 
 
-%{routing_112145b292308040c6da39af4290ad30|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
+%{routing_af70bfef086f9becd40e8868981bfbc4|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{routing_e337359c3e1a34b84cd25564e88c6b8f}%
 
@@ -69,7 +69,7 @@
 +------------+---------------+
 
 
-%{routing_fbef067a9226aecd62e78a552e40ea17|`PCRE regular expressions`_}%
+%{routing_0208788d55bbb89d8d903679f676ad94|`PCRE regular expressions`_}%
 
 %{routing_bd30a2c3f46b46c876a14459bb37cb3f}%
 
@@ -94,7 +94,7 @@
 
 %{routing_7eb946b0fa36e208b3b987f9503af17e}%
 
-%{routing_e95a5ec2cdeecafeb9842a70f9e44ba2|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
+%{routing_463cf83ff1da5fa1aead4c5adc6d8870|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 %{routing_3540d24c854e30bda17e43acc7db78b9}%
 ^^^^^^^^^^^^^^^^^^^^^
@@ -471,7 +471,7 @@
 
 %{routing_7ff55897ca1eac97569667483eccf29c}%
 -------------
-%{routing_6df89922da42abd85f9501e63a6b750a|:doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`}%
+%{routing_87997b24529888023044e0ac18a908b6|:doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`}%
 
 .. code-block:: php
 
@@ -486,7 +486,7 @@
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
 
-%{routing_7c33107c5fdf767df91a2620d4323b7d|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
+%{routing_99826062e7ee46bb65b29bd1bdc47f6c|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 .. code-block:: php
 
@@ -593,7 +593,7 @@
 
 %{routing_455c64f03d8a2db20778f630271ab7eb}%
 ----------------
-%{routing_ac42b4b6d5f1a7086e305de2b9e6e598|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
+%{routing_12b50c61cc98da6d971a5884a6f36ea2|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 %{routing_d6b9352467b77e061070a12d9d8b2d6c}%
 
@@ -874,7 +874,7 @@
 
 %{routing_3b78bfeabfbeef7d8e6fdb177e468dbe}%
 ------------------
-%{routing_2310ee24cb48f9ae5767b3fd5a108858|:doc:`annotations <annotations>`}%
+%{routing_9efa5035be571cb114e90dfd1d23d7ca|:doc:`annotations <annotations>`}%
 
 .. code-block:: php
 
@@ -1002,7 +1002,7 @@
 %{routing_ac44f232dbf5ec48d8c0868482c9ff0d}%
 ---------------------------
 
-%{routing_de1d5ff781a73d6d079419e9ab3a1fb9|`Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_}%
+%{routing_ac9e9e05ba519f705c4df55d20b55ac7|`Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_}%
 
 .. code-block:: php
 
@@ -1041,5 +1041,5 @@
 
 %{routing_6946292c838dafe294782c973703999a}%
 ----------------------------
-%{routing_eee2a709e3c64dc9cb5f5ece3c89f130|:doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>`}%
+%{routing_de0764d78260a6bae6b3dc64f4b95bd7|:doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>`}%
 

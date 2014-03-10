@@ -1,10 +1,10 @@
 %{dispatching_c7e230188b6b2143ff84328e977f26e6}%
 =======================
-%{dispatching_dfeb42ef7cec688fb8e9eabe5358b348|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
+%{dispatching_81501364f781f7e734258d205629bc50|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{dispatching_9ec793769848dd36d16bc5009d090b78}%
 -----------------
-%{dispatching_543fff3e579e81cea22e73ba5ff142c6|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
+%{dispatching_3aa22fc3cb1379a87cf25f652dcc56b8|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 .. code-block:: php
 
@@ -33,7 +33,7 @@
 
 %{dispatching_0d1e9546c8779eb28895ec882ed3d319}%
 ^^^^^^^^^^^^^^^^^^^^
-%{dispatching_27e991dba74daabcdfbb1ed543830568|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`|:doc:`EventsManager <events>`}%
+%{dispatching_14eec6afae10eddb0b0e9b9376b2c5c4|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`|:doc:`EventsManager <events>`}%
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered to          |
@@ -58,7 +58,7 @@
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
 
-%{dispatching_b9c4fe6e9da507a752630e4ce78bf945|:doc:`INVO <tutorial-invo>`|:doc:`Acl <acl>`}%
+%{dispatching_69d78495a25fcaf6e4b4e9fa56d997aa|:doc:`INVO <tutorial-invo>`|:doc:`Acl <acl>`}%
 
 %{dispatching_4eb434eb37be7b4a57c178fa4af88c76}%
 
@@ -181,7 +181,7 @@
 
 %{dispatching_f639eaf462e293dac25b136e656dcbf2}%
 --------------------
-%{dispatching_ecd78117b6983eb53e4390ab3b96391c|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
+%{dispatching_8802f0dbd05437c34f56cb0a6b8ddf81|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{dispatching_b371c1705a0db0cda084736e6897724c}%
 
@@ -264,7 +264,7 @@
 
 %{dispatching_f70a4e022ddce861f63997cab3fab1e4}%
 ------------------
-%{dispatching_30bdee532ed3867e8dea7d771570fab6|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
+%{dispatching_dd6b7bcdbb4ce2aaeedd235abfe8c8d0|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
 
 .. code-block:: php
 
@@ -448,7 +448,7 @@
 
 %{dispatching_a0b3073d0e9cc13f01fa8fded0cdc7ad}%
 -----------------------------
-%{dispatching_6592b8798addabd3b7ddc42c38fc8ae8|:doc:`EventsManager <events>`}%
+%{dispatching_f4582eab6580a8e3e9d783c044d1e67e|:doc:`EventsManager <events>`}%
 
 .. code-block:: php
 

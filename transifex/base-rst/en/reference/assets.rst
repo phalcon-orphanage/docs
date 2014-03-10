@@ -2,7 +2,7 @@
 =================
 %{assets_b0278ad267d2461d3eeafc96122e4a31}%
 
-%{assets_fd61e9b7b5674d8a609137c676c67dd1|:doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>`}%
+%{assets_4c79a3fe144f02b4051810553a60c81d|:doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>`}%
 
 %{assets_647e8a84d61a2443e8d863a01727bdb8}%
 ----------------
@@ -53,7 +53,7 @@
 
 %{assets_40aa86d406a1567e2bb210cfccefd275}%
 ----------------------
-%{assets_9463b3f8353230f7a298e4943a974bd9|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
+%{assets_467802b99de71cf3cdd123387595c997|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 %{assets_3f915d0e3e0a36ea435f995608b6919b}%
 

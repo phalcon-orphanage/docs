@@ -21,7 +21,7 @@
 
 %{migrations_c2c6a196f47f93f72deb7b1bdb09136d}%
 --------------
-%{migrations_dafacf70bbd1a474c5d65134fc5d05ea|:doc:`Phalcon Developer Tools <tools>`}%
+%{migrations_8be6a9683bb5d5b5bf2c2c4bac56783f|:doc:`Phalcon Developer Tools <tools>`}%
 
 %{migrations_203535c85e7bb7824da0d937e8ab2fe0}%
 
@@ -41,7 +41,7 @@
 
 %{migrations_6d7decd5070994a0afa0d63acb389aca}%
 
-%{migrations_2b1b05d9ab89746ef007eeb359671172|:doc:`Phalcon Developer Tools <tools>`}%
+%{migrations_28e728f8b1f2d65ed3c758a61286d6d9|:doc:`Phalcon Developer Tools <tools>`}%
 
 .. figure:: ../_static/img/migrations-3.png
    :align: center
@@ -162,7 +162,7 @@
 
 %{migrations_fdc42990e3b6f6fbdfa0c2091c3dd1b0}%
 ^^^^^^^^^^^^^^^^
-%{migrations_9bd114f770bc302f84fa27b173617833|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
+%{migrations_d5dd06884d15100629a1a7efa90e4366|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -187,21 +187,21 @@
 
 %{migrations_693f023ec4e718b7c0a6c9a231892599}%
 
-* {%migrations_e64f0954f63861dae89f79260e579f6e%}
-* {%migrations_652aaca330a0a20efd856f8035d6709e%}
-* {%migrations_77c940959f1f2a9308919a987740ebc1%}
-* {%migrations_4deb53b39e30c5a62952881c49fec2e8%}
-* {%migrations_3e7a50f2c5c3bebed9bed171bd6663a5%}
-* {%migrations_25253fe1d826d42e6db699f3e7d99514%}
-* {%migrations_070faf863b6a1cfe77f660ccdd4d9ee1%}
+* {%migrations_fe7ebd9868a24f4d94e7571d6ad9777d%}
+* {%migrations_75f9a80d8632ac4324c0448868cf0a2f%}
+* {%migrations_b3d1b996d6ec9ea4505f6d33bc37c0f1%}
+* {%migrations_71e6628e8bd0f49a16f167ff06a44092%}
+* {%migrations_8779dd20292f14882b4da2bd3cb06e73%}
+* {%migrations_e1c672080a2ed8b106cae6b062a5ac78%}
+* {%migrations_66689482f9de2295ca0d59d4361a86f5%}
 
 %{migrations_98592e9224abec7b6a4957b5f4b035b4}%
 ^^^^^^^^^^^^^^^^
-%{migrations_173520fb94187f133174d26fa590a3bc|:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`}%
+%{migrations_aeb3e98001a3a150150cefe12302d896|:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`}%
 
 %{migrations_18f0b0ff59a37b6adc6b8a16e4430559}%
 ^^^^^^^^^^^^^^^^^^^
-%{migrations_f0baedbf67e787b77fd3a0c2065a9573|:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`}%
+%{migrations_1f2b29d16db162f94052bbfd388e6954|:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`}%
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 | Index               | Description                                                                                         | Optional |
@@ -218,7 +218,7 @@
 
 %{migrations_3288ae777aa932ca0f6a2a90da292c6d}%
 ------------------
-%{migrations_cf35cba6fd8ac5359966ed7d8b9c6c93|:doc:`database component <db>`}%
+%{migrations_bcfc0fca08f7f3bfb030bbba1fad022c|:doc:`database component <db>`}%
 
 .. code-block:: php
 

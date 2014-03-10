@@ -1,6 +1,6 @@
 %{url_ed236d03ec3edd1f8e21243f33a3d69a}%
 =========================
-%{url_70a16dc89ce6420741cc934b771f0706|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
+%{url_3985fcf30af8470b326c4128948ce37c|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 %{url_68b8722ef7564d65fa4a9ed509690f52}%
 ------------------
@@ -49,7 +49,7 @@
 
 %{url_2f1af28e614976174560c19d608f2b30}%
 ---------------
-%{url_2911ed9df12bc18f3dff68009b6bc5c0|:doc:`Router <routing>`}%
+%{url_6ceb5ad349a020c2d651901ef0007c04|:doc:`Router <routing>`}%
 
 .. code-block:: php
 

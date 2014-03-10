@@ -1,6 +1,6 @@
 %{translate_98c9d4681c477ea707d4970e7778f6a8}%
 =====================
-%{translate_4cbdb893e5aec7e8a38b05616613ecd8|:doc:`Phalcon\\Translate <../api/Phalcon_Translate>`}%
+%{translate_e2a32b33e39ede9f0811702ad8db95e8|:doc:`Phalcon\\Translate <../api/Phalcon_Translate>`}%
 
 %{translate_59016d3191a4f3dbf5870903d350a278}%
 --------
@@ -111,11 +111,11 @@
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
 
-%{translate_bb2e4b323e92c9955c11a0f6c68ed7a8|:doc:`Router <routing>`}%
+%{translate_09613af9cbc9a0e2587a2beaac3dec73|:doc:`Router <routing>`}%
 
 %{translate_206bd6266ccc781d8844f3db2de5d557}%
 ------------------------------
-%{translate_436fc39d983c41f556d736bfba690d89|:doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>`}%
+%{translate_203d60c4b261829f5f0f43be5147b498|:doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>`}%
 
 .. code-block:: php
 

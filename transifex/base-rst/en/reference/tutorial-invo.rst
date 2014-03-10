@@ -2,7 +2,7 @@
 ===========================
 %{tutorial-invo_28c87f3f9c6f429bc7d90c5c7ede0254}%
 
-%{tutorial-invo_ac3ab2c91385234f4e6ff0ab6e00dd9f|`Bootstrap`_}%
+%{tutorial-invo_ed36a879763a72ad2eee0265880afedc|`Bootstrap`_}%
 
 %{tutorial-invo_3709570c902e1a2ffa6c5fba641e54c6}%
 -----------------
@@ -254,7 +254,7 @@
     }
 
 
-%{tutorial-invo_a6a7455d565fbce3058220eb66e73a93|:doc:`bcrypt <security>`}%
+%{tutorial-invo_e1691ff99f6bd12634fef3d7fda85e98|:doc:`bcrypt <security>`}%
 
 %{tutorial-invo_6dacbb6b00b1e8395f607c3934435e81}%
 
@@ -283,7 +283,7 @@
 
 %{tutorial-invo_4530981ad58b22a504c8538bb2ba1c1a}%
 
-%{tutorial-invo_daa7e05e103410eb401a91faef00621d|:doc:`Dispatcher <dispatching>`|:doc:`Routing <routing>`}%
+%{tutorial-invo_2c90b734d651f10cc7131ac076b7ebd3|:doc:`Dispatcher <dispatching>`|:doc:`Routing <routing>`}%
 
 %{tutorial-invo_3e0157a6079d73b316fe4f72545941b8}%
 
@@ -297,11 +297,11 @@
     });
 
 
-%{tutorial-invo_3c588d3feb3bfd79325b3f94f222b046|:doc:`EventsManager <events>`}%
+%{tutorial-invo_5a3f2590fed451483c9290184dc1c83a|:doc:`EventsManager <events>`}%
 
 %{tutorial-invo_c9f4b22767d8d72f8d8f7c31ef2e8f39}%
 ^^^^^^^^^^^^^^^^^
-%{tutorial-invo_de1c934fd8d84c13a7af25f3c5976e50|:doc:`EventsManager <events>`}%
+%{tutorial-invo_9cc9a9a4bdef843f9c92207a75b41875|:doc:`EventsManager <events>`}%
 
 .. code-block:: php
 
@@ -488,7 +488,7 @@
 
 %{tutorial-invo_344fc05aa62dcb9673334da792893b93}%
 ---------------
-%{tutorial-invo_57e2b48b089d9d2f96f0f9e6d3a0b9b5|`Bootstrap`_}%
+%{tutorial-invo_26c19d581f9b8adcf67e0ff5d40fa07a|`Bootstrap`_}%
 
 %{tutorial-invo_ced89705bbf6110384fbd0acf9fda9c2}%
 
@@ -686,7 +686,7 @@
 
 %{tutorial-invo_878b6c9b94eecff7d42c40c0a88f17fc}%
 ^^^^^^^^^^^^^^^^^^^
-%{tutorial-invo_4bdf622ba4b8df6bea1a3fe56c2a7eef|:doc:`Request <request>`}%
+%{tutorial-invo_49e69e1a6ce42e203e7f24dd3d5cc6d2|:doc:`Request <request>`}%
 
 .. code-block:: php
 
@@ -710,7 +710,7 @@
     }
 
 
-%{tutorial-invo_873f0b1a86c8883b91fdc7b2d1784af5|:doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`}%
+%{tutorial-invo_638ffdc8e55f3eb959f56cd4f1d377e3|:doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`}%
 
 .. code-block:: php
 
@@ -721,8 +721,8 @@
 
 %{tutorial-invo_d1186bc6648b7a474a9cf8ec6f717938}%
 
-* {%tutorial-invo_5e90ae02ef6aaa4078321b45f7366a82%}
-* {%tutorial-invo_ff43286f549da031945d2ef610eb239a%}
+* {%tutorial-invo_c00849c5e1f7ba1dad71566e6eafd63b%}
+* {%tutorial-invo_775ac062be1a34f55d93c2a3e39de18b%}
 
 %{tutorial-invo_f16803e5e4e4781ab80b5e3af828d753}%
 
@@ -735,7 +735,7 @@
     $this->persistent->searchParams = $query->getParams();
 
 
-%{tutorial-invo_e5bf9dd94d8dcd7bec5fae63ccd182b8|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
+%{tutorial-invo_9bbd0c833b1acdd7298af8955b8d2a90|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 %{tutorial-invo_c338b2537f1f16b3ca021730bbdd2a14}%
 

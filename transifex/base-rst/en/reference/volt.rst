@@ -7,7 +7,7 @@
 
 
 
-%{volt_4ffa38c581ba232c17d737d5a4985f71|`Armin Ronacher`_}%
+%{volt_0c743e0803594efbe6ff61566b75f9ef|`Armin Ronacher`_}%
 
 %{volt_c8e0e36307fcd2c5d61b48c9de3d7d94}%
 ------------
@@ -830,7 +830,7 @@
 
 %{volt_37bc16dc011e098a69b4c1ca892ddb12}%
 -----------------
-%{volt_0daeace05b6a62ebbf941d68f76269e9|:doc:`Phalcon\\Tag <tags>`}%
+%{volt_bd9998800f9ac1269410c0b8bada309c|:doc:`Phalcon\\Tag <tags>`}%
 
 .. code-block:: html+jinja
 
@@ -948,7 +948,7 @@
 
 %{volt_e06179c3e64394a27a5d1a1957a16f83}%
 ----------------
-%{volt_9b4f0cfb2fc37d32dd8c03d263003ef0|:doc:`Phalcon\\Mvc\\View <views>`}%
+%{volt_b0ca2ce1f1c6cd73aad03c81e846a485|:doc:`Phalcon\\Mvc\\View <views>`}%
 
 .. code-block:: html+php
 
@@ -1456,7 +1456,7 @@
     {% endcache %}
 
 
-%{volt_211d0d2b80edaa6983fde0e67e623758|:doc:`Phalcon\\Cache <cache>`|:doc:`"Caching View Fragments" <views>`}%
+%{volt_fa5c494d6a43bf4695d7f529ef52b144|:doc:`Phalcon\\Cache <cache>`|:doc:`"Caching View Fragments" <views>`}%
 
 %{volt_c45c12e738f6cb287f117d8bac15285b}%
 -------------------------------

@@ -1,6 +1,6 @@
 %{logging_e1e77dd383c1258dad2a6817a1c6fc23}%
 =======
-%{logging_83307414f84544e9d47eda3ed6fd444b|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
+%{logging_41974eb84205cc83111b0fdc785027b5|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
 
 %{logging_59016d3191a4f3dbf5870903d350a278}%
 --------
@@ -70,7 +70,7 @@
 
 %{logging_56a89ee6c74eb7e75196fb76e0a4bb02}%
 ----------------------------
-%{logging_b690ecd5a9f5988fb5fa892f27d40c32|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
+%{logging_bf9c3e53094ec01daf0f9301d7a9ba1f|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
 
 .. code-block:: php
 
@@ -142,7 +142,7 @@
 
 %{logging_45b978c53f59c4bf462869a1c482ca20}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{logging_4dca6f4fac98c0bab84f0c8b13465b94|:doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>`}%
+%{logging_4b040fe462407c8942f9ad3ef57a973d|:doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>`}%
 
 %{logging_59016d3191a4f3dbf5870903d350a278}%
 --------
@@ -150,7 +150,7 @@
 
 %{logging_732096ca5a9f846ece0a3c3c969a6dc3}%
 ^^^^^^^^^^^^^
-%{logging_e145d1fad62c6335a395ca852d5a4b88|`here <http://php.net/manual/en/wrappers.php>`_}%
+%{logging_91d041471960997a18507b9ecc95a747|`here <http://php.net/manual/en/wrappers.php>`_}%
 
 .. code-block:: php
 

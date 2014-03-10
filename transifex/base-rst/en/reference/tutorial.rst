@@ -1,6 +1,6 @@
 %{tutorial_9abbbf47909e7ad733fa62e85cb0db75}%
 ==================================
-%{tutorial_dd40a0d83c2ebb146c6f7c9dde793992|:doc:`developer tools <tools>`}%
+%{tutorial_b5a5e9e57656d19a8547aa34121891f4|:doc:`developer tools <tools>`}%
 
 %{tutorial_37ce9f89b0b1cb6b762c7196bc18ec5f}%
 --------------------------
@@ -29,7 +29,7 @@
 
 %{tutorial_bcd21c14594d49fe915b68d70495a843}%
 ------------------
-%{tutorial_dcc8e4dbd5d5aeff407c940493e85a5f|`here <https://github.com/phalcon/tutorial>`_}%
+%{tutorial_264e9e5fa61443e3d949a5b9c3b5af4c|`here <https://github.com/phalcon/tutorial>`_}%
 
 %{tutorial_e43ba4039b13f24962a8c6077d982e4b}%
 ^^^^^^^^^^^^^^
@@ -150,7 +150,7 @@
 
 %{tutorial_f0f4e1a66ec21c03b055d8e501cb4fa7}%
 ^^^^^^^^^^^^^^^^^^^^^
-%{tutorial_f9818f8386628eac38abefc92be953c2|:doc:`dependency injection container <di>`}%
+%{tutorial_860a7ed52147d82b4589219e54d068f0|:doc:`dependency injection container <di>`}%
 
 %{tutorial_35de02fc6f0f765eb64a8c213b2695dd}%
 
@@ -166,7 +166,7 @@
 
 %{tutorial_b10343867d5a38ecabb698a8d89077c2}%
 
-%{tutorial_6ce1339f303460d63d9ed11e7e3abbee|`anonymous function`_}%
+%{tutorial_54b32d459a9b3b57d1404dcb59734101|`anonymous function`_}%
 
 .. code-block:: php
 
@@ -180,7 +180,7 @@
     });
     
 
-%{tutorial_0943a524b31c7b5f592c4ea71d758716|:doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tutorial_2fa24b32d87705508df644418a1f0c40|:doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
@@ -194,7 +194,7 @@
     });   
 
 
-%{tutorial_f7544311601cc8dca79d56981de1e5ec|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
+%{tutorial_6a03823c97626be953b1e72793b46c33|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 .. code-block:: php
 
@@ -261,7 +261,7 @@
     }
 
 
-%{tutorial_c9b58198f3b1febd4deca7288442a77b|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`views usage here <views>`}%
+%{tutorial_d99e70949cc78eb3ca77eb0de64f1e1d|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`views usage here <views>`}%
 
 %{tutorial_c60c8e77213c05815057aebb475194ec}%
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -283,7 +283,7 @@
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
 
-%{tutorial_131c513275dc0f4c31d0977565ef2ef6|:doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`|:doc:`found here <tags>`}%
+%{tutorial_e344ac99aac31560af177fc001e82872|:doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`|:doc:`found here <tags>`}%
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center

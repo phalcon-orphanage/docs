@@ -8,9 +8,9 @@
 ------------------
 %{models-cache_9bc17a041fe4fe724ea7d4fdbe869c0f}%
 
-%{models-cache_44caed33d968a824136a964a9949ebbe|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
+%{models-cache_30668f227cebea1ae50d33c013dfe0d6|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
-%{models-cache_21d5d2514aaf252b9bb348c579753209|:doc:`cache <cache>`}%
+%{models-cache_2ab3778b45194507fc193d4168e9f30a|:doc:`cache <cache>`}%
 
 .. code-block:: php
 
@@ -83,7 +83,7 @@
 
 %{models-cache_3ed32570bf1cb380cb4f367cc81bb281}%
 -------------------------
-%{models-cache_d133521b4034fa05c7fd7bbaf09ff142|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
+%{models-cache_3de9b13290d13e3419c6721aa9fdd48c|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -883,5 +883,5 @@
     }
 
 
-%{models-cache_bdde4f7dba11a26c566d816a82550e0f|`prepared statements`_|`SQL Injections`_}%
+%{models-cache_6c3362c2c834f5cd58f8d0aa52210e1c|`prepared statements`_|`SQL Injections`_}%
 

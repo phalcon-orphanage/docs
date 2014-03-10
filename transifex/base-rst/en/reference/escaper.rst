@@ -1,8 +1,8 @@
 %{escaper_de8049e2b4f8854b235a1e7a22dfbaa2}%
 ===================
-%{escaper_b1befd95db86d9f73d23eba4bd1505bd|:doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`}%
+%{escaper_4ac20f61e26bc5c1fb7aee9b14e2a6ca|:doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`}%
 
-%{escaper_17174b988cf7bc776edf74669efe46ca|`XSS (Cross Site Scripting) Prevention Cheat Sheet`_}%
+%{escaper_719863172fd23c83a6bbcb76c7e8894d|`XSS (Cross Site Scripting) Prevention Cheat Sheet`_}%
 
 %{escaper_08393e32d6104e8736ab5e0d3ee9aaea}%
 

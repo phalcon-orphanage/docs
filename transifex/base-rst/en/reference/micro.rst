@@ -17,7 +17,7 @@
 
 %{micro_e31cd488f01b9bb2939d662e1188325b}%
 ----------------------------
-%{micro_0cca96e627df9983cf88153c2d5fc687|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`}%
+%{micro_c3f8dc443c133feb69f8ff42aa51af6a|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`}%
 
 .. code-block:: php
 
@@ -28,7 +28,7 @@
 
 %{micro_a8a25f2aac05af019b129455c8d4e2eb}%
 ---------------
-%{micro_cd66a5f8e2f703c2f2961dbf23a08512|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
+%{micro_2d41046e7fd9f64847471e5ceb7029b0|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 .. code-block:: php
 
@@ -161,7 +161,7 @@
     });
 
 
-%{micro_5c447a72e04a5ddaaa0a58ec327cf825|:doc:`"response" <response>`}%
+%{micro_078c18caff766bfd91b697a505e39f3b|:doc:`"response" <response>`}%
 
 .. code-block:: php
 
@@ -220,7 +220,7 @@
 
 %{micro_9798a318dd3602294c210880870c54e0}%
 --------------------------
-%{micro_abee3e3e45f7489d1ed3a7af0125df95|:doc:`Phalcon\\Mvc\\Url <url>`}%
+%{micro_fc9ada7d90a72dbea7d915962b193e3c|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 .. code-block:: php
 
@@ -248,7 +248,7 @@
 
 %{micro_1edd36cbfb44041b7c30b16d6c2d799a}%
 ----------------------------------------
-%{micro_aae2fb5d963da74321705d5b59c18693|:doc:`Phalcon\\DI\\FactoryDefault <di>`}%
+%{micro_d6d3077e8d6cc151676e5b21b68818d8|:doc:`Phalcon\\DI\\FactoryDefault <di>`}%
 
 .. code-block:: php
 
@@ -323,7 +323,7 @@
 
 %{micro_4325ce4e9847b0d604ca69b6743b6465}%
 ----------------------------
-%{micro_94d4d62695afcb1d841a41b9d47f4260|:doc:`Models <models>`}%
+%{micro_be1942297beba9b13307b53413357aae|:doc:`Models <models>`}%
 
 .. code-block:: php
 
@@ -350,7 +350,7 @@
 
 %{micro_b2f9f6b99cf3263485d410423f15bf18}%
 ------------------------
-%{micro_b505075c684a62fc5150a58f45018184|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`|:doc:`EventsManager <events>`}%
+%{micro_faad8ad5ff6758d3fb51fe5f61a6f0f7|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`|:doc:`EventsManager <events>`}%
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -509,7 +509,7 @@
 
 %{micro_8d672192be99dfd34509f659e0938d58}%
 -----------------------------
-%{micro_d5c2ff46f8c4c2951e8ee0b9c8f58925|:doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>`}%
+%{micro_b88f0d3514ad22d0e9b243ac6a6790db|:doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>`}%
 
 .. code-block:: php
 
@@ -567,7 +567,7 @@
 
 %{micro_96018889300caae7d7d05f83cd8e858c}%
 -------------------
-%{micro_c7feff5e66f92496121ef73b5ea437e7|:doc:`Phalcon\\Http\\Response <response>`}%
+%{micro_e11edfcd2de034201315d289420a5edd|:doc:`Phalcon\\Http\\Response <response>`}%
 
 .. code-block:: php
 
@@ -593,7 +593,7 @@
 
 %{micro_3eeddf70df32086a3d2bb22803b559d4}%
 ---------------
-%{micro_70e1a9347021840524d101419a67e2f7|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
+%{micro_157185baf0db14498290e302c87df99c|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
 
 .. code-block:: php
 

@@ -1,6 +1,6 @@
 %{response_96018889300caae7d7d05f83cd8e858c}%
 ===================
-%{response_6bf4c0dd4e13162f5ed1e37b834dfc4e|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
+%{response_4aa13d66c64755d60950cd5c4cd6f2eb|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -63,7 +63,7 @@
     $response->setRawHeader("HTTP/1.1 200 OK");
 
 
-%{response_17a252d92bebda16f922904f3944fcf1|:doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>`}%
+%{response_41a2b129cf88a20c4428a7fa3027d461|:doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>`}%
 
 .. code-block:: php
 
@@ -78,7 +78,7 @@
 
 %{response_85ebb8b1fe35876ecb488660ec541ddb}%
 -------------------
-%{response_c8b097c3643885890401f0ca01bf1ec6|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
+%{response_0e05cb1ea142cac273618b77cc428e5b|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -97,7 +97,7 @@
     $response->redirect("http://www.example.com/new-location", true, 301);
 
 
-%{response_a75f2a5b68b397b970285c84345d8356|:doc:`Phalcon\\Mvc\\Url <url>`}%
+%{response_c4d63c5ab656959797d68ed59d14fd18|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 .. code-block:: php
 
@@ -119,10 +119,10 @@
 
 %{response_a1b56a2d3c1bf4146eff9541966fb92d}%
 
-* {%response_700cafb2a949903d26fb441db781cdc0%}
-* {%response_a68fcaf08bfaa84a55067b9311a15218%}
-* {%response_19b0309fb5f5b7c8a32d751de8b7f5d8%}
-* {%response_7c728995514c8ba24d65a6d9c391dbc8%}
+* {%response_9b0654c16db64ed8a4c5cabfcafdcea0%}
+* {%response_c5371d3a088af13b4b2e73ae140aac8e%}
+* {%response_7861c86ff99a668771415c788624049c%}
+* {%response_7df27d50fa8a8d99c43e17e4f300dc57%}
 
 %{response_241e831b798a5b2b7d5a163e9d381113}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

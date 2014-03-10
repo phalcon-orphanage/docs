@@ -4,7 +4,7 @@
 
 %{events_b2923a136099a523e93b60cda2e7677e}%
 -------------
-%{events_d3781bf0aa8891e4b4b478e626ec61ba|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
+%{events_8cbb9df0c416197ef9448b6764564317|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 

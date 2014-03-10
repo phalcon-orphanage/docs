@@ -2,7 +2,7 @@
 ========================
 %{nginx_703537526a0c2eb0802d1c8091f2648b}%
 
-%{nginx_28664900b913c3b84647e8a2af55a75a|`PHP-FPM`_|`PHP-FPM`_|`PHP-FPM`_}%
+%{nginx_3a6a1339cfce179e86b462fdf346efd0|`PHP-FPM`_|`PHP-FPM`_|`PHP-FPM`_}%
 
 %{nginx_78202a14fc06eb13905c98df74daefea}%
 -----------------------------

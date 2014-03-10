@@ -83,7 +83,7 @@ class Docs
 								}
 							}
 
-							$key = $this->_prefix . '_' . md5($listMatches[1]);
+							$key = $this->_prefix . '_' . md5($listMatches[0]);
 							if (count($placeholders)) {
 								$section[$position] = str_replace($listMatches[1], '{%' . $key . '|' . join('|', $placeholders) . '%}', $line);
 							} else {
@@ -97,6 +97,7 @@ class Docs
 				if (!$list) {
 
 					$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
+					$originalSection1 = $section1;
 
 					$number = 1;
 					$placeholders = array();
@@ -116,7 +117,7 @@ class Docs
 						}
 					}
 
-					$hash1 = md5(mb_strtolower($section1));
+					$hash1 = md5(mb_strtolower($originalSection1));
 					$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1, 'placeholders' => $placeholders);
 
 				} else {

@@ -4,7 +4,7 @@
 
 %{wintools_17da86073980dfe20dfa8c157c811998}%
 -------------
-%{wintools_df4f59adbadce22d3eb87c92c51d828d|:doc:`Installation <install>`}%
+%{wintools_3912e149b2c9d2a44404800fe8b905b4|:doc:`Installation <install>`}%
 
 %{wintools_d779ffb4113a9aa6902414524b888ae6}%
 --------

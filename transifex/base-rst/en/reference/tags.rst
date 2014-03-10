@@ -1,8 +1,8 @@
 %{tags_c3144b8ef940c1ebff02551da1193039}%
 ============
-%{tags_5d627ea36694833fa9a53ecc92595be9|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_26fe4984f9926a35133255f4c1ed5fb8|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
-%{tags_6ccdd33ae3f25b19e9bf66a1bc3a3a20|:doc:`Volt <volt>`}%
+%{tags_97e74baff8001359e1323244c3c485b2|:doc:`Volt <volt>`}%
 
 .. highlights::
     This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
@@ -97,7 +97,7 @@
     <?= $this->tag->linkTo(array(array('for' => 'show-product', 'title' => 123, 'name' => 'carrots'), 'Show')) ?>
 
 
-%{tags_3b3ddbc8f1671013e5486db4eac42be9|:doc:`Phalcon\\Mvc\\Url <url>`}%
+%{tags_5fff0e2c5e8c35e7d396d640174ca309|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 %{tags_27a89fa6a2d3db6cdb4d3ed5af1e0d93}%
 
@@ -157,7 +157,7 @@
     </form>
 
 
-%{tags_c0252c60d20dc018cec6e1fd6537fd89|:doc:`form builder <forms>`}%
+%{tags_acb82f62c8bdc466dfa1f8efbbc35409|:doc:`form builder <forms>`}%
 
 %{tags_f78e5a2f28f870991d16a021368871dc}%
 ---------------------------------
@@ -200,7 +200,7 @@
 
 %{tags_9d358ff3057e3a6fa9c7e6b31c120392}%
 -------------------
-%{tags_d73e23fe81cdb86f93ccdf697994b5e9|:doc:`Phalcon\\Mvc\\Model <models>`}%
+%{tags_abfc004a0ef802ba25505abf41857949|:doc:`Phalcon\\Mvc\\Model <models>`}%
 
 .. code-block:: php
 
@@ -387,7 +387,7 @@
 
 %{tags_6ac76522c00c412a4fbb903ea19d6032}%
 ^^^^^^^^^^^^^^^^
-%{tags_d4b048be3cd14b64d7143cbdffa43c33|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_a4c4d2b129dc240a15408fa1a7606e48|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 %{tags_30b618a7301fb8d8b32e47c2a8be084f}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -395,7 +395,7 @@
 
 %{tags_f8c9fc84fa74d911f322224af7074c29}%
 ---------------------------------------
-%{tags_bb789a223617ee312ef517b941700587|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_910b594f8c82327d21d73614dd2c72c6|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
@@ -444,7 +444,7 @@
 
 %{tags_11fa3ca18323c73cebd6841cd4dcaafe}%
 ----------------------
-%{tags_354a660207c84ba1b5170d16150f99e5|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_8b872a9b81bce0e4f64179a652555204|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 %{tags_d7e6e0ce3a4102593931f158735cde7a}%
 ^^^^^^
@@ -556,7 +556,7 @@
 
 %{tags_5240a19e8081f79e65b6199ffe9897b9}%
 -----------
-%{tags_6d85591ac9da2e7ca2f41b928399880f|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_a8481a14be068e60748f0e6ead523064|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
@@ -600,7 +600,7 @@
 
 %{tags_0df7dba379145f570f6ddc01d9fe58f4}%
 -------------------------
-%{tags_a7572e13c8b7ec0d5d2c61209a06af49|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
+%{tags_c7e9e5f23cbef8182b99090172b248c9|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 

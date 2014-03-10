@@ -118,7 +118,7 @@
 
 %{annotations_b1925be3e508ddb8090cc414e067aa72}%
 
-%{annotations_cb325bf4c32e335213901310caedd699|:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>`}%
+%{annotations_9ed946ff0c5927c807433adb7b0e9ee5|:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>`}%
 
 %{annotations_f83a38934b334d779a6d91747f24f234}%
 --------------------
@@ -293,7 +293,7 @@
 
 %{annotations_501e20ab8ddd3a4cd24d4deac6beeb64}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{annotations_5f45577032a33a7943892460c427d052|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
+%{annotations_7e9e9df1430b63f01627c6ba13a1cfb3|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
 
 %{annotations_d53799f5a2fb02e1152ac8e975d07526}%
 --------------------
@@ -314,5 +314,5 @@
 
 %{annotations_206bd6266ccc781d8844f3db2de5d557}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{annotations_85e6568cc053ee94b9ddff6520fd0380|:doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>`}%
+%{annotations_4a796a3923bf7a5469b0cf40f2ec3e01|:doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>`}%
 

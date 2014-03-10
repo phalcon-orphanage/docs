@@ -151,5 +151,5 @@
 
 %{pagination_206bd6266ccc781d8844f3db2de5d557}%
 ------------------------------
-%{pagination_dfa3370ad9d0b28d5450f90541639ca0|:doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>`}%
+%{pagination_58dd2b6eef040fd62a0a551a1baa3039|:doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>`}%
 

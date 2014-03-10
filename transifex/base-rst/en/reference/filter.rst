@@ -9,7 +9,7 @@
 
 
 
-%{filter_6837f21832b11cda7f4a03391d89aaba|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
+%{filter_48352cae72aba688a0bff1c16ef6f2d9|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
 
 %{filter_2876899f6219389c80f3cc9e78e9e97b}%
 ---------------
@@ -37,7 +37,7 @@
 
 %{filter_e026d5e41103bb84d12f065f4aa23934}%
 ---------------------------
-%{filter_57180dfa247e22081ea9f066a8b9bb3d|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
+%{filter_dc5420fbbc9b9c4f41a8a90335d54f47|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
 
 .. code-block:: php
 
@@ -91,7 +91,7 @@
 
 %{filter_4ebfda3361a1fabe7be70fedcf157699}%
 --------------
-%{filter_d1671701035180e8ab9679e7d65dbc56|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
+%{filter_4b94af7039a1ab25a7b967ac26588f92|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
 
 .. code-block:: php
 
@@ -136,7 +136,7 @@
 
 %{filter_c39f0d2625dc1cb85a72aa84a008fb93}%
 -------------------------
-%{filter_106bea811ba89491db1ebdec526e2428|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
+%{filter_1e4204abe542cfdcabd014c47678555b|:doc:`Phalcon\\Filter <../api/Phalcon_Filter>`}%
 
 .. code-block:: php
 
@@ -180,9 +180,9 @@
 
 %{filter_029798e03ad6c063f6300b5224a5776a}%
 --------------------------------
-%{filter_92af023a562840d61b77fc4ed1e03a25|`Data Filtering at PHP Documentation`_}%
+%{filter_e930612d5387062f0589cb3ea5865cb7|`Data Filtering at PHP Documentation`_}%
 
 %{filter_03a91ce6525a43a0db6b9e5e4cd2a8a0}%
 ----------------------------
-%{filter_a83a0bfd8ffc21007bfc83a4331b2a9a|:doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>`}%
+%{filter_8422e15128d4c2bc11fec87586a93b2a|:doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>`}%
 

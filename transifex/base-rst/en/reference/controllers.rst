@@ -17,7 +17,7 @@
 +------------------------+----------------+
 
 
-%{controllers_63600962965cd1ed7ee542a283aa4144|:doc:`autoloaders <loader>`}%
+%{controllers_e367e952dc3cb43e7fc9fe886a1ddb50|:doc:`autoloaders <loader>`}%
 
 %{controllers_5459cfd2ccc38bd6690cb33742588851}%
 
@@ -41,7 +41,7 @@
     }
 
 
-%{controllers_42ed09718f9dcff11b3c2925a7298874|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
+%{controllers_b22bf738f3e4113b72498abf8df6a355|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 %{controllers_02d3b405399bc826fc484d3addd149f3}%
 
@@ -141,11 +141,11 @@
     }
 
 
-%{controllers_d6a278bf424cc9afbc2fd9185246e4ab|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
+%{controllers_3691a17f2697dcb44b08c104f391dda6|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{controllers_fccdec87b5a034198b1461f90176d44d}%
 ------------------------
-%{controllers_8e9b20911525c0d1b19ee9685e4e6430|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
+%{controllers_d34f232d22a05969120164f8a0929b27|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 .. code-block:: php
 
@@ -202,7 +202,7 @@
 
 %{controllers_411652177b013fea3c5a63ab616d098f}%
 ------------------
-%{controllers_cb43e9d71de4e322a67fbae721f2654e|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
+%{controllers_c79117ca927b44a5930b2df6b750ddeb|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 .. code-block:: php
 
@@ -246,11 +246,11 @@
     }
 
 
-%{controllers_b76d213cfbcdffef43fe038137a3182e|:doc:`by default <di>`}%
+%{controllers_aac2efc260d88f42bec7fa4d3c0cf2d0|:doc:`by default <di>`}%
 
 %{controllers_feb531e6a51594e44fe697f022410250}%
 --------------------
-%{controllers_8cec6719bfcce4ba6788abd8f00464a7|:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>`|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
+%{controllers_78b818902e26bdd57e13cdd9f1c27419|:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>`|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -300,11 +300,11 @@
     }
 
 
-%{controllers_e60ca1c6e7e8d4e68c3e9ffcb9ba718a|:doc:`request <request>`|:doc:`response <response>`}%
+%{controllers_1723e79963b9d5cbfdb220ead5c2ff5f|:doc:`request <request>`|:doc:`response <response>`}%
 
 %{controllers_0e5d8f24b3a76c0a332a39078578993b}%
 ------------
-%{controllers_f60fa26d6868d9d88effcea8abb894fe|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
+%{controllers_9af1ea6757c3ffe81059d7807e7aff96|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -349,7 +349,7 @@
 
 %{controllers_95181cdd38a7d3718cd1ea894b8ea8ba}%
 --------------------------
-%{controllers_0eef3ad64616730ed57a1f078b656e20|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
+%{controllers_51fedd99fe59a5bf8cac3855adce33cc|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 %{controllers_277976e04abafe373f2f0cd83bc81a1f}%
 
@@ -394,5 +394,5 @@
 
 %{controllers_281b6889c8920b0f05e770706f719a10}%
 ---------------------
-%{controllers_883cf6646288ddba21a14035e05a236a|:doc:`dispatcher <dispatching>`}%
+%{controllers_37e837df535716a756662358b9e8f390|:doc:`dispatcher <dispatching>`}%
 

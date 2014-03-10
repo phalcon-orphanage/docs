@@ -6,7 +6,7 @@
 
 
 
-%{debug_9036570d0a52e2a62d934cb7d9ce6b84|`Exception class`_}%
+%{debug_c6e61d0ed51257a83ac8eaeb5f14ebff|`Exception class`_}%
 
 %{debug_210c8aebc2022b155df5c183bb5cb17f}%
 
@@ -27,9 +27,9 @@
     }
 
 
-%{debug_eac48913bd81cd499b1a3d73d9062393|`Exception class`_}%
+%{debug_22849b339431bce03f0835fc32fb96f2|`Exception class`_}%
 
-%{debug_bd065365a4661deaa03c3731cad47d8c|`Exception class`_}%
+%{debug_ff7c8cba77174e8b62a1422d036000c9|`Exception class`_}%
 
 .. code-block:: php
 
@@ -59,7 +59,7 @@
     }
 
 
-%{debug_6d3633c99d16ca01ec9dce8dc98f1798|`Exception class`_}%
+%{debug_34812fc23abd0aa6627bef42421964f1|`Exception class`_}%
 
 .. code-block:: php
 
@@ -105,7 +105,7 @@
     #15 {main}
 
 
-%{debug_02cd0382db0c91dd063649fe092534fd|`Exception::getTrace`_}%
+%{debug_072141f2639a9394589c5183686392f0|`Exception::getTrace`_}%
 
 %{debug_6815edaaedecedc259ccc2bf3bc9a8ab}%
 ---------------
@@ -135,7 +135,7 @@
 
 %{debug_3876e10bb15f5eb320587acd70db3601}%
 -----------------------------
-%{debug_c380bea5aa12eeccb6aa5537acb2f685|`Reflection API`_}%
+%{debug_0a2715f107ac2b7b5c8c256d6a7384af|`Reflection API`_}%
 
 .. code-block:: php
 
@@ -276,5 +276,5 @@
             /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
 
 
-%{debug_a7fa2ff4c7646e26ff2cc4f0f52cfff2|`XDebug documentation`_}%
+%{debug_f2d045974b2e64a0c299b91b3448ffda|`XDebug documentation`_}%
 
