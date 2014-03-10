@@ -92,7 +92,7 @@
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 
 
-%{routing_7eb946b0fa36e208b3b987f9503af17e}%
+%{routing_7eb946b0fa36e208b3b987f9503af17e|some_}%
 
 %{routing_463cf83ff1da5fa1aead4c5adc6d8870|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
@@ -809,7 +809,7 @@
 
 %{routing_d95c9cb668c864c98ce0f13b7cfbb094}%
 -----------
-%{routing_fe0a2ee2c90f9752b2a978bfd4b55d83}%
+%{routing_fe0a2ee2c90f9752b2a978bfd4b55d83|REQUEST_}%
 
 .. code-block:: php
 

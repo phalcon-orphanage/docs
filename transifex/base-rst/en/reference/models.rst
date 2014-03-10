@@ -51,7 +51,7 @@
     }
 
 
-%{models_8f3415d39ec51500d37f9ea2ea3dd208}%
+%{models_8f3415d39ec51500d37f9ea2ea3dd208|the_}%
 
 .. code-block:: php
 
@@ -511,7 +511,7 @@
 
 %{models_b84a0dd9d5714b34df69484d2d568a9f}%
 
-%{models_1cb6fccdb0e82654bd3c3c0a38be3797}%
+%{models_1cb6fccdb0e82654bd3c3c0a38be3797|PDO_}%
 
 %{models_97a0dfe468ae9ccab829d71b5218b74d}%
 
@@ -877,7 +877,7 @@
 ^^^^^^^^^^^^^^^^^^^^^^
 %{models_10f4a34f73f5d711081cd02fbea0d570}%
 
-%{models_c1c8d588fd78b55da43042ea6e0e8c53}%
+%{models_c1c8d588fd78b55da43042ea6e0e8c53|robots_}%
 
 .. code-block:: bash
 
@@ -892,7 +892,7 @@
     3 rows in set (0.00 sec)
 
 
-%{models_f18297cdcc691c5743187e61076b9dce}%
+%{models_f18297cdcc691c5743187e61076b9dce|robots_|similar_|robots_}%
 
 .. figure:: ../_static/img/eer-2.png
    :align: center
@@ -1383,9 +1383,9 @@
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
 
-%{models_d55994b62e51e018089e422de3aea43e}%
+%{models_d55994b62e51e018089e422de3aea43e|auto_}%
 
-%{models_34e756014c1e42ff9eec737ec2e292e9}%
+%{models_34e756014c1e42ff9eec737ec2e292e9|table_|field_|robots_|id_}%
 
 .. code-block:: php
 
@@ -2164,7 +2164,7 @@
     }
 
 
-%{models_4a76abb3c06b31460f75d83a5e479f77}%
+%{models_4a76abb3c06b31460f75d83a5e479f77|date_}%
 
 .. code-block:: php
 
@@ -2186,7 +2186,7 @@
     }
 
 
-%{models_46ad3d1c14e7ffc25f0de5834a23d3fc}%
+%{models_46ad3d1c14e7ffc25f0de5834a23d3fc|time_}%
 
 %{models_af281cbd0128f9b889a08e8e6a23414d}%
 ^^^^^^^^^^
@@ -2357,7 +2357,7 @@
 
 %{models_86902028f578be3733203f273cf005f9}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_15225e9a2356f6a977351d29714d8c55}%
+%{models_15225e9a2356f6a977351d29714d8c55|Traits_}%
 
 .. code-block:: php
 

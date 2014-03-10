@@ -58,7 +58,7 @@
 
 %{config_7708d5b9f14191306a80322e64ab347c}%
 -----------------
-%{config_2dc5fd108360f45b49fcc5bf77d89296}%
+%{config_2dc5fd108360f45b49fcc5bf77d89296|parse_|ini_}%
 
 .. code-block:: ini
 

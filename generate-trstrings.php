@@ -140,6 +140,14 @@ class Docs
 						}
 					}
 
+					if (preg_match_all('#[a-zA-Z0-9]+_#', $section1, $matches, PREG_SET_ORDER)) {
+						foreach ($matches as $position => $match) {
+							$placeholders[$position] = $match[0];
+							$section1 = str_replace($match[0], ':' . ($number) . ':', $section1);
+							$number++;
+						}
+					}
+
 					$hash1 = md5(mb_strtolower($originalSection1));
 					$uniqueStrings[] = array('type' => 'text-section', 'consecutive' => $hash1, 'value' => $section1, 'placeholders' => $placeholders);
 

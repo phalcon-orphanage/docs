@@ -204,7 +204,7 @@
 
 %{debug_73ed294323e5fd47b34d920d3ad4e48d}%
 ------------
-%{debug_6f164c8227eee5c2e705532bdeea1ab4}%
+%{debug_6f164c8227eee5c2e705532bdeea1ab4|XDebug_}%
 
 %{debug_3178da61cc3ae187bf088906d7a25306}%
 
@@ -224,7 +224,7 @@
 
 
 
-%{debug_0a9948cd276e0d53c835519557be16f9}%
+%{debug_0a9948cd276e0d53c835519557be16f9|xdebug_|print_|function_|stack_}%
 
 .. code-block:: php
 

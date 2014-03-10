@@ -1,6 +1,6 @@
 %{xampp_eda682d3225054770e1557c5c7db9bfd}%
 =====================
-%{xampp_b70a128300864dd3dae3f396b5ace740}%
+%{xampp_b70a128300864dd3dae3f396b5ace740|XAMPP_}%
 
 %{xampp_6781878c32a5dee1aeaf59c8ed79e10a}%
 -------------------------------------
@@ -20,14 +20,14 @@
 
 
 
-%{xampp_4581535224ce2f47e52b99a3e0fff57d}%
+%{xampp_4581535224ce2f47e52b99a3e0fff57d|php_}%
 
 .. figure:: ../_static/img/xampp-3.png
     :align: center
 
 
 
-%{xampp_dbb3c2a4d22456151e5a9c3f1bcd19e1}%
+%{xampp_dbb3c2a4d22456151e5a9c3f1bcd19e1|php_}%
 
 .. figure:: ../_static/img/xampp-4.png
     :align: center

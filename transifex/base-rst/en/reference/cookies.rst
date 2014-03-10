@@ -1,6 +1,6 @@
 %{cookies_2bc6eb5dcb5fc829123a7ef49f094b59}%
 ==================
-%{cookies_37ba613bc19059e2b198dd55b1d80cdc|:doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`}%
+%{cookies_37ba613bc19059e2b198dd55b1d80cdc|Cookies_}%
 
 %{cookies_b0320f4a950d93f7f09a91c29ce5132b}%
 -----------

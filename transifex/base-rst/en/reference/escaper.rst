@@ -1,10 +1,10 @@
 %{escaper_de8049e2b4f8854b235a1e7a22dfbaa2}%
 ===================
-%{escaper_4ac20f61e26bc5c1fb7aee9b14e2a6ca|:doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>`}%
+%{escaper_4ac20f61e26bc5c1fb7aee9b14e2a6ca|XSS_}%
 
-%{escaper_719863172fd23c83a6bbcb76c7e8894d|`XSS (Cross Site Scripting) Prevention Cheat Sheet`_}%
+%{escaper_719863172fd23c83a6bbcb76c7e8894d|OWASP_}%
 
-%{escaper_08393e32d6104e8736ab5e0d3ee9aaea}%
+%{escaper_08393e32d6104e8736ab5e0d3ee9aaea|mbstring_}%
 
 %{escaper_728347a820344a7ff74bc9b0ae25e678}%
 

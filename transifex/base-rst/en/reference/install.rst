@@ -14,7 +14,7 @@
 -------
 %{install_ff1363bcd28f96670272daf6d775d72f}%
 
-%{install_44f00144e8778ea8ed7917345caa3bd3}%
+%{install_44f00144e8778ea8ed7917345caa3bd3|php_}%
 
 %{install_6a49732434aa0c102cc05c6a55e1879f}%
 

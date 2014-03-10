@@ -4,7 +4,7 @@
 
 %{queue_505fd6da56ac07ad21003663bf14dc05}%
 
-%{queue_b344a7c6d42394ffa5dcbd6360c9fe46}%
+%{queue_b344a7c6d42394ffa5dcbd6360c9fe46|RabbitMQ_|Beanstalk_|Memcache_}%
 
 %{queue_d861a4bdd04064beee0ad4280b891a07}%
 ---------------------------

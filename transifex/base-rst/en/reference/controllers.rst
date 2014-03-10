@@ -349,7 +349,7 @@
 
 %{controllers_95181cdd38a7d3718cd1ea894b8ea8ba}%
 --------------------------
-%{controllers_51fedd99fe59a5bf8cac3855adce33cc|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
+%{controllers_51fedd99fe59a5bf8cac3855adce33cc|DRY_}%
 
 %{controllers_277976e04abafe373f2f0cd83bc81a1f}%
 

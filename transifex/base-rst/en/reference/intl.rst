@@ -1,10 +1,10 @@
 %{intl_85d2bc52cf53e27ca20645a9431c6930}%
 ====================
-%{intl_92aaa680cf30691651a1f728f7bbd0b1|`PHP manual`_}%
+%{intl_92aaa680cf30691651a1f728f7bbd0b1|PECL_|intl_}%
 
 %{intl_7225af6a7690ce43b3f118bf9235a8fa}%
 
-%{intl_16faf9a6a387d16c7e9f1b7114966512}%
+%{intl_16faf9a6a387d16c7e9f1b7114966512|intl_}%
 
 .. highlights::
    This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
@@ -13,7 +13,7 @@
 
 %{intl_41d225fcbd85a9a62195821945d72707}%
 ------------------------------
-%{intl_f05a8fa309000dd32507bbfee2a385f3}%
+%{intl_f05a8fa309000dd32507bbfee2a385f3|intl_}%
 
 .. code-block:: php
 
@@ -33,7 +33,7 @@
 
 %{intl_5fcd413e9e2e372297f489fe24dbdce6}%
 -----------------------------------
-%{intl_2a2dc5fcf450c50a14b465a81d95b046}%
+%{intl_2a2dc5fcf450c50a14b465a81d95b046|MessageFormatter_}%
 
 %{intl_178d127c9218637e406a7ca6e727d84d}%
 
@@ -77,7 +77,7 @@
 
 %{intl_e68e6468f5553c619b4754175b53776d}%
 ---------------------------
-%{intl_1b21ef2fc5095722b554a3e0ffa70435}%
+%{intl_1b21ef2fc5095722b554a3e0ffa70435|Collator_}%
 
 .. code-block:: php
 
@@ -97,5 +97,5 @@
 
 %{intl_86b69a9604c947e11ebd5d3a7ea33966}%
 ---------------
-%{intl_7b5214c4dcab9dad7ea131785b8b50f9}%
+%{intl_7b5214c4dcab9dad7ea131785b8b50f9|Transliterator_}%
 

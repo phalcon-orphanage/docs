@@ -31,7 +31,7 @@
 %{hello-world_b41eb33ab6ec77b77338ec73c1482297}%
 -------
 
-%{hello-world_554f6acc0768e3c37be3076951b18cb2}%
+%{hello-world_554f6acc0768e3c37be3076951b18cb2|YII_}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php

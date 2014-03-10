@@ -54,7 +54,7 @@
 
 %{translate_8a5da1e9769e7aef5ff07e8ee18d8f46}%
 
-%{translate_b0a1958fe3562413949683b75c11bb9b}%
+%{translate_b0a1958fe3562413949683b75c11bb9b|HTTP_|ACCEPT_}%
 
 .. code-block:: php
 
