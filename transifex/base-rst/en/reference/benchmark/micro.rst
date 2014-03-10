@@ -13,13 +13,13 @@
 
 * {%micro_d61175ed4b917a6f274be68218549f9c%}
 * {%micro_d9d846f543aa53ba12115d9d4138e5da%}
-* Memory Usage per request (measured using function memory_get_usage_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* {%micro_12c06e7bb9c136c9591eba00a6d20df5%}
+* {%micro_930912b857a16683e9923928631734f2%}
 
 %{micro_cfd6d0dbc2b5533200c7d0c3369a32d8}%
 ----------------------
-* Slim_
-* Silex_
+* {%micro_75282adcbb5eed57dae45f0de32fd44a%}
+* {%micro_b683bb88c3d4b8c8228223644b03756c%}
 
 %{micro_b41eb33ab6ec77b77338ec73c1482297}%
 -------

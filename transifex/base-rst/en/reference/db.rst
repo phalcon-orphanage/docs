@@ -12,7 +12,7 @@
 
 %{db_16b634f6806e7bef1eb15a9c2d7e5fef}%
 -----------------
-%{db_7152b235e4d2ec36da8551669390c6f5|PDO_}%
+%{db_7152b235e4d2ec36da8551669390c6f5|PDO_ }%
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
@@ -705,13 +705,13 @@
 
 %{db_dc7a84782c94708e2445f7047dac825c}%
 
-* Phalcon\\Db\\Column::TYPE_TEXT
-* Phalcon\\Db\\Column::TYPE_DATE
-* Phalcon\\Db\\Column::TYPE_VARCHAR
-* Phalcon\\Db\\Column::TYPE_DECIMAL
-* Phalcon\\Db\\Column::TYPE_DATETIME
-* Phalcon\\Db\\Column::TYPE_CHAR
-* Phalcon\\Db\\Column::TYPE_TEXT
+* {%db_fe7ebd9868a24f4d94e7571d6ad9777d%}
+* {%db_75f9a80d8632ac4324c0448868cf0a2f%}
+* {%db_b3d1b996d6ec9ea4505f6d33bc37c0f1%}
+* {%db_71e6628e8bd0f49a16f167ff06a44092%}
+* {%db_8779dd20292f14882b4da2bd3cb06e73%}
+* {%db_e1c672080a2ed8b106cae6b062a5ac78%}
+* {%db_66689482f9de2295ca0d59d4361a86f5%}
 
 %{db_6a6f6804cf8c152946cdee5720e2d35f}%
 

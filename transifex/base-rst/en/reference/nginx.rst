@@ -1,8 +1,8 @@
 %{nginx_6bb6d356501587cdcc495f1a8fa2073f}%
 ========================
-%{nginx_703537526a0c2eb0802d1c8091f2648b|Nginx_|Nginx_}%
+%{nginx_703537526a0c2eb0802d1c8091f2648b|Nginx_ |Nginx_ }%
 
-%{nginx_3a6a1339cfce179e86b462fdf346efd0|Nginx_|Nginx_|`PHP-FPM`_}%
+%{nginx_3a6a1339cfce179e86b462fdf346efd0|Nginx_ |Nginx_ |`PHP-FPM`_}%
 
 %{nginx_78202a14fc06eb13905c98df74daefea}%
 -----------------------------
@@ -51,7 +51,7 @@
     }
 
 
-%{nginx_a93f8ef6b3921aa42339f436605c377d|REQUEST_}%
+%{nginx_a93f8ef6b3921aa42339f436605c377d}%
 
 .. code-block:: nginx
 

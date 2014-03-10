@@ -1,6 +1,6 @@
 %{tutorial-rest_84d6814c39aad10b26d97af056279a18}%
 ======================================
-%{tutorial-rest_26bb72e995bd5df1986ace55a4facb04|RESTful_}%
+%{tutorial-rest_26bb72e995bd5df1986ace55a4facb04|RESTful_ }%
 
 * {%tutorial-rest_0cc1ad4752268f38af4100ec4035489e%}
 * {%tutorial-rest_32bd0860278777ce2a7da547d6560eb7%}
@@ -415,7 +415,7 @@
 
 %{tutorial-rest_51eee60ebdb66fb5770c4b406440fa69}%
 -----------------------
-%{tutorial-rest_a444b76b57459a80926fdb40855d43a2|curl_}%
+%{tutorial-rest_a444b76b57459a80926fdb40855d43a2|curl_ }%
 
 %{tutorial-rest_3d2d6a49b68a620826b98699fcf385c7}%
 

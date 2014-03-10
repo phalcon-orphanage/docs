@@ -275,7 +275,7 @@
     }
 
 
-%{odm_e27841ee99e14fc6519e0db9d17c2333|MongoId_}%
+%{odm_e27841ee99e14fc6519e0db9d17c2333|MongoId_ }%
 
 .. code-block:: php
 
@@ -666,7 +666,7 @@
 
 %{odm_8198f64c5bcb74146e7192fa3f9a5a40}%
 ----------------------------------
-%{odm_bc3fa5701dfa4336c5777693f4cfb7c6|MongoIds_}%
+%{odm_bc3fa5701dfa4336c5777693f4cfb7c6}%
 
 .. code-block:: php
 

@@ -8,7 +8,7 @@
 
 %{wintools_d779ffb4113a9aa6902414524b888ae6}%
 --------
-%{wintools_c52ad3c8bfdd468181a9d135893b6e99|Download_|Github_}%
+%{wintools_c52ad3c8bfdd468181a9d135893b6e99|Download_ }%
 
 %{wintools_aed7061f88087f5534673e4af65a7e82}%
 

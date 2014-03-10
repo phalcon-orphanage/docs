@@ -15,23 +15,23 @@
 
 * {%hello-world_d61175ed4b917a6f274be68218549f9c%}
 * {%hello-world_d9d846f543aa53ba12115d9d4138e5da%}
-* Memory Usage per request (measured using function memory_get_usage_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* {%hello-world_12c06e7bb9c136c9591eba00a6d20df5%}
+* {%hello-world_930912b857a16683e9923928631734f2%}
 
 %{hello-world_cfd6d0dbc2b5533200c7d0c3369a32d8}%
 -----------------------
-* FuelPHP_ 
+* `Zend Framework`_ 
 * Symfony_ 
 * `Zend Framework`_ 
-* Kohana_
+* {%hello-world_974854eecb92ef6958153031d2980ebf%}
 * FuelPHP_ 
-* Laravel_
-* CodeIgniter_
+* {%hello-world_4af0e1cd0bb6a37e3b7e6438a72e29fe%}
+* {%hello-world_1814cb15a7189e6fa2eec7874ecb2a15%}
 
 %{hello-world_b41eb33ab6ec77b77338ec73c1482297}%
 -------
 
-%{hello-world_554f6acc0768e3c37be3076951b18cb2|YII_}%
+%{hello-world_554f6acc0768e3c37be3076951b18cb2}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php

@@ -10,7 +10,7 @@
 
 %{tools_d779ffb4113a9aa6902414524b888ae6}%
 --------
-%{tools_e0d8720ef3987ed002683da3d43b08b9|Github_}%
+%{tools_e0d8720ef3987ed002683da3d43b08b9}%
 
 %{tools_c0277e63a218ee84b1414b2c467dfbe2}%
 ^^^^^^^^^^^^
@@ -49,7 +49,7 @@
 
 %{tools_6a9c831bc5c1ae5b32aabbc1fe4a3788}%
 -----------------------------
-%{tools_6ae7fb5b78692a0f18c712f21f66682c|mod_}%
+%{tools_6ae7fb5b78692a0f18c712f21f66682c}%
 
 .. code-block:: sh
 

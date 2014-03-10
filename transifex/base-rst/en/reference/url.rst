@@ -100,7 +100,7 @@
     echo $url->get("products/save");
 
 
-%{url_3e1ff6aff3ea47fe0dfb9bcf8c571a40|REQUEST_}%
+%{url_3e1ff6aff3ea47fe0dfb9bcf8c571a40}%
 
 .. code-block:: php
 

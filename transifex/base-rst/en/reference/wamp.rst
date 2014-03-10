@@ -1,6 +1,6 @@
 %{wamp_1208e8179d40b713ec2bce3fb6d73c1b}%
 ====================
-%{wamp_8d8b360f75ee6ffa84653d9c0858587e|WampServer_}%
+%{wamp_8d8b360f75ee6ffa84653d9c0858587e|WampServer_ }%
 
 %{wamp_6781878c32a5dee1aeaf59c8ed79e10a}%
 -------------------------------------
@@ -20,21 +20,21 @@
 
 
 
-%{wamp_f6bc8e11127ce83e9da503a2b5bf6e3d|php_}%
+%{wamp_f6bc8e11127ce83e9da503a2b5bf6e3d}%
 
 .. figure:: ../_static/img/wamp-1.png
     :align: center
 
 
 
-%{wamp_8038675e9b335188a1fe820b481f18a7|php_}%
+%{wamp_8038675e9b335188a1fe820b481f18a7}%
 
 .. figure:: ../_static/img/wamp-2.png
     :align: center
 
 
 
-%{wamp_dd2c47e0478b68866f2853f3ac6016b9|php_}%
+%{wamp_dd2c47e0478b68866f2853f3ac6016b9}%
 
 %{wamp_2f0f9fc803d746e5a951d5e53eca5630}%
 

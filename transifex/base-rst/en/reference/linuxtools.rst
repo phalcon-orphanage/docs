@@ -8,7 +8,7 @@
 
 %{linuxtools_d779ffb4113a9aa6902414524b888ae6}%
 --------
-%{linuxtools_c52ad3c8bfdd468181a9d135893b6e99|Download_|Github_}%
+%{linuxtools_c52ad3c8bfdd468181a9d135893b6e99|Download_ }%
 
 %{linuxtools_ff61f633242e4eefebcf5c44b9321c61}%
 

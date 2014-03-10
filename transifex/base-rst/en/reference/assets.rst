@@ -248,7 +248,7 @@
 
 %{assets_d1b2812923f7a6a1b2e2d1c556d842ce}%
 ^^^^^^^^^^^^^^
-%{assets_29d376fce56b9b142527b0a8f433e827|YUI_|Sass_|Closure_}%
+%{assets_29d376fce56b9b142527b0a8f433e827}%
 
 .. code-block:: php
 

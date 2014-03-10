@@ -1,6 +1,6 @@
 %{tutorial-invo_7f678843ac2d35108253ef04bcf88ddb}%
 ===========================
-%{tutorial-invo_28c87f3f9c6f429bc7d90c5c7ede0254|Github_}%
+%{tutorial-invo_28c87f3f9c6f429bc7d90c5c7ede0254}%
 
 %{tutorial-invo_ed36a879763a72ad2eee0265880afedc|`Bootstrap`_}%
 
@@ -254,7 +254,7 @@
     }
 
 
-%{tutorial-invo_e1691ff99f6bd12634fef3d7fda85e98|sha1_}%
+%{tutorial-invo_e1691ff99f6bd12634fef3d7fda85e98|:doc:`bcrypt <security>`}%
 
 %{tutorial-invo_6dacbb6b00b1e8395f607c3934435e81}%
 
@@ -562,7 +562,7 @@
 
 %{tutorial-invo_d6159fee9dcdb02f83a84e5963335e0c}%
 ---------------------
-%{tutorial-invo_9ee5803894783396314a436a4cb0106a|CRUD_}%
+%{tutorial-invo_9ee5803894783396314a436a4cb0106a|CRUD_ }%
 
 .. code-block:: bash
 
@@ -651,7 +651,7 @@
 
 %{tutorial-invo_004196ab227c39c85765e52a45bbe66e}%
 ^^^^^^^^^^^^^^^
-%{tutorial-invo_5227de8e3efb5114e3fc9a1d26df81bd|products_}%
+%{tutorial-invo_5227de8e3efb5114e3fc9a1d26df81bd}%
 
 .. code-block:: php
 

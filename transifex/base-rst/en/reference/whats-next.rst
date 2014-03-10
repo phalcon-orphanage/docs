@@ -8,14 +8,14 @@
 
 %{whats-next_5116de9f40ec1c3dd8aafed76c961ba3}%
 ^^^^^^^^^^^^^^^^^^^^^
-%{whats-next_a4925be86d5b8f4d2809c47a6564e026|Xdebug_}%
+%{whats-next_a4925be86d5b8f4d2809c47a6564e026|Xdebug_ }%
 
 .. code-block:: ini
 
     xdebug.profiler_enable = On
 
 
-%{whats-next_b38d10ababd4d8fc1f2ab1d270538b5b|Webgrind_}%
+%{whats-next_b38d10ababd4d8fc1f2ab1d270538b5b|Webgrind_ }%
 
 .. figure:: ../_static/img/webgrind.jpg
     :align: center
@@ -24,7 +24,7 @@
 
 %{whats-next_244719d3a37013227a2f4f2e69954e66}%
 ^^^^^^^^^^^^^^^^^^^^^
-%{whats-next_988fb6562d947f8da0ae75c1501d0da5|Xhprof_}%
+%{whats-next_988fb6562d947f8da0ae75c1501d0da5|Xhprof_ }%
 
 .. code-block:: php
 
@@ -84,7 +84,7 @@
 
 
 
-%{whats-next_7d06b0c1d56eb8a4de4749e396711d85|Firebug_}%
+%{whats-next_7d06b0c1d56eb8a4de4749e396711d85|Firebug_ }%
 
 .. figure:: ../_static/img/firefox-1.jpg
     :align: center
@@ -93,7 +93,7 @@
 
 %{whats-next_2bff9cea84721eb4139848329ad036c8}%
 ------------
-%{whats-next_2ea565e1bb92397ce43e91584ab8d34f|YSlow_}%
+%{whats-next_2ea565e1bb92397ce43e91584ab8d34f|YSlow_ }%
 
 .. figure:: ../_static/img/yslow-1.jpg
     :align: center
@@ -117,7 +117,7 @@
 
 %{whats-next_d06ae3ababdb7f62581c61f473410f6b}%
 ------------------------
-%{whats-next_be4aca0e28427136d4df0db25c8b4068|APC_}%
+%{whats-next_be4aca0e28427136d4df0db25c8b4068|APC_ }%
 
 .. code-block:: ini
 
@@ -139,5 +139,5 @@
 
 %{whats-next_31bc881424156d5e7144482cfb01c98f}%
 -----------------
-%{whats-next_c5b991040c0cf0ab6cc0b5a08a9523a6|mod_|pagespeed_|ngx_}%
+%{whats-next_c5b991040c0cf0ab6cc0b5a08a9523a6|pagespeed_ }%
 

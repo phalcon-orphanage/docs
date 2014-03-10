@@ -1,6 +1,6 @@
 %{crypt_f360a3a20fa1a3c3b28ba77a0a8d84be}%
 =====================
-%{crypt_61a86bea91a553c0ef46ff2d3ce32f88|mcrypt_}%
+%{crypt_61a86bea91a553c0ef46ff2d3ce32f88|mcrypt_ }%
 
 %{crypt_957df3c33bcabdc3862c027235e7ad7b}%
 
@@ -80,7 +80,7 @@
 
 %{crypt_347c782d992d779c9a8704504648d478}%
 --------------
-%{crypt_8e9cfbbc7197e914936752480dcdb981|base64_}%
+%{crypt_8e9cfbbc7197e914936752480dcdb981|base64_ }%
 
 .. code-block:: php
 

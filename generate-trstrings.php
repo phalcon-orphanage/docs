@@ -95,7 +95,7 @@ class Docs
 								}
 							}
 
-							if (preg_match_all('#[a-zA-Z0-9]+_#', $line, $matches, PREG_SET_ORDER)) {
+							if (preg_match_all('#[a-zA-Z0-9]+_ #', $line, $matches, PREG_SET_ORDER)) {
 								foreach ($matches as $position => $match) {
 									$placeholders[$position] = $match[0];
 									$listMatches[1] = str_replace($match[0], ':' . ($number) . ':', $listMatches[1]);
@@ -140,7 +140,7 @@ class Docs
 						}
 					}
 
-					if (preg_match_all('#[a-zA-Z0-9]+_#', $section1, $matches, PREG_SET_ORDER)) {
+					if (preg_match_all('#[a-zA-Z0-9]+_ #', $section1, $matches, PREG_SET_ORDER)) {
 						foreach ($matches as $position => $match) {
 							$placeholders[$position] = $match[0];
 							$section1 = str_replace($match[0], ':' . ($number) . ':', $section1);
