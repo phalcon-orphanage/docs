@@ -516,8 +516,8 @@
 -------------------
 %{tutorial_e69c20c6aafef23fa8314a4414be15b7}%
 
-* {%tutorial_13c48a3520e73500c89eb4aaabd09a3f%}
-* {%tutorial_1261ccd6ea25d52a8f6c637a0e3d2549%}
-* {%tutorial_cf514cdca0a5aff7b5b75a2a6d507303%}
-* {%tutorial_44bb83952b52b0f98f6a6fdfbf534a90%}
+* :1:: A simple and clean forum
+* `PHP Alternative website`_: Multilingual and advanced routing application
+* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
+* `Phosphorum`_: A simple and clean forum
 

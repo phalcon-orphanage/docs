@@ -1502,9 +1502,9 @@
 
 %{volt_b0492394b589b5ff8f6fb98048d65d8f}%
 ------------------
-* {%volt_42b43a358b2b7d3e0c8379327af7bb7c%}
-* {%volt_51aa6d2259d6af75328c9051e4d37608%}
-* {%volt_e7e5436b3e973d873a31ba8618e429bf%}
-* {%volt_5b0ab295f52ad1738b49531edbafbedd%}
-* {%volt_652581b4ec1cedc35cf25dbc333c67ca%}
+* A bundle for Sublime/Textmate is available :1:
+* :1:, is another sample application that use Volt, [:2:]
+* `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]
+* `Phosphorum <http://forum.phalconphp.com>`_, the Phalcon's forum, also uses Volt, [`Github <https://github.com/phalcon/forum>`_]
+* `Vökuró <http://vokuro.phalconphp.com>`_, is another sample application that use Volt, [`Github <https://github.com/phalcon/vokuro>`_]
 

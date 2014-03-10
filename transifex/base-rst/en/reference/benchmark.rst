@@ -63,8 +63,8 @@
 
 %{benchmark_b0492394b589b5ff8f6fb98048d65d8f}%
 ------------------
-* {%benchmark_553506aa37267500e1aeccd478ce5a7d%}
-* {%benchmark_bcaf2622848bc0d64141eaad862c0cce%}
-* {%benchmark_e52094936d0d00e95bd2b10d592e43f4%}
-* {%benchmark_ab70ed8c3b50d7c917ff949def05c0b7%}
+* `Speed, performance and human perception:1:
+* `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`_
+* `How fast are we going now? <http://www.stevesouders.com/blog/2013/05/09/how-fast-are-we-going-now/>`_
+* `Speed, performance and human perception` <http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#SPEED_PERFORMANCE_HUMAN_PERCEPTION>`_
 

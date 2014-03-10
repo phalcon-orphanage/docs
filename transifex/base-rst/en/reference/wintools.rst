@@ -83,7 +83,7 @@
 
 %{wintools_7a752ac7821139893d4b7d8eb762a483}%
 ^^^^^^^^^^^^^^
-* {%wintools_bc934e2374ce107d73b904a9eedd4a1a%}
-* {%wintools_1c5be327f9be309e32f66465c637f622%}
-* {%wintools_4c84fbf1c9a1cdcc7e5979e524261db4%}
+* :1:
+* :doc:`Installation on OS X <mactools>`
+* :doc:`Installation on Linux <linuxtools>`
 

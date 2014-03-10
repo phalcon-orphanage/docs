@@ -63,10 +63,33 @@ class Docs
 
 				if ($list) {
 					foreach ($section as $position => $line) {
-						if (preg_match('#^[ \t]*\* (.*)#', $line, $matches)) {
-							$key = $this->_prefix . '_' . md5($matches[1]);
-							$section[$position] = str_replace($matches[1], '{%' . $key . '%}', $line);
-							$this->_uniqueStrings[$key] = $matches[1];
+						if (preg_match('#^[ \t]*\* (.*)#', $line, $listMatches)) {
+
+							$number = 1;
+							$placeholders = array();
+							if (preg_match_all('#:doc:`[^`]+`#', $line, $matches, PREG_SET_ORDER)) {
+								foreach ($matches as $position => $match) {
+									$placeholders[$position] = $match[0];
+									$line = str_replace($match[0], ':' . ($number) . ':', $line);
+									$number++;
+								}
+							}
+
+							if (preg_match_all('#`[^`]+`_#', $line, $matches, PREG_SET_ORDER)) {
+								foreach ($matches as $position => $match) {
+									$placeholders[$position] = $match[0];
+									$line = str_replace($match[0], ':' . ($number) . ':', $line);
+									$number++;
+								}
+							}
+
+							$key = $this->_prefix . '_' . md5($listMatches[1]);
+							if (count($placeholders)) {
+								$section[$position] = str_replace($listMatches[1], '{%' . $key . '|' . join('|', $placeholders) . '%}', $line);
+							} else {
+								$section[$position] = str_replace($listMatches[1], '{%' . $key . '%}', $line);
+							}
+							$this->_uniqueStrings[$key] = $listMatches[1];
 						}
 					}
 				}

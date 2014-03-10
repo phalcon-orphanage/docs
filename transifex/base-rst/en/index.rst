@@ -77,7 +77,7 @@
 %{index_55bd297b9fb4a01a8e6a56ca12739be3}%
 -------------
 
-* {%index_c2b27e4c7f233177398db508d4ea2531%}
-* {%index_fae2197f5f0d198cc832a6eede09234a%}
-* {%index_1c72acb835636528dcebdff50a464ae0%}
+* :1:
+* `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
+* `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
 

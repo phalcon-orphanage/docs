@@ -145,7 +145,8 @@
 
 %{security_b0492394b589b5ff8f6fb98048d65d8f}%
 ------------------
-* {%security_1f26c7817c542777631056622af5971d%}
+* `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
+* :1:, is a sample application that uses the Security component for avoid CSRF and password hashing, [:2:]
 
 %{security_53c525ce454ebba9887fc2e265a32e9f}%
 
