@@ -61,6 +61,18 @@ class Docs
 					}
 				}
 
+				if (!$list) {
+					$markdownLinks = true;
+					foreach ($section as $position => $line) {
+						if (!preg_match('#^\.\.[ \t]+\_[a-zA-Z]#', $line)) {
+							$markdownLinks = false;
+							break;
+						}
+					}
+				} else {
+					$markdownLinks = false;
+				}
+
 				if ($list) {
 					foreach ($section as $position => $line) {
 						if (preg_match('#^[ \t]*\* (.*)#', $line, $listMatches)) {
@@ -83,6 +95,14 @@ class Docs
 								}
 							}
 
+							if (preg_match_all('#[a-zA-Z0-9]+_#', $line, $matches, PREG_SET_ORDER)) {
+								foreach ($matches as $position => $match) {
+									$placeholders[$position] = $match[0];
+									$listMatches[1] = str_replace($match[0], ':' . ($number) . ':', $listMatches[1]);
+									$number++;
+								}
+							}
+
 							if (!preg_match('#^:([0-9]+):$#', $listMatches[1])) {
 								$key = $this->_prefix . '_' . md5($listMatches[0]);
 								if (count($placeholders)) {
@@ -97,7 +117,7 @@ class Docs
 					}
 				}
 
-				if (!$list) {
+				if (!$list && !$markdownLinks) {
 
 					$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
 					$originalSection1 = $section1;

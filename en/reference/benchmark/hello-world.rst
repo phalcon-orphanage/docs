@@ -28,13 +28,13 @@ These were the measurements we record to identify the overall performance of eac
 
 Participant Frameworks
 -----------------------
-* Yii_ (YII_DEBUG=false) (yii-1.1.13)
-* Symfony_ (2.0.11)
-* `Zend Framework`_ (1.11.11)
-* Kohana_ (3.2.0)
-* FuelPHP_ (1.2.1)
-* Laravel_ 3.2.5
-* CodeIgniter_ (2.1.0)
+* Yii_
+* Symfony_ 
+* `Zend Framework`_ 
+* Kohana_
+* FuelPHP_ 
+* Laravel_
+* CodeIgniter_
 
 Results
 -------

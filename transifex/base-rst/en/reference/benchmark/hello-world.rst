@@ -15,18 +15,18 @@
 
 * {%hello-world_d61175ed4b917a6f274be68218549f9c%}
 * {%hello-world_d9d846f543aa53ba12115d9d4138e5da%}
-* {%hello-world_12c06e7bb9c136c9591eba00a6d20df5%}
-* {%hello-world_930912b857a16683e9923928631734f2%}
+* Memory Usage per request (measured using function memory_get_usage_.
+* Memory Usage per request (measured using function memory_get_usage_.
 
 %{hello-world_cfd6d0dbc2b5533200c7d0c3369a32d8}%
 -----------------------
-* `Zend Framework`_ (1.11.11)
-* {%hello-world_beccd5e480300f0b26025137d31f0ac3%}
-* `Zend Framework`_ (1.11.11)
-* {%hello-world_231016db833285c89a0c389f850c5962%}
-* {%hello-world_637c803d833dbddccf3ffba84d38889a%}
-* {%hello-world_d9c02d2dcdb1cde6ecdfee424edda21c%}
-* {%hello-world_116390bd4dd39c1fd7f2e4f93d0efdfb%}
+* FuelPHP_ 
+* Symfony_ 
+* `Zend Framework`_ 
+* Kohana_
+* FuelPHP_ 
+* Laravel_
+* CodeIgniter_
 
 %{hello-world_b41eb33ab6ec77b77338ec73c1482297}%
 -------
@@ -566,5 +566,13 @@
 ----------
 %{hello-world_68ef87283b6316f5d9008d3f147a2511}%
 
-%{hello-world_33fa5f2e3ee45b74877500f5588a41e2}%
+.. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
+.. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php
+.. _Yii: http://www.yiiframework.com/
+.. _Symfony: http://symfony.com/
+.. _CodeIgniter: http://codeigniter.com/
+.. _Kohana: http://kohanaframework.org/index
+.. _FuelPHP: http://fuelphp.com/
+.. _Laravel: http://www.laravel.com/
+.. _Zend Framework: http://framework.zend.com
 

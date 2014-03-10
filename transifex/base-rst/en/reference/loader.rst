@@ -239,7 +239,7 @@
 ---------------
 %{loader_1a3657a13f35fe1e1963850259869e36}%
 
-* {%loader_d4f107b682e4b15db5380eb0c2a050b5%}
+* If a cache bytecode like APC_ is installed this will used to retrieve the requested file (an implicit caching of the file is performed)
 * {%loader_4c54cf1f5e17f7dd643543f0113c3c84%}
-* {%loader_c7f535c50766c55c428ef4bd2a5b595c%}
+* If a cache bytecode like APC_ is installed this will used to retrieve the requested file (an implicit caching of the file is performed)
 

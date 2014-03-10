@@ -187,13 +187,13 @@
 
 %{migrations_693f023ec4e718b7c0a6c9a231892599}%
 
-* {%migrations_fe7ebd9868a24f4d94e7571d6ad9777d%}
-* {%migrations_75f9a80d8632ac4324c0448868cf0a2f%}
-* {%migrations_b3d1b996d6ec9ea4505f6d33bc37c0f1%}
-* {%migrations_71e6628e8bd0f49a16f167ff06a44092%}
-* {%migrations_8779dd20292f14882b4da2bd3cb06e73%}
-* {%migrations_e1c672080a2ed8b106cae6b062a5ac78%}
-* {%migrations_66689482f9de2295ca0d59d4361a86f5%}
+* Phalcon\\Db\\Column::TYPE_TEXT
+* Phalcon\\Db\\Column::TYPE_DATE
+* Phalcon\\Db\\Column::TYPE_VARCHAR
+* Phalcon\\Db\\Column::TYPE_DECIMAL
+* Phalcon\\Db\\Column::TYPE_DATETIME
+* Phalcon\\Db\\Column::TYPE_CHAR
+* Phalcon\\Db\\Column::TYPE_TEXT
 
 %{migrations_98592e9224abec7b6a4957b5f4b035b4}%
 ^^^^^^^^^^^^^^^^

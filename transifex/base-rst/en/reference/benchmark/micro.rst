@@ -13,13 +13,13 @@
 
 * {%micro_d61175ed4b917a6f274be68218549f9c%}
 * {%micro_d9d846f543aa53ba12115d9d4138e5da%}
-* {%micro_12c06e7bb9c136c9591eba00a6d20df5%}
-* {%micro_930912b857a16683e9923928631734f2%}
+* Memory Usage per request (measured using function memory_get_usage_.
+* Memory Usage per request (measured using function memory_get_usage_.
 
 %{micro_cfd6d0dbc2b5533200c7d0c3369a32d8}%
 ----------------------
-* {%micro_75282adcbb5eed57dae45f0de32fd44a%}
-* {%micro_b683bb88c3d4b8c8228223644b03756c%}
+* Slim_
+* Silex_
 
 %{micro_b41eb33ab6ec77b77338ec73c1482297}%
 -------
@@ -29,7 +29,7 @@
 
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://{%micro_5a1093e86b7d44ecd28985efe6f7e29a%}
+    # ab -n 1000 -c 5 http://localhost/bench/micro/slim/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://{%micro_8867914463339f2de85ba83ed5558268%}
     Licensed to The Apache Software Foundation, http://{%micro_6ea2f8b0a2d60668dd736d98dedbd3b9%}
@@ -80,7 +80,7 @@
 
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://{%micro_004cbed4313c49e7b39968c73c2ad31f%}
+    # ab -n 1000 -c 5 http://localhost/bench/micro/silex/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://{%micro_8867914463339f2de85ba83ed5558268%}
     Licensed to The Apache Software Foundation, http://{%micro_6ea2f8b0a2d60668dd736d98dedbd3b9%}
@@ -131,7 +131,7 @@
 
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://{%micro_a47728d162fcf68619e0d26ba269afb4%}
+    # ab -n 1000 -c 5 http://localhost/bench/micro/phalcon/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://{%micro_8867914463339f2de85ba83ed5558268%}
     Licensed to The Apache Software Foundation, http://{%micro_6ea2f8b0a2d60668dd736d98dedbd3b9%}
