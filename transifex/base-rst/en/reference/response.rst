@@ -1,8 +1,6 @@
 %{response_96018889300caae7d7d05f83cd8e858c}%
-
 ===================
-%{response_6bf4c0dd4e13162f5ed1e37b834dfc4e}%
-
+%{response_6bf4c0dd4e13162f5ed1e37b834dfc4e|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -19,6 +17,7 @@
 
     //{%response_aa1a37369701ddc784751431397df792%}
     $response->send();
+
 
 %{response_6a4ab19f81223959f4ee8a1f7d9e0906}%
 
@@ -45,11 +44,10 @@
 
     }
 
-%{response_58c353e11cfea9c1d6ef0400e69c35a4}%
 
+%{response_58c353e11cfea9c1d6ef0400e69c35a4}%
 --------------------
 %{response_06f96555b3a97dae4120c22caa515138}%
-
 
 %{response_040c328569c535b4a7a8542911d38a67}%
 
@@ -64,7 +62,8 @@
     //{%response_d226b4fe440905826f7b70a11486e790%}
     $response->setRawHeader("HTTP/1.1 200 OK");
 
-%{response_17a252d92bebda16f922904f3944fcf1}%
+
+%{response_17a252d92bebda16f922904f3944fcf1|:doc:`Phalcon\\Http\\Response\\Headers <../api/Phalcon_Http_Response_Headers>`}%
 
 .. code-block:: php
 
@@ -76,11 +75,10 @@
     //{%response_55586855a40b549141ac56733ae91a42%}
     $contentType = $response->getHeaders()->get("Content-Type");
 
+
 %{response_85ebb8b1fe35876ecb488660ec541ddb}%
-
 -------------------
-%{response_c8b097c3643885890401f0ca01bf1ec6}%
-
+%{response_c8b097c3643885890401f0ca01bf1ec6|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -98,7 +96,8 @@
     //{%response_88eeb693f326e0e11441130f002200ab%}
     $response->redirect("http://www.example.com/new-location", true, 301);
 
-%{response_a75f2a5b68b397b970285c84345d8356}%
+
+%{response_a75f2a5b68b397b970285c84345d8356|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 .. code-block:: php
 
@@ -111,13 +110,12 @@
         "controller" => "index"
     ));
 
+
 %{response_1c0880121fbd5fbb3ec25161f3f89ee2}%
 
 %{response_c39d99e2c813a3297d5010729c65001d}%
-
 ----------
 %{response_dde8dc5a1c8921320d8383726bdf80cc}%
-
 
 %{response_a1b56a2d3c1bf4146eff9541966fb92d}%
 
@@ -127,10 +125,8 @@
 * {%response_7c728995514c8ba24d65a6d9c391dbc8%}
 
 %{response_241e831b798a5b2b7d5a163e9d381113}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{response_b2fa40bfebca062b4674810e4352266f}%
-
 
 .. code-block:: php
 
@@ -140,6 +136,7 @@
     $expireDate->modify('+2 months');
 
     $response->setExpires($expireDate);
+
 
 %{response_fdf5c10ec31fbeea93f8b6dae9e8cbf8}%
 
@@ -154,13 +151,12 @@
 
     $response->setExpires($expireDate);
 
+
 %{response_5c02e69f9df0a1141eac838690110ed9}%
 
 %{response_8e676f776be373f5471d3db1665683fa}%
-
 ^^^^^^^^^^^^^
 %{response_637975a76962dc440ceb603a263c1464}%
-
 
 .. code-block:: php
 
@@ -168,6 +164,7 @@
 
     //{%response_670d40994bd62b5d72f6de24627a93e0%}
     $response->setHeader('Cache-Control', 'max-age=86400');
+
 
 %{response_4e89ba02099c4b7eee0e1c421b42dcf8}%
 
@@ -178,9 +175,8 @@
     //{%response_6353bb62bb3473693f12934ef1ae7c4c%}
     $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
-%{response_5b261d26baa708955489b948c0a8496e}%
 
+%{response_5b261d26baa708955489b948c0a8496e}%
 ^^^^^
 %{response_d7f987ce71ea42374b851bae4a1252d5}%
-
 

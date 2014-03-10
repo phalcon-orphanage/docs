@@ -1,10 +1,8 @@
 %{models_34315da4fc43fd95809ef78d65f1b018}%
-
 ===================
 %{models_8f0e1f8b78c2a43f902d3f235a635750}%
 
-
-%{models_1fc29f5b10e37dd7b4270c6440455798}%
+%{models_1fc29f5b10e37dd7b4270c6440455798|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. highlights::
 
@@ -12,11 +10,10 @@
     :doc:`Phalcon\\Db <../api/Phalcon_Db>` component documentation.
 
 
+
 %{models_6fe6eff5591f581f3c7a8b8db8748e2d}%
-
 ---------------
-%{models_7eb42c46882238eaeb6d7ea069aaa281}%
-
+%{models_7eb42c46882238eaeb6d7ea069aaa281|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -27,12 +24,14 @@
 
     }
 
-%{models_139aca56b2ede05fc3717f08091de0d8}%
+
+%{models_139aca56b2ede05fc3717f08091de0d8|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. highlights::
 
     If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
+
 
 
 %{models_05e5dc99584f680738cd051b39df365b}%
@@ -51,6 +50,7 @@
 
     }
 
+
 %{models_8f3415d39ec51500d37f9ea2ea3dd208}%
 
 .. code-block:: php
@@ -66,6 +66,7 @@
         }
 
     }
+
 
 %{models_d9eddcbb0d3e0a61317e98124dcce918}%
 
@@ -83,11 +84,10 @@
 
     }
 
-%{models_1e97aa8d4dac7771bfc41fdd1894aef2}%
 
+%{models_1e97aa8d4dac7771bfc41fdd1894aef2}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_8f39f4de8a4468ca1841f16ca911e887}%
-
 
 .. code-block:: php
 
@@ -101,6 +101,7 @@
 
         public $price;
     }
+
 
 %{models_4b84c28ff8c3a142e1ad871b64c58147}%
 
@@ -151,13 +152,12 @@
         }
     }
 
+
 %{models_9cf07cd93f23ce62d9699d5b32fbd557}%
 
 %{models_edc8f4356afdd63c106c2e25e75e3a4a}%
-
 ^^^^^^^^^^^^^^^^^^^^
 %{models_88ac463f7dbfa7bdbca9de455e37429b}%
-
 
 .. code-block:: php
 
@@ -170,11 +170,10 @@
 
     }
 
-%{models_0041176d3d251a7208621f2d87b1cb93}%
 
+%{models_0041176d3d251a7208621f2d87b1cb93}%
 --------------------------------
 %{models_d33935c04822b910b774c26ef3232937}%
-
 
 .. code-block:: bash
 
@@ -188,6 +187,7 @@
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
+
 %{models_a0af819e2255934cda03b3f923860f88}%
 
 .. code-block:: php
@@ -200,6 +200,7 @@
     // {%models_eb38e78fafe2c0c6b7f749968a4b9d97%}
     echo $robot->name;
 
+
 %{models_5593dab00434cec6bd7ff9eb6a5e4fa8}%
 
 .. code-block:: php
@@ -210,13 +211,12 @@
     $robot->name = "RoboCop";
     $robot->save();
 
-%{models_ad50e75016400a97bdbd274e354b4c44}%
+
+%{models_ad50e75016400a97bdbd274e354b4c44|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{models_f1139dc3521d331b62f0df072477011a}%
-
 ---------------
-%{models_085a171b5244fb1f6da123f09f092416}%
-
+%{models_085a171b5244fb1f6da123f09f092416|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -249,6 +249,7 @@
        echo $robot->name, "\n";
     }
 
+
 %{models_dca37eac806548a6c68a838011d99538}%
 
 .. code-block:: php
@@ -267,6 +268,7 @@
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
+
 %{models_1c335b086c81eff06a897a5fbfa8161e}%
 
 .. code-block:: php
@@ -283,6 +285,7 @@
         "conditions" => "type = ?1",
         "bind"       => array(1 => "virtual")
     ));
+
 
 %{models_2b5aacc034cc35eb04d354e3f362416d}%
 
@@ -312,6 +315,7 @@
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
+
 %{models_5d77a6c7de18b56c1eb8342c2e92d2d5}%
 
 .. code-block:: php
@@ -325,9 +329,10 @@
         ->order("name")
         ->execute();
 
-%{models_887526ed65120cae817e8c820fdf4a1d}%
 
-%{models_c09a664f846ecd7a4810662c0677495e}%
+%{models_887526ed65120cae817e8c820fdf4a1d|:doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`}%
+
+%{models_c09a664f846ecd7a4810662c0677495e|:doc:`PHQL <phql>`}%
 
 %{models_be15026641c23ccd2162e2863a36cfa7}%
 
@@ -344,6 +349,7 @@
         public $price;
     }
 
+
 %{models_c645e4e62b0b20d0f4c8ddb621caafda}%
 
 .. code-block:: php
@@ -359,15 +365,14 @@
         $this->flash->error("There were no robots found in our table with the name " . $name ".");
     }
 
+
 %{models_8958e99220592664d45664886ce5861e}%
 
 %{models_21a896556ad0bf6560957107ee309ba3}%
-
 ^^^^^^^^^^^^^^^^
-%{models_8c9a59a26ff1dad486ed903b0d891601}%
+%{models_8c9a59a26ff1dad486ed903b0d891601|:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`}%
 
-
-%{models_6edf89bff321568a3a675fc6973dbedc}%
+%{models_6edf89bff321568a3a675fc6973dbedc|:doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`}%
 
 .. code-block:: php
 
@@ -413,11 +418,12 @@
     // {%models_9f3354bdfbb07b92c2feeaa0ea831464%}
     $robot = $robots->getLast();
 
+
 %{models_a7eda3d33dae65bae1e3872506079451}%
 
 %{models_889722c4fb3fe2f1e51e29ccbcc6fdd8}%
 
-%{models_9567ddda707a429493dd5ce29805b383}%
+%{models_9567ddda707a429493dd5ce29805b383|:doc:`Phalcon\\Cache <cache>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -437,11 +443,10 @@
        echo $part->id;
     }
 
-%{models_8e1663749196053db8cdfcf3c68e1dc1}%
 
+%{models_8e1663749196053db8cdfcf3c68e1dc1}%
 ^^^^^^^^^^^^^^^^^^^^
 %{models_86e0576c863b930319c4291189b39a6a}%
-
 
 .. code-block:: php
 
@@ -456,11 +461,10 @@
 
     });
 
+
 %{models_822e9e4f30d1487b43dff638b7288be9}%
-
 ^^^^^^^^^^^^^^^^^^
-%{models_2a61bf497a134af628a074d221cbc575}%
-
+%{models_2a61bf497a134af628a074d221cbc575|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -504,6 +508,7 @@
         "bind" => $parameters
     ));
 
+
 %{models_b84a0dd9d5714b34df69484d2d568a9f}%
 
 %{models_1cb6fccdb0e82654bd3c3c0a38be3797}%
@@ -540,13 +545,12 @@
     Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
     "bindTypes" parameter if all of the columns are of that type.
 
+
 %{models_3b77c94021fad5966050602759289f10}%
 
 %{models_e3367d0cb8544964094a208970c13117}%
-
 --------------------------------------
 %{models_c78c4b381ccc68e2f068e656ecb1f40a}%
-
 
 .. code-block:: php
 
@@ -574,6 +578,7 @@
         }
     }
 
+
 %{models_57ebcfcd3b49b156d81661da7aab7c33}%
 
 .. code-block:: php
@@ -595,29 +600,22 @@
 
     }
 
-%{models_0d9e9111f6bc1e0e1dc17a2561b5064f}%
 
+%{models_0d9e9111f6bc1e0e1dc17a2561b5064f}%
 ----------------------------
 %{models_4bc54330429e293995594ada1ed43cf9}%
 
-
 %{models_4ea603f3ea62e73772697db5f1650fb8}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_107da6f7c5aa5bb8a906812d1d01e5a4}%
 
-
 %{models_095247fb250888acc0b22d0143826fef}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f0a1887228b0c923e22a57c7e338501}%
 
-
 %{models_863202c90ac552ca019f552d58be5afd}%
-
 ^^^^^^^^^^^^^^^^^^^^^^
 %{models_c7cb02eea3259c9b6054bb64ee43bff6}%
-
 
 +---------------+----------------------------+
 | Method        | Description                |
@@ -630,6 +628,7 @@
 +---------------+----------------------------+
 | hasManyToMany | Defines a n-n relationship |
 +---------------+----------------------------+
+
 
 %{models_fe5294b94b279920eac0c40225f8ed4f}%
 
@@ -664,10 +663,12 @@
 * The model "RobotsParts" belongs to both "Robots" and "Parts" models as a many-to-one relation.
 * The model "Robots" has a relation many-to-many to "Parts" through "RobotsParts"
 
+
 %{models_63f144f582941580c09c9b2538906f56}%
 
 .. figure:: ../_static/img/eer-1.png
    :align: center
+
 
 
 %{models_2f75e58fb7e6bc12ae5bef57b20cc968}%
@@ -728,6 +729,7 @@
 
     }
 
+
 %{models_93833c12540f148aabe14953a12538e4}%
 
 %{models_52f9d1599bbfcb7cc9ae67dafe8d7c5c}%
@@ -755,11 +757,10 @@
 
     }
 
-%{models_2c2bc35a9e8125c1fe4646eb067470d3}%
 
+%{models_2c2bc35a9e8125c1fe4646eb067470d3}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_0ba5ccfa2677fd8a79b241b5c04e4412}%
-
 
 .. code-block:: php
 
@@ -769,6 +770,7 @@
     foreach ($robot->robotsParts as $robotPart) {
         echo $robotPart->parts->name, "\n";
     }
+
 
 %{models_eaef5f5c0096ddca74ee216d9f6d5486}%
 
@@ -781,6 +783,7 @@
     $robot = Robots::findFirst();
     $robotsParts = $robot->robotsParts; // {%models_37634994dd76aceff8cc62e7660f001e%}
 
+
 %{models_23ce3b5c26d63c47189e358eb6a0c062}%
 
 .. code-block:: php
@@ -791,7 +794,8 @@
     $robotsParts = $robot->getRobotsParts(); // {%models_37634994dd76aceff8cc62e7660f001e%}
     $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // {%models_52cf0d0467fe9114e378ef9752ff0b3b%}
 
-%{models_0b0ad8c13ef82f79c176d5e2d7772e21}%
+
+%{models_0b0ad8c13ef82f79c176d5e2d7772e21|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -818,6 +822,7 @@
     // {%models_e8edf474f27d462948b8b18e7efe17df%}
     $robot = $robotPart->robots;
 
+
 %{models_7c5cfa3c28a89beb95ee67f2167a7e52}%
 
 .. code-block:: php
@@ -842,6 +847,7 @@
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
+
 %{models_7b6b7ee99bf2d2dc7a5f9a50fe0afa42}%
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
@@ -856,6 +862,7 @@
 | Has-Many-to-Many    | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)        |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------+
 
+
 %{models_1cd1930780e738c9a6c7e46b9329ef22}%
 
 .. code-block:: php
@@ -865,11 +872,10 @@
     $robot = Robots::findFirst(2);
     echo "The robot has ", $robot->countRobotsParts(), " parts\n";
 
-%{models_54e332a56dc132b3e61043f709d4f3db}%
 
+%{models_54e332a56dc132b3e61043f709d4f3db}%
 ^^^^^^^^^^^^^^^^^^^^^^
 %{models_10f4a34f73f5d711081cd02fbea0d570}%
-
 
 %{models_c1c8d588fd78b55da43042ea6e0e8c53}%
 
@@ -885,10 +891,12 @@
     +-------------------+------------------+------+-----+---------+----------------+
     3 rows in set (0.00 sec)
 
+
 %{models_f18297cdcc691c5743187e61076b9dce}%
 
 .. figure:: ../_static/img/eer-2.png
    :align: center
+
 
 
 %{models_39a3c3172d2e4e1980c335914c3e6c94}%
@@ -908,6 +916,7 @@
 
     }
 
+
 %{models_c271c8392737faa49a1be3302c2b8689}%
 
 .. code-block:: php
@@ -923,6 +932,7 @@
 
     //{%models_4586e0ef082b5df78af450b4d5824a94%}
     //{%models_f7ca57241c64cb4ec7f683044043b98b%}
+
 
 %{models_91c8cad15d031165dc93688f915cfc98}%
 
@@ -945,6 +955,7 @@
 
     }
 
+
 %{models_fb44b187803a7f753798591eae2e9c34}%
 
 .. code-block:: php
@@ -961,11 +972,10 @@
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
-%{models_c0498d367be6f00cf53866b7a15650a9}%
 
+%{models_c0498d367be6f00cf53866b7a15650a9}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_61ea72907fef0cf5280b43a54ce12a13}%
-
 
 .. code-block:: php
 
@@ -995,11 +1005,10 @@
 
     }
 
-%{models_b8ddd6c9fa9efe7f8b22d5ee64b4e038}%
 
+%{models_b8ddd6c9fa9efe7f8b22d5ee64b4e038}%
 --------------------
 %{models_ad089347bed015a469de37c65982646d}%
-
 
 %{models_2807669f80c008114b3d11ad29bad56e}%
 
@@ -1031,6 +1040,7 @@
 
     }
 
+
 %{models_c4769cdcd3b3ddfbef7d6179ed1815aa}%
 
 .. code-block:: php
@@ -1051,11 +1061,10 @@
 
     }
 
-%{models_390f3980d9010ee42c5db1e409646b00}%
 
+%{models_390f3980d9010ee42c5db1e409646b00}%
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_6d74d8a3eee3d85fb1e76211926aa2fb}%
-
 
 .. code-block:: php
 
@@ -1084,13 +1093,12 @@
 
     }
 
+
 %{models_b52c5786f39bc338ec9a3f4758cb9cbf}%
 
 %{models_c8243703df38120bbd35d539ca33d3a9}%
-
 -----------------------
-%{models_6be948a780036412e5132cd7b8af4fe5}%
-
+%{models_6be948a780036412e5132cd7b8af4fe5|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{models_960fa28a7174efaf18899956c56050cf}%
 
@@ -1124,6 +1132,7 @@
         "type > ?0",
         "bind" => array($type)
     ));
+
 
 %{models_4618d74d3fe8438c957047b340d64f9f}%
 
@@ -1163,6 +1172,7 @@
         "bind" => array($area)
     ));
 
+
 %{models_a2b38ff9b1155040734f2bf3a05212c2}%
 
 .. code-block:: php
@@ -1185,6 +1195,7 @@
         "bind" => array($area)
     ));
 
+
 %{models_684946bc5648c219d794240b6b7dc740}%
 
 .. code-block:: php
@@ -1203,11 +1214,10 @@
     // {%models_2c63cde73a51a506e08d3eaa8ec2096c%}
     $salary = Employees::minimum(array("column" => "salary"));
 
-%{models_da300e626c96660279800817373be665}%
 
+%{models_da300e626c96660279800817373be665}%
 ---------------
 %{models_6d7c6eb4758655c54dc6990ff7f19123}%
-
 
 .. code-block:: php
 
@@ -1218,6 +1228,7 @@
         $robot->year = 2000;
         $robot->save();
     }
+
 
 %{models_1eb6ffebaa894cc85477ab4658ef7574}%
 
@@ -1250,6 +1261,7 @@
         echo $robot->year, PHP_EOL;
     }
 
+
 %{models_cb3c4cbdce1e571a507dbbb9281a4af5}%
 
 .. code-block:: php
@@ -1266,11 +1278,10 @@
         echo $robot['year'], PHP_EOL;
     }
 
+
 %{models_a7f6efdf628627cbfb0183f461cfcd29}%
-
 -------------------------
-%{models_d10514567f77ab7496ba0dccd7b51875}%
-
+%{models_d10514567f77ab7496ba0dccd7b51875|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{models_c7e343496bcfc784c6263a56f00b407d}%
 
@@ -1291,6 +1302,7 @@
         echo "Great, a new robot was saved successfully!";
     }
 
+
 %{models_e123024286ad4cb9eb2b5d92b25fd734}%
 
 .. code-block:: php
@@ -1303,6 +1315,7 @@
         "name" => "Astro Boy",
         "year" => 1952
     ));
+
 
 %{models_76fcd45612dc70788c0ca6177fb231f7}%
 
@@ -1319,6 +1332,7 @@
     if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted
     form.
 
+
 %{models_45391c2973b138766ea846d6d7d85c61}%
 
 .. code-block:: php
@@ -1328,11 +1342,10 @@
     $robot = new Robots();
     $robot->save($_POST, array('name', 'type'));
 
-%{models_7d4b758e7334c310d6b7a126d7eedbdc}%
 
+%{models_7d4b758e7334c310d6b7a126d7eedbdc}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_2e0f8969e5a5cf5d5c5674faf5409f74}%
-
 
 .. code-block:: php
 
@@ -1353,13 +1366,12 @@
         echo "Great, a new robot was created successfully!";
     }
 
+
 %{models_9afbc94d7c87924852bb6eaec4c24f2f}%
 
 %{models_47d10dbbf95de1e4e67a5f17a81c4370}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_81a1ef00ba1fddad4f51fc66def6bc3d}%
-
+%{models_81a1ef00ba1fddad4f51fc66def6bc3d|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -1370,6 +1382,7 @@
     echo "The generated id is: ", $robot->id;
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
+
 %{models_d55994b62e51e018089e422de3aea43e}%
 
 %{models_34e756014c1e42ff9eec737ec2e292e9}%
@@ -1388,11 +1401,10 @@
 
     }
 
-%{models_e0035a0f5ffbb4f6d432b4f70697cf78}%
 
+%{models_e0035a0f5ffbb4f6d432b4f70697cf78}%
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{models_501eac663748a2ce8ff81a0ca4077ee9}%
-
 
 .. code-block:: php
 
@@ -1411,6 +1423,7 @@
 
     //{%models_aa0b953f6d350a5577ebc11cfed71a1e%}
     $album->save();
+
 
 %{models_47f31897cd3d97d3789b57c50d7dc10e}%
 
@@ -1444,6 +1457,7 @@
     // {%models_c77858c47a2afaedb836fa45d116e489%}
     $album->save();
 
+
 %{models_9482868dc98e03953151f38dd8c07038}%
 
 %{models_d939a1c7ef3aa44a932cfff1b2ee1110}%
@@ -1451,12 +1465,10 @@
 %{models_14fef3e904b2f9aa6116cf7656675e02}%
 
 %{models_39d425478bbbd8c190c1571d56968719}%
-
 ^^^^^^^^^^^^^^^^^^^
-%{models_1dfb448799cd9391845e5659e6a08fa1}%
+%{models_1dfb448799cd9391845e5659e6a08fa1|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
-
-%{models_d27c98baf8000da38be80c02eed41dc0}%
+%{models_d27c98baf8000da38be80c02eed41dc0|:doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`}%
 
 .. code-block:: php
 
@@ -1486,6 +1498,7 @@
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
+
 %{models_f958e80e660f56d42517de25c94720b1}%
 
 .. code-block:: php
@@ -1514,11 +1527,10 @@
         }
     }
 
+
 %{models_88dc8b91807ff4ba675e3c4d5fc6b7db}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_ec346e4dfa21eab0d23bf387d6f1fe88}%
-
+%{models_ec346e4dfa21eab0d23bf387d6f1fe88|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
@@ -1550,11 +1562,10 @@
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
-%{models_ffdc056a5ad04de3bf87e0e2bfb1cdb3}%
 
+%{models_ffdc056a5ad04de3bf87e0e2bfb1cdb3}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_4fba9529bed771a750169aea7fe11c01}%
-
 
 .. code-block:: php
 
@@ -1569,6 +1580,7 @@
         }
 
     }
+
 
 %{models_3fa8d189cbd898ffa9232f5519462f06}%
 
@@ -1593,11 +1605,10 @@
 
     }
 
+
 %{models_f11eaba96f0c61a573317f0a69292340}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_f8398ace84457fa6a9c43e61ca429370}%
-
+%{models_f8398ace84457fa6a9c43e61ca429370|:doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`}%
 
 .. code-block:: php
 
@@ -1631,6 +1642,7 @@
 
     }
 
+
 %{models_bd80e1f4bd54bb03b2cc233f99866b2d}%
 
 .. code-block:: php
@@ -1641,6 +1653,7 @@
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
+
 
 %{models_9dba0dfb3be69611c21dd8738e27213f}%
 
@@ -1676,13 +1689,12 @@
         return $modelsManager;
     });
 
+
 %{models_a99f116006a7e6f8e0beedf2fa1f7293}%
 
 %{models_a2333fe1d4949c60e0ffa88a36ec8b24}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_55a005b019c6e5cffa73b951673ab855}%
-
 
 %{models_58acea561b884f8775c83234389a6c67}%
 
@@ -1705,13 +1717,12 @@
 
     }
 
-%{models_cc0c64759378d22ce091113bdd1a7f1c}%
+
+%{models_cc0c64759378d22ce091113bdd1a7f1c|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{models_53c9ef435efdc751976636021ca78ae8}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_44f73e5f781842638380d87cc3e0e58d}%
-
+%{models_44f73e5f781842638380d87cc3e0e58d|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{models_1cc9ab87bdb41eb59d0ed209160c60d8}%
 
@@ -1747,6 +1758,7 @@
 
     }
 
+
 %{models_284e191d54feb148b504b19e86595cd5}%
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -1770,6 +1782,7 @@
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+
 
 %{models_84bbc78bf253737de49fbc641775a65f}%
 
@@ -1805,6 +1818,7 @@
 
     }
 
+
 %{models_52bc5373d71ac2fdd32cbb2d8ab1facd}%
 
 .. code-block:: php
@@ -1829,6 +1843,7 @@
         }
 
     }
+
 
 %{models_21b521505501d7d235cf8c4486f015dc}%
 
@@ -1858,11 +1873,10 @@
 
     }
 
+
 %{models_a5b8ba4670620d3d0495cd4b993c2c36}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^
-%{models_18e6bdbe0312c1c503ae057657188a40}%
-
+%{models_18e6bdbe0312c1c503ae057657188a40|`bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_}%
 
 .. code-block:: bash
 
@@ -1877,6 +1891,7 @@
     | active           | char(1)          | YES  |     | NULL    |                |
     +------------------+------------------+------+-----+---------+----------------+
     5 rows in set (0.00 sec)
+
 
 %{models_3cbc5493ec1d1fced277a1876a1d5bf6}%
 
@@ -1899,6 +1914,7 @@
 
     $sth->execute();
 
+
 %{models_e270c4873b9061d820db4505f1102e90}%
 
 .. code-block:: php
@@ -1912,11 +1928,10 @@
     $product->active = 'Y';
     $product->create();
 
-%{models_e7d653d41a47b75951d0301d92fae13e}%
 
+%{models_e7d653d41a47b75951d0301d92fae13e}%
 ----------------
 %{models_52905496ae0f50797717b9709adf5134}%
-
 
 .. code-block:: php
 
@@ -1939,6 +1954,7 @@
 
     }
 
+
 %{models_dff14ed91b9e1bfba3bbfd846b13c029}%
 
 .. code-block:: php
@@ -1950,6 +1966,7 @@
     $robot->year = 1999;
     $robot->created_at = new \Phalcon\Db\RawValue('default');
     $robot->create();
+
 
 %{models_85946bc9767c0ac502ac9327d1eda99e}%
 
@@ -1976,11 +1993,10 @@
     or variable data. The value of these fields is ignored when binding parameters to the query.
     So it could be used to attack the application injecting SQL.
 
-%{models_eeb5861768cb1d8e1b83f34166ba75e3}%
 
+%{models_eeb5861768cb1d8e1b83f34166ba75e3}%
 ^^^^^^^^^^^^^^
 %{models_cae7b7f779c605b98263207fc0c50b74}%
-
 
 %{models_de37cceeaaf2862d1cfebbc7e0214218}%
 
@@ -1996,11 +2012,10 @@
         }
     }
 
-%{models_0dcecd441d09452dc45fa5fb8fdf84c9}%
 
+%{models_0dcecd441d09452dc45fa5fb8fdf84c9}%
 ----------------
 %{models_0e75de2f191dfee5ebf610adee2f593b}%
-
 
 .. code-block:: php
 
@@ -2017,6 +2032,7 @@
             echo "The robot was deleted successfully!";
         }
     }
+
 
 %{models_76bc4e0b0f94d49a3359b7b87d0e8082}%
 
@@ -2035,6 +2051,7 @@
         }
     }
 
+
 %{models_1754d4c775f9d294061fd18347afd1a0}%
 
 +-----------+--------------+---------------------+------------------------------------------+
@@ -2044,6 +2061,7 @@
 +-----------+--------------+---------------------+------------------------------------------+
 | Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
+
 
 %{models_46fd4a379b90cb5f6446182c62871f6f}%
 
@@ -2065,11 +2083,10 @@
 
     }
 
-%{models_9b8dadaae5e0186045cc25e173cc28e3}%
 
+%{models_9b8dadaae5e0186045cc25e173cc28e3}%
 ------------------------
 %{models_1c5941aa841724d5c5c3b19995195e7b}%
-
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
@@ -2079,11 +2096,10 @@
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-%{models_b9d973fddd00b0e7a636cdc2488b97c2}%
 
+%{models_b9d973fddd00b0e7a636cdc2488b97c2}%
 ---------
 %{models_ba55633b90ce74fe56a1f26bc2caa70c}%
-
 
 %{models_a4ae958a2c79dbebf8a92d103bddf65f}%
 
@@ -2115,6 +2131,7 @@
 
     }
 
+
 %{models_0eb0b021dd27e2aa85dba6af77dfbcf3}%
 
 +----------------+-------------------------------------------------------------------------------------------------------------------------------+
@@ -2125,11 +2142,10 @@
 | SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                     |
 +----------------+-------------------------------------------------------------------------------------------------------------------------------+
 
-%{models_e7809539aa252eae6a52c0e6ae502cb6}%
 
+%{models_e7809539aa252eae6a52c0e6ae502cb6}%
 ^^^^^^^^^^^^^
 %{models_bb8b7c604e76018faa85a3e26939e787}%
-
 
 .. code-block:: php
 
@@ -2146,6 +2162,7 @@
             )
         ));
     }
+
 
 %{models_4a76abb3c06b31460f75d83a5e479f77}%
 
@@ -2168,13 +2185,12 @@
         ));
     }
 
+
 %{models_46ad3d1c14e7ffc25f0de5834a23d3fc}%
 
 %{models_af281cbd0128f9b889a08e8e6a23414d}%
-
 ^^^^^^^^^^
 %{models_0141a60aa91a8b35e1b87ed208a7cf3e}%
-
 
 .. code-block:: php
 
@@ -2207,6 +2223,7 @@
 
     }
 
+
 %{models_125217bbbd6bc34b9459e8b4a85c4085}%
 
 .. code-block:: bash
@@ -2220,6 +2237,7 @@
     +----+---------+--------+
     2 rows in set (0.00 sec)
 
+
 %{models_41be3c2f9af2dde83473639a1bd8743e}%
 
 .. code-block:: php
@@ -2227,6 +2245,7 @@
     <?php
 
     Users::findFirst(2)->delete();
+
 
 %{models_ca12e23cdec236f897708b9d47dda460}%
 
@@ -2241,13 +2260,12 @@
     +----+---------+--------+
     2 rows in set (0.01 sec)
 
+
 %{models_6cdd8eeb2c674a7ca7d8f638e3908bf5}%
 
 %{models_0387f5f8f86514fd76635c5b996298a7}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{models_5169662f81f2a1d71453f90ff87be761}%
-
+%{models_5169662f81f2a1d71453f90ff87be761|:doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`}%
 
 %{models_fbefc8402833e62596c10cc8fd57186b}%
 
@@ -2287,6 +2305,7 @@
 
     }
 
+
 %{models_019293c46f20180b538e4829b6b2bc3f}%
 
 .. code-block:: php
@@ -2302,6 +2321,7 @@
         }
 
     }
+
 
 %{models_e0cf9ab962c4202ec86581e7ab5d8a50}%
 
@@ -2325,6 +2345,7 @@
 
     }
 
+
 %{models_0e6c82a5255904cf8a06e50df659fee6}%
 
 .. code-block:: php
@@ -2333,11 +2354,10 @@
 
     $title = $post->getSlug();
 
-%{models_86902028f578be3733203f273cf005f9}%
 
+%{models_86902028f578be3733203f273cf005f9}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_15225e9a2356f6a977351d29714d8c55}%
-
 
 .. code-block:: php
 
@@ -2358,6 +2378,7 @@
 
     }
 
+
 %{models_a2114c4340289628297fd7fe404775e0}%
 
 .. code-block:: php
@@ -2369,19 +2390,16 @@
         use MyTimestampable;
     }
 
-%{models_70f40070204552b5f24220685f1af1d5}%
 
+%{models_70f40070204552b5f24220685f1af1d5}%
 ------------
 %{models_523caad38dca5a70a0f0df8adfa5392b}%
-
 
 %{models_e3bf59100a4c3abaa191650a6f5136e7}%
 
 %{models_088212b633bc7551876ebcd09049afd5}%
-
 ^^^^^^^^^^^^^^^^^^^
 %{models_1baaab4adfb83d440c5b42201356136b}%
-
 
 .. code-block:: php
 
@@ -2414,11 +2432,10 @@
         }
     }
 
-%{models_40fbff140ccf45a6aebbd09ef8b19fdf}%
 
+%{models_40fbff140ccf45a6aebbd09ef8b19fdf}%
 ^^^^^^^^^^^^^^^^^^^^^
 %{models_4a388701aafbd80f2477b8eeef2d0e8b}%
-
 
 .. code-block:: php
 
@@ -2434,11 +2451,10 @@
 
     $robot->save(); //{%models_d6eb181c63ee8d0d3e27606f53733df5%}
 
-%{models_b343a6effee4b8a33a6d3cd345196c36}%
 
+%{models_b343a6effee4b8a33a6d3cd345196c36}%
 ^^^^^^^^^^^^^^^^^^^^^
 %{models_cde7e7a38238e1e4337277766e8d4882}%
-
 
 .. code-block:: php
 
@@ -2478,6 +2494,7 @@
         echo "Failed, reason: ", $e->getMessage();
     }
 
+
 %{models_684fdc9b8b05dee0da51a3d679f5a2f2}%
 
 .. code-block:: php
@@ -2515,6 +2532,7 @@
         echo "Failed, reason: ", $e->getMessage();
     }
 
+
 %{models_8d689b69315df96ae544989ca3c68823}%
 
 .. code-block:: php
@@ -2524,6 +2542,7 @@
     $di->setShared('transactions', function(){
         return new \Phalcon\Mvc\Model\Transaction\Manager();
     });
+
 
 %{models_e9fa44065ffbf68c6b093ede30a4e5fe}%
 
@@ -2551,13 +2570,12 @@
 
     }
 
+
 %{models_fa2202eae95bafde3a1d0f80d04c9ea0}%
 
 %{models_b06efa6d21e5b000c6aa2d0359cf548b}%
-
 --------------------------
 %{models_42bf3fa32fab55ab4a3ff67d1d6c7c68}%
-
 
 .. code-block:: php
 
@@ -2579,6 +2597,7 @@
         }
 
     }
+
 
 %{models_c64de284c082a2c913bd581410a8a31a}%
 
@@ -2604,6 +2623,7 @@
     $robot->theYear = 2999;
     $robot->save();
 
+
 %{models_528e38143ba42116d5e4ec6c8c4ffb01}%
 
 * {%models_4cb78697665b755adce89abbc9d01252%}
@@ -2616,16 +2636,12 @@
 * {%models_72493b148e97c79baeaace0eab6fd5ee%}
 
 %{models_4fec5c7316082223510a448180b8dad4}%
-
 --------------------------
 %{models_1c044d7aaef440ba786bdc767bda9fd9}%
 
-
 %{models_b77e6d4bf8411c1cc8b034cc2a02b89a}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f5266b4beb59809046580a6b9a8d954}%
-
 
 .. code-block:: php
 
@@ -2641,6 +2657,7 @@
             break;
         }
     }
+
 
 %{models_6b440a04add8ea312c29b3e07271d4d2}%
 
@@ -2672,11 +2689,10 @@
         return true;
     });
 
-%{models_3a148cb8c3ab4930a041c5abd3aa9bdb}%
 
+%{models_3a148cb8c3ab4930a041c5abd3aa9bdb}%
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_5f5266b4beb59809046580a6b9a8d954}%
-
 
 .. code-block:: php
 
@@ -2690,6 +2706,7 @@
             break;
         }
     }
+
 
 %{models_6b440a04add8ea312c29b3e07271d4d2}%
 
@@ -2714,11 +2731,10 @@
     });
 
 
-%{models_68ad0c2d8a1b1d369991023ff57d29b7}%
 
+%{models_68ad0c2d8a1b1d369991023ff57d29b7}%
 ----------------
 %{models_f88a41ead0b918d0234e87adadb8f2b8}%
-
 
 .. code-block:: php
 
@@ -2731,6 +2747,7 @@
             $this->keepSnapshots(true);
         }
     }
+
 
 %{models_d954f57ca241e469f69763172c6a9b69}%
 
@@ -2748,11 +2765,10 @@
     var_dump($robot->hasChanged('name')); // {%models_b326b5062b2f0e69046810717534cb09%}
     var_dump($robot->hasChanged('type')); // {%models_68934a3e9455fa72420237eb05902327%}
 
+
 %{models_70374a9ca8493aae79270629e397bd00}%
-
 ----------------
-%{models_9a962a5619f9371532434aab8feac19c}%
-
+%{models_9a962a5619f9371532434aab8feac19c|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`|:doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>`}%
 
 %{models_a8a4fb9cdb3c450c510e3f24ce4f4253}%
 
@@ -2773,11 +2789,10 @@
     $dataTypes = $metaData->getDataTypes($robot);
     print_r($dataTypes);
 
-%{models_bfd71f3927f6c86526558f97925a5e8f}%
 
+%{models_bfd71f3927f6c86526558f97925a5e8f}%
 ^^^^^^^^^^^^^^^^^
 %{models_1440dbcf5f811b0cef85d8a3c4ee376a}%
-
 
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                                       |
@@ -2792,6 +2807,7 @@
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
 +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+
 
 %{models_b6b0ff2517693e49750e1f7b648d0ba6}%
 
@@ -2810,11 +2826,10 @@
         return $metaData;
     };
 
-%{models_55ca78ce00d3f2722f71be1173f6b3ce}%
 
+%{models_55ca78ce00d3f2722f71be1173f6b3ce}%
 ^^^^^^^^^^^^^^^^^^^^
 %{models_f8d1077a4feeb4ed05c90c606db3dc50}%
-
 
 %{models_b0c27aa05dcb7d1c9b7811f112ad76d8}%
 
@@ -2836,17 +2851,14 @@
         return $metaData;
     };
 
-%{models_fb54cb01fbccd42cd7a3b5b4b29c760f}%
 
+%{models_fb54cb01fbccd42cd7a3b5b4b29c760f}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{models_9d03c973b5fc84b79884ffb6e8dabef1}%
 
-
 %{models_ea3cffb13799871aefa54facf52160c4}%
-
 ^^^^^^^^^^^^^^^^^^^^
-%{models_6f0310d76056f6e2ab63703f26e90a1b}%
-
+%{models_6f0310d76056f6e2ab63703f26e90a1b|:doc:`annotations <annotations>`}%
 
 .. code-block:: php
 
@@ -2879,6 +2891,7 @@
 
     }
 
+
 %{models_2b2322672392dd3dea9fff06ede98691}%
 
 %{models_15b215324dfe32956e0c8e2aa256e0d9}%
@@ -2893,6 +2906,7 @@
 | Column   | This marks an attribute as a mapped column            |
 +----------+-------------------------------------------------------+
 
+
 %{models_18288132ec8f3aca3a23d0d6d61a616a}%
 
 +----------+-------------------------------------------------------+
@@ -2904,6 +2918,7 @@
 +----------+-------------------------------------------------------+
 | nullable | Set whether the column accepts null values or not     |
 +----------+-------------------------------------------------------+
+
 
 %{models_3fd9c7c7f0beb190f4f9394614ba70de}%
 
@@ -2928,11 +2943,10 @@
         return $metaData;
     };
 
-%{models_e2245e0ad6ce4309e33f9319c2be6b9c}%
 
+%{models_e2245e0ad6ce4309e33f9319c2be6b9c}%
 ^^^^^^^^^^^^^^^^
 %{models_67cc3bdd8608baa67d5af54d1cb344e4}%
-
 
 %{models_16d0fb50c035c6c0bda4e4df25a95edc}%
 
@@ -3014,11 +3028,10 @@
 
     }
 
-%{models_56d911cac7c77478592e074bfe9e0460}%
 
+%{models_56d911cac7c77478592e074bfe9e0460}%
 ------------------------------
 %{models_13738e1aa3deb47d73c26d2c1d47b25b}%
-
 
 .. code-block:: php
 
@@ -3034,11 +3047,10 @@
 
     }
 
+
 %{models_78d81576bf0a8efea929a760098c2829}%
-
 --------------------------
-%{models_48ad6c28516042ea030885a80828dbce}%
-
+%{models_48ad6c28516042ea030885a80828dbce|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -3064,6 +3076,7 @@
         ));
     });
 
+
 %{models_aae5be7f170ab14ae4df454c73a9fc63}%
 
 .. code-block:: php
@@ -3079,6 +3092,7 @@
         }
 
     }
+
 
 %{models_b5ca7287e02d9aa96e5539d8c935b459}%
 
@@ -3096,6 +3110,7 @@
         }
 
     }
+
 
 %{models_d15589e70e20a93dc6fcba29c1570a2c}%
 
@@ -3137,6 +3152,7 @@
 
     }
 
+
 %{models_6d5fa925b83f6aa8e7a9f922539e963e}%
 
 .. code-block:: php
@@ -3145,11 +3161,10 @@
 
     $robot = Robots::findFirst('id = 101');
 
+
 %{models_97bf04884de98c0f2516aba8c1820c0a}%
-
 --------------------------------
-%{models_8ebbcaebc2cc8a15596bd23885982a50}%
-
+%{models_8ebbcaebc2cc8a15596bd23885982a50|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -3186,6 +3201,7 @@
         return $connection;
     });
 
+
 %{models_c98b4e61c4cf65ed96146755ecde763b}%
 
 .. code-block:: php
@@ -3199,6 +3215,7 @@
         echo "Cannot save robot";
     }
 
+
 %{models_0088d92ba0746f6ca32168e18b0acd69}%
 
 .. code-block:: irc
@@ -3206,11 +3223,10 @@
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
+
 %{models_f7dc7675831e283edd54b6e7e3501a7e}%
-
 ------------------------
-%{models_0a2a06fb3507bac817f276ad915dd3e9}%
-
+%{models_0a2a06fb3507bac817f276ad915dd3e9|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -3250,6 +3266,7 @@
         return $connection;
     });
 
+
 %{models_41c61785167c1dcf8f87ed63af11cddc}%
 
 .. code-block:: php
@@ -3271,13 +3288,12 @@
        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
+
 %{models_6c6b6fc7cddd80dc56fd5605ee79726d}%
 
 %{models_bf20ac68334be437956a656824fc4005}%
-
 ------------------------------
 %{models_4b0148a30c76d202c67e8fd1fd0e8642}%
-
 
 .. code-block:: php
 
@@ -3299,13 +3315,12 @@
 
     }
 
+
 %{models_f651a3f30dbfb9e7186a28cc284e8ce5}%
 
 %{models_6b15f5193c9dc33fd43d3c2de2f7a3fe}%
-
 ---------------------------
 %{models_e90dafd6a6d737e3f11771c9e2615633}%
-
 
 .. code-block:: php
 
@@ -3315,6 +3330,7 @@
         'events' => false,
         'columnRenaming' => false
     ));
+
 
 %{models_4a145c294a5e052cf51f7f37bac8dcc7}%
 
@@ -3332,9 +3348,8 @@
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
 +---------------------+----------------------------------------------------------------------------------+---------+
 
+
 %{models_d3e54f7c04408d6d1a884897bca4169e}%
-
 ---------------------
-%{models_c5b75fd5c3845db3b35849961c1ccf23}%
-
+%{models_c5b75fd5c3845db3b35849961c1ccf23|:doc:`Phalcon\\Mvc\\Model <models>`}%
 

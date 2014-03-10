@@ -1,8 +1,6 @@
 %{db_9aa0bb0b13e498761331dad3fb71c147}%
-
 ==========================
-%{db_dd7a9ea0a5bd6767dbe2e787be6b8749}%
-
+%{db_dd7a9ea0a5bd6767dbe2e787be6b8749|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 %{db_57a3a9bee3091b994011058761abea1e}%
 
@@ -11,11 +9,10 @@
     for a complete reference.
 
 
-%{db_16b634f6806e7bef1eb15a9c2d7e5fef}%
 
+%{db_16b634f6806e7bef1eb15a9c2d7e5fef}%
 -----------------
 %{db_7152b235e4d2ec36da8551669390c6f5}%
-
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
@@ -29,17 +26,14 @@
 | Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
+
 %{db_206bd6266ccc781d8844f3db2de5d557}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{db_b29dfc4cee5a4d57c6c80fafe9d45300}%
-
+%{db_b29dfc4cee5a4d57c6c80fafe9d45300|:doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>`}%
 
 %{db_1c404351c1ded3af7104b1367eca2298}%
-
 -----------------
 %{db_e39afb69212957a158e65726002b28ea}%
-
 
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | Name       | Description                                         | API                                                                            |
@@ -53,17 +47,14 @@
 | Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
+
 %{db_4cab8540827f652e67fdeca3664ad02d}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{db_4eff546c0e12b30b81bb114b580b80c3}%
-
+%{db_4eff546c0e12b30b81bb114b580b80c3|:doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`}%
 
 %{db_1e84f34a1540652f1d97e6e1b494eaba}%
-
 -----------------------
 %{db_324740fa028cb8a427a50099a1748b93}%
-
 
 .. code-block:: php
 
@@ -135,11 +126,10 @@
     // {%db_90a4e8d1f7195a0627f7cb0d3e84e07d%}
     $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
-%{db_85263fa8f55a37fb6480fae562eb5aea}%
 
+%{db_85263fa8f55a37fb6480fae562eb5aea}%
 ---------------------------------
 %{db_9e0763da7d3608a50dff7cd06c825ea1}%
-
 
 .. code-block:: php
 
@@ -157,11 +147,10 @@
         )
     ));
 
+
 %{db_9e5e34140a91e9ba6f06e56f6ed231fc}%
-
 ------------
-%{db_325bb36cd0a7cf870946ddf1b5a4eaff}%
-
+%{db_325bb36cd0a7cf870946ddf1b5a4eaff|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -186,6 +175,7 @@
     // {%db_37eda58e4837344d3c8d9df286369018%}
     $robot = $connection->fetchOne($sql);
 
+
 %{db_606a77912ac91d380adb17023e52c0b5}%
 
 +--------------------------+-----------------------------------------------------------+
@@ -200,6 +190,7 @@
 | Phalcon\\Db::FETCH_OBJ   | Return an object instead of an array                      |
 +--------------------------+-----------------------------------------------------------+
 
+
 .. code-block:: php
 
     <?php
@@ -212,7 +203,8 @@
        echo $robot[0];
     }
 
-%{db_1c59b3da59b8272679fd5df52d3c41d8}%
+
+%{db_1c59b3da59b8272679fd5df52d3c41d8|:doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`}%
 
 .. code-block:: php
 
@@ -233,11 +225,10 @@
     // {%db_2c4f0d3e50ef2ca74fe3702595b073ba%}
     echo $result->numRows();
 
+
 %{db_822e9e4f30d1487b43dff638b7288be9}%
-
 ------------------
-%{db_dd4e5a58a426942b5f2b39f71ce93056}%
-
+%{db_dd4e5a58a426942b5f2b39f71ce93056|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -251,11 +242,10 @@
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
-%{db_775f4a7962f7f6a09e70cb9b792ce716}%
 
+%{db_775f4a7962f7f6a09e70cb9b792ce716}%
 --------------------------------
 %{db_7f858ef35a717f24acb02ed361b1fa11}%
-
 
 .. code-block:: php
 
@@ -303,11 +293,10 @@
     // {%db_180c84f251a905b2b85b4d0284f00e37%}
     $success = $connection->delete("robots", "id = 101");
 
-%{db_51d4553ed9785f47259855221036781b}%
 
+%{db_51d4553ed9785f47259855221036781b}%
 ------------------------------------
 %{db_34f0e922f688cb71302678a3fe494a24}%
-
 
 .. code-block:: php
 
@@ -331,7 +320,8 @@
         $connection->rollback();
     }
 
-%{db_b0bc1bb3d3f3534fc77857f7acb96867}%
+
+%{db_b0bc1bb3d3f3534fc77857f7acb96867|`nested transactions`_}%
 
 .. code-block:: php
 
@@ -373,11 +363,10 @@
         $connection->rollback();
     }
 
+
 %{db_754a52a77d610f44a39532d53dcc379c}%
-
 ---------------
-%{db_1228f1a3099b65199cdf4dbd36ec9610}%
-
+%{db_1228f1a3099b65199cdf4dbd36ec9610|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`EventsManager <events>`}%
 
 +---------------------+-----------------------------------------------------------+---------------------+
 | Event Name          | Triggered                                                 | Can stop operation? |
@@ -396,6 +385,7 @@
 +---------------------+-----------------------------------------------------------+---------------------+
 | commitTransaction   | Before a transaction is committed                         | No                  |
 +---------------------+------------------------------------------------------------+--------------------+
+
 
 %{db_c5d4c5c6f3320fdd992a9f9b94902b4f}%
 
@@ -421,6 +411,7 @@
     //{%db_b7efb4940856cd2cf63a1277b1523399%}
     $connection->setEventsManager($eventsManager);
 
+
 %{db_ab3820428eeff2b86851ff180213b216}%
 
 .. code-block:: php
@@ -440,13 +431,12 @@
         return true;
     });
 
+
 %{db_f7dc7675831e283edd54b6e7e3501a7e}%
-
 ------------------------
-%{db_436beb4c7f7b14d292720d029778673f}%
+%{db_436beb4c7f7b14d292720d029778673f|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
-
-%{db_e420b53e6636cfef39f921139e0a78a3}%
+%{db_e420b53e6636cfef39f921139e0a78a3|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
 .. code-block:: php
 
@@ -489,7 +479,8 @@
     echo "Final Time: ", $profile->getFinalTime(), "\n";
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
-%{db_273d004566cba2d67a4f24007c2635d2}%
+
+%{db_273d004566cba2d67a4f24007c2635d2|:doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`}%
 
 .. code-block:: php
 
@@ -529,11 +520,10 @@
     //{%db_eb84e69d88b2666742c4434b5795b5e8%}
     $eventsManager->attach('db', $dbProfiler);
 
+
 %{db_e88928f2fded39f58528a121fb3de45c}%
-
 ----------------------
-%{db_98a062ff44434de3c243c3d660aefbcb}%
-
+%{db_98a062ff44434de3c243c3d660aefbcb|:doc:`Phalcon\\Db <../api/Phalcon_Db>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -564,6 +554,7 @@
         array("name", "price")
     );
 
+
 %{db_0088d92ba0746f6ca32168e18b0acd69}%
 
 .. code-block:: php
@@ -572,17 +563,14 @@
     (name, price) VALUES ('Hot pepper', 3.50)
 
 
-%{db_3343eea266e593d47673c1c99603e34c}%
 
+%{db_3343eea266e593d47673c1c99603e34c}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{db_06e4bba9bd86a521f5b444fdb93fe6d2}%
 
-
 %{db_ecd1c68e16f252c70d68cfe1e6e0dcc1}%
-
 -----------------------
-%{db_30ed1e1bed6a8b3bb205c970e0746eaf}%
-
+%{db_30ed1e1bed6a8b3bb205c970e0746eaf|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -613,6 +601,7 @@
         print_r($reference->getReferencedColumns());
     }
 
+
 %{db_fd4e007472fe028d0e927e9cc2f6b21c}%
 
 +-------+----------------------------------------------------+
@@ -627,6 +616,7 @@
 | Null  | Does the column allow null values?                 |
 +-------+----------------------------------------------------+
 
+
 %{db_b281bcb20b9fff76eec329324fc483e6}%
 
 .. code-block:: php
@@ -639,17 +629,14 @@
     // {%db_487d3b66ae96713415193b9a08169997%}
     $exists = $connection->viewExists("robots");
 
+
 %{db_42bc1888fdf7c5f77d9ca21f38e0ed72}%
-
 ---------------------------------
-%{db_104661c5a61310750d9438ca194d8a0a}%
-
+%{db_104661c5a61310750d9438ca194d8a0a|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 %{db_5a549338622e7f241d71991a1a20c6f2}%
-
 ^^^^^^^^^^^^^^^
 %{db_aee25ce86c0637f8e093c3ce704e249d}%
-
 
 .. code-block:: php
 
@@ -688,7 +675,8 @@
         )
     );
 
-%{db_9f3a3c4406f9de1d302ba18c03442921}%
+
+%{db_9f3a3c4406f9de1d302ba18c03442921|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -714,6 +702,7 @@
 | "after"         | Column must be placed after indicated column                                                                                               | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
+
 %{db_dc7a84782c94708e2445f7047dac825c}%
 
 * {%db_e64f0954f63861dae89f79260e579f6e%}
@@ -738,11 +727,10 @@
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
+
 %{db_c3ed2bc70e428245f4bdd9edcf4cd667}%
-
 ^^^^^^^^^^^^^^^
-%{db_6863bc8cccccba68363558b317c65eb3}%
-
+%{db_6863bc8cccccba68363558b317c65eb3|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -771,9 +759,8 @@
     $connection->deleteColumn("robots", null, "name");
 
 
-%{db_cff3f5c3bc556746e03f54e9d880ab64}%
 
+%{db_cff3f5c3bc556746e03f54e9d880ab64}%
 ^^^^^^^^^^^^^^^
 %{db_04bbf7dd1154ed612e9ab317a81a7439}%
-
 

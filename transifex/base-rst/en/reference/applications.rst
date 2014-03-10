@@ -1,20 +1,14 @@
 %{applications_b3473fd26b7d8cc92e497638ddc6ccd3}%
-
 ================
-%{applications_2e9b5038eadc576f44b08732f15b6272}%
-
+%{applications_2e9b5038eadc576f44b08732f15b6272|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 %{applications_5c72b7de87d984c178bc0e685791918e}%
-
 -----------------------------------
 %{applications_30f30bef89d983b1a62c9e5ff1737a1e}%
 
-
 %{applications_f097132aa35267eefdbc61076bc00ea6}%
-
 ^^^^^^^^^^^^^
 %{applications_416800eeb4591d20f3650afb9c5cbe71}%
-
 
 .. code-block:: php
 
@@ -27,6 +21,7 @@
             css/
             img/
             js/
+
 
 %{applications_aeb6b481a934736a9317de8e35b816ca}%
 
@@ -66,6 +61,7 @@
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
+
 
 %{applications_515ae1eb1a3c418c9df6567ee8ebc937}%
 
@@ -116,11 +112,10 @@
     }
 
 
-%{applications_5751c2fd1cb6ec657c0ee1645cd00695}%
 
+%{applications_5751c2fd1cb6ec657c0ee1645cd00695}%
 ^^^^^^^^^^^^
 %{applications_655e8a68e201a868cce8e36a8694ab55}%
-
 
 .. code-block:: php
 
@@ -140,6 +135,7 @@
         css/
         img/
         js/
+
 
 %{applications_2da6e9ab0cc34715fd676223767bc44e}%
 
@@ -197,6 +193,7 @@
         }
 
     }
+
 
 %{applications_44e1cebcbff50d87515a10aa14148592}%
 
@@ -263,6 +260,7 @@
         echo $e->getMessage();
     }
 
+
 %{applications_0d4cde41b79e03bb90ff94219e5b5a66}%
 
 .. code-block:: php
@@ -293,13 +291,12 @@
         )
     );
 
-%{applications_ff9fff92ce682ad45e321c4708a60c68}%
+
+%{applications_ff9fff92ce682ad45e321c4708a60c68|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 %{applications_f755654cd30447787e75f8ac4b685c21}%
-
 ----------------------------------
-%{applications_404f1c1169ce1946415ce2cf66ea0368}%
-
+%{applications_404f1c1169ce1946415ce2cf66ea0368|:doc:`tutorial <tutorial>`|:doc:`Phalcon Devtools <tools>`}%
 
 .. code-block:: php
 
@@ -322,6 +319,7 @@
         echo "Exception: ", $e->getMessage();
     }
 
+
 %{applications_5b7a57d61632637bde6f41d00b356952}%
 
 .. code-block:: php
@@ -330,11 +328,10 @@
 
     echo $application->handle()->getContent();
 
+
 %{applications_5772ed72bed6d4143cdce5714eae250b}%
-
 -------------------
-%{applications_2509fb7e23167c2029f66b267149e12b}%
-
+%{applications_2509fb7e23167c2029f66b267149e12b|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 .. code-block:: php
 
@@ -381,7 +378,8 @@
     // {%applications_730373716a0b13e03cde896c002673b5%}
     echo $response->getContent();
 
-%{applications_37a1738cd5f825f57266a2d2d020ad92}%
+
+%{applications_37a1738cd5f825f57266a2d2d020ad92|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 .. code-block:: php
 
@@ -411,6 +409,7 @@
         //{%applications_efc3bcebe3b11474027090395185edd2%}
         $response->send();
     }
+
 
 %{applications_a40a4e9d3dcfc83a609532a73f819a22}%
 
@@ -458,13 +457,12 @@
         $response->send();
     }
 
-%{applications_37c437cd1d3ac2f34535328f99c300ab}%
+
+%{applications_37c437cd1d3ac2f34535328f99c300ab|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 %{applications_e49f4ec3985839b3237b74a15b496e3e}%
-
 ------------------
-%{applications_bc546a9a38f97da08a7600d2ac9addda}%
-
+%{applications_bc546a9a38f97da08a7600d2ac9addda|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`|:doc:`EventsManager <events>`}%
 
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
@@ -479,6 +477,7 @@
 +---------------------+--------------------------------------------------------------+
 | afterHandleRequest  | After execute the dispatch loop                              |
 +---------------------+--------------------------------------------------------------+
+
 
 %{applications_4eb434eb37be7b4a57c178fa4af88c76}%
 
@@ -498,4 +497,5 @@
             // ...
         }
     );
+
 

@@ -1,8 +1,6 @@
 %{forms_268d46b16a1976672dfca0eb3004a1c6}%
-
 =====
 %{forms_c8d311b9dc231bba212a1daa1a334929}%
-
 
 %{forms_09046bd05925c7ff83bddee4094d745a}%
 
@@ -24,6 +22,7 @@
         'H' => 'Home',
         'C' => 'Cell'
     )));
+
 
 %{forms_893e7de61da03f27bf81496bea047a78}%
 
@@ -54,7 +53,8 @@
 
     </form>
 
-%{forms_dd7f9c3e556db70c82d729d7a7dd7fa2}%
+
+%{forms_dd7f9c3e556db70c82d729d7a7dd7fa2|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: html+php
 
@@ -62,6 +62,7 @@
         <label>Name</label>
         <?php echo $form->render("name", array('maxlength' => 30, 'placeholder' => 'Type your name')) ?>
     </p>
+
 
 %{forms_ae156d94a8f7c96ac0e8477e37df4225}%
 
@@ -74,11 +75,10 @@
         'placeholder' => 'Type your name'
     )));
 
-%{forms_b6a77d0fb8bf4d24a2041c6dc533b9c9}%
 
+%{forms_b6a77d0fb8bf4d24a2041c6dc533b9c9}%
 ------------------
 %{forms_46118ce7551fd5b99ce1494d067d7e35}%
-
 
 .. code-block:: php
 
@@ -103,6 +103,7 @@
     }
 
 :doc:`Phalcon\\Forms\\Form <../api/Phalcon_Forms_Form>` extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`
+
 %{forms_b66e4848b3bda7c0e8df7255d7a1d005}%
 
 .. code-block:: php
@@ -138,6 +139,7 @@
         }
     }
 
+
 %{forms_69a37c891f1c62b554a342c50a6a3cf8}%
 
 .. code-block:: php
@@ -169,6 +171,7 @@
         }
     }
 
+
 %{forms_1829d8e5d10a665bd39d5dc5b4696b02}%
 
 .. code-block:: php
@@ -177,11 +180,10 @@
 
     $form = new UsersForm(new Users(), array('edit' => true));
 
+
 %{forms_c81f893f5539efed7a6b2aae2d783e35}%
-
 ----------
-%{forms_467b17a6f3cff54a8a35f41514bdc86f}%
-
+%{forms_467b17a6f3cff54a8a35f41514bdc86f|:doc:`validation <validation>`}%
 
 .. code-block:: php
 
@@ -204,6 +206,7 @@
 
     $form->add($name);
 
+
 %{forms_a7fe5ae6c44cbf9fe34b36a02be1be0e}%
 
 .. code-block:: php
@@ -215,6 +218,7 @@
             echo $message, '<br>';
         }
     }
+
 
 %{forms_8cfec398b55e710d9604a7c436050be6}%
 
@@ -231,6 +235,7 @@
         }
     }
 
+
 %{forms_3fb3ea3db05b9e1080de859d46f0b814}%
 
 .. code-block:: php
@@ -241,17 +246,14 @@
         echo $message, '<br>';
     }
 
-%{forms_6cfe651493a752780c8fa48b71bdc818}%
 
+%{forms_6cfe651493a752780c8fa48b71bdc818}%
 ---------
 %{forms_d52da57fff163b8d574cc0bb032dfd7d}%
 
-
 %{forms_b2030575ebc9fde0b4c6ea3a4625fbd6}%
-
 --------------------
 %{forms_b91be4cb2b5626cabb9965b2a0858548}%
-
 
 .. code-block:: php
 
@@ -265,11 +267,13 @@
 
     $form->add(new Text("year"));
 
+
 %{forms_b28bcc0439b5154f7ed057f8489f90e5}%
 
 .. code-block:: html+php
 
     <?php echo $form->render('name') ?>
+
 
 %{forms_6da412a2f660aebd78578e72791688d0}%
 
@@ -286,6 +290,7 @@
         $robot->save();
     }
 
+
 %{forms_d30a6b17040285931e0f8c947d33cfa3}%
 
 .. code-block:: php
@@ -300,6 +305,7 @@
         public $receiveEmails = 'No';
 
     }
+
 
 %{forms_97eb3ee480823a9a95735e9608c7a797}%
 
@@ -320,6 +326,7 @@
         'Yes' => 'Yes, please!',
         'No' => 'No, thanks'
     )));
+
 
 %{forms_baf2a1f8830086140eebac87fdb93e9c}%
 
@@ -346,11 +353,10 @@
 
     }
 
-%{forms_267733a64ba9eb261ead15feedb03145}%
 
+%{forms_267733a64ba9eb261ead15feedb03145}%
 -------------
 %{forms_955db7b1fad92c1ef8cecdf5046a7e4b}%
-
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Description                                                                                                                                                      | Example                                                           |
@@ -376,11 +382,10 @@
 | Submit       | Generate INPUT[type=submit] elements                                                                                                                             | :doc:`Example <../api/Phalcon_Forms_Element_Submit>`              |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-%{forms_e645d2a669a3a9bcdd068f9166964e8c}%
 
+%{forms_e645d2a669a3a9bcdd068f9166964e8c}%
 ---------------
 %{forms_19c30705d1c08473182f5ca8868cb348}%
-
 
 .. code-block:: html+php
 
@@ -394,11 +399,10 @@
         }
     }
 
-%{forms_eb42718fc9fd2cd9c708358693722c8f}%
 
+%{forms_eb42718fc9fd2cd9c708358693722c8f}%
 ---------------
 %{forms_4604a283537fa2bcbe51f858027d2fc8}%
-
 
 .. code-block:: html+php
 
@@ -430,6 +434,7 @@
         ?>
         <input type="submit" value="Send"/>
     </form>
+
 
 %{forms_e996858ec164c2b15da16cb43a8ad731}%
 
@@ -468,6 +473,7 @@
 
     }
 
+
 %{forms_65089c75f285a799c01cf5255970f306}%
 
 .. code-block:: php
@@ -478,11 +484,10 @@
 
     echo $element->renderDecorated('telephone');
 
-%{forms_99367eefd1b35e19421d526542d01dc9}%
 
+%{forms_99367eefd1b35e19421d526542d01dc9}%
 ----------------------
 %{forms_e75214c5550dd80b0ed2d3cb0d17fad5}%
-
 
 .. code-block:: php
 
@@ -499,11 +504,10 @@
         }
     }
 
-%{forms_f44949bed8f1275638b7022df8e51ed7}%
 
+%{forms_f44949bed8f1275638b7022df8e51ed7}%
 -------------
 %{forms_f0111160333068fb652bd469bd43a195}%
-
 
 .. code-block:: php
 
@@ -513,6 +517,7 @@
         return new Phalcon\Forms\Manager();
     };
 
+
 %{forms_3ad2f73417ccd3fdc7714a4f13f3f4c5}%
 
 .. code-block:: php
@@ -521,6 +526,7 @@
 
     $this->forms->set('login', new LoginForm());
 
+
 %{forms_04054dc72bd09b7854bfcdbf3be94cd4}%
 
 .. code-block:: php
@@ -528,4 +534,5 @@
     <?php
 
     echo $this->forms->get('login')->render();
+
 

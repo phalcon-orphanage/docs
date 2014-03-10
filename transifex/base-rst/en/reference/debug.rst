@@ -1,20 +1,18 @@
 %{debug_4eface2a7de663488d577e631a23894c}%
-
 ======================
 
 .. figure:: ../_static/img/xdebug-1.jpg
     :align: center
 
 
-%{debug_9036570d0a52e2a62d934cb7d9ce6b84}%
+
+%{debug_9036570d0a52e2a62d934cb7d9ce6b84|`Exception class`_}%
 
 %{debug_210c8aebc2022b155df5c183bb5cb17f}%
 
 %{debug_73f8f95e13a4d7741a9512277b7c4d7f}%
-
 -------------------
 %{debug_523cc31a1df32a41cce5d95b2c0715e8}%
-
 
 .. code-block:: php
 
@@ -28,9 +26,10 @@
 
     }
 
-%{debug_eac48913bd81cd499b1a3d73d9062393}%
 
-%{debug_bd065365a4661deaa03c3731cad47d8c}%
+%{debug_eac48913bd81cd499b1a3d73d9062393|`Exception class`_}%
+
+%{debug_bd065365a4661deaa03c3731cad47d8c|`Exception class`_}%
 
 .. code-block:: php
 
@@ -59,7 +58,8 @@
 
     }
 
-%{debug_6d3633c99d16ca01ec9dce8dc98f1798}%
+
+%{debug_6d3633c99d16ca01ec9dce8dc98f1798|`Exception class`_}%
 
 .. code-block:: php
 
@@ -75,6 +75,7 @@
         echo " Line=", $e->getLine(), "\n";
         echo $e->getTraceAsString();
     }
+
 
 %{debug_dd49308420b07ae1c4378aae66682c09}%
 
@@ -103,13 +104,12 @@
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-%{debug_02cd0382db0c91dd063649fe092534fd}%
+
+%{debug_02cd0382db0c91dd063649fe092534fd|`Exception::getTrace`_}%
 
 %{debug_6815edaaedecedc259ccc2bf3bc9a8ab}%
-
 ---------------
 %{debug_34bf6cfe26a83342319188f04ea2a32b}%
-
 
 %{debug_e5db5bbfbd5738ab0936ea57d5410a0d}%
 
@@ -118,6 +118,7 @@
     <div align="center">
         <iframe src="http://player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
+
 
 
 %{debug_bf2492c60695469d81765ce32b7d132a}%
@@ -129,13 +130,12 @@
     $debug = new \Phalcon\Debug();
     $debug->listen();
 
+
 %{debug_3f66fbeb4a21fd9a31b32e75e9a6f51b}%
 
 %{debug_3876e10bb15f5eb320587acd70db3601}%
-
 -----------------------------
-%{debug_c380bea5aa12eeccb6aa5537acb2f685}%
-
+%{debug_c380bea5aa12eeccb6aa5537acb2f685|`Reflection API`_}%
 
 .. code-block:: php
 
@@ -143,6 +143,7 @@
 
     $router = new Phalcon\Mvc\Router();
     print_r($router);
+
 
 %{debug_01a46a264a9d32cbe26455af4cb3f7db}%
 
@@ -200,11 +201,10 @@
     )
 
 
-%{debug_73ed294323e5fd47b34d920d3ad4e48d}%
 
+%{debug_73ed294323e5fd47b34d920d3ad4e48d}%
 ------------
 %{debug_6f164c8227eee5c2e705532bdeea1ab4}%
-
 
 %{debug_3178da61cc3ae187bf088906d7a25306}%
 
@@ -215,11 +215,13 @@
     </div>
 
 
+
 %{debug_ae74bd6270e7f30b07d3ee763d6ea7e9}%
 
 .. highlights::
 
     We highly recommend use at least XDebug 2.2.3 for a better compatibility with Phalcon
+
 
 
 %{debug_0a9948cd276e0d53c835519557be16f9}%
@@ -256,6 +258,7 @@
 
     }
 
+
 %{debug_6410c830e5acbec2b28846e176751584}%
 
 .. code-block:: html
@@ -272,5 +275,6 @@
         0.0419     740144   4. xdebug_print_function_stack()
             /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
 
-%{debug_a7fa2ff4c7646e26ff2cc4f0f52cfff2}%
+
+%{debug_a7fa2ff4c7646e26ff2cc4f0f52cfff2|`XDebug documentation`_}%
 

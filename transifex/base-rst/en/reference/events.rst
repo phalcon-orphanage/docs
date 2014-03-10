@@ -1,14 +1,10 @@
 %{events_afb299ea125f4b358f027bbaeb866b2d}%
-
 ==============
 %{events_aac87938048f8f57d6a8477faebe84e6}%
 
-
 %{events_b2923a136099a523e93b60cda2e7677e}%
-
 -------------
-%{events_d3781bf0aa8891e4b4b478e626ec61ba}%
-
+%{events_d3781bf0aa8891e4b4b478e626ec61ba|:doc:`Phalcon\\Db <../api/Phalcon_Db>`}%
 
 .. code-block:: php
 
@@ -33,6 +29,7 @@
         }
 
     }
+
 
 %{events_5f3235ad2fb6e8dba5ace17fd39e99f0}%
 
@@ -64,6 +61,7 @@
     //{%events_a0ea75b3e78f593f08de2e911b50a16d%}
     $connection->query("SELECT * FROM products p WHERE p.status = 1");
 
+
 %{events_fd5479e2985d7c1d56a8d7c64d0f5340}%
 
 .. code-block:: php
@@ -88,6 +86,7 @@
         }
 
     }
+
 
 %{events_163988a35ef91aeddfd6eaae7eaa62f7}%
 
@@ -139,6 +138,7 @@
 
     }
 
+
 %{events_f4ac5ffededae837cd3d46cf9f57cf0c}%
 
 .. code-block:: php
@@ -155,6 +155,7 @@
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
+
 %{events_c15d5e6bd78d7b5876de2af36691bda1}%
 
 .. code-block:: php
@@ -168,11 +169,10 @@
         }
     });
 
-%{events_3b8e6a649d2826cb536fa01f0646965b}%
 
+%{events_3b8e6a649d2826cb536fa01f0646965b}%
 ---------------------------------------
 %{events_1b4f6a3242af44a8a67fd89078e36bc0}%
-
 
 .. code-block:: php
 
@@ -206,6 +206,7 @@
 
     }
 
+
 %{events_d55f27db8320d6582537f9bb067f83c6}%
 
 .. code-block:: php
@@ -226,6 +227,7 @@
         }
 
     }
+
 
 %{events_d08664e6abf6890d19799d45df0d5277}%
 
@@ -248,12 +250,14 @@
     //{%events_7db9f2fbcc01d80b3d28204cfffba8e4%}
     $myComponent->someTask();
 
+
 %{events_bb8a89aaf595ffb10b7da5699454a29e}%
 
 .. code-block:: php
 
     Here, beforeSomeTask
     Here, afterSomeTask
+
 
 %{events_febbb228c19a2f26d17e27168fa25795}%
 
@@ -262,6 +266,7 @@
     <?php
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData);
+
 
 %{events_0b904e84f1ec1fa79efa8df387dfb9d4}%
 
@@ -279,6 +284,7 @@
         print_r($event->getData());
     });
 
+
 %{events_14bd8a400efae29723f96be78bdb675a}%
 
 .. code-block:: php
@@ -290,11 +296,10 @@
         //...
     });
 
-%{events_aa0f658456ea9d7a3cd2da9a6ccaedf7}%
 
+%{events_aa0f658456ea9d7a3cd2da9a6ccaedf7}%
 -----------------------------
 %{events_8959d6f8105504c11841abab2ab8bd84}%
-
 
 .. code-block:: php
 
@@ -312,6 +317,7 @@
 
     });
 
+
 %{events_4ed65d632a3128d31fa81087f63e7043}%
 
 .. code-block:: php
@@ -320,11 +326,10 @@
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
-%{events_f4e32e14dcbb772d36896def5709ee7b}%
 
+%{events_f4e32e14dcbb772d36896def5709ee7b}%
 -------------------
 %{events_0fa41c6a956acf07a6651af119844aab}%
-
 
 .. code-block:: php
 
@@ -336,11 +341,10 @@
     $evManager->attach('db', new DbListener(), 100); //{%events_d908af86e640cf898aaf55a070a9f8a1%}
     $evManager->attach('db', new DbListener(), 50); //{%events_a32ccf656e86ac8335dc85271fd7051f%}
 
-%{events_be2ad66dadd0459a65075bfc2343e9d5}%
 
+%{events_be2ad66dadd0459a65075bfc2343e9d5}%
 --------------------
 %{events_8192798658b3e74a5e39425665bffe65}%
-
 
 .. code-block:: php
 
@@ -369,9 +373,11 @@
     //{%events_33b4d38e391256eba619e73ab7c86dab%}
     print_r($evManager->getResponses());
 
+
 %{events_347f19399137be68322d5db99c9f2d43}%
 
 .. code-block:: html
 
     Array ( [0] => first response [1] => second response )
+
 

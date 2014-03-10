@@ -1,20 +1,16 @@
 %{models-cache_839f3f9c5311b487faa792e0587aa2c6}%
-
 ==================
 %{models-cache_95cb61056b392ac5982d769f3a94770a}%
-
 
 %{models-cache_e55c4c7c721ad73838373f9792e1c8c3}%
 
 %{models-cache_6422e6a17a2941513403f9d3640a1c81}%
-
 ------------------
 %{models-cache_9bc17a041fe4fe724ea7d4fdbe869c0f}%
 
+%{models-cache_44caed33d968a824136a964a9949ebbe|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
-%{models-cache_44caed33d968a824136a964a9949ebbe}%
-
-%{models-cache_21d5d2514aaf252b9bb348c579753209}%
+%{models-cache_21d5d2514aaf252b9bb348c579753209|:doc:`cache <cache>`}%
 
 .. code-block:: php
 
@@ -36,6 +32,7 @@
 
         return $cache;
     });
+
 
 %{models-cache_eb40dd6627183a961e507390d965a529}%
 
@@ -59,6 +56,7 @@
     // {%models-cache_051afb10c0cf687b846f3b6897f762d4%}
     $products = Products::find(array("cache" => $myCache));
 
+
 %{models-cache_157e77512eaf5de628c5f6d233869c8d}%
 
 .. code-block:: php
@@ -78,15 +76,14 @@
         "cache" => array("key" => "my-key", "lifetime" => 3600)
     ));
 
+
 %{models-cache_9d4f9253bcab3867f5842dcb634dede4}%
 
 %{models-cache_1309780b72f30496b61631983bcbdc8c}%
 
 %{models-cache_3ed32570bf1cb380cb4f367cc81bb281}%
-
 -------------------------
-%{models-cache_d133521b4034fa05c7fd7bbaf09ff142}%
-
+%{models-cache_d133521b4034fa05c7fd7bbaf09ff142|:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`}%
 
 .. code-block:: php
 
@@ -106,6 +103,7 @@
         }
 
     }
+
 
 %{models-cache_373fe0ef7bf8bbc1062fa79aa92fe215}%
 
@@ -159,6 +157,7 @@
 
     }
 
+
 %{models-cache_af2c0186f6bd6b7836c204d7fbf89d42}%
 
 %{models-cache_1684acf662dbb430e9bb369d7f6d9539}%
@@ -202,6 +201,7 @@
         return self::$_cache[$key];
     }
 
+
 %{models-cache_3f0550c5ba8bc66b0145c05b696ba62f}%
 
 .. code-block:: php
@@ -227,6 +227,7 @@
         }
     }
 
+
 %{models-cache_cbef6dec996aaedacb875ab47b4a478c}%
 
 .. code-block:: php
@@ -238,11 +239,10 @@
 
     }
 
-%{models-cache_f619f9e90a14811a9326ce3d6a6e6aca}%
 
+%{models-cache_f619f9e90a14811a9326ce3d6a6e6aca}%
 -------------
 %{models-cache_6bbeb0f3b3dfb43ae7d746922da64e28}%
-
 
 .. code-block:: php
 
@@ -252,6 +252,7 @@
     $products = Products::find(array(
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
+
 
 %{models-cache_5355522211efcea8d6cb4dddddc0d400}%
 
@@ -294,11 +295,10 @@
 
     }
 
-%{models-cache_7f9169fdf457cb880ce9d25973c73f11}%
 
+%{models-cache_7f9169fdf457cb880ce9d25973c73f11}%
 --------------------
 %{models-cache_823b323401bce868288be958bb3ef207}%
-
 
 .. code-block:: php
 
@@ -317,6 +317,7 @@
         'name' => 'Audi'
     ));
 
+
 %{models-cache_2dc92ee793d02090370464d78ca48dac}%
 
 .. code-block:: php
@@ -331,11 +332,10 @@
 
     apc_store('my-cars', $cars);
 
-%{models-cache_69ebf3305cc0af755ddf55bcad46f10c}%
 
+%{models-cache_69ebf3305cc0af755ddf55bcad46f10c}%
 ------------------------
 %{models-cache_aca1bd8a06b637f2491038b833ca4432}%
-
 
 .. code-block:: php
 
@@ -349,6 +349,7 @@
 
     //{%models-cache_e16166444362b0fe474040cd3eaad5e1%}
     echo $customer->name, "\n";
+
 
 %{models-cache_1450b2b316074644f2fd775d07035126}%
 
@@ -368,6 +369,7 @@
         echo $customer->name, "\n";
     }
 
+
 %{models-cache_fbb8a44bfd4a304b97d2d4207789550b}%
 
 .. code-block:: php
@@ -385,6 +387,7 @@
         }
 
     }
+
 
 %{models-cache_cab4981195cf8fa7422a401ca5cd521f}%
 
@@ -433,6 +436,7 @@
         }
     }
 
+
 %{models-cache_7029c833677ccfbe1f854bc8642b9631}%
 
 .. code-block:: php
@@ -443,11 +447,10 @@
         return new CustomModelsManager();
     });
 
-%{models-cache_efe555e4b6c2aa4b091efcfdd07feba7}%
 
+%{models-cache_efe555e4b6c2aa4b091efcfdd07feba7}%
 -----------------------
 %{models-cache_167c1bde680b7a2a0bdf02e7f6a2a846}%
-
 
 +---------------------+---------------------------------------------------------------------------------------------------------------+
 | Type                | Description                                                                          | Implicit Method        |
@@ -458,6 +461,7 @@
 +---------------------+---------------------------------------------------------------------------------------------------------------+
 | Has-Many            | Returns a collection of model instances of the referenced model                      | find                   |
 +---------------------+---------------------------------------------------------------------------------------------------------------+
+
 
 %{models-cache_ae2a8ea75f237e1665de20deddd187af}%
 
@@ -474,6 +478,7 @@
     //{%models-cache_95b197310c9f475e448775744fbd67db%}
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
+
 %{models-cache_1f88a87fa11cb62e4d916071b5cf0ed4}%
 
 .. code-block:: php
@@ -489,11 +494,10 @@
         }
     }
 
-%{models-cache_22d2fa1350f9f3ee06e9af91feb8603f}%
 
+%{models-cache_22d2fa1350f9f3ee06e9af91feb8603f}%
 -----------------------------------
 %{models-cache_2bd99a946141b3039b298fa5dd8015c8}%
-
 
 .. code-block:: php
 
@@ -556,6 +560,7 @@
         }
     }
 
+
 %{models-cache_b2328f272dbe20be455b22c19b1ff9d5}%
 
 .. code-block:: php
@@ -592,11 +597,10 @@
 
     }
 
-%{models-cache_6eb6ea83e4137a5f45e1ec79b91ec252}%
 
+%{models-cache_6eb6ea83e4137a5f45e1ec79b91ec252}%
 ---------------------------
 %{models-cache_5e6828717b8ad3c64fa12c43a9647bc6}%
-
 
 +---------------------+--------------------+
 | Type                | Cache Backend      |
@@ -607,6 +611,7 @@
 +---------------------+--------------------+
 | > 20000             | mongo3             |
 +---------------------+--------------------+
+
 
 %{models-cache_165c2321d4782029a5eccc88bbbd88f7}%
 
@@ -641,6 +646,7 @@
 
     }
 
+
 %{models-cache_b4eb94aa4b707ff948987f11f2495f1b}%
 
 .. code-block:: php
@@ -656,6 +662,7 @@
         'bind' => array(100, 2000),
         'order' => 'type'
     ));
+
 
 %{models-cache_e4b3c844d52b969d134289d33803be79}%
 
@@ -676,6 +683,7 @@
         }
 
     }
+
 
 %{models-cache_272d7300204775890fec39f6cd0b2f4e}%
 
@@ -725,6 +733,7 @@
         }
 
     }
+
 
 %{models-cache_581b25c6139a967f221c16f07b976187}%
 
@@ -795,6 +804,7 @@
         }
     }
 
+
 %{models-cache_054a0fc78f44ab0a1bb8c9c985de828b}%
 
 .. code-block:: php
@@ -822,11 +832,10 @@
         }
     }
 
-%{models-cache_ed63aed4efe90a846731cdb4b7dcf805}%
 
+%{models-cache_ed63aed4efe90a846731cdb4b7dcf805}%
 ------------------------
 %{models-cache_746ea0323975bebf6107bb63e8f3c362}%
-
 
 .. code-block:: php
 
@@ -839,6 +848,7 @@
 
         //...
     }
+
 
 %{models-cache_2a89882635811354d83208102969e432}%
 
@@ -854,6 +864,7 @@
 
         //...
     }
+
 
 %{models-cache_d53e1af67acdb733459dec78b03de176}%
 
@@ -871,5 +882,6 @@
         //...
     }
 
-%{models-cache_bdde4f7dba11a26c566d816a82550e0f}%
+
+%{models-cache_bdde4f7dba11a26c566d816a82550e0f|`prepared statements`_|`SQL Injections`_}%
 

@@ -1,18 +1,14 @@
 %{benchmark_af2e2da955fd1ab2268f97886e9c08eb}%
-
 ====================
 %{benchmark_7140da399fbd56a9acbbf281c14f5440}%
 
-
 %{benchmark_0f23fda21483a4d09237fa289d2d918e}%
 
-%{benchmark_d47064afc65be4543ed2c71c930cbce8}%
+%{benchmark_d47064afc65be4543ed2c71c930cbce8|`write us`_|`Check out source at Github`_}%
 
 %{benchmark_d733affe450e8a7313f7a49720bdc7c8}%
-
 ------------------------------
 %{benchmark_b30930151f789f02ee036390e2c271ef}%
-
 
 %{benchmark_d7127484bf76faec191fd8a65c68f866}%
 
@@ -35,8 +31,8 @@
 
 
 
-%{benchmark_779adfafb23b682a087d543bd32bf95b}%
 
+%{benchmark_779adfafb23b682a087d543bd32bf95b}%
 ------------------
 .. toctree::
    :maxdepth: 1
@@ -47,7 +43,6 @@
 
 
 %{benchmark_7a1fe9928e011d07409c7e98edde0210}%
-
 ---------
 .. versionadded:: 1.0
     Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
@@ -67,11 +62,9 @@
 
 
 %{benchmark_b0492394b589b5ff8f6fb98048d65d8f}%
-
 ------------------
 * {%benchmark_553506aa37267500e1aeccd478ce5a7d%}
 * {%benchmark_bcaf2622848bc0d64141eaad862c0cce%}
 * {%benchmark_e52094936d0d00e95bd2b10d592e43f4%}
 * {%benchmark_ab70ed8c3b50d7c917ff949def05c0b7%}
-
 

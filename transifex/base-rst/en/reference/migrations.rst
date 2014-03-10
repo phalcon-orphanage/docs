@@ -1,11 +1,10 @@
 %{migrations_e9344089a64801b2141c890b330a0fcb}%
-
 ===================
 %{migrations_f301d41b7379bf73aa2ec3a13c5aa6e0}%
 
-
 .. highlights::
     **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.3.11 or greater installed.
+
 
 
 %{migrations_6d0774cca265eac9c4f7900155a19c10}%
@@ -19,16 +18,16 @@
     </div>
 
 
+
 %{migrations_c2c6a196f47f93f72deb7b1bdb09136d}%
-
 --------------
-%{migrations_dafacf70bbd1a474c5d65134fc5d05ea}%
-
+%{migrations_dafacf70bbd1a474c5d65134fc5d05ea|:doc:`Phalcon Developer Tools <tools>`}%
 
 %{migrations_203535c85e7bb7824da0d937e8ab2fe0}%
 
 .. figure:: ../_static/img/migrations-1.png
    :align: center
+
 
 
 %{migrations_360af274a46cce617945ea23ff912b4b}%
@@ -39,19 +38,19 @@
    :align: center
 
 
+
 %{migrations_6d7decd5070994a0afa0d63acb389aca}%
 
-%{migrations_2b1b05d9ab89746ef007eeb359671172}%
+%{migrations_2b1b05d9ab89746ef007eeb359671172|:doc:`Phalcon Developer Tools <tools>`}%
 
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
 
-%{migrations_b673cb7a0ed9fb88408b3bb89ae3c1ef}%
 
+%{migrations_b673cb7a0ed9fb88408b3bb89ae3c1ef}%
 -----------------------
 %{migrations_1dd1afd8dc05142d04a6cb584c4be3f3}%
-
 
 %{migrations_cbe6b57bfb055245ecb16ec1e3e6fd23}%
 
@@ -145,6 +144,7 @@
 
     }
 
+
 %{migrations_5d8072dc56e4dcc8255178194d5001c1}%
 
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -159,11 +159,10 @@
 | "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
+
 %{migrations_fdc42990e3b6f6fbdfa0c2091c3dd1b0}%
-
 ^^^^^^^^^^^^^^^^
-%{migrations_9bd114f770bc302f84fa27b173617833}%
-
+%{migrations_9bd114f770bc302f84fa27b173617833|:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`}%
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -185,6 +184,7 @@
 | "after"         | Column must be placed after indicated column                                                                                               | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
+
 %{migrations_693f023ec4e718b7c0a6c9a231892599}%
 
 * {%migrations_e64f0954f63861dae89f79260e579f6e%}
@@ -196,16 +196,12 @@
 * {%migrations_070faf863b6a1cfe77f660ccdd4d9ee1%}
 
 %{migrations_98592e9224abec7b6a4957b5f4b035b4}%
-
 ^^^^^^^^^^^^^^^^
-%{migrations_173520fb94187f133174d26fa590a3bc}%
-
+%{migrations_173520fb94187f133174d26fa590a3bc|:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`}%
 
 %{migrations_18f0b0ff59a37b6adc6b8a16e4430559}%
-
 ^^^^^^^^^^^^^^^^^^^
-%{migrations_f0baedbf67e787b77fd3a0c2065a9573}%
-
+%{migrations_f0baedbf67e787b77fd3a0c2065a9573|:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`}%
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 | Index               | Description                                                                                         | Optional |
@@ -219,11 +215,10 @@
 | "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 
+
 %{migrations_3288ae777aa932ca0f6a2a90da292c6d}%
-
 ------------------
-%{migrations_cf35cba6fd8ac5359966ed7d8b9c6c93}%
-
+%{migrations_cf35cba6fd8ac5359966ed7d8b9c6c93|:doc:`database component <db>`}%
 
 .. code-block:: php
 
@@ -244,17 +239,17 @@
 
     }
 
-%{migrations_d7452f33e484571303e4cc4ab5b15ffe}%
 
+%{migrations_d7452f33e484571303e4cc4ab5b15ffe}%
 ------------------
 %{migrations_063f176fa57cf226a7d0a5d3b84c0935}%
-
 
 .. figure:: ../_static/img/migrations-4.png
    :align: center
 
 .. figure:: ../_static/img/migrations-5.png
    :align: center
+
 
 
 %{migrations_1c64e9a2a899094ccdcad4688e8b3b3d}%

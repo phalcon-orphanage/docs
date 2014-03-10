@@ -1,24 +1,18 @@
 %{cli_d8b0d1e34b25db1d7588c63c80ca46ed}%
-
 =========================
 %{cli_b06b86bae30c7e9318c2270148e441ab}%
 
-
 %{cli_f6f429eb9ad945f547f04b04f67ce57a}%
-
 ---------
 %{cli_cff96e41ec35e70efbec5ec74e343a3e}%
-
 
 * {%cli_ea24575eefced9021991b9113cfea18e%}
 * {%cli_1cc086c35bb6c6f40033dbb65d72921d%}
 * {%cli_b5994b8f6b492194af4f240cc424033f%}
 
 %{cli_448cbc477e8c68335b2a22300c49db96}%
-
 --------------------
 %{cli_7d3f73a4b4b6ef3b708cf4ba28258d4e}%
-
 
 %{cli_04117c61cf865aa866cad78bace24460}%
 
@@ -91,6 +85,7 @@
         exit(255);
     }
 
+
 %{cli_6e7a3acc1a481f8f72d8b5fb22365b29}%
 
 .. code-block:: bash
@@ -100,11 +95,10 @@
     This is the default task and the default action
     
     
-%{cli_16a463e446a3db7d6923abf39284e5c8}%
 
+%{cli_16a463e446a3db7d6923abf39284e5c8}%
 -----
 %{cli_90ff34bad02c33f4416b8f401b6bfef9}%
-
 
 %{cli_1b1c48668af4d19257308cead1a6890a}%
 
@@ -122,11 +116,10 @@
     }
 
 
-%{cli_6c285ece3eff07b4c3388d86af2d194d}%
 
+%{cli_6c285ece3eff07b4c3388d86af2d194d}%
 ----------------------------
 %{cli_e5688d2f9aabfa125fa7835d55882cdc}%
-
 
 %{cli_0995ae67b473a890eb4fbc76b8fae9b9}%
 
@@ -158,11 +151,10 @@
    best regards, universe
     
 
-%{cli_cc62382fa7cca3d492d10ea7f5f7c481}%
 
+%{cli_cc62382fa7cca3d492d10ea7f5f7c481}%
 ------------------------
 %{cli_85c7d2c33e9788c7a249e8ff99d33ada}%
-
 
 .. code-block:: php
     
@@ -173,6 +165,7 @@
         $console->handle($arguments);
     }
     
+
 %{cli_55ab633837e29b2cfc056603ac6dc5be}%
 
 .. code-block:: php
@@ -195,5 +188,6 @@
 
     }
     
+
 %{cli_862081cd7f0eb6b6d8b2f674e128770a}%
 

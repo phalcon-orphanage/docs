@@ -1,14 +1,10 @@
 %{translate_98c9d4681c477ea707d4970e7778f6a8}%
-
 =====================
-%{translate_4cbdb893e5aec7e8a38b05616613ecd8}%
-
+%{translate_4cbdb893e5aec7e8a38b05616613ecd8|:doc:`Phalcon\\Translate <../api/Phalcon_Translate>`}%
 
 %{translate_59016d3191a4f3dbf5870903d350a278}%
-
 --------
 %{translate_db2308e32b86da819830c6c2e5abd251}%
-
 
 +-------------+-----------------------------------------------------------------------------------------+
 | Adapter     | Description                                                                             |
@@ -16,11 +12,10 @@
 | NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 +-------------+-----------------------------------------------------------------------------------------+
 
-%{translate_8a2060f36ca4f202fdf743f442c4474a}%
 
+%{translate_8a2060f36ca4f202fdf743f442c4474a}%
 ---------------
 %{translate_52e146ffe8d9422a0563efc4216170b8}%
-
 
 .. code-block:: bash
 
@@ -28,6 +23,7 @@
     app/messages/es.php
     app/messages/fr.php
     app/messages/zh.php
+
 
 %{translate_5f21c2607542fbb7686ddd3b43fa3682}%
 
@@ -54,6 +50,7 @@
         "hi-name" => "Bonjour %name%",
         "song"    => "La chanson est %song%"
     );
+
 
 %{translate_8a5da1e9769e7aef5ff07e8ee18d8f46}%
 
@@ -95,6 +92,7 @@
 
     }
 
+
 %{translate_2ff7c999eb2ae79e0b87ae7cbf371ac7}%
 
 .. code-block:: html+php
@@ -102,6 +100,7 @@
     <!-- welcome -->
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
+
 
 %{translate_7eb87d7bf9fe530fd9fae17b33249c82}%
 
@@ -111,13 +110,12 @@
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-%{translate_bb2e4b323e92c9955c11a0f6c68ed7a8}%
+
+%{translate_bb2e4b323e92c9955c11a0f6c68ed7a8|:doc:`Router <routing>`}%
 
 %{translate_206bd6266ccc781d8844f3db2de5d557}%
-
 ------------------------------
-%{translate_436fc39d983c41f556d736bfba690d89}%
-
+%{translate_436fc39d983c41f556d736bfba690d89|:doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>`}%
 
 .. code-block:: php
 
@@ -160,4 +158,5 @@
         public function exists($index);
 
     }
+
 

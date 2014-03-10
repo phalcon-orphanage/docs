@@ -1,8 +1,6 @@
 %{controllers_25b1751e51f4db9e5adb7a2a78f803ca}%
-
 =================
 %{controllers_bf4b085e9456222c0343205ea7a36664}%
-
 
 %{controllers_ed9480fd88e3f7f8cb2bba7f34ebb212}%
 
@@ -18,7 +16,8 @@
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
 
-%{controllers_63600962965cd1ed7ee542a283aa4144}%
+
+%{controllers_63600962965cd1ed7ee542a283aa4144|:doc:`autoloaders <loader>`}%
 
 %{controllers_5459cfd2ccc38bd6690cb33742588851}%
 
@@ -41,7 +40,8 @@
 
     }
 
-%{controllers_42ed09718f9dcff11b3c2925a7298874}%
+
+%{controllers_42ed09718f9dcff11b3c2925a7298874|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 %{controllers_02d3b405399bc826fc484d3addd149f3}%
 
@@ -63,6 +63,7 @@
         }
 
     }
+
 
 %{controllers_2c21b67becef8f013925ae48e42ab023}%
 
@@ -87,11 +88,10 @@
     }
 
 
-%{controllers_19a6c1d67b16bca3fdadab09b2393db7}%
 
+%{controllers_19a6c1d67b16bca3fdadab09b2393db7}%
 -------------
 %{controllers_e91e55a308d6c96d2b485677dcd94a5c}%
-
 
 .. code-block:: php
 
@@ -118,6 +118,7 @@
 
     }
 
+
 %{controllers_6ff855eda40562b45266d5cca8c4304b}%
 
 .. code-block:: php
@@ -139,13 +140,12 @@
 
     }
 
-%{controllers_d6a278bf424cc9afbc2fd9185246e4ab}%
+
+%{controllers_d6a278bf424cc9afbc2fd9185246e4ab|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{controllers_fccdec87b5a034198b1461f90176d44d}%
-
 ------------------------
-%{controllers_8e9b20911525c0d1b19ee9685e4e6430}%
-
+%{controllers_8e9b20911525c0d1b19ee9685e4e6430|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 .. code-block:: php
 
@@ -177,6 +177,7 @@
     Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
     that application logic in the initializer cannot be executed without authorization.
 
+
 %{controllers_6b19a0bf2864067a1e6a0085e7052eec}%
 
 .. code-block:: php
@@ -198,11 +199,10 @@
     in the controller or the user does not have access to it (according to custom control access
     provided by developer).
 
+
 %{controllers_411652177b013fea3c5a63ab616d098f}%
-
 ------------------
-%{controllers_cb43e9d71de4e322a67fbae721f2654e}%
-
+%{controllers_cb43e9d71de4e322a67fbae721f2654e|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 .. code-block:: php
 
@@ -213,6 +213,7 @@
     $di->set('storage', function() {
         return new Storage('/some/directory');
     }, true);
+
 
 %{controllers_94459506819f88b2a2ac838eba03c79d}%
 
@@ -244,13 +245,12 @@
 
     }
 
-%{controllers_b76d213cfbcdffef43fe038137a3182e}%
+
+%{controllers_b76d213cfbcdffef43fe038137a3182e|:doc:`by default <di>`}%
 
 %{controllers_feb531e6a51594e44fe697f022410250}%
-
 --------------------
-%{controllers_8cec6719bfcce4ba6788abd8f00464a7}%
-
+%{controllers_8cec6719bfcce4ba6788abd8f00464a7|:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>`|:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`}%
 
 .. code-block:: php
 
@@ -276,6 +276,7 @@
 
     }
 
+
 %{controllers_576579805e31f7288878eba1be8ac44c}%
 
 .. code-block:: php
@@ -298,13 +299,12 @@
 
     }
 
-%{controllers_e60ca1c6e7e8d4e68c3e9ffcb9ba718a}%
+
+%{controllers_e60ca1c6e7e8d4e68c3e9ffcb9ba718a|:doc:`request <request>`|:doc:`response <response>`}%
 
 %{controllers_0e5d8f24b3a76c0a332a39078578993b}%
-
 ------------
-%{controllers_f60fa26d6868d9d88effcea8abb894fe}%
-
+%{controllers_f60fa26d6868d9d88effcea8abb894fe|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -325,11 +325,10 @@
 
     }
 
-%{controllers_289076e758f9ec58874175d1848fef0a}%
 
+%{controllers_289076e758f9ec58874175d1848fef0a}%
 -----------------------------
 %{controllers_383734707de80ee854c1540332570694}%
-
 
 .. code-block:: php
 
@@ -347,11 +346,10 @@
         return $component;
     });
 
+
 %{controllers_95181cdd38a7d3718cd1ea894b8ea8ba}%
-
 --------------------------
-%{controllers_0eef3ad64616730ed57a1f078b656e20}%
-
+%{controllers_0eef3ad64616730ed57a1f078b656e20|:doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>`}%
 
 %{controllers_277976e04abafe373f2f0cd83bc81a1f}%
 
@@ -360,6 +358,7 @@
     <?php
 
     require "../app/controllers/ControllerBase.php";
+
 
 %{controllers_439861a197b139299f3790be82d52147}%
 
@@ -380,6 +379,7 @@
 
     }
 
+
 %{controllers_f81751d69164a318d542be4710e6541e}%
 
 .. code-block:: php
@@ -391,9 +391,8 @@
 
     }
 
+
 %{controllers_281b6889c8920b0f05e770706f719a10}%
-
 ---------------------
-%{controllers_883cf6646288ddba21a14035e05a236a}%
-
+%{controllers_883cf6646288ddba21a14035e05a236a|:doc:`dispatcher <dispatching>`}%
 

@@ -1,16 +1,12 @@
 %{views_7a9935583e6231cd508cd510f32d5668}%
-
 ===========
 %{views_ef03b15f3a9b49a6b4bb80a813368996}%
 
-
-%{views_7f5eddac31d156c20aacf5bff7bf948d}%
+%{views_7f5eddac31d156c20aacf5bff7bf948d|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`}%
 
 %{views_003b14d6a910d6e7ddfee381215bb477}%
-
 ----------------------------------
 %{views_dab1c1ef07dda71358c3a6ef720f6bd3}%
-
 
 +-------------------+-----------+
 | Server Address    | 127.0.0.1 |
@@ -23,6 +19,7 @@
 +-------------------+-----------+
 | Parameter         | 301       |
 +-------------------+-----------+
+
 
 %{views_1c93242edb5cbc8541a88534f9e9af2b}%
 
@@ -46,13 +43,12 @@
 
     }
 
+
 %{views_13c164b379d9671d82a101615ab15151}%
 
 %{views_f529f7a38f66822c201c7a2c549408ec}%
-
 ----------------------
-%{views_8ac2465f81c555ce4568d72f88805bb7}%
-
+%{views_8ac2465f81c555ce4568d72f88805bb7|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_177194bd199b8ca419afc6285ed8638b}%
 
@@ -66,7 +62,8 @@
 | Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-%{views_432420006a0fc205c2b2228257adaedc}%
+
+%{views_432420006a0fc205c2b2228257adaedc|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 .. code-block:: html+php
 
@@ -100,10 +97,12 @@
         </body>
     </html>
 
-%{views_a8b92ceac5ca0ab1a9c6987fa73e065b}%
+
+%{views_a8b92ceac5ca0ab1a9c6987fa73e065b|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 .. figure:: ../_static/img/views-1.png
    :align: center
+
 
 
 %{views_700f6830c6aa8391f780e3bcb9dae968}%
@@ -132,11 +131,10 @@
         </body>
     </html>
 
-%{views_10b460a3de8edd71111332979572dd63}%
 
+%{views_10b460a3de8edd71111332979572dd63}%
 ^^^^^^^^^^^^^^^
 %{views_702573dde40111cb422cdded5cac3d40}%
-
 
 .. code-block:: php
 
@@ -202,6 +200,7 @@
         <p>This is another post content</p>
     </article>
 
+
 %{views_898645782f156716701c064f59d9f5d9}%
 
 .. code-block:: html+php
@@ -245,11 +244,10 @@
         </body>
     </html>
 
+
 %{views_a4fd48f24a2c518d5b180c6a6d4a79d1}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^
-%{views_9b6601fe603e0d89861e09a51d6ec49d}%
-
+%{views_9b6601fe603e0d89861e09a51d6ec49d|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_d356d43561f53deaf77231c50250ff8d}%
 
@@ -285,6 +283,7 @@
 
     }
 
+
 %{views_0b574a66e81e62ab465902f178ed6a92}%
 
 +-----------------------+--------------------------------------------------------------------------+-------+
@@ -303,11 +302,10 @@
 | LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
 +-----------------------+--------------------------------------------------------------------------+-------+
 
-%{views_9ff639be8370b38960cba777a5babc2e}%
 
+%{views_9ff639be8370b38960cba777a5babc2e}%
 ^^^^^^^^^^^^^^^^^^^^^^^
 %{views_31dd34b13e62e822e96a8dc3d89402f7}%
-
 
 .. code-block:: php
 
@@ -328,6 +326,7 @@
         return $view;
 
     }, true);
+
 
 %{views_c857045014ddf4562dba50c87b7c7389}%
 
@@ -353,11 +352,10 @@
 
     }
 
+
 %{views_086c3b4119cecbc37ccd78bb3629dd47}%
-
 ^^^^^^^^^^^^^
-%{views_375b5490f08c2d605cfd4ab2df591e4f}%
-
+%{views_375b5490f08c2d605cfd4ab2df591e4f|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`}%
 
 .. code-block:: php
 
@@ -380,11 +378,10 @@
 
     }
 
-%{views_0efce5c37e4d187ce85e1c900ab2b4ab}%
 
+%{views_0efce5c37e4d187ce85e1c900ab2b4ab}%
 ^^^^^^^^^^^^^^^^^^
 %{views_29f0d82a073cc35519b6e8961d07c490}%
-
 
 .. code-block:: php
 
@@ -407,6 +404,7 @@
 
     }
 
+
 %{views_3cb08bf1a7d4bac0f47363c79fa3be2c}%
 
 .. code-block:: php
@@ -427,13 +425,12 @@
 
     }
 
+
 %{views_e3a9349e409d158182f3e861c8e8e012}%
-
 ----------------
-%{views_296069336e18c18983ef66c8b9fda9f5}%
+%{views_296069336e18c18983ef66c8b9fda9f5|:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
-
-%{views_14abd108f8cf1e1500bd3b79528f8d15}%
+%{views_14abd108f8cf1e1500bd3b79528f8d15|:doc:`Volt <volt>`}%
 
 %{views_abf8ed7d7ae41822d01a13c9c81be2da}%
 
@@ -451,7 +448,8 @@
 
     }, true);
 
-%{views_86bd719622e4b5df9d5a59cb6ef4cf08}%
+
+%{views_86bd719622e4b5df9d5a59cb6ef4cf08|:doc:`Phalcon\\Mvc\\Application <applications>`}%
 
 .. code-block:: php
 
@@ -468,6 +466,7 @@
     } catch (\Exception $e) {
         echo $e->getMessage();
     }
+
 
 %{views_398368acf874ef364deacc01fa8ed4e3}%
 
@@ -495,11 +494,10 @@
 
     }
 
-%{views_83809746bd6d1d7960195e86f68c8da8}%
 
+%{views_83809746bd6d1d7960195e86f68c8da8}%
 --------------
 %{views_75f86de4abb898efbb5e31d807256244}%
-
 
 %{views_f71fd72a447e6a2ffb2643169ff2ecfb}%
 
@@ -516,17 +514,17 @@
 
     <div class="footer"><?php $this->partial("shared/footer") ?></div>
 
+
 %{views_67c57e6e7f34e628e2f23b32b066d174}%
 
 .. code-block:: html+php
 
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
+
 %{views_fbe970c3f88ead32c74db6ae1f24455c}%
-
 --------------------------------------------
-%{views_f5224da68bd83a6c0379726567094094}%
-
+%{views_f5224da68bd83a6c0379726567094094|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 .. code-block:: php
 
@@ -557,6 +555,7 @@
 
     }
 
+
 %{views_5b0db7a17988863f0629d6ef359a5120}%
 
 .. code-block:: html+php
@@ -571,11 +570,10 @@
     ?>
     </div>
 
+
 %{views_9b5dfc6e03f2e4c7ce50d991756ca24f}%
-
 ------------------------------
-%{views_800ec11913aba66c5e1493bc9cf8efcb}%
-
+%{views_800ec11913aba66c5e1493bc9cf8efcb|:doc:`Phalcon\\Loader <../api/Phalcon_Loader>`}%
 
 .. code-block:: html+php
 
@@ -589,15 +587,14 @@
     ?>
     </div>
 
+
 %{views_32d287c9930a183a4f900372280abba6}%
 
 %{views_e2809b8367f23b279052a0c57a34b5ac}%
-
 ----------------------
-%{views_574f1e68dad0ae7dbe462a5b1eac5dbf}%
+%{views_574f1e68dad0ae7dbe462a5b1eac5dbf|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
-
-%{views_ff6107ed2333508975d6281de6a46a06}%
+%{views_ff6107ed2333508975d6281de6a46a06|:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Cache <cache>`}%
 
 .. code-block:: php
 
@@ -645,6 +642,7 @@
 
     }
 
+
 %{views_f090ddab8a4c1433924b1b348ef399d1}%
 
 %{views_f888bb1a09ced9103b2fa1bf171f4eeb}%
@@ -676,6 +674,7 @@
 .. highlights::
     The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
     always open (not shared) in the services container (DI)
+
 
 %{views_5594ea8d99fb14da5c5c94f61150a4f0}%
 
@@ -710,29 +709,26 @@
 
     }
 
-%{views_1d0a38b9b98b8abd3f33d3904f09e83c}%
+
+%{views_1d0a38b9b98b8abd3f33d3904f09e83c|`PHP alternative site`_}%
 
 %{views_6e5a69a8dd70f8d2cd5e2ae15b313263}%
-
 ----------------
-%{views_e61b4854ff38e96e9209df96ac639ed4}%
+%{views_e61b4854ff38e96e9209df96ac639ed4|:doc:`Volt <volt>`}%
 
-
-%{views_f26e4d5891d641c183981262cf077f46}%
+%{views_f26e4d5891d641c183981262cf077f46|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_d30b9918e0dd94497b8f8e10fa02a03e}%
 
-%{views_882bafa5fbc240fe19d9ebb6d2572243}%
+%{views_882bafa5fbc240fe19d9ebb6d2572243|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_36a82d83487a4e3f40f2064c8ea7324f}%
 
 %{views_39112bd6a8127139d0a52a91360e0188}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{views_51eeef9ead467502cae8fc7f197f246a}%
 
-
-%{views_b149ca61294f072ef6b63736581c4041}%
+%{views_b149ca61294f072ef6b63736581c4041|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_3e008dba1ca8514936e032d7fada3007}%
 
@@ -776,11 +772,10 @@
 
     }
 
-%{views_cfdbf34effaf9927896f7e8da605aba4}%
 
+%{views_cfdbf34effaf9927896f7e8da605aba4}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{views_1979a43a78910f5cc07142f4eed9a1bd}%
-
 
 .. code-block:: php
 
@@ -812,9 +807,10 @@
 
     }
 
+
 %{views_474201dbdde6d46b8d104b4ed325697e}%
 
-%{views_636b010c4455918064c3cf561631860e}%
+%{views_636b010c4455918064c3cf561631860e|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 %{views_eed56c16c3fd884a52e645a2764469d8}%
 
@@ -838,15 +834,14 @@
 
     }, true);
 
-%{views_8f81e052848c5fa5bf7ad2482829deb0}%
+
+%{views_8f81e052848c5fa5bf7ad2482829deb0|`Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_}%
 
 %{views_c7ee7944a5606c39612539a861cac009}%
-
 --------------------------
-%{views_c3d45f6d1884c33abbc0daac0adfc286}%
+%{views_c3d45f6d1884c33abbc0daac0adfc286|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
 
-
-%{views_723fa8b3d6bc854b4c8a3590ef49acf4}%
+%{views_723fa8b3d6bc854b4c8a3590ef49acf4|`ajax request`_}%
 
 .. code-block:: html+php
 
@@ -861,17 +856,14 @@
 
     </script>
 
-%{views_d3e54f7c04408d6d1a884897bca4169e}%
 
+%{views_d3e54f7c04408d6d1a884897bca4169e}%
 ---------------------
 %{views_3d46da924d710a41a1e398ffcde2234c}%
 
-
 %{views_f529f7a38f66822c201c7a2c549408ec}%
-
 ^^^^^^^^^^^^^^^^^^^^^^
-%{views_b87b898a4a23d1de6555cdf57f50fb3c}%
-
+%{views_b87b898a4a23d1de6555cdf57f50fb3c|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`}%
 
 .. code-block:: php
 
@@ -897,6 +889,7 @@
 
     echo $view->getContent();
 
+
 %{views_f13eba0f4918c9a0bca147e70fe0279c}%
 
 .. code-block:: php
@@ -917,11 +910,10 @@
         }
     );
 
+
 %{views_e3a9349e409d158182f3e861c8e8e012}%
-
 ^^^^^^^^^^^^^^^^
-%{views_c5b75fd5c3845db3b35849961c1ccf23}%
-
+%{views_c5b75fd5c3845db3b35849961c1ccf23|:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`}%
 
 .. code-block:: php
 
@@ -941,11 +933,10 @@
         'content' => $content
     ));
 
+
 %{views_296b9f4f4f7b51885c71b3592af71235}%
-
 -----------
-%{views_c7c67770c456d2f4e1b6dfa9693d4f9f}%
-
+%{views_c7c67770c456d2f4e1b6dfa9693d4f9f|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`|:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>`|:doc:`EventsManager <events>`}%
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
@@ -960,6 +951,7 @@
 +----------------------+------------------------------------------------------------+---------------------+
 | notFoundView         | Triggered when a view was not found                        | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
+
 
 %{views_4eb434eb37be7b4a57c178fa4af88c76}%
 
@@ -986,6 +978,7 @@
         return $view;
 
     }, true);
+
 
 %{views_1ca1a71f4f5f276064f24f98f4bbcd2e}%
 

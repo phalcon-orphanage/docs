@@ -1,8 +1,6 @@
 %{validation_c81f893f5539efed7a6b2aae2d783e35}%
-
 ==========
 %{validation_df9655796647575843a59b2aaa288feb}%
-
 
 %{validation_09046bd05925c7ff83bddee4094d745a}%
 
@@ -34,13 +32,12 @@
         }
     }
 
+
 %{validation_8119eaef07bf942b708b8da28ae405ac}%
 
 %{validation_3093b0011464d4bd39869dbdc5a8689c}%
-
 -----------------------
 %{validation_d086513db60a7c3e4d84f23a05e52c24}%
-
 
 .. code-block:: php
 
@@ -81,11 +78,10 @@
         }
     }
 
-%{validation_533a67e85a7f17b61b21cb88a9e1f07c}%
 
+%{validation_533a67e85a7f17b61b21cb88a9e1f07c}%
 ----------
 %{validation_1b1888abf001898488a01251b441c267}%
-
 
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Name         | Explanation                                                                                                                                                      | Example                                                           |
@@ -108,6 +104,7 @@
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+
 
 %{validation_fd4983df29ddaf7800070ffeec35afe0}%
 
@@ -150,15 +147,14 @@
 
     }
 
+
 %{validation_6fbfb65077407a190ad22e8e77664ac2}%
 
 %{validation_39d425478bbbd8c190c1571d56968719}%
-
 -------------------
-%{validation_3120949120bae67eafa34ccfab7b7c94}%
+%{validation_3120949120bae67eafa34ccfab7b7c94|:doc:`Phalcon\\Validation <../api/Phalcon_Validation>`}%
 
-
-%{validation_1d8c8e1f011b5ef3a1c2e46eee723277}%
+%{validation_1d8c8e1f011b5ef3a1c2e46eee723277|:doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`}%
 
 .. code-block:: php
 
@@ -172,6 +168,7 @@
             echo "Type: ", $message->getType(), "\n";
         }
     }
+
 
 %{validation_aa193b670cd59296d6003822c817edba}%
 
@@ -201,6 +198,7 @@
         }
     }
 
+
 %{validation_8a7d25a8a7f1e5b02b927a37b57351d9}%
 
 .. code-block:: php
@@ -212,6 +210,7 @@
     $validation->add('email', new Email(array(
         'message' => 'The e-mail is not valid'
     )));
+
 
 %{validation_052c3afa0415b025bc6d86d5f3490223}%
 
@@ -227,11 +226,10 @@
         }
     }
 
-%{validation_3d8f66bb7ca87432cb0e3125363aa301}%
 
+%{validation_3d8f66bb7ca87432cb0e3125363aa301}%
 -----------------
 %{validation_507eaf899079c0b1f652ad21b5e36385}%
-
 
 .. code-block:: php
 
@@ -251,13 +249,12 @@
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
-%{validation_d925f968977faad849daa153120364b5}%
+
+%{validation_d925f968977faad849daa153120364b5|:doc:`filter <filter>`}%
 
 %{validation_ff1d08a3b2570996565ef460daea6026}%
-
 -----------------
 %{validation_b1f211a73fad538fa52a2eabf8250f3b}%
-
 
 .. code-block:: php
 
@@ -304,11 +301,10 @@
 
     }
 
-%{validation_54e3ab73caaa54617147ed87e52d7d39}%
 
+%{validation_54e3ab73caaa54617147ed87e52d7d39}%
 ----------------------
 %{validation_9880d3237fc267dac86acd10f9425f79}%
-
 
 .. code-block:: php
 
@@ -332,6 +328,7 @@
             'minimumMessage' => 'The telephone is too short',
             'min' => 2
         )));
+
 
 %{validation_467ddfc7beb4e277ae522fc4663aab79}%
 

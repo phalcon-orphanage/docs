@@ -100,7 +100,6 @@ class Docs
 					$section1 = join('', $section);
 					$uniqueStrings[] = array('type' => 'text-raw', 'value' => $section1);
 				}
-				$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
 			}
 		}
 	}
@@ -148,12 +147,14 @@ class Docs
 			$uniqueStrings[] = array('type' => 'separator',    'value'       => $separator);
 
 			$this->processUniqueSection($section2parts, $uniqueStrings);
-			$uniqueStrings[] = array('type' => 'separator',    'value'       => PHP_EOL);
 
 		} else {
 			$uniqueStrings = array();
 			$this->processUniqueSection($section, $uniqueStrings);
+
 		}
+
+		$uniqueStrings[] = array('type' => 'separator',    'value' => PHP_EOL);
 
 		return $uniqueStrings;
 	}
@@ -165,7 +166,11 @@ class Docs
 
 				case 'text-section':
 					$key = $this->_prefix . '_' . $uniqueString['consecutive'];
-					$this->_output .= '%{' . $key . '}%' . PHP_EOL;
+					if (count($uniqueString['placeholders'])) {
+						$this->_output .= '%{' . $key . '|' . join('|', $uniqueString['placeholders']) . '}%' . PHP_EOL;
+					} else {
+						$this->_output .= '%{' . $key . '}%' . PHP_EOL;
+					}
 					$this->_uniqueStrings[$key] = rtrim($uniqueString['value']);
 					break;
 

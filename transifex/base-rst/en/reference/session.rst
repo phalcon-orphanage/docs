@@ -1,8 +1,6 @@
 %{session_961ade92d171ac826834b6f63182e0b1}%
-
 =======================
-%{session_b9582f2bd8e772e6946609d88c33af10}%
-
+%{session_b9582f2bd8e772e6946609d88c33af10|:doc:`Phalcon\\Session <../api/Phalcon_Session>`}%
 
 %{session_38d2fe6e9c58265de29d17ae9b99a96b}%
 
@@ -11,10 +9,8 @@
 * {%session_1b9e74d9e73da4617b8994f10942160b%}
 
 %{session_61d74fee93771ffdddeab2a05d73d187}%
-
 --------------------
 %{session_c036a3eb6338211e378a3e7b6e1699fa}%
-
 
 .. code-block:: php
 
@@ -27,11 +23,10 @@
         return $session;
     });
 
+
 %{session_abc90f1094f9dbe4b58d5a265c369631}%
-
 ----------------------------------
-%{session_87ec8cb4e8370ad36c308f9df4267121}%
-
+%{session_87ec8cb4e8370ad36c308f9df4267121|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
 
 .. code-block:: php
 
@@ -59,11 +54,10 @@
 
     }
 
-%{session_02fd8072d25fb0bc8a802a753f8714a2}%
 
+%{session_02fd8072d25fb0bc8a802a753f8714a2}%
 ----------------------------
 %{session_74cbe7902d402d8c9a49df86d72665b8}%
-
 
 .. code-block:: php
 
@@ -86,11 +80,10 @@
 
     }
 
-%{session_628bce7a00ed8678f1687552bce2c536}%
 
+%{session_628bce7a00ed8678f1687552bce2c536}%
 -------------------------------------------
 %{session_5cc00375b165d0d4f0c8aa130b12e07d}%
-
 
 .. code-block:: php
 
@@ -111,11 +104,10 @@
         return $session;
     });
 
+
 %{session_9f2d377c6b1d6a3308b97290c79339b2}%
-
 ------------
-%{session_0984532cbe02c59931523ca2d6309f3d}%
-
+%{session_0984532cbe02c59931523ca2d6309f3d|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -127,11 +119,10 @@
     $user->age  = 22;
 
 
+
 %{session_e19c5c57ed64b3c3b7b34a9e22e1ebaa}%
-
 -----------------------------
-%{session_030dee748e8517caa90f774c3ab0e157}%
-
+%{session_030dee748e8517caa90f774c3ab0e157|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`|:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`}%
 
 .. code-block:: php
 
@@ -156,6 +147,7 @@
 
     }
 
+
 %{session_7c0521393288a294669cf9d6429a9452}%
 
 .. code-block:: php
@@ -178,11 +170,10 @@
 
     }
 
+
 %{session_ff9875bf58f62ce9648ffc3204ab1753}%
 
 %{session_206bd6266ccc781d8844f3db2de5d557}%
-
 ------------------------------
-%{session_8d76ebf6ce9c56b07418472e0ee234b0}%
-
+%{session_8d76ebf6ce9c56b07418472e0ee234b0|:doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>`}%
 

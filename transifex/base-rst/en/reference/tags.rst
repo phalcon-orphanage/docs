@@ -1,21 +1,18 @@
 %{tags_c3144b8ef940c1ebff02551da1193039}%
-
 ============
-%{tags_5d627ea36694833fa9a53ecc92595be9}%
+%{tags_5d627ea36694833fa9a53ecc92595be9|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
-
-%{tags_6ccdd33ae3f25b19e9bf66a1bc3a3a20}%
+%{tags_6ccdd33ae3f25b19e9bf66a1bc3a3a20|:doc:`Volt <volt>`}%
 
 .. highlights::
     This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
     the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
 
-%{tags_a05301caf81de2b012d3bcc32aadf8d1}%
 
+%{tags_a05301caf81de2b012d3bcc32aadf8d1}%
 ------------------------
 %{tags_306666c1bdfab58d2a111c8245c7d5e9}%
-
 
 %{tags_b9f573d409350f9ad0b4b4431e38898e}%
 
@@ -45,11 +42,13 @@
 | XHTML5               | XHTML 5                |
 +----------------------+------------------------+
 
+
 %{tags_3ec97a9123bae742ac913d408397293e}%
 
 .. code-block:: php
 
     <?php $this->tag->setDoctype(\Phalcon\Tag::HTML401_STRICT); ?>
+
 
 %{tags_745b00594b4893899ed2d060be8eea7a}%
 
@@ -59,6 +58,7 @@
     <html>
     <!-- your HTML code -->
     </html>
+
 
 %{tags_a913248b009b9ce67a2e616972b49e9e}%
 
@@ -70,6 +70,7 @@
     <!-- your HTML code -->
     </html>
 
+
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
 .. code-block:: html+jinja
@@ -79,11 +80,10 @@
     <!-- your HTML code -->
     </html>
 
-%{tags_ebe7861f32b5b88f1adc5867bd84d41a}%
 
+%{tags_ebe7861f32b5b88f1adc5867bd84d41a}%
 ----------------
 %{tags_6fed5e5e83eff83835948f2a3633d97b}%
-
 
 .. code-block:: html+php
 
@@ -96,7 +96,8 @@
     <!-- for a named route -->
     <?= $this->tag->linkTo(array(array('for' => 'show-product', 'title' => 123, 'name' => 'carrots'), 'Show')) ?>
 
-%{tags_3b3ddbc8f1671013e5486db4eac42be9}%
+
+%{tags_3b3ddbc8f1671013e5486db4eac42be9|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 %{tags_27a89fa6a2d3db6cdb4d3ed5af1e0d93}%
 
@@ -111,11 +112,10 @@
     <!-- for a named route with class -->
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
 
-%{tags_d80e3bdaef8244040a542f67fcd04075}%
 
+%{tags_d80e3bdaef8244040a542f67fcd04075}%
 --------------
 %{tags_da11624fa19e8cda2e99e676ea2e41e3}%
-
 
 .. code-block:: html+php
 
@@ -133,6 +133,7 @@
         <?= $this->tag->submitButton("Search"); ?>
     </form>
 
+
 %{tags_d27e4aae0aae3fac6c653f7cb2b03c28}%
 
 .. code-block:: html
@@ -142,6 +143,7 @@
          <input type="text" id="q" value="" name="q" />
          <input type="submit" value="Search" />
     </endform>
+
 
 %{tags_06a36510fed4747629d50856f444a826}%
 
@@ -154,13 +156,12 @@
         {{ submit_button("Search") }}
     </form>
 
-%{tags_c0252c60d20dc018cec6e1fd6537fd89}%
+
+%{tags_c0252c60d20dc018cec6e1fd6537fd89|:doc:`form builder <forms>`}%
 
 %{tags_f78e5a2f28f870991d16a021368871dc}%
-
 ---------------------------------
 %{tags_76edb8ec0dcb4c5d496f53dcb6f6b8b3}%
-
 
 .. code-block::  html+php
 
@@ -183,6 +184,7 @@
         "value"=> "5"
     )) ?>
 
+
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
 .. code-block::  html+jinja
@@ -195,11 +197,10 @@
 
     {{ hidden_field("parent_id", "value": "5") }}
 
+
 %{tags_9d358ff3057e3a6fa9c7e6b31c120392}%
-
 -------------------
-%{tags_d73e23fe81cdb86f93ccdf697994b5e9}%
-
+%{tags_d73e23fe81cdb86f93ccdf697994b5e9|:doc:`Phalcon\\Mvc\\Model <models>`}%
 
 .. code-block:: php
 
@@ -225,6 +226,7 @@
         )
     );
 
+
 %{tags_9c02c8367d177c1f294065a3edecfdd2}%
 
 .. code-block:: html
@@ -239,6 +241,7 @@
         <option value="A">Active</option>
         <option value="I">Inactive</option>
     </select>
+
 
 %{tags_2942cd92191a7671ed47ae8e39c6fe4c}%
 
@@ -290,6 +293,7 @@
         <option value="103">Beans</option>
     </select>
 
+
 %{tags_0c04dce33fdd9d575e3ae484205cd477}%
 
 .. code-block:: jinja
@@ -298,11 +302,10 @@
     {{ select('productId', products, 'using': ['id', 'name'],
         'useEmpty': true, 'emptyText': 'Please, choose one...', 'emptyValue': '@') }}
 
-%{tags_d7b369e25a0fd32a072012ae2eac6dff}%
 
+%{tags_d7b369e25a0fd32a072012ae2eac6dff}%
 -------------------------
 %{tags_96133c6dea59a8e21c1dd8830d7d77d4}%
-
 
 .. code-block:: html+php
 
@@ -315,11 +318,13 @@
         )
     ) ?>
 
+
 %{tags_f1cc9e4206867580dc22af76768cc7c5}%
 
 .. code-block:: jinja
 
     {{ text_field("price", "size": 20, "maxlength": 30, "placeholder": "Enter a price") }}
+
 
 %{tags_2dee12a8009caf9941e26e95aa5529e9}%
 
@@ -328,15 +333,13 @@
     <input type="text" name="price" id="price" size="20" maxlength="30"
         placeholder="Enter a price" />
 
-%{tags_90680a0d6ea8d96ae9c3d278eee75491}%
 
+%{tags_90680a0d6ea8d96ae9c3d278eee75491}%
 ---------------------
 
 %{tags_d1f65b9d28d406d8c7cf83f5775c49e1}%
-
 ^^^^^^^^^^^^^^^^
 %{tags_ee6a94af060dc0d282ab7dc0ea202ca0}%
-
 
 .. code-block:: php
 
@@ -351,6 +354,7 @@
         }
 
     }
+
 
 %{tags_3a082c1e05df761cc8022226bfc86488}%
 
@@ -369,6 +373,7 @@
         )
     );
 
+
 %{tags_be7e6e74365b955a1bc65b29d77f1561}%
 
 .. code-block:: html
@@ -379,23 +384,18 @@
         <option value="Red">Red</option>
     </select>
 
+
 %{tags_6ac76522c00c412a4fbb903ea19d6032}%
-
 ^^^^^^^^^^^^^^^^
-%{tags_d4b048be3cd14b64d7143cbdffa43c33}%
-
+%{tags_d4b048be3cd14b64d7143cbdffa43c33|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 %{tags_30b618a7301fb8d8b32e47c2a8be084f}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tags_f8114bbc24aaa6312eb398a26ea2066a}%
 
-
 %{tags_f8c9fc84fa74d911f322224af7074c29}%
-
 ---------------------------------------
-%{tags_bb789a223617ee312ef517b941700587}%
-
+%{tags_bb789a223617ee312ef517b941700587|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
@@ -427,6 +427,7 @@
         </body>
     </html>
 
+
 %{tags_9c02c8367d177c1f294065a3edecfdd2}%
 
 .. code-block:: html+php
@@ -440,14 +441,12 @@
           </body>
     </html>
 
+
 %{tags_11fa3ca18323c73cebd6841cd4dcaafe}%
-
 ----------------------
-%{tags_354a660207c84ba1b5170d16150f99e5}%
-
+%{tags_354a660207c84ba1b5170d16150f99e5|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 %{tags_d7e6e0ce3a4102593931f158735cde7a}%
-
 ^^^^^^
 .. code-block:: php
 
@@ -475,8 +474,8 @@
     {# Generate <img alt="alternative text" src="/your-app/img/hello.gif"> #}
     {{ image("img/hello.gif", "alt": "alternative text") }}
 
-%{tags_693fb39361177ed6925aa84de2b9e7d3}%
 
+%{tags_693fb39361177ed6925aa84de2b9e7d3}%
 ^^^^^^^^^^^
 .. code-block:: php
 
@@ -499,8 +498,8 @@
     {# Generate <link rel="stylesheet" href="/your-app/css/styles.css" type="text/css"> #}
     {{ stylesheet_link("css/styles.css") }}
 
-%{tags_39404202e17269c2366ceb1a4c9caf3f}%
 
+%{tags_39404202e17269c2366ceb1a4c9caf3f}%
 ^^^^^^^^^^
 .. code-block:: php
 
@@ -523,11 +522,10 @@
     {# Generate <script src="/your-app/javascript/jquery.min.js" type="text/javascript"></script> #}
     {{ javascript_include("javascript/jquery.min.js") }}
 
-%{tags_70a9b234bde9b99d278cdf4eddefc89b}%
 
+%{tags_70a9b234bde9b99d278cdf4eddefc89b}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{tags_98a764ec8520f16e70ae318adaa88522}%
-
 
 .. code-block:: php
 
@@ -540,6 +538,7 @@
     echo $this->tag->tagHtml("canvas", array("id" => "canvas1", "width" => "300", "class" => "cnvclass"), false, true, true);
     echo "This is my canvas";
     echo $this->tag->tagHtmlClose("canvas");
+
 
 %{tags_85e055ff09040f1f1797f06641d93389}%
 
@@ -554,15 +553,15 @@
     {{ tag_html_close("canvas") }}
 
 
+
 %{tags_5240a19e8081f79e65b6199ffe9897b9}%
-
 -----------
-%{tags_6d85591ac9da2e7ca2f41b928399880f}%
-
+%{tags_6d85591ac9da2e7ca2f41b928399880f|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
     <?php echo $this->tag->linkTo('pages/about', 'About') ?>
+
 
 %{tags_3ca9c99957e6c6ec9f86e78e21a79362}%
 
@@ -587,6 +586,7 @@
         }
     }
 
+
 %{tags_859b2f6f2834e80ef6e97f2a196af08b}%
 
 .. code-block:: php
@@ -597,11 +597,10 @@
         return new MyTags();
     };
 
+
 %{tags_0df7dba379145f570f6ddc01d9fe58f4}%
-
 -------------------------
-%{tags_a7572e13c8b7ec0d5d2c61209a06af49}%
-
+%{tags_a7572e13c8b7ec0d5d2c61209a06af49|:doc:`Phalcon\\Tag <../api/Phalcon_Tag>`}%
 
 .. code-block:: php
 
@@ -661,6 +660,7 @@
 
     }
 
+
 %{tags_2db6c35c6ecf455bd52455a38f5e72fe}%
 
 .. code-block:: php
@@ -694,6 +694,7 @@
     }
 
 
+
 %{tags_250b8998fa225422145c1c8c5c0bfc85}%
 
 .. code-block:: php
@@ -709,5 +710,6 @@
         ?>
 
     </body>
+
 
 

@@ -1,8 +1,6 @@
 %{micro_788ba238448c0f22d9c254a70b84065b}%
-
 ==================
 %{micro_648846d5e9eabd0bf02300f083324c8f}%
-
 
 .. code-block:: php
 
@@ -16,11 +14,10 @@
 
     $app->handle();
 
+
 %{micro_e31cd488f01b9bb2939d662e1188325b}%
-
 ----------------------------
-%{micro_0cca96e627df9983cf88153c2d5fc687}%
-
+%{micro_0cca96e627df9983cf88153c2d5fc687|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`}%
 
 .. code-block:: php
 
@@ -28,11 +25,10 @@
 
     $app = new Phalcon\Mvc\Micro();
 
+
 %{micro_a8a25f2aac05af019b129455c8d4e2eb}%
-
 ---------------
-%{micro_cd66a5f8e2f703c2f2961dbf23a08512}%
-
+%{micro_cd66a5f8e2f703c2f2961dbf23a08512|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 .. code-block:: php
 
@@ -41,6 +37,7 @@
     $app->get('/say/hello/{name}', function ($name) {
         echo "<h1>Hello! $name</h1>";
     });
+
 
 %{micro_8a2607a1b3d9c1e7d4c6aa7b1cc42166}%
 
@@ -68,6 +65,7 @@
     });
 
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods)
+
 %{micro_316bd31a828df167d7d72ed74c55ead7}%
 
 .. code-block:: php
@@ -96,11 +94,10 @@
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
-%{micro_4a215d25b41d831f94fd7b60c56823b3}%
 
+%{micro_4a215d25b41d831f94fd7b60c56823b3}%
 ^^^^^^^^^^^^^^^^^^^^^^
 %{micro_384b68c39a5ef3f758b2911215ecab48}%
-
 
 .. code-block:: php
 
@@ -112,11 +109,10 @@
         echo "<h2>Year: $year</h2>";
     });
 
-%{micro_796c0bcf8150277f840e5a6d386a47de}%
 
+%{micro_796c0bcf8150277f840e5a6d386a47de}%
 ^^^^^^^^^^^^^^
 %{micro_a7fdbf88ca37d62f53e85d18ae5798ef}%
-
 
 .. code-block:: php
 
@@ -127,11 +123,10 @@
         echo "<h1>Welcome!</h1>";
     });
 
-%{micro_06227ff2f8829cdfcedeee027ea7298b}%
 
+%{micro_06227ff2f8829cdfcedeee027ea7298b}%
 ^^^^^^^^^^^^^
 %{micro_1be14374a2c637b2bbbb4a3e44954076}%
-
 
 .. code-block:: apacheconf
 
@@ -141,11 +136,10 @@
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-%{micro_1e6e4ade63d9748952ec93d9dfac5e20}%
 
+%{micro_1e6e4ade63d9748952ec93d9dfac5e20}%
 ----------------------
 %{micro_0ce887b41000aeeb257910c81b702ba0}%
-
 
 .. code-block:: php
 
@@ -166,7 +160,8 @@
         echo json_encode(array("some", "important", "data"));
     });
 
-%{micro_5c447a72e04a5ddaaa0a58ec327cf825}%
+
+%{micro_5c447a72e04a5ddaaa0a58ec327cf825|:doc:`"response" <response>`}%
 
 .. code-block:: php
 
@@ -181,6 +176,7 @@
         readfile("data.txt");
 
     });
+
 
 %{micro_a9e7eaad6b915f732d9afbbf789280ca}%
 
@@ -203,11 +199,10 @@
         return $response;
     });
 
-%{micro_85ebb8b1fe35876ecb488660ec541ddb}%
 
+%{micro_85ebb8b1fe35876ecb488660ec541ddb}%
 -------------------
 %{micro_5c2a4dda48773c7b7b6acea701a709ee}%
-
 
 .. code-block:: php
 
@@ -222,11 +217,10 @@
         echo 'This is the new Welcome';
     });
 
+
 %{micro_9798a318dd3602294c210880870c54e0}%
-
 --------------------------
-%{micro_abee3e3e45f7489d1ed3a7af0125df95}%
-
+%{micro_abee3e3e45f7489d1ed3a7af0125df95|:doc:`Phalcon\\Mvc\\Url <url>`}%
 
 .. code-block:: php
 
@@ -251,11 +245,10 @@
     });
 
 
+
 %{micro_1edd36cbfb44041b7c30b16d6c2d799a}%
-
 ----------------------------------------
-%{micro_aae2fb5d963da74321705d5b59c18693}%
-
+%{micro_aae2fb5d963da74321705d5b59c18693|:doc:`Phalcon\\DI\\FactoryDefault <di>`}%
 
 .. code-block:: php
 
@@ -283,6 +276,7 @@
     $app->post('/contact', function () use ($app) {
         $app->flash->success('Yes!, the contact was made!');
     });
+
 
 %{micro_64079488a59faeb550ea2c18104673d3}%
 
@@ -312,11 +306,10 @@
         }
     });
 
-%{micro_dfe1468d30627f01538ae98507febc3e}%
 
+%{micro_dfe1468d30627f01538ae98507febc3e}%
 -----------------
 %{micro_3cd465e50bae5ff20846030afa6f1c91}%
-
 
 .. code-block:: php
 
@@ -327,11 +320,10 @@
         echo 'This is crazy, but this page was not found!';
     });
 
+
 %{micro_4325ce4e9847b0d604ca69b6743b6465}%
-
 ----------------------------
-%{micro_94d4d62695afcb1d841a41b9d47f4260}%
-
+%{micro_94d4d62695afcb1d841a41b9d47f4260|:doc:`Models <models>`}%
 
 .. code-block:: php
 
@@ -355,11 +347,10 @@
 
     $app->handle();
 
+
 %{micro_b2f9f6b99cf3263485d410423f15bf18}%
-
 ------------------------
-%{micro_b505075c684a62fc5150a58f45018184}%
-
+%{micro_b505075c684a62fc5150a58f45018184|:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>`|:doc:`EventsManager <events>`}%
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -374,6 +365,7 @@
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Yes                  |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
+
 
 %{micro_0f780737706f95d6efb0e43b8c5b9370}%
 
@@ -408,11 +400,10 @@
     //{%micro_5f8a807560139399123c35aaaf7132a9%}
     $app->setEventsManager($eventManager);
 
-%{micro_a954117055b58c8596806ed51d04a5bc}%
 
+%{micro_a954117055b58c8596806ed51d04a5bc}%
 -----------------
 %{micro_cd46592838085b7b4c94e18b6cca9f5f}%
-
 
 .. code-block:: php
 
@@ -444,6 +435,7 @@
         //{%micro_7e6106d8f1196faf1366c4a2f2c7ad4e%}
     });
 
+
 %{micro_af61d0ee94d5363bff4723b20b510672}%
 
 .. code-block:: php
@@ -457,6 +449,7 @@
     $app->finish(function() use ($app) {
         //{%micro_bc7d01509c0ceb1a729f0cd93c103f61%}
     });
+
 
 %{micro_91247934de46a6239a1477c5033afebc}%
 
@@ -491,6 +484,7 @@
         }
     }
 
+
 %{micro_d188b24bbaa8eb2535c56aa6ae8fface}%
 
 .. code-block:: php
@@ -498,6 +492,7 @@
     <?php
 
     $app->before(new CacheMiddleware());
+
 
 %{micro_8b6387c927d810b580482dcced74c785}%
 
@@ -511,11 +506,10 @@
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
+
 %{micro_8d672192be99dfd34509f659e0938d58}%
-
 -----------------------------
-%{micro_d5c2ff46f8c4c2951e8ee0b9c8f58925}%
-
+%{micro_d5c2ff46f8c4c2951e8ee0b9c8f58925|:doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>`}%
 
 .. code-block:: php
 
@@ -539,6 +533,7 @@
 
     $app->mount($posts);
 
+
 %{micro_0974007ee9d282272b7beb588446ad82}%
 
 .. code-block:: php
@@ -559,6 +554,7 @@
         }
     }
 
+
 %{micro_5443e6f2efcec044c0dbcbaeb846bf40}%
 
 .. code-block:: php
@@ -568,11 +564,10 @@
     $posts->setHandler('PostsController', true);
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
+
 %{micro_96018889300caae7d7d05f83cd8e858c}%
-
 -------------------
-%{micro_c7feff5e66f92496121ef73b5ea437e7}%
-
+%{micro_c7feff5e66f92496121ef73b5ea437e7|:doc:`Phalcon\\Http\\Response <response>`}%
 
 .. code-block:: php
 
@@ -595,11 +590,10 @@
         return $response;
     });
 
+
 %{micro_3eeddf70df32086a3d2bb22803b559d4}%
-
 ---------------
-%{micro_70e1a9347021840524d101419a67e2f7}%
-
+%{micro_70e1a9347021840524d101419a67e2f7|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
 
 .. code-block:: php
 
@@ -623,4 +617,5 @@
         ));
 
     });
+
 

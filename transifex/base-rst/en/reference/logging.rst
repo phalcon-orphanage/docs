@@ -1,14 +1,10 @@
 %{logging_e1e77dd383c1258dad2a6817a1c6fc23}%
-
 =======
-%{logging_83307414f84544e9d47eda3ed6fd444b}%
-
+%{logging_83307414f84544e9d47eda3ed6fd444b|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
 
 %{logging_59016d3191a4f3dbf5870903d350a278}%
-
 --------
 %{logging_7719970f241857ca9e504df050236f81}%
-
 
 +---------+---------------------------+----------------------------------------------------------------------------------+
 | Adapter | Description               | API                                                                              |
@@ -22,11 +18,10 @@
 | Firephp | Logs to the FirePHP       | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
 +---------+---------------------------+----------------------------------------------------------------------------------+
 
-%{logging_09b0ceccae27e6c1ca869a1550eedb8c}%
 
+%{logging_09b0ceccae27e6c1ca869a1550eedb8c}%
 --------------
 %{logging_e63e0c079b7fee380985d6e84e61a2b6}%
-
 
 .. code-block:: php
 
@@ -39,6 +34,7 @@
     $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
 
+
 %{logging_cb5d3142af07aef2127316bfd68d9d19}%
 
 .. code-block:: php
@@ -47,11 +43,10 @@
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
 
-%{logging_70f40070204552b5f24220685f1af1d5}%
 
+%{logging_70f40070204552b5f24220685f1af1d5}%
 ------------
 %{logging_4fc46c960ea33af192240eab46a09109}%
-
 
 .. code-block:: php
 
@@ -72,11 +67,10 @@
     // {%logging_3d10059e9fa0ef6e28e2c5c43d9399da%}
     $logger->commit();
 
+
 %{logging_56a89ee6c74eb7e75196fb76e0a4bb02}%
-
 ----------------------------
-%{logging_b690ecd5a9f5988fb5fa892f27d40c32}%
-
+%{logging_b690ecd5a9f5988fb5fa892f27d40c32|:doc:`Phalcon\\Logger <../api/Phalcon_Logger>`}%
 
 .. code-block:: php
 
@@ -96,13 +90,12 @@
     $logger->log("This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
+
 %{logging_1241b25452d292af9143221031ca6dd1}%
 
 %{logging_e878a9635e264ea1629ff323631591f3}%
-
 ------------------
 %{logging_a870e6e66975cb06cf0285e1c849faec}%
-
 
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 | Adapter | Description                                   | API                                                                                |
@@ -114,11 +107,10 @@
 | Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 
-%{logging_36ddd603e810700ce82861595cb6d9b7}%
 
+%{logging_36ddd603e810700ce82861595cb6d9b7}%
 ^^^^^^^^^^^^^^
 %{logging_aa191ace515bda8040360c2ff89b5485}%
-
 
 %{logging_de600f2e9541eff7ef136e299fe2b92b}%
 
@@ -134,6 +126,7 @@
 | %type%    | Uppercase string with message type       |
 +-----------+------------------------------------------+
 
+
 %{logging_fe5621cbba6fdafc0fc077ca00bab123}%
 
 .. code-block:: php
@@ -146,23 +139,18 @@
     $formatter = new LineFormatter("%date% - %message%");
     $logger->setFormatter($formatter);
 
+
 %{logging_45b978c53f59c4bf462869a1c482ca20}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{logging_4dca6f4fac98c0bab84f0c8b13465b94}%
-
+%{logging_4dca6f4fac98c0bab84f0c8b13465b94|:doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>`}%
 
 %{logging_59016d3191a4f3dbf5870903d350a278}%
-
 --------
 %{logging_0f7a0691a4100d4ef026cdbb15b0d517}%
 
-
 %{logging_732096ca5a9f846ece0a3c3c969a6dc3}%
-
 ^^^^^^^^^^^^^
-%{logging_e145d1fad62c6335a395ca852d5a4b88}%
-
+%{logging_e145d1fad62c6335a395ca852d5a4b88|`here <http://php.net/manual/en/wrappers.php>`_}%
 
 .. code-block:: php
 
@@ -176,11 +164,10 @@
     // {%logging_c2515f4bda92df933bc062b6ae77f9c9%}
     $logger = new StreamAdapter("php://stderr");
 
-%{logging_ee91c22182c28068ea54db509b31fa5a}%
 
+%{logging_ee91c22182c28068ea54db509b31fa5a}%
 ^^^^^^^^^^^
 %{logging_fda2a76fe7505c9bff333c04c17070a2}%
-
 
 .. code-block:: php
 
@@ -193,11 +180,10 @@
         'mode' => 'w'
     ));
 
-%{logging_d7d7d7efa5d766b6f1f59b94694a31d4}%
 
+%{logging_d7d7d7efa5d766b6f1f59b94694a31d4}%
 ^^^^^^^^^^^^^
 %{logging_23e96bb8081304bbd3f86587f6c62662}%
-
 
 .. code-block:: php
 
@@ -214,11 +200,10 @@
     ));    
     
     
-%{logging_8b5f240b2cf1e114016ebd19135f8963}%
 
+%{logging_8b5f240b2cf1e114016ebd19135f8963}%
 ^^^^^^^^^^^^^^
 %{logging_281495c2d33850fd0604677e8f37a6e8}%
-
 
 .. code-block:: php
 
@@ -230,4 +215,5 @@
  	$logger->log("This is a message");
  	$logger->log("This is an error", \Phalcon\Logger::ERROR);
  	$logger->error("This is another error");
+
 

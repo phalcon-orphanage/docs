@@ -1,14 +1,10 @@
 %{routing_476a8980062af9e778f675c1bc4f73ef}%
-
 =======
 %{routing_80737ee348be4a387eda622d15b10c75}%
 
-
 %{routing_a8a25f2aac05af019b129455c8d4e2eb}%
-
 ---------------
-%{routing_47146a2ecc8df656ce082727e04a68a1}%
-
+%{routing_47146a2ecc8df656ce082727e04a68a1|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 .. code-block:: php
 
@@ -37,7 +33,8 @@
 
     $router->handle();
 
-%{routing_112145b292308040c6da39af4290ad30}%
+
+%{routing_112145b292308040c6da39af4290ad30|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{routing_e337359c3e1a34b84cd25564e88c6b8f}%
 
@@ -58,6 +55,7 @@
         )
     );
 
+
 %{routing_8cd210a54ff282e87a6ed0f7f1494972}%
 
 +------------+---------------+
@@ -70,7 +68,8 @@
 | Parameter  | 301           |
 +------------+---------------+
 
-%{routing_fbef067a9226aecd62e78a552e40ea17}%
+
+%{routing_fbef067a9226aecd62e78a552e40ea17|`PCRE regular expressions`_}%
 
 %{routing_bd30a2c3f46b46c876a14459bb37cb3f}%
 
@@ -92,15 +91,14 @@
 | /:int        | /([0-9]+)           | Matches an integer parameter                                                                           |
 +--------------+---------------------+--------------------------------------------------------------------------------------------------------+
 
+
 %{routing_7eb946b0fa36e208b3b987f9503af17e}%
 
-%{routing_e95a5ec2cdeecafeb9842a70f9e44ba2}%
+%{routing_e95a5ec2cdeecafeb9842a70f9e44ba2|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 %{routing_3540d24c854e30bda17e43acc7db78b9}%
-
 ^^^^^^^^^^^^^^^^^^^^^
 %{routing_acae6bad7acef0f5d14865c3b631c44e}%
-
 
 .. code-block:: php
 
@@ -117,6 +115,7 @@
             "params"     => 4, // {%routing_c8faf368354ddcf09a540ed33a5078be%}
         )
     );
+
 
 %{routing_5d916475254ea486a884d1f6046ae413}%
 
@@ -148,6 +147,7 @@
 
     }
 
+
 %{routing_3b64696f43025f9debdd28b92dcc3d55}%
 
 .. code-block:: php
@@ -161,6 +161,7 @@
             "action"     => "show"
         )
     );
+
 
 %{routing_478aded91934b807494433f5e157b553}%
 
@@ -184,11 +185,10 @@
 
     }
 
-%{routing_40d3496dd82862acf7fa645cf5843ca9}%
 
+%{routing_40d3496dd82862acf7fa645cf5843ca9}%
 ^^^^^^^^^^^^
 %{routing_21979d3e12775abb02b191341aff60c1}%
-
 
 .. code-block:: php
 
@@ -208,11 +208,10 @@
         )
     );
 
-%{routing_f3080b2f6ccf5d03da8f1da2560e2d1a}%
 
+%{routing_f3080b2f6ccf5d03da8f1da2560e2d1a}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{routing_ad3d45d5acd8299cd58843284585bf79}%
-
 
 .. code-block:: php
 
@@ -227,11 +226,10 @@
         )
     );
 
-%{routing_ab5679a42afac0c7b0181219d03ba29b}%
 
+%{routing_ab5679a42afac0c7b0181219d03ba29b}%
 ^^^^^^^^^^^^^^^^^^
 %{routing_9add85d11b871eaff3e948f9c4c4b82d}%
-
 
 .. code-block:: php
 
@@ -246,6 +244,7 @@
         'params' => 4
     ));
 
+
 %{routing_7a02084b284a14555e834818e8512471}%
 
 +------------+---------------+
@@ -257,6 +256,7 @@
 +------------+---------------+
 | Parameter  | sonny         |
 +------------+---------------+
+
 
 %{routing_b75389cde16eadf81bfc0a68ff6150b9}%
 
@@ -276,6 +276,7 @@
         'action' => 1,
     ));
 
+
 %{routing_6a0fab83164f4079d3ab6ddd5b16264d}%
 
 .. code-block:: php
@@ -287,6 +288,7 @@
         'controller' => 'login',
         'action' => 'index'
     ));
+
 
 %{routing_a9e57af3ec6ccf5159eeaa8524c3259b}%
 
@@ -300,11 +302,10 @@
         'action' => 'index'
     ));
 
-%{routing_453efd9a5cf676ae2ae88a43c16a616b}%
 
+%{routing_453efd9a5cf676ae2ae88a43c16a616b}%
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{routing_1477452518ac56e7c127ba9b933bf10e}%
-
 
 .. code-block:: php
 
@@ -319,11 +320,10 @@
     // {%routing_c2eafcef2064372c43e67d99455710c0%}
     $router->add("/products/update")->via(array("POST", "PUT"));
 
-%{routing_cf90cec6f911c38eece8ebb5aa3b4b23}%
 
+%{routing_cf90cec6f911c38eece8ebb5aa3b4b23}%
 ^^^^^^^^^^^^^^^^^
 %{routing_8f5321b91956f88f2b4d583c0f1e846b}%
-
 
 .. code-block:: php
 
@@ -340,11 +340,10 @@
             return str_replace('-', '', $slug);
         });
 
-%{routing_89645649e65162817ae5591359c8a198}%
 
+%{routing_89645649e65162817ae5591359c8a198}%
 ^^^^^^^^^^^^^^^^
 %{routing_9ed218f28edb65d2e1ce51f6ce34c1ec}%
-
 
 .. code-block:: php
 
@@ -379,6 +378,7 @@
 
     //{%routing_cf0d7a079879f96295a227eb381c89f0%}
     $router->mount($blog);
+
 
 %{routing_d18d7dd959e51180c33e8fe7efd1adbe}%
 
@@ -418,6 +418,7 @@
         }
     }
 
+
 %{routing_b1851b1c2fa5c5307d595bfaaff976ac}%
 
 .. code-block:: php
@@ -427,11 +428,10 @@
     //{%routing_cf0d7a079879f96295a227eb381c89f0%}
     $router->mount(new BlogRoutes());
 
-%{routing_87641826c33ca36481c575395f04a269}%
 
+%{routing_87641826c33ca36481c575395f04a269}%
 ---------------
 %{routing_c9305535339c97f0535de63c1c82b540}%
-
 
 .. code-block:: apacheconf
 
@@ -439,6 +439,7 @@
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
     RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+
 
 %{routing_57b493be47ed19be107d98ad207df3e6}%
 
@@ -467,11 +468,10 @@
     //{%routing_407e0df96b74082fe285eb53fafb7028%}
     $route = $router->getMatchedRoute();
 
+
 %{routing_7ff55897ca1eac97569667483eccf29c}%
-
 -------------
-%{routing_6df89922da42abd85f9501e63a6b750a}%
-
+%{routing_6df89922da42abd85f9501e63a6b750a|:doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`}%
 
 .. code-block:: php
 
@@ -485,7 +485,8 @@
 
     $router->add("/posts/{year}/{title}", "Posts::show")->setName("show-posts");
 
-%{routing_7c33107c5fdf767df91a2620d4323b7d}%
+
+%{routing_7c33107c5fdf767df91a2620d4323b7d|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 .. code-block:: php
 
@@ -498,11 +499,10 @@
         "title" => "phalcon-1-0-released"
     ));
 
-%{routing_33df0f1f046d5ea7d528ae7e04b5b00f}%
 
+%{routing_33df0f1f046d5ea7d528ae7e04b5b00f}%
 --------------
 %{routing_7d3cc177511a959a88a38ebc77f371bc}%
-
 
 .. code-block:: php
 
@@ -590,11 +590,10 @@
     become class names and in turn they're passed through the file system could be used by attackers to
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
+
 %{routing_455c64f03d8a2db20778f630271ab7eb}%
-
 ----------------
-%{routing_ac42b4b6d5f1a7086e305de2b9e6e598}%
-
+%{routing_ac42b4b6d5f1a7086e305de2b9e6e598|:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>`}%
 
 %{routing_d6b9352467b77e061070a12d9d8b2d6c}%
 
@@ -606,6 +605,7 @@
 | Parameter  | about.html    |
 +------------+---------------+
 
+
 %{routing_64e1f6d7e8bd1348c4afc274d26d571a}%
 
 .. code-block:: php
@@ -615,11 +615,10 @@
     // {%routing_8c0d2307d542718a5f44f362bc75a0e6%}
     $router = new \Phalcon\Mvc\Router(false);
 
-%{routing_5aef7c16fc00974efa801f11d5ab1674}%
 
+%{routing_5aef7c16fc00974efa801f11d5ab1674}%
 -------------------------
 %{routing_f263d36de6652a9b4a6d419ea3dc8359}%
-
 
 .. code-block:: php
 
@@ -630,11 +629,10 @@
         'action' => 'index'
     ));
 
-%{routing_b09e95ff2020febabcc69da62f468438}%
 
+%{routing_b09e95ff2020febabcc69da62f468438}%
 ---------------
 %{routing_b1656daeb0be1c3b453eed446ec80368}%
-
 
 .. code-block:: php
 
@@ -646,11 +644,10 @@
         "action" => "route404"
     ));
 
-%{routing_33a1d5e7ebac5b03e011b0a0f5ef8c27}%
 
+%{routing_33a1d5e7ebac5b03e011b0a0f5ef8c27}%
 ---------------------
 %{routing_4e85ee960ebc91e99e100ebc61abfceb}%
-
 
 .. code-block:: php
 
@@ -668,11 +665,10 @@
         'action' => 'index'
     ));
 
-%{routing_45a6a55a7d1f271400e66f477bc919c8}%
 
+%{routing_45a6a55a7d1f271400e66f477bc919c8}%
 -----------------------------------
 %{routing_84eb8a6b4c6bfbdc6313b9fae680e929}%
-
 
 .. code-block:: php
 
@@ -682,6 +678,7 @@
 
     //{%routing_4c419e391a1a280d8cdef97f61e105d8%}
     $router->removeExtraSlashes(true);
+
 
 %{routing_cb88012b458e6b55753d6ab71de09ed4}%
 
@@ -697,11 +694,10 @@
         )
     );
 
-%{routing_2617728469525c66288abb69d182cb15}%
 
+%{routing_2617728469525c66288abb69d182cb15}%
 ---------------
 %{routing_eeec2b22d72619afda05414dbc3c90ff}%
-
 
 .. code-block:: php
 
@@ -718,6 +714,7 @@
         return true;
     });
 
+
 %{routing_e2baf3be5f2a60d1ec516e51de94661d}%
 
 .. code-block:: php
@@ -732,6 +729,7 @@
         }
     }
 
+
 %{routing_dbdc46e51cbe0f58cb90ef9001dab2a7}%
 
 .. code-block:: php
@@ -743,11 +741,10 @@
         'action' => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
-%{routing_700fdbb69619d592622aa670b3e4aaa2}%
 
+%{routing_700fdbb69619d592622aa670b3e4aaa2}%
 --------------------
 %{routing_f5bb43969cf1dfaf2ed5786dcfbcb3b1}%
-
 
 .. code-block:: php
 
@@ -758,6 +755,7 @@
         'controller' => 'session',
         'action' => 'login'
     ))->setHostName('admin.company.com');
+
 
 %{routing_3b6265dc31b17ad6d85aa03a282ad603}%
 
@@ -770,6 +768,7 @@
         'controller' => 'session',
         'action' => 'login'
     ))->setHostName('([a-z+]).company.com');
+
 
 %{routing_358162dafe136cd0f52ead45bf46f6fa}%
 
@@ -807,11 +806,10 @@
     //{%routing_cf0d7a079879f96295a227eb381c89f0%}
     $router->mount($blog);
 
-%{routing_d95c9cb668c864c98ce0f13b7cfbb094}%
 
+%{routing_d95c9cb668c864c98ce0f13b7cfbb094}%
 -----------
 %{routing_fe0a2ee2c90f9752b2a978bfd4b55d83}%
-
 
 .. code-block:: php
 
@@ -819,6 +817,7 @@
 
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // {%routing_18c5a9d018efa117de87ba83036d7d8f%}
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // {%routing_c464d18bc721cb189482c8a99bec39b0%}
+
 
 %{routing_af97ddd2a6081ddf9a013328616ad06e}%
 
@@ -828,11 +827,10 @@
 
     $router->handle('/some/route/to/handle');
 
-%{routing_4336bee9ffb2243f3e531eee35935fc2}%
 
+%{routing_4336bee9ffb2243f3e531eee35935fc2}%
 -------------------
 %{routing_b8b538e16c15ca88ca07203a60c075e5}%
-
 
 .. code-block:: php
 
@@ -873,11 +871,10 @@
 
     }
 
+
 %{routing_3b78bfeabfbeef7d8e6fdb177e468dbe}%
-
 ------------------
-%{routing_2310ee24cb48f9ae5767b3fd5a108858}%
-
+%{routing_2310ee24cb48f9ae5767b3fd5a108858|:doc:`annotations <annotations>`}%
 
 .. code-block:: php
 
@@ -893,6 +890,7 @@
 
         return $router;
     };
+
 
 %{routing_f6932f89eb45ce7de0ead2fd92c7c9a7}%
 
@@ -946,6 +944,7 @@
 
     }
 
+
 %{routing_e8d954fb39fefaf42280b0ba17212b1e}%
 
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -966,6 +965,7 @@
 | Options      | This annotation marks a method as a route restricting the HTTP method to OPTIONS                  | @Option("/api/products/info")                                      |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
+
 %{routing_ef6ddf2ec08b278c4cae5d3de4ecc4bd}%
 
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
@@ -979,6 +979,7 @@
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 | conversors   | A hash of conversors to be applied to the parameters                                              | @Route("/posts/{id}/{slug}", conversors={id="MyConversor::getId"}) |
 +--------------+---------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
 
 %{routing_2a8d24e00c808b565546152a64c186d3}%
 
@@ -997,11 +998,11 @@
         return $router;
     };
     
-%{routing_ac44f232dbf5ec48d8c0868482c9ff0d}%
 
+%{routing_ac44f232dbf5ec48d8c0868482c9ff0d}%
 ---------------------------
 
-%{routing_de1d5ff781a73d6d079419e9ab3a1fb9}%
+%{routing_de1d5ff781a73d6d079419e9ab3a1fb9|`Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_}%
 
 .. code-block:: php
 
@@ -1014,6 +1015,7 @@
         require __DIR__.'/../app/config/routes.php';
         return $router;
     });
+
 
 %{routing_76c01d03be138f0ca89687a425f32b0d}%
 
@@ -1036,9 +1038,8 @@
     return $router;
 
 
+
 %{routing_6946292c838dafe294782c973703999a}%
-
 ----------------------------
-%{routing_eee2a709e3c64dc9cb5f5ece3c89f130}%
-
+%{routing_eee2a709e3c64dc9cb5f5ece3c89f130|:doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>`}%
 

@@ -1,16 +1,12 @@
 %{crypt_f360a3a20fa1a3c3b28ba77a0a8d84be}%
-
 =====================
-%{crypt_fa427ff7557122e02a4c26931de50239}%
-
+%{crypt_fa427ff7557122e02a4c26931de50239|:doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>`}%
 
 %{crypt_957df3c33bcabdc3862c027235e7ad7b}%
 
 %{crypt_b0320f4a950d93f7f09a91c29ce5132b}%
-
 -----------
 %{crypt_3fa9f2edea33b150c507a3a7430d6b2e}%
-
 
 .. code-block:: php
 
@@ -25,6 +21,7 @@
     $encrypted = $crypt->encrypt($text, $key);
 
     echo $crypt->decrypt($encrypted, $key);
+
 
 %{crypt_6f4a10bd7455ec95763a6e294e8cf725}%
 
@@ -49,11 +46,10 @@
         echo $crypt->decrypt($encrypted, $key);
     }
 
-%{crypt_c6a0e7ea1b497e531e4c2b9ba931ff03}%
 
+%{crypt_c6a0e7ea1b497e531e4c2b9ba931ff03}%
 ------------------
 %{crypt_36fc07ecbfdf209582225327af389134}%
-
 
 +------------+---------------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                       |
@@ -62,6 +58,7 @@
 +------------+---------------------------------------------------------------------------------------------------+
 | Mode       | One of the encryption modes supported by libmcrypt (ecb, cbc, cfb, ofb)                           |
 +------------+---------------------------------------------------------------------------------------------------+
+
 
 %{crypt_74d36f46f78c5347bb7efc53be29b2dd}%
 
@@ -80,11 +77,10 @@
 
     echo $crypt->encrypt($text, $key);
 
-%{crypt_347c782d992d779c9a8704504648d478}%
 
+%{crypt_347c782d992d779c9a8704504648d478}%
 --------------
 %{crypt_8e9cfbbc7197e914936752480dcdb981}%
-
 
 .. code-block:: php
 
@@ -100,11 +96,10 @@
 
     echo $crypt->decryptBase64($text, $key);
 
-%{crypt_7f46562c8af18fea5e1b5163c2f327e4}%
 
+%{crypt_7f46562c8af18fea5e1b5163c2f327e4}%
 --------------------------------
 %{crypt_2c1201ff75b1d531fdb8dd633c1904cb}%
-
 
 .. code-block:: php
 
@@ -119,6 +114,7 @@
 
         return $crypt;
     }, true);
+
 
 %{crypt_603c20f1dddc4539dfd9fed082276775}%
 

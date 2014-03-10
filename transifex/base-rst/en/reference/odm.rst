@@ -1,8 +1,6 @@
 %{odm_48cb4cd9833b519dd8ca15aa818b67a3}%
-
 ============================
-%{odm_a93a8d132de0914aa0ec12381c76fb5b}%
-
+%{odm_a93a8d132de0914aa0ec12381c76fb5b|:doc:`map tables <models>`}%
 
 %{odm_2643e1e9a609735194337259764e21a5}%
 
@@ -14,11 +12,10 @@
 | MongoDB_   | MongoDB is a scalable, high-performance, open source NoSQL database. |
 +------------+----------------------------------------------------------------------+
 
+
 %{odm_6fe6eff5591f581f3c7a8b8db8748e2d}%
-
 ---------------
-%{odm_7eb42c46882238eaeb6d7ea069aaa281}%
-
+%{odm_7eb42c46882238eaeb6d7ea069aaa281|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 .. code-block:: php
 
@@ -34,6 +31,7 @@
     If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
+
 %{odm_711543eda4f95a18fd009d91e6579757}%
 
 .. code-block:: php
@@ -48,11 +46,10 @@
         }
     }
 
-%{odm_c0d736e3c6dc4ae7feeaca79f5a3119c}%
 
+%{odm_c0d736e3c6dc4ae7feeaca79f5a3119c}%
 ----------------------------------
 %{odm_cef9c90442496b28c2daa4792f41dffe}%
-
 
 .. code-block:: bash
 
@@ -67,11 +64,10 @@
     { "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
     >
 
-%{odm_edc8f4356afdd63c106c2e25e75e3a4a}%
 
+%{odm_edc8f4356afdd63c106c2e25e75e3a4a}%
 --------------------
 %{odm_9438dc6649ff6249a00b13fcc1e94764}%
-
 
 .. code-block:: php
 
@@ -89,6 +85,7 @@
 
     }
 
+
 %{odm_a5e5e27596c85370e46e013c6edb33cd}%
 
 .. code-block:: php
@@ -100,6 +97,7 @@
 
     // {%odm_b7bf91428c8ca18fb00a45b797a06be6%}
     echo $robot->name;
+
 
 %{odm_5593dab00434cec6bd7ff9eb6a5e4fa8}%
 
@@ -113,11 +111,10 @@
     $robot->name = "Voltron";
     $robot->save();
 
-%{odm_c2ebf821b71d105eb45a15fb41e418a2}%
 
+%{odm_c2ebf821b71d105eb45a15fb41e418a2}%
 --------------------
 %{odm_d4babb87a5be4b7ee76640eab4290f07}%
-
 
 .. code-block:: php
 
@@ -135,11 +132,10 @@
         return $mongo->selectDb("store");
     }, true);
 
+
 %{odm_c395e1e396d378f13260b962ebc4d212}%
-
 -----------------
-%{odm_248e6d6351583db2622387a3d9fa82e2}%
-
+%{odm_248e6d6351583db2622387a3d9fa82e2|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 .. code-block:: php
 
@@ -176,6 +172,7 @@
        echo $robot->name, "\n";
     }
 
+
 %{odm_dca37eac806548a6c68a838011d99538}%
 
 .. code-block:: php
@@ -191,6 +188,7 @@
         array("type" => "mechanical")
     ));
     echo "The first mechanical robot name is ", $robot->name, "\n";
+
 
 %{odm_1c335b086c81eff06a897a5fbfa8161e}%
 
@@ -212,6 +210,7 @@
         "sort"       => array("name" => -1)
     ));
 
+
 %{odm_2b5aacc034cc35eb04d354e3f362416d}%
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -228,13 +227,12 @@
 | skip        | Skips a number of results                                                                                                                                                                    | "skip" => 50                                                            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-%{odm_9d556e5bdfec0888023a85b4f7a82160}%
+
+%{odm_9d556e5bdfec0888023a85b4f7a82160|`SQL to Mongo Mapping Chart`_}%
 
 %{odm_0c496866e3b7ef5ccb7d7b86d29300ac}%
-
 ------------
-%{odm_7c6c29f06857c49db2a97133b9542c98}%
-
+%{odm_7c6c29f06857c49db2a97133b9542c98|`aggregation framework`_}%
 
 .. code-block:: php
 
@@ -252,11 +250,10 @@
         )
     ));
 
+
 %{odm_a7f6efdf628627cbfb0183f461cfcd29}%
-
 -------------------------
-%{odm_7e1a60800ceef0e69421ebbbc0963ac9}%
-
+%{odm_7e1a60800ceef0e69421ebbbc0963ac9|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 %{odm_3985ac741064a84b198fbfb559b38e0a}%
 
@@ -277,6 +274,7 @@
         echo "Great, a new robot was saved successfully!";
     }
 
+
 %{odm_e27841ee99e14fc6519e0db9d17c2333}%
 
 .. code-block:: php
@@ -286,13 +284,12 @@
     $robot->save();
     echo "The generated id is: ", $robot->getId();
 
+
 %{odm_39d425478bbbd8c190c1571d56968719}%
-
 ^^^^^^^^^^^^^^^^^^^
-%{odm_1dfb448799cd9391845e5659e6a08fa1}%
+%{odm_1dfb448799cd9391845e5659e6a08fa1|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
-
-%{odm_d27c98baf8000da38be80c02eed41dc0}%
+%{odm_d27c98baf8000da38be80c02eed41dc0|:doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`}%
 
 .. code-block:: php
 
@@ -306,11 +303,10 @@
         }
     }
 
+
 %{odm_291df405bc7e94cd5137b3f35777fe55}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{odm_45bd7c03e46d3d6e4123c02b699b12a3}%
-
+%{odm_45bd7c03e46d3d6e4123c02b699b12a3|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                         |
@@ -342,6 +338,7 @@
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                          |
 +--------------------+--------------------------+-----------------------+---------------------------------------------------------------------------------------------------------------------+
 
+
 %{odm_8634db265f5cadee561f9981abadd4a3}%
 
 .. code-block:: php
@@ -357,6 +354,7 @@
         }
 
     }
+
 
 %{odm_3fa8d189cbd898ffa9232f5519462f06}%
 
@@ -381,7 +379,8 @@
 
     }
 
-%{odm_f8398ace84457fa6a9c43e61ca429370}%
+
+%{odm_f8398ace84457fa6a9c43e61ca429370|:doc:`Phalcon\\Events\\Manager <events>`}%
 
 .. code-block:: php
 
@@ -405,6 +404,7 @@
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
+
 
 %{odm_f9081cbced23976e340a4dd7d1c9137a}%
 
@@ -437,11 +437,10 @@
 
     }, true);
 
-%{odm_a2333fe1d4949c60e0ffa88a36ec8b24}%
 
+%{odm_a2333fe1d4949c60e0ffa88a36ec8b24}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{odm_55a005b019c6e5cffa73b951673ab855}%
-
 
 %{odm_58acea561b884f8775c83234389a6c67}%
 
@@ -464,13 +463,12 @@
 
     }
 
-%{odm_cc0c64759378d22ce091113bdd1a7f1c}%
+
+%{odm_cc0c64759378d22ce091113bdd1a7f1c|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 %{odm_53c9ef435efdc751976636021ca78ae8}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{odm_44f73e5f781842638380d87cc3e0e58d}%
-
+%{odm_44f73e5f781842638380d87cc3e0e58d|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 %{odm_1cc9ab87bdb41eb59d0ed209160c60d8}%
 
@@ -507,6 +505,7 @@
 
     }
 
+
 %{odm_6fc5673ab45b31b06590374c8a04678a}%
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
@@ -524,6 +523,7 @@
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+
 
 %{odm_84bbc78bf253737de49fbc641775a65f}%
 
@@ -549,6 +549,7 @@
 
     }
 
+
 %{odm_52bc5373d71ac2fdd32cbb2d8ab1facd}%
 
 .. code-block:: php
@@ -569,6 +570,7 @@
         }
 
     }
+
 
 %{odm_54b18d3c6c9a0bde772d9da50d583189}%
 
@@ -595,11 +597,10 @@
 
     }
 
-%{odm_0dcecd441d09452dc45fa5fb8fdf84c9}%
 
+%{odm_0dcecd441d09452dc45fa5fb8fdf84c9}%
 ----------------
 %{odm_40af205b9a04743ad351275a69f4b65a}%
-
 
 .. code-block:: php
 
@@ -616,6 +617,7 @@
             echo "The robot was deleted successfully!";
         }
     }
+
 
 %{odm_99549cf17570de7a53de04a9b45de1bc}%
 
@@ -637,6 +639,7 @@
         }
     }
 
+
 %{odm_1754d4c775f9d294061fd18347afd1a0}%
 
 +-----------+--------------+---------------------+------------------------------------------+
@@ -647,11 +650,10 @@
 | Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
 
-%{odm_9b8dadaae5e0186045cc25e173cc28e3}%
 
+%{odm_9b8dadaae5e0186045cc25e173cc28e3}%
 ------------------------
 %{odm_e5566c1a40baf6c9892dc4174579074f}%
-
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
@@ -661,11 +663,10 @@
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 
-%{odm_8198f64c5bcb74146e7192fa3f9a5a40}%
 
+%{odm_8198f64c5bcb74146e7192fa3f9a5a40}%
 ----------------------------------
 %{odm_bc3fa5701dfa4336c5777693f4cfb7c6}%
-
 
 .. code-block:: php
 
@@ -679,11 +680,10 @@
         }
     }
 
+
 %{odm_78d81576bf0a8efea929a760098c2829}%
-
 --------------------------
-%{odm_af3d780bdb3c8ad0ddab1b38de1fe472}%
-
+%{odm_af3d780bdb3c8ad0ddab1b38de1fe472|:doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`}%
 
 .. code-block:: php
 
@@ -701,6 +701,7 @@
         return $mongo->selectDb("invoicing");
     }, true);
 
+
 %{odm_aae5be7f170ab14ae4df454c73a9fc63}%
 
 .. code-block:: php
@@ -716,11 +717,10 @@
 
     }
 
-%{odm_bf20ac68334be437956a656824fc4005}%
 
+%{odm_bf20ac68334be437956a656824fc4005}%
 ------------------------------
 %{odm_4b0148a30c76d202c67e8fd1fd0e8642}%
-
 
 .. code-block:: php
 
@@ -741,6 +741,7 @@
         }
 
     }
+
 
 %{odm_7b6fb7c569102e80d110f55f0042fe72}%
 

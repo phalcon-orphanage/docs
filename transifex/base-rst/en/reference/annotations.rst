@@ -1,8 +1,6 @@
 %{annotations_5b62537b970942c6e74522a9bac0a813}%
-
 ==================
 %{annotations_4ef47a1e29a366b28e661d3c01e53776}%
-
 
 %{annotations_8607b4bddce7429b9836a05cfb049643}%
 
@@ -37,6 +35,7 @@
 
     }
 
+
 %{annotations_1640a00bae6064c54622a8c414788eb9}%
 
 %{annotations_7b5f373263440d6b00cce66ed3897f02}%
@@ -57,6 +56,7 @@
      * @AnotherSpecialFeature(true)
      */
 
+
 %{annotations_f051f2cd8c32af61006b6b26a6b4a8a3}%
 
 .. code-block:: php
@@ -69,6 +69,7 @@
 
      })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
      **/
+
 
 %{annotations_f1a303ea08e74cc1885c31781c219e97}%
 
@@ -84,11 +85,10 @@
      * @AnotherSpecialFeature(true)
      */
 
-%{annotations_b0492c4b8c8a5c0bd1cf3a5eac65be4e}%
 
+%{annotations_b0492c4b8c8a5c0bd1cf3a5eac65be4e}%
 -------------------
 %{annotations_0bba117ba59bca6990078d40b48dd353}%
-
 
 .. code-block:: php
 
@@ -115,15 +115,14 @@
         print_r($annotation->getArguments());
     }
 
+
 %{annotations_b1925be3e508ddb8090cc414e067aa72}%
 
-%{annotations_cb325bf4c32e335213901310caedd699}%
+%{annotations_cb325bf4c32e335213901310caedd699|:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>`}%
 
 %{annotations_f83a38934b334d779a6d91747f24f234}%
-
 --------------------
 %{annotations_b8c4f164280d0ea40ee09419ba061366}%
-
 
 .. code-block:: php
 
@@ -178,17 +177,14 @@
      * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
      */
 
-%{annotations_f741bc8c97ddb297fa5f31c8f98de0cd}%
 
+%{annotations_f741bc8c97ddb297fa5f31c8f98de0cd}%
 ---------------
 %{annotations_919fb667c7546ab25b626125b6d77168}%
 
-
 %{annotations_7d283320fd7531d8889253f5ed266522}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{annotations_a249273e53dbceb5deef37d790f32ad3}%
-
 
 .. code-block:: php
 
@@ -205,6 +201,7 @@
         $dispatcher->setEventsManager($eventsManager);
         return $dispatcher;
     };
+
 
 %{annotations_588799c77202b2d2d4748719bf70bc6a}%
 
@@ -256,6 +253,7 @@
 
     }
 
+
 %{annotations_414a26b582c57683e19a2b00bbdbbb40}%
 
 .. code-block:: php
@@ -292,17 +290,14 @@
 
     }
 
+
 %{annotations_501e20ab8ddd3a4cd24d4deac6beeb64}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{annotations_5f45577032a33a7943892460c427d052}%
-
+%{annotations_5f45577032a33a7943892460c427d052|:doc:`Phalcon\\Mvc\\View\\Simple <views>`}%
 
 %{annotations_d53799f5a2fb02e1152ac8e975d07526}%
-
 --------------------
 %{annotations_1f3c5fb9054e5de8b9e981068a4db586}%
-
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                      |
@@ -316,9 +311,8 @@
 | XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
+
 %{annotations_206bd6266ccc781d8844f3db2de5d557}%
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-%{annotations_85e6568cc053ee94b9ddff6520fd0380}%
-
+%{annotations_85e6568cc053ee94b9ddff6520fd0380|:doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>`}%
 

@@ -1,14 +1,10 @@
 %{pagination_60deaacce0f1f3cc4e94b46e35691696}%
-
 ==========
 %{pagination_799fb5780c1b0529974833d16211798b}%
 
-
 %{pagination_23053199ed34e8dc893947624d563fe4}%
-
 -------------
 %{pagination_0a355558f3d14bbc0f7654611acd11fa}%
-
 
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Adapter      | Description                                                                                                                                                                   |
@@ -20,11 +16,10 @@
 | QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                               |
 +--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-%{pagination_3482ed7db8c97c78ab45723816e21818}%
 
+%{pagination_3482ed7db8c97c78ab45723816e21818}%
 --------
 %{pagination_7c4638677d770640bb9b67cfd532d297}%
-
 
 .. code-block:: php
 
@@ -51,6 +46,7 @@
     // {%pagination_2b3eb2def0da7d6ee05b4fe4b867fa17%}
     $page = $paginator->getPaginate();
 
+
 %{pagination_0dda7a9eb9896cd0d29e6cdc6aa5cf41}%
 
 .. code-block:: html+php
@@ -70,6 +66,7 @@
         <?php } ?>
     </table>
 
+
 %{pagination_2307615c1ae9cb8d43842f1d27a74209}%
 
 .. code-block:: html+php
@@ -81,11 +78,10 @@
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
-%{pagination_7adb3af83be2dd478bded6e721c5ede7}%
 
+%{pagination_7adb3af83be2dd478bded6e721c5ede7}%
 --------------
 %{pagination_0454adfc71c34584645b430c7f2774e8}%
-
 
 .. code-block:: php
 
@@ -129,11 +125,10 @@
     ));
 
 
-%{pagination_52875227488d1bdeb8d30f3af376835d}%
 
+%{pagination_52875227488d1bdeb8d30f3af376835d}%
 ---------------
 %{pagination_69242c86723cb0a67eade45edb11be0e}%
-
 
 +-------------+--------------------------------------------------------+
 | Attribute   | Description                                            |
@@ -153,9 +148,8 @@
 | total_items | The number of items in the source data                 |
 +-------------+--------------------------------------------------------+
 
+
 %{pagination_206bd6266ccc781d8844f3db2de5d557}%
-
 ------------------------------
-%{pagination_dfa3370ad9d0b28d5450f90541639ca0}%
-
+%{pagination_dfa3370ad9d0b28d5450f90541639ca0|:doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>`}%
 

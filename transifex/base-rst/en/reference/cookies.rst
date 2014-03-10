@@ -1,14 +1,10 @@
 %{cookies_2bc6eb5dcb5fc829123a7ef49f094b59}%
-
 ==================
-%{cookies_46898d8b64597942785e4b400bbb9501}%
-
+%{cookies_46898d8b64597942785e4b400bbb9501|:doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`}%
 
 %{cookies_b0320f4a950d93f7f09a91c29ce5132b}%
-
 -----------
 %{cookies_81f9971fb3a1d23601430671ff54a629}%
-
 
 .. code-block:: php
 
@@ -36,11 +32,10 @@
         }
     }
 
-%{cookies_48634baf01678a8c66fbd3bf5b695a29}%
 
+%{cookies_48634baf01678a8c66fbd3bf5b695a29}%
 --------------------------------
 %{cookies_2fe5d1efd435ab35347d86560a1332fe}%
-
 
 %{cookies_bfc7061d6ef54f180e58861b30542c31}%
 
@@ -53,6 +48,7 @@
         $cookies->useEncryption(false);
         return $cookies;
     });
+
 
 %{cookies_090e575523786a71d4c283962598e79c}%
 

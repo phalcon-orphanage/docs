@@ -1,8 +1,6 @@
 %{di_abd935de0032bff22b5570b9f4eeb47f}%
-
 *************************************
 %{di_265ae051b287a8995483cf4ae57d7902}%
-
 
 %{di_c8beb1db535d2d5d051ba217fe6c8051}%
 
@@ -34,6 +32,7 @@
 
     $some = new SomeComponent();
     $some->someDbTask();
+
 
 %{di_574a7ed3bb5d3bb628504780fbead704}%
 
@@ -77,6 +76,7 @@
     $some->setConnection($connection);
 
     $some->someDbTask();
+
 
 %{di_5b7e48880fbea53af767c7bc5056d8aa}%
 
@@ -130,6 +130,7 @@
     $some->setConnection(Registry::getConnection());
 
     $some->someDbTask();
+
 
 %{di_7358d10fc368cb382d807da84444f939}%
 
@@ -220,6 +221,7 @@
     //{%di_650a1e77458ec792145b424935f2d9db%}
     $some->someOtherDbTask(Registry::getConnection());
 
+
 %{di_97337be64fa7cbbf9af489790e9badb6}%
 
 %{di_2e678291f806f4e66ec87ead48e6018a}%
@@ -245,6 +247,7 @@
     $some->setFileSystem($fileSystem);
     $some->setFilter($filter);
     $some->setSelector($selector);
+
 
 %{di_35a19665bc2a2bcddfcac04d57024568}%
 
@@ -273,6 +276,7 @@
         }
 
     }
+
 
 %{di_ba4b67485bd4fca58dad7b0f724aca85}%
 
@@ -342,25 +346,22 @@
 
     $some->someTask();
 
+
 %{di_e6f996a5b1eac12ea2042f1938fc5c22}%
 
 %{di_4df3a2adc8b97815253827b168ac9186}%
-
 ============
 %{di_ef4688cd63009deb66575a3205c9d639}%
 
-
 %{di_3fa3eaafa26e9ffe84116c67d0fefbf1}%
 
-%{di_14de896c95c7b172bb718236f182c58e}%
+%{di_14de896c95c7b172bb718236f182c58e|`Inversion of Control`_}%
 
 %{di_99b587c85d45df1407dcd0788d9587a5}%
 
 %{di_986a30636ebdb00490151abb04c98bbe}%
-
 =====================================
 %{di_394e670d251c1672db1443ed55c38287}%
-
 
 %{di_c61eadc667d87fdc8772798841b75116}%
 
@@ -393,6 +394,7 @@
         "className" => 'Phalcon\Http\Request'
     ));
 
+
 %{di_d98882f481863f6da56c67fcda067893}%
 
 .. code-block:: php
@@ -418,6 +420,7 @@
         "className" => 'Phalcon\Http\Request'
     );
 
+
 %{di_c0112234d77d9c9d66747da018ab1b16}%
 
 %{di_70f7fd5cab148f4b7101ea9f131e885c}%
@@ -427,16 +430,12 @@
 %{di_37f9c0bc3f3b1fd17546fe3c12fcbe71}%
 
 %{di_694876cfdd2a46a8dcac91aa534196ad}%
-
 -------------------
 %{di_1392edb02b710a6e27f1249390e2f537}%
 
-
 %{di_20cdd879f4dcfb6fb4d7de18d7e464ff}%
-
 ^^^^^^
 %{di_9ef693cf4ecb42b512fbea01a3a35c84}%
-
 
 .. code-block:: php
 
@@ -445,11 +444,10 @@
     // return new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
-%{di_75df90dfe0a1dbc61cc89f9a6e6f77e9}%
 
+%{di_75df90dfe0a1dbc61cc89f9a6e6f77e9}%
 ^^^^^^
 %{di_d9691bd1823160ec71e0f0bb30469cff}%
-
 
 .. code-block:: php
 
@@ -458,11 +456,10 @@
     // return new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
-%{di_0288243a357389f316e2aa112edc3664}%
 
+%{di_0288243a357389f316e2aa112edc3664}%
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %{di_4a4d8f31d75cf986c2d00a26a48dae32}%
-
 
 .. code-block:: php
 
@@ -476,6 +473,7 @@
              "dbname" => "blog"
         ));
     });
+
 
 %{di_c96aadc03ffb0462aa95fb4a85923011}%
 
@@ -493,11 +491,10 @@
         ));
     });
 
-%{di_2660cdeaa3179e567ddc97ea665f0317}%
 
+%{di_2660cdeaa3179e567ddc97ea665f0317}%
 --------------------
 %{di_79ed10d961ef000241c8f7d7ce1be212}%
-
 
 .. code-block:: php
 
@@ -519,6 +516,7 @@
         return new \Phalcon\Logger\Adapter\File('../apps/logs/error.log');
     });
 
+
 %{di_9aa1de8a6cafc7bd07f737adddbb8438}%
 
 .. code-block:: php
@@ -534,13 +532,12 @@
         'value' => '../apps/logs/error.log'
     ));
 
+
 %{di_f2915c8918f43a062e3f5599e794989d}%
 
 %{di_9c0bdf48d0a98198d5490fcd17421123}%
-
 ^^^^^^^^^^^^^^^^^^^^^
 %{di_04c13fc7ced43a12edc258ed23299840}%
-
 
 .. code-block:: php
 
@@ -565,6 +562,7 @@
 
     }
 
+
 %{di_d1ba10c207d7013726f7c99936b7c216}%
 
 .. code-block:: php
@@ -583,13 +581,12 @@
         )
     ));
 
+
 %{di_09927c30ccaac2540c35fef8dd775559}%
 
 %{di_33371c87c59dd13879c03d2933b2883a}%
-
 ^^^^^^^^^^^^^^^^
 %{di_037521458982b3a04f8a8f73e18cf0e2}%
-
 
 .. code-block:: php
 
@@ -617,6 +614,7 @@
         }
 
     }
+
 
 %{di_b3ae449184d1b666544396372eedeccc}%
 
@@ -646,11 +644,10 @@
         )
     ));
 
-%{di_561e082121d27439298b1449dfa14f3d}%
 
+%{di_561e082121d27439298b1449dfa14f3d}%
 ^^^^^^^^^^^^^^^^^^^^
 %{di_cc0e08475fea09b8e1e0faedaa904394}%
-
 
 .. code-block:: php
 
@@ -668,6 +665,7 @@
         public $someFlag;
 
     }
+
 
 %{di_b415258cb72581635e1a11c818099fec}%
 
@@ -693,6 +691,7 @@
         )
     ));
 
+
 %{di_9556a96ea3e328a290fa0d1f5241b93b}%
 
 +-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
@@ -705,19 +704,19 @@
 | instance    | Represents an object that must be built dynamically      | array('type' => 'instance', 'className' => 'DateTime', 'arguments' => array('now')) |
 +-------------+----------------------------------------------------------+-------------------------------------------------------------------------------------+
 
+
 %{di_c39b14a551be0865ba3861920297ee03}%
 
 %{di_2cadca58ad0af8c325f305d5e775c048}%
 
 %{di_ebe7f70c26148e804268cefe62123657}%
-
 ==================
 %{di_55272287ce2940d0156cc9f08f4cc6a8}%
-
 
 .. code-block:: php
 
     <?php $request = $di->get("request");
+
 
 %{di_7c1737f36a6e408ba72bb5a799178da2}%
 
@@ -727,6 +726,7 @@
 
     $request = $di->getRequest();
 
+
 %{di_b30f368f718f146093bbf9e426bcaf6d}%
 
 .. code-block:: php
@@ -734,6 +734,7 @@
     <?php
 
     $request = $di['request'];
+
 
 %{di_df760419f3610c317d0a8389de253bb1}%
 
@@ -744,11 +745,10 @@
     // {%di_945920107394b32e034f1568d6a9d758%}
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
-%{di_5e95da1b79954815439137b5633640d9}%
 
+%{di_5e95da1b79954815439137b5633640d9}%
 ===============
 %{di_523da39e9a502f591f39f45be934c195}%
-
 
 .. code-block:: php
 
@@ -764,6 +764,7 @@
     $session = $di->get('session'); // {%di_ab897c9c2e7e46440b6466f2d36f124e%}
     $session = $di->getSession(); // {%di_9d15eb019aa64c75adc2a2eb51d56882%}
 
+
 %{di_ab7945a37fd0394ab6aa70073346689e}%
 
 .. code-block:: php
@@ -775,6 +776,7 @@
         //...
     }, true);
 
+
 %{di_a2fc89c7cf97ed772e169211e2239c2c}%
 
 .. code-block:: php
@@ -783,11 +785,10 @@
 
     $request = $di->getShared("request");
 
-%{di_a9c22033c4679a03e177418411d01888}%
 
+%{di_a9c22033c4679a03e177418411d01888}%
 ==================================
 %{di_36420ae7d6f7117c9398175a25e18bfb}%
-
 
 .. code-block:: php
 
@@ -810,11 +811,10 @@
     //{%di_5a6f307a548f6f9f8793612e2f16f52f%}
     $request = $requestService->resolve();
 
-%{di_11205d8363eee750e219f2142a69f6cc}%
 
+%{di_11205d8363eee750e219f2142a69f6cc}%
 ===============================================
 %{di_9ec7bab8213c10730a15e14a83bf8eca}%
-
 
 .. code-block:: php
 
@@ -836,13 +836,12 @@
     //{%di_0a981d32b627f0c9ed8f523d9fdd914e%}
     $myComponent = $di->get('MyOtherComponent');
 
+
 %{di_85beb28ee3f83ae99cc759a92dd8034f}%
 
 %{di_f490448655b0bd4ef0ac8da57a753c8e}%
-
 ====================================
-%{di_c77905bd4245e5c3b749e6c9bc650c5c}%
-
+%{di_c77905bd4245e5c3b749e6c9bc650c5c|:doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>`}%
 
 .. code-block:: php
 
@@ -865,6 +864,7 @@
 
     }
 
+
 %{di_6fc810bd74ec71922209d7143f7ccf7d}%
 
 .. code-block:: php
@@ -877,11 +877,10 @@
     //{%di_17a5c5092cbcd30c2143d48dee095d01%}
     $myClass = $di->get('myClass');
 
-%{di_718a4aef623ce8b43b3b6e573948839b}%
 
+%{di_718a4aef623ce8b43b3b6e573948839b}%
 ===========================
 %{di_e6b5036b404972f413cc53cc18341336}%
-
 
 .. code-block:: php
 
@@ -893,11 +892,10 @@
     //{%di_f3008f164f57066b43613e1aaffa98b6%}
     $di->set('router', $router);
 
-%{di_4f001400cf0edf3b340d6e85965045ee}%
 
+%{di_4f001400cf0edf3b340d6e85965045ee}%
 ============================
 %{di_70f16f940b677929f1bb8f1d27a08918}%
-
 
 .. code-block:: php
 
@@ -906,6 +904,7 @@
     $di->set('router', function() {
         return include "../app/config/routes.php";
     });
+
 
 %{di_dff5e52a906d54857347dee1fe5cadf7}%
 
@@ -919,11 +918,10 @@
 
     return $router;
 
-%{di_009d636bc5ba7d3c807ad2171952c475}%
 
+%{di_009d636bc5ba7d3c807ad2171952c475}%
 ================================
 %{di_3686f852ccc9494199407f0f5c8a333f}%
-
 
 .. code-block:: php
 
@@ -940,21 +938,19 @@
 
     }
 
-%{di_ab8dffcd5daaff4344d575991cd0f12a}%
 
+%{di_ab8dffcd5daaff4344d575991cd0f12a}%
 ==================
 %{di_029caf1fc063b7ffdda35adf1e2ff47d}%
-
 
 .. code-block:: php
 
     <?php $di = new Phalcon\DI\FactoryDefault();
 
-%{di_0e74f12e67a950d157dc6477fd91d5ab}%
 
+%{di_0e74f12e67a950d157dc6477fd91d5ab}%
 ========================
 %{di_873e69b82630ed0e18cfce537a6d384e}%
-
 
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 | Service Name        | Description                                 | Default                                                                                            | Shared |
@@ -1004,9 +1000,8 @@
 | viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
+
 %{di_fbd70cc43e51089bc8589a32fe15143f}%
-
 ========================
-%{di_8bd5c399f99c511fda646c0c969edfa4}%
-
+%{di_8bd5c399f99c511fda646c0c969edfa4|:doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>`}%
 

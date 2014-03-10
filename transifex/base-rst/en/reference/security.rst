@@ -1,14 +1,10 @@
 %{security_e0ef2e95a1440df19d63e9e955ae6abf}%
-
 ========
 %{security_559a9f19f25768b1c7d3fd048bb1440b}%
 
-
 %{security_964a2cfc27d9a6128aded38b913c6f1b}%
-
 ----------------
-%{security_7c6634140ee562693ed0316dc87a1cce}%
-
+%{security_7c6634140ee562693ed0316dc87a1cce|`rainbow tables`_}%
 
 %{security_97e50a912d71f47c3fc9a4d2d602e559}%
 
@@ -41,6 +37,7 @@
 
     }
 
+
 %{security_c517b7bfa84e40c992a4c1cfa12d83a8}%
 
 .. code-block:: php
@@ -70,15 +67,14 @@
 
     }
 
+
 %{security_bd4619c4495c0a9ae0993f0c89a3a4ee}%
 
 %{security_e7b1ff65893c115cca3b6108c16ccc9c}%
-
 --------------------------------------------
 %{security_d22af5e2a1eeba75c4b48781faf0085d}%
 
-
-%{security_65b05962308b4e029c02529669bc280c}%
+%{security_65b05962308b4e029c02529669bc280c|`random nonce`_}%
 
 .. code-block:: html+php
 
@@ -90,6 +86,7 @@
             value="<?php echo $this->security->getToken() ?>"/>
 
     </form>
+
 
 %{security_8217074a00f1ee08b580e160acd002b9}%
 
@@ -113,6 +110,7 @@
 
     }
 
+
 %{security_a9096615e5d0b316628d6d46d809dc17}%
 
 .. code-block:: php
@@ -123,13 +121,12 @@
         return $session;
     });
 
+
 %{security_d389e6c51ec7250e99f9bd4004f0e8d4}%
 
 %{security_09fcbfa5b4310f13bfd02a2a7730defa}%
-
 ------------------------
 %{security_9457196fa73d45bf471dcfe6ab181165}%
-
 
 .. code-block:: php
 
@@ -145,11 +142,10 @@
         return $security;
     }, true);
 
-%{security_b0492394b589b5ff8f6fb98048d65d8f}%
 
+%{security_b0492394b589b5ff8f6fb98048d65d8f}%
 ------------------
 * {%security_1f26c7817c542777631056622af5971d%}
-
 
 %{security_53c525ce454ebba9887fc2e265a32e9f}%
 

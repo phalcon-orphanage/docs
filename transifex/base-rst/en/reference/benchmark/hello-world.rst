@@ -1,18 +1,14 @@
 %{hello-world_1800af32d03bd008a9402366cb562b10}%
-
 =====================
 %{hello-world_be607a94ba810fb49f1d348cd29b87bb}%
-
 
 %{hello-world_e097d55e97d0ff4d888a1c2a9eed5357}%
 
 %{hello-world_49ec9562ad77b0b76cf7d70688d2933b}%
 
 %{hello-world_700a6ad346d43e1699d5c0b3aadc88d3}%
-
 --------------------------------
 %{hello-world_ec893cb35c0849db46bf2925bc983027}%
-
 
 * {%hello-world_8fd726917600a25986a8c691b5c226ec%}
 * {%hello-world_c5f736212ef146e6ceeaad1ffc0d6525%}
@@ -20,7 +16,6 @@
 * {%hello-world_461a2a1bb7d9edb05d40bed788ca856a%}
 
 %{hello-world_cfd6d0dbc2b5533200c7d0c3369a32d8}%
-
 -----------------------
 * {%hello-world_7dfd4d940dc24ca12424ee7f7b8a3b48%}
 * {%hello-world_a4d272ca7b3f09dccea884bec14efc42%}
@@ -30,15 +25,11 @@
 * {%hello-world_d1d751af51649ec9489b619ffabaa8ee%}
 * {%hello-world_31a53a4d1d9d5e1406266247e17981e3%}
 
-
 %{hello-world_b41eb33ab6ec77b77338ec73c1482297}%
-
 -------
 %{hello-world_eebbb5a7a6f98f95cb182222e9e99afd}%
 
-
 %{hello-world_1f68a2266ffba5950c721cc793e612c9}%
-
 ^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -89,7 +80,6 @@
 
 
 %{hello-world_c1227286363b63972f06ff817d206c93}%
-
 ^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -140,7 +130,6 @@
 
 
 %{hello-world_f2e90ea49af5972b53ac103544e70493}%
-
 ^^^^^^^^^^^^
 .. code-block:: php
 
@@ -191,7 +180,6 @@
 
 
 %{hello-world_8f62194b8e4f52233f1177a108718f7b}%
-
 ^^^^^^^^^^
 .. code-block:: php
 
@@ -242,7 +230,6 @@
 
 
 %{hello-world_792a2e281fc8a89af0a6f20f04efc9d6}%
-
 ^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -293,7 +280,6 @@
 
 
 %{hello-world_d55c02a93225bb3b6c5ffcf017d93e85}%
-
 ^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -345,7 +331,6 @@
 
 
 %{hello-world_48c229f162cc5fe15ece777a27c869d9}%
-
 ^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
@@ -396,10 +381,8 @@
 
 
 %{hello-world_a94983dc1e4458d958a1a8e817cc47bf}%
-
 ^^^^^^
 %{hello-world_a01002ed3c81362911d4b3598f976d34}%
-
 
 .. raw:: html
 
@@ -518,11 +501,10 @@
     </div>
 
 
-%{hello-world_ee50f1d496b9cd00d5955f10f6dc7517}%
 
+%{hello-world_ee50f1d496b9cd00d5955f10f6dc7517}%
 ----------
 %{hello-world_68ef87283b6316f5d9008d3f147a2511}%
-
 
 %{hello-world_33fa5f2e3ee45b74877500f5588a41e2}%
 

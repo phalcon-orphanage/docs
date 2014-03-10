@@ -1,22 +1,16 @@
 %{nginx_6bb6d356501587cdcc495f1a8fa2073f}%
-
 ========================
 %{nginx_703537526a0c2eb0802d1c8091f2648b}%
 
-
-%{nginx_28664900b913c3b84647e8a2af55a75a}%
+%{nginx_28664900b913c3b84647e8a2af55a75a|`PHP-FPM`_|`PHP-FPM`_|`PHP-FPM`_}%
 
 %{nginx_78202a14fc06eb13905c98df74daefea}%
-
 -----------------------------
 %{nginx_7f7917062f284058784dc2cb1844fe2f}%
 
-
 %{nginx_839322a0f1a181663d7634673806c4a0}%
-
 ^^^^^^^^^^^^^^^^^^^
 %{nginx_ca4e50852f253e0259dec38dbbeb7cf9}%
-
 
 .. code-block:: nginx
 
@@ -56,6 +50,7 @@
         }
     }
 
+
 %{nginx_a93f8ef6b3921aa42339f436605c377d}%
 
 .. code-block:: nginx
@@ -91,8 +86,8 @@
         }
     }
 
-%{nginx_b166a645493a42ae90176ee6541a9025}%
 
+%{nginx_b166a645493a42ae90176ee6541a9025}%
 ^^^^^^^^^^^^^^^^^^
 .. code-block:: nginx
 
@@ -142,8 +137,6 @@
 
 
 %{nginx_680e3dd6ca9727cba90ee64c7d7840ba}%
-
 ^^^^^^^^^^^^^^^^^^^^^
 %{nginx_79faffba7d0ce9018b84c3ba2cfec9ca}%
-
 

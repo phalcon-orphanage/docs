@@ -1,14 +1,10 @@
 %{dispatching_c7e230188b6b2143ff84328e977f26e6}%
-
 =======================
-%{dispatching_dfeb42ef7cec688fb8e9eabe5358b348}%
-
+%{dispatching_dfeb42ef7cec688fb8e9eabe5358b348|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{dispatching_9ec793769848dd36d16bc5009d090b78}%
-
 -----------------
-%{dispatching_543fff3e579e81cea22e73ba5ff142c6}%
-
+%{dispatching_543fff3e579e81cea22e73ba5ff142c6|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 .. code-block:: php
 
@@ -32,13 +28,12 @@
         $finished = true;
     }
 
+
 %{dispatching_b400a4664e1eb7d407d32443a5866cbb}%
 
 %{dispatching_0d1e9546c8779eb28895ec882ed3d319}%
-
 ^^^^^^^^^^^^^^^^^^^^
-%{dispatching_27e991dba74daabcdfbb1ed543830568}%
-
+%{dispatching_27e991dba74daabcdfbb1ed543830568|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`|:doc:`EventsManager <events>`}%
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered to          |
@@ -62,7 +57,8 @@
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
-%{dispatching_b9c4fe6e9da507a752630e4ce78bf945}%
+
+%{dispatching_b9c4fe6e9da507a752630e4ce78bf945|:doc:`INVO <tutorial-invo>`|:doc:`Acl <acl>`}%
 
 %{dispatching_4eb434eb37be7b4a57c178fa4af88c76}%
 
@@ -92,6 +88,7 @@
 
     }, true);
 
+
 %{dispatching_742e12cd23609e971d9755ddafffff6e}%
 
 .. code-block:: php
@@ -113,11 +110,10 @@
 
     }
 
-%{dispatching_5e377a05e8ff5174b61fbdfc1b15ccb3}%
 
+%{dispatching_5e377a05e8ff5174b61fbdfc1b15ccb3}%
 ---------------------------
 %{dispatching_3b9443771cbb60480ead8f8517713ac9}%
-
 
 .. code-block:: php
 
@@ -145,6 +141,7 @@
 
     }
 
+
 %{dispatching_f3c62e174053901d1ba20264f5f6dfe9}%
 
 %{dispatching_b42a3fb3e2bd1291604e00718ec1e87b}%
@@ -166,6 +163,7 @@
     ));
 
 
+
 %{dispatching_55bda9dcfe8251c072b7abb5c77efad6}%
 
 +----------------+--------------------------------------------------------+
@@ -180,11 +178,10 @@
 | namespace      | A valid namespace name where the controller is part of |
 +----------------+--------------------------------------------------------+
 
+
 %{dispatching_f639eaf462e293dac25b136e656dcbf2}%
-
 --------------------
-%{dispatching_ecd78117b6983eb53e4390ab3b96391c}%
-
+%{dispatching_ecd78117b6983eb53e4390ab3b96391c|:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`}%
 
 %{dispatching_b371c1705a0db0cda084736e6897724c}%
 
@@ -226,6 +223,7 @@
         return $dispatcher;
     });
 
+
 %{dispatching_cad058d0cc5381d5cc280ee62fe8253e}%
 
 .. code-block:: php
@@ -263,11 +261,10 @@
         return $dispatcher;
     });
 
+
 %{dispatching_f70a4e022ddce861f63997cab3fab1e4}%
-
 ------------------
-%{dispatching_30bdee532ed3867e8dea7d771570fab6}%
-
+%{dispatching_30bdee532ed3867e8dea7d771570fab6|:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`}%
 
 .. code-block:: php
 
@@ -295,17 +292,14 @@
 
     }
 
-%{dispatching_14c198f6c9118247f026bc8e88fbaedf}%
 
+%{dispatching_14c198f6c9118247f026bc8e88fbaedf}%
 -----------------
 %{dispatching_05d8d38f4f9011a9ac4641a571f84dce}%
 
-
 %{dispatching_e260ea2adfcceb079d4d4b6f1b551608}%
-
 ^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_67688f4ece23aa755f24f8cfb0aad718}%
-
 
 .. code-block:: php
 
@@ -331,11 +325,10 @@
         return $dispatcher;
     });
 
-%{dispatching_0a38dd3dddc99f184e2d2e489251cb10}%
 
+%{dispatching_0a38dd3dddc99f184e2d2e489251cb10}%
 ^^^^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_0dabb0181ae19b162bc80badf0a4b1cc}%
-
 
 %{dispatching_7572891bc5d9c53bb5cc71ddc41eb601}%
 
@@ -369,11 +362,10 @@
         return $dispatcher;
     });
 
-%{dispatching_5525aa566ea8e91ed09eb57d3e25b58a}%
 
+%{dispatching_5525aa566ea8e91ed09eb57d3e25b58a}%
 ^^^^^^^^^^^^^^^^^^^^^^
 %{dispatching_81aa760587a36f918d029250fe635836}%
-
 
 %{dispatching_713b76e5d389b872cf6b91937b9a1c59}%
 
@@ -393,6 +385,7 @@
             $this->view->post = $post;
         }
     }
+
 
 %{dispatching_b08fb0962ab2d8ce37b497ca32d08713}%
 
@@ -450,13 +443,12 @@
         return $dispatcher;
     });
 
+
 %{dispatching_e4002ed174de3b9843b8d2a2f8cfbd84}%
 
 %{dispatching_a0b3073d0e9cc13f01fa8fded0cdc7ad}%
-
 -----------------------------
-%{dispatching_6592b8798addabd3b7ddc42c38fc8ae8}%
-
+%{dispatching_6592b8798addabd3b7ddc42c38fc8ae8|:doc:`EventsManager <events>`}%
 
 .. code-block:: php
 
@@ -502,6 +494,7 @@
 
     }, true);
 
+
 %{dispatching_91daa9dae5570715c7059d0efbf5c64c}%
 
 .. code-block:: php
@@ -541,4 +534,5 @@
     Only exceptions produced by the dispatcher and exceptions produced in the executed action
     are notified in the 'beforeException' events. Exceptions produced in listeners or
     controller events are redirected to the latest try/catch.
+
 

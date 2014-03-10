@@ -1,16 +1,12 @@
 %{micro_eab4d07d8a9575f527b3730ef3370c35}%
-
 ===============
 %{micro_7b6ecb13a2c6daf1001477919719f5cb}%
-
 
 %{micro_5ba672f78c975f4589f71d697256adcc}%
 
 %{micro_700a6ad346d43e1699d5c0b3aadc88d3}%
-
 --------------------------------
 %{micro_ec893cb35c0849db46bf2925bc983027}%
-
 
 * {%micro_8fd726917600a25986a8c691b5c226ec%}
 * {%micro_c5f736212ef146e6ceeaad1ffc0d6525%}
@@ -18,18 +14,14 @@
 * {%micro_461a2a1bb7d9edb05d40bed788ca856a%}
 
 %{micro_cfd6d0dbc2b5533200c7d0c3369a32d8}%
-
 ----------------------
 * {%micro_18df8f580c9a32b0b27edaf582c467a0%}
 * {%micro_160fe87be75a867ae8d4efe48fd33000%}
 
-
 %{micro_b41eb33ab6ec77b77338ec73c1482297}%
-
 -------
 
 %{micro_6228447f56f334d29ca9ab469fff6462}%
-
 ^^^^^^^^^^^^^^
 
 .. code-block:: php
@@ -79,8 +71,8 @@
       99%     14
      100%     33 (longest request)
 
-%{micro_4ae903c204ca77a929c7e45e6fa9de81}%
 
+%{micro_4ae903c204ca77a929c7e45e6fa9de81}%
 ^^^^^
 
 .. code-block:: php
@@ -130,8 +122,8 @@
       99%     29
      100%     45 (longest request)
 
-%{micro_3b5d5768410054932ff9d0f1dffe8028}%
 
+%{micro_3b5d5768410054932ff9d0f1dffe8028}%
 ^^^^^^^^^^^^^
 
 .. code-block:: php
@@ -181,11 +173,10 @@
       99%      5
      100%     11 (longest request)
 
-%{micro_a94983dc1e4458d958a1a8e817cc47bf}%
 
+%{micro_a94983dc1e4458d958a1a8e817cc47bf}%
 ^^^^^^
 %{micro_a01002ed3c81362911d4b3598f976d34}%
-
 
 .. raw:: html
 
@@ -284,9 +275,8 @@
     </div>
 
 
-%{micro_ee50f1d496b9cd00d5955f10f6dc7517}%
 
+%{micro_ee50f1d496b9cd00d5955f10f6dc7517}%
 ----------
 %{micro_68ef87283b6316f5d9008d3f147a2511}%
-
 

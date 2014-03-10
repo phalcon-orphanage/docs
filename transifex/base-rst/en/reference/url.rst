@@ -1,14 +1,10 @@
 %{url_ed236d03ec3edd1f8e21243f33a3d69a}%
-
 =========================
-%{url_70a16dc89ce6420741cc934b771f0706}%
-
+%{url_70a16dc89ce6420741cc934b771f0706|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 %{url_68b8722ef7564d65fa4a9ed509690f52}%
-
 ------------------
 %{url_ce8911656909797c0f7cfdd8650db8bc}%
-
 
 %{url_1d5e74ff02459454bd68d8addd28a2d7}%
 
@@ -18,6 +14,7 @@
 
     $url = new Phalcon\Mvc\Url();
     echo $url->getBaseUri();
+
 
 %{url_75aca106f3cfa3b32ae8ca3ca717e72d}%
 
@@ -36,6 +33,7 @@
     //{%url_1b6850414fe016e6b7bcc0975688e434%}
     $url->setBaseUri('http://my.domain.com/my-app/');
 
+
 %{url_16b2458da6a88dbf842ecaf98a9c0799}%
 
 .. code-block:: php
@@ -48,15 +46,15 @@
         return $url;
     });
 
+
 %{url_2f1af28e614976174560c19d608f2b30}%
-
 ---------------
-%{url_2911ed9df12bc18f3dff68009b6bc5c0}%
-
+%{url_2911ed9df12bc18f3dff68009b6bc5c0|:doc:`Router <routing>`}%
 
 .. code-block:: php
 
     <?php echo $url->get("products/save") ?>
+
 
 %{url_844faad4ac343c10f1c849720a37d7ac}%
 
@@ -68,6 +66,7 @@
         'controller' => 'posts',
         'action' => 'show'
     ))->setName('show-post');
+
 
 %{url_95e0dc4052583f7ec7119bf377a7e581}%
 
@@ -83,11 +82,10 @@
         'title' => 'some-blog-post'
     ));
 
-%{url_11b9173b9cb6348134181f0b0d2c37bb}%
 
+%{url_11b9173b9cb6348134181f0b0d2c37bb}%
 ----------------------------------
 %{url_37df3ff3aa072c2251501097b64e80bf}%
-
 
 .. code-block:: php
 
@@ -100,6 +98,7 @@
 
     //{%url_b879417b4817eea81c28c7a6402aa074%}
     echo $url->get("products/save");
+
 
 %{url_3e1ff6aff3ea47fe0dfb9bcf8c571a40}%
 
@@ -115,6 +114,7 @@
     //{%url_0cefbeb70df9035bd4a81aef37f37aac%}
     $url->setBaseUri('/invo/index.php/');
 
+
 %{url_64f135d7cb051d65eefc0a808e0e42a7}%
 
 .. code-block:: php
@@ -128,6 +128,7 @@
     $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
     $router->handle($uri);
 
+
 %{url_83cb5acbb2c739341716699cb5bc09ed}%
 
 .. code-block:: php
@@ -137,15 +138,15 @@
     //{%url_7504bcfefab476c8ec86bd902a64a612%}
     echo $url->get("products/save");
 
-%{url_85f519884f68b0fc2ce37a5a7fb3c9b3}%
 
+%{url_85f519884f68b0fc2ce37a5a7fb3c9b3}%
 ------------------------
 %{url_87db31c993564f594288f7af54b06a86}%
-
 
 .. code-block:: html+jinja
 
     <a href="{{ url("posts/edit/1002") }}">Edit</a>
+
 
 %{url_6c18d17ad2db305abcc46c92691abb52}%
 
@@ -153,11 +154,10 @@
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-%{url_7f68eed15a0101a787422e177b90b8fb}%
 
+%{url_7f68eed15a0101a787422e177b90b8fb}%
 -----------------------
 %{url_80bb958627f146f8ba26b15d8d8c54fa}%
-
 
 .. code-block:: php
 
@@ -172,4 +172,5 @@
     $url->setStaticBaseUri('http://static.mywebsite.com/');
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
+
 

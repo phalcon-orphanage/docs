@@ -1,16 +1,12 @@
 %{assets_744c3ef6243d76429a95f010a3d47cff}%
-
 =================
 %{assets_b0278ad267d2461d3eeafc96122e4a31}%
 
-
-%{assets_fd61e9b7b5674d8a609137c676c67dd1}%
+%{assets_fd61e9b7b5674d8a609137c676c67dd1|:doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>`}%
 
 %{assets_647e8a84d61a2443e8d863a01727bdb8}%
-
 ----------------
 %{assets_fab89985217fa01f7d36db4a2aae5611}%
-
 
 %{assets_adae69cdf99e915a88e999a00581ded7}%
 
@@ -36,6 +32,7 @@
         }
     }
 
+
 %{assets_9d066fce3103272821fc1c8a5c911fb0}%
 
 .. code-block:: html+php
@@ -53,11 +50,10 @@
         </body>
     <html>
 
+
 %{assets_40aa86d406a1567e2bb210cfccefd275}%
-
 ----------------------
-%{assets_9463b3f8353230f7a298e4943a974bd9}%
-
+%{assets_9463b3f8353230f7a298e4943a974bd9|:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>`}%
 
 %{assets_3f915d0e3e0a36ea435f995608b6919b}%
 
@@ -70,11 +66,10 @@
         ->addCss('//{%assets_749e2c3df0bf62ddd51bf3b50e61a2c4%}
         ->addCss('css/style.css', true);
 
-%{assets_ad9b4b4c5b5164f6d3d77012df79c45f}%
 
+%{assets_ad9b4b4c5b5164f6d3d77012df79c45f}%
 -----------
 %{assets_b0af0daf04f160e1588b0acba893eb88}%
-
 
 .. code-block:: php
 
@@ -91,6 +86,7 @@
         ->collection('footer')
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
+
 
 %{assets_4ce74cf3cd3f9c87190cc9cdcdd697de}%
 
@@ -109,11 +105,10 @@
         </body>
     <html>
 
-%{assets_f051468092cd30c784f47c1c1f518b5e}%
 
+%{assets_f051468092cd30c784f47c1c1f518b5e}%
 --------
 %{assets_68847db02bfef9a3f2cbb88f3bb52ebc}%
-
 
 .. code-block:: php
 
@@ -130,6 +125,7 @@
     $scripts->addJs('js/jquery.js')
             ->addJs('js/bootstrap.min.js');
 
+
 %{assets_2dd20ca96e294ccca7d0b0498988674e}%
 
 .. code-block:: php
@@ -143,11 +139,10 @@
         ->addJs('js/jquery.js')
         ->addJs('js/bootstrap.min.js');
 
-%{assets_ae62cffd270c3e0cab6f30fefed9136c}%
 
+%{assets_ae62cffd270c3e0cab6f30fefed9136c}%
 ----------------------
 %{assets_3bf58860ebfa7528c3c1159d5e0a9565}%
-
 
 %{assets_13288958d7900905c0705e80f54a8091}%
 
@@ -182,6 +177,7 @@
         //{%assets_846d0f7848b284338b9f8cf2925e60ef%}
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
+
 %{assets_da38d11ae4639174732c3a3a7b3c539a}%
 
 .. code-block:: php
@@ -190,6 +186,7 @@
 
     //{%assets_24d37315fe2dd7cc09472c27e3f5f7f8%}
     $js = $manager->collection('jsFooter');
+
 
 %{assets_86e4862e10edfdeada3c6627782eb1a1}%
 
@@ -204,6 +201,7 @@
     $js->addJs('common-functions.js');
     $js->addJs('page-functions.js');
 
+
 %{assets_117e99e366d35d81ada7c3bf77dfcab1}%
 
 .. code-block:: php
@@ -215,6 +213,7 @@
 
     //{%assets_846d0f7848b284338b9f8cf2925e60ef%}
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
+
 
 %{assets_68e1c7c7c02b0c92d429361a93e217b4}%
 
@@ -231,13 +230,12 @@
     //{%assets_de1e687c95ee8b073172990876438f26%}
     $js->setTargetUri('production/final.js');
 
+
 %{assets_a4bc709eadced84a672028c6471bad63}%
 
 %{assets_4e6bcce78953fc4fab8ab028f9630b0e}%
-
 ^^^^^^^^^^^^^^^^
 %{assets_b71d0d7b82df795a3f71bc36986017d6}%
-
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 | Filter                            | Description                                                                                               |
@@ -247,11 +245,10 @@
 | Phalcon\\Assets\\Filters\\Cssmin  | Minifies CSS removing unnecessary characters that are already ignored by browsers                         |
 +-----------------------------------+-----------------------------------------------------------------------------------------------------------+
 
-%{assets_d1b2812923f7a6a1b2e2d1c556d842ce}%
 
+%{assets_d1b2812923f7a6a1b2e2d1c556d842ce}%
 ^^^^^^^^^^^^^^
 %{assets_29d376fce56b9b142527b0a8f433e827}%
-
 
 .. code-block:: php
 
@@ -307,6 +304,7 @@
         }
     }
 
+
 %{assets_cd6b467ef5d856d72fe964ed65ffd28a}%
 
 .. code-block:: php
@@ -323,9 +321,8 @@
          'extra-options' => '--charset utf8'
     )));
 
-%{assets_5360cfefe9d89ff1c2f947439de199a3}%
 
+%{assets_5360cfefe9d89ff1c2f947439de199a3}%
 -------------
 %{assets_6a556a51195344c6d4e6f145ea73b690}%
-
 

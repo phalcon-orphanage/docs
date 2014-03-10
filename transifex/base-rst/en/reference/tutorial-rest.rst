@@ -1,8 +1,6 @@
 %{tutorial-rest_84d6814c39aad10b26d97af056279a18}%
-
 ======================================
 %{tutorial-rest_26bb72e995bd5df1986ace55a4facb04}%
-
 
 * {%tutorial-rest_32078862cbc89311a83ec70d9abbf16f%}
 * {%tutorial-rest_d3b149cb8903daad9105cc68ffd1fa4c%}
@@ -10,10 +8,8 @@
 * {%tutorial-rest_e24f21ea46ef329607ad132789e206e5%}
 
 %{tutorial-rest_de7a3eed9a59d47b9d09135314d297b0}%
-
 ----------------
 %{tutorial-rest_dc2ae90fdb0e1a1b5ed87ba88e60d3d6}%
-
 
 +--------+----------------------------+----------------------------------------------------------+
 | Method |  URL                       | Action                                                   |
@@ -31,11 +27,10 @@
 | DELETE | /api/robots/2              | Deletes robots based on primary key                      |
 +--------+----------------------------+----------------------------------------------------------+
 
+
 %{tutorial-rest_5c324116ca038c813884951ceaef82a6}%
-
 ------------------------
-%{tutorial-rest_2aa7d2a4a05106085cb78f9e0b8aaa07}%
-
+%{tutorial-rest_2aa7d2a4a05106085cb78f9e0b8aaa07|:doc:`micro application <micro>`}%
 
 %{tutorial-rest_3de37a33c247c456a388861f2bdcc755}%
 
@@ -47,6 +42,7 @@
         index.php
         .htaccess
 
+
 %{tutorial-rest_b52d147d1fe56301a39815a548fa9c8c}%
 
 .. code-block:: apacheconf
@@ -56,6 +52,7 @@
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
+
 
 %{tutorial-rest_2de10b838279f7a1b98fbf81f84c855e}%
 
@@ -68,6 +65,7 @@
     //{%tutorial-rest_539b3e63c25aa801f010dbc03afd004b%}
 
     $app->handle();
+
 
 %{tutorial-rest_c5bdd1dcaebc8333b5ee2aa4fdf59edb}%
 
@@ -109,15 +107,14 @@
 
     $app->handle();
 
+
 %{tutorial-rest_190c1cf65b799928f06a3169276c224a}%
 
 %{tutorial-rest_aff08db4a501b540bbefb8d4a7d06a4b}%
 
 %{tutorial-rest_0199fa0781bc2af2736301fc88a34dff}%
-
 ----------------
 %{tutorial-rest_248a5b13f805b6df66e79e4a4a6a80bb}%
-
 
 .. code-block:: php
 
@@ -162,6 +159,7 @@
 
     }
 
+
 %{tutorial-rest_27aad3837a5f3a11f2ca1050a32c6680}%
 
 .. code-block:: php
@@ -190,11 +188,10 @@
     //{%tutorial-rest_cb96f1919ab7315846cc2ad0249ddcac%}
     $app = new \Phalcon\Mvc\Micro($di);
 
-%{tutorial-rest_afcfb569def26d4afb31ed1fd293b041}%
 
+%{tutorial-rest_afcfb569def26d4afb31ed1fd293b041}%
 ---------------
 %{tutorial-rest_e8decbd7ff3d33202bfa8c228b44d4b3}%
-
 
 .. code-block:: php
 
@@ -218,6 +215,7 @@
     });
 
 :doc:`PHQL <phql>`, allow us to write queries using a high-level, object-oriented SQL dialect that internally
+
 %{tutorial-rest_c7b41850d249a062e80610b6dcca6b07}%
 
 %{tutorial-rest_5d05802c2034051acc6e92d4c60d9413}%
@@ -245,6 +243,7 @@
         echo json_encode($data);
 
     });
+
 
 %{tutorial-rest_12e76a2b259ba344f07fbe50be73c2e6}%
 
@@ -278,11 +277,10 @@
         return $response;
     });
 
-%{tutorial-rest_d70f9732a93804895552d4041ad92122}%
 
+%{tutorial-rest_d70f9732a93804895552d4041ad92122}%
 --------------
 %{tutorial-rest_ea7792bcb128f13873a0b38875008365}%
-
 
 .. code-block:: php
 
@@ -331,11 +329,10 @@
         return $response;
     });
 
-%{tutorial-rest_7e95ceac582a15ef3f27c690a4862c5a}%
 
+%{tutorial-rest_7e95ceac582a15ef3f27c690a4862c5a}%
 -------------
 %{tutorial-rest_7ee3d9762d971ea9098b67c73223862a}%
-
 
 .. code-block:: php
 
@@ -376,11 +373,10 @@
         return $response;
     });
 
-%{tutorial-rest_12f49100cf21592b1bed0daa5b42bcd9}%
 
+%{tutorial-rest_12f49100cf21592b1bed0daa5b42bcd9}%
 -------------
 %{tutorial-rest_a22e0afc3c116152d64bb2ffd8f8e2be}%
-
 
 .. code-block:: php
 
@@ -416,11 +412,10 @@
         return $response;
     });
 
-%{tutorial-rest_51eee60ebdb66fb5770c4b406440fa69}%
 
+%{tutorial-rest_51eee60ebdb66fb5770c4b406440fa69}%
 -----------------------
 %{tutorial-rest_a444b76b57459a80926fdb40855d43a2}%
-
 
 %{tutorial-rest_3d2d6a49b68a620826b98699fcf385c7}%
 
@@ -436,6 +431,7 @@
 
     [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 
+
 %{tutorial-rest_bf489f2e18b48c2f62bc412fafde1f6e}%
 
 .. code-block:: bash
@@ -450,6 +446,7 @@
 
     [{"id":"2","name":"Astro Boy"}]
 
+
 %{tutorial-rest_b9dffca52615184a38ea1e4489835f73}%
 
 .. code-block:: bash
@@ -463,6 +460,7 @@
     Content-Type: text/html; charset=UTF-8
 
     {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
+
 
 %{tutorial-rest_65b7312d59b7814f9bfa796c27ab68b6}%
 
@@ -479,6 +477,7 @@
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
+
 %{tutorial-rest_d4a9e00a9a3acabf59087aa2cf8fadba}%
 
 .. code-block:: bash
@@ -493,6 +492,7 @@
     Content-Type: text/html; charset=UTF-8
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
+
 
 %{tutorial-rest_f92c146e69ddce8c07d9e73c23321f2a}%
 
@@ -510,6 +510,7 @@
     {"status":"ERROR","messages":["Value of field 'type' must be part of
         list: droid, mechanical, virtual"]}
 
+
 %{tutorial-rest_b66492ddc59541e4dd170275cf479f68}%
 
 .. code-block:: bash
@@ -524,9 +525,8 @@
 
     {"status":"OK"}
 
+
 %{tutorial-rest_ee50f1d496b9cd00d5955f10f6dc7517}%
-
 ----------
-%{tutorial-rest_d1768dfac9d235a51439b9396104e171}%
-
+%{tutorial-rest_d1768dfac9d235a51439b9396104e171|:doc:`PHQL <phql>`}%
 
