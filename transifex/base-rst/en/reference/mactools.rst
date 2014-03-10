@@ -74,7 +74,7 @@
 
 %{mactools_7a752ac7821139893d4b7d8eb762a483}%
 ^^^^^^^^^^^^^^
-* :1:
+* :doc:`Installation on Linux <linuxtools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`
 

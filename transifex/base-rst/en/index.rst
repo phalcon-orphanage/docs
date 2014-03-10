@@ -77,7 +77,7 @@
 %{index_55bd297b9fb4a01a8e6a56ca12739be3}%
 -------------
 
-* :1:
+* `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
 * `HTML in one Zip <http://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip>`_
 * `ePub <http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub>`_
 

@@ -516,7 +516,7 @@
 -------------------
 %{tutorial_e69c20c6aafef23fa8314a4414be15b7}%
 
-* :1:: A simple and clean forum
+* `Phosphorum`_: A simple and clean forum
 * `PHP Alternative website`_: Multilingual and advanced routing application
 * `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
 * `Phosphorum`_: A simple and clean forum

@@ -130,7 +130,7 @@
 ----------------------------------
 %{whats-next_236c23116970492ef2f675241540f17b}%
 
-* :1:
+* `ZeroMQ <http://www.zeromq.org/>`_
 * `Redis <http://redis.io/>`_
 * `RabbitMQ <http://www.rabbitmq.com/>`_
 * `Resque <https://github.com/chrisboulton/php-resque>`_

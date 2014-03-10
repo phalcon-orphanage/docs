@@ -70,7 +70,7 @@ class Docs
 							if (preg_match_all('#:doc:`[^`]+`#', $line, $matches, PREG_SET_ORDER)) {
 								foreach ($matches as $position => $match) {
 									$placeholders[$position] = $match[0];
-									$line = str_replace($match[0], ':' . ($number) . ':', $line);
+									$listMatches[1] = str_replace($match[0], ':' . ($number) . ':', $listMatches[1]);
 									$number++;
 								}
 							}
@@ -78,7 +78,7 @@ class Docs
 							if (preg_match_all('#`[^`]+`_#', $line, $matches, PREG_SET_ORDER)) {
 								foreach ($matches as $position => $match) {
 									$placeholders[$position] = $match[0];
-									$line = str_replace($match[0], ':' . ($number) . ':', $line);
+									$listMatches[1] = str_replace($match[0], ':' . ($number) . ':', $listMatches[1]);
 									$number++;
 								}
 							}

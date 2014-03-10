@@ -17,7 +17,7 @@
 
 %{hello-world_cfd6d0dbc2b5533200c7d0c3369a32d8}%
 -----------------------
-* :1: (1.11.11)
+* `Zend Framework`_ (1.11.11)
 * {%hello-world_a4d272ca7b3f09dccea884bec14efc42%}
 * `Zend Framework`_ (1.11.11)
 * {%hello-world_182f3c39700ac68c95103a3f4e84df3d%}
