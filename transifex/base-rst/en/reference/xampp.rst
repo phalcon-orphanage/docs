@@ -69,6 +69,6 @@
 
 %{xampp_7a752ac7821139893d4b7d8eb762a483}%
 --------------
-* :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
+* :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on WAMP for Windows </reference/wamp>`
 

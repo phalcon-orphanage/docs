@@ -83,13 +83,16 @@ class Docs
 								}
 							}
 
-							$key = $this->_prefix . '_' . md5($listMatches[0]);
-							if (count($placeholders)) {
-								$section[$position] = str_replace($listMatches[1], '{%' . $key . '|' . join('|', $placeholders) . '%}', $line);
-							} else {
-								$section[$position] = str_replace($listMatches[1], '{%' . $key . '%}', $line);
+							if (!preg_match('#^:([0-9]+):$#', $listMatches[1])) {
+								$key = $this->_prefix . '_' . md5($listMatches[0]);
+								if (count($placeholders)) {
+									$section[$position] = str_replace($listMatches[1], '{%' . $key . '|' . join('|', $placeholders) . '%}', $line);
+								} else {
+									$section[$position] = str_replace($listMatches[1], '{%' . $key . '%}', $line);
+								}
+								$this->_uniqueStrings[$key] = $listMatches[1];
 							}
-							$this->_uniqueStrings[$key] = $listMatches[1];
+
 						}
 					}
 				}

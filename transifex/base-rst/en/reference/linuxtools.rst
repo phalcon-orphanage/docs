@@ -28,7 +28,7 @@
 
 %{linuxtools_7a752ac7821139893d4b7d8eb762a483}%
 ^^^^^^^^^^^^^^
-* :doc:`Installation on Mac <mactools>`
+* :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Mac <mactools>`
 
