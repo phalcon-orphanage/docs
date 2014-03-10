@@ -75,11 +75,21 @@ class Docs
 
 					$section1 = str_replace(array("\r\n", "\n"), ' ', join('', $section));
 
+					$number = 1;
 					$placeholders = array();
 					if (preg_match_all('#:doc:`[^`]+`#', $section1, $matches, PREG_SET_ORDER)) {
 						foreach ($matches as $position => $match) {
 							$placeholders[$position] = $match[0];
-							$section1 = str_replace($match[0], ':' . ($position + 1) . ':', $section1);
+							$section1 = str_replace($match[0], ':' . ($number) . ':', $section1);
+							$number++;
+						}
+					}
+
+					if (preg_match_all('#`[^`]+`_#', $section1, $matches, PREG_SET_ORDER)) {
+						foreach ($matches as $position => $match) {
+							$placeholders[$position] = $match[0];
+							$section1 = str_replace($match[0], ':' . ($number) . ':', $section1);
+							$number++;
 						}
 					}
 

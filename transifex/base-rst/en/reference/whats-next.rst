@@ -100,7 +100,7 @@
 %{whats-next_2bff9cea84721eb4139848329ad036c8}%
 
 ------------
-%{whats-next_2ea565e1bb92397ce43e91584ab8d34f}%
+%{whats-next_76659bb548efb3762629b44d48bbd9df}%
 
 
 .. figure:: ../_static/img/yslow-1.jpg
@@ -110,7 +110,7 @@
 %{whats-next_22ac3220308de49b56b20e639030771d}%
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-%{whats-next_d4b0ef7b36a7cbef8cc66960f6955e4a}%
+%{whats-next_2de0509fca5f0aacdab5babd4b953db5}%
 
 
 .. figure:: ../_static/img/speed-tracer.jpg

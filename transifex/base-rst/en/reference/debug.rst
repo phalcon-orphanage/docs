@@ -6,7 +6,7 @@
     :align: center
 
 
-%{debug_c6e61d0ed51257a83ac8eaeb5f14ebff}%
+%{debug_9036570d0a52e2a62d934cb7d9ce6b84}%
 
 %{debug_210c8aebc2022b155df5c183bb5cb17f}%
 
@@ -28,9 +28,9 @@
 
     }
 
-%{debug_3b1f614f778576d1359113c393e27f32}%
+%{debug_eac48913bd81cd499b1a3d73d9062393}%
 
-%{debug_ff7c8cba77174e8b62a1422d036000c9}%
+%{debug_bd065365a4661deaa03c3731cad47d8c}%
 
 .. code-block:: php
 
@@ -59,7 +59,7 @@
 
     }
 
-%{debug_42d2abbd1c5dd98505ebfe6b434ab5e9}%
+%{debug_6d3633c99d16ca01ec9dce8dc98f1798}%
 
 .. code-block:: php
 
@@ -103,7 +103,7 @@
     #14 /Applications/MAMP/htdocs/invo/public/index.php(114): Phalcon\Mvc\Application->handle()
     #15 {main}
 
-%{debug_072141f2639a9394589c5183686392f0}%
+%{debug_02cd0382db0c91dd063649fe092534fd}%
 
 %{debug_6815edaaedecedc259ccc2bf3bc9a8ab}%
 
@@ -134,7 +134,7 @@
 %{debug_3876e10bb15f5eb320587acd70db3601}%
 
 -----------------------------
-%{debug_0a2715f107ac2b7b5c8c256d6a7384af}%
+%{debug_c380bea5aa12eeccb6aa5537acb2f685}%
 
 
 .. code-block:: php
@@ -272,5 +272,5 @@
         0.0419     740144   4. xdebug_print_function_stack()
             /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php:19
 
-%{debug_f2d045974b2e64a0c299b91b3448ffda}%
+%{debug_a7fa2ff4c7646e26ff2cc4f0f52cfff2}%
 
