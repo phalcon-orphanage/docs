@@ -48,20 +48,18 @@ Specific packages for common platforms:
 .. code-block:: bash
 
     #Ubuntu
-    sudo apt-get install git-core gcc autoconf
-    sudo apt-get install php5-dev php5-mysql
+    sudo apt-get install gcc make git-core libpcre3-dev php5-dev 
 
     #Suse
-    sudo yast -i gcc make autoconf2.13
-    sudo yast -i php5-devel php5-pear php5-mysql
+    sudo yast -i gcc make php5-devel
+    #or
+    sudo zypper install gcc make php5-devel
 
-    #CentOS/RedHat
-    sudo yum install gcc make
-    sudo yum install php-devel
+    #CentOS/Fedora/RHEL
+    sudo yum install git gcc make pcre-devel php-devel
 
     #Solaris
-    pkg install gcc-45
-    pkg install php-53 apache-php53
+    pkg install gcc-45 php-53 apache-php53
 
 Compilation
 ^^^^^^^^^^^
