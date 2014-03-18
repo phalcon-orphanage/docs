@@ -58,19 +58,14 @@ Below is a sample bootstrap that is being used for this example.
     * Process the console arguments
     */
     $arguments = array();
-    $params = array();
-    
     foreach($argv as $k => $arg) {
         if($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;
         } elseif($k >= 3) {
-           $params[] = $arg;
+           $arguments[] = $arg;
         }
-    }
-    if(count($params) > 0) {
-        $arguments['params'] = $params;
     }
 
     // define global constants for the current task and action
