@@ -57,6 +57,11 @@ public  **__unset** (*unknown* $property)
 ...
 
 
+public  **__call** (*unknown* $method, [*unknown* $arguments])
+
+...
+
+
 public  **count** ()
 
 ...

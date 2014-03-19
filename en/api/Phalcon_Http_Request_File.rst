@@ -78,9 +78,10 @@ Returns the file key
 
 
 
-public  **isUploadedFile** ()
+public *boolean*  **isUploadedFile** ()
 
-...
+Checks whether the file has been uploaded via Post.
+
 
 
 public *boolean*  **moveTo** (*string* $destination)

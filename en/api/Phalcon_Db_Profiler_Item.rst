@@ -19,6 +19,30 @@ Returns the SQL statement related to the profile
 
 
 
+public  **setSQLVariables** (*unknown* $sqlVariables)
+
+Sets the SQL variables related to the profile
+
+
+
+public *array*  **getSQLVariables** ()
+
+Returns the SQL variables related to the profile
+
+
+
+public  **setSQLBindTypes** (*unknown* $sqlBindTypes)
+
+Sets the SQL bind types related to the profile
+
+
+
+public *array*  **getSQLBindTypes** ()
+
+Returns the SQL bind types related to the profile
+
+
+
 public  **setInitialTime** (*int* $initialTime)
 
 Sets the timestamp on when the profile started

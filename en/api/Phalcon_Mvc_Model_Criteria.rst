@@ -288,3 +288,9 @@ Executes a find using the parameters built with the criteria
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **cache** (*unknown* $option)
+
+Sets the cache options in the criteria This method replaces all previously set cache options
+
+
+
