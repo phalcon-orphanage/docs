@@ -35,10 +35,10 @@ with each other.
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
+    If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
+By default, the model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
 you can use the getSource() method:
 
 .. code-block:: php
