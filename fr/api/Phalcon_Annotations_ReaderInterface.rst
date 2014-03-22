@@ -5,7 +5,7 @@ Phalcon\\Annotations\\ReaderInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *array*  **parse** (*string* $className)
 

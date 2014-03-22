@@ -5,7 +5,7 @@ Phalcon\\Session\\BagInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **initialize** ()
 
@@ -37,21 +37,9 @@ Isset property
 
 
 
-abstract public  **__set** (*string* $property, *string* $value)
+abstract public  **remove** (*string* $property)
 
-Setter of values
-
-
-
-abstract public *mixed*  **__get** (*string* $property)
-
-Getter of values
-
-
-
-abstract public *boolean*  **__isset** (*string* $property)
-
-Isset property
+Unset property
 
 
 

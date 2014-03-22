@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Stores model meta-data in memory. Data will be erased when the request finishes
 
@@ -54,7 +54,7 @@ Reads the meta-data from temporal memory
 
 
 
-public  **write** (*string* $key, *array* $metaData)
+public  **write** (*string* $key, *unknown* $data)
 
 Writes the meta-data to temporal memory
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Application**
 ===================================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -47,7 +47,7 @@ This component encapsulates all the complex operations behind instantiating ever
 
 
 Methods
----------
+-------
 
 public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
@@ -55,7 +55,7 @@ public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
 
 
 
-public  **useImplicitView** (*boolean* $implicitView)
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **useImplicitView** (*boolean* $implicitView)
 
 By default. The view is implicitly buffering all the output You can full disable the view component using this method
 
@@ -89,7 +89,7 @@ Return the modules registered in the application
 
 
 
-public  **setDefaultModule** (*string* $defaultModule)
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **setDefaultModule** (*string* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
 
@@ -131,7 +131,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

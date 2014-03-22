@@ -4,11 +4,7 @@ In this second tutorial, we'll explain a more complete application in order to d
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
 generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
 
-<<<<<<< HEAD
-Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
-=======
 Also, INVO was made with `Bootstrap`_ as client-side framework. Although the application does not generate
->>>>>>> master
 invoices, it still serves as an example to understand how the framework works.
 
 Project Structure

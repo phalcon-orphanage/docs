@@ -1,9 +1,9 @@
 Class **Phalcon\\Acl\\Adapter\\Memory**
 =======================================
 
-*extends* :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
+*implements* :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Manages ACL lists in memory  
 
@@ -62,7 +62,7 @@ Manages ACL lists in memory
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 

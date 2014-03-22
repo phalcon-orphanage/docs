@@ -7,7 +7,7 @@ Phalcon\\CryptInterface initializer
 Methods
 -------
 
-abstract public *Phalcon\\EncryptInterface*  **setCipher** (*string* $cipher)
+abstract public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setCipher** (*string* $cipher)
 
 Sets the cipher algorithm
 
@@ -19,7 +19,7 @@ Returns the current cipher
 
 
 
-abstract public *Phalcon\\EncryptInterface*  **setMode** (*unknown* $mode)
+abstract public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setMode** (*unknown* $mode)
 
 Sets the encrypt/decrypt mode
 
@@ -31,7 +31,7 @@ Returns the current encryption mode
 
 
 
-abstract public *Phalcon\\EncryptInterface*  **setKey** (*string* $key)
+abstract public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setKey** (*string* $key)
 
 Sets the encryption key
 
@@ -55,13 +55,13 @@ Decrypts a text
 
 
 
-abstract public *string*  **encryptBase64** (*string* $text, [*string* $key])
+abstract public *string*  **encryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-abstract public *string*  **decryptBase64** (*string* $text, [*string* $key])
+abstract public *string*  **decryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
 
 Decrypt a text that is coded as a base64 string
 

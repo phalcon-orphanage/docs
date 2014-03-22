@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\MetaData**
 ================================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
 
@@ -362,6 +362,18 @@ Resets internal meta-data in order to regenerate it
 
     $metaData->reset();
 
+
+
+
+abstract public *array*  **read** (*string* $key) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+
+Reads meta-data from the adapter
+
+
+
+abstract public  **write** (*string* $key, *array* $data) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+
+Writes meta-data to the adapter
 
 
 

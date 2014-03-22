@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Behavior\\Timestampable**
 ======================================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\Model\\Behavior <Phalcon_Mvc_Model_Behavior>`
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
@@ -9,7 +9,7 @@ Allows to automatically update a model’s attribute saving the datetime when a 
 
 
 Methods
----------
+-------
 
 public  **notify** (*string* $type, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 

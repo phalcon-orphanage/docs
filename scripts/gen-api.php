@@ -18,6 +18,8 @@ if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
 }
 
+$languages = array('en', 'es', 'ja', 'pl', 'fr');
+
 /**
  * Class ApiGenerator
  */
@@ -597,7 +599,13 @@ foreach ($classes as $className) {
 
     }
 
-    file_put_contents('en/api/' . $simpleClassName . '.rst', $code);
+    foreach ($languages as $lang) {
+        @mkdir($lang . '/api/');
+        file_put_contents($lang . '/api/' . $simpleClassName . '.rst', $code);
+    }
+
 }
 
-file_put_contents('en/api/index.rst', $index . join('', $indexClasses) . join('', $indexInterfaces));
+foreach ($languages as $lang) {
+    file_put_contents($lang . '/api/index.rst', $index . join('', $indexClasses) . join('', $indexInterfaces));
+}

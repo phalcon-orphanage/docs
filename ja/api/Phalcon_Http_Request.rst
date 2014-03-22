@@ -67,6 +67,21 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
+public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+
+Gets a variable from put request 
+
+.. code-block:: php
+
+    <?php
+
+    $userEmail = $request->getPut("user_email");
+    
+    $userEmail = $request->getPut("user_email", "email");
+
+
+
+
 public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
@@ -102,6 +117,12 @@ Checks whether $_REQUEST superglobal has certain index
 public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
+
+
+
+public *boolean*  **hasPut** (*string* $name)
+
+Checks whether put has certain index
 
 
 
@@ -186,6 +207,12 @@ Gets most possible client IPv4 Address. This method search in $_SERVER['REMOTE_A
 public *string*  **getMethod** ()
 
 Gets HTTP method which request has been made
+
+
+
+public *string*  **getURI** ()
+
+Gets HTTP URI which request has been made
 
 
 
@@ -312,6 +339,18 @@ Gets languages array and their quality accepted by the browser/client from $_SER
 public *string*  **getBestLanguage** ()
 
 Gets best language accepted by the browser/client from $_SERVER['HTTP_ACCEPT_LANGUAGE']
+
+
+
+public *array*  **getBasicAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_USER']
+
+
+
+public *array*  **getDigestAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_DIGEST']
 
 
 

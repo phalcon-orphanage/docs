@@ -110,11 +110,7 @@ how you can redirect using a route you have defined in your application:
         "controller" => "index"
     ));
 
-<<<<<<< HEAD
-Note that a redirection doesn't disable the view component, so if there is a view asociated with the current action it
-=======
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
->>>>>>> master
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTP Cache

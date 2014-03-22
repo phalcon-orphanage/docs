@@ -5,7 +5,7 @@ Phalcon\\Mvc\\ViewInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setViewsDir** (*string* $viewsDir)
 
@@ -46,6 +46,18 @@ Gets the current partials sub-directory
 abstract public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getCurrentRenderLevel** ()
+
+Gets the current render level
+
+
+
+abstract public *string*  **getRenderLevel** ()
+
+Gets the render level for the view
 
 
 
@@ -220,6 +232,12 @@ Enables the auto-rendering process
 abstract public  **reset** ()
 
 Resets the view component to its factory default values
+
+
+
+abstract public *bool*  **isDisabled** ()
+
+Whether the automatic rendering is disabled
 
 
 

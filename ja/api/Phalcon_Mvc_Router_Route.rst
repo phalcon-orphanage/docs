@@ -143,6 +143,18 @@ Returns the hostname restriction if any
 
 
 
+public *Phalcon\\Mvc\\RouteInterface*  **setGroup** (:doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` $group)
+
+Sets the group associated with the route
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` |null **getGroup** ()
+
+Returns the group associated with the route
+
+
+
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **convert** (*string* $name, *callable* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter

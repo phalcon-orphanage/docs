@@ -1471,15 +1471,12 @@ goes wrong with saving the related records, the parent will not be saved either.
 passed back to the user for information regarding any errors.
 
 Note: Adding related entities by overloading the following methods is not possible:
+
  - Phalcon\Mvc\Model::beforeSave()
  - Phalcon\Mvc\Model::beforeCreate()
  - Phalcon\Mvc\Model::beforeUpdate()
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
-
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^

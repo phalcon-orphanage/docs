@@ -3,7 +3,7 @@ Class **Phalcon\\Crypt\\Exception**
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Phalcon\\Escaper\\Crypt  Exceptions thrown in Phalcon\\Crypt use this class
+Exceptions thrown in Phalcon\\Crypt use this class
 
 
 Methods

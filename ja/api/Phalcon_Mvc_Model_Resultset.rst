@@ -72,25 +72,25 @@ Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*int* $index)
+public *boolean*  **offsetExists** (*unknown* $property)
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $property)
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
+public  **offsetSet** (*unknown* $property, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*int* $offset)
+public  **offsetUnset** (*unknown* $property)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

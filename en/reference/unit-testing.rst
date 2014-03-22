@@ -176,15 +176,8 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
 
           // Load any additional services that might be required during testing
           $di = DI::getDefault();
-<<<<<<< HEAD
-  
-          // get any DI components here. If you have a config, be sure to pass it to the parent
-  
-=======
 
           // get any DI components here. If you have a config, be sure to pass it to the parent
-
->>>>>>> master
           parent::setUp($di);
 
           $this->_loaded = true;
@@ -200,25 +193,20 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
           }
       }
   }
-<<<<<<< HEAD
-  
-It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namespace
-=======
 
 It's always a good idea to separate your Unit tests in namespaces. For this test we will create the namespace
->>>>>>> master
 'Test'. So create a file called \tests\Test\UnitTest.php:
 
 .. code-block:: php
 
   <?php
+
   namespace Test;
+
   /**
    * Class UnitTest
    */
   class UnitTest extends \UnitTestCase {
-
-
 
       public function testTestCase() {
 
@@ -231,11 +219,8 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
               'works1',
               'This wil fail'
           );
-
-
       }
   }
-
 
 Now when you execute 'phpunit' in your command-line from the \tests directory you will get the following output:
 

@@ -30,7 +30,7 @@ Constants
 *integer* **XHTML5**
 
 Methods
----------
+-------
 
 public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -40,7 +40,7 @@ Sets the dependency injector container.
 
 public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
 
-Internally gets the request dispatcher
+Internally gets the dependency injector
 
 
 
@@ -53,6 +53,12 @@ Return a URL service from the default DI
 public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
+
+
+
+public static *bool*  **getAutoescape** ()
+
+Get current autoescape mode
 
 
 
@@ -131,6 +137,9 @@ Builds a HTML A tag using framework conventions
     echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
     echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!'));
     echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!', 'class' => 'btn-primary'));
+    echo Phalcon\Tag::linkTo('http://phalconphp.com/', 'Google', FALSE);
+    echo Phalcon\Tag::linkTo(array('http://phalconphp.com/', 'Phalcon Home', FALSE));
+    echo Phalcon\Tag::linkTo(array('http://phalconphp.com/', 'Phalcon Home', 'local' =>FALSE));
 
 
 
@@ -144,6 +153,12 @@ Builds generic INPUT tags
 protected static *string*  **_inputFieldChecked** ()
 
 Builds INPUT tags that implements the checked attribute
+
+
+
+public static *string*  **colorField** (*array* $parameters)
+
+Builds a HTML input[type="color"] tag
 
 
 
@@ -173,6 +188,12 @@ Builds a HTML input[type="number"] tag
 
 
 
+public static *string*  **rangeField** (*array* $parameters)
+
+Builds a HTML input[type="range"] tag
+
+
+
 public static *string*  **emailField** (*array* $parameters)
 
 Builds a HTML input[type="email"] tag 
@@ -199,6 +220,36 @@ Builds a HTML input[type="date"] tag
 
 
 
+public static *string*  **dateTimeField** (*array* $parameters)
+
+Builds a HTML input[type="datetime"] tag
+
+
+
+public static *string*  **dateTimeLocalField** (*array* $parameters)
+
+Builds a HTML input[type="datetime-local"] tag
+
+
+
+public static *string*  **monthField** (*array* $parameters)
+
+Builds a HTML input[type="month"] tag
+
+
+
+public static *string*  **timeField** (*array* $parameters)
+
+Builds a HTML input[type="time"] tag
+
+
+
+public static *string*  **weekField** (*array* $parameters)
+
+Builds a HTML input[type="week"] tag
+
+
+
 public static *string*  **passwordField** (*array* $parameters)
 
 Builds a HTML input[type="password"] tag 
@@ -222,6 +273,24 @@ Builds a HTML input[type="hidden"] tag
 
      echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"));
 
+
+
+
+public static *string*  **searchField** (*array* $parameters)
+
+Builds a HTML input[type="search"] tag
+
+
+
+public static *string*  **telField** (*array* $parameters)
+
+Builds a HTML input[type="tel"] tag
+
+
+
+public static *string*  **urlField** (*array* $parameters)
+
+Builds a HTML input[type="url"] tag
 
 
 
@@ -415,6 +484,19 @@ Set the title of view content
 
 
 
+public static  **setTitleSeparator** (*unknown* $separator)
+
+Set the title separator of view content 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Tag::setTitleSeparator('-');
+
+
+
+
 public static  **appendTitle** (*string* $title)
 
 Appends a text to current document title
@@ -442,6 +524,25 @@ Gets the current document title
     <?php
 
      	{{ get_title() }}
+
+
+
+
+public static *string*  **getTitleSeparator** ()
+
+Gets the current document title separator 
+
+.. code-block:: php
+
+    <?php
+
+     	echo Phalcon\Tag::getTitleSeparator();
+
+.. code-block:: php
+
+    <?php
+
+     	{{ get_title_separator() }}
 
 
 

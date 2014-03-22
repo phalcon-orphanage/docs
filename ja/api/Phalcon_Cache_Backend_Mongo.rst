@@ -76,6 +76,29 @@ Checks if cache exists and it hasn't expired
 
 
 
+public  **gc** ()
+
+...
+
+
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+
+Increment of a given key by $value
+
+
+
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Decrement of a given key by $value
+
+
+
+public *bool*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment

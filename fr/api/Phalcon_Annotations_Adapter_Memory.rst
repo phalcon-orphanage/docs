@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Adapter\\Memory**
 ===============================================
 
-*extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
@@ -9,7 +9,7 @@ Stores the parsed annotations in memory. This adapter is the suitable developmen
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 

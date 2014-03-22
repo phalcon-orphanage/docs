@@ -115,3 +115,44 @@ Handles uncaught exceptions
 
 
 
+public *string*  **getCharset** ()
+
+Returns the character set used to display the HTML
+
+
+
+public *\Phalcon\Debug*  **setCharset** (*string* $charset)
+
+Sets the character set used to display the HTML
+
+
+
+public *int*  **getLinesBeforeContext** ()
+
+Returns the number of lines deplayed before the error line
+
+
+
+public *\Phalcon\Debug*  **setLinesBeforeContext** (*int* $lines)
+
+Sets the number of lines deplayed before the error line
+
+
+
+public *int*  **getLinesAfterContext** ()
+
+Returns the number of lines deplayed after the error line
+
+
+
+public *\Phalcon\Debug*  **setLinesAfterContext** (*int* $lines)
+
+Sets the number of lines deplayed after the error line
+
+
+
+protected  **getFileLink** (*unknown* $file, *unknown* $line, *unknown* $format)
+
+...
+
+

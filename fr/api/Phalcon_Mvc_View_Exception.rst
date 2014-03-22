@@ -1,13 +1,13 @@
 Class **Phalcon\\Mvc\\View\\Exception**
 =======================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Class for exceptions thrown by Phalcon\\Mvc\\View
 
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

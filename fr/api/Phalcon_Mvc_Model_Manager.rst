@@ -20,7 +20,7 @@ This components controls the initialization of models, keeping record of relatio
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -76,7 +76,7 @@ Get last initialized model
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName, [*boolean* $newInstance])
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName, *boolean* $newInstance)
 
 Loads a model throwing an exception if it doesn't exist
 

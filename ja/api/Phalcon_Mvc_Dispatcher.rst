@@ -75,7 +75,7 @@ Throws an internal exception
 
 protected  **_handleException** ()
 
-Handles a user exception
+Handles a user exception phalcon_dispatcher_fire_event() first
 
 
 
@@ -94,6 +94,18 @@ Returns the lastest dispatched controller
 public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
 
 Returns the active controller in the dispatcher
+
+
+
+public *string*  **getPreviousControllerName** ()
+
+Returns the previous controller in the dispatcher
+
+
+
+public *string*  **getPreviousActionName** ()
+
+Returns the previous action in the dispatcher
 
 
 
@@ -205,7 +217,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 

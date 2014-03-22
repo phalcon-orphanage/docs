@@ -1,7 +1,7 @@
-Class **Phalcon\\Mvc\\Model\\MetaData**
-=======================================
+Abstract class **Phalcon\\Mvc\\Model\\MetaData**
+================================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
 
 Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
 
@@ -47,7 +47,7 @@ Constants
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
 Methods
----------
+-------
 
 protected  **_initialize** ()
 
@@ -87,7 +87,7 @@ Reads the complete meta-data for certain model
 
     <?php
 
-    print_r($metaData->readMetaData(new Robots());
+    print_r($metaData->readMetaData(new Robots()));
 
 
 
@@ -105,7 +105,7 @@ Reads meta-data for certain model using a MODEL_* constant
 
 
 
-public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data)
+public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data, *unknown* $replace)
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -274,7 +274,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace)
 
 Set the attributes that must be ignored from the INSERT SQL generation 
 
@@ -287,7 +287,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace)
 
 Set the attributes that must be ignored from the UPDATE SQL generation 
 
@@ -362,6 +362,18 @@ Resets internal meta-data in order to regenerate it
 
     $metaData->reset();
 
+
+
+
+abstract public *array*  **read** (*string* $key) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+
+Reads meta-data from the adapter
+
+
+
+abstract public  **write** (*string* $key, *array* $data) inherited from Phalcon\\Mvc\\Model\\MetaDataInterface
+
+Writes meta-data to the adapter
 
 
 

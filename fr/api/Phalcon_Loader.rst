@@ -28,7 +28,7 @@ This component helps to load your project classes automatically based on some co
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -66,7 +66,7 @@ Register namespaces and their related directories
 
 
 
-public  **getNamespaces** ()
+public *array*  **getNamespaces** ()
 
 Return current namespaces registered in the autoloader
 

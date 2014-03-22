@@ -17,7 +17,7 @@ Part of the HTTP cycle is return responses to the clients. Phalcon\\HTTP\\Respon
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*string* $content], [*int* $code], [*string* $status])
 
@@ -106,7 +106,7 @@ Resets all the stablished headers
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
+public *\Phalcon\Http\ResponseInterface*  **setExpires** (*\DateTime* $datetime)
 
 Sets a Expires header to use HTTP cache 
 
@@ -152,7 +152,7 @@ Set a custom ETag
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string|array* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL 
 
@@ -188,7 +188,7 @@ Sets HTTP response body
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content, [*int* $jsonOptions])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
 
 Sets HTTP response body. The parameter is automatically converted to JSON 
 
@@ -197,7 +197,9 @@ Sets HTTP response body. The parameter is automatically converted to JSON
     <?php
 
     $response->setJsonContent(array("status" => "OK"));
+    $response->setJsonContent(array("status" => "OK"), JSON_NUMERIC_CHECK);
 
+*
 
 
 

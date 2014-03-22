@@ -5,7 +5,7 @@ Phalcon\\Mvc\\Model\\CriteriaInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **setModelName** (*string* $modelName)
 
@@ -28,6 +28,35 @@ Adds the bind parameter to the criteria
 abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bindTypes** (*string* $bindTypes)
 
 Sets the bind types in the criteria This method replaces all previously set bound parameters
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **columns** (*string|array* $columns)
+
+Sets the columns to be queried 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->columns(array('id', 'name'));
+
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+
+Adds a join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $criteria->join('Robots');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $criteria->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+
 
 
 
@@ -87,7 +116,7 @@ Appends a BETWEEN condition to the current conditions
 
     <?php
 
-    $builder->betweenWhere('price', 100.25, 200.50);
+    $criteria->betweenWhere('price', 100.25, 200.50);
 
 
 
@@ -100,7 +129,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
     <?php
 
-    $builder->notBetweenWhere('price', 100.25, 200.50);
+    $criteria->notBetweenWhere('price', 100.25, 200.50);
 
 
 
@@ -113,7 +142,7 @@ Appends an IN condition to the current conditions
 
     <?php
 
-    $builder->inWhere('id', [1, 2, 3]);
+    $criteria->inWhere('id', [1, 2, 3]);
 
 
 
@@ -126,7 +155,7 @@ Appends a NOT IN condition to the current conditions
 
     <?php
 
-    $builder->notInWhere('id', [1, 2, 3]);
+    $criteria->notInWhere('id', [1, 2, 3]);
 
 
 

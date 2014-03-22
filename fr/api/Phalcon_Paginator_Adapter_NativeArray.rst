@@ -26,7 +26,7 @@ Pagination using a PHP array as source of data
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $config)
 

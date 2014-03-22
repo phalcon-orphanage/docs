@@ -5,12 +5,16 @@ Phalcon\\Mvc\\Model\\Query\\BuilderInterface initializer
 
 
 Methods
----------
+-------
 
-abstract public  **__construct** ([*array* $params])
+abstract public  **distinct** (*unknown* $distinct)
 
-Phalcon\\Mvc\\Model\\Query\\Builder
+...
 
+
+abstract public  **getDistinct** ()
+
+...
 
 
 abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **columns** (*string|array* $columns)

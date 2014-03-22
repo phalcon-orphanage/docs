@@ -5,7 +5,7 @@ Phalcon\\Cache\\FrontendInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *int*  **getLifetime** ()
 

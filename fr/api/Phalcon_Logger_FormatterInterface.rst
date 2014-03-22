@@ -5,9 +5,9 @@ Phalcon\\Logger\\FormatterInterface initializer
 
 
 Methods
----------
+-------
 
-abstract public  **format** (*string* $message, *int* $type, *int* $timestamp)
+abstract public  **format** (*string* $message, *int* $type, *int* $timestamp, *array* $context)
 
 Applies a format to a message before sent it to the internal log
 

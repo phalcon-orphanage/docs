@@ -1,9 +1,9 @@
 Class **Phalcon\\Session\\Adapter\\Files**
 ==========================================
 
-*extends* :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
-*implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`
+*implements* ArrayAccess, Traversable, IteratorAggregate, Countable, :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`
 
 This adapter store sessions in plain files  
 
@@ -24,12 +24,17 @@ This adapter store sessions in plain files
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options]) inherited from Phalcon\\Session\\Adapter
 
 Phalcon\\Session\\Adapter constructor
 
+
+
+public  **__destruct** () inherited from Phalcon\\Session\\Adapter
+
+...
 
 
 public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter
@@ -130,7 +135,7 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** () inherited from Phalcon\\Session\\Adapter
+public *boolean*  **destroy** ([*unknown* $session_id]) inherited from Phalcon\\Session\\Adapter
 
 Destroys the active session 
 
@@ -141,5 +146,55 @@ Destroys the active session
     var_dump($session->destroy());
 
 
+
+
+public  **__get** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **__set** (*unknown* $property, *unknown* $value) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **__isset** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **__unset** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **offsetGet** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **offsetSet** (*unknown* $property, *unknown* $value) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **offsetExists** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **count** () inherited from Phalcon\\Session\\Adapter
+
+...
+
+
+public  **getIterator** () inherited from Phalcon\\Session\\Adapter
+
+...
 
 

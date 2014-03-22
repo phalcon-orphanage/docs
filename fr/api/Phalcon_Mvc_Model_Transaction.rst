@@ -39,7 +39,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
@@ -67,7 +67,7 @@ Commits the transaction
 
 public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
 
-Rollbacks the transaction
+Rolls back the transaction
 
 
 

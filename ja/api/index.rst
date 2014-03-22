@@ -39,6 +39,7 @@ API Indice
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
+   Phalcon_Cache_Backend_Libmemcached
    Phalcon_Cache_Backend_Memcache
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
@@ -54,6 +55,7 @@ API Indice
    Phalcon_Config
    Phalcon_Config_Adapter_Ini
    Phalcon_Config_Adapter_Json
+   Phalcon_Config_Adapter_Php
    Phalcon_Config_Exception
    Phalcon_Crypt
    Phalcon_Crypt_Exception
@@ -106,6 +108,7 @@ API Indice
    Phalcon_Forms_Element_Hidden
    Phalcon_Forms_Element_Numeric
    Phalcon_Forms_Element_Password
+   Phalcon_Forms_Element_Radio
    Phalcon_Forms_Element_Select
    Phalcon_Forms_Element_Submit
    Phalcon_Forms_Element_Text
@@ -122,6 +125,11 @@ API Indice
    Phalcon_Http_Response_Cookies
    Phalcon_Http_Response_Exception
    Phalcon_Http_Response_Headers
+   Phalcon_Image
+   Phalcon_Image_Adapter
+   Phalcon_Image_Adapter_GD
+   Phalcon_Image_Adapter_Imagick
+   Phalcon_Image_Exception
    Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
@@ -215,9 +223,9 @@ API Indice
    Phalcon_Paginator_Exception
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
+   Phalcon_Registry
    Phalcon_Security
    Phalcon_Security_Exception
-   Phalcon_Session
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Bag
@@ -243,6 +251,7 @@ API Indice
    Phalcon_Validation_Validator_PresenceOf
    Phalcon_Validation_Validator_Regex
    Phalcon_Validation_Validator_StringLength
+   Phalcon_Validation_Validator_Url
    Phalcon_Version
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceInterface
@@ -275,6 +284,7 @@ API Indice
    Phalcon_Http_ResponseInterface
    Phalcon_Http_Response_CookiesInterface
    Phalcon_Http_Response_HeadersInterface
+   Phalcon_Image_AdapterInterface
    Phalcon_Logger_AdapterInterface
    Phalcon_Logger_FormatterInterface
    Phalcon_Mvc_CollectionInterface

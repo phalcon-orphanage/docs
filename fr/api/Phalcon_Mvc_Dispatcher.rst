@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
@@ -41,7 +41,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **setControllerSuffix** (*string* $controllerSuffix)
 
@@ -55,7 +55,7 @@ Sets the default controller name
 
 
 
-public  **setControllerName** (*string* $controllerName)
+public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
 Sets the controller name to be dispatched
 
@@ -73,6 +73,18 @@ Throws an internal exception
 
 
 
+protected  **_handleException** ()
+
+Handles a user exception phalcon_dispatcher_fire_event() first
+
+
+
+public *string*  **getControllerClass** ()
+
+Possible controller class name that will be located to dispatch the request
+
+
+
 public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getLastController** ()
 
 Returns the lastest dispatched controller
@@ -82,6 +94,18 @@ Returns the lastest dispatched controller
 public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
 
 Returns the active controller in the dispatcher
+
+
+
+public *string*  **getPreviousControllerName** ()
+
+Returns the previous controller in the dispatcher
+
+
+
+public *string*  **getPreviousActionName** ()
+
+Returns the previous action in the dispatcher
 
 
 
@@ -193,7 +217,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -245,6 +269,12 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
 
 
 

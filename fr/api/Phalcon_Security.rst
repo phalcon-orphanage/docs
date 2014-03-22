@@ -21,8 +21,29 @@ This component provides a set of functions to improve the security in Phalcon ap
 
 
 
-Methods
+Constants
 ---------
+
+*integer* **CRYPT_DEFAULT**
+
+*integer* **CRYPT_STD_DES**
+
+*integer* **CRYPT_EXT_DES**
+
+*integer* **CRYPT_MD5**
+
+*integer* **CRYPT_BLOWFISH**
+
+*integer* **CRYPT_BLOWFISH_X**
+
+*integer* **CRYPT_BLOWFISH_Y**
+
+*integer* **CRYPT_SHA256**
+
+*integer* **CRYPT_SHA512**
+
+Methods
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -72,7 +93,7 @@ Creates a password hash using bcrypt with a pseudo random salt
 
 
 
-public *boolean*  **checkHash** (*string* $password, *string* $passwordHash)
+public *boolean*  **checkHash** (*string* $password, *string* $passwordHash, [*int* $maxPasswordLength])
 
 Checks a plain text password and its hash version to check if the password matches
 
@@ -105,6 +126,36 @@ Check if the CSRF token sent in the request is the same that the current in sess
 public *string*  **getSessionToken** ()
 
 Returns the value of the CSRF token in session
+
+
+
+public static  **computeHmac** (*unknown* $data, *unknown* $key, *unknown* $algo, [*unknown* $raw])
+
+string \\Phalcon\\Security::computeHmac(string $data, string $key, string $algo, bool $raw = false)
+
+
+
+public static *string The derived key*  **deriveKey** (*unknown* $password, *unknown* $salt, [*unknown* $hash], [*unknown* $iterations], [*unknown* $size])
+
+Derives a key from the given password (PBKDF2).
+
+
+
+public static  **pbkdf2** (*unknown* $password, *unknown* $salt, [*unknown* $hash], [*unknown* $iterations], [*unknown* $size])
+
+
+
+
+
+public  **getDefaultHash** ()
+
+Returns the default hash
+
+
+
+public  **setDefaultHash** (*unknown* $hash)
+
+Sets the default hash
 
 
 

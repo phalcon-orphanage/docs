@@ -1,7 +1,7 @@
 Class **Phalcon\\Validation**
 =============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -9,7 +9,7 @@ Allows to validate data using validators
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $validators])
 
@@ -65,7 +65,7 @@ Appends a message to the messages list
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*string* $entity, *string* $data)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **bind** (*object* $entity, *object|array* $data)
 
 Assigns the data to an entity The entity is used to obtain the validation values
 
@@ -74,6 +74,28 @@ Assigns the data to an entity The entity is used to obtain the validation values
 public *mixed*  **getValue** (*string* $attribute)
 
 Gets the a value to validate in the array/object data source
+
+
+
+public  **setDefaultMessages** ([*unknown* $messages])
+
+...
+
+
+public  **getDefaultMessage** (*unknown* $type)
+
+...
+
+
+public  **setLabels** (*unknown* $labels)
+
+Adds labels for fields
+
+
+
+public *mixed*  **getLabel** (*unknown* $field)
+
+Get label for field
 
 
 
@@ -101,7 +123,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

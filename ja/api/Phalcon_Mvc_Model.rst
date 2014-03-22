@@ -530,7 +530,7 @@ Check whether validation process has generated any messages
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ([*unknown* $filter])
 
 Returns all the validation messages 
 
@@ -1057,7 +1057,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*array* $columns])
 
 Returns the instance as an array representation 
 

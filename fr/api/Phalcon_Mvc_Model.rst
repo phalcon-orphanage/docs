@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\Model**
-=============================
+Abstract class **Phalcon\\Mvc\\Model**
+======================================
 
 *implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
@@ -42,7 +42,7 @@ Constants
 *integer* **DIRTY_STATE_DETACHED**
 
 Methods
----------
+-------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
@@ -530,7 +530,7 @@ Check whether validation process has generated any messages
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ([*unknown* $filter])
 
 Returns all the validation messages 
 
@@ -798,7 +798,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
 
 Setup a 1-1 relation between two models 
 
@@ -819,7 +819,7 @@ Setup a 1-1 relation between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
 
 Setup a relation reverse 1-1  between two models 
 
@@ -840,7 +840,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
 
 Setup a relation 1-n between two models 
 
@@ -861,7 +861,7 @@ Setup a relation 1-n between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -890,7 +890,7 @@ Setup a relation n-n between two models through an intermediate relation
 
 
 
-protected  **addBehavior** ()
+public  **addBehavior** ()
 
 Setups a behavior in a model 
 
@@ -1057,7 +1057,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*array* $columns])
 
 Returns the instance as an array representation 
 
@@ -1072,7 +1072,7 @@ Returns the instance as an array representation
 
 public static  **setup** (*array* $options)
 
-Enables/disables options in the ORM
+Enables/disables options in the ORM Available options: events                — Enables/Disables globally the internal events virtualForeignKeys    — Enables/Disables virtual foreign keys columnRenaming        — Enables/Disables column renaming notNullValidations    — Enables/Disables automatic not null validation exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
 
 
 

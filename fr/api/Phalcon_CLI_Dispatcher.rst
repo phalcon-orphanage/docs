@@ -1,7 +1,7 @@
 Class **Phalcon\\CLI\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 
@@ -41,7 +41,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **setTaskSuffix** (*string* $taskSuffix)
 
@@ -70,6 +70,18 @@ Gets last dispatched task name
 protected  **_throwDispatchException** ()
 
 Throws an internal exception
+
+
+
+protected  **_handleException** ()
+
+Handles a user exception
+
+
+
+public *string*  **getTaskClass** ()
+
+Possible task class name that will be located to dispatch the request
 
 
 
@@ -193,7 +205,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -245,6 +257,12 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
 
 
 

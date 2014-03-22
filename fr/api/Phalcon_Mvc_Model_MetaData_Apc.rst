@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\MetaData\\Apc**
 ============================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
 Stores model meta-data in the APC cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-app-id')  
 
@@ -50,7 +50,7 @@ Constants
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 
@@ -68,6 +68,11 @@ public  **write** (*string* $key, *array* $data)
 
 Writes the meta-data to APC
 
+
+
+public  **reset** ()
+
+...
 
 
 protected  **_initialize** () inherited from Phalcon\\Mvc\\Model\\MetaData
@@ -108,7 +113,7 @@ Reads the complete meta-data for certain model
 
     <?php
 
-    print_r($metaData->readMetaData(new Robots());
+    print_r($metaData->readMetaData(new Robots()));
 
 
 
@@ -126,7 +131,7 @@ Reads meta-data for certain model using a MODEL_* constant
 
 
 
-public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -295,7 +300,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Set the attributes that must be ignored from the INSERT SQL generation 
 
@@ -308,7 +313,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes) inherited from Phalcon\\Mvc\\Model\\MetaData
+public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes, *unknown* $replace) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Set the attributes that must be ignored from the UPDATE SQL generation 
 
@@ -369,19 +374,6 @@ Checks if the internal meta-data container is empty
     <?php
 
     var_dump($metaData->isEmpty());
-
-
-
-
-public  **reset** () inherited from Phalcon\\Mvc\\Model\\MetaData
-
-Resets internal meta-data in order to regenerate it 
-
-.. code-block:: php
-
-    <?php
-
-    $metaData->reset();
 
 
 

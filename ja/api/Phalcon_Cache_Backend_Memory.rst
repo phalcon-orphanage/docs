@@ -57,6 +57,24 @@ Checks if cache exists and it hasn't expired
 
 
 
+public *mixed*  **increment** ([*unknown* $key_name], [*unknown* $value])
+
+Increment of given $keyName by $value
+
+
+
+public *long*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Decrement of $keyName by given $value
+
+
+
+public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+
 public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor

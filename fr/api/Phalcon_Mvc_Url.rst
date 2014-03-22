@@ -18,7 +18,7 @@ This components aids in the generation of: URIs, URLs and Paths
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -32,7 +32,7 @@ Returns the DependencyInjector container
 
 
 
-public  **setBaseUri** (*string* $baseUri)
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBaseUri** (*string* $baseUri)
 
 Sets a prefix for all the URIs to be generated 
 
@@ -46,7 +46,7 @@ Sets a prefix for all the URIs to be generated
 
 
 
-public  **setStaticBaseUri** (*string* $staticBaseUri)
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setStaticBaseUri** (*string* $staticBaseUri)
 
 Sets a prefix for all static URLs generated 
 
@@ -65,7 +65,13 @@ Returns the prefix for all the generated urls. By default /
 
 
 
-public  **setBasePath** (*string* $basePath)
+public *string*  **getStaticBaseUri** ()
+
+Returns the prefix for all the generated static urls. By default /
+
+
+
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBasePath** (*string* $basePath)
 
 Sets a base path for all the generated paths 
 
@@ -84,7 +90,7 @@ Returns the base path
 
 
 
-public *string*  **get** ([*string|array* $uri])
+public *string*  **get** ([*string|array* $uri], [*unknown* $args])
 
 Generates a URL 
 

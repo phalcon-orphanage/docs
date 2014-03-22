@@ -30,7 +30,7 @@ Provides OO wrappers to the $_FILES superglobal
 Methods
 -------
 
-public  **__construct** (*array* $file, [*unknown* $key])
+public  **__construct** (*array* $file)
 
 Phalcon\\Http\\Request\\File constructor
 
@@ -50,7 +50,7 @@ Returns the real name of the uploaded file
 
 public *string*  **getTempName** ()
 
-Returns the temporal name of the uploaded file
+Returns the temporary name of the uploaded file
 
 
 
@@ -78,9 +78,10 @@ Returns the file key
 
 
 
-public  **isUploadedFile** ()
+public *boolean*  **isUploadedFile** ()
 
-...
+Checks whether the file has been uploaded via Post.
+
 
 
 public *boolean*  **moveTo** (*string* $destination)
@@ -89,7 +90,7 @@ Moves the temporary file to a destination within the application
 
 
 
-public static  **__set_state** (*unknown* $file, [*unknown* $key])
+public static  **__set_state** (*unknown* $params)
 
 ...
 

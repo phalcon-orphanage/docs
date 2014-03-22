@@ -7,7 +7,7 @@ This class is a bag to manage the response headers
 
 
 Methods
----------
+-------
 
 public  **set** (*string* $name, *string* $value)
 
@@ -27,6 +27,12 @@ Sets a raw header to be sent at the end of the request
 
 
 
+public  **remove** (*unknown* $header_index)
+
+Removes a header to be sent at the end of the request
+
+
+
 public *boolean*  **send** ()
 
 Sends the headers to the client
@@ -36,6 +42,12 @@ Sends the headers to the client
 public  **reset** ()
 
 Reset set headers
+
+
+
+public *array*  **toArray** ()
+
+Returns the current headers as an array
 
 
 

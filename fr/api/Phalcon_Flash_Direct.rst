@@ -1,7 +1,7 @@
 Class **Phalcon\\Flash\\Direct**
 ================================
 
-*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+*extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
 
@@ -9,7 +9,7 @@ This is a variant of the Phalcon\\Flash that inmediately outputs any message pas
 
 
 Methods
----------
+-------
 
 public *string*  **message** (*string* $type, *string* $message)
 

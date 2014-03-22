@@ -5,7 +5,7 @@ Phalcon\\Cache\\BackendInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
 
@@ -82,6 +82,12 @@ Query the existing cached keys
 abstract public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
+
+
+
+abstract public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
 
 
 

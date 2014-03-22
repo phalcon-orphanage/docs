@@ -112,6 +112,18 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 
 
+public *int*  **getCurrentRenderLevel** ()
+
+Returns the render level for the view
+
+
+
+public *int*  **getRenderLevel** ()
+
+Returns the render level for the view
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setRenderLevel** (*string* $level)
 
 Sets the render level for the view 
@@ -137,6 +149,12 @@ Disables a specific level of rendering
      //Render all levels except ACTION level
      $this->view->disableLevel(View::LEVEL_ACTION_VIEW);
 
+
+
+
+public *array*  **getDisabledLevels** ()
+
+Returns an array with disabled render levels
 
 
 
@@ -199,7 +217,7 @@ Appends template after controller layout
 
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cleanTemplateAfter** ()
 
-Resets any template before layouts
+Resets any template after layouts
 
 
 
@@ -307,6 +325,17 @@ Register templating engines
 
 
 
+public  **getRegisteredEngines** ()
+
+Returns the registered templating engines
+
+
+
+public  **exists** (*unknown* $view)
+
+...
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data 
@@ -345,7 +374,7 @@ Choose a different view to render instead of last-controller/last-action
 
 
 
-public  **partial** (*string* $partialPath, [*array* $params])
+public  **partial** (*string* $partialPath)
 
 Renders a partial view 
 
@@ -453,13 +482,19 @@ Enables the auto-rendering process
 
 
 
+public *bool*  **isDisabled** ()
+
+Whether automatic rendering is enabled
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **reset** ()
 
 Resets the view component to its factory default values
 
 
 
-public  **__set** (*string* $key, *mixed* $value)
+public  **__set** (*unknown* $property, *mixed* $value)
 
 Magic method to pass variables to the views 
 
@@ -472,7 +507,7 @@ Magic method to pass variables to the views
 
 
 
-public *mixed*  **__get** (*string* $key)
+public *mixed*  **__get** (*unknown* $property)
 
 Magic method to retrieve a variable passed to the view 
 
@@ -481,6 +516,19 @@ Magic method to retrieve a variable passed to the view
     <?php
 
     echo $this->view->products;
+
+
+
+
+public *mixed*  **__isset** (*unknown* $property)
+
+Magic method to inaccessible a variable passed to the view 
+
+.. code-block:: php
+
+    <?php
+
+    isset($this->view->products)
 
 
 

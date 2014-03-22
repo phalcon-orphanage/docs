@@ -18,7 +18,7 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Filter <Phalcon_Filter>`  **add** (*string* $name, *callable* $handler)
 

@@ -1,11 +1,11 @@
 Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 ================================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
-Simple resultsets only contains a complete objects This class builds every complete object as it is required
+Simple resultsets only contains complete objects. This class builds every complete object as it is required
 
 
 Constants
@@ -22,7 +22,7 @@ Constants
 *integer* **HYDRATE_ARRAYS**
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
 
@@ -32,13 +32,13 @@ Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
 public *boolean*  **valid** ()
 
-Check whether internal resource has rows to fetch
+Check whether the internal resource has rows to fetch
 
 
 
 public *array*  **toArray** ([*boolean* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than it currently does. Exporting the resultset to an array couldn't be faster with a large number of records
 
 
 
@@ -48,9 +48,9 @@ Serializing a resultset will dump all related rows into a big array
 
 
 
-public  **unserialize** (*string* $data)
+public  **unserialize** ([*unknown* $serialized])
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Unserializing a resultset only works on the rows present in the saved state
 
 
 
@@ -84,27 +84,27 @@ Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*unknown* $property, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*int* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 

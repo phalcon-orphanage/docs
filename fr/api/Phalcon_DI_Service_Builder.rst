@@ -5,7 +5,7 @@ This class builds instances based on complex definitions
 
 
 Methods
----------
+-------
 
 protected *mixed*  **_buildParameter** ()
 

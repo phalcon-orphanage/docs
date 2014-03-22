@@ -1,7 +1,7 @@
 Class **Phalcon\\Forms\\Form**
 ==============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Countable, Iterator, Traversable
 
@@ -9,7 +9,7 @@ This component allows to build forms using an object-oriented interface
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*object* $entity], [*array* $userOptions])
 
@@ -41,7 +41,7 @@ Returns the value of an option if present
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOptions** (*array* $options)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options)
 
 Sets options for the element
 
@@ -65,7 +65,7 @@ Returns the entity related to the model
 
 
 
-public *Phalcon\\Forms\\ElementInterface[]*  **getElements** ()
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` [] **getElements** ()
 
 Returns the form elements added to the form
 
@@ -83,7 +83,7 @@ Validates the form
 
 
 
-public *array*  **getMessages** ([*boolean* $byItemName])
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** ([*boolean* $byItemName])
 
 Returns the messages generated in the validation
 
@@ -101,7 +101,7 @@ Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (*Phalcon\\Forms\\ElementInterface* $element)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
 
 Adds an element to the form
 
@@ -113,13 +113,13 @@ Renders a specific item in the form
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **get** (*string* $name)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **get** (*string* $name)
 
 Returns an element added to the form by its name
 
 
 
-public *string*  **label** (*string* $name)
+public *string*  **label** (*string* $name, [*unknown* $attributes])
 
 Generate the label of a element added to the form including HTML
 
@@ -215,7 +215,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

@@ -1,9 +1,9 @@
-Class **Phalcon\\Db\\Adapter\\Pdo**
-===================================
+Abstract class **Phalcon\\Db\\Adapter\\Pdo**
+============================================
 
-*extends* :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Db\\Adapter <Phalcon_Db_Adapter>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database  
 
@@ -22,7 +22,7 @@ Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $descriptor)
 
@@ -60,8 +60,8 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
@@ -74,13 +74,13 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
@@ -95,7 +95,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes])
+public *boolean*  **execute** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
 
@@ -157,7 +157,7 @@ Escapes a value to avoid SQL injections according to the active charset in the c
 
 
 
-public *array*  **convertBoundParams** (*string* $sql, *array* $params)
+public *array*  **convertBoundParams** (*unknown* $sqlStatement, *array* $params)
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
@@ -259,7 +259,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -268,17 +268,17 @@ Returns the first row in a SQL query result
     <?php
 
     //Getting first robot
-    $robot = $connection->fecthOne("SELECT * FROM robots");
+    $robot = $connection->fetchOne("SELECT * FROM robots");
     print_r($robot);
     
     //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    $robot = $connection->fetchOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 
@@ -684,6 +684,12 @@ Returns type of database system the adapter is used for
 public *string*  **getDialectType** () inherited from Phalcon\\Db\\Adapter
 
 Returns the name of the dialect used
+
+
+
+abstract public :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` [] **describeColumns** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\AdapterInterface
+
+Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 

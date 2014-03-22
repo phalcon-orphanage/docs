@@ -1,5 +1,5 @@
-Class **Phalcon\\Dispatcher**
-=============================
+Abstract class **Phalcon\\Dispatcher**
+======================================
 
 *implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
@@ -22,7 +22,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -132,7 +132,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters])
 
 Gets a param by its name or numeric index
 
@@ -184,6 +184,12 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 public *boolean*  **wasForwarded** ()
 
 Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** ()
+
+Possible class name that will be located to dispatch the request
 
 
 

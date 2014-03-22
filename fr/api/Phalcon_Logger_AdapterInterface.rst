@@ -5,7 +5,7 @@ Phalcon\\Logger\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
 
@@ -28,12 +28,6 @@ Filters the logs sent to the handlers to be greater or equals than a specific le
 abstract public *int*  **getLogLevel** ()
 
 Returns the current log level
-
-
-
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **log** (*string* $message, [*int* $type])
-
-Sends/Writes messages to the file log
 
 
 
@@ -61,39 +55,57 @@ Closes the logger
 
 
 
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **debug** (*string* $message)
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*int|string* $type, *string* $message, [*array* $context])
+
+Sends/Writes messages to the file log
+
+
+
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **debug** (*string* $message, [*array* $context])
 
 Sends/Writes a debug message to the log
 
 
 
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **error** (*string* $message)
-
-Sends/Writes an error message to the log
-
-
-
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **info** (*string* $message)
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **info** (*string* $message, [*array* $context])
 
 Sends/Writes an info message to the log
 
 
 
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **notice** (*string* $message)
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **notice** (*string* $message, [*unknown* $context])
 
 Sends/Writes a notice message to the log
 
 
 
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **warning** (*string* $message)
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **warning** (*string* $message, [*array* $context])
 
 Sends/Writes a warning message to the log
 
 
 
-abstract public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **alert** (*string* $message)
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **error** (*string* $message, [*array* $context])
+
+Sends/Writes an error message to the log
+
+
+
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **critical** (*string* $message, [*array* $context])
+
+Sends/Writes a critical message to the log
+
+
+
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **alert** (*string* $message, [*array* $context])
 
 Sends/Writes an alert message to the log
+
+
+
+abstract public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **emergency** (*string* $message, [*array* $context])
+
+Sends/Writes an emergency message to the log
 
 
 

@@ -169,3 +169,27 @@ Removes all the pre-defined routes
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **convert** (*string* $name, *callable* $converter)
+
+Adds a converter to perform an additional transformation for certain parameter
+
+
+
+public *array|null*  **getConverters** ()
+
+Returns the router converter
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setName** (*unknown* $name)
+
+Set the name of the group
+
+
+
+public *string*  **getName** ()
+
+Returns the name of this group
+
+
+

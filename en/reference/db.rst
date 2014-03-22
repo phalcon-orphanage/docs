@@ -674,11 +674,7 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 +=================+============================================================================================================================================+==========+
 | "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-<<<<<<< HEAD
-| "primary"       | True if the column is part of the table's primary key                                                                                       | Yes      |
-=======
-| "primary"       | True if the column is part of the table's primary key                                                                                      | Yes      |
->>>>>>> master
+| "primary"       | True if the column is part of the table's primary
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+

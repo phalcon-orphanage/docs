@@ -5,7 +5,7 @@ Phalcon\\Http\\RequestInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
@@ -17,6 +17,11 @@ abstract public *mixed*  **getPost** ([*string* $name], [*string|array* $filters
 
 Gets a variable from the $_POST superglobal applying filters if needed
 
+
+
+abstract public  **getPut** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue])
+
+...
 
 
 abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
@@ -41,6 +46,11 @@ abstract public *boolean*  **hasPost** (*string* $name)
 
 Checks whether $_POST superglobal has certain index
 
+
+
+abstract public  **hasPut** (*unknown* $name)
+
+...
 
 
 abstract public *boolean*  **hasQuery** (*string* $name)

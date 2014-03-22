@@ -148,7 +148,7 @@ Returns the type of bind handling
 
 
 
-public static *\Phalcon\Db\Column*  **__set_state** (*array* $data)
+public static *\Phalcon\Db\Column*  **__set_state** ([*unknown* $properties])
 
 Restores the internal state of a Phalcon\\Db\\Column object
 
