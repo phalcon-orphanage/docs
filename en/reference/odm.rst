@@ -194,8 +194,10 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
     // First robot where type = "mechanical" and year = "1999"
     $robot = Robots::findFirst(array(
-        "type" => "mechanical",
-        "year" => "1999"
+        "conditions" => array(
+            "type" => "mechanical",
+            "year" => "1999"
+        )
     ));
 
     // All virtual robots ordered by name downward
@@ -211,7 +213,11 @@ The available query options are:
 +=============+==============================================================================================================================================================================================+=========================================================================+
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | "conditions" => array('$gt' => 1990)                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+<<<<<<< HEAD
 | fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "fields" => array('name' => true)                                    |
+=======
+| fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "fields" => array('name' => true)                                       |
+>>>>>>> master
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "order" => array("name" => -1, "status" => 1)                           |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -516,7 +522,7 @@ the value is not included in the method, then the validator will fail and return
 | StringLength | Validates the length of a string                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+In addition to the built-in validators, you can create your own validators:
 
 .. code-block:: php
 
@@ -651,7 +657,7 @@ Another type of events is available when the data validation process finds any i
 Implicit Ids vs. User Primary Keys
 ----------------------------------
 By default Phalcon\\Mvc\\Collection assumes that the _id attribute is automatically generated using MongoIds_.
-If a model uses custom primary keys this behavior can be overriden:
+If a model uses custom primary keys this behavior can be overridden:
 
 .. code-block:: php
 
@@ -719,7 +725,7 @@ You may be required to access the application services within a model, the follo
             $flash = $this->getDI()->getShared('flash');
 
             // Show validation messages
-            foreach ($this->getMesages() as $message){
+            foreach ($this->getMessages() as $message){
                 $flash->error((string) $message);
             }
         }

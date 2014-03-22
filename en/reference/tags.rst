@@ -121,7 +121,7 @@ Forms in web applications play an essential part in retrieving user input. The f
         <?= $this->tag->submitButton("Search") ?>
     </form>
 
-    <!-- Specyfing another method or attributes for the FORM tag -->
+    <!-- Specifying another method or attributes for the FORM tag -->
     <?= $this->tag->form(array("products/search", "method" => "get")); ?>
         <label for="q">Search:</label>
         <?= $this->tag->textField("q"); ?>
@@ -142,7 +142,7 @@ Same form generated in Volt:
 
 .. code-block:: html+jinja
 
-    <!-- Specyfing another method or attributes for the FORM tag -->
+    <!-- Specifying another method or attributes for the FORM tag -->
     {{ form("products/search", "method": "get") }}
         <label for="q">Search:</label>
         {{ text_field("q") }}

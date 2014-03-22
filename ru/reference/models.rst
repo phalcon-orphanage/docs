@@ -70,9 +70,8 @@
 
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for
-all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
+Метод initialize() вызывается один раз при обработке запроса к приложению и предназначен для инициализации экземпляров модели в приложении.
+Если вам необходимо произвести некоторые настройки экземпляра объекта после того, как он создан, вы можете использовать метод 'onConstruct':
 
 .. code-block:: php
 
@@ -88,10 +87,9 @@ created you can 'onConstruct':
 
     }
 
-Public properties vs. Setters/Getters
+Public свойства и Setters/Getters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties of public scope, meaning that each property can be read/updated
-from any part of the code that has instantiated that model class without any restrictions:
+Модели могут быть реализованы с помощью свойств с общим доступом (public), при этом свойства модели доступны для чтения/изменения из любой части кода без ограничений:
 
 .. code-block:: php
 
@@ -106,8 +104,7 @@ from any part of the code that has instantiated that model class without any res
         public $price;
     }
 
-By using getters and setters you can control which properties are visible publicly perform various transformations
-to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
+При использовании getters и setters вы можете полностью контролировать видимость свойств, их обработку и, например, применять различную валидацию при сохранении объекта:
 
 .. code-block:: php
 
@@ -156,14 +153,64 @@ to the data (which would be impossible otherwise) and also add validation rules 
         }
     }
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
-extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
-application they are creating. The ORM is compatible with both schemes of defining properties.
+Публичные свойства облегчают создание кода. Напротив, применение getters/setters делает ваш код тестируемым, расширяемым и удобным в сопровождении. Разработчик вправе сам определить способ описания модели. ORM совместим с обоими способами.
+
+.. highlights::
+    Прим. переводчика :
+    В то же время, использование getters/setters позволяет использовать некоторые преимущества такого способа.
+    Например, если модель имеет связь один-ко-многим с другой моделью, при запросе связанной модели будет произведено N+1 запросов к базе данных. Напротив, при использовании getters/setters модель сделает только 2 запроса.
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends \Phalcon\Mvc\Model
+    {
+
+        protected $id;
+
+        protected $name;
+
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function setName($name)
+        {
+            //The name is too short?
+            if (strlen($name) < 10) {
+                throw new \InvalidArgumentException('The name is too short');
+            }
+            $this->name = $name;
+        }
+
+        public function getName()
+        {
+            return $this->name;
+        }
+
+        public function initialize()
+        {
+            $this->hasMany("id", "RobotsParts", "robots_id");
+        }
+
+        /**
+         * Возвращает "robots parts" одним запросом
+         *
+         * @return \RobotsParts[]
+         */
+        public function getRobotsParts($parameters=null)
+        {
+            return $this->getRelated('RobotsParts', $parameters);
+        }
+
+    }
+
 
 Модели в Пространствах Имен
 ---------------------------
-Пространства имен могут быть использованы во избежание конфликтов, связанных с именами классов. В этих случаях, необходимо указывать имя соответствующей
-таблицы базы данных используя метод getSource:
+Пространства имен могут быть использованы во избежание конфликтов, связанных с именами классов. В этом случае, имя таблицы, из которой модель получает данные, соответствует имени класса (преобразуется в нижний регистр).
 
 .. code-block:: php
 
@@ -503,11 +550,10 @@ application they are creating. The ORM is compatible with both schemes of defini
 
 Привязка параметров доступна для всех запросов метода, таких как find() и findFirst(), а так же для методов count(), sum(), average() и т.д.
 
-Initializing/Preparing fetched records
+Инициализация/Изменение полученных записей
 --------------------------------------
-May be the case that after obtaining a record from the database is necessary to initialise the data before
-being used by the rest of the application. You can implement the method 'afterFetch' in a model, this event
-will be executed just after create the instance and assign the data to it:
+
+Может быть так, что вам необходимо произвести некоторые манипуляции с полученными записями. Для этого вы можете реализовать метод 'afterFetch' в модели. Этот метод выполняется каждый раз, когда экземпляр модели получает записи.
 
 .. code-block:: php
 
@@ -535,8 +581,7 @@ will be executed just after create the instance and assign the data to it:
         }
     }
 
-If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
-accessed:
+Независимо от того, используете вы getters/setters или публичные свойства, вы можете реализовать обработку поля при получении доступа к последнему:
 
 .. code-block:: php
 

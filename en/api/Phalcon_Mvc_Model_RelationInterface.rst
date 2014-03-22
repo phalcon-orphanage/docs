@@ -6,6 +6,15 @@ Phalcon\\Mvc\\Model\\RelationInterface initializer
 
 Methods
 -------
+<<<<<<< HEAD
+=======
+
+abstract public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
+
+Phalcon\\Mvc\\Model\\Relation constructor
+
+
+>>>>>>> master
 
 abstract public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 

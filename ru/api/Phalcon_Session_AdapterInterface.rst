@@ -6,6 +6,15 @@ Phalcon\\Session\\AdapterInterface initializer
 
 Methods
 -------
+<<<<<<< HEAD
+=======
+
+abstract public  **__construct** ([*array* $options])
+
+Phalcon\\Session construtor
+
+
+>>>>>>> master
 
 abstract public  **start** ()
 

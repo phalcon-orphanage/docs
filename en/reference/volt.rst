@@ -125,7 +125,7 @@ In the above example, three variables were passed to the view: title, menu and p
 
 Variables
 ---------
-Object variables may have attributes which can be accessed using the syntax: foo.bar. 
+Object variables may have attributes which can be accessed using the syntax: foo.bar.
 If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
 .. code-block:: jinja
@@ -197,7 +197,8 @@ The following is the list of available built-in filters in Volt:
 +----------------------+------------------------------------------------------------------------------+
 | url_encode           | Applies the urlencode_ PHP function to the value                             |
 +----------------------+------------------------------------------------------------------------------+
-| default              | Sets a default value in case that the evaluated expression is null           |
+| default              | Sets a default value in case that the evaluated expression is empty          |
+|                      | (is not set or evaluates to a falsy value)                                   |
 +----------------------+------------------------------------------------------------------------------+
 | convert_encoding     | Converts a string from one charset to another                                |
 +----------------------+------------------------------------------------------------------------------+
@@ -567,8 +568,8 @@ You may make calculations in templates using the following operators:
 +----------------------+------------------------------------------------------------------------------+
 
 Comparisons
-^^^^^^^^^^^^
-The following omparison operators are available:
+^^^^^^^^^^^
+The following comparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
 | Operator             | Description                                                                  |
@@ -696,24 +697,24 @@ More examples:
 
     {% if robot is empty %}
         The robot is null or isn't defined
-    {% endif }
+    {% endif %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is even %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
         {% if key is odd %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
         {% if key is numeric %}
             {{ name }}
-        {% endif }
+        {% endif %}
     {% endfor %}
 
     {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
@@ -1280,7 +1281,7 @@ Generate the code based on some function availability:
         }
     });
 
-Built-in functions can be overrided adding a function with its name:
+Built-in functions can be overridden adding a function with its name:
 
 .. code-block:: php
 
@@ -1309,7 +1310,7 @@ is similar as seen with the functions:
         return 'intval(' . $resolvedArgs . ')';
     });
 
-Built-in filters can be overrided adding a function with its name:
+Built-in filters can be overridden adding a function with its name:
 
 .. code-block:: php
 

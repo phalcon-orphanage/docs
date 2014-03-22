@@ -1,7 +1,10 @@
 Abstract class **Phalcon\\Db\\Dialect**
 =======================================
+<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
+=======
+>>>>>>> master
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBM related syntax
 

@@ -1,7 +1,10 @@
 Abstract class **Phalcon\\Session\\Adapter**
 ============================================
+<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`, Countable, IteratorAggregate, Traversable, ArrayAccess
+=======
+>>>>>>> master
 
 Base class for Phalcon\\Session adapters
 

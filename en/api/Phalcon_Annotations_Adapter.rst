@@ -1,7 +1,10 @@
 Abstract class **Phalcon\\Annotations\\Adapter**
 ================================================
+<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
+=======
+>>>>>>> master
 
 This is the base class for Phalcon\\Annotations adapters
 

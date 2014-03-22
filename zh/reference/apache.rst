@@ -1,12 +1,12 @@
-Apache Installation Notes
+Apache 安装笔记
 =========================
-Apache_ is a popular and well known web server available on many platforms.
+Apache httpd 是一个非常流行且世人皆知的多平台web服务器
 
-Configuring Apache for Phalcon
+配置Phalcon使用Apache httpd  
 ------------------------------
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
 focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
-:doc:`router component <routing>`. Commonly an application has the following structure:
+:doc:`router component <routing>`. 通常一个应用程序的结构如下：
 
 .. code-block:: php
 
@@ -37,7 +37,7 @@ to the application document root (public/).
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-Now a second .htaccess file is located in the public/ directory, this re-writes all the URIs to the public/index.php file:
+另外一个方案是使用.htaccess文件，将它放在public/目录下，重写所有URI指定到public/index.php:
 
 .. code-block:: apacheconf
 
@@ -50,7 +50,7 @@ Now a second .htaccess file is located in the public/ directory, this re-writes 
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-If you do not want to use .htaccess files you can move these configurations to the apache's main configuration file:
+如果你想使用.htaccess文件，你可以在主配置文件中删除下面的配置：
 
 .. code-block:: apacheconf
 
@@ -71,9 +71,9 @@ If you do not want to use .htaccess files you can move these configurations to t
 
     </IfModule>
 
-Virtual Hosts
+虚拟主机
 ^^^^^^^^^^^^^
-And this second configuration allow you to install a Phalcon application in a virtual host:
+Phalcon运用程序允许运行在虚拟主机环境下：
 
 .. code-block:: apacheconf
 

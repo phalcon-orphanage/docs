@@ -21,8 +21,13 @@ This component provides a set of functions to improve the security in Phalcon ap
 
 
 
+<<<<<<< HEAD
 Constants
 ---------
+=======
+Methods
+-------
+>>>>>>> master
 
 *integer* **CRYPT_DEFAULT**
 

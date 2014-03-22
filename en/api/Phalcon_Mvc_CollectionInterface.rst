@@ -6,6 +6,15 @@ Phalcon\\Mvc\\CollectionInterface initializer
 
 Methods
 -------
+<<<<<<< HEAD
+=======
+
+abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+
+Phalcon\\Mvc\\Collection
+
+
+>>>>>>> master
 
 abstract public  **setId** (*mixed* $id)
 

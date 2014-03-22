@@ -73,10 +73,14 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php.ini
+Add extension to your php configuration:
 
 .. code-block:: bash
-
+    
+    #Ubuntu: Add this line in your php.ini
+    extension=phalcon.so
+    
+    #Centos/RedHat: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
 Restart the webserver.

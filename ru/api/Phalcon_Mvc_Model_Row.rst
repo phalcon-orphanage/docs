@@ -45,6 +45,7 @@ Returns the instance as an array representation
 
 
 
+<<<<<<< HEAD
 public  **count** ()
 
 ...
@@ -55,3 +56,5 @@ public  **__wakeup** ()
 ...
 
 
+=======
+>>>>>>> master

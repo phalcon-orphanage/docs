@@ -299,7 +299,7 @@ You can also define an arbitrary schema for actions before be dispatched.
 Camelize action names
 ^^^^^^^^^^^^^^^^^^^^^
 If the original URL is: http://example.com/admin/products/show-latest-products,
-and for example you want to camelize 'show-latest-products' to 'showLatestProducts',
+and for example you want to camelize 'show-latest-products' to 'ShowLatestProducts',
 the following code is required:
 
 .. code-block:: php
@@ -433,7 +433,7 @@ before dispatch the action preparing the parameter accordingly:
                 }
 
             } catch (\Exception $e) {
-                //An exception has ocurred, maybe the class or action does not exist?
+                //An exception has occurred, maybe the class or action does not exist?
             }
 
         });

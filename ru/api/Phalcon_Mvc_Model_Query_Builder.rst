@@ -33,6 +33,7 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
      $params = array(
         'models'     => array('Users'),
         'columns'    => array('id', 'name', 'status'),
+<<<<<<< HEAD
         'conditions' => array(
             array(
                 "created > :min: AND created < :max:",
@@ -41,11 +42,15 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
             ),
         ),
         // or 'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
+=======
+        'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
+>>>>>>> master
         'group'      => array('id', 'name'),
         'having'     => "name = 'Kamil'",
         'order'      => array('name', 'id'),
         'limit'      => 20,
         'offset'     => 20,
+<<<<<<< HEAD
         // or 'limit' => array(20, 20),
     );
     $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
@@ -62,6 +67,11 @@ Sets SELECT DISTINCT / SELECT ALL flag
 public *bool*  **getDistinct** ()
 
 Returns SELECT DISTINCT / SELECT ALL flag
+=======
+    );
+    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
+
+>>>>>>> master
 
 
 

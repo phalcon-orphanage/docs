@@ -234,7 +234,6 @@
                         'action' => 'show404'
                     ));
                     return false;
-                }
             }
         });
 

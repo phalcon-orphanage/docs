@@ -45,9 +45,12 @@ Returns the instance as an array representation
 
 
 
+<<<<<<< HEAD
 public *int*  **count** ()
 
 Counts how many properties were added to the row
 
 
 
+=======
+>>>>>>> master

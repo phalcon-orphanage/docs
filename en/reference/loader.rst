@@ -45,7 +45,7 @@ the end of the paths.
     $some = new Example\Adapter\Some();
 
 Registering Prefixes
-----------------------
+--------------------
 This strategy is similar to the namespaces strategy. It takes an associative array, which keys are prefixes and their values are directories
 where the classes are located in. The namespace separator and the "_" underscore character will be replaced by the directory separator when
 the loader try to find the classes. Remember always to add a trailing slash at the end of the paths.

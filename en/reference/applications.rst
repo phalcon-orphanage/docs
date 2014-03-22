@@ -330,7 +330,7 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     echo $application->handle()->getContent();
 
-Manual bootstraping
+Manual bootstrapping
 -------------------
 If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
@@ -401,7 +401,7 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //Get the returned value by the lastest executed action
+    //Get the returned value by the latest executed action
     $response = $dispatcher->getReturnedValue();
 
     //Check if the action returned is a 'response' object
@@ -436,7 +436,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        //An exception has ocurred, dispatch some controller/action aimed for that
+        //An exception has occurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -447,7 +447,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     }
 
-    //Get the returned value by the lastest executed action
+    //Get the returned value by the latest executed action
     $response = $dispatcher->getReturnedValue();
 
     //Check if the action returned is a 'response' object
@@ -458,7 +458,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
     }
 
 Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
+it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
 should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 Application Events

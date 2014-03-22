@@ -1,5 +1,6 @@
 Micro Benchmark
 ===============
+
 How the benchmarks were performed?
 ----------------------------------
 We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
@@ -22,11 +23,13 @@ Participant Frameworks
 
 Results
 -------
+
 Slim Framework
 ^^^^^^^^^^^^^^
+
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://localhost/bench/micro/slim/say/hello/Sonny
+    # ab -n 1000 -c 5 http://localhost/bench/micro/slim/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
     Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -73,9 +76,10 @@ Slim Framework
 
 Silex
 ^^^^^
+
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://localhost/bench/micro/silex/say/hello/Sonny
+    # ab -n 1000 -c 5 http://localhost/bench/micro/silex/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
     Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -122,9 +126,10 @@ Silex
 
 Phalcon 0.5.0
 ^^^^^^^^^^^^^
+
 .. code-block:: php
 
-    # ab -n 1000 -c 5 http://localhost/bench/micro/phalcon/say/hello/Sonny
+    # ab -n 1000 -c 5 http://localhost/bench/micro/phalcon/say/hello/Sonny;
     This is ApacheBench, Version 2.3 <$Revision: 655654 $>
     Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
     Licensed to The Apache Software Foundation, http://www.apache.org/

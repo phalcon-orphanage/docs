@@ -27,6 +27,7 @@ public  **setShowBacktrace** ([*unknown* $show])
 ...
 
 
+<<<<<<< HEAD
 public  **enableLabels** ([*unknown* $enable])
 
 ...
@@ -38,6 +39,9 @@ public  **labelsEnabled** ()
 
 
 public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *unknown* $context)
+=======
+public *string*  **format** (*string* $message, *int* $type, *int* $timestamp)
+>>>>>>> master
 
 Applies a format to a message before sending it to the log
 

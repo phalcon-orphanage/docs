@@ -107,7 +107,7 @@ prefix for every session variable created in a certain application:
 
 Session Bags
 ------------
-:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component helps that helps separing session data into "namespaces".
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component that helps separating session data into "namespaces".
 Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
 it's automatically stored in session:
 
@@ -123,7 +123,7 @@ it's automatically stored in session:
 
 Persistent Data in Components
 -----------------------------
-Controller, components and classes thats extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
+Controller, components and classes that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
 a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
 Thanks to this you can persist data between requests in every class in an independent way.
 

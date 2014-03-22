@@ -1,7 +1,10 @@
 Abstract class **Phalcon\\Mvc\\Model\\Validator**
 =================================================
+<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>`
+=======
+>>>>>>> master
 
 This is a base class for Phalcon\\Mvc\\Model validators
 
