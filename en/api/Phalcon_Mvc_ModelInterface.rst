@@ -6,15 +6,6 @@ Phalcon\\Mvc\\ModelInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
-
-Phalcon\\Mvc\\Model constructor
-
-
->>>>>>> master
 
 abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
 

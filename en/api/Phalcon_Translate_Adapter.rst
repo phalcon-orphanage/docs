@@ -8,15 +8,12 @@ Base class for Phalcon\\Translate adapters
 
 Methods
 -------
-<<<<<<< HEAD
 
 public  **__construct** ()
 
 Class constructore
 
 
-=======
->>>>>>> master
 
 public *string*  **_** (*string* $translateKey, [*array* $placeholders])
 

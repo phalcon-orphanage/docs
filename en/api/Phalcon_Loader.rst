@@ -23,7 +23,7 @@ This component helps to load your project classes automatically based on some co
      $loader->register();
     
      //Requiring this class will automatically include file vendor/example/adapter/Some.php
-     $adapter = new Example\Adapter\Some();
+     $adapter = Example\Adapter\Some();
 
 
 

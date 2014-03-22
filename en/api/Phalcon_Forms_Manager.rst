@@ -6,14 +6,11 @@ Manages forms within the application. Allowing the developer to access them from
 
 Methods
 -------
-<<<<<<< HEAD
 
 public  **__construct** ()
 
 ...
 
-=======
->>>>>>> master
 
 public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **create** ([*string* $name], [*object* $entity])
 

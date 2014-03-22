@@ -128,11 +128,7 @@ Adds a RIGHT join to the query
 
 
 
-<<<<<<< HEAD
 public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions)
-=======
-public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
->>>>>>> master
 
 Sets the conditions parameter in the criteria
 

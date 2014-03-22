@@ -6,15 +6,6 @@ Phalcon\\Acl\\ResourceInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*string* $name, [*string* $description])
-
-Phalcon\\Acl\\ResourceInterface constructor
-
-
->>>>>>> master
 
 abstract public *string*  **getName** ()
 

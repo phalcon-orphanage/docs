@@ -1,10 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\Behavior**
 ================================================
-<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
-=======
->>>>>>> master
 
 This is an optional base class for ORM behaviors
 
