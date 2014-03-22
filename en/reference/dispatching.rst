@@ -74,7 +74,11 @@ The following example demonstrates how to attach listeners to this component:
     $di->set('dispatcher', function(){
 
         //Create an event manager
+<<<<<<< HEAD
         $eventsManager = new EventsManager();
+=======
+        $eventsManager = new \Phalcon\Events\Manager();
+>>>>>>> 9e30f3addd0d279e574a51af466af2bad87f910f
 
         //Attach a listener for type "dispatch"
         $eventsManager->attach("dispatch", function($event, $dispatcher) {
@@ -461,10 +465,15 @@ when the controller/action combination wasn't found:
         Phalcon\Events\Manager as EventsManager,
         Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
+<<<<<<< HEAD
     $di->set('dispatcher', function() {
 
         //Create an EventsManager
         $eventsManager = new EventsManager();
+=======
+        //Create/Get an EventManager
+        $eventsManager = new \Phalcon\Events\Manager();
+>>>>>>> 9e30f3addd0d279e574a51af466af2bad87f910f
 
         //Attach a listener
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
@@ -478,6 +487,7 @@ when the controller/action combination wasn't found:
                 return false;
             }
 
+<<<<<<< HEAD
             //Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
@@ -488,6 +498,23 @@ when the controller/action combination wasn't found:
         });
 
         $dispatcher = new MvcDispatcher();
+=======
+            //Alternative way, controller or action doesn't exist
+            if ($event->getType() == 'beforeException') {
+                switch ($exception->getCode()) {
+                    case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                    case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                        $dispatcher->forward(array(
+                            'controller' => 'index',
+                            'action' => 'show404'
+                        ));
+                        return false;
+                }
+            }
+        });
+
+        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+>>>>>>> 9e30f3addd0d279e574a51af466af2bad87f910f
 
         //Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
