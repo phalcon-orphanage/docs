@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Phalcon'
-copyright = '2014, Phalcon Team'
+copyright = '2014, Phalcon Team and contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -215,7 +215,7 @@ latex_domain_indices = True
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'phalcondocumentation', 'Phalcon PHP Framework Documentation',
+    ('index', 'phalcondocumentation', 'Phalcon Framework Documentation',
      ['Phalcon Team'], 1)
 ]
 
@@ -229,8 +229,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'PhalconDocumentation', 'Phalcon PHP Framework Documentation',
-   'Phalcon Team', 'PhalconDocumentation', 'PhalconPHP is a web framework delivered as a C extension providing high performance and lower resource consumption.', 'Miscellaneous'),
+  ('index', 'PhalconDocumentation', 'Phalcon Framework Documentation',
+   'Phalcon Team', 'PhalconDocumentation', 'Phalcon is a web framework delivered as a C extension providing high performance and lower resource consumption.', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

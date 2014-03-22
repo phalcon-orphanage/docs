@@ -603,7 +603,10 @@ header .navbar-inner .brand img { height: 30px; }
     background: url('img/sample-6.png');
 }
 
-input[type="submit"] {
+input[type="submit"],
+input.gsc-search-button,
+input.gsc-search-button:hover,
+input.gsc-search-button:focus {
     background: #f06715;
     border: none;
     color: #fff;
@@ -665,7 +668,7 @@ blockquote {
 .donate-wrap {
     margin: 10px 0;
     padding: 15px 0;
-    border-color: #525252;
+    border-color: #c0c0c0;
     border-width: 1px;
     border-style: solid none;
     font-size: 18px;
@@ -678,7 +681,6 @@ blockquote {
 .donate-wrap a {
     margin: 0 10px;
 }
-
 
 .highlight  { background: #242424; color: #f6f3e8}
 .highlight .hll { background-color: #ffffcc }
@@ -750,3 +752,8 @@ blockquote {
 .highlight .vg { color: #cae682} /* Name.Variable.Global */
 .highlight .vi { color: #cae682} /* Name.Variable.Instance */
 .highlight .il { color: #e5786d} /* Literal.Number.Integer.Long */
+
+hr {
+    color: 1px solid #c0c0c0;
+    background-color: 1px solid #c0c0c0;
+}

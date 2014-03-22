@@ -62,12 +62,24 @@
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
+            <div>
             <div id="searchbox" style="">
-                <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="search" name="q" size="15" placeholder="Search">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
-                </form>
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
             </div>
           {%- endif %}
           {%- endblock %}
@@ -102,7 +114,7 @@
       {%- endif %}{% endif %}
 {%- endmacro %}
 
-<html lang="fr">
+<html lang="en">
   <head>
     {% if sourcename == "error.txt" %}
     <base href="http://phalconphp.com/">
@@ -115,8 +127,8 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
-    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
@@ -146,7 +158,7 @@
     <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
     {%- endif %}
     {%- if hasdoc('genindex') %}
-    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('index') }}" />
     {%- endif %}
     {%- if hasdoc('search') %}
     <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
@@ -170,28 +182,22 @@
   <body>
     <div id="wrapper">
 
-        <div class="translation-in-progress">
-
-            Ce document est en cours de traduction, certaines parties peuvent encore &ecirc;tre en anglais. <!--<a href="#">Participez &agrave; la traduction</a> ! -->
-
-        </div>
-        
         <div class="size-wrap">
 
             <div class="header clear-fix">
                 <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
                 <div class="header-right">
                     <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
-                            allowtransparency="true" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
                 </div>
                 <ul class="header-nav">
-                    <li><a href="http://phalconphp.com/" class="header-nav-link">Accueil</a></li>
-                    <li><a href="http://phalconphp.com/download" class="header-nav-link">T&eacute;l&eacute;charger</a></li>
-                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active" target="_blank">Forum</a></li>
-                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
                     <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
                     <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
-                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
                 </ul>
             </div>
 
@@ -231,18 +237,18 @@
       {%- block footer %}
         <div id="footer">
 
-          <p>Vous avez trouv&eacute; une erreur? Vous souhaitez am&eacute;liorer ce document? Les sources sont disponnibles sur <a href="http://github.com/phalcon/docs">Github</a></p>
-          <p>Vous chechez de l'aide ou vous avez une question? Voir la <a href="http://phalconphp.com/support">Page de Support</a></p>
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
 
-          <p>Le Framework Phalcon PHP est disponnible sous <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">licence BSD modifi&eacute;e</a>.</p>
-          <p>Sauf indication contraire, les textes pr&eacute;sents sur le site sont disponnible sous
-              <a href="http://creativecommons.org/licenses/by/3.0/">License Creative Commons Attribution 3.0.</a></p>
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
           {%- if last_updated %}
-          {% trans last_updated=last_updated|e %} Derni&egrave;re mise &agrave; jour : {{ last_updated }}.{% endtrans %}
+             {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
           {%- endif %}
           {%- if show_sphinx %}
-          {% trans sphinx_version=sphinx_version|e %}Cr&eacute;&eacute; avec <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
           {%- endif %}
 
           <p>
@@ -256,8 +262,8 @@
             <div class="size-wrap footer-wrap">
 
                 <div class="donate-wrap">
-                    Faire Don &agrave; Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
-                    ou
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
                         <input type="hidden" name="cmd" value="_s-xclick">
                         <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
@@ -278,5 +284,24 @@
       {%- endblock %}
 
     </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
   </body>
 </html>

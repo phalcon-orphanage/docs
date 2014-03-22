@@ -10,7 +10,7 @@
 {%- macro relbar() %}
     <div class="header-line">
       <div class="size-wrap">
-        <div class="header-line-title title-white">Dokumentacja</div>
+        <div class="header-line-title title-white">Documentation</div>
       </div>
     </div>
     <div class="related">
@@ -22,7 +22,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://phalconphp.com/pl">Strona Główna</a> &raquo;</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -56,18 +56,30 @@
           {%- block sidebarlogo %}
           {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="http://phalconphp.com/images/logo.png" alt="Logo"/> PHALCON
+              <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/> PHALCON
             </a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
+            <div>
             <div id="searchbox" style="">
-                <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="search" name="q" size="15" placeholder="Szukana fraza">
-                  <input type="submit" value="Znajdź">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
-                </form>
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
             </div>
           {%- endif %}
           {%- endblock %}
@@ -115,8 +127,8 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
-    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
@@ -179,12 +191,12 @@
 allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
                 </div>
                 <ul class="header-nav">
-                    <li><a href="http://phalconphp.com/pl" class="header-nav-link">Strona Główna</a></li>
-                    <li><a href="http://phalconphp.com/pl/download" class="header-nav-link">Pobierz</a></li>
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
                     <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
                     <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
-                    <li><a href="http://phalconphp.com/pl/support" class="header-nav-link">Wsparcie</a></li>
-                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Sklep</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
                     <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
                 </ul>
             </div>
@@ -225,18 +237,18 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       {%- block footer %}
         <div id="footer">
 
-          <p>Znalazłeś literówkę lub błąd? Chcesz podnieść jakość tego dokumentu? Źródła dokumentacji są dostępna na <a href="http://github.com/phalcon/docs">Githubie</a></p>
-          <p>Potrzebujesz wsparcia lub masz pytania? Sprawdź naszą stronę <a href="http://phalconphp.com/pl/support">Wsparcie</a></p>
-          
-          <p>Framework Phalcon jest udostępniany na licencji <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD</a>.</p>
-          <p>Jeśli nie oznaczono inaczej, wszystkie dokumenty na tej witrynie udostępnione są na licencji
-            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0.</a></p>
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
           {%- if last_updated %}
              {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
           {%- endif %}
           {%- if show_sphinx %}
-            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
           {%- endif %}
 
           <p>
@@ -250,12 +262,12 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
             <div class="size-wrap footer-wrap">
 
                 <div class="donate-wrap">
-                    Wesprzyj Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
-                    bądź 
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
                         <input type="hidden" name="cmd" value="_s-xclick">
                         <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
-                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="Paypal" title="PayPal — The safer, easier way to pay online.">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
                     </form>
                 </div>
 
@@ -272,5 +284,24 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       {%- endblock %}
 
     </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
   </body>
 </html>

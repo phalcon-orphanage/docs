@@ -603,7 +603,10 @@ header .navbar-inner .brand img { height: 30px; }
     background: url('img/sample-6.png');
 }
 
-input[type="submit"] {
+input[type="submit"],
+input.gsc-search-button,
+input.gsc-search-button:hover,
+input.gsc-search-button:focus {
     background: #f06715;
     border: none;
     color: #fff;
@@ -749,3 +752,8 @@ blockquote {
 .highlight .vg { color: #cae682} /* Name.Variable.Global */
 .highlight .vi { color: #cae682} /* Name.Variable.Instance */
 .highlight .il { color: #e5786d} /* Literal.Number.Integer.Long */
+
+hr {
+    color: 1px solid #c0c0c0;
+    background-color: 1px solid #c0c0c0;
+}

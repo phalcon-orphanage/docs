@@ -62,12 +62,24 @@
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
+            <div>
             <div id="searchbox" style="">
-                <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="search" name="q" size="15" placeholder="Search">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
-                </form>
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
             </div>
           {%- endif %}
           {%- endblock %}
@@ -115,8 +127,8 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
-    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
@@ -272,5 +284,24 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       {%- endblock %}
 
     </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
   </body>
 </html>
