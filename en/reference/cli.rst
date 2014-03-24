@@ -58,19 +58,14 @@ Below is a sample bootstrap that is being used for this example.
     * Process the console arguments
     */
     $arguments = array();
-    $params = array();
-    
     foreach($argv as $k => $arg) {
         if($k == 1) {
             $arguments['task'] = $arg;
         } elseif($k == 2) {
             $arguments['action'] = $arg;
         } elseif($k >= 3) {
-           $params[] = $arg;
+           $arguments[] = $arg;
         }
-    }
-    if(count($params) > 0) {
-        $arguments['params'] = $params;
     }
 
     // define global constants for the current task and action
@@ -106,13 +101,11 @@ Below is an example of the app/tasks/MainTask.php file
 
     <?php
 
-    class mainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\CLI\Task
     {
-
         public function mainAction() {
              echo "\nThis is the default task and the default action \n";
         }
-
     }
 
 
@@ -127,9 +120,8 @@ If you run the the application with the following parameters and action:
 
     <?php
 
-    class mainTask extends \Phalcon\CLI\Task
+    class MainTask extends \Phalcon\CLI\Task
     {
-
         public function mainAction() {
              echo "\nThis is the default task and the default action \n";
         }
@@ -158,9 +150,11 @@ to the DI:
 
 .. code-block:: php
     
-     $di->setShared('console', $console);
+    <?php
+    
+    $di->setShared('console', $console);
      
-     try {
+    try {
         // handle incoming arguments
         $console->handle($arguments);
     }
@@ -168,10 +162,11 @@ to the DI:
 Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 .. code-block:: php
-
     
-    class MainTask extends \Phalcon\CLI\Task {
+    <?php
     
+    class MainTask extends \Phalcon\CLI\Task 
+    {
         public function mainAction() {
             echo "\nThis is the default task and the default action \n";
     
@@ -184,7 +179,6 @@ Then you can use the console inside of any task. Below is an example of a modifi
         public function testAction() {
             echo '\nI will get printed too!\n';
         }
-
     }
     
 However, it's a better idea to extend \\Phalcon\\CLI\\Task and implement this kind of logic there.
