@@ -1,15 +1,15 @@
 Class **Phalcon\\Db\\Dialect\\Mysql**
 =====================================
 
-*extends* :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
+*extends* abstract class :doc:`Phalcon\\Db\\Dialect <Phalcon_Db_Dialect>`
 
 *implements* :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`
 
-Generates database specific SQL for the MySQL RBDM
+Generates database specific SQL for the MySQL RBDMS
 
 
 Methods
----------
+-------
 
 public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
@@ -83,9 +83,21 @@ Generates SQL to create a table in MySQL
 
 
 
-public *string*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+public *string*  **dropTable** (*string* $tableName, *string* $schemaName)
 
 Generates SQL to drop a table
+
+
+
+public *string*  **createView** (*string* $viewName, *array* $definition, *string* $schemaName)
+
+Generates SQL to create a view
+
+
+
+public *string*  **dropView** (*string* $viewName, *string* $schemaName, [*boolean* $ifExists])
+
+Generates SQL to drop a view
 
 
 
@@ -100,6 +112,12 @@ Generates SQL checking for the existence of a schema.table
      echo $dialect->tableExists("posts", "blog");
      echo $dialect->tableExists("posts");
 
+
+
+
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
+
+Generates SQL checking for the existence of a schema.view
 
 
 
@@ -126,6 +144,12 @@ List all tables on database
 
     print_r($dialect->listTables("blog")) ?>
 
+
+
+
+public *array*  **listViews** ([*string* $schemaName])
+
+Generates the SQL to list all views of a schema or user
 
 
 
@@ -217,6 +241,36 @@ Transform an intermediate representation for a schema/table into a database syst
 public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement
+
+
+
+public *boolean*  **supportsSavepoints** () inherited from Phalcon\\Db\\Dialect
+
+Checks whether the platform supports savepoints
+
+
+
+public *boolean*  **supportsReleaseSavepoints** () inherited from Phalcon\\Db\\Dialect
+
+Checks whether the platform supports releasing savepoints.
+
+
+
+public *string*  **createSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to create a new savepoint
+
+
+
+public *string*  **releaseSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to release a savepoint
+
+
+
+public *string*  **rollbackSavepoint** (*string* $name) inherited from Phalcon\\Db\\Dialect
+
+Generate SQL to rollback a savepoint
 
 
 

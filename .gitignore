@@ -2,13 +2,17 @@
 build
 en/_build
 zh/_build
+ru/_build
+es/_build
+fr/_build
+pt/_build
+pl/_build
 _templates
 *.komodoproject
 *.sublime-*
 .pydevproject
 .idea/
-<<<<<<< HEAD
 
 .DS_Store
-=======
->>>>>>> 0.7.0
+
+/nbproject/

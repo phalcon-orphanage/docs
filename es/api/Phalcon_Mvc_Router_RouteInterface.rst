@@ -5,13 +5,7 @@ Phalcon\\Mvc\\Router\\RouteInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods])
-
-Phalcon\\Mvc\\Router\\Route constructor
-
-
+-------
 
 abstract public *string*  **compilePattern** (*string* $pattern)
 

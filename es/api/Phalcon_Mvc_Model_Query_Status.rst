@@ -17,15 +17,15 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
        'year' => 1959
     ));
     
-    \//Check if the update was successful
-    if ($status->success() == true) {
+     //Check if the update was successful
+     if ($status->success() == true) {
        echo 'OK';
-    }
+     }
 
 
 
 Methods
----------
+-------
 
 public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 

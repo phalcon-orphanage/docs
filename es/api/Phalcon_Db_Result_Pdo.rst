@@ -9,14 +9,14 @@ Encapsulates the resultset internals
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-    while($robot = $result->fetchArray()){
+    while ($robot = $result->fetchArray()) {
     	print_r($robot);
     }
 
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
@@ -40,7 +40,7 @@ Fetches an array/object of strings that corresponds to the fetched row, or FALSE
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_OBJ);
-    while($robot = $result->fetch()){
+    while ($robot = $result->fetch()) {
     	echo $robot->name;
     }
 
@@ -57,7 +57,7 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-    while($robot = $result->fetchArray()){
+    while ($robot = $result->fetchArray()) {
     	print_r($robot);
     }
 

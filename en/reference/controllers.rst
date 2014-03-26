@@ -2,10 +2,10 @@
 Using Controllers
 =================
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
+public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access a URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+For instance, when you access an URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
@@ -94,7 +94,7 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
 Dispatch Loop
 -------------
-The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the above example only one
 action was executed. Now we'll see how "forward" can provide a more complex flow of operation in the dispatch loop, by forwarding
 execution to a different controller/action.
 
@@ -177,6 +177,33 @@ action is executed on a controller. The use of the "__construct" method is not r
         }
 
     }
+
+.. highlights::
+
+    Method 'initialize' is only called if the event 'beforeExecuteRoute' is executed with success. This avoid
+    that application logic in the initializer cannot be executed without authorization.
+
+If you want to execute some initialization logic just after build the controller object you can implement the
+method 'onConstruct':
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function onConstruct()
+        {
+            //...
+        }
+    }
+
+.. highlights::
+
+    Be aware that method 'onConstruct' is executed even if the action to be executed not exists
+    in the controller or the user does not have access to it (according to custom control access
+    provided by developer).
 
 Injecting Services
 ------------------
@@ -319,6 +346,12 @@ any other class registered with its name can easily replace a controller:
         return $component;
     });
 
+	    //Register a namespaced controller as a service
+	    $di->set('Backend\Controllers\IndexController', function() {
+	        $component = new Component();
+	        return $component;
+	    });
+
 Creating a Base Controller
 --------------------------
 Some application features like access control lists, translation, cache, and template engines are often common to many
@@ -382,7 +415,6 @@ you to implement hook points before/after the actions are executed:
         public function beforeExecuteRoute($dispatcher)
         {
             // This is executed before every found action
-
             if ($dispatcher->getActionName() == 'save') {
 
                 $this->flash->error("You don't have permission to save posts");

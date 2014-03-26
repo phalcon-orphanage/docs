@@ -5,13 +5,7 @@ Phalcon\\Db\\ReferenceInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*string* $referenceName, *array* $definition)
-
-Phalcon\\Db\\ReferenceInterface constructor
-
-
+-------
 
 abstract public *string*  **getName** ()
 
@@ -46,12 +40,6 @@ Gets the referenced table
 abstract public *array*  **getReferencedColumns** ()
 
 Gets referenced columns
-
-
-
-abstract public static :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>`  **__set_state** (*array* $data)
-
-Restore a Phalcon\\Db\\Reference object from export
 
 
 

@@ -5,13 +5,7 @@ Phalcon\\Db\\AdapterInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*array* $descriptor)
-
-Constructor for Phalcon\\Db\\Adapter
-
-
+-------
 
 abstract public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*int* $placeholders])
 
@@ -85,9 +79,21 @@ Creates a table
 
 
 
-abstract public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists])
+abstract public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists])
 
 Drops a table from a schema/database
+
+
+
+abstract public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+
+Creates a view
+
+
+
+abstract public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists])
+
+Drops a view
 
 
 
@@ -153,7 +159,13 @@ Returns the SQL column definition from a column
 
 abstract public *array*  **listTables** ([*string* $schemaName])
 
-List all tables on a database <code> print_r($connection->listTables("blog") ?>
+List all tables on a database
+
+
+
+abstract public *array*  **listViews** ([*string* $schemaName])
+
+List all views on a database
 
 
 
@@ -253,12 +265,6 @@ Escapes a value to avoid SQL injections
 
 
 
-abstract public  **bindParams** (*string* $sqlStatement, *array* $params)
-
-Bind params to a SQL statement
-
-
-
 abstract public *array*  **convertBoundParams** (*string* $sqlStatement, *array* $params)
 
 Converts bound params like :name: or ?1 into ? bind params
@@ -319,6 +325,12 @@ Gets creation options from a table
 
 
 
+abstract public *boolean*  **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
+
+
+
 abstract public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
 
 Return the default identity value to insert in an identity column
@@ -328,6 +340,42 @@ Return the default identity value to insert in an identity column
 abstract public *boolean*  **supportSequences** ()
 
 Check whether the database system requires a sequence to produce auto-numeric values
+
+
+
+abstract public *boolean*  **createSavepoint** (*string* $name)
+
+Creates a new savepoint
+
+
+
+abstract public *boolean*  **releaseSavepoint** (*string* $name)
+
+Releases given savepoint
+
+
+
+abstract public *boolean*  **rollbackSavepoint** (*string* $name)
+
+Rollbacks given savepoint
+
+
+
+abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints)
+
+Set if nested transactions should use savepoints
+
+
+
+abstract public *boolean*  **isNestedTransactionsWithSavepoints** ()
+
+Returns if nested transactions should use savepoints
+
+
+
+abstract public *string*  **getNestedTransactionSavepointName** ()
+
+Returns the savepoint name to use for nested transactions
 
 
 

@@ -7,7 +7,7 @@ Phalcon\\Mvc\\DispatcherInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setControllerSuffix** (*string* $controllerSuffix)
 
@@ -21,7 +21,7 @@ Sets the default controller name
 
 
 
-abstract public  **setControllerName** (*string* $controllerName)
+abstract public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
 Sets the controller name to be dispatched
 

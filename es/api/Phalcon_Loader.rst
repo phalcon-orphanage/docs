@@ -28,7 +28,7 @@ This component helps to load your project classes automatically based on some co
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -50,7 +50,7 @@ Returns the internal event manager
 
 public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*array* $extensions)
 
-Sets an array of extensions that the Loader must check together with the path
+Sets an array of extensions that the loader must try in each attempt to locate the file
 
 
 
@@ -66,7 +66,7 @@ Register namespaces and their related directories
 
 
 
-public  **getNamespaces** ()
+public *array*  **getNamespaces** ()
 
 Return current namespaces registered in the autoloader
 

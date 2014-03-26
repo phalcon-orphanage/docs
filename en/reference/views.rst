@@ -1,11 +1,11 @@
 Using Views
 ===========
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks
+related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
+is used to make requests from your application.
 
-The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is responsible for the managing the view layer of your MVC application.
-
-A hierarchy of files is supported by the component. This hierarchy allows for common layout points (commonly used views), as well as controller
-named folders defining respective view templates.
+The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
+are responsible for the managing the view layer of your MVC application.
 
 Integrating Views with Controllers
 ----------------------------------
@@ -50,7 +50,12 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
 The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
 how to pass the $postId parameter to the respective view template.
 
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` uses PHP itself as the template engine, therefore views should have the .phtml extension.
+Hierarchical Rendering
+----------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
+This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
+
+This component uses by default PHP itself as the template engine, therefore views should have the .phtml extension.
 If the views directory is  *app/views* then view component will find automatically for these 3 view files.
 
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -72,7 +77,7 @@ next view level in the hierarchy of files. If all three view files are implement
 
     <h3>This is show view!</h3>
 
-    <p>I have received the parameter <?php $postId ?></p>
+    <p>I have received the parameter <?php echo $postId ?></p>
 
 .. code-block:: html+php
 
@@ -131,8 +136,9 @@ The generated HTML by the request will be:
     </html>
 
 Using Templates
----------------
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
+^^^^^^^^^^^^^^^
+Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
+layouts directory.
 
 .. code-block:: php
 
@@ -241,68 +247,8 @@ The final output will be the following:
         </body>
     </html>
 
-Using Partials
---------------
-Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
-parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
-
-One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code can be
-more easily understood. For example, you might have a view that looks like this:
-
-.. code-block:: html+php
-
-    <?php $this->partial("shared/ad_banner") ?>
-
-    <h1>Robots</h1>
-
-    <p>Check out our specials for robots:</p>
-    ...
-
-    <?php $this->partial("shared/footer") ?>
-
-
-Transfer values from the controller to views
---------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can use that
-object to set variables directly to the view from a controller action by using the setVar() method.
-
-.. code-block:: php
-
-    <?php
-
-    class PostsController extends \Phalcon\Mvc\Controller
-    {
-
-        public function indexAction()
-        {
-
-        }
-
-        public function showAction()
-        {
-            //Pass all the posts to the views
-            $this->view->setVar("posts", Posts:find());
-        }
-
-    }
-
-A variable with the name of the first parameter of setView() will be created in the view, ready to be used. The variable can be of any type,
-from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
-
-.. code-block:: html+php
-
-    <div class="post">
-    <?php
-
-      foreach ($posts as $post) {
-        echo "<h1>", $post->title, "</h1>";
-      }
-
-    ?>
-    </div>
-
 Control Rendering Levels
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
 produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
 
@@ -312,7 +258,10 @@ This method can be invoked from the controller or from a superior view layer to 
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller,
+        Phalcon\Mvc\View;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -324,7 +273,7 @@ This method can be invoked from the controller or from a superior view layer to 
         {
 
             // This is an Ajax response so it doesn't generate any kind of view
-            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+            $this->view->setRenderLevel(View::LEVEL_NO_RENDER);
 
             //...
         }
@@ -332,7 +281,7 @@ This method can be invoked from the controller or from a superior view layer to 
         public function showAction($postId)
         {
             // Shows only the view related to the action
-            $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_ACTION_VIEW);
+            $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
 
     }
@@ -385,9 +334,10 @@ Or disable temporarily in some part of the application:
 
     <?php
 
-    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View,
+        Phalcon\Mvc\Controller;
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -402,28 +352,8 @@ Or disable temporarily in some part of the application:
 
     }
 
-Using models in the view layer
-------------------------------
-Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
-runtime automatically:
-
-.. code-block:: html+php
-
-    <div class="categories">
-    <?php
-
-    foreach (Catergories::find("status = 1") as $category) {
-       echo "<span class='category'>", $category->name, "</span>";
-    }
-
-    ?>
-    </div>
-
-Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since it is not
-possible to forward the execution flow to another controller in the case of an error or an exception.
-
 Picking Views
--------------
+^^^^^^^^^^^^^
 As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
 the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\\Mvc\\View::pick() method:
 
@@ -438,9 +368,227 @@ the view rendered is the one related with the last controller and action execute
         {
             // Pick "views-dir/products/search" as view to render
             $this->view->pick("products/search");
+
+            // Pick "views-dir/products/list" as view to render
+            $this->view->pick(array('products'));
+
+            // Pick "views-dir/products/list" as view to render
+            $this->view->pick(array(1 => 'search'));
         }
 
     }
+
+Disabling the view
+^^^^^^^^^^^^^^^^^^
+If your controller doesn't produce any output in the view (or not even have one) you may disable the view component
+avoiding unnecessary processing:
+
+.. code-block:: php
+
+    <?php
+
+    class UsersController extends \Phalcon\Mvc\Controller
+    {
+
+        public function closeSessionAction()
+        {
+            //Close session
+            //...
+
+            //An HTTP Redirect
+            $this->response->redirect('index/index');
+
+            //Disable the view to avoid rendering
+            $this->view->disable();
+        }
+
+    }
+
+You can return a 'response' object to avoid disable the view manually:
+
+.. code-block:: php
+
+    <?php
+
+    class UsersController extends \Phalcon\Mvc\Controller
+    {
+
+        public function closeSessionAction()
+        {
+            //Close session
+            //...
+
+            //An HTTP Redirect
+            return $this->response->redirect('index/index');
+        }
+
+    }
+
+Simple Rendering
+----------------
+:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
+the main feature of its counterpart.
+
+This component allows the developer to have control of when a view is rendered and its location.
+In addition, this component can leverage of view inheritance available in template engines such
+as :doc:`Volt <volt>` and others.
+
+The default component must be replaced in the service container:
+
+.. code-block:: php
+
+    <?php
+
+    $di->set('view', function() {
+
+        $view = new Phalcon\Mvc\View\Simple();
+
+        $view->setViewsDir('../app/views/');
+
+        return $view;
+
+    }, true);
+
+Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applications>` (if needed):
+
+.. code-block:: php
+
+    <?php
+
+    try {
+
+        $application = new Phalcon\Mvc\Application($di);
+
+        $application->useImplicitView(false);
+
+        echo $application->handle()->getContent();
+
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+
+To render a view it's necessary to call the render method explicitly indicating the relative path to the view you want to display:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+            //Render 'views-dir/index.phtml'
+            echo $this->view->render('index');
+
+            //Render 'views-dir/posts/show.phtml'
+            echo $this->view->render('posts/show');
+
+            //Render 'views-dir/index.phtml' passing variables
+            echo $this->view->render('index', array('posts' => Posts::find()));
+
+            //Render 'views-dir/posts/show.phtml' passing variables
+            echo $this->view->render('posts/show', array('posts' => Posts::find()));
+        }
+
+    }
+
+Using Partials
+--------------
+Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
+parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
+
+One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code
+can be more easily understood. For example, you might have a view that looks like this:
+
+.. code-block:: html+php
+
+    <div class="top"><?php $this->partial("shared/ad_banner") ?></div>
+
+    <div class="content">
+        <h1>Robots</h1>
+
+        <p>Check out our specials for robots:</p>
+        ...
+    </div>
+
+    <div class="footer"><?php $this->partial("shared/footer") ?></div>
+
+Method partial() does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+
+.. code-block:: html+php
+
+    <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
+
+Transfer values from the controller to views
+--------------------------------------------
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
+use that object to set variables directly to the view from a controller action by using the setVar() method.
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends \Phalcon\Mvc\Controller
+    {
+
+        public function indexAction()
+        {
+
+        }
+
+        public function showAction()
+        {
+            //Pass all the posts to the views
+            $this->view->setVar("posts", Posts::find());
+
+            //Using the magic setter
+            $this->view->posts = Posts::find();
+
+            //Passing more than one variable at the same time
+            $this->view->setVars(array(
+                'title' => $post->title,
+                'content' => $post->content
+            ));
+        }
+
+    }
+
+A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
+from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
+
+.. code-block:: html+php
+
+    <div class="post">
+    <?php
+
+      foreach ($posts as $post) {
+        echo "<h1>", $post->title, "</h1>";
+      }
+
+    ?>
+    </div>
+
+Using models in the view layer
+------------------------------
+Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
+runtime automatically:
+
+.. code-block:: html+php
+
+    <div class="categories">
+    <?php
+
+        foreach (Categories::find("status = 1") as $category) {
+           echo "<span class='category'>", $category->name, "</span>";
+        }
+
+    ?>
+    </div>
+
+Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since
+it is not possible to forward the execution flow to another controller in the case of an error or an exception.
 
 Caching View Fragments
 ----------------------
@@ -507,16 +655,19 @@ The service name convention for this service is "viewCache":
 
     <?php
 
+    use Phalcon\Cache\Frontend\Output as OutputFrontend,
+        Phalcon\Cache\Backend\Memcache as MemcacheBackend;
+
     //Set the views cache service
     $di->set('viewCache', function() {
 
         //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Output(array(
+        $frontCache = new OutputFrontend(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
+        $cache = new MemcacheBackend($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -525,12 +676,14 @@ The service name convention for this service is "viewCache":
     });
 
 .. highlights::
-    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as always open (not shared)
+    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
+    always open (not shared) in the services container (DI)
 
-When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed in the views.
+When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed
+in the views.
 
-To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the
-calculations/queries to display data in the view:
+To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has
+expired to make the calculations/queries to display data in the view:
 
 .. code-block:: html+php
 
@@ -550,7 +703,7 @@ calculations/queries to display data in the view:
                     'order' => 'created_at DESC'
                 ));
 
-                $this->view->setVar('latest', $latest);
+                $this->view->latest = $latest;
             }
 
             //Enable the cache with the same key "downloads"
@@ -561,26 +714,7 @@ calculations/queries to display data in the view:
 
     }
 
-The `PHP alternative site`_ is a example of implementing the caching of fragments.
-
-Disabling the view
-------------------
-If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
-
-.. code-block:: php
-
-    <?php
-
-    class UsersController extends \Phalcon\Mvc\Controller
-    {
-
-        public function closeSessionAction()
-        {
-            //Disable the view
-            $this->view->disable();
-        }
-
-    }
+The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
 Template Engines
 ----------------
@@ -623,7 +757,7 @@ when it's necessary.
          */
         public function __construct($view, $di)
         {
-            //Initiliaze here the adapter
+            //Initialize here the adapter
             parent::__construct($view, $di);
         }
 
@@ -674,7 +808,7 @@ You can replace or add more a template engine from the controller as follows:
             // Using more than one template engine
             $this->view->registerEngines(
                 array(
-                    ".my-html" => 'MyTemplateAdapter'
+                    ".my-html" => 'MyTemplateAdapter',
                     ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
@@ -736,8 +870,11 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
 
 Stand-Alone Component
 ---------------------
-All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other. Using
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below:
+All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
+
+Hierarchical Rendering
+^^^^^^^^^^^^^^^^^^^^^^
+Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below
 
 .. code-block:: php
 
@@ -763,10 +900,53 @@ All the components in Phalcon can be used as *glue* components individually beca
 
     echo $view->getContent();
 
+A short syntax is also available:
+
+.. code-block:: php
+
+    <?php
+
+    $view = new \Phalcon\Mvc\View();
+
+    echo $view->getRender('products', 'list',
+        array(
+            "someProducts" => $products,
+            "someFeatureEnabled" => true
+        ),
+        function($view) {
+            //Set any extra options here
+            $view->setViewsDir("../app/views/");
+            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT);
+        }
+    );
+
+Simple Rendering
+^^^^^^^^^^^^^^^^
+Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
+
+.. code-block:: php
+
+    <?php
+
+    $view = new \Phalcon\Mvc\View\Simple();
+
+    //A trailing directory separator is required
+    $view->setViewsDir("../app/views/");
+
+    // Render a view and return its contents as a string
+    echo $view->render("templates/welcomeMail");
+
+    // Render a view passing parameters
+    echo $view->render("templates/welcomeMail", array(
+        'email' => $email,
+        'content' => $content
+    ));
+
 View Events
 -----------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is able to send events to an :doc:`EventsManager <events>` if it's present. Events
-are triggered using the type "view". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
+events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning
+boolean false could stop the active operation. The following events are supported:
 
 +----------------------+------------------------------------------------------------+---------------------+
 | Event Name           | Triggered                                                  | Can stop operation? |
@@ -790,7 +970,7 @@ The following example demonstrates how to attach listeners to this component:
 
     $di->set('view', function() {
 
-        //Create an event manager
+        //Create an events manager
         $eventsManager = new Phalcon\Events\Manager();
 
         //Attach a listener for type "view"
@@ -802,7 +982,7 @@ The following example demonstrates how to attach listeners to this component:
         $view->setViewsDir("../app/views/");
 
         //Bind the eventsManager to the view component
-        $view->setEventsManager($eventManagers);
+        $view->setEventsManager($eventsManager);
 
         return $view;
 

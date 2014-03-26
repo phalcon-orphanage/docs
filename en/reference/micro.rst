@@ -85,7 +85,7 @@ which the route is constrained for:
     $app->put('/api/products/update/{id}', "update_product");
 
     //Matches if the HTTP method is DELETE
-    $app->put('/api/products/remove/{id}', "delete_product");
+    $app->delete('/api/products/remove/{id}', "delete_product");
 
     //Matches if the HTTP method is OPTIONS
     $app->options('/api/products/info/{id}', "info_product");
@@ -94,7 +94,7 @@ which the route is constrained for:
     $app->patch('/api/products/update/{id}', "info_product");
 
     //Matches if the HTTP method is GET or POST
-    $app->map('/repos/store/refs')->via(array('GET', 'POST'));
+    $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
 Routes with Parameters
@@ -179,6 +179,27 @@ response:
 
     });
 
+Or create a response object and return it from the handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app->get('/show/data', function () {
+
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
+        //Set the Content-Type header
+        $response->setContentType('text/plain');
+
+        //Pass the content of a file
+        $response->setContent(file_get_contents("data.txt"));
+
+        //Return the response
+        return $response;
+    });
+
 Making redirections
 -------------------
 Redirections could be performed to forward the execution flow to another route:
@@ -189,7 +210,7 @@ Redirections could be performed to forward the execution flow to another route:
 
     //This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
-        $app->response->redirect("new/welcome");
+        $app->response->redirect("new/welcome")->sendHeaders();
     });
 
     $app->post('/new/welcome', function () use ($app) {
@@ -212,7 +233,7 @@ by this way the "url" service can produce the corresponding URL:
 
     })->setName('show-post');
 
-    //produce a url somewhere
+    //produce an URL somewhere
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(
@@ -233,13 +254,17 @@ can create outside the application a container to manipulate its services:
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Micro,
+        Phalcon\Config\Adapter\Ini as IniConfig;
+
+    $di = new FactoryDefault();
 
     $di->set('config', function() {
-        return new \Phalcon\Config\Adapter\Ini("config.ini");
+        return new IniConfig("config.ini");
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     $app->setDI($di);
 
@@ -258,11 +283,14 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro,
+        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+
+    $app = new Micro();
 
     //Setup the database service
     $app['db'] = function() {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        return new MysqlAdapter(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -279,7 +307,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
 Not-Found Handler
 -----------------
-When a user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
+When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
 An example of that behavior is below:
 
 .. code-block:: php
@@ -342,8 +370,11 @@ In the following example, we explain how to control the application security usi
 
     <?php
 
+    use Phalcon\Mvc\Micro,
+        Phalcon\Events\Manager as EventsManager;
+
     //Create a events manager
-    $eventManager = \Phalcon\Events\Manager();
+    $eventManager = new EventsManager();
 
     //Listen all the application events
     $eventManager->attach('micro', function($event, $app) {
@@ -352,7 +383,7 @@ In the following example, we explain how to control the application security usi
             if ($app->session->get('auth') == false) {
 
                 $app->flashSession->error("The user isn't authenticated");
-                $app->response->redirect("/");
+                $app->response->redirect("/")->sendHeaders();
 
                 //Return (false) stop the operation
                 return false;
@@ -361,10 +392,10 @@ In the following example, we explain how to control the application security usi
 
     });
 
-    $app = new Phalcon\Mvc\Micro();
+    $app = new Micro();
 
     //Bind the events manager to the app
-    $app->setEventsManager($eventsManager);
+    $app->setEventsManager($eventManager);
 
 Middleware events
 -----------------
@@ -376,11 +407,11 @@ In addition to the events manager, events can be added using the methods 'before
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Executed before every route executed
+    //Executed before every route is executed
     //Return false cancels the route execution
     $app->before(function() use ($app) {
         if ($app['session']->get('auth') == false) {
-            return false;            
+            return false;
         }
         return true;
     });
@@ -388,19 +419,74 @@ In addition to the events manager, events can be added using the methods 'before
     $app->map('/api/robots', function(){
         return array(
             'status' => 'OK'
-        );            
-    });    
+        );
+    });
 
     $app->after(function() use ($app) {
-        //This is executed after the route is executed
+        //This is executed after the route was executed
         echo json_encode($app->getReturnedValue());
     });
 
     $app->finish(function() use ($app) {
-        //This is executed when is the request has been served        
+        //This is executed when the request has been served
     });
 
-You can call the methods several times to add more events of the same type. The following table explains the events:
+You can call the methods several times to add more events of the same type:
+
+.. code-block:: php
+
+    <?php
+
+    $app->finish(function() use ($app) {
+        //First 'finish' middleware
+    });
+
+    $app->finish(function() use ($app) {
+        //Second 'finish' middleware
+    });
+
+Code for middlewares can be reused using separate classes:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro\MiddlewareInterface;
+
+    /**
+     * CacheMiddleware
+     *
+     * Caches pages to reduce processing
+     */
+    class CacheMiddleware implements MiddlewareInterface
+    {
+        public function call($application)
+        {
+
+            $cache = $application['cache'];
+            $router = $application['router'];
+
+            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+
+            //Check if the request is cached
+            if ($cache->exists($key)) {
+                echo $cache->get($key);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+Then add the instance to the application:
+
+.. code-block:: php
+
+    <?php
+
+    $app->before(new CacheMiddleware());
+
+The following middleware events are available:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 | Event Name          | Triggered                                                                                                                  | Can stop operation?  |
@@ -412,20 +498,81 @@ You can call the methods several times to add more events of the same type. The 
 | finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
 
-Returning Responses
--------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+Using Controllers as Handlers
+-----------------------------
+Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
+You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
 
 .. code-block:: php
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro\Collection as MicroCollection;
+
+    $posts = new MicroCollection();
+
+    //Set the main handler. ie. a controller instance
+    $posts->setHandler(new PostsController());
+
+    //Set a common prefix for all routes
+    $posts->setPrefix('/posts');
+
+    //Use the method 'index' in PostsController
+    $posts->get('/', 'index');
+
+    //Use the method 'show' in PostsController
+    $posts->get('/show/{slug}', 'show');
+
+    $app->mount($posts);
+
+The controller 'PostsController' might look like this:
+
+.. code-block:: php
+
+    <?php
+
+    class PostsController extends Phalcon\Mvc\Controller
+    {
+
+        public function index()
+        {
+            //...
+        }
+
+        public function show($slug)
+        {
+            //...
+        }
+    }
+
+In the above example the controller is directly instantiated, Collection also have the ability to lazy-load controllers, this option
+provide better performance loading controllers only if the related routes are matched:
+
+.. code-block:: php
+
+    <?php
+
+    $posts->setHandler('PostsController', true);
+    $posts->setHandler('Blog\Controllers\PostsController', true);
+
+Returning Responses
+-------------------
+Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
+When responses are returned by handlers they are automatically sent by the application.
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Micro,
+        Phalcon\Http\Response;
+
+    $app = new Micro();
 
     //Return a response
     $app->get('/welcome/index', function() {
 
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         $response->setStatusCode(401, "Unauthorized");
 
@@ -436,7 +583,7 @@ Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>
 
 Rendering Views
 ---------------
-:doc:`Phalcon\\Mvc\\View <views>` can be used to render views, the following example shows how to do that:
+:doc:`Phalcon\\Mvc\\View\\Simple <views>` can be used to render views, the following example shows how to do that:
 
 .. code-block:: php
 
@@ -454,11 +601,14 @@ Rendering Views
     $app->get('/products/show', function() use ($app) {
 
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->getRender('products', 'show', array(
+        echo $app['view']->render('products/show', array(
             'id' => 100,
             'name' => 'Artichoke'
         ));
 
     });
 
-:doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
+Related Sources
+---------------
+* :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
+* `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].

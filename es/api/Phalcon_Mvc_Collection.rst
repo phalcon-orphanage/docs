@@ -18,9 +18,9 @@ Constants
 *integer* **OP_DELETE**
 
 Methods
----------
+-------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Collection\\ManagerInterface <Phalcon_Mvc_Collection_ManagerInterface>` $modelsManager])
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -50,7 +50,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** ()
+protected  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
 Sets a custom events manager
 
@@ -287,7 +287,7 @@ Appends a customized message on the validation process
     
     	public function beforeSave()
     	{
-    		if (this->name == 'Peter') {
+    		if ($this->name == 'Peter') {
     			$message = new Message("Sorry, but a robot cannot be named Peter");
     			$this->appendMessage($message);
     		}
@@ -299,7 +299,7 @@ Appends a customized message on the validation process
 
 public *boolean*  **save** ()
 
-Creates/Updates a collection based on the values in the atributes
+Creates/Updates a collection based on the values in the attributes
 
 
 
@@ -392,14 +392,13 @@ Perform a count over a collection
 
 public static *array*  **aggregate** (*array* $parameters)
 
-Perform an aggregation using the Mongo aggregation framework 
+Perform an aggregation using the Mongo aggregation framework
 
-.. code-block:: php
 
-    <?php
 
-     echo 'There are ', Robots::aggregate(), ' robots';
+public static *array*  **summatory** (*string* $field, [*array* $conditions], [*string* $finalize])
 
+Allows to perform a summatory group for a column in the collection
 
 
 
@@ -440,9 +439,23 @@ Serializes the object ignoring connections or protected properties
 
 
 
-public  **unserialize** (*string* $data)
+public  **unserialize** ([*unknown* $serialized])
 
 Unserializes the object from a serialized string
+
+
+
+public static *array*  **execute** (*mixed* $code, [*array* $args])
+
+Runs JavaScript code on the database server. 
+
+.. code-block:: php
+
+    <?php
+
+     $ret = Robots::execute("function() { return 'Hello, world!';}");
+     echo $ret['retval'], "\n";
+
 
 
 

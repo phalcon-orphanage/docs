@@ -36,9 +36,9 @@ Constants
 *integer* **TYPE_DELETE**
 
 Methods
----------
+-------
 
-public  **__construct** ([*string* $phql])
+public  **__construct** (*string* $phql)
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -58,7 +58,7 @@ Returns the dependency injection container
 
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setUniqueRow** (*boolean* $uniqueRow)
 
-Tells to the query if only the first row in the resultset must be resturned
+Tells to the query if only the first row in the resultset must be returned
 
 
 
@@ -116,9 +116,21 @@ Resolves a JOIN type
 
 
 
+protected *array*  **_getSingleJoin** ()
+
+Resolves joins involving has-one/belongs-to/has-many relations
+
+
+
+protected *array*  **_getMultiJoin** ()
+
+Resolves joins involving many-to-many relations
+
+
+
 protected *array*  **_getJoins** ()
 
-Resolves all the JOINS in a SELECT statement
+Processes the JOINs in the query returning an internal representation for the database dialect
 
 
 
@@ -132,6 +144,11 @@ protected *string*  **_getGroupClause** ()
 
 Returns a processed group clause for a SELECT statement
 
+
+
+protected  **_getLimitClause** ()
+
+...
 
 
 protected *array*  **_prepareSelect** ()
@@ -233,6 +250,30 @@ Sets the type of PHQL statement to be executed
 public *int*  **getType** ()
 
 Gets the type of PHQL statement executed
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindParams** (*array* $bindParams)
+
+Set default bind parameters
+
+
+
+public *array*  **getBindParams** ()
+
+Returns default bind params
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setBindTypes** (*array* $bindTypes)
+
+Set default bind parameters
+
+
+
+public *array*  **getBindTypes** ()
+
+Returns default bind types
 
 
 

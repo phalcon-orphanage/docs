@@ -1,13 +1,13 @@
 Instalación
 ===========
-Las extensiones de PHP requieren un método diferente de instalación a los frameworks o librerias tradicionales. 
+Las extensiones de PHP requieren un método diferente de instalación a los frameworks o bibliotecas tradicionales.
 Puedes descargar tanto un paquete binario para tu sistema o compilarlo desde el código fuente.
 
 .. highlights::
-	Phalcon compila desde PHP 5.3.1, pero debido a errores antiguos de PHP que causan memory leaks, recomendamos usar al menos 5.3.11.
+	Phalcon puede ser compilado como mínimo para la version 5.3.1 de PHP, pero debido a errores antiguos de PHP que causan fallos y fugas de memoria, recomendamos usar al menos 5.3.11.
 
 .. highlights::
-	Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Aprender más <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	Versiones inferiores a PHP 5.3.9 tienen fallos de seguridad y no son recomendadas para sitios en producción. `Más información <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
@@ -15,9 +15,9 @@ Para usar Phalcon en Windows debes descargar un DLL y ubicarlo en el directorio 
 
 	extension=php_phalcon.dll
 
-Reiniciar el servidor web.
+Finalmente, reinicia el servidor web.
 
-El siguiente screencast explica como instalar Phalcon en Windows paso a paso:
+El siguiente video explica como instalar Phalcon en Windows paso a paso, el material se encuentra en Inglés.
 
 .. raw:: html
 
@@ -34,17 +34,17 @@ Guías Relacionadas
 
 Linux/Solaris/Mac
 -----------------
-On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
+En un sistema Linux/Solaris/Mac puedes compilar e instalar la extensión facilmente desde la fuente del repositorio:
 
-Requirements
+Requerimientos
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Los paquetes requeridos son:
 
-* PHP 5.3.x/5.4.x development resources
-* GCC compiler (Linux/Solaris) or Xcode (Mac)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* PHP 5.3.x/5.4.x fuentes de desarrollo (development resources)
+* Compilador GCC (Linux/Solaris) o Xcode (Mac)
+* Git (a menos que descargues el paquete manualmente desde Github)
 
-Specific packages for common platforms:
+Paquetes especificos para plataformas comunes:
 
 .. code-block:: bash
 
@@ -64,9 +64,9 @@ Specific packages for common platforms:
 	pkg install gcc-45
 	pkg install php-53 apache-php53
 
-Compilation
+Compilación
 ^^^^^^^^^^^
-Creating the extension:
+Compilando la extensión:
 
 .. code-block:: bash
 
@@ -74,15 +74,15 @@ Creating the extension:
 	cd cphalcon/build
 	sudo ./install
 
-Add extension to your php.ini
+Añadiendo la extensión a php.ini
 
 .. code-block:: bash
 
 	extension=phalcon.so
 
-Restart the webserver.
+Reiniciando el servidor web.
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon automáticamente detecta tu arquitectura de procesador, sin embargo, puedes forzar la compilación para la arquitectura deseada:
 
 .. code-block:: bash
 
@@ -92,23 +92,23 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Existe una variante disponible para FreeBSD. Solo necesitas esta simple línea de comandos para instalarlo:
 
 .. code-block:: bash
 
 	pkg_add -r phalcon
 
-or
+o
 
 .. code-block:: bash
 
 	export CFLAGS="-O2 -fno-delete-null-pointer-checks"
 	cd /usr/ports/www/phalcon && make install clean
 
-Installation Notes
+Notas para la instalación
 ------------------
 
-Installation notes for Web Servers:
+Notas para los servidores web:
 
 .. toctree::
 	:maxdepth: 1

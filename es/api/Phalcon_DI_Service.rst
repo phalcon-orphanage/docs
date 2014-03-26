@@ -19,7 +19,7 @@ Represents individually a service in the services container
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
@@ -63,7 +63,7 @@ Returns the service definition
 
 
 
-public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
@@ -77,11 +77,17 @@ Changes a parameter in the definition without resolve the service
 
 public *array*  **getParameter** (*int* $position)
 
-Returns a parameter in an specific position
+Returns a parameter in a specific position
 
 
 
-public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** (*array* $attributes)
+public *bool*  **isResolved** ()
+
+Returns true if the service was resolved
+
+
+
+public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** ([*unknown* $properties])
 
 Restore the internal state of a service
 

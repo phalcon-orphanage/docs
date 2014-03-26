@@ -1,18 +1,17 @@
-Nginx Installation Notes
+Notas para la instalación en Nginx
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike
-traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven
-(asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Nginx_ es un servidor HTTP libre de código abierto con muy alto rendimiento, puede actuar ademas como servidor proxy inversy y como proxy para MAP/POP3. A diferencia
+de los servidores tradicionales, Nginx_ no se basa en hilos para manejar las peticiones. En su lugar usa una arquitectura más escalable event-driven(asíncrona).
+Esta arquitectura usa pequeños espacios de memoria, pero aún más importante puede predecir el tamaño de la memoria a ser cargada.
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is
-bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer
-maximum performance for your PHP applications.
+El `PHP-FPM`_ (FastCGI Process Manager) es generalmente usado para permitir a Nginx_ procesar ficheros PHP. Actualmente, `PHP-FPM`_ se encuentra en
+paquetes de cualquier distribución Unix PHP. Phalcon + Nginx_ + `PHP-FPM`_ provee un poderoso conjunto que ofrece el máximo rendimiento para tus applications PHP.
 
-Configuring Nginx for Phalcon
+Configurando Nginx para Phalcon
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+Lo siguiente son definiciones de configuraciones que puedes usar para configurar tu aplicación. 
 
-Basic configuration
+Configuración básica
 ^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: nginx
@@ -45,7 +44,7 @@ Basic configuration
         }
     }
 
-Dedicated Instance
+Instancias dedicadas
 ^^^^^^^^^^^^^^^^^^
 
 .. code-block:: nginx
@@ -92,9 +91,9 @@ Dedicated Instance
         }
     }
 
-Configuration by Host
+Configuración por Host
 ^^^^^^^^^^^^^^^^^^^^^
-And this second configuration allow you to have different configurations by host:
+Esta configuración te permite tener varias configuraciones por Host:
 
 .. code-block:: nginx
 

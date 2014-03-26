@@ -5,7 +5,7 @@ Phalcon\\Validation\\ValidatorInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *mixed*  **isSetOption** (*string* $key)
 
@@ -19,7 +19,13 @@ Returns an option in the validator's options Returns null if the option hasn't b
 
 
 
-abstract public  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+abstract public  **setOption** (*string* $key, *mixed* $value)
+
+Sets the validator's option
+
+
+
+abstract public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
 
 Executes the validation
 

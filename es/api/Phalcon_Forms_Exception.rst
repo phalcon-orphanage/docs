@@ -1,10 +1,13 @@
 Class **Phalcon\\Forms\\Exception**
 ===================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
+
+Exceptions thrown in Phalcon\\Forms will use this class
+
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

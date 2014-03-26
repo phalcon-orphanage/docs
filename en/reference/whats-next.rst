@@ -1,12 +1,13 @@
 Increasing Performance: What's next?
 ====================================
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight
-scenarios where you can improve performance and how detect what is really slow in your application.
+Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc.
+In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in
+your application.
 
 Profile on the Server
 ---------------------
 Each application is different, the permanent profiling is important to understand where performance can be increased.
-Profiling gives us a real picture on what is really slow and what do not. Profiles can vary between a request and another,
+Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another,
 so it is important to make enough measurements to make conclusions.
 
 Profiling with XDebug
@@ -15,12 +16,12 @@ Xdebug_ provides an easier way to profile PHP applications, just install the ext
 
 .. code-block:: ini
 
-	xdebug.profiler_enable = On
+    xdebug.profiler_enable = On
 
 Using a tool like Webgrind_ you can see which functions/methods are slower than others:
 
 .. figure:: ../_static/img/webgrind.jpg
-	:align: center
+    :align: center
 
 Profiling with Xhprof
 ^^^^^^^^^^^^^^^^^^^^^
@@ -28,44 +29,44 @@ Xhprof_ is another interesting extension to profile PHP applications. Add the fo
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+    xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
-Then at the end of the file save the profiling data:
+Then at the end of the file save the profiled data:
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$xhprof_data = xhprof_disable('/tmp');
+    $xhprof_data = xhprof_disable('/tmp');
 
-	$XHPROF_ROOT = "/var/www/xhprof/";
-	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
-	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+    $XHPROF_ROOT = "/var/www/xhprof/";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
 
-	$xhprof_runs = new XHProfRuns_Default();
-	$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
+    $xhprof_runs = new XHProfRuns_Default();
+    $run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
 
-	echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
+    echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 
-Xhprof provides a built-in html viewer to analize the profile data:
+Xhprof provides a built-in html viewer to analize the profiled data:
 
 .. figure:: ../_static/img/xhprof-2.jpg
-	:align: center
+    :align: center
 
 .. figure:: ../_static/img/xhprof-1.jpg
-	:align: center
+    :align: center
 
 Profiling SQL Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important to increase the performance
+Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance
 in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
 
 .. code-block:: ini
 
-	log-slow-queries = /var/log/slow-queries.log
-	long_query_time = 1.5
+    log-slow-queries = /var/log/slow-queries.log
+    long_query_time = 1.5
 
 Profile on the Client
 ---------------------
@@ -78,19 +79,19 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 loading of the different resources required by a single page:
 
 .. figure:: ../_static/img/chrome-1.jpg
-	:align: center
+    :align: center
 
 Firebug_ provides a similar functionality:
 
 .. figure:: ../_static/img/firefox-1.jpg
-	:align: center
+    :align: center
 
 Yahoo! YSlow
 ------------
 YSlow_ analyzes web pages and suggests ways to improve their performance based on a set of `rules for high performance web pages`_
 
 .. figure:: ../_static/img/yslow-1.jpg
-	:align: center
+    :align: center
 
 Profile with Speed Tracer
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -99,27 +100,43 @@ from low level instrumentation points inside of the browser and analyzes them as
 Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
 .. figure:: ../_static/img/speed-tracer.jpg
-	:align: center
+    :align: center
 
 This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
 Javascript evaluation and CSS styling.
 
+Use a recent PHP version
+------------------------
+PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
+
 Use a PHP Bytecode Cache
 ------------------------
-APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request.
-Once the extension is installed use the following setting to enable APC:
+APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
+in each request. Once the extension is installed use the following setting to enable APC:
 
 .. code-block:: ini
 
-	apc.enabled = On
+    apc.enabled = On
+
+PHP 5.5 includes a built-in bytecode cache called ZendOptimizer+, this extension is also available for 5.3 and 5.4.
+
+Do blocking work in the background
+----------------------------------
+Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs.
+There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+
+* `Beanstalkd <http://kr.github.io/beanstalkd/>`_
+* `Redis <http://redis.io/>`_
+* `RabbitMQ <http://www.rabbitmq.com/>`_
+* `Resque <https://github.com/chrisboulton/php-resque>`_
+* `Gearman <http://gearman.org/>`_
+* `ZeroMQ <http://www.zeromq.org/>`_
 
 Google Page Speed
 -----------------
-mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module automatically applies web
-performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring
-that you modify your existing content or workflow.
-
-
+mod_pagespeed_ speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available
+for nginx as ngx_pagespeed) automatically applies web performance best practices to pages, and associated assets
+(CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
 
 .. _firebug: http://getfirebug.com/
 .. _YSlow: http://developer.yahoo.com/yslow/
@@ -130,3 +147,4 @@ that you modify your existing content or workflow.
 .. _Webgrind: http://github.com/jokkedk/webgrind/
 .. _APC: http://php.net/manual/en/book.apc.php
 .. _mod_pagespeed: https://developers.google.com/speed/pagespeed/mod
+.. _ngx_pagespeed: https://developers.google.com/speed/pagespeed/ngx

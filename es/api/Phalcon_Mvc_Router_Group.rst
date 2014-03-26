@@ -40,11 +40,23 @@ Helper class to create a group of routes with common attributes
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $paths])
 
 Phalcon\\Mvc\\Router\\Group constructor
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setHostname** (*string* $hostname)
+
+Set a hostname restriction for all the routes in the group
+
+
+
+public *string*  **getHostname** ()
+
+Returns the hostname restriction
 
 
 
@@ -57,6 +69,18 @@ Set a common uri prefix for all the routes in this group
 public *string*  **getPrefix** ()
 
 Returns the common prefix for all the routes
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **beforeMatch** (*unknown* $beforeMatch)
+
+Set a before-match condition for the whole group
+
+
+
+public *string*  **getBeforeMatch** ()
+
+Returns the before-match condition if any
 
 
 
@@ -142,6 +166,30 @@ Adds a route to the router that only match if the HTTP method is HEAD
 public  **clear** ()
 
 Removes all the pre-defined routes
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **convert** (*string* $name, *callable* $converter)
+
+Adds a converter to perform an additional transformation for certain parameter
+
+
+
+public *array|null*  **getConverters** ()
+
+Returns the router converter
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **setName** (*unknown* $name)
+
+Set the name of the group
+
+
+
+public *string*  **getName** ()
+
+Returns the name of this group
 
 
 

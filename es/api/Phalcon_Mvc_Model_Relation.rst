@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Model\\Relation**
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`
 
-This class represents each relationship between two models
+This class represents a relationship between two models
 
 
 Constants
@@ -19,10 +19,14 @@ Constants
 
 *integer* **HAS_MANY_THROUGH**
 
-*integer* **MANY_TO_MANY**
+*integer* **NO_ACTION**
+
+*integer* **ACTION_RESTRICT**
+
+*integer* **ACTION_CASCADE**
 
 Methods
----------
+-------
 
 public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
 
@@ -30,9 +34,15 @@ Phalcon\\Mvc\\Model\\Relation constructor
 
 
 
+public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
+
+Sets the intermediate model data for has-*-through relations
+
+
+
 public *int*  **getType** ()
 
-Returns the relation's type
+Returns the relation type
 
 
 
@@ -60,7 +70,7 @@ Returns the options
 
 
 
-public *string|array*  **isForeingKey** ()
+public *string|array*  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 
@@ -72,21 +82,33 @@ Returns the foreign key configuration
 
 
 
-public *boolean*  **hasThrough** ()
+public *boolean*  **isThrough** ()
 
-Check whether the relation
-
-
-
-public *string*  **getThrough** ()
-
-Returns the 'through' relation if any
+Check whether the relation is a 'many-to-many' relation or not
 
 
 
 public *boolean*  **isReusable** ()
 
-Check if records in belongs-to/has-many are implicitly cached during the current request
+Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+
+
+
+public *string|array*  **getIntermediateFields** ()
+
+Gets the intermediate fields for has-*-through relations
+
+
+
+public *string*  **getIntermediateModel** ()
+
+Gets the intermediate model for has-*-through relations
+
+
+
+public *string|array*  **getIntermediateReferencedFields** ()
+
+Gets the intermediate referenced fields for has-*-through relations
 
 
 

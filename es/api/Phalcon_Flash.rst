@@ -1,5 +1,5 @@
-Class **Phalcon\\Flash**
-========================
+Abstract class **Phalcon\\Flash**
+=================================
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
 
@@ -13,7 +13,7 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $cssClasses])
 
@@ -23,13 +23,13 @@ Phalcon\\Flash constructor
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush)
 
-Set the if the output must be implictly flushed to the output or returned as string
+Set whether the output must be implictly flushed to the output or returned as string
 
 
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml)
 
-Set the if the output must be implictly formatted with HTML
+Set if the output must be implictily formatted with HTML
 
 
 

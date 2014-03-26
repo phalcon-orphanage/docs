@@ -1,11 +1,11 @@
 Class **Phalcon\\Annotations\\Adapter\\Apc**
 ============================================
 
-*extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Phalcon\\Annotations\\Adapter\\Files  Stores the parsed annotations in APC. This adapter is the suitable for production  
+Stores the parsed annotations in APC. This adapter is suitable for production  
 
 .. code-block:: php
 
@@ -16,15 +16,15 @@ Phalcon\\Annotations\\Adapter\\Files  Stores the parsed annotations in APC. This
 
 
 Methods
----------
+-------
 
-public *array*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
-Reads parsed annotations from Apc
+Reads parsed annotations from APC
 
 
 
-public  **write** (*string* $key, *array* $data)
+public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
 
 Writes parsed annotations to APC
 

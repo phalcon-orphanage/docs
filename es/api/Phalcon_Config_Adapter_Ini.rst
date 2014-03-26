@@ -1,11 +1,11 @@
 Class **Phalcon\\Config\\Adapter\\Ini**
 =======================================
 
-*extends* :doc:`Phalcon\\Config <Phalcon_Config>`
+*extends* class :doc:`Phalcon\\Config <Phalcon_Config>`
 
-*implements* ArrayAccess
+*implements* Countable, ArrayAccess
 
-Reads ini files and convert it to Phalcon\\Config objects.  Given the next configuration file:  
+Reads ini files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 
 .. code-block:: ini
 
@@ -16,7 +16,7 @@ Reads ini files and convert it to Phalcon\\Config objects.  Given the next confi
     host = localhost
     username = scott
     password = cheetah
-    name = test_db
+    dbname = test_db
     
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -36,7 +36,7 @@ Reads ini files and convert it to Phalcon\\Config objects.  Given the next confi
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $filePath)
 
@@ -44,7 +44,7 @@ Phalcon\\Config\\Adapter\\Ini constructor
 
 
 
-public *boolean*  **offsetExists** (*string* $index) inherited from Phalcon\\Config
+public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Config
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -70,7 +70,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public *string*  **offsetGet** (*string* $index) inherited from Phalcon\\Config
+public *string*  **offsetGet** (*unknown* $property) inherited from Phalcon\\Config
 
 Gets an attribute using the array-syntax 
 
@@ -83,7 +83,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*string* $index, *mixed* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*unknown* $property, *mixed* $value) inherited from Phalcon\\Config
 
 Sets an attribute using the array-syntax 
 
@@ -96,7 +96,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*string* $index) inherited from Phalcon\\Config
+public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Config
 
 Unsets an attribute using the array-syntax 
 
@@ -136,9 +136,39 @@ Converts recursively the object to an array
 
 
 
-public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*array* $data) inherited from Phalcon\\Config
+public  **count** () inherited from Phalcon\\Config
+
+...
+
+
+public  **__wakeup** () inherited from Phalcon\\Config
+
+...
+
+
+public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** ([*unknown* $properties]) inherited from Phalcon\\Config
 
 Restores the state of a Phalcon\\Config object
 
+
+
+public  **__get** (*unknown* $property) inherited from Phalcon\\Config
+
+...
+
+
+public  **__set** (*unknown* $property, *unknown* $value) inherited from Phalcon\\Config
+
+...
+
+
+public  **__isset** (*unknown* $property) inherited from Phalcon\\Config
+
+...
+
+
+public  **__unset** (*unknown* $property) inherited from Phalcon\\Config
+
+...
 
 

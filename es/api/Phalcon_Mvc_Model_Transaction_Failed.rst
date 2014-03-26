@@ -1,13 +1,13 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 ==================================================
 
-*extends* Exception
+*extends* class :doc:`Phalcon\\Mvc\\Model\\Transaction\\Exception <Phalcon_Mvc_Model_Transaction_Exception>`
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 

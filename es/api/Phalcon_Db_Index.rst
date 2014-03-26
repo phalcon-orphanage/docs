@@ -7,7 +7,7 @@ Allows to define indexes to be used on tables. Indexes are a common way to enhan
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $indexName, *array* $columns)
 
@@ -27,7 +27,7 @@ Gets the columns that comprends the index
 
 
 
-public static :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>`  **__set_state** (*array* $data)
+public static :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>`  **__set_state** ([*unknown* $properties])
 
 Restore a Phalcon\\Db\\Index object from export
 

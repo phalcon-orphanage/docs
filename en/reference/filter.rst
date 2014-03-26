@@ -1,12 +1,12 @@
 Filtering and Sanitizing
 ========================
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
-access to the content of your application, mainly user data, or even the server your application is hosted.
+access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
-Full image (from xkcd)
+`Full image (from xkcd)`_
 
 The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
@@ -99,10 +99,10 @@ the format we expect.
     $filter = new \Phalcon\Filter();
 
     // returns "Hello"
-    $filter->filter("<h1>Hello</h1>", "striptags");
+    $filter->sanitize("<h1>Hello</h1>", "striptags");
 
     // returns "Hello"
-    $filter->filter("  Hello   ", "trim");
+    $filter->sanitize("  Hello   ", "trim");
 
 
 Types of Built-in Filters
@@ -133,7 +133,7 @@ The following are the built-in filters provided by this component:
 
 Creating your own Filters
 -------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonomyous function:
+You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonymous function:
 
 .. code-block:: php
 
@@ -182,6 +182,7 @@ Implementing your own Filter
 The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
 replacing the one provided by Phalcon.
 
+.. _Full image (from xkcd): http://xkcd.com/327/
 .. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
 .. _trim: http://www.php.net/manual/en/function.trim.php

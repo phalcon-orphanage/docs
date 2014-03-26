@@ -7,7 +7,7 @@ Represents a group of validation messages
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $messages])
 
@@ -67,7 +67,7 @@ Removes a message from the list
 
 
 
-public  **appendMessage** (*Phalcon\\Validation\\MessageInterface* $message)
+public  **appendMessage** (:doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>` $message)
 
 Appends a message to the group 
 
@@ -90,6 +90,12 @@ Appends an array of messages to the group
 
      $messages->appendMessages($messagesArray);
 
+
+
+
+public *array*  **filter** (*string* $fieldName)
+
+Filters the message group by field name
 
 
 
@@ -125,13 +131,13 @@ Moves the internal iteration pointer to the next position
 
 public *boolean*  **valid** ()
 
-Check if the current message the iterator is valid
+Check if the current message in the iterator is valid
 
 
 
 public static *Phalcon\\Mvc\\Model\\Message\\Group*  **__set_state** (*array* $group)
 
-Magic __set_state helps to re-build messages variable exporting
+Magic __set_state helps to re-build messages variable when exporting
 
 
 

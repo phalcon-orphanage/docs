@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Router\\Annotations**
 ===========================================
 
-*extends* :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
+*extends* class :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
 *implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
 
@@ -32,7 +32,7 @@ Constants
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
 Methods
----------
+-------
 
 public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addResource** (*string* $handler, [*string* $prefix])
 
@@ -100,13 +100,13 @@ Returns the internal dependency injector
 
 
 
-protected *string*  **_getRewriteUri** () inherited from Phalcon\\Mvc\\Router
+public *string*  **getRewriteUri** () inherited from Phalcon\\Mvc\\Router
 
 Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
 
 
 
-public  **setUriSource** (*string* $uriSource) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setUriSource** (*int* $uriSource) inherited from Phalcon\\Mvc\\Router
 
 Sets the URI source. One of the URI_SOURCE_* constants 
 
@@ -119,37 +119,61 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 
 
-public  **removeExtraSlashes** (*boolean* $remove) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **removeExtraSlashes** (*boolean* $remove) inherited from Phalcon\\Mvc\\Router
 
 Set whether router must remove the extra slashes in the handled routes
 
 
 
-public  **setDefaultNamespace** (*string* $namespaceName) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultNamespace** (*string* $namespaceName) inherited from Phalcon\\Mvc\\Router
 
 Sets the name of the default namespace
 
 
 
-public  **setDefaultModule** (*string* $moduleName) inherited from Phalcon\\Mvc\\Router
+public *string*  **getDefaultNamespace** () inherited from Phalcon\\Mvc\\Router
+
+Returns the name of the default namespace
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultModule** (*string* $moduleName) inherited from Phalcon\\Mvc\\Router
 
 Sets the name of the default module
 
 
 
-public  **setDefaultController** (*string* $controllerName) inherited from Phalcon\\Mvc\\Router
+public *string*  **getDefaultModule** () inherited from Phalcon\\Mvc\\Router
+
+Returns the name of the default module
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultController** (*string* $controllerName) inherited from Phalcon\\Mvc\\Router
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Mvc\\Router
+public *string*  **getDefaultController** () inherited from Phalcon\\Mvc\\Router
+
+Returns the default controller name
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Mvc\\Router
 
 Sets the default action name
 
 
 
-public  **setDefaults** (*array* $defaults) inherited from Phalcon\\Mvc\\Router
+public *string*  **getDefaultAction** () inherited from Phalcon\\Mvc\\Router
+
+Returns the default action name
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaults** (*array* $defaults) inherited from Phalcon\\Mvc\\Router
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
@@ -162,6 +186,12 @@ Sets an array of default paths. If a route is missing a path the router will use
     	'action' => 'index'
      ));
 
+
+
+
+public *array*  **getDefaults** () inherited from Phalcon\\Mvc\\Router
+
+Returns an array of default parameters
 
 
 
@@ -220,15 +250,15 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
 
 Mounts a group of routes in the router
 
 
 
-public  **notFound** (*unknown* $paths) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **notFound** (*array|string* $paths) inherited from Phalcon\\Mvc\\Router
 
-A set of paths used to
+Set a group of paths to be returned when none of the defined routes are matched
 
 
 
@@ -292,7 +322,7 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteById** (*string* $id) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  | false **getRouteById** (*string* $id) inherited from Phalcon\\Mvc\\Router
 
 Returns a route object by its id
 
@@ -301,6 +331,12 @@ Returns a route object by its id
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteByName** (*string* $name) inherited from Phalcon\\Mvc\\Router
 
 Returns a route object by its name
+
+
+
+public  **isExactControllerName** () inherited from Phalcon\\Mvc\\Router
+
+Returns whether controller name should not be mangled
 
 
 

@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\Model**
-=============================
+Abstract class **Phalcon\\Mvc\\Model**
+======================================
 
 *implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
@@ -10,7 +10,7 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
     <?php
 
      $robot = new Robots();
-     $robot->type = 'mechanical'
+     $robot->type = 'mechanical';
      $robot->name = 'Astro Boy';
      $robot->year = 1952;
      if ($robot->save() == false) {
@@ -42,7 +42,7 @@ Constants
 *integer* **DIRTY_STATE_DETACHED**
 
 Methods
----------
+-------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
 
@@ -447,7 +447,7 @@ Cancel the current operation
 
 
 
-public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
 Appends a customized message on the validation process 
 
@@ -462,7 +462,7 @@ Appends a customized message on the validation process
     
        public function beforeSave()
        {
-         if (this->name == 'Peter') {
+         if ($this->name == 'Peter') {
             $message = new Message("Sorry, but a robot cannot be named Peter");
             $this->appendMessage($message);
          }
@@ -472,7 +472,7 @@ Appends a customized message on the validation process
 
 
 
-protected  **validate** ()
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** ()
 
 Executes validators on every validation call 
 
@@ -530,7 +530,7 @@ Check whether validation process has generated any messages
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ([*unknown* $filter])
 
 Returns all the validation messages 
 
@@ -554,15 +554,21 @@ Returns all the validation messages
 
 
 
-protected *boolean*  **_checkForeignKeys** ()
+protected *boolean*  **_checkForeignKeysRestrict** ()
 
-Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records
+Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
 
 
 
-protected *boolean*  **_checkForeignKeysReverse** ()
+protected *boolean*  **_checkForeignKeysReverseRestrict** ()
 
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys when deleting records
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+
+
+
+protected *boolean*  **_checkForeignKeysReverseCascade** ()
+
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
 
 
 
@@ -590,13 +596,13 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected  **_preSaveRelatedRecords** ()
+protected *boolean*  **_preSaveRelatedRecords** ()
+
+Saves related records that must be stored prior to save the master record
 
 
 
-
-
-protected  **_postSaveRelatedRecords** ()
+protected *boolean*  **_postSaveRelatedRecords** ()
 
 Save the related records assigned in the has-one/has-many relations
 
@@ -612,7 +618,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
     //Creating a new robot
     $robot = new Robots();
-    $robot->type = 'mechanical'
+    $robot->type = 'mechanical';
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->save();
@@ -635,7 +641,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
     //Creating a new robot
     $robot = new Robots();
-    $robot->type = 'mechanical'
+    $robot->type = 'mechanical';
     $robot->name = 'Astro Boy';
     $robot->year = 1952;
     $robot->create();
@@ -678,7 +684,7 @@ Deletes a model instance. Returning true on success or false otherwise.
     $robot = Robots::findFirst("id=100");
     $robot->delete();
     
-    foreach(Robots::find("type = 'mechanical'") as $robot){
+    foreach (Robots::find("type = 'mechanical'") as $robot) {
        $robot->delete();
     }
 
@@ -763,7 +769,7 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
     
        public function initialize()
        {
-           $this->skipAttributesOnUpdate(array('created_at'));
+           $this->skipAttributesOnCreate(array('created_at'));
        }
     
     }
@@ -792,7 +798,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-protected  **hasOne** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** ()
 
 Setup a 1-1 relation between two models 
 
@@ -813,7 +819,7 @@ Setup a 1-1 relation between two models
 
 
 
-protected  **belongsTo** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** ()
 
 Setup a relation reverse 1-1  between two models 
 
@@ -834,7 +840,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-protected  **hasMany** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** ()
 
 Setup a relation 1-n between two models 
 
@@ -855,7 +861,7 @@ Setup a relation 1-n between two models
 
 
 
-protected  **hasManyThrough** ()
+public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** ()
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -868,11 +874,15 @@ Setup a relation n-n between two models through an intermediate relation
     
        public function initialize()
        {
-           //A reference relation must be set
-           $this->hasMany('id', 'RobotsParts', 'robots_id');
-    
            //Setup a many-to-many relation to Parts through RobotsParts
-           $this->hasManyThrough('Parts', 'RobotsParts');
+           $this->hasManyToMany(
+    		'id',
+    		'RobotsParts',
+    		'robots_id',
+    		'parts_id',
+    		'Parts',
+    		'id'
+    	);
        }
     
     }
@@ -880,7 +890,7 @@ Setup a relation n-n between two models through an intermediate relation
 
 
 
-protected  **addBehavior** ()
+public  **addBehavior** ()
 
 Setups a behavior in a model 
 
@@ -888,19 +898,19 @@ Setups a behavior in a model
 
     <?php
 
-    use Phalcon\Mvc\Model\Behaviors\Timestampable;
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
     
     class Robots extends \Phalcon\Mvc\Model
     {
     
        public function initialize()
        {
-    	$this->addBehavior(new Timestampable(
+    	$this->addBehavior(new Timestampable(array(
     		'onCreate' => array(
     			'field' => 'created_at',
     			'format' => 'Y-m-d'
     		)
-    	));
+    	)));
        }
     
     }
@@ -949,7 +959,7 @@ Returns the internal snapshot data
 
 public  **hasChanged** ([*boolean* $fieldName])
 
-Check if an specific attribute has changed This only works if the model is keeping data snapshots
+Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
 
 
@@ -1024,7 +1034,7 @@ Magic method to check if a property is a valid relation
 
 public *string*  **serialize** ()
 
-Serializes the object ignoring connections or static properties
+Serializes the object ignoring connections, services, related objects or static properties
 
 
 
@@ -1047,7 +1057,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ()
+public *array*  **toArray** ([*array* $columns])
 
 Returns the instance as an array representation 
 
@@ -1062,7 +1072,7 @@ Returns the instance as an array representation
 
 public static  **setup** (*array* $options)
 
-Enables/disables options in the ORM
+Enables/disables options in the ORM Available options: events                — Enables/Disables globally the internal events virtualForeignKeys    — Enables/Disables virtual foreign keys columnRenaming        — Enables/Disables column renaming notNullValidations    — Enables/Disables automatic not null validation exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
 
 
 

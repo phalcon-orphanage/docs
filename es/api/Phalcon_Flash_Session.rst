@@ -1,7 +1,7 @@
 Class **Phalcon\\Flash\\Session**
 =================================
 
-*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+*extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -9,7 +9,7 @@ Temporarily stores the messages in session, then messages can be printed in the 
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -53,6 +53,12 @@ Prints the messages in the session flasher
 
 
 
+public  **has** (*unknown* $type)
+
+bool \\Phalcon\\Flash\\Session::has(string $type)
+
+
+
 public  **__construct** ([*array* $cssClasses]) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
@@ -61,13 +67,13 @@ Phalcon\\Flash constructor
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
-Set the if the output must be implictly flushed to the output or returned as string
+Set whether the output must be implictly flushed to the output or returned as string
 
 
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
 
-Set the if the output must be implictly formatted with HTML
+Set if the output must be implictily formatted with HTML
 
 
 

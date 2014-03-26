@@ -1,10 +1,13 @@
 Class **Phalcon\\CLI\\Dispatcher\\Exception**
 =============================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
+
+Exceptions thrown in Phalcon\\CLI\\Dispatcher will use this class
+
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

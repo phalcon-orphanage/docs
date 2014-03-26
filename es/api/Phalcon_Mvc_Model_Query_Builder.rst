@@ -20,11 +20,48 @@ Helps to create PHQL queries using an OO interface
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $params])
 
-Phalcon\\Mvc\\Model\\Query\\Builder constructor
+Phalcon\\Mvc\\Model\\Query\\Builder constructor 
+
+.. code-block:: php
+
+    <?php
+
+     $params = array(
+        'models'     => array('Users'),
+        'columns'    => array('id', 'name', 'status'),
+        'conditions' => array(
+            array(
+                "created > :min: AND created < :max:",
+                array("min" => '2013-01-01',   'max' => '2014-01-01'),
+                array("min" => PDO::PARAM_STR, 'max' => PDO::PARAM_STR),
+            ),
+        ),
+        // or 'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
+        'group'      => array('id', 'name'),
+        'having'     => "name = 'Kamil'",
+        'order'      => array('name', 'id'),
+        'limit'      => 20,
+        'offset'     => 20,
+        // or 'limit' => array(20, 20),
+    );
+    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **distinct** (*unknown* $distinct)
+
+Sets SELECT DISTINCT / SELECT ALL flag
+
+
+
+public *bool*  **getDistinct** ()
+
+Returns SELECT DISTINCT / SELECT ALL flag
 
 
 
@@ -67,6 +104,7 @@ Sets the models who makes part of the query
 
     <?php
 
+    $builder->from('Robots');
     $builder->from(array('Robots', 'RobotsParts'));
 
 
@@ -91,15 +129,34 @@ Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a join to the query 
+Adds a INNER join to the query 
 
 .. code-block:: php
 
     <?php
 
+    $builder->join('Robots');
+    $builder->join('Robots', 'r.id = RobotsParts.robots_id');
     $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+
+Adds a INNER join to the query 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->innerJoin('Robots');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
+    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 
@@ -130,7 +187,7 @@ Adds a RIGHT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Sets the query conditions 
 
@@ -138,12 +195,13 @@ Sets the query conditions
 
     <?php
 
-    $builder->where('name = :name: AND id > :id:');
+    $builder->where('name = "Peter"');
+    $builder->where('name = :name: AND id > :id:', array('name' => 'Peter', 'id' => 100));
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using a AND operator 
 
@@ -151,12 +209,13 @@ Appends a condition to the current conditions using a AND operator
 
     <?php
 
-    $builder->andWhere('name = :name: AND id > :id:');
+    $builder->andWhere('name = "Peter"');
+    $builder->andWhere('name = :name: AND id > :id:', array('name' => 'Peter', 'id' => 100));
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Appends a condition to the current conditions using a OR operator 
 
@@ -164,7 +223,60 @@ Appends a condition to the current conditions using a OR operator
 
     <?php
 
-    $builder->orWhere('name = :name: AND id > :id:');
+    $builder->orWhere('name = "Peter"');
+    $builder->orWhere('name = :name: AND id > :id:', array('name' => 'Peter', 'id' => 100));
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->betweenWhere('price', 100.25, 200.50);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+
+Appends a NOT BETWEEN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->notBetweenWhere('price', 100.25, 200.50);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+
+Appends an IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->inWhere('id', [1, 2, 3]);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+
+Appends a NOT IN condition to the current conditions 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->notInWhere('id', [1, 2, 3]);
 
 
 

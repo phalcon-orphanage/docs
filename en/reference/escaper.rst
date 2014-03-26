@@ -1,6 +1,5 @@
 Contextual Escaping
 ===================
-
 Websites and Web applications are vulnerable to XSS_ attacks, despite PHP provides escaping functionality, in some contexts
 those are not sufficient/appropriate. :doc:`Phalcon\\Escaper <../api/Phalcon_Escaper>` provides contextual escaping, this component is written in C providing
 the minimal overhead when escaping different kinds of texts.
@@ -27,7 +26,7 @@ To illustrate how this component works and why it is important, consider the fol
         //Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        //Create a escaper
+        //Create an escaper
         $e = new Phalcon\Escaper();
 
     ?>
@@ -69,7 +68,7 @@ The most common situation when inserting unsafe data is between HTML tags:
 
 .. code-block:: html
 
-    <div class="comments"><!-- Escape unstrusted data here! --></div>
+    <div class="comments"><!-- Escape untrusted data here! --></div>
 
 You can escape those data using the escapeHtml method:
 
@@ -90,7 +89,7 @@ character to the form. This kind of escaping is intended to most simpler attribu
 
 .. code-block:: html
 
-    <table width="Escape unstrusted data here!"><tr><td>Hello</td></tr></table>
+    <table width="Escape untrusted data here!"><tr><td>Hello</td></tr></table>
 
 You can escape an HTML attribute by using the escapeHtmlAttr method:
 
@@ -110,7 +109,7 @@ Some HTML attributes like 'href' or 'url' need to be escaped differently:
 
 .. code-block:: html
 
-    <a href="Escape unstrusted data here!">Some link</a>
+    <a href="Escape untrusted data here!">Some link</a>
 
 You can escape an HTML attribute by using the escapeUrl method:
 
@@ -150,7 +149,7 @@ Strings to be inserted into javascript code also must be properly escaped:
 
 .. code-block:: html
 
-    <script>document.title = 'Escape unstrusted data here'</script>
+    <script>document.title = 'Escape untrusted data here'</script>
 
 You can escape an HTML attribute by using the escapeJs method:
 
@@ -160,7 +159,7 @@ You can escape an HTML attribute by using the escapeJs method:
 
 .. code-block:: html
 
-    <script>alert('\x27\x3b\x20alert\x28100\x29\x3b\x20var\x20x\x3d\x27')</script>
+    <script>document.title = '\x27; alert(100); var x\x3d\x27'</script>
 
 .. _OWASP : https://www.owasp.org
 .. _XSS : https://www.owasp.org/index.php/XSS

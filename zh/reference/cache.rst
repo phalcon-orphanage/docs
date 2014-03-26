@@ -194,7 +194,7 @@ Querying the cache
     <?php
 
     // Delete an item with a specific key
-    $cache->queryKeys("someKey");
+    $cache->delete("someKey");
 
     // Delete all items from the cache
     $keys = $cache->queryKeys();

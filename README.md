@@ -1,8 +1,8 @@
-# Phalcon PHP Framework Documentation
+# Phalcon Framework Documentation
 
 ## Welcome
 
-This is the repository for the Phalcon PHP documentation. Our documentation is
+This is the repository for the Phalcon documentation. Our documentation is
 hosted on Read The Docs (http://www.readthedocs.org) which is automatically
 updated when any changes are made to this repository.
 

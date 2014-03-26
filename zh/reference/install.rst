@@ -97,6 +97,10 @@ or
     export CFLAGS="-O2 -fno-delete-null-pointer-checks"
     cd /usr/ports/www/phalcon && make install clean
 
+FreeBSD 10.0 可以使用 pkg 命令安装 （pkg 是FreeBSD 10最新包管理命令，旧的 pkg_add 将弃用）
+
+   yes | pkg install phalcon
+   
 Installation Notes
 ^^^^^^^^^^^^^^^^^^
 

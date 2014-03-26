@@ -1,12 +1,13 @@
-Access Control Lists ACL
+访问控制列表 ACL
 ========================
 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` provides an easy and lightweight management of ACLs as well as the permissions attached to them. `Access Control Lists`_ (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
-Creating an ACL
+创建一个 ACL
 ---------------
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. An example using the memory adapter is below:
+该组件被设计为最初工作在内存中。这提供了易用性和速度在访问列表中的每一个环节。 The :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` constructor takes as its first parameter an adapter used to retriever the information related to the control list. 
+使用内存适配器的一个例子是如下：
 
 .. code-block:: php
 
@@ -21,9 +22,10 @@ By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on r
     // Default action is deny access
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-Adding Roles to the ACL
+添加角色到 ACL
 -----------------------
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+一个角色是一个对象，可以或不可以访问某些资源在访问列表中的对象。作为一个例子，我们将定义角色如同一个组织中的一组人。
+:doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` 类可以以更结构化的方式创建角色。让我们添加一些角色到刚刚创建的列表中:
 
 .. code-block:: php
 
@@ -39,9 +41,9 @@ A role is an object that can or cannot access certain resources in the access li
     // Add "Designers" role to acl without a Phalcon\Acl\Role
     $acl->addRole("Designers");
 
-As you can see, roles are defined directly without using a instance.
+正如你所看到的，角色被直接定义不需要实例化。
 
-Adding Resources
+添加资源
 ----------------
 Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
 
@@ -56,7 +58,7 @@ Resources are objects where access is controlled. Normally in MVC applications r
     $acl->addResource($customersResource, "search");
     $acl->addResource($customersResource, array("create", "update"));
 
-Defining Access Controls
+定义访问控制
 ------------------------
 Now we've roles and resources. It's time to define the ACL i.e. which roles can access which resources. This part is very important especially taking in consideration your default access level "allow" or "deny".
 
@@ -71,9 +73,9 @@ Now we've roles and resources. It's time to define the ACL i.e. which roles can 
 
 The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.
 
-Querying an ACL
+查询一个 ACL
 ---------------
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+一旦列表已经完全确定。我们可以查询它，检测一个角色允许与否。
 
 .. code-block:: php
 
@@ -84,7 +86,7 @@ Once the list has been completely defined. We can query it to check if a role ha
     $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
 
-Roles Inheritance
+角色继承
 -----------------
 You can build complex role structures using the inheritance that :doc:`Phalcon\\Acl\\Role <../api/Phalcon_Acl_Role>` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the function call, when adding that role in the list.
 
@@ -102,7 +104,7 @@ You can build complex role structures using the inheritance that :doc:`Phalcon\\
     // Add "Administrators" role inheriting from "Guests" its accesses
     $acl->addRole($roleAdmins, $roleGuests);
 
-Serializing ACL lists
+序列化 ACL 列表
 ---------------------
 To improve performance :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` instances can be serialized and stored in text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
 
@@ -172,7 +174,7 @@ The following example demonstrates how to attach listeners to this component:
     //Bind the eventsManager to the acl component
     $acl->setEventsManager($eventManagers);
 
-Implementing your own adapters
+实现自己的适配器
 ------------------------------
 The :doc:`Phalcon\\Acl\\AdapterInterface <../api/Phalcon_Acl_AdapterInterface>` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
 

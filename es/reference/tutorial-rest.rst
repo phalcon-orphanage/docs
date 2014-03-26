@@ -10,7 +10,6 @@ different HTTP methods:
 
 Defining the API
 ----------------
-
 The API consists of the following methods:
 
 +--------+----------------------------+----------------------------------------------------------+
@@ -124,11 +123,12 @@ application:
 
     <?php
 
-    use \Phalcon\Mvc\Model\Message;
-    use \Phalcon\Mvc\Model\Validator\InclusionIn;
-    use \Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Message,
+        Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Uniqueness;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
@@ -201,7 +201,7 @@ perform this simple query returning the results as JSON:
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -226,11 +226,11 @@ The searching by name handler would look like:
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%'.$name.'%'
+            'name' => '%' . $name . '%'
         ));
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -255,7 +255,7 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
             'id' => $id
         ))->getFirst();
 
-        if ($robot==false) {
+        if ($robot == false) {
             $response = array('status' => 'NOT-FOUND');
         } else {
             $response = array(
@@ -291,8 +291,10 @@ Taking the data as a JSON string inserted in the body of the request, we also us
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Check if the insertion was successful
+        if ($status->success() == true) {
+
+            $this->response->setStatusCode(201, "Created")->sendHeaders();
 
             $robot->id = $status->getModel()->id;
 
@@ -301,7 +303,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             //Send errors to the client
             $errors = array();
@@ -338,15 +340,15 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Check if the insertion was successful
+        if ($status->success() == true) {
 
             $response = array('status' => 'OK');
 
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -376,14 +378,14 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
-        if($status->success()==true){
+        if ($status->success() == true) {
 
             $response = array('status' => 'OK');
 
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -451,7 +453,7 @@ Insert a new robot:
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 200 OK
+    HTTP/1.1 201 Created
     Date: Wed, 12 Sep 2012 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
@@ -466,7 +468,7 @@ Try to insert a new robot with the name of an existing robot:
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
@@ -481,7 +483,7 @@ Or update a robot with an unknown type:
     curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
         http://localhost/my-rest-api/api/robots/4
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104

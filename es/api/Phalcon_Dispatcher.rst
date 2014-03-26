@@ -1,5 +1,5 @@
-Class **Phalcon\\Dispatcher**
-=============================
+Abstract class **Phalcon\\Dispatcher**
+======================================
 
 *implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
@@ -22,7 +22,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -60,9 +60,21 @@ Sets the default action suffix
 
 
 
+public  **setModuleName** (*string* $moduleName)
+
+Sets the module where the controller is (only informative)
+
+
+
+public *string*  **getModuleName** ()
+
+Gets the module where the controller class is
+
+
+
 public  **setNamespaceName** (*string* $namespaceName)
 
-Sets a namespace to be prepended to the handler name
+Sets the namespace where the controller class is
 
 
 
@@ -120,7 +132,7 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters], [*mixed* $defaultValue])
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters])
 
 Gets a param by its name or numeric index
 
@@ -158,7 +170,26 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action
+Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
+
+.. code-block:: php
+
+    <?php
+
+      $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
+
+
+
+
+public *boolean*  **wasForwarded** ()
+
+Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** ()
+
+Possible class name that will be located to dispatch the request
 
 
 

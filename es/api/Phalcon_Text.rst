@@ -1,7 +1,7 @@
-Class **Phalcon\\Text**
-=======================
+Abstract class **Phalcon\\Text**
+================================
 
-Provides utilities when working with strings
+Provides utilities to work with texts
 
 
 Constants
@@ -18,7 +18,7 @@ Constants
 *integer* **RANDOM_NOZERO**
 
 Methods
----------
+-------
 
 public static *string*  **camelize** (*string* $str)
 
@@ -41,7 +41,7 @@ Uncamelize strings which are camelized
 
     <?php
 
-    echo Phalcon\Text::camelize('CocoBongo'); //coco_bongo
+    echo Phalcon\Text::uncamelize('CocoBongo'); //coco_bongo
 
 
 
@@ -55,7 +55,7 @@ Adds a number to a string or increment that number if it already is defined
     <?php
 
     echo Phalcon\Text::increment("a"); // "a_1"
-      echo Phalcon\Text::increment("a_1"); // "a_2"
+    echo Phalcon\Text::increment("a_1"); // "a_2"
 
 
 
@@ -73,7 +73,7 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 
 
-public static  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
+public static *boolean*  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
 
 Check if a string starts with a given string 
 
@@ -82,13 +82,13 @@ Check if a string starts with a given string
     <?php
 
     echo Phalcon\Text::startsWith("Hello", "He"); // true
-      echo Phalcon\Text::startsWith("Hello", "he"); // false
-      echo Phalcon\Text::startsWith("Hello", "he", false); // true
+    echo Phalcon\Text::startsWith("Hello", "he"); // false
+    echo Phalcon\Text::startsWith("Hello", "he", false); // true
 
 
 
 
-public static  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
+public static *boolean*  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
 
 Check if a string ends with a given string 
 
@@ -97,21 +97,21 @@ Check if a string ends with a given string
     <?php
 
     echo Phalcon\Text::endsWith("Hello", "llo"); // true
-      echo Phalcon\Text::endsWith("Hello", "LLO"); // false
-      echo Phalcon\Text::endsWith("Hello", "LLO", false); // true
+    echo Phalcon\Text::endsWith("Hello", "LLO"); // false
+    echo Phalcon\Text::endsWith("Hello", "LLO", false); // true
 
 
 
 
 public static *string*  **lower** (*string* $str)
 
-Lowecases a string, this function make use of the mbstring extension if available
+Lowercases a string, this function makes use of the mbstring extension if available
 
 
 
 public static *string*  **upper** (*string* $str)
 
-Uppercases a string, this function make use of the mbstring extension if available
+Uppercases a string, this function makes use of the mbstring extension if available
 
 
 

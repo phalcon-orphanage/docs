@@ -5,13 +5,7 @@ Phalcon\\Mvc\\Model\\QueryInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*string* $phql)
-
-Phalcon\\Mvc\\Model\\Query constructor
-
-
+-------
 
 abstract public *array*  **parse** ()
 

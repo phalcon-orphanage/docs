@@ -1,12 +1,11 @@
 Generating URLs and Paths
 =========================
-
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 
 Setting a base URI
 ------------------
-Dependending of which directory of your document root your application is installed, it may have a base uri or not.
+Depending of which directory of your document root your application is installed, it may have a base uri or not.
 
 For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
 baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
@@ -28,7 +27,14 @@ is recommended setting up it manually:
 
     $url = new Phalcon\Mvc\Url();
 
+    //Setting a relative base URI
     $url->setBaseUri('/invo/');
+
+    //Setting a full domain as base URI
+    $url->setBaseUri('//my.domain.com/');
+
+    //Setting a full domain as base URI
+    $url->setBaseUri('http://my.domain.com/my-app/');
 
 Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
 
@@ -37,9 +43,9 @@ Usually, this component must be registered in the Dependency Injector container,
     <?php
 
     $di->set('url', function(){
-    	$url = new Phalcon\Mvc\Url();
-    	$url->setBaseUri('/invo/');
-    	return $url;
+        $url = new Phalcon\Mvc\Url();
+        $url->setBaseUri('/invo/');
+        return $url;
     });
 
 Generating URIs
@@ -102,10 +108,10 @@ You can also use $_SERVER["REQUEST_URI"]:
 
     $url = new Phalcon\Mvc\Url();
 
-    //Pass the URI using $_SERVER["REQUEST_URI"]
+    //Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
 
-    //Pass the URI in $_GET["_url"]
+    //Pass the URI using $_SERVER["REQUEST_URI"]
     $url->setBaseUri('/invo/index.php/');
 
 In this case, it's necessary to manually handle the required URI in the Router:
@@ -137,6 +143,30 @@ The function "url" is available in volt to generate URLs using this component:
 .. code-block:: html+jinja
 
     <a href="{{ url("posts/edit/1002") }}">Edit</a>
+
+Generate static routes:
+
+.. code-block:: html+jinja
+
+    <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
+
+Static vs. Dynamic Uris
+-----------------------
+This component allow you to set up a different base uri for static resources in the application:
+
+.. code-block:: php
+
+    <?php
+
+    $url = new Phalcon\Mvc\Url();
+
+    //Dynamic URIs are
+    $url->setBaseUri('/');
+
+    //Static resources go through a CDN
+    $url->setStaticBaseUri('http://static.mywebsite.com/');
+
+:doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
 Implementing your own Url Generator
 -----------------------------------

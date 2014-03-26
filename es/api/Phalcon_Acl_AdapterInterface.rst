@@ -5,7 +5,7 @@ Phalcon\\Acl\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setDefaultAction** (*int* $defaultAccess)
 
@@ -19,7 +19,7 @@ Returns the default ACL access level
 
 
 
-abstract public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*array* $accessInherits])
+abstract public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*string* $accessInherits])
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 

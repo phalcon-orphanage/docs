@@ -5,7 +5,7 @@ Phalcon\\FlashInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *string*  **error** (*string* $message)
 

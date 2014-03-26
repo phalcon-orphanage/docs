@@ -37,12 +37,12 @@ A role is an object that can or cannot access certain resources in the access li
     $roleGuests = new \Phalcon\Acl\Role("Guests");
 
     // Add "Guests" role to acl
-    acl->addRole($roleGuests);
+    $acl->addRole($roleGuests);
 
     // Add "Designers" role to acl without a Phalcon\Acl\Role
     $acl->addRole("Designers");
 
-As you can see, roles are defined directly without using a instance.
+As you can see, roles are defined directly without using an instance.
 
 Adding Resources
 ----------------
@@ -72,7 +72,7 @@ Now we've roles and resources. It's time to define the ACL i.e. which roles can 
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
 
-The allow method designates that a particular role has granted access to access a particular resource. The deny method does the opposite.
+The allow method designates that a particular role has granted access to a particular resource. The deny method does the opposite.
 
 Querying an ACL
 ---------------
@@ -115,9 +115,9 @@ so that they can be loaded at will without having to redefine the whole list. Yo
     <?php
 
     //Check whether acl data already exist
-    if (!file_exists("app/security/acl.data")) {
+    if (!is_file("app/security/acl.data")) {
 
-        $acl = new \Phalcon\Acl("Memory");
+        $acl = new \Phalcon\Acl\Adapter\Memory();
 
         //... Define roles, resources, access, etc
 
@@ -161,7 +161,7 @@ The following example demonstrates how to attach listeners to this component:
 
     //Attach a listener for type "acl"
     $eventsManager->attach("acl", function($event, $acl) {
-        if ($event->getType() == 'beforeCheckAccess') {
+        if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
                     $acl->getActiveResource(),
                     $acl->getActiveAccess();

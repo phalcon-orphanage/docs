@@ -1,11 +1,11 @@
 Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
 ==========================================
 
-*extends* :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
+*extends* abstract class :doc:`Phalcon\\Db\\Adapter\\Pdo <Phalcon_Db_Adapter_Pdo>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
 
-Specific functions for the Mysql database system 
+Specific functions for the Mysql database system  
 
 .. code-block:: php
 
@@ -24,7 +24,7 @@ Specific functions for the Mysql database system
 
 
 Methods
----------
+-------
 
 public *string*  **escapeIdentifier** (*string* $identifier)
 
@@ -81,8 +81,8 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
@@ -95,13 +95,13 @@ Executes a prepared statement binding. This function uses integer indexes starti
 
     <?php
 
-     $statement = $db->prepare('SELECT * FROM robots WHERE name = :name');
-     $result = $connection->executePrepared($statement, array('name' => 'Voltron'));
+     $statement = $connection->prepare('SELECT * FROM robots WHERE name = :name');
+     $pdoResult = $connection->executePrepared($statement, array('name' => 'Voltron'));
 
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows 
 
@@ -116,7 +116,7 @@ Sends SQL statements to the database server returning the success state. Use thi
 
 
 
-public *boolean*  **execute** (*string* $sqlStatement, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **execute** (*string* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any row 
 
@@ -153,7 +153,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\Adapter\\Pdo
 
-Escapes a value to avoid SQL injections 
+Escapes a value to avoid SQL injections according to the active charset in the connection 
 
 .. code-block:: php
 
@@ -164,21 +164,7 @@ Escapes a value to avoid SQL injections
 
 
 
-public *string*  **bindParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Manually bind params to a SQL statement. This method requires an active connection to a database system 
-
-.. code-block:: php
-
-    <?php
-
-    $sql = $connection->bindParams('SELECT * FROM robots WHERE name = ?0', array('Bender'));
-      echo $sql; // SELECT * FROM robots WHERE name = 'Bender'
-
-
-
-
-public *array*  **convertBoundParams** (*string* $sql, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *array*  **convertBoundParams** (*unknown* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ? 
 
@@ -212,21 +198,27 @@ Returns the insert id for the auto_increment/serial column inserted in the laste
 
 
 
-public *boolean*  **begin** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **begin** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Starts a transaction in the connection
 
 
 
-public *boolean*  **rollback** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **rollback** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Rollbacks the active transaction in the connection
 
 
 
-public *boolean*  **commit** () inherited from Phalcon\\Db\\Adapter\\Pdo
+public *boolean*  **commit** ([*boolean* $nesting]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Commits the active transaction in the connection
+
+
+
+public *int*  **getTransactionLevel** () inherited from Phalcon\\Db\\Adapter\\Pdo
+
+Returns the current transaction nesting level
 
 
 
@@ -238,8 +230,8 @@ Checks whether the connection is under a transaction
 
     <?php
 
-     $connection->begin();
-     var_dump($connection->isUnderTransaction()); //true
+    $connection->begin();
+    var_dump($connection->isUnderTransaction()); //true
 
 
 
@@ -247,69 +239,6 @@ Checks whether the connection is under a transaction
 public *\PDO*  **getInternalHandler** () inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Return internal PDO handler
-
-
-
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Lists table indexes 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->describeIndexes('robots_parts'));
-
-
-
-
-public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Lists table references 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->describeReferences('robots_parts'));
-
-
-
-
-public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Gets creation options from a table 
-
-.. code-block:: php
-
-    <?php
-
-     print_r($connection->tableOptions('robots'));
-
-
-
-
-public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** () inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Returns the default identity value to be inserted in an identity column 
-
-.. code-block:: php
-
-    <?php
-
-     //Inserting a new robot with a valid default value for the column 'id'
-     $success = $connection->insert(
-         "robots",
-         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
-         array("id", "name", "year")
-     );
-
-
-
-
-public *boolean*  **supportSequences** () inherited from Phalcon\\Db\\Adapter\\Pdo
-
-Check whether the database system requires a sequence to produce auto-numeric values
 
 
 
@@ -325,7 +254,19 @@ Returns the internal event manager
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public  **setDialect** (*unknown* $dialect) inherited from Phalcon\\Db\\Adapter
+
+Sets the dialect used to produce the SQL
+
+
+
+public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** () inherited from Phalcon\\Db\\Adapter
+
+Returns internal dialect instance
+
+
+
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Returns the first row in a SQL query result 
 
@@ -334,17 +275,17 @@ Returns the first row in a SQL query result
     <?php
 
     //Getting first robot
-    $robot = $connection->fecthOne("SELECT * FROM robots");
+    $robot = $connection->fetchOne("SELECT * FROM robots");
     print_r($robot);
     
     //Getting first robot with associative indexes only
-    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    $robot = $connection->fetchOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Db\\Adapter
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders]) inherited from Phalcon\\Db\\Adapter
 
 Dumps the complete result of a query into an array 
 
@@ -352,14 +293,17 @@ Dumps the complete result of a query into an array
 
     <?php
 
-    //Getting all robots
-    $robots = $connection->fetchAll("SELECT * FROM robots");
-    foreach($robots as $robot){
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach ($robots as $robot) {
     	print_r($robot);
     }
     
-    //Getting all robots with associative indexes only
-    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+      //Getting all robots that contains word "robot" withing the name
+      $robots = $connection->fetchAll("SELECT * FROM robots WHERE name LIKE :name",
+    	Phalcon\Db::FETCH_ASSOC,
+    	array('name' => '%robot%')
+      );
     foreach($robots as $robot){
     	print_r($robot);
     }
@@ -399,7 +343,7 @@ Updates data on a table using custom RBDM SQL syntax
      //Updating existing robot
      $success = $connection->update(
          "robots",
-         array("name")
+         array("name"),
          array("New Astro Boy"),
          "id = 101"
      );
@@ -493,9 +437,21 @@ Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, *string* $schemaName, [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
+public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
 
 Drops a table from a schema/database
+
+
+
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+Creates a view
+
+
+
+public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists]) inherited from Phalcon\\Db\\Adapter
+
+Drops a view
 
 
 
@@ -567,8 +523,126 @@ List all tables on a database
 
     <?php
 
-     	print_r($connection->listTables("blog");
+     	print_r($connection->listTables("blog"));
 
+
+
+
+public *array*  **listViews** ([*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+List all views on a database 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->listViews("blog")); ?>
+
+
+
+
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter
+
+Lists table indexes 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->describeIndexes('robots_parts'));
+
+
+
+
+public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\Adapter
+
+Lists table references 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->describeReferences('robots_parts'));
+
+
+
+
+public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName]) inherited from Phalcon\\Db\\Adapter
+
+Gets creation options from a table 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->tableOptions('robots'));
+
+
+
+
+public *boolean*  **createSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Creates a new savepoint
+
+
+
+public *boolean*  **releaseSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Releases given savepoint
+
+
+
+public *boolean*  **rollbackSavepoint** (*string* $name) inherited from Phalcon\\Db\\Adapter
+
+Rollbacks given savepoint
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints) inherited from Phalcon\\Db\\Adapter
+
+Set if nested transactions should use savepoints
+
+
+
+public *boolean*  **isNestedTransactionsWithSavepoints** () inherited from Phalcon\\Db\\Adapter
+
+Returns if nested transactions should use savepoints
+
+
+
+public *string*  **getNestedTransactionSavepointName** () inherited from Phalcon\\Db\\Adapter
+
+Returns the savepoint name to use for nested transactions
+
+
+
+public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** () inherited from Phalcon\\Db\\Adapter
+
+Returns the default identity value to be inserted in an identity column 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot with a valid default value for the column 'id'
+     $success = $connection->insert(
+         "robots",
+         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
+         array("id", "name", "year")
+     );
+
+
+
+
+public *boolean*  **supportSequences** () inherited from Phalcon\\Db\\Adapter
+
+Check whether the database system requires a sequence to produce auto-numeric values
+
+
+
+public *boolean*  **useExplicitIdValue** () inherited from Phalcon\\Db\\Adapter
+
+Check whether the database system requires an explicit value for identity columns
 
 
 
@@ -617,12 +691,6 @@ Returns type of database system the adapter is used for
 public *string*  **getDialectType** () inherited from Phalcon\\Db\\Adapter
 
 Returns the name of the dialect used
-
-
-
-public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** () inherited from Phalcon\\Db\\Adapter
-
-Returns internal dialect instance
 
 
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Micro**
 =============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, ArrayAccess
 
@@ -22,7 +22,13 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 
 
 Methods
----------
+-------
+
+public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+
+Phalcon\\Mvc\\Micro constructor
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -78,7 +84,13 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public  **notFound** (*callable* $handler)
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **mount** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection)
+
+Mounts a collection of handlers
+
+
+
+public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
@@ -120,6 +132,12 @@ Handle the whole request
 
 
 
+public  **stop** ()
+
+Stops the middleware execution avoiding than other middlewares be executed
+
+
+
 public  **setActiveHandler** (*callable* $activeHandler)
 
 Sets externally the handler that must be called by the matched route
@@ -138,15 +156,15 @@ Returns the value returned by the executed handler
 
 
 
-public *boolean*  **offsetExists** (*string* $alias)
+public *boolean*  **offsetExists** (*unknown* $serviceName)
 
-Check if a service is registered in the internal services container using the array syntax
+Check if a service is registered in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::hasService()
 
 
 
-public  **offsetSet** (*string* $alias, *mixed* $definition)
+public  **offsetSet** (*unknown* $serviceName, *mixed* $definition, [*unknown* $shared])
 
-Allows to register a shared service in the internal services container using the array syntax 
+Allows to register a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::setService() 
 
 .. code-block:: php
 
@@ -157,15 +175,15 @@ Allows to register a shared service in the internal services container using the
 
 
 
-public *mixed*  **offsetGet** (*string* $alias)
+public *mixed*  **offsetGet** (*unknown* $serviceName)
 
-Allows to obtain a shared service in the internal services container using the array syntax 
+Allows to obtain a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::getService() 
 
 .. code-block:: php
 
     <?php
 
-    var_dump($di['request']);
+    var_dump($app['request']);
 
 
 
@@ -190,7 +208,13 @@ Appends an 'after' middleware to be called after execute the route
 
 public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **finish** (*callable* $handler)
 
-Appends an 'finish' middleware to be called when the request is finished
+Appends a 'finish' middleware to be called when the request is finished
+
+
+
+public *array*  **getHandlers** ()
+
+Returns the internal handlers attached to the application
 
 
 
@@ -212,7 +236,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

@@ -23,6 +23,8 @@ database engines are supported:
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 | SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+| Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
++------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 Implementing your own adapters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -42,15 +44,17 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 | SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-
-Connecting to Databases
------------------------
-To create a connection it's neccesary instantiate the adapter class. It only requires an array with the connection parameters. The example
-below shows how to create a connection passing both required and optional parameters:
+| Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
++------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
 Implementing your own dialects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
+
+Connecting to Databases
+-----------------------
+To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example
+below shows how to create a connection passing both required and optional parameters:
 
 .. code-block:: php
 
@@ -100,6 +104,48 @@ The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` in
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
+.. code-block:: php
+
+    <?php
+
+    // Basic configuration
+    $config = array(
+        'username' => 'scott',
+        'password' => 'tiger',
+        'dbname' => '192.168.10.145/orcl',
+    );
+
+    // Advanced configuration
+    $config = array(
+        'dbname' => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
+        'username' => 'scott',
+        'password' => 'tiger',
+        'charset' => 'AL32UTF8',
+    );
+
+    // Create a connection
+    $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
+
+Setting up additional PDO options
+---------------------------------
+You can set PDO options at connection time by passing the parameters 'options':
+
+.. code-block:: php
+
+    <?php
+
+    // Create a connection with PDO options
+    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        "host" => "localhost",
+        "username" => "root",
+        "password" => "sigma",
+        "dbname" => "test_db",
+        "options" => array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES \'UTF8\'",
+            PDO::ATTR_CASE => PDO::CASE_LOWER
+        )
+    ));
+
 Finding Rows
 ------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
@@ -148,7 +194,7 @@ By default these calls create arrays with both associative and numeric indexes. 
     $sql = "SELECT id, name FROM robots ORDER BY name";
     $result = $connection->query($sql);
 
-    $result->setFetchMode(Phalcon\Db::DB_NUM);
+    $result->setFetchMode(Phalcon\Db::FETCH_NUM);
     while ($robot = $result->fetch()) {
        echo $robot[0];
     }
@@ -178,41 +224,19 @@ Binding Parameters
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
-injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 
     <?php
 
     // Binding with numeric placeholders
-    $sql    = "SELECT * FROM robots WHERE name = ?1 ORDER BY name";
-    $sql    = $connection->bindParams($sql, array(1 => "Wall-E"));
-    $result = $connection->query($sql);
+    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
+    $result = $connection->query($sql, array("Wall-E"));
 
     // Binding with named placeholders
-    $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name:, :year:)";
-    $sql     = $connection->bindParams($sql, array("name" => "Astro Boy", "year" => 1952));
-    $success = $connection->query($sql);
-
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2"
-are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter
-data are automatically escaped using `PDO Quote <http://www.php.net/manual/en/pdo.quote.php>`_.
-
-This function takes into account the connection charset, so its recommended to define the correct charset
-in the connection parameters or in your database server configuration, as a wrong
-charset will produce undesired effects when storing or retrieving data.
-
-Also, you can pass your parameterers directly to the execute/query methods. In this case
-bound parameters are directly passed to PDO:
-
-.. code-block:: php
-
-    <?php
-
-    // Binding with PDO placeholders
-    $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
-    $result = $connection->query($sql, array(1 => "Wall-E"));
-
+    $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
+    $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
 Inserting/Updating/Deleting Rows
 --------------------------------
@@ -228,7 +252,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     //With placeholders
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
-    $success = $connection->execute($sql, array('Astroy Boy', 1952));
+    $success = $connection->execute($sql, array('Astro Boy', 1952));
 
     // Generating dynamically the necessary SQL
     $success = $connection->insert(
@@ -243,12 +267,12 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 
     //With placeholders
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
-    $success = $connection->execute($sql, array('Astroy Boy', 101));
+    $success = $connection->execute($sql, array('Astro Boy', 101));
 
     // Generating dynamically the necessary SQL
     $success = $connection->update(
        "robots",
-       array("name")
+       array("name"),
        array("New Astro Boy"),
        "id = 101"
     );
@@ -264,21 +288,99 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     // Generating dynamically the necessary SQL
     $success = $connection->delete("robots", "id = 101");
 
+Transactions and Nested Transactions
+------------------------------------
+Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
+often increase the performance on most database systems:
+
+.. code-block:: php
+
+    <?php
+
+    try {
+
+        //Start a transaction
+        $connection->begin();
+
+        //Execute some SQL statements
+        $connection->execute("DELETE `robots` WHERE `id` = 101");
+        $connection->execute("DELETE `robots` WHERE `id` = 102");
+        $connection->execute("DELETE `robots` WHERE `id` = 103");
+
+        //Commit if everything goes well
+        $connection->commit();
+
+    } catch(Exception $e) {
+        //An exception has occurred rollback the transaction
+        $connection->rollback();
+    }
+
+In addition to standard transactions, Phalcon\\Db provides built-in support for `nested transactions`_
+(if the database system used supports them). When you call begin() for a second time a nested transaction
+is created:
+
+.. code-block:: php
+
+    <?php
+
+    try {
+
+        //Start a transaction
+        $connection->begin();
+
+        //Execute some SQL statements
+        $connection->execute("DELETE `robots` WHERE `id` = 101");
+
+        try {
+
+            //Start a nested transaction
+            $connection->begin();
+
+            //Execute these SQL statements into the nested transaction
+            $connection->execute("DELETE `robots` WHERE `id` = 102");
+            $connection->execute("DELETE `robots` WHERE `id` = 103");
+
+            //Create a save point
+            $connection->commit();
+
+        } catch(Exception $e) {
+            //An error has occurred, release the nested transaction
+            $connection->rollback();
+        }
+
+        //Continue, executing more SQL statements
+        $connection->execute("DELETE `robots` WHERE `id` = 104");
+
+        //Commit if everything goes well
+        $connection->commit();
+
+    } catch(Exception $e) {
+        //An exception has occurred rollback the transaction
+        $connection->rollback();
+    }
+
 Database Events
 ---------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present.
+Some events when returning boolean false could stop the active operation. The following events are supported:
 
-+------------------+-----------------------------------------------------------+---------------------+
-| Event Name       | Triggered                                                 | Can stop operation? |
-+==================+===========================================================+=====================+
-| afterConnect     | After a successfully connection to a database system      | No                  |
-+------------------+-----------------------------------------------------------+---------------------+
-| beforeQuery      | Before send a SQL statement to the database system        | Yes                 |
-+------------------+-----------------------------------------------------------+---------------------+
-| afterQuery       | After send a SQL statement to database system             | No                  |
-+------------------+-----------------------------------------------------------+---------------------+
-| beforeDisconnect | Before close a temporal database connection               | No                  |
-+------------------+-----------------------------------------------------------+---------------------+
++---------------------+-----------------------------------------------------------+---------------------+
+| Event Name          | Triggered                                                 | Can stop operation? |
++=====================+===========================================================+=====================+
+| afterConnect        | After a successfully connection to a database system      | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
+| beforeQuery         | Before send a SQL statement to the database system        | Yes                 |
++---------------------+-----------------------------------------------------------+---------------------+
+| afterQuery          | After send a SQL statement to database system             | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
+| beforeDisconnect    | Before close a temporal database connection               | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
+| beginTransaction    | Before a transaction is going to be started               | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
+| rollbackTransaction | Before a transaction is rollbacked                        | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
+| commitTransaction   | Before a transaction is committed                         | No                  |
++---------------------+------------------------------------------------------------+--------------------+
 
 Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
 
@@ -286,12 +388,15 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager,
+        \Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+
+    $eventsManager = new EventsManager();
 
     //Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+    $connection = new Connection(array(
         "host" => "localhost",
         "username" => "root",
         "password" => "secret",
@@ -300,6 +405,25 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     //Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
+
+Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager->attach('db:beforeQuery', function($event, $connection) {
+
+        //Check for malicious words in SQL statements
+        if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
+            // DROP/ALTER operations aren't allowed in the application,
+            // this must be a SQL injection!
+            return false;
+        }
+
+        //It's ok
+        return true;
+    });
 
 Profiling SQL Statements
 ------------------------
@@ -311,9 +435,12 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     <?php
 
-    $eventsManager = new \Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager,
+        Phalcon\Db\Profiler as DbProfiler;
 
-    $profiler = new \Phalcon\Db\Profiler();
+    $eventsManager = new EventsManager();
+
+    $profiler = new DbProfiler();
 
     //Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($profiler) {
@@ -351,8 +478,9 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     <?php
 
-    use \Phalcon\Db\Profiler as Profiler;
-    use \Phalcon\Db\Profiler\Item as Item;
+    use Phalcon\Events\Manager as EventsManager,
+        Phalcon\Db\Profiler as Profiler,
+        Phalcon\Db\Profiler\Item as Item;
 
     class DbProfiler extends Profiler
     {
@@ -375,15 +503,14 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
-    //Create a EventsManager
-    $eventsManager = new Phalcon\Events\Manager();
+    //Create an EventsManager
+    $eventsManager = new EventsManager();
 
     //Create a listener
     $dbProfiler = new DbProfiler();
 
     //Attach the listener listening for all database events
     $eventsManager->attach('db', $dbProfiler);
-
 
 Logging SQL Statements
 ----------------------
@@ -393,14 +520,18 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Logger,
+        Phalcon\Events\Manager as EventsManager,
+        Phalcon\Logger\Adapter\File as FileLogger;
 
-    $logger = new \Phalcon\Logger\Adapter\File("app/logs/db.log");
+    $eventsManager = new EventsManager();
+
+    $logger = new FileLogger("app/logs/db.log");
 
     //Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
-            $logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
@@ -428,9 +559,9 @@ You can implement your own logger class for database queries, by creating a clas
 The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
 and from then on any SQL statement executed will call that method to log the results.
 
-Describing Tables and Databases
--------------------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and databases.
+Describing Tables/Views
+-----------------------
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and views:
 
 .. code-block:: php
 
@@ -439,22 +570,22 @@ Describing Tables and Databases
     // Get tables on the test_db database
     $tables = $connection->listTables("test_db");
 
-    // Is there a table robots in the database?
+    // Is there a table 'robots' in the database?
     $exists = $connection->tableExists("robots");
 
-    // Get name, data types and special features of robots fields
+    // Get name, data types and special features of 'robots' fields
     $fields = $connection->describeColumns("robots");
     foreach ($fields as $field) {
         echo "Column Type: ", $field["Type"];
     }
 
-    // Get indexes on the robots table
+    // Get indexes on the 'robots' table
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
         print_r($index->getColumns());
     }
 
-    // Get foreign keys on the robots table
+    // Get foreign keys on the 'robots' table
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
         // Print referenced columns
@@ -475,6 +606,18 @@ A table description is very similar to the MySQL describe command, it contains t
 | Null  | Does the column allow null values?                 |
 +-------+----------------------------------------------------+
 
+Methods to get information about views are also implemented for every supported database system:
+
+.. code-block:: php
+
+    <?php
+
+    // Get views on the test_db database
+    $tables = $connection->listViews("test_db");
+
+    // Is there a view 'robots' in the database?
+    $exists = $connection->viewExists("robots");
+
 Creating/Altering/Dropping Tables
 ---------------------------------
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
@@ -484,7 +627,6 @@ differentiate the SQL syntax based on the target storage system.
 
 Creating Tables
 ^^^^^^^^^^^^^^^
-
 The following example shows how to create a table:
 
 .. code-block:: php
@@ -498,8 +640,7 @@ The following example shows how to create a table:
         null,
         array(
            "columns" => array(
-                new Column(
-                    "id",
+                new Column("id",
                     array(
                         "type"          => Column::TYPE_INTEGER,
                         "size"          => 10,
@@ -507,16 +648,14 @@ The following example shows how to create a table:
                         "autoIncrement" => true,
                     )
                 ),
-                new Column(
-                    "name",
+                new Column("name",
                     array(
                         "type"    => Column::TYPE_VARCHAR,
                         "size"    => 70,
                         "notNull" => true,
                     )
                 ),
-                new Column(
-                    "year",
+                new Column("year",
                     array(
                         "type"    => Column::TYPE_INTEGER,
                         "size"    => 11,
@@ -535,7 +674,7 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 +=================+============================================================================================================================================+==========+
 | "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the table is part of the table's primary key                                                                                       | Yes      |
+| "primary"       | True if the column is part of the table's primary
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
@@ -556,8 +695,8 @@ Phalcon\\Db::createTable() accepts an associative array describing the table. Co
 
 Phalcon\\Db supports the following database column types:
 
-* Phalcon\\Db\Column::TYPE_INTEGER
-* Phalcon\\Db\Column::TYPE_DATE
+* Phalcon\\Db\\Column::TYPE_INTEGER
+* Phalcon\\Db\\Column::TYPE_DATE
 * Phalcon\\Db\\Column::TYPE_VARCHAR
 * Phalcon\\Db\\Column::TYPE_DECIMAL
 * Phalcon\\Db\\Column::TYPE_DATETIME
@@ -588,36 +727,24 @@ is limited by these constraints.
 
     <?php
 
-    use \Phalcon\Db\Column as Column;
+    use Phalcon\Db\Column as Column;
 
     // Adding a new column
-    $connection->addColumn(
-        "robots",
-        null,
-        new Column(
-            "robot_type",
-            array(
-                "type"    => Column::TYPE_VARCHAR,
-                "size"    => 32,
-                "notNull" => true,
-                "after"   => "name",
-            )
-        )
+    $connection->addColumn("robots", null,
+        new Column("robot_type", array(
+            "type"    => Column::TYPE_VARCHAR,
+            "size"    => 32,
+            "notNull" => true,
+            "after"   => "name"
+        ))
     );
 
     // Modifying an existing column
-    $connection->modifyColumn(
-        "robots",
-        null,
-        new Column(
-            "name",
-            array(
-                "type" => Column::TYPE_VARCHAR,
-                "size" => 40,
-                "notNull" => true,
-            )
-        )
-    );
+    $connection->modifyColumn("robots", null, new Column("name", array(
+        "type" => Column::TYPE_VARCHAR,
+        "size" => 40,
+        "notNull" => true,
+    )));
 
     // Deleting the column "name"
     $connection->deleteColumn("robots", null, "name");
@@ -638,3 +765,4 @@ Examples on dropping tables:
     $connection->dropTable("robots", "machines");
 
 .. _PDO: http://www.php.net/manual/en/book.pdo.php
+.. _`nested transactions`: http://en.wikipedia.org/wiki/Nested_transaction

@@ -7,7 +7,13 @@ This component allows to create CLI applications using Phalcon
 
 
 Methods
----------
+-------
+
+public  **__construct** ([*unknown* $dependencyInjector])
+
+Phalcon\\CLI\\Console constructor
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -81,7 +87,19 @@ Return the modules registered in the console
 
 public *mixed*  **handle** ([*array* $arguments])
 
-Handle the whole command-line tasks
+Handle the command-line arguments. 
+
+.. code-block:: php
+
+    <?php
+
+     	$arguments = array(
+     		'task' => 'taskname',
+     		'action' => 'action',
+     		'params' => array('parameter1', 'parameter2')
+     	);
+     	$console->handle($arguments);
+
 
 
 

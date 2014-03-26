@@ -1,13 +1,19 @@
-Class **Phalcon\\Translate\\Adapter**
-=====================================
+Abstract class **Phalcon\\Translate\\Adapter**
+==============================================
 
-*implements* ArrayAccess
+*implements* ArrayAccess, :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
 
 Base class for Phalcon\\Translate adapters
 
 
 Methods
----------
+-------
+
+public  **__construct** ()
+
+Class constructore
+
+
 
 public *string*  **_** (*string* $translateKey, [*array* $placeholders])
 
@@ -15,27 +21,39 @@ Returns the translation string of the given key
 
 
 
-public  **offsetSet** (*string* $offset, *string* $value)
+public  **offsetSet** (*unknown* $property, *string* $value)
 
 Sets a translation value
 
 
 
-public *boolean*  **offsetExists** (*string* $translateKey)
+public *boolean*  **offsetExists** (*unknown* $property)
 
 Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*string* $offset)
+public  **offsetUnset** (*unknown* $property)
 
-Elimina un indice del diccionario
+Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*string* $traslateKey)
+public *string*  **offsetGet** (*unknown* $property)
 
 Returns the translation related to the given key
+
+
+
+abstract public *string*  **query** (*string* $index, [*array* $placeholders]) inherited from Phalcon\\Translate\\AdapterInterface
+
+Returns the translation related to the given key
+
+
+
+abstract public *bool*  **exists** (*string* $index) inherited from Phalcon\\Translate\\AdapterInterface
+
+Check whether is defined a translation key in the internal array
 
 
 

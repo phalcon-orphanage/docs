@@ -1,6 +1,5 @@
 Events Manager
 ==============
-
 The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
 points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
@@ -40,15 +39,18 @@ offering hook points based on the methods we defined in our listener class:
 
     <?php
 
-    $eventsManager = new \Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager,
+        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
+    $eventsManager = new EventsManager();
 
     //Create a database listener
-    $dbListener = new MyDbListener()
+    $dbListener = new MyDbListener();
 
     //Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+    $connection = new DbAdapter(array(
         "host" => "localhost",
         "username" => "root",
         "password" => "secret",
@@ -68,6 +70,8 @@ the event listener contains contextual information about the event that is runni
 
     <?php
 
+    use Phalcon\Logger\Adapter\File as Logger;
+
     class MyDbListener
     {
 
@@ -75,7 +79,7 @@ the event listener contains contextual information about the event that is runni
 
         public function __construct()
         {
-            $this->_logger = new \Phalcon\Logger\Adapter\File("../apps/logs/db.log");
+            $this->_logger = new Logger("../apps/logs/db.log");
         }
 
         public function afterQuery($event, $connection)
@@ -91,6 +95,10 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
     <?php
 
+    use Phalcon\Db\Profiler,
+        Phalcon\Logger,
+        Phalcon\Logger\Adapter\File;
+
     class MyDbListener
     {
 
@@ -98,20 +106,29 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
         protected $_logger;
 
+        /**
+         * Creates the profiler and starts the logging
+         */
         public function __construct()
         {
-            $this->_profiler = new \Phalcon\Db\Profiler();
-            $this->_logger = new \Phalcon\Logger\Adapter\File("../apps/logs/db.log");
+            $this->_profiler = new Profiler();
+            $this->_logger = new Logger("../apps/logs/db.log");
         }
 
+        /**
+         * This is executed if the event triggered is 'beforeQuery'
+         */
         public function beforeQuery($event, $connection)
         {
             $this->_profiler->startProfile($connection->getSQLStatement());
         }
 
+        /**
+         * This is executed if the event triggered is 'afterQuery'
+         */
         public function afterQuery($event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
             $this->_profiler->stopProfile();
         }
 
@@ -131,9 +148,9 @@ The resulting profile data can be obtained from the listener:
     //Send a SQL command to the database server
     $connection->execute("SELECT * FROM products p WHERE p.status = 1");
 
-    foreach($dbListener->getProfiler()->getProfiles() as $profile){
+    foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
         echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
-        echo "Start Time: ", $profile->getInitialTime(), "\n"
+        echo "Start Time: ", $profile->getInitialTime(), "\n";
         echo "Final Time: ", $profile->getFinalTime(), "\n";
         echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
@@ -161,7 +178,9 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
     <?php
 
-    class MyComponent implements \Phalcon\Events\EventsAwareInterface
+    use Phalcon\Events\EventsAwareInterface;
+
+    class MyComponent implements EventsAwareInterface
     {
 
         protected $_eventsManager;
@@ -173,7 +192,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
 
         public function getEventsManager()
         {
-            return $this->_eventsManager
+            return $this->_eventsManager;
         }
 
         public function someTask()
@@ -223,7 +242,7 @@ A listener is simply a class that implements any of all the events triggered by 
     $myComponent = new MyComponent();
 
     //Bind the eventsManager to the instance
-    $myComponent->setEventsManager($myComponent);
+    $myComponent->setEventsManager($eventsManager);
 
     //Attach the listener to the EventsManager
     $eventsManager->attach('my-component', new SomeListener());
@@ -273,7 +292,7 @@ If a listener it is only interested in listening a specific type of event you ca
         //...
     });
 
-Event Propagation/Cancelation
+Event Propagation/Cancellation
 -----------------------------
 Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
 The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
@@ -306,16 +325,55 @@ by passing "false" in the fourth parameter of fire:
 
 Listener Priorities
 -------------------
-When attaching listeners you can set a specifical priority. With this feature you can attach listeners indicating the order
+When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order
 in which they must be called:
 
 .. code-block:: php
 
     <?php
 
+    $evManager->enablePriorities(true);
+
     $evManager->attach('db', new DbListener(), 150); //More priority
     $evManager->attach('db', new DbListener(), 100); //Normal priority
     $evManager->attach('db', new DbListener(), 50); //Less priority
+
+Collecting Responses
+--------------------
+The events manager can collect every response returned by every notified listener, this example explains how it works:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Manager as EventsManager;
+
+    $evManager = new EventsManager();
+
+    //Set up the events manager to collect responses
+    $evManager->collectResponses(true);
+
+    //Attach a listener
+    $evManager->attach('custom:custom', function() {
+        return 'first response';
+    });
+
+    //Attach a listener
+    $evManager->attach('custom:custom', function() {
+        return 'second response';
+    });
+
+    //Fire the event
+    $evManager->fire('custom:custom', null);
+
+    //Get all the collected responses
+    print_r($evManager->getResponses());
+
+The above example produces:
+
+.. code-block:: html
+
+    Array ( [0] => first response [1] => second response )
 
 Implementing your own EventsManager
 -----------------------------------

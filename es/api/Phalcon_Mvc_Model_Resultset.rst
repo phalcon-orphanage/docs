@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\Model\\Resultset**
-========================================
+Abstract class **Phalcon\\Mvc\\Model\\Resultset**
+=================================================
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
@@ -40,7 +40,7 @@ Constants
 *integer* **HYDRATE_ARRAYS**
 
 Methods
----------
+-------
 
 public  **next** ()
 
@@ -72,27 +72,27 @@ Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*int* $index)
+public *boolean*  **offsetExists** (*unknown* $property)
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index)
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $property)
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
+public  **offsetSet** (*unknown* $property, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*int* $offset)
+public  **offsetUnset** (*unknown* $property)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
@@ -158,7 +158,24 @@ Returns the error messages produced by a batch operation
 
 public *boolean*  **delete** ([*Closure* $conditionCallback])
 
-Delete every record in the resultset
+Deletes every record in the resultset
+
+
+
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter)
+
+Filters a resultset returning only those the developer requires 
+
+.. code-block:: php
+
+    <?php
+
+     $filtered = $robots->filter(function($robot){
+    	if ($robot->id < 3) {
+    		return $robot;
+    	}
+    });
+
 
 
 

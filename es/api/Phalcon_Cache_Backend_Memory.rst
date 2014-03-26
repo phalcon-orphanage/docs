@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Memory**
 =========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -25,7 +25,7 @@ Stores content in memory. Data is lost when the request is finished
 
 
 Methods
----------
+-------
 
 public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
 
@@ -35,7 +35,7 @@ Returns a cached content
 
 public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APC backend and stops the frontend
+Stores cached content into the backend and stops the frontend
 
 
 
@@ -54,6 +54,24 @@ Query the existing cached keys
 public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
+
+
+
+public *mixed*  **increment** ([*unknown* $key_name], [*unknown* $value])
+
+Increment of given $keyName by $value
+
+
+
+public *long*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Decrement of $keyName by given $value
+
+
+
+public *boolean*  **flush** ()
+
+Immediately invalidates all existing items.
 
 
 
@@ -108,6 +126,12 @@ Sets the last key used in the cache
 public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last key stored by the cache
+
+
+
+public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+
+Gets the last lifetime set
 
 
 

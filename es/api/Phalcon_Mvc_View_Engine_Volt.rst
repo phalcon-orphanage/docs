@@ -1,15 +1,15 @@
 Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 ==========================================
 
-*extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
+*implements* :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Designer friendly and fast template engine for PHP written in C
 
 
 Methods
----------
+-------
 
 public  **setOptions** (*array* $options)
 
@@ -29,7 +29,7 @@ Returns the Volt's compiler
 
 
 
-public  **render** (*string* $templatePath, *array* $params, [*boolean* $mustClean])
+public  **render** (*unknown* $path, *array* $params, [*boolean* $mustClean])
 
 Renders a view using the template engine
 
@@ -47,7 +47,7 @@ Checks if the needle is included in the haystack
 
 
 
-public *string*  **converEncoding** (*string* $text, *string* $from, *string* $to)
+public *string*  **convertEncoding** (*string* $text, *string* $from, *string* $to)
 
 Performs a string conversion
 
@@ -55,7 +55,13 @@ Performs a string conversion
 
 public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
 
-Extracts a slice from an string/array/traversable object value
+Extracts a slice from a string/array/traversable object value
+
+
+
+public *array*  **sort** (*array* $value)
+
+Sorts an array
 
 
 
@@ -107,7 +113,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

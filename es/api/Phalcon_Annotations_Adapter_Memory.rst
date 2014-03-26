@@ -1,25 +1,25 @@
 Class **Phalcon\\Annotations\\Adapter\\Memory**
 ===============================================
 
-*extends* :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Annotations\\Adapter <Phalcon_Annotations_Adapter>`
 
 *implements* :doc:`Phalcon\\Annotations\\AdapterInterface <Phalcon_Annotations_AdapterInterface>`
 
-Stores the parsed annotations in memory. This adapter is the suitable for development/testing
+Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
 
 Methods
----------
+-------
 
-public *array*  **read** (*string* $key)
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
 
-Reads meta-data from memory
+Reads parsed annotations from memory
 
 
 
-public  **write** (*string* $key, *array* $data)
+public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
 
-Writes the meta-data to files
+Writes parsed annotations to memory
 
 
 

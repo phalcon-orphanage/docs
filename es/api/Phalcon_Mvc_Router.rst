@@ -33,7 +33,7 @@ Constants
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
 Methods
----------
+-------
 
 public  **__construct** ([*boolean* $defaultRoutes])
 
@@ -53,13 +53,13 @@ Returns the internal dependency injector
 
 
 
-protected *string*  **_getRewriteUri** ()
+public *string*  **getRewriteUri** ()
 
 Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
 
 
 
-public  **setUriSource** (*string* $uriSource)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setUriSource** (*int* $uriSource)
 
 Sets the URI source. One of the URI_SOURCE_* constants 
 
@@ -72,37 +72,61 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 
 
-public  **removeExtraSlashes** (*boolean* $remove)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **removeExtraSlashes** (*boolean* $remove)
 
 Set whether router must remove the extra slashes in the handled routes
 
 
 
-public  **setDefaultNamespace** (*string* $namespaceName)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultNamespace** (*string* $namespaceName)
 
 Sets the name of the default namespace
 
 
 
-public  **setDefaultModule** (*string* $moduleName)
+public *string*  **getDefaultNamespace** ()
+
+Returns the name of the default namespace
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultModule** (*string* $moduleName)
 
 Sets the name of the default module
 
 
 
-public  **setDefaultController** (*string* $controllerName)
+public *string*  **getDefaultModule** ()
+
+Returns the name of the default module
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultController** (*string* $controllerName)
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*string* $actionName)
+public *string*  **getDefaultController** ()
+
+Returns the default controller name
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
 
 
 
-public  **setDefaults** (*array* $defaults)
+public *string*  **getDefaultAction** ()
+
+Returns the default action name
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaults** (*array* $defaults)
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
@@ -115,6 +139,12 @@ Sets an array of default paths. If a route is missing a path the router will use
     	'action' => 'index'
      ));
 
+
+
+
+public *array*  **getDefaults** ()
+
+Returns an array of default parameters
 
 
 
@@ -190,15 +220,15 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public  **mount** (*unknown* $group)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group)
 
 Mounts a group of routes in the router
 
 
 
-public  **notFound** (*unknown* $paths)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **notFound** (*array|string* $paths)
 
-A set of paths used to
+Set a group of paths to be returned when none of the defined routes are matched
 
 
 
@@ -262,7 +292,7 @@ Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteById** (*string* $id)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  | false **getRouteById** (*string* $id)
 
 Returns a route object by its id
 
@@ -271,6 +301,12 @@ Returns a route object by its id
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteByName** (*string* $name)
 
 Returns a route object by its name
+
+
+
+public  **isExactControllerName** ()
+
+Returns whether controller name should not be mangled
 
 
 

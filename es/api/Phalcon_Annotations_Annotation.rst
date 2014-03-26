@@ -5,7 +5,7 @@ Represents a single annotation in an annotations collection
 
 
 Methods
----------
+-------
 
 public  **__construct** (*array* $reflectionData)
 
@@ -45,23 +45,29 @@ Returns the number of arguments that the annotation has
 
 public *mixed*  **getArgument** (*unknown* $position)
 
-Returns an argument in an specific position
+Returns an argument in a specific position
 
 
 
-public *mixed*  **hasArgument** (*unknown* $position)
+public *bool*  **hasArgument** (*unknown* $position)
 
-Returns an argument in an specific position
+Checks if the annotation has a specific argument
 
 
 
-public *mixed*  **getNamedParameter** (*string* $name)
+public *mixed*  **getNamedArgument** (*unknown* $position)
 
 Returns a named argument
 
 
 
-public *boolean*  **hasNamedArgument** (*unknown* $name)
+public *mixed*  **getNamedParameter** (*unknown* $position)
+
+Returns a named argument (deprecated)
+
+
+
+public *boolean*  **hasNamedArgument** (*unknown* $position)
 
 Checks if the annotation has a specific named argument
 

@@ -1,9 +1,9 @@
 Class **Phalcon\\Acl\\Adapter\\Memory**
 =======================================
 
-*extends* :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
+*implements* :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Manages ACL lists in memory  
 
@@ -52,7 +52,7 @@ Manages ACL lists in memory
     	}
     }
     
-    //Grant acess to private area to role Users
+    //Grant access to private area to role Users
       foreach ($privateResources as $resource => $actions) {
      		foreach ($actions as $action) {
     		$acl->allow('Users', $resource, $action);
@@ -62,7 +62,7 @@ Manages ACL lists in memory
 
 
 Methods
----------
+-------
 
 public  **__construct** ()
 
@@ -211,12 +211,6 @@ Return an array with every role registered in the list
 public :doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` [] **getResources** ()
 
 Return an array with every resource registered in the list
-
-
-
-protected  **_rebuildAccessList** ()
-
-Rebuild the list of access from the inherit lists
 
 
 

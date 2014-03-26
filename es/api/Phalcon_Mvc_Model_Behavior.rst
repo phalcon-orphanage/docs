@@ -1,11 +1,13 @@
-Class **Phalcon\\Mvc\\Model\\Behavior**
-=======================================
+Abstract class **Phalcon\\Mvc\\Model\\Behavior**
+================================================
+
+*implements* :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>`
 
 This is an optional base class for ORM behaviors
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $options])
 

@@ -288,6 +288,9 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         //Check if the insertion was successfull
         if($status->success()==true){
 
+            //Change the HTTP status
+            $this->response->setStatusCode(201, "Created")->sendHeaders();
+
             $robot->id = $status->getModel()->id;
 
             $response = array('status' => 'OK', 'data' => $robot);
@@ -295,7 +298,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             //Send errors to the client
             $errors = array();
@@ -340,7 +343,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -377,7 +380,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(500, "Internal Error")->sendHeaders();
+            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
@@ -445,7 +448,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 200 OK
+    HTTP/1.1 201 Created
     Date: Wed, 12 Sep 2012 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
@@ -460,7 +463,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
         http://localhost/my-rest-api/api/robots
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
@@ -475,7 +478,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
         http://localhost/my-rest-api/api/robots/4
 
-    HTTP/1.1 500 Internal Error
+    HTTP/1.1 409 Conflict
     Date: Wed, 12 Sep 2012 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104

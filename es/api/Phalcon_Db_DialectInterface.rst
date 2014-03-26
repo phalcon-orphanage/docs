@@ -5,7 +5,7 @@ Phalcon\\Db\\DialectInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public *string*  **limit** (*string* $sqlQuery, *int* $number)
 
@@ -109,9 +109,27 @@ Generates SQL to drop a table
 
 
 
+abstract public *string*  **createView** (*string* $viewName, *array* $definition, *string* $schemaName)
+
+Generates SQL to create a view
+
+
+
+abstract public *string*  **dropView** (*string* $viewName, *string* $schemaName, [*unknown* $ifExists])
+
+Generates SQL to drop a view
+
+
+
 abstract public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
 
 Generates SQL checking for the existence of a schema.table
+
+
+
+abstract public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
+
+Generates SQL checking for the existence of a schema.view
 
 
 
@@ -124,6 +142,12 @@ Generates SQL to describe a table
 abstract public *array*  **listTables** ([*string* $schemaName])
 
 List all tables on database
+
+
+
+abstract public *array*  **listViews** ([*string* $schemaName])
+
+List all views on database
 
 
 
@@ -142,6 +166,36 @@ Generates SQL to query foreign keys on a table
 abstract public *string*  **tableOptions** (*string* $table, [*string* $schema])
 
 Generates the SQL to describe the table creation options
+
+
+
+abstract public *boolean*  **supportsSavepoints** ()
+
+Checks whether the platform supports savepoints
+
+
+
+abstract public *boolean*  **supportsReleaseSavepoints** ()
+
+Checks whether the platform supports releasing savepoints.
+
+
+
+abstract public *string*  **createSavepoint** (*string* $name)
+
+Generate SQL to create a new savepoint
+
+
+
+abstract public *string*  **releaseSavepoint** (*string* $name)
+
+Generate SQL to release a savepoint
+
+
+
+abstract public *string*  **rollbackSavepoint** (*string* $name)
+
+Generate SQL to rollback a savepoint
 
 
 
