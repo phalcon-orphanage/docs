@@ -5,13 +5,7 @@ Phalcon\\Mvc\\Model\\QueryInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*string* $phql)
-
-Phalcon\\Mvc\\Model\\Query constructor
-
-
+-------
 
 abstract public *array*  **parse** ()
 
@@ -19,7 +13,7 @@ Parses the intermediate code produced by Phalcon\\Mvc\\Model\\Query\\Lang genera
 
 
 
-abstract public *mixed*  **execute** (*array* $bindParams, *array* $bindTypes)
+abstract public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 

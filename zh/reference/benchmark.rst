@@ -1,17 +1,22 @@
-框架基准测试
-=================
+Framework Benchmarks
+====================
+In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
+able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
+became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
+have a positive impact on a website.
 
-在过去，开发的web应用程序，性能问题并不是作为首要考虑的问题之一。因为硬件可以填补这方面的不足。然后，当Google决定把网站的速度作为搜索排名的条件之一时，性能的重要性就体现出来了。
+The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
+are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
 
-以下的基准测试，将展示Phalcon和其他传统的PHP框架的性能对比，这些基准框架的版本都是最新的稳定版本。
+We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
+or comments please `write us`_. `Check out source at Github`_
 
-我们欢迎程序员利用我们的基准测试程序进行测试，如果您有更好的优化方案或意见，请 `write us`_. `Check out source at Github`_
+What was the test environment?
+------------------------------
+APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
+to avoid potentially additional overheads.
 
-测试的环境?
--------------------
-所有的框架都开启了 APC_ 缓存，且禁用了apache mod_rewrite模块，以避免产生额外的性能开销.
-
-下面是测试的硬件环境:
+The testing hardware environment is as follows:
 
 * Operating System: Mac OS X Lion 10.7.4
 * Web Server: Apache httpd 2.2.22
@@ -33,7 +38,6 @@
 
 List of Benchmarks
 ------------------
-
 .. toctree::
    :maxdepth: 1
 
@@ -42,7 +46,6 @@ List of Benchmarks
 
 ChangeLog
 ---------
-
 .. versionadded:: 1.0
     Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
 
@@ -58,8 +61,14 @@ ChangeLog
 .. versionchanged:: 1.4
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
 
+External Resources
+------------------
+* `For Impatient Web Users, an Eye Blink Is Just Too Long to Wait <http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=0>`_
+* `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`_
+* `How fast are we going now? <http://www.stevesouders.com/blog/2013/05/09/how-fast-are-we-going-now/>`_
+* `Speed, performance and human perception` <http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#SPEED_PERFORMANCE_HUMAN_PERCEPTION>`_
+
 .. _decided: http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html
 .. _write us: https://github.com/phalcon/framework-bench
 .. _Check out source at Github: https://github.com/phalcon/framework-bench
 .. _APC: http://php.net/manual/en/book.apc.php
-

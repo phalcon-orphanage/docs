@@ -1,9 +1,9 @@
-Request Environment
+HTTP ���󻷾���Request Environment��
 ===================
-每一个HTTP请求（通常是由浏览器发起的）包含额外的信息，如头数据的请求，文件，变量等。
-基于Web的应用程序的文件需要分析这些信息，以提供正确的
-响应返回给请求者。 :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` 封装
-信息的请求，允许你在一个面向对象的方法来访问它。
+Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
+files, variables, etc. A web based application needs to parse that information so as to provide the correct
+response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
+information of the request, allowing you to access it in an object-oriented way.
 
 .. code-block:: php
 
@@ -14,19 +14,23 @@ Request Environment
 
     // Check whether the request was made with method POST
     if ($request->isPost() == true) {
+
         // Check whether the request was made with Ajax
         if ($request->isAjax() == true) {
             echo "Request was made using POST and AJAX";
         }
     }
 
-获取数据
------------------
-PHP根据请求的类型自动填充超全局变量$_GET 和 $_POST。这些数组包含表单提交或通过URL请求的参数。这些数组中的变量值是未加过滤的，可能包含非法字符，甚至是恶意代码，这可能会导致 `SQL injection`_ or `Cross Site Scripting (XSS)`_ 攻击。
+��ȡֵ��Getting Values��
+--------------
+PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
+contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
+never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
+`Cross Site Scripting (XSS)`_ attacks.
 
-:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` 允许你访问$_REQUEST,
-$_GET 和 $_POST 这些数组中的值，并且可以通过"filter" (by default
-:doc:`Phalcon\\Filter <filter>`) 服务对他们进行过滤或消毒。下面的例子提供与原始PHP获取数据相同的行为：
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` allows you to access the values stored in the $_REQUEST,
+$_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (by default
+:doc:`Phalcon\\Filter <filter>`). The following examples offer the same behavior:
 
 .. code-block:: php
 
@@ -51,15 +55,19 @@ $_GET 和 $_POST 这些数组中的值，并且可以通过"filter" (by default
     $email = $request->getPost("user_email", null, "some@example.com");
 
 
-在控制器中使用Request
+�������з�������Accessing the Request from Controllers��
 --------------------------------------
-访问请求最常见的地方发生在controller/action中。要想在控制器中访问 :doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` 对象，你可以使用 $this->request 这个公共属性：
+The most common place to access the request environment is in an action of a controller. To access the
+:doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
+the $this->request public property of the controller:
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -83,41 +91,48 @@ $_GET 和 $_POST 这些数组中的值，并且可以通过"filter" (by default
 
     }
 
-文件上传
+�ļ��ϴ���Uploading Files��
 ---------------
-另一种常见的任务是文件上传。:doc:`Phalcon\\HTTP\\Request <../api/Phalcon_Http_Request>` 提供了一个面向对象的方式来实现这个任务：
+Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
+an object-oriented way to achieve this task:
 
 .. code-block:: php
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function uploadAction()
         {
             // Check if the user has uploaded files
             if ($this->request->hasFiles() == true) {
+
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
 
                     //Print file details
                     echo $file->getName(), " ", $file->getSize(), "\n";
 
-
                     //Move the file into the application
-                    $file->moveTo('files/');
+                    $file->moveTo('files/' . $file->getName());
                 }
             }
         }
 
     }
 
-Phalcon\\Http\\Request::getUploadedFiles() 返回的每个对象是类文件 :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` 的实际对象。使用 $_FILES 超全局变量提供了相同的行为。:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` 封装了上传请求中的单个文件信息。
+Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instance of the
+:doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` class. Using the $_FILES superglobal
+array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates
+only the information related to each file uploaded with the request.
 
-Working with Headers
+ʹ��ͷ��Ϣ��Working with Headers��
 --------------------
-正如上面提到的，请求头非常有用，它使我们能够发送适当的响应返回给用户。下面的例子将向你展示使用的方法：
+As mentioned above, request headers contain useful information that allow us to send the proper response back to
+the user. The following examples show usages of that information:
 
 .. code-block:: php
 

@@ -1,12 +1,12 @@
-Apache 安装笔记
+Apache Installation Notes
 =========================
-Apache httpd 是一个非常流行且世人皆知的多平台web服务器
+Apache_ is a popular and well known web server available on many platforms.
 
-配置Phalcon使用Apache httpd  
+Configuring Apache for Phalcon
 ------------------------------
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
 focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
-:doc:`router component <routing>`. 通常一个应用程序的结构如下：
+:doc:`router component <routing>`. Commonly an application has the following structure:
 
 .. code-block:: php
 
@@ -24,8 +24,8 @@ focused on the configuration of the mod-rewrite module allowing to use friendly 
 Directory under the main Document Root
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This being the most common case, the application is installed in any directory under the document root.
-In this case, we use .htaccess 2 files, the first one to hide the application code and forward all requests
-to the application document root (public/).
+In this case, we use two .htaccess files, the first one to hide the application code forwarding all requests
+to the application's document root (public/).
 
 .. code-block:: apacheconf
 
@@ -37,7 +37,7 @@ to the application document root (public/).
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-另外一个方案是使用.htaccess文件，将它放在public/目录下，重写所有URI指定到public/index.php:
+Now a second .htaccess file is located in the public/ directory, this re-writes all the URIs to the public/index.php file:
 
 .. code-block:: apacheconf
 
@@ -50,7 +50,7 @@ to the application document root (public/).
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-如果你想使用.htaccess文件，你可以在主配置文件中删除下面的配置：
+If you do not want to use .htaccess files you can move these configurations to the apache's main configuration file:
 
 .. code-block:: apacheconf
 
@@ -71,9 +71,9 @@ to the application document root (public/).
 
     </IfModule>
 
-虚拟主机
+Virtual Hosts
 ^^^^^^^^^^^^^
-Phalcon运用程序允许运行在虚拟主机环境下：
+And this second configuration allows you to install a Phalcon application in a virtual host:
 
 .. code-block:: apacheconf
 
@@ -92,6 +92,5 @@ Phalcon运用程序允许运行在虚拟主机环境下：
         </Directory>
 
     </VirtualHost>
-
 
 .. _Apache: http://httpd.apache.org/

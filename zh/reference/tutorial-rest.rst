@@ -1,16 +1,16 @@
-教程 3: 创建 RESTful风格 API
+教程 3：创建简单的 RESET API（Tutorial 3: Creating a Simple REST API）
 ======================================
-在本节教程中，我们将展示如何使用不同的HTTP方法创建一个简单的 RESTful_ 风格的API。
+In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
+different HTTP methods:
 
-* 使用HTTP GET方法获取以及检索数据
-* 使用HTTP POST方法添加数据
-* 使用HTTP PUT方法更新数据
-* 使用HTTP DELETE方法删除数据
+* GET to retrieve and search data
+* POST to add data
+* PUT to update data
+* DELETE to delete data
 
-Defining the API
+定义 API（Defining the API）
 ----------------
-
-API包括以下方法：
+The API consists of the following methods:
 
 +--------+----------------------------+----------------------------------------------------------+
 | Method |  URL                       | Action                                                   |
@@ -28,11 +28,12 @@ API包括以下方法：
 | DELETE | /api/robots/2              | Deletes robots based on primary key                      |
 +--------+----------------------------+----------------------------------------------------------+
 
-创建应用
+创建应用（Creating the Application）
 ------------------------
-RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环境来开发它。在这种情况下，我们只要使用 :doc:`micro application <micro>` 就可以了。
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case,
+we will use a :doc:`micro application <micro>` to meet our goal.
 
-下面的文件结构足够了：
+The following file structure is more than enough:
 
 .. code-block:: php
 
@@ -42,9 +43,8 @@ RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环�
         index.php
         .htaccess
 
-首先，我们需要创建一个.htaccess的文件，包含index.php文件的全部重写规则，下面示例就是此文件的全部：
-
-译者注：使用.htaccess文件，前提是指定了你使用的是Apache WEB Sever.
+First, we need an .htaccess file that contains all the rules to rewrite the URIs to the index.php file,
+that is our application:
 
 .. code-block:: apacheconf
 
@@ -54,7 +54,7 @@ RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环�
         RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
-然后，我们按以下方式创建 index.php 文件：
+Then, in the index.php file we create the following:
 
 .. code-block:: php
 
@@ -66,7 +66,7 @@ RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环�
 
     $app->handle();
 
-现在，我们按我们上面的定义创建路由规则：
+Now we will create the routes as we defined above:
 
 .. code-block:: php
 
@@ -106,23 +106,29 @@ RESTful风格的应用程序非常简单，我们用不着使用完整的MVC环�
 
     $app->handle();
 
-每个API方法都需要定义一个与定义的HTTP方法相同名称的路由规则，第一个参数传递路由规则，第二个是处理程序，在这种情况下，处理程序是一个匿名函数。路由规则  '/api/robots/{id:[0-9]+}'，明确设置'id'参数必须是一个数字。
+Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern,
+followed by a handler. In this case, the handler is an anonymous function. The following route: '/api/robots/{id:[0-9]+}',
+by example, explicitly sets that the "id" parameter must have a numeric format.
 
-当用户请求匹配上已定义的路由时，应用程序将执行相应的处理程序。
+When a defined route matches the requested URI then the application executes the corresponding handler.
 
-创建模型(Model)
+创建模型（Creating a Model）
 ----------------
-API需要提供robots的相关信息，这些数据都存储在数据库中。下面的模型使我们以一种面向对象的方式访问数据表。我们需要使用内置的验证器实现一些业务规则。这样做，会使我们对数据更安全的存储放心，以达到我们想要实现的目的：
+Our API provides information about 'robots', these data are stored in a database. The following model allows us to
+access that table in an object-oriented way. We have implemented some business rules using built-in validators
+and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our
+application:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Mvc\Model\Message;
-    use \Phalcon\Mvc\Model\Validator\InclusionIn;
-    use \Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model,
+        Phalcon\Mvc\Model\Message,
+        Phalcon\Mvc\Model\Validator\InclusionIn,
+        Phalcon\Mvc\Model\Validator\Uniqueness;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
@@ -156,11 +162,18 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     }
 
-现在，我们来创建数据库连接以便使用这个模型：
+Now, we must set up a connection to be used by this model and load it within our app:
 
 .. code-block:: php
 
     <?php
+
+    // Use Loader() to autoload our model
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerDirs(array(
+        __DIR__ . '/models/'
+    ))->register();
 
     $di = new \Phalcon\DI\FactoryDefault();
 
@@ -174,14 +187,13 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         ));
     });
 
-    $app = new \Phalcon\Mvc\Micro();
+    //Create and bind the DI to the application
+    $app = new \Phalcon\Mvc\Micro($di);
 
-    //Bind the DI to the application
-    $app->setDI($di);
-
-获取数据
+Retrieving Data
 ---------------
-第一个"handler"实现通过HTTP GET获取所有可用的robots。让我们使用PHQL执行一个简单的数据查询，并返回JSON数据格式：
+The first "handler" that we will implement is which by method GET returns all available robots. Let's use PHQL to
+perform this simple query returning the results as JSON:
 
 .. code-block:: php
 
@@ -194,7 +206,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         $robots = $app->modelsManager->executeQuery($phql);
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -202,14 +214,13 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         }
 
         echo json_encode($data);
-
     });
 
-:doc:`PHQL <phql>`,根据我们使用的数据库系统，允许我们使用面向对象的SQL方言，在内部将其转化为普通的SQL语言，此例使用"use"关键词的匿名函数，允许从整体到局部传递变量。
+:doc:`PHQL <phql>`, allow us to write queries using a high-level, object-oriented SQL dialect that internally
+translates to the right SQL statements depending on the database system we are using. The clause "use" in the
+anonymous function allows us to pass some variables from the global to local scope easily.
 
-译者注：不了解匿名函数及use语法的，请查看PHP 5.4版本的文档（具体是5.3开始，还是5.4开始我也不太清楚，就不查证了）。
-
-处理程序看起来像这样：
+The searching by name handler would look like:
 
 .. code-block:: php
 
@@ -220,11 +231,11 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
         $phql = "SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name";
         $robots = $app->modelsManager->executeQuery($phql, array(
-            'name' => '%'.$name.'%'
+            'name' => '%' . $name . '%'
         ));
 
         $data = array();
-        foreach($robots as $robot){
+        foreach ($robots as $robot) {
             $data[] = array(
                 'id' => $robot->id,
                 'name' => $robot->name,
@@ -235,7 +246,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     });
 
-通过字段"id"检索与上例相当类似，在这种情况下，如果没有检索到，会提示未找到。
+Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:
 
 .. code-block:: php
 
@@ -249,24 +260,27 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
             'id' => $id
         ))->getFirst();
 
-        if ($robot==false) {
-            $response = array('status' => 'NOT-FOUND');
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
+        if ($robot == false) {
+            $response->setJsonContent(array('status' => 'NOT-FOUND'));
         } else {
-            $response = array(
+            $response->setJsonContent(array(
                 'status' => 'FOUND',
                 'data' => array(
                     'id' => $robot->id,
                     'name' => $robot->name
                 )
-            );
+            ));
         }
 
-        echo json_encode($response);
+        return $response;
     });
 
-插入数据
+插入数据（Inserting Data）
 --------------
-客户端提交JSON包装的字符串，我们也使用PHQL插入：
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion:
 
 .. code-block:: php
 
@@ -275,7 +289,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     //Adds a new robot
     $app->post('/api/robots', function() use ($app) {
 
-        $robot = json_decode($app->request->getRawBody());
+        $robot = $app->request->getJsonRawBody();
 
         $phql = "INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)";
 
@@ -285,20 +299,23 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Create a response
+        $response = new Phalcon\Http\Response();
+
+        //Check if the insertion was successful
+        if ($status->success() == true) {
 
             //Change the HTTP status
-            $this->response->setStatusCode(201, "Created")->sendHeaders();
+            $response->setStatusCode(201, "Created");
 
             $robot->id = $status->getModel()->id;
 
-            $response = array('status' => 'OK', 'data' => $robot);
+            $response->setJsonContent(array('status' => 'OK', 'data' => $robot));
 
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
+            $response->setStatusCode(409, "Conflict");
 
             //Send errors to the client
             $errors = array();
@@ -306,17 +323,15 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
-
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
-更新数据
+更新数据（Updating Data）
 -------------
-更新数据非常类似于插入数据。传递的"id"参数指明哪个robots将被更新：
+The data update is similar to insertion. The "id" passed as parameter indicates what robot must be updated:
 
 .. code-block:: php
 
@@ -325,7 +340,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     //Updates robots based on primary key
     $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
 
-        $robot = json_decode($app->request->getRawBody());
+        $robot = $app->request->getJsonRawBody();
 
         $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
         $status = $app->modelsManager->executeQuery($phql, array(
@@ -335,32 +350,31 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
             'year' => $robot->year
         ));
 
-        //Check if the insertion was successfull
-        if($status->success()==true){
+        //Create a response
+        $response = new Phalcon\Http\Response();
 
-            $response = array('status' => 'OK');
-
+        //Check if the insertion was successful
+        if ($status->success() == true) {
+            $response->setJsonContent(array('status' => 'OK'));
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
+            $response->setStatusCode(409, "Conflict");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
-
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
-删除数据
+删除数据（Deleting Data）
 -------------
-删除数据非常类似于更新数据。传递的"id"参数指明哪个robot被删除：
+The data delete is similar to update. The "id" passed as parameter indicates what robot must be deleted:
 
 .. code-block:: php
 
@@ -373,33 +387,34 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
         $status = $app->modelsManager->executeQuery($phql, array(
             'id' => $id
         ));
-        if($status->success()==true){
 
-            $response = array('status' => 'OK');
+        //Create a response
+        $response = new Phalcon\Http\Response();
 
+        if ($status->success() == true) {
+            $response->setJsonContent(array('status' => 'OK'));
         } else {
 
             //Change the HTTP status
-            $this->response->setStatusCode(409, "Conflict")->sendHeaders();
+            $response->setStatusCode(409, "Conflict");
 
             $errors = array();
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
 
-            $response = array('status' => 'ERROR', 'messages' => $errors);
+            $response->setJsonContent(array('status' => 'ERROR', 'messages' => $errors));
 
         }
 
-        echo json_encode($response);
-
+        return $response;
     });
 
-测试应用
+测试应用（Testing our Application）
 -----------------------
-使用 curl_ 可以测试应用程序中每个操作的正确性：
+Using curl_ we'll test every route in our application verifying its proper operation:
 
-获取所有robots:
+Obtain all the robots:
 
 .. code-block:: bash
 
@@ -413,7 +428,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 
-通过名称查找robot:
+Search a robot by its name:
 
 .. code-block:: bash
 
@@ -427,7 +442,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     [{"id":"2","name":"Astro Boy"}]
 
-通过 id 查找 robot:
+Obtain a robot by its id:
 
 .. code-block:: bash
 
@@ -441,7 +456,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 
-插入一个新的robot:
+Insert a new robot:
 
 .. code-block:: bash
 
@@ -456,7 +471,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 
-尝试插入一个与存在的robot相同名称的robot:
+Try to insert a new robot with the name of an existing robot:
 
 .. code-block:: bash
 
@@ -471,7 +486,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     {"status":"ERROR","messages":["The robot name must be unique"]}
 
-或者使用错误的type值更新一个robot:
+Or update a robot with an unknown type:
 
 .. code-block:: bash
 
@@ -487,7 +502,7 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
     {"status":"ERROR","messages":["Value of field 'type' must be part of
         list: droid, mechanical, virtual"]}
 
-最后，测试删除一个robot数据：
+Finally, delete a robot:
 
 .. code-block:: bash
 
@@ -501,9 +516,10 @@ API需要提供robots的相关信息，这些数据都存储在数据库中。�
 
     {"status":"OK"}
 
-结论
+结束语（Conclusion）
 ----------
-正如你所看到的那样，使用Phalcon开发RESTful风格的API相当容易。在接下来的文档中，我们会具体讲解如何开发微应用(micro applications)以及如何使用 :doc:`PHQL <phql>` 。
+As we have seen, develop a RESTful API with Phalcon is easy. Later in the documentation we'll explain in detail how to
+use micro applications and the :doc:`PHQL <phql>` language.
 
 .. _curl : http://en.wikipedia.org/wiki/CURL
 .. _RESTful : http://en.wikipedia.org/wiki/Representational_state_transfer

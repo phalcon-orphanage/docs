@@ -45,18 +45,24 @@ Constants
 
 *integer* **TYPE_FLOAT**
 
+*integer* **TYPE_BOOLEAN**
+
+*integer* **TYPE_DOUBLE**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**
 
 *integer* **BIND_PARAM_STR**
 
+*integer* **BIND_PARAM_BOOL**
+
 *integer* **BIND_PARAM_DECIMAL**
 
 *integer* **BIND_SKIP**
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $columnName, *array* $definition)
 
@@ -142,7 +148,7 @@ Returns the type of bind handling
 
 
 
-public static *\Phalcon\Db\Column*  **__set_state** (*array* $data)
+public static *\Phalcon\Db\Column*  **__set_state** ([*unknown* $properties])
 
 Restores the internal state of a Phalcon\\Db\\Column object
 

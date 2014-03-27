@@ -5,7 +5,7 @@ Phalcon\\Mvc\\ViewInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setViewsDir** (*string* $viewsDir)
 
@@ -19,9 +19,45 @@ Gets views directory
 
 
 
+abstract public  **setLayoutsDir** (*string* $layoutsDir)
+
+Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getLayoutsDir** ()
+
+Gets the current layouts sub-directory
+
+
+
+abstract public  **setPartialsDir** (*string* $partialsDir)
+
+Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getPartialsDir** ()
+
+Gets the current partials sub-directory
+
+
+
 abstract public  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getCurrentRenderLevel** ()
+
+Gets the current render level
+
+
+
+abstract public *string*  **getRenderLevel** ()
+
+Gets the render level for the view
 
 
 
@@ -31,9 +67,27 @@ Sets the render level for the view
 
 
 
-abstract public  **setMainView** (*unknown* $viewPath)
+abstract public  **setMainView** (*string* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory
+
+
+
+abstract public *string*  **getMainView** ()
+
+Returns the name of the main view
+
+
+
+abstract public  **setLayout** (*string* $layout)
+
+Change the layout to be used instead of using the name of the latest controller name
+
+
+
+abstract public *string*  **getLayout** ()
+
+Returns the name of the main view
 
 
 
@@ -109,7 +163,7 @@ Register templating engines
 
 
 
-abstract public  **render** (*string* $controllerName, *string* $actionName, *array* $params)
+abstract public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data
 
@@ -139,7 +193,7 @@ Returns the cache instance used to cache
 
 
 
-abstract public  **cache** (*boolean|array* $options)
+abstract public  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level
 
@@ -178,6 +232,12 @@ Enables the auto-rendering process
 abstract public  **reset** ()
 
 Resets the view component to its factory default values
+
+
+
+abstract public *bool*  **isDisabled** ()
+
+Whether the automatic rendering is disabled
 
 
 

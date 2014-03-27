@@ -5,13 +5,7 @@ Phalcon\\Session\\AdapterInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*array* $options)
-
-Phalcon\\Session construtor
-
-
+-------
 
 abstract public  **start** ()
 
@@ -31,7 +25,7 @@ Get internal options
 
 
 
-abstract public  **get** (*string* $index)
+abstract public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
 
 Gets a session variable from an application context
 
@@ -43,7 +37,7 @@ Sets a session variable in an application context
 
 
 
-abstract public  **has** (*string* $index)
+abstract public *boolean*  **has** (*string* $index)
 
 Check whether a session variable is set in an application context
 
@@ -67,7 +61,7 @@ Check whether the session has been started
 
 
 
-abstract public *boolean*  **destroy** ()
+abstract public *boolean*  **destroy** ([*unknown* $session_id])
 
 Destroys the active session
 

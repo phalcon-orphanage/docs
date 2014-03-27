@@ -15,7 +15,7 @@ This class allows to insert/update raw data without quoting or formating.  The n
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $value)
 

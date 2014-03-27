@@ -5,9 +5,9 @@ Phalcon\\EscaperInterface initializer
 
 
 Methods
----------
+-------
 
-abstract public  **setEnconding** (*string* $encoding)
+abstract public  **setEncoding** (*string* $encoding)
 
 Sets the encoding to be used by the escaper
 
@@ -40,6 +40,12 @@ Escapes a HTML attribute string
 abstract public *string*  **escapeCss** (*string* $css)
 
 Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+
+
+abstract public *string*  **escapeJs** (*string* $js)
+
+Escape Javascript strings by replacing non-alphanumeric chars by their hexadecimal representation
 
 
 

@@ -1,24 +1,25 @@
-Phalcon Query Language (PHQL)
+Phalcon 查询语言（Phalcon Query Language (PHQL)）
 =============================
-译者注：学过JAVA，略懂Hibernate的人应该会知道，hibernate是javaee中一个非常流程的ORM软件，它其中生成的中间语句就叫做HQL。
+Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
+standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
-Phalcon查询语言，也可以叫PhalconQL或PHQL，是一个高层次的，允许你使用一种类SQL语言的方式的一种SQL方言。PHQL是一个用C语言编写的SQL语法分析器。
+To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
+provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-为了达到尽可能高的性能，Phalcon提供了一个分析器，使用了和 SQLite_ 相同的技术。该技术提供了一个小型的内存分析器，具有非常低的内存占用，同时也是线程安全的。
+The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
+finally it converts it to the respective SQL dialect of the target RDBMS.
 
-解析器首先检查传递过来的PHQL语句，然后把它们转化成一种中间性的语句，最后再将其转换为相应的RDBMS所需要的SQL方言。
-
-在PHQL中，我们已经实现了一系列的功能，以保证你在访问数据库时是安全的：
+In PHQL, we've implemented a set of features to make your access to databases more secure:
 
 * Bound parameters are part of the PHQL language helping you to secure your code
 * PHQL only allows one SQL statement to be executed per call preventing injections
 * PHQL ignores all SQL comments which are often used in SQL injections
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high level abstraction allowing you handling models as tables and class attributes as fields
+* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
-使用示例
+范例（Usage Example）
 -------------
-为了更好的展示PHQL是如何工作的，我们将使用模型  “Cars” 和 “Brands”：
+To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
 
 .. code-block:: php
 
@@ -38,9 +39,9 @@ Phalcon查询语言，也可以叫PhalconQL或PHQL，是一个高层次的，允
 
         public $style;
 
-       /**
-        * This model is mapped to the table sample_cars
-        */
+        /**
+         * This model is mapped to the table sample_cars
+         */
         public function getSource()
         {
             return 'sample_cars';
@@ -55,7 +56,7 @@ Phalcon查询语言，也可以叫PhalconQL或PHQL，是一个高层次的，允
         }
     }
 
-每个Car只有一个Brand,一个Brand有多个Cars:
+And every Car has a Brand, so a Brand has many Cars:
 
 .. code-block:: php
 
@@ -85,44 +86,53 @@ Phalcon查询语言，也可以叫PhalconQL或PHQL，是一个高层次的，允
         }
     }
 
-Creating PHQL Queries
+创建 PHQL 查询（Creating PHQL Queries）
 ---------------------
-PHQL查询可以通过实例化 :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>` 来创建：
+PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
 
 .. code-block:: php
 
     <?php
 
     // Instantiate the Query
-    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars");
-
-    // Pass the DI container
-    $query->setDI($di);
+    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $this->getDI());
 
     // Execute the query returning a result if any
-    $robots = $query->execute();
+    $cars = $query->execute();
 
-在控制器或视图文件中，它可以使用服务容器中的一个注入服务 :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>` 来轻松的实现create/execute
+From a controller or a view, it's easy to create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
 
 .. code-block:: php
 
     <?php
 
+    //Executing a simple query
     $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
+    $cars = $query->execute();
 
-    $robots = $query->execute();
+    //With bound parameters
+    $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
+    $cars = $query->execute(array(
+        'name' => 'Audi'
+    ));
 
-或者像下面这样：
+Or simply execute it:
 
 .. code-block:: php
 
     <?php
 
-    $robots = $this->modelsManager->executeQuery("SELECT * FROM Cars");
+    //Executing a simple query
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-Selecting Records
+    //Executing with bound parameters
+    $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
+        'name' => 'Audi'
+    ));
+
+选取记录（Selecting Records）
 -----------------
-作为大家所熟悉的SQL，PHQL允许你在查询中使用SELECT语句，只是需要使用模型类的名称来替代数据表名：
+As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
 .. code-block:: php
 
@@ -131,7 +141,7 @@ Selecting Records
     $query = $manager->createQuery("SELECT * FROM Cars ORDER BY Cars.name");
     $query = $manager->createQuery("SELECT Cars.name FROM Cars ORDER BY Cars.name");
 
-带有命名空间的模型类同样可以：
+Classes in namespaces are also allowed:
 
 .. code-block:: php
 
@@ -146,7 +156,7 @@ Selecting Records
     $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
     $query = $manager->createQuery($phql);
 
-Phalcon支持大部分的SQL标准，甚至是非标准指令，如，LIMIT:
+Most of the SQL standard is supported by PHQL, even nonstandard directives as LIMIT:
 
 .. code-block:: php
 
@@ -156,9 +166,10 @@ Phalcon支持大部分的SQL标准，甚至是非标准指令，如，LIMIT:
        . "WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100";
     $query = $manager->createQuery($phql);
 
-Results Types
-^^^^^^^^^^^^^
-根据我们查询列的类型，返回的结果类型会稍有不同。如果你检索一个整体对象，它将返回 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的对象实例。这种结果集是一组完整的模型对象：
+结果类型（Result Types）
+^^^^^^^^^^^^
+Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
+a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
 
 .. code-block:: php
 
@@ -166,24 +177,23 @@ Results Types
 
     $phql = "SELECT c.* FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
-这是完全一样的：
+This is exactly the same as:
 
 .. code-block:: php
 
     <?php
 
     $cars = Cars::find(array("order" => "name"));
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
-完整的对象可以被修改和重新保存到数据库，因为他们代表着关联数据表的一个完整记录。有一些其他类型的查询不返回完整的对象，例如：
+Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are
+other types of queries that do not return complete objects, for example:
 
 .. code-block:: php
 
@@ -191,14 +201,15 @@ Results Types
 
     $phql = "SELECT c.id, c.name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo "Name: ", $car->name, "\n";
     }
 
-我们只查询了数据表中的某些字段，因此，这不能算是一个完整的对象。在这种情况下，也返回 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 的实例对象。然而，这个对象只包含两列属性值。
+We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
+still a resulset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
+object that only contain the two columns that were requested.
 
-这些值不代表完整的对象，我们称他们为标量。PHQL允许你查询各种类型的标量，如fields,functions,literals, expressions等
+These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
 .. code-block:: php
 
@@ -206,12 +217,11 @@ Results Types
 
     $phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
     $cars = $manager->executeQuery($phql);
-    foreach ($cars as $car)
-    {
+    foreach ($cars as $car) {
         echo $car->id_name, "\n";
     }
 
-我们既可以只查询完整的对象或标量，也可以同时查询他们：
+As we can query complete objects or scalars, we can also query both at once:
 
 .. code-block:: php
 
@@ -220,24 +230,25 @@ Results Types
     $phql   = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name";
     $result = $manager->executeQuery($phql);
 
-在这种情况下，返回的是  :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>` 的实例对象，这允许同时访问完整对象和标量：
+The result in this case is an object :doc:`Phalcon\\Mvc\\Model\\Resultset\\Complex <../api/Phalcon_Mvc_Model_Resultset_Complex>`.
+This allows access to both complete objects and scalars at once:
 
 .. code-block:: php
 
     <?php
 
-    foreach ($result as $row)
-    {
+    foreach ($result as $row) {
         echo "Name: ", $row->cars->name, "\n";
         echo "Price: ", $row->cars->price, "\n";
         echo "Taxes: ", $row->taxes, "\n";
     }
 
-标量的属性值映射到"row"上，而完整的对象则是被映射到与它相关的模型对象上。
+Scalars are mapped as properties of each "row", while complete objects are mapped as properties with the name of its related model.
 
-Joins
+连接（Joins）
 ^^^^^
-使用PHQL可以很方便的通过多个模型来获取数据，Phalcon支持大多数类型的Joins。我们在模型中定义的关系，在使用PHQL时会自动的添加到条件上：
+It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
+relationships in the models, PHQL adds these conditions automatically:
 
 .. code-block:: php
 
@@ -245,13 +256,12 @@ Joins
 
     $phql  = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
     }
 
-默认情况下，将使用INNER JOIN的方式，你也可以在查询中使用其他类型的JOIN：
+By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
 
 .. code-block:: php
 
@@ -260,7 +270,7 @@ Joins
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-    $phql = "SELECT CCars.*, Brands.* FROM Cars LEFT JOIN Brands";
+    $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands";
@@ -269,7 +279,7 @@ Joins
     $phql = "SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands";
     $rows = $manager->executeQuery($phql);
 
-有可能的话，在JOIN中手工设置SQL条件：
+Also is possible set manually the conditions of the JOIN:
 
 .. code-block:: php
 
@@ -278,7 +288,7 @@ Joins
     $phql = "SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
 
-同时，Joins还可以在使用以下方式：
+Also, the joins can be created using multiple tables in the FROM clause:
 
 .. code-block:: php
 
@@ -286,13 +296,12 @@ Joins
 
     $phql = "SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo "Car: ", $row->cars->name, "\n";
         echo "Brand: ", $row->brands->name, "\n";
     }
 
-如果在查询时使用了别名，获取属性值将使用别名的名称做为row的名称：
+If an alias is used to rename the models in the query, those will be used to name the attributes in the every row of the result:
 
 .. code-block:: php
 
@@ -300,15 +309,33 @@ Joins
 
     $phql = "SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo "Car: ", $row->c->name, "\n";
         echo "Brand: ", $row->b->name, "\n";
     }
 
-Aggregations
+When the joined model has a many-to-many relation to the 'from' model, the intermediate model is implicitly added to the generated query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $result = $this->modelsManager->query($phql);
+
+This code produces the following SQL in MySQL:
+
+.. code-block:: sql
+
+    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
+    INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
+    WHERE `artists`.`genre` = 'Trip-Hop'
+
+聚合（Aggregations）
 ^^^^^^^^^^^^
-下面的示例将展示如何在PHQL中使用聚合：
+The following examples show how to use aggregations in PHQL:
 
 .. code-block:: php
 
@@ -322,37 +349,33 @@ Aggregations
     // How many cars are by each brand?
     $phql = "SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->brand_id, ' ', $row["1"], "\n";
     }
 
     // How many cars are by each brand?
     $phql = "SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->name, ' ', $row["1"], "\n";
     }
 
     $phql = "SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row["maximum"], ' ', $row["minimum"], "\n";
     }
 
     // Count distinct used brands
     $phql = "SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars";
     $rows = $manager->executeQuery($phql);
-    foreach ($rows as $row)
-    {
+    foreach ($rows as $row) {
         echo $row->brandId, "\n";
     }
 
-条件(Conditions)
-^^^^^^^^^^^^^^^^^^^^^
-条件的作用是允许你过滤查询内容，WHERE条件可以这样使用：
+条件（Conditions）
+^^^^^^^^^^
+Conditions allow us to filter the set of records we want to query. The WHERE clause allows to do that:
 
 .. code-block:: php
 
@@ -386,7 +409,7 @@ Aggregations
     $phql = "SELECT * FROM Cars WHERE Cars.id BETWEEN 1 AND 100";
     $cars = $manager->executeQuery($phql);
 
-此外，PHQL的另一特点，prepared参数自动转义用户输入数据，下面将介绍的是与安全相关：
+Also, as part of PHQL, prepared parameters automatically escape the input data, introducing more security:
 
 .. code-block:: php
 
@@ -399,9 +422,9 @@ Aggregations
     $cars = $manager->executeQuery($phql, array(0 => 'Lamborghini Espada'));
 
 
-Inserting Data
+插入数据（Inserting Data）
 --------------
-PHQL是使用熟悉的INSERT语句插入数据：
+With PHQL it's possible to insert data using the familiar INSERT statement:
 
 .. code-block:: php
 
@@ -412,7 +435,7 @@ PHQL是使用熟悉的INSERT语句插入数据：
           . "7, 10000.00, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
 
-    // Specifyng columns to insert
+    // Specifying columns to insert
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES ('Lamborghini Espada', 7, 1969, 'Grand Tourer')";
     $manager->executeQuery($phql);
@@ -429,7 +452,9 @@ PHQL是使用熟悉的INSERT语句插入数据：
         )
     );
 
-Phalcon中不只是用PHQL语句转换为SQL语句的。如果我们是手工创建模型对象，里面的所有事件及定义的业务规则都会被执行。现在，我们添加一个模型Cars的业务规则，让car的价格不低于$ 10,000:
+Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined
+in the model are executed as if we created individual objects manually. Let's add a business rule
+on the model cars. A car cannot cost less than $ 10,000:
 
 .. code-block:: php
 
@@ -451,7 +476,8 @@ Phalcon中不只是用PHQL语句转换为SQL语句的。如果我们是手工创
 
     }
 
-如果我们在模型中使用以下的INSERT语句，INSERT操作将不成功，因为价格不符合定义的规则：
+If we made the following INSERT in the models Cars, the operation will not be successful
+because the price does not meet the business rule that we implemented:
 
 .. code-block:: php
 
@@ -467,9 +493,11 @@ Phalcon中不只是用PHQL语句转换为SQL语句的。如果我们是手工创
         }
     }
 
-更新数据(Updating Data)
------------------------------
-更新一行记录和插入一行记录非常相似。正如你所知道的，更新数据记录的指令是UPDATE。当更新一行记录时，对应的模型事件将被执行。
+更新数据（Updating Data）
+-------------
+Updating rows is very similar than inserting rows. As you may know, the instruction to
+update records is UPDATE. When a record is updated the events related to the update operation
+will be executed for each row.
 
 .. code-block:: php
 
@@ -489,18 +517,51 @@ Phalcon中不只是用PHQL语句转换为SQL语句的。如果我们是手工创
 
     // Using placeholders
     $phql = "UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2";
-    $manager->executeQuery(
-        $phql,
-        array(
-            0 => 7000.00,
-            1 => 'Sedan',
-            2 => 5
-        )
-    );
+    $manager->executeQuery($phql, array(
+        0 => 7000.00,
+        1 => 'Sedan',
+        2 => 5
+    ));
 
-删除数据(Deleting Data)
-------------------------
-当删除数据时，对应的模型事件将被执行：
+An UPDATE statement performs the update in two phases:
+
+* First, if the UPDATE has a WHERE clause it retrieves all the objects that match these criteria,
+* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
+
+This way of operation allows that events, virtual foreign keys and validations take part of the updating process.
+In summary, the following code:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+    $success = $manager->executeQuery($phql);
+
+is somewhat equivalent to:
+
+.. code-block:: php
+
+    <?php
+
+    $messages = null;
+
+    $process = function() use (&$messages) {
+        foreach (Cars::find("id > 101") as $car) {
+            $car->price = 15000;
+            if ($car->save() == false) {
+                $messages = $car->getMessages();
+                return false;
+            }
+        }
+        return true;
+    };
+
+    $success = $process();
+
+删除数据（Deleting Data）
+-------------
+When a record is deleted the events related to the delete operation will be executed for each row:
 
 .. code-block:: php
 
@@ -520,26 +581,37 @@ Phalcon中不只是用PHQL语句转换为SQL语句的。如果我们是手工创
         $phql,
         array(
             'initial' => 1,
-            'final' => '100
+            'final' => 100
         )
     );
 
-使用Query Builder创建queries(Creating queries using the Query Builder)
--------------------------------------------------------------------------
-Query Builder可以创建一个PHQL query，而不需要编写PHQL语句了，同时Query Builder对IDE工具是友好的（可以自动提示）：
+DELETE operations are also executed in two phases like UPDATEs.
+
+使用查询构建器创建查询（Creating queries using the Query Builder）
+----------------------------------------
+A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
 .. code-block:: php
 
     <?php
 
-    $manager->createBuilder()
-        >join('RobotsParts');
-        ->limit(20);
-        ->order('Robots.name')
+    //Getting a whole set
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->orderBy('Robots.name')
         ->getQuery()
         ->execute();
 
-与下面是相同的：
+    //Getting the first row
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->join('RobotsParts')
+        ->orderBy('Robots.name')
+        ->getQuery()
+        ->getSingleResult();
+
+That is the same as:
 
 .. code-block:: php
 
@@ -550,98 +622,287 @@ Query Builder可以创建一个PHQL query，而不需要编写PHQL语句了，�
         ORDER BY Robots.name LIMIT 20";
     $result = $manager->executeQuery($phql);
 
-更多关于query builder的示例：
+More examples of the builder:
 
 .. code-block:: php
 
     <?php
 
-    $builder->from('Robots')
-    // 'SELECT Robots.* FROM Robots'
+    // 'SELECT Robots.* FROM Robots';
+    $builder->from('Robots');
 
-    // 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts'
-    $builder->from(array('Robots', 'RobotsParts'))
+    // 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts';
+    $builder->from(array('Robots', 'RobotsParts'));
 
-    // 'SELECT * FROM Robots'
+    // 'SELECT * FROM Robots';
     $phql = $builder->columns('*')
-                    ->from('Robots')
+                    ->from('Robots');
 
-    // 'SELECT id, name FROM Robots'
+    // 'SELECT id FROM Robots';
+    $builder->columns('id')
+            ->from('Robots');
+
+    // 'SELECT id, name FROM Robots';
     $builder->columns(array('id', 'name'))
-            ->from('Robots')
+            ->from('Robots');
 
-    // 'SELECT id, name FROM Robots'
-    $builder->columns('id, name')
-            ->from('Robots')
-
-    // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"'
+    // 'SELECT Robots.* FROM Robots WHERE Robots.name = "Voltron"';
     $builder->from('Robots')
-            ->where('Robots.name = "Voltron"')
+            ->where('Robots.name = "Voltron"');
 
-    // 'SELECT Robots.* FROM Robots WHERE Robots.id = 100'
+    // 'SELECT Robots.* FROM Robots WHERE Robots.id = 100';
     $builder->from('Robots')
-            ->where(100)
+            ->where(100);
 
-    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name'
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" AND Robots.id > 50';
     $builder->from('Robots')
-            ->groupBy('Robots.name')
+            ->where('type = "virtual"')
+            ->andWhere('id > 50');
 
-    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name, Robots.id'
+    // 'SELECT Robots.* FROM Robots WHERE Robots.type = "virtual" OR Robots.id > 50';
     $builder->from('Robots')
-            ->groupBy(array('Robots.name', 'Robots.id'))
+            ->where('type = "virtual"')
+            ->orWhere('id > 50');
 
-    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name'
+    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name';
+    $builder->from('Robots')
+            ->groupBy('Robots.name');
+
+    // 'SELECT Robots.* FROM Robots GROUP BY Robots.name, Robots.id';
+    $builder->from('Robots')
+            ->groupBy(array('Robots.name', 'Robots.id'));
+
+    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name';
+    $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
+        ->from('Robots')
+        ->groupBy('Robots.name');
+
+    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name HAVING SUM(Robots.price) > 1000';
     $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
         ->from('Robots')
         ->groupBy('Robots.name')
+        ->having('SUM(Robots.price) > 1000');
 
-    // 'SELECT Robots.name, SUM(Robots.price) FROM Robots
-    // GROUP BY Robots.name HAVING SUM(Robots.price) > 1000'
-    $builder->columns(array('Robots.name', 'SUM(Robots.price)'))
-        ->from('Robots')
-        ->groupBy('Robots.name')
-        ->having('SUM(Robots.price) > 1000')
-
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts';
     $builder->from('Robots')
-        ->join('RobotsParts')
+        ->join('RobotsParts');
 
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p';
     $builder->from('Robots')
-        ->join('RobotsParts', null, 'p')
+        ->join('RobotsParts', null, 'p');
 
-    // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p');
+    // 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p';
     $builder->from('Robots')
-        ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
+        ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
 
-    // 'SELECT Robots.* FROM Robots
-    // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p
-    // JOIN Parts ON Parts.id = RobotsParts.parts_id AS t'
+    // 'SELECT Robots.* FROM Robots ;
+    // JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p ;
+    // JOIN Parts ON Parts.id = RobotsParts.parts_id AS t';
     $builder->from('Robots')
         ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
-        ->join('Parts', 'Parts.id = RobotsParts.parts_id', 't')
+        ->join('Parts', 'Parts.id = RobotsParts.parts_id', 't');
 
-    // 'SELECT r.* FROM Robots AS r'
-    $builder->addFrom('Robots', 'r')
+    // 'SELECT r.* FROM Robots AS r';
+    $builder->addFrom('Robots', 'r');
 
-    // 'SELECT Robots.*, p.* FROM Robots, Parts AS p'
+    // 'SELECT Robots.*, p.* FROM Robots, Parts AS p';
     $builder->from('Robots')
-        ->addFrom('Parts', 'p')
+        ->addFrom('Parts', 'p');
 
-    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p'
+    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
     $builder->from(array('r' => 'Robots'))
-            ->addFrom('Parts', 'p')
+            ->addFrom('Parts', 'p');
 
-    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p');
-    $builder->from(array('r' => 'Robots', 'p' => 'Parts'))
+    // 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
+    $builder->from(array('r' => 'Robots', 'p' => 'Parts'));
 
-    // 'SELECT Robots.* FROM Robots LIMIT 10'
+    // 'SELECT Robots.* FROM Robots LIMIT 10';
     $builder->from('Robots')
-        ->limit(10)
+        ->limit(10);
 
-    // 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5'
+    // 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5';
     $builder->from('Robots')
-            ->limit(10, 5)
+            ->limit(10, 5);
 
+    // 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100';
+    $builder->from('Robots')
+            ->betweenWhere('id', 1, 100);
+
+    // 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)';
+    $builder->from('Robots')
+            ->inWhere('id', array(1, 2, 3));
+
+    // 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)';
+    $builder->from('Robots')
+            ->notInWhere('id', array(1, 2, 3));
+
+    // 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%';
+    $builder->from('Robots')
+            ->where('name LIKE :name:', array('name' => '%' . $name . '%'));
+
+    // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
+    $builder->from(['r' => 'Store\Robots'])
+            ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
+
+绑定参数（Bound Parameters）
+^^^^^^^^^^^^^^^^
+Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
+
+.. code-block:: php
+
+    <?php
+
+    //Passing parameters in the query construction
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->where('name = :name:', array('name' => $name))
+        ->andWhere('type = :type:', array('type' => $type))
+        ->getQuery()
+        ->execute();
+
+    //Passing parameters in query execution
+    $robots = $this->modelsManager->createBuilder()
+        ->from('Robots')
+        ->where('name = :name:')
+        ->andWhere('type = :type:')
+        ->getQuery()
+        ->execute(array('name' => $name, 'type' => $type));
+
+禁止使用字面值（Disallow literals in PHQL）
+-------------------------
+Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
+will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
+to potential SQL injections:
+
+.. code-block:: php
+
+    <?php
+
+    $login = 'voltron';
+    $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
+    $result = $manager->executeQuery($phql);
+
+If $login is changed to ' OR '' = ', the produced PHQL is:
+
+.. code-block:: php
+
+    <?php
+
+    "SELECT * FROM Models\Users WHERE login = '' OR '' = ''"
+
+Which is always true no matter what the login stored in the database is.
+
+If literals are disallowed strings can be used as part of a PHQL statement, thus an exception
+will be thrown forcing the developer to use bound parameters. The same query can be written in a
+secure way like this:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
+    $result = $manager->executeQuery($phql, array('name' => $name));
+
+You can disallow literals in the following way:
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Mvc\Model::setup(array('phqlLiterals' => false));
+
+Bound parameters can be used even if literals are allowed or not. Disallowing them is just
+another security decision a developer could take in web applications.
+
+转义保留字（Escaping Reserved Words）
+-----------------------
+PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
+words using the cross-database escaping delimiters '[' and ']':
+
+.. code-block:: php
+
+    <?php
+
+    $phql = "SELECT * FROM [Update]";
+    $result = $manager->executeQuery($phql);
+
+    $phql = "SELECT id, [Like] FROM Posts";
+    $result = $manager->executeQuery($phql);
+
+The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+
+PHQL Lifecycle
+--------------
+Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
+The following is the life cycle of each PHQL statement executed:
+
+* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
+* The IR is converted to valid SQL according to the database system associated to the model
+* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
+
+使用原生 SQL（Using Raw SQL）
+-------------
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByCreateInterval()
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE id > 0";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
+        }
+    }
+
+If Raw SQL queries are common in your application a generic method could be added to your model:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+
+    class Robots extends Phalcon\Mvc\Model
+    {
+        public static function findByRawSql($conditions, $params=null)
+        {
+            // A raw SQL statement
+            $sql = "SELECT * FROM robots WHERE $conditions";
+
+            // Base model
+            $robot = new Robots();
+
+            // Execute the query
+            return new Resultset(null, $robot, $robot->getReadConnection()->query($sql, $params));
+        }
+    }
+
+The above findByRawSql could be used as follows:
+
+.. code-block:: php
+
+    <?php
+
+    $robots = Robots::findByRawSql('id > ?', array(10));
+
+注意事项（Troubleshooting）
+---------------
+Some things to keep in mind when using PHQL:
+
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
+* Correct charset must be defined in the connection to bind parameters with success
+* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings
+* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator

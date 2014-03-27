@@ -19,7 +19,7 @@ Allows to define reference constraints on tables
 
 
 Methods
----------
+-------
 
 public  **__construct** (*string* $referenceName, *array* $definition)
 
@@ -63,7 +63,7 @@ Gets referenced columns
 
 
 
-public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** (*array* $data)
+public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** ([*unknown* $properties])
 
 Restore a Phalcon\\Db\\Reference object from export
 

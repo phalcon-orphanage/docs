@@ -1,25 +1,29 @@
-MVC架构
+MVC 架构（The MVC Architecture）
 ====================
+Phalcon 提供了面向对象的类，在应用程序中必须实现模型（Model）、视图（View）、控制器（Controller）架构（通常我们称之为 MVC_）。这种设计模式被广泛的应用到其他 web 框架以及桌面应用程序中。
 
-Phalcon提供了面向对象的类，用以在应用程序中实现模型，视图，控制器架构（通常我们称之为 MVC_ 架构）。这种设计模式被广泛的应用到其他Web框架以及桌面应用程序中。
+MVC 优点：
 
-MVC的好处包括：
+* 隔离业务逻辑、用户界面和数据库层
+* 不同类型的代码之间更加明确易于维护。
 
-* 分离业务逻辑与用户界面以及数据库层
-* 清晰的代码结构，使代码更容易维护
+如果你决定使用MVC架构来开发你的程序，那么应用程序的每个请求都将采用 MVC_ 架构的方式来管理。
+Phalcon 的类是使用 C 语言编写而成， 这是为这种模式开发的 PHP 应用程序提供高性能的方法。
 
-如果你决定使用MVC架构来开发你的程序，那么应用程序的每个请求都将采用 MVC_ 架构的方式来管理。Phalcon是一个采用C语言开发的php框架，这种模式是一种可以很好的提供高性能的方法。
-
-模型
+模型（Models）
 ------
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. :doc:`Learn more <models>`
+模型代表了应用程序中的信息（数据）和处理数据的规则。模型主要用于管理与相应数据库表进行交互的规则。
+大多数情况中，在应用程序中，数据库中每个表将对应一个模型。
+应用程序中的大部分业务逻辑都将集中在模型里。 :doc:`了解更多 <models>`
 
-视图
+视图（Views）
 -----
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. :doc:`Learn more <views>`
+视图代表了应用程序中的用户界面. 视图通常是在 HTML 文件里嵌入 PHP 代码，这些代码仅仅是用来展示数据。
+视图的任务是当应用程序发生请求时，提供数据给 web 浏览器或者其他工具。:doc:`了解更多 <views>`
 
-控制器
+控制器（Controllers）
 -----------
-The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
+控制器用于控制应用程序的流程，调用模型和视图。负责处理来自 web 浏览器的请求，从模型中获取数据，然后将数据传递给视图完成展示。:doc:`了解更多 <controllers>`
 
 .. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+

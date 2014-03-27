@@ -51,9 +51,9 @@ Allows to cache output fragments captured with ob_* functions
 
 
 Methods
----------
+-------
 
-public  **__construct** (*array* $frontendOptions)
+public  **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Output constructor
 
@@ -89,13 +89,13 @@ Stops output frontend
 
 
 
-public  **beforeStore** (*mixed* $data)
+public *mixed*  **beforeStore** (*mixed* $data)
 
 Prepare data to be stored
 
 
 
-public  **afterRetrieve** (*mixed* $data)
+public *mixed*  **afterRetrieve** (*mixed* $data)
 
 Prepares data to be retrieved to user
 

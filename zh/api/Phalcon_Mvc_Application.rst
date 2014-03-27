@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Application**
 ===================================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
 
@@ -14,17 +14,18 @@ This component encapsulates all the complex operations behind instantiating ever
      class Application extends \Phalcon\Mvc\Application
      {
     
-    	/**
-    	 * Register the services here to make them general or register in the ModuleDefinition to make them module-specific
-    	 *\/
+    	/\**
+    	 * Register the services here to make them general or register
+    	 * in the ModuleDefinition to make them module-specific
+    	 */
     	protected function _registerServices()
     	{
     
     	}
     
-    	/**
-    	 * This method execute the right module
-    	 *\/
+    	/\**
+    	 * This method registers all the modules in the application
+    	 */
     	public function main()
     	{
     		$this->registerModules(array(
@@ -46,9 +47,21 @@ This component encapsulates all the complex operations behind instantiating ever
 
 
 Methods
----------
+-------
 
-public  **registerModules** (*array* $modules, *boolean* $merge)
+public  **__construct** ([:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
+
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **useImplicitView** (*boolean* $implicitView)
+
+By default. The view is implicitly buffering all the output You can full disable the view component using this method
+
+
+
+public  **registerModules** (*array* $modules, [*boolean* $merge])
 
 Register an array of modules present in the application 
 
@@ -76,7 +89,19 @@ Return the modules registered in the application
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ()
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **setDefaultModule** (*string* $defaultModule)
+
+Sets the module name to be used if the router doesn't return a valid module
+
+
+
+public *string*  **getDefaultModule** ()
+
+Returns the default module name
+
+
+
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*string* $uri])
 
 Handles a MVC request
 
@@ -106,7 +131,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

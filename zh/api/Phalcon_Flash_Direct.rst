@@ -1,7 +1,7 @@
 Class **Phalcon\\Flash\\Direct**
 ================================
 
-*extends* :doc:`Phalcon\\Flash <Phalcon_Flash>`
+*extends* abstract class :doc:`Phalcon\\Flash <Phalcon_Flash>`
 
 *implements* :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`
 
@@ -9,7 +9,7 @@ This is a variant of the Phalcon\\Flash that inmediately outputs any message pas
 
 
 Methods
----------
+-------
 
 public *string*  **message** (*string* $type, *string* $message)
 
@@ -17,25 +17,25 @@ Outputs a message
 
 
 
-public  **__construct** (*array* $cssClasses) inherited from Phalcon\\Flash
+public  **__construct** ([*array* $cssClasses]) inherited from Phalcon\\Flash
 
 Phalcon\\Flash constructor
 
 
 
-public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
-Set the if the output must be implictly flushed to the output or returned as string
-
-
-
-public  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
-
-Set the if the output must be implictly formatted with HTML
+Set whether the output must be implictly flushed to the output or returned as string
 
 
 
-public  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml) inherited from Phalcon\\Flash
+
+Set if the output must be implictily formatted with HTML
+
+
+
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 
@@ -95,7 +95,14 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
 
-Outputs a message formatting it with HTML
+Outputs a message formatting it with HTML 
+
+.. code-block:: php
+
+    <?php
+
+     $flash->outputMessage('error', $message);
+
 
 
 

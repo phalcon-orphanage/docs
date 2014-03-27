@@ -1,13 +1,15 @@
-教程 2: 解读分析 INVO 项目
+�̳� 2��INVO ��Ŀ���⣨Tutorial 2: Explaining INVO��
 ===========================
+In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
+INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
+generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
 
-在第二个教程中，我们将解读分析一个更完整的应用程序，以强化你对Phalcon的理解，INVO是我们已经创建了的作为示例程序的应用程序之一。你可以从 Github_ 获得INVO的全部代码。
+Also, INVO was made with `Bootstrap`_ as client-side framework. Although the application does not generate
+invoices, it still serves as an example to understand how the framework works.
 
-此外还需要说明的是，INVO的html实现是使用 `Twitter Bootstrap <http://twitter.github.com/>`_ CSS framework来完成的，在这个示例项目中，并不真正的生成发票(这是一个类似于进销存的相关的应用)，但它作为一个例子还是可以告诉你整个框架是如何工作的。
-
-项目目录结构
-------------------
-从Github上克隆了源代码后，你可以发现目录结构是这样的：
+Project Structure
+-----------------
+Once you clone the project in your document root you'll see the following structure:
 
 .. code-block:: bash
 
@@ -25,33 +27,40 @@
             public/js/
         schemas/
 
-在前面的章节已经讲过，Phalcon并没有固定的目录结构，该项目提供了一个简单的MVC目录结构。
+As you know, Phalcon does not impose a particular file structure for application development. This project
+provides a simple MVC structure and a public document root.
 
-通过浏览器打开应用程序 http://localhost/invo 显示效果如下:
+Once you open the application in your browser http://localhost/invo you'll see something like this:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-INVO应用程序分为两部分，即通常我们说的前台后台。前台部分，用户可以通过INVO查看一些信息，同时可以提交联系方式。后台部分，相当于管理区域，在这里面注册用户可以管理自己的产品和客户。
+The application is divided into two parts, a frontend, that is a public part where visitors can receive information
+about INVO and request contact information. The second part is the backend, an administrative area where a
+registered user can manage his/her products and customers.
 
-标准路由器
----------------
-INVO使用标准的内奸路由器组件，此路由的匹配模式如下 /:controller/:action/:params  ，这意味着，URL中的第一部分是控制器，第二个是action方法。
+·�ɣ�Routing��
+-------
+INVO uses the standard route that is built-in with the Router component. These routes match the following
+pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
+action and the rest are the parameters.
 
-路由 /session/register 将要执行SessionController中的RegisterAction方法
+The following route /session/register executes the controller SessionController and its action registerAction.
 
-Configuration
+���ã�Configuration��
 -------------
-INVO有一个配置文件，用于设置一些常用的数据，比如数据库连接参数，目录结构等。在引导文件 (public/index.php) 的第一部分，可以这样读取配置文件
+INVO has a configuration file that sets general parameters in the application. This file is read in the first few lines
+of the bootstrap file (public/index.php):
 
 .. code-block:: php
 
     <?php
 
     //Read the configuration
-    $config = new Phalcon\Config\Adapter\Ini(__DIR__.'/../app/config/config.ini');
+    $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` 使得读取配置内容是面像对象的，配置文件的定义如下：
+:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
+contains the following settings:
 
 .. code-block:: ini
 
@@ -74,11 +83,13 @@ INVO有一个配置文件，用于设置一些常用的数据，比如数据库�
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon的配置文件可以分类进行定义，在这个文件中，共定义了三个部分 database,application,metadata
+Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
+there are three sections to be used later.
 
-Autoloaders
+�Զ����أ�Autoloaders��
 -----------
-在引导文件 (public/index.php) 的第二部分是autoloader,autoloader注册了一些目录，在这些目录中放置的是我们应用程序需要用到的类文件
+The second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
+of directories in which the application will look for the classes that it eventually will need.
 
 .. code-block:: php
 
@@ -88,80 +99,91 @@ Autoloaders
 
     $loader->registerDirs(
         array(
-            __DIR__.$config->application->controllersDir,
-            __DIR__.$config->application->pluginsDir,
-            __DIR__.$config->application->libraryDir,
-            __DIR__.$config->application->modelsDir,
+            $config->application->controllersDir,
+            $config->application->pluginsDir,
+            $config->application->libraryDir,
+            $config->application->modelsDir,
         )
     )->register();
 
-需要注意的是，注册的这些目录并不包括 viewsDir,因为viewsDir中并不包含classes文件，而是html+php文件
+Note that the above code has registered the directories that were defined in the configuration file. The only
+directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
 
-处理请求
+��������Handling the Request��
 --------------------
-在引导文件的最后部分，我们使用 Phalcon\\Mvc\\Application ，这个类初始化并执行用户的请求
+If we skip to the end of the file, the request is finally handled by Phalcon\\Mvc\\Application
+which initializes and executes all that is necessary to make the application run:
 
 .. code-block:: php
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application();
-    $application->setDI($di);
-    echo $application->handle()->getContent();
+    $app = new \Phalcon\Mvc\Application($di);
 
-依赖注入
+    echo $app->handle()->getContent();
+
+����ע�루Dependency Injection��
 --------------------
-看上面代码中的第二段，变量$application通过setDI()方法接收了变量$di,该变量的目的是什么呢？
+Look at the first line of the code block above, the Application class constructor is receiving the variable $di as an argument.
+What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
+to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
+dependency injection, instantiating all components as they are needed by the application.
 
-Phalcon是一个松耦合的框架，所以我们需要一个组件，把它们整合到一起，让它们一起工作，该组件便是 Phalcon\\DI
+There are many ways of registering services in the container. In INVO, most services have been registered using
+anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
+by the application.
 
-注册到容器的方法有很多，在INVO中，大都采用匿名函数的方式进行注册，因为此种方式是lazy load的加载方式，减少了应用程序请求资源控制。
-
-例如，在下面的代码片断中的session会话服务，采用的是匿名函数的方式进行注册的，因此当使用session的时候，才会被加载。
+For instance, in the following excerpt the session service is registered. The anonymous function will only be
+called when the application requires access to the session data:
 
 .. code-block:: php
 
     <?php
 
-    //Start the session the first time when some component request the session service
-    $di->set('session', function(){
+    //Start the session the first time a component requests the session service
+    $di->set('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-在这里，我们可以自由的更改适配器，以使它执行更多的初始化任务，请注意，服务注册的"session"请不要随意修改，这是一个命名约定。
+Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
+was registered using the name "session". This is a convention that will allow the framework to identify the active
+service in the services container.
 
-译者注：更多的服务组件命名约定可见 :doc:`dependency injection container <di>`
-
-一个请求可能使用多个服务组件，一个一个的注册这些组件是一项繁重的任务，出于这个原因，该框架提供了 Phalcon\\DI 的一个实现，就是 Phalcon\\DI\\FactoryDefault
-
-译者注：其实 Phalcon\\DI\\FactoryDefault 就是 Phalcon\\DI 的一个子类
+A request can use many services and registering each service individually can be a cumbersome task. For that reason,
+the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
+all services providing a full-stack framework.
 
 .. code-block:: php
 
     <?php
 
     // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full stack framework
+    // right services providing a full-stack framework
     $di = new \Phalcon\DI\FactoryDefault();
 
-It registers the majority of services with components provided by the framework as standard. If we need to override the definition of some
-it could be done as above with "session". Now we know the origin of the variable $di.
+It registers the majority of services with components provided by the framework as standard. If we need to override
+the definition of some service we could just set it again as we did above with "session". This is the reason for the
+existence of the variable $di.
 
-大多数的服务组件都由框架本身提供，如果我们需要覆盖一些定义的话，比如"session".(翻译的可能不对，英文部分就不去掉了)
-
-Log into the Application
+��¼Ӧ�ã�Log into the Application��
 ------------------------
-登录将使用后端控制器，控制器前后端分离是合乎逻辑的，所有的控制器被放置到相同的目录中。要登录系统，我们必须有一个有效的用户名和密码，用户信息被存储在数据库"invo"的"users"数据表中。
+A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones
+is only logical. All controllers are located in the same directory (app/controllers/).
 
-在我们登录系统之前，我们需要在应用程序中配置数据库连接。一个命名为"db"的服务组件被注册，与autoloader相同，我们也从配置文件中读取相关配置连接参数
+To enter the system, users must have a valid username and password. Users are stored in the table "users"
+in the database "invo".
+
+Before we can start a session, we need to configure the connection to the database in the application. A service
+called "db" is set up in the service container with the connection information. As with the autoloader, we are
+again taking parameters from the configuration file in order to configure a service:
 
 .. code-block:: php
 
     <?php
 
-    // Database connection is created based in the parameters defined in the configuration file
+    // Database connection is created based on parameters defined in the configuration file
     $di->set('db', function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
@@ -171,25 +193,28 @@ Log into the Application
         ));
     });
 
-这时，会返回一个MySQL的连接适配器的实例，如果需要的话，你可以做一些其他额外的操作，例如，你还可以定义一个记录器，分析器或更改为其他适配器。或者设置你想要的其他东西
+Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
+logger, a profiler or change the adapter, setting it up as you want.
 
-那么，下面的这个表单示例 (app/views/session/index.phtml) 是一个登录入口，已经删除了一些HTML代码，使这个例子更简洁：
+The following simple form (app/views/session/index.phtml) requests the login information. We've removed
+some HTML code to make the example more concise:
 
 .. code-block:: html+php
 
-    <?php echo Tag::form('session/start') ?>
+    <?php echo $this->tag->form('session/start') ?>
 
         <label for="email">Username/Email</label>
-        <?php echo Tag::textField(array("email", "size" => "30")) ?>
+        <?php echo $this->tag->textField(array("email", "size" => "30")) ?>
 
         <label for="password">Password</label>
-        <?php echo Tag::passwordField(array("password", "size" => "30")) ?>
+        <?php echo $this->tag->passwordField(array("password", "size" => "30")) ?>
 
-        <?php echo Tag::submitButton(array('Login')) ?>
+        <?php echo $this->tag->submitButton(array('Login')) ?>
 
     </form>
 
-SessionController::startAction (app/controllers/SessionController.phtml) 验证用户登录，通过查询数据库的用户的登录名称和密码是否正确
+The SessionController::startAction function (app/controllers/SessionController.php) has the task of validating the
+data entered in the form including checking for a valid user in the database:
 
 .. code-block:: php
 
@@ -212,21 +237,24 @@ SessionController::startAction (app/controllers/SessionController.phtml) 验证�
         {
             if ($this->request->isPost()) {
 
-                //Taking the variables sent by POST
+                //Receiving the variables sent by POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find for the user in the database
-                $user = Users::findFirst("email='$email' AND password='$password' AND active='Y'");
+                //Find the user in the database
+                $user = Users::findFirst(array(
+                    "email = :email: AND password = :password: AND active = 'Y'",
+                    "bind" => array('email' => $email, 'password' => $password)
+                ));
                 if ($user != false) {
 
                     $this->_registerSession($user);
 
-                    $this->flash->success('Welcome '.$user->name);
+                    $this->flash->success('Welcome ' . $user->name);
 
-                    //Forward to the invoices controller if the user is valid
+                    //Forward to the 'invoices' controller if the user is valid
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -246,11 +274,17 @@ SessionController::startAction (app/controllers/SessionController.phtml) 验证�
 
     }
 
-需要注意的是控制器中有多个公共属性，如$this->flash,$this->request,$this->session。这些属性在引导文件中使用 Phalcon\\DI 注册的，如果你仔细看过前面的章节，应该能想到。因此可以在控制器中直接使用他们
+For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
+not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
 
-这些服务是共享的，这意味着我们访问的是相同的实例，无论我们在任何地方调用它们。
+Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
+These are services defined in the services container from earlier. When they're accessed the first time, they are injected as part
+of the controller.
 
-举个例子，在这里我们可以直接调用 "session", 同时把用户的信息存储到变量auth中
+These services are shared, which means that we are always accessing the same instance regardless of the place
+where we invoke them.
+
+For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
 
 .. code-block:: php
 
@@ -261,18 +295,25 @@ SessionController::startAction (app/controllers/SessionController.phtml) 验证�
         'name' => $user->name
     ));
 
-Securing the Backend
+������ˣ�Securing the Backend��
 --------------------
-后端是一个私有区域，只有注册的用户才可以访问。因此，它必须进行检查验证，只有注册用户才可以访问这些控制器。如果你没有登录应用程序，你尝试访问的时候，你会看到这样的界面：
+The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
+registered users have access to these controllers. If you aren't logged into the application and you try to access,
+for example, the products controller (which is private) you will see a screen like this:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-每当有人试图访问任何控制器和动作，应用程序就会验证当前用户的角色是否能够访问，否则会显示一个信息，同时跳转到首页面。
+Every time someone attempts to access any controller/action, the application verifies that the current role (in session)
+has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-现在，我们来看看应用程序如何实现这一点。首先要知道的是，有一个组件叫分发器(Dispatcher)，你还需要了解一个路由。在此基础上，负载加载相应的控制器和执行相应的动作。
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
+:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then,
+it is responsible for loading the appropriate controller and execute the corresponding action method.
 
-通常情况下，框架会自动创建分发器，在这个例子中，我们要专门创建一个动作，显示出用户成功访问和不成功访问的情况。为了实现这一目标，我们更在引导文件(bootstrap)中创建一个函数：
+Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
+before executing the required action, checking if the user has access to it or not. To achieve this, we have
+replaced the component by creating a function in the bootstrap:
 
 .. code-block:: php
 
@@ -283,13 +324,15 @@ Securing the Backend
         return $dispatcher;
     });
 
-现在，我们的应用程序中就有了控制分发器，现实中，我们需要修改框架中有许多组件的内部流程，这时一个新的组件EventsManager出来了，它可以提供在组件中加入一些其他对像。
+We now have total control over the Dispatcher used in the application. Many components in the framework trigger
+events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
+for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
+by a component, routing the events to listeners.
 
-译者注：如在分发器中加入验证，在数据库连接中加入记录器等
-
-事件管理
+�¼�������Events Management��
 ^^^^^^^^^^^^^^^^^
-一个事件管理器，可以让我们针听一个特定类型的事件，下面看一下在分发器中加入安全验证的例子：
+An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
+interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
 
 .. code-block:: php
 
@@ -314,47 +357,48 @@ Securing the Backend
         return $dispatcher;
     });
 
-
-安全插件是一个类文件(app/plugins/Security.php)，这个类实现了"beforeExecuteRoute"方法.
-
-译者注：都可以实现哪些方法，可以查看 :doc:`分发器 <dispatching>` Dispatch Loop Events 部分
-
+The Security plugin is a class located at (app/plugins/Security.php). This class implements the method
+"beforeDispatch". This is the same name as one of the events produced in the Dispatcher:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+	    Phalcon\Mvc\User\Plugin,
+	    Phalcon\Mvc\Dispatcher,
+	    Phalcon\Acl;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
 
-        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
         {
             // ...
         }
 
     }
 
-插件程序接收两个参数，第一个参数是event上下文信息，第二个是事件管理器要管理的对象，插件程序并不一定非得继承自 :doc:`Phalcon\\Mvc\\User\\Plugin <../api/Phalcon_Mvc_User_Plugin>` ,但如果这样继承了，他们更容易的访问应用程序的其他服务组件。
+The hook events always receive a first parameter that contains contextual information of the event produced ($event)
+and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
+plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
+available in the application.
 
-译者注：目前的 Phalcon\\Mvc\\User\\Plugin 以及 Phalcon\\Mvc\\User\\Component 是一样的，其实两者的侧重点应该是不同的，只是作者还未完善而已。具体请看stackoverflow的贴子
-
-http://stackoverflow.com/questions/12879284/whats-different-between-phalcon-mvc-user-component-and-phalcon-mvc-user-plugin
-
-现在，我们验证登录用户的权限，看他的权限是否在ACL列表中，如果没有(也就是说没有权限的话)，分发器将使流程跳转到主页：
+Now, we're verifying the role in the current session, checking if the user has access using the ACL list.
+If the user does not have access we redirect to the home screen as explained before:
 
 .. code-block:: php
 
     <?php
 
-    use \Phalcon\Events\Event;
-    use \Phalcon\Mvc\Dispatcher;
+    use Phalcon\Events\Event,
+	    Phalcon\Mvc\User\Plugin,
+	    Phalcon\Mvc\Dispatcher,
+	    Phalcon\Acl;
 
-    class Security extends Phalcon\Mvc\User\Plugin
+    class Security extends Plugin
     {
 
         // ...
@@ -375,11 +419,11 @@ http://stackoverflow.com/questions/12879284/whats-different-between-phalcon-mvc-
             $action = $dispatcher->getActionName();
 
             //Obtain the ACL list
-            $acl = $this->_getAcl();
+            $acl = $this->getAcl();
 
             //Check if the Role have access to the controller (resource)
             $allowed = $acl->isAllowed($role, $controller, $action);
-            if ($allowed != Phalcon\Acl::ALLOW) {
+            if ($allowed != Acl::ALLOW) {
 
                 //If he doesn't have access forward him to the index controller
                 $this->flash->error("You don't have access to this module");
@@ -398,12 +442,10 @@ http://stackoverflow.com/questions/12879284/whats-different-between-phalcon-mvc-
 
     }
 
-Providing an ACL list
+�ṩ ACL �б���Providing an ACL list��
 ^^^^^^^^^^^^^^^^^^^^^
-权限管理部分，我一般不太喜欢使用这种方式的权限验证，不过大多数框架都提供了这种验证，包括ZF。
-
-In the previous example we obtain the ACL using the method $this->_getAcl(). This method is also implemented in the Plugin.
-Now explain step by step how we built the access control list:
+In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
+implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
 .. code-block:: php
 
@@ -421,12 +463,12 @@ Now explain step by step how we built the access control list:
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
     );
-    foreach($roles as $role){
+    foreach ($roles as $role) {
         $acl->addRole($role);
     }
 
-Now we define the respective resources of each area. Controller names are resources and their actions are the accesses in
-the resources:
+Now we define the resources for each area respectively. Controller names are resources and their actions are
+accesses for the resources:
 
 .. code-block:: php
 
@@ -434,28 +476,28 @@ the resources:
 
     //Private area resources (backend)
     $privateResources = array(
-        'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-        'invoices' => array('index', 'profile')
+      'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'invoices' => array('index', 'profile')
     );
-    foreach($privateResources as $resource => $actions){
+    foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
     //Public area resources (frontend)
     $publicResources = array(
-        'index' => array('index'),
-        'about' => array('index'),
-        'session' => array('index', 'register', 'start', 'end'),
-        'contact' => array('index', 'send')
+      'index' => array('index'),
+      'about' => array('index'),
+      'session' => array('index', 'register', 'start', 'end'),
+      'contact' => array('index', 'send')
     );
-    foreach($publicResources as $resource => $actions){
+    foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-The ACL now have knowledge of the existing controllers and their related actions. The role "Users" has access to all the resources
-of both the frontend and the backend. The role "Guests" only have access to the public area:
+The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
+all the resources of both frontend and backend. The role "Guests" only has access to the public area:
 
 .. code-block:: php
 
@@ -477,19 +519,21 @@ of both the frontend and the backend. The role "Guests" only have access to the 
 
 Hooray!, the ACL is now complete.
 
-用户自定义组件
+�û������User Components��
 ---------------
-本应用所有的UI组件和显示风格都是使用的Twitter的CSS Framework。
+All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
+Some elements, such as the navigation bar changes according to the state of the application. For example, in the
+upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
 
-这部分被实现使用成Component (api/library/Elements.php)。
-
-译者注：在上面讲Plugins的时候，专门介绍了Component,没注意的可以往上看一下。
+This part of the application is implemented in the component "Elements" (app/library/Elements.php).
 
 .. code-block:: php
 
     <?php
 
-    class Elements extends Phalcon\Mvc\User\Component
+    use Phalcon\Mvc\User\Component;
+
+    class Elements extends Component
     {
 
         public function getMenu()
@@ -504,7 +548,8 @@ Hooray!, the ACL is now complete.
 
     }
 
-这个类继承自 Phalcon\\Mvc\\User\\Component,虽然框架本身不强制要求继承，但如果你继承了它，将更方便的访问应用程序中的其他组件。现在，我们把它注入到容器中：
+This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but
+it helps to get access more quickly to the application services. Now, we register this class in the services container:
 
 .. code-block:: php
 
@@ -515,7 +560,8 @@ Hooray!, the ACL is now complete.
         return new Elements();
     });
 
-在控制器中以及视图中，插件以及组件可以通过注册的名称很方便的被调用
+As controllers, plugins or components within a view, this component also has access to the services registered
+in the container and by just accessing an attribute with the same name as a previously registered service:
 
 .. code-block:: html+php
 
@@ -541,15 +587,16 @@ Hooray!, the ACL is now complete.
         </footer>
     </div>
 
-重点看这句：
+The important part is:
 
 .. code-block:: html+php
 
     <?php echo $this->elements->getMenu() ?>
 
-增删查改
+CRUD ��ʹ�ã�Working with the CRUD��
 ---------------------
-大多数菜单选项数据(如公司，产品，产品类型等)，我们开发按照普遍的 CRUD_ (Create, Read, Update and Delete)方式，每个CURD包含以下文件：
+Most options that manipulate data (companies, products and types of products), were developed using a basic and
+common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
 
 .. code-block:: bash
 
@@ -566,9 +613,7 @@ Hooray!, the ACL is now complete.
                     new.phtml
                     search.phtml
 
-每个控制器包含以下一些动作(控制器类中的方法)：
-
-译者注：这些动作名称并不是约定的，可以按你的喜好自由修改，比如searchAction,你可以写成soAction都没问题。但请求的时候就不再请求到products/search了，而是需要请求到products/so
+Each controller has the following actions:
 
 .. code-block:: php
 
@@ -636,11 +681,11 @@ Hooray!, the ACL is now complete.
 
     }
 
-检索表单
+����������The Search Form��
 ^^^^^^^^^^^^^^^
-检索表单显示了数据表(products)中的所有可查询的字段，允许用户根据自定义检索内容。
-
-数据表"products"，关联了数据表"products_types"，在这种情况下，我们在检索页面这样写：
+Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
+creating a search criteria from any field. Table "products" has a relationship to the table "products_types".
+In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
 .. code-block:: php
 
@@ -652,18 +697,17 @@ Hooray!, the ACL is now complete.
     public function indexAction()
     {
         $this->persistent->searchParams = null;
-        $this->view->setVar("productTypes", ProductTypes::find());
+        $this->view->productTypes = ProductTypes::find();
     }
 
-所有"product types"将通过变量"productTypes"显示到视图文件中，视图文件(app/views/index.phtml)的代码如下：
+All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
+(app/views/index.phtml) we show a "select" tag filled with those results:
 
-.. code-block:: php
-
-    <?php
+.. code-block:: html+php
 
     <div>
         <label for="product_types_id">Product Type</label>
-        <?php echo Tag::select(array(
+        <?php echo $this->tag->select(array(
             "product_types_id",
             $productTypes,
             "using" => array("id", "name"),
@@ -671,11 +715,15 @@ Hooray!, the ACL is now complete.
         )) ?>
     </div>
 
-变量$productTypes包含的数据通过 :doc:`Phalcon\\Tag::select <../api/Phalcon_Tag>` 填充到视图进行显示。一旦提交检索表单，它会请求到 products/search，并根据用户提交的数据进行数据检索
+Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
+is submitted, the action "search" is executed in the controller performing the search based on the data entered by
+the user.
 
-执行一个检索
+ִ��������Performing a Search��
 ^^^^^^^^^^^^^^^^^^^
-"search",即products/search 这个动作具有双重行为，当通过POST访问时，它会根据用户提交的数据进行条件检索。但是，当我们通过GET访问时，将显示所有产品的列表。这些都是通过HTTP方法来进行区分的。详情请查看  :doc:`Request <request>` component:
+The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
+form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
+we check it using the :doc:`Request <request>` component:
 
 .. code-block:: php
 
@@ -698,7 +746,8 @@ Hooray!, the ACL is now complete.
 
     }
 
-使用 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` ，我们可以很方便的把表单提交的数据(值)和数据类型(属性或字段)绑定到一起
+With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
+conditions intelligently based on the data types and values sent from the form:
 
 .. code-block:: php
 
@@ -706,11 +755,16 @@ Hooray!, the ACL is now complete.
 
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
-该方法的绑定过程是这样的，首先验证客户端提交的表单数据是否为空""(空字符串)，如果不是，将绑定到数据字段上。如果提交的表单数据是字符串类型的(CHAR, VARCHAR, TEXT等)，将使用 "like '%%'"这样的形式来进行检索数据。如果不是或不类似于字符串，它会直接使用操作符"="进行检索。
+This method verifies which values are different from "" (empty string) and null and takes them into account to create
+the search criteria:
 
-此外，如果提交的数据中不包括在数据表字段（也可以说成是model字段）中，这些数据将被忽略。此外，提交的数据会自动使用bound parameter的方式进行绑定。
+* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
+* If the data type is not text or similar, it'll use the operator "=".
 
-我们把提交的绑定数据存储到session中，此处使用的是 :doc:`Session Bag <../api/Phalcon_Session_Bag>`
+Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
+Values are automatically escaped using "bound parameters".
+
+Now, we store the produced parameters in the controller's session bag:
 
 .. code-block:: php
 
@@ -718,11 +772,10 @@ Hooray!, the ACL is now complete.
 
     $this->persistent->searchParams = $query->getParams();
 
-Session Bag是一个特殊的属性，它存在于控制器中。这个属性注入的其实是 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 组件。
+A session bag, is a special attribute in a controller that persists between requests. When accessed, this attribute injects
+a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service that is independent in each controller.
 
-译者注：经测试，使用 $this->persistent->xxx，只能在同一控制器中的不同Action中进行访问，不能在其他控制器中访问到数据。如果需要在不同的控制器访问到变量xxx的数据，可以使用session
-
-封装绑定好数据后，我们通过这个参数来进行数据检索：
+Then, based on the built params we perform the query:
 
 .. code-block:: php
 
@@ -734,7 +787,8 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
         return $this->forward("products/index");
     }
 
-如果检索不到任何产品，将跳转到 products/index 页面。否则，读取检索到的数据，进行分页显示：
+If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
+search returned results, then we create a paginator to navigate easily through them:
 
 .. code-block:: php
 
@@ -749,7 +803,7 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
     //Get active page in the paginator
     $page = $paginator->getPaginate();
 
-最后，把分页的数据绑定到视图上。即把变量$page绑定到视图的page上:
+Finally we pass the returned page to view:
 
 .. code-block:: php
 
@@ -757,31 +811,28 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
     $this->view->setVar("page", $page);
 
-在视图文件(app/views/products/search.phtml) 中,我们这样进行数据显示： 
+In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
 
 .. code-block:: html+php
 
-    <?php foreach($page->items as $product){ ?>
+    <?php foreach ($page->items as $product) { ?>
         <tr>
             <td><?= $product->id ?></td>
             <td><?= $product->getProductTypes()->name ?></td>
             <td><?= $product->name ?></td>
             <td><?= $product->price ?></td>
             <td><?= $product->active ?></td>
-            <td><?= Tag::linkTo("products/edit/".$product->id, 'Edit') ?></td>
-            <td><?= Tag::linkTo("products/delete/".$product->id, 'Delete') ?></td>
+            <td><?= $this->tag->linkTo("products/edit/" . $product->id, 'Edit') ?></td>
+            <td><?= $this->tag->linkTo("products/delete/" . $product->id, 'Delete') ?></td>
         </tr>
     <?php } ?>
 
-创建以及更新一条数据记录
+�����͸��¼�¼��Creating and Updating Records��
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-现在，让我们来看看如何使用CURD创建和更新一个记录。通过控制器的"new"和"edit"两个Action，我们可以提交数据输入。他们分别能过"create"和"save"两个Action来保存提交的数据。
+Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
+are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
 
-译者注：说白了就是 newAction就是新建产品页面，点击右上角的Save按钮保存时，会调用createAction。同理....
-
-在创建的情况下，我们把用户提交的数据和"products"这个产品实例进行绑定。
-
-译者注：即把用户提交的数据通过绑定到model上，以实现保存到数据库的目的。
+In the creation case, we recover the data submitted and assign them to a new "products" instance:
 
 .. code-block:: php
 
@@ -794,17 +845,21 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
     {
 
         $products = new Products();
-        $products->id = $request->getPost("id", "int");
-        $products->product_types_id = $request->getPost("product_types_id", "int");
-        $products->name = $request->getPost("name", "striptags");
-        $products->price = $request->getPost("price", "double");
-        $products->active = $request->getPost("active");
+
+        $products->id = $this->request->getPost("id", "int");
+        $products->product_types_id = $this->request->getPost("product_types_id", "int");
+        $products->name = $this->request->getPost("name", "striptags");
+        $products->price = $this->request->getPost("price", "double");
+        $products->active = $this->request->getPost("active");
 
         //...
 
     }
 
-提交的数据被过滤，然后再赋值到对象的属性，保存时，我们就可以知道用户提交的数据有没有符合业务规则。同时，可以在 Products Model中实现验证。
+Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
+performs additional casting according to the column types.
+
+When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
 
 .. code-block:: php
 
@@ -818,7 +873,7 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
         //...
 
-        if (!$products->save()) {
+        if (!$products->create()) {
 
             //The store failed, the following messages were produced
             foreach ($products->getMessages() as $message) {
@@ -833,7 +888,7 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
     }
 
-现在来说产品编辑部分，首先得保证数据库中有可编辑的数据：
+Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
 
 .. code-block:: php
 
@@ -847,17 +902,18 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
         //...
 
-        $product = Products::findFirst("id = '$id'");
+        $product = Products::findFirstById($id);
 
-        Tag::displayTo("id", $product->id);
-        Tag::displayTo("product_types_id", $product->product_types_id);
-        Tag::displayTo("name", $product->name);
-        Tag::displayTo("price", $product->price);
-        Tag::displayTo("active", $product->active);
+        $this->tag->setDefault("id", $product->id);
+        $this->tag->setDefault("product_types_id", $product->product_types_id);
+        $this->tag->setDefault("name", $product->name);
+        $this->tag->setDefault("price", $product->price);
+        $this->tag->setDefault("active", $product->active);
 
     }
 
-通过 displayTo helper设置从数据库中取得的数据到页面，然后用户可以更改这些数据，然后再通过saveAction保存到数据库。
+The "setDefault" helper sets a default value in the form on the attribute with the same name. Thanks to this,
+the user can change any value and then sent it back to the database through to the "save" action:
 
 .. code-block:: php
 
@@ -872,10 +928,10 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
         //...
 
         //Find the product to update
-        $id = $request->getPost("id", "int");
-        $products = Products::findFirst("id='$id'");
-        if ($products == false) {
-            $this->flash->error("products does not exist ".$id);
+        $id = $this->request->getPost("id");
+        $product = Products::findFirstById($id);
+        if (!$product) {
+            $this->flash->error("products does not exist " . $id);
             return $this->forward("products/index");
         }
 
@@ -883,9 +939,10 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
     }
 
-动态更改标题
+��̬���ı��⣨Changing the Title Dynamically��
 ------------------------------
-当你浏览不同的控制器及动作时，网页标题会不同，如果更改标题呢，可以在每个控制器进行初始化：
+When you browse between one option and another will see that the title changes dynamically indicating where
+we are currently working. This is achieved in each controller initializer:
 
 .. code-block:: php
 
@@ -897,7 +954,7 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
         public function initialize()
         {
             //Set the document title
-            Tag::setTitle('Manage your product types');
+            $this->tag->setTitle('Manage your product types');
             parent::initialize();
         }
 
@@ -905,7 +962,7 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
 
     }
 
-注意，上面的方法中调用了 parent::initialize() ，你可以在 parent::initialize() 方法中加入更多的内容到标题：
+Note, that the method parent::initialize() is also called, it adds more data to the title:
 
 .. code-block:: php
 
@@ -917,28 +974,31 @@ Session Bag是一个特殊的属性，它存在于控制器中。这个属性注
         protected function initialize()
         {
             //Prepend the application name to the title
-            Phalcon\Tag::prependTitle('INVO | ');
+            $this->tag->prependTitle('INVO | ');
         }
 
         //...
     }
 
-最后，我们在视图文件 (app/views/index.phtml) 中这样获得标题：
+Finally, the title is printed in the main view (app/views/index.phtml):
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag as Tag ?>
     <!DOCTYPE html>
     <html>
         <head>
-            <?php echo Tag::getTitle() ?>
+            <?php echo $this->tag->getTitle() ?>
         </head>
         <!-- ... -->
     </html>
 
-结束语
+�����Conclusion��
 ----------
-本教程从各个方面讲解了如何使用Phalcon来创建一个应用程序，希望你也能提供示例程序，同时学习更多的内容。
+This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
+learn more and get more out of the framework.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+.. _Bootstrap: http://getbootstrap.com/
+.. _sha1: http://php.net/manual/en/function.sha1.php
+.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php

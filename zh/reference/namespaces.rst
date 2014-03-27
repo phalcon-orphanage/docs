@@ -1,13 +1,14 @@
-使用命名空间
+使用命名空间（Working with Namespaces）
 =======================
-Namespaces_ 可以用来避免类名冲突，这意味着，如果你有两个控制器，在应用程序中使用相同的名称，
-可以使用命名空间来区分他们。命名空间是也可用于创建module。
+Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
+a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
-Setting up the framework
+设置框架（Setting up the framework）
 ------------------------
-使用命名空间时对加载相应控制器会有一定的影响。需要调整框架命名空间的行为，可以实现加载一个或全部：
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
+to perform one or all of the following tasks:
 
-使用自动加载的方式需要考虑命名空间的影响，以下是使用 Phalcon\\Loader 的示例：
+Use an autoload strategy that takes into account the namespaces, for example with Phalcon\\Loader:
 
 .. code-block:: php
 
@@ -20,36 +21,38 @@ Setting up the framework
         )
     );
 
-在定义路由时，控制器的路径可以指定控制器的全名称：
+Specify it in the routes as a separate parameter in the route's paths:
 
 .. code-block:: php
 
     <?php
 
     $router->add(
-        "/admin/users/my-profile",
+        '/admin/users/my-profile',
         array(
-            "controller" => "Store\Admin\Users",
-            "action"     => "profile",
+            'namespace'  => 'Store\Admin',
+            'controller' => 'Users',
+            'action'     => 'profile',
         )
     );
 
-把命名空间当作路由定义的参数(详见路由器章节)：
+Passing it as part of the route:
 
 .. code-block:: php
 
     <?php
 
     $router->add(
-        "/:namespace/admin/users/my-profile",
+        '/:namespace/admin/users/my-profile',
         array(
-            "namespace"  => 1,
-            "controller" => "Users",
-            "action"     => "profile",
+            'namespace'  => 1,
+            'controller' => 'Users',
+            'action'     => 'profile',
         )
     );
 
-如果你只在你的应用程序中对每个控制器使用相同的命名空间，那么你可以在注册分发器时定义一个默认的命名空间，这样做的话，你就不再需要在定义路由的时候指定完整的类名称了：
+If you are only working with the same namespace for every controller in your application, then you can define a default namespace
+in the Dispatcher, by doing this, you don't need to specify a full class name in the router path:
 
 .. code-block:: php
 
@@ -58,13 +61,13 @@ Setting up the framework
     //Registering a dispatcher
     $di->set('dispatcher', function() {
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Store\Admin\Controllers\\');
+        $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
         return $dispatcher;
     });
 
-Controllers with Namespaces
----------------------------
-下面的示例演示如何实现使用命名空间来编写一个控制器：
+控制器加入命名空间（Controllers in Namespaces）
+-------------------------
+The following example shows how to implement a controller that use namespaces:
 
 .. code-block:: php
 
@@ -87,52 +90,45 @@ Controllers with Namespaces
 
     }
 
-Models in Namespaces
+模型加入命名空间（Models in Namespaces）
 --------------------
-对于模型，使用getSource来指定关联的数据表是非常必要的：
+Take the following into consideration when using models in namespaces:
 
 .. code-block:: php
 
     <?php
 
-    namespace Store\Toys;
+    namespace Store\Models;
 
     class Robots extends \Phalcon\Mvc\Model
     {
-
-        public function getSource()
-        {
-            return "robots";
-        }
 
     }
 
-另外，因为命名空间的原因，一些魔术方法不能如预期般运行，你可以按如下方式手工定义正确的行为：
+If models have relationships they must include the namespace too:
 
 .. code-block:: php
 
     <?php
 
-    namespace Store\Toys;
+    namespace Store\Models;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Phalcon\Mvc\Model
     {
-
-        public function getSource()
-        {
-            return "robots";
-        }
-
         public function initialize()
         {
-            $this->hasMany("id", 'Store\Toys\RobotsParts', 'robots_id');
+            $this->hasMany('id', 'Store\Models\Parts', 'robots_id', array(
+                'alias' => 'parts'
+            ));
         }
-
-        public function getRobotsParts($arguments=null)
-        {
-            return $this->getRelated('Store\Toys\RobotsParts', $arguments);
-        }
-
     }
+
+In PHQL you must write the statements including namespaces:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
 
 .. _Namespaces: http://php.net/manual/en/language.namespaces.php

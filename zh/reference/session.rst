@@ -1,26 +1,33 @@
-把数据存储到Session(Storing data in Session)
-=====================================================================
+使用 Session 存储数据（Storing data in Session）
+=======================
+The :doc:`Phalcon\\Session <../api/Phalcon_Session>` provides object-oriented wrappers to access session data.
 
-:doc:`Phalcon\\Session <../api/Phalcon_Session>` 组件提供了一种面象对象的方式访问session数据。
+Reasons to use this component instead of raw-sessions:
 
-初始化Session
+* You can easily isolate session data across applications on the same domain
+* Intercept where session data is set/get in your application
+* Change the session adapter according to the application needs
+
+启动会话（Starting the Session）
 --------------------
-有一些应用程序是会话密集型的，几乎所有的操作都需要访问Session数据。还有一些则不太需要用户会话。有了服务容器，我们可以确保只有在需要它的时候，就可以访问它：
+Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually.
+Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
 .. code-block:: php
 
     <?php
 
     //Start the session the first time when some component request the session service
-    $di->setShared('session', function(){
+    $di->setShared('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-存储/获取 Session数据
+Session 的存储与读取（Storing/Retrieving data in Session）
 ----------------------------------
-你可以在控制器，视图文件，以及只要继承自 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中方便的访问session服务，并且可方便的存储或获取它们的值。请看示例：
+From a controller, a view or any other component that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
+and store items and retrieve them in the following way:
 
 .. code-block:: php
 
@@ -39,8 +46,7 @@
         {
 
             //Check if the variable is defined
-            if ($this->session->has("user-name"))
-            {
+            if ($this->session->has("user-name")) {
 
                 //Retrieve its value
                 $name = $this->session->get("user-name");
@@ -49,9 +55,9 @@
 
     }
 
-移除/销毁 Session数据
+Sessions 的删除和销毁（Removing/Destroying Sessions）
 ----------------------------
-你可以移除指定的session数据，也可销毁整个session:
+It's also possible remove specific variables or destroy the whole session:
 
 .. code-block:: php
 
@@ -74,9 +80,11 @@
 
     }
 
-Isolating Session Data between Applications
+隔离不同应用的会话数据（Isolating Session Data between Applications）
 -------------------------------------------
-有时，我们可能部署相同的应用程序在同一台服务器上两次，而使用相同的会话。当然，如果我们在会话中使用变量，我们希望每个应用程序都有其单独的会话数据(即使相同代码和相同的变量名称)。为了解决这个问题，你可以在某个应用程序中为每个会话创建的变量添加一个前辍：
+Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session,
+we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a
+prefix for every session variable created in a certain application:
 
 .. code-block:: php
 
@@ -97,24 +105,27 @@ Isolating Session Data between Applications
         return $session;
     });
 
-Session Bags
+会话袋（Session Bags）
 ------------
-:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 组件帮助把session数据导入到 "namespaces"。通过这种方式，你可以轻松的创建一组会话变量到应用程序中，只需设置变量为 "bag",它会自动存储为session数据：
+:doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` is a component that helps separating session data into "namespaces".
+Working by this way you can easily create groups of session variables into the application. By only setting the variables in the "bag",
+it's automatically stored in session:
 
 .. code-block:: php
 
     <?php
 
-    $user       = new Phalcon\Session\Bag();
+    $user       = new Phalcon\Session\Bag('user');
+    $user->setDI($di);
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
 
 
-Persistent Data in Components
+组件的持久数据（Persistent Data in Components）
 -----------------------------
-控制器，组件，或者其他继承自  :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的类都可以注入到  :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`.使用这个类的会话数据在每个类中的变量是隔离开的，基于此，你可以隔离每个请求持久化数据。
-
-译者注： 我曾在翻译tutorial invo章节时测试过此属性，并添加了注释。可以查阅 :doc:`tutorial-invo <../reference/tutorial-invo>`，搜索 '译者注'查看
+Controller, components and classes that extends :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` may inject
+a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`. This class isolates variables for every class.
+Thanks to this you can persist data between requests in every class in an independent way.
 
 .. code-block:: php
 
@@ -161,118 +172,11 @@ In a component:
 
     }
 
-通过 ($this->session) 添加的变量，可在整个应用程序进行访问。而通过 ($this->persistent) 添加的变量，只能在当前类访问。
+The data added to the session ($this->session) are available throughout the application, while persistent ($this->persistent)
+can only be accessed in the scope of the current class.
 
-实现自定义适配器
+自定义适配器（Implementing your own adapters）
 ------------------------------
-The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+The :doc:`Phalcon\\Session\\AdapterInterface <../api/Phalcon_Session_AdapterInterface>` interface must be implemented in order to create your own session adapters or extend the existing ones.
 
-.. code-block:: php
-
-    <?php
-
-    class MySessionHandler implements Phalcon\Session\AdapterInterface
-    {
-
-        /**
-         * MySessionHandler construtor
-         *
-         * @param array $options
-         */
-        public function __construct($options=null)
-        {
-        }
-
-        /**
-         * Starts session, optionally using an adapter
-         *
-         * @param array $options
-         */
-        public function start()
-        {
-        }
-
-        /**
-         * Sets session options
-         *
-         * @param array $options
-         */
-        public function setOptions($options)
-        {
-        }
-
-        /**
-         * Get internal options
-         *
-         * @return array
-         */
-        public function getOptions()
-        {
-        }
-
-        /**
-         * Gets a session variable from an application context
-         *
-         * @param string $index
-         */
-        public function get($index)
-        {
-        }
-
-        /**
-         * Sets a session variable in an application context
-         *
-         * @param string $index
-         * @param string $value
-         */
-        public function set($index, $value)
-        {
-        }
-
-        /**
-         * Check whether a session variable is set in an application context
-         *
-         * @param string $index
-         */
-        public function has($index)
-        {
-        }
-
-        /**
-         * Removes a session variable from an application context
-         *
-         * @param string $index
-         */
-        public function remove($index)
-        {
-        }
-
-        /**
-         * Returns active session id
-         *
-         * @return string
-         */
-        public function getId()
-        {
-        }
-
-        /**
-         * Check whether the session has been started
-         *
-         * @return boolean
-         */
-        public function isStarted()
-        {
-        }
-
-        /**
-         * Destroys the active session
-         *
-         * @return boolean
-         */
-        public function destroy()
-        {
-        }
-
-    }
-
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter>`_

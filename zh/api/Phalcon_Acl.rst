@@ -1,7 +1,5 @@
-Class **Phalcon\\Acl**
-======================
-
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+Abstract class **Phalcon\\Acl**
+===============================
 
 This component allows to manage ACL lists. An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.  
 
@@ -22,7 +20,7 @@ This component allows to manage ACL lists. An access control list (ACL) is a lis
     $acl->addRole($roleGuests);
     
     //Add "Designers" role to acl
-    $acl->addRole('Designers'));
+    $acl->addRole('Designers');
     
     //Define the "Customers" resource
     $customersResource = new Phalcon\Acl\Resource('Customers', 'Customers management');
@@ -37,7 +35,7 @@ This component allows to manage ACL lists. An access control list (ACL) is a lis
     $acl->deny('Guests', 'Customers', 'update');
     
     //Check whether role has access to the operations
-    $acl->isAllowed('Guests', 'Customers', 'edit') //Returns 0
+    $acl->isAllowed('Guests', 'Customers', 'edit'); //Returns 0
     $acl->isAllowed('Guests', 'Customers', 'search'); //Returns 1
     $acl->isAllowed('Guests', 'Customers', 'create'); //Returns 1
 
@@ -49,19 +47,4 @@ Constants
 *integer* **ALLOW**
 
 *integer* **DENY**
-
-Methods
----------
-
-public  **setEventsManager** (*unknown* $eventsManager)
-
-Sets the events manager
-
-
-
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
-
-Returns the internal event manager
-
-
 

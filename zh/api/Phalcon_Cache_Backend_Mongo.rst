@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Backend\\Mongo**
 ========================================
 
-*extends* :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
+*extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
 
@@ -13,7 +13,7 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
      // Cache data for 2 days
      $frontCache = new Phalcon\Cache\Frontend\Base64(array(
-        "lifetime" => 172800
+    	"lifetime" => 172800
      ));
     
      //Create a MongoDB cache
@@ -24,7 +24,7 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
      ));
     
      //Cache arbitrary data
-     $cache->store('my-data', file_get_contents('some-image.jpg'));
+     $cache->save('my-data', file_get_contents('some-image.jpg'));
     
      //Get data
      $data = $cache->get('my-data');
@@ -32,9 +32,9 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
 
 Methods
----------
+-------
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, *array* $options)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\Mongo constructor
 
@@ -46,13 +46,13 @@ Returns a MongoDb collection based on the backend parameters
 
 
 
-public *mixed*  **get** (*int|string* $keyName, *long* $lifetime)
+public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
 
 Returns a cached content
 
 
 
-public  **save** (*int|string* $keyName, *string* $content, *long* $lifetime, *boolean* $stopBuffer)
+public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the Mongo backend and stops the frontend
 
@@ -64,25 +64,48 @@ Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** (*string* $prefix)
+public *array*  **queryKeys** ([*string* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** (*string* $keyName, *long* $lifetime)
+public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **start** (*int|string* $keyName) inherited from Phalcon\\Cache\\Backend
+public  **gc** ()
+
+...
+
+
+public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+
+Increment of a given key by $value
+
+
+
+public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+
+Decrement of a given key by $value
+
+
+
+public *bool*  **flush** ()
+
+Immediately invalidates all existing items.
+
+
+
+public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
 
 
 
-public  **stop** (*boolean* $stopBuffer) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*boolean* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
 
@@ -121,6 +144,12 @@ Sets the last key used in the cache
 public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
 
 Gets the last key stored by the cache
+
+
+
+public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Backend
+
+Gets the last lifetime set
 
 
 

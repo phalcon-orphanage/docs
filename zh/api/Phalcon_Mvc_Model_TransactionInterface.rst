@@ -5,13 +5,7 @@ Phalcon\\Mvc\\Model\\TransactionInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $autoBegin)
-
-Phalcon\\Mvc\\Model\\Transaction constructor
-
-
+-------
 
 abstract public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
 
@@ -31,7 +25,7 @@ Commits the transaction
 
 
 
-abstract public *boolean*  **rollback** (*string* $rollbackMessage, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord)
+abstract public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
 
 Rollbacks the transaction
 

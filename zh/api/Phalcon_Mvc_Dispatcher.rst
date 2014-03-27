@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Dispatcher**
 ==================================
 
-*extends* :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
+*extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
 *implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`, :doc:`Phalcon\\Mvc\\DispatcherInterface <Phalcon_Mvc_DispatcherInterface>`
 
@@ -41,7 +41,7 @@ Constants
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 Methods
----------
+-------
 
 public  **setControllerSuffix** (*string* $controllerSuffix)
 
@@ -55,7 +55,7 @@ Sets the default controller name
 
 
 
-public  **setControllerName** (*string* $controllerName)
+public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
 Sets the controller name to be dispatched
 
@@ -73,15 +73,39 @@ Throws an internal exception
 
 
 
-public :doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>`  **getLastController** ()
+protected  **_handleException** ()
+
+Handles a user exception phalcon_dispatcher_fire_event() first
+
+
+
+public *string*  **getControllerClass** ()
+
+Possible controller class name that will be located to dispatch the request
+
+
+
+public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getLastController** ()
 
 Returns the lastest dispatched controller
 
 
 
-public :doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>`  **getActiveController** ()
+public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
 
 Returns the active controller in the dispatcher
+
+
+
+public *string*  **getPreviousControllerName** ()
+
+Returns the previous controller in the dispatcher
+
+
+
+public *string*  **getPreviousActionName** ()
+
+Returns the previous action in the dispatcher
 
 
 
@@ -121,9 +145,21 @@ Sets the default action suffix
 
 
 
+public  **setModuleName** (*string* $moduleName) inherited from Phalcon\\Dispatcher
+
+Sets the module where the controller is (only informative)
+
+
+
+public *string*  **getModuleName** () inherited from Phalcon\\Dispatcher
+
+Gets the module where the controller class is
+
+
+
 public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
 
-Sets a namespace to be prepended to the handler name
+Sets the namespace where the controller class is
 
 
 
@@ -159,7 +195,7 @@ Sets the action name to be dispatched
 
 public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
 
-Gets last dispatched action name
+Gets the lastest dispatched action name
 
 
 
@@ -181,15 +217,27 @@ Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, *string|array* $filters, *mixed* $defaultValue) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
+
+
+
+public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
+
+Returns the current method to be/executed in the dispatcher
 
 
 
 public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+
+
+
+public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+
+Sets the latest returned value by an action manually
 
 
 
@@ -207,7 +255,26 @@ Dispatches a handle action taking into account the routing parameters
 
 public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
 
-Forwards the execution flow to another controller/action
+Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
+
+.. code-block:: php
+
+    <?php
+
+      $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
+
+
+
+
+public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
+
+Check if the current executed action was forwarded by another one
+
+
+
+public *string*  **getHandlerClass** () inherited from Phalcon\\Dispatcher
+
+Possible class name that will be located to dispatch the request
 
 
 

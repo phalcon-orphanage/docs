@@ -9,18 +9,25 @@ Escapes different kinds of text securing them. By using this component you may p
 
     <?php
 
-     $escaper = new Phalcon\Escaper();
-     $escaped = $escaper->escapeCss("font-family: <Verdana>");
-     echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
+    $escaper = new Phalcon\Escaper();
+    $escaped = $escaper->escapeCss("font-family: <Verdana>");
+    echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 
 
 Methods
----------
+-------
 
-public  **setEnconding** (*string* $encoding)
+public  **setEncoding** (*string* $encoding)
 
-Sets the encoding to be used by the escaper
+Sets the encoding to be used by the escaper 
+
+.. code-block:: php
+
+    <?php
+
+     $escaper->setEncoding('utf-8');
+
 
 
 
@@ -32,31 +39,50 @@ Returns the internal encoding used by the escaper
 
 public  **setHtmlQuoteType** (*int* $quoteType)
 
-Sets the HTML quoting type for htmlspecialchars
+Sets the HTML quoting type for htmlspecialchars 
+
+.. code-block:: php
+
+    <?php
+
+     $escaper->setHtmlQuoteType(ENT_XHTML);
+
+
+
+
+public *string*  **detectEncoding** (*string* $str)
+
+Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
+
+
+
+public *string*  **normalizeEncoding** (*string* $str)
+
+Utility to normalize a string's encoding to UTF-32.
 
 
 
 public *string*  **escapeHtml** (*string* $text)
 
-Escapes a HTML string. Internally uses htmlspeciarchars
+Escapes a HTML string. Internally uses htmlspecialchars
 
 
 
-public *string*  **escapeHtmlAttr** (*string* $text)
+public *string*  **escapeHtmlAttr** (*unknown* $text)
 
 Escapes a HTML attribute string
 
 
 
-public *string*  **cssSanitize** (*array* $matches)
+public *string*  **escapeCss** (*string* $css)
 
-Sanitizes CSS strings converting non-alphanumeric chars to their hexadecimal representation
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 
-public  **escapeCss** (*string* $css)
+public *string*  **escapeJs** (*string* $js)
 
-Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal representation
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 
 

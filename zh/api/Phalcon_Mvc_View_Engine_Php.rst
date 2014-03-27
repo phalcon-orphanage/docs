@@ -1,23 +1,23 @@
 Class **Phalcon\\Mvc\\View\\Engine\\Php**
 =========================================
 
-*extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
+*implements* :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Adapter to use PHP itself as templating engine
 
 
 Methods
----------
+-------
 
-public  **render** (*string* $path, *array* $params, *boolean* $mustClean)
+public  **render** (*string* $path, *array* $params, [*boolean* $mustClean])
 
 Renders a view using the template engine
 
 
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\View\\Engine
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -32,6 +32,12 @@ Returns cached ouput on another view stage
 public *string*  **partial** (*string* $partialPath) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view
+
+
+
+public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **getView** () inherited from Phalcon\\Mvc\\View\\Engine
+
+Returns the view component related to the adapter
 
 
 
@@ -59,7 +65,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

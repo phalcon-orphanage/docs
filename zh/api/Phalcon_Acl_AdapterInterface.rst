@@ -5,7 +5,7 @@ Phalcon\\Acl\\AdapterInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setDefaultAction** (*int* $defaultAccess)
 
@@ -19,7 +19,7 @@ Returns the default ACL access level
 
 
 
-abstract public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $roleObject, *array* $accessInherits)
+abstract public *boolean*  **addRole** (:doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` $role, [*string* $accessInherits])
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
@@ -43,7 +43,7 @@ Check whether resource exist in the resources list
 
 
 
-abstract public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>` $resource, *unknown* $accessList)
+abstract public *boolean*  **addResource** (:doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>` $resource, [*array* $accessList])
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
 
@@ -73,7 +73,7 @@ Deny access to a role on a resource
 
 
 
-abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *unknown* $access)
+abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access)
 
 Check whether a role is allowed to access an action from a resource
 
@@ -94,6 +94,18 @@ Returns the resource which the list is checking if some role can access it
 abstract public *string*  **getActiveAccess** ()
 
 Returns the access which the list is checking if some role can access it
+
+
+
+abstract public :doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>` [] **getRoles** ()
+
+Return an array with every role registered in the list
+
+
+
+abstract public :doc:`Phalcon\\Acl\\ResourceInterface <Phalcon_Acl_ResourceInterface>` [] **getResources** ()
+
+Return an array with every resource registered in the list
 
 
 

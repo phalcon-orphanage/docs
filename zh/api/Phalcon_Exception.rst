@@ -3,8 +3,11 @@ Class **Phalcon\\Exception**
 
 *extends* Exception
 
+All framework exceptions should use or extend this exception
+
+
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 
@@ -12,7 +15,7 @@ Clone the exception
 
 
 
-public  **__construct** (*string* $message, *int* $code, *Exception* $previous) inherited from Exception
+public  **__construct** ([*string* $message], [*int* $code], [*Exception* $previous]) inherited from Exception
 
 Exception constructor
 

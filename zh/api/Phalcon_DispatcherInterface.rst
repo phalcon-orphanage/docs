@@ -5,7 +5,7 @@ Phalcon\\DispatcherInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public  **setActionSuffix** (*string* $actionSuffix)
 
@@ -55,7 +55,7 @@ Set a param by its name or numeric index
 
 
 
-abstract public *mixed*  **getParam** (*mixed* $param, *string|array* $filters)
+abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters])
 
 Gets a param by its name or numeric index
 
