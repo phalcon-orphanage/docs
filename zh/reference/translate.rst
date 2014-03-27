@@ -1,10 +1,11 @@
-多语言支持
+多语言支持（Multi-lingual Support）
 =====================
-在应用程序开发中，可使用:doc:`Phalcon\\Translate <../api/Phalcon_Translate>` 组件帮助实现多语言。使用此组件，可根据用户选择的语言提供相应的语言支持。
+The component :doc:`Phalcon\\Translate <../api/Phalcon_Translate>` aids in creating multilingual applications. Applications using this component,
+display content in different languages, based on the user's chosen language supported by the application.
 
-适配器
+适配器（Adapters）
 --------
-该组件使用适配器，以统一的方式读取相应的语言文件。
+This component makes use of adapters to read translation messages from different sources in a unified way.
 
 +-------------+-----------------------------------------------------------------------------------------+
 | Adapter     | Description                                                                             |
@@ -12,9 +13,10 @@
 | NativeArray | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 +-------------+-----------------------------------------------------------------------------------------+
 
-Component Usage
+组件的使用（Component Usage）
 ---------------
-翻译的字符串存储在文件中，这些文件的结构可能会有所不同，具体取决于你所使用的适配器。Phalcon允许你自由的组织翻译，简单的结构可能是这样：
+Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
+to organize your translation strings. A simple structure could be:
 
 .. code-block:: bash
 
@@ -23,7 +25,8 @@ Component Usage
     app/messages/fr.php
     app/messages/zh.php
 
-每个翻译文件都包含一个由key/value组成的数组。对于每一个翻译文件，key都是唯一的，相同的数组需要使用不同的文件，保持key不变，value值根据每种语言进行翻译即可。
+Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in
+different files, where keys remain the same and values contain the translated strings depending on each language.
 
 .. code-block:: php
 
@@ -49,9 +52,11 @@ Component Usage
         "song"    => "La chanson est %song%"
     );
 
-在应用程序中实现语言转化机制并不难，关键取决于你想如何实现它。你可以根据检测用户的浏览器语言为用户提供相应的语言支持或者提供一个设置页面供用户自己选择他们想要的语言。
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
+automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
-一个简单的用于检测客户端用户语言的方式是通过 $_SERVER['HTTP_ACCEPT_LANGUAGE']，或者也可以在controller/action中直接调用 $this->request->getBestLanguage() 也可。
+A simple way of detecting the user's language is to parse the $_SERVER['HTTP_ACCEPT_LANGUAGE'] contents, or if you wish, access it
+directly by calling $this->request->getBestLanguage() from an action/controller:
 
 .. code-block:: php
 
@@ -89,7 +94,8 @@ Component Usage
 
     }
 
-本例中的 _getTranslation 适用于整个控制器，通过变量 $t 传递翻译字符到视图，并且使用它。我们可以在视图层这样使用翻译字符串：
+The _getTranslation method is available for all actions that require translations. The $t variable is passed to the views, and with it,
+we can translate strings in that layer:
 
 .. code-block:: html+php
 
@@ -97,7 +103,9 @@ Component Usage
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
 
-函数"_"通过传递的key返回翻译后的字符串。一些字符串中可能包含有占位符，如 Hello %name%。这些点位符可以通过函数"_"来传递参数进行替换，传递的参数是一个key/value的数组，其中的key是占位符名称，值是被替换的数据：
+The "_" function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
+calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters
+are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 .. code-block:: html+php
 
@@ -105,9 +113,10 @@ Component Usage
     <!-- String: hi-user => 'Hello %name%' -->
     <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
 
-一些应用程序实现了基于URL的多语言，如 http://www.mozilla.org/**es-ES**/firefox/. Phalcon 通过使用 :doc:`Router <routing>` 也可以实现一样的效果。
+Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
+this by using a :doc:`Router <routing>`.
 
-Implementing your own adapters
+自定义适配器（Implementing your own adapters）
 ------------------------------
 The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_AdapterInterface>` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -153,4 +162,4 @@ The :doc:`Phalcon\\Translate\\AdapterInterface <../api/Phalcon_Translate_Adapter
 
     }
 
-
+There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter>`_

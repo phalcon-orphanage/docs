@@ -7,7 +7,13 @@ This component allows to create CLI applications using Phalcon
 
 
 Methods
----------
+-------
+
+public  **__construct** ([*unknown* $dependencyInjector])
+
+Phalcon\\CLI\\Console constructor
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -41,7 +47,7 @@ Register an array of modules present in the console
 
     <?php
 
-    $this->registerModules(array(
+    $application->registerModules(array(
     	'frontend' => array(
     		'className' => 'Multiple\Frontend\Module',
     		'path' => '../apps/frontend/Module.php'
@@ -57,7 +63,19 @@ Register an array of modules present in the console
 
 public  **addModules** (*array* $modules)
 
-Merge modules with the existing ones
+Merge modules with the existing ones 
+
+.. code-block:: php
+
+    <?php
+
+    $application->addModules(array(
+    	'admin' => array(
+    		'className' => 'Multiple\Admin\Module',
+    		'path' => '../apps/admin/Module.php'
+    	)
+    ));
+
 
 
 
@@ -67,9 +85,21 @@ Return the modules registered in the console
 
 
 
-public *mixed*  **handle** (*array* $arguments)
+public *mixed*  **handle** ([*array* $arguments])
 
-Handle the whole command-line tasks
+Handle the command-line arguments. 
+
+.. code-block:: php
+
+    <?php
+
+     	$arguments = array(
+     		'task' => 'taskname',
+     		'action' => 'action',
+     		'params' => array('parameter1', 'parameter2')
+     	);
+     	$console->handle($arguments);
+
 
 
 

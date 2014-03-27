@@ -1,22 +1,25 @@
-数据分页
-===============
-当有一大组数据需要呈现时，我们需要用到数据分页。Phalcon\\Paginator 提供了一个快捷，方便的方法对大组数据进行分割，以达到分页浏览的效果。
+分页（Pagination）
+==========
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. Phalcon\\Paginator offers a
+fast and convenient way to split these sets of data browsable pages.
 
-Data Adapters
+数据适配器（Data Adapters）
 -------------
-这个组件使用不同的适配器来封装不同的数据源：
+This component makes use of adapters to encapsulate different sources of data:
 
-+--------------+-------------------------------------------------------+
-| Adapter      | Description                                           |
-+==============+=======================================================+
-| NativeArray  | Use a PHP array as source data                        |
-+--------------+-------------------------------------------------------+
-| Model        | Use a Phalcon\\Model\\Resultset object as source data |
-+--------------+-------------------------------------------------------+
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter      | Description                                                                                                                                                                   |
++==============+===============================================================================================================================================================================+
+| NativeArray  | Use a PHP array as source data                                                                                                                                                |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Model        | Use a Phalcon\\Mvc\\Model\\Resultset object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| QueryBuilder | Use a Phalcon\\Mvc\\Model\\Query\\Builder object as source data                                                                                                               |
++--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Using Paginators
-----------------
-在下面的例子中，paginator将从model中读取数据作为其数据源，并限制每页显示10条记录：
+示例（Examples）
+--------
+In the example below, the paginator will use as its source data the result of a query from a model, and limit the displayed data to 10 records per page:
 
 .. code-block:: php
 
@@ -32,7 +35,7 @@ Using Paginators
     $robots = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = new Phalcon\Paginator\Adapter\Model(
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
         array(
             "data" => $robots,
             "limit"=> 10,
@@ -43,7 +46,8 @@ Using Paginators
     // Get the paginated results
     $page = $paginator->getPaginate();
 
-变量 $currentPage 控制将显示哪一页。 $paginator->getPaginate() 返回一个包含分页数据的 $page 对象，它将用于生成分页：
+Variable $currentPage controls the page to be displayed. The $paginator->getPaginate() returns a $page
+object that contains the paginated data. It can be used for generating the pagination:
 
 .. code-block:: html+php
 
@@ -53,7 +57,7 @@ Using Paginators
             <th>Name</th>
             <th>Type</th>
         </tr>
-        <?php foreach($page->items as $item) { ?>
+        <?php foreach ($page->items as $item) { ?>
         <tr>
             <td><?php echo $item->id; ?></td>
             <td><?php echo $item->name; ?></td>
@@ -62,7 +66,7 @@ Using Paginators
         <?php } ?>
     </table>
 
-$page对象还包含以下数据：
+The $page object also contains navigation data:
 
 .. code-block:: html+php
 
@@ -73,23 +77,75 @@ $page对象还包含以下数据：
 
     <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
 
-Page 属性
+适配器使用（Adapters Usage）
+--------------
+An example of the source data that must be used for each adapter:
+
+.. code-block:: php
+
+    <?php
+
+    //Passing a resultset as data
+    $paginator = new \Phalcon\Paginator\Adapter\Model(
+        array(
+            "data"  => Products::find(),
+            "limit" => 10,
+            "page"  => $currentPage
+        )
+    );
+
+    //Passing an array as data
+    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
+        array(
+            "data"  => array(
+                array('id' => 1, 'name' => 'Artichoke'),
+                array('id' => 2, 'name' => 'Carrots'),
+                array('id' => 3, 'name' => 'Beet'),
+                array('id' => 4, 'name' => 'Lettuce'),
+                array('id' => 5, 'name' => '')
+            ),
+            "limit" => 2,
+            "page"  => $currentPage
+        )
+    );
+
+    //Passing a querybuilder as data
+
+    $builder = $this->modelsManager->createBuilder()
+        ->columns('id, name')
+        ->from('Robots')
+        ->orderBy('name');
+
+    $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
+        "builder" => $builder,
+        "limit"=> 20,
+        "page" => 1
+    ));
+
+
+页面属性（Page Attributes）
 ---------------
-$page对象包含以下一些属性：
+The $page object has the following attributes:
 
-+---------+--------------------------------------------------------+
-| Adapter | Description                                            |
-+=========+========================================================+
-| items   | The set of records to be displayed at the current page |
-+---------+--------------------------------------------------------+
-| before  | The previous page to the current one                   |
-+---------+--------------------------------------------------------+
-| next    | The next page to the current one                       |
-+---------+--------------------------------------------------------+
-| last    | The last page in the set of records                    |
-+---------+--------------------------------------------------------+
++-------------+--------------------------------------------------------+
+| Attribute   | Description                                            |
++=============+========================================================+
+| items       | The set of records to be displayed at the current page |
++-------------+--------------------------------------------------------+
+| current     | The current page                                       |
++-------------+--------------------------------------------------------+
+| before      | The previous page to the current one                   |
++-------------+--------------------------------------------------------+
+| next        | The next page to the current one                       |
++-------------+--------------------------------------------------------+
+| last        | The last page in the set of records                    |
++-------------+--------------------------------------------------------+
+| total_pages | The number of pages                                    |
++-------------+--------------------------------------------------------+
+| total_items | The number of items in the source data                 |
++-------------+--------------------------------------------------------+
 
-实现自定义的分页适配器
+自定义适配器（Implementing your own adapters）
 ------------------------------
 The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_AdapterInterface>` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
@@ -97,7 +153,8 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     <?php
 
-    class MyPaginator implements Phalcon\Paginator\AdapterInterface  {
+    class MyPaginator implements Phalcon\Paginator\AdapterInterface
+    {
 
         /**
          * Adapter constructor

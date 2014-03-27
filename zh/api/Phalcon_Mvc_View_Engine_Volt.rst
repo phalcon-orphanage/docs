@@ -1,27 +1,15 @@
 Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 ==========================================
 
-*extends* :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
+*implements* :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Designer friendly and fast template engine for PHP written in C
 
 
 Methods
----------
-
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the dependency injection container
-
-
-
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the dependency injection container
-
-
+-------
 
 public  **setOptions** (*array* $options)
 
@@ -35,7 +23,13 @@ Return Volt's options
 
 
 
-public  **render** (*string* $templatePath, *array* $params, *boolean* $mustClean)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **getCompiler** ()
+
+Returns the Volt's compiler
+
+
+
+public  **render** (*unknown* $path, *array* $params, [*boolean* $mustClean])
 
 Renders a view using the template engine
 
@@ -43,11 +37,35 @@ Renders a view using the template engine
 
 public *int*  **length** (*mixed* $item)
 
-Length filter
+Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Mvc\\View\\Engine
+public *boolean*  **isIncluded** (*mixed* $needle, *mixed* $haystack)
+
+Checks if the needle is included in the haystack
+
+
+
+public *string*  **convertEncoding** (*string* $text, *string* $from, *string* $to)
+
+Performs a string conversion
+
+
+
+public  **slice** (*mixed* $value, *unknown* $start, [*unknown* $end])
+
+Extracts a slice from a string/array/traversable object value
+
+
+
+public *array*  **sort** (*array* $value)
+
+Sorts an array
+
+
+
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
 
@@ -65,6 +83,24 @@ Renders a partial inside another view
 
 
 
+public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **getView** () inherited from Phalcon\\Mvc\\View\\Engine
+
+Returns the view component related to the adapter
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+
+Sets the dependency injector
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal dependency injector
+
+
+
 public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
 
 Sets the event manager
@@ -77,7 +113,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
 
 Magic method __get
 

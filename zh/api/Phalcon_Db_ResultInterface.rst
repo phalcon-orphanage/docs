@@ -5,13 +5,7 @@ Phalcon\\Db\\ResultInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, *string* $sqlStatement, *array* $bindParams, *array* $bindTypes)
-
-Phalcon\\Db\\Result\\Pdo constructor
-
-
+-------
 
 abstract public *boolean*  **execute** ()
 

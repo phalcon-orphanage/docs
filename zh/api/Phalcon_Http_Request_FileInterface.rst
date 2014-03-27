@@ -5,13 +5,7 @@ Phalcon\\Http\\Request\\FileInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*array* $file)
-
-Phalcon\\Http\\Request\\FileInterface constructor
-
-
+-------
 
 abstract public *int*  **getSize** ()
 
@@ -28,6 +22,18 @@ Returns the real name of the uploaded file
 abstract public *string*  **getTempName** ()
 
 Returns the temporal name of the uploaded file
+
+
+
+abstract public *string*  **getType** ()
+
+Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+
+
+
+abstract public *string*  **getRealType** ()
+
+Gets the real mime type of the upload file using finfo
 
 
 

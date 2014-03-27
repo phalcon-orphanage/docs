@@ -5,13 +5,7 @@ Phalcon\\Mvc\\Router\\RouteInterface initializer
 
 
 Methods
----------
-
-abstract public  **__construct** (*string* $pattern, *array* $paths, *array|string* $httpMethods)
-
-Phalcon\\Mvc\\Router\\Route constructor
-
-
+-------
 
 abstract public *string*  **compilePattern** (*string* $pattern)
 
@@ -25,7 +19,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-abstract public  **reConfigure** (*string* $pattern, *array* $paths)
+abstract public  **reConfigure** (*string* $pattern, [*array* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 

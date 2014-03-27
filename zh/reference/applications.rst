@@ -1,14 +1,18 @@
 MVC Applications
 ================
-在 Phalcon 中，所有复杂的MVC相关工作都是由 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 来完成的。该组件封装了所有复杂的后台操作，包括每一个组件的实例化，组件之间的集成等。
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
+operations required in the background, instantiating every component needed and integrating it with the
+project, to allow the MVC pattern to operate as desired.
 
 Single or Multi Module Applications
 -----------------------------------
-使用此组件，您可以运行不同类型的MVC结构：
+With this component you can run various types of MVC structures:
 
 Single Module
 ^^^^^^^^^^^^^
-单MVC应用程序只包含一个module，可以使用命名空间，但不是必需的。这样的应用程序的文件结构如下：
+Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
+An application like this would have the following file structure:
 
 .. code-block:: php
 
@@ -22,13 +26,18 @@ Single Module
             img/
             js/
 
-如果不使用命名空间，引导文件被用来协调MVC流程：
+If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
 
 .. code-block:: php
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader,
+        Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Application,
+        Phalcon\Mvc\View;
+
+    $loader = new Loader();
 
     $loader->registerDirs(
         array(
@@ -37,30 +46,38 @@ Single Module
         )
     )->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
     // Registering the view component
     $di->set('view', function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
     });
 
     try {
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+
+        $application = new Application($di);
+
         echo $application->handle()->getContent();
-    } catch(Phalcon\Exception $e) {
+
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
-如果使用命名空间，引导文件可以这样做：
+If namespaces are used, the following bootstrap can be used:
 
 .. code-block:: php
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader,
+        Phalcon\Mvc\View,
+        Phalcon\DI\FactoryDefault,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\Application;
+
+    $loader = new Loader();
 
     // Use autoloading with namespaces prefixes
     $loader->registerNamespaces(
@@ -70,36 +87,36 @@ Single Module
         )
     )->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
     // Register the dispatcher setting a Namespace for controllers
-    // Pay special attention to the double slashes at the end of the
-    // parameter used in the setDefaultNamespace function
     $di->set('dispatcher', function() {
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Single\Controllers\\');
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
     // Registering the view component
     $di->set('view', function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir('../apps/views/');
         return $view;
     });
 
     try {
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+
+        $application = new Application($di);
+
         echo $application->handle()->getContent();
-    } catch(Phalcon\Exception $e){
+
+    } catch(\Exception $e){
         echo $e->getMessage();
     }
 
 
 Multi Module
 ^^^^^^^^^^^^
-一个multi-module(多模块)的应用程序是指使用相同的Document Root，但有超过一个module。在这种情况下，程序的文件结构如下：
+A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
 .. code-block:: php
 
@@ -120,7 +137,7 @@ Multi Module
         img/
         js/
 
-在 apps/ 目录下的每个目录都有自己的MVC结构，Module.php是每个Module特定的设置：
+Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
 
 .. code-block:: php
 
@@ -128,7 +145,10 @@ Multi Module
 
     namespace Multiple\Backend;
 
-    use Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader,
+        Phalcon\Mvc\Dispatcher,
+        Phalcon\Mvc\View,
+        Phalcon\Mvc\ModuleDefinitionInterface;
 
     class Module implements ModuleDefinitionInterface
     {
@@ -139,7 +159,7 @@ Multi Module
         public function registerAutoloaders()
         {
 
-            $loader = new \Phalcon\Loader();
+            $loader = new Loader();
 
             $loader->registerNamespaces(
                 array(
@@ -159,14 +179,14 @@ Multi Module
 
             //Registering a dispatcher
             $di->set('dispatcher', function() {
-                $dispatcher = new \Phalcon\Mvc\Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers\\");
+                $dispatcher = new Dispatcher();
+                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
             //Registering the view component
             $di->set('view', function() {
-                $view = new \Phalcon\Mvc\View();
+                $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
@@ -174,56 +194,49 @@ Multi Module
 
     }
 
-一个特殊的引导文件，用以载入 multi-module MVC 结构：
+A special bootstrap file is required to load the a multi-module MVC architecture:
 
 .. code-block:: php
 
     <?php
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    use Phalcon\Mvc\Router,
+        Phalcon\Mvc\Application,
+        Phalcon\DI\FactoryDefault;
+
+    $di = new FactoryDefault();
 
     //Specify routes for modules
     $di->set('router', function () {
 
-        $router = new \Phalcon\Mvc\Router();
+        $router = new Router();
 
         $router->setDefaultModule("frontend");
 
-        $router->add(
-            "/login",
-            array(
-                'module'     => 'backend',
-                'controller' => 'login',
-                'action'     => 'index',
-            )
-        );
+        $router->add("/login", array(
+            'module'     => 'backend',
+            'controller' => 'login',
+            'action'     => 'index',
+        ));
 
-        $router->add(
-            "/admin/products/:action",
-            array(
-                'module'     => 'backend',
-                'controller' => 'products',
-                'action'     => 1,
-            )
-        );
+        $router->add("/admin/products/:action", array(
+            'module'     => 'backend',
+            'controller' => 'products',
+            'action'     => 1,
+        ));
 
-        $router->add(
-            "/products/:action",
-            array(
-                'controller' => 'products',
-                'action'     => 1,
-            )
-        );
+        $router->add("/products/:action", array(
+            'controller' => 'products',
+            'action'     => 1,
+        ));
 
         return $router;
-
     });
 
     try {
 
         //Create an application
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+        $application = new Application($di);
 
         // Register the installed modules
         $application->registerModules(
@@ -242,11 +255,12 @@ Multi Module
         //Handle the request
         echo $application->handle()->getContent();
 
-    } catch(Phalcon\Exception $e){
+    } catch(\Exception $e){
         echo $e->getMessage();
     }
 
-如果你想把配置文件完全写入到引导文件，你可以使用一个匿名函数的方式来注册 Module :
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
+module:
 
 .. code-block:: php
 
@@ -254,6 +268,9 @@ Multi Module
 
     //Creating a view component
     $view = new \Phalcon\Mvc\View();
+
+    //Set options to view component
+    //...
 
     // Register the installed modules
     $application->registerModules(
@@ -266,18 +283,23 @@ Multi Module
             },
             'backend' => function($di) use ($view) {
                 $di->setShared('view', function() use ($view) {
-                    $view->setViewsDir('../apps/frontend/views/');
+                    $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
             }
         )
     );
 
-当 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` Module注册后，每个匹配的route都必须返回一个有效的module。注册的module都有一个相关的类，用于设置module本身提供的功能。每个module类都必须实现 registerAutoloaders() 和 registerServices() 这两个方法，:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 将调用它们执行要执行的module。
+When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
+necessary that every matched route returns a valid module. Each registered module has an associated class
+offering functions to set the module itself up. Each module class definition must implement two
+methods: registerAutoloaders() and registerServices(), they will be called by
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
 
-了解默认行为
+Understanding the default behavior
 ----------------------------------
-如果你一直关注  :doc:`tutorial <tutorial>` 或 使用 :doc:`Phalcon Devtools <tools>` 生成过代码，你可能会熟悉以下的引导文件：
+If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
+you may recognize the following bootstrap file:
 
 .. code-block:: php
 
@@ -292,15 +314,15 @@ Multi Module
         //...
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application();
-        $application->setDI($di);
+        $application = new \Phalcon\Mvc\Application($di);
+
         echo $application->handle()->getContent();
 
-    } catch (\Phalcon\Exception $e) {
-        echo "PhalconException: ", $e->getMessage();
+    } catch (\Exception $e) {
+        echo "Exception: ", $e->getMessage();
     }
 
-所有控制器工作的核心是 handle()方法被调用：
+The core of all the work of the controller occurs when handle() is invoked:
 
 .. code-block:: php
 
@@ -308,21 +330,24 @@ Multi Module
 
     echo $application->handle()->getContent();
 
-如果您不希望使用 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` ，上面的代码可以修改如下：
+Manual bootstrapping
+-------------------
+If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
 .. code-block:: php
 
     <?php
 
-    // Request the services from the services container
-    $router = $di->get('router');
+    // Get the 'router' service
+    $router = $di['router'];
+
     $router->handle();
 
-    $view = $di->getShared('view');
+    $view = $di['view'];
 
-    $dispatcher = $di->get('dispatcher');
+    $dispatcher = $di['dispatcher'];
 
-    // Pass the proccessed router parameters to the dispatcher
+    // Pass the processed router parameters to the dispatcher
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
@@ -343,7 +368,7 @@ Multi Module
     // Finish the view
     $view->finish();
 
-    $response = $di->get('response');
+    $response = $di['response'];
 
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
@@ -354,15 +379,98 @@ Multi Module
     // Print the response
     echo $response->getContent();
 
-尽管上面的代码显得比使用 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 罗唆，但它提供了一种替代bootstrap文件的方式。根据你的需要，你可能希望完全掌握哪些类应该被实例化，或使用自己的组件来扩展默认的功能。
+The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
+it suitable for Rest APIs:
+
+.. code-block:: php
+
+    <?php
+
+    // Get the 'router' service
+    $router = $di['router'];
+
+    $router->handle();
+
+    $dispatcher = $di['dispatcher'];
+
+    // Pass the processed router parameters to the dispatcher
+    $dispatcher->setControllerName($router->getControllerName());
+    $dispatcher->setActionName($router->getActionName());
+    $dispatcher->setParams($router->getParams());
+
+    // Dispatch the request
+    $dispatcher->dispatch();
+
+    //Get the returned value by the latest executed action
+    $response = $dispatcher->getReturnedValue();
+
+    //Check if the action returned is a 'response' object
+    if ($response instanceof Phalcon\Http\ResponseInterface) {
+
+        //Send the request
+        $response->send();
+    }
+
+Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
+
+.. code-block:: php
+
+    <?php
+
+    // Get the 'router' service
+    $router = $di['router'];
+
+    $router->handle();
+
+    $dispatcher = $di['dispatcher'];
+
+    // Pass the processed router parameters to the dispatcher
+    $dispatcher->setControllerName($router->getControllerName());
+    $dispatcher->setActionName($router->getActionName());
+    $dispatcher->setParams($router->getParams());
+
+    try {
+
+        // Dispatch the request
+        $dispatcher->dispatch();
+
+    } catch (Exception $e) {
+
+        //An exception has occurred, dispatch some controller/action aimed for that
+
+        // Pass the processed router parameters to the dispatcher
+        $dispatcher->setControllerName('errors');
+        $dispatcher->setActionName('action503');
+
+        // Dispatch the request
+        $dispatcher->dispatch();
+
+    }
+
+    //Get the returned value by the latest executed action
+    $response = $dispatcher->getReturnedValue();
+
+    //Check if the action returned is a 'response' object
+    if ($response instanceof Phalcon\Http\ResponseInterface) {
+
+        //Send the request
+        $response->send();
+    }
+
+Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
+it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
+should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 Application Events
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 能够将事件发送到 :doc:`EventsManager <events>`，事件管理器通过触发 "application"来实现，支持以下的事件：
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
+(if it is present). Events are triggered using the type "application". The following events are supported:
 
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
 +=====================+==============================================================+
+| boot                | Executed when the application handles its first request      |
++---------------------+--------------------------------------------------------------+
 | beforeStartModule   | Before initialize a module, only when modules are registered |
 +---------------------+--------------------------------------------------------------+
 | afterStartModule    | After initialize a module, only when modules are registered  |
@@ -372,13 +480,15 @@ Application Events
 | afterHandleRequest  | After execute the dispatch loop                              |
 +---------------------+--------------------------------------------------------------+
 
-下面的示例演示如何在此组件上添加监听器：
+The following example demonstrates how to attach listeners to this component:
 
 .. code-block:: php
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager;
+
+    $eventsManager = new EventsManager();
 
     $application->setEventsManager($eventsManager);
 
@@ -389,7 +499,6 @@ Application Events
         }
     );
 
-相关资源
+External Resources
 ------------------
-
 * `MVC examples on Github <https://github.com/phalcon/mvc>`_

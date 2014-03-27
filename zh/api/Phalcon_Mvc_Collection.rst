@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Collection**
 ==================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 
@@ -18,21 +18,21 @@ Constants
 *integer* **OP_DELETE**
 
 Methods
----------
+-------
 
-public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
-
+Phalcon\\Mvc\\Model constructor
 
 
 
 public  **setId** (*mixed* $id)
 
-Sets a value for the _id propery, creates a MongoId object if needed
+Sets a value for the _id property, creates a MongoId object if needed
 
 
 
-public *MongoId*  **getId** ()
+public *\MongoId*  **getId** ()
 
 Returns the value of the _id property
 
@@ -50,21 +50,33 @@ Returns the dependency injection container
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+protected  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
 
-Sets the event manager
+Sets a custom events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+protected :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
 
-Returns the internal event manager
+Returns the custom events manager
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`  **getModelsManager** ()
+
+Returns the models manager related to the entity instance
 
 
 
 public *array*  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
+
+
+
+protected  **useImplicitObjectIds** ()
+
+Sets if a model must use implicit objects ids
 
 
 
@@ -80,13 +92,19 @@ Returns collection name mapped in the model
 
 
 
-public  **setConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
 
-Sets a service in the services container that returns the Mongo database
+Sets the DependencyInjection connection service name
 
 
 
-public *MongoDb*  **getConnection** ()
+public *string*  **getConnectionService** ()
+
+Returns DependencyInjection connection service
+
+
+
+public *\MongoDb*  **getConnection** ()
 
 Retrieves a database connection
 
@@ -94,17 +112,31 @@ Retrieves a database connection
 
 public *mixed*  **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name <code> echo $robot->readAttribute('name');
+Reads an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+    echo $robot->readAttribute('name');
+
 
 
 
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name <code>$robot->writeAttribute('name', 'Rosey');
+Writes an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+    $robot->writeAttribute('name', 'Rosey');
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **dumpResult** ()
+
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *array* $document)
 
 Returns a cloned collection
 
@@ -113,6 +145,12 @@ Returns a cloned collection
 protected static *array*  **_getResultset** ()
 
 Returns a collection resultset
+
+
+
+protected static *int*  **_getGroupResultset** ()
+
+Perform a count over a resultset
 
 
 
@@ -142,8 +180,8 @@ Executes validators on every validation call
     {
     
     public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
+    {
+    	$this->validate(new ExclusionIn(array(
     		'field' => 'status',
     		'domain' => array('A', 'I')
     	)));
@@ -167,12 +205,12 @@ Check whether validation process has generated any messages
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
     
-    class Subscriptors extends Phalcon\Mvc\Model
+    class Subscriptors extends Phalcon\Mvc\Collection
     {
     
     public function validation()
-      {
-     		$this->validate(new ExclusionIn(array(
+    {
+    	$this->validate(new ExclusionIn(array(
     		'field' => 'status',
     		'domain' => array('A', 'I')
     	)));
@@ -186,13 +224,13 @@ Check whether validation process has generated any messages
 
 
 
-protected *boolean*  **_callEvent** ()
+public *boolean*  **fireEvent** (*string* $eventName)
 
 Fires an internal event
 
 
 
-protected *boolean*  **_callEventCancel** ()
+public *boolean*  **fireEventCancel** (*string* $eventName)
 
 Fires an internal event that cancels the operation
 
@@ -210,19 +248,68 @@ Checks if the document exists in the collection
 
 
 
-public  **save** ()
+public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+
+Returns all the validation messages 
+
+.. code-block:: php
+
+    <?php
+
+    $robot = new Robots();
+    $robot->type = 'mechanical';
+    $robot->name = 'Astro Boy';
+    $robot->year = 1952;
+    if ($robot->save() == false) {
+    echo "Umh, We can't store robots right now ";
+    foreach ($robot->getMessages() as $message) {
+    	echo $message;
+    }
+    } else {
+    echo "Great, a new robot was saved successfully!";
+    }
 
 
 
 
+public  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string* $id)
+Appends a customized message on the validation process 
 
-Find a document by its id
+.. code-block:: php
+
+    <?php
+
+    use \Phalcon\Mvc\Model\Message as Message;
+    
+    class Robots extends Phalcon\Mvc\Model
+    {
+    
+    	public function beforeSave()
+    	{
+    		if ($this->name == 'Peter') {
+    			$message = new Message("Sorry, but a robot cannot be named Peter");
+    			$this->appendMessage($message);
+    		}
+    	}
+    }
 
 
 
-public static *array*  **findFirst** (*array* $parameters)
+
+public *boolean*  **save** ()
+
+Creates/Updates a collection based on the values in the attributes
+
+
+
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
+
+Find a document by its id (_id)
+
+
+
+public static *array*  **findFirst** ([*array* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -230,27 +317,27 @@ Allows to query the first record that match the specified conditions
 
     <?php
 
-     //What's the first robot in robots table?
+     //What's the first robot in the robots table?
      $robot = Robots::findFirst();
-     echo "The robot name is ", $robot->name;
+     echo "The robot name is ", $robot->name, "\n";
     
      //What's the first mechanical robot in robots table?
      $robot = Robots::findFirst(array(
          array("type" => "mechanical")
      ));
-     echo "The first mechanical robot name is ", $robot->name;
+     echo "The first mechanical robot name is ", $robot->name, "\n";
     
      //Get first virtual robot ordered by name
      $robot = Robots::findFirst(array(
          array("type" => "mechanical"),
          "order" => array("name" => 1)
      ));
-     echo "The first virtual robot name is ", $robot->name;
+     echo "The first virtual robot name is ", $robot->name, "\n";
 
 
 
 
-public static *array*  **find** (*array* $parameters)
+public static *array*  **find** ([*array* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -260,13 +347,13 @@ Allows to query a set of records that match the specified conditions
 
      //How many robots are there?
      $robots = Robots::find();
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //How many mechanical robots are there?
      $robots = Robots::find(array(
          array("type" => "mechanical")
      ));
-     echo "There are ", count($robots);
+     echo "There are ", count($robots), "\n";
     
      //Get and print virtual robots ordered by name
      $robots = Robots::findFirst(array(
@@ -290,9 +377,28 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static  **count** (*unknown* $parameters)
+public static *array*  **count** ([*array* $parameters])
+
+Perform a count over a collection 
+
+.. code-block:: php
+
+    <?php
+
+     echo 'There are ', Robots::count(), ' robots';
 
 
+
+
+public static *array*  **aggregate** (*array* $parameters)
+
+Perform an aggregation using the Mongo aggregation framework
+
+
+
+public static *array*  **summatory** (*string* $field, [*array* $conditions], [*string* $finalize])
+
+Allows to perform a summatory group for a column in the collection
 
 
 
@@ -307,9 +413,48 @@ Deletes a model instance. Returning true on success or false otherwise.
     $robot = Robots::findFirst();
     $robot->delete();
     
-    foreach(Robots::find() as $robot){
-       $robot->delete();
+    foreach (Robots::find() as $robot) {
+    	$robot->delete();
     }
+
+
+
+
+public *array*  **toArray** ()
+
+Returns the instance as an array representation 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($robot->toArray());
+
+
+
+
+public *string*  **serialize** ()
+
+Serializes the object ignoring connections or protected properties
+
+
+
+public  **unserialize** ([*unknown* $serialized])
+
+Unserializes the object from a serialized string
+
+
+
+public static *array*  **execute** (*mixed* $code, [*array* $args])
+
+Runs JavaScript code on the database server. 
+
+.. code-block:: php
+
+    <?php
+
+     $ret = Robots::execute("function() { return 'Hello, world!';}");
+     echo $ret['retval'], "\n";
 
 
 

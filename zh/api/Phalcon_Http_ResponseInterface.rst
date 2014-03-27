@@ -5,7 +5,7 @@ Phalcon\\Http\\ResponseInterface initializer
 
 
 Methods
----------
+-------
 
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setStatusCode** (*int* $code, *string* $message)
 
@@ -49,13 +49,13 @@ Sends a Not-Modified response
 
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, *string* $charset)
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, [*string* $charset])
 
 Sets the response content-type mime, optionally the charset
 
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** (*string* $location, *boolean* $externalRedirect, *int* $statusCode)
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
 Redirect by HTTP to another action or URL
 
@@ -64,6 +64,19 @@ Redirect by HTTP to another action or URL
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContent** (*string* $content)
 
 Sets HTTP response body
+
+
+
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
+
+Sets HTTP response body. The parameter is automatically converted to JSON 
+
+.. code-block:: php
+
+    <?php
+
+    $response->setJsonContent(array("status" => "OK"));
+
 
 
 
@@ -85,9 +98,21 @@ Sends headers to the client
 
 
 
+abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendCookies** ()
+
+Sends cookies to the client
+
+
+
 abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **send** ()
 
 Prints out HTTP response to the client
+
+
+
+abstract public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
+
+Sets an attached file to be sent at the end of the request
 
 
 

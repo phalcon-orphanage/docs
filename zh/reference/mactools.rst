@@ -1,14 +1,14 @@
-Phalcon Developer Tools on Mac OS X
+Mac OS X 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Mac OS X）
 ===================================
 These steps will guide you through the process of installing Phalcon Developer Tools for OS/X.
 
-Prerequisites
+预备知识（Prerequisites）
 -------------
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the :doc:`Installation <install>` section for instructions.
 
-Download
+下载（Download）
 --------
-You can download a cross platform package containing the developer tools from the `Download`_ section. You can also clone it from `Github`_. 
+You can download a cross platform package containing the developer tools from the `Download`_ section. You can also clone it from `Github`_.
 
 Open the terminal application:
 
@@ -28,7 +28,7 @@ Check where the phalcon-tools directory was installed using a *pwd* command in y
 .. figure:: ../_static/img/mac-2.png
    :align: center
 
-On the Mac platform, you need to configure your user PATH to include Phalcon tools. Edit your .profile and append the Phalcon tools path to the environment variable PATH: 
+On the Mac platform, you need to configure your user PATH to include Phalcon tools. Edit your .profile and append the Phalcon tools path to the environment variable PATH:
 
 .. figure:: ../_static/img/mac-3.png
    :align: center
@@ -59,9 +59,8 @@ Type the command "phalcon" and you will see something like this:
 
 Congratulations you now have Phalcon tools installed!
 
-Related Guides
+相关指南（Related Guides）
 ^^^^^^^^^^^^^^
-
 * :doc:`Using Developer Tools <tools>`
 * :doc:`Installation on Windows <wintools>`
 * :doc:`Installation on Linux <linuxtools>`

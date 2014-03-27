@@ -1,4 +1,4 @@
-数据库迁移
+数据库迁移（Database Migrations）
 ===================
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -15,7 +15,7 @@ When a migration is generated a set of classes are created to describe how your 
         <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-Schema Dumping
+图解导出（Schema Dumping）
 --------------
 The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
 
@@ -38,7 +38,7 @@ By default :doc:`Phalcon Developer Tools <tools>` use the *app/migrations* direc
 .. figure:: ../_static/img/migrations-3.png
    :align: center
 
-Migration Class Anatomy
+迁移类剖析（Migration Class Anatomy）
 -----------------------
 Each file contains a unique class that extends the Phalcon\\Mvc\\Model\\Migration These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back.
 
@@ -148,7 +148,7 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 | "options"    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
 +--------------+---------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Defining Columns
+定义列（Defining Columns）
 ^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
@@ -182,7 +182,7 @@ Database migrations support the following database column types:
 * Phalcon\\Db\\Column::TYPE_CHAR
 * Phalcon\\Db\\Column::TYPE_TEXT
 
-Defining Indexes
+定义索引（Defining Indexes）
 ^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
 
@@ -202,7 +202,7 @@ Defining References
 | "referencedTable"   | The referenced table maybe is on another schema or database. This option allows you to define that. | Yes      |
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 
-Writing Migrations
+创建迁移类（Writing Migrations）
 ------------------
 Migrations aren't only designed to "morph" table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the :doc:`database component <db>`.
 
@@ -225,7 +225,7 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     }
 
-Running Migrations
+执行迁移（Running Migrations）
 ------------------
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 

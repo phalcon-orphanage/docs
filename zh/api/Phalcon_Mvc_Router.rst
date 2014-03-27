@@ -10,15 +10,32 @@ Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of
     <?php
 
     $router = new Phalcon\Mvc\Router();
+    
+      $router->add(
+    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
+    	array(
+    		"controller" => "documentation",
+    		"action"     => "show"
+    	)
+    );
+    
     $router->handle();
+    
     echo $router->getControllerName();
 
 
 
-Methods
+Constants
 ---------
 
-public  **__construct** (*boolean* $defaultRoutes)
+*integer* **URI_SOURCE_GET_URL**
+
+*integer* **URI_SOURCE_SERVER_REQUEST_URI**
+
+Methods
+-------
+
+public  **__construct** ([*boolean* $defaultRoutes])
 
 Phalcon\\Mvc\\Router constructor
 
@@ -36,87 +53,182 @@ Returns the internal dependency injector
 
 
 
-protected *string*  **_getRewriteUri** ()
+public *string*  **getRewriteUri** ()
 
-Get rewrite info
+Get rewrite info. This info is read from $_GET['_url']. This returns '/' if the rewrite information cannot be read
 
 
 
-public  **setDefaultNamespace** (*string* $namespaceName)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setUriSource** (*int* $uriSource)
+
+Sets the URI source. One of the URI_SOURCE_* constants 
+
+.. code-block:: php
+
+    <?php
+
+    $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI);
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **removeExtraSlashes** (*boolean* $remove)
+
+Set whether router must remove the extra slashes in the handled routes
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultNamespace** (*string* $namespaceName)
 
 Sets the name of the default namespace
 
 
 
-public  **setDefaultModule** (*string* $moduleName)
+public *string*  **getDefaultNamespace** ()
+
+Returns the name of the default namespace
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultModule** (*string* $moduleName)
 
 Sets the name of the default module
 
 
 
-public  **setDefaultController** (*string* $controllerName)
+public *string*  **getDefaultModule** ()
+
+Returns the name of the default module
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultController** (*string* $controllerName)
 
 Sets the default controller name
 
 
 
-public  **setDefaultAction** (*string* $actionName)
+public *string*  **getDefaultController** ()
+
+Returns the default controller name
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
 
 
 
-public  **setDefaults** (*array* $defaults)
+public *string*  **getDefaultAction** ()
 
-Sets an array of default paths
-
-
-
-public  **handle** (*string* $uri)
-
-Handles routing information received from the rewrite engine
+Returns the default action name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, *string/array* $paths, *string* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaults** (*array* $defaults)
 
-Adds a route to the router on any HTTP method
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
+
+.. code-block:: php
+
+    <?php
+
+     $router->setDefaults(array(
+    	'module' => 'common',
+    	'action' => 'index'
+     ));
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addGet** (*string* $pattern, *string/array* $paths)
+
+public *array*  **getDefaults** ()
+
+Returns an array of default parameters
+
+
+
+public  **handle** ([*string* $uri])
+
+Handles routing information received from the rewrite engine 
+
+.. code-block:: php
+
+    <?php
+
+     //Read the info from the rewrite engine
+     $router->handle();
+    
+     //Manually passing an URL
+     $router->handle('/posts/edit/1');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
+
+Adds a route to the router without any HTTP constraint 
+
+.. code-block:: php
+
+    <?php
+
+     $router->add('/about', 'About::index');
+
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addGet** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPost** (*string* $pattern, *string/array* $paths)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPost** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPut** (*string* $pattern, *string/array* $paths)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPut** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*string* $pattern, *string/array* $paths)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPatch** (*string* $pattern, [*string/array* $paths])
+
+Adds a route to the router that only match if the HTTP method is PATCH
+
+
+
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addOptions** (*string* $pattern, *string/array* $paths)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addOptions** (*string* $pattern, [*string/array* $paths])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*string* $pattern, *string/array* $paths)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is HEAD
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group)
+
+Mounts a group of routes in the router
+
+
+
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **notFound** (*array|string* $paths)
+
+Set a group of paths to be returned when none of the defined routes are matched
 
 
 
@@ -128,31 +240,31 @@ Removes all the pre-defined routes
 
 public *string*  **getNamespaceName** ()
 
-Returns processed namespace name
+Returns the processed namespace name
 
 
 
 public *string*  **getModuleName** ()
 
-Returns processed module name
+Returns the processed module name
 
 
 
 public *string*  **getControllerName** ()
 
-Returns processed controller name
+Returns the processed controller name
 
 
 
 public *string*  **getActionName** ()
 
-Returns processed action name
+Returns the processed action name
 
 
 
 public *array*  **getParams** ()
 
-Returns processed extra params
+Returns the processed parameters
 
 
 
@@ -164,31 +276,37 @@ Returns the route that matchs the handled URI
 
 public *array*  **getMatches** ()
 
-Return the sub expressions in the regular expression matched
+Returns the sub expressions in the regular expression matched
 
 
 
 public *bool*  **wasMatched** ()
 
-Check if the router macthes any of the defined routes
+Checks if the router macthes any of the defined routes
 
 
 
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` [] **getRoutes** ()
 
-Return all the routes defined in the router
+Returns all the routes defined in the router
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteById** (*unknown* $id)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  | false **getRouteById** (*string* $id)
 
 Returns a route object by its id
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteByName** (*unknown* $name)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **getRouteByName** (*string* $name)
 
 Returns a route object by its name
+
+
+
+public  **isExactControllerName** ()
+
+Returns whether controller name should not be mangled
 
 
 

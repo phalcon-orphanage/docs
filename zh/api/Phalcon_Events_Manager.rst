@@ -7,23 +7,66 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 
 
 Methods
----------
+-------
 
-public  **attach** (*string* $eventType, *object* $handler)
+public  **attach** (*string* $eventType, *object|callable* $handler)
 
 Attach a listener to the events manager
 
 
 
-public  **dettachAll** (*unknown* $type)
+public  **enablePriorities** (*boolean* $enablePriorities)
+
+Set if priorities are enabled in the EventsManager
+
+
+
+public *boolean*  **arePrioritiesEnabled** ()
+
+Returns if priorities are enabled
+
+
+
+public  **collectResponses** (*boolean* $collect)
+
+Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
+
+
+
+public  **isCollecting** ()
+
+Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
+
+
+
+public *array*  **getResponses** ()
+
+Returns all the responses returned by every handler executed by the last 'fire' executed
+
+
+
+public  **detachAll** ([*string* $type])
 
 Removes all events from the EventsManager
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source, *mixed* $data, *int* $cancelable)
+public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
 
-Fires a event in the events manager causing that the acive listeners will be notified about it
+Internal handler to call a queue of events
+
+
+
+public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
+
+Fires an event in the events manager causing that active listeners be notified about it 
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager->fire('db', $connection);
+
 
 
 
@@ -37,5 +80,10 @@ public *array*  **getListeners** (*string* $type)
 
 Returns all the attached listeners of a certain type
 
+
+
+public  **dettachAll** ([*unknown* $type])
+
+...
 
 

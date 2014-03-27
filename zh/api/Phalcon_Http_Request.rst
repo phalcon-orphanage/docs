@@ -19,7 +19,7 @@ Encapsulates request information for easy and secure access from application con
 
 
 Methods
----------
+-------
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
@@ -33,9 +33,9 @@ Returns the internal dependency injector
 
 
 
-public *mixed*  **get** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets a variable from the $_REQUEST superglobal applying filters if needed 
+Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned 
 
 .. code-block:: php
 
@@ -50,9 +50,9 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-public *mixed*  **getPost** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets a variable from the $_POST superglobal applying filters if needed 
+Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned 
 
 .. code-block:: php
 
@@ -67,9 +67,24 @@ Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-public *mixed*  **getQuery** (*string* $name, *string|array* $filters, *mixed* $defaultValue)
+public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
 
-Gets variable from $_GET superglobal applying filters if needed 
+Gets a variable from put request 
+
+.. code-block:: php
+
+    <?php
+
+    $userEmail = $request->getPut("user_email");
+    
+    $userEmail = $request->getPut("user_email", "email");
+
+
+
+
+public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue])
+
+Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
 
 .. code-block:: php
 
@@ -95,7 +110,7 @@ Gets variable from $_SERVER superglobal
 
 public *boolean*  **has** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_REQUEST superglobal has certain index
 
 
 
@@ -105,9 +120,15 @@ Checks whether $_POST superglobal has certain index
 
 
 
+public *boolean*  **hasPut** (*string* $name)
+
+Checks whether put has certain index
+
+
+
 public *boolean*  **hasQuery** (*string* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Checks whether $_GET superglobal has certain index
 
 
 
@@ -149,7 +170,13 @@ Checks whether request has been made using any secure layer
 
 public *string*  **getRawBody** ()
 
-Gets HTTP raws request body
+Gets HTTP raw request body
+
+
+
+public *string*  **getJsonRawBody** ()
+
+Gets decoded JSON HTTP raw request body
 
 
 
@@ -171,15 +198,21 @@ Gets information about schema, host and port used by the request
 
 
 
-public *string*  **getClientAddress** (*boolean* $trustForwardedHeader)
+public *string*  **getClientAddress** ([*boolean* $trustForwardedHeader])
 
-Gets most possibly client IPv4 Address. This methods search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
+Gets most possible client IPv4 Address. This method search in $_SERVER['REMOTE_ADDR'] and optionally in $_SERVER['HTTP_X_FORWARDED_FOR']
 
 
 
 public *string*  **getMethod** ()
 
 Gets HTTP method which request has been made
+
+
+
+public *string*  **getURI** ()
+
+Gets HTTP URI which request has been made
 
 
 
@@ -213,6 +246,12 @@ Checks whether HTTP method is PUT. if $_SERVER['REQUEST_METHOD']=='PUT'
 
 
 
+public *boolean*  **isPatch** ()
+
+Checks whether HTTP method is PATCH. if $_SERVER['REQUEST_METHOD']=='PATCH'
+
+
+
 public *boolean*  **isHead** ()
 
 Checks whether HTTP method is HEAD. if $_SERVER['REQUEST_METHOD']=='HEAD'
@@ -231,15 +270,21 @@ Checks whether HTTP method is OPTIONS. if $_SERVER['REQUEST_METHOD']=='OPTIONS'
 
 
 
-public *boolean*  **hasFiles** ()
+public *boolean*  **hasFiles** ([*unknown* $notErrored])
 
-Checks whether request include attached files
+Checks whether request includes attached files
 
 
 
-public :doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` [] **getUploadedFiles** ()
+public :doc:`Phalcon\\Http\\Request\\File <Phalcon_Http_Request_File>` [] **getUploadedFiles** ([*boolean* $notErrored])
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
+
+
+
+public *array*  **getHeaders** ()
+
+Returns the available headers in the request
 
 
 
@@ -294,6 +339,18 @@ Gets languages array and their quality accepted by the browser/client from $_SER
 public *string*  **getBestLanguage** ()
 
 Gets best language accepted by the browser/client from $_SERVER['HTTP_ACCEPT_LANGUAGE']
+
+
+
+public *array*  **getBasicAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_USER']
+
+
+
+public *array*  **getDigestAuth** ()
+
+Gets auth info accepted by the browser/client from $_SERVER['PHP_AUTH_DIGEST']
 
 
 

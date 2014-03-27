@@ -1,17 +1,18 @@
-国际化
+Internationalization
 ====================
-Phalcon是一个用C语言编写的PHP扩展。这儿有一个 PECL_ 扩展，为PHP程序提供国际化功能，叫 intl_ 。我们可以通过PHP官方文档 `PHP manual`_ 学习它。
+Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
+Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
 
-Phalcon原生不支持国际化的功能，因为创建一个这样的组件与PHP intl功能重复。
+Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
 
-在下面的例子中，我们将向您展示如何实现使用 intl_ 扩展为Phalcon应用提供国际化功能。
+In the examples below, we will show you how to implement the intl_ extension's functionality into Phalcon powered applications.
 
 .. highlights::
-   本指南并不打算完全讲述 intl_ 扩展的使用。如需要，请访问PHP官方文档: documentation_ 
-   
+   This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
+
 Find out best available Locale
 ------------------------------
-有几种方式可以找出最佳的可用的语言环境使用 intl_ 。其中之一就是检查HTTP的 "Accept-Language" 头信息：
+There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
 
 .. code-block:: php
 
@@ -22,7 +23,8 @@ Find out best available Locale
     // Locale could be something like "en_GB" or "en"
     echo $locale;
 
-Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API. Examples of identifiers include:
+Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.
+Examples of identifiers include:
 
 * en-US (English, United States)
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
@@ -30,7 +32,8 @@ Below method returns a locale identified. It is used to get language, culture, o
 
 Formatting messages based on Locale
 -----------------------------------
-Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the production of those messages.
+Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
+production of those messages.
 
 Printing numbers formatted based on some locale:
 
@@ -72,7 +75,8 @@ Message formatting using time and date patterns:
 
 Locale-Sensitive comparison
 ---------------------------
-The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the examples below on the usage of this class:
+The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
+examples below on the usage of this class:
 
 .. code-block:: php
 
@@ -83,11 +87,25 @@ The Collator_ class provides string comparison capability with support for appro
 
     // Returns that the strings are equal, in spite of the emphasis on the "o"
     $collator->setStrength(Collator::PRIMARY);
-    $collator->compare("una canción", "una cancion");
+    var_dump($collator->compare("una canción", "una cancion"));
 
     // Returns that the strings are not equal
-    $collator->setStrength(Collator::DEFAULT);
-    $collator->compare("una canción", "una cancion");
+    $collator->setStrength(Collator::DEFAULT_VALUE);
+    var_dump($collator->compare("una canción", "una cancion"));
+
+Transliteration
+---------------
+Transliterator_ provides transliteration of strings:
+
+.. code-block:: php
+
+    <?php
+
+    $id = "Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();";
+    $transliterator = Transliterator::create($id);
+
+    $string = "garçon-étudiant-où-L'école";
+    echo $transliterator->transliterate($string); // garconetudiantoulecole
 
 .. _PECL: http://pecl.php.net/package/intl
 .. _intl: http://pecl.php.net/package/intl
@@ -95,3 +113,4 @@ The Collator_ class provides string comparison capability with support for appro
 .. _documentation: http://www.php.net/manual/en/book.intl.php
 .. _MessageFormatter: http://www.php.net/manual/en/class.messageformatter.php
 .. _Collator: http://www.php.net/manual/en/class.collator.php
+.. _Transliterator: http://www.php.net/manual/en/class.transliterator.php

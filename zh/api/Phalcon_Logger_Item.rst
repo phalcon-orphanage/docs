@@ -5,9 +5,9 @@ Represents each item in a logging transaction
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $message, *integer* $type, *integer* $time)
+public  **__construct** (*string* $message, *integer* $type, [*integer* $time])
 
 Phalcon\\Logger\\Item constructor
 
@@ -29,5 +29,10 @@ public *integer*  **getTime** ()
 
 Returns log timestamp
 
+
+
+public  **getContext** ()
+
+...
 
 
