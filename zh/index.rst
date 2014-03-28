@@ -1,18 +1,18 @@
 Welcome!
 ========
 
-��ӭ���� Phalcon ��ܣ� һ��ո�µ� PHP ��ܡ����ǵ�ʹ���Ǹ�������һ������ web վ���Ӧ�õĸ߼����ߣ��ÿ����߲��õ��Ŀ�ܵ���������. 
+欢迎来到 Phalcon 框架， 一种崭新的 PHP 框架。我们的使命是给开发者一个开发 web 站点和应用的高级工具，让开发者不用担心框架的性能问题. 
 
-Phalcon ��ʲô��
+Phalcon 是什么？
 ----------------
 
-Phalcon �ǿ�Դ��ȫ����ջ��ʹ�� C ��չ��д����Ը������Ż��� PHP 5 ��ܡ�
-�����߲���Ҫѧϰ��ʹ�� C ���ԵĹ��ܣ� ��Ϊ���еĹ��ܶ��� PHP ��ķ�ʽ��¶����������ֱ��ʹ�á�
-Phalcon Ҳ������ϵģ����Ը�����Ŀ����Ҫ����ʹ����������
+Phalcon 是开源、全功能栈、使用 C 扩展编写、针对高性能优化的 PHP 5 框架。
+开发者不需要学习和使用 C 语言的功能， 因为所有的功能都以 PHP 类的方式暴露出来，可以直接使用。
+Phalcon 也是松耦合的，可以根据项目的需要任意使用其他对象。
 
-Phalcon ��ֻ��Ϊ��׿Խ������, ���ǵ�Ŀ�����������ӽ�׳��ӵ�и��ӷḻ�Ĺ����Լ����Ӽ�����ʹ�ã�
+Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，拥有更加丰富的功能以及更加简单易于使用！
 
-Ŀ¼
+目录
 -----------------
 
 .. toctree::
@@ -74,7 +74,7 @@ Phalcon ��ֻ��Ϊ��׿Խ������, ���ǵ�Ŀ�����������ӽ�׳��ӵ�и��ӷḻ�Ĺ����Լ���
    api/index
    reference/license
 
-������ʽ
+其他格式
 -------------
 
 * `PDF <http://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf>`_
