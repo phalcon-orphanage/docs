@@ -85,7 +85,7 @@ created you can 'onConstruct':
 
     }
 
-公共属性对比 Setters/Getters（Public properties vs. Setters/Getters）
+公共属性对比设置与取值 Setters/Getters（Public properties vs. Setters/Getters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models can be implemented with properties of public scope, meaning that each property can be read/updated
 from any part of the code that has instantiated that model class without any restrictions:

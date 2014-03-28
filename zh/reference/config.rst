@@ -3,7 +3,7 @@
 :doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
 PHP objects for use in an application.
 
-File Adapters
+文件适配器（File Adapters）
 -------------
 The adapters available are:
 
@@ -15,7 +15,7 @@ The adapters available are:
 | Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
 +-----------+---------------------------------------------------------------------------------------------------+
 
-Native Arrays
+原生数组（Native Arrays）
 -------------
 The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
 read during this request.
@@ -55,7 +55,7 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
     $config = new \Phalcon\Config($settings);
 
-Reading INI Files
+读取 INI 文件（Reading INI Files）
 -----------------
 Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -88,7 +88,7 @@ You can read the file as follows:
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Merging Configurations
+合并配置（Merging Configurations）
 ----------------------
 Phalcon\\Config allows to merge a configuration object into another one recursively:
 

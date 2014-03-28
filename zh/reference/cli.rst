@@ -1,8 +1,8 @@
-Command Line Applications
+命令行应用（Command Line Applications）
 =========================
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
-Structure
+结构（Structure）
 ---------
 A minimal structure of a CLI application will look like this:
 
@@ -10,7 +10,7 @@ A minimal structure of a CLI application will look like this:
 * app/tasks/MainTask.php
 * app/cli.php <-- main bootstrap file
 
-Creating a Bootstrap
+创建引导（Creating a Bootstrap）
 --------------------
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper
 in web applications, we use a cli.php file for bootstrapping the application.
@@ -90,7 +90,7 @@ This piece of code can be run using:
     This is the default task and the default action
     
     
-Tasks
+任务（Tasks）
 -----
 Tasks work similar to controllers. Any CLI application needs at least a mainTask and a mainAction and every task needs
 to have a mainAction which will run if no action is given explicitly.
@@ -109,7 +109,7 @@ Below is an example of the app/tasks/MainTask.php file
     }
 
 
-Processing action parameters
+处理动作参数（Processing action parameters）
 ----------------------------
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -143,7 +143,7 @@ If you run the the application with the following parameters and action:
    best regards, universe
     
 
-Running tasks in a chain
+链中运行任务（Running tasks in a chain）
 ------------------------
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself
 to the DI:
