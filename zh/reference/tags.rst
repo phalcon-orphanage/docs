@@ -1,5 +1,5 @@
 视图助手（View Helpers）
-============
+========================
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to
 be taken into consideration. Phalcon deals with this complexity by offering :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`, which in turn offers
 view helpers to generate HTML markup.
@@ -11,7 +11,7 @@ This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` t
     the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
 
 文档类型（Document Type of Content）
-------------------------
+------------------------------------
 Phalcon provides Phalcon\\Tag::setDoctype() helper to set document type of the content. Document type setting may affect HTML output produced by other tag helpers.
 For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
@@ -78,7 +78,7 @@ Volt syntax:
     </html>
 
 生成链接（Generating Links）
-----------------
+----------------------------
 A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
 When they are internal URLs we can create them in the following manner:
 
@@ -109,7 +109,7 @@ Same links generated with Volt:
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
 
 创建表单（Creating Forms）
---------------
+--------------------------
 Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:
 
 .. code-block:: html+php
@@ -152,7 +152,7 @@ Same form generated in Volt:
 Phalcon also provides a :doc:`form builder <forms>` to create forms in an object-oriented manner.
 
 使用助手生成表单控件（Helpers to Generate Form Elements）
----------------------------------
+---------------------------------------------------------
 Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the getPost() and getQuery() methods on the request object ($this->request).
 
 .. code-block::  html+php
@@ -189,7 +189,7 @@ Volt syntax:
     {{ hidden_field("parent_id", "value": "5") }}
 
 使用选择框（Making Select Boxes）
--------------------
+---------------------------------
 Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are Phalcon\\Tag::select() and Phalcon\\Tag::selectStatic().
 Phalcon\\Tag::select() has been was specifically designed to work with :doc:`Phalcon\\Mvc\\Model <models>`, while Phalcon\\Tag::selectStatic() can with PHP arrays.
 
@@ -291,7 +291,7 @@ Volt syntax for above example:
         'useEmpty': true, 'emptyText': 'Please, choose one...', 'emptyValue': '@') }}
 
 设置 HTML 属性（Assigning HTML attributes）
--------------------------
+-------------------------------------------
 All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.
 
 .. code-block:: html+php
@@ -319,10 +319,10 @@ The following HTML is generated:
         placeholder="Enter a price" />
 
 设置助手的值（Setting Helper Values）
----------------------
+-------------------------------------
 
 通过控制器（From Controllers）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 It is a good programming principle for MVC frameworks to set specific values for form elements in the view.
 You can set those values directly from the controller using Phalcon\\Tag::setDefault().
 This helper preloads a value for any helpers present in the view. If any helper in the view has
@@ -370,7 +370,7 @@ This will generate the following select tag with the value "Blue" selected:
     </select>
 
 通过请求（From the Request）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A special feature that the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values
 of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
@@ -380,7 +380,7 @@ Every form helper supports the parameter "value". With it you can specify a valu
 When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
 动态设置文档标题（Changing dynamically the Document Title）
----------------------------------------
+-----------------------------------------------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller.
 The following example demonstrates just that:
 
@@ -428,7 +428,7 @@ The following HTML will generated:
     </html>
 
 静态内容助手（Static Content Helpers）
-----------------------
+--------------------------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
 
 图片（Images）
@@ -459,7 +459,7 @@ Volt syntax:
     {{ image("img/hello.gif", "alt": "alternative text") }}
 
 样式表（Stylesheets）
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     <?php
@@ -481,7 +481,7 @@ Volt syntax:
     {{ stylesheet_link("css/styles.css") }}
 
 脚本（Javascript）
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     <?php
@@ -503,7 +503,7 @@ Volt syntax:
     {{ javascript_include("javascript/jquery.min.js") }}
 
 HTML5 对象（HTML5 elements - generic HTML helper）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
 
 
@@ -533,7 +533,7 @@ Volt syntax:
 
 
 标签服务（Tag Service）
------------
+-----------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` is available via the 'tag' service, this means you can access it from any part
 of the application where the services container is located:
 
@@ -575,7 +575,7 @@ Then change the definition of the service 'tag':
     };
 
 创建助手（Creating your own helpers）
--------------------------
+-------------------------------------
 You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it "customhelpers". Next we will create a new file titled ``MyTags.php`` within this new directory. At this point, we have a structure that looks similar to : ``/app/customhelpers/MyTags.php``. In ``MyTags.php``, we will extend the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` and implement your own helper. Below is a simple example of a custom helper:
 
 .. code-block:: php

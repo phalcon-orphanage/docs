@@ -1,9 +1,9 @@
 安全（Security）
-========
+================
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection (CSRF).
 
 密码散列（Password Hashing）
-----------------
+----------------------------
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user
 accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods
 “md5_” and “sha1_”. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable
@@ -76,7 +76,7 @@ its encryption will be slow. We can check if the password is correct as follows:
 The salt is generated using pseudo-random bytes with the PHP's function openssl_random_pseudo_bytes_ so is required to have the openssl_ extension loaded.
 
 防止跨站点请求伪造攻击（Cross-Site Request Forgery (CSRF) protection）
---------------------------------------------
+----------------------------------------------------------------------
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments
 are vulnerable to this attack.
 
@@ -130,7 +130,7 @@ Remember to add a session adapter to your Dependency Injector, otherwise the tok
 Adding a captcha_ to the form is also recommended to completely avoid the risks of this attack.
 
 设置组件（Setting up the component）
-------------------------
+------------------------------------
 This component is automatically registered in the services container as 'security', you can re-register it
 to setup it's options:
 
@@ -149,7 +149,7 @@ to setup it's options:
     }, true);
 
 外部资源（External Resources）
-------------------
+------------------------------
 * `Vökuró <http://vokuro.phalconphp.com>`_, is a sample application that uses the Security component for avoid CSRF and password hashing, [`Github <https://github.com/phalcon/vokuro>`_]
 
 .. _sha1 : http://php.net/manual/en/function.sha1.php

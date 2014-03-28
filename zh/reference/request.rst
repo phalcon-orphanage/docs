@@ -1,5 +1,5 @@
 HTTP 请求环境（Request Environment）
-===================
+====================================
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
 files, variables, etc. A web based application needs to parse that information so as to provide the correct
 response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
@@ -22,7 +22,7 @@ information of the request, allowing you to access it in an object-oriented way.
     }
 
 获取值（Getting Values）
---------------
+------------------------
 PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
@@ -56,7 +56,7 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
 
 
 控制器中访问请求（Accessing the Request from Controllers）
---------------------------------------
+----------------------------------------------------------
 The most common place to access the request environment is in an action of a controller. To access the
 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
 the $this->request public property of the controller:
@@ -92,7 +92,7 @@ the $this->request public property of the controller:
     }
 
 文件上传（Uploading Files）
----------------
+---------------------------
 Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
 an object-oriented way to achieve this task:
 
@@ -130,7 +130,7 @@ array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalc
 only the information related to each file uploaded with the request.
 
 使用头信息（Working with Headers）
---------------------
+----------------------------------
 As mentioned above, request headers contain useful information that allow us to send the proper response back to
 the user. The following examples show usages of that information:
 
