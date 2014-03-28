@@ -1,9 +1,9 @@
-µ¥Ôª²âÊÔ£¨Unit testing£©
+å•å…ƒæµ‹è¯•ï¼ˆUnit testingï¼‰
 ============
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most
 functional bugs and better maintain your software.
 
-ÕûºÏ PHPunit µ½ phalcon£¨Integrating PHPunit with phalcon£©
+æ•´åˆ PHPunit åˆ° phalconï¼ˆIntegrating PHPunit with phalconï¼‰
 --------------------------------
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
@@ -41,7 +41,7 @@ Once phpunit is installed create a directory called 'tests' in your root directo
 
 Next, we need a 'helper' file to bootstrap the application for unit testing.
 
-PHPunit ¸¨ÖúÎÄ¼ş£¨The PHPunit helper file£©
+PHPunit è¾…åŠ©æ–‡ä»¶ï¼ˆThe PHPunit helper fileï¼‰
 -----------------------
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the
 file in your tests/ directory as TestHelper.php.
@@ -113,7 +113,7 @@ or by manually adding it to composer.json:
 
 You can also clone the repository using the repo link above.
 
-PHPunit.xml ÎÄ¼ş£¨PHPunit.xml file£©
+PHPunit.xml æ–‡ä»¶ï¼ˆPHPunit.xml fileï¼‰
 ----------------
 Now, create a phpunit file:
 
@@ -140,7 +140,7 @@ Modify the phpunit.xml to fit your needs and save it in tests/.
 
 This will run any tests under the tests/ directory.
 
-¼òµ¥µÄµ¥Ôª²âÊÔ£¨Sample unit test£©
+ç®€å•çš„å•å…ƒæµ‹è¯•ï¼ˆSample unit testï¼‰
 ----------------
 To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you
 need to do is create the files and phpunit will run the tests for you.

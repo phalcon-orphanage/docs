@@ -1,4 +1,4 @@
-ÑéÖ¤£¨Validation£©
+éªŒè¯ï¼ˆValidationï¼‰
 ==========
 Phalcon\\Validation is an independent validation component that validates an arbitrary set of data.
 This component can be used to implement validation rules on data objects that do not belong to a model or collection.
@@ -35,7 +35,7 @@ The following example shows its basic usage:
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
-³õÊ¼»¯ÑéÖ¤£¨Initializing Validation£©
+åˆå§‹åŒ–éªŒè¯ï¼ˆInitializing Validationï¼‰
 -----------------------
 Validation chains can be initialized in a direct manner by just adding validators to the Phalcon\\Validation object.
 You can put your validations in a separate file for better re-use code and organization:
@@ -79,7 +79,7 @@ You can put your validations in a separate file for better re-use code and organ
         }
     }
 
-ÑéÖ¤Æ÷£¨Validators£©
+éªŒè¯å™¨ï¼ˆValidatorsï¼‰
 ----------
 Phalcon exposes a set of built-in validators for this component:
 
@@ -148,7 +148,7 @@ The following example explains how to create additional validators for this comp
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
-ÑéÖ¤ĞÅÏ¢£¨Validation Messages£©
+éªŒè¯ä¿¡æ¯ï¼ˆValidation Messagesï¼‰
 -------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the validation processes.
@@ -225,7 +225,7 @@ for a specific field using the 'filter' method:
         }
     }
 
-¹ıÂËÊı¾İ£¨Filtering of Data£©
+è¿‡æ»¤æ•°æ®ï¼ˆFiltering of Dataï¼‰
 -----------------
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -250,7 +250,7 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
 component or use the built-in ones.
 
-ÑéÖ¤ÊÂ¼ş£¨Validation Events£©
+éªŒè¯äº‹ä»¶ï¼ˆValidation Eventsï¼‰
 -----------------
 When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
 perform additional checks, filters, clean-up, etc. If 'beforeValidation' method returns false the validation is automatically
@@ -301,7 +301,7 @@ cancelled:
 
     }
 
-È¡ÏûÑéÖ¤£¨Cancelling Validations£©
+å–æ¶ˆéªŒè¯ï¼ˆCancelling Validationsï¼‰
 ======================
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
 this behavior by telling the validation component which validator may stop the validation:

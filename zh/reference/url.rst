@@ -1,9 +1,9 @@
-Éú³É URL ºÍ Â·¾¶£¨Generating URLs and Paths£©
+ç”Ÿæˆ URL å’Œ è·¯å¾„ï¼ˆGenerating URLs and Pathsï¼‰
 =========================
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 
-ÉèÖÃÕ¾µã»ùµØÖ·£¨Setting a base URI£©
+è®¾ç½®ç«™ç‚¹åŸºåœ°å€ï¼ˆSetting a base URIï¼‰
 ------------------
 Depending of which directory of your document root your application is installed, it may have a base uri or not.
 
@@ -48,7 +48,7 @@ Usually, this component must be registered in the Dependency Injector container,
         return $url;
     });
 
-Éú³É URI£¨Generating URIs£©
+ç”Ÿæˆ URIï¼ˆGenerating URIsï¼‰
 ---------------
 If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the
 following pattern: /:controller/:action/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other
@@ -84,7 +84,7 @@ A URL can be generated in the following way:
         'title' => 'some-blog-post'
     ));
 
-Ã»ÓĞÎ±¾²Ì¬×´Ì¬ÏÂµÄÉú³É URL£¨Producing URLs without Mod-Rewrite£©
+æ²¡æœ‰ä¼ªé™æ€çŠ¶æ€ä¸‹çš„ç”Ÿæˆ URLï¼ˆProducing URLs without Mod-Rewriteï¼‰
 ----------------------------------
 You can use this component also to create urls without mod-rewrite:
 
@@ -136,7 +136,7 @@ The produced routes would look like:
     //This produce: /invo/index.php/products/save
     echo $url->get("products/save");
 
-Volt ÖĞÉú³É URL£¨Volt Producing URLs from Volt£©
+Volt ä¸­ç”Ÿæˆ URLï¼ˆVolt Producing URLs from Voltï¼‰
 ------------------------
 The function "url" is available in volt to generate URLs using this component:
 
@@ -150,7 +150,7 @@ Generate static routes:
 
     <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
 
-¾²Ì¬ URI Óë ¶¯Ì¬ URI£¨Static vs. Dynamic Uris£©
+é™æ€ URI ä¸ åŠ¨æ€ URIï¼ˆStatic vs. Dynamic Urisï¼‰
 -----------------------
 This component allow you to set up a different base uri for static resources in the application:
 
@@ -168,7 +168,7 @@ This component allow you to set up a different base uri for static resources in 
 
 :doc:`Phalcon\\Tag <tags>` will request both dynamical and static URIs using this component.
 
-×Ô¶¨Òå URL Éú³ÉÆ÷£¨Implementing your own Url Generator£©
+è‡ªå®šä¹‰ URL ç”Ÿæˆå™¨ï¼ˆImplementing your own Url Generatorï¼‰
 -----------------------------------
 The :doc:`Phalcon\\Mvc\\UrlInterface <../api/Phalcon_Mvc_UrlInterface>` interface must be implemented to create your own URL
 generator replacing the one provided by Phalcon.
