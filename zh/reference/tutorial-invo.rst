@@ -1,4 +1,4 @@
-½Ì³Ì 2£ºINVO ÏîÄ¿½²½â£¨Tutorial 2: Explaining INVO£©
+æ•™ç¨‹ 2ï¼šINVO é¡¹ç›®è®²è§£ï¼ˆTutorial 2: Explaining INVOï¼‰
 ===========================
 In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
 INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
@@ -39,7 +39,7 @@ The application is divided into two parts, a frontend, that is a public part whe
 about INVO and request contact information. The second part is the backend, an administrative area where a
 registered user can manage his/her products and customers.
 
-Â·ÓÉ£¨Routing£©
+è·¯ç”±ï¼ˆRoutingï¼‰
 -------
 INVO uses the standard route that is built-in with the Router component. These routes match the following
 pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
@@ -47,7 +47,7 @@ action and the rest are the parameters.
 
 The following route /session/register executes the controller SessionController and its action registerAction.
 
-ÅäÖÃ£¨Configuration£©
+é…ç½®ï¼ˆConfigurationï¼‰
 -------------
 INVO has a configuration file that sets general parameters in the application. This file is read in the first few lines
 of the bootstrap file (public/index.php):
@@ -86,7 +86,7 @@ contains the following settings:
 Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
 there are three sections to be used later.
 
-×Ô¶¯¼ÓÔØ£¨Autoloaders£©
+è‡ªåŠ¨åŠ è½½ï¼ˆAutoloadersï¼‰
 -----------
 The second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
 of directories in which the application will look for the classes that it eventually will need.
@@ -109,7 +109,7 @@ of directories in which the application will look for the classes that it eventu
 Note that the above code has registered the directories that were defined in the configuration file. The only
 directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
 
-´¦ÀíÇëÇó£¨Handling the Request£©
+å¤„ç†è¯·æ±‚ï¼ˆHandling the Requestï¼‰
 --------------------
 If we skip to the end of the file, the request is finally handled by Phalcon\\Mvc\\Application
 which initializes and executes all that is necessary to make the application run:
@@ -122,7 +122,7 @@ which initializes and executes all that is necessary to make the application run
 
     echo $app->handle()->getContent();
 
-ÒÀÀµ×¢Èë£¨Dependency Injection£©
+ä¾èµ–æ³¨å…¥ï¼ˆDependency Injectionï¼‰
 --------------------
 Look at the first line of the code block above, the Application class constructor is receiving the variable $di as an argument.
 What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
@@ -167,7 +167,7 @@ It registers the majority of services with components provided by the framework 
 the definition of some service we could just set it again as we did above with "session". This is the reason for the
 existence of the variable $di.
 
-µÇÂ¼Ó¦ÓÃ£¨Log into the Application£©
+ç™»å½•åº”ç”¨ï¼ˆLog into the Applicationï¼‰
 ------------------------
 A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones
 is only logical. All controllers are located in the same directory (app/controllers/).
@@ -295,7 +295,7 @@ For instance, here we invoke the "session" service and then we store the user id
         'name' => $user->name
     ));
 
-±£»¤ºó¶Ë£¨Securing the Backend£©
+ä¿æŠ¤åç«¯ï¼ˆSecuring the Backendï¼‰
 --------------------
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
 registered users have access to these controllers. If you aren't logged into the application and you try to access,
@@ -329,7 +329,7 @@ events that allow us to modify their internal flow of operation. As the Dependen
 for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
 by a component, routing the events to listeners.
 
-ÊÂ¼ş¹ÜÀí£¨Events Management£©
+äº‹ä»¶ç®¡ç†ï¼ˆEvents Managementï¼‰
 ^^^^^^^^^^^^^^^^^
 An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
 interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
@@ -442,7 +442,7 @@ If the user does not have access we redirect to the home screen as explained bef
 
     }
 
-Ìá¹© ACL ÁĞ±í£¨Providing an ACL list£©
+æä¾› ACL åˆ—è¡¨ï¼ˆProviding an ACL listï¼‰
 ^^^^^^^^^^^^^^^^^^^^^
 In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
 implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
@@ -519,7 +519,7 @@ all the resources of both frontend and backend. The role "Guests" only has acces
 
 Hooray!, the ACL is now complete.
 
-ÓÃ»§×é¼ş£¨User Components£©
+ç”¨æˆ·ç»„ä»¶ï¼ˆUser Componentsï¼‰
 ---------------
 All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
 Some elements, such as the navigation bar changes according to the state of the application. For example, in the
@@ -593,7 +593,7 @@ The important part is:
 
     <?php echo $this->elements->getMenu() ?>
 
-CRUD µÄÊ¹ÓÃ£¨Working with the CRUD£©
+CRUD çš„ä½¿ç”¨ï¼ˆWorking with the CRUDï¼‰
 ---------------------
 Most options that manipulate data (companies, products and types of products), were developed using a basic and
 common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
@@ -681,7 +681,7 @@ Each controller has the following actions:
 
     }
 
-ËÑË÷±íµ¥£¨The Search Form£©
+æœç´¢è¡¨å•ï¼ˆThe Search Formï¼‰
 ^^^^^^^^^^^^^^^
 Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
 creating a search criteria from any field. Table "products" has a relationship to the table "products_types".
@@ -719,7 +719,7 @@ Note that $productTypes contains the data necessary to fill the SELECT tag using
 is submitted, the action "search" is executed in the controller performing the search based on the data entered by
 the user.
 
-Ö´ĞĞËÑË÷£¨Performing a Search£©
+æ‰§è¡Œæœç´¢ï¼ˆPerforming a Searchï¼‰
 ^^^^^^^^^^^^^^^^^^^
 The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
 form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
@@ -827,7 +827,7 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
         </tr>
     <?php } ?>
 
-´´½¨ºÍ¸üĞÂ¼ÇÂ¼£¨Creating and Updating Records£©
+åˆ›å»ºå’Œæ›´æ–°è®°å½•ï¼ˆCreating and Updating Recordsï¼‰
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
 are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
@@ -939,7 +939,7 @@ the user can change any value and then sent it back to the database through to t
 
     }
 
-¶¯Ì¬¸ü¸Ä±êÌâ£¨Changing the Title Dynamically£©
+åŠ¨æ€æ›´æ”¹æ ‡é¢˜ï¼ˆChanging the Title Dynamicallyï¼‰
 ------------------------------
 When you browse between one option and another will see that the title changes dynamically indicating where
 we are currently working. This is achieved in each controller initializer:
@@ -992,7 +992,7 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         <!-- ... -->
     </html>
 
-½áÊøÓï£¨Conclusion£©
+ç»“æŸè¯­ï¼ˆConclusionï¼‰
 ----------
 This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
 learn more and get more out of the framework.
