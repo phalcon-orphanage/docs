@@ -1,11 +1,11 @@
 路由（Routing）
-=======
+===============
 The router component allows defining routes that are mapped to controllers or handlers that should receive
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
 定义路由（Defining Routes）
----------------
+---------------------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
 you can define routes and map them to controllers/actions that you require. A route is defined as follows:
 
@@ -112,7 +112,7 @@ are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_
 one that matches the given URI and processes it, while ignoring the rest.
 
 参数名称（Parameters with Names）
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The example below demonstrates how to define names to route parameters:
 
 .. code-block:: php
@@ -202,7 +202,7 @@ You can access their values in the same way as before:
     }
 
 短语法（Short Syntax）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 If you don't like using an array to define the route paths, an alternative syntax is also available.
 The following examples produce the same result:
 
@@ -225,7 +225,7 @@ The following examples produce the same result:
     );
 
 混合使用数组和短语法（Mixing Array and Short Syntax）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
 are added to the route paths according to the position on which they were defined:
 
@@ -243,7 +243,7 @@ are added to the route paths according to the position on which they were define
     );
 
 路由到模块（Routing to Modules）
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can define routes whose paths include modules. This is specially suitable to multi-module applications.
 It's possible define a default route that includes a module wildcard:
 
@@ -316,7 +316,7 @@ Namespaces/class names must be passed separated:
     ));
 
 限制 HTTP 请求传入方式（HTTP Method Restrictions）
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When you add a route using simply add(), the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
 this is especially useful when creating RESTful applications:
 
@@ -334,7 +334,7 @@ this is especially useful when creating RESTful applications:
     $router->add("/products/update")->via(array("POST", "PUT"));
 
 使用转换（Using convertions）
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Convertions allow to freely transform the route's parameters before passing them to the dispatcher, the following examples show how to use them:
 
 .. code-block:: php
@@ -353,7 +353,7 @@ Convertions allow to freely transform the route's parameters before passing them
         });
 
 路由分组（Groups of Routes）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If a set of routes have common paths they can be grouped to easily maintain them:
 
 .. code-block:: php
@@ -438,7 +438,7 @@ Then mount the group in the router:
     $router->mount(new BlogRoutes());
 
 匹配路由（Matching Routes）
----------------
+---------------------------
 A valid URI must be passed to Router in order to let it checks the route that matches that given URI.
 By default, the routing URI is taken from the $_GET['_url'] variable that is created by the rewrite engine
 module. A couple of rewrite rules that work very well with Phalcon are:
@@ -478,7 +478,7 @@ The following example shows how to use this component in stand-alone mode:
     $route = $router->getMatchedRoute();
 
 路由命名（Naming Routes）
--------------
+-------------------------
 Each route that is added to the router is stored internally as an object :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>`.
 That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
 This is especially useful if you want to create URLs from it.
@@ -509,7 +509,7 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
     ));
 
 范例（Usage Examples）
---------------
+----------------------
 The following are examples of custom routes:
 
 .. code-block:: php
@@ -599,7 +599,7 @@ The following are examples of custom routes:
     read unauthorized files. A safe regular expression is: /([a-zA-Z0-9\_\-]+)
 
 默认行为（Default Behavior）
-----------------
+----------------------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` has a default behavior providing a very simple routing that
 always expects a URI that matches the following pattern: /:controller/:action/:params
 
@@ -623,7 +623,7 @@ If you don't want use this routes as default in your application, you must creat
     $router = new \Phalcon\Mvc\Router(false);
 
 设置默认路由（Setting the default route）
--------------------------
+-----------------------------------------
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page
 in your website/application:
 
@@ -637,7 +637,7 @@ in your website/application:
     ));
 
 没有找到路径（Not Found Paths）
----------------
+-------------------------------
 If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
 
 .. code-block:: php
@@ -651,7 +651,7 @@ If none of the routes specified in the router are matched, you can define a grou
     ));
 
 设置默认路径（Setting default paths）
----------------------
+-------------------------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:
 
@@ -672,7 +672,7 @@ those paths they can be automatically filled by the router:
     ));
 
 处理结尾额外的斜杆（Dealing with extra/trailing slashes）
------------------------------------
+---------------------------------------------------------
 Sometimes a route could be accessed with extra/trailing slashes and the end of the route, those extra slashes would lead to produce
 a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
 
@@ -700,7 +700,7 @@ Or, you can modify specific routes to optionally accept trailing slashes:
     );
 
 匹配回调函数（Match Callbacks）
----------------
+-------------------------------
 Sometimes, routes must be matched if they meet specific conditions, you can add arbitrary conditions to routes using the
 'beforeMatch' callback, if this function return false, the route will be treaded as non-matched:
 
@@ -745,7 +745,7 @@ And use this class instead of the anonymous function:
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 限制主机名（Hostname Constraints）
---------------------
+----------------------------------
 The router allow to set hostname constraints, this means that specific routes or a group of routes can be restricted
 to only match if the route also meets the hostname constraint:
 
@@ -808,7 +808,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
     $router->mount($blog);
 
 URI 来源（URI Sources）
------------
+-----------------------
 By default the URI information is obtained from the $_GET['_url'] variable, this is passed by the Rewrite-Engine to
 Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
@@ -828,7 +828,7 @@ Or you can manually pass a URI to the 'handle' method:
     $router->handle('/some/route/to/handle');
 
 测试路由（Testing your routes）
--------------------
+-------------------------------
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
 .. code-block:: php
@@ -871,7 +871,7 @@ Since this component has no dependencies, you can create a file as shown below t
     }
 
 匿名路由（Annotations Router）
-------------------
+------------------------------
 This component provides a variant that's integrated with the :doc:`annotations <annotations>` service. Using this strategy
 you can write the routes directly in the controllers instead of adding them in the service registration:
 
@@ -994,7 +994,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
     };
 
 注册路由实例（Registering Router instance）
----------------------------
+-------------------------------------------
 You can register router during service registration with Phalcon dependency injector to make it available inside controller.
 
 You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use `Phalcon Developer Tools <http://phalconphp.com/en/download/tools>`_)
@@ -1033,7 +1033,7 @@ You need to create app/config/routes.php and add router initialization code, for
 
 
 自定义路由（Implementing your own Router）
-----------------------------
+------------------------------------------
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
 the one provided by Phalcon.
 

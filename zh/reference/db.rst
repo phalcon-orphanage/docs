@@ -1,4 +1,4 @@
-Database Abstraction Layer
+数据库抽象层（Database Abstraction Layer）
 ==========================
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that powers the model layer
 in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
@@ -9,7 +9,7 @@ This component allows for a lower level database manipulation than using traditi
     This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>`
     for a complete reference.
 
-Database Adapters
+数据库适配器（Database Adapters）
 -----------------
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
 database engines are supported:
@@ -26,7 +26,7 @@ database engines are supported:
 | Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
-Implementing your own adapters
+自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own
 database adapters or extend the existing ones.
@@ -47,11 +47,11 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
-Implementing your own dialects
+自定义特征（Implementing your own dialects）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
 
-Connecting to Databases
+连接数据库（Connecting to Databases）
 -----------------------
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example
 below shows how to create a connection passing both required and optional parameters:
@@ -126,7 +126,7 @@ below shows how to create a connection passing both required and optional parame
     // Create a connection
     $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
-Setting up additional PDO options
+设置额外的 PDO 选项（Setting up additional PDO options）
 ---------------------------------
 You can set PDO options at connection time by passing the parameters 'options':
 
@@ -146,7 +146,7 @@ You can set PDO options at connection time by passing the parameters 'options':
         )
     ));
 
-Finding Rows
+查找行（Finding Rows）
 ------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
@@ -220,7 +220,7 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     // Count the resultset
     echo $result->numRows();
 
-Binding Parameters
+绑定参数（Binding Parameters）
 ------------------
 Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
 bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
@@ -238,7 +238,7 @@ injection attacks. Both string and positional placeholders are supported. Bindin
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
-Inserting/Updating/Deleting Rows
+插入、更新、删除行（Inserting/Updating/Deleting Rows）
 --------------------------------
 To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 
@@ -288,7 +288,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     // Generating dynamically the necessary SQL
     $success = $connection->delete("robots", "id = 101");
 
-Transactions and Nested Transactions
+事务与嵌套事务（Transactions and Nested Transactions）
 ------------------------------------
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
 often increase the performance on most database systems:
@@ -359,7 +359,7 @@ is created:
         $connection->rollback();
     }
 
-Database Events
+数据库事件（Database Events）
 ---------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present.
 Some events when returning boolean false could stop the active operation. The following events are supported:
@@ -425,7 +425,7 @@ Stop SQL operations are very useful if for example you want to implement some la
         return true;
     });
 
-Profiling SQL Statements
+分析 SQL 语句（Profiling SQL Statements）
 ------------------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -512,7 +512,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     //Attach the listener listening for all database events
     $eventsManager->attach('db', $dbProfiler);
 
-Logging SQL Statements
+记录 SQL 语句（Logging SQL Statements）
 ----------------------
 Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
 
@@ -553,13 +553,13 @@ As above, the file *app/logs/db.log* will contain something like this:
     (name, price) VALUES ('Hot pepper', 3.50)
 
 
-Implementing your own Logger
+自定义日志记录器（Implementing your own Logger）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
 The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
 and from then on any SQL statement executed will call that method to log the results.
 
-Describing Tables/Views
+获取数据库表与视图信息（Describing Tables/Views）
 -----------------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and views:
 
@@ -625,7 +625,7 @@ commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which da
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
 differentiate the SQL syntax based on the target storage system.
 
-Creating Tables
+创建数据库表（Creating Tables）
 ^^^^^^^^^^^^^^^
 The following example shows how to create a table:
 
@@ -717,7 +717,7 @@ The associative array passed in Phalcon\\Db::createTable() can have the possible
 | "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Altering Tables
+修改数据库表（Altering Tables）
 ^^^^^^^^^^^^^^^
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
 Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
@@ -750,7 +750,7 @@ is limited by these constraints.
     $connection->deleteColumn("robots", null, "name");
 
 
-Dropping Tables
+删除数据库表（Dropping Tables）
 ^^^^^^^^^^^^^^^
 Examples on dropping tables:
 

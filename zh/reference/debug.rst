@@ -1,4 +1,4 @@
-Debugging Applications
+调试应用程序（Debugging Applications）
 ======================
 
 .. figure:: ../_static/img/xdebug-1.jpg
@@ -11,7 +11,7 @@ this functionality and provide information back to the developer or user.
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework
 written in PHP has.
 
-Catching Exceptions
+捕获异常（Catching Exceptions）
 -------------------
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
@@ -107,7 +107,7 @@ generating the exception:
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the
 parameters that were invoked in every call. The method `Exception::getTrace`_ provides additional information if needed.
 
-Debug component
+调试组件（Debug component）
 ---------------
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application
 created with the framework.
@@ -131,7 +131,7 @@ To enable it, add the following to your bootstrap:
 
 Any Try/Catch blocks must be removed or disabled to make this component work properly.
 
-Reflection and Introspection
+反射与内省（Reflection and Introspection）
 -----------------------------
 Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It's possible to use the
 `Reflection API`_ or simply print any object to show how is its internal state:
@@ -199,7 +199,7 @@ It's easy to know the internal state of any object. The above example prints the
     )
 
 
-Using XDebug
+使用 XDebug（Using XDebug）
 ------------
 XDebug_ is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together
 with Phalcon without additional configuration or side effects.

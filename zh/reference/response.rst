@@ -1,5 +1,5 @@
 返回响应（Returning Responses）
-===================
+===============================
 Part of the HTTP cycle is returning responses to clients. :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -46,7 +46,7 @@ directly from a controller's action follow this example:
     }
 
 使用头部信息（Working with Headers）
---------------------
+------------------------------------
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
 type of response and much more.
 
@@ -77,7 +77,7 @@ retrieves the headers before sending it to client:
     $contentType = $response->getHeaders()->get("Content-Type");
 
 重定向（Making Redirections）
--------------------
+-----------------------------
 With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also execute HTTP redirections:
 
 .. code-block:: php
@@ -114,7 +114,7 @@ Note that a redirection doesn't disable the view component, so if there is a vie
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
 
 HTTP 缓存（HTTP Cache）
-----------
+-----------------------
 One of the easiest ways to improve the performance in your applications and reduce the server traffic is using HTTP Cache.
 Most modern browsers support HTTP caching. HTTP Cache is one of the reasons many websites are currently fast.
 
@@ -125,8 +125,8 @@ HTTP Cache can be altered in the following header values sent by the application
 * *Last-Modified:* This header tells the browser which was the last time the site was updated avoiding page re-loads
 * *ETag:* An etag is a unique identifier that must be created including the modification timestamp of the current page
 
-Setting an Expiration Time
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+设置过期时间（Setting an Expiration Time）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser).
 Starting from the current date we add the amount of time the page will be stored
 in the browser cache. Until this date expires no new content will be requested from the server:

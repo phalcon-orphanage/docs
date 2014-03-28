@@ -1,15 +1,15 @@
-MVC Applications
+MVC 应用（MVC Applications）
 ================
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
 operations required in the background, instantiating every component needed and integrating it with the
 project, to allow the MVC pattern to operate as desired.
 
-Single or Multi Module Applications
+单模块或多模块应用（Single or Multi Module Applications）
 -----------------------------------
 With this component you can run various types of MVC structures:
 
-Single Module
+单模块（Single Module）
 ^^^^^^^^^^^^^
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
 An application like this would have the following file structure:
@@ -114,7 +114,7 @@ If namespaces are used, the following bootstrap can be used:
     }
 
 
-Multi Module
+多模块（Multi Module）
 ^^^^^^^^^^^^
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -296,7 +296,7 @@ offering functions to set the module itself up. Each module class definition mus
 methods: registerAutoloaders() and registerServices(), they will be called by
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
 
-Understanding the default behavior
+理解默认行为（Understanding the default behavior）
 ----------------------------------
 If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
 you may recognize the following bootstrap file:
@@ -330,7 +330,7 @@ The core of all the work of the controller occurs when handle() is invoked:
 
     echo $application->handle()->getContent();
 
-Manual bootstrapping
+手动启动（Manual bootstrapping）
 -------------------
 If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
@@ -461,7 +461,7 @@ Although the above implementations are a lot more verbose than the code needed w
 it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
 should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
-Application Events
+应用事件（Application Events）
 ------------------
 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
 (if it is present). Events are triggered using the type "application". The following events are supported:
@@ -499,6 +499,6 @@ The following example demonstrates how to attach listeners to this component:
         }
     );
 
-External Resources
+外部资源（External Resources）
 ------------------
 * `MVC examples on Github <https://github.com/phalcon/mvc>`_

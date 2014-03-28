@@ -1,4 +1,4 @@
-Dependency Injection/Service Location
+依赖注入与服务定位器（Dependency Injection/Service Location）
 *************************************
 The following example is a bit lengthy, but explains why use service location and dependency injection.
 First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
@@ -361,7 +361,7 @@ The component now simply access the service it requires when it needs it, if it 
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
 their behavior or any other aspect of them and that would not affect the component.
 
-Our approach
+实现方法（Our approach）
 ============
 Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
 
@@ -374,7 +374,7 @@ one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
-Registering services in the Container
+使用容器注册服务（Registering services in the Container）
 =====================================
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
 can request component B from the container, rather than creating a new instance component B.
@@ -447,7 +447,7 @@ code more complicated. The lambda function is a good balance between the two, bu
 Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
 in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
-Simple Registration
+简单的注册（Simple Registration）
 -------------------
 As seen before, there are several ways to register services. These we call simple:
 
@@ -463,7 +463,7 @@ This type of definition does not allow to specify arguments for the class constr
     // return new Phalcon\Http\Request();
     $di->set('request', 'Phalcon\Http\Request');
 
-Object
+对象（Object）
 ^^^^^^
 This type expects an object. Due to the fact that object does not need to be resolved as it is
 already an object, one could say that it is not really a dependency injection,
@@ -477,7 +477,7 @@ the same object/value:
     // return new Phalcon\Http\Request();
     $di->set('request', new Phalcon\Http\Request());
 
-Closures/Anonymous functions
+闭包与匿名函数（Closures/Anonymous functions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This method offers greater freedom to build the dependency as desired, however, it is difficult to
 change some of the parameters externally without having to completely change the definition of dependency:
@@ -511,7 +511,7 @@ Some of the limitations can be overcome by passing additional variables to the c
         ));
     });
 
-Complex Registration
+复杂的注册（Complex Registration）
 --------------------
 If it is required to change the definition of a service without instantiating/resolving the service,
 then, we need to define the services using the array syntax. Define a service using an array definition
@@ -554,7 +554,7 @@ Both service registrations above produce the same result. The array definition h
 
 In addition by using the array syntax you can use three types of dependency injection:
 
-Constructor Injection
+构造函数注入（Constructor Injection）
 ^^^^^^^^^^^^^^^^^^^^^
 This injection type passes the dependencies/arguments to the class constructor.
 Let's pretend we have the following component:
@@ -603,7 +603,7 @@ The service can be registered this way:
 The service "response" (Phalcon\\Http\\Response) is resolved to be passed as the first argument of the constructor,
 while the second is a boolean value (true) that is passed as it is.
 
-Setter Injection
+设值注入（Setter Injection）
 ^^^^^^^^^^^^^^^^
 Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
 
@@ -662,7 +662,7 @@ A service with setter injection can be registered as follows:
         )
     ));
 
-Properties Injection
+属性注入（Properties Injection）
 ^^^^^^^^^^^^^^^^^^^^
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
 
@@ -725,7 +725,7 @@ these provide a more robust approach to define and inject services.
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services
 according to the application needs.
 
-Resolving Services
+服务解疑（Resolving Services）
 ==================
 Obtaining a service from the container is a matter of simply calling the “get” method. A new instance of the service will be returned:
 
@@ -758,7 +758,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     // new MyComponent("some-parameter", "other")
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
-Shared services
+共享服务（Shared services）
 ===============
 Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
 the same instance of it is returned every time a consumer retrieve the service from the container:
@@ -797,7 +797,7 @@ the service is obtained from the DI, you can use the 'getShared' method:
 
     $request = $di->getShared("request");
 
-Manipulating services individually
+单独操作服务（Manipulating services individually）
 ==================================
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -822,7 +822,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     //Resolve the service (return a Phalcon\Http\Request instance)
     $request = $requestService->resolve();
 
-Instantiating classes via the Service Container
+通过服务容器实例化类（Instantiating classes via the Service Container）
 ===============================================
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with
 the same name. With this behavior we can replace any class by another simply by registering a service with its name:
@@ -851,7 +851,7 @@ You can take advantage of this, always instantiating your classes via the servic
 fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition
 for it.
 
-Automatic Injecting of the DI itself
+自动注入 DI（Automatic Injecting of the DI itself）
 ====================================
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
 to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface <../api/Phalcon_DI_InjectionAwareInterface>` in your classes:
@@ -889,7 +889,7 @@ Then once the service is resolved, the $di will be passed to setDi automatically
     //Resolve the service (NOTE: $myClass->setDi($di) is automatically called)
     $myClass = $di->get('myClass');
 
-Avoiding service resolution
+避免服务解析（Avoiding service resolution）
 ===========================
 Some services are used in each of the requests made to the application, eliminate the process of resolving the service
 could add some small improvement in performance.
@@ -904,7 +904,7 @@ could add some small improvement in performance.
     //Pass the resolved object to the service registration
     $di->set('router', $router);
 
-Organizing services in files
+使用文件组织服务（Organizing services in files）
 ============================
 You can better organize your application by moving the service registration to individual files instead of
 doing everything in the application's bootstrap:
@@ -929,7 +929,7 @@ Then in the file ("../app/config/routes.php") return the object resolved:
 
     return $router;
 
-Accessing the DI in a static way
+使用静态的方式访问注入器（Accessing the DI in a static way）
 ================================
 If needed you can access the latest DI created in a static function in the following way:
 
@@ -948,7 +948,7 @@ If needed you can access the latest DI created in a static function in the follo
 
     }
 
-Factory Default DI
+注入器默认工厂（Factory Default DI）
 ==================
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
 framework. To achieve this, the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault. This class automatically
@@ -958,7 +958,7 @@ registers the appropriate services bundled with the framework to act as full-sta
 
     <?php $di = new Phalcon\DI\FactoryDefault();
 
-Service Name Conventions
+服务名称约定（Service Name Conventions）
 ========================
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
 the correct (built-in) service when you need it.
@@ -1011,7 +1011,7 @@ the correct (built-in) service when you need it.
 | viewsCache          | Cache backend for views fragments           | None                                                                                               | -      |
 +---------------------+---------------------------------------------+----------------------------------------------------------------------------------------------------+--------+
 
-Implementing your own DI
+自定义注入器（Implementing your own DI）
 ========================
 The :doc:`Phalcon\\DiInterface <../api/Phalcon_DiInterface>` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 

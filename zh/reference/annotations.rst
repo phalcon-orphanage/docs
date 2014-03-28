@@ -1,4 +1,4 @@
-Annotations Parser
+注释解析器（Annotations Parser）
 ==================
 It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\\Annotations is
 a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
@@ -83,7 +83,7 @@ However, to make the code more maintainable and understandable it is recommended
      * @AnotherSpecialFeature(true)
      */
 
-Reading Annotations
+读取注释（Reading Annotations）
 -------------------
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -119,7 +119,7 @@ Adapters cache the processed annotations avoiding the need of parse the annotati
 only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
 other adapters to swap out when the application is in production stage.
 
-Types of Annotations
+注释类型（Types of Annotations）
 --------------------
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -176,11 +176,11 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
      */
 
-Practical Usage
+实际使用（Practical Usage）
 ---------------
 Next we will explain some practical examples of annotations in PHP applications:
 
-Cache Enabler with Annotations
+注释开启缓存（Cache Enabler with Annotations）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
 cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
@@ -288,7 +288,7 @@ Now, we can use the annotation in a controller:
 
     }
 
-Choose template to render
+选择渲染模版（Choose template to render）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
 once the action has been executed:
@@ -296,7 +296,7 @@ once the action has been executed:
 
 
 
-Annotations Adapters
+注释适配器（Annotations Adapters）
 --------------------
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -312,11 +312,11 @@ This component makes use of adapters to cache or no cache the parsed and process
 | XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-Implementing your own adapters
+自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
 annotations adapters or extend the existing ones.
 
-External Resources
+外部资源（External Resources）
 ------------------
 * `Tutorial: Creating a custom model’s initializer with Annotations <http://blog.phalconphp.com/post/47471246411/tutorial-creating-a-custom-models-initializer-with>`_

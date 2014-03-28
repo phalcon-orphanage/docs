@@ -1,4 +1,4 @@
-License
+授权（License）
 =======
 Phalcon is brought to you by the Phalcon Team! [`Twitter`_ - `Google Plus`_ - `Github`_]
 

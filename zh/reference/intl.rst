@@ -1,4 +1,4 @@
-Internationalization
+国际化（Internationalization）
 ====================
 Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
 Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
@@ -10,7 +10,7 @@ In the examples below, we will show you how to implement the intl_ extension's f
 .. highlights::
    This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
 
-Find out best available Locale
+匹配最佳的区域设置（Find out best available Locale）
 ------------------------------
 There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
 
@@ -30,7 +30,7 @@ Examples of identifiers include:
 * zh-Hant-TW (Chinese, Traditional Script, Taiwan)
 * fr-CA, fr-FR (French for Canada and France respectively)
 
-Formatting messages based on Locale
+基于区域设置格式化信息（Formatting messages based on Locale）
 -----------------------------------
 Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
 production of those messages.
@@ -73,7 +73,7 @@ Message formatting using time and date patterns:
     $formatter = new MessageFormatter("fr_FR", $pattern);
     echo $formatter->format($values);
 
-Locale-Sensitive comparison
+特定区域设置的字符串比较（Locale-Sensitive comparison）
 ---------------------------
 The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
 examples below on the usage of this class:
@@ -93,7 +93,7 @@ examples below on the usage of this class:
     $collator->setStrength(Collator::DEFAULT_VALUE);
     var_dump($collator->compare("una canción", "una cancion"));
 
-Transliteration
+音译（Transliteration）
 ---------------
 Transliterator_ provides transliteration of strings:
 

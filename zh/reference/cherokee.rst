@@ -1,4 +1,4 @@
-Cherokee Installation Notes
+Cherokee 安装说明（Cherokee Installation Notes）
 ===========================
 Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
 

@@ -1,11 +1,11 @@
-Cookies Management
+Cookie 管理（Cookies Management）
 ==================
 Cookies_ are very useful way to store small pieces of data in the client that can be retrieved even
 if the user closes his/her browser. :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>`
 acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent
 automatically at the end of the request.
 
-Basic Usage
+基本使用（Basic Usage）
 -----------
 You can set/get cookies by just accessing the 'cookies' service in any part of the application where services can be
 accessed:
@@ -36,7 +36,7 @@ accessed:
         }
     }
 
-Encryption/Decryption of Cookies
+Cookie 的加密和解密（Encryption/Decryption of Cookies）
 --------------------------------
 By default, cookies are automatically encrypted before be sent to the client and decrypted when retrieved.
 This protection allow unauthorized users to see the cookies' contents in the client (browser).

@@ -1,5 +1,5 @@
-HTTP ÇëÇó»·¾³£¨Request Environment£©
-===================
+HTTP è¯·æ±‚ç¯å¢ƒï¼ˆRequest Environmentï¼‰
+====================================
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
 files, variables, etc. A web based application needs to parse that information so as to provide the correct
 response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
@@ -21,8 +21,8 @@ information of the request, allowing you to access it in an object-oriented way.
         }
     }
 
-»ñÈ¡Öµ£¨Getting Values£©
---------------
+è·å–å€¼ï¼ˆGetting Valuesï¼‰
+------------------------
 PHP automatically fills the superglobal arrays $_GET and $_POST depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
@@ -55,8 +55,8 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
     $email = $request->getPost("user_email", null, "some@example.com");
 
 
-¿ØÖÆÆ÷ÖĞ·ÃÎÊÇëÇó£¨Accessing the Request from Controllers£©
---------------------------------------
+æ§åˆ¶å™¨ä¸­è®¿é—®è¯·æ±‚ï¼ˆAccessing the Request from Controllersï¼‰
+----------------------------------------------------------
 The most common place to access the request environment is in an action of a controller. To access the
 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` object from a controller you will need to use
 the $this->request public property of the controller:
@@ -91,8 +91,8 @@ the $this->request public property of the controller:
 
     }
 
-ÎÄ¼şÉÏ´«£¨Uploading Files£©
----------------
+æ–‡ä»¶ä¸Šä¼ ï¼ˆUploading Filesï¼‰
+---------------------------
 Another common task is file uploading. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` offers
 an object-oriented way to achieve this task:
 
@@ -129,8 +129,8 @@ Each object returned by Phalcon\\Http\\Request::getUploadedFiles() is an instanc
 array offers the same behavior. :doc:`Phalcon\\Http\\Request\\File <../api/Phalcon_Http_Request_File>` encapsulates
 only the information related to each file uploaded with the request.
 
-Ê¹ÓÃÍ·ĞÅÏ¢£¨Working with Headers£©
---------------------
+ä½¿ç”¨å¤´ä¿¡æ¯ï¼ˆWorking with Headersï¼‰
+----------------------------------
 As mentioned above, request headers contain useful information that allow us to send the proper response back to
 the user. The following examples show usages of that information:
 

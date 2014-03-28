@@ -1,4 +1,4 @@
-Framework Benchmarks
+框架基准测试（Framework Benchmarks）
 ====================
 In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
 able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
@@ -11,7 +11,7 @@ are updated as stable versions are released from any of the frameworks mentioned
 We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
 or comments please `write us`_. `Check out source at Github`_
 
-What was the test environment?
+怎样的测试环境？（What was the test environment?）
 ------------------------------
 APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
 to avoid potentially additional overheads.
@@ -36,7 +36,7 @@ The testing hardware environment is as follows:
     :align: center
 
 
-List of Benchmarks
+基准测试列表（List of Benchmarks）
 ------------------
 .. toctree::
    :maxdepth: 1
@@ -44,7 +44,7 @@ List of Benchmarks
    benchmark/hello-world
    benchmark/micro
 
-ChangeLog
+变更日志（ChangeLog）
 ---------
 .. versionadded:: 1.0
     Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
@@ -61,7 +61,7 @@ ChangeLog
 .. versionchanged:: 1.4
     Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
 
-External Resources
+外部资源（External Resources）
 ------------------
 * `For Impatient Web Users, an Eye Blink Is Just Too Long to Wait <http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=0>`_
 * `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`_

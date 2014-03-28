@@ -1,4 +1,4 @@
-Encryption/Decryption
+加密与解密（Encryption/Decryption）
 =====================
 Phalcon provides encryption facilities via the :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` component.
 This class offers simple object-oriented wrappers to the mcrypt_ php's encryption library.
@@ -46,7 +46,7 @@ You can use the same instance to encrypt/decrypt several times:
         echo $crypt->decrypt($encrypted, $key);
     }
 
-Encryption Options
+加密选项（Encryption Options）
 ------------------
 The following options are available to change the encryption behavior:
 
@@ -75,7 +75,7 @@ Example:
 
     echo $crypt->encrypt($text, $key);
 
-Base64 Support
+提供 Base64（Base64 Support）
 --------------
 In order that encryption is properly transmitted (emails) or displayed (browsers) base64_ encoding is usually applied to encrypted texts:
 
@@ -93,7 +93,7 @@ In order that encryption is properly transmitted (emails) or displayed (browsers
 
     echo $crypt->decryptBase64($text, $key);
 
-Setting up an Encryption service
+配置加密服务（Setting up an Encryption service）
 --------------------------------
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
