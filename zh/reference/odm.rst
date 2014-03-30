@@ -1,5 +1,5 @@
 对象文件映射（ODM (Object-Document Mapper)）
-============================
+============================================
 In addition to its ability to :doc:`map tables <models>` in relational databases, Phalcon can map documents from NoSQL databases.
 The ODM offers a CRUD functionality, events, validations among other services.
 
@@ -14,8 +14,8 @@ The following NoSQL databases are supported:
 | MongoDB_   | MongoDB is a scalable, high-performance, open source NoSQL database. |
 +------------+----------------------------------------------------------------------+
 
-Creating Models
----------------
+创建模型（Creating Models）
+---------------------------
 A model is a class that extends from :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. It must be placed in the models directory. A model
 file must contain a single class; its class name should be in camel case notation:
 
@@ -49,7 +49,7 @@ you can use the getSource() method:
     }
 
 理解文档对象（Understanding Documents To Objects）
-----------------------------------
+--------------------------------------------------
 Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example,
 for a collection "robots" with the documents:
 
@@ -67,7 +67,7 @@ for a collection "robots" with the documents:
     >
 
 模型中使用命名空间（Models in Namespaces）
---------------------
+------------------------------------------
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:
 
 .. code-block:: php
@@ -111,7 +111,7 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->save();
 
 设置连接（Setting a Connection）
---------------------
+--------------------------------
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called "mongo":
 
 .. code-block:: php
@@ -131,7 +131,7 @@ Connections are retrieved from the services container. By default, Phalcon tries
     }, true);
 
 查找文档（Finding Documents）
------------------
+-----------------------------
 As :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` relies on the Mongo PHP extension you have the same facilities
 to query documents and convert them transparently to model instances:
 
@@ -225,7 +225,7 @@ The available query options are:
 If you have experience with SQL databases, you may want to check the `SQL to Mongo Mapping Chart`_.
 
 聚合（Aggregations）
-------------
+--------------------
 A model can return calculations using `aggregation framework`_ provided by Mongo. The aggregated values are calculate without having to use MapReduce.
 With this option is easy perform tasks such as totaling or averaging field values:
 
@@ -246,7 +246,7 @@ With this option is easy perform tasks such as totaling or averaging field value
     ));
 
 创建和更新记录（Creating Updating/Records）
--------------------------
+-------------------------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
 associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
 
@@ -279,7 +279,7 @@ The "_id" property is automatically updated with the MongoId_ object created by 
     echo "The generated id is: ", $robot->getId();
 
 验证信息（Validation Messages）
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` has a messaging subsystem that provides a flexible way to output or store the
 validation messages generated during the insert/update processes.
 
@@ -300,7 +300,7 @@ generated the message or the message type:
     }
 
 验证事件和事件管理（Validation Events and Events Manager）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a
 certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` and their order of execution:
 
@@ -432,7 +432,7 @@ objects created in our application use the same EventsManager, then we need to a
     }, true);
 
 实现业务规则（Implementing a Business Rule）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
 We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
@@ -460,7 +460,7 @@ Some events return false as an indication to stop the current operation. If an e
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` will assume a true value.
 
 验证数据完整性（Validating Data Integrity）
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` provides several events to validate data and implement business rules. The special "validation"
 event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
@@ -589,7 +589,7 @@ The idea of creating validators is make them reusable across several models. A v
     }
 
 删除记录（Deleting Records）
-----------------
+----------------------------
 The method Phalcon\\Mvc\\Collection::delete() allows to delete a document. You can use it as follows:
 
 .. code-block:: php
@@ -638,8 +638,8 @@ The following events are available to define custom business rules that can be e
 | Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
 +-----------+--------------+---------------------+------------------------------------------+
 
-Validation Failed Events
-------------------------
+验证失败事件（Validation Failed Events）
+----------------------------------------
 Another type of events is available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+
@@ -668,7 +668,7 @@ If a model uses custom primary keys this behavior can be overridden:
     }
 
 设置多个数据库（Setting multiple databases）
---------------------------
+--------------------------------------------
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>` needs to connect to the database it requests the "mongo" service
 in the application's services container. You can overwrite this service setting it in the initialize method:
@@ -705,7 +705,7 @@ Then, in the Initialize method, we define the connection service for the model:
     }
 
 注入服务到模型（Injecting services into Models）
-------------------------------
+------------------------------------------------
 You may be required to access the application services within a model, the following example explains how to do that:
 
 .. code-block:: php

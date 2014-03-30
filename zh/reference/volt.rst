@@ -124,7 +124,7 @@ In the above example, three variables were passed to the view: title, menu and p
     }
 
 变量（Variables）
----------
+-----------------
 Object variables may have attributes which can be accessed using the syntax: foo.bar.
 If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
@@ -134,7 +134,7 @@ If you are passing arrays, you have to use the square bracket syntax: foo['bar']
     {{ post['title'] }} {# for $post['title'] #}
 
 过滤器（Filters）
--------
+-----------------
 Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
 variables:
 
@@ -258,7 +258,7 @@ Examples:
     {{ "désolé"|convert_encoding('utf8', 'latin1') }}
 
 注释（Comments）
---------
+----------------
 Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
 
 .. code-block:: jinja
@@ -268,11 +268,11 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
     #}
 
 流程控制列表（List of Control Structures）
---------------------------
+------------------------------------------
 Volt provides a set of basic but powerful control structures for use in templates:
 
-For
-^^^
+循环语句 For
+^^^^^^^^^^^^
 Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
 
 .. code-block:: html+jinja
@@ -342,7 +342,7 @@ Alternative syntax:
     {% endfor %}
 
 循环控制（Loop Controls）
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
 
 .. code-block:: html+jinja
@@ -365,8 +365,8 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
         ...
     {% endfor %}
 
-If
-^^
+条件判断语句 If
+^^^^^^^^^^^^^^^
 As PHP, an "if" statement checks if an expression is evaluated as true or false:
 
 .. code-block:: html+jinja
@@ -408,7 +408,7 @@ The 'elseif' control flow structure can be used together with if to emulate a 's
     {% endif %}
 
 循环上下文（Loop Context）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 A special variable is available inside 'for' loops providing you information about
 
 +----------------------+------------------------------------------------------------------------------+
@@ -451,7 +451,7 @@ A special variable is available inside 'for' loops providing you information abo
     {% endfor %}
 
 赋值（Assignments）
------------
+-------------------
 Variables may be changed in a template using the instruction "set":
 
 .. code-block:: html+jinja
@@ -489,7 +489,7 @@ The following operators are available:
 +----------------------+------------------------------------------------------------------------------+
 
 表达式（Expressions）
------------
+---------------------
 Volt provides a basic set of expression support, including literals and common operators.
 
 A expression can be evaluated and printed using the '{{' and '}}' delimiters:
@@ -505,7 +505,7 @@ If an expression needs to be evaluated without be printed the 'do' statement can
     {% do (1 + 1) * 2 %}
 
 字面值（Literals）
-^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 The following literals are supported:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -525,7 +525,7 @@ The following literals are supported:
 +----------------------+------------------------------------------------------------------------------+
 
 数组（Arrays）
-^^^^^^
+^^^^^^^^^^^^^^
 Whether you're using PHP 5.3, 5.4 or 5.5, you can create arrays by enclosing a list of values in square brackets:
 
 .. code-block:: html+jinja
@@ -550,7 +550,7 @@ Curly braces also can be used to define arrays or hashes:
     {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 算术运算（Math）
-^^^^
+^^^^^^^^^^^^^^^^
 You may make calculations in templates using the following operators:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -568,7 +568,7 @@ You may make calculations in templates using the following operators:
 +----------------------+------------------------------------------------------------------------------+
 
 比较运算（Comparisons）
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 The following comparison operators are available:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -594,7 +594,7 @@ The following comparison operators are available:
 +----------------------+------------------------------------------------------------------------------+
 
 逻辑运算（Logic）
-^^^^^
+^^^^^^^^^^^^^^^^^
 Logic operators are useful in the "if" expression evaluation to combine multiple tests:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -610,7 +610,7 @@ Logic operators are useful in the "if" expression evaluation to combine multiple
 +----------------------+------------------------------------------------------------------------------+
 
 其他操作（Other Operators）
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Additional operators seen the following operators are available:
 
 +----------------------+----------------------------------------------------------------------------------------------+
@@ -648,7 +648,7 @@ The following example shows how to use operators:
     {% endfor %}
 
 测试运算（Tests）
------
+-----------------
 Tests can be used to test if a variable has a valid expected value. The operator "is" is used to perform the tests:
 
 .. code-block:: html+jinja
@@ -735,7 +735,7 @@ More examples:
     {% endif %}
 
 宏定义（Macros）
-------
+----------------
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
 .. code-block:: html+jinja
@@ -795,7 +795,7 @@ And receive optional parameters:
     {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 
 使用标签助手（Using Tag Helpers）
------------------
+---------------------------------
 Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use the helpers provided by that component in a Volt template:
 
 .. code-block:: html+jinja
@@ -881,7 +881,7 @@ To call a Phalcon\\Tag helper, you only need to call an uncamelized version of t
 +------------------------------------+-----------------------+
 
 函数（Functions）
----------
+-----------------
 The following built-in functions are available in Volt:
 
 +----------------------+------------------------------------------------------------------------------+
@@ -909,7 +909,7 @@ The following built-in functions are available in Volt:
 +----------------------+------------------------------------------------------------------------------+
 
 视图集成（View Integration）
-----------------
+----------------------------
 Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play with the view hierarchy and include partials as well:
 
 .. code-block:: html+php
@@ -933,8 +933,8 @@ as part of the view which was included:
     {# Passing extra variables #}
     <div id="footer">{% include "partials/footer" with ['links': links] %}</div>
 
-Include
-^^^^^^^
+包含（Include）
+^^^^^^^^^^^^^^^
 'include' has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension
 when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent
 template where it's included. Templates aren't inlined if the 'include' have variables passed with 'with':
@@ -945,7 +945,7 @@ template where it's included. Templates aren't inlined if the 'include' have var
     <div id="footer">{% include "partials/footer.volt" %}</div>
 
 模版的继承（Template Inheritance）
---------------------
+----------------------------------
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
 define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1005,7 +1005,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
     </html>
 
 多重继承（Multiple Inheritance）
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Extended templates can extend other templates. The following example illustrates this:
 
 .. code-block:: html+jinja
@@ -1085,7 +1085,7 @@ As partials, the path set to "extends" is a relative path under the current view
     the parent templates.
 
 自动编码模式（Autoescape mode）
----------------
+-------------------------------
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
 .. code-block:: html+jinja
@@ -1100,7 +1100,7 @@ You can enable auto-escaping of all variables printed in a block using the autoe
     {% endautoescape %}
 
 配置 Volt 引擎（Setting up the Volt Engine)
---------------------------
+--------------------------------------------
 Volt can be configured to alter its default behavior, the following example explain how to do that:
 
 .. code-block:: php
@@ -1210,7 +1210,7 @@ views directory. The following examples show how to change the compilation path 
     ));
 
 扩展 Volt（Extending Volt）
---------------
+---------------------------
 Unlike other template engines, Volt itself is not required to run the compiled templates.
 Once the templates are compiled there is no dependence on Volt. With performance independence in mind,
 Volt only acts as a compiler for PHP templates.
@@ -1218,7 +1218,7 @@ Volt only acts as a compiler for PHP templates.
 The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
 
 函数（Functions）
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 Functions act as normal PHP functions, a valid string name is required as function name.
 Functions can be added using two strategies, returning a simple string or using an anonymous
 function. Always is required that the chosen strategy returns a valid PHP string expression:
@@ -1291,7 +1291,7 @@ Built-in functions can be overridden adding a function with its name:
     $compiler->addFunction('dump', 'print_r');
 
 过滤器（Filters）
-^^^^^^^
+^^^^^^^^^^^^^^^^^
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters
 is similar as seen with the functions:
 
@@ -1320,7 +1320,7 @@ Built-in filters can be overridden adding a function with its name:
     $compiler->addFilter('capitalize', 'lcfirst');
 
 扩展（Extensions）
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 With extensions the developer has more flexibility to extend the template engine, and override the compilation
 of ​a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1375,7 +1375,7 @@ Volt extensions must be in registered in the compiler making them available in c
     $compiler->addExtension(new PhpFunctionExtension());
 
 缓存视图片段（Caching view fragments）
-----------------------
+--------------------------------------
 With Volt it's easy cache view fragments. This caching improves performance preventing
 that the contents of a block from being executed by PHP each time the view is displayed:
 
@@ -1410,7 +1410,7 @@ The caching is done by the :doc:`Phalcon\\Cache <cache>` component via the view 
 Learn more about how this integration works in the section :doc:`"Caching View Fragments" <views>`.
 
 注入服务到模版（Inject Services into a Template）
--------------------------------
+-------------------------------------------------
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
 
 .. code-block:: html+jinja
@@ -1422,7 +1422,7 @@ If a service container (DI) is available for Volt, you can use the services by o
     <input type="hidden" name="token" value="{{ security.getToken() }}">
 
 独立的组件（Stand-alone component）
----------------------
+-----------------------------------
 Using Volt in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
@@ -1449,8 +1449,8 @@ Using Volt in a stand-alone mode can be demonstrated below:
     //Require the compiled templated (optional)
     require $compiler->getCompiledTemplatePath();
 
-External Resources
-------------------
+外部资源（External Resources）
+------------------------------
 * A bundle for Sublime/Textmate is available `here <https://github.com/phalcon/volt-sublime-textmate>`_
 * `Album-O-Rama <http://album-o-rama.phalconphp.com>`_ is a sample application using Volt as template engine, [`Github <https://github.com/phalcon/album-o-rama>`_]
 * `Our website <http://phalconphp.com>`_ is running using Volt as template engine, [`Github <https://github.com/phalcon/website>`_]

@@ -1,5 +1,5 @@
 使用视图（Using Views）
-===========
+=======================
 视图代表了应用程序中的用户界面. 视图通常是在 HTML 文件里嵌入 PHP 代码，这些代码仅仅是用来展示数据。
 视图的任务是当应用程序发生请求时，提供数据给 web 浏览器或者其他工具。
 
@@ -8,7 +8,7 @@ The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\
 are responsible for the managing the view layer of your MVC application.
 
 集成视图到控制器（Integrating Views with Controllers）
-----------------------------------
+------------------------------------------------------
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
 will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
 executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
@@ -51,7 +51,7 @@ The setVar allows us to create view variables on demand so that they can be used
 how to pass the $postId parameter to the respective view template.
 
 分层渲染（Hierarchical Rendering）
-----------------------
+----------------------------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
 This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
@@ -136,7 +136,7 @@ The generated HTML by the request will be:
     </html>
 
 使用模版（Using Templates）
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
 layouts directory.
 
@@ -248,7 +248,7 @@ The final output will be the following:
     </html>
 
 渲染级别控制（Control Rendering Levels）
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
 produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
 
@@ -305,7 +305,7 @@ The available render levels are:
 +-----------------------+--------------------------------------------------------------------------+-------+
 
 关闭渲染级别（Disabling render levels）
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
 .. code-block:: php
@@ -353,7 +353,7 @@ Or disable temporarily in some part of the application:
     }
 
 选择视图（Picking Views）
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
 the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\\Mvc\\View::pick() method:
 
@@ -379,7 +379,7 @@ the view rendered is the one related with the last controller and action execute
     }
 
 关闭视图（Disabling the view）
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If your controller doesn't produce any output in the view (or not even have one) you may disable the view component
 avoiding unnecessary processing:
 
@@ -425,7 +425,7 @@ You can return a 'response' object to avoid disable the view manually:
     }
 
 简单渲染（Simple Rendering）
-----------------
+----------------------------
 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
 It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
 the main feature of its counterpart.
@@ -495,7 +495,7 @@ To render a view it's necessary to call the render method explicitly indicating 
     }
 
 使用局部模版（Using Partials）
---------------
+------------------------------
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
 parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
@@ -522,7 +522,7 @@ Method partial() does accept a second parameter as an array of variables/paramet
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')) ?>
 
 控制器传值给视图（Transfer values from the controller to views）
---------------------------------------------
+----------------------------------------------------------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
 use that object to set variables directly to the view from a controller action by using the setVar() method.
 
@@ -571,7 +571,7 @@ from a simple string, integer etc. variable to a more complex structure such as 
     </div>
 
 在视图中使用模型（Using models in the view layer）
-------------------------------
+--------------------------------------------------
 Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
 runtime automatically:
 
@@ -591,7 +591,7 @@ Although you may perform model manipulation operations such as insert() or updat
 it is not possible to forward the execution flow to another controller in the case of an error or an exception.
 
 缓存视图片段（Caching View Fragments）
-----------------------
+--------------------------------------
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
 the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
 rendered output to increase performance.
@@ -717,7 +717,7 @@ expired to make the calculations/queries to display data in the view:
 The `PHP alternative site`_ is an example of implementing the caching of fragments.
 
 模版引擎（Template Engines）
-----------------
+----------------------------
 Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
 called :doc:`Volt <volt>`.
 
@@ -732,7 +732,7 @@ still possible to access the API inside these templates with a little more effor
 This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
 
 创建模版引擎（Creating your own Template Engine Adapter）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
 A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
@@ -783,7 +783,7 @@ when it's necessary.
     }
 
 替换模版引擎（Changing the Template Engine）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can replace or add more a template engine from the controller as follows:
 
 .. code-block:: php
@@ -848,7 +848,7 @@ If you want to register a template engine or a set of them for each request in t
 There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
 
 注入服务到视图（Injecting services in View）
---------------------------
+--------------------------------------------
 Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
 to the application's service container.
 
@@ -869,11 +869,11 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
     </script>
 
 独立的组件（Stand-Alone Component）
----------------------
+-----------------------------------
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
-Hierarchical Rendering
-^^^^^^^^^^^^^^^^^^^^^^
+分层渲染（Hierarchical Rendering）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below
 
 .. code-block:: php
@@ -921,7 +921,7 @@ A short syntax is also available:
     );
 
 简单渲染（Simple Rendering）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
 
 .. code-block:: php
@@ -943,7 +943,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
     ));
 
 视图事件（View Events）
------------
+-----------------------
 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
 events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning
 boolean false could stop the active operation. The following events are supported:
