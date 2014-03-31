@@ -374,8 +374,8 @@ This will generate the following select tag with the value "Blue" selected:
 A special feature that the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` helpers have is that they keep the values
 of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
-Specifying values directly
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+直接设置值（Specifying values directly）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Every form helper supports the parameter "value". With it you can specify a value for the helper directly.
 When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
@@ -432,7 +432,7 @@ The following HTML will generated:
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
 
 图片（Images）
-^^^^^^
+^^^^^^^^^^^^^^
 .. code-block:: php
 
     <?php

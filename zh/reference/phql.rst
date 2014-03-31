@@ -1,5 +1,5 @@
 Phalcon 查询语言（Phalcon Query Language (PHQL)）
-=============================
+=================================================
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
 standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
@@ -18,7 +18,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
 范例（Usage Example）
--------------
+---------------------
 To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
 
 .. code-block:: php
@@ -87,7 +87,7 @@ And every Car has a Brand, so a Brand has many Cars:
     }
 
 创建 PHQL 查询（Creating PHQL Queries）
----------------------
+---------------------------------------
 PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
 
 .. code-block:: php
@@ -131,7 +131,7 @@ Or simply execute it:
     ));
 
 选取记录（Selecting Records）
------------------
+-----------------------------
 As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
 .. code-block:: php
@@ -167,7 +167,7 @@ Most of the SQL standard is supported by PHQL, even nonstandard directives as LI
     $query = $manager->createQuery($phql);
 
 结果类型（Result Types）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
 a :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This kind of resultset is a set of complete model objects:
 
@@ -246,7 +246,7 @@ This allows access to both complete objects and scalars at once:
 Scalars are mapped as properties of each "row", while complete objects are mapped as properties with the name of its related model.
 
 连接（Joins）
-^^^^^
+^^^^^^^^^^^^^
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined
 relationships in the models, PHQL adds these conditions automatically:
 
@@ -334,7 +334,7 @@ This code produces the following SQL in MySQL:
     WHERE `artists`.`genre` = 'Trip-Hop'
 
 聚合（Aggregations）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 The following examples show how to use aggregations in PHQL:
 
 .. code-block:: php
@@ -374,7 +374,7 @@ The following examples show how to use aggregations in PHQL:
     }
 
 条件（Conditions）
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 Conditions allow us to filter the set of records we want to query. The WHERE clause allows to do that:
 
 .. code-block:: php
@@ -423,7 +423,7 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
 
 
 插入数据（Inserting Data）
---------------
+--------------------------
 With PHQL it's possible to insert data using the familiar INSERT statement:
 
 .. code-block:: php
@@ -494,7 +494,7 @@ because the price does not meet the business rule that we implemented:
     }
 
 更新数据（Updating Data）
--------------
+-------------------------
 Updating rows is very similar than inserting rows. As you may know, the instruction to
 update records is UPDATE. When a record is updated the events related to the update operation
 will be executed for each row.
@@ -560,7 +560,7 @@ is somewhat equivalent to:
     $success = $process();
 
 删除数据（Deleting Data）
--------------
+-------------------------
 When a record is deleted the events related to the delete operation will be executed for each row:
 
 .. code-block:: php
@@ -588,7 +588,7 @@ When a record is deleted the events related to the delete operation will be exec
 DELETE operations are also executed in two phases like UPDATEs.
 
 使用查询构建器创建查询（Creating queries using the Query Builder）
-----------------------------------------
+------------------------------------------------------------------
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
 .. code-block:: php
@@ -745,7 +745,7 @@ More examples of the builder:
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
 
 绑定参数（Bound Parameters）
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
 .. code-block:: php
@@ -769,7 +769,7 @@ Bound parameters in the query builder can be set as the query is constructed or 
         ->execute(array('name' => $name, 'type' => $type));
 
 禁止使用字面值（Disallow literals in PHQL）
--------------------------
+-------------------------------------------
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings
 will be disallowed. If PHQL statements are created embedding external data on them, this could open the application
 to potential SQL injections:
@@ -815,7 +815,7 @@ Bound parameters can be used even if literals are allowed or not. Disallowing th
 another security decision a developer could take in web applications.
 
 转义保留字（Escaping Reserved Words）
------------------------
+-------------------------------------
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those
 words using the cross-database escaping delimiters '[' and ']':
 
@@ -831,8 +831,8 @@ words using the cross-database escaping delimiters '[' and ']':
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
-PHQL Lifecycle
---------------
+PHQL 生命周期（PHQL Lifecycle）
+-------------------------------
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs.
 The following is the life cycle of each PHQL statement executed:
 
@@ -841,7 +841,7 @@ The following is the life cycle of each PHQL statement executed:
 * PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
 使用原生 SQL（Using Raw SQL）
--------------
+-----------------------------
 A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 .. code-block:: php
@@ -897,7 +897,7 @@ The above findByRawSql could be used as follows:
     $robots = Robots::findByRawSql('id > ?', array(10));
 
 注意事项（Troubleshooting）
----------------
+---------------------------
 Some things to keep in mind when using PHQL:
 
 * Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
