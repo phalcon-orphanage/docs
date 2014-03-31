@@ -331,7 +331,7 @@ The core of all the work of the controller occurs when handle() is invoked:
     echo $application->handle()->getContent();
 
 Manual bootstrapping
--------------------
+--------------------
 If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
 
 .. code-block:: php

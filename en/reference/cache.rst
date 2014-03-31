@@ -385,7 +385,7 @@ This backend will store cached content on a memcached server. The available opti
 +------------+-------------------------------------------------------------+
 | port       | memcached port                                              |
 +------------+-------------------------------------------------------------+
-| persistent | create a persistent connection to memcached?                 |
+| persistent | create a persistent connection to memcached?                |
 +------------+-------------------------------------------------------------+
 
 APC Backend Options

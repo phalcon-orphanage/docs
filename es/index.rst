@@ -3,7 +3,7 @@ Bienvenido!
 ===========
 
 Phalcon es una nueva alternativa en frameworks para PHP. Nuestra misión es proporcionarte una herramienta avanzada para desarrollar
-sitios y aplicaciones web sin preocuparte por el rendimiento.
+sitios y aplicaciones web sin preocuparte por el rendimiento del framework.
 
 ¿Qué es Phalcon?
 ----------------
