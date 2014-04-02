@@ -597,7 +597,7 @@ Public свойства и Setters/Getters
 
         public function getStatus()
         {
-            return explode(',', $this->status)
+            return explode(',', $this->status);
         }
 
     }
