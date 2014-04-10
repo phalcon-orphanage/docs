@@ -1,7 +1,7 @@
 Witaj!
 ======
 
-Witamy we Phalconie, zupełnie nowym podejściu do frameworków PHP. Naszym celem jest danie Ci zaawansowanego
+Witamy w Phalconie, zupełnie nowym podejściu do frameworków PHP. Naszym celem jest danie Ci zaawansowanego
 narzędzia potrzebnego do tworzenia stron i aplikacji internetowych bez przejmowania się problemami wydajności.
 
 Czym jest Phalcon?
