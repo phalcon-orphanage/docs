@@ -188,7 +188,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'PhalconDocumentation.tex', 'Phalcon Framework Documentation',
+  ('index', 'PhalconDocumentation.tex', 'Phalcon PHP Framework Documentation',
    'Phalcon Team', 'manual'),
 ]
 
