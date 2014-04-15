@@ -358,9 +358,9 @@ Public свойства и Setters/Getters
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | shared_lock | С этой опцией, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` читает последние доступные данные, устанавливает общие блокировки на каждую прочтенную запись                                             | "shared_lock" => true                                                   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Кэширует результаты, уменьшая нагрузку на реляционну систему.                                                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
+| cache       | Кэширует результаты, уменьшая нагрузку на реляционную систему.                                                                                                                                                  | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                    | "hydration" => Resultset::HYDRATE_OBJECTS                               |
+| hydration   | Устанавливает режим гидратации для представления каждой записи в результате                                                                                                                                   | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 Существует еще один вариант записи запросов поиска, в объектно-ориентированном стиле:
@@ -1198,10 +1198,9 @@ The above code set up to delete all the referenced records (parts) if the master
     // What is the lowest salary of all employees?
     $salary = Employees::minimum(array("column" => "salary"));
 
-Hydration ModesHydration Modes
+Режимы гидратации
 ------------------------------
-As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified and saved again to persistence:
+Как упоминалось выше, результирующие данные являются наборами комплексных объектов, это означает, что каждый возвращенный результат является объектом, представляющим собой строку в базе данных. Эти объекты могут быть изменены и сохранены снова : 
 
 .. code-block:: php
 
@@ -1213,9 +1212,7 @@ representing a row in the database. These objects can be modified and saved agai
         $robot->save();
     }
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
-to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
-returned in a resultset is called 'hydration mode':
+Иногда записи могут быть представлены пользователю в режиме только для чтения, это может быть полезно, чтобы изменить способ, в котором записи представлены для облегчения их обработки. Способ, используемый для представления объектов, возвращаемых в наборе результатов называется ' режим гидратации ':
 
 .. code-block:: php
 
@@ -1225,28 +1222,28 @@ returned in a resultset is called 'hydration mode':
 
     $robots = Robots::find();
 
-    //Return every robot as an array
+    //Вернёт каждого робота в виде массива
     $robots->setHydrateMode(Resultset::HYDRATE_ARRAYS);
 
     foreach ($robots as $robot) {
         echo $robot['year'], PHP_EOL;
     }
 
-    //Return every robot as an stdClass
+    //Вернёт каждого робота в stdClass
     $robots->setHydrateMode(Resultset::HYDRATE_OBJECTS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-    //Return every robot as a Robots instance
+    //Вернёт каждого робота как экземпляр объекта Robots
     $robots->setHydrateMode(Resultset::HYDRATE_RECORDS);
 
     foreach ($robots as $robot) {
         echo $robot->year, PHP_EOL;
     }
 
-Hydration mode can also be passed as a parameter of 'find':
+Режим гидратации также может быть передан в качестве параметра в 'find':
 
 .. code-block:: php
 
