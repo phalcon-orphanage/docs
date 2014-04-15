@@ -1,28 +1,28 @@
-Installation
+Instalacja
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+Rozszerzenia PHP wymagają nieco innej metody instalacji niż tradycyjna biblioteka PHP lub framework. 
+Możesz pobrać pakiet binarny dla wybranego przez siebie systemu lub skompilować go ze źródeł.
 
 Windows
 -------
-To use phalcon on Windows you can download_ a DLL library. Edit your php.ini file and then append at the end:
+Aby korzystać z Phalcon na systemie Windows możesz pobrać bibliotekę DLL. Edytuj swój plik php.ini i dodaj na jego końcu:
 
 .. code-block:: bash
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+Zrestartuj swój serwer.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+Poniższy filmik jest przewodnikiem "krok po kroku" jak zainstalować Phalcon na systemie Windows:
 
 .. raw:: html
 
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
 
-If you don't know what DLL to download, use the following script_ to figure it out.
+Jeżeli nie wiesz którą bibliotekę pobrać, use the following script_ to figure it out.
 
-Related Guides
+Powiązane Przewodniki
 ^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
@@ -32,17 +32,17 @@ Related Guides
 
 Linux/Solaris
 -------------
-On a Linux/Solaris system you can easily compile and install the extension from the source code:
+Na systemach Linux/Solaris/Mac możesz w łatwy sposób skompilować i zainstalować rozszerzenie z kodu źródłowego:
 
-Requirements
+Wymagania
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Wstępnie wymagane pakiety:
 
-* PHP >= 5.3 development resources
-* GCC compiler (Linux/Solaris)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* Pliki źródłowe PHP 5.3.x/5.4.x/5.5.x
+* Kompilator GCC (Linux/Solaris) lub Xcode (Mac)
+* Git (jeśli nie jest jeszcze zainstalowany na twoim systemie - chyba ze pobierzesz pakiet z GitHub i prześlesz go na swój serwer przez FTP/SFTP)
 
-Specific packages for common platforms:
+Specyficzne pakiety dla wspólnych platform:
 
 .. code-block:: bash
 
@@ -58,9 +58,9 @@ Specific packages for common platforms:
     #Solaris
     pkg install gcc-45 php-53 apache-php53
 
-Compilation
+Kompilacja
 ^^^^^^^^^^^
-Creating the extension:
+Tworzenie rozszerzenia:
 
 .. code-block:: bash
 
@@ -68,22 +68,22 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php configuration:
+Dodaj rozszerzenie do swojej konfiguracji php:
 
 .. code-block:: bash
 
-    #Suse: Add this line in your php.ini
+    #Suse: Dodaj ta linię do swojego pliku php.ini
     extension=phalcon.so
 
-    #Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    #Centos/RedHat/Fedora: Stwórz plik o nazwie phalcon.ini w /etc/php.d/ z następującą zawartością:
     extension=phalcon.so
 
-    #Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php.d/ with this content:
+    #Ubuntu/Debian: Stwórz plik o nazwie 30-phalcon.ini w /etc/php.d/ z następującą zawartością:
     extension=phalcon.so
 
-Restart the webserver.
+Zrestartuj serwer.
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon automatycznie wykrywa architekturę twojego systemu, możesz jednak wymusić kompilację dla konkretnej architektury:
 
 .. code-block:: bash
 
@@ -92,7 +92,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
     sudo ./install 64bits
     sudo ./install safe
 
-If the automatic installer fails try building the extension manually:
+Jeżeli autoinstalator wyrzuca błąd, spróbuj skompilować rozszerzenie ręcznie:
 
 .. code-block:: bash
 
@@ -103,13 +103,13 @@ If the automatic installer fails try building the extension manually:
 
 Mac OS X
 --------
-On a Mac OS X system you can compile and install the extension from the source code:
+Na systemach Mac OS X możesz skompilować rozszerzenie z kodu źródłowego:
 
-Requirements
+Wymagania
 ^^^^^^^^^^^^
-Prerequisite packages are:
+Wstępnie wymagane pakiety:
 
-* PHP >= 5.3 development resources
+* Pliki źródłowe PHP 5.3.x lub nowsze
 * XCode
 
 .. code-block:: bash
@@ -124,27 +124,27 @@ Prerequisite packages are:
     sudo port install php54-phalcon
     sudo port install php55-phalcon
 
-Add extension to your php configuration:
+Dodaj rozszerzenie do swojej konfiguracji php:
 
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+Dostępny jest port dla Free BSD. Wystarczy tylko użyć tej prostej komendy aby go zainstalować:
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+lub
 
 .. code-block:: bash
 
     export CFLAGS="-O2 --fvisibility=hidden"
     cd /usr/ports/www/phalcon && make install clean
 
-Installation Notes
+Uwagi instalacyjne
 ------------------
-Installation notes for Web Servers:
+Informacje o instalacji dla serwerów WWW:
 
 .. toctree::
     :maxdepth: 1

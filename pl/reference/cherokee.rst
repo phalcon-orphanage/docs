@@ -1,56 +1,57 @@
-Cherokee Installation Notes
+Instalacja na serwerach Cherokee
 ===========================
-Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
+Cherokee_  jest wysoce wydajnym serwerem WWW. Jest bardzo szybki, elastyczny i prosty w konfiguracji.
 
 Configuring Cherokee for Phalcon
 --------------------------------
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
-Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin
+Cherokee oferuje przyjazny interfejs graficzny, aby skonfigurować niemal każde ustawienie dostępne w
+serwerze WWW. Uruchom administratora cherokee wykonując polecenie /ściezka-do-cherokee/sbin/cherokee-admin
+jako root:
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center
 
-Create a new virtual host by clicking on 'vServers', then add a new virtual server:
+Stwórz nowy serwer wirtualny klikając na 'vServers', następnie dodaj nowy serwer wirtualny:
 
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab
-you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button.
-Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+Ostatnio dodany wirtualny serwer musi pojawić się na lewym pasku ekranu. W zakładce 'Behaviors' 
+zobaczysz zestaw domyślnych zachowań dla tego serwera wirtualnego. Kliknij na przycisk 'Rule Management'.
+Usuń te oznaczone jako 'Directory /cherokee_themes' i 'Directory /icons':
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Add the 'PHP Language' behavior using the wizard. This behavior allow you to run PHP applications:
+Dodaj zachowanie 'PHP Language' używając kreatora. To pozwoli ci uruchamiać aplikacje PHP:
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normally this behavior does not require additional settings. Add another behavior,
-this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
-then make sure the option 'Match any file' is enabled:
+Normalnie to zachowanie nie wymaga dodatkowych ustawień. Dodaj kolejne zachowanie, tym razem
+w sekcji 'Manual Configuration'. W 'Rule Type' wybierz 'File Exists', następnie upewnij się że opcja 'Match any file'
+jest włączona:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
-In the 'Handler' tab choose 'List & Send' as handler:
+W zakładce 'Handler' wybierz 'List & Send' jako handler:
 
 .. figure:: ../_static/img/cherokee-7.jpg
     :align: center
 
-Edit the 'Default' behavior in order to enable the URL-rewrite engine. Change the handler to 'Redirection',
-then add the following regular expression to the engine ^(.*)$:
+Edytuj zachowanie 'Default' w celu włączenia przepisywania linków. Zmień handler na 'Redirection', następnie dodaj
+do silnika następujące wyrażenie regularne ^(.*)$:
 
 .. figure:: ../_static/img/cherokee-6.jpg
     :align: center
 
-Finally, make sure the behaviors have the following order:
+Na koniec, upewnij się, że zachowania mają następującą kolejność:
 
 .. figure:: ../_static/img/cherokee-8.jpg
     :align: center
 
-Execute the application in a browser:
+Uruchom aplikację w przeglądarce:
 
 .. figure:: ../_static/img/cherokee-9.jpg
     :align: center
