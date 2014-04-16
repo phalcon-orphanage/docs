@@ -125,9 +125,8 @@ Public свойства и Setters/Getters
 
         public function setName($name)
         {
-            //The name is too short?
             if (strlen($name) < 10) {
-                throw new \InvalidArgumentException('The name is too short');
+                throw new \InvalidArgumentException('Имя слишком короткое');
             }
             $this->name = $name;
         }
@@ -139,16 +138,15 @@ Public свойства и Setters/Getters
 
         public function setPrice($price)
         {
-            //Negative prices aren't allowed
             if ($price < 0) {
-                throw new \InvalidArgumentException('Price can\'t be negative');
+                throw new \InvalidArgumentException('Цена не может быть отрицательной');
             }
             $this->price = $price;
         }
 
         public function getPrice()
         {
-            //Convert the value to double before be used
+            //Преобразование значение в double (формат числа с плавающей запятой), прежде чем использовать
             return (double) $this->price;
         }
     }
@@ -178,9 +176,8 @@ Public свойства и Setters/Getters
 
         public function setName($name)
         {
-            //The name is too short?
             if (strlen($name) < 10) {
-                throw new \InvalidArgumentException('The name is too short');
+                throw new \InvalidArgumentException('Имя слишком короткое');
             }
             $this->name = $name;
         }
@@ -246,7 +243,7 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // Find record with id = 3
+    // Найти запись с id = 3
     $robot = Robots::findFirst(3);
 
     // Печатать "Terminator"
@@ -273,15 +270,15 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // How many robots are there?
+    // Сколько роботов есть?
     $robots = Robots::find();
     echo "There are ", count($robots), "\n";
 
-    // How many mechanical robots are there?
+    // Сколько существует механических роботов?
     $robots = Robots::find("type = 'mechanical'");
     echo "There are ", count($robots), "\n";
 
-    // Get and print virtual robots ordered by name
+    // Получить и распечатать виртуальных роботов упорядоченные по имени
     $robots = Robots::find(array(
         "type = 'virtual'",
         "order" => "name"
@@ -290,7 +287,7 @@ Public свойства и Setters/Getters
         echo $robot->name, "\n";
     }
 
-    // Get first 100 virtual robots ordered by name
+    // Получить первые 100 виртуальных роботов упорядоченных по имени
     $robots = Robots::find(array(
         "type = 'virtual'",
         "order" => "name",
@@ -306,15 +303,15 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // What's the first robot in robots table?
+    // Первый робот в таблице роботов
     $robot = Robots::findFirst();
     echo "The robot name is ", $robot->name, "\n";
 
-    // What's the first mechanical robot in robots table?
+    // Первый  механический робот в таблице роботов
     $robot = Robots::findFirst("type = 'mechanical'");
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
-    // Get first virtual robot ordered by name
+    // Первый  виртуальный робот  упорядоченный по имени в таблице роботов
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
@@ -393,15 +390,15 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // Get all robots
+    // Получить всех роботов
     $robots = Robots::find();
 
-    // Traversing with a foreach
+    // Обход в foreach
     foreach ($robots as $robot) {
         echo $robot->name, "\n";
     }
 
-    // Traversing with a while
+    // Обход в  while
     $robots->rewind();
     while ($robots->valid()) {
         $robot = $robots->current();
@@ -409,28 +406,28 @@ Public свойства и Setters/Getters
         $robots->next();
     }
 
-    // Count the resultset
+    // Посчитать количество роботов
     echo count($robots);
 
-    // Alternative way to count the resultset
+    // Альтернативный способ посчитать количество записей
     echo $robots->count();
 
-    // Move the internal cursor to the third robot
+    // Перемещение внутреннего курсора к третьему роботу
     $robots->seek(2);
     $robot = $robots->current()
 
     // Access a robot by its position in the resultset
     $robot = $robots[5];
 
-    // Check if there is a record in certain position
+    // Доступ робота по его положению в наборе результатов
     if (isset($robots[3]) {
        $robot = $robots[3];
     }
 
-    // Get the first record in the resultset
+    // Получить первую запись в наборе результатов
     $robot = $robots->getFirst();
 
-    // Get the last record
+    // Получить последнюю запись
     $robot = $robots->getLast();
 
 Набор результатов в Phalcon эмулирует перемещение курсора, вы можете получить любую строку указав её позицию или найти внутренний указатель для определенной позиции.
@@ -449,16 +446,16 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // Query all records from model parts
+    // Запрос всех записей из модели Parts
     $parts = Parts::find();
 
-    // Store the resultset into a file
+    // Сериализуем  результат и сохраняем в файл
     file_put_contents("cache.txt", serialize($parts));
 
-    // Get parts from file
+    // Достаём Parts из файла
     $parts = unserialize(file_get_contents("cache.txt"));
 
-    // Traverse the parts
+    // Обходим parts в foreach
     foreach ($parts as $part) {
        echo $part->id;
     }
@@ -472,22 +469,22 @@ Public свойства и Setters/Getters
 
     <?php
 
-    // Query robots binding parameters with string placeholders
+    // Запрос роботов с  связывающими параметрами с строковыми заполнителями
     $conditions = "name = :name: AND type = :type:";
 
-    //Parameters whose keys are the same as placeholders
+    //Параметры с ключом, названия которого идентично заполнителю
     $parameters = array(
         "name" => "Robotina",
         "type" => "maid"
     );
 
-    //Perform the query
+    //Выполнение запроса
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
     ));
 
-    // Query robots binding parameters with integer placeholders
+    // Запрос роботов с  связывающими параметрами с числовыми заполнителями
     $conditions = "name = ?1 AND type = ?2";
     $parameters = array(1 => "Robotina", 2 => "maid");
     $robots     = Robots::find(array(
@@ -495,16 +492,16 @@ Public свойства и Setters/Getters
         "bind" => $parameters
     ));
 
-    // Query robots binding parameters with both string and integer placeholders
+    // Запрос роботов с  связывающими параметрами с строковыми и числовыми заполнителями
     $conditions = "name = :name: AND type = ?1";
 
-    //Parameters whose keys are the same as placeholders
+    //Параметры с ключом, номер или название которого идентично заполнителям
     $parameters = array(
         "name" => "Robotina",
         1 => "maid"
     );
 
-    //Perform the query
+    //Выполнение запроса
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -513,7 +510,7 @@ Public свойства и Setters/Getters
 При использовании цифровых указателей, необходимо определить их как целые числа, то есть 1 или 2. В этом случае "1" или "2" считаются строками,
 поэтому указатель не может быть успешно заменен. Строки автоматически изолируются используя PDO_.
 Эта функция принимает во внимание кодировку соединения с базой данных, поэтому её рекомендуется определять в параметрах соединения или в конфигурации базы данных,
-неправильная кодировка будет приводить к некорректным хранении и извлечении данных.
+неправильная кодировка будет приводить к некорректному хранению и извлеченюи данных.
 Кроме того, вы можете установить параметр "bindTypes", что позволит определить, каким образом параметры должны быть связаны в соответствии с его типом данных:
 
 .. code-block:: php
@@ -522,19 +519,19 @@ Public свойства и Setters/Getters
 
     use \Phalcon\Db\Column;
 
-    //Bind parameters
+    //Привязка параметров
     $parameters = array(
         "name" => "Robotina",
         "year" => 2008
     );
 
-    //Casting Types
+    //Привязка типов параметров
     $types = array(
         "name" => Column::BIND_PARAM_STR,
         "year" => Column::BIND_PARAM_INT
     );
 
-    // Query robots binding parameters with string placeholders
+    // Запрос роботов с  связывающими параметрами и типами строковых заполнителей
     $robots = Robots::find(array(
         "name = :name: AND year = :year:",
         "bind" => $parameters,
@@ -543,10 +540,7 @@ Public свойства и Setters/Getters
 
 .. highlights::
 
-    Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
-    "bindTypes" parameter if all of the columns are of that type.
-
-Поскольку по умолчанию связывание типа это \\Phalcon\\Db\\Column::BIND_TYPE_STR, нет необходимости указывать "bindTypes" параметр, если все столбцы этого типа.
+    Поскольку тип-связывания по умолчанию \\Phalcon\\Db\\Column::BIND_PARAM_STR, нет необходимости указывать параметр "bindTypes", если все столбцы этого типа.
 
 Привязка параметров доступна для всех запросов метода, таких как find() и findFirst(), а так же для методов count(), sum(), average() и т.д.
 
