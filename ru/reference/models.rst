@@ -605,7 +605,7 @@ Public свойства и Setters/Getters
 Отношения между моделями
 ------------------------
 Существует четыре типа отношений: один-к-одному, один-ко-многим, многие-к-одному и многие-ко-многим.
-Отношения могут быть однонаправленным или двунаправленным, и каждое может быть простым (один модель к одной) или более сложные (комбинация моделей).
+Отношения могут быть однонаправленными или двунаправленными, и каждое может быть простым (один модель к одной) или более сложные (комбинация моделей).
 Модель менеджер управляет ограничением внешних ключей для этих отношений, их определение помогает ссылочной целостности,
 а также обеспечивает легкий и быстрый доступ к соответствующей записи в модели.
 Благодаря реализации отношений, легко получить доступ к данным в связных моделях для любой выбранной записи(-ей).
@@ -667,7 +667,7 @@ Public свойства и Setters/Getters
 * Модель "Robots" имеет несколько "RobotsParts".
 * Модель "Parts" имеет несколько "RobotsParts".
 * Модель "RobotsParts" принадлежит обоим "Robots" и "Parts" моделям как многие-к-одному.
-* The model "Robots" has a relation many-to-many to "Parts" through "RobotsParts"
+* Модель "Robots" имеет отношение многие-ко-многим к "Parts" через "RobotsParts"
 
 Посмотрим EER схему, чтобы лучше понять отношения:
 
@@ -732,7 +732,7 @@ Public свойства и Setters/Getters
 
     }
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+Отношение "многие-ко-многим" требуют 3 модели и определение атрибутов, участвующих в отношениях:
 
 .. code-block:: php
 
@@ -782,7 +782,7 @@ Phalcon использует магические методы __set/__get/__cal
     <?php
 
     $robot = Robots::findFirst();
-    $robotsParts = $robot->robotsParts; // all the related records in RobotsParts
+    $robotsParts = $robot->robotsParts; // все связанные записи с RobotsParts
 
 Кроме того, вы можете использовать магию получателя:
 
@@ -791,8 +791,8 @@ Phalcon использует магические методы __set/__get/__cal
     <?php
 
     $robot = Robots::findFirst();
-    $robotsParts = $robot->getRobotsParts(); // all the related records in RobotsParts
-    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // passing parameters
+    $robotsParts = $robot->getRobotsParts(); // все связанные записи с RobotsParts
+    $robotsParts = $robot->getRobotsParts(array('limit' => 5)); // передача параметров
 
 Если вызываемый метод "get" префикс :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` вернет findFirst()/find().
 В следующем примере сравниваются получение соответствующих результатов с использованием магических методов и без:
@@ -803,14 +803,14 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robot = Robots::findFirst(2);
 
-    // Robots model has a 1-n (hasMany)
-    // relationship to RobotsParts then
+    // Модель Robots имеет отношение один-ко-многим 1-n (hasMany)
+    // Отношение к RobotsParts
     $robotsParts = $robot->robotsParts;
 
-    // Only parts that match conditions
+    // Только которые соответствуют условию
     $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
 
-    // Or using bound parameters
+    // Или используя связанные параметры
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
         "bind" => array("date" => "2012-03-15")
@@ -818,8 +818,8 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robotPart = RobotsParts::findFirst(1);
 
-    // RobotsParts model has a n-1 (belongsTo)
-    // relationship to RobotsParts then
+    // Модель RobotsParts имеет отношение многие-к-одному n-1 (belongsTo)
+    // Отношение к Robots
     $robot = $robotPart->robots;
 
 Получение связанных записей вручную:
@@ -830,19 +830,19 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robot = Robots::findFirst(2);
 
-    // Robots model has a 1-n (hasMany)
-    // relationship to RobotsParts, then
+    // Модель Robots имеет отношение один-ко-многим 1-n (hasMany)
+    // Отношение к  RobotsParts
     $robotsParts = RobotsParts::find("robots_id = '" . $robot->id . "'");
 
-    // Only parts that match conditions
+    // Только которые соответствуют условиям
     $robotsParts = RobotsParts::find(
         "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
     );
 
     $robotPart = RobotsParts::findFirst(1);
 
-    // RobotsParts model has a n-1 (belongsTo)
-    // relationship to RobotsParts then
+    // Модель RobotsParts имеет отношение многие-к-одному n-1 (belongsTo)
+    // Отношениеo к RobotsParts
     $robot = Robots::findFirst("id = '" . $robotPart->robots_id . "'");
 
 
@@ -917,13 +917,13 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Returns the related record based on the column (robots_id)
-    //Also as is a belongsTo it's only returning one record
-    //but the name 'getRobots' seems to imply that return more than one
+    //Возвращает связанную запись на основе столбца (robots_id) 
+    //Потому как имеет отношение belongsTo , это только возвращение одной записи 
+    // но 'getRobots', кажется, подразумевает, что вернётся больше, чем одина запись
     $robot = $robotsSimilar->getRobots();
 
-    //but, how to get the related record based on the column (similar_robots_id)
-    //if both relationships have the same name?
+    //но, как получить соответствующую запись на основании столбца (similar_robots_id)
+    //если оба отношения имеют одно и то же имя?
 
 Алиасы позволяют переименовать оба отношения для решения этих проблем:
 
@@ -954,11 +954,11 @@ Phalcon использует магические методы __set/__get/__cal
 
     $robotsSimilar = RobotsSimilar::findFirst();
 
-    //Returns the related record based on the column (robots_id)
+    //Возвращает связанную запись на основе столбца (robots_id)
     $robot = $robotsSimilar->getRobot();
     $robot = $robotsSimilar->robot;
 
-    //Returns the related record based on the column (similar_robots_id)
+    //Возвращает связанную запись основанную на колонке (similar_robots_id)
     $similarRobot = $robotsSimilar->getSimilarRobot();
     $similarRobot = $robotsSimilar->similarRobot;
 
@@ -983,7 +983,7 @@ Phalcon использует магические методы __set/__get/__cal
         }
 
         /**
-         * Return the related "robots parts"
+         * Вернуться соответствующий "robots parts"
          *
          * @return \RobotsParts[]
          */
@@ -1021,7 +1021,7 @@ Phalcon использует магические методы __set/__get/__cal
 
             $this->belongsTo("parts_id", "Parts", "id", array(
                 "foreignKey" => array(
-                    "message" => "The part_id does not exist on the Parts model"
+                    "message" => "part_id не существует в модели Parts"
                 )
             ));
         }
@@ -1041,17 +1041,16 @@ Phalcon использует магические методы __set/__get/__cal
         {
             $this->hasMany("id", "RobotsParts", "parts_id", array(
                 "foreignKey" => array(
-                    "message" => "The part cannot be deleted because other robots are using it"
+                    "message" => "id не может быть удален, потому что используется в RobotsParts"
                 )
             ));
         }
 
     }
 
-Cascade/Restrict actions
+Cascade/Ограничить действия
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records
-to maintain the integrity of data:
+Отношения, которые действуют в качестве виртуальных внешних ключей по умолчанию ограничивают создание/обновление/удаление записей для поддержания целостности данных:
 
 .. code-block:: php
 
@@ -1059,7 +1058,7 @@ to maintain the integrity of data:
 
     namespace Store\Models;
 
-    use Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model,
         Phalcon\Mvc\Model\Relation;
 
     class Robots extends Model
@@ -1071,7 +1070,7 @@ to maintain the integrity of data:
 
         public function initialize()
         {
-            $this->hasMany('id', 'Store\\Models\Parts', 'robots_id', array(
+            $this->hasMany('id', 'Store\Models\Parts', 'robots_id', array(
                 'foreignKey' => array(
                     'action' => Relation::ACTION_CASCADE
                 )
@@ -1080,7 +1079,7 @@ to maintain the integrity of data:
 
     }
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+Приведенный выше код, удалит все относящиеся записи (parts), если основная запись (parts) удаляется.
 
 Использование Расчетов
 ----------------------
