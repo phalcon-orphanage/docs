@@ -1073,7 +1073,7 @@ Cascade/Ограничить действия
 
     }
 
-Приведенный выше код, удалит все относящиеся записи (parts), если основная запись (parts) удаляется.
+Приведенный выше код, удалит все относящиеся записи (parts), если основная запись (robot) удаляется.
 
 Использование Расчетов
 ----------------------
@@ -1086,28 +1086,28 @@ Cascade/Ограничить действия
 
     <?php
 
-    // How many employees are?
+    // Сколько сотрудников работает?
     $rowcount = Employees::count();
 
-    // How many different areas are assigned to employees?
+    // Сколько уникальных сфер деятельности рабочих?
     $rowcount = Employees::count(array("distinct" => "area"));
 
-    // How many employees are in the Testing area?
+    // Сколько сотрудников работает в сфере тестирования?
     $rowcount = Employees::count("area = 'Testing'");
 
-    // Count employees grouping results by their area
+    // Количество сотрудников сгруппированных по сфере деятельности
     $group = Employees::count(array("group" => "area"));
     foreach ($group as $row) {
-       echo "There are ", $row->rowcount, " in ", $row->area;
+       echo  $row->rowcount , " cотрудников в ", $row->area;
     }
 
-    // Count employees grouping by their area and ordering the result by count
+    // Количество сотрудников сгруппированных по сфере деятельности упорядочено по их количеству
     $group = Employees::count(array(
         "group" => "area",
         "order" => "rowcount"
     ));
 
-    // Avoid SQL injections using bound parameters
+    // Избегайте SQL инъекции, используя связанные параметры
     $group = Employees::count(array(
         "type > ?0"
         "bind" => array($type)
@@ -1119,33 +1119,32 @@ Cascade/Ограничить действия
 
     <?php
 
-    // How much are the salaries of all employees?
+    // Какая заработная плата всех сотрудников?
     $total = Employees::sum(array("column" => "salary"));
 
-    // How much are the salaries of all employees in the Sales area?
+    // Какая заработная плата всех сотруднииков в сфере продаж?
     $total = Employees::sum(array(
         "column"     => "salary",
         "conditions" => "area = 'Sales'"
     ));
 
-    // Generate a grouping of the salaries of each area
+    // Генерирует суммарную заработную плату каждой области
     $group = Employees::sum(array(
         "column" => "salary",
         "group"  => "area"
     ));
     foreach ($group as $row) {
-       echo "The sum of salaries of the ", $row->area, " is ", $row->sumatory;
+       echo "Сумма заработной платы ", $row->area, " составляет ", $row->sumatory;
     }
 
-    // Generate a grouping of the salaries of each area ordering
-    // salaries from higher to lower
+    // Групирует зарплаты каждой сферы деятельности и упорядочивает их от большего к меньшему
     $group = Employees::sum(array(
         "column" => "salary",
         "group"  => "area",
         "order"  => "sumatory DESC"
     ));
 
-    // Avoid SQL injections using bound parameters
+    // Избегайте SQL инъекции, используя связанные параметры
     $group = Employees::sum(array(
         "conditions" => "area > ?0"
         "bind" => array($area)
@@ -1157,16 +1156,16 @@ Cascade/Ограничить действия
 
     <?php
 
-    // What is the average salary for all employees?
+    // Какая средняя зарплата среди всех сотрудников?
     $average = Employees::average(array("column" => "salary"));
 
-    // What is the average salary for the Sales's area employees?
+    // Какая средняя зарплата среди сотрудников сферы продаж?
     $average = Employees::average(array(
         "column" => "salary",
         "conditions" => "area = 'Sales'"
     ));
 
-    // Avoid SQL injections using bound parameters
+    // Избегайте SQL инъекции, используя связанные параметры
     $average = Employees::average(array(
         "column" => "age"
         "conditions" => "area > ?0"
@@ -1179,16 +1178,16 @@ Cascade/Ограничить действия
 
     <?php
 
-    // What is the oldest age of all employees?
+    // Какой максимальный возраст среди всех сотрудников?
     $age = Employees::maximum(array("column" => "age"));
 
-    // What is the oldest of employees from the Sales area?
+    // Какой максимальный возраст среди сотрудников сферы продаж?
     $age = Employees::maximum(array(
         "column" => "age",
         "conditions" => "area = 'Sales'"
     ));
 
-    // What is the lowest salary of all employees?
+    // Какая минимальная зарплата среди сотрудников?
     $salary = Employees::minimum(array("column" => "salary"));
 
 Режимы гидратации
@@ -1199,7 +1198,7 @@ Cascade/Ограничить действия
 
     <?php
 
-    // Manipulating a resultset of complete objects
+    // Изменение и сохранение полученных обектов модели роботов
     foreach (Robots::find() as $robot) {
         $robot->year = 2000;
         $robot->save();
@@ -1252,14 +1251,13 @@ Cascade/Ограничить действия
         echo $robot['year'], PHP_EOL;
     }
 
-Creating Updating/Records
+Создани/Обновление записей
 -------------------------
-The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
-associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
-should be updated or created.
+Метод Phalcon\\Mvc\\Model::save() позволяет создавать/обновлять записи в зависимости от того, существуют ли они уже в таблице, связанной с моделью.
+Метод save вызывает методы  create и update родительского класса :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
+Чтобы это работало, как и ожидалось, необходимо определить первичный ключ в таблице, чтобы определялось, запись должна быть создана или обновлена.
 
-Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
+Также метод выполняет связанные валидаторы, виртуальные внешние ключи и события, которые определены в модели:
 
 .. code-block:: php
 
@@ -1270,17 +1268,16 @@ Also the method executes associated validators, virtual foreign keys and events 
     $robot->name = "Astro Boy";
     $robot->year = 1952;
     if ($robot->save() == false) {
-        echo "Umh, We can't store robots right now: \n";
+        echo "Мы не можем сохранить робота прямо сейчас: \n";
         foreach ($robot->getMessages() as $message) {
             echo $message, "\n";
         }
     } else {
-        echo "Great, a new robot was saved successfully!";
+        echo "Отлично, новый робот был успешно сохранен!";
     }
 
-An array could be passed to "save" to avoid assign every column manually. Phalcon\\Mvc\\Model will check if there are setters implemented for
-the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
-
+В метод “save” может быть передан массив , чтобы избежать назначения каждому столбцу вручную.
+Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры, реализованные для столбцов, для значений переданных в массиве, отдавая приоритет им вместо назначения значений непосредственно свойствам:
 .. code-block:: php
 
     <?php
@@ -1292,8 +1289,7 @@ the columns passed in the array giving priority to them instead of assign direct
         "year" => 1952
     ));
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
-an insecure array without worrying about possible SQL injections:
+Значения назначеные непосредственно через атрибуты или через массив  экранируются /проверяется в соответствии с типом данных атрибута. Таким образом, вы можете передать ненадежный массив, не беспокоясь о возможных SQL инъекциях :
 
 .. code-block:: php
 
@@ -1304,12 +1300,11 @@ an insecure array without worrying about possible SQL injections:
 
 .. highlights::
 
-    Without precautions mass assignment could allow attackers to set any database column’s value. Only use this feature
-    if you want that a user can insert/update every column in the model, even if those fields are not in the submitted
-    form.
+    Без мер предосторожности к переданным данным от пользователей позволяет злоумышленнику установить значение любого столбца 
+    базы данных. Используйте эту функцию, если вы хотите, чтобы пользователь мог добалять/обновлять каждый столбец в модели,
+    даже если этих полей нет в отправленной форме.
 
-You can set an additional parameter in 'save' to set a whitelist of fields that only must taken into account when doing
-the mass assignment:
+Вы можете передать дополнительный параметр в метод 'save', чтобы установить список полей, которые должены быть  прининяты во внимание при выполнении переданных пользователем значний:
 
 .. code-block:: php
 
@@ -1318,7 +1313,7 @@ the mass assignment:
     $robot = new Robots();
     $robot->save($_POST, array('name', 'type'));
 
-Create/Update with Confidence
+Создание/Обновление с уверенностью
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
 could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
