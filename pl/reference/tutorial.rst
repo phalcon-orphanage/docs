@@ -1,19 +1,18 @@
-Tutorial 1: Let's learn by example
+Tutorial 1: Nauczmy się przez przykład
 ==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+W naszym pierwszym tutorialu, przeprowadzimy Cię przez  tworzenie aplikacji z prostym formularzem rejestracyjnym od podstaw. 
+Wyjaśnimy również podstawowe aspekty działania frameworka. Jeżeli jesteś zainteresowany narzędziami do automatycznego generowania kodu, 
+możesz sprawdzić nasze :doc:`developer tools <tools>`.
 
-Checking your installation
+Sprawdzenie instalacji
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
-code snippet below:
+Zakładamy że masz już zainstalowanego Phalcona. Sprawdź wynik funkcji phpinfo() w poszukiwaniu sekcji zawierającej "Phalcon" lub uruchom poniższy kod:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+Rozszerzenie Phalcon powinno pojawić się jako część wyniku:
 
 .. code-block:: php
 
@@ -28,15 +27,15 @@ The Phalcon extension should appear as part of the output:
         [6] => pdo_mysql
     )
 
-Creating a project
+Tworzenie projektu
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+Najlepszym sposobem na skorzystanie z tego tutoriala jest jego śledzenie krok po kroku. Możesz uzyskać kompletny kod `tutaj  <https://github.com/phalcon/tutorial>`_.
 
-File structure
+Struktura plików
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon nie narzuca konkretnej struktury plików do tworzenia aplikacji. Ze względu na fakt, że jest ona dowolna, możesz zaimplementować aplikacje ze strukturą plików, która najbardziej Tobie odpowiada.
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+Na potrzeby tego tutoriala i jako punkt startowy, proponujemy następującą strukturę:
 
 .. code-block:: php
 
@@ -50,13 +49,14 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Zauważ, że nie potrzebujesz żadnych folderów "bibliotek" związanych z Phalconem. Framework jest dostępny w pamięci, gotowy do użycia.
 
-Beautiful URLs
+Przyjazne URLe
 ^^^^^^^^^^^^^^
-We'll use pretty (friendly) URLs for this tutorial. Friendly URLs are better for SEO as well as being easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easily develop without them.
+W tym tutorialu użyjemy ładnych (przyjaznych) URLi. Przyjazne URLe są lepsze dla SEO, jak również łatwe do zapamiętania dla użytkowników. Phalcon obsługuje moduły przepisywania dostarczone przez najbardziej popularne serwery WWW. 
+Korzystanie przez Twoją aplikację z przyjaznych URLi nie jest obowiązkowe i możesz równie dobrze programować bez nich.
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /tutorial/.htaccess file:
+W tym przykładzie użyjemy modułu przepisywania dla Apache. Stwórzmy kilka reguł przepisywania w pliku /tutorial/.htaccess:
 
 .. code-block:: apacheconf
 
@@ -67,9 +67,9 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus eliminates security threats of this kind.
+Wszystkie żądania do projektu zostaną przepisane do folderu public/ czyniąc go głównym folderem. Ten etap zapewnia ukrycie wewnętrznych folderów projektu od widoku publicznego, eliminując różnego typu zagrożenia bezpieczeństwa.
 
-The second set of rules will check if the requested file exists and, if it does, it doesn't have to be rewritten by the web server module:
+Drugi zestaw reguł sprawdzi czy żądany plik istnieje i, jeśli istnieje, nie musi być przepisany przez moduł serwera:
 
 .. code-block:: apacheconf
 
@@ -83,9 +83,9 @@ The second set of rules will check if the requested file exists and, if it does,
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Pierwszym plikiem, który musisz stworzyć jest plik Bootstrap. Ten plik jest bardzo ważny; ponieważ służy jako baza Twojej aplikacji, dając Ci kontrolę nad wszystkimi jego aspektami. W tym pliku możesz zaimplementować inicjalizację komponentów, jak również zachowań aplikacji.
 
-The tutorial/public/index.php file should look like:
+Plik tutorial/public/index.php powinien wyglądać następująco:
 
 .. code-block:: php
 
@@ -126,11 +126,12 @@ The tutorial/public/index.php file should look like:
          echo "PhalconException: ", $e->getMessage();
     }
 
-Autoloaders
+Autoloadery
 ^^^^^^^^^^^
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component Phalcon\\Loader.
+Pierwszą częścią, którą znajdziemy w naszym pliku bootstrap jest rejestracja autoloadera. Autoloader ten będzie użyty do załadowania klas w aplikacji jako kontrolery i modele. Na przykład, możemy zarejestrować jeden lub więcej folderów kontrolerów, zwiększając elastyczność aplikacji. 
+W naszym przykładzie użyliśmy komponentu Phalcon\\Loader.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+Dzięki niemu, możemy załadować klasy z zastosowaniem różnych strategii, jednak w tym przykładzie zdecydowaliśmy się zlokalizować klasy w oparciu o predefiniowane katalogi:
 
 .. code-block:: php
 
@@ -144,9 +145,9 @@ With it, we can load classes using various strategies but for this example we ha
         )
     )->register();
 
-Dependency Management
+Zarządzanie zależnościami
 ^^^^^^^^^^^^^^^^^^^^^
-A very important concept that must be understood when working with Phalcon is its :doc:`dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+Bardzo ważnym pojęciem, które musi być zrozumiane podczas pracy z Phalconem jest jego :doc:`dependency injection container <di>`. Może to brzmieć bardzo skomplikowanie, ale jest bardzo proste i praktyczne. 
 
 A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, Phalcon\\DI acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
@@ -154,7 +155,7 @@ A service container is a bag where we globally store the services that our appli
 
     <?php
 
-    //Create a DI
+    //Stwórz DI
     $di = new Phalcon\DI\FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
