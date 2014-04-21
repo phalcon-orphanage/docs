@@ -1,42 +1,41 @@
-Framework Benchmarks
+Porównanie Frameworków
 ====================
-In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
-able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
-became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
-have a positive impact on a website.
+W przeszłości, wydajność nie była jednym z głównych priorytetów podczas tworzenia aplikacji internetowych. Rozsądny sprzęt był ją w stanie zrekompensować.
+Jednak, gdy Google  decided_ to, że czas ładowania strony będzie miał wpływ na jej pozycję w rankingach wyszukiwań, wydajność stała się jednym z głównych priorytetów, tuż obok funkcjonalności. 
+Jest to kolejny sposób, w którym poprawa wydajności strony ma pozytywny wpływ na stronę internetową.
 
-The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
-are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
+Benchmarki poniżej pokazują jak efektywny jest Phalcon w porównaniu z innymi, tradycyjnymi frameworkami PHP. 
+Benchmarki te są aktualizowane, gdy  tylko wydawane są stabilne wersje wspomnianych frameworków lub Phalcona.
 
-We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
-or comments please `write us`_. `Check out source at Github`_
 
-What was the test environment?
+Zachęcamy programistów do klonowania pakietów testowych, których używamy do naszych benchmarków. 
+Jeżeli masz jakiekolwiek dodatkowe optymalizacje lub komentarze, prosimy  `write us`_. `Check out source at Github`_
+
+Jakie było środowisko testowe?
 ------------------------------
-APC_ intermediate code cache was enabled for all frameworks. Any Apache mod-rewrite feature was disabled when possible
-to avoid potentially additional overheads.
+APC_ intermediate cachowanie kodu było włączone dla wszystkich frameworków. Funkcje przepisywania linków Apache zostały wyłączone, aby uniknąć potencjalnych różnic .
 
-The testing hardware environment is as follows:
+Testowe środowisko sprzętowe jest następujące:
 
-* Operating System: Mac OS X Lion 10.7.4
-* Web Server: Apache httpd 2.2.22
+* System Operacyjny: Mac OS X Lion 10.7.4
+* Serwer WWW: Apache httpd 2.2.22
 * PHP: 5.3.15
 * CPU: 2.04 Ghz Intel Core i5
-* Main Memory: 4GB 1333 MHz DDR3
-* Hard Drive: 500GB SATA Disk
+* Pamięć RAM: 4GB 1333 MHz DDR3
+* Dysk Twardy: 500GB SATA Disk
 
-*PHP version and info:*
+*Wersja PHP i phpinfo():*
 
 .. figure:: ../_static/img/bench-4.png
     :align: center
 
-*APC settings:*
+*Ustawienia APC:*
 
 .. figure:: ../_static/img/bench-5.png
     :align: center
 
 
-List of Benchmarks
+Lista Benchmarków
 ------------------
 .. toctree::
    :maxdepth: 1
@@ -44,24 +43,24 @@ List of Benchmarks
    benchmark/hello-world
    benchmark/micro
 
-ChangeLog
+Historia Zmian
 ---------
 .. versionadded:: 1.0
-    Update Mar-20-2012: Benchmarks redone changing the apc.stat setting to Off. More Info
+    Aktualizacja 20 Marca 2012: Benchmarks redone changing the apc.stat setting to Off. More Info
 
 .. versionchanged:: 1.1
-    Update May-13-2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
+    Aktualizacja 13 Maja 2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.
 
 .. versionchanged:: 1.2
-    Update May-20-2012: Fuel framework was added to benchmarks.
+    Aktualizacja 20 Maja 2012: Dodano Fuel Framework.
 
 .. versionchanged:: 1.3
-    Update Jun-4-2012: Cake framework was added to benchmarks. It is not however present in the graphics, since it takes  30 seconds to run only 10 of 1000.
+    Aktualizacja 4 Czerwca 2012: Dodano Cake Framework. Jednakże nie jest obecny w zestawieniach, gdyż przez 30 sekund zdołał przetworzyć 10 z 1000 zapytań...
 
 .. versionchanged:: 1.4
-    Update Ago-27-2012: PHP updated to 5.3.15, APC updated to 3.1.11, Yii updated to 1.1.12, Phalcon updated to 0.5.0, Added Laravel, OS updated to Mac OS X Lion. Hardware upgraded.
+    Aktualizacja 27 Sierpnia 2012: PHP zaktualizowany do 5.3.15, APC zaktualizowany do 3.1.11, Yii  zaktualizowany do 1.1.12, Phalcon zaktualizowany do 0.5.0, Dodano Laravel, OS zaktualizowany do Mac OS X Lion. Uaktualnienie Hardware.
 
-External Resources
+Źródła Zewnętrzne
 ------------------
 * `For Impatient Web Users, an Eye Blink Is Just Too Long to Wait <http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&_r=0>`_
 * `Millionaires performance cases: Impact of performance <https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance>`_
