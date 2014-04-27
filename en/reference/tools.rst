@@ -319,8 +319,6 @@ The scaffold generator will build several files in your application, along with 
 +----------------------------------------+--------------------------------+
 | app/views/products/search.phtml        | View for the action "search"   |
 +----------------------------------------+--------------------------------+
-| app/views/products/edit.phtml          | View for the action "edit"     |
-+----------------------------------------+--------------------------------+
 
 When browsing the recently generated controller, you will see a search form and a link to create a new Product:
 
