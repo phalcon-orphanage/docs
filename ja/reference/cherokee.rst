@@ -1,56 +1,57 @@
 Cherokee インストール ノート
 ===========================
-Cherokee_ is a high-performance web server. It is very fast, flexible and easy to configure.
+Cherokee_ はハイパフォーマンスWebサーバです。早く、フレキシブルで設定も簡単です。
 
 PhalconのためのCherokeeの設定
 --------------------------------
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
-Start the cherokee administrator by executing with root /path-to-cherokee/sbin/cherokee-admin
+Cherokee はWebサーバで設定可能なほぼ全ての設定を構成するための、使いやすいグラフィカルインターフェースを提供します。
+Cherokeeの管理者はrootで/path-to-cherokee/sbin/cherokee-admin を実行して始めてください。
 
 .. figure:: ../_static/img/cherokee-1.jpg
     :align: center
 
+新しいバーチャルホストの作成は、'vServers'をクリックして、新しいバーチャルサーバを追加してください:
 Create a new virtual host by clicking on 'vServers', then add a new virtual server:
 
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab
-you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button.
-Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+の追加したばかりのバーチャルサーバは画面左端のバーに表示されます。
+'Behaviors' タブにこのバーチャルサーバのデフォルトのbehaviorセットが表示されます。
+'Rule Management' ボタンをクリックします。'Directory /cherokee_themes' と 'Directory /icons' ラベルを削除します。:
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
 
-Add the 'PHP Language' behavior using the wizard. This behavior allow you to run PHP applications:
+ウィザードを使用して、'PHP Language' behaviorを追加します。このbehaviorはPHPアプリケーションを実行できるようにします。
 
 .. figure:: ../_static/img/cherokee-4.jpg
     :align: center
 
-Normally this behavior does not require additional settings. Add another behavior,
-this time in the 'Manual Configuration' section. In 'Rule Type' choose 'File Exists',
-then make sure the option 'Match any file' is enabled:
+通常このbehaviorは、追加の設定は必要ありません。
+別のbehavior、今回は'Manual Configuraion'セクション、を追加します。
+'Rule Type' で 'File Exists' を選択し、'Match any file' オプションが有効になっていることを確認してください。:
 
 .. figure:: ../_static/img/cherokee-55.jpg
     :align: center
 
-In the 'Handler' tab choose 'List & Send' as handler:
+'Handler' タブで handlerを 'List & Send' で選びます:
 
 .. figure:: ../_static/img/cherokee-7.jpg
     :align: center
 
-Edit the 'Default' behavior in order to enable the URL-rewrite engine. Change the handler to 'Redirection',
-then add the following regular expression to the engine ^(.*)$:
+URL-rewriteエンジンを有効にするために、'Default' の behaviorを編集します。
+handlerを'Redirection'に変更し、^(.*)$ を regular expressionに追加します。
 
 .. figure:: ../_static/img/cherokee-6.jpg
     :align: center
 
-Finally, make sure the behaviors have the following order:
+最後に、behaviorが次の順番になっていることを確認してください:
 
 .. figure:: ../_static/img/cherokee-8.jpg
     :align: center
 
-Execute the application in a browser:
+ブラウザでアプリケーションを実行します:
 
 .. figure:: ../_static/img/cherokee-9.jpg
     :align: center
