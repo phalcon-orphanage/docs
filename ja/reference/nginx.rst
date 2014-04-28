@@ -1,20 +1,20 @@
 Nginx インストール ノート
 ========================
-Nginx_ is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike
-traditional servers, Nginx_ doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven
-(asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+Nginx_ は無料でオープンソースな高性能HTTPサーバで、リバースプロキシとしてだけでなく、IMAP/POP3のプロキシサーバとしても動きます。
+伝統的なサーバとは異なり、Nginx_ は要求を処理するスレッドに依存しません。
+その代わりに、はるかに拡張性の高いイベント駆動型（非同期）アーキテクチャを使用しています。
+このアーキテクチャは、使用メモリが少ないのですが、より重要なのは、負荷の下でもメモリ消費量が予測可能だということです。
 
-The `PHP-FPM`_ (FastCGI Process Manager) is usually used to allow Nginx_ to process PHP files. Nowadays, `PHP-FPM`_ is
-bundled with any Unix PHP distribution. Phalcon + Nginx_ + `PHP-FPM`_ provides a powerful set of tools that offer
-maximum performance for your PHP applications.
+`PHP-FRM`_ (FastCGI Process Manager) は Nginx_ がPHPファイルを処理できるようにするために、通常使われます。
+最近、`PHP-FPM`_ はいくつかのUNIXのPHPのディストリビューションにバンドルされています。Phalcon + Nginx_ + `PHP-FPM`_ は、PHPアプリケーションのための最大のパフォーマンスを提供する協力なツールセットになります。
 
 PhalconのためのNginxの設定
 -----------------------------
-The following are potential configurations you can use to setup nginx with Phalcon:
+以下は、Phalconをnginxで使用できるようにする設定です。
 
 基本的な設定
 ^^^^^^^^^^^^^^^^^^^
-Using $_GET['_url'] as source of URIs:
+$_GET['_url'] をURIsとする場合:
 
 .. code-block:: nginx
 
@@ -54,7 +54,7 @@ Using $_GET['_url'] as source of URIs:
         }
     }
 
-Using $_SERVER['REQUEST_URI'] as source of URIs:
+$_SERVER['REQUEST_URI'] をURIsとする場合:
 
 .. code-block:: nginx
 
@@ -89,7 +89,7 @@ Using $_SERVER['REQUEST_URI'] as source of URIs:
         }
     }
 
-Dedicated Instance
+専用インスタンス
 ^^^^^^^^^^^^^^^^^^
 .. code-block:: nginx
 
@@ -139,7 +139,7 @@ Dedicated Instance
 
 ホスト毎の設定
 ^^^^^^^^^^^^^^^^^^^^^
-And this second configuration allow you to have different configurations by host:
+ホスト毎に違う設定を持つことができて2番目に設定する場合
 
 .. code-block:: nginx
 
