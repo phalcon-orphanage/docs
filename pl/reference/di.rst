@@ -223,7 +223,7 @@ Now, let's imagine that we must implement two methods in the component, the firs
     $some->someDbTask();
 
     //Here, we always pass a new connection as parameter
-    $some->someOtherDbTask(Registry::getConnection());
+    $some->someOtherDbTask(Registry::getNewConnection());
 
 So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead
 of creating them internally in the code makes our application more maintainable and decoupled. However, in the long-term,
