@@ -224,7 +224,7 @@ el segundo siempre debe usar una conexión existente.
     $some->someDbTask();
 
     //Aquí, pasamos una nueva conexión
-    $some->someOtherDbTask(Registry::getConnection());
+    $some->someOtherDbTask(Registry::getNewConnection());
 
 Hasta aquí hemos visto como inyectar dependencias en los componentes soluciona nuestros problemas.
 Pasar dependencias como argumentos en vez de crearlos internamente hace nuestra aplicación más mantenible y
