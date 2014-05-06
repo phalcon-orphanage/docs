@@ -186,7 +186,7 @@ Templates are views that can be used to share common view code. They act as cont
 
 .. code-block:: html+php
 
-    <!-- app/views/layouts/posts/last.phtml -->
+    <!-- app/views/posts/last.phtml -->
 
     <article>
         <h2>This is a title</h2>
@@ -224,7 +224,7 @@ The final output will be the following:
 
                 <h1>Blog Title</h1>
 
-                <!-- app/views/layouts/posts/last.phtml -->
+                <!-- app/views/posts/last.phtml -->
 
                 <article>
                     <h2>This is a title</h2>
