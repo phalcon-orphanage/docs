@@ -45,7 +45,7 @@ Returns an internal model name on which the criteria will be applied
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **bind** (*string* $bindParams)
+public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **bind** (*array* $bindParams)
 
 Sets the bound parameters in the criteria This method replaces all previously set bound parameters
 
