@@ -76,11 +76,11 @@ Assigns default values to generated tags by helpers
 
     <?php
 
-     //Assigning "peter" to "name" component
-     Phalcon\Tag::setDefault("name", "peter");
+    //Assigning "peter" to "name" component
+    Phalcon\Tag::setDefault("name", "peter");
     
-     //Later in the view
-     echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
+    //Later in the view
+    echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
 
@@ -93,11 +93,11 @@ Assigns default values to generated tags by helpers
 
     <?php
 
-     //Assigning "peter" to "name" component
-     Phalcon\Tag::setDefaults(array("name" => "peter"));
+    //Assigning "peter" to "name" component
+    Phalcon\Tag::setDefaults(array("name" => "peter"));
     
-     //Later in the view
-     echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
+    //Later in the view
+    echo Phalcon\Tag::textField("name"); //Will have the value "peter" by default
 
 
 
@@ -258,7 +258,7 @@ Builds a HTML input[type="password"] tag
 
     <?php
 
-     echo Phalcon\Tag::passwordField(array("name", "size" => 30));
+    echo Phalcon\Tag::passwordField(array("name", "size" => 30));
 
 
 
@@ -271,7 +271,7 @@ Builds a HTML input[type="hidden"] tag
 
     <?php
 
-     echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"));
+    echo Phalcon\Tag::hiddenField(array("name", "value" => "mike"));
 
 
 
@@ -302,7 +302,7 @@ Builds a HTML input[type="file"] tag
 
     <?php
 
-     echo Phalcon\Tag::fileField("file");
+    echo Phalcon\Tag::fileField("file");
 
 
 
@@ -315,7 +315,7 @@ Builds a HTML input[type="check"] tag
 
     <?php
 
-     echo Phalcon\Tag::checkField(array("terms", "value" => "Y"));
+    echo Phalcon\Tag::checkField(array("terms", "value" => "Y"));
 
 
 
@@ -328,15 +328,10 @@ Builds a HTML input[type="radio"] tag
 
     <?php
 
-     echo Phalcon\Tag::radioField(array("wheather", "value" => "hot"))
+    echo Phalcon\Tag::radioField(array("wheather", "value" => "hot"))
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ radio_field('Save') }}
+    //Volt syntax
+    {{ radio_field('Save') }}
 
 
 
@@ -349,15 +344,10 @@ Builds a HTML input[type="image"] tag
 
     <?php
 
-     echo Phalcon\Tag::imageInput(array("src" => "/img/button.png"));
+    echo Phalcon\Tag::imageInput(array("src" => "/img/button.png"));
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ image_input('src': '/img/button.png') }}
+    //Volt syntax
+    {{ image_input('src': '/img/button.png') }}
 
 
 
@@ -370,15 +360,10 @@ Builds a HTML input[type="submit"] tag
 
     <?php
 
-     echo Phalcon\Tag::submitButton("Save")
+    echo Phalcon\Tag::submitButton("Save")
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ submit_button('Save') }}
+    //Volt syntax
+    {{ submit_button('Save') }}
 
 
 
@@ -410,13 +395,8 @@ Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
     	"using" => array("id", "name")
      	));
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ select("robotId", robots, "using": ["id", "name"]) }}
+    //Volt syntax
+    {{ select("robotId", robots, "using": ["id", "name"]) }}
 
 
 
@@ -429,15 +409,10 @@ Builds a HTML TEXTAREA tag
 
     <?php
 
-     echo Phalcon\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
+    echo Phalcon\Tag::textArea(array("comments", "cols" => 10, "rows" => 4))
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ text_area("comments", "cols": 10, "rows": 4) }}
+    //Volt syntax
+    {{ text_area("comments", "cols": 10, "rows": 4) }}
 
 
 
@@ -450,17 +425,12 @@ Builds a HTML FORM tag
 
     <?php
 
-     echo Phalcon\Tag::form("posts/save");
-     echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
+    echo Phalcon\Tag::form("posts/save");
+    echo Phalcon\Tag::form(array("posts/save", "method" => "post"));
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ form("posts/save") }}
-     {{ form("posts/save", "method": "post") }}
+    //Volt syntax
+    {{ form("posts/save") }}
+    {{ form("posts/save", "method": "post") }}
 
 
 
@@ -479,7 +449,7 @@ Set the title of view content
 
     <?php
 
-     Phalcon\Tag::setTitle('Welcome to my Page');
+    Phalcon\Tag::setTitle('Welcome to my Page');
 
 
 
@@ -492,7 +462,7 @@ Set the title separator of view content
 
     <?php
 
-     Phalcon\Tag::setTitleSeparator('-');
+    Phalcon\Tag::setTitleSeparator('-');
 
 
 
@@ -517,13 +487,13 @@ Gets the current document title
 
     <?php
 
-     	echo Phalcon\Tag::getTitle();
+    echo Phalcon\Tag::getTitle();
 
 .. code-block:: php
 
     <?php
 
-     	{{ get_title() }}
+    {{ get_title() }}
 
 
 
@@ -536,13 +506,13 @@ Gets the current document title separator
 
     <?php
 
-     	echo Phalcon\Tag::getTitleSeparator();
+    echo Phalcon\Tag::getTitleSeparator();
 
 .. code-block:: php
 
     <?php
 
-     	{{ get_title_separator() }}
+    {{ get_title_separator() }}
 
 
 
@@ -555,17 +525,12 @@ Builds a LINK[rel="stylesheet"] tag
 
     <?php
 
-     	echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
-     	echo Phalcon\Tag::stylesheetLink("css/style.css");
+    echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+    echo Phalcon\Tag::stylesheetLink("css/style.css");
 
-Volt Syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     	{{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}
-     	{{ stylesheet_link("css/style.css") }}
+    //Volt syntax
+    {{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}
+    {{ stylesheet_link("css/style.css") }}
 
 
 
@@ -578,17 +543,12 @@ Builds a SCRIPT[type="javascript"] tag
 
     <?php
 
-     	echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-     	echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+    echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
+    echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
-Volt syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
-     {{ javascript_include("javascript/jquery.js") }}
+    //Volt syntax
+    {{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false) }}
+    {{ javascript_include("javascript/jquery.js") }}
 
 
 
@@ -601,18 +561,13 @@ Builds HTML IMG tags
 
     <?php
 
-     	echo Phalcon\Tag::image("img/bg.png");
-     	echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
+    echo Phalcon\Tag::image("img/bg.png");
+    echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
 
-Volt Syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     	{{ image("img/bg.png") }}
-     	{{ image("img/photo.jpg", "alt": "Some Photo") }}
-     	{{ image("http://static.mywebsite.com/img/bg.png", false) }}
+    //Volt syntax
+    {{ image("img/bg.png") }}
+    {{ image("img/photo.jpg", "alt": "Some Photo") }}
+    {{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 
 
@@ -625,7 +580,7 @@ Converts texts into URL-friendly titles
 
     <?php
 
-     echo Phalcon\Tag::friendlyTitle('These are big important news', '-')
+    echo Phalcon\Tag::friendlyTitle('These are big important news', '-')
 
 
 
