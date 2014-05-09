@@ -120,14 +120,14 @@ Connections are retrieved from the services container. By default, Phalcon tries
 
     // Simple database connection to localhost
     $di->set('mongo', function() {
-        $mongo = new Mongo();
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient();
+        return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
     $di->set('mongo', function() {
-        $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
+        return $mongo->selectDB("store");
     }, true);
 
 Finding Documents
@@ -679,14 +679,14 @@ in the application's services container. You can overwrite this service setting 
 
     // This service returns a mongo database at 192.168.1.100
     $di->set('mongo1', function() {
-        $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
-        return $mongo->selectDb("management");
+        $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+        return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
     $di->set('mongo2', function() {
-        $mongo = new Mongo("mongodb://localhost");
-        return $mongo->selectDb("invoicing");
+        $mongo = new MongoClient("mongodb://localhost");
+        return $mongo->selectDB("invoicing");
     }, true);
 
 Then, in the Initialize method, we define the connection service for the model:
