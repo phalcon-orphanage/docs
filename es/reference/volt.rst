@@ -444,6 +444,35 @@ Variables may be changed in a template using the instruction "set":
     {% set fruits = ['Apple', 'Banana', 'Orange'] %}
     {% set name = robot.name %}
 
+Multiple assignments are allowed in the same instruction:
+
+.. code-block:: html+jinja
+
+    {% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
+
+Additionally, you can use compound assignment operators:
+
+.. code-block:: html+jinja
+
+    {% set price += 100.00 %}
+    {% set age *= 5 %}
+
+The following operators are available:
+
++----------------------+------------------------------------------------------------------------------+
+| Operator             | Description                                                                  |
++======================+==============================================================================+
+| =                    | Standard Assignment                                                          |
++----------------------+------------------------------------------------------------------------------+
+| +=                   | Addition assignment                                                          |
++----------------------+------------------------------------------------------------------------------+
+| -=                   | Subtraction assignment                                                       |
++----------------------+------------------------------------------------------------------------------+
+| \*=                   | Multiplication assignment                                                    |
++----------------------+------------------------------------------------------------------------------+
+| /=                   | Division assignment                                                          |
++----------------------+------------------------------------------------------------------------------+
+
 Expressions
 -----------
 Volt provides a basic set of expression support, including literals and common operators.
