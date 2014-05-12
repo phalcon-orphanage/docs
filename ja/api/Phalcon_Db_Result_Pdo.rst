@@ -107,7 +107,7 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
 
 
-public  **setFetchMode** (*int* $fetchMode)
+public  **setFetchMode** (*int* $fetchMode, [*unknown* $fetchArg1], [*unknown* $fetchArg2])
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch() 
 
@@ -133,6 +133,12 @@ Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch()
 public *\PDOStatement*  **getInternalResult** ()
 
 Gets the internal PDO result object
+
+
+
+public *boolean*  **nextRowset** ()
+
+Advances to the next rowset in a multi-rowset statement handle
 
 
 

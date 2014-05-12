@@ -6,15 +6,6 @@ Phalcon\\Db\\ReferenceInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*string* $referenceName, *array* $definition)
-
-Phalcon\\Db\\ReferenceInterface constructor
-
-
->>>>>>> master
 
 abstract public *string*  **getName** ()
 

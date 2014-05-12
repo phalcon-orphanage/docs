@@ -1,10 +1,7 @@
 Abstract class **Phalcon\\Logger\\Adapter**
 ===========================================
-<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`
-=======
->>>>>>> master
 
 Base class for Phalcon\\Logger adapters
 
@@ -126,11 +123,7 @@ Returns the internal formatter
 
 abstract public *boolean*  **close** () inherited from Phalcon\\Logger\\AdapterInterface
 
-<<<<<<< HEAD
 Closes the logger
-=======
-Logs messages to the internal logger. Appends messages to the log
->>>>>>> master
 
 
 

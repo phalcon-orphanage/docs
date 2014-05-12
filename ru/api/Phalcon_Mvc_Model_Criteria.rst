@@ -128,11 +128,7 @@ Adds a RIGHT join to the query
 
 
 
-<<<<<<< HEAD
 public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions)
-=======
-public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
->>>>>>> master
 
 Sets the conditions parameter in the criteria
 
@@ -289,6 +285,12 @@ Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
 public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
 
 Executes a find using the parameters built with the criteria
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **cache** (*unknown* $option)
+
+Sets the cache options in the criteria This method replaces all previously set cache options
 
 
 

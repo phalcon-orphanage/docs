@@ -6,15 +6,6 @@ Phalcon\\Http\\Request\\FileInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*array* $file)
-
-Phalcon\\Http\\Request\\FileInterface constructor
-
-
->>>>>>> master
 
 abstract public *int*  **getSize** ()
 

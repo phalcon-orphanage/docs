@@ -6,15 +6,6 @@ Phalcon\\Mvc\\Model\\Query\\StatusInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
-
-Phalcon\\Mvc\\Model\\Query\\Status
-
-
->>>>>>> master
 
 abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getModel** ()
 

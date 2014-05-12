@@ -198,3 +198,16 @@ public  **getIterator** () inherited from Phalcon\\Session\\Adapter
 ...
 
 
+public  **setId** (*unknown* $sid) inherited from Phalcon\\Session\\Adapter
+
+Set the current session id 
+
+.. code-block:: php
+
+    <?php
+
+    $session->setId($id);
+
+
+
+

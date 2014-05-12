@@ -87,6 +87,18 @@ public  **getDefaultMessage** (*unknown* $type)
 ...
 
 
+public  **setLabels** (*unknown* $labels)
+
+Adds labels for fields
+
+
+
+public *mixed*  **getLabel** (*unknown* $field)
+
+Get label for field
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector

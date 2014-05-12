@@ -41,7 +41,7 @@ Returns the internal date format
 
 
 
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *unknown* $context)
+public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *array* $context)
 
 Applies a format to a message before sent it to the internal log
 

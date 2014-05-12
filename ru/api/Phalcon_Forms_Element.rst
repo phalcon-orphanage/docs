@@ -1,10 +1,7 @@
 Abstract class **Phalcon\\Forms\\Element**
 ==========================================
-<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
-=======
->>>>>>> master
 
 This is a base class for form elements
 

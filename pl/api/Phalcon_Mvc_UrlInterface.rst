@@ -31,7 +31,7 @@ Returns a base path
 
 
 
-abstract public *string*  **get** ([*string|array* $uri], [*unknown* $args])
+abstract public *string*  **get** ([*string|array* $uri], [*unknown* $args], [*unknown* $local])
 
 Generates a URL
 

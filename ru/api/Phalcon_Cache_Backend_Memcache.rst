@@ -94,6 +94,16 @@ Immediately invalidates all existing items.
 
 
 
+public  **getTrackingKey** ()
+
+...
+
+
+public  **setTrackingKey** (*unknown* $key)
+
+...
+
+
 public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment

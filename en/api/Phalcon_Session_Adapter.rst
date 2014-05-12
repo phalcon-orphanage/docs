@@ -181,3 +181,16 @@ public  **getIterator** ()
 ...
 
 
+public  **setId** (*unknown* $sid)
+
+Set the current session id 
+
+.. code-block:: php
+
+    <?php
+
+    $session->setId($id);
+
+
+
+
