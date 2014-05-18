@@ -2231,7 +2231,7 @@ that is performed operations over a model:
 
     <?php
 
-    use Phalcon\Mvc\ModelInterface,
+    use Phalcon\Mvc\Model\Behavior,
         Phalcon\Mvc\Model\BehaviorInterface;
 
     class Blameable extends Behavior implements BehaviorInterface
