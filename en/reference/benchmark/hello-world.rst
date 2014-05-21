@@ -27,12 +27,12 @@ These were the measurements we record to identify the overall performance of eac
 * Memory Usage per request (measured using function memory_get_usage_.
 
 Participant Frameworks
------------------------
+----------------------
 * Yii_
-* Symfony_ 
-* `Zend Framework`_ 
+* Symfony_
+* `Zend Framework`_
 * Kohana_
-* FuelPHP_ 
+* FuelPHP_
 * Laravel_
 * CodeIgniter_
 
@@ -90,7 +90,7 @@ Yii (YII_DEBUG=false) Version yii-1.1.13
      100%     42 (longest request)
 
 Symfony Version 2.1.6
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
