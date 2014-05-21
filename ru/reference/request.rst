@@ -137,7 +137,7 @@ $_GET и $_POST массивам и обезопасивает или фильт
     <?php
 
     // Получение заголовка Http-X-Requested-With
-    $requestedWith = $response->getHeader("X_REQUESTED_WITH");
+    $requestedWith = $response->getHeader("HTTP_X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "Запрос отправлен через Ajax";
     }
