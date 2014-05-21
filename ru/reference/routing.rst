@@ -711,7 +711,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
         // Проверим, что это был Ajax-запрос
-        if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
         return true;
@@ -727,7 +727,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     {
         public function check()
         {
-            return $_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
         }
     }
 
