@@ -87,7 +87,9 @@ Add extension to your php configuration:
 Restart the webserver.
 
 If you are running Debian with php5-fpm, restart it:
+
 .. code-block:: bash
+
     sudo service php5-fpm restart
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
