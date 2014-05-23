@@ -81,7 +81,16 @@ Add extension to your php configuration:
     #Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
+    #Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
+    extension=phalcon.so
+
 Restart the webserver.
+
+If you are running Debian with php5-fpm, restart it:
+
+.. code-block:: bash
+
+    sudo service php5-fpm restart
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
