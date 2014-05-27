@@ -708,7 +708,7 @@
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
         //{%routing_807bbe76d40d1fa78e437c5c686c7eca%}
-        if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
         return true;
@@ -725,7 +725,7 @@
     {
         public function check()
         {
-            return $_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
         }
     }
 
@@ -997,7 +997,7 @@
 
         return $router;
     };
-    
+
 
 %{routing_ac44f232dbf5ec48d8c0868482c9ff0d}%
 ---------------------------
@@ -1007,7 +1007,7 @@
 .. code-block:: php
 
     <?php
-    
+
     /**
     * add routing capabilities
     */
@@ -1025,12 +1025,12 @@
 
     $router = new \Phalcon\Mvc\Router();
 
-    $router->add("/login", array(       
+    $router->add("/login", array(
         'controller' => 'login',
         'action' => 'index',
     ));
 
-    $router->add("/products/:action", array(        
+    $router->add("/products/:action", array(
         'controller' => 'products',
         'action' => 1,
     ));

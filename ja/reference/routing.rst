@@ -713,7 +713,7 @@ Sometimes, routes must be matched if they meet specific conditions, you can add 
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
         //Check if the request was made with Ajax
-        if ($_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest') {
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest') {
             return false;
         }
         return true;
@@ -729,7 +729,7 @@ You can re-use these extra conditions in classes:
     {
         public function check()
         {
-            return $_SERVER['X_REQUESTED_WITH'] == 'xmlhttprequest';
+            return $_SERVER['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
         }
     }
 
@@ -992,7 +992,7 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
         return $router;
     };
-    
+
 ルーター・インスタンスの登録
 ---------------------------
 
@@ -1002,7 +1002,7 @@ You need to add code below in your bootstrap file (for example index.php or app/
 .. code-block:: php
 
     <?php
-    
+
     /**
     * add routing capabilities
     */
@@ -1019,12 +1019,12 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router = new \Phalcon\Mvc\Router();
 
-    $router->add("/login", array(       
+    $router->add("/login", array(
         'controller' => 'login',
         'action' => 'index',
     ));
 
-    $router->add("/products/:action", array(        
+    $router->add("/products/:action", array(
         'controller' => 'products',
         'action' => 1,
     ));
