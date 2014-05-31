@@ -6,15 +6,6 @@ Phalcon\\Db\\IndexInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*string* $indexName, *array* $columns)
-
-Phalcon\\Db\\Index constructor
-
-
->>>>>>> master
 
 abstract public *string*  **getName** ()
 

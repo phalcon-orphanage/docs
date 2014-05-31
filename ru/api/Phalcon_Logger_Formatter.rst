@@ -1,10 +1,7 @@
 Abstract class **Phalcon\\Logger\\Formatter**
 =============================================
-<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>`
-=======
->>>>>>> master
 
 This is a base class for logger formatters
 

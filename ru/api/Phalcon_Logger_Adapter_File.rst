@@ -155,11 +155,7 @@ Sends/Writes an alert message to the log
 
 public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **emergency** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Adapter
 
-<<<<<<< HEAD
 Sends/Writes an emergency message to the log
-=======
-Logs messages to the internal logger. Appends messages to the log
->>>>>>> master
 
 
 

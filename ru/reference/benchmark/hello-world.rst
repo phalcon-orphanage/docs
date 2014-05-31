@@ -431,7 +431,7 @@ Laravel версии 3.2.5
      100%     93 (longest request)
 
 Phalcon версии 0.8.0
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     # ab -n 2000 -c 10 http://localhost/bench/helloworld/phalcon/index.php?_url=/say/hello

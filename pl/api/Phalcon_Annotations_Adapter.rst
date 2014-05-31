@@ -51,3 +51,15 @@ Returns the annotations found in a specific property
 
 
 
+abstract public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key) inherited from Phalcon\\Annotations\\AdapterInterface
+
+Read parsed annotations
+
+
+
+abstract public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data) inherited from Phalcon\\Annotations\\AdapterInterface
+
+Write parsed annotations
+
+
+

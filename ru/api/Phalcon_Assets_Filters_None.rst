@@ -11,7 +11,7 @@ Methods
 
 public *$content*  **filter** (*string* $content)
 
-Returns the content without be touched
+Returns the content without touching
 
 
 

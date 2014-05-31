@@ -6,15 +6,6 @@ Phalcon\\Db\\ResultInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
-
-Phalcon\\Db\\Result\\Pdo constructor
-
-
->>>>>>> master
 
 abstract public *boolean*  **execute** ()
 
@@ -52,7 +43,7 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
 
 
-abstract public  **setFetchMode** (*int* $fetchMode)
+abstract public  **setFetchMode** (*int* $fetchMode, [*unknown* $fetchArg1], [*unknown* $fetchArg2])
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch()
 

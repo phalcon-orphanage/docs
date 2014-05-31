@@ -31,15 +31,6 @@ Every command-line task should extend this class that encapsulates all the task 
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-final public  **__construct** ()
-
-Phalcon_CLI_Task constructor
-
-
->>>>>>> master
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 

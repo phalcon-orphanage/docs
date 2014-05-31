@@ -45,16 +45,9 @@ Returns the instance as an array representation
 
 
 
-<<<<<<< HEAD
-public  **count** ()
+public *int*  **count** ()
 
-...
-
-
-public  **__wakeup** ()
-
-...
+Counts how many properties were added to the row
 
 
-=======
->>>>>>> master
+

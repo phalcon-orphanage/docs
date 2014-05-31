@@ -33,7 +33,6 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
      $params = array(
         'models'     => array('Users'),
         'columns'    => array('id', 'name', 'status'),
-<<<<<<< HEAD
         'conditions' => array(
             array(
                 "created > :min: AND created < :max:",
@@ -42,15 +41,11 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
             ),
         ),
         // or 'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
-=======
-        'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
->>>>>>> master
         'group'      => array('id', 'name'),
         'having'     => "name = 'Kamil'",
         'order'      => array('name', 'id'),
         'limit'      => 20,
         'offset'     => 20,
-<<<<<<< HEAD
         // or 'limit' => array(20, 20),
     );
     $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
@@ -67,11 +62,6 @@ Sets SELECT DISTINCT / SELECT ALL flag
 public *bool*  **getDistinct** ()
 
 Returns SELECT DISTINCT / SELECT ALL flag
-=======
-    );
-    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
-
->>>>>>> master
 
 
 
@@ -141,7 +131,7 @@ Return the models who makes part of the query
 
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a INNER join to the query 
+Adds a join to the query 
 
 .. code-block:: php
 
@@ -166,7 +156,6 @@ Adds a INNER join to the query
     $builder->innerJoin('Robots');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 

@@ -7,6 +7,18 @@ Phalcon\\Annotations\\AdapterInterface initializer
 Methods
 -------
 
+abstract public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
+
+Read parsed annotations
+
+
+
+abstract public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
+
+Write parsed annotations
+
+
+
 abstract public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader)
 
 Sets the annotations parser

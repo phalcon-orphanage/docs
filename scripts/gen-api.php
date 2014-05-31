@@ -18,7 +18,7 @@ if (!file_exists(CPHALCON_DIR)) {
     throw new Exception("CPHALCON directory does not exist");
 }
 
-$languages = array('en', 'es', 'ja', 'pl', 'fr');
+$languages = array('en', 'es', 'ja', 'pl', 'fr', 'ru');
 
 /**
  * Class ApiGenerator
@@ -448,8 +448,8 @@ foreach ($classes as $className) {
                 }
 
                 $code
-                    .=
-                    '*extends* ' . $prefix . ' :doc:`' . $extendsName . ' <' . $extendsPath . '>`' . PHP_EOL . PHP_EOL;
+                    .= '*extends* ' . $prefix . ' :doc:`' . $extendsName . ' <' . $extendsPath . '>`' . PHP_EOL
+                    . PHP_EOL;
             } else {
                 $code .= '*extends* ' . $extendsName . PHP_EOL . PHP_EOL;
             }

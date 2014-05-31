@@ -6,15 +6,6 @@ Phalcon\\Db\\ColumnInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (*string* $columnName, *array* $definition)
-
-Phalcon\\Db\\ColumnInterface constructor
-
-
->>>>>>> master
 
 abstract public *string*  **getSchemaName** ()
 

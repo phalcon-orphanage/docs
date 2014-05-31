@@ -81,7 +81,7 @@ Returns the target path of the file for the filtered/join output
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setSourcePath** (*string* $sourcePath)
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setSourcePath** (*string* $sourcePath)
 
 Sets a base source path for all the resources in this collection
 
@@ -93,7 +93,7 @@ Returns the base source path for all the resources in this collection
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **setTargetUri** (*string* $targetUri)
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetUri** (*string* $targetUri)
 
 Sets a target uri for the generated HTML
 

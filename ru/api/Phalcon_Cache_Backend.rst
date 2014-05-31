@@ -1,10 +1,7 @@
 Abstract class **Phalcon\\Cache\\Backend**
 ==========================================
-<<<<<<< HEAD
 
 *implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
-=======
->>>>>>> master
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 

@@ -6,15 +6,6 @@ Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
-
-Phalcon\\Mvc\\Model\\Transaction\\Manager
-
-
->>>>>>> master
 
 abstract public *boolean*  **has** ()
 

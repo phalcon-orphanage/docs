@@ -292,8 +292,8 @@ If a listener it is only interested in listening a specific type of event you ca
         //...
     });
 
-Event Propagation/Cancelation
------------------------------
+Event Propagation/Cancellation
+------------------------------
 Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
 The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
 these may be stopped preventing other listeners are notified about the event:

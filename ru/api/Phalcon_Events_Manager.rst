@@ -9,11 +9,7 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 Methods
 -------
 
-<<<<<<< HEAD
 public  **attach** (*string* $eventType, *object|callable* $handler)
-=======
-public  **attach** (*string* $eventType, *object|callable* $handler, [*int* $priority])
->>>>>>> master
 
 Attach a listener to the events manager
 
@@ -52,12 +48,6 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 public  **detachAll** ([*string* $type])
 
 Removes all events from the EventsManager
-
-
-
-public  **dettachAll** ([*string* $type])
-
-Removes all events from the EventsManager; alias of detachAll
 
 
 

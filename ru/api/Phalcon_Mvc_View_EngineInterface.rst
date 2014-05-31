@@ -6,15 +6,6 @@ Phalcon\\Mvc\\View\\EngineInterface initializer
 
 Methods
 -------
-<<<<<<< HEAD
-=======
-
-abstract public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
-
-Phalcon\\Mvc\\View\\Engine constructor
-
-
->>>>>>> master
 
 abstract public *array*  **getContent** ()
 

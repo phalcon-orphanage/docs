@@ -106,7 +106,7 @@ Resets all the stablished headers
 
 
 
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
+public *\Phalcon\Http\ResponseInterface*  **setExpires** (*\DateTime* $datetime)
 
 Sets a Expires header to use HTTP cache 
 
