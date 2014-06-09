@@ -1,7 +1,8 @@
 Queueing
 ========
 Performing activities like processing a video, resizing images or sending emails aren't suitable to be executed
-online or in real time due to the fact it may slow the loading time of pages which in turn affects the user experience.
+online or in real time due to the fact it may slow the loading time of pages which in turn affects the user 
+experience.
 
 The best solution here is implementing background jobs. A web application must put the job
 into a queue and wait that it will be processed.
