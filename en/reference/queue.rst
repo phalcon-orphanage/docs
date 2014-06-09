@@ -1,7 +1,8 @@
 Queueing
 ========
-Perform activities like process a video, resize images or send emails aren't suitable to be executed
-online or in real time because it may slow the loading time of pages, impacting the user experience.
+Performing activities like processing a video, resizing images or sending emails aren't suitable to be executed
+online or in real time due to the fact it may slow the loading time of pages which in turn affects the user 
+experience.
 
 The best solution here is implementing background jobs. A web application must put the job
 into a queue and wait that it will be processed.
@@ -37,8 +38,8 @@ Available connection options are:
 | port     | Connection port                                          | 11300     |
 +----------+----------------------------------------------------------+-----------+
 
-In the above example we stored a message which will allow a background job to process a video.
-The message is stored in the queue immediately and does not have a certain time to life.
+In the example above, we stored a message which will allow a background job to process a video.
+The message is stored in the queue immediately and does not have a certain time to live (TTL).
 
 Additional options as time to run, priority and delay could be passed as second parameter:
 
@@ -64,7 +65,7 @@ The following options are available:
 | ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
 +----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Every job put into the queue returns a "job id" the developer can use to track the status of the job:
+Every job that's placed into the queue returns a "job id" so that the developer can reference it to track the status of the job:
 
 .. code-block:: php
 
@@ -74,7 +75,7 @@ Every job put into the queue returns a "job id" the developer can use to track t
 
 Retrieving Messages
 -------------------
-Once a job is placed into the queue, those messages can be consumed by a background job which have enough time to complete
+Once a job is placed into the queue, those messages can be consumed by a background job which has enough time to complete
 the task:
 
 .. code-block:: php
@@ -91,7 +92,7 @@ the task:
     }
 
 Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented,
-jobs must be "reserved" so other workers don't re-process them while other workers have them reserved:
+jobs must be "reserved" so other workers don't reprocess them while other workers have them reserved:
 
 .. code-block:: php
 
@@ -108,7 +109,7 @@ jobs must be "reserved" so other workers don't re-process them while other worke
         $job->delete();
     }
 
-Our client implement a basic set of the features provided by Beanstalkd but enough to allow you to build applications
+Our client implements a basic set of the features provided by Beanstalkd but enough to allow you to build applications
 implementing queues.
 
 .. _RabbitMQ: http://pecl.php.net/package/amqp
