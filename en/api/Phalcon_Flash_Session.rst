@@ -67,7 +67,7 @@ Phalcon\\Flash constructor
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush) inherited from Phalcon\\Flash
 
-Set whether the output must be implictly flushed to the output or returned as string
+Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
@@ -85,7 +85,7 @@ Set an array with CSS classes to format the messages
 
 public *string*  **error** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML error message 
+Shows a HTML error message
 
 .. code-block:: php
 
@@ -98,7 +98,7 @@ Shows a HTML error message
 
 public *string*  **notice** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML notice/information message 
+Shows a HTML notice/information message
 
 .. code-block:: php
 
@@ -111,7 +111,7 @@ Shows a HTML notice/information message
 
 public *string*  **success** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML success message 
+Shows a HTML success message
 
 .. code-block:: php
 
@@ -124,7 +124,7 @@ Shows a HTML success message
 
 public *string*  **warning** (*string* $message) inherited from Phalcon\\Flash
 
-Shows a HTML warning message 
+Shows a HTML warning message
 
 .. code-block:: php
 
@@ -137,7 +137,7 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message) inherited from Phalcon\\Flash
 
-Outputs a message formatting it with HTML 
+Outputs a message formatting it with HTML
 
 .. code-block:: php
 

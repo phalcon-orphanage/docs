@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Flash**
 =================================
 
-Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
+Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
 .. code-block:: php
 
@@ -23,7 +23,7 @@ Phalcon\\Flash constructor
 
 public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush)
 
-Set whether the output must be implictly flushed to the output or returned as string
+Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
@@ -41,7 +41,7 @@ Set an array with CSS classes to format the messages
 
 public *string*  **error** (*string* $message)
 
-Shows a HTML error message 
+Shows a HTML error message
 
 .. code-block:: php
 
@@ -54,7 +54,7 @@ Shows a HTML error message
 
 public *string*  **notice** (*string* $message)
 
-Shows a HTML notice/information message 
+Shows a HTML notice/information message
 
 .. code-block:: php
 
@@ -67,7 +67,7 @@ Shows a HTML notice/information message
 
 public *string*  **success** (*string* $message)
 
-Shows a HTML success message 
+Shows a HTML success message
 
 .. code-block:: php
 
@@ -80,7 +80,7 @@ Shows a HTML success message
 
 public *string*  **warning** (*string* $message)
 
-Shows a HTML warning message 
+Shows a HTML warning message
 
 .. code-block:: php
 
@@ -93,7 +93,7 @@ Shows a HTML warning message
 
 public  **outputMessage** (*string* $type, *string* $message)
 
-Outputs a message formatting it with HTML 
+Outputs a message formatting it with HTML
 
 .. code-block:: php
 
