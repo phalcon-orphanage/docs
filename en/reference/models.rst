@@ -1965,7 +1965,7 @@ to delegate the database system the assignation of the values by a trigger or a 
 
     }
 
-This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
+This will ignore globally these fields on each INSERT/UPDATE operation on the whole application. If you want to ignore different attributes on different INSERT/UPDATE operations, you can specify the second parameter (boolean) - true for replacement.
 Forcing a default value can be done in the following way:
 
 .. code-block:: php
