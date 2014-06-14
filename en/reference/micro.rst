@@ -592,7 +592,7 @@ Rendering Views
     $app = new Phalcon\Mvc\Micro();
 
     $app['view'] = function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
