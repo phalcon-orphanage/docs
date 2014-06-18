@@ -846,7 +846,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     );
 
     $router = new Phalcon\Mvc\Router();
-
+    $router->setDI(new Phalcon\DI\FactoryDefault());
     // Тут необходимо установить правила маршрутизации
     //...
 
