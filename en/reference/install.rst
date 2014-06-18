@@ -105,7 +105,7 @@ If the automatic installer fails try building the extension manually:
 
 .. code-block:: bash
 
-    cd cphalon/build/64bits
+    cd cphalcon/build/64bits
     export CFLAGS="-O2 --fvisibility=hidden"
     ./configure --enable-phalcon
     make && sudo make install
