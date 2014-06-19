@@ -308,7 +308,7 @@ An "if" evaluation can be optionally set:
     {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
     {% for value in numbers if value < 2 %}
-      Name: {{ name }} Value: {{ value }}
+      Value: {{ value }}
     {% endfor %}
 
     {% for name, value in numbers if name != 'two' %}
@@ -634,7 +634,7 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
     {% for position, name in robots %}
         {% if position is odd %}
-            {{ value }}
+            {{ name }}
         {% endif %}
     {% endfor %}
 

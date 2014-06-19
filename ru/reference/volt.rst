@@ -302,7 +302,7 @@ For
     {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
     {% for value in numbers if value < 2 %}
-      Name: {{ name }} Value: {{ value }}
+      Value: {{ value }}
     {% endfor %}
 
     {% for name, value in numbers if name != 'two' %}
@@ -647,7 +647,7 @@ Curly braces also can be used to define arrays or hashes:
 
     {% for position, name in robots %}
         {% if position is odd %}
-            {{ value }}
+            {{ name }}
         {% endif %}
     {% endfor %}
 
