@@ -313,7 +313,7 @@ Using this class as entity, allows the form to take the default values from it:
         'America/New_York' => 'New York',
         'Europe/Amsterdam' => 'Amsterdam',
         'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokio' => 'Tokio',
+        'Asia/Tokyo' => 'Tokyo',
     )));
 
     $form->add(new Select("receiveEmails", array(
