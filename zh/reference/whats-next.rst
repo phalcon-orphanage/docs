@@ -109,7 +109,7 @@ Javascript evaluation and CSS styling.
 ------------------------
 PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
 
-Use a PHP Bytecode Cache
+使用 PHP 字节码缓存（Use a PHP Bytecode Cache）
 ------------------------
 APC_ as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files
 in each request. Once the extension is installed use the following setting to enable APC:

@@ -23,7 +23,7 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 
     <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 
-Related Guides
+相关指南（Related Guides）
 ^^^^^^^^^^^^^^
 .. toctree::
     :maxdepth: 1
