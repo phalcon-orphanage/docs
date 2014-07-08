@@ -10,7 +10,7 @@ While you can find more sophisticated PHP extensions to address queueing in your
 Phalcon provides a client for Beanstalk_, a job queueing backend inspired by Memcache_.
 It’s simple, lightweight, and completely specialized on job queueing.
 
-Putting Jobs into the Queue
+将任务加入队列（Putting Jobs into the Queue）
 ---------------------------
 After connecting to Bens can insert as many jobs as required. The developer can define the message
 structure according to the needs of the application:

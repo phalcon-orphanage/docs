@@ -105,7 +105,7 @@ the format we expect.
     $filter->sanitize("  Hello   ", "trim");
 
 
-Types of Built-in Filters
+内置过滤器类型（Types of Built-in Filters）
 -------------------------
 The following are the built-in filters provided by this component:
 

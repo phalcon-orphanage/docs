@@ -2638,7 +2638,7 @@ The independent column map allow you to:
 --------------------------
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
-Updating related records
+更新关联表记录（Updating related records）
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Instead of doing this:
 
@@ -2687,7 +2687,7 @@ you can do this:
         return true;
     });
 
-删除相关记录（Deleting related records）
+删除关联表记录（Deleting related records）
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Instead of doing this:
 

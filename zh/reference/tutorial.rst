@@ -4,7 +4,7 @@ Throughout this first tutorial, we'll walk you through the creation of an applic
 We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
 you can check our :doc:`developer tools <tools>`.
 
-确认安全（Checking your installation）
+确认安装（Checking your installation）
 --------------------------
 We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
 code snippet below:
