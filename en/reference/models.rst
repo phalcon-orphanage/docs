@@ -3175,13 +3175,13 @@ statements as they happen.
     use Phalcon\Logger,
         Phalcon\Db\Adapter\Pdo\Mysql as Connection,
         Phalcon\Events\Manager,
-        Phalcon\Logger\Adapter\File;
+        Phalcon\Logger\Adapter\File as FileLogger;
 
     $di->set('db', function() {
 
         $eventsManager = new EventsManager();
 
-        $logger = new Logger("app/logs/debug.log");
+        $logger = new FileLogger("app/logs/debug.log");
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($logger) {
