@@ -19,6 +19,12 @@ Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect
     	'port' => '3306'
     ));
 
+    //or connect via unix socket
+    $connection = new Phalcon\Db\Adapter\Pdo\Mysql(array(
+        'dsn' => 'mysql:dbname=YOUR_DB_NAME;unix_socket=/PATH/TO/SOCK_FILE;charset=utf8;',
+        'username' => 'YOUR_USERNAME',
+        'password' => 'YOUR_PASSWORD',
+    ));
 
 
 Methods
