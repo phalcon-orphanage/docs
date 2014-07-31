@@ -532,7 +532,7 @@ If an expression needs to be evaluated without be printed the 'do' statement can
     {# Хэш-массив #}
     {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 
-Curly braces also can be used to define arrays or hashes:
+Также можно использовать фигурные скобки для определения массивов или хэшей:
 
 .. code-block:: html+jinja
 
