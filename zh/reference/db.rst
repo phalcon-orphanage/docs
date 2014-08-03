@@ -26,7 +26,7 @@
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-为了建立你自己的适配器或者继承一个已存在的适配器，这个:doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>`接口必须被实现，
+为了建立你自己的适配器或者继承一个已存在的适配器，这个 :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` 接口必须被实现，
 
 数据库“方言”
 -----------------
@@ -47,7 +47,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
 自定义“方言”（Implementing your own dialects）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-为了建立你自己的“方言”或者继承一个已存在的，你需要实现这个接口：:doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`
+为了建立你自己的“方言”或者继承一个已存在的，你需要实现这个接口： :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`
 
 连接数据库（Connecting to Databases）
 -----------------------
@@ -146,7 +146,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
 查找行（Finding Rows）
 ------------
-文档:doc:`Phalcon\\Db <../api/Phalcon_Db>` 提供了几种方法去查询行。目标数据库引擎的特定SQL语法是必须的，在这个例子中：
+文档 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 提供了几种方法去查询行。目标数据库引擎的特定SQL语法是必须的，在这个例子中：
 
 .. code-block:: php
 
@@ -197,7 +197,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        echo $robot[0];
     }
 
-这个 Phalcon\\Db::query() 方法返回一个:doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等
+这个 Phalcon\\Db::query() 方法返回一个 :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>` 实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等
 
 .. code-block:: php
 
@@ -220,7 +220,7 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
 
 绑定参数（Binding Parameters）
 ------------------
-在:doc:`Phalcon\\Db <../api/Phalcon_Db>`中绑定参数也被支持。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
+在 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 中绑定参数也被支持。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
 去消除你的代码受到SQL注入攻击的可能性。字符串和占位符都支持，绑定参数可以简单地实现：
 
 .. code-block:: php
@@ -356,7 +356,7 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
 数据库事件（Database Events）
 ---------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>`可以发送事件到一个:doc:`EventsManager <events>`中，如果它存在的话。
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` 可以发送事件到一个 :doc:`EventsManager <events>` 中，如果它存在的话。
 一些事件当返回布尔值false可以停止操作。我们支持下面这些事件：
 
 +---------------------+-----------------------------------------------------------+---------------------+
