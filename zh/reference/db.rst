@@ -1,66 +1,64 @@
 数据库抽象层（Database Abstraction Layer）
 ==========================
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is the component behind :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` that powers the model layer
-in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`是:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。
 
-This component allows for a lower level database manipulation than using traditional models.
+这个组件提供了比传统模式的更容易上手的数据库操作。
 
 .. highlights::
-    This guide is not intended to be a complete documentation of available methods and their arguments. Please visit the :doc:`API <../api/index>`
-    for a complete reference.
+    这个指引不是一个完整的包含所有方法和它们的参数的文档。
+    查看完整的文档参考，请访问:doc:`API <../api/index>`
 
 数据库适配器（Database Adapters）
 -----------------
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following
-database engines are supported:
+这个组件利用了这些适配器去封装特定的数据库的详细操作。Phalcon使用 PDO_ 去连接这些数据库。下面这些是我们支持的数据库引擎：
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                                                                          | API                                                                                     |
+| 名称       | 描述                                                                                                                                                                                                                                 | API                                                                                     |
 +============+======================================================================================================================================================================================================================================+=========================================================================================+
-| MySQL      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
+| MySQL      | MySQL是这个世界上最多人使用的关系数据库，它作为服务器运行为多用户提供了访问多个数据库的功能。                                                                                                                                        | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Mysql <../api/Phalcon_Db_Adapter_Pdo_Mysql>`           |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| PostgreSQL | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
+| PostgreSQL | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉                                                                                           | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Postgresql <../api/Phalcon_Db_Adapter_Pdo_Postgresql>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| SQLite     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
+| SQLite     | SQLite是一个实现一个自包含的，无服务器，零配置，支持事务的SQL数据库引擎的软件库                                                                                                                                                      | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Sqlite <../api/Phalcon_Db_Adapter_Pdo_Sqlite>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Oracle     | Oracle is an object-relational database management system produced and marketed by Oracle Corporation.                                                                                                                               | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
+| Oracle     | Oracle是一个对象-关系数据库，由甲骨文公司生产和销售。                                                                                                                                                                                | :doc:`Phalcon\\Db\\Adapter\\Pdo\\Oracle <../api/Phalcon_Db_Adapter_Pdo_Oracle>`         |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>` interface must be implemented in order to create your own
-database adapters or extend the existing ones.
+为了建立你自己的适配器或者继承一个已存在的适配器，这个:doc:`Phalcon\\Db\\AdapterInterface <../api/Phalcon_Db_AdapterInterface>`接口必须被实现，
 
-Database Dialects
+数据库“方言”
 -----------------
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“方言”提供了提供通用的功能和SQL生成的适配器。
+(译者注：这里的“方言”是指Phalcon把一些常用的数据库操作封装成类的方法，例如检查数据库中表是否存在，不再需要麻烦的手动写SQL，可以把调用tableExists方法去查询)
 
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Name       | Description                                         | API                                                                            |
+| 名称       | 描述                                                | API                                                                            |
 +============+=====================================================+================================================================================+
-| MySQL      | SQL specific dialect for MySQL database system      | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           |
+| MySQL      | MySQL的具体“方言”                                   | :doc:`Phalcon\\Db\\Dialect\\Mysql <../api/Phalcon_Db_Dialect_Mysql>`           |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| PostgreSQL | SQL specific dialect for PostgreSQL database system | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
+| PostgreSQL | PostgreSQL的具体“方言”                              | :doc:`Phalcon\\Db\\Dialect\\Postgresql <../api/Phalcon_Db_Dialect_Postgresql>` |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| SQLite     | SQL specific dialect for SQLite database system     | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
+| SQLite     | SQLite的具体“方言”                                  | :doc:`Phalcon\\Db\\Dialect\\Sqlite <../api/Phalcon_Db_Dialect_Sqlite>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
-| Oracle     | SQL specific dialect for Oracle database system     | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
+| Oracle     | Oracle的具体“方言”                                  | :doc:`Phalcon\\Db\\Dialect\\Oracle <../api/Phalcon_Db_Dialect_Oracle>`         |
 +------------+-----------------------------------------------------+--------------------------------------------------------------------------------+
 
-自定义特征（Implementing your own dialects）
+自定义“方言”（Implementing your own dialects）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>` interface must be implemented in order to create your own database dialects or extend the existing ones.
+为了建立你自己的“方言”或者继承一个已存在的，你需要实现这个接口：:doc:`Phalcon\\Db\\DialectInterface <../api/Phalcon_Db_DialectInterface>`
 
 连接数据库（Connecting to Databases）
 -----------------------
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example
-below shows how to create a connection passing both required and optional parameters:
+为了建立连接，实例化适配器类是有必要的。它只接收一个包含连接参数的数组。
+下面的例子展示通过必要参数和可选项的参数去连接数据库：
 
 .. code-block:: php
 
     <?php
 
-    // Required
+    // 必要参数
     $config = array(
         "host" => "127.0.0.1",
         "username" => "mike",
@@ -68,17 +66,17 @@ below shows how to create a connection passing both required and optional parame
         "dbname" => "test_db"
     );
 
-    // Optional
+    // 可选参数
     $config["persistent"] = false;
 
-    // Create a connection
+    // 创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 
 .. code-block:: php
 
     <?php
 
-    // Required
+    // 必要参数
     $config = array(
         "host" => "localhost",
         "username" => "postgres",
@@ -86,36 +84,36 @@ below shows how to create a connection passing both required and optional parame
         "dbname" => "template"
     );
 
-    // Optional
+    // 可选参数
     $config["schema"] = "public";
 
-    // Create a connection
+    // 创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 
 .. code-block:: php
 
     <?php
 
-    // Required
+    // 必要参数
     $config = array(
         "dbname" => "/path/to/database.db"
     );
 
-    // Create a connection
+    // 创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 .. code-block:: php
 
     <?php
 
-    // Basic configuration
+    // 基本配置信息
     $config = array(
         'username' => 'scott',
         'password' => 'tiger',
         'dbname' => '192.168.10.145/orcl',
     );
 
-    // Advanced configuration
+    // 高级配置信息
     $config = array(
         'dbname' => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
         'username' => 'scott',
@@ -123,18 +121,18 @@ below shows how to create a connection passing both required and optional parame
         'charset' => 'AL32UTF8',
     );
 
-    // Create a connection
+    // 创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Oracle($config);
 
 设置额外的 PDO 选项（Setting up additional PDO options）
 ---------------------------------
-You can set PDO options at connection time by passing the parameters 'options':
+你可以在连接的时候，通过传递'options'参数，设置PDO选项：
 
 .. code-block:: php
 
     <?php
 
-    // Create a connection with PDO options
+    // 带PDO options参数的创建连接
     $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
         "host" => "localhost",
         "username" => "root",
@@ -148,7 +146,7 @@ You can set PDO options at connection time by passing the parameters 'options':
 
 查找行（Finding Rows）
 ------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+文档:doc:`Phalcon\\Db <../api/Phalcon_Db>` 提供了几种方法去查询行。目标数据库引擎的特定SQL语法是必须的，在这个例子中：
 
 .. code-block:: php
 
@@ -156,35 +154,35 @@ You can set PDO options at connection time by passing the parameters 'options':
 
     $sql = "SELECT id, name FROM robots ORDER BY name";
 
-    // Send a SQL statement to the database system
+    // 发送SQL语句到数据库
     $result = $connection->query($sql);
 
-    // Print each robot name
+    // 打印每个robot名称
     while ($robot = $result->fetch()) {
        echo $robot["name"];
     }
 
-    // Get all rows in an array
+    // 返回一个包含返回结果的数组
     $robots = $connection->fetchAll($sql);
     foreach ($robots as $robot) {
        echo $robot["name"];
     }
 
-    // Get only the first row
+    // 只返回查询结果的第一条数据
     $robot = $connection->fetchOne($sql);
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using Phalcon\\Db\\Result::setFetchMode(). This method receives a constant, defining which kind of index is required.
+默认情况下，这些调用会建立一个数组，数组中包含以字段名和以数字下标为key的值。你可以改变这种行为通过使用 Phalcon\\Db\\Result::setFetchMode() 。这个方法接受一个常量值，确定哪些类型的指标是被要求的。
 
 +--------------------------+-----------------------------------------------------------+
-| Constant                 | Description                                               |
+| 常量                     | 描述                                                      |
 +==========================+===========================================================+
-| Phalcon\\Db::FETCH_NUM   | Return an array with numeric indexes                      |
+| Phalcon\\Db::FETCH_NUM   | 返回一个包含数字下标的数组                                |
 +--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_ASSOC | Return an array with associative indexes                  |
+| Phalcon\\Db::FETCH_ASSOC | 返回一个包含字段名的数组                                  |
 +--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_BOTH  | Return an array with both associative and numeric indexes |
+| Phalcon\\Db::FETCH_BOTH  | 返回一个包含字段名和数字下标的数组                        |
 +--------------------------+-----------------------------------------------------------+
-| Phalcon\\Db::FETCH_OBJ   | Return an object instead of an array                      |
+| Phalcon\\Db::FETCH_OBJ   | 返回一个对象而不是一个数组                                |
 +--------------------------+-----------------------------------------------------------+
 
 .. code-block:: php
@@ -199,7 +197,7 @@ By default these calls create arrays with both associative and numeric indexes. 
        echo $robot[0];
     }
 
-The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+这个 Phalcon\\Db::query() 方法返回一个:doc:`Phalcon\\Db\\Result\\Pdo <../api/Phalcon_Db_Result_Pdo>`实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等
 
 .. code-block:: php
 
@@ -208,68 +206,67 @@ The Phalcon\\Db::query() returns an instance of :doc:`Phalcon\\Db\\Result\\Pdo <
     $sql = "SELECT id, name FROM robots";
     $result = $connection->query($sql);
 
-    // Traverse the resultset
+    // 遍历结果集
     while ($robot = $result->fetch()) {
        echo $robot["name"];
     }
 
-    // Seek to the third row
+    // 获取第三条记录
     $result->seek(2);
     $robot = $result->fetch();
 
-    // Count the resultset
+    // 计算结果集的记录数
     echo $result->numRows();
 
 绑定参数（Binding Parameters）
 ------------------
-Bound parameters is also supported in :doc:`Phalcon\\Db <../api/Phalcon_Db>`. Although there is a minimal performance impact by using
-bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL
-injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+在:doc:`Phalcon\\Db <../api/Phalcon_Db>`中绑定参数也被支持。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
+去消除你的代码受到SQL注入攻击的可能性。字符串和占位符都支持，绑定参数可以简单地实现：
 
 .. code-block:: php
 
     <?php
 
-    // Binding with numeric placeholders
+    // 用数字占位符绑定参数
     $sql    = "SELECT * FROM robots WHERE name = ? ORDER BY name";
     $result = $connection->query($sql, array("Wall-E"));
 
-    // Binding with named placeholders
+    // 用指定的占位符绑定参数
     $sql     = "INSERT INTO `robots`(name`, year) VALUES (:name, :year)";
     $success = $connection->query($sql, array("name" => "Astro Boy", "year" => 1952));
 
 插入、更新、删除行（Inserting/Updating/Deleting Rows）
 --------------------------------
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+去插入，更新或者删除行，你可以使用原生SQL操作，或者使用类中预设的方法
 
 .. code-block:: php
 
     <?php
 
-    // Inserting data with a raw SQL statement
+    // 使用原生SQL插入行
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // 使用带占位符的SQL插入行
     $sql     = "INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)";
     $success = $connection->execute($sql, array('Astro Boy', 1952));
 
-    // Generating dynamically the necessary SQL
+    // 使用类中预设的方法插入行
     $success = $connection->insert(
        "robots",
        array("Astro Boy", 1952),
        array("name", "year")
     );
 
-    // Updating data with a raw SQL statement
+    // 使用原生SQL更新行
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // 使用带占位符的SQL更新行
     $sql     = "UPDATE `robots` SET `name` = ? WHERE `id` = ?";
     $success = $connection->execute($sql, array('Astro Boy', 101));
 
-    // Generating dynamically the necessary SQL
+    // 使用类中预设的方法更新行
     $success = $connection->update(
        "robots",
        array("name"),
@@ -277,21 +274,20 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
        "id = 101"
     );
 
-    // Deleting data with a raw SQL statement
+    // 使用原生的SQL删除行
     $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->execute($sql);
 
-    //With placeholders
+    // 使用带占位符的SQL删除行
     $sql     = "DELETE `robots` WHERE `id` = ?";
     $success = $connection->execute($sql, array(101));
 
-    // Generating dynamically the necessary SQL
+    // 使用类中预设的方法删除行
     $success = $connection->delete("robots", "id = 101");
 
 事务与嵌套事务（Transactions and Nested Transactions）
 ------------------------------------
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions
-often increase the performance on most database systems:
+PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库系统上, 往往可以提高数据库的性能：
 
 .. code-block:: php
 
@@ -299,25 +295,24 @@ often increase the performance on most database systems:
 
     try {
 
-        //Start a transaction
+        // 开始一个事务
         $connection->begin();
 
-        //Execute some SQL statements
+        // 执行一些操作
         $connection->execute("DELETE `robots` WHERE `id` = 101");
         $connection->execute("DELETE `robots` WHERE `id` = 102");
         $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-        //Commit if everything goes well
+        // 提交操作，如果一切正常
         $connection->commit();
 
     } catch(Exception $e) {
-        //An exception has occurred rollback the transaction
+        // 如果发现异常，回滚操作
         $connection->rollback();
     }
 
-In addition to standard transactions, Phalcon\\Db provides built-in support for `nested transactions`_
-(if the database system used supports them). When you call begin() for a second time a nested transaction
-is created:
+除了标准的事务，Phalcon\\Db提供了内置支持`嵌套事务`_(如果数据库系统支持的话)。
+当你第二次调用begin()方法，一个嵌套的事务就被创建了：
 
 .. code-block:: php
 
@@ -325,64 +320,64 @@ is created:
 
     try {
 
-        //Start a transaction
+        // 开始一个事务
         $connection->begin();
 
-        //Execute some SQL statements
+        // 执行某些SQL操作
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
 
-            //Start a nested transaction
+            // 开始一个嵌套事务
             $connection->begin();
 
-            //Execute these SQL statements into the nested transaction
+            // 在嵌套事务中执行这些SQL
             $connection->execute("DELETE `robots` WHERE `id` = 102");
             $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-            //Create a save point
+            // 创建一个保存的点
             $connection->commit();
 
         } catch(Exception $e) {
-            //An error has occurred, release the nested transaction
+            // 发生错误，释放嵌套的事务
             $connection->rollback();
         }
 
-        //Continue, executing more SQL statements
+        // 继续，执行更多SQL操作
         $connection->execute("DELETE `robots` WHERE `id` = 104");
 
-        //Commit if everything goes well
+        // 如果一切正常，提交
         $connection->commit();
 
     } catch(Exception $e) {
-        //An exception has occurred rollback the transaction
+        // 发生错误，回滚操作
         $connection->rollback();
     }
 
 数据库事件（Database Events）
 ---------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` is able to send events to a :doc:`EventsManager <events>` if it's present.
-Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>`可以发送事件到一个:doc:`EventsManager <events>`中，如果它存在的话。
+一些事件当返回布尔值false可以停止操作。我们支持下面这些事件：
 
 +---------------------+-----------------------------------------------------------+---------------------+
-| Event Name          | Triggered                                                 | Can stop operation? |
+| 事件名              | 何时触发                                                  | 可以停止操作吗? |
 +=====================+===========================================================+=====================+
-| afterConnect        | After a successfully connection to a database system      | No                  |
+| afterConnect        | 当成功连接数据库之后触发                                  | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeQuery         | Before send a SQL statement to the database system        | Yes                 |
+| beforeQuery         | 在发送SQL到数据库前触发                                   | Yes                 |
 +---------------------+-----------------------------------------------------------+---------------------+
-| afterQuery          | After send a SQL statement to database system             | No                  |
+| afterQuery          | 在发送SQL到数据库执行后触发                               | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beforeDisconnect    | Before close a temporal database connection               | No                  |
+| beforeDisconnect    | 在关闭一个暂存的数据库连接前触发                          | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| beginTransaction    | Before a transaction is going to be started               | No                  |
+| beginTransaction    | 事务启动前触发                                            | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| rollbackTransaction | Before a transaction is rollbacked                        | No                  |
+| rollbackTransaction | 事务回滚前触发                                            | No                  |
 +---------------------+-----------------------------------------------------------+---------------------+
-| commitTransaction   | Before a transaction is committed                         | No                  |
-+---------------------+------------------------------------------------------------+--------------------+
+| commitTransaction   | 事务提交前触发                                            | No                  |
++---------------------+-----------------------------------------------------------+---------------------+
 
-Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the events with the type "db":
+绑定一个EventsManager给一个连接是很简单的，Phalcon\\Db将触发这些类型为“db”的事件：
 
 .. code-block:: php
 
@@ -393,7 +388,7 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
 
     $eventsManager = new EventsManager();
 
-    //Listen all the database events
+    // 监听所有数据库事件
     $eventsManager->attach('db', $dbListener);
 
     $connection = new Connection(array(
@@ -403,10 +398,10 @@ Bind an EventsManager to a connection is simple, Phalcon\\Db will trigger the ev
         "dbname" => "invo"
     ));
 
-    //Assign the eventsManager to the db adapter instance
+    // 把eventsManager分配给适配器实例
     $connection->setEventsManager($eventsManager);
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+停止SQL操作是非常有用的，例如：如果你想要实现一些注入检查器在最后的SQL资源中：
 
 .. code-block:: php
 
@@ -414,14 +409,14 @@ Stop SQL operations are very useful if for example you want to implement some la
 
     $eventsManager->attach('db:beforeQuery', function($event, $connection) {
 
-        //Check for malicious words in SQL statements
+        // 检查是否有恶意关键词
         if (preg_match('/DROP|ALTER/i', $connection->getSQLStatement())) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
+            // DROP/ALTER 操作是不允许的,
+            // 这肯定是一个注入!
             return false;
         }
 
-        //It's ok
+        // 一切正常
         return true;
     });
 
