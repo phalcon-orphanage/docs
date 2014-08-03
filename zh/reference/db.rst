@@ -1,12 +1,12 @@
 数据库抽象层（Database Abstraction Layer）
 ==========================
-:doc:`Phalcon\\Db <../api/Phalcon_Db>`是:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` 是 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。
 
 这个组件提供了比传统模式的更容易上手的数据库操作。
 
 .. highlights::
     这个指引不是一个完整的包含所有方法和它们的参数的文档。
-    查看完整的文档参考，请访问:doc:`API <../api/index>`
+    查看完整的文档参考，请访问 :doc:`API <../api/index>`
 
 数据库适配器（Database Adapters）
 -----------------
