@@ -142,8 +142,13 @@ The above example changes slightly (especially in terms of configuration) when w
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
     $cache = new Phalcon\Cache\Backend\Libmemcached($frontCache, array(
-        "host" => "localhost",
-        "port" => "11211"
+	"servers" => array(
+		array(
+			"host" => "127.0.0.1",
+			"port" => "11211",
+			"weight" => "1"
+		)
+	)
     ));
 
     // Try to get cached records
