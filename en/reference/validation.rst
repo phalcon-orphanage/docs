@@ -66,6 +66,8 @@ You can put your validations in a separate file for better re-use code and organ
         }
     }
 
+Then initialize and use your own validator:
+
 .. code-block:: php
 
     <?php
