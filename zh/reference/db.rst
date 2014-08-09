@@ -422,9 +422,9 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
 分析 SQL 语句（Profiling SQL Statements）
 ------------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` includes a profiling component called :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` 包含了一个性能分析组件，叫 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` ，它常常被用于分析数据的操作性能以便诊断性能问题，并发现瓶颈。
 
-Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>`:
+使用 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来分析数据库真的很简单:
 
 .. code-block:: php
 
@@ -437,29 +437,29 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     $profiler = new DbProfiler();
 
-    //Listen all the database events
+    //监听所有数据库的事件
     $eventsManager->attach('db', function($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
-            //Start a profile with the active connection
+            //操作前启动分析
             $profiler->startProfile($connection->getSQLStatement());
         }
         if ($event->getType() == 'afterQuery') {
-            //Stop the active profile
+            //操作后停止分析
             $profiler->stopProfile();
         }
     });
 
-    //Assign the events manager to the connection
+    //设置事件管理器
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
          . "FROM buyers "
          . "LEFT JOIN products ON buyers.pid = products.id";
 
-    // Execute a SQL statement
+    // 执行SQL
     $connection->query($sql);
 
-    // Get the last profile in the profiler
+    // 获取最后一个分析结果
     $profile = $profiler->getLastProfile();
 
     echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
@@ -467,7 +467,7 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
     echo "Final Time: ", $profile->getFinalTime(), "\n";
     echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
-You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` to record real time statistics of the statements sent to the database system:
+你也可以基于 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 建立你自己的分析器类，以记录SQL语句发送到数据库的实时统计：
 
 .. code-block:: php
 
@@ -481,7 +481,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
     {
 
         /**
-         * Executed before the SQL statement will sent to the db server
+         * 在SQL语句将要发送给数据库前执行
          */
         public function beforeStartProfile(Item $profile)
         {
@@ -489,7 +489,7 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
         }
 
         /**
-         * Executed after the SQL statement was sent to the db server
+         * 在SQL语句已经被发送到数据库后执行
          */
         public function afterEndProfile(Item $profile)
         {
@@ -498,18 +498,18 @@ You can also create your own profile class based on :doc:`Phalcon\\Db\\Profiler 
 
     }
 
-    //Create an EventsManager
+    //创建一个事件管理器
     $eventsManager = new EventsManager();
 
-    //Create a listener
+    //创建一个监听器
     $dbProfiler = new DbProfiler();
 
-    //Attach the listener listening for all database events
+    //设置监听器监听所有的数据库事件
     $eventsManager->attach('db', $dbProfiler);
 
 记录 SQL 语句（Logging SQL Statements）
 ----------------------
-Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalcon_Db>` to access a database, it is difficult to understand which statements are sent to the database system. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer.
+使用例如 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 的高级抽象组件访问数据库，被发送到数据库中执行的SQL语句是难以获知的。使用 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` 和 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 来交互使用，可以提供数据库抽象层上记录功能。
 
 .. code-block:: php
 
@@ -523,24 +523,24 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new FileLogger("app/logs/db.log");
 
-    //Listen all the database events
+    //监听所有数据库事件
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
-    //Assign the eventsManager to the db adapter instance
+    //设置事件管理器
     $connection->setEventsManager($eventsManager);
 
-    //Execute some SQL statement
+    //执行一些SQL
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
         array("name", "price")
     );
 
-As above, the file *app/logs/db.log* will contain something like this:
+如上操作，文件 *app/logs/db.log* 将包含像下面这样的信息：
 
 .. code-block:: php
 
@@ -550,79 +550,78 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 自定义日志记录器（Implementing your own Logger）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can implement your own logger class for database queries, by creating a class that implements a single method called "log".
-The method needs to accept a string as the first argument. You can then pass your logging object to Phalcon\\Db::setLogger(),
-and from then on any SQL statement executed will call that method to log the results.
+你可以实现你自己的日志类来记录数据库的所有操作，通过创建一个实现了"log"方法的类。
+这个方法需要接受一个字符串作为第一个参数。你可以把日志类的对象传递给Phalcon\\Db::setLogger()，
+这样执行SQL时将调用这个方法记录。
 
 获取数据库表与视图信息（Describing Tables/Views）
 -----------------------
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` also provides methods to retrieve detailed information about tables and views:
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` 也提供了方法去检索详细的表和视图信息：
 
 .. code-block:: php
 
     <?php
 
-    // Get tables on the test_db database
+    //获取test_db数据库的所有表
     $tables = $connection->listTables("test_db");
 
-    // Is there a table 'robots' in the database?
+    //在数据库中是否存在'robots'这个表
     $exists = $connection->tableExists("robots");
 
-    // Get name, data types and special features of 'robots' fields
+    //获取'robots'字段名称，数据类型，特殊特征
     $fields = $connection->describeColumns("robots");
     foreach ($fields as $field) {
         echo "Column Type: ", $field["Type"];
     }
 
-    // Get indexes on the 'robots' table
+    // 获取'robots'表的所有索引
     $indexes = $connection->describeIndexes("robots");
     foreach ($indexes as $index) {
         print_r($index->getColumns());
     }
 
-    // Get foreign keys on the 'robots' table
+    // 获取'robots'表的所有外键
     $references = $connection->describeReferences("robots");
     foreach ($references as $reference) {
-        // Print referenced columns
+        // 打印引用的列
         print_r($reference->getReferencedColumns());
     }
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+一个表的详细描述信息和MYSQL的describe命令返回的信息非常相似，它包含以下信息：
 
 +-------+----------------------------------------------------+
 | Index | Description                                        |
 +=======+====================================================+
-| Field | Field's name                                       |
+| Field | 字段名称                                           |
 +-------+----------------------------------------------------+
-| Type  | Column Type                                        |
+| Type  | 字段类型                                           |
 +-------+----------------------------------------------------+
-| Key   | Is the column part of the primary key or an index? |
+| Key   | 是否是主键或者索引                                 |
 +-------+----------------------------------------------------+
-| Null  | Does the column allow null values?                 |
+| Null  | 是否允许为空                                       |
 +-------+----------------------------------------------------+
 
-Methods to get information about views are also implemented for every supported database system:
+对于被支持的数据库系统，获取视图的信息的方法也被实现了：
 
 .. code-block:: php
 
     <?php
 
-    // Get views on the test_db database
+    // 获取test_db数据库的视图
     $tables = $connection->listViews("test_db");
 
-    // Is there a view 'robots' in the database?
+    // 'robots'视图是否存在数据库中
     $exists = $connection->viewExists("robots");
 
-Creating/Altering/Dropping Tables
+创建/修改/删除表
 ---------------------------------
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of
-commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used.
-:doc:`Phalcon\\Db <../api/Phalcon_Db>` offers a unified interface to alter tables, without the need to
-differentiate the SQL syntax based on the target storage system.
+不同的数据库系统（MySQL,Postgresql等）通过了CREATE, ALTER 或 DROP命令提供了用于创建，修改或删除表的功能。但是不同的数据库语法不同。
+:doc:`Phalcon\\Db <../api/Phalcon_Db>` 提供了统一的接口来改变表，而不需要
+区分基于目标存储系统上的SQL语法。
 
 创建数据库表（Creating Tables）
 ^^^^^^^^^^^^^^^
-The following example shows how to create a table:
+下面这个例子展示了怎么建立一个表：
 
 .. code-block:: php
 
@@ -661,34 +660,34 @@ The following example shows how to create a table:
         )
     );
 
-Phalcon\\Db::createTable() accepts an associative array describing the table. Columns are defined with the class
-:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`. The table below shows the options available to define a column:
+Phalcon\\Db::createTable()接受一个描述数据库表相关的数组。字段被定义成class :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` 。
+下表列出了可用于定义字段的选项：
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Option          | Description                                                                                                                                | Optional |
+| 选项            | 描述                                                                                                                                       | 是否可选 |
 +=================+============================================================================================================================================+==========+
-| "type"          | Column type. Must be a Phalcon\\Db\\Column constant (see below for a list)                                                                 | No       |
+| "type"          | 字段类型，传入的值必须是Phalcon\\Db\\Column的常量值（看下面的列表）                                                                          | 不       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "primary"       | True if the column is part of the table's primary
+| "primary"       | True的话表示列是表主键的一部分                                                                                                             | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "size"          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
+| "size"          | 字段的大小，像VARCHAR或者INTEGER类型需要用到                                                                                                 | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "scale"         | DECIMAL or NUMBER columns may be have a scale to specify how many decimals should be stored                                                | Yes      |
+| "scale"         | 指定字段存放多少位小数，DECIMAL或者NUMBER类型时需要用到                                                                                        | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "unsigned"      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| "unsigned"      | 是否有符号，INTEGER列可能需要设置是否有符号，该选项不适用于其他类型的列                                                                    | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "notNull"       | Column can store null values?                                                                                                              | Yes      |
+| "notNull"       | 字段是否可以储存null值（即是否为空）                                                                                                         | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "autoIncrement" | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
+| "autoIncrement" | 字段是否自增，设置了这个属性将自动填充自增整数，一个表只能设置一个列为自增属性                                                                 | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "bind"          | One of the BIND_TYPE_* constants telling how the column must be binded before save it                                                      | Yes      |
+| "bind"          | 字段类型绑定， BIND_TYPE_* 常量告诉数据库在保存数据前怎么绑定数据类型                                                                          | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "first"         | Column must be placed at first position in the column order                                                                                | Yes      |
+| "first"         | 把字段设置为表的第一位                                                                                                                       | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "after"         | Column must be placed after indicated column                                                                                               | Yes      |
+| "after"         | 设置字段放在指定字段的后面                                                                                               | 是       |
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
-Phalcon\\Db supports the following database column types:
+Phalcon\\Db 支持下面的数据库字段类型:
 
 * Phalcon\\Db\\Column::TYPE_INTEGER
 * Phalcon\\Db\\Column::TYPE_DATE
@@ -698,25 +697,25 @@ Phalcon\\Db supports the following database column types:
 * Phalcon\\Db\\Column::TYPE_CHAR
 * Phalcon\\Db\\Column::TYPE_TEXT
 
-The associative array passed in Phalcon\\Db::createTable() can have the possible keys:
+传入Phalcon\\Db::createTable() 的相关数组可能含有的下标：
 
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| Index        | Description                                                                                                                            | Optional |
+| 下标         | 描述                                                                                                                                   | 是否可选 |
 +==============+========================================================================================================================================+==========+
-| "columns"    | An array with a set of table columns defined with :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                | No       |
+| "columns"    | 一个数组包含表的所有字段，字段要定义成 :doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>`                                           | 不       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "indexes"    | An array with a set of table indexes defined with :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                  | Yes      |
+| "indexes"    | 一个数组包含表的所有索引，索引要定义成 :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>`                                             | 是       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "references" | An array with a set of table references (foreign keys) defined with :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`        | Yes      |
+| "references" | 一个数组包含表的所有外键，外键要定义成 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>`                                     | 是       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
-| "options"    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes      |
+| "options"    | 一个表包含所有创建的选项. 这些选项常常和数据库迁移有关.                                                                                | 是       |
 +--------------+----------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 修改数据库表（Altering Tables）
 ^^^^^^^^^^^^^^^
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features.
-Not all database systems allow to modify existing columns or add columns between two existing ones. :doc:`Phalcon\\Db <../api/Phalcon_Db>`
-is limited by these constraints.
+随着你的应用的增长，作为一个重构的一部分，或者增加新功能，你也许需要修改你的数据库。
+因为不是所有的数据库允许你修改已存在的字段或者添加字段在2个已存在的字段之间。所以 :doc:`Phalcon\\Db <../api/Phalcon_Db>`
+会受到数据库系统的这些限制。
 
 .. code-block:: php
 
@@ -724,7 +723,7 @@ is limited by these constraints.
 
     use Phalcon\Db\Column as Column;
 
-    // Adding a new column
+    // 添加一个新的字段
     $connection->addColumn("robots", null,
         new Column("robot_type", array(
             "type"    => Column::TYPE_VARCHAR,
@@ -734,29 +733,29 @@ is limited by these constraints.
         ))
     );
 
-    // Modifying an existing column
+    // 修改一个已存在的字段
     $connection->modifyColumn("robots", null, new Column("name", array(
         "type" => Column::TYPE_VARCHAR,
         "size" => 40,
         "notNull" => true,
     )));
 
-    // Deleting the column "name"
+    // 删除名为"name"的字段
     $connection->deleteColumn("robots", null, "name");
 
 
 删除数据库表（Dropping Tables）
 ^^^^^^^^^^^^^^^
-Examples on dropping tables:
+删除数据库表的例子:
 
 .. code-block:: php
 
     <?php
 
-    // Drop table robot from active database
+    // 删除'robots'表
     $connection->dropTable("robots");
 
-    //Drop table robot from database "machines"
+    // 删除数据库'machines'中的'robots'表
     $connection->dropTable("robots", "machines");
 
 .. _PDO: http://www.php.net/manual/en/book.pdo.php
