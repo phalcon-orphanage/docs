@@ -426,38 +426,33 @@ Phalcon\\DI 对每个储存的服务提供了延迟加载。除非开发者选�
 
 简单的注册（Simple Registration）
 -------------------
-As seen before, there are several ways to register services. These we call simple:
+就像你之前看到的那样，这里有几种方法去注册服务。下面是简单调用的例子：
 
-String
+字符串(String)
 ^^^^^^
-This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader.
-This type of definition does not allow to specify arguments for the class constructor or parameters:
+使用字符串注册服务需要一个有效的类名称，它将返回指定的类对象，如果类还没有加载的话，将使用自动加载器实例化对象。这种类型不允许向构造函数指定参数：
 
 .. code-block:: php
 
     <?php
 
-    // return new Phalcon\Http\Request();
+    // 返回 new Phalcon\Http\Request(); 对象
     $di->set('request', 'Phalcon\Http\Request');
 
 对象（Object）
 ^^^^^^
-This type expects an object. Due to the fact that object does not need to be resolved as it is
-already an object, one could say that it is not really a dependency injection,
-however it is useful if you want to force the returned dependency to always be
-the same object/value:
+这种类型注册服务需要一个对象。实际上，这个服务不再需要初始化，因为它已经是一个对象，可以说，这是不是一个真正的依赖注入，但是如果你想强制总是返回相同的对象/值，使用这种方式还是有用的:
 
 .. code-block:: php
 
     <?php
 
-    // return new Phalcon\Http\Request();
+    // 返回 Phalcon\Http\Request(); 对象
     $di->set('request', new Phalcon\Http\Request());
 
 闭包与匿名函数（Closures/Anonymous functions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This method offers greater freedom to build the dependency as desired, however, it is difficult to
-change some of the parameters externally without having to completely change the definition of dependency:
+这个方法提供了更加自由的方式去注册依赖，但是如果你想从外部改变实例化的参数而不用改变注册服务的代码，这是很困难的：
 
 .. code-block:: php
 
@@ -472,13 +467,13 @@ change some of the parameters externally without having to completely change the
         ));
     });
 
-Some of the limitations can be overcome by passing additional variables to the closure's environment:
+一些限制是可以克服的，通过传递额外的变量到闭包函数里面：
 
 .. code-block:: php
 
     <?php
 
-    //Using the $config variable in the current scope
+    // 把当前域的$config变量传递给匿名函数使用
     $di->set("db", function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
              "host" => $config->host,
