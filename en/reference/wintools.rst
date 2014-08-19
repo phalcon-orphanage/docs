@@ -15,7 +15,7 @@ On the Windows platform, you need to configure the system PATH to include Phalco
 .. figure:: ../_static/img/path-0.png
    :align: center
 
-Change the path to the one you installed the Phalcon tools:
+Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
 
 .. figure:: ../_static/img/path-01.png
    :align: center
