@@ -347,89 +347,82 @@
 
 实现方法（Our approach）
 ============
-Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+Phalcon\\DI 是一个实现依赖注入和定位服务的组件，而且它本身就是一个装载它们的容器。
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
-also use this component to inject dependencies and manage global instances of the different classes used in the application.
+因为Phalcon是高度解构的，整合框架的不同组件，使用Phalcon\\DI是必不可少的。开发者也可以使用这个组件去注入依赖和管理的应用程序中来自不同类的全局实例。
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
-using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only
-one way to get the required dependencies within a component.
+基本上，这个组件实现了 [控制反转](http://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC) 的模式。使用这种模式，组件的对象不用再使用setter或者构造函数去接受依赖实例，而是使用请求服务的依赖注入。这减少了总的复杂性，因为在组件内，只有一个方法去获取所需的依赖实例。
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+另外，该模式增加了代码的可测试性，从而使其不易出错。
 
 使用容器注册服务（Registering services in the Container）
 =====================================
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
-can request component B from the container, rather than creating a new instance component B.
+框架本身或者开发者都可以注册服务。当一个组件A需要组件B(或者它的类的实例) 去操作，它可以通过容器去请求组件B，而不是创建一个新的组件B实例。
 
-This way of working gives us many advantages:
+这个工作方法给我们提供了许多优势：
 
-* We can easily replace a component with one created by ourselves or a third party.
-* We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-* We can get global instances of components in a structured and unified way
+* 我们可以很容易的使用一个我们自己建立的或者是第三方的组件去替换原有的组件。
+* 我们完全控制对象的初始化，这让我们在传递它们的实例到组件之前，根据需要设置这些对象。
+* 我们可以在一个结构化的和统一组件内获取全局实例。
 
-Services can be registered using several types of definitions:
+服务可以使用不同方式去定义：
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    // 创建一个依赖注入容器
     $di = new Phalcon\DI();
 
-    //By its class name
+    // 通过类名称设置服务
     $di->set("request", 'Phalcon\Http\Request');
 
-    //Using an anonymous function, the instance will be lazy loaded
+    // 使用匿名函数去设置服务，这个实例将被延迟加载
     $di->set("request", function() {
         return new Phalcon\Http\Request();
     });
 
-    //Registering an instance directly
+    // 直接注册一个实例
     $di->set("request", new Phalcon\Http\Request());
 
-    //Using an array definition
+    // 使用数组方式定义服务
     $di->set("request", array(
         "className" => 'Phalcon\Http\Request'
     ));
 
-The array syntax is also allowed to register services:
+使用数组的方式去注册服务也是可以的：
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    // 创建一个依赖注入容器
     $di = new Phalcon\DI();
 
-    //By its class name
+    // 通过类名称设置服务
     $di["request"] = 'Phalcon\Http\Request';
 
-    //Using an anonymous function, the instance will be lazy loaded
+    // 使用匿名函数去设置服务，这个实例将被延迟加载
     $di["request"] = function() {
         return new Phalcon\Http\Request();
     };
 
-    //Registering an instance directly
+    // 直接注册一个实例
     $di["request"] = new Phalcon\Http\Request();
 
-    //Using an array definition
+    // 使用数组方式定义服务
     $di["request"] = array(
         "className" => 'Phalcon\Http\Request'
     );
 
-In the examples above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
-The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+在上面的例子中，当框架需要访问request服务的内容，它会在容器里面查找名为‘request’的服务。
+在容器中将返回所需要的服务的实例。当有需要时，开发者可能最终需要替换这个组件。
 
-Each of the methods (demonstrated in the examples above) used to set/register a service has advantages and disadvantages. It is up to the
-developer and the particular requirements that will designate which one is used.
+每个方法（在上面的例子证明）用于设置/注册服务方面具都具有优势和劣势。这是由开发者和特别的要求决定具体使用哪个。
 
-Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
-code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+通过字符串设置一个服务是很简单，但是缺乏灵活性。通过数组设置服务提供了更加灵活的方式，但是使代码更复杂。匿名函数是上述两者之间的一个很好的平衡，但是会导致比预期的更多维护。
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+Phalcon\\DI 对每个储存的服务提供了延迟加载。除非开发者选择直接实例化一个对象并将其存储在容器中，任何储存在里面的对象(通过数组，字符串等等设置的)都将延迟加载，即只要当使用到时才实例化。
 
 简单的注册（Simple Registration）
 -------------------
