@@ -55,9 +55,9 @@
       <td class="primary-box" width="25%" valign="top">
           {%- block sidebarlogo %}
           {%- if logo %}
-            <p class="logo"><a href="{{ pathto(master_doc) }}">
+            <!--<p class="logo"><a href="{{ pathto(master_doc) }}">
               <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/> PHALCON
-            </a></p>
+            </a></p>-->
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
@@ -69,9 +69,9 @@
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>-->
-                <div style="width:200px;padding:10px">
+                <!--<div style="width:200px;padding:10px">
                   <gcse:searchbox-only></gcse:searchbox-only>
-                </div>
+                </div>-->
             </div>
             </div>
             <!--<div style="padding:5px;padding-left:10px">
@@ -127,8 +127,10 @@
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
     <link href="http://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/fonts.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
     {%- if not embedded %}
@@ -183,11 +185,11 @@
 
         <div>
             <div class="header clear-fix">
-                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
-                <div class="header-right">
+                <a class="header-logo-x" href="http://phalconphp.com"><span xclass="logo-text">Phalcon</span></a>
+                <!--<div class="header-right">
                     <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
 allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
-                </div>
+                </div>-->
                 <ul class="header-nav">
                     <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
                     <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
@@ -206,7 +208,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
       {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
 
-      <table width="90%" align="center">
+      <table width="100%" align="center">
         <tr>
           {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
           <td class="second-box" valign="top">
@@ -232,7 +234,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       {%- block relbar2 %}{{ downrelbar() }}{% endblock %}
 
       {%- block footer %}
-        <div id="footer">
+        <!--<div id="footer">
 
           <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
           <p>Need support or have questions? Check our <a href="http://forum.phalconphp.com">Forum</a></p>
@@ -267,7 +269,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
             </div>
 
-        </div>
+        </div>-->
       {%- endblock %}
 
     </div>

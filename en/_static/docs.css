@@ -28,24 +28,30 @@ li {
     text-align: right;
 }
 
+h1 {
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 h2 {
-    font-style: bold;
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: normal;
     font-size: 24px;
     line-height: 24px;
     font-weight: 400;
-    margin: 25px 0 0;
+    margin: 35px 0 0;
     margin-bottom: 10px;
+    color: #3b4151;
 }
 
 h3 {
-    font-size: 22px;
-    font-style: normal;
-    margin: 15px 0 10px;
-    font-weight: normal;
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 25px 0 10px;
+    color: #3b4151;
+    font-size: 30px;
 }
 
 h4 {
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: normal;
@@ -53,10 +59,17 @@ h4 {
 
 .header {
     background: #4c5264;
+    padding: 20px;
+    margin: 0px;
+}
+
+.header a {
+    font-family: Proxima Nova;
+    color: #fff;
 }
 
 /*p, li {
-	color: #434343;
+    color: #434343;
 }*/
 
 td.primary-box li {
@@ -85,11 +98,12 @@ td.primary-box {
     padding-right: 20px;
     padding-top: 15px;
     text-align: left;
+    background: #f5f6f7;
 }
 
 td.primary-box ul {
     margin-left: 0px;
-    padding-left: 5px;
+    padding-left: 20px;
 }
 
 td.primary-box li {
@@ -105,9 +119,10 @@ td.primary-box a {
 }
 
 td.second-box {
-    padding: 30px 15px 10px 10px;
+    padding: 30px 15px 15px 15px;
     max-width: 650px;
     text-align: left;
+    padding-bottom: 30px;
 }
 
 div.documentwrapper h1 {
@@ -124,15 +139,16 @@ div.section {
 
 a.headerlink {
     color: #dadada;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 10px;
 }
 
 div.related {
     padding-top: 5px;
     padding-bottom: 15px;
-    height: 25px;
+    height: 45px;
     color: #f2f2f2;
+    background: #2b2f3e;
 }
 
 div.related li {
@@ -143,7 +159,8 @@ div.related li {
 }
 
 div.related a {
-    color: #000;
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fafafa;
     font-size: 14px;
     text-decoration: none;
 }
@@ -178,8 +195,8 @@ p.versionadded {
 
 p.versionchanged,
 blockquote.highlights {
-    font-family: Ubuntu, arial, sans-serif;
-    background-color: #F0712F;
+    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #CD4A78;
     border-color: #D03C00;
     color: #fff;
     line-height: 24px;
@@ -189,6 +206,7 @@ blockquote.highlights {
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
+    font-style: normal;
 }
 
 p.versionchanged a,
@@ -205,40 +223,40 @@ span.versionmodified {
 }
 
 /*div.highlight {
-	background: none repeat scroll 0 0 #212121;
-	margin: 7px 5px 5px;
-	max-width: 95%;
-	overflow-x: scroll;
-	text-align: left;
-	margin-left: 0px;
+    background: none repeat scroll 0 0 #212121;
+    margin: 7px 5px 5px;
+    max-width: 95%;
+    overflow-x: scroll;
+    text-align: left;
+    margin-left: 0px;
 }
 
 div.highlight,
 blockquote {
-	background: none repeat scroll 0 0 #212121;
-	font-family: Consolas,"Lucida Console",monospace;
-	font-size: 14px;
-	line-height: 18px;
-	color: #DCDCCC;
-	margin: 0 0 0 15px;
-	padding: 2px;
+    background: none repeat scroll 0 0 #212121;
+    font-family: Consolas,"Lucida Console",monospace;
+    font-size: 14px;
+    line-height: 18px;
+    color: #DCDCCC;
+    margin: 0 0 0 15px;
+    padding: 2px;
 }
 
 div.highlight span,
 blockquote span {
-	font-family: Consolas,"Lucida Console",monospace;
-	font-size: 14px;
-	line-height: 18px;
+    font-family: Consolas,"Lucida Console",monospace;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 blockquote {
-	padding: 3px;
+    padding: 3px;
 }
 
 blockquote p {
-	font-size: 14px;
-	line-height: 18px;
-	color: #DCDCCC;
+    font-size: 14px;
+    line-height: 18px;
+    color: #DCDCCC;
 }*/
 
 p.topless {
@@ -425,10 +443,6 @@ div.highlight {
     font-weight: normal;
 }
 
-.highlight .c {
-    color: #a50;
-}
-
 .highlight .sr {
     color: #717171;
 }
@@ -569,7 +583,7 @@ blockquote {
 
 .highlight  { background: #2b2f3e; color: #f6f3e8}
 .highlight .hll { background-color: #ffffcc }
-.highlight .c { color: #99968b; font-style: italic} /* Comment */
+.highlight .c { color: #c99; font-style: italic} /* Comment */
 .highlight .err { color: #f6f3e8} /* Error */
 .highlight .g { color: #f6f3e8} /* Generic */
 .highlight .k { color: #fc9;} /* Keyword */
@@ -600,7 +614,7 @@ blockquote {
 .highlight .kt { color: #cae682} /* Keyword.Type */
 .highlight .ld { color: #f6f3e8} /* Literal.Date */
 .highlight .m { color: #e5786d} /* Literal.Number */
-.highlight .s { color: #95e454;} /* Literal.String */
+.highlight .s { color: #99c;} /* Literal.String */
 .highlight .na { color: rgb(240, 241, 244)} /* Name.Attribute */
 .highlight .nb { color: #f6f3e8} /* Name.Builtin */
 .highlight .nc { color: #f6f3e8} /* Name.Class */
