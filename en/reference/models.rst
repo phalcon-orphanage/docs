@@ -1472,11 +1472,11 @@ passed back to the user for information regarding any errors.
 
 Note: Adding related entities by overloading the following methods is not possible:
 
- - Phalcon\Mvc\Model::beforeSave()
- - Phalcon\Mvc\Model::beforeCreate()
- - Phalcon\Mvc\Model::beforeUpdate()
+* Phalcon\\Mvc\\Model::beforeSave()
+* Phalcon\\Mvc\\Model::beforeCreate()
+* Phalcon\\Mvc\\Model::beforeUpdate()
 
-You need to overload Phalcon\Mvc\Model::save() for this to work from within a model.
+You need to overload Phalcon\\Mvc\\Model::save() for this to work from within a model.
 
 Validation Messages
 ^^^^^^^^^^^^^^^^^^^
