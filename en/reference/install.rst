@@ -124,14 +124,17 @@ Prerequisite packages are:
 .. code-block:: bash
 
     #brew
-    sudo brew install php53-phalcon
-    sudo brew install php54-phalcon
-    sudo brew install php55-phalcon
+    brew tap homebrew/homebrew-php
+    brew install php53-phalcon
+    brew install php54-phalcon
+    brew install php55-phalcon
+    brew install php56-phalcon
 
     #MacPorts
     sudo port install php53-phalcon
     sudo port install php54-phalcon
     sudo port install php55-phalcon
+    sudo port install php56-phalcon
 
 Add extension to your php configuration:
 
