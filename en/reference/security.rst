@@ -132,7 +132,7 @@ Adding a captcha_ to the form is also recommended to completely avoid the risks 
 Setting up the component
 ------------------------
 This component is automatically registered in the services container as 'security', you can re-register it
-to setup it's options:
+to setup its options:
 
 .. code-block:: php
 

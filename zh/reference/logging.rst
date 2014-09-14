@@ -145,7 +145,7 @@ Adapters
 --------
 The following examples show the basic use of each adapter:
 
-Stream Logger
+数据流日志记录器（Stream Logger）
 ^^^^^^^^^^^^^
 The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`_:
 

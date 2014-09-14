@@ -1,10 +1,10 @@
 教程 1：让我们通过例子来学习（Tutorial 1: Let's learn by example）
 ==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+通过这第一个教程，我们将引导您从基础完成创建简单的带有注册表单的应用。
+我们也将解释框架行为的基本方面。如果您对Phalcon的自动代码生成工具有兴趣，
+您可以查看 :doc:`developer tools <tools>`。
 
-确认安全（Checking your installation）
+确认安装（Checking your installation）
 --------------------------
 We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
 code snippet below:

@@ -316,7 +316,7 @@ html-атрибуты вторым параметром:
         'America/New_York' => 'New York',
         'Europe/Amsterdam' => 'Amsterdam',
         'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokio' => 'Tokio',
+        'Asia/Tokyo' => 'Tokyo',
     )));
 
     $form->add(new Select("receiveEmails", array(

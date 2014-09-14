@@ -1,9 +1,9 @@
 注释解析器（Annotations Parser）
 ==================
-It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\\Annotations is
-a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+这是第一个为PHP用C语言写的注释解析器。
+Phalcon\\Annotations 是一个通用组件，为应用中的PHP类提供易于解析和缓存注释的功能。
 
-Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
+注释内容是读自类，方法和属性的注释区域。一个注释单元可以放在注释区域的任何位置。
 
 .. code-block:: php
 
@@ -36,11 +36,11 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 
     }
 
-In the above example we find some annotations in the comments, an annotation has the following syntax:
+在上面的例子中，我们发现注释块中除了注释单元，还可以有注释内容，一个注释单元语法如下：
 
-@Annotation-Name[(param1, param2, ...)]
+@注释名称[(参数1, 参数2, ...)]
 
-Also, an annotation could be placed at any part of a docblock:
+当然，一个注释单元可以放在注释内容里的任意位置：
 
 .. code-block:: php
 
@@ -56,7 +56,7 @@ Also, an annotation could be placed at any part of a docblock:
      * @AnotherSpecialFeature(true)
      */
 
-The parser is highly flexible, the following docblock is valid:
+这个解析器是高度灵活的，下面这样的注释单元是合法可解析的：
 
 .. code-block:: php
 
@@ -69,7 +69,7 @@ The parser is highly flexible, the following docblock is valid:
      })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
      **/
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+然而，为了使代码更容易维护和理解，我们推荐把注释单元放在注释块的最后：
 
 .. code-block:: php
 
@@ -85,7 +85,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 读取注释（Reading Annotations）
 -------------------
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+实现反射器（Reflector）可以轻松获取被定义在类中的注释，使用一个面向对象的接口即可：
 
 .. code-block:: php
 
@@ -93,68 +93,66 @@ A reflector is implemented to easily get the annotations defined on a class usin
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //Reflect the annotations in the class Example
+    //反射在Example类的注释
     $reflector = $reader->get('Example');
 
-    //Read the annotations in the class' docblock
+    //读取类中注释块中的注释
     $annotations = $reflector->getClassAnnotations();
 
-    //Traverse the annotations
+    //遍历注释
     foreach ($annotations as $annotation) {
 
-        //Print the annotation name
+        //打印注释名称
         echo $annotation->getName(), PHP_EOL;
 
-        //Print the number of arguments
+        //打印注释参数个数
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //Print the arguments
+        //打印注释参数
         print_r($annotation->getArguments());
     }
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter.
-Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+虽然这个注释的读取过程是非常快速的，然而，出于性能原因，我们建议使用一个适配器储存解析后的注释内容。
+适配器把处理后的注释内容缓存起来，避免每次读取都需要解析一遍注释。
 
-:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
-only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
-other adapters to swap out when the application is in production stage.
+:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` 被用在上面的例子中。这个适配器只在请求过程中缓存注释（译者注：请求完成后缓存将被清空），因为这个原因，这个适配器非常适合用于开发环境中。当应用跑在生产环境中还有其他适配器可以替换。
 
 注释类型（Types of Annotations）
 --------------------
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+注释单元可以有参数也可以没有。参数可以为简单的文字(strings, number, boolean, null)，数组，哈希列表或者其他注释单元：
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Simple Annotation
+     * 简单的注释单元
      *
      * @SomeAnnotation
      */
 
     /**
-     * Annotation with parameters
+     * 带参数的注释单元
      *
      * @SomeAnnotation("hello", "world", 1, 2, 3, false, true)
      */
 
     /**
-     * Annotation with named parameters
+     * 带名称限定参数的注释单元
      *
      * @SomeAnnotation(first="hello", second="world", third=1)
      * @SomeAnnotation(first: "hello", second: "world", third: 1)
      */
 
     /**
-     * Passing an array
+     * 数组参数
      *
      * @SomeAnnotation([1, 2, 3, 4])
      * @SomeAnnotation({1, 2, 3, 4})
      */
 
     /**
-     * Passing a hash as parameter
+     * 哈希列表参数
      *
      * @SomeAnnotation({first=1, second=2, third=3})
      * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
@@ -163,7 +161,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      */
 
     /**
-     * Nested arrays/hashes
+     * 嵌套数组/哈希列表
      *
      * @SomeAnnotation({"name"="SomeName", "other"={
      *      "foo1": "bar1", "foo2": "bar2", {1, 2, 3},
@@ -171,20 +169,18 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
      */
 
     /**
-     * Nested Annotations
+     * 嵌套注释单元
      *
      * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
      */
 
 实际使用（Practical Usage）
 ---------------
-Next we will explain some practical examples of annotations in PHP applications:
+接下来我们将解释PHP应用程序中的注释的一些实际的例子：
 
 注释开启缓存（Cache Enabler with Annotations）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
-cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
-to be notified when a route is executed:
+我们假设一下，假设我们接下来的控制器和开发者想要建一个插件，如果被执行的方法被标记为可缓存的话，这个插件可以自动开启缓存。首先，我们先注册这个插件到Dispatcher服务中，这样这个插件将被通知当控制器的路由被执行的时候：
 
 .. code-block:: php
 
@@ -194,7 +190,7 @@ to be notified when a route is executed:
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach the plugin to 'dispatch' events
+        //添加插件到dispatch事件中
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -202,49 +198,49 @@ to be notified when a route is executed:
         return $dispatcher;
     };
 
-CacheEnablerPlugin is a plugin that intercept every action executed in the dispatcher enabling the cache if needed:
+CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检查如果需要则启动缓存：
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Enables the cache for a view if the latest
-     * executed action has the annotation @Cache
+     * 为视图启动缓存，如果被执行的action带有@Cache 注释单元。
+     *
      */
     class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
     {
 
         /**
-         * This event is executed before every route is executed in the dispatcher
+         * 这个事件在dispatcher中的每个路由被执行前执行
          *
          */
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //Parse the annotations in the method currently executed
+            //解析目前访问的控制的方法的注释
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //Check if the method has an annotation 'Cache'
+            //检查是否方法中带有注释名称‘Cache’的注释单元
             if ($annotations->has('Cache')) {
 
-                //The method has the annotation 'Cache'
+                //这个方法带有‘Cache’注释单元
                 $annotation = $annotations->get('Cache');
 
-                //Get the lifetime
+                //获取注释单元的‘lifetime’参数
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //Check if there is an user defined cache key
+                //检查注释单元中是否有用户定义的‘key’参数
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //Enable the cache for the current method
+                //为当前dispatcher访问的方法开启cache
                 $this->view->cache($options);
             }
 
@@ -252,7 +248,7 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
 
     }
 
-Now, we can use the annotation in a controller:
+现在，我们可以使用注释单元在控制器中：
 
 .. code-block:: php
 
@@ -290,32 +286,30 @@ Now, we can use the annotation in a controller:
 
 选择渲染模版（Choose template to render）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
-once the action has been executed:
+在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:`Phalcon\\Mvc\\View\\Simple <views>`，哪一个模板文件需要渲染：
 
 
 
 
 注释适配器（Annotations Adapters）
 --------------------
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+这些组件利用了适配器去缓存或者不缓存已经解析和处理过的注释内容，从而提升了性能或者为开发环境提供了开发/测试的适配器：
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                      |
 +============+======================================================================================================================================================================================================================================+==========================================================================================+
-| Memory     | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage                                                    | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
+| Memory     | 这个注释只缓存在内存中。当请求结束时缓存将被清空，每次请求都重新解析注释内容. 这个适配器适合用于开发环境中                                                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Files      | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                                                                                | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
+| Files      | 已解析和已处理的注释将被永久保存在PHP文件中提高性能。这个适配器必须和字节码缓存一起使用。                                                                                                                                            | :doc:`Phalcon\\Annotations\\Adapter\\Files <../api/Phalcon_Annotations_Adapter_Files>`   |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| APC        | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                                                                           | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
+| APC        | 已解析和已处理的注释将永久保存在APC缓存中提升性能。 这是一个速度非常快的适配器。                                                                                                                                                     | :doc:`Phalcon\\Annotations\\Adapter\\Apc <../api/Phalcon_Annotations_Adapter_Apc>`       |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
+| XCache     | 已解析和已处理的注释将永久保存在XCache缓存中提升性能. 这也是一个速度非常快的适配器。                                                                                                                                                 | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
 自定义适配器（Implementing your own adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
-annotations adapters or extend the existing ones.
+为了建立自己的注释适配器或者继承一个已存在的适配器，这个 :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` 接口都必须实现。
 
 外部资源（External Resources）
 ------------------

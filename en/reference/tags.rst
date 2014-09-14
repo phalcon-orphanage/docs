@@ -119,14 +119,14 @@ Forms in web applications play an essential part in retrieving user input. The f
         <label for="q">Search:</label>
         <?= $this->tag->textField("q") ?>
         <?= $this->tag->submitButton("Search") ?>
-    </form>
+    <?= $this->tag->endForm() ?>
 
     <!-- Specifying another method or attributes for the FORM tag -->
     <?= $this->tag->form(array("products/search", "method" => "get")); ?>
         <label for="q">Search:</label>
         <?= $this->tag->textField("q"); ?>
         <?= $this->tag->submitButton("Search"); ?>
-    </form>
+    <?= $this->tag->endForm() ?>
 
 This last code will generate the following HTML:
 
@@ -136,7 +136,7 @@ This last code will generate the following HTML:
          <label for="q">Search:</label>
          <input type="text" id="q" value="" name="q" />
          <input type="submit" value="Search" />
-    </endform>
+    </form>
 
 Same form generated in Volt:
 
@@ -147,7 +147,7 @@ Same form generated in Volt:
         <label for="q">Search:</label>
         {{ text_field("q") }}
         {{ submit_button("Search") }}
-    </form>
+    {{ endform() }}
 
 Phalcon also provides a :doc:`form builder <forms>` to create forms in an object-oriented manner.
 

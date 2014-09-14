@@ -7,7 +7,7 @@ generate invoices, and do other tasks such as manage their customers and product
 Also, INVO was made with `Bootstrap`_ as client-side framework. Although the application does not generate
 invoices, it still serves as an example to understand how the framework works.
 
-Project Structure
+项目结构（Project Structure）
 -----------------
 Once you clone the project in your document root you'll see the following structure:
 

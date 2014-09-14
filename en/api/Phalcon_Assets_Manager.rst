@@ -93,7 +93,7 @@ Sets a collection in the Assets Manager
 
     <?php
 
-     $assets->get('js', $collection);
+     $assets->set('js', $collection);
 
 
 

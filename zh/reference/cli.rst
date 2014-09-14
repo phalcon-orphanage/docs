@@ -64,7 +64,7 @@ Below is a sample bootstrap that is being used for this example.
         } elseif($k == 2) {
             $arguments['action'] = $arg;
         } elseif($k >= 3) {
-           $arguments[] = $arg;
+           $arguments['params'][] = $arg;
         }
     }
 

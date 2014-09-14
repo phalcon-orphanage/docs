@@ -186,7 +186,7 @@ Database migrations support the following database column types:
 ^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
 
-Defining References
+定义关系（Defining References）
 ^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
 
