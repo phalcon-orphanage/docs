@@ -226,13 +226,13 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
 Viewへのアウトプットの送信
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
+コントローラーから画面に出力を送信することは時に必要ですが、しかしMVC主義者のコミュニティが証明するように、望ましくはありません。レスポンスを返せるために画面上に出力するデータ全てをviewに渡す必要があります。Phalconは、最後に実行されたコントローラとして指定されたディレクトリ内部の最後に実行されたアクションと同じ名前のビューを探します。私たちのケースでは(app/views/index/index.phtml)です。
 
 .. code-block:: php
 
     <?php echo "<h1>Hello!</h1>";
 
-Our controller (app/controllers/IndexController.php) now has an empty action definition:
+私たちのコントローラー(app/controllers/IndexController.php)は、今はアクションの定義は空です。
 
 .. code-block:: php
 
@@ -248,7 +248,7 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
+ブラウザの出力は同じままにしてください。アクションの実行が終了すると:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` スタティックコンポーネントが自動的に生成されます。Viewの使い方について詳しくは :doc:`こちら <views>` を参照ください。
 
 サインアップフォームのデザイン
 ^^^^^^^^^^^^^^^^^^^^^^^^
