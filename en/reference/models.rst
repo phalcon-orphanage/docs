@@ -2268,7 +2268,7 @@ Note that you need to specify the deleted condition in your queries to effective
 Creating your own behaviors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+Also, Phalcon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blamable behavior which helps identify the user
 that is performed operations over a model:
@@ -2280,7 +2280,7 @@ that is performed operations over a model:
     use Phalcon\Mvc\Model\Behavior;
     use Phalcon\Mvc\Model\BehaviorInterface;
 
-    class Blameable extends Behavior implements BehaviorInterface
+    class Blamable extends Behavior implements BehaviorInterface
     {
 
         public function notify($eventType, $model)
@@ -2325,7 +2325,7 @@ The former is a very simple behavior, but it illustrates how to create a behavio
 
     }
 
-A behavior is also capable of intercept missing methods on your models:
+A behavior is also capable of intercepting missing methods on your models:
 
 .. code-block:: php
 
