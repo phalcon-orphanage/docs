@@ -136,7 +136,7 @@ to create it again and again could solve this:
 
     $some->someDbTask();
 
-Now, let's imagine that we must implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
+Now, let's imagine that we must implement two methods in the component, the first always needs to create a new connection and the second always needs to use a shared connection:
 
 .. code-block:: php
 
@@ -227,10 +227,10 @@ Now, let's imagine that we must implement two methods in the component, the firs
 
 So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead
 of creating them internally in the code makes our application more maintainable and decoupled. However, in the long-term,
-this form of dependency injection have some disadvantages.
+this form of dependency injection has some disadvantages.
 
 For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
-the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies
+the dependencies or create a constructor that passes them many arguments, additionally creating dependencies
 before using the component, every time, makes our code not as maintainable as we would like:
 
 .. code-block:: php
@@ -255,8 +255,8 @@ before using the component, every time, makes our code not as maintainable as we
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies,
-we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this,
+Think we had to create this object in many parts of our application. In the future, if we do not require any of the dependencies,
+we need to go through the entire code base to remove the parameter in any constructor or setter where we injected the code. To solve this,
 we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating
 the object:
 
@@ -357,7 +357,7 @@ of our component:
 
     $some->someTask();
 
-The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
+The component can now simply access the service it requires when it needs it, if it does not require a service it is not even initialized,
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
 their behavior or any other aspect of them and that would not affect the component.
 
