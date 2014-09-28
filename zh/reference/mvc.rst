@@ -12,14 +12,13 @@ MVC的好处包括：
 
 模型
 ------
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. :doc:`Learn more <models>`
+模型代表者应用中的数据及操作数据的规则。模型主要用来管理和数据库中相关的表交互的方法。在绝大多数情况下，数据库中的每张表都会一个应用的模型与之对应。应用中的业务逻辑也会放到模型中去。:doc:`更多可参看<models>`
 
 视图
 -----
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. :doc:`Learn more <views>`
+视图即是应用的图形接口。视科学文件通常是嵌入了只与显示有关的PHP代码。视图用来显示发向浏览器端的数据及提供用来向服务器发送请示的展示页面。:doc:`参见<views>`
 
 控制器
 -----------
-The controllers provide the "flow" between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. :doc:`Learn more <controllers>`
-
+控制器为对models及views间的流（数据流）进行控制。控制器负责处理从浏览器端来的数据，然后与模型进行交互，之后发送数据到视图端进行展示。:doc:`参看<controllers>`
 .. _MVC: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
