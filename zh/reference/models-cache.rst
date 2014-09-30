@@ -13,6 +13,7 @@
 
 Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何种类的数据，下面我们会解释如何在model使用它。第一步我们要在启动文件注册
 这个服务:
+
 .. code-block:: php
 
     <?php
@@ -35,6 +36,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
     });
 
 在注册缓存服务时我们可以按照我们的所需进行配置。一旦完成正确的缓存设置之后，我们可以按如下的方式缓存查询的结果了:
+
 .. code-block:: php
 
     <?php
@@ -83,6 +85,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 -----------------------------------------------------
 
 从上面的我们可以看到这两个方法是从:doc:`Phalcon\\Mvc\\Model继承而来 <../api/Phalcon_Mvc_Model>`:
+
 .. code-block:: php
 
     <?php
@@ -105,6 +108,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 这样做会影响到所有此类的对象对这两个函数的调用，我们可以在其中添加一个缓存层，如果未有其它缓存的
 话（比如modelsCache）。例如，一个基本的缓存实现是我们在此类中添加一个静态的变量以避免在同一请求中
 多次查询数据库：
+
 .. code-block:: php
 
     <?php
@@ -160,6 +164,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 
 上面的例子中我们把缓存放在了内存中，这做为第一级的缓存。当然我们也可以在第一层缓存的基本上实现第二层的缓存比如使用
 APC/XCache或是使用NoSQL数据库（如MongoDB等）：
+
 .. code-block:: php
 
     <?php
@@ -199,9 +204,8 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
         return self::$_cache[$key];
     }
 
-This gives you full control on how the the caches must be implemented for each model, if this strategy is common to several models
-you can create a base class for all of them:
 这样我们可以对可模型的缓存进行完全的控制，如果多个模型需要进行如此缓存可以建立一个基础类：
+
 .. code-block:: php
 
     <?php
@@ -225,8 +229,8 @@ you can create a base class for all of them:
         }
     }
 
-Then use this class as base class for each 'Cacheable' model:
 然后把这个类作为其它缓存类的基类：
+
 .. code-block:: php
 
     <?php
@@ -239,6 +243,7 @@ Then use this class as base class for each 'Cacheable' model:
 强制缓存（Forcing Cache）
 ----------------------
 前面的例子中我们在Phalcon\\Mvc\\Model中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：
+
 .. code-block:: php
 
     <?php
@@ -248,9 +253,8 @@ Then use this class as base class for each 'Cacheable' model:
         "cache" => array("key" => "my-cache", "lifetime" => 300)
     ));
 
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model,
-we can override the find/findFirst method to force every query to be cached:
 为了自由的对特定的查询结果进行缓存我们，比如我们想对模型中的所有查询结果进行缓存我们可以重写find/findFirst方法：
+
 .. code-block:: php
 
     <?php
@@ -293,6 +297,7 @@ we can override the find/findFirst method to force every query to be cached:
 缓存 PHQL 查询（Caching PHQL Queries）
 -----------------------------------
 ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL进行实现的。这个语言可以让我们非常自由的创建各种查询，当然这些查询也可以被缓存：
+
 .. code-block:: php
 
     <?php
@@ -311,6 +316,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     ));
 
 如果不想使用隐式的缓存尽管使用你想用的缓存方式：
+
 .. code-block:: php
 
     <?php
@@ -326,6 +332,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 可重用的相关记录（Reusable Related Records）
 ----------------------------------------
 一些模型有关联的数据表我们直接使用关联的数据：
+
 .. code-block:: php
 
     <?php
@@ -341,6 +348,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     
 这个例子非常简单，依据查询到的订单信息取得用户信息之后再取得用户名。下面的情景也是如何：我们查询了一些订单的信息，然后取得这些订单相关联
 用户的信息，之后取得用户名：
+
 .. code-block:: php
 
     <?php
@@ -360,6 +368,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
 每个客户可能会有一个或多个帐单，这就意味着客户对象没必须取多次。为了避免一次次的重复取客户信息，我们这里设置关系为reusable为true,
 这样ORM即知可以重复使用客户信息：
+
 .. code-block:: php
 
     <?php
@@ -377,6 +386,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     }
 
 此Cache存在于内存中，这意味着当请示结束时缓存数据即被释放。我们也可以通过重写模型管理器的方式实现更加复杂的缓存：
+
 .. code-block:: php
 
     <?php
@@ -423,6 +433,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     }
 
 别忘记注册模型管理器到DI中：
+
 .. code-block:: php
 
     <?php
@@ -433,17 +444,20 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
 缓存相关记录（Caching Related Records）
 ------------------------------------
+
 当使用find或findFirst查询关联数据时，ORM内部会自动的依据以下规则创建查询条件于：
+
 +---------------------+---------------------------------------------------------------------------------------------------------------+
-| 类型                 | 描述                                                    		                         | 隐含方法      			  |
+| 类型                 | 描述                                                                                    | 隐含方法                   |
 +=====================+===============================================================================================================+
-| Belongs-To          | 直接的返回模型相关的记录 													             | findFirst              |
+| Belongs-To          | 直接的返回模型相关的记录                                                                 | findFirst              |
 +---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-One             | 直接的返回模型相关的记录                    										         | findFirst              |
+| Has-One             | 直接的返回模型相关的记录                                                                     | findFirst              |
 +---------------------+---------------------------------------------------------------------------------------------------------------+
-| Has-Many            | 返回模型相关的记录集合												                     | find                   |
+| Has-Many            | 返回模型相关的记录集合                                                                   | find                   |
 +---------------------+---------------------------------------------------------------------------------------------------------------+
 这意味着当我们取得关联记录时，我们需要解析如何如何取得数据的方法：
+
 .. code-block:: php
 
     <?php
@@ -457,7 +471,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     //Same as above
     $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 
-Accordingly, we could replace the findFirst method in the model Invoices and implement the cache we consider most appropriate:
+因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法
 
 .. code-block:: php
 
@@ -474,7 +488,9 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
 递归缓存相关记录（Caching Related Records Recursively）
 ---------------------------------------------------
+
 在这种场景下我们假定我们每次取主记录时都会取模型的关联记录，如果我们此时保存这些记录可能会为为我们的系统带来一些性能上的提升：
+
 .. code-block:: php
 
     <?php
@@ -536,6 +552,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
         }
     }
 从已经缓存的订单中取得用户信息，可以减少系统的负载。注意我们也可以使用PHQL来实现这个，下面使用了PHQL来实现：
+
 .. code-block:: php
 
     <?php
@@ -572,9 +589,11 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
 基于条件的缓存（Caching based on Conditions）
 -----------------------------------------
+
 此例中，我依据当的条件实施缓存：
+
 +---------------------+--------------------+
-|类型				  |缓存		           |
+|类型                 |缓存                |
 +=====================+====================+
 | 1 - 10000           | mongo1             |
 +---------------------+--------------------+
@@ -583,6 +602,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 | > 20000             | mongo3             |
 +---------------------+--------------------+
 最简单的方式即是为模型类添加一个静态的方法，此方法中我们指定要使用的缓存：
+
 .. code-block:: php
 
     <?php
@@ -615,6 +635,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
     
 这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等我们还要创建更复杂的方法。另外当我们使用find/findFirst来查询关联数据时此方法亦会失效：
+
 .. code-block:: php
 
     <?php
@@ -630,6 +651,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     ));
 为了实现这个我们需要拦截中间语言解析，然后书写相关的代码以定制缓存：
 首先我们需要创建自定义的创建器，然后我们可以使用它来创建守全自己定义的查询：
+
 .. code-block:: php
 
     <?php
@@ -647,6 +669,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 这里我们返回的是CustomQuery而不是不直接的返回Phalcon\\Mvc\\Model\\Query， 类定义如下所示：
+
 .. code-block:: php
 
     <?php
@@ -695,6 +718,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 这里我们实现了一个帮助类用以递归的的检查条件以查询字段用以识我们知了需要使用缓存的范围（即检查条件以确认实施查询缓存的范围）：
+
 .. code-block:: php
 
     <?php
@@ -763,6 +787,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 最后，我们替换Robots模型中的查询方法以使用我们创建的自定义类：
+
 .. code-block:: php
 
     <?php
@@ -792,6 +817,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 -------------------------------------------
 像大多数现代的操作系统一样PHQL内部会缓存执行计划，如果同样的语句多次执行，PHQL会使用之前生成的查询计划以提升系统的性能，
 对开发者来说只采用绑定参数的形式传递参数即可实现：
+
 .. code-block:: php
 
     <?php
@@ -805,6 +831,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 上面的例子中，Phalcon产生了10个查询计划，这导致了应用的内存使用量增加。重写以上代码，我们使用绑定参数的这个优点可以减少系统和数据库的过多操作：
+
 .. code-block:: php
 
     <?php
@@ -819,6 +846,7 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 得用PHQL查询亦可以提供查询性能：
+
 .. code-block:: php
 
     <?php
@@ -834,5 +862,8 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
     }
 
 `预先准备的查询语句`_的查询计划亦可以被大多数的数据库所缓存，这样可以减少执行的时间，也可以使用我们的系统免受'SQL注入'_的影响。
-.. _`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
-.. _`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
+
+`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
+
+`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
+
