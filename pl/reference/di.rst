@@ -355,7 +355,7 @@ of our component:
     //Pass the service container as unique parameter
     $some = new SomeComponent($di);
 
-    $some->someTask();
+    $some->someDbTask();
 
 The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
