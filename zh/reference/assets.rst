@@ -1,7 +1,7 @@
 资源文件管理（Assets Management）
 =================
 Phalcon\\Assets是一个让开发者管理静态资源的组件，如css，javascript等。
-:doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` 存在于CI容器中，所以我们可以在服务容器存在的
+:doc:`Phalcon\\Assets\\Manager <../api/Phalcon_Assets_Manager>` 存在于DI容器中，所以我们可以在服务容器存在的
 任何地方使用它了添加资源。
 
 添加资源（Adding Resources）
