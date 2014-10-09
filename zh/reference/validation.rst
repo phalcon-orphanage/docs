@@ -1,9 +1,7 @@
 验证（Validation）
-==========
-Phalcon\\Validation is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
-
-The following example shows its basic usage:
+================
+Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。 当然也可以用来对非模型内的数据进行验证。
+下面的例子展示了一些基本的使用方法：
 
 .. code-block:: php
 
@@ -32,13 +30,12 @@ The following example shows its basic usage:
             echo $message, '<br>';
         }
     }
-
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+    
+由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：
 
 初始化验证（Initializing Validation）
------------------------
-Validation chains can be initialized in a direct manner by just adding validators to the Phalcon\\Validation object.
-You can put your validations in a separate file for better re-use code and organization:
+-----------------------------------
+我们可以直接在Phalcon\\Validation初始化时添加验证链。我们可以把验证器放在一个单独的文件中以提高代码的重用率及可组织性：
 
 .. code-block:: php
 
@@ -80,32 +77,32 @@ You can put your validations in a separate file for better re-use code and organ
     }
 
 验证器（Validators）
-----------
-Phalcon exposes a set of built-in validators for this component:
+------------------
+Phalcon的验证组件中内置了一些验证器：
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value is not null or empty string.                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Identical    | Validates that a field's value is the same as a specified value                                                                                                  | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Between      | Validates that a value is between two values                                                                                                                     | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------+-------------------------------------------------------------------+
+| 名称         | 解释                               |  示例                                                             |
++==============+====================================+===================================================================+
+| PresenceOf   |  检测字段的值是否为非空            | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| Identical    |  检测字段的值是否和指定的相同      | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| Email        |  检测值是否为合法的email地址       | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  |  检测值是否不在列举的范围内        | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  |  检测值是否在列举的范围内          | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| Regex        |  检测值是否匹配正则表达式          | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| StringLength |  检测值的字符串长度                | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| Between      |  检测值是否位于两个值之间          | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
++--------------+------------------------------------+-------------------------------------------------------------------+
+| Confirmation |  检测两个值是否相等                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
++--------------+------------------------------------+-------------------------------------------------------------------+
 
-The following example explains how to create additional validators for this component:
+下面的例子中展示了如何创建自定义的验证器：
 
 .. code-block:: php
 
@@ -119,7 +116,7 @@ The following example explains how to create additional validators for this comp
     {
 
         /**
-         * Executes the validation
+         * 执行验证
          *
          * @param Phalcon\Validation $validator
          * @param string $attribute
@@ -146,16 +143,14 @@ The following example explains how to create additional validators for this comp
 
     }
 
-It is important that validators return a valid boolean value indicating if the validation was successful or not.
+最重要的一点即是难证器要返回一个布尔值以标识验证是否成功：
 
 验证信息（Validation Messages）
--------------------
-:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the validation processes.
+-----------------------------
+:doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。
 
-Each message consists of an instance of the class :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the getMessages() method. Each message provides extended information like the attribute that
-generated the message or the message type:
+每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：
 
 .. code-block:: php
 
@@ -170,7 +165,7 @@ generated the message or the message type:
         }
     }
 
-The getMessages() method can be overridden in a validation class to replace/translate the default messages generated by the validators:
+当然这里我们也可以对getMessages()方法进行重写， 以取得我们想要的信息：
 
 .. code-block:: php
 
@@ -198,7 +193,7 @@ The getMessages() method can be overridden in a validation class to replace/tran
         }
     }
 
-Or you can pass a 'message' parameter to change the default message in each validator:
+或我们也可以传送一个message参数以覆盖验证器中默认的信息：
 
 .. code-block:: php
 
@@ -210,8 +205,7 @@ Or you can pass a 'message' parameter to change the default message in each vali
         'message' => 'The e-mail is not valid'
     )));
 
-By default, 'getMessages' returns all the messages generated during validation. You can filter messages
-for a specific field using the 'filter' method:
+默认，getMessages()方法会返回在验证过程中所产生的信息。 我们可以使用filter()方法来过滤我们感兴趣的消息：
 
 .. code-block:: php
 
@@ -226,8 +220,8 @@ for a specific field using the 'filter' method:
     }
 
 过滤数据（Filtering of Data）
------------------
-Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
+-----------------------------
+我们可以在数据被验证之前对其先进行过滤，以确保那些恶意的或不正确的数据不被验证。
 
 .. code-block:: php
 
@@ -247,14 +241,12 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
     $validation->setFilters('name', 'trim');
     $validation->setFilters('email', 'trim');
 
-Filtering and sanitizing is performed using the :doc:`filter <filter>`: component. You can add more filters to this
-component or use the built-in ones.
+这里我们使用 :doc:`filter <filter>`: 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。
 
 验证事件（Validation Events）
------------------
-When validations are organized in classes, you can implement the 'beforeValidation' and 'afterValidation' methods to
-perform additional checks, filters, clean-up, etc. If 'beforeValidation' method returns false the validation is automatically
-cancelled:
+-----------------------------
+当在类中执行验证时， 我们可以在beforeValidation或afterValidation方法（事件）中执行额外的检查，过滤，清理等工作。 如果beforeValidation方法返回了false
+则验证会被中止：
 
 .. code-block:: php
 
@@ -271,7 +263,7 @@ cancelled:
         }
 
         /**
-         * Executed before validation
+         * 验证执行之前执行
          *
          * @param array $data
          * @param object $entity
@@ -288,7 +280,7 @@ cancelled:
         }
 
         /**
-         * Executed after validation
+         * 验证之后执行
          *
          * @param array $data
          * @param object $entity
@@ -302,9 +294,8 @@ cancelled:
     }
 
 取消验证（Cancelling Validations）
-======================
-By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change
-this behavior by telling the validation component which validator may stop the validation:
+==================================
+默认所有的验证器都会被执行，不管验证成功与否。 我们可以通过设置 cancelOnFail 参数为 true 来指定某个验证器验证失败时中止以后的所有验证：
 
 .. code-block:: php
 
@@ -329,10 +320,9 @@ this behavior by telling the validation component which validator may stop the v
             'min' => 2
         )));
 
-The first validator has the option 'cancelOnFail' with a value of true, therefore if that validator fails the remaining
-validators in the chain are not executed.
+第一个验证器中 cancelOnFail 参数设置为 true 则表示如果此验证器验证失败则验证链中接下的验证不会被执行。
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the 'cancelOnFail' option:
+我们可以在自定义的验证器中设置 cancelOnFail 为 true 来停止验证链：
 
 .. code-block:: php
 
@@ -346,7 +336,7 @@ If you are creating custom validators you can dynamically stop the validation ch
     {
 
         /**
-         * Executes the validation
+         * 执行验证
          *
          * @param Phalcon\Validation $validator
          * @param string $attribute
@@ -363,3 +353,4 @@ If you are creating custom validators you can dynamically stop the validation ch
         }
 
     }
+
