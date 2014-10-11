@@ -1,27 +1,30 @@
 日志记录（Logging）
-=======
-:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` for every logging need your application has, from debugging processes to tracing application flow.
+=====================
+Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`。 我们可以使用此组件输出日志到不同的流中，如文件，系统日志等。
+这个组件还提供了其它的功能如日志事务（类似于数据库的事务）， 配置选项， 还可以输出不同的格式，另外还支持多种过滤器。 :doc:`Phalcon\\Logger <../api/Phalcon_Logger>`
+ 提供了多种日志记录方式，从调试程序到跟踪应用的执行以满足应用的需求。
 
 适配器（Adapters）
---------
-This component makes use of adapters to store the logged messages. The use of adapters allows for a common interface for logging
-while switching backends if necessary. The adapters supported are:
+-----------------
+此组件使用不同的流适配器来保存日信息。 我们可以按需使用适配器。支持的适配器如下：
 
 +---------+---------------------------+----------------------------------------------------------------------------------+
-| Adapter | Description               | API                                                                              |
+| 适配器  | 描述                      | 接口                                                                             |
 +=========+===========================+==================================================================================+
-| File    | Logs to a plain text file | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
+| File    | 保存日志到普通文件        | :doc:`Phalcon\\Logger\\Adapter\\File <../api/Phalcon_Logger_Adapter_File>`       |
 +---------+---------------------------+----------------------------------------------------------------------------------+
-| Stream  | Logs to a PHP Streams     | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
+| Stream  | 保存日志到PHP流           | :doc:`Phalcon\\Logger\\Adapter\\Stream <../api/Phalcon_Logger_Adapter_Stream>`   |
 +---------+---------------------------+----------------------------------------------------------------------------------+
-| Syslog  | Logs to the system logger | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
+| Syslog  | 保存到系统日志            | :doc:`Phalcon\\Logger\\Adapter\\Syslog <../api/Phalcon_Logger_Adapter_Syslog>`   |
 +---------+---------------------------+----------------------------------------------------------------------------------+
-| Firephp | Logs to the FirePHP       | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
+| Firephp | 发送日志到FirePHP         | :doc:`Phalcon\\Logger\\Adapter\\FirePHP <../api/Phalcon_Logger_Adapter_Firephp>` |
 +---------+---------------------------+----------------------------------------------------------------------------------+
 
 创建日志（Creating a Log）
---------------
-The example below shows how to create a log and add messages to it:
+--------------------------
+
+下面的例子展示了如何创建日志对象及如何添加日志信息：
+
 
 .. code-block:: php
 
@@ -34,7 +37,7 @@ The example below shows how to create a log and add messages to it:
     $logger->log("This is an error", \Phalcon\Logger::ERROR);
     $logger->error("This is another error");
 
-The log generated is below:
+产生的日志信息如下：
 
 .. code-block:: php
 
@@ -43,10 +46,9 @@ The log generated is below:
     [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
 
 事务（Transactions）
-------------
-Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you
-can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the
-relevant adapter (File in this case) in a single atomic operation.
+----------------------
+保存日志到适配器如文件(文件系统)是非常消耗系统资源的。 为了减少应用性能上的开销，我们可以使用日志事务。 事务会把日志记录临时的保存到内存中然后再
+写入到适配中（此例子中为文件），（这个操作是个原子操作）
 
 .. code-block:: php
 
@@ -54,22 +56,22 @@ relevant adapter (File in this case) in a single atomic operation.
 
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
-    // Create the logger
+    // 生成日志新组件实例
     $logger = new FileAdapter("app/logs/test.log");
 
-    // Start a transaction
+    // 开启事务
     $logger->begin();
 
-    // Add messages
+    // 添加消息
     $logger->alert("This is an alert");
     $logger->error("This is another error");
 
-    // Commit messages to file
+    //  保存消息到文件中
     $logger->commit();
 
 使用多个处理程序进行日志记录（Logging to Multiple Handlers）
-----------------------------
-:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` allows to send messages to multiple handlers with a just single call:
+--------------------------------------------------------------------
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` 也可以同时保存日志信息到多个适配器中：
 
 .. code-block:: php
 
@@ -89,42 +91,43 @@ relevant adapter (File in this case) in a single atomic operation.
     $logger->log("This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
-The messages are sent to the handlers in the order they where registered.
+信息发送的顺序和处理器（适配器）注册的顺序相同。
 
 信息格式（Message Formatting）
-------------------
-This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
+------------------------------
+
+此组件使用 formatters 在信息发送前格式化日志信息。 支持下而后格式：
 
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter | Description                                   | API                                                                                |
+| 适配器  | 描述                                          | 接口                                                                               |
 +=========+===============================================+====================================================================================+
-| Line    | Formats the messages using an one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
+| Line    | 文本方式格式化信息                            | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Json    | Prepares a message to be encoded with JSON    | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
+| Json    | 使用JSON格式格式化信息                        | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
-| Syslog  | Prepares a message to be sent to syslog       | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
+| Syslog  | 使用系统提供的格式格式化信息                  | :doc:`Phalcon\\Logger\\Formatter\\Syslog <../api/Phalcon_Logger_Formatter_Syslog>` |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 
 行格式化处理（Line Formatter）
-^^^^^^^^^^^^^^
-Formats the messages using a one-line string. The default logging format is:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+使用单行格式格式化信息。 默认的格式如下：
 
 [%date%][%type%] %message%
 
-You can change the default format using setFormat(), this allows you to change the format of the logged
-messages by defining your own. The log format variables allowed are:
+我们可以使用setFormat()来设置自定义格式。 下面是格式变量：
+
 
 +-----------+------------------------------------------+
-| Variable  | Description                              |
+| 变量      | 描述                                     |
 +===========+==========================================+
-| %message% | The message itself expected to be logged |
+| %message% | 待记录的日志消息                         |
 +-----------+------------------------------------------+
-| %date%    | Date the message was added               |
+| %date%    | 消息添加的时间                           |
 +-----------+------------------------------------------+
-| %type%    | Uppercase string with message type       |
+| %type%    | 消息类型（使用大写）                   |
 +-----------+------------------------------------------+
 
-The example below shows how to change the log format:
+下面的例子中展示了如何修改日志格式：
 
 .. code-block:: php
 
@@ -132,22 +135,23 @@ The example below shows how to change the log format:
 
     use Phalcon\Logger\Formatter\Line as LineFormatter;
 
-    //Changing the logger format
+    // 修改日志格式
     $formatter = new LineFormatter("%date% - %message%");
     $logger->setFormatter($formatter);
 
 自定义格式处理（Implementing your own formatters）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` interface must be implemented in order to
-create your own logger formatter or extend the existing ones.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+若要实现自定义的格式则要实现 :doc:`Phalcon\\Logger\\FormatterInterface <../api/Phalcon_Logger_FormatterInterface>` 接口， 
+这样才能扩展已有的格式或创建自定义的格式
 
-Adapters
---------
-The following examples show the basic use of each adapter:
+
+适配器(Adapters)
+----------------
+下面的例子中展示了每种适配器的简单用法：
 
 数据流日志记录器（Stream Logger）
-^^^^^^^^^^^^^
-The stream logger writes messages to a valid registered stream in PHP. A list of streams is available `here <http://php.net/manual/en/wrappers.php>`_:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+系统日志保存消息到一个已注册的有效的PHP流中。 这里列出了可用的流： here <http://php.net/manual/en/wrappers.php>`_:
 
 .. code-block:: php
 
@@ -155,17 +159,17 @@ The stream logger writes messages to a valid registered stream in PHP. A list of
 
     use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
-    // Opens a stream using zlib compression
+    // 使用zlib压缩流
     $logger = new StreamAdapter("compress.zlib://week.log.gz");
 
-    // Writes the logs to stderr
+    // 发送消息到stderr
     $logger = new StreamAdapter("php://stderr");
 
 文件日志记录器（File Logger）
-^^^^^^^^^^^
-This logger uses plain files to log any kind of data. By default all logger files are open using
-append mode which open the files for writing only; placing the file pointer at the end of the file.
-If the file does not exist, attempt to create it. You can change this mode passing additional options to the constructor:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+文件适配器保存所有的日志信息到普通的文件中。 默认情况下日志文件使用添加模式打开，打开文件后文件的指针会指向文件的尾端。 
+如果文件不存在，则会尝试创建。 我们可以通过传递附加参数的形式来修改打开的模式：
 
 .. code-block:: php
 
@@ -173,24 +177,24 @@ If the file does not exist, attempt to create it. You can change this mode passi
 
     use Phalcon\Logger\Adapter\File as FileAdapter;
 
-    // Create the file logger in 'w' mode
+    // 使用写模式打开
     $logger = new FileAdapter("app/logs/test.log", array(
         'mode' => 'w'
     ));
 
 Syslog 日志记录器（Syslog Logger）
-^^^^^^^^^^^^^
-This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+使用系统日志适配器。 由于操作系统的不同得到的日志也不尽相同：
 
 .. code-block:: php
 
     <?php
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
-    // Basic Usage
+    // 基本用法
     $logger = new SyslogAdapter(null);
 
-    // Setting ident/mode/facility
+    // Setting ident/mode/facility 参数设置
     $logger = new SyslogAdapter("ident-name", array(
         'option' => LOG_NDELAY,
         'facility' => LOG_MAIL
@@ -198,8 +202,9 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     
     
 FirePHP 日志记录器（FirePHP Logger）
-^^^^^^^^^^^^^^
-This logger sends messages to the FirePHP.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+发送消息到FirePHP:
 
 .. code-block:: php
 
@@ -208,11 +213,11 @@ This logger sends messages to the FirePHP.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
- 	$logger->log("This is a message");
- 	$logger->log("This is an error", \Phalcon\Logger::ERROR);
- 	$logger->error("This is another error");
+    $logger->log("This is a message");
+    $logger->log("This is an error", \Phalcon\Logger::ERROR);
+    $logger->error("This is another error");
 
 自定义适配器（Implementing your own adapters）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` interface must be implemented in order to
-create your own logger adapters or extend the existing ones.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+如果开发者想自定义新的日志组件则需实现此接口： :doc:`Phalcon\\Logger\\AdapterInterface <../api/Phalcon_Logger_AdapterInterface>` 。 
