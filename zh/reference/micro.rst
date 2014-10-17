@@ -1,8 +1,6 @@
 微应用（Micro Applications）
-==================
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of
-code to create a PHP application. Micro applications are suitable to implement small applications, APIs and
-prototypes in a practical way.
+==========================
+使用Phalcon框架开发者可以创建微框架应用。 这样开发者只需要书写极少的代码即可创建一个PHP应用。 微应用适用于书写小的应用， API或原型等
 
 .. code-block:: php
 
@@ -17,8 +15,8 @@ prototypes in a practical way.
     $app->handle();
 
 创建微应用（Creating a Micro Application）
-----------------------------
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is the class responsible for implementing a micro application.
+------------------------------------------
+Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实现微应用。
 
 .. code-block:: php
 
@@ -27,11 +25,9 @@ prototypes in a practical way.
     $app = new Phalcon\Mvc\Micro();
 
 定义路由（Defining routes）
----------------
-After instantiating the object, you will need to add some routes. :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` manages routing internally.
-Routes must always start with /. A HTTP method constraint is optionally required when defining routes, so as to instruct
-the router to match only if the request also matches the HTTP methods. The following example shows how to define
-a route for the method GET:
+-------------------------
+实例化后， 开发者需要添加一些路由规则。 Phalcon内部使用 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 来管理路由。 路由必须以 / 开头。
+定义路由时通常会书写http方法约束， 这样路由规则只适用于那些和规则及htttp方法相匹配的路由。 下面的方法展示了如何定义了HTTP get方法路由：
 
 .. code-block:: php
 
@@ -41,94 +37,90 @@ a route for the method GET:
         echo "<h1>Hello! $name</h1>";
     });
 
-The "get" method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
-directly to the route handler (the anonymous function). Handlers are executed when a route is matched. A handler could be
-any callable item in the PHP userland. The following example shows how to define different types of handlers:
-
+get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} 中含有一个参数 {$name}, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
+处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：
+ 
 .. code-block:: php
 
     <?php
 
-    // With a function
+    //  函数
     function say_hello($name) {
         echo "<h1>Hello! $name</h1>";
     }
 
     $app->get('/say/hello/{name}', "say_hello");
 
-    // With a static method
+    //  静态方法
     $app->get('/say/hello/{name}', "SomeClass::someSayMethod");
 
-    // With a method in an object
+    //  对象内的方法 
     $myController = new MyController();
     $app->get('/say/hello/{name}', array($myController, "someAction"));
 
-    //Anonymous function
+    // 匿名函数
     $app->get('/say/hello/{name}', function ($name) {
         echo "<h1>Hello! $name</h1>";
     });
 
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` provides a set of methods to define the HTTP method (or methods)
-which the route is constrained for:
+:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 提供了一系列的用于定义http方法的限定方法：
 
 .. code-block:: php
 
     <?php
 
-    //Matches if the HTTP method is GET
+    // 匹配http get 方法：
     $app->get('/api/products', "get_products");
 
-    //Matches if the HTTP method is POST
+    //匹配HTTP post方法
     $app->post('/api/products/add', "add_product");
 
-    //Matches if the HTTP method is PUT
+    // 匹配http put 方法
     $app->put('/api/products/update/{id}', "update_product");
 
-    //Matches if the HTTP method is DELETE
+    // 匹配http delete方法
     $app->delete('/api/products/remove/{id}', "delete_product");
 
-    //Matches if the HTTP method is OPTIONS
+    // 匹配http options方法
     $app->options('/api/products/info/{id}', "info_product");
 
-    //Matches if the HTTP method is PATCH
+    // 匹配http patch方法
     $app->patch('/api/products/update/{id}', "info_product");
 
-    //Matches if the HTTP method is GET or POST
+    // 匹配http get 或 post方法
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
 
 路由参数（Routes with Parameters）
-^^^^^^^^^^^^^^^^^^^^^^
-Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
-formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+如上面的例子中展示的那样在路由中定义参数是非常容易的。 参数名需要放在花括号内。 参数格式亦可使用正则表达式以确保数据一致性。 例子如下：
 
 .. code-block:: php
 
     <?php
 
-    //This route have two parameters and each of them have a format
+    // 此路由有两个参数每个参数有一格式
     $app->get('/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}', function ($year, $title) {
         echo "<h1>Title: $title</h1>";
         echo "<h2>Year: $year</h2>";
     });
 
 起始路由（Starting Route）
-^^^^^^^^^^^^^^
-Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
-This scenario is coded as follows:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+通常情况下， 应用一般由 / 路径开始访问， 当然此访问多为 GET方法。 这种情况代码如下：
 
 .. code-block:: php
 
     <?php
 
-    //This is the start route
+    // 超始路由
     $app->get('/', function () {
         echo "<h1>Welcome!</h1>";
     });
 
 重写规则（Rewrite Rules）
-^^^^^^^^^^^^^
-The following rules can be used together with Apache to rewrite the URis:
+^^^^^^^^^^^^^^^^^^^^^^^
+下面的规则用来实现apache重写：
 
 .. code-block:: apacheconf
 
@@ -139,31 +131,29 @@ The following rules can be used together with Apache to rewrite the URis:
     </IfModule>
 
 处理响应（Working with Responses）
-----------------------
-You are free to produce any kind of response in a handler: directly make an output, use a template engine, include a view,
-return a json, etc.:
+---------------------------------
+开发者可以在路由处理器中设置任务种类的响应：直接输出， 使用模板引擎， 包含视图， 返回json数据等。
 
 .. code-block:: php
 
     <?php
 
-    //Direct output
+    // 直接输出
     $app->get('/say/hello', function () {
         echo "<h1>Hello! $name</h1>";
     });
 
-    //Requiring another file
+    // 包含其它文件
     $app->get('/show/results', function () {
         require 'views/results.php';
     });
 
-    //Returning a JSON
+    // 返回JSON
     $app->get('/get/some-json', function () {
         echo json_encode(array("some", "important", "data"));
     });
 
-In addition to that, you have access to the service :doc:`"response" <response>`, with which you can manipulate better the
-response:
+另外开发者还可以使用 :doc:`"response" <response>` ， 这样开发者可以更好的处理结果：
 
 .. code-block:: php
 
@@ -171,15 +161,15 @@ response:
 
     $app->get('/show/data', function () use ($app) {
 
-        //Set the Content-Type header
+        // 设置返回头部内容格式
         $app->response->setContentType('text/plain')->sendHeaders();
 
-        //Print a file
+        // 输出文件内容
         readfile("data.txt");
 
     });
 
-Or create a response object and return it from the handler:
+或回复response对象：
 
 .. code-block:: php
 
@@ -187,28 +177,28 @@ Or create a response object and return it from the handler:
 
     $app->get('/show/data', function () {
 
-        //Create a response
+        // 创建Response类实例
         $response = new Phalcon\Http\Response();
 
-        //Set the Content-Type header
+        //Set the Content-Type header 设置返回内容的类型
         $response->setContentType('text/plain');
 
-        //Pass the content of a file
+        // 设置文件内容参数
         $response->setContent(file_get_contents("data.txt"));
 
-        //Return the response
+        //返回response实例对象
         return $response;
     });
 
 重定向（Making redirections）
--------------------
-Redirections could be performed to forward the execution flow to another route:
+---------------------------
+重定向用来在当前的处理中跳转到其它的处理流：
 
 .. code-block:: php
 
     <?php
 
-    //This route makes a redirection to another route
+    // 此路由重定向到其它的路由
     $app->post('/old/welcome', function () use ($app) {
         $app->response->redirect("new/welcome")->sendHeaders();
     });
@@ -218,22 +208,21 @@ Redirections could be performed to forward the execution flow to another route:
     });
 
 根据路由生成 URL（Generating URLs for Routes）
---------------------------
-:doc:`Phalcon\\Mvc\\Url <url>` can be used to produce URLs based on the defined routes. You need to set up a name for the route;
-by this way the "url" service can produce the corresponding URL:
+----------------------------------------------------
+Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由的URL。 开发者可以为路由设置名字， 通过这种方式 "url" 服务可以产生相关的路由：
 
 .. code-block:: php
 
     <?php
 
-    //Set a route with the name "show-post"
+    // 设置名为 "show-post"的路由
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
-        //.. show the post here
+        //.. show the post here 
 
     })->setName('show-post');
 
-    //produce an URL somewhere
+    // 产生url 
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(
@@ -246,9 +235,8 @@ by this way the "url" service can produce the corresponding URL:
 
 
 与依赖注入的交互（Interacting with the Dependency Injector）
-----------------------------------------
-In the micro application, a :doc:`Phalcon\\DI\\FactoryDefault <di>` services container is created implicitly; additionally you
-can create outside the application a container to manipulate its services:
+-------------------------------------------------------------
+微应用中， :doc:`Phalcon\\DI\\FactoryDefault <di>` 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：
 
 .. code-block:: php
 
@@ -277,7 +265,7 @@ can create outside the application a container to manipulate its services:
         $app->flash->success('Yes!, the contact was made!');
     });
 
-The array-syntax is allowed to easily set/get services in the internal services container:
+服务容器中可以使用数据类的语法来设置或取服务实例：
 
 .. code-block:: php
 
@@ -288,7 +276,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     $app = new Micro();
 
-    //Setup the database service
+    // 设置数据库服务实例
     $app['db'] = function() {
         return new MysqlAdapter(array(
             "host" => "localhost",
@@ -306,9 +294,8 @@ The array-syntax is allowed to easily set/get services in the internal services 
     });
 
 处理Not-Found（Not-Found Handler）
------------------
-When an user tries to access a route that is not defined, the micro application will try to execute the "Not-Found" handler.
-An example of that behavior is below:
+----------------------------------
+当用户访问未定义的路由时， 微应用会试着执行 "Not-Found"处理器。 示例如下：
 
 .. code-block:: php
 
@@ -320,8 +307,8 @@ An example of that behavior is below:
     });
 
 微应用中的模型（Models in Micro Applications）
-----------------------------
-:doc:`Models <models>` can be used transparently in Micro Applications, only is required an autoloader to load models:
+-------------------------------------------
+Phalcon中开发者可以直接使用 :doc:`Models <models>` ， 开发者只需要一个类自动加载器来加载模型：
 
 .. code-block:: php
 
@@ -346,25 +333,24 @@ An example of that behavior is below:
     $app->handle();
 
 微应用中的事件（Micro Application Events）
-------------------------
-:doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` is able to send events to the :doc:`EventsManager <events>` (if it is present).
-Events are triggered using the type "micro". The following events are supported:
+----------------------------------------
+当有事件发生时 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 会发送事件到 :doc:`EventsManager <events>` 。 这里使用 "micro" 来绑定处理事件。 支持如下事件： 
 
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
-+=====================+============================================================================================================================+======================+
-| beforeHandleRoute   | The main method is just called, at this point the application doesn't know if there is some matched route                  | Yes                  |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| beforeExecuteRoute  | A route has been matched and it contains a valid handler, at this point the handler has not been executed                  | Yes                  |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| afterExecuteRoute   | Triggered after running the handler                                                                                        | No                   |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| beforeNotFound      | Triggered when any of the defined routes match the requested URI                                                           | Yes                  |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| afterHandleRoute    | Triggered after completing the whole process in a successful way                                                           | Yes                  |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
++---------------------+-------------------------------------------------------------------+----------------------+
+| 事件名              |  如何触发                                                         | 是否可中断执行       |
++=====================+===================================================================+======================+
+| beforeHandleRoute   |  处理方法调用之前执行， 此时应用程序还不知道是否存在匹配的路由    | 是                   |
++---------------------+-------------------------------------------------------------------+----------------------+
+| beforeExecuteRoute  |  存在匹配的路由及相关的处理器， 不过处理器还未被执行              | 是                   |
++---------------------+-------------------------------------------------------------------+----------------------+
+| afterExecuteRoute   |  处理器执行之后触发                                               | 否                   |
++---------------------+-------------------------------------------------------------------+----------------------+
+| beforeNotFound      |  NotFound触发之前执行                                             | 是                   |
++---------------------+-------------------------------------------------------------------+----------------------+
+| afterHandleRoute    |  处理器执行之后执行                                               | 是                   |
++---------------------+-------------------------------------------------------------------+----------------------+
 
-In the following example, we explain how to control the application security using events:
+下面的例子中， 我们阐述了如何使用事件来控制应用的安全性:
 
 .. code-block:: php
 
@@ -373,10 +359,10 @@ In the following example, we explain how to control the application security usi
     use Phalcon\Mvc\Micro,
         Phalcon\Events\Manager as EventsManager;
 
-    //Create a events manager
+    // 创建事件监听器
     $eventManager = new EventsManager();
 
-    //Listen all the application events
+    // 监听应用的所有事件
     $eventManager->attach('micro', function($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
@@ -385,7 +371,7 @@ In the following example, we explain how to control the application security usi
                 $app->flashSession->error("The user isn't authenticated");
                 $app->response->redirect("/")->sendHeaders();
 
-                //Return (false) stop the operation
+                // 返回false来中止操作
                 return false;
             }
         }
@@ -394,12 +380,12 @@ In the following example, we explain how to control the application security usi
 
     $app = new Micro();
 
-    //Bind the events manager to the app
+    // 绑定事件管理器到应用
     $app->setEventsManager($eventManager);
 
 中间件事件（Middleware events）
------------------
-In addition to the events manager, events can be added using the methods 'before', 'after' and 'finish':
+-----------------------------
+此外， 应用事件亦可使用 'before', 'after', 'finish'等来绑定：
 
 .. code-block:: php
 
@@ -407,8 +393,8 @@ In addition to the events manager, events can be added using the methods 'before
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Executed before every route is executed
-    //Return false cancels the route execution
+    // 每个路由匹配之前执行
+    // 返回false来中止程序执行
     $app->before(function() use ($app) {
         if ($app['session']->get('auth') == false) {
             return false;
@@ -423,29 +409,29 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->after(function() use ($app) {
-        //This is executed after the route was executed
+        // 路由处理器执行后执行
         echo json_encode($app->getReturnedValue());
     });
 
     $app->finish(function() use ($app) {
-        //This is executed when the request has been served
+        // 路由处理器执行后执行
     });
 
-You can call the methods several times to add more events of the same type:
+开发者可以对同一事件注册多个处理器:
 
 .. code-block:: php
 
     <?php
 
     $app->finish(function() use ($app) {
-        //First 'finish' middleware
+        // 第一个结束处理器
     });
 
     $app->finish(function() use ($app) {
-        //Second 'finish' middleware
+        // 第二个结束处理器
     });
 
-Code for middlewares can be reused using separate classes:
+把这些代码放在另外的文件中以达到重用的目的:
 
 .. code-block:: php
 
@@ -456,7 +442,7 @@ Code for middlewares can be reused using separate classes:
     /**
      * CacheMiddleware
      *
-     * Caches pages to reduce processing
+     * 使用缓存来提升性能
      */
     class CacheMiddleware implements MiddlewareInterface
     {
@@ -468,7 +454,7 @@ Code for middlewares can be reused using separate classes:
 
             $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-            //Check if the request is cached
+            // 检查请示是否被处理了
             if ($cache->exists($key)) {
                 echo $cache->get($key);
                 return false;
@@ -478,7 +464,7 @@ Code for middlewares can be reused using separate classes:
         }
     }
 
-Then add the instance to the application:
+添加实例到应用:
 
 .. code-block:: php
 
@@ -486,22 +472,21 @@ Then add the instance to the application:
 
     $app->before(new CacheMiddleware());
 
-The following middleware events are available:
+支持如下的中间件事件：
 
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Event Name          | Triggered                                                                                                                  | Can stop operation?  |
-+=====================+============================================================================================================================+======================+
-| before              | Before executing the handler. It can be used to control the access to the application                                      | Yes                  |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| after               | Executed after the handler is executed. It can be used to prepare the response                                             | No                   |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
-| finish              | Executed after sending the response. It can be used to perform clean-up                                                    | No                   |
-+---------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------+
++---------------------+-----------------------------------------------------+----------------------+
+| 事件名              |  触发                                               | 是否可中止操作?      |
++=====================+=====================================================+======================+
+| before              |  应用请求处理之前执行，常用来控制应用的访问权限     | Yes                  |
++---------------------+-----------------------------------------------------+----------------------+
+| after               |  请求处理后执行，可以用来准备回复内容               | No                   |
++---------------------+-----------------------------------------------------+----------------------+
+| finish              |  发送回复内容后执行， 可以用来执行清理工作          | No                   |
++---------------------+-----------------------------------------------------+----------------------+
 
 使用控制器处理（Using Controllers as Handlers）
------------------------------
-Medium applications using the Micro\\MVC approach may require organize handlers in controllers.
-You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` to group handlers that belongs to controllers:
+------------------------------------------------
+中型的应用可以使用 Micro\\Mvc 来组织控制器中的处理器。 开发者也可以使用 :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Collection>` 来对控制器中的处理器进行归组：
 
 .. code-block:: php
 
@@ -511,21 +496,21 @@ You can use :doc:`Phalcon\\Mvc\\Micro\\Collection <../api/Phalcon_Mvc_Micro_Coll
 
     $posts = new MicroCollection();
 
-    //Set the main handler. ie. a controller instance
+    // 设置主处理器，这里是控制器的实例
     $posts->setHandler(new PostsController());
 
-    //Set a common prefix for all routes
+    // 对所有路由设置前缀
     $posts->setPrefix('/posts');
 
-    //Use the method 'index' in PostsController
+    //  使用PostsController中的index action
     $posts->get('/', 'index');
 
-    //Use the method 'show' in PostsController
+    // 使用PostController中的show action
     $posts->get('/show/{slug}', 'show');
 
     $app->mount($posts);
 
-The controller 'PostsController' might look like this:
+PostsController形如下：
 
 .. code-block:: php
 
@@ -545,8 +530,7 @@ The controller 'PostsController' might look like this:
         }
     }
 
-In the above example the controller is directly instantiated, Collection also have the ability to lazy-load controllers, this option
-provide better performance loading controllers only if the related routes are matched:
+上面的例子中，我们直接对控制器进行了实例化， 使用集合时Phalcon会提供了迟加载的能力， 这样程序只有在匹配路由时才加载控制器：
 
 .. code-block:: php
 
@@ -556,9 +540,8 @@ provide better performance loading controllers only if the related routes are ma
     $posts->setHandler('Blog\Controllers\PostsController', true);
 
 返回响应（Returning Responses）
--------------------
-Handlers may return raw responses using :doc:`Phalcon\\Http\\Response <response>` or a component that implements the relevant interface.
-When responses are returned by handlers they are automatically sent by the application.
+--------------------------------
+处理器可能会返回原生的 :doc:`Phalcon\\Http\\Response <response>` 实例或实现了相关接口的组件。 当返回Response对象时， 应用会自动的把处理结果返回到客户端。
 
 .. code-block:: php
 
@@ -569,7 +552,7 @@ When responses are returned by handlers they are automatically sent by the appli
 
     $app = new Micro();
 
-    //Return a response
+    // 返回Response实例
     $app->get('/welcome/index', function() {
 
         $response = new Response();
@@ -582,8 +565,8 @@ When responses are returned by handlers they are automatically sent by the appli
     });
 
 渲染视图（Rendering Views）
----------------
-:doc:`Phalcon\\Mvc\\View\\Simple <views>` can be used to render views, the following example shows how to do that:
+------------------------------
+:doc:`Phalcon\\Mvc\\View\\Simple <views>` 可用来渲染视图， 示例如下：
 
 .. code-block:: php
 
@@ -597,10 +580,10 @@ When responses are returned by handlers they are automatically sent by the appli
         return $view;
     };
 
-    //Return a rendered view
+    // 返回渲染过的视图
     $app->get('/products/show', function() use ($app) {
 
-        // Render app/views/products/show.phtml passing some variables
+        // 渲染视图时传递参数
         echo $app['view']->render('products/show', array(
             'id' => 100,
             'name' => 'Artichoke'
@@ -609,6 +592,6 @@ When responses are returned by handlers they are automatically sent by the appli
     });
 
 相关资源（Related Sources）
----------------
-* :doc:`Creating a Simple REST API <tutorial-rest>` is a tutorial that explains how to create a micro application to implement a RESTful web service.
-* `Stickers Store <http://store.phalconphp.com>`_ is a very simple micro-application making use of the micro-mvc approach [`Github <https://github.com/phalcon/store>`_].
+------------------------------
+* :doc:`Creating a Simple REST API <tutorial-rest>` 例子中讲解了如何使用微应用来创建Restfull服务：
+* `Stickers Store <http://store.phalconphp.com>`_ 也是一个简单的使用微应用的例子 [`Github <https://github.com/phalcon/store>`_].
