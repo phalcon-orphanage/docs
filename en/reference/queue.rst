@@ -97,9 +97,7 @@ jobs must be "reserved" so other workers don't re-process them while other worke
 
     <?php
 
-    while ($queue->peekReady() !== false) {
-
-        $job = $queue->reserve();
+    while (($job = $queue->reserve())) {
 
         $message = $job->getBody();
 

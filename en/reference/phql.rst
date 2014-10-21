@@ -156,7 +156,7 @@ Classes in namespaces are also allowed:
     $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
     $query = $manager->createQuery($phql);
 
-Most of the SQL standard is supported by PHQL, even nonstandard directives as LIMIT:
+Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
 
 .. code-block:: php
 
@@ -209,7 +209,7 @@ We are only requesting some fields in the table, therefore those cannot be consi
 still a resulset of type :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. However, each element is a standard
 object that only contain the two columns that were requested.
 
-These values that don't represent complete objects we call them scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
 .. code-block:: php
 
@@ -452,7 +452,7 @@ With PHQL it's possible to insert data using the familiar INSERT statement:
         )
     );
 
-Phalcon not just only transform the PHQL statements into SQL. All events and business rules defined
+Phalcon doesn't only transform the PHQL statements into SQL. All events and business rules defined
 in the model are executed as if we created individual objects manually. Let's add a business rule
 on the model cars. A car cannot cost less than $ 10,000:
 

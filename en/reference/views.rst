@@ -645,10 +645,10 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
     }
 
-When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name is currently rendered.
+When we do not define a key to the cache, the component automatically creates one using a md5_ hash of the name of the view currently being rendered.
 It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
 
-When the View component needs to cache something it will request a cache service to the services container.
+When the View component needs to cache something it will request a cache service from the services container.
 The service name convention for this service is "viewCache":
 
 .. code-block:: php
@@ -679,8 +679,7 @@ The service name convention for this service is "viewCache":
     The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
     always open (not shared) in the services container (DI)
 
-When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed
-in the views.
+When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 
 To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has
 expired to make the calculations/queries to display data in the view:
@@ -718,13 +717,13 @@ The `PHP alternative site`_ is an example of implementing the caching of fragmen
 
 Template Engines
 ----------------
-Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
+Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine
 called :doc:`Volt <volt>`.
 
 Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
 
 Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
-for the user. This usually increases the number of resources that your application are using.
+for the user. This usually increases the number of resources that your application will use.
 
 If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
 still possible to access the API inside these templates with a little more effort.
@@ -944,7 +943,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
 
 View Events
 -----------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` are able to send
 events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning
 boolean false could stop the active operation. The following events are supported:
 

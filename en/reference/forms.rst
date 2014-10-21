@@ -242,7 +242,7 @@ Or get specific messages for an element:
 
 Filtering
 ---------
-A form is also able to filter data before be validated, you can set filters in each element:
+A form is also able to filter data before it is validated. You can set filters in each element:
 
 
 
@@ -321,8 +321,8 @@ Using this class as entity, allows the form to take the default values from it:
         'No' => 'No, thanks'
     )));
 
-Entities can implement getters, which have more precedence than public properties, these methods
-give you more free to produce values:
+Entities can implement getters, which have a higher precedence than public properties. These methods
+give you more freedom to produce values:
 
 .. code-block:: php
 
@@ -340,7 +340,7 @@ give you more free to produce values:
             return 'Europe/Amsterdam';
         }
 
-        public function getTimezone()
+        public function getReceiveEmails()
         {
             return 'No';
         }

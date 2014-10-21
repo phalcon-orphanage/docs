@@ -13,6 +13,15 @@ To use phalcon on Windows you can download_ a DLL library. Edit your php.ini fil
 
 Restart your webserver.
 
+The following screencast is a step-by-step guide to install Phalcon on Windows:
+
+.. raw:: html
+
+    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+
+
+If you don't know what DLL to download, use the following script_ to figure it out.
+
 Related Guides
 ^^^^^^^^^^^^^^
 .. toctree::
@@ -115,14 +124,17 @@ Prerequisite packages are:
 .. code-block:: bash
 
     #brew
-    sudo brew install php53-phalcon
-    sudo brew install php54-phalcon
-    sudo brew install php55-phalcon
+    brew tap homebrew/homebrew-php
+    brew install php53-phalcon
+    brew install php54-phalcon
+    brew install php55-phalcon
+    brew install php56-phalcon
 
     #MacPorts
     sudo port install php53-phalcon
     sudo port install php54-phalcon
     sudo port install php55-phalcon
+    sudo port install php56-phalcon
 
 Add extension to your php configuration:
 
