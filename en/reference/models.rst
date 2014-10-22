@@ -23,7 +23,9 @@ file must contain a single class; its class name should be in camel case notatio
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
     }
@@ -45,7 +47,9 @@ you can use the getSource() method:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function getSource()
@@ -62,7 +66,9 @@ The initialize() method is only called once during the request.
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function initialize()
@@ -80,7 +86,9 @@ created you can 'onConstruct':
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function onConstruct()
@@ -99,7 +107,9 @@ from any part of the code that has instantiated that model class without any res
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -115,7 +125,9 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         protected $id;
 
@@ -172,7 +184,9 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
     namespace Store\Toys;
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
     }
@@ -344,7 +358,9 @@ An example is in order, so taking our Robots model mentioned earlier :
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -534,7 +550,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
     <?php
 
-    use \Phalcon\Db\Column;
+    use Phalcon\Db\Column;
 
     //Bind parameters
     $parameters = array(
@@ -573,7 +589,9 @@ will be executed just after create the instance and assign the data to it:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public $id;
@@ -602,7 +620,9 @@ accessed:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -695,7 +715,9 @@ The models with their relations could be implemented as follows:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -712,7 +734,9 @@ The models with their relations could be implemented as follows:
 
     <?php
 
-    class Parts extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Parts extends Model
     {
 
         public $id;
@@ -730,7 +754,9 @@ The models with their relations could be implemented as follows:
 
     <?php
 
-    class RobotsParts extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class RobotsParts extends Model
     {
 
         public $id;
@@ -756,7 +782,9 @@ Many to many relationships require 3 models and define the attributes involved i
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public $id;
 
@@ -948,7 +976,9 @@ The aliases allow us to rename both relationships to solve these problems:
 
     <?php
 
-    class RobotsSimilar extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class RobotsSimilar extends Model
     {
 
         public function initialize()
@@ -989,7 +1019,9 @@ docblocks helping the IDE to produce a better auto-completion:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public $id;
@@ -1025,7 +1057,9 @@ The RobotsPart model can be changed to demonstrate this feature:
 
     <?php
 
-    class RobotsParts extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class RobotsParts extends Model
     {
 
         public $id;
@@ -1057,7 +1091,9 @@ if that record is used on a referenced model.
 
     <?php
 
-    class Parts extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Parts extends Model
     {
 
         public function initialize()
@@ -1082,8 +1118,8 @@ to maintain the integrity of data:
 
     namespace Store\Models;
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Relation;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Relation;
 
     class Robots extends Model
     {
@@ -1521,7 +1557,9 @@ The method getMessages() can be overridden in a model to replace/translate the d
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function getMessages()
         {
@@ -1586,7 +1624,9 @@ The easier way to make a model react to events is implement a method with the sa
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function beforeValidationOnCreate()
@@ -1628,8 +1668,8 @@ this means we can create listeners that run when an event is triggered.
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Events\Manager as EventsManager;
 
     class Robots extends Model
     {
@@ -1718,7 +1758,9 @@ The following example implements an event that validates the year cannot be smal
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function beforeSave()
@@ -1745,10 +1787,11 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
 
-    class Robots extends \Phalcon\Mvc\Model
+    class Robots extends Model
     {
 
         public function validation()
@@ -1804,8 +1847,8 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator,
-        Phalcon\Mvc\Model\ValidatorInterface;
+    use Phalcon\Mvc\Model\Validator;
+    use Phalcon\Mvc\Model\ValidatorInterface;
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
@@ -1838,7 +1881,9 @@ Adding the validator to a model:
 
     <?php
 
-    class Customers extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Customers extends Model
     {
 
         public function validation()
@@ -1863,8 +1908,8 @@ The idea of creating validators is make them reusable between several models. A 
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
 
     class Robots extends Model
     {
@@ -1948,7 +1993,9 @@ to delegate the database system the assignation of the values by a trigger or a 
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function initialize()
@@ -1972,10 +2019,12 @@ Forcing a default value can be done in the following way:
 
     <?php
 
+    use Phalcon\Db\RawValue;
+
     $robot = new Robots();
     $robot->name = 'Bender';
     $robot->year = 1999;
-    $robot->created_at = new \Phalcon\Db\RawValue('default');
+    $robot->created_at = new RawValue('default');
     $robot->create();
 
 A callback also can be used to create a conditional assignment of automatic default values:
@@ -1984,8 +2033,8 @@ A callback also can be used to create a conditional assignment of automatic defa
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Db\RawValue;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Db\RawValue;
 
     class Robots extends Model
     {
@@ -2016,7 +2065,9 @@ this specially helps when the table has blob/text fields:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {
@@ -2078,7 +2129,9 @@ With the above events can also define business rules in the models:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function beforeDelete()
@@ -2115,9 +2168,10 @@ A behavior must be added in the model initializer, a model can have zero or more
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Model
     {
         public $id;
 
@@ -2157,6 +2211,8 @@ This behavior receives an array of options, the first level key must be an event
 
     <?php
 
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
+
     public function initialize()
     {
         $this->addBehavior(new Timestampable(
@@ -2175,6 +2231,8 @@ as format of the PHP's function date_, format can also be an anonymous function 
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Mvc\Model\Behavior\Timestampable;
 
     public function initialize()
     {
@@ -2201,9 +2259,10 @@ This behavior can be used in the following way:
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-    class Users extends \Phalcon\Mvc\Model
+    class Users extends Model
     {
 
         const DELETED = 'D';
@@ -2315,7 +2374,9 @@ The former is a very simple behavior, but it illustrates how to create a behavio
 
     <?php
 
-    class Profiles extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Profiles extends Model
     {
 
         public function initialize()
@@ -2331,8 +2392,9 @@ A behavior is also capable of intercepting missing methods on your models:
 
     <?php
 
-    use Phalcon\Mvc\Model\Behavior,
-        Phalcon\Mvc\Model\BehaviorInterface;
+    use Phalcon\Tag;
+    use Phalcon\Mvc\Model\Behavior;
+    use Phalcon\Mvc\Model\BehaviorInterface;
 
     class Sluggable extends Behavior implements BehaviorInterface
     {
@@ -2341,7 +2403,7 @@ A behavior is also capable of intercepting missing methods on your models:
         {
             // if the method is 'getSlug' convert the title
             if ($method == 'getSlug') {
-                return Phalcon\Tag::friendlyTitle($model->title);
+                return Tag::friendlyTitle($model->title);
             }
         }
 
@@ -2385,7 +2447,9 @@ Then you can use it in your model as follows:
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
         use MyTimestampable;
     }
@@ -2409,7 +2473,9 @@ is successfully or not:
 
     <?php
 
-    class RobotsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class RobotsController extends Controller
     {
         public function saveAction()
         {
@@ -2466,8 +2532,8 @@ transaction created ensuring that they are correctly rolled back/committed befor
 
     <?php
 
-    use Phalcon\Mvc\Model\Transaction\Manager as TxManager,
-        Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+    use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
     try {
 
@@ -2506,8 +2572,8 @@ Transactions can be used to delete many records in a consistent way:
 
     <?php
 
-    use Phalcon\Mvc\Model\Transaction\Manager as TxManager,
-        Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+    use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
     try {
 
@@ -2544,8 +2610,10 @@ is performed. You can use the service container to create the global transaction
 
     <?php
 
+    use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager
+
     $di->setShared('transactions', function(){
-        return new \Phalcon\Mvc\Model\Transaction\Manager();
+        return new TransactionManager();
     });
 
 Then access it from a controller or view:
@@ -2554,7 +2622,9 @@ Then access it from a controller or view:
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function saveAction()
@@ -2587,7 +2657,9 @@ in the code. A change in the column map in the model will take care of the rest.
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function columnMap()
@@ -2595,7 +2667,7 @@ in the code. A change in the column map in the model will take care of the rest.
             //Keys are the real names in the table and
             //the values their names in the application
             return array(
-                'id' => 'code',
+                'id'       => 'code',
                 'the_name' => 'theName',
                 'the_type' => 'theType',
                 'the_year' => 'theYear'
@@ -2741,7 +2813,9 @@ fields are changed according to the data queried from the persistence:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {
@@ -2816,10 +2890,12 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     <?php
 
+    use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
+
     $di['modelsMetadata'] = function() {
 
         // Create a meta-data manager with APC
-        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+        $metaData = new ApcMetaData(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
@@ -2838,10 +2914,12 @@ You can change the default meta-data introspection in the following way:
 
     <?php
 
+    use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
+
     $di['modelsMetadata'] = function() {
 
         // Instantiate a meta-data adapter
-        $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
+        $metaData = new ApcMetaData(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
@@ -2864,7 +2942,9 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         /**
@@ -2924,8 +3004,8 @@ The annotations strategy could be set up this way:
 
     <?php
 
-    use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData,
-        Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
+    use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
+    use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
     $di['modelsMetadata'] = function() {
 
@@ -2956,9 +3036,9 @@ The following example shows how to define the meta-data manually:
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Db\Column,
-        Phalcon\Mvc\Model\MetaData;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Db\Column;
+    use Phalcon\Mvc\Model\MetaData;
 
     class Robots extends Model
     {
@@ -3036,7 +3116,9 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function getSchema()
@@ -3056,19 +3138,22 @@ in the application's services container. You can overwrite this service setting 
 
     <?php
 
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
+    use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
+
     //This service returns a MySQL database
     $di->set('dbMysql', function() {
-         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
+         return new MysqlPdo(array(
+            "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname" => "invo"
+            "dbname"   => "invo"
         ));
     });
 
     //This service returns a PostgreSQL database
     $di->set('dbPostgres', function() {
-         return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
+         return new PostgreSQLPdo(array(
             "host" => "localhost",
             "username" => "postgres",
             "password" => "",
@@ -3082,7 +3167,9 @@ Then, in the Initialize method, we define the connection service for the model:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function initialize()
@@ -3099,7 +3186,9 @@ to balance the load to your databases implementing a master-slave architecture:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function initialize()
@@ -3117,7 +3206,9 @@ according to the current query conditions:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         /**
          * Dynamically selects a shard
@@ -3172,10 +3263,10 @@ statements as they happen.
 
     <?php
 
-    use Phalcon\Logger,
-        Phalcon\Db\Adapter\Pdo\Mysql as Connection,
-        Phalcon\Events\Manager,
-        Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Logger;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+    use Phalcon\Events\Manager;
+    use Phalcon\Logger\Adapter\File as FileLogger;
 
     $di->set('db', function() {
 
@@ -3233,13 +3324,17 @@ this you can diagnose performance problems and to discover bottlenecks.
 
     <?php
 
+    use Phalcon\Db\Profiler as ProfilerDb;
+    use Phalcon\Events\Manager as ManagerEvent;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
+
     $di->set('profiler', function(){
-        return new \Phalcon\Db\Profiler();
+        return new ProfilerDb();
     }, true);
 
     $di->set('db', function() use ($di) {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new ManagerEvent();
 
         //Get a shared instance of the DbProfiler
         $profiler = $di->getProfiler();
@@ -3254,7 +3349,7 @@ this you can diagnose performance problems and to discover bottlenecks.
             }
         });
 
-        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+        $connection = new MysqlPdo(array(
             "host" => "localhost",
             "username" => "root",
             "password" => "secret",
@@ -3298,7 +3393,9 @@ You may be required to access the application services within a model, the follo
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function notSave()
@@ -3326,7 +3423,9 @@ According to how you use the ORM you can disable that you aren't using. These op
 
     <?php
 
-    \Phalcon\Mvc\Model::setup(array(
+    use Phalcon\Mvc\Model;
+
+    Model::setup(array(
         'events' => false,
         'columnRenaming' => false
     ));
@@ -3355,11 +3454,11 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     <?php
 
-    use Phalcon\DI,
-        Phalcon\Db\Adapter\Pdo\Sqlite as Connection,
-        Phalcon\Mvc\Model\Manager as ModelsManager,
-        Phalcon\Mvc\Model\Metadata\Memory as MetaData,
-        Phalcon\Mvc\Model;
+    use Phalcon\DI;
+    use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
+    use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
+    use Phalcon\Mvc\Model;
 
     $di = new DI();
 
