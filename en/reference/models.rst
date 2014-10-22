@@ -1438,7 +1438,9 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public function getSequenceName()
@@ -1642,7 +1644,9 @@ Events can be useful to assign values before performing an operation, for exampl
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Products extends Model
     {
 
         public function beforeCreate()
@@ -1788,8 +1792,8 @@ The following example shows how to use it:
     <?php
 
     use Phalcon\Mvc\Model;
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
     use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
@@ -2532,8 +2536,8 @@ transaction created ensuring that they are correctly rolled back/committed befor
 
     <?php
 
-    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
     use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
 
@@ -2572,8 +2576,8 @@ Transactions can be used to delete many records in a consistent way:
 
     <?php
 
-    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
     use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+    use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
     try {
 
@@ -3264,9 +3268,9 @@ statements as they happen.
     <?php
 
     use Phalcon\Logger;
-    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
     use Phalcon\Events\Manager;
     use Phalcon\Logger\Adapter\File as FileLogger;
+    use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
     $di->set('db', function() {
 
@@ -3455,10 +3459,10 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
     <?php
 
     use Phalcon\DI;
-    use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
-    use Phalcon\Mvc\Model\Manager as ModelsManager;
-    use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
     use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Manager as ModelsManager;
+    use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
+    use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
     $di = new DI();
 
