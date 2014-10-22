@@ -372,6 +372,8 @@ search returned results, then we create a paginator to navigate easily through t
 
     use Phalcon\Paginator\Adapter\Model as Paginator;
 
+    // ...
+
     $paginator = new Paginator(array(
         "data"  => $products,    // Data to paginate
         "limit" => 5,            // Rows per page
@@ -387,23 +389,171 @@ Finally we pass the returned page to view:
 
     <?php
 
-    $this->view->setVar("page", $page);
+    $this->view->page = $page;
 
-In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
+In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page,
+showing every row in the current page to the user:
 
-.. code-block:: html+php
+.. code-block:: html+jinja
+
+    {% for product in page.items %}
+      {% if loop.first %}
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Product Type</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+        <tbody>
+      {% endif %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.getProductTypes().name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+      </tr>
+      {% if loop.last %}
+      </tbody>
+        <tbody>
+          <tr>
+            <td colspan="7">
+              <div>
+                {{ link_to("products/search", 'First') }}
+                {{ link_to("products/search?page=" ~ page.before, 'Previous') }}
+                {{ link_to("products/search?page=" ~ page.next, 'Next') }}
+                {{ link_to("products/search?page=" ~ page.last, 'Last') }}
+                <span class="help-inline">{{ page.current }} of {{ page.total_pages }}</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {% endif %}
+    {% else %}
+      No products are recorded
+    {% endfor %}
+
+There are many things in the above example that worth detailing. First of all, active items
+in the current page are traversed using a Volt's 'for'. Volt provides a simpler syntax for a PHP 'foreach'.
+
+.. code-block:: html+jinja
+
+    {% for product in page.items %}
+
+Which in PHP is the same as:
+
+.. code-block:: php
 
     <?php foreach ($page->items as $product) { ?>
-        <tr>
-            <td><?= $product->id ?></td>
-            <td><?= $product->getProductTypes()->name ?></td>
-            <td><?= $product->name ?></td>
-            <td><?= $product->price ?></td>
-            <td><?= $product->active ?></td>
-            <td><?= $this->tag->linkTo("products/edit/" . $product->id, 'Edit') ?></td>
-            <td><?= $this->tag->linkTo("products/delete/" . $product->id, 'Delete') ?></td>
-        </tr>
-    <?php } ?>
+
+The whole 'for' block provides the following:
+
+    {% for product in page.items %}
+      {% if loop.first %}
+        Executed before the first product in the loop
+      {% endif %}
+        Executed for every product of page.items
+      {% if loop.last %}
+        Executed after the last product is loop
+      {% endif %}
+    {% else %}
+      Executed if page.items does not have any products
+    {% endfor %}
+
+Now you can go back to the view and find out what every block is doing. Every field
+in "product" is printed accordingly:
+
+.. code-block:: html+jinja
+
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.productTypes.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">{{ link_to("products/edit/" ~ product.id, 'Edit') }}</td>
+        <td width="7%">{{ link_to("products/delete/" ~ product.id, 'Delete') }}</td>
+      </tr>
+
+As we seen before using product.id is the same as in PHP as doing: $product->id,
+we made the same with product.name and so on. Other fields are rendered differently,
+for instance, let's focus in product.productTypes.name. To understand this part,
+we have to check the model Products (app/models/Products.php):
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    /**
+     * Products
+     */
+    class Products extends Model
+    {
+        // ...
+
+        /**
+         * Products initializer
+         */
+        public function initialize()
+        {
+            $this->belongsTo('product_types_id', 'ProductTypes', 'id', array(
+                'reusable' => true
+            ));
+        }
+
+        // ...
+    }
+
+A model, can have a method called "initialize", this method is called once per request and it serves
+the ORM to initialize a model. In this case, "Products" is initialized by defining that this model
+has a one-to-many relationship to another model called "ProductTypes".
+
+.. code-block:: php
+
+    <?php
+
+    $this->belongsTo('product_types_id', 'ProductTypes', 'id', array(
+        'reusable' => true
+    ));
+
+Which means, the local attribute "product_types_id" in "Products" has an one-to-many relation to
+the model "ProductTypes" in its attribute "id". By defining this relation we can access the name of
+the product type by using:
+
+.. code-block:: html+jinja
+
+    <td>{{ product.productTypes.name }}</td>
+
+The field "price" is printed by its formatted using a Volt filter:
+
+.. code-block:: html+jinja
+
+    <td>{{ "%.2f"|format(product.price) }}</td>
+
+What in PHP would be:
+
+.. code-block:: php
+
+    <?php echo sprintf("%.2f", $product->price) ?>
+
+Printing whether the product is active or not uses a helper implemented in the model:
+
+.. code-block:: php
+
+    <td>{{ product.getActiveDetail() }}</td>
+
+This method is defined in the model:
+
+
 
 Creating and Updating Records
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -417,54 +567,84 @@ In the creation case, we recover the data submitted and assign them to a new "pr
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * Creates a new product
      */
     public function createAction()
     {
+        if (!$this->request->isPost()) {
+            return $this->forward("products/index");
+        }
 
-        $products = new Products();
+        $form = new ProductsForm;
+        $product = new Products();
 
-        $products->id = $this->request->getPost("id", "int");
-        $products->product_types_id = $this->request->getPost("product_types_id", "int");
-        $products->name = $this->request->getPost("name", "striptags");
-        $products->price = $this->request->getPost("price", "double");
-        $products->active = $this->request->getPost("active");
-
-        //...
-
+        // ...
     }
 
-Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
-performs additional casting according to the column types.
-
-When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
+Remember the filters we defined in the Products form? Data is filtered before being assigned to the object $product.
+This filtering is optional, also the ORM escapes the input data and performs additional casting according to the column types:
 
 .. code-block:: php
 
     <?php
 
-    /**
-     * Creates a product based on the data entered in the "new" action
-     */
-    public function createAction()
-    {
+    // ...
 
-        //...
+    $name = new Text("name");
+    $name->setLabel("Name");
 
-        if (!$products->create()) {
+    // Filters for name
+    $name->setFilters(array('striptags', 'string'));
 
-            //The store failed, the following messages were produced
-            foreach ($products->getMessages() as $message) {
-                $this->flash->error((string) $message);
-            }
-            return $this->forward("products/new");
+    // Validators for name
+    $name->addValidators(array(
+            new PresenceOf(array(
+                'message' => 'Name is required'
+            ))
+    ));
 
-        } else {
-            $this->flash->success("Product was created successfully");
-            return $this->forward("products/index");
+    $this->add($name);
+
+When saving we'll know whether the data conforms to the business rules and validations implemented
+in the form ProductsForm (app/forms/ProductsForm.php):
+
+.. code-block:: php
+
+    <?php
+
+    // ...
+
+    $form = new ProductsForm;
+    $product = new Products();
+
+    // Validate the input
+    $data = $this->request->getPost();
+    if (!$form->isValid($data, $product)) {
+        foreach ($form->getMessages() as $message) {
+            $this->flash->error($message);
         }
-
+        return $this->forward('products/new');
     }
+
+Finally, if the form does not return any validation message we can save the product instance:
+
+.. code-block:: php
+
+    <?php
+
+    // ...
+
+    if ($product->save() == false) {
+        foreach ($product->getMessages() as $message) {
+            $this->flash->error($message);
+        }
+        return $this->forward('products/new');
+    }
+
+    $form->clear();
+
+    $this->flash->success("Product was created successfully");
+    return $this->forward("products/index");
 
 Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
 
@@ -473,24 +653,24 @@ Now, in the case of product updating, first we must present to the user the data
     <?php
 
     /**
-     * Shows the view to "edit" an existing product
+     * Edits a product based on its id
      */
     public function editAction($id)
     {
 
-        //...
+        if (!$this->request->isPost()) {
 
-        $product = Products::findFirstById($id);
+            $product = Products::findFirstById($id);
+            if (!$product) {
+                $this->flash->error("Product was not found");
+                return $this->forward("products/index");
+            }
 
-        $this->tag->setDefault("id", $product->id);
-        $this->tag->setDefault("product_types_id", $product->product_types_id);
-        $this->tag->setDefault("name", $product->name);
-        $this->tag->setDefault("price", $product->price);
-        $this->tag->setDefault("active", $product->active);
-
+            $this->view->form = new ProductsForm($product, array('edit' => true));
+        }
     }
 
-The "setDefault" helper sets a default value in the form on the attribute with the same name. Thanks to this,
+The data found is bound to the form passing the model as first parameter. Thanks to this,
 the user can change any value and then sent it back to the database through to the "save" action:
 
 .. code-block:: php
@@ -498,21 +678,44 @@ the user can change any value and then sent it back to the database through to t
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Saves current product in screen
+     *
+     * @param string $id
      */
     public function saveAction()
     {
-
-        //...
-
-        //Find the product to update
-        $id = $this->request->getPost("id");
-        $product = Products::findFirstById($id);
-        if (!$product) {
-            $this->flash->error("products does not exist " . $id);
+        if (!$this->request->isPost()) {
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        $id = $this->request->getPost("id", "int");
+        $product = Products::findFirstById($id);
+        if (!$product) {
+            $this->flash->error("Product does not exist");
+            return $this->forward("products/index");
+        }
 
+        $form = new ProductsForm;
+
+        $data = $this->request->getPost();
+        if (!$form->isValid($data, $product)) {
+            foreach ($form->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('products/new');
+        }
+
+        if ($product->save() == false) {
+            foreach ($product->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+            return $this->forward('products/new');
+        }
+
+        $form->clear();
+
+        $this->flash->success("Product was updated successfully");
+        return $this->forward("products/index");
     }
+
+.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete

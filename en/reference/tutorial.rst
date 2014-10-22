@@ -532,17 +532,5 @@ This is a very simple tutorial and as you can see, it's easy to start building a
 The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
 features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
-Sample Applications
--------------------
-The following Phalcon-powered applications are also available, providing more complete examples:
-
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
-
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php
-.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
-.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
+

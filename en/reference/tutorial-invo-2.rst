@@ -64,6 +64,7 @@ some HTML code to make the example more concise:
 
 Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
 template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
+It will not take too long before you become familiar with Volt.
 
 The SessionController::startAction function (app/controllers/SessionController.php) has the task of validating the
 data entered in the form including checking for a valid user in the database:
@@ -297,10 +298,10 @@ SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This clas
 
     <?php
 
-    use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+    use Phalcon\Acl;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
 
     class SecurityPlugin extends Plugin
     {
@@ -326,10 +327,10 @@ If the user does not have access we redirect to the home screen as explained bef
 
     <?php
 
-    use Phalcon\Events\Event,
-	    Phalcon\Mvc\User\Plugin,
-	    Phalcon\Mvc\Dispatcher,
-	    Phalcon\Acl;
+    use Phalcon\Acl;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
 
     class Security extends Plugin
     {
@@ -384,6 +385,7 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
 
     <?php
 
+    use Phalcon\Acl\Role;
     use Phalcon\Acl\Adapter\Memory as AclList;
 
     // Create the ACL
@@ -395,8 +397,8 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
     // Register two roles, Users is registered users
     // and guests are users without a defined identity
     $roles = array(
-        'users' => new Phalcon\Acl\Role('Users'),
-        'guests' => new Phalcon\Acl\Role('Guests')
+        'users'  => new Role('Users'),
+        'guests' => new Role('Guests')
     );
     foreach ($roles as $role) {
         $acl->addRole($role);
@@ -409,7 +411,11 @@ accesses for the resources:
 
     <?php
 
-    //Private area resources (backend)
+    use Phalcon\Acl\Resource;
+
+    // ...
+
+    // Private area resources (backend)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -417,10 +423,10 @@ accesses for the resources:
       'invoices' => array('index', 'profile')
     );
     foreach ($privateResources as $resource => $actions) {
-        $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+        $acl->addResource(new Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    // Public area resources (frontend)
     $publicResources = array(
        'index'      => array('index'),
        'about'      => array('index'),
@@ -430,7 +436,7 @@ accesses for the resources:
        'contact'    => array('index', 'send')
     );
     foreach ($publicResources as $resource => $actions) {
-        $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
+        $acl->addResource(new Resource($resource), $actions);
     }
 
 The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
@@ -440,14 +446,14 @@ all the resources of both frontend and backend. The role "Guests" only has acces
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    // Grant access to public areas to both users and guests
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    // Grant access to private area only to role Users
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
@@ -455,3 +461,6 @@ all the resources of both frontend and backend. The role "Guests" only has acces
     }
 
 Hooray!, the ACL is now complete.
+
+.. _sha1: http://php.net/manual/en/function.sha1.php
+.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php

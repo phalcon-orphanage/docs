@@ -15,18 +15,18 @@ Once you clone the project in your document root you'll see the following struct
 
     invo/
         app/
-            app/config/
-            app/controllers/
-            app/forms/
-            app/library/
-            app/logs/
-            app/models/
-            app/plugins/
-            app/views/
+            config/
+            controllers/
+            forms/
+            library/
+            logs/
+            models/
+            plugins/
+            views/
         public/
         cache/
-            public/css/
-            public/js/
+            css/
+            js/
         schemas/
 
 As you know, Phalcon does not impose a particular file structure for application development. This project
@@ -256,5 +256,4 @@ This tutorial covers many more aspects of building applications with Phalcon, ho
 learn more and get more out of the framework.
 
 .. _Github: https://github.com/phalcon/invo
-.. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 .. _Bootstrap: http://getbootstrap.com/

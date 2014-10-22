@@ -134,6 +134,3 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         </head>
         <!-- ... -->
     </html>
-
-.. _sha1: http://php.net/manual/en/function.sha1.php
-.. _bcrypt: http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
