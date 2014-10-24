@@ -25,7 +25,9 @@ To better explain how PHQL works consider the following example. We have two mod
 
     <?php
 
-    class Cars extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Cars extends Model
     {
         public $id;
 
@@ -62,7 +64,9 @@ And every Car has a Brand, so a Brand has many Cars:
 
     <?php
 
-    class Brands extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Brands extends Model
     {
 
         public $id;
@@ -94,8 +98,10 @@ PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\
 
     <?php
 
+    use Phalcon\Mvc\Model\Query;
+
     // Instantiate the Query
-    $query = new Phalcon\Mvc\Model\Query("SELECT * FROM Cars", $this->getDI());
+    $query = new Query("SELECT * FROM Cars", $this->getDI());
 
     // Execute the query returning a result if any
     $cars = $query->execute();
@@ -460,9 +466,10 @@ on the model cars. A car cannot cost less than $ 10,000:
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Message;
 
-    class Cars extends Phalcon\Mvc\Model
+    class Cars extends Model
     {
 
         public function beforeCreate()
@@ -809,7 +816,9 @@ You can disallow literals in the following way:
 
     <?php
 
-    Phalcon\Mvc\Model::setup(array('phqlLiterals' => false));
+    use Phalcon\Mvc\Model;
+
+    Model::setup(array('phqlLiterals' => false));
 
 Bound parameters can be used even if literals are allowed or not. Disallowing them is just
 another security decision a developer could take in web applications.
@@ -848,9 +857,10 @@ A database system could offer specific SQL extensions that aren't supported by P
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends Model
     {
         public static function findByCreateInterval()
         {
@@ -871,9 +881,10 @@ If Raw SQL queries are common in your application a generic method could be adde
 
     <?php
 
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
-    class Robots extends Phalcon\Mvc\Model
+    class Robots extends Model
     {
         public static function findByRawSql($conditions, $params=null)
         {

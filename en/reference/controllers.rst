@@ -29,7 +29,9 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -54,7 +56,9 @@ Parameters without a default value are handled as required. Setting optional val
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -75,7 +79,9 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -102,7 +108,9 @@ execution to a different controller/action.
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -129,7 +137,9 @@ If users don't have permissions to access a certain action then will be forwarde
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function indexAction()
@@ -157,7 +167,9 @@ action is executed on a controller. The use of the "__construct" method is not r
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public $settings;
@@ -190,7 +202,9 @@ method 'onConstruct':
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function onConstruct()
@@ -214,7 +228,9 @@ container in application. For example, if we have registered a service like this
 
     <?php
 
-    $di = new Phalcon\DI();
+    use Phalcon\DI;
+
+    $di = new DI();
 
     $di->set('storage', function() {
         return new Storage('/some/directory');
@@ -226,7 +242,9 @@ Then, we can access to that service in several ways:
 
     <?php
 
-    class FilesController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class FilesController extends Controller
     {
 
         public function saveAction()
@@ -262,7 +280,9 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -289,7 +309,9 @@ an afterDispatch event - it can be useful to access the response directly:
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -316,7 +338,9 @@ from any controller to encapsulate data that need to be persistent.
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UserController extends Controller
     {
 
         public function indexAction()
@@ -376,7 +400,9 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     <?php
 
-    class ControllerBase extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ControllerBase extends Controller
     {
 
       /**
@@ -409,7 +435,9 @@ you to implement hook points before/after the actions are executed:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function beforeExecuteRoute($dispatcher)

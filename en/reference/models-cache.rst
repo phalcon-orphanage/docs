@@ -25,16 +25,19 @@ First, you must register it as a service in the services container:
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontendData;
+    use Phalcon\Cache\Backend\Memcache as BackendMemcache;
+
     //Set the models cache service
     $di->set('modelsCache', function() {
 
         //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
+        $frontCache = new FrontendData(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
+        $cache = new BackendMemcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -100,7 +103,9 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function find($parameters=null)
@@ -123,7 +128,9 @@ a static property to avoid that a record would be queried several times in a sam
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static $_cache = array();
@@ -222,7 +229,9 @@ you can create a base class for all of them:
 
     <?php
 
-    class CacheableModel extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class CacheableModel extends Model
     {
 
         protected static function _createKey($parameters)
@@ -273,7 +282,9 @@ we can override the find/findFirst method to force every query to be cached:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static function _createKey($parameters)
@@ -388,7 +399,9 @@ the records instead of re-querying them again and again:
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -407,7 +420,9 @@ add a more sophisticated cache for this scenario overriding the models manager:
 
     <?php
 
-    class CustomModelsManager extends \Phalcon\Mvc\Model\Manager
+    use Phalcon\Mvc\Model\Manager as ModelManager;
+
+    class CustomModelsManager extends ModelManager
     {
 
         /**
@@ -494,7 +509,9 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public static function findFirst($parameters=null)
@@ -513,7 +530,9 @@ to obtain all entities:
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         protected static function _createKey($parameters)
@@ -577,7 +596,9 @@ Note that this process can also be performed with PHQL following an alternative 
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -628,7 +649,9 @@ The easiest way is adding an static method to the model that chooses the right c
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function queryCache($initial, $final)
@@ -681,7 +704,9 @@ The first is create a custom builder, so we can generate a totally customized qu
 
     <?php
 
-    class CustomQueryBuilder extends Phalcon\Mvc\Model\Query\Builder
+    use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
+
+    class CustomQueryBuilder extends QueryBuilder
     {
 
         public function getQuery()
@@ -700,7 +725,9 @@ this class looks like:
 
     <?php
 
-    class CustomQuery extends Phalcon\Mvc\Model\Query
+    use Phalcon\Mvc\Model\Query as ModelQuery;
+
+    class CustomQuery extends ModelQuery
     {
 
         /**
@@ -819,7 +846,9 @@ Finally, we can replace the find method in the Robots model to use the custom cl
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public static function find($parameters=null)
         {

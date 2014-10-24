@@ -47,7 +47,12 @@ Setting document type.
 
 .. code-block:: php
 
-    <?php $this->tag->setDoctype(\Phalcon\Tag::HTML401_STRICT); ?>
+    <?php
+
+    use Phalcon\Tag;
+
+    $this->tag->setDoctype(Tag::HTML401_STRICT);
+    ?>
 
 Getting document type.
 
@@ -332,7 +337,9 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function indexAction()
@@ -388,7 +395,9 @@ The following example demonstrates just that:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function initialize()
@@ -547,7 +556,9 @@ You can easily add new helpers to a custom component replacing the service 'tag'
 
     <?php
 
-    class MyTags extends \Phalcon\Tag
+    use Phalcon\Tag;
+
+    class MyTags extends Tag
     {
         //...
 
@@ -582,7 +593,9 @@ You can easily create your own helpers. First, start by creating a new folder wi
 
     <?php
 
-    class MyTags extends \Phalcon\Tag
+    use Phalcon\Tag;
+
+    class MyTags extends Tag
     {
 
         /**
@@ -642,16 +655,21 @@ After creating our custom helper, we will autoload the new directory that contai
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault();
+    use Phalcon\Exception as PhalconException;
+
     try {
 
-        $loader = new \Phalcon\Loader();
+        $loader = new Loader();
         $loader->registerDirs(array(
             '../app/controllers',
             '../app/models',
             '../app/customhelpers' // Add the new helpers folder
         ))->register();
 
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new FactoryDefault();
 
         // Assign our new tag a definition so we can call it
         $di->set('MyTags',  function()
@@ -659,10 +677,10 @@ After creating our custom helper, we will autoload the new directory that contai
             return new MyTags();
         });
 
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
         echo $application->handle()->getContent();
 
-        } catch(\Phalcon\Exception $e) {
+        } catch(PhalconException $e) {
              echo "PhalconException: ", $e->getMessage();
         }
 
@@ -676,6 +694,7 @@ Now you are ready to use your new helper within your views:
     <body>
 
         <?php
+
         echo MyTags::audioField(array(
             'name' => 'test',
             'id' => 'audio_test',

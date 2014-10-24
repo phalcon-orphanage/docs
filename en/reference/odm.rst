@@ -23,7 +23,9 @@ file must contain a single class; its class name should be in camel case notatio
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
     }
@@ -40,7 +42,9 @@ you can use the getSource() method:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function getSource()
         {
@@ -76,7 +80,9 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     namespace Store\Toys;
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function getSource()
@@ -215,7 +221,7 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | fields      | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | "fields" => array('name' => true)                                       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "sort" => array("name" => -1, "status" => 1)                           |
+| sort        | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | "sort" => array("name" => -1, "status" => 1)                            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | limit       | Limit the results of the query to results to certain range                                                                                                                                   | "limit" => 10                                                           |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -340,7 +346,9 @@ To make a model to react to an event, we must to implement a method with the sam
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function beforeValidationOnCreate()
@@ -356,7 +364,9 @@ Events can be useful to assign values before performing an operation, for exampl
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Products extends Collection
     {
 
         public function beforeCreate()
@@ -380,7 +390,9 @@ listeners that run when an event is triggered.
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager;
+
+    $eventsManager = new EventsManager();
 
     //Attach an anonymous function as a listener for "model" events
     $eventsManager->attach('collection', function($event, $robot) {
@@ -406,10 +418,13 @@ objects created in our application use the same EventsManager, then we need to a
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Collection\Manager as CollectionManager;
+
     //Registering the collectionManager service
     $di->set('collectionManager', function() {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
         $eventsManager->attach('collection', function($event, $model) {
@@ -425,7 +440,7 @@ objects created in our application use the same EventsManager, then we need to a
         });
 
         // Setting a default EventsManager
-        $modelsManager = new Phalcon\Mvc\Collection\Manager();
+        $modelsManager = new CollectionManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
 
@@ -443,7 +458,9 @@ The following example implements an event that validates the year cannot be smal
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function beforeSave()
@@ -470,10 +487,11 @@ The following example shows how to use it:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Numericality;
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Numericality;
 
-    class Robots extends \Phalcon\Mvc\Collection
+    class Robots extends Collection
     {
 
         public function validation()
@@ -524,7 +542,9 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    class UrlValidator extends \Phalcon\Mvc\Collection\Validator
+    use Phalcon\Mvc\Collection\Validator as CollectionValidator;
+
+    class UrlValidator extends CollectionValidator
     {
 
         public function validate($model)
@@ -548,7 +568,9 @@ Adding the validator to a model:
 
     <?php
 
-    class Customers extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Customers extends Collection
     {
 
         public function validation()
@@ -569,13 +591,16 @@ The idea of creating validators is make them reusable across several models. A v
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Message as ModelMessage;
+
+    class Robots extends Collection
     {
 
         public function validation()
         {
             if ($this->type == "Old") {
-                $message = new Phalcon\Mvc\Model\Message(
+                $message = new ModelMessage(
                     "Sorry, old robots are not allowed anymore",
                     "type",
                     "MyType"
@@ -659,7 +684,9 @@ If a model uses custom primary keys this behavior can be overridden:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
@@ -695,7 +722,9 @@ Then, in the Initialize method, we define the connection service for the model:
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
@@ -712,7 +741,9 @@ You may be required to access the application services within a model, the follo
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function notSave()

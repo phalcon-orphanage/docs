@@ -40,10 +40,12 @@ reusing the standard .phtml:
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     //Registering Volt as template engine
     $di->set('view', function() {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
@@ -106,7 +108,9 @@ In the above example, three variables were passed to the view: title, menu and p
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function showAction()
@@ -114,9 +118,9 @@ In the above example, three variables were passed to the view: title, menu and p
 
             $post = Post::findFirst();
 
-            $this->view->title = $post->title;
-            $this->view->post = $post;
-            $this->view->menu = Menu::find();
+            $this->view->title           = $post->title;
+            $this->view->post            = $post;
+            $this->view->menu            = Menu::find();
             $this->view->show_navigation = true;
 
         }
@@ -1107,8 +1111,8 @@ Volt can be configured to alter its default behavior, the following example expl
 
     <?php
 
-    use Phalcon\Mvc\View,
-        Phalcon\Mvc\View\Engine\Volt;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
 
     //Register Volt as a service
     $di->set('voltService', function($view, $di) {
@@ -1143,16 +1147,19 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
 
     <?php
 
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
+
     //Register Volt as template engine with an anonymous function
     $di->set('view', function() {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
             ".volt" => function($view, $di) {
-                $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+                $volt = new Volt($view, $di);
 
                 //set some options here
 
@@ -1227,7 +1234,9 @@ function. Always is required that the chosen strategy returns a valid PHP string
 
     <?php
 
-    $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+    use Phalcon\Mvc\View\Engine\Volt;
+
+    $volt = new Volt($view, $di);
 
     $compiler = $volt->getCompiler();
 
@@ -1429,8 +1438,10 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
     <?php
 
+    Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
+
     //Create a compiler
-    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    $compiler = new VoltCompiler();
 
     //Optionally add some options
     $compiler->setOptions(array(
