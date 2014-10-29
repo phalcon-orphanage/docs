@@ -330,7 +330,7 @@ Allows to query the first record that match the specified conditions
      //Get first virtual robot ordered by name
      $robot = Robots::findFirst(array(
          array("type" => "mechanical"),
-         "order" => array("name" => 1)
+         "sort" => array("name" => 1)
      ));
      echo "The first virtual robot name is ", $robot->name, "\n";
 
@@ -358,7 +358,7 @@ Allows to query a set of records that match the specified conditions
      //Get and print virtual robots ordered by name
      $robots = Robots::findFirst(array(
          array("type" => "virtual"),
-         "order" => array("name" => 1)
+         "sort" => array("name" => 1)
      ));
      foreach ($robots as $robot) {
        echo $robot->name, "\n";
@@ -367,7 +367,7 @@ Allows to query a set of records that match the specified conditions
      //Get first 100 virtual robots ordered by name
      $robots = Robots::find(array(
          array("type" => "virtual"),
-         "order" => array("name" => 1),
+         "sort" => array("name" => 1),
          "limit" => 100
      ));
      foreach ($robots as $robot) {
