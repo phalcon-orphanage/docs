@@ -327,7 +327,7 @@ this behavior by telling the validation component which validator may stop the v
             'pattern' => '/\+44 [0-9]+/'
         )))
         ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is too short',
+            'messageMinimum' => 'The telephone is too short',
             'min' => 2
         )));
 
