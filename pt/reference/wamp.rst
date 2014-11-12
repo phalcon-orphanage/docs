@@ -40,14 +40,14 @@ Observe que o ícone ficará verde novamente
 .. figure:: ../_static/img/wamp-3.png
     :align: center
 
-Open your browser to navigate to http://localhost. The WAMP welcome page will appear. Look at the section "extensions loaded" to check if phalcon was loaded.
+Abra seu navegador e acesse a seguinte url: http://localhost. A página de boas-vindas do WAMP irá aparecer. Olhe na seção "extensões carregadas" para checar se o phalcon foi carregado.
 
 .. figure:: ../_static/img/wamp-4.png
     :align: center
 
-Congrats!, You are now flying with Phalcon.
+Parabens!, você agora está voando com Phalcon.
 
-Related Guides
+Guias Relacionados
 --------------
 * :doc:`General Installation </reference/install>`
 * :doc:`Detailed Installation on XAMPP for Windows </reference/xampp>`
