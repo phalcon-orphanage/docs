@@ -4,19 +4,19 @@ WampServer_ é um ambiente de desenvolvimento web do Windows. Ele permite a voc�
 
 Baixe a versão correta do Phalcon
 -------------------------------------
-o WAMP tem ambas versões, 32 e 64 bit. Na seção de download, você pode selecionar o Phalcon para Windows de acordo com a arquitetura desejada.
+o WAMP tem ambas versões, 32 e 64 bit. Na seção de downloads, você pode selecionar o Phalcon para Windows de acordo com a arquitetura desejada.
 
 Após realizar o download da biblioteca Phalcon, você terá um arquivo zip como o mostrado abaixo:
 
 .. figure:: ../_static/img/xampp-1.png
     :align: center
 
-Extraia a biblioteca do arquivo para obter a DLL Phalcon:
+Extraia o arquivo para obter a DLL Phalcon:
 
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copie o arquivo php_phalcon.dll para as extensões do PHP.
+Copie o arquivo php_phalcon.dll para a pasta de extensões do PHP.
 Se o WAMPP está instalado na pasta c:\\wamp, a extensão precisa estar em ﻿C:\\wamp\\bin\\php\\php5.3.10\\ext
 
 .. figure:: ../_static/img/wamp-1.png
@@ -24,7 +24,7 @@ Se o WAMPP está instalado na pasta c:\\wamp, a extensão precisa estar em ﻿C:
 
 Edite o arquivo php.ini, ele está localizado em ﻿﻿C:\\wamp\\bin\\php\\php5.3.10\\php.ini.
 Ele pode ser editado com o Notepad (Bloco de notas) ou outro programa similar.
-Nós recomendamos o Notepad++ para evitar problemas com os finais das linhas.
+Nós recomendamos o Notepad++ para evitar problemas com caracteres de controle de final de linha.
 Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
 
 .. figure:: ../_static/img/wamp-2.png
@@ -35,12 +35,12 @@ Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
 
 Reinicie o servidor Web Apache. Clique uma única vez no ícone do WampServer na bandeja do sistema. 
 Escolha "Reiniciar todos os serviços" no menu de pop-up.
-Observe que o ícone ficará verde novamente
+Observe que o ícone ficará verde novamente.
 
 .. figure:: ../_static/img/wamp-3.png
     :align: center
 
-Abra seu navegador e acesse a seguinte url: http://localhost. A página de boas-vindas do WAMP irá aparecer. Olhe na seção "extensões carregadas" para checar se o phalcon foi carregado.
+Abra seu navegador e navegue até o endereço: http://localhost. A página de boas-vindas do WAMP será mostrada. Olhe na seção "extensões carregadas" para checar se o phalcon foi carregado.
 
 .. figure:: ../_static/img/wamp-4.png
     :align: center
