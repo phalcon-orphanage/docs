@@ -16,26 +16,19 @@ Extraia o arquivo para obter a DLL Phalcon:
 .. figure:: ../_static/img/xampp-2.png
     :align: center
 
-Copie o arquivo php_phalcon.dll para a pasta de extensões do PHP.
-Se o WAMPP está instalado na pasta c:\\wamp, a extensão precisa estar em ﻿C:\\wamp\\bin\\php\\php5.3.10\\ext
+Copie o arquivo php_phalcon.dll para a pasta de extensões do PHP. Se o WAMPP está instalado na pasta c:\\wamp, a extensão precisa estar em ﻿C:\\wamp\\bin\\php\\php5.3.10\\ext
 
 .. figure:: ../_static/img/wamp-1.png
     :align: center
 
-Edite o arquivo php.ini, ele está localizado em ﻿﻿C:\\wamp\\bin\\php\\php5.3.10\\php.ini.
-Ele pode ser editado com o Notepad (Bloco de notas) ou outro programa similar.
-Nós recomendamos o Notepad++ para evitar problemas com caracteres de controle de final de linha.
-Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
+Edite o arquivo php.ini, ele está localizado em ﻿﻿C:\\wamp\\bin\\php\\php5.3.10\\php.ini. Ele pode ser editado com o Notepad (Bloco de notas) ou outro programa similar. Nós recomendamos o Notepad++ para evitar problemas com caracteres de controle de final de linha. Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
 
 .. figure:: ../_static/img/wamp-2.png
     :align: center
 
-Também edite outro arquivo php.ini, que está localizado em ﻿﻿﻿C:\\wamp\\bin\\apache\\Apache2.2.21\\bin\\php.ini.
-Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
+Também edite outro arquivo php.ini, que está localizado em ﻿﻿﻿C:\\wamp\\bin\\apache\\Apache2.2.21\\bin\\php.ini. Acrescente ao final do arquivo: extension=php_phalcon.dll e salve-o.
 
-Reinicie o servidor Web Apache. Clique uma única vez no ícone do WampServer na bandeja do sistema. 
-Escolha "Reiniciar todos os serviços" no menu de pop-up.
-Observe que o ícone ficará verde novamente.
+Reinicie o servidor Web Apache. Clique uma única vez no ícone do WampServer na bandeja do sistema. Escolha "Reiniciar todos os serviços" no menu de pop-up. Observe que o ícone ficará verde novamente.
 
 .. figure:: ../_static/img/wamp-3.png
     :align: center
