@@ -1,10 +1,10 @@
-Command Line Applications
+Aplicações de Linha de Comando
 =========================
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Aplicações CLI são executadas pela linha de comando. Elas são usadas para criar tarefas agendadas (Cron Jobs), scripts, comandos úteis e muito mais.
 
-Tasks
+Tarefas (Tasks)
 -----
-Tasks are similar to controllers, on them can be implemented
+Tarefas são similares aos controladores, são implementadas como eles
 
 .. code-block:: php
 
@@ -20,10 +20,9 @@ Tasks are similar to controllers, on them can be implemented
 
     }
 
-Creating a Bootstrap
+Criando um Bootstrap
 --------------------
-As MVC applications, a bootstrap is available to
-
+Como nas aplicações MVC, o bootstrap também é disponível
 .. code-block:: php
 
     <?php
