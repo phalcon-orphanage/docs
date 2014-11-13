@@ -6,13 +6,13 @@ Adaptadores de Arquivo
 -------------
 Os adaptadores disponíveis são:
 
-+-----------+---------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo   | Descrição                                                                                             |
-+===========+===============================================================================================================+
-| Ini       | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
-+-----------+---------------------------------------------------------------------------------------------------------------+
-| Array     | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho         |
-+-----------+---------------------------------------------------------------------------------------------------------------+
++-------------------+---------------------------------------------------------------------------------------------------------------+
+| Tipo de Arquivo   | Descrição                                                                                                     |
++===================+===============================================================================================================+
+| Ini               | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
++-------------------+---------------------------------------------------------------------------------------------------------------+
+| Array             | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho         |
++-------------------+---------------------------------------------------------------------------------------------------------------+
 
 Arrays Nativos
 -------------
@@ -88,7 +88,7 @@ Você pode ler o arquivo como no exemplo a seguir:
 
 Mesclando Configurações
 ----------------------
-Phalcon\\Config permite mesclar um objeto de configuração em outro, recursivamente:
+O Phalcon\\Config permite mesclar um objeto de configuração em outro, recursivamente:
 
 .. code-block:: php
 
