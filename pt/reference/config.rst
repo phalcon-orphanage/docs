@@ -1,13 +1,13 @@
 Lendo Configurações
 ======================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler e transformar arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
 
 Adaptadores de Arquivo
 -------------
 Os adaptadores disponíveis são:
 
 +-----------+---------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo   | Descrição                                                                                               |
+| Tipo de Arquivo   | Descrição                                                                                             |
 +===========+===============================================================================================================+
 | Ini       | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
 +-----------+---------------------------------------------------------------------------------------------------------------+
@@ -55,7 +55,7 @@ Se você deseja uma melhor organização do seu projeto, você pode salvar o arr
 
 Lendo arquivos INI
 -----------------
-Arquivo INI são usados comumente para armazenar configurações. Phalcon\\Config usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
+Arquivo INI são usados comumente para armazenar configurações. O Phalcon\\Config usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
 
 .. code-block:: ini
 
