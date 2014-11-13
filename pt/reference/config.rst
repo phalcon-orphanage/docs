@@ -1,24 +1,22 @@
-Reading Configurations
+Lendo Configurações
 ======================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
-PHP objects for use in an application.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` é um componente usado para ler arquivos de configuração de vários formatos (usando adaptadores) em Objetos PHP para uso em uma aplicação.
 
-File Adapters
+Adaptadores de Arquivo
 -------------
-The adapters available are:
+Os adaptadores disponíveis são:
 
-+-----------+---------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                       |
-+===========+===================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file.    |
-+-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
-+-----------+---------------------------------------------------------------------------------------------------+
++-----------+---------------------------------------------------------------------------------------------------------------+
+| Tipo de Arquivo | Descrição                                                                                               |
++===========+===============================================================================================================+
+| Ini       | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
++-----------+---------------------------------------------------------------------------------------------------------------+
+| Array     | Usa arrays multidimensionais para armazenar configurações. Esse adaptador oferece o melhor desempenho         |
++-----------+---------------------------------------------------------------------------------------------------------------+
 
-Native Arrays
+Arrays Nativos
 -------------
-The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
-read during this request.
+O próximo exemplo mostra como converter arrays nativos em objetos Phalcon\\Config. Essa opção oferece o melhor desempenho já que nenhum arquivo é lido/carregado durante essa requisição.
 
 .. code-block:: php
 
@@ -46,7 +44,7 @@ read during this request.
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-If you want to better organize your project you can save the array in another file and then read it.
+Se você deseja uma melhor organização do seu projeto, você pode salvar o array em um outro arquivo e posteriormente carregá-lo.
 
 .. code-block:: php
 
@@ -55,9 +53,9 @@ If you want to better organize your project you can save the array in another fi
     require "config/config.php";
     $config = new \Phalcon\Config($settings);
 
-Reading INI Files
+Lendo arquivos INI
 -----------------
-Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+Arquivo INI são usados comumente para armazenar configurações. Phalcon\\Config usa a versão otimizada da função PHP parse_ini_file para ler esses arquivos. As seções de arquivo são colocadas em sub-configurações para um acesso mais fácil.
 
 .. code-block:: ini
 
@@ -76,7 +74,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     [models]
     metadata.adapter  = "Memory"
 
-You can read the file as follows:
+Você pode ler o arquivo como no exemplo a seguir:
 
 .. code-block:: php
 
@@ -88,9 +86,9 @@ You can read the file as follows:
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
 
-Merging Configurations
+Mesclando Configurações
 ----------------------
-Phalcon\\Config allows to merge a configuration object into another one recursively:
+Phalcon\\Config permite mesclar um objeto de configuração em outro, recursivamente:
 
 .. code-block:: php
 
@@ -115,7 +113,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
 
     print_r($config);
 
-The above code produces the following:
+O código acima produz o seguinte:
 
 .. code-block:: html
 
@@ -131,4 +129,4 @@ The above code produces the following:
         [debug] => 1
     )
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+Existe mais adaptadores disponíveis para esse componente em `Phalcon Incubator <https://github.com/phalcon/incubator>`_
