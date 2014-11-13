@@ -7,7 +7,7 @@ Adaptadores de Arquivo
 Os adaptadores disponíveis são:
 
 +-----------+---------------------------------------------------------------------------------------------------------------+
-| Tipo de Arquivo | Descrição                                                                                               |
+| Tipo de Arquivo   | Descrição                                                                                               |
 +===========+===============================================================================================================+
 | Ini       | Usa arquivos INI para armazenar configurações. Internamente o adaptador usa a função do PHP parse_ini_file.   |
 +-----------+---------------------------------------------------------------------------------------------------------------+
@@ -129,4 +129,4 @@ O código acima produz o seguinte:
         [debug] => 1
     )
 
-Existe mais adaptadores disponíveis para esse componente em `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+Existem mais adaptadores disponíveis para esse componente em `Phalcon Incubator <https://github.com/phalcon/incubator>`_
