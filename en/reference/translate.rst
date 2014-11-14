@@ -110,8 +110,8 @@ are in the form of a key/value array, where the key matches the placeholder name
 .. code-block:: html+php
 
     <!-- welcome -->
-    <!-- String: hi-user => 'Hello %name%' -->
-    <p><?php echo $t->_("hi-user", array("name" => $name)); ?></p>
+    <!-- String: hi-name => 'Hello %name%' -->
+    <p><?php echo $t->_("hi-name", array("name" => $name)); ?></p>
 
 Some applications implement multilingual on the URL such as http://www.mozilla.org/**es-ES**/firefox/. Phalcon can implement
 this by using a :doc:`Router <routing>`.
