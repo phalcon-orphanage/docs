@@ -740,7 +740,7 @@ Phalcon\\Db 支持下面的数据库字段类型:
     )));
 
     // 删除名为"name"的字段
-    $connection->deleteColumn("robots", null, "name");
+    $connection->dropColumn("robots", null, "name");
 
 
 删除数据库表（Dropping Tables）
