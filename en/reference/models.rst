@@ -269,6 +269,10 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
+.. highlights::
+
+    If you want find record by external data (such as user input) or variable data you must use `Binding Parameters`_.
+
 You could also use the findFirst() method to get only the first record matching the given criteria:
 
 .. code-block:: php
