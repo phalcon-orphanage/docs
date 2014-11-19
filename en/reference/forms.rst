@@ -384,7 +384,7 @@ in the form's class to perform pre-validations and post-validations:
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    class ContactForm extends Phalcon\Forms\Form
     {
         public function beforeValidation()
         {
