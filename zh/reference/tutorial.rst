@@ -6,14 +6,13 @@
 
 确认安装（Checking your installation）
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
-code snippet below:
+我们假设你已经安装了Phalcon。请检查你的phpinfo()输出了一个"Phalcon"部分引用或者执行以下代码片段:
 
 .. code-block:: php
 
     <?php print_r(get_loaded_extensions()); ?>
 
-The Phalcon extension should appear as part of the output:
+Phalcon 拓展应该作为输出的一部分出现:
 
 .. code-block:: php
 
@@ -30,13 +29,13 @@ The Phalcon extension should appear as part of the output:
 
 创建项目（Creating a project）
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+使用本指南的最好方法就是依次按照每一步来做。你可以得到完整的代码 `点击这里 <https://github.com/phalcon/tutorial>`_.
 
 文件结构（File structure）
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因为它是松散耦合的，你可以实现Phalcon驱动的应用程序，以及使用对你来说最舒服的文件结构。
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+本教程的目的以此为起点，我们建议使用以下结构：
 
 .. code-block:: php
 
@@ -50,13 +49,13 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+需要注意的是，你不需要任何有关Phalcon的 "library" 目录。该框架已经被加载到内存中，供您使用。
 
 优美的 URL（Beautiful URLs）
 ^^^^^^^^^^^^^^
-We'll use pretty (friendly) URLs for this tutorial. Friendly URLs are better for SEO as well as being easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easily develop without them.
+在本教程中，我们将使用相当（友好）URL。友好的URL不但利于SEO而且便于用户记忆。Phalcon支持一些最流行的Web服务器提供重写模块。让你的应用程序的URL友好不是必要的，没有它们你可以同样轻松地开发。
 
-In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /tutorial/.htaccess file:
+在这个例子中，我们将使用Apache的重写模块。 让我们在 /tutorial/.htaccess 文件中创建几个重写规则:
 
 .. code-block:: apacheconf
 
@@ -67,9 +66,9 @@ In this example we'll use the rewrite module for Apache. Let's create a couple o
         RewriteRule  (.*) public/$1 [L]
     </IfModule>
 
-All requests to the project will be rewritten to the public/ directory making it the document root. This step ensures that the internal project folders remain hidden from public viewing and thus eliminates security threats of this kind.
+对该项目的所有请求都将被重定向到为public/文档根目录。此步骤可确保内部项目的文件夹仍然对公共访客隐藏，从而消除了一些安全威胁。
 
-The second set of rules will check if the requested file exists and, if it does, it doesn't have to be rewritten by the web server module:
+第二组规则将检查是否存在所请求的文件，如果存在所要请求的文件，就不需要Web服务器模块来重写：
 
 .. code-block:: apacheconf
 
@@ -83,9 +82,10 @@ The second set of rules will check if the requested file exists and, if it does,
 
 引导程序（Bootstrap）
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+你需要创建的第一个文件是引导文件。这个文件很重要; 因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
+在这个文件中，你可以实现组件的初始化和应用程序的行为。
 
-The tutorial/public/index.php file should look like:
+这个引导文件 tutorial/public/index.php 文件应该看起来像:
 
 .. code-block:: php
 
