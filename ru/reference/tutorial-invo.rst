@@ -1,15 +1,12 @@
-Tutorial 2: Explaining INVO
+Урок 2: Приложение для создания счетов INVO
 ===========================
-In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
-INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
-generate invoices, and do other tasks as manage their customers and products. You can clone its code from Github_.
+Во втором уроке мы создадим более сложное приложение с помощью Phalcon. INVO это одно из приложений, которое мы создали в качестве примера. INVO это небольшой сайт, который позволяет своим пользователям создавать счета и выполнять другие задачи для управления своими клиентами и продуктами. Полный код проекта можно клонировать из Github_.
 
-Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
-invoices still it serves as an example to understand how the framework works.
+INVO использует `Twitter Bootstrap`_ в качестве фронтенд-фреймворка. Кроме того, приложение не будет генерировать счета, оно служит для понимая того, как работает фреймворк.
 
-Project Structure
+Структура проекта
 -----------------
-Once you clone the project in your document root you'll see the following structure:
+После того как вы склонируете проект в корневой каталог вы увидите следующую структуру:
 
 .. code-block:: bash
 
@@ -27,30 +24,25 @@ Once you clone the project in your document root you'll see the following struct
             public/js/
         schemas/
 
-As you know, Phalcon does not impose a particular file structure for application development. This project
-provides a simple MVC structure and a public document root.
+Как вы уже знаете, Phalcon не навязывает определенную структуру файлов и каталогов для разработки приложений. Этот проект обеспечивает простую стуктуру MVC и корневой каталог public.
 
-Once you open the application in your browser http://localhost/invo you'll something like this:
+После того, как вы откроете приложение в браузере ://localhost/invo вы увидите что-то вроде этого:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided in two parts, a frontend, that is a public part where visitors can receive information
-about INVO and request contact information. The second part is the backend, an administrative area where a
-registered user can manage his/her products and customers.
+Приложение состоит из двух частей, фронтенд - внешняя часть, где поситители могут получить информацию о INVO и запросить контактные данные. И бэкенд - административную панель, где зарегистрированный пользователь может управлять своими продуктами и клиентами.
 
-Routing
+Маршрутизация
 -------
-INVO uses the standard route that is built-in with the Router component. These routes matches the following
-pattern: /:controller/:action/:params. This means that the first part of an URI is the controller, the second the
-action and the rest are the parameters.
+INVO использует стандартный маршрутизатор основанный на встроенном компоненте Route. Эти маршруты соответствуют следующим шаблонам: /:controller/:action/:params. Первая часть URI является контроллером, вторая имя действия и остальные параметры.
 
-The following route /session/register executes the controller SessionController and its action registerAction.
+Маршрут /session/register выполняет контроллер SessionController и его действие registerAction.
 
-Configuration
+Конфигурация
 -------------
-INVO has a configuration file that sets general parameters in the application. This file is read in the first lines
-of the bootstrap file (public/index.php):
+INVO имеет конфигурационный файл, который устанавливает общие параметры приложения. Этот файл загружается в самом начале
+загрузочного файла (public/index.php):
 
 .. code-block:: php
 
@@ -59,8 +51,8 @@ of the bootstrap file (public/index.php):
     //Read the configuration
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
-contains the following settings:
+:doc:`Phalcon\\Config <config>` позволяет нам манипулировать файлами в объектно-ориентированного подхода. Файл конфигурации
+содержит следующие настройки:
 
 .. code-block:: ini
 
@@ -83,13 +75,12 @@ contains the following settings:
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
-there are three sections to be used later.
+Phalcon не имеет каких-либо предопределенных соглашений о конфигурациях. Разделы помогут нам организовать необходимые параметры. В этом файле три секции, которые мы будем использовать позже.
 
-Autoloaders
+Автозагрузчики
 -----------
-A second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
-of directories where the application will look for the classes that it eventually will need.
+Второе, что видно в в загрузочном файле (public/index.php) это автозагрузчик. Автозагрузчик регистрирует набор
+каталогов, где приложение будет искать необходимые классы.
 
 .. code-block:: php
 
@@ -106,8 +97,8 @@ of directories where the application will look for the classes that it eventuall
         )
     )->register();
 
-Note that what has been done is registing the directories that were defined in the configuration file. The only
-directory that is not registered is the viewsDir, because it contains no classes but html + php files.
+Обратите внимание на регистрацию каталогов в файле конфигураций.
+Единтсвенная директория которая не была зарегистрирована с помощью автозагрузчика это viewsDir, потому что она не содержит классов, только html + php файлы.
 
 Handling the Request
 --------------------
