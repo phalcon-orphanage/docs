@@ -170,7 +170,7 @@ Redirect by HTTP to another action or URL
     	"for" => "index-lang",
     	"lang" => "jp",
     	"controller" => "index"
-    ));
+    ), null, 307);
 
 
 
