@@ -15,7 +15,9 @@ Execute the following code to know the base uri detected by Phalcon:
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
     echo $url->getBaseUri();
 
 By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application
@@ -25,7 +27,9 @@ is recommended setting up it manually:
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     //Setting a relative base URI
     $url->setBaseUri('/invo/');
@@ -42,8 +46,10 @@ Usually, this component must be registered in the Dependency Injector container,
 
     <?php
 
+    use Phalcon\Mvc\Url;
+
     $di->set('url', function(){
-        $url = new Phalcon\Mvc\Url();
+        $url = new Url();
         $url->setBaseUri('/invo/');
         return $url;
     });
@@ -67,7 +73,7 @@ For Example if you have the following route:
 
     $route->add('/blog/{year}/{month}/{title}', array(
         'controller' => 'posts',
-        'action' => 'show'
+        'action'     => 'show'
     ))->setName('show-post');
 
 A URL can be generated in the following way:
@@ -78,8 +84,8 @@ A URL can be generated in the following way:
 
     //This produces: /blog/2012/01/some-blog-post
     $url->get(array(
-        'for' => 'show-post',
-        'year' => 2012,
+        'for'   => 'show-post',
+        'year'  => 2012,
         'month' => '01',
         'title' => 'some-blog-post'
     ));
@@ -92,7 +98,9 @@ You can use this component also to create urls without mod-rewrite:
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     //Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
@@ -106,7 +114,9 @@ You can also use $_SERVER["REQUEST_URI"]:
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     //Pass the URI in $_GET["_url"]
     $url->setBaseUri('/invo/index.php?_url=/');
@@ -120,7 +130,9 @@ In this case, it's necessary to manually handle the required URI in the Router:
 
     <?php
 
-    $router = new Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
 
     // ... define routes
 
@@ -158,7 +170,9 @@ This component allow you to set up a different base uri for static resources in 
 
     <?php
 
-    $url = new Phalcon\Mvc\Url();
+    use Phalcon\Mvc\Url;
+
+    $url = new Url();
 
     //Dynamic URIs are
     $url->setBaseUri('/');

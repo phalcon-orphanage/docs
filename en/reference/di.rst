@@ -22,10 +22,10 @@ we cannot change the connection parameters or the type of database system becaus
         public function someDbTask()
         {
             $connection = new Connection(array(
-                "host" => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname" => "invo"
+                "host"      => "localhost",
+                "username"  => "root",
+                "password"  => "secret",
+                "dbname"    => "invo"
             ));
 
             // ...
@@ -69,10 +69,10 @@ a good solution:
 
     //Create the connection
     $connection = new Connection(array(
-        "host" => "localhost",
-        "username" => "root",
-        "password" => "secret",
-        "dbname" => "invo"
+        "host"      => "localhost",
+        "username"  => "root",
+        "password"  => "secret",
+        "dbname"    => "invo"
     ));
 
     //Inject the connection in the component
@@ -98,10 +98,10 @@ to create it again and again could solve this:
         public static function getConnection()
         {
            return new Connection(array(
-                "host" => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname" => "invo"
+                "host"      => "localhost",
+                "username"  => "root",
+                "password"  => "secret",
+                "dbname"    => "invo"
             ));
         }
 
@@ -153,10 +153,10 @@ Now, let's imagine that we must implement two methods in the component, the firs
         protected static function _createConnection()
         {
             return new Connection(array(
-                "host" => "localhost",
-                "username" => "root",
-                "password" => "secret",
-                "dbname" => "invo"
+                "host"      => "localhost",
+                "username"  => "root",
+                "password"  => "secret",
+                "dbname"    => "invo"
             ));
         }
 
@@ -239,10 +239,10 @@ before using the component, every time, makes our code not as maintainable as we
 
     //Create the dependencies or retrieve them from the registry
     $connection = new Connection();
-    $session = new Session();
+    $session    = new Session();
     $fileSystem = new FileSystem();
-    $filter = new Filter();
-    $selector = new Selector();
+    $filter     = new Filter();
+    $selector   = new Selector();
 
     //Pass them as constructor parameters
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
@@ -276,10 +276,10 @@ the object:
         {
 
             $connection = new Connection();
-            $session = new Session();
+            $session    = new Session();
             $fileSystem = new FileSystem();
-            $filter = new Filter();
-            $selector = new Selector();
+            $filter     = new Filter();
+            $selector   = new Selector();
 
             return new self($connection, $session, $fileSystem, $filter, $selector);
         }
@@ -335,10 +335,10 @@ of our component:
     //Register a "db" service in the container
     $di->set('db', function() {
         return new Connection(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
+            "host"      => "localhost",
+            "username"  => "root",
+            "password"  => "secret",
+            "dbname"    => "invo"
         ));
     });
 
@@ -391,6 +391,8 @@ Services can be registered using several types of definitions:
 
     <?php
 
+    use Phalcon\Http\Request;
+
     //Create the Dependency Injector Container
     $di = new Phalcon\DI();
 
@@ -399,11 +401,11 @@ Services can be registered using several types of definitions:
 
     //Using an anonymous function, the instance will be lazy loaded
     $di->set("request", function() {
-        return new Phalcon\Http\Request();
+        return new Request();
     });
 
     //Registering an instance directly
-    $di->set("request", new Phalcon\Http\Request());
+    $di->set("request", new Request());
 
     //Using an array definition
     $di->set("request", array(
@@ -416,6 +418,8 @@ The array syntax is also allowed to register services:
 
     <?php
 
+    use Phalcon\Http\Request;
+
     //Create the Dependency Injector Container
     $di = new Phalcon\DI();
 
@@ -424,11 +428,11 @@ The array syntax is also allowed to register services:
 
     //Using an anonymous function, the instance will be lazy loaded
     $di["request"] = function() {
-        return new Phalcon\Http\Request();
+        return new Request();
     };
 
     //Registering an instance directly
-    $di["request"] = new Phalcon\Http\Request();
+    $di["request"] = new Request();
 
     //Using an array definition
     $di["request"] = array(
@@ -474,8 +478,10 @@ the same object/value:
 
     <?php
 
+    use Phalcon\Http\Request;
+
     // return new Phalcon\Http\Request();
-    $di->set('request', new Phalcon\Http\Request());
+    $di->set('request', new Request());
 
 Closures/Anonymous functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -486,12 +492,14 @@ change some of the parameters externally without having to completely change the
 
     <?php
 
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
     $di->set("db", function() {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-             "host" => "localhost",
+        return new PdoMysql(array(
+             "host"     => "localhost",
              "username" => "root",
              "password" => "secret",
-             "dbname" => "blog"
+             "dbname"   => "blog"
         ));
     });
 
@@ -501,13 +509,15 @@ Some of the limitations can be overcome by passing additional variables to the c
 
     <?php
 
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
     //Using the $config variable in the current scope
     $di->set("db", function() use ($config) {
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-             "host" => $config->host,
+        return new PdoMysql(array(
+             "host"     => $config->host,
              "username" => $config->username,
              "password" => $config->password,
-             "dbname" => $config->name
+             "dbname"   => $config->name
         ));
     });
 
@@ -521,12 +531,14 @@ can be a little more verbose:
 
     <?php
 
+    use \Phalcon\Logger\Adapter\File as LoggerFile;
+
     //Register a service 'logger' with a class name and its parameters
     $di->set('logger', array(
         'className' => 'Phalcon\Logger\Adapter\File',
         'arguments' => array(
             array(
-                'type' => 'parameter',
+                'type'  => 'parameter',
                 'value' => '../apps/logs/error.log'
             )
         )
@@ -534,7 +546,7 @@ can be a little more verbose:
 
     //Using an anonymous function
     $di->set('logger', function() {
-        return new \Phalcon\Logger\Adapter\File('../apps/logs/error.log');
+        return new LoggerFile('../apps/logs/error.log');
     });
 
 Both service registrations above produce the same result. The array definition however, allows for alteration of the service parameters if needed:
@@ -548,7 +560,7 @@ Both service registrations above produce the same result. The array definition h
 
     //Change the first parameter without instantiating the logger
     $di->getService('logger')->setParameter(0, array(
-        'type' => 'parameter',
+        'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
     ));
 
@@ -646,15 +658,15 @@ A service with setter injection can be registered as follows:
 
     $di->set('someComponent', array(
         'className' => 'SomeApp\SomeComponent',
-        'calls' => array(
+        'calls'     => array(
             array(
-                'method' => 'setResponse',
+                'method'    => 'setResponse',
                 'arguments' => array(
                     array('type' => 'service', 'name' => 'response'),
                 )
             ),
             array(
-                'method' => 'setFlag',
+                'method'    => 'setFlag',
                 'arguments' => array(
                     array('type' => 'parameter', 'value' => true)
                 )
@@ -694,14 +706,14 @@ A service with properties injection can be registered as follows:
     ));
 
     $di->set('someComponent', array(
-        'className' => 'SomeApp\SomeComponent',
-        'properties' => array(
+        'className'     => 'SomeApp\SomeComponent',
+        'properties'    => array(
             array(
-                'name' => 'response',
+                'name'  => 'response',
                 'value' => array('type' => 'service', 'name' => 'response')
             ),
             array(
-                'name' => 'someFlag',
+                'name'  => 'someFlag',
                 'value' => array('type' => 'parameter', 'value' => true)
             )
         )
@@ -767,9 +779,11 @@ the same instance of it is returned every time a consumer retrieve the service f
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as SessionFiles;
+
     //Register the session service as "always shared"
     $di->setShared('session', function() {
-        $session = new Phalcon\Session\Adapter\Files();
+        $session = new SessionFiles();
         $session->start();
         return $session;
     });
@@ -805,6 +819,8 @@ Once a service is registered in the service container, you can retrieve it to ma
 
     <?php
 
+    use Phalcon\Http\Request;
+
     //Register the "register" service
     $di->set('request', 'Phalcon\Http\Request');
 
@@ -813,7 +829,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
     //Change its definition
     $requestService->setDefinition(function() {
-        return new Phalcon\Http\Request();
+        return new Request();
     });
 
     //Change it to shared
@@ -860,7 +876,9 @@ to do this, you need to implement the :doc:`Phalcon\\DI\\InjectionAwareInterface
 
     <?php
 
-    class MyClass implements \Phalcon\DI\InjectionAwareInterface
+    use Phalcon\DI\InjectionAwareInterface;
+
+    class MyClass implements InjectionAwareInterface
     {
 
         protected $_di;
@@ -937,13 +955,15 @@ If needed you can access the latest DI created in a static function in the follo
 
     <?php
 
+    use Phalcon\DI;
+
     class SomeComponent
     {
 
         public static function someMethod()
         {
             //Get the session service
-            $session = Phalcon\DI::getDefault()->getSession();
+            $session = DI::getDefault()->getSession();
         }
 
     }
@@ -956,7 +976,11 @@ registers the appropriate services bundled with the framework to act as full-sta
 
 .. code-block:: php
 
-    <?php $di = new Phalcon\DI\FactoryDefault();
+    <?php
+
+    use Phalcon\DI\FactoryDefault;
+
+    $di = new FactoryDefault();
 
 Service Name Conventions
 ========================

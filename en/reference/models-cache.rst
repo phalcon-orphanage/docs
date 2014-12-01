@@ -75,7 +75,7 @@ Caching could be also applied to resultsets generated using relationships:
     <?php
 
     // Query some post
-    $post = Post::findFirst();
+    $post     = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(array(
@@ -304,7 +304,7 @@ we can override the find/findFirst method to force every query to be cached:
             //and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
-                    "key" => self::_createKey($parameters),
+                    "key"      => self::_createKey($parameters),
                     "lifetime" => 300
                 );
             }
@@ -333,7 +333,7 @@ This language gives you much more freedom to create all kinds of queries. Of cou
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(array(
-        "key" => "cars-by-name",
+        "key"      => "cars-by-name",
         "lifetime" => 300
     ));
 
@@ -364,7 +364,7 @@ Some models may have relationships to other models. This allows us to easily che
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -495,7 +495,7 @@ This means that when you get a related record you could intercept how these data
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
@@ -553,7 +553,7 @@ to obtain all entities:
         public static function find($parameters=null)
         {
             //Create a unique key
-            $key = self::_createKey($parameters);
+            $key     = self::_createKey($parameters);
 
             //Check if there are data in the cache
             $results = self::_getCache($key);
@@ -613,13 +613,13 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function getInvoicesCustomers($conditions, $params=null)
         {
-            $phql = "SELECT Invoices.*, Customers.*
+            $phql  = "SELECT Invoices.*, Customers.*
             FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(array(
-                "key" => self::_createKey($conditions, $params),
+                "key"      => self::_createKey($conditions, $params),
                 "lifetime" => 300
             ));
 
@@ -691,7 +691,7 @@ a more complicated method. Additionally, this method does not work if the data i
 
     $robots = Robots::find(array(
         '(id > ?0 AND type = "A") AND id < ?1',
-        'bind' => array(100, 2000),
+        'bind'  => array(100, 2000),
         'order' => 'type'
     ));
 
@@ -750,7 +750,7 @@ this class looks like:
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
-                $final = $visitor->getFinal();
+                $final   = $visitor->getFinal();
 
                 //Select the cache according to the range
                 //...
@@ -790,7 +790,7 @@ tell us the possible range to be used in the cache:
 
                 case 'binary-op':
 
-                    $left = $this->visit($node['left']);
+                    $left  = $this->visit($node['left']);
                     $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
@@ -882,7 +882,7 @@ build all your SQL statements passing variable parameters as bound parameters:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         //...
@@ -910,7 +910,7 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {

@@ -264,10 +264,10 @@ It's possible define a default route that includes a module wildcard:
     $router = new Router(false);
 
     $router->add('/:module/:controller/:action/:params', array(
-        'module' => 1,
+        'module'     => 1,
         'controller' => 2,
-        'action' => 3,
-        'params' => 4
+        'action'     => 3,
+        'params'     => 4
     ));
 
 In this case, the route always must have the module name as part of the URL. For example, the following
@@ -290,15 +290,15 @@ Or you can bind specific routes to specific modules:
     <?php
 
     $router->add("/login", array(
-        'module' => 'backend',
+        'module'     => 'backend',
         'controller' => 'login',
-        'action' => 'index',
+        'action'     => 'index',
     ));
 
     $router->add("/products/:action", array(
-        'module' => 'frontend',
+        'module'     => 'frontend',
         'controller' => 'products',
-        'action' => 1,
+        'action'     => 1,
     ));
 
 Or bind them to specific namespaces:
@@ -308,9 +308,9 @@ Or bind them to specific namespaces:
     <?php
 
     $router->add("/:namespace/login", array(
-        'namespace' => 1,
+        'namespace'  => 1,
         'controller' => 'login',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Namespaces/class names must be passed separated:
@@ -320,9 +320,9 @@ Namespaces/class names must be passed separated:
     <?php
 
     $router->add("/login", array(
-        'namespace' => 'Backend\Controllers',
+        'namespace'  => 'Backend\Controllers',
         'controller' => 'login',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 HTTP Method Restrictions
@@ -355,7 +355,7 @@ Convertions allow to freely transform the route's parameters before passing them
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
-            'action' => 'show'
+            'action'     => 'show'
         ))
         ->convert('slug', function($slug) {
             //Transform the slug removing the dashes
@@ -377,7 +377,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     //Create a group with a common module and controller
     $blog = new RouterGroup(array(
-        'module' => 'blog',
+        'module'     => 'blog',
         'controller' => 'index'
     ));
 
@@ -397,7 +397,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
     //This route maps to a controller different than the default
     $blog->add('/blog', array(
         'controller' => 'blog',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
     //Add the group to the router
@@ -417,7 +417,7 @@ You can move groups of routes to separate files in order to improve the organiza
         {
             //Default paths
             $this->setPaths(array(
-                'module' => 'blog',
+                'module'    => 'blog',
                 'namespace' => 'Blog\Controllers'
             ));
 
@@ -437,7 +437,7 @@ You can move groups of routes to separate files in order to improve the organiza
             //This route maps to a controller different than the default
             $this->add('/blog', array(
                 'controller' => 'blog',
-                'action' => 'index'
+                'action'     => 'index'
             ));
 
         }
@@ -520,8 +520,8 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
 
     // returns /posts/2012/phalcon-1-0-released
     echo $url->get(array(
-        "for" => "show-posts",
-        "year" => "2012",
+        "for"   => "show-posts",
+        "year"  => "2012",
         "title" => "phalcon-1-0-released"
     ));
 
@@ -605,8 +605,8 @@ The following are examples of custom routes:
     $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
-            'version' => 1,
-            'format' => 4
+            'version'    => 1,
+            'format'     => 4
         )
     );
 
@@ -652,7 +652,7 @@ in your website/application:
 
     $router->add("/", array(
         'controller' => 'index',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Not Found Paths
@@ -666,7 +666,7 @@ If none of the routes specified in the router are matched, you can define a grou
     //Set 404 paths
     $router->notFound(array(
         "controller" => "index",
-        "action" => "route404"
+        "action"     => "route404"
     ));
 
 Setting default paths
@@ -687,7 +687,7 @@ those paths they can be automatically filled by the router:
     //Using an array
     $router->setDefaults(array(
         'controller' => 'index',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Dealing with extra/trailing slashes
@@ -730,7 +730,7 @@ Sometimes, routes must be matched if they meet specific conditions, you can add 
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
         //Check if the request was made with Ajax
@@ -762,7 +762,7 @@ And use this class instead of the anonymous function:
 
     $router->add('/get/info/{id}', array(
         'controller' => 'products',
-        'action' => 'info'
+        'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 Hostname Constraints
@@ -775,9 +775,9 @@ to only match if the route also meets the hostname constraint:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('admin.company.com');
 
 Hostname can also be regular expressions:
@@ -787,9 +787,9 @@ Hostname can also be regular expressions:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('([a-z+]).company.com');
 
 In groups of routes you can set up a hostname constraint that apply for every route in the group:
@@ -802,7 +802,7 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
     //Create a group with a common module and controller
     $blog = new RouterGroup(array(
-        'module' => 'blog',
+        'module'     => 'blog',
         'controller' => 'posts'
     ));
 
@@ -1056,12 +1056,12 @@ You need to create app/config/routes.php and add router initialization code, for
 
     $router->add("/login", array(
         'controller' => 'login',
-        'action' => 'index',
+        'action'     => 'index',
     ));
 
     $router->add("/products/:action", array(
         'controller' => 'products',
-        'action' => 1,
+        'action'     => 1,
     ));
 
     return $router;

@@ -124,8 +124,8 @@ This form defines the fields that are visible to the user:
     use Phalcon\Forms\Element\Text;
     use Phalcon\Forms\Element\Hidden;
     use Phalcon\Forms\Element\Select;
-    use Phalcon\Validation\Validator\PresenceOf;
     use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
     use Phalcon\Validation\Validator\Numericality;
 
     class ProductsForm extends Form
@@ -575,7 +575,7 @@ In the creation case, we recover the data submitted and assign them to a new "pr
             return $this->forward("products/index");
         }
 
-        $form = new ProductsForm;
+        $form    = new ProductsForm;
         $product = new Products();
 
         // ...
@@ -614,7 +614,7 @@ in the form ProductsForm (app/forms/ProductsForm.php):
 
     // ...
 
-    $form = new ProductsForm;
+    $form    = new ProductsForm;
     $product = new Products();
 
     // Validate the input

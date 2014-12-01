@@ -19,7 +19,9 @@ By sanitizing input we ensure that application integrity will be intact.
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
+
+    $filter = new Filter();
 
     // returns "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
@@ -43,7 +45,9 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function indexAction()
@@ -72,7 +76,9 @@ The next example shows you how to sanitize the action parameters within a contro
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function indexAction()
@@ -96,7 +102,9 @@ the format we expect.
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
+
+    $filter = new Filter();
 
     // returns "Hello"
     $filter->sanitize("<h1>Hello</h1>", "striptags");
@@ -139,7 +147,9 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
+
+    $filter = new Filter();
 
     //Using an anonymous function
     $filter->add('md5', function($value) {
@@ -155,6 +165,8 @@ Or, if you prefer, you can implement the filter in a class:
 
     <?php
 
+    use Phalcon\Filter;
+
     class IPv4Filter
     {
 
@@ -165,7 +177,7 @@ Or, if you prefer, you can implement the filter in a class:
 
     }
 
-    $filter = new \Phalcon\Filter();
+    $filter = new Filter();
 
     //Using an object
     $filter->add('ipv4', new IPv4Filter());

@@ -209,7 +209,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             //Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
@@ -247,11 +247,11 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             //Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value);
+                $parts                = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
@@ -481,7 +481,7 @@ when the controller/action combination wasn't found:
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -493,7 +493,7 @@ when the controller/action combination wasn't found:
                     case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                         $dispatcher->forward(array(
                             'controller' => 'index',
-                            'action' => 'show404'
+                            'action'     => 'show404'
                         ));
                         return false;
                 }
@@ -530,7 +530,7 @@ take actions when an exception is produced in the dispatch loop:
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -538,7 +538,7 @@ take actions when an exception is produced in the dispatch loop:
             //Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
-                'action' => 'show503'
+                'action'     => 'show503'
             ));
 
             return false;

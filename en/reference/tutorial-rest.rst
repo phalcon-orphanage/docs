@@ -60,7 +60,9 @@ Then, in the index.php file we create the following:
 
     <?php
 
-    $app = new \Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     //define the routes here
 
@@ -72,7 +74,9 @@ Now we will create the routes as we defined above:
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     //Retrieves all robots
     $app->get('/api/robots', function() {
@@ -123,10 +127,10 @@ application:
 
     <?php
 
-    use Phalcon\Mvc\Model,
-        Phalcon\Mvc\Model\Message,
-        Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model;
+    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Mvc\Model\Validator\Uniqueness;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
 
     class Robots extends Model
     {
@@ -168,27 +172,32 @@ Now, we must set up a connection to be used by this model and load it within our
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+
     // Use Loader() to autoload our model
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     $loader->registerDirs(array(
         __DIR__ . '/models/'
     ))->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new FactoryDefault();
 
     //Set up the database service
     $di->set('db', function(){
-        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-            "host" => "localhost",
-            "username" => "asimov",
-            "password" => "zeroth",
-            "dbname" => "robotics"
+        return new PdoMysql(array(
+            "host"      => "localhost",
+            "username"  => "asimov",
+            "password"  => "zeroth",
+            "dbname"    => "robotics"
         ));
     });
 
     //Create and bind the DI to the application
-    $app = new \Phalcon\Mvc\Micro($di);
+    $app = new Micro($di);
 
 Retrieving Data
 ---------------
@@ -208,8 +217,8 @@ perform this simple query returning the results as JSON:
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'    => $robot->id,
+                'name'  => $robot->name,
             );
         }
 
@@ -237,8 +246,8 @@ The searching by name handler would look like:
         $data = array();
         foreach ($robots as $robot) {
             $data[] = array(
-                'id' => $robot->id,
-                'name' => $robot->name,
+                'id'    => $robot->id,
+                'name'  => $robot->name,
             );
         }
 
@@ -252,6 +261,8 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
 
     <?php
 
+    use Phalcon\Http\Response;
+
     //Retrieves robots based on primary key
     $app->get('/api/robots/{id:[0-9]+}', function($id) use ($app) {
 
@@ -261,15 +272,15 @@ Searching by the field "id" it's quite similar, in this case, we're also notifyi
         ))->getFirst();
 
         //Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($robot == false) {
             $response->setJsonContent(array('status' => 'NOT-FOUND'));
         } else {
             $response->setJsonContent(array(
                 'status' => 'FOUND',
-                'data' => array(
-                    'id' => $robot->id,
+                'data'   => array(
+                    'id'   => $robot->id,
                     'name' => $robot->name
                 )
             ));
@@ -286,6 +297,8 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
     <?php
 
+    use Phalcon\Http\Response;
+
     //Adds a new robot
     $app->post('/api/robots', function() use ($app) {
 
@@ -300,7 +313,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
         ));
 
         //Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         //Check if the insertion was successful
         if ($status->success() == true) {
@@ -337,6 +350,8 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
 
     <?php
 
+    use Phalcon\Http\Response;
+
     //Updates robots based on primary key
     $app->put('/api/robots/{id:[0-9]+}', function($id) use($app) {
 
@@ -351,7 +366,7 @@ The data update is similar to insertion. The "id" passed as parameter indicates 
         ));
 
         //Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         //Check if the insertion was successful
         if ($status->success() == true) {
@@ -380,6 +395,8 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
 
     <?php
 
+    use Phalcon\Http\Response;
+
     //Deletes robots based on primary key
     $app->delete('/api/robots/{id:[0-9]+}', function($id) use ($app) {
 
@@ -389,7 +406,7 @@ The data delete is similar to update. The "id" passed as parameter indicates wha
         ));
 
         //Create a response
-        $response = new Phalcon\Http\Response();
+        $response = new Response();
 
         if ($status->success() == true) {
             $response->setJsonContent(array('status' => 'OK'));

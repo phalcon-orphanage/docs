@@ -17,9 +17,11 @@ Thanks to the service container, we can ensure that the session is accessed only
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as Session;
+
     //Start the session the first time when some component request the session service
     $di->setShared('session', function() {
-        $session = new Phalcon\Session\Adapter\Files();
+        $session = new Session();
         $session->start();
         return $session;
     });
@@ -33,7 +35,9 @@ and store items and retrieve them in the following way:
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UserController extends Controller
     {
 
         public function indexAction()
@@ -63,7 +67,9 @@ It's also possible remove specific variables or destroy the whole session:
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UserController extends Controller
     {
 
         public function removeAction()
@@ -90,11 +96,13 @@ prefix for every session variable created in a certain application:
 
     <?php
 
+    use Phalcon\Session\Adapter\Files as Session;
+
     //Isolating the session data
     $di->set('session', function(){
 
         //All variables created will prefixed with "my-app-1"
-        $session = new Phalcon\Session\Adapter\Files(
+        $session = new Session(
             array(
                 'uniqueId' => 'my-app-1'
             )
@@ -115,7 +123,9 @@ it's automatically stored in session:
 
     <?php
 
-    $user       = new Phalcon\Session\Bag('user');
+    use Phalcon\Session\Bag as SessionBag;
+
+    $user       = new SessionBag('user');
     $user->setDI($di);
     $user->name = "Kimbra Johnson";
     $user->age  = 22;
@@ -131,7 +141,9 @@ Thanks to this you can persist data between requests in every class in an indepe
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UserController extends Controller
     {
 
         public function indexAction()
@@ -156,7 +168,9 @@ In a component:
 
     <?php
 
-    class Security extends Phalcon\Mvc\User\Component
+    use Phalcon\Mvc\Controller;
+
+    class Security extends Component
     {
 
         public function auth()

@@ -66,7 +66,7 @@ Parameters without a default value are handled as required. Setting optional val
 
         }
 
-        public function showAction($year=2012, $postTitle='some default title')
+        public function showAction($year = 2012, $postTitle = 'some default title')
         {
 
         }
@@ -91,8 +91,8 @@ Parameters are assigned in the same order as they were passed in the route. You 
 
         public function showAction()
         {
-            $year = $this->dispatcher->getParam('year');
-            $postTitle = $this->dispatcher->getParam('postTitle');
+            $year       = $this->dispatcher->getParam('year');
+            $postTitle  = $this->dispatcher->getParam('postTitle');
         }
 
     }
@@ -125,7 +125,7 @@ execution to a different controller/action.
             // Forward flow to another action
             $this->dispatcher->forward(array(
                 "controller" => "users",
-                "action" => "signin"
+                "action"     => "signin"
             ));
         }
 
@@ -449,7 +449,7 @@ you to implement hook points before/after the actions are executed:
 
                 $this->dispatcher->forward(array(
                     'controller' => 'home',
-                    'action' => 'index'
+                    'action'     => 'index'
                 ));
 
                 return false;

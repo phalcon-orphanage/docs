@@ -25,6 +25,8 @@ In the example below, the paginator will use as its source data the result of a 
 
     <?php
 
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+
     // Current page to show
     // In a controller this can be:
     // $this->request->getQuery('page', 'int'); // GET
@@ -32,14 +34,14 @@ In the example below, the paginator will use as its source data the result of a 
     $currentPage = (int) $_GET["page"];
 
     // The data set to paginate
-    $robots = Robots::find();
+    $robots      = Robots::find();
 
     // Create a Model paginator, show 10 rows by page starting from $currentPage
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator   = new PaginatorModel(
         array(
-            "data" => $robots,
-            "limit"=> 10,
-            "page" => $currentPage
+            "data"  => $robots,
+            "limit" => 10,
+            "page"  => $currentPage
         )
     );
 
@@ -85,8 +87,12 @@ An example of the source data that must be used for each adapter:
 
     <?php
 
+    use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+    use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
+    use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+
     //Passing a resultset as data
-    $paginator = new \Phalcon\Paginator\Adapter\Model(
+    $paginator = new PaginatorModel(
         array(
             "data"  => Products::find(),
             "limit" => 10,
@@ -95,7 +101,7 @@ An example of the source data that must be used for each adapter:
     );
 
     //Passing an array as data
-    $paginator = new \Phalcon\Paginator\Adapter\NativeArray(
+    $paginator = new PaginatorArray(
         array(
             "data"  => array(
                 array('id' => 1, 'name' => 'Artichoke'),
@@ -116,10 +122,10 @@ An example of the source data that must be used for each adapter:
         ->from('Robots')
         ->orderBy('name');
 
-    $paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
+    $paginator = new PaginatorQueryBuilder(array(
         "builder" => $builder,
-        "limit"=> 20,
-        "page" => 1
+        "limit"   => 20,
+        "page"    => 1
     ));
 
 
@@ -153,7 +159,9 @@ The :doc:`Phalcon\\Paginator\\AdapterInterface <../api/Phalcon_Paginator_Adapter
 
     <?php
 
-    class MyPaginator implements Phalcon\Paginator\AdapterInterface
+    use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
+
+    class MyPaginator implements PaginatorInterface
     {
 
         /**

@@ -271,9 +271,9 @@ You can add an "empty" option to the generated HTML:
         array(
             'productId',
             Products::find("type = 'vegetables'"),
-            'using' => array('id', "name"),
-            'useEmpty' => true,
-            'emptyText' => 'Please, choose one...',
+            'using'      => array('id', "name"),
+            'useEmpty'   => true,
+            'emptyText'  => 'Please, choose one...',
             'emptyValue' => '@'
         )
     );
@@ -696,9 +696,9 @@ Now you are ready to use your new helper within your views:
         <?php
 
         echo MyTags::audioField(array(
-            'name' => 'test',
-            'id' => 'audio_test',
-            'src' => '/path/to/audio.mp3'
+            'name'  => 'test',
+            'id'    => 'audio_test',
+            'src'   => '/path/to/audio.mp3'
             ));
         ?>
 

@@ -551,7 +551,7 @@ Curly braces also can be used to define arrays or hashes:
 .. code-block:: html+jinja
 
     {% set myArray = {'Apple', 'Banana', 'Orange'} %}
-    {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
+    {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 Math
 ^^^^

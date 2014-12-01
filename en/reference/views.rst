@@ -324,7 +324,7 @@ You can permanently or temporarily disable render levels. A level could be perma
 
         //Disable several levels
         $view->disableLevel(array(
-            View::LEVEL_LAYOUT => true,
+            View::LEVEL_LAYOUT      => true,
             View::LEVEL_MAIN_LAYOUT => true
         ));
 
@@ -794,7 +794,7 @@ when it's necessary.
         {
 
             // Access view
-            $view = $this->_view;
+            $view    = $this->_view;
 
             // Access options
             $options = $this->_options;
@@ -834,7 +834,7 @@ You can replace or add more a template engine from the controller as follows:
             $this->view->registerEngines(
                 array(
                     ".my-html" => 'MyTemplateAdapter',
-                    ".phtml" => 'Phalcon\Mvc\View\Engine\Php'
+                    ".phtml"   => 'Phalcon\Mvc\View\Engine\Php'
                 )
             );
         }
@@ -941,7 +941,7 @@ A short syntax is also available:
 
     echo $view->getRender('products', 'list',
         array(
-            "someProducts" => $products,
+            "someProducts"       => $products,
             "someFeatureEnabled" => true
         ),
         function($view) {
@@ -971,7 +971,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
 
     // Render a view passing parameters
     echo $view->render("templates/welcomeMail", array(
-        'email' => $email,
+        'email'   => $email,
         'content' => $content
     ));
 
@@ -1037,10 +1037,10 @@ The following example shows how to create a plugin that clean/repair the HTML pr
         {
 
             $tidyConfig = array(
-                'clean' => true,
-                'output-xhtml' => true,
+                'clean'          => true,
+                'output-xhtml'   => true,
                 'show-body-only' => true,
-                'wrap' => 0,
+                'wrap'           => 0,
             );
 
             $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');

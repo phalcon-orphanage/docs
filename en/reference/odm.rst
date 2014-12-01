@@ -110,7 +110,7 @@ Once the record is in memory, you can make modifications to its data and then sa
 
     <?php
 
-    $robot = Robots::findFirst(array(
+    $robot       = Robots::findFirst(array(
         array('name' => 'Astroy Boy')
     ));
     $robot->name = "Voltron";
@@ -168,7 +168,7 @@ to query documents and convert them transparently to model instances:
     // Get first 100 mechanical robots ordered by name
     $robots = Robots::find(array(
         array("type" => "mechanical"),
-        "sort" => array("name" => 1),
+        "sort"  => array("name" => 1),
         "limit" => 100
     ));
 
@@ -246,7 +246,7 @@ With this option is easy perform tasks such as totaling or averaging field value
         array(
             '$group' => array(
                 '_id' => array('category' => '$category'),
-                'id' => array('$max' => '$_id')
+                'id'  => array('$max' => '$_id')
             )
         )
     ));
@@ -405,7 +405,7 @@ listeners that run when an event is triggered.
         return true;
     });
 
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->setEventsManager($eventsManager);
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
@@ -499,15 +499,15 @@ The following example shows how to use it:
 
             $this->validate(new InclusionIn(
                 array(
-                    "field"  => "type",
+                    "field"   => "type",
                     "message" => "Type must be: mechanical or virtual",
-                    "domain" => array("Mechanical", "Virtual")
+                    "domain"  => array("Mechanical", "Virtual")
                 )
             ));
 
             $this->validate(new Numericality(
                 array(
-                    "field"  => "price",
+                    "field"   => "price",
                     "message" => "Price must be numeric"
                 )
             ));

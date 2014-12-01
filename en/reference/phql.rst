@@ -113,12 +113,12 @@ From a controller or a view, it's easy to create/execute them using an injected 
     <?php
 
     //Executing a simple query
-    $query = $this->modelsManager->createQuery("SELECT * FROM Cars");
-    $cars = $query->execute();
+    $query  = $this->modelsManager->createQuery("SELECT * FROM Cars");
+    $cars   = $query->execute();
 
     //With bound parameters
-    $query = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
-    $cars = $query->execute(array(
+    $query  = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
+    $cars   = $query->execute(array(
         'name' => 'Audi'
     ));
 
@@ -153,14 +153,14 @@ Classes in namespaces are also allowed:
 
     <?php
 
-    $phql = "SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name";
-    $query = $manager->createQuery($phql);
+    $phql   = "SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query  = $manager->createQuery($phql);
 
-    $phql = "SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name";
-    $query = $manager->createQuery($phql);
+    $phql   = "SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name";
+    $query  = $manager->createQuery($phql);
 
-    $phql = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
-    $query = $manager->createQuery($phql);
+    $phql   = "SELECT c.name FROM Formula\Cars c ORDER BY c.name";
+    $query  = $manager->createQuery($phql);
 
 Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
 
@@ -261,7 +261,7 @@ relationships in the models, PHQL adds these conditions automatically:
     <?php
 
     $phql  = "SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands";
-    $rows = $manager->executeQuery($phql);
+    $rows  = $manager->executeQuery($phql);
     foreach ($rows as $row) {
         echo $row->car_name, "\n";
         echo $row->brand_name, "\n";
@@ -542,7 +542,7 @@ In summary, the following code:
 
     <?php
 
-    $phql = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
+    $phql    = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
     $success = $manager->executeQuery($phql);
 
 is somewhat equivalent to:
@@ -553,7 +553,7 @@ is somewhat equivalent to:
 
     $messages = null;
 
-    $process = function() use (&$messages) {
+    $process  = function() use (&$messages) {
         foreach (Cars::find("id > 101") as $car) {
             $car->price = 15000;
             if ($car->save() == false) {
@@ -588,7 +588,7 @@ When a record is deleted the events related to the delete operation will be exec
         $phql,
         array(
             'initial' => 1,
-            'final' => 100
+            'final'   => 100
         )
     );
 
@@ -624,7 +624,7 @@ That is the same as:
 
     <?php
 
-    $phql = "SELECT Robots.*
+    $phql   = "SELECT Robots.*
         FROM Robots JOIN RobotsParts p
         ORDER BY Robots.name LIMIT 20";
     $result = $manager->executeQuery($phql);
@@ -785,8 +785,8 @@ to potential SQL injections:
 
     <?php
 
-    $login = 'voltron';
-    $phql = "SELECT * FROM Models\Users WHERE login = '$login'";
+    $login  = 'voltron';
+    $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
     $result = $manager->executeQuery($phql);
 
 If $login is changed to ' OR '' = ', the produced PHQL is:
@@ -807,7 +807,7 @@ secure way like this:
 
     <?php
 
-    $phql = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
+    $phql   = "SELECT Robots.* FROM Robots WHERE Robots.name = :name:";
     $result = $manager->executeQuery($phql, array('name' => $name));
 
 You can disallow literals in the following way:
@@ -832,10 +832,10 @@ words using the cross-database escaping delimiters '[' and ']':
 
     <?php
 
-    $phql = "SELECT * FROM [Update]";
+    $phql   = "SELECT * FROM [Update]";
     $result = $manager->executeQuery($phql);
 
-    $phql = "SELECT id, [Like] FROM Posts";
+    $phql   = "SELECT id, [Like] FROM Posts";
     $result = $manager->executeQuery($phql);
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
@@ -865,7 +865,7 @@ A database system could offer specific SQL extensions that aren't supported by P
         public static function findByCreateInterval()
         {
             // A raw SQL statement
-            $sql = "SELECT * FROM robots WHERE id > 0";
+            $sql   = "SELECT * FROM robots WHERE id > 0";
 
             // Base model
             $robot = new Robots();
@@ -889,7 +889,7 @@ If Raw SQL queries are common in your application a generic method could be adde
         public static function findByRawSql($conditions, $params=null)
         {
             // A raw SQL statement
-            $sql = "SELECT * FROM robots WHERE $conditions";
+            $sql   = "SELECT * FROM robots WHERE $conditions";
 
             // Base model
             $robot = new Robots();

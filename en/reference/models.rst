@@ -226,7 +226,7 @@ Once the record is in memory, you can make modifications to its data and then sa
 
     <?php
 
-    $robot = Robots::findFirst(3);
+    $robot       = Robots::findFirst(3);
     $robot->name = "RoboCop";
     $robot->save();
 
@@ -380,7 +380,7 @@ We have three properties to work with here. $id, $name and $price. So, let's say
 
     <?php
 
-    $name = "Terminator";
+    $name  = "Terminator";
     $robot = Robots::findFirstByName($name);
 
     if($robot){
@@ -532,7 +532,7 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
     //Parameters whose keys are the same as placeholders
     $parameters = array(
         "name" => "Robotina",
-        1 => "maid"
+        1      => "maid"
     );
 
     //Perform the query
@@ -571,7 +571,7 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     // Query robots binding parameters with string placeholders
     $robots = Robots::find(array(
         "name = :name: AND year = :year:",
-        "bind" => $parameters,
+        "bind"      => $parameters,
         "bindTypes" => $types
     ));
 
@@ -849,7 +849,7 @@ and without:
 
     <?php
 
-    $robot = Robots::findFirst(2);
+    $robot       = Robots::findFirst(2);
 
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts then
@@ -864,7 +864,7 @@ and without:
         "bind" => array("date" => "2012-03-15")
     ));
 
-    $robotPart = RobotsParts::findFirst(1);
+    $robotPart   = RobotsParts::findFirst(1);
 
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
@@ -876,7 +876,7 @@ Getting related records manually:
 
     <?php
 
-    $robot = Robots::findFirst(2);
+    $robot       = Robots::findFirst(2);
 
     // Robots model has a 1-n (hasMany)
     // relationship to RobotsParts, then
@@ -887,7 +887,7 @@ Getting related records manually:
         "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
     );
 
-    $robotPart = RobotsParts::findFirst(1);
+    $robotPart   = RobotsParts::findFirst(1);
 
     // RobotsParts model has a n-1 (belongsTo)
     // relationship to RobotsParts then
@@ -1232,15 +1232,15 @@ Average examples:
 
     // What is the average salary for the Sales's area employees?
     $average = Employees::average(array(
-        "column" => "salary",
+        "column"     => "salary",
         "conditions" => "area = 'Sales'"
     ));
 
     // Avoid SQL injections using bound parameters
     $average = Employees::average(array(
-        "column" => "age",
+        "column"     => "age",
         "conditions" => "area > ?0",
-        "bind" => array($area)
+        "bind"       => array($area)
     ));
 
 Max/Min examples:
@@ -1254,7 +1254,7 @@ Max/Min examples:
 
     // What is the oldest of employees from the Sales area?
     $age = Employees::maximum(array(
-        "column" => "age",
+        "column"     => "age",
         "conditions" => "area = 'Sales'"
     ));
 
@@ -1463,15 +1463,15 @@ Magic properties can be used to store a records and its related properties:
     <?php
 
     // Create an artist
-    $artist = new Artists();
-    $artist->name = 'Shinichi Osawa';
+    $artist          = new Artists();
+    $artist->name    = 'Shinichi Osawa';
     $artist->country = 'Japan';
 
     // Create an album
-    $album = new Albums();
-    $album->name = 'The One';
-    $album->artist = $artist; //Assign the artist
-    $album->year = 2008;
+    $album          = new Albums();
+    $album->name    = 'The One';
+    $album->artist  = $artist; //Assign the artist
+    $album->year    = 2008;
 
     //Save both records
     $album->save();
@@ -1486,20 +1486,20 @@ Saving a record and its related records in a has-many relation:
     $artist = Artists::findFirst('name = "Shinichi Osawa"');
 
     // Create an album
-    $album = new Albums();
-    $album->name = 'The One';
-    $album->artist = $artist;
+    $album          = new Albums();
+    $album->name    = 'The One';
+    $album->artist  = $artist;
 
     $songs = array();
 
     // Create a first song
-    $songs[0] = new Songs();
-    $songs[0]->name = 'Star Guitar';
+    $songs[0]           = new Songs();
+    $songs[0]->name     = 'Star Guitar';
     $songs[0]->duration = '5:54';
 
     // Create a second song
-    $songs[1] = new Songs();
-    $songs[1]->name = 'Last Days';
+    $songs[1]           = new Songs();
+    $songs[1]->name     = 'Last Days';
     $songs[1]->duration = '4:29';
 
     // Assign the songs array
@@ -1711,7 +1711,7 @@ Events will be fired to the listener when 'robots' are saved:
 
     <?php
 
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
     $robot->save();
@@ -1863,12 +1863,12 @@ In addition to the built-in validators, you can create your own validators:
 
         public function validate($model)
         {
-            $field = $this->getOption('field');
+            $field  = $this->getOption('field');
 
-            $min = $this->getOption('min');
-            $max = $this->getOption('max');
+            $min    = $this->getOption('min');
+            $max    = $this->getOption('max');
 
-            $value = $model->$field;
+            $value  = $model->$field;
 
             if ($min <= $value && $value <= $max) {
                 $this->appendMessage(
@@ -1898,9 +1898,9 @@ Adding the validator to a model:
         {
             $this->validate(new MaxMinValidator(
                 array(
-                    "field"  => "price",
-                    "min" => 10,
-                    "max" => 100
+                    "field" => "price",
+                    "min"   => 10,
+                    "max"   => 100
                 )
             ));
             if ($this->validationHasFailed() == true) {
@@ -1964,10 +1964,10 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     <?php
 
+    $name           = 'Artichoke';
+    $price          = 10.5;
+    $active         = 'Y';
     $productTypesId = 1;
-    $name = 'Artichoke';
-    $price = 10.5;
-    $active = 'Y';
 
     $sql = 'INSERT INTO products VALUES (null, :productTypesId, :name, :price, :active)';
     $sth = $dbh->prepare($sql);
@@ -1985,11 +1985,11 @@ The good news is that Phalcon do this for you automatically:
 
     <?php
 
-    $product = new Products();
-    $product->product_types_id = 1;
-    $product->name = 'Artichoke';
-    $product->price = 10.5;
-    $product->active = 'Y';
+    $product                    = new Products();
+    $product->product_types_id  = 1;
+    $product->name              = 'Artichoke';
+    $product->price             = 10.5;
+    $product->active            = 'Y';
     $product->create();
 
 Skipping Columns
@@ -2029,10 +2029,10 @@ Forcing a default value can be done in the following way:
 
     use Phalcon\Db\RawValue;
 
-    $robot = new Robots();
-    $robot->name = 'Bender';
-    $robot->year = 1999;
-    $robot->created_at = new RawValue('default');
+    $robot              = new Robots();
+    $robot->name        = 'Bender';
+    $robot->year        = 1999;
+    $robot->created_at  = new RawValue('default');
     $robot->create();
 
 A callback also can be used to create a conditional assignment of automatic default values:
@@ -2191,9 +2191,9 @@ A behavior must be added in the model initializer, a model can have zero or more
         {
             $this->addBehavior(new Timestampable(
                 array(
-                    'beforeCreate' => array(
-                        'field' => 'created_at',
-                        'format' => 'Y-m-d'
+                    'beforeCreate'  => array(
+                        'field'     => 'created_at',
+                        'format'    => 'Y-m-d'
                     )
                 )
             ));
@@ -2225,9 +2225,9 @@ This behavior receives an array of options, the first level key must be an event
     {
         $this->addBehavior(new Timestampable(
             array(
-                'beforeCreate' => array(
-                    'field' => 'created_at',
-                    'format' => 'Y-m-d'
+                'beforeCreate'  => array(
+                    'field'     => 'created_at',
+                    'format'    => 'Y-m-d'
                 )
             )
         ));
@@ -2247,7 +2247,7 @@ as format of the PHP's function date_, format can also be an anonymous function 
         $this->addBehavior(new Timestampable(
             array(
                 'beforeCreate' => array(
-                    'field' => 'created_at',
+                    'field'  => 'created_at',
                     'format' => function() {
                         $datetime = new Datetime(new DateTimeZone('Europe/Stockholm'));
                         return $datetime->format('Y-m-d H:i:sP');
@@ -2489,18 +2489,19 @@ is successfully or not:
         {
             $this->db->begin();
 
-            $robot = new Robots();
+            $robot              = new Robots();
+            $robot->name        = "WALL·E";
+            $robot->created_at  = date("Y-m-d");
 
-            $robot->name = "WALL·E";
-            $robot->created_at = date("Y-m-d");
             if ($robot->save() == false) {
                 $this->db->rollback();
                 return;
             }
 
-            $robotPart = new RobotParts();
+            $robotPart            = new RobotParts();
             $robotPart->robots_id = $robot->id;
-            $robotPart->type = "head";
+            $robotPart->type      = "head";
+
             if ($robotPart->save() == false) {
                 $this->db->rollback();
                 return;
@@ -2519,13 +2520,13 @@ implicitly creates a transaction to ensure that data are correctly stored:
 
     <?php
 
-    $robotPart = new RobotParts();
-    $robotPart->type = "head";
+    $robotPart          = new RobotParts();
+    $robotPart->type    = "head";
 
-    $robot = new Robots();
-    $robot->name = "WALL·E";
-    $robot->created_at = date("Y-m-d");
-    $robot->robotPart = $robotPart;
+    $robot              = new Robots();
+    $robot->name        = "WALL·E";
+    $robot->created_at  = date("Y-m-d");
+    $robot->robotPart   = $robotPart;
 
     $robot->save(); //Creates an implicit transaction to store both records
 
@@ -2546,23 +2547,23 @@ transaction created ensuring that they are correctly rolled back/committed befor
     try {
 
         //Create a transaction manager
-        $manager = new TxManager();
+        $manager     = new TxManager();
 
         // Request a transaction
         $transaction = $manager->get();
 
-        $robot = new Robots();
+        $robot              = new Robots();
         $robot->setTransaction($transaction);
-        $robot->name = "WALL·E";
-        $robot->created_at = date("Y-m-d");
+        $robot->name        = "WALL·E";
+        $robot->created_at  = date("Y-m-d");
         if ($robot->save() == false) {
             $transaction->rollback("Cannot save robot");
         }
 
-        $robotPart = new RobotParts();
+        $robotPart              = new RobotParts();
         $robotPart->setTransaction($transaction);
-        $robotPart->robots_id = $robot->id;
-        $robotPart->type = "head";
+        $robotPart->robots_id   = $robot->id;
+        $robotPart->type        = "head";
         if ($robotPart->save() == false) {
             $transaction->rollback("Cannot save robot part");
         }
@@ -2586,7 +2587,7 @@ Transactions can be used to delete many records in a consistent way:
     try {
 
         //Create a transaction manager
-        $manager = new TxManager();
+        $manager     = new TxManager();
 
         //Request a transaction
         $transaction = $manager->get();
@@ -2639,10 +2640,10 @@ Then access it from a controller or view:
         {
 
             //Obtain the TransactionsManager from the services container
-            $manager = $this->di->getTransactions();
+            $manager     = $this->di->getTransactions();
 
             //Or
-            $manager = $this->transactions;
+            $manager     = $this->transactions;
 
             //Request a transaction
             $transaction = $manager->get();
@@ -2701,8 +2702,8 @@ Then you can use the new names naturally in your code:
     }
 
     //Create a robot
-    $robot = new Robots();
-    $robot->code = '10101';
+    $robot          = new Robots();
+    $robot->code    = '10101';
     $robot->theName = 'Bender';
     $robot->theType = 'Industrial';
     $robot->theYear = 2999;
@@ -2732,8 +2733,8 @@ Instead of doing this:
     <?php
 
     foreach ($robots->getParts() as $part) {
-        $part->stock = 100;
-        $part->updated_at = time();
+        $part->stock        = 100;
+        $part->updated_at   = time();
         if ($part->update() == false) {
             foreach ($part->getMessages() as $message) {
                 echo $message;
@@ -2760,7 +2761,7 @@ you can do this:
     <?php
 
     $data = array(
-        'stock' => 100,
+        'stock'      => 100,
         'updated_at' => time()
     );
 
@@ -2860,10 +2861,10 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
     <?php
 
-    $robot = new Robots();
+    $robot      = new Robots();
 
     // Get Phalcon\Mvc\Model\Metadata instance
-    $metaData = $robot->getModelsMetaData();
+    $metaData   = $robot->getModelsMetaData();
 
     // Get robots fields names
     $attributes = $metaData->getAttributes($robot);
@@ -3077,7 +3078,7 @@ The following example shows how to define the meta-data manually:
 
                 //Every column and their data types
                 MetaData::MODELS_DATA_TYPES => array(
-                    'id' => Column::TYPE_INTEGER,
+                    'id'   => Column::TYPE_INTEGER,
                     'name' => Column::TYPE_VARCHAR,
                     'type' => Column::TYPE_VARCHAR,
                     'year' => Column::TYPE_INTEGER
@@ -3085,7 +3086,7 @@ The following example shows how to define the meta-data manually:
 
                 //The columns that have numeric data types
                 MetaData::MODELS_DATA_TYPES_NUMERIC => array(
-                    'id' => true,
+                    'id'   => true,
                     'year' => true,
                 ),
 
@@ -3095,7 +3096,7 @@ The following example shows how to define the meta-data manually:
 
                 //How every column must be bound/casted
                 MetaData::MODELS_DATA_TYPES_BIND => array(
-                    'id' => Column::BIND_PARAM_INT,
+                    'id'   => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
                     'type' => Column::BIND_PARAM_STR,
                     'year' => Column::BIND_PARAM_INT,
@@ -3162,10 +3163,10 @@ in the application's services container. You can overwrite this service setting 
     //This service returns a PostgreSQL database
     $di->set('dbPostgres', function() {
          return new PostgreSQLPdo(array(
-            "host" => "localhost",
+            "host"     => "localhost",
             "username" => "postgres",
             "password" => "",
-            "dbname" => "invo"
+            "dbname"   => "invo"
         ));
     });
 
@@ -3290,10 +3291,10 @@ statements as they happen.
         });
 
         $connection = new Connection(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
+            "host"      => "localhost",
+            "username"  => "root",
+            "password"  => "secret",
+            "dbname"    => "invo"
         ));
 
         //Assign the eventsManager to the db adapter instance
@@ -3308,9 +3309,9 @@ As models access the default database connection, all SQL statements that are se
 
     <?php
 
-    $robot = new Robots();
-    $robot->name = "Robby the Robot";
-    $robot->created_at = "1956-07-21";
+    $robot              = new Robots();
+    $robot->name        = "Robby the Robot";
+    $robot->created_at  = "1956-07-21";
     if ($robot->save() == false) {
         echo "Cannot save robot";
     }
@@ -3345,7 +3346,7 @@ this you can diagnose performance problems and to discover bottlenecks.
         $eventsManager = new ManagerEvent();
 
         //Get a shared instance of the DbProfiler
-        $profiler = $di->getProfiler();
+        $profiler      = $di->getProfiler();
 
         //Listen all the database events
         $eventsManager->attach('db', function($event, $connection) use ($profiler) {
@@ -3358,10 +3359,10 @@ this you can diagnose performance problems and to discover bottlenecks.
         });
 
         $connection = new MysqlPdo(array(
-            "host" => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname" => "invo"
+            "host"      => "localhost",
+            "username"  => "root",
+            "password"  => "secret",
+            "dbname"    => "invo"
         ));
 
         //Assign the eventsManager to the db adapter instance

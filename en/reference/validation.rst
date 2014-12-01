@@ -9,10 +9,11 @@ The following example shows its basic usage:
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
     $validation->add('name', new PresenceOf(array(
         'message' => 'The name is required'
@@ -44,9 +45,9 @@ You can put your validations in a separate file for better re-use code and organ
 
     <?php
 
-    use Phalcon\Validation,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
     class MyValidation extends Validation
     {
@@ -113,9 +114,9 @@ The following example explains how to create additional validators for this comp
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
 
     class IpValidator extends Validator implements ValidatorInterface
     {
@@ -178,7 +179,9 @@ The getMessages() method can be overridden in a validation class to replace/tran
 
     <?php
 
-    class MyValidation extends Phalcon\Validation
+    use Phalcon\Validation;
+
+    class MyValidation extends Validation
     {
 
         public function initialize()
@@ -235,7 +238,9 @@ Data can be filtered prior to the validation ensuring that malicious or incorrec
 
     <?php
 
-    $validation = new Phalcon\Validation();
+    use Phalcon\Validation;
+
+    $validation = new Validation();
 
     $validation
         ->add('name', new PresenceOf(array(
@@ -312,10 +317,11 @@ this behavior by telling the validation component which validator may stop the v
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
     $validation
         ->add('telephone', new PresenceOf(array(
@@ -340,9 +346,10 @@ If you are creating custom validators you can dynamically stop the validation ch
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
+
 
     class MyValidator extends Validator implements ValidatorInterface
     {

@@ -14,7 +14,9 @@ accessed:
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
         public function loginAction()
         {
@@ -25,7 +27,7 @@ accessed:
                 $rememberMe = $this->cookies->get('remember-me');
 
                 //Get the cookie's value
-                $value = $rememberMe->getValue();
+                $value      = $rememberMe->getValue();
 
             }
         }
@@ -48,8 +50,10 @@ You can disable encryption in the following way:
 
     <?php
 
+    use Phalcon\Http\Response\Cookies;
+
     $di->set('cookies', function() {
-        $cookies = new Phalcon\Http\Response\Cookies();
+        $cookies = new Cookies();
         $cookies->useEncryption(false);
         return $cookies;
     });
@@ -60,8 +64,10 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function() {
-        $crypt = new Phalcon\Crypt();
+        $crypt = new Crypt();
         $crypt->setKey('#1dj8$=dp?.ak//j1V$'); //Use your own key!
         return $crypt;
     });

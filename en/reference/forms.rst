@@ -8,9 +8,9 @@ The following example shows its basic usage:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     $form = new Form();
 
@@ -70,7 +70,7 @@ HTML Attributes also can be set in the element's definition:
     <?php
 
     $form->add(new Text("name", array(
-        'maxlength' => 30,
+        'maxlength'   => 30,
         'placeholder' => 'Type your name'
     )));
 
@@ -83,9 +83,9 @@ classes implementing the form in a separated file:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     class ContactForm extends Form
     {
@@ -108,9 +108,9 @@ so you have access to the application services if needed:
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class ContactForm extends Form
     {
@@ -143,9 +143,9 @@ The associated entity added to the form in the initialization and custom user op
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class UsersForm extends Form
     {
@@ -185,9 +185,9 @@ custom validators could be set to each element:
 
     <?php
 
-    use Phalcon\Forms\Element\Text,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\StringLength;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Validation\Validator\PresenceOf;
+    use Phalcon\Validation\Validator\StringLength;
 
     $name = new Text("name");
 
@@ -310,15 +310,15 @@ Using this class as entity, allows the form to take the default values from it:
     $form = new Form(new Preferences());
 
     $form->add(new Select("timezone", array(
-        'America/New_York' => 'New York',
-        'Europe/Amsterdam' => 'Amsterdam',
+        'America/New_York'  => 'New York',
+        'Europe/Amsterdam'  => 'Amsterdam',
         'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokyo' => 'Tokyo',
+        'Asia/Tokyo'        => 'Tokyo',
     )));
 
     $form->add(new Select("receiveEmails", array(
         'Yes' => 'Yes, please!',
-        'No' => 'No, thanks'
+        'No'  => 'No, thanks'
     )));
 
 Entities can implement getters, which have a higher precedence than public properties. These methods
@@ -384,7 +384,9 @@ in the form's class to perform pre-validations and post-validations:
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    use Phalcon\Mvc\Form;
+
+    class ContactForm extends Form
     {
         public function beforeValidation()
         {
@@ -433,7 +435,9 @@ Or reuse the logic in your form class:
 
     <?php
 
-    class ContactForm extends Phalcon\Forms\Form
+    use Phalcon\Forms\Form;
+
+    class ContactForm extends Form
     {
         public function initialize()
         {
@@ -442,7 +446,7 @@ Or reuse the logic in your form class:
 
         public function renderDecorated($name)
         {
-            $element = $this->get($name);
+            $element  = $this->get($name);
 
             //Get any generated messages for the current element
             $messages = $this->getMessagesFor($element->getName());
@@ -501,8 +505,10 @@ This component provides a forms manager that can be used by the developer to reg
 
     <?php
 
+    use Phalcon\Forms\Manager as FormsManager;
+
     $di['forms'] = function() {
-        return new Phalcon\Forms\Manager();
+        return new FormsManager();
     };
 
 Forms are added to the forms manager and referenced by a unique name:

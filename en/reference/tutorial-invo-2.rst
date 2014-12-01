@@ -81,8 +81,8 @@ data entered in the form including checking for a valid user in the database:
         private function _registerSession($user)
         {
             $this->session->set('auth', array(
-                'id' => $user->id,
-                'name' => $user->name
+                'id'    => $user->id,
+                'name'  => $user->name
             ));
         }
 
@@ -94,8 +94,8 @@ data entered in the form including checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                $email = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
+                $email      = $this->request->getPost('email');
+                $password   = $this->request->getPost('password');
 
                 $user = Users::findFirst(array(
                     "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
@@ -131,8 +131,8 @@ For instance, here we invoke the "session" service and then we store the user id
     <?php
 
     $this->session->set('auth', array(
-        'id' => $user->id,
-        'name' => $user->name
+        'id'    => $user->id,
+        'name'  => $user->name
     ));
 
 Another important aspect of this section is how the user is validated as a valid one,
@@ -364,7 +364,7 @@ If the user does not have access we redirect to the home screen as explained bef
                 $dispatcher->forward(
                     array(
                         'controller' => 'index',
-                        'action' => 'index'
+                        'action'     => 'index'
                     )
                 );
 
@@ -417,10 +417,10 @@ accesses for the resources:
 
     // Private area resources (backend)
     $privateResources = array(
-      'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'companies'    => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
+      'products'     => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'producttypes' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
-      'invoices' => array('index', 'profile')
+      'invoices'     => array('index', 'profile')
     );
     foreach ($privateResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
