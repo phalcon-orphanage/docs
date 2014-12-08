@@ -100,10 +100,10 @@ Phalcon не имеет каких-либо предопределенных с�
 Обратите внимание на регистрацию каталогов в файле конфигураций.
 Единтсвенная директория которая не была зарегистрирована с помощью автозагрузчика это viewsDir, потому что она не содержит классов, только html + php файлы.
 
-Handling the Request
+Обработка запроса
 --------------------
-Let's go much further, at the end of the file, the request is finally handled by Phalcon\\Mvc\\Application,
-this class initializes and executes all the necessary to make the application run:
+Пойдем дальше, в конце файла, запрос окончательно обрабатывается с помощью Phalcon\\Mvc\\Application,
+этот класс инициализирует и выполняет все что нужно для работы приложения:
 
 .. code-block:: php
 
@@ -115,48 +115,41 @@ this class initializes and executes all the necessary to make the application ru
 
 Dependency Injection
 --------------------
-Look at the first line of the code block above, the variable $app is receiving another variable $di in its constructor.
-What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
-to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
-dependency injection, instantiating all components, as they are needed by the application.
+Посмотрите на первую строку кода на предыдущем блоке, переменная $app получает еще одну переменную $di в своем конструкторе.
+Каков смысл этой переменной? Phalcon - слабо связанный фрэймворк, так что нам нужен компонент, который действует как клей, чтобы все работало вместе.
+Этот компонент - Phalcon\\DI. Это контейнер, обеспечивающий все связи между частями необходимыми в приложении.
 
-There are many ways of registering services in the container. In INVO most services have been registered using
-anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
-by the application.
+Есть много способов регистрации сервисов в контейнере. В INVO большинство услуг были зарегистрированы с использованием скрытых функций.  Благодаря этому, объекты создаются простейшим образом, уменьшеая ресурсы необходимые для приложения.
 
-For instance, in the following excerpt, the session service is registered, the anonymous function will only be
-called when the application requires access to the session data:
+Например, в следующем фрагменте, регистрации сессии, анонимная функция будет вызвана только когда приложение требует доступа к данным сессии:
 
 .. code-block:: php
 
     <?php
 
-    //Start the session the first time when some component request the session service
+    //Начать сессию в первый раз, когда какой нибудь компонент запросит сервис сессий.
     $di->set('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
-was registered using the name "session". This is a convention that will allow the framework to identify the active
-service in the services container.
+Здесь мы можем менять адаптер, выполнить дополнительную инициализацию и многое другое. Обратите внимание, метод был зарегистрирован с помощью имени  "session". Это соглашение позволит фрэймворку идентифицировать активный метод в контейнере.
 
-A request can use many services, register each service one to one can be a cumbersome task. For that reason,
-the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
-all services providing a full-stack framework.
+Запрос имеет множество методов, регистрация каждого метода может быть трудоемкой задачей. По этой причине,
+фрэймворк обеспечивает вариант Phalcon\\DI вызывая Phalcon\\DI\\FactoryDefault задачей которого является регистрация
+всех методов необходимых фрэймворку.
 
 .. code-block:: php
 
     <?php
 
-    // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full stack framework
+    // FactoryDefault Обеспечивает автоматическую регистрацию
+    // полного набора методов необходимых фреймворку
     $di = new \Phalcon\DI\FactoryDefault();
 
-It registers the majority of services with components provided by the framework as standard. If we need to override
-the definition of some service we could just set it again as we did above with "session". This is the reason for the
-existence of the variable $di.
+Он регистрирует большинство методов, предусмотренных фрэймворком как стандартные. Если нам надо переопределить
+какой либо из методов, мы можем просто определить его снова, как мы делали выше с методом "session". Это причина существования переменной $di.
 
 Log into the Application
 ------------------------
