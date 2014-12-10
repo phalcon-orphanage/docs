@@ -119,7 +119,7 @@ Returns the CSS collection of assets
 
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **getJs** ()
 
-Returns the CSS collection of assets
+Returns the JS collection of assets
 
 
 
