@@ -1316,9 +1316,9 @@ Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры,
 
 Создание/Обновление с уверенностью
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the save() call with create() or update():
+Когда приложение имеет много конкуренции, мв могли бы производить запись в элемент таблицы, в то время как он обновляется. 
+Это может произойти, если мы используем Phalcon\\Mvc\\Model::save() для сохранения элемента в БД. 
+Если мы хотим быть абсолютно уверены, что запись будет создана или обновлена, мы можем изменить save() на вызов create() или update():
 
 .. code-block:: php
 
@@ -1329,23 +1329,24 @@ sure that a record is created or updated, we can change the save() call with cre
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    //This record only must be created
+    //Эта запись только должна быть создана 
     if ($robot->create() == false) {
-        echo "Umh, We can't store robots right now: \n";
+        echo "Хм, мы не можем хранить роботов прямо сейчас: \n";
         foreach ($robot->getMessages() as $message) {
             echo $message, "\n";
         }
     } else {
-        echo "Great, a new robot was created successfully!";
+        echo "Замечательно, новый робот был создан успешно!";
     }
 
-These methods "create" and "update" also accept an array of values as parameter.
+Эти методы "create" and "update"  также принемают массив значений в качестве параметра.
 
-Auto-generated identity columns
+Автоматическая генерация идентификации столбцов
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Некоторые модели могут иметь столбцы идентификации.  Эти столбцы - обычно первичный ключ таблици. 
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`может распознать столбец идентификации, минуя его в созданном SQL INSERT, 
+так система баз данных может генерировать значение для него автоматически.
+Всегда после создания записи, в поле идентификатора будет зарегистрирована величина, сгенерированая в системе базы данных для него:
 
 .. code-block:: php
 
@@ -1353,13 +1354,14 @@ Always after creating a record, the identity field will be registered with the v
 
     $robot->save();
 
-    echo "The generated id is: ", $robot->id;
+    echo "Генерируется идентификатор: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` способна распознавать столбец идентификации. В зависимости от системы баз данных, 
+этот столбец может быть serial columns как в PostgreSQL или auto_increment columns в случае MySQL.
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+PostgreSQL  использует последовательности, чтобы сгенерировать  auto-numeric значения по умолчанию, 
+Phalcon пытается получить сгенерированное значение из последовательности "table_field_seq",
+например: robots_id_seq, если эта последовательность имеет другое имя, то должен быть вызван метод "getSequenceName":
 
 .. code-block:: php
 
