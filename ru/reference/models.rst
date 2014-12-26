@@ -1433,14 +1433,14 @@ Saving the album and the artist at the same time implictly makes use of a transa
 goes wrong with saving the related records, the parent will not be saved either. Messages are
 passed back to the user for information regarding any errors.
 
-Validation Messages
+Собщения об ошибках
 ^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` имеет подсистему обмена сообщениями, которая обеспечивает 
+гибкий способ генерации или хранения сообщений об ошибках, сгенерированные во время процессов вставки / обновления.
 
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
-generated the message or the message type:
+Каждое сообщение состоит из экземпляра класса :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. 
+Набор генерируемых сообщений могут быть получены с помощью метода GetMessages (). 
+Каждое сообщение содержит расширенную информацию, такую как имя поля генерируемого сообщение или тип сообщения:
 
 .. code-block:: php
 
@@ -1454,23 +1454,24 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  может генерировать следующие типы сообщений:
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
 +======================+====================================================================================================================================+
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| PresenceOf           | Генерируется, когда поле с атрибутом non-null в базе данных пытается вставить / обновить null значение                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| ConstraintViolation  | Генерируется, когда поле являющеся частью виртуального внешнего ключа пытается вставить / обновить значение,                       |
+|                      | не существующе в указанной модели                                                                                                  |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
+| InvalidValue         | Генерируется  когда валидация не удалась из-за недопустимого значения                                                              |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
+| InvalidCreateAttempt | Генерируется когда была предпринята попытка создать запись , но она уже существует                                                 |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| InvalidUpdateAttempt | Генерируется когда была предпринята попытка обновить запись , но она еще не существует                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method getMessages() can be overriden in a model to replace/translate the default messages generated automatically by the ORM:
+Метод GetMessages () может быть переопределен в модели, чтобы заменить / перевести сообщения по умолчанию, автоматически генерируемые ОРМ:
 
 .. code-block:: php
 
@@ -1484,10 +1485,10 @@ The method getMessages() can be overriden in a model to replace/translate the de
             foreach (parent::getMessages() as $message) {
                 switch ($message->getType()) {
                     case 'InvalidCreateAttempt':
-                        $messages[] = 'The record cannot be created because it already exists';
+                        $messages[] = 'Запись не может быть создана, потому что она уже существует';
                         break;
                     case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it already exists';
+                        $messages[] = 'Запись не может быть обновлена, потому что она еще не существует';
                         break;
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
