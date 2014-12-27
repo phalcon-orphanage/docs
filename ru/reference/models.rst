@@ -1498,44 +1498,45 @@ The method getMessages() can be overriden in a model to replace/translate the de
         }
     }
 
-Events and Events Manager
+События и управление событиями.
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+Модели позволяют реализовать события, которые будут инициированны при выполнении вставки / обновления / удаления. 
+Они помогают определить рабочие правила для определенной модели. Ниже приведены события, поддерживаемые
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` и порядок их исполнения:
 
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
-+====================+==========================+=======================+===================================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+----------====--------------+-----------------------------------------------------------------------------------------------------------------------+
+| Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                             |
++====================+==========================+============================+=======================================================================================================================+
+| Inserting/Updating | beforeValidation         | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи                                       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeValidationOnCreate | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции вставки       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeValidationOnUpdate | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции обновления    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | onValidationFails        | ДА (уже остановлена)       | Выполняется после обнаружения нарушения целостности                                                                   |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterValidationOnCreate  | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции вставки    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterValidationOnUpdate  | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции обновления |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterValidation          | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeSave               | ДА                         | Выполняется до требуемой операции над системой базы данных                                                            |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeUpdate             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции обновления                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeCreate             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции вставки                                       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterUpdate              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции обновления                                 |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterCreate              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции вставки                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterSave                | НЕТ                        | Выполняется после требуемой операции над системой базы данных                                                         |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
-Implementing Events in the Model's class
+Реализация событий в классе модели
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
+TПростой способ заставить модель реагировать на события, это реализовать метод с тем же именем события в классе модели:
 
 .. code-block:: php
 
@@ -1546,12 +1547,12 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before creating a Robot!";
+            echo "Это выполняется перед созданием робота!";
         }
 
     }
 
-Events can be useful to assign values before performing an operation, for example:
+События могут быть полезны для присвоения значений перед выполнением операции, например:
 
 .. code-block:: php
 
@@ -1562,22 +1563,22 @@ Events can be useful to assign values before performing an operation, for exampl
 
         public function beforeCreate()
         {
-            //Set the creation date
+            //Установить дату создания
             $this->created_at = date('Y-m-d H:i:s');
         }
 
         public function beforeUpdate()
         {
-            //Set the modification date
+            //Установить дату модификации
             $this->modified_in = date('Y-m-d H:i:s');
         }
 
     }
 
-Using a custom Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
-this means we can create listeners that run when an event is triggered.
+Использование пользовательского менеджера  событий
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Кроме того, этот компонент интегрируется с  :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+это означает, что мы можем создать слушателей, которые запускаются при наступлении события.
 
 .. code-block:: php
 
@@ -1594,7 +1595,7 @@ this means we can create listeners that run when an event is triggered.
 
             $eventsManager = new EventsManager();
 
-            //Attach an anonymous function as a listener for "model" events
+            //Прикрепить анонимную функцию в качестве слушателя для событий "model"
             $eventsManager->attach('model', function($event, $robot) {
                 if ($event->getType() == 'beforeSave') {
                     if ($robot->name == 'Scooby Doo') {
@@ -1605,14 +1606,14 @@ this means we can create listeners that run when an event is triggered.
                 return true;
             });
 
-            //Attach the events manager to the event
+            //Прикрепите менеджер событий для события
             $this->setEventsManager($eventsManager);
         }
 
     }
 
-In the example given above, EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-Events will be fired to the listener when 'robots' are saved:
+В примере, приведенном выше, EventsManager действует только в качестве моста между объектом и слушателя 
+(анонимная функция). События будут уволены до слушателя, когда сохраняются "robots":
 
 .. code-block:: php
 
@@ -1623,21 +1624,22 @@ Events will be fired to the listener when 'robots' are saved:
     $robot->year = 1969;
     $robot->save();
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
+Если мы хотим, чтобы все объекты, созданные в нашем приложении использовать один и тот же EventsManager, 
+то мы должны назначить его менеджеру модели:
 
 .. code-block:: php
 
     <?php
 
-    //Registering the modelsManager service
+    //Регистрация сервиса modelsManager
     $di->setShared('modelsManager', function() {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach an anonymous function as a listener for "model" events
+        //Прикрепить анонимную функцию в качестве слушателя для событий "model"
         $eventsManager->attach('model', function($event, $model){
 
-            //Catch events produced by the Robots model
+            //Перехватывать события, производимые моделью Robots
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
@@ -1651,23 +1653,23 @@ If we want all objects created in our application use the same EventsManager, th
             return true;
         });
 
-        //Setting a default EventsManager
+        //Установки EventsManager по умолчанию
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
     });
 
-If a listener returns false that will stop the operation that is executing currently.
+Если слушатель возвращает ложь, это остановит работу, исполняемую в настоящее время.
 
-Implementing a Business Rule
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of
-the events listed in the table above.
+Реализация Рабочих Правил
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Когда выполняется вставка, изменение или удаление, модель проверяет, есть ли какие-либо методы 
+с именами событий, из перечисленных в таблице выше.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation
-from being exposed publicly.
+Мы рекомендуем объявить методы проверки как protected, чтобы предотвратить обнародование рабочий логикй 
+методов проверки.
 
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+Следующий пример реализует событие, которое проверяет что год не может быть меньше, чем 0 при обновлении или вставке:
 
 .. code-block:: php
 
@@ -1679,15 +1681,16 @@ The following example implements an event that validates the year cannot be smal
         public function beforeSave()
         {
             if ($this->year < 0) {
-                echo "Year cannot be smaller than zero!";
+                echo "Год не может быть меньше, чем ноль!";
                 return false;
             }
         }
 
     }
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-will assume a true value.
+Некоторые события возвращают false для указания, что надо остановить текущую операцию. 
+Если событие не возвращает ничего, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+принемает значение true.
 
 Validating Data Integrity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
