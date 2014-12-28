@@ -1689,12 +1689,11 @@ The following example implements an event that validates the year cannot be smal
 Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 will assume a true value.
 
-Validating Data Integrity
+Проверка целостности данных
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` обеспечивает ряд мероприятий для проверки данных и реализации рабочих правил. Специальное событие "validation"  позволяет вызвать встроенные валидаторы при записи.  Phalcon имеет несколько встроенных средств проверки, которые можно использовать на этой стадии.
 
-The following example shows how to use it:
+Следующий пример показывает, как это можно использовать:
 
 .. code-block:: php
 
@@ -1719,7 +1718,7 @@ The following example shows how to use it:
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
-                    "message" => "The robot name must be unique"
+                    "message" => "Название робота должен быть уникальным"
                 )
             ));
 
@@ -1728,32 +1727,34 @@ The following example shows how to use it:
 
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+Приведенный выше пример выполняет проверку с помощью встроенного в валидатор "InclusionIn". 
+Он проверяет значение поля "type" в списке доменов. Если значение отсутствует в методе, 
+то валидация будет прервана и будет возвращени значение false. 
+Доступны следующие валидаторы:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Название     | Пояснение                                                                                                                                            | Пример                                                            |
++==============+======================================================================================================================================================+===================================================================+
+| PresenceOf   | Проверяет, чтобы значение поля не являлось NULL или пустой строкой. Этот валидатор автоматически добавляется на основе атрибутов  NOT NULL в таблице | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Email        | Проверяет, чтобы поле содержало допустимый формат электронной почты                                                                                  | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  | Проверяет, чтобы значение не находилось в пределах списка возможных значений                                                                         | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  | Проверяет, чтобы значение находилось в пределах списка возможных значений                                                                            | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numericality | Проверяет, чтобы поле имело числовой формат                                                                                                          | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Regex        | Проверяет, чтобы значение поля соответствовало регулярному выражению                                                                                 | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Uniqueness   | Проверяет, чтобы поле или комбинация из набора полей встречалось не более одного раза в записях связанной таблицы                                    | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| StringLength | Проверяет длину строки                                                                                                                               | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Проверяет, чтобы значение имело правильный формат URL                                                                                                | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Url>`           |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+В дополнение ко встроенным, вы можете создавать свои собственные валидаторы:
 
 .. code-block:: php
 
@@ -1776,7 +1777,7 @@ In addition to the built-in validatiors, you can create your own validators:
 
             if ($min <= $value && $value <= $max) {
                 $this->appendMessage(
-                    "The field doesn't have the right range of values",
+                    "Поле не имеет нужном диапазоне значений",
                     $field,
                     "MaxMinValidator"
                 );
@@ -1787,7 +1788,7 @@ In addition to the built-in validatiors, you can create your own validators:
 
     }
 
-Adding the validator to a model:
+Добавление валидатор в модель:
 
 .. code-block:: php
 
@@ -1812,7 +1813,8 @@ Adding the validator to a model:
 
     }
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+Идея создания валидаторов - делать их для повторного использования в нескольких моделях. 
+Валидатор может также быть простой, как:
 
 .. code-block:: php
 
@@ -1840,11 +1842,12 @@ The idea of creating validators is make them reusable between several models. A 
 
     }
 
-Avoiding SQL injections
+Предотвращение SQL инъекции
 ^^^^^^^^^^^^^^^^^^^^^^^
-Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
-each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
-capability provided by PDO to automatically escape every value to be stored in the database.
+Каждое значение присвоенное атрибуту модели экранируется в зависимости от типа данных. 
+Разработчику не нужно экранировать вручную каждое значение перед сохранением в базе данных. 
+Phalcon использует внутреннее `связывание параметров <http://php.net/manual/en/pdostatement.bindparam.php>`_
+предоставляемое PDO для автоматического экранирования каждого значения сохраняемого в базе данных.
 
 .. code-block:: bash
 
@@ -1860,7 +1863,7 @@ capability provided by PDO to automatically escape every value to be stored in t
     +------------------+------------------+------+-----+---------+----------------+
     5 rows in set (0.00 sec)
 
-If we use just PDO to store a record in a secure way, we need to write the following code:
+Если мы используем только PDO для хранения записи в безопасном режиме, мы должны написать следующий код:
 
 .. code-block:: php
 
@@ -1881,7 +1884,7 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     $sth->execute();
 
-The good news is that Phalcon do this for you automatically:
+Хорошей новостью является то, что Phalcon сделать это за вас автоматически:
 
 .. code-block:: php
 
