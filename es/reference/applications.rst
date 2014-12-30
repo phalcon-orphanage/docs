@@ -81,7 +81,7 @@ If namespaces are used, the following bootstrap can be used:
     // parameter used in the setDefaultNamespace function
     $di->set('dispatcher', function() {
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
-        $dispatcher->setDefaultNamespace('Single\Controllers\\');
+        $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
@@ -164,7 +164,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
             //Registering a dispatcher
             $di->set('dispatcher', function() {
                 $dispatcher = new \Phalcon\Mvc\Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers\\");
+                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
@@ -271,7 +271,7 @@ module:
             },
             'backend' => function($di) use ($view) {
                 $di->setShared('view', function() use ($view) {
-                    $view->setViewsDir('../apps/frontend/views/');
+                    $view->setViewsDir('../apps/backend/views/');
                     return $view;
                 });
             }
