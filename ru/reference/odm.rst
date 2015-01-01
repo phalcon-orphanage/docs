@@ -1,23 +1,23 @@
 ODM (Object-Document Mapper)
 ============================
-In addition to its ability to :doc:`map tables <models>` in relational databases, Phalcon can map documents from NoSQL databases.
-The ODM offers a CRUD functionality, events, validations among other services.
+В дополнение к его способности :doc:`отображать таблицы <models>` в реляционных базах данных, Phalcon может отображать документы из баз данных NoSQL. 
+ODM предлагает функциональность CRUD, события, валидацию и другие сервисы.
 
-Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach.
-Additionally, there are no SQL building reducing the possibility of SQL injections.
+Из-за отсутствия запросов SQL и проектировщиков, базы данных NoSQL можете увидеть реальные улучшения в производительности, используя подход Phalcon.
+Кроме того, NoSQL конструкци уменьшают возможность  SQL инъекций.
 
-The following NoSQL databases are supported:
+Поддерживаются следующие базы данных NoSQL:
 
-+------------+----------------------------------------------------------------------+
-| Name       | Description                                                          |
-+============+======================================================================+
-| MongoDB_   | MongoDB is a scalable, high-performance, open source NoSQL database. |
-+------------+----------------------------------------------------------------------+
++------------+--------------------------------------------------------------------------------------+
+| Name       | Description                                                                          |
++============+======================================================================================+
+| MongoDB_   | MongoDB масштабируемая, высокао-производительная NoSQL БД, с открытым исходным кодом.|
++------------+--------------------------------------------------------------------------------------+
 
-Creating Models
+Создание моделей
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+Модель класс, который расширяется от  :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. Он должен быть помещен в каталог моделей. 
+Модель файл должен содержать только один класс; его имя класса должно быть записано в верблюжем стиле:
 
 .. code-block:: php
 
@@ -30,8 +30,7 @@ file must contain a single class; its class name should be in camel case notatio
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    Если вы используете PHP 5.4 / 5.5 рекомендуется объявить каждый столбец, создаваемый в модели, чтобы сохранить память и уменьшить выделение памяти.
 
 By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
 you can use the getSource() method:
