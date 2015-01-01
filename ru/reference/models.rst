@@ -1377,63 +1377,63 @@ Phalcon пытается получить сгенерированное зна�
 
     }
 
-Storing related records
+Связаное сохранение записей
 ^^^^^^^^^^^^^^^^^^^^^^^
-Magic properties can be used to store a records and its related properties:
+Магические свойства могут быть использованы для хранения записей и связанных с ним свойств:
 
 .. code-block:: php
 
     <?php
 
-    // Create a robot
+    // Создать робота
     $artist = new Artists();
     $artist->name = 'Shinichi Osawa';
     $artist->country = 'Japan';
 
-    // Create an album
+    // Создать альбом
     $album = new Albums();
     $album->name = 'The One';
-    $album->artist = $artist; //Assign the artist
+    $album->artist = $artist; //Назначить артиста
     $album->year = 2008;
 
-    //Save both records
+    // Сохранить обе записи
     $album->save();
 
-Saving a record and its related records in a has-many relation:
+Сохранение записи и связанных с ней записей в has-many соотношении:
 
 .. code-block:: php
 
     <?php
 
-    // Get an existing artist
+    // Получить существующего артиста
     $artist = Artists::findFirst('name = "Shinichi Osawa"');
 
-    // Create an album
+    // Создать альбом
     $album = new Albums();
     $album->name = 'The One';
     $album->artist = $artist;
 
     $songs = array();
 
-    // Create a first song
+    // Создать первую песню
     $songs[0] = new Songs();
     $songs[0]->name = 'Star Guitar';
     $songs[0]->duration = '5:54';
 
-    // Create a second song
+    // Создать вторую песню
     $songs[1] = new Songs();
     $songs[1]->name = 'Last Days';
     $songs[1]->duration = '4:29';
 
-    // Assign the songs array
+    // Связать массив песен
     $album->songs = $songs;
 
-    // Save the album + its songs
+    // Сохранить альбом + эти песни
     $album->save();
 
-Saving the album and the artist at the same time implictly makes use of a transaction so if anything
-goes wrong with saving the related records, the parent will not be saved either. Messages are
-passed back to the user for information regarding any errors.
+При сохранении альбома и группы неявно используются транзакции, 
+так что если что-то пойдет не так с сохранением соответствующих записей,
+то родитель не будет сохранен. Пользователю могут быть переданы собщения с информацией об ошибках.
 
 Собщения об ошибках
 ^^^^^^^^^^^^^^^^^^^
