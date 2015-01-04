@@ -2550,12 +2550,12 @@ Then access it from a controller or view:
 
 While a transaction is active, the transaction manager will always return the same transaction across the application.
 
-Independent Column Mapping
+Независимое сопоставление столбца
 --------------------------
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
-the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
-This is a great feature when one needs to rename fields in the database without having to worry about all the queries
-in the code. A change in the column map in the model will take care of the rest. For example:
+ORM поддерживает независимую карту столбцов, которая позволяет разработчику использовать различные имена столбцов в модели и в таблице. 
+Phalcon зарегистрирует новые имена столбцов и соответственно будет переименовывать их, сопоставляя соответствующие столбцы в базе данных.
+Это отличная возможность, когда нужно переименовать поля в базе данных без необходимости беспокаиваться обо всех запросах в коде.
+Замена в карте столбец в модели будет заботиться об остальном. Например:
 
 .. code-block:: php
 
@@ -2566,8 +2566,8 @@ in the code. A change in the column map in the model will take care of the rest.
 
         public function columnMap()
         {
-            //Keys are the real names in the table and
-            //the values their names in the application
+            // Ключи - реальные имена в таблице и
+            //  значения - их имена в приложении
             return array(
                 'id' => 'code',
                 'the_name' => 'theName',
@@ -2578,23 +2578,23 @@ in the code. A change in the column map in the model will take care of the rest.
 
     }
 
-Then you can use the new names naturally in your code:
+Затем вы можете использовать новые имена в вашем коде:
 
 .. code-block:: php
 
     <?php
 
-    //Find a robot by its name
+    // Найти робота по имени
     $robot = Robots::findFirst("theName = 'Voltron'");
     echo $robot->theName, "\n";
 
-    //Get robots ordered by type
+    // Получить роботов сгруппированных по типу
     $robot = Robots::find(array('order' => 'theType DESC'));
     foreach ($robots as $robot) {
         echo 'Code: ', $robot->code, "\n";
     }
 
-    //Create a robot
+    // Создать робота
     $robot = new Robots();
     $robot->code = '10101';
     $robot->theName = 'Bender';
@@ -2602,24 +2602,25 @@ Then you can use the new names naturally in your code:
     $robot->theYear = 2999;
     $robot->save();
 
-Take into consideration the following the next when renaming your columns:
+Примите во внимание следующее, при переименовании столбцов:
 
-* References to attributes in relationships/validators must use the new names
-* Refer the real column names will result in an exception by the ORM
+* Ссылки на атрибуты в отношениях/валидаторах должны использовать новые имена
+* Ссылка реальное имя столбца приведет к исключению в ORM
 
-The independent column map allow you to:
+Независимая карта столбцов позволит вам:
 
-* Write applications using your own conventions
-* Eliminate vendor prefixes/suffixes in your code
-* Change column names without change your application code
+* Написание приложений, используя ваши собственные соглашения
+* Ликвидировать префиксы/уффиксы поставщиков в вашем коде
+* Изменить имена столбцов без изменения кода приложения
 
-Operations over Resultsets
+Операции над набором результатов
 --------------------------
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+Если набор результатов состоит из завершенных объектов, 
+то он заключается в способности выполнять операции над записями, полученными в простой форме:
 
-Updating related records
+Обновление связанных записей
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Instead of doing this:
+Вместо того, чтобы сделать:
 
 .. code-block:: php
 
@@ -2636,7 +2637,7 @@ Instead of doing this:
         }
     }
 
-you can do this:
+Вы можете сделать:
 
 .. code-block:: php
 
@@ -2647,7 +2648,7 @@ you can do this:
         'updated_at' => time()
     ));
 
-'update' also accepts an anonymous function to filter what records must be updated:
+'update' также принимает анонимную функцию, чтобы отфильтровать какие записи должны быть обновлены:
 
 .. code-block:: php
 
@@ -2658,7 +2659,7 @@ you can do this:
         'updated_at' => time()
     );
 
-    //Update all the parts except these whose type is basic
+    // Обновить все части, кроме тех, чей тип базовый
     $robots->getParts()->update($data, function($part) {
         if ($part->type == Part::TYPE_BASIC) {
             return false;
@@ -2666,9 +2667,9 @@ you can do this:
         return true;
     }
 
-Deleting related records
+Удаление связанных записей
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Instead of doing this:
+Вместо того, чтобы сделать:
 
 .. code-block:: php
 
@@ -2683,7 +2684,7 @@ Instead of doing this:
         }
     }
 
-you can do this:
+Вы можете сделать:
 
 .. code-block:: php
 
@@ -2691,13 +2692,13 @@ you can do this:
 
     $robots->getParts()->delete();
 
-'delete' also accepts an anonymous function to filter what records must be deleted:
+'delete' также принимает анонимные функции фильтрации, какие записи должны быть удалены:
 
 .. code-block:: php
 
     <?php
 
-    //Delete only whose stock is greater or equal than zero
+    // Удалить только чьи акции больше или равно нулю
     $robots->getParts()->delete(function($part) {
         if ($part->stock < 0) {
             return false;
@@ -2706,10 +2707,11 @@ you can do this:
     });
 
 
-Record Snapshots
+Запись снимков
 ----------------
-Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what
-fields are changed according to the data queried from the persistence:
+В определенных моделях может быть установленно сохранение снимока, когда они вызываются. 
+Вы можете использовать эту функцию для осуществления аудита или просто чтобы знать, 
+какие поля были изменены в соответствии с запросом данныех из дампа.
 
 .. code-block:: php
 
@@ -2723,30 +2725,31 @@ fields are changed according to the data queried from the persistence:
         }
     }
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
-In models that have this feature activated you can check what fields changed:
+При активации этой функции приложение потребляет немного больше памяти для отслеживания исходных значений, 
+полученных из дампа. В моделях, которые имеют эту функцию, вы можете увидеть, какие поля изменились:
 
 .. code-block:: php
 
     <?php
 
-    //Get a record from the database
+    // Получить запись из базы данных
     $robot = Robots::findFirst();
 
-    //Change a column
+    // Изменить столбец
     $robot->name = 'Other name';
 
     var_dump($robot->getChangedFields()); // ['name']
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
 
-Models Meta-Data
+Модели Meta-Data
 ----------------
-To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
-related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
-and cache table meta-data.
+Для ускорения разработки :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` позволяет запрашивать поля и ограничения из таблиц, 
+связанных с моделями. Для этого, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` 
+позволяет управлять и кэшировать метаданные таблицы.
 
-Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance as follows:
+Иногда это необходимо, чтобы получить атрибуты при работе с моделями. 
+Вы можете получить экземпляр мета-данных следующим образом:
 
 .. code-block:: php
 
@@ -2754,37 +2757,38 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
     $robot = new Robots();
 
-    // Get Phalcon\Mvc\Model\Metadata instance
+    // Получить экземпляр Phalcon\Mvc\Model\Metadata
     $metaData = $robot->getModelsMetaData();
 
-    // Get robots fields names
+    // Получить имена полей робота
     $attributes = $metaData->getAttributes($robot);
     print_r($attributes);
 
-    // Get robots fields data types
+    // Получить типы данных полей робота
     $dataTypes = $metaData->getDataTypes($robot);
     print_r($dataTypes);
 
-Caching Meta-Data
+Кэширование мета-данных
 ^^^^^^^^^^^^^^^^^
-Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each
-time you use the table. This could be done caching the meta-data using any of the following adapters:
+После того как, приложение переведено в рабочий режим, нет необходимости запрашивать мета-данные таблицы, 
+из базы данных системы каждый раз, когда вы используете таблицу. 
+Это может быть сделано кэшированием метаданных с использованием любой из следующих адаптеров:
 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                                       |
-+=========+===============================================================================================================================================================================================================================================================================================================================================+===========================================================================================+
-| Memory  | This adapter is the default. The meta-data is cached only during the request. When the request is completed, the meta-data are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the meta-data in each request containing the new and/or modified fields. | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`   |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed every time a new session starts. This also requires the use of session_start() to start the session before using any models.                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Apc     | This adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                               | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| XCache  | This adapter uses `XCache`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Xcache <../api/Phalcon_Mvc_Model_MetaData_Xcache>`   |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Адаптер | Описание                                                                                                                                                                                                                                                                                                                                                         | API                                                                                       |
++=========+==================================================================================================================================================================================================================================================================================================================================================================+===========================================================================================+
+| Memory  | Этот адаптер по умолчанию. В запросе кэшируются только Мета-данные.   Когда запрос выполнен, Мета-данные будут представлены как часть обычной памяти запроса. Данный адаптер идеально подходит, когда приложение находится в стадии разработки, так как  Мета-данные обновляются в каждом запросе, содержащим новые и/или измененные поля.                       | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`   |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Session | Этот адаптер сохраняет Мета-данные в суперглобальной переменной $_SESSION. Данный адаптер рекомендуется использовать только тогда, когда приложение использует небольшое количество моделей. Мета-данные обновляются каждый раз когда начинается новая сессия. Это требует использования session_start (), для начала сеанса перед использованием любых моделей. | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Apc     | Этот адаптер использует  `Alternative PHP Cache (APC)`_ , для хранения таблицы Мета-данных. Вы можете задать время жизни Мета-данных с параметрами. Это наиболее Рекомендуемый способ хранения Мета-данных, когда приложение находится в рабочем режиме.                                                                                                         | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| XCache  | Этот адаптер использует `XCache`_ для хранения таблицы Мета-данных. Вы можете задать время жизни Мета-данных с параметрами. Это наиболее Рекомендуемый способ хранения Мета-данных, когда приложение находится в рабочем режиме.                                                                                                                                 | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Xcache <../api/Phalcon_Mvc_Model_MetaData_Xcache>`   |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Files   | Этот адаптер использует текстовые файлы для хранения Мета-данных. При этом адаптере нагрузка на чтение диска увеличивается, но для доступа к базе данных снижается                                                                                                                                                                                               | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
-As other ORM's dependencies, the metadata manager is requested from the services container:
+Как и другие зависимости ORM, в менеджер метаданных запрашивается из контейнера сервисов:
 
 .. code-block:: php
 
@@ -2792,7 +2796,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     $di['modelsMetadata'] = function() {
 
-        // Create a meta-data manager with APC
+        // Создать менеджер мета-данных с APC
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
@@ -2801,12 +2805,13 @@ As other ORM's dependencies, the metadata manager is requested from the services
         return $metaData;
     };
 
-Meta-Data Strategies
+Стратегии Мета-Данных
 ^^^^^^^^^^^^^^^^^^^^
-As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information
-schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
+Как уже упоминалось выше стратегией по умолчанию, для получения Мета-данных модели является самоанализ базы данных. 
+В этой стратегии используется информационная схема, чтобы узнать поля таблицы, ее первичный ключ, 
+ обнуляемые поля, типы данных и др.
 
-You can change the default meta-data introspection in the following way:
+Вы можете изменить самоанализ мета-данных по умолчанию в следующим образом:
 
 .. code-block:: php
 
@@ -2814,25 +2819,25 @@ You can change the default meta-data introspection in the following way:
 
     $di['modelsMetadata'] = function() {
 
-        // Instantiate a meta-data adapter
+        // Создание экземпляра адаптера мета-данные
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data introspection strategy
+        // Установка пользовательской стратегии интроспекции мета-данных
         $metaData->setStrategy(new MyInstrospectionStrategy());
 
         return $metaData;
     };
 
-Database Introspection Strategy
+Стратегия самоанализа Базы Данных
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
+Эта стратегия не требует никакой настройки и неявно используется всеми адаптерами мета-данных.
 
-Annotations Strategy
+Аннотации Стратегии
 ^^^^^^^^^^^^^^^^^^^^
-This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
+Эта стратегия позволяет использовать :doc:`аннотации <annotations>` для описания столбцов в модели:
 
 .. code-block:: php
 
@@ -2865,34 +2870,35 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
 
     }
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation
-are handled as simple class attributes.
+Аннотации должны быть помещены в свойствах, которые отображаются в колонки отображаемого источника. 
+Свойства без аннотации @Column обрабатываются как простые атрибуты класса.
 
-The following annotations are supported:
+
+Поддерживаются следующие аннотации:
 
 +----------+-------------------------------------------------------+
-| Name     | Description                                           |
+| Имя      | Описание                                              |
 +==========+=======================================================+
-| Primary  | Mark the field as part of the table's primary key     |
+| Primary  | Отмечает поле как часть первичного ключа таблицы      |
 +----------+-------------------------------------------------------+
-| Identity | The field is an auto_increment/serial column          |
+| Identity | Поле как auto_increment/serial столбец                |
 +----------+-------------------------------------------------------+
-| Column   | This marks an attribute as a mapped column            |
-+----------+-------------------------------------------------------+
-
-The annotation @Column supports the following parameters:
-
-+----------+-------------------------------------------------------+
-| Name     | Description                                           |
-+==========+=======================================================+
-| type     | The column's type (string, integer, decimal, boolean) |
-+----------+-------------------------------------------------------+
-| length   | The column's length if any                            |
-+----------+-------------------------------------------------------+
-| nullable | Set whether the column accepts null values or not     |
+| Column   | Отмечает атрибут в качестве отображаемого столюца     |
 +----------+-------------------------------------------------------+
 
-The annotations strategy could be set up this way:
+Анотация @Column поддерживает следующие параметры:
+
++----------+-----------------------------------------------------------+
+| Name     | Description                                               |
++==========+===========================================================+
+| type     | Тип столбца (строки, целое число, десятичное, логический) |
++----------+-----------------------------------------------------------+
+| length   | Длина столбца, если есть                                  |
++----------+-----------------------------------------------------------+
+| nullable | Принимает ли столбец нулевые значения или нет             |
++----------+-----------------------------------------------------------+
+
+Стратегия аннотации могут быть созданы таким образом:
 
 .. code-block:: php
 
@@ -2903,28 +2909,28 @@ The annotations strategy could be set up this way:
 
     $di['modelsMetadata'] = function() {
 
-        // Instantiate a meta-data adapter
+        // Создание экземпляра адаптера мета-данных
         $metaData = new ApcMetaData(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data database introspection
+        // Установить пользовательский самоанализ мета-данных базы данных 
         $metaData->setStrategy(new StrategyAnnotations());
 
         return $metaData;
     };
 
-Manual Meta-Data
-^^^^^^^^^^^^^^^^
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually
-using any of the introspection strategies presented above.
+Установка Мета-Данных в ручную
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Phalcon может получить метаданные для каждой модели автоматически, без того, чтобы разработчик установливал 
+их вручную, с помощью любой из стратегий самоанализа, представленных выше.
 
-The developer also has the option of define the metadata manually. This strategy overrides
-any strategy set in the  meta-data manager. New columns added/modified/removed to/from the mapped
-table must be added/modified/removed also for everything to work properly.
+Разработчик также имеет возможность определить метаданные вручную. Эта стратегия перекрывает любые стратегии, 
+заданные в менеджере мета-данных. Новые колонки добавлены/изменены/удалены так же и в связанной таблице 
+должны быть добавлены/изменены/удалены, чтобы работать должным образом.
 
-The following example shows how to define the meta-data manually:
+Следующий пример показывает, как определить мета-данные вручную:
 
 .. code-block:: php
 
@@ -2941,27 +2947,27 @@ The following example shows how to define the meta-data manually:
         {
             return array(
 
-                //Every column in the mapped table
+                // Каждый столбец в отображаемой таблице
                 MetaData::MODELS_ATTRIBUTES => array(
                     'id', 'name', 'type', 'year'
                 ),
 
-                //Every column part of the primary key
+                // Каждый столбец частью первичного ключа
                 MetaData::MODELS_PRIMARY_KEY => array(
                     'id'
                 ),
 
-                //Every column that isn't part of the primary key
+                // Каждый столбец, который не является частью первичного ключа
                 MetaData::MODELS_NON_PRIMARY_KEY => array(
                     'name', 'type', 'year'
                 ),
 
-                //Every column that doesn't allows null values
+                // Каждый столбец, который не позволяет нулевые значения
                 MetaData::MODELS_NOT_NULL => array(
                     'id', 'name', 'type', 'year'
                 ),
 
-                //Every column and their data types
+                // Каждый столбец и их типы данных
                 MetaData::MODELS_DATA_TYPES => array(
                     'id' => Column::TYPE_INTEGER,
                     'name' => Column::TYPE_VARCHAR,
@@ -2969,17 +2975,17 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::TYPE_INTEGER
                 ),
 
-                //The columns that have numeric data types
+                // Колонки, которые имеют числовые типы данных
                 MetaData::MODELS_DATA_TYPES_NUMERIC => array(
                     'id' => true,
                     'year' => true,
                 ),
 
-                //The identity column, use boolean false if the model doesn't have
-                //an identity column
+                // Столбец идентификаторов, используйте логическое значение FALSE, если модель не имеет
+                // столбец идентификации
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
-                //How every column must be bound/casted
+                // Как каждый столбец должен быть связан/слит
                 MetaData::MODELS_DATA_TYPES_BIND => array(
                     'id' => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
@@ -2987,12 +2993,12 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::BIND_PARAM_INT,
                 ),
 
-                //Fields that must be ignored from INSERT SQL statements
+                //Поля, которые должны быть проигнорированы в INSERT SQL инструкциях
                 MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
                     'year' => true
                 ),
 
-                //Fields that must be ignored from UPDATE SQL statements
+                //Поля, которые должны быть проигнорированы в UPDATE SQL инструкциях
                 MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
                     'year' => true
                 )
@@ -3002,9 +3008,10 @@ The following example shows how to define the meta-data manually:
 
     }
 
-Pointing to a different schema
+Ссылка на другую схему
 ------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+Если модель отображает таблицу, которая находится в другой схеме/базе данных, чем по умолчанию.
+Вы можете использовать метод GetSchema, чтобы определить это:
 
 .. code-block:: php
 
@@ -3020,17 +3027,18 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     }
 
-Setting multiple databases
+Установка нескольких баз данных
 --------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
+В Phalcon все модели могут принадлежать к одному и тому же подключению к базе данных или иметь индивидуальное. 
+На самом деле, когда 
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` необходимо подключиться к базе данных, он запрашивает "db" 
+сервис в контейнере сервисов приложений. Вы можете переписать этот сервис, установив его в методе initialize:
 
 .. code-block:: php
 
     <?php
 
-    //This service returns a MySQL database
+    // Этот сервис возвращает базу данных MySQL
     $di->set('dbMysql', function() {
          return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
@@ -3040,7 +3048,7 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-    //This service returns a PostgreSQL database
+    // Этот сервис возвращает базу данных PostgreSQL
     $di->set('dbPostgres', function() {
          return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
             "host" => "localhost",
@@ -3050,7 +3058,7 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-Then, in the Initialize method, we define the connection service for the model:
+Затем в методе Initialize, определим сервис соединения для модели:
 
 .. code-block:: php
 
@@ -3066,8 +3074,9 @@ Then, in the Initialize method, we define the connection service for the model:
 
     }
 
-But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
-to balance the load to your databases implementing a master-slave architecture:
+Но Phalcon предлагает вам больше гибкости, вы можете определить соединение, которое необходимо использовать 
+для 'read' и для 'write'. Это особенно полезно для балансировки нагрузки с базами данных, 
+реализующих архитектуру ведущий-ведомый:
 
 .. code-block:: php
 
@@ -3084,8 +3093,8 @@ to balance the load to your databases implementing a master-slave architecture:
 
     }
 
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
-according to the current query conditions:
+ORM так же обеспечивает  устройство горизонтального шардинга, 
+позволяя вам реализовать выбор "осколка" в соответствии с текущими условиями запроса:
 
 .. code-block:: php
 
@@ -3102,12 +3111,12 @@ according to the current query conditions:
          */
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
-            //Check if there is a 'where' clause in the select
+            // Проверка есть ли  'where' в select
             if (isset($intermediate['where'])) {
 
                 $conditions = $intermediate['where'];
 
-                //Choose the possible shard according to the conditions
+                // Выбор возможного осколка в соответствии с условиями
                 if ($conditions['left']['name'] == 'id') {
                     $id = $conditions['right']['value'];
                     if ($id > 0 && $id < 10000) {
@@ -3119,14 +3128,14 @@ according to the current query conditions:
                 }
             }
 
-            //Use a default shard
+            //Использовать осколок умолчанию
             return $this->getDI()->get('dbShard0');
         }
 
     }
 
-The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
-query executed:
+Метод 'selectReadConnection' вызывается для правильного выбора соединения, 
+этот метод перехватывает выполнение любого нового запроса:
 
 .. code-block:: php
 
