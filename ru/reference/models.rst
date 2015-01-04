@@ -2364,20 +2364,20 @@ ORM предоставляет API для создания собственны�
         use MyTimestampable;
     }
 
-Transactions
+Транзакции
 ------------
-When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
-be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-are committed to the database.
+Когда процесс выполняет несколько операций базы данных, часто, что каждый шаг успешно завершен, так что 
+целостность данных может поддерживаться. Транзакции дают возможность обеспечить, чтобы все операции с базой 
+данных были успешно выполнены прежде, чем данные фиксируются в базе данных.
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
-all operations if something went wrong.
+Транзакции в Phalcon позволяют совершать все операции, если они были успешно выполнены или откатить все операции, 
+если что-то пошло не так.
 
-Manual Transactions
+Ручные Транзакции
 ^^^^^^^^^^^^^^^^^^^
-If an application only uses one connection and the transactions aren't very complex, a transaction can be
-created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
-is successfully or not:
+Если приложение использует только одно соединение и транзакции не очень сложным, транзакция может быть 
+создана просто переводом текущего соединения в режим транзакции, и система делает откат или выполняет, 
+если операция успешно или нет:
 
 .. code-block:: php
 
@@ -2410,10 +2410,10 @@ is successfully or not:
         }
     }
 
-Implicit Transactions
+Неявные транзакции
 ^^^^^^^^^^^^^^^^^^^^^
-Existing relationships can be used to store records and their related instances, this kind of operation
-implicitly creates a transaction to ensure that data are correctly stored:
+Существующие отношения могут быть использованы для хранения записей и связанных с ними случаев, 
+этот вид операций неявно создает транзакцию, чтобы удостовериться, что данные правильно храняются:
 
 .. code-block:: php
 
@@ -2427,14 +2427,14 @@ implicitly creates a transaction to ensure that data are correctly stored:
     $robot->created_at = date("Y-m-d");
     $robot->robotPart = $robotPart;
 
-    $robot->save(); //Creates an implicit transaction to store both records
+    $robot->save(); // Создает неявную транзакцию, чтобы сохранить обе записи
 
-Isolated Transactions
+Изолированные транзакции
 ^^^^^^^^^^^^^^^^^^^^^
-Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checking and business rules are isolated from the main connection.
-This kind of transaction requires a transaction manager that globally manages each
-transaction created ensuring that it's correctly rollbacked/commited before ending the request:
+Изолированные транзакции выполняются  в новом соединении, гарантируя, что все сгенерированные SQL, 
+виртуальные проверки внешних ключей и рабочие правила изолированы от основного соединения. 
+Этот вид транзакции требует менеджера транзакций, который глобально управляет каждой транзакции, 
+гарантируя правильные откат/совершение операций перед окончанием запроса:
 
 .. code-block:: php
 
@@ -2445,10 +2445,10 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
 
     try {
 
-        //Create a transaction manager
+        // Создать менеджер транзакций
         $manager = new TxManager();
 
-        // Request a transaction
+        // Запрос транзакции
         $transaction = $manager->get();
 
         $robot = new Robots();
@@ -2456,7 +2456,7 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
         $robot->name = "WALL·E";
         $robot->created_at = date("Y-m-d");
         if ($robot->save() == false) {
-            $transaction->rollback("Cannot save robot");
+            $transaction->rollback("Невозможно сохранить robot");
         }
 
         $robotPart = new RobotParts();
@@ -2464,17 +2464,17 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
         $robotPart->robots_id = $robot->id;
         $robotPart->type = "head";
         if ($robotPart->save() == false) {
-            $transaction->rollback("Cannot save robot part");
+            $transaction->rollback("Невозможно сохранить robotPart");
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Все идет хорошо, совершить транзакцию
         $transaction->commit();
 
     } catch(TxFailed $e) {
-        echo "Failed, reason: ", $e->getMessage();
+        echo "Не удалось, причина: ", $e->getMessage();
     }
 
-Transactions can be used to delete many records in a consistent way:
+Транзакцию могут быть использованы для удаления нескольких записей на постоянной основе:
 
 .. code-block:: php
 
@@ -2485,34 +2485,36 @@ Transactions can be used to delete many records in a consistent way:
 
     try {
 
-        //Create a transaction manager
+        // Создать менеджер транзакций
         $manager = new TxManager();
 
-        //Request a transaction
+        // Запрос транзакции
         $transaction = $manager->get();
 
-        //Get the robots will be deleted
+        // Получить роботов для удаления
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
-                //Something goes wrong, we should to rollback the transaction
+                // Что-то идет не так, мы должны откатить транзакцию
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
                 }
             }
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Все идет хорошо, давайте совершить транзакцию
         $transaction->commit();
 
-        echo "Robots were deleted successfully!";
+        echo "Роботы успешно удалены!";
 
     } catch(TxFailed $e) {
-        echo "Failed, reason: ", $e->getMessage();
+        echo "Не удалось, причина: ", $e->getMessage();
     }
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
-is performed. You can use the service container to create an overall transaction manager for the entire application:
+Транзакция продолжается, независимо от того, где получается объект транзакции. 
+Новая транзакция формируется только при выполнении методов commit() или rollback(). 
+Вы можете воспользоваться di контейнером, чтобы создать общий менеджер транзакций 
+для всего приложения:
 
 .. code-block:: php
 
@@ -2522,7 +2524,7 @@ is performed. You can use the service container to create an overall transaction
         return new \Phalcon\Mvc\Model\Transaction\Manager();
     });
 
-Then access it from a controller or view:
+Тогда доступ к нему из контроллера или вида:
 
 .. code-block:: php
 
@@ -2534,13 +2536,13 @@ Then access it from a controller or view:
         public function saveAction()
         {
 
-            //Obtain the TransactionsManager from the services container
+            // Получить TransactionsManager из контейнера услуг
             $manager = $this->di->getTransactions();
 
-            //Or
+            // Или
             $manager = $this->transactions;
 
-            //Request a transaction
+            // Запрос транзакции
             $transaction = $manager->get();
 
             //...
@@ -2548,7 +2550,7 @@ Then access it from a controller or view:
 
     }
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+Пока транзакция активна, менеджер транзакций по заявке будет всегда возвращать одну и ту же транзакцию.
 
 Независимое сопоставление столбца
 --------------------------
