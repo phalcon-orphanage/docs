@@ -46,7 +46,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
 添加资源（Adding Resources）
 ---------------------------
-资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是制器。 Phalcon中我们使用 :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` 来定义资源。
+资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是控制器。 Phalcon中我们使用 :doc:`Phalcon\\Acl\\Resource <../api/Phalcon_Acl_Resource>` 来定义资源。
 非常重要的一点即是我们把相关的action或操作添加到资源中这样ACL才知道控制什么资源。
 
 .. code-block:: php
