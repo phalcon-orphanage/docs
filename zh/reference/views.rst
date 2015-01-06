@@ -4,14 +4,12 @@
 视图的任务是当应用程序发生请求时，提供数据给 web 浏览器或者其他工具。
 
 
-The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
-are responsible for the managing the view layer of your MVC application.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
+负责管理你的MVC应用程序的视图(View)层。
 
 集成视图到控制器（Integrating Views with Controllers）
 ------------------------------------------------------
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component
-will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action
-executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+当某个控制器已经完成了它的周期，Phalcon自动将执行传递到视图组件。视图组件将在视图文件夹中寻找一个文件夹名与最后一个控制器名相同,文件命名与最后一个动作相同的文件执行。例如，如果请求的URL *http://127.0.0.1/blog/posts/show/301*, Phalcon将如下所示的方式按解析URL:
 
 +-------------------+-----------+
 | Server Address    | 127.0.0.1 |
@@ -25,7 +23,7 @@ executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/p
 | Parameter         | 301       |
 +-------------------+-----------+
 
-The dispatcher will look for a "PostsController" and its action "showAction". A simple controller file for this example:
+调度程序将寻找一个“PostsController”控制器及其“showAction”动作。对于这个示例的一个简单的控制器文件：
 
 .. code-block:: php
 
@@ -47,29 +45,25 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
 
     }
 
-The setVar allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates
-how to pass the $postId parameter to the respective view template.
+setVar允许我们创建视图变量，这样可以在视图模板中使用它们。上面的示例演示了如何传递 $postId 参数到相应的视图模板。
 
 分层渲染（Hierarchical Rendering）
 ----------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a hierarchy of files and is the default component for view rendering in Phalcon.
-This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 支持文件的层次结构，在Phalcon中是默认的视图渲染组件。这个层次结构允许通用的布局点(常用的视图)和以控制器命名的文件夹中定义各自的视图模板
 
-This component uses by default PHP itself as the template engine, therefore views should have the .phtml extension.
-If the views directory is  *app/views* then view component will find automatically for these 3 view files.
+该组件使用默认PHP本身作为模板引擎，因此视图应该以.phtml作为拓展名。如果视图目录是 *app/views* ，视图组件会自动找到这三个视图文件。
 
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| 名称              | 文件                          | 解释                                                                                                                                                                                                              |
 +===================+===============================+==========================================================================================================================================================================================================================+
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the "show" action was executed.                                                                                                                       |
+| Action View       | app/views/posts/show.phtml    | 这是该动作相关的视图。它只会在执行“show”动作时显示。 |
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
+| Controller Layout | app/views/layouts/posts.phtml | 这是该控制器相关的视图。它只会“posts”控制器内每个动作执行时显示。这个控制器的所有动作将重用这个布局的全部代码。|
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
+| Main Layout       | app/views/index.phtml         | 这是主布局，它将在应用程序的每个控制器或动作执行时显示。|
 +-------------------+-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-You are not required to implement all of the files mentioned above. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` will simply move to the
-next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+你不需要实现上面提到的所有文件。在文件的层次结构中 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 将简单地移动到下一个视图级别。如果这三个视图文件被实现，他们将被按下面方式处理:
 
 .. code-block:: html+php
 
@@ -103,13 +97,12 @@ next view level in the hierarchy of files. If all three view files are implement
         </body>
     </html>
 
-Note the lines where the method *$this->getContent()* was called. This method instructs :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
+注意方法 *$this->getContent()* 被调用的这行。这种方法指示 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 在这里注入前面视图层次结构执行的内容。在上面的示例中，输出将会是：
 
 .. figure:: ../_static/img/views-1.png
    :align: center
 
-The generated HTML by the request will be:
+请求生成的HTML的将为：
 
 .. code-block:: html+php
 
@@ -137,8 +130,7 @@ The generated HTML by the request will be:
 
 使用模版（Using Templates）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the
-layouts directory.
+模板视图可以用来分享共同的视图代码。他们作为控制器的布局，所以你需要放在布局目录。
 
 .. code-block:: php
 
@@ -204,7 +196,7 @@ layouts directory.
         <p>This is another post content</p>
     </article>
 
-The final output will be the following:
+最终的输出如下:
 
 .. code-block:: html+php
 
@@ -249,10 +241,9 @@ The final output will be the following:
 
 渲染级别控制（Control Rendering Levels）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-As seen above, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` supports a view hierarchy. You might need to control the level of rendering
-produced by the view component. The method Phalcon\Mvc\\View::setRenderLevel() offers this functionality.
+如上所述，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 支持视图分层。你可能需要控制视图组件的渲染级别。方法 Phalcon\Mvc\\View::setRenderLevel() 提供这个功能。
 
-This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
+这种方法可以从控制器调用或是从上级视图层干涉渲染过程。
 
 .. code-block:: php
 
@@ -286,27 +277,27 @@ This method can be invoked from the controller or from a superior view layer to 
 
     }
 
-The available render levels are:
+可用的渲染级别:
 
 +-----------------------+--------------------------------------------------------------------------+-------+
-| Class Constant        | Description                                                              | Order |
+| 类常量                | 解释                                                                     | 顺 序 |
 +=======================+==========================================================================+=======+
-| LEVEL_NO_RENDER       | Indicates to avoid generating any kind of presentation.                  |       |
+| LEVEL_NO_RENDER       | 表明要避免产生任何形式的显示。                                           |       |
 +-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_ACTION_VIEW     | Generates the presentation to the view associated to the action.         | 1     |
+| LEVEL_ACTION_VIEW     | 生成显示到视图关联的动作。                                               | 1     |
 +-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_BEFORE_TEMPLATE | Generates presentation templates prior to the controller layout.         | 2     |
+| LEVEL_BEFORE_TEMPLATE | 生成显示到控制器模板布局之前。                                           | 2     |
 +-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_LAYOUT          | Generates the presentation to the controller layout.                     | 3     |
+| LEVEL_LAYOUT          | 生成显示到控制器布局。                                                   | 3     |
 +-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_AFTER_TEMPLATE  | Generates the presentation to the templates after the controller layout. | 4     |
+| LEVEL_AFTER_TEMPLATE  | 生成显示到控制器模板布局后。                                             | 4     |
 +-----------------------+--------------------------------------------------------------------------+-------+
-| LEVEL_MAIN_LAYOUT     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
+| LEVEL_MAIN_LAYOUT     | 生成显示到主布局。文件： views/index.phtml                               | 5     |
 +-----------------------+--------------------------------------------------------------------------+-------+
 
 关闭渲染级别（Disabling render levels）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
+你可以永久或暂时禁用渲染级别。如果不在整个应用程序使用，可以永久禁用一个级别：
 
 .. code-block:: php
 
@@ -328,7 +319,7 @@ You can permanently or temporarily disable render levels. A level could be perma
 
     }, true);
 
-Or disable temporarily in some part of the application:
+或者在某些应用程序的一部分暂时或禁用:
 
 .. code-block:: php
 
@@ -354,8 +345,7 @@ Or disable temporarily in some part of the application:
 
 选择视图（Picking Views）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-As mentioned above, when :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is managed by :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`
-the view rendered is the one related with the last controller and action executed. You could override this by using the Phalcon\\Mvc\\View::pick() method:
+如上所述, 当 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 由 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 视图渲染的是最后的一个相关的控制器和执行动作。你可以使用 Phalcon\\Mvc\\View::pick() 方法覆盖它。
 
 .. code-block:: php
 
@@ -380,8 +370,7 @@ the view rendered is the one related with the last controller and action execute
 
 关闭视图（Disabling the view）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If your controller doesn't produce any output in the view (or not even have one) you may disable the view component
-avoiding unnecessary processing:
+如果你的控制器不在视图里产生(或没有)任何输出，你可以禁用视图组件来避免不必要的处理：
 
 .. code-block:: php
 
@@ -404,7 +393,7 @@ avoiding unnecessary processing:
 
     }
 
-You can return a 'response' object to avoid disable the view manually:
+你可以返回一个“response”的对象，避免手动禁用视图:
 
 .. code-block:: php
 
@@ -426,15 +415,13 @@ You can return a 'response' object to avoid disable the view manually:
 
 简单渲染（Simple Rendering）
 ----------------------------
-:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` is an alternative component to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
-It keeps most of the philosophy of :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` but lacks of a hierarchy of files which is, in fact,
-the main feature of its counterpart.
+:doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` 是 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`的另一个组成部分。
+它保留 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 的大多数的设计思想，但缺少文件的层次结构是它们的主要区别。
 
-This component allows the developer to have control of when a view is rendered and its location.
-In addition, this component can leverage of view inheritance available in template engines such
-as :doc:`Volt <volt>` and others.
+该组件允许开发人员控制渲染视图时，视图所在位置。
+此外，该组件可以利用从视图中继承的可用的模板引擎。比如 :doc:`Volt <volt>` 和其他的一些模板引擎。
 
-The default component must be replaced in the service container:
+默认使用该的组件必须替换服务容器：
 
 .. code-block:: php
 
@@ -450,7 +437,7 @@ The default component must be replaced in the service container:
 
     }, true);
 
-Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applications>` (if needed):
+自动渲染必须在 :doc:`Phalcon\\Mvc\\Application <applications>`被禁用 (如果需要):
 
 .. code-block:: php
 
@@ -468,7 +455,7 @@ Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applica
         echo $e->getMessage();
     }
 
-To render a view it's necessary to call the render method explicitly indicating the relative path to the view you want to display:
+渲染一个视图必须显式地调用render方法来指定你想显示的视图的相对路径：
 
 .. code-block:: php
 
@@ -496,11 +483,9 @@ To render a view it's necessary to call the render method explicitly indicating 
 
 使用局部模版（Using Partials）
 ------------------------------
-Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different
-parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
+局部模板是把渲染过程分解成更简单、更好管理的、可以重用不同部分的应用程序块的另一种方式。你可以移动渲染特定响应的代码块到自己的文件。
 
-One way to use partials is to treat them as the equivalent of subroutines: as a way to move details out of a view so that your code
-can be more easily understood. For example, you might have a view that looks like this:
+使用局部模板的一种方法是把它们作为相等的子例程：作为一种移动细节视图，这样您的代码可以更容易地被理解。例如，您可能有一个视图看起来像这样：
 
 .. code-block:: html+php
 
@@ -515,7 +500,7 @@ can be more easily understood. For example, you might have a view that looks lik
 
     <div class="footer"><?php $this->partial("shared/footer") ?></div>
 
-Method partial() does accept a second parameter as an array of variables/parameters that only will exists in the scope of the partial:
+方法 partial() 也接受一个只会存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
