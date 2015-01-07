@@ -500,7 +500,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <div class="footer"><?php $this->partial("shared/footer") ?></div>
 
-方法 partial() 也接受一个只会存在于局部范围的变量/参数的数组作为第二个参数:
+方法 partial() 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
@@ -508,8 +508,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
 控制器传值给视图（Transfer values from the controller to views）
 ----------------------------------------------------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` is available in each controller using the view variable ($this->view). You can
-use that object to set variables directly to the view from a controller action by using the setVar() method.
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 可以在每个控制器中使用视图变量 ($this->view)。 你可以在控制器动作中使用视图对象的setVar()方法直接设置视图变量。
 
 .. code-block:: php
 
@@ -540,8 +539,7 @@ use that object to set variables directly to the view from a controller action b
 
     }
 
-A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
-from a simple string, integer etc. variable to a more complex structure such as array, collection etc.
+名为setvar()的第一参数值的变量将在视图中创建的，并且可以被使用。变量可以是任何类型：从一个简单的字符串，整数等等，变为更复杂的结构，如数组，集合。
 
 .. code-block:: html+php
 
@@ -557,8 +555,7 @@ from a simple string, integer etc. variable to a more complex structure such as 
 
 在视图中使用模型（Using models in the view layer）
 --------------------------------------------------
-Application models are always available at the view layer. The :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` will instantiate them at
-runtime automatically:
+应用模型在视图层也是可用的。:doc:`Phalcon\\Loader <../api/Phalcon_Loader>` 将在运行时实例化模型:
 
 .. code-block:: html+php
 
@@ -572,17 +569,13 @@ runtime automatically:
     ?>
     </div>
 
-Although you may perform model manipulation operations such as insert() or update() in the view layer, it is not recommended since
-it is not possible to forward the execution flow to another controller in the case of an error or an exception.
+尽管你可以执行模型处理操作，如在视图层 insert() 或  update()，但这是不推荐，因为在一个错误或异常发生时，它不可能将执行流程转发给另一个控制器。
 
 缓存视图片段（Caching View Fragments）
 --------------------------------------
-Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly
-the same between requests. :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` offers caching a part or the whole
-rendered output to increase performance.
+有时当你开发动态网站和一些区域不会经常更新，请求的输出是完全相同的。 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供缓存全部或部分的渲染输出来提高性能。
 
-:doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` integrates with :doc:`Phalcon\\Cache <cache>` to provide an easier way
-to cache output fragments. You could manually set the cache handler or set a global handler:
+将 :doc:`Phalcon\\\Mvc\\View <../api/Phalcon_Mvc_View>` 配合 :doc:`Phalcon\\Cache <cache>` 能提供一种更简单的方法缓存输出片段。你可以手动设置缓存处理程序或一个全局处理程序。
 
 .. code-block:: php
 
@@ -630,11 +623,10 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
     }
 
-When we do not define a key to the cache, the component automatically creates one doing a md5_ to view name is currently rendered.
-It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
+当我们没有定义缓存的关键组件，这个组件会自动创建一个经过 md5_ 的当前渲染的视图名。它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
 
-When the View component needs to cache something it will request a cache service to the services container.
-The service name convention for this service is "viewCache":
+当视图组件需要缓存的东西时，就会请求缓存服务的服务容器。
+这个服务的服务名称约定为"viewCache"：
 
 .. code-block:: php
 
@@ -661,14 +653,12 @@ The service name convention for this service is "viewCache":
     });
 
 .. highlights::
-    The frontend must always be Phalcon\\Cache\\Frontend\\Output and the service 'viewCache' must be registered as
-    always open (not shared) in the services container (DI)
+    前端 Phalcon\\Cache\\Frontend\\Output 和服务 'viewCache' 必须在服务容器（DI）注册为
+	总是开放的（不共享 not shared）
 
-When using view caching is also useful to prevent that controllers perform the processes that produce the data to be displayed
-in the views.
+在视图中使用视图缓存也是有用的，以防止控制器执行过程所产生的数据被显示。
 
-To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has
-expired to make the calculations/queries to display data in the view:
+为了实现这一点，我们必须确定每个缓存键是独一无二的。 首先，我们验证缓存不存在或是否过期，再去计算/查询并在视图中显示数据:
 
 .. code-block:: html+php
 
@@ -699,33 +689,28 @@ expired to make the calculations/queries to display data in the view:
 
     }
 
-The `PHP alternative site`_ is an example of implementing the caching of fragments.
+`PHP alternative site`_ 是实现缓存片段的一个例子。
 
 模版引擎（Template Engines）
 ----------------------------
-Template Engines helps designers to create views without use a complicated syntax. Phalcon includes a powerful and fast templating engine
-called :doc:`Volt <volt>`.
+模板引擎可以帮助设计者不使用复杂的语法创建视图。Phalcon包含一个强大的和快速的模板引擎，它被叫做叫 :doc:`Volt <volt>`。
 
-Additionally, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` allows you to use other template engines instead of plain PHP or Volt.
+此外, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 允许你使用其它的模板引擎而不是简单的PHP或者Volt。
 
-Using a different template engine, usually requires complex text parsing using external PHP libraries in order to generate the final output
-for the user. This usually increases the number of resources that your application are using.
+使用不同的模板引擎，通常需要使用外部PHP库并且引入复杂的文本解析来为用户生成最终的输出解析。这通常会增加一些你的应用程序的资源耗费。
 
-If an external template engine is used, :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` provides exactly the same view hierarchy and it's
-still possible to access the API inside these templates with a little more effort.
+如果一个外部模板引擎被使用，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供完全相同的视图渲染等级，仍然可以尝试在这些模板内访问的更多的API。
 
-This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
+该组件使用的适配器，这些适配器帮助 Phalcon 与外部模板引擎以一个统一的方式对话，让我们看看如何整合。
 
 创建模版引擎（Creating your own Template Engine Adapter）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
+有很多模板引擎，你可能想整合或建立一个自己的。开始使用一个外部的模板引擎的第一步是创建一个适配器。
 
-A template engine adapter is a class that acts as bridge between :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and the template engine itself.
-Usually it only needs two methods implemented: __construct() and render(). The first one receives the :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`
-instance that creates the engine adapter and the DI container used by the application.
+模板引擎的适配器是一个类，作为 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和模板引擎本身之间的桥梁。
+通常它只需要实现两个方法: __construct() and render()。首先接收 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和应用程序使用的DI容器来创建引擎适配器实例。
 
-The method render() accepts an absolute path to the view file and the view parameters set using $this->view->setVar(). You could read or require it
-when it's necessary.
+方法render()接受一个到视图文件的绝对路径和视图参数，设置使用$this->view->setVar()。必要的时候，你可以读入或引入它。
 
 .. code-block:: php
 
@@ -769,7 +754,7 @@ when it's necessary.
 
 替换模版引擎（Changing the Template Engine）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can replace or add more a template engine from the controller as follows:
+你可以想下面一样从控制器更换或者添加更多的模板引擎：
 
 .. code-block:: php
 
@@ -801,14 +786,11 @@ You can replace or add more a template engine from the controller as follows:
 
     }
 
-You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
-accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another.
-Template files related to the particular engine must have those extensions.
+你可以完全更换模板引擎或同时使用多个模板引擎。方法 \Phalcon\\Mvc\\View::registerEngines() 接受一个包含定义模板引擎数据的数组。每个引擎的键名是一个区别于其他引擎的拓展名。模板文件和特定的引擎关联必须有这些扩展名。
 
-The order that the template engines are defined with \Phalcon\\Mvc\\View::registerEngines() defines the relevance of execution. If
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` finds two views with the same name but different extensions, it will only render the first one.
+\Phalcon\\Mvc\\View::registerEngines() 会按照相关顺序定义模板引擎执行。如果 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 发现具有相同名称但不同的扩展，它只会使第一个。
 
-If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
+如果你想在应用程序的每个请求中注册一个或一组模板引擎。你可以在创建视图时注册服务：
 
 .. code-block:: php
 
@@ -830,15 +812,14 @@ If you want to register a template engine or a set of them for each request in t
 
     }, true);
 
-There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
+在 `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_ 有一些适配器可用于数个模板引擎
 
 注入服务到视图（Injecting services in View）
 --------------------------------------------
-Every view executed is included inside a :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` instance, providing easy access
-to the application's service container.
+每个视图执行内部包含一个 :doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 实例, 提供方便地方式访问应用程序的服务容器。
 
-The following example shows how to write a jQuery `ajax request`_ using a url with the framework conventions.
-The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the view by accessing a property with the same name:
+下面的示例演示如何用一个框架约定好的URL服务写一个 jQuery `ajax request`_ 。
+"url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) 服务被注入在视图由相同名称的属性访问：
 
 .. code-block:: html+php
 
@@ -855,11 +836,11 @@ The service "url" (usually :doc:`Phalcon\\Mvc\\Url <url>`) is injected in the vi
 
 独立的组件（Stand-Alone Component）
 -----------------------------------
-All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
+在Phalcon的所有部件都可以作为胶水（*glue*） 组件单独使用，因为它们彼此松散耦合:
 
 分层渲染（Hierarchical Rendering）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode can be demonstrated below
+如下所示，可以单独使用 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`：
 
 .. code-block:: php
 
@@ -885,7 +866,7 @@ Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode 
 
     echo $view->getContent();
 
-A short syntax is also available:
+使用短的语法也可以:
 
 .. code-block:: php
 
@@ -907,7 +888,7 @@ A short syntax is also available:
 
 简单渲染（Simple Rendering）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a stand-alone mode can be demonstrated below:
+如下所示，以单独使用 :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`：
 
 .. code-block:: php
 
@@ -929,25 +910,23 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
 
 视图事件（View Events）
 -----------------------
-:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` are able to send
-events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "view". Some events when returning
-boolean false could stop the active operation. The following events are supported:
+如果事件管理器（EventsManager）存在，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` 能够发送事件到 :doc:`EventsManager <events>`。事件触发使用的“view”类型。当返回布尔值false，一些事件可以停止运行。以下是被支持的事件：
 
 +----------------------+------------------------------------------------------------+---------------------+
-| Event Name           | Triggered                                                  | Can stop operation? |
+| 事件名称             | 触发点                                                     | 是否可以停止?       |
 +======================+============================================================+=====================+
-| beforeRender         | Triggered before starting the render process               | Yes                 |
+| beforeRender         | 渲染过程开始前触发                                         | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| beforeRenderView     | Triggered before rendering an existing view                | Yes                 |
+| beforeRenderView     | 渲染一个现有的视图之前触发                                 | Yes                 |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRenderView      | Triggered after rendering an existing view                 | No                  |
+| afterRenderView      | 渲染一个现有的视图之后触发                                 | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
-| afterRender          | Triggered after completing the render process              | No                  |
+| afterRender          | 渲染过程完成后触发                                         | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
-| notFoundView         | Triggered when a view was not found                        | No                  |
+| notFoundView         | 视图不存在时触发                                           | No                  |
 +----------------------+------------------------------------------------------------+---------------------+
 
-The following example demonstrates how to attach listeners to this component:
+下面的例子演示了如何将监听器附加到该组件：
 
 .. code-block:: php
 
@@ -973,7 +952,7 @@ The following example demonstrates how to attach listeners to this component:
 
     }, true);
 
-The following example shows how to create a plugin that clean/repair the HTML produced by the render process using Tidy_:
+下面的示例演示如何创建一个插件 Tidy_ ，清理/修复的渲染过程中产生的HTML：
 
 .. code-block:: php
 
