@@ -32,8 +32,8 @@ ODM предлагает функциональность CRUD, события, 
 
     Если вы используете PHP 5.4 / 5.5 рекомендуется объявить каждый столбец, создаваемый в модели, чтобы сохранить память и уменьшить выделение памяти.
 
-By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
-you can use the getSource() method:
+По умолчанию модель “Robots” будет ссылаться на “robots”. Если вы хотите вручную указать другое имя для отображения коллекции,
+вы можете использовать getSource() метод:
 
 .. code-block:: php
 
@@ -47,10 +47,11 @@ you can use the getSource() method:
         }
     }
 
-Understanding Documents To Objects
+Понимание Документов как Объектов
 ----------------------------------
-Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example,
-for a collection "robots" with the documents:
+
+Каждый экземпляр модели представляет документ в коллекции. Вы можете легко получить доступ к коллекции данных путем считывания свойств объекта. 
+Например, для коллекции "robots" с документами:
 
 .. code-block:: bash
 
@@ -65,9 +66,10 @@ for a collection "robots" with the documents:
     { "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
     >
 
-Models in Namespaces
+Модели в пространствах имен
 --------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:
+Пространства имен могут быть использованы, для того, чтобы избежать колизий имен классов. 
+В этом случае необходимо указать имя соответствующей колекции, используя getSource:
 
 .. code-block:: php
 
@@ -85,19 +87,19 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     }
 
-You could find a certain document by its id and then print its name:
+Вы можете найти определенный документ, его ID, а затем распечатать его имя:
 
 .. code-block:: php
 
     <?php
 
-    // Find record with _id = "5087358f2d42b8c3d15ec4e2"
+    // Найти запись с _id = "5087358f2d42b8c3d15ec4e2"
     $robot = Robots::findById("5087358f2d42b8c3d15ec4e2");
 
-    // Prints "Bender"
+    // Напечатать "Bender"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+ После записи в память, вы можете вносить изменения в свои данные и сохранить изменения:
 
 .. code-block:: php
 
