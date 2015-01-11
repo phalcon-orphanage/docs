@@ -37,7 +37,7 @@
         public $style;
 
         /**
-         * Эта модель отображается на таблицу sample_cars
+         * Эта модель ссылается на таблицу sample_cars
          */
         public function getSource()
         {
@@ -67,7 +67,7 @@
         public $name;
 
         /**
-         * The model Brands is mapped to the "sample_brands" table
+         * Модель Brands ссылается на таблицу "sample_brands"
          */
         public function getSource()
         {
@@ -75,7 +75,7 @@
         }
 
         /**
-         * A Brand can have many Cars
+         * Brand может иметь несколько Cars
          */
         public function initialize()
         {
