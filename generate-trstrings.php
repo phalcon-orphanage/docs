@@ -36,7 +36,7 @@ class Docs
 				if (preg_match('#//[ \t]*([^;]*)[\r\n]$#', $str, $matches)) {
 					if (preg_match('#[a-zA-Z]#', $str)) {
 						$key = $this->_prefix . '_' . md5($matches[1]);
-						$str = str_replace($matches[1], '{%' . $key . '%}', $str);
+						$str = str_replace($matches[1], '%{' . $key . '}%', $str);
 						$this->_uniqueStrings[$key] = $matches[1];
 					}
 				}
@@ -106,9 +106,9 @@ class Docs
 							if (!preg_match('#^:([0-9]+):$#', $listMatches[1])) {
 								$key = $this->_prefix . '_' . md5($listMatches[0]);
 								if (count($placeholders)) {
-									$section[$position] = str_replace($listMatches[1], '{%' . $key . '|' . join('|', $placeholders) . '%}', $line);
+									$section[$position] = str_replace($listMatches[1], '%{' . $key . '|' . join('|', $placeholders) . '}%', $line);
 								} else {
-									$section[$position] = str_replace($listMatches[1], '{%' . $key . '%}', $line);
+									$section[$position] = str_replace($listMatches[1], '%{' . $key . '}%', $line);
 								}
 								$this->_uniqueStrings[$key] = $listMatches[1];
 							}
