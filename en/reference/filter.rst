@@ -114,7 +114,7 @@ The following are the built-in filters provided by this component:
 +===========+===========================================================================+
 | string    | Strip tags                                                                |
 +-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
 +-----------+---------------------------------------------------------------------------+
 | int       | Remove all characters except digits, plus and minus sign.                 |
 +-----------+---------------------------------------------------------------------------+
