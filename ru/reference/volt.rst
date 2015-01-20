@@ -795,15 +795,15 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
 
     {{ form('products/save', 'method': 'post') }}
 
-        <label>Name</label>
+        <label for="name">Name</label>
         {{ text_field("name", "size": 32) }}
 
-        <label>Type</label>
+        <label for="type">Type</label>
         {{ select("type", productTypes, 'using': ['id', 'name']) }}
 
         {{ submit_button('Send') }}
 
-    </form>
+    {{ end_form() }}
 
 В результате будет сгенерирован следующий PHP-код:
 
@@ -813,15 +813,15 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
 
     <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
 
-        <label>Name</label>
+        <label for="name">Name</label>
         <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
-        <label>Type</label>
+        <label for="type">Type</label>
         <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
 
         <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
-    </form>
+    {{ end_form() }}
 
 Для вызова Phalcon\Tag helper, вам необходимо лишь вызвать соответсвующие версии методов не в Camelcase:
 

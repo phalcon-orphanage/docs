@@ -15,16 +15,16 @@ Once you clone the project in your document root you'll see the following struct
 
     invo/
         app/
-            app/config/
-            app/controllers/
-            app/library/
-            app/models/
-            app/plugins/
-            app/views/
+            config/
+            controllers/
+            library/
+            models/
+            plugins/
+            views/
         public/
-            public/bootstrap/
-            public/css/
-            public/js/
+            bootstrap/
+            css/
+            js/
         schemas/
 
 As you know, Phalcon does not impose a particular file structure for application development. This project
