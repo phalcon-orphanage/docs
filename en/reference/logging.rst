@@ -69,7 +69,7 @@ relevant adapter (File in this case) in a single atomic operation.
 
 Logging to Multiple Handlers
 ----------------------------
-:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` allows to send messages to multiple handlers with a just single call:
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` can send messages to multiple handlers with a just single call:
 
 .. code-block:: php
 
@@ -89,16 +89,16 @@ Logging to Multiple Handlers
     $logger->log("This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
-The messages are sent to the handlers in the order they where registered.
+The messages are sent to the handlers in the order they were registered.
 
 Message Formatting
 ------------------
-This component makes use of 'formatters' to format messages before sent them to the backend. The formatters available are:
+This component makes use of 'formatters' to format messages before sending them to the backend. The formatters available are:
 
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 | Adapter | Description                                   | API                                                                                |
 +=========+===============================================+====================================================================================+
-| Line    | Formats the messages using an one-line string | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
+| Line    | Formats the messages using a one-line string  | :doc:`Phalcon\\Logger\\Formatter\\Line <../api/Phalcon_Logger_Formatter_Line>`     |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
 | Json    | Prepares a message to be encoded with JSON    | :doc:`Phalcon\\Logger\\Formatter\\Json <../api/Phalcon_Logger_Formatter_Json>`     |
 +---------+-----------------------------------------------+------------------------------------------------------------------------------------+
@@ -163,9 +163,9 @@ The stream logger writes messages to a valid registered stream in PHP. A list of
 
 File Logger
 ^^^^^^^^^^^
-This logger uses plain files to log any kind of data. By default all logger files are open using
-append mode which open the files for writing only; placing the file pointer at the end of the file.
-If the file does not exist, attempt to create it. You can change this mode passing additional options to the constructor:
+This logger uses plain files to log any kind of data. By default all logger files are opened using
+append mode which opens the files for writing only; placing the file pointer at the end of the file.
+If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:
 
 .. code-block:: php
 
@@ -199,7 +199,8 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     
 FirePHP Logger
 ^^^^^^^^^^^^^^
-This logger sends messages to the FirePHP.
+This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
+a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
 
 .. code-block:: php
 
