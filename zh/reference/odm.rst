@@ -1,4 +1,4 @@
-对象文件映射（ODM (Object-Document Mapper)）
+对象文档映射 ODM (Object-Document Mapper)
 ============================================
 除了可以 :doc:`映射关系数据库的表 <models>` 之外，Phalcon还可以使用NoSQL数据库如MongoDB等。Phalcon中的ODM具有可以非常容易的实现如下功能：CRUD,事件，验证等。
 
