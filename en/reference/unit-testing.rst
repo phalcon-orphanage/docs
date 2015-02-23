@@ -217,7 +217,7 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
 
           $this->assertEquals('works',
               'works1',
-              'This wil fail'
+              'This will fail'
           );
       }
   }
@@ -236,7 +236,7 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
   There was 1 failure:
 
   1) Test\UnitTest::testTestCase
-  This wil fail
+  This will fail
   Failed asserting that two strings are equal.
   --- Expected
   +++ Actual
