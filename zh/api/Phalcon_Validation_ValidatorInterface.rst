@@ -25,7 +25,7 @@ Sets the validator's option
 
 
 
-abstract public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+abstract public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **validate** (*Phalcon\\Validation* $validator, *string* $attribute)
 
 Executes the validation
 
