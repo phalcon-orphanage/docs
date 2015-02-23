@@ -770,6 +770,20 @@ Arguments can be passed to the constructor by adding an array parameter to the m
     // new MyComponent("some-parameter", "other")
     $component = $di->get("MyComponent", array("some-parameter", "other"));
 
+Events
+^^^^^^
+:doc:`Phalcon\\Di <../api/Phalcon_DI>` is able to send events to an :doc:`EventsManager <events>` if it is present.
+Events are triggered using the type "di". Some events when returning boolean false could stop the active operation.
+The following events are supported:
+
++----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
+| Event Name           | Triggered                                                                                                                       | Can stop operation? | Triggered on       |
++======================+=================================================================================================================================+=====================+====================+
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.                           | No                  | Listeners          |
++----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it.                 | No                  | Listeners          |
++----------------------+---------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------+
+
 Shared services
 ===============
 Services can be registered as "shared" services this means that they always will act as singletons_. Once the service is resolved for the first time
