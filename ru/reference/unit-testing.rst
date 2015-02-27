@@ -18,18 +18,9 @@
 
   {
       "require-dev": {
-          "phpunit/phpunit": "3.7.*"
+          "phpunit/phpunit": "~4.5"
       }
   }
-
-
-Или, если у вас нет composer, можно установить с помощью pear PHPUnit:
-
-.. code-block:: bash
-
-  pear config-set auto_discover 1
-  pear install pear.phpunit.de/PHPUnit
-
 
 После установки PHPUnit ​​создайте директорию tests' в корне проекта:
 

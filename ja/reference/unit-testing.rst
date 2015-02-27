@@ -18,18 +18,9 @@ or by manually adding it to composer.json:
 
   {
       "require-dev": {
-          "phpunit/phpunit": "3.7.*"
+          "phpunit/phpunit": "~4.5"
       }
   }
-
-
-Or if you don't have composer you can install phpunit via pear:
-
-.. code-block:: bash
-
-  pear config-set auto_discover 1
-  pear install pear.phpunit.de/PHPUnit
-
 
 Once phpunit is installed create a directory called 'tests' in your root directory:
 
