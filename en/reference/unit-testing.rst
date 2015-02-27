@@ -18,7 +18,7 @@ or by manually adding it to composer.json:
 
   {
       "require-dev": {
-          "phpunit/phpunit": "3.7.*"
+          "phpunit/phpunit": "~4.5"
       }
   }
 
