@@ -23,14 +23,6 @@ or by manually adding it to composer.json:
   }
 
 
-Or if you don't have composer you can install phpunit via pear:
-
-.. code-block:: bash
-
-  pear config-set auto_discover 1
-  pear install pear.phpunit.de/PHPUnit
-
-
 Once phpunit is installed create a directory called 'tests' in your root directory:
 
 .. code-block:: bash
