@@ -616,4 +616,4 @@ HTTP используется, чтобы запросы путей соотве
 Внешние источники
 -----------------
 * :doc:`Создание простейшего REST API <tutorial-rest>` урок, показывающий как создать микроприложение, предоставляющее RESTful API.
-* `Магазин наклеек <http://store.phalconphp.com>`_ очень просто микроприложение [`Github <https://github.com/phalcon/store>`_].
+* `Магазин наклеек <http://store.phalconphp.com>`_ очень простое микроприложение [`Github <https://github.com/phalcon/store>`_].
