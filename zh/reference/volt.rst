@@ -807,15 +807,15 @@ Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use t
 
     {{ form('products/save', 'method': 'post') }}
 
-        <label>Name</label>
+        <label for="name">Name</label>
         {{ text_field("name", "size": 32) }}
 
-        <label>Type</label>
+        <label for="type">Type</label>
         {{ select("type", productTypes, 'using': ['id', 'name']) }}
 
         {{ submit_button('Send') }}
 
-    </form>
+    {{ end_form() }}
 
 The following PHP is generated:
 
@@ -825,15 +825,15 @@ The following PHP is generated:
 
     <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
 
-        <label>Name</label>
+        <label for="name">Name</label>
         <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
-        <label>Type</label>
+        <label for="type">Type</label>
         <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
 
         <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
-    </form>
+    {{ end_form() }}
 
 To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
 

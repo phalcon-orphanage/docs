@@ -356,7 +356,7 @@ del componente:
     //Pasar el localizador de servicios como único componente
     $some = new SomeComponent($di);
 
-    $some->someTask();
+    $some->someDbTask();
 
 El componente simplemente accede al servicio que requiere cuando lo necesita, si no lo requiere entonces ni siquiera es inicializado
 ahorrando recursos. Por ejemplo, podemos cambiar la manera en la que las conexiones son creadas y su comportamiento

@@ -252,7 +252,7 @@ Viewへのアウトプットの送信
 
 サインアップフォームのデザイン
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Now we will change the index.phtml view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+今度は、index.phtmlを編集して、「signup」という名前の新しいコントローラーへのリンクを追加してみましょう。目標は、ユーザーがアプリケーションにログインできるようにすることです。
 
 .. code-block:: php
 
@@ -262,18 +262,18 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+生成されたHTMLコードは、新しいコントローラーへリンクをしているアンカー(<a>)タグです。
 
 .. code-block:: html
 
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+タグを生成するためには、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用します。このユーティリティクラスによって、フレームワークの規約に従ったHTMLタグを生成することができます。HTML生成機能の詳細については、 :doc:`found here <tags>` を参照してください。
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
 
-Here is the Signup controller (app/controllers/SignupController.php):
+以下が、Signupコントローラーです(app/controllers/SignupController.php)。
 
 .. code-block:: php
 
@@ -289,7 +289,7 @@ Here is the Signup controller (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
+空のindexアクションは、ビューに何も渡しません。ビューでは、フォームが定義されています(app/views/signup/index.phtml)。
 
 .. code-block:: html+php
 
@@ -315,12 +315,12 @@ The empty index action gives the clean pass to a view with the form definition (
 
     </form>
 
-Viewing the form in your browser will show something like this:
+ブラウザーでフォームを確認すると、以下のように表示されるはずです。
 
 .. figure:: ../_static/img/tutorial-3.png
     :align: center
 
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
 The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
 

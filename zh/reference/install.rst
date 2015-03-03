@@ -1,23 +1,22 @@
 安装（Installation）
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+作为PHP C拓展形式的Phalcon，需要一个略微不同于传统php的库或框架的安装方法。你可以选择一个当前系统的一个二进制包下载，或者使用源代码构建它。
 
 .. highlights::
-    Phalcon compiles from PHP 5.3.1, but because of old PHP bugs causing memory leaks, we highly recommend you use at least PHP 5.3.11 or greater.
+	Phalcon 可编译在PHP 5.3.1及以上版本，但是因为老PHP版本错误导致内存泄漏，我们强烈推荐你使用PHP 5.3.11或更高版本。
 
 .. highlights::
-    PHP versions below 5.3.9 have several security flaws and these aren't recommended for production web sites. `Learn more <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
+	PHP 5.3.9版本以前有几个安全漏洞，不建议在生产网站中使用。`学习更多 <http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947>`_
 
 Windows
 -------
-To use phalcon on Windows you can download a DLL library. Edit your php.ini file and then append at the end:
+要在Windows上使用Phalcon，你可以下载一个DLL库。编辑php.ini文件，并且在最后附加上：
 
     extension=php_phalcon.dll
 
-Restart your webserver.
+重启你的Web服务器。
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
+下面的视频是一个在Windows上安装Phalcon的步骤指南:
 
 .. raw:: html
 
@@ -33,22 +32,22 @@ The following screencast is a step-by-step guide to install Phalcon on Windows:
 
 Linux/Solaris/Mac
 -----------------
-On a Linux/Solaris/Mac system you can easily compile and install the extension from the source code:
+在Linux/Solaris/Mac系统下，你能很轻易从源代码编译和安装这个拓展:
 
 基本要求（Requirements）
 ^^^^^^^^^^^^
-Prerequisite packages are:
+必要的包:
 
 * PHP 5.3.x/5.4.x/5.5.x development resources
 * GCC compiler (Linux/Solaris) or Xcode (Mac)
-* Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)
+* Git (如果不是已经安装在你的系统，且你没有从Github上下载这个包并通过FTP/SFTP上传到你的服务器上)
 
-Specific packages for common platforms:
+通用平台下安装指定的软件包：
 
 .. code-block:: bash
 
     #Ubuntu
-    sudo apt-get install gcc make git-core libpcre3-dev php5-dev 
+    sudo apt-get install gcc make git-core libpcre3-dev php5-dev
 
     #Suse
     sudo yast -i gcc make php5-devel
@@ -63,7 +62,7 @@ Specific packages for common platforms:
 
 编译（Compilation）
 ^^^^^^^^^^^
-Creating the extension:
+创建扩展:
 
 .. code-block:: bash
 
@@ -71,7 +70,7 @@ Creating the extension:
     cd cphalcon/build
     sudo ./install
 
-Add extension to your php configuration:
+添加扩展到你的php配置文件:
 
 .. code-block:: bash
     
@@ -81,9 +80,9 @@ Add extension to your php configuration:
     #Centos/RedHat: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
-Restart the webserver.
+重启Web服务器.
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon自动检测你的系统架构，然而，您可以强制编译为一个特定的架构：
 
 .. code-block:: bash
 
@@ -93,13 +92,13 @@ Phalcon automatically detects your architecture, however, you can force the comp
 
 FreeBSD
 -------
-A port is available for FreeBSD. Just only need these simple line commands to install it:
+对于FreeBSD，仅仅只需要简单的命令进行安装：
 
 .. code-block:: bash
 
     pkg_add -r phalcon
 
-or
+或者
 
 .. code-block:: bash
 
@@ -108,7 +107,7 @@ or
 
 安装说明（Installation Notes）
 ------------------
-Installation notes for Web Servers:
+常见Web服务器的安装说明：
 
 .. toctree::
     :maxdepth: 1

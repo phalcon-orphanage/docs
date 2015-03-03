@@ -1,30 +1,30 @@
 Micro Benchmark
 =====================
 
-How the benchmarks were performed?
-----------------------------------
+¿Cómo se realizaron los Benchmarks?
+-----------------------------------
 
-We created a "Hello World" benchmark seeking to identify the smallest load overhead of each framework. Similar to the benchmark made with Frameworks.
+Hemos creado un benchmark "Hello World" tratando de identificar la sobrecarga de carga más pequeña de cada framework. Al igual que en el benchmark hecho con Frameworks.
 
-Using a route for the HTTP method 'GET' we pass a parameter to a handler returning a "Hello $name" response.
+Usando un router para el método HTTP "GET" pasamos un parámetro a un handler que devuelve como respuesta "Hello $name".
 
-What measurements were recorded?
---------------------------------
-These were the measurements we record to identify the overall performance of each framework:
+¿Qué medidas se han registrado?
+-------------------------------
+Estas fueron las medidas que registramos para identificar el rendimiento general de cada framework:
 
-* Requests per second
-* Time across all concurrent requests
-* Number of included PHP files on a single request (measured using function get_included_files_.
-* Memory Usage per request (measured using function memory_get_usage_.
+* Solicitudes por segundo.
+* Tiempo en todas las solicitudes concurrentes.
+* Número de archivos PHP incluidos en una única solicitud (medida usando la función get_included_files_).
+* Uso de memoria por solicitud (medida usando la función memory_get_usage_).
 
-Pariticipant Frameworks
------------------------
+Frameworks usados
+-----------------
 
 * Slim_
 * Silex_
 
-Results
--------
+Resultados
+----------
 
 Slim Framework
 ^^^^^^^^^^^^^^
@@ -178,11 +178,10 @@ Phalcon 0.5.0
 
 
 
-Graphs
-^^^^^^
+Gráficas
+^^^^^^^^
 
-The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.
-
+El primer gráfico muestra el número de solicitudes por segundo que cada framework es capaz de aceptar. La segunda muestra el tiempo promedio entre todas las solicitudes concurrentes.
 
 .. raw:: html
 
@@ -280,9 +279,10 @@ The first graph shows how many requests per second each framework was able to ac
 		<div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
 	</div>
 
-Conclusion
+Conclusión
 ----------
-The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.
+
+La naturaleza compilada de Phalcon ofrece un rendimiento extraordinario que supera a todos los otros frameworks medidos en estos becnhmarks.
 
 .. _get_included_files: http://www.php.net/manual/en/function.get-included-files.php
 .. _memory_get_usage: http://php.net/manual/en/function.memory-get-usage.php

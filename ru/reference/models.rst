@@ -1251,7 +1251,7 @@ Cascade/Ограничить действия
         echo $robot['year'], PHP_EOL;
     }
 
-Создани/Обновление записей
+Создание/Обновление записей
 --------------------------
 Метод Phalcon\\Mvc\\Model::save() позволяет создавать/обновлять записи в зависимости от того, существуют ли они уже в таблице, связанной с моделью.
 Метод save вызывает методы  create и update родительского класса :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
@@ -1316,9 +1316,9 @@ Phalcon\\Mvc\\Model будет проверять, есть ли сеттеры,
 
 Создание/Обновление с уверенностью
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use Phalcon\\Mvc\\Model::save() to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the save() call with create() or update():
+Когда приложение имеет много конкуренции, мв могли бы производить запись в элемент таблицы, в то время как он обновляется. 
+Это может произойти, если мы используем Phalcon\\Mvc\\Model::save() для сохранения элемента в БД. 
+Если мы хотим быть абсолютно уверены, что запись будет создана или обновлена, мы можем изменить save() на вызов create() или update():
 
 .. code-block:: php
 
@@ -1329,23 +1329,24 @@ sure that a record is created or updated, we can change the save() call with cre
     $robot->name = "Astro Boy";
     $robot->year = 1952;
 
-    //This record only must be created
+    //Эта запись только должна быть создана 
     if ($robot->create() == false) {
-        echo "Umh, We can't store robots right now: \n";
+        echo "Хм, мы не можем хранить роботов прямо сейчас: \n";
         foreach ($robot->getMessages() as $message) {
             echo $message, "\n";
         }
     } else {
-        echo "Great, a new robot was created successfully!";
+        echo "Замечательно, новый робот был создан успешно!";
     }
 
-These methods "create" and "update" also accept an array of values as parameter.
+Эти методы "create" and "update"  также принимают массив значений в качестве параметра.
 
-Auto-generated identity columns
+Автоматическая генерация идентификации столбцов
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Some models may have identity columns. These columns usually are the primary key of the mapped table. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
-Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Некоторые модели могут иметь столбцы идентификации.  Эти столбцы - обычно первичный ключ таблици. 
+ :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` может распознать столбец идентификации, минуя его в созданном SQL INSERT, 
+так система баз данных может генерировать значение для него автоматически.
+Всегда после создания записи, в поле идентификатора будет зарегистрирована величина, сгенерированая в системе базы данных для него:
 
 .. code-block:: php
 
@@ -1353,13 +1354,14 @@ Always after creating a record, the identity field will be registered with the v
 
     $robot->save();
 
-    echo "The generated id is: ", $robot->id;
+    echo "Генерируется идентификатор: ", $robot->id;
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is able to recognize the identity column. Depending on the database system, those columns may be
-serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` способна распознавать столбец идентификации. В зависимости от системы баз данных, 
+этот столбец может быть serial columns как в PostgreSQL или auto_increment columns в случае MySQL.
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence "table_field_seq",
-for example: robots_id_seq, if that sequence has a different name, the method "getSequenceName" needs to be implemented:
+PostgreSQL  использует последовательности, чтобы сгенерировать  auto-numeric значения по умолчанию, 
+Phalcon пытается получить сгенерированное значение из последовательности "table_field_seq",
+например: robots_id_seq, если эта последовательность имеет другое имя, то должен быть вызван метод "getSequenceName":
 
 .. code-block:: php
 
@@ -1375,72 +1377,72 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
 
     }
 
-Storing related records
+Связаное сохранение записей
 ^^^^^^^^^^^^^^^^^^^^^^^
-Magic properties can be used to store a records and its related properties:
+Магические свойства могут быть использованы для хранения записей и связанных с ним свойств:
 
 .. code-block:: php
 
     <?php
 
-    // Create a robot
+    // Создать робота
     $artist = new Artists();
     $artist->name = 'Shinichi Osawa';
     $artist->country = 'Japan';
 
-    // Create an album
+    // Создать альбом
     $album = new Albums();
     $album->name = 'The One';
-    $album->artist = $artist; //Assign the artist
+    $album->artist = $artist; //Назначить артиста
     $album->year = 2008;
 
-    //Save both records
+    // Сохранить обе записи
     $album->save();
 
-Saving a record and its related records in a has-many relation:
+Сохранение записи и связанных с ней записей в has-many соотношении:
 
 .. code-block:: php
 
     <?php
 
-    // Get an existing artist
+    // Получить существующего артиста
     $artist = Artists::findFirst('name = "Shinichi Osawa"');
 
-    // Create an album
+    // Создать альбом
     $album = new Albums();
     $album->name = 'The One';
     $album->artist = $artist;
 
     $songs = array();
 
-    // Create a first song
+    // Создать первую песню
     $songs[0] = new Songs();
     $songs[0]->name = 'Star Guitar';
     $songs[0]->duration = '5:54';
 
-    // Create a second song
+    // Создать вторую песню
     $songs[1] = new Songs();
     $songs[1]->name = 'Last Days';
     $songs[1]->duration = '4:29';
 
-    // Assign the songs array
+    // Связать массив песен
     $album->songs = $songs;
 
-    // Save the album + its songs
+    // Сохранить альбом + эти песни
     $album->save();
 
-Saving the album and the artist at the same time implictly makes use of a transaction so if anything
-goes wrong with saving the related records, the parent will not be saved either. Messages are
-passed back to the user for information regarding any errors.
+При сохранении альбома и группы неявно используются транзакции, 
+так что если что-то пойдет не так с сохранением соответствующих записей,
+то родитель не будет сохранен. Пользователю могут быть переданы собщения с информацией об ошибках.
 
-Validation Messages
+Собщения об ошибках
 ^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` имеет подсистему обмена сообщениями, которая обеспечивает 
+гибкий способ генерации или хранения сообщений об ошибках, сгенерированные во время процессов вставки / обновления.
 
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. The set of
-messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that
-generated the message or the message type:
+Каждое сообщение состоит из экземпляра класса :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>`. 
+Набор генерируемых сообщений могут быть получены с помощью метода GetMessages (). 
+Каждое сообщение содержит расширенную информацию, такую как имя поля генерируемого сообщение или тип сообщения:
 
 .. code-block:: php
 
@@ -1454,23 +1456,24 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  может генерировать следующие типы сообщений:
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
 +======================+====================================================================================================================================+
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| PresenceOf           | Генерируется, когда поле с атрибутом non-null в базе данных пытается вставить / обновить null значение                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| ConstraintViolation  | Генерируется, когда поле являющеся частью виртуального внешнего ключа пытается вставить / обновить значение,                       |
+|                      | не существующе в указанной модели                                                                                                  |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
+| InvalidValue         | Генерируется  когда валидация не удалась из-за недопустимого значения                                                              |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
+| InvalidCreateAttempt | Генерируется когда была предпринята попытка создать запись , но она уже существует                                                 |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| InvalidUpdateAttempt | Генерируется когда была предпринята попытка обновить запись , но она еще не существует                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The method getMessages() can be overriden in a model to replace/translate the default messages generated automatically by the ORM:
+Метод GetMessages () может быть переопределен в модели, чтобы заменить / перевести сообщения по умолчанию, автоматически генерируемые ОРМ:
 
 .. code-block:: php
 
@@ -1484,10 +1487,10 @@ The method getMessages() can be overriden in a model to replace/translate the de
             foreach (parent::getMessages() as $message) {
                 switch ($message->getType()) {
                     case 'InvalidCreateAttempt':
-                        $messages[] = 'The record cannot be created because it already exists';
+                        $messages[] = 'Запись не может быть создана, потому что она уже существует';
                         break;
                     case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it already exists';
+                        $messages[] = 'Запись не может быть обновлена, потому что она еще не существует';
                         break;
                     case 'PresenceOf':
                         $messages[] = 'The field ' . $message->getField() . ' is mandatory';
@@ -1498,44 +1501,45 @@ The method getMessages() can be overriden in a model to replace/translate the de
         }
     }
 
-Events and Events Manager
+События и управление событиями.
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+Модели позволяют реализовать события, которые будут инициированны при выполнении вставки / обновления / удаления. 
+Они помогают определить рабочие правила для определенной модели. Ниже приведены события, поддерживаемые
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` и порядок их исполнения:
 
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
-+====================+==========================+=======================+===================================================================================================================================+
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
-+--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                             |
++====================+==========================+============================+=======================================================================================================================+
+| Inserting/Updating | beforeValidation         | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи                                       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeValidationOnCreate | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции вставки       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeValidationOnUpdate | ДА                         | Выполняется до проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции обновления    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | onValidationFails        | ДА (уже остановлена)       | Выполняется после обнаружения нарушения целостности                                                                   |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterValidationOnCreate  | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции вставки    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterValidationOnUpdate  | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи при выполнении операции обновления |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterValidation          | ДА                         | Выполняется после проверки поля на не нулевую / пустую строку или на внешние ключи                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | beforeSave               | ДА                         | Выполняется до требуемой операции над системой базы данных                                                            |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | beforeUpdate             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции обновления                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | beforeCreate             | ДА                         | Выполняется до требуемой операции над системой базы данных для операции вставки                                       |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Updating           | afterUpdate              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции обновления                                 |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting          | afterCreate              | НЕТ                        | Выполняется после требуемой операции над системой базы данных для операции вставки                                    |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Inserting/Updating | afterSave                | НЕТ                        | Выполняется после требуемой операции над системой базы данных                                                         |
++--------------------+--------------------------+----------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
-Implementing Events in the Model's class
+Реализация событий в классе модели
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The easier way to make a model react to events is implement a method with the same name of the event in the model's class:
+TПростой способ заставить модель реагировать на события, это реализовать метод с тем же именем события в классе модели:
 
 .. code-block:: php
 
@@ -1546,12 +1550,12 @@ The easier way to make a model react to events is implement a method with the sa
 
         public function beforeValidationOnCreate()
         {
-            echo "This is executed before creating a Robot!";
+            echo "Это выполняется перед созданием робота!";
         }
 
     }
 
-Events can be useful to assign values before performing an operation, for example:
+События могут быть полезны для присвоения значений перед выполнением операции, например:
 
 .. code-block:: php
 
@@ -1562,22 +1566,22 @@ Events can be useful to assign values before performing an operation, for exampl
 
         public function beforeCreate()
         {
-            //Set the creation date
+            //Установить дату создания
             $this->created_at = date('Y-m-d H:i:s');
         }
 
         public function beforeUpdate()
         {
-            //Set the modification date
+            //Установить дату модификации
             $this->modified_in = date('Y-m-d H:i:s');
         }
 
     }
 
-Using a custom Events Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Additionally, this component is integrated with :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
-this means we can create listeners that run when an event is triggered.
+Использование пользовательского менеджера  событий
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Кроме того, этот компонент интегрируется с  :doc:`Phalcon\\Events\\Manager <../api/Phalcon_Events_Manager>`,
+это означает, что мы можем создать слушателей, которые запускаются при наступлении события.
 
 .. code-block:: php
 
@@ -1594,7 +1598,7 @@ this means we can create listeners that run when an event is triggered.
 
             $eventsManager = new EventsManager();
 
-            //Attach an anonymous function as a listener for "model" events
+            //Прикрепить анонимную функцию в качестве слушателя для событий "model"
             $eventsManager->attach('model', function($event, $robot) {
                 if ($event->getType() == 'beforeSave') {
                     if ($robot->name == 'Scooby Doo') {
@@ -1605,14 +1609,14 @@ this means we can create listeners that run when an event is triggered.
                 return true;
             });
 
-            //Attach the events manager to the event
+            //Прикрепите менеджер событий для события
             $this->setEventsManager($eventsManager);
         }
 
     }
 
-In the example given above, EventsManager only acts as a bridge between an object and a listener (the anonymous function).
-Events will be fired to the listener when 'robots' are saved:
+В примере, приведенном выше, EventsManager действует только в качестве моста между объектом и слушателя 
+(анонимная функция). События будут уволены до слушателя, когда сохраняются "robots":
 
 .. code-block:: php
 
@@ -1623,21 +1627,22 @@ Events will be fired to the listener when 'robots' are saved:
     $robot->year = 1969;
     $robot->save();
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
+Если мы хотим, чтобы все объекты, созданные в нашем приложении использовать один и тот же EventsManager, 
+то мы должны назначить его менеджеру модели:
 
 .. code-block:: php
 
     <?php
 
-    //Registering the modelsManager service
+    //Регистрация сервиса modelsManager
     $di->setShared('modelsManager', function() {
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach an anonymous function as a listener for "model" events
+        //Прикрепить анонимную функцию в качестве слушателя для событий "model"
         $eventsManager->attach('model', function($event, $model){
 
-            //Catch events produced by the Robots model
+            //Перехватывать события, производимые моделью Robots
             if (get_class($model) == 'Robots') {
 
                 if ($event->getType() == 'beforeSave') {
@@ -1651,23 +1656,23 @@ If we want all objects created in our application use the same EventsManager, th
             return true;
         });
 
-        //Setting a default EventsManager
+        //Установки EventsManager по умолчанию
         $modelsManager = new ModelsManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
     });
 
-If a listener returns false that will stop the operation that is executing currently.
+Если слушатель возвращает ложь, это остановит работу, исполняемую в настоящее время.
 
-Implementing a Business Rule
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of
-the events listed in the table above.
+Реализация Рабочих Правил
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Когда выполняется вставка, изменение или удаление, модель проверяет, есть ли какие-либо методы 
+с именами событий, из перечисленных в таблице выше.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation
-from being exposed publicly.
+Мы рекомендуем объявлять методы проверки как protected, чтобы предотвратить обнародование рабочей логики
+методов проверки.
 
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+Следующий пример реализует событие, которое проверяет что год не может быть меньше, чем 0 при обновлении или вставке:
 
 .. code-block:: php
 
@@ -1679,22 +1684,22 @@ The following example implements an event that validates the year cannot be smal
         public function beforeSave()
         {
             if ($this->year < 0) {
-                echo "Year cannot be smaller than zero!";
+                echo "Год не может быть меньше, чем ноль!";
                 return false;
             }
         }
 
     }
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-will assume a true value.
+Некоторые события возвращают false для указания, что надо остановить текущую операцию. 
+Если событие не возвращает ничего, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+принемает значение true.
 
-Validating Data Integrity
+Проверка целостности данных
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` обеспечивает ряд мероприятий для проверки данных и реализации рабочих правил. Специальное событие "validation"  позволяет вызвать встроенные валидаторы при записи.  Phalcon имеет несколько встроенных средств проверки, которые можно использовать на этой стадии.
 
-The following example shows how to use it:
+Следующий пример показывает, как это можно использовать:
 
 .. code-block:: php
 
@@ -1719,7 +1724,7 @@ The following example shows how to use it:
             $this->validate(new Uniqueness(
                 array(
                     "field"   => "name",
-                    "message" => "The robot name must be unique"
+                    "message" => "Название робота должен быть уникальным"
                 )
             ));
 
@@ -1728,32 +1733,34 @@ The following example shows how to use it:
 
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
+Приведенный выше пример выполняет проверку с помощью встроенного в валидатор "InclusionIn". 
+Он проверяет значение поля "type" в списке доменов. Если значение отсутствует в методе, 
+то валидация будет прервана и будет возвращени значение false. 
+Доступны следующие валидаторы:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                           |
-+==============+==================================================================================================================================================================+===================================================================+
-| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Email>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Mvc_Model_Validator_Url>`           |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Название     | Пояснение                                                                                                                                            | Пример                                                            |
++==============+======================================================================================================================================================+===================================================================+
+| PresenceOf   | Проверяет, чтобы значение поля не являлось NULL или пустой строкой. Этот валидатор автоматически добавляется на основе атрибутов  NOT NULL в таблице | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_PresenceOf>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Email        | Проверяет, чтобы поле содержало допустимый формат электронной почты                                                                                  | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Email>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| ExclusionIn  | Проверяет, чтобы значение не находилось в пределах списка возможных значений                                                                         | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Exclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| InclusionIn  | Проверяет, чтобы значение находилось в пределах списка возможных значений                                                                            | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Inclusionin>`   |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Numericality | Проверяет, чтобы поле имело числовой формат                                                                                                          | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Numericality>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Regex        | Проверяет, чтобы значение поля соответствовало регулярному выражению                                                                                 | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Regex>`         |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Uniqueness   | Проверяет, чтобы поле или комбинация из набора полей встречалось не более одного раза в записях связанной таблицы                                    | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Uniqueness>`    |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| StringLength | Проверяет длину строки                                                                                                                               | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_StringLength>`  |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Проверяет, чтобы значение имело правильный формат URL                                                                                                | :doc:`Пример  <../api/Phalcon_Mvc_Model_Validator_Url>`           |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-In addition to the built-in validatiors, you can create your own validators:
+В дополнение ко встроенным, вы можете создавать свои собственные валидаторы:
 
 .. code-block:: php
 
@@ -1776,7 +1783,7 @@ In addition to the built-in validatiors, you can create your own validators:
 
             if ($min <= $value && $value <= $max) {
                 $this->appendMessage(
-                    "The field doesn't have the right range of values",
+                    "Поле не имеет нужном диапазоне значений",
                     $field,
                     "MaxMinValidator"
                 );
@@ -1787,7 +1794,7 @@ In addition to the built-in validatiors, you can create your own validators:
 
     }
 
-Adding the validator to a model:
+Добавление валидатор в модель:
 
 .. code-block:: php
 
@@ -1812,7 +1819,8 @@ Adding the validator to a model:
 
     }
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+Идея создания валидаторов - делать их для повторного использования в нескольких моделях. 
+Валидатор может также быть простой, как:
 
 .. code-block:: php
 
@@ -1840,11 +1848,12 @@ The idea of creating validators is make them reusable between several models. A 
 
     }
 
-Avoiding SQL injections
+Предотвращение SQL инъекции
 ^^^^^^^^^^^^^^^^^^^^^^^
-Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
-each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
-capability provided by PDO to automatically escape every value to be stored in the database.
+Каждое значение присвоенное атрибуту модели экранируется в зависимости от типа данных. 
+Разработчику не нужно экранировать вручную каждое значение перед сохранением в базе данных. 
+Phalcon использует внутреннее `связывание параметров <http://php.net/manual/en/pdostatement.bindparam.php>`_
+предоставляемое PDO для автоматического экранирования каждого значения сохраняемого в базе данных.
 
 .. code-block:: bash
 
@@ -1860,7 +1869,7 @@ capability provided by PDO to automatically escape every value to be stored in t
     +------------------+------------------+------+-----+---------+----------------+
     5 rows in set (0.00 sec)
 
-If we use just PDO to store a record in a secure way, we need to write the following code:
+Если мы используем только PDO для хранения записи в безопасном режиме, мы должны написать следующий код:
 
 .. code-block:: php
 
@@ -1881,7 +1890,7 @@ If we use just PDO to store a record in a secure way, we need to write the follo
 
     $sth->execute();
 
-The good news is that Phalcon do this for you automatically:
+Хорошей новостью является то, что Phalcon сделать это за вас автоматически:
 
 .. code-block:: php
 
@@ -1894,10 +1903,10 @@ The good news is that Phalcon do this for you automatically:
     $product->active = 'Y';
     $product->create();
 
-Skipping Columns
+Пропуск столбцов
 ----------------
-To tell Phalcon\\Mvc\\Model that always omits some fields in the creation and/or update of records in order
-to delegate the database system the assignation of the values by a trigger or a default:
+Можно указать Phalcon\\Mvc\\Model опускать некоторые поля при создании и/или обновлении записей для того, 
+чтобы делегировать в систему баз данных установку значений триггеров или по значений умолчанию:
 
 .. code-block:: php
 
@@ -1908,20 +1917,20 @@ to delegate the database system the assignation of the values by a trigger or a 
 
         public function initialize()
         {
-            //Skips fields/columns on both INSERT/UPDATE operations
+            //Пропуск поля.столбца при всех INSERT/UPDATE операциях
             $this->skipAttributes(array('year', 'price'));
 
-            //Skips only when inserting
+            //Пропуск только при вставке
             $this->skipAttributesOnCreate(array('created_at'));
 
-            //Skips only when updating
+            //Пропуск только при обновлении
             $this->skipAttributesOnUpdate(array('modified_in'));
         }
 
     }
 
-This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
-Forcing a default value can be done in the following way:
+Это заставит игнорировать глобально эти поля на каждой операции INSERT/UPDATE для всего приложения. 
+Принудительно значение по умолчанию может быть сделано следующим образом:
 
 .. code-block:: php
 
@@ -1933,7 +1942,7 @@ Forcing a default value can be done in the following way:
     $robot->created_at = new \Phalcon\Db\RawValue('default');
     $robot->create();
 
-A callback also can be used to create a conditional assigment of automatic default values:
+Обратный вызов также может быть использован для создания условного назначения автоматических значений по умолчанию:
 
 .. code-block:: php
 
@@ -1954,18 +1963,18 @@ A callback also can be used to create a conditional assigment of automatic defau
 
 .. highlights::
 
-    Never use a \\Phalcon\\Db\\RawValue to assign external data (such as user input)
-    or variable data. The value of these fields is ignored when binding parameters to the query.
-    So it could be used to attack the application injecting SQL.
+    Никогда не используйте \\Phalcon\\Db\\RawValue при вводе внешних данных (такие как ввод пользователя)
+     или переменных данных. Значение этих полей игнорируется при связывании параметров в запросе. 
+     Это может быть использованно для взлома с помощью SQL инъекций.
 
-Dynamic Update
-^^^^^^^^^^^^^^
-SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update).
-You can change specific models to make dynamic updates, in this case, just the fields that had changed
-are used to create the final SQL statement.
+Динамическое обновление
+^^^^^^^^^^^^^^^^^^^^^^^^
+SQL UPDATE операции по умолчанию приводят к изменению каждого столбца, определенного в модели (полное SQL update).
+Вы можете изменить спецификации модели, чтобы учтановить динамическое обновление, в этом случае, 
+в окончательной SQL команде будут использоваться только измененные поля.
 
-In some cases this could improve the performance by reducing the traffic between the application and the database server,
-this specially helps when the table has blob/text fields:
+В некоторых случаях это может улучшить производительность за счет снижения трафика между приложением и сервером базы данных, 
+этот особо помогает, когда таблица имеет BLOB/TEXT поля:
 
 .. code-block:: php
 
@@ -1979,9 +1988,9 @@ this specially helps when the table has blob/text fields:
         }
     }
 
-Deleting Records
+Удаление записей
 ----------------
-The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use it as follows:
+Метод Phalcon\\Mvc\\Model::delete() позволяет удалить запись. Вы можете использовать его следующим образом:
 
 .. code-block:: php
 
@@ -1990,16 +1999,16 @@ The method Phalcon\\Mvc\\Model::delete() allows to delete a record. You can use 
     $robot = Robots::findFirst(11);
     if ($robot != false) {
         if ($robot->delete() == false) {
-            echo "Sorry, we can't delete the robot right now: \n";
+            echo "К сожалению, мы не можем удалить робота прямо сейчас: \n";
             foreach ($robot->getMessages() as $message) {
                 echo $message, "\n";
             }
         } else {
-            echo "The robot was deleted successfully!";
+            echo "Робот был успешно удален!";
         }
     }
 
-You can also delete many records by traversing a resultset with a foreach:
+Вы также можете удалить много записей путем обхода набор результатов с помощью foreach:
 
 .. code-block:: php
 
@@ -2007,27 +2016,27 @@ You can also delete many records by traversing a resultset with a foreach:
 
     foreach (Robots::find("type='mechanical'") as $robot) {
         if ($robot->delete() == false) {
-            echo "Sorry, we can't delete the robot right now: \n";
+            echo "К сожалению, мы не можем удалить робота прямо сейчас: \n";
             foreach ($robot->getMessages() as $message) {
                 echo $message, "\n";
             }
         } else {
-            echo "The robot was deleted successfully!";
+            echo "Робот был успешно удален!";
         }
     }
 
-The following events are available to define custom business rules that can be executed when a delete operation is
-performed:
+Следующие события доступны для определения пользовательских рабочих правила, 
+которые могут быть выполнены при выполнении операции удаления:
 
-+-----------+--------------+---------------------+------------------------------------------+
-| Operation | Name         | Can stop operation? | Explanation                              |
-+===========+==============+=====================+==========================================+
-| Deleting  | beforeDelete | YES                 | Runs before the delete operation is made |
-+-----------+--------------+---------------------+------------------------------------------+
-| Deleting  | afterDelete  | NO                  | Runs after the delete operation was made |
-+-----------+--------------+---------------------+------------------------------------------+
++-----------+--------------+----------------------------+---------------------------------------+
+| Операция  | Название     | Может остановить операцию? | Пояснения                             |
++===========+==============+============================+=======================================+
+| Deleting  | beforeDelete | ДА                         |  Выполняется до операции удаления     |
++-----------+--------------+----------------------------+---------------------------------------+
+| Deleting  | afterDelete  | НЕТ                        |  Выполняется после операции удаления  |
++-----------+--------------+----------------------------+---------------------------------------+
 
-With the above events can also define business rules in the models:
+С учетом указанных выше событий также может определять рабочие правила в моделях:
 
 .. code-block:: php
 
@@ -2039,7 +2048,7 @@ With the above events can also define business rules in the models:
         public function beforeDelete()
         {
             if ($this->status == 'A') {
-                echo "The robot is active, it can't be deleted";
+                echo "Робот активен, он не может быть удален";
                 return false;
             }
             return true;
@@ -2047,24 +2056,26 @@ With the above events can also define business rules in the models:
 
     }
 
-Validation Failed Events
+События ошибок при проверке
 ------------------------
-Another type of events are available when the data validation process finds any inconsistency:
+Другой тип событий доступен, когда процесс проверки данных находит каких-либо несоответствия:
 
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Operation                | Name               | Explanation                                                        |
-+==========================+====================+====================================================================+
-| Insert or Update         | notSave            | Triggered when the INSERT or UPDATE operation fails for any reason |
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
-+--------------------------+--------------------+--------------------------------------------------------------------+
++---------------------------+--------------------+-------------------------------------------------------------------------------+
+| Операция                  | Название           | Пояснения                                                                     |
++===========================+====================+===============================================================================+
+| Insert или Update         | notSave            | Срабатывает, когда INSERT или UPDATE операция не выполняется по любой причине |
++---------------------------+--------------------+-------------------------------------------------------------------------------+
+| Insert, Delete или Update | onValidationFails  | Срабатывает, когда не удается любая операция обработки данных                 |
++---------------------------+--------------------+-------------------------------------------------------------------------------+
 
-Behaviors
+Поведение
 ---------
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
-behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Поведения - алгоритмы, являющиеся общими для нескольких моделей, они могут приняться 
+в целях повторного использования кода, ORM предоставляет API для реализации поведения 
+в вашей модели.  Кроме того, вы можете использовать события и обратные вызовы, 
+как видели раньше в качестве альтернативы для реализации поведения с большей свободой.
 
-A behavior must be added in the model initializer, a model can have zero or more behaviors:
+Поведение должно быть добавлено при инициализации модели, модель может иметь ноль или более поведений:
 
 .. code-block:: php
 
@@ -2094,19 +2105,20 @@ A behavior must be added in the model initializer, a model can have zero or more
 
     }
 
-The following built-in behaviors are provided by the framework:
+Фреймворком обеспечиваются следующие встроенные поведения:
 
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
-| Name           | Description                                                                                                                   |
-+================+===============================================================================================================================+
-| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated                    |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
-| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                     |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
++----------------+---------------------------------------------------------------------------------------------------------------------+
+| Название       | Описание                                                                                                            |
++================+=====================================================================================================================+
+| Timestampable  | Позволяет автоматически обновлять атрибут модели сохранения Дата и время, когда запись создается или обновляется    |
++----------------+---------------------------------------------------------------------------------------------------------------------+
+| SoftDelete     | Вместо того, чтобы окончательно удалить записи, он помечает записи как удаленные изменяя значения флага столбца     |
++----------------+---------------------------------------------------------------------------------------------------------------------+
 
 Timestampable
 ^^^^^^^^^^^^^
-This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
+Это поведение получает массив вариантов, первый ключевой уровень 
+должно быть имя события с указанием времени, когда столбец должен быть присвоен:
 
 .. code-block:: php
 
@@ -2124,8 +2136,9 @@ This behavior receives an array of options, the first level key must be an event
         ));
     }
 
-Each event can have its own options, 'field' is the name of the column that must be updated, if 'format' is a string it will be used
-as format of the PHP's function date_, format can also be an anonymous function providing you the free to generate any kind timestamp:
+Каждое событие может иметь свои собственные настройки,  'field' -  имя столбца, который необходимо обновить, 
+если 'format' - это строка, то она будет использоваться в качестве формата PHP функции date_,  
+format  может быть анонимной функции, позволяющий вам свободно создавать любые метки:
 
 .. code-block:: php
 
@@ -2146,11 +2159,11 @@ as format of the PHP's function date_, format can also be an anonymous function 
         ));
     }
 
-If the option 'format' is omitted a timestamp using the PHP's function time_, will be used.
+Если опция 'format' опущена, то будет использованна метка времени PHP функции time_.
 
 SoftDelete
 ^^^^^^^^^^
-This behavior can be used in the following way:
+Это поведение может быть использован следующим образом:
 
 .. code-block:: php
 
@@ -2183,8 +2196,9 @@ This behavior can be used in the following way:
 
     }
 
-This behavior accepts two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
-Let's pretend the table 'users' has the following data:
+Это поведение принимает две опции: 'field' и 'value', 'field' определяет, что поле должно быть обновлено и 
+'value' значение, которое будет удалено.
+Давайте представим, что стол таблица 'users'  имеет следующие данные:
 
 .. code-block:: bash
 
@@ -2197,7 +2211,7 @@ Let's pretend the table 'users' has the following data:
     +----+---------+--------+
     2 rows in set (0.00 sec)
 
-If we delete any of the two records the status will be updated instead of delete the record:
+Если мы удалим любой из двух записей изменится status вместо удаления записи:
 
 .. code-block:: php
 
@@ -2205,7 +2219,7 @@ If we delete any of the two records the status will be updated instead of delete
 
     Users::findFirst(2)->delete();
 
-The operation will result in the following data in the table:
+Операция приводит к следующим данным в таблице:
 
 .. code-block:: bash
 
@@ -2218,15 +2232,18 @@ The operation will result in the following data in the table:
     +----+---------+--------+
     2 rows in set (0.01 sec)
 
-Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
+Обратите внимание, что в запросах вам нужно указывать  состояние DELETED. 
+Эфект игнорирования их как удаленные записи, не поддерживается как поведение.
 
-Creating your own behaviors
+Создание собственных поведений
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
-Also, Phalon\\Mvc\\Model\\Behavior provides most of the methods needed to ease the implementation of behaviors.
+ORM предоставляет API для создания собственных поведения. Поведение должно быть класс, наследующий  
+:doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <../api/Phalcon_Mvc_Model_BehaviorInterface>`
+Кроме того, Phalon\\Mvc\\Model\\Behavior обеспечивает большую часть методов, необходимых, 
+чтобы облегчить реализацию поведения.
 
-The following behavior is an example, it implements the Blamable behavior which helps identify the user
-that is performed operations over a model:
+Следующее поведение является примером, он реализует поведение Blameable, которое помогает 
+идентифицировать пользователя,  выполняющего операции с моделью:
 
 .. code-block:: php
 
@@ -2247,9 +2264,9 @@ that is performed operations over a model:
                 case 'afterUpdate':
 
 
-                    $userName = // ... get the current user from session
+                    $userName = // ... получить текущего пользователя из сессии
 
-                    //Store in a log the username - event type and primary key
+                    //Сохранить в журнале Новости - тип события и первичного ключа
                     file_put_contents(
                         'logs/blamable-log.txt',
                         $userName . ' ' . $eventType . ' ' . $model->id
@@ -2258,13 +2275,14 @@ that is performed operations over a model:
                     break;
 
                 default:
-                    /* ignore the rest of events */
+                    /* игнорировать остальную часть событий */
             }
         }
 
     }
 
-The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
+Вышеизложенное является очень простым поведением, но оно показывает, как создать поведение, 
+теперь давайте добавим такое поведение модели:
 
 .. code-block:: php
 
@@ -2280,7 +2298,7 @@ The former is a very simple behavior, but it illustrates how to create a behavio
 
     }
 
-A behavior is also capable of intercept missing methods on your models:
+Поведение также может перехватывать отсутствующие методы ваших моделей:
 
 .. code-block:: php
 
@@ -2294,7 +2312,7 @@ A behavior is also capable of intercept missing methods on your models:
 
         public function missingMethod($model, $method, $arguments=array())
         {
-            // if the method is 'getSlug' convert the title
+            // iЕсли метод - 'getSlug ", то преобразовать  title
             if ($method == 'getSlug') {
                 return Phalcon\Tag::friendlyTitle($model->title);
             }
@@ -2302,7 +2320,7 @@ A behavior is also capable of intercept missing methods on your models:
 
     }
 
-Call that method on a model that implements Sluggable returns a SEO friendly title:
+Вызовите этот метод на модели, которая реализует Sluggable возвращает SEO Friendly название:
 
 .. code-block:: php
 
@@ -2310,10 +2328,11 @@ Call that method on a model that implements Sluggable returns a SEO friendly tit
 
     $title = $post->getSlug();
 
-Using Traits as behaviors
-^^^^^^^^^^^^^^^^^^^^^^^^^
-Starting from PHP 5.4 you can use Traits_ to re-use code in your classes, this is another way to implement
-custom behaviors. The following trait implements a simple version of the Timestampable behavior:
+Использование Трейтов, как поведения
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Начиная с PHP 5.4 вы можете использовать Traits_ чтобы повторно использовать код в ваших классах, 
+это еще один способ для реализации пользовательских поведения. Следующий трейт реализует простой 
+вариант Timestampable поведения:
 
 .. code-block:: php
 
@@ -2334,7 +2353,7 @@ custom behaviors. The following trait implements a simple version of the Timesta
 
     }
 
-Then you can use it in your model as follows:
+Затем вы можете использовать его в вашей модели, как следующим образом:
 
 .. code-block:: php
 
@@ -2345,20 +2364,20 @@ Then you can use it in your model as follows:
         use MyTimestampable;
     }
 
-Transactions
+Транзакции
 ------------
-When a process performs multiple database operations, it is often that each step is completed successfully so that data integrity can
-be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
-are committed to the database.
+Когда процесс выполняет несколько операций базы данных, часто, что каждый шаг успешно завершен, так что 
+целостность данных может поддерживаться. Транзакции дают возможность обеспечить, чтобы все операции с базой 
+данных были успешно выполнены прежде, чем данные фиксируются в базе данных.
 
-Transactions in Phalcon allow you to commit all operations if they have been executed successfully or rollback
-all operations if something went wrong.
+Транзакции в Phalcon позволяют совершать все операции, если они были успешно выполнены или откатить все операции, 
+если что-то пошло не так.
 
-Manual Transactions
+Ручные Транзакции
 ^^^^^^^^^^^^^^^^^^^
-If an application only uses one connection and the transactions aren't very complex, a transaction can be
-created by just moving the current connection to transaction mode, doing a rollback or commit if the operation
-is successfully or not:
+Если приложение использует только одно соединение и транзакции не очень сложным, транзакция может быть 
+создана просто переводом текущего соединения в режим транзакции, и система делает откат или выполняет, 
+если операция успешно или нет:
 
 .. code-block:: php
 
@@ -2391,10 +2410,10 @@ is successfully or not:
         }
     }
 
-Implicit Transactions
+Неявные транзакции
 ^^^^^^^^^^^^^^^^^^^^^
-Existing relationships can be used to store records and their related instances, this kind of operation
-implicitly creates a transaction to ensure that data are correctly stored:
+Существующие отношения могут быть использованы для хранения записей и связанных с ними случаев, 
+этот вид операций неявно создает транзакцию, чтобы удостовериться, что данные правильно храняются:
 
 .. code-block:: php
 
@@ -2408,14 +2427,14 @@ implicitly creates a transaction to ensure that data are correctly stored:
     $robot->created_at = date("Y-m-d");
     $robot->robotPart = $robotPart;
 
-    $robot->save(); //Creates an implicit transaction to store both records
+    $robot->save(); // Создает неявную транзакцию, чтобы сохранить обе записи
 
-Isolated Transactions
+Изолированные транзакции
 ^^^^^^^^^^^^^^^^^^^^^
-Isolated transactions are executed in a new connection ensuring that all the generated SQL,
-virtual foreign key checking and business rules are isolated from the main connection.
-This kind of transaction requires a transaction manager that globally manages each
-transaction created ensuring that it's correctly rollbacked/commited before ending the request:
+Изолированные транзакции выполняются  в новом соединении, гарантируя, что все сгенерированные SQL, 
+виртуальные проверки внешних ключей и рабочие правила изолированы от основного соединения. 
+Этот вид транзакции требует менеджера транзакций, который глобально управляет каждой транзакции, 
+гарантируя правильные откат/совершение операций перед окончанием запроса:
 
 .. code-block:: php
 
@@ -2426,10 +2445,10 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
 
     try {
 
-        //Create a transaction manager
+        // Создать менеджер транзакций
         $manager = new TxManager();
 
-        // Request a transaction
+        // Запрос транзакции
         $transaction = $manager->get();
 
         $robot = new Robots();
@@ -2437,7 +2456,7 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
         $robot->name = "WALL·E";
         $robot->created_at = date("Y-m-d");
         if ($robot->save() == false) {
-            $transaction->rollback("Cannot save robot");
+            $transaction->rollback("Невозможно сохранить robot");
         }
 
         $robotPart = new RobotParts();
@@ -2445,17 +2464,17 @@ transaction created ensuring that it's correctly rollbacked/commited before endi
         $robotPart->robots_id = $robot->id;
         $robotPart->type = "head";
         if ($robotPart->save() == false) {
-            $transaction->rollback("Cannot save robot part");
+            $transaction->rollback("Невозможно сохранить robotPart");
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Все идет хорошо, совершить транзакцию
         $transaction->commit();
 
     } catch(TxFailed $e) {
-        echo "Failed, reason: ", $e->getMessage();
+        echo "Не удалось, причина: ", $e->getMessage();
     }
 
-Transactions can be used to delete many records in a consistent way:
+Транзакцию могут быть использованы для удаления нескольких записей на постоянной основе:
 
 .. code-block:: php
 
@@ -2466,34 +2485,36 @@ Transactions can be used to delete many records in a consistent way:
 
     try {
 
-        //Create a transaction manager
+        // Создать менеджер транзакций
         $manager = new TxManager();
 
-        //Request a transaction
+        // Запрос транзакции
         $transaction = $manager->get();
 
-        //Get the robots will be deleted
+        // Получить роботов для удаления
         foreach (Robots::find("type = 'mechanical'") as $robot) {
             $robot->setTransaction($transaction);
             if ($robot->delete() == false) {
-                //Something goes wrong, we should to rollback the transaction
+                // Что-то идет не так, мы должны откатить транзакцию
                 foreach ($robot->getMessages() as $message) {
                     $transaction->rollback($message->getMessage());
                 }
             }
         }
 
-        //Everything goes fine, let's commit the transaction
+        // Все идет хорошо, давайте совершить транзакцию
         $transaction->commit();
 
-        echo "Robots were deleted successfully!";
+        echo "Роботы успешно удалены!";
 
     } catch(TxFailed $e) {
-        echo "Failed, reason: ", $e->getMessage();
+        echo "Не удалось, причина: ", $e->getMessage();
     }
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a commit() or rollback()
-is performed. You can use the service container to create an overall transaction manager for the entire application:
+Транзакция продолжается, независимо от того, где получается объект транзакции. 
+Новая транзакция формируется только при выполнении методов commit() или rollback(). 
+Вы можете воспользоваться di контейнером, чтобы создать общий менеджер транзакций 
+для всего приложения:
 
 .. code-block:: php
 
@@ -2503,7 +2524,7 @@ is performed. You can use the service container to create an overall transaction
         return new \Phalcon\Mvc\Model\Transaction\Manager();
     });
 
-Then access it from a controller or view:
+Тогда доступ к нему из контроллера или вида:
 
 .. code-block:: php
 
@@ -2515,13 +2536,13 @@ Then access it from a controller or view:
         public function saveAction()
         {
 
-            //Obtain the TransactionsManager from the services container
+            // Получить TransactionsManager из контейнера услуг
             $manager = $this->di->getTransactions();
 
-            //Or
+            // Или
             $manager = $this->transactions;
 
-            //Request a transaction
+            // Запрос транзакции
             $transaction = $manager->get();
 
             //...
@@ -2529,14 +2550,14 @@ Then access it from a controller or view:
 
     }
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+Пока транзакция активна, менеджер транзакций по заявке будет всегда возвращать одну и ту же транзакцию.
 
-Independent Column Mapping
+Независимое сопоставление столбцов
 --------------------------
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
-the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
-This is a great feature when one needs to rename fields in the database without having to worry about all the queries
-in the code. A change in the column map in the model will take care of the rest. For example:
+ORM поддерживает независимую карту столбцов, позволяющую разработчику использовать различные именования в модели и таблице. 
+Phalcon зарегистрирует новые имена и будет переименовывать их при запросах к базе соответственно указанным значениям.
+Это отличная возможность изменить названия полей в базе данных без необходимости беспокоиться о запросах в коде,
+Phalcon сделает за вас все остальное. Например:
 
 .. code-block:: php
 
@@ -2547,8 +2568,8 @@ in the code. A change in the column map in the model will take care of the rest.
 
         public function columnMap()
         {
-            //Keys are the real names in the table and
-            //the values their names in the application
+            // Ключи - реальные имена в таблице и
+            //  значения - их имена в приложении
             return array(
                 'id' => 'code',
                 'the_name' => 'theName',
@@ -2559,23 +2580,23 @@ in the code. A change in the column map in the model will take care of the rest.
 
     }
 
-Then you can use the new names naturally in your code:
+Затем вы можете использовать новые переменные в вашем коде:
 
 .. code-block:: php
 
     <?php
 
-    //Find a robot by its name
+    // Найти робота по имени
     $robot = Robots::findFirst("theName = 'Voltron'");
     echo $robot->theName, "\n";
 
-    //Get robots ordered by type
+    // Получить роботов сгруппированных по типу
     $robot = Robots::find(array('order' => 'theType DESC'));
     foreach ($robots as $robot) {
         echo 'Code: ', $robot->code, "\n";
     }
 
-    //Create a robot
+    // Создать робота
     $robot = new Robots();
     $robot->code = '10101';
     $robot->theName = 'Bender';
@@ -2583,24 +2604,25 @@ Then you can use the new names naturally in your code:
     $robot->theYear = 2999;
     $robot->save();
 
-Take into consideration the following the next when renaming your columns:
+При переименовании столбцов примите во внимание:
 
-* References to attributes in relationships/validators must use the new names
-* Refer the real column names will result in an exception by the ORM
+* Ссылки на атрибуты в отношениях/валидаторах должны использовать новые имена
+* Ссылка на реальное имя столбца приведет к выбросу исключения в ORM
 
-The independent column map allow you to:
+Независимая карта столбцов позволит вам:
 
-* Write applications using your own conventions
-* Eliminate vendor prefixes/suffixes in your code
-* Change column names without change your application code
+* Писать приложения, используя ваши собственные правила именования 
+* Ликвидировать префиксы/суффиксы вендоров в вашем коде
+* Изменить имена столбцов без изменения кода приложения
 
-Operations over Resultsets
+Операции над набором результатов
 --------------------------
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+Если набор результатов состоит из завершенных объектов, 
+то он заключается в способности выполнять операции над записями, полученными в простой форме:
 
-Updating related records
+Обновление связанных записей
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Instead of doing this:
+Вместо того, чтобы сделать:
 
 .. code-block:: php
 
@@ -2617,7 +2639,7 @@ Instead of doing this:
         }
     }
 
-you can do this:
+Вы можете сделать:
 
 .. code-block:: php
 
@@ -2628,7 +2650,7 @@ you can do this:
         'updated_at' => time()
     ));
 
-'update' also accepts an anonymous function to filter what records must be updated:
+'update' также принимает анонимную функцию, чтобы отфильтровать какие записи должны быть обновлены:
 
 .. code-block:: php
 
@@ -2639,7 +2661,7 @@ you can do this:
         'updated_at' => time()
     );
 
-    //Update all the parts except these whose type is basic
+    // Обновить все части, кроме тех, чей тип базовый
     $robots->getParts()->update($data, function($part) {
         if ($part->type == Part::TYPE_BASIC) {
             return false;
@@ -2647,9 +2669,9 @@ you can do this:
         return true;
     }
 
-Deleting related records
+Удаление связанных записей
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Instead of doing this:
+Вместо того, чтобы сделать:
 
 .. code-block:: php
 
@@ -2664,7 +2686,7 @@ Instead of doing this:
         }
     }
 
-you can do this:
+Вы можете сделать:
 
 .. code-block:: php
 
@@ -2672,13 +2694,13 @@ you can do this:
 
     $robots->getParts()->delete();
 
-'delete' also accepts an anonymous function to filter what records must be deleted:
+'delete' также принимает анонимные функции фильтрации, какие записи должны быть удалены:
 
 .. code-block:: php
 
     <?php
 
-    //Delete only whose stock is greater or equal than zero
+    // Удалить только чьи акции больше или равно нулю
     $robots->getParts()->delete(function($part) {
         if ($part->stock < 0) {
             return false;
@@ -2687,10 +2709,11 @@ you can do this:
     });
 
 
-Record Snapshots
+Запись снимков
 ----------------
-Specific models could be set to maintain a record snapshot when they’re queried. You can use this feature to implement auditing or just to know what
-fields are changed according to the data queried from the persistence:
+В определенных моделях может быть установленно сохранение снимока, когда они вызываются. 
+Вы можете использовать эту функцию для осуществления аудита или просто чтобы знать, 
+какие поля были изменены в соответствии с запросом данныех из дампа.
 
 .. code-block:: php
 
@@ -2704,30 +2727,31 @@ fields are changed according to the data queried from the persistence:
         }
     }
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
-In models that have this feature activated you can check what fields changed:
+При активации этой функции приложение потребляет немного больше памяти для отслеживания исходных значений, 
+полученных из дампа. В моделях, которые имеют эту функцию, вы можете увидеть, какие поля изменились:
 
 .. code-block:: php
 
     <?php
 
-    //Get a record from the database
+    // Получить запись из базы данных
     $robot = Robots::findFirst();
 
-    //Change a column
+    // Изменить столбец
     $robot->name = 'Other name';
 
     var_dump($robot->getChangedFields()); // ['name']
     var_dump($robot->hasChanged('name')); // true
     var_dump($robot->hasChanged('type')); // false
 
-Models Meta-Data
+Модели Meta-Data
 ----------------
-To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
-related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
-and cache table meta-data.
+Для ускорения разработки :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` позволяет запрашивать поля и ограничения из таблиц, 
+связанных с моделями. Для этого, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` 
+позволяет управлять и кэшировать метаданные таблицы.
 
-Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance as follows:
+Иногда это необходимо, чтобы получить атрибуты при работе с моделями. 
+Вы можете получить экземпляр мета-данных следующим образом:
 
 .. code-block:: php
 
@@ -2735,37 +2759,38 @@ Sometimes it is necessary to get those attributes when working with models. You 
 
     $robot = new Robots();
 
-    // Get Phalcon\Mvc\Model\Metadata instance
+    // Получить экземпляр Phalcon\Mvc\Model\Metadata
     $metaData = $robot->getModelsMetaData();
 
-    // Get robots fields names
+    // Получить имена полей робота
     $attributes = $metaData->getAttributes($robot);
     print_r($attributes);
 
-    // Get robots fields data types
+    // Получить типы данных полей робота
     $dataTypes = $metaData->getDataTypes($robot);
     print_r($dataTypes);
 
-Caching Meta-Data
+Кэширование мета-данных
 ^^^^^^^^^^^^^^^^^
-Once the application is in a production stage, it is not necessary to query the meta-data of the table from the database system each
-time you use the table. This could be done caching the meta-data using any of the following adapters:
+После того как, приложение переведено в рабочий режим, нет необходимости запрашивать мета-данные таблицы, 
+из базы данных системы каждый раз, когда вы используете таблицу. 
+Это может быть сделано кэшированием метаданных с использованием любой из следующих адаптеров:
 
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Adapter | Description                                                                                                                                                                                                                                                                                                                                   | API                                                                                       |
-+=========+===============================================================================================================================================================================================================================================================================================================================================+===========================================================================================+
-| Memory  | This adapter is the default. The meta-data is cached only during the request. When the request is completed, the meta-data are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the meta-data in each request containing the new and/or modified fields. | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`   |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Session | This adapter stores meta-data in the $_SESSION superglobal. This adapter is recommended only when the application is actually using a small number of models. The meta-data are refreshed every time a new session starts. This also requires the use of session_start() to start the session before using any models.                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Apc     | This adapter uses the `Alternative PHP Cache (APC)`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                               | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| XCache  | This adapter uses `XCache`_ to store the table meta-data. You can specify the lifetime of the meta-data with options. This is the most recommended way to store meta-data when the application is in production stage.                                                                                                                        | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Xcache <../api/Phalcon_Mvc_Model_MetaData_Xcache>`   |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| Files   | This adapter uses plain files to store meta-data. By using this adapter the disk-reading is increased but the database access is reduced                                                                                                                                                                                                      | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
-+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Адаптер | Описание                                                                                                                                                                                                                                                                                                                                                         | API                                                                                       |
++=========+==================================================================================================================================================================================================================================================================================================================================================================+===========================================================================================+
+| Memory  | Этот адаптер по умолчанию. В запросе кэшируются только Мета-данные.   Когда запрос выполнен, Мета-данные будут представлены как часть обычной памяти запроса. Данный адаптер идеально подходит, когда приложение находится в стадии разработки, так как  Мета-данные обновляются в каждом запросе, содержащим новые и/или измененные поля.                       | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Memory <../api/Phalcon_Mvc_Model_MetaData_Memory>`   |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Session | Этот адаптер сохраняет Мета-данные в суперглобальной переменной $_SESSION. Данный адаптер рекомендуется использовать только тогда, когда приложение использует небольшое количество моделей. Мета-данные обновляются каждый раз когда начинается новая сессия. Это требует использования session_start (), для начала сеанса перед использованием любых моделей. | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Session <../api/Phalcon_Mvc_Model_MetaData_Session>` |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Apc     | Этот адаптер использует  `Alternative PHP Cache (APC)`_ , для хранения таблицы Мета-данных. Вы можете задать время жизни Мета-данных с параметрами. Это наиболее Рекомендуемый способ хранения Мета-данных, когда приложение находится в рабочем режиме.                                                                                                         | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Apc <../api/Phalcon_Mvc_Model_MetaData_Apc>`         |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| XCache  | Этот адаптер использует `XCache`_ для хранения таблицы Мета-данных. Вы можете задать время жизни Мета-данных с параметрами. Это наиболее Рекомендуемый способ хранения Мета-данных, когда приложение находится в рабочем режиме.                                                                                                                                 | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Xcache <../api/Phalcon_Mvc_Model_MetaData_Xcache>`   |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| Files   | Этот адаптер использует текстовые файлы для хранения Мета-данных. При этом адаптере нагрузка на чтение диска увеличивается, но для доступа к базе данных снижается                                                                                                                                                                                               | :doc:`Phalcon\\Mvc\\Model\\MetaData\\Files <../api/Phalcon_Mvc_Model_MetaData_Files>`     |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
-As other ORM's dependencies, the metadata manager is requested from the services container:
+Как и другие зависимости ORM, в менеджер метаданных запрашивается из контейнера сервисов:
 
 .. code-block:: php
 
@@ -2773,7 +2798,7 @@ As other ORM's dependencies, the metadata manager is requested from the services
 
     $di['modelsMetadata'] = function() {
 
-        // Create a meta-data manager with APC
+        // Создать менеджер мета-данных с APC
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
@@ -2782,12 +2807,13 @@ As other ORM's dependencies, the metadata manager is requested from the services
         return $metaData;
     };
 
-Meta-Data Strategies
+Стратегии Мета-Данных
 ^^^^^^^^^^^^^^^^^^^^
-As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information
-schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
+Как уже упоминалось выше стратегией по умолчанию, для получения Мета-данных модели является самоанализ базы данных. 
+В этой стратегии используется информационная схема, чтобы узнать поля таблицы, ее первичный ключ, 
+ обнуляемые поля, типы данных и др.
 
-You can change the default meta-data introspection in the following way:
+Вы можете изменить самоанализ мета-данных по умолчанию в следующим образом:
 
 .. code-block:: php
 
@@ -2795,25 +2821,25 @@ You can change the default meta-data introspection in the following way:
 
     $di['modelsMetadata'] = function() {
 
-        // Instantiate a meta-data adapter
+        // Создание экземпляра адаптера мета-данные
         $metaData = new \Phalcon\Mvc\Model\MetaData\Apc(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data introspection strategy
+        // Установка пользовательской стратегии интроспекции мета-данных
         $metaData->setStrategy(new MyInstrospectionStrategy());
 
         return $metaData;
     };
 
-Database Introspection Strategy
+Стратегия самоанализа Базы Данных
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
+Эта стратегия не требует никакой настройки и неявно используется всеми адаптерами мета-данных.
 
-Annotations Strategy
+Аннотации Стратегии
 ^^^^^^^^^^^^^^^^^^^^
-This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
+Эта стратегия позволяет использовать :doc:`аннотации <annotations>` для описания столбцов в модели:
 
 .. code-block:: php
 
@@ -2846,34 +2872,35 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
 
     }
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation
-are handled as simple class attributes.
+Аннотации должны быть помещены в свойствах, которые отображаются в колонки отображаемого источника. 
+Свойства без аннотации @Column обрабатываются как простые атрибуты класса.
 
-The following annotations are supported:
+
+Поддерживаются следующие аннотации:
 
 +----------+-------------------------------------------------------+
-| Name     | Description                                           |
+| Имя      | Описание                                              |
 +==========+=======================================================+
-| Primary  | Mark the field as part of the table's primary key     |
+| Primary  | Отмечает поле как часть первичного ключа таблицы      |
 +----------+-------------------------------------------------------+
-| Identity | The field is an auto_increment/serial column          |
+| Identity | Поле как auto_increment/serial столбец                |
 +----------+-------------------------------------------------------+
-| Column   | This marks an attribute as a mapped column            |
-+----------+-------------------------------------------------------+
-
-The annotation @Column supports the following parameters:
-
-+----------+-------------------------------------------------------+
-| Name     | Description                                           |
-+==========+=======================================================+
-| type     | The column's type (string, integer, decimal, boolean) |
-+----------+-------------------------------------------------------+
-| length   | The column's length if any                            |
-+----------+-------------------------------------------------------+
-| nullable | Set whether the column accepts null values or not     |
+| Column   | Отмечает атрибут в качестве отображаемого столюца     |
 +----------+-------------------------------------------------------+
 
-The annotations strategy could be set up this way:
+Анотация @Column поддерживает следующие параметры:
+
++----------+-----------------------------------------------------------+
+| Name     | Description                                               |
++==========+===========================================================+
+| type     | Тип столбца (строки, целое число, десятичное, логический) |
++----------+-----------------------------------------------------------+
+| length   | Длина столбца, если есть                                  |
++----------+-----------------------------------------------------------+
+| nullable | Принимает ли столбец нулевые значения или нет             |
++----------+-----------------------------------------------------------+
+
+Стратегия аннотации могут быть созданы таким образом:
 
 .. code-block:: php
 
@@ -2884,28 +2911,28 @@ The annotations strategy could be set up this way:
 
     $di['modelsMetadata'] = function() {
 
-        // Instantiate a meta-data adapter
+        // Создание экземпляра адаптера мета-данных
         $metaData = new ApcMetaData(array(
             "lifetime" => 86400,
             "prefix"   => "my-prefix"
         ));
 
-        //Set a custom meta-data database introspection
+        // Установить пользовательский самоанализ мета-данных базы данных 
         $metaData->setStrategy(new StrategyAnnotations());
 
         return $metaData;
     };
 
-Manual Meta-Data
-^^^^^^^^^^^^^^^^
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually
-using any of the introspection strategies presented above.
+Установка Мета-Данных в ручную
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Phalcon может получить метаданные для каждой модели автоматически, без того, чтобы разработчик установливал 
+их вручную, с помощью любой из стратегий самоанализа, представленных выше.
 
-The developer also has the option of define the metadata manually. This strategy overrides
-any strategy set in the  meta-data manager. New columns added/modified/removed to/from the mapped
-table must be added/modified/removed also for everything to work properly.
+Разработчик также имеет возможность определить метаданные вручную. Эта стратегия перекрывает любые стратегии, 
+заданные в менеджере мета-данных. Новые колонки добавлены/изменены/удалены так же и в связанной таблице 
+должны быть добавлены/изменены/удалены, чтобы работать должным образом.
 
-The following example shows how to define the meta-data manually:
+Следующий пример показывает, как определить мета-данные вручную:
 
 .. code-block:: php
 
@@ -2922,27 +2949,27 @@ The following example shows how to define the meta-data manually:
         {
             return array(
 
-                //Every column in the mapped table
+                // Каждый столбец в отображаемой таблице
                 MetaData::MODELS_ATTRIBUTES => array(
                     'id', 'name', 'type', 'year'
                 ),
 
-                //Every column part of the primary key
+                // Каждый столбец частью первичного ключа
                 MetaData::MODELS_PRIMARY_KEY => array(
                     'id'
                 ),
 
-                //Every column that isn't part of the primary key
+                // Каждый столбец, который не является частью первичного ключа
                 MetaData::MODELS_NON_PRIMARY_KEY => array(
                     'name', 'type', 'year'
                 ),
 
-                //Every column that doesn't allows null values
+                // Каждый столбец, который не позволяет нулевые значения
                 MetaData::MODELS_NOT_NULL => array(
                     'id', 'name', 'type', 'year'
                 ),
 
-                //Every column and their data types
+                // Каждый столбец и их типы данных
                 MetaData::MODELS_DATA_TYPES => array(
                     'id' => Column::TYPE_INTEGER,
                     'name' => Column::TYPE_VARCHAR,
@@ -2950,17 +2977,17 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::TYPE_INTEGER
                 ),
 
-                //The columns that have numeric data types
+                // Колонки, которые имеют числовые типы данных
                 MetaData::MODELS_DATA_TYPES_NUMERIC => array(
                     'id' => true,
                     'year' => true,
                 ),
 
-                //The identity column, use boolean false if the model doesn't have
-                //an identity column
+                // Столбец идентификаторов, используйте логическое значение FALSE, если модель не имеет
+                // столбец идентификации
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
-                //How every column must be bound/casted
+                // Как каждый столбец должен быть связан/слит
                 MetaData::MODELS_DATA_TYPES_BIND => array(
                     'id' => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
@@ -2968,12 +2995,12 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::BIND_PARAM_INT,
                 ),
 
-                //Fields that must be ignored from INSERT SQL statements
+                //Поля, которые должны быть проигнорированы в INSERT SQL инструкциях
                 MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
                     'year' => true
                 ),
 
-                //Fields that must be ignored from UPDATE SQL statements
+                //Поля, которые должны быть проигнорированы в UPDATE SQL инструкциях
                 MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
                     'year' => true
                 )
@@ -2983,9 +3010,10 @@ The following example shows how to define the meta-data manually:
 
     }
 
-Pointing to a different schema
+Ссылка на другую схему
 ------------------------------
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
+Если модель отображает таблицу, которая находится в другой схеме/базе данных, чем по умолчанию.
+Вы можете использовать метод GetSchema, чтобы определить это:
 
 .. code-block:: php
 
@@ -3001,17 +3029,18 @@ If a model is mapped to a table that is in a different schemas/databases than th
 
     }
 
-Setting multiple databases
+Установка нескольких баз данных
 --------------------------
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
-in the application's services container. You can overwrite this service setting it in the initialize method:
+В Phalcon все модели могут принадлежать к одному и тому же подключению к базе данных или иметь индивидуальное. 
+На самом деле, когда 
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` необходимо подключиться к базе данных, он запрашивает "db" 
+сервис в контейнере сервисов приложений. Вы можете переписать этот сервис, установив его в методе initialize:
 
 .. code-block:: php
 
     <?php
 
-    //This service returns a MySQL database
+    // Этот сервис возвращает базу данных MySQL
     $di->set('dbMysql', function() {
          return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
@@ -3021,7 +3050,7 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-    //This service returns a PostgreSQL database
+    // Этот сервис возвращает базу данных PostgreSQL
     $di->set('dbPostgres', function() {
          return new \Phalcon\Db\Adapter\Pdo\PostgreSQL(array(
             "host" => "localhost",
@@ -3031,7 +3060,7 @@ in the application's services container. You can overwrite this service setting 
         ));
     });
 
-Then, in the Initialize method, we define the connection service for the model:
+Затем в методе Initialize, определим сервис соединения для модели:
 
 .. code-block:: php
 
@@ -3047,8 +3076,9 @@ Then, in the Initialize method, we define the connection service for the model:
 
     }
 
-But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
-to balance the load to your databases implementing a master-slave architecture:
+Но Phalcon предлагает вам больше гибкости, вы можете определить соединение, которое необходимо использовать 
+для 'read' и для 'write'. Это особенно полезно для балансировки нагрузки с базами данных, 
+реализующих архитектуру ведущий-ведомый:
 
 .. code-block:: php
 
@@ -3065,8 +3095,8 @@ to balance the load to your databases implementing a master-slave architecture:
 
     }
 
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
-according to the current query conditions:
+ORM так же обеспечивает  устройство горизонтального шардинга, 
+позволяя вам реализовать выбор "осколка" в соответствии с текущими условиями запроса:
 
 .. code-block:: php
 
@@ -3083,12 +3113,12 @@ according to the current query conditions:
          */
         public function selectReadConnection($intermediate, $bindParams, $bindTypes)
         {
-            //Check if there is a 'where' clause in the select
+            // Проверка есть ли  'where' в select
             if (isset($intermediate['where'])) {
 
                 $conditions = $intermediate['where'];
 
-                //Choose the possible shard according to the conditions
+                // Выбор возможного осколка в соответствии с условиями
                 if ($conditions['left']['name'] == 'id') {
                     $id = $conditions['right']['value'];
                     if ($id > 0 && $id < 10000) {
@@ -3100,14 +3130,14 @@ according to the current query conditions:
                 }
             }
 
-            //Use a default shard
+            //Использовать осколок умолчанию
             return $this->getDI()->get('dbShard0');
         }
 
     }
 
-The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
-query executed:
+Метод 'selectReadConnection' вызывается для правильного выбора соединения, 
+этот метод перехватывает выполнение любого нового запроса:
 
 .. code-block:: php
 
@@ -3115,13 +3145,14 @@ query executed:
 
     $robot = Robots::findFirst('id = 101');
 
-Logging Low-Level SQL Statements
+Вход операторов SQL низкого уровня
 --------------------------------
-When using high-level abstraction components such as :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to access a database, it is
-difficult to understand which statements are finally sent to the database system. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
-is supported internally by :doc:`Phalcon\\Db <../api/Phalcon_Db>`. :doc:`Phalcon\\Logger <../api/Phalcon_Logger>` interacts
-with :doc:`Phalcon\\Db <../api/Phalcon_Db>`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
-statements as they happen.
+При использовании компонентов абстракции высокого уровня, такие как  :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 
+для доступа к базе данных, трудно понять, какие операторы, в конечном итоге, посылаются системе баз данных. 
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` поддерживаемый изнутри :doc:`Phalcon\\Db <../api/Phalcon_Db>`. 
+:doc:`Phalcon\\Logger <../api/Phalcon_Logger>` взаимодействует с :doc:`Phalcon\\Db <../api/Phalcon_Db>`, 
+обеспечивая возможность ведения логов на уровне абстракции базы данных, таким образом позволяя нам наблюдать в SQL, 
+как это происходит.
 
 .. code-block:: php
 
@@ -3138,7 +3169,7 @@ statements as they happen.
 
         $logger = new Logger("app/logs/debug.log");
 
-        //Listen all the database events
+        // Слушать все события базы данных
         $eventsManager->attach('db', function($event, $connection) use ($logger) {
             if ($event->getType() == 'beforeQuery') {
                 $logger->log($connection->getSQLStatement(), Logger::INFO);
@@ -3152,13 +3183,14 @@ statements as they happen.
             "dbname" => "invo"
         ));
 
-        //Assign the eventsManager to the db adapter instance
+        // Назначить EventsManager к экземпляру адаптера БД
         $connection->setEventsManager($eventsManager);
 
         return $connection;
     });
 
-As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
+В качестве моделей доступа соединения с базой данных по умолчанию, все команды SQL, 
+которые отправляются в СуБД будут записываться в файл:
 
 .. code-block:: php
 
@@ -3168,21 +3200,21 @@ As models access the default database connection, all SQL statements that are se
     $robot->name = "Robby the Robot";
     $robot->created_at = "1956-07-21"
     if ($robot->save() == false) {
-        echo "Cannot save robot";
+        echo "Невозможно сохранить робот";
     }
 
-As above, the file *app/logs/db.log* will contain something like this:
+Упомянутый выше файл *app/logs/db.log* будет содержать что-то вроде этого:
 
 .. code-block:: irc
 
     [Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
     (name, created_at) VALUES ('Robby the Robot', '1956-07-21')
 
-Profiling SQL Statements
+Профилирование SQL команд
 ------------------------
-Thanks to :doc:`Phalcon\\Db <../api/Phalcon_Db>`, the underlying component of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`,
-it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With
-this you can diagnose performance problems and to discover bottlenecks.
+Благодаря  :doc:`Phalcon\\Db <../api/Phalcon_Db>`, основной составляющей :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`,
+возможно профилирование SQL-операторов, генерируемых ORM, в целях анализа производительности операций с базами данных.
+При этом вы можете диагностировать проблемы производительности и выявления узких мест.
 
 .. code-block:: php
 
@@ -3196,10 +3228,10 @@ this you can diagnose performance problems and to discover bottlenecks.
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Get a shared instance of the DbProfiler
+        // Получить общий экземпляр DbProfiler
         $profiler = $di->getProfiler();
 
-        //Listen all the database events
+        // Слушать все события базы данных
         $eventsManager->attach('db', function($event, $connection) use ($profiler) {
             if ($event->getType() == 'beforeQuery') {
                 $profiler->startProfile($connection->getSQLStatement());
@@ -3216,24 +3248,24 @@ this you can diagnose performance problems and to discover bottlenecks.
             "dbname" => "invo"
         ));
 
-        //Assign the eventsManager to the db adapter instance
+        // Назначить EventsManager к экземпляру адаптера БД
         $connection->setEventsManager($eventsManager);
 
         return $connection;
     });
 
-Profiling some queries:
+Профилирование некоторых запросов:
 
 .. code-block:: php
 
     <?php
 
-    // Send some SQL statements to the database
+    // Отправить некоторые  SQL операторы  базы данных
     Robots::find();
     Robots::find(array("order" => "name");
     Robots::find(array("limit" => 30);
 
-    //Get the generated profiles from the profiler
+    // Получить сгенерированные профили из профилировщика
     $profiles = $di->get('profiler')->getProfiles();
 
     foreach ($profiles as $profile) {
@@ -3243,11 +3275,12 @@ Profiling some queries:
        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-Each generated profile contains the duration in miliseconds that each instruction takes to complete as well as the generated SQL statement.
+Каждый генерируется профиль содержит длительность в миллисекундах необходимую для выполнения каждой команды, 
+а также генерируемые SQL команды.
 
-Injecting services into Models
+Инъекция сервисов в модели
 ------------------------------
-You may be required to access the application services within a model, the following example explains how to do that:
+Вам может потребоваться доступ к службам приложений в рамках модели, следующий пример объясняет, как это сделать:
 
 .. code-block:: php
 
@@ -3258,10 +3291,10 @@ You may be required to access the application services within a model, the follo
 
         public function notSave()
         {
-            //Obtain the flash service from the DI container
+            // Получить флэш службу из контейнера DI
             $flash = $this->getDI()->getFlash();
 
-            //Show validation messages
+            // Показать сообщения проверки
             foreach ($this->getMesages() as $message) {
                 $flash->error($message);
             }
@@ -3269,13 +3302,15 @@ You may be required to access the application services within a model, the follo
 
     }
 
-The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
-obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+Событие "notSave" срабатывает каждый раз, когда не удаются действия "create" или "update". 
+Таким образом, мы показываем сообщения проверки при помощи пакета "Flash", полученного из контейнера DI. 
+Делая так, мы не должны выводить сообщения после каждого сохранения.
 
-Disabling/Enabling Features
+Отключение/Включение возможностей
 ---------------------------
-In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
-According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+IВ ORM мы внедрили механизм, который позволит вам включить/отключить конкретные особенности 
+или опции в глобальном масштабе на лету. По тому, как вы используете ORM можно отключить, 
+что вы не используете. Эти параметры также могут быть временно отключена, если требуется:
 
 .. code-block:: php
 
@@ -3286,25 +3321,25 @@ According to how you use the ORM you can disable that you aren't using. These op
         'columnRenaming' => false
     ));
 
-The available options are:
+Доступные опции:
 
-+---------------------+----------------------------------------------------------------------------------+---------+
-| Option              | Description                                                                      | Default |
-+=====================+==================================================================================+=========+
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models    | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| columnRenaming      | Enables/Disables the column renaming                                             | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table  | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
-+---------------------+----------------------------------------------------------------------------------+---------+
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| Опция               | Описание                                                                                        | По умолчанию |
++=====================+=================================================================================================+==============+
+| events              | Включение/выключение функции обратного вызова, крючков и уведомлений о событиях из всех моделей | true         |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| columnRenaming      | Включение/выключение переименования столбцов                                                    | true         |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| notNullValidations  | ORM автоматически проверяет на NOT NULL столбцы, присутствующие в отображаемой таблице          | true         |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| virtualForeignKeys  | Включение/выключение виртуальных внешних ключей                                                 | true         |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
+| phqlLiterals        | Включение/выключение литералов в PHQL парсере                                                   | true         |
++---------------------+-------------------------------------------------------------------------------------------------+--------------+
 
-Stand-Alone component
+Автономный компонент
 ---------------------
-Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstrated below:
+Использовать :doc:`Phalcon\\Mvc\\Model <models>` в автономном режиме можно как показано ниже:
 
 .. code-block:: php
 
@@ -3318,24 +3353,24 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     $di = new DI();
 
-    //Setup a connection
+    // Настройка подключения
     $di->set('db', new Connection(array(
         "dbname" => "sample.db"
     )));
 
-    //Set a models manager
+    // Установить менеджер модели
     $di->set('modelsManager', new ModelsManager());
 
-    //Use the memory meta-data adapter or other
+    // Использовать адаптер памяти мета-данных или другой
     $di->set('modelsMetadata', new MetaData());
 
-    //Create a model
+    // Создание модели
     class Robots extends Model
     {
 
     }
 
-    //Use the model
+    // Использовать модель
     echo Robots::count();
 
 .. _Alternative PHP Cache (APC): http://www.php.net/manual/en/book.apc.php
@@ -3344,4 +3379,3 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 .. _date: http://php.net/manual/en/function.date.php
 .. _time: http://php.net/manual/en/function.time.php
 .. _Traits: http://php.net/manual/en/language.oop5.traits.php
-

@@ -766,7 +766,7 @@ Phalcon\\Db поддерживает следующие типы столбцо�
     )));
 
     // Удаление столбца “name”
-    $connection->deleteColumn("robots", null, "name");
+    $connection->dropColumn("robots", null, "name");
 
 
 Удаление таблицы

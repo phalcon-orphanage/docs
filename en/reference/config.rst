@@ -90,7 +90,8 @@ You can read the file as follows:
 
 Merging Configurations
 ----------------------
-Phalcon\\Config allows to merge a configuration object into another one recursively:
+Phalcon\\Config can recursively merge the properties of one configuration object into another.
+New properties are added and existing properties are updated.
 
 .. code-block:: php
 
@@ -99,16 +100,18 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
     $config = new \Phalcon\Config(array(
         'database' => array(
             'host' => 'localhost',
-            'dbname' => 'test_db'
+            'dbname' => 'test_db',
         ),
-        'debug' => 1
+        'debug' => 1,
     ));
 
     $config2 = new \Phalcon\Config(array(
         'database' => array(
+            'dbname' => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
-        )
+        ),
+        'logging' => 1,
     ));
 
     $config->merge($config2);
@@ -124,11 +127,12 @@ The above code produces the following:
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => test_db
+                [dbname] => production_db
                 [username] => scott
                 [password] => secret
             )
         [debug] => 1
+        [logging] => 1
     )
 
 There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
