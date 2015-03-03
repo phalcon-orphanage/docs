@@ -27,7 +27,7 @@
 
     }
 
-上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。
+上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 。
 因此，Robots 模型拥有了大量继承自该组件功能，包括基本的数据库 CRUD (Create, Read, Update, Delete) 操作，数据验证以及复杂的搜索支持，并且可以同时关联多个模型。
 
 .. highlights::
@@ -70,6 +70,9 @@ initialize() 方法在请求期间只被调用一次。
 The initialize() method is only called once during the request, it's intended to perform initializations that apply for
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
 created you can 'onConstruct':
+
+initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
+可以使用 'onConstruct' 事件：
 
 .. code-block:: php
 
