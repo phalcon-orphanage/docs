@@ -27,7 +27,7 @@
 
     }
 
-上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。
+上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 。
 因此，Robots 模型拥有了大量继承自该组件功能，包括基本的数据库 CRUD (Create, Read, Update, Delete) 操作，数据验证以及复杂的搜索支持，并且可以同时关联多个模型。
 
 .. highlights::
@@ -71,6 +71,10 @@ The initialize() method is only called once during the request, it's intended to
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
 created you can 'onConstruct':
 
+
+initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
+可以使用 'onConstruct' 事件：
+
 .. code-block:: php
 
     <?php
@@ -90,6 +94,9 @@ created you can 'onConstruct':
 Models can be implemented with properties of public scope, meaning that each property can be read/updated
 from any part of the code that has instantiated that model class without any restrictions:
 
+
+模型可以通过公共属性的方式实现，意味着模型的所有属性在实例化该模型的地方可以无限制的读取和更新。
+
 .. code-block:: php
 
     <?php
@@ -105,6 +112,9 @@ from any part of the code that has instantiated that model class without any res
 
 By using getters and setters you can control which properties are visible publicly perform various transformations
 to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
+
+
+通过使用 getters/setters 方法，可以控制哪些属性可以公开访问，并且对属性值执行不同的形式的转换，同时可以保存在模型中的数据添加相应的验证规则。
 
 .. code-block:: php
 
@@ -157,9 +167,17 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating. The ORM is compatible with both schemes of defining properties.
 
+
+公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
+开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
+
+
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^
 Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
+
+
+命名空间可以用来避免类名的冲突。ORM通过类名来映射相应的表名。比如 'Robots'：
 
 .. code-block:: php
 
@@ -177,6 +195,10 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
 for a table "robots" with the records:
 
+
+每个模型的实例对应一条数据表中的记录。可以方便的通过读取对象的属性来访问相应的数据。比如，
+一个表 "robots" 有如下数据：
+
 .. code-block:: bash
 
     mysql> select * from robots;
@@ -191,6 +213,10 @@ for a table "robots" with the records:
 
 You could find a certain record by its primary key and then print its name:
 
+
+你可以通过主键找到某一条记录并且打印它的名称：
+
+
 .. code-block:: php
 
     <?php
@@ -203,6 +229,9 @@ You could find a certain record by its primary key and then print its name:
 
 Once the record is in memory, you can make modifications to its data and then save changes:
 
+
+一旦记录被加载到内存中之后，你可以修改它的数据并保存所做的修改：
+
 .. code-block:: php
 
     <?php
@@ -214,10 +243,17 @@ Once the record is in memory, you can make modifications to its data and then sa
 As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
 abstraction for web applications.
 
+
+如上所示，不需要写任何SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用提供了高层数据库抽象。
+
+
 查找记录（Finding Records）
 ---------------
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
 how to query one or more records from a model:
+
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：
 
 .. code-block:: php
 
@@ -252,6 +288,8 @@ how to query one or more records from a model:
 
 You could also use the findFirst() method to get only the first record matching the given criteria:
 
+你可以使用  findFirst() 方法获取第一条符合查询条件的结果：
+
 .. code-block:: php
 
     <?php
@@ -270,6 +308,8 @@ You could also use the findFirst() method to get only the first record matching 
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
 
+find() 和 findFirst() 方法都接受关联数组作为查询条件：
+
 .. code-block:: php
 
     <?php
@@ -287,8 +327,13 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
 The available query options are:
 
+
+
+可用的查询设置如下：
+
+
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
+| 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
 +=============+====================================================================================================================================================================================================+=========================================================================+
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -314,6 +359,10 @@ The available query options are:
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+
+
+如果你愿意，除了使用数组作为查询参数外，还可以通过一种面向对象的方式来创建查询：
+
 
 .. code-block:: php
 
