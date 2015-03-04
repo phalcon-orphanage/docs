@@ -377,12 +377,26 @@ If you prefer, there is also available a way to create queries in an object-orie
 
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
+
+静态方法 query() 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
+
+
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+
+
+所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
+
 
 Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
 retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 An example is in order, so taking our Robots model mentioned earlier :
+
+
+最后，还有一个 findFirstBy<property-name>() 方法。这个方法扩展了前面提及的 "findFirst()" 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
+
+还是用上面用过的 Robots 模型来举例说明：
+
 
 .. code-block:: php
 
@@ -400,6 +414,10 @@ An example is in order, so taking our Robots model mentioned earlier :
 We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
 'Terminator'. This could be written like so :
 
+
+我们这里有3个属性：$id, $name 和 $price。因此，我们以想要查询第一个名称为 'Terminator' 的记录为例，可以这样写：
+
+
 .. code-block:: php
 
     <?php
@@ -415,6 +433,10 @@ We have three properties to work with here. $id, $name and $price. So, let's say
 
 Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
 when we find a match with our query, all the other properties are available to us as well.
+
+
+请注意我们在方法调用中用的是 'Name'，并向它传递了变量 $name，$name 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
+
 
 模型结果集（Model Resultsets）
 ^^^^^^^^^^^^^^^^
