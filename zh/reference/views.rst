@@ -184,7 +184,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
 .. code-block:: html+php
 
-    <!-- app/views/layouts/posts/last.phtml -->
+    <!-- app/views/posts/last.phtml -->
 
     <article>
         <h2>This is a title</h2>
@@ -222,7 +222,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
                 <h1>Blog Title</h1>
 
-                <!-- app/views/layouts/posts/last.phtml -->
+                <!-- app/views/posts/last.phtml -->
 
                 <article>
                     <h2>This is a title</h2>
