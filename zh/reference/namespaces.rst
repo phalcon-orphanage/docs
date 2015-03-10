@@ -3,6 +3,11 @@
 Namespaces_ can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
 a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
+
+Namespaces_ 可以用来避免类名的冲突，比如如果在一个应用中有两个控制器使用同样的名称，那么可以用namespace来区分他们。
+另外命名空间在创建组件或者模块的时候也是非常有用的。
+
+
 设置框架（Setting up the framework）
 ------------------------
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
