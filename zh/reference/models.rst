@@ -3118,6 +3118,12 @@ In Phalcon, all models can belong to the same database connection or have an ind
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
 in the application's services container. You can overwrite this service setting it in the initialize method:
 
+
+在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 initialize 方法内重写这个服务的设置。
+
+
+
 .. code-block:: php
 
     <?php
@@ -3144,6 +3150,8 @@ in the application's services container. You can overwrite this service setting 
 
 Then, in the Initialize method, we define the connection service for the model:
 
+然后，在 Initialize 方法内，我们为这个模型定义数据库连接。
+
 .. code-block:: php
 
     <?php
@@ -3160,6 +3168,11 @@ Then, in the Initialize method, we define the connection service for the model:
 
 But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
 to balance the load to your databases implementing a master-slave architecture:
+
+
+另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。
+（译者注：EvaEngine项目为使用Phalcon提供了更多的灵活性，推荐了解和使用）
+
 
 .. code-block:: php
 
@@ -3178,6 +3191,10 @@ to balance the load to your databases implementing a master-slave architecture:
 
 The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
 according to the current query conditions:
+
+
+另外ORM还可以通过根据当前查询条件来实现一个 'shard' 选择器，来实现水平切分的功能。
+
 
 .. code-block:: php
 
@@ -3219,6 +3236,10 @@ according to the current query conditions:
 
 The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
 query executed:
+
+
+'selectReadConnection' 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
+
 
 .. code-block:: php
 
