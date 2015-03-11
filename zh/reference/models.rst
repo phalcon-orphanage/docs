@@ -328,32 +328,31 @@ find() 和 findFirst() 方法都接受关联数组作为查询条件：
 The available query options are:
 
 
-
-可用的查询设置如下：
+可用的查询选项如下：
 
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
 +=============+====================================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
+| conditions  | 查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 Phalcon\\Mvc\\Model 假定第一个参数就是查询条件。                                                                                | "conditions" => "name LIKE 'steve%'"                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | "columns" => "id, name"                                                 |
+| columns     | 只返回指定的字段，而不是模型所有的字段。 当用这个选项时，返回的是一个不完整的对象。                                                                                                                | "columns" => "id, name"                                                 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | "bind" => array("status" => "A", "type" => "some-time")                 |
+| bind        | 绑定与选项一起使用，通过替换占位符以及转义字段值从而增加安全性。                                                                                                                                   | "bind" => array("status" => "A", "type" => "some-time")                 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
+| bindTypes   | 当绑定参数时，可以使用这个参数为绑定参数定义额外的类型限制从而更加增强安全性。                                                                                                                     | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | "order" => "name DESC, status"                                          |
+| order       | 用于结果排序。使用一个或者多个字段，逗号分隔。                                                                                                                                                     | "order" => "name DESC, status"                                          |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                         | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
+| limit       | 限制查询结果的数量在一定范围内。                                                                                                                                                                   | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | "group" => "name, status"                                               |
+| group       | 从多条记录中获取数据并且根据一个或多个字段对结果进行分组。                                                                                                                                         | "group" => "name, status"                                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                              | "for_update" => true                                                    |
+| for_update  | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置独占锁。                                                                         | "for_update" => true                                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                 | "shared_lock" => true                                                   |
+| shared_lock | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置共享锁。                                                                         | "shared_lock" => true                                                   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
+| cache       | 缓存结果集，减少了连续访问数据库。                                                                                                                                                                 | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -3098,6 +3097,10 @@ The following example shows how to define the meta-data manually:
 ------------------------------
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
 
+
+如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 getSchema 方法去定义它：
+
+
 .. code-block:: php
 
     <?php
@@ -3381,6 +3384,8 @@ Each generated profile contains the duration in milliseconds that each instructi
 ------------------------------
 You may be required to access the application services within a model, the following example explains how to do that:
 
+你可能需要在模型中用到应用中注入的服务，下面的例子会教你如何去做：
+
 .. code-block:: php
 
     <?php
@@ -3403,6 +3408,10 @@ You may be required to access the application services within a model, the follo
 
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+
+
+每当 "create" 或者 "update" 操作失败时会触发 "notSave" 事件。所以我们从DI中获取 "flash" 服务并推送确认消息。这样的话，我们不需要每次在save之后去打印信息。
+
 
 禁用或启用特性（Disabling/Enabling Features）
 ---------------------------
