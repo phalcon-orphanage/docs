@@ -1,6 +1,6 @@
 Dependency Injection/Service Location
 *************************************
-The following example is a bit lengthy, but explains why use service location and dependency injection.
+The following example is a bit lengthy, but it attempts to explain why Phalcon uses service location and dependency injection.
 First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
 Our component has some dependency that is a connection to a database.
 
@@ -255,7 +255,7 @@ before using the component, every time, makes our code not as maintainable as we
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. In the future, if we do not require any of the dependencies,
+Think if we had to create this object in many parts of our application. In the future, if we do not require any of the dependencies,
 we need to go through the entire code base to remove the parameter in any constructor or setter where we injected the code. To solve this,
 we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating
 the object:
@@ -286,8 +286,8 @@ the object:
 
     }
 
-One moment, we returned to the beginning, we are again building the dependencies inside of the component! We can move on and find out a way
-to solve this problem every time. But it seems that time and again we fall back into bad practices.
+Now we find ourselves back where we started, we are again building the dependencies inside of the component! We must seek a solution that
+keeps us from repeatedly falling into bad practices.
 
 A practical and elegant way to solve these problems is using a container for dependencies. The containers act as the global registry that
 we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity
