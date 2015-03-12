@@ -443,8 +443,16 @@ While findFirst() returns directly an instance of the called class (when there i
 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
 a resultset has like traversing, seeking specific records, counting, etc.
 
+
+findFirst() 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 find() 方法返回一个 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。
+
+
 These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
 is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+
+
+这些对象比一般数组功能更强大。最大的特点是 :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。
+
 
 .. code-block:: php
 
@@ -495,12 +503,26 @@ to a specific position. Note that some database systems don't support scrollable
 in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
 is traversed several times, the query must be executed the same number of times.
 
+
+Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者内部指针去访问任何一条特定的记录。注意有一些数据库系统不支持滚动游标，这就使得查询会被重复执行，
+以便回放光标到最开始的位置，然后获得相应的记录。类似地，如果多次遍历结果集，那么必须执行相同的查询次数。
+
+
 Storing large query results in memory could consume many resources, because of this, resultsets are obtained
 from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
+
+
+将大数据量的查询结果存储在内存会消耗很多资源，正因为如此，分成每32行一块从数据库中获得结果集，以减少重复执行查询请求的次数，在一些情况下也节省内存。
+
 
 Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
 serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
 thus consuming more memory while this process takes place.
+
+
+注意结果集可以序列化后保存在一个后端缓存里面。 :doc:`Phalcon\\Cache <cache>` 可以用来实现这个。但是，序列化数据会导致 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 
+将从数据库检索到的所有数据以一个数组的方式保存，因此在这样执行的地方会消耗更多的内存。
+
 
 .. code-block:: php
 
@@ -524,6 +546,10 @@ thus consuming more memory while this process takes place.
 ^^^^^^^^^^^^^^^^^^^^
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
 Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+
+
+过滤数据最有效的方法是设置一些查询条件，数据库会利用表的索引快速返回数据。Phalcon 额外的允许你通过任何数据库不支持的方式过滤数据。
+
 
 .. code-block:: php
 
