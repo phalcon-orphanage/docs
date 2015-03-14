@@ -27,7 +27,7 @@ APC_ 中间层代码缓存可适用于全部框架。任何Apache模块重定向
 .. figure:: ../_static/img/bench-4.png
     :align: center
 
-*APC 配置：*
+*APC 配置:*
 
 .. figure:: ../_static/img/bench-5.png
     :align: center
