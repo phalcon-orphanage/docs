@@ -1,18 +1,17 @@
 MVC 应用（MVC Applications）
 ================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
-operations required in the background, instantiating every component needed and integrating it with the
-project, to allow the MVC pattern to operate as desired.
+在Phalcon，策划MVC操作背后的全部困难工作通常都可以
+通过:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`做到。这个组件封装了全部后端所需要的复杂
+操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
 
 单模块或多模块应用（Single or Multi Module Applications）
 -----------------------------------
-With this component you can run various types of MVC structures:
+通过这个组件，你可以运行各式各样的MVC结构：
 
 单模块（Single Module）
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
-An application like this would have the following file structure:
+单一的MVC应用仅仅包含了一个模块。可以使用命名空间，但不是必需的。
+这样类型的应用可能会有以下文件目录结构：
 
 .. code-block:: php
 
@@ -26,7 +25,7 @@ An application like this would have the following file structure:
             img/
             js/
 
-If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
+如果未使用命名空间，以下的启动文件可用于编排MVC工作流：
 
 .. code-block:: php
 
@@ -65,7 +64,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         echo $e->getMessage();
     }
 
-If namespaces are used, the following bootstrap can be used:
+如果使用了命名空间，则可以使用以下启动文件（译者注：主要区别在于使用$loader的方式）：
 
 .. code-block:: php
 
@@ -116,7 +115,7 @@ If namespaces are used, the following bootstrap can be used:
 
 多模块（Multi Module）
 ^^^^^^^^^^^^
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+多模块的应用使用了相同的文档根目录但拥有多个模块。在这种情况下，可以使用以下的文件目录结构：
 
 .. code-block:: php
 
@@ -137,7 +136,7 @@ A multi-module application uses the same document root for more than one module.
         img/
         js/
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+在apps/下的每一个目录都有自己的MVC结构。Module.php文件代表了各个模块不同的配置，如自动加载器和自定义服务：
 
 .. code-block:: php
 
@@ -194,7 +193,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+还需要一个指定的启动文件来加载多模块的MVC架构：
 
 .. code-block:: php
 
@@ -259,8 +258,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+如果你想在启动文件保持模块的配置，你可以使用匿名函数来注册对应的模块：
 
 .. code-block:: php
 
@@ -289,17 +287,15 @@ module:
             }
         )
     );
-
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
-necessary that every matched route returns a valid module. Each registered module has an associated class
-offering functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices(), they will be called by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
+当:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`有多个模块注册时，通常
+每个都是需要的，以便每一个被匹配到的路由都能返回一个有效的模块。每个已经注册的模块都有一个相关的类来提供建立和启动自身的函数。
+而每个模块定义的类都必须实现registerAutoloaders()和registerServices()这两个方法，这两个函数会在模块即被执行时被
+doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`调用。
 
 理解默认行为（Understanding the default behavior）
 ----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
-you may recognize the following bootstrap file:
+如果你已经看过了:doc:`tutorial <tutorial>`或者已经通过:doc:`Phalcon Devtools <tools>`生成了代码，
+你将很容易识别以下的启动文件：
 
 .. code-block:: php
 
@@ -322,7 +318,7 @@ you may recognize the following bootstrap file:
         echo "Exception: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when handle() is invoked:
+控制器中全部核心的工作都会在handle()被回调时触发执行。
 
 .. code-block:: php
 
