@@ -4,7 +4,7 @@ Apache_ 是一个流行且出名的web服务器，并且可以支持很多平台
 
 Apache 下配置 Phalcon（Configuring Apache for Phalcon）
 ------------------------------
-以下内容是你可能在使用Apache下搭建Phalcon时可能会用到的配置。这些内容重点关注于mod-rewrite模块的配置，以便可以使用友好的链接和路由组件:doc:`router component <routing>`。通常一个应用会有以下目录结构：
+以下内容是你可能在使用Apache下搭建Phalcon时可能会用到的配置。这些内容重点关注于mod-rewrite模块的配置，以便可以使用友好的链接和路由组件 :doc:`router component <routing>` 。通常一个应用会有以下目录结构：
 
 .. code-block:: php
 
