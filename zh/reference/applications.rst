@@ -459,8 +459,8 @@ MVC 应用（MVC Applications）
 
 应用事件（Application Events）
 ------------------
- :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 可以把事件发送到 :doc:`EventsManager <events>` （如果它激活的话）。
-事件将通过"application"类型被消费掉。目前已支持的事件如下：
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 可以把事件发送到 :doc:`EventsManager <events>` （如果它激活的话）。
+事件将被当作"application"类型被消费掉。目前已支持的事件如下：
 
 +---------------------+--------------------------------------------------------------+
 | 事件名称            | 消费于                                                       |
