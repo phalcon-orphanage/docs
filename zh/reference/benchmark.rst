@@ -4,7 +4,7 @@
 然而，当Google决定将网站的速度纳入搜索排名时，性能成为了与功能并起并坐的最高优先级之一。
 这也就是说一个可以提高网站性能的方式，将对站点有着正面积极的意义和影响。
 
-以//TODO
+以下的基准测试，展示了相比传统的PHP框架，Phalcon是多么地高效。
 
 我们鼓励
 or comments please `write us`_. `Check out source at Github`_
