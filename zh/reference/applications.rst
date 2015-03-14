@@ -328,7 +328,7 @@ doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`调用。
 
 手动启动（Manual bootstrapping）
 -------------------
-If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
+如果你不想使用:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`，以上的代码可以改成这样：
 
 .. code-block:: php
 
@@ -375,8 +375,8 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Print the response
     echo $response->getContent();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
-it suitable for Rest APIs:
+以下代码替换了:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`，虽然缺少了视图组件，
+但却更适合Rest风格的API接口：
 
 .. code-block:: php
 
@@ -407,7 +407,7 @@ it suitable for Rest APIs:
         $response->send();
     }
 
-Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
+另外一个修改就是在分发器中对抛出异常的捕捉可以将请求转发到其他的操作：
 
 .. code-block:: php
 
@@ -453,30 +453,30 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
         $response->send();
     }
 
-Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what
-should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+尽管上面的代码比使用:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`而需要的代码远远要累赘得很，
+但它为启动你的应用提供了一个可修改、可定制化的途径。
+因为根据你的项目需要，你可以想对实例什么和不实例化什么进行完全的控制，或者想用你自己的组件来替代那些确定和必须的组件从而扩展默认的功能。
 
 应用事件（Application Events）
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
-(if it is present). Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`可以把事件发送到:doc:`EventsManager <events>`（如果它激活的话）。
+事件将通过"application"类型被消费掉。目前已支持的事件如下：
 
 +---------------------+--------------------------------------------------------------+
-| Event Name          | Triggered                                                    |
+| 事件名称            | 消费于                                                       |
 +=====================+==============================================================+
-| boot                | Executed when the application handles its first request      |
+| boot                | 当应用处理它首个请求时被执行      |
 +---------------------+--------------------------------------------------------------+
-| beforeStartModule   | Before initialize a module, only when modules are registered |
+| beforeStartModule   | 在初始化模块之前，仅当模块被注册时 |
 +---------------------+--------------------------------------------------------------+
-| afterStartModule    | After initialize a module, only when modules are registered  |
+| afterStartModule    | 在初始化模块之后，仅当模块被注册时  |
 +---------------------+--------------------------------------------------------------+
-| beforeHandleRequest | Before execute the dispatch loop                             |
+| beforeHandleRequest | 在执行分发环前                            |
 +---------------------+--------------------------------------------------------------+
-| afterHandleRequest  | After execute the dispatch loop                              |
+| afterHandleRequest  | 在执行分发环后                              |
 +---------------------+--------------------------------------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+以下示例演示了如何将侦听器绑定到组件：
 
 .. code-block:: php
 
@@ -497,4 +497,4 @@ The following example demonstrates how to attach listeners to this component:
 
 外部资源（External Resources）
 ------------------
-* `MVC examples on Github <https://github.com/phalcon/mvc>`_
+* `Github上的MVC示例 <https://github.com/phalcon/mvc>`_
