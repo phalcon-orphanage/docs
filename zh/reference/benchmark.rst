@@ -1,14 +1,12 @@
 框架基准测试（Framework Benchmarks）
 ====================
-In the past, performance was not considered one of the top priorities when developing web applications. Reasonable hardware was
-able to compensate for that. However when Google decided_ to take site speed into account in the search rankings, performance
-became one of the top priorities alongside functionality. This is yet another way in which improving web performance will
-have a positive impact on a website.
+在过去，当开发web应用时，性能不是作为最高优先级之一被考虑的。因为硬件可以填补这块的空缺。
+然而，当Google决定将网站的速度纳入搜索排名时，性能成为了与功能并起并坐的最高优先级之一。
+这也就是说一个可以提高网站性能的方式，将对站点有着正面积极的意义和影响。
 
-The benchmarks below, show how efficient Phalcon is when compared with other traditional PHP frameworks. These benchmarks
-are updated as stable versions are released from any of the frameworks mentioned or Phalcon itself.
+以//TODO
 
-We encourage programmers to clone the test suite that we are using for our benchmarks. If you have any additional optimizations
+我们鼓励
 or comments please `write us`_. `Check out source at Github`_
 
 怎样的测试环境？（What was the test environment?）
