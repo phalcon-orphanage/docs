@@ -1,23 +1,22 @@
 使用缓存提高性能（Improving Performance with Cache）
 ================================
-Phalcon provides the :doc:`Phalcon\\Cache <cache>` class allowing faster access to frequently used or already processed data.
-:doc:`Phalcon\\Cache <cache>` is written in C, achieving higher performance and reducing the overhead when getting items from the backends.
-This class uses an internal structure of frontend and backend components. Front-end components act as input sources or
-interfaces, while backend components offer storage options to the class.
+Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使用频繁或者已经被处理的数据。
+ :doc:`Phalcon\\Cache <cache>` 是用C来编写的，因此有着更高的性能并且能够减少从后端获取昂价资源所带来的负载。
+这个类使用了由前端和后端组件组成的内部结构。前端组件如输入源或者接口，后端组件则为这个类提供了存储的选项。
 
 什么情况下使用缓存？（When to implement cache?）
 ------------------------
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain.
-We recommend you check this cases before using a cache:
+尽管这个组件运行非常快速，但如果不加考虑就使用它会适得其反，特别在不需要或者不适宜使用缓存时。
+我们建议你在使用缓存前核对一下场景：
 
-* You are making complex calculations that every time return the same result (changing infrequently)
-* You are using a lot of helpers and the output generated is almost always the same
-* You are accessing database data constantly and these data rarely change
+* 你正在进行复杂的运算，并且每次都返回相同的结果（或者变动很少）
+* 你正在使用大量的插件生成大部分时间几乎都是相同的页面输出
+* 你正在频繁地接入数据库并且这些数据变动甚少
 
 .. highlights::
 
-    *NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily
-    be done, especially in the case of Memcache or Apc, with the relevant tools that backends provide.
+    *温馨提示* 即使使用了这些缓存，你仍然应该定期检测缓存的命中率。
+    通过后台提供的相关工具，这一点很容易做得到，特别是使用Memcache或者APC时。
 
 缓存行为（Caching Behavior）
 ----------------
