@@ -125,7 +125,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
 Memcached 后端存储器例子（Memcached Backend Example）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-当我们改用Memcached作为后端缓存时，上面的实例改动很轻微（特别就配置而言）。
+当我们改用Memcached作为后端存储器时，上面的实例改动很轻微（特别就配置而言）。
 
 .. code-block:: php
 
@@ -319,7 +319,7 @@ Setting the lifetime when retrieving:
 作为缓存的接口或者输入源的前端适配器有：
 
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Adapter  | Description                                                                                                                                                          | Example                                                                            |
+| 适配器   | 描述                                                                                                                                                                 | 示例                                                                            |
 +==========+======================================================================================================================================================================+====================================================================================+
 | Output   | 从标准PHP输出读取输入数据                                                                                                                                            | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
@@ -336,95 +336,97 @@ Setting the lifetime when retrieving:
 
 自定义前端适配器（Implementing your own Frontend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>` interface must be implemented in order to create your own frontend adapters or extend the existing ones.
+为了创建你自己的前端适配器或者扩展已有的适配器，你必须
+实现 :doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>` 接口。
 
 后端适配器（Backend Adapters）
 ----------------
-The backend adapters available to store cache data are:
+用于存放缓存数据的后端适配器有：
 
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Adapter   | Description                                    | Info       | Required Extensions | Example                                                                           |
+| 适配器    | 描述                                           | 信息       | 需要的扩展          | 示例                                                                           |
 +===========+================================================+============+=====================+===================================================================================+
-| File      | Stores data to local plain files               |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
+| File      | 在本地绝对路径的文件上存放数据                 |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Memcached | Stores data to a memcached server              | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
+| Memcached | 在memcached服务器存放数据                      | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| APC       | Stores data to the Alternative PHP Cache (APC) | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
+| APC       | 在opcode缓存           （APC）中存放数据       | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Mongo     | Stores data to Mongo Database                  | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
+| Mongo     | 在Mongo数据库中存放数据                        | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| XCache    | Stores data in XCache                          | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
+| XCache    | 在XCache中存放数据                             | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
 +-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
 
 自定义后端适配器（Implementing your own Backend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` interface must be implemented in order to create your own backend adapters or extend the existing ones.
+为了创建你自己的后端适配器或者扩展已有的后端适配器，你必须
+实现 :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` 接口。
 
 文件后端存储器选项（File Backend Options）
 ^^^^^^^^^^^^^^^^^^^^
-This backend will store cached content into files in the local server. The available options for this backend are:
+此后端存储器把缓存内容存放到本地服务器的文件。对应的选项有：
 
 +----------+-------------------------------------------------------------+
-| Option   | Description                                                 |
+| 选项     | 描述                                                        |
 +==========+=============================================================+
-| prefix   | A prefix that is automatically prepended to the cache keys  |
+| prefix   | 自动追加到缓存key前面的前缀                                 |
 +----------+-------------------------------------------------------------+
-| cacheDir | A writable directory on which cached files will be placed   |
+| cacheDir | 放置缓存文件且可写入的目录                                  |
 +----------+-------------------------------------------------------------+
 
 Memcached 后端存储器选项（Memcached Backend Options）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on a memcached server. The available options for this backend are:
+此后端存储器将缓存的内容存放在memcached服务器。对应的选项有：
 
 +------------+-------------------------------------------------------------+
-| Option     | Description                                                 |
+| 选项       | 描述                                                        |
 +============+=============================================================+
-| prefix     | A prefix that is automatically prepended to the cache keys  |
+| prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
-| host       | memcached host                                              |
+| host       | memcached 域名                                              |
 +------------+-------------------------------------------------------------+
-| port       | memcached port                                              |
+| port       | memcached 端口                                              |
 +------------+-------------------------------------------------------------+
-| persistent | create a persistent connection to memcached?                 |
+| persistent | 创建一个长连接的memcached连接？                             |
 +------------+-------------------------------------------------------------+
 
 APC 后端存储器选项（APC Backend Options）
 ^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on Alternative PHP Cache (APC_). The available options for this backend are:
+此后端存储器将缓存内容存放到opcode缓存（APC）。对应的选项有：
 
 +------------+-------------------------------------------------------------+
-| Option     | Description                                                 |
+| 选项       | 描述                                                        |
 +============+=============================================================+
-| prefix     | A prefix that is automatically prepended to the cache keys  |
+| prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
 
 Mongo 后端存储器选项（Mongo Backend Options）
 ^^^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on a MongoDB server. The available options for this backend are:
+此后端存储器将缓存内容存放到MongoDB服务器。对应的选项有：
 
 +------------+-------------------------------------------------------------+
-| Option     | Description                                                 |
+| 选项       | 描述                                                        |
 +============+=============================================================+
-| prefix     | A prefix that is automatically prepended to the cache keys  |
+| prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
-| server     | A MongoDB connection string                                 |
+| server     | MongoDB的连接串                                             |
 +------------+-------------------------------------------------------------+
-| db         | Mongo database name                                         |
+| db         | Mongo数据库名                                               |
 +------------+-------------------------------------------------------------+
-| collection | Mongo collection in the database                            |
+| collection | Mongo数据库连接                                             |
 +------------+-------------------------------------------------------------+
 
 XCache 后端存储器选项（XCache Backend Options）
 ^^^^^^^^^^^^^^^^^^^^^^
-This backend will store cached content on XCache (XCache_). The available options for this backend are:
+此后端存储器将缓存内容存放到XCache (XCache_)。对应的选项有：
 
 +------------+-------------------------------------------------------------+
-| Option     | Description                                                 |
+| 选项       | 描述                                                        |
 +============+=============================================================+
-| prefix     | A prefix that is automatically prepended to the cache keys  |
+| prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+在 `Phalcon Incubator <https://github.com/phalcon/incubator>`_ 上还有更多针对这个组件可用的适配器
 
 .. _Memcached: http://www.php.net/memcache
 .. _memcache: http://pecl.php.net/package/memcache
