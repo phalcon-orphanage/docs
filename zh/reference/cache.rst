@@ -125,7 +125,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
 Memcached 后端存储器例子（Memcached Backend Example）
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
+当我们改用Memcached作为后端缓存时，上面的实例改动很轻微（特别就配置而言）。
 
 .. code-block:: php
 
@@ -168,9 +168,8 @@ The above example changes slightly (especially in terms of configuration) when w
 
 查询缓存（Querying the cache）
 ------------------
-The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the
-actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does
-not exist, the get method will return null.
+添加到缓存的元素根据唯一的key进行识别区分。这使用文件缓存作为后端时，key就是实际的文件名。
+为了从缓存中获得数据，我们仅仅需要通过唯一的key调用即可。如果key不存在，get方法将会返回null。
 
 .. code-block:: php
 
@@ -179,7 +178,7 @@ not exist, the get method will return null.
     // Retrieve products by key "myProducts"
     $products = $cache->get("myProducts");
 
-If you want to know which keys are stored in the cache you could call the queryKeys method:
+如果你想知道在缓存中存放了哪些key，你可以调用queryKeys方法：
 
 .. code-block:: php
 
@@ -198,8 +197,8 @@ If you want to know which keys are stored in the cache you could call the queryK
 
 删除缓存数据（Deleting data from the cache）
 ----------------------------
-There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data).
-The only requirement is to know the key that the data have been stored with.
+有些时机你需要强制废除一个缓存的实体（如对被缓存的数据进行了更新）。
+而仅仅需要做的只是知道对应缓存的数据存放于哪个key即可。
 
 .. code-block:: php
 
@@ -216,7 +215,7 @@ The only requirement is to know the key that the data have been stored with.
 
 检查缓存是否存在（Checking cache existence）
 ------------------------
-It is possible to check if a cache already exists with a given key:
+也有可能需要根据一个给定的key来判断缓存是否存在：
 
 .. code-block:: php
 
@@ -231,8 +230,8 @@ It is possible to check if a cache already exists with a given key:
 
 有效期（Lifetime）
 --------
-A "lifetime" is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation.
-You can set a specific lifetime in the creation or retrieving of the data from the cache:
+“有效期”是指缓存可以多久时间（在以秒为单位）内有效。默认情况下，全部被创建的缓存都使用前端构建中设定的有效期。
+你可以在创建时指定一个有效期或者在从缓存中获取数据时：
 
 Setting the lifetime when retrieving:
 
@@ -252,7 +251,7 @@ Setting the lifetime when retrieving:
         $cache->save($cacheKey, $robots);
     }
 
-Setting the lifetime when saving:
+在保存时设置有效期：
 
 .. code-block:: php
 
@@ -271,9 +270,8 @@ Setting the lifetime when saving:
 
 多级缓存（Multi-Level Cache）
 -----------------
-This feature ​of the cache component, ​allows ​the developer to implement a multi-level cache​. This new feature is very ​useful
-because you can save the same data in several cache​ locations​ with different lifetimes, reading ​first from the one with
-the faster adapter and ending with the slowest one until the data expire​s​:
+缓存组件的特点，就是允许开发人员使用多级缓存。这个新特性非常有用，
+因为你可以在多个缓存媒介结合不同的有效期中保存相同的数据，并在有效期内从首个最快的缓存适配器开始读取，直至到最慢的适配器。
 
 .. code-block:: php
 
@@ -318,22 +316,22 @@ the faster adapter and ending with the slowest one until the data expire​s​:
 
 前端适配器（Frontend Adapters）
 -----------------
-The available frontend adapters that are used as interfaces or input sources to the cache are:
+作为缓存的接口或者输入源的前端适配器有：
 
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | Adapter  | Description                                                                                                                                                          | Example                                                                            |
 +==========+======================================================================================================================================================================+====================================================================================+
-| Output   | Read input data from standard PHP output                                                                                                                             | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
+| Output   | 从标准PHP输出读取输入数据                                                                                                                                            | :doc:`Phalcon\\Cache\\Frontend\\Output <../api/Phalcon_Cache_Frontend_Output>`     |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Data     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                           | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         |
+| Data     | 可用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据将会被序列化。                                                                                  | :doc:`Phalcon\\Cache\\Frontend\\Data <../api/Phalcon_Cache_Frontend_Data>`         |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Base64   | It's used to cache binary data. The data is serialized using base64_encode before be stored in the backend.                                                          | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     |
+| Base64   | 可用于缓存二进制数据。在存入后端前数据会以base64_encode编码进行序列化。                                                                                              | :doc:`Phalcon\\Cache\\Frontend\\Base64 <../api/Phalcon_Cache_Frontend_Base64>`     |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| Json     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks.       | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         |
+| Json     | 在存入后端前数据使用JSON编码。从缓存获取后进行JSON解码。此前端适配器可用于跨语言和跨框架共享数据。                                                                   | :doc:`Phalcon\\Cache\\Frontend\\Json <../api/Phalcon_Cache_Frontend_Json>`         |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| IgBinary | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using IgBinary before be stored in the backend.                         | :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` |
+| IgBinary | 用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据会使用IgBinary进行序列化。                                                                        | :doc:`Phalcon\\Cache\\Frontend\\Igbinary <../api/Phalcon_Cache_Frontend_Igbinary>` |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| None     | It's used to cache any kind of PHP data without serializing them.                                                                                                    | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         |
+| None     | 用于缓存任何类型的PHP数据而不作任何序列化操作。                                                                                                                      | :doc:`Phalcon\\Cache\\Frontend\\None <../api/Phalcon_Cache_Frontend_None>`         |
 +----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 
 自定义前端适配器（Implementing your own Frontend adapters）
