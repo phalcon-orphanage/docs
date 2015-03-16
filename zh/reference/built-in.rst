@@ -1,15 +1,15 @@
 使用 PHP 内置 web 服务器（Using PHP Built-in webserver）
 ============================
 
-As of PHP 5.4.0, you can use PHP's on built-in_ web server for development.
+对于PHP 5.4.0或以上版本, 你可以为项目开发使用PHP内置的web服务器。
 
-To start the server type:
+为了启动web服务器，需要：
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root
 
-If you want to rewrite the URIs to the index.php file use the following router file (.htrouter.php):
+如果你想重写URI并指向index.php文件，可以使用以下路由文件（.htrouter.php）：
 
 .. code-block:: php
 
@@ -19,12 +19,12 @@ If you want to rewrite the URIs to the index.php file use the following router f
     }
     return false;
 
-and then start the server with:
+然后这样启动服务器：
 
 .. code-block:: bash
 
     php -S localhost:8000 -t /web_root .htrouter.php
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+最然打开浏览器输入并跳转到 http://localhost:8000/，检测是否可以正常访问。
 
 .. _built-in: http://php.net/manual/en/features.commandline.webserver.php 
