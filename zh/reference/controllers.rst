@@ -143,9 +143,9 @@
 
     }
 
-There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
-your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
-the view layer of the MVC that is managed by :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>`.
+对于“forwards”转发的次数没有限制，只要不会形成循环重定向即可，否则就意味着
+你的应用将会停止（译者注：如果浏览器发现一个请求循环重定向时，会终止请求）。
+如果在循环调度里面没有其他action可以分发，分发器将会自动调用由 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 管理的MVC的视图层。
 
 初始化控制器（Initializing Controllers）
 ------------------------
