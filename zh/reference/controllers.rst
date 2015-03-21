@@ -251,9 +251,9 @@
 
 请求与响应（Request and Response）
 --------------------
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
-The "request" service contains an instance of :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` and the "response"
-contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` representing what is going to be sent back to the client.
+假设框架预先提供了一系列的注册的服务。我们这里将解释如何和HTTP环境进行关联和交互。
+“request”服务包含了一个 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` 的实例，
+“response”服务则包含了一个 :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` 的实例，用来表示将要返回给客户端的内容。
 
 .. code-block:: php
 
@@ -279,8 +279,8 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
 
     }
 
-The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
-an afterDispatch event - it can be useful to access the response directly:
+响应对象通常不会直接使用，但在action的执行前会被创建，有时候 - 如在
+一个afterDispatch事件中 - 它对于直接访问响应非常有帮助：
 
 .. code-block:: php
 
@@ -302,12 +302,12 @@ an afterDispatch event - it can be useful to access the response directly:
 
     }
 
-Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
+如需学习了解HTTP环境更多内容，请查看专题： :doc:`request <request>` 和 :doc:`response <response>` 。
 
 会话数据（Session Data）
 ------------
-Sessions help us maintain persistent data between requests. You could access a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`
-from any controller to encapsulate data that need to be persistent.
+会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` 
+以便封装需要进行持久化的数据。
 
 .. code-block:: php
 
@@ -330,8 +330,8 @@ from any controller to encapsulate data that need to be persistent.
 
 在控制器中使用服务（Using Services as Controllers）
 -----------------------------
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
-any other class registered with its name can easily replace a controller:
+服务可以是控制器，控制器类通常会从服务容器中请求。据于此，
+任何一个用其名字注册的类都可以轻易地用一个控制器来替换：
 
 .. code-block:: php
 
@@ -351,6 +351,7 @@ any other class registered with its name can easily replace a controller:
 
 创建基控制器（Creating a Base Controller）
 --------------------------
+//todo
 Some application features like access control lists, translation, cache, and template engines are often common to many
 controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
 controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
