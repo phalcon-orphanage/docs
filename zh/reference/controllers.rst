@@ -269,9 +269,9 @@
 
         public function saveAction()
         {
-            // Check if request has made with POST
+            // 检查请求是否为POST
             if ($this->request->isPost() == true) {
-                // Access POST data
+                // 获取POST数据
                 $customerName = $this->request->getPost("name");
                 $customerBorn = $this->request->getPost("born");
             }
@@ -296,7 +296,7 @@
 
         public function notFoundAction()
         {
-            // Send a HTTP 404 response header
+            // 发送一个HTTP 404 响应的header
             $this->response->setStatusCode(404, "Not Found");
         }
 
@@ -337,13 +337,13 @@
 
     <?php
 
-    //Register a controller as a service
+    // 将一个控制器作为服务进行注册
     $di->set('IndexController', function() {
         $component = new Component();
         return $component;
     });
 
-	    //Register a namespaced controller as a service
+	    // 将一个命名空间下的控制器作为服务进行注册
 	    $di->set('Backend\Controllers\IndexController', function() {
 	        $component = new Component();
 	        return $component;
@@ -376,7 +376,7 @@
     {
 
       /**
-       * This action is available for multiple controllers
+       * 这个方法可以被不同的控制器子类使用
        */
       public function someAction()
       {
@@ -410,7 +410,7 @@
 
         public function beforeExecuteRoute($dispatcher)
         {
-            // This is executed before every found action
+            // 这个方法会在每一个能找到的action前执行
             if ($dispatcher->getActionName() == 'save') {
 
                 $this->flash->error("You don't have permission to save posts");
@@ -426,7 +426,7 @@
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Executed after every found action
+            // 在找到的action后执行
         }
 
     }
