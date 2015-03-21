@@ -365,7 +365,8 @@
 
     require "../app/controllers/ControllerBase.php";
 
-The implementation of common components (actions, methods, properties etc.) resides in this file:
+
+对通用组件（action，方法，和类属性等）也在这个基类文件里面：
 
 .. code-block:: php
 
@@ -384,8 +385,7 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     }
 
-现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上述所讨论的）：
-Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
+现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上面讲到的的）：
 
 .. code-block:: php
 
