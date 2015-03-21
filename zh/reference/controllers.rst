@@ -351,16 +351,13 @@
 
 创建基控制器（Creating a Base Controller）
 --------------------------
-//todo
-Some application features like access control lists, translation, cache, and template engines are often common to many
-controllers. In cases like these the creation of a "base controller" is encouraged to ensure your code stays DRY_. A base
-controller is simply a class that extends the :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` and encapsulates
-the common functionality that all controllers must have. In turn, your controllers extend the "base controller" and have
-access to the common functionality.
+对于某些应用特性如访问控制列表（ACL），翻译，缓存，和模板引擎一般对于
+控制器都是通用的。在这种情况下，我们鼓励创建一个 “基控制器”，从而确保你的代码遵循 DRY_ 。
+基控制器可以是一个简单的类，然后继承于 :doc:`Phalcon\\Mvc\\Controller <../api/Phalcon_Mvc_Controller>` ，并封装
+全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基控制器”以便可以直接使用通用功能操作。
 
-This class could be located anywhere, but for organizational conventions we recommend it to be in the controllers folder,
-e.g. apps/controllers/ControllerBase.php. We may require this file directly in the bootstrap file or cause to be
-loaded using any autoloader:
+这个基类可以放置在任何一个地方，但出于代码组织的便利我们推荐应该放置在控制器的目录下，
+如：apps/controllers/ControllerBase.php。我们可以在启动文件直接require这个文件，也可以使用自动加载：
 
 .. code-block:: php
 
@@ -387,6 +384,7 @@ The implementation of common components (actions, methods, properties etc.) resi
 
     }
 
+现在，其他全部的控制都继承于ControllerBase，然后便可访问通用组件（如上述所讨论的）：
 Any other controller now inherits from ControllerBase, automatically gaining access to the common components (discussed above):
 
 .. code-block:: php
@@ -400,8 +398,8 @@ Any other controller now inherits from ControllerBase, automatically gaining acc
 
 控制器中的事件（Events in Controllers）
 ---------------------
-Controllers automatically act as listeners for :doc:`dispatcher <dispatching>` events, implementing methods with those event names allow
-you to implement hook points before/after the actions are executed:
+控制器会自动作为 :doc:`dispatcher <dispatching>` 事件的侦听者，使用这些事件并实现实现这些方法后，
+你便可以实现对应被执行的action的before/after钩子函数：
 
 .. code-block:: php
 
