@@ -1,13 +1,13 @@
 调度控制器（Dispatching Controllers）
 =======================
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
-控制器和执行在这些控制器上必要的action的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务
+控制器和执行在这些控制器上必要的动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务
 
 循环调度（The Dispatch Loop）
 -----------------
 在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
 发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
-如果一个action将这个流转发给了另一个controller/action，控制调度器将会再次启动。为了更好
+如果一个动作将这个流转发给了另一个控制器/动作，控制调度器将会再次启动。为了更好
 解释这一点，以下示例怡到好处地说明了在  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 中的处理过程：
 
 .. code-block:: php
@@ -62,9 +62,9 @@
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
-The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
+:doc:`INVO <tutorial-invo>` 这篇导读说明了如何从通过结合  :doc:`Acl <acl>` 实现的一个安全过滤器中获得事件调度的好处。
 
-The following example demonstrates how to attach listeners to this component:
+以下例子演示了如何将侦听者绑定到组件上：
 
 .. code-block:: php
 
@@ -92,7 +92,7 @@ The following example demonstrates how to attach listeners to this component:
 
     }, true);
 
-An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
+一个实例化的控制器会自动作为事件调度的侦听者，所以你可以实现回调函数：
 
 .. code-block:: php
 
@@ -115,8 +115,8 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
 转发到其他动作（Forwarding to other actions）
 ---------------------------
-The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
-access to certain options, redirect users to other screens or simply reuse code.
+循环调度允许我们转发执行流到另一个控制器/动作。这对于检查用户是否可以
+访问页面，将用户重定向到其他屏幕或简单地代码重用都非常有用。
 
 .. code-block:: php
 
@@ -144,11 +144,11 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     }
 
-Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
-to complete the process.
+请注意制造一个“forward”并不等同于制造一个HTTP的重定向。尽管这两者表面上最终效果都一样。
+“forward”不会重新加载当前页面，全部的重定向都只发生在一个请求里面，而HTTP重定向则需要两次请求
+才能完成这个流程。
 
-More forwarding examples:
+更多转发示例：
 
 .. code-block:: php
 
@@ -167,7 +167,7 @@ More forwarding examples:
     ));
 
 
-A forward action accepts the following parameters:
+一个转发的动作可以接受以下参数：
 
 +----------------+--------------------------------------------------------+
 | Parameter      | Triggered                                              |
@@ -183,12 +183,12 @@ A forward action accepts the following parameters:
 
 准备参数（Preparing Parameters）
 --------------------
-Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
-adapt your application to any URL schema:
+多得 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 提供的钩子函数， 你可以简单地
+调整你的应用来匹配URL格式：
 
-For example, you want your URLs look like: http://example.com/controller/key1/value1/key2/value
+例如，你想把你的URL看起来像这样：http://example.com/controller/key1/value1/key2/value
 
-Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:
+默认下，参数会按URL传递的顺序传给对应的动作，你可以按期望来转换他们：
 
 .. code-block:: php
 
