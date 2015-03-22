@@ -1,7 +1,7 @@
 Cookie 管理（Cookies Management）
 ==================
- Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用户关闭了TA的浏览器也能获取这些数据。
- :doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>` 作为全局的cookies包。
+Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用户关闭了TA的浏览器也能获取这些数据。
+:doc:`Phalcon\\Http\\Response\\Cookies <../api/Phalcon_Http_Response_Cookies>` 作为全局的cookies包。
 在请求执行的期间，Cookies存放于这个包里，并且在请求结束时会自动发送回给客户端。
 
 基本使用（Basic Usage）
