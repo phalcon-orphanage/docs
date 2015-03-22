@@ -1,42 +1,44 @@
 调度控制器（Dispatching Controllers）
 =======================
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
-on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
+控制器和执行在这些控制器上必要的action的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务
 
 循环调度（The Dispatch Loop）
 -----------------
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
-dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another
-controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
-within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
+在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
+发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
+如果一个action将这个流转发给了另一个controller/action，控制调度器将会再次启动。为了更好
+解释这一点，以下示例怡到好处地说明了在  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 中的处理过程：
 
 .. code-block:: php
 
     <?php
 
-    //Dispatch loop
+    //循环调度
     while (!$finished) {
 
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
 
-        //Instantiating the controller class via autoloaders
+        //通过自动加载器实例化控制器类
         $controller = new $controllerClass();
 
-        // Execute the action
+        //执行action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
-        // '$finished' should be reloaded to check if the flow
-        // was forwarded to another controller
+        // $finished应该重新加载以检测MVC流
+        // 是否转发给了另一个控制器
         $finished = true;
     }
 
-The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
+
+上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。
 
 循环调度事件（Dispatch Loop Events）
 ^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 可以发送事件给当前的 :doc:`EventsManager <events>` 。
+事件会以“dispatch”类型被消费掉。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Срабатывает для       |
