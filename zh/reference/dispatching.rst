@@ -226,7 +226,7 @@
         return $dispatcher;
     });
 
-If the desired schema is: http://example.com/controller/key1:value1/key2:value, the following code is required:
+如果期望的链接是这样： http://example.com/controller/key1:value1/key2:value，那么就需要以下这样的代码：
 
 .. code-block:: php
 
@@ -265,8 +265,8 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
 获取参数（Getting Parameters）
 ------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends
-:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了 
+:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获得这些参数。
 
 .. code-block:: php
 
@@ -296,13 +296,13 @@ When a route provides named parameters you can receive them in a controller, a v
 
 准备行动（Preparing actions）
 -----------------
-You can also define an arbitrary schema for actions before be dispatched.
+你也可以为动作定义一个调度前的映射表。
 
 转换动作名（Camelize action names）
 ^^^^^^^^^^^^^^^^^^^^^
-If the original URL is: http://example.com/admin/products/show-latest-products,
-and for example you want to camelize 'show-latest-products' to 'ShowLatestProducts',
-the following code is required:
+如果原始链接是：http://example.com/admin/products/show-latest-products，
+例如你想把'show-latest-products'转换成'ShowLatestProducts'，
+需要以下代码：
 
 .. code-block:: php
 
@@ -330,12 +330,12 @@ the following code is required:
 
 删除遗留的扩展名（Remove legacy extensions）
 ^^^^^^^^^^^^^^^^^^^^^^^^
-If the original URL always contains a '.php' extension:
+如果原始链接总是包含一个'.php'扩展名：
 
 http://example.com/admin/products/show-latest-products.php
 http://example.com/admin/products/index.php
 
-You can remove it before dispatch the controller/action combination:
+你可以在调度对应的控制器/动作组前将它删除：
 
 .. code-block:: php
 
@@ -367,10 +367,9 @@ You can remove it before dispatch the controller/action combination:
 
 注入模型实例（Inject model instances）
 ^^^^^^^^^^^^^^^^^^^^^^
-In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
-inject model instances.
+在这个实例中，开发人员想要观察动作接收到的参数以便可以动态注入模型实例。
 
-The controller looks like:
+控制器看起来像这样：
 
 .. code-block:: php
 
@@ -389,8 +388,8 @@ The controller looks like:
         }
     }
 
-Method 'showAction' receives an instance of the model \Posts, the developer could inspect this
-before dispatch the action preparing the parameter accordingly:
+'showAction'方法接收到一个 \Posts 模型的实例，开发人员可以
+在调度动作和准备映射参数前进行观察：
 
 .. code-block:: php
 
@@ -446,13 +445,12 @@ before dispatch the action preparing the parameter accordingly:
         return $dispatcher;
     });
 
-The above example has been simplified for academic purposes.
-A developer can improve it to inject any kind of dependency or model in actions before be executed.
+上面示例出于学术目的已经作了简化。
+开发人员可以在执行动作前注入任何类型的依赖或者模型，以进行提高和强化。
 
 处理 Not-Found 错误（Handling Not-Found Exceptions）
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
-when the controller/action combination wasn't found:
+使用 :doc:`EventsManager <events>` ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：
 
 .. code-block:: php
 
@@ -503,9 +501,7 @@ when the controller/action combination wasn't found:
 
     }, true);
 
-Of course, this method can be moved onto independent plugin classes, allowing more than one class
-take actions when an exception is produced in the dispatch loop:
-
+当然，这个方法也可以移至独立的插件类中，使得在循环调度产生异常时可以有超过一个类执行需要的动作：
 
 .. code-block:: php
 
@@ -541,11 +537,10 @@ take actions when an exception is produced in the dispatch loop:
 
 .. highlights::
 
-    Only exceptions produced by the dispatcher and exceptions produced in the executed action
-    are notified in the 'beforeException' events. Exceptions produced in listeners or
-    controller events are redirected to the latest try/catch.
+    仅仅当异常产生于调度器或者异常产生于被执行的动作时才会通知'beforeException'里面的事件。
+    侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。
 
 自定义调度器（Implementing your own Dispatcher）
 --------------------------------
-The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher
-replacing the one provided by Phalcon.
+为了创建自定义调度器，必须实现  :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口，
+从而替换Phalcon框架默认提供的调度器。
