@@ -45,7 +45,7 @@ PHPのC拡張はどう動作するか?
 * Classes and functions provided by the extension are ready to use for any application
 * The code isn't interpreted because is already compiled to a specific platform and processor
 
-Palconはどう動作するか?
+Phalconはどう動作するか?
 ----------------------
 * Components are loosely coupled. With Phalcon, nothing is imposed on you: you're free to use the full framework, or just some parts of it as a glue components.
 * Low-level optimizations provides the lowest overhead for MVC-based applications

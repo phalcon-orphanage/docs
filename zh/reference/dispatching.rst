@@ -1,42 +1,44 @@
 调度控制器（Dispatching Controllers）
 =======================
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is the component responsible for instantiating controllers and executing the required actions
-on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
+控制器和执行在这些控制器上必要的动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务
 
 循环调度（The Dispatch Loop）
 -----------------
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
-dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another
-controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
-within :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>`:
+在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
+发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
+如果一个动作将这个流转发给了另一个控制器/动作，控制调度器将会再次启动。为了更好
+解释这一点，以下示例怡到好处地说明了在  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 中的处理过程：
 
 .. code-block:: php
 
     <?php
 
-    //Dispatch loop
+    //循环调度
     while (!$finished) {
 
         $finished = true;
 
         $controllerClass = $controllerName . "Controller";
 
-        //Instantiating the controller class via autoloaders
+        //通过自动加载器实例化控制器类
         $controller = new $controllerClass();
 
-        // Execute the action
+        //执行action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
-        // '$finished' should be reloaded to check if the flow
-        // was forwarded to another controller
+        // $finished应该重新加载以检测MVC流
+        // 是否转发给了另一个控制器
         $finished = true;
     }
 
-The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
+
+上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。
 
 循环调度事件（Dispatch Loop Events）
 ^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type "dispatch". Some events when returning boolean false could stop the active operation. The following events are supported:
+:doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 可以发送事件给当前的 :doc:`EventsManager <events>` 。
+事件会以“dispatch”类型被消费掉。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Срабатывает для       |
@@ -60,9 +62,9 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
-The :doc:`INVO <tutorial-invo>` tutorial shows how to take advantage of dispatching events implementing a security filter with :doc:`Acl <acl>`
+:doc:`INVO <tutorial-invo>` 这篇导读说明了如何从通过结合  :doc:`Acl <acl>` 实现的一个安全过滤器中获得事件调度的好处。
 
-The following example demonstrates how to attach listeners to this component:
+以下例子演示了如何将侦听者绑定到组件上：
 
 .. code-block:: php
 
@@ -90,7 +92,7 @@ The following example demonstrates how to attach listeners to this component:
 
     }, true);
 
-An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
+一个实例化的控制器会自动作为事件调度的侦听者，所以你可以实现回调函数：
 
 .. code-block:: php
 
@@ -113,8 +115,8 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
 转发到其他动作（Forwarding to other actions）
 ---------------------------
-The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
-access to certain options, redirect users to other screens or simply reuse code.
+循环调度允许我们转发执行流到另一个控制器/动作。这对于检查用户是否可以
+访问页面，将用户重定向到其他屏幕或简单地代码重用都非常有用。
 
 .. code-block:: php
 
@@ -142,11 +144,11 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     }
 
-Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
-The "forward" doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
-to complete the process.
+请注意制造一个“forward”并不等同于制造一个HTTP的重定向。尽管这两者表面上最终效果都一样。
+“forward”不会重新加载当前页面，全部的重定向都只发生在一个请求里面，而HTTP重定向则需要两次请求
+才能完成这个流程。
 
-More forwarding examples:
+更多转发示例：
 
 .. code-block:: php
 
@@ -165,7 +167,7 @@ More forwarding examples:
     ));
 
 
-A forward action accepts the following parameters:
+一个转发的动作可以接受以下参数：
 
 +----------------+--------------------------------------------------------+
 | Parameter      | Triggered                                              |
@@ -181,12 +183,12 @@ A forward action accepts the following parameters:
 
 准备参数（Preparing Parameters）
 --------------------
-Thanks to the hooks points provided by :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` you can easily
-adapt your application to any URL schema:
+多得 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 提供的钩子函数， 你可以简单地
+调整你的应用来匹配URL格式：
 
-For example, you want your URLs look like: http://example.com/controller/key1/value1/key2/value
+例如，你想把你的URL看起来像这样：http://example.com/controller/key1/value1/key2/value
 
-Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:
+默认下，参数会按URL传递的顺序传给对应的动作，你可以按期望来转换他们：
 
 .. code-block:: php
 
@@ -224,7 +226,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         return $dispatcher;
     });
 
-If the desired schema is: http://example.com/controller/key1:value1/key2:value, the following code is required:
+如果期望的链接是这样： http://example.com/controller/key1:value1/key2:value，那么就需要以下这样的代码：
 
 .. code-block:: php
 
@@ -263,8 +265,8 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
 获取参数（Getting Parameters）
 ------------------
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends
-:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>`.
+当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了 
+:doc:`Phalcon\\DI\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获得这些参数。
 
 .. code-block:: php
 
@@ -294,13 +296,13 @@ When a route provides named parameters you can receive them in a controller, a v
 
 准备行动（Preparing actions）
 -----------------
-You can also define an arbitrary schema for actions before be dispatched.
+你也可以为动作定义一个调度前的映射表。
 
 转换动作名（Camelize action names）
 ^^^^^^^^^^^^^^^^^^^^^
-If the original URL is: http://example.com/admin/products/show-latest-products,
-and for example you want to camelize 'show-latest-products' to 'ShowLatestProducts',
-the following code is required:
+如果原始链接是：http://example.com/admin/products/show-latest-products，
+例如你想把'show-latest-products'转换成'ShowLatestProducts'，
+需要以下代码：
 
 .. code-block:: php
 
@@ -328,12 +330,12 @@ the following code is required:
 
 删除遗留的扩展名（Remove legacy extensions）
 ^^^^^^^^^^^^^^^^^^^^^^^^
-If the original URL always contains a '.php' extension:
+如果原始链接总是包含一个'.php'扩展名：
 
 http://example.com/admin/products/show-latest-products.php
 http://example.com/admin/products/index.php
 
-You can remove it before dispatch the controller/action combination:
+你可以在调度对应的控制器/动作组前将它删除：
 
 .. code-block:: php
 
@@ -365,10 +367,9 @@ You can remove it before dispatch the controller/action combination:
 
 注入模型实例（Inject model instances）
 ^^^^^^^^^^^^^^^^^^^^^^
-In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
-inject model instances.
+在这个实例中，开发人员想要观察动作接收到的参数以便可以动态注入模型实例。
 
-The controller looks like:
+控制器看起来像这样：
 
 .. code-block:: php
 
@@ -387,8 +388,8 @@ The controller looks like:
         }
     }
 
-Method 'showAction' receives an instance of the model \Posts, the developer could inspect this
-before dispatch the action preparing the parameter accordingly:
+'showAction'方法接收到一个 \Posts 模型的实例，开发人员可以
+在调度动作和准备映射参数前进行观察：
 
 .. code-block:: php
 
@@ -444,13 +445,12 @@ before dispatch the action preparing the parameter accordingly:
         return $dispatcher;
     });
 
-The above example has been simplified for academic purposes.
-A developer can improve it to inject any kind of dependency or model in actions before be executed.
+上面示例出于学术目的已经作了简化。
+开发人员可以在执行动作前注入任何类型的依赖或者模型，以进行提高和强化。
 
 处理 Not-Found 错误（Handling Not-Found Exceptions）
 -----------------------------
-Using the :doc:`EventsManager <events>` it's possible to insert a hook point before the dispatcher throws an exception
-when the controller/action combination wasn't found:
+使用 :doc:`EventsManager <events>` ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：
 
 .. code-block:: php
 
@@ -501,9 +501,7 @@ when the controller/action combination wasn't found:
 
     }, true);
 
-Of course, this method can be moved onto independent plugin classes, allowing more than one class
-take actions when an exception is produced in the dispatch loop:
-
+当然，这个方法也可以移至独立的插件类中，使得在循环调度产生异常时可以有超过一个类执行需要的动作：
 
 .. code-block:: php
 
@@ -539,11 +537,10 @@ take actions when an exception is produced in the dispatch loop:
 
 .. highlights::
 
-    Only exceptions produced by the dispatcher and exceptions produced in the executed action
-    are notified in the 'beforeException' events. Exceptions produced in listeners or
-    controller events are redirected to the latest try/catch.
+    仅仅当异常产生于调度器或者异常产生于被执行的动作时才会通知'beforeException'里面的事件。
+    侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。
 
 自定义调度器（Implementing your own Dispatcher）
 --------------------------------
-The :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` interface must be implemented to create your own dispatcher
-replacing the one provided by Phalcon.
+为了创建自定义调度器，必须实现  :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口，
+从而替换Phalcon框架默认提供的调度器。
