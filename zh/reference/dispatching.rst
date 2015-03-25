@@ -253,7 +253,7 @@
                 $keyParams[$parts[0]] = $parts[1];
             }
 
-            //Override parameters
+            //重写参数
             $dispatcher->setParams($keyParams);
         });
 
@@ -283,8 +283,8 @@
         public function saveAction()
         {
 
-            // Get the post's title passed in the URL as parameter
-            // or prepared in an event
+            // 从URL传递过来的参数中获取title
+            // 或者在一个事件中准备
             $title = $this->dispatcher->getParam("title");
 
             // Get the post's year passed in the URL as parameter
