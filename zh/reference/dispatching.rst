@@ -75,17 +75,17 @@
 
     $di->set('dispatcher', function(){
 
-        //Create an event manager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener for type "dispatch"
+        //为“dispatch”类型附上一个侦听者
         $eventsManager->attach("dispatch", function($event, $dispatcher) {
             //...
         });
 
         $dispatcher = new MvcDispatcher();
 
-        //Bind the eventsManager to the view component
+        //将$eventsManager绑定到视图组件
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -103,12 +103,12 @@
 
         public function beforeExecuteRoute($dispatcher)
         {
-            // Executed before every found action
+            // 在每一个找到的动作前执行
         }
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Executed after every found action
+            // 在每一个找到的动作后执行
         }
 
     }
@@ -133,9 +133,9 @@
         public function saveAction($year, $postTitle)
         {
 
-            // .. store some product and forward the user
+            // .. 储存一些产品并且转发用户
 
-            // Forward flow to the index action
+            // 将流转发到index动作
             $this->dispatcher->forward(array(
                 "controller" => "post",
                 "action" => "index"
@@ -154,13 +154,13 @@
 
     <?php
 
-    // Forward flow to another action in the current controller
+    // 将流转发到当前控制器的另一个动作
     $this->dispatcher->forward(array(
         "action" => "search"
     ));
 
-    // Forward flow to another action in the current controller
-    // passing parameters
+    // 将流转发到当前控制器的另一个动作
+    // 传递参数
     $this->dispatcher->forward(array(
         "action" => "search",
         "params" => array(1, 2, 3)
@@ -170,15 +170,15 @@
 一个转发的动作可以接受以下参数：
 
 +----------------+--------------------------------------------------------+
-| Parameter      | Triggered                                              |
+| 参数           | 触发                                                   |
 +================+========================================================+
-| controller     | A valid controller name to forward to.                 |
+| controller     | 一个待转发且有效的控制器名字。                         |
 +----------------+--------------------------------------------------------+
-| action         | A valid action name to forward to.                     |
+| action         | 一个待转发且有效的动作名字。                           |
 +----------------+--------------------------------------------------------+
-| params         | An array of parameters for the action                  |
+| params         | 一个传递给动作的数组参数。                             |
 +----------------+--------------------------------------------------------+
-| namespace      | A valid namespace name where the controller is part of |
+| namespace      | 一个控制器对应的命名空间名字。                         |
 +----------------+--------------------------------------------------------+
 
 准备参数（Preparing Parameters）
@@ -200,23 +200,23 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Use odd parameters as keys and even as values
+            //用奇数参数作key，用偶数作值
             foreach ($params as $number => $value) {
                 if ($number & 1) {
                     $keyParams[$params[$number - 1]] = $value;
                 }
             }
 
-            //Override parameters
+            //重写参数
             $dispatcher->setParams($keyParams);
         });
 
@@ -238,16 +238,16 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Explode each parameter as key,value pairs
+            //将每一个参数分解成key、值
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
