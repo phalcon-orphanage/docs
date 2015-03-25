@@ -247,7 +247,7 @@
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //将每一个参数分解成key、值
+            //将每一个参数分解成key、值 对
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
@@ -287,8 +287,8 @@
             // 或者在一个事件中准备
             $title = $this->dispatcher->getParam("title");
 
-            // Get the post's year passed in the URL as parameter
-            // or prepared in an event also filtering it
+            // 从URL传递过来的参数中获取year
+            // 或者在一个事件中准备并且进行过滤
             $year = $this->dispatcher->getParam("year", "int");
         }
 
@@ -314,10 +314,10 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Camelize actions
+        //Camelize动作
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
             $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
         });
@@ -346,16 +346,16 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Remove extension before dispatch
+        //在调度前删除扩展
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
-            //Remove extension
+            //删除扩展
             $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
 
-            //Override action
+            //重写动作
             $dispatcher->setActionName($action);
         });
 
@@ -378,7 +378,7 @@ http://example.com/admin/products/index.php
     class PostsController extends \Phalcon\Mvc\Controller
     {
         /**
-         * Shows posts
+         * 显示$post
          *
          * @param \Posts $post
          */
@@ -401,40 +401,40 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
-            //Possible controller class name
+            //可能的控制器类名
             $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
 
-            //Possible method name
+            //可能的方法名
             $actionName = $dispatcher->getActionName() . 'Action';
 
             try {
 
-                //Get the reflection for the method to be executed
+                //从反射中获取将要被执行的方法
                 $reflection = new \ReflectionMethod($controllerName, $actionName);
 
-                //Check parameters
+                //参数检查
                 foreach ($reflection->getParameters() as $parameter) {
 
-                    //Get the expected model name
+                    //获取期望的模型名字
                     $className = $parameter->getClass()->name;
 
-                    //Check if the parameter expects a model instance
+                    //检查参数是否为模型的实例
                     if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
-                        //Override the parameters by the model instance
+                        //根据模型实例重写参数
                         $dispatcher->setParams(array($model));
                     }
                 }
 
             } catch (\Exception $e) {
-                //An exception has occurred, maybe the class or action does not exist?
+                //异常触发，类或者动作不存在？
             }
 
         });
@@ -463,13 +463,13 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
-            //Handle 404 exceptions
+            //处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -478,7 +478,7 @@ http://example.com/admin/products/index.php
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exist
+            //代替控制器或者动作不存在时的路径
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()) {
                     case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -494,7 +494,7 @@ http://example.com/admin/products/index.php
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the dispatcher
+        //将EventsManager绑定到调度器
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -516,7 +516,7 @@ http://example.com/admin/products/index.php
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
 
-            //Handle 404 exceptions
+            //处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -525,7 +525,7 @@ http://example.com/admin/products/index.php
                 return false;
             }
 
-            //Handle other exceptions
+            //处理其他异常
             $dispatcher->forward(array(
                 'controller' => 'index',
                 'action' => 'show503'
