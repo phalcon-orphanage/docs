@@ -1,12 +1,12 @@
 事件管理器（Events Manager）
 ==============
-The purpose of this component is to intercept the execution of most of the components of the framework by creating “hooks point”. These hook
-points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
+此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。
+这些钩子允许开发者获得状态信息，操纵数据或者改变某个组件进程中的执行流向。
 
-Usage Example
+使用示例（Usage Example）
 -------------
-In the following example, we use the EventsManager to listen for events produced in a MySQL connection managed by :doc:`Phalcon\\Db <../api/Phalcon_Db>`.
-First, we need a listener object to do this. We created a class whose methods are the events we want to listen:
+以下面示例中，我们使用EventsManager来侦听在 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 管理下的MySQL连接中产生的事件。
+首先，我们需要一个侦听者对象来完成这部分的工作。我们创建了一个类，这个类有我们需要侦听事件所对应的方法：
 
 .. code-block:: php
 
@@ -32,8 +32,8 @@ First, we need a listener object to do this. We created a class whose methods ar
 
     }
 
-This new class can be as verbose as we need it to. The EventsManager will interface between the component and our listener class,
-offering hook points based on the methods we defined in our listener class:
+这个新的类可能有点啰嗦，但我们需要这样做。
+事件管理器在组件和我们的侦听类之间充当着接口角色，并提供了基于在我们侦听类中所定义方法的钩子：
 
 .. code-block:: php
 
@@ -44,10 +44,10 @@ offering hook points based on the methods we defined in our listener class:
 
     $eventsManager = new EventsManager();
 
-    //Create a database listener
+    //创建一个数据库侦听
     $dbListener = new MyDbListener();
 
-    //Listen all the database events
+    //侦听全部数据库事件
     $eventsManager->attach('db', $dbListener);
 
     $connection = new DbAdapter(array(
@@ -57,14 +57,14 @@ offering hook points based on the methods we defined in our listener class:
         "dbname" => "invo"
     ));
 
-    //Assign the eventsManager to the db adapter instance
+    //将$eventsManager赋值给数据库甜适配器
     $connection->setEventsManager($eventsManager);
 
-    //Send a SQL command to the database server
+    //发送一个SQL命令到数据库服务器
     $connection->query("SELECT * FROM products p WHERE p.status = 1");
 
-In order to log all the SQL statements executed by our application, we need to use the event “afterQuery”. The first parameter passed to
-the event listener contains contextual information about the event that is running, the second is the connection itself.
+为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
+第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。
 
 .. code-block:: php
 
@@ -89,7 +89,7 @@ the event listener contains contextual information about the event that is runni
 
     }
 
-As part of this example, we will also implement the Phalcon\\Db\\Profiler to detect the SQL statements that are taking longer to execute than expected:
+作为些示例的一部分，我们同样实现了 Phalcon\\Db\\Profiler 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
 
@@ -107,7 +107,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         protected $_logger;
 
         /**
-         * Creates the profiler and starts the logging
+         *创建分析器并开始纪录
          */
         public function __construct()
         {
@@ -116,7 +116,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         }
 
         /**
-         * This is executed if the event triggered is 'beforeQuery'
+         * 如果事件触发器是'beforeQuery'，此函数将会被执行
          */
         public function beforeQuery($event, $connection)
         {
@@ -124,7 +124,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         }
 
         /**
-         * This is executed if the event triggered is 'afterQuery'
+         * 如果事件触发器是'afterQuery'，此函数将会被执行
          */
         public function afterQuery($event, $connection)
         {
@@ -139,7 +139,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
     }
 
-The resulting profile data can be obtained from the listener:
+可以从侦听者中获取结果分析数据：
 
 .. code-block:: php
 
@@ -149,19 +149,19 @@ The resulting profile data can be obtained from the listener:
     $connection->execute("SELECT * FROM products p WHERE p.status = 1");
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
-        echo "SQL Statement: ", $profile->getSQLStatement(), "\n";
-        echo "Start Time: ", $profile->getInitialTime(), "\n";
-        echo "Final Time: ", $profile->getFinalTime(), "\n";
-        echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
+        echo "SQL语句: ", $profile->getSQLStatement(), "\n";
+        echo "开始时间: ", $profile->getInitialTime(), "\n";
+        echo "结束时间: ", $profile->getFinalTime(), "\n";
+        echo "总共执行的时间: ", $profile->getTotalElapsedSeconds(), "\n";
     }
 
-In a similar manner we can register an lambda function to perform the task instead of a separate listener class (as seen above):
+类似地，我们可以注册一个匿名函数来执行这些任务，而不是再分离出一个侦听类（如上面看到的）：
 
 .. code-block:: php
 
     <?php
 
-    //Listen all the database events
+    //侦听全部数据加事件
     $eventManager->attach('db', function($event, $connection) {
         if ($event->getType() == 'afterQuery') {
             echo $connection->getSQLStatement();
@@ -170,9 +170,9 @@ In a similar manner we can register an lambda function to perform the task inste
 
 创建组件触发事件（Creating components that trigger Events）
 ---------------------------------------
-You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners
-that react to these events when generated. In the following example we're creating a component called "MyComponent".
-This component is EventsManager aware; when its method "someTask" is executed it triggers two events to any listener in the EventsManager:
+你可以在你的应用中为事件管理器的触发事件创建组件。这样的结果是，可以有很多存在的侦听者为这些产生的事件作出响应。
+在以下的示例中，我们将会创建一个叫做“MyComponent”组件。这是个意识事件管理器组件；
+当它的方法“someTask”被执行时它将触发事件管理器中全部侦听者的两个事件：
 
 .. code-block:: php
 
@@ -199,7 +199,7 @@ This component is EventsManager aware; when its method "someTask" is executed it
         {
             $this->_eventsManager->fire("my-component:beforeSomeTask", $this);
 
-            // do some task
+            // 做一些你想做的事情
 
             $this->_eventsManager->fire("my-component:afterSomeTask", $this);
         }
