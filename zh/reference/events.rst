@@ -145,7 +145,7 @@
 
     <?php
 
-    //Send a SQL command to the database server
+    //发送一个SQL命令到数据库服务器
     $connection->execute("SELECT * FROM products p WHERE p.status = 1");
 
     foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
