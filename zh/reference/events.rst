@@ -293,9 +293,8 @@
 
 事件传播与取消（Event Propagation/Cancellation）
 -----------------------------------
-Many listeners may be added to the same event manager, this means that for the same type of event many listeners can be notified.
-The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that
-these may be stopped preventing other listeners are notified about the event:
+可能会有多个侦听者添加到同一个事件管理器，这意味着对于相同的事件会通知多个侦听者。
+这些侦听者会以它们在事件管理器注册的顺序来通知。有些事件是可以被取消的，暗示着这些事件可以被终止以防其他侦听都再收到事件的通知：
 
 .. code-block:: php
 
@@ -303,9 +302,9 @@ these may be stopped preventing other listeners are notified about the event:
 
     $eventsManager->attach('db', function($event, $connection){
 
-        //We stop the event if it is cancelable
+        //如果可以取消，我们就终止此事件
         if ($event->isCancelable()) {
-            //Stop the event, so other listeners will not be notified about this
+            //终止事件，这样的话其他侦听都就不会再收到此通知
             $event->stop();
         }
 
@@ -313,8 +312,8 @@ these may be stopped preventing other listeners are notified about the event:
 
     });
 
-By default events are cancelable, even most of events produced by the framework are cancelables. You can fire a not-cancelable event
-by passing "false" in the fourth parameter of fire:
+默认情况下全部的事件都是可以取消的，甚至框架提供的事件也是可以取消的。
+你可以通过在fire中的第四个参数中传递false来指明这是一个不可取消的事件：
 
 .. code-block:: php
 
@@ -324,8 +323,7 @@ by passing "false" in the fourth parameter of fire:
 
 侦听器优先级（Listener Priorities）
 -------------------
-When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order
-in which they must be called:
+当附上侦听者时，你可以设置一个优先级。使用此特性，你可以指定这些侦听者被调用的固定顺序：
 
 .. code-block:: php
 
@@ -333,13 +331,13 @@ in which they must be called:
 
     $evManager->enablePriorities(true);
 
-    $evManager->attach('db', new DbListener(), 150); //More priority
-    $evManager->attach('db', new DbListener(), 100); //Normal priority
-    $evManager->attach('db', new DbListener(), 50); //Less priority
+    $evManager->attach('db', new DbListener(), 150); //高优先级
+    $evManager->attach('db', new DbListener(), 100); //正常优先级
+    $evManager->attach('db', new DbListener(), 50); //低优先级
 
 收集响应（Collecting Responses）
 --------------------
-The events manager can collect every response returned by every notified listener, this example explains how it works:
+事件管理器可以收集每一个被通知的侦听者返回的响应，以下这个示例解释了它是如何工作的：
 
 .. code-block:: php
 
@@ -349,26 +347,26 @@ The events manager can collect every response returned by every notified listene
 
     $evManager = new EventsManager();
 
-    //Set up the events manager to collect responses
+    //建立事件管理器以为收集结果响应
     $evManager->collectResponses(true);
 
-    //Attach a listener
+    //附上一个侦听者
     $evManager->attach('custom:custom', function() {
         return 'first response';
     });
 
-    //Attach a listener
+    //附上一个侦听者
     $evManager->attach('custom:custom', function() {
         return 'second response';
     });
 
-    //Fire the event
+    //执行fire事件
     $evManager->fire('custom:custom', null);
 
-    //Get all the collected responses
+    //获取全部收集到的响应
     print_r($evManager->getResponses());
 
-The above example produces:
+上面示例将输出：
 
 .. code-block:: html
 
@@ -376,5 +374,4 @@ The above example produces:
 
 自定义事件管理器（Implementing your own EventsManager）
 -----------------------------------
-The :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` interface must be implemented to create your own
-EventsManager replacing the one provided by Phalcon.
+如果想要替换Phalcon提供的事件管理器，必须实现 :doc:`Phalcon\\Events\\ManagerInterface <../api/Phalcon_Events_ManagerInterface>` 中的接口。
