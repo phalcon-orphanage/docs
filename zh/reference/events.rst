@@ -206,9 +206,8 @@
 
     }
 
-Note that events produced by this component are prefixed with "my-component". This is a unique word that helps us
-identify events that are generated from certain component. You can even generate events outside the component with
-the same name. Now let's create a listener to this component:
+注意到这个组件产生的事件都以“my-component”为前缀。这是一个唯一的关键词，可以帮助我们区分各个组件产生的事件。
+你甚至可以在组件的外面生成相同名字的事件。现在让我们来为这个组件创建一个侦听者：
 
 .. code-block:: php
 
@@ -219,45 +218,45 @@ the same name. Now let's create a listener to this component:
 
         public function beforeSomeTask($event, $myComponent)
         {
-            echo "Here, beforeSomeTask\n";
+            echo "这里, beforeSomeTask\n";
         }
 
         public function afterSomeTask($event, $myComponent)
         {
-            echo "Here, afterSomeTask\n";
+            echo "这里, afterSomeTask\n";
         }
 
     }
 
-A listener is simply a class that implements any of all the events triggered by the component. Now let's make everything work together:
+侦听者可以是简单的一个实现了全部组件触发事件的类。现在让我们把全部的东西整合起来：
 
 .. code-block:: php
 
     <?php
 
-    //Create an Events Manager
+    //创建一个事件管理器
     $eventsManager = new Phalcon\Events\Manager();
 
-    //Create the MyComponent instance
+    //创建MyComponent实例
     $myComponent = new MyComponent();
 
-    //Bind the eventsManager to the instance
+    //将事件管理器绑定到创建MyComponent实例实例
     $myComponent->setEventsManager($eventsManager);
 
-    //Attach the listener to the EventsManager
+    //为事件管理器附上侦听者
     $eventsManager->attach('my-component', new SomeListener());
 
-    //Execute methods in the component
+    //执行组件的方法
     $myComponent->someTask();
 
-As "someTask" is executed, the two methods in the listener will be executed, producing the following output:
+当“someTask”被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：
 
 .. code-block:: php
 
-    Here, beforeSomeTask
-    Here, afterSomeTask
+    这里, beforeSomeTask
+    这里, afterSomeTask
 
-Additional data may also passed when triggering an event using the third parameter of "fire":
+当触发一个事件时也可以使用“fire”中的第三个参数来传递额外的数据：
 
 .. code-block:: php
 
@@ -265,29 +264,29 @@ Additional data may also passed when triggering an event using the third paramet
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData);
 
-In a listener the third parameter also receives this data:
+在一个侦听者里，第三个参数可用于接收此参数：
 
 .. code-block:: php
 
     <?php
 
-    //Receiving the data in the third parameter
+    //从第三个参数接收数据
     $eventManager->attach('my-component', function($event, $component, $data) {
         print_r($data);
     });
 
-    //Receiving the data from the event context
+    //从事件上下文中接收数据
     $eventManager->attach('my-component', function($event, $component) {
         print_r($event->getData());
     });
 
-If a listener it is only interested in listening a specific type of event you can attach a listener directly:
+如果一个侦听者仅是对某个特定类型的事件感兴趣，你要吧直接附上一个侦听者：
 
 .. code-block:: php
 
     <?php
 
-    //The handler will only be executed if the event triggered is "beforeSomeTask"
+    //这个处理器只会在“beforeSomeTask”事件触发时才被执行
     $eventManager->attach('my-component:beforeSomeTask', function($event, $component) {
         //...
     });
