@@ -244,7 +244,7 @@ With this option is easy perform tasks such as totaling or averaging field value
         )
     ));
 
-Creating Updating/Records
+Creating/Updating Records
 -------------------------
 The method Phalcon\\Mvc\\Collection::save() allows you to create/update documents according to whether they already exist in the collection
 associated with a model. The 'save' method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`.
