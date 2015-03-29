@@ -239,7 +239,7 @@ find()和findFirst方法都接收一个关联数据组为查询的条件：
         )
     ));
 
-创建和更新记录（Creating Updating/Records）
+创建和更新记录（Creating/Updating Records）
 -------------------------------------------
 
 Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根据当前数据库中的数据来对比以确定是新加一条数据还是更新数据。在Phalcon内部会直接使用
