@@ -821,7 +821,7 @@ Phalcon提供了一个组件缓存任何类型的数据，我们下面将介绍�
 
 当获取缓存结果集失败时，你可以简单的通过它的KEY值从缓存系统中删除它。
 
-Creating Updating/Records
+Creating/Updating Records
 -------------------------
 Phalcon\\Mvc\\Model::save() 方法允许你创建/更新记录。save方法自动调用 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部的create和update方法，如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。
 

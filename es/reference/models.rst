@@ -998,7 +998,7 @@ The hydration mode can be passed as a parameter of 'find':
         echo $robot['year'], PHP_EOL;
     }
 
-Creating Updating/Records
+Creating/Updating Records
 -------------------------
 The method Phalcon\\Mvc\\Model::save() allows you to create/update records according to whether they already exist in the table
 associated with a model. The save method is called internally by the create and update methods of :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
