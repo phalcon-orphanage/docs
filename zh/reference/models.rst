@@ -67,10 +67,6 @@ initialize() 方法在请求期间只被调用一次。
 
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for
-all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
-
 
 initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
 可以使用 'onConstruct' 事件：
@@ -91,9 +87,6 @@ initialize() 方法在请求期间仅会被调用一次，目的是为应用中�
 
 公共属性对比设置与取值 Setters/Getters（Public properties vs. Setters/Getters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties of public scope, meaning that each property can be read/updated
-from any part of the code that has instantiated that model class without any restrictions:
-
 
 模型可以通过公共属性的方式实现，意味着模型的所有属性在实例化该模型的地方可以无限制的读取和更新。
 
@@ -109,9 +102,6 @@ from any part of the code that has instantiated that model class without any res
 
         public $price;
     }
-
-By using getters and setters you can control which properties are visible publicly perform various transformations
-to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
 
 
 通过使用 getters/setters 方法，可以控制哪些属性可以公开访问，并且对属性值执行不同的形式的转换，同时可以保存在模型中的数据添加相应的验证规则。
@@ -163,10 +153,6 @@ to the data (which would be impossible otherwise) and also add validation rules 
         }
     }
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
-extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
-application they are creating. The ORM is compatible with both schemes of defining properties.
-
 
 公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
 开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
@@ -174,8 +160,6 @@ application they are creating. The ORM is compatible with both schemes of defini
 
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
-
 
 命名空间可以用来避免类名的冲突。ORM通过类名来映射相应的表名。比如 'Robots'：
 
@@ -192,9 +176,6 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
 理解记录对象（Understanding Records To Objects）
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
-
 
 每个模型的实例对应一条数据表中的记录。可以方便的通过读取对象的属性来访问相应的数据。比如，
 一个表 "robots" 有如下数据：
@@ -211,11 +192,7 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
-
-
 你可以通过主键找到某一条记录并且打印它的名称：
-
 
 .. code-block:: php
 
@@ -227,9 +204,6 @@ You could find a certain record by its primary key and then print its name:
     // Prints "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
-
-
 一旦记录被加载到内存中之后，你可以修改它的数据并保存所做的修改：
 
 .. code-block:: php
@@ -240,18 +214,10 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
-
-
 如上所示，不需要写任何SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用提供了高层数据库抽象。
-
 
 查找记录（Finding Records）
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
-
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：
 
@@ -286,8 +252,6 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
-
 你可以使用  findFirst() 方法获取第一条符合查询条件的结果：
 
 .. code-block:: php
@@ -306,8 +270,6 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
-
 find() 和 findFirst() 方法都接受关联数组作为查询条件：
 
 .. code-block:: php
@@ -325,11 +287,8 @@ find() 和 findFirst() 方法都接受关联数组作为查询条件：
         "bind"       => array(1 => "virtual")
     ));
 
-The available query options are:
-
 
 可用的查询选项如下：
-
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
@@ -357,11 +316,7 @@ The available query options are:
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
-
-
 如果你愿意，除了使用数组作为查询参数外，还可以通过一种面向对象的方式来创建查询：
-
 
 .. code-block:: php
 
@@ -374,28 +329,13 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
-
-
 静态方法 query() 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
 
-
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
-
-
 所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
-
-
-Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
-retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
-An example is in order, so taking our Robots model mentioned earlier :
-
 
 最后，还有一个 findFirstBy<property-name>() 方法。这个方法扩展了前面提及的 "findFirst()" 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
 
 还是用上面用过的 Robots 模型来举例说明：
-
 
 .. code-block:: php
 
@@ -410,12 +350,7 @@ An example is in order, so taking our Robots model mentioned earlier :
         public $price;
     }
 
-We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
-'Terminator'. This could be written like so :
-
-
 我们这里有3个属性：$id, $name 和 $price。因此，我们以想要查询第一个名称为 'Terminator' 的记录为例，可以这样写：
-
 
 .. code-block:: php
 
@@ -430,29 +365,15 @@ We have three properties to work with here. $id, $name and $price. So, let's say
         $this->flash->error("There were no robots found in our table with the name " . $name ".");
     }
 
-Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
-when we find a match with our query, all the other properties are available to us as well.
-
-
 请注意我们在方法调用中用的是 'Name'，并向它传递了变量 $name，$name 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
 
 
 模型结果集（Model Resultsets）
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
-
 
 findFirst() 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 find() 方法返回一个 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。
 
-
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
-
-
 这些对象比一般数组功能更强大。最大的特点是 :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。
-
 
 .. code-block:: php
 
@@ -498,31 +419,13 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = $robots->getLast();
 
-Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
-
-
 Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者内部指针去访问任何一条特定的记录。注意有一些数据库系统不支持滚动游标，这就使得查询会被重复执行，
 以便回放光标到最开始的位置，然后获得相应的记录。类似地，如果多次遍历结果集，那么必须执行相同的查询次数。
 
-
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
-
-
 将大数据量的查询结果存储在内存会消耗很多资源，正因为如此，分成每32行一块从数据库中获得结果集，以减少重复执行查询请求的次数，在一些情况下也节省内存。
-
-
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
-serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
-thus consuming more memory while this process takes place.
-
 
 注意结果集可以序列化后保存在一个后端缓存里面。 :doc:`Phalcon\\Cache <cache>` 可以用来实现这个。但是，序列化数据会导致 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 
 将从数据库检索到的所有数据以一个数组的方式保存，因此在这样执行的地方会消耗更多的内存。
-
 
 .. code-block:: php
 
@@ -544,12 +447,8 @@ thus consuming more memory while this process takes place.
 
 过滤结果集（Filtering Resultsets）
 ^^^^^^^^^^^^^^^^^^^^
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
-Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
-
 
 过滤数据最有效的方法是设置一些查询条件，数据库会利用表的索引快速返回数据。Phalcon 额外的允许你通过任何数据库不支持的方式过滤数据。
-
 
 .. code-block:: php
 
