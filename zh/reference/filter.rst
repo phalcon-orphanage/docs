@@ -8,8 +8,7 @@
 
 `Full image (from xkcd)`_
 
-:doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 组件提供了一系列通用可用的过滤器和数据清理助手。
- 它提供了围绕于PHP过滤扩展的面向对象包装。
+此 :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 组件提供了一系列通用可用的过滤器和数据清理助手。它提供了围绕于PHP过滤扩展的面向对象包装。
 
 清理数据（Sanitizing data）
 ---------------
