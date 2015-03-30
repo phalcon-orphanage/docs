@@ -13,15 +13,6 @@ To use phalcon on Windows you can download_ a DLL library. Edit your php.ini fil
 
 Restart your webserver.
 
-The following screencast is a step-by-step guide to install Phalcon on Windows:
-
-.. raw:: html
-
-    <div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-
-
-If you don't know what DLL to download, use the following script_ to figure it out.
-
 Related Guides
 ^^^^^^^^^^^^^^
 .. toctree::

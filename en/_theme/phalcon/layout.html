@@ -8,11 +8,11 @@
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
-    <div class="header-line">
+    <!--<div class="header-line">
       <div class="size-wrap">
         <div class="header-line-title title-white">Documentation</div>
       </div>
-    </div>
+    </div>-->
     <div class="related">
       <ul>
         {%- for rellink in rellinks %}
@@ -55,9 +55,9 @@
       <td class="primary-box" width="25%" valign="top">
           {%- block sidebarlogo %}
           {%- if logo %}
-            <p class="logo"><a href="{{ pathto(master_doc) }}">
+            <!--<p class="logo"><a href="{{ pathto(master_doc) }}">
               <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/> PHALCON
-            </a></p>
+            </a></p>-->
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
@@ -69,18 +69,17 @@
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
                 </form>-->
-                <div style="width:200px;padding:10px">
+                <!--<div style="width:200px;padding:10px">
                   <gcse:searchbox-only></gcse:searchbox-only>
-                </div>
-                <hr>
+                </div>-->
             </div>
             </div>
-            <div style="padding:5px;padding-left:10px">
+            <!--<div style="padding:5px;padding-left:10px">
               <div id="carbonads-container">
                 <div class="carbonad"><div id="azcarbon"></div>
                 <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
                 </div></div>
-            </div>
+            </div>-->
           {%- endif %}
           {%- endblock %}
           {%- block sidebartoc %}
@@ -127,9 +126,11 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/style.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/fonts.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
 
     {%- if not embedded %}
@@ -182,14 +183,13 @@
   <body>
     <div id="wrapper">
 
-        <div class="size-wrap">
-
+        <div>
             <div class="header clear-fix">
-                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
-                <div class="header-right">
+                <a class="header-logo-x" href="http://phalconphp.com"><span xclass="logo-text">Phalcon</span></a>
+                <!--<div class="header-right">
                     <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
 allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
-                </div>
+                </div>-->
                 <ul class="header-nav">
                     <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
                     <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
@@ -200,7 +200,6 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
                     <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
                 </ul>
             </div>
-
         </div>
 
       {%- block header %}{% endblock %}
@@ -209,7 +208,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
       {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
 
-      <table width="90%" align="center">
+      <table width="100%" align="center">
         <tr>
           {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
           <td class="second-box" valign="top">
@@ -235,12 +234,12 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       {%- block relbar2 %}{{ downrelbar() }}{% endblock %}
 
       {%- block footer %}
-        <div id="footer">
+        <!--<div id="footer">
 
           <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
-          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+          <p>Need support or have questions? Check our <a href="http://forum.phalconphp.com">Forum</a></p>
 
-          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>The Phalcon Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
           <p>Except where otherwise noted, content on this site is licensed under the
             <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
 
@@ -261,16 +260,6 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
             <div class="size-wrap footer-wrap">
 
-                <div class="donate-wrap">
-                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
-                    or
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
-                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
-                    </form>
-                </div>
-
                 <div class="social-links">
                     <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
                     <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
@@ -280,7 +269,7 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
 
             </div>
 
-        </div>
+        </div>-->
       {%- endblock %}
 
     </div>
@@ -293,13 +282,6 @@ allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30p
       gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(gcse, s);
-      /*window.setTimeout(function(){
-        $('.gsc-search-button').css({
-          'background': '#f06715',
-          'padding': '2px',
-          'border': '0'
-        });
-      }, 1000)*/
     });
     </script>
 

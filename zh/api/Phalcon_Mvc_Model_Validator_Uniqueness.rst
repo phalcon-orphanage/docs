@@ -19,7 +19,8 @@ Validates that a field or a combination of a set of fields are not present more 
       public function validation()
       {
           $this->validate(new Uniqueness(array(
-              'field' => 'email'
+              'field' => 'email',
+              'email' => '该邮箱地址已被注册'
           )));
           if ($this->validationHasFailed() == true) {
               return false;
