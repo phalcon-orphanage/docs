@@ -1,23 +1,23 @@
 ODM (Object-Document Mapper)
 ============================
-In addition to its ability to :doc:`map tables <models>` in relational databases, Phalcon can map documents from NoSQL databases.
-The ODM offers a CRUD functionality, events, validations among other services.
+В дополнение к его способности :doc:`отображать таблицы <models>` в реляционных базах данных, Phalcon может отображать документы из баз данных NoSQL. 
+ODM предлагает функциональность CRUD, события, валидацию и другие сервисы.
 
-Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach.
-Additionally, there are no SQL building reducing the possibility of SQL injections.
+Из-за отсутствия запросов SQL и проектировщиков, базы данных NoSQL можете увидеть реальные улучшения в производительности, используя подход Phalcon.
+Кроме того, NoSQL конструкци уменьшают возможность  SQL инъекций.
 
-The following NoSQL databases are supported:
+Поддерживаются следующие базы данных NoSQL:
 
-+------------+----------------------------------------------------------------------+
-| Name       | Description                                                          |
-+============+======================================================================+
-| MongoDB_   | MongoDB is a scalable, high-performance, open source NoSQL database. |
-+------------+----------------------------------------------------------------------+
++------------+--------------------------------------------------------------------------------------+
+| Name       | Description                                                                          |
++============+======================================================================================+
+| MongoDB_   | MongoDB масштабируемая, высокао-производительная NoSQL БД, с открытым исходным кодом.|
++------------+--------------------------------------------------------------------------------------+
 
-Creating Models
+Создание моделей
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+Модель класс, который расширяется от  :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc_Collection>`. Он должен быть помещен в каталог моделей. 
+Модель файл должен содержать только один класс; его имя класса должно быть записано в верблюжем стиле:
 
 .. code-block:: php
 
@@ -30,11 +30,10 @@ file must contain a single class; its class name should be in camel case notatio
 
 .. highlights::
 
-    If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
-    memory and reduce the memory allocation.
+    Если вы используете PHP 5.4 / 5.5 рекомендуется объявить каждый столбец, создаваемый в модели, чтобы сохранить память и уменьшить выделение памяти.
 
-By default model "Robots" will refer to the collection "robots". If you want to manually specify another name for the mapping collection,
-you can use the getSource() method:
+По умолчанию модель “Robots” будет ссылаться на “robots”. Если вы хотите вручную указать другое имя для отображения коллекции,
+вы можете использовать getSource() метод:
 
 .. code-block:: php
 
@@ -48,10 +47,11 @@ you can use the getSource() method:
         }
     }
 
-Understanding Documents To Objects
+Понимание Документов как Объектов
 ----------------------------------
-Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example,
-for a collection "robots" with the documents:
+
+Каждый экземпляр модели представляет документ в коллекции. Вы можете легко получить доступ к коллекции данных путем считывания свойств объекта. 
+Например, для коллекции "robots" с документами:
 
 .. code-block:: bash
 
@@ -66,9 +66,10 @@ for a collection "robots" with the documents:
     { "_id" : ObjectId("508735d32d42b8c3d15ec4e3"), "name" : "Wall-E", "year" : 2008 }
     >
 
-Models in Namespaces
+Модели в пространствах имен
 --------------------
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using getSource:
+Пространства имен могут быть использованы, для того, чтобы избежать колизий имен классов. 
+В этом случае необходимо указать имя соответствующей колекции, используя getSource:
 
 .. code-block:: php
 
@@ -86,19 +87,19 @@ Namespaces can be used to avoid class name collision. In this case it is necessa
 
     }
 
-You could find a certain document by its id and then print its name:
+Вы можете найти определенный документ, его ID, а затем распечатать его имя:
 
 .. code-block:: php
 
     <?php
 
-    // Find record with _id = "5087358f2d42b8c3d15ec4e2"
+    // Найти запись с _id = "5087358f2d42b8c3d15ec4e2"
     $robot = Robots::findById("5087358f2d42b8c3d15ec4e2");
 
-    // Prints "Bender"
+    // Напечатать "Bender"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+ После записи в память, вы можете вносить изменения в свои данные и сохранить изменения:
 
 .. code-block:: php
 

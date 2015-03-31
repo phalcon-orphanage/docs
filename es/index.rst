@@ -11,7 +11,7 @@ Phalcon es un framework full-stack de código abierto para PHP 5 escrito como ex
 No necesitas aprender o usar C, toda su funcionalidad está expuesta como clases PHP listas para usar. Phalcon está también
 debilmente acoplado permitiendote usar sus clases como componentes de acuerdo a como tu aplicación lo requiera.
 
-Phalcon no es solo sobre rendimiento, nuestro objetivo es hacerlo robosto, completo y fácil de usar!
+Phalcon no es solo sobre rendimiento, nuestro objetivo es hacerlo robusto, completo y fácil de usar!
 
 .. highlights::
 

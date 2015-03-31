@@ -27,7 +27,7 @@
 
     }
 
-上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`。
+上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 。
 因此，Robots 模型拥有了大量继承自该组件功能，包括基本的数据库 CRUD (Create, Read, Update, Delete) 操作，数据验证以及复杂的搜索支持，并且可以同时关联多个模型。
 
 .. highlights::
@@ -71,6 +71,10 @@ The initialize() method is only called once during the request, it's intended to
 all instances of the model created within the application. If you want to perform initialization tasks for every instance
 created you can 'onConstruct':
 
+
+initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
+可以使用 'onConstruct' 事件：
+
 .. code-block:: php
 
     <?php
@@ -90,6 +94,9 @@ created you can 'onConstruct':
 Models can be implemented with properties of public scope, meaning that each property can be read/updated
 from any part of the code that has instantiated that model class without any restrictions:
 
+
+模型可以通过公共属性的方式实现，意味着模型的所有属性在实例化该模型的地方可以无限制的读取和更新。
+
 .. code-block:: php
 
     <?php
@@ -105,6 +112,9 @@ from any part of the code that has instantiated that model class without any res
 
 By using getters and setters you can control which properties are visible publicly perform various transformations
 to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
+
+
+通过使用 getters/setters 方法，可以控制哪些属性可以公开访问，并且对属性值执行不同的形式的转换，同时可以保存在模型中的数据添加相应的验证规则。
 
 .. code-block:: php
 
@@ -157,9 +167,17 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating. The ORM is compatible with both schemes of defining properties.
 
+
+公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
+开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
+
+
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^
 Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
+
+
+命名空间可以用来避免类名的冲突。ORM通过类名来映射相应的表名。比如 'Robots'：
 
 .. code-block:: php
 
@@ -177,6 +195,10 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
 for a table "robots" with the records:
 
+
+每个模型的实例对应一条数据表中的记录。可以方便的通过读取对象的属性来访问相应的数据。比如，
+一个表 "robots" 有如下数据：
+
 .. code-block:: bash
 
     mysql> select * from robots;
@@ -191,6 +213,10 @@ for a table "robots" with the records:
 
 You could find a certain record by its primary key and then print its name:
 
+
+你可以通过主键找到某一条记录并且打印它的名称：
+
+
 .. code-block:: php
 
     <?php
@@ -203,6 +229,9 @@ You could find a certain record by its primary key and then print its name:
 
 Once the record is in memory, you can make modifications to its data and then save changes:
 
+
+一旦记录被加载到内存中之后，你可以修改它的数据并保存所做的修改：
+
 .. code-block:: php
 
     <?php
@@ -214,10 +243,17 @@ Once the record is in memory, you can make modifications to its data and then sa
 As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
 abstraction for web applications.
 
+
+如上所示，不需要写任何SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用提供了高层数据库抽象。
+
+
 查找记录（Finding Records）
 ---------------
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
 how to query one or more records from a model:
+
+
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：
 
 .. code-block:: php
 
@@ -252,6 +288,8 @@ how to query one or more records from a model:
 
 You could also use the findFirst() method to get only the first record matching the given criteria:
 
+你可以使用  findFirst() 方法获取第一条符合查询条件的结果：
+
 .. code-block:: php
 
     <?php
@@ -270,6 +308,8 @@ You could also use the findFirst() method to get only the first record matching 
 
 Both find() and findFirst() methods accept an associative array specifying the search criteria:
 
+find() 和 findFirst() 方法都接受关联数组作为查询条件：
+
 .. code-block:: php
 
     <?php
@@ -287,8 +327,13 @@ Both find() and findFirst() methods accept an associative array specifying the s
 
 The available query options are:
 
+
+
+可用的查询设置如下：
+
+
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
+| 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
 +=============+====================================================================================================================================================================================================+=========================================================================+
 | conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
@@ -315,6 +360,10 @@ The available query options are:
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
+
+如果你愿意，除了使用数组作为查询参数外，还可以通过一种面向对象的方式来创建查询：
+
+
 .. code-block:: php
 
     <?php
@@ -328,12 +377,26 @@ If you prefer, there is also available a way to create queries in an object-orie
 
 The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
 
+
+静态方法 query() 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
+
+
 All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
 This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+
+
+所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
+
 
 Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
 retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 An example is in order, so taking our Robots model mentioned earlier :
+
+
+最后，还有一个 findFirstBy<property-name>() 方法。这个方法扩展了前面提及的 "findFirst()" 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
+
+还是用上面用过的 Robots 模型来举例说明：
+
 
 .. code-block:: php
 
@@ -351,6 +414,10 @@ An example is in order, so taking our Robots model mentioned earlier :
 We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
 'Terminator'. This could be written like so :
 
+
+我们这里有3个属性：$id, $name 和 $price。因此，我们以想要查询第一个名称为 'Terminator' 的记录为例，可以这样写：
+
+
 .. code-block:: php
 
     <?php
@@ -366,6 +433,10 @@ We have three properties to work with here. $id, $name and $price. So, let's say
 
 Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
 when we find a match with our query, all the other properties are available to us as well.
+
+
+请注意我们在方法调用中用的是 'Name'，并向它传递了变量 $name，$name 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
+
 
 模型结果集（Model Resultsets）
 ^^^^^^^^^^^^^^^^

@@ -1,9 +1,9 @@
-Abstract class **Phalcon\\Mvc\\Model**
+Абстрактный класс **Phalcon\\Mvc\\Model**
 ======================================
 
 *implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
+Phalcon\\Mvc\\Model соединяет объекты бизнес-логики и таблицы баз данных, чтобы создать модель предметной области, где логика и данные представлены в одном классе. Это реализация объектно-реляционной проекции (ORM). Модель представляет собой информацию (данные) приложения и правил для управления этими данными. Модели в основном используются для управления правилами взаимодействия с соответствующей таблицей в базе данных. В большинстве случаев, каждая таблица в базе данных будет соответствовать одной модели приложения. Основная часть бизнес-логики приложения будет сосредоточена в моделях. Phalcon\\Mvc\\Model является первым ORM написан на языке С для PHP, она дает разработчикам высокую производительность при взаимодействии с базами данных, а также удобство использования.
 
 .. code-block:: php
 
@@ -24,7 +24,7 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
 
 
 
-Constants
+Константы
 ---------
 
 *integer* **OP_NONE**
@@ -41,7 +41,7 @@ Constants
 
 *integer* **DIRTY_STATE_DETACHED**
 
-Methods
+Методы
 -------
 
 final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])

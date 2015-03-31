@@ -78,7 +78,7 @@ Add extension to your php configuration:
     #Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
-    #Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php.d/ with this content:
+    #Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
     #Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:

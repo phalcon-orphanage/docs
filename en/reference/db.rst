@@ -788,7 +788,7 @@ is limited by these constraints.
     )));
 
     // Deleting the column "name"
-    $connection->deleteColumn("robots", null, "name");
+    $connection->dropColumn("robots", null, "name");
 
 
 Dropping Tables

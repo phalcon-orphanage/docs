@@ -180,7 +180,7 @@ MVC Приложения
             // Регистрация диспетчера
             $di->set('dispatcher', function() {
                 $dispatcher = new Dispatcher();
-                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers\\");
+                $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 

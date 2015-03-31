@@ -355,7 +355,7 @@ of our component:
     //Pass the service container as unique parameter
     $some = new SomeComponent($di);
 
-    $some->someTask();
+    $some->someDbTask();
 
 The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
 saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
@@ -363,10 +363,11 @@ their behavior or any other aspect of them and that would not affect the compone
 
 私たちのアプローチ
 ============
-Phalcon\\DI is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+Phalcon\\DI は 依存性の注入や サービスの場所を実装するコンポーネントで、自分自身もコンテナです。
 
-Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can
-also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Phalconが高度に分離されているため、Phalcon\\DI はフレームワークのさまざまなコンポーネントを統合することが不可欠です。開発者は、依存性を注入し、アプリケーションで使用されるさまざまなクラスのグローバルインスタンスを管理するには、このコンポーネントを使用することができます。
+
+基本的には、このコンポーネントは、`コントロールの反転`パターンを実装しています。 
 
 Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
 using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only

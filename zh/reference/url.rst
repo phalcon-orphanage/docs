@@ -3,6 +3,10 @@
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
 capable of produce independent urls based on routes.
 
+
+:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 组件负责在Phalcon应用内生成URL。它依赖路由生成独立的URL。
+
+
 设置站点基地址（Setting a base URI）
 ------------------
 Depending of which directory of your document root your application is installed, it may have a base uri or not.

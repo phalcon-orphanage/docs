@@ -80,6 +80,10 @@ retrieves the headers before sending it to client:
 -----------------------------
 With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also execute HTTP redirections:
 
+
+可以通过 :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` 来执行HTTP重定向：
+
+
 .. code-block:: php
 
     <?php
@@ -99,6 +103,10 @@ With :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` you can also 
 All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`). This example demonstrates
 how you can redirect using a route you have defined in your application:
 
+
+所有内部 URIs 都是通过 'url' 来生成的（ 默认是 :doc:`Phalcon\\Mvc\\Url <url>` ）。下面的例子演示如何通过一个应用内预先定义好的路由来重定向。
+
+
 .. code-block:: php
 
     <?php
@@ -112,6 +120,10 @@ how you can redirect using a route you have defined in your application:
 
 Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it
 will be executed anyway. You can disable the view from a controller by executing $this->view->disable();
+
+
+值得注意的时候重定向并不禁用view组件，所以如果当前的action存在一个关联的view的话，将会继续执行它。在控制器中可以通过 $this->view->disable() 来禁用view。
+
 
 HTTP 缓存（HTTP Cache）
 -----------------------

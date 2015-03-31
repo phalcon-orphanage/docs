@@ -353,7 +353,7 @@ HTTP используется, чтобы запросы путей соотве
 События микроприложения
 -----------------------
 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` может посылать события в :doc:`EventsManager <events>` (если он присутствует).
-Events are triggered using the type "micro". The following events are supported:
+События срабатывают с использованием типа "micro". Поддерживаются следующие события:
 
 +---------------------+----------------------------------------------------------------------------------------------------------------------------+------------------------------+
 | Имя события         | Действие                                                                                                                   | Можно ли оставить операцию?  |
@@ -616,4 +616,4 @@ Events are triggered using the type "micro". The following events are supported:
 Внешние источники
 -----------------
 * :doc:`Создание простейшего REST API <tutorial-rest>` урок, показывающий как создать микроприложение, предоставляющее RESTful API.
-* `Магазин наклеек <http://store.phalconphp.com>`_ очень просто микроприложение [`Github <https://github.com/phalcon/store>`_].
+* `Магазин наклеек <http://store.phalconphp.com>`_ очень простое микроприложение [`Github <https://github.com/phalcon/store>`_].

@@ -83,7 +83,7 @@ Returns the current expiration time
 
 public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*string* $path)
 
-Sets the cookie's expiration time
+Sets the cookie's path
 
 
 

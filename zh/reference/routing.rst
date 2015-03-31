@@ -4,10 +4,19 @@ The router component allows defining routes that are mapped to controllers or ha
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
+
+路由器组件用来定义处理接收到的请求的路由，指向相应的控制器或者处理程序。路由器只是简单解析一个URI获取这些信息。
+路由器有两种模式：MVC模式以及匹配模式。第一种模式主要适合MVC应用。
+
+
 定义路由（Defining Routes）
 ---------------------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
 you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供高级路由支持。在MVC模式下，你可以定义路由并映射向需要的控制器/动作。
+一个路由定义方法如下所示：
+
 
 .. code-block:: php
 
@@ -654,6 +663,10 @@ If none of the routes specified in the router are matched, you can define a grou
 -------------------------------------
 It's possible to define default values for common paths like module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:
+
+
+可以为通用路径中的 module, controller, action 定义默认值。当一个路由缺少其中任何一项时，路由器可以自动用默认值填充：
+
 
 .. code-block:: php
 

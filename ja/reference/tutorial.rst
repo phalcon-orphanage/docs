@@ -226,13 +226,13 @@ Phalconで開発する際に、理解するべき非常に重要なコンセプ�
 
 Viewへのアウトプットの送信
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):
+コントローラーから画面に出力を送信することは時に必要ですが、しかしMVC主義者のコミュニティが証明するように、望ましくはありません。レスポンスを返せるために画面上に出力するデータ全てをviewに渡す必要があります。Phalconは、最後に実行されたコントローラとして指定されたディレクトリ内部の最後に実行されたアクションと同じ名前のビューを探します。私たちのケースでは(app/views/index/index.phtml)です。
 
 .. code-block:: php
 
     <?php echo "<h1>Hello!</h1>";
 
-Our controller (app/controllers/IndexController.php) now has an empty action definition:
+私たちのコントローラー(app/controllers/IndexController.php)は、今はアクションの定義は空です。
 
 .. code-block:: php
 
@@ -248,11 +248,11 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     }
 
-The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
+ブラウザの出力は同じままにしてください。アクションの実行が終了すると:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` スタティックコンポーネントが自動的に生成されます。Viewの使い方について詳しくは :doc:`こちら <views>` を参照ください。
 
 サインアップフォームのデザイン
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Now we will change the index.phtml view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+今度は、index.phtmlを編集して、「signup」という名前の新しいコントローラーへのリンクを追加してみましょう。目標は、ユーザーがアプリケーションにログインできるようにすることです。
 
 .. code-block:: php
 
@@ -262,18 +262,18 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+生成されたHTMLコードは、新しいコントローラーへリンクをしているアンカー(<a>)タグです。
 
 .. code-block:: html
 
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+タグを生成するためには、 :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` を使用します。このユーティリティクラスによって、フレームワークの規約に従ったHTMLタグを生成することができます。HTML生成機能の詳細については、 :doc:`found here <tags>` を参照してください。
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
 
-Here is the Signup controller (app/controllers/SignupController.php):
+以下が、Signupコントローラーです(app/controllers/SignupController.php)。
 
 .. code-block:: php
 
@@ -289,7 +289,7 @@ Here is the Signup controller (app/controllers/SignupController.php):
 
     }
 
-The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
+空のindexアクションは、ビューに何も渡しません。ビューでは、フォームが定義されています(app/views/signup/index.phtml)。
 
 .. code-block:: html+php
 
@@ -315,12 +315,12 @@ The empty index action gives the clean pass to a view with the form definition (
 
     </form>
 
-Viewing the form in your browser will show something like this:
+ブラウザーでフォームを確認すると、以下のように表示されるはずです。
 
 .. figure:: ../_static/img/tutorial-3.png
     :align: center
 
-:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
+:doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
 The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
 

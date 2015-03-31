@@ -15,7 +15,8 @@ Check if a value is included into a list of values
     
     $validator->add('status', new InclusionIn(array(
        'message' => 'The status must be A or B',
-       'domain' => array('A', 'B')
+       'domain' => array('A', 'B'),
+       'allowEmpty' => false  //if true, validation will pass when value is empty
     )));
 
 

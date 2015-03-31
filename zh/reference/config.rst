@@ -1,24 +1,22 @@
 读取配置（Reading Configurations）
 ======================
-:doc:`Phalcon\\Config <../api/Phalcon_Config>` is a component used to read configuration files of various formats (using adapters) into
-PHP objects for use in an application.
+:doc:`Phalcon\\Config <../api/Phalcon_Config>` 是一个用于将各种格式的配置文件读取到PHP对象的组件（使用适配器）。
 
 文件适配器（File Adapters）
 -------------
-The adapters available are:
+可用的适配器有:
 
 +-----------+---------------------------------------------------------------------------------------------------+
-| File Type | Description                                                                                       |
+| 文件类型  | 解释                                                                                              |
 +===========+===================================================================================================+
-| Ini       | Uses INI files to store settings. Internally the adapter uses the PHP function parse_ini_file.    |
+| Ini       | 使用INI文件来存储设置。内部适配器使用PHP函数 parse_ini_file。                              |
 +-----------+---------------------------------------------------------------------------------------------------+
-| Array     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.     |
+| Array     | 使用PHP多维数组存储设置。这个适配器提供了最好的性能 |
 +-----------+---------------------------------------------------------------------------------------------------+
 
 原生数组（Native Arrays）
 -------------
-The next example shows how to convert native arrays into Phalcon\\Config objects. This option offers the best performance since no files are
-read during this request.
+下面的例子展示如何将本地数组导入 Phalcon\\Config 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。
 
 .. code-block:: php
 
@@ -46,7 +44,7 @@ read during this request.
     echo $config->database->username, "\n";
     echo $config->mysetting, "\n";
 
-If you want to better organize your project you can save the array in another file and then read it.
+如果你想更好的组织你的项目，你可以在另一个文件保存数组，然后读入它。
 
 .. code-block:: php
 
@@ -57,7 +55,7 @@ If you want to better organize your project you can save the array in another fi
 
 读取 INI 文件（Reading INI Files）
 -----------------
-Ini files are a common way to store settings. Phalcon\\Config uses the optimized PHP function parse_ini_file to read these files. Files sections are parsed into sub-settings for easy access.
+INI文件是存储设置的常用方法。Phalcon\\Config 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。
 
 .. code-block:: ini
 
@@ -76,7 +74,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     [models]
     metadata.adapter  = "Memory"
 
-You can read the file as follows:
+你可以阅读如下所示的文件:
 
 .. code-block:: php
 
@@ -90,7 +88,7 @@ You can read the file as follows:
 
 合并配置（Merging Configurations）
 ----------------------
-Phalcon\\Config allows to merge a configuration object into another one recursively:
+Phalcon\\Config 允许合并配置对象到另一个:
 
 .. code-block:: php
 
@@ -115,7 +113,7 @@ Phalcon\\Config allows to merge a configuration object into another one recursiv
 
     print_r($config);
 
-The above code produces the following:
+上面的代码会产生以下内容:
 
 .. code-block:: html
 
@@ -131,4 +129,4 @@ The above code produces the following:
         [debug] => 1
     )
 
-There are more adapters available for this components in the `Phalcon Incubator <https://github.com/phalcon/incubator>`_
+有更多的适配器可用于这个组件： `Phalcon Incubator <https://github.com/phalcon/incubator>`_

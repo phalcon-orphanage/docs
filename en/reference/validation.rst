@@ -107,6 +107,8 @@ Phalcon exposes a set of built-in validators for this component:
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Confirmation | Validates that a value is the same as another present in the data                                                                                                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+| Url          | Validates that field contains a valid URL                                                                                                                        | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
++--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 The following example explains how to create additional validators for this component:
 
@@ -333,7 +335,7 @@ this behavior by telling the validation component which validator may stop the v
             'pattern' => '/\+44 [0-9]+/'
         )))
         ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is too short',
+            'messageMinimum' => 'The telephone is too short',
             'min' => 2
         )));
 

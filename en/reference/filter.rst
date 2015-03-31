@@ -120,9 +120,9 @@ The following are the built-in filters provided by this component:
 +-----------+---------------------------------------------------------------------------+
 | Name      | Description                                                               |
 +===========+===========================================================================+
-| string    | Strip tags                                                                |
+| string    | Strip tags and escapes HTML entities, including single and double quotes. |
 +-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
+| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{\|}~@.[]. |
 +-----------+---------------------------------------------------------------------------+
 | int       | Remove all characters except digits, plus and minus sign.                 |
 +-----------+---------------------------------------------------------------------------+

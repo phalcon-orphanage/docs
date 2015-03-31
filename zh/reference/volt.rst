@@ -1,5 +1,8 @@
 Volt 模版引擎（Volt: Template Engine）
 =====================
+Volt 是一个用C为PHP编写的超快的并且对设计师友好的模板语言。Volt 提供一组辅助工具有助于你以一种更简单的的方式编写视图（Views）。
+同时，Volt与Phalcon的其他组件高度集成在一起，就像你在应用中单独使用Volt一样。
+
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
 helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
 just as you can use it as a stand-alone component in your applications.
@@ -804,15 +807,15 @@ Volt is highly integrated with :doc:`Phalcon\\Tag <tags>`, so it's easy to use t
 
     {{ form('products/save', 'method': 'post') }}
 
-        <label>Name</label>
+        <label for="name">Name</label>
         {{ text_field("name", "size": 32) }}
 
-        <label>Type</label>
+        <label for="type">Type</label>
         {{ select("type", productTypes, 'using': ['id', 'name']) }}
 
         {{ submit_button('Send') }}
 
-    </form>
+    {{ end_form() }}
 
 The following PHP is generated:
 
@@ -822,15 +825,15 @@ The following PHP is generated:
 
     <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
 
-        <label>Name</label>
+        <label for="name">Name</label>
         <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
-        <label>Type</label>
+        <label for="type">Type</label>
         <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
 
         <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
-    </form>
+    {{ end_form() }}
 
 To call a Phalcon\\Tag helper, you only need to call an uncamelized version of the method:
 
