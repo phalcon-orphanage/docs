@@ -1,165 +1,196 @@
 Interface **Phalcon\\Mvc\\Model\\ManagerInterface**
 ===================================================
 
-Phalcon\\Mvc\\Model\\ManagerInterface initializer
-
-
 Methods
 -------
 
-abstract public  **initialize** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public  **initialize** (*unknown* $model)
 
-Initializes a model in the model manager
+...
 
 
+abstract public  **setModelSource** (*unknown* $model, *unknown* $source)
 
-abstract public *boolean*  **isInitialized** (*string* $modelName)
+...
 
-Check of a model is already initialized
 
+abstract public  **getModelSource** (*unknown* $model)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLastInitialized** ()
 
-Get last initialized model
+abstract public  **setModelSchema** (*unknown* $model, *unknown* $schema)
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **load** (*string* $modelName, *boolean* $newInstance)
+abstract public  **getModelSchema** (*unknown* $model)
 
-Loads a model throwing an exception if it doesn't exist
+...
 
 
+abstract public  **setConnectionService** (*unknown* $model, *unknown* $connectionService)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+...
 
-Setup a 1-1 relation between two models
 
+abstract public  **setReadConnectionService** (*unknown* $model, *unknown* $connectionService)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Setup a relation reverse 1-1  between two models
+abstract public  **getReadConnectionService** (*unknown* $model)
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>`  **addHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+abstract public  **setWriteConnectionService** (*unknown* $model, *unknown* $connectionService)
 
-Setup a relation 1-n between two models
+...
 
 
+abstract public  **getWriteConnectionService** (*unknown* $model)
 
-abstract public *boolean*  **existsBelongsTo** (*string* $modelName, *string* $modelRelation)
+...
 
-Checks whether a model has a belongsTo relation with another model
 
+abstract public  **getReadConnection** (*unknown* $model)
 
+...
 
-abstract public *boolean*  **existsHasMany** (*string* $modelName, *string* $modelRelation)
 
-Checks whether a model has a hasMany relation with another model
+abstract public  **getWriteConnection** (*unknown* $model)
 
+...
 
 
-abstract public *boolean*  **existsHasOne** (*string* $modelName, *string* $modelRelation)
+abstract public  **isInitialized** (*unknown* $modelName)
 
-Checks whether a model has a hasOne relation with another model
+...
 
 
+abstract public  **getLastInitialized** ()
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getBelongsToRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
+...
 
-Gets belongsTo related records from a model
 
+abstract public  **load** (*unknown* $modelName, [*unknown* $newInstance])
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasManyRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
 
-Gets hasMany related records from a model
+abstract public  **addHasOne** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getHasOneRecords** (*string* $method, *string* $modelName, *string* $modelRelation, :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $record, [*array* $parameters])
+abstract public  **addBelongsTo** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
-Gets belongsTo related records from a model
+...
 
 
+abstract public  **addHasMany** (*unknown* $model, *unknown* $fields, *unknown* $referencedModel, *unknown* $referencedFields, [*unknown* $options])
 
-abstract public *array*  **getBelongsTo** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+...
 
-Gets belongsTo relations defined on a model
 
+abstract public  **existsBelongsTo** (*unknown* $modelName, *unknown* $modelRelation)
 
+...
 
-abstract public *array*  **getHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Gets hasMany relations defined on a model
+abstract public  **existsHasMany** (*unknown* $modelName, *unknown* $modelRelation)
 
+...
 
 
-abstract public *array*  **getHasOne** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+abstract public  **existsHasOne** (*unknown* $modelName, *unknown* $modelRelation)
 
-Gets hasOne relations defined on a model
+...
 
 
+abstract public  **getBelongsToRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
 
-abstract public *array*  **getHasOneAndHasMany** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+...
 
-Gets hasOne relations defined on a model
 
+abstract public  **getHasManyRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` [] **getRelations** (*string* $modelName)
 
-Query all the relationships defined on a model
+abstract public  **getHasOneRecords** (*unknown* $method, *unknown* $modelName, *unknown* $modelRelation, *unknown* $record, [*unknown* $parameters])
 
+...
 
 
-abstract public *array*  **getRelationsBetween** (*string* $first, *string* $second)
+abstract public  **getBelongsTo** (*unknown* $model)
 
-Query the relations between two models
+...
 
 
+abstract public  **getHasMany** (*unknown* $model)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **createQuery** (*string* $phql)
+...
 
-Creates a Phalcon\\Mvc\\Model\\Query without execute it
 
+abstract public  **getHasOne** (*unknown* $model)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **executeQuery** (*string* $phql, [*array* $placeholders])
 
-Creates a Phalcon\\Mvc\\Model\\Query and execute it
+abstract public  **getHasOneAndHasMany** (*unknown* $model)
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **createBuilder** ([*string* $params])
+abstract public  **getRelations** (*unknown* $modelName)
 
-Creates a Phalcon\\Mvc\\Model\\Query\\Builder
+...
 
 
+abstract public  **getRelationsBetween** (*unknown* $first, *unknown* $second)
 
-abstract public  **addBehavior** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
+...
 
-Binds a behavior to a model
 
+abstract public  **createQuery** (*unknown* $phql)
 
+...
 
-abstract public  **notifyEvent** (*string* $eventName, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
-Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model
+abstract public  **executeQuery** (*unknown* $phql, [*unknown* $placeholders])
 
+...
 
 
-abstract public *boolean*  **missingMethod** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $eventName, *array* $data)
+abstract public  **createBuilder** ([*unknown* $params])
 
-Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented
+...
 
 
+abstract public  **addBehavior** (*unknown* $model, *unknown* $behavior)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\QueryInterface <Phalcon_Mvc_Model_QueryInterface>`  **getLastQuery** ()
+...
 
-Returns the last query created or executed in the
 
+abstract public  **notifyEvent** (*unknown* $eventName, *unknown* $model)
+
+...
+
+
+abstract public  **missingMethod** (*unknown* $model, *unknown* $eventName, *unknown* $data)
+
+...
+
+
+abstract public  **getLastQuery** ()
+
+...
+
+
+abstract public  **getRelationByAlias** (*unknown* $modelName, *unknown* $alias)
+
+...
 
 

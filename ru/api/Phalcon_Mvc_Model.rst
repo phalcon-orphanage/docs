@@ -1,9 +1,9 @@
-Абстрактный класс **Phalcon\\Mvc\\Model**
+Abstract class **Phalcon\\Mvc\\Model**
 ======================================
 
-*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model соединяет объекты бизнес-логики и таблицы баз данных, чтобы создать модель предметной области, где логика и данные представлены в одном классе. Это реализация объектно-реляционной проекции (ORM). Модель представляет собой информацию (данные) приложения и правил для управления этими данными. Модели в основном используются для управления правилами взаимодействия с соответствующей таблицей в базе данных. В большинстве случаев, каждая таблица в базе данных будет соответствовать одной модели приложения. Основная часть бизнес-логики приложения будет сосредоточена в моделях. Phalcon\\Mvc\\Model является первым ORM написан на языке С для PHP, она дает разработчикам высокую производительность при взаимодействии с базами данных, а также удобство использования.
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
 
 .. code-block:: php
 
@@ -16,7 +16,7 @@ Phalcon\\Mvc\\Model соединяет объекты бизнес-логики 
      if ($robot->save() == false) {
       echo "Umh, We can store robots: ";
       foreach ($robot->getMessages() as $message) {
-        echo $message;
+        echo message;
       }
      } else {
       echo "Great, a new robot was saved successfully!";
@@ -24,7 +24,7 @@ Phalcon\\Mvc\\Model соединяет объекты бизнес-логики 
 
 
 
-Константы
+Constants
 ---------
 
 *integer* **OP_NONE**
@@ -41,16 +41,16 @@ Phalcon\\Mvc\\Model соединяет объекты бизнес-логики 
 
 *integer* **DIRTY_STATE_DETACHED**
 
-Методы
+Methods
 -------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector], [:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $modelsManager])
+final public  **__construct** ([*unknown* $dependencyInjector], [*unknown* $modelsManager])
 
 Phalcon\\Mvc\\Model constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -62,7 +62,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** ()
+protected  **setEventsManager** (*unknown* $eventsManager)
 
 Sets a custom events manager
 
@@ -127,7 +127,7 @@ Sets a transaction related to the Model instance
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** (*string* $source)
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** (*unknown* $source)
 
 Sets table name which model should be mapped
 
@@ -139,7 +139,7 @@ Returns table name mapped in the model
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** (*string* $schema)
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** (*unknown* $schema)
 
 Sets schema name where table mapped is located
 
@@ -151,19 +151,19 @@ Returns schema name where table mapped is located
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setReadConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setReadConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name used to read data
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setWriteConnectionService** (*string* $connectionService)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setWriteConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name used to write data
 
@@ -181,7 +181,7 @@ Returns the DependencyInjection connection service name used to write data relat
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setDirtyState** (*int* $dirtyState)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setDirtyState** (*unknown* $dirtyState)
 
 Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
@@ -205,7 +205,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*unknown* $data, [*unknown* $dataColumnMap], [*unknown* $whiteList])
 
 Assigns values to a model from an array 
 
@@ -213,16 +213,26 @@ Assigns values to a model from an array
 
     <?php
 
-    $robot->assign(array(
-      'type' => 'mechanical',
-      'name' => 'Astro Boy',
-      'year' => 1952
-    ));
+     $robot->assign(array(
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952
+     ));
+    
+     //assign by db row, column map needed
+     $robot->assign($dbRow, array(
+        'db_type' => 'type',
+        'db_name' => 'name',
+        'db_year' => 'year'
+     ));
+    
+     //allow assign only name and year
+     $robot->assign($_POST, null, array('name', 'year');
 
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResultMap** (*unknown* $base, *unknown* $data, *unknown* $columnMap, [*unknown* $dirtyState], [*unknown* $keepSnapshots])
 
 Assigns values to a model from an array returning a new model. 
 
@@ -239,13 +249,13 @@ Assigns values to a model from an array returning a new model.
 
 
 
-public static *mixed*  **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
+public static *mixed*  **cloneResultMapHydrate** (*unknown* $data, *unknown* $columnMap, *unknown* $hydrationMode)
 
 Returns an hydrated result based on the data and the column map
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **cloneResult** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $base, *array* $data, [*int* $dirtyState])
+public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **cloneResult** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $base, *unknown* $data, [*unknown* $dirtyState])
 
 Assigns values to a model from an array returning a new model 
 
@@ -262,7 +272,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*unknown* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -293,7 +303,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*array* $parameters])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*unknown* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -316,25 +326,25 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([*unknown* $dependencyInjector])
 
 Create a criteria for a specific model
 
 
 
-protected *boolean*  **_exists** ()
+protected *boolean*  **_exists** (*unknown* $metaData, *unknown* $connection, [*unknown* $table])
 
 Checks if the current record already exists or not
 
 
 
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** ()
+protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** (*unknown* $functionName, *unknown* $alias, *unknown* $parameters)
 
 Generate a PHQL SELECT statement for an aggregate
 
 
 
-public static *int*  **count** ([*array* $parameters])
+public static *mixed*  **count** ([*unknown* $parameters])
 
 Allows to count how many records match the specified conditions 
 
@@ -353,7 +363,7 @@ Allows to count how many records match the specified conditions
 
 
 
-public static *double*  **sum** ([*array* $parameters])
+public static *mixed*  **sum** ([*unknown* $parameters])
 
 Allows to calculate a summatory on a column that match the specified conditions 
 
@@ -372,7 +382,7 @@ Allows to calculate a summatory on a column that match the specified conditions
 
 
 
-public static *mixed*  **maximum** ([*array* $parameters])
+public static *mixed*  **maximum** ([*unknown* $parameters])
 
 Allows to get the maximum value of a column that match the specified conditions 
 
@@ -391,7 +401,7 @@ Allows to get the maximum value of a column that match the specified conditions
 
 
 
-public static *mixed*  **minimum** ([*array* $parameters])
+public static *mixed*  **minimum** ([*unknown* $parameters])
 
 Allows to get the minimum value of a column that match the specified conditions 
 
@@ -410,7 +420,7 @@ Allows to get the minimum value of a column that match the specified conditions
 
 
 
-public static *double*  **average** ([*array* $parameters])
+public static *double*  **average** ([*unknown* $parameters])
 
 Allows to calculate the average value on a column matching the specified conditions 
 
@@ -429,25 +439,25 @@ Allows to calculate the average value on a column matching the specified conditi
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName)
+public *boolean*  **fireEvent** (*unknown* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*string* $eventName)
+public *boolean*  **fireEventCancel** (*unknown* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
 
 
-protected *boolean*  **_cancelOperation** ()
+protected  **_cancelOperation** ()
 
 Cancel the current operation
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (:doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` $message)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (*unknown* $message)
 
 Appends a customized message on the validation process 
 
@@ -457,7 +467,7 @@ Appends a customized message on the validation process
 
      use \Phalcon\Mvc\Model\Message as Message;
     
-     class Robots extends Phalcon\Mvc\Model
+     class Robots extends \Phalcon\Mvc\Model
      {
     
        public function beforeSave()
@@ -472,7 +482,7 @@ Appends a customized message on the validation process
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** (:doc:`Phalcon\\Mvc\\Model\\ValidatorInterface <Phalcon_Mvc_Model_ValidatorInterface>` $validator)
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** (*unknown* $validator)
 
 Executes validators on every validation call 
 
@@ -482,7 +492,7 @@ Executes validators on every validation call
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
     
-    class Subscriptors extends Phalcon\Mvc\Model
+    class Subscriptors extends \Phalcon\Mvc\Model
     {
     
     public function validation()
@@ -511,7 +521,7 @@ Check whether validation process has generated any messages
 
     use Phalcon\Mvc\Model\Validator\ExclusionIn as ExclusionIn;
     
-    class Subscriptors extends Phalcon\Mvc\Model
+    class Subscriptors extends \Phalcon\Mvc\Model
     {
     
     public function validation()
@@ -560,55 +570,55 @@ Reads "belongs to" relations and check the virtual foreign keys when inserting o
 
 
 
-protected *boolean*  **_checkForeignKeysReverseRestrict** ()
-
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
-
-
-
 protected *boolean*  **_checkForeignKeysReverseCascade** ()
 
 Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
 
 
 
-protected *boolean*  **_preSave** ()
+protected *boolean*  **_checkForeignKeysReverseRestrict** ()
+
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+
+
+
+protected *boolean*  **_preSave** (*unknown* $metaData, *unknown* $exists, *unknown* $identityField)
 
 Executes internal hooks before save a record
 
 
 
-protected *boolean*  **_postSave** ()
+protected *boolean*  **_postSave** (*unknown* $success, *unknown* $exists)
 
 Executes internal events after save a record
 
 
 
-protected *boolean*  **_doLowInsert** ()
+protected *boolean*  **_doLowInsert** (*unknown* $metaData, *unknown* $connection, *unknown* $table, *unknown* $identityField)
 
 Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-protected *boolean*  **_doLowUpdate** ()
+protected *boolean*  **_doLowUpdate** (*unknown* $metaData, *unknown* $connection, *unknown* $table)
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
 
 
-protected *boolean*  **_preSaveRelatedRecords** ()
+protected *boolean*  **_preSaveRelatedRecords** (*unknown* $connection, *unknown* $related)
 
 Saves related records that must be stored prior to save the master record
 
 
 
-protected *boolean*  **_postSaveRelatedRecords** ()
+protected *boolean*  **_postSaveRelatedRecords** (*unknown* $connection, *unknown* $related)
 
 Save the related records assigned in the has-one/has-many relations
 
 
 
-public *boolean*  **save** ([*array* $data], [*array* $whiteList])
+public *boolean*  **save** ([*unknown* $data], [*unknown* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise. 
 
@@ -631,7 +641,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public *boolean*  **create** ([*array* $data], [*array* $whiteList])
+public *boolean*  **create** ([*unknown* $data], [*unknown* $whiteList])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -657,7 +667,7 @@ Inserts a model instance. If the instance already exists in the persistance it w
 
 
 
-public *boolean*  **update** ([*array* $data], [*array* $whiteList])
+public *boolean*  **update** ([*unknown* $data], [*unknown* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -697,19 +707,19 @@ Returns the type of the latest operation performed by the ORM Returns one of the
 
 
 
-public  **refresh** ()
+public *\Phalcon\Mvc\Model*  **refresh** ()
 
 Refreshes the model attributes re-querying the record from the database
 
 
 
-public  **skipOperation** (*boolean* $skip)
+public  **skipOperation** (*unknown* $skip)
 
 Skips the current operation forcing a success state
 
 
 
-public *mixed*  **readAttribute** (*string* $attribute)
+public *mixed*  **readAttribute** (*unknown* $attribute)
 
 Reads an attribute value by its name 
 
@@ -722,7 +732,7 @@ Reads an attribute value by its name
 
 
 
-public  **writeAttribute** (*string* $attribute, *mixed* $value)
+public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
 
 Writes an attribute value by its name 
 
@@ -735,7 +745,7 @@ Writes an attribute value by its name
 
 
 
-protected  **skipAttributes** (*array* $attributes, [*boolean* $replace])
+protected  **skipAttributes** (*unknown* $attributes)
 
 Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement 
 
@@ -743,6 +753,8 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -756,7 +768,7 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
 
 
 
-protected  **skipAttributesOnCreate** (*array* $attributes, [*boolean* $replace])
+protected  **skipAttributesOnCreate** (*unknown* $attributes)
 
 Sets a list of attributes that must be skipped from the generated INSERT statement 
 
@@ -764,6 +776,8 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -777,7 +791,7 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
 
 
 
-protected  **skipAttributesOnUpdate** (*array* $attributes, [*boolean* $replace])
+protected  **skipAttributesOnUpdate** (*unknown* $attributes)
 
 Sets a list of attributes that must be skipped from the generated UPDATE statement 
 
@@ -785,6 +799,8 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -798,7 +814,7 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** (*mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a 1-1 relation between two models 
 
@@ -806,6 +822,8 @@ Setup a 1-1 relation between two models
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -819,7 +837,7 @@ Setup a 1-1 relation between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (*mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a relation reverse 1-1  between two models 
 
@@ -827,6 +845,8 @@ Setup a relation reverse 1-1  between two models
 
     <?php
 
+    <?php
+    
     class RobotsParts extends \Phalcon\Mvc\Model
     {
     
@@ -840,7 +860,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** (*mixed* $fields, *string* $referenceModel, *mixed* $referencedFields, [*array* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a relation 1-n between two models 
 
@@ -848,6 +868,8 @@ Setup a relation 1-n between two models
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -861,7 +883,7 @@ Setup a relation 1-n between two models
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** (*string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *unknown* $referenceModel, *string* $referencedFields, [*array* $options])
+protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasManyToMany** (*unknown* $fields, *unknown* $intermediateModel, *unknown* $intermediateFields, *unknown* $intermediateReferencedFields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a relation n-n between two models through an intermediate relation 
 
@@ -869,6 +891,8 @@ Setup a relation n-n between two models through an intermediate relation
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -890,7 +914,7 @@ Setup a relation n-n between two models through an intermediate relation
 
 
 
-public  **addBehavior** (:doc:`Phalcon\\Mvc\\Model\\BehaviorInterface <Phalcon_Mvc_Model_BehaviorInterface>` $behavior)
+protected  **addBehavior** (*unknown* $behavior)
 
 Setups a behavior in a model 
 
@@ -898,6 +922,8 @@ Setups a behavior in a model
 
     <?php
 
+    <?php
+    
     use Phalcon\Mvc\Model\Behavior\Timestampable;
     
     class Robots extends \Phalcon\Mvc\Model
@@ -918,7 +944,7 @@ Setups a behavior in a model
 
 
 
-protected  **keepSnapshots** (*boolean* $keepSnapshots)
+protected  **keepSnapshots** (*unknown* $keepSnapshot)
 
 Sets if the model must keep the original record snapshot in memory 
 
@@ -926,6 +952,8 @@ Sets if the model must keep the original record snapshot in memory
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -939,7 +967,7 @@ Sets if the model must keep the original record snapshot in memory
 
 
 
-public  **setSnapshotData** (*array* $data, [*array* $columnMap])
+public  **setSnapshotData** (*unknown* $data, [*unknown* $columnMap])
 
 Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
@@ -957,7 +985,7 @@ Returns the internal snapshot data
 
 
 
-public  **hasChanged** ([*boolean* $fieldName])
+public  **hasChanged** ([*unknown* $fieldName])
 
 Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
@@ -969,7 +997,7 @@ Returns a list of changed values
 
 
 
-protected  **useDynamicUpdate** (*boolean* $dynamicUpdate)
+protected  **useDynamicUpdate** (*unknown* $dynamicUpdate)
 
 Sets if a model must use dynamic update instead of the all-field update 
 
@@ -977,6 +1005,8 @@ Sets if a model must use dynamic update instead of the all-field update
 
     <?php
 
+    <?php
+    
     class Robots extends \Phalcon\Mvc\Model
     {
     
@@ -990,43 +1020,43 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*string* $alias, [*array* $arguments])
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **getRelated** (*unknown* $alias, [*unknown* $arguments])
 
 Returns related records based on defined relations
 
 
 
-protected *mixed*  **_getRelatedRecords** ()
+protected *mixed*  **_getRelatedRecords** (*unknown* $modelName, *unknown* $method, *unknown* $arguments)
 
 Returns related records defined relations depending on the method name
 
 
 
-public *mixed*  **__call** (*string* $method, [*array* $arguments])
+public *mixed*  **__call** (*unknown* $method, [*unknown* $arguments])
 
 Handles method calls when a method is not implemented
 
 
 
-public static *mixed*  **__callStatic** (*string* $method, [*array* $arguments])
+public static *mixed*  **__callStatic** (*unknown* $method, [*unknown* $arguments])
 
 Handles method calls when a static method is not implemented
 
 
 
-public  **__set** (*string* $property, *mixed* $value)
+public  **__set** (*unknown* $property, *unknown* $value)
 
 Magic method to assign values to the the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **__get** (*string* $property)
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>` |Phalcon\Mvc\Model **__get** (*unknown* $property)
 
 Magic method to get related records using the relation alias as a property
 
 
 
-public  **__isset** (*string* $property)
+public *boolean*  **__isset** (*unknown* $property)
 
 Magic method to check if a property is a valid relation
 
@@ -1038,7 +1068,7 @@ Serializes the object ignoring connections, services, related objects or static 
 
 
 
-public  **unserialize** (*string* $data)
+public  **unserialize** (*unknown* $data)
 
 Unserializes the object from a serialized string
 
@@ -1070,9 +1100,15 @@ Returns the instance as an array representation
 
 
 
-public static  **setup** (*array* $options)
+public static  **setup** (*unknown* $options)
 
-Enables/disables options in the ORM Available options: events                — Enables/Disables globally the internal events virtualForeignKeys    — Enables/Disables virtual foreign keys columnRenaming        — Enables/Disables column renaming notNullValidations    — Enables/Disables automatic not null validation exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications
+Enables/disables options in the ORM
+
+
+
+public  **reset** ()
+
+Reset a model instance data
 
 
 

@@ -11,49 +11,55 @@ Allows to define translation lists using PHP arrays
 Methods
 -------
 
-public  **__construct** (*array* $options)
+public  **__construct** (*unknown* $options)
 
 Phalcon\\Translate\\Adapter\\NativeArray constructor
 
 
 
-public *string*  **query** (*string* $index, [*array* $placeholders])
+public *string*  **query** (*unknown* $index, [*unknown* $placeholders])
 
 Returns the translation related to the given key
 
 
 
-public *bool*  **exists** (*string* $index)
+public *bool*  **exists** (*unknown* $index)
 
 Check whether is defined a translation key in the internal array
 
 
 
-public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **t** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key
 
 
 
-public  **offsetSet** (*unknown* $property, *string* $value) inherited from Phalcon\\Translate\\Adapter
+public *string*  **_** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+
+Returns the translation string of the given key (alias of method 't')
+
+
+
+public  **offsetSet** (*unknown* $offset, *unknown* $value) inherited from Phalcon\\Translate\\Adapter
 
 Sets a translation value
 
 
 
-public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Translate\\Adapter
+public *boolean*  **offsetExists** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Translate\\Adapter
+public  **offsetUnset** (*unknown* $offset) inherited from Phalcon\\Translate\\Adapter
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $property) inherited from Phalcon\\Translate\\Adapter
+public *string*  **offsetGet** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation related to the given key
 

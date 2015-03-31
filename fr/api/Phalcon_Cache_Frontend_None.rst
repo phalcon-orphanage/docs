@@ -1,8 +1,6 @@
 Class **Phalcon\\Cache\\Frontend\\None**
 ========================================
 
-*extends* class :doc:`Phalcon\\Cache\\Frontend\\Data <Phalcon_Cache_Frontend_Data>`
-
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options  
@@ -11,12 +9,14 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
     <?php
 
+    <?php
+    
     //Create a None Cache
-    $frontCache = new Phalcon\Cache\Frontend\None();
+    $frontCache = new \Phalcon\Cache\Frontend\None();
     
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
-    $cache = new Phalcon\Cache\Backend\Memcache($frontCache, array(
+    $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
     	"host" => "localhost",
     	"port" => "11211"
     ));
@@ -49,6 +49,30 @@ Returns cache lifetime, always one second expiring content
 
 
 
+public *boolean*  **isBuffering** ()
+
+Check whether if frontend is buffering output, always false
+
+
+
+public  **start** ()
+
+Starts output frontend
+
+
+
+public *string*  **getContent** ()
+
+Returns output cached content
+
+
+
+public  **stop** ()
+
+Stops output frontend
+
+
+
 public  **beforeStore** (*mixed* $data)
 
 Prepare data to be stored
@@ -58,36 +82,6 @@ Prepare data to be stored
 public  **afterRetrieve** (*mixed* $data)
 
 Prepares data to be retrieved to user
-
-
-
-public  **__construct** ([*array* $frontendOptions]) inherited from Phalcon\\Cache\\Frontend\\Data
-
-Phalcon\\Cache\\Frontend\\Data constructor
-
-
-
-public *boolean*  **isBuffering** () inherited from Phalcon\\Cache\\Frontend\\Data
-
-Check whether if frontend is buffering output
-
-
-
-public  **start** () inherited from Phalcon\\Cache\\Frontend\\Data
-
-Starts output frontend. Actually, does nothing
-
-
-
-public *string*  **getContent** () inherited from Phalcon\\Cache\\Frontend\\Data
-
-Returns output cached content
-
-
-
-public  **stop** () inherited from Phalcon\\Cache\\Frontend\\Data
-
-Stops output frontend
 
 
 

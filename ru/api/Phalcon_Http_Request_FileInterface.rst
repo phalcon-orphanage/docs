@@ -1,45 +1,41 @@
 Interface **Phalcon\\Http\\Request\\FileInterface**
 ===================================================
 
-Phalcon\\Http\\Request\\FileInterface initializer
-
-
 Methods
 -------
 
-abstract public *int*  **getSize** ()
+abstract public  **__construct** (*unknown* $file, [*unknown* $key])
 
-Returns the file size of the uploaded file
-
-
-
-abstract public *string*  **getName** ()
-
-Returns the real name of the uploaded file
+...
 
 
+abstract public  **getSize** ()
 
-abstract public *string*  **getTempName** ()
-
-Returns the temporal name of the uploaded file
-
+...
 
 
-abstract public *string*  **getType** ()
+abstract public  **getName** ()
 
-Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
-
-
-
-abstract public *string*  **getRealType** ()
-
-Gets the real mime type of the upload file using finfo
+...
 
 
+abstract public  **getTempName** ()
 
-abstract public *boolean*  **moveTo** (*string* $destination)
+...
 
-Move the temporary file to a destination
 
+abstract public  **getType** ()
+
+...
+
+
+abstract public  **getRealType** ()
+
+...
+
+
+abstract public  **moveTo** (*unknown* $destination)
+
+...
 
 

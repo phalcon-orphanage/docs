@@ -9,19 +9,31 @@ This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as ba
 Methods
 -------
 
-public  **__construct** (*array* $config)
+public  **__construct** (*unknown* $config)
 
 Phalcon\\Paginator\\Adapter\\Model constructor
 
 
 
-public  **setCurrentPage** (*int* $page)
+public  **setCurrentPage** (*unknown* $page)
 
 Set the current page number
 
 
 
-public *stdClass*  **getPaginate** ()
+public  **setLimit** (*unknown* $limitRows)
+
+Set current rows limit
+
+
+
+public  **getLimit** ()
+
+Get current rows limit
+
+
+
+public  **getPaginate** ()
 
 Returns a slice of the resultset to show in the pagination
 

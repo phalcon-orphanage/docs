@@ -9,26 +9,26 @@ Allows to manipulate the annotations reflection in an OO manner
 
      //Parse the annotations in a class
      $reader = new \Phalcon\Annotations\Reader();
-     $parsing = $reader->parse('MyComponent');
+     $parsing = reader->parse('MyComponent');
     
      //Create the reflection
      $reflection = new \Phalcon\Annotations\Reflection($parsing);
     
      //Get the annotations in the class docblock
-     $classAnnotations = $reflection->getClassAnnotations();
+     $classAnnotations = reflection->getClassAnnotations();
 
 
 
 Methods
 -------
 
-public  **__construct** ([*array* $reflectionData])
+public  **__construct** ([*unknown* $reflectionData])
 
 Phalcon\\Annotations\\Reflection constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getClassAnnotations** ()
+public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>` |false **getClassAnnotations** ()
 
 Returns the annotations found in the class docblock
 
@@ -52,7 +52,7 @@ Returns the raw parsing intermediate definitions used to construct the reflectio
 
 
 
-public static *array $data*  **__set_state** (*unknown* $data)
+public static *array data*  **__set_state** (*unknown* $data)
 
 Restores the state of a Phalcon\\Annotations\\Reflection variable export
 

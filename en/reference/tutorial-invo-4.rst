@@ -1,8 +1,7 @@
-Tutorial 5: Securing INVO
-==========================
-In this tutorial, we'll continue explaining how INVO is structured, in this chapter we'll talk
-about the implementation of authentication, authorization using events and plugins and
-an access control list (ACL) managed by Phalcon.
+Tutorial 5: Customizing INVO
+============================
+To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
+and changing the title according to the controller executed.
 
 User Components
 ---------------

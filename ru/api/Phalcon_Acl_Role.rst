@@ -1,35 +1,33 @@
 Class **Phalcon\\Acl\\Role**
 ============================
 
-*implements* :doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>`
-
 This class defines role entity and its description
 
 
 Methods
 -------
 
-public  **__construct** (*string* $name, [*string* $description])
+public  **getName** ()
 
-Phalcon\\Acl\\Role description
-
-
-
-public *string*  **getName** ()
-
-Returns the role name
+Role name
 
 
 
-public *string*  **getDescription** ()
+public  **__toString** ()
 
-Returns role description
+Role name
 
 
 
-public *string*  **__toString** ()
+public  **getDescription** ()
 
-Magic method __toString
+Role description
+
+
+
+public  **__construct** (*unknown* $name, [*unknown* $description])
+
+Phalcon\\Acl\\Role constructor
 
 
 

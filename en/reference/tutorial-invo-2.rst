@@ -114,7 +114,7 @@ data entered in the form including checking for a valid user in the database:
         }
     }
 
-For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
+For the sake of simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
 not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
 
 Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
@@ -385,6 +385,7 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
 
     <?php
 
+    use Phalcon\Acl;
     use Phalcon\Acl\Role;
     use Phalcon\Acl\Adapter\Memory as AclList;
 
@@ -392,7 +393,7 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
     $acl = new AclList();
 
     // The default action is DENY access
-    $acl->setDefaultAction(Phalcon\Acl::DENY);
+    $acl->setDefaultAction(Acl::DENY);
 
     // Register two roles, Users is registered users
     // and guests are users without a defined identity

@@ -1,45 +1,56 @@
 Interface **Phalcon\\Db\\ReferenceInterface**
 =============================================
 
-Phalcon\\Db\\ReferenceInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **getName** ()
+abstract public  **__construct** (*unknown* $referenceName, *unknown* $definition)
 
-Gets the index name
-
-
-
-abstract public *string*  **getSchemaName** ()
-
-Gets the schema where referenced table is
+...
 
 
+abstract public  **getName** ()
 
-abstract public *string*  **getReferencedSchema** ()
-
-Gets the schema where referenced table is
-
+...
 
 
-abstract public *array*  **getColumns** ()
+abstract public  **getSchemaName** ()
 
-Gets local columns which reference is based
-
-
-
-abstract public *string*  **getReferencedTable** ()
-
-Gets the referenced table
+...
 
 
+abstract public  **getReferencedSchema** ()
 
-abstract public *array*  **getReferencedColumns** ()
+...
 
-Gets referenced columns
 
+abstract public  **getColumns** ()
+
+...
+
+
+abstract public  **getReferencedTable** ()
+
+...
+
+
+abstract public  **getReferencedColumns** ()
+
+...
+
+
+abstract public  **getOnDelete** ()
+
+...
+
+
+abstract public  **getOnUpdate** ()
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $data)
+
+...
 
 

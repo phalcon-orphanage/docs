@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Cookie**
 ===============================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 Provide OO wrappers to manage a HTTP cookie
 
@@ -9,13 +9,13 @@ Provide OO wrappers to manage a HTTP cookie
 Methods
 -------
 
-public  **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
+public  **__construct** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
 
 Phalcon\\Http\\Cookie constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -27,13 +27,13 @@ Returns the internal dependency injector
 
 
 
-public *Phalcon\\Http\\CookieInterface*  **setValue** (*string* $value)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setValue** (*unknown* $value)
 
 Sets the cookie's value
 
 
 
-public *mixed*  **getValue** ([*string|array* $filters], [*string* $defaultValue])
+public *mixed*  **getValue** ([*unknown* $filters], [*unknown* $defaultValue])
 
 Returns the cookie's value
 
@@ -57,7 +57,7 @@ Deletes the cookie by setting an expire time in the past
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **useEncryption** (*boolean* $useEncryption)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **useEncryption** (*unknown* $useEncryption)
 
 Sets if the cookie must be encrypted/decrypted automatically
 
@@ -69,7 +69,7 @@ Check if the cookie is using implicit encryption
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setExpiration** (*int* $expire)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setExpiration** (*unknown* $expire)
 
 Sets the cookie's expiration time
 
@@ -81,9 +81,15 @@ Returns the current expiration time
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*string* $path)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setPath** (*unknown* $path)
 
-Sets the cookie's path
+Sets the cookie's expiration time
+
+
+
+public *string*  **getName** ()
+
+Returns the current cookie's name
 
 
 
@@ -93,7 +99,7 @@ Returns the current cookie's path
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setDomain** (*string* $domain)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setDomain** (*unknown* $domain)
 
 Sets the domain that the cookie is available to
 
@@ -105,7 +111,7 @@ Returns the domain that the cookie is available to
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setSecure** (*boolean* $secure)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setSecure** (*unknown* $secure)
 
 Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
@@ -117,7 +123,7 @@ Returns whether the cookie must only be sent when the connection is secure (HTTP
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setHttpOnly** (*boolean* $httpOnly)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **setHttpOnly** (*unknown* $httpOnly)
 
 Sets if the cookie is accessible only through the HTTP protocol
 
@@ -129,7 +135,7 @@ Returns if the cookie is accessible only through the HTTP protocol
 
 
 
-public *mixed*  **__toString** ()
+public *string*  **__toString** ()
 
 Magic __toString method converts the cookie's value to string
 

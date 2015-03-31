@@ -47,8 +47,6 @@ Constants
 
 *integer* **TYPE_BOOLEAN**
 
-*integer* **TYPE_DOUBLE**
-
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**
@@ -64,39 +62,57 @@ Constants
 Methods
 -------
 
-public  **__construct** (*string* $columnName, *array* $definition)
+public  **getName** ()
+
+Column's name
+
+
+
+public  **getSchemaName** ()
+
+Schema which table related is
+
+
+
+public  **getType** ()
+
+Column data type
+
+
+
+public  **getTypeReference** ()
+
+Column data type reference
+
+
+
+public  **getTypeValues** ()
+
+Column data type values
+
+
+
+public  **getSize** ()
+
+Integer column size
+
+
+
+public  **getScale** ()
+
+Integer column number scale
+
+
+
+public  **getDefault** ()
+
+Default column value
+
+
+
+public  **__construct** (*unknown* $name, *unknown* $definition)
 
 Phalcon\\Db\\Column constructor
-
-
-
-public *string*  **getSchemaName** ()
-
-Returns schema's table related to column
-
-
-
-public *string*  **getName** ()
-
-Returns column name
-
-
-
-public *int*  **getType** ()
-
-Returns column type
-
-
-
-public *int*  **getSize** ()
-
-Returns column size
-
-
-
-public *int*  **getScale** ()
-
-Returns column scale
 
 
 
@@ -148,7 +164,7 @@ Returns the type of bind handling
 
 
 
-public static *\Phalcon\Db\Column*  **__set_state** ([*unknown* $properties])
+public static *\Phalcon\Db\Column*  **__set_state** (*unknown* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
 

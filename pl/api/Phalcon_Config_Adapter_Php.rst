@@ -13,18 +13,18 @@ Reads php files and converts them to Phalcon\\Config objects.  Given the next co
 
     <?php
     return array(
-    'database' => array(
-    	'adapter' => 'Mysql',
-    	'host' => 'localhost',
-    	'username' => 'scott',
-    	'password' => 'cheetah',
-    	'dbname' => 'test_db'
-    ),
+     'database' => array(
+         'adapter' => 'Mysql',
+         'host' => 'localhost',
+         'username' => 'scott',
+         'password' => 'cheetah',
+         'dbname' => 'test_db'
+     ),
     
-    'phalcon' => array(
-    	'controllersDir' => '../app/controllers/',
-    	'modelsDir' => '../app/models/',
-    	'viewsDir' => '../app/views/'
+     phalcon' => array(
+        'controllersDir' => '../app/controllers/',
+        'modelsDir' => '../app/models/',
+        'viewsDir' => '../app/views/'
     ));
 
   You can read it as follows:  
@@ -33,22 +33,22 @@ Reads php files and converts them to Phalcon\\Config objects.  Given the next co
 
     <?php
 
-    $config = new Phalcon\Config\Adapter\Php("path/config.php");
-    echo $config->phalcon->controllersDir;
-    echo $config->database->username;
+     $config = new Phalcon\Config\Adapter\Php("path/config.php");
+     echo $config->phalcon->controllersDir;
+     echo $config->database->username;
 
 
 
 Methods
 -------
 
-public  **__construct** (*string* $filePath)
+public  **__construct** (*unknown* $filePath)
 
 Phalcon\\Config\\Adapter\\Php constructor
 
 
 
-public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Config
+public  **offsetExists** (*unknown* $index) inherited from Phalcon\\Config
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -61,7 +61,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue]) inherited from Phalcon\\Config
+public  **get** (*unknown* $index, [*unknown* $defaultValue]) inherited from Phalcon\\Config
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -74,7 +74,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public *string*  **offsetGet** (*unknown* $property) inherited from Phalcon\\Config
+public  **offsetGet** (*unknown* $index) inherited from Phalcon\\Config
 
 Gets an attribute using the array-syntax 
 
@@ -87,7 +87,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*unknown* $property, *mixed* $value) inherited from Phalcon\\Config
+public  **offsetSet** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Config
 
 Sets an attribute using the array-syntax 
 
@@ -100,7 +100,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Config
+public  **offsetUnset** (*unknown* $index) inherited from Phalcon\\Config
 
 Unsets an attribute using the array-syntax 
 
@@ -113,7 +113,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config) inherited from Phalcon\\Config
+public *this merged config*  **merge** (*unknown* $config) inherited from Phalcon\\Config
 
 Merges a configuration into the current one 
 
@@ -121,13 +121,13 @@ Merges a configuration into the current one
 
     <?php
 
-    $appConfig = new Phalcon\Config(array('database' => array('host' => 'localhost')));
-    $globalConfig->merge($config2);
+     $appConfig = new \Phalcon\Config(array('database' => array('host' => 'localhost')));
+     $globalConfig->merge($config2);
 
 
 
 
-public *array*  **toArray** () inherited from Phalcon\\Config
+public  **toArray** () inherited from Phalcon\\Config
 
 Converts recursively the object to an array 
 
@@ -142,37 +142,34 @@ Converts recursively the object to an array
 
 public  **count** () inherited from Phalcon\\Config
 
-...
+Returns the count of properties set in the config 
+
+.. code-block:: php
+
+    <?php
+
+     print count($config);
+
+or 
+
+.. code-block:: php
+
+    <?php
+
+     print $config->count();
 
 
-public  **__wakeup** () inherited from Phalcon\\Config
-
-...
 
 
-public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** ([*unknown* $properties]) inherited from Phalcon\\Config
+public static  **__set_state** (*unknown* $data) inherited from Phalcon\\Config
 
 Restores the state of a Phalcon\\Config object
 
 
 
-public  **__get** (*unknown* $property) inherited from Phalcon\\Config
+private *Config merged config*  **_merge** (*unknown* $config, [*unknown* $instance]) inherited from Phalcon\\Config
 
-...
+Helper method for merge configs (forwarding nested config instance)
 
-
-public  **__set** (*unknown* $property, *unknown* $value) inherited from Phalcon\\Config
-
-...
-
-
-public  **__isset** (*unknown* $property) inherited from Phalcon\\Config
-
-...
-
-
-public  **__unset** (*unknown* $property) inherited from Phalcon\\Config
-
-...
 
 

@@ -1,7 +1,7 @@
-Class **Phalcon\\DI\\Service**
+Class **Phalcon\\Di\\Service**
 ==============================
 
-*implements* :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`
+*implements* :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`
 
 Represents individually a service in the services container  
 
@@ -9,8 +9,8 @@ Represents individually a service in the services container
 
     <?php
 
-     $service = new Phalcon\DI\Service('request', 'Phalcon\Http\Request');
-     $request = $service->resolve();
+     $service = new \Phalcon\Di\Service('request', 'Phalcon\Http\Request');
+     $request = service->resolve();
 
 .. code-block:: php
 
@@ -21,7 +21,7 @@ Represents individually a service in the services container
 Methods
 -------
 
-public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
+final public  **__construct** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
 
 
 
@@ -33,7 +33,7 @@ Returns the service's name
 
 
 
-public  **setShared** (*boolean* $shared)
+public  **setShared** (*unknown* $shared)
 
 Sets if the service is shared or not
 
@@ -45,13 +45,13 @@ Check whether the service is shared or not
 
 
 
-public  **setSharedInstance** (*mixed* $sharedInstance)
+public  **setSharedInstance** (*unknown* $sharedInstance)
 
 Sets/Resets the shared instance related to the service
 
 
 
-public  **setDefinition** (*mixed* $definition)
+public  **setDefinition** (*unknown* $definition)
 
 Set the service definition
 
@@ -63,19 +63,19 @@ Returns the service definition
 
 
 
-public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *mixed*  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
 
 Resolves the service
 
 
 
-public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **setParameter** (*long* $position, *array* $parameter)
+public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **setParameter** (*unknown* $position, *unknown* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
 
 
-public *array*  **getParameter** (*int* $position)
+public *array*  **getParameter** (*unknown* $position)
 
 Returns a parameter in a specific position
 
@@ -87,7 +87,7 @@ Returns true if the service was resolved
 
 
 
-public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** ([*unknown* $properties])
+public static :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **__set_state** (*unknown* $attributes)
 
 Restore the internal state of a service
 

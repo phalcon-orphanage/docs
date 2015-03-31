@@ -246,13 +246,7 @@ It registers the majority of services with components provided by the framework 
 the definition of some service we could just set it again as we did above with "session" or "url".
 This is the reason for the existence of the variable $di.
 
-;;;;;
-
-
-Conclusion
-----------
-This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
-learn more and get more out of the framework.
+In next chapter, we will see how to authentication and authorization is implemented in INVO.
 
 .. _Github: https://github.com/phalcon/invo
 .. _Bootstrap: http://getbootstrap.com/

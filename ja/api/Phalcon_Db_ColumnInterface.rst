@@ -1,87 +1,96 @@
 Interface **Phalcon\\Db\\ColumnInterface**
 ==========================================
 
-Phalcon\\Db\\ColumnInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **getSchemaName** ()
+abstract public  **__construct** (*unknown* $columnName, *unknown* $definition)
 
-Returns schema's table related to column
-
-
-
-abstract public *string*  **getName** ()
-
-Returns column name
+...
 
 
+abstract public  **getSchemaName** ()
 
-abstract public *int*  **getType** ()
-
-Returns column type
-
+...
 
 
-abstract public *int*  **getSize** ()
+abstract public  **getName** ()
 
-Returns column size
-
-
-
-abstract public *int*  **getScale** ()
-
-Returns column scale
+...
 
 
+abstract public  **getType** ()
 
-abstract public *boolean*  **isUnsigned** ()
-
-Returns true if number column is unsigned
-
+...
 
 
-abstract public *boolean*  **isNotNull** ()
+abstract public  **getTypeReference** ()
 
-Not null
-
-
-
-abstract public *boolean*  **isPrimary** ()
-
-Column is part of the primary key?
+...
 
 
+abstract public  **getTypeValues** ()
 
-abstract public *boolean*  **isAutoIncrement** ()
-
-Auto-Increment
-
+...
 
 
-abstract public *boolean*  **isNumeric** ()
+abstract public  **getSize** ()
 
-Check whether column have an numeric type
-
-
-
-abstract public *boolean*  **isFirst** ()
-
-Check whether column have first position in table
+...
 
 
+abstract public  **getScale** ()
 
-abstract public *string*  **getAfterPosition** ()
-
-Check whether field absolute to position in table
-
+...
 
 
-abstract public *int*  **getBindType** ()
+abstract public  **isUnsigned** ()
 
-Returns the type of bind handling
+...
 
+
+abstract public  **isNotNull** ()
+
+...
+
+
+abstract public  **isPrimary** ()
+
+...
+
+
+abstract public  **isAutoIncrement** ()
+
+...
+
+
+abstract public  **isNumeric** ()
+
+...
+
+
+abstract public  **isFirst** ()
+
+...
+
+
+abstract public  **getAfterPosition** ()
+
+...
+
+
+abstract public  **getBindType** ()
+
+...
+
+
+abstract public  **getDefault** ()
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $data)
+
+...
 
 

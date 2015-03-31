@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`, IteratorAggregate, Traversable, ArrayAccess, Countable
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
 
@@ -18,13 +18,13 @@ This component helps to separate session data into "namespaces". Working by this
 Methods
 -------
 
-public  **__construct** (*string* $name)
+public  **__construct** (*unknown* $name)
 
 Phalcon\\Session\\Bag constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -44,7 +44,7 @@ Initializes the session bag. This method must not be called directly, the class 
 
 public  **destroy** ()
 
-Destroys the session bag 
+Destroyes the session bag 
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ Destroys the session bag
 
 
 
-public  **set** (*string* $property, *string* $value)
+public  **set** (*unknown* $property, *unknown* $value)
 
 Sets a value in the session bag 
 
@@ -68,7 +68,20 @@ Sets a value in the session bag
 
 
 
-public *mixed*  **get** (*string* $property, [*string* $defaultValue])
+public  **__set** (*unknown* $property, *unknown* $value)
+
+Magic setter to assign values to the session bag 
+
+.. code-block:: php
+
+    <?php
+
+     $user->name = "Kimbra";
+
+
+
+
+public *mixed*  **get** (*unknown* $property, [*unknown* $defaultValue])
 
 Obtains a value from the session bag optionally setting a default value 
 
@@ -81,7 +94,20 @@ Obtains a value from the session bag optionally setting a default value
 
 
 
-public *boolean*  **has** (*string* $property)
+public *mixed*  **__get** (*unknown* $property)
+
+Magic getter to obtain values from the session bag 
+
+.. code-block:: php
+
+    <?php
+
+     echo $user->name;
+
+
+
+
+public *boolean*  **has** (*unknown* $property)
 
 Check whether a property is defined in the internal bag 
 
@@ -94,7 +120,20 @@ Check whether a property is defined in the internal bag
 
 
 
-public *boolean*  **remove** (*string* $property)
+public *boolean*  **__isset** (*unknown* $property)
+
+Magic isset to check whether a property is defined in the bag 
+
+.. code-block:: php
+
+    <?php
+
+     var_dump(isset($user['name']));
+
+
+
+
+public *boolean*  **remove** (*unknown* $property)
 
 Removes a property from the internal bag 
 
@@ -107,53 +146,9 @@ Removes a property from the internal bag
 
 
 
-public  **getIterator** ()
+public *boolean*  **__unset** (*unknown* $property)
 
-...
-
-
-public *string*  **__get** (*string* $property)
-
-Magic getter to obtain values from the session bag. 
-
-.. code-block:: php
-
-    <?php
-
-     echo $user->name;
-
-
-
-
-public  **__set** (*string* $property, *string* $value)
-
-Magic setter to assign values to the session bag. Alias for Phalcon\\Session\\Bag::set() 
-
-.. code-block:: php
-
-    <?php
-
-     $user->name = "Kimbra";
-
-
-
-
-public *boolean*  **__isset** (*string* $property)
-
-Magic isset to check whether a property is defined in the bag. Alias for Phalcon\\Session\\Bag::has() 
-
-.. code-block:: php
-
-    <?php
-
-     var_dump(isset($user['name']));
-
-
-
-
-public *boolean*  **__unset** (*string* $property)
-
-Magic unset to remove items using the property syntax. Alias for Phalcon\\Session\\Bag::remove() 
+Magic unset to remove items using the array syntax 
 
 .. code-block:: php
 
@@ -162,30 +157,5 @@ Magic unset to remove items using the property syntax. Alias for Phalcon\\Sessio
      unset($user['name']);
 
 
-
-
-public  **offsetGet** (*unknown* $property)
-
-...
-
-
-public  **offsetSet** (*unknown* $property, *unknown* $value)
-
-...
-
-
-public  **offsetExists** (*unknown* $property)
-
-...
-
-
-public  **offsetUnset** (*unknown* $property)
-
-...
-
-
-public  **count** ()
-
-...
 
 

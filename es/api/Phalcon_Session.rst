@@ -1,3 +1,3 @@
-Class **Phalcon\\Session**
-==========================
+Abstract class **Phalcon\\Session**
+===================================
 

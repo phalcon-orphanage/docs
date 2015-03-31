@@ -1,84 +1,84 @@
 Interface **Phalcon\\DiInterface**
 ==================================
 
-*extends* ArrayAccess
-
-Phalcon\\DiInterface initializer
-
+*implements* ArrayAccess
 
 Methods
 -------
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
+abstract public  **set** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
 
-Registers a service in the service container
-
-
-
-abstract public  **remove** (*string* $name)
-
-Removes a service from the service container
+...
 
 
+abstract public  **setShared** (*unknown* $name, *unknown* $definition)
 
-abstract public *object*  **get** (*string* $name, [*array* $parameters])
-
-Resolves the service based on its configuration
-
+...
 
 
-abstract public *object*  **getShared** (*string* $name, [*array* $parameters])
+abstract public  **remove** (*unknown* $name)
 
-Resolves a shared service based on their configuration
-
-
-
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (:doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
-
-Sets a service using a raw Phalcon\\DI\\Service definition
+...
 
 
+abstract public  **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*string* $name)
-
-Returns the corresponding Phalcon\\Di\\Service instance for a service
-
+...
 
 
-abstract public *boolean*  **has** (*string* $name)
+abstract public  **get** (*unknown* $name, [*unknown* $parameters])
 
-Check whether the DI contains a service by a name
-
-
-
-abstract public *boolean*  **wasFreshInstance** ()
-
-Check whether the last service obtained via getShared produced a fresh instance or an existing one
+...
 
 
+abstract public  **getShared** (*unknown* $name, [*unknown* $parameters])
 
-abstract public *array*  **getServices** ()
-
-Return the services registered in the DI
-
+...
 
 
-abstract public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+abstract public  **setRaw** (*unknown* $name, *unknown* $rawDefinition)
 
-Set the default dependency injection container to be obtained into static methods
+...
 
 
+abstract public  **getRaw** (*unknown* $name)
 
-abstract public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** ()
+...
 
-Return the last DI created
 
+abstract public  **getService** (*unknown* $name)
+
+...
+
+
+abstract public  **has** (*unknown* $name)
+
+...
+
+
+abstract public  **wasFreshInstance** ()
+
+...
+
+
+abstract public  **getServices** ()
+
+...
+
+
+abstract public static  **setDefault** (*unknown* $dependencyInjector)
+
+...
+
+
+abstract public static  **getDefault** ()
+
+...
 
 
 abstract public static  **reset** ()
 
-Resets the internal default DI
-
+...
 
 
 abstract public  **offsetExists** (*unknown* $offset) inherited from ArrayAccess

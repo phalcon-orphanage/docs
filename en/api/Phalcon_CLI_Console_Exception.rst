@@ -1,10 +1,7 @@
-Class **Phalcon\\CLI\\Console\\Exception**
+Class **Phalcon\\Cli\\Console\\Exception**
 ==========================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
-
-Exceptions thrown in Phalcon\\CLI\\Console will use this class
-
 
 Methods
 -------

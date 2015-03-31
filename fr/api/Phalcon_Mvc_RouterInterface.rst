@@ -1,159 +1,131 @@
 Interface **Phalcon\\Mvc\\RouterInterface**
 ===========================================
 
-Phalcon\\Mvc\\RouterInterface initializer
-
-
 Methods
 -------
 
-abstract public  **setDefaultModule** (*string* $moduleName)
+abstract public  **setDefaultModule** (*unknown* $moduleName)
 
-Sets the name of the default module
-
-
-
-abstract public  **setDefaultController** (*string* $controllerName)
-
-Sets the default controller name
+...
 
 
+abstract public  **setDefaultController** (*unknown* $controllerName)
 
-abstract public  **setDefaultAction** (*string* $actionName)
-
-Sets the default action name
-
+...
 
 
-abstract public  **setDefaults** (*array* $defaults)
+abstract public  **setDefaultAction** (*unknown* $actionName)
 
-Sets an array of default paths
-
-
-
-abstract public  **handle** ([*string* $uri])
-
-Handles routing information received from the rewrite engine
+...
 
 
+abstract public  **setDefaults** (*unknown* $defaults)
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **add** (*string* $pattern, [*string/array* $paths], [*string* $httpMethods])
-
-Adds a route to the router on any HTTP method
-
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addGet** (*string* $pattern, [*string/array* $paths])
+abstract public  **handle** ([*unknown* $uri])
 
-Adds a route to the router that only match if the HTTP method is GET
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addPost** (*string* $pattern, [*string/array* $paths])
-
-Adds a route to the router that only match if the HTTP method is POST
+...
 
 
+abstract public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addPut** (*string* $pattern, [*string/array* $paths])
-
-Adds a route to the router that only match if the HTTP method is PUT
-
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addDelete** (*string* $pattern, [*string/array* $paths])
+abstract public  **addGet** (*unknown* $pattern, [*unknown* $paths])
 
-Adds a route to the router that only match if the HTTP method is DELETE
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addOptions** (*string* $pattern, [*string/array* $paths])
-
-Add a route to the router that only match if the HTTP method is OPTIONS
+...
 
 
+abstract public  **addPost** (*unknown* $pattern, [*unknown* $paths])
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addPatch** (*string* $pattern, [*string/array* $paths])
-
-Add a route to the router that only match if the HTTP method is PATCH
-
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **addHead** (*string* $pattern, [*string/array* $paths])
+abstract public  **addPut** (*unknown* $pattern, [*unknown* $paths])
 
-Adds a route to the router that only match if the HTTP method is HEAD
+...
 
+
+abstract public  **addPatch** (*unknown* $pattern, [*unknown* $paths])
+
+...
+
+
+abstract public  **addDelete** (*unknown* $pattern, [*unknown* $paths])
+
+...
+
+
+abstract public  **addOptions** (*unknown* $pattern, [*unknown* $paths])
+
+...
+
+
+abstract public  **addHead** (*unknown* $pattern, [*unknown* $paths])
+
+...
 
 
 abstract public  **clear** ()
 
-Removes all the defined routes
+...
 
 
+abstract public  **getModuleName** ()
 
-abstract public *string*  **getModuleName** ()
-
-Returns processed module name
-
+...
 
 
-abstract public *string*  **getControllerName** ()
+abstract public  **getNamespaceName** ()
 
-Returns processed controller name
-
-
-
-abstract public *string*  **getActionName** ()
-
-Returns processed action name
+...
 
 
+abstract public  **getControllerName** ()
 
-abstract public *array*  **getParams** ()
-
-Returns processed extra params
-
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **getMatchedRoute** ()
+abstract public  **getActionName** ()
 
-Returns the route that matchs the handled URI
-
-
-
-abstract public *array*  **getMatches** ()
-
-Return the sub expressions in the regular expression matched
+...
 
 
+abstract public  **getParams** ()
 
-abstract public *bool*  **wasMatched** ()
-
-Check if the router macthes any of the defined routes
-
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>` [] **getRoutes** ()
+abstract public  **getMatchedRoute** ()
 
-Return all the routes defined in the router
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **getRouteById** (*string* $id)
-
-Returns a route object by its id
+...
 
 
+abstract public  **getMatches** ()
 
-abstract public :doc:`Phalcon\\Mvc\\Router\\RouteInterface <Phalcon_Mvc_Router_RouteInterface>`  **getRouteByName** (*string* $name)
-
-Returns a route object by its name
-
+...
 
 
-abstract public *bool*  **isExactControllerName** ()
+abstract public  **wasMatched** ()
 
-Returns whether controller name should not be mangled
+...
 
+
+abstract public  **getRoutes** ()
+
+...
+
+
+abstract public  **getRouteById** (*unknown* $id)
+
+...
+
+
+abstract public  **getRouteByName** (*unknown* $name)
+
+...
 
 

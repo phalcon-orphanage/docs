@@ -7,32 +7,32 @@ Represents each item in a logging transaction
 Methods
 -------
 
-public  **__construct** (*string* $message, *integer* $type, [*integer* $time])
+public  **getType** ()
 
-Phalcon\\Logger\\Item constructor
-
-
-
-public *string*  **getMessage** ()
-
-Returns the message
+Log type
 
 
 
-public *integer*  **getType** ()
+public  **getMessage** ()
 
-Returns the log type
+Log message
 
 
 
-public *integer*  **getTime** ()
+public  **getTime** ()
 
-Returns log timestamp
+Log timestamp
 
 
 
 public  **getContext** ()
 
 ...
+
+
+public  **__construct** (*string* $message, *integer* $type, [*integer* $time], [*array* $context])
+
+Phalcon\\Logger\\Item constructor
+
 
 
