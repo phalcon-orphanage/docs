@@ -25,16 +25,19 @@ First, you must register it as a service in the services container:
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontendData;
+    use Phalcon\Cache\Backend\Memcache as BackendMemcache;
+
     //Set the models cache service
     $di->set('modelsCache', function() {
 
         //Cache data for one day by default
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
+        $frontCache = new FrontendData(array(
             "lifetime" => 86400
         ));
 
         //Memcached connection settings
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
+        $cache = new BackendMemcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -72,7 +75,7 @@ Caching could be also applied to resultsets generated using relationships:
     <?php
 
     // Query some post
-    $post = Post::findFirst();
+    $post     = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(array(
@@ -100,7 +103,9 @@ As seen above, these methods are available in models that inherit :doc:`Phalcon\
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function find($parameters=null)
@@ -123,7 +128,9 @@ a static property to avoid that a record would be queried several times in a sam
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static $_cache = array();
@@ -222,7 +229,9 @@ you can create a base class for all of them:
 
     <?php
 
-    class CacheableModel extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class CacheableModel extends Model
     {
 
         protected static function _createKey($parameters)
@@ -273,7 +282,9 @@ we can override the find/findFirst method to force every query to be cached:
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static function _createKey($parameters)
@@ -293,7 +304,7 @@ we can override the find/findFirst method to force every query to be cached:
             //and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
-                    "key" => self::_createKey($parameters),
+                    "key"      => self::_createKey($parameters),
                     "lifetime" => 300
                 );
             }
@@ -322,7 +333,7 @@ This language gives you much more freedom to create all kinds of queries. Of cou
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(array(
-        "key" => "cars-by-name",
+        "key"      => "cars-by-name",
         "lifetime" => 300
     ));
 
@@ -353,7 +364,7 @@ Some models may have relationships to other models. This allows us to easily che
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -388,7 +399,9 @@ the records instead of re-querying them again and again:
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -407,7 +420,9 @@ add a more sophisticated cache for this scenario overriding the models manager:
 
     <?php
 
-    class CustomModelsManager extends \Phalcon\Mvc\Model\Manager
+    use Phalcon\Mvc\Model\Manager as ModelManager;
+
+    class CustomModelsManager extends ModelManager
     {
 
         /**
@@ -480,7 +495,7 @@ This means that when you get a related record you could intercept how these data
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
@@ -494,7 +509,9 @@ Accordingly, we could replace the findFirst method in the model Invoices and imp
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public static function findFirst($parameters=null)
@@ -513,7 +530,9 @@ to obtain all entities:
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         protected static function _createKey($parameters)
@@ -534,7 +553,7 @@ to obtain all entities:
         public static function find($parameters=null)
         {
             //Create a unique key
-            $key = self::_createKey($parameters);
+            $key     = self::_createKey($parameters);
 
             //Check if there are data in the cache
             $results = self::_getCache($key);
@@ -577,7 +596,9 @@ Note that this process can also be performed with PHQL following an alternative 
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -592,13 +613,13 @@ Note that this process can also be performed with PHQL following an alternative 
 
         public function getInvoicesCustomers($conditions, $params=null)
         {
-            $phql = "SELECT Invoices.*, Customers.*
+            $phql  = "SELECT Invoices.*, Customers.*
             FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(array(
-                "key" => self::_createKey($conditions, $params),
+                "key"      => self::_createKey($conditions, $params),
                 "lifetime" => 300
             ));
 
@@ -628,7 +649,9 @@ The easiest way is adding an static method to the model that chooses the right c
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function queryCache($initial, $final)
@@ -668,7 +691,7 @@ a more complicated method. Additionally, this method does not work if the data i
 
     $robots = Robots::find(array(
         '(id > ?0 AND type = "A") AND id < ?1',
-        'bind' => array(100, 2000),
+        'bind'  => array(100, 2000),
         'order' => 'type'
     ));
 
@@ -681,7 +704,9 @@ The first is create a custom builder, so we can generate a totally customized qu
 
     <?php
 
-    class CustomQueryBuilder extends Phalcon\Mvc\Model\Query\Builder
+    use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
+
+    class CustomQueryBuilder extends QueryBuilder
     {
 
         public function getQuery()
@@ -700,7 +725,9 @@ this class looks like:
 
     <?php
 
-    class CustomQuery extends Phalcon\Mvc\Model\Query
+    use Phalcon\Mvc\Model\Query as ModelQuery;
+
+    class CustomQuery extends ModelQuery
     {
 
         /**
@@ -723,7 +750,7 @@ this class looks like:
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
-                $final = $visitor->getFinal();
+                $final   = $visitor->getFinal();
 
                 //Select the cache according to the range
                 //...
@@ -763,7 +790,7 @@ tell us the possible range to be used in the cache:
 
                 case 'binary-op':
 
-                    $left = $this->visit($node['left']);
+                    $left  = $this->visit($node['left']);
                     $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
@@ -819,7 +846,9 @@ Finally, we can replace the find method in the Robots model to use the custom cl
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public static function find($parameters=null)
         {
@@ -853,7 +882,7 @@ build all your SQL statements passing variable parameters as bound parameters:
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         //...
@@ -881,7 +910,7 @@ Performance can be also improved reusing the PHQL query:
 
     <?php
 
-    $phql = "SELECT * FROM Store\Robots WHERE id = ?0";
+    $phql  = "SELECT * FROM Store\Robots WHERE id = ?0";
     $query = $this->modelsManager->createQuery($phql);
 
     for ($i = 1; $i <= 10; $i++) {

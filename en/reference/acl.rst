@@ -13,7 +13,11 @@ This component is designed to initially work in memory. This provides ease of us
 
 .. code-block:: php
 
-    <?php $acl = new \Phalcon\Acl\Adapter\Memory();
+    <?php
+
+    use Phalcon\Acl\Adapter\Memory as AcList;
+
+    $acl = new AclList();
 
 By default :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` allows access to action on resources that have not been yet defined. To increase the security level of the access list we can define a "deny" level as a default access level.
 
@@ -32,9 +36,11 @@ A role is an object that can or cannot access certain resources in the access li
 
     <?php
 
+    use Phalcon\Acl\Role;
+
     // Create some roles
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // Add "Guests" role to acl
     $acl->addRole($roleGuests);
@@ -52,8 +58,10 @@ Resources are objects where access is controlled. Normally in MVC applications r
 
     <?php
 
+    use Phalcon\Acl\Resource;
+
     // Define the "Customers" resource
-    $customersResource = new \Phalcon\Acl\Resource("Customers");
+    $customersResource = new Resource("Customers");
 
     // Add "customers" resource with a couple of operations
     $acl->addResource($customersResource, "search");
@@ -95,9 +103,13 @@ You can build complex role structures using the inheritance that :doc:`Phalcon\\
 
     <?php
 
+    use Phalcon\Acl\Role;
+
+    // ...
+
     // Create some roles
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // Add "Guests" role to acl
     $acl->addRole($roleGuests);
@@ -114,19 +126,22 @@ so that they can be loaded at will without having to redefine the whole list. Yo
 
     <?php
 
-    //Check whether acl data already exist
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    // ...
+
+    // Check whether acl data already exist
     if (!is_file("app/security/acl.data")) {
 
-        $acl = new \Phalcon\Acl\Adapter\Memory();
+        $acl = new AclList();
 
         //... Define roles, resources, access, etc
 
         // Store serialized list into plain file
         file_put_contents("app/security/acl.data", serialize($acl));
-
     } else {
 
-         //Restore acl object from serialized file
+         // Restore acl object from serialized file
          $acl = unserialize(file_get_contents("app/security/acl.data"));
     }
 
@@ -156,10 +171,15 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    //Create an event manager
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Acl\Adapter\Memory as AclList;
+    use Phalcon\Events\Manager as EventsManager;
 
-    //Attach a listener for type "acl"
+    // ...
+
+    // Create an event manager
+    $eventsManager = new EventsManager();
+
+    // Attach a listener for type "acl"
     $eventsManager->attach("acl", function($event, $acl) {
         if ($event->getType() == "beforeCheckAccess") {
              echo   $acl->getActiveRole(),
@@ -168,7 +188,7 @@ The following example demonstrates how to attach listeners to this component:
         }
     });
 
-    $acl = new \Phalcon\Acl\Adapter\Memory();
+    $acl = new AclList();
 
     //Setup the $acl
     //...

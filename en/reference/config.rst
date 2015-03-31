@@ -24,12 +24,14 @@ read during this request.
 
     <?php
 
+    use Phalcon\Config;
+
     $settings = array(
         "database" => array(
-            "adapter"  => "Mysql",
-            "host"     => "localhost",
-            "username" => "scott",
-            "password" => "cheetah",
+            "adapter"    => "Mysql",
+            "host"       => "localhost",
+            "username"   => "scott",
+            "password"   => "cheetah",
             "dbname"     => "test_db",
         ),
          "app" => array(
@@ -40,7 +42,7 @@ read during this request.
         "mysetting" => "the-value"
     );
 
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
     echo $config->app->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -52,8 +54,10 @@ If you want to better organize your project you can save the array in another fi
 
     <?php
 
+    use Phalcon\Config;
+
     require "config/config.php";
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
 Reading INI Files
 -----------------
@@ -66,7 +70,7 @@ Ini files are a common way to store settings. Phalcon\\Config uses the optimized
     host     = localhost
     username = scott
     password = cheetah
-    dbname     = test_db
+    dbname   = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -82,7 +86,9 @@ You can read the file as follows:
 
     <?php
 
-    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    $config = new ConfigIni("path/config.ini");
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -97,15 +103,17 @@ New properties are added and existing properties are updated.
 
     <?php
 
-    $config = new \Phalcon\Config(array(
+    use Phalcon\Config;
+
+    $config = new Config(array(
         'database' => array(
-            'host' => 'localhost',
-            'dbname' => 'test_db',
+            'host'   => 'localhost',
+            'dbname' => 'test_db'
         ),
         'debug' => 1,
     ));
 
-    $config2 = new \Phalcon\Config(array(
+    $config2 = new Config(array(
         'database' => array(
             'dbname' => 'production_db',
             'username' => 'scott',
@@ -127,7 +135,7 @@ The above code produces the following:
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => production_db
+                [dbname]   => production_db
                 [username] => scott
                 [password] => secret
             )

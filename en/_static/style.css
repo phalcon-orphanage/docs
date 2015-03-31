@@ -1,5 +1,4 @@
 
-
 body, html {margin: 0; padding:0; height: 100%;}
 
 body {background: #fff; color: #000000; font: 16px/20px Ubuntu, sans-serif; min-width: 990px;}
@@ -7,7 +6,6 @@ body {background: #fff; color: #000000; font: 16px/20px Ubuntu, sans-serif; min-
 a {color:#118f9e; }
 a:hover {color: #000;}
 a:visited {color:#767676; }
-
 
 .link-green {color: #118a65;}
 

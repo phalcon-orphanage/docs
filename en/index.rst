@@ -1,7 +1,7 @@
 Welcome!
 ========
 
-Welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without worrying about framework performance. 
+Welcome to Phalcon framework, a new approach on PHP frameworks. Our mission is to give you an advanced tool for developing web sites and applications without worrying about framework performance.
 
 What is Phalcon?
 ----------------
@@ -18,11 +18,12 @@ Table of Contents
 .. toctree::
    :maxdepth: 3
 
-   reference/motivation
-   reference/benchmark
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-invo-2
+   reference/tutorial-invo-3
+   reference/tutorial-invo-4
    reference/tutorial-rest
    reference/samples
    reference/di

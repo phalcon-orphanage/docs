@@ -39,22 +39,22 @@ offering hook points based on the methods we defined in our listener class:
 
     <?php
 
-    use Phalcon\Events\Manager as EventsManager,
-        Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     $eventsManager = new EventsManager();
 
     //Create a database listener
-    $dbListener = new MyDbListener();
+    $dbListener    = new MyDbListener();
 
     //Listen all the database events
     $eventsManager->attach('db', $dbListener);
 
-    $connection = new DbAdapter(array(
-        "host" => "localhost",
+    $connection    = new DbAdapter(array(
+        "host"     => "localhost",
         "username" => "root",
         "password" => "secret",
-        "dbname" => "invo"
+        "dbname"   => "invo"
     ));
 
     //Assign the eventsManager to the db adapter instance
@@ -95,9 +95,9 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
 
     <?php
 
-    use Phalcon\Db\Profiler,
-        Phalcon\Logger,
-        Phalcon\Logger\Adapter\File;
+    use Phalcon\Db\Profiler;
+    use Phalcon\Logger;
+    use Phalcon\Logger\Adapter\File;
 
     class MyDbListener
     {
@@ -112,7 +112,7 @@ As part of this example, we will also implement the Phalcon\\Db\\Profiler to det
         public function __construct()
         {
             $this->_profiler = new Profiler();
-            $this->_logger = new Logger("../apps/logs/db.log");
+            $this->_logger   = new Logger("../apps/logs/db.log");
         }
 
         /**
@@ -235,11 +235,13 @@ A listener is simply a class that implements any of all the events triggered by 
 
     <?php
 
+    use Phalcon\Events\Manager as EventsManager;
+
     //Create an Events Manager
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     //Create the MyComponent instance
-    $myComponent = new MyComponent();
+    $myComponent   = new MyComponent();
 
     //Bind the eventsManager to the instance
     $myComponent->setEventsManager($eventsManager);

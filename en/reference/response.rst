@@ -7,8 +7,10 @@ component designed to achieve this task. HTTP responses are usually composed by 
 
     <?php
 
+    use Phalcon\Http\Response;
+
     //Getting a response instance
-    $response = new \Phalcon\Http\Response();
+    $response = new Response();
 
     //Set status code
     $response->setStatusCode(404, "Not Found");
@@ -26,15 +28,18 @@ directly from a controller's action follow this example:
 
     <?php
 
-    class FeedController extends Phalcon\Mvc\Controller
+    use Phalcon\Http\Response;
+    use Phalcon\Mvc\Controller;
+
+    class FeedController extends Controller
     {
 
         public function getAction()
         {
             // Getting a response instance
-            $response = new \Phalcon\Http\Response();
+            $response = new Response();
 
-            $feed = //.. load here the feed
+            $feed     = //.. load here the feed
 
             //Set the content of the response
             $response->setContent($feed->asString());
@@ -105,8 +110,8 @@ how you can redirect using a route you have defined in your application:
 
     //Redirect based on a named route
     return $response->redirect(array(
-        "for" => "index-lang",
-        "lang" => "jp",
+        "for"        => "index-lang",
+        "lang"       => "jp",
         "controller" => "index"
     ));
 
@@ -188,7 +193,7 @@ The identifier must be calculated taking into account that this must change if t
 
     //Calculate the E-Tag based on the modification time of the latest news
     $recentDate = News::maximum(array('column' => 'created_at'));
-    $eTag = md5($recentDate);
+    $eTag       = md5($recentDate);
 
     //Send an E-Tag header
     $response->setHeader('E-Tag', $eTag);
