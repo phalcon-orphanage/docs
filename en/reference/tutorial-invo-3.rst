@@ -718,4 +718,8 @@ the user can change any value and then sent it back to the database through to t
         return $this->forward("products/index");
     }
 
+We have seen how Phalcon lets you create forms and bind data from a database in a structured way.
+In next chapter, we will see how to add custom HTML elements like a menu.
+
+.. _Jinja: http://jinja.pocoo.org/
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete

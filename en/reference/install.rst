@@ -1,7 +1,7 @@
 Installation
 ============
-PHP extensions require a slightly different installation method to a traditional php-based library or framework. You can either
-download a binary package for the system of your choice or build it from the sources.
+PHP extensions require a slightly different installation method to a traditional php-based library or framework.
+You can either download a binary package for the system of your choice or build it from the sources.
 
 Windows
 -------
@@ -49,13 +49,13 @@ Specific packages for common platforms:
     #Ubuntu
     sudo apt-get install php5-dev libpcre3-dev gcc make php5-mysql
 
-    #Suse
+    # Suse
     sudo yast -i gcc make autoconf2.13 php5-devel php5-pear php5-mysql
 
-    #CentOS/RedHat/Fedora
+    # CentOS/RedHat/Fedora
     sudo yum install php-devel pcre-devel gcc make
 
-    #Solaris
+    # Solaris
     pkg install gcc-45 php-53 apache-php53
 
 Compilation
@@ -72,16 +72,16 @@ Add extension to your php configuration:
 
 .. code-block:: bash
 
-    #Suse: Add this line in your php.ini
+    # Suse: Add this line in your php.ini
     extension=phalcon.so
 
-    #Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+    # Centos/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
     extension=phalcon.so
 
-    #Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
+    # Ubuntu/Debian: Add a file called 30-phalcon.ini in /etc/php5/conf.d/ with this content:
     extension=phalcon.so
 
-    #Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
+    # Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/30-phalcon.ini with this content:
     extension=phalcon.so
 
 Restart the webserver.
@@ -118,20 +118,18 @@ Requirements
 ^^^^^^^^^^^^
 Prerequisite packages are:
 
-* PHP >= 5.3 development resources
+* PHP >= 5.4 development resources
 * XCode
 
 .. code-block:: bash
 
-    #brew
+    # brew
     brew tap homebrew/homebrew-php
-    brew install php53-phalcon
     brew install php54-phalcon
     brew install php55-phalcon
     brew install php56-phalcon
 
-    #MacPorts
-    sudo port install php53-phalcon
+    # MacPorts
     sudo port install php54-phalcon
     sudo port install php55-phalcon
     sudo port install php56-phalcon

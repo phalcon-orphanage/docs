@@ -322,9 +322,20 @@ td.second-box h2 {
 
 td.second-box p,
 td.second-box li {
-    color: #000;
+    color: #111111;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
+}
+
+td.second-box td,
+td.second-box th {
+	margin: 10px;
+	border: 1px solid #dadada;
+}
+
+td.second-box img {
+	border: 1px solid #dadada;
+	margin: 15px;
 }
 
 td.primary-box {
