@@ -2,13 +2,11 @@
 build
 en/_build
 zh/_build
+ru/_build/
 _templates
 *.komodoproject
 *.sublime-*
 .pydevproject
 .idea/
-<<<<<<< HEAD
-
 .DS_Store
-=======
->>>>>>> 0.7.0
+.settings
