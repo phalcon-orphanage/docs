@@ -1,7 +1,7 @@
 调度控制器（Dispatching Controllers）
 =======================
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 是MVC应用中负责实例化
-控制器和执行在这些控制器上必要的动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务
+控制器和执行在这些控制器上必要动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务。
 
 循环调度（The Dispatch Loop）
 -----------------
@@ -38,28 +38,28 @@
 循环调度事件（Dispatch Loop Events）
 ^^^^^^^^^^^^^^^^^^^^
 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` 可以发送事件给当前的 :doc:`EventsManager <events>` 。
-事件会以“dispatch”类型被消费掉。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：
+事件会以“dispatch”类型被所触发。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：
 
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Срабатывает для       |
+| 事件名称             | 何时触发                                                                                                                                                                                                       | 此操作是否可终止？  | 触发于                |
 +======================+================================================================================================================================================================================================================+=====================+=======================+
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
+| beforeDispatchLoop   | 在进入循环调度前触发。此时，调度器不知道将要执行的控制器或者动作是否存在。调度器只知道路由传递过来的信息。                                                                                                     | 是                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 | Listeners             |
+| beforeDispatch       | 在进入循环调度后触发。此时，调度器不知道将要执行的控制器或者动作是否存在。调度器只知道路由传递过来的信息。                                                                                                     | 是                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Yes                 | Listeners/Controllers |
+| beforeExecuteRoute   | 在执行控制器/动作方法前触发。此时，调度器已经初始化了控制器并知道动作是否存在。                                                                                                                                | 是                  | 侦听者/控制器         |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Controllers           |
+| initialize           | 允许在请求中全局初始化控制器。                                                                                                                                                                                 | 否                  | 控制器                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
+| afterExecuteRoute    | 在执行控制器/动作方法后触发。由于此操作不可终止，所以仅在执行动作后才使用此事件进行清理工作。                                                                                                                  | 否                  | 侦听者/控制器         |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Yes                 | Listeners             |
+| beforeNotFoundAction | 当控制器中的动作找不到时触发。                                                                                                                                                                                 | 是                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Yes                 | Listeners             |
+| beforeException      | 在调度器抛出任意异常前触发。                                                                                                                                                                                   | 是                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Yes                 | Listeners             |
+| afterDispatch        | 在执行控制器/动作方法后触发。由于此操作不可终止，所以仅在执行动作后才使用此事件进行清理工作。                                                                                                                  | 是                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
+| afterDispatchLoop    | 在退出循环调度后触发。                                                                                                                                                                                         | 否                  | 侦听者                |
 +----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+-----------------------+
 
 :doc:`INVO <tutorial-invo>` 这篇导读说明了如何从通过结合  :doc:`Acl <acl>` 实现的一个安全过滤器中获得事件调度的好处。
@@ -75,17 +75,17 @@
 
     $di->set('dispatcher', function(){
 
-        //Create an event manager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener for type "dispatch"
+        //为“dispatch”类型附上一个侦听者
         $eventsManager->attach("dispatch", function($event, $dispatcher) {
             //...
         });
 
         $dispatcher = new MvcDispatcher();
 
-        //Bind the eventsManager to the view component
+        //将$eventsManager绑定到视图组件
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -103,12 +103,12 @@
 
         public function beforeExecuteRoute($dispatcher)
         {
-            // Executed before every found action
+            // 在每一个找到的动作前执行
         }
 
         public function afterExecuteRoute($dispatcher)
         {
-            // Executed after every found action
+            // 在每一个找到的动作后执行
         }
 
     }
@@ -133,9 +133,9 @@
         public function saveAction($year, $postTitle)
         {
 
-            // .. store some product and forward the user
+            // .. 储存一些产品并且转发用户
 
-            // Forward flow to the index action
+            // 将流转发到index动作
             $this->dispatcher->forward(array(
                 "controller" => "post",
                 "action" => "index"
@@ -154,13 +154,13 @@
 
     <?php
 
-    // Forward flow to another action in the current controller
+    // 将流转发到当前控制器的另一个动作
     $this->dispatcher->forward(array(
         "action" => "search"
     ));
 
-    // Forward flow to another action in the current controller
-    // passing parameters
+    // 将流转发到当前控制器的另一个动作
+    // 传递参数
     $this->dispatcher->forward(array(
         "action" => "search",
         "params" => array(1, 2, 3)
@@ -170,15 +170,15 @@
 一个转发的动作可以接受以下参数：
 
 +----------------+--------------------------------------------------------+
-| Parameter      | Triggered                                              |
+| 参数           | 触发                                                   |
 +================+========================================================+
-| controller     | A valid controller name to forward to.                 |
+| controller     | 一个待转发且有效的控制器名字。                         |
 +----------------+--------------------------------------------------------+
-| action         | A valid action name to forward to.                     |
+| action         | 一个待转发且有效的动作名字。                           |
 +----------------+--------------------------------------------------------+
-| params         | An array of parameters for the action                  |
+| params         | 一个传递给动作的数组参数。                             |
 +----------------+--------------------------------------------------------+
-| namespace      | A valid namespace name where the controller is part of |
+| namespace      | 一个控制器对应的命名空间名字。                         |
 +----------------+--------------------------------------------------------+
 
 准备参数（Preparing Parameters）
@@ -200,23 +200,23 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Use odd parameters as keys and even as values
+            //用奇数参数作key，用偶数作值
             foreach ($params as $number => $value) {
                 if ($number & 1) {
                     $keyParams[$params[$number - 1]] = $value;
                 }
             }
 
-            //Override parameters
+            //重写参数
             $dispatcher->setParams($keyParams);
         });
 
@@ -238,22 +238,22 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
             $params = $dispatcher->getParams();
 
-            //Explode each parameter as key,value pairs
+            //将每一个参数分解成key、值 对
             foreach ($params as $number => $value) {
                 $parts = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
-            //Override parameters
+            //重写参数
             $dispatcher->setParams($keyParams);
         });
 
@@ -283,12 +283,12 @@
         public function saveAction()
         {
 
-            // Get the post's title passed in the URL as parameter
-            // or prepared in an event
+            // 从URL传递过来的参数中获取title
+            // 或者在一个事件中准备
             $title = $this->dispatcher->getParam("title");
 
-            // Get the post's year passed in the URL as parameter
-            // or prepared in an event also filtering it
+            // 从URL传递过来的参数中获取year
+            // 或者在一个事件中准备并且进行过滤
             $year = $this->dispatcher->getParam("year", "int");
         }
 
@@ -314,10 +314,10 @@
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Camelize actions
+        //Camelize动作
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
             $dispatcher->setActionName(Text::camelize($dispatcher->getActionName()));
         });
@@ -346,16 +346,16 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Remove extension before dispatch
+        //在调度前删除扩展
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
-            //Remove extension
+            //删除扩展
             $action = preg_replace('/\.php$/', '', $dispatcher->getActionName());
 
-            //Override action
+            //重写动作
             $dispatcher->setActionName($action);
         });
 
@@ -378,7 +378,7 @@ http://example.com/admin/products/index.php
     class PostsController extends \Phalcon\Mvc\Controller
     {
         /**
-         * Shows posts
+         * 显示$post
          *
          * @param \Posts $post
          */
@@ -401,40 +401,40 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
-            //Possible controller class name
+            //可能的控制器类名
             $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
 
-            //Possible method name
+            //可能的方法名
             $actionName = $dispatcher->getActionName() . 'Action';
 
             try {
 
-                //Get the reflection for the method to be executed
+                //从反射中获取将要被执行的方法
                 $reflection = new \ReflectionMethod($controllerName, $actionName);
 
-                //Check parameters
+                //参数检查
                 foreach ($reflection->getParameters() as $parameter) {
 
-                    //Get the expected model name
+                    //获取期望的模型名字
                     $className = $parameter->getClass()->name;
 
-                    //Check if the parameter expects a model instance
+                    //检查参数是否为模型的实例
                     if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
-                        //Override the parameters by the model instance
+                        //根据模型实例重写参数
                         $dispatcher->setParams(array($model));
                     }
                 }
 
             } catch (\Exception $e) {
-                //An exception has occurred, maybe the class or action does not exist?
+                //异常触发，类或者动作不存在？
             }
 
         });
@@ -463,13 +463,13 @@ http://example.com/admin/products/index.php
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        //创建一个事件管理
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        //附上一个侦听者
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
-            //Handle 404 exceptions
+            //处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -478,7 +478,7 @@ http://example.com/admin/products/index.php
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exist
+            //代替控制器或者动作不存在时的路径
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()) {
                     case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
@@ -494,7 +494,7 @@ http://example.com/admin/products/index.php
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the dispatcher
+        //将EventsManager绑定到调度器
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -516,7 +516,7 @@ http://example.com/admin/products/index.php
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
 
-            //Handle 404 exceptions
+            //处理404异常
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -525,7 +525,7 @@ http://example.com/admin/products/index.php
                 return false;
             }
 
-            //Handle other exceptions
+            //处理其他异常
             $dispatcher->forward(array(
                 'controller' => 'index',
                 'action' => 'show503'
