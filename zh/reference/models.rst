@@ -465,9 +465,8 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
 
 绑定参数（Binding Parameters）
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中也支持绑定参数。即使使用绑定参数对性能有一点很小的影响，还是强烈建议您使用这种方法，以消除代码受SQL注入攻击的可能性。
+绑定参数支持字符串和整数占位符。实现方法如下：
 
 .. code-block:: php
 

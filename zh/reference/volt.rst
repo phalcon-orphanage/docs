@@ -19,6 +19,8 @@ accustomed to while working with Phalcon.
 ------------
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
+Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP代码的工作：
+
 .. code-block:: html+jinja
 
     {# app/views/products/show.volt #}
