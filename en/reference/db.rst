@@ -261,6 +261,15 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
        array("name", "year")
     );
 
+    // Generating dynamically the necessary SQL (another syntax)
+    $success = $connection->insertAsDict(
+       "robots",
+       array(
+          "name" => "Astro Boy",
+          "year" => 1952
+       )
+    );
+
     // Updating data with a raw SQL statement
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
@@ -274,7 +283,39 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
        "robots",
        array("name"),
        array("New Astro Boy"),
-       "id = 101"
+       "id = 101" //Warning! In this case values are not escaped
+    );
+
+    // Generating dynamically the necessary SQL (another syntax)
+    $success = $connection->updateAsDict(
+       "robots",
+       array(
+          "name" => "New Astro Boy"
+       ),
+       "id = 101" //Warning! In this case values are not escaped
+    );
+
+    //With escaping conditions
+    $success = $connection->update(
+       "robots",
+       array("name"),
+       array("New Astro Boy"),
+       array(
+          'conditions' => 'id = ?',
+          'bind' => array(101),
+          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+       )
+    );
+    $success = $connection->updateAsDict(
+       "robots",
+       array(
+          "name" => "New Astro Boy"
+       ),
+       array(
+          'conditions' => 'id = ?',
+          'bind' => array(101),
+          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+       )
     );
 
     // Deleting data with a raw SQL statement
@@ -286,7 +327,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
     $success = $connection->execute($sql, array(101));
 
     // Generating dynamically the necessary SQL
-    $success = $connection->delete("robots", "id = 101");
+    $success = $connection->delete("robots", "id = ?", array(101));
 
 Transactions and Nested Transactions
 ------------------------------------

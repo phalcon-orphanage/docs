@@ -1,19 +1,18 @@
 Class **Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Annotations**
 ==============================================================
 
-Queries the table meta-data in order to instrospect the model's metadata
-
+*implements* :doc:`Phalcon\\Mvc\\Model\\MetaData\\StrategyInterface <Phalcon_Mvc_Model_MetaData_StrategyInterface>`
 
 Methods
 -------
 
-public *array*  **getMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+final public *array*  **getMetaData** (*unknown* $model, *unknown* $dependencyInjector)
 
 The meta-data is obtained by reading the column descriptions from the database information schema
 
 
 
-public *array*  **getColumnMaps** ()
+final public *array*  **getColumnMaps** (*unknown* $model, *unknown* $dependencyInjector)
 
 Read the model's column map, this can't be inferred
 

@@ -1,3 +1,3 @@
-Class **Phalcon\\Translate**
-============================
+Abstract class **Phalcon\\Translate**
+=====================================
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
 ====================================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 This class reads and compiles Volt templates into PHP plain code  
 
@@ -20,13 +20,13 @@ This class reads and compiles Volt templates into PHP plain code
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view])
+public  **__construct** ([*unknown* $view])
 
 
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -38,19 +38,19 @@ Returns the internal dependency injector
 
 
 
-public  **setOptions** (*array* $options)
+public  **setOptions** (*unknown* $options)
 
 Sets the compiler options
 
 
 
-public  **setOption** (*string* $option, *string* $value)
+public  **setOption** (*unknown* $option, *unknown* $value)
 
 Sets a single compiler option
 
 
 
-public *string*  **getOption** (*string* $option)
+public *string*  **getOption** (*unknown* $option)
 
 Returns a compiler's option
 
@@ -62,13 +62,13 @@ Returns the compiler options
 
 
 
-public *mixed*  **fireExtensionEvent** (*string* $name, [*array* $arguments])
+final public *mixed*  **fireExtensionEvent** (*unknown* $name, [*unknown* $arguments])
 
 Fires an event to registered extensions
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addExtension** (*object* $extension)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addExtension** (*unknown* $extension)
 
 Registers a Volt's extension
 
@@ -80,7 +80,7 @@ Returns the list of extensions registered in Volt
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addFunction** (*string* $name, *Closure|string* $definition)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addFunction** (*unknown* $name, *unknown* $definition)
 
 Register a new function in the compiler
 
@@ -92,7 +92,7 @@ Register the user registered functions
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addFilter** (*string* $name, *Closure|string* $definition)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **addFilter** (*unknown* $name, *unknown* $definition)
 
 Register a new filter in the compiler
 
@@ -104,7 +104,7 @@ Register the user registered filters
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **setUniquePrefix** (*string* $prefix)
+public :doc:`Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler <Phalcon_Mvc_View_Engine_Volt_Compiler>`  **setUniquePrefix** (*unknown* $prefix)
 
 Set a unique prefix to be used as prefix for compiled variables
 
@@ -116,45 +116,45 @@ Return a unique prefix to be used as prefix for compiled variables and contexts
 
 
 
-public *string*  **attributeReader** (*array* $expr)
+public *string*  **attributeReader** (*unknown* $expr)
 
 Resolves attribute reading
 
 
 
-public *string*  **functionCall** (*array* $expr)
+public *string*  **functionCall** (*unknown* $expr)
 
 Resolves function intermediate code into PHP function calls
 
 
 
-public *string*  **resolveTest** (*array* $test, *string* $left)
+public *string*  **resolveTest** (*unknown* $test, *unknown* $left)
 
 Resolves filter intermediate code into a valid PHP expression
 
 
 
-protected *string*  **resolveFilter** ()
+final protected *string*  **resolveFilter** (*unknown* $filter, *unknown* $left)
 
 Resolves filter intermediate code into PHP function calls
 
 
 
-public *string*  **expression** (*array* $expr)
+final public *string*  **expression** (*unknown* $expr)
 
 Resolves an expression node in an AST volt tree
 
 
 
-protected *string|array*  **_statementListOrExtends** ()
+final protected *string|array*  **_statementListOrExtends** (*unknown* $statements)
 
 Compiles a block of statements
 
 
 
-public *string*  **compileForeach** (*array* $statement, [*boolean* $extendsMode])
+public *string*  **compileForeach** (*unknown* $statement, [*unknown* $extendsMode])
 
-Compiles a 'foreach' intermediate code representation into plain PHP code
+Compiles a "foreach" intermediate code representation into plain PHP code
 
 
 
@@ -164,85 +164,85 @@ Generates a 'forelse' PHP code
 
 
 
-public *string*  **compileIf** (*array* $statement, [*boolean* $extendsMode])
+public *string*  **compileIf** (*unknown* $statement, [*unknown* $extendsMode])
 
 Compiles a 'if' statement returning PHP code
 
 
 
-public *string*  **compileElseIf** (*array* $statement)
+public *string*  **compileElseIf** (*unknown* $statement)
 
-Compiles a 'elseif' statement returning PHP code
-
-
-
-public *string*  **compileCache** (*array* $statement, [*boolean* $extendsMode])
-
-Compiles a 'cache' statement returning PHP code
+Compiles a "elseif" statement returning PHP code
 
 
 
-public *string*  **compileEcho** (*array* $statement)
+public *string*  **compileCache** (*unknown* $statement, [*unknown* $extendsMode])
+
+Compiles a "cache" statement returning PHP code
+
+
+
+public *string*  **compileSet** (*unknown* $statement)
+
+Compiles a "set" statement returning PHP code
+
+
+
+public *string*  **compileDo** (*unknown* $statement)
+
+Compiles a "do" statement returning PHP code
+
+
+
+public *string*  **compileReturn** (*unknown* $statement)
+
+Compiles a "return" statement returning PHP code
+
+
+
+public *string*  **compileAutoEscape** (*unknown* $statement, *unknown* $extendsMode)
+
+Compiles a "autoescape" statement returning PHP code
+
+
+
+public *string*  **compileEcho** (*unknown* $statement)
 
 Compiles a '{{' '}}' statement returning PHP code
 
 
 
-public *string*  **compileInclude** (*array* $statement)
+public *string*  **compileInclude** (*unknown* $statement)
 
 Compiles a 'include' statement returning PHP code
 
 
 
-public *string*  **compileSet** (*array* $statement)
-
-Compiles a 'set' statement returning PHP code
-
-
-
-public *string*  **compileDo** (*array* $statement)
-
-Compiles a 'do' statement returning PHP code
-
-
-
-public *string*  **compileReturn** (*array* $statement)
-
-Compiles a 'return' statement returning PHP code
-
-
-
-public *string*  **compileAutoEscape** (*array* $statement, *boolean* $extendsMode)
-
-Compiles a 'autoescape' statement returning PHP code
-
-
-
-public *string*  **compileMacro** (*array* $statement, *boolean* $extendsMode)
+public *string*  **compileMacro** (*unknown* $statement, *unknown* $extendsMode)
 
 Compiles macros
 
 
 
-public *string*  **compileCall** ()
+public *string*  **compileCall** (*unknown* $statement, *unknown* $extendsMode)
 
 Compiles calls to macros
 
 
 
-protected *string*  **_statementList** ()
+final protected *string*  **_statementList** (*unknown* $statements, [*unknown* $extendsMode])
 
 Traverses a statement list compiling each of its nodes
 
 
 
-protected *string*  **_compileSource** ()
+protected *string*  **_compileSource** (*unknown* $viewCode, [*unknown* $extendsMode])
 
 Compiles a Volt source code returning a PHP plain version
 
 
 
-public *string*  **compileString** (*string* $viewCode, [*boolean* $extendsMode])
+public *string*  **compileString** (*unknown* $viewCode, [*unknown* $extendsMode])
 
 Compiles a template into a string 
 
@@ -255,7 +255,7 @@ Compiles a template into a string
 
 
 
-public *string|array*  **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
+public *string|array*  **compileFile** (*unknown* $path, *unknown* $compiledPath, [*unknown* $extendsMode])
 
 Compiles a template into a file forcing the destination path 
 
@@ -268,7 +268,7 @@ Compiles a template into a file forcing the destination path
 
 
 
-public *string|array*  **compile** (*string* $templatePath, [*boolean* $extendsMode])
+public *string|array*  **compile** (*unknown* $templatePath, [*unknown* $extendsMode])
 
 Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled 
 
@@ -294,7 +294,7 @@ Returns the path to the last compiled template
 
 
 
-public *array*  **parse** (*string* $viewCode)
+public *array*  **parse** (*unknown* $viewCode)
 
 Parses a Volt template returning its intermediate representation 
 

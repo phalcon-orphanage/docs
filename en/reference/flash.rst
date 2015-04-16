@@ -25,9 +25,11 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     //Set up the flash service
     $di->set('flash', function() {
-        return new \Phalcon\Flash\Direct();
+        return new FlashDirect();
     });
 
 This way, you can use it in controllers or views by injecting the service in the required scope:
@@ -36,7 +38,9 @@ This way, you can use it in controllers or views by injecting the service in the
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -88,12 +92,14 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
 
     <?php
 
+    use Phalcon\Flash\Direct as FlashDirect;
+
     //Register the flash service with custom CSS classes
     $di->set('flash', function(){
-        $flash = new \Phalcon\Flash\Direct(array(
-            'error' => 'alert alert-error',
+        $flash = new FlashDirect(array(
+            'error'   => 'alert alert-error',
             'success' => 'alert alert-success',
-            'notice' => 'alert alert-info',
+            'notice'  => 'alert alert-info',
         ));
         return $flash;
     });
@@ -116,7 +122,9 @@ if you make a "forward" is not necessary to store the messages in session, but i
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ContactController extends Controller
     {
 
         public function indexAction()
@@ -144,7 +152,9 @@ Or using a HTTP redirection:
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ContactController extends Controller
     {
 
         public function indexAction()

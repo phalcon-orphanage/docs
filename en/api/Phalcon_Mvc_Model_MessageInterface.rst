@@ -1,45 +1,51 @@
 Interface **Phalcon\\Mvc\\Model\\MessageInterface**
 ===================================================
 
-Phalcon\\Mvc\\Model\\MessageInterface initializer
-
-
 Methods
 -------
 
-abstract public  **setType** (*string* $type)
+abstract public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type])
 
-Sets message type
-
-
-
-abstract public *string*  **getType** ()
-
-Returns message type
+...
 
 
+abstract public  **setType** (*unknown* $type)
 
-abstract public  **setMessage** (*string* $message)
-
-Sets verbose message
-
+...
 
 
-abstract public *string*  **getMessage** ()
+abstract public  **getType** ()
 
-Returns verbose message
-
-
-
-abstract public  **setField** (*string* $field)
-
-Sets field name related to message
+...
 
 
+abstract public  **setMessage** (*unknown* $message)
 
-abstract public *string*  **getField** ()
+...
 
-Returns field name related to message
 
+abstract public  **getMessage** ()
+
+...
+
+
+abstract public  **setField** (*unknown* $field)
+
+...
+
+
+abstract public  **getField** ()
+
+...
+
+
+abstract public  **__toString** ()
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $message)
+
+...
 
 

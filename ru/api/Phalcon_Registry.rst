@@ -1,7 +1,7 @@
 Final class **Phalcon\\Registry**
 =================================
 
-*implements* ArrayAccess, Iterator, Traversable, Serializable, Countable, JsonSerializable
+*implements* ArrayAccess, Countable, Iterator, Traversable
 
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.  
 
@@ -37,98 +37,81 @@ A registry is a container for storing objects and values in the application spac
 Methods
 -------
 
-public  **__get** (*unknown* $property)
+final public  **__construct** ()
 
-...
-
-
-public  **__set** (*unknown* $property, *unknown* $value)
-
-...
+Registry constructor
 
 
-public  **__isset** (*unknown* $property)
 
-...
+final public  **offsetExists** (*unknown* $offset)
 
-
-public  **__unset** (*unknown* $property)
-
-...
+Checks if the element is present in the registry
 
 
-public  **__call** (*unknown* $method, [*unknown* $arguments])
 
-...
+final public  **offsetGet** (*unknown* $offset)
 
-
-public  **count** ()
-
-...
+Returns an index in the registry
 
 
-public  **offsetGet** (*unknown* $property)
 
-...
+final public  **offsetSet** (*unknown* $offset, *unknown* $value)
 
-
-public  **offsetSet** (*unknown* $property, *unknown* $value)
-
-...
+Sets an element in the registry
 
 
-public  **offsetUnset** (*unknown* $property)
 
-...
+final public  **offsetUnset** (*unknown* $offset)
 
-
-public  **offsetExists** (*unknown* $property)
-
-...
+Unsets an element in the registry
 
 
-public  **current** ()
 
-...
+final public  **__set** (*unknown* $offset, *unknown* $value)
 
-
-public  **key** ()
-
-...
+Sets an element in the registry
 
 
-public  **next** ()
 
-...
+final public  **__get** (*unknown* $offset)
+
+Returns an index in the registry
 
 
-public  **rewind** ()
 
-...
+final public *int*  **count** ()
+
+Checks how many elements are in the register
+
+
+
+final public  **next** ()
+
+Moves cursor to next row in the registry
+
+
+
+final public *int*  **key** ()
+
+Gets pointer number of active row in the registry
+
+
+
+final public  **rewind** ()
+
+Rewinds the registry cursor to its beginning
+
 
 
 public  **valid** ()
 
-...
+Checks if the iterator is valid
 
 
-public  **jsonSerialize** ()
 
-...
-
-
-public  **serialize** ()
-
-...
+public  **current** ()
 
 
-public  **unserialize** ([*unknown* $serialized])
 
-...
-
-
-private  **__wakeup** ()
-
-...
 
 

@@ -1,69 +1,56 @@
 Interface **Phalcon\\Session\\AdapterInterface**
 ================================================
 
-Phalcon\\Session\\AdapterInterface initializer
-
-
 Methods
 -------
 
 abstract public  **start** ()
 
-Starts session, optionally using an adapter
+...
 
 
+abstract public  **setOptions** (*unknown* $options)
 
-abstract public  **setOptions** (*array* $options)
-
-Sets session options
-
+...
 
 
-abstract public *array*  **getOptions** ()
+abstract public  **getOptions** ()
 
-Get internal options
-
-
-
-abstract public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
-
-Gets a session variable from an application context
+...
 
 
+abstract public  **get** (*unknown* $index, [*unknown* $defaultValue])
 
-abstract public  **set** (*string* $index, *string* $value)
-
-Sets a session variable in an application context
-
+...
 
 
-abstract public *boolean*  **has** (*string* $index)
+abstract public  **set** (*unknown* $index, *unknown* $value)
 
-Check whether a session variable is set in an application context
-
-
-
-abstract public  **remove** (*string* $index)
-
-Removes a session variable from an application context
+...
 
 
+abstract public  **has** (*unknown* $index)
 
-abstract public *string*  **getId** ()
-
-Returns active session id
-
+...
 
 
-abstract public *boolean*  **isStarted** ()
+abstract public  **remove** (*unknown* $index)
 
-Check whether the session has been started
+...
 
 
+abstract public  **getId** ()
 
-abstract public *boolean*  **destroy** ([*unknown* $session_id])
+...
 
-Destroys the active session
 
+abstract public  **isStarted** ()
+
+...
+
+
+abstract public  **destroy** ()
+
+...
 
 

@@ -25,51 +25,51 @@ Pagination using a PHQL query builder as source of data
 Methods
 -------
 
-public  **__construct** (*array* $config)
+public  **__construct** (*unknown* $config)
 
 
 
 
 
-public *stdClass*  **getPaginate** ()
+public  **setCurrentPage** (*unknown* $currentPage)
 
-Returns a slice of the resultset to show in the pagination
+Set the current page number
 
 
 
-public :doc:`Phalcon\\Paginator\\Adapter\\QueryBuilder <Phalcon_Paginator_Adapter_QueryBuilder>`  $this Fluent interface **setLimit** (*int* $limit)
+public *int page*  **getCurrentPage** ()
+
+Get the current page number
+
+
+
+public  **setLimit** (*unknown* $limitRows)
 
 Set current rows limit
 
 
 
-public *int $limit*  **getLimit** ()
+public  **getLimit** ()
 
 Get current rows limit
 
 
 
-public  **setCurrentPage** (*int* $page)
-
-Set current page number
-
-
-
-public  **getCurrentPage** ()
-
-Get current page number
-
-
-
-public :doc:`Phalcon\\Paginator\\Adapter\\QueryBuilder <Phalcon_Paginator_Adapter_QueryBuilder>`  $this Fluent interface **setQueryBuilder** (*unknown* $queryBuilder)
+public  **setQueryBuilder** (*unknown* $builder)
 
 Set query builder object
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  $builder **getQueryBuilder** ()
+public  **getQueryBuilder** ()
 
 Get query builder object
+
+
+
+public  **getPaginate** ()
+
+Returns a slice of the resultset to show in the pagination
 
 
 

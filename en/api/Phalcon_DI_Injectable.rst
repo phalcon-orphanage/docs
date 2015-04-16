@@ -1,7 +1,7 @@
-Abstract class **Phalcon\\DI\\Injectable**
+Abstract class **Phalcon\\Di\\Injectable**
 ==========================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
@@ -9,7 +9,7 @@ This class allows to access services in the services container by just only acce
 Methods
 -------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -21,7 +21,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the event manager
 
@@ -33,7 +33,7 @@ Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $property)
+public  **__get** (*unknown* $propertyName)
 
 Magic method __get
 

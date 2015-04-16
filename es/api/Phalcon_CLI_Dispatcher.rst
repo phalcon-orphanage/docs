@@ -1,9 +1,9 @@
-Class **Phalcon\\CLI\\Dispatcher**
+Class **Phalcon\\Cli\\Dispatcher**
 ==================================
 
 *extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.  
 
@@ -11,17 +11,17 @@ Dispatching is the process of taking the command-line arguments, extracting the 
 
     <?php
 
-    $di = new Phalcon\DI();
+    $di = new \Phalcon\Di();
     
-    $dispatcher = new Phalcon\CLI\Dispatcher();
+    $dispatcher = new \Phalcon\Cli\Dispatcher();
     
-      $dispatcher->setDI($di);
+      $dispatcher->setDi(di);
     
     $dispatcher->setTaskName('posts');
     $dispatcher->setActionName('index');
     $dispatcher->setParams(array());
     
-    $handle = $dispatcher->dispatch();
+    $handle = dispatcher->dispatch();
 
 
 
@@ -43,19 +43,25 @@ Constants
 Methods
 -------
 
-public  **setTaskSuffix** (*string* $taskSuffix)
+public  **__construct** ()
+
+Phalcon\\Cli\\Dispatcher constructor
+
+
+
+public  **setTaskSuffix** (*unknown* $taskSuffix)
 
 Sets the default task suffix
 
 
 
-public  **setDefaultTask** (*string* $taskName)
+public  **setDefaultTask** (*unknown* $taskName)
 
 Sets the default task name
 
 
 
-public  **setTaskName** (*string* $taskName)
+public  **setTaskName** (*unknown* $taskName)
 
 Sets the task name to be dispatched
 
@@ -67,21 +73,15 @@ Gets last dispatched task name
 
 
 
-protected  **_throwDispatchException** ()
+protected  **_throwDispatchException** (*unknown* $message, [*unknown* $exceptionCode])
 
 Throws an internal exception
 
 
 
-protected  **_handleException** ()
+protected  **_handleException** (*unknown* $exception)
 
 Handles a user exception
-
-
-
-public *string*  **getTaskClass** ()
-
-Possible task class name that will be located to dispatch the request
 
 
 
@@ -97,13 +97,19 @@ Returns the active task in the dispatcher
 
 
 
-public  **__construct** () inherited from Phalcon\\Dispatcher
+public  **setOptions** (*unknown* $options)
 
-Phalcon\\Dispatcher constructor
+Set the options to be dispatched
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Dispatcher
+public *array*  **getOptions** ()
+
+Get dispatched options
+
+
+
+public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Dispatcher
 
 Sets the dependency injector
 
@@ -115,7 +121,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\Dispatcher
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Dispatcher
 
 Sets the events manager
 
@@ -127,13 +133,13 @@ Returns the internal event manager
 
 
 
-public  **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon\\Dispatcher
+public  **setActionSuffix** (*unknown* $actionSuffix) inherited from Phalcon\\Dispatcher
 
 Sets the default action suffix
 
 
 
-public  **setModuleName** (*string* $moduleName) inherited from Phalcon\\Dispatcher
+public  **setModuleName** (*unknown* $moduleName) inherited from Phalcon\\Dispatcher
 
 Sets the module where the controller is (only informative)
 
@@ -145,7 +151,7 @@ Gets the module where the controller class is
 
 
 
-public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+public  **setNamespaceName** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the namespace where the controller class is
 
@@ -157,7 +163,7 @@ Gets a namespace to be prepended to the current handler name
 
 
 
-public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\Dispatcher
+public  **setDefaultNamespace** (*unknown* $namespaceName) inherited from Phalcon\\Dispatcher
 
 Sets the default namespace
 
@@ -169,13 +175,13 @@ Returns the default namespace
 
 
 
-public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Dispatcher
+public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the default action name
 
 
 
-public  **setActionName** (*string* $actionName) inherited from Phalcon\\Dispatcher
+public  **setActionName** (*unknown* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the action name to be dispatched
 
@@ -183,11 +189,11 @@ Sets the action name to be dispatched
 
 public *string*  **getActionName** () inherited from Phalcon\\Dispatcher
 
-Gets the lastest dispatched action name
+Gets the latest dispatched action name
 
 
 
-public  **setParams** (*array* $params) inherited from Phalcon\\Dispatcher
+public  **setParams** (*unknown* $params) inherited from Phalcon\\Dispatcher
 
 Sets action params to be dispatched
 
@@ -199,13 +205,13 @@ Gets action params
 
 
 
-public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
+public  **setParam** (*unknown* $param, *unknown* $value) inherited from Phalcon\\Dispatcher
 
 Set a param by its name or numeric index
 
 
 
-public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
+public *mixed*  **getParam** (*unknown* $param, [*unknown* $filters], [*unknown* $defaultValue]) inherited from Phalcon\\Dispatcher
 
 Gets a param by its name or numeric index
 
@@ -219,11 +225,11 @@ Returns the current method to be/executed in the dispatcher
 
 public *boolean*  **isFinished** () inherited from Phalcon\\Dispatcher
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 
 
-public  **setReturnedValue** (*mixed* $value) inherited from Phalcon\\Dispatcher
+public  **setReturnedValue** (*unknown* $value) inherited from Phalcon\\Dispatcher
 
 Sets the latest returned value by an action manually
 
@@ -241,7 +247,7 @@ Dispatches a handle action taking into account the routing parameters
 
 
 
-public  **forward** (*array* $forward) inherited from Phalcon\\Dispatcher
+public  **forward** (*unknown* $forward) inherited from Phalcon\\Dispatcher
 
 Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed 
 
@@ -249,7 +255,7 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
     <?php
 
-      $this->dispatcher->forward(array('controller' => 'posts', 'action' => 'index'));
+      $this->dispatcher->forward(array("controller" => "posts", "action" => "index"));
 
 
 
@@ -257,12 +263,6 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 public *boolean*  **wasForwarded** () inherited from Phalcon\\Dispatcher
 
 Check if the current executed action was forwarded by another one
-
-
-
-public *string*  **getHandlerClass** () inherited from Phalcon\\Dispatcher
-
-Possible class name that will be located to dispatch the request
 
 
 

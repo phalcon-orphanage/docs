@@ -7,7 +7,7 @@ Instances of Phalcon\\Db can generate execution profiles on SQL statements sent 
 
     <?php
 
-    $profiler = new Phalcon\Db\Profiler();
+    $profiler = new \Phalcon\Db\Profiler();
     
     //Set the connection profiler
     $connection->setProfiler($profiler);
@@ -32,7 +32,7 @@ Instances of Phalcon\\Db can generate execution profiles on SQL statements sent 
 Methods
 -------
 
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **startProfile** (*string* $sqlStatement, [*unknown* $sqlVariables], [*unknown* $sqlBindTypes])
+public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **startProfile** (*unknown* $sqlStatement, [*unknown* $sqlVariables], [*unknown* $sqlBindTypes])
 
 Starts the profile of a SQL sentence
 

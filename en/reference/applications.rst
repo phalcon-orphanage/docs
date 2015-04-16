@@ -32,10 +32,10 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Application,
-        Phalcon\Mvc\View;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -71,11 +71,11 @@ If namespaces are used, the following bootstrap can be used:
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\View,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\Application;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -145,10 +145,10 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     namespace Multiple\Backend;
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\View,
-        Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\ModuleDefinitionInterface;
 
     class Module implements ModuleDefinitionInterface
     {
@@ -200,9 +200,9 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     <?php
 
-    use Phalcon\Mvc\Router,
-        Phalcon\Mvc\Application,
-        Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $di = new FactoryDefault();
 
@@ -266,8 +266,10 @@ module:
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     //Creating a view component
-    $view = new \Phalcon\Mvc\View();
+    $view = new View();
 
     //Set options to view component
     //...
@@ -305,6 +307,8 @@ you may recognize the following bootstrap file:
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
         // Register autoloaders
@@ -314,7 +318,7 @@ you may recognize the following bootstrap file:
         //...
 
         // Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 

@@ -18,16 +18,16 @@ To illustrate how this component works and why it is important, consider the fol
         $maliciousTitle = '</title><script>alert(1)</script>';
 
         //Malicious CSS class name
-        $className = ';`(';
+        $className      = ';`(';
 
         //Malicious CSS font name
-        $fontName = 'Verdana"</style>';
+        $fontName       = 'Verdana"</style>';
 
         //Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
         //Create an escaper
-        $e = new Phalcon\Escaper();
+        $e              = new Phalcon\Escaper();
 
     ?>
 

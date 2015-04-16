@@ -9,13 +9,19 @@ Phalcon Events Manager, offers an easy way to intercept and manipulate, if neede
 Methods
 -------
 
-public  **attach** (*string* $eventType, *object|callable* $handler)
+public  **attach** (*unknown* $eventType, *unknown* $handler, [*unknown* $priority])
 
 Attach a listener to the events manager
 
 
 
-public  **enablePriorities** (*boolean* $enablePriorities)
+public  **detach** (*unknown* $eventType, *unknown* $handler)
+
+Detach the listener from the events manager
+
+
+
+public  **enablePriorities** (*unknown* $enablePriorities)
 
 Set if priorities are enabled in the EventsManager
 
@@ -27,7 +33,7 @@ Returns if priorities are enabled
 
 
 
-public  **collectResponses** (*boolean* $collect)
+public  **collectResponses** (*unknown* $collect)
 
 Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
 
@@ -45,19 +51,25 @@ Returns all the responses returned by every handler executed by the last 'fire' 
 
 
 
-public  **detachAll** ([*string* $type])
+public  **detachAll** ([*unknown* $type])
 
 Removes all events from the EventsManager
 
 
 
-public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
+public  **dettachAll** ([*unknown* $type])
+
+Alias of detachAll
+
+
+
+final public *mixed*  **fireQueue** (*unknown* $queue, *unknown* $event)
 
 Internal handler to call a queue of events
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
+public *mixed*  **fire** (*unknown* $eventType, *unknown* $source, [*unknown* $data], [*unknown* $cancelable])
 
 Fires an event in the events manager causing that active listeners be notified about it 
 
@@ -70,20 +82,15 @@ Fires an event in the events manager causing that active listeners be notified a
 
 
 
-public *boolean*  **hasListeners** (*string* $type)
+public *boolean*  **hasListeners** (*unknown* $type)
 
 Check whether certain type of event has listeners
 
 
 
-public *array*  **getListeners** (*string* $type)
+public *array*  **getListeners** (*unknown* $type)
 
 Returns all the attached listeners of a certain type
 
-
-
-public  **dettachAll** ([*unknown* $type])
-
-...
 
 

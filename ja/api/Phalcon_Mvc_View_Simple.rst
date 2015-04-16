@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\View\\Simple**
 ====================================
 
-*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 This component allows to render views without hicherquical levels  
 
@@ -11,21 +11,28 @@ This component allows to render views without hicherquical levels
 
     <?php
 
-     $view = new Phalcon\Mvc\View\Simple();
+     $view = new \Phalcon\Mvc\View\Simple();
      echo $view->render('templates/my-view', array('content' => $html));
+     //or with filename with extension
+     echo $view->render('templates/my-view.volt', array('content' => $html));
 
 
 
 Methods
 -------
 
-public  **__construct** ([*array* $options])
+public  **getRegisteredEngines** ()
 
-Phalcon\\Mvc\\View constructor
+...
+
+
+public  **__construct** ([*unknown* $options])
+
+Phalcon\\Mvc\\View\\Simple constructor
 
 
 
-public  **setViewsDir** (*string* $viewsDir)
+public  **setViewsDir** (*unknown* $viewsDir)
 
 Sets views directory. Depending of your platform, always add a trailing slash or backslash
 
@@ -37,7 +44,7 @@ Gets views directory
 
 
 
-public  **registerEngines** (*array* $engines)
+public  **registerEngines** (*unknown* $engines)
 
 Register templating engines 
 
@@ -54,31 +61,25 @@ Register templating engines
 
 
 
-public  **getRegisteredEngines** ()
-
-Returns the registered templating engines
-
-
-
 protected *array*  **_loadTemplateEngines** ()
 
 Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
 
 
 
-protected  **_internalRender** ()
+final protected  **_internalRender** (*unknown* $path, *unknown* $params)
 
 Tries to render the view with every engine registered in the component
 
 
 
-public *string*  **render** (*string* $path, [*array* $params])
+public *string*  **render** (*unknown* $path, [*unknown* $params])
 
 Renders a view
 
 
 
-public  **partial** (*string* $partialPath, [*array* $params])
+public  **partial** (*unknown* $partialPath, [*unknown* $params])
 
 Renders a partial view 
 
@@ -99,7 +100,7 @@ Renders a partial view
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*array* $options)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*unknown* $options)
 
 Sets the cache options
 
@@ -123,7 +124,7 @@ Returns the cache instance used to cache
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **cache** ([*boolean|array* $options])
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **cache** ([*unknown* $options])
 
 Cache the actual view render to certain level 
 
@@ -149,7 +150,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVars** (*array* $params, [*boolean* $merge])
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVars** (*unknown* $params, [*unknown* $merge])
 
 Set all the render params 
 
@@ -162,7 +163,7 @@ Set all the render params
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVar** (*string* $key, *mixed* $value)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVar** (*unknown* $key, *unknown* $value)
 
 Set a single view parameter 
 
@@ -175,7 +176,7 @@ Set a single view parameter
 
 
 
-public *mixed*  **getVar** (*string* $key)
+public *mixed*  **getVar** (*unknown* $key)
 
 Returns a parameter previously set in the view
 
@@ -187,7 +188,7 @@ Returns parameters to views
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setContent** (*string* $content)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setContent** (*unknown* $content)
 
 Externally sets the view content 
 
@@ -212,7 +213,7 @@ Returns the path of the view that is currently rendered
 
 
 
-public  **__set** (*string* $key, *mixed* $value)
+public  **__set** (*unknown* $key, *unknown* $value)
 
 Magic method to pass variables to the views 
 
@@ -225,7 +226,7 @@ Magic method to pass variables to the views
 
 
 
-public *mixed*  **__get** (*string* $key)
+public *mixed*  **__get** (*unknown* $key)
 
 Magic method to retrieve a variable passed to the view 
 
@@ -238,25 +239,25 @@ Magic method to retrieve a variable passed to the view
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

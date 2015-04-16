@@ -1,125 +1,113 @@
 Interface **Phalcon\\Mvc\\DispatcherInterface**
 ===============================================
 
-*extends* Phalcon\DispatcherInterface
-
-Phalcon\\Mvc\\DispatcherInterface initializer
-
+*implements* :doc:`Phalcon\\DispatcherInterface <Phalcon_DispatcherInterface>`
 
 Methods
 -------
 
-abstract public  **setControllerSuffix** (*string* $controllerSuffix)
+abstract public  **setControllerSuffix** (*unknown* $controllerSuffix)
 
-Sets the default controller suffix
+...
 
 
+abstract public  **setDefaultController** (*unknown* $controllerName)
 
-abstract public  **setDefaultController** (*string* $controllerName)
+...
 
-Sets the default controller name
 
+abstract public  **setControllerName** (*unknown* $controllerName)
 
+...
 
-abstract public  **setControllerName** (*string* $controllerName, [*unknown* $isExact])
 
-Sets the controller name to be dispatched
+abstract public  **getControllerName** ()
 
+...
 
 
-abstract public *string*  **getControllerName** ()
+abstract public  **getLastController** ()
 
-Gets last dispatched controller name
+...
 
 
+abstract public  **getActiveController** ()
 
-abstract public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getLastController** ()
+...
 
-Returns the lastest dispatched controller
 
+abstract public  **setActionSuffix** (*unknown* $actionSuffix) inherited from Phalcon\\DispatcherInterface
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`  **getActiveController** ()
 
-Returns the active controller in the dispatcher
+abstract public  **setDefaultNamespace** (*unknown* $defaultNamespace) inherited from Phalcon\\DispatcherInterface
 
+...
 
 
-abstract public  **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon\\DispatcherInterface
+abstract public  **setDefaultAction** (*unknown* $actionName) inherited from Phalcon\\DispatcherInterface
 
-Sets the default action suffix
+...
 
 
+abstract public  **setNamespaceName** (*unknown* $namespaceName) inherited from Phalcon\\DispatcherInterface
 
-abstract public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\DispatcherInterface
+...
 
-Sets the default namespace
 
+abstract public  **setModuleName** (*unknown* $moduleName) inherited from Phalcon\\DispatcherInterface
 
+...
 
-abstract public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\DispatcherInterface
 
-Sets the default action name
+abstract public  **setActionName** (*unknown* $actionName) inherited from Phalcon\\DispatcherInterface
 
+...
 
 
-abstract public  **setActionName** (*string* $actionName) inherited from Phalcon\\DispatcherInterface
+abstract public  **getActionName** () inherited from Phalcon\\DispatcherInterface
 
-Sets the action name to be dispatched
+...
 
 
+abstract public  **setParams** (*unknown* $params) inherited from Phalcon\\DispatcherInterface
 
-abstract public *string*  **getActionName** () inherited from Phalcon\\DispatcherInterface
+...
 
-Gets last dispatched action name
 
+abstract public  **getParams** () inherited from Phalcon\\DispatcherInterface
 
+...
 
-abstract public  **setParams** (*array* $params) inherited from Phalcon\\DispatcherInterface
 
-Sets action params to be dispatched
+abstract public  **setParam** (*unknown* $param, *unknown* $value) inherited from Phalcon\\DispatcherInterface
 
+...
 
 
-abstract public *array*  **getParams** () inherited from Phalcon\\DispatcherInterface
+abstract public  **getParam** (*unknown* $param, [*unknown* $filters]) inherited from Phalcon\\DispatcherInterface
 
-Gets action params
+...
 
 
+abstract public  **isFinished** () inherited from Phalcon\\DispatcherInterface
 
-abstract public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\DispatcherInterface
+...
 
-Set a param by its name or numeric index
 
+abstract public  **getReturnedValue** () inherited from Phalcon\\DispatcherInterface
 
+...
 
-abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\DispatcherInterface
 
-Gets a param by its name or numeric index
+abstract public  **dispatch** () inherited from Phalcon\\DispatcherInterface
 
+...
 
 
-abstract public *boolean*  **isFinished** () inherited from Phalcon\\DispatcherInterface
+abstract public  **forward** (*unknown* $forward) inherited from Phalcon\\DispatcherInterface
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
-
-
-
-abstract public *mixed*  **getReturnedValue** () inherited from Phalcon\\DispatcherInterface
-
-Returns value returned by the lastest dispatched action
-
-
-
-abstract public *object*  **dispatch** () inherited from Phalcon\\DispatcherInterface
-
-Dispatches a handle action taking into account the routing parameters
-
-
-
-abstract public  **forward** (*array* $forward) inherited from Phalcon\\DispatcherInterface
-
-Forwards the execution flow to another controller/action
-
+...
 
 

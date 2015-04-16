@@ -1,9 +1,9 @@
 Abstract class **Phalcon\\Mvc\\View\\Engine**
 =============================================
 
-*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\\Mvc\\View component.
 
@@ -11,19 +11,19 @@ All the template engine adapters must inherit this class. This provides basic in
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** (*unknown* $view, [*unknown* $dependencyInjector])
 
 Phalcon\\Mvc\\View\\Engine constructor
 
 
 
-public *array*  **getContent** ()
+public *string*  **getContent** ()
 
 Returns cached ouput on another view stage
 
 
 
-public *string*  **partial** (*string* $partialPath)
+public *string*  **partial** (*unknown* $partialPath, [*unknown* $params])
 
 Renders a partial inside another view
 
@@ -35,39 +35,33 @@ Returns the view component related to the adapter
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 
 
 
-public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
-
-
-
-abstract public  **render** (*string* $path, *array* $params, [*boolean* $mustClean]) inherited from Phalcon\\Mvc\\View\\EngineInterface
-
-Renders a view using the template engine
 
 
 

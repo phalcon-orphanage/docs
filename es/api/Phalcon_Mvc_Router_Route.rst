@@ -9,19 +9,19 @@ This class represents every route added to the router
 Methods
 -------
 
-public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods])
+public  **__construct** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
 
 Phalcon\\Mvc\\Router\\Route constructor
 
 
 
-public *string*  **compilePattern** (*string* $pattern)
+public *string*  **compilePattern** (*unknown* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **via** (*string|array* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **via** (*unknown* $httpMethods)
 
 Set one or more HTTP methods that constraint the matching of the route 
 
@@ -35,7 +35,13 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-public  **reConfigure** (*string* $pattern, [*array* $paths])
+public *array|boolean*  **extractNamedParams** (*unknown* $pattern)
+
+Extracts parameters from a string
+
+
+
+public  **reConfigure** (*unknown* $pattern, [*unknown* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
@@ -47,7 +53,7 @@ Returns the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setName** (*string* $name)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setName** (*unknown* $name)
 
 Sets the route's name 
 
@@ -62,7 +68,7 @@ Sets the route's name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **beforeMatch** (*callback* $callback)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **beforeMatch** (*unknown* $callback)
 
 Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched
 
@@ -104,7 +110,7 @@ Returns the paths using positions as keys and names as values
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*string|array* $httpMethods)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHttpMethods** (*unknown* $httpMethods)
 
 Sets a set of HTTP methods that constraint the matching of the route (alias of via) 
 
@@ -143,7 +149,7 @@ Returns the hostname restriction if any
 
 
 
-public *Phalcon\\Mvc\\RouteInterface*  **setGroup** (:doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` $group)
+public *Phalcon\\Mvc\\RouteInterface*  **setGroup** (*unknown* $group)
 
 Sets the group associated with the route
 
@@ -155,7 +161,7 @@ Returns the group associated with the route
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **convert** (*string* $name, *callable* $converter)
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **convert** (*unknown* $name, *unknown* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 

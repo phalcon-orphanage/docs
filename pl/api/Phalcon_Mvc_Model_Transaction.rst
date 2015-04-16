@@ -11,7 +11,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 
     try {
     
-      $manager = new Phalcon\Mvc\Model\Transaction\Manager();
+      $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
     
       $transaction = $manager->get();
     
@@ -41,7 +41,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
+public  **__construct** (*unknown* $dependencyInjector, [*unknown* $autoBegin], [*unknown* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
@@ -65,9 +65,9 @@ Commits the transaction
 
 
 
-public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
+public *boolean*  **rollback** ([*unknown* $rollbackMessage], [*unknown* $rollbackRecord])
 
-Rolls back the transaction
+Rollbacks the transaction
 
 
 
@@ -77,7 +77,7 @@ Returns the connection related to transaction
 
 
 
-public  **setIsNewTransaction** (*boolean* $isNew)
+public  **setIsNewTransaction** (*unknown* $isNew)
 
 Sets if is a reused transaction or new once
 
@@ -107,7 +107,7 @@ Checks whether internal connection is under an active transaction
 
 
 
-public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+public  **setRollbackedRecord** (*unknown* $record)
 
 Sets object which generates rollback action
 

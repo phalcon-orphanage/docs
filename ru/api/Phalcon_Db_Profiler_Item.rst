@@ -7,63 +7,63 @@ This class identifies each profile in a Phalcon\\Db\\Profiler
 Methods
 -------
 
-public  **setSQLStatement** (*string* $sqlStatement)
+public  **setSqlStatement** (*unknown* $sqlStatement)
 
-Sets the SQL statement related to the profile
-
-
-
-public *string*  **getSQLStatement** ()
-
-Returns the SQL statement related to the profile
+SQL statement related to the profile
 
 
 
-public  **setSQLVariables** (*unknown* $sqlVariables)
+public  **getSqlStatement** ()
 
-Sets the SQL variables related to the profile
-
-
-
-public *array*  **getSQLVariables** ()
-
-Returns the SQL variables related to the profile
+SQL statement related to the profile
 
 
 
-public  **setSQLBindTypes** (*unknown* $sqlBindTypes)
+public  **setSqlVariables** (*unknown* $sqlVariables)
 
-Sets the SQL bind types related to the profile
-
-
-
-public *array*  **getSQLBindTypes** ()
-
-Returns the SQL bind types related to the profile
+SQL variables related to the profile
 
 
 
-public  **setInitialTime** (*int* $initialTime)
+public  **getSqlVariables** ()
 
-Sets the timestamp on when the profile started
-
-
-
-public  **setFinalTime** (*int* $finalTime)
-
-Sets the timestamp on when the profile ended
+SQL variables related to the profile
 
 
 
-public *double*  **getInitialTime** ()
+public  **setSqlBindTypes** (*unknown* $sqlBindTypes)
 
-Returns the initial time in milseconds on when the profile started
+SQL bind types related to the profile
 
 
 
-public *double*  **getFinalTime** ()
+public  **getSqlBindTypes** ()
 
-Returns the initial time in milseconds on when the profile ended
+SQL bind types related to the profile
+
+
+
+public  **setInitialTime** (*unknown* $initialTime)
+
+Timestamp when the profile started
+
+
+
+public  **getInitialTime** ()
+
+Timestamp when the profile started
+
+
+
+public  **setFinalTime** (*unknown* $finalTime)
+
+Timestamp when the profile ended
+
+
+
+public  **getFinalTime** ()
+
+Timestamp when the profile ended
 
 
 

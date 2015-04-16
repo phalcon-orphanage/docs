@@ -12,9 +12,9 @@ Stores content in memory. Data is lost when the request is finished
     <?php
 
     //Cache data
-    $frontCache = new Phalcon\Cache\Frontend\Data();
+    $frontCache = new \Phalcon\Cache\Frontend\Data();
     
-      $cache = new Phalcon\Cache\Backend\Memory($frontCache);
+      $cache = new \Phalcon\Cache\Backend\Memory($frontCache);
     
     //Cache arbitrary data
     $cache->save('my-data', array(1, 2, 3, 4, 5));
@@ -27,43 +27,43 @@ Stores content in memory. Data is lost when the request is finished
 Methods
 -------
 
-public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*unknown* $keyName, [*unknown* $lifetime])
 
 Returns a cached content
 
 
 
-public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*unknown* $keyName], [*unknown* $content], [*unknown* $lifetime], [*unknown* $stopBuffer])
 
 Stores cached content into the backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*string* $keyName)
+public *boolean*  **delete** (*unknown* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** ([*string* $prefix])
+public *array*  **queryKeys** ([*unknown* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** ([*unknown* $key_name], [*unknown* $value])
+public *long*  **increment** ([*unknown* $keyName], [*unknown* $value])
 
 Increment of given $keyName by $value
 
 
 
-public *long*  **decrement** ([*unknown* $key_name], [*long* $value])
+public *long*  **decrement** ([*unknown* $keyName], [*unknown* $value])
 
 Decrement of $keyName by given $value
 
@@ -75,33 +75,51 @@ Immediately invalidates all existing items.
 
 
 
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
+public  **getFrontend** () inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **setFrontend** (*unknown* $frontend) inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **getOptions** () inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **setOptions** (*unknown* $options) inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **getLastKey** () inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backend
+
+...
+
+
+public  **__construct** (*unknown* $frontend, [*unknown* $options]) inherited from Phalcon\\Cache\\Backend
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*unknown* $keyName, [*unknown* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
-Starts a cache. The $keyname allows to identify the created fragment
+Starts a cache. The keyname allows to identify the created fragment
 
 
 
-public  **stop** ([*boolean* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
+public  **stop** ([*unknown* $stopBuffer]) inherited from Phalcon\\Cache\\Backend
 
 Stops the frontend without store any cached content
-
-
-
-public *mixed*  **getFrontend** () inherited from Phalcon\\Cache\\Backend
-
-Returns front-end instance adapter related to the back-end
-
-
-
-public *array*  **getOptions** () inherited from Phalcon\\Cache\\Backend
-
-Returns the backend options
 
 
 
@@ -114,18 +132,6 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
-
-
-
-public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last key stored by the cache
 
 
 

@@ -1,13 +1,13 @@
 Tutorial 1: Let's learn by example
 ==================================
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up.
-We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon,
-you can check our :doc:`developer tools <tools>`.
+Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration
+form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested
+in automatic code generation tools for Phalcon, you can check our :doc:`developer tools <tools>`.
 
 Checking your installation
 --------------------------
-We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon" or execute the
-code snippet below:
+We'll assume you have Phalcon installed already. Check your phpinfo() output for a section referencing "Phalcon"
+or execute the code snippet below:
 
 .. code-block:: php
 
@@ -30,13 +30,15 @@ The Phalcon extension should appear as part of the output:
 
 Creating a project
 ------------------
-The best way to use this guide is to follow each step in turn. You can get the complete code `here <https://github.com/phalcon/tutorial>`_.
+The best way to use this guide is to follow each step in turn. You can get the complete code
+`here <https://github.com/phalcon/tutorial>`_.
 
 File structure
 ^^^^^^^^^^^^^^
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon does not impose a particular file structure for application development. Due to the fact that it is
+loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
-For the purposes of this tutorial and as a starting point, we suggest the following structure:
+For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
 
 .. code-block:: php
 
@@ -50,7 +52,8 @@ For the purposes of this tutorial and as a starting point, we suggest the follow
         img/
         js/
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Note that you don't need any "library" directory related to Phalcon. The framework is available in memory,
+ready for you to use.
 
 Beautiful URLs
 ^^^^^^^^^^^^^^
@@ -83,7 +86,9 @@ The second set of rules will check if the requested file exists and, if it does,
 
 Bootstrap
 ^^^^^^^^^
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+The first file you need to create is the bootstrap file. This file is very important; since it serves
+as the base of your application, giving you control of all aspects of it. In this file you can implement
+initialization of components as well as application behavior.
 
 The tutorial/public/index.php file should look like:
 
@@ -91,38 +96,44 @@ The tutorial/public/index.php file should look like:
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
+
     try {
 
-        //Register an autoloader
-        $loader = new \Phalcon\Loader();
+        // Register an autoloader
+        $loader = new Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        // Create a DI
+        $di = new FactoryDefault();
 
-        //Setup the view component
+        // Setup the view component
         $di->set('view', function(){
-            $view = new \Phalcon\Mvc\View();
+            $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function(){
-            $url = new \Phalcon\Mvc\Url();
+            $url = new Url();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });        
+        });
 
-        //Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        // Handle the request
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch(\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -136,7 +147,11 @@ With it, we can load classes using various strategies but for this example we ha
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader;
+
+    // ...
+
+    $loader = new Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -154,12 +169,19 @@ A service container is a bag where we globally store the services that our appli
 
     <?php
 
-    //Create a DI
-    $di = new Phalcon\DI\FactoryDefault();
+    use Phalcon\DI\FactoryDefault;
 
-:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+    // ...
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+    // Create a DI
+    $di = new FactoryDefault();
+
+:doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` is a variant of Phalcon\\DI. To make things easier,
+it has registered most of the components that come with Phalcon. Thus we should not register them one by one.
+Later there will be no problem in replacing a factory service.
+
+In the next part, we register the "view" service indicating the directory where the framework will find the views files.
+As the views do not correspond to classes, they cannot be charged with an autoloader.
 
 Services can be registered in several ways, but for our tutorial we'll use an `anonymous function`_:
 
@@ -167,47 +189,67 @@ Services can be registered in several ways, but for our tutorial we'll use an `a
 
     <?php
 
-    //Setup the view component
-    $di->set('view', function(){
-        $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    // ...
+
+    // Setup the view component
+    $di->set('view', function() {
+        $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
-    
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>` to generate a hyperlink. 
+
+Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier.
+This will become important later on in this tutorial when we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`
+to generate a hyperlink.
 
 .. code-block:: php
 
     <?php
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
+    use Phalcon\Mvc\Url as UrlProvider;
+
+    // ...
+
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function(){
-        $url = new \Phalcon\Mvc\Url();
+        $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
-    });   
+    });
 
-In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+In the last part of this file, we find :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. Its purpose
+is to initialize the request environment, route the incoming request, and then dispatch any discovered actions;
+it aggregates any responses and returns them when the process is complete.
 
 .. code-block:: php
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application($di);
+    use Phalcon\Mvc\Application;
+
+    // ...
+
+    $application = new Application($di);
 
     echo $application->handle()->getContent();
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set
+ourselves a flexible MVC application in less than 30 lines of code.
 
 Creating a Controller
 ^^^^^^^^^^^^^^^^^^^^^
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
+By default Phalcon will look for a controller named "Index". It is the starting point when no controller or
+action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:
 
 .. code-block:: php
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
 
         public function indexAction()
@@ -238,7 +280,9 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
 
         public function indexAction()
@@ -260,7 +304,7 @@ Now we will change the index.phtml view file, to add a link to a new controller 
 
     echo "<h1>Hello!</h1>";
 
-    echo Phalcon\Tag::linkTo("signup", "Sign Up Here!");
+    echo $this->tag->linkTo("signup", "Sign Up Here!");
 
 The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
 
@@ -268,7 +312,11 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 
     <h1>Hello!</h1> <a href="/tutorial/signup">Sign Up Here!</a>
 
-To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows us to build HTML tags with framework conventions in mind. A more detailed article regarding HTML generation can be :doc:`found here <tags>`
+To generate the tag we use the class :doc:`\Phalcon\\Tag <../api/Phalcon_Tag>`. This is a utility class that allows
+us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI
+we use $this->tag to access it.
+
+A more detailed article regarding HTML generation can be :doc:`found here <tags>`
 
 .. figure:: ../_static/img/tutorial-2.png
     :align: center
@@ -279,7 +327,9 @@ Here is the Signup controller (app/controllers/SignupController.php):
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -293,24 +343,22 @@ The empty index action gives the clean pass to a view with the form definition (
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag; ?>
-
     <h2>Sign up using this form</h2>
 
-    <?php echo Tag::form("signup/register"); ?>
+    <?php echo $this->tag->form("signup/register"); ?>
 
      <p>
         <label for="name">Name</label>
-        <?php echo Tag::textField("name") ?>
+        <?php echo $this->tag->textField("name") ?>
      </p>
 
      <p>
         <label for="email">E-Mail</label>
-        <?php echo Tag::textField("email") ?>
+        <?php echo $this->tag->textField("email") ?>
      </p>
 
      <p>
-        <?php echo Tag::submitButton("Register") ?>
+        <?php echo $this->tag->submitButton("Register") ?>
      </p>
 
     </form>
@@ -322,7 +370,8 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in
+the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
 
@@ -334,7 +383,9 @@ Implementing that method will remove the exception:
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -372,7 +423,9 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
     <?php
 
-    class Users extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Users extends Model
     {
 
     }
@@ -385,49 +438,56 @@ In order to be able to use a database connection and subsequently access data th
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
     try {
 
-        //Register an autoloader
-        $loader = new \Phalcon\Loader();
+        // Register an autoloader
+        $loader = new Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        // Create a DI
+        $di = new FactoryDefault();
 
-        //Setup the database service
+        // Setup the database service
         $di->set('db', function(){
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-                "host" => "localhost",
+            return new DbAdapter(array(
+                "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
-                "dbname" => "test_db"
+                "dbname"   => "test_db"
             ));
         });
 
-        //Setup the view component
+        // Setup the view component
         $di->set('view', function(){
-            $view = new \Phalcon\Mvc\View();
+            $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function(){
-            $url = new \Phalcon\Mvc\Url();
+            $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });       
+        });
 
         //Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
-         echo "PhalconException: ", $e->getMessage();
+    } catch(\Exception $e) {
+         echo "Exception: ", $e->getMessage();
     }
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application.
@@ -440,7 +500,9 @@ Receiving data from the form and storing them in the table is the next step.
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -464,10 +526,9 @@ Receiving data from the form and storing them in the table is the next step.
                     echo $message->getMessage(), "<br/>";
                 }
             }
-            
+
             $this->view->disable();
         }
-
     }
 
 
@@ -487,18 +548,5 @@ This is a very simple tutorial and as you can see, it's easy to start building a
 The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
 features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
-Sample Applications
--------------------
-The following Phalcon-powered applications are also available, providing more complete examples:
-
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
-
-
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php
-.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
-.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
+

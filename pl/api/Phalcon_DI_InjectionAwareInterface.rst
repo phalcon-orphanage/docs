@@ -1,21 +1,16 @@
-Interface **Phalcon\\DI\\InjectionAwareInterface**
+Interface **Phalcon\\Di\\InjectionAwareInterface**
 ==================================================
-
-Phalcon\\DI\\InjectionAwareInterface initializer
-
 
 Methods
 -------
 
-abstract public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+abstract public  **setDI** (*unknown* $dependencyInjector)
 
-Sets the dependency injector
+...
 
 
+abstract public  **getDI** ()
 
-abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the internal dependency injector
-
+...
 
 

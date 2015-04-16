@@ -20,7 +20,7 @@ Constants
 Methods
 -------
 
-public static *string*  **camelize** (*string* $str)
+public static *string*  **camelize** (*unknown* $str)
 
 Converts strings to camelize style 
 
@@ -28,12 +28,12 @@ Converts strings to camelize style
 
     <?php
 
-    echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
+          echo Phalcon\Text::camelize('coco_bongo'); //CocoBongo
 
 
 
 
-public static *string*  **uncamelize** (*string* $str)
+public static *string*  **uncamelize** (*unknown* $str)
 
 Uncamelize strings which are camelized 
 
@@ -41,7 +41,7 @@ Uncamelize strings which are camelized
 
     <?php
 
-    echo Phalcon\Text::uncamelize('CocoBongo'); //coco_bongo
+          echo Phalcon\Text::camelize('CocoBongo'); //coco_bongo
 
 
 
@@ -60,7 +60,7 @@ Adds a number to a string or increment that number if it already is defined
 
 
 
-public static *string*  **random** (*int* $type, [*int* $length])
+public static *string*  **random** ([*unknown* $type], [*unknown* $length])
 
 Generates a random string based on the given type. Type is one of the RANDOM_* constants 
 
@@ -73,7 +73,7 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 
 
 
-public static *boolean*  **startsWith** (*string* $str, *string* $start, [*boolean* $ignoreCase])
+public static *boolean*  **startsWith** (*unknown* $str, *unknown* $start, [*unknown* $ignoreCase])
 
 Check if a string starts with a given string 
 
@@ -88,7 +88,7 @@ Check if a string starts with a given string
 
 
 
-public static *boolean*  **endsWith** (*string* $str, *string* $end, [*boolean* $ignoreCase])
+public static *boolean*  **endsWith** (*unknown* $str, *unknown* $end, [*unknown* $ignoreCase])
 
 Check if a string ends with a given string 
 
@@ -109,7 +109,7 @@ Lowercases a string, this function makes use of the mbstring extension if availa
 
 
 
-public static *string*  **upper** (*string* $str)
+public static *string*  **upper** (*unknown* $str)
 
 Uppercases a string, this function makes use of the mbstring extension if available
 

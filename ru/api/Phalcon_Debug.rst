@@ -7,31 +7,31 @@ Provides debug capabilities to Phalcon applications
 Methods
 -------
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setUri** (*string* $uri)
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setUri** (*unknown* $uri)
 
 Change the base URI for static resources
 
 
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowBackTrace** (*boolean* $showBackTrace)
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowBackTrace** (*unknown* $showBackTrace)
 
-Sets if files the exception's backtrace must be showed
+Sets if files the exception"s backtrace must be showed
 
 
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowFiles** (*boolean* $showFiles)
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowFiles** (*unknown* $showFiles)
 
 Set if files part of the backtrace must be shown in the output
 
 
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowFileFragment** (*boolean* $showFileFragment)
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowFileFragment** (*unknown* $showFileFragment)
 
 Sets if files must be completely opened and showed in the output or just the fragment related to the exception
 
 
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **listen** ([*boolean* $exceptions], [*boolean* $lowSeverity])
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **listen** ([*unknown* $exceptions], [*unknown* $lowSeverity])
 
 Listen for uncaught exceptions and unsilent notices or warnings
 
@@ -49,7 +49,13 @@ Listen for unsilent notices or warnings
 
 
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **debugVar** (*mixed* $var, [*string* $key])
+public  **halt** ()
+
+Halts the request showing a backtrace
+
+
+
+public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **debugVar** (*unknown* $varz, [*unknown* $key])
 
 Adds a variable to the debug output
 
@@ -61,19 +67,19 @@ Clears are variables added previously
 
 
 
-protected *string*  **_escapeString** ()
+protected *string*  **_escapeString** (*unknown* $value)
 
 Escapes a string with htmlentities
 
 
 
-protected *string*  **_getArrayDump** ()
+protected *string*  **_getArrayDump** (*unknown* $argument, [*unknown* $n])
 
 Produces a recursive representation of an array
 
 
 
-protected *string*  **_getVarDump** ()
+protected *string*  **_getVarDump** (*unknown* $variable)
 
 Produces an string representation of a variable
 
@@ -103,56 +109,15 @@ Returns the javascript sources
 
 
 
-protected  **showTraceItem** ()
+final protected  **showTraceItem** (*unknown* $n, *unknown* $trace)
 
 Shows a backtrace item
 
 
 
-public *boolean*  **onUncaughtException** (*\Exception* $exception)
+public *boolean*  **onUncaughtException** (*unknown* $exception)
 
 Handles uncaught exceptions
 
-
-
-public *string*  **getCharset** ()
-
-Returns the character set used to display the HTML
-
-
-
-public *\Phalcon\Debug*  **setCharset** (*string* $charset)
-
-Sets the character set used to display the HTML
-
-
-
-public *int*  **getLinesBeforeContext** ()
-
-Returns the number of lines deplayed before the error line
-
-
-
-public *\Phalcon\Debug*  **setLinesBeforeContext** (*int* $lines)
-
-Sets the number of lines deplayed before the error line
-
-
-
-public *int*  **getLinesAfterContext** ()
-
-Returns the number of lines deplayed after the error line
-
-
-
-public *\Phalcon\Debug*  **setLinesAfterContext** (*int* $lines)
-
-Sets the number of lines deplayed after the error line
-
-
-
-protected  **getFileLink** (*unknown* $file, *unknown* $line, *unknown* $format)
-
-...
 
 

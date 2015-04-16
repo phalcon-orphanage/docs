@@ -1,212 +1,133 @@
 Abstract class **Phalcon\\Image\\Adapter**
 ==========================================
 
-*implements* :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`
-
-Base class for Phalcon\\Image adapters
+Phalcon\\Image  All image adapters must use this class
 
 
 Methods
 -------
 
-public *string*  **getRealPath** ()
+public  **getImage** ()
 
-Returns the real path of the image file
-
-
-
-public *int*  **getWidth** ()
-
-Returns the width of images
+...
 
 
+public  **getRealpath** ()
 
-public *int*  **getHeight** ()
+...
 
-Returns the height of images
+
+public  **getWidth** ()
+
+Image width
 
 
 
-public *int*  **getType** ()
+public  **getHeight** ()
 
-Returns the type of images
-
-
-
-public *string*  **getMime** ()
-
-Returns the mime of images
+Image height
 
 
 
-public *resource*  **getImage** ()
+public  **getType** ()
 
-Returns the image of images
-
-
-
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master])
-
-Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.
+Image type Driver dependent
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $delta_x], [*unknown* $rigidity])
+public  **getMime** ()
+
+Image mime type
+
+
+
+public  **resize** ([*unknown* $width], [*unknown* $height], [*unknown* $master])
+
+Resize the image to the given size
+
+
+
+public  **liquidRescale** (*unknown* $width, *unknown* $height, [*unknown* $deltaX], [*unknown* $rigidity])
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **crop** (*unknown* $width, *unknown* $height, [*unknown* $offset_x], [*unknown* $offset_y])
+public  **crop** (*unknown* $width, *unknown* $height, [*unknown* $offsetX], [*unknown* $offsetY])
 
-Crop an image to the given size. Either the width or the height can be omitted and the current width or height will be used.
-
-
-
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **rotate** (*unknown* $degrees)
-
-Rotate the image by a given amount.
+Crop an image to the given size
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **flip** (*unknown* $direction)
+public  **rotate** (*unknown* $degrees)
 
-Flip the image along the horizontal or vertical axis.
-
-
-
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **sharpen** (*unknown* $amount)
-
-Sharpen the image by a given amount.
+Rotate the image by a given amount
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **reflection** ([*unknown* $height], [*unknown* $opacity], [*unknown* $fade_in])
+public  **flip** (*unknown* $direction)
 
-Add a reflection to an image. The most opaque part of the reflection will be equal to the opacity setting and fade out to full transparent. Alpha transparency is preserved.
-
-
-
-public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **watermark** (*unknown* $watermark, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity])
-
-Add a watermark to an image with a specified opacity. Alpha transparency will be preserved.
+Flip the image along the horizontal or vertical axis
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **text** (*unknown* $text, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
+public  **sharpen** (*unknown* $amount)
 
-Add a text to an image with a specified opacity.
+Sharpen the image by a given amount
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **mask** (*unknown* $mask)
+public  **reflection** (*unknown* $height, [*unknown* $opacity], [*unknown* $fadeIn])
+
+Add a reflection to an image
+
+
+
+public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity])
+
+Add a watermark to an image with a specified opacity
+
+
+
+public  **text** (*unknown* $text, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
+
+Add a text to an image with a specified opacity
+
+
+
+public  **mask** (*unknown* $watermark)
 
 Composite one image onto another
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $quality])
+public  **background** (*unknown* $color, [*unknown* $opacity])
 
-Set the background color of an image. This is only useful for images with alpha transparency.
+Set the background color of an image
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **blur** ([*unknown* $radius])
+public  **blur** (*unknown* $radius)
 
 Blur image
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **pixelate** ([*unknown* $amount])
+public  **pixelate** (*unknown* $amount)
 
 Pixelate image
 
 
 
-public *boolean*  **save** ([*unknown* $file], [*unknown* $quality])
+public  **save** ([*unknown* $file], [*unknown* $quality])
 
-Save the image. If the filename is omitted, the original image will be overwritten.
-
-
-
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $quality])
-
-Render the image and return the binary string.
+Save the image
 
 
 
-abstract protected  **_resize** (*unknown* $width, *unknown* $height)
+public  **render** ([*unknown* $ext], [*unknown* $quality])
 
-...
+Render the image and return the binary string
 
-
-abstract protected  **_liquidRescale** (*unknown* $width, *unknown* $height, *unknown* $delta_x, *unknown* $regidity)
-
-...
-
-
-abstract protected  **_crop** (*unknown* $width, *unknown* $height, *unknown* $offset_x, *unknown* $offset_y)
-
-...
-
-
-abstract protected  **_rotate** (*unknown* $degrees)
-
-...
-
-
-abstract protected  **_flip** (*unknown* $direction)
-
-...
-
-
-abstract protected  **_sharpen** (*unknown* $amount)
-
-...
-
-
-abstract protected  **_reflection** (*unknown* $height, *unknown* $opacity, *unknown* $fade_in)
-
-...
-
-
-abstract protected  **_watermark** (*unknown* $watermark, *unknown* $offset_x, *unknown* $offset_y, *unknown* $opacity)
-
-...
-
-
-abstract protected  **_text** (*unknown* $text, *unknown* $offset_x, *unknown* $offset_y, *unknown* $opacity, *unknown* $r, *unknown* $g, *unknown* $b, *unknown* $size, *unknown* $fontfile)
-
-...
-
-
-abstract protected  **_mask** (*unknown* $mask)
-
-...
-
-
-abstract protected  **_background** (*unknown* $r, *unknown* $g, *unknown* $b, *unknown* $opacity)
-
-...
-
-
-abstract protected  **_blur** (*unknown* $radius)
-
-...
-
-
-abstract protected  **_pixelate** (*unknown* $amount)
-
-...
-
-
-abstract protected  **_save** (*unknown* $file, *unknown* $quality)
-
-...
-
-
-abstract protected  **_render** (*unknown* $type, *unknown* $quality)
-
-...
 
 

@@ -3,9 +3,6 @@ Class **Phalcon\\Validation\\Exception**
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Exceptions thrown in Phalcon\\Validation\\* classes will use this class
-
-
 Methods
 -------
 

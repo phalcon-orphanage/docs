@@ -18,19 +18,25 @@ Stores the parsed annotations in APC. This adapter is suitable for production
 Methods
 -------
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*string* $key)
+public  **__construct** ([*unknown* $options])
+
+Phalcon\\Annotations\\Adapter\\Apc constructor
+
+
+
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **read** (*unknown* $key)
 
 Reads parsed annotations from APC
 
 
 
-public  **write** (*string* $key, :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>` $data)
+public  **write** (*unknown* $key, *unknown* $data)
 
 Writes parsed annotations to APC
 
 
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader) inherited from Phalcon\\Annotations\\Adapter
+public  **setReader** (*unknown* $reader) inherited from Phalcon\\Annotations\\Adapter
 
 Sets the annotations parser
 
@@ -42,31 +48,31 @@ Returns the annotation reader
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **get** (*string|object* $className) inherited from Phalcon\\Annotations\\Adapter
+public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **get** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
 
 Parses or retrieves all the annotations found in a class
 
 
 
-public *array*  **getMethods** (*string* $className) inherited from Phalcon\\Annotations\\Adapter
+public *array*  **getMethods** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
 
 Returns the annotations found in all the class' methods
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getMethod** (*string* $className, *string* $methodName) inherited from Phalcon\\Annotations\\Adapter
+public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getMethod** (*unknown* $className, *unknown* $methodName) inherited from Phalcon\\Annotations\\Adapter
 
 Returns the annotations found in a specific method
 
 
 
-public *array*  **getProperties** (*string* $className) inherited from Phalcon\\Annotations\\Adapter
+public *array*  **getProperties** (*unknown* $className) inherited from Phalcon\\Annotations\\Adapter
 
 Returns the annotations found in all the class' methods
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getProperty** (*string* $className, *string* $propertyName) inherited from Phalcon\\Annotations\\Adapter
+public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getProperty** (*unknown* $className, *unknown* $propertyName) inherited from Phalcon\\Annotations\\Adapter
 
 Returns the annotations found in a specific property
 
