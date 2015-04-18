@@ -423,3 +423,7 @@ div.related li {
     list-style: none outside none;
     color: #717171;
 }
+
+table.docutils td {
+    padding: 15px;
+}
