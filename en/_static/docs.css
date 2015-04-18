@@ -282,7 +282,7 @@ div.highlight pre {
 
 .highlight {
     padding: 20px 10px 10px;
-    border-left: 3px solid #0EC281;
+    border-left: 3px solid #94d7be;
     background: none repeat scroll 0% 0% #2B2F3E;
     color: #F6F3E8;
     font: 14px/18px "Courier New",serif;
@@ -339,21 +339,55 @@ td.second-box img {
 }
 
 td.primary-box {
-    padding: 15px 20px 10px 10px;
+    padding: 10px;
     text-align: left;
 }
 
 td.primary-box a {
-    color: #118F9E;
-    font-size: 13px;
+    color: #5d6576;
+    font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+}
+
+td.primary-box h4,
+td.primary-box h3,
+td.primary-box h3 a {
+    color: #7ccfaf;
+    text-decoration: uppercase;
+    font-size: 18px;
+}
+
+td.primary-box div.carbonad {
+    text-align: center;
+    height: 270px;
+    width: 160px;
+    margin-left: 70px;
+    background: #fff;
+    border: 1px solid #dadada;
+}
+
+td.primary-box div.carbonad a {
+    color: #70b599;
+}
+
+td.primary-box .cse table.gsc-search-box td.gsc-input, table.gsc-search-box td.gsc-input {
+    width: 200px;
+}
+
+td.primary-box span.carbonad-tag {
+    position: relative;
+    right: -30px;
+    bottom: -75px;
+    margin: 0px;
+    padding: 0px;
 }
 
 td.second-box {
     padding: 30px 15px;
     max-width: 650px;
     text-align: left;
+    padding-right: 120px;
 }
 
 a.headerlink {
@@ -381,4 +415,11 @@ p.versionchanged, blockquote.highlights {
 blockquote {
     border-left: 3px solid #0EC281;
     background: none repeat scroll 0% 0% #F2F2F2;
+}
+
+div.related li {
+    float: left;
+    padding-right: 20px;
+    list-style: none outside none;
+    color: #717171;
 }
