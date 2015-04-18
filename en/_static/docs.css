@@ -341,6 +341,7 @@ td.second-box img {
 td.primary-box {
     padding: 10px;
     text-align: left;
+    padding-left: 30px;
 }
 
 td.primary-box a {
@@ -362,7 +363,7 @@ td.primary-box div.carbonad {
     text-align: center;
     height: 270px;
     width: 160px;
-    margin-left: 70px;
+    margin-left: 50px;
     background: #fff;
     border: 1px solid #dadada;
 }
@@ -399,8 +400,9 @@ blockquote.highlights {
 }
 
 p.versionchanged, blockquote.highlights {
+    font-family: Open Sans, Helvetica, sans-serif;
     background-color: #CD4A78;
-    border-color: #D03C00;
+    border-color: #CD4A78;
     color: #FFF;
     line-height: 24px;
     padding: 10px;
@@ -410,6 +412,11 @@ p.versionchanged, blockquote.highlights {
     margin-right: 20px;
     margin-top: 10px;
     font-style: normal;
+}
+
+p.versionchanged a,
+blockquote.highlights a {
+    color: #ffffff;
 }
 
 blockquote {
@@ -424,6 +431,57 @@ div.related li {
     color: #717171;
 }
 
-table.docutils td {
-    padding: 15px;
+table.docutils td,
+table.docutils th {
+    padding: 5px;
+}
+
+table.docutils {
+    margin-bottom: 10px;
+}
+
+div.section {
+  margin-top: 10px;
+}
+
+.sample {
+    width: 330px;
+    height: 250px;
+}
+
+.sample div {
+    position: relative;
+    top: 105px;
+    left: -1px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.sample a {
+    color: #fff;
+}
+
+.sample-1 {
+    background: url('img/sample-1.png');
+}
+
+.sample-2 {
+    background: url('img/sample-2.png');
+}
+
+.sample-3 {
+    background: url('img/sample-3.png');
+}
+
+.sample-4 {
+    background: url('img/sample-4.png');
+}
+
+.sample-5 {
+    background: url('img/sample-5.png');
+}
+
+.sample-6 {
+    background: url('img/sample-6.png');
 }
