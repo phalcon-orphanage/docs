@@ -614,6 +614,9 @@ The model manager manages foreign key constraints for these relationships, the d
 integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
 it is easy to access data in related models from each record in a uniform way.
 
+有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
+
+
 单向关系（Unidirectional relationships）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
