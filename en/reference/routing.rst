@@ -13,8 +13,10 @@ you can define routes and map them to controllers/actions that you require. A ro
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Create the router
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     //Define a route
     $router->add(
@@ -49,8 +51,10 @@ create more flexible routes:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Create the router
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     //Define a route
     $router->add(
@@ -139,7 +143,9 @@ by the request. Inside the controller, those named parameters can be accessed as
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -185,7 +191,9 @@ You can access their values in the same way as before:
 
     <?php
 
-    class DocumentationController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class DocumentationController extends Controller
     {
 
         public function showAction()
@@ -251,13 +259,15 @@ It's possible define a default route that includes a module wildcard:
 
     <?php
 
-    $router = new Phalcon\Mvc\Router(false);
+    use Phalcon\Mvc\Router;
+
+    $router = new Router(false);
 
     $router->add('/:module/:controller/:action/:params', array(
-        'module' => 1,
+        'module'     => 1,
         'controller' => 2,
-        'action' => 3,
-        'params' => 4
+        'action'     => 3,
+        'params'     => 4
     ));
 
 In this case, the route always must have the module name as part of the URL. For example, the following
@@ -280,15 +290,15 @@ Or you can bind specific routes to specific modules:
     <?php
 
     $router->add("/login", array(
-        'module' => 'backend',
+        'module'     => 'backend',
         'controller' => 'login',
-        'action' => 'index',
+        'action'     => 'index',
     ));
 
     $router->add("/products/:action", array(
-        'module' => 'frontend',
+        'module'     => 'frontend',
         'controller' => 'products',
-        'action' => 1,
+        'action'     => 1,
     ));
 
 Or bind them to specific namespaces:
@@ -298,9 +308,9 @@ Or bind them to specific namespaces:
     <?php
 
     $router->add("/:namespace/login", array(
-        'namespace' => 1,
+        'namespace'  => 1,
         'controller' => 'login',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Namespaces/class names must be passed separated:
@@ -310,9 +320,9 @@ Namespaces/class names must be passed separated:
     <?php
 
     $router->add("/login", array(
-        'namespace' => 'Backend\Controllers',
+        'namespace'  => 'Backend\Controllers',
         'controller' => 'login',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 HTTP Method Restrictions
@@ -345,7 +355,7 @@ Convertions allow to freely transform the route's parameters before passing them
     $router
         ->add('/products/{slug:[a-z\-]+}', array(
             'controller' => 'products',
-            'action' => 'show'
+            'action'     => 'show'
         ))
         ->convert('slug', function($slug) {
             //Transform the slug removing the dashes
@@ -360,11 +370,14 @@ If a set of routes have common paths they can be grouped to easily maintain them
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
+    $router = new Router();
 
     //Create a group with a common module and controller
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
+    $blog = new RouterGroup(array(
+        'module'     => 'blog',
         'controller' => 'index'
     ));
 
@@ -384,7 +397,7 @@ If a set of routes have common paths they can be grouped to easily maintain them
     //This route maps to a controller different than the default
     $blog->add('/blog', array(
         'controller' => 'blog',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
     //Add the group to the router
@@ -396,13 +409,15 @@ You can move groups of routes to separate files in order to improve the organiza
 
     <?php
 
-    class BlogRoutes extends Phalcon\Mvc\Router\Group
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
+    class BlogRoutes extends RouterGroup
     {
         public function initialize()
         {
             //Default paths
             $this->setPaths(array(
-                'module' => 'blog',
+                'module'    => 'blog',
                 'namespace' => 'Blog\Controllers'
             ));
 
@@ -422,7 +437,7 @@ You can move groups of routes to separate files in order to improve the organiza
             //This route maps to a controller different than the default
             $this->add('/blog', array(
                 'controller' => 'blog',
-                'action' => 'index'
+                'action'     => 'index'
             ));
 
         }
@@ -456,8 +471,10 @@ The following example shows how to use this component in stand-alone mode:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Creating a router
-    $router = new \Phalcon\Mvc\Router();
+    $router = new Router();
 
     // Define routes here if any
     // ...
@@ -503,8 +520,8 @@ Then, using for example the component :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mv
 
     // returns /posts/2012/phalcon-1-0-released
     echo $url->get(array(
-        "for" => "show-posts",
-        "year" => "2012",
+        "for"   => "show-posts",
+        "year"  => "2012",
         "title" => "phalcon-1-0-released"
     ));
 
@@ -588,8 +605,8 @@ The following are examples of custom routes:
     $router->add('/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
         array(
             'controller' => 'api',
-            'version' => 1,
-            'format' => 4
+            'version'    => 1,
+            'format'     => 4
         )
     );
 
@@ -619,8 +636,10 @@ If you don't want use this routes as default in your application, you must creat
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     // Create the router without default routes
-    $router = new \Phalcon\Mvc\Router(false);
+    $router = new Router(false);
 
 Setting the default route
 -------------------------
@@ -633,7 +652,7 @@ in your website/application:
 
     $router->add("/", array(
         'controller' => 'index',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Not Found Paths
@@ -647,7 +666,7 @@ If none of the routes specified in the router are matched, you can define a grou
     //Set 404 paths
     $router->notFound(array(
         "controller" => "index",
-        "action" => "route404"
+        "action"     => "route404"
     ));
 
 Setting default paths
@@ -668,7 +687,7 @@ those paths they can be automatically filled by the router:
     //Using an array
     $router->setDefaults(array(
         'controller' => 'index',
-        'action' => 'index'
+        'action'     => 'index'
     ));
 
 Dealing with extra/trailing slashes
@@ -680,7 +699,9 @@ a not-found status in the dispatcher. You can set up the router to automatically
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
 
     //Remove trailing slashes automatically
     $router->removeExtraSlashes(true);
@@ -709,7 +730,7 @@ Sometimes, routes must be matched if they meet specific conditions, you can add 
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session'
     ))->beforeMatch(function($uri, $route) {
         //Check if the request was made with Ajax
@@ -741,7 +762,7 @@ And use this class instead of the anonymous function:
 
     $router->add('/get/info/{id}', array(
         'controller' => 'products',
-        'action' => 'info'
+        'action'     => 'info'
     ))->beforeMatch(array(new AjaxFilter(), 'check'));
 
 Hostname Constraints
@@ -754,9 +775,9 @@ to only match if the route also meets the hostname constraint:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('admin.company.com');
 
 Hostname can also be regular expressions:
@@ -766,9 +787,9 @@ Hostname can also be regular expressions:
     <?php
 
     $router->add('/login', array(
-        'module' => 'admin',
+        'module'     => 'admin',
         'controller' => 'session',
-        'action' => 'login'
+        'action'     => 'login'
     ))->setHostName('([a-z+]).company.com');
 
 In groups of routes you can set up a hostname constraint that apply for every route in the group:
@@ -777,9 +798,11 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 
     <?php
 
+    use Phalcon\Mvc\Router\Group as RouterGroup;
+
     //Create a group with a common module and controller
-    $blog = new \Phalcon\Mvc\Router\Group(array(
-        'module' => 'blog',
+    $blog = new RouterGroup(array(
+        'module'     => 'blog',
         'controller' => 'posts'
     ));
 
@@ -816,6 +839,10 @@ Phalcon, you can also use $_SERVER['REQUEST_URI'] if required:
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
+    ...
+
     $router->setUriSource(Router::URI_SOURCE_GET_URL); // use $_GET['_url'] (default)
     $router->setUriSource(Router::URI_SOURCE_SERVER_REQUEST_URI); // use $_SERVER['REQUEST_URI'] (default)
 
@@ -835,6 +862,8 @@ Since this component has no dependencies, you can create a file as shown below t
 
     <?php
 
+    use Phalcon\Mvc\Router;
+
     //These routes simulate real URIs
     $testRoutes = array(
         '/',
@@ -846,7 +875,7 @@ Since this component has no dependencies, you can create a file as shown below t
         '/products/show/101',
     );
 
-    $router = new Phalcon\Mvc\Router();
+    $router = new Router();
 
     //Add here your custom routes
     //...
@@ -879,10 +908,12 @@ you can write the routes directly in the controllers instead of adding them in t
 
     <?php
 
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
+
     $di['router'] = function() {
 
         //Use the annotations router
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+        $router = new RouterAnnotations(false);
 
         //Read the annotations from ProductsController if the uri starts with /api/products
         $router->addResource('Products', '/api/products');
@@ -982,10 +1013,12 @@ If routes map to controllers in modules is better use the addModuleResource meth
 
     <?php
 
+    use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
+
     $di['router'] = function() {
 
         //Use the annotations router
-        $router = new \Phalcon\Mvc\Router\Annotations(false);
+        $router = new RouterAnnotations(false);
 
         //Read the annotations from Backend\Controllers\ProductsController if the uri starts with /api/products
         $router->addModuleResource('backend', 'Products', '/api/products');
@@ -1017,16 +1050,18 @@ You need to create app/config/routes.php and add router initialization code, for
 
     <?php
 
-    $router = new \Phalcon\Mvc\Router();
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
 
     $router->add("/login", array(
         'controller' => 'login',
-        'action' => 'index',
+        'action'     => 'index',
     ));
 
     $router->add("/products/:action", array(
         'controller' => 'products',
-        'action' => 1,
+        'action'     => 1,
     ));
 
     return $router;

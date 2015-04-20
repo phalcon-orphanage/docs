@@ -3,33 +3,102 @@ Class **Phalcon\\Assets\\Collection**
 
 *implements* Countable, Iterator, Traversable
 
-Represents a collection of resources
-
-
 Methods
 -------
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **add** (:doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` $resource)
+public  **getPrefix** ()
+
+...
+
+
+public  **getLocal** ()
+
+...
+
+
+public  **getResources** ()
+
+...
+
+
+public  **getCodes** ()
+
+...
+
+
+public  **getPosition** ()
+
+...
+
+
+public  **getFilters** ()
+
+...
+
+
+public  **getAttributes** ()
+
+...
+
+
+public  **getJoin** ()
+
+...
+
+
+public  **getTargetUri** ()
+
+...
+
+
+public  **getTargetPath** ()
+
+...
+
+
+public  **getTargetLocal** ()
+
+...
+
+
+public  **getSourcePath** ()
+
+...
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **add** (*unknown* $resource)
 
 Adds a resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInline** (*unknown* $code)
+
+Adds a inline code to the collection
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
 
 Adds a CSS resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+
+Adds a inline CSS to the collection
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addJs** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
 
 Adds a javascript resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>` [] **getResources** ()
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
 
-Returns the resources as an array
+Adds a inline javascript to the collection
 
 
 
@@ -75,21 +144,9 @@ Sets the target path of the file for the filtered/join output
 
 
 
-public *string*  **getTargetPath** ()
-
-Returns the target path of the file for the filtered/join output
-
-
-
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setSourcePath** (*string* $sourcePath)
 
 Sets a base source path for all the resources in this collection
-
-
-
-public *string*  **getSourcePath** ()
-
-Returns the base source path for all the resources in this collection
 
 
 
@@ -99,21 +156,9 @@ Sets a target uri for the generated HTML
 
 
 
-public *string*  **getTargetUri** ()
-
-Returns the target uri for the generated HTML
-
-
-
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setPrefix** (*string* $prefix)
 
 Sets a common prefix for all the resources
-
-
-
-public *string*  **getPrefix** ()
-
-Returns the prefix
 
 
 
@@ -123,27 +168,9 @@ Sets if the collection uses local resources by default
 
 
 
-public *boolean*  **getLocal** ()
-
-Returns if the collection uses local resources by default
-
-
-
 public *$this*  **setAttributes** (*array* $attributes)
 
 Sets extra HTML attributes
-
-
-
-public *array*  **getAttributes** ()
-
-Returns extra HTML attributes
-
-
-
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (:doc:`Phalcon\\Assets\\FilterInterface <Phalcon_Assets_FilterInterface>` $filter)
-
-Adds a filter to the collection
 
 
 
@@ -153,39 +180,32 @@ Sets an array of filters in the collection
 
 
 
-public *array*  **getFilters** ()
-
-Returns the filters set in the collection
-
-
-
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **join** (*boolean* $join)
-
-Sets if all filtered resources in the collection must be joined in a single result file
-
-
-
-public *boolean*  **getJoin** ()
-
-Returns if all the filtered resources must be joined
-
-
-
-public *string*  **getRealTargetPath** ([*string* $basePath])
-
-Returns the complete location where the joined/filtered collection must be written
-
-
-
 public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetLocal** (*boolean* $targetLocal)
 
 Sets the target local
 
 
 
-public *boolean*  **getTargetLocal** ()
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **join** (*unknown* $join)
 
-Returns the target local
+Sets if all filtered resources in the collection must be joined in a single result file
 
+
+
+public *string*  **getRealTargetPath** (*unknown* $basePath)
+
+Returns the complete location where the joined/filtered collection must be written
+
+
+
+public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (*unknown* $filter)
+
+Adds a filter to the collection
+
+
+
+public  **__construct** ()
+
+...
 
 

@@ -1,56 +1,51 @@
 Class **Phalcon\\Queue\\Beanstalk**
 ===================================
 
-Class to access the beanstalk queue service. Partially implements the protocol version 1.2
+* Phalcon\\Queue\\Beanstalk * * Class to access the beanstalk queue service. * Partially implements the protocol version 1.2 *
 
 
 Methods
 -------
 
-public  **__construct** ([*array* $options])
+public  **__construct** ([*unknown* $options])
 
 
 
 
 
-public  **connect** ()
+public *resource*  **connect** ()
 
-...
+Makes a connection to the Beanstalkd server
 
 
-public *string|boolean*  **put** (*string* $data, [*array* $options])
+
+public  **put** (*unknown* $data, [*unknown* $options])
 
 Inserts jobs into the queue
 
 
 
-public *boolean|\Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
+public *boolean|Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
 
 Reserves a job in the queue
 
 
 
-public *string|boolean*  **choose** (*string* $tube)
+public *string|boolean*  **choose** (*unknown* $tube)
 
-Change the active tube. By default the tube is 'default'
-
-
-
-public *string|boolean*  **watch** (*string* $tube)
-
-Change the active tube. By default the tube is 'default'
+Change the active tube. By default the tube is "default"
 
 
 
-public *boolean|\Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
+public *string|boolean*  **watch** (*unknown* $tube)
+
+Change the active tube. By default the tube is "default"
+
+
+
+public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
 
 Inspect the next ready job.
-
-
-
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekDelayed** ()
-
-Return the delayed job with the shortest delay left
 
 
 
@@ -60,7 +55,7 @@ Return the next job in the list of buried jobs
 
 
 
-protected *array*  **readStatus** ()
+final public *array*  **readStatus** ()
 
 Reads the latest status from the Beanstalkd server
 
@@ -72,7 +67,7 @@ Reads a packet from the socket. Prior to reading from the socket will check for 
 
 
 
-protected *integer|boolean*  **write** ()
+protected *integer|boolean*  **write** (*unknown* $data)
 
 Writes data to the socket. Performs a connection if none is available
 
@@ -82,15 +77,5 @@ public *boolean*  **disconnect** ()
 
 Closes the connection to the beanstalk server.
 
-
-
-public  **__sleep** ()
-
-...
-
-
-public  **__wakeup** ()
-
-...
 
 

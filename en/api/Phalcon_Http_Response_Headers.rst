@@ -9,25 +9,25 @@ This class is a bag to manage the response headers
 Methods
 -------
 
-public  **set** (*string* $name, *string* $value)
+public  **set** (*unknown* $name, *unknown* $value)
 
 Sets a header to be sent at the end of the request
 
 
 
-public *string*  **get** (*string* $name)
+public *string*  **get** (*unknown* $name)
 
 Gets a header value from the internal bag
 
 
 
-public  **setRaw** (*string* $header)
+public  **setRaw** (*unknown* $header)
 
 Sets a raw header to be sent at the end of the request
 
 
 
-public  **remove** (*unknown* $header_index)
+public  **remove** (*unknown* $header)
 
 Removes a header to be sent at the end of the request
 
@@ -51,7 +51,7 @@ Returns the current headers as an array
 
 
 
-public static :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **__set_state** (*array* $data)
+public static :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **__set_state** (*unknown* $data)
 
 Restore a Phalcon\\Http\\Response\\Headers object
 

@@ -3,9 +3,6 @@ Class **Phalcon\\Cache\\Exception**
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Exceptions thrown in Phalcon\\Cache will use this class
-
-
 Methods
 -------
 

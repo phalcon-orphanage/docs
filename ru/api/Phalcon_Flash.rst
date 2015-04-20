@@ -15,31 +15,31 @@ Shows HTML notifications related to different circumstances. Classes can be styl
 Methods
 -------
 
-public  **__construct** ([*array* $cssClasses])
+public  **__construct** ([*unknown* $cssClasses])
 
 Phalcon\\Flash constructor
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush)
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*unknown* $implicitFlush)
 
 Set whether the output must be implictly flushed to the output or returned as string
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml)
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*unknown* $automaticHtml)
 
 Set if the output must be implictily formatted with HTML
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses)
+public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*unknown* $cssClasses)
 
 Set an array with CSS classes to format the messages
 
 
 
-public *string*  **error** (*string* $message)
+public *string*  **error** (*unknown* $message)
 
 Shows a HTML error message 
 
@@ -52,7 +52,7 @@ Shows a HTML error message
 
 
 
-public *string*  **notice** (*string* $message)
+public *string*  **notice** (*unknown* $message)
 
 Shows a HTML notice/information message 
 
@@ -65,7 +65,7 @@ Shows a HTML notice/information message
 
 
 
-public *string*  **success** (*string* $message)
+public *string*  **success** (*unknown* $message)
 
 Shows a HTML success message 
 
@@ -78,7 +78,7 @@ Shows a HTML success message
 
 
 
-public *string*  **warning** (*string* $message)
+public *string*  **warning** (*unknown* $message)
 
 Shows a HTML warning message 
 
@@ -91,7 +91,7 @@ Shows a HTML warning message
 
 
 
-public  **outputMessage** (*string* $type, *string* $message)
+public  **outputMessage** (*unknown* $type, *unknown* $message)
 
 Outputs a message formatting it with HTML 
 
@@ -99,7 +99,7 @@ Outputs a message formatting it with HTML
 
     <?php
 
-     $flash->outputMessage('error', $message);
+     $flash->outputMessage('error', message);
 
 
 

@@ -1,21 +1,31 @@
 Interface **Phalcon\\Paginator\\AdapterInterface**
 ==================================================
 
-Phalcon\\Paginator\\AdapterInterface initializer
-
-
 Methods
 -------
 
-abstract public  **setCurrentPage** (*int* $page)
+abstract public  **__construct** (*unknown* $config)
 
-Set the current page number
+...
 
 
+abstract public  **setCurrentPage** (*unknown* $page)
 
-abstract public *stdClass*  **getPaginate** ()
+...
 
-Returns a slice of the resultset to show in the pagination
 
+abstract public  **getPaginate** ()
+
+...
+
+
+abstract public  **setLimit** (*unknown* $limit)
+
+...
+
+
+abstract public  **getLimit** ()
+
+...
 
 

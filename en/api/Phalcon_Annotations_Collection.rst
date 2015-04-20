@@ -25,7 +25,7 @@ Represents a collection of annotations. This class allows to traverse a group of
 Methods
 -------
 
-public  **__construct** ([*array* $reflectionData])
+public  **__construct** ([*unknown* $reflectionData])
 
 Phalcon\\Annotations\\Collection constructor
 
@@ -73,19 +73,19 @@ Returns the internal annotations as an array
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **get** (*string* $name)
+public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **get** (*unknown* $name)
 
 Returns the first annotation that match a name
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` [] **getAll** (*string* $name)
+public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` [] **getAll** (*unknown* $name)
 
 Returns all the annotations that match a name
 
 
 
-public *boolean*  **has** (*string* $name)
+public *boolean*  **has** (*unknown* $name)
 
 Check if an annotation exists in a collection
 

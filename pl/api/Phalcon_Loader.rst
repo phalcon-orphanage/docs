@@ -10,7 +10,7 @@ This component helps to load your project classes automatically based on some co
     <?php
 
      //Creates the autoloader
-     $loader = new Phalcon\Loader();
+     $loader = new Loader();
     
      //Register some namespaces
      $loader->registerNamespaces(array(
@@ -36,7 +36,7 @@ Phalcon\\Loader constructor
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the events manager
 
@@ -48,7 +48,7 @@ Returns the internal event manager
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*array* $extensions)
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **setExtensions** (*unknown* $extensions)
 
 Sets an array of extensions that the loader must try in each attempt to locate the file
 
@@ -60,19 +60,19 @@ Return file extensions registered in the loader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*array* $namespaces, [*boolean* $merge])
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerNamespaces** (*unknown* $namespaces, [*unknown* $merge])
 
 Register namespaces and their related directories
 
 
 
-public *array*  **getNamespaces** ()
+public  **getNamespaces** ()
 
 Return current namespaces registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*array* $prefixes, [*boolean* $merge])
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerPrefixes** (*unknown* $prefixes, [*unknown* $merge])
 
 Register directories on which "not found" classes could be found
 
@@ -84,7 +84,7 @@ Return current prefixes registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories, [*boolean* $merge])
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*unknown* $directories, [*unknown* $merge])
 
 Register directories on which "not found" classes could be found
 
@@ -96,7 +96,7 @@ Return current directories registered in the autoloader
 
 
 
-public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*array* $classes, [*boolean* $merge])
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerClasses** (*unknown* $classes, [*unknown* $merge])
 
 Register classes and their locations
 
@@ -120,7 +120,7 @@ Unregister the autoload method
 
 
 
-public *boolean*  **autoLoad** (*string* $className)
+public *boolean*  **autoLoad** (*unknown* $className)
 
 Makes the work of autoload registered classes
 

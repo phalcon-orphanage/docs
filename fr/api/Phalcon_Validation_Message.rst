@@ -1,19 +1,21 @@
 Class **Phalcon\\Validation\\Message**
 ======================================
 
+*implements* :doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>`
+
 Encapsulates validation info generated in the validation process
 
 
 Methods
 -------
 
-public  **__construct** (*string* $message, [*string* $field], [*string* $type], [*int* $code])
+public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type])
 
 Phalcon\\Validation\\Message constructor
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setType** (*string* $type)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setType** (*unknown* $type)
 
 Sets message type
 
@@ -25,19 +27,7 @@ Returns message type
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setCode** (*string* $code)
-
-Sets message code
-
-
-
-public *string*  **getCode** ()
-
-Returns message code
-
-
-
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setMessage** (*string* $message)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setMessage** (*unknown* $message)
 
 Sets verbose message
 
@@ -49,7 +39,7 @@ Returns verbose message
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setField** (*string* $field)
+public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **setField** (*unknown* $field)
 
 Sets field name related to message
 
@@ -67,7 +57,7 @@ Magic __toString method returns verbose message
 
 
 
-public static :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **__set_state** (*array* $message)
+public static :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **__set_state** (*unknown* $message)
 
 Magic __set_state helps to recover messsages from serialization
 

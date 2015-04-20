@@ -1,81 +1,76 @@
 Interface **Phalcon\\Mvc\\Router\\RouteInterface**
 ==================================================
 
-Phalcon\\Mvc\\Router\\RouteInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **compilePattern** (*string* $pattern)
+abstract public  **__construct** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
-
-
-
-abstract public  **via** (*string|array* $httpMethods)
-
-Set one or more HTTP methods that constraint the matching of the route
+...
 
 
+abstract public  **compilePattern** (*unknown* $pattern)
 
-abstract public  **reConfigure** (*string* $pattern, [*array* $paths])
-
-Reconfigure the route adding a new pattern and a set of paths
-
+...
 
 
-abstract public *string*  **getName** ()
+abstract public  **via** (*unknown* $httpMethods)
 
-Returns the route's name
-
-
-
-abstract public  **setName** (*string* $name)
-
-Sets the route's name
+...
 
 
+abstract public  **reConfigure** (*unknown* $pattern, [*unknown* $paths])
 
-abstract public  **setHttpMethods** (*string|array* $httpMethods)
-
-Sets a set of HTTP methods that constraint the matching of the route
-
+...
 
 
-abstract public *string*  **getRouteId** ()
+abstract public  **getName** ()
 
-Returns the route's id
-
-
-
-abstract public *string*  **getPattern** ()
-
-Returns the route's pattern
+...
 
 
+abstract public  **setName** (*unknown* $name)
 
-abstract public *string*  **getCompiledPattern** ()
-
-Returns the route's pattern
-
+...
 
 
-abstract public *array*  **getPaths** ()
+abstract public  **setHttpMethods** (*unknown* $httpMethods)
 
-Returns the paths
+...
 
 
+abstract public  **getRouteId** ()
 
-abstract public *string|array*  **getHttpMethods** ()
+...
 
-Returns the HTTP methods that constraint matching the route
 
+abstract public  **getPattern** ()
+
+...
+
+
+abstract public  **getCompiledPattern** ()
+
+...
+
+
+abstract public  **getPaths** ()
+
+...
+
+
+abstract public  **getReversedPaths** ()
+
+...
+
+
+abstract public  **getHttpMethods** ()
+
+...
 
 
 abstract public static  **reset** ()
 
-Resets the internal route id generator
-
+...
 
 

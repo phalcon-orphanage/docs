@@ -1,21 +1,26 @@
 Interface **Phalcon\\Acl\\RoleInterface**
 =========================================
 
-Phalcon\\Acl\\RoleInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **getName** ()
+abstract public  **__construct** (*unknown* $name, [*unknown* $description])
 
-Returns the role name
+...
 
 
+abstract public  **getName** ()
 
-abstract public *string*  **getDescription** ()
+...
 
-Returns role description
 
+abstract public  **getDescription** ()
+
+...
+
+
+abstract public  **__toString** ()
+
+...
 
 

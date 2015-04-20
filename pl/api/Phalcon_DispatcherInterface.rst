@@ -1,87 +1,81 @@
 Interface **Phalcon\\DispatcherInterface**
 ==========================================
 
-Phalcon\\DispatcherInterface initializer
-
-
 Methods
 -------
 
-abstract public  **setActionSuffix** (*string* $actionSuffix)
+abstract public  **setActionSuffix** (*unknown* $actionSuffix)
 
-Sets the default action suffix
-
-
-
-abstract public  **setDefaultNamespace** (*string* $namespace)
-
-Sets the default namespace
+...
 
 
+abstract public  **setDefaultNamespace** (*unknown* $defaultNamespace)
 
-abstract public  **setDefaultAction** (*string* $actionName)
-
-Sets the default action name
-
+...
 
 
-abstract public  **setActionName** (*string* $actionName)
+abstract public  **setDefaultAction** (*unknown* $actionName)
 
-Sets the action name to be dispatched
-
-
-
-abstract public *string*  **getActionName** ()
-
-Gets last dispatched action name
+...
 
 
+abstract public  **setNamespaceName** (*unknown* $namespaceName)
 
-abstract public  **setParams** (*array* $params)
-
-Sets action params to be dispatched
-
+...
 
 
-abstract public *array*  **getParams** ()
+abstract public  **setModuleName** (*unknown* $moduleName)
 
-Gets action params
-
-
-
-abstract public  **setParam** (*mixed* $param, *mixed* $value)
-
-Set a param by its name or numeric index
+...
 
 
+abstract public  **setActionName** (*unknown* $actionName)
 
-abstract public *mixed*  **getParam** (*mixed* $param, [*string|array* $filters])
-
-Gets a param by its name or numeric index
-
+...
 
 
-abstract public *boolean*  **isFinished** ()
+abstract public  **getActionName** ()
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach
-
-
-
-abstract public *mixed*  **getReturnedValue** ()
-
-Returns value returned by the lastest dispatched action
+...
 
 
+abstract public  **setParams** (*unknown* $params)
 
-abstract public *object*  **dispatch** ()
-
-Dispatches a handle action taking into account the routing parameters
-
+...
 
 
-abstract public  **forward** (*array* $forward)
+abstract public  **getParams** ()
 
-Forwards the execution flow to another controller/action
+...
 
+
+abstract public  **setParam** (*unknown* $param, *unknown* $value)
+
+...
+
+
+abstract public  **getParam** (*unknown* $param, [*unknown* $filters])
+
+...
+
+
+abstract public  **isFinished** ()
+
+...
+
+
+abstract public  **getReturnedValue** ()
+
+...
+
+
+abstract public  **dispatch** ()
+
+...
+
+
+abstract public  **forward** (*unknown* $forward)
+
+...
 
 

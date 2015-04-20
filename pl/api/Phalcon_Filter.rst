@@ -9,7 +9,7 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 
     <?php
 
-    $filter = new Phalcon\Filter();
+    $filter = new \Phalcon\Filter();
     $filter->sanitize("some(one)@exa\\mple.com", "email"); // returns "someone@example.com"
     $filter->sanitize("hello<<", "string"); // returns "hello"
     $filter->sanitize("!100a019", "int"); // returns "100019"
@@ -20,19 +20,19 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 Methods
 -------
 
-public :doc:`Phalcon\\Filter <Phalcon_Filter>`  **add** (*string* $name, *callable* $handler)
+public :doc:`Phalcon\\Filter <Phalcon_Filter>`  **add** (*unknown* $name, *unknown* $handler)
 
 Adds a user-defined filter
 
 
 
-public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)
+public *mixed*  **sanitize** (*unknown* $value, *unknown* $filters, [*unknown* $noRecursive])
 
 Sanitizes a value with a specified single or set of filters
 
 
 
-protected *mixed*  **_sanitize** ()
+protected *mixed*  **_sanitize** (*mixed* $value, *string* $filter)
 
 Internal sanitize wrapper to filter_var
 

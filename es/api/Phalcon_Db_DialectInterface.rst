@@ -1,201 +1,146 @@
 Interface **Phalcon\\Db\\DialectInterface**
 ===========================================
 
-Phalcon\\Db\\DialectInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **limit** (*string* $sqlQuery, *int* $number)
+abstract public  **limit** (*unknown* $sqlQuery, *unknown* $number)
 
-Generates the SQL for LIMIT clause
+...
 
 
+abstract public  **forUpdate** (*unknown* $sqlQuery)
 
-abstract public *string*  **forUpdate** (*string* $sqlQuery)
+...
 
-Returns a SQL modified with a FOR UPDATE clause
 
+abstract public  **sharedLock** (*unknown* $sqlQuery)
 
+...
 
-abstract public *string*  **sharedLock** (*string* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+abstract public  **select** (*unknown* $definition)
 
+...
 
 
-abstract public *string*  **select** (*array* $definition)
+abstract public  **getColumnList** (*unknown* $columnList)
 
-Builds a SELECT statement
+...
 
 
+abstract public  **getColumnDefinition** (*unknown* $column)
 
-abstract public *string*  **getColumnList** (*array* $columnList)
+...
 
-Gets a list of columns
 
+abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
+...
 
-abstract public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
 
-Gets the column name in MySQL
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
+...
 
 
-abstract public *string*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+abstract public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
 
-Generates SQL to add a column to a table
+...
 
 
+abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
-abstract public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+...
 
-Generates SQL to modify a column in a table
 
+abstract public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
 
+...
 
-abstract public *string*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
 
-Generates SQL to delete a column from a table
+abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
+...
 
 
-abstract public *string*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+abstract public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
 
-Generates SQL to add an index to a table
+...
 
 
+abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
 
-abstract public *string*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+...
 
-Generates SQL to delete an index from a table
 
+abstract public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
 
+...
 
-abstract public *string*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
-Generates SQL to add the primary key to a table
+abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
 
+...
 
 
-abstract public *string*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+abstract public  **dropTable** (*unknown* $tableName, *unknown* $schemaName)
 
-Generates SQL to delete primary key from a table
+...
 
 
+abstract public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
 
-abstract public *string*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+...
 
-Generates SQL to add an index to a table
 
+abstract public  **describeColumns** (*unknown* $table, [*unknown* $schema])
 
+...
 
-abstract public *string*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
 
-Generates SQL to delete a foreign key from a table
+abstract public  **listTables** ([*unknown* $schemaName])
 
+...
 
 
-abstract public *string*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+abstract public  **describeIndexes** (*unknown* $table, [*unknown* $schema])
 
-Generates SQL to create a table
+...
 
 
+abstract public  **describeReferences** (*unknown* $table, [*unknown* $schema])
 
-abstract public *string*  **dropTable** (*string* $tableName, *string* $schemaName)
+...
 
-Generates SQL to drop a table
 
+abstract public  **tableOptions** (*unknown* $table, [*unknown* $schema])
 
+...
 
-abstract public *string*  **createView** (*string* $viewName, *array* $definition, *string* $schemaName)
 
-Generates SQL to create a view
+abstract public  **supportsSavepoints** ()
 
+...
 
 
-abstract public *string*  **dropView** (*string* $viewName, *string* $schemaName, [*unknown* $ifExists])
+abstract public  **supportsReleaseSavepoints** ()
 
-Generates SQL to drop a view
+...
 
 
+abstract public  **createSavepoint** (*unknown* $name)
 
-abstract public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
+...
 
-Generates SQL checking for the existence of a schema.table
 
+abstract public  **releaseSavepoint** (*unknown* $name)
 
+...
 
-abstract public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+abstract public  **rollbackSavepoint** (*unknown* $name)
 
-
-
-abstract public *string*  **describeColumns** (*string* $table, [*string* $schema])
-
-Generates SQL to describe a table
-
-
-
-abstract public *array*  **listTables** ([*string* $schemaName])
-
-List all tables on database
-
-
-
-abstract public *array*  **listViews** ([*string* $schemaName])
-
-List all views on database
-
-
-
-abstract public *string*  **describeIndexes** (*string* $table, [*string* $schema])
-
-Generates SQL to query indexes on a table
-
-
-
-abstract public *string*  **describeReferences** (*string* $table, [*string* $schema])
-
-Generates SQL to query foreign keys on a table
-
-
-
-abstract public *string*  **tableOptions** (*string* $table, [*string* $schema])
-
-Generates the SQL to describe the table creation options
-
-
-
-abstract public *boolean*  **supportsSavepoints** ()
-
-Checks whether the platform supports savepoints
-
-
-
-abstract public *boolean*  **supportsReleaseSavepoints** ()
-
-Checks whether the platform supports releasing savepoints.
-
-
-
-abstract public *string*  **createSavepoint** (*string* $name)
-
-Generate SQL to create a new savepoint
-
-
-
-abstract public *string*  **releaseSavepoint** (*string* $name)
-
-Generate SQL to release a savepoint
-
-
-
-abstract public *string*  **rollbackSavepoint** (*string* $name)
-
-Generate SQL to rollback a savepoint
-
+...
 
 

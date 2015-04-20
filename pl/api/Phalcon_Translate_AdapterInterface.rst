@@ -1,21 +1,21 @@
 Interface **Phalcon\\Translate\\AdapterInterface**
 ==================================================
 
-Phalcon\\Translate\\AdapterInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **query** (*string* $index, [*array* $placeholders])
+abstract public  **t** (*unknown* $translateKey, [*unknown* $placeholders])
 
-Returns the translation related to the given key
+...
 
 
+abstract public  **query** (*unknown* $index, [*unknown* $placeholders])
 
-abstract public *bool*  **exists** (*string* $index)
+...
 
-Check whether is defined a translation key in the internal array
 
+abstract public  **exists** (*unknown* $index)
+
+...
 
 

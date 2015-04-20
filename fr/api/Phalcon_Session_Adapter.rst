@@ -1,23 +1,16 @@
 Abstract class **Phalcon\\Session\\Adapter**
 ============================================
 
-*implements* :doc:`Phalcon\\Session\\AdapterInterface <Phalcon_Session_AdapterInterface>`, Countable, IteratorAggregate, Traversable, ArrayAccess
-
 Base class for Phalcon\\Session adapters
 
 
 Methods
 -------
 
-public  **__construct** ([*array* $options])
+public  **__construct** ([*unknown* $options])
 
 Phalcon\\Session\\Adapter constructor
 
-
-
-public  **__destruct** ()
-
-...
 
 
 public *boolean*  **start** ()
@@ -26,7 +19,7 @@ Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*array* $options)
+public  **setOptions** (*unknown* $options)
 
 Sets session's options 
 
@@ -34,7 +27,7 @@ Sets session's options
 
     <?php
 
-    $session->setOptions(array(
+    session->setOptions(array(
     	'uniqueId' => 'my-private-app'
     ));
 
@@ -47,13 +40,13 @@ Get internal options
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
+public *mixed*  **get** (*unknown* $index, [*unknown* $defaultValue], [*unknown* $remove])
 
 Gets a session variable from an application context
 
 
 
-public  **set** (*string* $index, *string* $value)
+public  **set** (*unknown* $index, *unknown* $value)
 
 Sets a session variable in an application context 
 
@@ -61,12 +54,12 @@ Sets a session variable in an application context
 
     <?php
 
-    $session->set('auth', 'yes');
+    session->set('auth', 'yes');
 
 
 
 
-public *boolean*  **has** (*string* $index)
+public  **has** (*unknown* $index)
 
 Check whether a session variable is set in an application context 
 
@@ -79,7 +72,7 @@ Check whether a session variable is set in an application context
 
 
 
-public  **remove** (*string* $index)
+public  **remove** (*unknown* $index)
 
 Removes a session variable from an application context 
 
@@ -92,7 +85,7 @@ Removes a session variable from an application context
 
 
 
-public *string*  **getId** ()
+public  **getId** ()
 
 Returns active session id 
 
@@ -105,7 +98,20 @@ Returns active session id
 
 
 
-public *boolean*  **isStarted** ()
+public  **setId** (*unknown* $id)
+
+Set the current session id 
+
+.. code-block:: php
+
+    <?php
+
+    $session->setId($id);
+
+
+
+
+public  **isStarted** ()
 
 Check whether the session has been started 
 
@@ -118,7 +124,7 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** ([*unknown* $session_id])
+public  **destroy** ()
 
 Destroys the active session 
 
@@ -126,71 +132,32 @@ Destroys the active session
 
     <?php
 
-    var_dump($session->destroy());
+    var_dump(session->destroy());
 
 
 
 
-public  **__get** (*unknown* $property)
+public *mixed*  **__get** (*unknown* $index)
 
-...
-
-
-public  **__set** (*unknown* $property, *unknown* $value)
-
-...
+Alias: Gets a session variable from an application context
 
 
-public  **__isset** (*unknown* $property)
 
-...
+public  **__set** (*unknown* $index, *unknown* $value)
 
-
-public  **__unset** (*unknown* $property)
-
-...
+Alias: Sets a session variable in an application context
 
 
-public  **offsetGet** (*unknown* $property)
 
-...
+public  **__isset** (*unknown* $index)
 
-
-public  **offsetSet** (*unknown* $property, *unknown* $value)
-
-...
+Alias: Check whether a session variable is set in an application context
 
 
-public  **offsetExists** (*unknown* $property)
 
-...
+public  **__unset** (*unknown* $index)
 
-
-public  **offsetUnset** (*unknown* $property)
-
-...
-
-
-public  **count** ()
-
-...
-
-
-public  **getIterator** ()
-
-...
-
-
-public  **setId** (*unknown* $sid)
-
-Set the current session id 
-
-.. code-block:: php
-
-    <?php
-
-    $session->setId($id);
-
+Alias: Removes a session variable from an application context
 
 
 

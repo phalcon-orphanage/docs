@@ -19,7 +19,9 @@ You can easily add resources to these collections like follows:
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
@@ -82,7 +84,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
 .. code-block:: php
 
     <?php
-    
+
     public function indexAction()
     {
 
@@ -91,7 +93,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
             ->addCss('css/style.css', true);
     }
-    
+
 Collections
 -----------
 Collections groups resources of the same type, the assets manager implicitly creates two collections: css and js.
@@ -146,7 +148,7 @@ Volt syntax:
               {{ assets.outputJs('footer') }}
         </body>
     <html>
-    
+
 Prefixes
 --------
 Collections can be URL-prefixed, this allows to easily change from a server to other at any moment:
@@ -362,8 +364,8 @@ Usage:
 
     //Add/Enable the YUI compressor filter in the collection
     $css->addFilter(new CssYUICompressor(array(
-         'java-bin' => '/usr/local/bin/java',
-         'yui' => '/some/path/yuicompressor-x.y.z.jar',
+         'java-bin'      => '/usr/local/bin/java',
+         'yui'           => '/some/path/yuicompressor-x.y.z.jar',
          'extra-options' => '--charset utf8'
     )));
 
@@ -376,8 +378,10 @@ You can override this method or print the resources manually in the following wa
 
     <?php
 
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/

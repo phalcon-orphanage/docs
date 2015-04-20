@@ -17,17 +17,17 @@ This class represents the status returned by a PHQL statement like INSERT, UPDAT
        'year' => 1959
     ));
     
-     //Check if the update was successful
-     if ($status->success() == true) {
+    \//Check if the update was successful
+    if ($status->success() == true) {
        echo 'OK';
-     }
+    }
 
 
 
 Methods
 -------
 
-public  **__construct** (*boolean* $success, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **__construct** (*unknown* $success, [*unknown* $model])
 
 
 
@@ -41,7 +41,7 @@ Returns the model that executed the action
 
 public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
 
-Returns the messages produced by a failed operation
+Returns the messages produced because of a failed operation
 
 
 

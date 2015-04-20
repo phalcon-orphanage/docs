@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 
 *implements* Serializable, ArrayAccess, Countable, SeekableIterator, Traversable, Iterator, :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`
 
-Simple resultsets only contains complete objects. This class builds every complete object as it is required
+Simple resultsets only contains a complete objects This class builds every complete object as it is required
 
 
 Constants
@@ -24,7 +24,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*array* $columnMap, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, :doc:`Phalcon\\Db\\Result\\Pdo <Phalcon_Db_Result_Pdo>` $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache], [*boolean* $keepSnapshots])
+public  **__construct** (*unknown* $columnMap, *unknown* $model, *unknown* $result, [*unknown* $cache], [*unknown* $keepSnapshots])
 
 Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
@@ -32,13 +32,13 @@ Phalcon\\Mvc\\Model\\Resultset\\Simple constructor
 
 public *boolean*  **valid** ()
 
-Check whether the internal resource has rows to fetch
+Check whether internal resource has rows to fetch
 
 
 
-public *array*  **toArray** ([*boolean* $renameColumns])
+public *array*  **toArray** ([*unknown* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than it currently does. Exporting the resultset to an array couldn't be faster with a large number of records
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
 
 
 
@@ -48,9 +48,9 @@ Serializing a resultset will dump all related rows into a big array
 
 
 
-public  **unserialize** ([*unknown* $serialized])
+public  **unserialize** (*unknown* $data)
 
-Unserializing a resultset only works on the rows present in the saved state
+Unserializing a resultset will allow to only works on the rows present in the saved state
 
 
 
@@ -66,45 +66,45 @@ Gets pointer number of active row in the resultset
 
 
 
-public  **rewind** () inherited from Phalcon\\Mvc\\Model\\Resultset
+final public  **rewind** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Rewinds resultset to its beginning
 
 
 
-public  **seek** (*int* $position) inherited from Phalcon\\Mvc\\Model\\Resultset
+final public  **seek** (*unknown* $position) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Changes internal pointer to a specific position in the resultset
 
 
 
-public *int*  **count** () inherited from Phalcon\\Mvc\\Model\\Resultset
+final public *int*  **count** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **offsetExists** (*unknown* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*unknown* $index) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*unknown* $property, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*unknown* $property) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetUnset** (*unknown* $offset) inherited from Phalcon\\Mvc\\Model\\Resultset
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
@@ -114,19 +114,19 @@ Returns the internal type of data retrieval that the resultset is using
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` |boolean **getFirst** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Get first row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** () inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` | boolean **getLast** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Get last row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*boolean* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*unknown* $isFresh) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Set if the resultset is fresh or an old one cached
 
@@ -138,7 +138,7 @@ Tell if the resultset if fresh or an old one cached
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*int* $hydrateMode) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*unknown* $hydrateMode) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Sets the hydration mode in the resultset
 
@@ -156,7 +156,7 @@ Returns the associated cache for the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** () inherited from Phalcon\\Mvc\\Model\\Resultset
+final public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** () inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Returns current row in the resultset
 
@@ -168,13 +168,19 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **delete** ([*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **update** (*unknown* $data, [*unknown* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+
+Updates every record in the resultset
+
+
+
+public *boolean*  **delete** ([*unknown* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*unknown* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Filters a resultset returning only those the developer requires 
 

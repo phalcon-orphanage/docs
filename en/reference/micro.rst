@@ -8,7 +8,9 @@ prototypes in a practical way.
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -24,7 +26,9 @@ Creating a Micro Application
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
 Defining routes
 ---------------
@@ -237,9 +241,9 @@ by this way the "url" service can produce the corresponding URL:
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(
-            'for' => 'show-post',
+            'for'   => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year' => 2012
+            'year'  => 2012
         )), '">Show the post</a>';
 
     });
@@ -254,9 +258,9 @@ can create outside the application a container to manipulate its services:
 
     <?php
 
-    use Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Micro,
-        Phalcon\Config\Adapter\Ini as IniConfig;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
 
@@ -283,18 +287,18 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
     $app = new Micro();
 
     //Setup the database service
     $app['db'] = function() {
         return new MysqlAdapter(array(
-            "host" => "localhost",
+            "host"     => "localhost",
             "username" => "root",
             "password" => "secret",
-            "dbname" => "test_db"
+            "dbname"   => "test_db"
         ));
     };
 
@@ -463,10 +467,10 @@ Code for middlewares can be reused using separate classes:
         public function call($application)
         {
 
-            $cache = $application['cache'];
+            $cache  = $application['cache'];
             $router = $application['router'];
 
-            $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+            $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
             //Check if the request is cached
             if ($cache->exists($key)) {
@@ -531,7 +535,9 @@ The controller 'PostsController' might look like this:
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function index()
@@ -564,8 +570,8 @@ When responses are returned by handlers they are automatically sent by the appli
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Http\Response;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
@@ -602,11 +608,31 @@ Rendering Views
 
         // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render('products/show', array(
-            'id' => 100,
+            'id'   => 100,
             'name' => 'Artichoke'
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function() {
+        throw new \Exception("An error");
+    });
+
+    $app->error(function($exception) {
+        echo "An error has occurred";
+    });
+
+If the handler returns "false" the exception is stopped.
 
 Related Sources
 ---------------

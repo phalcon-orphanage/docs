@@ -9,15 +9,17 @@ Allows to cache output fragments captured with ob_* functions
 
     <?php
 
+     <?php
+    
      //Create an Output frontend. Cache the files for 2 days
-     $frontCache = new Phalcon\Cache\Frontend\Output(array(
+     $frontCache = new \Phalcon\Cache\Frontend\Output(array(
        "lifetime" => 172800
      ));
     
      // Create the component that will cache from the "Output" to a "File" backend
      // Set the cache file directory - it's important to keep the "/" at the end of
      // the value for the folder
-     $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+     $cache = new \Phalcon\Cache\Backend\File($frontCache, array(
          "cacheDir" => "../app/cache/"
      ));
     
@@ -53,7 +55,7 @@ Allows to cache output fragments captured with ob_* functions
 Methods
 -------
 
-public  **__construct** ([*array* $frontendOptions])
+public  **__construct** ([*unknown* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Output constructor
 
@@ -61,7 +63,7 @@ Phalcon\\Cache\\Frontend\\Output constructor
 
 public *integer*  **getLifetime** ()
 
-Returns cache lifetime
+Returns the cache lifetime
 
 
 
@@ -73,7 +75,7 @@ Check whether if frontend is buffering output
 
 public  **start** ()
 
-Starts output frontend
+Starts output frontend. Currently, does nothing
 
 
 
@@ -89,15 +91,15 @@ Stops output frontend
 
 
 
-public *mixed*  **beforeStore** (*mixed* $data)
+public *string*  **beforeStore** (*unknown* $data)
 
-Prepare data to be stored
+Serializes data before storing them
 
 
 
-public *mixed*  **afterRetrieve** (*mixed* $data)
+public *mixed*  **afterRetrieve** (*unknown* $data)
 
-Prepares data to be retrieved to user
+Unserializes data after retrieval
 
 
 

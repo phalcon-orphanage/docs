@@ -9,7 +9,7 @@ Provides encryption facilities to phalcon applications
 
     <?php
 
-    $crypt = new Phalcon\Crypt();
+    $crypt = new \Phalcon\Crypt();
     
     $key = 'le password';
     $text = 'This is a secret text';
@@ -40,7 +40,13 @@ Constants
 Methods
 -------
 
-public *Phalcon\\Encrypt*  **setCipher** (*string* $cipher)
+public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setPadding** (*unknown* $scheme)
+
+
+
+
+
+public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setCipher** (*unknown* $cipher)
 
 Sets the cipher algorithm
 
@@ -52,7 +58,7 @@ Returns the current cipher
 
 
 
-public *Phalcon\\Encrypt*  **setMode** (*unknown* $mode)
+public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setMode** (*unknown* $mode)
 
 Sets the encrypt/decrypt mode
 
@@ -64,7 +70,7 @@ Returns the current encryption mode
 
 
 
-public *Phalcon\\Encrypt*  **setKey** (*string* $key)
+public :doc:`Phalcon\\Crypt <Phalcon_Crypt>`  **setKey** (*unknown* $key)
 
 Sets the encryption key
 
@@ -76,19 +82,19 @@ Returns the encryption key
 
 
 
-public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setPadding** (*unknown* $scheme)
+private  **_cryptPadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
 
 
 
 
 
-public *int*  **getPadding** ()
+private  **_cryptUnpadText** (*unknown* $text, *unknown* $mode, *unknown* $blockSize, *unknown* $paddingType)
 
-Returns the padding scheme
+If the function detects that the text was not padded, it will return it unmodified
 
 
 
-public *string*  **encrypt** (*string* $text, [*string* $key])
+public *string*  **encrypt** (*unknown* $text, [*unknown* $key])
 
 Encrypts a text 
 
@@ -101,7 +107,7 @@ Encrypts a text
 
 
 
-public *string*  **decrypt** (*string* $text, [*string* $key])
+public *string*  **decrypt** (*unknown* $text, [*unknown* $key])
 
 Decrypts an encrypted text 
 
@@ -114,13 +120,13 @@ Decrypts an encrypted text
 
 
 
-public *string*  **encryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
+public *string*  **encryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Encrypts a text returning the result as a base64 string
 
 
 
-public *string*  **decryptBase64** (*string* $text, [*string* $key], [*unknown* $safe])
+public *string*  **decryptBase64** (*unknown* $text, [*unknown* $key], [*unknown* $safe])
 
 Decrypt a text that is coded as a base64 string
 

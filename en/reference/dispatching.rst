@@ -68,8 +68,8 @@ The following example demonstrates how to attach listeners to this component:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function(){
 
@@ -96,7 +96,9 @@ An instantiated controller automatically acts as a listener for dispatch events,
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function beforeExecuteRoute($dispatcher)
@@ -120,7 +122,9 @@ access to certain options, redirect users to other screens or simply reuse code.
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -192,9 +196,9 @@ Parameters by default are passed as they come in the URL to actions, you can tra
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
@@ -205,7 +209,7 @@ Parameters by default are passed as they come in the URL to actions, you can tra
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             //Use odd parameters as keys and even as values
             foreach ($params as $number => $value) {
@@ -230,9 +234,9 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
@@ -243,11 +247,11 @@ If the desired schema is: http://example.com/controller/key1:value1/key2:value, 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
             $keyParams = array();
-            $params = $dispatcher->getParams();
+            $params    = $dispatcher->getParams();
 
             //Explode each parameter as key,value pairs
             foreach ($params as $number => $value) {
-                $parts = explode(':', $value);
+                $parts                = explode(':', $value);
                 $keyParams[$parts[0]] = $parts[1];
             }
 
@@ -270,7 +274,9 @@ When a route provides named parameters you can receive them in a controller, a v
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -306,9 +312,9 @@ the following code is required:
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Text;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
@@ -339,8 +345,8 @@ You can remove it before dispatch the controller/action combination:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
@@ -374,7 +380,9 @@ The controller looks like:
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         /**
          * Shows posts
@@ -394,9 +402,9 @@ before dispatch the action preparing the parameter accordingly:
 
     <?php
 
-    use Phalcon\Text,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Text;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
@@ -456,10 +464,10 @@ when the controller/action combination wasn't found:
 
     <?php
 
-    use Phalcon\Dispatcher,
-        Phalcon\Mvc\Dispatcher as MvcDispatcher,
-        Phalcon\Events\Manager as EventsManager,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Dispatcher;
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     $di->set('dispatcher', function() {
 
@@ -473,7 +481,7 @@ when the controller/action combination wasn't found:
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -485,7 +493,7 @@ when the controller/action combination wasn't found:
                     case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                         $dispatcher->forward(array(
                             'controller' => 'index',
-                            'action' => 'show404'
+                            'action'     => 'show404'
                         ));
                         return false;
                 }
@@ -509,9 +517,9 @@ take actions when an exception is produced in the dispatch loop:
 
     <?php
 
-    use Phalcon\Mvc\Dispatcher,
-        Phalcon\Events\Event,
-        Phalcon\Mvc\Dispatcher\Exception as DispatchException;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
     class ExceptionsPlugin
     {
@@ -522,7 +530,7 @@ take actions when an exception is produced in the dispatch loop:
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
-                    'action' => 'show404'
+                    'action'     => 'show404'
                 ));
                 return false;
             }
@@ -530,7 +538,7 @@ take actions when an exception is produced in the dispatch loop:
             //Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
-                'action' => 'show503'
+                'action'     => 'show503'
             ));
 
             return false;

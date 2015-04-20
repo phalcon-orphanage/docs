@@ -1,21 +1,26 @@
 Interface **Phalcon\\Acl\\ResourceInterface**
 =============================================
 
-Phalcon\\Acl\\ResourceInterface initializer
-
-
 Methods
 -------
 
-abstract public *string*  **getName** ()
+abstract public  **__construct** (*unknown* $name, [*unknown* $description])
 
-Returns the resource name
+...
 
 
+abstract public  **getName** ()
 
-abstract public *string*  **getDescription** ()
+...
 
-Returns resource description
 
+abstract public  **getDescription** ()
+
+...
+
+
+abstract public  **__toString** ()
+
+...
 
 

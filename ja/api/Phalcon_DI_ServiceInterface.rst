@@ -1,51 +1,46 @@
-Interface **Phalcon\\DI\\ServiceInterface**
+Interface **Phalcon\\Di\\ServiceInterface**
 ===========================================
-
-Phalcon\\DI\\ServiceInterface initializer
-
 
 Methods
 -------
 
-abstract public *string*  **getName** ()
+abstract public  **__construct** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
 
-Returns the name of the service
-
-
-
-abstract public  **setShared** (*boolean* $shared)
-
-Sets whether the service is shared or not
+...
 
 
+abstract public  **getName** ()
 
-abstract public *boolean*  **isShared** ()
-
-Check whether the service is shared or not
-
+...
 
 
-abstract public  **setDefinition** (*mixed* $definition)
+abstract public  **setShared** (*unknown* $shared)
 
-Set the service definition
-
-
-
-abstract public *mixed*  **getDefinition** ()
-
-Returns the service definition
+...
 
 
+abstract public  **isShared** ()
 
-abstract public *bool*  **isResolved** ()
-
-Checks if the service was resolved
-
+...
 
 
-abstract public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+abstract public  **setDefinition** (*unknown* $definition)
 
-Resolves the service
+...
 
+
+abstract public  **getDefinition** ()
+
+...
+
+
+abstract public  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $attributes)
+
+...
 
 

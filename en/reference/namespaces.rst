@@ -16,8 +16,8 @@ Use an autoload strategy that takes into account the namespaces, for example wit
 
     $loader->registerNamespaces(
         array(
-           'Store\Admin\Controllers'    => "../bundles/admin/controllers/",
-           'Store\Admin\Models'    => "../bundles/admin/models/",
+           'Store\Admin\Controllers' => "../bundles/admin/controllers/",
+           'Store\Admin\Models'      => "../bundles/admin/models/",
         )
     );
 
@@ -58,9 +58,11 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher;
+
     //Registering a dispatcher
     $di->set('dispatcher', function() {
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
         return $dispatcher;
     });
@@ -75,7 +77,9 @@ The following example shows how to implement a controller that use namespaces:
 
     namespace Store\Admin\Controllers;
 
-    class UsersController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function indexAction()
@@ -100,7 +104,9 @@ Take the following into consideration when using models in namespaces:
 
     namespace Store\Models;
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
     }
@@ -113,7 +119,9 @@ If models have relationships they must include the namespace too:
 
     namespace Store\Models;
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public function initialize()
         {

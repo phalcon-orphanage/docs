@@ -3,9 +3,6 @@ Class **Phalcon\\Mvc\\Collection\\Exception**
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
-Exceptions thrown in Phalcon\\Mvc\\Collection\\* classes will use this class
-
-
 Methods
 -------
 

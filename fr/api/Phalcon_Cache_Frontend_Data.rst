@@ -9,15 +9,17 @@ Allows to cache native PHP data in a serialized form
 
     <?php
 
+    <?php
+    
     // Cache the files for 2 days using a Data frontend
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
+    $frontCache = new \Phalcon\Cache\Frontend\Data(array(
     	"lifetime" => 172800
     ));
     
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
     // of the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+    $cache = new \Phalcon\Cache\Backend\File($frontCache, array(
     	"cacheDir" => "../app/cache/"
     ));
     
@@ -44,15 +46,15 @@ Allows to cache native PHP data in a serialized form
 Methods
 -------
 
-public  **__construct** ([*array* $frontendOptions])
+public  **__construct** ([*unknown* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Data constructor
 
 
 
-public *int*  **getLifetime** ()
+public *integer*  **getLifetime** ()
 
-Returns cache lifetime
+Returns the cache lifetime
 
 
 
@@ -80,13 +82,13 @@ Stops output frontend
 
 
 
-public *string*  **beforeStore** (*mixed* $data)
+public *string*  **beforeStore** (*unknown* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed*  **afterRetrieve** (*mixed* $data)
+public *mixed*  **afterRetrieve** (*unknown* $data)
 
 Unserializes data after retrieval
 
