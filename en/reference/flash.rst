@@ -173,7 +173,6 @@ Or using a HTTP redirection:
             //Make a full HTTP redirection
             return $this->response->redirect("contact/index");
         }
-
     }
 
 In this case you need to manually print the messages in the corresponding view:

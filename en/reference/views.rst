@@ -4,7 +4,7 @@ Views represent the user interface of your application. Views are often HTML fil
 related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that
 is used to make requests from your application.
 
-The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
+:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` and :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>`
 are responsible for the managing the view layer of your MVC application.
 
 Integrating Views with Controllers
@@ -369,15 +369,15 @@ the view rendered is the one related with the last controller and action execute
 
     class ProductsController extends Controller
     {
-    
+
         public function listAction()
         {
             // Pick "views-dir/products/search" as view to render
             $this->view->pick("products/search");
-    
+
             // Pick "views-dir/books/list" as view to render
             $this->view->pick(array('books'));
-    
+
             // Pick "views-dir/products/search" as view to render
             $this->view->pick(array(1 => 'search'));
         }

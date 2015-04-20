@@ -143,9 +143,7 @@ Then, for example, in a controller you can use it as follows:
             if ($secret->save()) {
                 $this->flash->success('Secret was successfully created!');
             }
-
         }
-
     }
 
 .. _mcrypt: http://www.php.net/manual/en/book.mcrypt.php

@@ -8,7 +8,9 @@ prototypes in a practical way.
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -611,6 +613,26 @@ Rendering Views
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function() {
+        throw new \Exception("An error");
+    });
+
+    $app->error(function($exception) {
+        echo "An error has occurred";
+    });
+
+If the handler returns "false" the exception is stopped.
 
 Related Sources
 ---------------

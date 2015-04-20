@@ -434,6 +434,7 @@ div.related li {
 table.docutils td,
 table.docutils th {
     padding: 5px;
+    font-size: 16px;
 }
 
 table.docutils {
