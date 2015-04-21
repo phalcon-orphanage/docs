@@ -524,7 +524,7 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    class UrlValidator extends \Phalcon\Mvc\Collection\Validator
+    class UrlValidator extends \Phalcon\Mvc\Model\Validator
     {
 
         public function validate($model)

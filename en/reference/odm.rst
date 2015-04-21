@@ -542,7 +542,7 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    use Phalcon\Mvc\Collection\Validator as CollectionValidator;
+    use \Phalcon\Mvc\Model\Validator as CollectionValidator;
 
     class UrlValidator extends CollectionValidator
     {
