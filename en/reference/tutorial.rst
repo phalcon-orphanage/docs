@@ -123,7 +123,7 @@ The tutorial/public/index.php file should look like:
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function(){
-            $url = new Url();
+            $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
