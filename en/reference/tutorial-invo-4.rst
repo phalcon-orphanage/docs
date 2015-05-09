@@ -133,3 +133,5 @@ Finally, the title is printed in the main view (app/views/index.phtml):
         </head>
         <!-- ... -->
     </html>
+
+.. _Bootstrap: http://getbootstrap.com/
