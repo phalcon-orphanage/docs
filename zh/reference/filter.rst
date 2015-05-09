@@ -1,19 +1,19 @@
 过滤与清理（Filtering and Sanitizing）
 ========================
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized
-access to the content of your application, mainly user data, or even the server your application is hosted on.
+清理用户输入是软件开发中很重要的一个环节。信任或者忽略对用户输入数据作清理可能会导致
+对应用内容（主要是用户数据），甚至你应用所处在的服务器的非法访问。
 
 .. figure:: ../_static/img/sql.png
    :align: center
 
 `Full image (from xkcd)`_
 
-The :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+此 :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 组件提供了一系列通用可用的过滤器和数据清理助手。它提供了围绕于PHP过滤扩展的面向对象包装。
 
 清理数据（Sanitizing data）
 ---------------
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application.
-By sanitizing input we ensure that application integrity will be intact.
+清理是指从一个值中移除特定字符的过程，此过程对用户和应用不是必须，也不是他们想得到的。
+通过清理输入，我们确保了应用的完整性和正确性。
 
 .. code-block:: php
 
@@ -21,23 +21,23 @@ By sanitizing input we ensure that application integrity will be intact.
 
     $filter = new \Phalcon\Filter();
 
-    // returns "someone@example.com"
+    // 返回 "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
 
-    // returns "hello"
+    // 返回 "hello"
     $filter->sanitize("hello<<", "string");
 
-    // returns "100019"
+    // 返回 "100019"
     $filter->sanitize("!100a019", "int");
 
-    // returns "100019.01"
+    // 返回 "100019.01"
     $filter->sanitize("!100a019.01a", "float");
 
 
 在控制器中使用清理（Sanitizing from Controllers）
 ---------------------------
-You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your controllers when accessing GET or POST input data
-(through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+当接收到GET或POST的数据时（通过请求对象），你可以在控制器中访问一个 :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 对象。
+第一个参数是等待获得变量的名字，第二个参数是将应用在此变量的过滤器。
 
 .. code-block:: php
 
@@ -54,10 +54,10 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
         public function saveAction()
         {
 
-            // Sanitizing price from input
+            // 从输入中清理price
             $price = $this->request->getPost("price", "double");
 
-            // Sanitizing email from input
+            // 从输入中清理email
             $email = $this->request->getPost("customerEmail", "email");
 
         }
@@ -66,7 +66,7 @@ You can access a :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` object from your
 
 过滤动作参数（Filtering Action Parameters）
 ---------------------------
-The next example shows you how to sanitize the action parameters within a controller action:
+接下来的示例演示了在一个控制器的动作中如何清理动作的参数：
 
 .. code-block:: php
 
@@ -89,8 +89,7 @@ The next example shows you how to sanitize the action parameters within a contro
 
 过滤数据（Filtering data）
 --------------
-In addition to sanitizing, :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` also provides filtering by removing or modifying input data to
-the format we expect.
+此外， :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 也提供了可以进行删除或者修改输入数据以满足我们需要的格式的过滤器。
 
 .. code-block:: php
 
@@ -98,42 +97,42 @@ the format we expect.
 
     $filter = new \Phalcon\Filter();
 
-    // returns "Hello"
+    // 返回 "Hello"
     $filter->sanitize("<h1>Hello</h1>", "striptags");
 
-    // returns "Hello"
+    // 返回 "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
 
 内置过滤器类型（Types of Built-in Filters）
 -------------------------
-The following are the built-in filters provided by this component:
+以下是该容器提供的内置过滤器：
 
 +-----------+---------------------------------------------------------------------------+
-| Name      | Description                                                               |
+| 名称      | 描述                                                                      |
 +===========+===========================================================================+
-| string    | Strip tags                                                                |
+| string    | 带标签                                                                    |
 +-----------+---------------------------------------------------------------------------+
-| email     | Remove all characters except letters, digits and !#$%&*+-/=?^_`{|}~@.[].  |
+| email     | 删掉除字母、数字和 !#$%&*+-/=?^_`{|}~@.[] 外的全部字符                    |
 +-----------+---------------------------------------------------------------------------+
-| int       | Remove all characters except digits, plus and minus sign.                 |
+| int       | 删掉除R数字、加号、减号外的全部字符                                       |
 +-----------+---------------------------------------------------------------------------+
-| float     | Remove all characters except digits, dot, plus and minus sign.            |
+| float     | 删掉除数字、点号和加号、减号外的全部字符                                  |
 +-----------+---------------------------------------------------------------------------+
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                  |
+| alphanum  | 删掉除[a-zA-Z0-9]外的全部字符                                             |
 +-----------+---------------------------------------------------------------------------+
-| striptags | Applies the strip_tags_ function                                          |
+| striptags | 调用 strip_tags_ 方法                                                     |
 +-----------+---------------------------------------------------------------------------+
-| trim      | Applies the trim_ function                                                |
+| trim      | 调用 trim_  方法                                                          |
 +-----------+---------------------------------------------------------------------------+
-| lower     | Applies the strtolower_ function                                          |
+| lower     | 调用 strtolower_ 方法                                                     |
 +-----------+---------------------------------------------------------------------------+
-| upper     | Applies the strtoupper_ function                                          |
+| upper     | 调用 strtoupper_  方法                                                    |
 +-----------+---------------------------------------------------------------------------+
 
 创建过滤器（Creating your own Filters）
 -------------------------
-You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. The filter function could be an anonymous function:
+你可以将你自己的过滤器添加到 :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 。过滤器的方法可以是匿名函数：
 
 .. code-block:: php
 
@@ -141,15 +140,15 @@ You can add your own filters to :doc:`Phalcon\\Filter <../api/Phalcon_Filter>`. 
 
     $filter = new \Phalcon\Filter();
 
-    //Using an anonymous function
+    //使用匿名函数
     $filter->add('md5', function($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
-    //Sanitize with the "md5" filter
+    //利用md5过滤器清理
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
-Or, if you prefer, you can implement the filter in a class:
+或者，如果你愿意，你可以在类中实现过滤器：
 
 .. code-block:: php
 
@@ -167,23 +166,22 @@ Or, if you prefer, you can implement the filter in a class:
 
     $filter = new \Phalcon\Filter();
 
-    //Using an object
+    //使用对象
     $filter->add('ipv4', new IPv4Filter());
 
-    //Sanitize with the "ipv4" filter
+    //利用"ipv4"过滤器清理
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
 复杂的过滤与清理（Complex Sanitizing and Filtering）
 --------------------------------
-PHP itself provides an excellent filter extension you can use. Check out its documentation: `Data Filtering at PHP Documentation`_
+你可以使用PHP本身提供的优秀过滤器扩展。请查看对应的文档： `PHP文档上的数据过滤器`_ 
 
 自定义过滤器（Implementing your own Filter）
 ----------------------------
-The :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` interface must be implemented to create your own filtering service
-replacing the one provided by Phalcon.
+如需创建你自己的过滤器并代替Phalcon提供的过滤器，你需要实现 :doc:`Phalcon\\FilterInterface <../api/Phalcon_FilterInterface>` 接口。
 
 .. _Full image (from xkcd): http://xkcd.com/327/
-.. _Data Filtering at PHP Documentation: http://www.php.net/manual/en/book.filter.php
+.. _PHP文档上的数据过滤器: http://www.php.net/manual/en/book.filter.php
 .. _strip_tags: http://www.php.net/manual/en/function.strip-tags.php
 .. _trim: http://www.php.net/manual/en/function.trim.php
 .. _strtolower: http://www.php.net/manual/en/function.strtolower.php
