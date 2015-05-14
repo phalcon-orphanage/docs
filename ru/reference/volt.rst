@@ -234,6 +234,12 @@ Volt был написан под вдохновлением от Jinja_, кот
     {# keys filter #}
     {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
 
+    {# join filter #}
+    {% "a".."z"|join(",") %}
+
+    {# format filter #}
+    {% "My real name is %s"|format(name) %}
+
     {# json_encode filter #}
     {% robots|json_encode %}
 
@@ -911,7 +917,7 @@ Volt сильно связан с  :doc:`Phalcon\\Tag <tags>`, поэтому м
     <div id="footer">{{ partial("partials/footer") }}</div>
 
     <!-- Passing extra variables -->
-    <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
+    <div id="footer">{{ partial("partials/footer", ['links': links]) }}</div>
 
 Partial включается в момент выполнения, Volt так же предоставляет "include", которая собирает содержимое представления и возвращает его в виде включаемой части:
 

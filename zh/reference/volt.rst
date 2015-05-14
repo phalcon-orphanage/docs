@@ -250,6 +250,12 @@ Examples:
     {# keys filter #}
     {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
 
+    {# join filter #}
+    {% "a".."z"|join(",") %}
+
+    {# format filter #}
+    {% "My real name is %s"|format(name) %}
+
     {# json_encode filter #}
     {% robots|json_encode %}
 
@@ -925,7 +931,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     <div id="footer">{{ partial("partials/footer") }}</div>
 
     <!-- Passing extra variables -->
-    <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
+    <div id="footer">{{ partial("partials/footer", ['links': links]) }}</div>
 
 A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
 as part of the view which was included:
