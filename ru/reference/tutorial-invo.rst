@@ -151,23 +151,22 @@ Dependency Injection
 Он регистрирует большинство методов, предусмотренных фрэймворком как стандартные. Если нам надо переопределить
 какой либо из методов, мы можем просто определить его снова, как мы делали выше с методом "session". Это причина существования переменной $di.
 
-Log into the Application
+Авторизация в приложении
 ------------------------
-"Log in" will allow us to work on backend controllers. The separation between backend's controllers and the frontend ones
-is only logical. All controllers are located in the same directory (app/controllers/).
+Авторизация позволяет работать с контроллерами бакенда. Различие между контроллерами бакенда и фронтенда является
+только логическим. Все контроллеры находятся в одной и той же директории (app/controllers/).
 
-To enter into the system, we must have a valid username and password. Users are stored in the table "users"
-in the database "invo".
+Для входа в систему мы должны иметь правильные логин и пароль. Пользователи хранятся в таблице "users" базы данных invo".
 
-Before we can start a session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with that information. As with the autoloader, this time we are
-also taking parameters from the configuration file in order to configure a service:
+Перед стартом сессии мы должны сконфигурировать в приложении коннект к базе данных. В контейнере сервисов создадим сервис
+с названием "db" указав необходимую информацию. Как и в случае автозагрузчика мы возьмем нужные параметры из файла
+конфигурации с помощью сервиса конфигурации:
 
 .. code-block:: php
 
     <?php
 
-    // Database connection is created based on the parameters defined in the configuration file
+    // Коннект к базе данных создается соответственно параметрам в конфигурационном файле
     $di->set('db', function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
@@ -177,28 +176,28 @@ also taking parameters from the configuration file in order to configure a servi
         ));
     });
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting up it as you want.
+Здесь мы вернули экземпляр адаптера соединения с MySQL. Если это необходимо, вы можете реализовать дополнительные действия,
+такие как логирование и профилирование запросов, изменить адаптер, сконфигурировав его как вам угодно.
 
-Back then, the following simple form (app/views/session/index.phtml) requests the logon information. We've removed
-some HTML code to make the example more concise:
+Теперь создадим следующую простую форму (app/views/session/index.phtml) для отправки информации для авторизации.
+Мы удалили из нее некоторый код HTML, чтобы сделать пример более простым:
 
 .. code-block:: html+php
 
     <?php echo $this->tag->form('session/start') ?>
 
-        <label for="email">Username/Email</label>
+        <label for="email">Логин/Email</label>
         <?php echo $this->tag->textField(array("email", "size" => "30")) ?>
 
-        <label for="password">Password</label>
+        <label for="password">Пароль</label>
         <?php echo $this->tag->passwordField(array("password", "size" => "30")) ?>
 
-        <?php echo $this->tag->submitButton(array('Login')) ?>
+        <?php echo $this->tag->submitButton(array('Войти')) ?>
 
     </form>
 
-The SessionController::startAction (app/controllers/SessionController.phtml) has the task of validate the
-data entered checking for a valid user in the database:
+SessionController::startAction (app/controllers/SessionController.phtml) будет проверять полученные данные на соответствие
+хранимым в базе данных:
 
 .. code-block:: php
 
@@ -221,13 +220,13 @@ data entered checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Receiving the variables sent by POST
+                // Получение переменных методом POST
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find for the user in the database
+                // Поиск пользователя в базе данных
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -238,7 +237,7 @@ data entered checking for a valid user in the database:
 
                     $this->flash->success('Welcome ' . $user->name);
 
-                    //Forward to the 'invoices' controller if the user is valid
+                    // Выдаем контроллер 'invoices', если пользователь существует
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -248,7 +247,7 @@ data entered checking for a valid user in the database:
                 $this->flash->error('Wrong email/password');
             }
 
-            //Forward to the login form again
+            // Снова выдаем форму авторизации
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -258,17 +257,17 @@ data entered checking for a valid user in the database:
 
     }
 
-For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use " :doc:`bcrypt <security>`" instead.
+Для простоты мы будем использовать "sha1_" для сохранения хэшей паролей в базе данных. Однако, этот алгоритм не
+рекомендуется в реальных приложениях. Используйте вместо него " :doc:`bcrypt <security>`".
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in services container from earlier. When they're accessed the first time, are injected as part
-of the controller.
+Заметим, что в контролере доступны несколько публичных свойств, таких как $this->flash, $this->request и $this->session.
+Они являются сервисами, определенными ранее в контейнере сервисов. При первом их использовании они инъецируются
+в качестве части контроллера.
 
-These services are shared, which means that we are always accessing the same instance regardless of the place
-where we invoke them.
+Эти сервисы являются разделяемыми, то есть они всегда нам доступны в тех же самых экземплярах и в любом месте,
+где мы к ним обращаемся.
 
-For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
+Здесь, например, мы обращаемся к сервису "session" чтобы сохранить пользовательские данные в переменной "auth":
 
 .. code-block:: php
 
