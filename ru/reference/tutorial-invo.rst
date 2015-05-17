@@ -278,25 +278,27 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
         'name' => $user->name
     ));
 
-Securing the Backend
+Безопасность бакенда
 --------------------
-The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
-registered users have access to these controllers. If you aren't logged in the application and you try to access,
-for example, the products controller (that is private) you will see a screen like this:
+Бакенд является приватной зоной, куда имеют доступ только зарегистрированные пользователи. Поэтому нужно проверять,
+то только зарегистрированные пользователи имеют доступ к соответствующим контроллерам. Езли вы не авторизованы в
+приложении и пытаетесь получить доступ, например, к контроллеру продуктов (который приватен), то увидите экран вроде
+ледующего:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone attempts to access any controller/action, the application verifies that the current role (in session)
-has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
+Каждый раз, когда кто-то пытается получить доступ к контроллеру или его действию, приложение проверяет, что текущая роль
+для данной сессии) имеет к нему доступ. В противном случае выводится сообщение как выше и управление переадресуется
+лавной странице.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
-:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then,
-it is responsible for loading the appropriate controller and execute the corresponding action method.
+Давайте теперь разберем, как это сделано в приложении. Во-первых, узнаем о существовании компонента под названием
+:doc:`Dispatcher <dispatching>`. Он информируется о маршруте, найденном компонентом :doc:`Routing <routing>`,
+а затем решает, загрузить ли соответствующий контроллер и выполнить ли соответствующее действие.
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
-before executing the required action, checking if the user has access to it or not. To achieve this, we have
-replaced the component by creating a function in the bootstrap:
+Обычно фреймворк создает диспетчер автоматически. В нашем случае мы хотим выполнять некоторую проверку
+перед выполнением нужного действия, а именно, проверять, имеет ли пользователь право его выполнять, или нет.
+Для тостижения этого мы заменим диспетчер с помощью функции в загрузчике:
 
 .. code-block:: php
 
@@ -307,10 +309,10 @@ replaced the component by creating a function in the bootstrap:
         return $dispatcher;
     });
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger
-events that allow us to modify their internal flow of operation. As the dependency Injector component acts as glue
-for components, a new component called :doc:`EventsManager <events>` aids us to intercept the events produced
-by a component routing the events to listeners.
+Теперь мы имеем полный контроль над используемым в приложении диспетчере. Многие компоненты фреймворка инициируют
+события, которые позволяют нам изменять их внутренний поток операций. А компонент инъекции зависимости, играющий для
+компонентов роль клея, предоставит нам еще один компонент - :doc:`EventsManager <events>`, позволяющий нам перехватывать
+события и назначать их слушателям.
 
 Events Management
 ^^^^^^^^^^^^^^^^^
