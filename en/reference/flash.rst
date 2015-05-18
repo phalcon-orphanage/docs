@@ -109,9 +109,10 @@ Then the messages would be printed as follows:
 
 .. code-block:: html
 
-    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Implicit Flush vs. Session
 --------------------------
