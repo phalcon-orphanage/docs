@@ -113,8 +113,8 @@ Phalcon не имеет каких-либо предопределенных с�
 
     echo $app->handle()->getContent();
 
-Dependency Injection
---------------------
+Инъекция зависимостей
+---------------------
 Посмотрите на первую строку кода на предыдущем блоке, переменная $app получает еще одну переменную $di в своем конструкторе.
 Каков смысл этой переменной? Phalcon - слабо связанный фрэймворк, так что нам нужен компонент, который действует как клей, чтобы все работало вместе.
 Этот компонент - Phalcon\\DI. Это контейнер, обеспечивающий все связи между частями необходимыми в приложении.
@@ -283,7 +283,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 Бакенд является приватной зоной, куда имеют доступ только зарегистрированные пользователи. Поэтому нужно проверять,
 то только зарегистрированные пользователи имеют доступ к соответствующим контроллерам. Езли вы не авторизованы в
 приложении и пытаетесь получить доступ, например, к контроллеру продуктов (который приватен), то увидите экран вроде
-ледующего:
+следующего:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
@@ -314,10 +314,10 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 компонентов роль клея, предоставит нам еще один компонент - :doc:`EventsManager <events>`, позволяющий нам перехватывать
 события и назначать их слушателям.
 
-Events Management
-^^^^^^^^^^^^^^^^^
-A :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
-interest us now is "dispatch", the following code filters all events produced by the Dispatcher:
+Управление событиями
+^^^^^^^^^^^^^^^^^^^^
+Назначать слушателей определенным типам событий нам позволяет :doc:`EventsManager <events>`.
+Интересующий нас сейчас тип - это "dispatch". Следующий код фильтрует все события, инициированные диспетчером:
 
 .. code-block:: php
 
@@ -325,25 +325,25 @@ interest us now is "dispatch", the following code filters all events produced by
 
     $di->set('dispatcher', function() use ($di) {
 
-        //Obtain the standard eventsManager from the DI
+        // Получаем стандартный менеджер событий с помощью DI
         $eventsManager = $di->getShared('eventsManager');
 
-        //Instantiate the Security plugin
+        // Инстанцируем плагин безопасности
         $security = new Security($di);
 
-        //Listen for events produced in the dispatcher using the Security plugin
+        // Плагин безопасности слушает события, инициированные диспетчером
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the Dispatcher
+        // Связываем менеджер событий с диспетчером
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     });
 
-The Security plugin is a class located at (app/plugins/Security.php). This class implements the method
-"beforeExecuteRoute". This is the same name as one of the events produced in the Dispatcher:
+Плагин безопасности - это класс, описанный в app/plugins/Security.php. Этот класс реализует метод "beforeExecuteRoute"
+(хук события). Его название совпадает с именем одного из событий, инициируемых диспетчером:
 
 .. code-block:: php
 
@@ -365,13 +365,12 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
 
     }
 
-The hooks events always receive a first parameter that contains contextual information of the event produced ($event)
-and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
-plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
-available in the application.
+В качестве первого параметра хуки событий всегда получают информацию о контексте, в котором произошло событие, ($event),
+а второй параметр - это объект, который инициировал само событие ($dispatcher). В общем случае необязательно,
+чтобы плагины расширяли класс Phalcon\\Mvc\\User\\Plugin, но если они это делают, то упрощается доступ к сервисам приложения.
 
-Now, we're verifying the role in the current session, checking if he/she has access using the ACL list.
-If he/she does not have access we redirect him/her to the home screen as explained before:
+Теперь с помощью списка ACL мы можем проверить роль для текущей сессии на предмет наличия доступа у пользователя.
+Если он/она не имеет доступа, мы будем перенаправлять его/её на главный экран, как показано ниже:
 
 .. code-block:: php
 
@@ -389,7 +388,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            // Проверяем, установлена ли в сессии переменная "auth" для определения активной роли.
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -397,18 +396,18 @@ If he/she does not have access we redirect him/her to the home screen as explain
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            // Получаем активные контроллер и действие от диспетчера
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            // Получаем список ACL
             $acl = $this->_getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            // Проверяем, имеет ли данная роль доступ к контроллеру (ресурсу)
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Phalcon\Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                // Если доступа нет, перенаправляем его на контроллер "index".
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -417,7 +416,7 @@ If he/she does not have access we redirect him/her to the home screen as explain
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                // Возвращая "false" мы приказываем диспетчеру прекратить текущую операцию
                 return false;
             }
 
