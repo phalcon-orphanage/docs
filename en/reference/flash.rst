@@ -100,6 +100,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
             'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
             'notice'  => 'alert alert-info',
+            'warning'  => 'alert alert-warning'
         ));
         return $flash;
     });
