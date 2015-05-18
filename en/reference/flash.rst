@@ -97,7 +97,7 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
     //Register the flash service with custom CSS classes
     $di->set('flash', function(){
         $flash = new FlashDirect(array(
-            'error'   => 'alert alert-error',
+            'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
             'notice'  => 'alert alert-info',
         ));
