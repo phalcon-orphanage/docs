@@ -18,16 +18,19 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 
     <?php
 
-    //设置模型缓存服务
+    use Phalcon\Cache\Frontend\Data as FrontendData;
+    use Phalcon\Cache\Backend\Memcache as BackendMemcache;
+
+    // 设置模型缓存服务
     $di->set('modelsCache', function() {
 
-        //默认缓存时间为一天
-        $frontCache = new \Phalcon\Cache\Frontend\Data(array(
+        // 默认缓存时间为一天
+        $frontCache = new FrontendData(array(
             "lifetime" => 86400
         ));
 
-        //Memcached连接配置 这里使用的是Memcache适配器
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
+        // Memcached连接配置 这里使用的是Memcache适配器
+        $cache = new BackendMemcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
         ));
@@ -64,7 +67,7 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
     <?php
 
     // Query some post
-    $post = Post::findFirst();
+    $post     = Post::findFirst();
 
     // Get comments related to a post, also cache it
     $comments = $post->getComments(array(
@@ -90,7 +93,9 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function find($parameters=null)
@@ -113,7 +118,9 @@ Phalcon提供了一个组件（服务）可以用来:doc:`缓存 <cache>`任何�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static $_cache = array();
@@ -210,7 +217,9 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
     <?php
 
-    class CacheableModel extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class CacheableModel extends Model
     {
 
         protected static function _createKey($parameters)
@@ -259,7 +268,9 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         protected static function _createKey($parameters)
@@ -279,7 +290,7 @@ APC/XCache或是使用NoSQL数据库（如MongoDB等）：
             //and create the cache parameters
             if (!isset($parameters['cache'])) {
                 $parameters['cache'] = array(
-                    "key" => self::_createKey($parameters),
+                    "key"      => self::_createKey($parameters),
                     "lifetime" => 300
                 );
             }
@@ -307,7 +318,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     $query = $this->modelsManager->createQuery($phql);
 
     $query->cache(array(
-        "key" => "cars-by-name",
+        "key"      => "cars-by-name",
         "lifetime" => 300
     ));
 
@@ -338,7 +349,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer;
@@ -373,7 +384,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -391,7 +404,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class CustomModelsManager extends \Phalcon\Mvc\Model\Manager
+    use Phalcon\Mvc\Model\Manager as ModelManager;
+
+    class CustomModelsManager extends ModelManager
     {
 
         /**
@@ -463,7 +478,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
     <?php
 
     //Get some invoice
-    $invoice = Invoices::findFirst();
+    $invoice  = Invoices::findFirst();
 
     //Get the customer related to the invoice
     $customer = $invoice->customer; // Invoices::findFirst('...');
@@ -477,7 +492,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public static function findFirst($parameters=null)
@@ -495,7 +512,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Invoices extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         protected static function _createKey($parameters)
@@ -516,7 +535,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
         public static function find($parameters=null)
         {
             //Create a unique key
-            $key = self::_createKey($parameters);
+            $key     = self::_createKey($parameters);
 
             //Check if there are data in the cache
             $results = self::_getCache($key);
@@ -557,7 +576,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Invoices extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Invoices extends Model
     {
 
         public function initialize()
@@ -572,13 +593,13 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
         public function getInvoicesCustomers($conditions, $params=null)
         {
-            $phql = "SELECT Invoices.*, Customers.*
+            $phql  = "SELECT Invoices.*, Customers.*
             FROM Invoices JOIN Customers WHERE " . $conditions;
 
             $query = $this->getModelsManager()->executeQuery($phql);
 
             $query->cache(array(
-                "key" => self::_createKey($conditions, $params),
+                "key"      => self::_createKey($conditions, $params),
                 "lifetime" => 300
             ));
 
@@ -607,7 +628,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
 
         public static function queryCache($initial, $final)
@@ -646,7 +669,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     $robots = Robots::find(array(
         '(id > ?0 AND type = "A") AND id < ?1',
-        'bind' => array(100, 2000),
+        'bind'  => array(100, 2000),
         'order' => 'type'
     ));
 为了实现这个我们需要拦截中间语言解析，然后书写相关的代码以定制缓存：
@@ -656,7 +679,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class CustomQueryBuilder extends Phalcon\Mvc\Model\Query\Builder
+    use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
+
+    class CustomQueryBuilder extends QueryBuilder
     {
 
         public function getQuery()
@@ -674,7 +699,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class CustomQuery extends Phalcon\Mvc\Model\Query
+    use Phalcon\Mvc\Model\Query as ModelQuery;
+
+    class CustomQuery extends ModelQuery
     {
 
         /**
@@ -697,7 +724,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
                 $visitor->visit($ir['where']);
 
                 $initial = $visitor->getInitial();
-                $final = $visitor->getFinal();
+                $final   = $visitor->getFinal();
 
                 //Select the cache according to the range
                 //...
@@ -736,7 +763,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
                 case 'binary-op':
 
-                    $left = $this->visit($node['left']);
+                    $left  = $this->visit($node['left']);
                     $right = $this->visit($node['right']);
                     if (!$left || !$right) {
                         return false;
@@ -792,7 +819,9 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
     {
         public static function find($parameters=null)
         {
@@ -824,7 +853,7 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
     for ($i = 1; $i <= 10; $i++) {
 
-        $phql = "SELECT * FROM Store\Robots WHERE id = " . $i;
+        $phql   = "SELECT * FROM Store\Robots WHERE id = " . $i;
         $robots = $this->modelsManager->executeQuery($phql);
 
         //...
@@ -863,7 +892,5 @@ ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL�
 
 `预先准备的查询语句`_的查询计划亦可以被大多数的数据库所缓存，这样可以减少执行的时间，也可以使用我们的系统免受'SQL注入'_的影响。
 
-`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
-
-`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection
-
+.. _`prepared statements` : http://en.wikipedia.org/wiki/Prepared_statement
+.. _`SQL Injections` : http://en.wikipedia.org/wiki/SQL_injection

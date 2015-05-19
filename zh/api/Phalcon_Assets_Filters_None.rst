@@ -9,9 +9,9 @@ Returns the content without make any modification to the original source
 Methods
 -------
 
-public *$content*  **filter** (*string* $content)
+public *string*  **filter** (*unknown* $content)
 
-Returns the content without touching
+Returns the content without be touched
 
 
 

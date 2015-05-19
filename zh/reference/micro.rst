@@ -6,7 +6,9 @@
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+
+    $app = new Micro();
 
     $app->get('/say/welcome/{name}', function ($name) {
         echo "<h1>Welcome $name!</h1>";
@@ -22,7 +24,9 @@ Phalcon中 使用 :doc:`Phalcon\\Mvc\\Micro <../api/Phalcon_Mvc_Micro>` 来实�
 
     <?php
 
-    $app = new Phalcon\Mvc\Micro();
+    use Phalcon\Mvc\Micro;
+    
+    $app = new Micro();
 
 定义路由（Defining routes）
 -------------------------
@@ -242,9 +246,9 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     <?php
 
-    use Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Micro,
-        Phalcon\Config\Adapter\Ini as IniConfig;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Config\Adapter\Ini as IniConfig;
 
     $di = new FactoryDefault();
 
@@ -271,8 +275,8 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
     $app = new Micro();
 
@@ -547,8 +551,8 @@ PostsController形如下：
 
     <?php
 
-    use Phalcon\Mvc\Micro,
-        Phalcon\Http\Response;
+    use Phalcon\Mvc\Micro;
+    use Phalcon\Http\Response;
 
     $app = new Micro();
 
@@ -575,7 +579,7 @@ PostsController形如下：
     $app = new Phalcon\Mvc\Micro();
 
     $app['view'] = function() {
-        $view = new \Phalcon\Mvc\View();
+        $view = new \Phalcon\Mvc\View\Simple();
         $view->setViewsDir('app/views/');
         return $view;
     };
@@ -590,6 +594,26 @@ PostsController形如下：
         ));
 
     });
+
+Error Handling
+--------------
+A proper response can be generated if an exception is raised in a micro handler:
+
+.. code-block:: php
+
+    <?php
+
+    $app = new Phalcon\Mvc\Micro();
+
+    $app->get('/', function() {
+        throw new \Exception("An error");
+    });
+
+    $app->error(function($exception) {
+        echo "An error has occurred";
+    });
+
+If the handler returns "false" the exception is stopped.
 
 相关资源（Related Sources）
 ------------------------------

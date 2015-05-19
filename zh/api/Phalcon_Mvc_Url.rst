@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Url**
 ===========================
 
-*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 This components aids in the generation of: URIs, URLs and Paths  
 
@@ -20,7 +20,7 @@ This components aids in the generation of: URIs, URLs and Paths
 Methods
 -------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -32,7 +32,7 @@ Returns the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBaseUri** (*string* $baseUri)
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBaseUri** (*unknown* $baseUri)
 
 Sets a prefix for all the URIs to be generated 
 
@@ -46,7 +46,7 @@ Sets a prefix for all the URIs to be generated
 
 
 
-public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setStaticBaseUri** (*string* $staticBaseUri)
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setStaticBaseUri** (*unknown* $staticBaseUri)
 
 Sets a prefix for all static URLs generated 
 
@@ -71,7 +71,7 @@ Returns the prefix for all the generated static urls. By default /
 
 
 
-public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBasePath** (*string* $basePath)
+public :doc:`Phalcon\\Mvc\\Url <Phalcon_Mvc_Url>`  **setBasePath** (*unknown* $basePath)
 
 Sets a base path for all the generated paths 
 
@@ -90,7 +90,7 @@ Returns the base path
 
 
 
-public *string*  **get** ([*string|array* $uri], [*unknown* $args])
+public *string*  **get** ([*unknown* $uri], [*unknown* $args], [*bool* $local])
 
 Generates a URL 
 
@@ -107,13 +107,13 @@ Generates a URL
 
 
 
-public *string*  **getStatic** ([*string|array* $uri])
+public *string*  **getStatic** ([*unknown* $uri])
 
 Generates a URL for a static resource
 
 
 
-public *string*  **path** ([*string* $path])
+public *string*  **path** ([*unknown* $path])
 
 Generates a local path
 

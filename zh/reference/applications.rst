@@ -31,10 +31,10 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Application,
-        Phalcon\Mvc\View;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
 
     $loader = new Loader();
 
@@ -47,7 +47,7 @@ MVC 应用（MVC Applications）
 
     $di = new FactoryDefault();
 
-    // Registering the view component
+    // 注册视图组件
     $di->set('view', function() {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -70,15 +70,16 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\View,
-        Phalcon\DI\FactoryDefault,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\Application;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
+
 
     $loader = new Loader();
 
-    // Use autoloading with namespaces prefixes
+    // 根据命名空间前缀加载
     $loader->registerNamespaces(
         array(
             'Single\Controllers' => '../apps/controllers/',
@@ -88,14 +89,14 @@ MVC 应用（MVC Applications）
 
     $di = new FactoryDefault();
 
-    // Register the dispatcher setting a Namespace for controllers
+    // 注册调度器，并设置控制器的默认命名空间
     $di->set('dispatcher', function() {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
         return $dispatcher;
     });
 
-    // Registering the view component
+    // 注册视图组件
     $di->set('view', function() {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -144,16 +145,17 @@ MVC 应用（MVC Applications）
 
     namespace Multiple\Backend;
 
-    use Phalcon\Loader,
-        Phalcon\Mvc\Dispatcher,
-        Phalcon\Mvc\View,
-        Phalcon\Mvc\ModuleDefinitionInterface;
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\ModuleDefinitionInterface;
+
 
     class Module implements ModuleDefinitionInterface
     {
 
         /**
-         * Register a specific autoloader for the module
+         * 注册自定义加载器
          */
         public function registerAutoloaders()
         {
@@ -171,7 +173,7 @@ MVC 应用（MVC Applications）
         }
 
         /**
-         * Register specific services for the module
+         * 注册自定义服务
          */
         public function registerServices($di)
         {
@@ -199,13 +201,14 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    use Phalcon\Mvc\Router,
-        Phalcon\Mvc\Application,
-        Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\Router;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
+
 
     $di = new FactoryDefault();
 
-    //Specify routes for modules
+    // 自定义路由
     $di->set('router', function () {
 
         $router = new Router();
@@ -234,10 +237,10 @@ MVC 应用（MVC Applications）
 
     try {
 
-        //Create an application
+        // 创建应用
         $application = new Application($di);
 
-        // Register the installed modules
+        // 注册模块
         $application->registerModules(
             array(
                 'frontend' => array(
@@ -251,7 +254,7 @@ MVC 应用（MVC Applications）
             )
         );
 
-        //Handle the request
+        // 处理请求
         echo $application->handle()->getContent();
 
     } catch(\Exception $e){
@@ -264,10 +267,12 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    //Creating a view component
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
 
-    //Set options to view component
+    // 创建视图组件
+    $view = new View();
+
+    // 设置视图组件相关选项
     //...
 
     // Register the installed modules
@@ -303,13 +308,13 @@ MVC 应用（MVC Applications）
 
     try {
 
-        // Register autoloaders
+        // 注册自动加载器
         //...
 
-        // Register services
+        // 注册服务
         //...
 
-        // Handle the request
+        // 处理请求
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
@@ -334,7 +339,7 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    // Get the 'router' service
+    // 获取 'router' 服务
     $router = $di['router'];
 
     $router->handle();
@@ -343,36 +348,36 @@ MVC 应用（MVC Applications）
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // 传递路由的相关数据传递给调度器
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
-    // Start the view
+    // 启动视图
     $view->start();
 
-    // Dispatch the request
+    // 请求调度
     $dispatcher->dispatch();
 
-    // Render the related views
+    // 渲染相关视图
     $view->render(
         $dispatcher->getControllerName(),
         $dispatcher->getActionName(),
         $dispatcher->getParams()
     );
 
-    // Finish the view
+    // 完成视图
     $view->finish();
 
     $response = $di['response'];
 
-    // Pass the output of the view to the response
+    // 传递视图内容给响应对象
     $response->setContent($view->getContent());
 
-    // Send the request headers
+    // 发送头信息
     $response->sendHeaders();
 
-    // Print the response
+    // 输出响应内容
     echo $response->getContent();
 
 以下代码替换了 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` ，虽然缺少了视图组件，
@@ -382,28 +387,28 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    // Get the 'router' service
+    // 获取 'router' 服务
     $router = $di['router'];
 
     $router->handle();
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // 传递路由的相关数据传递给调度器
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
-    // Dispatch the request
+    // 请求调度
     $dispatcher->dispatch();
 
-    //Get the returned value by the latest executed action
+    // 获取最后的返回结果
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // 判断结果是否是 'response' 对象
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // 发送响应
         $response->send();
     }
 
@@ -413,21 +418,21 @@ MVC 应用（MVC Applications）
 
     <?php
 
-    // Get the 'router' service
+    // 获取 'router' 服务
     $router = $di['router'];
 
     $router->handle();
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // 传递路由的相关数据传递给调度器
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
     try {
 
-        // Dispatch the request
+        // 请求调度
         $dispatcher->dispatch();
 
     } catch (Exception $e) {
@@ -443,13 +448,13 @@ MVC 应用（MVC Applications）
 
     }
 
-    //Get the returned value by the latest executed action
+    // 获取最后的返回结果
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // 判断结果是否是 'response' 对象
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // 发送响应
         $response->send();
     }
 

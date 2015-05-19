@@ -18,17 +18,9 @@ or by manually adding it to composer.json:
 
   {
       "require-dev": {
-          "phpunit/phpunit": "3.7.*"
+          "phpunit/phpunit": "~4.5"
       }
   }
-
-
-Or if you don't have composer you can install phpunit via pear:
-
-.. code-block:: bash
-
-  pear config-set auto_discover 1
-  pear install pear.phpunit.de/PHPUnit
 
 
 Once phpunit is installed create a directory called 'tests' in your root directory:
@@ -217,7 +209,7 @@ It's always a good idea to separate your Unit tests in namespaces. For this test
 
           $this->assertEquals('works',
               'works1',
-              'This wil fail'
+              'This will fail'
           );
       }
   }
@@ -236,7 +228,7 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
   There was 1 failure:
 
   1) Test\UnitTest::testTestCase
-  This wil fail
+  This will fail
   Failed asserting that two strings are equal.
   --- Expected
   +++ Actual

@@ -1,30 +1,9 @@
 Class **Phalcon\\Mvc\\Model\\Query\\Builder**
 =============================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 Helps to create PHQL queries using an OO interface  
-
-.. code-block:: php
-
-    <?php
-
-    $resultset = $this->modelsManager->createBuilder()
-       ->from('Robots')
-       ->join('RobotsParts')
-       ->limit(20)
-       ->orderBy('Robots.name')
-       ->getQuery()
-       ->execute();
-
-
-
-Methods
--------
-
-public  **__construct** ([*array* $params])
-
-Phalcon\\Mvc\\Model\\Query\\Builder constructor 
 
 .. code-block:: php
 
@@ -48,8 +27,28 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
         'offset'     => 20,
         // or 'limit' => array(20, 20),
     );
-    $queryBuilder = new Phalcon\Mvc\Model\Query\Builder($params);
+    $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
+
+
+Methods
+-------
+
+public  **__construct** ([*unknown* $params], [*unknown* $dependencyInjector])
+
+Phalcon\\Mvc\\Model\\Query\\Builder constructor
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setDI** (*unknown* $dependencyInjector)
+
+Sets the DependencyInjector container
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+
+Returns the DependencyInjector container
 
 
 
@@ -65,19 +64,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Sets the DependencyInjector container
-
-
-
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
-
-Returns the DependencyInjector container
-
-
-
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*string|array* $columns)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **columns** (*unknown* $columns)
 
 Sets the columns to be queried 
 
@@ -96,7 +83,7 @@ Return the columns to be queried
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **from** (*string|array* $models)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **from** (*unknown* $models)
 
 Sets the models who makes part of the query 
 
@@ -110,7 +97,7 @@ Sets the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*string* $model, [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **addFrom** (*unknown* $model, [*unknown* $alias])
 
 Add a model to take part of the query 
 
@@ -129,7 +116,7 @@ Return the models who makes part of the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **join** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias], [*unknown* $type])
 
 Adds a INNER join to the query 
 
@@ -140,12 +127,12 @@ Adds a INNER join to the query
     $builder->join('Robots');
     $builder->join('Robots', 'r.id = RobotsParts.robots_id');
     $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'INNER');
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **innerJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a INNER join to the query 
 
@@ -156,12 +143,11 @@ Adds a INNER join to the query
     $builder->innerJoin('Robots');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **leftJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a LEFT join to the query 
 
@@ -174,7 +160,7 @@ Adds a LEFT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **rightJoin** (*unknown* $model, [*unknown* $conditions], [*unknown* $alias])
 
 Adds a RIGHT join to the query 
 
@@ -187,7 +173,7 @@ Adds a RIGHT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Sets the query conditions 
 
@@ -195,13 +181,14 @@ Sets the query conditions
 
     <?php
 
+    $builder->where(100);
     $builder->where('name = "Peter"');
     $builder->where('name = :name: AND id > :id:', array('name' => 'Peter', 'id' => 100));
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Appends a condition to the current conditions using a AND operator 
 
@@ -215,7 +202,7 @@ Appends a condition to the current conditions using a AND operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Appends a condition to the current conditions using a OR operator 
 
@@ -229,7 +216,7 @@ Appends a condition to the current conditions using a OR operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a BETWEEN condition to the current conditions 
 
@@ -242,7 +229,7 @@ Appends a BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a NOT BETWEEN condition to the current conditions 
 
@@ -255,7 +242,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*unknown* $expr, *unknown* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -268,7 +255,7 @@ Appends an IN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*unknown* $expr, *unknown* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -287,7 +274,7 @@ Return the conditions for the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string* $orderBy)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*unknown* $orderBy)
 
 Sets a ORDER BY condition clause 
 
@@ -307,7 +294,7 @@ Returns the set ORDER BY clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **having** (*string* $having)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **having** (*unknown* $having)
 
 Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
 
@@ -326,7 +313,7 @@ Return the current having clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*int* $limit, [*int* $offset])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*unknown* $limit, [*unknown* $offset])
 
 Sets a LIMIT clause, optionally a offset clause 
 
@@ -346,7 +333,7 @@ Returns the current LIMIT clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **offset** (*int* $offset)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **offset** (*unknown* $offset)
 
 Sets an OFFSET clause 
 
@@ -365,7 +352,7 @@ Returns the current OFFSET clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*string* $group)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*unknown* $group)
 
 Sets a GROUP BY clause 
 

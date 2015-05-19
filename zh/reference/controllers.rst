@@ -28,7 +28,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -53,7 +55,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -74,7 +78,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -101,7 +107,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -116,7 +124,7 @@
             // Forward flow to another action
             $this->dispatcher->forward(array(
                 "controller" => "users",
-                "action" => "signin"
+                "action"     => "signin"
             ));
         }
 
@@ -128,7 +136,9 @@
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function indexAction()
@@ -156,7 +166,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public $settings;
@@ -188,7 +200,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function onConstruct()
@@ -211,7 +225,9 @@
 
     <?php
 
-    $di = new Phalcon\DI();
+    use Phalcon\DI;
+
+    $di = new DI();
 
     $di->set('storage', function() {
         return new Storage('/some/directory');
@@ -223,25 +239,27 @@
 
     <?php
 
-    class FilesController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class FilesController extends Controller
     {
 
         public function saveAction()
         {
 
-            //以和服务相同名字的类属性访问
+            // 以和服务相同名字的类属性访问
             $this->storage->save('/some/file');
 
-            //通过DI访问服务
+            // 通过DI访问服务
             $this->di->get('storage')->save('/some/file');
 
-            //另一种方式：使用魔法getter来访问
+            // 另一种方式：使用魔法getter来访问
             $this->di->getStorage()->save('/some/file');
 
-            //另一种方式：使用魔法getter来访问
+            // 另一种方式：使用魔法getter来访问
             $this->getDi()->getStorage()->save('/some/file');
 
-            //使用数组下标
+            // 使用数组下标
             $this->di['storage']->save('/some/file');
         }
 
@@ -259,7 +277,9 @@
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -286,7 +306,9 @@
 
     <?php
 
-    class PostsController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -313,7 +335,9 @@
 
     <?php
 
-    class UserController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UserController extends Controller
     {
 
         public function indexAction()
@@ -372,7 +396,9 @@
 
     <?php
 
-    class ControllerBase extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ControllerBase extends Controller
     {
 
       /**
@@ -405,7 +431,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function beforeExecuteRoute($dispatcher)
