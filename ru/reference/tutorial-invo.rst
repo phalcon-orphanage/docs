@@ -156,7 +156,7 @@ Phalcon не имеет каких-либо предопределенных с�
 Авторизация позволяет работать с контроллерами бакенда. Различие между контроллерами бакенда и фронтенда является
 только логическим. Все контроллеры находятся в одной и той же директории (app/controllers/).
 
-Для входа в систему мы должны иметь правильные логин и пароль. Пользователи хранятся в таблице "users" базы данных invo".
+Для входа в систему мы должны иметь правильные логин и пароль. Пользователи хранятся в таблице "users" базы данных "invo".
 
 Перед стартом сессии мы должны сконфигурировать в приложении коннект к базе данных. В контейнере сервисов создадим сервис
 с названием "db" указав необходимую информацию. Как и в случае автозагрузчика мы возьмем нужные параметры из файла
@@ -424,23 +424,23 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     }
 
-Providing an ACL list
-^^^^^^^^^^^^^^^^^^^^^
-In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
-implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
+Создание списка ACL
+^^^^^^^^^^^^^^^^^^^
+В предыдущем примере мы получили ACL с помощью метода $this->_getAcl(). Этот метод реализуется в плагине.
+Теперь мы шаг за шагом будем объяснять, как создать список контроля доступа (ACL):
 
 .. code-block:: php
 
     <?php
 
-    //Create the ACL
+    // Создаем ACL
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //The default action is DENY access
+    // Действием по умолчанию будет запрет
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Register two roles, Users is registered users
-    //and guests are users without a defined identity
+    // Регистрируем две роли. Users - это зарегистрированные пользователи,
+    // а Guests - неидентифициорованные посетители.
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -449,14 +449,14 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
         $acl->addRole($role);
     }
 
-Now we define the resources for each area respectively. Controller names are resources and their actions are
-accesses for the resources:
+Теперь создадим ресурсы двух видов. Этими ресурсами будут являться имена контроллеров, а их действия примем за
+доступы к этим ресурсам:
 
 .. code-block:: php
 
     <?php
 
-    //Private area resources (backend)
+    // Приватные ресурсы (бакенд)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -467,7 +467,7 @@ accesses for the resources:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    // Публичные ресурсы (фронтенд)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -478,28 +478,28 @@ accesses for the resources:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
-all the resources of both frontend and backend. The role "Guests" only has access to the public area:
+Теперь ACL знает о существующих контроллерах и связанных с ними действиях. Роли "Users" дадим доступ ко всем ресурсам
+фронтенда и бакенда. А роли "Guests" дадим доступ только к публичным ресурсам:
 
 .. code-block:: php
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    // Предоставляем пользователям и гостям доступ к публичным ресурсам
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    // Доступ к приватным ресурсам предоставляем только пользователям
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
         }
     }
 
-Hooray!, the ACL is now complete.
+Ура! Наш ACL готов.
 
 User Components
 ---------------
