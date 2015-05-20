@@ -501,13 +501,13 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
 Ура! Наш ACL готов.
 
-User Components
----------------
-All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
-Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
+Пользовательские компоненты
+---------------------------
+Все элементы UI и стили визуализации приложения в основном задаются с помощью `Twitter Bootstrap`_.
+Некоторые элементы, такие как панель навигации, меняются соответственно состоянию приложения. Например,
+в верхнем правом углу ссылка "Войти / Зарегистрироваться" при авторизации пользователя меняется на "Выйти".
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+Эта часть приложения реализуется в компоненте "Elements" (app/library/Elements.php).
 
 .. code-block:: php
 
@@ -530,20 +530,20 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but
-it helps to get access more quickly to the application services. Now, we register this class in the services container:
+Этот класс расширяет Phalcon\\Mvc\\User\\Component. Это, в общем, необязательно, но помогает быстро получать
+доступ к сервисам приложения. Теперь мы зарегистрируем этот класс в контейнере сервисов:
 
 .. code-block:: php
 
     <?php
 
-    //Register an user component
+    // Регистрируем пользовательский компонент
     $di->set('elements', function(){
         return new Elements();
     });
 
-As controllers, plugins or components within a view, this component also has access to the services registered
-in the container and by just accessing an attribute with the same name as a previously registered service:
+Как и контроллеры, плагины и компоненты в представлениях, этот компонент также получит доступ к сервисам,
+зарегистрированным в контейнере, и сам будет доступен как атрибут с тем именем, с каким мы его зарегистрировали:
 
 .. code-block:: html+php
 
@@ -569,7 +569,7 @@ in the container and by just accessing an attribute with the same name as a prev
         </footer>
     </div>
 
-The important part is:
+Обратите внимание на важную часть:
 
 .. code-block:: html+php
 
