@@ -575,10 +575,9 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     <?php echo $this->elements->getMenu() ?>
 
-Working with the CRUD
----------------------
-Most options that manipulate data (companies, products and types of products), were developed using a basic and
-common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following files:
+Работа с CRUD
+-------------
+Большинство функционала, требующего манипуляции данными (компании, товары и типы товаров), разрабатывается с использованием простого и стандартного CRUD_ (Create, Read, Update и Delete). Каждый CRUD содержит примерно следующие файлы:
 
 .. code-block:: bash
 
@@ -595,7 +594,7 @@ common CRUD_ (Create, Read, Update and Delete). Each CRUD contains the following
                     new.phtml
                     search.phtml
 
-Each controller has the following actions:
+Каждый контроллер реализует примерно следующие действия:
 
 .. code-block:: php
 
@@ -605,7 +604,7 @@ Each controller has the following actions:
     {
 
         /**
-         * The start action, it shows the "search" view
+         * Начальное действие, которое позволяет отправить запрос к "search".
          */
         public function indexAction()
         {
@@ -613,8 +612,8 @@ Each controller has the following actions:
         }
 
         /**
-         * Execute the "search" based on the criteria sent from the "index"
-         * Returning a paginator for the results
+         * Выполняет "search" на основание критериев, отправленных с "index".
+         * Возвращает результаты с пагинацией.
          */
         public function searchAction()
         {
@@ -622,7 +621,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to create a "new" product
+         * Отображает форму создания нового продукта ("new").
          */
         public function newAction()
         {
@@ -630,7 +629,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Shows the view to "edit" an existing product
+         * Отображает форму для редактирование существующего продукта
          */
         public function editAction()
         {
@@ -638,7 +637,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Creates a product based on the data entered in the "new" action
+         * Создает продукт согласно данным, которые были заданы действием "new".
          */
         public function createAction()
         {
@@ -646,7 +645,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Updates a product based on the data entered in the "edit" action
+         * Изменяет продукт согласно данным, которые были заданы действием "edit".
          */
         public function saveAction()
         {
@@ -654,7 +653,7 @@ Each controller has the following actions:
         }
 
         /**
-         * Deletes an existing product
+         * Удаляет существующий продукт.
          */
         public function deleteAction($id)
         {
