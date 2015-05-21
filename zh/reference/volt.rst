@@ -19,6 +19,8 @@ accustomed to while working with Phalcon.
 ------------
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
+Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP代码的工作：
+
 .. code-block:: html+jinja
 
     {# app/views/products/show.volt #}
@@ -247,6 +249,12 @@ Examples:
 
     {# keys filter #}
     {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
+
+    {# join filter #}
+    {% "a".."z"|join(",") %}
+
+    {# format filter #}
+    {% "My real name is %s"|format(name) %}
 
     {# json_encode filter #}
     {% robots|json_encode %}
@@ -923,7 +931,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     <div id="footer">{{ partial("partials/footer") }}</div>
 
     <!-- Passing extra variables -->
-    <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
+    <div id="footer">{{ partial("partials/footer", ['links': links]) }}</div>
 
 A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
 as part of the view which was included:

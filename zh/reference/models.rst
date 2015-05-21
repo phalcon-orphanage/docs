@@ -67,10 +67,6 @@ initialize() 方法在请求期间只被调用一次。
 
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for
-all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
-
 
 initialize() 方法在请求期间仅会被调用一次，目的是为应用中所有该模型的实例进行初始化。如果需要为每一个实例在创建的时候单独进行初始化，
 可以使用 'onConstruct' 事件：
@@ -91,9 +87,6 @@ initialize() 方法在请求期间仅会被调用一次，目的是为应用中�
 
 公共属性对比设置与取值 Setters/Getters（Public properties vs. Setters/Getters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties of public scope, meaning that each property can be read/updated
-from any part of the code that has instantiated that model class without any restrictions:
-
 
 模型可以通过公共属性的方式实现，意味着模型的所有属性在实例化该模型的地方可以无限制的读取和更新。
 
@@ -109,9 +102,6 @@ from any part of the code that has instantiated that model class without any res
 
         public $price;
     }
-
-By using getters and setters you can control which properties are visible publicly perform various transformations
-to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
 
 
 通过使用 getters/setters 方法，可以控制哪些属性可以公开访问，并且对属性值执行不同的形式的转换，同时可以保存在模型中的数据添加相应的验证规则。
@@ -163,10 +153,6 @@ to the data (which would be impossible otherwise) and also add validation rules 
         }
     }
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
-extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
-application they are creating. The ORM is compatible with both schemes of defining properties.
-
 
 公共属性的方式可以在开发中降低复杂度。而 getters/setters 的实现方式可以显著的增强应用的可测试性、扩展性和可维护性。
 开发人员可以自己决定哪一种策略更加适合自己开发的应用。ORM同时兼容这两种方法。
@@ -174,8 +160,6 @@ application they are creating. The ORM is compatible with both schemes of defini
 
 模型放入命名空间（Models in Namespaces）
 ^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
-
 
 命名空间可以用来避免类名的冲突。ORM通过类名来映射相应的表名。比如 'Robots'：
 
@@ -192,9 +176,6 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
 理解记录对象（Understanding Records To Objects）
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
-
 
 每个模型的实例对应一条数据表中的记录。可以方便的通过读取对象的属性来访问相应的数据。比如，
 一个表 "robots" 有如下数据：
@@ -211,11 +192,7 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
-
-
 你可以通过主键找到某一条记录并且打印它的名称：
-
 
 .. code-block:: php
 
@@ -227,9 +204,6 @@ You could find a certain record by its primary key and then print its name:
     // Prints "Terminator"
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
-
-
 一旦记录被加载到内存中之后，你可以修改它的数据并保存所做的修改：
 
 .. code-block:: php
@@ -240,18 +214,10 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
-
-
 如上所示，不需要写任何SQL语句。:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为web应用提供了高层数据库抽象。
-
 
 查找记录（Finding Records）
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
-
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：
 
@@ -286,8 +252,6 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
-
 你可以使用  findFirst() 方法获取第一条符合查询条件的结果：
 
 .. code-block:: php
@@ -306,8 +270,6 @@ You could also use the findFirst() method to get only the first record matching 
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
-
 find() 和 findFirst() 方法都接受关联数组作为查询条件：
 
 .. code-block:: php
@@ -325,44 +287,36 @@ find() 和 findFirst() 方法都接受关联数组作为查询条件：
         "bind"       => array(1 => "virtual")
     ));
 
-The available query options are:
 
-
-
-可用的查询设置如下：
-
+可用的查询选项如下：
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | 参数        | 描述                                                                                                                                                                                               | 举例                                                                    |
 +=============+====================================================================================================================================================================================================+=========================================================================+
-| conditions  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon\\Mvc\\Model assumes the first parameter are the conditions. | "conditions" => "name LIKE 'steve%'"                                    |
+| conditions  | 查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 Phalcon\\Mvc\\Model 假定第一个参数就是查询条件。                                                                                | "conditions" => "name LIKE 'steve%'"                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| columns     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | "columns" => "id, name"                                                 |
+| columns     | 只返回指定的字段，而不是模型所有的字段。 当用这个选项时，返回的是一个不完整的对象。                                                                                                                | "columns" => "id, name"                                                 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bind        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | "bind" => array("status" => "A", "type" => "some-time")                 |
+| bind        | 绑定与选项一起使用，通过替换占位符以及转义字段值从而增加安全性。                                                                                                                                   | "bind" => array("status" => "A", "type" => "some-time")                 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| bindTypes   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
+| bindTypes   | 当绑定参数时，可以使用这个参数为绑定参数定义额外的类型限制从而更加增强安全性。                                                                                                                     | "bindTypes" => array(Column::BIND_TYPE_STR, Column::BIND_TYPE_INT)      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| order       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | "order" => "name DESC, status"                                          |
+| order       | 用于结果排序。使用一个或者多个字段，逗号分隔。                                                                                                                                                     | "order" => "name DESC, status"                                          |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| limit       | Limit the results of the query to results to certain range                                                                                                                                         | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
+| limit       | 限制查询结果的数量在一定范围内。                                                                                                                                                                   | "limit" => 10 / "limit" => array("number" => 10, "offset" => 5)         |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| group       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | "group" => "name, status"                                               |
+| group       | 从多条记录中获取数据并且根据一个或多个字段对结果进行分组。                                                                                                                                         | "group" => "name, status"                                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| for_update  | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting exclusive locks on each row it reads                                              | "for_update" => true                                                    |
+| for_update  | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置独占锁。                                                                         | "for_update" => true                                                    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| shared_lock | With this option, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` reads the latest available data, setting shared locks on each row it reads                                                 | "shared_lock" => true                                                   |
+| shared_lock | 通过这个选项， :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`  读取最新的可用数据，并且为读到的每条记录设置共享锁。                                                                         | "shared_lock" => true                                                   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| cache       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
+| cache       | 缓存结果集，减少了连续访问数据库。                                                                                                                                                                 | "cache" => array("lifetime" => 3600, "key" => "my-find-key")            |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
-
-
 如果你愿意，除了使用数组作为查询参数外，还可以通过一种面向对象的方式来创建查询：
-
 
 .. code-block:: php
 
@@ -375,28 +329,13 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
-
-
 静态方法 query() 返回一个对IDE自动完成友好的 :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`  对象。
 
-
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
-
-
 所有查询在内部都以 :doc:`PHQL <phql>` 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。
-
-
-Lastly, there is the findFirstBy<property-name>() method. This method expands on the "findFirst()" method mentioned earlier. It allows you to quickly perform a
-retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
-An example is in order, so taking our Robots model mentioned earlier :
-
 
 最后，还有一个 findFirstBy<property-name>() 方法。这个方法扩展了前面提及的 "findFirst()" 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。
 
 还是用上面用过的 Robots 模型来举例说明：
-
 
 .. code-block:: php
 
@@ -411,12 +350,7 @@ An example is in order, so taking our Robots model mentioned earlier :
         public $price;
     }
 
-We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
-'Terminator'. This could be written like so :
-
-
 我们这里有3个属性：$id, $name 和 $price。因此，我们以想要查询第一个名称为 'Terminator' 的记录为例，可以这样写：
-
 
 .. code-block:: php
 
@@ -431,21 +365,15 @@ We have three properties to work with here. $id, $name and $price. So, let's say
         $this->flash->error("There were no robots found in our table with the name " . $name ".");
     }
 
-Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
-when we find a match with our query, all the other properties are available to us as well.
-
-
 请注意我们在方法调用中用的是 'Name'，并向它传递了变量 $name，$name 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。
 
 
 模型结果集（Model Resultsets）
 ^^^^^^^^^^^^^^^^
-While findFirst() returns directly an instance of the called class (when there is data to be returned), the find() method returns a
-:doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>`. This is an object that encapsulates all the functionality
-a resultset has like traversing, seeking specific records, counting, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>`
-is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+findFirst() 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 find() 方法返回一个 :doc:`Phalcon\\Mvc\\Model\\Resultset\\Simple <../api/Phalcon_Mvc_Model_Resultset_Simple>` 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。
+
+这些对象比一般数组功能更强大。最大的特点是 :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。
 
 .. code-block:: php
 
@@ -491,17 +419,13 @@ is that at any time there is only one record in memory. This greatly helps in me
     // Get the last record
     $robot = $robots->getLast();
 
-Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
-to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query
-in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
-is traversed several times, the query must be executed the same number of times.
+Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者内部指针去访问任何一条特定的记录。注意有一些数据库系统不支持滚动游标，这就使得查询会被重复执行，
+以便回放光标到最开始的位置，然后获得相应的记录。类似地，如果多次遍历结果集，那么必须执行相同的查询次数。
 
-Storing large query results in memory could consume many resources, because of this, resultsets are obtained
-from the database in chunks of 32 rows reducing the need for re-execute the request in several cases also saving memory.
+将大数据量的查询结果存储在内存会消耗很多资源，正因为如此，分成每32行一块从数据库中获得结果集，以减少重复执行查询请求的次数，在一些情况下也节省内存。
 
-Note that resultsets can be serialized and stored in a cache backend. :doc:`Phalcon\\Cache <cache>` can help with that task. However,
-serializing data causes :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` to retrieve all the data from the database in an array,
-thus consuming more memory while this process takes place.
+注意结果集可以序列化后保存在一个后端缓存里面。 :doc:`Phalcon\\Cache <cache>` 可以用来实现这个。但是，序列化数据会导致 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 
+将从数据库检索到的所有数据以一个数组的方式保存，因此在这样执行的地方会消耗更多的内存。
 
 .. code-block:: php
 
@@ -523,8 +447,8 @@ thus consuming more memory while this process takes place.
 
 过滤结果集（Filtering Resultsets）
 ^^^^^^^^^^^^^^^^^^^^
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
-Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+
+过滤数据最有效的方法是设置一些查询条件，数据库会利用表的索引快速返回数据。Phalcon 额外的允许你通过任何数据库不支持的方式过滤数据。
 
 .. code-block:: php
 
@@ -541,9 +465,8 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
 绑定参数（Binding Parameters）
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中也支持绑定参数。即使使用绑定参数对性能有一点很小的影响，还是强烈建议您使用这种方法，以消除代码受SQL注入攻击的可能性。
+绑定参数支持字符串和整数占位符。实现方法如下：
 
 .. code-block:: php
 
@@ -690,6 +613,9 @@ unidirectional or bidirectional, and each can be simple (a one to one model) or 
 The model manager manages foreign key constraints for these relationships, the definition of these helps referential
 integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
 it is easy to access data in related models from each record in a uniform way.
+
+有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
+
 
 单向关系（Unidirectional relationships）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3098,6 +3024,10 @@ The following example shows how to define the meta-data manually:
 ------------------------------
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the getSchema method to define that:
 
+
+如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 getSchema 方法去定义它：
+
+
 .. code-block:: php
 
     <?php
@@ -3117,6 +3047,12 @@ If a model is mapped to a table that is in a different schemas/databases than th
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` needs to connect to the database it requests the "db" service
 in the application's services container. You can overwrite this service setting it in the initialize method:
+
+
+在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
+需要连接数据库的时候，它在应用服务容器内请求"db"这个服务。 可以通过在 initialize 方法内重写这个服务的设置。
+
+
 
 .. code-block:: php
 
@@ -3144,6 +3080,8 @@ in the application's services container. You can overwrite this service setting 
 
 Then, in the Initialize method, we define the connection service for the model:
 
+然后，在 Initialize 方法内，我们为这个模型定义数据库连接。
+
 .. code-block:: php
 
     <?php
@@ -3160,6 +3098,11 @@ Then, in the Initialize method, we define the connection service for the model:
 
 But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
 to balance the load to your databases implementing a master-slave architecture:
+
+
+另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。
+（译者注：EvaEngine项目为使用Phalcon提供了更多的灵活性，推荐了解和使用）
+
 
 .. code-block:: php
 
@@ -3178,6 +3121,10 @@ to balance the load to your databases implementing a master-slave architecture:
 
 The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
 according to the current query conditions:
+
+
+另外ORM还可以通过根据当前查询条件来实现一个 'shard' 选择器，来实现水平切分的功能。
+
 
 .. code-block:: php
 
@@ -3219,6 +3166,10 @@ according to the current query conditions:
 
 The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
 query executed:
+
+
+'selectReadConnection' 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：
+
 
 .. code-block:: php
 
@@ -3360,6 +3311,8 @@ Each generated profile contains the duration in milliseconds that each instructi
 ------------------------------
 You may be required to access the application services within a model, the following example explains how to do that:
 
+你可能需要在模型中用到应用中注入的服务，下面的例子会教你如何去做：
+
 .. code-block:: php
 
     <?php
@@ -3382,6 +3335,10 @@ You may be required to access the application services within a model, the follo
 
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
+
+
+每当 "create" 或者 "update" 操作失败时会触发 "notSave" 事件。所以我们从DI中获取 "flash" 服务并推送确认消息。这样的话，我们不需要每次在save之后去打印信息。
+
 
 禁用或启用特性（Disabling/Enabling Features）
 ---------------------------

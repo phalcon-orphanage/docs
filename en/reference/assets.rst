@@ -206,7 +206,7 @@ The following example shows how to minify a collection of resources:
         ->setTargetUri('production/final.js')
 
         //This is a remote resource that does not need filtering
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
         //These are local resources that must be filtered
         ->addJs('common-functions.js')
@@ -242,7 +242,7 @@ be filtered or left as is:
     <?php
 
     // This a remote resource that does not need filtering
-    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
+    $js->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false);
 
     // These are local resources that must be filtered
     $js->addJs('common-functions.js');
