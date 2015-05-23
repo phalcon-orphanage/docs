@@ -701,35 +701,35 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 При сабмите формы выполняется действие "search" описанного выше контроллера, которое производит поиск на
 основании введенных пользователем данных.
 
-Performing a Search
-^^^^^^^^^^^^^^^^^^^
-The action "search" has a dual behavior. When accessed via POST, it performs a search based on the data sent from the
-form. But when accessed via GET it moves the current page in the paginator. To differentiate one from another HTTP method,
-we check it using the :doc:`Request <request>` component:
+Выполнение поиска
+^^^^^^^^^^^^^^^^^
+Действие "search" имеет двойственное поведение. В случае POST-запроса оно выполняет поиск на основе данных,
+полученных с формы. А в случае GET-запроса оно меняет текущую страницу пагинатора. Чтобы различить эти два метода HTTP,
+мы используем компонент :doc:`Request <request>`:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Execute the "search" based on the criteria sent from the "index"
-     * Returning a paginator for the results
+     * Выполняет поиск на основе критериев, полученных из "index".
+     * Возвращает пагинатор результатов.
      */
     public function searchAction()
     {
 
         if ($this->request->isPost()) {
-            //create the query conditions
+            // формируем условия запроса
         } else {
-            //paginate using the existing conditions
+            // создаем страницу соответственно существующим условиям
         }
 
         //...
 
     }
 
-With the help of :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>`, we can create the search
-conditions intelligently based on the data types and values sent from the form:
+С помощью :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` мы можем интеллектульно создать
+условия поиска на основе типов данных и значений, полученных с формы:
 
 .. code-block:: php
 
@@ -737,16 +737,15 @@ conditions intelligently based on the data types and values sent from the form:
 
     $query = Criteria::fromInput($this->di, "Products", $_POST);
 
-This method verifies which values are different from "" (empty string) and null and takes them into account to create
-the search criteria:
+Этот метод проверяет все значения, отличные от "" (пустой строки) и null, а затем использует их для создания критериев поиска:
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL "like" operator to filter the results.
-* If the data type is not text or similar, it'll use the operator "=".
+* В случае текстового типа данных (char, varchar, text и т.д.), для фильтрации результатов поиска он использует оператор SQL "like".
+* В противном случае он будет использовать оператор "=".
 
-Additionally, "Criteria" ignores all the $_POST variables that do not match any field in the table.
-Values are automatically escaped using "bound parameters".
+Кроме того, "Criteria" игнорирует все переменные $_POST, которые не соответствуют полям таблицы.
+Значения автоматически эскейпируются с помощью "биндинга параметров".
 
-Now, we store the produced parameters in the controller's session bag:
+Теперь сохраним созданные параметры в разделе сессии, предназначенном нашему контроллеру (сессионная сумка):
 
 .. code-block:: php
 
@@ -754,10 +753,10 @@ Now, we store the produced parameters in the controller's session bag:
 
     $this->persistent->searchParams = $query->getParams();
 
-A session bag, is a special attribute in a controller that persists between requests. When accessed, this attribute injects
-a :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>` service that is independent in each controller.
+Сессионная сумка - это специальный атрибут контроллера, значение которого сохраняется между запросами. При обращении к нему,
+в него инъецируется сервис :doc:`Phalcon\\Session\\Bag <../api/Phalcon_Session_Bag>`, отдельный для каждого контроллера.
 
-Then, based on the built params we perform the query:
+Теперь выполним запрос, основываясь на собранных параметрах:
 
 .. code-block:: php
 
@@ -765,27 +764,27 @@ Then, based on the built params we perform the query:
 
     $products = Products::find($parameters);
     if (count($products) == 0) {
-        $this->flash->notice("The search did not found any products");
+        $this->flash->notice("Поиск не нашел никаких продуктов");
         return $this->forward("products/index");
     }
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the
-search returned results, then we create a paginator to navigate easily through them:
+Если поиск не вернул ни одного продукта, мы снова перенаправляем пользователся на действие index.
+Если же поиск что-то находит, то создадим пагинатор для облегчения навигации по ним:
 
 .. code-block:: php
 
     <?php
 
     $paginator = new Phalcon\Paginator\Adapter\Model(array(
-        "data" => $products,    //Data to paginate
-        "limit" => 5,           //Rows per page
-        "page" => $numberPage   //Active page
+        "data" => $products,    // Данные для пагинации
+        "limit" => 5,           // Число строк на страницу
+        "page" => $numberPage   // Активная страница
     ));
 
-    //Get active page in the paginator
+    // Получение активной страницы пагинатора
     $page = $paginator->getPaginate();
 
-Finally we pass the returned page to view:
+Передадим, наконец, полученную страницу на вывод:
 
 .. code-block:: php
 
@@ -793,7 +792,7 @@ Finally we pass the returned page to view:
 
     $this->view->setVar("page", $page);
 
-In the view (app/views/products/search.phtml), we traverse the results corresponding to the current page:
+В представлении (app/views/products/search.phtml) мы выводим результаты, соответствующие текущей странице:
 
 .. code-block:: html+php
 
@@ -804,8 +803,8 @@ In the view (app/views/products/search.phtml), we traverse the results correspon
             <td><?= $product->name ?></td>
             <td><?= $product->price ?></td>
             <td><?= $product->active ?></td>
-            <td><?= $this->tag->linkTo("products/edit/" . $product->id, 'Edit') ?></td>
-            <td><?= $this->tag->linkTo("products/delete/" . $product->id, 'Delete') ?></td>
+            <td><?= $this->tag->linkTo("products/edit/" . $product->id, 'Редактировать') ?></td>
+            <td><?= $this->tag->linkTo("products/delete/" . $product->id, 'Удалить') ?></td>
         </tr>
     <?php } ?>
 
