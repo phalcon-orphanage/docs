@@ -594,7 +594,7 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
                     new.phtml
                     search.phtml
 
-Каждый контроллер реализует примерно следующие действия:
+Каждый контроллер реализует следующие действия:
 
 .. code-block:: php
 
@@ -662,18 +662,19 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     }
 
-The Search Form
-^^^^^^^^^^^^^^^
-Every CRUD starts with a search form. This form shows each field that has the table (products), allowing the user
-creating a search criteria from any field. Table "products" has a relationship to the table "products_types".
-In this case, we previously queried the records in this table in order to facilitate the search by that field:
+Форма поиска
+^^^^^^^^^^^^
+Каждый CRUD начинается с формы поиска. Эта форма показывает все столбцы таблицы (products), позволяющие
+пользователю задавать поисковые критерии по любому полю. Таблица "products" связана с таблицей "products_types".
+Поэтому мы предварительно запрашиваем записи этой последней таблицы, чтобы предложить их для поиска по
+соответствующему полю:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * The start action, it shows the "search" view
+     * Начальное действие, которое отображает представление "search".
      */
     public function indexAction()
     {
@@ -681,13 +682,13 @@ In this case, we previously queried the records in this table in order to facili
         $this->view->productTypes = ProductTypes::find();
     }
 
-All the "product types" are queried and passed to the view as a local variable "productTypes". Then, in the view
-(app/views/index.phtml) we show a "select" tag filled with those results:
+Все "типы продуктов" запрашиваются и выдаются в представление, как локальная переменная "productTypes". Затем,
+в самом представлении (app/views/index.phtml) мы выводим тег "select", содержащий эти результаты:
 
 .. code-block:: html+php
 
     <div>
-        <label for="product_types_id">Product Type</label>
+        <label for="product_types_id">Тип продукта</label>
         <?php echo $this->tag->select(array(
             "product_types_id",
             $productTypes,
@@ -696,9 +697,9 @@ All the "product types" are queried and passed to the view as a local variable "
         )) ?>
     </div>
 
-Note that $productTypes contains the data necessary to fill the SELECT tag using Phalcon\\Tag::select. Once the form
-is submitted, the action "search" is executed in the controller performing the search based on the data entered by
-the user.
+Заметим, что $productTypes содержит в себе данные, заполняющие тег SELECT посредством Phalcon\\Tag::select.
+При сабмите формы выполняется действие "search" описанного выше контроллера, которое производит поиск на
+основании введенных пользователем данных.
 
 Performing a Search
 ^^^^^^^^^^^^^^^^^^^
