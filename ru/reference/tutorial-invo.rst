@@ -808,19 +808,20 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
         </tr>
     <?php } ?>
 
-Creating and Updating Records
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now let's see how the CRUD creates and updates records. From the "new" and "edit" views the data entered by the user
-are sent to the actions "create" and "save" that perform actions of "creating" and "updating" products respectively.
+Создание и изменение записей
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Давайте теперь посмотрим, как создавать и изменять записи в CRUD. Пользователь вводит данные в представлениях
+"new" и "edit". Их получают действия "create" и "save", которые выполняют, соответственно, "создание" и "изменение"
+продуктов.
 
-In the creation case, we recover the data submitted and assign them to a new "products" instance:
+В случае создания мы разбираем присланные данные и назначаем их новому экземпляру "products":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * Создание продукта на основе данных, введенных в действии "new"
      */
     public function createAction()
     {
@@ -837,17 +838,18 @@ In the creation case, we recover the data submitted and assign them to a new "pr
 
     }
 
-Data is filtered before being assigned to the object. This filtering is optional, the ORM escapes the input data and
-performs additional casting according to the column types.
+Перед назначением объекту данные фильтруются, что в общем-то необязательно, так как ORM сам экранирует вводимые данные
+и выполняет дополнительные преобразования соответственно типу столбца.
 
-When saving we'll know whether the data conforms to the business rules and validations implemented in the model Products:
+При сохранении мы проверяем, соответствуют ли данные бизнес-правилам и проходят ли проверки,
+реализованные в модели Products:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Creates a product based on the data entered in the "new" action
+     * Создание продукта на основе данных, введенных в действии "new"
      */
     public function createAction()
     {
@@ -856,27 +858,27 @@ When saving we'll know whether the data conforms to the business rules and valid
 
         if (!$products->create()) {
 
-            //The store failed, the following messages were produced
+            // Сохранение не сработало, выводим сообщения о причинах
             foreach ($products->getMessages() as $message) {
                 $this->flash->error((string) $message);
             }
             return $this->forward("products/new");
 
         } else {
-            $this->flash->success("Product was created successfully");
+            $this->flash->success("Продукт был успешно создан");
             return $this->forward("products/index");
         }
 
     }
 
-Now, in the case of product updating, first we must present to the user the data that is currently in the edited record:
+Теперь перейдем к случаю изменения. Сначала мы должны предоставить пользователю данные текущей редактируемой записи:
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Shows the view to "edit" an existing product
+     * Показываем представление "edit" для существующего продукта
      */
     public function editAction($id)
     {
@@ -893,30 +895,30 @@ Now, in the case of product updating, first we must present to the user the data
 
     }
 
-The "setDefault" helper sets a default value in the form on the attribute with the same name. Thanks to this,
-the user can change any value and then sent it back to the database through to the "save" action:
+Хелпер "setDefault" устанавливает значения по умолчанию тем полям форм, которые имеют соответствующий атрибут name.
+Благодаря ему пользователь может изменить любое значение и отправить его обратно в базу данных через действие "save":
 
 .. code-block:: php
 
     <?php
 
     /**
-     * Updates a product based on the data entered in the "edit" action
+     * Изменение продукта на основе данных, введенных действием "edit"
      */
     public function saveAction()
     {
 
         //...
 
-        //Find the product to update
+        // Находим изменяемый продукт
         $id = $this->request->getPost("id");
         $product = Products::findFirstById($id);
         if (!$product) {
-            $this->flash->error("products does not exist " . $id);
+            $this->flash->error("не существует продукт " . $id);
             return $this->forward("products/index");
         }
 
-        //... assign the values to the object and store it
+        //... назначаем объекту значения и сохраняем его
 
     }
 
