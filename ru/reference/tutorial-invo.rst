@@ -922,10 +922,10 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
 
     }
 
-Changing the Title Dynamically
-------------------------------
-When you browse between one option and another will see that the title changes dynamically indicating where
-we are currently working. This is achieved in each controller initializer:
+Динамическое изменениие заголовка
+---------------------------------
+По мере того, как вы просматриваете страницы одну за другой, можете заметить, что их заголовоки динамически
+меняются и показывают, где вы сейчас находитесь. Это достигается с помощью инициализатора контроллера:
 
 .. code-block:: php
 
@@ -936,8 +936,8 @@ we are currently working. This is achieved in each controller initializer:
 
         public function initialize()
         {
-            //Set the document title
-            $this->tag->setTitle('Manage your product types');
+            // Устанавливаем заголовок документа
+            $this->tag->setTitle('Управление типами ваших продуктов');
             parent::initialize();
         }
 
@@ -945,7 +945,7 @@ we are currently working. This is achieved in each controller initializer:
 
     }
 
-Note, that the method parent::initialize() is also called, it adds more data to the title:
+Заметьте, что метод parent::initialize() также вызывается и может добавить в заголовок дополнительные данные:
 
 .. code-block:: php
 
@@ -956,14 +956,14 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
         protected function initialize()
         {
-            //Prepend the application name to the title
+            // Дописываем в начало заголовка название приложения
             $this->tag->prependTitle('INVO | ');
         }
 
         //...
     }
 
-Finally, the title is printed in the main view (app/views/index.phtml):
+Вот так этот заголовок выводится в главном представлении (app/views/index.phtml):
 
 .. code-block:: html+php
 
