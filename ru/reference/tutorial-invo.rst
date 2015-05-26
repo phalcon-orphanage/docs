@@ -975,10 +975,10 @@ SessionController::startAction (app/controllers/SessionController.phtml) буд�
         <!-- ... -->
     </html>
 
-Conclusion
-----------
-This tutorial covers many more aspects of building applications with Phalcon, hope you have served to
-learn more and get more out of the framework.
+Выводы
+------
+Этот учебник покрывает многие аспекты создания приложений с помощью Phalcon. Надеемся, что вы захотите
+узнать об этом фреймворке еще больше.
 
 .. _Github: https://github.com/phalcon/invo
 .. _CRUD: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
