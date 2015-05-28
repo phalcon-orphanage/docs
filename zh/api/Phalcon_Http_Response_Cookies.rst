@@ -1,7 +1,7 @@
 Class **Phalcon\\Http\\Response\\Cookies**
 ==========================================
 
-*implements* :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Http\\Response\\CookiesInterface <Phalcon_Http_Response_CookiesInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
 
@@ -9,7 +9,7 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 Methods
 -------
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector
 
@@ -21,7 +21,7 @@ Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **useEncryption** (*boolean* $useEncryption)
+public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **useEncryption** (*unknown* $useEncryption)
 
 Set if cookies in the bag must be automatically encrypted/decrypted
 
@@ -33,27 +33,27 @@ Returns if the bag is automatically encrypting/decrypting cookies
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **set** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
+public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **set** (*unknown* $name, [*unknown* $value], [*unknown* $expire], [*unknown* $path], [*unknown* $secure], [*unknown* $domain], [*unknown* $httpOnly])
 
 Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **get** (*string* $name)
+public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **get** (*unknown* $name)
 
 Gets a cookie from the bag
 
 
 
-public *boolean*  **has** (*string* $name)
+public *boolean*  **has** (*unknown* $name)
 
-Check if a cookie is defined in the bag or exists in the $_COOKIE superglobal
+Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
 
 
 
-public *boolean*  **delete** (*string* $name)
+public *boolean*  **delete** (*unknown* $name)
 
-Deletes a cookie by its name This method does not removes cookies from the $_COOKIE superglobal
+Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
 
 
 

@@ -9,6 +9,8 @@ information of the request, allowing you to access it in an object-oriented way.
 
     <?php
 
+    use Phalcon\Http\Request;
+
     // Getting a request instance
     $request = new \Phalcon\Http\Request();
 
@@ -36,13 +38,14 @@ $_GET and $_POST arrays and sanitize or filter them with the 'filter' service, (
 
     <?php
 
-    // Manually applying the filter
-    $filter = new Phalcon\Filter();
+    use Phalcon\Filter;
 
+    // Manually applying the filter
+    $filter = new Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new Phalcon\Filter();
+    $filter = new Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
@@ -139,7 +142,7 @@ the user. The following examples show usages of that information:
     <?php
 
     // get the Http-X-Requested-With header
-    $requestedWith = $response->getHeader("HTTP_X_REQUESTED_WITH");
+    $requestedWith = $request->getHeader("HTTP_X_REQUESTED_WITH");
     if ($requestedWith == "XMLHttpRequest") {
         echo "The request was made with Ajax";
     }
@@ -155,22 +158,22 @@ the user. The following examples show usages of that information:
     }
 
     // Get the servers's ip address. ie. 192.168.0.100
-    $ipAddress = $request->getServerAddress();
+    $ipAddress   = $request->getServerAddress();
 
     // Get the client's ip address ie. 201.245.53.51
-    $ipAddress = $request->getClientAddress();
+    $ipAddress   = $request->getClientAddress();
 
     // Get the User Agent (HTTP_USER_AGENT)
-    $userAgent = $request->getUserAgent();
+    $userAgent   = $request->getUserAgent();
 
     // Get the best acceptable content by the browser. ie text/xml
     $contentType = $request->getAcceptableContent();
 
     // Get the best charset accepted by the browser. ie. utf-8
-    $charset = $request->getBestCharset();
+    $charset     = $request->getBestCharset();
 
     // Get the best language accepted configured in the browser. ie. en-us
-    $language = $request->getBestLanguage();
+    $language    = $request->getBestLanguage();
 
 
 .. _SQL injection: http://en.wikipedia.org/wiki/SQL_injection

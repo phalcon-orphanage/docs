@@ -91,38 +91,44 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Mvc\Application;
+    use Phalcon\DI\FactoryDefault;
+
     try {
 
-        //Register an autoloader
-        $loader = new \Phalcon\Loader();
+        // Register an autoloader
+        $loader = new Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        // Create a DI
+        $di = new FactoryDefault();
 
-        //Setup the view component
+        // Setup the view component
         $di->set('view', function(){
-            $view = new \Phalcon\Mvc\View();
+            $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function(){
-            $url = new \Phalcon\Mvc\Url();
+            $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });        
+        });
 
-        //Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        // Handle the request
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(\Phalcon\Exception $e) {
+    } catch(\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -136,7 +142,11 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    $loader = new \Phalcon\Loader();
+    use Phalcon\Loader;
+
+    // ...
+
+    $loader = new Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -154,8 +164,12 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    //Create a DI
-    $di = new Phalcon\DI\FactoryDefault();
+    use Phalcon\DI\FactoryDefault;
+
+    // ...
+
+    // Create a DI
+    $di = new FactoryDefault();
 
 :doc:`Phalcon\\DI\\FactoryDefault <../api/Phalcon\_DI_FactoryDefault>` 是 Phalcon\\DI 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
 因此，我们不需要一个一个注册这些组件。在以后更换工厂服务的时候也不会有什么问题。
@@ -168,9 +182,13 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    //Setup the view component
-    $di->set('view', function(){
-        $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    // ...
+
+    // Setup the view component
+    $di->set('view', function() {
+        $view = new View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
@@ -182,12 +200,16 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    //Setup a base URI so that all generated URIs include the "tutorial" folder
+    use Phalcon\Mvc\Url as UrlProvider;
+
+    // ...
+
+    // Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function(){
-        $url = new \Phalcon\Mvc\Url();
+        $url = new UrlProvider();
         $url->setBaseUri('/tutorial/');
         return $url;
-    });   
+    });
 
 在这个文件的最后部分，我们发现 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。
 
@@ -195,7 +217,11 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    $application = new \Phalcon\Mvc\Application($di);
+    use Phalcon\Mvc\Application;
+
+    // ...
+
+    $application = new Application($di);
 
     echo $application->handle()->getContent();
 
@@ -209,7 +235,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
 
         public function indexAction()
@@ -240,7 +268,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    class IndexController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
 
         public function indexAction()
@@ -282,7 +312,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -296,24 +328,22 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 .. code-block:: html+php
 
-    <?php use Phalcon\Tag; ?>
-
     <h2>Sign up using this form</h2>
 
-    <?php echo Tag::form("signup/register"); ?>
+    <?php echo $this->tag->form("signup/register"); ?>
 
      <p>
         <label for="name">Name</label>
-        <?php echo Tag::textField("name") ?>
+        <?php echo $this->tag->textField("name") ?>
      </p>
 
      <p>
         <label for="email">E-Mail</label>
-        <?php echo Tag::textField("email") ?>
+        <?php echo $this->tag->textField("email") ?>
      </p>
 
      <p>
-        <?php echo Tag::submitButton("Register") ?>
+        <?php echo $this->tag->submitButton("Register") ?>
      </p>
 
     </form>
@@ -337,7 +367,9 @@ Phalcon\\Tag::form 方法只接受一个参数实例, 一个相对uri到这个�
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -375,7 +407,9 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     <?php
 
-    class Users extends \Phalcon\Mvc\Model
+    use Phalcon\Mvc\Model;
+
+    class Users extends Model
     {
 
     }
@@ -388,49 +422,56 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     <?php
 
+    use Phalcon\Loader;
+    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Application;
+    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+
     try {
 
-        //Register an autoloader
-        $loader = new \Phalcon\Loader();
+        // Register an autoloader
+        $loader = new Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        // Create a DI
+        $di = new FactoryDefault();
 
-        //Setup the database service
+        // Setup the database service
         $di->set('db', function(){
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-                "host" => "localhost",
+            return new DbAdapter(array(
+                "host"     => "localhost",
                 "username" => "root",
                 "password" => "secret",
-                "dbname" => "test_db"
+                "dbname"   => "test_db"
             ));
         });
 
-        //Setup the view component
+        // Setup the view component
         $di->set('view', function(){
-            $view = new \Phalcon\Mvc\View();
+            $view = new View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
-        
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+
+        // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function(){
-            $url = new \Phalcon\Mvc\Url();
+            $url = new UrlProvider();
             $url->setBaseUri('/tutorial/');
             return $url;
-        });       
+        });
 
         //Handle the request
-        $application = new \Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         echo $application->handle()->getContent();
 
-    } catch(Exception $e) {
-         echo "PhalconException: ", $e->getMessage();
+    } catch(\Exception $e) {
+         echo "Exception: ", $e->getMessage();
     }
 
 使用正确的数据库参数，我们的模型已经准备和应用程序的其余部分工作。
@@ -443,7 +484,9 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
 
     <?php
 
-    class SignupController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SignupController extends Controller
     {
 
         public function indexAction()
@@ -484,20 +527,10 @@ ORM自动转义输入以防止SQL注入，所以我们只需要将请求传递�
 
 结束语（Conclusion）
 ----------
-这是一个非常简单的教程，正如你所看到的，使用Phalcon很容易开始构建应用程序。Phalcon是一个在你的web服务器上没有干扰、易于开发、特性优良的扩展。我们邀请你继续阅读手册，这样你就可以发现Phalcon提供的附加功能!
-
-一些应用（Sample Applications）
--------------------
-以下Phalcon-powered应用程序也可以提供更完整的例子：
-
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
-
+This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
+The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
+features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php
-.. _INVO application: http://blog.phalconphp.com/post/20928554661/invo-a-sample-application
-.. _PHP Alternative website: http://blog.phalconphp.com/post/24622423072/sample-application-php-alternative-site
-.. _Album O'Rama: http://blog.phalconphp.com/post/37515965262/sample-application-album-orama
-.. _Phosphorum: http://blog.phalconphp.com/post/41461000213/phosphorum-the-phalcons-forum
+
+这是一个非常简单的教程，正如你所看到的，使用Phalcon很容易开始构建应用程序。Phalcon是一个在你的web服务器上没有干扰、易于开发、特性优良的扩展。我们邀请你继续阅读手册，这样你就可以发现Phalcon提供的附加功能!

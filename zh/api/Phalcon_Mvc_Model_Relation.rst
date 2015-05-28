@@ -28,13 +28,13 @@ Constants
 Methods
 -------
 
-public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
+public  **__construct** (*unknown* $type, *unknown* $referencedModel, *unknown* $fields, *unknown* $referencedFields, [*unknown* $options])
 
 Phalcon\\Mvc\\Model\\Relation constructor
 
 
 
-public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
+public  **setIntermediateRelation** (*unknown* $intermediateFields, *unknown* $intermediateModel, *unknown* $intermediateReferencedFields)
 
 Sets the intermediate model data for has-*-through relations
 
@@ -70,7 +70,7 @@ Returns the options
 
 
 
-public *string|array*  **isForeignKey** ()
+public *boolean*  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 
@@ -79,6 +79,12 @@ Check whether the relation act as a foreign key
 public *string|array*  **getForeignKey** ()
 
 Returns the foreign key configuration
+
+
+
+public *array*  **getParams** ()
+
+Returns parameters that must be always used when the related records are obtained
 
 
 

@@ -6,9 +6,9 @@ Phalcon中提供了 Phalcon\\Forms组件以方便开发者创建和维护应用�
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     $form = new Form();
 
@@ -81,9 +81,9 @@ html的属性也可以在创建时指定：
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Select;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Select;
 
     class ContactForm extends Form
     {
@@ -106,9 +106,9 @@ html的属性也可以在创建时指定：
 
     <?php
 
-    use Phalcon\Forms\Form,
-        Phalcon\Forms\Element\Text,
-        Phalcon\Forms\Element\Hidden;
+    use Phalcon\Forms\Form;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Forms\Element\Hidden;
 
     class ContactForm extends Form
     {
@@ -182,9 +182,9 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
 
     <?php
 
-    use Phalcon\Forms\Element\Text,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\StringLength;
+    use Phalcon\Forms\Element\Text;
+    use Phalcon\Validation\Validator\PresenceOf;
+    use Phalcon\Validation\Validator\StringLength;
 
     $name = new Text("name");
 
@@ -334,7 +334,7 @@ Phalcon表单组件可以和 :doc:`validation <validation>` 集成，以提供�
             return 'Europe/Amsterdam';
         }
 
-        public function getTimezone()
+        public function getReceiveEmails()
         {
             return 'No';
         }
@@ -378,7 +378,9 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     <?php
 
-    class ContactForm extends Phalcon\Mvc\Form
+    use Phalcon\Mvc\Form;
+
+    class ContactForm extends Form
     {
         public function beforeValidation()
         {
@@ -427,7 +429,9 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     <?php
 
-    class ContactForm extends Phalcon\Forms\Form
+    use Phalcon\Forms\Form;
+
+    class ContactForm extends Form
     {
         public function initialize()
         {
@@ -497,8 +501,10 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 P
 
     <?php
 
+    use Phalcon\Forms\Manager as FormsManager;
+
     $di['forms'] = function() {
-        return new Phalcon\Forms\Manager();
+        return new FormsManager();
     };
 
 表单被添加到表单管理器， 然后设置了唯一的名字：

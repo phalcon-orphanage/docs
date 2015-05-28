@@ -1,59 +1,45 @@
 Abstract class **Phalcon\\Translate\\Adapter**
 ==============================================
 
-*implements* ArrayAccess, :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`
-
 Base class for Phalcon\\Translate adapters
 
 
 Methods
 -------
 
-public  **__construct** ()
-
-Class constructore
-
-
-
-public *string*  **_** (*string* $translateKey, [*array* $placeholders])
+public *string*  **t** (*unknown* $translateKey, [*unknown* $placeholders])
 
 Returns the translation string of the given key
 
 
 
-public  **offsetSet** (*unknown* $property, *string* $value)
+public *string*  **_** (*unknown* $translateKey, [*unknown* $placeholders])
+
+Returns the translation string of the given key (alias of method 't')
+
+
+
+public  **offsetSet** (*unknown* $offset, *unknown* $value)
 
 Sets a translation value
 
 
 
-public *boolean*  **offsetExists** (*unknown* $property)
+public *boolean*  **offsetExists** (*unknown* $translateKey)
 
 Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*unknown* $property)
+public  **offsetUnset** (*unknown* $offset)
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $property)
+public *string*  **offsetGet** (*unknown* $translateKey)
 
 Returns the translation related to the given key
-
-
-
-abstract public *string*  **query** (*string* $index, [*array* $placeholders]) inherited from Phalcon\\Translate\\AdapterInterface
-
-Returns the translation related to the given key
-
-
-
-abstract public *bool*  **exists** (*string* $index) inherited from Phalcon\\Translate\\AdapterInterface
-
-Check whether is defined a translation key in the internal array
 
 
 

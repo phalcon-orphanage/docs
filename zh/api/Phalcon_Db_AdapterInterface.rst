@@ -1,387 +1,321 @@
 Interface **Phalcon\\Db\\AdapterInterface**
 ===========================================
 
-Phalcon\\Db\\AdapterInterface initializer
-
-
 Methods
 -------
 
-abstract public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*int* $placeholders])
+abstract public  **__construct** (*unknown* $descriptor)
 
-Returns the first row in a SQL query result
+...
 
 
+abstract public  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $placeholders])
 
-abstract public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*int* $placeholders])
+...
 
-Dumps the complete result of a query into an array
 
+abstract public  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $placeholders])
 
+...
 
-abstract public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserts data into a table using custom RBDM SQL syntax
+abstract public  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes])
 
+...
 
 
-abstract public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
+abstract public  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax
+...
 
 
+abstract public  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes])
 
-abstract public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
+...
 
-Deletes data from a table using custom RBDM SQL syntax
 
+abstract public  **getColumnList** (*unknown* $columnList)
 
+...
 
-abstract public *string*  **getColumnList** (*array* $columnList)
 
-Gets a list of columns
+abstract public  **limit** (*unknown* $sqlQuery, *unknown* $number)
 
+...
 
 
-abstract public *string*  **limit** (*string* $sqlQuery, *int* $number)
+abstract public  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
 
-Appends a LIMIT clause to $sqlQuery argument
+...
 
 
+abstract public  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
 
-abstract public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
+...
 
-Generates SQL checking for the existence of a schema.table
 
+abstract public  **forUpdate** (*unknown* $sqlQuery)
 
+...
 
-abstract public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+abstract public  **sharedLock** (*unknown* $sqlQuery)
 
+...
 
 
-abstract public *string*  **forUpdate** (*string* $sqlQuery)
+abstract public  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
 
-Returns a SQL modified with a FOR UPDATE clause
+...
 
 
+abstract public  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
 
-abstract public *string*  **sharedLock** (*string* $sqlQuery)
+...
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
 
+abstract public  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
 
+...
 
-abstract public *boolean*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
 
-Creates a table
+abstract public  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
 
+...
 
 
-abstract public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists])
+abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
-Drops a table from a schema/database
+...
 
 
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
-abstract public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+...
 
-Creates a view
 
+abstract public  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
 
+...
 
-abstract public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists])
 
-Drops a view
+abstract public  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
+...
 
 
-abstract public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+abstract public  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
 
-Adds a column to a table
+...
 
 
+abstract public  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
-abstract public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+...
 
-Modifies a table column based on a definition
 
+abstract public  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
 
+...
 
-abstract public *boolean*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
 
-Drops a column from a table
+abstract public  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
 
+...
 
 
-abstract public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+abstract public  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
 
-Adds an index to a table
+...
 
 
+abstract public  **getColumnDefinition** (*unknown* $column)
 
-abstract public *boolean*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+...
 
-Drop an index from a table
 
+abstract public  **listTables** ([*unknown* $schemaName])
 
+...
 
-abstract public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
 
-Adds a primary key to a table
+abstract public  **listViews** ([*unknown* $schemaName])
 
+...
 
 
-abstract public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+abstract public  **getDescriptor** ()
 
-Drops primary key from a table
+...
 
 
+abstract public  **getConnectionId** ()
 
-abstract public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+...
 
-Adds a foreign key to a table
 
+abstract public  **getSQLStatement** ()
 
+...
 
-abstract public *boolean true*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
 
-Drops a foreign key from a table
+abstract public  **getRealSQLStatement** ()
 
+...
 
 
-abstract public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+abstract public  **getSQLVariables** ()
 
-Returns the SQL column definition from a column
+...
 
 
+abstract public  **getSQLBindTypes** ()
 
-abstract public *array*  **listTables** ([*string* $schemaName])
+...
 
-List all tables on a database
 
+abstract public  **getType** ()
 
+...
 
-abstract public *array*  **listViews** ([*string* $schemaName])
 
-List all views on a database
+abstract public  **getDialectType** ()
 
+...
 
 
-abstract public *array*  **getDescriptor** ()
+abstract public  **getDialect** ()
 
-Return descriptor used to connect to the active database
+...
 
 
+abstract public  **connect** ([*unknown* $descriptor])
 
-abstract public *string*  **getConnectionId** ()
+...
 
-Gets the active connection unique identifier
 
+abstract public  **query** (*unknown* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
 
+...
 
-abstract public *string*  **getSQLStatement** ()
 
-Active SQL statement in the object
+abstract public  **execute** (*unknown* $sqlStatement, [*unknown* $placeholders], [*unknown* $dataTypes])
 
+...
 
 
-abstract public *string*  **getRealSQLStatement** ()
+abstract public  **affectedRows** ()
 
-Active SQL statement in the object without replace bound paramters
+...
 
 
+abstract public  **close** ()
 
-abstract public *array*  **getSQLVariables** ()
+...
 
-Active SQL statement in the object
 
+abstract public  **escapeIdentifier** (*unknown* $identifier)
 
+...
 
-abstract public *array*  **getSQLBindTypes** ()
 
-Active SQL statement in the object
+abstract public  **escapeString** (*unknown* $str)
 
+...
 
 
-abstract public *string*  **getType** ()
+abstract public  **lastInsertId** ([*unknown* $sequenceName])
 
-Returns type of database system the adapter is used for
+...
 
 
+abstract public  **begin** ([*unknown* $nesting])
 
-abstract public *string*  **getDialectType** ()
+...
 
-Returns the name of the dialect used
 
+abstract public  **rollback** ([*unknown* $nesting])
 
+...
 
-abstract public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** ()
 
-Returns internal dialect instance
+abstract public  **commit** ([*unknown* $nesting])
 
+...
 
 
-abstract public *boolean*  **connect** ([*array* $descriptor])
+abstract public  **isUnderTransaction** ()
 
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
+...
 
 
+abstract public  **getInternalHandler** ()
 
-abstract public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes])
+...
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows
 
+abstract public  **describeIndexes** (*unknown* $table, [*unknown* $schema])
 
+...
 
-abstract public *boolean*  **execute** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes])
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row
+abstract public  **describeReferences** (*unknown* $table, [*unknown* $schema])
 
+...
 
 
-abstract public *int*  **affectedRows** ()
+abstract public  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
 
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by the database system
+...
 
 
+abstract public  **useExplicitIdValue** ()
 
-abstract public *boolean*  **close** ()
+...
 
-Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
 
+abstract public  **getDefaultIdValue** ()
 
+...
 
-abstract public *string*  **escapeIdentifier** (*string* $identifier)
 
-Escapes a column/table/schema name
+abstract public  **supportSequences** ()
 
+...
 
 
-abstract public *string*  **escapeString** (*string* $str)
+abstract public  **createSavepoint** (*unknown* $name)
 
-Escapes a value to avoid SQL injections
+...
 
 
+abstract public  **releaseSavepoint** (*unknown* $name)
 
-abstract public *array*  **convertBoundParams** (*string* $sqlStatement, *array* $params)
+...
 
-Converts bound params like :name: or ?1 into ? bind params
 
+abstract public  **rollbackSavepoint** (*unknown* $name)
 
+...
 
-abstract public *int*  **lastInsertId** ([*string* $sequenceName])
 
-Returns insert id for the auto_increment column inserted in the last SQL statement
+abstract public  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
 
+...
 
 
-abstract public *boolean*  **begin** ()
+abstract public  **isNestedTransactionsWithSavepoints** ()
 
-Starts a transaction in the connection
+...
 
 
+abstract public  **getNestedTransactionSavepointName** ()
 
-abstract public *boolean*  **rollback** ()
+...
 
-Rollbacks the active transaction in the connection
 
+abstract public  **describeColumns** (*unknown* $table, [*unknown* $schema])
 
-
-abstract public *boolean*  **commit** ()
-
-Commits the active transaction in the connection
-
-
-
-abstract public *boolean*  **isUnderTransaction** ()
-
-Checks whether connection is under database transaction
-
-
-
-abstract public *\PDO*  **getInternalHandler** ()
-
-Return internal PDO handler
-
-
-
-abstract public :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` [] **describeIndexes** (*string* $table, [*string* $schema])
-
-Lists table indexes
-
-
-
-abstract public :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` [] **describeReferences** (*string* $table, [*string* $schema])
-
-Lists table references
-
-
-
-abstract public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName])
-
-Gets creation options from a table
-
-
-
-abstract public *boolean*  **useExplicitIdValue** ()
-
-Check whether the database system requires an explicit value for identity columns
-
-
-
-abstract public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
-
-Return the default identity value to insert in an identity column
-
-
-
-abstract public *boolean*  **supportSequences** ()
-
-Check whether the database system requires a sequence to produce auto-numeric values
-
-
-
-abstract public *boolean*  **createSavepoint** (*string* $name)
-
-Creates a new savepoint
-
-
-
-abstract public *boolean*  **releaseSavepoint** (*string* $name)
-
-Releases given savepoint
-
-
-
-abstract public *boolean*  **rollbackSavepoint** (*string* $name)
-
-Rollbacks given savepoint
-
-
-
-abstract public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints)
-
-Set if nested transactions should use savepoints
-
-
-
-abstract public *boolean*  **isNestedTransactionsWithSavepoints** ()
-
-Returns if nested transactions should use savepoints
-
-
-
-abstract public *string*  **getNestedTransactionSavepointName** ()
-
-Returns the savepoint name to use for nested transactions
-
-
-
-abstract public :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` [] **describeColumns** (*string* $table, [*string* $schema])
-
-Returns an array of Phalcon\\Db\\Column objects describing a table
-
+...
 
 

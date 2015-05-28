@@ -21,7 +21,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
     }
@@ -36,7 +38,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function getSource()
         {
@@ -71,7 +75,9 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     namespace Store\Toys;
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function getSource()
@@ -99,7 +105,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     <?php
 
-    $robot = Robots::findFirst(array(
+    $robot       = Robots::findFirst(array(
         array('name' => 'Astroy Boy')
     ));
     $robot->name = "Voltron";
@@ -115,14 +121,14 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
 
     // Simple database connection to localhost
     $di->set('mongo', function() {
-        $mongo = new Mongo();
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient();
+        return $mongo->selectDB("store");
     }, true);
 
     // Connecting to a domain socket, falling back to localhost connection
     $di->set('mongo', function() {
-        $mongo = new Mongo("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
-        return $mongo->selectDb("store");
+        $mongo = new MongoClient("mongodb:///tmp/mongodb-27017.sock,localhost:27017");
+        return $mongo->selectDB("store");
     }, true);
 
 查找文档（Finding Documents）
@@ -158,7 +164,7 @@ NoSQL中的模型类扩展自 :doc:`Phalcon\\Mvc\\Collection <../api/Phalcon_Mvc
     // Get first 100 mechanical robots ordered by name
     $robots = Robots::find(array(
         array("type" => "mechanical"),
-        "sort" => array("name" => 1),
+        "sort"  => array("name" => 1),
         "limit" => 100
     ));
 
@@ -234,7 +240,7 @@ find()和findFirst方法都接收一个关联数据组为查询的条件：
         array(
             '$group' => array(
                 '_id' => array('category' => '$category'),
-                'id' => array('$max' => '$_id')
+                'id'  => array('$max' => '$_id')
             )
         )
     ));
@@ -330,7 +336,9 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function beforeValidationOnCreate()
@@ -346,7 +354,9 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    class Products extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Products extends Collection
     {
 
         public function beforeCreate()
@@ -370,7 +380,9 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    $eventsManager = new Phalcon\Events\Manager();
+    use Phalcon\Events\Manager as EventsManager;
+
+    $eventsManager = new EventsManager();
 
     //Attach an anonymous function as a listener for "model" events
     $eventsManager->attach('collection', function($event, $robot) {
@@ -383,7 +395,7 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
         return true;
     });
 
-    $robot = new Robots();
+    $robot       = new Robots();
     $robot->setEventsManager($eventsManager);
     $robot->name = 'Scooby Doo';
     $robot->year = 1969;
@@ -399,7 +411,7 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
     //Registering the collectionManager service
     $di->set('collectionManager', function() {
 
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         // Attach an anonymous function as a listener for "model" events
         $eventsManager->attach('collection', function($event, $model) {
@@ -415,7 +427,7 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
         });
 
         // Setting a default EventsManager
-        $modelsManager = new Phalcon\Mvc\Collection\Manager();
+        $modelsManager = new CollectionManager();
         $modelsManager->setEventsManager($eventsManager);
         return $modelsManager;
 
@@ -430,7 +442,9 @@ Phalcon\\Mvc\\Collection::save()方法可以用来保存数据，Phalcon会根�
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function beforeSave()
@@ -457,10 +471,11 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator\InclusionIn,
-        Phalcon\Mvc\Model\Validator\Numericality;
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Mvc\Model\Validator\Numericality;
 
-    class Robots extends \Phalcon\Mvc\Collection
+    class Robots extends Collection
     {
 
         public function validation()
@@ -468,15 +483,15 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
             $this->validate(new InclusionIn(
                 array(
-                    "field"  => "type",
+                    "field"   => "type",
                     "message" => "Type must be: mechanical or virtual",
-                    "domain" => array("Mechanical", "Virtual")
+                    "domain"  => array("Mechanical", "Virtual")
                 )
             ));
 
             $this->validate(new Numericality(
                 array(
-                    "field"  => "price",
+                    "field"   => "price",
                     "message" => "Price must be numeric"
                 )
             ));
@@ -511,7 +526,9 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
     <?php
 
-    class UrlValidator extends \Phalcon\Mvc\Collection\Validator
+    use \Phalcon\Mvc\Model\Validator as CollectionValidator;
+
+    class UrlValidator extends CollectionValidator
     {
 
         public function validate($model)
@@ -535,7 +552,9 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
     <?php
 
-    class Customers extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Customers extends Collection
     {
 
         public function validation()
@@ -556,13 +575,16 @@ Phalcon提供了一些验证器可以用在此阶段的验证上。
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+    use Phalcon\Mvc\Model\Message as ModelMessage;
+
+    class Robots extends Collection
     {
 
         public function validation()
         {
             if ($this->type == "Old") {
-                $message = new Phalcon\Mvc\Model\Message(
+                $message = new ModelMessage(
                     "Sorry, old robots are not allowed anymore",
                     "type",
                     "MyType"
@@ -645,7 +667,9 @@ Phalcon\\Mvc\\Collection::delete()方法用来删除记录条目。我们可以�
 
     <?php
 
-    class Robots extends Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
@@ -664,14 +688,14 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
 
     // This service returns a mongo database at 192.168.1.100
     $di->set('mongo1', function() {
-        $mongo = new Mongo("mongodb://scott:nekhen@192.168.1.100");
-        return $mongo->selectDb("management");
+        $mongo = new MongoClient("mongodb://scott:nekhen@192.168.1.100");
+        return $mongo->selectDB("management");
     }, true);
 
     // This service returns a mongo database at localhost
     $di->set('mongo2', function() {
-        $mongo = new Mongo("mongodb://localhost");
-        return $mongo->selectDb("invoicing");
+        $mongo = new MongoClient("mongodb://localhost");
+        return $mongo->selectDB("invoicing");
     }, true);
 
 然后在初始化方法，我们定义了模型的连接：
@@ -680,7 +704,9 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
         public function initialize()
         {
@@ -698,7 +724,9 @@ Phalcon会从DI中取名为mongo的服务。当然我们可在模型的initializ
 
     <?php
 
-    class Robots extends \Phalcon\Mvc\Collection
+    use Phalcon\Mvc\Collection;
+
+    class Robots extends Collection
     {
 
         public function notSave()

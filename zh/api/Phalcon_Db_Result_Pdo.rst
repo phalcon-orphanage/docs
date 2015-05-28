@@ -1,6 +1,8 @@
 Class **Phalcon\\Db\\Result\\Pdo**
 ==================================
 
+*implements* :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`
+
 Encapsulates the resultset internals  
 
 .. code-block:: php
@@ -18,7 +20,7 @@ Encapsulates the resultset internals
 Methods
 -------
 
-public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
+public  **__construct** (*unknown* $connection, *unknown* $result, [*unknown* $sqlStatement], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Phalcon\\Db\\Result\\Pdo constructor
 
@@ -26,7 +28,7 @@ Phalcon\\Db\\Result\\Pdo constructor
 
 public *boolean*  **execute** ()
 
-Allows to executes the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
+Allows to execute the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
 
 
@@ -41,7 +43,7 @@ Fetches an array/object of strings that corresponds to the fetched row, or FALSE
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_OBJ);
     while ($robot = $result->fetch()) {
-    	echo $robot->name;
+    	echo robot->name;
     }
 
 
@@ -57,7 +59,7 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-    while ($robot = $result->fetchArray()) {
+    while ($robot = result->fetchArray()) {
     	print_r($robot);
     }
 
@@ -92,7 +94,7 @@ Gets number of rows returned by a resulset
 
 
 
-public  **dataSeek** (*int* $number)
+public  **dataSeek** (*unknown* $number)
 
 Moves internal resulset cursor to another position letting us to fetch a certain row 
 
@@ -107,7 +109,7 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
 
 
-public  **setFetchMode** (*int* $fetchMode)
+public  **setFetchMode** (*unknown* $fetchMode)
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch() 
 

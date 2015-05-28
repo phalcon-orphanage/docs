@@ -18,11 +18,13 @@ Phalcon 不只是为了卓越的性能, 我们的目标是让它更加健壮，�
 .. toctree::
    :maxdepth: 3
 
-   reference/motivation
-   reference/benchmark
    reference/install
    reference/tutorial
    reference/tutorial-invo
+   reference/tutorial-invo-2
+   reference/tutorial-invo-3
+   reference/tutorial-invo-4
+   reference/tutorial-vokuro
    reference/tutorial-rest
    reference/samples
    reference/di

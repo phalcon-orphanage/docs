@@ -130,9 +130,11 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
 
     <?php
 
+    use Phalcon\Security;
+
     $di->set('security', function(){
 
-        $security = new Phalcon\Security();
+        $security = new Security();
 
         //Set the password hashing factor to 12 rounds
         $security->setWorkFactor(12);

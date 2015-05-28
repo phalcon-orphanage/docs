@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Db\\Adapter**
 =======================================
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 Base class for Phalcon\\Db adapters
 
@@ -9,13 +9,31 @@ Base class for Phalcon\\Db adapters
 Methods
 -------
 
-protected  **__construct** ()
+public  **getDialectType** ()
+
+Name of the dialect used
+
+
+
+public  **getType** ()
+
+Type of database system the adapter is used for
+
+
+
+public  **getSqlVariables** ()
+
+Active SQL bound parameter variables
+
+
+
+public  **__construct** (*unknown* $descriptor)
 
 Phalcon\\Db\\Adapter constructor
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the event manager
 
@@ -39,7 +57,7 @@ Returns internal dialect instance
 
 
 
-public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders])
+public *array*  **fetchOne** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Returns the first row in a SQL query result 
 
@@ -48,17 +66,17 @@ Returns the first row in a SQL query result
     <?php
 
     //Getting first robot
-    $robot = $connection->fetchOne("SELECT * FROM robots");
+    $robot = $connection->fecthOne("SELECT * FROM robots");
     print_r($robot);
     
     //Getting first robot with associative indexes only
-    $robot = $connection->fetchOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    $robot = $connection->fecthOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
     print_r($robot);
 
 
 
 
-public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders])
+public *array*  **fetchAll** (*unknown* $sqlQuery, [*unknown* $fetchMode], [*unknown* $bindParams], [*unknown* $bindTypes])
 
 Dumps the complete result of a query into an array 
 
@@ -84,7 +102,26 @@ Dumps the complete result of a query into an array
 
 
 
-public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
+public *string|*  **fetchColumn** (*unknown* $sqlQuery, [*unknown* $placeholders], [*unknown* $column])
+
+Returns the n'th field of first row in a SQL query result 
+
+.. code-block:: php
+
+    <?php
+
+        //Getting count of robots
+        $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
+        print_r($robotsCount);
+    
+        //Getting name of last edited robot
+        $robot = $connection->fetchColumn("SELECT id, name FROM robots order by modified desc");
+        print_r($robot);
+
+
+
+
+public *boolean*  **insert** (*unknown* $table, *unknown* $values, [*unknown* $fields], [*unknown* $dataTypes])
 
 Inserts data into a table using custom RBDM SQL syntax 
 
@@ -105,7 +142,30 @@ Inserts data into a table using custom RBDM SQL syntax
 
 
 
-public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
+public *boolean*  **insertAsDict** (*unknown* $table, *unknown* $data, [*unknown* $dataTypes])
+
+Inserts data into a table using custom RBDM SQL syntax Another, more convenient syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array(
+              "name" => "Astro Boy",
+              "year" => 1952
+          )
+     );
+    
+     //Next SQL sentence is sent to the database system
+     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+
+
+
+
+public *boolean*  **update** (*unknown* $table, *unknown* $fields, *unknown* $values, [*unknown* $whereCondition], [*unknown* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax 
 
@@ -123,11 +183,48 @@ Updates data on a table using custom RBDM SQL syntax
     
      //Next SQL sentence is sent to the database system
      UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+    
+     //Updating existing robot with array condition and $dataTypes
+     $success = $connection->update(
+         "robots",
+         array("name"),
+         array("New Astro Boy"),
+         array(
+             'conditions' => "id = ?",
+             'bind' => array($some_unsafe_id),
+             'bindTypes' => array(PDO::PARAM_INT) //use only if you use $dataTypes param
+         ),
+         array(PDO::PARAM_STR)
+     );
+
+Warning! If $whereCondition is string it not escaped.
+
+
+
+public *boolean*  **updateAsDict** (*unknown* $table, *unknown* $data, [*unknown* $whereCondition], [*unknown* $dataTypes])
+
+Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Updating existing robot
+     $success = $connection->update(
+         "robots",
+         array(
+              "name" => "New Astro Boy"
+          ),
+         "id = 101"
+     );
+    
+     //Next SQL sentence is sent to the database system
+     UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 
 
 
-public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
+public *boolean*  **delete** (*unknown* $table, [*unknown* $whereCondition], [*unknown* $placeholders], [*unknown* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax 
 
@@ -147,13 +244,13 @@ Deletes data from a table using custom RBDM SQL syntax
 
 
 
-public *string*  **getColumnList** (*array* $columnList)
+public *string*  **getColumnList** (*unknown* $columnList)
 
 Gets a list of columns
 
 
 
-public *string*  **limit** (*string* $sqlQuery, *int* $number)
+public *string*  **limit** (*unknown* $sqlQuery, *unknown* $number)
 
 Appends a LIMIT clause to $sqlQuery argument 
 
@@ -166,7 +263,7 @@ Appends a LIMIT clause to $sqlQuery argument
 
 
 
-public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
+public *boolean*  **tableExists** (*unknown* $tableName, [*unknown* $schemaName])
 
 Generates SQL checking for the existence of a schema.table 
 
@@ -179,7 +276,7 @@ Generates SQL checking for the existence of a schema.table
 
 
 
-public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
+public *boolean*  **viewExists** (*unknown* $viewName, [*unknown* $schemaName])
 
 Generates SQL checking for the existence of a schema.view 
 
@@ -192,103 +289,103 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-public *string*  **forUpdate** (*string* $sqlQuery)
+public *string*  **forUpdate** (*unknown* $sqlQuery)
 
 Returns a SQL modified with a FOR UPDATE clause
 
 
 
-public *string*  **sharedLock** (*string* $sqlQuery)
+public *string*  **sharedLock** (*unknown* $sqlQuery)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-public *boolean*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+public *boolean*  **createTable** (*unknown* $tableName, *unknown* $schemaName, *unknown* $definition)
 
 Creates a table
 
 
 
-public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists])
+public *boolean*  **dropTable** (*unknown* $tableName, [*unknown* $schemaName], [*unknown* $ifExists])
 
 Drops a table from a schema/database
 
 
 
-public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+public *boolean*  **createView** (*unknown* $viewName, *unknown* $definition, [*unknown* $schemaName])
 
 Creates a view
 
 
 
-public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists])
+public *boolean*  **dropView** (*unknown* $viewName, [*unknown* $schemaName], [*unknown* $ifExists])
 
 Drops a view
 
 
 
-public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *boolean*  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
 Adds a column to a table
 
 
 
-public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *boolean*  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
 
 Modifies a table column based on a definition
 
 
 
-public *boolean*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
+public *boolean*  **dropColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $columnName)
 
 Drops a column from a table
 
 
 
-public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+public *boolean*  **addIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
 Adds an index to a table
 
 
 
-public *boolean*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+public *boolean*  **dropIndex** (*unknown* $tableName, *unknown* $schemaName, *unknown* $indexName)
 
 Drop an index from a table
 
 
 
-public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+public *boolean*  **addPrimaryKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $index)
 
 Adds a primary key to a table
 
 
 
-public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+public *boolean*  **dropPrimaryKey** (*unknown* $tableName, *unknown* $schemaName)
 
 Drops a table's primary key
 
 
 
-public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+public *boolean true*  **addForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $reference)
 
 Adds a foreign key to a table
 
 
 
-public *boolean true*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+public *boolean true*  **dropForeignKey** (*unknown* $tableName, *unknown* $schemaName, *unknown* $referenceName)
 
 Drops a foreign key from a table
 
 
 
-public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *string*  **getColumnDefinition** (*unknown* $column)
 
 Returns the SQL column definition from a column
 
 
 
-public *array*  **listTables** ([*string* $schemaName])
+public *array*  **listTables** ([*unknown* $schemaName])
 
 List all tables on a database 
 
@@ -301,7 +398,7 @@ List all tables on a database
 
 
 
-public *array*  **listViews** ([*string* $schemaName])
+public *array*  **listViews** ([*unknown* $schemaName])
 
 List all views on a database 
 
@@ -309,12 +406,12 @@ List all views on a database
 
     <?php
 
-    print_r($connection->listViews("blog")); ?>
+    print_r($connection->listViews("blog"));
 
 
 
 
-public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*unknown* $table, [*unknown* $schema])
 
 Lists table indexes 
 
@@ -327,7 +424,7 @@ Lists table indexes
 
 
 
-public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema])
+public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*unknown* $table, [*unknown* $schema])
 
 Lists table references 
 
@@ -340,7 +437,7 @@ Lists table references
 
 
 
-public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName])
+public *array*  **tableOptions** (*unknown* $tableName, [*unknown* $schemaName])
 
 Gets creation options from a table 
 
@@ -353,25 +450,25 @@ Gets creation options from a table
 
 
 
-public *boolean*  **createSavepoint** (*string* $name)
+public *boolean*  **createSavepoint** (*unknown* $name)
 
 Creates a new savepoint
 
 
 
-public *boolean*  **releaseSavepoint** (*string* $name)
+public *boolean*  **releaseSavepoint** (*unknown* $name)
 
 Releases given savepoint
 
 
 
-public *boolean*  **rollbackSavepoint** (*string* $name)
+public *boolean*  **rollbackSavepoint** (*unknown* $name)
 
 Rollbacks given savepoint
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints)
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*unknown* $nestedTransactionsWithSavepoints)
 
 Set if nested transactions should use savepoints
 
@@ -443,117 +540,9 @@ Active SQL statement in the object without replace bound paramters
 
 
 
-public *array*  **getSQLVariables** ()
-
-Active SQL statement in the object
-
-
-
 public *array*  **getSQLBindTypes** ()
 
 Active SQL statement in the object
-
-
-
-public *string*  **getType** ()
-
-Returns type of database system the adapter is used for
-
-
-
-public *string*  **getDialectType** ()
-
-Returns the name of the dialect used
-
-
-
-abstract public *boolean*  **connect** ([*array* $descriptor]) inherited from Phalcon\\Db\\AdapterInterface
-
-This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
-
-
-
-abstract public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\AdapterInterface
-
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows
-
-
-
-abstract public *boolean*  **execute** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\AdapterInterface
-
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row
-
-
-
-abstract public *int*  **affectedRows** () inherited from Phalcon\\Db\\AdapterInterface
-
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by the database system
-
-
-
-abstract public *boolean*  **close** () inherited from Phalcon\\Db\\AdapterInterface
-
-Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
-
-
-
-abstract public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\AdapterInterface
-
-Escapes a column/table/schema name
-
-
-
-abstract public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\AdapterInterface
-
-Escapes a value to avoid SQL injections
-
-
-
-abstract public *array*  **convertBoundParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\AdapterInterface
-
-Converts bound params like :name: or ?1 into ? bind params
-
-
-
-abstract public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\AdapterInterface
-
-Returns insert id for the auto_increment column inserted in the last SQL statement
-
-
-
-abstract public *boolean*  **begin** () inherited from Phalcon\\Db\\AdapterInterface
-
-Starts a transaction in the connection
-
-
-
-abstract public *boolean*  **rollback** () inherited from Phalcon\\Db\\AdapterInterface
-
-Rollbacks the active transaction in the connection
-
-
-
-abstract public *boolean*  **commit** () inherited from Phalcon\\Db\\AdapterInterface
-
-Commits the active transaction in the connection
-
-
-
-abstract public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\AdapterInterface
-
-Checks whether connection is under database transaction
-
-
-
-abstract public *\PDO*  **getInternalHandler** () inherited from Phalcon\\Db\\AdapterInterface
-
-Return internal PDO handler
-
-
-
-abstract public :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` [] **describeColumns** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\AdapterInterface
-
-Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 

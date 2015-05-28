@@ -20,13 +20,13 @@ accessed:
     {
         public function loginAction()
         {
-            //Check if the cookie has previously set
+            // Check if the cookie has previously set
             if ($this->cookies->has('remember-me')) {
 
-                //Get the cookie
+                // Get the cookie
                 $rememberMe = $this->cookies->get('remember-me');
 
-                //Get the cookie's value
+                // Get the cookie's value
                 $value      = $rememberMe->getValue();
 
             }
@@ -68,7 +68,7 @@ In case of using encryption a global key must be set in the 'crypt' service:
 
     $di->set('crypt', function() {
         $crypt = new Crypt();
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); //Use your own key!
+        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
         return $crypt;
     });
 

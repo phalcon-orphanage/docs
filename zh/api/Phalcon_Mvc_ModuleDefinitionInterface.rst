@@ -1,21 +1,16 @@
 Interface **Phalcon\\Mvc\\ModuleDefinitionInterface**
 =====================================================
 
-Phalcon\\Mvc\\ModuleDefinitionInterface initializer
-
-
 Methods
 -------
 
-abstract public  **registerAutoloaders** ()
+abstract public  **registerAutoloaders** ([*unknown* $dependencyInjector])
 
-Registers an autoloader related to the module
+...
 
 
+abstract public  **registerServices** (*unknown* $dependencyInjector)
 
-abstract public  **registerServices** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
-
-Registers services related to the module
-
+...
 
 

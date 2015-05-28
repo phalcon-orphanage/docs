@@ -43,10 +43,10 @@ You can use the same instance to encrypt/decrypt several times:
 
     foreach ($texts as $key => $text) {
 
-        //Perform the encryption
+        // Perform the encryption
         $encrypted = $crypt->encrypt($text, $key);
 
-        //Now decrypt
+        // Now decrypt
         echo $crypt->decrypt($encrypted, $key);
     }
 
@@ -70,10 +70,10 @@ Example:
 
     use Phalcon\Crypt;
 
-    //Create an instance
+    // Create an instance
     $crypt = new Crypt();
 
-    //Use blowfish
+    // Use blowfish
     $crypt->setCipher('blowfish');
 
     $key   = 'le password';
@@ -91,7 +91,7 @@ In order that encryption is properly transmitted (emails) or displayed (browsers
 
     use Phalcon\Crypt;
 
-    //Create an instance
+    // Create an instance
     $crypt   = new Crypt();
 
     $key     = 'le password';
@@ -115,7 +115,7 @@ You can set up the encryption component in the services container in order to us
 
         $crypt = new Crypt();
 
-        //Set a global encryption key
+        // Set a global encryption key
         $crypt->setKey('%31.1e$i86e$f!8jz');
 
         return $crypt;
