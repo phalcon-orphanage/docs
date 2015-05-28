@@ -26,12 +26,12 @@ You can easily add resources to these collections like follows:
         public function index()
         {
 
-            //Add some local CSS resources
+            // Add some local CSS resources
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            //and some local javascript resources
+            // and some local javascript resources
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -88,7 +88,7 @@ Remote resources are those such as common library like jquery, bootstrap, etc. t
     public function indexAction()
     {
 
-        //Add some local CSS resources
+        // Add some local CSS resources
         $this->assets
             ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
             ->addCss('css/style.css', true);
@@ -196,29 +196,29 @@ The following example shows how to minify a collection of resources:
 
     $manager
 
-        //These Javascripts are located in the page's bottom
+        // These Javascripts are located in the page's bottom
         ->collection('jsFooter')
 
-        //The name of the final output
+        // The name of the final output
         ->setTargetPath('final.js')
 
-        //The script tag is generated with this URI
+        // The script tag is generated with this URI
         ->setTargetUri('production/final.js')
 
-        //This is a remote resource that does not need filtering
+        // This is a remote resource that does not need filtering
         ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
-        //These are local resources that must be filtered
+        // These are local resources that must be filtered
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //Join all the resources in a single file
+        // Join all the resources in a single file
         ->join(true)
 
-        //Use the built-in Jsmin filter
+        // Use the built-in Jsmin filter
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //Use a custom filter
+        // Use a custom filter
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 It starts getting a collection of resources from the assets manager, a collection can contain javascript or css
@@ -230,7 +230,7 @@ of obtaining them.
 
     <?php
 
-    //These Javascripts are located in the page's bottom
+    // These Javascripts are located in the page's bottom
     $js = $manager->collection('jsFooter');
 
 As seen above, method addJs is used to add resources to the collection, the second parameter indicates
@@ -359,10 +359,10 @@ Usage:
 
     <?php
 
-    //Get some CSS collection
+    // Get some CSS collection
     $css = $this->assets->get('head');
 
-    //Add/Enable the YUI compressor filter in the collection
+    // Add/Enable the YUI compressor filter in the collection
     $css->addFilter(new CssYUICompressor(array(
          'java-bin'      => '/usr/local/bin/java',
          'yui'           => '/some/path/yuicompressor-x.y.z.jar',

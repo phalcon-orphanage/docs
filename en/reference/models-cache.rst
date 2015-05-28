@@ -28,15 +28,15 @@ First, you must register it as a service in the services container:
     use Phalcon\Cache\Frontend\Data as FrontendData;
     use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
-    //Set the models cache service
+    // Set the models cache service
     $di->set('modelsCache', function() {
 
-        //Cache data for one day by default
+        // Cache data for one day by default
         $frontCache = new FrontendData(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Memcached connection settings
         $cache = new BackendMemcache($frontCache, array(
             "host" => "localhost",
             "port" => "11211"

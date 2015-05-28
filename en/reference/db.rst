@@ -340,19 +340,19 @@ often increase the performance on most database systems:
 
     try {
 
-        //Start a transaction
+        // Start a transaction
         $connection->begin();
 
-        //Execute some SQL statements
+        // Execute some SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 101");
         $connection->execute("DELETE `robots` WHERE `id` = 102");
         $connection->execute("DELETE `robots` WHERE `id` = 103");
 
-        //Commit if everything goes well
+        // Commit if everything goes well
         $connection->commit();
 
     } catch(Exception $e) {
-        //An exception has occurred rollback the transaction
+        // An exception has occurred rollback the transaction
         $connection->rollback();
     }
 
@@ -366,10 +366,10 @@ is created:
 
     try {
 
-        //Start a transaction
+        // Start a transaction
         $connection->begin();
 
-        //Execute some SQL statements
+        // Execute some SQL statements
         $connection->execute("DELETE `robots` WHERE `id` = 101");
 
         try {
@@ -483,19 +483,19 @@ Database profiling is really easy With :doc:`Phalcon\\Db\\Profiler <../api/Phalc
 
     $profiler = new DbProfiler();
 
-    //Listen all the database events
+    // Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
-            //Start a profile with the active connection
+            // Start a profile with the active connection
             $profiler->startProfile($connection->getSQLStatement());
         }
         if ($event->getType() == 'afterQuery') {
-            //Stop the active profile
+            // Stop the active profile
             $profiler->stopProfile();
         }
     });
 
-    //Assign the events manager to the connection
+    // Assign the events manager to the connection
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
@@ -569,17 +569,17 @@ Using high-level abstraction components such as :doc:`Phalcon\\Db <../api/Phalco
 
     $logger = new FileLogger("app/logs/db.log");
 
-    //Listen all the database events
+    // Listen all the database events
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
-    //Assign the eventsManager to the db adapter instance
+    // Assign the eventsManager to the db adapter instance
     $connection->setEventsManager($eventsManager);
 
-    //Execute some SQL statement
+    // Execute some SQL statement
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
