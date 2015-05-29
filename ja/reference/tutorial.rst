@@ -434,7 +434,7 @@ Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。
 
 モデルを使用したデータの保存
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Receiving data from the form and storing them in the table is the next step.
+次のステップでは、フォームからデータを受け取って、テーブルに保存します。
 
 .. code-block:: php
 
@@ -453,7 +453,7 @@ Receiving data from the form and storing them in the table is the next step.
 
             $user = new Users();
 
-            //Store and check for errors
+            //データを保存し、エラーをチェックする
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -471,30 +471,27 @@ Receiving data from the form and storing them in the table is the next step.
     }
 
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which indicates whether the storing of the data was successful or not.
+まず、Users クラスをインスタンス化します。これはユーザーのレコードに対応しています。クラスのpublicプロパティは、users テーブルのレコードのフィールドをマッピングしています。適切な値を新しいレコードに設定し、save() を呼ぶと、そのレコードのデータがデータベースに保存されます。save() メソッドは真偽値を返し、データの保存の成否を示します。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the save method.
+ORMは自動的に入力値をエスケープし、SQLインジェクションを防ぎます。リクエストをsaveメソッドに渡すだけでよいのです。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Not Null (必須パラメーター) 制約の課されたフィールドには、自動的にバリデーションが追加されます。登録フォームに何も入力しなければ、以下のように表示されます:
 
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
 まとめ
 ----------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+ここまででお分かりのように、チュートリアルはとてもシンプルでした。Phalconでアプリケーションを作り始めることは簡単です。PhalconがWebサーバー上で動作するPHP拡張であるという点は、開発の容易さや、利用可能な機能に影響を与えません。このマニュアルを引き続き読むことで、Phalconが提供する様々な機能を知ることができるでしょう!
 
 サンプル アプリケーション
 -------------------
-The following Phalcon-powered applications are also available, providing more complete examples:
+以下の、Phalcon製アプリケーションをご覧になることができます。これらは、より豊富な機能を備えたサンプルです:
 
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
+* `INVO application`_: 送り状を生成するアプリケーションです。製品・会社・製品の種類等の管理ができます。
+* `PHP Alternative website`_: 多言語対応と応用的なルーティングを行っているアプリケーションです
+* `Album O'Rama`_: 音楽アルバムのショーケースです。巨大なデータを :doc:`PHQL <phql>` で操作し、 :doc:`Volt <volt>` をテンプレートエンジンとして使用しています
+* `Phosphorum`_: シンプルできれいなフォーラムです
 
 
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php
