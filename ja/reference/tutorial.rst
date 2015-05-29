@@ -52,7 +52,7 @@ Phalconはアプリケーション開発において特定のファイル構造�
 
 Phalconに関連した "library" ディレクトリを必要としないことに注意してください。フレームワークはメモリ内で利用可能となっています。
 
-Beautiful URLs
+きれいなURL
 ^^^^^^^^^^^^^^
 このチュートリアルでは、きれいな、使いやすいURLを使用します。使いやすいURLはSEOに良いだけでなく、ユーザーが覚えやすいという利点もあります。Phalconは一般的なWEBサーバーにより提供されるrewriteモジュールをサポートしています。ただし、あなたのアプリケーションを使いやすいURLにすることは必須条件ではありません。それなしでも同様に開発することができます。
 
@@ -93,31 +93,31 @@ tutorial/public/index.php は次のようになります。
 
     try {
 
-        //Register an autoloader
+        //オートローダにディレクトリを登録する
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        //DIコンテナを作る
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the view component
+        //ビューのコンポーネントの組み立て
         $di->set('view', function(){
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
         
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+        //ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
         $di->set('url', function(){
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });        
 
-        //Handle the request
+        //リクエストを処理する
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
@@ -322,13 +322,13 @@ Viewへのアウトプットの送信
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+Phalcon\\Tag::form メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
+送信ボタンをクリックすると、「signup」コントローラーの「register」アクションが見つからない、という例外が投げられることに気づくはずです。 public/index.php が以下の例外を投げています：
 
     PhalconException: Action "register" was not found on controller "signup"
 
-Implementing that method will remove the exception:
+以下のようにメソッドを実装すれば、例外が無くなります：
 
 .. code-block:: php
 
@@ -349,13 +349,13 @@ Implementing that method will remove the exception:
 
     }
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+送信ボタンをもう一度クリックすると、空のページが表示されるでしょう。ユーザーが入力した名前とEメールアドレスは、データベースに保存すべきです。MVCのガイドラインによると、データベースとの連携はモデルで行わなければなりません。そうすることで、きれいなオブジェクト指向のコードを保つことができます。
 
 モデルの作成
 ^^^^^^^^^^^^^^^^
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。ORMは開発の複雑さを増幅させるのではなく、開発をシンプルにしてくれます。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+最初のモデルを作る前に、Phalconの外でマッピングするデータベースのテーブルを作る必要があります。登録したユーザーの情報を保存するシンプルなテーブルは、以下のように定義できます:
 
 .. code-block:: sql
 
@@ -366,7 +366,7 @@ Before creating our first model, we need to create a database table outside of P
       PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory (app/models/Users.php). The model maps to the "users" table:
+モデルは app/models ディレクトリに配置してください (app/models/Users.php)。モデルは「users」テーブルをマッピングします:
 
 .. code-block:: php
 
@@ -379,7 +379,7 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
 データベース接続の設定
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+データベース接続を使用できるようにし、モデルからデータにアクセスできるようにするため、ブートストラップの途中でデータベース接続を明確にする必要があります。データベース接続は、アプリケーションが所有し、他のコンポーネントで利用可能なサービスです:
 
 .. code-block:: php
 
@@ -397,7 +397,7 @@ In order to be able to use a database connection and subsequently access data th
         //Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the database service
+        //データベースサービスのセットアップ
         $di->set('db', function(){
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
@@ -430,7 +430,7 @@ In order to be able to use a database connection and subsequently access data th
          echo "PhalconException: ", $e->getMessage();
     }
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+正しいデータベースのパラメーターが設定されれば、モデルが使用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
 モデルを使用したデータの保存
 ^^^^^^^^^^^^^^^^^^^^^^^^^
