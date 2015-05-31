@@ -110,7 +110,7 @@ Once the record is in memory, you can make modifications to its data and then sa
 
     <?php
 
-    $robot       = Robots::findFirst(array(
+    $robot = Robots::findFirst(array(
         array('name' => 'Astroy Boy')
     ));
     $robot->name = "Voltron";
