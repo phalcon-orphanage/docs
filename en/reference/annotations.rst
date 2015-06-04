@@ -290,7 +290,7 @@ Now, we can use the annotation in a controller:
 
 Choose template to render
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
+In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must be rendered
 once the action has been executed:
 
 
