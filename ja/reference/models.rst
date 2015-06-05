@@ -61,7 +61,7 @@
 
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can 'onConstruct':
+initialize() メソッドはリクエストの間に一度だけ呼び出され、アプリケーション内で作成されたモデルのすべてのインスタンスに適用するために初期化を実行します。もし、あなたが、すべてのインスタンスで初期化処理を実行したい場合 'onConstruct' でできます:
 
 .. code-block:: php
 
