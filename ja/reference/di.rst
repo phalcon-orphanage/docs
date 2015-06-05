@@ -1,11 +1,8 @@
-Dependency Injection/Service Location
+依存性の注入とサービス・ロケーション
 *************************************
-The following example is a bit lengthy, but explains why use service location and dependency injection.
-First, let's pretend we are developing a component called SomeComponent. This performs a task that is not important now.
-Our component has some dependency that is a connection to a database.
+以下の例は少々長めですが、なぜサービス・ロケーションと依存性の注入を使用するのかを説明しています。初めに、SomeComponentというコンポーネントを開発しているとしましょう。これは、今のところ重要ではないタスクを実行します。このコンポーネントは、DB接続に依存しています。
 
-In this first example, the connection is created inside the component. This approach is impractical; due to the fact
-we cannot change the connection parameters or the type of database system because the component only works as created.
+この最初のサンプルでは、コンポーネントの中でDB接続オブジェクトを作成しています。このアプローチは、実用的ではありません。コンポーネントのDB接続のパラメータを外部から操作したり、DBMSの種類を変更したりといった操作が行えないからです。
 
 .. code-block:: php
 
@@ -36,8 +33,7 @@ we cannot change the connection parameters or the type of database system becaus
     $some = new SomeComponent();
     $some->someDbTask();
 
-To solve this, we have created a setter that injects the dependency externally before using it. For now, this seems to be
-a good solution:
+この問題を解決するため、依存しているオブジェクトを、使用する前に外部から注入するセッターを作りました。今のところ、これはよい解決法のようにみえます。
 
 .. code-block:: php
 
@@ -67,7 +63,7 @@ a good solution:
 
     $some = new SomeComponent();
 
-    //Create the connection
+    //DB接続を作成する
     $connection = new Connection(array(
         "host" => "localhost",
         "username" => "root",
@@ -75,15 +71,12 @@ a good solution:
         "dbname" => "invo"
     ));
 
-    //Inject the connection in the component
+    //DB接続をコンポーネントに注入する
     $some->setConnection($connection);
 
     $some->someDbTask();
 
-Now consider that we use this component in different parts of the application and
-then we will need to create the connection several times before passing it to the component.
-Using some kind of global registry where we obtain the connection instance and not have
-to create it again and again could solve this:
+ここで、このコンポーネントをアプリケーションの別の部分で使用すると考えると、コンポーネントを使う度にDB接続を作成して渡す必要があるでしょう。ある種のグローバルな容れ物からDB接続を取得できるようにすれば、何度もDB接続を作る必要は無くなるはずです:
 
 .. code-block:: php
 
@@ -131,12 +124,12 @@ to create it again and again could solve this:
 
     $some = new SomeComponent();
 
-    //Pass the connection defined in the registry
+    //Registry内で定義されたDB接続を渡す
     $some->setConnection(Registry::getConnection());
 
     $some->someDbTask();
 
-Now, let's imagine that we must implement two methods in the component, the first always need to create a new connection and the second always need to use a shared connection:
+ここで、コンポーネントに2つのメソッドを実装しなければならないと想像してみましょう。1つは常に新しいDB接続を作成する必要があり、もう1つは共有されたDB接続を必要とします:
 
 .. code-block:: php
 
@@ -217,37 +210,33 @@ Now, let's imagine that we must implement two methods in the component, the firs
 
     $some = new SomeComponent();
 
-    //This injects the shared connection
+    //このメソッドは共有のDB接続を注入する
     $some->setConnection(Registry::getSharedConnection());
 
     $some->someDbTask();
 
-    //Here, we always pass a new connection as parameter
+    //ここでは、新しいDB接続を常にパラメーターとして渡す
     $some->someOtherDbTask(Registry::getNewConnection());
 
-So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead
-of creating them internally in the code makes our application more maintainable and decoupled. However, in the long-term,
-this form of dependency injection have some disadvantages.
+ここまで、依存性の注入がいかにして我々の問題を解決するかをみてきました。依存しているオブジェクトを、内部で作成するのではなく、引数として渡せるようにすることで、アプリケーションはよりメンテナンスしやすく、疎結合になります。しかし、長い目で見ると、この形の依存性の注入には欠点があります。
 
-For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass
-the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies
-before using the component, every time, makes our code not as maintainable as we would like:
+たとえば、もしコンポーネントに多数の依存関係があるなら、依存しているオブジェクトを渡すための多くの引数をもつセッターを作成するか、多くの引数をもつコンストラクタを作成する必要があります。加えて、コンポーネントを使う度に依存しているオブジェクトを全て作成する必要があり、コードのメンテナンス性は失われてしまいます:
 
 .. code-block:: php
 
     <?php
 
-    //Create the dependencies or retrieve them from the registry
+    //依存オブジェクトの作成（あるいは、Registryからの取得）
     $connection = new Connection();
     $session = new Session();
     $fileSystem = new FileSystem();
     $filter = new Filter();
     $selector = new Selector();
 
-    //Pass them as constructor parameters
+    //コンストラクタに渡す
     $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
-    // ... or using setters
+    //あるいは、セッターを使用する
 
     $some->setConnection($connection);
     $some->setSession($session);
@@ -255,10 +244,7 @@ before using the component, every time, makes our code not as maintainable as we
     $some->setFilter($filter);
     $some->setSelector($selector);
 
-Think we had to create this object in many parts of our application. If you ever do not require any of the dependencies,
-we need to go everywhere to remove the parameter in the constructor or the setter where we injected the code. To solve this,
-we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating
-the object:
+このオブジェクトをアプリケーションの多くの部分で作成しなければならないと考えてみましょう。もし、依存関係のいずれも必要としないのであれば、このオブジェクトに依存性を注入しているところから、コンストラクタ（あるいはセッター）のパラメーターを取り除く必要があります。この問題を解決するため、コンポーネントを作成するためのグローバルな容れ物、という考え方に立ち戻ってみましょう。ただし、ここではオブジェクトを作る前に抽象化のレイヤーを追加しています:
 
 .. code-block:: php
 
@@ -286,12 +272,9 @@ the object:
 
     }
 
-One moment, we returned to the beginning, we are again building the dependencies inside of the component! We can move on and find out a way
-to solve this problem every time. But it seems that time and again we fall back into bad practices.
+ちょっと待って下さい、これは初めと同じように、コンポーネントの内部で依存関係を作り上げています！　私達はいつも、どんどん進んで問題を解決する方法を見つけることができます。しかし、今回はバッドプラクティスに陥ってしまったようです。
 
-A practical and elegant way to solve these problems is using a container for dependencies. The containers act as the global registry that
-we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity
-of our component:
+これらの問題の実用的で手際のよい解決法は、依存関係のコンテナを使うことです。コンテナは、上で見てきたように、グローバルな容れ物として機能します。依存関係のためのコンテナを、依存関係のあるオブジェクトを取得するためのブリッジとすることで、コンポーネントの複雑さを減らすことができます:
 
 .. code-block:: php
 
@@ -310,8 +293,8 @@ of our component:
         public function someDbTask()
         {
 
-            // Get the connection service
-            // Always returns a new connection
+            // connectionサービスを取得
+            // 常に新しいconnectionを返す
             $connection = $this->_di->get('db');
 
         }
@@ -319,11 +302,11 @@ of our component:
         public function someOtherDbTask()
         {
 
-            // Get a shared connection service,
-            // this will return the same connection everytime
+            // 共有のconnectionサービスを取得
+            // 常に同じconnectionサービスを返す
             $connection = $this->_di->getShared('db');
 
-            //This method also requires an input filtering service
+            //このメソッドは入力値のフィルタリングをするサービスを必要とする
             $filter = $this->_di->get('filter');
 
         }
@@ -332,7 +315,7 @@ of our component:
 
     $di = new Phalcon\DI();
 
-    //Register a "db" service in the container
+    //「db」サービスをコンテナに登録する
     $di->set('db', function() {
         return new Connection(array(
             "host" => "localhost",
@@ -342,24 +325,22 @@ of our component:
         ));
     });
 
-    //Register a "filter" service in the container
+    //「filter」サービスをコンテナに登録する
     $di->set('filter', function() {
         return new Filter();
     });
 
-    //Register a "session" service in the container
+    //「session」サービスをコンテナに登録する
     $di->set('session', function() {
         return new Session();
     });
 
-    //Pass the service container as unique parameter
+    //サービスコンテナを唯一のパラメータとして渡す
     $some = new SomeComponent($di);
 
     $some->someDbTask();
 
-The component now simply access the service it requires when it needs it, if it does not require a service that is not even initialized
-saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created,
-their behavior or any other aspect of them and that would not affect the component.
+これで、コンポーネントは必要とするサービスにシンプルにアクセスできるようになりました。不要なサービスは、初期化されることさえないので、リソースを節約できます。コンポーネントは高度に疎結合です。たとえば、コンポーネントの振る舞いやその他の側面を変更せずに、DB接続のやり方を変更することができます。
 
 私たちのアプローチ
 ============
@@ -369,84 +350,77 @@ Phalconが高度に分離されているため、Phalcon\\DI はフレームワ�
 
 基本的には、このコンポーネントは、`コントロールの反転`パターンを実装しています。 
 
-Basically, this component implements the `Inversion of Control`_ pattern. Applying this, the objects do not receive their dependencies
-using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only
-one way to get the required dependencies within a component.
+基本的には、このコンポーネントは `Inversion of Control`_ パターンを実装しています。これを適用すると、オブジェクトは、その依存関係をセッターあるいはコンストラクタによって受け取るのではなく、サービスの依存性の注入を要求します。コンポーネント内の依存関係を得るための方法は一つだけですので、これによって全体的な複雑さが軽減されます。
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+加えて、このパターンによってコードがテストしやすくなり、エラーへの耐性が向上します。
 
 サービスのコンテナへの登録
 =====================================
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it
-can request component B from the container, rather than creating a new instance component B.
+フレームワーク自身だけでなく、開発者も、サービスを登録することができます。コンポーネントAが動作するのにコンポーネントB(あるいはそのクラスのインスタンス)を必要とする場合、コンポーネントBの新しいインスタンスを作るのではなく、コンテナからコンポーネントBを取り出します。
 
-This way of working gives us many advantages:
+このやり方には、大きな利点があります:
 
-* We can easily replace a component with one created by ourselves or a third party.
-* We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-* We can get global instances of components in a structured and unified way
+* コンポーネントの差し替えが容易になる。独自に実装したものからサードパーティ製への変更等。
+* オブジェクトの初期化を完全にコントロールできる。コンポーネントが提供されるより前に、必要となるものをセットしておくことができる。
+* コンポーネントのグローバルなインスタンスが、よく整理され、統一されたやり方で取得できる。
 
-Services can be registered using several types of definitions:
+サービスの登録には複数の書き方があります:
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    //依存性を注入するコンテナ（DIコンテナ）を作成する
     $di = new Phalcon\DI();
 
-    //By its class name
+    //クラス名で登録
     $di->set("request", 'Phalcon\Http\Request');
 
-    //Using an anonymous function, the instance will be lazy loaded
+    //無名関数を使うと、インスタンスは遅延読み込みされる
     $di->set("request", function() {
         return new Phalcon\Http\Request();
     });
 
-    //Registering an instance directly
+    //インスタンスを直接登録する
     $di->set("request", new Phalcon\Http\Request());
 
-    //Using an array definition
+    //配列で登録
     $di->set("request", array(
         "className" => 'Phalcon\Http\Request'
     ));
 
-The array syntax is also allowed to register services:
+配列の記法でサービスを登録することもできます:
 
 .. code-block:: php
 
     <?php
 
-    //Create the Dependency Injector Container
+    //依存性を注入するコンテナ（DIコンテナ）を作成する
     $di = new Phalcon\DI();
 
-    //By its class name
+    //クラス名で登録
     $di["request"] = 'Phalcon\Http\Request';
 
-    //Using an anonymous function, the instance will be lazy loaded
+    //無名関数を使うと、インスタンスは遅延読み込みされる
     $di["request"] = function() {
         return new Phalcon\Http\Request();
     };
 
-    //Registering an instance directly
+    //インスタンスを直接登録する
     $di["request"] = new Phalcon\Http\Request();
 
-    //Using an array definition
+    //配列で登録
     $di["request"] = array(
         "className" => 'Phalcon\Http\Request'
     );
 
-In the examples above, when the framework needs to access the request data, it will ask for the service identified as ‘request’ in the container.
-The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+上記例では、フレームワークがリクエストのデータへのアクセスが必要になった時、コンテナの'request'という名前のサービスを求めます。コンテナは要求されたサービスのインスタンスを返します。開発者は、結果として、必要とするコンポーネントを置き換えることができます。
 
-Each of the methods (demonstrated in the examples above) used to set/register a service has advantages and disadvantages. It is up to the
-developer and the particular requirements that will designate which one is used.
+(上記例で使用された) サービス登録方法には、それぞれに利点と欠点があります。どの方法を使うかは、必要に応じて、開発者が決定します。
 
-Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the
-code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+文字列でのサービス登録は、シンプルですが、柔軟性に欠けます。配列でのサービス登録は、より柔軟ですが、コードが複雑になります。無名関数にはこの2つの中間的なバランスの良さがありますが、意外とメンテナンスが大変です。
 
-Phalcon\\DI offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it
-in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+Phalcon\\DI は全てのサービスを遅延読み込みします。開発者がオブジェクトを直接初期化してコンテナに入れようとしない限り、コンテナに格納されるあらゆるオブジェクトは、(その登録方法がどのような方法であっても)遅延読み込みされ、要求されるまではインスタンス化されません。
 
 簡単な登録
 -------------------
