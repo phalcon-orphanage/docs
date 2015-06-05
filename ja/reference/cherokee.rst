@@ -14,7 +14,7 @@ Cherokee はWebサーバで設定可能なほぼ全ての設定を構成する�
 .. figure:: ../_static/img/cherokee-2.jpg
     :align: center
 
-The recently added virtual server must appear at the left bar of the screen. In the 'Behaviors' tab you will see a set of default behaviors for this virtual server. Click the 'Rule Management' button. Remove those labeled as 'Directory /cherokee_themes' and 'Directory /icons':
+最近追加した仮想サーバーが、画面上の左のバーに表示されるはずです。「Behaviors」タブで、仮想サーバーのデフォルトのビヘイビアを見ることができます。「Rule Management」ボタンをクリックし、「Directory /cherokee_themes」と「Directory /icons」を削除します：
 
 .. figure:: ../_static/img/cherokee-3.jpg
     :align: center
