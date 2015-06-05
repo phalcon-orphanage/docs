@@ -37,15 +37,19 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     <?php
 
+    use Phalcon\Tag;
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Output as FrontOutput;
+
     //Create an Output frontend. Cache the files for 2 days
-    $frontCache = new Phalcon\Cache\Frontend\Output(array(
+    $frontCache = new FrontOutput(array(
         "lifetime" => 172800
     ));
 
     // Create the component that will cache from the "Output" to a "File" backend
     // Set the cache file directory - it's important to keep the "/" at the end of
     // the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+    $cache = new BackFile($frontCache, array(
         "cacheDir" => "../app/cache/"
     ));
 
@@ -59,7 +63,7 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
         echo date("r");
 
         //Generate a link to the sign-up action
-        echo Phalcon\Tag::linkTo(
+        echo Tag::linkTo(
             array(
                 "user/signup",
                 "Sign Up",
@@ -93,21 +97,24 @@ Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使
 
     <?php
 
+    use Phalcon\Cache\Backend\File as BackFile;
+    use Phalcon\Cache\Frontend\Data as FrontData;
+
     // Cache the files for 2 days using a Data frontend
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
+    $frontCache = new FrontData(array(
         "lifetime" => 172800
     ));
 
     // Create the component that will cache "Data" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
     // of the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+    $cache = new BackFile($frontCache, array(
         "cacheDir" => "../app/cache/"
     ));
 
     // Try to get cached records
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots is null because of cache expiration or data does not exist
@@ -131,14 +138,17 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     <?php
 
+    use Phalcon\Cache\Frontend\Data as FrontData;
+    use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
+
     //Cache data for one hour
-    $frontCache = new Phalcon\Cache\Frontend\Data(array(
+    $frontCache = new FrontData(array(
         "lifetime" => 3600
     ));
 
     // Create the component that will cache "Data" to a "Memcached" backend
     // Memcached connection settings
-    $cache = new Phalcon\Cache\Backend\Libmemcached($frontCache, array(
+    $cache = new BackMemCached($frontCache, array(
 	"servers" => array(
 		array(
 			"host" => "127.0.0.1",
@@ -150,7 +160,7 @@ Memcached 后端存储器例子（Memcached Backend Example）
 
     // Try to get cached records
     $cacheKey = 'robots_order_id.cache';
-    $robots    = $cache->get($cacheKey);
+    $robots   = $cache->get($cacheKey);
     if ($robots === null) {
 
         // $robots is null because of cache expiration or data does not exist
@@ -277,11 +287,11 @@ Setting the lifetime when retrieving:
 
     <?php
 
-    use Phalcon\Cache\Frontend\Data as DataFrontend,
-        Phalcon\Cache\Multiple,
-        Phalcon\Cache\Backend\Apc as ApcCache,
-        Phalcon\Cache\Backend\Memcache as MemcacheCache,
-        Phalcon\Cache\Backend\File as FileCache;
+    use Phalcon\Cache\Multiple;
+    use Phalcon\Cache\Backend\Apc as ApcCache;
+    use Phalcon\Cache\Backend\File as FileCache;
+    use Phalcon\Cache\Frontend\Data as DataFrontend;
+    use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
     $ultraFastFrontend = new DataFrontend(array(
         "lifetime" => 3600
@@ -302,11 +312,11 @@ Setting the lifetime when retrieving:
         )),
         new MemcacheCache($fastFrontend, array(
             "prefix" => 'cache',
-            "host" => "localhost",
-            "port" => "11211"
+            "host"   => "localhost",
+            "port"   => "11211"
         )),
         new FileCache($slowFrontend, array(
-            "prefix" => 'cache',
+            "prefix"   => 'cache',
             "cacheDir" => "../app/cache/"
         ))
     ));

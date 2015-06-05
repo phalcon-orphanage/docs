@@ -12,7 +12,11 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
 .. code-block:: php
 
-    <?php $acl = new \Phalcon\Acl\Adapter\Memory();
+    <?php
+
+    use Phalcon\Acl\Adapter\Memory as AcList;
+
+    $acl = new AclList();
     
 默认情况下 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 允许我们访问未定义的资源中的action，为了提高安全性， 我们设置默认访问级别为‘拒绝’。
 
@@ -20,7 +24,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     <?php
 
-    //设置默认访问级别为拒绝
+    // 设置默认访问级别为拒绝
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
 添加角色（Adding Roles to the ACL）
@@ -32,9 +36,11 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     <?php
 
+    use Phalcon\Acl\Role;
+    
     // 创建角色
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     //添加 "Guests" 角色到acl
     $acl->addRole($roleGuests);
@@ -53,8 +59,10 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     <?php
 
+    use Phalcon\Acl\Resource;
+
     // 定义 "Customers" 资源
-    $customersResource = new \Phalcon\Acl\Resource("Customers");
+    $customersResource = new Resource("Customers");
 
     // 为 "customers"资源添加一组操作
     $acl->addResource($customersResource, "search");
@@ -69,7 +77,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     <?php
 
-    // Set access level for roles into resources
+    // 设置角色对资源的访问级别
     $acl->allow("Guests", "Customers", "search");
     $acl->allow("Guests", "Customers", "create");
     $acl->deny("Guests", "Customers", "update");
@@ -84,7 +92,7 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
     <?php
 
-    //查询角色是否有访问权限
+    // 查询角色是否有访问权限
     $acl->isAllowed("Guests", "Customers", "edit");   //Returns 0
     $acl->isAllowed("Guests", "Customers", "search"); //Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); //Returns 1
@@ -99,9 +107,11 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
     <?php
 
+    use Phalcon\Acl\Role;
+
     // 创建角色
-    $roleAdmins = new \Phalcon\Acl\Role("Administrators", "Super-User role");
-    $roleGuests = new \Phalcon\Acl\Role("Guests");
+    $roleAdmins = new Role("Administrators", "Super-User role");
+    $roleGuests = new Role("Guests");
 
     // 添加 "Guests" 到 acl.
     $acl->addRole($roleGuests);
@@ -120,10 +130,12 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
     <?php
 
-    //检查acl数据是否存在
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    // 检查acl数据是否存在
     if (!is_file("app/security/acl.data")) {
 
-        $acl = new \Phalcon\Acl\Adapter\Memory();
+        $acl = new AclList();
 
         //... Define roles, resources, access, etc
 
@@ -164,8 +176,11 @@ ACL 事件（ACL Events）
 
     <?php
 
+    use Phalcon\Acl\Adapter\Memory as AclList;
+    use Phalcon\Events\Manager as EventsManager;
+
     //创建事件管理器
-    $eventsManager = new Phalcon\Events\Manager();
+    $eventsManager = new EventsManager();
 
     // 绑定事件类型为acl 
     $eventsManager->attach("acl", function($event, $acl) {
@@ -176,7 +191,7 @@ ACL 事件（ACL Events）
         }
     });
 
-    $acl = new \Phalcon\Acl\Adapter\Memory();
+    $acl = new AclList();
 
     //Setup the $acl
     //...

@@ -484,7 +484,8 @@ on the model cars. A car cannot cost less than $ 10,000:
     }
 
 If we made the following INSERT in the models Cars, the operation will not be successful
-because the price does not meet the business rule that we implemented:
+because the price does not meet the business rule that we implemented. By checking the
+status of the insertion we can print any validation messages generated internally:
 
 .. code-block:: php
 
@@ -492,10 +493,8 @@ because the price does not meet the business rule that we implemented:
 
     $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
     $result = $manager->executeQuery($phql);
-    if ($result->success() == false)
-    {
-        foreach ($result->getMessages() as $message)
-        {
+    if ($result->success() == false) {
+        foreach ($result->getMessages() as $message) {
             echo $message->getMessage();
         }
     }
@@ -543,7 +542,12 @@ In summary, the following code:
     <?php
 
     $phql    = "UPDATE Cars SET price = 15000.00 WHERE id > 101";
-    $success = $manager->executeQuery($phql);
+    $result = $manager->executeQuery($phql);
+    if ($result->success() == false) {
+        foreach ($result->getMessages() as $message) {
+            echo $message->getMessage();
+        }
+    }
 
 is somewhat equivalent to:
 
@@ -592,7 +596,19 @@ When a record is deleted the events related to the delete operation will be exec
         )
     );
 
-DELETE operations are also executed in two phases like UPDATEs.
+DELETE operations are also executed in two phases like UPDATEs. To check if the deletion produces
+any validation messages you should check the status code returned:
+
+.. code-block:: php
+
+    // Deleting multiple rows
+    $phql = "DELETE FROM Cars WHERE id > 100";
+    $result = $manager->executeQuery($phql);
+    if ($result->success() == false) {
+        foreach ($result->getMessages() as $message) {
+            echo $message->getMessage();
+        }
+    }
 
 Creating queries using the Query Builder
 ----------------------------------------
@@ -624,8 +640,7 @@ That is the same as:
 
     <?php
 
-    $phql   = "SELECT Robots.*
-        FROM Robots JOIN RobotsParts p
+    $phql   = "SELECT Robots.* FROM Robots JOIN RobotsParts p
         ORDER BY Robots.name LIMIT 20";
     $result = $manager->executeQuery($phql);
 

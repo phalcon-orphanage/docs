@@ -19,6 +19,8 @@ accustomed to while working with Phalcon.
 ------------
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
+Volt 视图被编译成纯PHP代码，所以基本上他们节省手工编写PHP代码的工作：
+
 .. code-block:: html+jinja
 
     {# app/views/products/show.volt #}
@@ -43,10 +45,12 @@ reusing the standard .phtml:
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     //Registering Volt as template engine
     $di->set('view', function() {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
@@ -109,7 +113,9 @@ In the above example, three variables were passed to the view: title, menu and p
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function showAction()
@@ -117,9 +123,9 @@ In the above example, three variables were passed to the view: title, menu and p
 
             $post = Post::findFirst();
 
-            $this->view->title = $post->title;
-            $this->view->post = $post;
-            $this->view->menu = Menu::find();
+            $this->view->title           = $post->title;
+            $this->view->post            = $post;
+            $this->view->menu            = Menu::find();
             $this->view->show_navigation = true;
 
         }
@@ -247,6 +253,12 @@ Examples:
 
     {# keys filter #}
     {% set keys=['first': 1, 'second': 2, 'third': 3]|keys %}
+
+    {# join filter #}
+    {% "a".."z"|join(",") %}
+
+    {# format filter #}
+    {% "My real name is %s"|format(name) %}
 
     {# json_encode filter #}
     {% robots|json_encode %}
@@ -550,7 +562,7 @@ Curly braces also can be used to define arrays or hashes:
 .. code-block:: html+jinja
 
     {% set myArray = {'Apple', 'Banana', 'Orange'} %}
-    {% set myHash = {'first': 1, 'second': 4/2, 'third': '3'} %}
+    {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
 算术运算（Math）
 ^^^^^^^^^^^^^^^^
@@ -923,7 +935,7 @@ Also, Volt is integrated with :doc:`Phalcon\\Mvc\\View <views>`, you can play wi
     <div id="footer">{{ partial("partials/footer") }}</div>
 
     <!-- Passing extra variables -->
-    <div id="footer">{{ partial("partials/footer", ['links': $links]) }}</div>
+    <div id="footer">{{ partial("partials/footer", ['links': links]) }}</div>
 
 A partial is included in runtime, Volt also provides "include", this compiles the content of a view and returns its contents
 as part of the view which was included:
@@ -1110,8 +1122,8 @@ Volt can be configured to alter its default behavior, the following example expl
 
     <?php
 
-    use Phalcon\Mvc\View,
-        Phalcon\Mvc\View\Engine\Volt;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
 
     //Register Volt as a service
     $di->set('voltService', function($view, $di) {
@@ -1146,16 +1158,19 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
 
     <?php
 
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\View\Engine\Volt;
+
     //Register Volt as template engine with an anonymous function
     $di->set('view', function() {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         $view->setViewsDir('../app/views/');
 
         $view->registerEngines(array(
             ".volt" => function($view, $di) {
-                $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+                $volt = new Volt($view, $di);
 
                 //set some options here
 
@@ -1230,7 +1245,9 @@ function. Always is required that the chosen strategy returns a valid PHP string
 
     <?php
 
-    $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+    use Phalcon\Mvc\View\Engine\Volt;
+
+    $volt = new Volt($view, $di);
 
     $compiler = $volt->getCompiler();
 
@@ -1432,8 +1449,10 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
     <?php
 
+    Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
+
     //Create a compiler
-    $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
+    $compiler = new VoltCompiler();
 
     //Optionally add some options
     $compiler->setOptions(array(

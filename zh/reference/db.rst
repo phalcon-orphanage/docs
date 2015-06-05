@@ -259,6 +259,15 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        array("name", "year")
     );
 
+    // 插入数据的另外一种方法
+    $success = $connection->insertAsDict(
+       "robots",
+       array(
+          "name" => "Astro Boy",
+          "year" => 1952
+       )
+    );
+
     // 使用原生SQL更新行
     $sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
     $success = $connection->execute($sql);
@@ -272,10 +281,42 @@ Phalcon把每个数据库引擎的具体操作封装成“方言”，这些“�
        "robots",
        array("name"),
        array("New Astro Boy"),
-       "id = 101"
+       "id = 101" //Warning! In this case values are not escaped
     );
 
-    // 使用原生的SQL删除行
+    // 更新数据的另外一种方法
+    $success = $connection->updateAsDict(
+       "robots",
+       array(
+          "name" => "New Astro Boy"
+       ),
+       "id = 101" //Warning! In this case values are not escaped
+    );
+
+    // With escaping conditions
+    $success = $connection->update(
+       "robots",
+       array("name"),
+       array("New Astro Boy"),
+       array(
+          'conditions' => 'id = ?',
+          'bind' => array(101),
+          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+       )
+    );
+    $success = $connection->updateAsDict(
+       "robots",
+       array(
+          "name" => "New Astro Boy"
+       ),
+       array(
+          'conditions' => 'id = ?',
+          'bind' => array(101),
+          'bindTypes' => array(PDO::PARAM_INT) //optional parameter
+       )
+    );
+
+    // 使用原生SQL删除数据
     $sql     = "DELETE `robots` WHERE `id` = 101";
     $success = $connection->execute($sql);
 
@@ -437,19 +478,19 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     $profiler = new DbProfiler();
 
-    //监听所有数据库的事件
+    // 监听所有数据库的事件
     $eventsManager->attach('db', function($event, $connection) use ($profiler) {
         if ($event->getType() == 'beforeQuery') {
-            //操作前启动分析
+            // 操作前启动分析
             $profiler->startProfile($connection->getSQLStatement());
         }
         if ($event->getType() == 'afterQuery') {
-            //操作后停止分析
+            // 操作后停止分析
             $profiler->stopProfile();
         }
     });
 
-    //设置事件管理器
+    // 设置事件管理器
     $connection->setEventsManager($eventsManager);
 
     $sql = "SELECT buyer_name, quantity, product_name "
@@ -523,17 +564,17 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     $logger = new FileLogger("app/logs/db.log");
 
-    //监听所有数据库事件
+    // 监听所有数据库事件
     $eventsManager->attach('db', function($event, $connection) use ($logger) {
         if ($event->getType() == 'beforeQuery') {
             $logger->log($connection->getSQLStatement(), Logger::INFO);
         }
     });
 
-    //设置事件管理器
+    // 设置事件管理器
     $connection->setEventsManager($eventsManager);
 
-    //执行一些SQL
+    // 执行一些SQL
     $connection->insert(
         "products",
         array("Hot pepper", 3.50),
@@ -562,13 +603,13 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 
     <?php
 
-    //获取test_db数据库的所有表
+    // 获取test_db数据库的所有表
     $tables = $connection->listTables("test_db");
 
-    //在数据库中是否存在'robots'这个表
+    // 在数据库中是否存在'robots'这个表
     $exists = $connection->tableExists("robots");
 
-    //获取'robots'字段名称，数据类型，特殊特征
+    // 获取'robots'字段名称，数据类型，特殊特征
     $fields = $connection->describeColumns("robots");
     foreach ($fields as $field) {
         echo "Column Type: ", $field["Type"];

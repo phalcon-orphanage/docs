@@ -3,7 +3,7 @@
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
 .. highlights::
-    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.3.11 or greater installed.
+    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.4 or greater installed.
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 

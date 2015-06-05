@@ -98,9 +98,10 @@ The tutorial/public/index.php file should look like:
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Url as UrlProvider;
+    use Phalcon\Mvc\Url;
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
+    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     try {
 
@@ -427,7 +428,11 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
     class Users extends Model
     {
-
+        public $id;
+    
+        public $name;
+    
+        public $email;
     }
 
 Setting a Database Connection

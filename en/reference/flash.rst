@@ -27,7 +27,7 @@ then :doc:`Phalcon\\Flash\\Direct <../api/Phalcon_Flash_Direct>` is automaticall
 
     use Phalcon\Flash\Direct as FlashDirect;
 
-    //Set up the flash service
+    // Set up the flash service
     $di->set('flash', function() {
         return new FlashDirect();
     });
@@ -97,9 +97,10 @@ of the messages in the browser. The CSS classes can be overridden, for example, 
     //Register the flash service with custom CSS classes
     $di->set('flash', function(){
         $flash = new FlashDirect(array(
-            'error'   => 'alert alert-error',
+            'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
             'notice'  => 'alert alert-info',
+            'warning' => 'alert alert-warning'
         ));
         return $flash;
     });
@@ -108,9 +109,10 @@ Then the messages would be printed as follows:
 
 .. code-block:: html
 
-    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
+    <div class="alert alert-warning">best check yo self, you're not looking too good.</div>
 
 Implicit Flush vs. Session
 --------------------------
@@ -135,12 +137,12 @@ if you make a "forward" is not necessary to store the messages in session, but i
         public function saveAction()
         {
 
-            //store the post
+            // store the post
 
-            //Using direct flash
+            // Using direct flash
             $this->flash->success("Your information was stored correctly!");
 
-            //Forward to the index action
+            // Forward to the index action
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
@@ -165,12 +167,12 @@ Or using a HTTP redirection:
         public function saveAction()
         {
 
-            //store the post
+            // store the post
 
-            //Using session flash
+            // Using session flash
             $this->flashSession->success("Your information was stored correctly!");
 
-            //Make a full HTTP redirection
+            // Make a full HTTP redirection
             return $this->response->redirect("contact/index");
         }
     }

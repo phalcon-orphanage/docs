@@ -25,9 +25,11 @@
 
     <?php
 
-    //建立flash服务
+    use Phalcon\Flash\Direct as FlashDirect;
+
+    // 建立flash服务
     $di->set('flash', function() {
-        return new \Phalcon\Flash\Direct();
+        return new FlashDirect();
     });
 
 这样的话，你便可以在控制器或者视图中通过在必要的片段中注入此服务来使用它：
@@ -36,7 +38,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -90,10 +94,11 @@
 
     //利用自定义的CSS类来注册flash服务
     $di->set('flash', function(){
-        $flash = new \Phalcon\Flash\Direct(array(
-            'error' => 'alert alert-error',
+        $flash = new FlashDirect(array(
+            'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
-            'notice' => 'alert alert-info',
+            'notice'  => 'alert alert-info',
+            'warning' => 'alert alert-warning'
         ));
         return $flash;
     });
@@ -102,7 +107,7 @@
 
 .. code-block:: html
 
-    <div class="alert alert-error">too bad! the form had errors</div>
+    <div class="alert alert-danger">too bad! the form had errors</div>
     <div class="alert alert-success">yes!, everything went very smoothly</div>
     <div class="alert alert-info">this a very important information</div>
 
@@ -116,7 +121,9 @@
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ContactController extends Controller
     {
 
         public function indexAction()
@@ -127,12 +134,12 @@
         public function saveAction()
         {
 
-            //存储POST
+            // 存储POST
 
-            //使用直接闪存
+            // 使用直接闪存
             $this->flash->success("Your information was stored correctly!");
 
-            //转发到index动作
+            // 转发到index动作
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
@@ -144,7 +151,9 @@
 
     <?php
 
-    class ContactController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ContactController extends Controller
     {
 
         public function indexAction()
@@ -155,12 +164,12 @@
         public function saveAction()
         {
 
-            //存储POST
+            // 存储POST
 
-            //使用会话闪存
+            // 使用会话闪存
             $this->flashSession->success("Your information was stored correctly!");
 
-            //返回一个完整的HTTP重定向
+            // 返回一个完整的HTTP重定向
             return $this->response->redirect("contact/index");
         }
 

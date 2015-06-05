@@ -46,7 +46,7 @@ Phalcon\\Validation\\Validator constructor
 
 
 
-public *mixed*  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
+public *boolean*  **isSetOption** (*unknown* $key) inherited from Phalcon\\Validation\\Validator
 
 Checks if an option is defined
 

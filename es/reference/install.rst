@@ -34,7 +34,7 @@ Guías Relacionadas
 
 Linux/Solaris/Mac
 -----------------
-En un sistema Linux/Solaris/Mac puedes compilar e instalar la extensión facilmente desde la fuente del repositorio:
+En un sistema Linux/Solaris/Mac puedes compilar e instalar la extensión fácilmente desde la fuente del repositorio:
 
 Requerimientos
 ^^^^^^^^^^^^
@@ -44,7 +44,7 @@ Los paquetes requeridos son:
 * Compilador GCC (Linux/Solaris) o Xcode (Mac)
 * Git (a menos que descargues el paquete manualmente desde Github)
 
-Paquetes especificos para plataformas comunes:
+Paquetes específicos para plataformas comunes:
 
 .. code-block:: bash
 

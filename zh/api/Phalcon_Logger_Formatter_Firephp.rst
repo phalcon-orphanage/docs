@@ -17,33 +17,37 @@ Returns the string meaning of a logger constant
 
 
 
-public  **getShowBacktrace** ()
+public *this*  **setShowBacktrace** ([*unknown* $isShow])
 
-...
-
-
-public  **setShowBacktrace** ([*unknown* $show])
-
-...
+Returns the string meaning of a logger constant
 
 
-public  **enableLabels** ([*unknown* $enable])
 
-...
+public *boolean*  **getShowBacktrace** ()
 
-
-public  **labelsEnabled** ()
-
-...
+Returns the string meaning of a logger constant
 
 
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *unknown* $context)
+
+public *this*  **enableLabels** ([*unknown* $isEnable])
+
+Returns the string meaning of a logger constant
+
+
+
+public *boolean*  **labelsEnabled** ()
+
+Returns the labels enabled
+
+
+
+public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sending it to the log
 
 
 
-protected  **interpolate** (*string* $message, *array* $context) inherited from Phalcon\\Logger\\Formatter
+public  **interpolate** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Formatter
 
 Interpolates context values into the message placeholders
 

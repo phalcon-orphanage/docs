@@ -52,7 +52,7 @@ Phalconはアプリケーション開発において特定のファイル構造�
 
 Phalconに関連した "library" ディレクトリを必要としないことに注意してください。フレームワークはメモリ内で利用可能となっています。
 
-Beautiful URLs
+きれいなURL
 ^^^^^^^^^^^^^^
 このチュートリアルでは、きれいな、使いやすいURLを使用します。使いやすいURLはSEOに良いだけでなく、ユーザーが覚えやすいという利点もあります。Phalconは一般的なWEBサーバーにより提供されるrewriteモジュールをサポートしています。ただし、あなたのアプリケーションを使いやすいURLにすることは必須条件ではありません。それなしでも同様に開発することができます。
 
@@ -93,31 +93,31 @@ tutorial/public/index.php は次のようになります。
 
     try {
 
-        //Register an autoloader
+        //オートローダにディレクトリを登録する
         $loader = new \Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
-        //Create a DI
+        //DIコンテナを作る
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the view component
+        //ビューのコンポーネントの組み立て
         $di->set('view', function(){
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
         
-        //Setup a base URI so that all generated URIs include the "tutorial" folder
+        //ベースURIを設定して、生成される全てのURIが「tutorial」を含むようにする
         $di->set('url', function(){
             $url = new \Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });        
 
-        //Handle the request
+        //リクエストを処理する
         $application = new \Phalcon\Mvc\Application($di);
 
         echo $application->handle()->getContent();
@@ -322,13 +322,13 @@ Viewへのアウトプットの送信
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` はまた、フォーム要素を組み立てるのに役に立つ方法を提供します。
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+Phalcon\\Tag::form メソッドは、 controller/action への相対URIを唯一のパラメータとして受け取ります。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:
+送信ボタンをクリックすると、「signup」コントローラーの「register」アクションが見つからない、という例外が投げられることに気づくはずです。 public/index.php が以下の例外を投げています：
 
     PhalconException: Action "register" was not found on controller "signup"
 
-Implementing that method will remove the exception:
+以下のようにメソッドを実装すれば、例外が無くなります：
 
 .. code-block:: php
 
@@ -349,13 +349,13 @@ Implementing that method will remove the exception:
 
     }
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+送信ボタンをもう一度クリックすると、空のページが表示されるでしょう。ユーザーが入力した名前とEメールアドレスは、データベースに保存すべきです。MVCのガイドラインによると、データベースとの連携はモデルで行わなければなりません。そうすることで、きれいなオブジェクト指向のコードを保つことができます。
 
 モデルの作成
 ^^^^^^^^^^^^^^^^
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalconは、PHPに初めて全てC言語で書かれたORMを提供します。ORMは開発の複雑さを増幅させるのではなく、開発をシンプルにしてくれます。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+最初のモデルを作る前に、Phalconの外でマッピングするデータベースのテーブルを作る必要があります。登録したユーザーの情報を保存するシンプルなテーブルは、以下のように定義できます:
 
 .. code-block:: sql
 
@@ -366,7 +366,7 @@ Before creating our first model, we need to create a database table outside of P
       PRIMARY KEY (`id`)
     );
 
-A model should be located in the app/models directory (app/models/Users.php). The model maps to the "users" table:
+モデルは app/models ディレクトリに配置してください (app/models/Users.php)。モデルは「users」テーブルをマッピングします:
 
 .. code-block:: php
 
@@ -379,7 +379,7 @@ A model should be located in the app/models directory (app/models/Users.php). Th
 
 データベース接続の設定
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+データベース接続を使用できるようにし、モデルからデータにアクセスできるようにするため、ブートストラップの途中でデータベース接続を明確にする必要があります。データベース接続は、アプリケーションが所有し、他のコンポーネントで利用可能なサービスです:
 
 .. code-block:: php
 
@@ -397,7 +397,7 @@ In order to be able to use a database connection and subsequently access data th
         //Create a DI
         $di = new Phalcon\DI\FactoryDefault();
 
-        //Setup the database service
+        //データベースサービスのセットアップ
         $di->set('db', function(){
             return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
                 "host" => "localhost",
@@ -430,11 +430,11 @@ In order to be able to use a database connection and subsequently access data th
          echo "PhalconException: ", $e->getMessage();
     }
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+正しいデータベースのパラメーターが設定されれば、モデルが使用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
 モデルを使用したデータの保存
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Receiving data from the form and storing them in the table is the next step.
+次のステップでは、フォームからデータを受け取って、テーブルに保存します。
 
 .. code-block:: php
 
@@ -453,7 +453,7 @@ Receiving data from the form and storing them in the table is the next step.
 
             $user = new Users();
 
-            //Store and check for errors
+            //データを保存し、エラーをチェックする
             $success = $user->save($this->request->getPost(), array('name', 'email'));
 
             if ($success) {
@@ -471,30 +471,27 @@ Receiving data from the form and storing them in the table is the next step.
     }
 
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
-of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which indicates whether the storing of the data was successful or not.
+まず、Users クラスをインスタンス化します。これはユーザーのレコードに対応しています。クラスのpublicプロパティは、users テーブルのレコードのフィールドをマッピングしています。適切な値を新しいレコードに設定し、save() を呼ぶと、そのレコードのデータがデータベースに保存されます。save() メソッドは真偽値を返し、データの保存の成否を示します。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the save method.
+ORMは自動的に入力値をエスケープし、SQLインジェクションを防ぎます。リクエストをsaveメソッドに渡すだけでよいのです。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Not Null (必須パラメーター) 制約の課されたフィールドには、自動的にバリデーションが追加されます。登録フォームに何も入力しなければ、以下のように表示されます:
 
 .. figure:: ../_static/img/tutorial-4.png
     :align: center
 
 まとめ
 ----------
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon.
-The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
-features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+ここまででお分かりのように、チュートリアルはとてもシンプルでした。Phalconでアプリケーションを作り始めることは簡単です。PhalconがWebサーバー上で動作するPHP拡張であるという点は、開発の容易さや、利用可能な機能に影響を与えません。このマニュアルを引き続き読むことで、Phalconが提供する様々な機能を知ることができるでしょう!
 
 サンプル アプリケーション
 -------------------
-The following Phalcon-powered applications are also available, providing more complete examples:
+以下の、Phalcon製アプリケーションをご覧になることができます。これらは、より豊富な機能を備えたサンプルです:
 
-* `INVO application`_: Invoice generation application. Allows for management of products, companies, product types. etc.
-* `PHP Alternative website`_: Multilingual and advanced routing application
-* `Album O'Rama`_: A showcase of music albums, handling big sets of data with :doc:`PHQL <phql>` and using :doc:`Volt <volt>` as template engine
-* `Phosphorum`_: A simple and clean forum
+* `INVO application`_: 送り状を生成するアプリケーションです。製品・会社・製品の種類等の管理ができます。
+* `PHP Alternative website`_: 多言語対応と応用的なルーティングを行っているアプリケーションです
+* `Album O'Rama`_: 音楽アルバムのショーケースです。巨大なデータを :doc:`PHQL <phql>` で操作し、 :doc:`Volt <volt>` をテンプレートエンジンとして使用しています
+* `Phosphorum`_: シンプルできれいなフォーラムです
 
 
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php

@@ -1,13 +1,8 @@
 モデルの働き
 ===================
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
-the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
-your application. The bulk of your application's business logic will be concentrated in the models.
+モデルは、そのデータを操作するアプリケーションの情報 (データ) およびルールを表します。モデルは、主に、対応するデータベーステーブルとの相互作用のルールを管理するために使用されます。多くの場合、データベース内の各テーブルには、アプリケーション内の一つのモデルに対応します。アプリケーションのビジネスロジックの大部分は、モデルに集中するでしょう。
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` は、Phalconアプリケーション内のすべてのモデルのためのベースとなっています。これは、データベースの独立性、基本的なCRUD機能、高度な検索機能、およびその他のサービスの中でお互いにモデルを関連付ける機能を提供します。 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` は、それぞれのデータベースエンジン操作に動的にメソッドを変換するためのSQL文を使用することの必要性を避けています。
 
 .. highlights::
 
@@ -16,8 +11,7 @@ to the respective database engine operations.
 
 モデルの作成
 ---------------
-A model is a class that extends from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. It must be placed in the models directory. A model
-file must contain a single class; its class name should be in camel case notation:
+モデルは :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` から継承したクラスです。models ディレクトリに配置する必要があります。 モデルのファイルには、単一のクラスが含まれている必要があります。そのクラス名はキャメルケースで表記すべきです:
 
 .. code-block:: php
 
@@ -28,18 +22,14 @@ file must contain a single class; its class name should be in camel case notatio
 
     }
 
-The above example shows the implementation of the "Robots" model. Note that the class Robots inherits from :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`.
-This component provides a great deal of functionality to models that inherit it, including basic database
-CRUD (Create, Read, Update, Delete) operations, data validation, as well as sophisticated search support and the ability to relate multiple models
-with each other.
+上記の例は、「ロボット」モデルの実装を示しています。クラス Robots は  :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` から継承していることに注目してください。このコンポーネントは、基本的なデータベースのCRUD （作成、読み取り、更新、削除）の操作、データ検証だけでなく、高度な検索をサポートし、相互に複数のモデルを関連付ける機能など、それを継承したモデルに多くの機能を提供します。
 
 .. highlights::
 
     If you're using PHP 5.4/5.5 is recommended declare each column that makes part of the model in order to save
     memory and reduce the memory allocation.
 
-By default model "Robots" will refer to the table "robots". If you want to manually specify another name for the mapping table,
-you can use the getSource() method:
+デフォルトでは、モデル "Robots" はテーブル "robots" を参照します。手動でマッピングテーブルに別の名前を指定したい場合は、 getSource() メソッドを使用することができます:
 
 .. code-block:: php
 
@@ -55,8 +45,7 @@ you can use the getSource() method:
 
     }
 
-The model Robots now maps to "the_robots" table. In addition to the above method the 'initialize' method is available.
-This method aids in setting up the model with a custom behavior i.e. a different table:
+モデル Robots は現在、「 the_robots 」テーブルにマップされています。上記の方法に加えて、 'initialize' メソッドが提供されています。カスタム動作、言い換えれば別のテーブルを使用してモデルをセットアップする方法を支援します:
 
 .. code-block:: php
 
@@ -72,9 +61,7 @@ This method aids in setting up the model with a custom behavior i.e. a different
 
     }
 
-The initialize() method is only called once during the request, it's intended to perform initializations that apply for
-all instances of the model created within the application. If you want to perform initialization tasks for every instance
-created you can 'onConstruct':
+initialize() メソッドはリクエストの間に一度だけ呼び出され、アプリケーション内で作成されたモデルのすべてのインスタンスに適用するために初期化を実行します。もし、あなたが、すべてのインスタンスで初期化処理を実行したい場合 'onConstruct' でできます:
 
 .. code-block:: php
 
@@ -90,10 +77,9 @@ created you can 'onConstruct':
 
     }
 
-パブリック・プロパティ vs. セッタ/ゲッタ
+パブリックプロパティ vs セッター/ゲッター
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models can be implemented with properties of public scope, meaning that each property can be read/updated
-from any part of the code that has instantiated that model class without any restrictions:
+モデルの各プロパティは、パブリックスコープで実装することができます、つまり、特に制限なく、モデルクラスがインスタンス化されたコードのどの部分からでも更新/読み取ることができることを意味します。
 
 .. code-block:: php
 
@@ -108,8 +94,7 @@ from any part of the code that has instantiated that model class without any res
         public $price;
     }
 
-By using getters and setters you can control which properties are visible publicly perform various transformations
-to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:
+ゲッターとセッターを使用して、どのプロパティで目に見える公的データに様々な変換を行い、また、オブジェクトに格納されたデータに検証ルールを追加するか制御することができます:
 
 .. code-block:: php
 
@@ -130,7 +115,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setName($name)
         {
-            //The name is too short?
+            //名前が短すぎる？
             if (strlen($name) < 10) {
                 throw new \InvalidArgumentException('The name is too short');
             }
@@ -144,7 +129,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setPrice($price)
         {
-            //Negative prices aren't allowed
+            //マイナスの価格が許可されていません
             if ($price < 0) {
                 throw new \InvalidArgumentException('Price can\'t be negative');
             }
@@ -153,18 +138,16 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function getPrice()
         {
-            //Convert the value to double before be used
+            //使用する前にdouble型に変換する
             return (double) $this->price;
         }
     }
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
-extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
-application they are creating. The ORM is compatible with both schemes of defining properties.
+パブリックプロパティは、開発中の複雑さを少なくします。しかしゲッター/セッターは、アプリケーションのテスト容易性、拡張性と保守性を大きく向上させることができます。開発者は、作成しているアプリケーションに、より適している戦略を決定することができます。 ORMは定義するプロパティの両方の方式に対応しています。
 
 名前空間内のモデル
 ^^^^^^^^^^^^^^^^^^^^
-Namespaces can be used to avoid class name collision. The mapped table is taken from the class name, in this case 'Robots':
+名前空間は、クラス名の衝突を回避するために使用することができます。マップされたテーブルはクラス名から取得されます、この場合は 'Robots':
 
 .. code-block:: php
 
@@ -177,10 +160,9 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
     }
 
-Understanding Records To Objects
+レコードからオブジェクトを理解する
 --------------------------------
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
-for a table "robots" with the records:
+モデルのすべてのインスタンスは、テーブル内の行を表します。あなたは簡単にオブジェクトのプロパティを読み取ることによってレコードデータにアクセスすることができます。例えば、"robots" テーブル:
 
 .. code-block:: bash
 
@@ -194,19 +176,19 @@ for a table "robots" with the records:
     +----+------------+------------+------+
     3 rows in set (0.00 sec)
 
-You could find a certain record by its primary key and then print its name:
+プライマリキーによって特定のレコードを検索し、その名前を出力できます:
 
 .. code-block:: php
 
     <?php
 
-    // Find record with id = 3
+    // id = 3 を持つレコードを検索
     $robot = Robots::findFirst(3);
 
-    // Prints "Terminator"
+    // "Terminator" を出力
     echo $robot->name;
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+レコードはメモリに入ると、そのデータに変更を加えてから、変更内容を保存することができます:
 
 .. code-block:: php
 
@@ -216,27 +198,25 @@ Once the record is in memory, you can make modifications to its data and then sa
     $robot->name = "RoboCop";
     $robot->save();
 
-As you can see, there is no need to use raw SQL statements. :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides high database
-abstraction for web applications.
+ご覧のように、生のSQL文を使用する必要はありません。  :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` は、Webアプリケーションのための高いデータベース抽象化を提供します。
 
 レコードの検索
 ---------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` also offers several methods for querying records. The following examples will show you
-how to query one or more records from a model:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` もレコードを照会するためのいくつかのメソッドを提供しています。次の例では、モデルから1つまたは複数のレコードを照会する方法を紹介します:
 
 .. code-block:: php
 
     <?php
 
-    // How many robots are there?
+    // いくつの robots がありますか？
     $robots = Robots::find();
     echo "There are ", count($robots), "\n";
 
-    // How many mechanical robots are there?
+    // いくつの mechanical robots がありますか？
     $robots = Robots::find("type = 'mechanical'");
     echo "There are ", count($robots), "\n";
 
-    // Get and print virtual robots ordered by name
+    // name 順に並べた virtual robots を取得し印刷
     $robots = Robots::find(array(
         "type = 'virtual'",
         "order" => "name"
@@ -245,7 +225,7 @@ how to query one or more records from a model:
         echo $robot->name, "\n";
     }
 
-    // Get first 100 virtual robots ordered by name
+    // virtual robotsのname順の最初の100件を取得
     $robots = Robots::find(array(
         "type = 'virtual'",
         "order" => "name",
@@ -255,25 +235,25 @@ how to query one or more records from a model:
        echo $robot->name, "\n";
     }
 
-You could also use the findFirst() method to get only the first record matching the given criteria:
+また、findFirst() メソッドを使用することで、与えられた条件に一致する最初のレコードだけを取得することができます:
 
 .. code-block:: php
 
     <?php
 
-    // What's the first robot in robots table?
+    // robots テーブルの最初の robot は何ですか？
     $robot = Robots::findFirst();
     echo "The robot name is ", $robot->name, "\n";
 
-    // What's the first mechanical robot in robots table?
+    // robots テーブルの最初の mechanical robot は何ですか？
     $robot = Robots::findFirst("type = 'mechanical'");
     echo "The first mechanical robot name is ", $robot->name, "\n";
 
-    // Get first virtual robot ordered by name
+    // virtual robotsのname順の最初を取得
     $robot = Robots::findFirst(array("type = 'virtual'", "order" => "name"));
     echo "The first virtual robot name is ", $robot->name, "\n";
 
-Both find() and findFirst() methods accept an associative array specifying the search criteria:
+find() と findFirst() メソッドの両方とも検索条件を指定する連想配列を受け入れます:
 
 .. code-block:: php
 
@@ -290,7 +270,7 @@ Both find() and findFirst() methods accept an associative array specifying the s
         "bind"       => array(1 => "virtual")
     ));
 
-The available query options are:
+利用可能なクエリオプションは次のとおり:
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Parameter   | Description                                                                                                                                                                                        | Example                                                                 |
@@ -318,7 +298,7 @@ The available query options are:
 | hydration   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | "hydration" => Resultset::HYDRATE_OBJECTS                               |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+必要に応じて、パラメータの配列を使用する代わりに、オブジェクト指向の方法でクエリを作成する方法があります:
 
 .. code-block:: php
 
@@ -331,10 +311,9 @@ If you prefer, there is also available a way to create queries in an object-orie
         ->order("name")
         ->execute();
 
-The static method query() returns a :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` object that is friendly with IDE autocompleters.
+静的メソッドの query() が返す :doc:`Phalcon\\Mvc\\Model\\Criteria <../api/Phalcon_Mvc_Model_Criteria>` オブジェクトは、IDE オートコンプリートと相性が良いです。
 
-All the queries are internally handled as :doc:`PHQL <phql>` queries. PHQL is a high-level, object-oriented and SQL-like language.
-This language provide you more features to perform queries like joining other models, define groupings, add agreggations etc.
+すべてのクエリは、内部で :doc:`PHQL <phql>` クエリとして処理されます。 PHQLは、高レベル、オブジェクト指向やSQLに似た言語です。この言語はあなたに他のモデルを結合するようなクエリを実行するための多くの機能を提供し、グループを定義し、集計などを追加します。
 
 モデルの結果セット
 ^^^^^^^^^^^^^^^^

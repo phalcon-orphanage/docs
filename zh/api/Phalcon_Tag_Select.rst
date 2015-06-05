@@ -7,19 +7,19 @@ Generates a SELECT html tag using a static array of values or a Phalcon\\Mvc\\Mo
 Methods
 -------
 
-public static  **selectField** (*array* $parameters, [*array* $data])
+public static  **selectField** (*unknown* $parameters, [*unknown* $data])
 
 Generates a SELECT tag
 
 
 
-protected static  **_optionsFromResultset** ()
+private static  **_optionsFromResultset** (*unknown* $resultset, *unknown* $using, *unknown* $value, *unknown* $closeOption)
 
 Generate the OPTION tags based on a resulset
 
 
 
-protected static  **_optionsFromArray** ()
+private static  **_optionsFromArray** (*unknown* $data, *unknown* $value, *unknown* $closeOption)
 
 Generate the OPTION tags based on an array
 
