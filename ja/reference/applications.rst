@@ -1,18 +1,14 @@
 MVC アプリケーション
 ================
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`. This component encapsulates all the complex
-operations required in the background, instantiating every component needed and integrating it with the
-project, to allow the MVC pattern to operate as desired.
+PhalconでMVCの動作が組織される背後には、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の働きがあります。このコンポーネントは、バックグラウンドで必要となる全ての複雑な処理をカプセル化し、必要とされる全てのコンポーネントを初期化して、それらをプロジェクトに統合し、MVCパターンの望ましい動作を実現します。
 
-シングル・モジュール アプリケーションとマルチ・モジュール アプリケーション
+シングルまたはマルチモジュールアプリケーション
 -----------------------------------
-With this component you can run various types of MVC structures:
+このコンポーネントを使用すると、様々な種類のMVC構造を実行することが出来ます。
 
-シングル・モジュール
+シングルモジュール
 ^^^^^^^^^^^^^
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary.
-An application like this would have the following file structure:
+シングルMVCアプリケーションは、1つのモジュールで構成されています。名前空間を使用することもできますが、使用しなくてもかまいません。このようなアプリケーションでは、下記のようなファイル構成を持つことになります：
 
 .. code-block:: php
 
@@ -26,7 +22,7 @@ An application like this would have the following file structure:
             img/
             js/
 
-If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
+名前空間を使用しない場合、下記のブートストラップファイルをMVCのフローを調整するために使用することができます：
 
 .. code-block:: php
 
@@ -48,7 +44,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
 
     $di = new FactoryDefault();
 
-    // Registering the view component
+    // viewコンポーネントを登録
     $di->set('view', function() {
         $view = new View();
         $view->setViewsDir('../apps/views/');
@@ -65,7 +61,7 @@ If namespaces are not used, the following bootstrap file could be used to orches
         echo $e->getMessage();
     }
 
-If namespaces are used, the following bootstrap can be used:
+名前空間を使用する場合、下記のブートストラップファイルを使用できます：
 
 .. code-block:: php
 
@@ -79,7 +75,7 @@ If namespaces are used, the following bootstrap can be used:
 
     $loader = new Loader();
 
-    // Use autoloading with namespaces prefixes
+    // 名前空間の接頭辞を伴ったオートローディングの設定
     $loader->registerNamespaces(
         array(
             'Single\Controllers' => '../apps/controllers/',
@@ -89,7 +85,7 @@ If namespaces are used, the following bootstrap can be used:
 
     $di = new FactoryDefault();
 
-    // Register the dispatcher setting a Namespace for controllers
+    // コントローラーの名前空間を設定してディスパッチャに登録
     $di->set('dispatcher', function() {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Single\Controllers');
@@ -114,9 +110,9 @@ If namespaces are used, the following bootstrap can be used:
     }
 
 
-マルチ・モジュール
+マルチモジュール
 ^^^^^^^^^^^^
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+マルチモジュールアプリケーションは、1つ以上のモジュールに同じドキュメントルートを使用します。この場合、以下のようなファイル構成が使用できます：
 
 .. code-block:: php
 
@@ -137,7 +133,7 @@ A multi-module application uses the same document root for more than one module.
         img/
         js/
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+apps/ 配下のそれぞれのディレクトリが独自のMVC構造を持っています。Module.php はそれぞれのモジュールにおける固有の設定、例えばオートローダーや専用のサービスの登録等に使用します：
 
 .. code-block:: php
 
@@ -177,7 +173,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         public function registerServices($di)
         {
 
-            //Registering a dispatcher
+            //ディスパッチャを登録
             $di->set('dispatcher', function() {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
@@ -194,7 +190,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     }
 
-A special bootstrap file is required to load the a multi-module MVC architecture:
+マルチモジュールのMVC構成をロードするには、特別なブートストラップファイルが必要になります：
 
 .. code-block:: php
 
@@ -206,7 +202,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     $di = new FactoryDefault();
 
-    //Specify routes for modules
+    //モジュールのルーティング設定
     $di->set('router', function () {
 
         $router = new Router();
@@ -235,10 +231,10 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     try {
 
-        //Create an application
+        //アプリケーションを初期化
         $application = new Application($di);
 
-        // Register the installed modules
+        // モジュールを登録する
         $application->registerModules(
             array(
                 'frontend' => array(
@@ -252,24 +248,23 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             )
         );
 
-        //Handle the request
+        //リクエストを処理する
         echo $application->handle()->getContent();
 
     } catch(\Exception $e){
         echo $e->getMessage();
     }
 
-If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the
-module:
+モジュール設定をブートストラップファイルで整えたい場合、無名関数を使用してモジュールを登録することができます：
 
 .. code-block:: php
 
     <?php
 
-    //Creating a view component
+    //viewコンポーネントの初期化
     $view = new \Phalcon\Mvc\View();
 
-    //Set options to view component
+    //viewコンポーネントにオプションを設定
     //...
 
     // Register the installed modules
@@ -290,16 +285,11 @@ module:
         )
     );
 
-When :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` have modules registered, always is
-necessary that every matched route returns a valid module. Each registered module has an associated class
-offering functions to set the module itself up. Each module class definition must implement two
-methods: registerAutoloaders() and registerServices(), they will be called by
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` according to the module to be executed.
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` にモジュールが登録されている場合、マッチしたルートが有効なモジュールを返すことが常に必要になります。それぞれの登録済みモジュールは、モジュールの機能を提供するために必要な関連クラスを持っています。それぞれのモジュールのクラス定義は、registerAutoloaders() とregisterServices() という2つのメソッドを実装しなければなりません。これらは、モジュールが実行される際に :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` に呼ばれます。
 
-デフォルト動作の理解
+デフォルトの動作を理解する
 ----------------------------------
-If you've been following the :doc:`tutorial <tutorial>` or have generated the code using :doc:`Phalcon Devtools <tools>`,
-you may recognize the following bootstrap file:
+あなたが :doc:`tutorial <tutorial>` を読んでことがあるか、 :doc:`Phalcon Devtools <tools>` を使ってコードを生成したことがあるなら、以下のブートストラップファイルを見たことがあるはずです：
 
 .. code-block:: php
 
@@ -307,10 +297,10 @@ you may recognize the following bootstrap file:
 
     try {
 
-        // Register autoloaders
+        // オートローダにディレクトリを登録する
         //...
 
-        // Register services
+        // サービスを登録する
         //...
 
         // Handle the request
@@ -322,7 +312,7 @@ you may recognize the following bootstrap file:
         echo "Exception: ", $e->getMessage();
     }
 
-The core of all the work of the controller occurs when handle() is invoked:
+コントローラーの全ての働きの中核部分は、handle()が呼ばれた際に発生します：
 
 .. code-block:: php
 
@@ -332,13 +322,13 @@ The core of all the work of the controller occurs when handle() is invoked:
 
 手動によるブートストラップ
 -------------------
-If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`, the code above can be changed as follows:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を使いたくない場合、上述したコードは以下のように変更できます:
 
 .. code-block:: php
 
     <?php
 
-    // Get the 'router' service
+    // 「router」サービスを取得
     $router = $di['router'];
 
     $router->handle();
@@ -347,40 +337,39 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
 
     $dispatcher = $di['dispatcher'];
 
-    // Pass the processed router parameters to the dispatcher
+    // 処理済みのルートパラメータをディスパッチャに渡す
     $dispatcher->setControllerName($router->getControllerName());
     $dispatcher->setActionName($router->getActionName());
     $dispatcher->setParams($router->getParams());
 
-    // Start the view
+    // viewの開始
     $view->start();
 
-    // Dispatch the request
+    // リクエストを処理する
     $dispatcher->dispatch();
 
-    // Render the related views
+    // 関連するビューの描画
     $view->render(
         $dispatcher->getControllerName(),
         $dispatcher->getActionName(),
         $dispatcher->getParams()
     );
 
-    // Finish the view
+    // viewの終了
     $view->finish();
 
     $response = $di['response'];
 
-    // Pass the output of the view to the response
+    // ビューの出力をレスポンスに渡す
     $response->setContent($view->getContent());
 
-    // Send the request headers
+    // リクエストヘッダの送信
     $response->sendHeaders();
 
-    // Print the response
+    // レスポンスを表示する
     echo $response->getContent();
 
-The following replacement of :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` lacks of a view component making
-it suitable for Rest APIs:
+以下の、 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` の代替となるコードは、viewコンポーネントを使用していないため、REST APIに適しています:
 
 .. code-block:: php
 
@@ -401,17 +390,17 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //Get the returned value by the lastest executed action
+    //直前に実行されたアクションの返り値を取得
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    //返り値がResponseオブジェクトのインスタンスか確認する
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        //リクエストを送信する
         $response->send();
     }
 
-Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
+ディスパッチャで生成された例外をキャッチして、別のアクションを実行するやり方の代替が以下になります:
 
 .. code-block:: php
 
@@ -436,7 +425,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        //An exception has ocurred, dispatch some controller/action aimed for that
+        //例外が発生した場合、それに対応するコントローラーとアクションを実行する
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -457,14 +446,11 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
         $response->send();
     }
 
-Although the above implementations are a lot more verbose than the code needed while using :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>`,
-it offers an alternative in boostraping your application. Depending on your needs, you might want to have full control of what
-should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+上記した実装は :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` を使用するものよりもずっと多くの情報を含んでいますが、これはアプリケーションの初期化の別のやり方です。場合によって、何がインスタンス化されるかを全てコントロールしたい場合もあるでしょうし、特定のコンポーネントを、基本的な機能を継承した独自コンポーネントで置き換えたい場合もあるでしょう。
 
 アプリケーション・イベント
 ------------------
-:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` is able to send events to the :doc:`EventsManager <events>`
-(if it is present). Events are triggered using the type "application". The following events are supported:
+:doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` は、 :doc:`EventsManager <events>` にイベントを送ることができます ( :doc:`EventsManager <events>` がある場合)。イベントは「application」というタイプで発火します。以下のイベントがサポートされています:
 
 +---------------------+--------------------------------------------------------------+
 | Event Name          | Triggered                                                    |
@@ -480,7 +466,7 @@ should be instantiated or not, or replace certain components with those of your 
 | afterHandleRequest  | After execute the dispatch loop                              |
 +---------------------+--------------------------------------------------------------+
 
-The following example demonstrates how to attach listeners to this component:
+以下の例は、リスナーへのこのコンポーネントの追加方法を示しています:
 
 .. code-block:: php
 
