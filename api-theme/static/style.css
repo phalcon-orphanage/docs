@@ -202,7 +202,23 @@
 .method-details-list{
     list-style: none;
     margin:0;
+    padding:0;
 }
+
+
+
+.method-details-details .method-signature .anchor-link{
+    position: absolute;
+    top:20px;
+    left:0;
+    display: none;
+    color:#DDD;
+}
+
+.method-details-details:hover .anchor-link{
+    display: block;
+}
+
 
 .hidden-anchor{
     width: 0;
@@ -218,6 +234,8 @@
     margin-bottom: 5px;
     font-size: 15px;
     margin-top: 5px;
+    position: relative;
+    padding-left: 20px;
 }
 
 .method-signature h3{
@@ -228,7 +246,7 @@ font-weight: bold;
 
 
 .method-info{
-    padding-left: 10px;
+    padding-left: 35px;
     font-size: 13px;
 }
 
@@ -236,4 +254,13 @@ font-weight: bold;
     display: block;
     margin: 10px 0;
     border: 1px solid #F1D3DC;
+}
+
+.method-details .btn-section{
+    margin-top:8px;
+    padding-left: 20px;
+}
+
+.method-source{
+    margin-top: 8px;
 }

@@ -170,6 +170,19 @@ var ZepDoc = (function($){
             
         });
 
+        $(".method-details .btn.view-source").each(function(){
+
+            $(this).click(function(){
+                $(this).closest(".method-details").find(".method-source").toggleClass("hide");
+                if($(this).closest(".method-details").find(".method-source").hasClass("hide")){
+                    $(this).removeClass("active");
+                }else{
+                    $(this).addClass("active");
+                }
+            });
+
+        });
+
     });
 
     return ZepDoc;

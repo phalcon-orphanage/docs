@@ -17,20 +17,25 @@ $docblock =  $method->getParsedDocBlock();
         
 
         <div class="method-details-details">
+
+
+
             <div class="method-signature">
 
-                
-                <?php foreach($visibilities as $visibility){ ?>
-                    
-                <span class="visibility-<?= $visibility ?>"><?= $visibility ?></span>
-                
-                <?php } ?>
-                
-                function <h3 class="method-name"><?= $method->getName() ?></h3>(<?= $this->partial("partials/class/method-summary-params.phtml" ) ?>)
-                
+                <a class="anchor-link" href="#method-details-<?= $method->getName() ?>">&#9875;</a>
 
-                
+                <?php foreach($visibilities as $visibility){ ?>
+
+                <span class="visibility-<?= $visibility ?>"><?= $visibility ?></span>
+
+                <?php } ?>
+
+                function <h3 class="method-name"><?= $method->getName() ?></h3>(<?= $this->partial("partials/class/method-summary-params.phtml" ) ?>)
+
+
+
             </div>
+
 
             <div class="method-info">
                 <?php if ($docblock) { ?>
@@ -45,7 +50,22 @@ $docblock =  $method->getParsedDocBlock();
                 <?php } ?>
             </div>
 
+            <div class="btn-section">
+                <?php if($this->themeOption("github")){ ?>
+                    <a class="btn btn-xs btn-default" href="<?= $this->themeOption("github") . "/tree/master/" . $compilerFile->getFilePath() ?>#L<?= $method->getLine() ?>">Github</a>
+                <?php } ?>
+                <a class="btn btn-xs btn-default view-source" >Source</a>
+            </div>
+
+            <div class="method-source hide">
+                <?php $file = file($compilerFile->getFilePath()); ?>
+                <pre class="zephir-source-file prettyprint linenums">
+<?php for ($i = $method->getLine() - 1; $i < $method->getLastLine(); $i++) { ?><?= $file[$i] ?><?php } ?>
+                </pre>
+            </div>
+
         </div>
+
 
     </div>
 

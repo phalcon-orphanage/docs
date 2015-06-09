@@ -12,7 +12,7 @@
 <div class="class-header source clearfix">
 
 
-        <h1 class="class-name">Source of <strong><?= $fullName ?></strong></h1>
+    <h1 class="class-name">Source of <strong><?= $fullName ?></strong></h1>
 
     <div class="access-buttons">
         <a class="btn btn-default" href="<?= $this->url($classDefinition) ?>">Class Api</a>
@@ -34,4 +34,4 @@
 </div>
 
 
-<pre class="zephir-source-file prettyprint linenums"><?= file_get_contents(realpath($compilerFile->getFilePath())) ?></pre>
+<pre class="zephir-source-file prettyprint linenums"><?= htmlentities(file_get_contents(realpath($compilerFile->getFilePath()))) ?></pre>
