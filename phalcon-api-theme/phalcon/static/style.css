@@ -52,6 +52,7 @@
 
 #body-right .content{
     padding-left: 8px;
+    padding-bottom: 35px;
 }
 
 .heading h2 .version{
@@ -100,7 +101,7 @@
     border-top: 1px dotted #BCFAD7;
 }
 
-#menu-wrapper ul>li>a:hover{
+#menu-wrapper ul>li.menu-class>a:hover{
     background: #D1FDE4;
     transition: background 300ms;
 }
@@ -118,7 +119,6 @@
     left: -7px;
     top: 7px;
     position: absolute;
-    transform: rotate(90deg);
 }
 #menu-wrapper ul .menu-ns>a>span{
     position: relative;
@@ -177,6 +177,10 @@
     width: 100%;
 }
 
+.class-method .method-summary .summary-text{
+    font-size: 13px;
+}
+
 .class-method .method-return{
     text-align: right;
     padding-right: 8px;
@@ -192,4 +196,44 @@
 
 .class-method .method-summary .param-data-type{
     font-weight: bold;
+}
+
+
+.method-details-list{
+    list-style: none;
+    margin:0;
+}
+
+.hidden-anchor{
+    width: 0;
+    height:0;
+    display: inline-block;
+    position: relative;
+    top:-78px;
+}
+
+
+.method-signature{
+    border-bottom: 1px dotted #D2EDEF ;
+    margin-bottom: 5px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.method-signature h3{
+display: inline-block;
+font-size: 15px;
+font-weight: bold;
+}
+
+
+.method-info{
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.method-info code{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid #F1D3DC;
 }

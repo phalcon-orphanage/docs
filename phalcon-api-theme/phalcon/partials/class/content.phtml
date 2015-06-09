@@ -25,7 +25,17 @@
         <?php if($this->themeOption("github")){ ?>
             <a class="btn btn-default" href="<?= $this->themeOption("github") . "/tree/master/" . $compilerFile->getFilePath() ?>">Github</a>
         <?php } ?>
+
+        from namespace :
+        <?php foreach($namespacePieces as $nsname => $nspath){ ?>
+            <span class="namespace-piece">
+                \ <a href="<?= $this->url(Zephir\Documentation::namespaceUrl($nspath)) ?>"><?=$nsname?></a>
+            </span>
+        <?php } ?>
+
     </div>
+
+
 
 </div>
 

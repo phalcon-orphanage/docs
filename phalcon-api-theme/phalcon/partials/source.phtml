@@ -10,26 +10,26 @@
 <?= $this->partial("partials/breadcrumb.phtml",array("items"=> $items)) ?>
 
 <div class="class-header source clearfix">
-    
+
+
+        <h1 class="class-name">Source of <strong><?= $fullName ?></strong></h1>
+
     <div class="access-buttons">
-        <a class="zep-button" href="<?= $this->url($classDefinition) ?>">Class</a>
+        <a class="btn btn-default" href="<?= $this->url($classDefinition) ?>">Class Api</a>
 
         <?php if($this->themeOption("github")){ ?>
-        <a class="zep-button" href="<?= $this->themeOption("github") . "/tree/master/" . $compilerFile->getFilePath() ?>">Github</a>
+            <a class="btn btn-default" href="<?= $this->themeOption("github") . "/tree/master/" . $compilerFile->getFilePath() ?>">Github</a>
         <?php } ?>
-    </div>
-    
-    <div class="class-full-name">
-        
-        <span class="class-type">Class</span>
-        
+
+        from namespace :
         <?php foreach($namespacePieces as $nsname => $nspath){ ?>
-        <span class="namespace-piece">
-            <a href="<?= $this->url(Zephir\Documentation::namespaceUrl($nspath)) ?>"><?=$nsname?></a>
-        </span>
+            <span class="namespace-piece">
+                \ <a href="<?= $this->url(Zephir\Documentation::namespaceUrl($nspath)) ?>"><?=$nsname?></a>
+            </span>
         <?php } ?>
-        <h1 class="class-name"><?= $className ?></h1>
+
     </div>
+
     
 </div>
 

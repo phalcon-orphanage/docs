@@ -28,18 +28,23 @@ $docblock =  $method->getParsedDocBlock();
                 
                 function <h3 class="method-name"><?= $method->getName() ?></h3>(<?= $this->partial("partials/class/method-summary-params.phtml" ) ?>)
                 
-                <?php if ($docblock) { ?>
-                
-                    <div>
-                    <?= $docblock->getSummary() ?>
-                    </div>
-                    <div>
-                    <?= $docblock->getDescription() ?>
-                    </div>
-                
-                <?php } ?>
+
                 
             </div>
+
+            <div class="method-info">
+                <?php if ($docblock) { ?>
+
+                    <div>
+                        <?= $docblock->getSummary() ?>
+                    </div>
+                    <div>
+                        <?= $docblock->getDescription() ?>
+                    </div>
+
+                <?php } ?>
+            </div>
+
         </div>
 
     </div>
