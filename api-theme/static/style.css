@@ -134,12 +134,12 @@
     margin-bottom: 0;
 }
 
-.standard-band{
-    background: url(https://static.phalconphp.com/images/heading.png) center center no-repeat #548d90;
+.standard-band {
+    background: #F8FFFB;
     margin: 5px 0 0;
     padding: 4px 10px;
     font-size: 20px;
-    color: #FFF;
+    color: #4d4a4c;
     font-weight: bold;
 }
 
