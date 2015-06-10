@@ -152,6 +152,21 @@
     margin-bottom: 10px;
 }
 
+.classSummary{
+    font-style: italic;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.classDescription{
+    border: 1px solid #C4ECDB;
+    background: #E7FFF5;
+    margin: 18px 0;
+    border-radius: 6px;
+    padding: 5px 15px;
+}
 
 .method-summary-list{
     list-style: none;

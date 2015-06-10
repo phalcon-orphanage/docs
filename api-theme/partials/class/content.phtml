@@ -4,12 +4,15 @@
         array("name" => "Classes" , "url" => "/classes.html" ),
         $items[] = array("name" => $fullName)
     );
+
+    $classDocblock =  $classDefinition->getParsedDocBlock();
+
 ?>
 
 <?= $this->partial("partials/breadcrumb.phtml",array("items"=> $items)) ?>
 
 <div class="class-header clearfix">
-    
+
 
     <h1 class="class-name">
         <span class="class-type">Class</span>
@@ -35,9 +38,22 @@
 
     </div>
 
-
-
 </div>
+
+<?php if ($classDocblock) { ?>
+
+    <?php if ($classDocblock->getSummary()) { ?>
+        <h2 class="classSummary">
+            <?= $classDocblock->getSummary() ?>
+        </h2>
+    <?php } ?>
+
+    <?php if ($classDocblock->getDescription()) { ?>
+        <div class="classDescription">
+            <?= $classDocblock->getDescription() ?>
+        </div>
+    <?php } ?>
+<?php } ?>
 
 
 <div class="hidden-anchor"  id="methods"></div>
