@@ -1,0 +1,57 @@
+<?php
+
+/* @var $method \Zephir\ClassMethod */
+
+$visibilities = $method->getVisibility();
+$methodDocblock =  $method->getParsedDocBlock();
+
+?>
+
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-<?= $method->getName() ?>"></div>
+
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                <a class="anchor-link" href="#method-details-<?= $method->getName() ?>">&#9875;</a>
+
+                <?php foreach($visibilities as $visibility){ ?>
+                <span class="visibility-<?= $visibility ?>"><?= $visibility ?></span>
+                <?php } ?>
+                function <h3 class="method-name"><?= $method->getName() ?></h3>(<?= $this->partial("partials/class/method-summary-params.phtml" ) ?>)
+
+            </div>
+
+            <div class="method-info">
+                <?php if ($methodDocblock) { ?>
+                    <div>
+                        <?= $methodDocblock->getSummary() ?>
+                    </div>
+                    <div>
+                        <?= $methodDocblock->getDescription() ?>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <div class="btn-section">
+                <?php if($this->themeOption("github")){ ?>
+                    <a class="btn btn-xs btn-default" href="<?= $this->themeOption("github") . "/tree/master/" . $compilerFile->getFilePath() ?>#L<?= $method->getLine() ?>">Github</a>
+                <?php } ?>
+                <?php /*
+                <a class="btn btn-xs btn-default view-source" >Source</a>
+                */ ?>
+            </div>
+
+            <?php /*
+            <div class="method-source hide">
+                <?php $file = file($compilerFile->getFilePath()); ?>
+                <pre class="zephir-source-file prettyprint linenums">
+<?php for ($i = $method->getLine() - 1; $i < $method->getLastLine(); $i++) { ?><?= $file[$i] ?><?php } ?>
+                </pre>
+            </div>
+             */ ?>
+        </div>
+    </div>
+</li>

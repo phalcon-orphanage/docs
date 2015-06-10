@@ -1,0 +1,281 @@
+
+#header{
+    position:fixed;
+    top:0;
+    height:186px;
+    left:0;
+    right:0;
+}
+
+
+#body-right{
+    position:fixed;
+    top:186px;
+    left:300px;
+    right:0;
+    bottom:0;
+    overflow-y: auto;
+}
+
+#body-left{
+    position:fixed;
+    top:186px;
+    left:0;
+    width: 300px;
+    bottom:0;
+    overflow-y: hidden;
+    border-right: 2px solid #DDD;
+}
+
+
+#body-left #menu-wrapper{
+    overflow-y: auto;
+    position: absolute;
+    top:32px;
+    bottom: 0;
+    left:0;
+    right:0;
+}
+
+#body-left .header-search{
+    width:100%;
+    height:32px;
+    border-bottom: 1px solid #DDD;
+}
+#body-left .header-search input{
+    width: 100%;
+    height: 100%;
+    border:0;
+    text-indent: 5px;
+}
+
+
+#body-right .content{
+    padding-left: 8px;
+    padding-bottom: 35px;
+}
+
+.heading h2 .version{
+    font-size:17px;
+}
+
+.breadcrumb{
+    background:#FFF;
+}
+
+.breadcrumb ul{
+    padding: 0;
+    margin:10px;
+}
+
+.breadcrumb ul>li{
+    list-style: none;
+    display: inline-block;
+}
+
+.breadcrumb ul>li:after{
+    content: "\00BB";
+    margin-left: 5px;
+}
+
+.breadcrumb ul>li:last-child:after{
+    display: none;;
+}
+
+
+#menu-wrapper ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+#menu-wrapper ul>li>a{
+    width:100%;
+    display: block;
+    transition: background 400ms;
+}
+
+#menu-wrapper ul>li.even>a{
+    background: #F8FFFB;
+    border-bottom: 1px dotted #BCFAD7;
+    border-top: 1px dotted #BCFAD7;
+}
+
+#menu-wrapper ul>li.menu-class>a:hover{
+    background: #D1FDE4;
+    transition: background 300ms;
+}
+
+
+
+#menu-wrapper ul .menu-ns>a>span:before {
+    content: "";
+    border-color: transparent #285F4B;
+    border-style: solid;
+    border-width: 0.28em 0 0.28em 0.30em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -7px;
+    top: 7px;
+    position: absolute;
+}
+#menu-wrapper ul .menu-ns>a>span{
+    position: relative;
+}
+
+#menu-wrapper ul .menu-ns>a{
+    position: relative;
+    font-weight: bold;
+    color:#6EAE94;
+}
+
+.breadcrumb{
+    margin-bottom: 0;
+}
+
+.standard-band {
+    background: #F8FFFB;
+    margin: 5px 0 0;
+    padding: 4px 10px;
+    font-size: 20px;
+    color: #4d4a4c;
+    font-weight: bold;
+}
+
+.content>.class-header h1{
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.content>.class-header{
+    margin-bottom: 10px;
+}
+
+.classSummary{
+    font-style: italic;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.classDescription{
+    border: 1px solid #C4ECDB;
+    background: #E7FFF5;
+    margin: 18px 0;
+    border-radius: 6px;
+    padding: 5px 15px;
+}
+
+.method-summary-list{
+    list-style: none;
+    width: 100%;
+    display: table;
+    border-collapse: collapse
+}
+
+
+.method-summary-list>li{
+    display: table-row;
+}
+
+.method-summary-list>li>div{
+    display: table-cell;
+    border-bottom: 1px dotted #D2EDEF;
+    padding: 5px 0;
+}
+
+.class-method .method-summary{
+    color: #888;
+    padding-left:2px;
+    width: 100%;
+}
+
+.class-method .method-summary .summary-text{
+    font-size: 13px;
+}
+
+.class-method .method-return{
+    text-align: right;
+    padding-right: 8px;
+}
+
+.class-method .method-summary .method-return{
+    vertical-align: top;
+}
+
+.class-method .method-summary .summary-text{
+    color:#333;
+}
+
+.class-method .method-summary .param-data-type{
+    font-weight: bold;
+}
+
+
+.method-details-list{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+
+
+.method-details-details .method-signature .anchor-link{
+    position: absolute;
+    top:20px;
+    left:0;
+    display: none;
+    color:#DDD;
+}
+
+.method-details-details:hover .anchor-link{
+    display: block;
+}
+
+
+.hidden-anchor{
+    width: 0;
+    height:0;
+    display: inline-block;
+    position: relative;
+    top:-78px;
+}
+
+
+.method-signature{
+    border-bottom: 1px dotted #D2EDEF ;
+    margin-bottom: 5px;
+    font-size: 15px;
+    margin-top: 5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.method-signature h3{
+display: inline-block;
+font-size: 15px;
+font-weight: bold;
+}
+
+
+.method-info{
+    padding-left: 35px;
+    font-size: 13px;
+}
+
+.method-info code{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid #F1D3DC;
+}
+
+.method-details .btn-section{
+    margin-top:8px;
+    padding-left: 20px;
+}
+
+.method-source{
+    margin-top: 8px;
+}
