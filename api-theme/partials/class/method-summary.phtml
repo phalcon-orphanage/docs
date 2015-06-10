@@ -46,7 +46,7 @@
 
         <?php 
             
-            $docblock = $method->getParsedDocblock();
+            $methodDocblock = $method->getParsedDocblock();
         
  
         ?>
@@ -54,8 +54,8 @@
     </div>
     <div class="method-summary">
         <span class="method-name"><a href="#method-details-<?= $method->getName() ?>"><?= $method->getName() ?></a></span>(<?= $this->partial("partials/class/method-summary-params.phtml" ) ?>)
-        <?php if($docblock){ ?>
-        <div class="summary-text"><?= $docblock->getSummary() ?></div>
+        <?php if($methodDocblock){ ?>
+        <div class="summary-text"><?= $methodDocblock->getSummary() ?></div>
         <?php } ?>
     </div>
 
