@@ -183,6 +183,12 @@ var ZepDoc = (function($){
 
         });
 
+        $(".code-inside code").each(function(){
+            $(this).addClass("php-source-file prettyprint linenums");
+        });
+
+        prettyPrint();
+
     });
 
     return ZepDoc;

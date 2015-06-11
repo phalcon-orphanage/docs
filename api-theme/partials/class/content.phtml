@@ -43,15 +43,13 @@
 <?php if ($classDocblock) { ?>
 
     <?php if ($classDocblock->getSummary()) { ?>
-        <h2 class="classSummary">
+        <h2 class="class-docblock-summary">
             <?= $classDocblock->getSummary() ?>
         </h2>
     <?php } ?>
 
     <?php if ($classDocblock->getDescription()) { ?>
-        <div class="classDescription">
-            <?= $classDocblock->getDescription() ?>
-        </div>
+        <div class="class-docblock-description code-inside"><?= $classDocblock->getDescription() ?></div>
     <?php } ?>
 <?php } ?>
 

@@ -39,7 +39,8 @@
     color: red
 }
 
-pre.prettyprint {
+pre.prettyprint,
+code.prettyprint{
     padding:5px;
     border-left: 3px solid #DDD;
     background: rgb(18, 27, 33);

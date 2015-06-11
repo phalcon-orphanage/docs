@@ -26,12 +26,10 @@ $methodDocblock =  $method->getParsedDocBlock();
 
             <div class="method-info">
                 <?php if ($methodDocblock) { ?>
-                    <div>
+                    <div class="method-docblock-summary">
                         <?= $methodDocblock->getSummary() ?>
                     </div>
-                    <div>
-                        <?= $methodDocblock->getDescription() ?>
-                    </div>
+                    <div class="method-docblock-details code-inside"><?= $methodDocblock->getDescription() ?></div>
                 <?php } ?>
             </div>
 
