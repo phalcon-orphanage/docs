@@ -152,7 +152,7 @@
     margin-bottom: 10px;
 }
 
-.classSummary{
+.class-docblock-summary{
     font-style: italic;
     margin-bottom: 12px;
     margin-top: 15px;
@@ -160,12 +160,11 @@
     font-weight: bold;
 }
 
-.classDescription{
-    border: 1px solid #C4ECDB;
-    background: #E7FFF5;
+.class-docblock-description{
     margin: 18px 0;
     border-radius: 6px;
     padding: 5px 15px;
+    white-space:pre;
 }
 
 .method-summary-list{
@@ -265,10 +264,9 @@ font-weight: bold;
     font-size: 13px;
 }
 
-.method-info code{
+.code-inside code{
     display: block;
     margin: 10px 0;
-    border: 1px solid #F1D3DC;
 }
 
 .method-details .btn-section{
@@ -278,4 +276,8 @@ font-weight: bold;
 
 .method-source{
     margin-top: 8px;
+}
+
+.method-docblock-details{
+    white-space: pre;
 }
