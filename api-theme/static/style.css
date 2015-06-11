@@ -5,15 +5,15 @@
     height:186px;
     left:0;
     right:0;
+    z-index: 100;
 }
 
 
 #body-right{
-    position:fixed;
-    top:186px;
-    left:300px;
-    right:0;
-    bottom:0;
+    position: relative;
+    z-index: 0;
+    padding-top:186px;
+    padding-left:300px;
     overflow-y: auto;
 }
 
@@ -239,7 +239,7 @@
     height:0;
     display: inline-block;
     position: relative;
-    top:-78px;
+    top:-190px;
 }
 
 
