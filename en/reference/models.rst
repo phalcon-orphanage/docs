@@ -56,7 +56,6 @@ you can use the getSource() method:
         {
             return "the_robots";
         }
-
     }
 
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
@@ -75,7 +74,6 @@ The initialize() method is only called once during the request.
         {
             $this->setSource("the_robots");
         }
-
     }
 
 The initialize() method is only called once during the request, it's intended to perform initializations that apply for
@@ -95,7 +93,6 @@ created you can 'onConstruct':
         {
             //...
         }
-
     }
 
 Public properties vs. Setters/Getters
@@ -142,7 +139,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setName($name)
         {
-            //The name is too short?
+            // The name is too short?
             if (strlen($name) < 10) {
                 throw new \InvalidArgumentException('The name is too short');
             }
@@ -156,7 +153,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setPrice($price)
         {
-            //Negative prices aren't allowed
+            // Negative prices aren't allowed
             if ($price < 0) {
                 throw new \InvalidArgumentException('Price can\'t be negative');
             }
@@ -165,7 +162,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function getPrice()
         {
-            //Convert the value to double before be used
+            // Convert the value to double before be used
             return (double) $this->price;
         }
     }
@@ -188,7 +185,29 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
     class Robots extends Model
     {
+        // ...
+    }
 
+Namespaces make part of model names when they are within strings:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Toys;
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany('id', 'Store\Toys\RobotsParts', 'robots_id');
+        }
     }
 
 Understanding Records To Objects
@@ -487,7 +506,7 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
     $customers = Customers::find()->filter(function($customer) {
 
-        //Return only customers with a valid e-mail
+        // Return only customers with a valid e-mail
         if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
             return $customer;
         }
@@ -506,13 +525,13 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
     // Query robots binding parameters with string placeholders
     $conditions = "name = :name: AND type = :type:";
 
-    //Parameters whose keys are the same as placeholders
+    // Parameters whose keys are the same as placeholders
     $parameters = array(
         "name" => "Robotina",
         "type" => "maid"
     );
 
-    //Perform the query
+    // Perform the query
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -529,13 +548,13 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
     // Query robots binding parameters with both string and integer placeholders
     $conditions = "name = :name: AND type = ?1";
 
-    //Parameters whose keys are the same as placeholders
+    // Parameters whose keys are the same as placeholders
     $parameters = array(
         "name" => "Robotina",
         1      => "maid"
     );
 
-    //Perform the query
+    // Perform the query
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -3420,7 +3439,6 @@ You may be required to access the application services within a model, the follo
                 $flash->error($message);
             }
         }
-
     }
 
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages

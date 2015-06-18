@@ -112,11 +112,11 @@ From a controller or a view, it's easy to create/execute them using an injected 
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $query  = $this->modelsManager->createQuery("SELECT * FROM Cars");
     $cars   = $query->execute();
 
-    //With bound parameters
+    // With bound parameters
     $query  = $this->modelsManager->createQuery("SELECT * FROM Cars WHERE name = :name:");
     $cars   = $query->execute(array(
         'name' => 'Audi'
@@ -128,10 +128,10 @@ Or simply execute it:
 
     <?php
 
-    //Executing a simple query
+    // Executing a simple query
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars");
 
-    //Executing with bound parameters
+    // Executing with bound parameters
     $cars = $this->modelsManager->executeQuery("SELECT * FROM Cars WHERE name = :name:", array(
         'name' => 'Audi'
     ));
