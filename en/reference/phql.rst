@@ -474,13 +474,11 @@ on the model cars. A car cannot cost less than $ 10,000:
 
         public function beforeCreate()
         {
-            if ($this->price < 10000)
-            {
+            if ($this->price < 10000) {
                 $this->appendMessage(new Message("A car cannot cost less than $ 10,000"));
                 return false;
             }
         }
-
     }
 
 If we made the following INSERT in the models Cars, the operation will not be successful
@@ -491,7 +489,7 @@ status of the insertion we can print any validation messages generated internall
 
     <?php
 
-    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2012, 'Sedan')";
+    $phql   = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
     $result = $manager->executeQuery($phql);
     if ($result->success() == false) {
         foreach ($result->getMessages() as $message) {

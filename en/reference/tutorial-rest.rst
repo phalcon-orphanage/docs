@@ -438,7 +438,7 @@ Obtain all the robots:
     curl -i -X GET http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:05:13 GMT
+    Date: Wed, 12 Sep 2014 07:05:13 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 117
     Content-Type: text/html; charset=UTF-8
@@ -452,7 +452,7 @@ Search a robot by its name:
     curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:09:23 GMT
+    Date: Wed, 12 Sep 2014 07:09:23 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 31
     Content-Type: text/html; charset=UTF-8
@@ -466,7 +466,7 @@ Obtain a robot by its id:
     curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 07:12:18 GMT
+    Date: Wed, 12 Sep 2014 07:12:18 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 56
     Content-Type: text/html; charset=UTF-8
@@ -481,7 +481,7 @@ Insert a new robot:
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 201 Created
-    Date: Wed, 12 Sep 2012 07:15:09 GMT
+    Date: Wed, 12 Sep 2014 07:15:09 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 75
     Content-Type: text/html; charset=UTF-8
@@ -496,7 +496,7 @@ Try to insert a new robot with the name of an existing robot:
         http://localhost/my-rest-api/api/robots
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 07:18:28 GMT
+    Date: Wed, 12 Sep 2014 07:18:28 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 63
     Content-Type: text/html; charset=UTF-8
@@ -511,7 +511,7 @@ Or update a robot with an unknown type:
         http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 409 Conflict
-    Date: Wed, 12 Sep 2012 08:48:01 GMT
+    Date: Wed, 12 Sep 2014 08:48:01 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 104
     Content-Type: text/html; charset=UTF-8
@@ -526,7 +526,7 @@ Finally, delete a robot:
     curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
 
     HTTP/1.1 200 OK
-    Date: Wed, 12 Sep 2012 08:49:29 GMT
+    Date: Wed, 12 Sep 2014 08:49:29 GMT
     Server: Apache/2.2.22 (Unix) DAV/2
     Content-Length: 15
     Content-Type: text/html; charset=UTF-8

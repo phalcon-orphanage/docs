@@ -122,9 +122,7 @@ In the above example, three variables were passed to the view: title, menu and p
             $this->view->post            = $post;
             $this->view->menu            = Menu::find();
             $this->view->show_navigation = true;
-
         }
-
     }
 
 Variables
@@ -973,7 +971,7 @@ define *blocks* than can be overridden by a child template. Let's pretend that w
         <body>
             <div id="content">{% block content %}{% endblock %}</div>
             <div id="footer">
-                {% block footer %}&copy; Copyright 2012, All rights reserved.{% endblock %}
+                {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
             </div>
         </body>
     </html>
@@ -1009,7 +1007,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
                 <p class="important">Welcome on my awesome homepage.</p>
             </div>
             <div id="footer">
-                &copy; Copyright 2012, All rights reserved.
+                &copy; Copyright 2015, All rights reserved.
             </div>
         </body>
     </html>
@@ -1176,7 +1174,6 @@ If you do not want to reuse Volt as a service you can pass an anonymous function
         return $view;
     });
 
-
 The following options are available in Volt:
 
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
@@ -1193,6 +1190,8 @@ The following options are available in Volt:
 | compileAlways     | Tell Volt if the templates must be compiled in each request or only when they change                                           | false   |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 | prefix            | Allows to prepend a prefix to the templates in the compilation path                                                            | null    |
++-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
+| autoescape        | Enables globally autoescape of HTML                                                                                            | false    |
 +-------------------+--------------------------------------------------------------------------------------------------------------------------------+---------+
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
@@ -1246,7 +1245,7 @@ function. Always is required that the chosen strategy returns a valid PHP string
 
     $compiler = $volt->getCompiler();
 
-    //This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
+    // This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
     $compiler->addFunction('shuffle', 'str_shuffle');
 
 Register the function with an anonymous function. This case we use $resolvedArgs to pass the arguments exactly
@@ -1444,7 +1443,7 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
     <?php
 
-    Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
+    use Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
 
     //Create a compiler
     $compiler = new VoltCompiler();
