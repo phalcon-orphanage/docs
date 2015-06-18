@@ -38,9 +38,9 @@ The log generated is below:
 
 .. code-block:: php
 
-    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
+    [Tue, 17 Apr 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is an error
+    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is another error
 
 Transactions
 ------------
@@ -194,9 +194,9 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     $logger = new SyslogAdapter("ident-name", array(
         'option' => LOG_NDELAY,
         'facility' => LOG_MAIL
-    ));    
-    
-    
+    ));
+
+
 FirePHP Logger
 ^^^^^^^^^^^^^^
 This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,

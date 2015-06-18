@@ -6,8 +6,8 @@ your application. The bulk of your application's business logic will be concentr
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
 CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates
+methods dynamically to the respective database engine operations.
 
 .. highlights::
 
@@ -3105,7 +3105,7 @@ The following example shows how to define the meta-data manually:
 
                 // Every column that doesn't allows null values
                 MetaData::MODELS_NOT_NULL => array(
-                    'id', 'name', 'type', 'year'
+                    'id', 'name', 'type'
                 ),
 
                 // Every column and their data types
@@ -3131,7 +3131,7 @@ The following example shows how to define the meta-data manually:
                     'id'   => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
                     'type' => Column::BIND_PARAM_STR,
-                    'year' => Column::BIND_PARAM_INT,
+                    'year' => Column::BIND_PARAM_INT
                 ),
 
                 // Fields that must be ignored from INSERT SQL statements
@@ -3147,8 +3147,12 @@ The following example shows how to define the meta-data manually:
                 // Default values for columns
                 MetaData::MODELS_DEFAULT_VALUES => array(
                     'year' => '2015'
-                )
+                ),
 
+                // Fields that allow empty strings
+                MetaData::MODELS_EMPTY_STRING_VALUES => array(
+                    'name' => true
+                )
             );
         }
 
