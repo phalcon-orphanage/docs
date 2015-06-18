@@ -514,9 +514,9 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. You are encouraged to use
+this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks.
+Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 
@@ -601,6 +601,21 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
+
+If you're using "finders", bound parameters are automatically used for you:
+
+.. code-block:: php
+
+    <?php
+
+    // Explicit query using bound parameters
+    $robots = Robots::find(array(
+        "name = ?0",
+        "bind" => ["Ultron"],
+    ));
+
+    // Implicit query using bound parameters
+    $robots = Robots::findByName("Ultron");
 
 Initializing/Preparing fetched records
 --------------------------------------
