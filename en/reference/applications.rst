@@ -147,6 +147,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\ModuleDefinitionInterface;
 
@@ -174,24 +175,22 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         /**
          * Register specific services for the module
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
-            //Registering a dispatcher
+            // Registering a dispatcher
             $di->set('dispatcher', function() {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
+            // Registering the view component
             $di->set('view', function() {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
         }
-
     }
 
 A special bootstrap file is required to load the a multi-module MVC architecture:
@@ -255,7 +254,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
         // Handle the request
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -448,7 +447,6 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
     // Get the returned value by the latest executed action

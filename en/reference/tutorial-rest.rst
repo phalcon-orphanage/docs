@@ -163,7 +163,6 @@ application:
                 return false;
             }
         }
-
     }
 
 Now, we must set up a connection to be used by this model and load it within our app:
@@ -252,7 +251,6 @@ The searching by name handler would look like:
         }
 
         echo json_encode($data);
-
     });
 
 Searching by the field "id" it's quite similar, in this case, we're also notifying if the robot was found or not:

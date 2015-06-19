@@ -110,7 +110,6 @@ An instantiated controller automatically acts as a listener for dispatch events,
         {
             // Executed after every found action
         }
-
     }
 
 Forwarding to other actions
@@ -143,7 +142,6 @@ access to certain options, redirect users to other screens or simply reuse code.
                 "action" => "index"
             ));
         }
-
     }
 
 Keep in mind that making a "forward" is not the same as making an HTTP redirect. Although they apparently got the same result.
@@ -167,7 +165,6 @@ More forwarding examples:
         "action" => "search",
         "params" => array(1, 2, 3)
     ));
-
 
 A forward action accepts the following parameters:
 
@@ -294,8 +291,9 @@ When a route provides named parameters you can receive them in a controller, a v
             // Get the post's year passed in the URL as parameter
             // or prepared in an event also filtering it
             $year = $this->dispatcher->getParam("year", "int");
-        }
 
+            // ...
+        }
     }
 
 Preparing actions
@@ -511,7 +509,6 @@ when the controller/action combination wasn't found:
 
 Of course, this method can be moved onto independent plugin classes, allowing more than one class
 take actions when an exception is produced in the dispatch loop:
-
 
 .. code-block:: php
 

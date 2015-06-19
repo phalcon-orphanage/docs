@@ -98,9 +98,9 @@ The tutorial/public/index.php file should look like:
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Url;
     use Phalcon\Mvc\Application;
     use Phalcon\DI\FactoryDefault;
+    use Phalcon\Mvc\Url as UrlProvider;
     use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
     try {
@@ -134,7 +134,7 @@ The tutorial/public/index.php file should look like:
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "PhalconException: ", $e->getMessage();
     }
 
@@ -257,7 +257,6 @@ action has been passed in the request. The index controller (app/controllers/Ind
         {
             echo "<h1>Hello!</h1>";
         }
-
     }
 
 The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
@@ -290,7 +289,6 @@ Our controller (app/controllers/IndexController.php) now has an empty action def
         {
 
         }
-
     }
 
 The browser output should remain the same. The :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` static component is automatically created when the action execution has ended. Learn more about :doc:`views usage here <views>` .
@@ -337,7 +335,6 @@ Here is the Signup controller (app/controllers/SignupController.php):
         {
 
         }
-
     }
 
 The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):
@@ -398,7 +395,6 @@ Implementing that method will remove the exception:
         {
 
         }
-
     }
 
 If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
@@ -429,9 +425,9 @@ A model should be located in the app/models directory (app/models/Users.php). Th
     class Users extends Model
     {
         public $id;
-    
+
         public $name;
-    
+
         public $email;
     }
 
@@ -491,7 +487,7 @@ In order to be able to use a database connection and subsequently access data th
 
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
          echo "Exception: ", $e->getMessage();
     }
 
@@ -536,7 +532,6 @@ Receiving data from the form and storing them in the table is the next step.
         }
     }
 
-
 We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
 of the record in the users table. Setting the relevant values in the new record and calling save() will store the data in the database for that record. The save() method returns a boolean value which indicates whether the storing of the data was successful or not.
 
@@ -554,4 +549,3 @@ The fact that Phalcon is an extension on your web server has not interfered with
 features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
 
 .. _anonymous function: http://php.net/manual/en/functions.anonymous.php
-

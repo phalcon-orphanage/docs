@@ -60,7 +60,7 @@ in the Dispatcher, by doing this, you don't need to specify a full class name in
 
     use Phalcon\Mvc\Dispatcher;
 
-    //Registering a dispatcher
+    // Registering a dispatcher
     $di->set('dispatcher', function() {
         $dispatcher = new Dispatcher();
         $dispatcher->setDefaultNamespace('Store\Admin\Controllers');
@@ -91,7 +91,6 @@ The following example shows how to implement a controller that use namespaces:
         {
 
         }
-
     }
 
 Models in Namespaces
