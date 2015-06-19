@@ -2705,10 +2705,18 @@ in the code. A change in the column map in the model will take care of the rest.
     class Robots extends Model
     {
 
+	public $code;
+
+	public $theName;
+
+	public $theType;
+
+	public $theYear;
+
         public function columnMap()
         {
-            //Keys are the real names in the table and
-            //the values their names in the application
+            // Keys are the real names in the table and
+            // the values their names in the application
             return array(
                 'id'       => 'code',
                 'the_name' => 'theName',
@@ -2724,17 +2732,17 @@ Then you can use the new names naturally in your code:
 
     <?php
 
-    //Find a robot by its name
+    // Find a robot by its name
     $robot = Robots::findFirst("theName = 'Voltron'");
     echo $robot->theName, "\n";
 
-    //Get robots ordered by type
+    // Get robots ordered by type
     $robot = Robots::find(array('order' => 'theType DESC'));
     foreach ($robots as $robot) {
         echo 'Code: ', $robot->code, "\n";
     }
 
-    //Create a robot
+    // Create a robot
     $robot          = new Robots();
     $robot->code    = '10101';
     $robot->theName = 'Bender';
