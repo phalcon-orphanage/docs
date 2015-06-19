@@ -27,8 +27,10 @@ the end of the paths.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     //Register some namespaces
     $loader->registerNamespaces(
@@ -56,8 +58,10 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     //Register some prefixes
     $loader->registerPrefixes(
@@ -85,8 +89,10 @@ It's important to register the directories in relevance order. Remember always a
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some directories
     $loader->registerDirs(
@@ -117,8 +123,10 @@ maintenance of the class list very cumbersome and it is not recommended.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader ();
 
     // Register some classes
     $loader->registerClasses(

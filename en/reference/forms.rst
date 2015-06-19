@@ -298,7 +298,6 @@ Setting up a plain class as entity also is possible:
         public $timezone = 'Europe/Amsterdam';
 
         public $receiveEmails = 'No';
-
     }
 
 Using this class as entity, allows the form to take the default values from it:
@@ -344,7 +343,6 @@ give you more freedom to produce values:
         {
             return 'No';
         }
-
     }
 
 Form Elements
@@ -465,7 +463,6 @@ Or reuse the logic in your form class:
             echo $element;
             echo '</p>';
         }
-
     }
 
 In the view:

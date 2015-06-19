@@ -3155,7 +3155,6 @@ The following example shows how to define the meta-data manually:
                 )
             );
         }
-
     }
 
 Pointing to a different schema
@@ -3175,7 +3174,6 @@ If a model is mapped to a table that is in a different schemas/databases than th
         {
             return "toys";
         }
-
     }
 
 Setting multiple databases
@@ -3226,7 +3224,6 @@ Then, in the Initialize method, we define the connection service for the model:
         {
             $this->setConnectionService('dbPostgres');
         }
-
     }
 
 But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
@@ -3246,7 +3243,6 @@ to balance the load to your databases implementing a master-slave architecture:
             $this->setReadConnectionService('dbSlave');
             $this->setWriteConnectionService('dbMaster');
         }
-
     }
 
 The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
@@ -3289,7 +3285,6 @@ according to the current query conditions:
             //Use a default shard
             return $this->getDI()->get('dbShard0');
         }
-
     }
 
 The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
