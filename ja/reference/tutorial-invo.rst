@@ -1,15 +1,12 @@
 チュートリアル 2: INVOについて説明します
 ===========================
-In this second tutorial, we'll explain a more complete application in order to deepen the development with Phalcon.
-INVO is one of the applications we have created as samples. INVO is a small website that allows their users to
-generate invoices, and do other tasks such as manage their customers and products. You can clone its code from Github_.
+この第2のチュートリアルでは、より完全なアプリケーションを例にして説明し、Phalconを使用した開発について理解を深めます。INVOは、私達が制作したサンプルアプリケーションの1つです。INVOは小さなWebサイトで、ユーザーは送り状（invoice）を生成したり、顧客や製品を管理したりといったタスクを行うことができます。コードは Github_ からクローンすることができます。
 
-Also, INVO was made with `Twitter Bootstrap`_ as client-side framework. Although the application does not generate
-invoices, it still serves as an example to understand how the framework works.
+また、INVOのクライアントサイドは `Twitter Bootstrap`_ を使用して作られています。アプリケーションが送り状を生成しなくても、フレームワークの働きを理解するサンプルにはなります。
 
 プロジェクト構造
 ------------------
-Once you clone the project in your document root you'll see the following structure:
+ブラウザで http://localhost/invo にアクセスしてアプリケーションを開くと、以下のように表示されるでしょう:
 
 .. code-block:: bash
 
@@ -27,40 +24,34 @@ Once you clone the project in your document root you'll see the following struct
             public/js/
         schemas/
 
-As you know, Phalcon does not impose a particular file structure for application development. This project
-provides a simple MVC structure and a public document root.
+ご存知のように、Phalconはアプリケーション開発に際して特定の構造を強制しません。このプロジェクトはシンプルなMVC構造を持ち、publicディレクトリをドキュメントルートとします。
 
-Once you open the application in your browser http://localhost/invo you'll see something like this:
+ブラウザで http://localhost/invo にアクセスしてアプリケーションを開くと、以下のように表示されるでしょう:
 
 .. figure:: ../_static/img/invo-1.png
    :align: center
 
-The application is divided into two parts, a frontend, that is a public part where visitors can receive information
-about INVO and request contact information. The second part is the backend, an administrative area where a
-registered user can manage his/her products and customers.
+アプリケーションは2つの部分に分かれています。フロントエンドは公開されている部分で、訪問者はINVOの概要を知ったり、連絡を求めたりできます。もう一つはバックエンドで、管理用の領域です。登録されたユーザーが、製品や顧客を管理できます。
 
 ルーティング
 -------
-INVO uses the standard route that is built-in with the Router component. These routes match the following
-pattern: /:controller/:action/:params. This means that the first part of a URI is the controller, the second the
-action and the rest are the parameters.
+INVOはRouterコンポーネントに組み込みの標準のルートを使用します。これらのルートは、 /:controller/:action/:params というパターンにマッチします。これは、URIの最初の部分がコントローラー、2番めの部分がアクション、残りがパラメーターになる、ということです。
 
-The following route /session/register executes the controller SessionController and its action registerAction.
+/session/register というルートでは、SessionController コントローラの registerAction アクションが実行されます。
 
 設定
 -------------
-INVO has a configuration file that sets general parameters in the application. This file is read in the first few lines
-of the bootstrap file (public/index.php):
+INVOには、アプリケーションの一般的なパラメーターをセットする設定ファイルがあります。このファイルはブートストラップ (public/index.php) の最初の数行で読み込まれています:
 
 .. code-block:: php
 
     <?php
 
-    //Read the configuration
+    //設定の読み込み
     $config = new Phalcon\Config\Adapter\Ini('../app/config/config.ini');
 
-:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way. The configuration file
-contains the following settings:
+:doc:`Phalcon\\Config <config>` allows us to manipulate the file in an object-oriented way.
+設定ファイルは以下の設定を含んでいます:
 
 .. code-block:: ini
 
@@ -83,13 +74,11 @@ contains the following settings:
     ;suffix = my-suffix
     ;lifetime = 3600
 
-Phalcon hasn't any pre-defined convention settings. Sections help us to organize the options as appropriate. In this file
-there are three sections to be used later.
+Phalconには、定義済みの慣習的な設定は全くありません。セクション名を付けておくと、オプションを適切に構成する助けになります。このファイルには3つのセクションが含まれ、後で使用されます。
 
 オートローダ
 -----------
-The second part that appears in the bootstrap file (public/index.php) is the autoloader. The autoloader registers a set
-of directories in which the application will look for the classes that it eventually will need.
+ブートストラップファイル (public/index.php) の2番めのパートは、オートローダーです。オートローダーにディレクトリを登録すると、アプリケーションは、必要になったクラスを登録されたディレクトリ内で探します。
 
 .. code-block:: php
 
@@ -106,13 +95,11 @@ of directories in which the application will look for the classes that it eventu
         )
     )->register();
 
-Note that the above code has registered the directories that were defined in the configuration file. The only
-directory that is not registered is the viewsDir, because it contains HTML + PHP files but no classes.
+上記コードでは、設定ファイルに定義されているディレクトリを登録していることに注意してください。viewsDirディレクトリだけは、登録しません。viewsDirにはHTMLファイルとPHPファイルが含まれますが、クラスは含まれていないからです。
 
-リクエストのハンドリング
+リクエストの処理
 --------------------
-If we skip to the end of the file, the request is finally handled by Phalcon\\Mvc\\Application
-which initializes and executes all that is necessary to make the application run:
+ファイルの最後まで飛ばすと、リクエストは最終的に Phalcon\\Mvc\\Application に処理されています。このクラスは、アプリケーションに必要な全ての初期化と処理の実行を行います:
 
 .. code-block:: php
 
@@ -124,66 +111,50 @@ which initializes and executes all that is necessary to make the application run
 
 依存性の注入 (Dependency Injection)
 --------------------
-Look at the first line of the code block above, the Application class constructor is receiving the variable $di as an argument.
-What is the purpose of that variable? Phalcon is a highly decoupled framework, so we need a component that acts as glue
-to make everything work together. That component is Phalcon\\DI. It is a service container that also performs
-dependency injection, instantiating all components as they are needed by the application.
+上記コード例の1行目を見てください。 Application クラスのコンストラクタは、$di 変数を引数として受け取っています。この変数の目的は何でしょう？ Phalconは非常に分離された (decoupled) フレームワークなので、全てを協調して動作させる、接着剤としての役割を果たすコンポーネントが必要です。それは、 Phalcon\\DI です。これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
 
-There are many ways of registering services in the container. In INVO, most services have been registered using
-anonymous functions. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed
-by the application.
+コンテナにサービスを登録するには、様々な方法があります。INVOでは、ほとんどのサービスは無名関数を使って登録されています。このおかげで、オブジェクトは必要になるまでインスタンス化されないので、アプリケーションに必要なリソースが節約できます。
 
-For instance, in the following excerpt the session service is registered. The anonymous function will only be
-called when the application requires access to the session data:
+たとえば、以下の抜粋では、sessionサービスが登録されています。無名関数は、アプリケーションがsessionのデータへのアクセスを要求した時に初めて呼ばれます:
 
 .. code-block:: php
 
     <?php
 
-    //Start the session the first time a component requests the session service
+    //コンポーネントがsessionサービスを最初に要求した時に、セッションを開始する
     $di->set('session', function() {
         $session = new Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
     });
 
-Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service
-was registered using the name "session". This is a convention that will allow the framework to identify the active
-service in the services container.
+これで、アダプタを変更して、初期化処理を追加する等を自由に行えるようになりました。サービスは "session" という名前で登録されていることに注意してください。これは、フレームワークがサービスコンテナ内の有効なサービスを見分けるための慣習です。
 
-A request can use many services and registering each service individually can be a cumbersome task. For that reason,
-the framework provides a variant of Phalcon\\DI called Phalcon\\DI\\FactoryDefault whose task is to register
-all services providing a full-stack framework.
+リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。そのため、Phalconは Phalcon\\DI\\FactoryDefault というPhalcon\\DI の別バージョンを用意しています。これには、フルスタックフレームワークのための全てのサービスを登録します。
 
 .. code-block:: php
 
     <?php
 
-    // The FactoryDefault Dependency Injector automatically registers the
-    // right services providing a full-stack framework
+    // FactoryDefault は、フルスタックフレームワークを
+    // 提供するために必要なサービスを自動的に登録する
     $di = new \Phalcon\DI\FactoryDefault();
 
-It registers the majority of services with components provided by the framework as standard. If we need to override
-the definition of some service we could just set it again as we did above with "session". This is the reason for the
-existence of the variable $di.
+FactoryDefault はフレームワークが標準的に提供しているコンポーネントサービスの大部分を登録します。もし、サービス定義のオーバーライドが必要な場合、"session" を上で定義したのと同じように同じ名前で再度定義してください。以上が、$di 変数が存在する理由です。
 
 アプリケーションへのログイン
 ------------------------
-A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones
-is only logical. All controllers are located in the same directory (app/controllers/).
+ログイン機能によって、バックエンドのコントローラーに取り組むことができるようになります。バックエンドとフロントエンドのコントローラーの分割は、論理上のものです。全てのコントローラーは、同じディレクトリ (app/controllers/) に含まれています。
 
-To enter the system, users must have a valid username and password. Users are stored in the table "users"
-in the database "invo".
+システムに入るために、ユーザーは有効なユーザー名とパスワードを持っている必要があります。ユーザーは "invo" データベースの "users" テーブルに保存されます。
 
-Before we can start a session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with the connection information. As with the autoloader, we are
-again taking parameters from the configuration file in order to configure a service:
+セッションを開始する前に、アプリケーションがデータベースに接続できるよう設定する必要があります。接続情報を持った "db" という名前のサービスが、サービスコンテナ内で用意されます。オートローダーと同様、サービスを設定するための情報は設定ファイルから取得します:
 
 .. code-block:: php
 
     <?php
 
-    // Database connection is created based on parameters defined in the configuration file
+    // 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
     $di->set('db', function() use ($config) {
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => $config->database->host,
@@ -193,11 +164,9 @@ again taking parameters from the configuration file in order to configure a serv
         ));
     });
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting it up as you want.
+ここで、MySQL接続アダプタのインスタンスを返しています。ロガーやプロファイラの追加、アダプタの変更等が必要であれば、それらの処理を追加することもできます。
 
-The following simple form (app/views/session/index.phtml) requests the login information. We've removed
-some HTML code to make the example more concise:
+以下の簡単なフォーム (app/views/session/index.phtml) では、ユーザーにログイン情報を求めています。サンプルを簡潔にするため、いくつかのHTMLコードは省いています:
 
 .. code-block:: html+php
 
@@ -213,8 +182,7 @@ some HTML code to make the example more concise:
 
     </form>
 
-The SessionController::startAction function (app/controllers/SessionController.php) has the task of validating the
-data entered in the form including checking for a valid user in the database:
+SessionController::startAction (app/controllers/SessionController.php) が、フォームに入力されたデータのバリデーションを行います。これには、データベース内の有効なユーザーかの確認も含まれます:
 
 .. code-block:: php
 
@@ -237,13 +205,13 @@ data entered in the form including checking for a valid user in the database:
         {
             if ($this->request->isPost()) {
 
-                //Receiving the variables sent by POST
+                //POSTで送信された変数を受け取る
                 $email = $this->request->getPost('email', 'email');
                 $password = $this->request->getPost('password');
 
                 $password = sha1($password);
 
-                //Find the user in the database
+                //データベースからユーザーを検索
                 $user = Users::findFirst(array(
                     "email = :email: AND password = :password: AND active = 'Y'",
                     "bind" => array('email' => $email, 'password' => $password)
@@ -254,7 +222,7 @@ data entered in the form including checking for a valid user in the database:
 
                     $this->flash->success('Welcome ' . $user->name);
 
-                    //Forward to the 'invoices' controller if the user is valid
+                    //ユーザーが有効なら、'invoices' コントローラーに転送する
                     return $this->dispatcher->forward(array(
                         'controller' => 'invoices',
                         'action' => 'index'
@@ -264,7 +232,7 @@ data entered in the form including checking for a valid user in the database:
                 $this->flash->error('Wrong email/password');
             }
 
-            //Forward to the login form again
+            //ログインフォームへ再度転送
             return $this->dispatcher->forward(array(
                 'controller' => 'session',
                 'action' => 'index'
@@ -274,17 +242,13 @@ data entered in the form including checking for a valid user in the database:
 
     }
 
-For simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
+簡単にするため、 データベースに保存するパスワードハッシュに "sha1_" を使用していますが、このアルゴリズムは実際のアプリケーションでは推奨されません。代わりに、 ":doc:`bcrypt <security>`" を使ってください。
 
-Note that multiple public attributes are accessed in the controller like: $this->flash, $this->request or $this->session.
-These are services defined in the services container from earlier. When they're accessed the first time, they are injected as part
-of the controller.
+コントローラー内で $this->flash、$this->request、$this->session のようなpublic属性へのアクセスに注目してください。これらは、サービスコンテナであらかじめ定義したサービスです。初めてアクセスされたとき、コントローラーの一部として注入が行われます。
 
-These services are shared, which means that we are always accessing the same instance regardless of the place
-where we invoke them.
+これらのサービスは共有されているため、これらのオブジェクトをどこから呼び出しても、常に同じインスタンスにアクセスすることになります。
 
-For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
+例えば、ここで "session" サービスを呼び出して、ユーザーを識別する情報を "auth" という変数に保存しています:
 
 .. code-block:: php
 
@@ -297,23 +261,16 @@ For instance, here we invoke the "session" service and then we store the user id
 
 バックエンドのセキュリティ保護
 --------------------
-The backend is a private area where only registered users have access. Therefore, it is necessary to check that only
-registered users have access to these controllers. If you aren't logged into the application and you try to access,
-for example, the products controller (which is private) you will see a screen like this:
+バックエンドは登録されたユーザーだけがアクセスできるプライベートな領域です。したがって、登録されたユーザーだけがそれらのコントローラーにアクセスできるようチェックする必要があります。たとえば、ログインせずに products コントローラー (プライベート領域) にアクセスしようとすると、以下のように表示されるはずです:
 
 .. figure:: ../_static/img/invo-2.png
    :align: center
 
-Every time someone attempts to access any controller/action, the application verifies that the current role (in session)
-has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
+コントローラー・アクションにアクセスしようとしたときにはいつでも、アプリケーションは現在のロール (セッションに含まれる) が、アクセス権を持っているか確認します。アクセス権がない場合は、上のようなメッセージを表示し、インデックスページに遷移させます。
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called
-:doc:`Dispatcher <dispatching>`. It is informed about the route found by the :doc:`Routing <routing>` component. Then,
-it is responsible for loading the appropriate controller and execute the corresponding action method.
+次に、アプリケーションがこの動きをどのように実現しているか見ていきましょう。最初に知るべきは、:doc:`Dispatcher <dispatching>` コンポーネントです。これは、 :doc:`Routing <routing>` コンポーネントによって発見されたルートの情報を受け取ります。次に、適切なコントローラーを読み込んで、対応するアクションのメソッドを実行します。
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
-before executing the required action, checking if the user has access to it or not. To achieve this, we have
-replaced the component by creating a function in the bootstrap:
+通常、フレームワークはディスパッチャを自動的に作成します。今回は、要求されたアクションを実行する前に、認証を行い、ユーザーがアクセスできるか否かチェックする必要があります。これを実現するため、ブートストラップの中に関数を用意して、ディスパッチャを置き換えています:
 
 .. code-block:: php
 
@@ -324,15 +281,11 @@ replaced the component by creating a function in the bootstrap:
         return $dispatcher;
     });
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger
-events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
-for components, a new component called :doc:`EventsManager <events>` allows us to intercept the events produced
-by a component, routing the events to listeners.
+これで、アプリケーションで使用されるディスパッチャを完全に制御できるようになりました。フレーワークの多くのコンポーネントはイベントを発火するので、内部の処理の流れを変更することができます。DIコンポーネントが接着剤として機能し、 :doc:`EventsManager <events>` がコンポーネントが生み出すイベントをインターセプトし、イベントをリスナーに通知します。
 
 イベント管理
 ^^^^^^^^^^^^^^^^^
-An :doc:`EventsManager <events>` allows us to attach listeners to a particular type of event. The type that
-interests us now is "dispatch". The following code filters all events produced by the Dispatcher:
+:doc:`EventsManager <events>` によって、特定のタイプのイベントにリスナーを割り当てることができます。今、私達が取り組んでいるイベントのタイプは "dispatch" です。以下のコードは、ディスパッチャによって生成される全てのイベントをフィルタリングしています:
 
 .. code-block:: php
 
@@ -340,25 +293,24 @@ interests us now is "dispatch". The following code filters all events produced b
 
     $di->set('dispatcher', function() use ($di) {
 
-        //Obtain the standard eventsManager from the DI
+        //標準のイベントマネージャーをDIから取得
         $eventsManager = $di->getShared('eventsManager');
 
-        //Instantiate the Security plugin
+        //Securityプラグインをインスタンス化
         $security = new Security($di);
 
-        //Listen for events produced in the dispatcher using the Security plugin
+        //Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
         $eventsManager->attach('dispatch', $security);
 
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
-        //Bind the EventsManager to the Dispatcher
+        //イベントマネージャーをディスパッチャに束縛する
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
     });
 
-The Security plugin is a class located at (app/plugins/Security.php). This class implements the method
-"beforeDispatch". This is the same name as one of the events produced in the Dispatcher:
+Securityプラグインは (app/plugins/Security.php) にあるクラスです。このクラスは "beforeDispatch" メソッドを実装しています。これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
 
 .. code-block:: php
 
@@ -381,13 +333,9 @@ The Security plugin is a class located at (app/plugins/Security.php). This class
 
     }
 
-The hook events always receive a first parameter that contains contextual information of the event produced ($event)
-and a second one that is the object that produced the event itself ($dispatcher). It is not mandatory that
-plugins extend the class Phalcon\\Mvc\\User\\Plugin, but by doing this they gain easier access to the services
-available in the application.
+フックイベントは常に2つの引数を取ります。第1引数はイベントが生成されたコンテキストの情報($event) で、第2引数はイベントを生成したオブジェクト自身 ($dispatcher) です。プラグインが Phalcon\\Mvc\\User\\Plugin を継承することは必須ではありませんが、継承することでアプリケーションのサービスに簡単にアクセスできるようになります。
 
-Now, we're verifying the role in the current session, checking if the user has access using the ACL list.
-If the user does not have access we redirect to the home screen as explained before:
+ACLリストを使用してユーザーがアクセス権を持つかチェックすることで、現在のセッションのロールを検証するようになりました。ユーザーがアクセス権を持たない場合、前述したように最初のページにリダイレクトされます:
 
 .. code-block:: php
 
@@ -406,7 +354,7 @@ If the user does not have access we redirect to the home screen as explained bef
         public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
         {
 
-            //Check whether the "auth" variable exists in session to define the active role
+            //ロールを定義するため、セッションに "auth" 変数があるかチェックする
             $auth = $this->session->get('auth');
             if (!$auth) {
                 $role = 'Guests';
@@ -414,18 +362,18 @@ If the user does not have access we redirect to the home screen as explained bef
                 $role = 'Users';
             }
 
-            //Take the active controller/action from the dispatcher
+            //ディスパッチャからアクティブなコントローラー名とアクション名を取得する
             $controller = $dispatcher->getControllerName();
             $action = $dispatcher->getActionName();
 
-            //Obtain the ACL list
+            //ACLリストを取得
             $acl = $this->getAcl();
 
-            //Check if the Role have access to the controller (resource)
+            //ロールがコントローラー (又はリソース) にアクセス可能かチェックする
             $allowed = $acl->isAllowed($role, $controller, $action);
             if ($allowed != Acl::ALLOW) {
 
-                //If he doesn't have access forward him to the index controller
+                //アクセス権が無い場合、indexコントローラーに転送する
                 $this->flash->error("You don't have access to this module");
                 $dispatcher->forward(
                     array(
@@ -434,7 +382,7 @@ If the user does not have access we redirect to the home screen as explained bef
                     )
                 );
 
-                //Returning "false" we tell to the dispatcher to stop the current operation
+                //"false" を返し、ディスパッチャーに現在の処理を停止させる
                 return false;
             }
 
@@ -444,21 +392,20 @@ If the user does not have access we redirect to the home screen as explained bef
 
 ACLリストの提供
 ^^^^^^^^^^^^^^^^^^^^^
-In the above example we have obtained the ACL using the method $this->_getAcl(). This method is also
-implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
+上の例では、 $this->_getAcl() メソッドでACLを取得しました。このメソッドもプラグインに実装されています。ここでは、アクセス制御リスト (ACL) をどのように作ったか、ステップバイステップで解説します:
 
 .. code-block:: php
 
     <?php
 
-    //Create the ACL
+    //ACLオブジェクトを作る
     $acl = new Phalcon\Acl\Adapter\Memory();
 
-    //The default action is DENY access
+    //デフォルトの挙動はDENY（拒否）
     $acl->setDefaultAction(Phalcon\Acl::DENY);
 
-    //Register two roles, Users is registered users
-    //and guests are users without a defined identity
+    //2つのロールを登録する
+    //ユーザーは登録済みユーザー、ゲストは未登録ユーザー
     $roles = array(
         'users' => new Phalcon\Acl\Role('Users'),
         'guests' => new Phalcon\Acl\Role('Guests')
@@ -467,14 +414,13 @@ implemented in the Plugin. Now we are going to explain step-by-step how we built
         $acl->addRole($role);
     }
 
-Now we define the resources for each area respectively. Controller names are resources and their actions are
-accesses for the resources:
+次に、それぞれのエリアのリソースを個別に定義していきます。コントローラー名がリソースで、これらのアクションがリソースへのアクセス権です:
 
 .. code-block:: php
 
     <?php
 
-    //Private area resources (backend)
+    //プライベートエリアのリソース (バックエンド)
     $privateResources = array(
       'companies' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
       'products' => array('index', 'search', 'new', 'edit', 'save', 'create', 'delete'),
@@ -485,7 +431,7 @@ accesses for the resources:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-    //Public area resources (frontend)
+    //公開エリアのリソース (フロントエンド)
     $publicResources = array(
       'index' => array('index'),
       'about' => array('index'),
@@ -496,36 +442,33 @@ accesses for the resources:
         $acl->addResource(new Phalcon\Acl\Resource($resource), $actions);
     }
 
-The ACL now have knowledge of the existing controllers and their related actions. Role "Users" has access to
-all the resources of both frontend and backend. The role "Guests" only has access to the public area:
+いま、ACLは既存のコントローラーと関連するアクションの情報を知っている状態になっています。"Users" ロールはバックエンドとフロントエンド双方の全てのリソースにアクセスできます。"Guests" ロールは公開エリアにだけアクセスできます:
 
 .. code-block:: php
 
     <?php
 
-    //Grant access to public areas to both users and guests
+    //公開エリアのアクセス権をユーザーとゲストの双方に与える
     foreach ($roles as $role) {
         foreach ($publicResources as $resource => $actions) {
             $acl->allow($role->getName(), $resource, '*');
         }
     }
 
-    //Grant access to private area only to role Users
+    //ユーザーにだけ、プライベートエリアへのアクセス権を与える
     foreach ($privateResources as $resource => $actions) {
         foreach ($actions as $action) {
             $acl->allow('Users', $resource, $action);
         }
     }
 
-Hooray!, the ACL is now complete.
+万歳！ これで、ACLは終わりです。
 
-User コンポーネント
+ユーザーコンポーネント
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through `Twitter Bootstrap`_.
-Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if an user is logged into the application.
+全てのUI要素とスタイルは、 `Twitter Bootstrap`_ によって実現されています。ナビゲーションバーなどの要素は、アプリケーションの状態によって変わります。たとえば、右上のリンク "Log in / Sign Up" は、ユーザーがログインしている場合には "Log out" に変わります。
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+アプリケーションのこの部分は、"Elements" コンポーネント (app/library/Elements.php) で実装されています。
 
 .. code-block:: php
 
@@ -548,8 +491,7 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component, it is not imposed to extend a component with this class, but
-it helps to get access more quickly to the application services. Now, we register this class in the services container:
+このクラスは Phalcon\\Mvc\\User\\Component を継承しています。このクラスのコンポーネントを継承することは必須ではありませんが、アプリケーションのサービスに素早くアクセスする助けになります。それでは、このクラスをサービスコンテナに登録します:
 
 .. code-block:: php
 

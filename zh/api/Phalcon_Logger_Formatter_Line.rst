@@ -11,49 +11,49 @@ Formats messages using an one-line string
 Methods
 -------
 
-public  **__construct** ([*string* $format], [*string* $dateFormat])
+public  **getDateFormat** ()
+
+Default date format
+
+
+
+public  **setDateFormat** (*unknown* $dateFormat)
+
+Default date format
+
+
+
+public  **getFormat** ()
+
+Format applied to each message
+
+
+
+public  **setFormat** (*unknown* $format)
+
+Format applied to each message
+
+
+
+public  **__construct** ([*unknown* $format], [*unknown* $dateFormat])
 
 Phalcon\\Logger\\Formatter\\Line construct
 
 
 
-public  **setFormat** (*string* $format)
-
-Set the log format
-
-
-
-public *format*  **getFormat** ()
-
-Returns the log format
-
-
-
-public  **setDateFormat** (*string* $date)
-
-Sets the internal date format
-
-
-
-public *string*  **getDateFormat** ()
-
-Returns the internal date format
-
-
-
-public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *unknown* $context)
+public *string*  **format** (*unknown* $message, *unknown* $type, *unknown* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 
 
 
-public *string*  **getTypeString** (*integer* $type) inherited from Phalcon\\Logger\\Formatter
+public *string*  **getTypeString** (*unknown* $type) inherited from Phalcon\\Logger\\Formatter
 
 Returns the string meaning of a logger constant
 
 
 
-protected  **interpolate** (*string* $message, *array* $context) inherited from Phalcon\\Logger\\Formatter
+public  **interpolate** (*string* $message, [*array* $context]) inherited from Phalcon\\Logger\\Formatter
 
 Interpolates context values into the message placeholders
 

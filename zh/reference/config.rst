@@ -22,12 +22,14 @@
 
     <?php
 
+    use Phalcon\Config;
+
     $settings = array(
         "database" => array(
-            "adapter"  => "Mysql",
-            "host"     => "localhost",
-            "username" => "scott",
-            "password" => "cheetah",
+            "adapter"    => "Mysql",
+            "host"       => "localhost",
+            "username"   => "scott",
+            "password"   => "cheetah",
             "dbname"     => "test_db",
         ),
          "app" => array(
@@ -38,7 +40,7 @@
         "mysetting" => "the-value"
     );
 
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
     echo $config->app->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -50,8 +52,10 @@
 
     <?php
 
+    use Phalcon\Config;
+
     require "config/config.php";
-    $config = new \Phalcon\Config($settings);
+    $config = new Config($settings);
 
 读取 INI 文件（Reading INI Files）
 -----------------
@@ -64,7 +68,7 @@ INI文件是存储设置的常用方法。Phalcon\\Config 采用优化的PHP函�
     host     = localhost
     username = scott
     password = cheetah
-    dbname     = test_db
+    dbname   = test_db
 
     [phalcon]
     controllersDir = "../app/controllers/"
@@ -80,7 +84,9 @@ INI文件是存储设置的常用方法。Phalcon\\Config 采用优化的PHP函�
 
     <?php
 
-    $config = new \Phalcon\Config\Adapter\Ini("path/config.ini");
+    use Phalcon\Config\Adapter\Ini as ConfigIni;
+
+    $config = new ConfigIni("path/config.ini");
 
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
@@ -94,19 +100,23 @@ Phalcon\\Config 允许合并配置对象到另一个:
 
     <?php
 
-    $config = new \Phalcon\Config(array(
+    use Phalcon\Config;
+
+    $config = new Config(array(
         'database' => array(
-            'host' => 'localhost',
+            'host'   => 'localhost',
             'dbname' => 'test_db'
         ),
-        'debug' => 1
+        'debug' => 1,
     ));
 
-    $config2 = new \Phalcon\Config(array(
+    $config2 = new Config(array(
         'database' => array(
+            'dbname' => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
-        )
+        ),
+        'logging' => 1,
     ));
 
     $config->merge($config2);
@@ -122,11 +132,12 @@ Phalcon\\Config 允许合并配置对象到另一个:
         [database] => Phalcon\Config Object
             (
                 [host] => localhost
-                [dbname] => test_db
+                [dbname]   => production_db
                 [username] => scott
                 [password] => secret
             )
         [debug] => 1
+        [logging] => 1
     )
 
 有更多的适配器可用于这个组件： `Phalcon Incubator <https://github.com/phalcon/incubator>`_

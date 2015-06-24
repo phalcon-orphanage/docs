@@ -1,20 +1,15 @@
 Volt: テンプレートエンジン
 =====================
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
-helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
-just as you can use it as a stand-alone component in your applications.
+Volt は、PHPのためにCで記述されており、とても速く、デザイナにも扱いやすいテンプレート言語です。簡単にビューを書けるようにヘルパーセットを提供します。Volt は、Phalcon の他のコンポーネントに高度に統合されており、また、あなたのアプリケーションの中でスタンドアロンのコンポーネントとしても利用できます。
 
 .. figure:: ../_static/img/volt.jpg
    :align: center
 
-Volt is inspired by Jinja_, originally created by `Armin Ronacher`_. Therefore many developers will be in familiar
-territory using the same syntax they have been using with similar template engines. Volt’s syntax and features
-have been enhanced with more elements and of course with the performance that developers have been
-accustomed to while working with Phalcon.
+Volt は、 `Armin Ronacher`_. によって作られた Jinja_ にインスパイアされています。そのため、よく似た既存のテンプレートエンジンと同じ記法を採用しており、それらを使うたくさんの開発者が親しみやすくなっています。Voltの記法と機能は、Phalconを使う開発者が慣れ親しんだ、より多くの要素、もちろんパフォーマンスの点においても強化されています。
 
 はじめに
 ------------
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Voltによるビューは純粋なPHPコードにコンパイルされるので、基本的には、手でPHPコードを書く労力を節約することができます:
 
 .. code-block:: html+jinja
 
@@ -33,14 +28,13 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 Voltの有効化
 ---------------
-As other template engines, you may register Volt in the view component, using a new extension or
-reusing the standard .phtml:
+他のテンプレートエンジンと同じように、新しい拡張子や標準的な .phhtml の拡張子を用いて、Volt をビューコンポーネントに登録することもできます:
 
 .. code-block:: php
 
     <?php
 
-    //Registering Volt as template engine
+    //Voltをテンプレートエンジンとして登録する
     $di->set('view', function() {
 
         $view = new \Phalcon\Mvc\View();
@@ -54,7 +48,7 @@ reusing the standard .phtml:
         return $view;
     });
 
-Use the standard ".phtml" extension:
+標準的な ".phtml" という拡張子を用いる:
 
 .. code-block:: php
 
@@ -66,11 +60,9 @@ Use the standard ".phtml" extension:
 
 基本的な使い方
 -----------
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
-Volt mode. {% ... %} is used to execute statements such as for-loops or assign values and {{ ... }},
-prints the result of an expression to the template.
+ビューは、VoltやPHP、HTMLのコードで構成されます。Voltモードでは、特有のデリミタのセットが使用できます。 {% ... %} は、forループや値の代入など、制御文を実行する場合に使います。また、 {{ ... }} は、テンプレートに記述した結果を出力します。
 
-Below is a minimal template that illustrates a few basics:
+下記は、いくつかの基本を示す最小限のテンプレートです:
 
 .. code-block:: html+jinja
 
@@ -99,8 +91,7 @@ Below is a minimal template that illustrates a few basics:
         </body>
     </html>
 
-Using Phalcon\\Mvc\\View you can pass variables from the controller to the views.
-In the above example, three variables were passed to the view: title, menu and post:
+Phalcon\\Mvc\\View を使うことで、コントローラからビューへ変数を渡すことができます。上記の例では、title、menu、post の3つの変数がビューへ渡されています:
 
 .. code-block:: php
 
@@ -125,8 +116,7 @@ In the above example, three variables were passed to the view: title, menu and p
 
 変数
 ---------
-Object variables may have attributes which can be accessed using the syntax: foo.bar.
-If you are passing arrays, you have to use the square bracket syntax: foo['bar']
+オブジェクト変数は、foo.bar というシンタックスを用いてアクセスできる属性を持っています。もし配列を渡すなら、foo['bar'] という角括弧のシンタックスを使ってください。
 
 .. code-block:: jinja
 
@@ -135,8 +125,7 @@ If you are passing arrays, you have to use the square bracket syntax: foo['bar']
 
 フィルタ
 -------
-Variables can be formatted or modified using filters. The pipe operator | is used to apply filters to
-variables:
+変数は、フォーマットしたり、フィルタを用いて加工することができます。変数にフィルタを適用するには、パイプ演算子 | を使います:
 
 .. code-block:: jinja
 
@@ -144,7 +133,7 @@ variables:
     {{ post.content|striptags }}
     {{ name|capitalize|trim }}
 
-The following is the list of available built-in filters in Volt:
+以下は、Voltで利用可能な、ビルトインのフィルタのリストです:
 
 +----------------------+------------------------------------------------------------------------------+
 | Filter               | Description                                                                  |
@@ -202,7 +191,7 @@ The following is the list of available built-in filters in Volt:
 | convert_encoding     | Converts a string from one charset to another                                |
 +----------------------+------------------------------------------------------------------------------+
 
-Examples:
+例:
 
 .. code-block:: jinja
 
@@ -264,7 +253,7 @@ Examples:
 
 コメント
 --------
-Comments may also be added to a template using the {# ... #} delimiters. All text inside them is just ignored in the final output:
+コメントも、{# ... #} というデリミタを用いることで、テンプレートに含めることができます。このデリミタの内側にあるテキストはすべて、最終的な出力の際に無視されます:
 
 .. code-block:: jinja
 
@@ -272,13 +261,13 @@ Comments may also be added to a template using the {# ... #} delimiters. All tex
         {% set price = 100; %}
     #}
 
-制御構文の一覧
+制御構文
 --------------------------
-Volt provides a set of basic but powerful control structures for use in templates:
+Voltは、テンプレートの中で使うための、基本的だがパワフルな制御構文のセットを提供しています:
 
-For
+for文
 ^^^
-Loop over each item in a sequence. The following example shows how to traverse a set of "robots" and print his/her name:
+シーケンス中のそれぞれのアイテムを繰り返し処理します。以下の例では、「robots」のセットを横断して処理し、彼/彼女らの名前を表示する方法を示しています:
 
 .. code-block:: html+jinja
 
@@ -289,7 +278,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
     {% endfor %}
     </ul>
 
-for-loops can also be nested:
+forループは入れ子にすることもできます:
 
 .. code-block:: html+jinja
 
@@ -300,7 +289,7 @@ for-loops can also be nested:
       {% endfor %}
     {% endfor %}
 
-You can get the element "keys" as in the PHP counterpart using the following syntax:
+以下のシンタックスを用いることで、PHPにおける要素のキーを得ることができます:
 
 .. code-block:: html+jinja
 
@@ -310,7 +299,7 @@ You can get the element "keys" as in the PHP counterpart using the following syn
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-An "if" evaluation can be optionally set:
+必要に応じて「if」の評価を設定することができます:
 
 .. code-block:: html+jinja
 
@@ -324,7 +313,7 @@ An "if" evaluation can be optionally set:
       Name: {{ name }} Value: {{ value }}
     {% endfor %}
 
-If an 'else' is defined inside the 'for', it will be executed if the expression in the iterator result in zero iterations:
+もし、「for」の中で 「else」を定義した場合は、イテレータの結果が 0回のときに、そこに記述した文が実行されるでしょう:
 
 .. code-block:: html+jinja
 
@@ -335,7 +324,7 @@ If an 'else' is defined inside the 'for', it will be executed if the expression 
         There are no robots to show
     {% endfor %}
 
-Alternative syntax:
+代替えシンタックス:
 
 .. code-block:: html+jinja
 
@@ -348,7 +337,7 @@ Alternative syntax:
 
 ループの制御
 ^^^^^^^^^^^^^
-The 'break' and 'continue' statements can be used to exit from a loop or force an iteration in the current block:
+「break」と「continue」文は、ループから抜けたり、現在のブロック内で強制的に次のイテレーションへ移ったりすることができます:
 
 .. code-block:: html+jinja
 
@@ -372,7 +361,7 @@ The 'break' and 'continue' statements can be used to exit from a loop or force a
 
 IF文
 ^^
-As PHP, an "if" statement checks if an expression is evaluated as true or false:
+PHPと同じように、「if」文は、条件式が true または false に評価されるかをチェックします:
 
 .. code-block:: html+jinja
 
@@ -385,7 +374,7 @@ As PHP, an "if" statement checks if an expression is evaluated as true or false:
     {% endfor %}
     </ul>
 
-The else clause is also supported:
+else 文もサポートされています:
 
 .. code-block:: html+jinja
 

@@ -29,7 +29,9 @@
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -136,7 +138,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
         public function initialize()
         {
@@ -249,8 +253,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    use Phalcon\Mvc\Controller,
-        Phalcon\Mvc\View;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Controller;
 
     class PostsController extends Controller
     {
@@ -311,7 +315,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
         //Disable several levels
         $view->disableLevel(array(
-            View::LEVEL_LAYOUT => true,
+            View::LEVEL_LAYOUT      => true,
             View::LEVEL_MAIN_LAYOUT => true
         ));
 
@@ -325,8 +329,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    use Phalcon\Mvc\View,
-        Phalcon\Mvc\Controller;
+    use Phalcon\Mvc\View;
+    use Phalcon\Mvc\Controller;
 
     class PostsController extends Controller
     {
@@ -351,7 +355,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function listAction()
@@ -359,13 +365,12 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
             // Pick "views-dir/products/search" as view to render
             $this->view->pick("products/search");
 
-            // Pick "views-dir/products/list" as view to render
-            $this->view->pick(array('products'));
+            // Pick "views-dir/books/list" as view to render
+            $this->view->pick(array('books'));
 
-            // Pick "views-dir/products/list" as view to render
+            // Pick "views-dir/products/search" as view to render
             $this->view->pick(array(1 => 'search'));
         }
-
     }
 
 关闭视图（Disabling the view）
@@ -376,7 +381,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function closeSessionAction()
@@ -399,7 +406,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class UsersController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class UsersController extends Controller
     {
 
         public function closeSessionAction()
@@ -427,9 +436,11 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
+    use Phalcon\Mvc\View\Simple as SimpleView;
+
     $di->set('view', function() {
 
-        $view = new Phalcon\Mvc\View\Simple();
+        $view = new SimpleView();
 
         $view->setViewsDir('../app/views/');
 
@@ -443,9 +454,11 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
+    use Phalcon\Mvc\Application;
+
     try {
 
-        $application = new Phalcon\Mvc\Application($di);
+        $application = new Application($di);
 
         $application->useImplicitView(false);
 
@@ -461,7 +474,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends \Controller
     {
 
         public function indexAction()
@@ -514,7 +529,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -581,7 +598,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function showAction()
@@ -632,8 +651,8 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    use Phalcon\Cache\Frontend\Output as OutputFrontend,
-        Phalcon\Cache\Backend\Memcache as MemcacheBackend;
+    use Phalcon\Cache\Frontend\Output as OutputFrontend;
+    use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
     //Set the views cache service
     $di->set('viewCache', function() {
@@ -664,7 +683,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class DownloadController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class DownloadController extends Controller
     {
 
         public function indexAction()
@@ -716,7 +737,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class MyTemplateAdapter extends \Phalcon\Mvc\View\Engine
+    use Phalcon\Mvc\Engine;
+
+    class MyTemplateAdapter extends Engine
     {
 
         /**
@@ -741,7 +764,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         {
 
             // Access view
-            $view = $this->_view;
+            $view    = $this->_view;
 
             // Access options
             $options = $this->_options;
@@ -760,7 +783,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    class PostsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
     {
 
         public function indexAction()
@@ -796,10 +821,12 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
+    use Phalcon\Mvc\View;
+
     //Setting up the view component
     $di->set('view', function() {
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
 
         //A trailing directory separator is required
         $view->setViewsDir('../app/views/');
@@ -846,7 +873,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    $view = new View();
 
     //A trailing directory separator is required
     $view->setViewsDir("../app/views/");
@@ -872,17 +901,19 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    $view = new \Phalcon\Mvc\View();
+    use Phalcon\Mvc\View;
+
+    $view = new View();
 
     echo $view->getRender('products', 'list',
         array(
-            "someProducts" => $products,
+            "someProducts"       => $products,
             "someFeatureEnabled" => true
         ),
         function($view) {
             //Set any extra options here
             $view->setViewsDir("../app/views/");
-            $view->setRenderLevel(Phalcon\Mvc\View::LEVEL_LAYOUT);
+            $view->setRenderLevel(View::LEVEL_LAYOUT);
         }
     );
 
@@ -894,7 +925,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
-    $view = new \Phalcon\Mvc\View\Simple();
+    use Phalcon\Mvc\View\Simple as SimpleView;
+
+    $view = new SimpleView();
 
     //A trailing directory separator is required
     $view->setViewsDir("../app/views/");
@@ -904,7 +937,7 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     // Render a view passing parameters
     echo $view->render("templates/welcomeMail", array(
-        'email' => $email,
+        'email'   => $email,
         'content' => $content
     ));
 
@@ -932,17 +965,20 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
     <?php
 
+    use Phalcon\Mvc\View;
+    use Phalcon\Events\Manager as EventsManager;
+
     $di->set('view', function() {
 
         //Create an events manager
-        $eventsManager = new Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         //Attach a listener for type "view"
         $eventsManager->attach("view", function($event, $view) {
             echo $event->getType(), ' - ', $view->getActiveRenderPath(), PHP_EOL;
         });
 
-        $view = new \Phalcon\Mvc\View();
+        $view = new View();
         $view->setViewsDir("../app/views/");
 
         //Bind the eventsManager to the view component
@@ -965,10 +1001,10 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
         {
 
             $tidyConfig = array(
-                'clean' => true,
-                'output-xhtml' => true,
+                'clean'          => true,
+                'output-xhtml'   => true,
                 'show-body-only' => true,
-                'wrap' => 0,
+                'wrap'           => 0,
             );
 
             $tidy = tidy_parse_string($view->getContent(), $tidyConfig, 'UTF8');

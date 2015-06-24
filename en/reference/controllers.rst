@@ -5,7 +5,7 @@ The controllers provide a number of methods that are called actions. Actions are
 public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access an URL like this: http://localhost/blog/posts/show/2012/the-post-title Phalcon by default will decompose each
+For instance, when you access an URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
@@ -15,7 +15,7 @@ part like this:
 +------------------------+----------------+
 | **Action**             | show           |
 +------------------------+----------------+
-| **Parameter**          | 2012           |
+| **Parameter**          | 2015           |
 +------------------------+----------------+
 | **Parameter**          | the-post-title |
 +------------------------+----------------+
@@ -43,7 +43,6 @@ Controllers must have the suffix "Controller" while actions the suffix "Action".
         {
 
         }
-
     }
 
 Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
@@ -94,9 +93,7 @@ Parameters are assigned in the same order as they were passed in the route. You 
             $year       = $this->dispatcher->getParam('year');
             $postTitle  = $this->dispatcher->getParam('postTitle');
         }
-
     }
-
 
 Dispatch Loop
 -------------
@@ -128,7 +125,6 @@ execution to a different controller/action.
                 "action"     => "signin"
             ));
         }
-
     }
 
 If users don't have permissions to access a certain action then will be forwarded to the Users controller, signin action.
@@ -151,7 +147,6 @@ If users don't have permissions to access a certain action then will be forwarde
         {
 
         }
-
     }
 
 There is no limit on the "forwards" you can have in your application, so long as they do not result in circular references, at which point
@@ -187,7 +182,6 @@ action is executed on a controller. The use of the "__construct" method is not r
                 //...
             }
         }
-
     }
 
 .. highlights::
@@ -250,22 +244,21 @@ Then, we can access to that service in several ways:
         public function saveAction()
         {
 
-            //Injecting the service by just accessing the property with the same name
+            // Injecting the service by just accessing the property with the same name
             $this->storage->save('/some/file');
 
-            //Accessing the service from the DI
+            // Accessing the service from the DI
             $this->di->get('storage')->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->di->getStorage()->save('/some/file');
 
-            //Another way to access the service using the magic getter
+            // Another way to access the service using the magic getter
             $this->getDi()->getStorage()->save('/some/file');
 
-            //Using the array-syntax
+            // Using the array-syntax
             $this->di['storage']->save('/some/file');
         }
-
     }
 
 If you're using Phalcon as a full-stack framework, you can read the services provided :doc:`by default <di>` in the framework.
@@ -299,7 +292,6 @@ contains a :doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>` represe
                 $customerBorn = $this->request->getPost("born");
             }
         }
-
     }
 
 The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
@@ -324,7 +316,6 @@ an afterDispatch event - it can be useful to access the response directly:
             // Send a HTTP 404 response header
             $this->response->setStatusCode(404, "Not Found");
         }
-
     }
 
 Learn more about the HTTP environment in their dedicated articles :doc:`request <request>` and :doc:`response <response>`.
@@ -352,7 +343,6 @@ from any controller to encapsulate data that need to be persistent.
         {
             echo "Welcome, ", $this->persistent->name;
         }
-
     }
 
 Using Services as Controllers
@@ -370,11 +360,11 @@ any other class registered with its name can easily replace a controller:
         return $component;
     });
 
-	    //Register a namespaced controller as a service
-	    $di->set('Backend\Controllers\IndexController', function() {
-	        $component = new Component();
-	        return $component;
-	    });
+    //Register a namespaced controller as a service
+    $di->set('Backend\Controllers\IndexController', function() {
+        $component = new Component();
+        return $component;
+    });
 
 Creating a Base Controller
 --------------------------
@@ -405,13 +395,13 @@ The implementation of common components (actions, methods, properties etc.) resi
     class ControllerBase extends Controller
     {
 
-      /**
-       * This action is available for multiple controllers
-       */
-      public function someAction()
-      {
+        /**
+         * This action is available for multiple controllers
+         */
+        public function someAction()
+        {
 
-      }
+        }
 
     }
 
@@ -460,7 +450,6 @@ you to implement hook points before/after the actions are executed:
         {
             // Executed after every found action
         }
-
     }
 
 .. _DRY: http://en.wikipedia.org/wiki/Don't_repeat_yourself

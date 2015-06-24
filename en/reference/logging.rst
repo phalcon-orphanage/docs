@@ -38,9 +38,9 @@ The log generated is below:
 
 .. code-block:: php
 
-    [Tue, 17 Apr 12 22:09:02 -0500][DEBUG] This is a message
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is an error
-    [Tue, 17 Apr 12 22:09:02 -0500][ERROR] This is another error
+    [Tue, 17 Apr 15 22:09:02 -0500][DEBUG] This is a message
+    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is an error
+    [Tue, 17 Apr 15 22:09:02 -0500][ERROR] This is another error
 
 Transactions
 ------------
@@ -185,6 +185,7 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
 .. code-block:: php
 
     <?php
+    
     use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
     // Basic Usage
@@ -194,9 +195,8 @@ This logger sends messages to the system logger. The syslog behavior may vary fr
     $logger = new SyslogAdapter("ident-name", array(
         'option' => LOG_NDELAY,
         'facility' => LOG_MAIL
-    ));    
-    
-    
+    ));
+
 FirePHP Logger
 ^^^^^^^^^^^^^^
 This logger sends messages in HTTP response headers that are displayed by `FirePHP <http://www.firephp.org/>`_,
@@ -206,11 +206,12 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
 
     <?php
 
+    use Phalcon\Logger;
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
  	$logger->log("This is a message");
- 	$logger->log("This is an error", \Phalcon\Logger::ERROR);
+ 	$logger->log("This is an error", Logger::ERROR);
  	$logger->error("This is another error");
 
 Implementing your own adapters

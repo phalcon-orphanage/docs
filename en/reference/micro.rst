@@ -125,7 +125,7 @@ This scenario is coded as follows:
 
     <?php
 
-    //This is the start route
+    // This is the start route
     $app->get('/', function () {
         echo "<h1>Welcome!</h1>";
     });
@@ -151,17 +151,17 @@ return a json, etc.:
 
     <?php
 
-    //Direct output
+    // Direct output
     $app->get('/say/hello', function () {
         echo "<h1>Hello! $name</h1>";
     });
 
-    //Requiring another file
+    // Requiring another file
     $app->get('/show/results', function () {
         require 'views/results.php';
     });
 
-    //Returning a JSON
+    // Returning a JSON
     $app->get('/get/some-json', function () {
         echo json_encode(array("some", "important", "data"));
     });
@@ -191,16 +191,16 @@ Or create a response object and return it from the handler:
 
     $app->get('/show/data', function () {
 
-        //Create a response
+        // Create a response
         $response = new Phalcon\Http\Response();
 
-        //Set the Content-Type header
+        // Set the Content-Type header
         $response->setContentType('text/plain');
 
-        //Pass the content of a file
+        // Pass the content of a file
         $response->setContent(file_get_contents("data.txt"));
 
-        //Return the response
+        // Return the response
         return $response;
     });
 
@@ -212,7 +212,7 @@ Redirections could be performed to forward the execution flow to another route:
 
     <?php
 
-    //This route makes a redirection to another route
+    // This route makes a redirection to another route
     $app->post('/old/welcome', function () use ($app) {
         $app->response->redirect("new/welcome")->sendHeaders();
     });
@@ -230,20 +230,20 @@ by this way the "url" service can produce the corresponding URL:
 
     <?php
 
-    //Set a route with the name "show-post"
+    // Set a route with the name "show-post"
     $app->get('/blog/{year}/{title}', function ($year, $title) use ($app) {
 
         //.. show the post here
 
     })->setName('show-post');
 
-    //produce an URL somewhere
+    // produce an URL somewhere
     $app->get('/', function() use ($app) {
 
         echo '<a href="', $app->url->get(array(
             'for'   => 'show-post',
             'title' => 'php-is-a-great-framework',
-            'year'  => 2012
+            'year'  => 2015
         )), '">Show the post</a>';
 
     });
@@ -292,7 +292,7 @@ The array-syntax is allowed to easily set/get services in the internal services 
 
     $app = new Micro();
 
-    //Setup the database service
+    // Setup the database service
     $app['db'] = function() {
         return new MysqlAdapter(array(
             "host"     => "localhost",
@@ -377,10 +377,10 @@ In the following example, we explain how to control the application security usi
     use Phalcon\Mvc\Micro,
         Phalcon\Events\Manager as EventsManager;
 
-    //Create a events manager
+    // Create a events manager
     $eventManager = new EventsManager();
 
-    //Listen all the application events
+    // Listen all the application events
     $eventManager->attach('micro', function($event, $app) {
 
         if ($event->getType() == 'beforeExecuteRoute') {
@@ -398,7 +398,7 @@ In the following example, we explain how to control the application security usi
 
     $app = new Micro();
 
-    //Bind the events manager to the app
+    // Bind the events manager to the app
     $app->setEventsManager($eventManager);
 
 Middleware events
@@ -411,8 +411,8 @@ In addition to the events manager, events can be added using the methods 'before
 
     $app = new Phalcon\Mvc\Micro();
 
-    //Executed before every route is executed
-    //Return false cancels the route execution
+    // Executed before every route is executed
+    // Return false cancels the route execution
     $app->before(function() use ($app) {
         if ($app['session']->get('auth') == false) {
             return false;
@@ -427,12 +427,12 @@ In addition to the events manager, events can be added using the methods 'before
     });
 
     $app->after(function() use ($app) {
-        //This is executed after the route was executed
+        // This is executed after the route was executed
         echo json_encode($app->getReturnedValue());
     });
 
     $app->finish(function() use ($app) {
-        //This is executed when the request has been served
+        // This is executed when the request has been served
     });
 
 You can call the methods several times to add more events of the same type:
@@ -442,11 +442,11 @@ You can call the methods several times to add more events of the same type:
     <?php
 
     $app->finish(function() use ($app) {
-        //First 'finish' middleware
+        // First 'finish' middleware
     });
 
     $app->finish(function() use ($app) {
-        //Second 'finish' middleware
+        // Second 'finish' middleware
     });
 
 Code for middlewares can be reused using separate classes:
@@ -472,7 +472,7 @@ Code for middlewares can be reused using separate classes:
 
             $key    = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-            //Check if the request is cached
+            // Check if the request is cached
             if ($cache->exists($key)) {
                 echo $cache->get($key);
                 return false;
@@ -575,7 +575,7 @@ When responses are returned by handlers they are automatically sent by the appli
 
     $app = new Micro();
 
-    //Return a response
+    // Return a response
     $app->get('/welcome/index', function() {
 
         $response = new Response();

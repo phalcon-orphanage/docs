@@ -6,8 +6,8 @@ your application. The bulk of your application's business logic will be concentr
 
 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` is the base for all models in a Phalcon application. It provides database independence, basic
 CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates methods dynamically
-to the respective database engine operations.
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` avoids the need of having to use SQL statements because it translates
+methods dynamically to the respective database engine operations.
 
 .. highlights::
 
@@ -56,7 +56,6 @@ you can use the getSource() method:
         {
             return "the_robots";
         }
-
     }
 
 The model Robots now maps to "the_robots" table. The initialize() method aids in setting up the model with a custom behavior i.e. a different table.
@@ -75,7 +74,6 @@ The initialize() method is only called once during the request.
         {
             $this->setSource("the_robots");
         }
-
     }
 
 The initialize() method is only called once during the request, it's intended to perform initializations that apply for
@@ -95,7 +93,6 @@ created you can 'onConstruct':
         {
             //...
         }
-
     }
 
 Public properties vs. Setters/Getters
@@ -142,7 +139,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setName($name)
         {
-            //The name is too short?
+            // The name is too short?
             if (strlen($name) < 10) {
                 throw new \InvalidArgumentException('The name is too short');
             }
@@ -156,7 +153,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function setPrice($price)
         {
-            //Negative prices aren't allowed
+            // Negative prices aren't allowed
             if ($price < 0) {
                 throw new \InvalidArgumentException('Price can\'t be negative');
             }
@@ -165,7 +162,7 @@ to the data (which would be impossible otherwise) and also add validation rules 
 
         public function getPrice()
         {
-            //Convert the value to double before be used
+            // Convert the value to double before be used
             return (double) $this->price;
         }
     }
@@ -188,7 +185,29 @@ Namespaces can be used to avoid class name collision. The mapped table is taken 
 
     class Robots extends Model
     {
+        // ...
+    }
 
+Namespaces make part of model names when they are within strings:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Store\Toys;
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public $id;
+
+        public $name;
+
+        public function initialize()
+        {
+            $this->hasMany('id', 'Store\Toys\RobotsParts', 'robots_id');
+        }
     }
 
 Understanding Records To Objects
@@ -373,8 +392,8 @@ An example is in order, so taking our Robots model mentioned earlier :
         public $price;
     }
 
-We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in the table with the name
-'Terminator'. This could be written like so :
+We have three properties to work with here. $id, $name and $price. So, let's say you want to retrieve the first record in
+the table with the name 'Terminator'. This could be written like:
 
 .. code-block:: php
 
@@ -383,14 +402,15 @@ We have three properties to work with here. $id, $name and $price. So, let's say
     $name  = "Terminator";
     $robot = Robots::findFirstByName($name);
 
-    if($robot){
-        $this->flash->success("The first robot with the name " . $name . " cost " . $robot->price ".");
-    }else{
-        $this->flash->error("There were no robots found in our table with the name " . $name ".");
+    if ($robot) {
+        echo "The first robot with the name " . $name . " cost " . $robot->price . ".";
+    } else {
+        echo "There were no robots found in our table with the name " . $name . ".";
     }
 
-Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name we are looking for in our table. Notice also that
-when we find a match with our query, all the other properties are available to us as well.
+Notice that we used 'Name' in the method call and passed the variable $name to it, which contains the name
+we are looking for in our table. Notice also that when we find a match with our query, all the other properties
+are available to us as well.
 
 Model Resultsets
 ^^^^^^^^^^^^^^^^
@@ -486,18 +506,17 @@ Phalcon additionally allows you to filter the data using PHP using any resource 
 
     $customers = Customers::find()->filter(function($customer) {
 
-        //Return only customers with a valid e-mail
+        // Return only customers with a valid e-mail
         if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
             return $customer;
         }
-
     });
 
 Binding Parameters
 ^^^^^^^^^^^^^^^^^^
-Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. Although there is a minimal performance
-impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject
-to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters are also supported in :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`. You are encouraged to use
+this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks.
+Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 .. code-block:: php
 
@@ -506,13 +525,13 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
     // Query robots binding parameters with string placeholders
     $conditions = "name = :name: AND type = :type:";
 
-    //Parameters whose keys are the same as placeholders
+    // Parameters whose keys are the same as placeholders
     $parameters = array(
         "name" => "Robotina",
         "type" => "maid"
     );
 
-    //Perform the query
+    // Perform the query
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -529,13 +548,13 @@ to SQL injection attacks. Both string and integer placeholders are supported. Bi
     // Query robots binding parameters with both string and integer placeholders
     $conditions = "name = :name: AND type = ?1";
 
-    //Parameters whose keys are the same as placeholders
+    // Parameters whose keys are the same as placeholders
     $parameters = array(
         "name" => "Robotina",
         1      => "maid"
     );
 
-    //Perform the query
+    // Perform the query
     $robots = Robots::find(array(
         $conditions,
         "bind" => $parameters
@@ -582,6 +601,21 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
 
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
+
+If you're using "finders", bound parameters are automatically used for you:
+
+.. code-block:: php
+
+    <?php
+
+    // Explicit query using bound parameters
+    $robots = Robots::find(array(
+        "name = ?0",
+        "bind" => ["Ultron"],
+    ));
+
+    // Implicit query using bound parameters
+    $robots = Robots::findByName("Ultron");
 
 Initializing/Preparing fetched records
 --------------------------------------
@@ -638,7 +672,6 @@ accessed:
         {
             return explode(',', $this->status);
         }
-
     }
 
 Relationships between Models
@@ -731,7 +764,6 @@ The models with their relations could be implemented as follows:
         {
             $this->hasMany("id", "RobotsParts", "robots_id");
         }
-
     }
 
 .. code-block:: php
@@ -751,7 +783,6 @@ The models with their relations could be implemented as follows:
         {
             $this->hasMany("id", "RobotsParts", "parts_id");
         }
-
     }
 
 .. code-block:: php
@@ -774,7 +805,6 @@ The models with their relations could be implemented as follows:
             $this->belongsTo("robots_id", "Robots", "id");
             $this->belongsTo("parts_id", "Parts", "id");
         }
-
     }
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name
@@ -804,7 +834,6 @@ Many to many relationships require 3 models and define the attributes involved i
                 "id"
             );
         }
-
     }
 
 Taking advantage of relationships
@@ -856,12 +885,12 @@ and without:
     $robotsParts = $robot->robotsParts;
 
     // Only parts that match conditions
-    $robotsParts = $robot->getRobotsParts("created_at = '2012-03-15'");
+    $robotsParts = $robot->getRobotsParts("created_at = '2015-03-15'");
 
     // Or using bound parameters
     $robotsParts = $robot->getRobotsParts(array(
         "created_at = :date:",
-        "bind" => array("date" => "2012-03-15")
+        "bind" => array("date" => "2015-03-15")
     ));
 
     $robotPart   = RobotsParts::findFirst(1);
@@ -884,7 +913,7 @@ Getting related records manually:
 
     // Only parts that match conditions
     $robotsParts = RobotsParts::find(
-        "robots_id = '" . $robot->id . "' AND created_at = '2012-03-15'"
+        "robots_id = '" . $robot->id . "' AND created_at = '2015-03-15'"
     );
 
     $robotPart   = RobotsParts::findFirst(1);
@@ -955,7 +984,6 @@ A model that maps this table and its relationships is the following:
             $this->belongsTo('robots_id', 'Robots', 'id');
             $this->belongsTo('similar_robots_id', 'Robots', 'id');
         }
-
     }
 
 Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
@@ -994,7 +1022,6 @@ The aliases allow us to rename both relationships to solve these problems:
                 'alias' => 'SimilarRobot'
             ));
         }
-
     }
 
 With the aliasing we can get the related records easily:
@@ -1046,7 +1073,6 @@ docblocks helping the IDE to produce a better auto-completion:
         {
             return $this->getRelated('RobotsParts', $parameters);
         }
-
     }
 
 Virtual Foreign Keys
@@ -1084,7 +1110,6 @@ The RobotsPart model can be changed to demonstrate this feature:
                 )
             ));
         }
-
     }
 
 If you alter a belongsTo() relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
@@ -1108,7 +1133,34 @@ if that record is used on a referenced model.
                 )
             ));
         }
+    }
 
+A virtual foreign key can be set up to allow null values as follows:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class RobotsParts extends Model
+    {
+
+        public $id;
+
+        public $robots_id;
+
+        public $parts_id;
+
+        public function initialize()
+        {
+            $this->belongsTo("parts_id", "Parts", "id", array(
+                "foreignKey" => array(
+                    "allowNull" => true,
+                    "message" => "The part_id does not exist on the Parts model"
+                )
+            ));
+        }
     }
 
 Cascade/Restrict actions
@@ -1140,7 +1192,6 @@ to maintain the integrity of data:
                 )
             ));
         }
-
     }
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
@@ -1451,7 +1502,6 @@ for example: robots_id_seq, if that sequence has a different name, the method "g
         {
             return "robots_sequence_name";
         }
-
     }
 
 Storing related records
@@ -1639,7 +1689,6 @@ The easier way to make a model react to events is implement a method with the sa
         {
             echo "This is executed before creating a Robot!";
         }
-
     }
 
 Events can be useful to assign values before performing an operation, for example:
@@ -1664,7 +1713,6 @@ Events can be useful to assign values before performing an operation, for exampl
             //Set the modification date
             $this->modified_in = date('Y-m-d H:i:s');
         }
-
     }
 
 Using a custom Events Manager
@@ -1701,7 +1749,6 @@ this means we can create listeners that run when an event is triggered.
             //Attach the events manager to the event
             $this->setEventsManager($eventsManager);
         }
-
     }
 
 In the example given above, EventsManager only acts as a bridge between an object and a listener (the anonymous function).
@@ -1778,7 +1825,6 @@ The following example implements an event that validates the year cannot be smal
                 return false;
             }
         }
-
     }
 
 Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
@@ -1821,7 +1867,6 @@ The following example shows how to use it:
 
             return $this->validationHasFailed() != true;
         }
-
     }
 
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
@@ -1880,7 +1925,6 @@ In addition to the built-in validators, you can create your own validators:
             }
             return true;
         }
-
     }
 
 Adding the validator to a model:
@@ -1907,7 +1951,6 @@ Adding the validator to a model:
                 return false;
             }
         }
-
     }
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
@@ -1935,7 +1978,6 @@ The idea of creating validators is make them reusable between several models. A 
             }
             return true;
         }
-
     }
 
 Avoiding SQL injections
@@ -2017,11 +2059,11 @@ to delegate the database system the assignation of the values by a trigger or a 
             //Skips only when updating
             $this->skipAttributesOnUpdate(array('modified_in'));
         }
-
     }
 
-This will ignore globally these fields on each INSERT/UPDATE operation on the whole application. If you want to ignore different attributes on different INSERT/UPDATE operations, you can specify the second parameter (boolean) - true for replacement.
-Forcing a default value can be done in the following way:
+This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
+If you want to ignore different attributes on different INSERT/UPDATE operations, you can specify the second parameter (boolean) - true
+for replacement. Forcing a default value can be done in the following way:
 
 .. code-block:: php
 
@@ -2150,7 +2192,6 @@ With the above events can also define business rules in the models:
             }
             return true;
         }
-
     }
 
 Validation Failed Events
@@ -2198,7 +2239,6 @@ A behavior must be added in the model initializer, a model can have zero or more
                 )
             ));
         }
-
     }
 
 The following built-in behaviors are provided by the framework:
@@ -2292,7 +2332,6 @@ This behavior can be used in the following way:
                 )
             ));
         }
-
     }
 
 This behavior accepts two options: 'field' and 'value', 'field' determines what field must be updated and 'value' the value to be deleted.
@@ -2373,7 +2412,6 @@ that is performed operations over a model:
                     /* ignore the rest of events */
             }
         }
-
     }
 
 The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
@@ -2391,7 +2429,6 @@ The former is a very simple behavior, but it illustrates how to create a behavio
         {
             $this->addBehavior(new Blamable());
         }
-
     }
 
 A behavior is also capable of intercepting missing methods on your models:
@@ -2414,7 +2451,6 @@ A behavior is also capable of intercepting missing methods on your models:
                 return Tag::friendlyTitle($model->title);
             }
         }
-
     }
 
 Call that method on a model that implements Sluggable returns a SEO friendly title:
@@ -2446,7 +2482,6 @@ custom behaviors. The following trait implements a simple version of the Timesta
         {
             $this->updated_at = date('r');
         }
-
     }
 
 Then you can use it in your model as follows:
@@ -2650,7 +2685,6 @@ Then access it from a controller or view:
 
             //...
         }
-
     }
 
 While a transaction is active, the transaction manager will always return the same transaction across the application.
@@ -2671,10 +2705,18 @@ in the code. A change in the column map in the model will take care of the rest.
     class Robots extends Model
     {
 
+	public $code;
+
+	public $theName;
+
+	public $theType;
+
+	public $theYear;
+
         public function columnMap()
         {
-            //Keys are the real names in the table and
-            //the values their names in the application
+            // Keys are the real names in the table and
+            // the values their names in the application
             return array(
                 'id'       => 'code',
                 'the_name' => 'theName',
@@ -2682,7 +2724,6 @@ in the code. A change in the column map in the model will take care of the rest.
                 'the_year' => 'theYear'
             );
         }
-
     }
 
 Then you can use the new names naturally in your code:
@@ -2691,17 +2732,17 @@ Then you can use the new names naturally in your code:
 
     <?php
 
-    //Find a robot by its name
+    // Find a robot by its name
     $robot = Robots::findFirst("theName = 'Voltron'");
     echo $robot->theName, "\n";
 
-    //Get robots ordered by type
+    // Get robots ordered by type
     $robot = Robots::find(array('order' => 'theType DESC'));
     foreach ($robots as $robot) {
         echo 'Code: ', $robot->code, "\n";
     }
 
-    //Create a robot
+    // Create a robot
     $robot          = new Robots();
     $robot->code    = '10101';
     $robot->theName = 'Bender';
@@ -2977,7 +3018,6 @@ This strategy makes use of :doc:`annotations <annotations>` to describe the colu
          * @Column(type="integer", nullable=false)
          */
         public $year;
-
     }
 
 Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation
@@ -3056,27 +3096,27 @@ The following example shows how to define the meta-data manually:
         {
             return array(
 
-                //Every column in the mapped table
+                // Every column in the mapped table
                 MetaData::MODELS_ATTRIBUTES => array(
                     'id', 'name', 'type', 'year'
                 ),
 
-                //Every column part of the primary key
+                // Every column part of the primary key
                 MetaData::MODELS_PRIMARY_KEY => array(
                     'id'
                 ),
 
-                //Every column that isn't part of the primary key
+                // Every column that isn't part of the primary key
                 MetaData::MODELS_NON_PRIMARY_KEY => array(
                     'name', 'type', 'year'
                 ),
 
-                //Every column that doesn't allows null values
+                // Every column that doesn't allows null values
                 MetaData::MODELS_NOT_NULL => array(
-                    'id', 'name', 'type', 'year'
+                    'id', 'name', 'type'
                 ),
 
-                //Every column and their data types
+                // Every column and their data types
                 MetaData::MODELS_DATA_TYPES => array(
                     'id'   => Column::TYPE_INTEGER,
                     'name' => Column::TYPE_VARCHAR,
@@ -3084,37 +3124,45 @@ The following example shows how to define the meta-data manually:
                     'year' => Column::TYPE_INTEGER
                 ),
 
-                //The columns that have numeric data types
+                // The columns that have numeric data types
                 MetaData::MODELS_DATA_TYPES_NUMERIC => array(
                     'id'   => true,
                     'year' => true,
                 ),
 
-                //The identity column, use boolean false if the model doesn't have
-                //an identity column
+                // The identity column, use boolean false if the model doesn't have
+                // an identity column
                 MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
-                //How every column must be bound/casted
+                // How every column must be bound/casted
                 MetaData::MODELS_DATA_TYPES_BIND => array(
                     'id'   => Column::BIND_PARAM_INT,
                     'name' => Column::BIND_PARAM_STR,
                     'type' => Column::BIND_PARAM_STR,
-                    'year' => Column::BIND_PARAM_INT,
+                    'year' => Column::BIND_PARAM_INT
                 ),
 
-                //Fields that must be ignored from INSERT SQL statements
+                // Fields that must be ignored from INSERT SQL statements
                 MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => array(
                     'year' => true
                 ),
 
-                //Fields that must be ignored from UPDATE SQL statements
+                // Fields that must be ignored from UPDATE SQL statements
                 MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => array(
                     'year' => true
-                )
+                ),
 
+                // Default values for columns
+                MetaData::MODELS_DEFAULT_VALUES => array(
+                    'year' => '2015'
+                ),
+
+                // Fields that allow empty strings
+                MetaData::MODELS_EMPTY_STRING_VALUES => array(
+                    'name' => true
+                )
             );
         }
-
     }
 
 Pointing to a different schema
@@ -3134,7 +3182,6 @@ If a model is mapped to a table that is in a different schemas/databases than th
         {
             return "toys";
         }
-
     }
 
 Setting multiple databases
@@ -3185,7 +3232,6 @@ Then, in the Initialize method, we define the connection service for the model:
         {
             $this->setConnectionService('dbPostgres');
         }
-
     }
 
 But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
@@ -3205,7 +3251,6 @@ to balance the load to your databases implementing a master-slave architecture:
             $this->setReadConnectionService('dbSlave');
             $this->setWriteConnectionService('dbMaster');
         }
-
     }
 
 The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection
@@ -3248,7 +3293,6 @@ according to the current query conditions:
             //Use a default shard
             return $this->getDI()->get('dbShard0');
         }
-
     }
 
 The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
@@ -3417,7 +3461,6 @@ You may be required to access the application services within a model, the follo
                 $flash->error($message);
             }
         }
-
     }
 
 The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
@@ -3453,6 +3496,8 @@ The available options are:
 | virtualForeignKeys  | Enables/Disables the virtual foreign keys                                        | true    |
 +---------------------+----------------------------------------------------------------------------------+---------+
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                     | true    |
++---------------------+----------------------------------------------------------------------------------+---------+
+| lateStateBinding    | Enables/Disables late state binding of the method Mvc\Model::cloneResultMap      | false   |
 +---------------------+----------------------------------------------------------------------------------+---------+
 
 Stand-Alone component

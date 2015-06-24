@@ -15,17 +15,19 @@ javascript另一为css.
 
     <?php
 
-    class IndexController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class IndexController extends Controller
     {
         public function index()
         {
 
-            //添加本地css资源
+            // 添加本地css资源
             $this->assets
                 ->addCss('css/style.css')
                 ->addCss('css/index.css');
 
-            //添加本地js资源
+            // 添加本地js资源
             $this->assets
                 ->addJs('js/jquery.js')
                 ->addJs('js/bootstrap.min.js');
@@ -80,10 +82,10 @@ Volt语法：
     public function indexAction()
     {
 
-        //添加远程及本地资源
+        // 添加远程及本地资源
         $this->assets
-            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', true )
-            ->addCss('css/style.css', false );
+            ->addCss('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css', false)
+            ->addCss('css/style.css', true);
     }
     
 集合（Collections）
@@ -185,29 +187,29 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
 
     $manager
 
-        //这些javascript资源位于html文件的底部 
+        // 这些javascript资源位于html文件的底部 
         ->collection('jsFooter')
 
-        //最终输出名
+        // 最终输出名
         ->setTargetPath('final.js')
 
-        //使用此uri显示资源
+        // 使用此uri显示资源
         ->setTargetUri('production/final.js')
 
-        //添加远程资源但不压缩
-        ->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false)
+        // 添加远程资源但不压缩
+        ->addJs('code.jquery.com/jquery-1.10.0.min.js', false, false)
 
-        //这些资源必须要压缩
+        // 这些资源必须要压缩
         ->addJs('common-functions.js')
         ->addJs('page-functions.js')
 
-        //把这些资源放入一个文件内
+        // 把这些资源放入一个文件内
         ->join(true)
 
-        //使用内置的JsMin过滤器
+        // 使用内置的JsMin过滤器
         ->addFilter(new Phalcon\Assets\Filters\Jsmin())
 
-        //使用自定义过滤器
+        // 使用自定义过滤器
         ->addFilter(new MyApp\Assets\Filters\LicenseStamper());
         
 开始部分我们通过资源管理器取得了一个命名的集合，集合中可以包含javascript或css资源但不能同时包含两个。一些资源可能位于远程的服务器上
@@ -217,7 +219,7 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
 
     <?php
 
-    //这些Javscript文件放在页面的底端
+    // 这些Javscript文件放在页面的底端
     $js = $manager->collection('jsFooter');
 
 如上面，addJs方法用来添加资源到集合中，第二个参数指示了资源是否为外部的，第三个参数指示是否需要压缩资源：
@@ -226,11 +228,11 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
 
     <?php
 
-    //添加远程资源但不压缩
+    // 添加远程资源但不压缩
     $js->addJs('code.jquery.com/jquery-1.10.0.min.js', true, false);
 
     // These are local resources that must be filtered
-    //添加本地资源并压缩
+    // 添加本地资源并压缩
     $js->addJs('common-functions.js');
     $js->addJs('page-functions.js');
     
@@ -240,10 +242,10 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
 
     <?php
 
-    //使用内置的Jsmin过滤器
+    // 使用内置的Jsmin过滤器
     $js->addFilter(new Phalcon\Assets\Filters\Jsmin());
 
-    //使用自定义的过滤器
+    // 使用自定义的过滤器
     $js->addFilter(new MyApp\Assets\Filters\LicenseStamper());
 
 注意：不管是内置的还是自定义的过滤器对集合来说他们都是透明的。最后一步用来确定所有写到同一个文件中还是分开保存。如果要让集合中所有的文件合成
@@ -253,13 +255,13 @@ Phalcon\\Assets提供了内置的js及css压缩工具。 开发者可以设定�
 
     <?php
 
-    //全并文件
+    // 全并文件
     $js->join(true);
 
-    //设置最终输出文件
+    // 设置最终输出文件
     $js->setTargetPath('public/production/final.js');
 
-    //使用此uri引用js
+    // 使用此uri引用js
     $js->setTargetUri('production/final.js');
     
 如果资源写入同一文件，则我们需要定义使用哪一个文件来保存要写入的资源数据，及使用一个ur来展示资源。这两个设置可以使用setTargetPath()
@@ -340,10 +342,10 @@ Phalcon内置了两个过滤器以分别实现对js及css的压缩，由于二�
 
     <?php
 
-    //取css集合
+    // 取css集合
     $css = $this->assets->get('head');
 
-    //添加/启用YUI压缩器
+    // 添加/启用YUI压缩器
     $css->addFilter(new CssYUICompressor(array(
          'java-bin' => '/usr/local/bin/java',
          'yui' => '/some/path/yuicompressor-x.y.z.jar',
@@ -359,8 +361,10 @@ OutputJs及outputCss方法可以依据不同的资源类来创建需要的html�
 
     <?php
 
+    use Phalcon\Tag;
+
     foreach ($this->assets->collection('js') as $resource) {
-        echo \Phalcon\Tag::javascriptInclude($resource->getPath());
+        echo Tag::javascriptInclude($resource->getPath());
     }
 
 .. _YUI : http://yui.github.io/yuicompressor/

@@ -10,7 +10,9 @@ not exist is used in any part of the code, a special handler will try to load it
 By loading classes on a need to load basis, the overall performance is increased since the only file
 reads that occur are for the files needed. This technique is called `lazy initialization`_.
 
-With this component you can load files from other projects or vendors, this autoloader is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_ compliant.
+With this component you can load files from other projects or vendors, this autoloader
+is `PSR-0 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md>`_
+and `PSR-4 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md>`_ compliant.
 
 :doc:`Phalcon\\Loader <../api/Phalcon_Loader>` offers four options to autoload classes. You can use them one at a time or combine them.
 
@@ -25,8 +27,10 @@ the end of the paths.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     //Register some namespaces
     $loader->registerNamespaces(
@@ -54,8 +58,10 @@ the loader try to find the classes. Remember always to add a trailing slash at t
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     //Register some prefixes
     $loader->registerPrefixes(
@@ -83,8 +89,10 @@ It's important to register the directories in relevance order. Remember always a
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader();
 
     // Register some directories
     $loader->registerDirs(
@@ -115,8 +123,10 @@ maintenance of the class list very cumbersome and it is not recommended.
 
     <?php
 
+    use Phalcon\Loader;
+
     // Creates the autoloader
-    $loader = new \Phalcon\Loader();
+    $loader = new Loader ();
 
     // Register some classes
     $loader->registerClasses(
@@ -177,7 +187,7 @@ Consider the following example:
 
     <?php
 
-    //Basic autoloader
+    // Basic autoloader
     spl_autoload_register(function($className) {
         if (file_exists($className . '.php')) {
             require $className . '.php';
@@ -191,10 +201,10 @@ a malicious prepared string is used as parameter this would allow to execute any
 
     <?php
 
-    //This variable is not filtered and comes from an insecure source
+    // This variable is not filtered and comes from an insecure source
     $className = '../processes/important-process';
 
-    //Check if the class exists triggering the auto-loader
+    // Check if the class exists triggering the auto-loader
     if (class_exists($className)) {
         //...
     }
@@ -223,7 +233,7 @@ In the following example, the EventsManager is working with the class loader, al
        'Example' => 'vendor/example/'
     ));
 
-    //Listen all the loader events
+    // Listen all the loader events
     $eventsManager->attach('loader', function($event, $loader) {
         if ($event->getType() == 'beforeCheckPath') {
             echo $loader->getCheckedPath();

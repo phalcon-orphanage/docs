@@ -103,10 +103,6 @@
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_("hi"), " ", $name; ?></p>
 
-The "_" function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
-calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the "_ function. The passed parameters
-are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
-
 Функция "_" возвращает переведенные строки на основе используемого индекса. В некоторых строках необходимо использовать шаблоны подстановок,
 например: "Здравствуйте % name%". Эти подстановки (placeholders) могут быть заменены передаваемыми параметрами в функцию "_". Параметры должны
 передаваться в виде массива ключ/значение, где ключ соответствует названию подстановки, а значение - фактическим данным для заменены:

@@ -12,17 +12,19 @@ Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用�
 
     <?php
 
-    class SessionController extends Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class SessionController extends Controller
     {
         public function loginAction()
         {
-            //检测cookie之前有没被设置过
+            // 检测cookie之前有没被设置过
             if ($this->cookies->has('remember-me')) {
 
-                //获取cookie
+                // 获取cookie
                 $rememberMe = $this->cookies->get('remember-me');
 
-                //获取cookie的值
+                // 获取cookie的值
                 $value = $rememberMe->getValue();
 
             }
@@ -46,8 +48,10 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     <?php
 
+    use Phalcon\Http\Response\Cookies;
+
     $di->set('cookies', function() {
-        $cookies = new Phalcon\Http\Response\Cookies();
+        $cookies = new Cookies();
         $cookies->useEncryption(false);
         return $cookies;
     });
@@ -58,9 +62,11 @@ Cookie 的加密和解密（Encryption/Decryption of Cookies）
 
     <?php
 
+    use Phalcon\Crypt;
+
     $di->set('crypt', function() {
-        $crypt = new Phalcon\Crypt();
-        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); //使用你自己的key！
+        $crypt = new Crypt();
+        $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // 使用你自己的key！
         return $crypt;
     });
 

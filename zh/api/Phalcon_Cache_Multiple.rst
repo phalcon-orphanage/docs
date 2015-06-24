@@ -49,43 +49,43 @@ Allows to read to chained backends writing to multiple backends
 Methods
 -------
 
-public  **__construct** ([*Phalcon\\Cache\\BackendInterface[]* $backends])
+public  **__construct** ([*unknown* $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
 
 
-public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $backend)
+public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (*unknown* $backend)
 
 Adds a backend
 
 
 
-public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*unknown* $keyName, [*unknown* $lifetime])
 
 Returns a cached content reading the internal backends
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
+public  **start** (*unknown* $keyName, [*unknown* $lifetime])
 
 Starts every backend
 
 
 
-public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*unknown* $keyName], [*unknown* $content], [*unknown* $lifetime], [*unknown* $stopBuffer])
 
 Stores cached content into all backends and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean*  **delete** (*unknown* $keyName)
 
 Deletes a value from each backend
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
 
 Checks if cache exists in at least one backend
 

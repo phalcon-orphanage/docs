@@ -851,7 +851,7 @@ If you want to register a template engine or a set of them for each request in t
 
 .. code-block:: php
 
-    <?
+    <?php
 
     use Phalcon\Mvc\View;
 

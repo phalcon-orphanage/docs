@@ -19,7 +19,9 @@
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
+
+    $filter = new Filter();
 
     // 返回 "someone@example.com"
     $filter->sanitize("some(one)@exa\mple.com", "email");
@@ -43,7 +45,9 @@
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function indexAction()
@@ -72,7 +76,9 @@
 
     <?php
 
-    class ProductsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class ProductsController extends Controller
     {
 
         public function indexAction()
@@ -95,7 +101,9 @@
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
+
+    $filter = new Filter();
 
     // 返回 "Hello"
     $filter->sanitize("<h1>Hello</h1>", "striptags");
@@ -138,14 +146,16 @@
 
     <?php
 
-    $filter = new \Phalcon\Filter();
+    use Phalcon\Filter;
 
-    //使用匿名函数
+    $filter = new Filter();
+
+    // 使用匿名函数
     $filter->add('md5', function($value) {
         return preg_replace('/[^0-9a-f]/', '', $value);
     });
 
-    //利用md5过滤器清理
+    // 利用md5过滤器清理
     $filtered = $filter->sanitize($possibleMd5, "md5");
 
 或者，如果你愿意，你可以在类中实现过滤器：
@@ -153,6 +163,8 @@
 .. code-block:: php
 
     <?php
+
+    use Phalcon\Filter;
 
     class IPv4Filter
     {
@@ -164,12 +176,12 @@
 
     }
 
-    $filter = new \Phalcon\Filter();
+    $filter = new Filter();
 
-    //使用对象
+    // 使用对象
     $filter->add('ipv4', new IPv4Filter());
 
-    //利用"ipv4"过滤器清理
+    // 利用"ipv4"过滤器清理
     $filteredIp = $filter->sanitize("127.0.0.1", "ipv4");
 
 复杂的过滤与清理（Complex Sanitizing and Filtering）

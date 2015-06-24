@@ -30,7 +30,6 @@ we cannot change the connection parameters or the type of database system becaus
 
             // ...
         }
-
     }
 
     $some = new SomeComponent();
@@ -62,7 +61,6 @@ a good solution:
 
             // ...
         }
-
     }
 
     $some = new SomeComponent();
@@ -104,7 +102,6 @@ to create it again and again could solve this:
                 "dbname"    => "invo"
             ));
         }
-
     }
 
     class SomeComponent
@@ -126,7 +123,6 @@ to create it again and again could solve this:
 
             // ...
         }
-
     }
 
     $some = new SomeComponent();
@@ -179,7 +175,6 @@ Now, let's imagine that we must implement two methods in the component, the firs
         {
             return self::_createConnection();
         }
-
     }
 
     class SomeComponent
@@ -212,7 +207,6 @@ Now, let's imagine that we must implement two methods in the component, the firs
         {
 
         }
-
     }
 
     $some = new SomeComponent();
@@ -283,7 +277,6 @@ the object:
 
             return new self($connection, $session, $fileSystem, $filter, $selector);
         }
-
     }
 
 Now we find ourselves back where we started, we are again building the dependencies inside of the component! We must seek a solution that
@@ -296,6 +289,8 @@ of our component:
 .. code-block:: php
 
     <?php
+
+    use Phalcon\DI;
 
     class SomeComponent
     {
@@ -313,7 +308,6 @@ of our component:
             // Get the connection service
             // Always returns a new connection
             $connection = $this->_di->get('db');
-
         }
 
         public function someOtherDbTask()
@@ -325,12 +319,10 @@ of our component:
 
             //This method also requires an input filtering service
             $filter = $this->_di->get('filter');
-
         }
-
     }
 
-    $di = new Phalcon\DI();
+    $di = new DI();
 
     //Register a "db" service in the container
     $di->set('db', function() {
@@ -393,21 +385,21 @@ Services can be registered using several types of definitions:
 
     use Phalcon\Http\Request;
 
-    //Create the Dependency Injector Container
+    // Create the Dependency Injector Container
     $di = new Phalcon\DI();
 
-    //By its class name
+    // By its class name
     $di->set("request", 'Phalcon\Http\Request');
 
-    //Using an anonymous function, the instance will be lazy loaded
+    // Using an anonymous function, the instance will be lazy loaded
     $di->set("request", function() {
         return new Request();
     });
 
-    //Registering an instance directly
+    // Registering an instance directly
     $di->set("request", new Request());
 
-    //Using an array definition
+    // Using an array definition
     $di->set("request", array(
         "className" => 'Phalcon\Http\Request'
     ));
@@ -420,21 +412,21 @@ The array syntax is also allowed to register services:
 
     use Phalcon\Http\Request;
 
-    //Create the Dependency Injector Container
+    // Create the Dependency Injector Container
     $di = new Phalcon\DI();
 
-    //By its class name
+    // By its class name
     $di["request"] = 'Phalcon\Http\Request';
 
-    //Using an anonymous function, the instance will be lazy loaded
+    // Using an anonymous function, the instance will be lazy loaded
     $di["request"] = function() {
         return new Request();
     };
 
-    //Registering an instance directly
+    // Registering an instance directly
     $di["request"] = new Request();
 
-    //Using an array definition
+    // Using an array definition
     $di["request"] = array(
         "className" => 'Phalcon\Http\Request'
     );
@@ -531,9 +523,9 @@ can be a little more verbose:
 
     <?php
 
-    use \Phalcon\Logger\Adapter\File as LoggerFile;
+    use Phalcon\Logger\Adapter\File as LoggerFile;
 
-    //Register a service 'logger' with a class name and its parameters
+    // Register a service 'logger' with a class name and its parameters
     $di->set('logger', array(
         'className' => 'Phalcon\Logger\Adapter\File',
         'arguments' => array(
@@ -544,7 +536,7 @@ can be a little more verbose:
         )
     ));
 
-    //Using an anonymous function
+    // Using an anonymous function
     $di->set('logger', function() {
         return new LoggerFile('../apps/logs/error.log');
     });
@@ -555,10 +547,10 @@ Both service registrations above produce the same result. The array definition h
 
     <?php
 
-    //Change the service class name
+    // Change the service class name
     $di->getService('logger')->setClassName('MyCustomLogger');
 
-    //Change the first parameter without instantiating the logger
+    // Change the first parameter without instantiating the logger
     $di->getService('logger')->setParameter(0, array(
         'type'  => 'parameter',
         'value' => '../apps/logs/error.log'
@@ -591,7 +583,6 @@ Let's pretend we have the following component:
             $this->_response = $response;
             $this->_someFlag = $someFlag;
         }
-
     }
 
 The service can be registered this way:
@@ -643,7 +634,6 @@ Classes may have setters to inject optional dependencies, our previous class can
         {
             $this->_someFlag = $someFlag;
         }
-
     }
 
 A service with setter injection can be registered as follows:
@@ -692,7 +682,6 @@ A less common strategy is to inject dependencies or parameters directly into pub
         public $response;
 
         public $someFlag;
-
     }
 
 A service with properties injection can be registered as follows:
@@ -979,7 +968,6 @@ If needed you can access the latest DI created in a static function in the follo
             //Get the session service
             $session = DI::getDefault()->getSession();
         }
-
     }
 
 Factory Default DI

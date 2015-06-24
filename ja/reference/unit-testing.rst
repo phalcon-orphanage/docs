@@ -1,18 +1,17 @@
 ユニットテスト
 ============
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most 
-functional bugs and better maintain your software.
+適切なテストを書くことは、より良いソフトウェアを書く助けになります。適切なテストケースを組み立てれば、機能面のバグの多くを削減でき、より良いメンテナンスを行えるようになります。
 
 PHPunitとphalconの統合
 --------------------------------
-If you don't already have phpunit installed, you can do it by using the following composer command:
+PHPUnitをまだインストールしていないなら、以下のcomposerコマンドでインストールできます:
 
 .. code-block:: bash
 
   composer require phpunit/phpunit
 
 
-or by manually adding it to composer.json:
+あるいは、composer.json に以下の記述を追加します:
 
 .. code-block:: json
 
@@ -22,7 +21,7 @@ or by manually adding it to composer.json:
       }
   }
 
-Once phpunit is installed create a directory called 'tests' in your root directory:
+PHPUnitをインストールしたら、「tests」ディレクトリをルートディレクトリの直下に作成しましょう:
 
 .. code-block:: bash
 
@@ -30,15 +29,11 @@ Once phpunit is installed create a directory called 'tests' in your root directo
   public/
   tests/
   
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+次に、ユニットテストの前にアプリケーションを立ち上げるための「ヘルパー」ファイルが必要になります。
 
 PHPunitヘルパーファイル
 ------------------------
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the
-file in your tests/ directory as TestHelper.php.
-
-
-
+ヘルパーファイルは、テスト実行のためにアプリケーションを立ち上げます。以下のサンプルファイルを、tests/ ディレクトリに TestHelper.php として保存してください。
 
 .. code-block:: php
 
@@ -58,11 +53,11 @@ file in your tests/ directory as TestHelper.php.
       ROOT_PATH . PATH_SEPARATOR . get_include_path()
   );
   
-  // required for phalcon/incubator
+  // phalcon/incubator のために必要
   include __DIR__ . "/../vendor/autoload.php";
   
-  // use the application autoloader to autoload the classes
-  // autoload the dependencies found in composer
+  // アプリケーションのオートローダを使用してクラスをオートロードする
+  // composerの依存関係をオートロードする
   $loader = new \Phalcon\Loader();
   
   $loader->registerDirs(array(
@@ -74,25 +69,23 @@ file in your tests/ directory as TestHelper.php.
   $di = new FactoryDefault();
   DI::reset();
   
-  // add any needed services to the DI here
+  // 必要なサービスをDIに登録する
   
   DI::setDefault($di);
 
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your
-main application.
+独自ライブラリのコンポーネントをテストするなら、それらをオートローダーに登録するか、アプリケーション本体のオートローダを使用してください。
 
-To help you build the unit tests, we made a few abstract classes you can use to bootstrap the unit tests themselves.
-These files exist in the Phalcon incubator @ https://github.com/phalcon/incubator.
+ユニットテストの作成を助けるため、ユニットテスト自体を立ち上げる抽象クラスを用意しました。これらのファイルは https://github.com/phalcon/incubator にあるPhalcon incubatorの中にあります。
 
-You can use the incubator library by adding it as a dependency:
+incubatorライブラリを使うには以下のcomposerコマンドで追加します:
 
 .. code-block:: bash
 
   composer require phalcon/incubator
 
 
-or by manually adding it to composer.json:
+あるいは、composer.json に以下の記述を追加します:
 
 .. code-block:: json
 
@@ -102,11 +95,11 @@ or by manually adding it to composer.json:
       }
   }
 
-You can also clone the repository using the repo link above.
+あるいは、リポジトリを上のリンクからgitでcloneすることもできます。
 
 PHPunit.xml ファイル
 -----------------
-Now, create a phpunit file:
+次に、phpunitの設定ファイルを作成します:
 
 .. code-block:: xml
 
@@ -127,18 +120,17 @@ Now, create a phpunit file:
       </testsuite>
   </phpunit>
   
-Modify the phpunit.xml to fit your needs and save it in tests/.
+phpunit.xml をお望みの設定に変更して、tests/ に保存します。
 
-This will run any tests under the tests/ directory. 
+この設定では、tests/ ディレクトリ配下の全てのテストが実行されます。
 
-unit test のサンプル
+ユニットテストのサンプル
 ----------------
-To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you
-need to do is create the files and phpunit will run the tests for you.
+ユニットテストを実行するには、それらを定義する必要があります。オートローダが必要なファイルを読み込むので、必要なことはテストケースを作成することだけです。そうすれば、PHPUnitがテストを実行してくれます。
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.
+この例には設定ファイルが含まれていませんが、多くのテストケースでは設定ファイルの読み込みが必要になります。UnitTestCaseファイルでDIに追加することができます。
 
-First create a base unit test called UnitTestCase.php in your /tests directory:
+はじめに、UnitTestCase.php という名前のユニットテストのベースとなるクラスを、/tests ディレクトリの下に作りましょう:
 
 .. code-block:: php
 
@@ -165,10 +157,10 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
   
       public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
   
-          // Load any additional services that might be required during testing
+          // テスト中に必要になる追加のサービスを読み込み
           $di = DI::getDefault();
   
-          // get any DI components here. If you have a config, be sure to pass it to the parent
+          // ここで必要なDIコンポーネントを取得する。config があるなら、それを parent に渡すことを忘れずに
   
           parent::setUp($di);
   
@@ -186,8 +178,7 @@ First create a base unit test called UnitTestCase.php in your /tests directory:
       }
   }
   
-It's always a good idea to seperate your Unit tests in namespaces. For this test we will create the namespace
-'Test'. So create a file called \tests\Test\UnitTest.php:
+ユニットテストを名前空間で分割することは、良い考えです。このテストのために、「Test」という名前空間を作りましょう。ファイルは \tests\Test\UnitTest.php という名前になります:
 
 .. code-block:: php
 
@@ -217,7 +208,7 @@ It's always a good idea to seperate your Unit tests in namespaces. For this test
   }
 
 
-Now when you execute 'phpunit' in your command-line from the \tests directory you will get the following output:
+いま、コマンドラインから \tests ディレクトリに入って「phpunit」コマンドを実行すると、以下の出力が得られます:
 
 .. code-block:: bash
 
@@ -244,7 +235,6 @@ Now when you execute 'phpunit' in your command-line from the \tests directory yo
   FAILURES!
   Tests: 1, Assertions: 2, Failures: 1.
   
-Now you can start building your unit tests. You can view a good guide here (we also recommend reading the
-PHPunit documentation if you're not familiar with PHPunit):
+これで、ユニットテストを作り始めることができます。以下のリンク先に、優れたガイドがあります(PHPUnitに慣れていないなら、PHPUnitのドキュメントをあわせて読むことをおすすめします):
 
 http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/

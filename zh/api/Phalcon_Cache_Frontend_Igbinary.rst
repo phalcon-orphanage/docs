@@ -12,14 +12,14 @@ Allows to cache native PHP data in a serialized form using igbinary extension
     <?php
 
     // Cache the files for 2 days using Igbinary frontend
-    $frontCache = new Phalcon\Cache\Frontend\Igbinary(array(
+    $frontCache = new \Phalcon\Cache\Frontend\Igbinary(array(
     	"lifetime" => 172800
     ));
     
     // Create the component that will cache "Igbinary" to a "File" backend
     // Set the cache file directory - important to keep the "/" at the end of
     // of the value for the folder
-    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+    $cache = new \Phalcon\Cache\Backend\File($frontCache, array(
     	"cacheDir" => "../app/cache/"
     ));
     
@@ -46,51 +46,51 @@ Allows to cache native PHP data in a serialized form using igbinary extension
 Methods
 -------
 
-public *string*  **beforeStore** (*mixed* $data)
-
-Serializes data before storing them
-
-
-
-public *mixed*  **afterRetrieve** (*mixed* $data)
-
-Unserializes data after retrieval
-
-
-
-public  **__construct** ([*array* $frontendOptions]) inherited from Phalcon\\Cache\\Frontend\\Data
+public  **__construct** ([*unknown* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Data constructor
 
 
 
-public *int*  **getLifetime** () inherited from Phalcon\\Cache\\Frontend\\Data
+public *integer*  **getLifetime** ()
 
-Returns cache lifetime
+Returns the cache lifetime
 
 
 
-public *boolean*  **isBuffering** () inherited from Phalcon\\Cache\\Frontend\\Data
+public *boolean*  **isBuffering** ()
 
 Check whether if frontend is buffering output
 
 
 
-public  **start** () inherited from Phalcon\\Cache\\Frontend\\Data
+public  **start** ()
 
 Starts output frontend. Actually, does nothing
 
 
 
-public *string*  **getContent** () inherited from Phalcon\\Cache\\Frontend\\Data
+public *string*  **getContent** ()
 
 Returns output cached content
 
 
 
-public  **stop** () inherited from Phalcon\\Cache\\Frontend\\Data
+public  **stop** ()
 
 Stops output frontend
+
+
+
+public *string*  **beforeStore** (*unknown* $data)
+
+Serializes data before storing them
+
+
+
+public *mixed*  **afterRetrieve** (*unknown* $data)
+
+Unserializes data after retrieval
 
 
 

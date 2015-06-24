@@ -147,6 +147,7 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
 
     use Phalcon\Loader;
     use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\ModuleDefinitionInterface;
 
@@ -174,24 +175,22 @@ Each directory in apps/ have its own MVC structure. A Module.php is present to c
         /**
          * Register specific services for the module
          */
-        public function registerServices($di)
+        public function registerServices(DiInterface $di)
         {
-
-            //Registering a dispatcher
+            // Registering a dispatcher
             $di->set('dispatcher', function() {
                 $dispatcher = new Dispatcher();
                 $dispatcher->setDefaultNamespace("Multiple\Backend\Controllers");
                 return $dispatcher;
             });
 
-            //Registering the view component
+            // Registering the view component
             $di->set('view', function() {
                 $view = new View();
                 $view->setViewsDir('../apps/backend/views/');
                 return $view;
             });
         }
-
     }
 
 A special bootstrap file is required to load the a multi-module MVC architecture:
@@ -206,7 +205,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     $di = new FactoryDefault();
 
-    //Specify routes for modules
+    // Specify routes for modules
     $di->set('router', function () {
 
         $router = new Router();
@@ -235,7 +234,7 @@ A special bootstrap file is required to load the a multi-module MVC architecture
 
     try {
 
-        //Create an application
+        // Create an application
         $application = new Application($di);
 
         // Register the installed modules
@@ -252,10 +251,10 @@ A special bootstrap file is required to load the a multi-module MVC architecture
             )
         );
 
-        //Handle the request
+        // Handle the request
         echo $application->handle()->getContent();
 
-    } catch(\Exception $e){
+    } catch (\Exception $e) {
         echo $e->getMessage();
     }
 
@@ -268,10 +267,10 @@ module:
 
     use Phalcon\Mvc\View;
 
-    //Creating a view component
+    // Creating a view component
     $view = new View();
 
-    //Set options to view component
+    // Set options to view component
     //...
 
     // Register the installed modules
@@ -377,7 +376,7 @@ If you do not wish to use :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Ap
     // Pass the output of the view to the response
     $response->setContent($view->getContent());
 
-    // Send the request headers
+    // Send the response headers
     $response->sendHeaders();
 
     // Print the response
@@ -405,13 +404,13 @@ it suitable for Rest APIs:
     // Dispatch the request
     $dispatcher->dispatch();
 
-    //Get the returned value by the latest executed action
+    // Get the returned value by the latest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the response
         $response->send();
     }
 
@@ -440,7 +439,7 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
     } catch (Exception $e) {
 
-        //An exception has occurred, dispatch some controller/action aimed for that
+        // An exception has occurred, dispatch some controller/action aimed for that
 
         // Pass the processed router parameters to the dispatcher
         $dispatcher->setControllerName('errors');
@@ -448,16 +447,15 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
         // Dispatch the request
         $dispatcher->dispatch();
-
     }
 
-    //Get the returned value by the latest executed action
+    // Get the returned value by the latest executed action
     $response = $dispatcher->getReturnedValue();
 
-    //Check if the action returned is a 'response' object
+    // Check if the action returned is a 'response' object
     if ($response instanceof Phalcon\Http\ResponseInterface) {
 
-        //Send the request
+        // Send the response
         $response->send();
     }
 

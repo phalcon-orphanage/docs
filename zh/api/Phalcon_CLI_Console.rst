@@ -1,7 +1,7 @@
-Class **Phalcon\\CLI\\Console**
+Class **Phalcon\\Cli\\Console**
 ===============================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 This component allows to create CLI applications using Phalcon
 
@@ -11,11 +11,11 @@ Methods
 
 public  **__construct** ([*unknown* $dependencyInjector])
 
-Phalcon\\CLI\\Console constructor
+Phalcon\\Cli\\Console constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -27,7 +27,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager)
+public  **setEventsManager** (*unknown* $eventsManager)
 
 Sets the events manager
 
@@ -39,7 +39,7 @@ Returns the internal event manager
 
 
 
-public  **registerModules** (*array* $modules)
+public  **registerModules** (*unknown* $modules)
 
 Register an array of modules present in the console 
 
@@ -61,7 +61,7 @@ Register an array of modules present in the console
 
 
 
-public  **addModules** (*array* $modules)
+public  **addModules** (*unknown* $modules)
 
 Merge modules with the existing ones 
 
@@ -69,7 +69,7 @@ Merge modules with the existing ones
 
     <?php
 
-    $application->addModules(array(
+    application->addModules(array(
     	'admin' => array(
     		'className' => 'Multiple\Admin\Module',
     		'path' => '../apps/admin/Module.php'
@@ -85,21 +85,15 @@ Return the modules registered in the console
 
 
 
-public *mixed*  **handle** ([*array* $arguments])
+public *mixed*  **handle** ([*unknown* $arguments])
 
-Handle the command-line arguments. 
+Handle the whole command-line tasks
 
-.. code-block:: php
 
-    <?php
 
-     	$arguments = array(
-     		'task' => 'taskname',
-     		'action' => 'action',
-     		'params' => array('parameter1', 'parameter2')
-     	);
-     	$console->handle($arguments);
+public  **setArgument** ([*unknown* $arguments], [*unknown* $str], [*unknown* $shift])
 
+Set an specific argument
 
 
 

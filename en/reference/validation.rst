@@ -148,7 +148,6 @@ The following example explains how to create additional validators for this comp
 
             return true;
         }
-
     }
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
@@ -307,7 +306,6 @@ cancelled:
         {
             //... add additional messages or perform more validations
         }
-
     }
 
 Cancelling Validations
@@ -348,10 +346,10 @@ If you are creating custom validators you can dynamically stop the validation ch
 
     <?php
 
+    use Phalcon\Validation;
     use Phalcon\Validation\Message;
     use Phalcon\Validation\Validator;
     use Phalcon\Validation\ValidatorInterface;
-
 
     class MyValidator extends Validator implements ValidatorInterface
     {
@@ -363,7 +361,7 @@ If you are creating custom validators you can dynamically stop the validation ch
          * @param string $attribute
          * @return boolean
          */
-        public function validate($validator, $attribute)
+        public function validate(Validation $validator, $attribute)
         {
             // If the attribute value is name we must stop the chain
             if ($attribute == 'name') {
@@ -372,5 +370,25 @@ If you are creating custom validators you can dynamically stop the validation ch
 
             //...
         }
-
     }
+
+Avoid validate empty values
+===========================
+You can pass the option 'allowEmpty' to all the built-in validators to avoid the
+validation to be performed if an empty value is passed:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+
+    $validation = new Validation();
+
+    $validation
+        ->add('telephone', new Regex(array(
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/',
+            'allowEmpty' => true
+        )));

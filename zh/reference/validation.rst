@@ -7,10 +7,11 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
     $validation->add('name', new PresenceOf(array(
         'message' => 'The name is required'
@@ -41,9 +42,9 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
 
     <?php
 
-    use Phalcon\Validation,
-        Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Email;
+    use Phalcon\Validation\Validator\PresenceOf;
 
     class MyValidation extends Validation
     {
@@ -81,25 +82,25 @@ Phalcon\\Validation对Phalcon来说是一个相对独立的组件，它可以对
 Phalcon的验证组件中内置了一些验证器：
 
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| 名称         | 解释                               |  示例                                                             |
+| 名称         | 解释                                |  示例                                                             |
 +==============+====================================+===================================================================+
-| PresenceOf   |  检测字段的值是否为非空            | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
+| PresenceOf   |  检测字段的值是否为非空               | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`   |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| Identical    |  检测字段的值是否和指定的相同      | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
+| Identical    |  检测字段的值是否和指定的相同          | :doc:`Example <../api/Phalcon_Validation_Validator_Identical>`    |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| Email        |  检测值是否为合法的email地址       | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
+| Email        |  检测值是否为合法的email地址          | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`        |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| ExclusionIn  |  检测值是否不在列举的范围内        | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
+| ExclusionIn  |  检测值是否不在列举的范围内           | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>`  |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| InclusionIn  |  检测值是否在列举的范围内          | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
+| InclusionIn  |  检测值是否在列举的范围内             | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>`  |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| Regex        |  检测值是否匹配正则表达式          | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
+| Regex        |  检测值是否匹配正则表达式             | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`        |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| StringLength |  检测值的字符串长度                | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
+| StringLength |  检测值的字符串长度                  | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>` |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| Between      |  检测值是否位于两个值之间          | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
+| Between      |  检测值是否位于两个值之间             | :doc:`Example <../api/Phalcon_Validation_Validator_Between>`      |
 +--------------+------------------------------------+-------------------------------------------------------------------+
-| Confirmation |  检测两个值是否相等                | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
+| Confirmation |  检测两个值是否相等                  | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+------------------------------------+-------------------------------------------------------------------+
 
 下面的例子中展示了如何创建自定义的验证器：
@@ -108,9 +109,9 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
 
     class IpValidator extends Validator implements ValidatorInterface
     {
@@ -126,7 +127,7 @@ Phalcon的验证组件中内置了一些验证器：
         {
             $value = $validator->getValue($attribute);
 
-            if (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
@@ -171,7 +172,9 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
-    class MyValidation extends Phalcon\Validation
+    use Phalcon\Validation;
+
+    class MyValidation extends Validation
     {
 
         public function initialize()
@@ -227,7 +230,9 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
-    $validation = new Phalcon\Validation();
+    use Phalcon\Validation;
+
+    $validation = new Validation();
 
     $validation
         ->add('name', new PresenceOf(array(
@@ -301,10 +306,11 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
-    use Phalcon\Validation\Validator\PresenceOf,
-        Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation;
+    use Phalcon\Validation\Validator\Regex;
+    use Phalcon\Validation\Validator\PresenceOf;
 
-    $validation = new Phalcon\Validation();
+    $validation = new Validation();
 
     $validation
         ->add('telephone', new PresenceOf(array(
@@ -316,7 +322,7 @@ Phalcon的验证组件中内置了一些验证器：
             'pattern' => '/\+44 [0-9]+/'
         )))
         ->add('telephone', new StringLength(array(
-            'minimumMessage' => 'The telephone is too short',
+            'messageMinimum' => 'The telephone is too short',
             'min' => 2
         )));
 
@@ -328,9 +334,10 @@ Phalcon的验证组件中内置了一些验证器：
 
     <?php
 
-    use Phalcon\Validation\Validator,
-        Phalcon\Validation\ValidatorInterface,
-        Phalcon\Validation\Message;
+    use Phalcon\Validation\Message;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
+
 
     class MyValidator extends Validator implements ValidatorInterface
     {
@@ -353,4 +360,3 @@ Phalcon的验证组件中内置了一些验证器：
         }
 
     }
-

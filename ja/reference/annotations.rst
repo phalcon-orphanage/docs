@@ -1,9 +1,8 @@
 アノテーション パーサー
 ==================
-It is the first time that an annotations parser component is written in C for the PHP world. Phalcon\\Annotations is
-a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+アノテーションのパーサーがCで実装されたのは、PHPの世界では初めてのことです。Phalcon\\Annotations は、汎用的なコンポーネントで、アプリケーションで使われるPHPのクラスのアノテーションをパースしてキャッシュしておくことが、簡単にできます。
 
-Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
+アノテーションはクラス、メソッド、プロパティのコメントブロックから読み込まれます。アノテーションはコメントブロック内のどこにでも配置することができます：
 
 .. code-block:: php
 
@@ -36,11 +35,11 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 
     }
 
-In the above example we find some annotations in the comments, an annotation has the following syntax:
+上記サンプルのコメント内にいくつかのアノテーションが見られます。アノテーションのシンタックスは以下のようになります :
 
 @Annotation-Name[(param1, param2, ...)]
 
-Also, an annotation could be placed at any part of a docblock:
+また、アノテーションはコメントブロックの一部として配置することができます：
 
 .. code-block:: php
 
@@ -56,7 +55,7 @@ Also, an annotation could be placed at any part of a docblock:
      * @AnotherSpecialFeature(true)
      */
 
-The parser is highly flexible, the following docblock is valid:
+パーサーは柔軟性が高いため、以下のようなコメントブロックも有効です:
 
 .. code-block:: php
 
@@ -69,7 +68,7 @@ The parser is highly flexible, the following docblock is valid:
      })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
      **/
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+但し、メンテナンス性、可読性を高めたコードを書くために、コメントブロックの最後にアノテーションすることをお奨めします：
 
 .. code-block:: php
 
@@ -83,9 +82,9 @@ However, to make the code more maintainable and understandable it is recommended
      * @AnotherSpecialFeature(true)
      */
 
-Reading Annotations
+アノテーションの読み取り
 -------------------
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+reflectorは、オブジェクト指向のインターフェースでクラスのアノテーションを簡単に読み取れるよう、実装されています:
 
 .. code-block:: php
 
@@ -93,35 +92,32 @@ A reflector is implemented to easily get the annotations defined on a class usin
 
     $reader = new \Phalcon\Annotations\Adapter\Memory();
 
-    //Reflect the annotations in the class Example
+    //Exampleクラスのアノテーションをリフレクションする
     $reflector = $reader->get('Example');
 
-    //Read the annotations in the class' docblock
+    //クラスのコメントブロックのアノテーションを読み取り
     $annotations = $reflector->getClassAnnotations();
 
-    //Traverse the annotations
+    //アノテーションをトラバースする
     foreach ($annotations as $annotation) {
 
-        //Print the annotation name
+        //アノテーション名を表示する
         echo $annotation->getName(), PHP_EOL;
 
-        //Print the number of arguments
+        //引数の数を表示する
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //Print the arguments
+        //引数を表示する
         print_r($annotation->getArguments());
     }
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter.
-Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+アノテーションを読み取る処理は非常に高速ですが、パフォーマンス上の理由から、アダプタを使用してパースしたアノテーションを保存しておくことが推奨されます。アダプタは処理後のアノテーションをキャッシュし、何度もアノテーションを読み取らなくても良いようにします。
 
-:doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` was used in the above example. This adapter
-only caches the annotations while the request is running, for this reason th adapter is more suitable for development. There are
-other adapters to swap out when the application is in production stage.
+上記サンプルでは、 :doc:`Phalcon\\Annotations\\Adapter\\Memory <../api/Phalcon_Annotations_Adapter_Memory>` が使用されています。このアダプタはリクエストの間にだけ、キャッシュを行います。そのため、このアダプタは開発用に適しています。本番環境では、他のアダプタを使ってキャッシュを行うこともできます。
 
 アノテーションの種類
 --------------------
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+アノテーションは、パラメータを持つこともあれば持たないこともあります。パラメータには、単純なリテラル(文字列、数値、真偽値、null)、配列、連想配列、別のアノテーション、があります:
 
 .. code-block:: php
 
@@ -178,13 +174,11 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 実用的な使用法
 ---------------
-Next we will explain some practical examples of annotations in PHP applications:
+次に、PHPのアプリケーションでの、アノテーションの実用的な使用例を説明します:
 
 アノテーションでのキャッシュの有効化
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Let's pretend we've the following controller and the developer wants to create a plugin that automatically start the
-cache if the latest action executed is marked as cacheable. First off all we register a plugin in the Dispatcher service
-to be notified when a route is executed:
+以下のコントローラーがあり、開発者は直近に実行されたアクションがキャッシュ可能だとマーキングされた場合は、自動的にキャッシュを開始するプラグインを作成しようとしている、と想定してみましょう。最初に、プラグインをディスパッチャに登録して、ルートの実行を通知されるようにします:
 
 .. code-block:: php
 
@@ -194,7 +188,7 @@ to be notified when a route is executed:
 
         $eventsManager = new \Phalcon\Events\Manager();
 
-        //Attach the plugin to 'dispatch' events
+        //プラグインを「dispatch」イベントに紐付け
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
         $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -202,7 +196,7 @@ to be notified when a route is executed:
         return $dispatcher;
     };
 
-CacheEnablerPlugin is a plugin that intercept every action executed in the dispatcher enabling the cache if needed:
+CacheEnablerPluginはディスパッチャで実行された全てのアクションに割り込み、必要に応じてキャッシュを有効化します:
 
 .. code-block:: php
 
@@ -222,29 +216,29 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
         public function beforeExecuteRoute($event, $dispatcher)
         {
 
-            //Parse the annotations in the method currently executed
+            //現在実行中のメソッドのアノテーションをパースする
             $annotations = $this->annotations->getMethod(
                 $dispatcher->getActiveController(),
                 $dispatcher->getActiveMethod()
             );
 
-            //Check if the method has an annotation 'Cache'
+            //メソッドに「Cache」というアノテーションがあるか確認する
             if ($annotations->has('Cache')) {
 
-                //The method has the annotation 'Cache'
+                //メソッドに「Cache」というアノテーションがある場合
                 $annotation = $annotations->get('Cache');
 
-                //Get the lifetime
+                //キャッシュの有効期限を取得
                 $lifetime = $annotation->getNamedParameter('lifetime');
 
                 $options = array('lifetime' => $lifetime);
 
-                //Check if there is an user defined cache key
+                //ユーザーが定義したキャッシュのキーがあるか確認する
                 if ($annotation->hasNamedParameter('key')) {
                     $options['key'] = $annotation->getNamedParameter('key');
                 }
 
-                //Enable the cache for the current method
+                //現在のメソッドのキャッシュを有効にする
                 $this->view->cache($options);
             }
 
@@ -252,7 +246,7 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
 
     }
 
-Now, we can use the annotation in a controller:
+これで、コントローラーでアノテーションを使えるようになりました:
 
 .. code-block:: php
 
@@ -290,15 +284,14 @@ Now, we can use the annotation in a controller:
 
 レンダリングするテンプレートの選択
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must me rendered
-once the action has been executed:
+この例では、アノテーションを使って、 :doc:`Phalcon\\Mvc\\View\\Simple <views>` にどのテンプレートをレンダリングすべきか伝えます:
 
 
 
 
 アノテーションアダプタ
 --------------------
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or prodiving facilities to development/testing:
+このコンポーネントはアダプタを利用して、パースした処理済みのアノテーションをキャッシュすることができ、パフォーマンスを向上させ開発・テストを便利にします:
 
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Name       | Description                                                                                                                                                                                                                          | API                                                                                      |
@@ -312,10 +305,9 @@ This component makes use of adapters to cache or no cache the parsed and process
 | XCache     | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                                                                        | :doc:`Phalcon\\Annotations\\Adapter\\Xcache <../api/Phalcon_Annotations_Adapter_Xcache>` |
 +------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-独自アダプタの実装
+独自のアダプタを実装する
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The :doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` interface must be implemented in order to create your own
-annotations adapters or extend the existing ones.
+:doc:`Phalcon\\Annotations\\AdapterInterface <../api/Phalcon_Annotations_AdapterInterface>` インターフェースを実装することで、独自のアノテーションアダプタを作成したり、既存のものを継承したりできます。
 
 外部資料
 ------------------
