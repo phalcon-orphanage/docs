@@ -3,7 +3,7 @@ Database Migrations
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
 .. highlights::
-    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.3.5 to use developer tools. Also is recommended to have PHP 5.3.6 or greater installed.
+    **Important:** Migrations are available on :doc:`Phalcon Developer Tools <tools>` You need at least Phalcon Framework version 0.5.0 to use developer tools. Also is recommended to have PHP 5.4 or greater installed.
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -12,7 +12,7 @@ When a migration is generated a set of classes are created to describe how your 
 .. raw:: html
 
     <div align="center">
-    <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
 Schema Dumping
@@ -40,7 +40,7 @@ By default :doc:`Phalcon Developer Tools <tools>` use the *app/migrations* direc
 
 Migration Class Anatomy
 -----------------------
-Each file contains a unique class that extends the :doc:`Phalcon_Model_Migration <../api/Phalcon_Model_Migration>`. These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back.
+Each file contains a unique class that extends the Phalcon\\Mvc\\Model\\Migration These classes normally have two methods: up() and down(). Up() performs the migration, while down() rolls it back.
 
 Up() also contains the *magic* method morphTable(). The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
 
@@ -48,11 +48,11 @@ Up() also contains the *magic* method morphTable(). The magic comes when it reco
 
     <?php
 
-    use Phalcon_Db_Column as Column;
-    use Phalcon_Db_Index as Index;
-    use Phalcon_Db_Reference as Reference;
+    use Phalcon\Db\Column as Column;
+    use Phalcon\Db\Index as Index;
+    use Phalcon\Db\Reference as Reference;
 
-    class ProductsMigration_100 extends Phalcon_Model_Migration
+    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
     {
 
         public function up()
@@ -150,7 +150,7 @@ The class is called "ProductsMigration_100". Suffix 100 refers to the version 1.
 
 Defining Columns
 ^^^^^^^^^^^^^^^^
-:doc:`Phalcon_Db_Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
+:doc:`Phalcon\\Db\\Column <../api/Phalcon_Db_Column>` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
 +-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------+
 | Option          | Description                                                                                                                                | Optional |
@@ -174,21 +174,21 @@ Defining Columns
 
 Database migrations support the following database column types:
 
-* Phalcon_Db_Column::TYPE_INTEGER
-* Phalcon_Db_Column::TYPE_DATE
-* Phalcon_Db_Column::TYPE_VARCHAR
-* Phalcon_Db_Column::TYPE_DECIMAL
-* Phalcon_Db_Column::TYPE_DATETIME
-* Phalcon_Db_Column::TYPE_CHAR
-* Phalcon_Db_Column::TYPE_TEXT
+* Phalcon\\Db\\Column::TYPE_INTEGER
+* Phalcon\\Db\\Column::TYPE_DATE
+* Phalcon\\Db\\Column::TYPE_VARCHAR
+* Phalcon\\Db\\Column::TYPE_DECIMAL
+* Phalcon\\Db\\Column::TYPE_DATETIME
+* Phalcon\\Db\\Column::TYPE_CHAR
+* Phalcon\\Db\\Column::TYPE_TEXT
 
 Defining Indexes
 ^^^^^^^^^^^^^^^^
-:doc:`Phalcon_Db_Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
+:doc:`Phalcon\\Db\\Index <../api/Phalcon_Db_Index>` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index in that table.
 
 Defining References
 ^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon_Db_Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
+:doc:`Phalcon\\Db\\Reference <../api/Phalcon_Db_Reference>` defines table references (also called foreign keys). The following options can be used to define a reference:
 
 +---------------------+-----------------------------------------------------------------------------------------------------+----------+
 | Index               | Description                                                                                         | Optional |
@@ -210,7 +210,7 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 
     <?php
 
-    class ProductsMigration_100 extends Phalcon_Model_Migration
+    class ProductsMigration_100 extends \Phalcon\Mvc\Model\Migration
     {
 
         public function up()

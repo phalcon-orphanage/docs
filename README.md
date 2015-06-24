@@ -1,8 +1,8 @@
-# Phalcon PHP Framework Documentation
+# Phalcon Framework Documentation
 
 ## Welcome
 
-This is the repository for the Phalcon PHP documentation. Our documentation is
+This is the repository for the Phalcon documentation. Our documentation is
 hosted on Read The Docs (http://www.readthedocs.org) which is automatically
 updated when any changes are made to this repository.
 
@@ -11,16 +11,9 @@ documentation yourselves.
 
 The documentation language is reStructuredText (http://sphinx.pocoo.org/rest.html)
 
-## Installing Sphinx
+# API
+The API is automatically generated from the C sources using the following command:
 
-If you have already installed Python, just execute the following command:
+    php scripts/gen-api.php
 
-    easy_install -U Sphinx
-
-## Compiling the docs
-
-If you have installed Sphinx, enter the en/ directory and type:
-
-    make html
-
-The _build directory is produced, open it on your browser: http://localhost/docs/_build/html/ 
+If you find an error or want to improve it, please send a pull request to https://github.com/phalcon/cphalcon

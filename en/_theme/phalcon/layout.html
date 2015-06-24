@@ -1,13 +1,14 @@
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock %}
+
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set url_root = pathto('', 1) %}
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 
 {%- macro relbar() %}
-    <div class="related">      
+    <div class="related">
       <ul>
         {%- for rellink in rellinks %}
         <li class="right" {% if loop.first %}{% endif %}>
@@ -16,7 +17,7 @@
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
         {%- endfor %}
         {%- block rootrellink %}
-        <li><a href="http://www.phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
         <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
         {%- endblock %}
         {%- for parent in parents %}
@@ -28,16 +29,16 @@
 {%- endmacro %}
 
 {%- macro downrelbar() %}
-    <div class="related">      
+    <div class="related">
       <ul>
         {%- for rellink in rellinks %}
         <li class="right" {% if loop.first %}{% endif %}>
           <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags }}"
              {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
           {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
-        {%- endfor %}        
+        {%- endfor %}
         {%- for parent in parents %}
-          <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+          <li class="right"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
         {%- endfor %}
         {%- block relbardownitems %} {% endblock %}
       </ul>
@@ -49,29 +50,30 @@
       <td class="primary-box" width="25%" valign="top">
           {%- block sidebarlogo %}
           {%- if logo %}
-            <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
-            </a></p>
+            <!--<p class="logo"><a href="{{ pathto(master_doc) }}">
+              <img class="logo" src="http://new.phalconphp.ru/images/logo.png" alt="Logo"/> PHALCON
+            </a></p>-->
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsearch %}
           {%- if pagename != "search" %}
-            {% if versions %}
-                <h3>Project Versions</h3>
-
-                <select name="versions" id="versions">
-            {% for slug, url in versions %}
-            <option value="http://readthedocs.org{{ url }}">{{ slug }}</option>
-            {% endfor %}
-                </select>
-            {% endif %}
+            <div>
             <div id="searchbox" style="">
-              <h3>Search</h3>
-                <form class="search" action="http://readthedocs.org/search/project/" method="get">
-                  <input type="text" name="q" size="18">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
                   <input type="submit" value="Go">
                   <input type="hidden" name="selected_facets" value="project:{{ name }}">
-                </form>
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
             </div>
           {%- endif %}
           {%- endblock %}
@@ -84,21 +86,18 @@
           {%- block sidebarrel %}
           {%- if prev %}
             <h4>{{ _('Previous topic') }}</h4>
-            <p class="topless"><a href="{{ prev.link|e }}"
-                                  title="{{ _('previous chapter') }}">{{ prev.title }}</a></p>
+            <p class="topless"><a href="{{ prev.link|e }}" title="{{ _('previous chapter') }}">&lt; {{ prev.title }}</a></p>
           {%- endif %}
           {%- if next %}
             <h4>{{ _('Next topic') }}</h4>
-            <p class="topless"><a href="{{ next.link|e }}"
-                                  title="{{ _('next chapter') }}">{{ next.title }}</a></p>
+            <p class="topless"><a href="{{ next.link|e }}" title="{{ _('next chapter') }}">{{ next.title }} &gt;</a></p>
           {%- endif %}
           {%- endblock %}
           {%- block sidebarsourcelink %}
           {%- if show_source and has_source and sourcename %}
             <h3>{{ _('This Page') }}</h3>
             <ul class="this-page-menu">
-              <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}"
-                     rel="nofollow">{{ _('Show Source') }}</a></li>
+              <li><a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow">{{ _('Show Source') }}</a></li>
             </ul>
           {%- endif %}
           {%- endblock %}
@@ -122,17 +121,26 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
-    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/configurationblock.css', 1) }}" type="text/css" />
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
     <!--
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/layout.css', 1) }}" type="text/css" />
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
     -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Rosario" type="text/css">
-    <!-- link rel="stylesheet" href="http://phalconphp.com/css/s.css" type="text/css" -->
-    <link rel="stylesheet" href="{{ pathto('_static/s.css', 1) }}" type="text/css">    
-    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css">    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/docs.css', 1) }}" type="text/css" />
+
     {%- if not embedded %}
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -144,23 +152,8 @@
       };
     </script>
 
-    <!--<script type="text/javascript" src="{{ pathto('_static/jquery.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/underscore.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/doctools.js', 1) }}"></script>
-    <script type="text/javascript" src="{{ pathto('_static/configurationblock.js', 1) }}"></script>-->
-
-    <script type="text/javascript">
-    <!--
-        $(document).ready(function() {
-            $("#versions").change(function() {
-                var docsUrl = $(this).val();
-                window.location.href = docsUrl;
-            });
-        });
-    -->
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ pathto('_static/docs.js', 1) }}"></script>
 
     {%- if use_opensearch %}
     <link rel="search" type="application/opensearchdescription+xml"
@@ -174,7 +167,7 @@
     <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
     {%- endif %}
     {%- if hasdoc('genindex') %}
-    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('index') }}" />
     {%- endif %}
     {%- if hasdoc('search') %}
     <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
@@ -196,23 +189,43 @@
 {%- block extrahead %} {% endblock %}
   </head>
   <body>
-    <div id="wrapper">
 
-      <div id="header">        
-        <h1><a href="http://phalconphp.com/index" ><img border="0" src="{{ pathto('_static/img/logo-small.png', 1) }}"></a></h1>
-        <div align="center">
-          <div id="nav-main" role="navigation">
-            <div class="menubar">
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/index" >HOME</a></div>
-              <div class="nav-main-features nav-first"><a href="http://phalconphp.com/download" >DOWNLOAD</a></div>
-              <div class="nav-main-features"><a href="http://docs.phalconphp.com" >DOCUMENTATION</a></div>
-              <div class="nav-main-features"><a href="http://phalconphp.com/support" >SUPPORT</a></div>
-              <div class="nav-main-features nav-first"><a href="https://github.com/phalcon/cphalcon">GITHUB</a></div>
-              <div class="nav-main-features"><a target="blog" href="http://blog.phalconphp.com/">BLOG</a></div>
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
             </div>
-          </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="http://phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="http://blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="//ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
 
       {%- block header %}{% endblock %}
 
@@ -220,48 +233,124 @@
 
       {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
 
-      <table width="90%" align="center">
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
         <tr>
           {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
-          <td class="second-box" valign="top">  
+          <td class="second-box" valign="top">
             <div class="document">
             {%- block document %}
                 <div class="documentwrapper">
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
                   <div class="bodywrapper">
                 {%- endif %}{% endif %}
-                <div class="body" {% if theme_nosidebar|tobool %}style="margin: auto;"{% endif %}>
+                    <div class="body" {% if theme_nosidebar|tobool %}style="margin: auto;"{% endif %}>
                       {% block body %} {% endblock %}
                     </div>
                 {%- if not embedded %}{% if not theme_nosidebar|tobool %}
                   </div>
                 {%- endif %}{% endif %}
                 </div>
-            {%- endblock %}          
+            {%- endblock %}
             </div>
-          </td>  
-        </tr>   
+          </td>
+        </tr>
       </table>
 
       {%- block relbar2 %}{{ downrelbar() }}{% endblock %}
-              
+
       {%- block footer %}
-        <div id="footer">
-          {%- if hasdoc('copyright') %}
-             {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
-          {%- else %}
-             {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
-          {%- endif %}
-          {%- if last_updated %}
-             {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
-          {%- endif %}
-          {%- if show_sphinx %}
-            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
-          {%- endif %}
-        </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="icon-twitter"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="icon-facebook"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="icon-googleplus"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="icon-github"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+
+</div>
+<footer class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-4 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="//phalconphp.com/download">Installing Phalcon</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="http://api.phalconphp.com">API</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-4 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                  <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                  <li><a href="http://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                  <li><a href="//phalconphp.com/en/testimonials">Testimonials</a></li>
+                  <li><a href="//builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                  <li><a href="http://store.phalconphp.com/">Store</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><a href="//phalconphp.com/en/team">Team</a></li>
+                  <li><a href="//phalconphp.com/en/roadmap">Roadmap</a></li>
+                  <li><a href="//phalconphp.com/en/donate">Donate</a></li>
+                  <li><a href="//phalconphp.com/en/consulting">Consulting</a></li>
+                  <li><a href="//phalconphp.com/en/hosting">Hosting</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a><br>
+                  Need support or have questions? Check our <a href="http://forum.phalconphp.com">Forum</a><br>
+                  <br>
+
+                  Phalcon Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                    <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+
+                <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
       {%- endblock %}
 
     </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
 
   </body>
 </html>
