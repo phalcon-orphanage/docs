@@ -111,7 +111,7 @@ Same links generated with Volt:
     {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
 
     <!-- for a named route with class -->
-    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class'=>'edit-btn') }}
+    {{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show','class':'edit-btn') }}
 
 Creating Forms
 --------------
