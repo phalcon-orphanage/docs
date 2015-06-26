@@ -15,7 +15,7 @@ This component is designed to initially work in memory. This provides ease of us
 
     <?php
 
-    use Phalcon\Acl\Adapter\Memory as AcList;
+    use Phalcon\Acl\Adapter\Memory as AclList;
 
     $acl = new AclList();
 
