@@ -14,7 +14,7 @@ ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依�
 
     <?php
 
-    use Phalcon\Acl\Adapter\Memory as AcList;
+    use Phalcon\Acl\Adapter\Memory as AclList;
 
     $acl = new AclList();
     
