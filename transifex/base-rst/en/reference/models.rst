@@ -1796,7 +1796,7 @@
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
-        public function validate($model)
+        public function validate(EntityInterface $model)
         {
             $field = $this->getOption('field');
 

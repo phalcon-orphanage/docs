@@ -1849,7 +1849,7 @@ In addition to the built-in validators, you can create your own validators:
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
-        public function validate($model)
+        public function validate(EntityInterface $model)
         {
             $field  = $this->getOption('field');
 

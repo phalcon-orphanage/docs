@@ -1777,7 +1777,7 @@ Phalcon пытается получить сгенерированное зна�
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
-        public function validate($model)
+        public function validate(EntityInterface $model)
         {
             $field = $this->getOption('field');
 
