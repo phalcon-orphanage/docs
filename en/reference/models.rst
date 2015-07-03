@@ -1902,6 +1902,7 @@ In addition to the built-in validators, you can create your own validators:
 
     use Phalcon\Mvc\Model\Validator;
     use Phalcon\Mvc\Model\ValidatorInterface;
+    use Phalcon\Mvc\EntityInterface;
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
