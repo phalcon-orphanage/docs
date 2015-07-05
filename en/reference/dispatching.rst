@@ -400,36 +400,36 @@ before dispatch the action preparing the parameter accordingly:
 
     <?php
 
-    use Phalcon\Text;
+    use Phalcon\Mvc\Model;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
         $eventsManager->attach("dispatch:beforeDispatchLoop", function($event, $dispatcher) {
 
-            //Possible controller class name
-            $controllerName =   Text::camelize($dispatcher->getControllerName()) . 'Controller';
+            // Possible controller class name
+            $controllerName = $dispatcher->getControllerClass();
 
-            //Possible method name
-            $actionName = $dispatcher->getActionName() . 'Action';
+            // Possible method name
+            $actionName = $dispatcher->getActiveMethod();
 
             try {
 
-                //Get the reflection for the method to be executed
+                // Get the reflection for the method to be executed
                 $reflection = new \ReflectionMethod($controllerName, $actionName);
 
-                //Check parameters
+                // Check parameters
                 foreach ($reflection->getParameters() as $parameter) {
 
-                    //Get the expected model name
+                    // Get the expected model name
                     $className = $parameter->getClass()->name;
 
-                    //Check if the parameter expects a model instance
-                    if (is_subclass_of($className, 'Phalcon\Mvc\Model')) {
+                    // Check if the parameter expects a model instance
+                    if (is_subclass_of($className, Model::class)) {
 
                         $model = $className::findFirstById($dispatcher->getParams()[0]);
 
@@ -439,7 +439,7 @@ before dispatch the action preparing the parameter accordingly:
                 }
 
             } catch (\Exception $e) {
-                //An exception has occurred, maybe the class or action does not exist?
+                // An exception has occurred, maybe the class or action does not exist?
             }
 
         });
@@ -469,13 +469,13 @@ when the controller/action combination wasn't found:
 
     $di->set('dispatcher', function() {
 
-        //Create an EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        //Attach a listener
+        // Attach a listener
         $eventsManager->attach("dispatch:beforeException", function($event, $dispatcher, $exception) {
 
-            //Handle 404 exceptions
+            // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -484,11 +484,11 @@ when the controller/action combination wasn't found:
                 return false;
             }
 
-            //Alternative way, controller or action doesn't exist
+            // Alternative way, controller or action doesn't exist
             if ($event->getType() == 'beforeException') {
                 switch ($exception->getCode()) {
-                    case \Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case \Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                    case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
                         $dispatcher->forward(array(
                             'controller' => 'index',
                             'action'     => 'show404'
@@ -498,7 +498,7 @@ when the controller/action combination wasn't found:
             }
         });
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
 
         //Bind the EventsManager to the dispatcher
         $dispatcher->setEventsManager($eventsManager);
@@ -523,7 +523,7 @@ take actions when an exception is produced in the dispatch loop:
         public function beforeException(Event $event, Dispatcher $dispatcher, $exception)
         {
 
-            //Handle 404 exceptions
+            // Handle 404 exceptions
             if ($exception instanceof DispatchException) {
                 $dispatcher->forward(array(
                     'controller' => 'index',
@@ -532,7 +532,7 @@ take actions when an exception is produced in the dispatch loop:
                 return false;
             }
 
-            //Handle other exceptions
+            // Handle other exceptions
             $dispatcher->forward(array(
                 'controller' => 'index',
                 'action'     => 'show503'

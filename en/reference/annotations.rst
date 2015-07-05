@@ -91,24 +91,26 @@ A reflector is implemented to easily get the annotations defined on a class usin
 
     <?php
 
-    $reader = new \Phalcon\Annotations\Adapter\Memory();
+    use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
 
-    //Reflect the annotations in the class Example
+    $reader = new MemoryAdapter();
+
+    // Reflect the annotations in the class Example
     $reflector = $reader->get('Example');
 
-    //Read the annotations in the class' docblock
+    // Read the annotations in the class' docblock
     $annotations = $reflector->getClassAnnotations();
 
-    //Traverse the annotations
+    // Traverse the annotations
     foreach ($annotations as $annotation) {
 
-        //Print the annotation name
+        // Print the annotation name
         echo $annotation->getName(), PHP_EOL;
 
-        //Print the number of arguments
+        // Print the number of arguments
         echo $annotation->numberArguments(), PHP_EOL;
 
-        //Print the arguments
+        // Print the arguments
         print_r($annotation->getArguments());
     }
 
@@ -190,14 +192,17 @@ to be notified when a route is executed:
 
     <?php
 
+    use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+    use Phalcon\Events\Manager as EventsManager;
+
     $di['dispatcher'] = function() {
 
-        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager = new EventsManager();
 
         //Attach the plugin to 'dispatch' events
         $eventsManager->attach('dispatch', new CacheEnablerPlugin());
 
-        $dispatcher = new \Phalcon\Mvc\Dispatcher();
+        $dispatcher = new MvcDispatcher();
         $dispatcher->setEventsManager($eventsManager);
         return $dispatcher;
     };
@@ -208,11 +213,13 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
 
     <?php
 
+    use Phalcon\Mvc\User\Plugin;
+
     /**
      * Enables the cache for a view if the latest
      * executed action has the annotation @Cache
      */
-    class CacheEnablerPlugin extends \Phalcon\Mvc\User\Plugin
+    class CacheEnablerPlugin extends Plugin
     {
 
         /**
@@ -247,9 +254,7 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
                 //Enable the cache for the current method
                 $this->view->cache($options);
             }
-
         }
-
     }
 
 Now, we can use the annotation in a controller:
@@ -258,7 +263,9 @@ Now, we can use the annotation in a controller:
 
     <?php
 
-    class NewsController extends \Phalcon\Mvc\Controller
+    use Phalcon\Mvc\Controller;
+
+    class NewsController extends Controller
     {
 
         public function indexAction()
@@ -285,11 +292,71 @@ Now, we can use the annotation in a controller:
         {
             $this->view->article = Articles::findFirstByTitle($slug);
         }
-
     }
 
-Choose template to render
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Private/Public areas with Annotations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can use annotations to tell the acl what areas belongs to the admnistrative areas or not using annotations
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Acl;
+    use Phalcon\Acl\Role;
+    use Phalcon\Acl\Resource;
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Acl\Adapter\Memory as AclList;
+
+    /**
+     * SecurityAnnotationsPlugin
+     *
+     * This is the security plugin which controls that users only have access to the modules they're assigned to
+     */
+    class SecurityAnnotationsPlugin extends Plugin
+    {
+
+        /**
+         * This action is executed before execute any action in the application
+         *
+         * @param Event $event
+         * @param Dispatcher $dispatcher
+         */
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        {
+            // Possible controller class name
+            $controllerName = $dispatcher->getControllerClass();
+
+            // Possible method name
+            $actionName = $dispatcher->getActiveMethod();
+
+            // Get annotations in the controller class
+            $annotations = $this->annotations->get($controllerName);
+
+            // The controller is private?
+            if ($annotations->getClassAnnotations()->has('Private')) {
+
+                // Check if the session variable is active?
+                if (!$this->session->get('auth')) {
+
+                    // The user is no logged redirect to login
+                    $dispatcher->forward(array(
+                        'controller' => 'session',
+                        'action' => 'login'
+                    ));
+                    return false;
+                }
+            }
+
+            // Continue normally
+            return true;
+        }
+    }
+
+Choose the template to render
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this example we're going to use annotations to tell :doc:`Phalcon\\Mvc\\View\\Simple <views>` what template must be rendered
 once the action has been executed:
 

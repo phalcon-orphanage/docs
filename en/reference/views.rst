@@ -44,7 +44,7 @@ The dispatcher will look for a "PostsController" and its action "showAction". A 
         public function showAction($postId)
         {
             // Pass the $postId parameter to the view
-            $this->view->setVar("postId", $postId);
+            $this->view->postId = $postId;
         }
 
     }
@@ -101,7 +101,6 @@ next view level in the hierarchy of files. If all three view files are implement
             <h1>This is main layout!</h1>
 
             <?php echo $this->getContent() ?>
-
         </body>
     </html>
 
@@ -133,7 +132,6 @@ The generated HTML by the request will be:
             <h3>This is show view!</h3>
 
             <p>I have received the parameter 101</p>
-
         </body>
     </html>
 
@@ -287,7 +285,6 @@ This method can be invoked from the controller or from a superior view layer to 
             // Shows only the view related to the action
             $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         }
-
     }
 
 The available render levels are:
@@ -322,14 +319,13 @@ You can permanently or temporarily disable render levels. A level could be perma
 
         $view = new View();
 
-        //Disable several levels
+        // Disable several levels
         $view->disableLevel(array(
             View::LEVEL_LAYOUT      => true,
             View::LEVEL_MAIN_LAYOUT => true
         ));
 
         return $view;
-
     }, true);
 
 Or disable temporarily in some part of the application:
@@ -353,7 +349,6 @@ Or disable temporarily in some part of the application:
         {
             $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         }
-
     }
 
 Picking Views
@@ -408,7 +403,6 @@ avoiding unnecessary processing:
             //Disable the view to avoid rendering
             $this->view->disable();
         }
-
     }
 
 You can return a 'response' object to avoid disable the view manually:
@@ -430,7 +424,6 @@ You can return a 'response' object to avoid disable the view manually:
             //An HTTP Redirect
             return $this->response->redirect('index/index');
         }
-
     }
 
 Simple Rendering
@@ -458,7 +451,6 @@ The default component must be replaced in the service container:
         $view->setViewsDir('../app/views/');
 
         return $view;
-
     }, true);
 
 Automatic rendering must be disabled in :doc:`Phalcon\\Mvc\\Application <applications>` (if needed):
@@ -494,19 +486,18 @@ To render a view it's necessary to call the render method explicitly indicating 
 
         public function indexAction()
         {
-            //Render 'views-dir/index.phtml'
+            // Render 'views-dir/index.phtml'
             echo $this->view->render('index');
 
-            //Render 'views-dir/posts/show.phtml'
+            // Render 'views-dir/posts/show.phtml'
             echo $this->view->render('posts/show');
 
-            //Render 'views-dir/index.phtml' passing variables
+            // Render 'views-dir/index.phtml' passing variables
             echo $this->view->render('index', array('posts' => Posts::find()));
 
-            //Render 'views-dir/posts/show.phtml' passing variables
+            // Render 'views-dir/posts/show.phtml' passing variables
             echo $this->view->render('posts/show', array('posts' => Posts::find()));
         }
-
     }
 
 Using Partials
@@ -557,19 +548,18 @@ use that object to set variables directly to the view from a controller action b
 
         public function showAction()
         {
-            //Pass all the posts to the views
+            // Pass all the posts to the views
             $this->view->setVar("posts", Posts::find());
 
-            //Using the magic setter
+            // Using the magic setter
             $this->view->posts = Posts::find();
 
-            //Passing more than one variable at the same time
+            // Passing more than one variable at the same time
             $this->view->setVars(array(
                 'title' => $post->title,
                 'content' => $post->content
             ));
         }
-
     }
 
 A variable with the name of the first parameter of setVar() will be created in the view, ready to be used. The variable can be of any type,
@@ -583,7 +573,6 @@ from a simple string, integer etc. variable to a more complex structure such as 
       foreach ($posts as $post) {
         echo "<h1>", $post->title, "</h1>";
       }
-
     ?>
     </div>
 
@@ -600,7 +589,6 @@ runtime automatically:
         foreach (Categories::find("status = 1") as $category) {
            echo "<span class='category'>", $category->name, "</span>";
         }
-
     ?>
     </div>
 
@@ -627,7 +615,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function showAction()
         {
-            //Cache the view using the default settings
+            // Cache the view using the default settings
             $this->view->cache(true);
         }
 
@@ -641,7 +629,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function resumeAction()
         {
-            //Cache this view for 1 day with the key "resume-cache"
+            // Cache this view for 1 day with the key "resume-cache"
             $this->view->cache(
                 array(
                     "lifetime" => 86400,
@@ -652,7 +640,7 @@ to cache output fragments. You could manually set the cache handler or set a glo
 
         public function downloadAction()
         {
-            //Passing a custom service
+            // Passing a custom service
             $this->view->cache(
                 array(
                     "service"  => "myCache",
@@ -661,7 +649,6 @@ to cache output fragments. You could manually set the cache handler or set a glo
                 )
             );
         }
-
     }
 
 When we do not define a key to the cache, the component automatically creates one using a md5_ hash of the name of the view currently being rendered.
@@ -677,15 +664,15 @@ The service name convention for this service is "viewCache":
     use Phalcon\Cache\Frontend\Output as OutputFrontend;
     use Phalcon\Cache\Backend\Memcache as MemcacheBackend;
 
-    //Set the views cache service
+    // Set the views cache service
     $di->set('viewCache', function() {
 
-        //Cache data for one day by default
+        // Cache data for one day by default
         $frontCache = new OutputFrontend(array(
             "lifetime" => 86400
         ));
 
-        //Memcached connection settings
+        // Memcached connection settings
         $cache = new MemcacheBackend($frontCache, array(
             "host" => "localhost",
             "port" => "11211"
@@ -715,7 +702,7 @@ expired to make the calculations/queries to display data in the view:
         public function indexAction()
         {
 
-            //Check whether the cache with key "downloads" exists or has expired
+            // Check whether the cache with key "downloads" exists or has expired
             if ($this->view->getCache()->exists('downloads')) {
 
                 //Query the latest downloads
@@ -726,12 +713,11 @@ expired to make the calculations/queries to display data in the view:
                 $this->view->latest = $latest;
             }
 
-            //Enable the cache with the same key "downloads"
+            // Enable the cache with the same key "downloads"
             $this->view->cache(array(
                 'key' => 'downloads'
             ));
         }
-
     }
 
 The `PHP alternative site`_ is an example of implementing the caching of fragments.
@@ -837,7 +823,6 @@ You can replace or add more a template engine from the controller as follows:
                 )
             );
         }
-
     }
 
 You can replace the template engine completely or use more than one template engine at the same time. The method \Phalcon\\Mvc\\View::registerEngines()
@@ -868,7 +853,6 @@ If you want to register a template engine or a set of them for each request in t
         ));
 
         return $view;
-
     }, true);
 
 There are adapters available for several template engines on the `Phalcon Incubator <https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine>`_
@@ -910,20 +894,20 @@ Using :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` in a stand-alone mode 
 
     $view = new View();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Passing variables to the views, these will be created as local variables
     $view->setVar("someProducts", $products);
     $view->setVar("someFeatureEnabled", true);
 
-    //Start the output buffering
+    // Start the output buffering
     $view->start();
 
-    //Render all the view hierarchy related to the view products/list.phtml
+    // Render all the view hierarchy related to the view products/list.phtml
     $view->render("products", "list");
 
-    //Finish the output buffering
+    // Finish the output buffering
     $view->finish();
 
     echo $view->getContent();
@@ -962,7 +946,7 @@ Using :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_View_Simple>` in a st
 
     $view = new SimpleView();
 
-    //A trailing directory separator is required
+    // A trailing directory separator is required
     $view->setViewsDir("../app/views/");
 
     // Render a view and return its contents as a string
@@ -1047,10 +1031,9 @@ The following example shows how to create a plugin that clean/repair the HTML pr
 
             $view->setContent((string) $tidy);
         }
-
     }
 
-    //Attach the plugin as a listener
+    // Attach the plugin as a listener
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
 .. _this Github repository: https://github.com/bobthecow/mustache.php

@@ -14,19 +14,19 @@ To illustrate how this component works and why it is important, consider the fol
 
     <?php
 
-        //Document title with malicious extra HTML tags
+        // Document title with malicious extra HTML tags
         $maliciousTitle = '</title><script>alert(1)</script>';
 
-        //Malicious CSS class name
+        // Malicious CSS class name
         $className      = ';`(';
 
-        //Malicious CSS font name
+        // Malicious CSS font name
         $fontName       = 'Verdana"</style>';
 
-        //Malicious Javascript text
+        // Malicious Javascript text
         $javascriptText = "';</script>Hello";
 
-        //Create an escaper
+        // Create an escaper
         $e              = new Phalcon\Escaper();
 
     ?>
