@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\Router\\Annotations**
 
 *extends* class :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`
 
-*implements* :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 A router that reads routes annotations from classes/resources  
 
@@ -31,16 +31,20 @@ Constants
 
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
+*integer* **POSITION_FIRST**
+
+*integer* **POSITION_LAST**
+
 Methods
 -------
 
-public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addResource** (*unknown* $handler, [*unknown* $prefix])
+public  **addResource** (*unknown* $handler, [*unknown* $prefix])
 
 Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Annotations <Phalcon_Mvc_Router_Annotations>`  **addModuleResource** (*unknown* $module, *unknown* $handler, [*unknown* $prefix])
+public  **addModuleResource** (*unknown* $module, *unknown* $handler, [*unknown* $prefix])
 
 Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
@@ -97,6 +101,18 @@ Sets the dependency injector
 public  **getDI** () inherited from Phalcon\\Mvc\\Router
 
 Returns the internal dependency injector
+
+
+
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Mvc\\Router
+
+Sets the events manager
+
+
+
+public  **getEventsManager** () inherited from Phalcon\\Mvc\\Router
+
+Returns the internal event manager
 
 
 
@@ -165,7 +181,13 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods]) inherited from Phalcon\\Mvc\\Router
+public  **getDefaults** () inherited from Phalcon\\Mvc\\Router
+
+Returns an array of default parameters
+
+
+
+public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router without any HTTP constraint 
 
@@ -173,54 +195,58 @@ Adds a route to the router without any HTTP constraint
 
     <?php
 
+     use Phalcon\Mvc\Router;
+    
      $router->add('/about', 'About::index');
+     $router->add('/about', 'About::index', ['GET', 'POST']);
+     $router->add('/about', 'About::index', ['GET', 'POST'], Router::POSITION_FIRST);
 
 
 
 
-public  **addGet** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addGet** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public  **addPost** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addPost** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public  **addPut** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addPut** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPatch** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addPatch** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addDelete** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addOptions** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addOptions** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*unknown* $pattern, [*unknown* $paths]) inherited from Phalcon\\Mvc\\Router
+public  **addHead** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position]) inherited from Phalcon\\Mvc\\Router
 
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
+public  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
 
 Mounts a group of routes in the router
 
@@ -286,7 +312,7 @@ Checks if the router macthes any of the defined routes
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` [] **getRoutes** () inherited from Phalcon\\Mvc\\Router
+public  **getRoutes** () inherited from Phalcon\\Mvc\\Router
 
 Returns all the routes defined in the router
 

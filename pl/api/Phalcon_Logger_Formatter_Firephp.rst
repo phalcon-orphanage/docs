@@ -11,31 +11,31 @@ Formats messages so that they can be sent to FirePHP
 Methods
 -------
 
-public *string*  **getTypeString** (*integer* $type)
+public  **getTypeString** (*unknown* $type)
 
 Returns the string meaning of a logger constant
 
 
 
-public *this*  **setShowBacktrace** ([*unknown* $isShow])
+public  **setShowBacktrace** ([*unknown* $isShow])
 
 Returns the string meaning of a logger constant
 
 
 
-public *boolean*  **getShowBacktrace** ()
+public  **getShowBacktrace** ()
 
 Returns the string meaning of a logger constant
 
 
 
-public *this*  **enableLabels** ([*unknown* $isEnable])
+public  **enableLabels** ([*unknown* $isEnable])
 
 Returns the string meaning of a logger constant
 
 
 
-public *boolean*  **labelsEnabled** ()
+public  **labelsEnabled** ()
 
 Returns the labels enabled
 

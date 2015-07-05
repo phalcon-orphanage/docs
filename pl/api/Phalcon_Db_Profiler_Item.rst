@@ -67,7 +67,7 @@ Timestamp when the profile ended
 
 
 
-public *double*  **getTotalElapsedSeconds** ()
+public  **getTotalElapsedSeconds** ()
 
 Returns the total time in seconds spent by the profile
 

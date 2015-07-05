@@ -100,7 +100,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public *this merged config*  **merge** (*unknown* $config)
+public  **merge** (*unknown* $config)
 
 Merges a configuration into the current one 
 
@@ -154,7 +154,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-private *Config merged config*  **_merge** (*unknown* $config, [*unknown* $instance])
+final protected *Config merged config*  **_merge** (*unknown* $config, [*unknown* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
 

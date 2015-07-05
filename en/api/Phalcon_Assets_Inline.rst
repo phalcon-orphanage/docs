@@ -40,19 +40,19 @@ Phalcon\\Assets\\Inline constructor
 
 
 
-public :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`  **setType** (*unknown* $type)
+public  **setType** (*unknown* $type)
 
 Sets the inline's type
 
 
 
-public :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`  **setFilter** (*unknown* $filter)
+public  **setFilter** (*unknown* $filter)
 
 Sets if the resource must be filtered or not
 
 
 
-public :doc:`Phalcon\\Assets\\Inline <Phalcon_Assets_Inline>`  **setAttributes** (*unknown* $attributes)
+public  **setAttributes** (*unknown* $attributes)
 
 Sets extra HTML attributes
 

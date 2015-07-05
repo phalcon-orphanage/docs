@@ -15,7 +15,7 @@ Generates a SELECT tag
 
 private static  **_optionsFromResultset** (*unknown* $resultset, *unknown* $using, *unknown* $value, *unknown* $closeOption)
 
-Generate the OPTION tags based on a resulset
+Generate the OPTION tags based on a resultset
 
 
 

@@ -24,19 +24,19 @@ Groups Micro-Mvc handlers as controllers
 Methods
 -------
 
-private  **_addMap** (*unknown* $method, *unknown* $routePattern, *unknown* $handler, *unknown* $name)
+protected  **_addMap** (*unknown* $method, *unknown* $routePattern, *unknown* $handler, *unknown* $name)
 
 Internal function to add a handler to the group
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setPrefix** (*unknown* $prefix)
+public  **setPrefix** (*unknown* $prefix)
 
 Sets a prefix for all routes added to the collection
 
 
 
-public *string*  **getPrefix** ()
+public  **getPrefix** ()
 
 Returns the collection prefix if any
 
@@ -54,13 +54,13 @@ Sets the main handler
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro\\Collection <Phalcon_Mvc_Micro_Collection>`  **setLazy** (*unknown* $lazy)
+public  **setLazy** (*unknown* $lazy)
 
 Sets if the main handler must be lazy loaded
 
 
 
-public *boolean*  **isLazy** ()
+public  **isLazy** ()
 
 Returns if the main handler must be lazy loaded
 

@@ -54,3 +54,8 @@ abstract public  **notifyEvent** (*unknown* $eventName, *unknown* $model)
 ...
 
 
+abstract public  **addBehavior** (*unknown* $model, *unknown* $behavior)
+
+...
+
+

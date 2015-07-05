@@ -24,7 +24,7 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([*unknown* $dependencyInjector])
 
 Phalcon\\Mvc\\Micro constructor
 
@@ -84,7 +84,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Micro <Phalcon_Mvc_Micro>`  **mount** (*unknown* $collection)
+public  **mount** (*unknown* $collection)
 
 Mounts a collection of handlers
 
@@ -102,7 +102,7 @@ Sets a handler that will be called when an exception is thrown handling the rout
 
 
 
-public :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`  **getRouter** ()
+public  **getRouter** ()
 
 Returns the internal router used by the application
 
@@ -114,7 +114,7 @@ Sets a service from the DI
 
 
 
-public *boolean*  **hasService** (*unknown* $serviceName)
+public  **hasService** (*unknown* $serviceName)
 
 Checks if a service is registered in the DI
 
@@ -224,7 +224,7 @@ Returns the internal handlers attached to the application
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -236,7 +236,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

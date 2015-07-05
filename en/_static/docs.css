@@ -28,17 +28,17 @@ a.super { font-size: 55%; vertical-align: super; }
 header .navbar { margin-top: -15px; }
 header .navbar-toggle { border-color: #ffffff; margin-top: 15px; }
 header .navbar-toggle span { background: #ffffff; }
-header .phalcon-logo { display: block; width: 200px; height: 90px; background: transparent url("//static.phalconphp.com/images/phalcon.png") 0 0 no-repeat; background-size: 200px 90px; }
+header .phalcon-logo { display: block; width: 200px; height: 90px; background: transparent url("//static.phalconphp.com/www/images/phalcon.png") 0 0 no-repeat; background-size: 200px 90px; }
 header .main-menu { margin-top: 38px; }
 header .main-menu li { margin: 0 3px; }
 header .main-menu li a { color: #bae1e6; font-size: 17px; text-shadow: 1px 1px 1px #0e566a; padding: 8px 18px; }
 header .main-menu li a:hover { color: white; background-color: transparent; }
 header .main-menu li a.active { color: white; background-color: rgba(0, 0, 0, 0.15); -webkit-box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.2); box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.2); -webkit-border-radius: 18px; -moz-border-radius: 18px; -ms-border-radius: 18px; border-radius: 18px; }
-header a.github { margin-right: 0px; background: transparent url("//static.phalconphp.com/images/github.png") center center no-repeat; opacity: 0.6; }
+header a.github { margin-right: 0px; background: transparent url("//static.phalconphp.com/www/images/github.png") center center no-repeat; opacity: 0.6; }
 header a:hover.github { opacity: 0.9; }
-header a.twitter { background: transparent url("//static.phalconphp.com/images/twitter.png") center center no-repeat; opacity: 0.6; }
+header a.twitter { background: transparent url("//static.phalconphp.com/www/images/twitter.png") center center no-repeat; opacity: 0.6; }
 header a:hover.twitter { opacity: 0.9; }
-header a#dropdownLanguageMenu { background: transparent url("//static.phalconphp.com/images/frame.png") 6px 3px no-repeat; margin-right: 0; }
+header a#dropdownLanguageMenu { background: transparent url("//static.phalconphp.com/www/images/frame.png") 6px 3px no-repeat; margin-right: 0; }
 header a:hover#dropdownLanguageMenu { background-position: 6px -30px; }
 header #dropdownLanguageMenu img { margin-bottom: 4px; }
 header #dropdownLanguageMenu span { margin-bottom: 4px; }
@@ -55,7 +55,7 @@ header .sublinks { color: #97c6ad; }
 header .sublinks a { font-size: 13px; color: #4d4a4c; margin-left: 10px; margin-right: 10px; }
 header .sublinks a:hover { border-bottom: 1px dotted #4d4a4c; margin-right: 10px; }
 
-.heading { background: #548d90 url("//static.phalconphp.com/images/heading.png") center center no-repeat; padding: 20px 0; font-size: 24px; font-weight: 700; margin: 0; border: none; -webkit-box-shadow: inset 0 0 7px 0 rgba(58, 100, 102, 0.9); box-shadow: inset 0 0 7px 0 rgba(58, 100, 102, 0.9); }
+.heading { background: #548d90 url("//static.phalconphp.com/www/images/heading.png") center center no-repeat; padding: 20px 0; font-size: 24px; font-weight: 700; margin: 0; border: none; -webkit-box-shadow: inset 0 0 7px 0 rgba(58, 100, 102, 0.9); box-shadow: inset 0 0 7px 0 rgba(58, 100, 102, 0.9); }
 
 .heading h2 { padding: 0; margin: 0; color: #ffffff; }
 
@@ -78,8 +78,8 @@ a:hover.btn-video span { color: #b9f4d3; }
 .codesamples ul.tags li a { display: block; padding: 2px 18px; text-align: center; background-color: #c8efd2; color: #285346; -webkit-border-radius: 15px; -moz-border-radius: 15px; -ms-border-radius: 15px; border-radius: 15px; margin-right: 15px; margin-bottom: 15px; }
 .codesamples ul.tags li a.active { background-color: #285346; color: #ffffff; }
 .codesamples ul.tags li a:hover { background-color: #285346; color: #ffffff; }
-.codesamples ul.features-positive { list-style-image: url("//static.phalconphp.com/images/check.png"); }
-.codesamples ul.features-negative { list-style-image: url("//static.phalconphp.com/images/remove.png"); }
+.codesamples ul.features-positive { list-style-image: url("//static.phalconphp.com/www/images/check.png"); }
+.codesamples ul.features-negative { list-style-image: url("//static.phalconphp.com/www/images/remove.png"); }
 .codesamples ul.features li { margin-bottom: 5px; }
 .codesamples pre { background-color: #242424; -webkit-border-radius: 25px; -moz-border-radius: 25px; -ms-border-radius: 25px; border-radius: 25px; }
 .codesamples code { background-color: #242424; }
@@ -97,7 +97,7 @@ a:hover.btn-video span { color: #b9f4d3; }
 
 #community-buttons a { white-space: nowrap; }
 
-.contributors { margin-top: 40px; position: relative; background: url("//static.phalconphp.com/images/contributors.jpeg") center -2px white; text-align: center; }
+.contributors { margin-top: 40px; position: relative; background: url("//static.phalconphp.com/www/images/contributors.jpeg") center -2px white; text-align: center; }
 
 .contributors .fader { display: block; width: 100%; height: 135px; background: linear-gradient(to top, #fff, #fff 25px, rgba(255, 255, 255, 0.8) 80px, transparent 100%); position: absolute; z-index: 300; bottom: -20px; left: 0; pointer-events: none !important; }
 .contributors a { display: inline-block; width: 60px; height: 60px; margin: -2px; }
@@ -131,13 +131,13 @@ a:hover.btn-video span { color: #b9f4d3; }
 .footer ul li { padding: 3px 0; }
 .footer ul li a { font-size: 13px; color: #6d7481; }
 .footer ul li a:hover { color: #c0c6cf; border-bottom: 1px dotted #c0c6cf; }
-.footer #license-wrapper { background: url("//static.phalconphp.com/images/phalcon3.png") 10px 0/74px 85px no-repeat; }
+.footer #license-wrapper { background: url("//static.phalconphp.com/www/images/phalcon3.png") 10px 0/74px 85px no-repeat; }
 .footer #license-spaccer { float: left; height: 50px; width: 100%; }
 .footer .license { padding-left: 90px; background-size: 74px 85px; color: #6d7481; font-size: 12px; line-height: 18px; }
 .footer .license a { color: #6d7481; border-bottom: 1px dotted #6d7481; }
 .footer .license a:hover { color: #c0c6cf; border-bottom: 1px solid #c0c6cf; }
 .footer .design { padding-left: 90px; margin-top: 30px; font-size: 11px; text-transform: uppercase; color: #6d7481; }
-.footer .design a { margin-top: 7px; display: block; width: 115px; height: 42px; background: transparent url("//static.phalconphp.com/images/fogcity.png") 0 0 no-repeat; background-size: 115px 42px; opacity: 0.5; }
+.footer .design a { margin-top: 7px; display: block; width: 115px; height: 42px; background: transparent url("//static.phalconphp.com/www/images/fogcity.png") 0 0 no-repeat; background-size: 115px 42px; opacity: 0.5; }
 .footer .design a:hover { opacity: 1; }
 .footer .design a span { display: none; }
 
@@ -154,7 +154,7 @@ a:hover.btn-video span { color: #b9f4d3; }
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content { opacity: 0; }
 
 @media screen and (max-width: 767px) { .homepage-header { padding-top: 7px; }
-  header .phalcon-logo { margin-left: 0px; width: 169px; height: 58px; background-image: url("//static.phalconphp.com/images/phalcon1.png"); background-size: 169px 58px; }
+  header .phalcon-logo { margin-left: 0px; width: 169px; height: 58px; background-image: url("//static.phalconphp.com/www/images/phalcon1.png"); background-size: 169px 58px; }
   header .navbar-header { padding-bottom: 5px; border: none; }
   header .main-menu li a { color: #ffffff; padding: 10px 20px; }
   header .main-menu li a:hover { color: #ffffff; }
@@ -173,12 +173,12 @@ a:hover.btn-video span { color: #b9f4d3; }
 
 @media screen and (min-width: 768px) { .homepage-header { padding-top: 7px; }
   .page-header { padding-top: 7px; }
-  header .phalcon-logo { margin-left: 0px; width: 169px; height: 58px; background-image: url("//static.phalconphp.com/images/phalcon1.png"); background-size: 169px 58px; }
+  header .phalcon-logo { margin-left: 0px; width: 169px; height: 58px; background-image: url("//static.phalconphp.com/www/images/phalcon1.png"); background-size: 169px 58px; }
   header .main-menu { margin-top: 5px; border-top: 2px solid #5bafbb; padding-top: 7px; padding-right: 20px; }
   header .main-menu li { margin: 0 1px; }
   header .main-menu li a { padding: 8px 16px; }
   header .dropdown-menu li a { padding: 4px 0 4px 32px; } }
-@media screen and (min-width: 992px) { header .phalcon-logo { margin-left: 0px; display: block; width: 200px; height: 90px; background: transparent url("//static.phalconphp.com/images/phalcon.png") 0 0 no-repeat; background-size: 200px 90px; }
+@media screen and (min-width: 992px) { header .phalcon-logo { margin-left: 0px; display: block; width: 200px; height: 90px; background: transparent url("//static.phalconphp.com/www/images/phalcon.png") 0 0 no-repeat; background-size: 200px 90px; }
   header .main-menu { margin-top: 38px; border-top: none; padding-top: 0; } }
 .team h3 { margin-top: 0; margin-bottom: 10px; }
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Row**
 ==================================
 
-*implements* ArrayAccess, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, ArrayAccess
 
 This component allows Phalcon\\Mvc\\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
@@ -36,6 +36,32 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 public  **offsetUnset** (*unknown* $offset)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+
+public *mixed*  **readAttribute** (*unknown* $attribute)
+
+Reads an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+      echo $robot->readAttribute('name');
+
+
+
+
+public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+
+Writes an attribute value by its name 
+
+.. code-block:: php
+
+    <?php
+
+      $robot->writeAttribute('name', 'Rosey');
+
 
 
 

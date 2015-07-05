@@ -9,15 +9,15 @@ Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Instrospection  Queries the table meta-
 Methods
 -------
 
-final public *array*  **getMetaData** (*unknown* $model, *unknown* $dependencyInjector)
+final public  **getMetaData** (*unknown* $model, *unknown* $dependencyInjector)
 
 The meta-data is obtained by reading the column descriptions from the database information schema
 
 
 
-final public *array*  **getColumnMaps** (*unknown* $model, *unknown* $dependencyInjector)
+final public  **getColumnMaps** (*unknown* $model, *unknown* $dependencyInjector)
 
-Read the model's column map, this can't be infered
+Read the model's column map, this can't be inferred
 
 
 

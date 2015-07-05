@@ -47,19 +47,19 @@ Phalcon\\Mvc\\Model\\Transaction constructor
 
 
 
-public  **setTransactionManager** (:doc:`Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface <Phalcon_Mvc_Model_Transaction_ManagerInterface>` $manager)
+public  **setTransactionManager** (*unknown* $manager)
 
 Sets transaction manager related to the transaction
 
 
 
-public *boolean*  **begin** ()
+public  **begin** ()
 
 Starts the transaction
 
 
 
-public *boolean*  **commit** ()
+public  **commit** ()
 
 Commits the transaction
 
@@ -71,7 +71,7 @@ Rollbacks the transaction
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getConnection** ()
+public  **getConnection** ()
 
 Returns the connection related to transaction
 
@@ -83,25 +83,25 @@ Sets if is a reused transaction or new once
 
 
 
-public  **setRollbackOnAbort** (*boolean* $rollbackOnAbort)
+public  **setRollbackOnAbort** (*unknown* $rollbackOnAbort)
 
 Sets flag to rollback on abort the HTTP connection
 
 
 
-public *boolean*  **isManaged** ()
+public  **isManaged** ()
 
 Checks whether transaction is managed by a transaction manager
 
 
 
-public *array*  **getMessages** ()
+public  **getMessages** ()
 
 Returns validations messages from last save try
 
 
 
-public *boolean*  **isValid** ()
+public  **isValid** ()
 
 Checks whether internal connection is under an active transaction
 

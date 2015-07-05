@@ -41,25 +41,25 @@ Renders the element widget returning html
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setForm** (*unknown* $form) inherited from Phalcon\\Forms\\Element
+public  **setForm** (*unknown* $form) inherited from Phalcon\\Forms\\Element
 
 Sets the parent form to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **getForm** () inherited from Phalcon\\Forms\\Element
+public  **getForm** () inherited from Phalcon\\Forms\\Element
 
 Returns the parent form to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setName** (*unknown* $name) inherited from Phalcon\\Forms\\Element
+public  **setName** (*unknown* $name) inherited from Phalcon\\Forms\\Element
 
 Sets the element name
 
 
 
-public *string*  **getName** () inherited from Phalcon\\Forms\\Element
+public  **getName** () inherited from Phalcon\\Forms\\Element
 
 Returns the element name
 
@@ -71,7 +71,7 @@ Sets the element filters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addFilter** (*unknown* $filter) inherited from Phalcon\\Forms\\Element
+public  **addFilter** (*unknown* $filter) inherited from Phalcon\\Forms\\Element
 
 Adds a filter to current list of filters
 
@@ -89,13 +89,13 @@ Adds a group of validators
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
+public  **addValidator** (*unknown* $validator) inherited from Phalcon\\Forms\\Element
 
 Adds a validator to the element
 
 
 
-public :doc:`Phalcon\\Validation\\ValidatorInterface <Phalcon_Validation_ValidatorInterface>` [] **getValidators** () inherited from Phalcon\\Forms\\Element
+public  **getValidators** () inherited from Phalcon\\Forms\\Element
 
 Returns the validators registered for the element
 
@@ -119,13 +119,13 @@ Returns the value of an attribute if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Forms\\Element
+public  **setAttributes** (*unknown* $attributes) inherited from Phalcon\\Forms\\Element
 
 Sets default attributes for the element
 
 
 
-public *array*  **getAttributes** () inherited from Phalcon\\Forms\\Element
+public  **getAttributes** () inherited from Phalcon\\Forms\\Element
 
 Returns the default attributes for the element
 
@@ -155,13 +155,13 @@ Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setLabel** (*unknown* $label) inherited from Phalcon\\Forms\\Element
+public  **setLabel** (*unknown* $label) inherited from Phalcon\\Forms\\Element
 
 Sets the element label
 
 
 
-public *string*  **getLabel** () inherited from Phalcon\\Forms\\Element
+public  **getLabel** () inherited from Phalcon\\Forms\\Element
 
 Returns the element label
 
@@ -191,37 +191,37 @@ Returns the element value
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** () inherited from Phalcon\\Forms\\Element
+public  **getMessages** () inherited from Phalcon\\Forms\\Element
 
 Returns the messages that belongs to the element The element needs to be attached to a form
 
 
 
-public *boolean*  **hasMessages** () inherited from Phalcon\\Forms\\Element
+public  **hasMessages** () inherited from Phalcon\\Forms\\Element
 
 Checks whether there are messages attached to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setMessages** (*unknown* $group) inherited from Phalcon\\Forms\\Element
+public  **setMessages** (*unknown* $group) inherited from Phalcon\\Forms\\Element
 
 Sets the validation messages related to the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **appendMessage** (*unknown* $message) inherited from Phalcon\\Forms\\Element
+public  **appendMessage** (*unknown* $message) inherited from Phalcon\\Forms\\Element
 
 Appends a message to the internal message list
 
 
 
-public :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`  **clear** () inherited from Phalcon\\Forms\\Element
+public  **clear** () inherited from Phalcon\\Forms\\Element
 
 Clears every element in the form to its default value
 
 
 
-public *string*  **__toString** () inherited from Phalcon\\Forms\\Element
+public  **__toString** () inherited from Phalcon\\Forms\\Element
 
 Magic method __toString renders the widget without atttributes
 

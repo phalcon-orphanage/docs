@@ -11,9 +11,15 @@ This is a variant of the Phalcon\\Flash that inmediately outputs any message pas
 Methods
 -------
 
-public *string*  **message** (*unknown* $type, *unknown* $message)
+public  **message** (*unknown* $type, *unknown* $message)
 
 Outputs a message
+
+
+
+public  **output** ([*unknown* $remove])
+
+Prints the messages accumulated in the flasher
 
 
 
@@ -23,25 +29,25 @@ Phalcon\\Flash constructor
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
+public  **setImplicitFlush** (*unknown* $implicitFlush) inherited from Phalcon\\Flash
 
-Set whether the output must be implictly flushed to the output or returned as string
-
-
-
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\\Flash
-
-Set if the output must be implictily formatted with HTML
+Set whether the output must be implicitly flushed to the output or returned as string
 
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\\Flash
+public  **setAutomaticHtml** (*unknown* $automaticHtml) inherited from Phalcon\\Flash
+
+Set if the output must be implicitly formatted with HTML
+
+
+
+public  **setCssClasses** (*unknown* $cssClasses) inherited from Phalcon\\Flash
 
 Set an array with CSS classes to format the messages
 
 
 
-public *string*  **error** (*unknown* $message) inherited from Phalcon\\Flash
+public  **error** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML error message 
 
@@ -54,7 +60,7 @@ Shows a HTML error message
 
 
 
-public *string*  **notice** (*unknown* $message) inherited from Phalcon\\Flash
+public  **notice** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML notice/information message 
 
@@ -67,7 +73,7 @@ Shows a HTML notice/information message
 
 
 
-public *string*  **success** (*unknown* $message) inherited from Phalcon\\Flash
+public  **success** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML success message 
 
@@ -80,7 +86,7 @@ Shows a HTML success message
 
 
 
-public *string*  **warning** (*unknown* $message) inherited from Phalcon\\Flash
+public  **warning** (*unknown* $message) inherited from Phalcon\\Flash
 
 Shows a HTML warning message 
 
@@ -103,6 +109,12 @@ Outputs a message formatting it with HTML
 
      $flash->outputMessage('error', message);
 
+
+
+
+public  **clear** () inherited from Phalcon\\Flash
+
+Clears accumulated messages when implicit flush is disabled
 
 
 

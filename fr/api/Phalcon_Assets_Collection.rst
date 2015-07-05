@@ -66,25 +66,25 @@ public  **getSourcePath** ()
 ...
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **add** (*unknown* $resource)
+public  **add** (*unknown* $resource)
 
 Adds a resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInline** (*unknown* $code)
+public  **addInline** (*unknown* $code)
 
 Adds a inline code to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **addCss** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
 
 Adds a CSS resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineCss** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
 
 Adds a inline CSS to the collection
 
@@ -96,13 +96,13 @@ Adds a javascript resource to the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **addInlineJs** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
 
 Adds a inline javascript to the collection
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of elements in the form
 
@@ -114,7 +114,7 @@ Rewinds the internal iterator
 
 
 
-public :doc:`Phalcon\\Assets\\Resource <Phalcon_Assets_Resource>`  **current** ()
+public  **current** ()
 
 Returns the current resource in the iterator
 
@@ -132,80 +132,75 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current element in the iterator is valid
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetPath** (*string* $targetPath)
+public  **setTargetPath** (*unknown* $targetPath)
 
 Sets the target path of the file for the filtered/join output
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setSourcePath** (*string* $sourcePath)
+public  **setSourcePath** (*unknown* $sourcePath)
 
 Sets a base source path for all the resources in this collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetUri** (*string* $targetUri)
+public  **setTargetUri** (*unknown* $targetUri)
 
 Sets a target uri for the generated HTML
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setPrefix** (*string* $prefix)
+public  **setPrefix** (*unknown* $prefix)
 
 Sets a common prefix for all the resources
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setLocal** (*boolean* $local)
+public  **setLocal** (*unknown* $local)
 
 Sets if the collection uses local resources by default
 
 
 
-public *$this*  **setAttributes** (*array* $attributes)
+public  **setAttributes** (*unknown* $attributes)
 
 Sets extra HTML attributes
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setFilters** (*array* $filters)
+public  **setFilters** (*unknown* $filters)
 
 Sets an array of filters in the collection
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **setTargetLocal** (*boolean* $targetLocal)
+public  **setTargetLocal** (*unknown* $targetLocal)
 
 Sets the target local
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **join** (*unknown* $join)
+public  **join** (*unknown* $join)
 
 Sets if all filtered resources in the collection must be joined in a single result file
 
 
 
-public *string*  **getRealTargetPath** (*unknown* $basePath)
+public  **getRealTargetPath** (*unknown* $basePath)
 
 Returns the complete location where the joined/filtered collection must be written
 
 
 
-public :doc:`Phalcon\\Assets\\Collection <Phalcon_Assets_Collection>`  **addFilter** (*unknown* $filter)
+public  **addFilter** (*unknown* $filter)
 
 Adds a filter to the collection
 
-
-
-public  **__construct** ()
-
-...
 
 

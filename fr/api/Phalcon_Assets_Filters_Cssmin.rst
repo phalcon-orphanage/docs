@@ -9,7 +9,7 @@ Minify the css - removes comments removes newlines and line feeds keeping remove
 Methods
 -------
 
-public *string*  **filter** (*unknown* $content)
+public  **filter** (*unknown* $content)
 
 Filters the content using CSSMIN
 

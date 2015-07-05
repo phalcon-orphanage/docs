@@ -28,7 +28,7 @@ Phalcon\\Annotations\\Reflection constructor
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>` |false **getClassAnnotations** ()
+public  **getClassAnnotations** ()
 
 Returns the annotations found in the class docblock
 

@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Router**
 ==============================
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\RouterInterface <Phalcon_Mvc_RouterInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request    
+Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request  
 
 .. code-block:: php
 
@@ -12,7 +12,7 @@ Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of
     $router = new Router();
     
     $router->add(
-    	"/documentation/{chapter}/{name}.{type:[a-z]+}",
+    	"/documentation/{chapter}/{name}\.{type:[a-z]+}",
     	array(
     		"controller" => "documentation",
     		"action"     => "show"
@@ -32,6 +32,10 @@ Constants
 
 *integer* **URI_SOURCE_SERVER_REQUEST_URI**
 
+*integer* **POSITION_FIRST**
+
+*integer* **POSITION_LAST**
+
 Methods
 -------
 
@@ -50,6 +54,18 @@ Sets the dependency injector
 public  **getDI** ()
 
 Returns the internal dependency injector
+
+
+
+public  **setEventsManager** (*unknown* $eventsManager)
+
+Sets the events manager
+
+
+
+public  **getEventsManager** ()
+
+Returns the internal event manager
 
 
 
@@ -118,6 +134,12 @@ Sets an array of default paths. If a route is missing a path the router will use
 
 
 
+public  **getDefaults** ()
+
+Returns an array of default parameters
+
+
+
 public  **handle** ([*unknown* $uri])
 
 Handles routing information received from the rewrite engine 
@@ -135,7 +157,7 @@ Handles routing information received from the rewrite engine
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods])
+public  **add** (*unknown* $pattern, [*unknown* $paths], [*unknown* $httpMethods], [*unknown* $position])
 
 Adds a route to the router without any HTTP constraint 
 
@@ -143,54 +165,58 @@ Adds a route to the router without any HTTP constraint
 
     <?php
 
+     use Phalcon\Mvc\Router;
+    
      $router->add('/about', 'About::index');
+     $router->add('/about', 'About::index', ['GET', 'POST']);
+     $router->add('/about', 'About::index', ['GET', 'POST'], Router::POSITION_FIRST);
 
 
 
 
-public  **addGet** (*unknown* $pattern, [*unknown* $paths])
+public  **addGet** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public  **addPost** (*unknown* $pattern, [*unknown* $paths])
+public  **addPost** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public  **addPut** (*unknown* $pattern, [*unknown* $paths])
+public  **addPut** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addPatch** (*unknown* $pattern, [*unknown* $paths])
+public  **addPatch** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addDelete** (*unknown* $pattern, [*unknown* $paths])
+public  **addDelete** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addOptions** (*unknown* $pattern, [*unknown* $paths])
+public  **addOptions** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **addHead** (*unknown* $pattern, [*unknown* $paths])
+public  **addHead** (*unknown* $pattern, [*unknown* $paths], [*unknown* $position])
 
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group)
+public  **mount** (*unknown* $group)
 
 Mounts a group of routes in the router
 
@@ -256,7 +282,7 @@ Checks if the router macthes any of the defined routes
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>` [] **getRoutes** ()
+public  **getRoutes** ()
 
 Returns all the routes defined in the router
 

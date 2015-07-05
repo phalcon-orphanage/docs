@@ -46,13 +46,13 @@ Phalcon\\Cache\\Frontend\\Base64 constructor
 
 
 
-public *integer*  **getLifetime** ()
+public  **getLifetime** ()
 
 Returns the cache lifetime
 
 
 
-public *boolean*  **isBuffering** ()
+public  **isBuffering** ()
 
 Check whether if frontend is buffering output
 
@@ -60,7 +60,7 @@ Check whether if frontend is buffering output
 
 public  **start** ()
 
-Starts output frontend. Actually, does nothing
+Starts output frontend. Actually, does nothing in this adapter
 
 
 

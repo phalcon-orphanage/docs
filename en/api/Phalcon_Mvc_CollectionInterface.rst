@@ -4,11 +4,6 @@ Interface **Phalcon\\Mvc\\CollectionInterface**
 Methods
 -------
 
-abstract public  **__construct** ([*unknown* $dependencyInjector])
-
-...
-
-
 abstract public  **setId** (*unknown* $id)
 
 ...
@@ -35,16 +30,6 @@ abstract public  **setConnectionService** (*unknown* $connectionService)
 
 
 abstract public  **getConnection** ()
-
-...
-
-
-abstract public  **readAttribute** (*unknown* $attribute)
-
-...
-
-
-abstract public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
 
 ...
 

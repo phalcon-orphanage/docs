@@ -15,19 +15,19 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **useEncryption** (*unknown* $useEncryption)
+public  **useEncryption** (*unknown* $useEncryption)
 
 Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-public *boolean*  **isUsingEncryption** ()
+public  **isUsingEncryption** ()
 
 Returns if the bag is automatically encrypting/decrypting cookies
 
@@ -39,31 +39,31 @@ Sets a cookie to be sent at the end of the request This method overrides any coo
 
 
 
-public :doc:`Phalcon\\Http\\Cookie <Phalcon_Http_Cookie>`  **get** (*unknown* $name)
+public  **get** (*unknown* $name)
 
 Gets a cookie from the bag
 
 
 
-public *boolean*  **has** (*unknown* $name)
+public  **has** (*unknown* $name)
 
 Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
 
 
 
-public *boolean*  **delete** (*unknown* $name)
+public  **delete** (*unknown* $name)
 
 Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
 
 
 
-public *boolean*  **send** ()
+public  **send** ()
 
 Sends the cookies to the client Cookies aren't sent if headers are sent in the current request
 
 
 
-public :doc:`Phalcon\\Http\\Response\\Cookies <Phalcon_Http_Response_Cookies>`  **reset** ()
+public  **reset** ()
 
 Reset set cookies
 

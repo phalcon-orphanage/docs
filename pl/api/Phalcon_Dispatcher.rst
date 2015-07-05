@@ -36,7 +36,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
@@ -48,7 +48,7 @@ Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
@@ -66,7 +66,7 @@ Sets the module where the controller is (only informative)
 
 
 
-public *string*  **getModuleName** ()
+public  **getModuleName** ()
 
 Gets the module where the controller class is
 
@@ -78,7 +78,7 @@ Sets the namespace where the controller class is
 
 
 
-public *string*  **getNamespaceName** ()
+public  **getNamespaceName** ()
 
 Gets a namespace to be prepended to the current handler name
 
@@ -90,7 +90,7 @@ Sets the default namespace
 
 
 
-public *string*  **getDefaultNamespace** ()
+public  **getDefaultNamespace** ()
 
 Returns the default namespace
 
@@ -108,7 +108,7 @@ Sets the action name to be dispatched
 
 
 
-public *string*  **getActionName** ()
+public  **getActionName** ()
 
 Gets the latest dispatched action name
 
@@ -120,7 +120,7 @@ Sets action params to be dispatched
 
 
 
-public *array*  **getParams** ()
+public  **getParams** ()
 
 Gets action params
 
@@ -138,13 +138,13 @@ Gets a param by its name or numeric index
 
 
 
-public *string*  **getActiveMethod** ()
+public  **getActiveMethod** ()
 
 Returns the current method to be/executed in the dispatcher
 
 
 
-public *boolean*  **isFinished** ()
+public  **isFinished** ()
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
@@ -181,9 +181,21 @@ Forwards the execution flow to another controller/action Dispatchers are unique 
 
 
 
-public *boolean*  **wasForwarded** ()
+public  **wasForwarded** ()
 
 Check if the current executed action was forwarded by another one
+
+
+
+public  **getHandlerClass** ()
+
+Possible class name that will be located to dispatch the request
+
+
+
+protected  **_resolveEmptyProperties** ()
+
+Set empty properties to their defaults (where defaults are available)
 
 
 

@@ -31,6 +31,15 @@ This adapter store sessions in libmemcached
 
 
 
+Constants
+---------
+
+*integer* **SESSION_ACTIVE**
+
+*integer* **SESSION_NONE**
+
+*integer* **SESSION_DISABLED**
+
 Methods
 -------
 
@@ -44,7 +53,7 @@ public  **getLifetime** ()
 ...
 
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** (*unknown* $options)
 
 Phalcon\\Session\\Adapter\\Libmemcached constructor
 
@@ -72,7 +81,7 @@ public  **write** (*unknown* $sessionId, *unknown* $data)
 
 
 
-public *boolean*  **destroy** ([*unknown* $session_id])
+public *boolean*  **destroy** ([*unknown* $sessionId])
 
 
 
@@ -84,7 +93,7 @@ public  **gc** ()
 
 
 
-public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter
+public  **start** () inherited from Phalcon\\Session\\Adapter
 
 Starts the session (if headers are already sent the session will not be started)
 
@@ -98,16 +107,28 @@ Sets session's options
 
     <?php
 
-    session->setOptions(array(
+    $session->setOptions(array(
     	'uniqueId' => 'my-private-app'
     ));
 
 
 
 
-public *array*  **getOptions** () inherited from Phalcon\\Session\\Adapter
+public  **getOptions** () inherited from Phalcon\\Session\\Adapter
 
 Get internal options
+
+
+
+public  **setName** (*unknown* $name) inherited from Phalcon\\Session\\Adapter
+
+Set session name
+
+
+
+public  **getName** () inherited from Phalcon\\Session\\Adapter
+
+Get session name
 
 
 
@@ -125,7 +146,7 @@ Sets a session variable in an application context
 
     <?php
 
-    session->set('auth', 'yes');
+    $session->set('auth', 'yes');
 
 
 
@@ -191,6 +212,24 @@ Check whether the session has been started
     <?php
 
     var_dump($session->isStarted());
+
+
+
+
+public  **status** () inherited from Phalcon\\Session\\Adapter
+
+Returns the status of the current session. For PHP 5.3 this function will always return SESSION_NONE 
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->status());
+    
+      // PHP 5.4 and above will give meaningful messages, 5.3 gets SESSION_NONE always
+      if ($session->status() !== $session::SESSION_ACTIVE) {
+          $session->start();
+      }
 
 
 

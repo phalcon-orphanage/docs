@@ -4,7 +4,7 @@ Interface **Phalcon\\Http\\ResponseInterface**
 Methods
 -------
 
-abstract public  **setStatusCode** (*unknown* $code, *unknown* $message)
+abstract public  **setStatusCode** (*unknown* $code, [*unknown* $message])
 
 ...
 

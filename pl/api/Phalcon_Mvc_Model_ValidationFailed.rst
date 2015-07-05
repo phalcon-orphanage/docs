@@ -3,18 +3,33 @@ Class **Phalcon\\Mvc\\Model\\ValidationFailed**
 
 *extends* class :doc:`Phalcon\\Mvc\\Model\\Exception <Phalcon_Mvc_Model_Exception>`
 
+This exception is generated when a model fails to save a record Phalcon\\Mvc\\Model must be set up to have this behavior
+
+
 Methods
 -------
+
+public  **__construct** (*unknown* $model, *unknown* $validationMessages)
+
+Phalcon\\Mvc\\Model\\ValidationFailed constructor
+
+
+
+public  **getModel** ()
+
+Returns the model that generated the messages
+
+
+
+public  **getMessages** ()
+
+Returns the complete group of messages produced in the validation
+
+
 
 final private *Exception*  **__clone** () inherited from Exception
 
 Clone the exception
-
-
-
-public  **__construct** ([*string* $message], [*int* $code], [*Exception* $previous]) inherited from Exception
-
-Exception constructor
 
 
 

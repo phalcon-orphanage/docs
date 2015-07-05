@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`, IteratorAggregate, Traversable, ArrayAccess, Countable
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
 
@@ -30,7 +30,7 @@ Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
@@ -107,7 +107,7 @@ Magic getter to obtain values from the session bag
 
 
 
-public *boolean*  **has** (*unknown* $property)
+public  **has** (*unknown* $property)
 
 Check whether a property is defined in the internal bag 
 
@@ -120,7 +120,7 @@ Check whether a property is defined in the internal bag
 
 
 
-public *boolean*  **__isset** (*unknown* $property)
+public  **__isset** (*unknown* $property)
 
 Magic isset to check whether a property is defined in the bag 
 
@@ -133,7 +133,7 @@ Magic isset to check whether a property is defined in the bag
 
 
 
-public *boolean*  **remove** (*unknown* $property)
+public  **remove** (*unknown* $property)
 
 Removes a property from the internal bag 
 
@@ -146,7 +146,7 @@ Removes a property from the internal bag
 
 
 
-public *boolean*  **__unset** (*unknown* $property)
+public  **__unset** (*unknown* $property)
 
 Magic unset to remove items using the array syntax 
 
@@ -155,6 +155,49 @@ Magic unset to remove items using the array syntax
     <?php
 
      unset($user['name']);
+
+
+
+
+final public  **count** ()
+
+Return length of bag 
+
+.. code-block:: php
+
+    <?php
+
+     echo $user->count();
+
+
+
+
+final public *\ArrayIterator*  **getIterator** ()
+
+ Returns the bag iterator
+
+
+
+final public  **offsetSet** (*unknown* $property, *unknown* $value)
+
+
+
+
+
+final public  **offsetExists** (*unknown* $property)
+
+
+
+
+
+final public  **offsetUnset** (*unknown* $property)
+
+
+
+
+
+final public  **offsetGet** (*unknown* $property)
+
 
 
 

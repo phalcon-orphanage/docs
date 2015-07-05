@@ -32,7 +32,7 @@ Writes the log to the stream itself
 
 
 
-public *boolean*  **close** ()
+public  **close** ()
 
 Closes the logger
 
@@ -122,7 +122,7 @@ Sends/Writes an alert message to the log
 
 
 
-public  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Logs messages to the internal logger. Appends logs to the logger
 

@@ -22,7 +22,7 @@ Image manipulation support. Allows images to be resized, cropped, etc.
 Methods
 -------
 
-public static *boolean*  **check** ()
+public static  **check** ()
 
 Checks if Imagick is enabled
 
@@ -30,7 +30,7 @@ Checks if Imagick is enabled
 
 public  **__construct** (*unknown* $file, [*unknown* $width], [*unknown* $height])
 
-\\Phalcon\\Image\\Imagick constructor
+\\Phalcon\\Image\\Adapter\\Imagick constructor
 
 
 
@@ -220,7 +220,7 @@ Add a reflection to an image
 
 public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
 
-Add a watermark to an image with a specified opacity
+Add a watermark to an image with the specified opacity
 
 
 

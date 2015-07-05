@@ -13,7 +13,7 @@ public  **__construct** ([*unknown* $options])
 
 
 
-public *resource*  **connect** ()
+public  **connect** ()
 
 Makes a connection to the Beanstalkd server
 
@@ -25,39 +25,57 @@ Inserts jobs into the queue
 
 
 
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **reserve** ([*unknown* $timeout])
+public  **reserve** ([*unknown* $timeout])
 
 Reserves a job in the queue
 
 
 
-public *string|boolean*  **choose** (*unknown* $tube)
+public  **choose** (*unknown* $tube)
 
 Change the active tube. By default the tube is "default"
 
 
 
-public *string|boolean*  **watch** (*unknown* $tube)
+public  **watch** (*unknown* $tube)
 
 Change the active tube. By default the tube is "default"
 
 
 
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekReady** ()
+public  **stats** ()
+
+Get stats of the Beanstalk server.
+
+
+
+public  **statsTube** (*unknown* $tube)
+
+Get stats of a tube.
+
+
+
+public  **peekReady** ()
 
 Inspect the next ready job.
 
 
 
-public *boolean|Phalcon\Queue\Beanstalk\Job*  **peekBuried** ()
+public  **peekBuried** ()
 
 Return the next job in the list of buried jobs
 
 
 
-final public *array*  **readStatus** ()
+final public  **readStatus** ()
 
 Reads the latest status from the Beanstalkd server
+
+
+
+final public  **readYaml** ()
+
+Fetch a YAML payload from the Beanstalkd server
 
 
 
@@ -67,13 +85,13 @@ Reads a packet from the socket. Prior to reading from the socket will check for 
 
 
 
-protected *integer|boolean*  **write** (*unknown* $data)
+protected  **write** (*unknown* $data)
 
 Writes data to the socket. Performs a connection if none is available
 
 
 
-public *boolean*  **disconnect** ()
+public  **disconnect** ()
 
 Closes the connection to the beanstalk server.
 

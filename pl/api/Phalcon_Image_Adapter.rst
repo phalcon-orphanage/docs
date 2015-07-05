@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Image\\Adapter**
 ==========================================
 
-Phalcon\\Image  All image adapters must use this class
+All image adapters must use this class
 
 
 Methods
@@ -85,7 +85,7 @@ Add a reflection to an image
 
 public  **watermark** (*unknown* $watermark, [*unknown* $offsetX], [*unknown* $offsetY], [*unknown* $opacity])
 
-Add a watermark to an image with a specified opacity
+Add a watermark to an image with the specified opacity
 
 
 

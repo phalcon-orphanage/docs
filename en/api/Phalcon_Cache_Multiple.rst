@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Multiple**
 ==================================
 
-Allows to read to chained backends writing to multiple backends  
+Allows to read to chained backend adapters writing to multiple backends  
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ Phalcon\\Cache\\Multiple constructor
 
 
 
-public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (*unknown* $backend)
+public  **push** (*unknown* $backend)
 
 Adds a backend
 

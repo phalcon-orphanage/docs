@@ -14,13 +14,13 @@ Phalcon\\Translate\\Adapter\\Csv constructor
 
 
 
-public *string*  **query** (*unknown* $index, [*unknown* $placeholders])
+public  **query** (*unknown* $index, [*unknown* $placeholders])
 
 Returns the translation related to the given key
 
 
 
-public *bool*  **exists** (*unknown* $index)
+public  **exists** (*unknown* $index)
 
 Check whether is defined a translation key in the internal array
 
@@ -44,7 +44,7 @@ Sets a translation value
 
 
 
-public *boolean*  **offsetExists** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public  **offsetExists** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Check whether a translation key exists
 
@@ -59,6 +59,12 @@ Unsets a translation from the dictionary
 public *string*  **offsetGet** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation related to the given key
+
+
+
+protected  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+
+Replaces placeholders by the values passed
 
 
 

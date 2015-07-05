@@ -27,7 +27,7 @@ Set if priorities are enabled in the EventsManager
 
 
 
-public *boolean*  **arePrioritiesEnabled** ()
+public  **arePrioritiesEnabled** ()
 
 Returns if priorities are enabled
 
@@ -82,7 +82,7 @@ Fires an event in the events manager causing that active listeners be notified a
 
 
 
-public *boolean*  **hasListeners** (*unknown* $type)
+public  **hasListeners** (*unknown* $type)
 
 Check whether certain type of event has listeners
 

@@ -40,13 +40,13 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-public *int*  **getType** ()
+public  **getType** ()
 
 Returns the relation type
 
 
 
-public *string*  **getReferencedModel** ()
+public  **getReferencedModel** ()
 
 Returns the referenced model
 
@@ -70,7 +70,7 @@ Returns the options
 
 
 
-public *boolean*  **isForeignKey** ()
+public  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
 
@@ -88,13 +88,13 @@ Returns parameters that must be always used when the related records are obtaine
 
 
 
-public *boolean*  **isThrough** ()
+public  **isThrough** ()
 
 Check whether the relation is a 'many-to-many' relation or not
 
 
 
-public *boolean*  **isReusable** ()
+public  **isReusable** ()
 
 Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
 
@@ -106,7 +106,7 @@ Gets the intermediate fields for has-*-through relations
 
 
 
-public *string*  **getIntermediateModel** ()
+public  **getIntermediateModel** ()
 
 Gets the intermediate model for has-*-through relations
 

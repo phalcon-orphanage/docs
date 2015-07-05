@@ -31,7 +31,7 @@ Phalcon\\Annotations\\Collection constructor
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of annotations in the collection
 
@@ -49,7 +49,7 @@ Returns the current annotation in the iterator
 
 
 
-public *int*  **key** ()
+public  **key** ()
 
 Returns the current position/key in the iterator
 
@@ -61,31 +61,31 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current annotation in the iterator is valid
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` [] **getAnnotations** ()
+public  **getAnnotations** ()
 
 Returns the internal annotations as an array
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>`  **get** (*unknown* $name)
+public  **get** (*unknown* $name)
 
 Returns the first annotation that match a name
 
 
 
-public :doc:`Phalcon\\Annotations\\Annotation <Phalcon_Annotations_Annotation>` [] **getAll** (*unknown* $name)
+public  **getAll** (*unknown* $name)
 
 Returns all the annotations that match a name
 
 
 
-public *boolean*  **has** (*unknown* $name)
+public  **has** (*unknown* $name)
 
 Check if an annotation exists in a collection
 

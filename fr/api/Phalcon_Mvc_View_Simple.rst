@@ -3,9 +3,9 @@ Class **Phalcon\\Mvc\\View\\Simple**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
-This component allows to render views without hicherquical levels  
+This component allows to render views without hierarchical levels  
 
 .. code-block:: php
 
@@ -38,7 +38,7 @@ Sets views directory. Depending of your platform, always add a trailing slash or
 
 
 
-public *string*  **getViewsDir** ()
+public  **getViewsDir** ()
 
 Gets views directory
 
@@ -112,19 +112,19 @@ Returns the cache options
 
 
 
-protected :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **_createCache** ()
+protected  **_createCache** ()
 
 Create a Phalcon\\Cache based on the internal cache options
 
 
 
-public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+public  **getCache** ()
 
 Returns the cache instance used to cache
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **cache** ([*unknown* $options])
+public  **cache** ([*unknown* $options])
 
 Cache the actual view render to certain level 
 
@@ -137,7 +137,7 @@ Cache the actual view render to certain level
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setParamToView** (*string* $key, *mixed* $value)
+public  **setParamToView** (*unknown* $key, *unknown* $value)
 
 Adds parameters to views (alias of setVar) 
 
@@ -150,7 +150,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVars** (*unknown* $params, [*unknown* $merge])
+public  **setVars** (*unknown* $params, [*unknown* $merge])
 
 Set all the render params 
 
@@ -163,7 +163,7 @@ Set all the render params
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setVar** (*unknown* $key, *unknown* $value)
+public  **setVar** (*unknown* $key, *unknown* $value)
 
 Set a single view parameter 
 
@@ -188,7 +188,7 @@ Returns parameters to views
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setContent** (*unknown* $content)
+public  **setContent** (*unknown* $content)
 
 Externally sets the view content 
 
@@ -201,9 +201,9 @@ Externally sets the view content
 
 
 
-public *string*  **getContent** ()
+public  **getContent** ()
 
-Returns cached ouput from another view stage
+Returns cached output from another view stage
 
 
 
@@ -245,7 +245,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -257,7 +257,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Annotations\\Annotation**
 ==========================================
 
-* Phalcon\\Annotations\\Annotation * * Represents a single annotation in an annotations collection
+Represents a single annotation in an annotations collection
 
 
 Methods
@@ -13,7 +13,7 @@ Phalcon\\Annotations\\Annotation constructor
 
 
 
-public *string*  **getName** ()
+public  **getName** ()
 
 Returns the annotation's name
 
@@ -37,7 +37,7 @@ Returns the expression arguments
 
 
 
-public *int*  **numberArguments** ()
+public  **numberArguments** ()
 
 Returns the number of arguments that the annotation has
 

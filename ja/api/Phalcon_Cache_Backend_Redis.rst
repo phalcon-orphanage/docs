@@ -89,7 +89,7 @@ Decrement of $keyName by given $value
 
 
 
-public *boolean*  **flush** ()
+public  **flush** ()
 
 Immediately invalidates all existing items.
 
@@ -137,13 +137,13 @@ Stops the frontend without store any cached content
 
 
 
-public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
+public  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
 
 
 
-public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
+public  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
 

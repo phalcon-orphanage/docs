@@ -13,19 +13,19 @@ Creates a form registering it in the forms manager
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **get** (*unknown* $name)
+public  **get** (*unknown* $name)
 
 Returns a form by its name
 
 
 
-public *boolean*  **has** (*unknown* $name)
+public  **has** (*unknown* $name)
 
 Checks if a form is registered in the forms manager
 
 
 
-public *Phalcon\\Forms\\FormManager*  **set** (*unknown* $name, *unknown* $form)
+public  **set** (*unknown* $name, *unknown* $form)
 
 Registers a form in the Forms Manager
 

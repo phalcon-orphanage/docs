@@ -47,11 +47,29 @@ Constants
 
 *integer* **TYPE_BOOLEAN**
 
+*integer* **TYPE_DOUBLE**
+
+*integer* **TYPE_TINYBLOB**
+
+*integer* **TYPE_BLOB**
+
+*integer* **TYPE_MEDIUMBLOB**
+
+*integer* **TYPE_LONGBLOB**
+
+*integer* **TYPE_BIGINTEGER**
+
+*integer* **TYPE_JSON**
+
+*integer* **TYPE_JSONB**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**
 
 *integer* **BIND_PARAM_STR**
+
+*integer* **BIND_PARAM_BLOB**
 
 *integer* **BIND_PARAM_BOOL**
 
@@ -116,37 +134,37 @@ Phalcon\\Db\\Column constructor
 
 
 
-public *boolean*  **isUnsigned** ()
+public  **isUnsigned** ()
 
 Returns true if number column is unsigned
 
 
 
-public *boolean*  **isNotNull** ()
+public  **isNotNull** ()
 
 Not null
 
 
 
-public *boolean*  **isPrimary** ()
+public  **isPrimary** ()
 
 Column is part of the primary key?
 
 
 
-public *boolean*  **isAutoIncrement** ()
+public  **isAutoIncrement** ()
 
 Auto-Increment
 
 
 
-public *boolean*  **isNumeric** ()
+public  **isNumeric** ()
 
 Check whether column have an numeric type
 
 
 
-public *boolean*  **isFirst** ()
+public  **isFirst** ()
 
 Check whether column have first position in table
 
@@ -158,13 +176,13 @@ Check whether field absolute to position in table
 
 
 
-public *int*  **getBindType** ()
+public  **getBindType** ()
 
 Returns the type of bind handling
 
 
 
-public static *\Phalcon\Db\Column*  **__set_state** (*unknown* $data)
+public static  **__set_state** (*unknown* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
 

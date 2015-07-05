@@ -55,13 +55,13 @@ Stops the frontend without store any cached content
 
 
 
-public *boolean*  **isFresh** ()
+public  **isFresh** ()
 
 Checks whether the last cache is fresh or cached
 
 
 
-public *boolean*  **isStarted** ()
+public  **isStarted** ()
 
 Checks whether the cache has starting buffering or not
 

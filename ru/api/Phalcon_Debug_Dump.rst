@@ -7,17 +7,17 @@ Dumps information about a variable(s)
 
     <?php
 
-    $foo = 123;
-    echo (new \Phalcon\Debug\Dump())->var($foo, "foo");
+        $foo = 123;
+        echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 .. code-block:: php
 
     <?php
 
-    $foo = "string";
-    $bar = ["key" => "value"];
-    $baz = new stdClass();
-    echo (new \Phalcon\Debug\Dump())->vars($foo, $bar, $baz);
+        $foo = "string";
+        $bar = ["key" => "value"];
+        $baz = new stdClass();
+        echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 
 
@@ -40,37 +40,37 @@ Phalcon\\Debug\\Dump constructor
 
 
 
-public *string*  **all** ()
+public  **all** ()
 
-Alias of vars() method
+Alias of variables() method
 
 
 
-protected *string*  **getStyle** (*unknown* $type)
+protected  **getStyle** (*unknown* $type)
 
 Get style for type
 
 
 
-public *array*  **setStyles** ([*unknown* $styles])
+public  **setStyles** ([*unknown* $styles])
 
 Set styles for vars type
 
 
 
-public *string*  **one** (*unknown* $variable, [*unknown* $name])
+public  **one** (*unknown* $variable, [*unknown* $name])
 
-Alias of var() method
+Alias of variable() method
 
 
 
-protected *string*  **output** (*unknown* $variable, [*unknown* $name], [*unknown* $tab])
+protected  **output** (*unknown* $variable, [*unknown* $name], [*unknown* $tab])
 
 Prepare an HTML string of information about a single variable.
 
 
 
-public *string*  **var** (*unknown* $variable, [*unknown* $name])
+public  **variable** (*unknown* $variable, [*unknown* $name])
 
 Returns an HTML string of information about a single variable. 
 
@@ -78,12 +78,12 @@ Returns an HTML string of information about a single variable.
 
     <?php
 
-    echo (new \Phalcon\Debug\Dump())->var($foo, "foo");
+        echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 
 
 
-public *string*  **vars** ()
+public  **variables** ()
 
 Returns an HTML string of debugging information about any number of variables, each wrapped in a "pre" tag. 
 
@@ -91,10 +91,27 @@ Returns an HTML string of debugging information about any number of variables, e
 
     <?php
 
-    $foo = "string";
-    $bar = ["key" => "value"];
-    $baz = new stdClass();
-    echo (new \Phalcon\Debug\Dump())->vars($foo, $bar, $baz);
+        $foo = "string";
+        $bar = ["key" => "value"];
+        $baz = new stdClass();
+        echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
+
+
+
+
+public  **toJson** (*unknown* $variable)
+
+Returns an JSON string of information about a single variable. 
+
+.. code-block:: php
+
+    <?php
+
+        $foo = ["key" => "value"];
+        echo (new \Phalcon\Debug\Dump())->toJson($foo);
+        $foo = new stdClass();
+        $foo->bar = 'buz';
+        echo (new \Phalcon\Debug\Dump())->toJson($foo);
 
 
 

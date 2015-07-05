@@ -55,7 +55,7 @@ Decrement of a given key, by number $value
 
 
 
-public *boolean*  **delete** (*unknown* $keyName)
+public  **delete** (*unknown* $keyName)
 
 Deletes a value from the cache by its key
 
@@ -70,6 +70,12 @@ Query the existing cached keys
 public *boolean*  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
 
 Checks if cache exists and it hasn't expired
+
+
+
+public  **flush** ()
+
+Immediately invalidates all existing items.
 
 
 
@@ -121,13 +127,13 @@ Stops the frontend without store any cached content
 
 
 
-public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
+public  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
 
 
 
-public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
+public  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
 

@@ -39,7 +39,7 @@ Sets if the service is shared or not
 
 
 
-public *boolean*  **isShared** ()
+public  **isShared** ()
 
 Check whether the service is shared or not
 
@@ -69,7 +69,7 @@ Resolves the service
 
 
 
-public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **setParameter** (*unknown* $position, *unknown* $parameter)
+public  **setParameter** (*unknown* $position, *unknown* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
@@ -81,13 +81,13 @@ Returns a parameter in a specific position
 
 
 
-public *bool*  **isResolved** ()
+public  **isResolved** ()
 
 Returns true if the service was resolved
 
 
 
-public static :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **__set_state** (*unknown* $attributes)
+public static  **__set_state** (*unknown* $attributes)
 
 Restore the internal state of a service
 

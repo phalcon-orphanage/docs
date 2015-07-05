@@ -25,7 +25,7 @@ Sets a translation value
 
 
 
-public *boolean*  **offsetExists** (*unknown* $translateKey)
+public  **offsetExists** (*unknown* $translateKey)
 
 Check whether a translation key exists
 
@@ -40,6 +40,12 @@ Unsets a translation from the dictionary
 public *string*  **offsetGet** (*unknown* $translateKey)
 
 Returns the translation related to the given key
+
+
+
+protected  **replacePlaceholders** (*unknown* $translation, [*unknown* $placeholders])
+
+Replaces placeholders by the values passed
 
 
 

@@ -99,7 +99,7 @@ Filters the message group by field name
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of messages in the list
 
@@ -117,7 +117,7 @@ Returns the current message in the iterator
 
 
 
-public *int*  **key** ()
+public  **key** ()
 
 Returns the current position/key in the iterator
 
@@ -129,7 +129,7 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current message in the iterator is valid
 

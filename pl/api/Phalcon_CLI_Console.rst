@@ -21,7 +21,7 @@ Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
@@ -33,7 +33,7 @@ Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+public  **getEventsManager** ()
 
 Returns the internal event manager
 
@@ -79,13 +79,13 @@ Merge modules with the existing ones
 
 
 
-public *array*  **getModules** ()
+public  **getModules** ()
 
 Return the modules registered in the console
 
 
 
-public *mixed*  **handle** ([*unknown* $arguments])
+public  **handle** ([*unknown* $arguments])
 
 Handle the whole command-line tasks
 

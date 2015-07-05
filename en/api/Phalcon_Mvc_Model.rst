@@ -1,9 +1,9 @@
 Abstract class **Phalcon\\Mvc\\Model**
 ======================================
 
-*implements* :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`, :doc:`Phalcon\\Mvc\\Model\\ResultInterface <Phalcon_Mvc_Model_ResultInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.    Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.    
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).  A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.  Phalcon\\Mvc\\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.  
 
 .. code-block:: php
 
@@ -16,7 +16,7 @@ Phalcon\\Mvc\\Model connects business objects and database tables to create a pe
      if ($robot->save() == false) {
       echo "Umh, We can store robots: ";
       foreach ($robot->getMessages() as $message) {
-        echo message;
+    echo message;
       }
      } else {
       echo "Great, a new robot was saved successfully!";
@@ -56,7 +56,7 @@ Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the dependency injection container
 
@@ -68,25 +68,25 @@ Sets a custom events manager
 
 
 
-protected :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+protected  **getEventsManager** ()
 
 Returns the custom events manager
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MetaDataInterface <Phalcon_Mvc_Model_MetaDataInterface>`  **getModelsMetaData** ()
+public  **getModelsMetaData** ()
 
 Returns the models meta-data service related to the entity instance
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`  **getModelsManager** ()
+public  **getModelsManager** ()
 
 Returns the models manager related to the entity instance
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setTransaction** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+public  **setTransaction** (*unknown* $transaction)
 
 Sets a transaction related to the Model instance 
 
@@ -108,14 +108,14 @@ Sets a transaction related to the Model instance
       $robot->name = 'WALL·E';
       $robot->created_at = date('Y-m-d');
       if ($robot->save() == false) {
-        $transaction->rollback("Can't save robot");
+    $transaction->rollback("Can't save robot");
       }
     
       $robotPart = new RobotParts();
       $robotPart->setTransaction($transaction);
       $robotPart->type = 'head';
       if ($robotPart->save() == false) {
-        $transaction->rollback("Robot part cannot be saved");
+    $transaction->rollback("Robot part cannot be saved");
       }
     
       $transaction->commit();
@@ -127,79 +127,79 @@ Sets a transaction related to the Model instance
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** (*unknown* $source)
+protected  **setSource** (*unknown* $source)
 
 Sets table name which model should be mapped
 
 
 
-public *string*  **getSource** ()
+public  **getSource** ()
 
 Returns table name mapped in the model
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** (*unknown* $schema)
+protected  **setSchema** (*unknown* $schema)
 
 Sets schema name where table mapped is located
 
 
 
-public *string*  **getSchema** ()
+public  **getSchema** ()
 
 Returns schema name where table mapped is located
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*unknown* $connectionService)
+public  **setConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setReadConnectionService** (*unknown* $connectionService)
+public  **setReadConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name used to read data
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setWriteConnectionService** (*unknown* $connectionService)
+public  **setWriteConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name used to write data
 
 
 
-public *string*  **getReadConnectionService** ()
+public  **getReadConnectionService** ()
 
 Returns the DependencyInjection connection service name used to read data related the model
 
 
 
-public *string*  **getWriteConnectionService** ()
+public  **getWriteConnectionService** ()
 
 Returns the DependencyInjection connection service name used to write data related to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setDirtyState** (*unknown* $dirtyState)
+public  **setDirtyState** (*unknown* $dirtyState)
 
 Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
 
 
-public *int*  **getDirtyState** ()
+public  **getDirtyState** ()
 
 Returns one of the DIRTY_STATE_* constants telling if the record exists in the database or not
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getReadConnection** ()
+public  **getReadConnection** ()
 
 Gets the connection used to read data for the model
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **getWriteConnection** ()
+public  **getWriteConnection** ()
 
 Gets the connection used to write data to the model
 
@@ -214,16 +214,16 @@ Assigns values to a model from an array
     <?php
 
      $robot->assign(array(
-        'type' => 'mechanical',
-        'name' => 'Astro Boy',
-        'year' => 1952
+    'type' => 'mechanical',
+    'name' => 'Astro Boy',
+    'year' => 1952
      ));
     
      //assign by db row, column map needed
      $robot->assign($dbRow, array(
-        'db_type' => 'type',
-        'db_name' => 'name',
-        'db_year' => 'year'
+    'db_type' => 'type',
+    'db_name' => 'name',
+    'db_year' => 'year'
      ));
     
      //allow assign only name and year
@@ -326,7 +326,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([*unknown* $dependencyInjector])
+public static  **query** ([*unknown* $dependencyInjector])
 
 Create a criteria for a specific model
 
@@ -439,13 +439,13 @@ Allows to calculate the average value on a column matching the specified conditi
 
 
 
-public *boolean*  **fireEvent** (*unknown* $eventName)
+public  **fireEvent** (*unknown* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*unknown* $eventName)
+public  **fireEventCancel** (*unknown* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
@@ -457,7 +457,7 @@ Cancel the current operation
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **appendMessage** (*unknown* $message)
+public  **appendMessage** (*unknown* $message)
 
 Appends a customized message on the validation process 
 
@@ -472,17 +472,17 @@ Appends a customized message on the validation process
     
        public function beforeSave()
        {
-         if ($this->name == 'Peter') {
-            $message = new Message("Sorry, but a robot cannot be named Peter");
-            $this->appendMessage($message);
-         }
+     if ($this->name == 'Peter') {
+    	$message = new Message("Sorry, but a robot cannot be named Peter");
+    	$this->appendMessage($message);
+     }
        }
      }
 
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **validate** (*unknown* $validator)
+protected  **validate** (*unknown* $validator)
 
 Executes validators on every validation call 
 
@@ -505,13 +505,12 @@ Executes validators on every validation call
     		return false;
     	}
     }
-    
     }
 
 
 
 
-public *boolean*  **validationHasFailed** ()
+public  **validationHasFailed** ()
 
 Check whether validation process has generated any messages 
 
@@ -534,13 +533,12 @@ Check whether validation process has generated any messages
     		return false;
     	}
     }
-    
     }
 
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ([*unknown* $filter])
+public  **getMessages** ([*unknown* $filter])
 
 Returns all the validation messages 
 
@@ -564,31 +562,31 @@ Returns all the validation messages
 
 
 
-protected *boolean*  **_checkForeignKeysRestrict** ()
+protected  **_checkForeignKeysRestrict** ()
 
 Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
 
 
 
-protected *boolean*  **_checkForeignKeysReverseCascade** ()
+protected  **_checkForeignKeysReverseCascade** ()
 
 Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
 
 
 
-protected *boolean*  **_checkForeignKeysReverseRestrict** ()
+protected  **_checkForeignKeysReverseRestrict** ()
 
 Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
 
 
 
-protected *boolean*  **_preSave** (*unknown* $metaData, *unknown* $exists, *unknown* $identityField)
+protected  **_preSave** (*unknown* $metaData, *unknown* $exists, *unknown* $identityField)
 
 Executes internal hooks before save a record
 
 
 
-protected *boolean*  **_postSave** (*unknown* $success, *unknown* $exists)
+protected  **_postSave** (*unknown* $success, *unknown* $exists)
 
 Executes internal events after save a record
 
@@ -641,7 +639,7 @@ Inserts or updates a model instance. Returning true on success or false otherwis
 
 
 
-public *boolean*  **create** ([*unknown* $data], [*unknown* $whiteList])
+public  **create** ([*unknown* $data], [*unknown* $whiteList])
 
 Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -659,15 +657,15 @@ Inserts a model instance. If the instance already exists in the persistance it w
       //Passing an array to create
       $robot = new Robots();
       $robot->create(array(
-          'type' => 'mechanical',
-          'name' => 'Astroy Boy',
-          'year' => 1952
+      'type' => 'mechanical',
+      'name' => 'Astroy Boy',
+      'year' => 1952
       ));
 
 
 
 
-public *boolean*  **update** ([*unknown* $data], [*unknown* $whiteList])
+public  **update** ([*unknown* $data], [*unknown* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistance it will throw an exception Returning true on success or false otherwise. 
 
@@ -683,7 +681,7 @@ Updates a model instance. If the instance doesn't exist in the persistance it wi
 
 
 
-public *boolean*  **delete** ()
+public  **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise. 
 
@@ -701,13 +699,13 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 
 
-public *int*  **getOperationMade** ()
+public  **getOperationMade** ()
 
 Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
 
 
 
-public *\Phalcon\Mvc\Model*  **refresh** ()
+public  **refresh** ()
 
 Refreshes the model attributes re-querying the record from the database
 
@@ -719,7 +717,7 @@ Skips the current operation forcing a success state
 
 
 
-public *mixed*  **readAttribute** (*unknown* $attribute)
+public  **readAttribute** (*unknown* $attribute)
 
 Reads an attribute value by its name 
 
@@ -760,9 +758,8 @@ Sets a list of attributes that must be skipped from the generated INSERT/UPDATE 
     
        public function initialize()
        {
-           $this->skipAttributes(array('price'));
+       $this->skipAttributes(array('price'));
        }
-    
     }
 
 
@@ -783,9 +780,8 @@ Sets a list of attributes that must be skipped from the generated INSERT stateme
     
        public function initialize()
        {
-           $this->skipAttributesOnCreate(array('created_at'));
+       $this->skipAttributesOnCreate(array('created_at'));
        }
-    
     }
 
 
@@ -806,15 +802,36 @@ Sets a list of attributes that must be skipped from the generated UPDATE stateme
     
        public function initialize()
        {
-           $this->skipAttributesOnUpdate(array('modified_in'));
+       $this->skipAttributesOnUpdate(array('modified_in'));
        }
-    
     }
 
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasOne** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
+protected  **allowEmptyStringValues** (*unknown* $attributes)
+
+Sets a list of attributes that must be skipped from the generated UPDATE statement 
+
+.. code-block:: php
+
+    <?php
+
+    <?php
+    
+    class Robots extends \Phalcon\Mvc\Model
+    {
+    
+       public function initialize()
+       {
+       $this->allowEmptyStringValues(array('name'));
+       }
+    }
+
+
+
+
+protected  **hasOne** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a 1-1 relation between two models 
 
@@ -829,15 +846,14 @@ Setup a 1-1 relation between two models
     
        public function initialize()
        {
-           $this->hasOne('id', 'RobotsDescription', 'robots_id');
+       $this->hasOne('id', 'RobotsDescription', 'robots_id');
        }
-    
     }
 
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **belongsTo** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
+protected  **belongsTo** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a relation reverse 1-1  between two models 
 
@@ -852,7 +868,7 @@ Setup a relation reverse 1-1  between two models
     
        public function initialize()
        {
-           $this->belongsTo('robots_id', 'Robots', 'id');
+       $this->belongsTo('robots_id', 'Robots', 'id');
        }
     
     }
@@ -860,7 +876,7 @@ Setup a relation reverse 1-1  between two models
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model\\Relation <Phalcon_Mvc_Model_Relation>`  **hasMany** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
+protected  **hasMany** (*unknown* $fields, *unknown* $referenceModel, *unknown* $referencedFields, [*unknown* $options])
 
 Setup a relation 1-n between two models 
 
@@ -875,9 +891,8 @@ Setup a relation 1-n between two models
     
        public function initialize()
        {
-           $this->hasMany('id', 'RobotsParts', 'robots_id');
+       $this->hasMany('id', 'RobotsParts', 'robots_id');
        }
-    
     }
 
 
@@ -898,8 +913,8 @@ Setup a relation n-n between two models through an intermediate relation
     
        public function initialize()
        {
-           //Setup a many-to-many relation to Parts through RobotsParts
-           $this->hasManyToMany(
+       //Setup a many-to-many relation to Parts through RobotsParts
+       $this->hasManyToMany(
     		'id',
     		'RobotsParts',
     		'robots_id',
@@ -908,13 +923,12 @@ Setup a relation n-n between two models through an intermediate relation
     		'id'
     	);
        }
-    
     }
 
 
 
 
-protected  **addBehavior** (*unknown* $behavior)
+public  **addBehavior** (*unknown* $behavior)
 
 Setups a behavior in a model 
 
@@ -938,7 +952,6 @@ Setups a behavior in a model
     		)
     	)));
        }
-    
     }
 
 
@@ -961,7 +974,6 @@ Sets if the model must keep the original record snapshot in memory
        {
     	$this->keepSnapshots(true);
        }
-    
     }
 
 
@@ -973,13 +985,13 @@ Sets the record's snapshot data. This method is used internally to set snapshot 
 
 
 
-public *boolean*  **hasSnapshotData** ()
+public  **hasSnapshotData** ()
 
 Checks if the object has internal snapshot data
 
 
 
-public *array*  **getSnapshotData** ()
+public  **getSnapshotData** ()
 
 Returns the internal snapshot data
 
@@ -991,7 +1003,7 @@ Check if a specific attribute has changed This only works if the model is keepin
 
 
 
-public *array*  **getChangedFields** ()
+public  **getChangedFields** ()
 
 Returns a list of changed values
 
@@ -1014,7 +1026,6 @@ Sets if a model must use dynamic update instead of the all-field update
        {
     	$this->useDynamicUpdate(true);
        }
-    
     }
 
 
@@ -1032,7 +1043,7 @@ Returns related records defined relations depending on the method name
 
 
 
-public *mixed*  **__call** (*unknown* $method, [*unknown* $arguments])
+public *mixed*  **__call** (*unknown* $method, *unknown* $arguments)
 
 Handles method calls when a method is not implemented
 
@@ -1056,13 +1067,13 @@ Magic method to get related records using the relation alias as a property
 
 
 
-public *boolean*  **__isset** (*unknown* $property)
+public  **__isset** (*unknown* $property)
 
 Magic method to check if a property is a valid relation
 
 
 
-public *string*  **serialize** ()
+public  **serialize** ()
 
 Serializes the object ignoring connections, services, related objects or static properties
 
@@ -1074,7 +1085,7 @@ Unserializes the object from a serialized string
 
 
 
-public *array*  **dump** ()
+public  **dump** ()
 
 Returns a simple representation of the object that can be used with var_dump 
 

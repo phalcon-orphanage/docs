@@ -38,37 +38,37 @@ Starts the profile of a SQL sentence
 
 
 
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **stopProfile** ()
+public  **stopProfile** ()
 
 Stops the active profile
 
 
 
-public *integer*  **getNumberTotalStatements** ()
+public  **getNumberTotalStatements** ()
 
 Returns the total number of SQL statements processed
 
 
 
-public *double*  **getTotalElapsedSeconds** ()
+public  **getTotalElapsedSeconds** ()
 
 Returns the total time in seconds spent by the profiles
 
 
 
-public :doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` [] **getProfiles** ()
+public  **getProfiles** ()
 
 Returns all the processed profiles
 
 
 
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **reset** ()
+public  **reset** ()
 
 Resets the profiler, cleaning up all the profiles
 
 
 
-public :doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>`  **getLastProfile** ()
+public  **getLastProfile** ()
 
 Returns the last profile executed in the profiler
 

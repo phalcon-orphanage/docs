@@ -33,7 +33,7 @@ Sets the form's action
 
 
 
-public *string*  **getAction** ()
+public  **getAction** ()
 
 Returns the form's action
 
@@ -51,7 +51,7 @@ Returns the value of an option if present
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOptions** (*unknown* $options)
+public  **setUserOptions** (*unknown* $options)
 
 Sets options for the element
 
@@ -75,7 +75,7 @@ Returns the entity related to the model
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` [] **getElements** ()
+public  **getElements** ()
 
 Returns the form elements added to the form
 
@@ -93,7 +93,7 @@ Validates the form
 
 
 
-public *array*  **getMessages** ([*unknown* $byItemName])
+public  **getMessages** ([*unknown* $byItemName])
 
 Returns the messages generated in the validation
 
@@ -123,19 +123,19 @@ Renders a specific item in the form
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **get** (*unknown* $name)
+public  **get** (*unknown* $name)
 
 Returns an element added to the form by its name
 
 
 
-public *string*  **label** (*unknown* $name, [*unknown* $attributes])
+public  **label** (*unknown* $name, [*unknown* $attributes])
 
 Generate the label of a element added to the form including HTML
 
 
 
-public *string*  **getLabel** (*unknown* $name)
+public  **getLabel** (*unknown* $name)
 
 Returns a label for an element
 
@@ -147,13 +147,13 @@ Gets a value from the internal related entity or from the default value
 
 
 
-public *boolean*  **has** (*unknown* $name)
+public  **has** (*unknown* $name)
 
 Check if the form contains an element
 
 
 
-public *boolean*  **remove** (*unknown* $name)
+public  **remove** (*unknown* $name)
 
 Removes an element from the form
 
@@ -165,7 +165,7 @@ Clears every element in the form to its default value
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of elements in the form
 
@@ -177,13 +177,13 @@ Rewinds the internal iterator
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **current** ()
+public  **current** ()
 
 Returns the current element in the iterator
 
 
 
-public *int*  **key** ()
+public  **key** ()
 
 Returns the current position/key in the iterator
 
@@ -195,7 +195,7 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current element in the iterator is valid
 
@@ -207,7 +207,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -219,7 +219,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

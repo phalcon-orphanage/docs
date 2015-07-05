@@ -67,19 +67,7 @@ Unsets an element in the registry
 
 
 
-final public  **__set** (*unknown* $offset, *unknown* $value)
-
-Sets an element in the registry
-
-
-
-final public  **__get** (*unknown* $offset)
-
-Returns an index in the registry
-
-
-
-final public *int*  **count** ()
+final public  **count** ()
 
 Checks how many elements are in the register
 
@@ -91,7 +79,7 @@ Moves cursor to next row in the registry
 
 
 
-final public *int*  **key** ()
+final public  **key** ()
 
 Gets pointer number of active row in the registry
 
@@ -111,7 +99,29 @@ Checks if the iterator is valid
 
 public  **current** ()
 
+Obtains the current value in the internal iterator
 
 
+
+final public  **__set** (*unknown* $key, *unknown* $value)
+
+Sets an element in the registry
+
+
+
+final public  **__get** (*unknown* $key)
+
+Returns an index in the registry
+
+
+
+final public  **__isset** (*unknown* $key)
+
+...
+
+
+final public  **__unset** (*unknown* $key)
+
+...
 
 

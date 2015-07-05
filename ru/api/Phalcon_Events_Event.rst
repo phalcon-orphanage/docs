@@ -55,7 +55,7 @@ Stops the event preventing propagation
 
 
 
-public *boolean*  **isStopped** ()
+public  **isStopped** ()
 
 Check whether the event is currently stopped
 

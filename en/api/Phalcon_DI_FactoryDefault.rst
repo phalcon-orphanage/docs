@@ -3,7 +3,7 @@ Class **Phalcon\\Di\\FactoryDefault**
 
 *extends* class :doc:`Phalcon\\Di <Phalcon_Di>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, ArrayAccess, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
+*implements* ArrayAccess, :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
 This is a variant of the standard Phalcon\\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
@@ -17,13 +17,25 @@ Phalcon\\Di\\FactoryDefault constructor
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
+public  **setInternalEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di
+
+Sets the internal event manager
+
+
+
+public  **getInternalEventsManager** () inherited from Phalcon\\Di
+
+Returns the internal event manager
+
+
+
+public  **set** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
 
 Registers a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setShared** (*unknown* $name, *unknown* $definition) inherited from Phalcon\\Di
+public  **setShared** (*unknown* $name, *unknown* $definition) inherited from Phalcon\\Di
 
 Registers an "always shared" service in the services container
 
@@ -35,31 +47,31 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` |false **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
+public  **attempt** (*unknown* $name, *unknown* $definition, [*unknown* $shared]) inherited from Phalcon\\Di
 
 Attempts to register a service in the services container Only is successful if a service hasn"t been registered previously with the same name
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setRaw** (*unknown* $name, *unknown* $rawDefinition) inherited from Phalcon\\Di
+public  **setRaw** (*unknown* $name, *unknown* $rawDefinition) inherited from Phalcon\\Di
 
 Sets a service using a raw Phalcon\\Di\\Service definition
 
 
 
-public *mixed*  **getRaw** (*unknown* $name) inherited from Phalcon\\Di
+public  **getRaw** (*unknown* $name) inherited from Phalcon\\Di
 
 Returns a service definition without resolving
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*unknown* $name) inherited from Phalcon\\Di
+public  **getService** (*unknown* $name) inherited from Phalcon\\Di
 
 Returns a Phalcon\\Di\\Service instance
 
 
 
-public *mixed*  **get** (*unknown* $name, [*unknown* $parameters]) inherited from Phalcon\\Di
+public  **get** (*unknown* $name, [*unknown* $parameters]) inherited from Phalcon\\Di
 
 Resolves the service based on its configuration
 
@@ -71,25 +83,25 @@ Resolves a service, the resolved service is stored in the DI, subsequent request
 
 
 
-public *boolean*  **has** (*unknown* $name) inherited from Phalcon\\Di
+public  **has** (*unknown* $name) inherited from Phalcon\\Di
 
 Check whether the DI contains a service by a name
 
 
 
-public *boolean*  **wasFreshInstance** () inherited from Phalcon\\Di
+public  **wasFreshInstance** () inherited from Phalcon\\Di
 
 Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
 
 
-public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>` [] **getServices** () inherited from Phalcon\\Di
+public  **getServices** () inherited from Phalcon\\Di
 
 Return the services registered in the DI
 
 
 
-public *boolean*  **offsetExists** (*unknown* $name) inherited from Phalcon\\Di
+public  **offsetExists** (*unknown* $name) inherited from Phalcon\\Di
 
 Check if a service is registered using the array syntax
 
@@ -127,18 +139,6 @@ Removes a service from the services container using the array syntax
 
 
 
-public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di
-
-Sets the event manager
-
-
-
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di
-
-Returns the internal event manager
-
-
-
 public *mixed*  **__call** (*unknown* $method, [*unknown* $arguments]) inherited from Phalcon\\Di
 
 Magic method to get or set services using setters/getters
@@ -151,7 +151,7 @@ Set a default dependency injection container to be obtained into static methods
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** () inherited from Phalcon\\Di
+public static  **getDefault** () inherited from Phalcon\\Di
 
 Return the lastest DI created
 

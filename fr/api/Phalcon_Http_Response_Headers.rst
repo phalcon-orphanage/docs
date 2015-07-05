@@ -3,9 +3,6 @@ Class **Phalcon\\Http\\Response\\Headers**
 
 *implements* :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`
 
-This class is a bag to manage the response headers
-
-
 Methods
 -------
 
@@ -33,7 +30,7 @@ Removes a header to be sent at the end of the request
 
 
 
-public *boolean*  **send** ()
+public  **send** ()
 
 Sends the headers to the client
 
@@ -45,13 +42,13 @@ Reset set headers
 
 
 
-public *array*  **toArray** ()
+public  **toArray** ()
 
 Returns the current headers as an array
 
 
 
-public static :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **__set_state** (*unknown* $data)
+public static  **__set_state** (*unknown* $data)
 
 Restore a Phalcon\\Http\\Response\\Headers object
 

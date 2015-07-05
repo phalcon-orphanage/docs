@@ -44,6 +44,8 @@ Constants
 
 *integer* **MODELS_DEFAULT_VALUES**
 
+*integer* **MODELS_EMPTY_STRING_VALUES**
+
 *integer* **MODELS_COLUMN_MAP**
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
@@ -63,7 +65,7 @@ Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
@@ -75,13 +77,13 @@ Set the meta-data extraction strategy
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MetaData\\StrategyInterface <Phalcon_Mvc_Model_MetaData_StrategyInterface>`  **getStrategy** ()
+public  **getStrategy** ()
 
 Return the strategy to obtain the meta-data
 
 
 
-final public *array*  **readMetaData** (*unknown* $model)
+final public  **readMetaData** (*unknown* $model)
 
 Reads the complete meta-data for certain model 
 
@@ -94,15 +96,15 @@ Reads the complete meta-data for certain model
 
 
 
-final public *mixed*  **readMetaDataIndex** (*unknown* $model, *unknown* $index)
+final public  **readMetaDataIndex** (*unknown* $model, *unknown* $index)
 
-Reads meta-data for certain model using a MODEL_* constant 
+Reads meta-data for certain model 
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->writeColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP, array('leName' => 'name')));
+    print_r($metaData->readMetaDataIndex(new Robots(), 0);
 
 
 
@@ -120,7 +122,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 
 
-final public *array*  **readColumnMap** (*unknown* $model)
+final public  **readColumnMap** (*unknown* $model)
 
 Reads the ordered/reversed column map for certain model 
 
@@ -146,7 +148,7 @@ Reads column-map information for certain model using a MODEL_* constant
 
 
 
-public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getAttributes** (*unknown* $model)
 
 Returns table attributes names (fields) 
 
@@ -159,7 +161,7 @@ Returns table attributes names (fields)
 
 
 
-public *array*  **getPrimaryKeyAttributes** (*unknown* $model)
+public  **getPrimaryKeyAttributes** (*unknown* $model)
 
 Returns an array of fields which are part of the primary key 
 
@@ -172,7 +174,7 @@ Returns an array of fields which are part of the primary key
 
 
 
-public *array*  **getNonPrimaryKeyAttributes** (*unknown* $model)
+public  **getNonPrimaryKeyAttributes** (*unknown* $model)
 
 Returns an array of fields which are not part of the primary key 
 
@@ -185,7 +187,7 @@ Returns an array of fields which are not part of the primary key
 
 
 
-public *array*  **getNotNullAttributes** (*unknown* $model)
+public  **getNotNullAttributes** (*unknown* $model)
 
 Returns an array of not null attributes 
 
@@ -198,7 +200,7 @@ Returns an array of not null attributes
 
 
 
-public *array*  **getDataTypes** (*unknown* $model)
+public  **getDataTypes** (*unknown* $model)
 
 Returns attributes and their data types 
 
@@ -211,7 +213,7 @@ Returns attributes and their data types
 
 
 
-public *array*  **getDataTypesNumeric** (*unknown* $model)
+public  **getDataTypesNumeric** (*unknown* $model)
 
 Returns attributes which types are numerical 
 
@@ -237,7 +239,7 @@ Returns the name of identity field (if one is present)
 
 
 
-public *array*  **getBindTypes** (*unknown* $model)
+public  **getBindTypes** (*unknown* $model)
 
 Returns attributes and their bind data types 
 
@@ -250,7 +252,7 @@ Returns attributes and their bind data types
 
 
 
-public *array*  **getAutomaticCreateAttributes** (*unknown* $model)
+public  **getAutomaticCreateAttributes** (*unknown* $model)
 
 Returns attributes that must be ignored from the INSERT SQL generation 
 
@@ -263,7 +265,7 @@ Returns attributes that must be ignored from the INSERT SQL generation
 
 
 
-public *array*  **getAutomaticUpdateAttributes** (*unknown* $model)
+public  **getAutomaticUpdateAttributes** (*unknown* $model)
 
 Returns attributes that must be ignored from the UPDATE SQL generation 
 
@@ -302,7 +304,33 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public *array*  **getDefaultValues** (*unknown* $model)
+public  **setEmptyStringAttributes** (*unknown* $model, *unknown* $attributes)
+
+Set the attributes that allow empty string values 
+
+.. code-block:: php
+
+    <?php
+
+    $metaData->setEmptyStringAttributes(new Robots(), array('name' => true));
+
+
+
+
+public  **getEmptyStringAttributes** (*unknown* $model)
+
+Returns attributes allow empty strings 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getEmptyStringAttributes(new Robots()));
+
+
+
+
+public  **getDefaultValues** (*unknown* $model)
 
 Returns attributes (which have default values) and their default values 
 
@@ -315,7 +343,7 @@ Returns attributes (which have default values) and their default values
 
 
 
-public *array*  **getColumnMap** (*unknown* $model)
+public  **getColumnMap** (*unknown* $model)
 
 Returns the column map if any 
 
@@ -328,7 +356,7 @@ Returns the column map if any
 
 
 
-public *array*  **getReverseColumnMap** (*unknown* $model)
+public  **getReverseColumnMap** (*unknown* $model)
 
 Returns the reverse column map if any 
 
@@ -341,7 +369,7 @@ Returns the reverse column map if any
 
 
 
-public *boolean*  **hasAttribute** (*unknown* $model, *unknown* $attribute)
+public  **hasAttribute** (*unknown* $model, *unknown* $attribute)
 
 Check if a model has certain attribute 
 
@@ -354,7 +382,7 @@ Check if a model has certain attribute
 
 
 
-public *boolean*  **isEmpty** ()
+public  **isEmpty** ()
 
 Checks if the internal meta-data container is empty 
 

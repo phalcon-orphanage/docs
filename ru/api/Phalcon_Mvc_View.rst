@@ -3,7 +3,7 @@ Class **Phalcon\\Mvc\\View**
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`, :doc:`Phalcon\\Mvc\\ViewBaseInterface <Phalcon_Mvc_ViewBaseInterface>`
 
 Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.  
 
@@ -68,19 +68,19 @@ Phalcon\\Mvc\\View constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setViewsDir** (*unknown* $viewsDir)
+public  **setViewsDir** (*unknown* $viewsDir)
 
 Sets the views directory. Depending of your platform, always add a trailing slash or backslash
 
 
 
-public *string*  **getViewsDir** ()
+public  **getViewsDir** ()
 
 Gets views directory
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setLayoutsDir** (*unknown* $layoutsDir)
+public  **setLayoutsDir** (*unknown* $layoutsDir)
 
 Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
 
@@ -93,13 +93,13 @@ Sets the layouts sub-directory. Must be a directory under the views directory. D
 
 
 
-public *string*  **getLayoutsDir** ()
+public  **getLayoutsDir** ()
 
 Gets the current layouts sub-directory
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setPartialsDir** (*unknown* $partialsDir)
+public  **setPartialsDir** (*unknown* $partialsDir)
 
 Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash 
 
@@ -112,13 +112,13 @@ Sets a partials sub-directory. Must be a directory under the views directory. De
 
 
 
-public *string*  **getPartialsDir** ()
+public  **getPartialsDir** ()
 
 Gets the current partials sub-directory
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setBasePath** (*unknown* $basePath)
+public  **setBasePath** (*unknown* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash 
 
@@ -131,7 +131,7 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setRenderLevel** (*unknown* $level)
+public  **setRenderLevel** (*unknown* $level)
 
 Sets the render level for the view 
 
@@ -159,7 +159,7 @@ Disables a specific level of rendering
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setMainView** (*unknown* $viewPath)
+public  **setMainView** (*unknown* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory 
 
@@ -173,13 +173,13 @@ Sets default view name. Must be a file without extension in the views directory
 
 
 
-public *string*  **getMainView** ()
+public  **getMainView** ()
 
 Returns the name of the main view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setLayout** (*unknown* $layout)
+public  **setLayout** (*unknown* $layout)
 
 Change the layout to be used instead of using the name of the latest controller name 
 
@@ -192,7 +192,7 @@ Change the layout to be used instead of using the name of the latest controller 
 
 
 
-public *string*  **getLayout** ()
+public  **getLayout** ()
 
 Returns the name of the main view
 
@@ -204,7 +204,7 @@ Sets a template before the controller layout
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cleanTemplateBefore** ()
+public  **cleanTemplateBefore** ()
 
 Resets any "template before" layouts
 
@@ -216,7 +216,7 @@ Sets a "template after" controller layout
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cleanTemplateAfter** ()
+public  **cleanTemplateAfter** ()
 
 Resets any template before layouts
 
@@ -291,13 +291,13 @@ Gets extra parameters of the action rendered
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **start** ()
+public  **start** ()
 
 Starts rendering process enabling the output buffering
 
 
 
-protected *array*  **_loadTemplateEngines** ()
+protected  **_loadTemplateEngines** ()
 
 Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
 
@@ -309,7 +309,7 @@ Checks whether view exists on registered extensions and render it
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **registerEngines** (*unknown* $engines)
+public  **registerEngines** (*unknown* $engines)
 
 Register templating engines 
 
@@ -326,13 +326,13 @@ Register templating engines
 
 
 
-public *bolean*  **exists** (*unknown* $view)
+public  **exists** (*unknown* $view)
 
 Checks whether view exists
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **render** (*unknown* $controllerName, *unknown* $actionName, [*unknown* $params])
+public  **render** (*unknown* $controllerName, *unknown* $actionName, [*unknown* $params])
 
 Executes render process from dispatching data 
 
@@ -425,25 +425,25 @@ Perform the automatic rendering returning the output as a string
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **finish** ()
+public  **finish** ()
 
 Finishes the render process by stopping the output buffering
 
 
 
-protected :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **_createCache** ()
+protected  **_createCache** ()
 
 Create a Phalcon\\Cache based on the internal cache options
 
 
 
-public *boolean*  **isCaching** ()
+public  **isCaching** ()
 
 Check if the component is currently caching the output content
 
 
 
-public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+public  **getCache** ()
 
 Returns the cache instance used to cache
 
@@ -462,7 +462,7 @@ Cache the actual view render to certain level
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setContent** (*unknown* $content)
+public  **setContent** (*unknown* $content)
 
 Externally sets the view content 
 
@@ -475,31 +475,31 @@ Externally sets the view content
 
 
 
-public *string*  **getContent** ()
+public  **getContent** ()
 
 Returns cached output from another view stage
 
 
 
-public *string*  **getActiveRenderPath** ()
+public  **getActiveRenderPath** ()
 
 Returns the path of the view that is currently rendered
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disable** ()
+public  **disable** ()
 
 Disables the auto-rendering process
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enable** ()
+public  **enable** ()
 
 Enables the auto-rendering process
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **reset** ()
+public  **reset** ()
 
 Resets the view component to its factory default values
 
@@ -531,9 +531,22 @@ Magic method to retrieve a variable passed to the view
 
 
 
-public *boolean*  **isDisabled** ()
+public  **isDisabled** ()
 
 Whether automatic rendering is enabled
+
+
+
+public *boolean*  **__isset** (*unknown* $key)
+
+Magic method to retrieve if a variable is set in the view 
+
+.. code-block:: php
+
+    <?php
+
+      echo isset($this->view->products);
+
 
 
 
@@ -543,7 +556,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\Di\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
@@ -555,7 +568,7 @@ Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 

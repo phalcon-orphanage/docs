@@ -34,7 +34,7 @@ Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the internal dependency injector
 
@@ -58,7 +58,7 @@ Sets the default action name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setDefaults** (*unknown* $defaults)
+public  **setDefaults** (*unknown* $defaults)
 
 Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route 
 
@@ -93,19 +93,19 @@ Adds a route to the router
 
 
 
-public *string*  **getModuleName** ()
+public  **getModuleName** ()
 
 Returns proccesed module name
 
 
 
-public *string*  **getTaskName** ()
+public  **getTaskName** ()
 
 Returns proccesed task name
 
 
 
-public *string*  **getActionName** ()
+public  **getActionName** ()
 
 Returns proccesed action name
 
@@ -117,7 +117,7 @@ Returns proccesed extra params
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  **getMatchedRoute** ()
+public  **getMatchedRoute** ()
 
 Returns the route that matchs the handled URI
 
@@ -129,13 +129,13 @@ Returns the sub expressions in the regular expression matched
 
 
 
-public *bool*  **wasMatched** ()
+public  **wasMatched** ()
 
 Checks if the router macthes any of the defined routes
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>` [] **getRoutes** ()
+public  **getRoutes** ()
 
 Returns all the routes defined in the router
 
@@ -147,7 +147,7 @@ Returns a route object by its id
 
 
 
-public :doc:`Phalcon\\Cli\\Router\\Route <Phalcon_Cli_Router_Route>`  | boolean **getRouteByName** (*unknown* $name)
+public  **getRouteByName** (*unknown* $name)
 
 Returns a route object by its name
 

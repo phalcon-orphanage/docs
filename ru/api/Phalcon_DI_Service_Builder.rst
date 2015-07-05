@@ -13,7 +13,7 @@ Resolves a constructor/call parameter
 
 
 
-private *array*  **_buildParameters** (*unknown* $dependencyInjector, *unknown* $arguments)
+private  **_buildParameters** (*unknown* $dependencyInjector, *unknown* $arguments)
 
 Resolves an array of parameters
 

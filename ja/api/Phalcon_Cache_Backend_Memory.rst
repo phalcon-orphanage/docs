@@ -3,7 +3,7 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 
 *extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
-*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`
+*implements* :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`, Serializable
 
 Stores content in memory. Data is lost when the request is finished  
 
@@ -69,9 +69,21 @@ Decrement of $keyName by given $value
 
 
 
-public *boolean*  **flush** ()
+public  **flush** ()
 
 Immediately invalidates all existing items.
+
+
+
+public  **serialize** ()
+
+Required for interface \\Serializable
+
+
+
+public  **unserialize** (*unknown* $data)
+
+Required for interface \\Serializable
 
 
 
@@ -123,13 +135,13 @@ Stops the frontend without store any cached content
 
 
 
-public *boolean*  **isFresh** () inherited from Phalcon\\Cache\\Backend
+public  **isFresh** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the last cache is fresh or cached
 
 
 
-public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
+public  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
 

@@ -1,6 +1,8 @@
 Class **Phalcon\\Acl\\Role**
 ============================
 
+*implements* :doc:`Phalcon\\Acl\\RoleInterface <Phalcon_Acl_RoleInterface>`
+
 This class defines role entity and its description
 
 

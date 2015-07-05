@@ -43,13 +43,13 @@ Discards any kind of frontend data input. This frontend does not have expiration
 Methods
 -------
 
-public *int*  **getLifetime** ()
+public  **getLifetime** ()
 
 Returns cache lifetime, always one second expiring content
 
 
 
-public *boolean*  **isBuffering** ()
+public  **isBuffering** ()
 
 Check whether if frontend is buffering output, always false
 

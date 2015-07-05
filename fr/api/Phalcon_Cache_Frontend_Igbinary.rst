@@ -52,13 +52,13 @@ Phalcon\\Cache\\Frontend\\Data constructor
 
 
 
-public *integer*  **getLifetime** ()
+public  **getLifetime** ()
 
 Returns the cache lifetime
 
 
 
-public *boolean*  **isBuffering** ()
+public  **isBuffering** ()
 
 Check whether if frontend is buffering output
 

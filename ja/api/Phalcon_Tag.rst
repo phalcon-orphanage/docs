@@ -32,13 +32,13 @@ Constants
 Methods
 -------
 
-public static  **getEscaper** (*unknown* $params)
+public static *EscaperInterface*  **getEscaper** (*unknown* $params)
 
 Obtains the 'escaper' service if required
 
 
 
-public static *string*  **renderAttributes** (*unknown* $code, *unknown* $attributes)
+public static  **renderAttributes** (*unknown* $code, *unknown* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
@@ -50,19 +50,19 @@ Sets the dependency injector container.
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public static  **getDI** ()
 
 Internally gets the request dispatcher
 
 
 
-public static :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`  **getUrlService** ()
+public static  **getUrlService** ()
 
 Returns a URL service from the default DI
 
 
 
-public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
+public static  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
 
@@ -471,7 +471,7 @@ Volt syntax:
 
 
 
-public static *string*  **endForm** ()
+public static  **endForm** ()
 
 Builds a HTML close FORM tag
 
@@ -515,7 +515,7 @@ Prepends a text to current document title
 
 
 
-public static *string*  **getTitle** ([*unknown* $tags])
+public static  **getTitle** ([*unknown* $tags])
 
 Gets the current document title 
 
@@ -534,7 +534,7 @@ Gets the current document title
 
 
 
-public static *string*  **getTitleSeparator** ()
+public static  **getTitleSeparator** ()
 
 Gets the current document title separator 
 
@@ -642,7 +642,7 @@ Set the document type of content
 
 
 
-public static *string*  **getDocType** ()
+public static  **getDocType** ()
 
 Get the document type declaration of content
 
@@ -661,7 +661,7 @@ Builds a HTML tag
 
 
 
-public static *string*  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
+public static  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
 
 Builds a HTML tag closing tag 
 

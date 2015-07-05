@@ -89,7 +89,7 @@ abstract public  **addColumn** (*unknown* $tableName, *unknown* $schemaName, *un
 ...
 
 
-abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column)
+abstract public  **modifyColumn** (*unknown* $tableName, *unknown* $schemaName, *unknown* $column, [*unknown* $currentColumn])
 
 ...
 
