@@ -64,7 +64,7 @@ W tym przykładzie użyjemy modułu przepisywania dla Apache. Stwórzmy kilka re
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Wszystkie żądania do projektu zostaną przepisane do folderu public/ czyniąc go głównym folderem. Ten etap zapewnia ukrycie wewnętrznych folderów projektu od widoku publicznego, eliminując różnego typu zagrożenia bezpieczeństwa.
@@ -78,7 +78,7 @@ Drugi zestaw reguł sprawdzi czy żądany plik istnieje i, jeśli istnieje, nie 
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Bootstrap

@@ -463,7 +463,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 The following example shows how to use this component in stand-alone mode:
 

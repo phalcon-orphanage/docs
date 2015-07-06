@@ -418,7 +418,7 @@ convertメソッドを使うことで、ルートパラメーターを、ディ�
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 以下は、ルーターコンポーネントを単独で使用する方法です:
 

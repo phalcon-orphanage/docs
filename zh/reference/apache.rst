@@ -30,7 +30,7 @@ Apache 下配置 Phalcon（Configuring Apache for Phalcon）
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 然后第二个.htaccess位于public/下，并将全部的URI重定向到public/index.php文件。
@@ -43,7 +43,7 @@ Apache 下配置 Phalcon（Configuring Apache for Phalcon）
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 如果你不想使用这些.htaccess文件，你可以将这些配置移到apache的主配置文件中：
@@ -55,14 +55,14 @@ Apache 下配置 Phalcon（Configuring Apache for Phalcon）
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>

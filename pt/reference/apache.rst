@@ -30,7 +30,7 @@ Esse é o caso mais comum, a aplicação é instalada em qualquer diretório sob
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 Agora o segundo .htaccess é localizado no diretório public/, este contem os re-writes de todas URIs para o public/index.php:
@@ -43,7 +43,7 @@ Agora o segundo .htaccess é localizado no diretório public/, este contem os re
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Se você não quiser usar o .htaccess, você pode mover essas configurações para o arquivo principal de configuração do apache:
@@ -55,14 +55,14 @@ Se você não quiser usar o .htaccess, você pode mover essas configurações pa
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>
