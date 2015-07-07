@@ -1,4 +1,4 @@
-Tutorial 3: Creating a Simple REST API
+Tutorial 7: Creating a Simple REST API
 ======================================
 In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
 different HTTP methods:
