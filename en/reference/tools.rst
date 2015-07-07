@@ -65,29 +65,31 @@ You could add the parameter *--help* to get help on the usage of a certain scrip
 
 .. code-block:: sh
 
-Phalcon DevTools (1.2.3)
+    $ phalcon project --help
 
-Help:
-  Creates a project
-
-Usage:
-  project [name] [type] [directory] [enable-webtools]
-
-Arguments:
-  help	Shows this help text
-
-Example
-  phalcon project store simple
-
-Options:
- --name               Name of the new project
- --enable-webtools    Determines if webtools should be enabled [optional]
- --directory=s        Base path on which project will be created [optional]
- --type=s             Type of the application to be generated (micro, simple, modules)
- --template-path      Specify a template path [optional]
- --use-config-ini     Use a ini file as configuration file [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --help               Shows this help
+    Phalcon DevTools (1.2.3)
+    
+    Help:
+      Creates a project
+    
+    Usage:
+      project [name] [type] [directory] [enable-webtools]
+    
+    Arguments:
+      help    Shows this help text
+    
+    Example
+      phalcon project store simple
+    
+    Options:
+     --name               Name of the new project
+     --enable-webtools    Determines if webtools should be enabled [optional]
+     --directory=s        Base path on which project will be created [optional]
+     --type=s             Type of the application to be generated (micro, simple, modules)
+     --template-path      Specify a template path [optional]
+     --use-config-ini     Use a ini file as configuration file [optional]
+    --trace              Shows the trace of the framework in case of exception. [optional]
+    --help               Shows this help
 
 Accessing the project from the web server will show you:
 
