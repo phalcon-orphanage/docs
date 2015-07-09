@@ -202,7 +202,8 @@ class ApiGenerator
                         if ($matches[1] == 'param') {
                             $parts = preg_split('/[ \t]+/', $content);
                             if (count($parts) == 2) {
-                                $ret['parameters'][$parts[1]] = trim($parts[0]);
+                                $name = "$" . str_replace("$", "", $parts[1]);
+                                $ret['parameters'][$name] = trim($parts[0]);
                             } else {
                                 //throw new Exception("Failed proccessing parameters in ".$className.'::'.$methodName);
                             }
