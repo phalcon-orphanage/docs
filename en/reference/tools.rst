@@ -88,8 +88,8 @@ You could add the parameter *--help* to get help on the usage of a certain scrip
      --type=s             Type of the application to be generated (micro, simple, modules)
      --template-path      Specify a template path [optional]
      --use-config-ini     Use a ini file as configuration file [optional]
-    --trace              Shows the trace of the framework in case of exception. [optional]
-    --help               Shows this help
+     --trace              Shows the trace of the framework in case of exception. [optional]
+     --help               Shows this help
 
 Accessing the project from the web server will show you:
 
