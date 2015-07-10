@@ -1772,12 +1772,13 @@ Phalcon пытается получить сгенерированное зна�
     <?php
 
     use Phalcon\Mvc\Model\Validator,
-        Phalcon\Mvc\Model\ValidatorInterface;
+        Phalcon\Mvc\Model\ValidatorInterface,
+        Phalcon\Mvc\EntityInterface;
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
 
-        public function validate($model)
+        public function validate(EntityInterface $model)
         {
             $field = $this->getOption('field');
 
