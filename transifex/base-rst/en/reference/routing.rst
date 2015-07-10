@@ -438,7 +438,7 @@
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 
 %{routing_57b493be47ed19be107d98ad207df3e6}%

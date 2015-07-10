@@ -34,7 +34,7 @@ PhalconのためのApacheの設定
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 2つめの .htaccess ファイルは、public/ ディレクトリに配置し、すべてのURIを public/index.php ファイルにリライトします。
@@ -47,7 +47,7 @@ PhalconのためのApacheの設定
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 もし .htaccessファイルを使用したくない場合は、これらの設定を Apacheのメインの設定ファイルに移動させることができます。
@@ -59,14 +59,14 @@ PhalconのためのApacheの設定
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>

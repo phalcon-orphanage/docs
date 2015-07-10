@@ -445,7 +445,7 @@ URL: /admin/users/edit/sonny, будут обработан как:
     RewriteEngine On
     RewriteCond   %{REQUEST_FILENAME} !-d
     RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^(.*)$ index.php?_url=/$1 [QSA,L]
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 
 В следующем примере показано, как использовать этот компонент автономно:
 

@@ -36,7 +36,7 @@ cualquier petición a la carpeta raiz de la aplicación (public/).
     <IfModule mod_rewrite.c>
         RewriteEngine on
         RewriteRule  ^$ public/    [L]
-        RewriteRule  (.*) public/$1 [L]
+        RewriteRule  ((?s).*) public/$1 [L]
     </IfModule>
 
 El segundo fichero .htaccess estará localizado dentro del directorio public/, reescribiendo todas las URIs hacia el fichero public/index.php:
@@ -49,7 +49,7 @@ El segundo fichero .htaccess estará localizado dentro del directorio public/, r
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+        RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
     </IfModule>
 
 Si no quieres usar ficheros .htaccess puedes definir estas configuraciones en la configuración principal de Apache:
@@ -61,14 +61,14 @@ Si no quieres usar ficheros .htaccess puedes definir estas configuraciones en la
         <Directory "/var/www/test">
             RewriteEngine on
             RewriteRule  ^$ public/    [L]
-            RewriteRule  (.*) public/$1 [L]
+            RewriteRule  ((?s).*) public/$1 [L]
         </Directory>
 
         <Directory "/var/www/test/public">
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-d
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+            RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
         </Directory>
 
     </IfModule>
