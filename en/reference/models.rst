@@ -1928,6 +1928,11 @@ In addition to the built-in validators, you can create your own validators:
         }
     }
 
+.. highlights::
+
+    *NOTE* Up to version 2.0.4 `$model` must be `\\Phalcon\\Mvc\\ModelInterface`
+    instance (`public function validate(\\Phalcon\\Mvc\\ModelInterface $model)`).
+
 Adding the validator to a model:
 
 .. code-block:: php
