@@ -1,5 +1,5 @@
 
-#header{
+#headery {
     position:fixed;
     top:0;
     height:186px;
@@ -10,48 +10,47 @@
 
 
 #body-right{
-    position: relative;
-    z-index: 0;
+    /*position: relative;
+    z-index: 100;
     padding-top:186px;
     padding-left:300px;
-    overflow-y: auto;
+    overflow-y: auto;*/
 }
 
-#body-left{
-    position:fixed;
+#body-left {
+    /*position:fixed;
     top:186px;
     left:0;
     width: 300px;
     bottom:0;
     overflow-y: hidden;
-    border-right: 2px solid #DDD;
+    border-right: 2px solid #DDD;*/
+    width: 250px;
+    border-right: 1px solid #DDD;
 }
 
-
-#body-left #menu-wrapper{
-    overflow-y: auto;
-    position: absolute;
-    top:32px;
-    bottom: 0;
-    left:0;
-    right:0;
+#body-left td {
+    font-size: 14px;
 }
 
-#body-left .header-search{
+#body-left #menu-wrapper {
+}
+
+#body-left .header-search {
     width:100%;
     height:32px;
     border-bottom: 1px solid #DDD;
 }
-#body-left .header-search input{
+
+#body-left .header-search input {
     width: 100%;
     height: 100%;
     border:0;
     text-indent: 5px;
 }
 
-
-#body-right .content{
-    padding-left: 8px;
+#body-right .content {
+    padding-left: 15px;
     padding-bottom: 35px;
 }
 

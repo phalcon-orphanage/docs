@@ -231,7 +231,7 @@ CacheEnablerPlugin is a plugin that intercept every action executed in the dispa
 
             //Parse the annotations in the method currently executed
             $annotations = $this->annotations->getMethod(
-                $dispatcher->getActiveController(),
+                $dispatcher->getControllerClass(),
                 $dispatcher->getActiveMethod()
             );
 
