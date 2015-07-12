@@ -34,7 +34,7 @@ public  **getAttributes** ()
 ...
 
 
-public  **__construct** (*unknown* $type, *unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **__construct** (*string* $type, *string* $content, [*boolean* $filter], [*array* $attributes])
 
 Phalcon\\Assets\\Inline constructor
 

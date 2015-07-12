@@ -41,7 +41,7 @@ Transactions are protective blocks where SQL statements are only permanent if th
 Methods
 -------
 
-public  **__construct** (*unknown* $dependencyInjector, [*unknown* $autoBegin], [*unknown* $service])
+public  **__construct** (*unknown* $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
@@ -65,7 +65,7 @@ Commits the transaction
 
 
 
-public *boolean*  **rollback** ([*unknown* $rollbackMessage], [*unknown* $rollbackRecord])
+public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
 
 Rollbacks the transaction
 

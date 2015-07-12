@@ -26,7 +26,7 @@ public  **getRegisteredEngines** ()
 ...
 
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View\\Simple constructor
 
@@ -67,19 +67,19 @@ Loads registered template engines, if none is registered it will use Phalcon\\Mv
 
 
 
-final protected  **_internalRender** (*unknown* $path, *unknown* $params)
+final protected  **_internalRender** (*string* $path, *array* $params)
 
 Tries to render the view with every engine registered in the component
 
 
 
-public *string*  **render** (*unknown* $path, [*unknown* $params])
+public *string*  **render** (*string* $path, [*array* $params])
 
 Renders a view
 
 
 
-public  **partial** (*unknown* $partialPath, [*unknown* $params])
+public  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial view 
 
@@ -100,7 +100,7 @@ Renders a partial view
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*unknown* $options)
+public :doc:`Phalcon\\Mvc\\View\\Simple <Phalcon_Mvc_View_Simple>`  **setCacheOptions** (*array* $options)
 
 Sets the cache options
 
@@ -176,7 +176,7 @@ Set a single view parameter
 
 
 
-public *mixed*  **getVar** (*unknown* $key)
+public *mixed*  **getVar** (*string* $key)
 
 Returns a parameter previously set in the view
 
@@ -226,7 +226,7 @@ Magic method to pass variables to the views
 
 
 
-public *mixed*  **__get** (*unknown* $key)
+public *mixed*  **__get** (*string* $key)
 
 Magic method to retrieve a variable passed to the view 
 

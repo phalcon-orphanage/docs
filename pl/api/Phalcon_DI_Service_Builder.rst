@@ -7,7 +7,7 @@ This class builds instances based on complex definitions
 Methods
 -------
 
-private *mixed*  **_buildParameter** (*unknown* $dependencyInjector, *unknown* $position, *unknown* $argument)
+private *mixed*  **_buildParameter** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *int* $position, *array* $argument)
 
 Resolves a constructor/call parameter
 
@@ -19,7 +19,7 @@ Resolves an array of parameters
 
 
 
-public *mixed*  **build** (*unknown* $dependencyInjector, *unknown* $definition, [*unknown* $parameters])
+public *mixed*  **build** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *array* $definition, [*array* $parameters])
 
 Builds a service using a complex service definition
 

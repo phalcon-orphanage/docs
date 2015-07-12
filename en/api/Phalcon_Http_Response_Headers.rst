@@ -3,22 +3,25 @@ Class **Phalcon\\Http\\Response\\Headers**
 
 *implements* :doc:`Phalcon\\Http\\Response\\HeadersInterface <Phalcon_Http_Response_HeadersInterface>`
 
+This class is a bag to manage the response headers
+
+
 Methods
 -------
 
-public  **set** (*unknown* $name, *unknown* $value)
+public  **set** (*string* $name, *string* $value)
 
 Sets a header to be sent at the end of the request
 
 
 
-public *string*  **get** (*unknown* $name)
+public *string*  **get** (*string* $name)
 
 Gets a header value from the internal bag
 
 
 
-public  **setRaw** (*unknown* $header)
+public  **setRaw** (*string* $header)
 
 Sets a raw header to be sent at the end of the request
 

@@ -37,13 +37,13 @@ public  **setLastKey** (*unknown* $lastKey)
 ...
 
 
-public  **__construct** (*unknown* $frontend, [*unknown* $options])
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend constructor
 
 
 
-public *mixed*  **start** (*unknown* $keyName, [*unknown* $lifetime])
+public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime])
 
 Starts a cache. The keyname allows to identify the created fragment
 

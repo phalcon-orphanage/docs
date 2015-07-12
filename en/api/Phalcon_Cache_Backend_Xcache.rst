@@ -31,49 +31,49 @@ Allows to cache output fragments, PHP data and raw data using an XCache backend
 Methods
 -------
 
-public  **__construct** (*unknown* $frontend, [*unknown* $options])
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\Xcache constructor
 
 
 
-public *mixed*  **get** (*unknown* $keyName, [*unknown* $lifetime])
+public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
 
 Returns a cached content
 
 
 
-public  **save** ([*unknown* $keyName], [*unknown* $content], [*unknown* $lifetime], [*unknown* $stopBuffer])
+public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*unknown* $keyName)
+public *boolean*  **delete** (*int|string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** ([*unknown* $prefix])
+public *array*  **queryKeys** ([*string* $prefix])
 
 Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*unknown* $keyName], [*unknown* $lifetime])
+public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
 
 Checks if cache exists and it isn't expired
 
 
 
-public *mixed*  **increment** (*unknown* $keyName, [*unknown* $value])
+public *mixed*  **increment** (*string* $keyName, [*long* $value])
 
 Atomic increment of a given key, by number $value
 
 
 
-public *mixed*  **decrement** (*unknown* $keyName, [*unknown* $value])
+public *mixed*  **decrement** (*string* $keyName, [*long* $value])
 
 Atomic decrement of a given key, by number $value
 
@@ -115,7 +115,7 @@ public  **setLastKey** (*unknown* $lastKey) inherited from Phalcon\\Cache\\Backe
 ...
 
 
-public *mixed*  **start** (*unknown* $keyName, [*unknown* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, [*int* $lifetime]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The keyname allows to identify the created fragment
 

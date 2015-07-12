@@ -229,7 +229,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-final public  **getColumnList** (*unknown* $columnList) inherited from Phalcon\\Db\\Dialect
+final public  **getColumnList** (*unknown* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Gets a list of columns with escaped identifiers 
 
@@ -242,13 +242,13 @@ Gets a list of columns with escaped identifiers
 
 
 
-final public  **getSqlColumn** (*unknown* $column) inherited from Phalcon\\Db\\Dialect
+final public  **getSqlColumn** (*unknown* $column, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve Column expressions
 
 
 
-public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Transforms an intermediate representation for a expression into a database system valid expression
 
@@ -284,13 +284,13 @@ Generate SQL to rollback a savepoint
 
 
 
-final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve Column expressions
 
 
 
-final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve object expressions
 
@@ -302,25 +302,25 @@ Resolve qualified expressions
 
 
 
-final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve binary operations expressions
 
 
 
-final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve unary operations expressions
 
 
 
-final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, *unknown* $escapeChar, [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve function calls
 
 
 
-final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve Lists
 
@@ -332,19 +332,19 @@ Resolve *
 
 
 
-final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CAST of values
 
 
 
-final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CONVERT of values encodings
 
 
 
-final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve CASE expressions
 
@@ -356,43 +356,43 @@ Resolve a FROM clause
 
 
 
-final protected  **getSqlExpressionJoins** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionJoins** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a JOINs clause
 
 
 
-final protected  **getSqlExpressionWhere** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionWhere** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a WHERE clause
 
 
 
-final protected  **getSqlExpressionGroupBy** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionGroupBy** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a GROUP BY clause
 
 
 
-final protected  **getSqlExpressionHaving** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionHaving** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a HAVING clause
 
 
 
-final protected  **getSqlExpressionOrderBy** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionOrderBy** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a ORDER BY clause
 
 
 
-final protected  **getSqlExpressionLimit** (*unknown* $expression, [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+final protected  **getSqlExpressionLimit** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts]) inherited from Phalcon\\Db\\Dialect
 
 Resolve a LIMIT clause
 
 
 
-protected  **prepareColumnAlias** (*unknown* $qualified, [*unknown* $alias]) inherited from Phalcon\\Db\\Dialect
+protected  **prepareColumnAlias** (*unknown* $qualified, [*unknown* $alias], [*unknown* $escapeChar]) inherited from Phalcon\\Db\\Dialect
 
 Prepares column for this RDBMS
 

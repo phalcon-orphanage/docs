@@ -16,12 +16,12 @@ Encapsulates validation info generated before save/delete records fails
     
         public function beforeSave()
         {
-          if ($this->name == 'Peter') {
-            $text = "A robot cannot be named Peter";
-            $field = "name";
-            $type = "InvalidValue";
-            $message = new Message($text, $field, $type);
-            $this->appendMessage($message);
+          if (this->name == 'Peter') {
+            text = "A robot cannot be named Peter";
+            field = "name";
+            type = "InvalidValue";
+            message = new Message(text, field, type);
+            this->appendMessage(message);
          }
        }
     
@@ -32,7 +32,7 @@ Encapsulates validation info generated before save/delete records fails
 Methods
 -------
 
-public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type], [*unknown* $model])
+public  **__construct** (*string* $message, [*string|array* $field], [*string* $type], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model])
 
 Phalcon\\Mvc\\Model\\Message constructor
 

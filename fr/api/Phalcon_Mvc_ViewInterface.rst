@@ -31,6 +31,11 @@ abstract public  **setBasePath** (*unknown* $basePath)
 ...
 
 
+abstract public  **getBasePath** ()
+
+...
+
+
 abstract public  **setRenderLevel** (*unknown* $level)
 
 ...

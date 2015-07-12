@@ -55,7 +55,7 @@ Destroyes the session bag
 
 
 
-public  **set** (*unknown* $property, *unknown* $value)
+public  **set** (*string* $property, *string* $value)
 
 Sets a value in the session bag 
 
@@ -68,7 +68,7 @@ Sets a value in the session bag
 
 
 
-public  **__set** (*unknown* $property, *unknown* $value)
+public  **__set** (*string* $property, *string* $value)
 
 Magic setter to assign values to the session bag 
 
@@ -81,7 +81,7 @@ Magic setter to assign values to the session bag
 
 
 
-public *mixed*  **get** (*unknown* $property, [*unknown* $defaultValue])
+public *mixed*  **get** (*string* $property, [*string* $defaultValue])
 
 Obtains a value from the session bag optionally setting a default value 
 
@@ -94,7 +94,7 @@ Obtains a value from the session bag optionally setting a default value
 
 
 
-public *mixed*  **__get** (*unknown* $property)
+public *mixed*  **__get** (*string* $property)
 
 Magic getter to obtain values from the session bag 
 
@@ -178,25 +178,25 @@ final public *\ArrayIterator*  **getIterator** ()
 
 
 
-final public  **offsetSet** (*unknown* $property, *unknown* $value)
+final public  **offsetSet** (*string* $property, *mixed* $value)
 
 
 
 
 
-final public  **offsetExists** (*unknown* $property)
+final public  **offsetExists** (*string* $property)
 
 
 
 
 
-final public  **offsetUnset** (*unknown* $property)
+final public  **offsetUnset** (*string* $property)
 
 
 
 
 
-final public  **offsetGet** (*unknown* $property)
+final public  **offsetGet** (*string* $property)
 
 
 

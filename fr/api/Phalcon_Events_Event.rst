@@ -43,7 +43,7 @@ Is event cancelable?
 
 
 
-public  **__construct** (*unknown* $type, *unknown* $source, [*unknown* $data], [*unknown* $cancelable])
+public  **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
 Phalcon\\Events\\Event constructor
 

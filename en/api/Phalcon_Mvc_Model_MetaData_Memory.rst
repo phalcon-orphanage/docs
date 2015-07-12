@@ -46,19 +46,19 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\Model\\MetaData\\Memory constructor
 
 
 
-public *array*  **read** (*unknown* $key)
+public *array*  **read** (*string* $key)
 
 Reads the meta-data from temporal memory
 
 
 
-public  **write** (*unknown* $key, *unknown* $data)
+public  **write** (*string* $key, *array* $data)
 
 Writes the meta-data to temporal memory
 
@@ -237,7 +237,7 @@ Returns attributes which types are numerical
 
 
 
-public *string*  **getIdentityField** (*unknown* $model) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Returns the name of identity field (if one is present) 
 

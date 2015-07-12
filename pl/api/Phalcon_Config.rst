@@ -154,7 +154,7 @@ Restores the state of a Phalcon\\Config object
 
 
 
-final protected *Config merged config*  **_merge** (*unknown* $config, [*unknown* $instance])
+final protected *Config merged config*  **_merge** (*Config* $config, [*unknown* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
 

@@ -62,7 +62,7 @@ public  **getRegisteredEngines** ()
 ...
 
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View constructor
 
@@ -131,6 +131,12 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 
 
+public  **getBasePath** ()
+
+Gets base path
+
+
+
 public  **setRenderLevel** (*unknown* $level)
 
 Sets the render level for the view 
@@ -145,7 +151,7 @@ Sets the render level for the view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableLevel** (*unknown* $level)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableLevel** (*int|array* $level)
 
 Disables a specific level of rendering 
 
@@ -198,7 +204,7 @@ Returns the name of the main view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateBefore** (*unknown* $templateBefore)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateBefore** (*string|array* $templateBefore)
 
 Sets a template before the controller layout
 
@@ -210,7 +216,7 @@ Resets any "template before" layouts
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateAfter** (*unknown* $templateAfter)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setTemplateAfter** (*string|array* $templateAfter)
 
 Sets a "template after" controller layout
 
@@ -222,7 +228,7 @@ Resets any template before layouts
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setParamToView** (*unknown* $key, *unknown* $value)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setParamToView** (*string* $key, *mixed* $value)
 
 Adds parameters to views (alias of setVar) 
 
@@ -235,7 +241,7 @@ Adds parameters to views (alias of setVar)
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVars** (*unknown* $params, [*unknown* $merge])
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVars** (*array* $params, [*boolean* $merge])
 
 Set all the render params 
 
@@ -248,7 +254,7 @@ Set all the render params
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVar** (*unknown* $key, *unknown* $value)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVar** (*string* $key, *mixed* $value)
 
 Set a single view parameter 
 
@@ -261,7 +267,7 @@ Set a single view parameter
 
 
 
-public *mixed*  **getVar** (*unknown* $key)
+public *mixed*  **getVar** (*string* $key)
 
 Returns a parameter previously set in the view
 
@@ -303,7 +309,7 @@ Loads registered template engines, if none is registered it will use Phalcon\\Mv
 
 
 
-protected  **_engineRender** (*unknown* $engines, *unknown* $viewPath, *unknown* $silence, *unknown* $mustClean, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+protected  **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Checks whether view exists on registered extensions and render it
 
@@ -332,7 +338,7 @@ Checks whether view exists
 
 
 
-public  **render** (*unknown* $controllerName, *unknown* $actionName, [*unknown* $params])
+public  **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
 Executes render process from dispatching data 
 
@@ -346,7 +352,7 @@ Executes render process from dispatching data
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **pick** (*unknown* $renderView)
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **pick** (*string|array* $renderView)
 
 Choose a different view to render instead of last-controller/last-action 
 
@@ -370,7 +376,7 @@ Choose a different view to render instead of last-controller/last-action
 
 
 
-public *string*  **getPartial** (*unknown* $partialPath, [*unknown* $params])
+public *string*  **getPartial** (*string* $partialPath, [*array* $params])
 
 Renders a partial view 
 
@@ -391,7 +397,7 @@ Renders a partial view
 
 
 
-public  **partial** (*unknown* $partialPath, [*unknown* $params])
+public  **partial** (*string* $partialPath, [*array* $params])
 
 Renders a partial view 
 
@@ -412,7 +418,7 @@ Renders a partial view
 
 
 
-public *string*  **getRender** (*unknown* $controllerName, *unknown* $actionName, [*unknown* $params], [*unknown* $configCallback])
+public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
 
 Perform the automatic rendering returning the output as a string 
 
@@ -449,7 +455,7 @@ Returns the cache instance used to cache
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cache** ([*unknown* $options])
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **cache** ([*boolean|array* $options])
 
 Cache the actual view render to certain level 
 
@@ -505,7 +511,7 @@ Resets the view component to its factory default values
 
 
 
-public  **__set** (*unknown* $key, *unknown* $value)
+public  **__set** (*string* $key, *mixed* $value)
 
 Magic method to pass variables to the views 
 
@@ -518,7 +524,7 @@ Magic method to pass variables to the views
 
 
 
-public *mixed*  **__get** (*unknown* $key)
+public *mixed*  **__get** (*string* $key)
 
 Magic method to retrieve a variable passed to the view 
 
@@ -537,7 +543,7 @@ Whether automatic rendering is enabled
 
 
 
-public *boolean*  **__isset** (*unknown* $key)
+public *boolean*  **__isset** (*string* $key)
 
 Magic method to retrieve if a variable is set in the view 
 

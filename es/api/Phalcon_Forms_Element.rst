@@ -9,7 +9,7 @@ This is a base class for form elements
 Methods
 -------
 
-public  **__construct** (*unknown* $name, [*unknown* $attributes])
+public  **__construct** (*string* $name, [*array* $attributes])
 
 Phalcon\\Forms\\Element constructor
 
@@ -39,7 +39,7 @@ Returns the element name
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*unknown* $filters)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setFilters** (*array|string* $filters)
 
 Sets the element filters
 
@@ -75,19 +75,19 @@ Returns the validators registered for the element
 
 
 
-public *array*  **prepareAttributes** ([*unknown* $attributes], [*unknown* $useChecked])
+public *array*  **prepareAttributes** ([*array* $attributes], [*boolean* $useChecked])
 
 Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element parameters
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*unknown* $attribute, *unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setAttribute** (*string* $attribute, *mixed* $value)
 
 Sets a default attribute for the element
 
 
 
-public *mixed*  **getAttribute** (*unknown* $attribute, [*unknown* $defaultValue])
+public *mixed*  **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
 
 Returns the value of an attribute if present
 
@@ -105,19 +105,19 @@ Returns the default attributes for the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*unknown* $option, *unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the element
 
 
 
-public *mixed*  **getUserOption** (*unknown* $option, [*unknown* $defaultValue])
+public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*unknown* $options)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options)
 
 Sets options for the element
 
@@ -141,13 +141,13 @@ Returns the element label
 
 
 
-public *string*  **label** ([*unknown* $attributes])
+public *string*  **label** ([*array* $attributes])
 
 Generate the HTML to label the element
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*unknown* $value)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setDefault** (*mixed* $value)
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 

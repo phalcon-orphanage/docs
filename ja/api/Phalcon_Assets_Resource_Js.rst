@@ -9,7 +9,7 @@ Represents Javascript resources
 Methods
 -------
 
-public  **__construct** (*unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 
 

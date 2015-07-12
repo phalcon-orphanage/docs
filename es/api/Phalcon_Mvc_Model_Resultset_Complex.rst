@@ -24,7 +24,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*unknown* $columnTypes, [*unknown* $result], [*unknown* $cache])
+public  **__construct** (*array* $columnTypes, [:doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` $result], [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
 
 Phalcon\\Mvc\\Model\\Resultset\\Complex constructor
 
@@ -102,7 +102,7 @@ Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*unknown* $index, *unknown* $value) inherited from Phalcon\\Mvc\\Model\\Resultset
+public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -168,7 +168,7 @@ Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **update** (*unknown* $data, [*unknown* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
+public *boolean*  **update** (*array* $data, [*Closure* $conditionCallback]) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Updates every record in the resultset
 
@@ -180,7 +180,7 @@ Deletes every record in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*unknown* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` [] **filter** (*callback* $filter) inherited from Phalcon\\Mvc\\Model\\Resultset
 
 Filters a resultset returning only those the developer requires 
 

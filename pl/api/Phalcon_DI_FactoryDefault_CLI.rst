@@ -77,7 +77,7 @@ Resolves the service based on its configuration
 
 
 
-public *mixed*  **getShared** (*unknown* $name, [*unknown* $parameters]) inherited from Phalcon\\Di
+public *mixed*  **getShared** (*string* $name, [*array* $parameters]) inherited from Phalcon\\Di
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
@@ -107,7 +107,7 @@ Check if a service is registered using the array syntax
 
 
 
-public *boolean*  **offsetSet** (*unknown* $name, *unknown* $definition) inherited from Phalcon\\Di
+public *boolean*  **offsetSet** (*string* $name, *mixed* $definition) inherited from Phalcon\\Di
 
 Allows to register a shared service using the array syntax 
 
@@ -120,7 +120,7 @@ Allows to register a shared service using the array syntax
 
 
 
-public *mixed*  **offsetGet** (*unknown* $name) inherited from Phalcon\\Di
+public *mixed*  **offsetGet** (*string* $name) inherited from Phalcon\\Di
 
 Allows to obtain a shared service using the array syntax 
 
@@ -139,7 +139,7 @@ Removes a service from the services container using the array syntax
 
 
 
-public *mixed*  **__call** (*unknown* $method, [*unknown* $arguments]) inherited from Phalcon\\Di
+public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\Di
 
 Magic method to get or set services using setters/getters
 

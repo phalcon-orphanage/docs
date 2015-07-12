@@ -5,7 +5,7 @@ Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 
 *implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`
 
-Designer friendly and fast template engine for PHP written in C
+Designer friendly and fast template engine for PHP written in Zephir/C
 
 
 Methods
@@ -65,6 +65,12 @@ Sorts an array
 
 
 
+public  **callMacro** (*unknown* $name, *unknown* $arguments)
+
+Checks if a macro is defined and calls it
+
+
+
 public  **__construct** (*unknown* $view, [*unknown* $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Phalcon\\Mvc\\View\\Engine constructor
@@ -77,7 +83,7 @@ Returns cached output on another view stage
 
 
 
-public *string*  **partial** (*unknown* $partialPath, [*unknown* $params]) inherited from Phalcon\\Mvc\\View\\Engine
+public *string*  **partial** (*string* $partialPath, [*array* $params]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view
 

@@ -29,7 +29,7 @@ Returns cached output on another view stage
 
 
 
-public *string*  **partial** (*unknown* $partialPath, [*unknown* $params]) inherited from Phalcon\\Mvc\\View\\Engine
+public *string*  **partial** (*string* $partialPath, [*array* $params]) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view
 

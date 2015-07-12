@@ -40,7 +40,7 @@ Allows to cache data converting/deconverting them to base64.  This adapter uses 
 Methods
 -------
 
-public  **__construct** ([*unknown* $frontendOptions])
+public  **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Base64 constructor
 
@@ -76,13 +76,13 @@ Stops output frontend
 
 
 
-public *string*  **beforeStore** (*unknown* $data)
+public *string*  **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed*  **afterRetrieve** (*unknown* $data)
+public *mixed*  **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

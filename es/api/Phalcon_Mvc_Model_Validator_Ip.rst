@@ -73,7 +73,7 @@ Phalcon\\Mvc\\Model\\Validator constructor
 
 
 
-protected  **appendMessage** (*unknown* $message, [*unknown* $field], [*unknown* $type]) inherited from Phalcon\\Mvc\\Model\\Validator
+protected  **appendMessage** (*string* $message, [*string|array* $field], [*string* $type]) inherited from Phalcon\\Mvc\\Model\\Validator
 
 Appends a message to the validator
 

@@ -28,7 +28,7 @@ File Path
 
 
 
-public  **__construct** (*unknown* $name, [*unknown* $options])
+public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\\Logger\\Adapter\\File constructor
 
@@ -142,7 +142,7 @@ Sends/Writes an alert message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*mixed* $type, [*mixed* $message], [*mixed* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Logs messages to the internal logger. Appends logs to the logger
 

@@ -44,13 +44,13 @@ Sets the compiler options
 
 
 
-public  **setOption** (*unknown* $option, *unknown* $value)
+public  **setOption** (*string* $option, *mixed* $value)
 
 Sets a single compiler option
 
 
 
-public *string*  **getOption** (*unknown* $option)
+public *string*  **getOption** (*string* $option)
 
 Returns a compiler's option
 
@@ -62,7 +62,7 @@ Returns the compiler options
 
 
 
-final public *mixed*  **fireExtensionEvent** (*unknown* $name, [*unknown* $arguments])
+final public *mixed*  **fireExtensionEvent** (*string* $name, [*array* $arguments])
 
 Fires an event to registered extensions
 
@@ -146,7 +146,7 @@ Resolves an expression node in an AST volt tree
 
 
 
-final protected *string|array*  **_statementListOrExtends** (*unknown* $statements)
+final protected *string|array*  **_statementListOrExtends** (*array* $statements)
 
 Compiles a block of statements
 
@@ -206,7 +206,7 @@ Compiles a "autoescape" statement returning PHP code
 
 
 
-public *string*  **compileEcho** (*unknown* $statement)
+public *string*  **compileEcho** (*array* $statement)
 
 Compiles a '{{' '}}' statement returning PHP code
 
@@ -224,7 +224,7 @@ Compiles macros
 
 
 
-public *string*  **compileCall** (*unknown* $statement, *unknown* $extendsMode)
+public *string*  **compileCall** (*array* $statement, *boolean* $extendsMode)
 
 Compiles calls to macros
 
@@ -255,7 +255,7 @@ Compiles a template into a string
 
 
 
-public *string|array*  **compileFile** (*unknown* $path, *unknown* $compiledPath, [*unknown* $extendsMode])
+public *string|array*  **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
 
 Compiles a template into a file forcing the destination path 
 
@@ -294,7 +294,7 @@ Returns the path to the last compiled template
 
 
 
-public *array*  **parse** (*unknown* $viewCode)
+public *array*  **parse** (*string* $viewCode)
 
 Parses a Volt template returning its intermediate representation 
 

@@ -9,7 +9,7 @@ This component allows Phalcon\\Mvc\\Collection to return rows without an associa
 Methods
 -------
 
-public *boolean*  **offsetExists** (*unknown* $index)
+public *boolean*  **offsetExists** (*int* $index)
 
 Checks whether an offset exists in the document
 
@@ -27,13 +27,13 @@ Change a value using the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*unknown* $offset)
+public  **offsetUnset** (*string* $offset)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public *mixed*  **readAttribute** (*unknown* $attribute)
+public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -46,7 +46,7 @@ Reads an attribute value by its name
 
 
 
-public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name 
 

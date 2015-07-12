@@ -25,7 +25,7 @@ Represents a collection of annotations. This class allows to traverse a group of
 Methods
 -------
 
-public  **__construct** ([*unknown* $reflectionData])
+public  **__construct** ([*array* $reflectionData])
 
 Phalcon\\Annotations\\Collection constructor
 

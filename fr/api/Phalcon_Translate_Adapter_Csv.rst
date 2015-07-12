@@ -5,6 +5,9 @@ Class **Phalcon\\Translate\\Adapter\\Csv**
 
 *implements* :doc:`Phalcon\\Translate\\AdapterInterface <Phalcon_Translate_AdapterInterface>`, ArrayAccess
 
+Allows to define translation lists using CSV file
+
+
 Methods
 -------
 
@@ -26,19 +29,19 @@ Check whether is defined a translation key in the internal array
 
 
 
-public *string*  **t** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **t** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key
 
 
 
-public *string*  **_** (*unknown* $translateKey, [*unknown* $placeholders]) inherited from Phalcon\\Translate\\Adapter
+public *string*  **_** (*string* $translateKey, [*array* $placeholders]) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation string of the given key (alias of method 't')
 
 
 
-public  **offsetSet** (*unknown* $offset, *unknown* $value) inherited from Phalcon\\Translate\\Adapter
+public  **offsetSet** (*string* $offset, *string* $value) inherited from Phalcon\\Translate\\Adapter
 
 Sets a translation value
 
@@ -50,13 +53,13 @@ Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*unknown* $offset) inherited from Phalcon\\Translate\\Adapter
+public  **offsetUnset** (*string* $offset) inherited from Phalcon\\Translate\\Adapter
 
 Unsets a translation from the dictionary
 
 
 
-public *string*  **offsetGet** (*unknown* $translateKey) inherited from Phalcon\\Translate\\Adapter
+public *string*  **offsetGet** (*string* $translateKey) inherited from Phalcon\\Translate\\Adapter
 
 Returns the translation related to the given key
 

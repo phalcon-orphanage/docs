@@ -226,7 +226,7 @@ Returns attributes which types are numerical
 
 
 
-public *string*  **getIdentityField** (*unknown* $model)
+public *string*  **getIdentityField** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Returns the name of identity field (if one is present) 
 

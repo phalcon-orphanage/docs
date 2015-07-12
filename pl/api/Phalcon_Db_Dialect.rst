@@ -72,7 +72,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-final public  **getColumnList** (*unknown* $columnList)
+final public  **getColumnList** (*unknown* $columnList, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Gets a list of columns with escaped identifiers 
 
@@ -85,13 +85,13 @@ Gets a list of columns with escaped identifiers
 
 
 
-final public  **getSqlColumn** (*unknown* $column)
+final public  **getSqlColumn** (*unknown* $column, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve Column expressions
 
 
 
-public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar])
+public  **getSqlExpression** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Transforms an intermediate representation for a expression into a database system valid expression
 
@@ -139,13 +139,13 @@ Generate SQL to rollback a savepoint
 
 
 
-final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionScalar** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve Column expressions
 
 
 
-final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionObject** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve object expressions
 
@@ -157,25 +157,25 @@ Resolve qualified expressions
 
 
 
-final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionBinaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve binary operations expressions
 
 
 
-final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionUnaryOperations** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve unary operations expressions
 
 
 
-final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionFunctionCall** (*unknown* $expression, *unknown* $escapeChar, [*unknown* $bindCounts])
 
 Resolve function calls
 
 
 
-final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionList** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve Lists
 
@@ -187,19 +187,19 @@ Resolve *
 
 
 
-final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionCastValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CAST of values
 
 
 
-final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionConvertValue** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CONVERT of values encodings
 
 
 
-final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionCase** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve CASE expressions
 
@@ -211,43 +211,43 @@ Resolve a FROM clause
 
 
 
-final protected  **getSqlExpressionJoins** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionJoins** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a JOINs clause
 
 
 
-final protected  **getSqlExpressionWhere** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionWhere** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a WHERE clause
 
 
 
-final protected  **getSqlExpressionGroupBy** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionGroupBy** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a GROUP BY clause
 
 
 
-final protected  **getSqlExpressionHaving** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionHaving** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a HAVING clause
 
 
 
-final protected  **getSqlExpressionOrderBy** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionOrderBy** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a ORDER BY clause
 
 
 
-final protected  **getSqlExpressionLimit** (*unknown* $expression, [*unknown* $escapeChar])
+final protected  **getSqlExpressionLimit** (*unknown* $expression, [*unknown* $escapeChar], [*unknown* $bindCounts])
 
 Resolve a LIMIT clause
 
 
 
-protected  **prepareColumnAlias** (*unknown* $qualified, [*unknown* $alias])
+protected  **prepareColumnAlias** (*unknown* $qualified, [*unknown* $alias], [*unknown* $escapeChar])
 
 Prepares column for this RDBMS
 

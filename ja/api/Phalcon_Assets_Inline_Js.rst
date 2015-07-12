@@ -9,7 +9,7 @@ Represents an inline Javascript
 Methods
 -------
 
-public  **__construct** (*unknown* $content, [*unknown* $filter], [*unknown* $attributes])
+public  **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
 
 

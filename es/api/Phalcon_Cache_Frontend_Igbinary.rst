@@ -46,7 +46,7 @@ Allows to cache native PHP data in a serialized form using igbinary extension
 Methods
 -------
 
-public  **__construct** ([*unknown* $frontendOptions])
+public  **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Data constructor
 
@@ -82,13 +82,13 @@ Stops output frontend
 
 
 
-public *string*  **beforeStore** (*unknown* $data)
+public *string*  **beforeStore** (*mixed* $data)
 
 Serializes data before storing them
 
 
 
-public *mixed*  **afterRetrieve** (*unknown* $data)
+public *mixed*  **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
 

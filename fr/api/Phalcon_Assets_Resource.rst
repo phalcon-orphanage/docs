@@ -54,7 +54,7 @@ public  **getTargetUri** ()
 ...
 
 
-public  **__construct** (*unknown* $type, *unknown* $path, [*unknown* $local], [*unknown* $filter], [*unknown* $attributes])
+public  **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Phalcon\\Assets\\Resource constructor
 

@@ -38,7 +38,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $phql], [*unknown* $dependencyInjector])
+public  **__construct** ([*string* $phql], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query constructor
 
@@ -92,49 +92,49 @@ Resolves a expression in a single call argument
 
 
 
-final protected *string*  **_getExpression** (*unknown* $expr, [*unknown* $quoting])
+final protected *string*  **_getExpression** (*array* $expr, [*boolean* $quoting])
 
 Resolves an expression from its intermediate code into a string
 
 
 
-final protected *array*  **_getSelectColumn** (*unknown* $column)
+final protected *array*  **_getSelectColumn** (*array* $column)
 
 Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
 
 
 
-final protected *string*  **_getTable** (*unknown* $manager, *unknown* $qualifiedName)
+final protected *string*  **_getTable** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $qualifiedName)
 
 Resolves a table in a SELECT statement checking if the model exists
 
 
 
-final protected *array*  **_getJoin** (*unknown* $manager, *unknown* $join)
+final protected *array*  **_getJoin** (:doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>` $manager, *array* $join)
 
 Resolves a JOIN clause checking if the associated models exist
 
 
 
-final protected *string*  **_getJoinType** (*unknown* $join)
+final protected *string*  **_getJoinType** (*array* $join)
 
 Resolves a JOIN type
 
 
 
-final protected *array*  **_getSingleJoin** (*unknown* $joinType, *unknown* $joinSource, *unknown* $modelAlias, *unknown* $joinAlias, *unknown* $relation)
+final protected *array*  **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving has-one/belongs-to/has-many relations
 
 
 
-final protected *array*  **_getMultiJoin** (*unknown* $joinType, *unknown* $joinSource, *unknown* $modelAlias, *unknown* $joinAlias, *unknown* $relation)
+final protected *array*  **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, :doc:`Phalcon\\Mvc\\Model\\RelationInterface <Phalcon_Mvc_Model_RelationInterface>` $relation)
 
 Resolves joins involving many-to-many relations
 
 
 
-final protected *array*  **_getJoins** (*unknown* $select)
+final protected *array*  **_getJoins** (*array* $select)
 
 Processes the JOINs in the query returning an internal representation for the database dialect
 
@@ -200,37 +200,37 @@ Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the INSERT intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the UPDATE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** (*unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\Query\\StatusInterface <Phalcon_Mvc_Model_Query_StatusInterface>`  **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the DELETE intermediate representation producing a Phalcon\\Mvc\\Model\\Query\\Status
 
 
 
-final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** (*unknown* $model, *unknown* $intermediate, *unknown* $bindParams, *unknown* $bindTypes)
+final protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_getRelatedRecords** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Query the records on which the UPDATE/DELETE operation well be done
 
 
 
-public *mixed*  **execute** ([*unknown* $bindParams], [*unknown* $bindTypes])
+public *mixed*  **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 
 
 
-public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*unknown* $bindParams], [*unknown* $bindTypes])
+public *Ṕhalcon\Mvc\ModelInterface*  **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes the query returning the first result
 

@@ -7,7 +7,7 @@ Class **Phalcon\\Queue\\Beanstalk**
 Methods
 -------
 
-public  **__construct** ([*unknown* $options])
+public  **__construct** ([*array* $options])
 
 
 
@@ -19,7 +19,7 @@ Makes a connection to the Beanstalkd server
 
 
 
-public  **put** (*unknown* $data, [*unknown* $options])
+public  **put** (*string* $data, [*array* $options])
 
 Inserts jobs into the queue
 

@@ -17,7 +17,7 @@ Listens for notifications from the models manager
 
 
 
-public  **__construct** ([*unknown* $options]) inherited from Phalcon\\Mvc\\Collection\\Behavior
+public  **__construct** ([*array* $options]) inherited from Phalcon\\Mvc\\Collection\\Behavior
 
 Phalcon\\Mvc\\Collection\\Behavior
 
@@ -29,7 +29,7 @@ Checks whether the behavior must take action on certain event
 
 
 
-protected *array*  **getOptions** ([*unknown* $eventName]) inherited from Phalcon\\Mvc\\Collection\\Behavior
+protected *array*  **getOptions** ([*string* $eventName]) inherited from Phalcon\\Mvc\\Collection\\Behavior
 
 Returns the behavior options related to an event
 

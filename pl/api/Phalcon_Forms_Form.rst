@@ -21,13 +21,13 @@ public  **getValidation** ()
 ...
 
 
-public  **__construct** ([*unknown* $entity], [*unknown* $userOptions])
+public  **__construct** ([*object* $entity], [*array* $userOptions])
 
 Phalcon\\Forms\\Form constructor
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setAction** (*unknown* $action)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setAction** (*string* $action)
 
 Sets the form's action
 
@@ -39,13 +39,13 @@ Returns the form's action
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*unknown* $option, *unknown* $value)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the form
 
 
 
-public *mixed*  **getUserOption** (*unknown* $option, [*unknown* $defaultValue])
+public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
@@ -63,7 +63,7 @@ Returns the options for the element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEntity** (*unknown* $entity)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEntity** (*object* $entity)
 
 Sets the entity related to the model
 
@@ -81,13 +81,13 @@ Returns the form elements added to the form
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **bind** (*unknown* $data, *unknown* $entity, [*unknown* $whitelist])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
 Binds data to the entity
 
 
 
-public *boolean*  **isValid** ([*unknown* $data], [*unknown* $entity])
+public *boolean*  **isValid** ([*array* $data], [*object* $entity])
 
 Validates the form
 
@@ -99,25 +99,25 @@ Returns the messages generated in the validation
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessagesFor** (*unknown* $name)
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessagesFor** (*string* $name)
 
 Returns the messages generated for a specific element
 
 
 
-public *boolean*  **hasMessagesFor** (*unknown* $name)
+public *boolean*  **hasMessagesFor** (*string* $name)
 
 Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (*unknown* $element, [*string* $postion], [*unknown* $type])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
 
 Adds an element to the form
 
 
 
-public *string*  **render** (*unknown* $name, [*unknown* $attributes])
+public *string*  **render** (*string* $name, [*array* $attributes])
 
 Renders a specific item in the form
 
@@ -141,7 +141,7 @@ Returns a label for an element
 
 
 
-public *mixed*  **getValue** (*unknown* $name)
+public *mixed*  **getValue** (*string* $name)
 
 Gets a value from the internal related entity or from the default value
 
@@ -159,7 +159,7 @@ Removes an element from the form
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ([*unknown* $fields])
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **clear** ([*array* $fields])
 
 Clears every element in the form to its default value
 
