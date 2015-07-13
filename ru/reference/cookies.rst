@@ -33,6 +33,12 @@
         {
             $this->cookies->set('remember-me', 'некоторое значение', time() + 15 * 86400);
         }
+
+        public function logoutAction()
+        {
+            // Delete the cookie
+            $this->cookies->get('remember-me')->delete();
+        }
     }
 
 Шифрование/дешифрование Кук

@@ -34,6 +34,12 @@ Cookies_ 是一个将数据存储在客户端的有效途径，这样即使用�
         {
             $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
         }
+
+        public function logoutAction()
+        {
+            // Delete the cookie
+            $this->cookies->get('remember-me')->delete();
+        }
     }
 
 Cookie 的加密和解密（Encryption/Decryption of Cookies）
