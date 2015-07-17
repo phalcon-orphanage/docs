@@ -2207,7 +2207,7 @@ Another type of events are available when the data validation process finds any 
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Operation                | Name               | Explanation                                                        |
 +==========================+====================+====================================================================+
-| Insert or Update         | notSave            | Triggered when the INSERT or UPDATE operation fails for any reason |
+| Insert or Update         | notSaved           | Triggered when the INSERT or UPDATE operation fails for any reason |
 +--------------------------+--------------------+--------------------------------------------------------------------+
 | Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
 +--------------------------+--------------------+--------------------------------------------------------------------+
@@ -3457,7 +3457,7 @@ You may be required to access the application services within a model, the follo
     class Robots extends Model
     {
 
-        public function notSave()
+        public function notSaved()
         {
             //Obtain the flash service from the DI container
             $flash = $this->getDI()->getFlash();
@@ -3469,7 +3469,7 @@ You may be required to access the application services within a model, the follo
         }
     }
 
-The "notSave" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
+The "notSaved" event is triggered every time that a "create" or "update" action fails. So we're flashing the validation messages
 obtaining the "flash" service from the DI container. By doing this, we don't have to print messages after each save.
 
 Disabling/Enabling Features
