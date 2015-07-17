@@ -34,6 +34,12 @@ accessed:
         {
             $this->cookies->set('remember-me', 'some value', time() + 15 * 86400);
         }
+
+        public function logoutAction()
+        {
+            // Delete the cookie
+            $this->cookies->get('remember-me')->delete();
+        }
     }
 
 クッキーの暗号化、復号化
