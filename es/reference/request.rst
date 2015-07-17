@@ -13,9 +13,9 @@ information of the request, allowing you to access it in an object-oriented way.
     $request = new \Phalcon\Http\Request();
 
     // Check whether the request was made with method POST
-    if ($request->isPost() == true) {
+    if ($request->isPost()) {
         // Check whether the request was made with Ajax
-        if ($request->isAjax() == true) {
+        if ($request->isAjax()) {
             echo "Request was made using POST and AJAX";
         }
     }
@@ -76,7 +76,7 @@ the $this->request public property of the controller:
         {
 
             // Check if request has made with POST
-            if ($this->request->isPost() == true) {
+            if ($this->request->isPost()) {
 
                 // Access POST data
                 $customerName = $this->request->getPost("name");
@@ -103,7 +103,7 @@ an object-oriented way to achieve this task:
         public function uploadAction()
         {
             // Check if the user has uploaded files
-            if ($this->request->hasFiles() == true) {
+            if ($this->request->hasFiles()) {
                 // Print the real file names and sizes
                 foreach ($this->request->getUploadedFiles() as $file) {
 
@@ -145,7 +145,7 @@ the user. The following examples show usages of that information:
     }
 
     // Check the request layer
-    if ($request->isSecureRequest() == true) {
+    if ($request->isSecureRequest()) {
         echo "The request was made using a secure layer";
     }
 
