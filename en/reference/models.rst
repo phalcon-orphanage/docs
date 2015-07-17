@@ -599,6 +599,27 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     Since the default bind-type is \\Phalcon\\Db\\Column::BIND_PARAM_STR, there is no need to specify the
     "bindTypes" parameter if all of the columns are of that type.
 
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+
+.. code-block:: php
+
+    <?php
+   $array = ["a","b","c"]; // $array: [[0] => "a", [1] => "b", [2] => "c"]
+
+   unset($array[1]); // $array: [[0] => "a", [2] => "c"]
+
+   // Now we have to renumber the keys
+   $array = array_values($array); // $array: [[0] => "a", [1] => "c"]
+
+   $robots = Robots::find([
+        'letter IN ({letter:array})',
+        'bind' => [
+            'letter' => $array
+        ]
+    ]);
+
+.. highlights::
+
 Bound parameters are available for all query methods such as find() and findFirst() but also the calculation
 methods like count(), sum(), average() etc.
 
