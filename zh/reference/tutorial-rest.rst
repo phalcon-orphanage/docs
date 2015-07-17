@@ -1,16 +1,15 @@
-教程 3：创建简单的 RESET API（Tutorial 3: Creating a Simple REST API）
+教程 3：创建简单的 REST API（Tutorial 3: Creating a Simple REST API）
 ======================================
-In this tutorial, we will explain how to create a simple application that provides a RESTful_ API using the
-different HTTP methods:
+在这个教程中，我们会学习如何创建一个拥有 RESTful API 的应用程序，它将会使用如下的几个 HTTP 方法：
 
-* GET to retrieve and search data
-* POST to add data
-* PUT to update data
-* DELETE to delete data
+* GET - 接受、查找数据
+* POST - 添加数据
+* PUT - 更新数据
+* DELETE - 删除数据
 
 定义 API（Defining the API）
 ----------------
-The API consists of the following methods:
+这个 API 包含如下方法(Methods)
 
 +--------+----------------------------+----------------------------------------------------------+
 | Method |  URL                       | Action                                                   |
