@@ -59,6 +59,7 @@ Table of Contents
    reference/pagination
    reference/cache
    reference/security
+   reference/crypt
    reference/acl
    reference/translate
    reference/loader
