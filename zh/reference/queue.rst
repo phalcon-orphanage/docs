@@ -1,5 +1,6 @@
 队列（Queueing）
 ========
+
 Perform activities like process a video, resize images or send emails aren't suitable to be executed
 online or in real time because it may slow the loading time of pages, impacting the user experience.
 
@@ -19,13 +20,18 @@ structure according to the needs of the application:
 
     <?php
 
-    //Connect to the queue
-    $queue = new Phalcon\Queue\Beanstalk(array(
-        'host' => '192.168.0.21'
-    ));
+    // Connect to the queue
+    $queue = new Phalcon\Queue\Beanstalk(
+        array(
+            'host' => '192.168.0.21',
+            'port' => '11300'
+        )
+    );
 
-    //Insert the job in the queue
-    $queue->put(array('processVideo' => 4871));
+    // Insert the job in the queue
+    $queue->put(
+        array('processVideo' => 4871)
+    );
 
 Available connection options are:
 
@@ -70,7 +76,9 @@ Every job put into the queue returns a "job id" the developer can use to track t
 
     <?php
 
-    $jobId = $queue->put(array('processVideo' => 4871));
+    $jobId = $queue->put(
+        array('processVideo' => 4871)
+    );
 
 检索信息（Retrieving Messages）
 -------------------

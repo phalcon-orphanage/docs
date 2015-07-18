@@ -1,6 +1,7 @@
 Queueing
 ========
-Perform activities like process a video, resize images or send emails aren't suitables to be executed
+
+Perform activities like process a video, resize images or send emails aren't suitable to be executed
 online or in real time because it may slow the loading time of pages, impacting the user experience.
 
 The best solution here is implementing background jobs. A web application must put the job
@@ -19,13 +20,18 @@ structure according to the needs of the application:
 
     <?php
 
-    //Connect to the queue
-    $queue = new Phalcon\Queue\Beanstalk(array(
-        'host' => '192.168.0.21'
-    ));
+    // Connect to the queue
+    $queue = new Phalcon\Queue\Beanstalk(
+        array(
+            'host' => '192.168.0.21',
+            'port' => '11300'
+        )
+    );
 
-    //Insert the job in the queue
-    $queue->put(array('processVideo' => 4871));
+    // Insert the job in the queue
+    $queue->put(
+        array('processVideo' => 4871)
+    );
 
 Available connection options are:
 
@@ -70,7 +76,9 @@ Every job put into the queue returns a "job id" the developer can use to track t
 
     <?php
 
-    $jobId = $queue->put(array('processVideo' => 4871));
+    $jobId = $queue->put(
+        array('processVideo' => 4871)
+    );
 
 Retrieving Messages
 -------------------
@@ -81,7 +89,7 @@ the task:
 
     <?php
 
-    while (($job = $b->peekReady()) !== false) {
+    while (($job = $queue->peekReady()) !== false) {
 
         $message = $job->getBody();
 
@@ -97,9 +105,9 @@ jobs must be "reserved" so other workers don't re-process them while other worke
 
     <?php
 
-    while ($b->peekReady() !== false) {
+    while ($queue->peekReady() !== false) {
 
-        $job = $b->reserve();
+        $job = $queue->reserve();
 
         $message = $job->getBody();
 
