@@ -318,6 +318,25 @@ If an alias is used to rename the models in the query, those will be used to nam
         echo "Brand: ", $row->b->name, "\n";
     }
 
+When the joined model has a many-to-many relation to the 'from' model, the intermediate model is implicitly added to the generated query:
+
+.. code-block:: php
+
+    <?php
+
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
+            'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+    $result = $this->modelsManager->executeQuery($phql);
+
+This code executes the following SQL in MySQL:
+
+.. code-block:: sql
+
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
+    INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
+    INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
+    WHERE `artists`.`genre` = 'Trip-Hop'
+
 Aggregations
 ^^^^^^^^^^^^
 The following examples show how to use aggregations in PHQL:
