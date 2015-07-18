@@ -1,7 +1,9 @@
 Class **Phalcon\\Acl\\Adapter\\Memory**
 =======================================
 
-*extends* class :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
+*extends* abstract class :doc:`Phalcon\\Acl\\Adapter <Phalcon_Acl_Adapter>`
+
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Acl\\AdapterInterface <Phalcon_Acl_AdapterInterface>`
 
 Manages ACL lists in memory  
 
@@ -68,7 +70,7 @@ Phalcon\\Acl\\Adapter\\Memory constructor
 
 
 
-public *boolean*  **addRole** (*unknown* $role, [*unknown* $accessInherits])
+public  **addRole** (*unknown* $role, [*array|string* $accessInherits])
 
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example: 
 
@@ -88,19 +90,19 @@ Do a role inherit from another existing role
 
 
 
-public *boolean*  **isRole** (*unknown* $roleName)
+public  **isRole** (*unknown* $roleName)
 
 Check whether role exist in the roles list
 
 
 
-public *boolean*  **isResource** (*unknown* $resourceName)
+public  **isResource** (*unknown* $resourceName)
 
 Check whether resource exist in the resources list
 
 
 
-public *boolean*  **addResource** (*unknown* $resourceValue, *unknown* $accessList)
+public  **addResource** (*Phalcon\\Acl\\Resource|string* $resourceValue, *array|string* $accessList)
 
 Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example: 
 
@@ -119,13 +121,13 @@ Adds a resource to the ACL list Access names can be a particular action, by exam
 
 
 
-public *boolean*  **addResourceAccess** (*unknown* $resourceName, *unknown* $accessList)
+public  **addResourceAccess** (*unknown* $resourceName, *array|string* $accessList)
 
 Adds access to resources
 
 
 
-public  **dropResourceAccess** (*unknown* $resourceName, *unknown* $accessList)
+public  **dropResourceAccess** (*unknown* $resourceName, *array|string* $accessList)
 
 Removes an access from a resource
 
@@ -160,7 +162,7 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-public *boolean*  **deny** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
+public  **deny** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
 
 Deny access to a role on a resource You can use '*' as wildcard Example: 
 
@@ -183,7 +185,7 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-public *boolean*  **isAllowed** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
+public  **isAllowed** (*unknown* $roleName, *unknown* $resourceName, *unknown* $access)
 
 Check whether a role is allowed to access an action from a resource 
 
@@ -200,13 +202,13 @@ Check whether a role is allowed to access an action from a resource
 
 
 
-public :doc:`Phalcon\\Acl\\Role <Phalcon_Acl_Role>` [] **getRoles** ()
+public  **getRoles** ()
 
 Return an array with every role registered in the list
 
 
 
-public :doc:`Phalcon\\Acl\\Resource <Phalcon_Acl_Resource>` [] **getResources** ()
+public  **getResources** ()
 
 Return an array with every resource registered in the list
 
@@ -236,7 +238,7 @@ Sets the events manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\Acl\\Adapter
+public  **getEventsManager** () inherited from Phalcon\\Acl\\Adapter
 
 Returns the internal event manager
 
@@ -248,7 +250,7 @@ Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
 
 
-public *int*  **getDefaultAction** () inherited from Phalcon\\Acl\\Adapter
+public  **getDefaultAction** () inherited from Phalcon\\Acl\\Adapter
 
 Returns the default ACL access level
 

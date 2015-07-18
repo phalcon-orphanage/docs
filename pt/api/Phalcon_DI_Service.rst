@@ -1,7 +1,7 @@
-Class **Phalcon\\DI\\Service**
+Class **Phalcon\\Di\\Service**
 ==============================
 
-*implements* :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`
+*implements* :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`
 
 Represents individually a service in the services container  
 
@@ -9,8 +9,8 @@ Represents individually a service in the services container
 
     <?php
 
-     $service = new Phalcon\DI\Service('request', 'Phalcon\Http\Request');
-     $request = $service->resolve();
+     $service = new \Phalcon\Di\Service('request', 'Phalcon\Http\Request');
+     $request = service->resolve();
 
 .. code-block:: php
 
@@ -19,9 +19,9 @@ Represents individually a service in the services container
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
+final public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 
 
@@ -33,13 +33,13 @@ Returns the service's name
 
 
 
-public  **setShared** (*boolean* $shared)
+public  **setShared** (*unknown* $shared)
 
 Sets if the service is shared or not
 
 
 
-public *boolean*  **isShared** ()
+public  **isShared** ()
 
 Check whether the service is shared or not
 
@@ -69,7 +69,7 @@ Resolves the service
 
 
 
-public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **setParameter** (*long* $position, *array* $parameter)
+public  **setParameter** (*unknown* $position, *unknown* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
@@ -81,7 +81,13 @@ Returns a parameter in a specific position
 
 
 
-public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** (*array* $attributes)
+public  **isResolved** ()
+
+Returns true if the service was resolved
+
+
+
+public static  **__set_state** (*unknown* $attributes)
 
 Restore the internal state of a service
 

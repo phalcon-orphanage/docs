@@ -1,13 +1,10 @@
 Class **Phalcon\\Crypt\\Exception**
 ===================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
-
-Phalcon\\Escaper\\Crypt  Exceptions thrown in Phalcon\\Crypt use this class
-
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

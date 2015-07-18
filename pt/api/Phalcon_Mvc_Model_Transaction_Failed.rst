@@ -1,27 +1,27 @@
 Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
 ==================================================
 
-*extends* :doc:`Phalcon\\Mvc\\Model\\Transaction\\Exception <Phalcon_Mvc_Model_Transaction_Exception>`
+*extends* class :doc:`Phalcon\\Mvc\\Model\\Transaction\\Exception <Phalcon_Mvc_Model_Transaction_Exception>`
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $message, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
+public  **__construct** (*unknown* $message, [*unknown* $record])
 
 Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getRecordMessages** ()
+public  **getRecordMessages** ()
 
 Returns validation record messages which stop the transaction
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getRecord** ()
+public  **getRecord** ()
 
 Returns validation record messages which stop the transaction
 

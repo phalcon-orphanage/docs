@@ -1,33 +1,31 @@
 Interface **Phalcon\\Db\\IndexInterface**
 =========================================
 
-Phalcon\\Db\\IndexInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public  **__construct** (*string* $indexName, *array* $columns)
+abstract public  **__construct** (*unknown* $indexName, *unknown* $columns, [*unknown* $type])
 
-Phalcon\\Db\\Index constructor
-
-
-
-abstract public *string*  **getName** ()
-
-Gets the index name
+...
 
 
+abstract public  **getName** ()
 
-abstract public *array*  **getColumns** ()
-
-Gets the columns that comprends the index
-
+...
 
 
-abstract public static :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>`  **__set_state** (*array* $data)
+abstract public  **getColumns** ()
 
-Restore a Phalcon\\Db\\Index object from export
+...
 
+
+abstract public  **getType** ()
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $data)
+
+...
 
 

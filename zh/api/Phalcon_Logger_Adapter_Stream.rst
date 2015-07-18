@@ -21,25 +21,25 @@ Sends logs to a valid PHP stream
 Methods
 -------
 
-public  **__construct** (*unknown* $name, [*unknown* $options])
+public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\\Logger\\Adapter\\Stream constructor
 
 
 
-public :doc:`Phalcon\\Logger\\Formatter\\Line <Phalcon_Logger_Formatter_Line>`  **getFormatter** ()
+public  **getFormatter** ()
 
 Returns the internal formatter
 
 
 
-public  **logInternal** (*unknown* $message, *unknown* $type, *unknown* $time, *array* $context)
+public  **logInternal** (*unknown* $message, *unknown* $type, *unknown* $time, *unknown* $context)
 
 Writes the log to the stream itself
 
 
 
-public *boolean*  **close** ()
+public  **close** ()
 
 Closes the logger
 
@@ -129,7 +129,7 @@ Sends/Writes an alert message to the log
 
 
 
-public  **log** (*unknown* $type, [*unknown* $message], [*unknown* $context]) inherited from Phalcon\\Logger\\Adapter
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*mixed* $type, [*mixed* $message], [*mixed* $context]) inherited from Phalcon\\Logger\\Adapter
 
 Logs messages to the internal logger. Appends logs to the logger
 

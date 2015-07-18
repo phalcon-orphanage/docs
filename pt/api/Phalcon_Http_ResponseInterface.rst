@@ -1,118 +1,91 @@
 Interface **Phalcon\\Http\\ResponseInterface**
 ==============================================
 
-Phalcon\\Http\\ResponseInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setStatusCode** (*int* $code, *string* $message)
+abstract public  **setStatusCode** (*unknown* $code, [*unknown* $message])
 
-Sets the HTTP response code
+...
 
 
+abstract public  **getHeaders** ()
 
-abstract public :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **getHeaders** ()
+...
 
-Returns headers set by the user
 
+abstract public  **setHeader** (*unknown* $name, *unknown* $value)
 
+...
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setHeader** (*string* $name, *string* $value)
 
-Overwrites a header in the response
+abstract public  **setRawHeader** (*unknown* $header)
 
+...
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setRawHeader** (*string* $header)
+abstract public  **resetHeaders** ()
 
-Send a raw header to the response
+...
 
 
+abstract public  **setExpires** (*unknown* $datetime)
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **resetHeaders** ()
+...
 
-Resets all the stablished headers
 
+abstract public  **setNotModified** ()
 
+...
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setExpires** (*DateTime* $datetime)
 
-Sets output expire time header
+abstract public  **setContentType** (*unknown* $contentType, [*unknown* $charset])
 
+...
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setNotModified** ()
+abstract public  **redirect** ([*unknown* $location], [*unknown* $externalRedirect], [*unknown* $statusCode])
 
-Sends a Not-Modified response
+...
 
 
+abstract public  **setContent** (*unknown* $content)
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContentType** (*string* $contentType, [*string* $charset])
+...
 
-Sets the response content-type mime, optionally the charset
 
+abstract public  **setJsonContent** (*unknown* $content)
 
+...
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **redirect** ([*string* $location], [*boolean* $externalRedirect], [*int* $statusCode])
 
-Redirect by HTTP to another action or URL
+abstract public  **appendContent** (*unknown* $content)
 
+...
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setContent** (*string* $content)
+abstract public  **getContent** ()
 
-Sets HTTP response body
+...
 
 
+abstract public  **sendHeaders** ()
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **setJsonContent** (*string* $content)
+...
 
-Sets HTTP response body. The parameter is automatically converted to JSON 
 
-.. code-block:: php
+abstract public  **sendCookies** ()
 
-    <?php
+...
 
-    $response->setJsonContent(array("status" => "OK"));
 
+abstract public  **send** ()
 
+...
 
 
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **appendContent** (*string* $content)
+abstract public  **setFileToSend** (*unknown* $filePath, [*unknown* $attachmentName])
 
-Appends a string to the HTTP response body
-
-
-
-abstract public *string*  **getContent** ()
-
-Gets the HTTP response body
-
-
-
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendHeaders** ()
-
-Sends headers to the client
-
-
-
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **sendCookies** ()
-
-Sends cookies to the client
-
-
-
-abstract public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **send** ()
-
-Prints out HTTP response to the client
-
-
-
-abstract public  **setFileToSend** (*string* $filePath, [*string* $attachmentName])
-
-Sets an attached file to be sent at the end of the request
-
+...
 
 

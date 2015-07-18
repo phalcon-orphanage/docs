@@ -1,13 +1,10 @@
 Class **Phalcon\\Mvc\\Router\\Exception**
 =========================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
-
-Exceptions thrown in Phalcon\\Mvc\\Router will use this class
-
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

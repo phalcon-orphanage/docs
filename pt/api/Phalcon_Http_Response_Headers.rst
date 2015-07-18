@@ -7,7 +7,7 @@ This class is a bag to manage the response headers
 
 
 Methods
----------
+-------
 
 public  **set** (*string* $name, *string* $value)
 
@@ -27,7 +27,13 @@ Sets a raw header to be sent at the end of the request
 
 
 
-public *boolean*  **send** ()
+public  **remove** (*unknown* $header)
+
+Removes a header to be sent at the end of the request
+
+
+
+public  **send** ()
 
 Sends the headers to the client
 
@@ -39,7 +45,13 @@ Reset set headers
 
 
 
-public static :doc:`Phalcon\\Http\\Response\\Headers <Phalcon_Http_Response_Headers>`  **__set_state** (*array* $data)
+public  **toArray** ()
+
+Returns the current headers as an array
+
+
+
+public static  **__set_state** (*unknown* $data)
 
 Restore a Phalcon\\Http\\Response\\Headers object
 

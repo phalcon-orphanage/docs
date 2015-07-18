@@ -1,87 +1,76 @@
 Interface **Phalcon\\Mvc\\Model\\RelationInterface**
 ====================================================
 
-Phalcon\\Mvc\\Model\\RelationInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public  **__construct** (*int* $type, *string* $referencedModel, *string|array* $fields, *string|array* $referencedFields, [*array* $options])
+abstract public  **__construct** (*unknown* $type, *unknown* $referencedModel, *unknown* $fields, *unknown* $referencedFields, [*unknown* $options])
 
-Phalcon\\Mvc\\Model\\Relation constructor
-
-
-
-abstract public  **setIntermediateRelation** (*string|array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
-
-Sets the intermediate model dat for has-*-through relations
+...
 
 
+abstract public  **setIntermediateRelation** (*unknown* $intermediateFields, *unknown* $intermediateModel, *unknown* $intermediateReferencedFields)
 
-abstract public *int*  **getType** ()
-
-Returns the relations type
-
+...
 
 
-abstract public *string*  **getReferencedModel** ()
+abstract public  **isReusable** ()
 
-Returns the referenced model
-
-
-
-abstract public *string|array*  **getFields** ()
-
-Returns the fields
+...
 
 
+abstract public  **getType** ()
 
-abstract public *string|array*  **getReferencedFields** ()
-
-Returns the referenced fields
-
+...
 
 
-abstract public *string|array*  **getOptions** ()
+abstract public  **getReferencedModel** ()
 
-Returns the options
-
-
-
-abstract public *string|array*  **isForeignKey** ()
-
-Check whether the relation act as a foreign key
+...
 
 
+abstract public  **getFields** ()
 
-abstract public *string|array*  **getForeignKey** ()
-
-Returns the foreign key configuration
-
+...
 
 
-abstract public *boolean*  **isThrough** ()
+abstract public  **getReferencedFields** ()
 
-Check whether the relation is a 'many-to-many' relation or not
-
-
-
-abstract public *string|array*  **getIntermediateFields** ()
-
-Gets the intermediate fields for has-*-through relations
+...
 
 
+abstract public  **getOptions** ()
 
-abstract public *string*  **getIntermediateModel** ()
-
-Gets the intermediate model for has-*-through relations
-
+...
 
 
-abstract public *string|array*  **getIntermediateReferencedFields** ()
+abstract public  **isForeignKey** ()
 
-Gets the intermediate referenced fields for has-*-through relations
+...
 
+
+abstract public  **getForeignKey** ()
+
+...
+
+
+abstract public  **isThrough** ()
+
+...
+
+
+abstract public  **getIntermediateFields** ()
+
+...
+
+
+abstract public  **getIntermediateModel** ()
+
+...
+
+
+abstract public  **getIntermediateReferencedFields** ()
+
+...
 
 

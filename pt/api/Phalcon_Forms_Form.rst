@@ -1,15 +1,25 @@
 Class **Phalcon\\Forms\\Form**
 ==============================
 
-*extends* :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, Countable, Iterator, Traversable
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Countable, Iterator, Traversable
 
 This component allows to build forms using an object-oriented interface
 
 
 Methods
----------
+-------
+
+public  **setValidation** (*unknown* $validation)
+
+...
+
+
+public  **getValidation** ()
+
+...
+
 
 public  **__construct** ([*object* $entity], [*array* $userOptions])
 
@@ -23,7 +33,7 @@ Sets the form's action
 
 
 
-public *string*  **getAction** ()
+public  **getAction** ()
 
 Returns the form's action
 
@@ -41,7 +51,7 @@ Returns the value of an option if present
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **setUserOptions** (*array* $options)
+public  **setUserOptions** (*unknown* $options)
 
 Sets options for the element
 
@@ -65,7 +75,7 @@ Returns the entity related to the model
 
 
 
-public *Phalcon\\Forms\\ElementInterface[]*  **getElements** ()
+public  **getElements** ()
 
 Returns the form elements added to the form
 
@@ -83,25 +93,25 @@ Validates the form
 
 
 
-public *array*  **getMessages** ([*boolean* $byItemName])
+public  **getMessages** ([*unknown* $byItemName])
 
 Returns the messages generated in the validation
 
 
 
-public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>` [] **getMessagesFor** (*unknown* $name)
+public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessagesFor** (*string* $name)
 
 Returns the messages generated for a specific element
 
 
 
-public *boolean*  **hasMessagesFor** (*unknown* $name)
+public *boolean*  **hasMessagesFor** (*string* $name)
 
 Check if messages were generated for a specific element
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (*Phalcon\\Forms\\ElementInterface* $element)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **add** (:doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>` $element, [*string* $postion], [*unknown* $type])
 
 Adds an element to the form
 
@@ -113,19 +123,19 @@ Renders a specific item in the form
 
 
 
-public *Phalcon\\Forms\\ElementInterface*  **get** (*string* $name)
+public  **get** (*unknown* $name)
 
 Returns an element added to the form by its name
 
 
 
-public *string*  **label** (*string* $name)
+public  **label** (*unknown* $name, [*unknown* $attributes])
 
 Generate the label of a element added to the form including HTML
 
 
 
-public *string*  **getLabel** (*string* $name)
+public  **getLabel** (*unknown* $name)
 
 Returns a label for an element
 
@@ -137,13 +147,13 @@ Gets a value from the internal related entity or from the default value
 
 
 
-public *boolean*  **has** (*string* $name)
+public  **has** (*unknown* $name)
 
 Check if the form contains an element
 
 
 
-public *boolean*  **remove** (*string* $name)
+public  **remove** (*unknown* $name)
 
 Removes an element from the form
 
@@ -155,7 +165,7 @@ Clears every element in the form to its default value
 
 
 
-public *int*  **count** ()
+public  **count** ()
 
 Returns the number of elements in the form
 
@@ -167,13 +177,13 @@ Rewinds the internal iterator
 
 
 
-public :doc:`Phalcon\\Validation\\Message <Phalcon_Validation_Message>`  **current** ()
+public  **current** ()
 
 Returns the current element in the iterator
 
 
 
-public *int*  **key** ()
+public  **key** ()
 
 Returns the current position/key in the iterator
 
@@ -185,37 +195,37 @@ Moves the internal iteration pointer to the next position
 
 
 
-public *boolean*  **valid** ()
+public  **valid** ()
 
 Check if the current element in the iterator is valid
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (*unknown* $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** () inherited from Phalcon\\DI\\Injectable
+public  **getDI** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+public  **setEventsManager** (*unknown* $eventsManager) inherited from Phalcon\\Di\\Injectable
 
 Sets the event manager
 
 
 
-public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+public  **getEventsManager** () inherited from Phalcon\\Di\\Injectable
 
 Returns the internal event manager
 
 
 
-public  **__get** (*string* $propertyName) inherited from Phalcon\\DI\\Injectable
+public  **__get** (*unknown* $propertyName) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get
 

@@ -1,175 +1,121 @@
 Interface **Phalcon\\Mvc\\Model\\CriteriaInterface**
 ====================================================
 
-Phalcon\\Mvc\\Model\\CriteriaInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **setModelName** (*string* $modelName)
+abstract public  **setModelName** (*unknown* $modelName)
 
-Set a model on which the query will be executed
+...
 
 
+abstract public  **getModelName** ()
 
-abstract public *string*  **getModelName** ()
+...
 
-Returns an internal model name on which the criteria will be applied
 
+abstract public  **bind** (*unknown* $bindParams)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **bind** (*string* $bindParams)
 
-Adds the bind parameter to the criteria
+abstract public  **bindTypes** (*unknown* $bindTypes)
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **bindTypes** (*string* $bindTypes)
+abstract public  **where** (*unknown* $conditions)
 
-Sets the bind types in the criteria This method replaces all previously set bound parameters
+...
 
 
+abstract public  **conditions** (*unknown* $conditions)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **where** (*string* $conditions)
+...
 
-Adds the conditions parameter to the criteria
 
+abstract public  **orderBy** (*unknown* $orderColumns)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **conditions** (*string* $conditions)
 
-Adds the conditions parameter to the criteria
+abstract public  **limit** (*unknown* $limit, [*unknown* $offset])
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **orderBy** (*string* $orderColumns)
+abstract public  **forUpdate** ([*unknown* $forUpdate])
 
-Adds the order-by parameter to the criteria
+...
 
 
+abstract public  **sharedLock** ([*unknown* $sharedLock])
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **limit** (*int* $limit, [*int* $offset])
+...
 
-Sets the limit parameter to the criteria
 
+abstract public  **andWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **forUpdate** ([*boolean* $forUpdate])
 
-Sets the "for_update" parameter to the criteria
+abstract public  **orWhere** (*unknown* $conditions, [*unknown* $bindParams], [*unknown* $bindTypes])
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **sharedLock** ([*boolean* $sharedLock])
+abstract public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
-Sets the "shared_lock" parameter to the criteria
+...
 
 
+abstract public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+...
 
-Appends a condition to the current conditions using an AND operator
 
+abstract public  **inWhere** (*unknown* $expr, *unknown* $values)
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current conditions using an OR operator
+abstract public  **notInWhere** (*unknown* $expr, *unknown* $values)
 
+...
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+abstract public  **getWhere** ()
 
-Appends a BETWEEN condition to the current conditions 
+...
 
-.. code-block:: php
 
-    <?php
+abstract public  **getConditions** ()
 
-    $builder->betweenWhere('price', 100.25, 200.50);
+...
 
 
+abstract public  **getLimit** ()
 
+...
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a NOT BETWEEN condition to the current conditions 
+abstract public  **getOrder** ()
 
-.. code-block:: php
+...
 
-    <?php
 
-    $builder->notBetweenWhere('price', 100.25, 200.50);
+abstract public  **getParams** ()
 
+...
 
 
+abstract public static  **fromInput** (*unknown* $dependencyInjector, *unknown* $modelName, *unknown* $data)
 
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+...
 
-Appends an IN condition to the current conditions 
 
-.. code-block:: php
+abstract public  **execute** ()
 
-    <?php
-
-    $builder->inWhere('id', [1, 2, 3]);
-
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
-
-Appends a NOT IN condition to the current conditions 
-
-.. code-block:: php
-
-    <?php
-
-    $builder->notInWhere('id', [1, 2, 3]);
-
-
-
-
-abstract public *string*  **getWhere** ()
-
-Returns the conditions parameter in the criteria
-
-
-
-abstract public *string*  **getConditions** ()
-
-Returns the conditions parameter in the criteria
-
-
-
-abstract public *string*  **getLimit** ()
-
-Returns the limit parameter in the criteria
-
-
-
-abstract public *string*  **getOrder** ()
-
-Returns the order parameter in the criteria
-
-
-
-abstract public *string*  **getParams** ()
-
-Returns all the parameters defined in the criteria
-
-
-
-abstract public static *static*  **fromInput** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *string* $modelName, *array* $data)
-
-Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
-
-Executes a find using the parameters built with the criteria
-
+...
 
 

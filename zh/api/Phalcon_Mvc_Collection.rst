@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Collection**
 ===========================================
 
-*implements* :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, :doc:`Phalcon\\Mvc\\CollectionInterface <Phalcon_Mvc_CollectionInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, Serializable
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 
@@ -22,11 +22,11 @@ Methods
 
 final public  **__construct** ([*unknown* $dependencyInjector], [*unknown* $modelsManager])
 
-Phalcon\\Mvc\\Model constructor
+Phalcon\\Mvc\\Collection constructor
 
 
 
-public  **setId** (*unknown* $id)
+public  **setId** (*mixed* $id)
 
 Sets a value for the _id property, creates a MongoId object if needed
 
@@ -44,7 +44,7 @@ Sets the dependency injection container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the dependency injection container
 
@@ -56,19 +56,19 @@ Sets a custom events manager
 
 
 
-protected :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** ()
+protected  **getEventsManager** ()
 
 Returns the custom events manager
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ManagerInterface <Phalcon_Mvc_Model_ManagerInterface>`  **getCollectionManager** ()
+public  **getCollectionManager** ()
 
 Returns the models manager related to the entity instance
 
 
 
-public *array*  **getReservedAttributes** ()
+public  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
 
@@ -80,25 +80,25 @@ Sets if a model must use implicit objects ids
 
 
 
-protected :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **setSource** (*unknown* $source)
+protected  **setSource** (*unknown* $source)
 
 Sets collection name which model should be mapped
 
 
 
-public *string*  **getSource** ()
+public  **getSource** ()
 
 Returns collection name mapped in the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*unknown* $connectionService)
+public  **setConnectionService** (*unknown* $connectionService)
 
 Sets the DependencyInjection connection service name
 
 
 
-public *string*  **getConnectionService** ()
+public  **getConnectionService** ()
 
 Returns DependencyInjection connection service
 
@@ -110,7 +110,7 @@ Retrieves a database connection
 
 
 
-public *mixed*  **readAttribute** (*unknown* $attribute)
+public *mixed*  **readAttribute** (*string* $attribute)
 
 Reads an attribute value by its name 
 
@@ -118,12 +118,12 @@ Reads an attribute value by its name
 
     <?php
 
-    echo robot->readAttribute('name');
+    echo $robot->readAttribute('name');
 
 
 
 
-public  **writeAttribute** (*unknown* $attribute, *unknown* $value)
+public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name 
 
@@ -131,36 +131,36 @@ Writes an attribute value by its name
 
     <?php
 
-    robot->writeAttribute('name', 'Rosey');
+    $robot->writeAttribute('name', 'Rosey');
 
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **cloneResult** (*unknown* $collection, *unknown* $document)
+public static  **cloneResult** (*unknown* $collection, *unknown* $document)
 
 Returns a cloned collection
 
 
 
-protected static *array*  **_getResultset** (*unknown* $params, *unknown* $collection, *unknown* $connection, *unknown* $unique)
+protected static *array*  **_getResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int*  **_getGroupResultset** (*unknown* $params, *unknown* $collection, *unknown* $connection)
+protected static *int*  **_getGroupResultset** (*array* $params, :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>` $collection, *\MongoDb* $connection)
 
 Perform a count over a resultset
 
 
 
-final protected *boolean*  **_preSave** (*unknown* $dependencyInjector, *unknown* $disableEvents, *unknown* $exists)
+final protected *boolean*  **_preSave** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
 
 
-final protected *boolean*  **_postSave** (*unknown* $disableEvents, *unknown* $success, *unknown* $exists)
+final protected  **_postSave** (*unknown* $disableEvents, *unknown* $success, *unknown* $exists)
 
 Executes internal events after save a document
 
@@ -195,7 +195,7 @@ Executes validators on every validation call
 
 
 
-public *boolean*  **validationHasFailed** ()
+public  **validationHasFailed** ()
 
 Check whether validation process has generated any messages 
 
@@ -224,31 +224,31 @@ Check whether validation process has generated any messages
 
 
 
-public *boolean*  **fireEvent** (*unknown* $eventName)
+public  **fireEvent** (*unknown* $eventName)
 
 Fires an internal event
 
 
 
-public *boolean*  **fireEventCancel** (*unknown* $eventName)
+public  **fireEventCancel** (*unknown* $eventName)
 
 Fires an internal event that cancels the operation
 
 
 
-protected *boolean*  **_cancelOperation** (*unknown* $disableEvents)
+protected  **_cancelOperation** (*unknown* $disableEvents)
 
 Cancel the current operation
 
 
 
-protected *boolean*  **_exists** (*unknown* $collection)
+protected *boolean*  **_exists** (*\MongoCollection* $collection)
 
 Checks if the document exists in the collection
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+public  **getMessages** ()
 
 Returns all the validation messages 
 
@@ -256,13 +256,13 @@ Returns all the validation messages
 
     <?php
 
-    robot = new Robots();
-    robot->type = 'mechanical';
-    robot->name = 'Astro Boy';
-    robot->year = 1952;
-    if (robot->save() == false) {
+     $robot = new Robots();
+     $robot->type = 'mechanical';
+     $robot->name = 'Astro Boy';
+     $robot->year = 1952;
+     if ($robot->save() == false) {
     echo "Umh, We can't store robots right now ";
-    foreach (robot->getMessages() as message) {
+    foreach ($robot->getMessages() as message) {
     	echo message;
     }
     } else {
@@ -287,9 +287,9 @@ Appends a customized message on the validation process
     
     	public function beforeSave()
     	{
-    		if (this->name == 'Peter') {
+    		if ($this->name == 'Peter') {
     			message = new Message("Sorry, but a robot cannot be named Peter");
-    			this->appendMessage(message);
+    			$this->appendMessage(message);
     		}
     	}
     }
@@ -297,19 +297,19 @@ Appends a customized message on the validation process
 
 
 
-public *boolean*  **save** ()
+public  **save** ()
 
 Creates/Updates a collection based on the values in the atributes
 
 
 
-public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*unknown* $id)
+public static :doc:`Phalcon\\Mvc\\Collection <Phalcon_Mvc_Collection>`  **findById** (*string|\MongoId* $id)
 
 Find a document by its id (_id)
 
 
 
-public static *array*  **findFirst** ([*unknown* $parameters])
+public static  **findFirst** ([*unknown* $parameters])
 
 Allows to query the first record that match the specified conditions 
 
@@ -318,26 +318,26 @@ Allows to query the first record that match the specified conditions
     <?php
 
      //What's the first robot in the robots table?
-     robot = Robots::findFirst();
-     echo "The robot name is ", robot->name, "\n";
+     $robot = Robots::findFirst();
+     echo "The robot name is ", $robot->name, "\n";
     
      //What's the first mechanical robot in robots table?
-     robot = Robots::findFirst(array(
+     $robot = Robots::findFirst(array(
          array("type" => "mechanical")
      ));
-     echo "The first mechanical robot name is ", robot->name, "\n";
+     echo "The first mechanical robot name is ", $robot->name, "\n";
     
      //Get first virtual robot ordered by name
-     robot = Robots::findFirst(array(
+     $robot = Robots::findFirst(array(
          array("type" => "mechanical"),
          "order" => array("name" => 1)
      ));
-     echo "The first virtual robot name is ", robot->name, "\n";
+     echo "The first virtual robot name is ", $robot->name, "\n";
 
 
 
 
-public static *array*  **find** ([*unknown* $parameters])
+public static  **find** ([*unknown* $parameters])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -346,38 +346,38 @@ Allows to query a set of records that match the specified conditions
     <?php
 
      //How many robots are there?
-     robots = Robots::find();
-     echo "There are ", count(robots), "\n";
+     $robots = Robots::find();
+     echo "There are ", count($robots), "\n";
     
      //How many mechanical robots are there?
-     robots = Robots::find(array(
+     $robots = Robots::find(array(
          array("type" => "mechanical")
      ));
      echo "There are ", count(robots), "\n";
     
      //Get and print virtual robots ordered by name
-     robots = Robots::findFirst(array(
+     $robots = Robots::findFirst(array(
          array("type" => "virtual"),
          "order" => array("name" => 1)
      ));
-     foreach (robots as robot) {
-       echo robot->name, "\n";
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
      }
     
      //Get first 100 virtual robots ordered by name
-     robots = Robots::find(array(
+     $robots = Robots::find(array(
          array("type" => "virtual"),
          "order" => array("name" => 1),
          "limit" => 100
      ));
-     foreach (robots as robot) {
-       echo robot->name, "\n";
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
      }
 
 
 
 
-public static *array*  **count** ([*unknown* $parameters])
+public static  **count** ([*unknown* $parameters])
 
 Perform a count over a collection 
 
@@ -390,19 +390,19 @@ Perform a count over a collection
 
 
 
-public static *array*  **aggregate** (*unknown* $parameters)
+public static  **aggregate** ([*unknown* $parameters])
 
 Perform an aggregation using the Mongo aggregation framework
 
 
 
-public static *array*  **summatory** (*unknown* $field, [*unknown* $conditions], [*unknown* $finalize])
+public static  **summatory** (*unknown* $field, [*unknown* $conditions], [*unknown* $finalize])
 
 Allows to perform a summatory group for a column in the collection
 
 
 
-public *boolean*  **delete** ()
+public  **delete** ()
 
 Deletes a model instance. Returning true on success or false otherwise. 
 
@@ -410,17 +410,29 @@ Deletes a model instance. Returning true on success or false otherwise.
 
     <?php
 
-    robot = Robots::findFirst();
-    robot->delete();
+    $robot = Robots::findFirst();
+    $robot->delete();
     
-    foreach (Robots::find() as robot) {
-    	robot->delete();
+    foreach (Robots::find() as $robot) {
+    	$robot->delete();
     }
 
 
 
 
-public *array*  **toArray** ()
+protected  **addBehavior** (*unknown* $behavior)
+
+Sets up a behavior in a collection
+
+
+
+public  **skipOperation** (*unknown* $skip)
+
+Skips the current operation forcing a success state
+
+
+
+public  **toArray** ()
 
 Returns the instance as an array representation 
 
@@ -428,12 +440,12 @@ Returns the instance as an array representation
 
     <?php
 
-     print_r(robot->to[]);
+     print_r($robot->toArray());
 
 
 
 
-public *string*  **serialize** ()
+public  **serialize** ()
 
 Serializes the object ignoring connections or protected properties
 

@@ -1,7 +1,7 @@
 Class **Phalcon\\Session\\Bag**
 ===============================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Session\\BagInterface <Phalcon_Session_BagInterface>`, IteratorAggregate, Traversable, ArrayAccess, Countable
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application  
 
@@ -16,21 +16,21 @@ This component helps to separate session data into "namespaces". Working by this
 
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $name)
+public  **__construct** (*unknown* $name)
 
 Phalcon\\Session\\Bag constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
@@ -94,7 +94,7 @@ Obtains a value from the session bag optionally setting a default value
 
 
 
-public *string*  **__get** (*string* $property)
+public *mixed*  **__get** (*string* $property)
 
 Magic getter to obtain values from the session bag 
 
@@ -107,7 +107,7 @@ Magic getter to obtain values from the session bag
 
 
 
-public *boolean*  **has** (*string* $property)
+public  **has** (*unknown* $property)
 
 Check whether a property is defined in the internal bag 
 
@@ -120,7 +120,7 @@ Check whether a property is defined in the internal bag
 
 
 
-public *boolean*  **__isset** (*string* $property)
+public  **__isset** (*unknown* $property)
 
 Magic isset to check whether a property is defined in the bag 
 
@@ -133,7 +133,7 @@ Magic isset to check whether a property is defined in the bag
 
 
 
-public *boolean*  **remove** (*string* $property)
+public  **remove** (*unknown* $property)
 
 Removes a property from the internal bag 
 
@@ -146,7 +146,7 @@ Removes a property from the internal bag
 
 
 
-public *boolean*  **__unset** (*string* $property)
+public  **__unset** (*unknown* $property)
 
 Magic unset to remove items using the array syntax 
 
@@ -155,6 +155,49 @@ Magic unset to remove items using the array syntax
     <?php
 
      unset($user['name']);
+
+
+
+
+final public  **count** ()
+
+Return length of bag 
+
+.. code-block:: php
+
+    <?php
+
+     echo $user->count();
+
+
+
+
+final public *\ArrayIterator*  **getIterator** ()
+
+ Returns the bag iterator
+
+
+
+final public  **offsetSet** (*string* $property, *mixed* $value)
+
+
+
+
+
+final public  **offsetExists** (*string* $property)
+
+
+
+
+
+final public  **offsetUnset** (*string* $property)
+
+
+
+
+
+final public  **offsetGet** (*string* $property)
+
 
 
 

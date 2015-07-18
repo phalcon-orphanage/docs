@@ -1,9 +1,9 @@
-Class **Phalcon\\Mvc\\Model\\Resultset**
-========================================
+Abstract class **Phalcon\\Mvc\\Model\\Resultset**
+=================================================
 
 *implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
 
-This component allows to Phalcon\\Mvc\\Model returns large resulsets with the minimum memory consumption Resulsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.  
+This component allows to Phalcon\\Mvc\\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.  
 
 .. code-block:: php
 
@@ -11,8 +11,8 @@ This component allows to Phalcon\\Mvc\\Model returns large resulsets with the mi
 
      //Using a standard foreach
      $robots = Robots::find(array("type='virtual'", "order" => "name"));
-     foreach ($robots as $robot) {
-      echo $robot->name, "\n";
+     foreach ($robots as robot) {
+      echo robot->name, "\n";
      }
     
      //Using a while
@@ -40,7 +40,13 @@ Constants
 *integer* **HYDRATE_ARRAYS**
 
 Methods
----------
+-------
+
+public  **__construct** (*Phalcon\\Db\\ResultInterface|false* $result, [:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $cache])
+
+Phalcon\\Mvc\\Model\\Resultset constructor
+
+
 
 public  **next** ()
 
@@ -48,37 +54,43 @@ Moves cursor to next row in the resultset
 
 
 
-public *int*  **key** ()
+public  **valid** ()
+
+Check whether internal resource has rows to fetch
+
+
+
+public  **key** ()
 
 Gets pointer number of active row in the resultset
 
 
 
-public  **rewind** ()
+final public  **rewind** ()
 
 Rewinds resultset to its beginning
 
 
 
-public  **seek** (*int* $position)
+final public  **seek** (*unknown* $position)
 
-Changes internal pointer to a specific position in the resultset
+Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
 
 
 
-public *int*  **count** ()
+final public  **count** ()
 
 Counts how many rows are in the resultset
 
 
 
-public *boolean*  **offsetExists** (*int* $index)
+public  **offsetExists** (*unknown* $index)
 
 Checks whether offset exists in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **offsetGet** (*int* $index)
+public  **offsetGet** (*unknown* $index)
 
 Gets row in a specific position of the resultset
 
@@ -86,77 +98,77 @@ Gets row in a specific position of the resultset
 
 public  **offsetSet** (*int* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public  **offsetUnset** (*int* $offset)
+public  **offsetUnset** (*unknown* $offset)
 
-Resulsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
 
 
-public *int*  **getType** ()
+public  **getType** ()
 
 Returns the internal type of data retrieval that the resultset is using
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** ()
+public  **getFirst** ()
 
 Get first row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** ()
+public  **getLast** ()
 
 Get last row in the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setIsFresh** (*boolean* $isFresh)
+public  **setIsFresh** (*unknown* $isFresh)
 
 Set if the resultset is fresh or an old one cached
 
 
 
-public *boolean*  **isFresh** ()
+public  **isFresh** ()
 
 Tell if the resultset if fresh or an old one cached
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Resultset <Phalcon_Mvc_Model_Resultset>`  **setHydrateMode** (*int* $hydrateMode)
+public  **setHydrateMode** (*unknown* $hydrateMode)
 
 Sets the hydration mode in the resultset
 
 
 
-public *int*  **getHydrateMode** ()
+public  **getHydrateMode** ()
 
 Returns the current hydration mode
 
 
 
-public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
+public  **getCache** ()
 
 Returns the associated cache for the resultset
 
 
 
-public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **current** ()
-
-Returns current row in the resultset
-
-
-
-public :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>` [] **getMessages** ()
+public  **getMessages** ()
 
 Returns the error messages produced by a batch operation
 
 
 
-public *boolean*  **delete** ([*Closure* $conditionCallback])
+public *boolean*  **update** (*array* $data, [*Closure* $conditionCallback])
+
+Updates every record in the resultset
+
+
+
+public  **delete** ([*unknown* $conditionCallback])
 
 Deletes every record in the resultset
 
@@ -179,13 +191,12 @@ Filters a resultset returning only those the developer requires
 
 
 
-abstract public *array*  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
+abstract public  **toArray** () inherited from Phalcon\\Mvc\\Model\\ResultsetInterface
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+...
 
 
-
-abstract public  **valid** () inherited from Iterator
+abstract public  **current** () inherited from Iterator
 
 ...
 
