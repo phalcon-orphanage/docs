@@ -94,6 +94,16 @@ get 方法指定了要匹配的请求方法。 路由规则 /say/hello/{name} �
     // 匹配http get 或 post方法
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    //Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 路由参数（Routes with Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
