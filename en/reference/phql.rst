@@ -326,15 +326,15 @@ When the joined model has a many-to-many relation to the 'from' model, the inter
 
     <?php
 
-    $phql = 'SELECT Brands.name, Songs.name FROM Artists ' .
+    $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
             'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
-    $result = $this->modelsManager->query($phql);
+    $result = $this->modelsManager->executeQuery($phql);
 
-This code produces the following SQL in MySQL:
+This code executes the following SQL in MySQL:
 
 .. code-block:: sql
 
-    SELECT `brands`.`name`, `songs`.`name` FROM `artists`
+    SELECT `artists`.`name`, `songs`.`name` FROM `artists`
     INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
     INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
     WHERE `artists`.`genre` = 'Trip-Hop'
