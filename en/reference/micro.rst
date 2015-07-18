@@ -100,6 +100,16 @@ which the route is constrained for:
     //Matches if the HTTP method is GET or POST
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    //Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 Routes with Parameters
 ^^^^^^^^^^^^^^^^^^^^^^

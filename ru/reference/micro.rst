@@ -97,6 +97,16 @@ HTTP используется, чтобы запросы путей соотве
     // Совпадет, если HTTP-метод - GET или POST
     $app->map('/repos/store/refs',"action_product")->via(array('GET', 'POST'));
 
+To access the HTTP method data `$app` needs to be passed into the closure:
+
+.. code-block:: php
+
+    <?php
+
+    //Matches if the HTTP method is POST
+    $app->post('/api/products/add', function () use ($app) {
+        echo $app->request->getPost("productID");
+    });
 
 Пути с параметрами
 ^^^^^^^^^^^^^^^^^^
