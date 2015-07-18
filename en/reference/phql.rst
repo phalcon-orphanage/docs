@@ -449,7 +449,7 @@ With PHQL it's possible to insert data using the familiar INSERT statement:
     // Inserting using placeholders
     $phql = "INSERT INTO Cars (name, brand_id, year, style) "
           . "VALUES (:name:, :brand_id:, :year:, :style)";
-    $manager->executeQuery($sql,
+    $manager->executeQuery($phql,
         array(
             'name'     => 'Lamborghini Espada',
             'brand_id' => 7,
