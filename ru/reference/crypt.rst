@@ -93,7 +93,7 @@ Phalcon предоставляет средства шифрования с по
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $crypt->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($encrypt, $key);
 
 Настройка сервиса
 -----------------

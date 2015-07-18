@@ -100,7 +100,7 @@ In order for encryption to be properly transmitted (emails) or displayed (browse
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $crypt->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($encrypt, $key);
 
 Setting up an Encryption service
 --------------------------------

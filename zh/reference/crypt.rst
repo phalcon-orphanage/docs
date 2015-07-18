@@ -99,7 +99,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
 
     $encrypt = $crypt->encryptBase64($text, $key);
 
-    echo $crypt->decryptBase64($text, $key);
+    echo $crypt->decryptBase64($encrypt, $key);
 
 配置加密服务（Setting up an Encryption service）
 ------------------------------------------------
