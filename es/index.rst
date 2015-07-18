@@ -65,6 +65,7 @@ Table of Contents
    reference/logging
    reference/annotations
    reference/cli
+   reference/queue
    reference/db
    reference/intl
    reference/migrations
