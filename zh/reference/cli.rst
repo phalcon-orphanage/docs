@@ -1,5 +1,6 @@
 命令行应用（Command Line Applications）
 ======================================
+
 CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台任务， 命令行工具等。
 
 结构（Structure）
@@ -18,77 +19,74 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	use Phalcon\DI\FactoryDefault\CLI as CliDI,
-	     Phalcon\CLI\Console as ConsoleApp;
+    use Phalcon\DI\FactoryDefault\CLI as CliDI,
+        Phalcon\CLI\Console as ConsoleApp;
 
-	define('VERSION', '1.0.0');
+    define('VERSION', '1.0.0');
 
-	//使用CLI工厂类作为默认的服务容器
-	$di = new CliDI();
+    // 使用CLI工厂类作为默认的服务容器
+    $di = new CliDI();
 
-	// 定义应用目录路径
-	defined('APPLICATION_PATH')
-	|| define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+    // 定义应用目录路径
+    defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
 
-	/**
-	 *
-	 * 注册类自动加载器
-	 */
-	$loader = new \Phalcon\Loader();
-	$loader->registerDirs(
-	    array(
-	        APPLICATION_PATH . '/tasks'
-	    )
-	);
-	$loader->register();
+    /**
+     * 注册类自动加载器
+     */
+    $loader = new \Phalcon\Loader();
+    $loader->registerDirs(
+        array(
+            APPLICATION_PATH . '/tasks'
+        )
+    );
+    $loader->register();
 
-	//加载配置文件（如果存在）
-	if(is_readable(APPLICATION_PATH . '/config/config.php')) {
-	    $config = include APPLICATION_PATH . '/config/config.php';
-	    $di->set('config', $config);
-	}
+    // 加载配置文件（如果存在）
+    if(is_readable(APPLICATION_PATH . '/config/config.php')) {
+        $config = include APPLICATION_PATH . '/config/config.php';
+        $di->set('config', $config);
+    }
 
-	// 创建console应用
-	$console = new ConsoleApp();
-	$console->setDI($di);
+    // 创建console应用
+    $console = new ConsoleApp();
+    $console->setDI($di);
 
-	/**
-	 * 处理console应用参数
-	 */
-	$arguments = array();
-	foreach($argv as $k => $arg) {
-	    if($k == 1) {
-	        $arguments['task'] = $arg;
-	    } elseif($k == 2) {
-	        $arguments['action'] = $arg;
-	    } elseif($k >= 3) {
-	       $arguments['params'][] = $arg;
-	    }
-	}
+    /**
+     * 处理console应用参数
+     */
+    $arguments = array();
+    foreach($argv as $k => $arg) {
+        if($k == 1) {
+            $arguments['task'] = $arg;
+        } elseif($k == 2) {
+            $arguments['action'] = $arg;
+        } elseif($k >= 3) {
+            $arguments['params'][] = $arg;
+        }
+    }
 
-	// 定义全局的参数， 设定当前任务及动作
-	define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));
-	define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
+    // 定义全局的参数， 设定当前任务及动作
+    define('CURRENT_TASK',   (isset($argv[1]) ? $argv[1] : null));
+    define('CURRENT_ACTION', (isset($argv[2]) ? $argv[2] : null));
 
-	try {
-	    // 处理参数
-	    $console->handle($arguments);
-	}
-	catch (\Phalcon\Exception $e) {
-	    echo $e->getMessage();
-	    exit(255);
-	}
+    try {
+        // 处理参数
+        $console->handle($arguments);
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+        exit(255);
+    }
 
 上面的代码可以使用如下方式执行：
 
 .. code-block:: bash
 
-	$ php app/cli.php
+    $ php app/cli.php
 
-	这样程序会直接执行默认的任务及默认动作.
-
+    这样程序会直接执行默认的任务及默认动作.
 
 任务（Tasks）
 -------------------
@@ -102,8 +100,9 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     class MainTask extends \Phalcon\CLI\Task
     {
-        public function mainAction() {
-             echo "\nThis is the default task and the default action \n";
+        public function mainAction()
+        {
+            echo "\nThis is the default task and the default action \n";
         }
     }
 
@@ -115,22 +114,24 @@ CLI应用中， 开发者也可以在action中处理传递过来的参数， 下
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class MainTask extends \Phalcon\CLI\Task
-	{
-	    public function mainAction() {
-	         echo "\nThis is the default task and the default action \n";
-	    }
+    class MainTask extends \Phalcon\CLI\Task
+    {
+        public function mainAction()
+        {
+            echo "\nThis is the default task and the default action \n";
+        }
 
-	    /**
-	    * @param array $params
-	    */
-	   public function testAction(array $params) {
-	       echo sprintf('hello %s', $params[0]) . PHP_EOL;
-	       echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
-	   }
-	}
+        /**
+         * @param array $params
+         */
+        public function testAction(array $params)
+        {
+            echo sprintf('hello %s', $params[0]) . PHP_EOL;
+            echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
+        }
+    }
 
 我们可以使用下面的命令行及参数执行程序：
 
@@ -147,36 +148,42 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
 
 .. code-block:: php
 
-	<?php
+    <?php
 
-	$di->setShared('console', $console);
+    $di->setShared('console', $console);
 
-	try {
-	    // handle incoming arguments
-	    $console->handle($arguments);
-	}
+    try {
+        // Handle incoming arguments
+        $console->handle($arguments);
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+        exit(255);
+    }
 
 然后开发者即可在一个action中使用用其它的action了. 下面即是例子：
 
-
 .. code-block:: php
 
-	<?php
+    <?php
 
-	class MainTask extends \Phalcon\CLI\Task
-	{
-	    public function mainAction() {
-	        echo "\nThis is the default task and the default action \n";
+    class MainTask extends \Phalcon\CLI\Task
+    {
+        public function mainAction()
+        {
+            echo "\nThis is the default task and the default action \n";
 
-	        $this->console->handle(array(
-	           'task' => 'main',
-	           'action' => 'test'
-	        ));
-	    }
+            $this->console->handle(
+                array(
+                    'task'   => 'main',
+                    'action' => 'test'
+                )
+            );
+        }
 
-	    public function testAction() {
-	        echo '\nI will get printed too!\n';
-	    }
-	}
+        public function testAction()
+        {
+            echo "\nI will get printed too!\n";
+        }
+    }
 
-当然， 通过扩展 \Phalcon\CLI\Task 来实现如上操作会是一个更好主意。
+当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_Cli_Task>` 来实现如上操作会是一个更好主意。
