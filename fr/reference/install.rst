@@ -119,3 +119,4 @@ Installation notes for Web Servers:
     apache
     nginx
     cherokee
+    built-in

@@ -111,8 +111,9 @@ Notas para la instalación
 Notas para los servidores web:
 
 .. toctree::
-	:maxdepth: 1
+    :maxdepth: 1
 
-	apache
-	nginx
-	cherokee
+    apache
+    nginx
+    cherokee
+    built-in
