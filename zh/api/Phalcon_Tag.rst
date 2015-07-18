@@ -32,13 +32,13 @@ Constants
 Methods
 -------
 
-public static  **getEscaper** (*unknown* $params)
+public static *EscaperInterface*  **getEscaper** (*array* $params)
 
 Obtains the 'escaper' service if required
 
 
 
-public static *string*  **renderAttributes** (*unknown* $code, *unknown* $attributes)
+public static  **renderAttributes** (*unknown* $code, *unknown* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
@@ -50,19 +50,19 @@ Sets the dependency injector container.
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public static  **getDI** ()
 
 Internally gets the request dispatcher
 
 
 
-public static :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`  **getUrlService** ()
+public static  **getUrlService** ()
 
 Returns a URL service from the default DI
 
 
 
-public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
+public static  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
 
@@ -74,7 +74,7 @@ Set autoescape mode in generated html
 
 
 
-public static  **setDefault** (*unknown* $id, *unknown* $value)
+public static  **setDefault** (*string* $id, *string* $value)
 
 Assigns default values to generated tags by helpers 
 
@@ -108,19 +108,19 @@ Assigns default values to generated tags by helpers
 
 
 
-public static  **displayTo** (*unknown* $id, *unknown* $value)
+public static  **displayTo** (*string* $id, *string* $value)
 
 Alias of Phalcon\\Tag::setDefault
 
 
 
-public static *boolean*  **hasValue** (*unknown* $name)
+public static *boolean*  **hasValue** (*string* $name)
 
 Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from _POST
 
 
 
-public static *mixed*  **getValue** (*unknown* $name, [*unknown* $params])
+public static *mixed*  **getValue** (*string* $name, [*array* $params])
 
 Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from _POST
 
@@ -132,7 +132,7 @@ Resets the request and internal values to avoid those fields will have any defau
 
 
 
-public static *string*  **linkTo** (*unknown* $parameters, [*unknown* $text], [*unknown* $local])
+public static *string*  **linkTo** (*array|string* $parameters, [*string* $text], [*boolean* $local])
 
 Builds a HTML A tag using framework conventions 
 
@@ -150,25 +150,25 @@ Builds a HTML A tag using framework conventions
 
 
 
-final protected static *string*  **_inputField** (*unknown* $type, *unknown* $parameters, [*unknown* $asValue])
+final protected static *string*  **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
 
 Builds generic INPUT tags
 
 
 
-final protected static *string*  **_inputFieldChecked** (*unknown* $type, *unknown* $parameters)
+final protected static *string*  **_inputFieldChecked** (*string* $type, *array* $parameters)
 
 Builds INPUT tags that implements the checked attribute
 
 
 
-public static *string*  **colorField** (*unknown* $parameters)
+public static *string*  **colorField** (*array* $parameters)
 
 Builds a HTML input[type="color"] tag
 
 
 
-public static *string*  **textField** (*unknown* $parameters)
+public static *string*  **textField** (*array* $parameters)
 
 Builds a HTML input[type="text"] tag 
 
@@ -181,7 +181,7 @@ Builds a HTML input[type="text"] tag
 
 
 
-public static *string*  **numericField** (*unknown* $parameters)
+public static *string*  **numericField** (*array* $parameters)
 
 Builds a HTML input[type="number"] tag 
 
@@ -194,13 +194,13 @@ Builds a HTML input[type="number"] tag
 
 
 
-public static *string*  **rangeField** (*unknown* $parameters)
+public static *string*  **rangeField** (*array* $parameters)
 
 Builds a HTML input[type="range"] tag
 
 
 
-public static *string*  **emailField** (*unknown* $parameters)
+public static *string*  **emailField** (*array* $parameters)
 
 Builds a HTML input[type="email"] tag 
 
@@ -213,7 +213,7 @@ Builds a HTML input[type="email"] tag
 
 
 
-public static *string*  **dateField** (*unknown* $parameters)
+public static *string*  **dateField** (*array* $parameters)
 
 Builds a HTML input[type="date"] tag 
 
@@ -226,37 +226,37 @@ Builds a HTML input[type="date"] tag
 
 
 
-public static *string*  **dateTimeField** (*unknown* $parameters)
+public static *string*  **dateTimeField** (*array* $parameters)
 
 Builds a HTML input[type="datetime"] tag
 
 
 
-public static *string*  **dateTimeLocalField** (*unknown* $parameters)
+public static *string*  **dateTimeLocalField** (*array* $parameters)
 
 Builds a HTML input[type="datetime-local"] tag
 
 
 
-public static *string*  **monthField** (*unknown* $parameters)
+public static *string*  **monthField** (*array* $parameters)
 
 Builds a HTML input[type="month"] tag
 
 
 
-public static *string*  **timeField** (*unknown* $parameters)
+public static *string*  **timeField** (*array* $parameters)
 
 Builds a HTML input[type="time"] tag
 
 
 
-public static *string*  **weekField** (*unknown* $parameters)
+public static *string*  **weekField** (*array* $parameters)
 
 Builds a HTML input[type="week"] tag
 
 
 
-public static *string*  **passwordField** (*unknown* $parameters)
+public static *string*  **passwordField** (*array* $parameters)
 
 Builds a HTML input[type="password"] tag 
 
@@ -269,7 +269,7 @@ Builds a HTML input[type="password"] tag
 
 
 
-public static *string*  **hiddenField** (*unknown* $parameters)
+public static *string*  **hiddenField** (*array* $parameters)
 
 Builds a HTML input[type="hidden"] tag 
 
@@ -282,7 +282,7 @@ Builds a HTML input[type="hidden"] tag
 
 
 
-public static *string*  **fileField** (*unknown* $parameters)
+public static *string*  **fileField** (*array* $parameters)
 
 Builds a HTML input[type="file"] tag 
 
@@ -295,25 +295,25 @@ Builds a HTML input[type="file"] tag
 
 
 
-public static *string*  **searchField** (*unknown* $parameters)
+public static *string*  **searchField** (*array* $parameters)
 
 Builds a HTML input[type="search"] tag
 
 
 
-public static *string*  **telField** (*unknown* $parameters)
+public static *string*  **telField** (*array* $parameters)
 
 Builds a HTML input[type="tel"] tag
 
 
 
-public static *string*  **urlField** (*unknown* $parameters)
+public static *string*  **urlField** (*array* $parameters)
 
 Builds a HTML input[type="url"] tag
 
 
 
-public static *string*  **checkField** (*unknown* $parameters)
+public static *string*  **checkField** (*array* $parameters)
 
 Builds a HTML input[type="check"] tag 
 
@@ -326,7 +326,7 @@ Builds a HTML input[type="check"] tag
 
 
 
-public static *string*  **radioField** (*unknown* $parameters)
+public static *string*  **radioField** (*array* $parameters)
 
 Builds a HTML input[type="radio"] tag 
 
@@ -347,7 +347,7 @@ Volt syntax:
 
 
 
-public static *string*  **imageInput** (*unknown* $parameters)
+public static *string*  **imageInput** (*array* $parameters)
 
 Builds a HTML input[type="image"] tag 
 
@@ -368,7 +368,7 @@ Volt syntax:
 
 
 
-public static *string*  **submitButton** (*unknown* $parameters)
+public static *string*  **submitButton** (*array* $parameters)
 
 Builds a HTML input[type="submit"] tag 
 
@@ -389,7 +389,7 @@ Volt syntax:
 
 
 
-public static *string*  **selectStatic** (*unknown* $parameters, [*unknown* $data])
+public static *string*  **selectStatic** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a PHP array for options 
 
@@ -402,7 +402,7 @@ Builds a HTML SELECT tag using a PHP array for options
 
 
 
-public static *string*  **select** (*unknown* $parameters, [*unknown* $data])
+public static *string*  **select** (*array* $parameters, [*array* $data])
 
 Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options 
 
@@ -427,7 +427,7 @@ Volt syntax:
 
 
 
-public static *string*  **textArea** (*unknown* $parameters)
+public static *string*  **textArea** (*array* $parameters)
 
 Builds a HTML TEXTAREA tag 
 
@@ -448,7 +448,7 @@ Volt syntax:
 
 
 
-public static *string*  **form** (*unknown* $parameters)
+public static *string*  **form** (*array* $parameters)
 
 Builds a HTML FORM tag 
 
@@ -471,7 +471,7 @@ Volt syntax:
 
 
 
-public static *string*  **endForm** ()
+public static  **endForm** ()
 
 Builds a HTML close FORM tag
 
@@ -515,7 +515,7 @@ Prepends a text to current document title
 
 
 
-public static *string*  **getTitle** ([*unknown* $tags])
+public static  **getTitle** ([*unknown* $tags])
 
 Gets the current document title 
 
@@ -534,7 +534,7 @@ Gets the current document title
 
 
 
-public static *string*  **getTitleSeparator** ()
+public static  **getTitleSeparator** ()
 
 Gets the current document title separator 
 
@@ -553,7 +553,7 @@ Gets the current document title separator
 
 
 
-public static *string*  **stylesheetLink** ([*unknown* $parameters], [*unknown* $local])
+public static *string*  **stylesheetLink** ([*array* $parameters], [*boolean* $local])
 
 Builds a LINK[rel="stylesheet"] tag 
 
@@ -576,7 +576,7 @@ Volt Syntax:
 
 
 
-public static *string*  **javascriptInclude** ([*unknown* $parameters], [*unknown* $local])
+public static *string*  **javascriptInclude** ([*array* $parameters], [*boolean* $local])
 
 Builds a SCRIPT[type="javascript"] tag 
 
@@ -599,7 +599,7 @@ Volt syntax:
 
 
 
-public static *string*  **image** ([*unknown* $parameters], [*unknown* $local])
+public static *string*  **image** ([*array* $parameters], [*boolean* $local])
 
 Builds HTML IMG tags 
 
@@ -623,7 +623,7 @@ Volt Syntax:
 
 
 
-public static *text*  **friendlyTitle** (*unknown* $text, [*unknown* $separator], [*unknown* $lowercase], [*unknown* $replace])
+public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase], [*mixed* $replace])
 
 Converts texts into URL-friendly titles 
 
@@ -642,13 +642,13 @@ Set the document type of content
 
 
 
-public static *string*  **getDocType** ()
+public static  **getDocType** ()
 
 Get the document type declaration of content
 
 
 
-public static *string*  **tagHtml** (*unknown* $tagName, [*unknown* $parameters], [*unknown* $selfClose], [*unknown* $onlyStart], [*unknown* $useEol])
+public static *string*  **tagHtml** (*string* $tagName, [*array* $parameters], [*boolean* $selfClose], [*boolean* $onlyStart], [*boolean* $useEol])
 
 Builds a HTML tag 
 
@@ -661,7 +661,7 @@ Builds a HTML tag
 
 
 
-public static *string*  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
+public static  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
 
 Builds a HTML tag closing tag 
 

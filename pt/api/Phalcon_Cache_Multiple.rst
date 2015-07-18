@@ -1,7 +1,7 @@
 Class **Phalcon\\Cache\\Multiple**
 ==================================
 
-Allows to read to chained backends writing to multiple backends  
+Allows to read to chained backend adapters writing to multiple backends  
 
 .. code-block:: php
 
@@ -47,7 +47,7 @@ Allows to read to chained backends writing to multiple backends
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*Phalcon\\Cache\\BackendInterface[]* $backends])
 
@@ -55,19 +55,19 @@ Phalcon\\Cache\\Multiple constructor
 
 
 
-public :doc:`Phalcon\\Cache\\Multiple <Phalcon_Cache_Multiple>`  **push** (:doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>` $backend)
+public  **push** (*unknown* $backend)
 
 Adds a backend
 
 
 
-public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*string|int* $keyName, [*long* $lifetime])
 
 Returns a cached content reading the internal backends
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
+public  **start** (*string|int* $keyName, [*long* $lifetime])
 
 Starts every backend
 
@@ -79,13 +79,13 @@ Stores cached content into all backends and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean*  **delete** (*string|int* $keyName)
 
 Deletes a value from each backend
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** ([*string|int* $keyName], [*long* $lifetime])
 
 Checks if cache exists in at least one backend
 

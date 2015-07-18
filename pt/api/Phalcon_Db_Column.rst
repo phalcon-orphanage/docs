@@ -47,11 +47,29 @@ Constants
 
 *integer* **TYPE_BOOLEAN**
 
+*integer* **TYPE_DOUBLE**
+
+*integer* **TYPE_TINYBLOB**
+
+*integer* **TYPE_BLOB**
+
+*integer* **TYPE_MEDIUMBLOB**
+
+*integer* **TYPE_LONGBLOB**
+
+*integer* **TYPE_BIGINTEGER**
+
+*integer* **TYPE_JSON**
+
+*integer* **TYPE_JSONB**
+
 *integer* **BIND_PARAM_NULL**
 
 *integer* **BIND_PARAM_INT**
 
 *integer* **BIND_PARAM_STR**
+
+*integer* **BIND_PARAM_BLOB**
 
 *integer* **BIND_PARAM_BOOL**
 
@@ -60,75 +78,93 @@ Constants
 *integer* **BIND_SKIP**
 
 Methods
----------
+-------
 
-public  **__construct** (*string* $columnName, *array* $definition)
+public  **getName** ()
+
+Column's name
+
+
+
+public  **getSchemaName** ()
+
+Schema which table related is
+
+
+
+public  **getType** ()
+
+Column data type
+
+
+
+public  **getTypeReference** ()
+
+Column data type reference
+
+
+
+public  **getTypeValues** ()
+
+Column data type values
+
+
+
+public  **getSize** ()
+
+Integer column size
+
+
+
+public  **getScale** ()
+
+Integer column number scale
+
+
+
+public  **getDefault** ()
+
+Default column value
+
+
+
+public  **__construct** (*unknown* $name, *unknown* $definition)
 
 Phalcon\\Db\\Column constructor
 
 
 
-public *string*  **getSchemaName** ()
-
-Returns schema's table related to column
-
-
-
-public *string*  **getName** ()
-
-Returns column name
-
-
-
-public *int*  **getType** ()
-
-Returns column type
-
-
-
-public *int*  **getSize** ()
-
-Returns column size
-
-
-
-public *int*  **getScale** ()
-
-Returns column scale
-
-
-
-public *boolean*  **isUnsigned** ()
+public  **isUnsigned** ()
 
 Returns true if number column is unsigned
 
 
 
-public *boolean*  **isNotNull** ()
+public  **isNotNull** ()
 
 Not null
 
 
 
-public *boolean*  **isPrimary** ()
+public  **isPrimary** ()
 
 Column is part of the primary key?
 
 
 
-public *boolean*  **isAutoIncrement** ()
+public  **isAutoIncrement** ()
 
 Auto-Increment
 
 
 
-public *boolean*  **isNumeric** ()
+public  **isNumeric** ()
 
 Check whether column have an numeric type
 
 
 
-public *boolean*  **isFirst** ()
+public  **isFirst** ()
 
 Check whether column have first position in table
 
@@ -140,13 +176,13 @@ Check whether field absolute to position in table
 
 
 
-public *int*  **getBindType** ()
+public  **getBindType** ()
 
 Returns the type of bind handling
 
 
 
-public static *\Phalcon\Db\Column*  **__set_state** (*array* $data)
+public static  **__set_state** (*unknown* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
 

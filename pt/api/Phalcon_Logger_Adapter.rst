@@ -1,93 +1,99 @@
-Class **Phalcon\\Logger\\Adapter**
-==================================
+Abstract class **Phalcon\\Logger\\Adapter**
+===========================================
 
 Base class for Phalcon\\Logger adapters
 
 
 Methods
----------
+-------
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **setLogLevel** (*int* $level)
+public  **setLogLevel** (*unknown* $level)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
 
 
-public *int*  **getLogLevel** ()
+public  **getLogLevel** ()
 
 Returns the current log level
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **setFormatter** (:doc:`Phalcon\\Logger\\FormatterInterface <Phalcon_Logger_FormatterInterface>` $formatter)
+public  **setFormatter** (*unknown* $formatter)
 
 Sets the message formatter
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **begin** ()
+public  **begin** ()
 
 Starts a transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **commit** ()
+public  **commit** ()
 
 Commits the internal transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **rollback** ()
+public  **rollback** ()
 
 Rollbacks the internal transaction
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **emergence** (*string* $message)
+public  **critical** (*unknown* $message, [*unknown* $context])
 
-Sends/Writes an emergence message to the log
+Sends/Writes a critical message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **debug** (*string* $message)
+public  **emergency** (*unknown* $message, [*unknown* $context])
+
+Sends/Writes an emergency message to the log
+
+
+
+public  **debug** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a debug message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **error** (*string* $message)
+public  **error** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an error message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **info** (*string* $message)
+public  **info** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an info message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **notice** (*string* $message)
+public  **notice** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a notice message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **warning** (*string* $message)
+public  **warning** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes a warning message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **alert** (*string* $message)
+public  **alert** (*unknown* $message, [*unknown* $context])
 
 Sends/Writes an alert message to the log
 
 
 
-public :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`  **log** (*string* $message, [*int* $type])
+public :doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>`  **log** (*mixed* $type, [*mixed* $message], [*mixed* $context])
 
-Logs messages to the internal loggger. Appends logs to the
+Logs messages to the internal logger. Appends logs to the logger
 
 
 

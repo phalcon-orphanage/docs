@@ -30,33 +30,45 @@ Constants
 *integer* **XHTML5**
 
 Methods
----------
+-------
 
-public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public static *EscaperInterface*  **getEscaper** (*array* $params)
+
+Obtains the 'escaper' service if required
+
+
+
+public static  **renderAttributes** (*unknown* $code, *unknown* $attributes)
+
+Renders parameters keeping order in their HTML attributes
+
+
+
+public static  **setDI** (*unknown* $dependencyInjector)
 
 Sets the dependency injector container.
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public static  **getDI** ()
 
 Internally gets the request dispatcher
 
 
 
-public static :doc:`Phalcon\\Mvc\\UrlInterface <Phalcon_Mvc_UrlInterface>`  **getUrlService** ()
+public static  **getUrlService** ()
 
-Return a URL service from the default DI
+Returns a URL service from the default DI
 
 
 
-public static :doc:`Phalcon\\EscaperInterface <Phalcon_EscaperInterface>`  **getEscaperService** ()
+public static  **getEscaperService** ()
 
 Returns an Escaper service from the default DI
 
 
 
-public static  **setAutoescape** (*boolean* $autoescape)
+public static  **setAutoescape** (*unknown* $autoescape)
 
 Set autoescape mode in generated html
 
@@ -79,7 +91,7 @@ Assigns default values to generated tags by helpers
 
 
 
-public static  **setDefaults** (*array* $values)
+public static  **setDefaults** (*unknown* $values, [*unknown* $merge])
 
 Assigns default values to generated tags by helpers 
 
@@ -104,13 +116,13 @@ Alias of Phalcon\\Tag::setDefault
 
 public static *boolean*  **hasValue** (*string* $name)
 
-Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from $_POST
+Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from _POST
 
 
 
 public static *mixed*  **getValue** (*string* $name, [*array* $params])
 
-Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
+Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from _POST
 
 
 
@@ -120,7 +132,7 @@ Resets the request and internal values to avoid those fields will have any defau
 
 
 
-public static *string*  **linkTo** (*array|string* $parameters, [*string* $text])
+public static *string*  **linkTo** (*array|string* $parameters, [*string* $text], [*boolean* $local])
 
 Builds a HTML A tag using framework conventions 
 
@@ -128,22 +140,31 @@ Builds a HTML A tag using framework conventions
 
     <?php
 
-    echo Phalcon\Tag::linkTo('signup/register', 'Register Here!');
-    echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!'));
-    echo Phalcon\Tag::linkTo(array('signup/register', 'Register Here!', 'class' => 'btn-primary'));
+    echo Phalcon\Tag::linkTo("signup/register", "Register Here!");
+    echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!"));
+    echo Phalcon\Tag::linkTo(array("signup/register", "Register Here!", "class" => "btn-primary"));
+    echo Phalcon\Tag::linkTo("http://phalconphp.com/", "Phalcon", FALSE);
+    echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", FALSE));
+    echo Phalcon\Tag::linkTo(array("http://phalconphp.com/", "Phalcon Home", "local" =>FALSE));
 
 
 
 
-protected static *string*  **_inputField** ()
+final protected static *string*  **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
 
 Builds generic INPUT tags
 
 
 
-protected static *string*  **_inputFieldChecked** ()
+final protected static *string*  **_inputFieldChecked** (*string* $type, *array* $parameters)
 
 Builds INPUT tags that implements the checked attribute
+
+
+
+public static *string*  **colorField** (*array* $parameters)
+
+Builds a HTML input[type="color"] tag
 
 
 
@@ -173,6 +194,12 @@ Builds a HTML input[type="number"] tag
 
 
 
+public static *string*  **rangeField** (*array* $parameters)
+
+Builds a HTML input[type="range"] tag
+
+
+
 public static *string*  **emailField** (*array* $parameters)
 
 Builds a HTML input[type="email"] tag 
@@ -196,6 +223,36 @@ Builds a HTML input[type="date"] tag
 
     echo Phalcon\Tag::dateField(array("born", "value" => "14-12-1980"))
 
+
+
+
+public static *string*  **dateTimeField** (*array* $parameters)
+
+Builds a HTML input[type="datetime"] tag
+
+
+
+public static *string*  **dateTimeLocalField** (*array* $parameters)
+
+Builds a HTML input[type="datetime-local"] tag
+
+
+
+public static *string*  **monthField** (*array* $parameters)
+
+Builds a HTML input[type="month"] tag
+
+
+
+public static *string*  **timeField** (*array* $parameters)
+
+Builds a HTML input[type="time"] tag
+
+
+
+public static *string*  **weekField** (*array* $parameters)
+
+Builds a HTML input[type="week"] tag
 
 
 
@@ -238,6 +295,24 @@ Builds a HTML input[type="file"] tag
 
 
 
+public static *string*  **searchField** (*array* $parameters)
+
+Builds a HTML input[type="search"] tag
+
+
+
+public static *string*  **telField** (*array* $parameters)
+
+Builds a HTML input[type="tel"] tag
+
+
+
+public static *string*  **urlField** (*array* $parameters)
+
+Builds a HTML input[type="url"] tag
+
+
+
 public static *string*  **checkField** (*array* $parameters)
 
 Builds a HTML input[type="check"] tag 
@@ -259,7 +334,7 @@ Builds a HTML input[type="radio"] tag
 
     <?php
 
-     echo Phalcon\Tag::radioField(array("wheather", "value" => "hot"))
+     echo Phalcon\Tag::radioField(array("weather", "value" => "hot"))
 
 Volt syntax: 
 
@@ -267,7 +342,7 @@ Volt syntax:
 
     <?php
 
-     {{ radio_field('Save') }}
+     {{ radio_field("Save") }}
 
 
 
@@ -288,7 +363,7 @@ Volt syntax:
 
     <?php
 
-     {{ image_input('src': '/img/button.png') }}
+     {{ image_input("src": "/img/button.png") }}
 
 
 
@@ -309,7 +384,7 @@ Volt syntax:
 
     <?php
 
-     {{ submit_button('Save') }}
+     {{ submit_button("Save") }}
 
 
 
@@ -337,7 +412,7 @@ Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
 
     echo Phalcon\Tag::select(array(
     	"robotId",
-    	Robots::find("type = 'mechanical'"),
+    	Robots::find("type = "mechanical""),
     	"using" => array("id", "name")
      	));
 
@@ -373,7 +448,7 @@ Volt syntax:
 
 
 
-public static *string*  **form** ([*array* $parameters])
+public static *string*  **form** (*array* $parameters)
 
 Builds a HTML FORM tag 
 
@@ -396,13 +471,13 @@ Volt syntax:
 
 
 
-public static *string*  **endForm** ()
+public static  **endForm** ()
 
 Builds a HTML close FORM tag
 
 
 
-public static  **setTitle** (*string* $title)
+public static  **setTitle** (*unknown* $title)
 
 Set the title of view content 
 
@@ -410,24 +485,37 @@ Set the title of view content
 
     <?php
 
-     Phalcon\Tag::setTitle('Welcome to my Page');
+     Phalcon\Tag::setTitle("Welcome to my Page");
 
 
 
 
-public static  **appendTitle** (*string* $title)
+public static  **setTitleSeparator** (*unknown* $titleSeparator)
+
+Set the title separator of view content 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Tag::setTitleSeparator("-");
+
+
+
+
+public static  **appendTitle** (*unknown* $title)
 
 Appends a text to current document title
 
 
 
-public static  **prependTitle** (*string* $title)
+public static  **prependTitle** (*unknown* $title)
 
 Prepends a text to current document title
 
 
 
-public static *string*  **getTitle** ([*unknown* $tags])
+public static  **getTitle** ([*unknown* $tags])
 
 Gets the current document title 
 
@@ -442,6 +530,25 @@ Gets the current document title
     <?php
 
      	{{ get_title() }}
+
+
+
+
+public static  **getTitleSeparator** ()
+
+Gets the current document title separator 
+
+.. code-block:: php
+
+    <?php
+
+             echo Phalcon\Tag::getTitleSeparator();
+
+.. code-block:: php
+
+    <?php
+
+             {{ get_title_separator() }}
 
 
 
@@ -477,8 +584,8 @@ Builds a SCRIPT[type="javascript"] tag
 
     <?php
 
-     	echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
-     	echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
+             echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false);
+             echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 Volt syntax: 
 
@@ -500,8 +607,8 @@ Builds HTML IMG tags
 
     <?php
 
-     	echo Phalcon\Tag::image("img/bg.png");
-     	echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
+             echo Phalcon\Tag::image("img/bg.png");
+             echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
 
 Volt Syntax: 
 
@@ -509,14 +616,14 @@ Volt Syntax:
 
     <?php
 
-     	{{ image("img/bg.png") }}
-     	{{ image("img/photo.jpg", "alt": "Some Photo") }}
-     	{{ image("http://static.mywebsite.com/img/bg.png", false) }}
+             {{ image("img/bg.png") }}
+             {{ image("img/photo.jpg", "alt": "Some Photo") }}
+             {{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 
 
 
-public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase])
+public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase], [*mixed* $replace])
 
 Converts texts into URL-friendly titles 
 
@@ -524,18 +631,18 @@ Converts texts into URL-friendly titles
 
     <?php
 
-     echo Phalcon\Tag::friendlyTitle('These are big important news', '-')
+     echo Phalcon\Tag::friendlyTitle("These are big important news", "-")
 
 
 
 
-public static  **setDocType** (*string* $doctype)
+public static  **setDocType** (*unknown* $doctype)
 
 Set the document type of content
 
 
 
-public static *string*  **getDocType** ()
+public static  **getDocType** ()
 
 Get the document type declaration of content
 
@@ -549,12 +656,12 @@ Builds a HTML tag
 
     <?php
 
-    echo Phalcon\Tag::tagHtml($name, $parameters, $selfClose, $onlyStart, $eol);
+            echo Phalcon\Tag::tagHtml(name, parameters, selfClose, onlyStart, eol);
 
 
 
 
-public static *string*  **tagHtmlClose** (*string* $tagName, [*boolean* $useEol])
+public static  **tagHtmlClose** (*unknown* $tagName, [*unknown* $useEol])
 
 Builds a HTML tag closing tag 
 
@@ -562,7 +669,7 @@ Builds a HTML tag closing tag
 
     <?php
 
-    echo Phalcon\Tag::tagHtmlClose('script', true)
+            echo Phalcon\Tag::tagHtmlClose("script", true)
 
 
 

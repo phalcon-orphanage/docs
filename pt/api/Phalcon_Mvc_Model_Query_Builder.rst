@@ -1,7 +1,7 @@
 Class **Phalcon\\Mvc\\Model\\Query\\Builder**
 =============================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 Helps to create PHQL queries using an OO interface  
 
@@ -9,34 +9,58 @@ Helps to create PHQL queries using an OO interface
 
     <?php
 
-    $resultset = $this->modelsManager->createBuilder()
-       ->from('Robots')
-       ->join('RobotsParts')
-       ->limit(20)
-       ->orderBy('Robots.name')
-       ->getQuery()
-       ->execute();
+     $params = array(
+        'models'     => array('Users'),
+        'columns'    => array('id', 'name', 'status'),
+        'conditions' => array(
+            array(
+                "created > :min: AND created < :max:",
+                array("min" => '2013-01-01',   'max' => '2014-01-01'),
+                array("min" => PDO::PARAM_STR, 'max' => PDO::PARAM_STR),
+            ),
+        ),
+        // or 'conditions' => "created > '2013-01-01' AND created < '2014-01-01'",
+        'group'      => array('id', 'name'),
+        'having'     => "name = 'Kamil'",
+        'order'      => array('name', 'id'),
+        'limit'      => 20,
+        'offset'     => 20,
+        // or 'limit' => array(20, 20),
+    );
+    $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 
 
 Methods
----------
+-------
 
-public  **__construct** ([*array* $params], [:doc:`Phalcon\\DI <Phalcon_DI>` $dependencyInjector])
+public  **__construct** ([*unknown* $params], [*unknown* $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
+
+
+
+public :doc:`Phalcon\\Mvc\\Model\\Query\\BuilderInterface <Phalcon_Mvc_Model_Query_BuilderInterface>`  **distinct** (*bool|null* $distinct)
+
+Sets SELECT DISTINCT / SELECT ALL flag
+
+
+
+public  **getDistinct** ()
+
+Returns SELECT DISTINCT / SELECT ALL flag
 
 
 
@@ -103,7 +127,7 @@ Adds a INNER join to the query
     $builder->join('Robots');
     $builder->join('Robots', 'r.id = RobotsParts.robots_id');
     $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
+    $builder->join('Robots', 'r.id = RobotsParts.robots_id', 'r', 'INNER');
 
 
 
@@ -119,7 +143,6 @@ Adds a INNER join to the query
     $builder->innerJoin('Robots');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id');
     $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r');
-    $builder->innerJoin('Robots', 'r.id = RobotsParts.robots_id', 'r', 'LEFT');
 
 
 
@@ -150,7 +173,7 @@ Adds a RIGHT join to the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*mixed* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
 Sets the query conditions 
 
@@ -158,6 +181,7 @@ Sets the query conditions
 
     <?php
 
+    $builder->where(100);
     $builder->where('name = "Peter"');
     $builder->where('name = :name: AND id > :id:', array('name' => 'Peter', 'id' => 100));
 
@@ -192,7 +216,7 @@ Appends a condition to the current conditions using a OR operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **betweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public  **betweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a BETWEEN condition to the current conditions 
 
@@ -205,7 +229,7 @@ Appends a BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notBetweenWhere** (*string* $expr, *mixed* $minimum, *mixed* $maximum)
+public  **notBetweenWhere** (*unknown* $expr, *unknown* $minimum, *unknown* $maximum)
 
 Appends a NOT BETWEEN condition to the current conditions 
 
@@ -218,7 +242,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **inWhere** (*string* $expr, *array* $values)
+public  **inWhere** (*unknown* $expr, *unknown* $values)
 
 Appends an IN condition to the current conditions 
 
@@ -231,7 +255,7 @@ Appends an IN condition to the current conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **notInWhere** (*string* $expr, *array* $values)
+public  **notInWhere** (*unknown* $expr, *unknown* $values)
 
 Appends a NOT IN condition to the current conditions 
 
@@ -250,7 +274,7 @@ Return the conditions for the query
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string* $orderBy)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orderBy** (*string|array* $orderBy)
 
 Sets a ORDER BY condition clause 
 
@@ -270,7 +294,7 @@ Returns the set ORDER BY clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **having** (*string* $having)
+public  **having** (*unknown* $having)
 
 Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters 
 
@@ -283,13 +307,26 @@ Sets a HAVING condition clause. You need to escape PHQL reserved words using [ a
 
 
 
+public  **forUpdate** (*unknown* $forUpdate)
+
+Sets a FOR UPDATE clause 
+
+.. code-block:: php
+
+    <?php
+
+    $builder->forUpdate(true);
+
+
+
+
 public *string|array*  **getHaving** ()
 
 Return the current having clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **limit** (*int* $limit, [*int* $offset])
+public  **limit** ([*unknown* $limit], [*unknown* $offset])
 
 Sets a LIMIT clause, optionally a offset clause 
 
@@ -309,7 +346,7 @@ Returns the current LIMIT clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **offset** (*int* $offset)
+public  **offset** (*unknown* $offset)
 
 Sets an OFFSET clause 
 
@@ -328,7 +365,7 @@ Returns the current OFFSET clause
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*string* $group)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **groupBy** (*string|array* $group)
 
 Sets a GROUP BY clause 
 
@@ -347,13 +384,13 @@ Returns the GROUP BY clause
 
 
 
-public *string*  **getPhql** ()
+final public *string*  **getPhql** ()
 
 Returns a PHQL statement built based on the builder parameters
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **getQuery** ()
+public  **getQuery** ()
 
 Returns the query built
 

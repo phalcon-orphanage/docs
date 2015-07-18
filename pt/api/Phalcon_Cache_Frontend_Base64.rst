@@ -3,19 +3,21 @@ Class **Phalcon\\Cache\\Frontend\\Base64**
 
 *implements* :doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>`
 
-Allows to cache data converting/deconverting them to base64.  This adapters uses the base64_encode/base64_decode PHP's functions  
+Allows to cache data converting/deconverting them to base64.  This adapter uses the base64_encode/base64_decode PHP's functions  
 
 .. code-block:: php
 
     <?php
 
+    <?php
+    
      // Cache the files for 2 days using a Base64 frontend
-     $frontCache = new Phalcon\Cache\Frontend\Base64(array(
+     $frontCache = new \Phalcon\Cache\Frontend\Base64(array(
         "lifetime" => 172800
      ));
     
      //Create a MongoDB cache
-     $cache = new Phalcon\Cache\Backend\Mongo($frontCache, array(
+     $cache = new \Phalcon\Cache\Backend\Mongo($frontCache, array(
     	'server' => "mongodb://localhost",
           'db' => 'caches',
     	'collection' => 'images'
@@ -36,7 +38,7 @@ Allows to cache data converting/deconverting them to base64.  This adapters uses
 
 
 Methods
----------
+-------
 
 public  **__construct** ([*array* $frontendOptions])
 
@@ -44,13 +46,13 @@ Phalcon\\Cache\\Frontend\\Base64 constructor
 
 
 
-public *integer*  **getLifetime** ()
+public  **getLifetime** ()
 
 Returns the cache lifetime
 
 
 
-public *boolean*  **isBuffering** ()
+public  **isBuffering** ()
 
 Check whether if frontend is buffering output
 
@@ -58,7 +60,7 @@ Check whether if frontend is buffering output
 
 public  **start** ()
 
-Starts output frontend. Actually, does nothing
+Starts output frontend. Actually, does nothing in this adapter
 
 
 

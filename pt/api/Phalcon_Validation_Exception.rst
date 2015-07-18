@@ -1,13 +1,10 @@
 Class **Phalcon\\Validation\\Exception**
 ========================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
-
-Exceptions thrown in Phalcon\\Validation\\* classes will use this class
-
+*extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

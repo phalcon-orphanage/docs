@@ -1,57 +1,46 @@
-Interface **Phalcon\\DI\\ServiceInterface**
+Interface **Phalcon\\Di\\ServiceInterface**
 ===========================================
 
-Phalcon\\DI\\ServiceInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
+abstract public  **__construct** (*unknown* $name, *unknown* $definition, [*unknown* $shared])
 
-
-
+...
 
 
 abstract public  **getName** ()
 
-Returns the service's name
+...
 
 
+abstract public  **setShared** (*unknown* $shared)
 
-abstract public  **setShared** (*boolean* $shared)
-
-Sets if the service is shared or not
-
+...
 
 
-abstract public *boolean*  **isShared** ()
+abstract public  **isShared** ()
 
-Check whether the service is shared or not
-
-
-
-abstract public  **setDefinition** (*mixed* $definition)
-
-Set the service definition
+...
 
 
+abstract public  **setDefinition** (*unknown* $definition)
 
-abstract public *mixed*  **getDefinition** ()
-
-Returns the service definition
-
+...
 
 
-abstract public *mixed*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+abstract public  **getDefinition** ()
 
-Resolves the service
+...
 
 
+abstract public  **resolve** ([*unknown* $parameters], [*unknown* $dependencyInjector])
 
-abstract public static :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **__set_state** (*array* $attributes)
+...
 
-Restore the interal state of a service
 
+abstract public static  **__set_state** (*unknown* $attributes)
+
+...
 
 

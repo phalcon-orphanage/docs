@@ -1,13 +1,10 @@
 Class **Phalcon\\Annotations\\Exception**
 =========================================
 
-*extends* :doc:`Phalcon\\Exception <Phalcon_Exception>`
-
-Exceptions thrown in Phalcon\\Annotations will use this class
-
+*extends* Exception
 
 Methods
----------
+-------
 
 final private *Exception*  **__clone** () inherited from Exception
 

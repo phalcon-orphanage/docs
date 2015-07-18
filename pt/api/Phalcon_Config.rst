@@ -1,7 +1,7 @@
 Class **Phalcon\\Config**
 =========================
 
-*implements* ArrayAccess
+*implements* ArrayAccess, Countable
 
 Phalcon\\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.  
 
@@ -9,7 +9,7 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 
     <?php
 
-    $config = new Phalcon\Config(array(
+    $config = new \Phalcon\Config(array(
     	"database" => array(
     		"adapter" => "Mysql",
     		"host" => "localhost",
@@ -27,15 +27,15 @@ Phalcon\\Config is designed to simplify the access to, and the use of, configura
 
 
 Methods
----------
+-------
 
-public  **__construct** ([*array* $arrayConfig])
+public  **__construct** ([*unknown* $arrayConfig])
 
 Phalcon\\Config constructor
 
 
 
-public *boolean*  **offsetExists** (*string* $index)
+public  **offsetExists** (*unknown* $index)
 
 Allows to check whether an attribute is defined using the array-syntax 
 
@@ -48,7 +48,7 @@ Allows to check whether an attribute is defined using the array-syntax
 
 
 
-public *mixed*  **get** (*string* $index, [*mixed* $defaultValue])
+public  **get** (*unknown* $index, [*unknown* $defaultValue])
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead 
 
@@ -61,7 +61,7 @@ Gets an attribute from the configuration, if the attribute isn't defined returns
 
 
 
-public *string*  **offsetGet** (*string* $index)
+public  **offsetGet** (*unknown* $index)
 
 Gets an attribute using the array-syntax 
 
@@ -74,7 +74,7 @@ Gets an attribute using the array-syntax
 
 
 
-public  **offsetSet** (*string* $index, *mixed* $value)
+public  **offsetSet** (*unknown* $index, *unknown* $value)
 
 Sets an attribute using the array-syntax 
 
@@ -87,7 +87,7 @@ Sets an attribute using the array-syntax
 
 
 
-public  **offsetUnset** (*string* $index)
+public  **offsetUnset** (*unknown* $index)
 
 Unsets an attribute using the array-syntax 
 
@@ -100,7 +100,7 @@ Unsets an attribute using the array-syntax
 
 
 
-public  **merge** (:doc:`Phalcon\\Config <Phalcon_Config>` $config)
+public  **merge** (*unknown* $config)
 
 Merges a configuration into the current one 
 
@@ -108,13 +108,13 @@ Merges a configuration into the current one
 
     <?php
 
-    $appConfig = new Phalcon\Config(array('database' => array('host' => 'localhost')));
-    $globalConfig->merge($appConfig);
+     $appConfig = new \Phalcon\Config(array('database' => array('host' => 'localhost')));
+     $globalConfig->merge($config2);
 
 
 
 
-public *array*  **toArray** ()
+public  **toArray** ()
 
 Converts recursively the object to an array 
 
@@ -127,9 +127,36 @@ Converts recursively the object to an array
 
 
 
-public static :doc:`Phalcon\\Config <Phalcon_Config>`  **__set_state** (*array* $data)
+public  **count** ()
+
+Returns the count of properties set in the config 
+
+.. code-block:: php
+
+    <?php
+
+     print count($config);
+
+or 
+
+.. code-block:: php
+
+    <?php
+
+     print $config->count();
+
+
+
+
+public static  **__set_state** (*unknown* $data)
 
 Restores the state of a Phalcon\\Config object
+
+
+
+final protected *Config merged config*  **_merge** (*Config* $config, [*unknown* $instance])
+
+Helper method for merge configs (forwarding nested config instance)
 
 
 

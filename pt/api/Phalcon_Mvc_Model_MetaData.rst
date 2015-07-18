@@ -1,7 +1,7 @@
-Class **Phalcon\\Mvc\\Model\\MetaData**
-=======================================
+Abstract class **Phalcon\\Mvc\\Model\\MetaData**
+================================================
 
-*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\\Mvc\\Model. Phalcon\\Mvc\\Model\\MetaData can also use adapters to store temporarily or permanently the meta-data.    A standard Phalcon\\Mvc\\Model\\MetaData can be used to query model attributes:    
 
@@ -9,7 +9,7 @@ Because Phalcon\\Mvc\\Model requires meta-data like field names, data types, pri
 
     <?php
 
-    $metaData = new Phalcon\Mvc\Model\MetaData\Memory();
+    $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
     $attributes = $metaData->getAttributes(new Robots());
     print_r($attributes);
 
@@ -42,44 +42,48 @@ Constants
 
 *integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
 
+*integer* **MODELS_DEFAULT_VALUES**
+
+*integer* **MODELS_EMPTY_STRING_VALUES**
+
 *integer* **MODELS_COLUMN_MAP**
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
 Methods
----------
+-------
 
-protected  **_initialize** ()
+final protected  **_initialize** (*unknown* $model, *unknown* $key, *unknown* $table, *unknown* $schema)
 
 Initialize the metadata for certain table
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (*unknown* $dependencyInjector)
 
 Sets the DependencyInjector container
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public  **getDI** ()
 
 Returns the DependencyInjector container
 
 
 
-public  **setStrategy** (:doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>` $strategy)
+public  **setStrategy** (*unknown* $strategy)
 
 Set the meta-data extraction strategy
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\MetaData\\Strategy\\Introspection <Phalcon_Mvc_Model_MetaData_Strategy_Introspection>`  **getStrategy** ()
+public  **getStrategy** ()
 
 Return the strategy to obtain the meta-data
 
 
 
-public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+final public  **readMetaData** (*unknown* $model)
 
 Reads the complete meta-data for certain model 
 
@@ -92,20 +96,20 @@ Reads the complete meta-data for certain model
 
 
 
-public *array*  **readMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+final public  **readMetaDataIndex** (*unknown* $model, *unknown* $index)
 
-Reads meta-data for certain model using a MODEL_* constant 
+Reads meta-data for certain model 
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->writeColumnMapIndex(new Robots(), MetaData::MODELS_REVERSE_COLUMN_MAP, array('leName' => 'name')));
+    print_r($metaData->readMetaDataIndex(new Robots(), 0);
 
 
 
 
-public  **writeMetaDataIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index, *mixed* $data)
+final public  **writeMetaDataIndex** (*unknown* $model, *unknown* $index, *unknown* $data)
 
 Writes meta-data for certain model using a MODEL_* constant 
 
@@ -118,7 +122,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 
 
-public *array*  **readColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+final public  **readColumnMap** (*unknown* $model)
 
 Reads the ordered/reversed column map for certain model 
 
@@ -131,7 +135,7 @@ Reads the ordered/reversed column map for certain model
 
 
 
-public  **readColumnMapIndex** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *int* $index)
+final public  **readColumnMapIndex** (*unknown* $model, *unknown* $index)
 
 Reads column-map information for certain model using a MODEL_* constant 
 
@@ -144,7 +148,7 @@ Reads column-map information for certain model using a MODEL_* constant
 
 
 
-public *array*  **getAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getAttributes** (*unknown* $model)
 
 Returns table attributes names (fields) 
 
@@ -157,7 +161,7 @@ Returns table attributes names (fields)
 
 
 
-public *array*  **getPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getPrimaryKeyAttributes** (*unknown* $model)
 
 Returns an array of fields which are part of the primary key 
 
@@ -170,9 +174,9 @@ Returns an array of fields which are part of the primary key
 
 
 
-public *array*  **getNonPrimaryKeyAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getNonPrimaryKeyAttributes** (*unknown* $model)
 
-Returns an arrau of fields which are not part of the primary key 
+Returns an array of fields which are not part of the primary key 
 
 .. code-block:: php
 
@@ -183,7 +187,7 @@ Returns an arrau of fields which are not part of the primary key
 
 
 
-public *array*  **getNotNullAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getNotNullAttributes** (*unknown* $model)
 
 Returns an array of not null attributes 
 
@@ -196,7 +200,7 @@ Returns an array of not null attributes
 
 
 
-public *array*  **getDataTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getDataTypes** (*unknown* $model)
 
 Returns attributes and their data types 
 
@@ -209,7 +213,7 @@ Returns attributes and their data types
 
 
 
-public *array*  **getDataTypesNumeric** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getDataTypesNumeric** (*unknown* $model)
 
 Returns attributes which types are numerical 
 
@@ -235,7 +239,7 @@ Returns the name of identity field (if one is present)
 
 
 
-public *array*  **getBindTypes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getBindTypes** (*unknown* $model)
 
 Returns attributes and their bind data types 
 
@@ -248,7 +252,7 @@ Returns attributes and their bind data types
 
 
 
-public *array*  **getAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getAutomaticCreateAttributes** (*unknown* $model)
 
 Returns attributes that must be ignored from the INSERT SQL generation 
 
@@ -261,7 +265,7 @@ Returns attributes that must be ignored from the INSERT SQL generation
 
 
 
-public *array*  **getAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getAutomaticUpdateAttributes** (*unknown* $model)
 
 Returns attributes that must be ignored from the UPDATE SQL generation 
 
@@ -274,7 +278,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public  **setAutomaticCreateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+public  **setAutomaticCreateAttributes** (*unknown* $model, *unknown* $attributes)
 
 Set the attributes that must be ignored from the INSERT SQL generation 
 
@@ -287,7 +291,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 
 
-public  **setAutomaticUpdateAttributes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *array* $attributes)
+public  **setAutomaticUpdateAttributes** (*unknown* $model, *unknown* $attributes)
 
 Set the attributes that must be ignored from the UPDATE SQL generation 
 
@@ -300,7 +304,46 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 
 
-public *array*  **getColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **setEmptyStringAttributes** (*unknown* $model, *unknown* $attributes)
+
+Set the attributes that allow empty string values 
+
+.. code-block:: php
+
+    <?php
+
+    $metaData->setEmptyStringAttributes(new Robots(), array('name' => true));
+
+
+
+
+public  **getEmptyStringAttributes** (*unknown* $model)
+
+Returns attributes allow empty strings 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getEmptyStringAttributes(new Robots()));
+
+
+
+
+public  **getDefaultValues** (*unknown* $model)
+
+Returns attributes (which have default values) and their default values 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getDefaultValues(new Robots()));
+
+
+
+
+public  **getColumnMap** (*unknown* $model)
 
 Returns the column map if any 
 
@@ -313,7 +356,7 @@ Returns the column map if any
 
 
 
-public *array*  **getReverseColumnMap** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
+public  **getReverseColumnMap** (*unknown* $model)
 
 Returns the reverse column map if any 
 
@@ -326,7 +369,7 @@ Returns the reverse column map if any
 
 
 
-public *boolean*  **hasAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute)
+public  **hasAttribute** (*unknown* $model, *unknown* $attribute)
 
 Check if a model has certain attribute 
 
@@ -339,7 +382,7 @@ Check if a model has certain attribute
 
 
 
-public *boolean*  **isEmpty** ()
+public  **isEmpty** ()
 
 Checks if the internal meta-data container is empty 
 

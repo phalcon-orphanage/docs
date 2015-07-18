@@ -1,51 +1,41 @@
 Interface **Phalcon\\Mvc\\Model\\ResultsetInterface**
 =====================================================
 
-Phalcon\\Mvc\\Model\\ResultsetInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public *int*  **getType** ()
+abstract public  **getType** ()
 
-Returns the internal type of data retrieval that the resultset is using
-
-
-
-abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getFirst** ()
-
-Get first row in the resultset
+...
 
 
+abstract public  **getFirst** ()
 
-abstract public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getLast** ()
-
-Get last row in the resultset
-
+...
 
 
-abstract public  **setIsFresh** (*boolean* $isFresh)
+abstract public  **getLast** ()
 
-Set if the resultset is fresh or an old one cached
-
-
-
-abstract public *boolean*  **isFresh** ()
-
-Tell if the resultset if fresh or an old one cached
+...
 
 
+abstract public  **setIsFresh** (*unknown* $isFresh)
 
-abstract public :doc:`Phalcon\\Cache\\BackendInterface <Phalcon_Cache_BackendInterface>`  **getCache** ()
-
-Returns the associated cache for the resultset
-
+...
 
 
-abstract public *array*  **toArray** ()
+abstract public  **isFresh** ()
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does.
+...
 
+
+abstract public  **getCache** ()
+
+...
+
+
+abstract public  **toArray** ()
+
+...
 
 

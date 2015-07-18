@@ -1,63 +1,51 @@
 Interface **Phalcon\\Mvc\\Model\\MessageInterface**
 ===================================================
 
-Phalcon\\Mvc\\Model\\MessageInterface initializer
-
-
 Methods
----------
+-------
 
-abstract public  **__construct** (*string* $message, [*string* $field], [*string* $type])
+abstract public  **__construct** (*unknown* $message, [*unknown* $field], [*unknown* $type])
 
-Phalcon\\Mvc\\Model\\Message constructor
-
-
-
-abstract public  **setType** (*string* $type)
-
-Sets message type
+...
 
 
+abstract public  **setType** (*unknown* $type)
 
-abstract public *string*  **getType** ()
-
-Returns message type
-
+...
 
 
-abstract public  **setMessage** (*string* $message)
+abstract public  **getType** ()
 
-Sets verbose message
-
-
-
-abstract public *string*  **getMessage** ()
-
-Returns verbose message
+...
 
 
+abstract public  **setMessage** (*unknown* $message)
 
-abstract public  **setField** (*string* $field)
-
-Sets field name related to message
-
+...
 
 
-abstract public *string*  **getField** ()
+abstract public  **getMessage** ()
 
-Returns field name related to message
-
-
-
-abstract public *string*  **__toString** ()
-
-Magic __toString method returns verbose message
+...
 
 
+abstract public  **setField** (*unknown* $field)
 
-abstract public static :doc:`Phalcon\\Mvc\\Model\\MessageInterface <Phalcon_Mvc_Model_MessageInterface>`  **__set_state** (*array* $message)
+...
 
-Magic __set_state helps to recover messsages from serialization
 
+abstract public  **getField** ()
+
+...
+
+
+abstract public  **__toString** ()
+
+...
+
+
+abstract public static  **__set_state** (*unknown* $message)
+
+...
 
 

@@ -1,27 +1,27 @@
 Class **Phalcon\\Mvc\\Collection\\Document**
 ============================================
 
-*implements* ArrayAccess
+*implements* :doc:`Phalcon\\Mvc\\EntityInterface <Phalcon_Mvc_EntityInterface>`, ArrayAccess
 
 This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
 
 Methods
----------
+-------
 
 public *boolean*  **offsetExists** (*int* $index)
 
-Checks whether offset exists in the row
+Checks whether an offset exists in the document
 
 
 
-public *mixed*  **offsetGet** (*string* $index)
+public  **offsetGet** (*unknown* $index)
 
 Returns the value of a field using the ArrayAccess interfase
 
 
 
-public  **offsetSet** (*string* $index, :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $value)
+public  **offsetSet** (*unknown* $index, *unknown* $value)
 
 Change a value using the ArrayAccess interface
 
@@ -41,7 +41,7 @@ Reads an attribute value by its name
 
     <?php
 
-    echo $robot->readAttribute('name');
+      echo $robot->readAttribute('name');
 
 
 
@@ -54,8 +54,14 @@ Writes an attribute value by its name
 
     <?php
 
-    $robot->writeAttribute('name', 'Rosey');
+      $robot->writeAttribute('name', 'Rosey');
 
+
+
+
+public *array*  **toArray** ()
+
+Returns the instance as an array representation
 
 
 

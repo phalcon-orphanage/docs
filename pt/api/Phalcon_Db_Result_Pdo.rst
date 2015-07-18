@@ -1,6 +1,8 @@
 Class **Phalcon\\Db\\Result\\Pdo**
 ==================================
 
+*implements* :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`
+
 Encapsulates the resultset internals  
 
 .. code-block:: php
@@ -16,7 +18,7 @@ Encapsulates the resultset internals
 
 
 Methods
----------
+-------
 
 public  **__construct** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $connection, *\PDOStatement* $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
@@ -24,13 +26,13 @@ Phalcon\\Db\\Result\\Pdo constructor
 
 
 
-public *boolean*  **execute** ()
+public  **execute** ()
 
-Allows to executes the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
+Allows to execute the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
 
 
-public *mixed*  **fetch** ()
+public  **fetch** ([*unknown* $fetchStyle], [*unknown* $cursorOrientation], [*unknown* $cursorOffset])
 
 Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -47,7 +49,7 @@ Fetches an array/object of strings that corresponds to the fetched row, or FALSE
 
 
 
-public *mixed*  **fetchArray** ()
+public  **fetchArray** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -57,14 +59,14 @@ Returns an array of strings that corresponds to the fetched row, or FALSE if the
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
     $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-    while ($robot = $result->fetchArray()) {
+    while ($robot = result->fetchArray()) {
     	print_r($robot);
     }
 
 
 
 
-public *array*  **fetchAll** ()
+public  **fetchAll** ([*unknown* $fetchStyle], [*unknown* $fetchArgument], [*unknown* $ctorArgs])
 
 Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode 
 
@@ -78,23 +80,23 @@ Returns an array of arrays containing all the records in the result This method 
 
 
 
-public *int*  **numRows** ()
+public  **numRows** ()
 
-Gets number of rows returned by a resulset 
+Gets number of rows returned by a resultset 
 
 .. code-block:: php
 
     <?php
 
     $result = $connection->query("SELECT * FROM robots ORDER BY name");
-    echo 'There are ', $result->numRows(), ' rows in the resulset';
+    echo 'There are ', $result->numRows(), ' rows in the resultset';
 
 
 
 
-public  **dataSeek** (*int* $number)
+public  **dataSeek** (*unknown* $number)
 
-Moves internal resulset cursor to another position letting us to fetch a certain row 
+Moves internal resultset cursor to another position letting us to fetch a certain row 
 
 .. code-block:: php
 
@@ -107,7 +109,7 @@ Moves internal resulset cursor to another position letting us to fetch a certain
 
 
 
-public  **setFetchMode** (*int* $fetchMode)
+public  **setFetchMode** (*unknown* $fetchMode, [*unknown* $colNoOrClassNameOrObject], [*unknown* $ctorargs])
 
 Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch() 
 
@@ -130,7 +132,7 @@ Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch()
 
 
 
-public *\PDOStatement*  **getInternalResult** ()
+public  **getInternalResult** ()
 
 Gets the internal PDO result object
 

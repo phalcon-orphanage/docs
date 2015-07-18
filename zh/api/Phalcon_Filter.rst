@@ -17,28 +17,55 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 
 
 
+Constants
+---------
+
+*string* **FILTER_EMAIL**
+
+*string* **FILTER_ABSINT**
+
+*string* **FILTER_INT**
+
+*string* **FILTER_INT_CAST**
+
+*string* **FILTER_STRING**
+
+*string* **FILTER_FLOAT**
+
+*string* **FILTER_FLOAT_CAST**
+
+*string* **FILTER_ALPHANUM**
+
+*string* **FILTER_TRIM**
+
+*string* **FILTER_STRIPTAGS**
+
+*string* **FILTER_LOWER**
+
+*string* **FILTER_UPPER**
+
 Methods
 -------
 
-public :doc:`Phalcon\\Filter <Phalcon_Filter>`  **add** (*unknown* $name, *unknown* $handler)
+public  **add** (*unknown* $name, *unknown* $handler)
 
 Adds a user-defined filter
 
 
 
-public *mixed*  **sanitize** (*unknown* $value, *unknown* $filters, [*unknown* $noRecursive])
+public  **sanitize** (*unknown* $value, *unknown* $filters, [*unknown* $noRecursive])
 
 Sanitizes a value with a specified single or set of filters
 
 
 
-protected *mixed*  **_sanitize** (*mixed* $value, *string* $filter)
+protected  **_sanitize** (*unknown* $value, *unknown* $filter)
 
 Internal sanitize wrapper to filter_var
 
 
 
-public *object[]*  **getFilters** ()
+public  **getFilters** ()
 
 Return the user-defined filters in the instance
 

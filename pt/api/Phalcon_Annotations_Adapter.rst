@@ -1,49 +1,49 @@
-Class **Phalcon\\Annotations\\Adapter**
-=======================================
+Abstract class **Phalcon\\Annotations\\Adapter**
+================================================
 
 This is the base class for Phalcon\\Annotations adapters
 
 
 Methods
----------
+-------
 
-public  **setReader** (:doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>` $reader)
+public  **setReader** (*unknown* $reader)
 
 Sets the annotations parser
 
 
 
-public :doc:`Phalcon\\Annotations\\ReaderInterface <Phalcon_Annotations_ReaderInterface>`  **getReader** ()
+public  **getReader** ()
 
 Returns the annotation reader
 
 
 
-public :doc:`Phalcon\\Annotations\\Reflection <Phalcon_Annotations_Reflection>`  **get** (*string|object* $className)
+public  **get** (*string|object* $className)
 
 Parses or retrieves all the annotations found in a class
 
 
 
-public *array*  **getMethods** (*string* $className)
+public  **getMethods** (*unknown* $className)
 
 Returns the annotations found in all the class' methods
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getMethod** (*string* $className, *string* $methodName)
+public  **getMethod** (*unknown* $className, *unknown* $methodName)
 
 Returns the annotations found in a specific method
 
 
 
-public *array*  **getProperties** (*string* $className)
+public  **getProperties** (*unknown* $className)
 
 Returns the annotations found in all the class' methods
 
 
 
-public :doc:`Phalcon\\Annotations\\Collection <Phalcon_Annotations_Collection>`  **getProperty** (*string* $className, *string* $propertyName)
+public  **getProperty** (*unknown* $className, *unknown* $propertyName)
 
 Returns the annotations found in a specific property
 
