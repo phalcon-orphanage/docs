@@ -3,7 +3,7 @@
 /**
  * This scripts generates the restructuredText for the class API.
  *
- * Change the CPHALCON_DIR constant to point to the dev/ directory in the Phalcon source code
+ * Change the CPHALCON_DIR constant to point to the ext/ directory in the Phalcon source code
  *
  * php scripts/gen-api.php
  */
