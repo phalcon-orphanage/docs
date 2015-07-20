@@ -3,13 +3,11 @@ Tutorial 5: Customizing INVO
 To finish the detailed explanation of INVO we are going to explain how to customize INVO adding UI elements
 and changing the title according to the controller executed.
 
-User Components
+ユーザーコンポーネント
 ---------------
-All the UI elements and visual style of the application has been achieved mostly through `Bootstrap`_.
-Some elements, such as the navigation bar changes according to the state of the application. For example, in the
-upper right corner, the link "Log in / Sign Up" changes to "Log out" if a user is logged into the application.
+全てのUI要素とスタイルは、 `Twitter Bootstrap`_ によって実現されています。ナビゲーションバーなどの要素は、アプリケーションの状態によって変わります。たとえば、右上のリンク "Log in / Sign Up" は、ユーザーがログインしている場合には "Log out" に変わります。
 
-This part of the application is implemented in the component "Elements" (app/library/Elements.php).
+アプリケーションのこの部分は、"Elements" コンポーネント (app/library/Elements.php) で実装されています。
 
 .. code-block:: php
 
@@ -32,15 +30,13 @@ This part of the application is implemented in the component "Elements" (app/lib
 
     }
 
-This class extends the Phalcon\\Mvc\\User\\Component. It is not imposed to extend a component with this class, but
-it helps to get access more quickly to the application services. Now, we are going to register
-our first user component in the services container:
+このクラスは Phalcon\\Mvc\\User\\Component を継承しています。このクラスのコンポーネントを継承することは必須ではありませんが、アプリケーションのサービスに素早くアクセスする助けになります。それでは、このクラスをサービスコンテナに登録します:
 
 .. code-block:: php
 
     <?php
 
-    // Register a user component
+    // Register an user component
     $di->set('elements', function () {
         return new Elements();
     });
@@ -59,16 +55,16 @@ in the container and by just accessing an attribute with the same name as a prev
                     <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">INVO</a>
-                {{ elements.getMenu() }}
+                <?php echo $this->elements->getMenu() ?>
             </div>
         </div>
     </div>
 
     <div class="container">
-        {{ content() }}
+        <?php echo $this->getContent() ?>
         <hr>
         <footer>
-            <p>&copy; Company 2015</p>
+            <p>&copy; Company 2012</p>
         </footer>
     </div>
 
@@ -76,9 +72,9 @@ The important part is:
 
 .. code-block:: html+php
 
-    {{ elements.getMenu() }}
+    <?php echo $this->elements->getMenu() ?>
 
-Changing the Title Dynamically
+タイトルの動的な変更
 ------------------------------
 When you browse between one option and another will see that the title changes dynamically indicating where
 we are currently working. This is achieved in each controller initializer:
@@ -107,9 +103,7 @@ Note, that the method parent::initialize() is also called, it adds more data to 
 
     <?php
 
-    use Phalcon\Mvc\Controller;
-
-    class ControllerBase extends Controller
+    class ControllerBase extends Phalcon\Mvc\Controller
     {
 
         protected function initialize()
