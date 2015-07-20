@@ -96,7 +96,7 @@ Phalcon自动检测你的系统架构，然而，您可以强制编译为一个�
 
 .. code-block:: bash
 
-    cd cphalon/build
+    cd cphalcon/build
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe

@@ -87,7 +87,7 @@ Phalcon automatycznie wykrywa architekturę twojego systemu, możesz jednak wymu
 
 .. code-block:: bash
 
-    cd cphalon/build
+    cd cphalcon/build
     sudo ./install 32bits
     sudo ./install 64bits
     sudo ./install safe
@@ -96,7 +96,7 @@ Jeżeli autoinstalator wyrzuca błąd, spróbuj skompilować rozszerzenie ręczn
 
 .. code-block:: bash
 
-    cd cphalon/build/64bits
+    cd cphalcon/build/64bits
     export CFLAGS="-O2 --fvisibility=hidden"
     ./configure --enable-phalcon
     make && sudo make install
