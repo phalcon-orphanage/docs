@@ -54,7 +54,7 @@ Note that you don't need any "library" directory related to Phalcon. The framewo
 
 Beautiful URLs
 ^^^^^^^^^^^^^^
-We'll use pretty (friendly) urls for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
+We'll use pretty (friendly) URLs for this tutorial. Friendly URLs are better for SEO as well as they are easy for users to remember. Phalcon supports rewrite modules provided by the most popular web servers. Making your application's URLs friendly is not a requirement and you can just as easy develop without them.
 
 In this example we'll use the rewrite module for Apache. Let's create a couple of rewrite rules in the /.htaccess file:
 
@@ -313,7 +313,7 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in the application.
+The Phalcon\\Tag::form method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework,
 indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:

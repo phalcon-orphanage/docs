@@ -1,7 +1,7 @@
 生成 URL 和 路径（Generating URLs and Paths）
 =========================
-:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate urls in a Phalcon application. It's
-capable of produce independent urls based on routes.
+:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate URLs in a Phalcon application. It's
+capable of produce independent URLs based on routes.
 
 
 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 组件负责在Phalcon应用内生成URL。它依赖路由生成独立的URL。
@@ -9,11 +9,11 @@ capable of produce independent urls based on routes.
 
 设置站点基地址（Setting a base URI）
 ------------------
-Depending of which directory of your document root your application is installed, it may have a base uri or not.
+Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
 For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
 baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
-Execute the following code to know the base uri detected by Phalcon:
+Execute the following code to know the base URI detected by Phalcon:
 
 .. code-block:: php
 
@@ -68,7 +68,7 @@ pattern defined in the router) passing a string to the method "get":
 
     <?php echo $url->get("products/save") ?>
 
-Note that isn't necessary to prepend the base uri. If you have named routes you can easily change it creating it dynamically.
+Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically.
 For Example if you have the following route:
 
 .. code-block:: php
@@ -96,7 +96,7 @@ A URL can be generated in the following way:
 
 没有伪静态状态下的生成 URL（Producing URLs without Mod-Rewrite）
 ----------------------------------
-You can use this component also to create urls without mod-rewrite:
+You can use this component also to create URLs without mod-rewrite:
 
 .. code-block:: php
 
@@ -168,7 +168,7 @@ Generate static routes:
 
 静态 URI 与 动态 URI（Static vs. Dynamic Uris）
 -----------------------
-This component allow you to set up a different base uri for static resources in the application:
+This component allow you to set up a different base URI for static resources in the application:
 
 .. code-block:: php
 

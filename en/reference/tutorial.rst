@@ -368,7 +368,7 @@ Viewing the form in your browser will show something like this:
 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` also provides useful methods to build form elements.
 
-The Phalcon\\Tag::form method receives only one parameter for instance, a relative uri to a controller/action in
+The Phalcon\\Tag::form method receives only one parameter for instance, a relative URI to a controller/action in
 the application.
 
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our public/index.php file throws this exception:

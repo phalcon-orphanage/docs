@@ -5,7 +5,7 @@ Apache_ is a popular and well known web server available on many platforms.
 Configuring Apache for Phalcon
 ------------------------------
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily
-focused on the configuration of the mod-rewrite module allowing to use friendly urls and the
+focused on the configuration of the mod-rewrite module allowing to use friendly URLs and the
 :doc:`router component <routing>`. Commonly an application has the following structure:
 
 .. code-block:: php
