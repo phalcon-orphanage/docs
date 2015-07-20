@@ -2,10 +2,10 @@
 Using Controllers
 =================
 The controllers provide a number of methods that are called actions. Actions are methods on a controller that handle requests. By default all
-public methods on a controller map to actions and are accessible by an URL. Actions are responsible for interpreting the request and creating
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
 the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-For instance, when you access an URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
+For instance, when you access a URL like this: http://localhost/blog/posts/show/2015/the-post-title Phalcon by default will decompose each
 part like this:
 
 +------------------------+----------------+
